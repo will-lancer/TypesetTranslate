@@ -1,4 +1,4 @@
-Typesetting old, beautiful physics and math papers/books into modern LaTeX.
+Typesetting old, beautiful physics and math books and papers into modern LaTeX.
 
 Completed:
 * Witten's *Introduction to Supersymmetry*
