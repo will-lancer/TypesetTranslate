@@ -1,0 +1,47 @@
+% Source page: original p. 328 (PDF p. 24)
+% Figure number: Figure 10
+% Uncertainty notes: The intermediate panel spacing is approximated from the scan; the state-count change follows the surrounding text exactly.
+\begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
+  \tikzset{
+    boson/.style={draw, circle, inner sep=0pt, minimum size=3.2pt, line width=0.35pt},
+    fermi/.style={line width=0.35pt},
+    level/.style={line width=0.35pt},
+    flow/.style={->, line width=0.35pt}
+  }
+
+  \newcommand{\fermimark}[2]{%
+    \draw[fermi] (#1-0.055,#2-0.055) -- (#1+0.055,#2+0.055);
+    \draw[fermi] (#1-0.055,#2+0.055) -- (#1+0.055,#2-0.055);
+  }
+  \newcommand{\bosonmark}[2]{%
+    \node[boson] at (#1,#2) {};
+  }
+  \newcommand{\panel}[3]{%
+    \begin{scope}[shift={(#1,#2)}]
+      \draw[level,->] (0,-0.08) -- (0,1.28);
+      \node[font=\scriptsize] at (0.18,1.20) {$E$};
+      \draw[level] (-0.12,0.72) -- (0.92,0.72);
+      \draw[level] (-0.12,0.18) -- (0.92,0.18);
+      #3
+    \end{scope}
+  }
+
+  \panel{0}{0}{
+    \bosonmark{0.34}{0.72}
+    \fermimark{0.56}{0.72}
+    \bosonmark{0.34}{0.18}
+  }
+  \panel{2.05}{0}{
+    \bosonmark{0.34}{0.56}
+    \fermimark{0.56}{0.56}
+    \bosonmark{0.34}{0.18}
+  }
+  \panel{4.10}{0}{
+    \bosonmark{0.34}{0.18}
+    \bosonmark{0.56}{0.18}
+    \fermimark{0.78}{0.18}
+  }
+
+  \draw[flow] (1.34,0.55) -- (1.78,0.55);
+  \draw[flow] (3.40,0.55) -- (3.84,0.55);
+\end{tikzpicture}
