@@ -1,6 +1,6 @@
 Typesetting old, beautiful physics and math books and papers into modern LaTeX.
-Practically all typsetting is done by coding agents and directed by me--I check
-the final work and manually verify suspicious equations/typos in the original book/paper.
+The transcription itself is done primarily by coding agents, specifically GPT 5.4 High.
+I do the finer details that the models miss, and I direct the models themselves.
 Please let me know at will.m.lancer@gmail.com if you find any errors.
 
 Completed:
