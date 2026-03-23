@@ -1,6 +1,5 @@
 Typesetting old, beautiful physics and math books and papers into modern LaTeX.
-The transcription itself is done primarily by coding agents, specifically GPT 5.4 High.
-I do the finer details that the models miss and I direct the models in their work.
+The typesetting is done almost entirely via coding agents (specifically GPT 5.4).
 Please email me at will.m.lancer@gmail.com if you find any errors.
 
 Repository layout:
@@ -18,7 +17,6 @@ Completed:
 
 To-do:
 * Milnor's *Topology from a Differentiable Viewpoint*
-* TBD (please submit a pull request if you want to see a specific book or paper typeset)
+* Weinberg's QFT textbooks
 
-Note that I'm also working on a website where you can just upload a paper or book
-and it will do this for you. More on that soon.
+Note that I'm also working on a program where it just does this for you.
