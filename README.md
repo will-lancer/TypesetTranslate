@@ -3,6 +3,16 @@ The transcription itself is done primarily by coding agents, specifically GPT 5.
 I do the finer details that the models miss and I direct the models in their work.
 Please email me at will.m.lancer@gmail.com if you find any errors.
 
+Repository layout:
+
+- `origPapers/`: source PDFs
+- `dirs/`: active workspaces under transcription
+- `newPapers/`: polished final outputs
+- `typesetTranslate/`: the orchestration package
+
+The operational workflow for the automation layer is documented in
+[`typesetTranslate/WORKFLOW.md`](/Users/wlancer/Coding_Projects/TypesetTranslate/typesetTranslate/WORKFLOW.md).
+
 Completed:
 * Witten's *Introduction to Supersymmetry*
 
