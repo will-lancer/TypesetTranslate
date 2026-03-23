@@ -9,5 +9,4 @@ To-do:
 * Milnor's *Topology from a Differentiable Viewpoint*
 * Weinberg's QFT textbooks
 
-Note that I'm also working on a website where you can just upload a paper or book
-and it will do this for you. More on that soon.
+Note that I'm also working on a program where it just does this for you.
