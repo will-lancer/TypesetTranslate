@@ -5,9 +5,18 @@ import json
 import sys
 from pathlib import Path
 
+from .compile_tools import run_compile_verification
+from .export import export_workspace
 from .models import PaperConfig
 from .verification import verify_workspace
-from .workflow import initialize_project, plan_project, refresh_figure_pipeline, run_pipeline
+from .workflow import (
+    dispatch_jobs,
+    initialize_project,
+    plan_project,
+    poll_jobs,
+    refresh_figure_pipeline,
+    run_pipeline,
+)
 
 
 def _add_project_args(parser: argparse.ArgumentParser) -> None:
@@ -46,8 +55,13 @@ def _add_project_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--runner",
         default="manifest",
-        choices=["manifest", "mock"],
+        choices=["manifest", "mock", "openai"],
         help="Runner backend.",
+    )
+    parser.add_argument(
+        "--runner-model",
+        default=None,
+        help="Optional model name for the selected runner backend.",
     )
     parser.add_argument(
         "--page-count",
@@ -83,7 +97,7 @@ def _build_parser() -> argparse.ArgumentParser:
     plan_parser.add_argument(
         "--runner",
         default=None,
-        choices=["manifest", "mock"],
+        choices=["manifest", "mock", "openai"],
         help="Override the stored runner for this planning pass.",
     )
 
@@ -99,11 +113,69 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     refresh_parser.add_argument("workspace", help="Path to an existing paper workspace.")
 
+    dispatch_parser = subparsers.add_parser(
+        "dispatch",
+        help="Submit ready jobs for the configured runner backend.",
+    )
+    dispatch_parser.add_argument("workspace", help="Path to an existing paper workspace.")
+    dispatch_parser.add_argument(
+        "--job-type",
+        default="all",
+        choices=["all", "transcription", "figure"],
+        help="Limit dispatch to one job class.",
+    )
+    dispatch_parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of jobs to dispatch.",
+    )
+
+    poll_parser = subparsers.add_parser(
+        "poll",
+        help="Refresh remote job state for the configured runner backend.",
+    )
+    poll_parser.add_argument("workspace", help="Path to an existing paper workspace.")
+    poll_parser.add_argument(
+        "--job-type",
+        default="all",
+        choices=["all", "transcription", "figure"],
+        help="Limit polling to one job class.",
+    )
+
     verify_parser = subparsers.add_parser(
         "verify",
         help="Run structural verification and write reports/verification.{json,md}.",
     )
     verify_parser.add_argument("workspace", help="Path to an existing paper workspace.")
+
+    compile_parser = subparsers.add_parser(
+        "verify-compile",
+        help="Compile master/check targets and write reports/compile.{json,md}.",
+    )
+    compile_parser.add_argument("workspace", help="Path to an existing paper workspace.")
+    compile_parser.add_argument(
+        "--scope",
+        default="all",
+        choices=["all", "master", "checks"],
+        help="Choose which LaTeX targets to compile.",
+    )
+
+    export_parser = subparsers.add_parser(
+        "export",
+        help="Export the current workspace into newPapers-style output.",
+    )
+    export_parser.add_argument("workspace", help="Path to an existing paper workspace.")
+    export_parser.add_argument(
+        "--dest-root",
+        default="./newPapers",
+        help="Destination root for exported workspaces.",
+    )
+    export_parser.add_argument(
+        "--include-pdf",
+        action="store_true",
+        help="Include output/master.pdf if it exists.",
+    )
 
     return parser
 
@@ -123,6 +195,7 @@ def _config_from_args(args: argparse.Namespace) -> PaperConfig:
         transcription_workers=args.transcription_workers,
         figure_workers=args.figure_workers,
         runner=args.runner,
+        runner_model=args.runner_model,
         page_count=args.page_count,
         title=args.title,
     )
@@ -176,8 +249,36 @@ def _cmd_refresh_figures(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_dispatch(args: argparse.Namespace) -> int:
+    status = dispatch_jobs(args.workspace, job_type=args.job_type, limit=args.limit)
+    _print_payload(status.to_dict())
+    return 0
+
+
+def _cmd_poll(args: argparse.Namespace) -> int:
+    status = poll_jobs(args.workspace, job_type=args.job_type)
+    _print_payload(status.to_dict())
+    return 0
+
+
 def _cmd_verify(args: argparse.Namespace) -> int:
     report = verify_workspace(args.workspace)
+    _print_payload(report.to_dict())
+    return 0
+
+
+def _cmd_verify_compile(args: argparse.Namespace) -> int:
+    report = run_compile_verification(args.workspace, scope=args.scope)
+    _print_payload(report.to_dict())
+    return 0
+
+
+def _cmd_export(args: argparse.Namespace) -> int:
+    report = export_workspace(
+        args.workspace,
+        destination_root=args.dest_root,
+        include_pdf=args.include_pdf,
+    )
     _print_payload(report.to_dict())
     return 0
 
@@ -195,8 +296,16 @@ def main() -> int:
         return _cmd_inspect(args)
     if args.command == "refresh-figures":
         return _cmd_refresh_figures(args)
+    if args.command == "dispatch":
+        return _cmd_dispatch(args)
+    if args.command == "poll":
+        return _cmd_poll(args)
     if args.command == "verify":
         return _cmd_verify(args)
+    if args.command == "verify-compile":
+        return _cmd_verify_compile(args)
+    if args.command == "export":
+        return _cmd_export(args)
     parser.error(f"Unknown command: {args.command}")
     return 2
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import shutil
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .models import ChunkJob, FigureJob, PaperConfig, WorkspacePaths, WorkspaceStatus
@@ -94,6 +95,25 @@ def write_check_wrapper(paths: WorkspacePaths, job: ChunkJob, title: str) -> Non
 
 def write_job_manifest(path: Path, payload: dict) -> None:
     write_json(path, payload)
+
+
+def read_json(path: Path) -> dict:
+    return json.loads(path.read_text())
+
+
+def manifest_path_for_job(paths: WorkspacePaths, job_id: str) -> Path:
+    return paths.manifests_dir / f"{job_id}.json"
+
+
+def append_job_log(paths: WorkspacePaths, job_id: str, event_type: str, payload: dict) -> None:
+    log_path = paths.logs_dir / f"{job_id}.jsonl"
+    event = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "event_type": event_type,
+        "payload": payload,
+    }
+    with log_path.open("a") as handle:
+        handle.write(json.dumps(event, sort_keys=True) + "\n")
 
 
 def initialize_workspace(paths: WorkspacePaths) -> None:

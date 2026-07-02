@@ -193,7 +193,10 @@ Current location:
 
 ### 7. Verification
 
-The verification stage is now implemented as a structural audit.
+The verification stage now has two layers:
+
+- structural verification
+- compile verification
 
 Command:
 
@@ -218,6 +221,25 @@ The report currently checks:
 
 For historical documents, this narrow verification model is much safer than
 telling one large agent to "fix the project."
+
+Compile verification command:
+
+```bash
+paperbot verify-compile dirs/<slug>
+```
+
+Outputs:
+
+- `reports/compile.json`
+- `reports/compile.md`
+
+This stage compiles:
+
+1. `output/master.tex`
+2. chunk check wrappers in `output/checks/`
+
+The compile report records missing files, extracted LaTeX errors, warnings, and
+which chunk check wrapper failed.
 
 ## State files
 
@@ -287,16 +309,18 @@ What is implemented now:
 - chunk planning
 - figure discovery from chunk placeholders
 - prompt and manifest generation
+- explicit dispatch and poll commands
+- manifest, mock, and OpenAI runner backends
 - master generation by `\input{}`
 - structural verification reports
+- compile verification reports
+- export into `newPapers/`
 
 What still needs to be built:
 
-- real Codex/API dispatch
-- compile-aware verification and repair passes
-- merge/export into `newPapers/`
 - bibliography and table-specialized agents
 - richer book-specific heuristics for adaptive chunking
+- automated repair passes from compile findings
 
 ## Recommended operating procedure
 
@@ -305,10 +329,13 @@ For a new project:
 1. put the source PDF in `origPapers/`
 2. run `paperbot init ...`
 3. run `paperbot plan dirs/<slug>`
-4. dispatch transcription jobs from `jobs/manifests/`
-5. refresh figure jobs after chunk files start appearing
-6. run `paperbot verify dirs/<slug>`
-7. export the cleaned result into `newPapers/`
+4. run `paperbot dispatch dirs/<slug>`
+5. run `paperbot poll dirs/<slug>` until chunk jobs complete
+6. refresh figure jobs after chunk files start appearing
+7. dispatch and poll figure jobs
+8. run `paperbot verify dirs/<slug>`
+9. run `paperbot verify-compile dirs/<slug>`
+10. export the cleaned result into `newPapers/`
 
 For best results:
 

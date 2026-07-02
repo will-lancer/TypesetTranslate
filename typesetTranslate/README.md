@@ -10,6 +10,10 @@ The core design is file-oriented:
 - the master document assembles chunks via `\input{}`
 - project state lives on disk
 
+The automation layer targets staged workspaces created by current `paperbot`
+commands. Older manual proof-of-concept workspaces in `dirs/` may use a legacy
+flat layout and are treated as archival outputs rather than supported inputs.
+
 ## Repository shape
 
 From the repository root:
@@ -121,6 +125,22 @@ job manifests and prompts.
 paperbot refresh-figures dirs/witten-susy-intro
 ```
 
+### `paperbot dispatch`
+
+Submit ready manifests to the configured runner backend.
+
+```bash
+paperbot dispatch dirs/witten-susy-intro --job-type transcription --limit 4
+```
+
+### `paperbot poll`
+
+Refresh remote/local job state and write completed outputs.
+
+```bash
+paperbot poll dirs/witten-susy-intro
+```
+
 ### `paperbot verify`
 
 Run structural verification and write:
@@ -130,6 +150,25 @@ Run structural verification and write:
 
 ```bash
 paperbot verify dirs/witten-susy-intro
+```
+
+### `paperbot verify-compile`
+
+Compile the master document and/or chunk check wrappers and write:
+
+- `reports/compile.json`
+- `reports/compile.md`
+
+```bash
+paperbot verify-compile dirs/witten-susy-intro --scope all
+```
+
+### `paperbot export`
+
+Copy the current workspace outputs into `newPapers/`.
+
+```bash
+paperbot export dirs/witten-susy-intro --dest-root newPapers
 ```
 
 ### `paperbot inspect`
@@ -162,11 +201,14 @@ The current package is good at:
 - setting up a clean workspace
 - planning chunk jobs
 - generating prompts and manifests
+- dispatching jobs via manifest, mock, or OpenAI backends
+- compiling master/check targets for verification
+- exporting deliverables into `newPapers/`
 - keeping transcription and figure work separated
 
 The next useful steps are:
 
-- a real Codex/API runner
-- chunk verification and compile repair passes
+- automated repair passes from compile findings
 - bibliography/reference normalization
-- automatic final export into `newPapers/`
+- table-specialized agents
+- richer adaptive chunking for long books

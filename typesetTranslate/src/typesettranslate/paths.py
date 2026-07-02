@@ -35,6 +35,9 @@ def build_workspace_paths(workspace_root: Path, slug: str) -> WorkspacePaths:
         checks_dir=output_dir / "checks",
         verification_json=root / "reports" / "verification.json",
         verification_md=root / "reports" / "verification.md",
+        compile_json=root / "reports" / "compile.json",
+        compile_md=root / "reports" / "compile.md",
+        compile_logs_dir=root / "reports" / "compile-logs",
     )
 
 
@@ -58,5 +61,6 @@ def ensure_workspace_dirs(paths: WorkspacePaths) -> None:
         paths.logs_dir,
         paths.reports_dir,
         paths.state_dir,
+        paths.compile_logs_dir,
     ):
         directory.mkdir(parents=True, exist_ok=True)

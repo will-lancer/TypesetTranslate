@@ -18,6 +18,7 @@ class PaperConfig:
     transcription_workers: int = 3
     figure_workers: int = 1
     runner: str = "manifest"
+    runner_model: str | None = None
     page_count: int | None = None
     title: str | None = None
 
@@ -48,11 +49,22 @@ class ChunkJob:
     output_file: str
     prompt_file: str
     check_file: str
-    status: str = "pending"
+    status: str = "ready"
+    backend: str | None = None
+    attempt_count: int = 0
+    remote_job_id: str | None = None
+    submitted_at: str | None = None
+    completed_at: str | None = None
+    last_error: str | None = None
+    result_summary: str | None = None
     notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "ChunkJob":
+        return cls(**payload)
 
 
 @dataclass(slots=True)
@@ -64,11 +76,22 @@ class FigureJob:
     source_chunk_file: str | None = None
     source_page_hint: str | None = None
     placeholder_text: str | None = None
-    status: str = "pending"
+    status: str = "ready"
+    backend: str | None = None
+    attempt_count: int = 0
+    remote_job_id: str | None = None
+    submitted_at: str | None = None
+    completed_at: str | None = None
+    last_error: str | None = None
+    result_summary: str | None = None
     notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "FigureJob":
+        return cls(**payload)
 
 
 @dataclass(slots=True)
@@ -95,6 +118,20 @@ class WorkspaceStatus:
             "figure_jobs": [job.to_dict() for job in self.figure_jobs],
             "warnings": self.warnings,
         }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "WorkspaceStatus":
+        return cls(
+            workspace=payload["workspace"],
+            document_kind=payload["document_kind"],
+            page_images_ready=payload["page_images_ready"],
+            page_count_detected=payload["page_count_detected"],
+            runner=payload["runner"],
+            chunk_size=payload["chunk_size"],
+            chunk_jobs=[ChunkJob.from_dict(job) for job in payload.get("chunk_jobs", [])],
+            figure_jobs=[FigureJob.from_dict(job) for job in payload.get("figure_jobs", [])],
+            warnings=payload.get("warnings", []),
+        )
 
 
 @dataclass(slots=True)
@@ -152,6 +189,50 @@ class VerificationReport:
 
 
 @dataclass(slots=True)
+class CompileTargetReport:
+    target: str
+    kind: str
+    success: bool
+    tool: str | None = None
+    owner_job_id: str | None = None
+    log_path: str | None = None
+    pdf_path: str | None = None
+    errors: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+    missing_inputs: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(slots=True)
+class CompileReport:
+    workspace: str
+    tool: str | None
+    targets: list[CompileTargetReport]
+    warnings: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "workspace": self.workspace,
+            "tool": self.tool,
+            "targets": [target.to_dict() for target in self.targets],
+            "warnings": self.warnings,
+        }
+
+
+@dataclass(slots=True)
+class ExportReport:
+    workspace: str
+    destination: str
+    exported_files: list[str]
+    warnings: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(slots=True)
 class WorkspacePaths:
     root: Path
     source_dir: Path
@@ -174,3 +255,6 @@ class WorkspacePaths:
     checks_dir: Path
     verification_json: Path
     verification_md: Path
+    compile_json: Path
+    compile_md: Path
+    compile_logs_dir: Path
