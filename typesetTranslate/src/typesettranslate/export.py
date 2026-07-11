@@ -27,6 +27,15 @@ def _copy_tree_if_exists(source: Path, destination: Path, exported_files: list[s
             exported_files.append(str(path))
 
 
+def _rewrite_exported_latex_paths(latex_root: Path) -> None:
+    for tex_path in latex_root.rglob("*.tex"):
+        text = tex_path.read_text()
+        rewritten = text.replace("{output/chunks/", "{chunks/")
+        rewritten = rewritten.replace("{output/figures/", "{figures/")
+        if rewritten != text:
+            tex_path.write_text(rewritten)
+
+
 def export_workspace(
     workspace: str | Path,
     *,
@@ -52,6 +61,8 @@ def export_workspace(
     _copy_if_exists(paths.verification_md, destination / "reports" / "verification.md", exported_files)
     _copy_if_exists(paths.compile_json, destination / "reports" / "compile.json", exported_files)
     _copy_if_exists(paths.compile_md, destination / "reports" / "compile.md", exported_files)
+
+    _rewrite_exported_latex_paths(destination / "latex")
 
     if include_pdf:
         master_pdf = paths.master_tex.with_suffix(".pdf")

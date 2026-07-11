@@ -27,9 +27,23 @@ def _select_compile_tool() -> str | None:
 
 def _compile_command(tool: str, target: Path) -> list[str]:
     rel_target = target.as_posix()
+    output_directory = target.parent.as_posix()
     if tool == "latexmk":
-        return ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", rel_target]
-    return ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", rel_target]
+        return [
+            "latexmk",
+            "-pdf",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            f"-output-directory={output_directory}",
+            rel_target,
+        ]
+    return [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        f"-output-directory={output_directory}",
+        rel_target,
+    ]
 
 
 def _parse_log_text(text: str) -> tuple[list[str], list[str], list[str]]:
