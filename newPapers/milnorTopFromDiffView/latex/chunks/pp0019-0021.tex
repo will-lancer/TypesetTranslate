@@ -1,0 +1,112 @@
+% PDF page 19
+
+As before, the derivative operation has two fundamental properties:
+
+1. (Chain rule). If $f : M \to N$ and $g : N \to P$ are smooth, with $f(x) = y$, then
+\[
+d(g \circ f)_x = dg_y \circ df_x.
+\]
+
+2. If $I$ is the identity map of $M$, then $dI_x$ is the identity map of $TM_x$. More generally, if $M \subset N$ with inclusion map $i$, then $TM_x \subset TN_x$ with inclusion map $di_x$. (Compare Figure~\ref{fig:milnor-02}.)
+
+\begin{figure}[htbp]
+\centering
+\setcounter{figure}{1}%
+\IfFileExists{output/figures/fig02.tex}{\input{output/figures/fig02.tex}}{\input{figures/fig02.tex}}
+\caption{The tangent space of a submanifold.}\label{fig:milnor-02}
+\end{figure}
+
+The proofs are straightforward.
+
+As before, these two properties lead to the following:
+
+\textsc{Assertion.} If $f : M \to N$ is a diffeomorphism, then $df_x : TM_x \to TN_y$ is an isomorphism of vector spaces. In particular the dimension of $M$ must be equal to the dimension of $N$.
+
+\subsection{Regular Values}
+
+Let $f : M \to N$ be a smooth map between manifolds of the same dimension.\footnote{This restriction will be removed in \S\ref{sec:sard}.} We say that $x \in M$ is a \textit{regular point} of $f$ if the derivative
+
+
+% PDF page 20
+
+$df_x$ is nonsingular. In this case it follows from the inverse function theorem that $f$ maps a neighborhood of $x$ in $M$ diffeomorphically onto an open set in $N$. The point $y \in N$ is called a \textit{regular value} if $f^{-1}(y)$ contains only regular points.
+
+If $df_x$ is singular, then $x$ is called a \textit{critical point} of $f$, and the image $f(x)$ is called a \textit{critical value}. Thus each $y \in N$ is either a critical value or a regular value according as $f^{-1}(y)$ does or does not contain a critical point.
+
+Observe that if $M$ is compact and $y \in N$ is a regular value, then $f^{-1}(y)$ is a finite set (possibly empty). For $f^{-1}(y)$ is in any case compact, being a closed subset of the compact space $M$; and $f^{-1}(y)$ is discrete, since $f$ is one-one in a neighborhood of each $x \in f^{-1}(y)$.
+
+For a smooth $f : M \to N$, with $M$ compact, and a regular value $y \in N$, we define $\#f^{-1}(y)$ to be the number of points in $f^{-1}(y)$. The first observation to be made about $\#f^{-1}(y)$ is that it is locally constant as a function of $y$ (where $y$ ranges only through regular values!). I.e., there is a neighborhood $V \subset N$ of $y$ such that $\#f^{-1}(y') = \#f^{-1}(y)$ for any $y' \in V$. [Let $x_1, \cdots, x_k$ be the points of $f^{-1}(y)$, and choose pairwise disjoint neighborhoods $U_1, \ldots, U_k$ of these which are mapped diffeomorphically onto neighborhoods $V_1, \cdots, V_k$ in $N$. We may then take
+\[
+V = V_1 \cap V_2 \cap \cdots \cap V_k - f(M - U_1 - \cdots - U_k).
+\]
+]
+
+\subsection{The Fundamental Theorem of Algebra}
+
+As an application of these notions, we prove the fundamental theorem of algebra: every nonconstant complex polynomial $P(z)$ must have a zero.
+
+For the proof it is first necessary to pass from the plane of complex numbers to a compact manifold. Consider the unit sphere $S^2 \subset \mathbb{R}^{3}$ and the stereographic projection
+\[
+h_+ : S^2 - \{(0, 0, 1)\} \to \mathbb{R}^{2} \times 0 \subset \mathbb{R}^{3}
+\]
+from the ``north pole'' $(0, 0, 1)$ of $S^2$. (See Figure~\ref{fig:milnor-03}.) We will identify $\mathbb{R}^{2} \times 0$ with the plane of complex numbers. The polynomial map $P$ from $\mathbb{R}^{2} \times 0$ itself corresponds to a map $f$ from $S^2$ to itself; where
+\[
+f(x) = h_+^{-1} P h_+(x) \quad \text{for} \quad x \neq (0, 0, 1)
+\]
+\[
+f(0, 0, 1) = (0, 0, 1).
+\]
+It is well known that this resulting map $f$ is smooth, even in a neighborhood of the north pole.
+
+
+% PDF page 21
+
+\begin{figure}[htbp]
+\centering
+\setcounter{figure}{2}%
+\IfFileExists{output/figures/fig03.tex}{\input{output/figures/fig03.tex}}{\input{figures/fig03.tex}}
+\caption{Stereographic projection.}\label{fig:milnor-03}
+\end{figure}
+
+To see this we introduce the stereographic projection $h_-$ from the south pole $(0,0,-1)$ and set
+\[
+Q(z) = h_- \circ f \circ h_+^{-1}(z).
+\]
+Note, by elementary geometry, that
+\[
+h_+ \circ h_-^{-1}(z) = z/|z|^2 = 1/\bar{z}.
+\]
+Now if $P(z) = a_0 z^n + a_1 z^{n-1} + \cdots + a_n$, with $a_0 \neq 0$, then a short computation shows that
+\[
+Q(z) = z^n/(\bar{a}_0 + \bar{a}_1 z + \cdots + \bar{a}_n z^n).
+\]
+Thus $Q$ is smooth in a neighborhood of $0$, and it follows that $f = h_+^{-1} \circ Q \circ h_-$ is smooth in a neighborhood of $(0,0,1)$.
+
+Next observe that $f$ has only a finite number of critical points; for $P$ fails to be a local diffeomorphism only at the zeros of the derivative polynomial $P'(z) = \sum a_{n-j} j z^{j-1}$, and there are only finitely many zeros since $P'$ is not identically zero. The set of regular values of $f$, being a sphere with finitely many points removed, is therefore connected. Hence the locally constant function $\# f^{-1}(y)$ must actually be constant on this set. Since $\# f^{-1}(y)$ can't be zero everywhere, we conclude that it is zero nowhere. Thus $f$ is an onto mapping, and the polynomial $P$ must have a zero.
+
+\subsection*{Problems}
+
+\paragraph{Problem 8.}
+Given smooth manifolds $M \subset \mathbb{R}^k$ and $N \subset \mathbb{R}^l$, show that the tangent space $T(M \times N)_{(x,y)}$ is equal to $TM_x \times TN_y$.
+
+\paragraph{Problem 9.}
+The graph $\Gamma$ of a smooth map $f : M \to N$ is defined to be the set of all $(x, y) \in M \times N$ with $f(x) = y$. Show that $\Gamma$ is a smooth manifold and that the tangent space
+\[
+T\Gamma_{(x,y)} \subset TM_x \times TN_y
+\]
+is equal to the graph of the linear map $df_x$.
+
+\paragraph{Problem 10.}
+Given $M \subset \mathbb{R}^k$, show that the \emph{tangent bundle space}
+\[
+TM = \{(x, v) \in M \times \mathbb{R}^k \mid v \in TM_x\}
+\]
+is also a smooth manifold. Show that any smooth map $f : M \to N$ gives rise to a smooth map
+\[
+df : TM \to TN
+\]
+where
+\[
+d(\text{identity}) = \text{identity}, \quad d(g \circ f) = (dg) \circ (df).
+\]
+

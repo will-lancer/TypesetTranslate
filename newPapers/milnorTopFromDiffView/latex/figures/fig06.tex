@@ -1,0 +1,26 @@
+% Figure 6: boundary points of F^{-1}(y) in the cylinder M x [0,1]
+\begin{tikzpicture}[line cap=round,line join=round,>=Stealth,scale=0.9]
+  % cylinder
+  \draw[thick] (-2.8,0.85) -- (2.8,0.85);
+  \draw[thick] (-2.8,-0.85) -- (2.8,-0.85);
+  \draw[thick] (-2.8,0) ellipse (0.3 and 0.85);
+  \draw[thick] (2.8,0.85) arc (90:-90:0.3 and 0.85);
+  \draw[thick,dashed] (2.8,0.85) arc (90:270:0.3 and 0.85);
+  % arc with both endpoints on the left face
+  \draw[thick] (-2.52,0.42) .. controls (-1.4,0.55) and (-0.6,0.45) .. (-0.35,0.1)
+    .. controls (-0.6,-0.3) and (-1.6,-0.25) .. (-2.55,-0.12);
+  \fill (-2.52,0.42) circle (1.6pt);
+  \fill (-2.55,-0.12) circle (1.6pt);
+  % arc with both endpoints on the right face
+  \draw[thick] (2.62,0.5) .. controls (1.6,0.6) and (0.8,0.35) .. (0.75,-0.05)
+    .. controls (0.9,-0.5) and (1.9,-0.55) .. (2.66,-0.35);
+  \fill (2.62,0.5) circle (1.6pt);
+  \fill (2.66,-0.35) circle (1.6pt);
+  % closed component in the interior
+  \draw[thick] plot[smooth cycle,tension=0.9] coordinates
+    {(-0.1,0.42) (0.35,0.3) (0.45,0.52) (0.05,0.62)};
+  % label
+  \node at (0.1,-0.62) {\footnotesize $F^{-1}(y)$};
+  \node[below] at (-2.8,-1.0) {$M \times 0$};
+  \node[below] at (2.8,-1.0) {$M \times 1$};
+\end{tikzpicture}

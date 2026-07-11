@@ -1,0 +1,99 @@
+% PDF page 46
+
+Assuming Lemma 1, we can define the concept of index for a vector field $w$ on an arbitrary manifold $M$ as follows: If $g : U \to M$ is a parametrization of a neighborhood of $z$ in $M$, then the \emph{index} $\iota$ of $w$ at $z$ is defined to be equal to the index of the corresponding vector field $dg^{-1} \circ w \circ g$ on $U$ at the zero $g^{-1}(z)$. It clearly will follow from Lemma 1 that $\iota$ is well defined.
+
+The proof of Lemma 1 will be based on the proof of a quite different result:
+
+\noindent\textbf{Lemma 2.} \textit{Any orientation preserving diffeomorphism $f$ of $\mathbb{R}^m$ is smoothly isotopic to the identity.}
+
+(In contrast, for many values of $m$ there exists an orientation preserving diffeomorphism of the sphere $S^m$ which is not smoothly isotopic to the identity. See [20, p.~404].)
+
+\noindent\textit{Proof of Lemma 2.}
+We may assume that $f(0) = 0$. Since the derivative at $0$ can be defined by
+\[
+df_0(x) = \lim_{t \to 0} f(tx)/t,
+\]
+it is natural to define an isotopy
+\[
+F : \mathbb{R}^m \times [0, 1] \to \mathbb{R}^m
+\]
+by the formula
+\[
+F(x, t) = f(tx)/t \quad \text{for } 0 < t \leq 1,
+\]
+\[
+F(x, 0) = df_0(x).
+\]
+To prove that $F$ is smooth, even as $t \to 0$, we write $f$ in the form\footnote{See for example [22, p.~5].}
+\[
+f(x) = x_1 g_1(x) + \cdots + x_m g_m(x),
+\]
+where $g_1, \ldots, g_m$ are suitable smooth functions, and note that
+\[
+F(x, t) = x_1 g_1(tx) + \cdots + x_m g_m(tx)
+\]
+for all values of $t$. Thus $f$ is isotopic to the linear mapping $df_0$, which is clearly isotopic to the identity. This proves Lemma 2.
+
+\noindent\textit{Proof of Lemma 1.}
+We may assume that $z = f(z) = 0$ and that $U$ is convex. If $f$ preserves orientation, then, proceeding exactly as above,
+
+
+% PDF page 47
+
+we can construct a one-parameter family of embeddings $f_t : U \to \mathbb{R}^m$ with $f_0 = \text{identity}$, $f_1 = f$, and $f_t(0) = 0$ for all $t$. Let $v_t$ denote the vector field $df_t \circ v \circ f_t^{-1}$ on $f_t(U)$, which corresponds to $v$ on $U$. Since the index of $v = v_0$ at $0$ equals the index of $v' = v_1$ at $0$, this proves Lemma 1 for orientation-preserving diffeomorphisms.
+
+If $f$ is orientation-reversing, consider a reflection $\rho$ and the vector field
+\[
+v' = \rho \circ v \circ \rho^{-1},
+\]
+so the associated function $\bar{v}'(x) = v'(x) / \|v'(x)\|$ on the $\epsilon$-sphere satisfies
+\[
+\bar{v}' = \rho \circ \bar{v} \circ \rho^{-1}.
+\]
+Evidently the degree of $\bar{v}'$ equals the degree of $\bar{v}$, which completes the proof of Lemma 1.
+
+Let $M$ be a compact manifold and $w$ a smooth vector field on $M$ with isolated zeros. If $M$ has a boundary, then $w$ is required to point outward at all boundary points.
+
+\noindent\textbf{Poincar\'e--Hopf Theorem.} \textit{The sum $\sum \iota$ of the indices at the zeros of such a vector field is equal to the Euler number}\footnote{Here $H_i(M)$ denotes the $i$-th homology group of $M$. This will be our first and last reference to homology theory.}
+\[
+\chi(M) = \sum_{i=0}^m (-1)^i \operatorname{rank} H_i(M).
+\]
+\textit{In particular this index sum is a topological invariant of $M$: it does not depend on the particular choice of vector field.}
+
+(A 2-dimensional version of this theorem was proved by Poincar\'e in 1885. The full theorem was proved by Hopf [14] in 1926 after earlier partial results by Brouwer and Hadamard.)
+
+We will prove part of this theorem, and sketch a proof of the rest. First consider the special case of a compact domain in $\mathbb{R}^m$.
+
+Let $X \subset \mathbb{R}^m$ be a compact $m$-manifold with boundary. The \emph{Gauss mapping}
+\[
+g : \partial X \to S^{m-1}
+\]
+assigns to each $x \in \partial X$ the outward unit normal vector at $x$.
+
+
+% PDF page 48
+
+\noindent\textbf{Lemma 3} (Hopf)\textbf{.} \textit{If $v : X \to \mathbb{R}^m$ is a smooth vector field with isolated zeros, and if $v$ points out of $X$ along the boundary, then the index sum $\sum \iota$ is equal to the degree of the Gauss mapping from $\partial X$ to $S^{m-1}$. In particular, $\sum \iota$ does not depend on the choice of $v$.}
+
+For example, if a vector field on the disk $D^m$ points outward along the boundary, then $\sum \iota = +1$. (Compare Figure~\ref{fig:milnor-13}.)
+
+\begin{figure}[htbp]
+\centering
+\setcounter{figure}{12}%
+\IfFileExists{output/figures/fig13.tex}{\input{output/figures/fig13.tex}}{\input{figures/fig13.tex}}
+\caption{An example with index sum $+1$.}\label{fig:milnor-13}
+\end{figure}
+
+\noindent\textit{Proof.}
+Removing an $\epsilon$-ball around each zero, we obtain a new manifold with boundary. The function $\bar{v}(x) = v(x)/\|v(x)\|$ maps this manifold into $S^{m-1}$. Hence the sum of the degrees of $\bar{v}$ restricted to the various boundary components is zero. But $\bar{v} \mid \partial X$ is homotopic to $g$, and the degrees on the other boundary components add up to $-\sum \iota$. (The minus sign occurs since each small sphere gets the wrong orientation.) Therefore
+\[
+\deg(g) - \sum \iota = 0
+\]
+as required.
+
+\noindent\textbf{Remark.} The degree of $g$ is also known as the ``curvatura integra'' of $\partial X$, since it can be expressed as a constant times the integral over $\partial X$ of the Gaussian curvature. This integer is of course equal to the Euler number of $X$. For $m$ odd it is equal to half the Euler number of $\partial X$.
+
+Before extending this result to other manifolds, some more preliminaries are needed.
+
+It is natural to try to compute the index of a vector field $v$ at a zero $z$
+
