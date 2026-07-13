@@ -23,5 +23,3 @@ Completed:
 
 To-do:
 * Weinberg's QFT textbooks
-
-Note that I'm also working on a program where it just does this for you.
