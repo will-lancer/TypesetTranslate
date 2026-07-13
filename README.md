@@ -14,9 +14,14 @@ The operational workflow for the automation layer is documented in
 
 Completed:
 * Witten's *Introduction to Supersymmetry*
+* Milnor's *Topology from the Differentiable Viewpoint*
+    * Note on the above: I moved the exercises to immediately follow the chapter
+      that tests their content instead of having them all at the end.
+* Atiyah and MacDonald's *Introduction to Commutative Algebra*
+    * I have an edited copy and an unedited one in the repo. The edited
+      one adds more examples and pedagogy to the text.
 
 To-do:
-* Milnor's *Topology from a Differentiable Viewpoint*
 * Weinberg's QFT textbooks
 
 Note that I'm also working on a program where it just does this for you.
