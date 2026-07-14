@@ -14,6 +14,18 @@ That principle matters because transcription work is fragile. The wording,
 equations, figure numbering, and footnotes must stay exact, while the LaTeX
 implementation becomes modernized and modular.
 
+Two definitions are important throughout this document:
+
+- **source page** means the physical PDF page, starting at `1`; it does not mean
+  the printed roman or arabic page number visible in the scan
+- **faithful** means that visible wording and mathematics are preserved; OCR is
+  only an aid, and the rendered page image is authoritative
+
+Modernizing LaTeX does not authorize paraphrasing, silent mathematical
+correction, invented figure detail, or omission of front matter. It does allow
+better environments, vector diagrams, and removal of scan-induced line-wrap
+hyphenation.
+
 ## Repository-level layout
 
 At the repository root:
@@ -71,12 +83,42 @@ number of temporary files grows quickly once you have hundreds of pages.
 
 The workflow is intentionally split into stages.
 
+### 0. Preflight
+
+Do not initialize a large workspace until the input, tools, and execution
+backend are understood.
+
+Check:
+
+1. the PDF opens, is not encrypted, and has a plausible physical page count
+2. whether the source is a paper or a book
+3. `pdfinfo`, `pdftoppm`, and either `latexmk` or `pdflatex` are available
+4. enough disk space exists for 200-DPI PNGs and compile artifacts
+5. the slug does not collide with an existing workspace or export
+6. the selected runner can actually complete the work
+
+Runner behavior matters:
+
+- `manifest` writes contracts but does not submit jobs; external or local agents
+  must write the output files, and `paperbot poll` discovers those files
+- `mock` writes placeholders and is only for testing the orchestration
+- `openai` requires rendered page images and `OPENAI_API_KEY`; verify credentials,
+  model choice, network access, and expected image-token cost before dispatch
+
+The `transcription_workers` and `figure_workers` settings describe the intended
+worker pool; they do not themselves create local parallel workers.
+
 ### 1. Ingest
 
 Command:
 
 ```bash
-paperbot init origPapers/<file>.pdf --slug <slug> --workspace-root dirs
+paperbot init origPapers/<file>.pdf \
+  --slug <slug> \
+  --workspace-root dirs \
+  --document-kind <paper-or-book> \
+  --runner <manifest-or-openai> \
+  --title "<title>"
 ```
 
 What happens:
@@ -107,6 +149,20 @@ Command:
 paperbot plan dirs/<slug>
 ```
 
+#### Page-completeness gate
+
+Planning is not complete until all of the following numbers agree:
+
+- the `pdfinfo` page count
+- the configured `page_count`
+- entries in `artifacts/page-manifest.json`
+- `artifacts/pages/page-*.png` files
+
+This is a hard gate. The renderer currently skips rendering when it finds any
+existing page PNG, so an interrupted partial render can otherwise look ready.
+If counts differ, treat the page set as incomplete and regenerate it before
+transcription. Do not rely only on the `page_images_ready` boolean.
+
 ### 3. Chunk Planning
 
 Chunk jobs are the core transcription unit.
@@ -120,6 +176,17 @@ Why the defaults differ:
 
 - papers often have more whitespace and fewer continuous paragraphs
 - books are denser and accumulate uncertainty faster
+
+These are conservative implementation defaults, not universal targets. In
+practice, use `5` pages for very dense mathematics, about `8` for a typical
+clean book scan, and up to `10` for sparse prose or front matter. Larger chunks
+reduce boundary risk and orchestration overhead; smaller chunks reduce agent
+fatigue and make uncertainty easier to isolate. Choose the size after inspecting
+representative pages, then pass it explicitly with `--chunk-size`.
+
+If the chunk size changes after planning, regenerate prompts, manifests, check
+wrappers, state, and `master.tex` before any transcription starts. Do not leave
+stale job files for the old ranges in place.
 
 Outputs:
 
@@ -145,13 +212,46 @@ The agent prompt requires:
 - explicit `VERIFY:` comments for uncertainty
 - explicit `TODO FIGURE:` placeholders instead of guessed figures
 
+The agent should use the source OCR layer only for speed. It must inspect the
+page image for equations, accents, German letters, subscripts, superscripts,
+punctuation, diagrams, and words that OCR commonly corrupts.
+
 No transcription agent should edit:
 
 - `master.tex`
 - any figure file
 - another chunk
 
-### 5. Figure Discovery
+When a runner or local agent finishes a chunk:
+
+1. verify that the assigned output file exists and starts with the required
+   page/figure/uncertainty header
+2. compile its check wrapper
+3. render the check PDF and inspect it for clipping, overlaps, and bad glyphs
+4. fix only that chunk's syntax or record a `VERIFY:` uncertainty
+5. run `paperbot poll ... --job-type transcription` to synchronize state
+
+Do not mark a chunk complete merely because a file appeared while its writer is
+still editing or validating it.
+
+### 5. Cross-boundary QA
+
+Chunk compilation cannot detect dropped or duplicated prose at a chunk join.
+After transcription, compare every adjacent pair against the source, especially
+joins that split a sentence, proof, equation, exercise, footnote, or chapter.
+
+The boundary pass is read-only by default. It should report:
+
+- missing or duplicated words
+- broken continuations
+- a display or diagram divided incorrectly across files
+- repeated scan hyphenation
+- inconsistent notation introduced by different agents
+
+Only the owner or orchestrator should apply a reported correction, and the
+affected check wrapper must then be recompiled.
+
+### 6. Figure Discovery
 
 Once chunk files exist, the orchestrator can scan them for figure placeholders.
 
@@ -176,7 +276,26 @@ parses chunk files and emits figure jobs:
 This keeps figure work downstream from transcription, which is safer than
 trying to do prose, equations, and figures in one pass across the whole work.
 
-### 6. Master Assembly
+#### Unnumbered figures and diagrams
+
+Automatic discovery currently recognizes only the numbered contract above.
+Logos and unnumbered commutative diagrams will not produce jobs. Never invent a
+figure number just to satisfy the parser.
+
+For an unnumbered visual, either typeset it directly in the owning chunk or use
+an explicit figure-only assignment:
+
+1. the figure agent writes exactly one file in `output/figures/`
+2. it compiles and visually checks that fragment against the source page
+3. the orchestrator replaces the placeholder with an `\input{}` at the original
+   position
+4. the owning chunk check is compiled again
+
+Before moving on, search all chunks for both `TODO FIGURE` and more general
+`TODO` comments. Structural verification only counts placeholders matching the
+numbered parser contract.
+
+### 7. Master Assembly
 
 The master document is assembled by `\input{}` lines rather than by copying all
 chunk text into one file.
@@ -191,12 +310,20 @@ Current location:
 
 - `output/master.tex`
 
-### 7. Verification
+The generated master is a starting point, not proof of a polished title page.
+Inspect it for generic `TODO` metadata, an inappropriate document style, and a
+generated `\maketitle` that duplicates transcribed historical front matter.
+Use the source's real title and authors, and avoid showing the same title page
+twice. Re-run planning only before these deliberate master edits, because
+planning deterministically regenerates `master.tex`.
 
-The verification stage now has two layers:
+### 8. Verification
+
+The verification stage has three layers:
 
 - structural verification
 - compile verification
+- full-document visual verification
 
 Command:
 
@@ -222,6 +349,12 @@ The report currently checks:
 For historical documents, this narrow verification model is much safer than
 telling one large agent to "fix the project."
 
+Structural verification does not compare the transcription with the scan. It
+also scans the text `VERIFY:` case-insensitively anywhere in a file, so ordinary
+source prose such as "easy to verify:" can be a false positive. Inspect every
+match; preserve the visible source wording while distinguishing it from an
+actual uncertainty marker.
+
 Compile verification command:
 
 ```bash
@@ -240,6 +373,45 @@ This stage compiles:
 
 The compile report records missing files, extracted LaTeX errors, warnings, and
 which chunk check wrapper failed.
+
+A compile pass is complete only when the master and every planned chunk check
+report success, with no missing inputs. Review warnings rather than discarding
+them blindly. Duplicate PDF anchors can result from faithfully preserved source
+equation numbers, while overfull boxes may signal genuinely clipped mathematics.
+
+#### Visual verification
+
+After the final meaningful edit:
+
+1. render the latest `output/master.pdf` to PNGs
+2. inspect every page, using contact sheets for coverage and full-resolution
+   pages for suspected defects
+3. check the title/front matter, section transitions, diagrams, dense equations,
+   page numbers, final index, and first/last pages
+4. reject clipped text, overlaps, broken tables, black replacement glyphs,
+   malformed diagrams, visible `TODO` text, and unreadable type
+
+Do not treat successful LaTeX compilation as visual approval.
+
+### 9. Export And Portability Check
+
+Command:
+
+```bash
+paperbot export dirs/<slug> --dest-root newPapers --include-pdf
+```
+
+Export replaces `newPapers/<slug>` if it already exists. Confirm that this is
+intended before running it.
+
+The export is not finished until the exported copy is self-contained:
+
+1. inspect `export-manifest.json` for warnings
+2. confirm `latex/master.tex` uses exported `chunks/` and `figures/` paths
+3. compile `newPapers/<slug>/latex/master.tex` from the exported `latex/`
+   directory, preferably writing test artifacts to a temporary directory
+4. compare the exported PDF with the verified workspace PDF when both are
+   expected to be identical
 
 ## State files
 
@@ -321,21 +493,30 @@ What still needs to be built:
 - bibliography and table-specialized agents
 - richer book-specific heuristics for adaptive chunking
 - automated repair passes from compile findings
+- automatic recovery from partial page rendering
+- first-class jobs for unnumbered figures and chapter-local figure numbering
+- automated scan-to-transcription and cross-boundary fidelity checks
+- document-kind-aware master templates and title-page handling
 
 ## Recommended operating procedure
 
 For a new project:
 
-1. put the source PDF in `origPapers/`
-2. run `paperbot init ...`
-3. run `paperbot plan dirs/<slug>`
-4. run `paperbot dispatch dirs/<slug>`
-5. run `paperbot poll dirs/<slug>` until chunk jobs complete
-6. refresh figure jobs after chunk files start appearing
-7. dispatch and poll figure jobs
-8. run `paperbot verify dirs/<slug>`
-9. run `paperbot verify-compile dirs/<slug>`
-10. export the cleaned result into `newPapers/`
+1. put the source PDF in `origPapers/` and run the preflight checks
+2. initialize with explicit document kind, runner, slug, and title
+3. plan with an inspected, explicit chunk size
+4. confirm page-count and rendered-image completeness
+5. dispatch jobs, or assign manifest jobs to isolated local agents
+6. poll until every transcription job has finished its check/render pass
+7. perform read-only QA across every chunk boundary
+8. refresh numbered figure jobs and explicitly handle unnumbered visuals
+9. inspect and finalize `master.tex`
+10. run structural verification until no real uncertainty or placeholder remains
+11. compile the master and every chunk check successfully
+12. render and visually inspect the complete final PDF
+13. export with the PDF into `newPapers/`
+14. compile the exported copy from its destination
+15. remove temporary render and compile artifacts
 
 For best results:
 
@@ -344,5 +525,7 @@ For best results:
 - never allow multiple agents to edit the same file
 - use `VERIFY:` comments instead of guessing
 - compile early and often
+- treat page images, not OCR, as the source of truth
+- verify boundaries and exported portability explicitly
 
 That is the workflow the current codebase is trying to formalize.
