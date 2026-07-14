@@ -1,0 +1,285 @@
+Transcribe Chapter 7, “The Canonical Formalism,” of Weinberg, The Quantum Theory of Fields, Volume I.
+
+Repository:
+  /Users/wlancer/Coding_Projects/TypesetTranslate
+
+Source PDF:
+  origPapers/weinberg_qft1.pdf
+
+Target project:
+  newPapers/weinberg_vol1
+
+SOURCE BOUNDARIES
+
+Chapter 7 covers physical PDF pages 315–361, corresponding to printed pages 292–338.
+
+- Begin with the Chapter 7 title and introduction on physical page 315.
+- Include all seven sections, the Appendix “Dirac Brackets from Canonical Commutators,” all seven Problems, and References 1–6.
+- Stop after Reference 6 on physical page 361.
+- Do not include physical page 362, which begins Chapter 8.
+
+PREPARATION
+
+Before taking any transcription action, read these files completely:
+
+1. typesetTranslate/WORKFLOW.md
+2. newPapers/weinberg_vol1/NOTATION.md
+3. newPapers/weinberg_vol1/latex/chapters/chapter07.tex
+4. newPapers/weinberg_vol1/latex/chapters/chapter04.tex
+5. newPapers/weinberg_vol1/latex/checks/chapter04-check.tex
+6. newPapers/weinberg_vol1/latex/checks/preamble-ch03.tex
+
+Also inspect completed Chapters 1–3 where useful for established project conventions. Do not assume unfinished Chapters 5–6 or other structural scaffolds are authoritative.
+
+Use the PDF workflow. Render the assigned source pages and inspect the page images directly. OCR may accelerate prose recovery, but the rendered scan is authoritative.
+
+Use apply_patch for textual file edits. Preserve unrelated user changes.
+
+MULTI-AGENT REQUIREMENT
+
+You must spin up multiple agents. Give every agent exclusive writable ownership of its assigned files, with read-only access to adjoining source pages for boundary context.
+
+Create this modular layout:
+
+  newPapers/weinberg_vol1/latex/chapters/chapter07/
+    sec71.tex
+    sec72.tex
+    sec73.tex
+    sec74.tex
+    sec75.tex
+    sec76.tex
+    sec77.tex
+    appendix.tex
+    backmatter.tex
+
+Suggested assignments:
+
+- Agent 1: Chapter introduction and §§7.1–7.2
+  - sec71.tex: physical pages 315–320
+  - sec72.tex: physical pages 321–328
+
+- Agent 2: §§7.3–7.4
+  - sec73.tex: physical pages 329–336
+  - sec74.tex: physical pages 337–340
+
+- Agent 3: §§7.5–7.7
+  - sec75.tex: physical pages 341–347
+  - sec76.tex: physical pages 348–354
+  - sec77.tex: physical pages 354–355
+
+- Primary agent: Appendix, chapter back matter, and integration
+  - appendix.tex: physical pages 355–360
+  - backmatter.tex: physical pages 360–361
+  - All seven Problems
+  - Complete References 1–6
+  - Assemble chapter07.tex
+  - Perform cross-boundary and chapter-wide notation QA
+
+Physical pages 354, 355, and 360 contain semantic boundaries within a page:
+
+- On physical page 354, sec76.tex owns the conclusion of §7.6 through Eq. (7.6.30) and its following paragraph; sec77.tex begins with the §7.7 heading.
+- On physical page 355, sec77.tex owns the end of §7.7 through the paragraph immediately before the Appendix heading; appendix.tex begins with the Appendix heading.
+- On physical page 360, appendix.tex owns the conclusion of the Appendix through Eq. (7.A.30) and its following sentence; backmatter.tex begins with the Problems heading.
+
+Agents may inspect neighboring pages for context but must edit only their assigned files. Each source passage must have exactly one writable owner.
+
+Once an agent reports a chunk source-reviewed and compile-clean, freeze it. The primary agent owns subsequent integration corrections.
+
+SECTION MAP
+
+- Chapter title and introduction: physical pages 315–316
+- §7.1 “Canonical Variables”: physical pages 316–320
+- §7.2 “The Lagrangian Formalism”: physical pages 321–328
+- §7.3 “Global Symmetries”: physical pages 329–336
+- §7.4 “Lorentz Invariance”: physical pages 337–340
+- §7.5 “Transition to Interaction Picture: Examples”: physical pages 341–347
+- §7.6 “Constraints and Dirac Brackets”: physical pages 348–354
+- §7.7 “Field Redefinitions and Redundant Couplings”: physical pages 354–355
+- Appendix “Dirac Brackets from Canonical Commutators”: physical pages 355–360
+- Problems: physical page 360
+- References: physical page 361
+
+Several headings begin partway through a page. Inspect both sides of every boundary and avoid omitted or duplicated prose.
+
+ASSEMBLY
+
+Replace the current flat scaffold in chapter07.tex with modular inputs:
+
+  \section{The Canonical Formalism}
+  \input{chapters/chapter07/sec71.tex}
+  \input{chapters/chapter07/sec72.tex}
+  \input{chapters/chapter07/sec73.tex}
+  \input{chapters/chapter07/sec74.tex}
+  \input{chapters/chapter07/sec75.tex}
+  \input{chapters/chapter07/sec76.tex}
+  \input{chapters/chapter07/sec77.tex}
+  \input{chapters/chapter07/appendix.tex}
+  \input{chapters/chapter07/backmatter.tex}
+
+Place the introductory prose at the beginning of sec71.tex before the §7.1 heading. Do not duplicate subsection or Appendix headings between chapter07.tex and the chunk files.
+
+TRANSCRIPTION REQUIREMENTS
+
+- Preserve all visible wording and mathematical content.
+- Preserve every equation number exactly, including the Appendix’s (7.A.n) numbering.
+- Preserve every definition, sign, phase, normalization, index placement, ordering, and transformation law.
+- Preserve all footnote content.
+- Include all seven Problems.
+- Include References 1–6 completely.
+- Remove only scan-induced line-wrap hyphenation.
+- Do not paraphrase.
+- Do not silently correct suspicious mathematics or apparent source errors.
+- Record genuine semantic uncertainty using `VERIFY:`.
+- Use `TODO FIGURE:` for visual material that cannot be reconstructed faithfully.
+- Do not invent missing diagram, tensor, or operator details.
+- Compare every adjacent chunk against the source for missing or duplicated prose.
+
+CHAPTER 7 HIGH-RISK MATERIAL
+
+Visually verify these especially carefully:
+
+- canonical fields and their conjugate momenta
+- equal-time commutators versus anticommutators, with anticommutators written as `\{A,B\}` rather than `[A,B]_+`
+- commutators, Poisson brackets, and Dirac brackets, including the subscripts `P` and `D`
+- bosonic versus fermionic signs and operator ordering
+- left and right derivatives involving Dirac fields
+- dots denoting time derivatives versus Lorentz-index zero components
+- real scalar, complex scalar, vector, and Dirac-field Hamiltonians and Lagrangians
+- passage between Hamiltonian, Lagrangian, Heisenberg, and interaction-picture variables
+- derivative couplings and non-covariant interaction terms
+- Euler–Lagrange equations, integrations by parts, and auxiliary fields
+- Noether currents and charges
+- canonical and symmetric energy–momentum tensors
+- Lorentz currents, generators, spin terms, and the Belinfante tensor
+- primary versus secondary constraints
+- first-class versus second-class constraints
+- constraint matrices `C_{NM}`, their inverses, compound indices, and spatial integrations
+- the Maskawa–Nakajima construction and canonical transformations
+- field redefinitions, functional derivatives, and redundant couplings
+- the Appendix’s type A and type B theories
+- equation labels and cross-references, especially `(7.6.n)`, `(7.7.n)`, and `(7.A.n)`
+- factors and signs involving `i`, `1/2`, masses, delta functions, metric tensors, and derivatives
+- primes, dots, daggers, transposes, complex conjugates, superscripts, subscripts, and index placement
+
+Do not trust OCR for Greek letters, script letters, calligraphic symbols, dotted variables, dagger symbols, bracket subscripts, matrix inverses, functional derivatives, or signs.
+
+WEINBERG NOTATION RULES
+
+Apply newPapers/weinberg_vol1/NOTATION.md consistently:
+
+- Use blackboard bold for standard sets, spaces, and discrete groups:
+  `\mathbb{R}`, `\mathbb{C}`, `\mathbb{Z}`, `\mathbb{Z}_2`, etc.
+- Use `\mathbf{1}` for identity operators and matrices.
+- Never use `\mathbb{1}`.
+- Convert source-style superscript paper references to bracketed inline references:
+  `Casimir~[1]`, `Belinfante~[2]`, `Dirac~[5]`, `Refs.~[5,6]`.
+- Place citations before terminal punctuation.
+- Use ordinary sequentially numbered `\footnote{...}` commands.
+- Do not reproduce `*`, `**`, or dagger footnote markers.
+- Do not redefine `\thefootnote` or rewind the footnote counter.
+- For the starred §7.7 title note, use an ordinary numbered `\footnotemark` and matching `\footnotetext`.
+- Do not retain a literal star in the §7.7 title merely to imitate the source.
+- The second note on physical page 354 and all Appendix notes must continue as ordinary sequentially numbered footnotes.
+- Preserve Weinberg’s mostly-plus metric and associated gamma-matrix conventions.
+- Follow NOTATION.md for Dirac adjoints, state notation, field notation, interaction Hamiltonians, and creation/annihilation operators.
+- Write anticommutators with braces, `\{A,B\}`. Do not use Weinberg’s `[A,B]_+` notation.
+- When the source’s `V`, `V(t)`, or Hamiltonian-density notation semantically denotes the interaction, modernize it according to NOTATION.md; do not mechanically replace unrelated vector fields or variables named `V`.
+- Use `\mathcal{P}` and `\mathcal{T}` only for spacetime inversion matrices and preserve the project’s distinction between spacetime transformations and Hilbert-space operators wherever relevant.
+
+Do not mechanically replace symbols. Determine their semantic role first. In particular, Chapter 7 repeatedly uses similar glyphs for fields, canonical coordinates, momenta, interactions, constraint functions, and matrices.
+
+CANONICAL-BRACKET TERMINOLOGY
+
+Distinguish carefully among:
+
+- operator commutators `[A,B]`
+- fermionic anticommutators `\{A,B\}`; never `[A,B]_+`
+- Poisson brackets `[A,B]_P`
+- Dirac brackets `[A,B]_D`
+- the constraint matrix `C_{NM}=[\chi_N,\chi_M]_P`
+- quantum commutation rules obtained from Dirac brackets
+
+Do not normalize these into a single bracket notation. Preserve every bracket’s mathematical role and all associated factors of `i`.
+
+VERIFICATION
+
+1. Compile each agent’s chunk group before handoff.
+2. Create:
+   newPapers/weinberg_vol1/latex/checks/chapter07-check.tex
+   using chapter04-check.tex and checks/preamble-ch03.tex as models, with the section counter set so the chapter is numbered 7.
+3. Compile the assembled Chapter 7 check PDF.
+4. Compile the full master.tex.
+5. Search Chapter 7 for:
+   - unresolved `VERIFY`
+   - unresolved `TODO FIGURE`
+   - superscript paper citations
+   - symbolic footnote-counter manipulation
+   - literal starred footnote conventions
+   - `\mathbb{1}`
+   - inconsistent modernization of the interaction Hamiltonian
+   - confusion among commutators, anticommutators, Poisson brackets, and Dirac brackets
+   - suspicious OCR corruptions of “Hamiltonian,” “Lagrangian,” “canonical,” “Belinfante,” “Maskawa,” or “Nakajima”
+6. Confirm that all seven sections are present.
+7. Confirm that the Appendix is present and complete through Eq. (7.A.30).
+8. Confirm that all seven Problems are present.
+9. Confirm that References 1–6 are complete.
+10. Render the assembled Chapter 7 PDF.
+11. Inspect every page through contact sheets.
+12. Inspect at full resolution:
+    - every section transition
+    - the §7.7 title footnote and the following note on physical page 354
+    - the §7.7-to-Appendix boundary on physical page 355
+    - dense Noether-current and energy–momentum-tensor equations
+    - interaction-picture examples
+    - all constraint-matrix and Dirac-bracket equations
+    - the Appendix’s type A/type B transition
+    - the Appendix-to-Problems boundary on physical page 360
+    - Problems and References
+13. Update the README to mark Chapter 7 complete.
+14. Export:
+    - newPapers/weinberg_vol1/output/pdf/weinberg-vol1-chapter07.pdf
+    - updated newPapers/weinberg_vol1/output/pdf/weinberg-vol1.pdf
+
+STOPPING RULE
+
+Follow the “98% stop rule” in WORKFLOW.md.
+
+After the first successful full compile and all-page visual coverage pass, allow at most two bounded correction cycles. Every cycle must begin with a concrete failed acceptance gate or source-linked visible defect.
+
+Material blockers include:
+
+- missing or duplicated source text
+- incorrect equations, signs, factors, brackets, ordering, or indices
+- wrong equation numbering
+- omitted footnotes, Appendix content, Problems, or References
+- inconsistent notation that changes semantic meaning
+- unresolved semantic uncertainty
+- clipping, overlap, broken tables, or unreadable glyphs
+- visible placeholders
+
+Do not continue polishing merely because of:
+
+- harmless package warnings
+- PDF-anchor warnings without visible effects
+- microscopic spacing differences
+- harmless line- or page-break differences
+- speculative corrections to Weinberg’s source
+
+Record non-material issues briefly and stop. Do not switch the complete task to Extra High reasoning. A genuinely ambiguous equation may receive a separate, narrowly scoped high-resolution inspection.
+
+FINAL REPORT
+
+Report:
+
+- every file written or updated
+- physical-page and semantic coverage
+- equation ranges covered in each section and in the Appendix
+- confirmation that all seven sections are present
+- confirmation that the Appendix is complete through Eq. (7.A.30)
+- confirmation that all seven Problems are present
+- confirmation that References 1–6 are complete
+- any remaining material uncertainties
+- chunk and full-document compilation results
+- visual-verification result
+- links to the Chapter 7 and full-volume PDFs
+- confirmation that multiple agents were used
