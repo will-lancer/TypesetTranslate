@@ -11,8 +11,10 @@ The workflow is built around one principle:
 > agents coordinate through files and manifests, not through shared chat context.
 
 That principle matters because transcription work is fragile. The wording,
-equations, figure numbering, and footnotes must stay exact, while the LaTeX
-implementation becomes modernized and modular.
+mathematics, numbering, and note content must stay exact, while the LaTeX
+implementation becomes modernized and modular. Presentation choices such as
+citation markers, footnote symbols, and standard mathematical fonts may be
+normalized when the project-specific notation guide explicitly requires it.
 
 Two definitions are important throughout this document:
 
@@ -165,7 +167,11 @@ transcription. Do not rely only on the `page_images_ready` boolean.
 
 ### 3. Chunk Planning
 
-Chunk jobs are the core transcription unit.
+Chunk jobs are the core transcription unit. Page counts are a planning aid, not
+the final ownership boundary: prefer a complete section, appendix, problem set,
+or bibliography whenever a heading begins mid-page. Give neighboring agents a
+small read-only overlap for context, but assign every source passage to exactly
+one writable chunk.
 
 Defaults:
 
@@ -198,6 +204,25 @@ Outputs:
 The chunk file itself is not written by the orchestrator. It is the output
 contract for a transcription agent.
 
+#### Project notation policy
+
+Before dispatch, read or create the project's `NOTATION.md`. It is the binding
+style layer for deliberate modernization and should settle recurring choices
+before several agents encode them differently. Record at least:
+
+- state-vector and operator conventions
+- identity, number-set, group, and representation fonts
+- discrete-symmetry notation
+- citation-marker and bibliography style
+- footnote numbering and symbols
+- source-specific conventions that must remain unchanged
+
+The source remains authoritative for content. The project notation guide is
+authoritative for explicitly approved presentation changes. If a strange
+formula may be a source error, preserve it and log it unless a separate errata
+pass has been authorized; do not spend the finishing pass trying to prove or
+silently repair it.
+
 ### 4. Transcription
 
 Each transcription agent should have exactly one writable target:
@@ -208,7 +233,7 @@ The agent prompt requires:
 
 - exact wording
 - exact equations
-- exact references and footnotes
+- exact reference and footnote content, styled according to `NOTATION.md`
 - explicit `VERIFY:` comments for uncertainty
 - explicit `TODO FIGURE:` placeholders instead of guessed figures
 
@@ -233,6 +258,12 @@ When a runner or local agent finishes a chunk:
 
 Do not mark a chunk complete merely because a file appeared while its writer is
 still editing or validating it.
+
+Each completion report should state the physical source-page range, semantic
+start and end points, equation-number interval, table/figure/problem/reference
+counts where applicable, footnote count, and compile/render status. Once a
+writer declares a chunk source-reviewed and compile-clean, freeze that chunk;
+the integrator owns later cross-chunk corrections.
 
 ### 5. Cross-boundary QA
 
@@ -317,7 +348,41 @@ Use the source's real title and authors, and avoid showing the same title page
 twice. Re-run planning only before these deliberate master edits, because
 planning deterministically regenerates `master.tex`.
 
-### 8. Verification
+### 8. Definition Of Done And The 98% Stop Rule
+
+“98% good” is a stopping policy, not a claim that fidelity can be measured to
+two decimal places. The work is done when all material acceptance gates pass:
+
+1. every assigned source passage is present exactly once
+2. equations, tables, figures, problems, references, and note content are
+   complete and correctly numbered
+3. project notation rules have been applied consistently
+4. chunk checks and the assembled master compile with no missing inputs or
+   LaTeX errors
+5. an all-page visual coverage pass finds no clipping, overlap, broken table,
+   unreadable glyph, or visible placeholder
+6. no unresolved fidelity uncertainty can change wording, mathematics, or
+   meaning
+
+After the first successful full compile and all-page coverage pass, allow at
+most **two bounded correction cycles**. Every cycle must begin with a concrete
+defect tied to a failed gate or source page. Re-render only affected pages and
+joins unless pagination changed. Do not start another search, rebuild, or
+full-document inspection merely to look for something else to polish.
+
+Material blockers include omitted or duplicated source, wrong mathematics,
+wrong numbering, missing back matter, semantic uncertainty, clipping,
+illegibility, and visible placeholders. Deferable polish includes microscopic
+spacing differences, harmless line or page-break changes, benign package or
+PDF-anchor warnings with no visible effect, and speculative corrections to the
+source. Record deferable items briefly for a later pass and stop. If the same
+non-material warning survives two attempts, stop trying to eliminate it.
+
+This rule applies especially to autonomous agents: once the acceptance gates
+pass, they must hand off the result instead of consuming more time on
+open-ended micro-polish.
+
+### 9. Verification
 
 The verification stage has three layers:
 
@@ -374,10 +439,11 @@ This stage compiles:
 The compile report records missing files, extracted LaTeX errors, warnings, and
 which chunk check wrapper failed.
 
-A compile pass is complete only when the master and every planned chunk check
-report success, with no missing inputs. Review warnings rather than discarding
-them blindly. Duplicate PDF anchors can result from faithfully preserved source
-equation numbers, while overfull boxes may signal genuinely clipped mathematics.
+A compile pass is complete when the master and every planned chunk check report
+success, with no missing inputs. Classify warnings by visible or semantic
+impact instead of requiring a warning-free log. Duplicate PDF anchors can
+result from faithfully preserved source numbering; an overfull box is a blocker
+only when it clips, collides, or makes the page unreadable.
 
 #### Visual verification
 
@@ -391,9 +457,13 @@ After the final meaningful edit:
 4. reject clipped text, overlaps, broken tables, black replacement glyphs,
    malformed diagrams, visible `TODO` text, and unreadable type
 
-Do not treat successful LaTeX compilation as visual approval.
+Use one all-page contact-sheet pass for coverage and full resolution for
+suspected defects. After a localized correction, inspect the affected pages and
+their joins; repeat the complete visual pass only if pagination changed. Do not
+treat successful LaTeX compilation as visual approval, and do not turn visual
+approval into an unlimited typography-polish loop.
 
-### 9. Export And Portability Check
+### 10. Export And Portability Check
 
 Command:
 
@@ -511,12 +581,15 @@ For a new project:
 7. perform read-only QA across every chunk boundary
 8. refresh numbered figure jobs and explicitly handle unnumbered visuals
 9. inspect and finalize `master.tex`
-10. run structural verification until no real uncertainty or placeholder remains
+10. resolve every material uncertainty and placeholder; record genuinely
+    undecidable, non-material items in a concise deferred-issues report
 11. compile the master and every chunk check successfully
 12. render and visually inspect the complete final PDF
 13. export with the PDF into `newPapers/`
 14. compile the exported copy from its destination
 15. remove temporary render and compile artifacts
+16. stop when the Definition of Done passes; schedule optional micro-polish as
+    a separate later task
 
 For best results:
 
@@ -527,5 +600,7 @@ For best results:
 - compile early and often
 - treat page images, not OCR, as the source of truth
 - verify boundaries and exported portability explicitly
+- require a concrete failed gate before any late-stage correction cycle
+- stop after two bounded finishing cycles
 
 That is the workflow the current codebase is trying to formalize.
