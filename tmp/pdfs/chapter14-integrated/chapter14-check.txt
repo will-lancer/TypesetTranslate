@@ -1,0 +1,1735 @@
+14     Bound States in External Fields
+
+In our calculations of radiative corrections in Chapter 11 we went just one step beyond the
+lowest order in perturbation theory. However, there is a very important class of problems
+where even the simplest calculation requires that from the beginning we consider classes of
+Feynman diagrams of arbitrarily high order in coupling constants like e. These problems
+are those involving bound states—in electrodynamics, either ordinary atoms and molecules,
+or such exotic atoms as positronium or muonium.
+     It is easy to see that such problems necessarily involve a breakdown of ordinary per-
+turbation theory. Consider for instance the amplitude for electron–proton scattering as a
+function of the center-of-mass energy E. As shown in Section 10.3, the existence of a bound
+state like the ground state of hydrogen implies the existence of a pole in this amplitude at
+E = mp + me − 13.6 eV. However, no single term in the perturbation series for electron–
+proton scattering has such a pole. The pole therefore can only arise from a divergence of
+the sum over all diagrams at center-of-mass energies near mp + me .
+     The reason for this divergence of the perturbation series is also easy to see, especially if
+for the moment we consider the time-ordered diagrams of old-fashioned perturbation theory
+instead of Feynman diagrams. Suppose that in the center-of-mass system the electron and
+proton both have momenta of magnitude q ≪ me , and consider an intermediate state
+in which the electron and proton momenta are different but also of order q. The energy
+denominator factor contributed by this state will be of order [q 2 /me ]−1 . Each such state
+will also contribute a matrix element of the Coulomb interaction of order e2 /q 2 (the Fourier
+transform of e2 /r), and the corresponding momentum space integration will contribute a
+factor of order q 3 . Putting this together, we see that each additional Coulomb interaction
+contributes an overall factor of order
+
+                                  [q 2 /me ]−1 [e2 /q 2 ][q 3 ] = e2 me /q.
+
+Thus the perturbation theory should break down when q is less than or of the order of
+e2 me , or in other words when the kinetic and potential energies, which are of order q 2 /me ,
+are no larger than about e4 me , which, of course, is of the order of the binding energy of
+hydrogen.
+    Our problem here is to learn how to use perturbation theory to evaluate radiative
+corrections in bound-state problems, summing to all orders those diagrams that need to be
+summed to all orders, and keeping only a finite number of those that don’t.
+
+14.1    The Dirac Equation
+We shall limit ourselves in this chapter to problems in which bound states arise because of
+the Coulomb interaction of electrons (or muons) with heavy charged particles such as atomic
+nuclei. As shown in Section 13.6, this interaction may be taken into account by adding to
+the interaction Lagrangian a term1 representing the effects of a c-number external vector
+   1
+    In this chapter we return to the use of an upper case Ψ to denote the electron field in the Heisenberg
+picture, reserving a lower case ψ for the Dirac field with time-dependence governed solely by the c-number
+external field Aµ (x).
+
+
+
+
+                                                     1
+potential Aµ (x):
+                               1
+          LA = − ieΨ̄γ µ ΨAµ − (Z3 − 1)(∂ µ Aν − ∂ ν Aµ )(∂µ Aν − ∂ν Aµ )
+                               4                                                       (14.1.1)
+               − ie(Z2 − 1)Aµ Ψ̄γ µ Ψ,
+which is obtained by replacing the quantum vector potential Aµ with Aµ + Aµ in the
+interaction part of Eq. (11.1.6). For instance, for a single heavy particle of charge Ze at
+the origin,
+                                         Ze
+                               A0 (x) =       ,    A(x) = 0.                        (14.1.2)
+                                        4π|x|
+It is the interaction (14.1.1) that must be taken into account to all orders. In this sec-
+tion we will consider the theory with only this interaction, leaving radiative corrections to
+subsequent sections.
+     Physicists learn in kindergarten to approach this sort of problem by solving the wave
+equation of Dirac in the presence of the external field. It might seem unnecessary to derive
+this equation here, but as emphasized in Chapter 1, Dirac’s original motivation for this
+equation as a sort of relativistic Schrödinger equation does not stand up to inspection.
+Also, in the course of our derivation we will discover the normalization conditions that have
+to be imposed on the solutions of the Dirac equation, which seemed somewhat ad hoc in
+Dirac’s approach. The solutions of the Dirac equation discussed here will be important
+ingredients in our treatment of radiative corrections in the next section.
+     We will work here in a version of the Heisenberg picture, in which the time-dependence
+of operators is determined by a Hamiltonian including the external field interaction (14.1.1),
+but no other interactions. The electron field ψ(x) in this picture satisfies the field equation
+                                                       
+                                λ ∂             λ
+                              γ      + m + ieγ Aλ (x) ψ(x) = 0.                         (14.1.3)
+                                 ∂xλ
+This is not the Dirac equation in the original sense of Dirac [1], because ψ(x) here is not a
+c-number wave function but a quantum operator. The c-number Dirac wave functions are
+defined by
+                                   uN (x) ≡ ⟨Ω|ψ(x)|N ⟩,                             (14.1.4)
+                                    vN (x) ≡ ⟨N |ψ(x)|Ω⟩,                              (14.1.5)
+where the |N ⟩ are a complete orthonormal set of state-vectors, with |Ω⟩ the vacuum. It
+follows immediately from Eq. (14.1.3) that these functions satisfy the homogeneous Dirac
+equation
+                                                                  
+            ∂                                  ∂
+        γ λ λ + m + ieγ λ Aλ (x) uN (x) = γ λ λ + m + ieγ λ Aλ (x) vN (x)
+           ∂x                                 ∂x                                 (14.1.6)
+                                        = 0.
+We can also derive a normalization condition from the equal-time anticommutation relations
+for the Dirac field. These are unaffected by the interaction (14.1.1), and therefore take the
+same form as for the free fields:
+
+                              {ψ(x, t), ψ̄(y, t)} = iγ 0 δ 3 (x − y).                  (14.1.7)
+
+
+
+
+                                                2
+Taking the vacuum expectation value and inserting a sum over the states |N ⟩, we find
+
+                   uN (x, t)u†N (y, t) +             †
+                X                        X
+                                           vN (x, t)vN (y, t) = δ 3 (x − y),     (14.1.8)
+                   N                          N
+
+it being understood that the sum over N includes an integral over continuum states as well
+as a sum over any discrete bound states.
+     We are chiefly interested in the case of a time-independent external field, like (14.1.2).
+In such cases, the states |N ⟩ may be taken as eigenstates of the Hamiltonian (including the
+interaction (14.1.1)) with energies EN . Time-translation invariance then tells us that the
+uN (x) and vN (x) have the time-dependence:
+
+                   uN (x, t) = e−iEN t uN (x),        vN (x, t) = e+iEN t vN (x).     (14.1.9)
+
+The homogeneous Dirac equations (14.1.6) then become
+                      h                       i
+                    0                  λ
+                 iγ γ · ∇ + m + ieγ Aλ (x) uN (x) = EN uN (x),                       (14.1.10)
+                           h                        i
+                       iγ 0 γ · ∇ + m + ieγ λ Aλ (x) vN (x) = −EN vN (x).            (14.1.11)
+
+The minus sign on the right-hand side of Eq. (14.1.11) shows that the vN are the famous
+‘negative-energy’ solutions of Dirac. As shown by Eq. (14.1.8), these negative-energy so-
+lutions are needed to make up a complete set of wave functions. Of course, for moderate
+external fields there are no negative-energy states in the theory, so all EN are positive,
+but there is still an important difference between the states with non-vanishing uN or vN :
+the definitions (14.1.4) and (14.1.5) show that a state can have uN ̸= 0 or vN ̸= 0 only if
+it has charge −e or +e, respectively. It is in this sense that negative-energy solutions of
+the Dirac equation have something to do with the existence of antiparticles. However, this
+argument has nothing to do with the details of the Dirac equation, or even with the spin
+of the electron.
+     From the Dirac wave equations (14.1.10) and (14.1.11) we can easily see that wave
+functions of different energy are orthogonal. That is,
+                                     ∗
+                              (EM − EN )(u†N uM ) = ∇ · (u†N iγ 0 γuM ),
+
+so if |x|2 (u†N iγ 0 γuM ) remains bounded as |x| → 0 and |x| → ∞, then
+                             Z
+                               d3 x (u†N (x)uM (x)) = 0 if EN ̸= EM
+                                                                  ∗
+                                                                    .                (14.1.12)
+
+With similar boundary conditions for the vN , we find in the same way that
+                       Z
+                                †                              ∗
+                         d3 x (vN (x)vM (x)) = 0 if EN ̸= EM     ,                   (14.1.13)
+                          Z
+                              d3 x (u†N (x)vM (x)) = 0 if EN ̸= −EM
+                                                                  ∗
+                                                                    .                (14.1.14)
+
+Taking N = M , Eqs. (14.1.12) and (14.1.13) tell us that the energies are all real. Dropping
+the complex conjugation of EM in Eqs. (14.1.12)–(14.1.14), we see that us of different
+
+
+
+
+                                                  3
+energy are orthogonal, vs of different energy are orthogonal, and (as long as the potential
+is not strong enough to produce negative energy states) all us are orthogonal to all vs. By
+a suitable choice of the discrete quantum numbers that characterize the states along with
+the energy, we can then always arrange that
+                          Z
+                             d3 x (u†N (x)uM (x)) = 0 if N ̸= M,                  (14.1.15)
+                          Z
+                                     †
+                              d3 x (vN (x)vM (x)) = 0 if N ̸= M,                   (14.1.16)
+                                   Z
+                                      d3 x (u†N (x)vM (x)) = 0.                    (14.1.17)
+
+   Multiplying Eq. (14.1.8) on the right with uM (y) or vM (y), we find then that these
+wave functions must satisfy the normalization conditions
+                 Z                        Z
+                           †                      †
+                    d y (uN (y)uM (y)) = d3 y (vN
+                     3
+                                                    (y)vM (y)) = δN M ,       (14.1.18)
+
+where δN M is a product of Kronecker deltas and momentum space delta functions, with
+                                               P                        P
+normalization adapted to that used in defining N , in such a way that N δN M = 1. These
+normalization conditions have nothing directly to do with any probabilistic interpretation
+of the Dirac wave functions, but arise instead from the anticommutation relations (14.1.7)
+for the fields.
+     Let us now specialize to the case of a pure electrostatic external field with A = 0. In
+our standard representation of the Dirac matrices, we have
+                                       !                         !
+                                  0 −σ                       0 1
+                          γ=i             ,    iγ 0 = β =          ,
+                                 σ 0                         1 0
+
+where σ is the usual three-vector of 2 · 2 Pauli matrices, and ‘1’ and ‘0’ here are the 2 · 2
+unit and zero matrices. We introduce two-component wave functions fN and gN by setting
+                                                       !
+                                          1 fN + igN
+                                 uN = √                  .                         (14.1.19)
+                                           2 fN − igN
+
+The energy eigenvalue condition (14.1.10) then takes the form:
+
+                              (σ · ∇)fN = (EN + eA0 + m)gN ,                       (14.1.20)
+
+                              (σ · ∇)gN = −(EN + eA0 − m)fN .                      (14.1.21)
+In the non-relativistic case where eA0 r ≈ Zα ≪ 1 the binding energy m − EN is of order
+Z 2 α2 m, while the gradient operator is of the order of Zαm, so gN is smaller than fN by a
+factor of order Zα. (To find the positron wave functions vN we replace EN everywhere by
+−EN , so in this case fN is smaller than gN by the same factor.) We shall return to this
+non-relativistic case at the end of this section.
+     Physical states may be classified as even or odd under space inversion:
+
+                                      P |N ⟩ = ηN |N ⟩,                            (14.1.22)
+
+
+
+
+                                             4
+where ηN is a sign factor, ±1. Recall that with the intrinsic parity of the electron defined
+to be +1, the Dirac field has the space-inversion property
+
+                                 P ψ(x, t)P −1 = βψ(−x, t),
+
+so Eqs. (14.1.4) and (14.1.22) show that the Dirac wave functions satisfy the parity condition
+
+                                   uN (x) = ηN βuN (−x),                             (14.1.23)
+
+or equivalently
+                      fN (x) = ηN fN (−x),        gN (x) = −ηN gN (−x).              (14.1.24)
+Note that the parity of the state is the same as the parity of fN (x), not gN (x).
+    Where the potential A0 is rotationally invariant, the solutions of the wave equations
+here may be classified according to their total angular momentum j and parity η. For a
+given j, the components f and g may be expanded in spherical harmonics with orbital
+                                                                                            1
+angular momentum ℓ = j + 21 and ℓ = j − 12 , but for a definite parity η = (−1)j∓ 2 ,
+Eqs. (14.1.24) show that we can only have ℓ = j ∓ 12 in f and ℓ = j ± 12 in g. The usual rules
+of angular-momentum addition then show that for a state of total angular momentum j,
+                                                                       1
+total angular-momentum z-component µ, and parity (−1)j∓ 2 , the ‘large’ two-component
+wave function f has the form
+                                                                      
+                                                    1 1     µ− 12
+                               C    1 1 (j µ; µ −     , )Y        (x̂)
+                             j∓ 2 , 2              2 2 j∓ 1
+                    f (x) =                                  2
+                                                                        F (|x|),    (14.1.25)
+                                                                       
+                                                  1     1    µ+ 12
+                              Cj∓ 1 , 1 (j µ; µ + 2 , − 2 )Yj∓ 1 (x̂)
+                                   2 2                       2
+
+
+where C and Y are the usual Clebsch–Gordan coefficients and spherical harmonics [2]. Also,
+given any wave function of definite total angular momentum and parity we can construct
+another wave function with the same j and µ but opposite parity by applying the operator
+σ · x̂, so the ‘small’ components may be put in the form
+                                                                       
+                                                     1 1     µ− 12
+                                C   1 1 (j µ; µ −      , )Y        (x̂)
+                               j± 2 , 2             2 2 j± 1
+              g(x) = (σ · x̂)                                 2
+                                                                         G(|x|). (14.1.26)
+                                                                        
+                                                   1     1    µ+ 12
+                               Cj± 1 , 1 (j µ; µ + 2 , − 2 )Yj± 1 (x̂)
+                                  2 2                    2
+
+
+It is conventional to define the orbital angular momentum ℓ of the state as the orbital
+angular momentum of the ‘large’ components f (x),
+                                              1
+                                          ℓ=j∓ ,                                     (14.1.27)
+                                              2
+so that the parity is always (−1)ℓ .
+     Inserting Eqs. (14.1.25) and (14.1.26) in Eqs. (14.1.20) and (14.1.21) yields the coupled
+differential equations
+                            dG k + 1
+                                +       G + (E + eA0 − m)F = 0,                       (14.1.28)
+                            dr       r
+                            dF    k−1
+                                −       F − (E + eA0 + m)G = 0,                       (14.1.29)
+                            dr       r
+
+
+
+                                              5
+                              1
+where for parity η = (−1)j∓ 2 ,                   
+                                                 1
+                                          k=± j+     .                                 (14.1.30)
+                                                 2
+     Let us now concentrate on the simple Coulomb field (14.1.2), for which eA0 = Zα/r.
+The treatment of the Dirac equation in this case [3] is familiar, so it will be summarized
+briefly here just for completeness. It is easy to see that the solutions near the origin go as
+rs−1 , with s2 = k 2 − Z 2 α2 . (Note that k 2 ≥ 1, so the exponent s is real for Zα ≤ 1.) We
+must reject the solutions with s < 0 as being inconsistent with the normalization condition
+(14.1.18). The condition that the wave functions do not blow up for r → ∞ then fixes the
+allowed values of the energy eigenvalues:
+                                                                    −1/2
+                                                Z 2 α2
+             En,j = m 1 + h                                                 ,         (14.1.31)
+                                                                     
+                                              q                    i2 
+                                  n − j − 12 + (j + 12 )2 − Z 2 α2
+
+where n is a ‘principal quantum number’ with
+                                                  1
+                                             j+     ≤ n.                               (14.1.32)
+                                                  2
+It is noteworthy that these energies do not depend on the parity or ℓ, but only on n and
+j. For each n and j there are two solutions, corresponding to the two signs of k or the two
+                                                                                    1
+possible parities, except that for n = j + 12 we only have k > 0 and parity (−1)j− 2 , so that
+ℓ = j − 21 . With Eq. (14.1.32), this is the same as the familiar non-relativistic restriction
+that ℓ ≤ n − 1.
+     For light atoms with Zα ≪ 1, Eq. (14.1.31) yields the power series
+
+                                   Z 2 α2 Z 4 α4 3
+                                                                   
+                                                           n
+                      E =m 1−            +            −          + ··· .             (14.1.33)
+                                    2n2       n4    8 2j + 1
+
+The first two terms, of course, just represent the rest energy and the binding energy as
+given by the non-relativistic Schrödinger equation. The leading term that depends on j as
+well as n is the third term, the first relativistic correction. For n = 1 there is only one value
+of the total angular momentum, j = 21 , and since here n = j + 12 there is also only one
+                1
+parity, (−1)j− 2 = +1, corresponding to ℓ = 0. It is therefore difficult to see the effects of
+the relativistic corrections in Eq. (14.1.33) in the n = 1 states of hydrogenic atoms, though
+as we shall see in Section 14.3, this has recently become possible. On the other hand, for
+n = 2 we have a j = 12 state with both parities (i.e., 2s1/2 and 2p1/2 ) as well as a 2p3/2
+state with j = 23 and negative parity. Eq. (14.1.33) gives the splitting between the p states
+in hydrogen as
+                                                 α4 me
+                       E(2p3/2 ) − E(2p1/2 ) =          = 4.5283 · 10−5 eV.             (14.1.34)
+                                                   32
+Such relativistic line splitting is known as the fine structure of the atomic state. From the
+beginning it was known that this prediction is in good agreement with the observed fine
+structure. On the other hand, the Dirac equation does not yield any energy difference in the
+
+
+
+
+                                                  6
+2s1/2 and 2p1/2 states, so this is a good place to look for the effects of further corrections,
+to be considered in Section 14.3.
+     Before closing this section we shall consider the approximate forms for the wave func-
+tions and matrix elements in the non-relativistic case for a general electrostatic potential
+A0 . (For a Coulomb potential, this is the limit Zα ≪ 1.) Since here EN +m ≃ 2m ≫ |eA0 |,
+the ‘small’ components of the electron wave function are given approximately in terms of
+the large components by
+                                    gN ≃ (σ · ∇)fN /2me .                             (14.1.35)
+Eq. (14.1.21) then becomes just the non-relativistic Schrödinger equation
+
+                              ∇2
+                                         
+                                        0
+                            −      − eA fN ≃ (EN − m)fN .                                (14.1.36)
+                              2me
+Since there is no longer any coupling between spin and orbital degrees of freedom in the
+equation for fN , we may find a complete set of solutions of this equation in the form
+
+                                       fN = χN ψN (x),
+
+where χN is a two-component constant spinor, and ψN (x) is an ordinary one-component
+solution of the Schrödinger equation. However, we often work with states that have definite
+values of the total angular momentum j, for which fN is (for non-vanishing orbital angular
+momentum) a sum of such terms.
+    In the non-relativistic approximation, the four-component Dirac wave function takes
+the form                               "                   #
+                                     1 (1 + iσ · ∇/2m)fN
+                              uN ≃ √                                             (14.1.37)
+                                      2 (1 − iσ · ∇/2m)fN
+and Eq. (14.1.18) gives the normalization condition
+                            Z
+                                     †              1
+                              d3 x (fN fM ) ≃ δN M − (v 2 )N M ,                         (14.1.38)
+                                                    4
+where                                       Z
+                             2         1              †
+                           (v )N M ≡ − 2        d3 x fN (x)∇2 fM (x).
+                                      me
+In relating matrix elements in an external field to free-particle matrix elements, it is useful
+to note that the momentum space wave function in an energy eigenstate N may be written
+                              Z                      X
+            uN (p) ≡ (2π)−3/2 d3 p e−ip·x uN (x) ≃       u(p, σ)[fN (p)]σ ,          (14.1.39)
+                                                       σ
+
+where u(p, σ) is the free-particle Dirac spinor
+                         "                   #                   !                 !
+                      1 (1 − p · σ/2me )χσ                      1                0
+         u(p, σ) ≃ √                            ,     χ+ 1 ≡       ,    χ− 1 ≡       ,
+                       2 (1 + p · σ/2me )χσ                2    0         2      1
+
+and fN (p) is the Fourier transform of the two-component Schrödinger wave function
+                                              Z
+                                         −3/2
+                           fN (p) ≡ (2π)        d3 p e−ip·x fN (x).
+
+
+
+
+                                                7
+     In closing, as an aid in calculating the effects of various perturbations, we note that
+the leading terms in the electron matrix elements of the sixteen independent 4 · 4 matrices
+are
+                                     †         1       †
+                       (ūM uN ) ≃ (fM fN ) −      (∇fM   · σ σ · ∇fN ),            (14.1.40)
+                                              4m2e
+                                         †             1      †
+                      i(ūM γ 0 uN ) ≃ (fM fN ) +          (∇fM · σ σ · ∇fN ),            (14.1.41)
+                                                      4m2e
+                                       1 h     †                 †
+                                                                               i
+                   (ūM γ i uN ) ≃         (∇fM  · σ σi fN ) − (fM σi σ · ∇fN ) ,         (14.1.42)
+                                      2me
+                                     i h    †                 †
+                                                                            i
+            (ūM [γ 0 , γ i ]uN ) ≃     (∇fM  · σ σi fN ) + (fM σi σ · ∇fN ) ,            (14.1.43)
+                                    me
+                                                                 †
+                                (ūM [γ i , γ j ]uN ) ≃ 2iϵijk (fM σk fN ),               (14.1.44)
+                                                                 †
+                                     (ūM γ 5 γ i uN ) ≃ −i(fM     σi fN ),               (14.1.45)
+                                           1 h           †                †
+                                                                                      i
+                    (ūM γ 5 γ 0 uN ) ≃            (∇fM      · σfN ) − (fM  σ · ∇fN ) ,   (14.1.46)
+                                         2me
+                                          i h          †                †
+                                                                                    i
+                     (ūM γ 5 uN ) ≃             (∇fM      · σfN ) + (fM   σ · ∇fN ) .    (14.1.47)
+                                        2me
+14.2    Radiative Corrections in External Fields
+We now consider radiative corrections to the results of the previous section, due to the
+interaction of electrons with the quantum electromagnetic field as well as the external field
+of the heavy charged particles. These radiative corrections can be calculated using Feynman
+diagrams of the usual sort, with the whole effect of the external field being to modify the
+propagator of the electron field in the presence of the external electromagnetic field (and to
+supply the external-field-dependent renormalization counterterms shown in Eq. (14.1.1)).
+To be specific, the effect of inserting any number of vertices corresponding to the first term
+of the interaction (14.1.1) in an internal electron line of any graph is to replace the bare
+coordinate space propagator −iS(x − y) with a corrected propagator
+                                       Z
+                                     2
+−iSA (x, y) ≡ − iS(x − y) + (−i)         d4 z1 S(x − z1 )eγ µ Aµ (z1 )S(z1 − y)
+                         Z       Z
+                       3
+               + (−i)      d z1 d4 z2 S(x − z1 )eγ µ Aµ (z1 )S(z1 − z2 )eγ ν Aν (z2 )S(z2 − y) + · · · ,
+                             4
+
+
+                                                                                           (14.2.1)
+
+where as usual
+                                                            −ip
+                                                              /+m
+                                               Z
+                                         1
+                        S(x − y) ≡                 d4 p                eip·(x−y) .
+                                       (2π)4              p2 + m2 − iϵ
+(We must write SA as a function of x and y rather than of x − y, because the external
+field invalidates translation invariance.) The theorem proved in Section 6.4 tells us that
+Eq. (14.2.1) is the same as
+
+                             −iSA (x, y) = A⟨Ω|T {ψ(x), ψ̄(y)}|Ω⟩A .                       (14.2.2)
+
+
+
+
+                                                     8
+with the subscript A on the right indicating that the vacuum state |Ω⟩A and electron
+field ψ(x) are to be defined in a Heisenberg picture in which the only interaction taken
+into account is the interaction (14.1.1) with the external field. Inserting a complete set of
+intermediate states |N ⟩A in Eq. (14.2.2) yields an expression for the propagator in terms
+of the Dirac wave functions uN and vN introduced in the previous section
+                                  X                              X
+       −iSA (x, y) = θ(x0 − y 0 )   uN (x)ūN (y) − θ(y 0 − x0 )   vM (x)v̄M (y).    (14.2.3)
+                                 N                                       M
+
+It is also possible to obtain the propagator (14.2.2) as the solution of the inhomogeneous
+Dirac equation:                               
+                         µ ∂
+                       γ       + m + ieγ Aµ (x) SA (x, y) = δ 4 (x − y),
+                                        µ
+                                                                                   (14.2.4)
+                          ∂xµ
+which follows from the field equations (14.1.3) and anticommutation relations (14.1.7), or
+formally from the perturbation series (14.2.1). Also Eq. (14.2.3) tells us that the propagator
+satisfies boundary conditions; its Fourier decomposition contains only ‘positive frequency
+terms’ proportional to exp{−iE(x0 − y 0 )} with E > 0 for x0 − y 0 → ∞, and only ‘negative
+frequency terms’ proportional to exp{+iE(x0 − y 0 )} with E > 0 for x0 − y 0 → −∞.
+The inhomogeneous Dirac equation with these boundary conditions may be used to obtain
+a numerical solution [4] for this propagator even in cases where the external field is too
+strong to allow the use of the perturbation series (14.2.1). Once the propagator SA (x, y)
+has been calculated, the amplitudes for scattering in an external field can be calculated using
+ordinary Feynman diagrams, but with SA (x, y) in place of S(x − y) (and with A-dependent
+renormalization counterterms inserted where appropriate).
+     Now let us see how to use the perturbation series with this corrected propagator to
+calculate the shifts of bound-state energy levels. Consider the full electron propagator
+SA′ (x, y), involving interactions of the electron with the quantum electromagnetic field as
+
+well as the external field:
+                              ′
+                           −iSA (x, y) = A⟨Ω|T {Ψ(x), Ψ̄(y)}|Ω⟩A                          (14.2.5)
+
+with Ψ(x) the electron field in a Heisenberg picture including all interactions, and |Ω⟩ the
+vacuum eigenstate of the full Hamiltonian. For a time-independent external potential we
+can find a complete orthonormal set |N ⟩ of eigenstates of the full Hamiltonian with energies
+EN′ . Inserting a sum over these states in the operator product in Eq. (14.2.5), we find
+
+                                                ′   0  0
+                                                          X
+                     ′
+                  −iSA (x, y) = θ(x0 − y 0 )e−iEN (x −y )   UN (x)ŪN (y)
+                                                               N
+                                                   ′ (y 0 −x0 )
+                                                                   X
+                                      0     0   −iEN
+                                − θ(y − x )e                             VN (x)V̄N (y),   (14.2.6)
+                                                                   N
+
+where
+                                                        ′
+                               ⟨Ω|Ψ(x, t)|N ⟩ ≡ e−iEN t UN (x),                           (14.2.7)
+                                                        ′ t
+                                                     +iEN
+                               ⟨N |Ψ̄(x, t)|Ω⟩ ≡ e            V̄N (x).                    (14.2.8)
+
+
+
+
+                                                9
+(The sum includes an integral over continuum states as well as a sum over discrete bound
+states. As before, UN and VN are non-zero only if the state |N ⟩ has charge −e or +e,
+respectively.) We can redefine the propagator as a function of energy rather than time
+                                       Z ∞
+                                                    0  0
+                         ′
+                        SA (x, y; E) ≡     dx0 eiE(x −y ) SA
+                                                           ′
+                                                             (x, y).               (14.2.9)
+                                           −∞
+
+(Time-translation invariance dictates that SA′ (x, y) is a function of x0 − y 0 but not of x0
+
+and y 0 separately.) From Eq. (14.2.6) we see that
+                                    X UN (x)ŪN (y)          X VN (x)V̄N (y)
+                    ′
+                   SA (x, y; E) =        ′ − E − iϵ      −        ′ + E − iϵ   .    (14.2.10)
+                                        EN                       EN
+                                    N                        N
+
+                ′ (x, y; E) has a pole at any electron bound-state energy, and also at the
+In particular, SA
+negative of any positron bound-state energy. (Of course, positrons do not have bound states
+in the Coulomb field of an ordinary positively charged nucleus.)
+     Let us now consider the lowest-order radiative corrections to the complete propagator.
+The Feynman rules here give the complete propagator to this order as SA     ′ = S + δS ,
+                                                                                  A       A
+with a correction term
+                                Z      Z
+                    δSA (x, y) = d z d4 w SA (x, z)Σ∗A (z, w)SA (w, y),
+                                    4
+                                                                                   (14.2.11)
+
+where iΣ∗A is the sum of all one-loop diagrams with one incoming and one outgoing electron
+line (excluding final electron propagators) calculated using SA (x, y) in place of S(x − y)
+for internal electron lines, plus second-order renormalization counterterms. Using energy
+variables in place of time variables, this is
+                         Z      Z
+         δSA (x, y; E) = d z d3 w SA (x, z; E)Σ∗A (z, w; E)SA (w, y; E),
+                              3
+                                                                                   (14.2.12)
+
+where                                      Z
+                                                        0    0
+                         Σ∗A (z, w; E) ≡       dz 0 eiE(z −w ) Σ∗A (z, w).          (14.2.13)
+
+    The effect of these radiative corrections is to change the wave functions to UN =
+uN + δuN and VN = vN + δvN and the bound-state energies to EN   ′ = E + δE , so that
+                                                                      N      N
+the complete propagator is
+          ′
+         SA (x, y; E) ≃ SA (x, y; E)
+                          X δuN (x)ūN (y) + uN (x)δ ūN (y)
+                        +
+                                         EN − E
+                            N
+                          X δvN (x)v̄N (y) + vN (x)δv̄N (y)
+                        −
+                                         EN + E
+                            N
+                          X uN (x)ūN (y)δEN X vN (x)v̄N (y)δEN
+                        −                      +                   .                (14.2.14)
+                                   (EN − E)2             (EN + E)2
+                            N                            N
+
+(We are dropping the iϵ terms because we are now not taking E to lie in the continuum of
+scattering states.) We see that the shift δEN of an electron bound-state energy is given by
+
+
+
+
+                                                10
+the coefficient of −uN (x)ūN (y)/(EN − E)2 in the complete propagator. To calculate this,
+we note that Eq. (14.2.3) gives
+                                      X uN (x)ūN (y)       X vN (x)v̄N (y)
+                     SA (x, y; E) =                     −                     .           (14.2.15)
+                                          EN − E − iϵ           EN + E − iϵ
+                                      N                     N
+
+Inserting this in Eq. (14.2.12) gives
+                           X      uN (x)ūM (y)
+         δSA (x, y; E) =
+                               (EN − E)(EM − E)
+                           N,M
+                              Z    Z
+                             · d z d3 w ūN (z)Σ∗A (z, w; E)uM (w) + · · · .
+                                 3
+                                                                                          (14.2.16)
+
+
+
+
+Figure 14.1. Lowest-order Feynman diagrams for the electron self-energy function Σ∗A (x, y) in
+the presence of an external field. Here double straight lines represent electron propagators SA that
+include effects of the external field; single straight lines are the incoming and outgoing electron
+lines; wavy lines are virtual photons; the cross represents renormalization counterterms.
+
+   where the dots denote additional terms involving at least one negative-energy pole.
+Comparing the coefficients of (EN − E)−2 here and in Eq. (14.2.14), we find
+                              Z     Z
+                    δEN = − d3 x d3 y ūN (x)Σ∗A (x, y; EN )uN (y).          (14.2.17)
+
+The uN are solutions of the homogeneous Dirac equation satisfying the normalization con-
+dition (14.1.8), so this is very much like ordinary first-order perturbation theory, but with
+−Σ∗ in place of a perturbation to the Hamiltonian.
+     Generally δEN turns out to be complex. This is simply a consequence of the instability
+of atomic energy levels to radiative decay to lower levels; we saw in Chapter 3 that an
+unstable state of energy E and decay rate Γ produces poles in various amplitudes at the
+complex energy E − iΓ/2. The imaginary part of Eq. (14.2.17) therefore equals −Γ/2, while
+its real part gives the energy shift.
+     The Feynman diagrams for Σ∗ are shown in Figure 14.1. (Note that there are new
+photon tadpole diagrams here because the external field breaks the Lorentz invariance and
+
+
+
+
+                                                11
+charge-conjugation invariance that forbids such diagrams in the ordinary Feynman rules.)
+Application of the position space Feynman rules to these diagrams gives
+
+      iΣ∗A (x, y) = [eγ µ ][−iSA (x, y)][eγµ ][−iD(x − y)]
+                                        Z
+                     − [eγ δ (x − y)] d4 z [−iD(x − z)] Tr{[−iSA (z, z)][eγµ ]}
+                            µ 4
+
+
+                      − i(Z2 − 1)(γ µ ∂µ + m)δ 4 (x − y) + iδm δ 4 (x − y)
+                      + eγ µ (Z2 − 1)δ 4 (x − y)Aµ (x)
+                                                 Z
+                      + i(Z3 − 1)[eγµ ]δ (x − y) d4 z [−iD(x − z)]∂ν ∂ ν Aµ (z) − ∂ µ Aν (z) .
+                                          4
+                                                                                            
+
+                                                                                            (14.2.18)
+
+with the renormalization constants (Z2 − 1), (Z3 − 1), and δm calculated to second order
+in e. (The minus sign in the second term is the usual one that accompanies closed fermion
+loops.)
+     For strong external fields with Zα of order unity it is necessary to calculate the con-
+figuration space electron propagator SA and the integrals in Eqs. (14.2.17) and (14.2.18)
+numerically [4]. However, for weak fields we can use the first few terms of the series (14.2.1)
+in Eq. (14.2.18) and calculate these integrals in closed form. For this purpose, it is more
+convenient to work in momentum space, defining:
+                                        Z
+                                     −4                  ′
+                     SA (x, y) = (2π)      d4 p′ d4 p eip ·x e−ip·y SA (p′ , p),     (14.2.19)
+                                                Z
+                                                               ′
+                          Σ∗A (x, y) = (2π)−4  d4 p′ d4 p eip ·x e−ip·y Σ∗A (p′ , p),       (14.2.20)
+                                                   Z
+                                 uN (x) = (2π)−3/2 d3 p eip·x uN (p),                       (14.2.21)
+                                              Z
+                                      A (x) = d4 q eiq·x Aµ (q).
+                                        µ
+                                                                                            (14.2.22)
+
+(We are here committing the impropriety of using the same symbol for a function and its
+Fourier transform, leaving it to the displayed arguments of the functions to indicate which
+is which.) Then Eqs. (14.2.1) and (14.2.18) become
+
+                          /′ + m
+                        −ip               /′ + m
+                                        −ip                 −ip
+                                                              /+m
+      SA (p′ , p) =    ′2    2
+                                 − ie  ′2    2
+                                                 A(p′ − p) 2
+                                                 /                    + ··· .               (14.2.23)
+                      p + m − iϵ      p + m − iϵ          p + m2 − iϵ
+and
+                   ie2         d4 k
+                         Z
+ Σ∗A (p′ , p) =        4      2
+                                       γ µ SA (p′ − k, p − k)γµ
+                  (2π)      k − iϵ
+                                                         4 ′
+                                                                                  / ′ − p)
+                    
+                  + −(Z2 − 1)(ip      / + m) + Z2 δm δ (p − p) − ie(Z2 − 1)A(p
+                              ie2 γ µ
+                                               Z
+                  −                               d4 q Tr{SA (q, q + p′ − p)γµ }
+                     (2π)4 [(p − p′ )2 − iϵ]
+                       ie(Z3 − 1) 
+                                        (p − p′ )2 /
+                                                   A(p′ − p) − (p     ′       ′      ′
+                                                                                           
+                  +         ′ 2                                 /−p / )(p − p ) · A(p − p) . (14.2.24)
+                     (p − p ) − iϵ
+
+
+
+
+                                                     12
+Because the external field is time-independent, SA (x, y) and Σ∗A (x, y) can depend on x0
+and y 0 only through the difference x0 − y 0 , so SA (p′ , p) and Σ∗A (p′ , p) as well as Aµ (p′ − p)
+must be proportional to δ(p′0 − p0 ):
+
+                              Aµ (p′ − p) = δ(p′0 − p0 )Aµ (p′ − p),                       (14.2.25)
+
+                              SA (p′ , p) = δ(p′0 − p0 )SA (p′ , p; p0 ),                  (14.2.26)
+                              Σ∗A (p′ , p) = δ(p′0 − p0 )Σ∗A (p′ , p; p0 ).                (14.2.27)
+The energy shift is then given by Eqs. (14.2.17) and (14.2.13) as
+                              Z      Z
+                    δEN = − d p  3 ′
+                                       d3 p ūN (p′ )Σ∗A (p′ , p; EN )uN (p),              (14.2.28)
+
+with Σ∗A (p′ , p; EN ) given by Eqs. (14.2.23), (14.2.24), and (14.2.27). This is the master
+formula we shall use in the next section to calculate energy shifts in weak external fields.
+
+14.3    The Lamb Shift in Light Atoms
+Let us now consider radiative corrections to the energy levels of a non-relativistic electron
+in a general electrostatic field, such as an electron in the Coulomb field of a light nucleus
+with Zα ≪ 1. It is natural in this limit to treat the Coulomb field as a weak perturbation,
+but we will see that this would lead to an infrared divergence, related to that found in
+Section 11.3. The infrared divergence is really fictitious, because the four-momenta p, EN
+and p′ , EN are not on the electron mass shell, but it does force us to proceed with some
+care.
+    Usually this problem is dealt with by dividing the integral over virtual photon energies
+into a low-energy range, within which we can treat the electrons non-relativistically but
+must include effects to all orders in the external field, and a high-energy range, within
+which we have to include relativistic effects but may include only effects of lowest order in
+the external field. Instead, we shall here introduce a fictitious photon mass µ, chosen to
+be much larger than typical electron kinetic energies, but much less than typical electron
+momenta. For a Coulomb field, this amounts to the requirement that
+
+                                     (Zα)2 me ≪ µ ≪ Zαme .                                  (14.3.1)
+
+We write the photon propagator in the first two terms of Eq. (14.2.24) (including the
+formulas for the counterterms Z2 − 1 and Z2 δm) in the form
+                                                                 
+                       1           1             1          1
+                            = 2             + 2       −               .       (14.3.2)
+                   k 2 − iϵ    k + µ2 − iϵ     k − iϵ k 2 + µ2 − iϵ
+
+The energy shift is correspondingly a sum of two terms, a ‘high-energy’ and a ‘low-energy’
+term: The high-energy term is calculated by using the first term in the photon propagator
+(14.3.2) in the first three terms in Eq. (14.2.24), and adding the result to the last two terms
+(the vacuum polarization terms) in Eq. (14.2.24) which are not infrared divergent anyway;
+the low-energy term is calculated using the second term in Eq. (14.3.2) in the first three
+
+
+
+
+                                                   13
+terms of Eq. (14.2.24). One advantage of this procedure is that we shall be able to use
+the results of the relativistic calculations of Sections 11.3 and 11.4 directly, without the
+rather tricky conversion from a photon mass to an infrared energy cutoff. Of course, in
+the end we shall have to check that the dependence on the photon mass µ in the high-
+energy and low-energy contributions to the energy shift cancel, leaving the total energy
+shift µ-independent.
+
+A      High-Energy Term
+Because µ is taken much larger than the atomic binding energies we can here keep only terms
+of lowest order in the external field. The one-loop radiative correction to atomic energy
+levels in a general time-independent external vector potential Aµ (x) is given in momentum
+space by Eq. (14.2.28), with the self-energy insertion ΣA (p′ , p) given by Eqs. (14.2.24) and
+(14.2.23). The terms of zeroth order in the external field simply cancel: the δm term cancels
+the first term with A = 0; the Z3 − 1 term cancels the third term with A = 0; and the
+Z2 − 1 terms vanish because u(p) satisfies the Dirac equation. The term in ΣA (p′ , p) that
+is of first order in Aµ may be put in the form
+
+                                   ΣA1 (p′ , p) = −ieAµ (p′ − p)Γµ1 (p′ , p)                      (14.3.3)
+
+with
+                  ie2          d4 k          −i(p/′ − k/) + me             −i(p
+                                                                              / − k/) + me
+                         Z                                                                   
+Γµ1 (p′ , p) =                                                     γ  µ
+                                                                                                  + (Z2 − 1)γ µ
+                 (2π)4    k 2 + µ2 − iϵ (p′ − k)2 + m2e − iϵ             (p − k)2 + m2e − iϵ
+                                                      (               "                            # )
+                                                                               /        ′ + ip + m
+                           ie2 γν                         −i /               −i l − i p
+                                           Z
+                                                             l + m  e                 /      /     e
+                 −                            d4 l Tr                   γµ                             γν
+                   (2π)4 [(p − p′ )2 − iϵ]                 l2 + m2e          (l + p′ − p)2 + m2e
+                      Z3 − 1
+                                    (p − p′ )2 ηµν − (p′ − p)µ (p′ − p)ν γ ν .
+                                                                          
+                 − ′        2
+                                                                                                     (14.3.4)
+                   (p − p) − iϵ
+Comparison of the first two terms with Eqs. (11.3.1) and (11.3.8) and the second two
+terms with Eqs. (11.3.9), (11.2.3), and (11.2.15) reveals that Γµ1 (p′ , p) is the complete one-
+loop vertex function, including vacuum polarization and all counterterms, whose mass-shell
+matrix elements we have already calculated in Section 11.3. Using Eqs. (14.2.26) and
+(14.2.25), this contribution to the energy shift (14.2.28) is given by
+                        Z      Z
+  [δEN ]high energy = ie d3 p′ d3 p ūN (p′ )Γµ1 (p′ , EN , p, EN )uN (p) Aµ (p′ − p). (14.3.5)
+                                                                         
+
+
+(This could have been guessed at, by simply replacing the γ µ in the interaction of the
+electron with the external field with Γµ1 .) As discussed in Section 14.1, because Zα ≪ 1 we
+can approximate the Dirac wave function uN in Eq. (14.3.5) as
+                                            X
+                              [uN (p)]α =      uα (p, σ)[fN (p)]σ ,                   (14.3.6)
+                                                   σ
+
+where fN is the non-relativistic two-component wave function of an electron in the external
+Coulomb field, and u(p, σ) is the four-component normalized solution of the momentum
+space Dirac equation
+                                   [iγµ pµ + me ]u(p, σ) = 0                       (14.3.7)
+
+
+
+
+                                                       14
+for spin z-component σ. Since uN (p) approximately satisfies the free-particle Dirac equa-
+tion, Eq. (10.6.15) gives the general form of the matrix element of Γµ1 as
+                                                                          
+         ′   µ    µ ′                     ′   µ     2   i µ ν            2
+   ūN (p )[γ + Γ1 (p , p)]uN (p) = ūN (p ) γ F1 (q ) + [γ , γ ]qν F2 (q ) uN (p), (14.3.8)
+                                                        2
+
+where q ≡ p′ − p. The wave functions uN (p) fall off very rapidly for |p| ≫ Zαme , so we
+only need F1 (q 2 ) and F2 (q 2 ) in the limit |q 2 | ≪ m2e . In this limit, Eqs. (11.3.31), (10.6.18),
+and (11.3.16) give
+                                               2   2 
+                                          e2
+                                                                              
+                             2                    q            µ        2 3
+                       F1 (q ) ≃ 1 +                    ln          + +         ,              (14.3.9)
+                                        24π 2 m2e              m2e      5 4
+
+                                                         e2
+                                         F2 (q 2 ) ≃            .                            (14.3.10)
+                                                       16me π 2
+Let us first consider the contribution of the F1 term in Eq. (14.3.8), which makes by far
+the largest contribution to the energy shift, and raises the most interesting problems in its
+calculation. For a pure electrostatic field with A = 0, Eqs. (14.3.5), (14.3.8), and (14.3.9)
+give
+
+                  e2
+                         2               Z       Z
+                             µ       2 3         3 ′
+                                                       d3 p ūN (p′ ) −ieA0 (p′ − p) γ 0 (p′ − p)2 uN (p).
+                                                                                    
+[δEN ]F1 = −       2 2
+                        ln     2
+                                  +     +       d p
+               24π me        me      5 4
+                                                                                       (14.3.11)
+
+To calculate this contribution, we may use the leading term in the non-relativistic matrix
+element (14.1.41), and find
+                          2
+                 e2
+                                         Z       Z
+                             µ      2 3                    †
+[δEN ]F1 = −             ln       +  +       d3 ′
+                                                p    d3 p fN (p′ )eA0 (p′ − p)[p′ − p]2 fN (p)
+              24π 2 m2e     m2e     5 4
+                                                                                    (14.3.12)
+
+or in position space
+
+                   e2
+                             2       Z
+                               µ    2 3          †
+      [δEN ]F1 =            ln     + +     d3 x fN (x)[e∇2 A0 (x)]fN (x).                    (14.3.13)
+                 24π 2 m2e     m2e  5 4
+
+In particular, for the Coulomb potential (14.1.2), we have e∇2 A0 (x) = −Ze2 δ 3 (x), and the
+label N consists of a principal quantum number n and angular-momentum quantum num-
+                                                                            √
+bers j, m, ℓ, while (11.2.41) gives [fnjmℓ (0)]σ = 2(Zαme /n)3/2 δℓ,0 δσ,m / 4π. The energy
+shift (14.3.11) is then
+
+                                      2Z 4 α5 me
+                                                   2           
+                                                     µ      2 3
+                       [δEnjℓ ]F1 = −             ln     + +        δℓ,0 .          (14.3.14)
+                                        3πn3         m2e    5 4
+
+(The lack of dependence of δE on the total angular momentum z-component m is guaran-
+teed by rotational invariance.) The term 2/5 in the brackets in Eqs. (14.3.12) and (14.3.13)
+arises from vacuum polarization, and yields just the energy shift calculated somewhat
+heuristically in Section 11.2.
+
+
+
+
+                                                  15
+     Before going on to calculate the magnetic and low-energy contributions to the energy
+shift, it is worth noting that the result we have obtained so far yields a fair order-of-
+magnitude estimate of the Lamb shift without further work. We can anticipate that the
+low-energy terms will contain a term proportional to ln(µ/B), with a coefficient such as to
+cancel the µ-dependence in Eq. (14.3.12). The constant B here is an energy which must
+be included to make the argument of the logarithm dimensionless; since it is the binding of
+the electron in the atom that will eventually provide our infrared cutoff, we may guess that
+B is a typical atomic binding energy, of order B ≃ (Zα)2 me . The total energy shift in a
+state N with principal quantum number n and orbital angular momentum ℓ is therefore of
+the form
+                                   2Z 4 α5 me 
+                                                ln(Z 4 α4 )δℓ,0 + O(1) .
+                                                                      
+                        δEN = −           3
+                                                                                   (14.3.15)
+                                     3πn
+For the 2s state of hydrogen, the logarithmic term alone gives
+
+                             α 5 me
+                  δE2s = −          ln(α4 ) = 5.5 · 10−6 eV = 1300 MHz · 2πℏ.
+                              12π
+As we shall see, the ‘O(1)’ terms in Eq. (14.3.15) will lower the total energy shift by about
+25%.
+    Now let us consider the contribution of the F2 term in the matrix element of Γµ1 , which
+as we saw in Section 10.6 may be interpreted as a radiative correction to the magnetic
+moment of the electron. Using Eqs. (14.3.10), (14.3.8), and (14.3.6) in Eq. (14.3.5), we find
+that this term gives an energy shift
+
+                       e2
+                             Z      Z
+                                                 ′
+                                3 ′    3               µ ν
+                                                                      eAµ (p′ − p)(p′ − p)ν .
+                                                                    
+     [δEN ]F2 = −              d p    d  p ūN (p  )[γ  , γ ]uN (p)
+                    32π 2 me
+                                                                                        (14.3.16)
+
+or in position space
+
+                            ie2
+                                     Z
+                                         d3 x ūN (x)[γ µ , γ ν ]uN (x) eFµν (x),
+                                                                       
+             [δEN ]F2 =                                                                (14.3.17)
+                          64π 2 me
+where
+                                Fµν (x) = ∂µ Aν (x) − ∂ν Aµ (x).                       (14.3.18)
+For a pure electrostatic field with A = 0, this is
+
+                           ie2
+                                 Z
+                                    d3 x ūN (x)[γ 0 , γ]uN (x) · ∇[eA0 (x)].
+                                                               
+          [δEN ]F2 = −       2
+                                                                                       (14.3.19)
+                        32π me
+
+In the non-relativistic limit Zα ≪ 1, we can use the approximate result (14.1.43), which
+here reads
+                           i h    †               †
+                                                              i
+       ūN [γ 0 , γ]uN ≃
+                      
+                               (∇fN ) · σ σfN + fN  σ σ · ∇fN
+                          me
+                           i h    †             †               †
+                                                                            i
+                        =      ∇(fN fN ) − i(∇fN   × σ)fN − ifN   (σ × ∇fN ) .  (14.3.20)
+                          me
+
+
+
+
+                                                   16
+Using this in Eq. (14.3.8) and integrating by parts, this part of the energy shift is
+
+                      e2
+                              Z      h
+                                 3
+      [δEN ]F2 = −              d  x   − |fN (x)|2 ∇2 (eA0 (x))
+                    32π 2 m2e
+                                            †                             i
+                                       + 2ifN (x)σ · ∇(eA0 (x)) × ∇fN (x) .          (14.3.21)
+
+Combining Eqs. (14.3.12) and (14.3.21) gives the total high-energy contribution to the
+energy shift in an arbitrary electrostatic potential A0 :
+
+                            e2
+                                      2          Z
+                                         µ        2           †
+      [δEN ]high energy =            ln        +        d3 x fN (x)[e∇2 A0 (x)]fN (x)
+                          24π 2 m2e      m2e      5
+                                ie2
+                                       Z
+                                               †
+                                         d3 x fN (x)σ · ∇[eA0 (x)] × ∇fN (x) .
+                                                                                
+                          +      2   2
+                                                                                      (14.3.22)
+                            16π me
+B   Low-Energy Term
+The low-energy contribution to the energy shift is obtained from the first three terms in
+Eq. (14.2.24), making the replacement in the photon propagator
+                                 1               1                 1
+                                         −→               −                   .         (14.3.23)
+                              k 2 − iϵ        k 2 − iϵ        k 2 + µ2 − iϵ
+This substitution will eventually serve to cut off the integral over components of the photon
+four-momentum k at values of order µ, but it is not possible to see this until we carefully
+take mass renormalization into account, so we shall defer making any non-relativistic ap-
+proximations until then. Also, we are now including photon momenta as small or smaller
+than the binding energies of the atomic states, so we must treat the electrostatic forces
+responsible for this binding to all orders.
+    Instead of working with the momentum space formula (14.2.24), it will be convenient to
+return to the configuration space formula (14.2.18). This gives the low-energy contribution
+to the electron self-energy function as
+
+       [Σ∗A (x, y)]low energy = ie2 γ µ SA (x, y)γµ D(x − y; µ) + δme (µ)δ 4 (x − y)
+                               − i(Z2 (µ) − 1){γ µ [∂µ + ieAµ ] + me }δ 4 (x − y),      (14.3.24)
+
+where D(x − y; µ) is the modified photon propagator
+                              Z                                          
+                          1      4     −ik·(x−y)       1          1
+        D(x − y; µ) =           d  k e                     −                ,           (14.3.25)
+                        (2π)4                      k 2 − iϵ k 2 + µ2 − iϵ
+
+and the counterterms Z2 (µ) − 1 and δm(µ) are calculated using this modified propaga-
+tor. Converting from time to energy variables, the low-energy contribution to the function
+(14.2.13) is then
+
+                            ie2
+                                 Z                                                
+  ∗                                 4   µ               0       1           1
+[ΣA (x, y; E)]low energy =         d k γ SA (x, y; E − k )γµ 2      −                eik·(x−y)
+                           (2π)4                              k − iϵ k 2 + µ2 − iϵ
+                           − (Z2 (µ) − 1)(γ · ∇ + iγ 0 E + ieγ ν Aν + me )δ 3 (x − y) + δme (µ)δ 3 (x − y).
+                                                                                        (14.3.26)
+
+
+
+
+                                                     17
+The low-energy contribution to the energy shift is then given by Eq. (14.2.17) as
+                     Z      Z
+[δEN ]low energy = − d x d3 y ūN (x)[Σ∗A (x, y; EN )]low energy uN (y)
+                          3
+
+
+                       ie2
+                            Z       Z   Z
+                 = −           d k d x d3 y ūN (x)γ µ SA (x, y; EN − k 0 )γµ uN (y)
+                                 4    3
+                     (2π)4
+                                                                         Z
+                                   1         1           ik·(x−y)
+                            · 2       −                e          − δme (µ) d3 x ūN (x)uN (x).
+                                k − iϵ k 2 + µ2 − iϵ
+                                                                                     (14.3.27)
+
+Note that the terms proportional to Z2 (µ) − 1 have dropped out because the Dirac wave
+function uN (x) satisfies the Dirac equation Eq. (14.1.10). For the electron propagator in
+the presence of the Coulomb field, we use Eq. (14.2.15):
+                                    X uM (x)ūM (y)          X vM (x)v̄M (y)
+                   SA (x, y; E) =                        −                     ,
+                                        EM − E − iϵ              EM + E − iϵ
+                                    M                        M
+
+with the sums in the first and second terms running over all one-electron and one-positron
+states, respectively. The k 0 integrals can be done most easily by closing the contour of
+integration with a large semi-circle in the lower half-plane in the first term and in the upper
+half-plane in the second term:
+Z                                                                                         !
+      0         1                   1                    iπ                     1
+   dk                                             =p                                            ,
+          k 2 + µ2 − iϵ    EM ∓ EN ± k 0 − iϵ
+                                                                                p
+                                                       k2 + µ2 EM ∓ EN + k2 + µ2 − iϵ
+
+and likewise if µ is replaced with zero. The energy shift (14.3.27) now becomes
+                                           "
+                           e2
+                                Z                               
+                                     3
+                                       X ρ
+                                                     ∗                      1
+  [δEN ]low energy = −        3
+                                   d k       ΓM N (k) ΓρM N (k)
+                        2(2π)                                     |k|(EM − EN + |k| − iϵ)
+                                        M                                                !
+                                                                      1
+                                                 −p                      p
+                                                     k2 + µ2 (EM − EN + k2 + µ2 − iϵ)
+                                             
+                        e ρ (k)∗ Γ                        1
+                     −Γ   MN
+                                  e ρM N (k)
+                                               |k|(EM + EN + |k| − iϵ)                   !#
+                                                                      1
+                                                 −p                      p
+                                                     k2 + µ2 (EM + EN + k2 + µ2 − iϵ)
+                                Z
+                     − δme (µ) d3 x ūN (x)uN (x),                                   (14.3.28)
+
+where                                   Z
+                          ΓρM N (k) ≡       d3 y e−ik·y ūM (y)γ ρ uN (y),           (14.3.29)
+                                        Z
+                          e ρ (k) ≡
+                          Γ                 d3 y e−ik·y v̄M (y)γ ρ uN (y).           (14.3.30)
+                            MN
+
+(Of course, the ‘sum’ over M in Eq. (14.3.28) receives contributions only from electron states
+in the first term and positron states in the second term.) Eq. (14.3.28) could have been
+derived more directly from old-fashioned perturbation theory; the energy denominators
+
+
+
+
+                                                 18
+Figure 14.2. Old-fashioned perturbation theory diagrams for the low-energy part of the electron
+energy shift. Here solid lines are electrons; wavy lines are photons; the dashed line cuts through
+particle lines corresponding to the intermediate states appearing in the first two terms in (14.3.28)
+
+
+EM − EN + ω and EM + EN + ω are the result of subtracting the energy EN of the initial
+state from the energy of an intermediate state consisting of either an electron of energy EM
+and a photon of energy ω, or else a positron of energy EM , a photon of energy ω, and both
+the final and the initial electron. (See Figure 14.2.)
+     Before making any approximations to Eq. (14.3.28), it will be convenient to express
+the time components of the matrix elements ΓρM N and Γ  e ρ in terms of the corresponding
+                                                          MN
+space components, using relations2 derived from the conservation of the electric current:
+
+                                     ki ΓiM N (k) = (EN − EM )Γ0M N (k),                               (14.3.31)
+                                        e iM N (k) = (EN + EM )Γ
+                                     ki Γ                      e 0M N (k).                             (14.3.32)
+Furthermore, by using the completeness relation (14.1.8) it is straightforward to show that
+                           Xh                            i
+                                 0       2      0      2
+                               |ΓM N (k)| + |ΓM N (k)| = 1
+                                              e                                    (14.3.33)
+                                      M
+
+and
+ Xh                                                        i  Xh
+         |Γ0M N (k)|2 (EM − EN ) − |Γ
+                                    e 0M N (k)|2 (EM + EN ) =   −Γ0∗
+                                                                  M N (k)k · ΓM N (k)
+  M                                                                       M
+                                                                                                 i
+                                                                        −Γe 0∗
+                                                                            MN  (k)k · Γ
+                                                                                       e M N (k)
+                                                                               Z
+                                                                      = − ik · d3 x ūN (x)γuN (x) = 0,
+                                                                                                       (14.3.34)
+   2
+       To derive Eq. (14.3.31), note that
+                            Z
+           ki ΓM N (k) = −i d3 x e−ik·x ∇ · (ūM (x)γuN (x))
+               i
+
+                          Z               h                                i
+                                                                         0
+                       = i d3 x e−ik·x ∂0 ūM (x)γ 0 uN (x)e−i(EN −EM )x           = (EN − EM )Γ0M N (k).
+                                                                           x0 =0
+
+Eq. (14.3.32) is derived in the same way.
+
+
+
+
+                                                         19
+the last step following from the parity condition (14.1.23). In this way, Eq. (14.3.28) can
+be rewritten
+                                                     "
+                                   e2            X |ΓM N (k)|2 − |k · ΓM N (k)|2 /k2
+                                        Z
+           [δEN ]low energy = −            d3 k
+                                2(2π)3                      |k|(EM − EN + |k| − iϵ)
+                                                  M
+                                                                                        #
+                                         |ΓM N (k)|2 − |k · ΓM N (k)|2 /(k2 + µ2 )
+                                      −p                              p
+                                           k2 + µ2 (EM − EN + k2 + µ2 − iϵ)
+                                                     "
+                                   e2            X |Γ    e M N (k)|2 − |k · Γ
+                                                                            e M N (k)|2 /k2
+                                        Z
+                                             3
+                              +            d   k
+                                2(2π)3                        |k|(EM + EN + |k|)
+                                                  M
+                                                                                       #
+                                         e M N (k)|2 − |k · Γ
+                                        |Γ                     e M N (k)|2 /(k2 + µ2 )
+                                      − p                               p
+                                             k2 + µ2 (EM + EN + k2 + µ2 )
+                                  e2
+                                       Z                                           
+                                           3
+                                               X
+                                                       0        2    1        1
+                              −           d k       |Γ
+                                                     e M N (k)|        −
+                                (2π)3                               k2 k2 + µ 2
+                                                 M
+                                                  Z
+                                1
+                              + αµ − δme (µ) d3 x ūN (x)uN (x).                            (14.3.35)
+                                2
+In the next-to-last term, we have used the elementary integral
+                             Z                   
+                                      1       1
+                                 3
+                                d k      −           = 2µπ 2 .
+                                      k2 k2 + µ 2
+
+    So far, this has been an exact rewriting of Eq. (14.3.28). We must now invoke several
+approximations. First, consider mass renormalization. We have already calculated δme (µ)
+to order α in Section 11.4; it is
+
+                      2me π 2 e2 1
+                                                    2 2
+                                                    me x + µ2 (1 − x)
+                                  Z                                   
+            δme (µ) =                dx (1 + x) ln                      .       (14.3.36)
+                        (2π)4      0                     m2e x2
+
+Although in Section 11.4 we regarded µ as a regulator mass, to be taken much larger than
+me , we can just as well use Eq. (14.3.36) to provide a value for δme (µ) in the case that
+interests us here, µ ≪ me . In this limit Eq. (14.3.36) gives
+                                                              
+                                          αµ         3µ
+                            δme (µ) −→         1−         + ··· .                (14.3.37)
+                                           2       2πme
+
+We also recall that for Zα ≪ 1, uN (x) is given by Eq. (14.1.37) as
+                                     "                             #
+                                   1 (1 − σ · v/2 + · · · )fN (x)
+                         uN (x) = √                                  ,                     (14.3.38)
+                                    2 (1 + σ · v/2 + · · · )fN (x)
+
+where dots indicate terms of higher order in Zα; v is the non-relativistic velocity operator
+−i∇/me ; and fN (x) is a two-component spinor solution of the non-relativistic Schrödinger
+equation, normalized according to Eq. (14.1.38) so that
+                            Z
+                                              1
+                               |fN (x)|2 = 1 − (v2 )N N + · · · .                   (14.3.39)
+                                              4
+
+
+
+
+                                                 20
+This gives the coefficient of δme (µ) in Eq. (14.3.35) as
+                         Z
+                                                     1
+                            d3 x ūN (x)uN (x) = 1 − (v2 )N N + · · · .             (14.3.40)
+                                                     2
+
+We note immediately that the leading term in −δme (µ) d3 x ūN uN cancels the term αµ/2
+                                                          R
+
+in Eq. (14.3.35). Indeed, we could have anticipated this cancellation, because the term
+αµ/2 in Eq. (14.3.35) survives in the limit Zα → 0, and the definition of me (µ) as the
+renormalized electron mass implies that there must be no energy shift in this limit. By the
+same argument we can anticipate that the term of order αµ2 /me in δme (µ) (which is larger
+than of order α(Zα)4 me , and therefore cannot simply be neglected) cancels the second and
+third terms in Eq. (14.3.35), which are also of this order.3 On the other hand, the product
+of the αµ2 /me term in δme with the second term in the matrix element (14.3.40) is of order
+(Zα)2 αµ2 /me ≪ α(Zα)4 me , and may therefore be neglected. To order α(Zα)4 me , the only
+remaining effect of mass renormalization is to leave us with the product of the leading term
+in δme (µ) with the term of order (Zα)2 in d3 x ūN uN :
+                                              R
+
+                                      2 
+                                                        e2 µ 2
+                                                     
+                                      e µ   1
+                                 −         − (v2 )N N =     (v )N N .
+                                       8π   2           16π
+
+(This is the effect of mass renormalization on the electron kinetic energy, mentioned in
+Section 1.3.) It turns out that this is just the negative of what the first term in Eq. (14.3.35)
+would be if we neglected the difference between energy levels. To see this, note that the
+   3
+    The cancellation can be shown as follows. We anticipate that the second and third terms in Eq. (14.3.35)
+are small enough so that they can be evaluated using the extreme nonrelativistic approximation βuN (x) =
+uN (x) for the Dirac equation satisfied by uN (x). On the other hand, although the Coulomb force may
+be neglected in the positron wave functions vM (x), the sum over M in the third term receives important
+contributions from relativistic positrons, so we use the approximation vp,σ (x) = (2π)−3/2 v(p, σ)eip·x , where
+v(p, σ) is the positron spinor introduced in Section 5.5, normalized so that v̄(p, σ ′ )v(p, σ) = δσ′ σ . Thus the
+sums over M in the second and third terms of Eq. (14.3.35) are approximately given by
+                          "                                 #        √ 2              
+                        1 X e i∗          j                             k + m2e + me
+                               ΓM N (k)Γe
+                                          MN (k) + (i ↔  j)   ≃ δ ij     √               ,
+                        2 M                                             2 k2 + m2e
+                                                                √ 2              
+                                              X 0           2        k + m2e − me
+                                                 |ΓM N (k)| ≃
+                                                  e                    √             .
+                                              M
+                                                                      2 k2 + m2e
+
+To leading order in µ/me , the second and third terms in Eq. (14.3.35) are then, respectively,
+                                     "                          #√
+                      e2                     3 − k2 /(k2 + µ2 )                        αµ2
+                             Z                                                    
+                                 3     2                            k2 + m2e + me
+                −          3
+                               d   k     −       p                   √              ≃       ,
+                  4me (2π)             k              2
+                                                     k +µ  2            2
+                                                                    2 k + me  2       4πme
+                                                               √ 2
+                               e2                                                       αµ2
+                                      Z                                          
+                                           3     1         1        k + m2e − me
+                           −        3
+                                         d   k     2
+                                                     −   2   2
+                                                                     √              ≃−        .
+                             2(2π)               k      k +µ            2
+                                                                    2 k + me  2         πme
+
+(Eq. (14.3.32) rules out the possibility that a relativistic correction to the latter expression might not be sup-
+pressed by the factor k2 /m2e that appears in this expression for |k|2 ≪ m2e .) These two terms are cancelled
+by the term +3µ2 /4πme in −δme (µ) d3 x ūN (x)uN (x). Finally, we note that relativistic corrections to the
+                                        R
+
+above estimates for the sums over positron states would involve additional factors of v 2 /c2 ≃ (Zα)2 , yielding
+contributions of order α(Zα)2 µ2 /me ≪ α(Zα)4 me , which justifies the non-relativistic approximations used
+here.
+
+
+
+
+                                                       21
+integral in this term is effectively cut off at |k| ∼ µ ≪ Zαme , so we can evaluate the matrix
+element ΓM N (k) in the limit k → 0. To lowest order in Zα, Eq. (14.1.42) gives
+
+                                        ΓM N (0) = (v)M N                                 (14.3.41)
+
+and using the completeness of the solutions fN of the non-relativistic Schrödinger equation,
+we then have
+                                          j
+                            X
+                                Γi∗                    i j
+                                  M N (k)ΓM N (k) ≃ (v v )N N ,                    (14.3.42)
+                                M
+so to this order
+      e2
+           Z      X  |ΓM N (k)|2 − |k · ΓM N (k)|2 /k2 |ΓM N (k)|2 − |k · ΓM N (k)|2 /(k2 + µ2 ) 
+                3
+ −            d k                                         −
+   2(2π)3                                k2                                  k2 + µ 2
+                   M
+             e2                             1 − k2 /3(k2 + µ2 )       e2 µ 2
+                            Z                                  
+                     2         3      2
+     ≃−           (v   ) NN   d  k       −                        = −     (v )N N .
+          2(2π)3                     3k2         k2 + µ 2             16π
+Thus after mass renormalization we are left with just the first term in Eq. (14.3.35), less
+the same with energy differences EN − EM dropped:
+                                                        "
+                           e2                             |ΓM N (k)|2 − |k · ΓM N (k)|2 /k2
+                                Z       X
+                                    3
+      [δEN ]low energy =           d  k   (E M  − E N )
+                         2(2π)3                              k2 (EM − EN + |k| − iϵ)
+                                        M
+                                                                               #
+                                     |ΓM N (k)|2 − |k · ΓM N (k)|2 /(k2 + µ2 )
+                                  −                          p                   .       (14.3.43)
+                                     (k2 + µ2 )(EM − EN + k2 + µ2 − iϵ)
+
+Again using Eq. (14.3.41), this is
+                                                                  "
+                         e2 X
+                                                        Z
+                                                                          2
+    [δEN ]low energy =        (EM − EN )|vM N |2             3
+                                                            d k
+                       2(2π)3                                  3k2 (EM − EN + |k| − iϵ)
+                                M
+                                                                              #
+                                                   1 − k2 /3(k2 + µ2 )
+                                      −                         p               .   (14.3.44)
+                                        (k2 + µ2 )(EM − EN + k2 + µ2 − iϵ)
+
+Even though typical values of the electron momentum are much larger than typical atomic
+energy differences, this is not true of typical values of |k| in this integral, because the integral
+would be infrared divergent if we did not keep the EM − EN terms in the denominators.
+The integral in Eq. (14.3.44) may be evaluated in the limit µ ≫ |EM − EN | ∼ (Zα)2 me
+by dividing the range of integration of |k| into two segments, from zero to λ and from λ to
+infinity, with λ chosen so that |EM − EN | ≪ λ ≪ µ but otherwise arbitrary. In this way
+we find
+       Z ∞       "                                                                          #
+             2                 2                            1 − k 2 /3(k 2 + µ2 )
+            k dk                              −
+                   3k 2 (EM − EN + k) − iϵ (k 2 + µ2 )(EM − EN + k 2 + µ2 − iϵ)
+                                                                           p
+         0
+                                                                     
+                       2            µ             5
+                   ≃      ln                   + + iπθ(EN − EM ) .
+                       3      2|EM − EN |         6
+The imaginary term here reflects the possibility of decay of the atom in state N to states
+M of lower energy. This term contributes to the decay rate, given by the imaginary part
+
+
+
+
+                                                22
+of the energy shift. We are interested here in the real part of the energy shift, and so will
+drop this imaginary term in what follows. Eq. (14.3.44) now gives
+
+                         e2 X
+                                                                         
+                                                 2            µ           5
+      [δEN ]low energy = 2     (EM − EN )|vM N | ln                    +      .     (14.3.45)
+                        6π                              2|EN − EM |       6
+                                M
+
+C   Total Energy Shift
+We need to make a connection between the sum in Eq. (14.3.45) and the matrix element
+in the high-energy term (14.3.22). For this purpose, let’s first see what value the sum in
+Eq. (14.3.45) would have if we could ignore the logarithm. We note that (EM − EN )vN M =
+[v, H]N M , so
+              X                           1X i
+                  (EM − EN )|vM N |2 =                  i      i        i
+                                                                              
+                                            [v , H]N M vM N + vN M [H, v ]M N
+                                          2
+              M                              M
+                                              1
+                                                  [pi , [pi , H]] N N .
+                                                                 
+                                        =−      2
+                                             2me
+The only term in the non-relativistic Hamiltonian H that does not commute with the
+momentum operator p is the potential term −eA0 (x), so this gives
+                   X                            e
+                      (EM − EN )|vM N |2 = − 2 ∇2 A0 (x) N N .
+                                                             
+                                                                          (14.3.46)
+                                              2me
+                        M
+
+Inspection of Eqs. (14.3.45) and (14.3.22) now shows that the term proportional to ln µ in
+the high-energy term is cancelled by the term proportional to ln µ in the low-energy term:
+
+              δEN = [δEN ]high energy + [δEN ]low energy
+                     e2 X
+                                                                         
+                                                 2           me         5 1
+                  = 2        (EM − EN )|vM N | ln                      + −
+                    6π                                   2|EN − EM |    6 5
+                            M
+                            e2
+                                 σ · (∇(eA0 (x)) × p) N N .
+                                                     
+                      −      2 2
+                                                                                       (14.3.47)
+                          16π me
+
+So far, this has been for a general electrostatic field A0 (x). Let us now specialize to a pure
+Coulomb field, with
+                                       A0 (x) = Ze/|x|.                               (14.3.48)
+In this case, Eq. (14.3.46) reads
+          X                             Ze2 3             Ze2 †
+              (EM − EN )|vM N |2 =
+                                                                          
+                                          2
+                                            (δ (x)) N N =   2
+                                                              fN (0)fN (0) .           (14.3.49)
+                                        2me               2me
+          M
+
+This is non-vanishing only for ℓ = 0.            Also, the matrix element in the last term in
+Eq. (14.3.47) has the value
+                                                                             
+                                    0
+                                                            2       1
+                      σ · (∇(eA (x)) × p) N N = −Ze                     σ·L        ,   (14.3.50)
+                                                                     r3       NN
+
+which is non-vanishing only for ℓ ̸= 0. It is therefore useful at this point to divide our
+consideration between the two cases, ℓ = 0 and ℓ ̸= 0.
+
+
+
+
+                                                   23
+i.   ℓ = 0 It is convenient here to define a mean excitation energy ∆EN :
+        X                                               X
+           |vM N |2 (EM − EN ) ln |EN − EM | = ln ∆EN      |vM N |2 (EM − EN )
+         M                                                  M
+                                                  Ze2            †          
+                                             =           ln ∆EN fN (0)fN (0) .     (14.3.51)
+                                                  2m2e
+For s-wave hydrogenic states, the label N consists of a principal quantum number n and
+                                                          √
+spin z-component m, and [fnm (0)]σ = 2(Zαme /n)3/2 δσ,m / 4π, so
+                                                             3
+                                †           1         Zαme
+                               fN (0)fN (0) =                      .               (14.3.52)
+                                              π         n
+
+Using Eqs. (14.3.51) and (14.3.52) in Eq. (14.3.47) gives the energy shift in these states as
+
+                                 4α(Zα)4 me
+                                                                  
+                                                       me         19
+                    [δE]n,ℓ=0 =                ln              +       .            (14.3.53)
+                                    3πn3           2∆En,ℓ=0       30
+
+ii. ℓ ̸= 0 For non-vanishing orbital angular momentum the sum (14.3.49) vanishes, so
+the definition (14.3.51) is inappropriate. Instead, it is conventional here to define a mean
+excitation energy ∆EN by
+
+                                                 2(Zα)4 me
+                                                                           
+        X
+                               2                                   2∆EN
+            (EM − EN )|vM N | ln |EN − EM | =                ln               .     (14.3.54)
+                                                     n3           Z 2 α2 me
+         M
+
+(Because Eq. (14.3.49) vanishes, it makes no difference what units are used to measure
+EN − EM in Eq. (14.3.54).) Also, in a state of total angular momentum j and orbital
+angular momentum ℓ, the scalar product σ ·L has the familiar value j(j +1)−ℓ(ℓ+1)−3/4,
+and for principal quantum number n the operator 1/r3 has the expectation value
+
+                                                 2Z 3 α3 m3e
+                          Z
+                            d3 r |fN |2 /r3 = 3                 .              (14.3.55)
+                                             n ℓ(ℓ + 1)(2ℓ + 1)
+
+Putting this all together in Eq. (14.3.47), we have for ℓ ̸= 0:
+
+                                  4α(Zα)4 me
+                                                            
+                                                   2∆Enjℓ
+                    [δE]njℓ = −               ln
+                                     3πn3          Z 2 α2 me
+                                             "                       #
+                                  α(Zα)4 me j(j + 1) − ℓ(ℓ + 1) − 34
+                               +                                       .           (14.3.56)
+                                     2πn3         ℓ(ℓ + 1)(2ℓ + 1)
+
+It only remains to use these results to give numerical value for the energy shifts. The mean
+excitation energies here must be calculated numerically; using non-relativistic hydrogen
+wave functions, they have the values [5]:
+
+                               ∆E1s = 19.769266917(6) Ry,
+
+                                ∆E2s = 16.63934203(1) Ry,
+                               ∆E2p = 0.9704293186(3) Ry,
+
+
+
+
+                                             24
+where 1 Ry ≡ me α2 /2 = 13.6057 eV. Eq. (14.3.53) then gives
+
+                         4α5 me
+                                                  
+                                       me         19
+               [δE]1s =           ln           +       = 3.3612 · 10−5 eV
+                           3π        2∆E1s        30
+                        = 2πℏ · 8127.4 MHz,                                          (14.3.57)
+
+
+                           α5 me
+                                               
+                                      me       19
+                  [δE]2s =        ln         +      = 4.2982 · 10−5 eV
+                            6π       2∆E2s     30
+                         = 2πℏ · 1039.31 MHz,                                        (14.3.58)
+
+while Eq. (14.3.56) gives
+                                     2
+                            α 5 me
+                                                  
+                                        α me     1
+                [δE]2p1/2 =         ln         −     = −5.3267 · 10−8 eV
+                             6π        2∆E2p     8
+                            = 2πℏ · (−12.88) MHz.                                    (14.3.59)
+
+The classic Lamb shift is the energy difference between the 2s and 2p1/2 states of the
+hydrogen atom, states that would be degenerate in the absence of radiative corrections.
+Our calculation has given
+
+                [δE]2s − [δE]2p1/2 = 4.35152 · 10−5 eV = 2πℏ · 1052.19 MHz.
+
+This is numerically close (though analytically not identical) to the old result of Kroll and
+Lamb [6] and French and Weisskopf [7], which they obtained using the techniques of old-
+fashioned perturbation theory. Earlier in this section we made a crude estimate of 1300 MHz
+by considering only the high-energy contribution to the 2s energy shift, with an infrared
+cutoff guessed to be of order α2 me = 2 Ry. We can now see that this was an overestimate,
+arising mostly from the fact that the true value of the effective infrared cutoff ∆E2s =
+16.64 Ry is considerably larger than we had guessed. On the other hand, as described
+in Section 1.3, in 1947 Hans Bethe [8] was able to make a rather good estimate of the
+Lamb shift, 1040 MHz, by considering only the low-energy contribution to the 2s energy
+shift, with an ultraviolet cutoff guessed to be me . (Bethe made the first estimate of the
+excitation energy, ∆E2s ≃ 17.8 Ry.)
+     The calculation of the Lamb shift described here has been improved by the inclusion of
+higher-order radiative corrections and nuclear size and recoil effects. At present the greatest
+uncertainty is due to a doubt about the correct value of the rms charge radius rp of the
+proton. For rp = 0.862 · 10−13 cm or rp = 0.805 · 10−13 cm, one calculation [9] gives a Lamb
+shift of either 1057.87 MHz or 1057.85 MHz, while another [10] gives either 1057.883 MHz
+or 1057.865 MHz. Given the uncertainty in proton radius, the agreement is excellent with
+the present experimental value [11], 1057.845(9) MHz. The accuracy of this experimental
+value is limited chiefly by the ∼ 100 MHz natural linewidth of the 2p state in hydrogen, so
+further improvements here will be very difficult.
+     In the last few years there has been an important improvement in measurements of the
+energy shift of the 1s ground state itself, by direct comparison of the frequency of the 1s–2s
+
+
+
+
+                                              25
+resonance with four times the frequencies of the 2s–4s and 2s–4d two-photon resonances.
+These s and d states are much narrower than the 2p state, so these frequency differences
+can be measured more accurately than the classic Lamb shift. For a brief while it seemed
+that there was a discrepancy here between theory and experiment. Calculations [12,13]
+showed that for a proton radius rp = 0.862(11) · 10−13 cm or 0.805(11) · 10−13 cm, the
+inclusion of proton size and other corrections increases the theoretical 1s energy shift from
+the above result of 8127.4 MHz to 8173.12(6) MHz or 8172.94(9) MHz, respectively. This
+result for a proton radius rp = 0.862(11) · 10−13 cm, which is believed to be more reliable,
+was not quite in agreement with the measured value [13] of 8172.86(5) MHz. But a later
+calculation [14] that adopts this proton radius and includes terms of order α2 (Zα)5 yields
+energy shifts for the 1s, 2s, and 4s states in agreement with experiment. So apparently
+quantum electrodynamics wins again.
+
+Problems
+  1. Consider a charged scalar particle of mass m ̸= 0, described by a field ϕ(x) whose only
+     interaction is with an external time-independent electromagnetic field Aµ (x). Let |N ⟩
+     be a complete set of normalized one-boson or one-antiboson states with energies EN ,
+     and define
+
+                 uN (x)e−iEN t = ⟨Ω|ϕ(x, t)|N ⟩,    vN (x)eiEN t = ⟨N |ϕ(x, t)|Ω⟩,
+
+     where |Ω⟩ is the vacuum. Show that the uN and vN together form a complete set, and
+     give formulas for the coefficients of uN and vN in the expansion of a general function
+     f (x).
+
+  2. Suppose we include radiative corrections in the theory of Problem 1. Let iΠ∗ (x, y)
+     be the sum of all diagrams with one incoming and one outgoing charged scalar line
+     (excluding final scalar propagators) to order α. Derive a formula for the shift in the
+     energies EN of the one-boson states due to these radiative corrections, in terms of
+     uN (x) and Π∗ (x, y).
+
+  3. Use the results of Section 14.3 to calculate the radiative decay rate of the 2p states
+     of hydrogen.
+
+  4. Suppose that the electron has an interaction with a light scalar field ϕ, of the form
+     gϕψ̄e ψe . Suppose that the scalar mass mϕ is in the range (Zα)2 me ≪ mϕ ≪ Zαme .
+     Calculate the change in the energy of the 1s state of hydrogenic atoms due to this
+     interaction.
+
+  5. Carry out the calculation of Problem 4 for mϕ = 0.
+
+References
+  1. P. A. M. Dirac, Proc. Roy. Soc. (London) A117, 610 (1928).
+
+
+
+
+                                             26
+ 2. See, e.g., A. R. Edmonds, Angular Momentum in Quantum Mechanics, (Princeton
+    University Press, Princeton, 1957); M. E. Rose, Elementary Theory of Angular Mo-
+    mentum (John Wiley & Sons, New York, 1957).
+
+ 3. See, e.g., L. I. Schiff, Quantum Mechanics, (McGraw-Hill, New York, 1949): Section
+    43. The original references are C. G. Darwin, Proc. Roy. Soc. (London) A118, 654
+    (1928); ibid., A120, 621 (1928); W. Gordon, Zeit. f. Phys. 48, 11 (1928).
+
+ 4. G. E. Brown, J. S. Langer, and G. W. Schaefer, Proc. Roy. Soc. (London) A251, 92
+    (1959); G. E. Brown and D. F. Mayers, Proc. Roy. Soc. (London) A251, 105 (1959);
+    A. M. Desiderio and W. R. Johnson, Phys. Rev. A3, 1267 (1971).
+
+ 5. R. W. Huff, Phys. Rev. 186, 1367 (1969).
+
+ 6. N. M. Kroll and W. E. Lamb, Phys. Rev. 75, 388 (1949).
+
+ 7. J. B. French and V. F. Weisskopf, Phys. Rev. 75, 1240 (1949).
+
+ 8. H. A. Bethe, Phys. Rev. 72, 339 (1947).
+
+ 9. J. R. Sapirstein and D. R. Yennie, in Quantum Electrodynamics, ed. by T. Kinoshita
+    (World Scientific, Singapore, 1990): p. 575, and references quoted therein.
+
+10. H. Grotch, Foundations of Physics 24, 249 (1994).
+
+11. S. R. Lundeen and F. M. Pipkin, Phys. Rev. Lett. 46, 232 (1981); S. R. Lundeen and
+    F. M. Pipkin, Metrologia 22, 9 (1986). For a review, see F. M. Pipkin, in Quantum
+    Electrodynamics, ed. by T. Kinoshita (World Scientific, Singapore, 1990): p. 697.
+
+12. M. Weitz, A. Huber, F. Schmidt-Kaler, D. Leibfried, and T. W. Hänsch, Phys. Rev.
+    Lett. 72, 328 (1994).
+
+13. M. Weitz, F. Schmidt-Kaler, and T. W. Hänsch, Phys. Rev. Lett. 68, 1120 (1992),
+    and Ref. 12.
+
+14. K. Pachucki, Phys. Rev. Lett. 72, 3154 (1994).
+
+
+
+
+                                         27
+
