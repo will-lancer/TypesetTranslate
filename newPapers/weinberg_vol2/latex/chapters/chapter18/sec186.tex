@@ -1,2 +1,116 @@
-% Outline scaffold for Section 18.6. Main content intentionally omitted.
+% Source coverage: physical PDF pp. 171--174 (printed pp. 148--151), beginning at the Section 18.6 heading on p. 171 and ending with the section's final sentence on p. 174, immediately before the Section 18.7 heading on p. 175.
+% Numbered equations: (18.6.1)--(18.6.15), with all unnumbered displays. Figures/tables: none. Footnotes: none. Inline chapter references: [9], [5].
+% Rendered-source correction: the section ends at (18.6.15), not the provisional (18.6.14) stated in the initial request and coverage manifest.
+
 \subsection{Minimal Subtraction}
+
+We saw in Section 11.2 that dimensional regularization provides a particularly convenient method for calculating radiative corrections in quantum electrodynamics, because it preserves the conservation laws associated with gauge invariance. For the same reason, dimensional regularization also turns out to provide a very convenient alternative definition for the sliding scale of the renormalization group in general gauge theories~\hyperref[ch18-ref-9]{[9]}.
+
+In calculations using dimensional regularization, ultraviolet divergences arise as poles in physical amplitudes when the spacetime dimensionality $d$ approaches the physical value $d=4$. (For an example, see Eq.~(11.2.13).) To cancel these poles, the bare coupling constants $g_B^\ell(d)$ (including masses) must themselves have such poles, with residues fixed by the condition that physical amplitudes be regular as $d\to4$. These bare couplings in general have non-zero dimensionalities $\Delta_\ell(d)$ that depend on the spacetime dimensionality $d$, so it is convenient to consider the dimensionless quantity $g_B^\ell(d)\mu^{-\Delta_\ell(d)}$, where $\mu$ is a sliding scale with the dimensions of energy or mass. This rescaled bare coupling may be expressed as a sum of terms proportional to positive-definite powers $\nu$ of $1/(d-4)$, with coefficients $b_\nu^\ell$ fixed by the requirement of cancellation of singularities as $d\to4$ in physical amplitudes, plus a remainder that is analytic in $d$ at $d=4$. This remainder is identified as the dimensionless renormalized coupling constant $g^\ell(\mu,d)$, so
+\begin{equation}
+g_B^\ell(d)\mu^{-\Delta_\ell(d)}
+=g^\ell(\mu,d)+\sum_{\nu=1}^{\infty}(d-4)^{-\nu}
+b_\nu^\ell\bigl(\mathbf{g}(\mu,d)\bigr).
+\tag{18.6.1}\label{eq:18.6.1}
+\end{equation}
+We are free to give the bare couplings any $d$ dependence we like, as long as the singularities at $d=4$ in physical amplitudes are cancelled; we shall remove this ambiguity by requiring that $g^\ell(\mu,d)$ be analytic in $d$ not only at $d=4$, but for all $d$.
+
+To calculate the renormalization group equation satisfied by $g^\ell(\mu,d)$, first differentiate Eq.~\eqref{eq:18.6.1} with respect to $\mu$:
+\begin{equation}
+\begin{aligned}
+-\Delta_\ell(d)
+\left[g^\ell+\sum_{\nu=1}^{\infty}(d-4)^{-\nu}b_\nu^\ell(\mathbf{g})\right]
+&=\beta^\ell(\mathbf{g},d)\\
+&\quad+\sum_{\nu=1}^{\infty}\sum_m b_{\nu m}^\ell(\mathbf{g})
+\beta^m(\mathbf{g},d)(d-4)^{-\nu},
+\end{aligned}
+\tag{18.6.2}\label{eq:18.6.2}
+\end{equation}
+where
+\begin{equation}
+b_{\nu m}^\ell(\mathbf{g})\equiv
+\frac{\partial}{\partial g^m}b_\nu^\ell(\mathbf{g})
+\tag{18.6.3}\label{eq:18.6.3}
+\end{equation}
+and as before
+\begin{equation}
+\mu\frac{d}{d\mu}g^\ell(\mu,d)
+=\beta^\ell\bigl(\mathbf{g}(\mu,d),d\bigr).
+\tag{18.6.4}\label{eq:18.6.4}
+\end{equation}
+Note that $\beta^\ell$ is a function of all of the $g^m(\mu,d)$ and also of $d$, but it cannot depend separately on $\mu$ because, with rescaled masses included among the dimensionless coupling parameters, there are no other dimensionful parameters besides $\mu$.
+
+As we have seen, the dimensionalities $\Delta_\ell(d)$ are always linear functions of $d$, which we shall now write as
+\begin{equation}
+\Delta_\ell(d)=\Delta_\ell+\rho_\ell(d-4).
+\tag{18.6.5}\label{eq:18.6.5}
+\end{equation}
+We rewrite the left-hand side of Eq.~\eqref{eq:18.6.2} as
+\[
+-\rho_\ell g^\ell(d-4)
+-\bigl[\Delta_\ell g^\ell+b_1^\ell(\mathbf{g})\rho_\ell\bigr]
+-\sum_{\nu=1}^{\infty}(d-4)^{-\nu}
+\bigl[\rho_\ell b_{\nu+1}^\ell(\mathbf{g})
++\Delta_\ell b_\nu^\ell(\mathbf{g})\bigr].
+\]
+The highest power of $d$ in the analytic part here is of first order, so the same must be true on the right-hand side of Eq.~\eqref{eq:18.6.2}, and therefore $\beta(\mathbf{g},d)$ must be linear in $d$:
+\begin{equation}
+\beta^\ell(\mathbf{g},d)=\beta^\ell(\mathbf{g})+(d-4)\alpha^\ell(\mathbf{g}).
+\tag{18.6.6}\label{eq:18.6.6}
+\end{equation}
+Equating terms of first and zeroth order in \eqref{eq:18.6.2} gives then
+\begin{equation}
+\alpha^\ell(\mathbf{g})=-\rho_\ell g^\ell
+\tag{18.6.7}\label{eq:18.6.7}
+\end{equation}
+and, more importantly,
+\begin{equation}
+\beta^\ell(\mathbf{g})=-\Delta_\ell g^\ell-b_1^\ell(\mathbf{g})\rho_\ell
++\sum_{\nu=1}^{\infty}\sum_m b_{1m}^\ell(\mathbf{g})\rho_m g^m.
+\tag{18.6.8}\label{eq:18.6.8}
+\end{equation}
+It is noteworthy that the beta-function depends only on the coefficients of the simple pole in the bare couplings. In fact, these coefficients also determine the coefficients of all the higher poles; equating the pole terms on the right and left of Eq.~\eqref{eq:18.6.2} yields the recursion relation
+\begin{equation}
+\rho_\ell b_{\nu+1}^\ell(\mathbf{g})
+-\sum_m\rho_m g^m b_{\nu+1\,m}^\ell(\mathbf{g})
+=-\Delta_\ell b_\nu^\ell(\mathbf{g})
+-\sum_m b_{\nu m}^\ell(\mathbf{g})\beta^m(\mathbf{g}).
+\tag{18.6.9}\label{eq:18.6.9}
+\end{equation}
+
+For instance, in order for $\int d^d x\,F_{\mu\nu}F^{\mu\nu}$ to be dimensionless, any gauge field $A^\mu$ must have dimensions (in powers of mass) $(d-2)/2$, and since $g_BA^\mu$ must have the same dimensions as $\partial/\partial x^\mu$, $g_B$ must have dimensions $(4-d)/2$, so that for gauge couplings $\Delta=0$ and $\rho=-1/2$. Eq.~\eqref{eq:18.6.8} gives then for a gauge theory with a single coupling constant:
+\begin{equation}
+\beta(g)=\frac{1}{2}\bigl[b_1(g)-g b_1'(g)\bigr].
+\tag{18.6.10}\label{eq:18.6.10}
+\end{equation}
+In particular, Eq.~(11.2.20) shows that in quantum electrodynamics in one-loop order the bare electric charge has a pole at $d\to4$ with
+\begin{equation}
+e_B=Z_3^{-1/2}e\to e-\frac{e^3}{12\pi^2}\frac{1}{d-4}.
+\tag{18.6.11}\label{eq:18.6.11}
+\end{equation}
+Setting $b_1(e)=-e^3/12\pi^2$ in Eq.~\eqref{eq:18.6.10} gives then
+\begin{equation}
+\beta(e)=\frac{e^3}{12\pi^2},
+\tag{18.6.12}\label{eq:18.6.12}
+\end{equation}
+in agreement with the previous result \eqref{eq:18.2.37}.
+
+The coupling constants $g^\ell(\mu)$ introduced in this section are said to be defined by \emph{minimal subtraction}. There is a slightly different scheme that is somewhat more convenient. The simple poles $(d-4)^{-1}$ typically arise from functions $(4\pi)^{d/2-2}\Gamma(2-d/2)$ (as in Eq.~(11.2.13)) which for $d\to4$ have the limit
+\begin{equation}
+(4\pi)^{2-d/2}\Gamma\left(2-\frac{d}{2}\right)
+\to\frac{1}{2-d/2}-\gamma+\ln4\pi,
+\tag{18.6.13}\label{eq:18.6.13}
+\end{equation}
+where $\gamma$ is the Euler constant, $\gamma=0.5772157$. It is therefore convenient to make the replacement everywhere in Eq.~\eqref{eq:18.6.1}:
+\begin{equation}
+\frac{1}{d-4}\to\frac{1}{d-4}+\frac{\gamma}{2}-\frac{1}{2}\ln4\pi.
+\tag{18.6.14}\label{eq:18.6.14}
+\end{equation}
+With this prescription, the coupling constants are said to be defined by \emph{modified minimal subtraction}.
+
+One of the distinguishing characteristics of the definition of couplings by minimal subtraction (or modified minimal subtraction) is that, since no factors of an ultraviolet cut-off ever appear in any calculation, loop diagrams have poles at $d=4$ that correspond only to logarithmic ultraviolet divergences, not divergences that are linear, quadratic, etc. Hence a residue function $b_1^\ell(\mathbf{g})$ can contain a term of order $g^a g^b g^c\cdots$ only if at $d=4$ the dimensionality of $g_B^\ell$ equals the total dimensionality of the couplings $g_B^a$, $g_B^b$, $g_B^c$, etc.:
+\begin{equation}
+\Delta_\ell=\Delta_a+\Delta_b+\Delta_c+\cdots,
+\tag{18.6.15}\label{eq:18.6.15}
+\end{equation}
+and it follows then from \eqref{eq:18.6.8} that the same is true of $\beta^\ell(\mathbf{g})$. In particular, in a theory with no superrenormalizable couplings (like a gauge theory with massless spinors and no scalars, such as quantum electrodynamics with vanishing electron mass) all couplings have $\Delta_\ell\leq0$, so \emph{the renormalization group equations for the renormalizable couplings (with $\Delta_\ell=0$) are unaffected by the presence of any non-renormalizable interactions}~\hyperref[ch18-ref-5]{[5]}. Also, in such a theory the beta-functions for the non-renormalizable couplings are polynomials of finite order in the non-renormalizable couplings, with each coefficient in each polynomial given by an infinite series of powers of the renormalizable couplings. For instance, in the theory of photons and massless electrons (assuming invariance under $\psi\to\gamma_5\psi$ and $P$), there are no nonrenormalizable interactions of dimensionality $+5$, and several interactions of dimensionality $+6$ (four-fermion interactions as well as the purely photonic interaction $F_{\mu\nu}\Box F^{\mu\nu}$) with couplings $f_i$ of dimensionality $-2$. The beta-function for $f_i$ is of the form $\sum_j b_{ij}(e)f_j$, with the coefficients $b_{ij}(e)$ given by a power series in $e$.

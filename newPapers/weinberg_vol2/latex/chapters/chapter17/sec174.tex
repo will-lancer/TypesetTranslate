@@ -1,2 +1,414 @@
-% Outline scaffold for Section 17.4. Main content intentionally omitted.
+% Source: physical pp. 118--123 (printed pp. 95--100). Coverage: Section 17.4 from its heading through the paragraph immediately before Section 17.5; Eqs. (17.4.1)--(17.4.48), all unnumbered displays, citation [5], and two footnotes. Figures/tables/dividers: none. Uncertainties: none.
 \subsection{Background Field Gauge}
+
+We next turn to a method of calculation that explicitly preserves a sort of
+gauge invariance, and that therefore proves extremely convenient, especially
+in one-loop calculations. We consider the effective action
+$\Gamma[A,\psi,\omega,\omega^*]$ as a functional\footnote{We are now returning to the specific choice of the gauge-fixing functional $B[f]$ as the Gaussian \eqref{eq:15.7.4}, and we are integrating out the auxiliary field $h_\alpha$, so that the gauge-fixing term in the modified Lagrangian is just $-f_\alpha f_\alpha/2\xi$.}
+of classical external gauge, matter, ghost and antighost fields:
+$A_{\alpha\mu}(x)$, $\psi_\ell(x)$, $\omega_\alpha(x)$,
+$\omega_\alpha^*(x)$. Even though ghosts and antighosts never appear in
+initial or final states, we are considering background ghost and antighost
+fields as well as gauge and matter fields in order to deal with parts of
+diagrams that have external ghost or antighost lines.
+
+As described in Section 16.1, $\Gamma[A,\psi,\omega,\omega^*]$ is the sum of
+connected one-particle-irreducible graphs for the vacuum--vacuum amplitude,
+calculated in a theory in which the quantum fields
+$A'$, $\psi'$, $\omega'$, $\omega'{}^*$ over which we integrate are replaced
+in the action with shifted fields $A+A'$, $\psi+\psi'$, $\omega+\omega'$,
+$\omega^*+\omega'{}^*$, the path integral being taken over primed fields
+with the unprimed fields held fixed. We are free to choose the gauge-fixing
+function $f_\alpha(x)$ pretty much any way we like; instead of our previous
+choice $f_\alpha=\partial_\mu A_\alpha^\mu$ (or
+$\partial_\mu[A_\alpha^{\prime\mu}+A_\alpha^\mu]$) we shall now
+take~\hyperref[ch17-ref-5]{[5]}
+\begin{equation}
+f_\alpha=\partial_\mu A_\alpha^{\prime\mu}
++C_{\alpha\beta\gamma}A_\beta{}^\mu A'_{\gamma\mu}.
+\label{eq:17.4.1}
+\end{equation}
+The reason for this choice is that it makes the gauge-fixing term
+$f_\alpha f_\alpha$ invariant under a formal transformation, in which the
+background field $A_\alpha^\mu$ transforms as a gauge field, while the
+quantum field $A_\alpha^{\prime\mu}$ transforms homogeneously, like an
+ordinary matter field that happens to belong to the adjoint representation
+of the gauge group
+\begin{equation}
+\delta A_\alpha^\mu=\partial^\mu\epsilon_\alpha
+-C_{\alpha\beta\gamma}\epsilon_\beta A_\gamma^\mu,
+\label{eq:17.4.2}
+\end{equation}
+\begin{equation}
+\delta A_\alpha^{\prime\mu}
+=-C_{\alpha\beta\gamma}\epsilon_\beta A_\gamma^{\prime\mu}.
+\label{eq:17.4.3}
+\end{equation}
+The transformation properties of $f_\alpha$ can be seen most easily by
+writing it as a new sort of covariant derivative
+\begin{equation}
+f_\alpha\equiv\bar D_\mu A_\alpha^{\prime\mu},
+\label{eq:17.4.4}
+\end{equation}
+where for any field $\phi_\alpha$ in the adjoint representation
+\begin{equation}
+\bar D_\mu\phi_\alpha\equiv
+\partial_\mu\phi_\alpha+C_{\alpha\beta\gamma}A_{\beta\mu}\phi_\gamma.
+\label{eq:17.4.5}
+\end{equation}
+We see that under the transformations \eqref{eq:17.4.2},
+\eqref{eq:17.4.3}, the function \eqref{eq:17.4.1} transforms just like
+$A'_\alpha$:
+\begin{equation}
+\delta f_\alpha=-C_{\alpha\beta\gamma}\epsilon_\beta f_\gamma,
+\label{eq:17.4.6}
+\end{equation}
+so the term $f_\alpha f_\alpha$ in the modified Lagrangian is invariant
+\begin{equation}
+\delta(f_\alpha f_\alpha)
+=-C_{\alpha\beta\gamma}f_\alpha\epsilon_\beta f_\gamma=0.
+\label{eq:17.4.7}
+\end{equation}
+Also, the original Lagrangian density $\mathcal L$ depends on $A$ and $A'$
+only through the sum $A+A'$, which under the combined transformation
+\eqref{eq:17.4.2}, \eqref{eq:17.4.3} undergoes an ordinary gauge
+transformation
+\begin{equation}
+\delta(A_\alpha^\mu+A_\alpha^{\prime\mu})
+=\partial^\mu\epsilon_\alpha
+-C_{\alpha\beta\gamma}\epsilon_\beta
+(A_\gamma^\mu+A_\gamma^{\prime\mu}).
+\label{eq:17.4.8}
+\end{equation}
+If we transform the background and quantum matter fields by
+\begin{equation}
+\delta\psi=it_\alpha\epsilon_\alpha\psi,
+\label{eq:17.4.9}
+\end{equation}
+\begin{equation}
+\delta\psi'=it_\alpha\epsilon_\alpha\psi',
+\label{eq:17.4.10}
+\end{equation}
+then also
+\begin{equation}
+\delta(\psi+\psi')=it_\alpha\epsilon_\alpha(\psi+\psi').
+\label{eq:17.4.11}
+\end{equation}
+
+The original Lagrangian $\mathcal L$ is invariant under the original gauge
+transformations \eqref{eq:17.4.8}, \eqref{eq:17.4.11}, and only depends on
+$A+A'$ and $\psi+\psi'$, so it is also invariant under the new formal
+transformations \eqref{eq:17.4.2}, \eqref{eq:17.4.3},
+\eqref{eq:17.4.9}, \eqref{eq:17.4.10}.
+
+It will be useful to make this invariance property more explicit, by writing
+$\mathcal L$ in terms of the background-covariant derivative $\bar D_\mu$.
+In general, we have
+\begin{align}
+\mathcal L={}&-\frac14\Bigl(
+\partial_\mu[A_{\alpha\nu}+A'_{\alpha\nu}]
+-\partial_\nu[A_{\alpha\mu}+A'_{\alpha\mu}]
+\notag\\
+&\hspace{3.5em}
++C_{\alpha\beta\gamma}[A_{\beta\mu}+A'_{\beta\mu}]
+[A_{\gamma\nu}+A'_{\gamma\nu}]\Bigr)^2
+\notag\\
+&+\mathcal L_M\Bigl(\psi+\psi',\,
+\partial_\mu(\psi+\psi')
+-it_\alpha(A_{\alpha\mu}+A'_{\alpha\mu})(\psi+\psi')\Bigr)
+\notag\\
+={}&-\frac14\Bigl(F_{\alpha\mu\nu}
++\bar D_\mu A'_{\alpha\nu}-\bar D_\nu A'_{\alpha\mu}
++C_{\alpha\beta\gamma}A'_{\beta\mu}A'_{\gamma\nu}\Bigr)^2
+\notag\\
+&+\mathcal L_M\Bigl(\psi+\psi',\,
+\bar D_\mu(\psi+\psi')-it_\alpha A'_{\alpha\mu}(\psi+\psi')\Bigr),
+\label{eq:17.4.12}
+\end{align}
+where, as in Eq.~\eqref{eq:17.4.5},
+\begin{equation}
+\bar D_\mu A'_{\alpha\nu}\equiv
+\partial_\mu A'_{\alpha\nu}
++C_{\alpha\beta\gamma}A_{\beta\mu}A'_{\gamma\nu},
+\label{eq:17.4.13}
+\end{equation}
+\begin{equation}
+\bar D_\mu\psi\equiv\partial_\mu\psi-it_\alpha A_{\alpha\mu}\psi,
+\label{eq:17.4.14}
+\end{equation}
+and $F_{\alpha\mu\nu}$ is the background field strength
+\begin{equation}
+F_{\alpha\mu\nu}\equiv
+\partial_\mu A_{\alpha\nu}-\partial_\nu A_{\alpha\mu}
++C_{\alpha\beta\gamma}A_{\beta\mu}A_{\gamma\nu}.
+\label{eq:17.4.15}
+\end{equation}
+(The square in the first term of $\mathcal L$ is intended to imply obvious
+index contractions.) Clearly $\mathcal L$ is invariant under the new
+transformations \eqref{eq:17.4.2}, \eqref{eq:17.4.3},
+\eqref{eq:17.4.9}, \eqref{eq:17.4.10}, because it involves
+$A_{\alpha\mu}$ only in the field strength $F_{\alpha\mu\nu}$ and in
+background covariant derivatives $\bar D_\mu$ of `matter' fields
+$A'_{\alpha\mu}$, $\psi'$ and $\psi$.
+
+This new transformation should be carefully distinguished from a true gauge
+transformation. Such a transformation can have no effect on $A$ or $\psi$,
+which are just prescribed classical background fields, and induces an
+ordinary gauge transformation on $A+A'$ and $\psi+\psi'$, so
+\begin{equation}
+\delta_{\mathrm{TRUE}}A_\alpha^\mu=0,
+\label{eq:17.4.16}
+\end{equation}
+\begin{align}
+\delta_{\mathrm{TRUE}}A_\alpha^{\prime\mu}
+&=\partial^\mu\epsilon_\alpha
+-C_{\alpha\beta\gamma}\epsilon_\beta
+(A_\gamma^\mu+A_\gamma^{\prime\mu}) \notag\\
+&=\bar D^\mu\epsilon_\alpha
+-C_{\alpha\beta\gamma}\epsilon_\beta A_\gamma^{\prime\mu},
+\label{eq:17.4.17}
+\end{align}
+and
+\begin{equation}
+\delta_{\mathrm{TRUE}}\psi=0,
+\label{eq:17.4.18}
+\end{equation}
+\begin{equation}
+\delta_{\mathrm{TRUE}}\psi'
+=it_\alpha\epsilon_\alpha(\psi+\psi').
+\label{eq:17.4.19}
+\end{equation}
+Of course, this is the same as the formal transformations
+\eqref{eq:17.4.2}, \eqref{eq:17.4.3}, \eqref{eq:17.4.9},
+\eqref{eq:17.4.10} in its effect on $A+A'$ and $\psi+\psi'$, and therefore
+also leaves the original Lagrangian $\mathcal L$ invariant. However, for our
+new choice \eqref{eq:17.4.1} of $f_\alpha$, the term $f_\alpha f_\alpha$ does
+not depend only on $A+A'$, and is not invariant under \eqref{eq:17.4.16}
+and \eqref{eq:17.4.17}. Instead,
+\begin{equation}
+\delta_{\mathrm{TRUE}}f_\alpha
+=\bar D_\mu\bigl(\bar D^\mu\epsilon_\alpha
+-C_{\alpha\beta\gamma}\epsilon_\beta A_\gamma^{\prime\mu}\bigr)
+\label{eq:17.4.20}
+\end{equation}
+with $\bar D_\mu$ given by \eqref{eq:17.4.5}.
+
+Finally, let us consider the ghost Lagrangian in this new gauge. The quantity
+\eqref{eq:15.7.3} in the ghost action is given in general by just replacing
+$\epsilon_\alpha$ with the ghost field $\omega_\alpha+\omega'_\alpha$ in
+$\delta_{\mathrm{TRUE}}f_\alpha$:
+\begin{equation}
+\Delta_\alpha=\bar D_\mu\left[
+\bar D^\mu(\omega_\alpha+\omega'_\alpha)
+-C_{\alpha\beta\gamma}(\omega_\beta+\omega'_\beta)
+A_\gamma^{\prime\mu}\right].
+\label{eq:17.4.21}
+\end{equation}
+The ghost Lagrangian in Eq.~\eqref{eq:15.6.2} is therefore
+\begin{equation}
+\mathcal L_{\mathrm{GH}}
+=(\omega_\alpha^*+\omega'_\alpha{}^*)\bar D_\mu\left[
+\bar D^\mu(\omega_\alpha+\omega'_\alpha)
+-C_{\alpha\beta\gamma}(\omega_\beta+\omega'_\beta)
+A_\gamma^{\prime\mu}\right]
+\label{eq:17.4.22}
+\end{equation}
+or, integrating by parts,
+\begin{equation}
+\mathcal L_{\mathrm{GH}}
+=-\Bigl(\bar D_\mu(\omega_\alpha^*+\omega'_\alpha{}^*)\Bigr)
+\Bigl(\bar D^\mu(\omega_\alpha+\omega'_\alpha)
+-C_{\alpha\beta\gamma}(\omega_\beta+\omega'_\beta)
+A_\gamma^{\prime\mu}\Bigr).
+\label{eq:17.4.23}
+\end{equation}
+This is manifestly invariant under the joint transformations
+\eqref{eq:17.4.2}, \eqref{eq:17.4.3}, supplemented now with
+transformations on $\omega$ and $\omega'$:
+\begin{equation}
+\delta\omega_\alpha
+=-C_{\alpha\beta\gamma}\epsilon_\beta\omega_\gamma,
+\label{eq:17.4.24}
+\end{equation}
+\begin{equation}
+\delta\omega'_\alpha
+=-C_{\alpha\beta\gamma}\epsilon_\beta\omega'_\gamma,
+\label{eq:17.4.25}
+\end{equation}
+and likewise
+\begin{equation}
+\delta\omega_\alpha^*
+=-C_{\alpha\beta\gamma}\epsilon_\beta\omega_\gamma^*,
+\label{eq:17.4.26}
+\end{equation}
+\begin{equation}
+\delta\omega'_\alpha{}^*
+=-C_{\alpha\beta\gamma}\epsilon_\beta\omega'_\gamma{}^*.
+\label{eq:17.4.27}
+\end{equation}
+We see that the formal combined transformations \eqref{eq:17.4.2},
+\eqref{eq:17.4.3}, \eqref{eq:17.4.9}, \eqref{eq:17.4.10}, and
+\eqref{eq:17.4.24}--\eqref{eq:17.4.27} leave invariant the complete
+Lagrangian in the modified action \eqref{eq:15.6.4}:
+\begin{equation}
+\mathcal L_{\mathrm{MOD}}
+=\mathcal L-\frac1{2\xi}f_\alpha f_\alpha+\mathcal L_{\mathrm{GH}}.
+\label{eq:17.4.28}
+\end{equation}
+
+We are integrating over $A'$, $\psi'$, $\omega'$, and $\omega'{}^*$ with a
+measure that is presumed to be invariant under the simple matrix
+transformations \eqref{eq:17.4.3}, \eqref{eq:17.4.10},
+\eqref{eq:17.4.25}, and \eqref{eq:17.4.27}, so the effective action
+$\Gamma[A,\psi,\omega,\omega^*]$ is invariant under the remaining
+transformations \eqref{eq:17.4.2}, \eqref{eq:17.4.9},
+\eqref{eq:17.4.24}, and \eqref{eq:17.4.26}. In other words, it is
+gauge-invariant in the same sense as the original action
+$I[A,\psi,\omega,\omega^*]$.
+
+This formal gauge invariance sets powerful constraints on the infinities
+that can occur in the effective action. The ultraviolet divergences in
+$\Gamma$ appear in the coefficients of terms whose dimensionalities are
+$[\mathrm{mass}]^d$ with $d\leq4$, but here these terms are invariant under
+the background gauge transformations \eqref{eq:17.4.2},
+\eqref{eq:17.4.9}, \eqref{eq:17.4.24}, and \eqref{eq:17.4.26}. For
+instance, in a gauge theory based on a simple gauge group, with spin $1/2$
+fermions belonging to an irreducible representation of this group, the only
+such terms are of the form
+\begin{equation}
+\Gamma_\infty=\int d^4x\,\mathcal L_\infty,
+\label{eq:17.4.29}
+\end{equation}
+\begin{align}
+\mathcal L_\infty={}&-\frac14L_A F_{\alpha\mu\nu}F_\alpha{}^{\mu\nu}
+-L_\psi\bar\psi\gamma^\mu\bar D_\mu\psi \notag\\
+&-mL_m\bar\psi\psi
+-L_\omega(\bar D_\mu\omega_\alpha^*)(\bar D^\mu\omega_\alpha),
+\label{eq:17.4.30}
+\end{align}
+where here $F_{\alpha\mu\nu}$, $\bar D_\mu\psi$,
+$\bar D_\mu\omega_\alpha$, and $\bar D_\mu\omega_\alpha^*$ are constructed
+entirely from background fields:\footnote{The condition of a simple gauge group insures that there is just a single kinetic term for $A$ and for $\omega$, proportional to $F_{\alpha\mu\nu}F_\alpha{}^{\mu\nu}$ and $(\bar D_\mu\omega_\alpha^*)(\bar D^\mu\omega_\alpha)$ respectively, while the condition that $\psi$ transforms irreducibly insures that there is just a single kinetic term and a single mass term for $\psi$. It would be easy to treat more general possibilities, at the cost of a slight complication in notation. We are also implicitly using the conservation of ghost number.}
+\begin{equation}
+F_{\alpha\mu\nu}\equiv
+\partial_\mu A_{\alpha\nu}-\partial_\nu A_{\alpha\mu}
++C_{\alpha\beta\gamma}A_{\beta\mu}A_{\gamma\nu},
+\label{eq:17.4.31}
+\end{equation}
+\begin{equation}
+\bar D_\mu\psi\equiv\partial_\mu\psi-it_\alpha A_{\alpha\mu}\psi,
+\label{eq:17.4.32}
+\end{equation}
+\begin{equation}
+\bar D_\mu\omega_\alpha\equiv
+\partial_\mu\omega_\alpha
++C_{\alpha\beta\gamma}A_{\beta\mu}\omega_\gamma,
+\label{eq:17.4.33}
+\end{equation}
+\begin{equation}
+\bar D_\mu\omega_\alpha^*\equiv
+\partial_\mu\omega_\alpha^*
++C_{\alpha\beta\gamma}A_{\beta\mu}\omega_\gamma^*.
+\label{eq:17.4.34}
+\end{equation}
+Dimensional analysis leads us to expect that the constants $L_A$, $L_\psi$,
+$L_m$, and $L_\omega$ are logarithmically divergent.
+
+To deal with these infinities, we note that the Lagrangian \eqref{eq:17.4.12}
+contains a purely classical piece
+\begin{equation}
+\mathcal L_{\mathrm{CLASS}}
+=-\frac14F_{\alpha\mu\nu}F_\alpha{}^{\mu\nu}
+-\bar\psi(\gamma^\mu\bar D_\mu+m)\psi
+-(\bar D_\mu\omega_\alpha^*)(\bar D^\mu\omega_\alpha)
+\label{eq:17.4.35}
+\end{equation}
+obtained by dropping all terms in $\mathcal L_{\mathrm{MOD}}$ that involve
+the quantum fields $A'$, $\psi'$, $\omega'$, $\omega'{}^*$. We define
+renormalized fields
+\begin{equation}
+A_{\alpha\mu}^R\equiv\sqrt{1+L_A}\,A_{\alpha\mu},
+\label{eq:17.4.36}
+\end{equation}
+\begin{equation}
+\psi_\ell^R\equiv\sqrt{1+L_\psi}\,\psi_\ell,
+\label{eq:17.4.37}
+\end{equation}
+\begin{equation}
+\omega_\alpha^R\equiv\sqrt{1+L_\omega}\,\omega_\alpha,
+\label{eq:17.4.38}
+\end{equation}
+\begin{equation}
+\omega_\alpha^{R*}\equiv\sqrt{1+L_\omega}\,\omega_\alpha^*,
+\label{eq:17.4.39}
+\end{equation}
+so that the sum of the terms \eqref{eq:17.4.30} and \eqref{eq:17.4.35}
+takes the form
+\begin{align}
+\mathcal L_{\mathrm{CLASS}}+\mathcal L_\infty
+={}&-\frac14F_{\alpha\mu\nu}^R F_\alpha^{R\mu\nu}
+-\bar\psi^R\gamma^\mu D_\mu^R\psi^R \notag\\
+&-m^R\bar\psi^R\psi^R
+-(D_\mu^R\omega_\alpha^{*R})(D^{\mu R}\omega_\alpha^R),
+\label{eq:17.4.40}
+\end{align}
+where $m^R$ is the renormalized mass
+\begin{equation}
+m^R\equiv m(1+L_m)/(1+L_\psi),
+\label{eq:17.4.41}
+\end{equation}
+and
+\begin{equation}
+F_{\alpha\mu\nu}^R\equiv
+\partial_\mu A_{\alpha\nu}^R-\partial_\nu A_{\alpha\mu}^R
++C_{\alpha\beta\gamma}^R A_{\beta\mu}^R A_{\gamma\nu}^R,
+\label{eq:17.4.42}
+\end{equation}
+\begin{equation}
+D_\mu^R\psi^R\equiv
+\partial_\mu\psi^R-it_\alpha^R A_{\alpha\mu}^R\psi^R,
+\label{eq:17.4.43}
+\end{equation}
+\begin{equation}
+D_\mu^R\omega_\alpha^R\equiv
+\partial_\mu\omega_\alpha^R
++C_{\alpha\beta\gamma}^R A_{\beta\mu}^R\omega_\gamma^R,
+\label{eq:17.4.44}
+\end{equation}
+\begin{equation}
+D_\mu^R\omega_\alpha^{*R}\equiv
+\partial_\mu\omega_\alpha^{*R}
++C_{\alpha\beta\gamma}^R A_{\beta\mu}^R\omega_\gamma^{*R}.
+\label{eq:17.4.45}
+\end{equation}
+The renormalized structure constants and group generators here are just
+\begin{equation}
+C_{\alpha\beta\gamma}^R\equiv
+(1+L_A)^{-1/2}C_{\alpha\beta\gamma},
+\label{eq:17.4.46}
+\end{equation}
+\begin{equation}
+t_\alpha^R\equiv(1+L_A)^{-1/2}t_\alpha.
+\label{eq:17.4.47}
+\end{equation}
+Because we assumed that the Lie algebra here is simple, the structure
+constant $C_{\alpha\beta\gamma}$ and group generator $t_\alpha$ are fixed by
+the group structure except for a single common factor, the unrenormalized
+gauge coupling constant $g$. Eqs.~\eqref{eq:17.4.46} and
+\eqref{eq:17.4.47} thus simply tell us that the gauge coupling constant
+$g^R$ factor in $C^R$ and $t^R$ is renormalized by
+\begin{equation}
+g^R=g(1+L_A)^{-1/2}.
+\label{eq:17.4.48}
+\end{equation}
+
+This result exhibits the particular virtue of the background field gauge.
+In a general gauge we would encounter independent renormalization factors
+for the gauge field and the gauge coupling constant, and we would have to
+calculate two separate amplitudes (say, the vacuum polarization and
+three-gauge-field vertex function) in order to be able to sort these out.
+In background field gauge, background field gauge invariance ties these two
+renormalizations together by requiring that the infinite terms in the
+effective Lagrangian involve the field strength in its original form
+\eqref{eq:17.4.31}, and so we can calculate the charge renormalization factor
+by studying just one gauge field amplitude.

@@ -1,2 +1,62 @@
-% Outline scaffold for Section 18.8. Main content intentionally omitted.
-\subsection{Improved Perturbation Theory\optionalreading}
+% Source coverage: physical PDF pp. 180--181 (printed pp. 157--158), from the Section 18.8 heading through the final paragraph immediately before Problems.
+% Numbered equations: (18.8.1)--(18.8.8), with all displays. Figures/tables: none. Citations: [1]. Footnotes: 1 optional-reading title note.
+
+\subsection[Improved Perturbation Theory]{Improved Perturbation Theory\footnotemark}
+\footnotetext{This section lies somewhat out of the book's main line of development, and may be omitted in a first reading.}
+
+The ground-breaking paper~\hyperref[ch18-ref-1]{[1]} of Gell-Mann and Low was in large part directed to the problem of `improving' perturbation theory---that is, of using the ideas of the renormalization group and the results of perturbation theory to a given order to say something about the next order of perturbation theory. To illustrate this, let's return to the specific case studied by Gell-Mann and Low: vacuum polarization in quantum electrodynamics.
+
+Recall that the renormalized electric charge $e_\mu$ at a sliding scale $\mu$ is given by Eq.~\eqref{eq:18.2.36} in terms of the bare charge $e_B$ as
+\begin{equation}
+e_\mu=N_\mu^{(A)-1}e_B,
+\tag{18.8.1}\label{eq:18.8.1}
+\end{equation}
+where $N_\mu^{(A)}$ is the constant which, when multiplied into the unrenormalized electromagnetic field, gives a field renormalized at scale $\mu$. (See Eq.~\eqref{eq:18.2.21}.) Thus we can define a renormalized (and hence cut-off-independent) complete photon propagator $\Delta'_{\rho\sigma}(q,\mu,e_\mu)$ in terms of the complete propagator $\Delta'_{B\rho\sigma}(q,e_B)$ of the unrenormalized field as
+\begin{equation}
+\Delta'_{\rho\sigma}(q,\mu,e_\mu)
+=N_\mu^{(A)2}\Delta'_{B\rho\sigma}(q,e_B)
+\tag{18.8.2}\label{eq:18.8.2}
+\end{equation}
+in such a way that the function $e_\mu^2\Delta'_{\rho\sigma}(q,\mu,e_\mu)$ is both independent of $\mu$, because it equals $e_B^2\Delta'_{B\rho\sigma}(q,e_B)$, and independent of the cut-off, because both $e_\mu$ and $\Delta'_{\rho\sigma}(q,\mu,e_\mu)$ are renormalized quantities. (We are not explicitly displaying cut-off dependence here.) But Lorentz invariance and dimensional analysis tell us that this function must take the form:
+\begin{equation}
+e_\mu^2\Delta'_{\rho\sigma}(q,\mu,e_\mu)
+=\frac{\eta_{\rho\sigma}d(q^2/\mu^2,e_\mu)}{q^2}
++q_\rho q_\sigma\text{ terms}.
+\tag{18.8.3}\label{eq:18.8.3}
+\end{equation}
+Since Eq.~\eqref{eq:18.8.3} is $\mu$-independent, we can set $\mu=\sqrt{q^2}\equiv q$ here, so that
+\begin{equation}
+d(q^2/\mu^2,e_\mu)=d(1,e_q).
+\tag{18.8.4}\label{eq:18.8.4}
+\end{equation}
+
+Now let us see what this tells us about the structure of the perturbation series for $d(q^2/\mu^2,e_\mu)$. The beta-function for $e$ has the expansion:
+\begin{equation}
+\beta(e)=b_1e^3+b_2e^5+b_3e^7+\cdots.
+\tag{18.8.5}\label{eq:18.8.5}
+\end{equation}
+The renormalization group equation for $e_\mu$ then has a power series solution
+\begin{align}
+e_q^2={}&e_\mu^2-b_1e_\mu^4\ln\frac{q^2}{\mu^2}
+-b_2e_\mu^6\ln\frac{q^2}{\mu^2}
+\notag\\
+&-\left(\frac{b_1b_2}{2}\ln^2\frac{q^2}{\mu^2}
++b_3\ln\frac{q^2}{\mu^2}\right)e_\mu^8+\cdots.
+\tag{18.8.6}\label{eq:18.8.6}
+\end{align}
+If we also expand $d$:
+\begin{equation}
+d(1,e)=e^2+d_1e^4+d_2e^6+d_3e^8+\cdots
+\tag{18.8.7}\label{eq:18.8.7}
+\end{equation}
+then
+\begin{align}
+d(q^2/\mu^2,e_\mu)=d(1,e_q)={}&e_\mu^2
+-\left(b_1\ln\frac{q^2}{\mu^2}-d_1\right)e_\mu^4
+-\left(b_2\ln\frac{q^2}{\mu^2}-d_2\right)e_\mu^6
+\notag\\
+&-\left(\frac{1}{2}b_1b_2\ln^2\frac{q^2}{\mu^2}
++(b_3-b_1d_2)\ln\frac{q^2}{\mu^2}-d_3\right)e_\mu^8+\cdots.
+\tag{18.8.8}\label{eq:18.8.8}
+\end{align}
+Note that the leading powers of $\ln(q^2/\mu^2)$ in each order of $d(q^2/\mu^2,e_\mu)$ are respectively $0,1,1,2,3,\ldots$. Also, if we calculate $d(q^2/\mu^2,e_\mu)$ to order $e_\mu^6$ and thus determine $b_1$ and $b_2$, we can immediately write down the coefficient of the leading logarithm in order $e_\mu^8$, as $-\tfrac12b_1b_2$. None of this would be easy to infer without using the method of the renormalization group.

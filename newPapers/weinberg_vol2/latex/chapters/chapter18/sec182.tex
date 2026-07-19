@@ -1,2 +1,654 @@
-% Outline scaffold for Section 18.2. Main content intentionally omitted.
+% Source: physical pp. 142--153 (printed pp. 119--130). Coverage: \S18.2 from its heading on p. 142 through the two concluding paragraphs at the top of p. 153, ending immediately before \S18.3; Eqs. (18.2.1)--(18.2.50), all unnumbered displays, citations [1,3,3a,4,4a], and two footnotes. Uncertainties: none.
 \subsection{The Sliding Scale}
+
+We have seen in the previous section that the large logarithms that appear
+at high energy in suitably integrated cross sections or off-shell Feynman
+amplitudes can be traced to the prescription used to define renormalized
+coupling constants and operators. The central idea of the renormalization
+group method is to change this prescription.
+
+Suppose we find some way of defining a new kind of renormalized coupling
+constant $g(\mu)$, that depends on a sliding energy scale $\mu$, but that (at
+least for $\mu\gg m$) has no dependence on the scale $m$ of the masses of the
+theory. Then suitably integrated cross sections or other infrared-safe rate
+parameters may be expressed as functions of $g_\mu$ and $\mu$ instead of
+$g_R$. By dimensional analysis such functions may be written as
+\begin{equation}
+\Gamma(E,x,g_\mu,m,\mu)
+=E^D\Gamma\left(1,x,g_\mu,\frac{m}{E},\frac{\mu}{E}\right).
+\tag{18.2.1}\label{eq:18.2.1}
+\end{equation}
+\par\noindent
+(Our notation here is the same as in Section 18.1; in particular, $x$ stands
+for all dimensionless angles, energy ratios, etc. on which $\Gamma$ may
+depend.) Since $\mu$ is a completely arbitrary renormalization scale, we can
+choose $\mu=E$, in which case Eq.~\eqref{eq:18.2.1} reads
+\begin{equation}
+\Gamma(E,x,g_\mu,m,\mu)
+=E^D\Gamma\left(1,x,g_E,\frac{m}{E},1\right).
+\tag{18.2.2}\label{eq:18.2.2}
+\end{equation}
+\par\noindent
+This now has no zero-mass singularities because $g_E$ does not depend on $m$
+for $m\ll E$, so there are no large logarithms, and we can use perturbation
+theory to calculate $\Gamma$ in terms of $g_E$ as long as $g_E$ itself remains
+sufficiently small. In particular, in any finite order of perturbation theory
+$\Gamma$ has the asymptotic behavior, for $E\gg m$,
+\begin{equation}
+\Gamma(E,x,g_\mu,m,\mu)\longrightarrow E^D\Gamma(1,x,g_E,0,1).
+\tag{18.2.3}\label{eq:18.2.3}
+\end{equation}
+\par\noindent
+(Non-perturbative corrections are considered in Section 18.4.)
+
+It remains to calculate $g_E$. For instance, in the scalar field theory with
+Lagrangian \eqref{eq:18.1.2}, we may define $g_\mu$ in terms of the value of
+the scattering amplitude at a renormalization point
+$s=t=u=-\mu^2$:
+\begin{align}
+g_\mu&\equiv A(s=t=u=-\mu^2)\notag\\
+&=g-\frac{3g^2}{32\pi^2}\int_0^1dx
+\left\{\ln\left(\frac{\Lambda^2}{m^2+\mu^2x(1-x)}\right)-1\right\}
++O(g^3).
+\tag{18.2.4}\label{eq:18.2.4}
+\end{align}
+\par\noindent
+or, in terms of the conventional renormalized coupling \eqref{eq:18.1.4},
+\begin{equation}
+g_\mu=g_R+\frac{3g_R^2}{32\pi^2}\int_0^1dx
+\ln\left(1+\frac{\mu^2x(1-x)}{m^2}\right)+O(g_R^3).
+\tag{18.2.5}\label{eq:18.2.5}
+\end{equation}
+\par\noindent
+But this formula is reliable only if the correction term is smaller than
+$g_R$; that is, only if $\lvert g_R\ln(\mu/m)\rvert\ll1$. If this were the
+case for $\mu\simeq E$, then we would not need the methods of the
+renormalization group; ordinary perturbation theory would be good enough.
+
+Instead of using formulas like \eqref{eq:18.2.5} directly for large $\mu$, we
+must instead proceed in stages: $g_\mu$ may be calculated in terms of $g_R$
+as long as $\mu/m$ is not much larger than unity; then $g_{\mu'}$ may be
+calculated in terms of $g_\mu$ as long as $\mu'/\mu$ is not much larger than
+unity; and so on, up to $g_E$. Instead of discrete stages, this may also be
+done continuously. Dimensional analysis tells us that the relation between
+$g_{\mu'}$ and $g_\mu$ takes the form
+\begin{equation}
+g_{\mu'}=G(g_\mu,\mu'/\mu,m/\mu).
+\tag{18.2.6}\label{eq:18.2.6}
+\end{equation}
+\par\noindent
+Differentiating with respect to $\mu'$ and then setting $\mu'=\mu$ yields the
+differential equation
+\begin{equation}
+\mu\frac{d}{d\mu}g_\mu=\beta\left(g_\mu,\frac{m}{\mu}\right),
+\tag{18.2.7}\label{eq:18.2.7}
+\end{equation}
+\par\noindent
+where
+\begin{equation}
+\beta\left(g_\mu,\frac{m}{\mu}\right)
+\equiv\left[\frac{\partial}{\partial z}G(g_\mu,z,m/\mu)\right]_{z=1}.
+\tag{18.2.8}\label{eq:18.2.8}
+\end{equation}
+\par\noindent
+There are no zero-mass singularities here, so for $\mu\gg m$ the differential
+equation becomes simply
+\begin{equation}
+\mu\frac{d}{d\mu}g_\mu=\beta(g_\mu,0)\equiv\beta(g_\mu),
+\tag{18.2.9}\label{eq:18.2.9}
+\end{equation}
+\par\noindent
+which is often known as the Callan--Symanzik equation~\hyperref[ch18-ref-1]{[1]}.
+We are to calculate $g_E$ by integrating the differential equation
+\eqref{eq:18.2.9}, with an initial value $g_M$ at some scale $\mu=M$, chosen
+in practice large enough so that for $\mu\geq M$ we can neglect the masses
+$m$ compared with $\mu$, but small enough so that large logarithms
+$\ln(M/m)$ do not prevent us from using perturbation theory to calculate
+$g_M$ in terms of the conventional renormalized coupling constant $g_R$. The
+solution may be formally written
+\begin{equation}
+\ln(E/M)=\int_{g_M}^{g_E}\frac{dg}{\beta(g)}
+\tag{18.2.10}\label{eq:18.2.10}
+\end{equation}
+\par\noindent
+as long as $\beta(g)$ does not vanish between $g_M$ and $g_E$.
+
+The results of the previous paragraph do not rely on perturbation theory, but
+we usually need to use perturbation theory to calculate the functions $G$ and
+$\beta$. As an example, suppose we calculate $g_{\mu'}$ in the scalar field
+theory with interaction $g\phi^4/24$, renormalizing by expressing $g$ in terms
+of $g_\mu$ rather than $g_R$. Following the same procedure that led to
+Eq.~\eqref{eq:18.2.5}, this gives
+\[
+g_{\mu'}=g_\mu-\frac{3g_\mu^2}{32\pi^2}\int_0^1dx
+\ln\left(\frac{m^2+\mu^2x(1-x)}{m^2+\mu'^2x(1-x)}\right)
++O(g_\mu^3).
+\]
+Then Eq.~\eqref{eq:18.2.8} gives
+\begin{equation}
+\beta\left(g_\mu,\frac{m}{\mu}\right)
+=+\frac{3g_\mu^2}{16\pi^2}\int_0^1dx
+\frac{\mu^2x(1-x)}{m^2+\mu^2x(1-x)}+O(g_\mu^3).
+\tag{18.2.11}\label{eq:18.2.11}
+\end{equation}
+\par\noindent
+For $\mu\gg m$, this is
+\begin{equation}
+\beta(g_\mu)=\frac{3g_\mu^2}{16\pi^2}+O(g_\mu^3).
+\tag{18.2.12}\label{eq:18.2.12}
+\end{equation}
+\par\noindent
+In next order, the beta-function for $\mu\gg m$ is~\hyperref[ch18-ref-3]{[3]}
+\[
+\beta(g_\mu)=g_\mu\left[3\left(\frac{g_\mu}{16\pi^2}\right)
+-\frac{17}{3}\left(\frac{g_\mu}{16\pi^2}\right)^2+\cdots\right].
+\]
+
+If we are content with the one-loop approximation the calculation of
+$\beta(g)$ can be done even more easily. In order to avoid large radiative
+corrections in matrix elements at energies of order $\mu$, we must write the
+bare coupling $g$ in terms of a finite renormalized coupling $g_\mu$, as
+\begin{equation}
+g=g_\mu+B(g_\mu)\ln\frac{\Lambda}{\mu}+\cdots.
+\tag{18.2.13}\label{eq:18.2.13}
+\end{equation}
+\par\noindent
+For instance, from Eq.~\eqref{eq:18.1.3} we could have immediately read off
+that the $\ln\Lambda$ terms in $g$ have coefficient
+\begin{equation}
+B(g)=-\frac{3}{2}\left[-i(2\pi)^4g^2\right]
+\left\{\left[\frac{-i}{(2\pi)^4}\right]^2 2\pi^2i\right\}
+=\frac{3g^2}{16\pi^2}.
+\tag{18.2.14}\label{eq:18.2.14}
+\end{equation}
+\par\noindent
+The unrenormalized coupling is of course independent of $\mu$, so to lowest
+order
+\[
+\mu\frac{d}{d\mu}g_\mu-B(g_\mu)=0
+\]
+and so to lowest order
+\begin{equation}
+\beta(g)=B(g).
+\tag{18.2.15}\label{eq:18.2.15}
+\end{equation}
+\par\noindent
+With $B(g)$ given by Eq.~\eqref{eq:18.2.14}, this agrees with our previous
+result \eqref{eq:18.2.12} for $\beta(g)$ in the $\phi^4$ scalar field theory.
+
+Instead of using a simple ultraviolet cut-off, which can interfere with gauge
+invariance, it is often more convenient to deal with ultraviolet divergences
+by use of dimensional regularization. For a spacetime dimensionality $d<4$,
+we find in place of $\ln(\Lambda/\mu)$ the convergent integral
+\[
+\int_\mu^\infty k^{d-4}\frac{dk}{k}
+=\frac{\mu^{d-4}}{4-d}
+\underset{d\to4}{\longrightarrow}
+\left[\frac{1}{4-d}-\ln\mu\right].
+\]
+Thus instead of eliminating the cut-off dependence by writing the
+unrenormalized coupling constant as in \eqref{eq:18.2.13}, we instead write
+\begin{equation}
+g=g_\mu+B(g_\mu)\left[\frac{1}{4-d}-\ln\mu\right]
+\tag{18.2.16}\label{eq:18.2.16}
+\end{equation}
+\par\noindent
+with the same function $B(g_\mu)$ as before. Thus in order to calculate
+$\beta(g_\mu)$, all we need to do is to pick out the coefficient of the
+singular factor $1/(4-d)$ in the renormalized coupling. This argument is
+extended to all orders of perturbation theory in Section 18.6.
+
+As long as $g_\mu$ is sufficiently small in the scalar field theory with
+Lagrangian \eqref{eq:18.1.2}, the solution of Eqs.~\eqref{eq:18.2.9} and
+\eqref{eq:18.2.12} can be well approximated by
+\begin{equation}
+g_\mu=-\frac{16\pi^2}{3\ln(\mu/M)},
+\tag{18.2.17}\label{eq:18.2.17}
+\end{equation}
+\par\noindent
+where $M$ is an integration constant. This expression illustrates a common
+aspect of renormalization group calculations, that dimensionless couplings
+like $g_R$ become replaced with parameters like $M$ that have the
+dimensionality of mass. The value of $M$ may be related to $g_R$ by comparing
+the solution \eqref{eq:18.2.17} with the behavior of the coupling for values
+of $\mu$ that are large enough to allow us to use approximations based on
+$\mu\gg m$, but small enough so that
+$\lvert g_R\ln(\mu/m)\rvert\ll1$, where \eqref{eq:18.2.5} gives
+\begin{equation}
+g_\mu\simeq g_R+\frac{3g_R^2}{16\pi^2}\ln\left(\frac{\mu}{m}\right).
+\tag{18.2.18}\label{eq:18.2.18}
+\end{equation}
+\par\noindent
+In this way, we find
+\begin{equation}
+M\simeq m\exp\left(\frac{16\pi^2}{3g_R}\right),
+\tag{18.2.19}\label{eq:18.2.19}
+\end{equation}
+\par\noindent
+so that Eq.~\eqref{eq:18.2.17} may be put in a more conventional form
+\begin{equation}
+g_\mu=g_R\left[1-\frac{3g_R}{16\pi^2}\ln\frac{\mu}{m}\right]^{-1}.
+\tag{18.2.20}\label{eq:18.2.20}
+\end{equation}
+\par\noindent
+To repeat, this is valid provided $g_\mu$ is small, even if
+$\lvert g_R\ln(\mu/m)\rvert$ is of order unity, so it represents a significant
+improvement over the perturbative result \eqref{eq:18.2.18}. Of course, the
+condition that $g_\mu$ should be small will become violated when
+$g_R\ln(\mu/m)$ is sufficiently close to the critical value $16\pi^2/3$. But
+at least Eq.~\eqref{eq:18.2.20} makes the unequivocal prediction that $g_E$
+becomes large enough to invalidate perturbation theory at some energy $E$
+below the critical value \eqref{eq:18.2.19}.
+
+In calculating off-shell matrix elements of operators instead of integrated
+cross sections, we also need to take into account the $N$-factors that appear
+in the definition of the renormalized operators whose matrix elements are
+finite. We saw in the previous section that if these $N$-factors are defined
+in a conventional way (say, so that the correction factors produced by the
+divergent subgraphs are cancelled when the operator carries zero
+four-momentum, or is a field on its mass shell) then the formula for the
+$N$-factor involves zero-mass singularities as in Eq.~\eqref{eq:18.1.12} or
+Eq.~\eqref{eq:18.1.16}, resulting in large logarithms at energies $E\gg m$.
+The cure is to define renormalization constants $N_\mu^{(\mathcal O)}$ at a
+sliding scale $\mu$, so that in matrix elements of the renormalized operator
+\begin{equation}
+\mathcal O_\mu=N_\mu^{(\mathcal O)}\mathcal O
+\tag{18.2.21}\label{eq:18.2.21}
+\end{equation}
+\par\noindent
+the correction factor produced by divergent subgraphs containing operator
+$\mathcal O$ are cancelled at a renormalization point characterized by
+four-momenta of order $\mu$. If $M_R$ is a matrix element of operators that
+are conventionally renormalized, and $M$ is one in which the operators are
+renormalized as in Eq.~\eqref{eq:18.2.21}, then for any $\mu$
+\begin{equation}
+M_R=\left[\prod_{\mathcal O}
+\left(N^{(\mathcal O)}/N_\mu^{(\mathcal O)}\right)\right]
+M(E,x,g_\mu,m,\mu).
+\tag{18.2.22}\label{eq:18.2.22}
+\end{equation}
+\par\noindent
+We can again use dimensional analysis (assuming $M$ has dimensionality $D$)
+and set $\mu=E$, to write this as
+\begin{equation}
+M_R=E^D\left[\prod_{\mathcal O}
+\left(N^{(\mathcal O)}/N_E^{(\mathcal O)}\right)\right]
+M\left(1,x,g_E,\frac{m}{E},1\right).
+\tag{18.2.23}\label{eq:18.2.23}
+\end{equation}
+\par\noindent
+Thus to find the high energy behavior of an off-shell amplitude $M_R$, we need
+to know how $N_\mu$ varies with the renormalization scale $\mu$.
+
+For any two renormalization scales $\mu$ and $\mu'$, the renormalized
+operators $N_\mu^{(\mathcal O)}\mathcal O$ and
+$N_{\mu'}^{(\mathcal O)}\mathcal O$ both have finite matrix elements, so the
+ratio $N_{\mu'}^{(\mathcal O)}/N_\mu^{(\mathcal O)}$ must be cut-off
+independent. On dimensional grounds, this ratio must take the form
+\begin{equation}
+N_{\mu'}^{(\mathcal O)}/N_\mu^{(\mathcal O)}
+=G^{(\mathcal O)}(g_\mu,\mu'/\mu,m/\mu).
+\tag{18.2.24}\label{eq:18.2.24}
+\end{equation}
+\par\noindent
+Differentiating with respect to $\mu'$ and then setting $\mu'=\mu$ gives
+\begin{equation}
+\mu\frac{d}{d\mu}N_\mu^{(\mathcal O)}
+=\gamma^{(\mathcal O)}(g_\mu,m/\mu)N_\mu^{(\mathcal O)},
+\tag{18.2.25}\label{eq:18.2.25}
+\end{equation}
+\par\noindent
+where
+\begin{equation}
+\gamma^{(\mathcal O)}(g_\mu,m/\mu)
+\equiv\left[\frac{\partial}{\partial z}
+G^{(\mathcal O)}(g_\mu,z,m/\mu)\right]_{z=1}.
+\tag{18.2.26}\label{eq:18.2.26}
+\end{equation}
+\par\noindent
+The solution is
+\begin{equation}
+N_E^{(\mathcal O)}\propto
+\exp\left[\int^E\gamma^{(\mathcal O)}
+\left(g_\mu,\frac{m}{\mu}\right)\frac{d\mu}{\mu}\right].
+\tag{18.2.27}\label{eq:18.2.27}
+\end{equation}
+\par\noindent
+This is a useful result because the introduction of the sliding scale
+prevents the appearance of zero-mass singularities in
+$N_\mu^{(\mathcal O)}$ and $N_{\mu'}^{(\mathcal O)}$, and hence also in
+$G^{(\mathcal O)}$ and $\gamma^{(\mathcal O)}$. Hence as long as $g_\mu$ is
+small, there are no large logarithms that prevent the application of
+perturbation theory to calculate $\gamma^{(\mathcal O)}$. Also, for
+$\mu\gg m$, $\gamma^{(\mathcal O)}(g_\mu,m/\mu)$ has a smooth limit
+\begin{equation}
+\gamma^{(\mathcal O)}(g_\mu)
+\equiv\gamma^{(\mathcal O)}(g_\mu,0).
+\tag{18.2.28}\label{eq:18.2.28}
+\end{equation}
+\par\noindent
+
+As an example, consider the operator $\mathcal O=\phi^2$ in the scalar field
+theory with interaction $g\phi^4/24$. Instead of renormalizing it so that the
+correction factor \eqref{eq:18.1.9} is cancelled at $p^2=0$, we cancel it at a
+sliding scale $p^2=\mu^2$, by introducing a new renormalized $\phi^2$ operator
+$N_\mu^{(\phi^2)}\phi^2$, with
+\[
+N_\mu^{(\phi^2)}\equiv F^{(\phi^2)}(\mu^2)^{-1}
+=1+\frac{g}{32\pi^2}\int_0^1dx
+\left[\ln\left(\frac{\Lambda^2}{m^2+\mu^2x(1-x)}\right)-1\right]
++O(g^2).
+\]
+Then the function \eqref{eq:18.2.24} for this operator is
+\[
+\begin{aligned}
+G^{(\phi^2)}(g_\mu,\mu'/\mu,m/\mu)
+&\equiv\frac{N_{\mu'}^{(\phi^2)}}{N_\mu^{(\phi^2)}}\\
+&=1+\frac{g_\mu}{32\pi^2}\int_0^1dx
+\ln\left[\frac{m^2+\mu^2x(1-x)}{m^2+\mu'^2x(1-x)}\right]
++O(g_\mu^2).
+\end{aligned}
+\]
+(We can use $g_\mu$ here instead of $g$ or $g_{\mu'}$, because the difference
+only affects the terms of order $g_\mu^2$ or higher.) From
+Eq.~\eqref{eq:18.2.26}, we have then
+\[
+\gamma^{(\phi^2)}\left(g_\mu,\frac{m}{\mu}\right)
+=-\frac{g_\mu}{16\pi^2}\int_0^1
+\frac{\mu^2x(1-x)}{m^2+\mu^2x(1-x)}\,dx+O(g_\mu^2)
+\]
+or for $\mu\gg m$,
+\begin{equation}
+\gamma^{(\phi^2)}(g_\mu)=-\frac{g_\mu}{16\pi^2}+O(g_\mu^2).
+\tag{18.2.29}\label{eq:18.2.29}
+\end{equation}
+\par\noindent
+
+Another good example is provided by the $N$-factor associated with the
+renormalization of the electromagnetic field in quantum electrodynamics.
+Recall that the photon propagator can be made finite for all momenta by
+evaluating it for renormalized electromagnetic fields, or equivalently by
+multiplying the propagator of the unrenormalized field by $Z_3^{-1}$:
+\begin{equation}
+\widetilde\Delta_{\rho\sigma}(q)=Z_3^{-1}\Delta_{\rho\sigma}(q).
+\tag{18.2.30}\label{eq:18.2.30}
+\end{equation}
+\par\noindent
+Eq.~(10.5.17) shows that this renormalized propagator may be written
+\begin{equation}
+\widetilde\Delta_{\rho\sigma}(q)
+=\frac{\eta_{\rho\sigma}}{[q^2-i\epsilon][1-\pi(q^2)]}
++q_\rho q_\sigma\text{-terms}.
+\tag{18.2.31}\label{eq:18.2.31}
+\end{equation}
+\par\noindent
+Suppose we instead define a renormalized field $N_\mu^{(A)}A^\rho$, whose
+propagator has a term proportional to $\eta_{\rho\sigma}/[q^2-i\epsilon]$
+with a coefficient that is equal to unity at a sliding renormalization scale
+$q^2=\mu^2$. For this purpose, we must clearly take
+\begin{equation}
+N_\mu^{(A)}=Z_3^{-1/2}[1-\pi(\mu^2)]^{1/2}.
+\tag{18.2.32}\label{eq:18.2.32}
+\end{equation}
+\par\noindent
+Using Eq.~(11.2.22), the function \eqref{eq:18.2.24} is then
+\begin{align}
+G^{(A)}(g_\mu,\mu'/\mu,m/\mu)
+&=\left[\frac{1-\pi(\mu'^2)}{1-\pi(\mu^2)}\right]^{1/2}\notag\\
+&=1-\frac{e_\mu^2}{4\pi^2}\int_0^1dx\,x(1-x)
+\ln\left[\frac{m^2+\mu'^2x(1-x)}{m^2+\mu^2x(1-x)}\right]
++O(e_\mu^4)
+\tag{18.2.33}\label{eq:18.2.33}
+\end{align}
+\par\noindent
+and so Eq.~\eqref{eq:18.2.26} gives
+\begin{equation}
+\gamma^{(A)}(e_\mu,m/\mu)
+=-\frac{e_\mu^2}{2\pi^2}\int_0^1dx\,
+\frac{x^2(1-x)^2\mu^2}{m^2+\mu^2x(1-x)}+O(e_\mu^4).
+\tag{18.2.34}\label{eq:18.2.34}
+\end{equation}
+\par\noindent
+As promised, this has a smooth limit for $\mu\gg m$
+\begin{equation}
+\gamma^{(A)}(e_\mu)\equiv\gamma^{(A)}(e_\mu,0)
+=-\frac{e_\mu^2}{12\pi^2}+O(e_\mu^4).
+\tag{18.2.35}\label{eq:18.2.35}
+\end{equation}
+\par\noindent
+
+As already mentioned, electrodynamics is a special case, because the
+renormalization constant $Z_3^{-1/2}$ in the definition of the renormalized
+electromagnetic field is just the reciprocal of the constant used to define
+the renormalized electric charge of the electron: $e_R=Z_3^{1/2}e$. The
+natural definition of the renormalized electric charge at a sliding scale
+$\mu$ is then
+\begin{equation}
+e_\mu=N_\mu^{(A)-1}e=Z_3^{-1/2}N_\mu^{(A)-1}e_R,
+\tag{18.2.36}\label{eq:18.2.36}
+\end{equation}
+\par\noindent
+\begin{sloppypar}
+so that $e_\mu$ times the field $N_\mu^{(A)}A^\rho$ renormalized at scale
+$\mu$ is independent of $\mu$. From Eq.~\eqref{eq:18.2.25} we see that the
+function $\beta(e)$ which gives the $\mu$ dependence of $e_\mu$ according to
+Eq.~\eqref{eq:18.2.9} for $\mu\gg m$ has the value
+\end{sloppypar}
+\begin{equation}
+\beta(e)=-e\gamma^{(A)}(e)=\frac{e^3}{12\pi^2}+O(e^5).
+\tag{18.2.37}\label{eq:18.2.37}
+\end{equation}
+\par\noindent
+Using an earlier calculation~\hyperref[ch18-ref-3a]{[3a]} of the fourth-order
+term in the vacuum polarization function $\pi(q^2)$, Gell-Mann and Low were
+able also to give the term in $\beta(e)$ of next order in $e$:
+\begin{equation}
+\beta(e)=\frac{e^3}{12\pi^2}+\frac{e^5}{64\pi^4}+O(e^7).
+\tag{18.2.38}\label{eq:18.2.38}
+\end{equation}
+\par\noindent
+In other words, the electric charge at a sliding scale $\mu$ satisfies the
+renormalization group equation
+\begin{equation}
+\mu\frac{d}{d\mu}e_\mu
+=\frac{e_\mu^3}{12\pi^2}+\frac{e_\mu^5}{64\pi^4}+O(e_\mu^7).
+\tag{18.2.39}\label{eq:18.2.39}
+\end{equation}
+\par\noindent
+This shows, for small $e_\mu$, that $e_\mu$ \emph{increases} with increasing
+$\mu$.
+
+We also need an initial condition. This is provided by the known value of the
+conventionally renormalized charge $e_R=Z_3^{1/2}e$, for which
+$\alpha\equiv e_R^2/4\pi=1/137.036\ldots$. Eqs.~\eqref{eq:18.2.32} and
+\eqref{eq:18.2.36} yield
+\begin{align}
+e_R/e_\mu
+&=Z_3^{1/2}N_\mu^{(A)}=\sqrt{1-\pi(\mu^2)}\notag\\
+&=1-\frac{e_R^2}{4\pi^2}\int_0^1dx\,x(1-x)
+\ln\left[1+\frac{\mu^2x(1-x)}{m_e^2}\right]+O(e_R^4).
+\tag{18.2.40}\label{eq:18.2.40}
+\end{align}
+\par\noindent
+We need to match this with the solution of Eq.~\eqref{eq:18.2.39} at a value
+of $\mu$ which is large enough to justify the approximation $\mu\gg m_e$ in
+\eqref{eq:18.2.39} but small enough so that the logarithm in
+Eq.~\eqref{eq:18.2.40} is still small enough compared with $4\pi^2/e_R^2$ to
+justify the use of perturbation theory. (For instance, we might take $\mu$ to
+be of order 100 MeV.) For such values of $\mu$, Eq.~\eqref{eq:18.2.40} gives
+\begin{equation}
+e_\mu\simeq e_R+\frac{e_R^3}{12\pi^2}
+\left[\ln\frac{\mu}{m_e}-\frac{5}{6}\right].
+\tag{18.2.41}\label{eq:18.2.41}
+\end{equation}
+\par\noindent
+On the other hand, the solution of Eq.~\eqref{eq:18.2.39} for $e_\mu$ small
+(keeping only the leading term on the right-hand side) is
+\begin{equation}
+e_\mu=\left[\text{constant}-\frac{\ln\mu}{6\pi^2}\right]^{-1/2}.
+\tag{18.2.42}\label{eq:18.2.42}
+\end{equation}
+\par\noindent
+Comparing Eqs.~\eqref{eq:18.2.41} and \eqref{eq:18.2.42} gives the solution
+\begin{equation}
+e_\mu=e_R\left[1-\frac{e_R^2}{6\pi^2}
+\left(\ln\left(\frac{\mu}{m_e}\right)-\frac{5}{6}\right)\right]^{-1/2}.
+\tag{18.2.43}\label{eq:18.2.43}
+\end{equation}
+\par\noindent
+Unlike Eq.~\eqref{eq:18.2.41}, Eq.~\eqref{eq:18.2.43} is valid as long as
+$e_\mu^2/6\pi^2$ is small, whether or not
+$(e_R^2/6\pi^2)\allowbreak\ln(\mu/m_e)$ is small.
+
+For instance, we have already seen in Section 11.3 that the leading
+fourth-order radiative correction to the magnetic moment of the muon can be
+obtained by multiplying the second-order (Schwinger) term (11.3.16)
+by the vacuum polarization function $\pi_e(k^2)$ at $k^2\simeq m_\mu^2$,
+which according to Eq.~\eqref{eq:18.2.40} is the same (to this order) as using
+$e_{m_\mu}^2/4\pi$ in place of $\alpha$ in the Schwinger term.
+
+Another example: Experiments at high energy electron--positron colliders such
+as LEP at CERN or SLC at SLAC now study physical processes at energies of the
+order of the mass of the $Z^0$ particle, or 91 GeV. Eq.~\eqref{eq:18.2.43}
+shows that at these energies, radiative corrections in pure quantum
+electrodynamics should be calculated using a value for the fine structure
+constant which is not $\alpha=1/137.036$ but rather
+\begin{equation}
+\frac{e^2(91\ \mathrm{GeV})}{4\pi}
+=\frac{\alpha}{1-2(11.25)\alpha/3\pi}=\frac{1}{134.6}.
+\tag{18.2.44}\label{eq:18.2.44}
+\end{equation}
+\par\noindent
+This is for a theory in which electrons are the only charged particles with
+masses below $m_Z$. In the real world there are many such particle types, and
+the effective fine structure constant~\hyperref[ch18-ref-4]{[4]} at $m_Z$ is
+$(128.87\pm0.12)^{-1}$.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+The sliding scale at which the coupling parameters of a theory are calculated
+may be the value of an external \emph{field} rather than the momentum of an
+external line. In one of the early applications of the renormalization group
+method, Coleman and E.~Weinberg~\hyperref[ch18-ref-4a]{[4a]} considered the
+effective potential $V(\phi)$ for a spacetime-independent external scalar
+field $\phi$. In the simple case where the field interacts with itself alone,
+their one-loop result is given by Eq.~\eqref{eq:16.2.15}. It is particularly
+interesting to consider this potential in the case where the renormalized
+mass $m_R$ vanishes, where to one-loop order we may set $\mu^2(\phi)$ in the
+last term equal to $g_R\phi^2/2$, so that Eq.~\eqref{eq:16.2.15} here reads
+(with $g$ a slightly redefined coupling):
+\begin{equation}
+V(\phi)=\lambda_R+\frac{g}{24}\phi^4
++\frac{g^2\phi^4\ln\phi^2}{256\pi^2}.
+\tag{18.2.45}\label{eq:18.2.45}
+\end{equation}
+\par\noindent
+This looks like at first sight as if for $g>0$ the potential becomes less than
+$\lambda_R$ for very small $\phi$, so that the point $\phi=0$ is a local
+maximum instead of a minimum, but for such small values of $\phi$ the third
+term is larger than the second, and the perturbation theory is obviously
+untrustworthy. Also, we would like to be able to argue that $g$ must be
+positive in order for the potential to be bounded below at large fields, but
+Eq.~\eqref{eq:18.2.45} shows that however small $g$ is, there is some
+sufficiently large $\phi$ where perturbation theory breaks down, and hence
+Eq.~\eqref{eq:18.2.45} cannot be trusted to tell us whether the potential is
+bounded below at large fields.
+
+We can do much better by using a coupling constant defined at a sliding scale
+$\mu$ of field strength. Suppose we define a coupling $g_\mu$ by the condition
+that
+\begin{equation}
+V(\mu)=\lambda_R+\frac{g_\mu}{24}\mu^4.
+\tag{18.2.46}\label{eq:18.2.46}
+\end{equation}
+\par\noindent
+If we had used $g_\mu$ as the coupling parameter from the beginning, then in
+place of Eq.~\eqref{eq:18.2.45} we would have obtained
+\begin{equation}
+V(\phi)=\lambda_R+\frac{g_\mu}{24}\phi^4
++\frac{g_\mu^2\phi^4}{256\pi^2}\ln\left(\frac{\phi^2}{\mu^2}\right),
+\tag{18.2.47}\label{eq:18.2.47}
+\end{equation}
+\par\noindent
+which obviously satisfies Eq.~\eqref{eq:18.2.46}.
+\footnote{Eq.~\eqref{eq:18.2.47} differs from what we would get from
+Eq.~\eqref{eq:18.2.45} by simply using Eq.~\eqref{eq:18.2.46} to express $g$
+in terms of $g_\mu$, in that the last term is proportional to $g_\mu^2$ rather
+than $g^2$. The difference is of higher order in $g$, but can become
+significant if $V(\phi)$ is evaluated at $\phi$ very different from $\mu$,
+where large logarithms can compensate for powers of coupling. If we use
+$g_\mu$ as the coupling parameter from the beginning and take $\mu$ to be of
+order $\phi$ then no such large logarithms occur, and the approximation
+Eq.~\eqref{eq:18.2.47} is valid as long as $g_\mu$ remains small.}
+The renormalization group equation for $g_\mu$ can be obtained from the
+condition that this effective potential is independent of $\mu$,
+\footnote{To eliminate all cut-off dependence, $\phi$ should be written in
+terms of a renormalized field $\phi_\mu=N_\mu^\phi\phi$, which gives
+$V(\phi_\mu)$ a $\mu$ dependence arising from the $\mu$ dependence of the
+renormalization constant $N_\mu^\phi$. This point is ignored here, because in
+the scalar field theory with interaction $\propto\phi^4$ the
+lowest-order graphs contributing to the $\mu$ dependence of $N_\mu^\phi$ have
+two loops, so that to the order of the calculations presented here we can
+take $N_\mu^\phi=1$.}
+\begin{equation}
+\mu\frac{dg_\mu}{d\mu}=\frac{3g_\mu^2}{16\pi^2}.
+\tag{18.2.48}\label{eq:18.2.48}
+\end{equation}
+\par\noindent
+(Terms involving the derivative of $g_\mu^2$ are dropped here, because they
+are of higher order in $g_\mu$, and are hence negligible as long as $g_\mu$
+is sufficiently small.) It is not a coincidence that this takes the same
+form as the renormalization group equation \eqref{eq:18.2.9},
+\eqref{eq:18.2.12}, where $\mu$ was a renormalization momentum, because as we
+shall see in the next section the first two terms in the renormalization group
+equation are always independent of the way that we define the sliding scale.
+The solution of this equation is given by Eq.~\eqref{eq:18.2.17}, in general
+with a different integration constant $M$. Hence by taking $\mu=\phi$ in
+Eq.~\eqref{eq:18.2.17}, we now have
+\begin{equation}
+V(\phi)=\lambda_R-\frac{32\pi^2\phi^4}{3\ln(\phi^2/M^2)}.
+\tag{18.2.49}\label{eq:18.2.49}
+\end{equation}
+\par\noindent
+\begin{equation}
+g_\phi=-\frac{32\pi^2}{3\ln(\phi^2/M^2)}.
+\tag{18.2.50}\label{eq:18.2.50}
+\end{equation}
+\par\noindent
+This result should be used with some care, because it is only valid where the
+coupling constant $g_\phi$ is small. The problem is not just that
+Eq.~\eqref{eq:18.2.49} loses its validity for $\phi$ near $M$; we also cannot
+integrate the renormalization group equation through the singularity at
+$\phi=M$, so a knowledge of $g_\phi$ on one side of this singularity tells us
+nothing about its behavior on the other side.
+
+If $g_{\phi_0}$ is found to have a small \emph{positive} value for some
+$\phi_0$ then from Eq.~\eqref{eq:18.2.50} we know that $M>\lvert\phi_0\rvert$,
+so $g_\phi$ remains small and Eq.~\eqref{eq:18.2.49} is valid for
+$\lvert\phi\rvert<\lvert\phi_0\rvert$. This shows that the point $\phi=0$ is
+a local \emph{minimum} of $V(\phi)$, contrary to what Eq.~\eqref{eq:18.2.45}
+might have led us to suppose. This means that the vacuum which is invariant
+under the symmetry transformation $\phi\to-\phi$ is stable in this model,
+aside from the possibility of quantum mechanical barrier penetration. On the
+other hand, we do not know that Eq.~\eqref{eq:18.2.49} becomes valid for
+$\lvert\phi\rvert$ sufficiently large compared with $M$. The coupling might
+remain too large to use perturbation theory for all $\lvert\phi\rvert>M$, and
+even if it becomes small for some $\lvert\phi\rvert>M$, the potential might
+be given for such $\phi$ by Eq.~\eqref{eq:18.2.49} with a renormalization scale
+$M'>\phi$, producing a second singularity. Thus in this case we cannot
+conclude that $V(\phi)\to-\infty$ for $\lvert\phi\rvert\to\infty$.
+
+Similarly, if $g_\phi$ is found to have a small \emph{negative} value for some
+$\phi_0$ then we know that $M<\lvert\phi_0\rvert$, so $g_\phi$ remains small
+and Eq.~\eqref{eq:18.2.49} is valid for
+$\lvert\phi\rvert>\lvert\phi_0\rvert$. In this case we cannot conclude
+anything about the behavior of the potential for $\lvert\phi\rvert<M$, but
+here we \emph{can} use Eq.~\eqref{eq:18.2.49} to see that
+$V(\phi)\to-\infty$ for $\lvert\phi\rvert\to\infty$, ruling out the
+possibility of any stable vacuum. Because we are here considering the limit
+$\lvert\phi\rvert\to\infty$, this conclusion holds also for scalar fields of
+mass $m>0$, provided $m\ll\lvert\phi_0\rvert$. This is why it is necessary to
+assume that the $\phi^4$ coupling (renormalized at any scale much larger than
+the scalar mass) is positive.

@@ -1,2 +1,559 @@
-% Outline scaffold for Section 15.9. Main content intentionally omitted.
-\subsection{The Batalin--Vilkovisky Formalism\optionalreading}
+% Physical source pages 65--73; printed pages 42--50.
+\subsection[The Batalin--Vilkovisky Formalism]{The Batalin--Vilkovisky Formalism\footnotemark}
+\footnotetext{This section lies somewhat out of the book's main line of development, and may be omitted in a first reading.}
+
+This section will describe a powerful formalism, widely known as the
+Batalin--Vilkovisky~\hyperref[ch15-ref-19]{[19]} method. It is developed in the
+Lagrangian framework, but has its roots in the earlier
+Batalin--Fradkin--Vilkovisky formalism~\hyperref[ch15-ref-20]{[20]}, which had
+been derived in the Hamiltonian framework. (The two schemes have been proved
+perturbatively equivalent~\hyperref[ch15-ref-21]{[21]}.) As we shall see in
+Section 17.1, the same formal machinery had been developed even earlier by
+Zinn--Justin~\hyperref[ch15-ref-22]{[22]} in order to deal with the
+renormalization of gauge theories. There are at least three areas where this
+formalism has proved invaluable:
+
+\begin{enumerate}
+\item[(i)] Up to this point, we have considered only irreducible symmetries
+with an algebra that closes in the sense of Eq.~\eqref{eq:15.8.10}. In some
+theories, such as supergravity (without auxiliary fields)~\hyperref[ch15-ref-23]{[23]},
+the algebra is open: it closes only when the field equations are satisfied,
+so that terms appear in Eq.~\eqref{eq:15.8.10} proportional to
+$\delta I/\delta\chi^n$. Similar terms will also then appear in the
+consistency conditions \eqref{eq:15.8.12}. Equation~\eqref{eq:15.8.11} then
+shows that in such theories $s^2$ will not vanish, but rather will equal a
+linear combination of the derivatives $\delta I/\delta\chi^n$. As we will see
+in this section, the Batalin--Vilkovisky method allows us to deal with very
+general gauge theories, including those with open or reducible gauge symmetry
+algebras.
+
+\item[(ii)] As mentioned above, essential aspects of the
+Batalin--Vilkovisky formalism were originally developed by Zinn--Justin in
+order to prove the renormalizability of gauge theories. The crucial point, to
+be explained in Section 17.1, is that although the sum of all
+one-particle-irreducible diagrams in a background field does not obey the BRST
+symmetries of the original action, it does share one of the key properties of
+the action, known as the master equation.
+
+\item[(iii)] The Batalin--Vilkovisky method provides a convenient way of
+analyzing the possible violations of symmetries of the action by quantum
+effects. It is used for this purpose in Section 22.6.
+\end{enumerate}
+
+The starting point of the Batalin--Vilkovisky formalism is the introduction of
+what are called ``antifields,'' one for each field in the theory. We let
+$\chi^n$ run over all the fields $\phi^r$, $\omega^A$, $\omega^{*A}$, and
+$h^A$, and for each $\chi^n$ we introduce an external antifield
+$\chi_n^{\ddagger}$, with the same Bose or Fermi statistics and opposite ghost
+number as that of the BRST-transformed field $s\chi^n$.
+\footnote{The symbol $\ddagger$ is used here in place of the more usual $*$ in
+order to emphasize that it has nothing whatever to do with complex
+conjugation or charge conjugation. In particular, the antighost field
+$\omega^{*A}$ is \emph{not} the same as the antifield
+$\omega_A^{\ddagger}$ of $\omega^A$.}
+That is, $\chi_n^{\ddagger}$ has the opposite statistics to $\chi^n$, and a
+ghost number equal to $-\operatorname{gh}(\chi^n)-1$, where
+$\operatorname{gh}(\chi^n)$ is the ghost number of $\chi^n$. In the simplest
+cases, including Yang--Mills theories and quantum gravity, the original
+gauge-invariant action $I[\phi]$ is supplemented with a term coupling the
+antifields $\chi_n^{\ddagger}$ to the $s\chi^n$, giving an action
+\begin{equation}
+S[\chi,\chi^{\ddagger}]=I[\phi]+(s\chi^n)\chi_n^{\ddagger}.
+\tag{15.9.1}\label{eq:15.9.1}
+\end{equation}
+This satisfies what is called the \emph{master equation}
+\begin{equation}
+0=\frac{\delta_R S}{\delta\chi_n^{\ddagger}}
+  \frac{\delta_L S}{\delta\chi^n},
+\tag{15.9.2}\label{eq:15.9.2}
+\end{equation}
+with `$R$' and `$L$' here denoting right- and left-differentiation. To check
+this, note that the terms in Eq.~\eqref{eq:15.9.2} of zeroth order in
+antifields just yield the condition of gauge invariance
+\begin{equation}
+0=(s\phi^r)\frac{\delta_L I}{\delta\phi^r}
+  =\omega^A\delta_A I[\phi],
+\tag{15.9.3}\label{eq:15.9.3}
+\end{equation}
+while the terms linear in the antifields $\phi_r^{\ddagger}$ provide the
+condition of nilpotence:
+\begin{equation}
+0=(s\chi^m)\frac{\delta_L(s\chi^n)}{\delta\chi^m}=s^2\chi^n.
+\tag{15.9.4}\label{eq:15.9.4}
+\end{equation}
+
+The $\chi_n^{\ddagger}$ are external fields, and must be given suitable values
+before we use $S[\chi,\chi^{\ddagger}]$ to calculate the $S$-matrix. For this
+purpose, we introduce an arbitrary fermionic functional $\Psi[\chi]$ with
+ghost number $-1$, and set
+\footnote{It is not necessary to distinguish between left- and
+right-differentiation here, because either $\chi^n$ or
+$\delta\Psi/\delta\chi^n$ must be bosonic.}
+\begin{equation}
+\chi_n^{\ddagger}=\frac{\delta\Psi[\chi]}{\delta\chi^n}.
+\tag{15.9.5}\label{eq:15.9.5}
+\end{equation}
+Then Eq.~\eqref{eq:15.9.1} becomes
+\begin{equation}
+S[\phi,\delta\Psi/\delta\chi]
+=I[\phi]+(s\chi^n)\frac{\delta\Psi[\chi]}{\delta\chi^n}
+=I[\phi]+s\Psi[\chi].
+\tag{15.9.6}\label{eq:15.9.6}
+\end{equation}
+Comparison with Eq.~\eqref{eq:15.8.14} shows that this is the same as the
+gauge-fixed action $I_{\mathrm{NEW}}[\chi]$. Thus, using the same arguments as
+in the previous section, physical matrix elements are not affected by small
+changes in $\Psi$. The action \eqref{eq:15.8.7} constructed by the
+Faddeev--Popov--De Witt method corresponds to the choice
+$\Psi=-\omega^{*A}f_A$, for which
+$\phi_r^{\ddagger}=\omega^{*A}\delta f_A/\delta\phi^r$,
+$\omega_C^{\ddagger}=0$, and $\omega_A^{*\ddagger}=-f_A$.
+
+So far, nothing new has been accomplished. The first new point is that the
+master equation \eqref{eq:15.9.2} can be used for more general theories by
+letting $S[\chi,\chi^{\ddagger}]$ be a non-linear functional of the antifields
+$\chi_n^{\ddagger}$. (For reducible theories we must also include ghosts for
+ghosts among the $\chi^n$, as discussed in the previous section, along with
+their antifields.) As above, we take the statistics of $\chi_n^{\ddagger}$ to
+be opposite to that of $\chi^n$, and its ghost number equal to
+$-\operatorname{gh}(\chi^n)-1$, and we require $S[\chi,\chi^{\ddagger}]$ to be
+a bosonic operator of ghost number zero. Because $\omega^{*A}$ and $h_A$ have
+linear BRST transformations they are unaffected by the complications affecting
+the other $\chi^n$ (in this connection, see Section 16.4), so they and their
+antifields enter in the action $S[\chi,\chi^{\ddagger}]$ in the same way as in
+Eq.~\eqref{eq:15.9.1}. That is,
+\begin{equation}
+S=S_{\min}[\phi,\omega,\phi^{\ddagger},\omega^{\ddagger}]
+  -h^A\omega_A^{*\ddagger},
+\tag{15.9.7}\label{eq:15.9.7}
+\end{equation}
+where $\phi_r^{\ddagger}$, $\omega_A^{\ddagger}$, and
+$\omega_A^{*\ddagger}$ are the antifields of $\phi^r$, $\omega^A$, and
+$\omega^{*A}$, with ghost numbers $-1$, $-2$, and $0$, respectively, and
+$S_{\min}[\phi,\omega,\phi^{\ddagger},\omega^{\ddagger}]$ is some bosonic
+functional of ghost number zero. The last term in \eqref{eq:15.9.7} has no
+effect on the master equation, so $S_{\min}$ satisfies the master equation by
+itself.
+\footnote{The fields $\phi^r$, $\omega^A$, $\phi_r^{\ddagger}$,
+$\omega_A^{\ddagger}$ are sometimes called \emph{minimal variables}, while
+fields like $\omega^{*A}$ and $h_A$ which together with their antifields enter
+bilinearly as in Eq.~\eqref{eq:15.9.7}, are called \emph{trivial pairs}.}
+
+Because $S_{\min}$ has ghost number zero, its expansion in powers of antifields
+must take the form
+\begin{align}
+S_{\min}={}&I[\phi]+\omega^A f_A^r[\phi]\phi_r^{\ddagger}
++\frac12\omega^A\omega^B f^C{}_{AB}[\phi]\omega_C^{\ddagger}
+\notag\\
+&+\frac12\omega^A\omega^B f^{rs}_{AB}[\phi]
+  \phi_r^{\ddagger}\phi_s^{\ddagger}
++\omega^A\omega^B\omega^C f^{rD}_{ABC}[\phi]
+  \phi_r^{\ddagger}\omega_D^{\ddagger}
+\notag\\
+&+\frac12\omega^A\omega^B\omega^C\omega^D f^{EF}_{ABCD}[\phi]
+  \omega_E^{\ddagger}\omega_F^{\ddagger}+\cdots.
+\tag{15.9.8}\label{eq:15.9.8}
+\end{align}
+The term in the master equation \eqref{eq:15.9.2} of zeroth order in
+antifields (and hence first order in $\omega^A$) yields
+\begin{equation}
+0=f_A^r[\phi]\frac{\delta I[\phi]}{\delta\phi^r},
+\tag{15.9.9}\label{eq:15.9.9}
+\end{equation}
+which is just the statement that $I[\phi]$ is invariant under the
+transformation
+\begin{equation}
+\phi^r\longrightarrow\phi^r+\epsilon^A f_A^r[\phi]
+\tag{15.9.10}\label{eq:15.9.10}
+\end{equation}
+with $\epsilon^A$ arbitrary infinitesimals. The term in the master equation
+proportional to $\phi_s^{\ddagger}$ on the right and $\omega^A\omega^B$ on the
+left yields
+\begin{equation}
+0=f_A^r[\phi]\frac{\delta f_B^s[\phi]}{\delta\phi^r}
+-f_B^r[\phi]\frac{\delta f_A^s[\phi]}{\delta\phi^r}
++f^C{}_{AB}[\phi]f_C^s[\phi]
++\frac{\delta I[\phi]}{\delta\phi^r}f^{rs}_{AB}[\phi],
+\tag{15.9.11}\label{eq:15.9.11}
+\end{equation}
+which, when the field equations $\delta I/\delta\phi=0$ are satisfied, becomes
+the commutation relation (with structure constant $f^C{}_{AB}[\phi]$) for the
+transformation \eqref{eq:15.9.10}. The other term in the master equation
+linear in antifields is proportional to $\omega^A\omega^B\omega^C$ on the
+left and $\omega_D^{\ddagger}$ on the right; it yields
+\begin{equation}
+0=f^r_{[A}[\phi]\frac{\delta f^D{}_{BC]}[\phi]}{\delta\phi^r}
+-f^E{}_{[AB}[\phi]f^D{}_{C]E}[\phi]
++f^{rD}_{ABC}[\phi]\frac{\delta I[\phi]}{\delta\phi^r},
+\tag{15.9.12}\label{eq:15.9.12}
+\end{equation}
+where square brackets in the subscripts indicate antisymmetrization with
+respect to the enclosed indices $A$, $B$, and $C$. When the field equations
+are satisfied this becomes the generalized Jacobi identity
+\eqref{eq:15.8.12}. Equation~\eqref{eq:15.9.11} is necessary for the
+consistency of the symmetry condition \eqref{eq:15.9.9} (assuming that the
+$f_A^r$ furnish a complete set of gauge symmetries), while
+Eq.~\eqref{eq:15.9.12} is necessary for the consistency of the commutation
+relations \eqref{eq:15.9.11}. Note that the terms in Eqs.~\eqref{eq:15.9.11}
+and \eqref{eq:15.9.12} that arise from the terms in $S_{\min}$ quadratic in
+antifields are proportional to $\delta I[\phi]/\delta\chi$, so they vanish when
+the field equations are satisfied, and in this sense are characteristic of
+open symmetry algebras. Terms in the master equation of second or higher order
+in antifields involve terms in $S_{\min}$ that are of third and/or higher
+order in antifields. These provide consistency conditions for
+Eqs.~\eqref{eq:15.9.11} and \eqref{eq:15.9.12}, consistency conditions for
+these consistency conditions, and so on. It is a virtue of the
+Batalin--Vilkovisky formalism that all these consistency conditions are
+incorporated in the one master equation.
+
+The master equation may be reinterpreted as a statement of invariance of $S$
+under a generalized BRST transformation. In order to see this, and for future
+purposes, it is useful to introduce a formal device known as the
+\emph{antibracket}. Returning now to our previous notation, the antibracket of
+two general functionals $F[\chi,\chi^{\ddagger}]$ and
+$G[\chi,\chi^{\ddagger}]$ is defined by
+\begin{equation}
+(F,G)\equiv
+\frac{\delta_R F}{\delta\chi^n}\frac{\delta_L G}{\delta\chi_n^{\ddagger}}
+-\frac{\delta_R F}{\delta\chi_n^{\ddagger}}\frac{\delta_L G}{\delta\chi^n}.
+\tag{15.9.13}\label{eq:15.9.13}
+\end{equation}
+Note that right- and left-functional derivatives of a bosonic functional like
+$S$ with respect to a bosonic or fermionic field variable are equal to each
+other or negatives of each other, respectively. Since just one of either
+$\chi_n^{\ddagger}$ or $\chi^n$ is always fermionic and the other bosonic, it
+follows that for the antibracket $(S,S)$ the second term on the right-hand side
+in Eq.~\eqref{eq:15.9.13} changes sign if we reverse left- and
+right-differentiation
+\[
+\frac{\delta_R S}{\delta\chi_n^{\ddagger}}
+\frac{\delta_L S}{\delta\chi^n}
+=-\frac{\delta_L S}{\delta\chi_n^{\ddagger}}
+\frac{\delta_R S}{\delta\chi^n}
+=-\frac{\delta_R S}{\delta\chi^n}
+\frac{\delta_L S}{\delta\chi_n^{\ddagger}}.
+\]
+(The last step is allowed because, since one of the factors here is bosonic,
+their order is immaterial.) We see that the second term on the right in
+Eq.~\eqref{eq:15.9.13} for $(S,S)$ is the negative of the first. The master
+equation \eqref{eq:15.9.2} may therefore be written as the requirement that
+the antibracket of $S$ with itself vanishes:
+\begin{equation}
+(S,S)=0.
+\tag{15.9.14}\label{eq:15.9.14}
+\end{equation}
+
+This is a non-trivial requirement, because the antibracket has the general
+symmetry property
+\begin{equation}
+(F,G)=\pm(G,F),
+\tag{15.9.15}\label{eq:15.9.15}
+\end{equation}
+the sign being $+1$ where $F$ and $G$ are both bosonic, and $-1$ otherwise. In
+particular, $(F,F)$ automatically vanishes if $F$ is fermionic, but not if $F$
+is bosonic.
+
+The generalized BRST transformation is defined by
+\begin{equation}
+\widehat\delta_\theta\chi^n
+=\theta\frac{\delta_R S}{\delta\chi_n^{\ddagger}}
+=-\theta(S,\chi^n),
+\tag{15.9.16}\label{eq:15.9.16}
+\end{equation}
+\begin{equation}
+\widehat\delta_\theta\chi_n^{\ddagger}
+=-\theta\frac{\delta_R S}{\delta\chi^n}
+=-\theta(S,\chi_n^{\ddagger}),
+\tag{15.9.17}\label{eq:15.9.17}
+\end{equation}
+where $\theta$ is a fermionic infinitesimal constant. (When $S$ is of the form
+\eqref{eq:15.9.1}, the transformation of $\chi$ is the same as the original
+BRST transformation $\delta_\theta\chi^n=\theta s\chi^n$.) To evaluate the
+effect of this transformation on general functionals, we note that the
+antibracket acts as a derivative, in the sense that
+\begin{equation}
+(F,GH)=(F,G)H\pm G(F,H),
+\tag{15.9.18}\label{eq:15.9.18}
+\end{equation}
+where the sign is $-1$ if $G$ is fermionic and $F$ is bosonic, and $+1$
+otherwise. Hence if $G$ and $H$ are arbitrary functionals of $\chi$ and
+$\chi^{\ddagger}$ with $\widehat\delta_\theta G=-\theta(S,G)$ and
+$\widehat\delta_\theta H=-\theta(S,H)$, then
+\[
+\widehat\delta_\theta(GH)
+=-\theta(S,G)H-G\theta(S,H)
+=\theta\bigl[(S,G)H\pm G(S,H)\bigr],
+\]
+where the sign is $+$ or $-$ if $G$ is bosonic or fermionic. Taking $F$ in
+Eq.~\eqref{eq:15.9.18} equal to the bosonic functional $S$, we see then that
+\[
+\widehat\delta_\theta(GH)=-\theta(S,GH).
+\]
+Together with Eqs.~\eqref{eq:15.9.16} and \eqref{eq:15.9.17}, this shows that
+for any functional $F$ formed as a sum of products of fields and antifields
+\begin{equation}
+\widehat\delta_\theta F=-\theta(S,F).
+\tag{15.9.19}\label{eq:15.9.19}
+\end{equation}
+The master equation \eqref{eq:15.9.14} may be interpreted as the statement
+that these generalized BRST transformations leave $S$ invariant
+\begin{equation}
+\widehat\delta_\theta S=-\theta(S,S)=0.
+\tag{15.9.20}\label{eq:15.9.20}
+\end{equation}
+Like the original BRST transformation, this symmetry transformation is
+nilpotent. To see this, we use the Jacobi identity for the antibracket:
+\begin{equation}
+\pm(F,(G,H))+\text{cyclic permutations}=0,
+\tag{15.9.21}\label{eq:15.9.21}
+\end{equation}
+where the sign in the first term is $-$ if $F$ and $H$ are bosonic and $+$
+otherwise, with corresponding signs for the other two cyclic permutations of
+$F$, $G$, and $H$. Taking $F=G=S$, Eq.~\eqref{eq:15.9.21} becomes
+\[
+0=\mp(S,(S,H))\mp(H,(S,S))+(S,(H,S))
+=\mp2(S,(S,H))\mp(H,(S,S)),
+\]
+where the sign is $-$ or $+$ if $H$ is bosonic or fermionic. The master
+equation \eqref{eq:15.9.14} then yields the nilpotency condition
+\begin{equation}
+(S,(S,H))=0.
+\tag{15.9.22}\label{eq:15.9.22}
+\end{equation}
+
+Because of this symmetry, the solution of the master equation is not unique.
+For instance, Eq.~\eqref{eq:15.9.22} shows that for any given solution $S$ we
+can find another solution given by the infinitesimal transformation
+\begin{equation}
+S'=S+(\delta F,S),
+\tag{15.9.23}\label{eq:15.9.23}
+\end{equation}
+with $\delta F$ an infinitesimal functional of $\chi$ and $\chi^{\ddagger}$
+that is arbitrary, except that it must be fermionic and have ghost number
+$-1$ in order that $S'$ should be bosonic and have ghost number zero. In
+particular, taking $\delta F$ to be a fermionic functional
+$\epsilon\Psi$ of $\chi^n$ alone gives
+\begin{equation}
+S'[\chi,\chi^{\ddagger}]
+=S[\chi,\chi^{\ddagger}]
++\epsilon\frac{\delta\Psi[\chi]}{\delta\chi^n}
+ \frac{\delta_R S}{\delta\chi_n^{\ddagger}}
+=S\left[\chi,\chi^{\ddagger}
++\epsilon\frac{\delta\Psi}{\delta\chi}\right].
+\tag{15.9.24}\label{eq:15.9.24}
+\end{equation}
+These infinitesimal transformations may be trivially integrated, and show
+that the master equation is still satisfied if we shift the antifields to new
+variables
+$\chi_n^{\ddagger\prime}\equiv
+\chi_n^{\ddagger}-\delta\Psi/\delta\chi^n$.
+
+The transformation \eqref{eq:15.9.23} is a special case of what are usually
+called canonical transformations, and will here be called ``anticanonical
+transformations'' to distinguish them from the canonical transformations of
+Chapter 7. An anticanonical transformation is any transformation of fields and
+antifields, finite or infinitesimal, that leaves unchanged the fundamental
+antibracket relations:
+\begin{equation}
+(\chi^n,\chi_m^{\ddagger})=\delta^n_m,
+\qquad
+(\chi^n,\chi^m)=(\chi_n^{\ddagger},\chi_m^{\ddagger})=0.
+\tag{15.9.25}\label{eq:15.9.25}
+\end{equation}
+For instance, consider the infinitesimal anticanonical transformation
+generated by an infinitesimal fermion generator $\delta F$, under which any
+bosonic or fermionic functional $G$ is transformed into
+\begin{equation}
+G\longrightarrow G'=G+(\delta F,G).
+\tag{15.9.26}\label{eq:15.9.26}
+\end{equation}
+It is easy to show that this does not change the fundamental antibrackets
+\eqref{eq:15.9.25}. For this purpose, note that the antibracket $(G,H)$ of two
+functionals $G$ and $H$ is transformed into $(G',H')$, which to first order in
+infinitesimals is
+\[
+(G',H')=(G,H)+((\delta F,G),H)+(G,(\delta F,H)).
+\]
+Using the Jacobi identity \eqref{eq:15.9.21}, this is
+\begin{equation}
+(G',H')=(G,H)\pm(\delta F,(G,H)),
+\tag{15.9.27}\label{eq:15.9.27}
+\end{equation}
+with the sign $+$ if $G$ and $H$ are both bosonic, and $-$ otherwise. In
+particular, if $(G,H)$ is a c-number then it is unchanged by an anticanonical
+transformation. (This is another way of seeing that the transformation
+\eqref{eq:15.9.23} leaves the master equation unchanged.) The fields and
+antifields have c-number antibrackets \eqref{eq:15.9.25}, so the same must be
+true for the transformed fields and antifields.
+
+To calculate the $S$-matrix we must give some definite value to the
+antifields. As in the simple case of closed gauge algebras where $S$ is of the
+linear form \eqref{eq:15.9.5}, we can do this by taking the antifields in the
+form \eqref{eq:15.9.5}; that is, we calculate the $S$-matrix using the
+``gauge-fixed'' action
+\begin{equation}
+I_\Psi[\chi]=S\left[\chi,\frac{\delta\Psi[\chi]}{\delta\chi}\right],
+\tag{15.9.28}\label{eq:15.9.28}
+\end{equation}
+where $\Psi[\chi]$ is a fermionic functional of ghost number $-1$. According
+to the remarks following Eq.~\eqref{eq:15.9.24}, this is the same as taking
+the canonically transformed antifields $\chi^{\ddagger\prime}$ equal to zero.
+
+The gauge-fixed action is invariant under a BRST transformation that acts on
+fields $\chi^n$ alone:
+\begin{equation}
+\delta_\theta\chi^n=\theta s\chi^n,
+\qquad
+s\chi^n=\left.
+\frac{\delta_R S[\chi,\chi^{\ddagger}]}{\delta\chi_n^{\ddagger}}
+\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}.
+\tag{15.9.29}\label{eq:15.9.29}
+\end{equation}
+To check this, note that
+\begin{align*}
+sI_\Psi[\chi]
+={}&\left.
+\left(
+\frac{\delta_R S[\chi,\chi^{\ddagger}]}{\delta\chi_n^{\ddagger}}
+\frac{\delta_L S[\chi,\chi^{\ddagger}]}{\delta\chi^n}
+\right)\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}
+\\
+&+\left.
+\left(
+\frac{\delta_R S[\chi,\chi^{\ddagger}]}{\delta\chi_m^{\ddagger}}
+\frac{\delta_L^2\Psi[\chi]}{\delta\chi^m\delta\chi^n}
+\frac{\delta_L S[\chi,\chi^{\ddagger}]}{\delta\chi_n^{\ddagger}}
+\right)\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}.
+\end{align*}
+The first term on the right-hand side vanishes as a result of the master
+equation, and the second because the summand is antisymmetric
+\footnote{For $\chi^m$ and $\chi^n$ both bosonic this is because
+$\delta S/\delta\chi_m^{\ddagger}$ and
+$\delta S/\delta\chi_n^{\ddagger}$ anticommute. For one of $\chi^m$ and
+$\chi^n$ fermionic and the other bosonic, this is because the right- and
+left-derivatives of $S$ with respect to whichever $\chi$ is fermionic have
+opposite signs. The terms with $\chi^m$ and $\chi^n$ both fermionic are
+antisymmetric because for these terms
+$\delta_L^2\Psi/\delta\chi^m\delta\chi^n$ is antisymmetric.}
+in $m$ and $n$.
+
+For closed algebras with $S$ of the form \eqref{eq:15.9.1}, the transformation
+\eqref{eq:15.9.29} is the original BRST transformation
+$\delta_\theta\chi^n=\theta s\chi^n$. But for general open algebras, the
+transformation \eqref{eq:15.9.29} is not the same as the original BRST
+transformation, and in general is not even nilpotent unless the field equations
+are satisfied. Instead, from the terms in the master equation of first order
+in the shifted antifields
+$\chi_n^{\ddagger\prime}=\chi_n^{\ddagger}-\delta\Psi[\chi]/\delta\chi^n$,
+we find
+\begin{equation}
+s^2\chi^m
+=\mp\left.
+\left(
+\frac{\delta_L}{\delta\chi_m^{\ddagger}}
+\frac{\delta_R}{\delta\chi_n^{\ddagger}}I[\chi,\chi^{\ddagger}]
+\right)\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}
+\frac{\delta I_\Psi[\chi]}{\delta\chi^n},
+\tag{15.9.30}\label{eq:15.9.30}
+\end{equation}
+with the sign $-$ or $+$ if $\chi^m$ is bosonic or fermionic, respectively.
+Again, we see that the dependence on the field equations characteristic of
+open gauge algebras is associated with terms in $S$ quadratic in the
+antifields.
+
+Until now we have been considering only the formulation of a classical field
+theory based on an open or closed gauge algebra. Now we must consider how
+quantum mechanical calculations are done in such theories. Physical matrix
+elements may be calculated by functional integrals weighted with
+$\exp(iI_\Psi[\chi])$, where as explained above, $I_\Psi[\chi]$ is obtained
+from $S[\chi,\chi^{\ddagger}]$ by setting
+$\chi_n^{\ddagger}=\delta\Psi[\chi]/\delta\chi^n$, or in other words
+$\chi_n^{\ddagger\prime}=0$. We wish to evaluate the effect of a change in
+$\Psi[\chi]$ on these matrix elements. First consider the vacuum--vacuum
+amplitude
+\begin{equation}
+Z_\Psi=\int\left[\prod d\chi\right]\exp(iI_\Psi[\chi]).
+\tag{15.9.31}\label{eq:15.9.31}
+\end{equation}
+Under a shift $\delta\Psi[\chi]$ in $\Psi[\chi]$, this changes by an amount
+\begin{equation}
+\delta Z=i\int\left[\prod d\chi\right]\exp(iI_\Psi[\chi])
+\left.
+\left(\frac{\delta_R S[\chi,\chi^{\ddagger}]}
+{\delta\chi_n^{\ddagger}}\right)
+\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}
+\left(\frac{\delta(\delta\Psi[\chi])}{\delta\chi^n}\right).
+\tag{15.9.32}\label{eq:15.9.32}
+\end{equation}
+Integrating by parts in field space, this becomes
+\begin{align}
+\delta Z={}&\int\left[\prod d\chi\right]\exp(iI_\Psi[\chi])
+\left.
+\left\{
+\frac{\delta_R S[\chi,\chi^{\ddagger}]}
+{\delta\chi_n^{\ddagger}}
+\frac{\delta_L I_\Psi[\chi]}{\delta\chi^n}
+-i\Delta S[\chi,\chi^{\ddagger}]
+\right\}\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}
+\delta\Psi[\chi],
+\tag{15.9.33}\label{eq:15.9.33}
+\end{align}
+where
+\begin{equation}
+\Delta\equiv
+\frac{\delta_R}{\delta\chi_n^{\ddagger}}
+\frac{\delta_L}{\delta\chi^n}.
+\tag{15.9.34}\label{eq:15.9.34}
+\end{equation}
+We see that the condition for the $\Psi$ independence of the vacuum--vacuum
+amplitude is in general \emph{not} the master equation \eqref{eq:15.9.2}, but
+rather what is called the \emph{quantum master equation}
+\begin{equation}
+(S,S)-2i\Delta S=0
+\qquad\text{at}\qquad
+\chi^{\ddagger}=\delta\Psi/\delta\chi.
+\tag{15.9.35}\label{eq:15.9.35}
+\end{equation}
+In cgs units a factor $1/\hbar$ would accompany each factor of
+$S[\chi,\chi^{\ddagger}]$, so the second term in Eq.~\eqref{eq:15.9.35} would
+have a coefficient $-2i\hbar$ in place of $-2i$. Thus whenever the quantum
+master equation \eqref{eq:15.9.35} is satisfied, the term in $S$ of zeroth
+order in $\hbar$ satisfies the original master equation \eqref{eq:15.9.2}.
+Usually it is easy to construct an action that satisfies the classical master
+equation, so that the first term in Eq.~\eqref{eq:15.9.35} vanishes, and the
+question is then whether the second term also vanishes. The case where the
+quantum master equation is not satisfied by a local action is considered in
+Chapter 22, on anomalies.
+
+Assuming the quantum master equation \eqref{eq:15.9.35} to be satisfied, the
+change in the vacuum expectation value of an operator $\mathcal O[\chi]$ due
+to a change $\delta\Psi$ in $\Psi$ is
+\begin{equation}
+\delta\langle\mathcal O\rangle
+=-\frac{i}{Z_\Psi}\int\left[\prod d\chi\right]
+\exp(iI_\Psi[\chi])
+\frac{\delta_R\mathcal O[\chi]}{\delta\chi^n}
+\left.
+\left(-\frac{\delta_R S(\chi,\chi^{\ddagger})}
+{\delta\chi_n^{\ddagger}}\right)
+\right|_{\chi^{\ddagger}=\delta\Psi/\delta\chi}
+\delta\Psi[\chi].
+\tag{15.9.36}\label{eq:15.9.36}
+\end{equation}
+The coefficient of the exponential in the integrand in Eq.~\eqref{eq:15.9.36}
+is just $s\mathcal O[\chi]$. We see that expectation values of operators that
+are invariant
+\footnote{For open gauge theories there are generally no operators other than
+constants that are invariant under the transformations
+\eqref{eq:15.9.16}--\eqref{eq:15.9.17}. Instead one should consider operators
+$\mathcal O(\chi,\chi^{\ddagger})$ that are invariant under the nilpotent
+``quantum BRST operator'' $\sigma$, defined by
+$\sigma\mathcal O=(\mathcal O,S)-i\Delta\mathcal O$. Where $\mathcal O$ depends
+only on $\chi$, this condition reduces to Eq.~\eqref{eq:15.9.36}. If
+$\sigma\mathcal O=0$ then the expectation value of
+$\mathcal O(\Psi,\delta\Psi/\delta\chi)$ is unaffected by a small change in
+the gauge-fixing fermion $\Psi$~\hyperref[ch15-ref-24]{[24]}.}
+under the generalized BRST transformation
+\eqref{eq:15.9.16}--\eqref{eq:15.9.17} are unaffected by a change in the
+gauge-fixing fermion $\Psi$. Corresponding results hold for vacuum expectation
+values of two or more operators.

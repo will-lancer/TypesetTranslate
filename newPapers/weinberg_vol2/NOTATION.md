@@ -22,6 +22,7 @@ Apply these rules during transcription rather than saving them for an unbounded 
 - **Dirac slash:** Use the project command `\sl{p}` (and similarly `\sl{k}`, `\sl{e}`, etc.), which is backed by the `slashed` package. Do not use `\not p` or `\not\!p`; `\notag` remains the ordinary `amsmath` line-number suppression command and must not be changed.
 - **Cross-references:** Every numbered equation and figure must have a stable `\label`; prose must refer to them with `\eqref` and `\ref`. Every numbered chapter-reference entry must also have a stable label, and inline citation markers must hyperlink to the matching entry while retaining Weinberg's visible chapter-local numbering.
 - **Display layout:** Keep a display on one line when it fits comfortably and reads clearly. Use multiple aligned lines only when line length, logical grouping, or legibility benefits from the break; do not preserve scan-induced line wrapping.
+- **Batalin--Vilkovisky antifields (Chapter 15):** Write the antifield paired with a field `x^n` as `x_n^{\ddagger}`. Reserve `*` for complex conjugation and `\dagger` for Hermitian adjoints, exactly as the surrounding mathematics requires. Never use an antifield glyph as a footnote marker. State Grassmann parity and ghost number in prose or equations as in the source; this presentation change does not alter the BV grading conventions.
 
 These are deliberate semantic distinctions, not a mechanical replacement of every letter `P` or `T`.
 

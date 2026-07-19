@@ -1,2 +1,640 @@
-% Outline scaffold for Section 17.5. Main content intentionally omitted.
+% Source: physical pp. 123--132 (printed pp. 100--109). Coverage: complete Section 17.5 through the paragraph before Problems; Eqs. (17.5.1)--(17.5.44), all unnumbered displays, Figure 17.1, and two footnotes. Uncertainties: none after full-resolution rendered-page review.
 \subsection{A One--Loop Calculation in Background Field Gauge}
+
+As an exercise, we are now going to calculate the one-loop renormalization
+factor for the gauge coupling constant in a general non-Abelian gauge
+theory. As we will see in the next chapter, this provides an essential input
+in so-called `renormalization group' calculations of physical processes at
+high energy; the results we obtain here will be used there to demonstrate
+the asymptotic freedom of non-Abelian gauge theories.
+
+The method to be employed here is somewhat novel. Usually, one
+considers the effective action in a spacetime-dependent background gauge
+field, and calculates the terms quadratic in this field, extracting a factor
+$(q_\mu A_{\alpha\nu}-q_\nu A_{\alpha\mu})^2$ (where $q$ is the gauge field
+four-momentum), and only then isolating the logarithmic divergence by setting
+$q=0$ in the coefficient of this factor. Instead we shall follow the much
+simpler course of taking the gauge field to be spacetime-independent from the
+beginning. In this case the terms in the effective action that are quadratic
+or cubic in the gauge field of course vanish, but there is a non-vanishing
+quartic term that is ultraviolet divergent, and which can be used to calculate
+the coupling constant renormalization factor $(1+L_A)^{-1/2}$. In this way our
+one-loop calculation becomes a matter of simple matrix algebra. Note that
+this procedure can only work in background field gauge; otherwise there
+would be independent logarithmic divergences in the parts of the effective
+action that are quartic and quadratic in the background gauge field.
+
+With this motivation, we turn to the calculation of the one-loop effective
+action in a background field for which $A_{\alpha\mu}$ is constant and
+$\psi=\omega=\omega^*=0$. For such a background field, the full modified
+Lagrangian is\footnote{See Eqs.~\eqref{eq:17.4.12}, \eqref{eq:17.4.4}, and
+\eqref{eq:17.4.23}. We are here specializing to the case of matter fields
+forming a multiplet of spin $1/2$ fermions. The squares in $\mathcal L$ and
+$\mathcal L_f$ include obvious index contractions.}
+\begin{equation}
+\mathcal L_{\mathrm{MOD}}=\mathcal L+\mathcal L_f+\mathcal L_{GH},
+\label{eq:17.5.1}
+\end{equation}
+\begin{align}
+\mathcal L={}&-\frac14\left(F_{\alpha\mu\nu}+\bar D_\mu A'_{\alpha\nu}
+-\bar D_\nu A'_{\alpha\mu}+C_{\alpha\beta\gamma}A_{\beta\mu}'A_{\gamma\nu}'\right)^2
+\notag\\
+&-\bar\psi'\bigl(\sl{\bar D}-it_\alpha\sl{A}'_\alpha+m\bigr)\psi',
+\label{eq:17.5.2}
+\end{align}
+\begin{equation}
+\mathcal L_f=-\frac{1}{2\xi}f_\alpha f_\alpha
+=-\frac{1}{2\xi}\bigl(\bar D_\mu A_\alpha^{\prime\mu}\bigr)^2,
+\label{eq:17.5.3}
+\end{equation}
+\begin{equation}
+\mathcal L_{GH}=-\bigl(\bar D_\mu\omega_\alpha^{\prime *}\bigr)
+\bigl(\bar D^\mu\omega'_\alpha
+-C_{\alpha\beta\gamma}\omega'_\beta A_\gamma^{\prime\mu}\bigr).
+\label{eq:17.5.4}
+\end{equation}
+One-loop graphs for vacuum--vacuum amplitudes are calculated from the
+part of the action that is quadratic in the quantum fields
+$A',\psi',\omega',\omega^{\prime *}$ over which one integrates. Keeping only
+such quadratic terms, we have
+\begin{align}
+\mathcal L_{\mathrm{QUAD}}={}&-\frac14
+\bigl(\bar D_\mu A'_{\alpha\nu}-\bar D_\nu A'_{\alpha\mu}\bigr)^2
+-\frac12F_\alpha^{\mu\nu}C_{\alpha\beta\gamma}
+A'_{\beta\mu}A'_{\gamma\nu}
+\notag\\
+&-\bar\psi'(\sl{\bar D}+m)\psi'
+-\frac{1}{2\xi}\bigl(\bar D_\mu A_\alpha^{\prime\mu}\bigr)^2
+-\bigl(\bar D_\mu\omega_\alpha^{\prime *}\bigr)
+ \bigl(\bar D^\mu\omega'_\alpha\bigr).
+\label{eq:17.5.5}
+\end{align}
+The corresponding action may be put in the general quadratic form:
+\begin{align}
+I_{\mathrm{QUAD}}\equiv{}&\int d^4x\,\mathcal L_{\mathrm{QUAD}}
+\notag\\
+={}&-\frac12\int d^4x\,d^4y\,
+A_\alpha^{\prime\mu}(x)A_\beta^{\prime\nu}(y)
+\mathcal D^A_{x\alpha\mu,y\beta\nu}
+-\int d^4x\,d^4y\,\bar\psi'_k(x)\psi'_\ell(y)
+\mathcal D^\psi_{xk,y\ell}
+\notag\\
+&-\int d^4x\,d^4y\,\omega_\alpha^{\prime *}(x)\omega'_\beta(y)
+\mathcal D^\omega_{x\alpha,y\beta},
+\label{eq:17.5.6}
+\end{align}
+with
+\begin{align}
+\mathcal D^A_{x\alpha\mu,y\beta\nu}\equiv{}&
+\eta_{\mu\nu}
+\left(-\delta_{\gamma\alpha}\frac{\partial}{\partial x_\lambda}
++C_{\gamma\delta\alpha}A_\delta^\lambda(x)\right)
+\left(-\delta_{\gamma\beta}\frac{\partial}{\partial y^\lambda}
++C_{\gamma\epsilon\beta}A_{\epsilon\lambda}(y)\right)\delta^4(x-y)
+\notag\\
+&-\left(-\delta_{\gamma\alpha}\frac{\partial}{\partial x^\nu}
++C_{\gamma\delta\alpha}A_{\delta\nu}(x)\right)
+\left(-\delta_{\gamma\beta}\frac{\partial}{\partial y^\mu}
++C_{\gamma\epsilon\beta}A_\epsilon^\mu(y)\right)\delta^4(x-y)
+\notag\\
+&+F_{\gamma\mu\nu}(x)C_{\gamma\alpha\beta}\delta^4(x-y)
+\notag\\
+&+\frac1\xi
+\left(-\delta_{\gamma\alpha}\frac{\partial}{\partial x^\mu}
++C_{\gamma\delta\alpha}A_{\delta\mu}(x)\right)
+\left(-\delta_{\gamma\beta}\frac{\partial}{\partial y^\nu}
++C_{\gamma\epsilon\beta}A_{\epsilon\nu}(y)\right)\delta^4(x-y),
+\label{eq:17.5.7}
+\end{align}
+\begin{equation}
+\mathcal D^\psi_{xk,y\ell}\equiv
+\left(-\gamma^\mu\frac{\partial}{\partial y^\mu}
+-it_\alpha\sl{A}_\alpha(y)+m\right)_{k\ell}\delta^4(x-y),
+\label{eq:17.5.8}
+\end{equation}
+\begin{align}
+\mathcal D^\omega_{x\alpha,y\beta}\equiv{}&
+\left(-\delta_{\gamma\alpha}\frac{\partial}{\partial x^\lambda}
++C_{\gamma\delta\alpha}A_{\delta\lambda}(x)\right)
+\left(-\delta_{\gamma\beta}\frac{\partial}{\partial y_\lambda}
++C_{\gamma\epsilon\beta}A_\epsilon^\lambda(y)\right)\delta^4(x-y).
+\label{eq:17.5.9}
+\end{align}
+(The minus signs in front of $\partial/\partial x$ and $\partial/\partial y$
+drop out when we integrate by parts.)
+
+The one-loop contribution to the effective action is given (as in Section
+16.2) by
+\begin{align}
+\exp\bigl(i\Gamma^{(1\ \mathrm{loop})}[A]\bigr)\propto{}&
+\int_{1\mathrm{PI}}
+\left(\prod dA'\right)\left(\prod d\psi'\right)
+\left(\prod d\bar\psi'\right)\left(\prod d\omega'\right)
+\left(\prod d\omega^{\prime *}\right)
+\notag\\[-2pt]
+&\qquad\times
+\exp\bigl(iI_{\mathrm{QUAD}}[A',\psi',\bar\psi',\omega',
+\omega^{\prime *};A]\bigr)
+\notag\\
+\propto{}&
+\bigl(\operatorname{Det}\mathcal D^A\bigr)^{-1/2}
+\bigl(\operatorname{Det}\mathcal D^\psi\bigr)^{+1}
+\bigl(\operatorname{Det}\mathcal D^\omega\bigr)^{+1}.
+\label{eq:17.5.10}
+\end{align}
+(The exponents $-1/2$ and $+1$ appear because $A'$ is a real boson field,
+while $\psi'$, $\bar\psi'$, $\omega'$, and $\omega^{\prime *}$ are distinct
+fermionic fields.) The calculation of such determinants is generally not
+an easy task. However, it becomes much simpler in the case of constant
+external fields, where the $\mathcal D$s can be diagonalized by passing to
+momentum space.
+
+Let us therefore now consider the case of constant background field
+$A_{\alpha\mu}$. For non-Abelian gauge theories such a constant field
+\emph{cannot} be removed by a gauge transformation, as shown by the non-zero
+values of various gauge-covariant fields
+\begin{equation}
+F_{\alpha\mu\nu}=C_{\alpha\beta\gamma}A_{\beta\mu}A_{\gamma\nu},
+\label{eq:17.5.11}
+\end{equation}
+\begin{equation}
+D_\lambda F_{\delta\mu\nu}
+=C_{\delta\epsilon\alpha}C_{\alpha\beta\gamma}
+A_{\epsilon\lambda}A_{\beta\mu}A_{\gamma\nu},
+\label{eq:17.5.12}
+\end{equation}
+and so on. Lorentz and gauge invariance tell us how to express the part
+of $\Gamma[A]$ of a given dimensionality as the integral of a finite number
+of local functions of $F_{\alpha\mu\nu}$, $D_\lambda F_{\alpha\mu\nu}$, etc.;
+the coefficients of the terms in this expression can be inferred by comparing
+the contribution that these terms make to $\Gamma[A]$ for constant background
+field $A_{\alpha\mu}$ with the results of a perturbative expansion.
+
+We transform each of the `matrices' $\mathcal D^A$, $\mathcal D^\psi$, and
+$\mathcal D^\omega$ to a momentum basis by the usual normalized Fourier transform
+\begin{equation}
+\mathcal D_{q\cdots,p\cdots}
+=\int\frac{d^4x}{(2\pi)^2}e^{-iq\cdot x}
+ \int\frac{d^4y}{(2\pi)^2}e^{ip\cdot y}\mathcal D_{x\cdots,y\cdots}.
+\label{eq:17.5.13}
+\end{equation}
+With $A$ constant, this gives
+\begin{equation}
+\mathcal D_{q\cdots,p\cdots}=\delta^4(p-q)\mathcal M_{\cdots,\cdots}(q),
+\label{eq:17.5.14}
+\end{equation}
+where $\cdots$ denotes discrete indices, and the $\mathcal M$ are finite
+$q$-dependent matrices
+\begin{align}
+\mathcal M^A_{\alpha\mu,\beta\nu}(q)={}&
+\eta_{\mu\nu}\bigl(-iq^\lambda\delta_{\gamma\alpha}
++A_\delta^\lambda C_{\gamma\delta\alpha}\bigr)
+\bigl(iq_\lambda\delta_{\gamma\beta}
++A_{\epsilon\lambda}C_{\gamma\epsilon\beta}\bigr)
+\notag\\
+&-\bigl(-iq_\nu\delta_{\gamma\alpha}
++A_{\delta\nu}C_{\gamma\delta\alpha}\bigr)
+\bigl(iq_\mu\delta_{\gamma\beta}
++A_\epsilon^\mu C_{\gamma\epsilon\beta}\bigr)
++F_{\gamma\mu\nu}C_{\gamma\alpha\beta}
+\notag\\
+&+\frac1\xi\bigl(-iq_\mu\delta_{\gamma\alpha}
++A_{\delta\mu}C_{\gamma\delta\alpha}\bigr)
+\bigl(iq_\nu\delta_{\gamma\beta}
++A_{\epsilon\nu}C_{\gamma\epsilon\beta}\bigr)
++\epsilon\text{ terms},
+\label{eq:17.5.15}
+\end{align}
+\begin{equation}
+\mathcal M^\psi_{k\ell}(q)
+=\bigl(i\sl q-it_\alpha\sl A_\alpha+m\bigr)_{k\ell}
++\epsilon\text{ terms},
+\label{eq:17.5.16}
+\end{equation}
+\begin{align}
+\mathcal M^\omega_{\alpha\beta}(q)={}&
+\bigl(-iq_\lambda\delta_{\gamma\alpha}
++A_{\delta\lambda}C_{\gamma\delta\alpha}\bigr)
+\bigl(iq^\lambda\delta_{\gamma\beta}
++A_\epsilon^\lambda C_{\gamma\epsilon\beta}\bigr)
++\epsilon\text{ terms},
+\label{eq:17.5.17}
+\end{align}
+with $F_{\gamma\mu\nu}$ given by Eq.~\eqref{eq:17.5.11}. From
+Eq.~\eqref{eq:17.5.10} we have then
+\begin{align}
+i\Gamma^{(1\ \mathrm{loop})}[A]
+={}&-\frac12\ln\operatorname{Det}\mathcal D^A
++\ln\operatorname{Det}\mathcal D^\psi
++\ln\operatorname{Det}\mathcal D^\omega
+\notag\\
+={}&-\frac12\operatorname{Tr}\ln\mathcal D^A
++\operatorname{Tr}\ln\mathcal D^\psi
++\operatorname{Tr}\ln\mathcal D^\omega
+\notag\\
+={}&\delta^4(p-p)\int d^4q\left[-\frac12\operatorname{tr}\ln\mathcal M^A(q)
++\operatorname{tr}\ln\mathcal M^\psi(q)
++\operatorname{tr}\ln\mathcal M^\omega(q)\right].
+\label{eq:17.5.18}
+\end{align}
+We denote traces by `tr' instead of `Tr' in the last line of
+Eq.~\eqref{eq:17.5.18} (and from now on in this section) to indicate that
+these are the usual traces of finite matrices rather than of integral operators.
+
+Since we are aiming here at a calculation of the infinite factor $L_A$
+multiplying $FF$ terms in the effective action, let's isolate the term in
+\eqref{eq:17.5.18} that is of fourth order in the background field $A$. For
+this purpose, it is convenient to divide each $\mathcal M$ into terms
+$\mathcal M_n$ containing $n=0,1$, or 2 factors of $A$:
+\begin{equation}
+\mathcal M=\mathcal M_0+\mathcal M_1+\mathcal M_2.
+\label{eq:17.5.19}
+\end{equation}
+It is then elementary algebra to show that the term in
+\eqref{eq:17.5.18} of fourth order in $A_{\alpha\mu}$ is
+
+\input{chapters/chapter17/figures/fig17-01.tex}
+
+\begin{equation}
+\left[\operatorname{tr}\ln\mathcal M\right]_{A^4}
+=\operatorname{tr}\left\{-\frac12\left[\mathcal M_0^{-1}\mathcal M_2\right]^2
++\left[\mathcal M_0^{-1}\mathcal M_1\right]^2\mathcal M_0^{-1}\mathcal M_2
+-\frac14\left[\mathcal M_0^{-1}\mathcal M_1\right]^4\right\}.
+\label{eq:17.5.20}
+\end{equation}
+(To see this, insert factors $\epsilon$ and $\epsilon^2$ multiplying
+$\mathcal M_1$ and $\mathcal M_2$ in Eq.~\eqref{eq:17.5.19}, differentiate
+$\operatorname{tr}\ln\mathcal M$ four times with respect to $\epsilon$, divide
+by $4!$ and set $\epsilon=0$.) The $\mathcal M_0^{-1}$ factors here are just
+the usual propagators; for $\xi=1$, these are
+\begin{equation}
+\left[\mathcal M_0^A(q)\right]^{-1}_{\alpha\mu,\beta\nu}
+=\delta_{\alpha\beta}\eta_{\mu\nu}(q^2-i\epsilon)^{-1},
+\label{eq:17.5.21}
+\end{equation}
+\begin{equation}
+\left[\mathcal M_0^\psi(q)\right]^{-1}_{k\ell}
+=\left[i\sl q+m\right]^{-1}_{k\ell},
+\label{eq:17.5.22}
+\end{equation}
+\begin{equation}
+\left[\mathcal M_0^\omega(q)\right]^{-1}_{\alpha,\beta}
+=\delta_{\alpha\beta}(q^2-i\epsilon)^{-1}.
+\label{eq:17.5.23}
+\end{equation}
+Indeed, the three terms in Eq.~\eqref{eq:17.5.20} just correspond to the
+three Feynman diagrams shown in Figure~\ref{fig:17.1}; the present method
+of calculation saves us from having to think about signs and combinatoric
+factors.
+
+For the $A$ loop, Eq.~\eqref{eq:17.5.15} gives for $\xi=1$:
+\begin{align*}
+\left[\mathcal M_1^A(q)\right]_{\alpha\mu,\beta\nu}
+&=-2\eta_{\mu\nu}q^\lambda[\mathcal A_\lambda]_{\alpha\beta},\\
+\left[\mathcal M_2^A(q)\right]_{\alpha\mu,\beta\nu}
+&=\left[\eta_{\mu\nu}\mathcal A_\lambda\mathcal A^\lambda
+-\mathcal A_\nu\mathcal A_\mu-\mathcal A_\mu\mathcal A_\nu\right]_{\alpha\beta}
++F_{\gamma\mu\nu}C_{\gamma\alpha\beta},
+\end{align*}
+where $\mathcal A_\lambda$ is the matrix
+\[
+[\mathcal A_\lambda]_{\alpha\beta}\equiv-iC_{\alpha\beta\gamma}A_{\gamma\lambda}
+\]
+for which
+\begin{align*}
+[\mathcal A_\lambda,\mathcal A_\rho]_{\alpha\beta}
+&=-C_{\alpha\delta\gamma}C_{\delta\beta\epsilon}
+(A_{\gamma\lambda}A_{\epsilon\rho}-A_{\gamma\rho}A_{\epsilon\lambda})\\
+&=-\bigl(C_{\alpha\delta\gamma}C_{\delta\beta\epsilon}
++C_{\alpha\delta\epsilon}C_{\delta\beta\gamma}\bigr)
+A_{\gamma\lambda}A_{\epsilon\rho}\\
+&=+C_{\alpha\delta\beta}C_{\delta\epsilon\gamma}
+A_{\gamma\lambda}A_{\epsilon\rho}
+=C_{\alpha\delta\beta}F_{\delta\rho\lambda}.
+\end{align*}
+The integrals have the structure
+\begin{align*}
+\int d^4q\,q^\mu q^\nu f(q^2)
+&=\frac14\eta^{\mu\nu}\int d^4q\,q^2f(q^2),\\
+\int d^4q\,q^\mu q^\nu q^\rho q^\sigma f(q^2)
+&=\frac1{24}\bigl[\eta^{\mu\nu}\eta^{\rho\sigma}
++\eta^{\mu\rho}\eta^{\nu\sigma}
++\eta^{\mu\sigma}\eta^{\nu\rho}\bigr]
+\int d^4q\,(q^2)^2f(q^2).
+\end{align*}
+We then find, for $\xi=1$:
+\begin{align*}
+\int d^4q\,\operatorname{tr}\left\{
+\left[\mathcal M_0^A(q)^{-1}\mathcal M_2^A(q)\right]^2\right\}
+\notag\\[-2pt]
+={}&4\mathcal I\,\operatorname{tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta]
++4\mathcal I\,C_{\gamma\alpha\beta}C_{\delta\alpha\beta}
+F_{\gamma\mu\nu}F_\delta^{\mu\nu},\\
+\int d^4q\,\operatorname{tr}\left\{
+\left[\mathcal M_0^A(q)^{-1}\mathcal M_1^A(q)\right]^2
+\mathcal M_0^A(q)^{-1}\mathcal M_2^A(q)\right\}
+\notag\\[-2pt]
+={}&4\mathcal I\,\operatorname{tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta],\\
+\int d^4q\,\operatorname{tr}\left\{
+\left[\mathcal M_0^A(q)^{-1}\mathcal M_1^A(q)\right]^4\right\}
+\notag\\[-2pt]
+={}&\frac83\mathcal I\,\operatorname{tr}
+\left[\begin{aligned}
+&2\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta\\[-2pt]
+&+\mathcal A^\lambda\mathcal A^\eta\mathcal A_\lambda\mathcal A_\eta
+\end{aligned}\right],
+\end{align*}
+where $\mathcal I$ is the divergent integral
+\begin{equation}
+\mathcal I\equiv\int d^4q\,[q^2-i\epsilon]^{-2},
+\label{eq:17.5.24}
+\end{equation}
+whose significance is discussed below. Putting this together in
+Eq.~\eqref{eq:17.5.20}, we have
+\begin{align*}
+\int d^4q\left[\operatorname{tr}\ln\mathcal M^A(q)\right]_{A^4}
+={}&\frac23\mathcal I\,\operatorname{tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta
+-\mathcal A^\lambda\mathcal A^\eta\mathcal A_\lambda\mathcal A_\eta]
+\notag\\[-2pt]
+&-2\mathcal I\,C_{\gamma\alpha\beta}C_{\delta\alpha\beta}
+F_{\gamma\mu\nu}F_\delta^{\mu\nu}.
+\end{align*}
+Both terms are actually of the same form, and when combined yield
+\begin{equation}
+\int d^4q\left[\operatorname{tr}\ln\mathcal M^A(q)\right]_{A^4}
+=-\frac53\mathcal I\,C_{\gamma\alpha\beta}C_{\delta\alpha\beta}
+F_{\gamma\mu\nu}F_\delta^{\mu\nu}.
+\label{eq:17.5.25}
+\end{equation}
+Now jumping ahead to the ghost loop, we see from Eq.~\eqref{eq:17.5.17} that
+\begin{equation}
+[\mathcal M_1^\omega(q)]_{\alpha\beta}
+=-2[\mathcal A^\lambda]_{\alpha\beta}q_\lambda,
+\label{eq:17.5.26}
+\end{equation}
+\begin{equation}
+[\mathcal M_2^\omega(q)]_{\alpha\beta}
+=[\mathcal A^\lambda\mathcal A_\lambda]_{\alpha\beta}.
+\label{eq:17.5.27}
+\end{equation}
+We then find
+\begin{align*}
+\int d^4q\,\operatorname{tr}\left\{
+[\mathcal M_0^\omega(q)^{-1}\mathcal M_2^\omega(q)]^2\right\}
+\notag\\[-2pt]
+&=\mathcal I\,\operatorname{tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta],\\
+\int d^4q\,\operatorname{tr}\left\{
+[\mathcal M_0^\omega(q)^{-1}\mathcal M_1^\omega(q)]^2
+\mathcal M_0^\omega(q)^{-1}\mathcal M_2^\omega(q)\right\}
+\notag\\[-2pt]
+&=\mathcal I\,\operatorname{tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta],\\
+\int d^4q\,\operatorname{tr}\left\{
+[\mathcal M_0^\omega(q)^{-1}\mathcal M_1^\omega(q)]^4\right\}
+\notag\\[-2pt]
+&=\frac23\mathcal I\,\operatorname{tr}
+\left[\begin{aligned}
+&2\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta\\[-2pt]
+&+\mathcal A^\lambda\mathcal A^\eta\mathcal A_\lambda\mathcal A_\eta
+\end{aligned}\right].
+\end{align*}
+Thus for the ghost loop the integral of the quantity \eqref{eq:17.5.20} is
+\begin{align}
+\int d^4q\left[\operatorname{Tr}\ln\mathcal M^\omega(q)\right]_{A^4}
+={}&\frac16\mathcal I\,\operatorname{Tr}
+[\mathcal A^\lambda\mathcal A_\lambda\mathcal A^\eta\mathcal A_\eta
+-\mathcal A^\lambda\mathcal A^\eta\mathcal A_\lambda\mathcal A_\eta]
+\notag\\
+={}&\frac1{12}\mathcal I\,C_{\gamma\alpha\beta}C_{\delta\alpha\beta}
+F_{\gamma\mu\nu}F_\delta^{\mu\nu}.
+\label{eq:17.5.28}
+\end{align}
+Finally, the vertices in the matter loop are
+\[
+[\mathcal M_1^\psi(q)]_{k\ell}=-i(t_\alpha\sl A_\alpha)_{k\ell},
+\qquad
+[\mathcal M_2^\psi(q)]_{k\ell}=0,
+\]
+so here there is only one term in Eq.~\eqref{eq:17.5.20}:
+\[
+\int d^4q\left[\operatorname{Tr}\ln\mathcal M^\psi(q)\right]_{A^4}
+=-\frac14\int d^4q\,\operatorname{Tr}
+\left\{\left[(i\sl q+m)^{-1}t_\alpha\sl A_\alpha\right]^4\right\}.
+\]
+We are interested in the ultraviolet-divergent part of this integral, so we
+may drop the mass (which is negligible for large $q^\nu$) and write
+\begin{align}
+\int d^4q\left[\operatorname{Tr}\ln\mathcal M^\psi(q)\right]_{A^4}
+={}&-\frac14\operatorname{Tr}\{t_\alpha t_\beta t_\gamma t_\delta\}
+A_{\alpha\mu}A_{\beta\nu}A_{\gamma\rho}A_{\delta\sigma}
+\notag\\[-2pt]
+&\quad\times
+\int d^4q\,
+\frac{\operatorname{Tr}\{\sl q\gamma^\mu\sl q\gamma^\nu
+\sl q\gamma^\rho\sl q\gamma^\sigma\}}{(q^2-i\epsilon)^8}
+\notag\\
+={}&-\frac{\mathcal I}{96}\operatorname{Tr}\{t_\alpha t_\beta t_\gamma t_\delta\}
+A_{\alpha\mu}A_{\beta\nu}A_{\gamma\rho}A_{\delta\sigma}
+\notag\\
+&\quad\times\operatorname{Tr}\left\{
+\begin{aligned}
+&2\gamma_\lambda\gamma^\mu\gamma^\lambda\gamma^\nu
+ \gamma_\eta\gamma^\rho\gamma^\eta\gamma^\sigma\\[-2pt]
+&+\gamma_\lambda\gamma^\mu\gamma_\eta\gamma^\nu
+ \gamma^\lambda\gamma^\rho\gamma^\eta\gamma^\sigma
+\end{aligned}\right\}.
+\label{eq:17.5.29}
+\end{align}
+where $\mathcal I$ is the same divergent integral as in Eq.~\eqref{eq:17.5.24}.
+To calculate the traces of Dirac matrices, we use the anticommutation
+relations of these matrices to write
+\begin{align*}
+\operatorname{Tr}\left\{\begin{aligned}
+&2\gamma_\lambda\gamma^\mu\gamma^\lambda\gamma^\nu
+ \gamma_\eta\gamma^\rho\gamma^\eta\gamma^\sigma\\[-2pt]
+&+\gamma_\lambda\gamma^\mu\gamma_\eta\gamma^\nu
+ \gamma^\lambda\gamma^\rho\gamma^\eta\gamma^\sigma
+\end{aligned}\right\}
+={}&8\operatorname{Tr}\{\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\}
+\notag\\[-2pt]
+&\quad-4\operatorname{Tr}\{\gamma^\nu\gamma^\mu\gamma^\rho\gamma^\sigma\}
+-4\operatorname{Tr}\{\gamma^\mu\gamma^\rho\gamma^\nu\gamma^\sigma\}\\
+={}&-64\eta^{\mu\rho}\eta^{\nu\sigma}
++32\eta^{\mu\nu}\eta^{\rho\sigma}
++32\eta^{\mu\sigma}\eta^{\nu\rho}.
+\end{align*}
+Eq.~\eqref{eq:17.5.29} then gives
+\begin{align}
+\int d^4q\left[\operatorname{Tr}\ln\mathcal M^\psi(q)\right]_{A^4}
+={}&\frac13\mathcal I\,\operatorname{Tr}
+\{[t_\alpha,t_\beta][t_\gamma,t_\delta]\}
+A_{\alpha\mu}A_{\beta\nu}A_\gamma^\mu A_\delta^\nu
+\notag\\
+={}&-\frac13\mathcal I\,F_{\gamma\mu\nu}F_\delta^{\mu\nu}
+\operatorname{Tr}\{t_\gamma,t_\delta\}.
+\label{eq:17.5.30}
+\end{align}
+Using Eqs.~\eqref{eq:17.5.25}, \eqref{eq:17.5.28}, and
+\eqref{eq:17.5.30} in Eq.~\eqref{eq:17.5.18} gives at last
+\begin{equation}
+\Gamma_{A^4}^{(1\ \mathrm{loop})}
+=\frac{-i\mathcal I}{(2\pi)^4}\int d^4x\,F_{\gamma\mu\nu}F_\delta^{\mu\nu}
+\left[\left(\frac56+\frac1{12}\right)
+C_{\gamma\alpha\beta}C_{\delta\alpha\beta}
+-\frac13\operatorname{Tr}\{t_\gamma,t_\delta\}\right],
+\label{eq:17.5.31}
+\end{equation}
+where we have expressed the momentum-space delta-function in
+\eqref{eq:17.5.14} as
+\begin{equation}
+\delta^4(p-p)=(2\pi)^{-4}\int d^4x\,1.
+\label{eq:17.5.32}
+\end{equation}
+It is important that the result turns out to depend on $A_{\alpha\mu}$ only
+through the field strength \eqref{eq:17.5.11}, as required by background
+gauge invariance.
+
+Let us now (for the first time in this section) use the assumed simplicity
+of the gauge group and irreducibility of the matter field multiplet. In this
+case
+\begin{equation}
+C_{\gamma\alpha\beta}C_{\delta\alpha\beta}=g^2C_1\delta_{\gamma\delta},
+\label{eq:17.5.33}
+\end{equation}
+\begin{equation}
+\operatorname{Tr}\{t_\gamma,t_\delta\}=g^2C_2\delta_{\gamma\delta},
+\label{eq:17.5.34}
+\end{equation}
+where $g$ is the common gauge coupling constant appearing as a factor in
+$C_{\gamma\alpha\beta}$ and $t_\gamma$, and $C_1$ and $C_2$ are numerical
+constants that characterize the gauge group and the representation of this
+group provided by the matter multiplet. For instance, in the original
+Yang--Mills theory the gauge group is $SU(2)$ (or equivalently $SO(3)$) and
+the structure constants are
+\[
+C_{\gamma\alpha\beta}=g\epsilon_{\gamma\alpha\beta}
+\]
+with $\alpha$, $\beta$, and $\gamma$ running over the values 1, 2, 3.
+Comparing with Eq.~\eqref{eq:17.5.33}, we see that here
+\[
+C_1=2.
+\]
+Also in this theory the matter field forms a doublet with $t_\alpha$ given by
+$g/2$ times the usual Pauli matrix $\sigma_\alpha$, so
+\[
+C_2=1/2.
+\]
+Somewhat more generally, for the group $SU(N)$ with $n_f$ fermions in the
+defining representation, with a conventional normalization of generators,
+we have\footnote{For $SU(3)$ the $t_\alpha$ are taken as $g/2$ times the
+Gell-Mann matrices $\lambda_\alpha$ used in Section 19.7, so that
+$C_{\alpha\beta\gamma}=(g/2)f_{\alpha\beta\gamma}$.}
+\begin{equation}
+C_1=N,\qquad C_2=n_f/2.
+\label{eq:17.5.35}
+\end{equation}
+Returning now to the general case, Eqs.~\eqref{eq:17.5.33} and
+\eqref{eq:17.5.34} give
+\begin{equation}
+\Gamma_{A^4}^{(1\ \mathrm{loop})}
+=\frac{-ig^2\mathcal I}{(2\pi)^4}\int d^4x\,F_{\gamma\mu\nu}F_\gamma^{\mu\nu}
+\left[\frac{11}{12}C_1-\frac13C_2\right].
+\label{eq:17.5.36}
+\end{equation}
+That is, the infinite constant $L_A$ in Eq.~\eqref{eq:17.4.30} is
+\begin{equation}
+L_A=\frac{4ig^2\mathcal I}{(2\pi)^4}
+\left(\frac{11}{12}C_1-\frac13C_2\right).
+\label{eq:17.5.37}
+\end{equation}
+
+It remains to say a word about the interpretation of the divergent integral
+$\mathcal I$. First, before we try to integrate over the three-momentum
+$\mathbf q$, we can rotate the contour of integration of $q^0$ in
+Eq.~\eqref{eq:17.5.24} to the imaginary axis; as usual, the $-i\epsilon$ in
+the denominator forces us to rotate counterclockwise, so that $q^0=iq^4$,
+with $q^4$ running from $-\infty$ to $+\infty$. The integral is then
+\begin{equation}
+\mathcal I=i\int_0^\infty\frac{2\pi^2q^3\,dq}{q^4},
+\label{eq:17.5.38}
+\end{equation}
+where $q$ is now the magnitude of the Euclidean four-vector
+$(q^1,q^2,q^3,q^4)$. To go further, we evidently need some method of
+regulating the integral. The simplest way of dealing with the ultraviolet
+divergence is just to cut off the integral for $q$ above a scale $\Lambda$.
+However, we also need a lower cut-off to deal with the infrared divergence.
+This is provided by the physics of the situation. If the momenta of the four
+vector particles is not zero, then a momentum flows through the internal
+lines of the diagrams, providing an infrared cut-off at the scale $\mu$ of
+these momenta. Similarly, if we evaluate the fourth variational derivative
+of $\Gamma[A]$ with respect to $A$ not at $A=0$ but at a finite $A$, then the
+propagators of the internal lines do not blow up at zero momenta, and we
+have an infrared cut-off at a scale $\mu\sim gA$. Either way, $\mathcal I$
+takes the form
+\begin{equation}
+\mathcal I=2\pi^2i\int_\mu^\Lambda\frac{dq}{q}
+=2\pi^2i\ln\left(\frac{\Lambda}{\mu}\right)
+\label{eq:17.5.39}
+\end{equation}
+and hence
+\begin{equation}
+L_A=-\frac{g^2}{2\pi^2}
+\left(\frac{11}{12}C_1-\frac13C_2\right)
+\ln\left(\frac{\Lambda}{\mu}\right)+O(g^4).
+\label{eq:17.5.40}
+\end{equation}
+Eq.~\eqref{eq:17.4.48} then gives the renormalized coupling as
+\begin{equation}
+g_R=g\left[1+\frac{g^2}{4\pi^2}\ln\left(\frac{\Lambda}{\mu}\right)
+\left(\frac{11}{12}C_1-\frac13C_2\right)+O(g^4)\right].
+\label{eq:17.5.41}
+\end{equation}
+We note that while in quantum electrodynamics the radiative corrections
+discussed in Section 11.2 decrease the physical coupling $g_R$ relative to
+the bare coupling $g$, in non-Abelian gauge theories they \emph{increase} the
+physical coupling over the bare coupling, provided that the fermion multiplet
+is small enough so that $C_2<11C_1/4$. The importance of this point will be
+explored in Chapter 18.
+
+Alternatively, we can deal with the ultraviolet divergence by the methods
+of dimensional regularization, discussed in Section 11.2. Here, in place of
+Eq.~\eqref{eq:17.5.39}, we write
+\begin{equation}
+\mathcal I=i\int_0^\infty\frac{2\pi^2q^{d-1}\,dq}{(q^2+\mu^2)^2},
+\label{eq:17.5.42}
+\end{equation}
+where $d$ is a complex dimensionality, allowed to approach 4 at the end of
+the calculation, and $\mu$ is an infrared cut-off, again taken of the order of
+the external momenta (or of the background fields times $g$). As long as
+$d$ is complex with $\operatorname{Re}d<0$ and $\mu^2>0$, this has the finite
+value
+\[
+\mathcal I=-i\pi^2\left(\frac d2-1\right)\mu^{d-4}
+\frac{\pi}{\sin[(d/2-2)\pi]}.
+\]
+Analytically continuing to $d\to4$, this is
+\begin{equation}
+\mathcal I\longrightarrow-2i\pi^2
+\left[\frac1{d-4}+\ln\mu+\cdots\right],
+\label{eq:17.5.43}
+\end{equation}
+where $\cdots$ denotes finite $\mu$-independent terms. Here we have
+\[
+L_A=\frac{g^2}{2\pi^2}\left(\frac{11}{12}C_1-\frac13C_2\right)
+\left(\frac1{d-4}+\ln\mu+\cdots\right)+O(g^4)
+\]
+and so
+\begin{equation}
+g_R=g\left[1-\frac{g^2}{4\pi^2}
+\left(\frac{11}{12}C_1-\frac13C_2\right)
+\left(\frac1{d-4}+\ln\mu+\cdots\right)+O(g^4)\right].
+\label{eq:17.5.44}
+\end{equation}
+Note that the ultraviolet divergence here takes a different form, but the
+dependence on the infrared cut-off $\mu$ is the same. Eq.~\eqref{eq:17.5.44}
+will provide an important input to our discussion of asymptotic freedom in
+Section 18.7.
