@@ -1,2 +1,631 @@
-% Outline scaffold for Section 22.2. Main content intentionally omitted.
+% Source: physical PDF pp. 385--393 (printed pp. 362--370). Coverage:
+% complete Section 22.2, from its heading through immediately before
+% Section 22.3; Eqs. (22.2.1)--(22.2.49), four unnumbered displays, one
+% automatic footnote, one centered divider, citations [6] and [6a], and
+% no figures or tables. Source anomalies are itemized in wave1-agent3.md.
 \subsection{Transformation of the Measure: The Abelian Anomaly}
+\label{sec:22.2}
+
+We now turn to a calculation of anomalies of the sort relevant to $\pi^0$
+decay. For this purpose we adopt Fujikawa's
+interpretation~\hyperref[ch22-ref-6]{[6]} of the anomaly as a symptom of
+the impossibility of defining a suitably invariant measure for integrations
+over fermionic field variables. Fujikawa's analysis of this problem was
+based on the use of path integrals in Euclidean space, and on an expansion
+of the fermionic variables of integration in eigenfunctions of the
+gauge-invariant Dirac operator, which is Hermitian in four-dimensional
+Euclidean space. Here we shall first present a less rigorous derivation,
+based on the familiar path integrals in Minkowski space, which will allow
+us to obtain the correct answer with a minimum of work. The Euclidean
+approach will be taken up briefly at the end of this section, and used to
+derive a famous index theorem.
+
+We will start by evaluating the anomaly in the transformation of the
+measure under an arbitrary local matrix transformation
+$\psi(x)\to U(x)\psi(x)$ of a column $\psi_n(x)$ of massless complex spin
+$1/2$ fermion fields that interact non-chirally with a set of gauge fields
+$A_\alpha^\mu(x)$ (such as the $u$ and $d$ quark fields interacting with
+the electromagnetic vector potential $A^\mu(x)$ in the problem of
+calculating the rate for $\pi^0\to2\gamma$). These are fermionic variables,
+so the measure is transformed not with the determinant of the
+transformation matrix, but with its inverse:
+\begin{equation}
+ [d\psi][d\bar\psi]\longrightarrow
+ \bigl(\operatorname{Det}\mathcal U\,
+       \operatorname{Det}\overline{\mathcal U}\bigr)^{-1}
+ [d\psi][d\bar\psi],
+ \tag{22.2.1}\label{eq:22.2.1}
+\end{equation}
+where
+\begin{equation}
+ \mathcal U_{xn,ym}\equiv U(x)_{nm}\delta^4(x-y),
+ \tag{22.2.2}\label{eq:22.2.2}
+\end{equation}
+\begin{equation}
+ \overline{\mathcal U}_{xn,ym}
+ \equiv\bigl[\gamma_4U(x)^\dagger\gamma_4\bigr]_{nm}\delta^4(x-y),
+ \tag{22.2.3}\label{eq:22.2.3}
+\end{equation}
+and $\gamma_4\equiv i\gamma^0$ is the matrix used to define
+$\bar\psi=\psi^\dagger\gamma_4$. The indices $n,m$ run over flavor labels
+and Dirac spin indices.
+
+The reader may wonder at this point why we bother to include factors of
+$\gamma_4$ in Eq.~\eqref{eq:22.2.3}, since they just amount to a unitary
+transformation that should not affect the determinants. The answer is that
+in order for calculations to be meaningful we will find it necessary to
+regulate the sum over fermion modes in calculating propagators and
+determinants, and we shall find that the $\gamma_4$ factors do affect the
+regulated determinants. Whether or not we include the $\gamma_4$ factors
+thus depends on the method of regularization that is used to make these
+hand-waving manipulations meaningful. We include the factors of $\gamma_4$
+because we wish to regulate in such a way as to preserve Lorentz
+invariance, and in the cases of interest here it is
+$\gamma_4U(x)^\dagger\gamma_4$ rather than $U(x)^\dagger$ that transforms
+as a scalar.
+
+First, let us consider the case where $U(x)$ is a unitary non-chiral
+transformation
+\begin{equation}
+ U(x)=\exp[i\alpha(x)t],
+ \tag{22.2.4}\label{eq:22.2.4}
+\end{equation}
+with $t$ an ordinary Hermitian matrix (not involving $\gamma_5$, but not
+necessarily traceless) and $\alpha(x)$ an arbitrary real function of $x$.
+In this case $\mathcal U$ is pseudounitary:
+\begin{equation}
+ \overline{\mathcal U}\mathcal U=\mathbf{1},
+ \tag{22.2.5}\label{eq:22.2.5}
+\end{equation}
+so the measure is invariant under this sort of transformation. In
+particular, the symmetry under the gauge group itself, where $t$ is one of
+the non-chiral generators $t_\alpha$, is not spoiled by any anomalies.
+
+Next, consider a local chiral transformation, with
+\begin{equation}
+ U(x)=\exp[i\gamma_5\alpha(x)t],
+ \tag{22.2.6}\label{eq:22.2.6}
+\end{equation}
+with $t$ again an ordinary Hermitian matrix and $\alpha(x)$ again an
+arbitrary real function of $x$. In this case $\mathcal U$ is
+pseudo-Hermitian:
+\begin{equation}
+ \overline{\mathcal U}=\mathcal U.
+ \tag{22.2.7}\label{eq:22.2.7}
+\end{equation}
+The measure is not invariant under the chiral transformation; rather, we
+have
+\begin{equation}
+ [d\psi][d\bar\psi]\longrightarrow
+ \bigl(\operatorname{Det}\mathcal U\bigr)^{-2}[d\psi][d\bar\psi].
+ \tag{22.2.8}\label{eq:22.2.8}
+\end{equation}
+
+Now let us specialize to the case of an \emph{infinitesimal} local chiral
+transformation. Taking $\alpha(x)$ to be infinitesimal in
+Eq.~\eqref{eq:22.2.6}, we have here
+\begin{equation}
+ [\mathcal U-\mathbf{1}]_{nx,my}
+ =i\alpha(x)[\gamma_5t]_{nm}\delta^4(x-y).
+ \tag{22.2.9}\label{eq:22.2.9}
+\end{equation}
+Using the identity $\operatorname{Det}M=\exp\operatorname{Tr}\ln M$ and
+the limiting formula $\ln(1+x)\to x$ for $x\to0$, the measure now has the
+transformation property
+\begin{equation}
+ [d\psi][d\bar\psi]\longrightarrow
+ \exp\left\{i\int d^4x\,\alpha(x)\mathcal A(x)\right\}
+ [d\psi][d\bar\psi],
+ \tag{22.2.10}\label{eq:22.2.10}
+\end{equation}
+where $\mathcal A$ is the anomaly function:
+\begin{equation}
+ \mathcal A(x)\equiv-2\operatorname{Tr}\{\gamma_5t\}\delta^4(x-x),
+ \tag{22.2.11}\label{eq:22.2.11}
+\end{equation}
+with `$\operatorname{Tr}$' here denoting a trace over both Dirac and species
+indices. The measure $[d\psi][d\bar\psi]$ appears in the path integral
+weighted with a factor $\exp\{i\int d^4x\,\mathcal L(x)\}$, so the
+factor\linebreak
+$\exp\{i\int d^4x\,\alpha(x)\mathcal A(x)\}$ in the transformation rule
+\eqref{eq:22.2.10} for the measure has the same effect as if the Lagrangian
+density $\mathcal L(x)$ were not invariant under these transformations, but
+instead $\mathcal L(x)\to\mathcal L(x)+\alpha(x)\mathcal A(x)$. Hence when
+we use an effective Lagrangian with the fermions integrated out, to take
+account of the anomaly we must be sure to include a non-invariant term so
+that
+\begin{equation}
+ \mathcal L_{\mathrm{eff}}(x)\longrightarrow
+ \mathcal L_{\mathrm{eff}}(x)+\alpha(x)\mathcal A(x).
+ \tag{22.2.12}\label{eq:22.2.12}
+\end{equation}
+It now remains to calculate the anomaly function $\mathcal A(x)$.
+
+At first sight it does not look like we can get any definite result for the
+anomaly. The delta-function is infinite, but the trace vanishes. To do
+better, we must introduce a regulator to make $\delta^4(x-x)$ meaningful.
+We can do this in a gauge-invariant manner by inserting a differential
+operator $f(-\sl{D}_x^2/M^2)$ acting on the delta-function before taking
+its argument to zero:
+\begin{equation}
+ \mathcal A(x)=-2\left[
+  \operatorname{Tr}\left\{\gamma_5t
+  f(-\sl{D}_x^2/M^2)\right\}\delta^4(x-y)
+ \right]_{y\to x}.
+ \tag{22.2.13}\label{eq:22.2.13}
+\end{equation}
+Here $D_x$ is the Dirac differential operator in the presence of the gauge
+field $A_\alpha^\mu(x)$:
+\begin{equation}
+ (D_x)_\mu\equiv\frac{\partial}{\partial x^\mu}
+ -it_\alpha A_{\alpha\mu}(x).
+ \tag{22.2.14}\label{eq:22.2.14}
+\end{equation}
+Also, $M$ is some large mass, eventually to be taken to infinity, and
+$f(s)$ is a smooth function, subject only to the condition\footnote{For
+instance, we might take $f(s)=e^{-s^2}$, as done originally by Fujikawa,
+or $f(s)=1/(1+s)$.} that as $s$ goes from 0 to $\infty$, $f(s)$ must drop
+smoothly from 1 to 0:
+\begin{equation}
+ f(0)=1,\qquad f(\infty)=0,
+ \tag{22.2.15}\label{eq:22.2.15}
+\end{equation}
+\begin{equation}
+ sf'(s)=0\quad\text{at}\quad s=0\ \text{and}\ s=\infty.
+ \tag{22.2.16}\label{eq:22.2.16}
+\end{equation}
+Note that we do not take the regulator function to be a function of
+$\sl{\partial}$, because we want to preserve gauge invariance, and we do
+not take it to be a function of $D^\mu D_\mu$, because we need it to
+regulate not only the determinant but also the fermion propagator
+$\sl{D}^{-1}$.
+
+To evaluate the expression \eqref{eq:22.2.13}, we use the Fourier
+representation of the delta-function, and write the anomaly function as
+\[
+ \begin{aligned}
+ \mathcal A(x)
+ &=-2\int\frac{d^4k}{(2\pi)^4}
+ \left[
+  \operatorname{Tr}\left\{\gamma_5t f(-\sl{D}_x^2/M^2)\right\}
+  e^{ik\cdot(x-y)}
+ \right]_{y=x}\\
+ &=-2\int\frac{d^4k}{(2\pi)^4}
+ \operatorname{Tr}\left\{\gamma_5t
+ f\left(-[i\sl{k}+\sl{D}_x]^2/M^2\right)\right\}.
+ \end{aligned}
+\]
+(A derivative with respect to $x$ gives zero when acting on the extreme
+right in the second expression, but not when acting on
+$A_{\alpha\mu}(x)$.) Rescaling the momentum $k^\mu$ by a factor $M$, this
+is
+\begin{equation}
+ \mathcal A(x)=-2M^4\int\frac{d^4k}{(2\pi)^4}
+ \operatorname{Tr}\left\{\gamma_5t
+ f\left(-[i\sl{k}+\sl{D}_x/M]^2\right)\right\}.
+ \tag{22.2.17}\label{eq:22.2.17}
+\end{equation}
+The argument of the cut-off function may be written
+\begin{equation}
+ -\left[i\sl{k}+\frac{\sl{D}_x}{M}\right]^2
+ =k^2-\frac{ik\cdot D_x}{M}
+ -\left(\frac{\sl{D}_x}{M}\right)^2.
+ \tag{22.2.18}\label{eq:22.2.18}
+\end{equation}
+Eq.~\eqref{eq:22.2.17} receives contributions in the limit
+$M\to\infty$ only from terms in the expansion of
+$f(-[i\sl{k}+\sl{D}_x/M]^2)$ that have no more than four factors of
+$1/M$, and also only from terms that contain at least four Dirac gamma
+matrices, because otherwise the trace over Dirac indices vanishes. This
+leaves us with only the terms of second order in $\sl{D}_x^2$:
+\begin{equation}
+ \mathcal A(x)=-\int\frac{d^4k}{(2\pi)^4}f''(k^2)
+ \operatorname{Tr}\{\gamma_5t\sl{D}_x^4\},
+ \tag{22.2.19}\label{eq:22.2.19}
+\end{equation}
+which are now independent of the regulator mass $M$.
+
+To evaluate the integral over $k$, we perform the same sort of rotation of
+the $k^0$ contour of integration as in evaluating Feynman diagrams, so that
+in effect $k^0$ is replaced with $ik^4$, with $k^4$ running from $-\infty$
+to $+\infty$. (This is a step that can really only be justified by working
+with Euclidean path integrals from the beginning.) The integral is then in
+effect
+\begin{equation}
+ \int d^4k\,f''(k^2)
+ =i\int_0^\infty 2\pi^2\kappa^3\,d\kappa\,f''(\kappa^2).
+ \tag{22.2.20}\label{eq:22.2.20}
+\end{equation}
+By repeated integration by parts using Eq.~\eqref{eq:22.2.16} and then
+Eq.~\eqref{eq:22.2.15}, this is
+\begin{equation}
+ \int d^4k\,f''(k^2)
+ =i\pi^2\int_0^\infty ds\,s f''(s)
+ =-i\pi^2\int_0^\infty ds\,f'(s)
+ =i\pi^2.
+ \tag{22.2.21}\label{eq:22.2.21}
+\end{equation}
+To calculate the trace, we write
+\begin{equation}
+ \begin{aligned}
+ \sl{D}_x^2
+ &=\frac14\{(D_x)^\mu,(D_x)^\nu\}\{\gamma_\mu,\gamma_\nu\}
+ +\frac14[(D_x)^\mu,(D_x)^\nu][\gamma_\mu,\gamma_\nu]\\
+ &=D_x^2-\frac14it_\alpha F_\alpha^{\mu\nu}
+ [\gamma_\mu,\gamma_\nu].
+ \end{aligned}
+ \tag{22.2.22}\label{eq:22.2.22}
+\end{equation}
+The only term in $\sl{D}_x^4$ that contributes to the trace over Dirac
+indices is the one involving a product of four Dirac matrices, which gives
+\begin{equation}
+ \operatorname{tr}_{D}\{\gamma_5
+ [\gamma_\mu,\gamma_\nu][\gamma_\rho,\gamma_\sigma]\}
+ =16i\epsilon_{\mu\nu\rho\sigma},
+ \tag{22.2.23}\label{eq:22.2.23}
+\end{equation}
+where `$\operatorname{tr}_{D}$' denotes a trace over Dirac indices only,
+and as usual $\epsilon_{\mu\nu\rho\sigma}$ is the totally antisymmetric
+tensor with $\epsilon^{0123}=+1$. Using
+Eqs.~\eqref{eq:22.2.21}--\eqref{eq:22.2.23} in Eq.~\eqref{eq:22.2.19}
+then gives the anomaly function as
+\begin{equation}
+ \mathcal A(x)=-\frac{1}{16\pi^2}\epsilon_{\mu\nu\rho\sigma}
+ F_\alpha^{\mu\nu}(x)F_\beta^{\rho\sigma}(x)
+ \operatorname{tr}\{t_\alpha t_\beta t\},
+ \tag{22.2.24}\label{eq:22.2.24}
+\end{equation}
+with `$\operatorname{tr}$' here denoting a trace only over indices
+labelling the various fermion species. In the special case in which $t$ is
+the unit matrix, the quantity \eqref{eq:22.2.24} is known as the
+\emph{Chern--Pontryagin density}.
+
+This result can be expressed in terms of the current associated with the
+anomalous symmetry. If we assume for simplicity that the action itself is
+invariant under the symmetry transformation
+$\psi(x)\to\psi(x)+it\gamma_5\alpha\psi(x)$ with constant infinitesimal
+parameter $\alpha$, then as discussed in
+\hyperref[sec:7.3]{Section 7.3}, the change in the action when we make such
+a transformation with a spacetime-\emph{dependent} parameter $\alpha(x)$
+may be written as
+$\delta I=\int d^4x\,J_5^\mu(x)\partial_\mu\alpha(x)$, where $J_5^\mu(x)$
+is the current that becomes conserved when the field operators satisfy the
+dynamical equations that make the action stationary with respect to
+arbitrary variations in the fields. When we make the change of variables
+$\delta\psi(x)=it\gamma_5\alpha(x)\psi(x)$, the change in the path integral
+over the fermionic fields is
+\begin{equation}
+ \begin{aligned}
+ \delta\int[d\psi][d\bar\psi]e^{iI}
+ =i\int d^4x\int[d\psi][d\bar\psi]\,
+ \bigl[\mathcal A(x)\alpha(x)
+ +J_5^\mu(x)\partial_\mu\alpha(x)\bigr]e^{iI}.
+ \end{aligned}
+ \tag{22.2.25}\label{eq:22.2.25}
+\end{equation}
+But this is a mere change of variables, and so for arbitrary $\alpha(x)$
+it cannot affect the path integral. Therefore for arbitrary gauge fields
+\begin{equation}
+ \left\langle\partial_\mu J_5^\mu\right\rangle_A
+ =\mathcal A
+ =-\frac{1}{16\pi^2}\epsilon_{\mu\nu\rho\sigma}
+ F_\alpha^{\mu\nu}F_\beta^{\rho\sigma}
+ \operatorname{tr}\{t_\alpha t_\beta t\},
+ \tag{22.2.26}\label{eq:22.2.26}
+\end{equation}
+where for any operator $\mathcal O$, $\langle\mathcal O\rangle_A$ is the
+quantum average of $\mathcal O$ in a fixed background field $A^\mu(x)$:
+\begin{equation}
+ \langle\mathcal O\rangle_A\equiv
+ \frac{\int[d\psi][d\bar\psi]e^{iI}\mathcal O}
+ {\int[d\psi][d\bar\psi]e^{iI}}.
+ \tag{22.2.27}\label{eq:22.2.27}
+\end{equation}
+
+Incidentally, it is possible to rewrite Eq.~\eqref{eq:22.2.26} as a
+conservation condition. Consider the special case where
+$\operatorname{tr}\{t_\alpha t_\beta t\}$ is proportional to
+$\delta_{\alpha\beta}$:
+\begin{equation}
+ \operatorname{tr}\{t_\alpha t_\beta t\}=N\delta_{\alpha\beta}.
+ \tag{22.2.28}\label{eq:22.2.28}
+\end{equation}
+Define a current known as the \emph{Chern--Simons class}:
+\begin{equation}
+ \begin{aligned}
+ G^\mu
+ &\equiv2\epsilon^{\mu\nu\lambda\rho}
+ \left[
+ A_{\gamma\nu}\partial_\lambda A_{\gamma\rho}
+ +\frac13C_{\alpha\beta\gamma}
+ A_{\alpha\nu}A_{\beta\lambda}A_{\gamma\rho}
+ \right]\\
+ &=\epsilon^{\mu\nu\lambda\rho}
+ \left[
+ A_{\gamma\nu}F_{\gamma\lambda\rho}
+ -\frac13C_{\alpha\beta\gamma}
+ A_{\alpha\nu}A_{\beta\lambda}A_{\gamma\rho}
+ \right],
+ \end{aligned}
+ \tag{22.2.29}\label{eq:22.2.29}
+\end{equation}
+which satisfies the identity
+\begin{equation}
+ \partial_\mu G^\mu
+ =\frac12\epsilon^{\mu\nu\lambda\rho}
+ F_{\gamma\mu\nu}F_{\gamma\lambda\rho}.
+ \tag{22.2.30}\label{eq:22.2.30}
+\end{equation}
+Eq.~\eqref{eq:22.2.30} allows us to rewrite Eq.~\eqref{eq:22.2.26} as the
+condition
+\begin{equation}
+ \partial_\mu K^\mu=0,
+ \tag{22.2.31}\label{eq:22.2.31}
+\end{equation}
+where
+\begin{equation}
+ K^\mu\equiv\left\langle J_5^\mu\right\rangle_A
+ +\frac{N}{8\pi^2}G^\mu.
+ \tag{22.2.32}\label{eq:22.2.32}
+\end{equation}
+
+However, we cannot use the conservation of the current $K^\mu$ to argue,
+as we did in the previous section, that the process $\pi^0\to2\gamma$ is
+suppressed, because in making that argument we assumed not only the chiral
+symmetry associated with axial-vector current conservation but also
+electromagnetic gauge invariance, and as we see from
+Eq.~\eqref{eq:22.2.29}, the current $K^\mu$ though conserved is not
+gauge-invariant.
+
+Our derivation of the formula \eqref{eq:22.2.24} for the anomaly shows that
+if we had evaluated the anomaly function using a differential operator
+$f(-\sl{\partial}_x^2/M^2)$ in place of $f(-\sl{D}_x^2/M^2)$ in
+Eq.~\eqref{eq:22.2.13}, we would have obtained a vanishing anomaly
+function. In fact, with this regulator procedure the axial-vector current
+is $K^\mu$, not $J_5^\mu$. The trouble with this procedure, as mentioned
+above, is that the regulator operator is no longer gauge-invariant,
+resulting in the presence of a non-gauge-invariant term in $K^\mu$. There
+is no regulator procedure for fermion propagators as well as determinants
+that is both gauge- and chiral-invariant.
+
+We may now return to the problem that gave anomalies their start, and use
+our results to calculate the actual rate of the process $\pi^0\to2\gamma$.
+The symmetry of interest here is generated by charge-neutral chiral
+transformations of the light quark fields:
+\begin{equation}
+ \delta u=i\alpha\gamma_5u,\qquad
+ \delta d=-i\alpha\gamma_5d.
+ \tag{22.2.33}\label{eq:22.2.33}
+\end{equation}
+This symmetry is anomaly-free in pure quantum chromodynamics, because the
+$u$ and $d$ belong to the same representation of the color gauge group, so
+that their contributions to the gluon--gluon terms in the anomaly of the
+symmetry \eqref{eq:22.2.33} cancel. On the other hand, in the presence of
+an electromagnetic field $A^\mu(x)$, this symmetry has an anomaly
+\[
+ \mathcal A(x)=-\frac{1}{16\pi^2}\epsilon_{\mu\nu\rho\sigma}
+ F^{\mu\nu}(x)F^{\rho\sigma}(x)
+ \operatorname{tr}\{q^2\tau_3\},
+\]
+where $q$ is the quark charge matrix and $\tau_3$ is the diagonal
+$2\cdot2$ matrix with elements $+1$ for $u$ and $-1$ for $d$. If we
+assume as usual that there are $N_c$ $u$ quarks of charge $2e/3$ and an
+equal number of $d$ quarks of charge $-e/3$, the trace is
+\[
+ \operatorname{tr}\{q^2\tau_3\}
+ =N_c\left(\frac{2e}{3}\right)^2(+1)
+ +N_c\left(\frac{-e}{3}\right)^2(-1)
+ =\frac{N_ce^2}{3},
+\]
+so the anomaly function here is
+\begin{equation}
+ \mathcal A(x)=-\frac{N_ce^2}{48\pi^2}
+ \epsilon_{\mu\nu\rho\sigma}F^{\mu\nu}(x)F^{\rho\sigma}(x).
+ \tag{22.2.34}\label{eq:22.2.34}
+\end{equation}
+We must then include in the effective Lagrangian terms that under the
+chiral transformation \eqref{eq:22.2.33} give it the transformation
+\eqref{eq:22.2.12}, that is,
+\begin{equation}
+ \delta\mathcal L_{\mathrm{eff}}(x)=\alpha\mathcal A(x)
+ =-\frac{N_ce^2}{48\pi^2}\epsilon_{\mu\nu\rho\sigma}
+ F^{\mu\nu}(x)F^{\rho\sigma}(x)\alpha.
+ \tag{22.2.35}\label{eq:22.2.35}
+\end{equation}
+
+Under the transformation \eqref{eq:22.2.33} the pion field transforms as
+\begin{equation}
+ \delta\pi^0=\alpha F_\pi,
+ \tag{22.2.36}\label{eq:22.2.36}
+\end{equation}
+where $F_\pi=184\ \mathrm{MeV}$ is the pion decay amplitude introduced in
+\hyperref[sec:19.4]{Chapter 19}. (The normalization convention for this
+constant is fixed by our definition of the symmetry generator as
+$\gamma_5\tau_3=2\gamma_5t_3$.) It follows that we must include in the
+effective Lagrangian a term
+\begin{equation}
+ \frac{\pi^0(x)\mathcal A(x)}{F_\pi}
+ =-\frac{N_ce^2}{48\pi^2F_\pi}\epsilon_{\mu\nu\rho\sigma}
+ F^{\mu\nu}(x)F^{\rho\sigma}(x)\pi^0(x).
+ \tag{22.2.37}\label{eq:22.2.37}
+\end{equation}
+Comparing this with the general formula \eqref{eq:22.1.1} for the
+effective Lagrangian for the decay $\pi^0\to2\gamma$, we see that the
+constant $g$ in \hyperref[eq:22.2.1]{Eq.~(22.2.1)} must have the value
+\begin{equation}
+ g=\frac{N_ce^2}{48\pi^2F_\pi}.
+ \tag{22.2.38}\label{eq:22.2.38}
+\end{equation}
+(This shows that our previous crude order-of-magnitude estimate
+\eqref{eq:22.1.3} was too large by just a factor $6/N_c$.) The rate
+\eqref{eq:22.1.2} for pion decay is thus predicted to be
+\begin{equation}
+ \Gamma(\pi^0\to2\gamma)
+ =\frac{N_c^2\alpha^2m_\pi^3}{144\pi^3F_\pi^2}
+ =\left(\frac{N_c}{3}\right)^2
+ \cdot1.11\cdot10^{16}\ \mathrm{s}^{-1}.
+ \tag{22.2.39}\label{eq:22.2.39}
+\end{equation}
+The observed rate is
+$\Gamma(\pi^0\to2\gamma)=(1.19\mathbin{\pm}0.08)\cdot10^{16}\
+\mathrm{s}^{-1}$, in good agreement with the theoretical result
+\eqref{eq:22.2.39} if and only if $N_c=3$. The success of this calculation
+was one of the first pieces of firm evidence that there are three colors of
+quarks.
+
+Remarkably, as we have seen in the previous section, shortly after the
+discovery of the $\pi^0$ Steinberger calculated $g$ from a single
+proton-loop diagram, and obtained the result
+$g=e^2G/32\pi^2m_N$, where $G$ is the pseudoscalar pion--nucleon coupling
+constant. This result would precisely agree with Eq.~\eqref{eq:22.2.38}
+for $N_c=3$ if we used the Goldberger--Treiman relation with $g_A=1$ to
+set $G=2m_N/F_\pi$. The correct result is larger than the Steinberger
+result by a factor $g_A^2=1.56$. The reason that Steinberger got nearly the
+right result is because the answer is determined by the triangle anomaly,
+which is proportional to $\operatorname{tr}\{q^2\tau_3\}$. For one proton,
+this trace has the value $e^2$, which is the same as the quark value found
+above for three colors of quarks.
+
+\begin{center}
+ $\ast\qquad\ast\qquad\ast$
+\end{center}
+
+As mentioned earlier, a more rigorous derivation of the anomaly can be
+given by using path integrals in Euclidean spacetime. (The use of Euclidean
+path integrals is briefly discussed in
+\hyperref[app:23.A]{Appendix A of Chapter 23}.) We introduce a Euclidean
+fourth coordinate $x_4=ix^0=-ix_0$, and correspondingly
+$\partial_4=-i\partial_0$, $\gamma_4=i\gamma^0$, and
+$A_{4\alpha}=iA_\alpha^0$. The spacetime volume is then expressed as
+$d^4x=-i(d^4x)_E$, where $(d^4x)_E$ is the Euclidean volume element
+$(d^4x)_E=dx_1dx_2dx_3dx_4$. In Euclidean spacetime the fields $\psi(x)$
+and $\bar\psi(x)$ must be regarded as entirely independent, with local
+chiral transformations defined by
+$\delta\psi(x)=i\alpha(x)t\gamma_5\psi(x)$,
+$\delta\bar\psi(x)=-i\alpha(x)\bar\psi(x)t\gamma_5$. The transformation of
+the measure is then again given by Eq.~\eqref{eq:22.2.10}, with the anomaly
+function $\mathcal A(x)$ given by Eq.~\eqref{eq:22.2.11}. Introducing a
+regulator function as before, this again gives the formula
+\hyperref[eq:22.2.13]{(22.12.13)} for $\mathcal A(x)$. One great advantage
+of the Euclidean approach is that with $x_4$ and $A_{4\alpha}$ real, the
+Dirac operator $i\sl{D}$ in Eq.~\eqref{eq:22.2.13} is Hermitian:
+\begin{equation}
+ i\sl{D}=[i\partial_i+t_\alpha A_{i\alpha}]\gamma_i,
+ \tag{22.2.40}\label{eq:22.2.40}
+\end{equation}
+with $i,j$, etc. here summed over the values 1, 2, 3, 4. It therefore has
+orthonormal spinor eigenfunctions $\varphi_\kappa(x)$:
+\begin{equation}
+ i\sl{D}\varphi_\kappa=\lambda_\kappa\varphi_\kappa,
+ \tag{22.2.41}\label{eq:22.2.41}
+\end{equation}
+\begin{equation}
+ \int(d^4x)_E\,\varphi_\kappa(x)^\dagger\varphi_{\kappa'}(x)
+ =\delta_{\kappa\kappa'},
+ \tag{22.2.42}\label{eq:22.2.42}
+\end{equation}
+with real eigenvalues $\lambda_\kappa$. We also are assuming, as throughout
+this section, that $t$ commutes with $i\sl{D}$, so that we can choose the
+$\varphi_\kappa$ so that
+$t\varphi_\kappa=t_\kappa\varphi_\kappa$. These eigenfunctions satisfy a
+completeness relation
+\begin{equation}
+ \sum_\kappa\varphi_\kappa(x)\varphi_\kappa^\dagger(y)
+ =\delta^4(x-y)\mathbf{1},
+ \tag{22.2.43}\label{eq:22.2.43}
+\end{equation}
+where `$\mathbf{1}$' is the $4\cdot4$ unit matrix. Therefore the anomaly
+function may now be written as the limit of a manifestly convergent sum:
+\begin{equation}
+ \begin{aligned}
+ \mathcal A(x)
+ &=-2\lim_{M\to\infty}\operatorname{Tr}
+ \left\{\gamma_5t f(-\sl{D}^2/M^2)
+ \sum_\kappa\varphi_\kappa(x)\varphi_\kappa^\dagger(x)\right\}\\
+ &=-2\lim_{M\to\infty}\sum_\kappa
+ t_\kappa f(\lambda_\kappa^2/M^2)
+ \bigl(\varphi_\kappa^\dagger(x)\gamma_5\varphi_\kappa(x)\bigr).
+ \end{aligned}
+ \tag{22.2.44}\label{eq:22.2.44}
+\end{equation}
+
+In just the same way that we derived formula \eqref{eq:22.2.24} for the
+anomaly function, we can show here that
+\begin{equation}
+ \mathcal A(x)=\frac{1}{16\pi^2}\epsilon^E_{ijkl}
+ F_{ij\alpha}F_{kl\beta}\operatorname{tr}\{t_\alpha t_\beta t\},
+ \tag{22.2.45}\label{eq:22.2.45}
+\end{equation}
+where $\epsilon^E_{ijkl}$ is the totally antisymmetric tensor with
+$\epsilon^E_{1234}=+1$. (The difference of sign in
+Eqs.~\eqref{eq:22.2.24} and \eqref{eq:22.2.45} arises because
+Eq.~\eqref{eq:22.2.45} is missing two factors of $i$ as compared with
+Eq.~\eqref{eq:22.2.24}: one factor $i$ from Eq.~\eqref{eq:22.2.23},
+because
+\[
+ \operatorname{tr}_{D}\{\gamma_5
+ [\gamma_i,\gamma_j][\gamma_k,\gamma_l]\}
+ =16\epsilon^E_{ijkl},
+\]
+together with another factor $i$ from the replacement of $d^4k$ with
+$(d^4k)_E$ in Eq.~\eqref{eq:22.2.20}.)
+
+Now, given any eigenfunction $\varphi_\kappa(x)$ of $i\sl{D}$ and $t$ with
+eigenvalue $\lambda_\kappa\ne0$, there is another normalized eigenfunction
+$\varphi_{\kappa^-}(x)$ with eigenvalues
+$\lambda_{\kappa^-}=-\lambda_\kappa$ and $t_\kappa$, given by
+$\varphi_{\kappa^-}(x)=\gamma_5\varphi_\kappa(x)$. (Recall that in the
+notation used throughout this book, $\gamma_5$ is the Hermitian matrix
+$\gamma_5=-i\gamma_1\gamma_2\gamma_3\gamma_0
+=\gamma_1\gamma_2\gamma_3\gamma_4$.) Furthermore
+$\bigl(\varphi_\kappa^\dagger(x)\varphi_\kappa(x)\bigr)
+=\bigl(\varphi_{\kappa^-}^\dagger(x)\varphi_{\kappa^-}(x)\bigr)$, so the
+terms $\kappa$ and $\kappa^-$ cancel in the sum in
+Eq.~\eqref{eq:22.2.44}. This leaves just a sum over the eigenfunctions with
+$\lambda_\kappa=0$. These are not generally paired; rather, since
+$\gamma_5$ anticommutes with $i\sl{D}$, they can be chosen as simultaneous
+orthornormal eigenfunctions $\varphi_u,\varphi_v$ of $i\sl{D}$ with
+eigenvalue zero \emph{and} of $\gamma_5$ with eigenvalues $+1$ and $-1$,
+respectively.
+\begin{equation}
+ \begin{aligned}
+ i\sl{D}\varphi_u&=0,&\qquad \gamma_5\varphi_u&=\varphi_u,\\
+ i\sl{D}\varphi_v&=0,& \gamma_5\varphi_v&=-\varphi_v.
+ \end{aligned}
+ \tag{22.2.46}\label{eq:22.2.46}
+\end{equation}
+Using the fact that $f(0)=1$,
+\hyperref[eq:22.2.44]{Eq.~(2.2.44)} then becomes
+\begin{equation}
+ \mathcal A(x)=-2\left[
+ \sum_u t_u\bigl(\varphi_u^\dagger(x)\varphi_u(x)\bigr)
+ -\sum_v t_v\bigl(\varphi_u^\dagger(x)\varphi_v(x)\bigr)
+ \right].
+ \tag{22.2.47}\label{eq:22.2.47}
+\end{equation}
+Now, since the $\varphi_u$ and $\varphi_v$ are normalized as in
+Eq.~\eqref{eq:22.2.42}, the integral of Eq.~\eqref{eq:22.2.47} gives
+\begin{equation}
+ \int(d^4x)_E\,\mathcal A(x)
+ =-2\left[\sum_u t_u-\sum_v t_v\right],
+ \tag{22.2.48}\label{eq:22.2.48}
+\end{equation}
+with the sums over $u$ and $v$ running over left- and right-handed zero
+modes of the operator $i\sl{D}$, respectively. In particular, for the case
+where $t$ is the unit matrix, by using Eq.~\eqref{eq:22.2.45} this may be
+expressed as a relation between a functional of the gauge field and the
+numbers of the zero modes of the Dirac operator with definite chiralities:
+\begin{equation}
+ -\frac{1}{32\pi^2}\int(d^4x)_E\,\epsilon^E_{ijkl}
+ F_{\alpha ij}F_{\beta kl}\operatorname{tr}[t_\alpha t_\beta]
+ =n_+-n_-,
+ \tag{22.2.49}\label{eq:22.2.49}
+\end{equation}
+where here $n_\pm$ are the numbers of zero modes of $\sl{D}$ that have
+eigenvalues $\pm1$ for $\gamma_5$. This is the celebrated
+\emph{Atiyah--Singer index theorem}.~\hyperref[ch22-ref-6a]{[6a]} Among
+other things, it shows that under variations in the gauge field the integral
+on the left-hand side of Eq.~\eqref{eq:22.2.49} cannot change smoothly,
+but only by integers, so this integral can only depend on the topology of
+the gauge field. Its dependence on this topology will be described in
+\hyperref[sec:23.5]{Section 23.5}.

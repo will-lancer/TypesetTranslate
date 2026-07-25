@@ -1,0 +1,64 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\numberwithin{equation}{subsection}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Quantum Theory of Fields, Volume II: Chapter 17},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externaleq}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+
+\begin{document}
+% Check-only destinations for equation links into Chapter 15.
+\externaleq{eq:15.6.2}{15.6.2}
+\externaleq{eq:15.6.4}{15.6.4}
+\externaleq{eq:15.6.16}{15.6.16}
+\externaleq{eq:15.7.3}{15.7.3}
+\externaleq{eq:15.7.4}{15.7.4}
+\externaleq{eq:15.7.6}{15.7.6}
+\externaleq{eq:15.7.7}{15.7.7}
+\externaleq{eq:15.7.11}{15.7.11}
+\externaleq{eq:15.9.3}{15.9.3}
+\externaleq{eq:15.9.16}{15.9.16}
+\externaleq{eq:15.9.17}{15.9.17}
+\externaleq{eq:15.9.26}{15.9.26}
+\externaleq{eq:15.9.34}{15.9.34}
+\externaleq{eq:15.9.35}{15.9.35}
+
+\setcounter{section}{16}
+\input{chapters/chapter17.tex}
+\end{document}

@@ -1,2 +1,120 @@
-% Outline scaffold for Section 20.3. Main content intentionally omitted.
+% Source coverage: physical PDF pp. 286--288 (printed pp. 263--265), beginning at the Section 20.3 heading on p. 286 and ending with the section's final paragraph above the Section 20.4 heading on p. 288.
+% Numbered equations: (20.3.1)--(20.3.10), with one unnumbered display. Figures/tables: none. Footnotes: none. Inline chapter references: none. Uncertainties: none.
+
 \subsection{Renormalization Group Equations for Coefficient Functions}
+
+As mentioned earlier, one of the aspects of the operator product expansion that makes it so useful is that the momentum dependence of the coefficient functions is governed by renormalization group equations. This is because they arise from limiting values of sums of Feynman graphs (such as $I_\infty(k)$ in Section 20.2) in which all relevant momenta are going to infinity together, so that masses may be set equal to zero without introducing singularities. Nevertheless the operator product coefficient functions do not obey simple scaling laws, because of renormalization effects: the functions are multiplied with scale-dependent renormalization constants, and depend on scale-dependent renormalized couplings.
+
+Consider the operator product expansion for a Greens function $\Gamma_{\ell\ell'}(k,k',p)$ in which the incoming momenta (collectively labelled $k$, with sum $p$) of a set $\ell$ of lines all go to infinity together, with the set $\ell'$ of remaining lines having fixed outgoing momenta (collectively labelled $k'$, with sum $p$):
+\begin{equation}
+\Gamma_{\ell\ell'}(k,k',p)\longrightarrow
+\sum_O U_O^\ell(k)F_{O,\ell'}(k',p).
+\tag{20.3.1}\label{eq:20.3.1}
+\end{equation}
+The function $F_{O,\ell'}(k',p)$ is the matrix element of a renormalized operator
+$O_R=\sum_{O'}Z_{O,O'}O'$, so its coefficient $U_O^\ell(k)$ in the product of fields corresponding to the lines $\ell$ is proportional to $Z^{-1}_{O,O'}$, as well as to $Z_{\ell',\ell}$, the direct product of all the renormalization matrix factors for the field (or composite) operators in the set $\ell'$. Hence
+\begin{equation}
+\mu\frac{d}{d\mu}U_O^\ell
+=\sum_{\ell'}\gamma_{\ell\ell'}U_O^{\ell'}
+-\sum_{O'}U_{O'}^\ell\gamma_{O'O}
++\beta(g)\frac{\partial}{\partial g}U_O^\ell,
+\tag{20.3.2}\label{eq:20.3.2}
+\end{equation}
+where
+\begin{equation}
+\mu\frac{\partial}{\partial\mu}Z_{\ell\ell'}
+=\sum_{\ell''}\gamma_{\ell\ell''}Z_{\ell''\ell'},
+\qquad
+\mu\frac{\partial}{\partial\mu}Z_{OO'}
+=\sum_{O''}\gamma_{OO''}Z_{O''O'},
+\tag{20.3.3}\label{eq:20.3.3}
+\end{equation}
+and for simplicity we assume a single renormalizable coupling $g_\mu$, defined as the value of some Feynman amplitude at a renormalization point with momenta of order $\mu$, with $\mu\,dg_\mu/d\mu=\beta(g_\mu)$. In order to be able to use dimensional analysis, we multiply all operators by powers of $\mu$ in such a way that they become dimensionless. This has the effect that the components of the $Z$ and $\gamma$ matrices are also dimensionless, with the values in the limit of zero coupling given by
+\begin{equation}
+\gamma_{\ell\ell'}\longrightarrow\delta_{\ell\ell'}N(\ell),
+\qquad
+\gamma_{OO'}\longrightarrow\delta_{OO'}N(O),
+\tag{20.3.4}\label{eq:20.3.4}
+\end{equation}
+where $N(O)$ is the dimensionality of the operator $O$, and $N(\ell)$ is the total dimensionality of the set $\ell$ of fields (the sum of $s+1$ for each field, where $s=0$ for scalar and massless gauge fields, $s=1/2$ for Dirac fields, etc.) Also, dimensional analysis tells us that for $k^\mu=\kappa n^\mu$ with $n^\mu$ fixed, the amplitude can depend on $\kappa$ only through the ratio $\kappa/\mu$, aside from a factor $\kappa^{4-4n(\ell)}$ arising from the integrals used in defining the Fourier transform. The solution of Eq.~\eqref{eq:20.3.2} is then of the form
+\begin{align}
+U_O^\ell(\kappa n)
+={}&\kappa^{4-4n(\ell)}
+\sum_{\ell',O'}
+\left[
+M\left\{
+\exp\left(\int_\mu^\kappa\frac{d\mu'}{\mu'}\gamma(g_{\mu'})\right)
+\right\}
+\right]_{\ell,\ell'}
+\mathcal W_{O'}^{\ell'}(g_\kappa,n)
+\notag\\
+&\cdot
+\left[
+M\left\{
+\exp\left(\int_\mu^\kappa\frac{d\mu'}{\mu'}\gamma(g_{\mu'})\right)
+\right\}
+\right]^{-1}_{O',O},
+\tag{20.3.5}\label{eq:20.3.5}
+\end{align}
+where $M$ denotes the `$\mu$-ordered' product, that is, each term in the expansion of the exponentials rearranged so that the factors are in the order of decreasing $\mu$ from left to right.
+
+This gives especially simple results where $g_\mu$ approaches a fixed point $g_*$ for $\mu\to\infty$. The contribution of large $\mu$s to $M\{\exp(\int^\kappa\gamma(g_\mu)d\mu/\mu)\}$ is then a matrix factor $\kappa^{\gamma(g_*)}$ that because of the $\mu$-ordering appears on the left. Thus Eq.~\eqref{eq:20.3.5} becomes
+\begin{equation}
+U_O^\ell(\kappa n)
+=\kappa^{4-4n(\ell)}
+\sum_{\ell',O'}
+\left[\kappa^{\gamma(g_*)}\right]_{\ell,\ell'}
+\mathcal C_{O'}^{\ell'}
+\left[\kappa^{-\gamma(g_*)}\right]_{O',O},
+\tag{20.3.6}\label{eq:20.3.6}
+\end{equation}
+where $\mathcal C$ is either a constant or a sum of powers of $\ln\kappa$, depending on the rate at which $g_\kappa$ approaches $g_*$.
+
+Asymptotically free theories like quantum chromodynamics are a special case of particular physical interest. Here the fixed point is at $g_*=0$, and, according to Eq.~\eqref{eq:20.3.4}, near this fixed point the $\gamma$ matrices go as
+\begin{equation}
+\gamma(g)_{\ell\ell'}\longrightarrow
+N(\ell)\delta_{\ell\ell'}+g^2c_{\ell\ell'},
+\qquad
+\gamma(g)_{OO'}\longrightarrow
+N(O)\delta_{OO'}+g^2c_{OO'}.
+\tag{20.3.7}\label{eq:20.3.7}
+\end{equation}
+Also, if we write the renormalization group equation for the coupling in the form
+\begin{equation}
+\mu\frac{d}{d\mu}g_\mu^2=-\frac{b}{8\pi^2}g_\mu^4,
+\tag{20.3.8}\label{eq:20.3.8}
+\end{equation}
+then
+\[
+\int^\kappa\frac{d\mu}{\mu}g_\mu^2
+\longrightarrow-\frac{8\pi^2}{b}\ln g_\kappa^2+\text{constant}.
+\]
+Using this in Eq.~\eqref{eq:20.3.5} yields the asymptotic behavior
+\begin{align}
+U_O^\ell(\kappa n)\longrightarrow{}&
+\kappa^{4-4n(\ell)+N(\ell)-N(O)}
+\sum_{\ell',O'}
+\left[
+\left(g_\kappa^2\right)^{-8\pi^2c/b}
+\right]_{\ell,\ell'}
+\mathcal C_{O'}^{\ell'}
+\left[
+\left(g_\kappa^2\right)^{8\pi^2c/b}
+\right]_{O',O},
+\tag{20.3.9}\label{eq:20.3.9}
+\end{align}
+where $\mathcal C_{O'}^{\ell'}$ is a constant matrix, equal to $\mathcal W_{O'}^{\ell'}(0,n)$ times constant factors that are not calculable in perturbation theory because they come from the parts of the integrals in Eq.~\eqref{eq:20.3.5} where $g_\mu$ is not small. For $\kappa\to\infty$, the behavior of the coupling constant is $g_\kappa^2\to8\pi^2/(b\ln\kappa)$, so Eq.~\eqref{eq:20.3.9} may also be written
+\begin{align}
+U_O^\ell(\kappa n)\longrightarrow{}&
+\kappa^{4-4n(\ell)+N(\ell)-N(O)}
+\sum_{\ell',O'}
+\left[
+\left(\ln\kappa\right)^{8\pi^2c/b}
+\right]_{\ell,\ell'}
+\mathcal B_{O'}^{\ell'}
+\left[
+\left(\ln\kappa\right)^{-8\pi^2c/b}
+\right]_{O',O},
+\tag{20.3.10}\label{eq:20.3.10}
+\end{align}
+where $\mathcal B_{O'}^{\ell'}$ is another constant matrix. The condition for Eqs.~\eqref{eq:20.3.9} and \eqref{eq:20.3.10} to be valid is that $g_\kappa^2/8\pi^2\ll1$, but it is not necessary for $\ln\kappa$ to be so large that only one eigenvector of the $c$ matrix contributes to the asymptotic behavior. Eq.~\eqref{eq:20.3.10} will be used to study deep inelastic scattering in Section 20.6.

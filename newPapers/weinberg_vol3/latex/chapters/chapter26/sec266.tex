@@ -1,0 +1,355 @@
+% Source: physical PDF pp. 109--113 (printed pp. 86--90), from the Section
+% 26.6 heading through the final paragraph immediately before Section 26.7.
+% Inventory: Eqs. (26.6.1)--(26.6.23), four unnumbered display groups,
+% citation [4], and no footnotes, figures, tables, or typographic dividers.
+% Source oddities preserved: the repeated phrase ``the requirement that they
+% satisfy the requirement'' and the absence of d^4x in the second line of the
+% first unnumbered integration-by-parts display on printed p. 88.
+% Uncertainties: none.
+
+\subsection{Superspace Integrals, Field Equations, and the Current Superfield}
+
+\providecommand{\SuperD}{\mathcal{D}}
+
+The `\(\mathcal{F}\)-terms' and `\(D\)-terms' from which we construct the
+Lagrangian density may be expressed as integrals over the superspace
+coordinates \(\theta_\alpha\). The rules for integrals over fermionic
+parameters originally given by Berezin~\hyperref[ch26-ref-4]{[4]} are derived
+in Section 9.5. Briefly, because the square of any fermionic parameter
+vanishes, any function of a set of \(N\) fermionic parameters \(\xi_n\) may
+be expressed as
+\begin{equation}
+  f(\xi)
+  =\left(\prod_{n=1}^{N}\xi_n\right)c
+   +\text{terms with fewer \(\xi\) factors}\,,
+  \tag{26.6.1}\label{eq:26.6.1}
+\end{equation}
+and its integral over the \(\xi\)s is defined simply by
+\begin{equation}
+  \int d^N\xi\,f(\xi)\equiv c\,.
+  \tag{26.6.2}\label{eq:26.6.2}
+\end{equation}
+The coefficient \(c\) may itself depend on other unintegrated c-number
+variables that anticommute with the \(\xi\)s over which we integrate, in which
+case it is important to standardize the definition of \(c\) by moving all
+\(\xi\)s to the left of \(c\) before integrating over them, as we have done
+in Eq.~\eqref{eq:26.6.1}. With this definition, integration over fermionic
+variables is a linear operation. It resembles the integral over a real
+variable in the sense that, since a shift \(\xi_n\longrightarrow\xi_n+a_n\)
+of the variable \(\xi_n\) by a constant \(a_n\) changes the product
+\(\prod_n\xi_n\) only by terms involving fewer \(\xi\) factors, it does not
+affect the value of the integral
+\begin{equation}
+  \int d^N\xi\,f(\xi+a)=\int d^N\xi\,f(\xi)\,.
+  \tag{26.6.3}\label{eq:26.6.3}
+\end{equation}
+Also, as a special case of Eq.~\eqref{eq:26.6.2}, the integral over \(N\)
+fermionic parameters of a polynomial of order \(<N\) vanishes. Integrals over
+fermionic and bosonic parameters are strikingly different in the way they
+respond to change of variables: for bosonic parameters \(x_n\) we have
+\(d^Nx'=\operatorname{Det}(\partial x'/\partial x)\,d^Nx\), while for
+fermionic parameters
+\begin{equation}
+  d^N\xi'
+  =\left[\operatorname{Det}
+    \left(\frac{\partial\xi'}{\partial\xi}\right)\right]^{-1}d^N\xi\,.
+  \tag{26.6.4}\label{eq:26.6.4}
+\end{equation}
+In particular, the dimensionality of \(d\xi\) is \emph{opposite} to the
+dimensionality of \(\xi\).
+
+According to Eq.~\eqref{eq:26.2.10}, the \(D\)-term of a general superfield
+\(S(x,\theta)\) (which may be elementary or composite) is equal, up to a
+derivative term, to the coefficient of
+\(-(\bar\theta\gamma_5\theta)^2/4=-(\theta^T\epsilon\theta)^2/4\). Any one of
+the four \(\theta\)s can be \(\theta_1\), and each possibility gives an equal
+contribution, so we may assume that \(\theta_1\) is the left-most, and pick up
+a factor of 4. Then \(\theta_2\) must be the next-to-left-most. Any of the two
+remaining \(\theta\)s may be \(\theta_3\), and each possibility gives an equal
+contribution, so we may assume that \(\theta_3\) is third from the left and
+pick up a factor of 2, and \(\theta_4\) must then be the right-most. That is,
+\[
+  -\frac14(\bar\theta\gamma_5\theta)^2
+  =-\frac14\cdot4\cdot2\cdot\theta_1\theta_2\theta_3\theta_4\,,
+\]
+so the coefficient of this function of \(\theta\) is \(-1/2\) the integral
+over \(d^4\theta\). Since this is the \(D\)-term up to a derivative, we have
+then
+\begin{equation}
+  \int d^4x\,[S]_D
+  =-\frac12\int d^4x\int d^4\theta\,S(x,\theta)\,.
+  \tag{26.6.5}\label{eq:26.6.5}
+\end{equation}
+In the same way, using Eq.~\eqref{eq:26.3.11}, we find that the spacetime
+integral of the \(\mathcal{F}\)-term of a general left-chiral superfield
+\(\Phi\) (again, either elementary or composite) may be expressed as
+\begin{equation}
+  \int d^4x\,[\Phi]_{\mathcal{F}}
+  =\frac12\int d^4x\int d^2\theta_L\,\Phi(x,\theta)\,.
+  \tag{26.6.6}\label{eq:26.6.6}
+\end{equation}
+
+Since we are now integrating over \(\theta\)s, it is convenient to introduce
+a delta function, defined as usual by the condition that for an arbitrary
+function \(f(\theta)\)
+\begin{equation}
+  \int d^4\theta'\,\delta^4(\theta'-\theta)f(\theta')=f(\theta)\,.
+  \tag{26.6.7}\label{eq:26.6.7}
+\end{equation}
+According to Eq.~\eqref{eq:9.5.40}, this condition is satisfied by
+\begin{equation}
+  \begin{aligned}
+  \delta^4(\theta'-\theta)
+  &=(\theta'_1-\theta_1)(\theta'_2-\theta_2)
+    (\theta'_3-\theta_3)(\theta'_4-\theta_4)
+  \\
+  &=\frac14
+    \left[(\theta_L-\theta'_L)^T\epsilon(\theta_L-\theta'_L)\right]
+    \left[(\theta_R-\theta'_R)^T\epsilon(\theta_R-\theta'_R)\right].
+  \end{aligned}
+  \tag{26.6.8}\label{eq:26.6.8}
+\end{equation}
+
+The representation of the action as an integral over superspace allows an
+easy derivation of the field equations in superfield form. Consider, for
+instance, the action for a set of left-chiral scalar superfields \(\Phi_n\)
+(which includes as a special case the general renormalizable theory of
+left-chiral superfields \(\Phi_n\)):
+\begin{equation}
+  I
+  =\frac12\int d^4x\,[K(\Phi,\Phi^*)]_D
+   +2\operatorname{Re}\int d^4x\,[f(\Phi)]_{\mathcal{F}}\,,
+  \tag{26.6.9}\label{eq:26.6.9}
+\end{equation}
+with \(K\) an arbitrary function of \(\Phi_n\) and \(\Phi_n^*\) without
+derivatives, and \(f\) an arbitrary function of \(\Phi_n\), also without
+derivatives. (The motivation for this form of the action and the expression of
+the action in terms of component fields is described in Section 26.8.) We
+cannot derive correct field equations by simply demanding that this is
+stationary with respect to arbitrary variations in \(\Phi\), because the
+\(\Phi_n\) are constrained by the requirement that they satisfy the
+requirement \(\SuperD_R\Phi_n=0\) for left-chiral superfields. To make sure
+that this condition is preserved by any variation, we can use a trick that
+will also turn out to be useful in deriving superspace Feynman rules in
+Chapter 30. We write the \(\Phi_n\) in terms of \emph{potential superfields}
+\(S_n(x,\theta)\) as
+\begin{equation}
+  \Phi_n=\SuperD_R^2S_n\,,
+  \tag{26.6.10}\label{eq:26.6.10}
+\end{equation}
+from which it follows (using Eq.~\eqref{eq:26.A.21}) that
+\begin{equation}
+  \Phi_n^*=-\SuperD_L^2S_n^*\,,
+  \tag{26.6.11}\label{eq:26.6.11}
+\end{equation}
+where \(\SuperD_R^2\) and \(\SuperD_L^2\) are abbreviations for
+\((\SuperD_R^T\epsilon\SuperD_R)=-(\bar{\SuperD}_R\SuperD_R)\) and
+\((\SuperD_L^T\epsilon\SuperD_L)=(\bar{\SuperD}_L\SuperD_L)\), respectively.
+To see that it is always possible to find an \(S_n\) (not necessarily local)
+that satisfies Eq.~\eqref{eq:26.6.10}, note that for any left-chiral
+superfields \(\Phi_n\),
+\begin{equation}
+  \SuperD_R^2\SuperD_L^2\Phi_n=-16\Box\Phi_n\,,
+  \tag{26.6.12}\label{eq:26.6.12}
+\end{equation}
+so that Eq.~\eqref{eq:26.6.10} is satisfied by the solution of
+\begin{equation}
+  -16\Box S_n=\SuperD_L^2\Phi_n\,.
+  \tag{26.6.13}\label{eq:26.6.13}
+\end{equation}
+
+The expression \(\SuperD_R^2S\) is left-chiral for any \(S\), so the action
+must be stationary with respect to arbitrary variations in the \(S_n\). Using
+Eq.~\eqref{eq:26.6.5}, the action may be expressed in terms of the \(S_n\) and
+\(S_n^*\) as
+\begin{equation}
+  \begin{aligned}
+  I={}&-\frac14\int d^4x\int d^4\theta\,
+  K(-\SuperD_L^2S^*,\SuperD_R^2S)
+  \\
+  &+2\operatorname{Re}\int d^4x\,
+  [f(\SuperD_R^2S)]_{\mathcal{F}}\,.
+  \end{aligned}
+  \tag{26.6.14}\label{eq:26.6.14}
+\end{equation}
+The variation of the first term under infinitesimal changes \(\delta S_n\) in
+the \(S_n\) (but not the \(S_n^*\)) is easily calculated by an integration by
+parts in superspace:
+\[
+  \begin{aligned}
+  &-\delta\frac14\int d^4x\int d^4\theta\,
+    K(-\SuperD_L^2S^*,\SuperD_R^2S)
+  \\
+  &\qquad=-\sum_n\int d^4\theta\,\delta S_n\SuperD_R^2
+    \frac{\delta K(-\SuperD_L^2S^*,\SuperD_R^2S)}
+         {\delta\SuperD_R^2S_n}\,.
+  \end{aligned}
+\]
+Eqs.~\eqref{eq:26.3.31} and \eqref{eq:26.6.5} allow us to express the
+variation of the integral in the superpotential term under infinitesimal
+changes \(\delta S_n\) in the \(S_n\) as
+\[
+  \begin{aligned}
+  \delta\int d^4x\,[f(\SuperD_R^2S)]_{\mathcal{F}}
+  &=
+  \sum_n\int d^4x
+  \left[
+    \left.
+    \frac{\partial f(\Phi)}{\partial\Phi_n}
+    \right|_{\Phi=\SuperD_R^2S}
+    \SuperD_R^2\delta S_n
+  \right]_{\mathcal{F}}
+  \\
+  &=
+  \sum_n\int d^4x
+  \left[
+    \SuperD_R^2\left(
+      \left.
+      \frac{\partial f(\Phi)}{\partial\Phi_n}
+      \right|_{\Phi=\SuperD_R^2S}
+      \delta S_n
+    \right)
+  \right]_{\mathcal{F}}
+  \\
+  &=2\sum_n\int d^4x
+  \left[
+    \left.
+    \frac{\partial f(\Phi)}{\partial\Phi_n}
+    \right|_{\Phi=\SuperD_R^2S}
+    \delta S_n
+  \right]_D
+  \\
+  &=-\sum_n\int d^4x\int d^4\theta\,
+    \left.
+    \frac{\partial f(\Phi)}{\partial\Phi_n}
+    \right|_{\Phi=\SuperD_R^2S}
+    \delta S_n\,.
+  \end{aligned}
+\]
+The condition for Eq.~\eqref{eq:26.6.14} to be stationary with respect to
+arbitrary variations in \(S_n\) is then
+\[
+  \SuperD_R^2
+  \frac{\delta K(-\SuperD_L^2S^*,\SuperD_R^2S)}
+       {\delta\SuperD_R^2S_n}
+  =-4
+  \left.
+  \frac{\partial f(\Phi)}{\partial\Phi_n}
+  \right|_{\Phi=\SuperD_R^2S}\,,
+\]
+or in terms of the chiral superfields
+\begin{equation}
+  \SuperD_R^2
+  \frac{\delta K(\Phi,\Phi^*)}{\delta\Phi_n}
+  =-4\frac{\partial f(\Phi)}{\partial\Phi_n}\,.
+  \tag{26.6.15}\label{eq:26.6.15}
+\end{equation}
+The complex conjugate yields
+\begin{equation}
+  \SuperD_L^2
+  \frac{\delta K(\Phi,\Phi^*)}{\delta\Phi_n^*}
+  =4\left(\frac{\partial f(\Phi)}{\partial\Phi_n}\right)^* .
+  \tag{26.6.16}\label{eq:26.6.16}
+\end{equation}
+It can readily be checked that the components of these equations yield the
+field equations for the components of \(\Phi_n^*\) and \(\Phi_n\). For
+instance, recalling that
+\(\SuperD_R^2(\theta_R^T\epsilon\theta_R)=-4\), the
+\(\theta\)-independent part of \(\SuperD_R^2\Phi_n^*\) is
+\(4\mathcal{F}_n^*\), while the \(\theta\)-independent part of
+\(\partial f(\Phi)/\partial\Phi_n\) is
+\(\partial f(\phi)/\partial\phi_n\), so the \(\theta\)-independent part of
+Eq.~\eqref{eq:26.6.15} for \(K=\sum_n\Phi_n^*\Phi_n\) yields the relation
+\(\mathcal{F}_n^*=-\partial f(\phi)/\partial\phi_n\), in agreement with
+Eq.~\eqref{eq:26.4.6}.
+
+As an example of the use of this formalism, let us consider the superfields to
+which conserved currents belong. Suppose that the superpotential and Kahler
+potential in the action \eqref{eq:26.6.9} are invariant under an infinitesimal
+global transformation
+\begin{equation}
+  \delta\Phi_n=i\epsilon\sum_m\mathcal{T}_{nm}\Phi_m\,,
+  \qquad
+  \delta\Phi_n^*=-i\epsilon\sum_m\mathcal{T}_{mn}\Phi_m^*\,,
+  \tag{26.6.17}\label{eq:26.6.17}
+\end{equation}
+with \(\epsilon\) a real infinitesimal constant and \(\mathcal{T}_{nm}\) a
+Hermitian matrix, perhaps part of a Lie algebra of similar transformation
+matrices. Since the superpotential depends only on the \(\Phi_n\), it is
+automatically also invariant under the extended transformations
+\begin{equation}
+  \delta\Phi_n=i\epsilon\Lambda\sum_m\mathcal{T}_{nm}\Phi_m\,,
+  \qquad
+  \delta\Phi_n^*=-i\epsilon\Lambda^*
+    \sum_m\mathcal{T}_{mn}\Phi_m^*\,,
+  \tag{26.6.18}\label{eq:26.6.18}
+\end{equation}
+where \(\Lambda(x,\theta)\) is a superfield that must be taken left-chiral in
+order that the \(\delta\Phi_n\) be left-chiral, but is otherwise unrestricted.
+On the other hand, other terms such as the Kahler potential are not in
+general invariant under these transformations, because
+\(\Lambda\neq\Lambda^*\). For general fields the change in the action must
+therefore be of the form
+\begin{equation}
+  \delta I
+  =i\epsilon\int d^4x\int d^4\theta\,[\Lambda-\Lambda^*]\mathcal{J}\,,
+  \tag{26.6.19}\label{eq:26.6.19}
+\end{equation}
+where \(\mathcal{J}(x,\theta)\) is some real superfield, known as the
+\emph{current superfield}. But if the field equations are satisfied then the
+action is stationary under \emph{any} variation in the superfields, so the
+integral \eqref{eq:26.6.19} must vanish for any left-chiral superfield
+\(\Lambda(x,\theta)\). Any such \(\Lambda\) may be put in the form
+\(\Lambda=\SuperD_R^2S\), so this means that the current superfield must
+satisfy
+\begin{equation}
+  \SuperD_R^2\mathcal{J}=\SuperD_L^2\mathcal{J}=0\,.
+  \tag{26.6.20}\label{eq:26.6.20}
+\end{equation}
+That is, \(\mathcal{J}\) is a \emph{linear} superfield. As we saw in Section
+26.3, this means that its components satisfy
+\begin{equation}
+  N^{\mathcal{J}}=M^{\mathcal{J}}
+  =\partial^\mu V_\mu^{\mathcal{J}}=0\,,
+  \qquad
+  \lambda^{\mathcal{J}}=-\sl{\partial}\omega^{\mathcal{J}}\,,
+  \qquad
+  D^{\mathcal{J}}=-\Box C^{\mathcal{J}}\,.
+  \tag{26.6.21}\label{eq:26.6.21}
+\end{equation}
+This allows us to identify the \(V\)-component \(V_\mu^{\mathcal{J}}\) as the
+conserved current associated with this symmetry.
+
+For the particular action \eqref{eq:26.6.9}, the current superfield takes the
+form
+\begin{equation}
+  \mathcal{J}
+  =\sum_{nm}
+    \frac{\partial K(\Phi,\Phi^*)}{\partial\Phi_n}
+    \mathcal{T}_{nm}\Phi_m
+  =\sum_{nm}
+    \frac{\partial K(\Phi,\Phi^*)}{\partial\Phi_n^*}
+    \mathcal{T}_{mn}\Phi_m^*\,,
+  \tag{26.6.22}\label{eq:26.6.22}
+\end{equation}
+with the equality of these two expressions a consequence of symmetry under
+the transformation \eqref{eq:26.6.17}. Then, using the field equation
+\eqref{eq:26.6.15},
+\begin{equation}
+  \SuperD_R^2\mathcal{J}
+  =\sum_{nm}
+    \left[
+      \SuperD_R^2
+      \frac{\partial K(\Phi,\Phi^*)}{\partial\Phi_n}
+    \right]
+    \mathcal{T}_{nm}\Phi_m
+  =-4\sum_{nm}
+    \frac{\partial f(\Phi)}{\partial\Phi_n}
+    \mathcal{T}_{nm}\Phi_m\,,
+  \tag{26.6.23}\label{eq:26.6.23}
+\end{equation}
+which vanishes because of the assumed invariance of the superpotential under
+the transformation \eqref{eq:26.6.17}. In the same way, using the second of
+the two expressions for \(\mathcal{J}\) and the field equation
+\eqref{eq:26.6.16}, we find that \(\SuperD_L^2\mathcal{J}=0\), thus verifying
+the conservation condition \eqref{eq:26.6.20}.

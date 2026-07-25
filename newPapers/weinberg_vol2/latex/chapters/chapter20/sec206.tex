@@ -1,2 +1,572 @@
-% Outline scaffold for Section 20.6. Main content intentionally omitted.
+% Source coverage: physical PDF pp. 295--306 (printed pp. 272--283), beginning at the Section 20.6 heading on p. 295 and ending with the section's final paragraph on p. 306, immediately before Section 20.7.
+% Numbered equations: (20.6.1)--(20.6.60), with all unnumbered displays. Figures/tables: none. Footnotes: 5. Inline chapter references: [9]--[17]. Source/manifest discrepancy: the assignment inventory ended at (20.6.55), but the rendered section continues through (20.6.60).
+
 \subsection{Deep Inelastic Scattering}
+
+The renormalization group coupled with the operator product expansion found one of its most important applications in the analysis of deep inelastic lepton-nucleon scattering. We will first review the early phenomenological models for these reactions, and then see how the operator product expansion justifies these models and provides corrections to them.
+
+Consider a process in which an electron of four-momentum $k$ collides with a nucleon $N$ of four-momentum $p$, yielding a electron of four-momentum $k'$ and a general unobserved hadron state $H$, over which we sum. To calculate the spin-averaged inclusive cross section, we shall need to know the quantity
+\begin{equation}
+\frac{m_N}{p_N^0}W^{\mu\nu}(q,p)
+\equiv
+\frac12\sum_{\sigma_N}\sum_H
+\delta^4(p_H-p-q)
+\bra{H}J^\mu(0)\ket{N}
+\bra{H}J^\nu(0)\ket{N}^{*};
+\tag{20.6.1}\label{eq:20.6.1}
+\end{equation}
+where $J^\mu$ is the electromagnetic current (divided here by a factor $e$) and $q=k-k'$ is the momentum transfer from the electrons to the hadrons. Lorentz invariance tells us that $W^{\mu\nu}(q,p)$ must be a linear combination of $p^\mu p^\nu$, $p^\mu q^\nu$, $q^\mu p^\nu$, $q^\mu q^\nu$, and $\eta^{\mu\nu}$, with coefficients that can only depend on the two independent scalar functions of $q$ and $p$: $q^2$ and $\nu=-q\cdot p/m_N$. Current conservation requires that $q_\mu W^{\mu\nu}=q_\nu W^{\mu\nu}=0$, so $W^{\mu\nu}$ must take the form\footnote{The same formalism can be used for other deep-inelastic lepton scattering processes, such as $\nu_\mu+p\to\mu^-+H$, except that since parity is not conserved in these processes there is an additional term in $W^{\mu\nu}(q,p)$ proportional to $\epsilon^{\mu\nu\rho\sigma}p_\rho q_\sigma$. For simplicity, we will limit ourselves here to deep-inelastic electron scattering.}
+\begin{align}
+W^{\mu\nu}(q,p)
+={}&-\left(\frac{q^\mu q^\nu}{q^2}-\eta^{\mu\nu}\right)
+W_1(\nu,q^2)
+\notag\\
+&+\frac{1}{m_N^2}
+\left(p^\mu-\frac{p\cdot q}{q^2}q^\mu\right)
+\left(p^\nu-\frac{p\cdot q}{q^2}q^\nu\right)
+W_2(\nu,q^2).
+\tag{20.6.2}\label{eq:20.6.2}
+\end{align}
+Also, Eq.~\eqref{eq:20.6.1} shows that $W^{\mu\nu *}=W^{\nu\mu}$, so $W_1$ and $W_2$ are real, and $W^{\mu\nu}$ is a positive matrix, so $W_1$ and $W_2$ are positive. The differential cross section in the nucleon rest frame is
+\begin{equation}
+\frac{d^2\sigma}{d\Omega\,d\nu}
+=
+\left(\frac{d\sigma}{d\Omega}\right)_{\mathrm{MOTT}}
+\left(W_2+2W_1\tan^2\frac{\theta}{2}\right),
+\tag{20.6.3}\label{eq:20.6.3}
+\end{equation}
+where $d\Omega=\sin\theta\,d\theta\,d\phi$ is the solid angle into which the electron is scattered, and $(d\sigma/d\Omega)_{\mathrm{MOTT}}$ is the differential cross section for relativistic elastic scattering by a point spinless particle
+\begin{equation}
+\left(\frac{d\sigma}{d\Omega}\right)_{\mathrm{MOTT}}
+=
+\frac{e^4}{4E_e^2}
+\frac{\cos^2(\theta/2)}{\sin^4(\theta/2)},
+\tag{20.6.4}\label{eq:20.6.4}
+\end{equation}
+with $E_e=-k\cdot p/m_N$ the incident electron energy in the nucleon rest frame.
+
+One might expect that for fixed values of $-p_H^2=-q^2+2m_N\nu+m_N^2$, the differential cross section should fall off very rapidly as $q^2\to\infty$, because it should be proportional to the square of the form-factor for the transition from the nucleon to whatever particles or resonance have mass near $-p_H^2$. It was therefore somewhat of a surprise that, two years after the 1966 opening of the Stanford Linear Accelerator Center, a SLAC-MIT collaboration headed by Friedman, Kendall, and Taylor~\hyperref[ch20-ref-9]{[9]} discovered that in fact $\nu W_2(q^2,\nu)$ is roughly constant in $q^2$ for fixed values of $\omega=2m_N\nu/q^2>1$. (To be specific, $\nu W_2(q^2,\nu)$ for the proton was fitted to the curve $\nu W_2(q^2,\nu)\simeq0.35-0.004\omega$ for $E_e=10$, $13.5$, and $16\ \mathrm{GeV}$, and $\theta=6^\circ$ and $10^\circ$. These experiments were insensitive to $W_1$, because $\tan^2(10^\circ/2)=7.6\cdot10^{-3}$.) Note that in this limit $-p_H^2\to(\omega-1)q^2\to\infty$, which is why this is called `deep-inelastic' scattering.
+
+At about the same time Bjorken~\hyperref[ch20-ref-10]{[10]} was using current algebra to argue that $W_2(q^2,\nu)$ and $W_1(q^2,\nu)$ satisfy scaling laws: for $q^2$ and $\nu$ going to infinity together,
+\begin{equation}
+\nu W_2(\nu,q^2)\longrightarrow F_2(\omega),
+\qquad
+W_1(\nu,q^2)\longrightarrow F_1(\omega),
+\tag{20.6.5}\label{eq:20.6.5}
+\end{equation}
+where again $\omega=2m_N\nu/q^2$. A more intuitive explanation was given a little later by Feynman~\hyperref[ch20-ref-11]{[11]}. He supposed that in deep-inelastic scattering on a highly relativistic nucleon of momentum $p$, the nucleon behaves as if it consists of `partons' of various types labelled $i$, each with a probability $\mathcal F_i(x)\,dx$ of having momentum between $xp$ and $(x+dx)p$. Then for each $i$,
+\begin{equation}
+\int dx\,\mathcal F_i(x)=1.
+\tag{20.6.6}\label{eq:20.6.6}
+\end{equation}
+The condition that the nucleon has total momentum $p$ yields the additional sum rule
+\begin{equation}
+\int_0^1\sum_i\mathcal F_i(x)x\,dx=1.
+\tag{20.6.7}\label{eq:20.6.7}
+\end{equation}
+For elastic scattering of an electron (with $m_e$ neglected) from a parton of four-momentum $xp$, we have $x^2m_N^2=-(q+xp)^2=-q^2-2\nu m_Nx+x^2m_N^2$, so $\nu=q^2/2m_Nx$. The inelastic cross section in this model is thus\footnote{This may be derived from the formulas \hyperref[eq:8.7.7]{(8.7.7)} and \hyperref[eq:8.7.38]{(8.7.38)} for Compton scattering on a spin $1/2$ particle of four-momentum $p$ and mass $m$ in a general Lorentz frame. For this purpose, it is useful to note that in the gauge used to derive these formulas, for which the initial and final real polarization vectors $e_\mu$ and $e'_\mu$ satisfy $e^2=e'^2=1$, $e\cdot p=e'\cdot p=e\cdot k=e'\cdot k'=0$, the polarization sum gives
+\[
+\sum_{e,e'}(e\cdot e')^2
+=2+\frac{m^4(k\cdot k')^2}{(k\cdot p)^2(k'\cdot p)^2}
++\frac{2m^2(k\cdot k')}{(k\cdot p)(k'\cdot p)}.
+\]}
+\begin{align}
+\frac{d^3\sigma}{d\Omega\,d\nu}
+={}&
+\left(\frac{d^2\sigma}{d\Omega}\right)_{\mathrm{MOTT}}
+\sum_iQ_i^2\int_0^1dx\,\mathcal F_i(x)
+\left(1+\frac{q^2}{2m_N^2x^2}\tan^2\frac{\theta}{2}\right)
+\notag\\
+&\hspace{47mm}\cdot
+\delta\left(\nu-\frac{q^2}{2m_Nx}\right),
+\tag{20.6.8}\label{eq:20.6.8}
+\end{align}
+where $Q_i$ is the charge of the $i$th type of parton in units of $e$. (The $\tan^2(\theta/2)$ term here is appropriate for a `Dirac' parton, with magnetic moment $eQ_i/2m_Nx$.) Comparing this with Eq.~\eqref{eq:20.6.3} gives
+\begin{align}
+W_2(\nu,q^2)
+&=\sum_iQ_i^2\int_0^1dx\,\mathcal F_i(x)
+\delta\left(\nu-\frac{q^2}{2m_Nx}\right)
+\notag\\
+&=\frac{1}{\nu\omega}
+\sum_iQ_i^2\mathcal F_i(1/\omega),
+\tag{20.6.9}\label{eq:20.6.9}
+\end{align}
+\begin{align}
+W_1(\nu,q^2)
+&=\frac12\sum_iQ_i^2\int_0^1dx\,\mathcal F_i(x)
+\frac{q^2}{2m_N^2x^2}
+\delta\left(\nu-\frac{q^2}{2m_Nx}\right)
+\notag\\
+&=\frac{\omega\nu}{2m_N}W_2(\nu,q^2).
+\tag{20.6.10}\label{eq:20.6.10}
+\end{align}
+This agrees with the Bjorken scaling rules \eqref{eq:20.6.5}, with
+\begin{equation}
+F_2(\omega)=\frac1\omega
+\sum_iQ_i^2\mathcal F_i(1/\omega)
+\tag{20.6.11}\label{eq:20.6.11}
+\end{equation}
+and
+\begin{equation}
+F_1(\omega)=\frac{\omega}{2m_N}F_2(\omega).
+\tag{20.6.12}\label{eq:20.6.12}
+\end{equation}
+Eq.~\eqref{eq:20.6.12} was originally derived by Callan and Gross~\hyperref[ch20-ref-12]{[12]}. It agrees with experiment within about $10$--$15\%$.
+
+On the assumption that the proton and neutron respectively consist of two $u$ and one $d$ or one $u$ and two $d$ quarks, plus any number of neutral partons, Eqs.~\eqref{eq:20.6.11} and \eqref{eq:20.6.6} yield the sum rule for $W_2$
+\begin{equation}
+\int_1^\infty F_2(\omega)\frac{d\omega}{\omega}
+=\sum_iQ_i^2
+=
+\begin{cases}
+1,&p,\\[2pt]
+2/3,&n.
+\end{cases}
+\tag{20.6.13}\label{eq:20.6.13}
+\end{equation}
+The integral receives a large contribution from large $\omega$, where $F_2$ is difficult to measure. If we also assume that the total momentum of the nucleon is equally shared among three quarks (and no neutral partons) then in place of Eq.~\eqref{eq:20.6.7} we have the stronger relation $\int\mathcal F_i(x)x\,dx=1/3$ for each quark, which with Eq.~\eqref{eq:20.6.11} yields
+\[
+\int_1^\infty F_2(\omega)\frac{d\omega}{\omega^2}
+=\frac13\sum_iQ_i^2
+=
+\begin{cases}
+1/3,&p,\\[2pt]
+2/9,&n.
+\end{cases}
+\]
+This integral is easier to measure, and turns out to disagree badly with the sum rule, showing that a large fraction of the nucleon momentum is carried by the neutral partons.
+
+None of the above phenomenology depends on any specific field theory. It was the operator product expansion that finally provided a way of applying an underlying field theory to deep-inelastic scattering. In particular, the operator product expansion made it clear that one needed an asymptotically free field theory to explain the scaling assumptions \eqref{eq:20.6.5} (and to calculate the corrections to scaling). This asymptotically free theory was ultimately provided by quantum chromodynamics.
+
+To apply the operator product expansion to deep-inelastic scattering, first Fourier transform Eq.~\eqref{eq:20.6.1}. Using translation invariance and the completeness of the hadron states $\ket{H}$, this gives
+\begin{equation}
+\frac{m_N}{p_N^0}W^{\mu\nu}(q,p)
+=\frac{1}{2(2\pi)^4}\sum_{\sigma_N}
+\int d^4z\,e^{-iq\cdot z}
+\bra{N}J^\nu(z)J^\mu(0)\ket{N}.
+\tag{20.6.14}\label{eq:20.6.14}
+\end{equation}
+The asymptotic behavior of $W^{\mu\nu}(q,p)$ as $q\to\infty$ is therefore related to the singularity of the operator product at $x\to0$.
+
+Feynman diagram calculations of the coefficient functions in operator product expansions refer directly not to the expansion for matrix elements like those appearing in Eq.~\eqref{eq:20.6.14} for $W^{\mu\nu}$, but rather to matrix elements of the two-point Green's function
+\begin{equation}
+\frac{m_N}{p_N^0}T^{\mu\nu}(q,p)
+=\frac{1}{2(2\pi)^4}\sum_{\sigma_N}
+\int d^4z\,e^{-iq\cdot z}
+\bra{N}T\{J^\nu(z),J^\mu(0)\}\ket{N}.
+\tag{20.6.15}\label{eq:20.6.15}
+\end{equation}
+We can express this in terms of the structure functions for $T^{\mu\nu}$, defined by the analog to Eq.~\eqref{eq:20.6.2}:
+\begin{align}
+T^{\mu\nu}(q,p)
+={}&-\left(\frac{q^\mu q^\nu}{q^2}-\eta^{\mu\nu}\right)
+T_1(\nu,q^2)
+\notag\\
+&+\frac{1}{m_N^2}
+\left(p^\mu-\frac{p\cdot q}{q^2}q^\mu\right)
+\left(p^\nu-\frac{p\cdot q}{q^2}q^\nu\right)
+T_2(\nu,q^2).
+\tag{20.6.16}\label{eq:20.6.16}
+\end{align}
+The connection between the $T_r(\nu,q^2)$ and $W_r(\nu,q^2)$ (with $r=1,2$) is provided~\hyperref[ch20-ref-13]{[13]} by the dispersion relations\footnote{For $q^2=0$, these may be derived exactly as in the derivation of the dispersion relation \hyperref[eq:10.8.16]{(10.8.16)} for forward photon scattering. The derivation for fixed $q^2\ne0$ is more difficult.} for fixed $q^2$:
+\begin{align}
+T_r(\nu,q^2)
+={}&\frac12W_r(-\nu,q^2)+\frac12W_r(\nu,q^2)
+\notag\\
+&+\frac{1}{2\pi i}\int_{-\infty}^{\infty}d\nu'\,
+\frac{W_r(-\nu',q^2)-W_r(\nu',q^2)}
+{\nu'-\nu},
+\tag{20.6.17}\label{eq:20.6.17}
+\end{align}
+with the denominator in the integrand interpreted as a principal value function. The functions $W_r(\nu,q^2)$ vanish except for $\nu>q^2/2m_N$, so the dispersion relations may be rewritten
+\begin{align}
+T_r(\nu,q^2)
+={}&\frac12W_r(-\nu,q^2)+\frac12W_r(\nu,q^2)
+\notag\\
+&-\frac{1}{2\pi i}\int_{q^2/2m_N}^{\infty}d\nu'\,
+W_r(\nu',q^2)
+\left(\frac{1}{\nu'+\nu}+\frac{1}{\nu'-\nu}\right).
+\tag{20.6.18}\label{eq:20.6.18}
+\end{align}
+
+We can categorize the operators that contribute to the operator product expansion for $T_r$ according to the irreducible representation of the Lorentz group to which they belong. The only Lorentz-covariant functions of a single four-vector $p^\mu$ with $p^2=-m_N^2$ fixed are proportional to the symmetric tensors $p^{\mu_1}\cdots p^{\mu_s}$, so the only operators that can contribute to the spin-averaged nucleon expectation value are symmetric traceless tensors $\mathcal O_{si}^{\mu_1\ldots\mu_s}$, the subscript $i$ distinguishing any different operators with this tensor structure. (For reasons that will become clear, we are using the same label $i$ to distinguish operators that we used in the parton model to label types of partons.) These operators have matrix elements of the form
+\begin{equation}
+\frac12\sum_{\sigma_N}
+\bra{N}\mathcal O_{si}^{\mu_1\ldots\mu_s}\ket{N}
+=\frac{m_N}{p_N^0}
+\left[p^{\mu_1}\cdots p^{\mu_s}-\text{traces}\right]
+\langle\mathcal O_{si}\rangle,
+\tag{20.6.19}\label{eq:20.6.19}
+\end{equation}
+where the $\langle\mathcal O_{si}\rangle$ are constant coefficients. Such an operator makes a contribution to $T^{\mu\nu}(q,p)$ proportional to $s$ factors of the four-vector $p$, and hence makes a contribution to $T_1(\nu,q^2)$ and $T_2(\nu,q^2)$ proportional to $\nu^s$ and $\nu^{s-2}$, respectively. (We are dropping terms involving $p^2$, because such terms will be suppressed by factors of $m_N^2/q^2$ or $m_N^2/p\cdot q$.) If we ignore logarithmic corrections, then in an asymptotically free theory the $q^2$ dependence of the coefficients is of the forms $(q^2)^{(-4+6-d(s,i)-s)/2}$ and $(q^2)^{(-4+6-d(s,i)-s+2)/2}$, respectively, where $d(s,i)$ is the dimensionality of the operator $\mathcal O_{si}$.\footnote{The $-4$ in the exponents arises from the integral over $z$ in Eq.~\eqref{eq:20.6.14}, and the $+6$ in these exponents is the dimensionality of the two electric current operators. The terms $-s/2$ and $-(s-2)/2$ serve to compensate for the powers of $q^\mu$ already in $\nu^s$ and $\nu^{s-2}$, respectively.} Using $\nu\propto q^2\omega$, we see that the contributions of an operator $\mathcal O_{si}$ to the structure functions are asymptotically of the forms
+\begin{equation}
+T_{1,si}\propto
+\nu^s(q^2)^{(2-d(s,i)-s)/2}
+\propto
+\omega^s(q^2)^{(2-\tau(s,i))/2}
+\tag{20.6.20}\label{eq:20.6.20}
+\end{equation}
+and
+\begin{equation}
+\nu T_{2,si}\propto
+\nu^{s-1}(q^2)^{(4-d(s,i)-s)/2}
+\propto
+\omega^{s-1}(q^2)^{(2-\tau(s,i))/2},
+\tag{20.6.21}\label{eq:20.6.21}
+\end{equation}
+where $\tau(s,i)$ is the `twist' of the operator $\mathcal O_{si}$, defined as~\hyperref[ch20-ref-14]{[14]}
+\begin{equation}
+\tau(s,i)\equiv d(s,i)-s.
+\tag{20.6.22}\label{eq:20.6.22}
+\end{equation}
+We see that the dominant terms in $T_1$ and $\nu T_2$ for $q^2\to\infty$ with fixed $\omega$ are contributed by operators of minimum twist. Also, Eq.~\eqref{eq:20.6.18} shows there are no terms in $T_r(\nu,q^2)$ of odd order in $\nu$, so the only operators $\mathcal O_{si}$ that can contribute here are those with even $s$.
+
+The symmetric traceless tensors of rank $s$ with minimum dimensionality are the operators
+\begin{equation}
+(\mathcal O_{sf})_{\mu_1\ldots\mu_s}
+\equiv
+\frac{i^{s-2}}{s!}\,
+\bar\psi_f\gamma_{\{\mu_1}
+\overleftrightarrow D_{\mu_2}\cdots
+\overleftrightarrow D_{\mu_s\}}\psi_f
+\tag{20.6.23}\label{eq:20.6.23}
+\end{equation}
+and
+\begin{equation}
+(\mathcal O_{s0})_{\mu_1\ldots\mu_s}
+\equiv
+\frac{i^{s-2}}{2s!}\,
+F_{\alpha\nu\{\mu_1}
+\overleftrightarrow D_{\mu_3}\cdots
+\overleftrightarrow D_{\mu_s}
+F^\nu{}_{\alpha\mu_2\}},
+\tag{20.6.24}\label{eq:20.6.24}
+\end{equation}
+where $f$ labels quark flavors; $D_\mu$ is the gauge-covariant derivative; and the brackets indicate a sum over permutations and subtraction of trace terms for the enclosed spacetime indices. (The symbol $\overleftrightarrow{\vphantom D}$ indicates half the difference of the derivative acting to the right and left. We take this difference of derivatives, because their sum would vanish in any matrix between states of equal four-momenta.) These operators have dimensionality $3+(s-1)=4+(s-2)=2+s$, so they all have twist $\tau=2$. Thus an infinite number of operators contribute for $q^2\to\infty$, all of which give contributions to $T_1$ and $\nu T_2$ that depend on $\omega$ but only logarithmically on $q^2$. Asymptotic freedom thus confirms Bjorken scaling, but only up to logarithmic corrections. Keeping only operators of twist two, we see that (as anticipated in our notation) for each $s$ there is indeed one operator for each parton type, with $i$ running over quark types $f$ (lumping quarks and antiquarks together) and also a value $i=0$ for the gluon.
+
+Now let us consider the logarithmic corrections. The asymptotic behavior of the coefficient functions in an asymptotically free theory is governed by Eq.~\hyperref[eq:20.3.9]{(20.3.9)}. As discussed in Section 10.4, when we ignore electromagnetic radiative corrections no renormalization factors are needed for the electromagnetic current, because these currents are conserved. Thus the matrix $c_{\ell\ell'}$ in Eq.~\hyperref[eq:20.3.9]{(20.3.9)} vanishes. The matrix $c_{\mathcal O,\mathcal O'}$ has no elements connecting operators of different Lorentz transformation type, so that in the notation we are now using, $c_{si,s'i'}=\delta_{ss'}c_{ii'}(s)$. Thus Eq.~\hyperref[eq:20.3.9]{(20.3.9)} takes the form
+\begin{equation}
+T_1(\nu,q^2)\longrightarrow
+\sum_{sij}\omega^s\mathcal A_{si}
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle,
+\tag{20.6.25}\label{eq:20.6.25}
+\end{equation}
+\begin{equation}
+\nu T_2(\nu,q^2)\longrightarrow
+\sum_{sij}\omega^{s-1}\mathcal B_{si}
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle,
+\tag{20.6.26}\label{eq:20.6.26}
+\end{equation}
+where $\mathcal A$ and $\mathcal B$ are constants appearing in the coefficient function for the operator $\mathcal O_{si}$ in the operator product expansion of the product of two electric currents, $\ell^2$ is a particular value of $q^2$ at which we choose to define the coefficient functions, $b$ is the constant in the one-loop renormalization group equation \hyperref[eq:20.3.8]{(20.3.8)} for the strong coupling constant $g_q$, and $\langle\mathcal O_{sj}\rangle$ is the constant coefficient in the matrix elements \eqref{eq:20.6.19}.
+
+The operator product expansion coefficients are independent of the particular process in question and unaffected by quark trapping, so we can calculate the coefficients $\mathcal A_{si}$ and $\mathcal B_{si}$ by considering a fictitious simpler process, the scattering of an electron by a free quark of flavor $f$. The renormalized operators $\mathcal O_{si}$ may conveniently be defined so that the one-quark matrix elements of the operators \eqref{eq:20.6.23} and \eqref{eq:20.6.24} are given by the tree approximation:
+\begin{equation}
+\bra{f',\sigma'}\mathcal O_{sf}^{\mu_1\ldots\mu_s}
+\ket{f'',\sigma''}
+=
+\frac{(-1)^si}{s!}
+\left(\bar u_{\sigma'}\gamma^{\{\mu_1}u_{\sigma''}\right)
+p^{\mu_2}\cdots p^{\mu_s\}}
+\delta_{ff'}\delta_{ff''},
+\tag{20.6.27}\label{eq:20.6.27}
+\end{equation}
+\begin{equation}
+\bra{f',\sigma'}\mathcal O_{s0}^{\mu_1\ldots\mu_s}
+\ket{f'',\sigma''}=0.
+\tag{20.6.28}\label{eq:20.6.28}
+\end{equation}
+Averaging Eq.~\eqref{eq:20.6.27} over $\sigma'=\sigma''$ and comparing the result with \eqref{eq:20.6.19} yields
+\[
+\langle\mathcal O_{sf}\rangle_{f'}\,
+\frac{m_f}{p^0}p^{\mu_1}p^{\mu_2}\cdots p^{\mu_s}
+=
+\delta_{ff'}\frac{(-1)^si}{2s!}
+\operatorname{Tr}\left\{
+\left(\frac{-i\sl p+m_f}{2p^0}\right)
+\gamma^{\{\mu_1}p^{\mu_2}\cdots p^{\mu_s\}}
+\right\},
+\]
+so that (for even $s$)
+\begin{equation}
+\langle\mathcal O_{sf}\rangle_{f'}
+=\frac{\delta_{ff'}}{m_f}
+\tag{20.6.29}\label{eq:20.6.29}
+\end{equation}
+and
+\begin{equation}
+\langle\mathcal O_{s0}\rangle_{f'}=0.
+\tag{20.6.30}\label{eq:20.6.30}
+\end{equation}
+With this definition of the operators $\mathcal O_{si}$, at a renormalization momentum scale $\ell^2$ which is large enough for the operator product expansion functions to be calculated using the tree approximation, these functions can be derived from the tree-approximation formulas for the electron-quark scattering cross section. Retracing the parton-model derivations of Eqs.~\eqref{eq:20.6.9} and \eqref{eq:20.6.10}, we see that $W_r$ for an electron scattering on a quark of flavor $f$ is given in the tree approximation by\footnote{The factor $(m_N/m_f)$ is inserted in Eq.~\eqref{eq:20.6.31} because $\nu$ is defined as $-q\cdot p/m_N$ instead of $-q\cdot p/m_f$, while it is $W_2/m_N^2$ rather than $W_2/m_f^2$ that appears in Eq.~\eqref{eq:20.6.2}. Eq.~\eqref{eq:20.6.32} then follows from Eq.~\eqref{eq:20.6.10}. The quantity $\omega$ may be written in a mass-independent way, as $\omega=-2q\cdot p/q^2$.}
+\begin{equation}
+\nu W_{2,f}
+=\frac{m_N}{m_f}Q_f^2\delta(\omega-1),
+\tag{20.6.31}\label{eq:20.6.31}
+\end{equation}
+\begin{equation}
+W_{1,f}
+=\frac{Q_f^2}{2m_f}\delta(\omega-1).
+\tag{20.6.32}\label{eq:20.6.32}
+\end{equation}
+Inserting these results in the dispersion relations \eqref{eq:20.6.18} yields, for $\omega\ne1$,
+\begin{equation}
+T_{1,f}
+=\frac{Q_f^2}{2\pi i m_f}\,
+\frac{m_N}{m_f}\,
+\frac{1}{\omega^2-1},
+\tag{20.6.33}\label{eq:20.6.33}
+\end{equation}
+\begin{equation}
+\nu T_{2,f}
+=\frac{2Q_f^2}{2\pi i}\,
+\frac{\omega^2}{\omega^2-1},
+\tag{20.6.34}\label{eq:20.6.34}
+\end{equation}
+results that may also be obtained directly from the Feynman graphs for electron-quark scattering. Comparing the coefficients of $\omega^s$ in Eqs.~\eqref{eq:20.6.33} and \eqref{eq:20.6.34} with those in Eqs.~\eqref{eq:20.6.25} and \eqref{eq:20.6.26} at the renormalization point $q^2=\ell^2$ and using Eqs.~\eqref{eq:20.6.29} and \eqref{eq:20.6.30}, we find that
+\begin{equation}
+\mathcal A_{si}=\frac{iQ_i^2}{2\pi},
+\qquad
+\mathcal B_{si}=\frac{im_NQ_i^2}{\pi},
+\tag{20.6.35}\label{eq:20.6.35}
+\end{equation}
+with the gluon charge $Q_0$ of course taken as zero. To repeat, even though these values have been derived for electron-quark scattering, $\mathcal A_{si}$ and $\mathcal B_{si}$ are factors in the operator product expansion of two electric currents, and therefore do not depend on the state in which we calculate the expectation value of this operator product. So we can use Eq.~\eqref{eq:20.6.35} in Eqs.~\eqref{eq:20.6.25} and \eqref{eq:20.6.26}, and find
+\begin{equation}
+T_1(\nu,q^2)\longrightarrow
+\frac{i}{2\pi}\sum_{sij}\omega^sQ_i^2
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle,
+\tag{20.6.36}\label{eq:20.6.36}
+\end{equation}
+\begin{equation}
+\nu T_2(\nu,q^2)\longrightarrow
+\frac{im_N}{\pi}\sum_{sij}\omega^{s-1}Q_i^2
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle.
+\tag{20.6.37}\label{eq:20.6.37}
+\end{equation}
+
+Now let us at last return to the structure functions $W_r(\nu,q^2)$. We note that the coefficient of $\omega^s=(2m_N\nu/q^2)^s$ in $T_r(\nu,q^2)$ is given by Eq.~\eqref{eq:20.6.18} as
+\[
+-\frac{2}{2\pi i}
+\left(\frac{q^2}{2m_N}\right)^s
+\int_{q^2/2m_N}^{\infty}d\nu'\,
+\nu'^{-1-s}W_r(\nu',q^2)
+=\frac{i}{\pi}\int_1^\infty d\omega\,
+\omega^{-1-s}
+W_r\left(\frac{\omega q^2}{2m_N},q^2\right).
+\]
+Comparing with Eqs.~\eqref{eq:20.6.36} and \eqref{eq:20.6.37}, we find
+\begin{equation}
+\int_1^\infty d\omega\,\omega^{-1-s}
+W_1\left(\frac{\omega q^2}{2m_N},q^2\right)
+\longrightarrow
+\frac12\sum_{ij}Q_i^2
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle,
+\tag{20.6.38}\label{eq:20.6.38}
+\end{equation}
+\begin{equation}
+\int_1^\infty d\omega\,\omega^{-s}\nu
+W_2\left(\frac{\omega q^2}{2m_N},q^2\right)
+\longrightarrow
+m_N\sum_{ij}Q_i^2
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle.
+\tag{20.6.39}\label{eq:20.6.39}
+\end{equation}
+The $W_r$ satisfying these equations may evidently be expressed in a manner similar to the equations \eqref{eq:20.6.9} and \eqref{eq:20.6.10} of the parton model
+\begin{equation}
+W_1\left(\frac{\omega q^2}{2m_N},q^2\right)
+\longrightarrow
+\sum_iQ_i^2\mathcal F_i(1/\omega,q^2),
+\tag{20.6.40}\label{eq:20.6.40}
+\end{equation}
+\begin{equation}
+\nu W_2\left(\frac{\omega q^2}{2m_N},q^2\right)
+\longrightarrow
+\frac{2m_N}{\omega}
+\sum_iQ_i^2\mathcal F_i(1/\omega,q^2),
+\tag{20.6.41}\label{eq:20.6.41}
+\end{equation}
+where $\mathcal F_i$ is a parton distribution function, now defined by the moment equations
+\begin{equation}
+\int_0^1dx\,x^{s-1}\mathcal F_i(x,q^2)
+=\frac12\sum_j
+\left[
+\left(\frac{g_q^2}{g_\ell^2}\right)^{8\pi^2c(s)/b}
+\right]_{ij}
+\langle\mathcal O_{sj}\rangle.
+\tag{20.6.42}\label{eq:20.6.42}
+\end{equation}
+In particular, we see that asymptotic freedom implies not only a corrected version of Bjorken scaling, but also the Callan--Gross relation \eqref{eq:20.6.12} between $W_1$ and $W_2$.
+
+There is an elegant reformulation of the moment equations \eqref{eq:20.6.42} due to Altarelli and Parisi~\hyperref[ch20-ref-15]{[15]} that has become widely used in studies of deep-inelastic scattering.
+Note that Eqs.~\eqref{eq:20.6.42} together with the renormalization group equation \hyperref[eq:20.3.8]{(20.3.8)} imply the differential equations
+\begin{equation}
+q^2\frac{d}{dq^2}
+\int_0^1dx\,x^{s-1}\mathcal F_i(x,q^2)
+=-g_q^2\sum_jc_{ij}(s)
+\int_0^1dx\,x^{s-1}\mathcal F_j(x,q^2).
+\tag{20.6.43}\label{eq:20.6.43}
+\end{equation}
+These equations, together with the `initial' condition at the renormalization point $\ell^2$
+\begin{equation}
+\int_0^1dx\,x^{s-1}\mathcal F_i(x,\ell^2)
+=\frac12\langle\mathcal O_{si}\rangle,
+\tag{20.6.44}\label{eq:20.6.44}
+\end{equation}
+have a unique solution, so they can be used instead of the moment equations. Now, Eq.~\eqref{eq:20.6.43} is satisfied by the solution of the differential equation for $\mathcal F_i$:
+\begin{equation}
+q^2\frac{d}{dq^2}\mathcal F_i(x,q^2)
+=\frac{g_q^2}{4\pi^2}
+\sum_j\int_x^1\frac{dy}{y}\,
+P_{ij}\left(\frac{x}{y}\right)
+\mathcal F_j(y,q^2),
+\tag{20.6.45}\label{eq:20.6.45}
+\end{equation}
+where the matrix function $P_{ij}(z)$ is subject to the conditions
+\begin{equation}
+\int_0^1z^{s-1}P_{ij}(z)\,dz
+=-4\pi^2c_{ij}(s).
+\tag{20.6.46}\label{eq:20.6.46}
+\end{equation}
+(The factor $4\pi^2$ is conventional.)
+
+The matrix $c_{ij}(s)$ was calculated in quantum chromodynamics by Georgi and Politzer~\hyperref[ch20-ref-16]{[16]} and Gross and Wilczek~\hyperref[ch20-ref-17]{[17]}. They assumed that there are $N$ flavors of quarks that are sufficiently light to be treated as massless, while quarks of all other flavors are treated as very heavy and integrated out, so that they can be ignored except for their effect on the strong coupling constant. Their results in the basis provided by the operators \eqref{eq:20.6.23} and \eqref{eq:20.6.24} are
+\begin{equation}
+c_{00}(s)
+=\frac{1}{2\pi^2}
+\left\{
+C_1\left[
+\frac1{12}
+-\frac{1}{s(s-1)}
+-\frac{1}{(s+1)(s+2)}
++\sum_{t=2}^s\frac1t
+\right]
++\frac N3C_2
+\right\},
+\tag{20.6.47}\label{eq:20.6.47}
+\end{equation}
+\begin{equation}
+c_{f0}(s)
+=\frac{1}{\pi^2}C_2
+\left[
+\frac{1}{s+2}
++\frac{2}{s(s+1)(s+2)}
+\right],
+\tag{20.6.48}\label{eq:20.6.48}
+\end{equation}
+\begin{equation}
+c_{0f}(s)
+=\frac{1}{8\pi^2}C_3
+\left[
+\frac{1}{s+1}
++\frac{2}{s(s-1)}
+\right],
+\tag{20.6.49}\label{eq:20.6.49}
+\end{equation}
+\begin{equation}
+c_{ff'}(s)
+=\frac{1}{8\pi^2}C_3
+\left[
+1-\frac{2}{s(s+1)}
++4\sum_{t=2}^s\frac1t
+\right]\delta_{ff'},
+\tag{20.6.50}\label{eq:20.6.50}
+\end{equation}
+where $0$ and $f$ denote the operators \eqref{eq:20.6.24} and \eqref{eq:20.6.23}, respectively; the constants $C_1$ and $C_2$ are defined by Eqs.~\hyperref[eq:17.5.33]{(17.5.33)} and \hyperref[eq:17.5.34]{(17.5.34)} (with only a single quark flavor included in the trace in Eq.~\hyperref[eq:17.5.34]{(17.5.34)}); $N$ is the number of quark flavors; and $C_3$ is defined (using the notation of Section 17.4) by
+\begin{equation}
+t_\alpha t_\alpha=C_3g^2\mathbf1.
+\tag{20.6.51}\label{eq:20.6.51}
+\end{equation}
+In the realistic case of an $SU(3)$ gauge group with quarks in its defining representation $\mathbf3$, these numbers are
+\begin{equation}
+C_1=3,
+\qquad
+C_2=\frac12,
+\qquad
+C_3=\frac43.
+\tag{20.6.52}\label{eq:20.6.52}
+\end{equation}
+
+These rather complicated results become simpler when expressed in term of the Altarelli--Parisi functions. It is straightforward to check that Eq.~\eqref{eq:20.6.46} is satisfied if
+\begin{equation}
+P_{ff'}
+=\delta_{ff'}
+\left[
+\frac43\left(\frac{1+x^2}{(1-x)_+}\right)
++2\delta(1-x)
+\right],
+\tag{20.6.53}\label{eq:20.6.53}
+\end{equation}
+\begin{equation}
+P_{f0}=x^2-x+\frac12,
+\tag{20.6.54}\label{eq:20.6.54}
+\end{equation}
+\begin{equation}
+P_{0f}=\frac43\left[\frac2x-2+x\right],
+\tag{20.6.55}\label{eq:20.6.55}
+\end{equation}
+\begin{equation}
+P_{00}
+=6\left[
+\frac{1-x}{x}
++x(1-x)
++\frac{x}{(1-x)_+}
++\frac{11}{12}\delta(1-x)
+\right]
+-\frac N3\delta(1-x),
+\tag{20.6.56}\label{eq:20.6.56}
+\end{equation}
+where in an integral over $x$ up to $x=1$, $1/(1-x)_+$ is defined by
+\begin{equation}
+\frac{f(x)}{(1-x)_+}
+\equiv
+\frac{f(x)-f(1)}{1-x}.
+\tag{20.6.57}\label{eq:20.6.57}
+\end{equation}
+For each $s$ there is an obvious $(N-1)$-fold degenerate eigenvalue of the matrix $c(s)$, equal to the coefficient of $\delta_{ff'}$ in Eq.~\eqref{eq:20.6.50}:
+\begin{equation}
+c(s,\text{adjoint})
+=\frac{1}{8\pi^2}C_3
+\left[
+1-\frac{2}{s(s+1)}
++4\sum_{t=2}^s\frac1t
+\right],
+\tag{20.6.58}\label{eq:20.6.58}
+\end{equation}
+with eigenoperators given by all independent linear combinations of the operators \eqref{eq:20.6.23} with coefficients $a_f$ satisfying $\sum_fa_f=0$, which belong to the adjoint representation of the unbroken global $SU(N)$ symmetry group of quantum chromodynamics with $N$ quark flavors. In addition for each $s$ there are two eigenoperators belonging to the singlet representation of $SU(N)$, given by linear combinations of the operator \eqref{eq:20.6.24} and the sum over $f$ of the operators \eqref{eq:20.6.23}. These eigenoperators and the corresponding eigenvalues can be found by diagonalizing the $2\cdot2$ matrix:
+\begin{equation}
+c(s)_{\mathrm{singlet}}
+=
+\begin{pmatrix}
+c_{00}(s)&c_{0f}(s)N\\
+c_{f0}(s)&c(s,\text{adjoint})
+\end{pmatrix}.
+\tag{20.6.59}\label{eq:20.6.59}
+\end{equation}
+For $s=2$ this matrix takes the form
+\begin{equation}
+c(2)_{\mathrm{singlet}}
+=
+\begin{pmatrix}
+NC_2/6\pi^2&NC_3/6\pi^2\\
+C_2/3\pi^2&C_3/3\pi^2
+\end{pmatrix}.
+\tag{20.6.60}\label{eq:20.6.60}
+\end{equation}
+This has one zero eigenvalue, corresponding to the linear combination of $\mathcal O_{20}^{\mu\nu}$ and $\sum_f\mathcal O_{2f}^{\mu\nu}$ that is equal to the energy-momentum tensor, which like $J^\mu$ is not renormalized. The other eigenvalue of the matrix \eqref{eq:20.6.36} is given by its trace, $NC_2/6\pi^2+C_3/3\pi^3$. Now, the minimum of the eigenvalues of $c_{ij}(s)$ for a given $s$ must be at least as large as the minimum of the eigenvalues of $c_{ij}(s')$ for any $s'<s$, because otherwise for sufficiently large $q^2$ the integral \eqref{eq:20.6.42} would eventually become larger for $s$ than for $s'$, in contradiction with the fact that this integral is a strictly decreasing function of $s$. Because the minimum eigenvalue for $s=2$ is zero, we can conclude that all of the other eigenvalues for $s>2$ are positive. In fact, they are all positive-definite, because there are no unrenormalized operators for $s>2$. Hence strict Bjorken scaling occurs only in the extreme limit where $g_q^2\to0$, where only the contribution of the energy-momentum tensor survives. The prediction of violations of strict Bjorken scaling have been confirmed experimentally by exhaustive studies of deep-inelastic electron-nucleon and muon-nucleon scattering.

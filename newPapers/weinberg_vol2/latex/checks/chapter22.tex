@@ -1,0 +1,93 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\numberwithin{equation}{subsection}
+\allowdisplaybreaks
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Quantum Theory of Fields, Volume II: Chapter 22},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externaleq}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\newcommand{\externalanchor}[1]{\phantomsection\label{#1}}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\optionalreading}{\texorpdfstring{\textsuperscript{*}}{*}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\begin{document}
+
+% Check-only destinations for links outside Chapter 22.
+\externalanchor{app:23.A}
+\externalanchor{sec:5.4}
+\externalanchor{sec:5.5}
+\externalanchor{sec:7.3}
+\externalanchor{sec:8.8}
+\externalanchor{sec:10.4}
+\externalanchor{sec:12.3}
+\externalanchor{sec:15.7}
+\externalanchor{sec:15.9}
+\externalanchor{sec:17.1}
+\externalanchor{sec:19.4}
+\externalanchor{sec:19.8}
+\externalanchor{sec:19.9}
+\externalanchor{sec:23.5}
+\externaleq{eq:15.1.9}{15.1.9}
+\externaleq{eq:15.1.10}{15.1.10}
+\externaleq{eq:15.1.17}{15.1.17}
+\externaleq{eq:15.9.21}{15.9.21}
+\externaleq{eq:15.9.34}{15.9.34}
+\externaleq{eq:15.9.35}{15.9.35}
+\externaleq{eq:16.4.6}{16.4.6}
+\externaleq{eq:17.1.10}{17.1.10}
+\externaleq{eq:19.6.17}{19.6.17}
+\externaleq{eq:19.6.18}{19.6.18}
+\externaleq{eq:19.7.2}{19.7.2}
+\externaleq{eq:19.8.1}{19.8.1}
+\externaleq{eq:19.8.2}{19.8.2}
+\externaleq{eq:19.8.3}{19.8.3}
+
+\setcounter{section}{21}
+\input{chapters/chapter22.tex}
+
+\end{document}

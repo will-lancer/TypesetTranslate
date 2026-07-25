@@ -1,2 +1,239 @@
-% Outline scaffold for Chapter 23 appendix. Main content intentionally omitted.
+% Source: physical PDF pages 491--495; printed pages 468--472.
+% Appendix A begins after Section 23.8 on physical p. 491 and ends before
+% the Appendix B heading on physical p. 495.
+% Figures: none. Source uncertainty resolved at 600 dpi: Eq. (23.A.21)
+% explicitly uses q(0)=q and q(T)=q', while Eqs. (23.A.17), (23.A.22),
+% and (23.A.23) use the interval -T/2 to T/2.
 \chapterappendix{A}{Euclidean Path Integrals}
+\phantomsection\label{app:23.A}
+
+This appendix will outline the use of Euclidean path integrals in quantum field theory. As mentioned in \hyperref[sec:9.1]{Section 9.1}, it is possible to formulate quantum field theory in a four-dimensional Euclidean spacetime. Instead of going into the non-trivial analytic continuation needed to calculate S-matrix elements in this approach, here we shall illustrate the use of Euclidean path integrals by addressing a problem for which they are naturally suited.
+
+We consider a set of Hermitian canonical variables $Q_a$ and $P_a$, with commutation relations
+\begin{equation}
+ [Q_a,P_b]=i\delta_{ab},
+ \tag{23.A.1}\label{eq:23.A.1}
+\end{equation}
+\begin{equation}
+ [Q_a,Q_b]=[P_a,P_b]=0.
+ \tag{23.A.2}\label{eq:23.A.2}
+\end{equation}
+In quantum field theory the index $a$ is understood, as in \hyperref[sec:9.1]{Section 9.1}, to consist of a spatial position $\mathbf x$ and any discrete Lorentz and species indices $m$, and the Kronecker delta in Eq.~\eqref{eq:23.A.1} is understood as $\delta_{\mathbf x m,\mathbf y n}=\delta^3(\mathbf x-\mathbf y)\delta_{mn}$. We define eigenstates of the $Q_a$
+\begin{equation}
+ Q_a\ket{q}=q_a\ket{q},
+ \tag{23.A.3}\label{eq:23.A.3}
+\end{equation}
+normalized so that
+\begin{equation}
+ \braket{q'}{q}=\delta(q'-q)\equiv\prod_a\delta(q'_a-q_a),
+ \tag{23.A.4}\label{eq:23.A.4}
+\end{equation}
+and likewise for eigenstates $\ket{p}$ of the $P_a$.
+
+The problem we consider is the calculation of the matrix element
+\begin{equation}
+ F(q',q;T)\equiv\bra{q'}\exp\bigl(-H[Q,P]T\bigr)\ket{q},
+ \tag{23.A.5}\label{eq:23.A.5}
+\end{equation}
+where $H$ is the Hamiltonian, and $T$ is an arbitrary positive constant. One application is to the study of ground-state energies. If the smallest eigenvalue of $H$ is $E_0$, with eigenvector $\ket{0}$, then for $T\to\infty$
+\[
+ F(q',q;T)\to\braket{q'}{0}\braket{0}{q}\exp(-E_0T),
+\]
+so
+\begin{equation}
+ E_0=-\lim_{T\to\infty}\left(\frac{\ln F(q',q;T)}{T}\right).
+ \tag{23.A.6}\label{eq:23.A.6}
+\end{equation}
+Also, we can calculate the partition function of statistical mechanics from the trace:
+\begin{equation}
+ Z(\beta)\equiv\operatorname{Tr}\exp(-\beta H)
+ =\int\left[\prod_a dq_a\right]F(q,q;\beta),
+ \tag{23.A.7}\label{eq:23.A.7}
+\end{equation}
+where $1/\beta$ is the temperature.
+
+To derive a path integral formula for $F(q',q;T)$ we define Euclidean time dependent operators
+\begin{equation}
+ Q_a(t)\equiv e^{Ht}Q_ae^{-Ht},
+ \qquad
+ P_a(t)\equiv e^{Ht}P_ae^{-Ht},
+ \tag{23.A.8}\label{eq:23.A.8}
+\end{equation}
+and corresponding left- and right-eigenstates
+\begin{equation}
+ \ket{q,t}\equiv\exp(Ht)\ket{q},
+ \qquad
+ \bra{q,t}\equiv\bra{q}\exp(-Ht),
+ \tag{23.A.9}\label{eq:23.A.9}
+\end{equation}
+\begin{equation}
+ \ket{p,t}\equiv\exp(Ht)\ket{p},
+ \qquad
+ \bra{p,t}\equiv\bra{p}\exp(-Ht),
+ \tag{23.A.10}\label{eq:23.A.10}
+\end{equation}
+such that
+\begin{equation}
+ Q_a(t)\ket{q,t}=q_a\ket{q,t},
+ \qquad
+ \bra{q,t}Q_a(t)=q_a\bra{q,t},
+ \tag{23.A.11}\label{eq:23.A.11}
+\end{equation}
+and
+\begin{equation}
+ P_a(t)\ket{p,t}=p_a\ket{p,t},
+ \qquad
+ \bra{p,t}P_a(t)=p_a\bra{p,t}.
+ \tag{23.A.12}\label{eq:23.A.12}
+\end{equation}
+One difference between this and the usual Minkowskian formalism is that the `time' evolution of the operators is governed by a non-unitary similarity transformation \eqref{eq:23.A.8}, so there is no simple relation between the right-eigenstates $\bra{q,t}$ of $Q(t)$ and the Hermitian adjoint of the left-eigenstates $\ket{q,t}$, except at $t=0$.
+
+In this language, the definition \eqref{eq:23.A.5} of $F(q',q;T)$ may be rewritten
+\begin{equation}
+ F(q',q;T)=\braket{q',T/2}{q,-T/2}.
+ \tag{23.A.13}\label{eq:23.A.13}
+\end{equation}
+Let us first calculate $\braket{q',t+dt}{q,t}$ for infinitesimal $dt$. Adopting the convention that $H(Q,P)$ is written with all $Q$s to the left of all $P$s, we have
+\[
+ \braket{q',t+dt}{q,t}
+ =\bra{q',t}\exp\bigl(-H(q',P)dt\bigr)\ket{q,t}.
+\]
+\begingroup
+\emergencystretch=1em
+Let us expand $\ket{q,t}$ in a complete set of eigenstates of the $P_a(t)$ operators. From Eq.~\eqref{eq:23.A.1} we have as usual
+\par
+\endgroup
+\[
+ \braket{q,t}{p,t}
+ =\prod_a\frac{\exp(ip_aq_a)}{\sqrt{2\pi}},
+ \qquad
+ \braket{p,t}{q,t}
+ =\prod_a\frac{\exp(-ip_aq_a)}{\sqrt{2\pi}},
+\]
+so
+\[
+ \braket{q',t+dt}{q,t}
+ =\int\left(\prod_a\frac{dp_a}{2\pi}\right)
+ \exp\left(
+ i\sum_a p_a(q'_a-q_a)-H(q',p)dt
+ \right).
+\]
+(The summation convention is suspended here.)
+
+As in \hyperref[sec:9.1]{Section 9.1}, we divide the time interval from $-T/2$ to $T/2$ into a large number of very small intervals and insert a sum over $Q$ eigenstates for each interval. Defining functions $q(t)$ and $p(t)$ that interpolate between the values of the $Q$ and $P$ eigenvalues at each interval, we obtain the path integral expression for $F$ in its most general form
+\begin{equation}
+\begin{aligned}
+ F(q',q;T)
+ &=
+ \int_{\substack{q(-T/2)=q\\q(T/2)=q'}}
+ \left(\prod_{a,t}dq_a(t)\right)
+ \int\left(\prod_{a,t}\frac{dp_a(t)}{2\pi}\right)\\
+ &\quad{}\cdot
+ \exp\left(
+ \int_{-T/2}^{T/2}dt
+ \left[
+ i\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
+ \right]
+ \right).
+\end{aligned}
+ \tag{23.A.14}\label{eq:23.A.14}
+\end{equation}
+To calculate the partition function \eqref{eq:23.A.7} we would integrate over the $p$s and $q$s subject only to the condition that $q(t)$ is periodic with period equal to the inverse temperature $\beta$:
+\begin{equation}
+\begin{aligned}
+ Z(\beta)
+ &=
+ \int_{q(\beta/2)=q(-\beta/2)}
+ \left(\prod_{a,t}dq_a(t)\right)
+ \int\left(\prod_{a,t}\frac{dp_a(t)}{2\pi}\right)\\
+ &\quad{}\cdot
+ \exp\left(
+ \int_{-\beta/2}^{\beta/2}dt
+ \left[
+ i\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
+ \right]
+ \right).
+\end{aligned}
+ \tag{23.A.15}\label{eq:23.A.15}
+\end{equation}
+Eqs.~\eqref{eq:23.A.14} and \eqref{eq:23.A.15} look a little odd, with one term in the exponent real, and the other imaginary. These formulas begin to look more familiar after we do the path integral over the $p_a(t)$s. This integral is trivial in the important class of theories where $H(q,p)$ is quadratic in the $P$s:
+\begin{equation}
+ H(q,p)=\frac{1}{2}\sum_{a,b}A_{ab}(q)p_ap_b
+ +\sum_aB_a(q)p_a+C(q).
+ \tag{23.A.16}\label{eq:23.A.16}
+\end{equation}
+As shown in the \hyperref[app:9]{appendix to Chapter 9}, the integral over the $p$s in Eq.~\eqref{eq:23.A.14} yields
+\begin{equation}
+\begin{aligned}
+ F(q',q;T)
+ &=
+ \int_{\substack{q(-T/2)=q\\q(T/2)=q'}}
+ \left(\prod_{a,t}dq_a(t)\right)
+ \left(\operatorname{Det}\left[2i\pi\mathcal A(q)\right]\right)^{-1/2}\\
+ &\quad{}\cdot
+ \exp\left(
+ \int_{-T/2}^{T/2}dt
+ \left[
+ i\sum_a\dot q_a(t)\bar p_a(t)
+ -H\bigl(q(t),\bar p(t)\bigr)
+ \right]
+ \right),
+\end{aligned}
+ \tag{23.A.17}\label{eq:23.A.17}
+\end{equation}
+where $\mathcal A(q)$ is the `matrix'
+\begin{equation}
+ \mathcal A(q)_{at',bt}\equiv\delta(t'-t)A_{ab}\bigl(q(t)\bigr),
+ \tag{23.A.18}\label{eq:23.A.18}
+\end{equation}
+and $\bar p(t)$ is the stationary `point' of the argument of the exponential in Eq.~\eqref{eq:23.A.17}---that is, the solution of the equation
+\begin{equation}
+ i\dot q_a(t)
+ =\left.
+ \frac{\delta H(q(t),p)}{\delta p_a}
+ \right|_{p=\bar p(t)}.
+ \tag{23.A.19}\label{eq:23.A.19}
+\end{equation}
+The factor $i$ here should not be surprising, because Eq.~\eqref{eq:23.A.19} is the same equation that is satisfied by the non-Hermitian operators \eqref{eq:23.A.8}:
+\[
+ i\dot Q_a(t)=i[H,Q_a(t)]
+ =\frac{\delta H\bigl(Q(t),P(t)\bigr)}{\delta P_a(t)}.
+\]
+For a Hamiltonian in the general quadratic form \eqref{eq:23.A.16}, the solution of Eq.~\eqref{eq:23.A.19} is
+\begin{equation}
+ \bar p_a=\sum_b\left[A^{-1}(q)\right]_{ab}
+ \bigl(i\dot q_b-B_b(q)\bigr),
+ \tag{23.A.20}\label{eq:23.A.20}
+\end{equation}
+and so Eq.~\eqref{eq:23.A.17} takes the form
+\begin{equation}
+\begin{aligned}
+ F(q',q;T)
+ &=
+ \int_{\substack{q(0)=q\\q(T)=q'}}
+ \left(\prod_{a,t}dq_a(t)\right)
+ \left(\operatorname{Det}\left[2i\pi\mathcal A(q)\right]\right)^{-1/2}
+ \exp\bigl(-S[q]\bigr),
+\end{aligned}
+ \tag{23.A.21}\label{eq:23.A.21}
+\end{equation}
+where $S[q]$ is the action
+\begin{equation}
+\begin{aligned}
+ S[q]\equiv\int_{-T/2}^{T/2}dt\biggl[
+ &\frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)\dot q_a\dot q_b
+ +i\sum_{a,b}A^{-1}_{ab}(q)B_a(q)\dot q_b\\
+ &-\frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)B_a(q)B_b(q)+C(q)
+ \biggr].
+\end{aligned}
+ \tag{23.A.22}\label{eq:23.A.22}
+\end{equation}
+In the special (but common) case where $B_a(q)=0$, this simplifies to
+\begin{equation}
+ S[q]\equiv\int_{-T/2}^{T/2}dt
+ \left[
+ \frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)\dot q_a\dot q_b+C(q)
+ \right].
+ \tag{23.A.23}\label{eq:23.A.23}
+\end{equation}
+Thus in this case the `Lagrangian' appearing in the path integral is equal to what the Hamiltonian would be in Minkowskian spacetime when the $p$s are expressed in terms of $q$s and $\dot q$s.

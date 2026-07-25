@@ -1,0 +1,75 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\numberwithin{equation}{subsection}
+\allowdisplaybreaks
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Chapter 22 Section 22.3 isolated check},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externaleq}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\newcommand{\externaldest}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+
+\begin{document}
+
+% Check-only destinations for links outside this isolated section.
+\externaldest{sec:5.4}{5.4}
+\externaldest{sec:5.5}{5.5}
+\externaldest{sec:10.4}{10.4}
+\externaldest{sec:22.2}{22.2}
+\externaldest{sec:22.6}{22.6}
+\externaldest{sec:22.7}{22.7}
+\externaleq{eq:19.7.2}{19.7.2}
+\externaleq{eq:22.2.26}{22.2.26}
+
+% Check-only destinations for Chapter 22 bibliography markers.
+\externaldest{ch22-ref-7}{7}
+\externaldest{ch22-ref-7a}{7a}
+\externaldest{ch22-ref-8}{8}
+\externaldest{ch22-ref-8a}{8a}
+\externaldest{ch22-ref-9}{9}
+\externaldest{ch22-ref-10}{10}
+\externaldest{ch22-ref-10a}{10a}
+\externaldest{ch22-ref-10b}{10b}
+
+\setcounter{section}{21}
+\section{Anomalies}
+\setcounter{subsection}{2}
+\input{chapters/chapter22/sec223.tex}
+
+\end{document}

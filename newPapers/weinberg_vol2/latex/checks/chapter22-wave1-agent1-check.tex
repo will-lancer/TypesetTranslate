@@ -1,0 +1,73 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\numberwithin{equation}{subsection}
+\allowdisplaybreaks
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Chapter 22 Sections 22.4--22.5 isolated check},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externaleq}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\newcommand{\externaldest}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+
+\begin{document}
+
+% Check-only destinations for links outside this isolated package.
+\externaleq{eq:22.3.3}{22.3.3}
+\externaleq{eq:22.3.12}{22.3.12}
+\externaldest{sec:12.3}{12.3}
+\externaldest{sec:19.9}{19.9}
+\externaldest{sec:22.3}{22.3}
+\externaldest{sec:22.6}{22.6}
+\externaldest{sec:23.5}{23.5}
+
+\externaldest{ch22-ref-11}{11}
+\externaldest{ch22-ref-12}{12}
+\externaldest{ch22-ref-13}{13}
+\externaldest{ch22-ref-13a}{13a}
+\externaldest{ch22-ref-14}{14}
+\externaldest{ch22-ref-15}{15}
+\externaldest{ch22-ref-16}{16}
+\externaldest{ch22-ref-16a}{16a}
+\externaldest{ch22-ref-17}{17}
+
+\setcounter{section}{21}
+\section{Anomalies}
+\setcounter{subsection}{3}
+\input{chapters/chapter22/sec224.tex}
+\input{chapters/chapter22/sec225.tex}
+
+\end{document}

@@ -1,0 +1,46 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{../jheppub}
+\usepackage{etoolbox}
+\numberwithin{equation}{subsection}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  pdftitle={Weinberg Volume III, Chapter 28 Back Matter Check},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\equationlabelonly}[2]{%
+  \phantomsection
+  \begingroup
+    \def\@currentlabel{#2}%
+    \label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+
+\title{Chapter 28 Back Matter Check}
+\author{}
+
+\begin{document}
+\maketitle
+\setcounter{section}{27}
+\section{Supersymmetric Versions of the Standard Model}
+\equationlabelonly{eq:28.1.4}{28.1.4}
+\equationlabelonly{eq:28.1.5}{28.1.5}
+\input{../chapters/chapter28/backmatter.tex}
+\end{document}

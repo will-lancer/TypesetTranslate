@@ -1,0 +1,996 @@
+% Source: physical PDF pp. 113--125 (printed pp. 90--102), from the Section
+% 26.7 heading through the final paragraph immediately before Section 26.8.
+% Inventory: Eqs. (26.7.1)--(26.7.55), 24 unnumbered display groups, citations
+% [5], [6], [7], and [7a], four ordinary footnotes, one centered
+% three-asterisk divider, and no figures or tables.
+% Source/manifest discrepancies preserved: physical p. 119 has both the long
+% component-notation note and a separate covariant-adjoint note; physical
+% p. 121 has a further component-index note; and physical p. 124 has a
+% centered three-asterisk divider. Thus the scan has four footnotes and one
+% divider in this section, not the two footnotes and zero dividers initially
+% listed in the chapter manifest.
+% Source oddities preserved: Eq. (26.7.12) visibly contains a second
+% \phi(x) factor after \alpha_R(x), and the prose following Eq. (26.7.43)
+% visibly refers to Eq. (27.6.35).
+% Uncertainties: none.
+
+\subsection{The Supercurrent}
+
+\providecommand{\SuperD}{\mathcal{D}}
+\providecommand{\SuperQ}{\mathcal{Q}}
+
+Like any other continuous global symmetry, supersymmetry leads to the
+existence of a conserved current~\hyperref[ch26-ref-5]{[5]}. The conservation
+and commutation properties of the supersymmetry current are operator
+equations that will remain valid even when supersymmetry is spontaneously
+broken, and that will therefore be useful to us in Chapter 29, when we
+consider theories of spontaneous supersymmetry breaking in a
+non-perturbative context. Also, the supersymmetry current is related to
+components of a superfield known as the \emph{supercurrent}%
+~\hyperref[ch26-ref-6]{[6]}, that will be of fundamental importance in our
+treatment of supergravity in Chapter 31.
+
+As we saw in Section 7.3, the existence of an ordinary global symmetry of the
+Lagrangian density under an infinitesimal transformation
+\(\chi^\ell\longrightarrow\chi^\ell+\epsilon\mathcal{F}^\ell\) (with
+\(\chi^\ell\) a generic canonical or auxiliary boson or fermion field and
+\(\mathcal{F}^\ell\) a function of the canonical and auxiliary fields) leads
+to the existence of a current
+\[
+  J^\mu(x)\propto
+  \sum_\ell
+  \frac{\partial\mathcal{L}(x)}
+       {\partial\bigl(\partial_\mu\chi^\ell(x)\bigr)}
+  \mathcal{F}^\ell(x)\,,
+\]
+which is conserved for fields satisfying the field equations, and generates
+the symmetry in the sense that the canonical commutation relations give
+\[
+  \left[
+    \int d^3x\,J^0(x),\chi^\ell(y)
+  \right]
+  \propto\mathcal{F}^\ell(y)\,.
+\]
+
+The supersymmetry current requires a somewhat more complicated treatment for
+two reasons. One is that supersymmetry is only a symmetry of the action, not
+of the Lagrangian density or the Lagrangian. Instead, the variation of the
+Lagrangian density under an infinitesimal supersymmetry transformation is a
+spacetime derivative, which we may write in the form
+\begin{equation}
+  \delta\mathcal{L}
+  =\sum_\ell\bigl(\bar\alpha\,\partial_\mu K^\mu\bigr)\,,
+  \tag{26.7.1}\label{eq:26.7.1}
+\end{equation}
+with \(K^\mu\) a four-vector of Majorana spinors. In consequence, the
+supersymmetry current is not the usual Noether current. The Noether current is
+a four-vector \(N^\mu\) of Majorana spinors defined by
+\begin{equation}
+  \sum_\ell
+  \frac{\partial_R\mathcal{L}}
+       {\partial\bigl(\partial_\mu\chi^\ell\bigr)}
+  \delta\chi^\ell
+  \equiv-\bigl(\bar\alpha N^\mu\bigr)\,,
+  \tag{26.7.2}\label{eq:26.7.2}
+\end{equation}
+whose divergence is given by the Euler--Lagrange equations as
+\begin{equation}
+  \begin{aligned}
+  \bigl(\bar\alpha\,\partial_\mu N^\mu\bigr)
+  &=
+  \sum_\ell\frac{\partial_R\mathcal{L}}{\partial\chi^\ell}
+  \delta\chi^\ell
+  -\sum_\ell
+  \frac{\partial_R\mathcal{L}}
+       {\partial\bigl(\partial_\mu\chi^\ell\bigr)}
+  \partial_\mu\delta\chi^\ell
+  \\
+  &=-\delta\mathcal{L}\,.
+  \end{aligned}
+  \tag{26.7.3}\label{eq:26.7.3}
+\end{equation}
+(Here \(\partial_R\) denotes the right partial derivative, defined by moving
+differentiated fermionic variables to the right before differentiating.)
+Instead, we must define the supersymmetry current as
+\begin{equation}
+  S^\mu\equiv N^\mu+K^\mu\,,
+  \tag{26.7.4}\label{eq:26.7.4}
+\end{equation}
+which Eqs.~\eqref{eq:26.7.1} and \eqref{eq:26.7.3} tell us is conserved:
+\begin{equation}
+  \partial_\mu S^\mu=0\,.
+  \tag{26.7.5}\label{eq:26.7.5}
+\end{equation}
+
+The second complication is that the change \(\delta\chi^\ell\) in a canonical
+field \(\chi^\ell\) under a supersymmetry transformation is not just a
+function of canonical fields, but also involves their canonical conjugates.
+For instance, Eq.~\eqref{eq:26.3.15} shows that the change in the
+\(\psi\)-component of a chiral scalar superfield involves the time derivative
+of the \(\phi\)-component. As a result the commutator of the Noether charge
+\(\int d^3x\,N^0\) with a general canonical field does not give the
+supersymmetry transformation of that field. Fortunately, this complication
+is cancelled by the first complication: when the commutators of
+\(\int d^3x\,K^0\) as well as \(\int d^3x\,N^0\) with the fields are taken
+into account, the operator \(\int d^3x\,S^0\) does generate supersymmetry
+transformations\footnote{This is a general result for currents constructed in
+this way. For instance, consider a Lagrangian \(L\) (not Lagrangian density)
+that depends on a set of canonical variables \(q^n\) and their time
+derivatives \(\dot q^n\), with no constraints of any class. In quantum field
+theory the label \(n\) includes spatial coordinates as well as discrete spin
+and species labels, and \(L=\int d^3x\,\mathcal{L}\). Our assumption here
+that the Lagrangian density is invariant up to spacetime derivatives under
+some infinitesimal transformation \(\delta\) means that \(\delta L\) is the
+time derivative of some functional \(F\). That is,
+\[
+  \sum_n\frac{\partial L}{\partial q^n}\delta q^n
+  +\sum_n\frac{\partial L}{\partial\dot q^n}\delta\dot q^n
+  =\frac{d}{dt}F\,.
+\]
+Using the canonical equations of motion, this can be written as a
+conservation law \(\dot Q=0\), where the conserved charge is
+\[
+  Q=-\sum_n\frac{\partial L}{\partial\dot q^n}\delta q^n+F\,.
+\]
+In our case here, \(Q=\int d^3x\,[N^0+K^0]\). We assume the usual
+unconstrained commutation relations
+\[
+  \left[\frac{\partial L}{\partial\dot q^n},q^m\right]
+  =-i\delta_n^m\,,
+  \qquad
+  [q^n,q^m]=0\,,
+\]
+and find the commutator
+\[
+  [Q,q^m]
+  =i\delta q^m
+  -\sum_{n\ell}
+   \frac{\partial L}{\partial\dot q^\ell}
+   \frac{\partial\delta q^\ell}{\partial\dot q^n}
+   [\dot q^n,q^m]
+  +\sum_n
+   \frac{\partial F}{\partial\dot q^n}
+   [\dot q^n,q^m]\,.
+\]
+To evaluate the second and third terms, we note that the second time
+derivatives \(\ddot q^n\) appear linearly in the invariance condition, so
+their coefficients must match: even without using the equations of motion,
+we have
+\[
+  \sum_\ell
+  \frac{\partial L}{\partial\dot q^\ell}
+  \frac{\partial\delta q^\ell}{\partial\dot q^n}
+  =\frac{\partial F}{\partial\dot q^n}\,.
+\]
+The second and third terms in the commutator therefore cancel, leaving us
+with the desired result
+\[
+  [Q,q^m]=i\delta q^m\,.
+\]
+Taking the time derivative gives also
+\[
+  [Q,\dot q^m]=i\delta\dot q^m\,.
+\]
+This result has been extended to theories with
+constraints~\hyperref[ch26-ref-7]{[7]}.} in the sense that
+\begin{equation}
+  \left[
+    \int d^3x\,\bigl(\bar\alpha S^0\bigr),\chi^\ell
+  \right]
+  =i\delta\chi^\ell\,,
+  \tag{26.7.6}\label{eq:26.7.6}
+\end{equation}
+consistently with Eqs.~\eqref{eq:26.2.1} and \eqref{eq:26.2.8}.
+
+For example, we may derive an explicit formula for the supersymmetry current
+in the general renormalizable theory of left-chiral superfields \(\Phi_n\),
+which can be used to check that it does generate supersymmetry
+transformations, in the sense of Eq.~\eqref{eq:26.7.6}. The Lagrangian
+density \eqref{eq:26.4.7} for this theory may be put in the form
+\begin{equation}
+  \begin{aligned}
+  \mathcal{L}
+  =\sum_n\biggl[
+   &-\partial_\mu\phi_n^*\partial^\mu\phi_n
+   -\frac12\bigl(\overline{\psi_{Ln}}\gamma^\mu
+                  \partial_\mu\psi_{Ln}\bigr)
+   -\frac12\bigl(\overline{\psi_{Rn}}\gamma^\mu
+                  \partial_\mu\psi_{Rn}\bigr)
+  \biggr]
+  +\text{non-derivative terms}\,.
+  \end{aligned}
+  \tag{26.7.7}\label{eq:26.7.7}
+\end{equation}
+Using the transformation rules \eqref{eq:26.3.15}, \eqref{eq:26.3.17},
+\eqref{eq:26.3.18}, and \eqref{eq:26.3.20} (with
+\(\widetilde{\phi}=\phi^*\)), the Noether current defined by
+Eq.~\eqref{eq:26.7.2} is
+\begin{equation}
+  \begin{aligned}
+  N^\mu=\frac{1}{\sqrt{2}}\sum_n\bigl[
+   &2(\partial^\mu\phi_n^*)\psi_{nL}
+    +2(\partial^\mu\phi_n)\psi_{nR}
+    +(\sl{\partial}\phi_n)\gamma^\mu\psi_{nR}
+    +(\sl{\partial}\phi_n^*)\gamma^\mu\psi_{nL}
+  \\
+   &-\mathcal{F}_n\gamma^\mu\psi_{nR}
+    -\mathcal{F}_n^*\gamma^\mu\psi_{nL}
+  \bigr]\,.
+  \end{aligned}
+  \tag{26.7.8}\label{eq:26.7.8}
+\end{equation}
+We can calculate the change in the Lagrangian density either directly, or,
+more easily, by noting that the changes of \(D\)-terms and
+\(\mathcal{F}\)-terms under supersymmetry transformations are given
+respectively by Eqs.~\eqref{eq:26.2.17} and \eqref{eq:26.3.16}. Either way,
+we find that the current \(K^\mu\) in Eq.~\eqref{eq:26.7.1} is
+\begin{equation}
+  \begin{aligned}
+  K^\mu=\frac{1}{\sqrt{2}}\sum_n\gamma^\mu\biggl[
+   &-(\sl{\partial}\phi_n)\psi_{nR}
+    -(\sl{\partial}\phi_n^*)\psi_{nL}
+    +\mathcal{F}_n^*\psi_{nL}
+    +\mathcal{F}_n\psi_{nR}
+  \\
+   &+2\left(\frac{\partial f(\phi)}{\partial\phi_n}\right)\psi_{nL}
+    +2\left(\frac{\partial f(\phi)}{\partial\phi_n}\right)^*\psi_{nR}
+  \biggr]\,.
+  \end{aligned}
+  \tag{26.7.9}\label{eq:26.7.9}
+\end{equation}
+Adding \eqref{eq:26.7.8} and \eqref{eq:26.7.9} gives the supersymmetry
+current for this class of theories
+\begin{equation}
+  \begin{aligned}
+  S^\mu=\sqrt{2}\sum_n\biggl[
+    &(\sl{\partial}\phi_n)\gamma^\mu\psi_{nR}
+     +(\sl{\partial}\phi_n^*)\gamma^\mu\psi_{nL}
+  \\
+    &+\left(\frac{\partial f}{\partial\phi_n}\right)
+      \gamma^\mu\psi_{nL}
+     +\left(\frac{\partial f}{\partial\phi_n}\right)^*
+      \gamma^\mu\psi_{nR}
+  \biggr]\,.
+  \end{aligned}
+  \tag{26.7.10}\label{eq:26.7.10}
+\end{equation}
+It is straightforward then to use the canonical commutation and
+anticommutation relations to verify that \(\int d^3x\,S^0\) satisfies the
+commutation relations \eqref{eq:26.7.6}.
+
+There is another definition of symmetry currents, in terms of the response
+of the matter action to a local symmetry transformation, which is
+particularly useful when the associated symmetries are `gauged,' as
+supersymmetry will be when we turn to supergravity theories in Chapter 31.
+In the absence of supergravity fields, the action is not invariant under
+local supersymmetry transformations. If we make such a transformation with a
+spacetime-dependent parameter \(\alpha(x)\), the action will change by an
+amount that, in order to vanish when \(\alpha(x)\) is constant, must (even
+when the field equations are not satisfied) be of the form
+\begin{equation}
+  \delta I
+  =-\int d^4x\,\bigl((\partial_\mu\bar\alpha(x))S^\mu(x)\bigr)\,,
+  \tag{26.7.11}\label{eq:26.7.11}
+\end{equation}
+with \(S^\mu(x)\) a four-vector of Majorana spinor operator coefficients.
+This does not define \(S^\mu(x)\) uniquely, because when we generalize global
+supersymmetry transformations to local transformations, we might in general
+give the change \(\delta\chi\) of a field \(\chi\) under a local
+supersymmetry transformation an arbitrary dependence on the derivatives of
+\(\alpha(x)\). There is, however, one way of defining local supersymmetry
+transformations that guarantees that the coefficient \(S^\mu(x)\) in
+Eq.~\eqref{eq:26.7.11} is the same as the current defined by
+Eq.~\eqref{eq:26.7.4}, which as we have seen generates the symmetry
+transformations in the sense of Eq.~\eqref{eq:26.7.6}. It is to specify that
+\emph{derivatives of \(\alpha(x)\) do not appear in the supersymmetry
+transformation of the canonical or auxiliary fields \(\chi^\ell\)}. For
+instance, the local versions of the transformation rules
+\eqref{eq:26.3.15}--\eqref{eq:26.3.17} for the components of a left-chiral
+superfield are
+\begin{equation}
+  \delta\psi_L(x)
+  =\sqrt{2}\,\partial_\mu\phi(x)\gamma^\mu\alpha_R(x)\phi(x)
+   +\sqrt{2}\mathcal{F}(x)\alpha_L(x)\,,
+  \tag{26.7.12}\label{eq:26.7.12}
+\end{equation}
+\begin{equation}
+  \delta\mathcal{F}(x)
+  =\sqrt{2}\bigl(\bar\alpha_L(x)\sl{\partial}\psi_L(x)\bigr)\,,
+  \tag{26.7.13}\label{eq:26.7.13}
+\end{equation}
+\begin{equation}
+  \delta\phi(x)
+  =\sqrt{2}\bigl(\bar\alpha_R(x)\psi_L(x)\bigr)\,.
+  \tag{26.7.14}\label{eq:26.7.14}
+\end{equation}
+Eq.~\eqref{eq:26.3.21} shows that the superfield may be expressed in terms of
+its component fields at \(x_+^\mu\) without derivatives, so the
+transformation rule for the superfield may be expressed as
+\begin{equation}
+  \delta\Phi(x,\theta)
+  =\bigl(\bar\alpha(x_+)\SuperQ\bigr)\Phi(x,\theta)\,,
+  \tag{26.7.15}\label{eq:26.7.15}
+\end{equation}
+where \(\SuperQ\) is the operator \eqref{eq:26.2.2}.
+
+With local supersymmetry transformations defined in this way, the change of
+the action that they induce consists of two terms. First, although the
+variation in canonical fields under a supersymmetry transformation does not
+involve derivatives of \(\alpha(x)\), the variation in derivatives of
+canonical fields does. This produces a change in the Lagrangian density which
+is the same as Eq.~\eqref{eq:26.7.2}, except that \(\bar\alpha\) is replaced
+with \(\partial_\mu\bar\alpha\):
+\[
+  \delta_1 I
+  =-\int d^4x\,\bigl([\partial_\mu\bar\alpha(x)]N^\mu(x)\bigr)\,.
+\]
+The second term in the change of the action arises from the fact that the
+Lagrangian density is not invariant even under the part of the supersymmetry
+transformation that does not involve derivatives of \(\alpha(x)\). According
+to Eq.~\eqref{eq:26.7.1}, this produces a change in the action
+\[
+  \delta_2 I
+  =\int d^4x\,\bigl(\bar\alpha(x)\partial_\mu K^\mu(x)\bigr)
+  =-\int d^4x\,\bigl((\partial_\mu\bar\alpha(x))K^\mu(x)\bigr)\,.
+\]
+Adding \(\delta_1 I\) and \(\delta_2 I\) gives a total change in the action of
+the form \eqref{eq:26.7.11}, with \(S^\mu(x)\) given by
+Eq.~\eqref{eq:26.7.4}, as was to be shown.
+
+Even with this specification of the transformation property of the component
+fields, the supersymmetry current \(S^\mu(x)\) is not uniquely specified by
+Eq.~\eqref{eq:26.7.11}, because we could always introduce a modified current
+\begin{equation}
+  S_{\mathrm{new}}^\mu=S^\mu+\partial_\nu A^{\mu\nu}\,,
+  \tag{26.7.16}\label{eq:26.7.16}
+\end{equation}
+where \(A^{\mu\nu}=-A^{\nu\mu}\) is an arbitrary antisymmetric tensor of
+Majorana spinors. The term \(\partial_\nu A^{\mu\nu}\) is conserved whether
+or not the field equations are satisfied, and its time component is a space
+derivative, so \(\int d^3x\,S_{\mathrm{new}}^0=\int d^3x\,S^0\), leaving
+Eq.~\eqref{eq:26.7.6} unchanged.
+
+There is in fact a particular choice of \(A^{\mu\nu}\) with the convenient
+feature that \(\gamma_\mu S_{\mathrm{new}}^\mu\) turns out to be a measure of
+the violation of scale invariance by the theory. By using the Dirac equations
+derived from the Lagrangian density \eqref{eq:26.4.7}:
+\begin{equation}
+  \sl{\partial}\psi_{mL}
+  =-\sum_n
+   \left(
+    \frac{\partial^2f(\phi)}{\partial\phi_m\partial\phi_n}
+   \right)^*\psi_{nR}\,,
+  \qquad
+  \sl{\partial}\psi_{mR}
+  =-\sum_n
+   \left(
+    \frac{\partial^2f(\phi)}{\partial\phi_m\partial\phi_n}
+   \right)\psi_{nL}\,,
+  \tag{26.7.17}\label{eq:26.7.17}
+\end{equation}
+it is straightforward to calculate that
+\[
+  \begin{aligned}
+  \gamma_\mu S^\mu=-2\sqrt{2}\sum_n\biggl\{
+    &\sl{\partial}\bigl(\phi_n\psi_{nR}+\phi_n^*\psi_{nL}\bigr)
+  \\
+    &+\left(
+      \sum_m\phi_m
+       \frac{\partial^2f(\phi)}{\partial\phi_n\partial\phi_m}
+      -2\frac{\partial f(\phi)}{\partial\phi_n}
+     \right)\psi_{nL}
+  \\
+    &+\left(
+      \sum_m\phi_m
+       \frac{\partial^2f(\phi)}{\partial\phi_n\partial\phi_m}
+      -2\frac{\partial f(\phi)}{\partial\phi_n}
+     \right)^*\psi_{nR}
+  \biggr\}\,.
+  \end{aligned}
+\]
+We can eliminate the first term by introducing a modified supersymmetry
+current of the general type of Eq.~\eqref{eq:26.7.16}:
+\begin{equation}
+  S_{\mathrm{new}}^\mu
+  =S^\mu+\frac{\sqrt{2}}{3}[\gamma^\mu,\gamma^\nu]
+   \sum_n\partial_\nu
+   \bigl(\phi_n\psi_{nR}+\phi_n^*\psi_{nL}\bigr)\,,
+  \tag{26.7.18}\label{eq:26.7.18}
+\end{equation}
+for which
+\begin{equation}
+  \begin{aligned}
+  \gamma_\mu S_{\mathrm{new}}^\mu
+  =-2\sqrt{2}\sum_n\biggl\{
+    &\left(
+      \sum_m\phi_m
+       \frac{\partial^2f(\phi)}{\partial\phi_n\partial\phi_m}
+      -2\frac{\partial f(\phi)}{\partial\phi_n}
+     \right)\psi_{nL}
+  \\
+    &+\left(
+      \sum_m\phi_m
+       \frac{\partial^2f(\phi)}{\partial\phi_n\partial\phi_m}
+      -2\frac{\partial f(\phi)}{\partial\phi_n}
+     \right)^*\psi_{nR}
+  \biggr\}\,.
+  \end{aligned}
+  \tag{26.7.19}\label{eq:26.7.19}
+\end{equation}
+The right-hand side vanishes for a scale-invariant Lagrangian density, with
+\(f(\Phi)\) a homogeneous polynomial of third order in the \(\Phi_n\).
+
+We now turn to the supersymmetry transformation property of the
+supersymmetry current. It is straightforward to check that the current given
+by Eqs.~\eqref{eq:26.7.18} and \eqref{eq:26.7.10} is related to the
+\(\omega\)-component \(\omega_\mu^\Theta\) of a real non-chiral superfield
+\(\Theta_\mu\) by\footnote{Here we introduce a notation that will be used
+extensively in Chapter 31; following Eq.~\eqref{eq:26.2.10}, the components
+\(C^S\), \(\omega^S\), \(M^S\), \(N^S\), \(V_\nu^S\), \(\lambda^S\), and
+\(D^S\) of an arbitrary superfield \(S(x,\theta)\) are defined by the
+expansion
+\[
+  \begin{aligned}
+  S(x,\theta)={}&C^S(x)-i\bigl(\bar\theta\gamma_5\omega^S(x)\bigr)
+  -\frac{i}{2}\bigl(\bar\theta\gamma_5\theta\bigr)M^S(x)
+  -\frac12\bigl(\bar\theta\theta\bigr)N^S(x)
+  \\
+  &+\frac{i}{2}\bigl(\bar\theta\gamma_5\gamma^\nu\theta\bigr)V_\nu^S(x)
+  -i\bigl(\bar\theta\gamma_5\theta\bigr)
+   \left(
+    \bar\theta\left[\lambda^S(x)+\frac12\sl{\partial}\omega^S(x)\right]
+   \right)
+  \\
+  &-\frac14\bigl(\bar\theta\gamma_5\theta\bigr)^2
+   \left[D^S(x)+\frac12\Box C^S(x)\right].
+  \end{aligned}
+\]}
+\begin{equation}
+  S_{\mathrm{new}}^\mu
+  =-2\omega^{\Theta\mu}
+   +2\gamma^\mu\gamma^\nu\omega_\nu^\Theta\,,
+  \tag{26.7.20}\label{eq:26.7.20}
+\end{equation}
+where
+\begin{equation}
+  \Theta_\mu
+  =\frac{i}{12}\sum_n\left[
+    4\Phi_n^*\partial_\mu\Phi_n
+    -4\Phi_n\partial_\mu\Phi_n^*
+    +\bigl((\bar{\SuperD}\Phi_n^*)\gamma_\mu(\SuperD\Phi_n)\bigr)
+  \right].
+  \tag{26.7.21}\label{eq:26.7.21}
+\end{equation}
+The superfield \(\Theta^\mu\) is known as the \emph{supercurrent}.
+
+The supercurrent obeys a conservation law that incorporates the conservation
+of the supersymmetry current \eqref{eq:26.7.20} and much else besides. To
+derive it, we may use the anticommutation relation \eqref{eq:26.2.30} to
+write\footnote{It should be noted that \(\bar{\SuperD}_L\) and
+\(\bar{\SuperD}_R\) are the left- and right-handed components of the
+covariant adjoint \(\bar{\SuperD}\), rather than the covariant adjoints
+\(\overline{\SuperD_L}\) and \(\overline{\SuperD_R}\) of \(\SuperD_L\) and
+\(\SuperD_R\).}
+\[
+  [\SuperD_R,(\bar{\SuperD}_L\SuperD_L)]
+  =-4\sl{\partial}\SuperD_L\,.
+\]
+Together with the chirality conditions
+\(\SuperD_R\Phi_n=\SuperD_L\Phi_n^*=0\), this gives
+\[
+  \begin{aligned}
+  \gamma^\mu\SuperD_L\sum_n
+  \left[\Phi_n^*\partial_\mu\Phi_n
+       -\Phi_n\partial_\mu\Phi_n^*\right]
+  ={}&-\frac14\sum_n
+      \Phi_n^*\SuperD_R(\bar{\SuperD}_L\SuperD_L)\Phi_n
+  \\
+     &-\sum_n(\sl{\partial}\Phi_n^*)\SuperD_L\Phi_n
+  \end{aligned}
+\]
+and
+\[
+  \gamma^\mu\SuperD_L\sum_n
+  \bigl((\bar{\SuperD}\Phi_n^*)\gamma_\mu(\SuperD\Phi_n)\bigr)
+  =4\sum_n(\sl{\partial}\Phi_n^*)\SuperD\Phi_n
+   +2\sum_n\SuperD\Phi_n^*
+      (\bar{\SuperD}_L\SuperD_L)\Phi_n\,,
+\]
+so that the superfield \eqref{eq:26.7.21} satisfies
+\begin{equation}
+  \begin{aligned}
+  \gamma_\mu\SuperD_L\Theta^\mu
+  ={}&\frac{i}{6}\sum_n
+      (\SuperD_R\Phi_n^*)(\bar{\SuperD}_L\SuperD_L)\Phi_n
+  \\
+     &-\frac{i}{12}\sum_n
+      \Phi_n^*\SuperD_R(\bar{\SuperD}_L\SuperD_L)\Phi_n\,.
+  \end{aligned}
+  \tag{26.7.22}\label{eq:26.7.22}
+\end{equation}
+We saw in Section 26.6 that the field equations for the Lagrangian density
+\eqref{eq:26.4.7} may be expressed in the form
+\begin{equation}
+  (\bar{\SuperD}_L\SuperD_L)\Phi_n
+  =-4\left(\frac{\partial f(\Phi)}{\partial\Phi_n}\right)^* .
+  \tag{26.7.23}\label{eq:26.7.23}
+\end{equation}
+Using this in Eq.~\eqref{eq:26.7.22} gives finally
+\begin{equation}
+  \begin{aligned}
+  \gamma^\mu\SuperD_L\Theta_\mu
+  &=-\frac{2i}{3}\sum_n
+    (\SuperD_R\Phi_n^*)
+    \left(\frac{\partial f}{\partial\Phi_n}\right)^*
+   +\frac{i}{3}\sum_n
+    \Phi_n^*\SuperD_R
+    \left(\frac{\partial f}{\partial\Phi_n}\right)^*
+  \\
+  &=\frac{i}{3}\SuperD_R
+    \left[
+      \sum_n\Phi_n\frac{\partial f(\Phi)}{\partial\Phi_n}
+      -3f(\Phi)
+    \right]^* .
+  \end{aligned}
+  \tag{26.7.24}\label{eq:26.7.24}
+\end{equation}
+The Hermitian adjoint of Eq.~\eqref{eq:26.7.24} is
+\begin{equation}
+  \gamma^\mu\SuperD_R\Theta_\mu
+  =-\frac{i}{3}\SuperD_L
+    \left[
+      \sum_n\Phi_n\frac{\partial f(\Phi)}{\partial\Phi_n}
+      -3f(\Phi)
+    \right].
+  \tag{26.7.25}\label{eq:26.7.25}
+\end{equation}
+The sum of this and Eq.~\eqref{eq:26.7.24} then gives the conservation law
+\begin{equation}
+  \gamma^\mu\SuperD\Theta_\mu=\SuperD X\,,
+  \tag{26.7.26}\label{eq:26.7.26}
+\end{equation}
+where \(X\) is a real chiral superfield given (up to an additive constant)
+in this class of theories by
+\begin{equation}
+  X=\frac{2}{3}\operatorname{Im}
+  \left[
+    \sum_n\Phi_n\frac{\partial f(\Phi)}{\partial\Phi_n}
+    -3f(\Phi)
+  \right].
+  \tag{26.7.27}\label{eq:26.7.27}
+\end{equation}
+
+Although it has been derived here only for renormalizable theories of chiral
+superfields, we may expect that the conservation law \eqref{eq:26.7.26}
+holds more generally, though of course with \(X\) not necessarily given by
+Eq.~\eqref{eq:26.7.27}, because of the other conservation laws that it
+incorporates. (A generalized formula for \(X\) will be given in Section
+31.4.) To derive these relations, we must use Eq.~\eqref{eq:26.2.10} to
+express \(\Theta_\mu\) in terms of components \(C_\mu^\Theta\),
+\(\omega_\mu^\Theta\), etc.\ and use Eq.~\eqref{eq:26.3.9} to express the
+chiral superfield \(X\) in terms of components \(A^X\), \(\psi^X\), etc.
+With the aid of Eqs.~\eqref{eq:26.A.9}, \eqref{eq:26.A.16},
+\eqref{eq:26.A.17}, and the Dirac matrix identities
+\begin{equation}
+  [\gamma^\rho,\gamma^\sigma]
+  =-\frac{i}{2}\epsilon^{\rho\sigma\mu\nu}\gamma_5
+   [\gamma_\mu,\gamma_\nu]\,,
+  \tag{26.7.28}\label{eq:26.7.28}
+\end{equation}
+\begin{equation}
+  \gamma^\mu\gamma^\rho\gamma^\nu
+  =\eta^{\mu\rho}\gamma^\nu
+   -\eta^{\mu\nu}\gamma^\rho
+   +\eta^{\nu\rho}\gamma^\mu
+   +i\gamma_5\epsilon^{\mu\nu\rho\sigma}\gamma_\sigma\,,
+  \tag{26.7.29}\label{eq:26.7.29}
+\end{equation}
+we can then expand both sides of Eq.~\eqref{eq:26.7.26} in the terms
+\[
+  \begin{gathered}
+  1,\quad \theta,\quad \gamma_5\theta,\quad \gamma^\nu\theta,\quad
+  \gamma_5\gamma^\nu\theta,\quad
+  \gamma_5[\gamma^\mu,\gamma^\nu]\theta,\\
+  (\bar\theta\theta),\quad
+  (\bar\theta\gamma_5\theta),\quad
+  (\bar\theta\gamma_5\gamma^\nu\theta),\\
+  \theta(\bar\theta\gamma_5\theta),\quad
+  \gamma_5\theta(\bar\theta\gamma_5\theta),\quad
+  \gamma^\nu\theta(\bar\theta\gamma_5\theta),\\
+  \gamma^\nu\gamma_5\theta(\bar\theta\gamma_5\theta),\quad
+  [\gamma^\rho,\gamma^\sigma]\theta
+    (\bar\theta\gamma_5\theta),\quad
+  (\bar\theta\gamma_5\theta)^2 .
+  \end{gathered}
+\]
+Matching the coefficients of \(1\), \(\theta\), \(\gamma_5\theta\),
+\(\gamma^\nu\theta\), \(\gamma_5\gamma^\nu\theta\),
+\(\gamma_5[\gamma^\mu,\gamma^\nu]\theta\), respectively, yields the
+results\footnote{Note that \(V_{\mu\nu}^\Theta\) is the
+\(V_\nu\)-component of \(\Theta_\mu\), not the \(V_\mu\)-component of
+\(\Theta_\nu\).}
+\begin{equation}
+  \psi^X=-i\gamma_5\gamma^\mu\omega_\mu^\Theta\,,
+  \tag{26.7.30}\label{eq:26.7.30}
+\end{equation}
+\begin{equation}
+  F^X=\partial^\mu C_\mu^\Theta\,,
+  \tag{26.7.31}\label{eq:26.7.31}
+\end{equation}
+\begin{equation}
+  G^X=(V^\Theta)^\mu{}_\mu\,,
+  \tag{26.7.32}\label{eq:26.7.32}
+\end{equation}
+\begin{equation}
+  \partial_\mu A^X=-N_\mu^\Theta\,,
+  \tag{26.7.33}\label{eq:26.7.33}
+\end{equation}
+\begin{equation}
+  \partial_\mu B^X=M_\mu^\Theta\,,
+  \tag{26.7.34}\label{eq:26.7.34}
+\end{equation}
+\begin{equation}
+  0=V_{\mu\nu}^\Theta-V_{\nu\mu}^\Theta
+    +\epsilon_{\mu\nu\rho\sigma}\partial^\sigma C^{\Theta\rho}\,.
+  \tag{26.7.35}\label{eq:26.7.35}
+\end{equation}
+Matching the coefficients of either \((\bar\theta\theta)\) or
+\((\bar\theta\gamma_5\theta)\) yields the same result:
+\begin{equation}
+  0=\gamma^\mu\lambda_\mu^\Theta\,,
+  \tag{26.7.36}\label{eq:26.7.36}
+\end{equation}
+and matching the coefficients of
+\((\bar\theta\gamma_5\gamma^\nu\theta)\) yields the result
+\begin{equation}
+  -i\gamma_5[\gamma^\nu,\sl{\partial}]\psi^X
+  =2\gamma^\mu\gamma^\nu\lambda_\mu^\Theta
+   +\gamma^\mu[\gamma^\nu,\sl{\partial}]\omega_\mu^\Theta\,.
+  \tag{26.7.37}\label{eq:26.7.37}
+\end{equation}
+From Eqs.~\eqref{eq:26.7.30}, \eqref{eq:26.7.36}, and
+\eqref{eq:26.7.37} we obtain the conservation of the supersymmetry current
+\eqref{eq:26.7.20}:
+\begin{equation}
+  0=\partial_\mu S_{\mathrm{new}}^\mu
+  =-2\partial^\mu\omega_\mu^\Theta
+   +2\sl{\partial}\gamma^\mu\omega_\mu^\Theta\,,
+  \tag{26.7.38}\label{eq:26.7.38}
+\end{equation}
+and a relation among \(\lambda_\mu^\Theta\) and \(\omega_\mu^\Theta\):
+\begin{equation}
+  \lambda_\nu^\Theta
+  =-\sl{\partial}\omega_\nu^\Theta
+   +\partial_\nu\gamma^\mu\omega_\mu^\Theta\,.
+  \tag{26.7.39}\label{eq:26.7.39}
+\end{equation}
+Matching the coefficients of
+\(\theta(\bar\theta\gamma_5\theta)\) and
+\(\gamma_5\theta(\bar\theta\gamma_5\theta)\) gives relations that can be
+obtained by taking the divergence of Eqs.~\eqref{eq:26.7.34} and
+\eqref{eq:26.7.33}, respectively. Matching the coefficients of
+\(\gamma^\rho\theta(\bar\theta\gamma_5\theta)\) gives
+\begin{equation}
+  \partial_\rho G^X
+  =\partial^\mu V_{\mu\rho}^\Theta
+   +\partial^\mu V_{\rho\mu}^\Theta
+   -\partial_\rho V^{\Theta\lambda}{}_\lambda\,,
+  \tag{26.7.40}\label{eq:26.7.40}
+\end{equation}
+which, combined with Eq.~\eqref{eq:26.7.32}, yields the conservation law
+\begin{equation}
+  \partial_\mu T^{\mu\nu}=0\,,
+  \tag{26.7.41}\label{eq:26.7.41}
+\end{equation}
+where \(T^{\mu\nu}\) is the symmetric tensor
+\begin{equation}
+  T_{\mu\nu}
+  \equiv-\frac12V_{\mu\nu}^\Theta-\frac12V_{\nu\mu}^\Theta
+         +\eta_{\mu\nu}V^{\Theta\lambda}{}_\lambda\,.
+  \tag{26.7.42}\label{eq:26.7.42}
+\end{equation}
+Matching the coefficients of
+\(\gamma^\rho\gamma_5\theta(\bar\theta\gamma_5\theta)\) gives
+\begin{equation}
+  \partial_\mu F^X
+  =2D_\mu^\Theta+\Box C_\mu^\Theta
+   +\epsilon_{\rho\nu\sigma\mu}\partial^\nu
+    V^{\Theta\rho\sigma}\,,
+  \tag{26.7.43}\label{eq:26.7.43}
+\end{equation}
+which, with Eqs.~\eqref{eq:26.7.31} and (27.6.35), yields a relation
+between \(D_\mu^\Theta\) and \(C_\mu^\Theta\):
+\begin{equation}
+  D_\mu^\Theta
+  =-\Box C_\mu^\Theta+\partial_\mu\partial^\nu C_\nu^\Theta\,.
+  \tag{26.7.44}\label{eq:26.7.44}
+\end{equation}
+Matching the coefficients of
+\([\gamma^\rho,\gamma^\sigma]\theta(\bar\theta\gamma_5\theta)\) and
+\((\bar\theta\gamma_5\theta)^2\) gives results that already follow from
+Eq.~\eqref{eq:26.7.34} and from Eqs.~\eqref{eq:26.7.38} and
+\eqref{eq:26.7.39}, respectively.
+
+The conserved symmetric tensor \(T^{\mu\nu}\) may be identified as the
+energy-momentum tensor of the system. To check this, we use
+Eqs.~\eqref{eq:26.1.18} and \eqref{eq:26.2.12} to write the change in
+\(\omega_\mu^\Theta(x)\) under a supersymmetry transformation with
+infinitesimal parameter \(\alpha\) as
+\[
+  \begin{aligned}
+  \delta\omega_\mu^\Theta
+  &=-i[(\bar Q\alpha),\omega_\mu^\Theta]
+    =+i[\omega_\mu^\Theta,(\bar Q\alpha)]
+  \\
+  &=\left(
+    -i\gamma_5\sl{\partial}C_\mu^\Theta
+    -M_\mu^\Theta+i\gamma_5N_\mu^\Theta
+    +\gamma^\nu V_{\mu\nu}^\Theta
+  \right)\alpha\,.
+  \end{aligned}
+\]
+Eqs.~\eqref{eq:26.7.33}--\eqref{eq:26.7.35} allow us to put this in the
+form
+\[
+  \begin{aligned}
+  i\{\omega_\mu^\Theta,\bar Q\}
+  ={}&\frac12\gamma^\nu
+      \bigl(V_{\mu\nu}^\Theta+V_{\nu\mu}^\Theta\bigr)
+     -\partial_\mu(B^X+\gamma_5A^X)
+     -i\gamma_5\sl{\partial}C_\mu^\Theta
+  \\
+     &+\frac12\epsilon_{\mu\nu\kappa\sigma}
+      \gamma^\nu\partial^\kappa C^{\Theta\sigma}\,.
+  \end{aligned}
+\]
+In terms of the currents \eqref{eq:26.7.20} and \eqref{eq:26.7.42}, this
+reads
+\begin{equation}
+  \begin{aligned}
+  i\{S_{\mathrm{new}}^\mu,\bar Q\}
+  ={}&2\gamma_\nu T^{\mu\nu}
+     +2(\partial^\mu-\gamma^\mu\sl{\partial})
+      (B^X+\gamma_5A^X)
+     -\epsilon^{\mu\nu\kappa\sigma}\gamma_\nu
+      \partial_\kappa C_\sigma^\Theta
+  \\
+    &+2i\gamma_5\left(
+       \sl{\partial}C^{\Theta\mu}
+       -\gamma^\mu\gamma^\lambda\sl{\partial}C_\lambda^\Theta
+       -\frac12\gamma^\mu[\sl{\partial},\gamma^\sigma]
+        C_\sigma^\Theta
+      \right).
+  \end{aligned}
+  \tag{26.7.45}\label{eq:26.7.45}
+\end{equation}
+For \(\mu=0\) all the terms on the right except the first are space
+derivatives, and therefore vanish when we integrate over space, leaving us
+with
+\begin{equation}
+  i\left\{
+    \int d^3x\,S_{\mathrm{new}}^0,\bar Q
+  \right\}
+  =2\gamma_\nu\int d^3x\,T^{0\nu}\,.
+  \tag{26.7.46}\label{eq:26.7.46}
+\end{equation}
+We have defined the supersymmetry current \(S_{\mathrm{new}}^\mu\) to give
+\(\int d^3x\,S_{\mathrm{new}}^0=Q\), so the fundamental anticommutation
+relation \eqref{eq:25.2.36} tells us that
+\begin{equation}
+  \int d^3x\,T^{0\nu}=P^\nu\,,
+  \tag{26.7.47}\label{eq:26.7.47}
+\end{equation}
+which, with the conservation condition \eqref{eq:26.7.41}, allows us to
+identify \(T^{\mu\nu}\) as the energy-momentum tensor.
+
+It is important to note \emph{which} energy-momentum tensor we have
+constructed in this way. Either directly from Eq.~\eqref{eq:26.7.21}, or by
+considering the supersymmetry transformation of the current
+\eqref{eq:26.7.18}, we can calculate that the energy-momentum tensor
+\(T^{\mu\nu}\) for renormalizable theories of chiral superfields is
+\begin{equation}
+  \begin{aligned}
+  T^{\mu\nu}
+  ={}&\sum_n\left[
+       \partial^\mu\phi_n^*\partial^\nu\phi_n
+       +\partial^\nu\phi_n^*\partial^\mu\phi_n
+      \right]
+  \\
+   &-\eta^{\mu\nu}\sum_n\left[
+       \partial^\lambda\phi_n^*\partial_\lambda\phi_n
+       +\left|
+          \frac{\partial f(\phi)}{\partial\phi_n}
+        \right|^2
+      \right]
+  \\
+   &+\frac13
+    (\eta^{\mu\nu}\Box-\partial^\mu\partial^\nu)
+    \sum_n|\phi_n|^2+\cdots\,,
+  \end{aligned}
+  \tag{26.7.48}\label{eq:26.7.48}
+\end{equation}
+where the dots denote terms involving fermions, which do not concern us here.
+We see that the last term, which is related by supersymmetry to the correction
+term in Eq.~\eqref{eq:26.7.18}, has the effect that the energy-momentum
+tensor is traceless for the massless free-field theory with no
+superpotential, in which case \(\Box\phi_n=0\). A simple calculation shows
+that \(T^{\mu\nu}\) is also traceless more generally for scale-invariant
+theories, with \(f(\phi)\) a homogeneous polynomial of third order in the
+\(\phi_n\).
+
+Supersymmetry also imposes an interesting relation among violations of scale
+invariance and \(R\) conservation. Eqs.~\eqref{eq:26.7.30}--\eqref{eq:26.7.32}
+show that \(\gamma_\mu S_{\mathrm{new}}^\mu
+=6\gamma_\mu\omega^{\Theta\mu}\), \(\partial^\mu C_\mu^\Theta\), and
+\(T^\lambda{}_\lambda=2V^{\Theta\mu}{}_\mu\) (which measures the violation
+of scale invariance) are proportional to components of a chiral superfield
+\(X\), so if any one of these vanishes as an operator equation (that is, not
+just for some particular field configuration), then they all do. In this
+case, we can show that \(C^{\Theta\rho}\) is proportional to the current of
+an \(R\) quantum number. To see this, note that Eq.~\eqref{eq:26.2.11} gives
+\[
+  \delta C_\sigma^\Theta
+  =i[C_\sigma^\Theta,(\bar\alpha Q)]
+  =i(\bar\alpha\gamma_5\omega_\sigma^\Theta)\,,
+\]
+so that in general
+\begin{equation}
+  [C_\sigma^\Theta,Q]=\gamma_5\omega_\sigma^\Theta\,.
+  \tag{26.7.49}\label{eq:26.7.49}
+\end{equation}
+We have seen that if \(C_\sigma^\Theta\) is conserved then
+\(\gamma_\mu S^\mu=0\), so that Eq.~\eqref{eq:26.7.20} gives
+\(S_\sigma=-2\omega_\sigma^\Theta\). Setting \(\sigma=0\) and integrating
+over \(\mathbf{x}\) in Eq.~\eqref{eq:26.7.49} then gives
+\begin{equation}
+  \left[
+    \int d^3x\,C^{0\Theta},Q
+  \right]
+  =-\frac12\gamma_5Q\,.
+  \tag{26.7.50}\label{eq:26.7.50}
+\end{equation}
+We can therefore introduce a current
+\begin{equation}
+  \mathcal{R}^\mu\equiv2C^{\mu\Theta}\,,
+  \tag{26.7.51}\label{eq:26.7.51}
+\end{equation}
+which \emph{if} conserved is the current of a quantum number
+\(\mathcal{R}\equiv\int d^3x\,\mathcal{R}^0\) for which \(Q_L\) and \(Q_R\)
+destroy the values \(+1\) and \(-1\), respectively. Since the commutator of
+\(Q_L\) with a scalar superfield \(\Phi\) involves a term
+\(\partial\Phi/\partial\theta_L\), this means that \(\theta_L\) carries the
+\(\mathcal{R}\) value \(+1\), in accord with the usual definition. A theory
+in which the superfield \(X\) vanishes, or, equivalently, in which
+\(T^\mu{}_\mu\), \(\gamma_\mu S^\mu\), and \(\partial_\mu\mathcal{R}^\mu\)
+all vanish, is invariant under an enlarged set of supersymmetry
+transformations, generated by the superconformal algebra described at the
+end of Section 25.2.
+
+In scale-invariant theories the value of the \(\mathcal{R}\) quantum number
+carried by various superfields is fixed by the structure of the Lagrangian.
+For instance, in a scale-invariant theory of chiral scalar superfields, the
+superpotential must be a homogeneous polynomial of third order in the
+superfields. The \(\mathcal{F}\)-term of the superpotential is proportional
+to the coefficient of \(\theta_L^2\), which has \(\mathcal{R}\) quantum
+number \(+2\), so the \(\mathcal{R}\) quantum number of the
+\(\mathcal{F}\)-term of the superpotential is the \(\mathcal{R}\) quantum
+number of the superpotential itself minus two. \(\mathcal{R}\) invariance
+then requires that we give the scalar superfields an \(\mathcal{R}\) quantum
+number \(+2/3\), so that the superpotential will have \(\mathcal{R}\)
+quantum number \(+2\), and its \(\mathcal{F}\)-term will have
+\(\mathcal{R}\) quantum number zero. That is, the scalar components \(\phi_n\)
+have \(\mathcal{R}=2/3\) and the spinor components \(\psi_{nL}\)
+(proportional to the coefficient of \(\theta_L\) in the superfield) have
+\(\mathcal{R}=-1/3\). This can be verified by calculating the current
+\(\mathcal{R}^\mu\) from the \(C\)-term of the supercurrent
+\eqref{eq:26.7.21} for this class of theories:
+\begin{equation}
+  \mathcal{R}_\mu
+  =\frac{2i}{3}
+    [\phi^*\partial_\mu\phi-\phi\partial_\mu\phi^*]
+   -\frac{i}{6}(\bar\psi\gamma_\mu\gamma_5\psi)\,.
+  \tag{26.7.52}\label{eq:26.7.52}
+\end{equation}
+(The second term contains an extra factor of \(1/2\) because \(\psi\) is a
+Majorana spinor.)
+
+Quantum corrections can introduce violations of \(\mathcal{R}\) invariance
+(through Adler--Bell--Jackiw anomalies) and of scale invariance (through the
+renormalization group running of the coupling constants) but supersymmetry
+continues to impose a relation between these symmetry violations despite
+these corrections~\hyperref[ch26-ref-7a]{[7a]}. We will see an example of
+this in Section 29.3.
+
+\begin{center}
+\(\ast\qquad\ast\qquad\ast\)
+\end{center}
+
+The conservation condition \eqref{eq:26.7.26} does not uniquely determine
+either the supercurrent \(\Theta^\mu\) or the associated chiral superfield
+\(X\). In particular, we may add to \(\Theta^\mu\) a change
+\begin{equation}
+  \Delta\Theta^\mu=\partial^\mu Y\,,
+  \tag{26.7.53}\label{eq:26.7.53}
+\end{equation}
+with \(Y\) an arbitrary chiral superfield. The left-hand side of
+Eq.~\eqref{eq:26.7.26} is then changed by
+\[
+  \gamma_\mu\SuperD\Delta\Theta^\mu
+  =\sl{\partial}\SuperD Y\,.
+\]
+For a left-chiral superfield \(Y_L\) the chirality condition
+\(\SuperD_RY_L=0\) and the anticommutation relations \eqref{eq:26.2.30} give
+\[
+  \begin{aligned}
+  \sl{\partial}\SuperD_\alpha Y
+  &=-\frac12
+    \left[\{\SuperD_L,\bar{\SuperD}_R\}\SuperD_R\right]_\alpha Y_L
+  \\
+  &=-\frac12\left[
+    \SuperD_{L\alpha}(\bar{\SuperD}_R\SuperD_R)Y_L
+    +\sum_\beta
+      \bar{\SuperD}_{L\beta}\SuperD_{R\alpha}
+      \SuperD_{L\beta}Y_L
+  \right].
+  \end{aligned}
+\]
+The matrix \(\epsilon\gamma_5\) in \(\bar{\SuperD}_{L\beta}\) in the second
+term on the right of the above expression may be moved to the final operator
+\(\SuperD_{L\beta}\), so that the chirality condition and anticommutation
+relations give
+\[
+  \sum_\beta
+  \bar{\SuperD}_{L\beta}\SuperD_{R\alpha}\SuperD_{L\beta}Y_L
+  =-\sum_\beta
+   \SuperD_{L\beta}\SuperD_{R\alpha}\bar{\SuperD}_{L\beta}Y_L
+  =2(\sl{\partial}\SuperD)_\alpha Y_L\,,
+\]
+and hence
+\[
+  \sl{\partial}\SuperD Y_L
+  =-\frac12\left[
+    \SuperD(\bar{\SuperD}\SuperD)Y_L
+    +2\sl{\partial}\SuperD Y_L
+  \right]
+  =-\frac14\SuperD(\bar{\SuperD}\SuperD)Y_L\,.
+\]
+The same result can be derived in the same way for any right-chiral
+superfield, and hence it holds also for an arbitrary sum \(Y\) of a
+left-chiral and a right-chiral superfield
+\begin{equation}
+  \gamma_\mu\SuperD\Delta\Theta^\mu
+  =\sl{\partial}\SuperD Y
+  =-\frac14\SuperD(\bar{\SuperD}\SuperD)Y\,.
+  \tag{26.7.54}\label{eq:26.7.54}
+\end{equation}
+This is of the same form as the conservation condition \eqref{eq:26.7.26},
+with the associated chiral superfield \(X\) changed by the chiral superfield
+\begin{equation}
+  \Delta X=-\frac14(\bar{\SuperD}\SuperD)Y\,.
+  \tag{26.7.55}\label{eq:26.7.55}
+\end{equation}
+
+It is easy to check that the addition of \(\Delta\Theta^\mu\) to
+\(\Theta^\mu\) changes \(T^{\mu0}\) and \(S_{\mathrm{new}}^0\) only by space
+derivatives, and therefore does not change the energy-momentum four-vector
+\(P^\mu\) or the supercharge \(Q\).
+
+We saw in Section 26.6 that any chiral superfield \(X\) may be expressed in
+the form \(X=(\bar{\SuperD}\SuperD)S\), and hence can be removed by adding a
+term of the form \eqref{eq:26.7.55} to \(\Theta^\mu\) with \(Y=4S\). But in
+general \(S\) and the new \(\Theta^\mu\) constructed in this way will not be
+local. This situation is already familiar from our experience with triangle
+anomalies, discussed in Chapter 22---we saw there that, although it is always
+possible to construct terms that if added to the Lagrangian density would
+cancel these anomalies, in general these terms would not be local, and hence
+must be excluded from the Lagrangian density. There are chiral superfields
+that can be expressed as \((\bar{\SuperD}\SuperD)S\) with \(S\) local, and
+that therefore, if present in the associated chiral superfield \(X\), could
+be eliminated by adding local terms of the form \eqref{eq:26.7.53} to
+\(\Theta^\mu\). They include, for instance, a term of the form
+\(\operatorname{Re}(k\,\partial f(\Phi)/\partial\Phi)\), with \(k\) an
+arbitrary complex constant, because the field equations \eqref{eq:26.6.15}
+and \eqref{eq:26.6.16} show that
+\((\bar{\SuperD}\SuperD)\operatorname{Re}(k^*\Phi)
+=4\operatorname{Re}(k\,\partial f(\Phi)/\partial\Phi)\). But in general the
+changes in \(X\) that can be made in this way are quite limited.

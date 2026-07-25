@@ -1,0 +1,48 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{../jheppub}
+\usepackage{etoolbox}
+\numberwithin{equation}{subsection}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  pdftitle={Weinberg Volume III, Chapter 26 Appendix Check},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\checklabel}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\begin{document}
+\setcounter{section}{25}
+\section{Supersymmetric Field Theories}
+
+\checklabel{eq:5.4.40}{5.4.40}
+
+\input{../chapters/chapter26/appendix.tex}
+\end{document}

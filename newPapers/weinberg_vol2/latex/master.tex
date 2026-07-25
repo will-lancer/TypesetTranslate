@@ -9,9 +9,11 @@
 \usepackage{jheppub}
 \usepackage{etoolbox}
 \usepackage{float}
+\usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
 \numberwithin{equation}{subsection}
+\allowdisplaybreaks
 
 % JHEP-style blue, clickable cross-references and links.
 \hypersetup{
@@ -27,6 +29,12 @@
 % Suppress the "Prepared for submission to JHEP" first-page header.
 \makeatletter
 \gdef\@fpheader{\phantom{x}}
+\newcommand{\externalvolumeanchor}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
 \makeatother
 
 % Emit the TOC inside \maketitle once all chapter scaffolds are present.
@@ -37,13 +45,11 @@
 \renewcommand\afterAuthorSpace{\smallskip}
 \renewcommand\afterAffiliationSpace{\smallskip}
 \renewcommand\afterEmailSpace{\medskip}
-\renewcommand\afterAbstractSpace{\medskip}
+\renewcommand\afterAbstractSpace{\par\medskip}
 \renewcommand\afterDedicatedSpace{\bigskip}
 \renewcommand\afterTocSpace{\medskip}
 \renewcommand\afterTocRuleSpace{\bigskip}
 
-% Each numbered section (chapter) starts on a fresh page.
-\pretocmd{\section}{\clearpage}{}{}
 \setcounter{tocdepth}{2}
 
 % Leave enough room in the TOC for Volume II labels such as 19.10.
@@ -81,7 +87,11 @@
 }
 
 \begin{document}
+\input{frontmatter/external-volume1-anchors.tex}
 \maketitle
+% Start subsequent section-level units on fresh pages without forcing an
+% extra blank page before the table of contents inside \maketitle.
+\pretocmd{\section}{\clearpage}{}{}
 \flushbottom
 
 \input{frontmatter/preface.tex}

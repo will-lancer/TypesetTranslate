@@ -1,2 +1,351 @@
-% Outline scaffold for Section 23.2. Main content intentionally omitted.
+% Source: physical PDF pp. 453--459 (printed pp. 430--436). Coverage:
+% complete Section 23.2, from its heading through immediately before
+% Section 23.3; Eqs. (23.2.1)--(23.2.9), nine unnumbered displays,
+% no citations, figures, tables, or footnotes.
 \subsection{Homotopy Groups}
+\label{sec:23.2}
+
+We learned in the previous section to classify field configurations, at
+which the Hamiltonian or other functionals are finite, in correspondence
+with the elements of appropriate homotopy groups. But we have not yet
+explained in what sense the the homotopy groups are \emph{groups}, nor have
+we given any physical significance to the group structure. As we shall see,
+there is a natural definition of the multiplication rule for elements of
+homotopy groups, according to which two extended configurations of fields
+forming a manifold $\mathcal M$ in $d$ dimensions, that belong to different
+elements $c_1$ and $c_2$ of $\pi_d(\mathcal M)$, can only fuse continuously
+to form a configuration belonging to the element $c_1\cdot c_2$ of
+$\pi_d(\mathcal M)$.
+
+We will begin by defining the first homotopy group $\pi_1(\mathcal M)$ of
+an arbitrary manifold $\mathcal M$, also known as the \emph{fundamental
+group of the manifold}. As we have seen, the existence of a non-trivial
+$\pi_1(G/H)$ for some coset space $G/H$ is the condition for the
+topological stability of a vortex line in three dimensions (or a monopole
+in two dimensions). After considering $\pi_1(\mathcal M)$, we will then
+move on to more general homotopy groups.
+
+A connected manifold $\mathcal M$ is said to be multiply connected if
+there is some closed curve of points $p(z)$ on the manifold, parameterized
+by a single variable $z$ with $0\leq z\leq1$ and $p(0)=p(1)$, which cannot
+be contracted to a point by a continuous deformation. Since on a connected
+manifold we can always continuously deform any such closed curve so that
+any one point on the curve is anywhere we like on the manifold, we may
+restrict our attention only to curves for which
+$p(0)=p(1)=p_0$, where $p_0$ is any fixed point of the manifold, known as
+the \emph{base point}. Two such closed curves $p_1(z)$ and $p_2(z)$ are
+said to be homotopically equivalent if they can be deformed into each
+other, that is, if there is a continuous function $p(z,t)$ for
+$0\leq t\leq1$, with
+\[
+ p(z,0)=p_1(z),\qquad p(z,1)=p_2(z);
+\]
+\[
+ p(0,t)=p(1,t)=p_0.
+\]
+The relation of homotopic equivalence is an equivalence relation in the
+sense of being symmetric, reflexive, and transitive, so it divides the
+space of closed curves on the manifold into equivalence classes: two
+closed curves are in the same class if and only if they are homotopically
+equivalent. The set of these equivalence classes is known as the first
+homotopy group of the manifold, $\pi_1(\mathcal M)$.
+
+To define the multiplication rule for $\pi_1(\mathcal M)$, choose a
+standard curve $p[z;c]$ that starts and ends at the base point $p_0$ for
+each equivalence class $c$ in $\pi_1(\mathcal M)$. For any two equivalence
+classes $c_1$ and $c_2$, define the `product' $c_1\cdot c_2$ as the
+equivalence class containing the curve $p[z,c_1,c_2]$ that starts at
+$p_0$, follows $p[z,c_1]$ back to $p_0$, and then follows $p[z,c_2]$ back
+again to $p_0$. Formally, we take
+\[
+ p[z,c_1,c_2]\equiv
+ \begin{cases}
+  p[2z,c_1],&0\leq z\leq\tfrac12,\\
+  p[2z-1,c_2],&\tfrac12\leq z\leq1.
+ \end{cases}
+\]
+
+We must now show that multiplication defined in this way satisfies the
+conditions for a group. First, let us check that this multiplication is
+associative. For this purpose, note that $(c_1\cdot c_2)\cdot c_3$ is the
+equivalence class containing a curve $p[z,c_1\cdot c_2,c_3]$ that goes
+along the standard curve $p[z,c_1\cdot c_2]$ from the base point and back
+again, and then along the standard curve $p[z,c_3]$ from the base point
+and back again, while $c_1\cdot(c_2\cdot c_3)$ is the equivalence class
+containing a curve $p[z,c_1,c_2\cdot c_3]$ that goes along the standard
+curve $p[z,c_1]$ from the base point and back again, and then along the
+standard curve $p[z,c_2\cdot c_3]$ from the base point and back again. By
+definition, the curve $p[z,c_1\cdot c_2]$ may be deformed into a curve that
+goes along $p[z,c_1]$ from the base point and back again and then along
+$p[z,c_2]$ from the base point and back again, while
+$p[z,c_2\cdot c_3]$ may be deformed into a curve that goes along
+$p[z,c_2]$ from the base point and back again and then along $p[z,c_3]$
+from the base point and back again. Hence both curves
+$p[z,c_1\cdot c_2,c_3]$ and $p[z,c_1,c_2\cdot c_3]$ may be deformed into
+the curve that goes along $p[z,c_1]$ from the base point and back again,
+then along $p[z,c_2]$ from the base point and back again, and finally
+along $p[z,c_3]$ from the base point and back again, and hence they may
+be deformed into each other, showing that
+\[
+ (c_1\cdot c_2)\cdot c_3=c_1\cdot(c_2\cdot c_3).
+\]
+
+The unit element $e$ of $\pi_1(\mathcal M)$ is defined as the equivalence
+class containing the curve $p[z,e]=p_0$ that stays at the base point. To
+check that $e\cdot c=c$, note that
+\[
+ p[z,e,c]=
+ \begin{cases}
+  p_0,&0\leq z\leq\tfrac12,\\
+  p[2z-1,c],&\tfrac12\leq z\leq1.
+ \end{cases}
+\]
+But this curve can be continuously deformed into $p[z,c]$ by taking
+\[
+ p(z,t)=
+ \begin{cases}
+  p_0,&0\leq z\leq t/2,\\
+  p[(2z-t)/(2-t),c],&t/2\leq z\leq1,
+ \end{cases}
+\]
+which is the same as $p[z,e,c]$ for $t=1$ and the same as $p[z,c]$ for
+$t=0$. The product $e\cdot c$ is the equivalence class containing
+$p[z,e,c]$, which we now see is the same as the equivalence class
+containing $p[z,c]$, which is just $c$. The proof that $c\cdot e=c$ is
+similar.
+
+The `inverse' $c^{-1}$ of the equivalence class $c$ is the equivalence
+class that contains a curve $p^{-1}[z,c]$ which goes around the same path
+as the standard curve $p[z,c]$ but in the opposite direction; that is,
+\[
+ p^{-1}[z,c]=p[1-z,c].
+\]
+This is not necessarily the same as the `standard' curve $p[z,c^{-1}]$,
+but by the definition of the equivalence class $c^{-1}$, the two curves
+may be deformed into each other. To check that $c^{-1}\cdot c=e$, note
+that by deforming $p[z,c^{-1}]$ into $p^{-1}[z,c]$, the curve
+$p[z,c^{-1},c]$ may be deformed into
+\[
+ p[z,c^{-1},c]\longrightarrow
+ \begin{cases}
+  p[1-2z,c],&0\leq z\leq\tfrac12,\\
+  p[2z-1,c],&\tfrac12\leq z\leq1.
+ \end{cases}
+\]
+But this curve can be continuously deformed into $p[z,e]=p_0$ by taking
+\[
+ p(z,t)=
+ \begin{cases}
+  p[1-2tz,c],&0\leq z\leq\tfrac12,\\
+  p[2tz+1-2t,c],&\tfrac12\leq z\leq1,
+ \end{cases}
+\]
+which is the same as $p[z,c^{-1},c]$ for $t=1$ and the same as $p[z,e]$
+for $t=0$. The product $c^{-1}\cdot c$ is the equivalence class containing
+$p[z,c^{-1},c]$, which we now see is the same as the equivalence class
+containing $p[z,e]$, which is just $e$. The proof that
+$c\cdot c^{-1}=e$ is similar. The existence of a unit element and inverses
+shows that these equivalence classes form a group.
+
+The classic example of a manifold $\mathcal M$ with a non-trivial first
+homotopy group is the circle itself, $\mathcal M=S_1$. This may be
+parameterized by an angle $\theta$ with $\theta=0$ and
+$\theta=2\pi n$ (with $n$ any positive or negative integer) identified as
+the same point. The homotopy groups consist of classes of functions
+$\theta(z)$ for $0\leq z\leq1$ that begin at some base point,
+$\theta(0)=\theta_0$, and end at the same base point,
+$\theta(1)=\theta_0+2\pi n$. Two such functions may be continuously
+deformed into each other if and only if they have the same value of $n$,
+so $\pi_1(S_1)$ consists of a denumerably infinite number of classes $c_n$
+labelled by the positive or negative integer $n$. Furthermore, the
+`product' of two classes $c_n$ and $c_m$ consists of curves that go $n$
+times around the circle from the base point and back again, and then $m$
+times around the circle from the base point and back again, so here
+multiplication is just addition:
+\begin{equation}
+ c_n\cdot c_m=c_{n+m}.
+ \tag{23.2.1}\label{eq:23.2.1}
+\end{equation}
+and hence
+\begin{equation}
+ \pi_1(S_1)=\mathbb Z,
+ \tag{23.2.2}\label{eq:23.2.2}
+\end{equation}
+where $\mathbb Z$ is the group of addition of positive and negative
+integers. As an immediate physical application, we note that when a gauge
+group $SO(2)$ is completely spontaneously broken, the coset space is just
+$SO(2)$ itself, which has the topology of a circle, so in this case there
+is an infinite number of types of topologically stable vortex line,
+characterized by a positive or negative integer $n$. For instance, this is
+the case in a type II superconductor, where as we saw in
+\hyperref[sec:21.6]{Section 21.6} the $U(1)$ of electromagnetic gauge
+invariance is spontaneously broken to a discrete subgroup $\mathbb Z_2$.
+
+More generally, all spheres $S_d$ with $d>1$ are simply connected, which
+means that they have a trivial first homotopy group, a statement
+conventionally expressed as
+\begin{equation}
+ \pi_1(S_d)=0\qquad\text{for }d>1.
+ \tag{23.2.3}\label{eq:23.2.3}
+\end{equation}
+Only a few of the more familiar Lie groups are multiply connected:
+\begin{equation}
+ \pi_1(G)=
+ \begin{cases}
+  \mathbb Z,&G=U(k),\quad k\geq1,\\
+  \mathbb Z_2,&G=SO(k),\quad k\geq3,\\
+  0,&G=\operatorname{Spin}(k),\quad k\geq3,\\
+  0,&G=SU(k),\quad k\geq2,\\
+  0,&G=USp(2k),\quad k\geq1,\\
+  0,&G=G_2,F_4,E_6,E_7,E_8.
+ \end{cases}
+ \tag{23.2.4}\label{eq:23.2.4}
+\end{equation}
+Here $\mathbb Z_2$ is the group with two elements $\mathbf 1$ and
+$-\mathbf 1$, with group multiplication defined as ordinary
+multiplication, and $\operatorname{Spin}(n)$ is the simply connected
+covering group of $SO(n)$. (As we saw in
+\hyperref[sec:2.7]{Section 2.7}, $\operatorname{Spin}(3)$ is the same as
+$SU(2)$.) Also, for a direct product of two manifolds $\mathcal M$ and
+$\mathcal M'$, the fundamental group is
+\begin{equation}
+ \pi_1(\mathcal M\cdot\mathcal M')
+ =\pi_1(\mathcal M)\cdot\pi_1(\mathcal M').
+ \tag{23.2.5}\label{eq:23.2.5}
+\end{equation}
+
+We can appreciate the physical significance of the group structure of
+$\pi_1(\mathcal M)$ by asking what happens when two distant parallel
+vortex lines in three dimensions are brought together. When the vortex
+lines are sufficiently far apart their fields do not interact, so the
+configuration can be described by specifying the classes $c'$ and $c''$
+in $\pi_1(G/H)$ to which each belongs. The class $c$ to which the whole
+configuration belongs is determined by the behavior of the fields on a
+very large circle surrounding both vortex lines. By a continuous
+deformation we can distort this very large circle into two large circles,
+one surrounding each vortex line, which intersect at a point midway
+between them. As we go around this closed curve in two-dimensional space
+we first trace out a curve in $G/H$ which consists of one of the closed
+curves in the class $c'$, and then one of the closed curves in the class
+$c''$, just as in the definition of the product of the classes. We
+conclude then that the whole configuration is in a class
+$c=c'\cdot c''$, and so the two vortex lines can only fuse together to
+form a vortex line of this class. In particular, they can only annihilate
+if $c''=c'^{-1}$.
+
+For instance, when $\pi_1(G/H)=\mathbb Z$ (as in superconductivity, where
+$G/H=SO(2)/\mathbb Z_2$), in three dimensions two vortex lines of classes
+$c_n$ and $c_m$ can fuse together to form a vortex line of class $c_{n+m}$,
+so they can only annihilate if $n=-m$. On the other hand, when
+$\pi_1(G/H)=\mathbb Z_2$ (as when $G=SO(N)$ with $N\geq3$ and $H$ is
+trivial or discrete) there is only one kind of vortex line in three
+dimensions, corresponding to the element $-\mathbf 1$ of $\mathbb Z_2$,
+and since $(-\mathbf 1)^2=\mathbf 1$, any two can annihilate.
+
+Now let us consider the general homotopy group $\pi_k(\mathcal M)$. This
+is much like $\pi_1(\mathcal M)$, except that instead of considering
+mappings of the circle $S_1$ into a manifold $\mathcal M$, we consider
+mappings of the $k$-sphere $S_k$ (the surface of a $(k+1)$-dimensional
+ball) into $\mathcal M$, again with one point of $S_k$ always mapped into
+the same `base point' $p_0$ of $\mathcal M$. Two such mappings are
+equivalent if one can be continuously deformed into the other, keeping
+the same point of $S_k$ always mapped into the base point. The $k$th
+homotopy group $\pi_k(\mathcal M)$ has elements consisting of equivalence
+classes of these mappings.
+
+It is often convenient to picture the $d$-sphere $S_d$ as the interior of
+a $d$-dimensional hypercube, with all points on the boundary identified as
+a single point. For instance, we have already seen that the circle $S_1$
+can be treated as the interval $0\leq\theta\leq2\pi$, with points
+$\theta=0$ and $\theta=2\pi$ identified. Similarly we can make a map of
+an $S_2$ like the earth's surface by cutting out the south pole and
+spreading out the resulting sheet on the unit square
+$0\leq z_1\leq1$, $0\leq z_2\leq1$. Continuous mappings of this square
+into $\mathcal M$ must take all points on the boundary into the same point
+of $\mathcal M$, because all points on the boundary are the same point,
+the south pole. In general, two mappings
+$p(z_1,\ldots,z_d)$ and $p'(z_1,\ldots,z_d)$ of $S_d$ into $\mathcal M$
+are homotopically equivalent if one can be continuously deformed into the
+other, while keeping $p$ on the boundary of the hypercube equal to the
+base point $p_0$.
+
+As before, for each equivalence class $c$ we choose a standard mapping
+$p(z_1,\ldots,z_d;c)$. The product of $c_1$ and $c_2$ is defined as the
+equivalence class that contains the mapping
+\begin{equation}
+ p(z_1,z_2,\ldots,z_d;c_1,c_2)=
+ \begin{cases}
+  p(2z_1,z_2,\ldots,z_d;c_1),&0\leq z_1\leq\tfrac12,\\
+  p(2z_1-1,z_2,\ldots,z_d;c_2),&\tfrac12\leq z_1\leq1.
+ \end{cases}
+ \tag{23.2.6}\label{eq:23.2.6}
+\end{equation}
+The unit element $e$ is defined as the equivalence class that contains the
+mapping with $p=p_0$ for all $z$, and the inverse $c^{-1}$ of $c$ is
+defined as the equivalence class that contains the mapping with
+\begin{equation}
+ p^{-1}[z_1,z_2,\ldots,z_N;c]
+ =p[1-z_1,z_2,\ldots,z_N;c].
+ \tag{23.2.7}\label{eq:23.2.7}
+\end{equation}
+In the same way as for $\pi_1$, it can be shown that this multiplication is
+associative, and that $e\cdot c=c\cdot e=c$ and
+$c^{-1}\cdot c=c\cdot c^{-1}=e$. All $\pi_n(\mathcal M)$ for $n\geq2$
+are Abelian. (There are manifolds $\mathcal M$ for which
+$\pi_1(\mathcal M)$ is non-Abelian, such as the plane with two or more
+points removed.)
+
+In any case in which $\pi_k(\mathcal M)=\mathbb Z$, there must be a
+one-to-one mapping of the $k$-sphere $S_k$ into a $k$-sphere $S'_k$ in
+$\mathcal M$, which corresponds to the element `one' of $\mathbb Z$ (not
+the unit element, which is zero). The element $\nu$ of $\mathbb Z$ with
+$\nu=2,3,\ldots$ corresponds to the mapping of $S_k$ into the same
+$k$-sphere $S'_k$ in $\mathcal M$, which covers $S'_k$ $\nu$ times, with
+the Jacobian of the transformation $S_k\to S'_k$ positive. The element
+$\nu$ of $\mathbb Z$ with $\nu=-1,-2,\ldots$ corresponds to the mapping
+$S_k\to S'_k$, which covers $S'_k$ $|\nu|$ times, with the Jacobian of
+the transformation $S_k\to S'_k$ negative.
+
+For instance, we saw in the previous section that magnetic monopoles arise
+when a simply connected group $G$ is broken to the $U(1)$ of
+electromagnetism. In this case the appendix shows that
+\begin{equation}
+ \pi_2(G/U(1))=\pi_1(U(1))=\mathbb Z,
+ \tag{23.2.8}\label{eq:23.2.8}
+\end{equation}
+so a magnetic monopole carries an integer-valued quantum number $\nu$,
+which as shown in \hyperref[sec:23.3]{Section 23.3} is proportional to the
+magnetic charge. This quantum number gives the number of times that a
+two-sphere of large radius surrounding the monopole is mapped into a
+two-sphere in the manifold $G/U(1)$ of Goldstone boson fields (with the
+relative orientation of the two two-spheres being the same or opposite
+for $\nu$ positive or negative, respectively) and is therefore known as
+the \emph{winding number}. The structure of the group $\mathbb Z$ shows
+that this quantum number is conserved, in the sense that a monopole of
+quantum number $\nu$ can fuse with a monopole of quantum number $\nu'$
+only to form a monopole with quantum number $\nu+\nu'$.
+
+If the unbroken subgroup is $SO(n)$ with $n\geq3$, then according to
+\hyperref[app:23.B]{Appendix B of this chapter}
+\begin{equation}
+ \pi_2(G/SO(n))=\pi_1(SO(n))=\mathbb Z_2.
+ \tag{23.2.9}\label{eq:23.2.9}
+\end{equation}
+In this case there is just one sort of `monopole,' corresponding to the
+element $-\mathbf 1$ of $\mathbb Z_2$, which can annihilate only in
+pairs. It is important to distinguish between this case and that in which
+$SO(n)$ is replaced with its simply connected covering group
+$\operatorname{Spin}(n)$, for which there are no monoples. We will come
+back to this point at the end of the next section.
+
+Another example: we saw in the previous section that the skyrmions in
+quantum chromodynamics with $n$ light quarks correspond to elements of
+$\pi_3(SU(n))$, which according to the appendix is $\mathbb Z$. This
+these skyrmions carry a conserved integer-valued quantum number $\nu$,
+which perhaps may be identified with baryon number. Similarly, recall
+from the previous section that the instantons in a gauge theory based on
+a simple gauge group $G$ correspond to the elements of $\pi_3(G)$, which
+according to the appendix is $\mathbb Z$, so these instantons like
+skyrmions carry an integer-valued quantum number $\nu$, also known as the
+winding number. In \hyperref[sec:23.5]{Section 23.5} we shall see how to
+express this quantum number as a local functional of the gauge field.

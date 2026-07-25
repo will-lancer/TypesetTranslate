@@ -20,8 +20,16 @@
 
 - Completed transcription covers all physical source pages 103--133, with no Chapter 18 material included. Equation-label inventories are complete and sequential: 11 equations in section 17.1, 28 in 17.2, 14 in 17.3, 48 in 17.4, and 44 in 17.5 (145 total).
 - Structural checks found 12 ordinary source footnotes, one typographic three-asterisk divider, one numbered figure, no tables, four problems, and five references. Searches found no unfinished-work markers, transcription debris, duplicate Chapter 17 labels, or symbolic footnote markers masquerading as ordinary notes.
-- The isolated chapter check compiled successfully to 28 A4 pages. All internal Chapter 17 equation and bibliography links resolved; its 15 remaining undefined links are intentionally cross-chapter references to Chapter 15 and resolve in the full-volume build.
+- The isolated chapter check compiled successfully to 28 A4 pages. All
+  internal Chapter 17 equation, figure, and bibliography links resolve.
+  Its fourteen cross-chapter equation links to Chapter 15 are supplied by
+  check-only destinations in the isolated wrapper and resolve to their real
+  labels in the full-volume build.
 - The full-volume project compiled successfully to 152 A4 pages. Chapter 17 occupies PDF pages 76--103; all Chapter 17 links resolve there. The six remaining full-volume undefined references occur in Chapter 18 and point to source material outside the current Volume II project scope.
 - Every chapter-only page and every full-volume page was rendered and inspected. A second full-resolution inspection covered Chapter 17 in the full-volume context, including section transitions, all footnote areas, Figure 17.1, dense equations, Problems, References, and the Chapter 17/18 boundary. No clipping, overlap, blank-content loss, or misplaced figure was found.
 - Harmless residual line-width warnings are limited to small overfull boxes in section 17.4 (maximum 9.74 pt) and one display in section 17.5 (5.55 pt); full-resolution renders confirm that all text and mathematics remain visible. Two bounded layout-correction passes were applied to the dense one-loop displays before invoking the 98% stop rule.
+- The final volume-wide notation audit normalized the three residual
+  multiplication continuation glyphs in Section 17.5 to `\cdot`, rebuilt
+  the chapter, and rerendered and reinspected all eight affected section
+  pages without changing the page count or documented bounded layout state.
 - Two source anomalies were preserved rather than silently emended: Eq. (17.3.7) visibly begins `F(t)=g t F_1+\hbar^2t^2F_2+\cdots`, despite the surrounding loop-order context, and Reference 4 visibly gives `Phys. Rev. 51, R143 (1995)`.

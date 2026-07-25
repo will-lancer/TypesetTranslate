@@ -1,2 +1,230 @@
-% Outline scaffold for Section 20.5. Main content intentionally omitted.
+% Source coverage: physical PDF pp. 289--295 (printed pp. 266--272), beginning at the Section 20.5 heading on p. 289 and ending with the section's final paragraph above the Section 20.6 heading on p. 295.
+% Numbered equations: (20.5.1)--(20.5.19), with all unnumbered displays. Figures/tables: none. Footnotes: 2. Inline chapter references: [5], [6], [7], [8]. Uncertainties: none.
+
 \subsection{Spectral Function Sum Rules}
+
+Spectral function sum rules are constraints on the spectral functions of various currents~\hyperref[ch20-ref-5]{[5]}. We will start here with a set of currents $J_a^\mu$ that are arbitrary, except for being Lorentz four-vectors, and then later consider more special examples. To define their spectral functions, we use Lorentz invariance to write
+\begin{align}
+&\sum_N\delta^4(p-p_N)
+\bra{\Omega}J_\alpha^\mu(0)\ket{N}
+\left[\bra{\Omega}J_\beta^\nu(0)\ket{N}\right]^*
+\notag\\
+&\qquad=(2\pi)^{-3}\theta(p^0)
+\left[
+\left(\eta^{\mu\nu}-\frac{p^\mu p^\nu}{p^2}\right)
+\rho_{\alpha\beta}^{(1)}(-p^2)
++p^\mu p^\nu\rho_{\alpha\beta}^{(0)}(-p^2)
+\right],
+\tag{20.5.1}\label{eq:20.5.1}
+\end{align}
+in analogy with Eqs.~\eqref{eq:19.2.19} and \eqref{eq:19.2.20} or Eq.~\eqref{eq:10.7.4}. Taking the Fourier transform and using the completeness of the states $\ket{N}$, this can be written
+\begin{align}
+\bra{\Omega}J_\alpha^\mu(x)J_\beta^\nu(0)\ket{\Omega}
+={}&\int d\mu^2
+\left[
+\eta^{\mu\nu}\rho_{\alpha\beta}^{(1)}(\mu^2)
+\right.
+\notag\\
+&\left.
+\qquad-
+\left(
+\rho_{\alpha\beta}^{(0)}(\mu^2)
++\frac{\rho_{\alpha\beta}^{(1)}(\mu^2)}{\mu^2}
+\right)
+\partial^\mu\partial^\nu
+\right]\Delta_+(x;\mu^2),
+\tag{20.5.2}\label{eq:20.5.2}
+\end{align}
+where $\Delta_+(x;\mu^2)$ is the function defined in Eq.~\eqref{eq:5.2.7}:
+\begin{equation}
+\Delta_+(x;\mu^2)\equiv
+\frac{1}{(2\pi)^3}
+\int d^4p\,\theta(p^0)\delta(p^2+\mu^2)e^{ip\cdot x}.
+\tag{20.5.3}\label{eq:20.5.3}
+\end{equation}
+Assuming the currents to have been chosen as Hermitian operators, it is immediately apparent from Eq.~\eqref{eq:20.5.1} that $\rho_{\alpha\beta}^{(1)}(\mu^2)$ and $\rho_{\alpha\beta}^{(0)}(\mu^2)$ are positive Hermitian matrices. Also, taking $x^\mu$ to be spacelike (for which $\Delta_+(x)$ is even) and using translation invariance and causality in Eq.~\eqref{eq:20.5.2}, we see that $\rho_{\alpha\beta}^{(1)}(\mu^2)$ and $\rho_{\alpha\beta}^{(0)}(\mu^2)$ are also symmetric.
+
+Now, for $x\to0$ with $x^2>0$, the function $\Delta_+(x;\mu^2)$ goes as
+\begin{equation}
+\Delta_+(x;\mu^2)\longrightarrow
+\frac{1}{4\pi^2x^2}
++\frac{\mu^2}{8\pi^2}
+\left[
+\ln\left(\frac{\gamma\mu\sqrt{x^2}}{2}\right)-\frac12
+\right]
++O(x^2),
+\tag{20.5.4}\label{eq:20.5.4}
+\end{equation}
+where $\gamma$ is the Euler constant. The first few terms in the vacuum expectation value of the expansion of $J_\alpha^\mu(x)J_\beta^\nu(0)$ are thus
+\begin{align}
+\bra{\Omega}J_\alpha^\mu(x)J_\beta^\nu(0)\ket{\Omega}
+\longrightarrow{}&
+-\frac{1}{2\pi^2}
+\left[
+\frac{\eta_{\mu\nu}}{(x^2)^2}
+-\frac{4x_\mu x_\nu}{(x^2)^3}
+\right]
+\int d\mu^2
+\left(
+\rho_{\alpha\beta}^{(0)}(\mu^2)
++\frac{\rho_{\alpha\beta}^{(1)}(\mu^2)}{\mu^2}
+\right)
+\notag\\
+&-\frac{\eta_{\mu\nu}}{4\pi^2x^2}
+\int d\mu^2\,\rho_{\alpha\beta}^{(0)}(\mu^2)\mu^2
+\notag\\
+&+\frac{x_\mu x_\nu}{2\pi^2(x^2)^2}
+\int d\mu^2
+\left(
+\rho_{\alpha\beta}^{(0)}(\mu^2)\mu^2
++\rho_{\alpha\beta}^{(1)}(\mu^2)
+\right)
++O(\ln x^2).
+\tag{20.5.5}\label{eq:20.5.5}
+\end{align}
+Hence if some linear combination $\sum_{\alpha\beta}c_{\alpha\beta}\bra{\Omega}J_\alpha^\mu(x)J_\beta^\nu(0)\ket{\Omega}$ of the two-point functions has a singularity as $x\to0$ which can be shown to be weaker than of order $1/x^4$, we have
+\begin{equation}
+\sum_{\alpha\beta}c_{\alpha\beta}
+\int d\mu^2
+\left(
+\rho_{\alpha\beta}^{(0)}(\mu^2)
++\frac{\rho_{\alpha\beta}^{(1)}(\mu^2)}{\mu^2}
+\right)=0,
+\tag{20.5.6}\label{eq:20.5.6}
+\end{equation}
+while if its singularity is also weaker than $1/x^2$, then
+\begin{equation}
+\sum_{\alpha\beta}c_{\alpha\beta}
+\int d\mu^2\,\rho_{\alpha\beta}^{(1)}(\mu^2)=0
+\tag{20.5.7}\label{eq:20.5.7}
+\end{equation}
+and
+\begin{equation}
+\sum_{\alpha\beta}c_{\alpha\beta}
+\int d\mu^2\,\rho_{\alpha\beta}^{(0)}(\mu^2)\mu^2=0.
+\tag{20.5.8}\label{eq:20.5.8}
+\end{equation}
+Eqs.~\eqref{eq:20.5.6}, \eqref{eq:20.5.7}, and \eqref{eq:20.5.8} are known respectively as the first, second, and third spectral function sum rules.
+
+Let us see how this works out in the case of greatest interest, where the $J_\alpha^\mu(x)$ are conserved currents in a theory like quantum chromodynamics. The conservation of current tells us that \eqref{eq:20.5.1} vanishes when contracted with $p_\mu$, so $\rho_{\alpha\beta}^{(0)}(-p^2)$ must be proportional to $\delta(p^2)$, and therefore automatically satisfies the third spectral function sum rule \eqref{eq:20.5.8} for any $c_{\alpha\beta}$. With $\rho_{\alpha\beta}^{(0)}(-p^2)\propto\delta(-p^2)$, it can receive contributions only from the terms $\ket{B_a}$ in the sum over states in \eqref{eq:20.5.1} consisting of a single massless particle $B_a$ of zero spin, which in practice means a Goldstone boson. For such one-particle states, Lorentz invariance gives
+\begin{equation}
+\bra{\Omega}J_\alpha^\mu(0)\ket{B_a}
+=\frac{iF_{\alpha a}p_B^\mu}{(2\pi)^{3/2}\sqrt{2p_B^0}}.
+\tag{20.5.9}\label{eq:20.5.9}
+\end{equation}
+Using the relation $\delta(p^0-|\mathbf p|)/2p^0=\theta(p^0)\delta(-p^2)$, we see that
+\begin{equation}
+\rho_{\alpha\beta}^{(0)}(-p^2)
+=\delta(-p^2)\sum_a F_{\alpha a}F_{\beta a}^*.
+\tag{20.5.10}\label{eq:20.5.10}
+\end{equation}
+In contrast, $\rho_{\alpha\beta}^{(1)}(-p^2)$ is non-vanishing only for $-p^2>0$.
+
+To be more specific, consider a renormalizable asymptotically free gauge theory with a number $N$ of massless (or nearly massless) spin $1/2$ fermions belonging to the same representation of the gauge group. Quantum chromodynamics fits this description, with $N=3$ if we neglect the masses of the $u$, $d$, and $s$ quarks, and with $N=2$ if only the $u$ and $d$ are taken to be massless. As we have seen in Chapter 19, such a theory has an $SU(N)\cdot SU(N)$ global symmetry\footnote{There is also a $U(1)$ symmetry which is vectorial, in the sense that it acts the same way on the left- and right-handed parts of the light fermion fields. This is just the conservation of light quark number, and will not concern us here. The axial $U(1)$ symmetry of the Lagrangian, which acts differently on the left- and right-handed parts of the light fermion fields, is broken by the quantum effects discussed in Section 23.5.} under which the left- and right-handed parts of the light fermion fields transform under the representations $(N,\mathbf{1})$ and $(\mathbf{1},N)$, respectively, where `$N$' and `$\mathbf{1}$' denote the defining and identity representations of $SU(N)$, respectively. The currents of the left- and right-handed $SU(N)$ symmetries are
+\begin{equation}
+J_{La}^\mu(x)
+=-i\bar\psi(x)\gamma^\mu(1+\gamma^5)\lambda_a\psi(x),
+\qquad
+J_{Ra}^\mu(x)
+=-i\bar\psi(x)\gamma^\mu(1-\gamma^5)\lambda_a\psi(x),
+\tag{20.5.11}\label{eq:20.5.11}
+\end{equation}
+where the $\lambda_a$ form a complete set of Hermitian traceless matrices acting on the `flavor' index that distinguishes the $N$ light quarks, as in Eq.~\eqref{eq:19.7.2} for $N=3$. These currents have dimensionality (in powers of mass) $+3$, so the coefficient of an operator $O$ of dimensionality $d(O)$ in the expansion \eqref{eq:20.3.6} of the product of two currents is expected (apart from logarithms) to have a singularity of order $x^{-6+d(O)}$ as the separation $x$ of their arguments goes to zero. Thus, if the expansion of a linear combination of products of currents contains the operator unity, then the corresponding linear combination of spectral functions goes as $x^{-6}$, and therefore in general satisfies neither the first nor the second spectral function sum rule; if the lowest-dimensional operator in the vacuum expectation value of this expansion is a fermion bilinear with zero or one derivatives, then the corresponding linear combination of spectral functions goes as $x^{-3}$ or $x^{-2}$, and therefore satisfies the first spectral function sum rule but generally not the second; and if the lowest-dimensional operator in the vacuum expectation value of this expansion is a fermion bilinear with two or more derivatives or a fermion quadrilinear then the corresponding linear combination of spectral functions is less singular than $x^{-2}$, and therefore satisfies both the first and second spectral function sum rules.
+
+In order to tell which operators appear in the expansion of the product of two currents, we need to classify the $SU(N)\cdot SU(N)$ representations contained in the product, and to tell whether these operators have non-vanishing vacuum expectation values, we have to ask which of them are invariant under the subgroup of $SU(N)\cdot SU(N)$ that is not spontaneously broken. To answer these questions, we note that the currents $J_{La}^\mu(x)$ and $J_{Ra}^\mu(x)$ transform under $SU(N)\cdot SU(N)$ respectively according to the $(A,\mathbf{1})$ and $(\mathbf{1},A)$ representations of $SU(N)\cdot SU(N)$, where $A$ and $\mathbf{1}$ are the adjoint and identity representations of $SU(N)$.
+
+Also, we shall assume that the subgroup of $SU(N)\cdot SU(N)$ that is not spontaneously broken is the vectorial $SU(N)_V$ whose currents are $J_{La}^\mu(x)+J_{Ra}^\mu(x)$, as is the case in quantum chromodynamics and (as we saw in Section 19.9) a wide range of other theories. We also assume that parity conservation is not spontaneously broken. These unbroken symmetries have the consequence that
+\begin{equation}
+\rho_{La,Lb}^{(1)}(\mu^2)
+=\rho_{Ra,Rb}^{(1)}(\mu^2)
+=\delta_{ab}\left[
+\rho_V^{(1)}(\mu^2)+\rho_A^{(1)}(\mu^2)
+\right]
+\tag{20.5.12}\label{eq:20.5.12}
+\end{equation}
+and
+\begin{equation}
+\rho_{La,Rb}^{(1)}(\mu^2)
+=\rho_{Ra,Lb}^{(1)}(\mu^2)
+=\delta_{ab}\left[
+\rho_V^{(1)}(\mu^2)-\rho_A^{(1)}(\mu^2)
+\right],
+\tag{20.5.13}\label{eq:20.5.13}
+\end{equation}
+where $\delta_{ab}\rho_V^{(1)}(\mu^2)$ and $\delta_{ab}\rho_A^{(1)}(\mu^2)$ are the spectral functions defined by \eqref{eq:20.5.2} for the currents
+\begin{equation}
+J_{Va}^\mu=-i\bar\psi\gamma^\mu\lambda_a\psi,
+\qquad
+J_{Aa}^\mu=-i\bar\psi\gamma^\mu\gamma^5\lambda_a\psi,
+\tag{20.5.14}\label{eq:20.5.14}
+\end{equation}
+with generators $\lambda_a$ and $\lambda_a\gamma^5$, respectively. Also
+\begin{equation}
+F_{Lab}=-F_{Rab}=\delta_{ab}F,
+\tag{20.5.15}\label{eq:20.5.15}
+\end{equation}
+where Eq.~\eqref{eq:20.5.9} here reads
+\begin{equation}
+\bra{\Omega}J_{Aa}^\mu(0)\ket{B_b}
+=\frac{iF\delta_{ab}p_B^\mu}{(2\pi)^{3/2}\sqrt{2p_B^0}},
+\tag{20.5.16}\label{eq:20.5.16}
+\end{equation}
+so that \eqref{eq:20.5.10} reads
+\begin{equation}
+\rho_{La,Lb}^{(0)}(\mu^2)
+=\rho_{Ra,Rb}^{(0)}(\mu^2)
+=-\rho_{La,Rb}^{(0)}(\mu^2)
+=-\rho_{Ra,Lb}^{(0)}(\mu^2)
+=F^2\delta(\mu^2)\delta_{ab}.
+\tag{20.5.17}\label{eq:20.5.17}
+\end{equation}
+It will be convenient to consider separately the products of currents of like and unlike chirality.
+
+\noindent\textbf{Like Chirality:}\quad
+The products $J_{La}^\mu(x)J_{Lb}^\nu(0)$ and $J_{Ra}^\mu(x)J_{Rb}^\nu(0)$ transform respectively as the $(A\cdot A,\mathbf{1})$ and $(\mathbf{1},A\cdot A)$ representations of $SU(N)\cdot SU(N)$, where $A$ and $\mathbf{1}$ are the adjoint and identity representations, respectively. For any group, $A\cdot A$ contains the identity representation, so the unit operator appears in the expansions of these products, with equal coefficients proportional to $\delta_{ab}$. Hence only the traceless parts of the operator product can satisfy spectral function sum rules. But as we have seen, the spectral functions have no traceless part, so the like-chirality spectral functions cannot satisfy any sum rules.
+
+\noindent\textbf{Unlike Chirality:}\quad
+The products $J_{La}^\mu(x)J_{Rb}^\nu(0)$ and $J_{Ra}^\mu(x)J_{Lb}^\nu(0)$ both transform as the $(A,A)$ representation of $SU(N)\cdot SU(N)$. The unit operator (and operators like $F_{\alpha\mu\nu}F_\alpha^{\mu\nu}$) are of course $SU(N)\cdot SU(N)$ singlets, and therefore cannot appear in the expansion of these products. Non-derivative fermion bilinears like $\bar\psi\psi$ transform according to the $(\overline N,N)$ and $(N,\overline N)$ representations of $SU(N)\cdot SU(N)$, so they also cannot appear in the expansions of the products of currents with unlike chirality. The only gauge- and Lorentz-invariant fermion bilinears with a single derivative involve the gauge-covariant derivative operator $\gamma^\mu D_\mu$ acting on $\psi$, which the field equations tell us vanishes. Thus these spectral functions satisfy both the first and second spectral function sum rules, which here read
+\begin{equation}
+\int d\mu^2\,
+\frac{\rho_V^{(1)}(\mu^2)-\rho_A^{(1)}(\mu^2)}{\mu^2}
+=F^2
+\tag{20.5.18}\label{eq:20.5.18}
+\end{equation}
+and
+\begin{equation}
+\int d\mu^2
+\left[
+\rho_V^{(1)}(\mu^2)-\rho_A^{(1)}(\mu^2)
+\right]=0.
+\tag{20.5.19}\label{eq:20.5.19}
+\end{equation}
+
+In the original work on spectral function sum rules~\hyperref[ch20-ref-5]{[5]}, the $SU(2)\cdot SU(2)$ spectral functions were assumed to be sharply peaked at values of $\mu$ that for $\rho_V^{(1)}(\mu^2)$ could be assumed to be $m_\rho=770$ MeV, and for $\rho_A^{(1)}(\mu^2)$ was taken to be at an unknown mass $m_A$. That is,
+\[
+\rho_V^{(1)}(\mu^2)\simeq g_\rho^2\delta(\mu^2-m_\rho^2),
+\qquad
+\rho_A^{(1)}(\mu^2)\simeq g_A^2\delta(\mu^2-m_A^2).
+\]
+Eqs.~\eqref{eq:20.5.18} and \eqref{eq:20.5.19} then read\footnote{Taking the $SU(2)$ generators $\lambda_a$ to be the Pauli matrices, as in Eq.~\eqref{eq:19.7.2}, we have $F=F_\pi=184$ MeV.}
+\[
+\frac{g_\rho^2}{m_\rho^2}-\frac{g_A^2}{m_A^2}=F_\pi^2
+\]
+and
+\[
+g_\rho^2=g_A^2.
+\]
+Eliminating the unknown $g_A$, this gives a formula
+\[
+g_\rho^2=F_\pi^2
+\left(
+\frac{1}{m_\rho^2}-\frac{1}{m_A^2}
+\right)^{-1}.
+\]
+Originally in 1967 this result was used together with a formula~\hyperref[ch20-ref-6]{[6]} $g_\rho^2=2F_\pi^2m_\rho^2$ (whose justification was unclear but which agreed with experimental measurements of the rate of the decay $\rho\to e^++e^-$) to derive the result
+\[
+m_A=\sqrt{2}m_\rho.
+\]
+The status of a possible $a_1$ resonance with the right quantum numbers to couple to the axial-vector current (that is, $1^+$ with $T=1$ and $C(a_1^0)=+1$) at around a mass $\sqrt{2}m_\rho$ remained unclear for many years, but a resonance with these quantum numbers is now reasonably well established at a mass 1230 MeV $\simeq1.6m_\rho$. It seems preferable today to take the ratio $m_A/m_\rho$ as an input, using either the value $\sqrt{2}$ suggested by certain models~\hyperref[ch20-ref-7]{[7]} or the experimental value 1.6, and use it to predict $g_\rho$.
+
+Since 1967 not only $g_\rho$ but the whole vector spectral function $\rho_V^{(1)}(\mu^2)$ of the $SU(3)\cdot SU(3)$ current in quantum chromodynamics has been calculated with precision for a wide range of energies from the measured cross section for the process $e^++e^-\to\gamma\to\text{hadrons}$, using the fact that the electromagnetic current is a linear combination of $SU(3)$ currents. The axial-vector spectral function $\rho_A^{(1)}(\mu^2)$ of the $SU(3)\cdot SU(3)$ currents can in principle be measured in the process $\bar\nu+e^-\to\text{hadrons}$, since the charged components of the currents \eqref{eq:20.5.14} are the same as the hadron currents to which the leptons are coupled. However, although antineutrino--electron scattering has been studied experimentally, the low rate of these reactions precludes the use of colliding beams, so that the electron target is essentially at rest. In order to reach typical hadronic energies of, say, 3 GeV in the center-of-mass frame, it would be necessary to have neutrino energies of $(3\text{ GeV})^2/2m_e\simeq10$ TeV in the laboratory frame. Intense beams of neutrinos with energies this high will not be available for many years, if ever. Fortunately, it has become possible to study the spectral functions in the process $\tau\to\nu+\text{hadrons}$, but the hadron energies here are strictly bounded by $m_\tau=1.7$ GeV. It is also possible to use effective chiral Lagrangians to calculate the spectral functions at small $\mu^2$, and to use quantum chromodynamics to calculate $\rho_V^{(1)}-\rho_A^{(1)}$ at large $\mu^2$, where it is quite small. A careful 1993 analysis by Donoghue and Golowich~\hyperref[ch20-ref-8]{[8]} of all these inputs shows that the spectral function integrals are indeed dominated by the $\rho$ and $a_1$ resonances, and gives results that are consistent with the first and second spectral function sum rules.

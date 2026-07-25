@@ -1,2 +1,837 @@
-% Outline scaffold for Section 21.6. Main content intentionally omitted.
-\subsection{Superconductivity}
+% Source: physical PDF pp. 355--375 (printed pp. 332--352). Coverage: complete
+% Section 21.6, from its heading through immediately before the chapter Appendix;
+% Eqs. (21.6.1)--(21.6.86), no figures or tables. Uncertainty: none.
+\subsection[Superconductivity]{Superconductivity\footnotemark}
+\label{sec:21.6}
+\footnotetext{This section lies somewhat out of the book's main line of development, and may be omitted in a first reading.}
+
+Superconductivity is quite different from the elementary particle phenomena that chiefly concern us in this book, but it is worth some consideration here, both as the earliest realistic example of a spontaneously broken gauge symmetry, and also as an exceptionally enlightening example of the power of effective field theories and of the use of topological arguments in field theory.
+
+A superconductor is simply a material in which electromagnetic gauge invariance is spontaneously broken.\footnote{This is not the way that most experts have historically thought about superconductivity. Early phenomenological theories were known to violate electromagnetic gauge invariance, but this was regarded as more annoying than enlightening. Broken symmetry is never mentioned in the seminal paper by Bardeen, Cooper, and Schrieffer~\hyperref[ch21-ref-37]{[37]} that first gave us a microscopic theory of superconductivity. Anderson~\hyperref[ch21-ref-38]{[38]} subsequently stressed the important role of broken symmetry in superconductors, but even today most textbooks explain superconductivity in terms of detailed dynamical models, with broken symmetry rarely mentioned.} Detailed dynamical theories are needed to explain why and at what temperatures this symmetry breaking occurs, but they are not needed to derive the most striking aspects of superconductivity: exclusion of magnetic fields, flux quantization, zero resistivity, and alternating currents at a gap between superconductors held at different voltages. As we shall see here, these consequences of broken gauge invariance can be worked out, in a manner somewhat like our treatment of soft pions, solely on the basis of general properties of the Goldstone mode~\hyperref[ch21-ref-39]{[39]}.
+
+The action for any system will be invariant under gauge transformations, which in cgs units take the form
+\begin{equation}
+A_\mu(x)\longrightarrow A_\mu(x)+\partial_\mu\Lambda(x),
+\tag{21.6.1}\label{eq:21.6.1}
+\end{equation}
+\begin{equation}
+\psi_n(x)\longrightarrow
+\exp\!\left(iq_n\Lambda(x)/\hbar\right)\psi_n(x),
+\tag{21.6.2}\label{eq:21.6.2}
+\end{equation}
+where $\Lambda(x)$ is arbitrary, and $q_n$ is the electric charge destroyed by field $\psi_n$. All charges are assumed to be integral multiples of the electron charge $-e$, so this group is compact: the phases $\Lambda$ and $\Lambda+2\pi\hbar/e$ are regarded as identical. This symmetry group is assumed to be broken in a superconductor by non-vanishing expectation values of operators carrying charge $-2e$ (such as products of two electron fields), so there is an unbroken $\mathbb Z_2$ subgroup, consisting of gauge transformations with $\Lambda=0$ and $\Lambda=\pi\hbar/e$.
+
+We introduce a Goldstone boson field $\phi(x)$ by writing all charged fields as
+\begin{equation}
+\psi_n(x)=\exp\!\left(iq_n\phi(x)/\hbar\right)\widetilde\psi_n(x).
+\tag{21.6.3}\label{eq:21.6.3}
+\end{equation}
+The field $\phi(x)$ parameterizes the coset space $U(1)/\mathbb Z_2$, and so is given the gauge transformation property
+\begin{equation}
+\phi(x)\longrightarrow\phi(x)+\Lambda(x).
+\tag{21.6.4}\label{eq:21.6.4}
+\end{equation}
+Because $\phi(x)$ parameterizes $U(1)/\mathbb Z_2$ rather than $U(1)$, we must identify $\phi(x)$ and $\phi(x)+\pi\hbar/e$. All the $\widetilde\psi_n(x)$ are gauge-invariant, and so when integrated out leave the Lagrangian as a gauge-invariant functional of $\phi$ and $A^\mu$ alone. It follows that the Lagrangian for the Goldstone and electromagnetic fields may be written as
+\begin{equation}
+L=-\frac14\int d^3x\,F_{\mu\nu}F^{\mu\nu}
++L_S[A_\mu-\partial_\mu\phi],
+\tag{21.6.5}\label{eq:21.6.5}
+\end{equation}
+where $L_S$ is an imperfectly known functional. The electric current and charge density here are
+\begin{equation}
+\mathbf J(x)=\frac{\delta L_S}{\delta\mathbf A(x)},
+\tag{21.6.6}\label{eq:21.6.6}
+\end{equation}
+\begin{equation}
+J^0(x)=-\frac{\delta L_S}{\delta A^0(x)}
+=-\frac{\delta L_S}{\delta\dot\phi(x)}.
+\tag{21.6.7}\label{eq:21.6.7}
+\end{equation}
+The equations of motion for the Goldstone boson field are then
+\begin{equation}
+\frac{\partial}{\partial t}
+\frac{\delta L_S}{\delta\dot\phi(x)}
+=\frac{\delta L_S}{\delta\phi(x)}
+=\boldsymbol\nabla\cdot
+\frac{\delta L_S}{\delta\mathbf A(x)},
+\tag{21.6.8}\label{eq:21.6.8}
+\end{equation}
+which in light of Eqs.~\eqref{eq:21.6.6} and \eqref{eq:21.6.7} is equivalent to the conservation law of electric charge
+\begin{equation}
+\boldsymbol\nabla\cdot\mathbf J
++\frac{\partial}{\partial t}J^0=0.
+\tag{21.6.9}\label{eq:21.6.9}
+\end{equation}
+
+Now let us see how this formalism explains the remarkable properties of superconductors. About $L_S$ we will only need to assume that the system is stable in the absence of Goldstone or external electromagnetic fields, so that the energy is at least at a local minimum at $A_\mu=\partial_\mu\phi$, with non-vanishing second derivatives with respect to $A_\mu-\partial_\mu\phi$.
+
+One immediate consequence is that, deep in a large superconductor where boundary conditions are unimportant, the electromagnetic field is a pure gauge:
+\begin{equation}
+A_\mu=\partial_\mu\phi,
+\tag{21.6.10}\label{eq:21.6.10}
+\end{equation}
+so that in particular the magnetic field must vanish. This is known as the \emph{Meissner effect}. It is possible to be a little more quantitative about what we mean by `deep in a large superconductor.' Since the energy is a minimum when Eq.~\eqref{eq:21.6.10} is satisfied, for small values of $|\mathbf A-\boldsymbol\nabla\phi|$ it must be of order $|\mathbf A-\boldsymbol\nabla\phi|^2L^3/\lambda^2$, where $\lambda$ is some length depending on the nature of the material, and $L^3$ is the superconductor volume. If a magnetic field of order $B$ penetrated the superconductor, then we would have $|\mathbf A-\boldsymbol\nabla\phi|$ of order $BL$, so the energy cost in allowing the magnetic field into the superconductor would be of order $B^2L^5/\lambda^2$. On the other hand, the energy cost in expelling a magnetic field $B$ from a volume $L^3$ is of order $B^2L^3$. Hence a weak magnetic field will be expelled from a superconductor if $B^2L^5/\lambda^2\gg B^2L^3$, or in other words if $L\gg\lambda$. For this reason $\lambda$ is known as the \emph{penetration depth} of the superconductor.
+
+The same energetic considerations tell us that for any superconducting material, there is a critical magnetic field, above which superconductivity is extinguished. The existence of superconductivity at zero magnetic field means that the material in its normal state has an energy per unit volume which is higher than that in the superconducting state, say by an amount $\Delta$. When a superconductor with linear dimensions much larger than $\lambda$ is placed in a magnetic field $B$, the magnetic field is expelled from most of the material, at an energy cost per volume of $B^2/2$. Hence it is energetically favorable for the material to be in the superconducting state if and only if the magnetic field is below a critical value
+\begin{equation}
+B_c=\sqrt{2\Delta}.
+\tag{21.6.11}\label{eq:21.6.11}
+\end{equation}
+(This is for uniform superconductors. As we shall see below, for certain kinds of superconductor it is possible to maintain superconductivity throughout most of the material for magnetic fields in a finite range above $B_c$ by the formation of narrow vortex lines with normal metal at their cores.) A magnetic field $B<B_c$ will penetrate a superconductor to a depth $\lambda$, but this does not extinguish superconductivity in this layer; indeed, as shown by the field equation $\boldsymbol\nabla\mathbin{\cdot}\mathbf B=\mathbf J$, it is in this surface layer of the superconductor that electric currents can flow.
+
+Now consider a thick superconducting wire, with thickness much larger than $\lambda$, bent into a closed ring. We can draw a closed contour $\mathcal C$ running deep inside the wire, along which $|\mathbf A-\boldsymbol\nabla\phi|$ must vanish. This does not mean that either $\mathbf A$ or $\phi$ vanishes on this contour, but we do know that in going around the ring $\phi$ must return to an equivalent value, and can therefore only change by an amount $n\pi\hbar/e$, with $n$ a positive or negative integer or zero. It follows then by Stokes's theorem that the magnetic flux through the area $\mathcal A$ surrounded by $\mathcal C$ is subject to the \emph{flux quantization} rule
+\begin{equation}
+\int_{\mathcal A}\mathbf B\cdot d\mathbf S
+=\oint_{\mathcal C}\mathbf A\cdot d\mathbf x
+=\oint_{\mathcal C}\boldsymbol\nabla\phi\cdot d\mathbf x
+=\frac{n\pi\hbar}{e}.
+\tag{21.6.12}\label{eq:21.6.12}
+\end{equation}
+
+The electric current that maintains the magnetic flux \eqref{eq:21.6.12} flows in a layer of thickness $\lambda$ just below the surface of the superconducting wire. The quantization of flux shows that this current cannot decay smoothly, but only in jumps at which the flux \eqref{eq:21.6.12} drops by multiples of $\pi\hbar/e$, so there can be no ordinary electrical resistance in the superconductor.
+
+The absence of resistance in a superconductor can be shown in a more general context than closed rings, by considering time-dependent effects in superconductors. Note that Eq.~\eqref{eq:21.6.7} can be interpreted as the statement that $-J^0$ is the canonical conjugate to $\phi$. The Hamiltonian $H_S$ is thus to be regarded as a functional of $\phi$ and $J^0$ rather than $\phi$ and $\dot\phi$, with the time dependence of $\phi$ given by the Hamiltonian equation
+\begin{equation}
+\dot\phi(x)=\frac{\delta H_S}{\delta(-J^0(x))}.
+\tag{21.6.13}\label{eq:21.6.13}
+\end{equation}
+Now, the `voltage' $V(x)$ at any point is just the change in energy density per change in the charge density at that point, so Eq.~\eqref{eq:21.6.13} gives the time dependence of the Goldstone boson field as
+\begin{equation}
+\dot\phi(x)=-V(x).
+\tag{21.6.14}\label{eq:21.6.14}
+\end{equation}
+It follows that a piece of superconducting wire that carries a steady current, with time-independent fields, must have zero voltage difference between its ends, because otherwise $\phi(x)$ would have a time-dependent gradient. A zero voltage difference at finite current is what we mean by zero resistance.
+
+Now consider a gap between two pieces of superconducting material. In the absence of any gradients along the surface of the gap, or any vector potential, gauge invariance requires $L_S$ to depend only on the difference $\Delta\phi$ between the Goldstone boson fields in the two superconductors:
+\begin{equation}
+L_{\mathrm{junction}}=\mathcal A F(\Delta\phi),
+\tag{21.6.15}\label{eq:21.6.15}
+\end{equation}
+where $\mathcal A$ is the area of the junction. Furthermore, we can shift $\phi$ in either superconductor by any integer multiple of $\pi\hbar/e$ without physical effect, so the function $F$ must be periodic\footnote{This function was calculated by Josephson~\hyperref[ch21-ref-40]{[40]}, who found it to be proportional to $\cos(2e\Delta\phi/\hbar)$, but this is an approximate result, while the periodicity is exact.}
+\begin{equation}
+F(\Delta\phi)=F(\Delta\phi+\pi\hbar n/e).
+\tag{21.6.16}\label{eq:21.6.16}
+\end{equation}
+
+A current flows through such a gap, which can be calculated by considering the junction in the presence of a vector potential $\mathbf A$. Gauge invariance then tells us that in place of $\Delta\phi$, the function $F$ must depend on
+\[
+\Delta_A\phi=\int d\mathbf x\cdot
+\left(\boldsymbol\nabla\phi-\mathbf A\right),
+\]
+the integral being taken over a line joining the two superconductors. Eq.~\eqref{eq:21.6.6} then shows that the current density is
+\[
+\mathbf J=\frac{\delta L_{\mathrm{junction}}}{\delta\mathbf A}
+=-\widehat{\mathbf n}F'(\Delta_A\phi),
+\]
+where $\widehat{\mathbf n}$ is the unit vector perpendicular to the gap. We can now take away the vector potential, and find the current
+\begin{equation}
+\mathbf J=-\widehat{\mathbf n}F'(\Delta\phi).
+\tag{21.6.17}\label{eq:21.6.17}
+\end{equation}
+If we now suppose that the two superconductors are maintained at uniform voltages, with a voltage difference $\Delta V$, then, according to Eq.~\eqref{eq:21.6.14}, the difference in the Goldstone boson fields will have the time dependence
+\begin{equation}
+\Delta\phi=-t\Delta V+\text{constant}.
+\tag{21.6.18}\label{eq:21.6.18}
+\end{equation}
+Using this in Eq.~\eqref{eq:21.6.17} and recalling Eq.~\eqref{eq:21.6.16}, we see that the current oscillates at a frequency
+\begin{equation}
+\nu=\frac{e|\Delta V|}{\pi\hbar}.
+\tag{21.6.19}\label{eq:21.6.19}
+\end{equation}
+This is the \emph{ac Josephson effect}~\hyperref[ch21-ref-40]{[40]}. It is possible to measure frequencies and voltages with great accuracy, so this effect provides a very accurate method of measuring the constant $e/\hbar$.
+
+As pointed out at the end of \hyperref[sec:19.6]{Section 19.6}, the description of a system with broken symmetry in terms of Goldstone modes alone becomes inadequate when a system is brought close to the point where the broken symmetry becomes unbroken. Under these circumstances the Goldstone mode is accompanied with other modes that have nearly zero frequency in the long-wavelength limit, which together with the Goldstone mode forms a linear representation, usually irreducible, of the symmetry group, known as the order parameter. It is plausible to assume that a uniform superconductor in slowly varying external fields is described by a local order parameter, because any non-locality would be characterized by microscopic distance scales (such as the mean electron--electron spacing) that are much smaller than the scales of distances over which the electromagnetic and Goldstone boson fields are assumed to be varying. For superconductivity there is no doubt about the nature of this order parameter. The only non-trivial irreducible linear representation of the group $U(1)$ is a real two-vector $\psi_n$, or equivalently a Goldstone mode $\phi$ and modulus field $\rho$, with
+\begin{equation}
+\psi_1+i\psi_2=\rho\exp(2ie\phi/\hbar)\equiv\psi.
+\tag{21.6.20}\label{eq:21.6.20}
+\end{equation}
+The coefficient of $i\phi$ in the exponential must be $2e/\hbar$ in order that a gauge transformation with $\Lambda=\pi\hbar/e$ (and with no smaller $\Lambda$) should leave $\psi_n$ invariant. For a nearly uniform time-independent system close to the symmetry-breaking transition, the order parameter is small and slowly varying in space, and so the Lagrangian in an external vector potential $\mathbf A$ may be approximated (from now on using natural units with $\hbar=1$) by
+\begin{equation}
+L_S\simeq\int d^3x\left[
+-\frac12\left(
+\boldsymbol\nabla\psi_n-2ie\,t_{nm}\mathbf A\psi_m
+\right)^2
++\frac12m^2\psi_n\psi_n
+-\frac14g(\psi_n\psi_n)^2
+\right],
+\tag{21.6.21}\label{eq:21.6.21}
+\end{equation}
+where $t$ is the Hermitian $U(1)$ generator
+\[
+t=\begin{pmatrix}
+0&-i\\
+i&0
+\end{pmatrix},
+\]
+and $g$ must be taken positive to give a bounded Hamiltonian. This is the \emph{Ginzburg--Landau} theory of superconductivity~\hyperref[ch21-ref-41]{[41]}. It has been derived by Gor'kov~\hyperref[ch21-ref-42]{[42]} from the microscopic theory of superconductivity presented below, in the case of a short-range potential and a temperature close to the critical temperature at which the material loses its superconductivity.
+
+In terms of $\rho$ and $\phi$, Eq.~\eqref{eq:21.6.21} becomes
+\begin{equation}
+L_S\simeq\int d^3x\left[
+-2e^2\rho^2(\boldsymbol\nabla\phi-\mathbf A)^2
++\frac12m^2\rho^2
+-\frac14g\rho^4
+-\frac12(\boldsymbol\nabla\rho)^2
+\right].
+\tag{21.6.22}\label{eq:21.6.22}
+\end{equation}
+The field equations are then
+\begin{equation}
+\boldsymbol\nabla\mathbin{\cdot}\mathbf B
+=4e^2\rho^2(\boldsymbol\nabla\phi-\mathbf A),
+\tag{21.6.23}\label{eq:21.6.23}
+\end{equation}
+\begin{equation}
+\boldsymbol\nabla^2\rho
+=-m^2\rho+g\rho^3
++4e^2\rho(\boldsymbol\nabla\phi-\mathbf A)^2.
+\tag{21.6.24}\label{eq:21.6.24}
+\end{equation}
+The $U(1)$ symmetry is broken if these field equations are satisfied for $\rho\ne0$, which in a field-free homogeneous material will be the case if $m^2>0$, in which case $\rho$ takes the value $\langle\rho\rangle=m/\sqrt g$. The penetration depth $\lambda$ was defined earlier as the inverse square root of the coefficient of $-\frac12(\boldsymbol\nabla\phi-\mathbf A)^2$, so here
+\begin{equation}
+\lambda=\frac{1}{\sqrt{4e^2\langle\rho\rangle^2}}
+=\frac{\sqrt g}{2em}.
+\tag{21.6.25}\label{eq:21.6.25}
+\end{equation}
+This is the distance that according to Eq.~\eqref{eq:21.6.23} characterizes variations in the magnetic field. On the other hand, variations in the modulus $\rho$ are characterized by a distance scale known as the correlation length, given according to Eq.~\eqref{eq:21.6.24} by\footnote{The factor $\sqrt2$ is included along with $m$ because at $\rho=\langle\rho\rangle$ the derivative of the function $-m^2\rho+g\rho^3$ in Eq.~\eqref{eq:21.6.24} is $2m^2$.}
+\begin{equation}
+\xi=\frac{1}{m\sqrt2}.
+\tag{21.6.26}\label{eq:21.6.26}
+\end{equation}
+Also, the superconducting state with $\rho=\langle\rho\rangle$ has an energy per unit volume that is less than that of the normal state with $\rho=0$ by an amount
+\begin{equation}
+\Delta=\frac12m^2\langle\rho\rangle^2
+-\frac14g\langle\rho\rangle^4
+=\frac{m^4}{4g}.
+\tag{21.6.27}\label{eq:21.6.27}
+\end{equation}
+Eliminating the parameters $m$ and $g$ from Eqs.~\eqref{eq:21.6.25}--\eqref{eq:21.6.27}, we find one important approximate relation among the observable quantities $\lambda$, $\xi$, and $\Delta$:
+\begin{equation}
+\Delta\simeq\frac{1}{8e^2\lambda^2\xi^2}.
+\tag{21.6.28}\label{eq:21.6.28}
+\end{equation}
+
+The modular field becomes important in the dynamics of superconducting vortex lines. These arise when a superconductor of a certain type is placed in a magnetic field that is strong enough so that it is energetically favorable for tubes of magnetic flux known as vortex lines to penetrate the material~\hyperref[ch21-ref-43]{[43]}. (The conditions for the appearance of vortex lines are discussed below.) By drawing a closed curve $\mathcal C$ around the tube at a distance much larger than the penetration depth, where the magnetic field vanishes, and repeating the argument contained in Eq.~\eqref{eq:21.6.12}, we see that the magnetic flux through the area $\mathcal A$ surrounded by $\mathcal C$ must be equal to the change of $\phi$ around the curve, and hence equal to an integer multiple of the flux quantum $\pi/e$, just as for the flux through a thick superconducting ring. Where this flux is not zero, there must be a line within each tube along which electromagnetic gauge invariance is \emph{not} broken. To see this, note that if we shrink the curve $\mathcal C$ into the region of high magnetic field it becomes no longer true that $\boldsymbol\nabla\phi=\mathbf A$, but the change of $\phi$ around the curve must remain an integer multiple of $\pi/e$, and so by continuity cannot change. Thus we must eventually encounter a line (conceivably of finite thickness) along which $\rho$ vanishes, so that $\phi$ becomes ill-defined. (This is an elementary example of the sort of topological reasoning we shall use in \hyperref[chap:23]{Chapter 23}.) Near this line we must take both $\rho$ and $\phi$ into account as dynamical variables.
+
+The quantization of magnetic flux shows that a superconducting vortex line of minimum flux $\pi/e$ is stable. A vortex line of higher flux cannot simply disappear, but magnetic flux quantization alone does not prevent it from breaking up into vortex lines of smaller flux. Bogomol'nyi~\hyperref[ch21-ref-43a]{[43a]} has shown that vortex lines of flux $n\pi/e$ with $n>1$ are unstable against breakup into $n$ vortex lines of flux $\pi/e$ if and only if $\lambda>\xi$.
+
+For this and other reasons it is convenient to divide superconducting materials into two classes: \emph{type I superconductors} (most pure metals, except niobium) have $\xi>\lambda$, while \emph{type II superconductors} (niobium and most alloys) have $\lambda>\xi$. The corresponding distinction in the electroweak standard model is between theories where the scalar mass (analogous to $1/\xi$) is less than or greater than the $W$ and $Z$ masses (analogous to $1/\lambda$).
+
+From the definitions of the correlation length $\xi$ and penetration depth $\lambda$, it follows that the modular parameter will rise from zero at the central line of a vortex to its equilibrium value $\langle\rho\rangle$ in a distance of the order of the correlation length $\xi$, while the magnetic field will decay with distance from the central line in a distance of the order of the penetration depth $\lambda$. Hence a vortex solution in a type I superconductor with $\xi\gg\lambda$ would consist of a thin inner cylinder of nearly normal metal, within which the magnetic field drops to zero, surrounded by a much thicker outer cylinder within which the modular parameter rises to its asymptotic value $\langle\rho\rangle$. In contrast, a vortex in a type II superconductor with $\lambda\gg\xi$ consists of a thin inner cylinder of constant magnetic field, within which the modular parameter rises to its asymptotic value $\langle\rho\rangle$, surrounded by a much thicker outer cylinder of superconducting material within which the magnetic field falls to zero. Vortex solutions exist for both types of superconductor and for any magnetic field, but as we shall now see, it is only in type II superconductors and in a finite range of magnetic fields that vortex lines are energetically favored.
+
+Because each vortex line has a cross-sectional area of order $\pi\xi^2$ within which the material is in its normal state or nearly so, the extra energy per volume required to create these vortex lines is of order $\mathcal N\pi\xi^2\Delta$, where $\mathcal N$ is the number of vortex lines per area. This vortex density is limited by the condition that $\mathcal N<1/\pi\xi^2$, since otherwise the cylinders of normal metal would overlap, and the material would be considered to be in its normal state. The magnetic field must be expelled from a fraction $1-\mathcal N\pi\lambda^2$ of the material if $\mathcal N<1/\pi\lambda^2$, and from the whole material if $\mathcal N>1/\pi\lambda^2$, so the energy per volume of the vortex state, relative to the superconducting state in the absence of magnetic fields, is
+\begin{equation}
+W_V\simeq\mathcal N\pi\xi^2\Delta
++\frac12B^2\cdot
+\begin{cases}
+1-\mathcal N\pi\lambda^2,
+&\mathcal N\le 1/\pi\lambda^2,\\
+0,
+&\mathcal N\ge 1/\pi\lambda^2.
+\end{cases}
+\tag{21.6.29}\label{eq:21.6.29}
+\end{equation}
+(Numerical factors like $\frac12$ and $\pi$ are kept here to remind the reader of the origin of these expressions, but should not be taken literally.) For comparison, the energy per volume of the normal metal exceeds that in the superconducting state by $W_N=+\Delta$, and the energy per volume required to expel all magnetic fields from a superconductor is $W_S=B^2/2$. We can decide which state is present at a given magnetic field by checking which of $W_S$, $W_N$, or $W_V$ is smallest.
+
+In type I superconductors we must distinguish between magnetic fields less or greater than the critical field $B_c=\sqrt{2\Delta}$. Recalling that $\mathcal N<1/\pi\xi^2$, and here $\xi>\lambda$, we also have $\mathcal N<1/\pi\lambda^2$. Hence for $B<B_c$ Eq.~\eqref{eq:21.6.29} gives $W_V>\frac12B^2+\mathcal N\pi(\xi^2-\lambda^2)\Delta>W_S$, so there can be no vortex lines. Also, for such fields $W_N>W_S$, so the material is superconducting. On the other hand, for $B>B_c$ Eq.~\eqref{eq:21.6.29} implies that $W_V>\Delta[1+\mathcal N\pi(\xi^2-\lambda^2)]>W_N$, so here again there are no vortex lines. Also for such fields $W_S>W_N$, so the material is in its normal state.
+
+In type II superconductors we need to distinguish between magnetic fields in three ranges: $B<B_{c1}$, $B_{c1}<B<B_{c2}$, and $B>B_{c2}$, where $B_{c1}$ and $B_{c2}$ are a pair of critical fields, of order
+\[
+B_{c1}\approx\sqrt{2\Delta}\,\xi/\lambda,
+\qquad
+B_{c2}\approx\sqrt{2\Delta}\,\lambda/\xi.
+\]
+As we have seen, for type II superconductors the only stable vortex lines are those with the minimum flux\footnote{The derivation of flux quantization given above for an isolated vortex line is not fully applicable here. As we shall see, the separation of the vortex lines for $B>B_{c1}$ is less than the penetration depth $\lambda$, so it is not possible to find a contour $\mathcal C$ on which $\mathbf A-\boldsymbol\nabla\phi=0$ by simply drawing a circle around the vortex line at a distance from the vortex much greater than $\lambda$. Instead, it is necessary to appeal to considerations of continuity. (M. Tinkham, private communication.) Suppose we draw an arbitrary continuous curve between the centers of any two vortex lines. As shown below, on this curve the vector $\mathbf A-\boldsymbol\nabla\phi$ will be very large close to either vortex, but pointing to opposite sides of the curve. Thus there is at least one point on each such curve where $\mathbf A-\boldsymbol\nabla\phi=0$. Because $\mathbf A-\boldsymbol\nabla\phi$ is gauge-invariant, it must be continuous, so there is a closed contour $\mathcal C$ around each vortex line where $\mathbf A-\boldsymbol\nabla\phi=0$.} $\pi/e$, so in a magnetic field $B$ we should put the number of vortices per area $\mathcal N$ in Eq.~\eqref{eq:21.6.9} equal to $eB/\pi$. For $B<B_{c1}$ we can use Eq.~\eqref{eq:21.6.8} to show that $eB/\pi<1/\pi\lambda^2$. The coefficient of the vortex density in Eq.~\eqref{eq:21.6.9} is therefore the positive quantity $\pi\xi^2\Delta-\frac12B^2\lambda^2$, so here $W_V>W_S$, and there are no vortex lines for $B<B_{c1}$. Also, for such fields $W_N>W_S$, so the material is entirely superconducting. For $B>B_{c1}$, Eq.~\eqref{eq:21.6.28} shows that the vortex density $\mathcal N=eB/\pi$ is greater than $1/\pi\lambda^2$, so in the vortex state the magnetic field completely penetrates the superconductor, and the energy per volume is given by Eqs.~\eqref{eq:21.6.29} and \eqref{eq:21.6.28} as
+\[
+W_V\simeq\mathcal N\pi\xi^2\Delta
+=eB\xi^2\Delta
+\simeq(B/B_{c2})W_N
+\simeq(B_{c1}/B)W_S.
+\]
+Hence for $B_{c1}<B<B_{c2}$ we have $W_V<W_N$ and $W_V<W_S$, so the material is in its vortex state. For $B>B_{c2}$ we still have $W_V<W_S$ but now $W_N<W_V$, so the vortices disappear and all superconductivity is extinguished. The ability of type II superconductors with $\lambda\gg\xi$ to carry magnetic fields much higher than the critical value $B_c\approx\sqrt\Delta$ deduced earlier is important in technological applications of superconductivity, including magnets in high energy accelerators.
+
+The Ginzburg--Landau theory holds only where the material is near the transition between its normal and superconducting states, so let us apply it near the center of a vortex line, where $\rho$ drops to zero. Close to the center of a vortex line we can ignore its curvature, and assume cylindrical symmetry. The field $\mathbf A-\boldsymbol\nabla\phi$ is taken to have only an azimuthal component:
+\begin{equation}
+\left(\mathbf A-\boldsymbol\nabla\phi\right)_\varphi=A(r),
+\tag{21.6.30}\label{eq:21.6.30}
+\end{equation}
+so that the magnetic field has only an axial component:
+\begin{equation}
+B_z=\left(
+\boldsymbol\nabla\mathbin{\cdot}
+(\mathbf A-\boldsymbol\nabla\phi)
+\right)_z
+=A'(r)+A(r)/r,
+\tag{21.6.31}\label{eq:21.6.31}
+\end{equation}
+while $\rho$ is a function only of $r$. The structure of the vortex line is thus governed by the pair of coupled differential equations:
+\begin{equation}
+A''(r)+r^{-1}A'(r)-r^{-2}A(r)
+=\frac{\rho^2(r)A(r)}{\lambda^2\langle\rho\rangle^2},
+\tag{21.6.32}\label{eq:21.6.32}
+\end{equation}
+\begin{equation}
+\rho''(r)+r^{-1}\rho'(r)
++\frac{1}{2\xi^2}
+\left(\rho(r)-\frac{\rho^3(r)}{\langle\rho\rangle^2}\right)
+=4e^2\rho(r)A^2(r).
+\tag{21.6.33}\label{eq:21.6.33}
+\end{equation}
+When $r$ is small compared with both the correlation length $\xi$ and the penetration depth $\lambda$ we can neglect the terms in Eqs.~\eqref{eq:21.6.32} and \eqref{eq:21.6.33} proportional to $1/\xi^2$ and $1/\lambda^2$, and find the simplified equations
+\begin{equation}
+A''+A'/r-A/r^2=0,
+\tag{21.6.34}\label{eq:21.6.34}
+\end{equation}
+\begin{equation}
+\rho''+\rho'/r=4e^2A^2\rho.
+\tag{21.6.35}\label{eq:21.6.35}
+\end{equation}
+Eq.~\eqref{eq:21.6.34} has the general solution
+\begin{equation}
+A(r)=\frac{Br}{2}+\frac{C}{2er},
+\tag{21.6.36}\label{eq:21.6.36}
+\end{equation}
+where $B$ is a constant that according to Eq.~\eqref{eq:21.6.31} is the magnetic field along the vortex line, and $C$ is a real constant that is so far arbitrary. Using this in Eq.~\eqref{eq:21.6.35} shows that for $r\to0$, the solution for $\rho(r)$ is a linear combination of $r^{|C|}$ and $r^{-|C|}$. The order parameter $\rho\exp(2ie\phi)$ must be a smooth function of position, so we can conclude that $|C|$ is a positive integer $\ell$, with $\rho\propto r^\ell$ and $\phi=\pm\ell\varphi/2e+\text{constant}$ for $r\to0$. Note that this solution for $\phi$ is consistent with Eq.~\eqref{eq:21.6.36} with $C=\pm\ell$; the azimuthal component of $\boldsymbol\nabla\phi$ approaches $\pm\ell/2er$, while analyticity requires the azimuthal component of $\mathbf A$ to vanish as $r\to0$. By a non-singular gauge transformation we can arrange that $\phi=\pm\ell\varphi/2e$ everywhere, so by the same reasoning as in Eq.~\eqref{eq:21.6.12} the magnetic flux carried by a single vortex line in a superconductor much larger than the penetration depth is $\pm\pi\ell/e$. We see not only that, as expected, the order parameter vanishes at the center of the vortex line, but that it vanishes with a power of $r$ equal to the magnitude of the magnetic flux in units of $\pi/e$.
+
+This solution for $\phi$ obeys the `quantization' condition that $\phi(2\pi)-\phi(0)$ is an integral multiple of $\pi/e$, which implies the quantization of magnetic flux. In the theory of Goldstone boson and electromagnetic fields based on Eq.~\eqref{eq:21.6.5} this condition on $\phi$ has to be imposed by hand on the solution of the field equations, while the Ginzburg--Landau equations `know' about this condition, because these equations are based on an appropriate choice of order parameter.
+
+\begin{center}
+* \quad * \quad *
+\end{center}
+
+Although the most dramatic properties of superconductors can be derived directly from the assumption that electromagnetic gauge invariance is spontaneously broken, a microscopic theory of superconductivity is needed to understand how and when this occurs. The derivation of the microscopic superconductivity theory of Bardeen, Cooper, and Schrieffer~\hyperref[ch21-ref-37]{[37]} has been recast~[\hyperref[ch21-ref-44]{44},\hyperref[ch21-ref-44a]{44a}] in the language of effective field theory, using power-counting methods similar to those that we have used here in \hyperref[sec:19.5]{Sections 19.5} and \hyperref[sec:21.4]{21.4}. For this purpose, suppose we integrate out the degrees of freedom associated with the ions in a superconductor,\footnote{Strictly speaking, it is not possible to integrate out all degrees of freedom except electrons, because the phonon is a Goldstone boson whose frequency vanishes for very large wavelengths, like a massless particle in relativistic theories. However those effects of phonon interactions that cannot be represented as effective electron--electron interactions are suppressed by inverse factors of the ion masses.} leaving only an effective interaction among electrons. For simplicity, we shall work at zero temperature, and at first assume no external field, so that the Lagrangian is invariant under translations and the time reversal operation $T$. We shall also assume spin-independent forces, so that the Lagrangian is invariant under $SU(2)$ transformations that act on spin indices alone, but we shall not need to assume invariance under rotations acting on momenta. Electrons are then characterized by a momentum $\mathbf p$ and spin index $s=\pm\frac12$, and are described by annihilation and creation operators $a_{\mathbf p,s}(t)$ and $a^\dagger_{\mathbf p,s}(t)$, with a Lagrangian of form
+\begin{align}
+L={}&-\sum_s\int d^3p\,
+a^\dagger_{\mathbf p,s}(t)
+\left[-i\frac{\partial}{\partial t}+E(\mathbf p)\right]
+a_{\mathbf p,s}(t)
+\notag\\
+&+\sum_{s_1s_2s_3s_4}
+\int d^3p_1\,d^3p_2\,d^3p_3\,d^3p_4\,
+V_{s_1s_2s_3s_4}
+(\mathbf p_1,\mathbf p_2,\mathbf p_3,\mathbf p_4)
+\notag\\
+&\qquad\cdot
+a^\dagger_{\mathbf p_1,s_1}(t)
+a^\dagger_{\mathbf p_2,s_2}(t)
+a_{\mathbf p_3,s_3}(t)
+a_{\mathbf p_4,s_4}(t)
+\delta^3(\mathbf p_1+\mathbf p_2-\mathbf p_3-\mathbf p_4)
+\notag\\
+&+\cdots,
+\tag{21.6.37}\label{eq:21.6.37}
+\end{align}
+where `$\,\cdots\,$' represents terms with six or more creation and annihilation operators, and $E(\mathbf p)$ is the electron energy minus the chemical potential. For free electrons, $E(\mathbf p)=\mathbf p^2/2m_e-E_F$ where $E_F$ is the energy of electrons at the Fermi surface. Interactions will inevitably change this function, but it is natural to expect that since $E(\mathbf p)$ vanishes for free electrons at momenta $\mathbf p$ on the sphere $|\mathbf p|=\sqrt{2m_eE_F}$, in the presence of interactions it will still vanish on some closed Fermi surface $\mathcal S$:
+\begin{equation}
+E(\mathbf p)=0\quad\text{for $\mathbf p$ on $\mathcal S$.}
+\tag{21.6.38}\label{eq:21.6.38}
+\end{equation}
+For reasons that will become apparent, we shall integrate out all electrons except those within a thin shell of thickness $\kappa$ around the Fermi surface.\footnote{For forces that are not spin-independent, there are two Fermi surfaces, one for each eigenvalue of the matrix $E_{s's}(\mathbf p)$, and we integrate over all electrons in each spin eigenstate except those within a thin shell around the corresponding Fermi surface.} (Later we will be able to remove the cut-off $\kappa$ by introducing a renormalized electron--electron potential.) The remaining degrees of freedom are then electrons with momenta of the form
+\begin{equation}
+\mathbf p=\mathbf k+\widehat{\mathbf n}(\mathbf k)\ell,
+\tag{21.6.39}\label{eq:21.6.39}
+\end{equation}
+where $\mathbf k$ is on the Fermi surface $\mathcal S$, $\widehat{\mathbf n}(\mathbf k)$ is the unit vector normal to the surface at $\mathbf k$, and $0\le\ell\le\kappa$. For such momenta,
+\begin{equation}
+E(\mathbf p)=v_F(\mathbf k)\ell,
+\tag{21.6.40}\label{eq:21.6.40}
+\end{equation}
+where
+\begin{equation}
+v_F(\mathbf k)=
+\left.
+\widehat{\mathbf n}(\mathbf k)\cdot
+\left(\boldsymbol\nabla_{\mathbf p}E(\mathbf p)\right)
+\right|_{\mathbf p=\mathbf k}.
+\tag{21.6.41}\label{eq:21.6.41}
+\end{equation}
+The electron propagator in wave number--frequency space is then
+\begin{equation}
+\frac{1}{\omega-v_F(\mathbf k)\ell+i\epsilon}.
+\tag{21.6.42}\label{eq:21.6.42}
+\end{equation}
+
+Now let us consider how a general connected matrix element scales with $\kappa$ as $\kappa\to0$. We have an integral over frequencies for every loop, and a propagator for every internal line, so the integral of the product of propagators over all frequencies will have an $\ell$ dependence $\ell^{L-I}$, where $L$ is the number of loops and $I$ is the number of internal lines. To count the number of $\ell$ integrals, it is important to note that for generic momenta the delta-function in the interaction term in Eq.~\eqref{eq:21.6.37} constrains the $\mathbf k$s, not the $\ell$s. (For instance, if momentum conservation constrains the momenta $\mathbf p_1$ and $\mathbf p_2$ of two electron lines to have total momentum $\mathbf P\ne0$, then the integral over $\mathbf p_1$ runs over the intersection of two closed shells of thickness $\kappa$, one centered on $\mathbf P$ and the other on zero. The intersection of these shells is a closed ring of thickness $\kappa$, so we have to integrate over one $\mathbf k$-component which gives position around the ring, and two $\ell$s which give position within the cross section of the ring.) Thus there are $I$ integrals over $\ell$s, and since the integrand goes as $\ell^{L-I}$, the matrix element will vary as
+\begin{equation}
+\mathcal M\propto\kappa^L.
+\tag{21.6.43}\label{eq:21.6.43}
+\end{equation}
+The number of loops is related to the number of internal lines and the numbers $V_i$ of vertices of type $i$ by the familiar relation
+\begin{equation}
+L=I-\sum_i V_i+1.
+\tag{21.6.44}\label{eq:21.6.44}
+\end{equation}
+Also, the number of internal lines is related to the numbers of vertices and the number $E$ of external lines by another familiar relation
+\begin{equation}
+2I+E=\sum_i n_iV_i,
+\tag{21.6.45}\label{eq:21.6.45}
+\end{equation}
+where $n_i$ is the number of electron operators in the interaction of type $i$. Eliminating $I$ from Eqs.~\eqref{eq:21.6.44} and \eqref{eq:21.6.45} gives
+\begin{equation}
+L=1-\frac12E+\frac12\sum_i V_i(n_i-2).
+\tag{21.6.46}\label{eq:21.6.46}
+\end{equation}
+Terms in the action with $n_i=2$ just serve to change the function $E(\mathbf p)$, and hence to shift the Fermi surface. True interactions have $n_i>2$, and so it appears from Eqs.~\eqref{eq:21.6.43} and \eqref{eq:21.6.46} that they yield terms in the matrix element that make relatively negligible contributions for $\kappa\to0$. In the language of \hyperref[sec:18.5]{Section 18.5}, this would mean that all interactions are irrelevant operators. This is why electrons near the Fermi surface in normal metals behave pretty much like free particles.
+
+There is, however, an exception to this conclusion. If a pair of electron lines disappears into the vacuum, then translation invariance requires the momenta of these two lines to be equal in magnitude and opposite in direction, so if one momentum is near the Fermi surface, then the other is also. (Time reversal invariance requires that $E(\mathbf p)$ is even in $\mathbf p$, so even though the Fermi surface is generally not spherical, it is still true that if $E(\mathbf p)=0$ then $E(-\mathbf p)=0$.) The integral over the momentum $\mathbf p$ of one of these lines is then over a shell of thickness $\kappa$, or in other words over two $\mathbf k$s and one $\ell$. For each interaction involving two such lines, we have one rather than two integrals over $\ell$s, so that instead of reducing the order of magnitude of the matrix element by a factor $\kappa$ as indicated in Eqs.~\eqref{eq:21.6.43} and \eqref{eq:21.6.46}, such an interaction has no effect on the order of magnitude of the matrix element. In other words, interactions involving four electron operators become marginal rather than irrelevant if they act between electron lines that eventually disappear into the vacuum.
+
+To see the consequences of this exception, it is convenient to use a trick, known as the Hubbard--Stratonovich transformation~\hyperref[ch21-ref-45]{[45]}, that was mentioned briefly in \hyperref[sec:10.7]{Section 10.7}. We are now going to include slowly varying external electromagnetic fields, so it will be convenient to work in coordinate space. Gauge invariance tells us that the Lagrangian \eqref{eq:21.6.37} then becomes
+\begin{align}
+L={}&-\sum_s\int d^3x\,
+\psi_s^\dagger(\mathbf x,t)
+\left[
+-i\frac{\partial}{\partial t}-A_0(\mathbf x,t)
++E\{-i\boldsymbol\nabla+\mathbf A(\mathbf x,t)\}
+\right]\psi_s(\mathbf x,t)
+\notag\\
+&+\sum_{s_1s_2s_3s_4}
+\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4\,
+V_{s_1s_2s_3s_4}(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\qquad\cdot
+\psi^\dagger_{s_1}(\mathbf x_1,t)
+\psi^\dagger_{s_2}(\mathbf x_2,t)
+\psi_{s_3}(\mathbf x_3,t)
+\psi_{s_4}(\mathbf x_4,t),
+\tag{21.6.47}\label{eq:21.6.47}
+\end{align}
+where
+\begin{equation}
+\psi_s(\mathbf x,t)\equiv(2\pi)^{-3/2}
+\int d^3p\,\exp(i\mathbf p\cdot\mathbf x)\,a_{\mathbf p,s}(t).
+\tag{21.6.48}\label{eq:21.6.48}
+\end{equation}
+We are now dropping terms with more than four electron operators, because they are all irrelevant. To this Lagrangian we add the term
+\begin{align}
+\Delta L={}&\frac14
+\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4
+\sum_{s_1s_2s_3s_4}
+V_{s_1s_2s_3s_4}(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\quad\cdot
+\left[
+\Psi^\dagger_{s_2s_1}(\mathbf x_2,\mathbf x_1,t)
+-\psi^\dagger_{s_1}(\mathbf x_1,t)\psi^\dagger_{s_2}(\mathbf x_2,t)
+\right]
+\notag\\
+&\quad\cdot
+\left[
+\Psi_{s_3s_4}(\mathbf x_3,\mathbf x_4,t)
+-\psi_{s_3}(\mathbf x_3,t)\psi_{s_4}(\mathbf x_4,t)
+\right]
+\tag{21.6.49}\label{eq:21.6.49}
+\end{align}
+and do path integrals over the new `pair' field $\Psi(\mathbf x,s,\mathbf x',s',t)$ as well as the electron field $\psi$. This is allowed because $\Delta L$ is quadratic in the pair field, with a field-independent coefficient of the second-order term, so, according to the \hyperref[app:9]{appendix of Chapter 9}, the integration over $\Psi_{ss'}(\mathbf x,\mathbf x',t)$ in path integrals just has the effect of setting $\Psi_{ss'}(\mathbf x,\mathbf x',t)$ equal to the stationary point $\Psi_{ss'}(\mathbf x,\mathbf x',t)=\psi_s(\mathbf x,t)\psi_{s'}(\mathbf x',t)$ of the Lagrangian, at which $\Delta L=0$. This additional term is chosen so that the terms in $L+\Delta L$ that are quartic in electron fields cancel, leaving only terms quadratic in these fields:
+\begin{align}
+L+\Delta L
+={}&-\sum_s\int d^3x\,
+\psi_s^\dagger(\mathbf x,t)
+\left\{
+-i\frac{\partial}{\partial t}-A_0(\mathbf x,t)
++E[-i\boldsymbol\nabla+\mathbf A(\mathbf x,t)]
+\right\}\psi_s(\mathbf x,t)
+\notag\\
+&-\frac14\sum_{s_1s_2s_3s_4}
+\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4\,
+V_{s_1s_2s_3s_4}(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\quad\cdot
+\left[
+\psi^\dagger_{s_1}(\mathbf x_1,t)
+\psi^\dagger_{s_2}(\mathbf x_2,t)
+\Psi_{s_3s_4}(\mathbf x_3,\mathbf x_4,t)
+\right.
+\notag\\
+&\qquad\left.
++\Psi^\dagger_{s_2s_1}(\mathbf x_2,\mathbf x_1,t)
+\psi_{s_3}(\mathbf x_3,t)
+\psi_{s_4}(\mathbf x_4,t)
+-\Psi^\dagger_{s_2s_1}(\mathbf x_2,\mathbf x_1,t)
+\Psi_{s_3s_4}(\mathbf x_3,\mathbf x_4,t)
+\right].
+\tag{21.6.50}\label{eq:21.6.50}
+\end{align}
+
+Now to the point. We have shown that the interaction $V$ is irrelevant except where it acts on a pair of electron lines that disappear into the vacuum. When we calculate the quantum effective action $\Gamma[\Psi]$ in the presence of an external, slowly varying pair field $\Psi_{ss'}(\mathbf x,\mathbf x',t)$, this means that we drop all diagrams except those that become disconnected when we slice through any internal $\Psi$ line. But the general definition of the quantum effective action requires that we drop all diagrams that \emph{do} become disconnected when we slice through any internal line. \emph{Therefore we must not include any internal $\Psi$ lines at all.} Because the electron field enters quadratically in Eq.~\eqref{eq:21.6.50}, the only graphs that survive when we integrate out the electron field are a one-vertex graph arising from the last term in the square brackets in Eq.~\eqref{eq:21.6.50}, plus a one-loop graph given, by the same reasoning as in \hyperref[sec:16.2]{Section 16.2}, by the logarithm of the determinant of the coefficient of the terms quadratic in electron fields:
+\begin{align}
+\Gamma[\Psi]
+={}&\frac14\sum_{s_1s_2s_3s_4}
+\int dt\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4\,
+V_{s_1s_2s_3s_4}(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\quad\cdot
+\Psi^\dagger_{s_2s_1}(\mathbf x_2,\mathbf x_1,t)
+\Psi_{s_3s_4}(\mathbf x_3,\mathbf x_4,t)
+\notag\\
+&-\frac{i}{2}\ln\operatorname{Det}
+\begin{pmatrix}
+A&B\\
+B^\dagger&-A^T
+\end{pmatrix}
++\text{constant}.
+\tag{21.6.51}\label{eq:21.6.51}
+\end{align}
+where $A$ and $B$ are the `matrices':
+\begin{align}
+A_{\mathbf x's't',\mathbf xst}
+\equiv{}&\delta_{s's}
+\left\{
+-i\frac{\partial}{\partial t}-A_0(\mathbf x,t)
++E[-i\boldsymbol\nabla+\mathbf A(\mathbf x,t)]
+\right\}
+\notag\\
+&\qquad\cdot\delta^3(\mathbf x'-\mathbf x)\delta(t'-t),
+\tag{21.6.52}\label{eq:21.6.52}\\
+B_{\mathbf x's't',\mathbf xst}
+\equiv{}&-\Delta_{s's}(\mathbf x',\mathbf x,t)\delta(t'-t),
+\tag{21.6.53}\label{eq:21.6.53}
+\end{align}
+and $\Delta$ is the gap function:
+\begin{equation}
+\Delta_{s's}(\mathbf x',\mathbf x,t)
+\equiv\frac12\sum_{\sigma'\sigma}
+\int d^3y\,d^3y'\,
+V_{s's\sigma'\sigma}(\mathbf x',\mathbf x,\mathbf y',\mathbf y)
+\Psi_{\sigma'\sigma}(\mathbf y',\mathbf y,t).
+\tag{21.6.54}\label{eq:21.6.54}
+\end{equation}
+(Here and below, we ignore an additive constant in $\Gamma$ arising from the modes that have been integrated out.) This is one problem in which the effective action can be calculated without any assumption about the smallness of the interaction in the Lagrangian.
+
+In order to simplify our further discussion, let us now specialize to the case of a spin-singlet pair field
+\begin{equation}
+\Psi_{+-}(\mathbf x',\mathbf x,t)
+=-\Psi_{-+}(\mathbf x',\mathbf x,t)
+\equiv\Psi(\mathbf x',\mathbf x,t),
+\tag{21.6.55}\label{eq:21.6.55}
+\end{equation}
+where subscripts $+$ and $-$ stand for spin indices $+1/2$ and $-1/2$, respectively.\footnote{In liquid He$^3$ the non-vanishing components of the pair field form a spin triplet, with components $\Psi_1=\Psi_{++}$, $\Psi_0=\sqrt2\Psi_{+-}=\sqrt2\Psi_{-+}$, $\Psi_{-1}=\Psi_{--}$.} Using invariance under rotations of spin indices, the components of the potential needed here are then
+\begin{align}
+V_{+-+-}(\mathbf x',\mathbf x,t)
+-V_{+--+}(\mathbf x',\mathbf x,t)
+={}&-V_{-++-}(\mathbf x',\mathbf x,t)
++V_{-+-+}(\mathbf x',\mathbf x,t)
+\notag\\
+\equiv{}&2V(\mathbf x',\mathbf x,t).
+\tag{21.6.56}\label{eq:21.6.56}
+\end{align}
+Then Eq.~\eqref{eq:21.6.54} gives
+\begin{equation}
+\Delta_{+-}(\mathbf x',\mathbf x,t)
+=-\Delta_{-+}(\mathbf x',\mathbf x,t)
+\equiv\Delta(\mathbf x',\mathbf x,t),
+\tag{21.6.57}\label{eq:21.6.57}
+\end{equation}
+\begin{equation}
+\Delta_{++}(\mathbf x',\mathbf x,t)
+=\Delta_{--}(\mathbf x',\mathbf x,t)=0.
+\tag{21.6.58}\label{eq:21.6.58}
+\end{equation}
+The quantum effective action \eqref{eq:21.6.51} is now
+\begin{align}
+\Gamma[\Psi]
+={}&\int dt\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4\,
+V(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\qquad\cdot
+\Psi^\dagger(\mathbf x_2,\mathbf x_1,t)
+\Psi(\mathbf x_3,\mathbf x_4,t)
+\notag\\
+&-i\ln\operatorname{Det}
+\begin{pmatrix}
+\mathcal A&\mathcal B\\
+\mathcal B^\dagger&-\mathcal A^T
+\end{pmatrix},
+\tag{21.6.59}\label{eq:21.6.59}
+\end{align}
+where
+\begin{align}
+\mathcal A_{\mathbf x't',\mathbf xt}
+\equiv{}&
+\left\{
+-i\frac{\partial}{\partial t}-A_0(\mathbf x,t)
++E[-i\boldsymbol\nabla+\mathbf A(\mathbf x,t)]
+\right\}
+\delta^3(\mathbf x'-\mathbf x)\delta(t'-t),
+\tag{21.6.60}\label{eq:21.6.60}\\
+\mathcal B_{\mathbf x't',\mathbf xt}
+\equiv{}&-\Delta(\mathbf x',\mathbf x,t)\delta(t'-t),
+\tag{21.6.61}\label{eq:21.6.61}
+\end{align}
+and
+\begin{equation}
+\Delta(\mathbf x',\mathbf x,t)
+\equiv\int d^3y\,d^3y'\,
+V(\mathbf x',\mathbf x,\mathbf y',\mathbf y)
+\Psi(\mathbf y',\mathbf y,t).
+\tag{21.6.62}\label{eq:21.6.62}
+\end{equation}
+
+Let's first use these results to consider the translationally invariant case, with no external electromagnetic fields. Then the pair and gap fields can be expressed as Fourier transforms
+\begin{equation}
+\Psi(\mathbf x',\mathbf x)
+=\int d^3p\,e^{i\mathbf p\cdot(\mathbf x'-\mathbf x)}\Psi(\mathbf p),
+\tag{21.6.63}\label{eq:21.6.63}
+\end{equation}
+\begin{equation}
+\Delta(\mathbf x',\mathbf x)
+=(2\pi)^{-3}\int d^3p\,e^{i\mathbf p\cdot(\mathbf x'-\mathbf x)}
+\Delta(\mathbf p),
+\tag{21.6.64}\label{eq:21.6.64}
+\end{equation}
+and the electron--electron potential appears here in the form
+\begin{align}
+&\int d^3x_1\,d^3x_2\,d^3x_3\,d^3x_4\,
+e^{i\mathbf p'\cdot(\mathbf x_1-\mathbf x_2)}
+e^{i\mathbf p\cdot(\mathbf x_3-\mathbf x_4)}
+V(\mathbf x_1,\mathbf x_2,\mathbf x_3,\mathbf x_4)
+\notag\\
+&\hspace{6em}\equiv\mathcal V_4 V(\mathbf p',\mathbf p),
+\tag{21.6.65}\label{eq:21.6.65}
+\end{align}
+where $\mathcal V_4$ is the spacetime volume
+\begin{equation}
+\mathcal V_4\equiv\int d^3x\int dt\,1.
+\tag{21.6.66}\label{eq:21.6.66}
+\end{equation}
+By going over to wave number--frequency space, the `matrices' \eqref{eq:21.6.60} and \eqref{eq:21.6.61} become diagonal, and the calculation of the determinant becomes trivial. The effective potential $V[\Psi]$ (not to be confused with the electron--electron potential) was defined in \hyperref[sec:16.1]{Section 16.1} as minus the effective action per spacetime volume:
+\begin{align}
+V[\Psi]\equiv-\Gamma[\Psi]/\mathcal V_4
+={}&-\int d^3p\,d^3p'\,
+\Psi^*(\mathbf p')V(\mathbf p',\mathbf p)\Psi(\mathbf p)
+\notag\\
+&+\frac{i}{(2\pi)^4}\int d\omega\,d^3p\,
+\ln\left(
+1+\frac{|\Delta(\mathbf p)|^2}
+{\omega^2-E^2(\mathbf p)+i\epsilon}
+\right)
+\tag{21.6.67}\label{eq:21.6.67}
+\end{align}
+with
+\begin{equation}
+\Delta(\mathbf p)=-\int d^3p'\,
+V(\mathbf p,\mathbf p')\Psi(\mathbf p').
+\tag{21.6.68}\label{eq:21.6.68}
+\end{equation}
+(The $i\epsilon$ term can be inferred from the Feynman rules for the electron loop graphs, and as shown in \hyperref[sec:9.2]{Section 9.2}, it ultimately arises from the conditions on the electron field at $t\to\pm\infty$.) Wick rotating, integrating over $\omega$, and expressing $\Psi$ in terms of $\Delta$, this becomes
+\begin{align}
+V[\Delta]={}&-\int d^3p\,d^3p'\,
+\Delta^*(\mathbf p')V^{-1}(\mathbf p',\mathbf p)\Delta(\mathbf p)
+\notag\\
+&-\frac{1}{(2\pi)^3}\int d^3p\,
+\left[
+\sqrt{E^2(\mathbf p)+|\Delta(\mathbf p)|^2}-E(\mathbf p)
+\right].
+\tag{21.6.69}\label{eq:21.6.69}
+\end{align}
+As we saw in \hyperref[sec:16.1]{Section 16.1}, the field equations are just the condition that the effective action is stationary, which in our case yields the famous \emph{gap equation} for the equilibrium gap function $\Delta_0(\mathbf p)$:
+\begin{align*}
+0
+\equiv{}&
+\left.
+\frac{\delta V[\Delta]}{\delta\Delta^*(\mathbf p)}
+\right|_{\Delta=\Delta_0}
+\\
+={}&-\int d^3p'\,
+V^{-1}(\mathbf p,\mathbf p')\Delta_0(\mathbf p')
+-\frac{1}{2(2\pi)^3}
+\frac{\Delta_0(\mathbf p)}
+{\sqrt{E^2(\mathbf p)+|\Delta_0(\mathbf p)|^2}}
+\end{align*}
+or, in a more familiar form,
+\begin{equation}
+\Delta_0(\mathbf p)
+=-\frac{1}{2(2\pi)^3}
+\int d^3p'\,
+\frac{V(\mathbf p,\mathbf p')\Delta_0(\mathbf p')}
+{\sqrt{E^2(\mathbf p')+|\Delta_0(\mathbf p')|^2}}.
+\tag{21.6.70}\label{eq:21.6.70}
+\end{equation}
+
+All along, all integrals over momenta have been implicitly understood to be limited to momenta of the form \eqref{eq:21.6.39} within a thin shell of thickness $\kappa$ around the Fermi surface. The effective potential \eqref{eq:21.6.69} is thus
+\begin{align}
+V[\Delta]
+={}&-\kappa^2\int_{\mathcal S}d^2k\,d^2k'\,
+\Delta^*(\mathbf k')V^{-1}(\mathbf k',\mathbf k)\Delta(\mathbf k)
+\notag\\
+&-\frac{1}{(2\pi)^3}\int_0^\kappa d\ell
+\int_{\mathcal S}d^2k\,
+\left[
+\sqrt{\ell^2v_F^2(\mathbf k)+|\Delta(\mathbf k)|^2}
+-\ell v_F(\mathbf k)
+\right].
+\tag{21.6.71}\label{eq:21.6.71}
+\end{align}
+The effective potential is now to be understood as a functional only of the gap function $\Delta$ on the Fermi surface.
+
+Since $\kappa$ is arbitrary, the potential $V(\mathbf k',\mathbf k)$ must be given a $\kappa$-dependence such that $V[\Delta]$ is $\kappa$-independent. Most applications~\hyperref[ch21-ref-44]{[44]} of renormalization group methods to superconductivity have followed the Wilson approach outlined in \hyperref[sec:12.4]{Section 12.4}, deriving a differential equation for the dependence of $V(\mathbf k',\mathbf k)$ on $\kappa$, and studying the behavior of its solutions for $\kappa\to0$. For the sake of flexibility it is useful to note that one can just as well adopt the approach of Gell-Mann and Low, and introduce a renormalized electron--electron potential~\hyperref[ch21-ref-44a]{[44a]}
+\begin{equation}
+V_\mu^{-1}(\mathbf k',\mathbf k)
+\equiv-
+\left.
+\frac{\delta^2V[\Delta]}
+{\delta\Delta^*(\mathbf k')\delta\Delta(\mathbf k)}
+\right|_{\Delta(\mathbf k)=\Delta(\mathbf k')=\mu},
+\tag{21.6.72}\label{eq:21.6.72}
+\end{equation}
+where $\mu$ is a sliding renormalization scale, like that introduced in \hyperref[sec:18.2]{Section 18.2}. By expressing the original electron--electron potential in terms of $V_\mu$, Eq.~\eqref{eq:21.6.71} becomes
+\begin{align}
+V[\Delta]
+={}&-\int_{\mathcal S}d^2k\,d^2k'\,
+\Delta^*(\mathbf k')V_\mu^{-1}(\mathbf k',\mathbf k)\Delta(\mathbf k)
+\notag\\
+&-\frac{1}{(2\pi)^3}\int_0^\kappa d\ell
+\int_{\mathcal S}d^2k\,
+\left[
+\sqrt{\ell^2v_F^2(\mathbf k)+|\Delta(\mathbf k)|^2}
+-\ell v_F(\mathbf k)
+\right.
+\notag\\
+&\hspace{11em}\left.
+-\frac{|\Delta(\mathbf k)|^2}
+{2[\ell^2v_F^2(\mathbf k)+\mu^2]^{1/2}}
++\frac{\mu^2|\Delta(\mathbf k)|^2}
+{4[\ell^2v_F^2(\mathbf k)+\mu^2]^{3/2}}
+\right].
+\tag{21.6.73}\label{eq:21.6.73}
+\end{align}
+The integral over $\ell$ now converges if we take the cutoff $\kappa$ to infinity, and yields
+\begin{align}
+V[\Delta]
+={}&-\int_{\mathcal S}d^2k\,d^2k'\,
+\Delta^*(\mathbf k')V_\mu^{-1}(\mathbf k',\mathbf k)\Delta(\mathbf k)
+\notag\\
+&+\frac{1}{2(2\pi)^3}\int_{\mathcal S}d^2k\,
+\frac{|\Delta(\mathbf k)|^2}{v_F(\mathbf k)}
+\left[
+\ln\left(\frac{|\Delta(\mathbf k)|}{\mu}\right)-1
+\right].
+\tag{21.6.74}\label{eq:21.6.74}
+\end{align}
+The condition that $V[\Delta]$ be stationary at $\Delta=\Delta_0$ yields the gap equation in the more useful form
+\begin{equation}
+\Delta_0(\mathbf k)
+=\frac{1}{2(2\pi)^3}
+\int_{\mathcal S}d^2k'\,
+V_\mu(\mathbf k,\mathbf k')v_F^{-1}(\mathbf k')
+\Delta_0(\mathbf k')
+\ln\left(\frac{|\Delta_0(\mathbf k')|}{\mu}\right).
+\tag{21.6.75}\label{eq:21.6.75}
+\end{equation}
+
+Using this in Eq.~\eqref{eq:21.6.74} shows that the energy density of the superconducting state is less than that of the normal state by an amount
+\begin{equation}
+\Delta\equiv V(0)-V(\Delta_0)
+=\int_{\mathcal S}d^2k\,
+\frac{|\Delta_0(\mathbf k)|^2}{2(2\pi)^3v_F(\mathbf k)}.
+\tag{21.6.76}\label{eq:21.6.76}
+\end{equation}
+Of course the $\mu$ dependence of the electron--electron potential $V_\mu$ must be chosen to satisfy a renormalization group equation that insures that the effective potential \eqref{eq:21.6.74} is independent of the arbitrary renormalization scale $\mu$:
+\[
+\mu\frac{d}{d\mu}V_\mu^{-1}(\mathbf k',\mathbf k)
+=-\frac{\delta^2(\mathbf k'-\mathbf k)}
+{2(2\pi)^3v_F(\mathbf k)}
+\]
+or, equivalently,
+\begin{equation}
+\mu\frac{d}{d\mu}V_\mu(\mathbf k',\mathbf k)
+=\frac{1}{2(2\pi)^3}
+\int d^2k''\,
+V_\mu(\mathbf k',\mathbf k'')
+v_F^{-1}(\mathbf k'')
+V_\mu(\mathbf k'',\mathbf k).
+\tag{21.6.77}\label{eq:21.6.77}
+\end{equation}
+This can be usefully rewritten in terms of the Hermitian kernel
+\begin{equation}
+K_\mu(\mathbf k',\mathbf k)
+\equiv\frac{1}{2(2\pi)^3}
+v_F^{-1/2}(\mathbf k')v_F^{-1/2}(\mathbf k)
+V_\mu(\mathbf k',\mathbf k),
+\tag{21.6.78}\label{eq:21.6.78}
+\end{equation}
+as
+\begin{equation}
+\mu\frac{d}{d\mu}K_\mu=K_\mu^2.
+\tag{21.6.79}\label{eq:21.6.79}
+\end{equation}
+The eigenvectors $u_n(\mathbf k)$ of $K_\mu(\mathbf k,\mathbf k')$ are then independent of $\mu$, while the eigenvalues take the form $1/\ln(\Lambda_n/\mu)$, where the $\Lambda_n$ are integration constants, like the $\Lambda$ of quantum chromodynamics. The potential therefore takes the form
+\begin{equation}
+V_\mu(\mathbf k',\mathbf k)
+=2(2\pi)^3v_F^{1/2}(\mathbf k)v_F^{1/2}(\mathbf k')
+\sum_n
+\frac{u_n(\mathbf k)u_n^*(\mathbf k')}
+{\ln(\Lambda_n/\mu)},
+\tag{21.6.80}\label{eq:21.6.80}
+\end{equation}
+where we have chosen the eigenvectors to be orthonormal, so that the completeness relation takes the form
+\begin{equation}
+\sum_n u_n(\mathbf k)u_n^*(\mathbf k')
+=\delta^2(\mathbf k-\mathbf k').
+\tag{21.6.81}\label{eq:21.6.81}
+\end{equation}
+The effective potential \eqref{eq:21.6.74} may then be written as
+\begin{align}
+V[\Delta]
+={}&\frac{1}{2(2\pi)^3}
+\int d^2k\,d^2k'\sum_n
+\frac{
+\Delta^*(\mathbf k')u_n^*(\mathbf k')
+\Delta(\mathbf k)u_n(\mathbf k)}
+{\sqrt{v_F(\mathbf k')v_F(\mathbf k)}}
+\notag\\
+&\qquad\cdot
+\left[
+\ln\left(\frac{|\Delta(\mathbf k)|}{\Lambda_n}\right)-1
+\right].
+\tag{21.6.82}\label{eq:21.6.82}
+\end{align}
+For a material with local rotational invariance the Fermi surface is a sphere and the eigenvectors $u_n(\mathbf k)$ are spherical harmonic functions of the coordinates on this sphere, but Eq.~\eqref{eq:21.6.82} holds without any assumption of rotational invariance.
+
+We can now use this formalism to get an idea of when superconductivity occurs. The logarithm in Eq.~\eqref{eq:21.6.82} is large and negative for very small $\Delta$, and large and positive for very large $\Delta$, so as the overall scale of $\Delta$ increases from zero to infinity, $V[\Delta]$ drops from zero to negative values and then rises to infinity. It therefore always has a minimum at a non-vanishing value of $\Delta$ for any electron--electron potential. But this result is subject to an important qualification. When we take the cut-off $\kappa$ to infinity, the integral in Eq.~\eqref{eq:21.6.73} is effectively cut off at $\ell$ of order $|\Delta|/v_F$, while the Fermi surface has a radius of order $k_F$, where $8\pi k_F^3/3(2\pi)^3$ equals the electron number density. Since we have been assuming that the electrons taken into account here are in a \emph{thin} shell around the Fermi surface, this derivation is only valid if $|\Delta|\ll\omega_D$, where $\omega_D$ is the Debye frequency $k_Fv_F$. In particular, in the case of rotational invariance and a direction-independent gap function, the effective potential reaches a local minimum for a gap function of the order of $\Lambda_{s\text{ wave}}$, so the symmetry is spontaneously broken as long as $\Lambda_{s\text{ wave}}\ll\omega_D$. Another way of stating this result is that for $s$-wave superconductivity, the $s$-wave projection of the electron--electron potential \eqref{eq:21.6.80} must be attractive if renormalized at a scale $\mu\approx\omega_D$. \emph{But it does not matter how strong this renormalized attractive potential is.}
+
+This feature of superconductivity, that a Goldstone boson forms for an attractive potential however weak the potential may be, is a consequence of the existence of a Fermi surface, which enhances long-range effects. In quantum field theories without elementary spinless fields like those of \hyperref[sec:21.5]{Section 21.5}, we would not normally expect a spontaneous symmetry breakdown in empty space unless the interactions are sufficiently strong.
+
+Now let us return to the case of an external electromagnetic field. As usual, we can introduce the Goldstone boson field $\phi(\mathbf x,t)$ by writing each charged field of the theory, which here is just the gap field $\Delta(\mathbf x,\mathbf x',t)$ or equivalently the pair field $\Psi(\mathbf x,\mathbf x',t)$, as a gauge transformation with gauge parameter $\phi(\mathbf x,t)$ acting on the corresponding gauge-invariant field, distinguished with a tilde:
+\begin{equation}
+\Psi(\mathbf x,\mathbf x',t)
+=\exp[-i\phi(\mathbf x,t)]\,
+\widetilde\Psi(\mathbf x,\mathbf x',t)\,
+\exp[-i\phi(\mathbf x',t)].
+\tag{21.6.83}\label{eq:21.6.83}
+\end{equation}
+The effective action is then given by using Eq.~\eqref{eq:21.6.83} in Eq.~\eqref{eq:21.6.59}. By a gauge transformation, we can then remove the $\phi$ dependence in Eq.~\eqref{eq:21.6.83}, provided we replace $A_\mu(x)$ in Eq.~\eqref{eq:21.6.60} with $A_\mu(x)-\partial_\mu\phi(x)$. When the material is not only superconducting but far from the transition between normal and superconducting states, we may also integrate out the gauge-invariant degrees of freedom associated with $\widetilde\Psi(\mathbf x,\mathbf x',t)$, which simply means that we replace it with its equilibrium value $\Psi_0(\mathbf x,\mathbf x',t)$. The part of the effective action that depends on the Goldstone and external electromagnetic fields is then
+\begin{align}
+\Gamma[\phi,A]
+={}&\Gamma_{\Delta=0}[A]
+-i\ln\operatorname{Det}
+\begin{pmatrix}
+\mathcal A&\mathcal B\\
+\mathcal B^\dagger&-\mathcal A^T
+\end{pmatrix}
+\notag\\
+&+i\ln\operatorname{Det}
+\begin{pmatrix}
+\mathcal A&0\\
+0&-\mathcal A^T
+\end{pmatrix},
+\tag{21.6.84}\label{eq:21.6.84}
+\end{align}
+where now
+\begin{align}
+\mathcal A_{\mathbf x't',\mathbf xt}
+={}&\left[
+-i\frac{\partial}{\partial t}
++eA_0(\mathbf x,t)-e\dot\phi(\mathbf x,t)
+\right.
+\notag\\
+&\left.\qquad
++E\{-i\boldsymbol\nabla+e\mathbf A(\mathbf x,t)
+-e\boldsymbol\nabla\phi(\mathbf x,t)\}
+\right]
+\delta^3(\mathbf x'-\mathbf x)\delta(t'-t),
+\tag{21.6.85}\label{eq:21.6.85}\\
+\mathcal B_{\mathbf x't',\mathbf xt}
+={}&\Delta_0(\mathbf x'-\mathbf x)\delta(t'-t).
+\tag{21.6.86}\label{eq:21.6.86}
+\end{align}
+Quantitative properties of the superconductor such as the penetration depth can be read off~\hyperref[ch21-ref-46]{[46]} from the expansion of Eq.~\eqref{eq:21.6.84} in powers of $A_0(\mathbf x,t)-\dot\phi(\mathbf x,t)$ and $\mathbf A(\mathbf x,t)-\boldsymbol\nabla\phi(\mathbf x,t)$.

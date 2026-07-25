@@ -1,0 +1,70 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\numberwithin{equation}{subsection}
+\allowdisplaybreaks
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Chapter 23 Section 23.8 and Appendix A isolated check},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externaldest}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\begin{document}
+
+% Check-only destinations for links outside this isolated package.
+\externaldest{app:9}{Appendix to Chapter 9}
+\externaldest{sec:9.1}{9.1}
+\externaldest{sec:19.5}{19.5}
+\externaldest{sec:23.1}{23.1}
+\externaldest{sec:23.7}{23.7}
+\externaldest{eq:23.1.4}{23.1.4}
+
+\externaldest{ch23-ref-6}{6}
+\externaldest{ch23-ref-37}{37}
+\externaldest{ch23-ref-38}{38}
+\externaldest{ch23-ref-39}{39}
+
+\setcounter{section}{22}
+\section{Extended Field Configurations}
+\setcounter{subsection}{7}
+\input{chapters/chapter23/sec238.tex}
+\input{chapters/chapter23/appendixA.tex}
+
+\end{document}
