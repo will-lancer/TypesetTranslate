@@ -2,7 +2,7 @@
 
 Typesetting old, beautiful physics and math books and papers into modern LaTeX.
 The typesetting is done almost entirely via coding agents.
-Please email me at will.m.lancer@gmail.com if you find any errors.
+Please email me at `will.m.lancer@gmail.com` if you find any errors.
 
 The repository has one canonical content tree:
 
