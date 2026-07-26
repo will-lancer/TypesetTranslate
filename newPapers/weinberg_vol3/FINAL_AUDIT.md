@@ -16,8 +16,8 @@ blank. The publisher cover, promotional endorsements, and copyright
 colophon on physical pp. 1--5 and 7 are deliberately not reproduced.
 
 The stable full-volume export is `weinberg-vol3.pdf`, 373 A4 pages,
-2,199,798 bytes, SHA-256
-`4ef742646eb990a0aa27fe6256f9b3a997c45617155e8544057dd7da45d4ad6d`.
+2,199,796 bytes, SHA-256
+`5a69c9fbd0fa6f3ef570e88750762b71ce9f2980a634530d0356f9a823c68f3d`.
 At export time it was byte-identical to `latex/master.pdf`; that duplicate
 build artifact was removed during the final cleanup.
 
@@ -136,6 +136,6 @@ retained PDF is the complete `weinberg-vol3.pdf`.
 | `weinberg-vol3-chapter30.pdf` | 10 | `340898a95be605e74b6685a18e406fc2bf454e7b5b5764dcd65c581016e503d6` |
 | `weinberg-vol3-chapter31.pdf` | 58 | `10e12df8502244892c08de7bb9e0dc1b53e7188fe79155f7306d02c9a4220e10` |
 | `weinberg-vol3-chapter32.pdf` | 25 | `d6f975ae964a7059c978e4dcc50c2a899927ccd30e63d7cbedf32f22c0e33c59` |
-| `weinberg-vol3.pdf` | 373 | `4ef742646eb990a0aa27fe6256f9b3a997c45617155e8544057dd7da45d4ad6d` |
+| `weinberg-vol3.pdf` | 373 | `5a69c9fbd0fa6f3ef570e88750762b71ce9f2980a634530d0356f9a823c68f3d` |
 
 All acceptance gates in `COMPLETION_PLAN.md` are satisfied.
