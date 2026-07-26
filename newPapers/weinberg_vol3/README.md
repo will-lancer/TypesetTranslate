@@ -55,10 +55,56 @@ dividers, five problems, and 59 displayed reference entries. Its isolated and
 full-volume builds, complete rendered review, internal-link audit, and stable
 export `weinberg-vol3-chapter28.pdf` have passed.
 
-Stable PDF exports will be written to:
+Chapter 29, “Beyond Perturbation Theory,” is fully transcribed from physical
+source pages 271--329 (printed pages 248--306). It includes all 209 numbered
+equations, 33 unnumbered display groups, twelve ordinary footnotes, one
+typographic divider, one reconstructed figure, three problems, and thirteen
+displayed reference entries. Its integrated build, complete rendered review,
+internal-link audit, and stable export `weinberg-vol3-chapter29.pdf` have
+passed.
 
-- `weinberg-vol3-chapter24.pdf` through `weinberg-vol3-chapter32.pdf`
+Chapter 30, “Supergraphs,” is fully transcribed from physical source pages
+330--340 (printed pages 307--317). It includes all 33 numbered equations,
+nine unnumbered display groups, three problems, and two displayed reference
+entries, with no footnotes, figures, tables, or typographic dividers. Its
+integrated build, complete rendered review, internal-link audit, and stable
+export `weinberg-vol3-chapter30.pdf` have passed.
+
+Chapter 31, “Supergravity,” is fully transcribed from physical source pages
+341--404 (printed pages 318--381). It includes all 289 numbered equations,
+36 unnumbered display groups, five ordinary footnotes, three typographic
+dividers, six problems, and 28 displayed reference entries, with no figures
+or tables. Its integrated 58-page build, complete rendered review,
+internal-link audit, and stable export `weinberg-vol3-chapter31.pdf` have
+passed.
+
+Chapter 32, “Supersymmetry Algebras in Higher Dimensions,” is fully
+transcribed from physical source pages 405--433 (printed pages 382--410),
+including the intentionally blank final chapter page. It includes all 109
+numbered equations, twelve unnumbered display groups, two ordinary footnotes,
+four problems, and fifteen displayed reference entries, with no figures,
+tables, or typographic dividers. Its integrated 25-page build, complete
+rendered review, internal-link audit, and stable export
+`weinberg-vol3-chapter32.pdf` have passed.
+
+The Author and Subject Indexes are fully transcribed from physical source
+pages 434--442; physical page 443 is intentionally blank. Their isolated
+nine-page build and complete rendered review have passed, preserving the
+two-column layout, semantic italics, entry hierarchy, and source-visible
+wording.
+
+The complete 373-page master has passed its reference audit, clean build,
+all-page rendered review, warning-page inspection, embedded-font check, and
+byte-identical stable export. Full production details and artifact hashes are
+recorded in `FINAL_AUDIT.md`.
+
+The retained stable PDF export is:
+
 - `weinberg-vol3.pdf`
+
+The chapter-only PDFs, isolated checks, build auxiliaries, and rendered QA
+artifacts were removed after their hashes and results were recorded in
+`FINAL_AUDIT.md`.
 
 ```sh
 cd latex && latexmk -pdf master.tex

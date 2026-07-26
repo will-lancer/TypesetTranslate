@@ -60,4 +60,14 @@ only aids.
 - Physical pp. 434--443 have been rendered at 140 dpi and inspected in
   an all-page contact sheet. The two index boundaries and the
   intentionally blank final page were confirmed.
-- Transcription has not yet begun.
+- `indexes.tex` now contains both complete indexes: 376 Author Index
+  entries with 597 semantically italicized publication-page references,
+  followed by 168 Subject Index entries and 48 indented subentries.
+- Physical pp. 434--442 were inspected individually at 500 dpi, and the
+  intentionally blank physical p. 443 was confirmed.
+- `checks/indexes.tex` compiles to nine A4 pages with no errors,
+  overfull boxes, clipping, or unresolved readings. Every rendered page
+  was inspected for column balance, wrapping, italics, indentation, and
+  boundary completeness.
+- Source-visible forms including `Ne'erman`, `Weiglein, G,`, and
+  `couplins` are intentionally preserved.

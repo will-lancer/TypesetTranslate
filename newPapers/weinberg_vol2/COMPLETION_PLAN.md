@@ -6,9 +6,12 @@ modernized Volume II. Physical page numbers refer to
 
 ## Current verified exports
 
-- Chapters 15--18 have transcribed source files, chapter-only PDFs, coverage
-  manifests, and full-volume integration.
-- Their claims remain subject to the final all-volume completion audit.
+- Chapters 15--23 have complete source files, coverage manifests, successful
+  full-volume integration, and page-by-page visual QA. Chapter-only
+  verification PDFs were removed during the final cleanup.
+- The Author and Subject Indexes are complete and source-audited.
+- The 434-page full-volume export passed the final all-volume static, build,
+  reference, notation, font, and rendered-page audits. See `FINAL_AUDIT.md`.
 
 ## Front matter
 
@@ -161,9 +164,18 @@ output page rendered and visually inspected. See
 
 | Output | Physical pages | Printed pages | Status |
 |---|---:|---:|---|
-| Author Index | 501--506 | 478--483 | pending |
+| Author Index | 501--506 | 478--483 | transcribed; independent scan audit, isolated compile, and six-page render inspection passed |
 | Subject Index | 507--512 | 484--489 | transcribed; isolated compile/render and source audit passed |
 | Non-content tail | 513--514 | none | source p. 513 is blank and p. 514 is the publisher's back cover; intentionally excluded |
+
+Integrated index status: complete 12-page build. The Author Index contains
+468 entries and 413 scan-matched italic page tokens. The Subject Index
+contains 308 top-level entries and 71 subentries. All twelve integrated pages
+were rendered from the final master and inspected; no clipping, collision,
+missing entry, or boundary drift was found. See
+`latex/backmatter/reports/author-index.md`,
+`latex/backmatter/reports/subject-index.md`, and
+`latex/backmatter/reports/indexes-integrated.md`.
 
 ## Acceptance gates
 
@@ -171,4 +183,10 @@ Completion requires every physical source page in the assigned ranges to be
 represented exactly once, all equations/figures/tables/notes/problems/references
 and index entries to be present, every isolated check and the full volume to
 compile, all final pages to pass rendered visual inspection, and stable
-chapter-only plus full-volume PDFs to be exported.
+chapter-only verification PDFs plus the full-volume PDF to be exported.
+
+All acceptance gates are satisfied. The stable full-volume artifact is
+`weinberg-vol2.pdf`, 434 pages, SHA-256
+`88695ad6c0aac7e9f8cbcd61948339b26ccd5fdb6afb8f4dc9b96bcdd61c40f2`.
+The chapter-only and isolated-check artifacts were removed after their audit
+results were recorded.

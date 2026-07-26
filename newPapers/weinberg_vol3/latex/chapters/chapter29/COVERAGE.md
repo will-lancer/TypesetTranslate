@@ -136,6 +136,17 @@ zero.
 - The visibly printed forms “Nucl. Phys. B52, 1677 (1984)” in
   Reference 3 and “K. Intrilligator” in Reference 10 are preserved
   rather than silently emended.
-- The chapter remains incomplete until sections 29.1--29.5, Figure
-  29.1, and the complete integrated chapter are transcribed and
-  verified.
+- The introduction and Sections 29.1--29.5 are complete. Their 209
+  numbered equations are consecutive and paired with 209 unique labels;
+  all 33 unnumbered display groups, twelve source footnotes, the centered
+  divider, and all linked citation markers are present.
+- Figure 29.1 is reconstructed as a chapter-local TikZ vector and was
+  checked at full resolution for both singularities, the base point,
+  contour paths, orientations, labels, and caption.
+- The integrated chapter check compiles to 52 A4 pages including its
+  title page, with all labels and links resolved and no box warnings or
+  errors. All final pages passed contact-sheet inspection; section
+  boundaries, Figure 29.1, Problems, References, and locally adjusted
+  paragraphs were additionally inspected at 220 dpi.
+- The stable export `weinberg-vol3-chapter29.pdf` is byte-identical to
+  the verified integrated check at export time.

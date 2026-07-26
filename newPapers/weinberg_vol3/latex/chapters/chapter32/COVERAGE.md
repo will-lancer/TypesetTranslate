@@ -123,5 +123,26 @@ unnumbered internal headings:
   pages were inspected at full resolution. Source-visible anomalies
   retained there include “Aitkens,” “similiar,” “Gueven,” and the
   missing comma after Townsend in Reference 10.
-- The introduction, sections 32.1--32.3, and appendix remain to be
-  transcribed.
+- `sec322.tex` and `sec323.tex` now cover physical pp. 416--424 through
+  the paragraph immediately before the appendix. Their isolated
+  eight-page check has 10 gap-free numbered equations, five unnumbered
+  display groups, one source footnote, and all linked citation markers;
+  it compiles without box or reference warnings, and every page was
+  inspected at 220 dpi. The source-visible cross-reference anomalies
+  involving `(32.3.1)`--`(32.3.3)` and `(32.3.8)` are preserved and
+  documented in `checks/chapter32-sec322-323-report.md`.
+- The introduction and Section 32.1 are complete and independently
+  compiled and inspected. They contain all 54 equations
+  (32.1.1)--(32.1.54), seven unnumbered display groups, eight linked
+  citation-marker occurrences, and the two internal headings “Odd
+  Dimensionality” and “Even Dimensionality.”
+- The Appendix is complete and independently compiled and inspected. It
+  contains all 45 equations (32.A.1)--(32.A.45), the internal headings
+  “Even Dimensions: \(d=2n\)” and “Odd Dimensions: \(d=2n+1\),” and
+  one ordinary source footnote.
+- The whole chapter has passed its integrated compile and rendered QA.
+  The 25-page check has all 109 equation labels in gap-free ranges, 12
+  unnumbered display groups, 18 linked source-citation occurrences, two
+  footnotes, four problems, and 15 displayed references. All labels and
+  hyperlinks resolve, the compile log has no box diagnostics or errors,
+  and every page has been visually inspected.

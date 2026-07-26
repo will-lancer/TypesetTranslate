@@ -9,6 +9,7 @@
 \usepackage{jheppub}
 \usepackage{etoolbox}
 \usepackage{float}
+\usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
 \numberwithin{equation}{subsection}
@@ -25,6 +26,12 @@
 
 \makeatletter
 \gdef\@fpheader{\phantom{x}}
+\newcommand{\externalvolumeanchor}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
 \makeatother
 
 \compress
@@ -75,6 +82,7 @@
 }
 
 \begin{document}
+\input{frontmatter/external-volume-anchors.tex}
 \maketitle
 \flushbottom
 

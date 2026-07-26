@@ -137,7 +137,8 @@ Physical pp. 405-433; printed pp. 382-410.
 ## Indexes
 
 - Author Index - physical pp. 434-438, printed pp. 411-415
-- Subject Index - physical pp. 439-443, printed pp. 416-420
+- Subject Index entries - physical pp. 439-442, printed pp. 416-419
+- Physical p. 443, printed p. 420, is intentionally blank
 
 Book-wide structural count: 9 chapters, 49 numbered sections, 5 chapter
 appendices, 9 problem sets, 9 chapter reference lists, and 2 indexes.

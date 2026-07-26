@@ -11,6 +11,14 @@ The project includes:
 - all chapter appendices, Problems, and References
 - the Author Index and Subject Index
 
+The finished volume represents physical source pages 18--512. Physical page
+513 is blank and page 514 is the publisher's back cover, so both are
+intentionally excluded. The integrated 434-page PDF contains 1,665
+sequentially audited numbered equations, 50 problems, 284 reference entries,
+14 redrawn figures, one native table, a 468-entry Author Index, and a
+379-entry Subject Index. All 118 production TeX files are reachable from the
+master include graph, and every internal reference resolves.
+
 Chapter 15, “Non-Abelian Gauge Theories,” is fully transcribed and modernized
 from physical source pages 24--85 (printed pages 1--62). It includes all 209
 numbered equations through the two appendices, 23 unnumbered Cartan-catalog
@@ -69,19 +77,20 @@ footnotes, two centered dividers, both appendices, six problems, and 40 linked
 references. The chapter coverage and QA record is in
 `latex/chapters/chapter23/coverage.md`.
 
-Stable PDF exports are written to:
+The retained PDF deliverables are:
 
-- `weinberg-vol2-chapter15.pdf`
-- `weinberg-vol2-chapter16.pdf`
-- `weinberg-vol2-chapter17.pdf`
-- `weinberg-vol2-chapter18.pdf`
-- `weinberg-vol2-chapter19.pdf`
-- `weinberg-vol2-chapter20.pdf`
-- `weinberg-vol2-chapter21.pdf`
-- `weinberg-vol2-chapter22.pdf`
-- `weinberg-vol2-chapter23.pdf`
-- `weinberg-vol2.pdf`
+- `weinberg-vol2.pdf`, the user-facing final volume
+- `latex/master.pdf`, the byte-identical build artifact
+
+The final full-volume export is 434 A4 pages with SHA-256
+`395af2912ec6fedbf330add5914410a85b6f083099d61eeede33604badbaf679`.
+The complete acceptance record and historical verification manifest are in
+`FINAL_AUDIT.md`; index-specific source audits are in
+`latex/backmatter/reports/`.
+
+Chapter-only PDFs, isolated check wrappers, LaTeX auxiliaries, rendered-page
+caches, and agent-wave reports were removed after final verification.
 
 ```sh
-cd latex && latexmk -pdf master.tex
+cd latex && latexmk -g -pdf master.tex
 ```

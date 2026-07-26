@@ -72,8 +72,9 @@ unnumbered display must be inventoried during visual transcription.
   - physical p. 388: qualification that modular fields may also exist
     under the assumptions of the first version of gravity-mediated
     breaking, but are too weakly coupled there to be relevant.
-- Centered three-asterisk dividers: two:
+- Centered three-asterisk dividers: three:
   - physical p. 348, owned by section 31.1 after Eq. (31.1.34);
+  - physical p. 354, owned by section 31.2 after Eq. (31.2.25);
   - physical p. 377, owned by section 31.6 after Eq. (31.6.75).
 
 The all-page source render contains no numbered or unnumbered
@@ -115,7 +116,7 @@ diagrammatic figures and no tables.
   (31.7.28), (31.7.31), and (31.A.18). Inspect the rendered source
   rather than inferring any of these from neighboring equations.
 - Every superscript source citation becomes a linked bracketed marker;
-  none may be confused with the five source footnotes or the two
+  none may be confused with the five source footnotes or the three
   typographic dividers.
 
 ## Progress record
@@ -125,4 +126,36 @@ diagrammatic figures and no tables.
   appendix, Problems, References, equation-range, divider, footnote,
   figure, and table inventories above were checked against the rendered
   pages.
-- Transcription has not yet begun.
+- The introduction and Section 31.1 are complete and independently
+  compiled and inspected. Section 31.1 contains Eqs. (31.1.1)--(31.1.46),
+  eight unnumbered displays, six linked citation markers, and one
+  centered divider.
+- Section 31.2 is complete and independently compiled and inspected. It
+  contains Eqs. (31.2.1)--(31.2.34), eleven unnumbered displays, six
+  linked citation markers, and the centered divider on physical p. 354
+  that the initial inventory missed.
+- Sections 31.3 and 31.4 are complete and independently compiled and
+  inspected. Each contains twenty numbered equations. Section 31.3 also
+  contains three unnumbered displays and one linked citation marker;
+  Section 31.4 contains three linked citation occurrences.
+- Section 31.5 is complete and independently compiled and inspected. It
+  contains Eqs. (31.5.1)--(31.5.19) and one unnumbered display.
+- Section 31.6 is complete and independently compiled and inspected. It
+  contains Eqs. (31.6.1)--(31.6.79), five unnumbered displays, two
+  ordinary footnotes, three linked citation markers, and the centered
+  divider after Eq. (31.6.75). Two source-visible anomalies on physical
+  p. 374 are preserved: Eq. (31.6.63) prints \(\kappa^3\), and the
+  following unnumbered display omits \(K\) from both logarithm arguments.
+- Section 31.7 is complete and independently compiled and inspected. It
+  contains Eqs. (31.7.1)--(31.7.52), six unnumbered displays, eleven
+  linked citation markers, and three ordinary footnotes.
+- The appendix is complete and independently compiled and inspected. It
+  contains Eqs. (31.A.1)--(31.A.19) and two unnumbered displays.
+- Problems 1--6 and all 28 displayed reference entries are complete and
+  independently compiled and inspected.
+- The whole chapter has passed its integrated compile and rendered QA.
+  The 58-page check has all 289 equation labels in gap-free ranges, 36
+  unnumbered display groups, five footnotes, three dividers, six
+  problems, and 28 displayed references. All labels and hyperlinks
+  resolve, the compile log has no box diagnostics or errors, and every
+  page has been visually inspected.

@@ -73,13 +73,55 @@ transcription waves, then figures, integration, full-volume QA, and export.
 - [x] Chapter 28 stable chapter export and full-volume link check
 - [x] Chapter 29 coverage manifest and source render
 - [x] Chapter 29 introduction and section 29.1
+- [x] Chapter 29 section 29.2
+- [x] Chapter 29 section 29.3
+- [x] Chapter 29 section 29.4
+- [x] Chapter 29 section 29.5 and Figure 29.1
 - [x] Chapter 29 Problems and References
+- [x] Chapter 29 integrated compile and rendered QA
+- [x] Chapter 29 stable chapter export
 - [x] Chapter 30 coverage manifest and source render
+- [x] Chapter 30 introduction and section 30.1
+- [x] Chapter 30 section 30.2
+- [x] Chapter 30 section 30.3
 - [x] Chapter 30 Problems and References
+- [x] Chapter 30 integrated compile and rendered QA
+- [x] Chapter 30 stable chapter export
 - [x] Chapter 31 coverage manifest and source render
+- [x] Chapter 31 introduction and section 31.1
+- [x] Chapter 31 section 31.2
+- [x] Chapter 31 sections 31.3 and 31.4
+- [x] Chapter 31 section 31.5
+- [x] Chapter 31 section 31.6
+- [x] Chapter 31 section 31.7
+- [x] Chapter 31 Appendix
+- [x] Chapter 31 Problems and References
+- [x] Chapter 31 integrated compile and rendered QA
+- [x] Chapter 31 stable chapter export
 - [x] Chapter 32 coverage manifest and source render
+- [x] Chapter 32 introduction and section 32.1
+- [x] Chapter 32 section 32.2
+- [x] Chapter 32 section 32.3
+- [x] Chapter 32 Appendix
+- [x] Chapter 32 Problems and References
+- [x] Chapter 32 integrated compile and rendered QA
+- [x] Chapter 32 stable chapter export
 - [x] Author and Subject Index coverage manifest and source render
-- [x] Chapter 24 integrated compile, rendered QA, and stable chapter export
+- [x] Author and Subject Index transcription
+- [x] Author and Subject Index isolated compile and rendered QA
+
+## Final acceptance
+
+- [x] Complete master include-graph and semantic-source audit
+- [x] Equation, label, hyperlink, and cross-volume-anchor audit
+- [x] Fresh 373-page full-volume compile
+- [x] All-page integrated render and 25-contact-sheet review
+- [x] Full-resolution chapter-boundary, figure, table, warning-page, and
+      index review
+- [x] Embedded-font and repository-hygiene checks
+- [x] Stable chapter PDF hash manifest
+- [x] Byte-identical stable full-volume export
+- [x] Final audit report
 
 ## Transcription order
 
