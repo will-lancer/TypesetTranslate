@@ -1,0 +1,115 @@
+% Coverage: Chapter 8, Section 8.5, physical PDF pp. 376--378
+% (printed pp. 353--355; boundary pages contain adjacent-section material).
+% Semantic range: Section 8.5 heading through "and the Coulomb interaction is
+% dropped." Inventory: equations (8.5.1)--(8.5.9), one ordinary numbered
+% footnote, no figures, tables, problems, references, or unresolved uncertainties.
+
+\subsection{The Photon Propagator}
+
+The general Feynman rules described in Chapter 6 dictate that an internal
+photon line in a Feynman diagram contributes a factor to the corresponding
+term in the $S$-matrix, given by the propagator:
+\begin{equation}
+-i\Delta_{\mu\nu}(x-y)
+\equiv\bra{\Omega}T\{a_\mu(x),a_\nu(y)\}\ket{\Omega},
+\tag{8.5.1}\label{eq:8.5.1}
+\end{equation}
+where $T$ as usual denotes a time-ordered product. Inserting our formula
+\eqref{eq:8.4.15} for the electromagnetic potential then yields
+\begin{align}
+-i\Delta_{\mu\nu}(x-y)
+=\int\frac{d^3p}{(2\pi)^3 2\lvert\mathbf p\rvert}
+P_{\mu\nu}(\mathbf p)\Bigl[
+e^{ip\cdot(x-y)}\theta(x^0-y^0)
++e^{ip\cdot(y-x)}\theta(y^0-x^0)\Bigr],
+\tag{8.5.2}\label{eq:8.5.2}
+\end{align}
+where
+\begin{equation}
+P_{\mu\nu}(\mathbf p)
+\equiv\sum_{\sigma=\pm1}
+e_\mu(\mathbf p,\sigma)e_\nu(\mathbf p,\sigma)^*,
+\tag{8.5.3}\label{eq:8.5.3}
+\end{equation}
+and $p^\mu$ in the exponentials is taken with
+$p^0=\lvert\mathbf p\rvert$. We recall from Eqs.~\eqref{eq:8.4.18} and \eqref{eq:8.4.17} that
+\begin{align}
+P_{ij}(\mathbf p)&=\delta_{ij}-\frac{p^i p^j}{\lvert\mathbf p\rvert^2},
+\notag\\
+P_{0i}(\mathbf p)&=P_{i0}(\mathbf p)=P_{00}(\mathbf p)=0.
+\tag{8.5.4}\label{eq:8.5.4}
+\end{align}
+As we saw in Chapter 6, the theta functions in Eq.~\eqref{eq:8.5.2} may be expressed as
+integrals over an independent time-component $q^0$ of an off-shell
+four-momentum $q^\mu$, so that Eq.~\eqref{eq:8.5.2} may be rewritten
+\begin{equation}
+\Delta_{\mu\nu}(x-y)=(2\pi)^{-4}\int d^4q\,
+\frac{P_{\mu\nu}(\mathbf q)}{q^2-i\epsilon}
+e^{iq\cdot(x-y)}.
+\tag{8.5.5}\label{eq:8.5.5}
+\end{equation}
+Thus in using the Feynman rules in momentum space, the contribution of an
+internal photon line carrying four-momentum $q$ that runs between vertices
+where the photon is created and destroyed by fields $a^\mu$ and $a^\nu$ is
+\begin{equation}
+\frac{-i}{(2\pi)^4}\frac{P_{\mu\nu}(\mathbf q)}{q^2-i\epsilon}.
+\tag{8.5.6}\label{eq:8.5.6}
+\end{equation}
+
+It will be very useful (though apparently perverse) to rewrite Eq.~\eqref{eq:8.5.4} as
+\begin{equation}
+P_{\mu\nu}(\mathbf q)=\eta_{\mu\nu}
++\frac{q^0q_\mu n_\nu+q^0q_\nu n_\mu-q_\mu q_\nu+q^2n_\mu n_\nu}
+       {\lvert\mathbf q\rvert^2},
+\tag{8.5.7}\label{eq:8.5.7}
+\end{equation}
+where $n^\mu=(1,0,0,0)$ is a fixed time-like vector, $q^2$ as usual is
+$\lvert\mathbf q\rvert^2-(q^0)^2$, but $q^0$ is here entirely
+arbitrary. We shall choose $q^0$ in Eq.~\eqref{eq:8.5.7} to be given by
+four-momentum conservation: it is the difference of the matter $p^0$s flowing
+in and out of the vertex where the photon line is created. The terms
+proportional to $q_\mu$ and/or $q_\nu$ then do not contribute to the $S$-matrix,
+because the factors $q_\mu$ or $q_\nu$ act like derivatives $\partial_\mu$ and
+$\partial_\nu$, and the photon fields $a_\mu$ and $a_\nu$ are coupled to
+currents $j^\mu$ and $j^\nu$ that satisfy the conservation condition
+$\partial_\mu j^\mu=0$.
+\footnote{This argument as given here is little better than hand-waving. The
+result has been justified by a detailed analysis of Feynman diagrams~\hyperref[ref:8.3]{[3]}, but
+the easiest way to treat this problem is by path-integral methods, as discussed
+in Section 9.6.}
+The term proportional to $n_\mu n_\nu$ contains a factor $q^2$ that cancels the
+$q^2$ in the denominator of the propagator, yielding a term that is the same
+as would be produced by a term in the action:
+\[
+-i\frac12\int d^4x\int d^4y\,
+[-ij^0(x)][-ij^0(y)]\frac{-i}{(2\pi)^4}
+\int\frac{d^4q}{\lvert\mathbf q\rvert^2}e^{iq\cdot(x-y)}.
+\]
+The integral over $q^0$ here yields a delta function in time, so this is
+equivalent to a correction to the interaction Hamiltonian $H_I(t)$, of the
+form
+\[
+-\frac12\int d^3x\int d^3y\,
+\frac{j^0(\mathbf x,t)j^0(\mathbf y,t)}
+     {4\pi\lvert\mathbf x-\mathbf y\rvert}.
+\]
+This is just right to cancel the Coulomb interaction \eqref{eq:8.4.25}. Our result is
+that the photon propagator can be taken effectively as the covariant quantity
+\begin{equation}
+\Delta^{\mathrm{eff}}_{\mu\nu}(x-y)
+=(2\pi)^{-4}\int d^4q\,
+\frac{\eta_{\mu\nu}}{q^2-i\epsilon}e^{iq\cdot(x-y)}
+\tag{8.5.8}\label{eq:8.5.8}
+\end{equation}
+with the Coulomb interaction dropped from now on. We see that the apparent
+violation of Lorentz invariance in the instantaneous Coulomb interaction is
+cancelled by another apparent violation of Lorentz invariance, that as noted
+in Section 5.9 the fields $a^\mu(x)$ are not four-vectors, and therefore have
+a non-covariant propagator. From a practical point of view, the important
+point is that in the momentum space Feynman rules, the contribution of an
+internal photon line is simply given by
+\begin{equation}
+\frac{-i}{(2\pi)^4}\frac{\eta_{\mu\nu}}{q^2-i\epsilon}
+\tag{8.5.9}\label{eq:8.5.9}
+\end{equation}
+and the Coulomb interaction is dropped.

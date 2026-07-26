@@ -1,0 +1,75 @@
+% Figure 10.1: lowest-order photon scattering from an electromagnetic field.
+% Source: physical PDF p. 452 (printed p. 429).
+\begingroup
+\renewcommand{\thefigure}{10.\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  electron/.style={
+    line width=0.72pt,
+    postaction={decorate},
+    decoration={markings,
+      mark=at position 0.56 with
+        {\arrow{Stealth[length=4.8pt,width=3.7pt]}}}
+  },
+  photon/.style={
+    line width=0.62pt,
+    decorate,
+    decoration={snake,amplitude=1.2pt,segment length=5.6pt}
+  },
+  source/.style={
+    line width=0.48pt,
+    double,
+    double distance=1.8pt,
+    postaction={decorate},
+    decoration={markings,
+      mark=at position 0.23 with
+        {\arrow{Stealth[length=5pt,width=3.9pt]}}}
+  }
+]
+% Upper diagram: clockwise electron flow around the triangular loop.
+\begin{scope}[yshift=2.35cm]
+  \coordinate (a) at (-1.25,0.78);
+  \coordinate (b) at (-1.25,-0.78);
+  \coordinate (c) at (0.72,0);
+  \coordinate (d) at (2.20,0);
+
+  \draw[photon] (-3.25,1.72) -- (a);
+  \draw[photon] (-3.25,-1.72) -- (b);
+  \draw[photon] (c) -- (d);
+  \draw[electron] (a) -- (c);
+  \draw[electron] (c) -- (b);
+  \draw[electron] (b) -- (a);
+  \draw[source] (2.20,-2.10) -- (2.20,2.10);
+\end{scope}
+
+% Lower diagram: the same topology with the electron flow reversed.
+\begin{scope}[yshift=-2.35cm]
+  \coordinate (a) at (-1.25,0.78);
+  \coordinate (b) at (-1.25,-0.78);
+  \coordinate (c) at (0.72,0);
+  \coordinate (d) at (2.20,0);
+
+  \draw[photon] (-3.25,1.72) -- (a);
+  \draw[photon] (-3.25,-1.72) -- (b);
+  \draw[photon] (c) -- (d);
+  \draw[electron] (c) -- (a);
+  \draw[electron] (b) -- (c);
+  \draw[electron] (a) -- (b);
+  \draw[source] (2.20,-2.10) -- (2.20,2.10);
+\end{scope}
+\end{tikzpicture}
+\caption{The lowest-order diagrams for the scattering of a photon by an
+electromagnetic field. Here straight lines represent virtual electrons; wavy
+lines represent real and virtual photons; and the double line represents a
+heavy particle like an atomic nucleus that serves as a source of an
+electromagnetic field. The contributions of these two diagrams cancel, as
+required by charge-conjugation invariance.}
+\label{fig:10.1}
+\end{figure}
+\endgroup

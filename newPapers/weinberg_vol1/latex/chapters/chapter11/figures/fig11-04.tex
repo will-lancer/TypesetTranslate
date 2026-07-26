@@ -1,0 +1,56 @@
+% Figure 11.4: four one-loop photon-lepton vertex diagrams.
+% Source: physical PDF p. 508 (printed p. 485).
+\begingroup
+\renewcommand{\thefigure}{11.\arabic{figure}}
+\setcounter{figure}{3}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[
+  leptonlow/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.20 with {\arrow{Stealth[length=4.5pt,width=3.4pt]}}}},
+  leptonhigh/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.78 with {\arrow{Stealth[length=4.5pt,width=3.4pt]}}}},
+  loop/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.56 with {\arrow{Stealth[length=4.5pt,width=3.4pt]}}}},
+  photon/.style={line width=0.6pt,decorate,
+    decoration={snake,amplitude=1.0pt,segment length=4.8pt}},
+  every node/.style={font=\small}
+]
+  % (a): photon self-energy attached to the outgoing lepton leg.
+  \begin{scope}[xshift=-4.65cm]
+    \draw[leptonlow] (0,0) -- (0,4.2);
+    \draw[photon] (-1.65,2.05) -- (0,2.05);
+    \draw[photon] (0,2.72) .. controls (-1.35,2.72) and (-1.35,3.78) .. (0,3.78);
+    \node at (0,-0.62) {(a)};
+  \end{scope}
+  % (b): photon self-energy attached to the incoming lepton leg.
+  \begin{scope}[xshift=-1.55cm]
+    \draw[leptonhigh] (0,0) -- (0,4.2);
+    \draw[photon] (-1.65,2.72) -- (0,2.72);
+    \draw[photon] (0,0.55) .. controls (1.35,0.55) and (1.35,1.65) .. (0,1.65);
+    \node at (0,-0.62) {(b)};
+  \end{scope}
+  % (c): vacuum-polarization insertion in the external photon line.
+  \begin{scope}[xshift=1.55cm]
+    \draw[leptonlow] (0.72,0) -- (0.72,4.2);
+    \draw[photon] (-2.15,2.55) -- (-1.12,2.55);
+    \draw[loop] (-1.12,2.55) arc[start angle=180,end angle=0,x radius=0.60cm,y radius=0.72cm];
+    \draw[line width=0.7pt] (0.08,2.55) arc[start angle=0,end angle=-180,x radius=0.60cm,y radius=0.72cm];
+    \draw[photon] (0.08,2.55) -- (0.72,2.55);
+    \node at (0.72,-0.62) {(c)};
+  \end{scope}
+  % (d): proper one-loop vertex correction.
+  \begin{scope}[xshift=4.65cm]
+    \draw[leptonlow] (0,0) -- (0,4.2);
+    \draw[photon] (-1.65,2.05) -- (0,2.05);
+    \draw[photon] (0,0.55) .. controls (1.42,0.55) and (1.42,3.55) .. (0,3.55);
+    \node at (0,-0.62) {(d)};
+  \end{scope}
+\end{tikzpicture}
+\caption{One-loop diagrams for the photon-lepton vertex function $\Gamma^{\mu *}$. Here wavy lines represent photons; other lines represent electrons or muons. Diagrams (a) and (b) are cancelled by lepton field renormalization terms; diagram (c) arises from the vacuum polarization calculated in Section 11.2; and (d) is the term calculated in Section 11.3.}
+\label{fig:11.4}
+\end{figure}
+\endgroup

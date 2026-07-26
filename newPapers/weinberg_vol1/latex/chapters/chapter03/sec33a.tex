@@ -1,0 +1,467 @@
+% Chunk: §3.3 Symmetries of the S-Matrix (part a: Lorentz + internal symmetries)
+% Source: Weinberg QFT Vol I, printed pp. 116-124 (PDF pp. 139-147)
+% Status: transcribed and source-checked
+
+equation:
+\begin{align}
+T_{\alpha\beta}^{\mathrm{in/out}\,*}-T_{\beta\alpha}^{\mathrm{in/out}}
+={}&-\int d\gamma\,T_{\gamma\beta}^{\mathrm{in/out}\,*}T_{\gamma\alpha}^{\mathrm{in/out}}
+\nonumber\\
+&\quad\cdot\left([E_\alpha-E_\gamma\pm i\epsilon]^{-1}
+-[E_\beta-E_\gamma\mp i\epsilon]^{-1}\right).
+\tag{3.2.9}\label{eq:3.2.9}
+\end{align}
+To prove the orthonormality of the `in' and `out' states, divide Eq.~\eqref{eq:3.2.9}
+by $E_\alpha-E_\beta\pm2i\epsilon$. This gives
+\begin{align*}
+\left(\frac{T_{\alpha\beta}^{\mathrm{in/out}}}{E_\beta-E_\alpha\mp2i\epsilon}\right)^*
++\frac{T_{\beta\alpha}^{\mathrm{in/out}}}{E_\alpha-E_\beta\pm2i\epsilon}
+={}&-\int d\gamma\,
+\left(\frac{T_{\gamma\beta}^{\mathrm{in/out}}}{E_\beta-E_\alpha\mp i\epsilon}\right)^*
+\frac{T_{\gamma\alpha}^{\mathrm{in/out}}}{E_\alpha-E_\beta\pm i\epsilon}.
+\end{align*}
+The $2\epsilon$s in the denominators on the left-hand side can be replaced with
+$\epsilon$s, since the only important thing is that these are positive infinitesimals.
+We see then that $\delta(\beta-\alpha)+T_{\beta\alpha}^{\mathrm{in/out}}/(E_\beta-E_\alpha
+\pm i\epsilon)$ is unitary. With \eqref{eq:3.1.17}, this is just the statement that the
+in and out states form two orthonormal sets of state-vectors. The unitarity of the
+$S$-matrix can be proved in a similar fashion by multiplying \eqref{eq:3.2.9} with
+$\delta(E_\beta-E_\alpha)$ instead of $(E_\alpha-E_\beta\pm2i\epsilon)^{-1}$.
+
+\subsection{\texorpdfstring{Symmetries of the $S$-Matrix}{Symmetries of the S-Matrix}}
+
+In this section we will consider both what is meant by the invariance of the
+$S$-matrix under various symmetries, and what are the conditions on the Hamiltonian
+that will ensure such invariance properties.
+
+\subsubsection*{Lorentz Invariance}
+
+For any proper orthochronous Lorentz transformation $x\to\Lambda x+a$, we may
+define a unitary operator $U(\Lambda,a)$ by specifying that it acts as in
+Eq.~\eqref{eq:3.1.1} on either the `in' or the `out' states. When we say that a theory is
+Lorentz-invariant, we mean that the same operator $U(\Lambda,a)$ acts as in
+\eqref{eq:3.1.1} on both `in' and `out' states. Since the operator $U(\Lambda,a)$ is
+unitary, we may write
+\[
+S_{\beta\alpha}={}_{\mathrm{out}}\!\braket{\beta}{\alpha}_{\mathrm{in}}
+={}_{\mathrm{out}}\!\big\langle U(\Lambda,a)\beta\bigm|
+U(\Lambda,a)\alpha\big\rangle_{\mathrm{in}},
+\]
+so using \eqref{eq:3.1.1}, we obtain the Lorentz invariance (actually, covariance)
+property of the $S$-matrix: for arbitrary Lorentz transformations
+$\Lambda^\mu{}_{\nu}$ and translations $a^\mu$,
+\begin{align}
+&S_{p'_1\sigma'_1n'_1;p'_2\sigma'_2n'_2;\ldots,\,
+p_1\sigma_1n_1;p_2\sigma_2n_2;\ldots}
+\nonumber\\
+&=\exp\!\left(ia_\mu(p_1^\mu+p_2^\mu+\cdots-p_1^{\prime\mu}-p_2^{\prime\mu}-\cdots)\right)
+\nonumber\\
+&\quad\cdot\sqrt{\frac{(\Lambda p_1)^0(\Lambda p_2)^0\cdots
+(\Lambda p'_1)^0(\Lambda p'_2)^0\cdots}
+{p_1^0p_2^0\cdots p_1^{\prime0}p_2^{\prime0}\cdots}}
+\nonumber\\
+&\quad\cdot\sum_{\bar\sigma_1\bar\sigma_2\ldots}
+D^{(j_1)}_{\bar\sigma_1\sigma_1}\!\left(W(\Lambda,p_1)\right)
+D^{(j_2)}_{\bar\sigma_2\sigma_2}\!\left(W(\Lambda,p_2)\right)\cdots
+\nonumber\\
+&\quad\cdot\sum_{\bar\sigma'_1\bar\sigma'_2\ldots}
+D^{(j'_1)*}_{\bar\sigma'_1\sigma'_1}\!\left(W(\Lambda,p'_1)\right)
+D^{(j'_2)*}_{\bar\sigma'_2\sigma'_2}\!\left(W(\Lambda,p'_2)\right)\cdots
+\nonumber\\
+&\quad\cdot S_{\Lambda p'_1\bar\sigma'_1n'_1;\Lambda p'_2\bar\sigma'_2n'_2;\ldots,\,
+\Lambda p_1\bar\sigma_1n_1;\Lambda p_2\bar\sigma_2n_2;\ldots}.
+\tag{3.3.1}\label{eq:3.3.1}
+\end{align}
+(Primes are used to distinguish final from initial particles; bars are used to
+distinguish summation variables.) In particular, since the left-hand side is
+independent of $a^\mu$, so must be the right-hand side, and so the $S$-matrix
+vanishes unless the four-momentum is conserved. We can therefore write the part
+of the $S$-matrix that represents actual interactions among the particles in the
+form:
+\begin{equation}
+S_{\beta\alpha}-\delta(\beta-\alpha)
+=-2\pi iM_{\beta\alpha}\delta^4(p_\beta-p_\alpha).
+\tag{3.3.2}\label{eq:3.3.2}
+\end{equation}
+(However, as we will see in the next chapter, the amplitude $M_{\beta\alpha}$
+itself contains terms that involve further delta function factors.)
+
+Eq.~\eqref{eq:3.3.1} should be regarded as a definition of what we mean by the Lorentz
+invariance of the $S$-matrix, rather than a theorem, because it is only for certain
+special choices of Hamiltonian that there exists a unitary operator that acts as
+in \eqref{eq:3.1.1} on both `in' and `out' states. We need to formulate conditions on the
+Hamiltonian that would ensure the Lorentz invariance of the $S$-matrix. For this
+purpose, it will be convenient to work with the operator $S$ defined by
+Eq.~\eqref{eq:3.2.4}:
+\[
+S_{\beta\alpha}=\langle\beta\vert S\vert\alpha\rangle_0.
+\]
+As we have defined the free-particle states in Chapter 2, they furnish a
+representation of the Poincar\'e group, so we can always define a
+unitary operator $U_0(\Lambda,a)$ that induces the transformation \eqref{eq:3.1.1} on
+these states:
+\begin{align*}
+&U_0(\Lambda,a)\ket{p_1,\sigma_1,n_1;p_2,\sigma_2,n_2;\ldots}_0
+\nonumber\\
+&=\exp\!\left(-ia_\mu(p_1^\mu+p_2^\mu+\cdots)\right)
+\sqrt{\frac{(\Lambda p_1)^0(\Lambda p_2)^0\cdots}{p_1^0p_2^0\cdots}}
+\nonumber\\
+&\quad\cdot\sum_{\bar\sigma_1\bar\sigma_2\ldots}
+D^{(j_1)}_{\bar\sigma_1\sigma_1}\!\left(W(\Lambda,p_1)\right)
+D^{(j_2)}_{\bar\sigma_2\sigma_2}\!\left(W(\Lambda,p_2)\right)\cdots
+\ket{\Lambda p_1,\bar\sigma_1,n_1;\Lambda p_2,\bar\sigma_2,n_2;\ldots}_0.
+\end{align*}
+Eq.~\eqref{eq:3.3.1} will thus hold if this unitary operator commutes with the
+$S$-operator:
+\[
+U_0(\Lambda,a)^{-1}S\,U_0(\Lambda,a)=S.
+\]
+This condition can also be expressed in terms of infinitesimal Lorentz
+transformations. Just as in Section~2.4, there will exist a set of Hermitian
+operators, a momentum $\mathbf{P}_0$, an angular momentum $\mathbf{J}_0$, and a
+boost generator $\mathbf{K}_0$, that together with $H_0$ generate the infinitesimal
+version of inhomogeneous Lorentz transformations when acting on free-particle
+states. Eq.~\eqref{eq:3.3.1} is equivalent to the statement that the $S$-matrix is
+unaffected by such transformations, or in other words, that the $S$-operator
+commutes with these generators:
+\begin{equation}
+[H_0,S]=[\mathbf{P}_0,S]=[\mathbf{J}_0,S]=[\mathbf{K}_0,S]=0.
+\tag{3.3.3}\label{eq:3.3.3}
+\end{equation}
+Because the operators $H_0$, $\mathbf{P}_0$, $\mathbf{J}_0$, and $\mathbf{K}_0$
+generate infinitesimal inhomogeneous Lorentz transformations on the free states,
+they automatically satisfy the commutation relations \eqref{eq:2.4.18}--\eqref{eq:2.4.24}:
+\begin{align}
+[J_0^i,J_0^j]&=i\epsilon_{ijk}J_0^k, &&\tag{3.3.4}\label{eq:3.3.4}\\
+[J_0^i,K_0^j]&=i\epsilon_{ijk}K_0^k, &&\tag{3.3.5}\label{eq:3.3.5}\\
+[K_0^i,K_0^j]&=-i\epsilon_{ijk}J_0^k, &&\tag{3.3.6}\label{eq:3.3.6}\\
+[J_0^i,P_0^j]&=i\epsilon_{ijk}P_0^k, &&\tag{3.3.7}\label{eq:3.3.7}\\
+[K_0^i,P_0^j]&=iH_0\delta_{ij}, &&\tag{3.3.8}\label{eq:3.3.8}\\
+[J_0^i,H_0]&=[P_0^i,H_0]=[P_0^i,P_0^j]=0, &&\tag{3.3.9}\label{eq:3.3.9}\\
+[K_0^i,H_0]&=iP_0^i. &&\tag{3.3.10}\label{eq:3.3.10}
+\end{align}
+where $i,j,k$, etc. run over the values 1, 2, and 3, and $\epsilon_{ijk}$ is the
+totally antisymmetric quantity with $\epsilon_{123}=+1$.
+
+In the same way, we may define a set of `exact generators,' operators
+$\mathbf{P}$, $\mathbf{J}$, $\mathbf{K}$ that together with the full Hamiltonian
+$H$ generate the transformations \eqref{eq:3.1.1} on, say, the `in' states. (As already
+mentioned, what is not obvious is that the same operators generate the same
+transformations on the `out' states.) The group structure tells us that these
+exact generators satisfy the same commutation relations:
+\begin{align}
+[J^i,J^j]&=i\epsilon_{ijk}J^k, &&\tag{3.3.11}\label{eq:3.3.11}\\
+[J^i,K^j]&=i\epsilon_{ijk}K^k, &&\tag{3.3.12}\label{eq:3.3.12}\\
+[K^i,K^j]&=-i\epsilon_{ijk}J^k, &&\tag{3.3.13}\label{eq:3.3.13}\\
+[J^i,P^j]&=i\epsilon_{ijk}P^k, &&\tag{3.3.14}\label{eq:3.3.14}\\
+[K^i,P^j]&=iH\delta_{ij}, &&\tag{3.3.15}\label{eq:3.3.15}\\
+[J^i,H]&=[P^i,H]=[P^i,P^j]=0, &&\tag{3.3.16}\label{eq:3.3.16}\\
+[K^i,H]&=iP^i. &&\tag{3.3.17}\label{eq:3.3.17}
+\end{align}
+
+In virtually all known field theories, the effect of interactions is to add an
+interaction term $H_{\mathrm{int}}$ to the Hamiltonian, while leaving the momentum
+and angular momentum unchanged:
+\begin{equation}
+H=H_0+H_{\mathrm{int}},\qquad \mathbf{P}=\mathbf{P}_0,\qquad
+\mathbf{J}=\mathbf{J}_0.
+\tag{3.3.18}\label{eq:3.3.18}
+\end{equation}
+(The only known exceptions are theories with topologically twisted fields, such as
+those with magnetic monopoles, where the angular momentum of states depends on the
+interactions.) Eq.~\eqref{eq:3.3.18} implies that the commutation relations \eqref{eq:3.3.11},
+\eqref{eq:3.3.14}, and \eqref{eq:3.3.16} are satisfied provided that the interaction commutes with
+the free-particle momentum and angular-momentum operators
+\begin{equation}
+[H_{\mathrm{int}},\mathbf{P}_0]=[H_{\mathrm{int}},\mathbf{J}_0]=0.
+\tag{3.3.19}\label{eq:3.3.19}
+\end{equation}
+It is easy to see from the Lippmann--Schwinger equation \eqref{eq:3.1.16} or equivalently
+from \eqref{eq:3.1.13} that the operators that generate translations and rotations when
+acting on the `in' (and `out') states are indeed simply $\mathbf{P}_0$ and
+$\mathbf{J}_0$. Also we easily see that $\mathbf{P}_0$ and $\mathbf{J}_0$ commute
+with the operator $U(t,t_0)$ defined by Eq.~\eqref{eq:3.2.6}, and hence with the
+$S$-operator $U(\infty,-\infty)$. Further, we already know that the $S$-operator
+commutes with $H_0$, because there are energy-conservation delta functions in both
+terms in \eqref{eq:3.2.7}. This leaves just the boost generator $\mathbf{K}_0$ which we need
+to show commutes with the $S$-operator.
+
+On the other hand, it is \textit{not} possible to set the boost generator
+$\mathbf{K}$ equal to its free-particle counterpart $\mathbf{K}_0$, because then
+Eqs.~\eqref{eq:3.3.15} and \eqref{eq:3.3.8} would give $H=H_0$, which is certainly not true in the
+presence of interactions. Thus when we add an interaction $H_{\mathrm{int}}$ to
+$H_0$, we must also add a correction $\mathbf{W}$ to the boost generator:
+\begin{equation}
+\mathbf{K}=\mathbf{K}_0+\mathbf{W}.
+\tag{3.3.20}\label{eq:3.3.20}
+\end{equation}
+Of the remaining commutation relations, let us concentrate on Eq.~\eqref{eq:3.3.17}, which
+may now be put in the form
+\begin{equation}
+[\mathbf{K}_0,H_{\mathrm{int}}]=-[\mathbf{W},H].
+\tag{3.3.21}\label{eq:3.3.21}
+\end{equation}
+By itself, the condition \eqref{eq:3.3.21} is empty, because for any $H_{\mathrm{int}}$ we
+could always define $\mathbf{W}$ by giving its matrix elements between
+$H$-eigenstates $\ket{\alpha}$ and $\ket{\beta}$ as
+$-\langle\beta\vert[\mathbf{K}_0,H_{\mathrm{int}}]\vert\alpha\rangle/
+(E_\beta-E_\alpha)$. Recall that the crucial point in the Lorentz invariance of a
+theory is not that there should exist a set of exact generators satisfying
+Eqs.~\eqref{eq:3.3.11}--\eqref{eq:3.3.17}, but rather that these operators should act the same way on
+`in' and `out' states; merely finding an operator $\mathbf{K}$ that satisfies
+Eq.~\eqref{eq:3.3.21} is not enough. Eq.~\eqref{eq:3.3.21} does become significant if we add the
+requirement that matrix elements of $\mathbf{W}$ should be smooth functions of the
+energies, and in particular should not have singularities of the form
+$(E_\beta-E_\alpha)^{-1}$. We shall now show that Eq.~\eqref{eq:3.3.21}, together with an
+appropriate smoothness condition on $\mathbf{W}$, does imply the remaining Lorentz
+invariance condition $[\mathbf{K}_0,S]=0$.
+
+To prove this, let us consider the commutator of $\mathbf{K}_0$ with the operator
+$U(t,t_0)$ for finite $t$ and $t_0$. Using Eq.~\eqref{eq:3.3.10} and the fact that
+$\mathbf{P}_0$ commutes with $H_0$ yields:
+\[
+[\mathbf{K}_0,\exp(iH_0t)]=-t\mathbf{P}_0\exp(iH_0t)
+\]
+while Eq.~\eqref{eq:3.3.21} (which is equivalent to Eq.~\eqref{eq:3.3.17}) yields
+\[
+[\mathbf{K},\exp(iHt)]=-t\mathbf{P}\exp(iHt)
+=-t\mathbf{P}_0\exp(iHt).
+\]
+The momentum operators then cancel in the commutator of $\mathbf{K}_0$ with $U$,
+and we find:
+\begin{equation}
+[\mathbf{K}_0,U(\tau,\tau_0)]
+=-\mathbf{W}(\tau)U(\tau,\tau_0)+U(\tau,\tau_0)\mathbf{W}(\tau_0),
+\tag{3.3.22}\label{eq:3.3.22}
+\end{equation}
+where
+\begin{equation}
+\mathbf{W}(t)=\exp(iH_0t)\mathbf{W}\exp(-iH_0t).
+\tag{3.3.23}\label{eq:3.3.23}
+\end{equation}
+If the matrix elements of $\mathbf{W}$ between $H_0$-eigenstates are sufficiently
+smooth functions of energy, then matrix elements of $\mathbf{W}(t)$ between smooth
+superpositions of energy eigenstates vanish for $t\to\pm\infty$, so Eq.~\eqref{eq:3.3.22}
+gives in effect:
+\begin{equation}
+0=[\mathbf{K}_0,U(\infty,-\infty)]=[\mathbf{K}_0,S],
+\tag{3.3.24}\label{eq:3.3.24}
+\end{equation}
+as was to be shown. This is the essential result: Eq.~\eqref{eq:3.3.21} together with the
+smoothness condition on matrix elements of $\mathbf{W}$ that ensures that
+$\mathbf{W}(t)$ vanishes for $t\to\pm\infty$ provides a sufficient condition for
+the Lorentz invariance of the $S$-matrix. This smoothness condition is a natural
+one, because it is much like the condition on matrix elements of $H_{\mathrm{int}}$
+that is needed to make $H_I(t)$ vanish for $t\to\pm\infty$, as required in order
+to justify the very idea of an $S$-matrix.
+
+We can also use Eq.~\eqref{eq:3.3.22} with $\tau=0$ and $\tau_0=\mp\infty$ to show that
+\begin{equation}
+\mathbf{K}\Omega(\mp\infty)=\Omega(\mp\infty)\mathbf{K}_0,
+\tag{3.3.25}\label{eq:3.3.25}
+\end{equation}
+where $\Omega(\mp\infty)$ is according to \eqref{eq:3.1.13} the operator that converts a
+free-particle state $\ket{\alpha}_0$ into the corresponding `in' or `out' state.
+Also, it follows trivially from Eqs.~\eqref{eq:3.3.18} and \eqref{eq:3.3.19} that the same is true
+for the momentum and angular momentum:
+\begin{align}
+\mathbf{P}\Omega(\mp\infty)&=\Omega(\mp\infty)\mathbf{P}_0,
+&\tag{3.3.26}\label{eq:3.3.26}\\
+\mathbf{J}\Omega(\mp\infty)&=\Omega(\mp\infty)\mathbf{J}_0.
+&\tag{3.3.27}\label{eq:3.3.27}
+\end{align}
+Finally, since all free and asymptotic states are eigenstates of $H_0$ and $H$
+respectively with the same eigenvalue $E_\alpha$, we have
+\begin{equation}
+H\Omega(\mp\infty)=\Omega(\mp\infty)H_0.
+\tag{3.3.28}\label{eq:3.3.28}
+\end{equation}
+
+Eqs.~\eqref{eq:3.3.25}--\eqref{eq:3.3.28} show that with our assumptions, `in' and `out' states do
+transform under inhomogeneous Lorentz transformations just like the free-particle
+states. Also, since these are similarity transformations, we now see that the exact
+generators $\mathbf{K}$, $\mathbf{P}$, $\mathbf{J}$, and $H$ satisfy the same
+commutation relations as $\mathbf{K}_0$, $\mathbf{P}_0$, $\mathbf{J}_0$, and $H_0$.
+This is why it turned out to be unnecessary in proving the Lorentz invariance of
+the $S$-matrix to use the other commutation relations \eqref{eq:3.3.12}, \eqref{eq:3.3.13}, and
+\eqref{eq:3.3.15} that involve $\mathbf{K}$.
+
+\subsubsection*{Internal Symmetries}
+
+There are various symmetries, like the symmetry in nuclear physics under
+interchange of neutrons and protons, or the `charge-conjugation' symmetry between
+particles and antiparticles, that have nothing directly to do with Lorentz
+invariance, and further appear the same in all inertial frames. Such a symmetry
+transformation $T$ acts on the Hilbert space of physical states as a unitary
+operator $U(T)$, that induces linear transformations on the indices labelling
+particle species
+\begin{align}
+&U(T)\ket{p_1,\sigma_1,n_1;p_2,\sigma_2,n_2;\ldots}_{\mathrm{in/out}}
+\nonumber\\
+&\quad=\sum_{\bar n_1\bar n_2\ldots}
+\mathcal{D}_{\bar n_1n_1}(T)\mathcal{D}_{\bar n_2n_2}(T)\cdots
+\ket{p_1,\sigma_1,\bar n_1;p_2,\sigma_2,\bar n_2;\ldots}_{\mathrm{in/out}}.
+\tag{3.3.29}\label{eq:3.3.29}
+\end{align}
+In accordance with the general discussion in Chapter 2, the $U(T)$ must satisfy
+the group multiplication rule
+\begin{equation}
+U(\bar T)U(T)=U(\bar TT),
+\tag{3.3.30}\label{eq:3.3.30}
+\end{equation}
+where $\bar TT$ is the transformation obtained by first performing the
+transformation $T$, then some other transformation $\bar T$. Acting on
+Eq.~\eqref{eq:3.3.29} with $U(\bar T)$, we see that the matrices $\mathcal{D}$ satisfy the
+same rule
+\begin{equation}
+\mathcal{D}(\bar T)\mathcal{D}(T)=\mathcal{D}(\bar TT).
+\tag{3.3.31}\label{eq:3.3.31}
+\end{equation}
+Also, taking the scalar product of the states obtained by acting with $U(T)$ on
+two different `in' states or two different `out' states, and using the
+normalization condition \eqref{eq:3.1.2}, we see that $\mathcal{D}(T)$ must be unitary
+\begin{equation}
+\mathcal{D}^\dagger(T)=\mathcal{D}^{-1}(T).
+\tag{3.3.32}\label{eq:3.3.32}
+\end{equation}
+Finally, taking the scalar product of the states obtained by acting with $U(T)$
+on one `out' state and one `in' state shows that $\mathcal{D}$ commutes with the
+$S$-matrix, in the sense that
+\begin{align}
+&\sum_{\bar N_1\bar N_2\ldots}
+\sum_{\bar N'_1\bar N'_2\ldots}
+\mathcal{D}^*_{\bar N'_1n'_1}(T)\mathcal{D}^*_{\bar N'_2n'_2}(T)\cdots
+\mathcal{D}_{\bar N_1n_1}(T)\mathcal{D}_{\bar N_2n_2}(T)\cdots
+\nonumber\\
+&\qquad\cdot
+S_{p'_1\sigma'_1\bar N'_1;p'_2\sigma'_2\bar N'_2;\ldots,\,
+p_1\sigma_1\bar N_1;p_2\sigma_2\bar N_2;\ldots}
+\nonumber\\
+&=S_{p'_1\sigma'_1n'_1;p'_2\sigma'_2n'_2;\ldots,\,
+p_1\sigma_1n_1;p_2\sigma_2n_2;\ldots}.
+\tag{3.3.33}\label{eq:3.3.33}
+\end{align}
+
+Again, this is a definition of what we mean by a theory being invariant under the
+internal symmetry $T$, because to derive Eq.~\eqref{eq:3.3.33} we still need to show that
+the \textit{same} unitary operator $U(T)$ will induce the transformation \eqref{eq:3.3.29}
+on both `in' and `out' states. This will be the case if there is an `unperturbed'
+transformation operator $U_0(T)$ that induces these transformations on
+free-particle states,
+\begin{align}
+&U_0(T)\ket{p_1,\sigma_1,n_1;p_2,\sigma_2,n_2;\ldots}_0
+\nonumber\\
+&\quad=\sum_{\bar N_1\bar N_2\ldots}
+\mathcal{D}_{\bar N_1n_1}(T)\mathcal{D}_{\bar N_2n_2}(T)\cdots
+\ket{p_1,\sigma_1,\bar N_1;p_2,\sigma_2,\bar N_2;\ldots}_0
+\tag{3.3.34}\label{eq:3.3.34}
+\end{align}
+and that commutes with both the free-particle and interaction parts of the
+Hamiltonian
+\begin{align}
+U_0^{-1}(T)H_0U_0(T)&=H_0,
+&\tag{3.3.35}\label{eq:3.3.35}\\
+U_0^{-1}(T)H_{\mathrm{int}}U_0(T)&=H_{\mathrm{int}}.
+&\tag{3.3.36}\label{eq:3.3.36}
+\end{align}
+From either the Lippmann--Schwinger equation \eqref{eq:3.1.17} or from \eqref{eq:3.1.13}, we see
+that the operator $U_0(T)$ will induce the transformations \eqref{eq:3.3.29} on `in' and
+`out' states as well as free-particle states, so that we can derive Eq.~\eqref{eq:3.3.29}
+taking $U(T)$ as $U_0(T)$.
+
+A special case of great physical importance is that of a one-parameter Lie group,
+where $T$ is a function of a single parameter $\theta$, with
+\begin{equation}
+T(\bar\theta)T(\theta)=T(\bar\theta+\theta).
+\tag{3.3.37}\label{eq:3.3.37}
+\end{equation}
+As shown in Section~2.2, in this case the corresponding Hilbert-space operators
+must take the form
+\begin{equation}
+U(T(\theta))=\exp(iQ\theta)
+\tag{3.3.38}\label{eq:3.3.38}
+\end{equation}
+with $Q$ a Hermitian operator. Likewise the matrices $\mathcal{D}(T)$ take the form
+\begin{equation}
+\mathcal{D}_{n'n}(T(\theta))=\delta_{n'n}\exp(iq_n\theta),
+\tag{3.3.39}\label{eq:3.3.39}
+\end{equation}
+where $q_n$ are a set of real species-dependent numbers. Here Eq.~\eqref{eq:3.3.33} simply
+tells us that the $q$s are conserved: $S_{\beta\alpha}$ vanishes unless
+\begin{equation}
+q_{n'_1}+q_{n'_2}+\cdots=q_{n_1}+q_{n_2}+\cdots.
+\tag{3.3.40}\label{eq:3.3.40}
+\end{equation}
+The classic example of such a conservation law is that of conservation of electric
+charge. Also, all known processes conserve baryon number (the number of baryons,
+such as protons, neutrons, and hyperons, minus the number of their antiparticles)
+and lepton number (the number of leptons, such as electrons, muons, $\tau$ particles,
+and neutrinos, minus the number of their antiparticles) but as we shall see in
+Volume II, these conservation laws are believed to be only very good approximations.
+There are other conservation laws of this type that are definitely only approximate,
+such as the conservation of the quantity known as strangeness, which was introduced
+to explain the relatively long life of a class of particles discovered by Rochester
+and Butler~\hyperref[ref:3.5]{[5]} in cosmic rays in 1947. For instance, the mesons now called $K^+$ and
+$K^0$\footnote{Superscripts denote electric charges in units of the absolute value
+of the electronic charge. A `hyperon' is any particle carrying non-zero strangeness
+and unit baryon number.} are assigned strangeness $+1$ and the hyperons
+$\Lambda^0$, $\Sigma^+$, $\Sigma^0$, $\Sigma^-$ are assigned strangeness $-1$,
+while the more familiar protons, neutrons, and $\pi$ mesons (or pions) are taken to
+have strangeness zero. The conservation of strangeness in strong interactions
+explains why strange particles are always produced in association with one another,
+as in reactions like $\pi^++n\to K^++\Lambda^0$, while the relatively slow decays
+of strange particles into non-strange ones such as $\Lambda^0\to p+\pi^-$ and
+$K^+\to\pi^++\pi^0$ show that the interactions that do not conserve strangeness
+are very weak.
+
+The classic example of a `non-Abelian' symmetry whose generators do not commute
+with one another is isotopic spin symmetry, which was suggested~\hyperref[ref:3.6]{[6]} in 1937 on the
+basis of an experiment~\hyperref[ref:3.7]{[7]} that showed the existence of a strong proton--proton
+force similar to that between protons and neutrons. Mathematically, the group is
+$SU(2)$, like the covering group of the group of three-dimensional rotations; its
+generators are denoted $t_i$, with $i=1,2,3$, and satisfy a commutation relation
+like \eqref{eq:2.4.18}:
+\[
+[t_i,t_j]=i\epsilon_{ijk}t_k.
+\]
+To the extent that isotopic spin symmetry is respected, it requires particles to
+form degenerate multiplets labelled with an integer or half-integer $T$ and with
+$2T+1$ components distinguished by their $t_3$ values, just like the degenerate
+spin multiplets required by rotational invariance. These include the nucleons $p$
+and $n$ with $T=\tfrac12$ and $t_3=\tfrac12,-\tfrac12$; the pions $\pi^+$,
+$\pi^0$, and $\pi^-$ with $T=1$ and $t_3=+1,0,-1$; and the $\Lambda^0$ hyperon
+with $T=0$ and $t_3=0$. These examples illustrate the relation between electric
+charge $Q$, the third component of isotopic spin $t_3$, the baryon number $B$, and
+the strangeness $S$:
+\[
+Q=t_3+(B+S)/2.
+\]
+This relation was originally inferred from observed selection rules, but it was
+interpreted~\hyperref[ref:3.8]{[8]} by Gell-Mann and Ne'eman in 1960 to be a consequence of the
+embedding of both the isospin $\mathbf{T}$ and the `hypercharge' $Y\equiv B+S$ in
+the Lie algebra of a larger but more badly broken non-Abelian internal symmetry,
+based on the non-Abelian group $SU(3)$. As we will see in Volume II, today both
+isospin and $SU(3)$ symmetry are understood as incidental consequences of the small
+masses of the two or three lightest quarks in the modern theory of strong
+interactions, quantum chromodynamics.
+
+The implications of isotopic spin symmetry for reactions among strongly interacting
+particles can be worked out by the same familiar methods that were invented for
+deriving the implications of rotational invariance. In particular, for a two-body
+reaction $A+B\to C+D$, Eq.~\eqref{eq:3.3.33} requires that the $S$-matrix may be put in the
+form (suppressing all but isospin labels):
+\[
+S_{t_{C3}t_{D3},t_{A3}t_{B3}}
+=\sum_{T,t_3}C_{T_CT_D}(Tt_3;t_{C3}t_{D3})
+C_{T_AT_B}(Tt_3;t_{A3}t_{B3})S_T,
+\]
+where $C_{j_1j_2}(j\sigma;\sigma_1\sigma_2)$ is the usual Clebsch--Gordan
+coefficient~\hyperref[ref:3.9]{[9]} for forming a spin $j$ with three-component $\sigma$ from spins
+$j_1$ and $j_2$ with three-components $\sigma_1$ and $\sigma_2$, respectively;
+and $S_T$ is a `reduced' $S$-matrix depending on $T$ and on all the suppressed
+momentum and spin variables, but not on the isospin three-components
+$t_{A3},t_{B3},t_{C3},t_{D3}$. Of course, this, like all of the consequences of
+isotopic spin invariance, is only approximate, because this symmetry is not
+respected by electromagnetic (and other) interactions, as shown for instance by
+the fact that different members of the same isospin multiplet like $p$ and $n$
+have different electric charges and slightly different masses.

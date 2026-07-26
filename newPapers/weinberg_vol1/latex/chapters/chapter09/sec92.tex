@@ -1,0 +1,294 @@
+% Physical pages: 408--412 (printed pages 385--389).
+% Figures: none.
+% Uncertainties: none.
+
+\subsection{\texorpdfstring{Transition to the $S$-Matrix}{Transition to the S-Matrix}}
+
+As already mentioned, we can easily convert the general quantum mechanical
+results of Section 9.1 to a notation appropriate to quantum field theory, by
+letting the index $a$ run over points $\mathbf{x}$ in space and over a
+spin-and-species index $m$, and replacing $Q_a(t)$ and $P_a(t)$ with
+$Q_m(\mathbf{x},t)$ and $P_m(\mathbf{x},t)$, respectively. Eq. \eqref{eq:9.1.38}
+then reads\footnote{We are now writing $H$ and the $\mathcal{O}$s with
+square brackets, to remind us that $H[q(t),p(t)]$ and
+$\mathcal{O}[p(t),q(t)]$ are functionals of $q_m(\mathbf{x},t)$ and
+$p_m(\mathbf{x},t)$ at a fixed time $t$.}
+\begin{align}
+  &\bra{q';t'}T\left\{\mathcal{O}_A[P(t_A),Q(t_A)],
+  \mathcal{O}_B[P(t_B),Q(t_B)],\ldots\right\}\ket{q;t}
+  \notag\\
+  &\quad={}
+  \int_{\substack{q_m(\mathbf{x},t)=q_m(\mathbf{x})\\
+                  q_m(\mathbf{x},t')=q'_m(\mathbf{x})}}
+  \prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)
+  \prod_{\tau,\mathbf{x},m}\frac{dp_m(\mathbf{x},\tau)}{2\pi}
+  \notag\\
+  &\qquad\cdot
+  \mathcal{O}_A[p(t_A),q(t_A)]\mathcal{O}_B[p(t_B),q(t_B)]\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_t^{t'}d\tau
+  \left\{\int d^3x\,\dot q_m(\mathbf{x},\tau)p_m(\mathbf{x},\tau)
+  -H[q(\tau),p(\tau)]\right\}\right].
+  \tag{9.2.1}\label{eq:9.2.1}
+\end{align}
+
+However, in field theory Eq. \eqref{eq:9.2.1} is not exactly what we want.
+Experimentalists do not measure probability amplitudes for transitions
+between eigenstates $\bra{q';t'}$ and $\ket{q;t}$ of the quantum field $Q$,
+but rather $S$-matrix elements, the probability amplitudes for transitions
+between states that at $t\to-\infty$ or $t\to+\infty$ contain definite
+numbers of particles of various types. These are called `in' and `out' states,
+$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\beta}_{\mathrm{out}}$, where $\alpha$
+and $\beta$ denote sets of particles characterized by the various particles'
+momenta, spin $z$-component (or helicity), and species. To calculate a matrix
+element of a time-ordered product (perhaps empty) between such states, we
+need to multiply Eq. \eqref{eq:9.2.1} by the `wave functions'
+$\braket{\beta;\mathrm{out}}{q';t'}$ and
+$\braket{q;t}{\alpha;\mathrm{in}}$ at any fixed times $t$ and $t'$, taken
+for convenience here to be $-\infty$ and $+\infty$, respectively, and then
+perform an integral over the `arguments' $q_m(\mathbf{x})$ and
+$q'_m(\mathbf{x})$ of these wave functions. But instead of constraining the
+path integral over $q_m(\mathbf{x},\tau)$ by the conditions
+\begin{equation}
+  q_m(\mathbf{x},+\infty)=q'_m(\mathbf{x}),
+  \qquad
+  q_m(\mathbf{x},-\infty)=q_m(\mathbf{x}),
+  \tag{9.2.2}\label{eq:9.2.2}
+\end{equation}
+and then integrating over $q'_m(\mathbf{x})$ and $q_m(\mathbf{x})$, we can
+just as well do an unconstrained integral over $q_m(\mathbf{x},\tau)$ (and
+also over $p_m(\mathbf{x},\tau)$), and set the arguments of the wave
+functions equal to the values given by Eq. \eqref{eq:9.2.2}:
+\begin{align}
+  &{}_{\mathrm{out}}\bra{\beta}T\left\{
+  \mathcal{O}_A[P(t_A),Q(t_A)],
+  \mathcal{O}_B[P(t_B),Q(t_B)],\ldots\right\}\ket{\alpha}_{\mathrm{in}}
+  \notag\\
+  &\quad={}
+  \int\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)
+  \prod_{\tau,\mathbf{x},m}\frac{dp_m(\mathbf{x},\tau)}{2\pi}
+  \mathcal{O}_A[p(t_A),q(t_A)]\mathcal{O}_B[p(t_B),q(t_B)]\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_{-\infty}^{+\infty}d\tau
+  \left\{\int d^3x\,\dot q_m(\mathbf{x},\tau)p_m(\mathbf{x},\tau)
+  -H[q(\tau),p(\tau)]\right\}\right]
+  \notag\\
+  &\qquad\cdot
+  \braket{\beta;\mathrm{out}}{q(+\infty);+\infty}
+  \braket{q(-\infty);-\infty}{\alpha;\mathrm{in}}.
+  \tag{9.2.3}\label{eq:9.2.3}
+\end{align}
+Incidentally, this result leads immediately\footnote{It is only necessary to
+note that, for a Hamiltonian
+$H[P(t),Q(t)]+\sum_A\int d^3x\,\epsilon_A(\mathbf{x},t)
+\mathcal{O}_A(\mathbf{x},t)$, the $S$-matrix is given by Eq. \eqref{eq:9.2.3} as
+\begin{align*}
+  {}_{\mathrm{out}}\braket{\beta}{\alpha}_{\mathrm{in},\epsilon}
+  ={}&\int\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)
+  \prod_{\tau,\mathbf{x},m}\frac{dp_m(\mathbf{x},\tau)}{2\pi}
+  \\
+  &\cdot\exp\left[i\int_{-\infty}^{+\infty}dt
+  \left\{\int d^3x\,\dot q_m(\mathbf{x},t)p_m(\mathbf{x},t)
+  -H[q(t),p(t)]
+  -\sum_A\int d^3x\,\epsilon_A(\mathbf{x},t)
+  \mathcal{O}_A(\mathbf{x},t)\right\}\right]
+  \\
+  &\cdot\braket{\beta;\mathrm{out}}{q(+\infty);+\infty}
+  \braket{q(-\infty);-\infty}{\alpha;\mathrm{in}}.
+\end{align*}
+The left-hand side of Eq. \eqref{eq:6.4.3} is the derivative of this expression with
+respect to $\epsilon_A$, $\epsilon_B$, etc., at $\epsilon=0$, which yields
+the right-hand side of Eq. \eqref{eq:9.2.3}, and using Eq. \eqref{eq:9.2.3} again then
+immediately gives the right-hand side of Eq. \eqref{eq:6.4.3}.} to Eq. \eqref{eq:6.4.3}, a
+theorem that we use repeatedly to relate sums of off-shell Feynman graphs to
+matrix elements of Heisenberg-picture operators between exact energy
+eigenstates.
+
+It is necessary now to consider how to calculate the wave functions appearing
+as the final pair of factors in Eq. \eqref{eq:9.2.3}. Let's first consider the simplest
+and most important case, the vacuum. (We saw in Section 6.4 that $S$-matrix
+elements may be easily calculated from the vacuum expectation values of
+time-ordered products.) We assume as usual that for $t\to\mp\infty$, matrix
+elements may be calculated as if there were no interactions. The `in' and
+`out' vacua may thus be defined by the conditions
+\begin{equation}
+  a_{\mathbf{p},\sigma,n,\mathrm{in}}\ket{\Omega}_{\mathrm{in}}=0,
+  \qquad
+  a_{\mathbf{p},\sigma,n,\mathrm{out}}\ket{\Omega}_{\mathrm{out}}=0,
+  \tag{9.2.4}\label{eq:9.2.4}
+\end{equation}
+where $a_{\mathbf{p},\sigma,n,\mathrm{in}}$ and
+$a_{\mathbf{p},\sigma,n,\mathrm{out}}$ are the operators appearing
+in the coefficients of $\exp(i\mathbf{p}\cdot\mathbf{x}-iEt)$ in the
+plane-wave expansion of the operator $Q_m(\mathbf{x},t)$ at
+$t\to-\infty$ and $t\to+\infty$, respectively. For instance, for the real
+scalar field of a neutral spinless particle, we have in effect
+\begin{equation}
+  \Phi(\mathbf{x},t)\underset{t\to\mp\infty}{\longrightarrow}
+  (2\pi)^{-3/2}\int d^3p\,(2E)^{-1/2}
+  \left[a_{\substack{\mathrm{in}\\\mathrm{out}}}(\mathbf{p})
+  e^{ip\cdot x}+\mathrm{H.c.}\right],
+  \tag{9.2.5}\label{eq:9.2.5}
+\end{equation}
+\begin{equation}
+  \Pi(\mathbf{x},t)\underset{t\to\mp\infty}{\longrightarrow}
+  \dot\Phi(\mathbf{x},t)
+  \underset{t\to\mp\infty}{\longrightarrow}
+  -i(2\pi)^{-3/2}\int d^3p\,(E/2)^{1/2}
+  \left[a_{\substack{\mathrm{in}\\\mathrm{out}}}(\mathbf{p})
+  e^{ip\cdot x}-\mathrm{H.c.}\right],
+  \tag{9.2.6}\label{eq:9.2.6}
+\end{equation}
+where $p^0\equiv E\equiv\sqrt{\mathbf{p}^2+m^2}$, and we here use the
+conventional $\Phi$ and $\Pi$ rather than $Q$ and $P$ for a scalar field,
+and drop the unnecessary labels $m,\sigma,n$. Inverting the Fourier
+transforms and taking a linear combination of the resulting expressions, we
+have
+\begin{align}
+  a_{\substack{\mathrm{in}\\\mathrm{out}}}(\mathbf{p})
+  ={}&\lim_{t\to\mp\infty}\frac{e^{iEt}}{(2\pi)^{3/2}}
+  \int d^3x\,e^{-i\mathbf{p}\cdot\mathbf{x}}
+  \left[\sqrt{\frac{E}{2}}\Phi(\mathbf{x},t)
+  +i\sqrt{\frac{1}{2E}}\Pi(\mathbf{x},t)\right].
+  \tag{9.2.7}\label{eq:9.2.7}
+\end{align}
+As mentioned in Section 9.1, the `momentum' $\Pi(\mathbf{x},t)$ acts on
+wave-functions in a $\phi$-basis as the variational derivative
+$-i\delta/\delta\phi(\mathbf{x},t)$, so in this basis the conditions \eqref{eq:9.2.4}
+read
+\begin{equation}
+  0=\int d^3x\,e^{-i\mathbf{p}\cdot\mathbf{x}}
+  \left[\frac{\delta}{\delta\phi(\mathbf{x})}+E(\mathbf{p})\phi(\mathbf{x})\right]
+  \braket{\phi(\mathbf{x});\mp\infty}{\Omega;\substack{\mathrm{in}\\\mathrm{out}}}.
+  \tag{9.2.8}\label{eq:9.2.8}
+\end{equation}
+The analogous ordinary differential equation has a well-known Gaussian
+solution, so let's try a Gaussian ansatz here:
+\begin{equation}
+  \braket{\phi(\mathbf{x});\mp\infty}{\Omega;\substack{\mathrm{in}\\\mathrm{out}}}
+  =\mathcal{N}\exp\left(-\frac12\int d^3x\,d^3y\,
+  \mathcal{E}(\mathbf{x},\mathbf{y})\phi(\mathbf{x})\phi(\mathbf{y})\right),
+  \tag{9.2.9}\label{eq:9.2.9}
+\end{equation}
+with kernel $\mathcal{E}$ and constant $\mathcal{N}$ to be determined.
+Substituting this in Eq. \eqref{eq:9.2.8}, we see that the functional differential
+equation for the vacuum wave functional is satisfied if for all $\phi$
+\begin{equation}
+  0=\int d^3x\,e^{-i\mathbf{p}\cdot\mathbf{x}}
+  \left[\int d^3y\,\mathcal{E}(\mathbf{x},\mathbf{y})\phi(\mathbf{y})
+  -E(\mathbf{p})\phi(\mathbf{x})\right]
+  \tag{9.2.10}\label{eq:9.2.10}
+\end{equation}
+or, in other words, if
+\begin{equation}
+  \int d^3x\,e^{-i\mathbf{p}\cdot\mathbf{x}}
+  \mathcal{E}(\mathbf{x},\mathbf{y})
+  =E(\mathbf{p})e^{-i\mathbf{p}\cdot\mathbf{y}}.
+  \tag{9.2.11}\label{eq:9.2.11}
+\end{equation}
+The solution is easily found by inverting the Fourier transform
+\begin{equation}
+  \mathcal{E}(\mathbf{x},\mathbf{y})=(2\pi)^{-3}
+  \int d^3p\,e^{i\mathbf{p}\cdot(\mathbf{x}-\mathbf{y})}E(\mathbf{p}).
+  \tag{9.2.12}\label{eq:9.2.12}
+\end{equation}
+(Recall that $E(\mathbf{p})\equiv\sqrt{\mathbf{p}^2+m^2}$.) This is
+actually the most useful representation for the kernel $\mathcal{E}$, but we
+may note in passing that for $\mathbf{x}\ne\mathbf{y}$, $\mathcal{E}$ may
+also be written in terms of a Hankel function of negative order
+\begin{equation}
+  \mathcal{E}(\mathbf{x},\mathbf{y})=
+  \frac{m}{2\pi^2r}\frac{d}{dr}\left(\frac{1}{r}K_{-1}(imr)\right),
+  \tag{9.2.13}\label{eq:9.2.13}
+\end{equation}
+where $r\equiv|\mathbf{x}-\mathbf{y}|$. The constant $\mathcal{N}$ in
+Eq. \eqref{eq:9.2.9} may be formally obtained from the normalization condition for
+the vacuum state, but we will not need this result.
+
+According to Eq. \eqref{eq:9.2.9}, in calculating vacuum expectation values in the
+theory of a scalar field, the product of the last two factors in Eq. \eqref{eq:9.2.3} is
+\begin{align}
+  &{}_{\mathrm{out}}\braket{\Omega}{\phi(+\infty);+\infty}
+  \braket{\phi(-\infty);-\infty}{\Omega}_{\mathrm{in}}
+  \notag\\
+  &\quad={}|\mathcal{N}|^2\exp\left(-\frac12\int d^3x\,d^3y\,
+  \mathcal{E}(\mathbf{x},\mathbf{y})
+  \left[\phi(\mathbf{x},+\infty)\phi(\mathbf{y},+\infty)
+  +\phi(\mathbf{x},-\infty)\phi(\mathbf{y},-\infty)\right]\right)
+  \notag\\
+  &\quad={}|\mathcal{N}|^2\exp\left(-\frac12\epsilon
+  \int d^3x\,d^3y\int_{-\infty}^{+\infty}d\tau\,
+  \mathcal{E}(\mathbf{x},\mathbf{y})
+  \phi(\mathbf{x},\tau)\phi(\mathbf{y},\tau)e^{-\epsilon|\tau|}\right),
+  \tag{9.2.14}\label{eq:9.2.14}
+\end{align}
+where $\epsilon$ is a positive infinitesimal. To obtain the final expression,
+we have used the fact that for any reasonably smooth function $f(\tau)$,
+\begin{equation}
+  f(+\infty)+f(-\infty)=\lim_{\epsilon\to0+}\epsilon
+  \int_{-\infty}^{+\infty}d\tau\,f(\tau)e^{-\epsilon|\tau|}.
+  \tag{9.2.15}\label{eq:9.2.15}
+\end{equation}
+Inserting Eq. \eqref{eq:9.2.14} in Eq. \eqref{eq:9.2.3} now gives
+\begin{align}
+  &{}_{\mathrm{out}}\bra{\Omega}T\left\{
+  \mathcal{O}_A[\Pi(t_A),\Phi(t_A)],
+  \mathcal{O}_B[\Pi(t_B),\Phi(t_B)],\ldots\right\}\ket{\Omega}_{\mathrm{in}}
+  \notag\\
+  &\quad={}|\mathcal{N}|^2\int
+  \prod_{\tau,\mathbf{x}}d\phi(\mathbf{x},\tau)
+  \prod_{\tau,\mathbf{x}}\frac{d\pi(\mathbf{x},\tau)}{2\pi}
+  \mathcal{O}_A[\pi(t_A),\phi(t_A)]
+  \mathcal{O}_B[\pi(t_B),\phi(t_B)]\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_{-\infty}^{+\infty}d\tau
+  \left\{\begin{aligned}
+  &\int d^3x\,\dot\phi(\mathbf{x},\tau)\pi(\mathbf{x},\tau)
+  -H[\phi(\tau),\pi(\tau)]\\
+  &\quad+\frac12i\epsilon\int d^3x\,d^3y\,
+  \mathcal{E}(\mathbf{x},\mathbf{y})e^{-\epsilon|\tau|}
+  \phi(\mathbf{x},\tau)\phi(\mathbf{y},\tau)
+  \end{aligned}\right\}\right].
+  \tag{9.2.16}\label{eq:9.2.16}
+\end{align}
+We shall see in Section 9.4 that the whole effect of the last term in the
+argument of the exponential in Eq. \eqref{eq:9.2.16} is to provide the $-i\epsilon$
+in the denominator of the scalar field propagator in momentum space,
+$[p^2+m^2-i\epsilon]^{-1}$. We will not go into the corresponding details
+for fields of general spin, but will simply state that in general
+\begin{align}
+  &{}_{\mathrm{out}}\bra{\Omega}T\left\{
+  \mathcal{O}_A[P_A(t_A),Q(t_A)],
+  \mathcal{O}_B[P_B(t_B),Q(t_B)],\ldots\right\}\ket{\Omega}_{\mathrm{in}}
+  \notag\\
+  &\quad={}|\mathcal{N}|^2\int
+  \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
+  \left[\prod_{\tau,\mathbf{x},m}\frac{dp_m(\mathbf{x},\tau)}{2\pi}\right]
+  \mathcal{O}_A[p(t_A),q(t_A)]\mathcal{O}_B[p(t_B),q(t_B)]\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_{-\infty}^{+\infty}d\tau
+  \left\{\int d^3x\sum_m\dot q_m(\mathbf{x},\tau)p_m(\mathbf{x},\tau)
+  -H[q(\tau),p(\tau)]+i\epsilon\text{ terms}\right\}\right],
+  \tag{9.2.17}\label{eq:9.2.17}
+\end{align}
+where the `$i\epsilon$ terms' just have the effect of putting the correct
+$-i\epsilon$ in the denominators of all propagators.
+
+This is a good place to mention that field-independent factors in Eq. \eqref{eq:9.2.17},
+like the constant $|\mathcal{N}|^2$, are not important. This is because such
+factors contribute also to the matrix element
+${}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in}}$. In calculating the
+\emph{connected} part of vacuum expectation values of time-ordered products
+(or the $S$-matrix) we eliminate the contribution of disconnected vacuum
+fluctuation subgraphs by dividing by
+${}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in}}$, and any constant
+factors in the vacuum expectation values cancel in this ratio.
+
+We could go on and calculate matrix elements between multi-particle states,
+by inserting the appropriate `wave functionals' in Eq. \eqref{eq:9.2.3}. These can be
+calculated by applying the adjoints of annihilation operators such as \eqref{eq:9.2.7}
+to the vacuum state; just as for the harmonic oscillator, these wave
+functionals turn out to be Hermite polynomials in the field times the vacuum
+Gaussian. We do not need to work all this out here, because as shown in
+Section 6.4, the vacuum expectation values \eqref{eq:9.2.17} are all we need in order
+to be able to calculate $S$-matrix elements.

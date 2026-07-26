@@ -1,0 +1,326 @@
+% Source: physical PDF pages 50--59; printed pages 27--36.
+% Section 15.7 begins on physical p. 50 and ends immediately before Section 15.8 on physical p. 59.
+% Figures: none. Source uncertainties: none.
+\subsection{BRST Symmetry}
+\label{sec:15.7}
+
+Although the Faddeev--Popov--De Witt method described in the previous two sections makes the Lorentz invariance of the theory manifest, it still rests on a choice of gauge, and hence naturally it hides the underlying gauge invariance of the theory. This is a serious problem in trying to prove the renormalizability of the theory---gauge invariance restricts the form of the terms in the Lagrangian that are available as counterterms to absorb ultraviolet divergences, but once we choose a gauge, how do we know that gauge invariance still restricts the ways that the infinities can appear?
+
+Remarkably, however, even after we choose a gauge, the path integral still does have a symmetry related to gauge invariance. This symmetry was discovered by Becchi, Rouet, and Stora~\hyperref[ch15-ref-10]{[10]} (and independently by Tyutin~\hyperref[ch15-ref-11]{[11]}) in 1975, several years after the work of Faddeev and Popov and De Witt, and is known in honor of its discoverers as BRST symmetry. This symmetry will be presented more-or-less as it was originally discovered, as a by-product of the method of Faddeev, Popov, and De Witt, but as we shall see it can also be regarded as a replacement for the Faddeev--Popov--De Witt approach.
+
+We have seen in Eqs.~\eqref{eq:15.6.3} and \eqref{eq:15.6.4} that the Feynman rules for a non-Abelian gauge theory may be obtained from a path integral over matter, gauge, and ghost fields, with a modified action, which we may write
+\begin{equation}
+ I_{\mathrm{MOD}}=I_{\mathrm{EFF}}+I_{GH}=\int d^4x\,\mathcal L_{\mathrm{MOD}},
+ \tag{15.7.1}\label{eq:15.7.1}
+\end{equation}
+\begin{equation}
+ \mathcal L_{\mathrm{MOD}}=\mathcal L-\frac{1}{2\xi}f_\alpha f_\alpha+\omega_\alpha^*\Delta_\alpha,
+ \tag{15.7.2}\label{eq:15.7.2}
+\end{equation}
+where we have now introduced the quantity
+\begin{equation}
+ \Delta_\alpha(x)=\int d^4y\,\mathcal F_{\alpha x,\beta y}[A,\psi]\,\omega_\beta(y).
+ \tag{15.7.3}\label{eq:15.7.3}
+\end{equation}
+This is for the choice
+\begin{equation}
+ B[f]\propto\exp\left(-\frac{i}{2\xi}\int d^4x\,f_\alpha f_\alpha\right)
+ \tag{15.7.4}\label{eq:15.7.4}
+\end{equation}
+of the gauge-fixing functional in Eq.~\eqref{eq:15.5.21}. For our present purposes, it will be helpful to rewrite $B[f]$ as a Fourier integral:
+\begin{equation}
+ B[f]=\int\left[\prod_{\alpha,x}dh_\alpha(x)\right]
+ \exp\left[\frac{i\xi}{2}\int h_\alpha h_\alpha\right]
+ \exp\left[i\int d^4x\,f_\alpha h_\alpha\right].
+ \tag{15.7.5}\label{eq:15.7.5}
+\end{equation}
+We must now do our path integrals over the field $h_\alpha$ (often known as a `Nakanishi--Lautrup' field~\hyperref[ch15-ref-11a]{[11a]}) as well as over matter, gauge, ghost and antighost fields, with a new modified action
+\begin{equation}
+ I_{\mathrm{NEW}}=\int d^4x\left(\mathcal L+\omega_\alpha^*\Delta_\alpha+h_\alpha f_\alpha+\frac{1}{2}\xi h_\alpha h_\alpha\right).
+ \tag{15.7.6}\label{eq:15.7.6}
+\end{equation}
+This modified action is not gauge-invariant---indeed, it had better not be, if we are to be able to use it in path integrals. However, it is invariant under a `BRST' symmetry transformation, parameterized by an infinitesimal constant $\theta$ that \emph{anticommutes} with $\omega_\alpha$, $\omega_\alpha^*$, and all fermionic matter fields. For a given $\theta$, the BRST transformation is
+\begin{align}
+ \delta_\theta\psi&=it_\alpha\theta\omega_\alpha\psi,
+ &&\tag{15.7.7}\label{eq:15.7.7}\\
+ \delta_\theta A_{\alpha\mu}&=\theta D_\mu\omega_\alpha
+ =\theta\bigl[\partial_\mu\omega_\alpha+C_{\alpha\beta\gamma}A_{\beta\mu}\omega_\gamma\bigr],
+ &&\tag{15.7.8}\label{eq:15.7.8}\\
+ \delta_\theta\omega_\alpha^*&=-\theta h_\alpha,
+ &&\tag{15.7.9}\label{eq:15.7.9}\\
+ \delta_\theta\omega_\alpha&=-\frac{1}{2}\theta C_{\alpha\beta\gamma}\omega_\beta\omega_\gamma,
+ &&\tag{15.7.10}\label{eq:15.7.10}\\
+ \delta_\theta h_\alpha&=0.
+ &&\tag{15.7.11}\label{eq:15.7.11}
+\end{align}
+(Recall that in fermionic path integrals, there is no connection between $\omega_\alpha$ and $\omega_\alpha^*$, so that Eq.~\eqref{eq:15.7.9} does not need to be the adjoint of Eq.~\eqref{eq:15.7.10}.) Because $h_\alpha$ is BRST-invariant, we could if we like replace the Gaussian factor $\exp(\tfrac{1}{2}i\xi\int h_\alpha h_\alpha)$ in Eq.~\eqref{eq:15.7.5} with an arbitrary smooth functional of $h_\alpha$, yielding an arbitrary functional $B[f]$, without affecting the BRST invariance of the action. However, for the purposes of diagrammatic calculation and renormalization it will help to leave $B[f]$ as a Gaussian.
+
+In checking the invariance of the action \eqref{eq:15.7.1}, it will be very useful first to note that the transformation \eqref{eq:15.7.7}--\eqref{eq:15.7.11} is \emph{nilpotent}; that is, if $F$ is any functional of $\psi$, $A$, $\omega$, $\omega^*$, and $h$, and we define $sF$ by
+\begin{equation}
+ \delta_\theta F\equiv\theta sF,
+ \tag{15.7.12}\label{eq:15.7.12}
+\end{equation}
+then\footnote{In the original work on BRST symmetry the functional $B[f]$ was left in the form \eqref{eq:15.7.4}, so that $h_\alpha$ was replaced in Eq.~\eqref{eq:15.7.9} with $-f_\alpha/\xi$, and the BRST transformation was only nilpotent when acting on functions of $\omega_\alpha$ and the gauge and matter fields, but not of $\omega_\alpha^*$.}
+\begin{equation}
+ \delta_\theta(sF)=0
+ \tag{15.7.13}\label{eq:15.7.13}
+\end{equation}
+or equivalently
+\begin{equation}
+ s(sF)=0.
+ \tag{15.7.14}\label{eq:15.7.14}
+\end{equation}
+
+It is straightforward to verify this nilpotence when $\delta_\theta$ acts on a single field. First, acting on a matter field,
+\begin{align*}
+ \delta_\theta s\psi
+ &=it_\alpha\delta_\theta(\omega_\alpha\psi)
+ =-\frac{1}{2}iC_{\alpha\beta\gamma}t_\alpha\theta\omega_\beta\omega_\gamma\psi
+ -t_\alpha t_\beta\omega_\alpha\theta\omega_\beta\psi\\
+ &=-\frac{1}{2}iC_{\alpha\beta\gamma}t_\alpha\theta\omega_\beta\omega_\gamma\psi
+ +t_\alpha t_\beta\theta\omega_\alpha\omega_\beta\psi.
+\end{align*}
+The product $\omega_\alpha\omega_\beta$ in the second term on the right is antisymmetric in $\alpha$ and $\beta$, so we can replace $t_\alpha t_\beta$ in this term with $\tfrac{1}{2}[t_\alpha,t_\beta]$, and this term thus cancels the first term:
+\begin{equation}
+ ss\psi=0.
+ \tag{15.7.15}\label{eq:15.7.15}
+\end{equation}
+
+Next, acting on a gauge field, we have
+\begin{align*}
+ \delta_\theta sA_{\alpha\mu}
+ &=\delta_\theta D_\mu\omega_\alpha\\
+ &=\partial_\mu\delta_\theta\omega_\alpha
+ +C_{\alpha\beta\gamma}\delta_\theta A_{\beta\mu}\omega_\gamma
+ +C_{\alpha\beta\gamma}A_{\beta\mu}\delta_\theta\omega_\gamma\\
+ &=\theta\Bigl(-\frac{1}{2}C_{\alpha\beta\gamma}\partial_\mu(\omega_\beta\omega_\gamma)
+ +C_{\alpha\beta\gamma}(\partial_\mu\omega_\beta)\omega_\gamma
+ +C_{\alpha\beta\gamma}C_{\beta\delta\epsilon}A_{\delta\mu}\omega_\epsilon\omega_\gamma
+ -\frac{1}{2}C_{\alpha\beta\gamma}C_{\gamma\delta\epsilon}A_{\beta\mu}\omega_\delta\omega_\epsilon\Bigr)\\
+ &=\theta\Bigl(\frac{1}{2}C_{\alpha\beta\gamma}(\partial_\mu\omega_\beta)\omega_\gamma
+ +\frac{1}{2}C_{\alpha\beta\gamma}(\partial_\mu\omega_\gamma)\omega_\beta
+ -C_{\alpha\beta\gamma}C_{\gamma\delta\epsilon}A_{\delta\mu}\omega_\epsilon\omega_\beta
+ -\frac{1}{2}C_{\alpha\beta\gamma}C_{\gamma\delta\epsilon}A_{\beta\mu}\omega_\delta\omega_\epsilon\Bigr).
+\end{align*}
+The first two terms of the final expression cancel because $C_{\alpha\beta\gamma}$ is antisymmetric in $\beta$ and $\gamma$, and the third and fourth terms cancel because of the Jacobi identity \eqref{eq:15.1.5}, so
+\begin{equation}
+ ssA_{\alpha\mu}=0.
+ \tag{15.7.16}\label{eq:15.7.16}
+\end{equation}
+Eqs.~\eqref{eq:15.7.9} and \eqref{eq:15.7.11} show immediately that
+\begin{equation}
+ ss\omega_\alpha^*=0
+ \tag{15.7.17}\label{eq:15.7.17}
+\end{equation}
+and
+\begin{equation}
+ ssh_\alpha=0.
+ \tag{15.7.18}\label{eq:15.7.18}
+\end{equation}
+Finally,
+\begin{align*}
+ \delta_\theta s\omega_\alpha
+ &=-\frac{1}{2}C_{\alpha\beta\gamma}\delta_\theta(\omega_\beta\omega_\gamma)\\
+ &=\frac{1}{4}\theta\left(C_{\alpha\beta\gamma}C_{\beta\delta\epsilon}\omega_\delta\omega_\epsilon\omega_\gamma
+ +C_{\alpha\beta\gamma}C_{\gamma\delta\epsilon}\omega_\beta\omega_\delta\omega_\epsilon\right)\\
+ &=\frac{1}{4}\theta C_{\alpha\beta\gamma}C_{\gamma\delta\epsilon}
+ \left[-\omega_\delta\omega_\epsilon\omega_\beta+\omega_\beta\omega_\delta\omega_\epsilon\right].
+\end{align*}
+But $\omega_\beta$ commutes with $\omega_\delta\omega_\epsilon$, so this too vanishes
+\begin{equation}
+ ss\omega_\alpha=0.
+ \tag{15.7.19}\label{eq:15.7.19}
+\end{equation}
+
+Now consider a product of two fields $\phi_1$ and $\phi_2$, either or both of which may be $\psi$, $A$, $\omega$, $\omega^*$, or $h$, not necessarily at the same point in spacetime. Then
+\[
+ \delta_\theta(\phi_1\phi_2)=\theta(s\phi_1)\phi_2+\phi_1\theta(s\phi_2)
+ =\theta\bigl[(s\phi_1)\phi_2\mathbin{\pm}\phi_1s\phi_2\bigr],
+\]
+where the sign $\pm$ is plus if $\phi_1$ is bosonic, minus if $\phi_1$ is fermionic. That is,
+\[
+ s(\phi_1\phi_2)=(s\phi_1)\phi_2\mathbin{\pm}\phi_1s\phi_2.
+\]
+Since as we have seen $\delta_\theta(s\phi_1)=\delta_\theta(s\phi_2)=0$, the effect of a BRST transformation on $s(\phi_1\phi_2)$ is
+\[
+ \delta_\theta s(\phi_1\phi_2)=(s\phi_1)\theta(s\phi_2)\mathbin{\pm}\theta(s\phi_1)(s\phi_2).
+\]
+But $s\phi$ always has statistics opposite to $\phi$, so moving $\theta$ to the left in the first term on the right-hand side introduces a sign factor $\mp$:
+\[
+ \delta_\theta s(\phi_1\phi_2)=\theta\bigl[\mp(s\phi_1)(s\phi_2)\mathbin{\pm}(s\phi_1)(s\phi_2)\bigr]=0.
+\]
+Continuing in this way, we see that BRST transformations are nilpotent acting on any product of fields at arbitrary spacetime points:
+\[
+ \delta_\theta s(\phi_1\phi_2\phi_3\cdots)=0.
+\]
+Any functional $F[\phi]$ can be written as a sum of multiple integrals of such products with c-number coefficients, so likewise
+\begin{equation}
+ \delta_\theta sF[\phi]=\theta ssF[\phi]=0.
+ \tag{15.7.20}\label{eq:15.7.20}
+\end{equation}
+This completes the proof of the nilpotency of the BRST transformation.
+
+Now let us return to the verification of the BRST invariance of the action \eqref{eq:15.7.6}. First note that for any functional of matter and gauge fields alone, the BRST transformation is just a gauge transformation with infinitesimal gauge parameter
+\begin{equation}
+ \lambda_\alpha(x)=\theta\omega_\alpha(x).
+ \tag{15.7.21}\label{eq:15.7.21}
+\end{equation}
+Therefore the first term in Eq.~\eqref{eq:15.7.6} is automatically BRST-invariant:
+\begin{equation}
+ \delta_\theta\int d^4x\,\mathcal L=0.
+ \tag{15.7.22}\label{eq:15.7.22}
+\end{equation}
+To calculate the effect of a BRST transformation on the rest of the action \eqref{eq:15.7.6}, note that its effect on the gauge-fixing function is just the gauge transformation \eqref{eq:15.7.21}, so
+\begin{align*}
+ \delta_\theta f_\alpha[x;A,\psi]
+ &=\int\left.\frac{\delta f_\alpha[x;A_\lambda,\psi_\lambda]}{\delta\lambda^\beta(y)}\right|_{\lambda=0}
+ \theta\omega_\beta(y)\,d^4y\\
+ &=\theta\int \mathcal F_{\alpha x,\beta y}[A,\psi]\,\omega_\beta(y)\,d^4y
+\end{align*}
+or in terms of the quantity \eqref{eq:15.7.3}
+\begin{equation}
+ \delta_\theta f_\alpha[x;A,\psi]=\theta\Delta_\alpha(x;A,\psi,\omega).
+ \tag{15.7.23}\label{eq:15.7.23}
+\end{equation}
+(Note that $\mathcal F$ is a bosonic quantity, so there is no sign change in moving $\theta$ to the left here.) Also recall that $\delta_\theta\omega_\alpha^*=-\theta h_\alpha$ and $\delta_\theta h_\alpha=0$. Therefore the terms in the integrand of the `new' action \eqref{eq:15.7.6} other than $\mathcal L$ may be written
+\begin{equation}
+ \omega_\alpha^*\Delta_\alpha+h_\alpha f_\alpha+\frac{1}{2}\xi h_\alpha h_\alpha
+ =s\left(\omega_\alpha^*f_\alpha+\frac{1}{2}\xi\omega_\alpha^*h_\alpha\right)
+ \tag{15.7.24}\label{eq:15.7.24}
+\end{equation}
+or in other words
+\begin{equation}
+ I_{\mathrm{NEW}}=\int d^4x\,\mathcal L+s\Psi,
+ \tag{15.7.25}\label{eq:15.7.25}
+\end{equation}
+where
+\begin{equation}
+ \Psi\equiv\int d^4x\left(\omega_\alpha^*f_\alpha+\frac{1}{2}\xi\omega_\alpha^*h_\alpha\right).
+ \tag{15.7.26}\label{eq:15.7.26}
+\end{equation}
+The nilpotence of the BRST transformation tells us immediately that the term $s\Psi$ as well as $\int d^4x\,\mathcal L$ is BRST-invariant.
+
+In a sense the converse of this result also applies: we shall see in Section 17.2 that a renormalizable Lagrangian that obeys BRST invariance and the other symmetries of the Lagrangian \eqref{eq:15.7.25} must take the form of Eq.~\eqref{eq:15.7.25}, aside from changes in the values of various constant coefficients. But this is not enough to establish the renormalizability of these theories. BRST symmetry transformations act non-linearly on the fields, and in this case there is no simple connection between the symmetries of the Lagrangian and the symmetries of matrix elements and Greens functions. Using the external field methods developed in the next chapter, it will be shown in Section 17.2 that the ultraviolet divergent terms in Feynman amplitudes (though not the finite parts) do obey a sort of renormalized BRST invariance, which allows the proof of renormalizability to be completed.
+
+Eq.~\eqref{eq:15.7.25} shows that the physical content of any gauge theory is contained in the \emph{kernel} of the BRST operator (that is, in a general BRST-invariant term $\int d^4x\,\mathcal L+s\Psi$), modulo terms in the \emph{image} of the BRST transformation (that is, terms of the form $s\Psi$). The kernel modulo the image of any nilpotent transformation is said to form the \emph{cohomology} of the transformation. There is another sense in which the physical content of a gauge theory may be identified with the cohomology of the BRST operator~\hyperref[ch15-ref-12]{[12]}. It is a fundamental physical requirement that matrix elements between physical states should be independent of our choice of the gauge-fixing function $f_\alpha$, or in other words, of the functional $\Psi$ in Eq.~\eqref{eq:15.7.25}. The change in any matrix element $\langle\alpha\|\beta\rangle$ due to a change $\widetilde\delta\Psi$ in $\Psi$ is
+\begin{equation}
+ \widetilde\delta\langle\alpha\|\beta\rangle
+ =i\langle\alpha\|\widetilde\delta I_{\mathrm{NEW}}\|\beta\rangle
+ =i\langle\alpha\|s\widetilde\delta\Psi\|\beta\rangle.
+ \tag{15.7.27}\label{eq:15.7.27}
+\end{equation}
+(We use a tilde here to distinguish this arbitrary change in the gauge-fixing function from a BRST transformation or a gauge transformation.) We can introduce a fermionic BRST `charge' $Q$, defined so that for any field operator $\Phi$,
+\[
+ \delta_\theta\Phi=i[\theta Q,\Phi]=i\theta[Q,\Phi]_{\mp},
+\]
+or in other words,
+\begin{equation}
+ [Q,\Phi]_{\mp}=is\Phi,
+ \tag{15.7.28}\label{eq:15.7.28}
+\end{equation}
+the sign being $-$ or $+$ according as $\Phi$ is bosonic or fermionic. The nilpotence of the BRST transformation then gives
+\[
+ 0=-ss\Phi=[Q,[Q,\Phi]_{\mp}]_+=[Q^2,\Phi]_-.
+\]
+For this to be satisfied for all operators $\Phi$, it is necessary for $Q^2$ either to vanish or be proportional to the unit operator. But $Q^2$ cannot be proportional to the unit operator, since it has a non-vanishing ghost quantum number\footnote{Recall that the ghost quantum number is defined as $+1$ for $\omega_\alpha$, $-1$ for $\omega_\alpha^*$, and 0 for all gauge and matter fields.}, so it must vanish:
+\begin{equation}
+ Q^2=0.
+ \tag{15.7.29}\label{eq:15.7.29}
+\end{equation}
+From Eqs.~\eqref{eq:15.7.27} and \eqref{eq:15.7.28}, we have
+\begin{equation}
+ \widetilde\delta\langle\alpha\|\beta\rangle
+ =\langle\alpha\|[Q,\widetilde\delta\Psi]\|\beta\rangle.
+ \tag{15.7.30}\label{eq:15.7.30}
+\end{equation}
+In order for this to vanish for all changes $\widetilde\delta\Psi$ in $\Psi$, it is necessary that
+\begin{equation}
+ \langle\alpha\|Q=Q\ket{\beta}=0.
+ \tag{15.7.31}\label{eq:15.7.31}
+\end{equation}
+Thus physical states are in the kernel of the nilpotent operator $Q$. Two physical states that differ only by a state vector in the image of $Q$, that is, of form $Q\ket{\cdots}$, evidently have the same matrix element with all other physical states, and are therefore physically equivalent. Hence independent physical states correspond to states in the kernel of $Q$, modulo the image of $Q$---that is, they correspond to the cohomology of $Q$.
+
+To see how this works in practice, let us consider the simple example of pure electrodynamics.\footnote{Eqs.~\eqref{eq:15.6.11} and \eqref{eq:15.6.7} show that because the structure constants vanish in electrodynamics, the ghosts here are not coupled to other fields. Nevertheless, electrodynamics provides a good example of the use of BRST symmetry in identifying physical states. Indeed, in analyzing the physicality conditions on `in' and `out' states we ignore interactions, so for this purpose a non-Abelian gauge theory is treated like several copies of quantum electrodynamics.} Taking the gauge-fixing function as $f=\partial_\mu A^\mu$ and integrating over the auxiliary field $h$, the BRST transformation \eqref{eq:15.7.8}--\eqref{eq:15.7.10} is here
+\begin{equation}
+ sA_\mu=\partial_\mu\omega,
+ \qquad s\omega^*=\partial_\mu A^\mu/\xi,
+ \qquad s\omega=0.
+ \tag{15.7.32}\label{eq:15.7.32}
+\end{equation}
+We expand the fields in normal modes\footnote{Just as $\omega^*(x)$ is not to be thought of as the Hermitian adjoint of $\omega(x)$, $b^*$ and $c^*$ are not the adjoints of $c$ and $b$. But since $A^\mu(x)$ is Hermitian, $\omega(x)$ is Hermitian if $Q$ is.}
+\begin{align}
+ A^\mu(x)&=(2\pi)^{-3/2}\int\frac{d^3p}{\sqrt{2p^0}}
+ \left[a^\mu(\mathbf p)e^{ip\cdot x}+a^{\mu*}(\mathbf p)e^{-ip\cdot x}\right],\notag\\
+ \omega(x)&=(2\pi)^{-3/2}\int\frac{d^3p}{\sqrt{2p^0}}
+ \left[c(\mathbf p)e^{ip\cdot x}+c^*(\mathbf p)e^{-ip\cdot x}\right],\tag{15.7.33}\label{eq:15.7.33}\\
+ \omega^*(x)&=(2\pi)^{-3/2}\int\frac{d^3p}{\sqrt{2p^0}}
+ \left[b(\mathbf p)e^{ip\cdot x}+b^*(\mathbf p)e^{-ip\cdot x}\right].\notag
+\end{align}
+Matching coefficients of $e^{\pm ip\cdot x}$ on both sides of Eq.~\eqref{eq:15.7.28} yields
+\begin{align}
+ [Q,a^\mu(\mathbf p)]_-&=-p^\mu c(\mathbf p),
+ & [Q,a^{\mu*}(\mathbf p)]_-&=p^\mu c^*(\mathbf p),\notag\\
+ [Q,b(\mathbf p)]_+&=p^\mu a_\mu(\mathbf p)/\xi,
+ & [Q,b^*(\mathbf p)]_+&=p^\mu a_\mu^*(\mathbf p)/\xi,\tag{15.7.34}\label{eq:15.7.34}\\
+ [Q,c(\mathbf p)]_+&=[Q,c^*(\mathbf p)]_+=0.\notag
+\end{align}
+Consider any state $\ket{\psi}$ satisfying the physicality condition \eqref{eq:15.7.31}:
+\begin{equation}
+ Q\ket{\psi}=0.
+ \tag{15.7.35}\label{eq:15.7.35}
+\end{equation}
+The states $\ket{e,\psi}=e_\mu a^{\mu*}(\mathbf p)\ket{\psi}$ with one additional photon then satisfy the physicality condition $Q\ket{e,\psi}=0$ if $e_\mu p^\mu=0$. Also, the state $\ket{\psi}'=b^*(\mathbf p)\ket{\psi}$ satisfies
+\begin{equation}
+ Q\ket{\psi}'=p^\mu a_\mu^*(\mathbf p)\ket{\psi}/\xi,
+ \tag{15.7.36}\label{eq:15.7.36}
+\end{equation}
+so $\ket{e+\alpha p,\psi}=\ket{e,\psi}+\xi\alpha Q\ket{\psi}'$, and is therefore physically equivalent to $\ket{e,\psi}$. From this we conclude that $e^\mu$ is physically equivalent to $e^\mu+\alpha p^\mu$, which is the usual `gauge-invariance' condition on photon polarization vectors. On the other hand,
+\[
+ Qb^*(\mathbf p)\ket{\psi}=p^\mu a_\mu^*(\mathbf p)\ket{\psi}\ne0,
+\]
+so $b^*\ket{\psi}$ does not satisfy the physicality condition \eqref{eq:15.7.31}. Also, for any $e_\mu$ with $e\cdot p\ne0$,
+\[
+ c^*(\mathbf p)\ket{\psi}=Qe_\mu a^{\mu*}(\mathbf p)\ket{\psi}/e\cdot p,
+\]
+so $c^*\ket{\psi}$ is BRST-exact, and hence equivalent to zero. \emph{Thus the physical Hilbert space is free of ghosts and antighosts.}
+
+To maintain Lorentz invariance, we must interpret all four components of $a^\mu(\mathbf p)$ as annihilation operators, in the sense that
+\begin{equation}
+ 0=a_\mu(\mathbf p)\ket{\Omega},
+ \tag{15.7.37}\label{eq:15.7.37}
+\end{equation}
+where $\ket{\Omega}$ is the BRST-invariant vacuum state. But the canonical commutation relations derived from the BRST-invariant action (say, with $\xi=1$) give
+\begin{equation}
+ [a_\mu(\mathbf p),a_\nu^*(\mathbf p')]_-=\eta_{\mu\nu}\delta^3(\mathbf p-\mathbf p'),
+ \tag{15.7.38}\label{eq:15.7.38}
+\end{equation}
+corresponding to the propagator in Feynman gauge. This violates the usual positivity rules of quantum mechanics, because Eqs.~\eqref{eq:15.7.37} and \eqref{eq:15.7.38} yield~\hyperref[ch15-ref-13]{[13]}
+\begin{equation}
+ \langle\Omega\|a_0(\mathbf p)a_0^*(\mathbf p')\|\Omega\rangle=-\langle\Omega\|\Omega\rangle.
+ \tag{15.7.39}\label{eq:15.7.39}
+\end{equation}
+Nevertheless we can rest assured that all amplitudes among physical states satisfy the usual positivity conditions, because these states satisfy Eq.~\eqref{eq:15.7.31}, and for such states the transition amplitudes are the same as they would be in a more physical gauge like Coulomb or axial gauge, where there is no problem of positivity or unitarity.
+
+The Faddeev--Popov--De Witt formalism described so far necessarily yields an action that is bilinear in the ghost fields $\omega_\alpha^*$ and $\omega_\alpha$. This is adequate for renormalizable Yang--Mills theories with the gauge-fixing function $f_\alpha=\partial_\mu A_\alpha^\mu$, but not in more general cases. For instance, as we shall see in Section 17.2, in other gauges renormalizable Yang--Mills theories need $\omega^*\omega^*\omega\omega$ terms in the action Lagrangian density to serve as counterterms for the ultraviolet divergences in loop graphs with four external ghost lines.
+
+Fortunately the Faddeev--Popov--De Witt formalism represents only one way of generating a class of equivalent Lagrangians that yield the same unitary S-matrix. The BRST formalism provides a more general approach, that dispenses altogether with the Faddeev--Popov--De Witt formalism. In this approach, one takes the action to be the most general local functional of matter, gauge, $\omega^A$, $\omega^{*A}$ and $h^A$ fields with ghost number zero that is invariant under the BRST transformation \eqref{eq:15.7.7}--\eqref{eq:15.7.11} and under any other global symmetries of the theory. (For renormalizable theories one would also limit the Lagrangian density to operators of dimensionality four or less, but this restriction plays no role in the following discussion.) In the next section we shall prove, in a context more general than Yang--Mills theories, that the most general action of this sort is the sum of a functional of the matter and gauge fields (collectively called $\phi$) alone, plus a term given by the action of the BRST operator $s$ on an arbitrary functional $\Psi$ of ghost number $-1$:
+\begin{equation}
+ I_{\mathrm{NEW}}[\phi,\omega,\omega^*,h]
+ =I_0[\phi]+s\Psi[\phi,\omega,\omega^*,h],
+ \tag{15.7.40}\label{eq:15.7.40}
+\end{equation}
+as for instance in the Faddeev--Popov--De Witt action \eqref{eq:15.7.25}, but with $s\Psi$ now not necessarily bilinear in ghost and antighost fields.
+
+By the same argument as before, the S-matrix elements for states that are annihilated by the BRST generator $Q$ are independent of the choice of $\Psi$ in Eq.~\eqref{eq:15.7.40}, so if there is any choice of $\Psi$ for which the ghosts decouple, then the ghosts decouple in general. In Yang--Mills theories, such a $\Psi$ is provided by quantization of the theory in axial gauge, so in such theories ghosts decouple for arbitrary choices of the functional $\Psi[\phi,\omega,\omega^*,h]$, not just those choices like \eqref{eq:15.7.25} that are generated by the Faddeev--Popov--De Witt formalism.
+
+We can go further, and free ourselves of all dependence on canonical quantization in Lorentz-non-invariant gauges like axial gauge. Again, take the action to be the most general functional of gauge, matter, $\omega^A$, $\omega^{*A}$ and $h^A$ fields with ghost number zero, that is invariant under the BRST transformation \eqref{eq:15.7.7}--\eqref{eq:15.7.11} and under any other global symmetries of the theory, including Lorentz invariance. From the BRST invariance of the action we can infer the existence of a conserved nilpotent BRST generator $Q$. With the ghost and antighost fields treated as Hermitian, $Q$ is also Hermitian. The space of physical states is defined as above as consisting of states annihilated by $Q$, with two states treated as equivalent if their difference is $Q$ acting on another state. It has been shown that for Yang--Mills theories this space is free of ghosts and antighosts and has a positive-definite norm, and that the S-matrix in this space is unitary~\hyperref[ch15-ref-13a]{[13a]}.
+
+This procedure is known as \emph{BRST quantization}. It has been extended to theories with other local symmetries, such as general relativity and string theories. Unfortunately, it seems so far to be necessary to give separate proofs in each case that the BRST-cohomology is ghost-free and that the S-matrix acting in this space is unitary. The key point in these proofs is that, for each negative-norm degree of freedom, such as the time components of the gauge fields in Yang--Mills theories, there is one local symmetry that allows this degree of freedom to be transformed away.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+Although we shall not use it here, there is a beautiful geometric interpretation~\hyperref[ch15-ref-14]{[14]} of the ghosts and the BRST symmetry that should be mentioned. The gauge fields $A_\alpha^\mu$ may be written as one-forms $A_\alpha=A_{\alpha\mu}dx^\mu$, where $dx^\mu$ are a set of anticommuting c-numbers. (See Section 5.8.) This can be combined with the ghost to compose a one-form $\mathcal A_\alpha=A_\alpha+\omega_\alpha$ in an extended space. Also, the ordinary exterior derivative $d=dx^\mu\partial/\partial x^\mu$ may be combined with the BRST operator $s$ to form an exterior derivative $\mathcal D=d+s$ in this space, which is nilpotent because $s^2=d^2=sd+ds=0$.
+
+The next chapter will introduce external field methods, which will be used along with the BRST symmetry in Chapter 17 to complete the proof of the renormalizability of non-Abelian gauge theories.

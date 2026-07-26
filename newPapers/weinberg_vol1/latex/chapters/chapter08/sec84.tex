@@ -1,0 +1,214 @@
+% Coverage: Chapter 8, Section 8.4, physical PDF pp. 373--376
+% (printed pp. 350--353; p. 376 only through the line before the Section 8.5 heading).
+% Semantic range: Section 8.4 heading through "because a^mu has been defined to
+% have a^0=0." Inventory: equations (8.4.1)--(8.4.26); no notes, figures, tables,
+% problems, references, or unresolved uncertainties.
+
+\subsection{Electrodynamics in the Interaction Picture}
+
+We now break up the Hamiltonian \eqref{eq:8.3.11} into a free-particle term $H_0$
+and an interaction $H_{\mathrm{int}}$
+\begin{align}
+H&=H_0+H_{\mathrm{int}},
+\tag{8.4.1}\label{eq:8.4.1}\\
+H_0&=\int d^3x\left[
+  \frac12\boldsymbol\Pi_{\!\perp}^{2}
+  +\frac12(\boldsymbol\nabla\cdot\mathbf A)^2
+  \right]+H_{\mathrm{matter},0},
+\tag{8.4.2}\label{eq:8.4.2}\\
+H_{\mathrm{int}}&=-\int d^3x\,\mathbf J\cdot\mathbf A
+  +V_{\mathrm{Coul}}+H_{\mathrm{int,matter}},
+\tag{8.4.3}\label{eq:8.4.3}
+\end{align}
+where $H_{\mathrm{matter},0}$ and $H_{\mathrm{int,matter}}$ are the
+free-particle and interaction terms in $H_{\mathrm{matter}}$, and
+$V_{\mathrm{Coul}}$ is the Coulomb interaction \eqref{eq:8.3.12}. The total Hamiltonian
+\eqref{eq:8.4.1} is time-independent, so Eqs.~\eqref{eq:8.4.2} and \eqref{eq:8.4.3} can be evaluated at
+any time we like (as long as both are evaluated at the same time), in
+particular at $t=0$. As in Chapter 7, the transition to the interaction
+picture is made by applying the similarity transformation
+\begin{align}
+H_I(t)
+&=\exp(iH_0t)\,
+  H_{\mathrm{int}}[\mathbf A,\boldsymbol\Pi_{\!\perp},Q,P]_{t=0}
+  \exp(-iH_0t)
+\notag\\
+&=H_{\mathrm{int}}[\mathbf a(t),\boldsymbol\pi(t),q(t),p(t)],
+\tag{8.4.4}\label{eq:8.4.4}
+\end{align}
+where $P$ here denotes the canonical conjugates to the matter fields $Q$, and
+any operator $O(\mathbf x,t)$ in the interaction picture is related to its
+value $O(\mathbf x,0)$ in the Heisenberg picture at $t=0$ by
+\begin{equation}
+O(\mathbf x,t)=\exp(iH_0t)O(\mathbf x,0)\exp(-iH_0t),
+\tag{8.4.5}\label{eq:8.4.5}
+\end{equation}
+so that
+\begin{equation}
+i\dot O(\mathbf x,t)=[O(\mathbf x,t),H_0].
+\tag{8.4.6}\label{eq:8.4.6}
+\end{equation}
+(We are dropping the subscript $\perp$ on $\boldsymbol\pi(\mathbf x)$.) Since
+Eq.~\eqref{eq:8.4.5} is a similarity transformation, the equal-time commutation
+relations are the same as in the Heisenberg picture:
+\begin{align}
+[a^i(\mathbf x,t),\pi^j(\mathbf y,t)]
+&=i\left[\delta_{ij}\delta^3(\mathbf x-\mathbf y)
+ +\frac{\partial^2}{\partial x^i\partial x^j}
+  \frac{1}{4\pi\lvert\mathbf x-\mathbf y\rvert}\right],
+\tag{8.4.7}\label{eq:8.4.7}\\
+[a^i(\mathbf x,t),a^j(\mathbf y,t)]&=0,
+\tag{8.4.8}\label{eq:8.4.8}\\
+[\pi^i(\mathbf x,t),\pi^j(\mathbf y,t)]&=0,
+\tag{8.4.9}\label{eq:8.4.9}
+\end{align}
+and likewise for the matter fields and their conjugates. For the same reason,
+the constraints \eqref{eq:8.2.6} and \eqref{eq:8.3.8} still apply
+\begin{align}
+\boldsymbol\nabla\cdot\mathbf a&=0,
+\tag{8.4.10}\label{eq:8.4.10}\\
+\boldsymbol\nabla\cdot\boldsymbol\pi&=0.
+\tag{8.4.11}\label{eq:8.4.11}
+\end{align}
+To establish the relation between $\boldsymbol\pi$ and $\dot{\mathbf a}$, we
+must use Eq.~\eqref{eq:8.4.6} to evaluate $\dot{\mathbf a}$:
+\begin{align*}
+i\dot a_i(\mathbf x,t)
+&=[a_i(\mathbf x,t),H_0]\\
+&=i\int d^3y\left[
+  \delta_{ij}\delta^3(\mathbf x-\mathbf y)
+  +\frac{\partial^2}{\partial x^i\partial x^j}
+   \frac{1}{4\pi\lvert\mathbf x-\mathbf y\rvert}
+  \right]\pi_j(\mathbf y,t).
+\end{align*}
+We can replace $\partial/\partial x^j$ in the second term with
+$-\partial/\partial y^j$, integrate by parts, and use Eq.~\eqref{eq:8.4.11}, yielding
+\begin{equation}
+\dot{\mathbf a}=\boldsymbol\pi
+\tag{8.4.12}\label{eq:8.4.12}
+\end{equation}
+just as in the Heisenberg picture. The field equation is likewise determined
+by
+\begin{align*}
+i\dot\pi_i(\mathbf x,t)
+&=[\pi_i(\mathbf x,t),H_0]\\
+&=-i\int d^3y\left[
+  \delta_{ij}\delta^3(\mathbf x-\mathbf y)
+  +\frac{\partial^2}{\partial x^i\partial x^j}
+   \frac{1}{4\pi\lvert\mathbf x-\mathbf y\rvert}
+  \right]
+  \bigl(\boldsymbol\nabla\cdot\boldsymbol\nabla\cdot
+        \mathbf a(\mathbf y,t)\bigr)_j,
+\end{align*}
+which (using Eqs.~\eqref{eq:8.4.10} and \eqref{eq:8.4.12}) just yields the usual wave equation
+\begin{equation}
+\Box\mathbf a=0.
+\tag{8.4.13}\label{eq:8.4.13}
+\end{equation}
+Since $A^0$ is not an independent Heisenberg-picture field variable, but rather
+a functional \eqref{eq:8.2.9} of the matter fields and their canonical conjugates that
+vanishes in the limit of zero charges, we do not introduce any corresponding
+operator $a^0$ in the interaction picture, but rather take
+\begin{equation}
+a^0=0.
+\tag{8.4.14}\label{eq:8.4.14}
+\end{equation}
+The most general real solution of Eqs.~\eqref{eq:8.4.10}, \eqref{eq:8.4.13}, and \eqref{eq:8.4.14} may
+be written
+\begin{align}
+a^\mu(x)=(2\pi)^{-3/2}\int\frac{d^3p}{\sqrt{2p^0}}\sum_\sigma
+\Bigl[&e^{ip\cdot x}e^\mu(\mathbf p,\sigma)a_{\mathbf p,\sigma}
+\notag\\[-2pt]
+&+e^{-ip\cdot x}e^{\mu *}(\mathbf p,\sigma)
+  a^\dagger_{\mathbf p,\sigma}\Bigr],
+\tag{8.4.15}\label{eq:8.4.15}
+\end{align}
+where $p^0\equiv\lvert\mathbf p\rvert$; $e^\mu(\mathbf p,\sigma)$ are any two
+independent `polarization vectors' satisfying
+\begin{align}
+\mathbf p\cdot\mathbf e(\mathbf p,\sigma)&=0,
+\tag{8.4.16}\label{eq:8.4.16}\\
+e^0(\mathbf p,\sigma)&=0,
+\tag{8.4.17}\label{eq:8.4.17}
+\end{align}
+and $a_{\mathbf p,\sigma}$ are a pair of operator coefficients, with $\sigma$ a
+two-valued index. By adjusting the normalization of $a_{\mathbf p,\sigma}$, we
+can normalize the $e^\mu(\mathbf p,\sigma)$ so that the completeness relation
+reads
+\begin{equation}
+\sum_\sigma e^i(\mathbf p,\sigma)e^j(\mathbf p,\sigma)^*
+=\delta_{ij}-\frac{p_i p_j}{\lvert\mathbf p\rvert^2}.
+\tag{8.4.18}\label{eq:8.4.18}
+\end{equation}
+For instance, we could take the $e(\mathbf p,\sigma)$ to be the same
+polarization vectors that we encountered in Section 5.9:
+\begin{equation}
+e^\mu(\mathbf p,\mathord\pm1)=R(\widehat{\mathbf p})
+\begin{bmatrix}
+0\\[1pt]1/\sqrt2\\[1pt]\mathord\pm i/\sqrt2\\[1pt]0
+\end{bmatrix},
+\tag{8.4.19}\label{eq:8.4.19}
+\end{equation}
+where $R(\widehat{\mathbf p})$ is a standard rotation that carries the
+three-axis into the direction of $\mathbf p$. Using Eqs.~\eqref{eq:8.4.18} and
+\eqref{eq:8.4.12}, we can easily see that the commutation relations
+\eqref{eq:8.4.7}--\eqref{eq:8.4.9} are satisfied if (and in fact only if) the operator
+coefficients in Eq.~\eqref{eq:8.4.15} satisfy
+\begin{align}
+[a_{\mathbf p,\sigma},a^\dagger_{\mathbf p',\sigma'}]
+&=\delta^3(\mathbf p-\mathbf p')\delta_{\sigma\sigma'},
+\tag{8.4.20}\label{eq:8.4.20}\\
+[a_{\mathbf p,\sigma},a_{\mathbf p',\sigma'}]&=0.
+\tag{8.4.21}\label{eq:8.4.21}
+\end{align}
+As remarked before for massive particles, this result should be regarded not
+so much as an alternative derivation of Eqs.~\eqref{eq:8.4.20} and \eqref{eq:8.4.21}, but rather
+as a verification that Eq.~\eqref{eq:8.4.2} gives the correct Hamiltonian for free
+massless particles of helicity $\mathord\pm1$. In the same spirit one can also
+use Eqs.~\eqref{eq:8.4.12} and \eqref{eq:8.4.15} in Eq.~\eqref{eq:8.4.2} to calculate the free-photon
+Hamiltonian
+\begin{align}
+H_0
+&=\int d^3p\sum_\sigma\frac12p^0
+  [a_{\mathbf p,\sigma},a^\dagger_{\mathbf p,\sigma}]_+
+\notag\\
+&=\int d^3p\sum_\sigma p^0
+  \left(a^\dagger_{\mathbf p,\sigma}a_{\mathbf p,\sigma}
+  +\frac12\delta^3(\mathbf p-\mathbf p)\right)
+\tag{8.4.22}\label{eq:8.4.22}
+\end{align}
+which (aside from an inconsequential infinite $c$-number term) is just what we
+should expect.
+
+Finally, we record that the interaction \eqref{eq:8.4.4} in the interaction picture is
+\begin{equation}
+H_I(t)=-\int d^3x\,j_\mu(\mathbf x,t)a^\mu(\mathbf x,t)
+ +V_{\mathrm{Coul}}(t)+H_{I,\mathrm{matter}}(t),
+\tag{8.4.23}\label{eq:8.4.23}
+\end{equation}
+where in terms of the current $J$ in the Heisenberg picture
+\begin{equation}
+j_\mu(\mathbf x,t)\equiv
+\exp(iH_0t)J_\mu(\mathbf x,0)\exp(-iH_0t),
+\tag{8.4.24}\label{eq:8.4.24}
+\end{equation}
+while $V_{\mathrm{Coul}}(t)$ is the Coulomb term
+\begin{align}
+V_{\mathrm{Coul}}(t)
+&=\exp(iH_0t)V_{\mathrm{Coul}}\exp(-iH_0t)
+\notag\\
+&=\frac12\int d^3x\,d^3y\,
+  \frac{j^0(\mathbf x,t)j^0(\mathbf y,t)}
+       {4\pi\lvert\mathbf x-\mathbf y\rvert}
+\tag{8.4.25}\label{eq:8.4.25}
+\end{align}
+and $H_{I,\mathrm{matter}}(t)$ is the non-electromagnetic part of the matter
+field interaction in the interaction picture:
+\begin{equation}
+H_{I,\mathrm{matter}}(t)=
+\exp(iH_0t)H_{\mathrm{int,matter}}\exp(-iH_0t).
+\tag{8.4.26}\label{eq:8.4.26}
+\end{equation}
+We have written $j_\mu a^\mu$ instead of $\mathbf j\cdot\mathbf a$ in Eq.
+\eqref{eq:8.4.23}, but these are equal because $a^\mu$ has been defined to have
+$a^0=0$.

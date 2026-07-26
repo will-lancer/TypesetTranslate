@@ -1,0 +1,41 @@
+% Figure 1: Parametrization of a region in M
+\begin{tikzpicture}[line cap=round,line join=round,>=Stealth,scale=0.9]
+  % Left box: R^m containing the gridded region U
+  \draw[thick] (0,0) rectangle (3.2,3.4);
+  \node[anchor=south west] at (0.12,0.08) {$\mathbb{R}^m$};
+  \begin{scope}
+    \clip plot[smooth cycle,tension=0.85] coordinates
+      {(1.0,1.55) (1.35,1.05) (2.1,1.15) (2.5,1.75) (2.25,2.5) (1.45,2.6) (1.05,2.15)};
+    \draw[very thin,gray!70] (0.7,0.8) grid[step=0.22] (2.8,2.9);
+  \end{scope}
+  \draw[thick] plot[smooth cycle,tension=0.85] coordinates
+    {(1.0,1.55) (1.35,1.05) (2.1,1.15) (2.5,1.75) (2.25,2.5) (1.45,2.6) (1.05,2.15)};
+  \node at (1.72,0.72) {$U$};
+  % Map g
+  \draw[->,thick] (3.55,1.85) .. controls (4.1,2.1) and (4.5,2.1) .. (5.0,1.9);
+  \node at (4.28,2.35) {$g$};
+  % Right box: R^k containing the surface M with image g(U)
+  \draw[thick] (5.35,0) rectangle (9.85,3.4);
+  \node[anchor=south west] at (5.47,0.08) {$\mathbb{R}^k$};
+  % curved sheet M
+  \draw[thick] (5.8,1.8) .. controls (6.4,2.6) and (7.1,3.05) .. (7.9,3.0)
+    .. controls (8.6,2.95) and (9.2,2.6) .. (9.5,2.2)
+    .. controls (9.0,2.05) and (8.6,1.75) .. (8.45,1.4)
+    .. controls (7.7,1.55) and (6.6,1.5) .. (5.8,1.8);
+  \node at (9.35,2.95) {$M$};
+  % image g(U) on the sheet, hatched
+  \begin{scope}
+    \clip plot[smooth cycle,tension=0.85] coordinates
+      {(6.6,2.0) (7.15,1.85) (7.7,2.05) (7.75,2.5) (7.2,2.72) (6.7,2.5)};
+    \draw[very thin,gray!70] (6.3,1.6) grid[step=0.2] (8.1,3.0);
+  \end{scope}
+  \draw[thin] plot[smooth cycle,tension=0.85] coordinates
+    {(6.6,2.0) (7.15,1.85) (7.7,2.05) (7.75,2.5) (7.2,2.72) (6.7,2.5)};
+  \node at (7.0,1.15) {$g(U)$};
+  % tangent plane TM_x
+  \draw[thin] (7.55,0.35) -- (8.85,0.5) -- (9.45,1.15) -- (8.15,1.0) -- cycle;
+  \fill (8.5,0.72) circle (1.4pt);
+  \node[above left] at (8.52,0.7) {\footnotesize $0$};
+  \draw[->] (8.5,0.72) -- (9.12,0.97);
+  \node at (9.42,1.4) {\footnotesize $TM_x$};
+\end{tikzpicture}

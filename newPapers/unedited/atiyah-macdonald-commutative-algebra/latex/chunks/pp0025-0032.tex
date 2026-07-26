@@ -1,0 +1,273 @@
+% Original pages: 25-32
+% Figures: none.
+% Uncertainty log: none.
+
+Let \(\xi_i\) be the image of \(t_i\) in \(P(X)\). The \(\xi_i\) \((1\leq i\leq n)\) are the \emph{coordinate functions} on \(X\): if \(x\in X\), then \(\xi_i(x)\) is the \(i\)th coordinate of \(x\). \(P(X)\) is generated as a \(k\)-algebra by the coordinate functions, and is called the \emph{coordinate ring} (or affine algebra) of \(X\).
+
+As in Exercise 26, for each \(x\in X\) let \(\mathfrak m_x\) be the ideal of all \(f\in P(X)\) such that \(f(x)=0\); it is a maximal ideal of \(P(X)\). Hence, if \(\widetilde X=\operatorname{Max}(P(X))\), we have defined a mapping \(\mu:X\to\widetilde X\), namely \(x\mapsto\mathfrak m_x\).
+
+It is easy to show that \(\mu\) is injective: if \(x\neq y\), we must have \(x_i\neq y_i\) for for some \(i\) \((1\leq i\leq n)\), and hence \(\xi_i-x_i\) is in \(\mathfrak m_x\) but not in \(\mathfrak m_y\), so that \(\mathfrak m_x\neq\mathfrak m_y\). What is less obvious (but still true) is that \(\mu\) is surjective. This is one form of Hilbert's Nullstellensatz (see Chapter 7).
+
+\noindent\textbf{28.} Let \(f_1,\ldots,f_m\) be elements of \(k[t_1,\ldots,t_n]\). They determine a \emph{polynomial mapping} \(\phi:k^n\to k^m\): if \(x\in k^n\), the coordinates of \(\phi(x)\) are \(f_1(x),\ldots,f_m(x)\).
+
+Let \(X,Y\) be affine algebraic varieties in \(k^n,k^m\) respectively. A mapping \(\phi:X\to Y\) is said to be \emph{regular} if \(\phi\) is the restriction to \(X\) of a polynomial mapping from \(k^n\) to \(k^m\).
+
+If \(\eta\) is a polynomial function on \(Y\), then \(\eta\circ\phi\) is a polynomial function on \(X\). Hence \(\phi\) induces a \(k\)-algebra homomorphism \(P(Y)\to P(X)\), namely \(\eta\mapsto\eta\circ\phi\). Show that in this way we obtain a one-to-one correspondence between the regular mappings \(X\to Y\) and the \(k\)-algebra homomorphisms \(P(Y)\to P(X)\).
+
+\section{Modules}
+
+One of the things which distinguishes the modern approach to Commutative Algebra is the greater emphasis on modules, rather than just on ideals. The extra ``elbow-room'' that this gives makes for greater clarity and simplicity. For instance, an ideal \(\mathfrak a\) and its quotient ring \(A/\mathfrak a\) are both examples of modules and so, to a certain extent, can be treated on an equal footing. In this chapter we give the definition and elementary properties of modules. We also give a brief treatment of tensor products, including a discussion of how they behave for exact sequences.
+
+\subsection{Modules and module homomorphisms}
+
+Let \(A\) be a ring (commutative, as always). An \(A\)-\emph{module} is an abelian group \(M\) (written additively) on which \(A\) acts linearly: more precisely, it is a pair \((M,\mu)\), where \(M\) is an abelian group and \(\mu\) is a mapping of \(A\times M\) into \(M\) such that, if we write \(ax\) for \(\mu(a,x)\) \((a\in A,x\in M)\), the following axioms are satisfied:
+\[
+\begin{aligned}
+a(x+y)&=ax+ay,\\
+(a+b)x&=ax+bx,\\
+(ab)x&=a(bx),\\
+1x&=x &&(a,b\in A;\quad x,y\in M).
+\end{aligned}
+\]
+(Equivalently, \(M\) is an abelian group together with a ring homomorphism \(A\to E(M)\), where \(E(M)\) is the ring of endomorphisms of the abelian group \(M\).)
+
+The notion of a module is a common generalization of several familiar concepts, as the following examples show:
+
+\noindent\textbf{Examples.} 1) An ideal \(\mathfrak a\) of \(A\) is an \(A\)-module. In particular \(A\) itself is an \(A\)-module.
+
+2) If \(A\) is a field \(k\), then \(A\)-module = \(k\)-vector space.
+
+3) \(A=Z\), then \(Z\)-module = abelian group (define \(nx\) to be \(x+\cdots+x\)).
+
+4) \(A=k[x]\) where \(k\) is a field; an \(A\)-module is a \(k\)-vector space with a linear transformation.
+
+5) \(G={}\) finite group, \(A=k[G]={}\) group-algebra of \(G\) over the field \(k\) (thus \(A\) is not commutative, unless \(G\) is). Then \(A\)-module = \(k\)-representation of \(G\).
+
+Let \(M,N\) be \(A\)-modules. A mapping \(f:M\to N\) is an \(A\)-\emph{module homomorphism} (or is \(A\)-\emph{linear}) if
+\[
+\begin{aligned}
+f(x+y)&=f(x)+f(y),\\
+f(ax)&=a\cdot f(x)
+\end{aligned}
+\]
+for all \(a\in A\) and all \(x,y\in M\). Thus \(f\) is a homomorphism of abelian groups which commutes with the action of each \(a\in A\). If \(A\) is a field, an \(A\)-module homomorphism is the same thing as a linear transformation of vector spaces.
+
+The composition of \(A\)-module homomorphisms is again an \(A\)-module homomorphism.
+
+The set of all \(A\)-module homomorphisms from \(M\) to \(N\) can be turned into an \(A\)-module as follows: we define \(f+g\) and \(af\) by the rules
+\[
+\begin{aligned}
+(f+g)(x)&=f(x)+g(x),\\
+(af)(x)&=a\cdot f(x)
+\end{aligned}
+\]
+for all \(x\in M\). It is a trivial matter to check that the axioms for an \(A\)-module are satisfied. This \(A\)-module is denoted by \(\operatorname{Hom}_A(M,N)\) (or just \(\operatorname{Hom}(M,N)\) if there is no ambiguity about the ring \(A\)).
+
+Homomorphisms \(u:M'\to M\) and \(v:N\to N''\) induce mappings
+\[
+\bar u:\operatorname{Hom}(M,N)\to\operatorname{Hom}(M',N)
+\quad\text{and}\quad
+\bar v:\operatorname{Hom}(M,N)\to\operatorname{Hom}(M,N'')
+\]
+defined as follows:
+\[
+\bar u(f)=f\circ u,\qquad \bar v(f)=v\circ f.
+\]
+These mappings are \(A\)-module homomorphisms.
+
+For any module \(M\) there is a natural isomorphism \(\operatorname{Hom}(A,M)\cong M\): any \(A\)-module homomorphism \(f:A\to M\) is uniquely determined by \(f(1)\), which can be any element of \(M\).
+
+\subsection{Submodules and quotient modules}
+
+A \emph{submodule} \(M'\) of \(M\) is a subgroup of \(M\) which is closed under multiplication by elements of \(A\). The abelian group \(M/M'\) then inherits an \(A\)-module structure from \(M\), defined by \(a(x+M')=ax+M'\). The \(A\)-module \(M/M'\) is the \emph{quotient} of \(M\) by \(M'\). The natural map of \(M\) onto \(M/M'\) is an \(A\)-module homomorphism. There is a one-to-one order-preserving correspondence between submodules of \(M\) which contain \(M'\), and submodules of \(M/M'\) (just as for ideals; the statement for ideals is a special case).
+
+If \(f:M\to N\) is an \(A\)-module homomorphism, the \emph{kernel} of \(f\) is the set
+\[
+\operatorname{Ker}(f)=\{x\in M:f(x)=0\}
+\]
+and is a submodule of \(M\). The \emph{image} of \(f\) is the set
+\[
+\operatorname{Im}(f)=f(M)
+\]
+and is a submodule of \(N\). The \emph{cokernel} of \(f\) is
+\[
+\operatorname{Coker}(f)=N/\operatorname{Im}(f)
+\]
+which is a quotient module of \(N\).
+
+If \(M'\) is a submodule of \(M\) such that \(M'\subseteq\operatorname{Ker}(f)\), then \(f\) gives rise to a homomorphism \(\bar f:M/M'\to N\), defined as follows: if \(\bar x\in M/M'\) is the image of \(x\in M\), then \(\bar f(\bar x)=f(x)\). The kernel of \(\bar f\) is \(\operatorname{Ker}(f)/M'\). The homomorphism \(\bar f\) is said to be \emph{induced} by \(f\). In particular, taking \(M'=\operatorname{Ker}(f)\), we have an isomorphism of \(A\)-modules
+\[
+M/\operatorname{Ker}(f)\cong\operatorname{Im}(f).
+\]
+
+\subsection{Operations on submodules}
+
+Most of the operations on ideals considered in Chapter 1 have their counterparts for modules. Let \(M\) be an \(A\)-module and let \((M_i)_{i\in I}\) be a family of submodules of \(M\). Their \emph{sum} \(\sum M_i\) is the set of all (finite) sums \(\sum x_i\), where \(x_i\in M_i\) for all \(i\in I\), and almost all the \(x_i\) (that is, all but a finite number) are zero. \(\sum M_i\) is the smallest submodule of \(M\) which contains all the \(M_i\).
+
+The intersection \(\bigcap M_i\) is again a submodule of \(M\). Thus the submodules of \(M\) form a complete lattice with respect to inclusion.
+
+\noindent\textbf{Proposition 2.1.\amtarget{2.1}} \emph{i) If \(L\supseteq M\supseteq N\) are \(A\)-modules, then}
+\[
+(L/N)/(M/N)\cong L/M.
+\]
+\emph{ii) If \(M_1,M_2\) are submodules of \(M\), then}
+\[
+(M_1+M_2)/M_1\cong M_2/(M_1\cap M_2).
+\]
+
+\noindent\emph{Proof.} i) Define \(\theta:L/N\to L/M\) by \(\theta(x+N)=x+M\). Then \(\theta\) is a well-defined \(A\)-module homomorphism of \(L/N\) onto \(L/M\), and its kernel is \(M/N\); hence (i).
+
+ii) The composite homomorphism \(M_2\to M_1+M_2\to(M_1+M_2)/M_1\) is surjective, and its kernel is \(M_1\cap M_2\); hence (ii). \proofbox
+
+We cannot in general define the \emph{product} of two submodules, but we can define the product \(\mathfrak aM\), where \(\mathfrak a\) is an ideal and \(M\) an \(A\)-module; it is the set of all finite sums \(\sum a_i x_i\) with \(a_i\in\mathfrak a\), \(x_i\in M\), and is a submodule of \(M\).
+
+If \(N,P\) are submodules of \(M\), we define \((N:P)\) to be the set of all \(a\in A\) such that \(aP\subseteq N\); it is an ideal of \(A\). In particular, \((0:M)\) is the set of all \(a\in A\) such that \(aM=0\); this ideal is called the \emph{annihilator} of \(M\) and is also denoted by \(\operatorname{Ann}(M)\). If \(\mathfrak a\subseteq\operatorname{Ann}(M)\), we may regard \(M\) as an \(A/\mathfrak a\)-module, as follows: if \(\bar x\in A/\mathfrak a\) is represented by \(x\in A\), define \(\bar x m\) to be \(xm\) \((m\in M)\): this is independent of the choice of the representative \(x\) of \(\bar x\), since \(\mathfrak aM=0\).
+
+An \(A\)-module is \emph{faithful} if \(\operatorname{Ann}(M)=0\). If \(\operatorname{Ann}(M)=\mathfrak a\), then \(M\) is faithful as an \(A/\mathfrak a\)-module.
+
+\noindent\textbf{Exercise 2.2.\amtarget{2.2}} i) \(\operatorname{Ann}(M+N)=\operatorname{Ann}(M)\cap\operatorname{Ann}(N)\).
+
+ii) \((N:P)=\operatorname{Ann}((N+P)/N)\).
+
+If \(x\) is an element of \(M\), the set of all multiples \(ax\) \((a\in A)\) is a submodule of \(M\), denoted by \(Ax\) or \((x)\). If \(M=\sum_{j\in I}Ax_j\), the \(x_j\) are said to be a \emph{set of generators} of \(M\); this means that every element of \(M\) can be expressed (not necessarily uniquely) as a finite linear combination of the \(x_j\) with coefficients in \(A\). An \(A\)-module \(M\) is said to be \emph{finitely generated} if it has a finite set of generators.
+
+\subsection{Direct sum and product}
+
+If \(M,N\) are \(A\)-modules, their \emph{direct sum} \(M\oplus N\) is the set of all pairs \((x,y)\) with \(x\in M,y\in N\). This is an \(A\)-module if we define addition and scalar multiplication in the obvious way:
+\[
+\begin{aligned}
+(x_1,y_1)+(x_2,y_2)&=(x_1+x_2,y_1+y_2),\\
+a(x,y)&=(ax,ay).
+\end{aligned}
+\]
+More generally, if \((M_i)_{i\in I}\) is any family of \(A\)-modules, we can define their \emph{direct sum} \(\bigoplus_{i\in I}M_i\); its elements are families \((x_i)_{i\in I}\) such that \(x_i\in M_i\) for each \(i\in I\) and almost all \(x_i\) are 0. If we drop the restriction on the number of non-zero \(x\)'s we have the \emph{direct product} \(\prod_{i\in I}M_i\). Direct sum and direct product are therefore the same if the index set \(I\) is finite, but not otherwise, in general.
+
+Suppose that the ring \(A\) is a direct product \(\prod_{i=1}^nA_i\) (Chapter 1). Then the set of all elements of \(A\) of the form
+\[
+(0,\ldots,0,a_i,0,\ldots,0)
+\]
+with \(a_i\in A_i\) is an ideal \(\mathfrak a_i\) of \(A\) (it is not a subring of \(A\)---except in trivial cases---because it does not contain the identity element of \(A\)). The ring \(A\), considered as an \(A\)-module, is the direct sum of the ideals \(\mathfrak a_1,\ldots,\mathfrak a_n\). Conversely, given a module decomposition
+\[
+A=\mathfrak a_1\oplus\cdots\oplus\mathfrak a_n
+\]
+of \(A\) as a direct sum of ideals, we have
+\[
+A\cong\prod_{i=1}^n(A/\mathfrak b_i)
+\]
+where \(\mathfrak b_i=\bigoplus_{j\neq i}\mathfrak a_j\). Each ideal \(\mathfrak a_i\) is a ring (isomorphic to \(A/\mathfrak b_i\)). The identity element \(e_i\) of \(\mathfrak a_i\) is an idempotent in \(A\), and \(\mathfrak a_i=(e_i)\).
+
+\subsection{Finitely generated modules}
+
+A \emph{free} \(A\)-module is one which is isomorphic to an \(A\)-module of the form \(\bigoplus_{i\in I}M_i\), where each \(M_i\cong A\) (as an \(A\)-module). The notation \(A^{(I)}\) is sometimes used. A finitely generated free \(A\)-module is therefore isomorphic to \(A\oplus\cdots\oplus A\) (\(n\) summands), which is denoted by \(A^n\). (Conventionally, \(A^0\) is the zero module, denoted by 0.)
+
+\noindent\textbf{Proposition 2.3.\amtarget{2.3}} \emph{\(M\) is a finitely generated \(A\)-module \(\Longleftrightarrow M\) is isomorphic to a quotient of \(A^n\) for some integer \(n>0\).}
+
+\noindent\emph{Proof.} \(\Rightarrow\): Let \(x_1,\ldots,x_n\) generate \(M\). Define \(\phi:A^n\to M\) by \(\phi(a_1,\ldots,a_n)=a_1x_1+\cdots+a_nx_n\). Then \(\phi\) is an \(A\)-module homomorphism onto \(M\), and therefore \(M\cong A^n/\operatorname{Ker}(\phi)\).
+
+\(\Leftarrow\): We have an \(A\)-module homomorphism \(\phi\) of \(A^n\) onto \(M\). If \(e_i=(0,\ldots,0,1,0,\ldots,0)\) (the 1 being in the \(i\)th place), then the \(e_i\) \((1\leq i\leq n)\) generate \(A^n\), hence the \(\phi(e_i)\) generate \(M\). \proofbox
+
+\noindent\textbf{Proposition 2.4.\amtarget{2.4}} \emph{Let \(M\) be a finitely generated \(A\)-module, let \(\mathfrak a\) be an ideal of \(A\), and let \(\phi\) be an \(A\)-module endomorphism of \(M\) such that \(\phi(M)\subseteq\mathfrak aM\). Then \(\phi\) satisfies an equation of the form}
+\[
+\phi^n+a_1\phi^{n-1}+\cdots+a_n=0
+\]
+\emph{where the \(a_i\) are in \(\mathfrak a\).}
+
+\noindent\emph{Proof.} Let \(x_1,\ldots,x_n\) be a set of generators of \(M\). Then each \(\phi(x_i)\in\mathfrak aM\), so that we have say \(\phi(x_i)=\sum_{j=1}^n a_{ij}x_j\) \((1\leq i\leq n;\ a_{ij}\in\mathfrak a)\), i.e.,
+\[
+\sum_{j=1}^n(\delta_{ij}\phi-a_{ij})x_j=0
+\]
+where \(\delta_{ij}\) is the Kronecker delta. By multiplying on the left by the adjoint of the matrix \((\delta_{ij}\phi-a_{ij})\) it follows that \(\det(\delta_{ij}\phi-a_{ij})\) annihilates each \(x_i\), hence is the zero endomorphism of \(M\). Expanding out the determinant, we have an equation of the required form. \proofbox
+
+\noindent\textbf{Corollary 2.5.\amtarget{2.5}} \emph{Let \(M\) be a finitely generated \(A\)-module and let \(\mathfrak a\) be an ideal of \(A\) such that \(\mathfrak aM=M\). Then there exists \(x\equiv1\pmod{\mathfrak a}\) such that \(xM=0\).}
+
+\noindent\emph{Proof.} Take \(\phi={}\) identity, \(x=1+a_1+\cdots+a_n\) in \amref{2.4}. \proofbox
+
+\noindent\textbf{Proposition 2.6.\amtarget{2.6} (Nakayama's lemma).} \emph{Let \(M\) be a finitely generated \(A\)-module and \(\mathfrak a\) an ideal of \(A\) contained in the Jacobson radical \(\mathfrak R\) of \(A\). Then \(\mathfrak aM=M\) implies \(M=0\).}
+
+\noindent\emph{First Proof.} By \amref{2.5} we have \(xM=0\) for some \(x\equiv1\pmod{\mathfrak R}\). By \amref{1.9} \(x\) is a unit in \(A\), hence \(M=x^{-1}xM=0\). \proofbox
+
+\noindent\emph{Second Proof.} Suppose \(M\neq0\), and let \(u_1,\ldots,u_n\) be a minimal set of generators of \(M\). Then \(u_n\in\mathfrak aM\), hence we have an equation of the form \(u_n=a_1u_1+\cdots+a_nu_n\), with the \(a_i\in\mathfrak a\). Hence
+\[
+(1-a_n)u_n=a_1u_1+\cdots+a_{n-1}u_{n-1};
+\]
+since \(a_n\in\mathfrak R\), it follows from \amref{1.9} that \(1-a_n\) is a unit in \(A\). Hence \(u_n\) belongs to the submodule of \(M\) generated by \(u_1,\ldots,u_{n-1}\): contradiction. \proofbox
+
+\noindent\textbf{Corollary 2.7.\amtarget{2.7}} \emph{Let \(M\) be a finitely generated \(A\)-module, \(N\) a submodule of \(M\), \(\mathfrak a\subseteq\mathfrak R\) an ideal. Then \(M=\mathfrak aM+N\Rightarrow M=N\).}
+
+\noindent\emph{Proof.} Apply \amref{2.6} to \(M/N\), observing that \(\mathfrak a(M/N)=(\mathfrak aM+N)/N\). \proofbox
+
+Let \(A\) be a local ring, \(\mathfrak m\) its maximal ideal, \(k=A/\mathfrak m\) its residue field. Let \(M\) be a finitely generated \(A\)-module. \(M/\mathfrak mM\) is annihilated by \(\mathfrak m\), hence is naturally an \(A/\mathfrak m\)-module, i.e., a \(k\)-vector space, and as such is finite-dimensional.
+
+\noindent\textbf{Proposition 2.8.\amtarget{2.8}} \emph{Let \(x_i\) \((1\leq i\leq n)\) be elements of \(M\) whose images in \(M/\mathfrak mM\) form a basis of this vector space. Then the \(x_i\) generate \(M\).}
+
+\noindent\emph{Proof.} Let \(N\) be the submodule of \(M\) generated by the \(x_i\). Then the composite map \(N\to M\to M/\mathfrak mM\) maps \(N\) onto \(M/\mathfrak mM\), hence \(N+\mathfrak mM=M\), hence \(N=M\) by \amref{2.7}. \proofbox
+
+\subsection{Exact sequences}
+
+A sequence of \(A\)-modules and \(A\)-homomorphisms
+\[
+\cdots\longrightarrow M_{i-1}\xrightarrow{f_i}M_i\xrightarrow{f_{i+1}}M_{i+1}\longrightarrow\cdots \tag{0}
+\]
+is said to be \emph{exact at} \(M_i\) if \(\operatorname{Im}(f_i)=\operatorname{Ker}(f_{i+1})\). The sequence is \emph{exact} if it is exact at each \(M_i\). In particular:
+\[
+0\longrightarrow M'\xrightarrow{f}M\text{ is exact}\quad\Longleftrightarrow\quad f\text{ is injective}; \tag{1}
+\]
+\[
+M\xrightarrow{g}M''\longrightarrow0\text{ is exact}\quad\Longleftrightarrow\quad g\text{ is surjective}; \tag{2}
+\]
+\[
+\begin{aligned}
+&0\longrightarrow M'\xrightarrow{f}M\xrightarrow{g}M''\longrightarrow0\text{ is exact}\\
+&\quad\Longleftrightarrow\quad f\text{ is injective, }g\text{ is surjective and }g\text{ induces an isomorphism}\\
+&\hspace{10em}\text{of }\operatorname{Coker}(f)=M/f(M')\text{ onto }M''.
+\end{aligned}\tag{3}
+\]
+A sequence of type (3) is called a \emph{short exact sequence}. Any long exact sequence (0) can be split up into short exact sequences: if \(N_i=\operatorname{Im}(f_i)=\operatorname{Ker}(f_{i+1})\), we have short exact sequences \(0\to N_i\to M_i\to N_{i+1}\to0\) for each \(i\).
+
+\noindent\textbf{Proposition 2.9.\amtarget{2.9}} \emph{i) Let}
+\[
+M'\xrightarrow{u}M\xrightarrow{v}M''\longrightarrow0 \tag{4}
+\]
+\emph{be a sequence of \(A\)-modules and homomorphisms. Then the sequence (4) is exact \(\Longleftrightarrow\) for all \(A\)-modules \(N\), the sequence}
+\[
+0\longrightarrow\operatorname{Hom}(M'',N)\xrightarrow{\bar v}\operatorname{Hom}(M,N)\xrightarrow{\bar u}\operatorname{Hom}(M',N) \tag{4'}
+\]
+\emph{is exact.}
+
+\emph{ii) Let}
+\[
+0\longrightarrow N'\xrightarrow{u}N\xrightarrow{v}N'' \tag{5}
+\]
+\emph{be a sequence of \(A\)-modules and homomorphisms. Then the sequence (5) is exact \(\Longleftrightarrow\) for all \(A\)-modules \(M\), the sequence}
+\[
+0\longrightarrow\operatorname{Hom}(M,N')\xrightarrow{\bar u}\operatorname{Hom}(M,N)\xrightarrow{\bar v}\operatorname{Hom}(M,N'') \tag{5'}
+\]
+\emph{is exact.}
+
+All four parts of this proposition are easy exercises. For example, suppose that (4') is exact for all \(N\). First of all, since \(\bar v\) is injective for all \(N\) it follows that \(v\) is surjective. Next, we have \(\bar u\circ\bar v=0\), that is \(f\circ v\circ u=0\) for all \(f:M''\to N\). Taking \(N\) to be \(M''\) and \(f\) to be the identity mapping, it follows that \(v\circ u=0\), hence \(\operatorname{Im}(u)\subseteq\operatorname{Ker}(v)\). Next take \(N=M/\operatorname{Im}(u)\) and let \(\phi:M\to N\) be the projection. Then \(\phi\in\operatorname{Ker}(\bar u)\), hence there exists \(\psi:M''\to N\) such that \(\phi=\psi\circ v\). Consequently \(\operatorname{Im}(u)=\operatorname{Ker}(\phi)\supseteq\operatorname{Ker}(v)\). \proofbox
+
+\noindent\textbf{Proposition 2.10.\amtarget{2.10}} \emph{Let}
+\[
+\begin{array}{ccccccccc}
+0&\longrightarrow&M'&\xrightarrow{u}&M&\xrightarrow{v}&M''&\longrightarrow&0\\
+&&\downarrow f'&&\downarrow f&&\downarrow f''&&\\
+0&\longrightarrow&N'&\xrightarrow{u'}&N&\xrightarrow{v'}&N''&\longrightarrow&0
+\end{array}
+\]
+\emph{be a commutative diagram of \(A\)-modules and homomorphisms, with the rows exact. Then there exists an exact sequence}
+\[
+\begin{split}
+0\longrightarrow\operatorname{Ker}(f')\xrightarrow{\bar u}\operatorname{Ker}(f)\xrightarrow{\bar v}\operatorname{Ker}(f'')\xrightarrow{d}{}&
+\operatorname{Coker}(f')\xrightarrow{\bar u'}\operatorname{Coker}(f)\\
+&\xrightarrow{\bar v'}\operatorname{Coker}(f'')\longrightarrow0
+\end{split}\tag{6}
+\]
+\emph{in which \(\bar u,\bar v\) are restrictions of \(u,v\), and \(\bar u',\bar v'\) are induced by \(u',v'\).}
+
+The \emph{boundary homomorphism} \(d\) is defined as follows: if \(x''\in\operatorname{Ker}(f'')\), we have \(x''=v(x)\) for some \(x\in M\), and \(v'(f(x))=f''(v(x))=0\), hence \(f(x)\in\operatorname{Ker}(v')=\operatorname{Im}(u')\), so that \(f(x)=u'(y')\) for some \(y'\in N'\). Then \(d(x'')\) is defined to be the image of \(y'\) in \(\operatorname{Coker}(f')\). The verification that \(d\) is well-defined, and that the sequence (6) is exact, is a straightforward exercise in diagram-chasing which we leave to the reader. \proofbox
+
+\noindent\emph{Remark.} \amref{2.10} is a special case of the exact homology sequence of homological algebra.
+
+Let \(C\) be a class of \(A\)-modules and let \(\lambda\) be a function on \(C\) with values in \(Z\) (or, more generally, with values in an abelian group \(G\)). The function \(\lambda\) is \emph{additive} if, for each short exact sequence (3) in which all the terms belong to \(C\), we have \(\lambda(M')-\lambda(M)+\lambda(M'')=0\).
+
+\noindent\textbf{Example.} Let \(A\) be a field \(k\), and let \(C\) be the class of all finite-dimensional \(k\)-vector spaces \(V\). Then \(V\mapsto\dim V\) is an additive function on \(C\).

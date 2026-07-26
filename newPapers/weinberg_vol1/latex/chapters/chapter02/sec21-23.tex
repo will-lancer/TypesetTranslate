@@ -1,0 +1,651 @@
+% Physical pages: 72--81 (printed pages 49--58).
+% Figures: none.
+% Uncertainties: none.
+
+The point of view of this book is that quantum field theory is the way
+it is because (with certain qualifications) this is the only way to reconcile
+quantum mechanics with special relativity. Therefore our first task is
+to study how symmetries like Lorentz invariance appear in a quantum
+setting.
+
+\subsection{Quantum Mechanics}
+
+First, some good news: quantum field theory is based on the same
+quantum mechanics that was invented by Schr\"odinger, Heisenberg, Pauli,
+Born, and others in 1925--26, and has been used ever since in atomic,
+molecular, nuclear, and condensed matter physics. The reader is assumed
+to be already familiar with quantum mechanics; this section provides
+only the briefest of summaries of quantum mechanics, in the generalized
+version of Dirac~\hyperref[ref:2.1]{[1]}.
+
+\noindent
+(i) Physical states are represented by rays in Hilbert space. A Hilbert
+space is a kind of complex vector space; that is, if $\ket{\Phi}$ and
+$\ket{\Psi}$ are vectors in the space (often called `state-vectors') then
+so is $\xi\ket{\Phi}+\eta\ket{\Psi}$, for arbitrary complex numbers
+$\xi,\eta$. It has a norm\footnote{We shall often use the Dirac bra-ket
+notation: instead of $\braket{\Psi_1}{\Psi_2}$, we may write
+$\braket{1}{2}$.}: for any pair of
+vectors there is a complex
+number $\braket{\Phi}{\Psi}$, such that
+\begin{align}
+  \braket{\Phi}{\Psi} &= \braket{\Psi}{\Phi}^{*},
+  \tag{2.1.1}\label{eq:2.1.1}\\
+  \bigl\langle \Phi \bigm| \xi_1\Psi_1+\xi_2\Psi_2\bigr\rangle
+    &= \xi_1\braket{\Phi}{\Psi_1}+\xi_2\braket{\Phi}{\Psi_2},
+  \tag{2.1.2}\label{eq:2.1.2}\\
+  \bigl\langle \eta_1\Phi_1+\eta_2\Phi_2 \bigm| \Psi\bigr\rangle
+    &= \eta_1^{*}\braket{\Phi_1}{\Psi}
+      +\eta_2^{*}\braket{\Phi_2}{\Psi}.
+  \tag{2.1.3}\label{eq:2.1.3}
+\end{align}
+The norm $\braket{\Psi}{\Psi}$ also satisfies a positivity condition:
+$\braket{\Psi}{\Psi}\geq 0$, and vanishes if and only if
+$\ket{\Psi}=0$. (There are also certain technical assumptions that allow
+us to take limits of vectors within Hilbert space.) A ray is a set of
+normalized vectors (i.e., $\braket{\Psi}{\Psi}=1$) with $\ket{\Psi}$ and
+$\ket{\Psi'}$ belonging to the same ray if
+$\ket{\Psi'}=\xi\ket{\Psi}$, where $\xi$ is an arbitrary complex number
+with $|\xi|=1$.
+
+\medskip
+\noindent
+(ii) Observables are represented by Hermitian operators. These are
+mappings $\ket{\Psi}\to A\ket{\Psi}$ of Hilbert space into itself,
+linear in the sense that
+\begin{equation}
+  A\bigl(\xi\ket{\Psi}+\eta\ket{\Phi}\bigr)
+    =\xi A\ket{\Psi}+\eta A\ket{\Phi}
+  \tag{2.1.4}\label{eq:2.1.4}
+\end{equation}
+and satisfying the reality condition $A^{\dagger}=A$, where for any
+linear operator $A$ the adjoint $A^{\dagger}$ is defined by
+\begin{equation}
+  \bra{\Phi}A^{\dagger}\ket{\Psi}
+    \equiv \braket{A\Phi}{\Psi}
+    =\bigl(\bra{\Psi}A\ket{\Phi}\bigr)^{*}.
+  \tag{2.1.5}\label{eq:2.1.5}
+\end{equation}
+(There are also technical assumptions about the continuity of
+$A\ket{\Psi}$ as a function of $\ket{\Psi}$.) A state represented by a ray
+$\mathcal{R}$ has a definite value $\alpha$ for the observable represented
+by an operator $A$ if vectors $\ket{\Psi}$ belonging to this ray are
+eigenvectors of $A$ with eigenvalue $\alpha$:
+\begin{equation}
+  A\ket{\Psi}=\alpha\ket{\Psi}
+  \qquad\text{for $\ket{\Psi}$ in $\mathcal{R}$.}
+  \tag{2.1.6}\label{eq:2.1.6}
+\end{equation}
+An elementary theorem tells us that for $A$ Hermitian, $\alpha$ is real,
+and eigenvectors with different $\alpha$s are orthogonal.
+
+\medskip
+\noindent
+(iii) If a system is in a state represented by a ray $\mathcal{R}$, and an
+experiment is done to test whether it is in any one of the different states
+represented by mutually orthogonal rays $\mathcal{R}_1,\mathcal{R}_2,\ldots$
+(for instance, by measuring one or more observables) then the probability
+of finding it in the state represented by $\mathcal{R}_n$ is
+\begin{equation}
+  P(\mathcal{R}\to\mathcal{R}_n)
+    =\bigl|\braket{\Psi}{\Psi_n}\bigr|^2,
+  \tag{2.1.7}\label{eq:2.1.7}
+\end{equation}
+where $\ket{\Psi}$ and $\ket{\Psi_n}$ are any vectors belonging to rays
+$\mathcal{R}$ and $\mathcal{R}_n$, respectively. (A pair of rays is said
+to be orthogonal if the state-vectors from the two rays have vanishing
+scalar products.) Another elementary theorem gives a total probability
+unity:
+\begin{equation}
+  \sum_n P(\mathcal{R}\to\mathcal{R}_n)=1
+  \tag{2.1.8}\label{eq:2.1.8}
+\end{equation}
+if the state-vectors $\ket{\Psi_n}$ form a complete set.
+
+\subsection{Symmetries}
+
+A symmetry transformation is a change in our point of view that does not
+change the results of possible experiments. If an observer $O$ sees a system
+in a state represented by a ray $\mathcal{R}$ or $\mathcal{R}_1$ or
+$\mathcal{R}_2,\ldots$, then an equivalent observer $O'$ who looks at the
+\emph{same} system will observe it in a different state, represented by a ray
+$\mathcal{R}'$ or $\mathcal{R}'_1$ or $\mathcal{R}'_2,\ldots$, respectively,
+but the two observers must find the same probabilities
+\begin{equation}
+  P(\mathcal{R}\to\mathcal{R}_n)
+    =P(\mathcal{R}'\to\mathcal{R}'_n).
+  \tag{2.2.1}\label{eq:2.2.1}
+\end{equation}
+(This is only a necessary condition for a ray transformation to be a
+symmetry; further conditions are discussed in the next chapter.) An
+important theorem proved by Wigner~\hyperref[ref:2.2]{[2]} in the early 1930s
+tells us that for any such transformation $\mathcal{R}\to\mathcal{R}'$ of
+rays we may define an operator $U$ on Hilbert space, such that if
+$\ket{\Psi}$ is in ray $\mathcal{R}$ then $U\ket{\Psi}$ is in the ray
+$\mathcal{R}'$, with $U$ either \emph{unitary} and \emph{linear}
+\begin{align}
+  \braket{U\Phi}{U\Psi} &= \braket{\Phi}{\Psi},
+  \tag{2.2.2}\label{eq:2.2.2}\\
+  U\bigl(\xi\ket{\Phi}+\eta\ket{\Psi}\bigr)
+    &=\xi U\ket{\Phi}+\eta U\ket{\Psi}
+  \tag{2.2.3}\label{eq:2.2.3}
+\end{align}
+or else \emph{antiunitary} and \emph{antilinear}
+\begin{align}
+  \braket{U\Phi}{U\Psi} &= \braket{\Phi}{\Psi}^{*},
+  \tag{2.2.4}\label{eq:2.2.4}\\
+  U\bigl(\xi\ket{\Phi}+\eta\ket{\Psi}\bigr)
+    &=\xi^{*}U\ket{\Phi}+\eta^{*}U\ket{\Psi}.
+  \tag{2.2.5}\label{eq:2.2.5}
+\end{align}
+Wigner's proof omits some steps. A more complete proof is given at the
+end of this chapter in Appendix A.
+
+As already mentioned, the adjoint of a linear operator $L$ is defined by
+\begin{equation}
+  \bra{\Phi}L^{\dagger}\ket{\Psi}
+    \equiv \braket{L\Phi}{\Psi}.
+  \tag{2.2.6}\label{eq:2.2.6}
+\end{equation}
+This condition cannot be satisfied for an antilinear operator, because in
+this case the right-hand side of Eq.~\eqref{eq:2.2.6} would be linear in
+$\ket{\Phi}$, while the left-hand side is antilinear in $\ket{\Phi}$.
+Instead, the adjoint of an antilinear operator $A$ is defined by
+\begin{equation}
+  \bra{\Phi}A^{\dagger}\ket{\Psi}
+    \equiv \braket{A\Phi}{\Psi}^{*}
+    =\bra{\Psi}A\ket{\Phi}.
+  \tag{2.2.7}\label{eq:2.2.7}
+\end{equation}
+With this definition, the conditions for unitarity or antiunitarity both
+take the form
+\begin{equation}
+  U^{\dagger}=U^{-1}.
+  \tag{2.2.8}\label{eq:2.2.8}
+\end{equation}
+
+There is always a trivial symmetry transformation
+$\mathcal{R}\to\mathcal{R}$, represented by the identity operator
+$U=\mathbf{1}$. This operator is, of course, unitary and linear. Continuity
+then demands that any symmetry (like a rotation or translation or Lorentz
+transformation) that can be made trivial by a continuous change of some
+parameters (like angles or distances or velocities) must be represented
+by a linear unitary operator $U$ rather than one that is antilinear and
+antiunitary. (Symmetries represented by antiunitary antilinear operators
+are less prominent in physics; they all involve a reversal in the direction
+of time's flow. See Section 2.6.)
+
+In particular, a symmetry transformation that is infinitesimally close
+to being trivial can be represented by a linear unitary operator that is
+infinitesimally close to the identity:
+\begin{equation}
+  U=\mathbf{1}+i\epsilon t
+  \tag{2.2.9}\label{eq:2.2.9}
+\end{equation}
+with $\epsilon$ a real infinitesimal. For this to be unitary and linear,
+$t$ must be Hermitian and linear, so it is a candidate for an observable.
+Indeed, most (and perhaps all) of the observables of physics, such as
+angular momentum or momentum, arise in this way from symmetry
+transformations.
+
+The set of symmetry transformations has certain properties that define
+it as a \emph{group}. If $T_1$ is a transformation that takes rays
+$\mathcal{R}_n$ into $\mathcal{R}'_n$, and $T_2$ is another transformation
+that takes $\mathcal{R}'_n$ into $\mathcal{R}''_n$, then the result of
+performing both transformations is another symmetry transformation,
+which we write $T_2T_1$, that takes $\mathcal{R}_n$ into
+$\mathcal{R}''_n$. Also, a symmetry transformation $T$ which takes rays
+$\mathcal{R}_n$ into $\mathcal{R}'_n$ has an inverse, written $T^{-1}$,
+which takes $\mathcal{R}'_n$ into $\mathcal{R}_n$, and there is an identity
+transformation, $T=\mathbf{1}$, which leaves rays unchanged.
+
+The unitary or antiunitary operators $U(T)$ corresponding to these
+symmetry transformations have properties that mirror this group structure,
+but with a complication due to the fact that, unlike the symmetry
+transformations themselves, the operators $U(T)$ act on vectors in the
+Hilbert space, rather than on rays. If $T_1$ takes $\mathcal{R}_n$ into
+$\mathcal{R}'_n$, then acting on a vector $\ket{\Psi_n}$ in the ray
+$\mathcal{R}_n$, $U(T_1)$ must yield a vector $U(T_1)\ket{\Psi_n}$ in the
+ray $\mathcal{R}'_n$, and if $T_2$ takes this ray into $\mathcal{R}''_n$,
+then acting on $U(T_1)\ket{\Psi_n}$ it must yield a vector
+$U(T_2)U(T_1)\ket{\Psi_n}$ in the ray $\mathcal{R}''_n$. But
+$U(T_2T_1)\ket{\Psi_n}$ is also in this ray, so these vectors can differ
+only by a phase $\phi_n(T_2,T_1)$
+\begin{equation}
+  U(T_2)U(T_1)\ket{\Psi_n}
+    =e^{i\phi_n(T_2,T_1)}U(T_2T_1)\ket{\Psi_n}.
+  \tag{2.2.10}\label{eq:2.2.10}
+\end{equation}
+Furthermore, with one significant exception, the linearity (or
+antilinearity) of $U(T)$ tells us that these phases are independent of the
+state $\ket{\Psi_n}$. Here is the proof. Consider any two different vectors
+$\ket{\Psi_A},\ket{\Psi_B}$, which are not proportional to each other.
+Then, applying Eq.~\eqref{eq:2.2.10} to the state
+$\ket{\Psi_{AB}}=\ket{\Psi_A}+\ket{\Psi_B}$, we have
+\begin{align}
+  e^{i\phi_{AB}}U(T_2T_1)
+    \bigl(\ket{\Psi_A}+\ket{\Psi_B}\bigr)
+  &=U(T_2)U(T_1)\bigl(\ket{\Psi_A}+\ket{\Psi_B}\bigr)\notag\\
+  &=U(T_2)U(T_1)\ket{\Psi_A}
+    +U(T_2)U(T_1)\ket{\Psi_B}\notag\\
+  &=e^{i\phi_A}U(T_2T_1)\ket{\Psi_A}
+    +e^{i\phi_B}U(T_2T_1)\ket{\Psi_B}.
+  \tag{2.2.11}\label{eq:2.2.11}
+\end{align}
+Any unitary or antiunitary operator has an inverse (its adjoint) which
+is also unitary or antiunitary. Multiplying \eqref{eq:2.2.11} on the left with
+$U^{-1}(T_2T_1)$, we have then
+\begin{equation}
+  e^{\pm i\phi_{AB}}\bigl(\ket{\Psi_A}+\ket{\Psi_B}\bigr)
+    =e^{\pm i\phi_A}\ket{\Psi_A}
+      +e^{\pm i\phi_B}\ket{\Psi_B},
+  \tag{2.2.12}\label{eq:2.2.12}
+\end{equation}
+the upper and lower signs referring to $U(T_2T_1)$ unitary or antiunitary,
+respectively. Since $\ket{\Psi_A}$ and $\ket{\Psi_B}$ are linearly
+independent, this is only possible if
+\begin{equation}
+  e^{i\phi_{AB}}=e^{i\phi_A}=e^{i\phi_B}.
+  \tag{2.2.13}\label{eq:2.2.13}
+\end{equation}
+So as promised, the phase in Eq.~\eqref{eq:2.2.10} is independent of the
+state-vector $\ket{\Psi_n}$, and therefore this can be written as an operator
+relation
+\begin{equation}
+  U(T_2)U(T_1)=e^{i\phi(T_2,T_1)}U(T_2T_1).
+  \tag{2.2.14}\label{eq:2.2.14}
+\end{equation}
+For $\phi=0$, this would say that the $U(T)$ furnish a representation of
+the group of symmetry transformations. For general phases $\phi(T_2,T_1)$,
+we have what is called a projective representation, or a representation
+`up to a phase'. The structure of the Lie group cannot by itself tell us
+whether physical state-vectors furnish an ordinary or a projective
+representation, but as we shall see, it can tell us whether the group has
+any intrinsically projective representations at all.
+
+The exception to the argument that led to Eq.~\eqref{eq:2.2.14} is that it may
+not be possible to prepare the system in a state represented by
+$\ket{\Psi_A}+\ket{\Psi_B}$. For instance, it is widely believed to be
+impossible to prepare a system in a superposition of two states whose total
+angular momenta are integers and half-integers, respectively. In such
+cases, we say that there is a `superselection rule' between different
+classes of states~\hyperref[ref:2.3]{[3]}, and the phases $\phi(T_2,T_1)$ may
+depend on which of these classes of states the operators $U(T_2)U(T_1)$
+and $U(T_2T_1)$ act upon. We will have more to say about these phases and
+projective representations in Section 2.7. As we shall see there, any
+symmetry group with projective representations can always be enlarged
+(without otherwise changing its physical implications) in such a way that
+its representations can all be defined as non-projective, with $\phi=0$.
+Until Section 2.7, we will just assume that this has been done, and take
+$\phi=0$ in Eq.~\eqref{eq:2.2.14}.
+
+There is a kind of group, known as a \emph{connected Lie group}, of
+special importance in physics. These are groups of transformations
+$T(\theta)$ that are described by a finite set of real continuous
+parameters, say $\theta^a$, with each element of the group connected to
+the identity by a path within the group. The group multiplication law then
+takes the form
+\begin{equation}
+  T(\bar\theta)T(\theta)=T\bigl(f(\bar\theta,\theta)\bigr)
+  \tag{2.2.15}\label{eq:2.2.15}
+\end{equation}
+with $f^a(\bar\theta,\theta)$ a function of the $\bar\theta$s and $\theta$s.
+Taking $\theta^a=0$ as the coordinates of the identity, we must have
+\begin{equation}
+  f^a(\theta,0)=f^a(0,\theta)=\theta^a.
+  \tag{2.2.16}\label{eq:2.2.16}
+\end{equation}
+As already mentioned, the transformations of such continuous groups must
+be represented on the physical Hilbert space by unitary (rather than
+antiunitary) operators $U(T(\theta))$. For a Lie group, these operators can
+be represented in at least a finite neighborhood of the identity by a
+power series
+\begin{equation}
+  U\bigl(T(\theta)\bigr)
+    =\mathbf{1}+i\theta^a t_a+\frac{1}{2}\theta^b\theta^c t_{bc}+\cdots,
+  \tag{2.2.17}\label{eq:2.2.17}
+\end{equation}
+where $t_a$, $t_{bc}=t_{cb}$, etc. are Hermitian operators independent of
+the $\theta$s. Suppose that the $U(T(\theta))$ form an ordinary (i.e., not
+projective) representation of this group of transformations, i.e.,
+\begin{equation}
+  U\bigl(T(\bar\theta)\bigr)U\bigl(T(\theta)\bigr)
+    =U\bigl(T(f(\bar\theta,\theta))\bigr).
+  \tag{2.2.18}\label{eq:2.2.18}
+\end{equation}
+Let us see what this condition looks like when expanded in powers of
+$\theta^a$ and $\bar\theta^a$. According to Eq.~\eqref{eq:2.2.16}, the expansion of
+$f^a(\bar\theta,\theta)$ to second order must take the form
+\begin{equation}
+  f^a(\bar\theta,\theta)
+    =\theta^a+\bar\theta^a+f^a{}_{bc}\bar\theta^b\theta^c+\cdots
+  \tag{2.2.19}\label{eq:2.2.19}
+\end{equation}
+with real coefficients $f^a{}_{bc}$. (The presence of any terms of order
+$\theta^2$ or $\bar\theta^2$ would violate Eq.~\eqref{eq:2.2.16}.) Then
+Eq.~\eqref{eq:2.2.18} reads
+\begin{align}
+  &\left[\mathbf{1}+i\bar\theta^a t_a
+    +\frac{1}{2}\bar\theta^b\bar\theta^c t_{bc}+\cdots\right]
+  \left[\mathbf{1}+i\theta^a t_a
+    +\frac{1}{2}\theta^b\theta^c t_{bc}+\cdots\right]
+  \notag\\
+  &\quad=\mathbf{1}
+    +i\bigl(\theta^a+\bar\theta^a
+      +f^a{}_{bc}\bar\theta^b\theta^c+\cdots\bigr)t_a
+  \notag\\
+  &\qquad\quad
+    +\frac{1}{2}\bigl(\theta^b+\bar\theta^b+\cdots\bigr)
+      \bigl(\theta^c+\bar\theta^c+\cdots\bigr)t_{bc}+\cdots.
+  \tag{2.2.20}\label{eq:2.2.20}
+\end{align}
+The terms of order $1$, $\theta$, $\bar\theta$, $\theta^2$, and
+$\bar\theta^2$ automatically match on both sides of Eq.~\eqref{eq:2.2.20}, but
+from the $\bar\theta\theta$ terms we obtain a non-trivial condition
+\begin{equation}
+  t_{bc}=-t_b t_c-i f^a{}_{bc}t_a.
+  \tag{2.2.21}\label{eq:2.2.21}
+\end{equation}
+This shows that if we are given the structure of the group, i.e., the
+function $f(\theta,\bar\theta)$, and hence its quadratic coefficient
+$f^a{}_{bc}$, we can calculate the second-order terms in $U(T(\theta))$
+from the generators $t_a$ appearing in the first-order terms. However,
+there is a consistency condition: the operator $t_{bc}$ must be
+\emph{symmetric} in $b$ and $c$ (because it is the second derivative of
+$U(T(\theta))$ with respect to $\theta^b$ and $\theta^c$) so Eq.~\eqref{eq:2.2.21}
+requires that
+\begin{equation}
+  [t_b,t_c]=iC^a{}_{bc}t_a,
+  \tag{2.2.22}\label{eq:2.2.22}
+\end{equation}
+where $C^a{}_{bc}$ are a set of real constants known as \emph{structure
+constants}
+\begin{equation}
+  C^a{}_{bc}\equiv-f^a{}_{bc}+f^a{}_{cb}.
+  \tag{2.2.23}\label{eq:2.2.23}
+\end{equation}
+Such a set of commutation relations is known as a \emph{Lie algebra}. In
+Section 2.7 we will prove in effect that the commutation relation \eqref{eq:2.2.22}
+is the single condition needed to ensure that this process can be
+continued: the complete power series for $U(T(\theta))$ may be calculated
+from an infinite sequence of relations like Eq.~\eqref{eq:2.2.21}, provided we know
+the first-order terms, the generators $t_a$. This does not necessarily mean
+that the operators $U(T(\theta))$ are uniquely determined for all
+$\theta^a$ if we know the $t_a$, but it does mean that the $U(T(\theta))$
+are uniquely determined in at least a finite neighborhood of the
+coordinates $\theta^a=0$ of the identity, in such a way that Eq.~\eqref{eq:2.2.15}
+is satisfied if $\theta$, $\bar\theta$, and $f(\theta,\bar\theta)$ are in
+this neighborhood. The extension to all $\theta^a$ is discussed in
+Section 2.7.
+
+There is a special case of some importance, that we will encounter again
+and again. Suppose that the function $f(\theta,\bar\theta)$ (perhaps just
+for some subset of the coordinates $\theta^a$) is simply additive
+\begin{equation}
+  f^a(\theta,\bar\theta)=\theta^a+\bar\theta^a.
+  \tag{2.2.24}\label{eq:2.2.24}
+\end{equation}
+This is the case for instance for translations in spacetime, or for
+rotations about any one fixed axis (though \emph{not} for both together).
+Then the coefficients $f^a{}_{bc}$ in Eq.~\eqref{eq:2.2.19} vanish, and so do the
+structure constants \eqref{eq:2.2.23}. The generators then all commute
+\begin{equation}
+  [t_b,t_c]=0.
+  \tag{2.2.25}\label{eq:2.2.25}
+\end{equation}
+Such a group is called \emph{Abelian}. In this case, it is easy to
+calculate $U(T(\theta))$ for all $\theta^a$. From Eqs.~\eqref{eq:2.2.18} and
+\eqref{eq:2.2.24}, we have for any integer $N$
+\begin{equation*}
+  U\bigl(T(\theta)\bigr)
+    =\left[U\left(T\left(\frac{\theta}{N}\right)\right)\right]^N.
+\end{equation*}
+Letting $N\to\infty$, and keeping only the first-order term in
+$U(T(\theta/N))$, we have then
+\begin{equation*}
+  U\bigl(T(\theta)\bigr)
+    =\lim_{N\to\infty}
+      \left[\mathbf{1}+\frac{i}{N}\theta^a t_a\right]^N
+\end{equation*}
+and hence
+\begin{equation}
+  U\bigl(T(\theta)\bigr)=\exp(i t_a\theta^a).
+  \tag{2.2.26}\label{eq:2.2.26}
+\end{equation}
+
+\subsection{Quantum Lorentz Transformations}
+
+Einstein's principle of relativity states the equivalence of certain
+`inertial' frames of reference. It is distinguished from the Galilean
+principle of relativity, obeyed by Newtonian mechanics, by the
+transformation connecting coordinate systems in different inertial frames.
+If $x^\mu$ are the coordinates in one inertial frame (with $x^0=t$ a time
+coordinate and $x^1,x^2,x^3$ Cartesian space coordinates, the speed of
+light being set equal to unity) then in any other inertial frame, the
+coordinates $x'{}^\mu$ must satisfy
+\begin{equation}
+  \eta_{\mu\nu}\,dx'{}^\mu dx'{}^\nu
+    =\eta_{\mu\nu}\,dx^\mu dx^\nu
+  \tag{2.3.1}\label{eq:2.3.1}
+\end{equation}
+or equivalently
+\begin{equation}
+  \eta_{\mu\nu}
+    \frac{\partial x'{}^\mu}{\partial x^\rho}
+    \frac{\partial x'{}^\nu}{\partial x^\sigma}
+    =\eta_{\rho\sigma}.
+  \tag{2.3.2}\label{eq:2.3.2}
+\end{equation}
+Here $\eta_{\mu\nu}$ is the diagonal matrix, with elements
+\begin{equation}
+  \eta_{00}=-1,
+  \qquad \eta_{11}=\eta_{22}=\eta_{33}=+1,
+  \tag{2.3.3}\label{eq:2.3.3}
+\end{equation}
+and the summation convention is in force: we sum over any index like
+$\mu$ and $\nu$ in Eq.~\eqref{eq:2.3.2}, which appears twice in the same term, once
+upstairs and once downstairs. These transformations have the special
+property that the speed of light is the same (in our units, equal to unity)
+in all inertial frames;\footnote{There is a larger class of coordinate
+transformations, known as \emph{conformal transformations}, for which
+$\eta_{\mu\nu}dx'{}^\mu dx'{}^\nu$ is proportional though generally not
+equal to $\eta_{\mu\nu}dx^\mu dx^\nu$, and which therefore also leave the
+speed of light invariant. Conformal invariance in two dimensions has
+proved enormously important in string theory and statistical mechanics,
+but the physical relevance of these conformal transformations in four
+spacetime dimensions is not yet clear.}
+a light wave travelling at unit
+speed satisfies $|d\mathbf{x}/dt|=1$, or in other words
+$\eta_{\mu\nu}dx^\mu dx^\nu=d\mathbf{x}^2-dt^2=0$, from which it follows
+that also $\eta_{\mu\nu}dx'{}^\mu dx'{}^\nu=0$, and hence
+$|d\mathbf{x}'/dt'|=1$.
+
+Any coordinate transformation $x^\mu\to x'{}^\mu$ that satisfies
+Eq.~\eqref{eq:2.3.2} is \emph{linear}~\hyperref[ref:2.3a]{[3a]}
+\begin{equation}
+  x'{}^\mu=\Lambda^\mu{}_{\nu}x^\nu+a^\mu
+  \tag{2.3.4}\label{eq:2.3.4}
+\end{equation}
+with $a^\mu$ arbitrary constants, and $\Lambda^\mu{}_{\nu}$ a constant
+matrix satisfying the conditions
+\begin{equation}
+  \eta_{\mu\nu}\Lambda^\mu{}_{\rho}\Lambda^\nu{}_{\sigma}
+    =\eta_{\rho\sigma}.
+  \tag{2.3.5}\label{eq:2.3.5}
+\end{equation}
+For some purposes, it is useful to write the Lorentz transformation
+condition in a different way. The matrix $\eta_{\mu\nu}$ has an inverse,
+written $\eta^{\mu\nu}$, which happens to have the same components: it is
+diagonal, with $\eta^{00}=-1$,
+$\eta^{11}=\eta^{22}=\eta^{33}=+1$. Multiplying Eq.~\eqref{eq:2.3.5} with
+$\eta^{\sigma\tau}\Lambda^\kappa{}_{\tau}$ and inserting parentheses
+judiciously, we have
+\begin{equation*}
+  \eta_{\mu\nu}\Lambda^\mu{}_{\rho}
+  \bigl(\Lambda^\nu{}_{\sigma}\Lambda^\kappa{}_{\tau}
+    \eta^{\sigma\tau}\bigr)
+  =\Lambda^\kappa{}_{\rho}
+  =\eta_{\mu\nu}\eta^{\nu\kappa}\Lambda^\mu{}_{\rho}.
+\end{equation*}
+Multiplying with the inverse of the matrix
+$\eta_{\mu\nu}\Lambda^\mu{}_{\rho}$ then gives
+\begin{equation}
+  \Lambda^\nu{}_{\sigma}\Lambda^\kappa{}_{\tau}
+    \eta^{\sigma\tau}=\eta^{\nu\kappa}.
+  \tag{2.3.6}\label{eq:2.3.6}
+\end{equation}
+
+These transformations form a group. If we first perform a Lorentz
+transformation \eqref{eq:2.3.4}, and then a second Lorentz transformation
+$x'{}^\mu\to x''{}^\mu$, with
+\begin{equation*}
+  x''{}^\mu=\bar\Lambda^\mu{}_{\rho}x'{}^\rho+\bar a^\mu
+  =\bar\Lambda^\mu{}_{\rho}
+    \bigl(\Lambda^\rho{}_{\nu}x^\nu+a^\rho\bigr)+\bar a^\mu
+\end{equation*}
+then the effect is the same as the Lorentz transformation
+$x^\mu\to x''{}^\mu$, with
+\begin{equation}
+  x''{}^\mu
+    =\bigl(\bar\Lambda^\mu{}_{\rho}\Lambda^\rho{}_{\nu}\bigr)x^\nu
+      +\bigl(\bar\Lambda^\mu{}_{\rho}a^\rho+\bar a^\mu\bigr).
+  \tag{2.3.7}\label{eq:2.3.7}
+\end{equation}
+(Note that if $\Lambda^\mu{}_{\nu}$ and $\bar\Lambda^\mu{}_{\nu}$ both
+satisfy Eq.~\eqref{eq:2.3.5}, then so does
+$\bar\Lambda^\mu{}_{\rho}\Lambda^\rho{}_{\nu}$, so this is a Lorentz
+transformation. The bar is used here just to distinguish one Lorentz
+transformation from the other.) The transformations $T(\Lambda,a)$
+induced on physical states therefore satisfy the composition rule
+\begin{equation}
+  T(\bar\Lambda,\bar a)T(\Lambda,a)
+    =T(\bar\Lambda\Lambda,\bar\Lambda a+\bar a).
+  \tag{2.3.8}\label{eq:2.3.8}
+\end{equation}
+Taking the determinant of Eq.~\eqref{eq:2.3.5} gives
+\begin{equation}
+  (\operatorname{Det}\Lambda)^2=1
+  \tag{2.3.9}\label{eq:2.3.9}
+\end{equation}
+so $\Lambda^\mu{}_{\nu}$ has an inverse,
+$(\Lambda^{-1})^\nu{}_{\mu}$, which we see from Eq.~\eqref{eq:2.3.5} takes the form
+\begin{equation}
+  (\Lambda^{-1})^\nu{}_{\mu}
+    =\Lambda_{\mu}{}^\nu
+    \equiv\eta_{\mu\rho}\eta^{\nu\sigma}\Lambda^\rho{}_{\sigma}.
+  \tag{2.3.10}\label{eq:2.3.10}
+\end{equation}
+The inverse of the transformation $T(\Lambda,a)$ is seen from Eq.~\eqref{eq:2.3.8}
+to be $T(\Lambda^{-1},-\Lambda^{-1}a)$, and, of course, the identity
+transformation is $T(\mathbf{1},0)$.
+
+In accordance with the discussion in the previous section, the
+transformations $T(\Lambda,a)$ induce a unitary linear transformation on
+vectors in the physical Hilbert space
+\begin{equation*}
+  \ket{\Psi}\longrightarrow U(\Lambda,a)\ket{\Psi}.
+\end{equation*}
+The operators $U$ satisfy a composition rule
+\begin{equation}
+  U(\bar\Lambda,\bar a)U(\Lambda,a)
+    =U(\bar\Lambda\Lambda,\bar\Lambda a+\bar a).
+  \tag{2.3.11}\label{eq:2.3.11}
+\end{equation}
+(As already mentioned, to avoid the appearance of a phase factor on the
+right-hand side of Eq.~\eqref{eq:2.3.11}, it is, in general, necessary to enlarge
+the Lorentz group. The appropriate enlargement is described in
+Section 2.7.)
+
+The whole group of transformations $T(\Lambda,a)$ is properly known as
+the \emph{Poincar\'e group}. It has
+a number of important subgroups. First, those transformations with
+$a^\mu=0$ obviously form a subgroup, with
+\begin{equation}
+  T(\bar\Lambda,0)T(\Lambda,0)=T(\bar\Lambda\Lambda,0),
+  \tag{2.3.12}\label{eq:2.3.12}
+\end{equation}
+known as the \emph{homogeneous Lorentz group}. Also, we note from
+Eq.~\eqref{eq:2.3.9} that either $\operatorname{Det}\Lambda=+1$ or
+$\operatorname{Det}\Lambda=-1$; those transformations with
+$\operatorname{Det}\Lambda=+1$ obviously form a subgroup of either the
+homogeneous Lorentz group or the Poincar\'e group. Further, from the
+$00$-components of Eqs.~\eqref{eq:2.3.5} and \eqref{eq:2.3.6}, we have
+\begin{equation}
+  (\Lambda^0{}_{0})^2
+    =1+\Lambda^i{}_{0}\Lambda^i{}_{0}
+    =1+\Lambda^0{}_{i}\Lambda^0{}_{i},
+  \tag{2.3.13}\label{eq:2.3.13}
+\end{equation}
+with $i$ summed over the values 1, 2, and 3. We see that either
+$\Lambda^0{}_{0}\geq+1$ or $\Lambda^0{}_{0}\leq-1$. Those transformations
+with $\Lambda^0{}_{0}\geq+1$ form a subgroup. Note that if
+$\Lambda^\mu{}_{\nu}$ and $\bar\Lambda^\mu{}_{\nu}$ are two such
+$\Lambda$s, then
+\begin{equation*}
+  (\bar\Lambda\Lambda)^0{}_{0}
+    =\bar\Lambda^0{}_{0}\Lambda^0{}_{0}
+      +\bar\Lambda^0{}_{1}\Lambda^1{}_{0}
+      +\bar\Lambda^0{}_{2}\Lambda^2{}_{0}
+      +\bar\Lambda^0{}_{3}\Lambda^3{}_{0}.
+\end{equation*}
+But Eq.~\eqref{eq:2.3.13} shows that the three-vector
+$(\Lambda^1{}_{0},\allowbreak\Lambda^2{}_{0},\allowbreak\Lambda^3{}_{0})$
+has length
+$\sqrt{(\Lambda^0{}_{0})^2-1}$, and similarly the three-vector\hfill\break
+$(\bar\Lambda^0{}_{1},\allowbreak\bar\Lambda^0{}_{2},\allowbreak
+\bar\Lambda^0{}_{3})$ has length
+$\sqrt{(\bar\Lambda^0{}_{0})^2-1}$, so the scalar product of these
+two three-vectors is bounded by
+\begin{equation}
+  \left|
+    \bar\Lambda^0{}_{1}\Lambda^1{}_{0}
+      +\bar\Lambda^0{}_{2}\Lambda^2{}_{0}
+      +\bar\Lambda^0{}_{3}\Lambda^3{}_{0}
+  \right|
+  \leq
+  \sqrt{(\Lambda^0{}_{0})^2-1}
+  \sqrt{(\bar\Lambda^0{}_{0})^2-1},
+  \tag{2.3.14}\label{eq:2.3.14}
+\end{equation}
+and so
+\begin{equation*}
+  (\bar\Lambda\Lambda)^0{}_{0}
+  \geq \bar\Lambda^0{}_{0}\Lambda^0{}_{0}
+    -\sqrt{(\Lambda^0{}_{0})^2-1}
+     \sqrt{(\bar\Lambda^0{}_{0})^2-1}
+  \geq 1.
+\end{equation*}
+The subgroup of Lorentz transformations with
+$\operatorname{Det}\Lambda=+1$ and $\Lambda^0{}_{0}\geq+1$ is known as
+the \emph{proper orthochronous Lorentz group}. Since it is not possible by
+a continuous change of parameters to jump from
+$\operatorname{Det}\Lambda=+1$ to $\operatorname{Det}\Lambda=-1$, or
+from $\Lambda^0{}_{0}\geq+1$ to $\Lambda^0{}_{0}\leq-1$, any Lorentz
+transformation that can be obtained from the identity by a continuous
+change of parameters must have $\operatorname{Det}\Lambda$ and
+$\Lambda^0{}_{0}$ of the same sign as for the identity, and hence must
+belong to the proper orthochronous Lorentz group.
+
+Any Lorentz transformation is either proper and orthochronous, or may be
+written as the product of an element of the proper orthochronous Lorentz
+group with one of the discrete transformations $\mathcal{P}$ or
+$\mathcal{T}$ or $\mathcal{P}\mathcal{T}$, where $\mathcal{P}$ is the space
+inversion, whose non-zero elements are
+\begin{equation}
+  \mathcal{P}^0{}_{0}=1,
+  \qquad
+  \mathcal{P}^1{}_{1}=\mathcal{P}^2{}_{2}=\mathcal{P}^3{}_{3}=-1,
+  \tag{2.3.15}\label{eq:2.3.15}
+\end{equation}
+and $\mathcal{T}$ is the time-reversal matrix, whose non-zero elements are
+\begin{equation}
+  \mathcal{T}^0{}_{0}=-1,
+  \qquad
+  \mathcal{T}^1{}_{1}=\mathcal{T}^2{}_{2}=\mathcal{T}^3{}_{3}=1.
+  \tag{2.3.16}\label{eq:2.3.16}
+\end{equation}
+Thus the study of the whole Lorentz group reduces to the study of its
+proper orthochronous subgroup, plus space inversion and time-reversal. We
+will consider space inversion and time-reversal separately in Section 2.6.
+Until then, we will deal only with the homogeneous or inhomogeneous proper
+orthochronous Lorentz group.

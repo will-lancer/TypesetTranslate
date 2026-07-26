@@ -1,0 +1,115 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\numberwithin{equation}{subsection}
+\allowdisplaybreaks
+
+% JHEP-style blue, clickable cross-references and links.
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Quantum Theory of Fields, Volume II: Modern Applications},
+  pdfauthor={Steven Weinberg}
+}
+
+% Suppress the "Prepared for submission to JHEP" first-page header.
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externalvolumeanchor}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+% Emit the TOC inside \maketitle once all chapter scaffolds are present.
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\par\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+
+\setcounter{tocdepth}{2}
+
+% Leave enough room in the TOC for Volume II labels such as 19.10.
+\makeatletter
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{3.2em}}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\optionalreading}{\texorpdfstring{\textsuperscript{*}}{*}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\title{The Quantum Theory of Fields}
+\subheader{Volume II: Modern Applications}
+\author{Steven Weinberg}
+\affiliation{University of Texas at Austin}
+\dedicated{To Louise}
+\abstract{
+  Weinberg's QFT, typeset in nicer notation. Typesetting done entirely
+  by coding agents, namely GPT 5.6. Figures done by Fable 5. Enjoy!
+}
+
+\begin{document}
+\input{frontmatter/external-volume1-anchors.tex}
+\maketitle
+% Start subsequent section-level units on fresh pages without forcing an
+% extra blank page before the table of contents inside \maketitle.
+\pretocmd{\section}{\clearpage}{}{}
+\flushbottom
+
+\input{frontmatter/preface.tex}
+\input{frontmatter/notation.tex}
+
+% Volume II continues the chapter numbering of Volume I.
+\setcounter{section}{14}
+
+\input{chapters/chapter15.tex}
+\input{chapters/chapter16.tex}
+\input{chapters/chapter17.tex}
+\input{chapters/chapter18.tex}
+\input{chapters/chapter19.tex}
+\input{chapters/chapter20.tex}
+\input{chapters/chapter21.tex}
+\input{chapters/chapter22.tex}
+\input{chapters/chapter23.tex}
+
+\input{backmatter/indexes.tex}
+
+\end{document}

@@ -4,15 +4,15 @@ Typesetting old, beautiful physics and math books and papers into modern LaTeX.
 The typesetting is done almost entirely via coding agents.
 Please email me at will.m.lancer@gmail.com if you find any errors.
 
-Repository layout:
+The repository has one canonical content tree:
 
-- `origPapers/`: source PDFs
-- `dirs/`: active workspaces under transcription
-- `newPapers/`: polished final outputs
-- `typesetTranslate/`: the orchestration package
+- `newPapers/*.pdf`: polished delivery PDFs
+- `newPapers/**/latex/`: the LaTeX source needed to reproduce them
 
-The operational workflow for the automation layer is documented in
-[`typesetTranslate/WORKFLOW.md`](/Users/wlancer/Coding_Projects/TypesetTranslate/typesetTranslate/WORKFLOW.md).
+Compile `master.tex` from the relevant `latex/` directory with `latexmk -pdf`;
+the Witten project uses `wittenSUSYintro.tex` instead. The local `.sty` files
+are required source dependencies and should remain beside the corresponding
+documents.
 
 Completed:
 * Witten's *Introduction to Supersymmetry*

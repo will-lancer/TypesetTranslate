@@ -1,0 +1,17 @@
+% Figure 13: An example with index sum +1 on the disk
+\begin{tikzpicture}[line cap=round,line join=round,>=Stealth,scale=0.9,
+    midarrow/.style={postaction={decorate,
+      decoration={markings,mark=at position #1 with {\arrow{Stealth}}}}}]
+  \draw[thick] (0,0) circle (1.45);
+  % dipole loops about the zero at (0,0.2)
+  \foreach \r in {0.28,0.56} {
+    \draw[thin,midarrow=0.3,midarrow=0.8] (\r,0.2) circle (\r);
+    \draw[thin,midarrow=0.3,midarrow=0.8] (-\r,0.2) circle (\r);
+  }
+  % axis streamlines out of the zero
+  \draw[thin,midarrow=0.6] (0,0.2) -- (0,1.45);
+  \draw[thin,midarrow=0.6] (0,0.2) -- (0,-1.45);
+  \draw[thin,midarrow=0.6] (1.16,0.2) -- (1.45,0.2);
+  \draw[thin,midarrow=0.6] (-1.16,0.2) -- (-1.45,0.2);
+  \fill (0,0.2) circle (1.5pt);
+\end{tikzpicture}

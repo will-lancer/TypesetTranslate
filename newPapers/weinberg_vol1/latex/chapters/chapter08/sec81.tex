@@ -1,0 +1,260 @@
+% Chunk: Chapter 8 opening and \S8.1, Gauge Invariance.
+% Source: Weinberg QFT Vol. I, physical pp. 362--366 (printed pp. 339--343),
+% ending immediately before the \S8.2 heading on physical p. 366.
+% Coverage: equations (8.1.1)--(8.1.22); four footnotes; references [1] and [1a].
+
+The original approach to quantum electrodynamics was to take for granted
+Maxwell's classical theory of electromagnetism, and quantize it. It will
+probably not surprise the reader that this book will follow a different path.
+We shall first infer the need for a principle of gauge invariance from the
+peculiar difficulties that arise in formulating a quantum theory of massless
+particles with spin, and then deduce the main features of electrodynamics
+from the gauge invariance principle. After that we shall follow a more
+conventional modern approach, in which one takes gauge invariance as
+the starting point and uses it to deduce the existence of a vector potential
+describing massless particles of unit spin.
+
+It is too soon to tell which of these two alternatives corresponds to
+the logical order of nature. Most theorists have tended to take gauge
+invariance as a starting point, but in modern string theories~\hyperref[ref:8.1]{[1]} the argument
+runs the other way; one first notices a state of mass zero and unit spin
+among the normal modes of a string, and then from that deduces the
+gauge invariance of the effective field theory that describes such particles.
+At any rate, as we shall see, using either approach one is led to the
+quantized version of Maxwell's theory, still the paradigmatic example of
+a successful quantum field theory.
+
+\subsection{Gauge Invariance}
+
+Let's start by recalling the problems encountered in constructing covariant
+free fields for a massless particle of helicity $\pm1$. We saw in Section 5.9
+that there is no difficulty in constructing an antisymmetric tensor free
+field $f_{\mu\nu}(x)$ for such particles. This field can be expressed in terms of the
+four-potential $a_\mu(x)$, given by Eq.~\eqref{eq:5.9.23}, through the familiar relation
+\begin{equation}
+  f_{\mu\nu}(x)=\partial_\mu a_\nu(x)-\partial_\nu a_\mu(x).
+  \tag{8.1.1}\label{eq:8.1.1}
+\end{equation}
+However, Eq.~\eqref{eq:5.9.23} shows that the $a_\mu(x)$ transforms as a four-vector
+only up to a gauge transformation
+\begin{equation}
+  U_0(\Lambda)a_\mu(x)U_0^{-1}(\Lambda)
+  =\Lambda_\mu{}^\nu a_\nu(\Lambda x)+\partial_\mu\Omega(x,\Lambda).
+  \tag{8.1.2}\label{eq:8.1.2}
+\end{equation}
+There is, in fact, no way to construct a true four-vector as a linear
+combination of the creation and annihilation operators for helicity $\pm1$.
+This is one way of understanding the presence of singularities at $m=0$ in
+the propagator of a massive vector field
+\[
+  \Delta_{\mu\nu}(x,y)=(2\pi)^{-4}\int d^4q\,e^{iq\cdot(x-y)}
+  \frac{\eta_{\mu\nu}+q_\mu q_\nu/m^2}{q^2+m^2-i\epsilon},
+\]
+which prevent us from dealing with massless particles of helicity $\pm1$ by
+simply passing to the limit $m\to0$ of the theory of a massive particle of
+spin one.
+
+We could avoid these problems by demanding that all interactions
+involve only\footnote{We now use $A_\mu$ and $F_{\mu\nu}$ for the electromagnetic
+potential vector and the field strength tensor because these are interacting
+fields.} $F_{\mu\nu}(x)\equiv\partial_\mu A_\nu(x)-\partial_\nu A_\mu(x)$ and its
+derivatives, not $A_\mu(x)$, but this is not the most general possibility, and
+not the one realized in nature. Instead of banishing $A_\mu(x)$ from the
+action, we shall require instead that the part of the action $I_M$ for matter
+and its interaction with radiation be invariant under the general gauge
+transformation
+\begin{equation}
+  A_\mu(x)\longrightarrow A_\mu(x)+\partial_\mu\epsilon(x)
+  \tag{8.1.3}\label{eq:8.1.3}
+\end{equation}
+(at least when the matter fields satisfy the field equations) so that the extra
+term in Eq.~\eqref{eq:8.1.2} should have no effect. The change in the matter action
+under the transformations \eqref{eq:8.1.3} may be written
+\begin{equation}
+  \delta I_M=\int d^4x\,\frac{\delta I_M}{\delta A_\mu(x)}
+  \partial_\mu\epsilon(x).
+  \tag{8.1.4}\label{eq:8.1.4}
+\end{equation}
+Hence the Lorentz invariance of $I_M$ requires that
+\begin{equation}
+  \partial_\mu\frac{\delta I_M}{\delta A_\mu(x)}=0.
+  \tag{8.1.5}\label{eq:8.1.5}
+\end{equation}
+This is trivially true if $I_M$ involves only $F_{\mu\nu}(x)$ and its derivatives,
+along with matter fields. In this case
+\[
+  \frac{\delta I_M}{\delta A_\mu(x)}
+  =2\partial^\nu\frac{\delta I_M}{\delta F_{\mu\nu}(x)}.
+\]
+But if $I_M$ involves $A_\mu(x)$ itself then Eq.~\eqref{eq:8.1.5} is a non-trivial
+constraint on the theory.
+
+Now, what sort of theory will provide conserved currents to which we
+can couple the field $A^\mu(x)$? We saw in Section 7.3 that infinitesimal internal
+symmetries of the action imply the existence of conserved currents. In
+particular, if the transformation\footnote{Because the field transformation
+matrix is taken now to be diagonal it is not convenient here to use the
+summation convention for sums over field indices, so there is no sum over
+$\ell$ in Eq.~\eqref{eq:8.1.6}.}
+\begin{equation}
+  \delta\Psi^\ell(x)=i\epsilon(x)q_\ell\Psi^\ell(x)
+  \tag{8.1.6}\label{eq:8.1.6}
+\end{equation}
+leaves the matter action invariant for a constant $\epsilon$, then for general
+infinitesimal functions $\epsilon(x)$ the change in the matter action must take the
+form
+\begin{equation}
+  \delta I_M=-\int d^4x\,J^\mu(x)\partial_\mu\epsilon(x).
+  \tag{8.1.7}\label{eq:8.1.7}
+\end{equation}
+When the matter fields satisfy their field equations, the matter action is
+stationary with respect to \textit{any} variation of the $\Psi_\ell$, so in this case \eqref{eq:8.1.7}
+must vanish, and hence
+\begin{equation}
+  \partial_\mu J^\mu=0.
+  \tag{8.1.8}\label{eq:8.1.8}
+\end{equation}
+In particular, we saw in Section 7.3 that if $I_M$ is the integral of a function
+$\mathcal L_M$ of $\Psi^\ell$ and $\partial_\mu\Psi^\ell$, then the conserved current is given by\footnote{Here
+$\Psi^\ell$ is understood to run over all independent fields other than
+$A^\mu$. We use a capital psi to indicate that these are Heisenberg-picture
+fields, whose time-dependence includes the effects of interactions. Of course,
+this $\Psi^\ell$ is not to be confused with a state-vector or wave function.}
+\[
+  J^\mu=-i\sum_\ell
+  \frac{\partial\mathcal L_M}{\partial(\partial_\mu\Psi^\ell)}
+  q_\ell\Psi^\ell,
+\]
+and this generates the transformations \eqref{eq:8.1.6} in the sense that
+\begin{equation}
+  [Q,\Psi^\ell(x)]=-q_\ell\Psi^\ell(x),
+  \tag{8.1.9}\label{eq:8.1.9}
+\end{equation}
+where $Q$ is the time-independent charge operator
+\begin{equation}
+  Q=\int d^3x\,J^0.
+  \tag{8.1.10}\label{eq:8.1.10}
+\end{equation}
+We can therefore construct a Lorentz-invariant theory by coupling the
+vector field $A_\mu$ to the conserved current $J^\mu$, in the sense that
+$\delta I_M/\delta A_\mu(x)$ is taken to be proportional to $J^\mu(x)$. Any
+constant of proportionality may be absorbed into the definition of the
+overall scale of the charges $q_\ell$, so we may simply set these quantities
+equal:
+\begin{equation}
+  \frac{\delta I_M}{\delta A_\mu(x)}=J^\mu(x).
+  \tag{8.1.11}\label{eq:8.1.11}
+\end{equation}
+The conservation of electric charge only allows us to fix the values of all
+charges in terms of the value of any one of them, conventionally taken to
+be the electron charge, denoted $-e$. It is Eq.~\eqref{eq:8.1.11} that gives a definite
+meaning\footnote{Of course, Eq.~\eqref{eq:8.1.11} fixes the definition of $e$ only after
+we have defined how we are normalizing $A_\mu(x)$. The question of
+electromagnetic field normalization is taken up in Section 10.4.} to the value
+of $e$.
+
+The requirement \eqref{eq:8.1.11} may be restated as a principle of invariance~\hyperref[ref:8.1a]{[1a]}:
+the matter action is invariant under the joint transformations
+\begin{align}
+  \delta A_\mu(x)&=\partial_\mu\epsilon(x),
+  \tag{8.1.12}\label{eq:8.1.12}\\
+  \delta\Psi_\ell(x)&=i\epsilon(x)q_\ell\Psi_\ell(x).
+  \tag{8.1.13}\label{eq:8.1.13}
+\end{align}
+A symmetry of this type with an arbitrary function $\epsilon(x)$ is called a
+\textit{local symmetry}, or a gauge invariance of the second kind. A symmetry
+under a transformation with $\epsilon$ constant is called a \textit{global
+symmetry}, or a gauge invariance of the first kind. Several exact local
+symmetries are now known, but the only purely global symmetries appear to be
+accidents enforced by other principles. (See Section 12.5.)
+
+We have not yet said anything about the action for photons themselves.
+As a guess, we can take this to be the same as for massive vector fields,
+but with $m=0$:
+\begin{equation}
+  I_\gamma=-\frac14\int d^4x\,F_{\mu\nu}F^{\mu\nu}.
+  \tag{8.1.14}\label{eq:8.1.14}
+\end{equation}
+This is the same as the action used in classical electrodynamics, but its
+real justification is that it is (up to a constant) the unique gauge-invariant
+functional that is quadratic in $F_{\mu\nu}$, without higher derivatives. Also,
+as we will see in the next section, it leads to a consistent quantum theory.
+If there are any terms in the action of $A$ with higher derivatives and/or
+of higher order in $F_{\mu\nu}$ they can be lumped into what we have called
+the matter action. Using Eqs.~\eqref{eq:8.1.11} and \eqref{eq:8.1.14}, the field equation for
+electromagnetism now reads
+\begin{equation}
+  0=\frac{\delta}{\delta A_\nu}[I_\gamma+I_M]
+  =\partial_\mu F^{\mu\nu}+J^\nu.
+  \tag{8.1.15}\label{eq:8.1.15}
+\end{equation}
+We recognize these as the usual inhomogeneous Maxwell equations, with
+current $J^\nu$. There are also other, homogeneous, Maxwell equations
+\begin{equation}
+  0=\partial_\mu F_{\nu\rho}+\partial_\rho F_{\mu\nu}
+  +\partial_\nu F_{\rho\mu},
+  \tag{8.1.16}\label{eq:8.1.16}
+\end{equation}
+which follow directly from the definition
+$F_{\mu\nu}\equiv\partial_\mu A_\nu-\partial_\nu A_\mu$.
+
+In the above discussion, we have started with the existence of massless
+spin one particles, and have been led to infer the invariance of the matter
+action under a local gauge transformation \eqref{eq:8.1.12}, \eqref{eq:8.1.13}. As usually
+presented, the derivation runs in the opposite direction. That is, one starts
+with a global internal symmetry
+\begin{equation}
+  \delta\Psi^\ell(x)=i\epsilon q_\ell\Psi^\ell(x)
+  \tag{8.1.17}\label{eq:8.1.17}
+\end{equation}
+and asks what must be done to promote this to a local symmetry
+\begin{equation}
+  \delta\Psi^\ell(x)=i\epsilon(x)q_\ell\Psi^\ell(x).
+  \tag{8.1.18}\label{eq:8.1.18}
+\end{equation}
+If the Lagrangian density $\mathcal L$ depended only on fields $\Psi^\ell(x)$ and
+not on their derivatives then it would make no difference whether $\epsilon$ is
+constant or not; invariance with $\epsilon$ constant would imply invariance with
+$\epsilon$ a function of spacetime position. But all realistic Lagrangians do
+involve field derivatives, and here we have the problem that derivatives of
+fields transform differently from fields themselves:
+\begin{equation}
+  \delta\,\partial_\mu\Psi^\ell(x)
+  =i\epsilon(x)q_\ell\partial_\mu\Psi^\ell(x)
+  +iq_\ell\Psi^\ell(x)\partial_\mu\epsilon(x).
+  \tag{8.1.19}\label{eq:8.1.19}
+\end{equation}
+In order to cancel the second term here, we `invent' a vector field $A_\mu(x)$
+with transformation rule
+\begin{equation}
+  \delta A_\mu(x)=\partial_\mu\epsilon(x)
+  \tag{8.1.20}\label{eq:8.1.20}
+\end{equation}
+and require that the Lagrangian density depend on $\partial_\mu\Psi^\ell$ and
+$A_\mu$ only in the combination
+\begin{equation}
+  D_\mu\Psi^\ell\equiv\partial_\mu\Psi^\ell-iq_\ell A_\mu\Psi^\ell,
+  \tag{8.1.21}\label{eq:8.1.21}
+\end{equation}
+which transforms just like $\Psi^\ell$
+\begin{equation}
+  \delta D_\mu\Psi^\ell(x)=i\epsilon(x)q_\ell D_\mu\Psi^\ell(x).
+  \tag{8.1.22}\label{eq:8.1.22}
+\end{equation}
+A matter Lagrangian density $\mathcal L_M(\Psi,D\Psi)$ that is formed only
+out of $\Psi^\ell$ and $D_\mu\Psi^\ell$ will be invariant under the
+transformations \eqref{eq:8.1.18}, \eqref{eq:8.1.20}, with $\epsilon(x)$ an arbitrary function,
+if it is invariant with $\epsilon$ a constant. With the Lagrangian of this form,
+we have
+\[
+  \frac{\delta I_M}{\delta A_\mu}
+  =\sum_\ell\frac{\partial\mathcal L_M}{\partial D_\mu\Psi^\ell}
+  (-iq_\ell\Psi^\ell)
+  =-i\sum_\ell\frac{\partial\mathcal L_M}{\partial\,\partial_\mu\Psi^\ell}
+  q_\ell\Psi^\ell,
+\]
+which is the same as Eq.~\eqref{eq:8.1.11}. (We could also include $F_{\mu\nu}$ and its
+derivatives in $\mathcal L_M$.) From this point of view, the masslessness of the
+particles described by $A_\mu$ is a consequence of gauge invariance rather
+than an assumption: a term $-\tfrac12m^2A_\mu A^\mu$ in the Lagrangian density
+would violate gauge invariance.

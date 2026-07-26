@@ -1,0 +1,332 @@
+% Chunk: §3.5 Perturbation Theory
+% Source: Weinberg QFT Vol I, printed pp. 141-146 (PDF pp. 164-169)
+% Status: transcribed and source-reviewed
+where $d\Omega_3$ is the differential element of solid angle for $\mathbf{p}'_3$, and $\theta_{23}$
+and $\phi_{23}$ are the polar and azimuthal angles of $\mathbf{p}'_2$ relative to the
+$\mathbf{p}'_3$ direction. The orientation of the plane spanned by $\mathbf{p}'_2$ and
+$\mathbf{p}'_3$ is specified by $\phi_{23}$ and the direction of $\mathbf{p}'_3$, with the
+remaining angle $\theta_{23}$ fixed by the energy-conservation condition
+\[
+ \sqrt{|\mathbf{p}'_2|^2+2|\mathbf{p}'_2||\mathbf{p}'_3|\cos\theta_{23}
+ +|\mathbf{p}'_3|^2+m_1'^2}
+ +\sqrt{|\mathbf{p}'_2|^2+m_2'^2}+\sqrt{|\mathbf{p}'_3|^2+m_3'^2}=E.
+\]
+The derivative of the argument of the delta function with respect to $\cos\theta_{23}$ is
+\[
+ \frac{\partial E'_1}{\partial\cos\theta_{23}}
+ =\frac{|\mathbf{p}'_2||\mathbf{p}'_3|}{E'_1},
+\]
+so we can do the integral over $\cos\theta_{23}$ by just dropping the delta function and
+dividing by this derivative
+\[
+ \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
+ |\mathbf{p}'_2|d|\mathbf{p}'_2||\mathbf{p}'_3|d|\mathbf{p}'_3|
+ E'_1d\Omega_3d\phi_{23}.
+\]
+Replacing momenta with energies, this is finally
+\begin{equation}
+ \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
+ E'_1E'_2E'_3\,dE'_2dE'_3d\Omega_3d\phi_{23}.
+ \tag{3.4.31}\label{eq:3.4.31}
+\end{equation}
+But recall that the quantity \eqref{eq:3.4.16}, obtained by summing $|M_{\beta\alpha}|^2$ over spins and
+multiplying with the product of energies, is a scalar function of four-momenta. If we approximate
+this scalar as a constant, then Eq. \eqref{eq:3.4.31} tells us that for a fixed initial state, the
+distribution of events plotted in the $E'_2,E'_3$ plane is uniform. Any departure from a uniform
+distribution of events in this plot thus provides a useful clue to the dynamics of the decay
+process, including possible centrifugal barriers or resonant intermediate states. This is known
+as a Dalitz plot~\hyperref[ref:3.19]{[19]}, because of its use by Dalitz in 1953 to analyze the decay
+$K^+\to\pi^++\pi^++\pi^-$.
+
+\subsection{Perturbation Theory}
+
+The technique that has historically been most useful in calculating the $S$-matrix is
+perturbation theory, an expansion in powers of the interaction term $H_{\mathrm{int}}$ in the
+Hamiltonian $H=H_0+H_{\mathrm{int}}$. Eqs. \eqref{eq:3.2.7} and \eqref{eq:3.1.18} give the $S$-matrix as
+\[
+ S_{\beta\alpha}=\delta(\beta-\alpha)-2\pi i\delta(E_\beta-E_\alpha)T^+_{\beta\alpha},
+ \qquad T^+_{\beta\alpha}=\langle\beta\|H_{\mathrm{int}}\|\alpha\rangle_{\mathrm{in}},
+\]
+where $\ket{\alpha}_{\mathrm{in}}$ satisfies the Lippmann--Schwinger equation \eqref{eq:3.1.17}:
+\[
+ \ket{\alpha}_{\mathrm{in}}=\ket{\alpha}
+ +\int d\gamma\,\frac{T^+_{\gamma\alpha}\ket{\gamma}}{E_\alpha-E_\gamma+i\epsilon}.
+\]
+Operating on this equation with $H_{\mathrm{int}}$ and taking the scalar product with
+$\ket{\beta}$ yields an integral equation for $T^+$
+\begin{equation}
+ T^+_{\beta\alpha}=(H_{\mathrm{int}})_{\beta\alpha}
+ +\int d\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}T^+_{\gamma\alpha}}
+ {E_\alpha-E_\gamma+i\epsilon},
+ \tag{3.5.1}\label{eq:3.5.1}
+\end{equation}
+where
+\begin{equation}
+ (H_{\mathrm{int}})_{\beta\alpha}\equiv
+ \langle\beta\|H_{\mathrm{int}}\|\alpha\rangle.
+ \tag{3.5.2}\label{eq:3.5.2}
+\end{equation}
+The perturbation series for $T^+_{\beta\alpha}$ is obtained by iteration from Eq. \eqref{eq:3.5.1}
+\begin{align}
+ T^+_{\beta\alpha}={}&(H_{\mathrm{int}})_{\beta\alpha}
+ +\int d\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}
+ (H_{\mathrm{int}})_{\gamma\alpha}}{E_\alpha-E_\gamma+i\epsilon}\notag\\
+ &+\int d\gamma\,d\gamma'\,
+ \frac{(H_{\mathrm{int}})_{\beta\gamma}(H_{\mathrm{int}})_{\gamma\gamma'}
+ (H_{\mathrm{int}})_{\gamma'\alpha}}
+ {(E_\alpha-E_\gamma+i\epsilon)(E_\alpha-E_{\gamma'}+i\epsilon)}+\cdots.
+ \tag{3.5.3}\label{eq:3.5.3}
+\end{align}
+The method of calculation based on Eq. \eqref{eq:3.5.3}, which dominated calculations of the $S$-matrix
+in the 1930s, is today known as \emph{old-fashioned perturbation theory}. Its obvious drawback
+is that the energy denominators obscure the underlying Lorentz invariance of the $S$-matrix.
+It still has some uses, however, in clarifying the way that singularities of the $S$-matrix arise
+from various intermediate states. For the most part in this book, we will rely on a rewritten
+version of Eq. \eqref{eq:3.5.3}, known as \emph{time-dependent perturbation theory}, which has the virtue
+of making Lorentz invariance much more transparent, while somewhat obscuring the contribution
+of individual intermediate states.
+
+The easiest way to derive the time-ordered perturbation expansion is to use Eq. \eqref{eq:3.2.5}, which
+gives the $S$-operator as
+\[
+ S=U(\infty,-\infty),
+\]
+where
+\[
+ U(\tau,\tau_0)\equiv
+ \exp(iH_0\tau)\exp\bigl(-iH(\tau-\tau_0)\bigr)\exp(-iH_0\tau_0).
+\]
+Differentiating this formula for $U(\tau,\tau_0)$ with respect to $\tau$ gives the differential
+equation
+\begin{equation}
+ i\frac{d}{d\tau}U(\tau,\tau_0)=H_I(\tau)U(\tau,\tau_0),
+ \tag{3.5.4}\label{eq:3.5.4}
+\end{equation}
+where
+\begin{equation}
+ H_I(t)\equiv\exp(iH_0t)H_{\mathrm{int}}\exp(-iH_0t).
+ \tag{3.5.5}\label{eq:3.5.5}
+\end{equation}
+(Operators with this sort of time-dependence are said to be defined in the \emph{interaction
+picture}, to distinguish their time-dependence from the time-dependence
+\[
+ O_H(t)=\exp(iHt)O_H\exp(-iHt)
+\]
+required in the Heisenberg picture of quantum mechanics.)
+Eq. \eqref{eq:3.5.4} as well as the initial condition $U(\tau_0,\tau_0)=\mathbf{1}$ is obviously satisfied
+by the solution of the integral equation
+\begin{equation}
+ U(\tau,\tau_0)=\mathbf{1}-i\int_{\tau_0}^{\tau}dt\,H_I(t)U(t,\tau_0).
+ \tag{3.5.6}\label{eq:3.5.6}
+\end{equation}
+By iteration of this integral equation, we obtain an expansion for $U(\tau,\tau_0)$ in powers
+of $H_{\mathrm{int}}$
+\begin{align}
+ U(\tau,\tau_0)={}&\mathbf{1}-i\int_{\tau_0}^{\tau}dt_1\,H_I(t_1)
+ +(-i)^2\int_{\tau_0}^{\tau}dt_1\int_{\tau_0}^{t_1}dt_2\,H_I(t_1)H_I(t_2)\notag\\
+ &+(-i)^3\int_{\tau_0}^{\tau}dt_1\int_{\tau_0}^{t_1}dt_2
+ \int_{\tau_0}^{t_2}dt_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
+ \tag{3.5.7}\label{eq:3.5.7}
+\end{align}
+Setting $\tau=\infty$ and $\tau_0=-\infty$ then gives the perturbation expansion for the
+$S$-operator:
+\begin{align}
+ S={}&\mathbf{1}-i\int_{-\infty}^{\infty}dt_1\,H_I(t_1)
+ +(-i)^2\int_{-\infty}^{\infty}dt_1\int_{-\infty}^{t_1}dt_2\,H_I(t_1)H_I(t_2)\notag\\
+ &+(-i)^3\int_{-\infty}^{\infty}dt_1\int_{-\infty}^{t_1}dt_2
+ \int_{-\infty}^{t_2}dt_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
+ \tag{3.5.8}\label{eq:3.5.8}
+\end{align}
+This can also be derived directly from the old-fashioned perturbation expansion \eqref{eq:3.5.3}, by
+using the Fourier representation of the energy factors in Eq. \eqref{eq:3.5.3}:
+\begin{equation}
+ (E_\alpha-E_\gamma+i\epsilon)^{-1}
+ =-i\int_0^\infty d\tau\,\exp\bigl(i(E_\alpha-E_\gamma)\tau\bigr)
+ \tag{3.5.9}\label{eq:3.5.9}
+\end{equation}
+with the understanding that such integrals are to be evaluated by inserting a convergence
+factor $e^{-\epsilon\tau}$ in the integrand, with $\epsilon\to0+$.
+
+There is a way of rewriting Eq. \eqref{eq:3.5.8} that proves very useful in carrying out manifestly
+Lorentz-invariant calculations. Define the \emph{time-ordered product} of any time-dependent
+operators as the product with factors arranged so that the one with the latest time-argument
+is placed leftmost, the next-latest next to the leftmost, and so on. For instance,
+\[
+ T\{H_I(t)\}=H_I(t),
+\]
+\[
+ T\{H_I(t_1)H_I(t_2)\}=\theta(t_1-t_2)H_I(t_1)H_I(t_2)
+ +\theta(t_2-t_1)H_I(t_2)H_I(t_1),
+\]
+and so on, where $\theta(\tau)$ is the step function, equal to $+1$ for $\tau>0$ and to zero
+for $\tau<0$. The time-ordered product of $n$ $H_I$s is a sum over all $n!$ permutations of
+the $H_I$s, each of which gives the same integral over all $t_1\cdots t_n$, so Eq. \eqref{eq:3.5.8}
+may be written
+\begin{equation}
+ S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-i)^n}{n!}
+ \int_{-\infty}^{\infty}dt_1dt_2\cdots dt_n\,
+ T\{H_I(t_1)\cdots H_I(t_n)\}.
+ \tag{3.5.10}\label{eq:3.5.10}
+\end{equation}
+This is sometimes known as the Dyson series~\hyperref[ref:3.20]{[20]}. This series can be summed if the $H_I(t)$
+at different times all commute; the sum is then
+\[
+ S=\exp\left(-i\int_{-\infty}^{\infty}dt\,H_I(t)\right).
+\]
+Of course, this is not usually the case; in general \eqref{eq:3.5.10} does not even converge, and is at
+best an asymptotic expansion in whatever coupling constant factors appear in $H_{\mathrm{int}}$.
+However Eq. \eqref{eq:3.5.10} is sometimes written in the general case as
+\[
+ S=T\exp\left(-i\int_{-\infty}^{\infty}dt\,H_I(t)\right)
+\]
+with $T$ indicating here that the expression is to be evaluated by time-ordering each term in
+the series expansion for the exponential.
+
+We can now readily find one large class of theories for which the $S$-matrix is manifestly
+Lorentz-invariant. Since the elements of the $S$-matrix are the matrix elements of the
+$S$-operator between free-particle states $\ket{\alpha}$, $\ket{\beta}$, etc., what we want is
+that the $S$-operator should commute with the operator $U_0(\Lambda,a)$ that produces Lorentz
+transformations on these free-particle states. Equivalently, the $S$-operator must commute with
+the generators of $U_0(\Lambda,a)$: $H_0$, $\mathbf{P}_0$, $\mathbf{J}_0$, and $\mathbf{K}_0$.
+To satisfy this requirement, let's try the hypothesis that $H_I(t)$ is an integral over
+three-space
+\begin{equation}
+ H_I(t)=\int d^3x\,\mathcal{H}_I(\mathbf{x},t)
+ \tag{3.5.11}\label{eq:3.5.11}
+\end{equation}
+with $\mathcal{H}_I(x)$ a scalar in the sense that
+\begin{equation}
+ U_0(\Lambda,a)\mathcal{H}_I(x)U_0^{-1}(\Lambda,a)
+ =\mathcal{H}_I(\Lambda x+a).
+ \tag{3.5.12}\label{eq:3.5.12}
+\end{equation}
+(By equating the coefficients of $a^0$ for infinitesimal transformations it can be checked that
+$\mathcal{H}_I(x)$ has a time-dependence consistent with Eq. \eqref{eq:3.5.5}.) Then $S$ may be written
+as a sum of four-dimensional integrals
+\begin{equation}
+ S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-i)^n}{n!}
+ \int d^4x_1\cdots d^4x_n\,
+ T\{\mathcal{H}_I(x_1)\cdots\mathcal{H}_I(x_n)\}.
+ \tag{3.5.13}\label{eq:3.5.13}
+\end{equation}
+Everything is now manifestly Lorentz invariant, except for the time-ordering of the operator
+product.
+
+Now, the time-ordering of two spacetime points $x_1,x_2$ is Lorentz-invariant unless $x_1-x_2$
+is space-like, i.e., unless $(x_1-x_2)^2>0$, so the time-ordering in Eq. \eqref{eq:3.5.13} introduces
+no special Lorentz frame if (though not only if) the $\mathcal{H}_I(x)$ all commute at space-like
+or light-like separations:
+\begin{equation}
+ [\mathcal{H}_I(x),\mathcal{H}_I(x')]=0\qquad\text{for}\qquad(x-x')^2\geq0.
+ \tag{3.5.14}\label{eq:3.5.14}
+\end{equation}
+We can use the results of Section 3.3 to give a formal non-perturbative proof that an interaction
+\eqref{eq:3.5.11} satisfying Eqs. \eqref{eq:3.5.12} and \eqref{eq:3.5.14} does lead to an $S$-matrix with the correct
+Lorentz transformation properties. For an infinitesimal boost, Eq. \eqref{eq:3.5.12} gives
+\begin{equation}
+ i[\mathbf{K}_0,\mathcal{H}_I(\mathbf{x},t)]
+ =t\boldsymbol{\nabla}\mathcal{H}_I(\mathbf{x},t)
+ +\mathbf{x}\frac{\partial}{\partial t}\mathcal{H}_I(\mathbf{x},t),
+ \tag{3.5.15}\label{eq:3.5.15}
+\end{equation}
+so integrating over $\mathbf{x}$ and setting $t=0$,
+\begin{equation}
+ [\mathbf{K}_0,H_{\mathrm{int}}]
+ =\left[\mathbf{K}_0,\int d^3x\,\mathcal{H}_I(\mathbf{x},0)\right]
+ =[H_0,\mathbf{W}],
+ \tag{3.5.16}\label{eq:3.5.16}
+\end{equation}
+where
+\begin{equation}
+ \mathbf{W}\equiv\int d^3x\,\mathbf{x}\mathcal{H}_I(\mathbf{x},0).
+ \tag{3.5.17}\label{eq:3.5.17}
+\end{equation}
+If (as is usually the case) the matrix elements of $\mathcal{H}_I(\mathbf{x},0)$ between
+eigenstates of $H_0$ are smooth functions of the energy eigenvalues, then the same is true of
+$H_{\mathrm{int}}$, as is necessary for the validity of scattering theory, and also true of
+$\mathbf{W}$, which is necessary in the proof of Lorentz invariance. The other condition for
+Lorentz invariance, the commutation relation \eqref{eq:3.3.21}, is also valid if and only if
+\begin{equation}
+ 0=[\mathbf{W},H_{\mathrm{int}}]
+ =\int d^3x\int d^3y\,\mathbf{x}
+ [\mathcal{H}_I(\mathbf{x},0),\mathcal{H}_I(\mathbf{y},0)].
+ \tag{3.5.18}\label{eq:3.5.18}
+\end{equation}
+This condition would follow from the `causality' condition \eqref{eq:3.5.14}, but provides a somewhat
+less restrictive sufficient condition for Lorentz invariance of the $S$-matrix.
+
+Theories of this class are not the only ones that are Lorentz invariant, but the most general
+Lorentz invariant theories are not very different. In particular, there is always a commutation
+condition something like \eqref{eq:3.5.14} that needs to be satisfied. This condition has no counterpart
+for non-relativistic systems, for which time-ordering is always Galilean-invariant.
+\emph{It is this condition that makes the combination of Lorentz invariance and quantum mechanics
+so restrictive.}
+\footnote{We write the condition on $x$ and $x'$ here as $(x-x')^2\geq0$ instead of
+$(x-x')^2>0$, because as we shall see in Chapter 6, Lorentz invariance can be disturbed by
+troublesome singularities at $x=x'$.}
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+The methods described so far in this section are useful when the interaction operator
+$H_{\mathrm{int}}$ is sufficiently small. There is also a modified version of this approximation,
+known as the \emph{distorted-wave Born approximation}, that is useful when the interaction
+contains two terms
+\begin{equation}
+ H_{\mathrm{int}}=H_s+H_w
+ \tag{3.5.19}\label{eq:3.5.19}
+\end{equation}
+with $H_w$ weak but $H_s$ strong. We can define $\ket{\alpha;s}_{\mathrm{in/out}}$ as what the
+`in' and `out' states would be if $H_s$ were the whole interaction
+\begin{equation}
+ \ket{\alpha;s}_{\mathrm{in/out}}=\ket{\alpha}
+ +(E_\alpha-H_0\pm i\epsilon)^{-1}H_s\ket{\alpha;s}_{\mathrm{in/out}}.
+ \tag{3.5.20}\label{eq:3.5.20}
+\end{equation}
+We can then write \eqref{eq:3.1.16} as
+\begin{align*}
+ T^+_{\beta\alpha}
+ &=\langle\beta\|H_{\mathrm{int}}\|\alpha\rangle_{\mathrm{in}}\\
+ &=\left({}_{\mathrm{out}}\!\langle\beta;s|-{}_{\mathrm{out}}\!\langle\beta;s|H_s(E_\beta-H_0+i\epsilon)^{-1}\right)
+ (H_s+H_w)\ket{\alpha}_{\mathrm{in}}\\
+ &={}_{\mathrm{out}}\!\langle\beta;s\|H_w\|\alpha\rangle_{\mathrm{in}}\\
+ &\quad+{}_{\mathrm{out}}\!\langle\beta;s\|
+ [H_s-H_s(E_\beta-H_0+i\epsilon)^{-1}(H_s+H_w)]
+ \|\alpha\rangle_{\mathrm{in}},
+\end{align*}
+and so
+\begin{equation}
+ T^+_{\beta\alpha}={}_{\mathrm{out}}\!\langle\beta;s\|H_w\|\alpha\rangle_{\mathrm{in}}
+ +{}_{\mathrm{out}}\!\langle\beta;s\|H_s\|\alpha\rangle.
+ \tag{3.5.21}\label{eq:3.5.21}
+\end{equation}
+The second term on the right-hand side is just what $T^+_{s,\beta\alpha}$ would be in the
+presence of strong interactions alone
+\begin{equation}
+ T^+_{s,\beta\alpha}=\langle\beta\|H_s\|\alpha;s\rangle_{\mathrm{in}}
+ ={}_{\mathrm{out}}\!\langle\beta;s\|H_s\|\alpha\rangle.
+ \tag{3.5.22}\label{eq:3.5.22}
+\end{equation}
+(For a proof of Eq. \eqref{eq:3.5.22}, just drop $H_w$ everywhere in the derivation of Eq. \eqref{eq:3.5.21}.)
+Eq. \eqref{eq:3.5.21} is most useful when this second term vanishes: that is, when the process
+$\alpha\to\beta$ cannot be produced by the strong interactions alone. (For example, in nuclear
+beta decay we need a weak nuclear force to turn neutrons into protons, even though we cannot
+ignore the presence of the strong nuclear force acting in the initial and final nuclear states.)
+For such processes, the matrix element \eqref{eq:3.5.22} vanishes, so Eq. \eqref{eq:3.5.21} reads
+\begin{equation}
+ T^+_{\beta\alpha}={}_{\mathrm{out}}\!\langle\beta;s\|H_w\|\alpha\rangle_{\mathrm{in}}.
+ \tag{3.5.23}\label{eq:3.5.23}
+\end{equation}
+So far, this is all exact. However, this way of rewriting the $T$-matrix becomes worthwhile when
+$H_w$ is so weak that we may neglect its effect on the state $\ket{\alpha}_{\mathrm{in}}$ in
+Eq. \eqref{eq:3.5.23}, and hence replace $\ket{\alpha}_{\mathrm{in}}$ with the state
+$\ket{\alpha;s}_{\mathrm{in}}$, which takes account only of the strong interaction $H_s$. In this
+approximation, Eq. \eqref{eq:3.5.23} becomes
+\begin{equation}
+ T^+_{\beta\alpha}\simeq
+ {}_{\mathrm{out}}\!\langle\beta;s\|H_w\|\alpha;s\rangle_{\mathrm{in}}.
+ \tag{3.5.24}\label{eq:3.5.24}
+\end{equation}
+This is valid to first order in $H_w$, but to all orders in $H_s$. This approximation is ubiquitous
+in physics; for instance, the $S$-matrix element for nuclear

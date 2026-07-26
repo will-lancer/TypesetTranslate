@@ -1,0 +1,189 @@
+% Chunk: continuation of \S6.4, Off the Mass Shell.
+% Source: Weinberg QFT Vol. I, physical pp. 310--312 (printed pp. 287--289).
+% Status: source-reviewed, compile-clean, and visually checked; equations (6.4.1)--(6.4.11); no figures; one footnote.
+rules for diagrams with \textit{all} external lines off the mass shell, and then
+obtain $S$-matrix elements by letting the momenta associated with external
+lines approach their appropriate mass shells.
+
+Feynman graphs with lines off the mass shell are just a special case of a wider
+generalization of the Feynman rules that takes into account the effects of
+various possible external fields. Suppose we add a sum of terms involving
+external fields $\epsilon_a(x)$ to the Hamiltonian, so that the interaction
+$H_I(t)$ that is used in the Dyson series \eqref{eq:3.5.10} for the $S$-matrix is
+replaced with
+\begin{equation}
+H_{I,\epsilon}(t)=H_I(t)+\sum_a\int d^3x\,
+\epsilon_a(\mathbf x,t)o_a(\mathbf x,t).
+\tag{6.4.1}
+\label{eq:6.4.1}
+\end{equation}
+The ``currents'' $o_a(t)$ have the usual time-dependence of the interaction
+picture
+\begin{equation}
+o_a(t)=\exp(iH_0t)o_a(0)\exp(-iH_0t),
+\tag{6.4.2}
+\label{eq:6.4.2}
+\end{equation}
+but are otherwise quite arbitrary operators. The $S$-matrix for any given
+transition $\alpha\to\beta$ then becomes a functional $S_{\beta\alpha}[\epsilon]$
+of the c-number functions $\epsilon_a(t)$. The Feynman rules for computing this
+functional are given by an obvious extension of the usual Feynman rules. In
+addition to the usual vertices obtained from $H_I(t)$, we must include
+additional vertices: if $o_a(x)$ is a product of $n_a$ field factors, then any
+$o_a$ vertex with position label $x$ must have $n_a$ lines of corresponding
+types attached, and makes a contribution to the position-space Feynman rules
+equal to $-i\epsilon_a(x)$ times whatever numerical factors appear in $o_a(x)$.
+It follows then that the $r$th variational derivative of
+$S_{\beta\alpha}[\epsilon]$ with respect to
+$\epsilon_a(x),\epsilon_b(y)\cdots$ at $\epsilon=0$ is given by position space
+diagrams with $r$ additional vertices, to which are attached respectively
+$n_a,n_b,\cdots$ internal lines, and no external lines. These vertices carry
+position labels $x,y\cdots$ over which we do \textit{not} integrate; each such
+vertex makes a contribution equal to $-i$ times whatever numerical factors
+appear in the associated current $o_a$.
+
+In particular, in the case where these currents are all single field factors,
+i.e.,
+\[
+H_{I,\epsilon}(t)=H_I(t)+\sum_\ell\int d^3x\,
+\epsilon_\ell(\mathbf x,t)\psi_\ell(\mathbf x,t),
+\]
+the $r$th variational derivative of $S_{\beta\alpha}[\epsilon]$ with respect to
+$\epsilon_\ell(x),\epsilon_m(y),\cdots$ at $\epsilon=0$ is given by position
+space diagrams with $r$ additional vertices carrying spacetime labels
+$x,y\cdots$, to each of which is attached a single internal particle line of
+type $\ell,m\cdots$. These can be thought of as off-shell external lines, with
+the difference that their contribution to the matrix element is not a
+coefficient function like $(2\pi)^{-3/2}u_\ell(\mathbf p,\sigma)e^{ip\cdot x}$
+or $(2\pi)^{-3/2}u_\ell^*(\mathbf p,\sigma)e^{-ip\cdot x}$ but a
+\textit{propagator}, as well as a factor $-i$ from the vertex at the end of the
+line. We obtain a momentum space Feynman diagram with particles in states
+$\alpha$ and $\beta$ on the mass shell plus $r$ external lines of type
+$\ell,m\cdots$ carrying momenta $p,p'\cdots$ from the variational derivative
+\[
+\left[
+\frac{\delta^rS_{\beta\alpha}[\epsilon]}
+{\delta\epsilon_\ell(x)\delta\epsilon_m(y)\cdots}
+\right]_{\epsilon=0}
+\]
+by stripping away the propagators on each of the off-shell lines and then
+taking the appropriate Fourier transforms and multiplying with appropriate
+coefficient functions $u_\ell,u_\ell^*$, etc. and a factor $(-i)^r$.
+
+It is very useful for a number of purposes to recognize that there is a simple
+relation between the sum of contributions from all perturbation theory
+diagrams for any off-shell amplitude and a matrix element, between eigenstates
+of the full Hamiltonian, of a time-ordered product of corresponding operators
+in the Heisenberg picture. This relation is provided by a theorem~\hyperref[ref:6.3]{[3]}, which
+states that to all orders of perturbation theory\footnote{For a single $O$
+operator, this is a version of the Schwinger action principle~\hyperref[ref:6.4]{[4]}.}
+\begin{equation}
+\left[
+\frac{\delta^rS_{\beta\alpha}[\epsilon]}
+{\delta\epsilon_a(x)\delta\epsilon_b(y)\cdots}
+\right]_{\epsilon=0}
+=\bra{\beta;\mathrm{out}}
+T\{-iO_a(x),-iO_b(y),\cdots\}
+\ket{\alpha;\mathrm{in}},
+\tag{6.4.3}
+\label{eq:6.4.3}
+\end{equation}
+where $O_a(x)$, etc. are the counterparts of $o_a(x)$ in the Heisenberg
+picture
+\begin{equation}
+O_a(\mathbf x,t)=\exp(iHt)o_a(\mathbf x,0)\exp(-iHt)
+=\Omega(t)o_a(\mathbf x,t)\Omega^{-1}(t),
+\tag{6.4.4}
+\label{eq:6.4.4}
+\end{equation}
+\begin{equation}
+\Omega(t)\equiv e^{iHt}e^{-iH_0t},
+\tag{6.4.5}
+\label{eq:6.4.5}
+\end{equation}
+and $\ket{\beta}_{\rm in}$ and $\ket{\beta}_{\rm out}$ are ``in'' and
+``out'' eigenstates of the full Hamiltonian $H$, respectively.
+
+Here is the proof. From Eq. \eqref{eq:3.5.10}, we see immediately that the left-hand
+side of Eq. \eqref{eq:6.4.3} is
+\begin{align}
+&\left[
+\frac{\delta^rS[\epsilon]}
+{\delta\epsilon_{a_1}(x_1)\cdots\delta\epsilon_{a_r}(x_r)}
+\right]_{\epsilon=0}\notag\\
+&=\sum_{N=0}^{\infty}\frac{(-i)^{N+r}}{N!}
+\int_{-\infty}^{\infty}d\tau_1\cdots d\tau_N
+\bra{\beta}T\{H_I(\tau_1)\cdots H_I(\tau_N)
+o_{a_1}(x_1)\cdots o_{a_r}(x_r)\}\ket{\alpha}.
+\tag{6.4.6}
+\label{eq:6.4.6}
+\end{align}
+For definiteness, suppose that $x_1^0\geq x_2^0\geq\cdots\geq x_r^0$. Then
+we can denote by $\tau_{01}\cdots\tau_{0N_0}$ all $\tau$s greater than $x_1^0$;
+by $\tau_{11}\cdots\tau_{1N_1}$ all $\tau$s between $x_1^0$ and $x_2^0$, and
+so on; finally denoting by $\tau_{r1}\cdots\tau_{rN_r}$ all $\tau$s that are
+less than $x_r^0$. Eq. \eqref{eq:6.4.6} then becomes:
+\begin{align*}
+&\left[
+\frac{\delta^rS[\epsilon]}
+{\delta\epsilon_{a_1}(x_1)\cdots\delta\epsilon_{a_r}(x_r)}
+\right]_{\epsilon=0}\\
+&=\sum_{N=0}^{\infty}\frac{(-i)^{N+r}}{N!}
+\sum_{N_0,N_1,\ldots,N_r}
+\frac{N!\,\delta_{N,N_0+N_1+\cdots+N_r}}{N_0!N_1!\cdots N_r!}\\
+&\quad\cdot
+\int_{x_1^0}^{\infty}d\tau_{01}\cdots d\tau_{0N_0}
+\int_{x_2^0}^{x_1^0}d\tau_{11}\cdots d\tau_{1N_1}\cdots
+\int_{-\infty}^{x_r^0}d\tau_{r1}\cdots d\tau_{rN_r}\\
+&\quad\cdot\bra{\beta}
+T\{H_I(\tau_{01})\cdots H_I(\tau_{0N_0})\}o_{a_1}(x_1)
+T\{H_I(\tau_{11})\cdots H_I(\tau_{1N_1})\}o_{a_2}(x_2)\cdots\\
+&\qquad\qquad{}\cdots o_{a_r}(x_r)
+T\{H_I(\tau_{r1})\cdots H_I(\tau_{rN_r})\}\ket{\alpha}.
+\end{align*}
+The factor $N!/N_0!N_1!\cdots N_r!$ is the number of ways of sorting $N$
+$\tau$s into $r+1$ subsets, each containing $N_0,N_1,\cdots,N_r$ of these
+$\tau$s. Instead of summing over $N_0,N_1,\cdots,N_r$, subject to the
+condition $N_0+N_1+\cdots+N_r=N$, and then summing over $N$, we can just sum
+independently over $N_0,N_1,\cdots,N_r$, setting $N$ where it appears in
+$(-i)^N$ equal to $N_0+N_1+\cdots+N_r$. This gives
+\begin{align}
+&\left[
+\frac{\delta^rS[\epsilon]}
+{\delta\epsilon_{a_1}(x_1^0)\cdots\delta\epsilon_{a_r}(x_r^0)}
+\right]_{\epsilon=0}\notag\\
+&=(-i)^r\bra{\beta}U(\infty,x_1^0)o_{a_1}(x_1)
+U(x_1^0,x_2^0)o_{a_2}(x_2)U(x_2^0,x_3^0)\cdots
+o_{a_r}(x_r)U(x_r^0,-\infty)\ket{\alpha}.
+\tag{6.4.7}
+\label{eq:6.4.7}
+\end{align}
+where
+\begin{equation}
+U(t',t)=\sum_{N=0}^{\infty}\frac{(-i)^N}{N!}
+\int_t^{t'}d\tau_1\cdots d\tau_N\,
+T\{H_I(\tau_1)\cdots H_I(\tau_N)\}.
+\tag{6.4.8}
+\label{eq:6.4.8}
+\end{equation}
+The operator $U(t',t)$ satisfies the differential equation
+\begin{equation}
+\frac{d}{dt'}U(t',t)=-iH_I(t')U(t',t)
+\tag{6.4.9}
+\label{eq:6.4.9}
+\end{equation}
+with the obvious initial condition
+\begin{equation}
+U(t,t)=\mathbf{1}.
+\tag{6.4.10}
+\label{eq:6.4.10}
+\end{equation}
+This has the solution
+\begin{equation}
+U(t',t)=\exp(iH_0t')\exp\{-iH(t'-t)\}\exp(-iH_0t)
+=\Omega^{-1}(t')\Omega(t)
+\tag{6.4.11}
+\label{eq:6.4.11}
+\end{equation}
+with $\Omega$ given by Eq. \eqref{eq:6.4.5}. Inserting Eq. \eqref{eq:6.4.11} in Eq. \eqref{eq:6.4.7} and
+using\space%

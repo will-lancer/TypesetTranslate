@@ -1,0 +1,343 @@
+% Chunk: \S10.2, Polology.
+% Source: Weinberg QFT Vol. I, printed pp. 428--435 (physical PDF pp. 451--458),
+% ending at the assigned page boundary after the words ``off-shell matrix'';
+% the sentence continues on physical page 459 in the adjoining chunk.
+% Figures: Figs. 10.1--10.3, with captions transcribed and labeled.
+% Status: source-reviewed, isolated compile-clean, and visually checked; frozen.
+
+\subsection{Polology}
+
+One of the most important uses of the non-perturbative methods described
+in this chapter is to clarify the pole structure of Feynman amplitudes as
+
+\input{figures/chapter10/fig101.tex}
+
+functions of the momenta carried by external lines. Often the $S$-matrix
+for a physical process can be well approximated by the contribution of a
+single pole. Also, an understanding of this pole structure will help us later
+in dealing with radiative corrections to particle propagators.
+
+Consider the momentum-space amplitude
+\begin{align}
+  &\int d^4x_1\cdots d^4x_n\,
+  e^{-iq_1\cdot x_1}\cdots e^{-iq_n\cdot x_n}
+  \left\langle T\{A_1(x_1)\cdots A_n(x_n)\}\right\rangle_0
+  \notag\\
+  &\hspace{5cm}\equiv G(q_1\cdots q_n).
+  \tag{10.2.1}\label{eq:10.2.1}
+\end{align}
+The $A$s are Heisenberg-picture operators of arbitrary Lorentz type, and
+$\langle\cdots\rangle_0$ denotes the expectation value in the true vacuum
+$\ket{\Omega}_{\mathrm{in}}=\ket{\Omega}_{\mathrm{out}}\equiv\ket{\Omega}$.
+As discussed in Section 6.4, if $A_1,\ldots,A_n$ are ordinary fields appearing in
+the Lagrangian, then \eqref{eq:10.2.1} is a sum of the terms calculated using the
+ordinary Feynman rules, for all graphs with external lines corresponding
+to the fields $A_1,\ldots,A_n$, carrying off-shell four-momenta $q_1\cdots q_n$ into the
+graph. However, we will not be limited to this case; the $A_i$ may be
+arbitrary local functions of fields and field derivatives.
+
+We are interested in poles of $G$ at certain values of the invariant squares
+of the total four-momenta carried by various subsets of the external lines.
+To be definite, let's consider $G$ as a function of $q^2$, where
+\begin{equation}
+  q\equiv q_1+\cdots+q_r=-q_{r+1}-\cdots-q_n
+  \tag{10.2.2}\label{eq:10.2.2}
+\end{equation}
+with $1\leq r\leq n-1$. We will show that $G$ has a pole at $q^2=-m^2$, where $m$ is
+the mass of any one-particle state that has non-vanishing matrix elements
+with the states $A_1^\dagger\cdots A_r^\dagger\ket{\Omega}$ and
+$A_{r+1}\cdots A_n\ket{\Omega}$, and that the residue at this
+pole is given by
+\begin{align}
+  G\longrightarrow{}&
+  \frac{-2i\sqrt{\mathbf q^2+m^2}}{q^2+m^2-i\epsilon}
+  (2\pi)^4\delta^4(q_1+\cdots+q_n)
+  \notag\\
+  &\quad\cdot\sum_\sigma
+  M_{0;\mathbf q,\sigma}(q_2\cdots q_r)
+  M_{\mathbf q,\sigma;0}(q_{r+2}\cdots q_n),
+  \tag{10.2.3}\label{eq:10.2.3}
+\end{align}
+where the $M$s are defined by\footnote{Recall that in the absence of time-varying
+external fields, there is no distinction between `in' and `out' one-particle
+states, so that $\ket{\mathbf p,\sigma}_{\mathrm{in}}
+=\ket{\mathbf p,\sigma}_{\mathrm{out}}
+\equiv\ket{\mathbf p,\sigma}$.}
+\begin{align}
+  &\int d^4x_1\cdots d^4x_r\,
+  e^{-iq_1\cdot x_1}\cdots e^{-iq_r\cdot x_r}
+  \bra{\Omega}T\{A_1(x_1)\cdots A_r(x_r)\}\ket{\mathbf p,\sigma}
+  \notag\\
+  &\qquad=(2\pi)^4\delta^4(q_1+\cdots+q_r-p)
+  M_{0;\mathbf p,\sigma}(q_2\cdots q_r),
+  \tag{10.2.4}\label{eq:10.2.4}
+\end{align}
+\begin{align}
+  &\int d^4x_{r+1}\cdots d^4x_n\,
+  e^{-iq_{r+1}\cdot x_{r+1}}\cdots e^{-iq_n\cdot x_n}
+  \bra{\mathbf p,\sigma}T\{A_{r+1}(x_{r+1})\cdots A_n(x_n)\}\ket{\Omega}
+  \notag\\
+  &\qquad=(2\pi)^4\delta^4(q_{r+1}+\cdots+q_n+p)
+  M_{\mathbf p,\sigma;0}(q_{r+2}\cdots q_n)
+  \tag{10.2.5}\label{eq:10.2.5}
+\end{align}
+(with $p^0=\sqrt{\mathbf p^2+m^2}$), and the sum is over all spin (or other) states of the
+particle of mass $m$.
+
+Before proceeding to the proof, it will help to clarify the significance of
+\eqref{eq:10.2.3} if we write it in the somewhat long-winded form
+\begin{align}
+  G(q_1\cdots q_n)\longrightarrow{}&\int d^4k
+  \Bigl[(2\pi)^4\delta^4(q_1+\cdots+q_r-k)(2\pi)^{3/2}
+  \bigl(2\sqrt{\mathbf k^2+m^2}\bigr)^{1/2}
+  M_{0;\mathbf k,\sigma}(q_2\cdots q_r)\Bigr]
+  \notag\\
+  &\cdot\left[\frac{-i}{(2\pi)^4}\frac{1}{k^2+m^2-i\epsilon}\right]
+  \notag\\
+  &\cdot\Bigl[(2\pi)^4\delta^4(k+q_{r+1}+\cdots+q_n)(2\pi)^{3/2}
+  \bigl(2\sqrt{\mathbf k^2+m^2}\bigr)^{1/2}
+  M_{\mathbf k,\sigma;0}(q_{r+2}\cdots q_n)\Bigr].
+  \tag{10.2.6}\label{eq:10.2.6}
+\end{align}
+This is just what we should expect from a Feynman diagram with a single
+internal line for a particle of mass $m$ connecting the first $r$ and the last
+$n-r$ external lines.\footnote{See Figure~\ref{fig:10.2}. The factors
+$(2\pi)^{3/2}[2(\mathbf k^2+m^2)]^{1/2}$ just serve to remove kinematic factors
+associated with the mass $m$ external line in $M_{0;\mathbf k,\sigma}$ and
+$M_{\mathbf k,\sigma;0}$. Also, the sum over $\sigma$ of the product of
+coefficient-function factors from these two matrix elements yields the numerator of
+the propagator associated with the internal line in Figure~\ref{fig:10.2}.} However, it is
+not necessary that the particle of mass $m$ correspond to a field that appears
+in the Lagrangian of the theory. Eqs.~\eqref{eq:10.2.3} and \eqref{eq:10.2.6} apply even if this
+particle is a bound state of the so-called elementary particles whose fields
+do appear in the Lagrangian. In this case, the pole arises not from single
+Feynman diagrams, like Figure~\ref{fig:10.2}, but rather from infinite sums of diagrams,
+such as the one shown in Figure~\ref{fig:10.3}. This is the first place where the methods
+of this chapter take us beyond results that could be derived as properties of
+each order of perturbation theory.
+
+Now to the proof. Among the $n!$ possible orderings of the times $x_1^0\cdots x_n^0$
+in Eq.~\eqref{eq:10.2.1}, there are $n!/r!(n-r)!$ for which the first $r$ of the $x_i^0$ are
+all larger than the last $n-r$. Isolating the contribution of this part of the
+volume of integration in Eq.~\eqref{eq:10.2.1}, we have
+\begin{align}
+  G(q_1\cdots q_n)={}&\int d^4x_1\cdots d^4x_n\,
+  e^{-iq_1\cdot x_1}\cdots e^{-iq_n\cdot x_n}
+  \notag\\
+  &\cdot\theta\!\left(\min[x_1^0\cdots x_r^0]
+  -\max[x_{r+1}^0\cdots x_n^0]\right)
+  \notag\\
+  &\cdot\bra{\Omega}T\{A_1(x_1)\cdots A_r(x_r)\}
+  T\{A_{r+1}(x_{r+1})\cdots A_n(x_n)\}\ket{\Omega}
+  \notag\\
+  &+\mathrm{OT},
+  \tag{10.2.7}\label{eq:10.2.7}
+\end{align}
+where `OT' denotes the other terms arising from different time-orderings.
+We can evaluate the matrix element here by inserting a complete set of
+intermediate states between time-ordered products. Among these may
+
+\input{figures/chapter10/fig102.tex}
+\input{figures/chapter10/fig103.tex}
+
+be the single-particle state $\ket{\mathbf p,\sigma}$ of a definite species of mass $m$. Further
+isolating the contribution of these one-particle intermediate states, we
+have
+\begin{align}
+  G(q_1\cdots q_n)={}&\int d^4x_1\cdots d^4x_n\,
+  e^{-iq_1\cdot x_1}\cdots e^{-iq_n\cdot x_n}
+  \notag\\
+  &\cdot\theta\!\left(\min[x_1^0\cdots x_r^0]
+  -\max[x_{r+1}^0\cdots x_n^0]\right)
+  \sum_\sigma\int d^3p
+  \notag\\
+  &\cdot\bra{\Omega}T\{A_1(x_1)\cdots A_r(x_r)\}\ket{\mathbf p,\sigma}
+  \bra{\mathbf p,\sigma}T\{A_{r+1}(x_{r+1})\cdots A_n(x_n)\}\ket{\Omega}
+  \notag\\
+  &+\mathrm{OT},
+  \tag{10.2.8}\label{eq:10.2.8}
+\end{align}
+where `OT' now denotes other terms, here arising not only from other time-orderings,
+but also from other intermediate states. It will be convenient
+to shift variables of integration, so that
+\[
+  \begin{aligned}
+    x_i&=x_1+y_i, &&i=2,3,\ldots,r,\\
+    x_i&=x_{r+1}+y_i, &&i=r+2,\ldots,n,
+  \end{aligned}
+\]
+and use the results of the previous section to write
+\begin{align}
+  &\bra{\Omega}T\{A_1(x_1)\cdots A_r(x_r)\}\ket{\mathbf p,\sigma}
+  \notag\\
+  &\qquad=e^{ip\cdot x_1}
+  \bra{\Omega}T\{A_1(0)A_2(y_2)\cdots A_r(y_r)\}\ket{\mathbf p,\sigma},
+  \tag{10.2.9}\label{eq:10.2.9}
+\end{align}
+\begin{align}
+  &\bra{\mathbf p,\sigma}T\{A_{r+1}(x_{r+1})\cdots A_n(x_n)\}\ket{\Omega}
+  \notag\\
+  &\qquad=e^{-ip\cdot x_{r+1}}
+  \bra{\mathbf p,\sigma}T\{A_{r+1}(0)\cdots A_n(y_n)\}\ket{\Omega}.
+  \tag{10.2.10}\label{eq:10.2.10}
+\end{align}
+Also, the argument of the theta function becomes
+\begin{align*}
+  &\min[x_1^0\cdots x_r^0]-\max[x_{r+1}^0\cdots x_n^0]
+  \\
+  &\qquad=x_1^0-x_{r+1}^0+\min[0,y_2^0\cdots y_r^0]
+  -\max[0,y_{r+1}^0\cdots y_n^0].
+\end{align*}
+We also insert the Fourier representation \eqref{eq:6.2.15} of the step function
+\[
+  \theta(\tau)=-\frac{1}{2\pi i}\int_{-\infty}^{\infty}
+  \frac{d\omega\,e^{-i\omega\tau}}{\omega+i\epsilon}.
+\]
+The integrals over $x_1$ and $x_{r+1}$ now just yield delta functions:
+\begin{align}
+  G(q_1\cdots q_n)={}&
+  \int d^4y_2\cdots d^4y_r\,d^4y_{r+2}\cdots d^4y_n
+  \notag\\
+  &\cdot e^{-iq_2\cdot y_2}\cdots e^{-iq_r\cdot y_r}
+  e^{-iq_{r+2}\cdot y_{r+2}}\cdots e^{-iq_n\cdot y_n}
+  \notag\\
+  &\cdot\left(-\frac{1}{2\pi i}\right)
+  \int_{-\infty}^{\infty}\frac{d\omega}{\omega+i\epsilon}
+  \exp\!\left(-i\omega\left[
+  \min[0,y_2^0\cdots y_r^0]-\max[0,y_{r+1}^0\cdots y_n^0]
+  \right]\right)
+  \notag\\
+  &\cdot\sum_\sigma\int d^3p\,
+  \bra{\Omega}T\{A_1(0)\cdots A_r(y_r)\}\ket{\mathbf p,\sigma}
+  \notag\\
+  &\qquad\cdot\bra{\mathbf p,\sigma}T\{A_{r+1}(0)\cdots A_n(y_n)\}\ket{\Omega}
+  \notag\\
+  &\cdot(2\pi)^4\delta^3(\mathbf p-\mathbf q_1-\cdots-\mathbf q_r)
+  \delta\!\left(\sqrt{\mathbf p^2+m^2}+\omega-q_1^0-\cdots-q_r^0\right)
+  \notag\\
+  &\cdot(2\pi)^4\delta^3(\mathbf q_{r+1}+\cdots+\mathbf q_n+\mathbf p)
+  \delta\!\left(q_{r+1}^0+\cdots+q_n^0+\sqrt{\mathbf p^2+m^2}+\omega\right)
+  \notag\\
+  &+\mathrm{OT}.
+  \tag{10.2.11}\label{eq:10.2.11}
+\end{align}
+We are interested here only in the pole that arises from the vanishing of
+the denominator $\omega+i\epsilon$, so for our present purposes we can set the factor
+$\exp(-i\omega[\min-\max])$ equal to unity. The integrals over both $\mathbf p$ and $\omega$ are
+now trivial, and yield the pole
+\begin{align}
+  G(q_1\cdots q_n)\longrightarrow{}&
+  i(2\pi)^7\delta^4(q_1+\cdots+q_n)
+  \left[q^0-\sqrt{\mathbf q^2+m^2}+i\epsilon\right]^{-1}
+  \notag\\
+  &\cdot\sum_\sigma
+  M_{0;-\mathbf q,\sigma}(q_2\cdots q_n)
+  M_{\mathbf q,\sigma;0}(q_{r+2}\cdots q_n)+\cdots
+  \tag{10.2.12}\label{eq:10.2.12}
+\end{align}
+% Source note: Eq. (10.2.12) visibly prints q_n in the first M argument;
+% this is preserved although the nearby definitions suggest q_r.
+where now
+\[
+  q\equiv q_1+\cdots+q_r=-q_{r+1}-\cdots-q_n,
+\]
+\begin{align}
+  M_{0;\mathbf q,\sigma}(q_2\cdots q_r)
+  \equiv{}&\int d^4y_2\cdots d^4y_r\,
+  e^{-iq_2\cdot y_2}\cdots e^{-iq_r\cdot y_r}
+  \notag\\
+  &\cdot\bra{\Omega}T\{A_1(0)A_2(y_2)\cdots A_n(y_r)\}\ket{\mathbf q,\sigma},
+  \tag{10.2.13}\label{eq:10.2.13}
+\end{align}
+% Source note: Eq. (10.2.13) visibly prints A_n(y_r), preserved as printed.
+\begin{align}
+  M_{\mathbf q,\sigma;0}(q_{r+2}\cdots q_n)
+  \equiv{}&\int d^4y_{r+2}\cdots d^4y_n\,
+  e^{iq_{r+2}\cdot y_{r+2}}\cdots e^{-iq_n\cdot y_n}
+  \notag\\
+  &\cdot\bra{\mathbf p,\sigma}T\{A_{r+1}(0)A_{r+2}(y_{r+2})\cdots A_n(y_n)\}\ket{\Omega},
+  \tag{10.2.14}\label{eq:10.2.14}
+\end{align}
+% Source note: Eq. (10.2.14) visibly prints a positive first Fourier exponent
+% and labels the M with q while retaining p in the state; both are preserved.
+and the final `$\cdots$' in Eq.~\eqref{eq:10.2.12} denotes terms that do not exhibit this
+particular pole. (The `other terms' arising from other single-particle states
+produce poles in $q$ at different positions, while those arising from multi-particle
+states produce branch points in $q$, and those arising from other
+time-orderings produce poles and branch cuts in other variables.) Using
+Eqs.~\eqref{eq:10.2.9} and \eqref{eq:10.2.10}, it is easy to see that these $M$s are the same as
+defined by Eqs.~\eqref{eq:10.2.4} and \eqref{eq:10.2.5}. Also, near the pole we can write
+\[
+  \frac{1}{q^0-\sqrt{\mathbf q^2+m^2}+i\epsilon}
+  =\frac{-q^0-\sqrt{\mathbf q^2+m^2}+i\epsilon}
+  {-(q^0)^2+(\sqrt{\mathbf q^2+m^2}-i\epsilon)^2}
+  \longrightarrow\frac{-2\sqrt{\mathbf q^2+m^2}}{q^2+m^2-i\epsilon}.
+\]
+(We again redefine $\epsilon$ by a positive factor $2\sqrt{\mathbf q^2+m^2}$, which is permissible
+since $\epsilon$ stands for any positive infinitesimal.) Eq.~\eqref{eq:10.2.12} is thus the same
+as the desired result \eqref{eq:10.2.3}.
+
+This result has a classic application to the theory of nuclear forces. Let
+$\Phi_a(x)$ be any real field or combination of fields (for instance, proportional
+to a quark--antiquark bilinear $\bar q\gamma_5\tau_a q$) that has a non-vanishing matrix
+element between a one-pion state of isospin $a$ and the vacuum, normalized
+so that
+\begin{equation}
+  \bra{\Omega}\Phi_a(0)\ket{\pi_b,\mathbf p}
+  =(2\pi)^{-3/2}(2p^0)^{-1/2}\delta_{ab}.
+  \tag{10.2.15}\label{eq:10.2.15}
+\end{equation}
+The matrix element of $\Phi_a$ between one-nucleon states with four-momenta
+$p,p'$ then has a pole at $(p-p')^2\to-m_\pi^2$, which isospin and Lorentz
+invariance (including space inversion invariance) dictate must take the
+form\footnote{Lorentz and isospin invariance requires this matrix to take the form
+$(\bar u'\Gamma\tau_a u)$, where $\Gamma$ is a $4\cdot4$ matrix for which the bilinear
+$(\bar\psi'\Gamma\psi)$ transforms as a pseudoscalar. Like any $4\cdot4$ matrix, $\Gamma$ can
+be expanded as a sum of terms proportional to the Dirac matrices $\mathbf{1}$, $\gamma_\mu$,
+$[\gamma_\mu,\gamma_\nu]$, $\gamma_5\gamma_\mu$, and $\gamma_5$. The coefficients must be respectively
+pseudoscalar, pseudovector, pseudotensor, vector, and scalar. Out of the two momenta
+$p$ and $p'$ it is possible to construct no pseudoscalars or pseudovectors; just one
+pseudotensor, proportional to $\epsilon^{\mu\nu\rho\sigma}p_\rho p'_\sigma$; two independent vectors,
+proportional to $p_\mu$ or $p'_\mu$; and a scalar proportional to unity, in each case with a
+proportionality factor depending on the only independent scalar variable, $(p-p')^2$.
+By using the momentum-space Dirac equations for $u$ and $u'$, it is easy to see that
+the tensor and pseudovector matrices in $\Gamma$ give contributions proportional to $\gamma_5$.}
+\begin{equation}
+  \bra{N',\sigma',\mathbf p'}\Phi_a(0)\ket{N,\sigma,\mathbf p}
+  \longrightarrow i(2\pi)^{-3}G_\pi\,
+  \frac{\bar u'\gamma_5\tau_a u}{(p-p')^2+m_\pi^2},
+  \tag{10.2.16}\label{eq:10.2.16}
+\end{equation}
+where $u$ and $u'$ are the initial and final nucleon spinor coefficient functions,
+including the nucleon wave functions in isospin space, and $\tau_a$ with $a=
+1,2,3$ are the $2\cdot2$ Pauli isospin matrices. The constant $G_\pi$ is known as the
+\textit{pion--nucleon coupling constant}. This pole is not actually in the physical
+region for the matrix element \eqref{eq:10.2.16}, for which $(p-p')^2\geq0$, but it can
+be reached by analytic extension of this matrix element, for instance by
+considering the off-shell matrix element
+\[
+  \int d^4x\,d^4x'\,e^{-ip\cdot x}e^{ip'\cdot x'}
+  \bra{\Omega}T\{\Phi_a(0)\bar N(x)N'(x')\}\ket{\Omega},
+\]
+where $N$ and $N'$ are appropriate components of a field operator or
+product of field operators with non-vanishing matrix elements between
+one-nucleon states and the vacuum. The theorem proved above in this
+section shows then that exchange of a pion in the scattering of two
+nucleons with initial four-momenta $p_1,p_2$, and final four-momenta $p'_1,p'_2$
+yields a pole at $(p_1-p'_1)^2=(p_2-p'_2)^2\to-m_\pi^2$.
+\begin{align}
+  S_{N'_1N'_2,N_1N_2}\longrightarrow{}&
+  -i(2\pi)^4\delta^4(p'_1+p'_2-p_1-p_2)
+  \frac{G_\pi^2}{(p_1-p'_1)^2+m_\pi^2}
+  \notag\\
+  &\cdot(2\pi)^{-3}[\bar u_{1'}\gamma_5\tau_a u_1]
+  \cdot(2\pi)^{-3}[\bar u_{2'}\gamma_5\tau_a u_2].
+  \tag{10.2.17}\label{eq:10.2.17}
+\end{align}
+(The easiest way to get the phases and numerical factors right in such
+formulas is to use Feynman diagrams; our theorem just says that the pole
+structure is the same as would be found in a field theory in which the
+Lagrangian involved an elementary pion field.) Again, this pion pole is
+not actually in the physical region for scattering of nucleons on the mass
+shell, for which $(p_1-p'_1)^2\geq0$, but it can be reached by analytic extension
+of the $S$-matrix element, for instance by considering the off-shell matrix

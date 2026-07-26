@@ -1,0 +1,81 @@
+% PDF page 25
+
+\noindent\textbf{Example.} The \emph{unit disk} $D^m$, consisting of all $x \in \mathbb{R}^m$ with
+\[
+1 - \sum x_i^2 \geq 0,
+\]
+is a smooth manifold, with boundary equal to $S^{m-1}$.
+
+Now consider a smooth map $f : X \to N$ from an $m$-manifold with boundary to an $n$-manifold, where $m > n$.
+
+\noindent\textbf{Lemma 4.} \textit{If $y \in N$ is a regular value, both for $f$ and for the restriction $f \mid \partial X$, then $f^{-1}(y) \subset X$ is a smooth $(m-n)$-manifold with boundary. Furthermore the boundary $\partial(f^{-1}(y))$ is precisely equal to the intersection of $f^{-1}(y)$ with $\partial X$.}
+
+\noindent\textit{Proof.} Since we have to prove a local property, it suffices to consider the special case of a map $f : H^m \to \mathbb{R}^n$, with regular value $y \in \mathbb{R}^n$. Let $\bar{x} \in f^{-1}(y)$. If $\bar{x}$ is an interior point, then as before $f^{-1}(y)$ is a smooth manifold in the neighborhood of $\bar{x}$.
+
+Suppose that $\bar{x}$ is a boundary point. Choose a smooth map $g : U \to \mathbb{R}^n$ that is defined throughout a neighborhood of $\bar{x}$ in $\mathbb{R}^m$ and coincides with $f$ on $U \cap H^m$. Replacing $U$ by a smaller neighborhood if necessary, we may assume that $g$ has no critical points. Hence $g^{-1}(y)$ is a smooth manifold of dimension $m - n$.
+
+Let $\pi : g^{-1}(y) \to \mathbb{R}$ denote the coordinate projection,
+\[
+\pi(x_1, \ldots, x_m) = x_m.
+\]
+We claim that $\pi$ has $0$ as a regular value. For the tangent space of $g^{-1}(y)$ at a point $x \in \pi^{-1}(0)$ is equal to the null space of
+\[
+dg_x = df_x : \mathbb{R}^m \to \mathbb{R}^n;
+\]
+but the hypothesis that $f \mid \partial H^m$ is regular at $x$ guarantees that this null space cannot be completely contained in $\mathbb{R}^{m-1} \times 0$.
+
+Therefore the set $g^{-1}(y) \cap H^m = f^{-1}(y) \cap U$, consisting of all $x \in g^{-1}(y)$ with $\pi(x) \geq 0$, is a smooth manifold, by Lemma 3; with boundary equal to $\pi^{-1}(0)$. This completes the proof.
+
+\subsection{The Brouwer Fixed Point Theorem}
+
+We now apply this result to prove the key lemma leading to the classical Brouwer fixed point theorem. Let $X$ be a compact manifold with boundary.
+
+
+% PDF page 26
+
+\noindent\textbf{Lemma 5.} \textit{There is no smooth map $f : X \to \partial X$ that leaves $\partial X$ pointwise fixed.}
+
+\noindent\textit{Proof} (following M.~Hirsch). Suppose there were such a map $f$. Let $y \in \partial X$ be a regular value for $f$. Since $y$ is certainly a regular value for the identity map $f \mid \partial X$ also, it follows that $f^{-1}(y)$ is a smooth $1$-manifold, with boundary consisting of the single point
+\[
+f^{-1}(y) \cap \partial X = \{y\}.
+\]
+But $f^{-1}(y)$ is also compact, and the only compact $1$-manifolds are finite disjoint unions of circles and segments,\footnote{A proof is given in the Appendix.} so that $\partial f^{-1}(y)$ must consist of an even number of points. This contradiction establishes the lemma.
+
+In particular the unit disk
+\[
+D^n = \{x \in \mathbb{R}^n \mid x_1^2 + \cdots + x_n^2 \leq 1\}
+\]
+is a compact manifold bounded by the unit sphere $S^{n-1}$. Hence as a special case we have proved that the \emph{identity map of $S^{n-1}$ cannot be extended to a smooth map $D^n \to S^{n-1}$.}
+
+\noindent\textbf{Lemma 6.} \textit{Any smooth map $g : D^n \to D^n$ has a fixed point (i.e.\ a point $x \in D^n$ with $g(x) = x$).}
+
+\noindent\textit{Proof.} Suppose $g$ has no fixed point. For $x \in D^n$, let $f(x) \in S^{n-1}$ be the point nearer $x$ on the line through $x$ and $g(x)$. (See Figure~\ref{fig:milnor-04}.) Then $f : D^n \to S^{n-1}$ is a smooth map with $f(x) = x$ for $x \in S^{n-1}$, which is impossible by Lemma 5. (To see that $f$ is smooth we make the following explicit computation: $f(x) = x + tu$, where
+\[
+u = \frac{x - g(x)}{\|x - g(x)\|}, \quad t = -x \cdot u + \sqrt{1 - x \cdot x + (x \cdot u)^2},
+\]
+the expression under the square root sign being strictly positive. Here and subsequently $\|x\|$ denotes the euclidean length $\sqrt{x_1^2 + \cdots + x_n^2}$.)
+
+\noindent\textbf{Brouwer Fixed Point Theorem.} \textit{Any continuous function $G : D^n \to D^n$ has a fixed point.}
+
+\noindent\textit{Proof.} We reduce this theorem to the lemma by approximating $G$ by a smooth mapping. Given $\epsilon > 0$, according to the Weierstrass approximation theorem,\footnote{See for example Dieudonn\'e [7, p.~133].} there is a polynomial function $P_1 : \mathbb{R}^n \to \mathbb{R}^n$ with $\|P_1(x) - G(x)\| < \epsilon$ for $x \in D^n$. However, $P_1$ may send points
+
+
+% PDF page 27
+
+\begin{figure}[htbp]
+\centering
+\setcounter{figure}{3}%
+\IfFileExists{output/figures/fig04.tex}{\input{output/figures/fig04.tex}}{\input{figures/fig04.tex}}
+\caption{}\label{fig:milnor-04}
+\end{figure}
+
+of $D^n$ into points outside of $D^n$. To correct this we set
+\[
+P(x) = P_1(x)/(1 + \epsilon).
+\]
+Then clearly $P$ maps $D^n$ into $D^n$ and $\|P(x) - G(x)\| < 2\epsilon$ for $x \in D^n$.
+
+Suppose that $G(x) \neq x$ for all $x \in D^n$. Then the continuous function $\|G(x) - x\|$ must take on a minimum $\mu > 0$ on $D^n$. Choosing $P : D^n \to D^n$ as above, with $\|P(x) - G(x)\| < \mu$ for all $x$, we clearly have $P(x) \neq x$. Thus $P$ is a smooth map from $D^n$ to itself without a fixed point. This contradicts Lemma 6, and completes the proof.
+
+The procedure employed here can frequently be applied in more general situations: to prove a proposition about continuous mappings, we first establish the result for smooth mappings and then try to use an approximation theorem to pass to the continuous case. (Compare Problem~4 at the end of \S4.)
+

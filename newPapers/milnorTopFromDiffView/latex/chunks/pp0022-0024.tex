@@ -1,0 +1,92 @@
+% PDF page 22
+
+\section{The Theorem of Sard and Brown}
+\label{sec:sard}
+
+IN GENERAL, it is too much to hope that the set of critical values of a smooth map be finite. But this set will be ``small,'' in the sense indicated by the next theorem, which was proved by A.~Sard in 1942 following earlier work by A.~P.~Morse. (References [30], [24].)
+
+\noindent\textbf{Theorem.} \textit{Let $f : U \to \mathbb{R}^n$ be a smooth map, defined on an open set $U \subset \mathbb{R}^m$, and let}
+\[
+C = \{x \in U \mid \operatorname{rank} df_x < n\}.
+\]
+\textit{Then the image $f(C) \subset \mathbb{R}^n$ has Lebesgue measure zero.}\footnote{In other words, given any $\epsilon > 0$, it is possible to cover $f(C)$ by a sequence of cubes in $\mathbb{R}^n$ having total $n$-dimensional volume less than $\epsilon$.}
+
+Since a set of measure zero cannot contain any nonvacuous open set, it follows that the complement $\mathbb{R}^n - f(C)$ must be everywhere dense\footnote{Proved by Arthur B.~Brown in 1935. This result was rediscovered by Dubovickii in 1953 and by Thom in 1954. (References [5], [8], [36].)} in $\mathbb{R}^n$.
+
+The proof will be given in \S3. It is essential for the proof that $f$ should have many derivatives. (Compare Whitney [38].)
+
+We will be mainly interested in the case $m \geq n$. If $m < n$, then clearly $C = U$; hence the theorem says simply that $f(U)$ has measure zero.
+
+More generally consider a smooth map $f : M \to N$, from a manifold of dimension $m$ to a manifold of dimension $n$. Let $C$ be the set of all $x \in M$ such that
+\[
+df_x : TM_x \to TN_{f(x)}
+\]
+
+
+% PDF page 23
+
+has rank less than $n$ (i.e.\ is not onto). Then $C$ will be called the set of \emph{critical points}, $f(C)$ the set of \emph{critical values}, and the complement $N - f(C)$ the set of \emph{regular values} of $f$. (This agrees with our previous definitions in the case $m = n$.) Since $M$ can be covered by a countable collection of neighborhoods each diffeomorphic to an open subset of $\mathbb{R}^m$, we have:
+
+\noindent\textbf{Corollary (A.~B.~Brown).} \textit{The set of regular values of a smooth map $f : M \to N$ is everywhere dense in $N$.}
+
+In order to exploit this corollary we will need the following:
+
+\noindent\textbf{Lemma 1.} \textit{If $f : M \to N$ is a smooth map between manifolds of dimension $m \geq n$, and if $y \in N$ is a regular value, then the set $f^{-1}(y) \subset M$ is a smooth manifold of dimension $m - n$.}
+
+\noindent\textit{Proof.} Let $x \in f^{-1}(y)$. Since $y$ is a regular value, the derivative $df_x$ must map $TM_x$ onto $TN_y$. The null space $\mathfrak{N} \subset TM_x$ of $df_x$ will therefore be an $(m-n)$-dimensional vector space.
+
+If $M \subset \mathbb{R}^k$, choose a linear map $L : \mathbb{R}^k \to \mathbb{R}^{m-n}$ that is nonsingular on this subspace $\mathfrak{N} \subset TM_x \subset \mathbb{R}^k$. Now define
+\[
+F : M \to N \times \mathbb{R}^{m-n}
+\]
+by $F(\xi) = (f(\xi), L(\xi))$. The derivative $dF_x$ is clearly given by the formula
+\[
+dF_x(v) = (df_x(v), L(v)).
+\]
+Thus $dF_x$ is nonsingular. Hence $F$ maps some neighborhood $U$ of $x$ diffeomorphically onto a neighborhood $V$ of $(y, L(x))$. Note that $f^{-1}(y)$ corresponds, under $F$, to the hyperplane $y \times \mathbb{R}^{m-n}$. In fact $F$ maps $f^{-1}(y) \cap U$ diffeomorphically onto $(y \times \mathbb{R}^{m-n}) \cap V$. This proves that $f^{-1}(y)$ is a smooth manifold of dimension $m - n$.
+
+As an example we can give an easy proof that the unit sphere $S^{m-1}$ is a smooth manifold. Consider the function $f : \mathbb{R}^m \to \mathbb{R}$ defined by
+\[
+f(x) = x_1^2 + x_2^2 + \cdots + x_m^2.
+\]
+Any $y \neq 0$ is a regular value, and the smooth manifold $f^{-1}(1)$ is the unit sphere.
+
+If $M'$ is a manifold which is contained in $M$, it has already been noted that $TM'_x$ is a subspace of $TM_x$ for $x \in M'$. The orthogonal complement of $TM'_x$ in $TM_x$ is then a vector space of dimension $m - m'$ called the \emph{space of normal vectors} to $M'$ in $M$ at $x$.
+
+In particular let $M' = f^{-1}(y)$ for a regular value $y$ of $f : M \to N$.
+
+
+% PDF page 24
+
+\noindent\textbf{Lemma 2.} \textit{The null space of $df_x : TM_x \to TN_y$ is precisely equal to the tangent space $TM'_x \subset TM_x$ of the submanifold $M' = f^{-1}(y)$. Hence $df_x$ maps the orthogonal complement of $TM'_x$ isomorphically onto $TN_y$.}
+
+\noindent\textit{Proof.} From the diagram
+\[
+\begin{array}{ccc}
+M' & \xrightarrow{i} & M \\
+\downarrow & & \downarrow f \\
+y & \longrightarrow & N
+\end{array}
+\]
+we see that $df_x$ maps the subspace $TM'_x \subset TM_x$ to zero. Counting dimensions we see that $df_x$ maps the space of normal vectors to $M'$ isomorphically onto $TN_y$.
+
+\subsection{Manifolds with Boundary}
+
+The lemmas above can be sharpened so as to apply to a map defined on a smooth ``manifold with boundary.'' Consider first the closed half-space
+\[
+H^m = \{(x_1, \ldots, x_m) \in \mathbb{R}^m \mid x_m \geq 0\}.
+\]
+The \emph{boundary} $\partial H^m$ is defined to be the hyperplane $\mathbb{R}^{m-1} \times 0 \subset \mathbb{R}^m$.
+
+\textsc{Definition.} A subset $X \subset \mathbb{R}^k$ is called a \emph{smooth $m$-manifold with boundary} if each $x \in X$ has a neighborhood $U \cap X$ diffeomorphic to an open subset $V \cap H^m$ of $H^m$. The \emph{boundary} $\partial X$ is the set of all points in $X$ which correspond to points of $\partial H^m$ under such a diffeomorphism.
+
+It is not hard to show that $\partial X$ is a well-defined smooth manifold of dimension $m-1$. The \emph{interior} $X - \partial X$ is a smooth manifold of dimension $m$.
+
+The tangent space $TX_x$ is defined just as in \S1, so that $TX_x$ is a full $m$-dimensional vector space, even if $x$ is a boundary point.
+
+Here is one method for generating examples. Let $M$ be a manifold without boundary and let $g : M \to \mathbb{R}$ have $0$ as regular value.
+
+\noindent\textbf{Lemma 3.} \textit{The set of $x$ in $M$ with $g(x) \geq 0$ is a smooth manifold, with boundary equal to $g^{-1}(0)$.}
+
+The proof is just like the proof of Lemma 1.
+

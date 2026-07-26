@@ -1,0 +1,499 @@
+% Chunk: Section 7.2, The Lagrangian Formalism
+% Source: Weinberg QFT Vol. I, printed pp. 298--306 (physical PDF pp. 321--329)
+% Status: transcribed; source-reviewed; compile-clean; render-reviewed
+% Physical pages: 321--329 (from the Section 7.2 heading to before Section 7.3). Figures: none. Uncertainties: none.
+
+\subsection{The Lagrangian Formalism}
+
+Having seen that various realistic theories may be cast in the canonical
+formalism, we must now face the question of how to choose the Hamiltonian.
+As we will see in the next section, the easiest way to enforce Lorentz
+invariance and other symmetries is to choose a suitable Lagrangian and use
+it to derive the Hamiltonian. There is not much loss of generality in this;
+given a realistic Hamiltonian, we can generally reconstruct a Lagrangian
+from which it could be derived, by reversing the process that we are
+going to describe here of deriving Hamiltonians from Lagrangians. (The
+derivation of Eq.~\eqref{eq:7.1.26} gives one example of this reconstruction.) But
+although we can go from Hamiltonians to Lagrangians or Lagrangians
+to Hamiltonians, it is easier to explore physically satisfactory theories by
+listing possible Lagrangians, rather than Hamiltonians.
+
+The Lagrangian is, in general, a functional\footnote{Recall that in the notation
+we use for functionals, a functional like $L$ in which we display the variable
+$t$ is understood to depend on the fields $\Psi^\ell(\mathbf{x},t)$ and
+$\dot\Psi^\ell(\mathbf{x},t)$, with the undisplayed variables $\ell$ and $\mathbf{x}$
+running over all their values at a fixed value of the displayed variable $t$.
+We use upper case $\Psi$s and $\Pi$s to indicate that these are interacting
+rather than free fields.} $L[\Psi(t),\dot\Psi(t)]$ of a set of generic fields
+$\Psi^\ell(\mathbf{x},t)$ and their time-derivatives $\dot\Psi^\ell(\mathbf{x},t)$.
+The conjugate fields $\Pi_\ell(\mathbf{x},t)$ are defined as the variational
+derivatives\footnote{Because the $\Psi$s and $\dot\Psi$s do not in general satisfy
+simple commutation or anticommutation relations, we cannot give a simple
+definition of the functional derivatives occurring here as we did for functional
+derivatives with respect to the $Q$s and $P$s in the previous section. Instead,
+we will simply specify that the variational derivatives are what they would be
+for c-number variables, with minus signs and equal-time commutators or
+anticommutators supplied as needed to make the formulas correct
+quantum-mechanically. As far as I know, no important issues hinge on the details
+here.}
+\begin{equation}
+\Pi_\ell(\mathbf{x},t)\equiv
+\frac{\delta L[\Psi(t),\dot\Psi(t)]}{\delta\dot\Psi^\ell(\mathbf{x},t)},
+\tag{7.2.1}\label{eq:7.2.1}
+\end{equation}
+The equations of motion are
+\begin{equation}
+\dot\Pi_\ell(\mathbf{x},t)=
+\frac{\delta L[\Psi(t),\dot\Psi(t)]}{\delta\Psi^\ell(\mathbf{x},t)}.
+\tag{7.2.2}\label{eq:7.2.2}
+\end{equation}
+These field equations can be usefully reformulated as a variational principle.
+We define a functional of $\Psi^\ell(x)$ over all spacetime, known as the
+\textit{action}
+\begin{equation}
+I[\Psi]\equiv\int_{-\infty}^{\infty}dt\,L[\Psi(t),\dot\Psi(t)].
+\tag{7.2.3}\label{eq:7.2.3}
+\end{equation}
+Under an arbitrary variation of $\Psi(x)$, the change in $I[\Psi]$ is
+\[
+\delta I[\Psi]=\int_{-\infty}^{\infty}dt\int d^3x
+\left[\frac{\delta L}{\delta\Psi^\ell(x)}\delta\Psi^\ell(x)
++\frac{\delta L}{\delta\dot\Psi^\ell(x)}\delta\dot\Psi^\ell(x)\right].
+\]
+Assuming that $\delta\Psi^\ell(x)$ vanishes for $t\to\pm\infty$, we may integrate
+by parts, and write
+\begin{equation}
+\delta I[\Psi]=\int d^4x\left[
+\frac{\delta L}{\delta\Psi^\ell(x)}
+-\frac{d}{dt}\frac{\delta L}{\delta\dot\Psi^\ell(x)}
+\right]\delta\Psi^\ell(x).
+\tag{7.2.4}\label{eq:7.2.4}
+\end{equation}
+We see that the action is stationary with respect to all variations $\delta\Psi^\ell$
+that vanish at $t\to\pm\infty$ if and only if the fields satisfy the field
+equations~\eqref{eq:7.2.2}.
+
+Because the field equations are determined by the functional $I[\Psi]$,
+it is natural in trying to construct a Lorentz-invariant theory to make
+$I[\Psi]$ a scalar functional. In particular, since $I[\Psi]$ is a time-integral
+of $L[\Psi(t),\dot\Psi(t)]$, we guess that $L$ should itself be a space-integral of an
+ordinary scalar function of $\Psi(x)$ and $\partial\Psi(x)/\partial x^\mu$, known
+as the \textit{Lagrangian density} $\mathcal{L}$:
+\begin{equation}
+L[\Psi(t),\dot\Psi(t)]=\int d^3x\,
+\mathcal{L}\bigl(\Psi(\mathbf{x},t),\boldsymbol{\nabla}\Psi(\mathbf{x},t),
+\dot\Psi(\mathbf{x},t)\bigr),
+\tag{7.2.5}\label{eq:7.2.5}
+\end{equation}
+so that the action is
+\begin{equation}
+I[\Psi]=\int d^4x\,
+\mathcal{L}\bigl(\Psi(x),\partial\Psi(x)/\partial x^\mu\bigr).
+\tag{7.2.6}\label{eq:7.2.6}
+\end{equation}
+All field theories used in current theories of elementary particles have
+Lagrangians of this form.
+
+Varying $\Psi^\ell(x)$ by an amount $\delta\Psi^\ell(x)$, and integrating by parts,
+we find a variation in $L$:
+\begin{align*}
+\delta L
+&=\int d^3x\left[
+\frac{\partial\mathcal{L}}{\partial\Psi^\ell}\delta\Psi^\ell
++\frac{\partial\mathcal{L}}{\partial(\boldsymbol{\nabla}\Psi^\ell)}
+\boldsymbol{\nabla}\delta\Psi^\ell
++\frac{\partial\mathcal{L}}{\partial\dot\Psi^\ell}\delta\dot\Psi^\ell
+\right]
+\\
+&=\int d^3x\left[
+\left(\frac{\partial\mathcal{L}}{\partial\Psi^\ell}
+-\boldsymbol{\nabla}\cdot
+\frac{\partial\mathcal{L}}{\partial(\boldsymbol{\nabla}\Psi^\ell)}\right)
+\delta\Psi^\ell
++\frac{\partial\mathcal{L}}{\partial\dot\Psi^\ell}\delta\dot\Psi^\ell
+\right],
+\end{align*}
+so (with obvious arguments suppressed)
+\begin{equation}
+\frac{\delta L}{\delta\Psi^\ell}
+=\frac{\partial\mathcal{L}}{\partial\Psi^\ell}
+-\boldsymbol{\nabla}\cdot
+\frac{\partial\mathcal{L}}{\partial(\boldsymbol{\nabla}\Psi^\ell)},
+\tag{7.2.7}\label{eq:7.2.7}
+\end{equation}
+\begin{equation}
+\frac{\delta L}{\delta\dot\Psi^\ell}
+=\frac{\partial\mathcal{L}}{\partial\dot\Psi^\ell}.
+\tag{7.2.8}\label{eq:7.2.8}
+\end{equation}
+The field equations~\eqref{eq:7.2.1} then read
+\begin{equation}
+\frac{\partial}{\partial x^\mu}
+\frac{\partial\mathcal{L}}{\partial(\partial\Psi^\ell/\partial x^\mu)}
+=\frac{\partial\mathcal{L}}{\partial\Psi^\ell}.
+\tag{7.2.9}\label{eq:7.2.9}
+\end{equation}
+These are known as the \textit{Euler--Lagrange equations}. As expected, if
+$\mathcal{L}$ is a scalar then these equations are Lorentz-invariant.
+
+In addition to being Lorentz-invariant, the action $I$ is required to be
+\textit{real}. This is because we want just as many field equations as there are
+fields. By breaking up any complex fields into their real and imaginary
+parts, we can always think of $I$ as being a functional only of a number
+of \textit{real} fields, say $N$ of them. If $I$ were complex, with independent real
+and imaginary parts, then the real and imaginary parts of the conditions
+that $I$ be stationary (the Euler--Lagrange equations) would yield $2N$ field
+equations for $N$ fields, too many to be satisfied except in special cases.
+We will see in the next section that the reality of the action also ensures
+that the generators of various symmetry transformations are Hermitian
+operators.
+
+Although the Lagrangian formalism makes it easy to construct theories
+that will satisfy Lorentz invariance and other symmetries, to calculate the
+$S$-matrix we need a formula for the interaction Hamiltonian. In general,
+the Hamiltonian is given by the \textit{Legendre transformation}
+\begin{equation}
+H=\sum_\ell\int d^3x\,
+\Pi_\ell(\mathbf{x},t)\dot\Psi^\ell(\mathbf{x},t)-L[\Psi(t),\dot\Psi(t)].
+\tag{7.2.10}\label{eq:7.2.10}
+\end{equation}
+Although Eq.~\eqref{eq:7.2.1} does not in general allow $\dot\Psi^\ell$ to be expressed uniquely
+in terms of $\Psi^\ell$ and $\Pi_\ell$, it is easy to see that Eq.~\eqref{eq:7.2.10} has vanishing
+variational derivative with respect to $\dot\Psi^\ell$ for any $\dot\Psi^\ell$ satisfying
+Eq.~\eqref{eq:7.2.1}, so in general it is a functional only of $\Psi^\ell$ and $\Pi_\ell$.
+Its variational derivatives with respect to these variables are
+\begin{align*}
+\left.\frac{\delta H}{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\Pi}
+={}&\int d^3y\sum_{\ell'}\Pi_{\ell'}(\mathbf{y},t)
+\left.\frac{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}
+{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\Pi}
+-\left.\frac{\delta L}{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\dot\Psi}
+\\
+&-\int d^3y\sum_{\ell'}
+\left.\frac{\delta L}{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}\right|_{\Psi}
+\left.\frac{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}
+{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\Pi},
+\\[3pt]
+\left.\frac{\delta H}{\delta\Pi_\ell(\mathbf{x},t)}\right|_{\Psi}
+={}&\dot\Psi^\ell(\mathbf{x},t)
++\int d^3y\sum_{\ell'}\Pi_{\ell'}(\mathbf{y},t)
+\left.\frac{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}
+{\delta\Pi_\ell(\mathbf{x},t)}\right|_{\Psi}
+\\
+&-\int d^3y\sum_{\ell'}
+\left.\frac{\delta L}{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}\right|_{\Psi}
+\left.\frac{\delta\dot\Psi^{\ell'}(\mathbf{y},t)}
+{\delta\Pi_\ell(\mathbf{x},t)}\right|_{\Psi},
+\end{align*}
+where subscripts denote the quantities held fixed in these variational
+derivatives. Using the defining equation~\eqref{eq:7.2.1} for $\Pi_\ell$, this simplifies to
+\begin{equation}
+\left.\frac{\delta H}{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\Pi}
+=-\left.\frac{\delta L}{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\dot\Psi},
+\tag{7.2.11}\label{eq:7.2.11}
+\end{equation}
+and
+\begin{equation}
+\left.\frac{\delta H}{\delta\Pi_\ell(\mathbf{x},t)}\right|_{\Psi}
+=\dot\Psi^\ell(\mathbf{x},t).
+\tag{7.2.12}\label{eq:7.2.12}
+\end{equation}
+The equations of motion \eqref{eq:7.2.2} are then equivalent to
+\begin{equation}
+\left.\frac{\delta H}{\delta\Psi^\ell(\mathbf{x},t)}\right|_{\Pi}
+=-\dot\Pi_\ell(\mathbf{x},t).
+\tag{7.2.13}\label{eq:7.2.13}
+\end{equation}
+
+It is tempting now to identify the generic field variables $\Psi^\ell$ and their
+conjugates $\Pi_\ell$ with the canonical variables $Q^n$ and $P_n$ of the previous
+section, and impose on them the same canonical commutation relations
+\eqref{eq:7.1.30}--\eqref{eq:7.1.32}, so that Eqs.~\eqref{eq:7.2.12} and \eqref{eq:7.2.13} are the same as the
+Hamiltonian equations of motion \eqref{eq:7.1.33} and \eqref{eq:7.1.34}. This is indeed the
+case for the simple example of the real scalar field $\Phi$ with non-derivative
+coupling. Consider the Lagrangian density\footnote{We do not include a free
+constant factor in the term $-\tfrac12\partial_\mu\Phi\partial^\mu\Phi$, because
+any such constant if positive can be absorbed into the normalization of $\Phi$.
+As we shall see, a negative constant here would lead to a Hamiltonian that is
+not bounded below. The constant $m$ is known as the bare mass. The most
+general Lagrangian that satisfies the principle of renormalizability (discussed
+in Chapter 12) is of this form, with $\mathcal{H}_I(\Phi)$ a quartic polynomial
+in $\Phi$.}
+\begin{equation}
+\mathcal{L}=-\frac12\partial_\mu\Phi\partial^\mu\Phi
+-\frac{m^2}{2}\Phi^2-\mathcal{H}_I(\Phi),
+\tag{7.2.14}\label{eq:7.2.14}
+\end{equation}
+which can be obtained by adding a real function $-\mathcal{H}_I(\Phi)$ of $\Phi$
+to the free-field Lagrangian density found in the previous section. The
+Euler--Lagrange equations here are
+\begin{equation}
+(\Box-m^2)\Phi=\mathcal{H}_I'(\Phi).
+\tag{7.2.15}\label{eq:7.2.15}
+\end{equation}
+From this Lagrangian density, we calculate a canonical conjugate to $\Phi$:
+\begin{equation}
+\Pi=\frac{\partial\mathcal{L}}{\partial\dot\Phi}=\dot\Phi,
+\tag{7.2.16}\label{eq:7.2.16}
+\end{equation}
+which is the same as Eq.~\eqref{eq:7.1.36} if we identify $\Phi$ and $\Pi$ with the canonical
+variables $Q$ and $P$. The Hamiltonian is now given by Eq.~\eqref{eq:7.2.10} as\footnote{In
+order for $H$ to be interpreted as an energy, it should be bounded below. The
+positivity of the first two terms shows that we guessed correctly as to the sign
+in the first term in Eq.~\eqref{eq:7.2.14}. The remaining condition is that
+$\tfrac12m^2\Phi^2+\mathcal{H}_I(\Phi)$ must be bounded below as a function of
+$\Phi$.}
+\begin{align}
+H&=\int d^3x\,(\Pi\dot\Phi-\mathcal{L})
+\notag\\
+&=\int d^3x\left[\frac12\Pi^2+\frac12(\boldsymbol{\nabla}\Phi)^2
++\frac12m^2\Phi^2+\mathcal{H}_I(\Phi)\right],
+\tag{7.2.17}\label{eq:7.2.17}
+\end{align}
+which we recognize as the Hamiltonian \eqref{eq:7.1.35}. This little exercise should
+not be regarded as another derivation of this Hamiltonian, but rather as a
+validation of the Lagrangian \eqref{eq:7.2.14} as a possible theory of scalar fields.
+
+Matters are not always so simple. We have already seen in the previous
+section that there are field variables, such as the time component of a
+vector field or the Hermitian conjugate of a Dirac field, that are not
+canonical field variables $Q^n$ and do not have canonical conjugates; yet
+Lorentz invariance dictates that these must appear in the Lagrangians for
+the vector and Dirac fields.
+
+From the point of view of the Lagrangian formalism, the special character
+of field variables like the time component of a vector field or the
+Hermitian conjugate of a Dirac field arises from the fact that although
+they appear in the Lagrangian, their time-derivatives do not. We shall
+denote the field variables $\Psi^\ell$ whose time-derivatives do not appear in
+the Lagrangian as $C^r$; the remaining independent field variables are the
+canonical variables $Q^n$. The $Q^n$ have canonical conjugates
+\begin{equation}
+P_n(\mathbf{x},t)=
+\frac{\delta L[Q(t),\dot Q(t),C(t)]}{\delta\dot Q^n(\mathbf{x},t)},
+\tag{7.2.18}\label{eq:7.2.18}
+\end{equation}
+and satisfy the commutation relations~\eqref{eq:7.1.30}--\eqref{eq:7.1.32}, but there are no
+canonical conjugates for the $C^r$. Because $\delta L/\delta\dot C^r=0$, the
+Hamiltonian \eqref{eq:7.2.10} is in general
+\begin{equation}
+H=\sum_n\int d^3x\,P_n\dot Q^n-L[Q(t),\dot Q(t),C(t)],
+\tag{7.2.19}\label{eq:7.2.19}
+\end{equation}
+but this is not yet useful until we express the $C^r$ and $\dot Q^\ell$ in terms of the
+$Q$s and $P$s. The equations of motion of the $C^r$ involve only fields and
+their first time-derivatives
+\begin{equation}
+0=\frac{\delta L[Q(t),\dot Q(t),C(t)]}{\delta C^r(\mathbf{x},t)}.
+\tag{7.2.20}\label{eq:7.2.20}
+\end{equation}
+In the simple cases to be discussed in this chapter, these equations together
+with Eq.~\eqref{eq:7.2.18} can be solved to give the $C^r$ and $\dot Q^\ell$ in terms of the
+$Q$s and $P$s. Section 7.6 shows how in such cases one can avoid the task of
+actually solving for the $C^r$ and $\dot Q^\ell$. In gauge theories like electrodynamics
+other methods must be used: either choosing a particular gauge, as in
+Chapter 8, or the more modern covariant methods to be discussed in
+Volume II.
+
+Once we have derived a Hamiltonian as a functional of the Heisenberg
+picture $Q$s and $P$s, to use perturbation theory we must make a transition
+to the interaction picture. The Hamiltonian is time-independent, so it can
+be written in terms of the $P_n$ and $Q^n$ at $t=0$, which are equal to the
+corresponding operators $p_n$ and $q^n$ in the interaction picture at $t=0$.
+The Hamiltonian derived in this way may then be expressed in terms of the
+$q$s and $p$s of the interaction picture, and split into two parts, a suitable
+free-particle term $H_0$ and an interaction $H_{\mathrm{int}}$. Finally, the
+time-dependence equations~\eqref{eq:7.1.21} and \eqref{eq:7.1.22} and the commutation or
+anticommutation relations~\eqref{eq:7.1.1}--\eqref{eq:7.1.2} are used to express the $q$s and $p$s
+in $H_I(t)$ as linear combinations of annihilation and creation operators.
+
+We shall present a number of examples of this procedure in Section
+7.5; for the moment we will give only one example of the simplest type,
+the scalar field with Hamiltonian \eqref{eq:7.2.17}. We split $H$ into a free-particle
+term and an interaction
+\begin{equation}
+H=H_0+H_{\mathrm{int}},
+\tag{7.2.21}\label{eq:7.2.21}
+\end{equation}
+\begin{equation}
+H_0=\int d^3x\left[\frac12\Pi^2+\frac12(\boldsymbol{\nabla}\Phi)^2
++\frac12m^2\Phi^2\right],
+\tag{7.2.22}\label{eq:7.2.22}
+\end{equation}
+\begin{equation}
+H_{\mathrm{int}}=\int d^3x\,\mathcal{H}_I(\Phi).
+\tag{7.2.23}\label{eq:7.2.23}
+\end{equation}
+Here $\Phi$ and $\Pi$ are taken at the same time $t$, and $H$ is independent of
+$t$, though $H_0$ and $H_{\mathrm{int}}$ usually are not.
+
+We now pass to the interaction representation. Taking $t=0$ in
+Eqs.~\eqref{eq:7.2.22} and \eqref{eq:7.2.23}, we can simply replace $\Phi,\Pi$ with the
+interaction picture variables $\phi,\pi$, since they are defined by Eqs.~\eqref{eq:7.1.28} and
+\eqref{eq:7.1.29} to be equal at that time. To calculate the interaction $H_I(t)$ in the
+interaction picture, we apply the similarity transformation \eqref{eq:3.5.5}
+\begin{equation}
+H_I(t)=\exp(iH_0t)H_{\mathrm{int}}\exp(-iH_0t)
+=\int d^3x\,\mathcal{H}_I\bigl(\phi(\mathbf{x},t)\bigr).
+\tag{7.2.24}\label{eq:7.2.24}
+\end{equation}
+The same transformation applied to $H_0$ leaves it constant:
+\begin{align}
+H_0&=\exp(iH_0t)H_0\exp(-iH_0t)
+\notag\\
+&=\int d^3x\left[\frac12\pi^2(\mathbf{x},t)
++\frac12\bigl(\boldsymbol{\nabla}\phi(\mathbf{x},t)\bigr)^2\right].
+\tag{7.2.25}\label{eq:7.2.25}
+\end{align}
+The relation between $\pi$ and $\dot\phi$ is dictated by Eq.~\eqref{eq:7.1.21}
+\begin{equation}
+\dot\phi(\mathbf{x},t)=\frac{\delta H_0}{\delta\pi(\mathbf{x},t)}
+=\pi(\mathbf{x},t).
+\tag{7.2.26}\label{eq:7.2.26}
+\end{equation}
+(This happens to be the same relation as in Eq.~\eqref{eq:7.2.16}, but as we shall
+see this is not to be expected in general.) Also, the equation of motion for
+$\phi$ is dictated by Eq.~\eqref{eq:7.1.22}:
+\begin{equation}
+\dot\pi(\mathbf{x},t)=-\frac{\delta H_0}{\delta\phi(\mathbf{x},t)}
+=+\boldsymbol{\nabla}^2\phi(\mathbf{x},t)-m^2\phi(\mathbf{x},t),
+\tag{7.2.27}\label{eq:7.2.27}
+\end{equation}
+which together with Eq.~\eqref{eq:7.2.26} yields the field equations
+\begin{equation}
+(\Box-m^2)\phi(x)=0.
+\tag{7.2.28}\label{eq:7.2.28}
+\end{equation}
+The general real solution may be expressed as
+\begin{equation}
+\phi(x)=(2\pi)^{-3/2}\int d^3p\,(2p^0)^{-1/2}
+\left[e^{ip\cdot x}a_{\mathbf{p}}+e^{-ip\cdot x}a^\dagger_{\mathbf{p}}\right]
+\tag{7.2.29}\label{eq:7.2.29}
+\end{equation}
+with $p^0=\sqrt{\mathbf{p}^2+m^2}$ understood, and $a_{\mathbf{p}}$ some
+as-yet-unknown operator function of $\mathbf{p}$. Eq.~\eqref{eq:7.2.26} then gives the
+canonical conjugate as
+\begin{equation}
+\pi(x)=-i(2\pi)^{-3/2}\int d^3p\,(p^0/2)^{1/2}
+\left[e^{ip\cdot x}a_{\mathbf{p}}-e^{-ip\cdot x}a^\dagger_{\mathbf{p}}\right].
+\tag{7.2.30}\label{eq:7.2.30}
+\end{equation}
+In order to get the desired commutation relations,
+\begin{equation}
+[\phi(\mathbf{x},t),\pi(\mathbf{y},t)]=i\delta^3(\mathbf{x}-\mathbf{y}),
+\tag{7.2.31}\label{eq:7.2.31}
+\end{equation}
+\begin{equation}
+[\phi(\mathbf{x},t),\phi(\mathbf{y},t)]=0,
+\tag{7.2.32}\label{eq:7.2.32}
+\end{equation}
+\begin{equation}
+[\pi(\mathbf{x},t),\pi(\mathbf{y},t)]=0,
+\tag{7.2.33}\label{eq:7.2.33}
+\end{equation}
+we must take the $a$s to satisfy the familiar commutation relations
+\begin{equation}
+[a_{\mathbf{p}},a^\dagger_{\mathbf{p}'}]=\delta^3(\mathbf{p}-\mathbf{p}'),
+\tag{7.2.34}\label{eq:7.2.34}
+\end{equation}
+\begin{equation}
+[a_{\mathbf{p}},a_{\mathbf{p}'}]=0.
+\tag{7.2.35}\label{eq:7.2.35}
+\end{equation}
+Also, we have already shown in the previous section that using these
+expansions in Eq.~\eqref{eq:7.2.25} gives the usual formula~\eqref{eq:4.2.11} for the
+free-particle Hamiltonian, up to an inconsequential additive constant. As
+remarked before, these results should not be regarded so much as an
+alternative derivation of Eqs.~\eqref{eq:7.2.29}, \eqref{eq:7.2.34}, and \eqref{eq:7.2.35} (which were
+obtained in Chapter 5 on quite other grounds) but rather as a validation
+of the first two terms of Eq.~\eqref{eq:7.2.14} as the correct free-particle Lagrangian
+for a real scalar field. We can now proceed to use perturbation theory to
+calculate the $S$-matrix, taking \eqref{eq:7.2.24} as $H_I(t)$, with the field $\phi(x)$ given
+by Eq.~\eqref{eq:7.2.29}.
+
+The procedures illustrated here will be carried out for examples that
+are more complicated and more interesting in Section 7.5.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+In considering the various possible Lagrangian densities for physical
+theories it is common to apply integration by parts, treating as equivalent
+any Lagrangian densities that differ only by total derivatives
+$\partial_\mu\mathcal{F}^\mu$. It is obvious that such total derivative terms do
+not contribute to the action and hence do not affect the field equations. It
+is also obvious that a space-derivative term $\boldsymbol{\nabla}\cdot\boldsymbol{\mathcal{F}}$
+in the Lagrangian density does not contribute to the Lagrangian and hence
+does not affect the quantum theory defined by the Lagrangian.\footnote{This
+is under the usual assumption, that the fields vanish at infinity. These
+results do not necessary apply when we allow fields of different topology,
+as discussed in Volume II.} What is less obvious and worth noting here is that
+a time-derivative $\partial_0\mathcal{F}^0$ in the Lagrangian density also does
+not affect the quantum structure of the theory. To see this, let's first consider
+the effect of adding a term to the Lagrangian of the more general form
+\begin{equation}
+\Delta L(t)=\int d^3x\,D_{n,\mathbf{x}}[Q(t)]\dot Q^n(\mathbf{x},t),
+\tag{7.2.36}\label{eq:7.2.36}
+\end{equation}
+where $D$ is an arbitrary $n$- and $\mathbf{x}$-dependent functional of the values
+of $Q$ at a given time. This changes the formula for the conjugate variables
+$P(t)$ as functionals of $Q(t)$ and $\dot Q(t)$ by the amount
+\begin{equation}
+\Delta P_n(\mathbf{x},t)=
+\frac{\delta\Delta L(t)}{\delta\dot Q^n(\mathbf{x},t)}
+=D_{n,\mathbf{x}}[Q(t)].
+\tag{7.2.37}\label{eq:7.2.37}
+\end{equation}
+It follows that there is no change in the Hamiltonian as expressed as a
+functional of the $Q(t)$ and $\dot Q(t)$:
+\begin{equation}
+\int d^3x\,\Delta P_n(\mathbf{x},t)\dot Q^n(\mathbf{x},t)-\Delta L(t)=0.
+\tag{7.2.38}\label{eq:7.2.38}
+\end{equation}
+Hence also there is no change in the Hamiltonian as expressed as a
+functional of the old canonical variables $Q^n$ and $P_n$. However, the
+Hamiltonian is \textit{not} the same functional of the \textit{new} canonical variables
+$Q^n$ and $P_n+\Delta P_n$ as it was of the $Q^n$ and $P_n$, and in a theory
+described by the new Lagrangian $\mathcal{L}+\Delta\mathcal{L}$ it is the new
+canonical variables $Q^n$ and $P_n+\Delta P_n$ rather than the $Q^n$ and $P_n$
+that would satisfy the canonical commutation relations. The commutators
+of the $Q^n$ with each other and of the $Q^n$ with the $P_m$ are given by the
+usual canonical relations, but the commutators of the $P_n$ with each other
+are now
+\begin{align}
+[P_n(\mathbf{x},t),P_m(\mathbf{y},t)]
+={}&[P_n(\mathbf{x},t)+\Delta P_n(\mathbf{x},t),
+P_m(\mathbf{y},t)+\Delta P_m(\mathbf{y},t)]
+\notag\\
+&-[\Delta P_n(\mathbf{x},t),P_m(\mathbf{y},t)+\Delta P_m(\mathbf{y},t)]
+\notag\\
+&-[P_n(\mathbf{x},t)+\Delta P_n(\mathbf{x},t),\Delta P_m(\mathbf{y},t)]
+\notag\\
+&+[\Delta P_n(\mathbf{x},t),\Delta P_m(\mathbf{y},t)]
+\notag\\
+={}&-i\frac{\delta D_{n,\mathbf{x}}[Q(t)]}{\delta Q^m(\mathbf{y},t)}
++i\frac{\delta D_{m,\mathbf{y}}[Q(t)]}{\delta Q^n(\mathbf{x},t)}.
+\tag{7.2.39}\label{eq:7.2.39}
+\end{align}
+In general this doesn't vanish, but if the added term in the Lagrangian is
+a total time-derivative
+\begin{equation}
+\Delta L=\frac{dG}{dt}=\int d^3x\,
+\frac{\delta G[Q(t)]}{\delta Q^n(\mathbf{x},t)}\dot Q^n(\mathbf{x},t),
+\tag{7.2.40}\label{eq:7.2.40}
+\end{equation}
+then $D$ in Eq.~\eqref{eq:7.2.36} is of the special form
+\begin{equation}
+D_{n,\mathbf{x}}[Q]=\frac{\delta G[Q(t)]}{\delta Q^n(\mathbf{x},t)}.
+\tag{7.2.41}\label{eq:7.2.41}
+\end{equation}
+In this case the commutator \eqref{eq:7.2.39} vanishes, so the variables $Q^n$ and
+$P_n$ satisfy the usual commutation relations. We have seen that a change
+of the form \eqref{eq:7.2.36} in the Lagrangian does not change the form of the
+Hamiltonian as a functional of the $Q^n$ and $P_n$, and since, as we have now
+shown, the commutation relations of these variables are also unchanged,
+the addition to the Lagrangian of the term \eqref{eq:7.2.36} has no effect on the
+quantum structure of the theory. Different Lagrangian densities obtained
+from each other by partial integration may therefore be regarded as
+equivalent in quantum as well as classical field theory.

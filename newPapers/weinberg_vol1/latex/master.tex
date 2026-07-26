@@ -1,0 +1,98 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+
+% JHEP-style blue, clickable cross-references and links.
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Quantum Theory of Fields, Volume I: Foundations},
+  pdfauthor={Steven Weinberg}
+}
+
+% Suppress the "Prepared for submission to JHEP" first-page header.
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\makeatother
+
+% Emit the TOC inside \maketitle once all chapter scaffolds are present.
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+
+% Each numbered section (chapter) starts on a fresh page.
+\pretocmd{\section}{\clearpage}{}{}
+\setcounter{tocdepth}{2}
+
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1 | #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\title{The Quantum Theory of Fields}
+\subheader{Volume I: Foundations}
+\author{Steven Weinberg}
+\affiliation{University of Texas at Austin}
+\dedicated{To Louise}
+\abstract{
+  Weinberg's QFT, typeset in nicer notation. Typesetting done entirely
+  by coding agents, namely GPT 5.6. Figures done by Fable 5. Enjoy!
+}
+
+\begin{document}
+\maketitle
+\flushbottom
+
+\input{frontmatter/preface.tex}
+\input{frontmatter/notation.tex}
+
+\input{chapters/chapter01.tex}
+\input{chapters/chapter02.tex}
+\input{chapters/chapter03.tex}
+\input{chapters/chapter04.tex}
+\input{chapters/chapter05.tex}
+\input{chapters/chapter06.tex}
+\input{chapters/chapter07.tex}
+\input{chapters/chapter08.tex}
+\input{chapters/chapter09.tex}
+\input{chapters/chapter10.tex}
+\input{chapters/chapter11.tex}
+\input{chapters/chapter12.tex}
+\input{chapters/chapter13.tex}
+\input{chapters/chapter14.tex}
+
+\end{document}

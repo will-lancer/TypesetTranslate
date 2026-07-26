@@ -1,0 +1,515 @@
+% Physical pages: 399--407 (printed pages 376--384).
+% Figures: none.
+% Uncertainties: none.
+
+In Chapters 7 and 8 we applied the canonical quantization operator formalism
+to derive the Feynman rules for a variety of theories. In many cases, such
+as the scalar field with derivative coupling or the vector field with zero or
+non-zero mass, the procedure though straightforward was rather awkward.
+The interaction Hamiltonian turned out to contain a covariant term, equal
+to the negative of the interaction term in the Lagrangian, plus a non-covariant
+term, which served to cancel non-covariant terms in the propagator. In the
+case of electrodynamics this non-covariant term (the Coulomb energy) turned
+out to be not even spatially local, though it is local in time. Yet the final
+results are quite simple: the Feynman rules are just those we should obtain
+with covariant propagators, and using the negative of the interaction term
+in the Lagrangian to calculate vertex contributions. The awkwardness in
+obtaining these simple results, which was bad enough for the theories
+considered in Chapters 7 and 8, becomes unbearable for more complicated
+theories, like the non-Abelian gauge theories to be discussed in Volume II,
+and also general relativity. One would very much prefer a method of
+calculation that goes directly from the Lagrangian to the Feynman rules in
+their final, Lorentz-covariant form.
+
+Fortunately, such a method does exist. It is provided by the path-integral
+approach to quantum mechanics. This was first presented in the context of
+non-relativistic quantum mechanics in Feynman's Princeton Ph.\ D. thesis~\hyperref[ref:9.1]{[1]},
+as a means of working directly with a Lagrangian rather than a Hamiltonian.
+In this respect, it was inspired by earlier work of Dirac~\hyperref[ref:9.2]{[2]}. The path-integral
+approach played a part (along with inspired guesswork) in Feynman's later
+derivation of his diagrammatic rules~\hyperref[ref:9.3]{[3]}. However, although Feynman diagrams
+became widely used in the 1950s, most physicists (including myself) tended
+to derive them using the operator methods of Schwinger and Tomonaga, which
+were shown by Dyson in 1949 to lead to the same diagrammatic rules that had
+been obtained by Feynman by his own methods.
+
+The path-integral approach was revived in the late 1960s, when Faddeev and
+Popov~\hyperref[ref:9.4]{[4]} and De Witt~\hyperref[ref:9.5]{[5]} showed how to apply it to non-Abelian gauge
+theories and general relativity. For most theorists, the turning point came in
+1971, when 't Hooft~\hyperref[ref:9.6]{[6]} used path-integral methods to derive the Feynman
+rules for spontaneously broken gauge theories (discussed in Volume II),
+including in particular the theory of weak and electromagnetic interactions,
+in a gauge that made the high energy behavior of these theories transparent.
+Soon after, as also discussed in Volume II, it was discovered that the
+path-integral method allows us to take account of contributions to the
+$S$-matrix that have an essential singularity at zero coupling constant and
+therefore cannot be discovered in any finite order of perturbation theory.
+Since then, the path-integral methods described here have become an
+indispensable part of the equipment of all physicists who make use of
+quantum field theory.
+
+At this point the reader may be wondering why if the path-integral method
+is so convenient we bothered in Chapter 7 to introduce the canonical
+formalism. Indeed, Feynman seems at first to have thought of his path-integral
+approach as a substitute for the ordinary canonical formulation of quantum
+mechanics. There are two reasons for starting with the canonical formalism.
+The first is a point of principle: although the path-integral formalism provides
+us with manifestly Lorentz-invariant diagrammatic rules, it does not make
+clear why the $S$-matrix calculated in this way is unitary. As far as I know,
+the only way to show that the path-integral formalism yields a unitary
+$S$-matrix is to use it to reconstruct the canonical formalism, in which
+unitarity is obvious. There is a kind of conservation of trouble here; we can
+use the canonical approach, in which unitarity is obvious and Lorentz
+invariance obscure, or the path-integral approach, which is manifestly
+Lorentz-invariant but far from manifestly unitary. Since the path-integral
+approach is here derived from the canonical approach, we know that the two
+approaches yield the same $S$-matrix, so that the $S$-matrix must indeed be
+both Lorentz-invariant and unitary.
+
+The second reason for introducing the canonical formalism first is more
+practical: there are important theories in which the simplest version of the
+Feynman path-integral method, in which propagators and interaction vertices
+are taken directly from the Lagrangian, is simply wrong. One example is the
+non-linear $\sigma$-model, with Lagrangian density
+$\mathcal{L}=-\tfrac12 g_{k\ell}(\phi)\partial_\mu\phi^k\partial^\mu\phi^\ell$.
+In such theories, using the naive Feynman rules derived directly from the
+Lagrangian density would yield an $S$-matrix that is not only wrong but even
+non-unitary, and that also depends on the way in which we define the scalar
+field~\hyperref[ref:9.7]{[7]}. In this chapter we shall derive the path-integral formalism from the
+canonical formalism, and in this way we will see what additional sorts of
+vertices are needed to supplement the simplest version of the Feynman
+path-integral method.
+
+\subsection{The General Path-Integral Formula}
+
+We start with a general quantum mechanical system, with Hermitian operator
+`coordinates' $Q_a$ and conjugate `momenta' $P_b$, satisfying the canonical
+commutation relations\footnote{We are tacitly assuming here that any first
+class constraints are eliminated by choosing a gauge, and any remaining
+second class constraints are `solved' by writing the constrained degrees of
+freedom in terms of the unconstrained $Q_a$ and $P_a$, as in Section 7.6.
+The direct application of path-integral methods to constrained systems is
+described by Faddeev~\hyperref[ref:9.9]{[9]}.}:
+\begin{equation}
+  [Q_a,P_b]=i\delta_{ab},
+  \tag{9.1.1}\label{eq:9.1.1}
+\end{equation}
+\begin{equation}
+  [Q_a,Q_b]=[P_a,P_b]=0.
+  \tag{9.1.2}\label{eq:9.1.2}
+\end{equation}
+(We shall restrict ourselves in this and the next three sections to bosonic
+operators, which satisfy commutation rather than anticommutation relations.
+Our results will be generalized to include fermionic operators in Section 9.5.)
+In a field theory, the index $a$ consists of a position $\mathbf{x}$ and a
+discrete Lorentz and species index $m$, and we conventionally write
+\begin{equation}
+  Q_{\mathbf{x},m}\equiv Q_m(\mathbf{x}),
+  \tag{9.1.3}\label{eq:9.1.3}
+\end{equation}
+\begin{equation}
+  P_{\mathbf{x},m}\equiv P_m(\mathbf{x}).
+  \tag{9.1.4}\label{eq:9.1.4}
+\end{equation}
+Also, the Kronecker delta in Eq. \eqref{eq:9.1.1} is interpreted in a field theory as
+\begin{equation}
+  \delta_{\mathbf{x},m;\mathbf{y},n}\equiv
+  \delta^3(\mathbf{x}-\mathbf{y})\delta_{mn}.
+  \tag{9.1.5}\label{eq:9.1.5}
+\end{equation}
+However, for the present it will be convenient to use the more compact
+notation of Eqs. \eqref{eq:9.1.1} and \eqref{eq:9.1.2}. These are `Schr\"odinger-picture'
+operators, taken at a fixed time (say, $t=0$). The time-dependent operators
+in the Heisenberg picture will be considered a little later.
+
+Since the $Q_a$ all commute, we can find a simultaneous eigenstate
+$\ket{q}$, with eigenvalues $q_a$:
+\begin{equation}
+  Q_a\ket{q}=q_a\ket{q}.
+  \tag{9.1.6}\label{eq:9.1.6}
+\end{equation}
+(We are using lower case $q$s and $p$s here to denote eigenvalues rather
+than to denote operators in the interaction picture as in Chapter 7, but
+since we will not be using the interaction picture in this chapter no
+confusion should arise.) The eigenvectors can be taken to be orthonormal,
+\begin{equation}
+  \braket{q'}{q}=\prod_a\delta(q'_a-q_a)\equiv\delta(q'-q),
+  \tag{9.1.7}\label{eq:9.1.7}
+\end{equation}
+so that the completeness relation reads
+\begin{equation}
+  \mathbf{1}=\int\prod_a dq_a\,\ket{q}\bra{q}.
+  \tag{9.1.8}\label{eq:9.1.8}
+\end{equation}
+
+Similarly, we can find a complete orthonormal set of eigenstates of the
+$P_a$:
+\begin{equation}
+  P_a\ket{p}=p_a\ket{p},
+  \tag{9.1.9}\label{eq:9.1.9}
+\end{equation}
+\begin{equation}
+  \braket{p'}{p}=\prod_a\delta(p'_a-p_a)\equiv\delta(p'-p),
+  \tag{9.1.10}\label{eq:9.1.10}
+\end{equation}
+\begin{equation}
+  \mathbf{1}=\int\prod_a dp_a\,\ket{p}\bra{p}.
+  \tag{9.1.11}\label{eq:9.1.11}
+\end{equation}
+As usual, it follows from Eq. \eqref{eq:9.1.1} that these two complete sets of
+eigenstates have the scalar product\footnote{The proof follows the same lines
+as in the quantum mechanics of point particles. From Eq. \eqref{eq:9.1.1}, we see
+that $P_a$ acts as $-i\partial/\partial q_a$ on wave functions in a $q$-basis.
+The right-hand side of Eq. \eqref{eq:9.1.12} is then seen to be the wave function in
+this basis of an eigenstate of $P$. The factor $\prod_a1/\sqrt{2\pi}$ is fixed
+by the normalization requirement, Eq. \eqref{eq:9.1.10}.}
+\begin{equation}
+  \braket{q}{p}=\prod_a\frac{1}{\sqrt{2\pi}}\exp(iq_ap_a).
+  \tag{9.1.12}\label{eq:9.1.12}
+\end{equation}
+
+In the Heisenberg picture, the $Q$ and $P$ operators are given a
+time-dependence
+\begin{equation}
+  Q_a(t)=\exp(iHt)Q_a\exp(-iHt),
+  \tag{9.1.13}\label{eq:9.1.13}
+\end{equation}
+\begin{equation}
+  P_a(t)=\exp(iHt)P_a\exp(-iHt),
+  \tag{9.1.14}\label{eq:9.1.14}
+\end{equation}
+where $H$ is the total Hamiltonian. These have eigenstates $\ket{q;t}$ and
+$\ket{p;t}$
+\begin{equation}
+  Q_a(t)\ket{q;t}=q_a\ket{q;t},
+  \tag{9.1.15}\label{eq:9.1.15}
+\end{equation}
+\begin{equation}
+  P_a(t)\ket{p;t}=p_a\ket{p;t},
+  \tag{9.1.16}\label{eq:9.1.16}
+\end{equation}
+given by
+\begin{equation}
+  \ket{q;t}=\exp(iHt)\ket{q},
+  \tag{9.1.17}\label{eq:9.1.17}
+\end{equation}
+\begin{equation}
+  \ket{p;t}=\exp(iHt)\ket{p}.
+  \tag{9.1.18}\label{eq:9.1.18}
+\end{equation}
+(Note that $\ket{q;t}$ is the eigenstate of $Q_a(t)$ with eigenvalue $q_a$,
+and \emph{not} the result of letting the state $\ket{q}$ evolve for a time
+$t$. This is why its time-dependence is given by a factor $\exp(iHt)$ rather
+than $\exp(-iHt)$.) These states obviously satisfy the completeness and
+orthonormality conditions
+\begin{equation}
+  \braket{q';t}{q;t}=\delta(q'-q),
+  \tag{9.1.19}\label{eq:9.1.19}
+\end{equation}
+\begin{equation}
+  \braket{p';t}{p;t}=\delta(p'-p),
+  \tag{9.1.20}\label{eq:9.1.20}
+\end{equation}
+\begin{equation}
+  \int\prod_a dq_a\,\ket{q;t}\bra{q;t}=\mathbf{1},
+  \tag{9.1.21}\label{eq:9.1.21}
+\end{equation}
+\begin{equation}
+  \int\prod_a dp_a\,\ket{p;t}\bra{p;t}=\mathbf{1},
+  \tag{9.1.22}\label{eq:9.1.22}
+\end{equation}
+and also
+\begin{equation}
+  \braket{q;t}{p;t}=\prod_a\frac{1}{\sqrt{2\pi}}\exp(iq_ap_a).
+  \tag{9.1.23}\label{eq:9.1.23}
+\end{equation}
+
+If, by measurements at time $t$, we find that our system is in a definite
+state $\ket{q;t}$, then the probability amplitude for measurements at time
+$t'$ to give a state $\ket{q';t'}$ is the scalar product
+$\braket{q';t'}{q;t}$. Our central dynamical problem is to calculate this
+scalar product.
+
+This is easy when $t'$ and $t$ are infinitesimally close, say
+$t'=\tau+d\tau$ and $t=\tau$. Using Eq. \eqref{eq:9.1.17}, we have
+\begin{equation}
+  \braket{q';\tau+d\tau}{q;\tau}
+  =\bra{q';\tau}\exp(-iH\,d\tau)\ket{q;\tau}.
+  \tag{9.1.24}\label{eq:9.1.24}
+\end{equation}
+The Hamiltonian $H$ is given as a function $H(Q,P)$, but since \eqref{eq:9.1.13}
+and \eqref{eq:9.1.14} are similarity transformations, and $H$ commutes with itself,
+it can equally well be written as the \emph{same} function of $Q(t)$ and
+$P(t)$
+\begin{equation}
+  H\equiv H(Q,P)=e^{iHt}H(Q,P)e^{-iHt}=H\bigl(Q(t),P(t)\bigr).
+  \tag{9.1.25}\label{eq:9.1.25}
+\end{equation}
+This function can be written in various different forms, with different
+constant coefficients, by using the commutation relations \eqref{eq:9.1.1} and
+\eqref{eq:9.1.2} to move the $Q$s and $P$s past each other. It will be convenient to
+adopt a standard form, in which all $Q$s appear to the \emph{left} of all
+$P$s. For instance, given a term in the Hamiltonian of form $P_aQ_bP_c$,
+we would rewrite it as $P_aQ_bP_c=Q_bP_aP_c-i\delta_{ab}P_c$. With this
+convention, the $Q_a(t)$s in the Hamiltonian in Eq. \eqref{eq:9.1.24} may be
+replaced\footnote{This is only possible because with $d\tau$ infinitesimal,
+$\exp(-iH\,d\tau)$ is linear in $H$.} with their eigenvalues $q'_a$. To deal
+with the $P(t)$, we use Eq. \eqref{eq:9.1.23} to expand $\ket{q;\tau}$ in
+$P$-eigenstates $\ket{p;\tau}$, and find
+\begin{align}
+  \braket{q';\tau+d\tau}{q;\tau}
+  &={}
+  \int\prod_a dp_a\,
+  \bra{q';\tau}\exp\bigl(-iH(Q(\tau),P(\tau))d\tau\bigr)\ket{p;\tau}
+  \braket{p;\tau}{q;\tau}
+  \notag\\
+  &=\int\prod_a\frac{dp_a}{2\pi}
+  \exp\left[-iH(q',p)d\tau+i\sum_a(q'_a-q_a)p_a\right],
+  \tag{9.1.26}\label{eq:9.1.26}
+\end{align}
+with each $p_a$ integrated from $-\infty$ to $+\infty$.
+
+Now let's return to the more general case of a finite time-interval. To
+calculate $\braket{q';t'}{q;t}$, with $t<t'$, we break up the time-interval
+from $t$ to $t'$ into steps $t,\tau_1,\tau_2,\ldots,\tau_N,t'$, with
+\begin{equation}
+  \tau_{k+1}-\tau_k=d\tau=(t'-t)/(N+1)
+  \tag{9.1.27}\label{eq:9.1.27}
+\end{equation}
+and sum over a complete set of states $\ket{q;\tau_k}$ at each time
+$\tau_k$:
+\begin{align}
+  \braket{q';t'}{q;t}
+  ={}&\int dq_1\cdots dq_N\,\braket{q';t'}{q_N;\tau_N}
+  \braket{q_N;\tau_N}{q_{N-1};\tau_{N-1}}\cdots
+  \braket{q_1;\tau_1}{q;t}.
+  \tag{9.1.28}\label{eq:9.1.28}
+\end{align}
+Inserting Eq. \eqref{eq:9.1.26}, this becomes
+\begin{align}
+  \braket{q';t'}{q;t}
+  ={}&\int
+  \left[\prod_{k=1}^{N}\prod_a dq_{k,a}\right]
+  \left[\prod_{k=0}^{N}\prod_a\frac{dp_{k,a}}{2\pi}\right]\notag \\
+  &\cdot \exp\left[i\sum_{k=1}^{N+1}
+  \left\{\sum_a(q_{k,a}-q_{k-1,a})p_{k-1,a}
+  -H(q_k,p_{k-1})d\tau\right\}\right],
+  \tag{9.1.29}\label{eq:9.1.29}
+\end{align}
+where
+\begin{equation}
+  q_0\equiv q,
+  \qquad
+  q_{N+1}\equiv q'.
+  \tag{9.1.30}\label{eq:9.1.30}
+\end{equation}
+Our result, Eq. \eqref{eq:9.1.29}, can be put in a much more elegant form. Define
+smooth interpolating functions, $q(\tau)$ and $p(\tau)$, such that
+\begin{equation}
+  q_a(\tau_k)=q_{k,a},
+  \qquad
+  p_a(\tau_k)=p_{k,a}.
+  \tag{9.1.31}\label{eq:9.1.31}
+\end{equation}
+In the limit $d\tau\to0$ (i.e., $N\to\infty$), the argument of the
+exponential in Eq. \eqref{eq:9.1.29} becomes just an integral over $\tau$
+\begin{align}
+  &\sum_{k=1}^{N+1}\left\{\sum_a(q_{k,a}-q_{k-1,a})p_{k-1,a}
+  -H(q_k,p_{k-1})d\tau\right\}
+  \notag\\
+  &\quad={}
+  \sum_{k=1}^{N+1}\left\{\sum_a\dot q_a(\tau_k)p_a(\tau_k)
+  -H\bigl(q(\tau_k),p(\tau_k)\bigr)\right\}d\tau+O(d\tau^2)
+  \notag\\
+  &\quad\longrightarrow
+  \int_t^{t'}d\tau\left\{\sum_a\dot q_a(\tau)p_a(\tau)
+  -H\bigl(q(\tau),p(\tau)\bigr)\right\}.
+  \tag{9.1.32}\label{eq:9.1.32}
+\end{align}
+Further, we may define integrals \emph{over the functions} $q(\tau),p(\tau)$
+by
+\begin{equation}
+  \int\prod_{\tau,a}dq_a(\tau)\prod_{\tau,b}\frac{dp_b(\tau)}{2\pi}\cdots
+  \equiv\lim_{d\tau\to0}\int\prod_{k,a}dq_{k,a}
+  \prod_{k,b}\frac{dp_{k,b}}{2\pi}\cdots.
+  \tag{9.1.33}\label{eq:9.1.33}
+\end{equation}
+Eq. \eqref{eq:9.1.29} then becomes a constrained path integral
+\begin{align}
+  \braket{q';t'}{q;t}
+  ={}&\int_{\substack{q_a(t)=q_a\\q_a(t')=q'_a}}
+  \prod_{\tau,a}dq_a(\tau)\prod_{\tau,b}\frac{dp_b(\tau)}{2\pi}
+  \notag\\
+  &\cdot\exp\left[i\int_t^{t'}d\tau
+  \left\{\sum_a\dot q_a(\tau)p_a(\tau)
+  -H\bigl(q(\tau),p(\tau)\bigr)\right\}\right].
+  \tag{9.1.34}\label{eq:9.1.34}
+\end{align}
+This is called a \emph{path integral}, because we integrate over all paths
+that take $q(\tau)$ from $q$ at $\tau=t$ to $q'$ at $\tau=t'$, as well as
+over all $p(\tau)$. The great advantage of writing matrix elements in this
+way is that, as shown in Section 9.3, the path integrals are easy to calculate
+when expanded in powers of the coupling constants in $H$.
+
+The path-integral formalism allows us to calculate not only transition
+probability amplitudes like $\braket{q';t'}{q;t}$, but also the matrix
+elements between states $\bra{q';t'}$ and $\ket{q;t}$ of time-ordered
+products of general operators $\mathcal{O}(P(t),Q(t))$. It will be convenient
+to define these operators with (unlike $H$) all $P$s moved to the \emph{left}
+and all $Q$s to the \emph{right}. Then by inserting any such operator
+$\mathcal{O}[P(t),Q(t)]$ in Eq. \eqref{eq:9.1.26}, we have
+\begin{align}
+  &\bra{q';\tau+d\tau}\mathcal{O}\bigl(P(t),Q(t)\bigr)\ket{q;\tau}
+  \notag\\
+  &\quad={}
+  \int\prod_a dp_a\,
+  \bra{q';\tau}\exp\bigl(-iH(Q(\tau),P(\tau))d\tau\bigr)\ket{p;\tau}
+  \bra{p;\tau}\mathcal{O}\bigl(P(t),Q(t)\bigr)\ket{q;\tau}
+  \notag\\
+  &\quad={}
+  \int\prod_a\frac{dp_a}{2\pi}
+  \exp\left[-iH(q',p)d\tau+i\sum_a(q'_a-q_a)p_a\right]
+  \mathcal{O}(p,q).
+  \tag{9.1.35}\label{eq:9.1.35}
+\end{align}
+In order to calculate the matrix element of a product
+$\mathcal{O}_A(P(t_A),Q(t_A))\mathcal{O}_B(P(t_B),Q(t_B))\cdots$ of
+operators with $t_A>t_B>\cdots$, we can insert the $\mathcal{O}$-operators
+between the appropriate states in Eq. \eqref{eq:9.1.28}, and use Eq. \eqref{eq:9.1.35}. For
+instance, if the time $t_A$ falls between $\tau_k$ and $\tau_{k+1}$, then
+insert $\mathcal{O}_A(P(t_A),Q(t_A))$ between $\bra{q_{k+1};\tau_{k+1}}$
+and $\ket{q_k;\tau_k}$. Note that in Eq. \eqref{eq:9.1.28} each successive sum over
+states is at a later time, so this is only possible because of our assumption
+that $t_A>t_B>\cdots$. Following the same steps as before, we now find the
+general path-integral formula
+\begin{align}
+  &\bra{q';t'}\mathcal{O}_A\bigl(P(t_A),Q(t_A)\bigr)
+  \mathcal{O}_B\bigl(P(t_B),Q(t_B)\bigr)\cdots\ket{q;t}
+  \notag\\
+  &\quad={}
+  \int_{\substack{q_a(t)=q_a\\q_a(t')=q'_a}}
+  \prod_{\tau,a}dq_a(\tau)\prod_{\tau,b}\frac{dp_b(\tau)}{2\pi}
+  \mathcal{O}_A\bigl(p(t_A),q(t_A)\bigr)
+  \mathcal{O}_B\bigl(p(t_B),q(t_B)\bigr)\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_t^{t'}d\tau
+  \left\{\sum_a\dot q_a(\tau)p_a(\tau)
+  -H\bigl(q(\tau),p(\tau)\bigr)\right\}\right].
+  \tag{9.1.36}\label{eq:9.1.36}
+\end{align}
+This result is only valid if the times are ordered, with
+\begin{equation}
+  t'>t_A>t_B>\cdots>t.
+  \tag{9.1.37}\label{eq:9.1.37}
+\end{equation}
+However, nothing on the right-hand side of Eq. \eqref{eq:9.1.36} refers to the order
+of time-arguments. Hence if we are presented with a path integral like the
+right-hand side of Eq. \eqref{eq:9.1.36}, with $t_A,t_B,\ldots$ in arbitrary order
+(all between $t$ and $t'$, with $t<t'$), then this path integral will equal
+a matrix element like the left-hand side of Eq. \eqref{eq:9.1.36}, but with the
+operators arranged in order (from left to right) of decreasing time. That is,
+for $t_A,t_B,\ldots$ in arbitrary order, we have
+\begin{align}
+  &\bra{q';t'}T\left\{\mathcal{O}_A\bigl(P(t_A),Q(t_A)\bigr),
+  \mathcal{O}_B\bigl(P(t_B),Q(t_B)\bigr),\ldots\right\}\ket{q;t}
+  \notag\\
+  &\quad={}
+  \int_{\substack{q_a(t)=q_a\\q_a(t')=q'_a}}
+  \prod_{\tau,a}dq_a(\tau)\prod_{\tau,b}\frac{dp_b(\tau)}{2\pi}
+  \mathcal{O}_A\bigl(p(t_A),q(t_A)\bigr)
+  \mathcal{O}_B\bigl(p(t_B),q(t_B)\bigr)\cdots
+  \notag\\
+  &\qquad\cdot\exp\left[i\int_t^{t'}d\tau
+  \left\{\sum_a\dot q_a(\tau)p_a(\tau)
+  -H\bigl(q(\tau),p(\tau)\bigr)\right\}\right],
+  \tag{9.1.38}\label{eq:9.1.38}
+\end{align}
+where $T$ denotes the usual time-ordered product.
+
+It should perhaps be stressed that the c-number functions $q_a(\tau)$,
+$p_a(\tau)$ in Eq. \eqref{eq:9.1.38} are mere variables of integration, and in
+particular are \emph{not} constrained to obey the equations of motion of
+classical Hamiltonian dynamics
+\begin{equation}
+  \dot q_a(\tau)-
+  \frac{\partial H(q(\tau),p(\tau))}{\partial p_a(\tau)}=0,
+  \tag{9.1.39}\label{eq:9.1.39}
+\end{equation}
+\begin{equation}
+  \dot p_a(\tau)+
+  \frac{\partial H(q(\tau),p(\tau))}{\partial q_a(\tau)}=0.
+  \tag{9.1.40}\label{eq:9.1.40}
+\end{equation}
+(For this reason, the Hamiltonian $H(q(\tau),p(\tau))$ in Eq. \eqref{eq:9.1.38} is
+\emph{not} constant in $\tau$.) Nevertheless, there is a limited sense in
+which path integrals do respect these equations of motion. Suppose that one
+of the functions in Eq. \eqref{eq:9.1.38}, say
+$\mathcal{O}_A(p(t_A),q(t_A))$, happens to be the left-hand side of either
+Eq. \eqref{eq:9.1.39} or Eq. \eqref{eq:9.1.40}. We note that (for $t<t_A<t'$)
+\begin{align*}
+  \left(\dot q_a(t_A)-
+  \frac{\partial H(q(t_A),p(t_A))}{\partial p_a(t_A)}\right)
+  \exp(iI[q,p])
+  &=-i\frac{\delta}{\delta p_a(t_A)}\exp(iI[q,p]),\\
+  \left(\dot p_a(t_A)+
+  \frac{\partial H(q(t_A),p(t_A))}{\partial q_a(t_A)}\right)
+  \exp(iI[q,p])
+  &=i\frac{\delta}{\delta q_a(t_A)}\exp(iI[q,p]),
+\end{align*}
+where $I$ is the argument of the exponential in Eq. \eqref{eq:9.1.38}:
+\[
+  I[q,p]\equiv\int_t^{t'}d\tau
+  \left\{\sum_a\dot q_a(\tau)p_a(\tau)
+  -H\bigl(q(\tau),p(\tau)\bigr)\right\}.
+\]
+As long as $t_A$ does not approach $t$ or $t'$, the integrations over
+$q_a(t_A)$ and $p_a(t_A)$ are unconstrained, and so with reasonable
+assumptions about the convergence of these integrals, the integral of such
+variational derivatives must vanish. Hence the path integral \eqref{eq:9.1.38}
+vanishes if $\mathcal{O}_A(p,q)$ is taken to be the left-hand side of either
+of the equations of motion \eqref{eq:9.1.39} or \eqref{eq:9.1.40}.
+
+This simple rule applies only if the integration variables $q_a(t_A)$,
+$p_a(t_A)$ are independent of any of the variables $q_a(t_B)$, $p_a(t_B)$,
+etc. appearing in any of the other functions $\mathcal{O}_B$,
+$\mathcal{O}_C$, etc. in Eq. \eqref{eq:9.1.38}, and hence only if we prohibit $t_A$
+from approaching $t_B,t_C$, etc. as well as $t$ or $t'$. When $t_A$
+approaches, say, $t_B$, the path integral will be found to involve a non-zero
+term proportional to $\delta(t_A-t_B)$ or its derivatives. These delta
+functions are the same as would be found in the operator formalism from
+time derivatives of the step functions implicit in the definition of the
+time-ordered product.
+
+In evaluating the path integrals \eqref{eq:9.1.34} and \eqref{eq:9.1.38}, we only need to know
+the classical Hamiltonian, the c-number function $H(q,p)$. If we were to
+define a theory by the path integrals, the question would naturally arise,
+which of many possible quantum mechanical Hamiltonians $H(Q,P)$
+(differing is the order of $Q$s and $P$s) governed the quantum theory that
+corresponds to these path integrals. Our derivation has provided an answer:
+the quantum Hamiltonian is to be taken with all $Q$s on the left, all $P$s
+on the right. But it would be a mistake to give this prescription too much
+significance. There are a great many ways of interpreting the measure
+$\prod dq_a(\tau)\prod dp_b(\tau)$ appearing in path integrals like
+\eqref{eq:9.1.34} or \eqref{eq:9.1.38}. Our prescription, of putting all $Q$s to the left of all
+$P$s, is appropriate only if the measure is interpreted according to
+Eqs. \eqref{eq:9.1.31}--\eqref{eq:9.1.33}. Other measures would lead to other prescriptions
+for operator ordering. The question is not an urgent one, because different
+prescriptions for ordering operators in the Hamiltonian just correspond to
+different choices of the constants that appear as coefficients of the various
+terms in the Hamiltonian, and we generally formulate theories with these
+constants left as arbitrary parameters anyway.
+
+It is difficult to use the general path integral in Eq. \eqref{eq:9.1.38} for numerical
+calculations or as a source of rigorous theorems. For these purposes it is
+better to use the path-integral method to calculate amplitudes in Euclidean
+space, where $t$ is replaced with an imaginary quantity $-ix_4$, and the
+argument of the exponential in Eq. \eqref{eq:9.1.38} is a negative real quantity. In
+this way, instead of jagged paths producing rapid oscillations of the
+integrand from one path to another, all jagged paths are exponentially
+suppressed. Though we shall not go into it here, quantum field theory may
+be formulated from the beginning in terms of Feynman amplitudes in
+Euclidean spacetime~\hyperref[ref:9.8a]{[8a]}. Under certain plausible assumptions, it is possible
+to reconstruct the Feynman amplitudes in Minkowskian spacetime from their
+Euclidean counterparts~\hyperref[ref:9.8b]{[8b]}. But we may as well stick to the Minkowski
+space formulation of the path integral if we are only going to use it to
+calculate Feynman amplitudes in perturbation theory.

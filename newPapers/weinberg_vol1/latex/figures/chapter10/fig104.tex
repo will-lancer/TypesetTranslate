@@ -1,0 +1,43 @@
+% Figure 10.4. Source: physical PDF p. 463 (printed p. 440).
+\begingroup
+\renewcommand{\thefigure}{10.\arabic{figure}}
+\setcounter{figure}{3}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  scalar/.style={draw=black, line width=0.8pt},
+  every node/.style={font=\small}
+]
+  % (a) A one-particle-irreducible two-point graph.  The three
+  % internal scalar lines all join the same pair of quartic vertices.
+  \coordinate (aL) at (-1.15,0.65);
+  \coordinate (aR) at ( 1.15,0.65);
+  \draw[scalar] (-2.65,0.65) -- (aL) -- (aR) -- (2.65,0.65);
+  \draw[scalar] (aL) .. controls (-0.80,1.39) and (0.80,1.39) .. (aR);
+  \draw[scalar] (aL) .. controls (-0.80,-0.09) and (0.80,-0.09) .. (aR);
+  \fill (aL) circle[radius=1.8pt];
+  \fill (aR) circle[radius=1.8pt];
+  \node at (-5.45,0.65) {(a)};
+
+  % (b) Two one-particle-irreducible subgraphs in series.  Cutting the
+  % scalar propagator between them disconnects the complete graph.
+  \coordinate (bLL) at (-3.15,-1.65);
+  \coordinate (bLR) at (-0.85,-1.65);
+  \coordinate (bRL) at ( 0.85,-1.65);
+  \coordinate (bRR) at ( 3.15,-1.65);
+  \draw[scalar] (-4.65,-1.65) -- (bLL) -- (bLR) -- (bRL) -- (bRR) -- (4.65,-1.65);
+  \draw[scalar] (bLL) .. controls (-2.80,-0.91) and (-1.20,-0.91) .. (bLR);
+  \draw[scalar] (bLL) .. controls (-2.80,-2.39) and (-1.20,-2.39) .. (bLR);
+  \draw[scalar] (bRL) .. controls (1.20,-0.91) and (2.80,-0.91) .. (bRR);
+  \draw[scalar] (bRL) .. controls (1.20,-2.39) and (2.80,-2.39) .. (bRR);
+  \foreach \v in {bLL,bLR,bRL,bRR}{\fill (\v) circle[radius=1.8pt];}
+  \node at (-5.45,-1.65) {(b)};
+\end{tikzpicture}
+\caption{Diagrams that (a) are, or (b) are not, one-particle-irreducible. These diagrams are drawn for a theory with some sort of quadrilinear interaction, like the theory of a scalar field $\phi$ with interaction proportional to $\phi^4$.}
+\label{fig:10.4}
+\end{figure}
+\endgroup

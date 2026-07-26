@@ -1,0 +1,45 @@
+% Figure 14.1: lowest-order diagrams for the electron self-energy in an
+% external field. Source: physical PDF p. 599 (printed p. 576).
+\begingroup
+\renewcommand{\thefigure}{14.\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      electron/.style={draw=black, line width=0.75pt},
+      bound/.style={draw=black, double=white, double distance=1.35pt, line width=0.7pt},
+      photon/.style={draw=black, line width=0.7pt,
+        decorate, decoration={snake, amplitude=1.6pt, segment length=8pt}},
+      counterterm/.style={draw=black, line width=0.75pt}
+    ]
+    % Upper left: electron self-energy with the external-field propagator.
+    \draw[electron] (0,1.15) -- (0,4.75);
+    \draw[bound] (0,2.05) -- (0,3.85);
+    \draw[photon] (0,3.85)
+      .. controls (1.05,3.72) and (1.05,2.18) .. (0,2.05);
+
+    % Upper right: photon tadpole ending on a closed bound-electron loop.
+    \draw[electron] (4.0,2.05) -- (4.0,3.85);
+    \draw[photon] (4.0,2.95) -- (5.95,2.95);
+    \draw[bound] (6.65,2.95) circle[radius=0.70];
+
+    % Lower left: local electron counterterm.
+    \draw[electron] (0.45,-0.85) -- (0.45,0.85);
+    \draw[counterterm] (0.33,-0.12) -- (0.57,0.12);
+    \draw[counterterm] (0.33,0.12) -- (0.57,-0.12);
+
+    % Lower right: photon counterterm tadpole.
+    \draw[electron] (4.75,-0.85) -- (4.75,0.85);
+    \draw[photon] (4.75,0) -- (6.65,0);
+    \draw[counterterm] (6.53,-0.12) -- (6.77,0.12);
+    \draw[counterterm] (6.53,0.12) -- (6.77,-0.12);
+  \end{tikzpicture}
+  \caption{Lowest-order Feynman diagrams for the electron self-energy function
+  $\Sigma^*_{\mathcal A}(x,y)$ in the presence of an external field. Here double
+  straight lines represent electron propagators $S_{\mathcal A}$ that include
+  effects of the external field; single straight lines are the incoming and
+  outgoing electron lines; wavy lines are virtual photons; the cross represents
+  renormalization counterterms.}
+  \label{fig:14.1}
+\end{figure}
+\endgroup

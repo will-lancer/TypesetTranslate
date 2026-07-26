@@ -1,0 +1,181 @@
+% Physical pages: 443--446 (printed pages 420--423).
+% Figures: none.
+% Uncertainties: none.
+
+\chapterappendix{}{Gaussian Multiple Integrals}
+
+We wish first to calculate the multiple integral, over a finite number of
+real variables $\xi_r$, of the exponential of a general quadratic function
+of $\xi$:
+\begin{equation}
+  \mathcal{I}\equiv\int_{-\infty}^{\infty}\prod_r d\xi_r
+  \exp\{-Q(\xi)\},
+  \tag{9.A.1}\label{eq:9.A.1}
+\end{equation}
+\begin{equation}
+  Q(\xi)=\frac{1}{2}\sum_{rs}K_{rs}\xi_r\xi_s
+  +\sum_r L_r\xi_r+M,
+  \tag{9.A.2}\label{eq:9.A.2}
+\end{equation}
+where $K_{rs}$, $L_r$, and $M$ are arbitrary constants, except that the
+matrix $K$ is required to be symmetric and non-singular. For this purpose,
+we begin by considering the case where $K_{rs}$, $L_r$, and $M$ are all
+real, with $K_{rs}$ also positive. The result in the general case can then
+be obtained by analytic continuation.
+
+Any real symmetric matrix can be diagonalized by an orthogonal matrix.
+Therefore, there is a matrix $\mathcal{S}$ with transpose
+$\mathcal{S}^{\mathrm T}=\mathcal{S}^{-1}$ such that
+\begin{equation}
+  \bigl(\mathcal{S}^{\mathrm T}K\mathcal{S}\bigr)_{rs}
+  =\delta_{rs}\kappa_r.
+  \tag{9.A.3}\label{eq:9.A.3}
+\end{equation}
+Because $K$ is assumed positive and non-singular, the eigenvalues $\kappa_r$
+are positive-definite. We can use the matrix $\mathcal{S}$ to perform a
+change of variables:
+\begin{equation}
+  \xi_r=\sum_s\mathcal{S}_{rs}\xi'_s.
+  \tag{9.A.4}\label{eq:9.A.4}
+\end{equation}
+The Jacobian $|\operatorname{Det}\mathcal{S}|$ of this transformation is
+unity, so the multiple integral \eqref{eq:9.A.1} is now given by a product of
+ordinary integrals:
+\begin{align}
+  \mathcal{I}
+  &={}e^{-M}\prod_r\int_{-\infty}^{\infty}d\xi'_r
+  \exp\left\{-\frac{\kappa_r}{2}{\xi'_r}^{,2}
+  -\bigl(\mathcal{S}^{\mathrm T}L\bigr)_r\xi'_r\right\}
+  \notag\\
+  ={}&e^{-M}\prod_r\sqrt{\frac{2\pi}{\kappa_r}}
+  \exp\left\{\frac{1}{2\kappa_r}
+  \bigl(\mathcal{S}^{\mathrm T}L\bigr)_r^{,2}\right\}.
+  \tag{9.A.5}\label{eq:9.A.5}
+\end{align}
+But the determinant and the reciprocal of Eq. \eqref{eq:9.A.3} give
+\[
+  \operatorname{Det}K=\prod_r\kappa_r,
+  \qquad
+  K^{-1}_{rs}=\sum_t\mathcal{S}_{rt}\mathcal{S}_{st}\kappa_t^{-1},
+\]
+so Eq. \eqref{eq:9.A.5} may be written
+\begin{equation}
+  \mathcal{I}=\left(\operatorname{Det}\frac{K}{2\pi}\right)^{-1/2}
+  \exp\left\{\frac{1}{2}\sum_{rs}L_rL_sK^{-1}_{rs}-M\right\}.
+  \tag{9.A.6}\label{eq:9.A.6}
+\end{equation}
+Eq. \eqref{eq:9.A.1} defines a function of $K_{rs}$, $L_r$, and $M$ that is analytic
+in $K_{rs}$ in a finite region around the surface where $K_{rs}$ is real and
+positive, where the integral converges, and for such $K_{rs}$ is analytic
+everywhere in $L_r$ and $M$. Since \eqref{eq:9.A.6} equals \eqref{eq:9.A.1} for $K_{rs}$,
+$L_r$, and $M$ all real, with $K_{rs}$ also positive, Eq. \eqref{eq:9.A.6} provides
+an analytic continuation of Eq. \eqref{eq:9.A.1} to the whole complex plane, with a
+cut required by the square root. The sign of the square root is fixed by this
+analytic continuation. In field theory $K_{rs}$ is actually imaginary,
+except for a small real part due to the `$i\epsilon$ term'.
+
+It is useful to express Eq. \eqref{eq:9.A.6} in terms of the stationary point of the
+function \eqref{eq:9.A.2}:
+\begin{equation}
+  \bar\xi_r=-\sum_sK^{-1}_{rs}L_s,
+  \tag{9.A.7}\label{eq:9.A.7}
+\end{equation}
+\begin{equation}
+  \frac{\partial Q(\xi)}{\partial\xi_r}=0
+  \qquad\text{at}\qquad \xi=\bar\xi,
+  \tag{9.A.8}\label{eq:9.A.8}
+\end{equation}
+as
+\begin{equation}
+  \mathcal{I}=\left(\operatorname{Det}\frac{K}{2\pi}\right)^{-1/2}
+  \exp\{-Q(\bar\xi)\}.
+  \tag{9.A.9}\label{eq:9.A.9}
+\end{equation}
+This is the result to remember: \emph{Gaussian integrals can be evaluated up
+to a determinant factor by setting the integration variable equal to the
+point where the argument of the exponential is stationary.}
+
+We next wish to use this result to calculate the integrals
+\begin{equation}
+  I_{r_1r_2\cdots r_{2N}}\equiv
+  \int\left(\prod_r d\xi_r\right)\xi_{r_1}\xi_{r_2}\cdots\xi_{r_{2N}}
+  \exp\left\{-\frac{1}{2}\sum_{rs}K_{rs}\xi_r\xi_s\right\}.
+  \tag{9.A.10}\label{eq:9.A.10}
+\end{equation}
+(Integrals of this sort with an odd number of $\xi$-factors in the integrand
+obviously vanish.) From the power-series expression of
+$\exp(-\sum_rL_r\xi_r)$ in Eq. \eqref{eq:9.A.1}, we have the sum rule
+\begin{align}
+  &\sum_{N=0}^{\infty}\sum_{r_1r_2\cdots r_{2N}}
+  \frac{1}{(2N)!}I_{r_1r_2\cdots r_{2N}}
+  L_{r_1}L_{r_2}\cdots L_{r_{2N}}
+  \notag\\
+  &\quad={}
+  \int\left(\prod_r d\xi_r\right)
+  \exp\left\{-\sum_rL_r\xi_r-\frac{1}{2}\sum_{rs}K_{rs}\xi_r\xi_s\right\}
+  \notag\\
+  &\quad={}
+  \left[\operatorname{Det}\left(\frac{K}{2\pi}\right)\right]^{-1/2}
+  \exp\left\{\frac{1}{2}\sum_{rs}L_rL_sK^{-1}_{rs}\right\}
+  \notag\\
+  &\quad={}
+  \left[\operatorname{Det}\left(\frac{K}{2\pi}\right)\right]^{-1/2}
+  \sum_{N=0}^{\infty}\frac{1}{N!2^N}
+  \left(\sum_{rs}L_rL_sK^{-1}_{rs}\right)^N.
+  \tag{9.A.11}\label{eq:9.A.11}
+\end{align}
+Comparing the coefficients of $L_{r_1}L_{r_2}\cdots L_{r_{2N}}$ on both
+sides, we see that $I_{r_1r_2\cdots r_{2N}}$ must be proportional to a sum
+of products of elements of $K^{-1}$, which symmetry requires to take the
+form
+\begin{equation}
+  I_{r_1r_2\cdots r_{2N}}
+  =c_N\sum_{\substack{\text{pairings}\\\text{of }r_1\ldots r_{2N}}}
+  \prod_{\text{pairs}}(K^{-1})_{\text{paired indices}}.
+  \tag{9.A.12}\label{eq:9.A.12}
+\end{equation}
+Here the sum is over all ways of pairing the indices $r_1\cdots r_{2N}$,
+with two pairings being considered the same if they differ only by the order
+of the pairs, or by the order of indices within a pair. To calculate the
+constant factor $c_N$, we note that the number $\nu_N$ of terms in the sum
+over pairings in Eq. \eqref{eq:9.A.12} is equal to the number $(2N)!$ of permutations
+of the indices, divided by the number of ways $N!$ of permuting index pairs
+and by the number $2^N$ of permutations within index pairs
+\begin{equation}
+  \nu_N=\frac{(2N)!}{N!2^N}.
+  \tag{9.A.13}\label{eq:9.A.13}
+\end{equation}
+Therefore, Eq. \eqref{eq:9.A.12} gives
+\begin{equation}
+  \sum_{r_1r_2\cdots r_{2N}}L_{r_1}L_{r_2}\cdots L_{r_{2N}}
+  I_{r_1r_2\cdots r_{2N}}
+  =\nu_Nc_N\left(\sum_{rs}L_rL_sK^{-1}_{rs}\right)^N.
+  \tag{9.A.14}\label{eq:9.A.14}
+\end{equation}
+Comparing this with Eq. \eqref{eq:9.A.11} shows that the factors $(2N)!$ and
+$N!2^N$ are cancelled by $\nu_N$, leaving us with
+\begin{equation}
+  c_N=\left[\operatorname{Det}\left(\frac{K}{2\pi}\right)\right]^{-1/2}.
+  \tag{9.A.15}\label{eq:9.A.15}
+\end{equation}
+For instance,
+\begin{equation}
+  I_{r_1r_2}=I_0(K^{-1})_{r_1r_2},
+  \tag{9.A.16}\label{eq:9.A.16}
+\end{equation}
+\begin{align}
+  I_{r_1r_2r_3r_4}=I_0\bigl[{}&(K^{-1})_{r_1r_2}(K^{-1})_{r_3r_4}
+  +(K^{-1})_{r_1r_3}(K^{-1})_{r_2r_4}
+  \notag\\
+  &+(K^{-1})_{r_1r_4}(K^{-1})_{r_2r_3}\bigr],
+  \tag{9.A.17}\label{eq:9.A.17}
+\end{align}
+and so on, where $I_0$ is the integral with no indices
+\begin{align}
+  I_0
+  &={}\int\left(\prod_r d\xi_r\right)
+  \exp\left\{-\frac{1}{2}\sum_{rs}K_{rs}\xi_r\xi_s\right\}
+  \notag\\
+  &={}\left[\operatorname{Det}\left(\frac{K}{2\pi}\right)\right]^{-1/2}.
+  \tag{9.A.18}\label{eq:9.A.18}
+\end{align}

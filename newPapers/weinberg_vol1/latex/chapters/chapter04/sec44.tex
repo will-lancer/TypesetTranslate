@@ -1,0 +1,367 @@
+% Chunk: \S4.4 Structure of the Interaction
+% Source: Weinberg QFT Vol. I, physical pp. 205--211 (printed pp. 182--188)
+% Status: source-reviewed and compile-clean; equations (4.4.1)--(4.4.10); no figures; no uncertainties
+
+\subsection{Structure of the Interaction}
+
+We now ask, what sort of Hamiltonian will yield an $S$-matrix that satisfies the
+cluster decomposition principle? It is here that the formalism of creation and
+annihilation operators comes into its own. The answer is contained in the
+theorem that the $S$-matrix satisfies the cluster decomposition principle if
+(and as far as I know, only if) the Hamiltonian can be expressed as in Eq.
+\eqref{eq:4.2.8}:
+\begin{align}
+H={}&\sum_{N=0}^{\infty}\sum_{M=0}^{\infty}
+ \int dq'_1\cdots dq'_N\,dq_1\cdots dq_M \notag\\
+&\quad\cdot a^\dagger_{q'_1}\cdots a^\dagger_{q'_N}
+ a_{q_M}\cdots a_{q_1} \notag\\
+&\quad\cdot h_{NM}(q'_1\cdots q'_N,q_1\cdots q_M).
+\tag{4.4.1}
+\label{eq:4.4.1}
+\end{align}
+with coefficient functions $h_{NM}$ that contain just a \emph{single}
+three-dimensional momentum-conservation delta function (returning here briefly
+to a more explicit notation)
+\begin{align}
+&h_{NM}(\mathbf{p}'_1\sigma'_1 n'_1\cdots
+ \mathbf{p}'_N\sigma'_N n'_N,
+ \mathbf{p}_1\sigma_1 n_1\cdots \mathbf{p}_M\sigma_M n_M)
+ \notag\\
+&\quad={}
+ \delta^3(\mathbf{p}'_1+\cdots+\mathbf{p}'_N
+ -\mathbf{p}_1-\cdots-\mathbf{p}_N) \notag\\
+&\qquad\cdot
+ \widetilde h_{NM}(\mathbf{p}'_1\sigma'_1 n'_1\cdots
+ \mathbf{p}'_N\sigma'_N n'_N,
+ \mathbf{p}_1\sigma_1 n_1\cdots \mathbf{p}_M\sigma_M n_M),
+\tag{4.4.2}
+\label{eq:4.4.2}
+\end{align}
+where $\widetilde h_{NM}$ contains no delta function factors. Note that
+Eq.~\eqref{eq:4.4.1} by itself has no content---we saw in Section 4.2 that \emph{any}
+operator can be put in this form. It is only Eq.~\eqref{eq:4.4.1} combined with the
+requirement that $h_{NM}$ has only the single delta function shown in
+Eq.~\eqref{eq:4.4.2} that guarantees that the $S$-matrix satisfies the cluster decomposition
+principle.
+
+The validity of this theorem in perturbation theory will become obvious when we
+develop the Feynman diagram formalism in Chapter 6. The trusting reader may
+prefer to skip the rest of the present chapter, and move on to consider the
+implications of this theorem in Chapter 5. However, the proof has some
+instructive features, and will help to clarify in what sense the field theory of
+the next chapter is inevitable.
+
+To prove this theorem, we make use of perturbation theory in its time-dependent
+form. (One of the advantages of time-dependent perturbation theory is that it
+makes the combinatorics underlying the cluster decomposition principle much
+more transparent; if $E$ is a sum of one-particle energies then $e^{-iEt}$ is a
+product of functions of the individual energies, while
+$[E-E_\alpha+i\epsilon]^{-1}$ is not.) The $S$-matrix is given by Eq.~\eqref{eq:3.5.10}
+as\footnote{We are now adopting the convention that for $n=0$, the time-ordered
+product in Eq.~\eqref{eq:4.4.3} is taken as the unit operator, so the $n=0$ term in the
+sum just yields the term $\delta(\beta-\alpha)$ in $S_{\beta\alpha}$.}
+\begin{equation}
+S_{\beta\alpha}=\sum_{n=0}^{\infty}\frac{(-i)^n}{n!}
+ \int_{-\infty}^{\infty}dt_1\cdots dt_n\,
+ \bra{\beta}T\{H_I(t_1)\cdots H_I(t_n)\}\ket{\alpha},
+\tag{4.4.3}
+\label{eq:4.4.3}
+\end{equation}
+where the Hamiltonian is split into a free-particle part $H_0$ and an
+interaction $H_{\mathrm{int}}$, and
+\begin{equation}
+H_I(t)\equiv \exp(iH_0t)H_{\mathrm{int}}\exp(-iH_0t).
+\tag{4.4.4}
+\label{eq:4.4.4}
+\end{equation}
+Now, the states $\ket{\alpha}$ and $\ket{\beta}$ may be expressed as in
+Eq.~\eqref{eq:4.2.2} as products of creation operators acting on the vacuum
+$\ket{\Omega}$, and $H_I(t)$ is itself a sum of products of creation and
+annihilation operators, so each term in the sum~\eqref{eq:4.4.3} may be written as a sum
+of vacuum expectation values of products of creation and annihilation
+operators. By using the commutation or anticommutation relations~\eqref{eq:4.2.5} we may
+move each annihilation operator in turn to the right past all the creation
+operators. For each annihilation operator moved to the right past a creation
+operator we have two terms, as shown by writing Eq.~\eqref{eq:4.2.5} in the form
+\[
+a_{q'}a^\dagger_q=\mathbin{\pm}a^\dagger_q a_{q'}+\delta(q'-q).
+\]
+
+Moving other creation operators past the annihilation operator in the first
+term generates yet more terms. But Eq.~\eqref{eq:4.2.4} shows that any annihilation
+operator that moves all the way to the right and acts on $\ket{\Omega}$ gives
+zero, so in the end all we have left is the delta functions. In this way, the
+vacuum expectation value of a product of creation and annihilation operators is
+given by a sum of different terms, each term equal to a product of delta
+functions and $\pm$ signs from the commutators or anticommutators. It follows
+that each term in Eq.~\eqref{eq:4.4.3} may be expressed as a sum of terms, each term
+equal to a product of delta functions and $\pm$ signs from the commutators or
+anticommutators and whatever factors are contributed by $H_I(t)$, integrated
+over all the times and integrated and summed over the momenta, spins, and
+species in the arguments of the delta functions.
+
+Each of the terms generated in this way may be symbolized by a diagram. (This
+is not yet the full Feynman diagram formalism, because we are not yet going to
+associate numerical quantities with the ingredients in the diagrams; we are
+using the diagrams here only as a way of keeping track of three-momentum delta
+functions.) Draw $n$ points, called \emph{vertices}, one for each $H_I(t)$
+operator. For each delta function produced when an annihilation operator in one
+of these $H_I(t)$ operators moves past a creation operator in the initial state
+$\ket{\alpha}$, draw a line coming into the diagram from below that ends at the
+corresponding vertex. For each delta function produced when an annihilation
+operator in the adjoint of the final state $\ket{\beta}$ moves past a creation
+operator in one of the $H_I(t)$, draw a line from the corresponding vertex
+upwards out of the diagram. For each delta function produced when an
+annihilation operator in one $H_I(t)$ moves past a creation operator in another
+$H_I(t)$ draw a line between the two corresponding vertices. Finally, for each
+delta function produced when an annihilation operator in the adjoint of the
+final state moves past a creation operator in the initial state, draw a line
+from bottom to top, right through the diagrams. Each of the delta functions
+associated with one of these lines enforces the equality of the momentum
+arguments of the pair of creation and annihilation operators represented by the
+line. There is also at least one delta function contributed by each of the
+vertices, which enforces the conservation of the total three-momentum at the
+vertex.
+
+Such a diagram may be connected (every point connected to every other by a set
+of lines) and if not connected, it breaks up into a number of connected pieces.
+The $H_I(t)$ operator associated with a vertex in one connected component
+effectively commutes with the $H_I(t)$ associated with any vertex in any other
+connected component, because for this diagram, we are not including any terms
+in which an annihilation operator in one vertex destroys a particle that is
+produced by a creation operator in the other vertex---if we did, the two
+vertices would be in the same connected component. Thus the matrix element in
+Eq.~\eqref{eq:4.4.3} can be expressed as a sum over \emph{products} of contributions,
+one from each connected component:
+\begin{align}
+&\bra{\beta}T\{H_I(t_1)\cdots H_I(t_n)\}\ket{\alpha}
+\notag\\
+&\qquad={}
+\sum_{\text{clusterings}}(\pm)\prod_{j=1}^{\nu}
+ \Bigl(\bra{\beta_j}T\{H_I(t_{j1})\cdots H_I(t_{jn_j})\}
+ \ket{\alpha_j}\Bigr)_C.
+\tag{4.4.5}
+\label{eq:4.4.5}
+\end{align}
+Here the sum is over all ways of splitting up the incoming and outgoing
+particles and $H_I(t)$ operators into $\nu$ clusters (including a sum over
+$\nu$ from 1 to $n$) with the $n_j$ operators
+$H_I(t_{j1})\cdots H_I(t_{jn_j})$ and the subsets of initial particles
+$\alpha_j$ and final particles $\beta_j$ all in the $j$th cluster. Of course,
+this means that
+\[
+n=n_1+\cdots+n_\nu
+\]
+and also the set $\alpha$ is the union of all the particles in the subsets
+$\alpha_1,\alpha_2,\ldots,\alpha_\nu$, and likewise for the final state. Some
+of the clusters in Eq.~\eqref{eq:4.4.5} may contain no vertices at all, i.e., $n_j=0$;
+for these factors, we must take the matrix element factor in Eq.~\eqref{eq:4.4.5} to
+vanish unless $\beta_j$ and $\alpha_j$ are both one-particle states (in which
+case it is just a delta function $\delta(\alpha_j-\beta_j)$), because the only
+connected diagrams without vertices consist of a single line running through
+the diagram from bottom to top. Most important, the subscript $C$ in
+Eq.~\eqref{eq:4.4.5} means that we exclude any contributions corresponding to disconnected
+diagrams, that is, any contributions in which any $H_I(t)$ operator or any
+initial or final particle is not connected to every other by a sequence of
+particle creations and annihilations.
+
+Now let us use Eq.~\eqref{eq:4.4.5} in the sum~\eqref{eq:4.4.3}. Every time variable is integrated
+from $-\infty$ to $+\infty$, so it makes no difference which of the
+$t_1,\ldots,t_n$ are sorted out into each cluster. The sum over clusterings
+therefore yields a factor $n!/n_1!n_2!\cdots n_\nu!$, equal to the number of
+ways of sorting out $n$ vertices into $\nu$ clusters, each containing
+$n_1,n_2,\ldots$ vertices:
+\begin{align*}
+&\int_{-\infty}^{\infty}dt_1\cdots dt_n\,
+ \bra{\beta}T\{H_I(t_1)\cdots H_I(t_n)\}\ket{\alpha}
+\\
+&\quad={}
+\frac{n!}{n_1!n_2!\cdots n_\nu!}
+\sum_{\mathrm{PART}}(\pm)
+\sum_{n_1+\cdots+n_\nu=n}
+\prod_{j=1}^{\nu}\int_{-\infty}^{\infty}
+ dt_{j1}\cdots dt_{jn_j}
+\\
+&\qquad\quad\cdot
+ \Bigl(\bra{\beta_j}T\{H_I(t_{j1})\cdots H_I(t_{jn_j})\}
+ \ket{\alpha_j}\Bigr)_C.
+\end{align*}
+The first sum here is over all ways of partitioning the particles in the initial
+and final states into clusters $\alpha_1\cdots\alpha_\nu$ and
+$\beta_1\cdots\beta_\nu$ (including a sum over the number $\nu$ of clusters).
+The factor $n!$ here cancels the $1/n!$ in Eq.~\eqref{eq:4.4.3}, and the factor $(-i)^n$
+in the perturbation series for~\eqref{eq:4.4.5} can be written as a product
+$(-i)^{n_1}\cdots(-i)^{n_\nu}$, so instead of summing over $n$ and then summing
+separately over $n_1,\ldots,n_\nu$, constrained by
+$n_1+\cdots+n_\nu=n$, we can simply sum independently over each
+$n_1,\ldots,n_\nu$. This gives finally
+\begin{align*}
+S_{\beta\alpha}
+={}&\sum_{\mathrm{PART}}(\pm)\prod_{j=1}^{\nu}
+ \sum_{n_j=0}^{\infty}\frac{(-i)^{n_j}}{n_j!}
+ \int_{-\infty}^{\infty}dt_{j1}\cdots dt_{jn_j}
+\\
+&\quad\cdot
+ \Bigl(\bra{\beta_j}T\{H_I(t_{j1})\cdots H_I(t_{jn_j})\}
+ \ket{\alpha_j}\Bigr)_C.
+\end{align*}
+Comparing this with the definition~\eqref{eq:4.2.2} of the connected matrix elements
+$S^C_{\beta\alpha}$, we see that these matrix elements are just given by the
+factors in the product here
+\begin{equation}
+S^C_{\beta\alpha}=\sum_{n=0}^{\infty}\frac{(-i)^n}{n!}
+ \int_{-\infty}^{\infty}dt_1\cdots dt_n\,
+ \Bigl(\bra{\beta}T\{H_I(t_1)\cdots H_I(t_n)\}
+ \ket{\alpha}\Bigr)_C.
+\tag{4.4.6}
+\label{eq:4.4.6}
+\end{equation}
+(The subscript $j$ is dropped on all the $t$s and $n$s, as these are now mere
+integration and summation variables.) We see that $S^C_{\beta\alpha}$ is
+calculated by a very simple prescription: \emph{$S^C_{\beta\alpha}$ is the sum
+of all contributions to the $S$-matrix that are connected, in the sense that we
+drop all terms in which any initial or final particle or any operator $H_I(t)$
+is not connected to all the others by a sequence of particle creations and
+annihilations.} This justifies the adjective `connected' for $S^C$.
+
+As we have seen, momentum is conserved at each vertex and along every line, so
+the connected parts of the $S$-matrix individually conserve momentum:
+$S^C_{\beta\alpha}$ contains a factor $\delta^3(\mathbf{p}_\beta-
+\mathbf{p}_\alpha)$. What we want to prove is that $S^C_{\beta\alpha}$ contains
+no other delta functions.
+
+We now make the assumption that the coefficient fractions $h_{NM}$ in the
+expansion~\eqref{eq:4.4.1} of the Hamiltonian in terms of creation and annihilation
+operators are proportional to a \emph{single} three-dimensional delta function,
+that ensures momenta conservation. This is automatically true for the
+free-particle Hamiltonian $H_0$, so it is also then true separately for the
+interaction $H_{\mathrm{int}}$. Returning to the graphical interpretation of
+the matrix elements that we have been using, this means that each vertex
+contributes one three-dimensional delta function. (The other delta functions in
+matrix elements $(H_{\mathrm{int}})_{\gamma\delta}$ simply keep the momentum of
+any particle that is not created or annihilated at the corresponding vertex
+unchanged.) Now, most of these delta functions simply go to fix the momentum of
+intermediate particles. The only momenta that are left unfixed by such delta
+functions are those that circulate in loops of internal lines. (Any line which
+if cut leaves the diagram disconnected carries a momentum that is fixed by
+momentum conservation as some linear combination of the momenta of the lines
+coming into or going out of the diagram. If the diagram has $L$ lines that can
+all be cut at the same time without the diagram becoming disconnected, then we
+say it has $L$ independent loops, and there are $L$ momenta that are not fixed
+by momentum conservation.) With $V$ vertices, $I$ internal lines, and $L$
+loops, there are $V$ delta functions, of which $I-L$ go to fix internal
+momenta, leaving $V-I+L$ delta functions relating the momenta of incoming or
+outgoing particles. But a well-known topological identity\footnote{A graph
+consisting of a single vertex has $V=1$, $L=0$, and $C=1$. If we add $V-1$
+vertices with just enough internal lines to keep the graph connected, we have
+$I=V-1$, $L=0$, and $C=1$. Any additional internal lines attached (without new
+vertices) to the same connected graph produce an equal number of loops, so
+$I=V+L-1$ and $C=1$. If a disconnected graph consists of $C$ such connected
+parts, the sums of $I$, $V$, and $L$ in each connected part will then satisfy
+$\sum I=\sum V+\sum L-C$.} tells that for any graph consisting of $C$
+connected pieces, the numbers of vertices, internal lines, and loops are
+related by
+\begin{equation}
+V-I+L=C.
+\tag{4.4.7}
+\label{eq:4.4.7}
+\end{equation}
+Hence for a connected matrix element like $S^C_{\beta\alpha}$, which arises
+from graphs with $C=1$, we find just a single three-dimensional delta function
+$\delta^3(\mathbf{p}_\beta-\mathbf{p}_\alpha)$, as was to be proved.
+
+It was not important in the above argument that the time variables were
+integrated from $-\infty$ to $+\infty$. Thus exactly the same arguments can be
+used to show that if the coefficients $h_{N,M}$ in the Hamiltonian contain just
+single delta functions, then $U(t,t_0)$ can also be decomposed into connected
+parts, each containing a single momentum-conservation delta function factor.
+On the other hand, the connected part of the $S$-matrix also contains an
+energy-conservation delta function, and when we come to Feynman diagrams in
+Chapter 6 we shall see that $S^C_{\beta\alpha}$ contains only a single
+energy-conservation delta function, $\delta(E_\beta-E_\alpha)$, while
+$U(t,t_0)$ contains no energy-conservation delta functions at all.
+
+It should be emphasized that the requirement that $h_{NM}$ in Eq.~\eqref{eq:4.4.1}
+should have only a single three-dimensional momentum conservation delta
+function factor is very far from trivial, and has far-reaching implications.
+For instance, assume that $H_{\mathrm{int}}$ has non-vanishing matrix elements
+between two-particle states. Then Eq.~\eqref{eq:4.4.1} must contain a term with $N=M=2$,
+and coefficient
+\begin{equation}
+v_{2,2}(\mathbf{p}'_1\mathbf{p}'_2,
+ \mathbf{p}_1\mathbf{p}_2)
+=(H_{\mathrm{int}})_{\mathbf{p}'_1\mathbf{p}'_2;
+ \mathbf{p}_1\mathbf{p}_2}.
+\tag{4.4.8}
+\label{eq:4.4.8}
+\end{equation}
+(We are here temporarily dropping spin and species labels.) But then the matrix
+element of the interaction between three-particle states is
+\begin{align}
+(H_{\mathrm{int}})_{\mathbf{p}'_1\mathbf{p}'_2\mathbf{p}'_3;
+ \mathbf{p}_1\mathbf{p}_2\mathbf{p}_3}
+={}&v_{3,3}(\mathbf{p}'_1\mathbf{p}'_2\mathbf{p}'_3,
+ \mathbf{p}_1\mathbf{p}_2\mathbf{p}_3) \notag\\
+&+v_{2,2}(\mathbf{p}'_1\mathbf{p}'_2,
+ \mathbf{p}_1\mathbf{p}_2)\,
+ \delta^3(\mathbf{p}'_3-\mathbf{p}_3)
+ \mathbin{\pm}\text{ permutations}.
+\tag{4.4.9}
+\label{eq:4.4.9}
+\end{align}
+
+As mentioned at the beginning of this chapter, we might try to make a
+relativistic quantum theory that is not a field theory by choosing $v_{2,2}$ so
+that the two-body $S$-matrix is Lorentz-invariant, and adjusting the rest of the
+Hamiltonian so that there is no scattering in states containing three or more
+particles. We would then have to take $v_{3,3}$ to cancel the other terms in
+Eq.~\eqref{eq:4.4.9}
+\begin{align}
+v_{3,3}(\mathbf{p}'_1\mathbf{p}'_2\mathbf{p}'_3,
+ \mathbf{p}_1\mathbf{p}_2\mathbf{p}_3)
+={}&-v_{2,2}(\mathbf{p}'_1\mathbf{p}'_2,
+ \mathbf{p}_1\mathbf{p}_2)\,
+ \delta^3(\mathbf{p}'_3-\mathbf{p}_3)
+ \mathbin{\mp}\text{ permutations}.
+\tag{4.4.10}
+\label{eq:4.4.10}
+\end{align}
+However, this would mean that each term in $v_{3,3}$ contains \emph{two} delta
+function factors (recall that
+$v_{2,2}(\mathbf{p}'_1\mathbf{p}'_2,\mathbf{p}_1\mathbf{p}_2)$ has a factor
+$\delta^3(\mathbf{p}'_1+\mathbf{p}'_2-\mathbf{p}_1-\mathbf{p}_2)$) and this
+would violate the cluster decomposition principle. Thus in a theory satisfying
+the cluster decomposition principle, the existence of scattering processes
+involving two particles makes processes involving three or more particles
+inevitable.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+When we set out to solve three-body problems in quantum theories that satisfy
+the cluster decomposition principle, the term $v_{3,3}$ in Eq.~\eqref{eq:4.4.9} gives no
+particular trouble, but the extra delta function in the other terms makes the
+Lippmann--Schwinger equation difficult to solve directly. The problem is that
+these delta functions make the kernel
+$[E_\alpha-E_\beta+i\epsilon]^{-1}(H_{\mathrm{int}})_{\beta\alpha}$ of this
+equation not square-integrable, even after we factor out an overall momentum
+conservation delta function. In consequence, it cannot be approximated by a
+finite matrix, even one of very large rank. To solve problems involving three
+or more particles, it is necessary to replace the Lippmann--Schwinger equation
+with one that has a connected right-hand side. Such equations have been
+developed for the scattering of three or more particles~\hyperref[ref:4.8]{[8,}\hyperref[ref:4.9]{9]}, and in
+non-relativistic scattering problems they can be solved recursively, but they
+have not turned out to be useful in relativistic theories and so will not be
+described in detail here.
+
+However, recasting the Lippmann--Schwinger equation in this manner is useful in
+another way. Our arguments in this section have so far relied on perturbation
+theory. I do not know of any non-perturbative proof of the main theorem of this
+section, but it has been shown~\hyperref[ref:4.9]{[9]} that these reformulated non-perturbative
+dynamical equations are \emph{consistent} with the requirement that
+$U^C(t,t_0)$ (and hence $S^C$) should also contain only a single
+momentum-conservation delta function, as required by the cluster decomposition
+principle, provided that the Hamiltonian satisfies our condition that the
+coefficient functions $h_{N,M}$ each contain only a single
+momentum-conservation delta function.
