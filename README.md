@@ -20,6 +20,4 @@ Completed:
 * Atiyah and MacDonald's *Introduction to Commutative Algebra*
     * I have an edited copy and an unedited one in the repo. The edited
       one adds more examples and pedagogy to the text.
-
-To-do:
-* Weinberg's QFT textbooks
+* Weinberg's QFT: volumes I - III
