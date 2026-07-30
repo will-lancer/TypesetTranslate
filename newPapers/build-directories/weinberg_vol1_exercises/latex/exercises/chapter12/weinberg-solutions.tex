@@ -1,4 +1,203 @@
 \chapterbackmatter{Solutions to Weinberg Exercises}
 \ExerciseEditorialNote
 
-% Editorial solutions are inserted here with \WeinbergSolution{N}.
+\begin{enumerate}
+\WeinbergSolution{1}
+In \(D\) space-time dimensions a canonically normalized real scalar has
+\[
+ [\phi]=\frac{D-2}{2},\qquad [\partial_\mu]=1.
+\]
+An operator is power-counting renormalizable when its dimension is at most
+\(D\); it is superrenormalizable when the inequality is strict.
+
+In \(D=3\), \([\phi]=1/2\).  Apart from a constant and the kinetic term, the
+complete polynomial list is
+\[
+ \phi,\quad \phi^2,\quad\phi^3,\quad\phi^4,\quad\phi^5,\quad\phi^6.
+\]
+The first five monomials are superrenormalizable and \(\phi^6\) is
+marginal.  No additional derivative interaction is allowed: after
+integration by parts the first candidate is
+\(\phi^n(\partial\phi)^2\), of dimension \(3+n/2\), and only \(n=0\)
+gives the kinetic term.
+
+In \(D=6\), \([\phi]=2\), so the list is
+\[
+ \phi,\qquad \phi^2,\qquad \phi^3,
+\]
+together with the kinetic term and a constant.  The cubic interaction is
+marginal; the lower powers are superrenormalizable.
+
+The two-dimensional case is exceptional because \([\phi]=0\).  Every
+polynomial potential is superrenormalizable:
+\[
+ V(\phi)=\sum_{n\geq0}g_n\phi^n,\qquad [g_n]=2.
+\]
+At the level of local power counting one may also write
+\[
+ \frac12 Z(\phi)(\partial_\mu\phi)(\partial^\mu\phi),
+\]
+with an arbitrary polynomial \(Z\); all of its terms are marginal.  For one
+scalar and nonsingular \(Z\), however, the field redefinition
+\(d\chi/d\phi=\sqrt{Z(\phi)}\) restores a canonical kinetic term.  Thus an
+operator basis modulo field redefinitions consists simply of the kinetic
+term and the arbitrary potential.  Terms containing more than two
+derivatives are nonrenormalizable in \(D=2\).
+
+\WeinbergSolution{2}
+Let \(G\) be the two-loop electron self-energy graph in which the internal
+photon joins two points of the electron line.  There are two logarithmically
+divergent one-loop vertex subgraphs, \(\gamma_1\) and \(\gamma_2\), according
+to which external electron segment is included.  They share an internal
+electron line and therefore overlap.  In particular, a BPHZ forest may
+contain \(\gamma_1\) or \(\gamma_2\), but not both.
+
+For a vertex subgraph let \(t_\gamma\) denote its degree-zero Taylor
+operation in the momenta entering the subgraph.  If no other subdivergence is
+present, the subdivergence-subtracted integrand is
+\[
+ \bar R I_G=I_G-t_{\gamma_1}I_G-t_{\gamma_2}I_G.
+\]
+Each subtraction replaces the corresponding one-loop vertex by its local
+divergent part,
+\[
+ t_{\gamma_i}\Gamma^\mu_{\text{1 loop}}
+   =L_{\rm div}\gamma^\mu .
+\]
+This is exactly the graph produced by inserting the one-loop QED vertex
+counterterm at that location.  The Ward identity gives
+\(L_{\rm div}=(Z_2-1)_{\rm div}\), so the same coefficient is already fixed
+by electron field renormalization.
+
+Consider a subintegration in which the loop momentum of \(\gamma_1\) becomes
+large while the other independent momentum is held fixed.  The difference
+\((1-t_{\gamma_1})I_G\) falls by one additional inverse power and is
+convergent.  The analogous statement holds for \(\gamma_2\).  There is no
+double subtraction \(t_{\gamma_1}t_{\gamma_2}I_G\), precisely because the
+two subgraphs overlap rather than form a forest.  Generic linear
+combinations of the two loop momenta are already superficially convergent.
+
+After these two local vertex subtractions, only the overall electron
+self-energy divergence remains.  Its degree is one, so Lorentz invariance
+restricts its Taylor polynomial to
+\[
+ t_G\bar R I_G=A_{\rm div}+B_{\rm div}\,i\sl p.
+\]
+The mass and field-strength counterterms cancel these two terms.  Equivalently,
+the full forest formula is
+\[
+ \boxed{\quad
+ R I_G=(1-t_G)
+ \bigl(I_G-t_{\gamma_1}I_G-t_{\gamma_2}I_G\bigr),
+ \quad}
+\]
+with each Taylor term represented by an ordinary QED counterterm graph.
+Thus every ultraviolet subintegration, including the two overlapping
+regions, and the overall integration are finite.
+
+\WeinbergSolution{3}
+It is useful to make both the polynomial and the convergence of the
+remainder explicit.  Work in Euclidean momentum and define
+\(\Pi_E(q)\) as the additive correction to the inverse scalar propagator.
+The closed fermion loop gives
+\[
+ \Pi_E^{(1)}(q)
+ =4g^2\int_0^1dx\int\frac{d^4\ell}{(2\pi)^4}
+ \frac{m_\psi^2-\ell^2+x(1-x)q^2}
+ {\bigl[\ell^2+m_\psi^2+x(1-x)q^2\bigr]^2},
+\]
+where the shift \(\ell=k+xq\) has been made.  A regulator is understood in
+the two terms that follow.
+
+Put \(a=x(1-x)\), \(u=\ell^2+m_\psi^2\), and
+\[
+ F(\ell,q^2;x)=\frac{m_\psi^2-\ell^2+a q^2}{(u+a q^2)^2}.
+\]
+Taylor's formula through first order gives
+\[
+ \Pi_E^{(1)}(q)=A+Bq^2+\Pi_{\rm conv}(q^2),
+\]
+where
+\[
+ A=4g^2\int_0^1dx\int\frac{d^4\ell}{(2\pi)^4}
+       \frac{m_\psi^2-\ell^2}{u^2},
+\]
+\[
+ B=4g^2\int_0^1dx\int\frac{d^4\ell}{(2\pi)^4}
+       \frac{a(3\ell^2-m_\psi^2)}{u^3},
+\]
+and
+\[
+ \boxed{\;
+ \Pi_{\rm conv}(q^2)=4g^2\int_0^1dx\int\frac{d^4\ell}{(2\pi)^4}
+ \left[
+ F(\ell,q^2;x)-\frac{m_\psi^2-\ell^2}{u^2}
+ -q^2\frac{a(3\ell^2-m_\psi^2)}{u^3}
+ \right].\;}
+\]
+The first line in the bracket has had its constant and \(q^2\) Taylor
+coefficients removed.  Consequently the bracket is
+\(O(q^4/\ell^6)\) for large \(\ell\), and the four-dimensional integral is
+absolutely ultraviolet convergent.
+
+The divergent constants \(A\) and \(B\) are local: they multiply
+\(\phi^2\) and \((\partial\phi)^2\), respectively.  A scalar mass
+counterterm and a scalar field-strength counterterm therefore remove them.
+Analytic continuation \(q_E^2=-q^2-i0\) gives the requested Minkowski
+self-energy and its physical cut.
+
+\WeinbergSolution{4}
+Choose an operator basis modulo integrations by parts and the leading QED
+equations of motion.  The first corrections have dimension five.  For one
+Dirac field there are two independent Hermitian dipoles,
+\[
+ \boxed{\;
+ \mathcal L^{(5)}
+ =\frac{c_M}{M}\bar\psi\sigma^{\mu\nu}\psi F_{\mu\nu}
+ +\frac{c_E}{M}i\bar\psi\sigma^{\mu\nu}\gamma_5\psi F_{\mu\nu}.
+ \;}
+\]
+The first is the magnetic Pauli operator and the second is the electric
+dipole operator.  The latter would be forbidden by P or T, but those
+symmetries were not assumed.  Operators such as
+\(\bar\psi D^2\psi\) reduce, by
+\[
+ (i\slashed D)^2=-D^2-\frac{e}{2}\sigma^{\mu\nu}F_{\mu\nu},
+\]
+to these dipoles and lower-dimensional terms.
+
+At dimension six an economical on-shell basis is most transparent in
+chiral notation:
+\[
+\boxed{\;
+ \mathcal L^{(6)}=\frac1{M^2}\left[
+ c_{LL}(\bar\psi_L\gamma_\mu\psi_L)
+        (\bar\psi_L\gamma^\mu\psi_L)
+ +c_{RR}(\bar\psi_R\gamma_\mu\psi_R)
+        (\bar\psi_R\gamma^\mu\psi_R)
+ +c_{LR}(\bar\psi_L\gamma_\mu\psi_L)
+        (\bar\psi_R\gamma^\mu\psi_R)
+ \right].\;}
+\]
+Fierz identities reduce all other four-fermion contractions for a single
+species to these three.  Unequal \(c_{LL}\) and \(c_{RR}\) and the equivalent
+vector--axial form make clear that discrete symmetries need not be present.
+
+An off-shell basis may instead retain the two anapole/charge-radius
+operators
+\[
+ (\bar\psi\gamma_\mu\psi)\partial_\nu F^{\nu\mu},
+ \qquad
+ (\bar\psi\gamma_\mu\gamma_5\psi)\partial_\nu F^{\nu\mu},
+\]
+and the photon operator
+\((\partial_\mu F^{\mu\nu})(\partial^\rho F_{\rho\nu})\).
+The Maxwell equation
+\(\partial_\nu F^{\nu\mu}=e\bar\psi\gamma^\mu\psi\) converts them into
+the four-fermion basis above, so they must not be counted twice.  A cubic
+Abelian field-strength scalar vanishes in four dimensions, while the
+remaining two-fermion derivative terms reduce by integration by parts and
+the Dirac equation.  Hence the two dipoles are the complete leading
+\(1/M\) set, and the three current--current structures give a complete
+next-to-leading \(1/M^2\) on-shell set.
+\end{enumerate}

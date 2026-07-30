@@ -1,3 +1,674 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
-% Editorial solutions are inserted here with \SupplementarySolution{N}{Title}.
+\begin{enumerate}
+\SupplementarySolution{1}{Building a Positive Scalar Spectral Measure}
+Translation invariance gives
+\[
+ \bra{\Omega}\phi(x)\ket{n,p}
+ =e^{ip\cdot x}\bra{\Omega}\phi(0)\ket{n,p}.
+\]
+Inserting the identity and collecting states with the same invariant mass
+therefore yields
+\[
+ \bra{\Omega}\phi(x)\phi(0)\ket{\Omega}
+ =\int_0^\infty d\mu^2\,\rho(\mu^2)
+ \Delta_+(x;\mu^2),
+\]
+where, schematically,
+\[
+ \rho(\mu^2)=
+ \sum_n(2\pi)^3\delta(\mu^2-\mu_n^2)
+ \left|\bra{\Omega}\phi(0)\ket n\right|^2 .
+\]
+The omitted factors are just those fixed by the chosen invariant
+normalization.  Every summand is an absolute square, so
+\(\rho(\mu^2)\geq0\).  If a stable particle of mass \(m\) has
+\(\bra{\Omega}\phi(0)\ket p\neq0\), its orbit under translations produces
+\[
+ \rho(\mu^2)\supset Z\delta(\mu^2-m^2),\qquad Z>0.
+\]
+All states with continuously variable relative momenta contribute a
+nonnegative continuum rather than an isolated delta function.
+
+\SupplementarySolution{2}{Pole Weight and Continuum Threshold}
+The one-particle contribution and the continuum separate as
+\[
+ \rho(\mu^2)=Z\delta(\mu^2-m^2)
+ +\theta(\mu^2-M_{\rm th}^2)\rho_c(\mu^2),
+\qquad \rho_c\geq0.
+\]
+Thus
+\[
+ D(p)=\frac{Z}{p^2+m^2-i0}
+ +\int_{M_{\rm th}^2}^{\infty}
+ \frac{\rho_c(\mu^2)\,d\mu^2}{p^2+\mu^2-i0}.
+\]
+There is an isolated simple pole at \(p^2=-m^2\), with positive residue
+\(Z\).  The continuum produces a branch point at
+\(p^2=-M_{\rm th}^2\) and a cut extending along the timelike axis.  The
+assumption of stability means \(m<M_{\rm th}\); otherwise the pole lies on
+the cut and generally moves away from the physical sheet, describing a
+resonance rather than an asymptotic particle.
+
+\SupplementarySolution{3}{The Canonical Spectral Sum Rule}
+The spectral commutator is
+\[
+ \bra{\Omega}[\phi(x),\phi^\dagger(y)]\ket{\Omega}
+ =\int_0^\infty d\mu^2\,\rho(\mu^2)
+ \bigl[\Delta_+(x-y;\mu^2)-\Delta_+(y-x;\mu^2)\bigr].
+\]
+Differentiate with respect to \(x^0\) and set \(x^0=y^0\).  For every
+\(\mu\), the bracket on the right gives
+\(-i\delta^3(\mathbf x-\mathbf y)\).  Comparing with the canonical
+commutator gives
+\[
+ \boxed{\int_0^\infty\rho(\mu^2)\,d\mu^2=1.}
+\]
+Writing
+\(\rho=Z\delta(\mu^2-m^2)+\rho_c\) and using
+\(\rho_c\geq0\) gives
+\[
+ 1=Z+\int\rho_c,\qquad 0\leq Z\leq1.
+\]
+The statement concerns a regulated, canonically normalized bare field.
+For a renormalized field the right-hand side is rescaled with the field
+normalization.
+
+\SupplementarySolution{4}{Euclidean Propagator Inequalities}
+After Wick rotation,
+\[
+ D_E(Q^2)=\int_0^\infty
+ \frac{\rho(\mu^2)\,d\mu^2}{Q^2+\mu^2}.
+\]
+Differentiation under the integral gives
+\[
+ \frac{d^nD_E}{d(Q^2)^n}
+ =(-1)^n n!\int_0^\infty
+ \frac{\rho(\mu^2)\,d\mu^2}{(Q^2+\mu^2)^{n+1}}.
+\]
+Hence
+\[
+ \boxed{(-1)^nD_E^{(n)}(Q^2)\geq0}
+\]
+for all \(Q^2>0\) and \(n\geq0\).  The propagator is therefore a
+Stieltjes, and in particular a completely monotone, function.  The crucial
+input is positivity of the Hilbert-space norm, which makes
+\(\rho\) a nonnegative measure.  An indefinite-metric ghost contribution
+can violate these inequalities.
+
+\SupplementarySolution{5}{Parity-Resolved Fermion Spectra}
+In the rest frame of an intermediate state of mass \(\mu\), rotational
+invariance makes the spinor spectral matrix a linear combination of the
+two energy projectors.  Denote their nonnegative weights by
+\(\rho_+\) and \(\rho_-\).  Covariantly,
+\[
+ S(p)=\int_0^\infty d\mu^2\,
+ \frac{-i\slashed p\,\rho_1(\mu^2)+\rho_2(\mu^2)}
+ {p^2+\mu^2-i0},
+\]
+with
+\[
+ \rho_1=\rho_++\rho_-,
+\qquad
+ \rho_2=\mu(\rho_+-\rho_-).
+\]
+Solving for the projector weights gives
+\[
+ \rho_\pm=\frac12\left(\rho_1\pm\frac{\rho_2}{\mu}\right)\geq0.
+\]
+It follows pointwise that
+\[
+ \boxed{\rho_1\geq0,\qquad |\rho_2|\leq\mu\rho_1.}
+\]
+The stable positive-parity pole has
+\(\rho_1=Z\delta(\mu^2-m^2)\) and
+\(\rho_2=Zm\delta(\mu^2-m^2)\), reproducing the free Dirac numerator at
+the pole.
+
+\SupplementarySolution{6}{A Spectral Test for a Forbidden Ghost Pole}
+The proposed propagator already has spectral form, with
+\[
+ \rho(\mu^2)=\delta(\mu^2-m^2)-c\delta(\mu^2-M^2).
+\]
+The second delta function has negative weight.  It would create a state
+whose norm or residue has the wrong sign, contradicting the
+nonnegativity of a scalar K\"all\'en--Lehmann measure.  Hence this
+propagator cannot arise from a positive-metric local scalar field.
+
+If the second sign is positive, then
+\(\rho=\delta(\mu^2-m^2)+c\delta(\mu^2-M^2)\) is nonnegative and can
+describe an interpolating operator coupled to two stable particles.
+For a canonically normalized field the total weight must additionally
+obey its spectral sum rule; an overall field rescaling or continuum
+contribution may be needed to give the prescribed normalization.
+
+\SupplementarySolution{7}{Two Charged Insertions and One Local Ward Identity}
+Perform the infinitesimal change of variables
+\[
+ \delta\Phi=i q\alpha(x)\Phi,\qquad
+ \delta\Phi^\dagger=-iq\alpha(x)\Phi^\dagger.
+\]
+Invariance of the functional measure and integration by parts in the
+action give a term
+\(-\int d^4x\,\alpha\,\partial_\mu j^\mu\).  Variation of the inserted
+fields gives delta functions at their positions.  Removing the arbitrary
+\(\alpha(x)\) yields
+\[
+ \boxed{\;
+ \partial_\mu^x
+ \langle Tj^\mu(x)\Phi(y)\Phi^\dagger(z)\rangle
+ =-q\delta^4(x-y)\langle T\Phi(y)\Phi^\dagger(z)\rangle
+ +q\delta^4(x-z)\langle T\Phi(y)\Phi^\dagger(z)\rangle.\;}
+\]
+The relative signs reflect the opposite charges of \(\Phi\) and
+\(\Phi^\dagger\).  The same result follows from differentiating the
+step functions in the operator time ordering.
+
+\SupplementarySolution{8}{Momentum-Space Scalar Ward--Takahashi Identity}
+Let \(q=\ell-k\), and define the connected three-point function by
+\[
+ G^\mu(k,\ell)
+ =-iq\,\Delta'(k)\Gamma^\mu(k,\ell)\Delta'(\ell).
+\]
+Fourier transformation of the two contact terms in the local identity
+gives the difference of full propagators.  After cancelling the common
+charge and amputating both scalar legs,
+\[
+ \boxed{\;
+ q_\mu\Gamma^\mu(k,\ell)
+ =i\Delta'^{-1}(k)-i\Delta'^{-1}(\ell).\;}
+\]
+For the free inverse propagator \(k^2+m^2\), the vertex
+\(-i(k+\ell)^\mu\) gives
+\(q_\mu\Gamma^\mu=i(k^2-\ell^2)\), exactly the required difference.
+The equality therefore holds for the fully dressed quantities with the
+same convention.
+
+\SupplementarySolution{9}{The Soft-Current Derivative Formula}
+Set \(\ell=k+q\), expand for small \(q\), and retain the linear term:
+\[
+ q_\mu\Gamma^\mu(k,k)
+ =-i q_\mu\frac{\partial}{\partial k_\mu}
+ \Delta'^{-1}(k)+O(q^2).
+\]
+Because \(q_\mu\) is arbitrary,
+\[
+ \boxed{\Gamma^\mu(k,k)
+ =-i\frac{\partial\Delta'^{-1}(k)}{\partial k_\mu}.}
+\]
+Near the pole, the coefficient multiplying \(k^2+m^2\) in the inverse
+propagator is the field-strength normalization.  The same coefficient
+appears in the zero-momentum vertex through the derivative formula.
+Consequently the ultraviolet counterterms multiplying the charged-field
+kinetic term and the one-photon vertex are tied; in standard notation the
+Ward identity enforces \(Z_1=Z_2\).
+
+\SupplementarySolution{10}{Neutral Insertions and Vanishing Contact Terms}
+For operators satisfying \([Q,O_i]=-q_iO_i\), the local identity is
+\[
+ \partial_\mu^x
+ \left\langle Tj^\mu(x)\prod_{i=1}^nO_i(x_i)\right\rangle
+ =-\sum_{i=1}^n q_i\delta^4(x-x_i)
+ \left\langle T\prod_{j=1}^nO_j(x_j)\right\rangle,
+\]
+with the obvious graded ordering for fermionic insertions.  Thus the
+universal charge contact terms vanish if each \(q_i=0\).
+
+This does not assert that the time-ordered divergence is an ordinary
+function equal to zero at coincidence.  Composite currents can have local
+renormalization ambiguities or Schwinger terms involving derivatives of
+delta functions.  Those terms are separately constrained by locality and
+the symmetries; neutrality only removes the displayed charge-action terms.
+
+\SupplementarySolution{11}{Charge Conservation as a Correlator Selection Rule}
+Integrating the local identity over \(x\) makes the left side a surface
+term.  If it vanishes, then
+\[
+ 0=-\left(\sum_iq_i\right)
+ \left\langle T\prod_iO_i\right\rangle.
+\]
+The correlator can therefore be nonzero only if
+\[
+ \boxed{\sum_iq_i=0.}
+\]
+For \(r\) copies of a field of charge \(q\) and \(s\) copies of its
+conjugate, the total charge is \((r-s)q\).  Unless \(r=s\), the vacuum
+correlator vanishes.  This is the correlator form of the statement that an
+invariant vacuum cannot absorb net conserved charge.
+
+\SupplementarySolution{12}{Current Conservation after LSZ Reduction}
+The divergence of the current correlator is a sum of terms in which the
+current point is collapsed onto one charged-field insertion.  Such a term
+has one fewer independent spacetime point and therefore lacks the complete
+set of simultaneous one-particle poles required by LSZ for the original
+process.  Multiplying by every external inverse propagator and taking all
+mass-shell limits annihilates it.
+
+An external photon contributes a polarization contraction
+\(\epsilon_\mu\mathcal M^\mu\).  Replacing
+\(\epsilon_\mu\) by its momentum turns the current insertion into its
+Fourier-space divergence.  The preceding pole argument then gives
+\[
+ \boxed{k_\mu\mathcal M^\mu=0.}
+\]
+The assertion applies to the gauge-invariant sum of diagrams; an individual
+diagram need not contain all contact-term cancellations.
+
+\SupplementarySolution{13}{Two Form Factors for an Elastic Dirac Current}
+For \(q=p'-p\), parity permits only vector bilinears.  The Dirac equations
+and the Gordon identity reduce all candidates to
+\[
+ \boxed{\;
+ \Gamma^\mu(q)=
+ \gamma^\mu F_1(q^2)
+ +\frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2).\;}
+\]
+Both terms are conserved between equal-mass on-shell spinors.  Using
+\[
+ \bar u'\,i\sigma^{\mu\nu}q_\nu u
+ =\bar u'\bigl(2m\gamma^\mu-(p'+p)^\mu\bigr)u
+\]
+in the conventional gamma-matrix normalization gives the equivalent basis
+\[
+ \bar u'\Gamma^\mu u
+ =\bar u'\left[
+ \gamma^\mu(F_1+F_2)
+ -\frac{(p'+p)^\mu}{2m}F_2
+ \right]u.
+\]
+Factors of \(i\) move between the Gordon identity and the coefficient
+functions in the volume's mostly-plus convention, but the two independent
+scalar functions and all observables are unchanged.
+
+\SupplementarySolution{14}{Charge and Magnetic Moment at Zero Transfer}
+In the nonrelativistic expansion, the temporal current is
+\[
+ J^0=e\,F_1(0)\,\chi'^\dagger\chi+O(|\mathbf q|/m),
+\]
+so charge normalization gives \(F_1(0)=Q\) when the overall coupling is
+\(e\).  The spatial current contains
+\[
+ \mathbf J_{\rm spin}
+ =\frac{e}{2m}\,[F_1(0)+F_2(0)]\,
+ \chi'^\dagger i\mathbf q\times\boldsymbol\sigma\,\chi .
+\]
+Hence
+\[
+ \boxed{\boldsymbol\mu
+ =\frac{e}{2m}[F_1(0)+F_2(0)]\boldsymbol\sigma.}
+\]
+For a minimally coupled point Dirac particle at tree level,
+\(F_1(0)=Q\) and \(F_2(0)=0\); for \(Q=1\), this is the Dirac value
+\(g=2\).  Radiative corrections appear as the anomalous Pauli form factor
+\(F_2(0)\).
+
+\SupplementarySolution{15}{Why a Transition Charge Must Vanish}
+A useful conserved basis for unequal masses is
+\[
+ \bar u_2\left[
+ \left(\gamma^\mu-\frac{q^\mu\slashed q}{q^2}\right)F_T(q^2)
+ +\frac{i\sigma^{\mu\nu}q_\nu}{m_1+m_2}G_T(q^2)
+ \right]u_1 .
+\]
+Contracting with \(q_\mu\) annihilates both structures identically.  The
+first, however, contains \(q^\mu/q^2\).  Since
+\[
+ \bar u_2\slashed q\,u_1
+ =i(m_2-m_1)\bar u_2u_1
+\]
+does not vanish for \(m_2\ne m_1\), absence of a kinematic pole at
+\(q^2=0\) requires
+\[
+ \boxed{F_T(0)=0.}
+\]
+Equivalently, the zero-momentum charge operator commutes with the
+Hamiltonian and cannot connect energy eigenstates of different mass.
+
+\SupplementarySolution{16}{Opposite-Parity Electromagnetic Transitions}
+A vector current between opposite-parity states must be represented by an
+axial-looking spinor bilinear:
+\[
+ \bar u_2\left[
+ \gamma^\mu\widetilde F+P^\mu\widetilde G
+ +q^\mu\widetilde H\right]\gamma_5u_1 .
+\]
+Anticommuting \(\gamma_5\) through the initial Dirac equation gives
+\[
+ \bar u_2\slashed q\gamma_5u_1
+ =i(m_2+m_1)\bar u_2\gamma_5u_1.
+\]
+Therefore current conservation reads
+\[
+ i(m_2+m_1)\widetilde F
+ -(m_2^2-m_1^2)\widetilde G
+ +q^2\widetilde H=0.
+\]
+The sum appears because \(\gamma_5\) reverses the sign of the initial
+\(\slashed p_1\).  A manifestly transverse basis is obtained by multiplying
+the two structures of the preceding solution by \(\gamma_5\), and its
+transition-charge coefficient again vanishes at \(q^2=0\).
+
+\SupplementarySolution{17}{The Scalar Charge-Radius Expansion}
+For equal scalar masses, covariance gives
+\[
+ \bra{p'}J^\mu(0)\ket p
+ =\mathcal N\bigl[(p'+p)^\mu F(q^2)+q^\mu H(q^2)\bigr].
+\]
+Because \(q\cdot(p'+p)=p'^2-p^2=0\), conservation requires
+\(q^2H=0\), and regularity gives \(H=0\).  Charge normalization fixes
+\[
+ F(0)=1.
+\]
+In the Breit frame, \(q^0=0\) and the Fourier transform of the static
+charge distribution is \(F(\mathbf q^2)\).  Its small-\(\mathbf q\)
+expansion is
+\[
+ \boxed{\;
+ F(q^2)=1-\frac16\langle r^2\rangle q^2+O(q^4),
+ \qquad
+ \langle r^2\rangle=-6F'(0),\;}
+\]
+where \(q^2=\mathbf q^2>0\) in the volume's mostly-plus convention.
+
+\SupplementarySolution{18}{Transverse Decomposition of Vacuum Polarization}
+The most general symmetric rank-two function is
+\[
+ \Pi^{\mu\nu}(q)=A(q^2)\eta^{\mu\nu}
+ +B(q^2)q^\mu q^\nu.
+\]
+The Ward identity gives \(A+q^2B=0\), hence
+\[
+ \boxed{\Pi^{\mu\nu}(q)
+ =(q^2\eta^{\mu\nu}-q^\mu q^\nu)\pi(q^2).}
+\]
+Dyson summation changes the transverse photon denominator from \(q^2\) to
+\(q^2[1-\pi(q^2)]\), up to the convention used for the sign of
+\(\Pi\).  The explicit factor \(q^2\) remains.  If the renormalized
+\(\pi(q^2)\) is finite at the origin and its residue is normalized by
+\(\pi(0)=0\), the propagator retains a pole at \(q^2=0\) with the chosen
+unit transverse residue: radiative corrections do not generate a photon
+mass.
+
+\SupplementarySolution{19}{A Once-Subtracted Cauchy Formula}
+Apply Cauchy's theorem to
+\[
+ \frac{F(\zeta)}{(\zeta-z)(\zeta-z_0)}
+\]
+and collapse the contour around the cut.  Real analyticity gives
+\(\operatorname{Disc}F(s)=2i\operatorname{Im}F(s+i0)\).  The result is
+\[
+ \boxed{\;
+ F(z)=F(z_0)+\frac{z-z_0}{\pi}
+ \int_{s_0}^{\infty}
+ \frac{\operatorname{Im}F(s+i0)\,ds}
+ {(s-z_0)(s-z-i0)}.\;}
+\]
+One subtraction is sufficient because the extra denominator makes the
+large-circle contribution vanish when \(F\) grows no faster than a
+constant.  The formula reproduces \(F(z_0)\) identically and has the
+required discontinuity on the cut.
+
+\SupplementarySolution{20}{How Many Subtractions Are Needed?}
+After \(n\) subtractions, the contour integrand behaves on a large circle
+as \(F(\zeta)/\zeta^{n+1}\).  Its arc integral therefore scales as
+\(R^{N-n}\log R\).  A sufficient condition for it to vanish is
+\[
+ \boxed{n>N.}
+\]
+Thus \(n=N+1\) subtractions suffice for the stated bound.  The general
+answer is
+\[
+ F(z)=P_{n-1}(z)
+ +\frac{(z-z_0)^n}{\pi}\int_{s_0}^{\infty}
+ \frac{\operatorname{Im}F(s)\,ds}
+ {(s-z_0)^n(s-z-i0)}.
+\]
+Changing \(z_0\) rearranges the first \(n\) Taylor data into a different
+polynomial \(P_{n-1}\).  The integral's discontinuity remains
+\(2i\operatorname{Im}F\), so two subtraction prescriptions differ only by
+an entire polynomial of degree at most \(n-1\).
+
+\SupplementarySolution{21}{Positive Taylor Coefficients below a Cut}
+For one subtraction at \(z_0<s_0\),
+\[
+ F^{(n)}(z_0)=\frac{n!}{\pi}
+ \int_{s_0}^{\infty}
+ \frac{\operatorname{Im}F(s)\,ds}{(s-z_0)^{n+1}},
+ \qquad n\geq1.
+\]
+Every denominator is positive, so a nonnegative absorptive part makes all
+these derivatives nonnegative.  In particular the asserted inequalities
+hold for \(n\geq2\).
+
+There is a qualification for the first derivative.  If the actual
+high-energy behavior requires two or more subtractions, a free linear
+polynomial is present; then \(F'(z_0)\) contains an undetermined subtraction
+constant, while derivatives above the polynomial's degree remain dispersive
+and positive.  If a genuinely once-subtracted relation is justified, the
+displayed formula also proves \(F'(z_0)\geq0\).
+
+\SupplementarySolution{22}{Reconstructing a Scalar Bubble from Its Cut}
+Let \(z\) denote the conventional timelike invariant.  Cutting the two
+equal-mass internal lines gives the two-body phase-space factor
+\[
+ \operatorname{Im}B(z+i0)
+ =\frac{1}{16\pi}
+ \sqrt{1-\frac{4m^2}{z}}\,
+ \theta(z-4m^2),
+\]
+for the standard scalar-integral normalization.  A subtraction at the
+origin then gives
+\[
+ \boxed{\;
+ B_R(z)-B_R(0)
+ =\frac{z}{16\pi^2}
+ \int_{4m^2}^{\infty}
+ \frac{\sqrt{1-4m^2/s}}{s(s-z-i0)}\,ds.\;}
+\]
+This one-dimensional integral has a branch point at \(4m^2\), is real
+below threshold, and its discontinuity reproduces the cut.  Evaluation by
+a change to the pair velocity gives the familiar logarithmic Feynman-
+parameter result, up to the chosen finite subtraction.
+
+\SupplementarySolution{23}{Lepton Vacuum Polarization by Dispersion}
+For the usual dimensionless transverse scalar \(\Pi(z)\), the cut through a
+Dirac pair gives
+\[
+ \operatorname{Im}\Pi(z+i0)
+ =\frac{\alpha}{3}
+ \left(1+\frac{2m^2}{z}\right)
+ \sqrt{1-\frac{4m^2}{z}}\,
+ \theta(z-4m^2).
+\]
+On-shell charge renormalization sets \(\Pi_R(0)=0\), so
+\[
+ \Pi_R(z)=\frac{z}{\pi}\int_{4m^2}^{\infty}
+ \frac{\operatorname{Im}\Pi(s+i0)}{s(s-z-i0)}\,ds.
+\]
+For \(|z|\ll m^2\), expand the last denominator.  The elementary spectral
+integral gives
+\[
+ \boxed{\Pi_R(z)=\frac{\alpha}{15\pi}\frac{z}{m^2}
+ +O(z^2/m^4).}
+\]
+The sign of \(z\) must of course be translated if one uses the volume's
+mostly-plus invariant instead of the conventional timelike variable used
+here.
+
+\SupplementarySolution{24}{The Optical Theorem as a Discontinuity Formula}
+Write \(S=1+iT\).  Unitarity gives
+\[
+ -i(T-T^\dagger)=T^\dagger T.
+\]
+Taking the matrix element in the same initial state and inserting a complete
+set yields
+\[
+ 2\operatorname{Im}\mathcal M_{ii}
+ =\sum_X\int d\Pi_X\,
+ (2\pi)^4\delta^4(p_i-p_X)|\mathcal M_{Xi}|^2.
+\]
+After division by the incident flux, the right side is proportional to the
+total cross-section.  Real analyticity then identifies
+\[
+ \boxed{\operatorname{Disc}\mathcal M(s)
+ =2i\,\operatorname{Im}\mathcal M(s+i0).}
+\]
+Thus tree-level on-shell production probabilities determine the
+discontinuity of a loop amplitude.  A dispersion relation reconstructs its
+real part, with only the necessary local subtraction constants left
+undetermined.
+
+\SupplementarySolution{25}{Compton Gauge Cancellation before Squaring}
+Suppressing the charge and overall phase, the two orderings are
+\[
+ \mathcal M^{\mu\nu}
+ =\bar u(p')\left[
+ \gamma^\mu S_F(p+k)\gamma^\nu
+ +\gamma^\nu S_F(p-k')\gamma^\mu
+ \right]u(p).
+\]
+Contract the incoming index with \(k_\nu\).  The identities
+\[
+ \slashed k=S_F^{-1}(p+k)-S_F^{-1}(p),
+\qquad
+ \slashed k=S_F^{-1}(p')-S_F^{-1}(p-k')
+\]
+turn the first ordering into
+\(\bar u(p')\gamma^\mu u(p)\) and the crossed ordering into its negative,
+after the external Dirac equations are used.  Therefore
+\[
+ \boxed{k_\nu\mathcal M^{\mu\nu}=0.}
+\]
+The cancellation occurs in the unsquared amplitude and requires both
+electron-line orderings.
+
+\SupplementarySolution{26}{The Forward Thomson Limit}
+Expanding the sum of the direct and crossed electron propagators for
+\(\omega\ll m\), the nominal \(1/\omega\) pieces cancel.  For transverse
+polarizations the surviving spin-independent amplitude is
+\[
+ f(0)=-\frac{\alpha}{m}\,
+ \boldsymbol\epsilon'^{\,*}\cdot\boldsymbol\epsilon .
+\]
+The unpolarized differential cross-section is therefore
+\[
+ \frac{d\sigma}{d\Omega}
+ =\frac{\alpha^2}{2m^2}(1+\cos^2\theta).
+\]
+Angular integration gives the Thomson value
+\[
+ \boxed{\sigma_T=\frac{8\pi\alpha^2}{3m^2}.}
+\]
+The finite limit is fixed by the renormalized charge and mass, not by a
+separate low-energy counterterm.
+
+\SupplementarySolution{27}{Integrating the Klein--Nishina Distribution}
+With \(x=\omega/m\) and
+\(\omega'/\omega=[1+x(1-\cos\theta)]^{-1}\), angular integration gives
+\[
+ \begin{split}
+ \sigma_{\rm KN}(x)=\frac{2\pi\alpha^2}{m^2}\biggl[
+ &\frac{1+x}{x^3}
+ \left(\frac{2x(1+x)}{1+2x}-\ln(1+2x)\right)\\
+ &+\frac{\ln(1+2x)}{2x}
+ -\frac{1+3x}{(1+2x)^2}
+ \biggr].
+ \end{split}
+\]
+Series expansion at small \(x\) gives
+\[
+ \sigma_{\rm KN}=\frac{8\pi\alpha^2}{3m^2}
+ [1-2x+O(x^2)].
+\]
+At high energy,
+\[
+ \sigma_{\rm KN}
+ =\frac{\pi\alpha^2}{m^2x}
+ \left[\ln(2x)+\frac12+O\!\left(\frac{\ln x}{x}\right)\right].
+\]
+Thus the result approaches the Thomson cross-section in the infrared and
+falls as \((\ln x)/x\) in the ultraviolet.
+
+\SupplementarySolution{28}{When the Covariant Polarization Sum Is Legal}
+For a null momentum \(k\) and reference vector \(n\), the physical sum can
+be written
+\[
+ P_{\mu\nu}(k,n)=\eta_{\mu\nu}
+ -\frac{k_\mu n_\nu+n_\mu k_\nu}{k\cdot n}
+ +\frac{n^2k_\mu k_\nu}{(k\cdot n)^2},
+\]
+up to the overall metric-sign convention.  If
+\(\mathcal M=\epsilon_\mu J^\mu\) and \(k\cdot J=0\), every
+\(n\)-dependent term contains a factor \(k\cdot J\) or its conjugate.
+Hence \(P_{\mu\nu}\) may be replaced by \(\eta_{\mu\nu}\).
+
+A single Compton ordering is not conserved:
+\[
+ k_\nu\bar u'\gamma^\mu S_F(p+k)\gamma^\nu u
+ =\bar u'\gamma^\mu u\ne0.
+\]
+Using the covariant replacement on that diagram alone would retain
+unphysical polarizations.  Only the direct-plus-crossed sum satisfies the
+Ward identity and permits the replacement.
+
+\SupplementarySolution{29}{Crossing the Forward Compton Amplitude}
+In the target rest frame one may write
+\[
+ T(\omega)=
+ \boldsymbol\epsilon'^{\,*}\cdot\boldsymbol\epsilon\,f(\omega)
+ +i\boldsymbol\sigma\cdot
+ (\boldsymbol\epsilon'^{\,*}\times\boldsymbol\epsilon)\,g(\omega).
+\]
+Interchanging the incoming and outgoing photon reverses \(\omega\) and
+interchanges the polarization vectors.  The scalar product is unchanged,
+whereas the cross product changes sign.  Thus
+\[
+ \boxed{f(-\omega)=f(\omega),\qquad
+ g(-\omega)=-g(\omega).}
+\]
+The subtraction polynomial for \(f\) may contain only even powers (a
+constant at the minimal twice-subtracted level), while that for \(g\) may
+contain only odd powers (beginning with a term proportional to \(\omega\)).
+Crossing therefore removes half of the otherwise allowed subtraction
+constants.
+
+\SupplementarySolution{30}{A Dispersive Compton Reconstruction}
+The optical theorem supplies
+\[
+ \operatorname{Im}f^{(4)}(\omega)
+ =\frac{\omega}{4\pi}\sigma_{\rm KN}(\omega).
+\]
+Crossing combines the positive- and negative-energy cuts, and the
+renormalized low-energy theorem fixes the even subtraction constant.
+Consequently
+\[
+ \boxed{\;
+ f(\omega)=-\frac{\alpha}{m}
+ +\frac{\omega^2}{2\pi^2}\mathcal P
+ \int_0^\infty\frac{\sigma_{\rm KN}(E)}
+ {E^2-\omega^2}\,dE
+ +\frac{i\omega}{4\pi}\sigma_{\rm KN}(\omega)
+ +O(e^6).\;}
+\]
+At small \(\omega\),
+\[
+ \operatorname{Im}f^{(4)}(\omega)
+ =\frac{\sigma_T}{4\pi}\omega+O(\omega^2),
+\qquad
+\sigma_T=\frac{8\pi\alpha^2}{3m^2}.
+\]
+One must not replace the dispersive denominator by a power series in
+\(\omega^2/E^2\): the cut begins at \(E=0\) and
+\(\int_0\sigma_{\rm KN}(E)dE/E^2\) diverges.  Using
+\(\sigma_{\rm KN}(E)=\sigma_T[1-2E/m+O(E^2/m^2)]\) in the
+low-energy part of the principal-value integral instead gives
+\[
+ \operatorname{Re}f^{(4)}(\omega)
+ =-\frac{\sigma_T}{\pi^2m}\omega^2
+ \ln\frac{m}{|\omega|}+C\omega^2
+ +O(\omega^4\ln|\omega|).
+\]
+The finite \(C\) is determined by the complete integral.  The
+\(\omega^2\ln|\omega|\) term is the nonanalytic imprint of the massless
+electron--photon threshold.
+\end{enumerate}

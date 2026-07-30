@@ -16,11 +16,11 @@ The canonical source volume has no inherited printed Author or Subject Index in 
 | 6 | The Feynman Rules | — | 306–349 / 312–355 | 332 / 338 | 333 / 339 | 336 / 342 | 340 / 346 | 349 / 355 |
 | 7 | The Canonical Formalism | — | 350–408 / 356–414 | 389 / 395 | 390 / 396 | 394 / 400 | 398 / 404 | 407 / 413 |
 | 8 | Electrodynamics | — | 409–459 / 415–465 | 440 / 446 | 440 / 446 | 444 / 450 | 448 / 454 | 458 / 464 |
-| 9 | Path-Integral Methods | — | 460–503 / 466–509 | 502 / 508 | 502 / 508 | 502 / 508 | 502 / 508 | 502 / 508 |
-| 10 | Non-Perturbative Methods | — | 504–544 / 510–550 | 542 / 548 | 543 / 549 | 543 / 549 | 543 / 549 | 543 / 549 |
-| 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | — | 545–568 / 551–574 | 567 / 573 | 568 / 574 | 568 / 574 | 568 / 574 | 568 / 574 |
-| 12 | General Renormalization Theory | — | 569–598 / 575–604 | 596 / 602 | 596 / 602 | 597 / 603 | 597 / 603 | 597 / 603 |
-| 13 | Infrared Effects | — | 599–623 / 605–629 | 621 / 627 | 622 / 628 | 623 / 629 | 623 / 629 | 623 / 629 |
-| 14 | Bound States in External Fields | — | 624–650 / 630–656 | 649 / 655 | 650 / 656 | 650 / 656 | 650 / 656 | 650 / 656 |
+| 9 | Path-Integral Methods | — | 460–520 / 466–526 | 502 / 508 | 502 / 508 | 505 / 511 | 509 / 515 | 519 / 525 |
+| 10 | Non-Perturbative Methods | — | 521–582 / 527–588 | 559 / 565 | 560 / 566 | 565 / 571 | 570 / 576 | 581 / 587 |
+| 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | — | 583–626 / 589–632 | 605 / 611 | 606 / 612 | 609 / 615 | 614 / 620 | 625 / 631 |
+| 12 | General Renormalization Theory | — | 627–656 / 633–662 | 654 / 660 | 654 / 660 | 655 / 661 | 655 / 661 | 655 / 661 |
+| 13 | Infrared Effects | — | 657–681 / 663–687 | 679 / 685 | 680 / 686 | 681 / 687 | 681 / 687 | 681 / 687 |
+| 14 | Bound States in External Fields | — | 682–708 / 688–714 | 707 / 713 | 708 / 714 | 708 / 714 | 708 / 714 | 708 / 714 |
 
-Completed PDF page count: 656.
+Completed PDF page count: 714.

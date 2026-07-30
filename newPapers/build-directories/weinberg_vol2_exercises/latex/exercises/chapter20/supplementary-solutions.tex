@@ -1,3 +1,518 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
-% Editorial solutions are inserted here with \SupplementarySolution{N}{Title}.
+\begin{enumerate}
+  \SupplementarySolution{1}{The Free-Scalar Short-Distance Product}
+  Wick's theorem gives
+  \[
+    \phi(x)\phi(0)=D(x)\mathbf1+:\!\phi(x)\phi(0)\!:,
+    \qquad D(x)=\frac1{4\pi^2x^2}.
+  \]
+  Taylor expansion inside normal ordering yields
+  \[
+    :\!\phi(x)\phi(0)\!:
+      =:\!\phi^2(0)\!:
+       +x^\mu:\!\partial_\mu\phi(0)\phi(0)\!:+O(x^2).
+  \]
+  Since
+  \(2:\!\phi\partial_\mu\phi\!:
+    =\partial_\mu:\!\phi^2\!:\), the result is
+  \[
+    \boxed{\phi(x)\phi(0)
+      =\frac{\mathbf1}{4\pi^2x^2}
+       +:\!\phi^2(0)\!:
+       +\frac{x^\mu}{2}\partial_\mu:\!\phi^2(0)\!:
+       +O(x^2).}
+  \]
+  The same coefficient multiplies every matrix element, illustrating the
+  state independence of a Wilson coefficient.
+
+  \SupplementarySolution{2}{A Normal-Ordered Square OPE}
+  Only cross-contractions are allowed between the two normal-ordered
+  factors.  There are two double contractions and four single
+  contractions:
+  \[
+    O(x)O(0)
+      =2D(x)^2\mathbf1
+       +4D(x):\!\phi(x)\phi(0)\!:
+       +:\!\phi^2(x)\phi^2(0)\!:.
+  \]
+  The last term begins with the dimension-four operator
+  \(:\!\phi^4\!:\).  Keeping the requested terms and using the expansion
+  from Solution 1 gives
+  \[
+    \boxed{O(x)O(0)
+      =2D^2\mathbf1+4D:\!\phi^2\!:
+       +2D\,x^\mu\partial_\mu:\!\phi^2\!:+O(d\geq4).}
+  \]
+  Thus the descendant coefficient is fixed by translation invariance
+  once the primary coefficient is known.
+
+  \SupplementarySolution{3}{Dimension-Four Operators in a Free OPE}
+  If \(k\) fields are contracted across the two factors, the
+  combinatorial coefficient is
+  \(\binom4k^2k!\), and the uncontracted operator is
+  \(:\!\phi^{8-2k}\!:\).  Hence
+  \[
+    :\!\phi^4(x)\!::\!\phi^4(0)\!:
+      =\sum_{k=0}^4\binom4k^2k!D(x)^k
+        :\!\phi^{4-k}(x)\phi^{4-k}(0)\!:.
+  \]
+  The operators of dimension at most four arise for \(k=4,3,2\):
+  \[
+    \boxed{24D^4\mathbf1
+      +96D^3:\!\phi^2\!:
+      +72D^2:\!\phi^4\!:+\text{descendants and }d>4.}
+  \]
+  Taylor expansion of the uncontracted fields supplies descendants; it
+  does not change these leading primary coefficients.
+
+  \SupplementarySolution{4}{A Wilson Coefficient from Soft-State Matching}
+  The vacuum matrix element gives
+  \[
+    \langle\Omega|A(x)B(0)|\Omega\rangle
+      =C_1(x)+C_{\phi^2}(x)
+       \langle\Omega|[\phi^2]_R|\Omega\rangle.
+  \]
+  In a normal-ordering or zero-condensate matching scheme this directly
+  fixes \(C_1\).  Next take an amputated two-particle matrix element:
+  \[
+    \mathcal G_2(x;p_1,p_2)
+      =C_1\langle p_1p_2|\mathbf1|0\rangle
+       +C_{\phi^2}
+        \langle p_1p_2|[\phi^2]_R|0\rangle.
+  \]
+  One must subtract the already determined identity contribution,
+  including disconnected pieces and operator-mixing counterterms.
+  Dividing the remainder by the renormalized \(\phi^2\) matrix element
+  determines \(C_{\phi^2}\).  Generic off-shell soft momenta separate
+  ultraviolet matching from infrared effects.
+
+  \SupplementarySolution{5}{Beta Functions under a Coupling Redefinition}
+  The chain rule gives the exact transformation law
+  \[
+    \boxed{\bar\beta(\bar g)
+      =\frac{d\bar g}{dg}\,\beta(g).}
+  \]
+  Inverting the redefinition,
+  \[
+    g=\bar g-a_2\bar g^2+(2a_2^2-a_3)\bar g^3+\cdots,
+  \]
+  and re-expanding yields
+  \[
+    \bar\beta(\bar g)
+      =b_2\bar g^2+b_3\bar g^3
+       +\bigl[b_4-a_2b_3+(a_3-a_2^2)b_2\bigr]\bar g^4+\cdots.
+  \]
+  Thus \(b_2\) and \(b_3\) are invariant, whereas \(b_4\) is
+  scheme-dependent.  Geometrically, the beta function is a vector field
+  on the one-dimensional space of couplings.
+
+  \SupplementarySolution{6}{Dimensional Transmutation}
+  Separating variables gives
+  \[
+    \frac1{g(\mu)}=b\ln\frac{\mu}{\Lambda},\qquad
+    \boxed{g(\mu)=\frac1{b\ln(\mu/\Lambda)}}.
+  \]
+  Equivalently,
+  \[
+    \Lambda=\mu\exp\!\left[-\frac1{b\,g(\mu)}\right].
+  \]
+  Differentiation using the beta function shows
+  \(\mu\,d\Lambda/d\mu=0\).  Specifying \(g\) at one scale is therefore
+  equivalent to specifying the dimensionful constant \(\Lambda\).
+  Classical scale invariance is replaced by dependence on this
+  dynamically generated scale; this is dimensional transmutation.
+
+  \SupplementarySolution{7}{Transversality of a Current Correlator}
+  Define
+  \[
+    \Pi^{\mu\nu}(q)
+      =i\int d^4x\,e^{-iq\cdot x}
+       \langle\Omega|T\{J^\mu(x)J^\nu(0)\}|\Omega\rangle.
+  \]
+  Current conservation and the Ward identity give
+  \(q_\mu\Pi^{\mu\nu}=0\), apart from local contact polynomials.
+  Lorentz covariance then leaves one nonlocal tensor:
+  \[
+    \boxed{\Pi^{\mu\nu}
+      =(q^\mu q^\nu-q^2\eta^{\mu\nu})\Pi(q^2)
+       +\text{contact terms}.}
+  \]
+  Inserting a complete set of states shows that the transverse spectral
+  density is nonnegative for a Hermitian current: every contraction with
+  a physical transverse polarization is a sum of absolute squares.
+
+  \SupplementarySolution{8}{Large-Momentum Expansion of a Dispersion Relation}
+  For \(Q^2\) larger than the relevant spectral scales,
+  \[
+    \frac1{s+Q^2}
+      =\frac1{Q^2}\left(1-\frac{s}{Q^2}
+        +\frac{s^2}{Q^4}-\cdots\right).
+  \]
+  Therefore
+  \[
+    \boxed{\Pi(Q^2)
+      =\frac{M_0}{Q^2}-\frac{M_1}{Q^4}
+       +\frac{M_2}{Q^6}+\cdots,\qquad
+       M_n=\int_0^\infty ds\,s^n\rho(s).}
+  \]
+  The interchange of series and integral requires the displayed moments
+  to converge.  In a field theory they often do not; subtractions,
+  weighted differences of correlators, or an asymptotic OPE must then be
+  used instead of treating the expansion as a convergent identity.
+
+  \SupplementarySolution{9}{A Finite-Energy Sum Rule}
+  Let
+  \(\rho(s)=\operatorname{Im}\Pi(s+i0)/\pi\).
+  Deforming the counterclockwise contour around the cut gives
+  \[
+    \boxed{\int_0^{s_0}ds\,s^n\rho(s)
+      =-\frac1{2\pi i}\oint_{|s|=s_0}ds\,s^n\Pi(s).}
+  \]
+  The sign follows because the two sides of the cut are traversed
+  oppositely when the outer circle is counterclockwise.  If \(s_0\) is
+  large, the correlator on the circle can be replaced by its OPE.  The
+  equality then relates a measured spectral moment to perturbative
+  terms and vacuum condensates.
+
+  \SupplementarySolution{10}{Borel Suppression of a Continuum}
+  With the standard QCD-sum-rule definition
+  \[
+    \mathcal B_{M^2}
+      =\lim_{\substack{Q^2,n\to\infty\\Q^2/n=M^2}}
+       \frac{(Q^2)^n}{(n-1)!}
+       \left(-\frac{d}{dQ^2}\right)^n,
+  \]
+  one finds
+  \[
+    \boxed{\mathcal B_{M^2}\frac1{s+Q^2}
+      =\frac1{M^2}e^{-s/M^2}.}
+  \]
+  Thus the dispersion relation becomes exponentially weighted, so
+  states with \(s\gg M^2\) are suppressed relative to a low resonance.
+  Any finite polynomial in \(Q^2\) is annihilated after sufficiently many
+  derivatives, which removes the subtraction ambiguity.
+
+  \SupplementarySolution{11}{A Pole-plus-Continuum Spectral Model}
+  The Borel-transformed dispersion relation is
+  \[
+    \mathcal B\Pi
+      =\frac1{M^2}\left[
+        f_R^2e^{-m_R^2/M^2}
+        +\int_{s_0}^\infty ds\,
+          \rho_{\rm pert}(s)e^{-s/M^2}\right].
+  \]
+  After moving the modeled continuum to the OPE side, define
+  \[
+    R_0(M^2)=f_R^2e^{-m_R^2/M^2},\qquad
+    R_1(M^2)=-\frac{dR_0}{d(1/M^2)}
+      =m_R^2R_0.
+  \]
+  Hence
+  \[
+    \boxed{m_R^2=\frac{R_1(M^2)}{R_0(M^2)}.}
+  \]
+  A reliable extraction requires a window in which the truncated OPE
+  converges and the pole is not overwhelmed by the continuum.
+
+  \SupplementarySolution{12}{Condensate Dimension and Power Suppression}
+  Since the invariant amplitude is dimensionless, an operator
+  \(O_d\) of dimension \(d\) must occur as
+  \[
+    \Pi(Q^2)\supset
+      \frac{C_d(Q^2/\mu^2,\alpha_s)}{Q^d}
+      \langle O_d(\mu)\rangle,
+  \]
+  apart from logarithms and possible powers already removed in the
+  tensor decomposition.  Thus the gluon condensate contributes as
+  \(\langle F^2\rangle/Q^4\), whereas a four-quark condensate contributes
+  as \(\langle(\bar q\Gamma q)^2\rangle/Q^6\).  The latter is suppressed
+  by an additional \(1/Q^2\), although its numerical matrix element and
+  Wilson coefficient also matter.
+
+  \SupplementarySolution{13}{The Inclusive Hadronic Tensor}
+  A symmetric tensor made from \(p,q,\eta\) initially has four
+  independent structures after identifying the equal mixed
+  coefficients.  The two equations from
+  \(q_\mu W^{\mu\nu}=0\) leave two independent combinations.  A convenient
+  basis is
+  \[
+    \boxed{\begin{aligned}
+    W^{\mu\nu}={}&-\left(\frac{q^\mu q^\nu}{q^2}
+      -\eta^{\mu\nu}\right)W_1\\
+      &+\frac1{m_N^2}
+      \left(p^\mu-\frac{p\cdot q}{q^2}q^\mu\right)
+      \left(p^\nu-\frac{p\cdot q}{q^2}q^\nu\right)W_2 .
+    \end{aligned}}
+  \]
+  Both bracketed tensors are transverse.  Parity violation would allow
+  one additional antisymmetric structure proportional to
+  \(\epsilon^{\mu\nu\rho\sigma}p_\rho q_\sigma\).
+
+  \SupplementarySolution{14}{Bjorken Support from Parton Kinematics}
+  With the project's mostly-plus metric, put \(Q^2=q^2>0\) for a
+  spacelike transfer.  Neglecting the target and parton masses,
+  \[
+    0=(xp+q)^2=Q^2+2x\,p\cdot q.
+  \]
+  Therefore
+  \[
+    \boxed{x=x_B=-\frac{Q^2}{2p\cdot q}.}
+  \]
+  A parton moving with the parent hadron carries a positive fraction of
+  its longitudinal momentum, so \(x>0\); it cannot carry more momentum
+  than the whole hadron, so \(x\leq1\).  The endpoint \(x=1\) is the
+  elastic parton limit, and \(x_B>1\) has no massless-parton support.
+
+  \SupplementarySolution{15}{Parton-Model Structure Functions}
+  The incoherent probability to strike a quark or antiquark of flavor
+  \(f\) is weighted by the squared electromagnetic charge.  The
+  on-shell delta function fixes the parton fraction to Bjorken \(x\),
+  giving
+  \[
+    \boxed{F_2(x)=x\sum_fQ_f^2
+      \bigl[q_f(x)+\bar q_f(x)\bigr].}
+  \]
+  The transverse response of a massless Dirac constituent gives the
+  Callan--Gross relation,
+  \[
+    \boxed{F_1(x)=\frac{F_2(x)}{2x}
+      =\frac12\sum_fQ_f^2
+       [q_f(x)+\bar q_f(x)].}
+  \]
+  Gluons enter these electromagnetic functions through QCD corrections,
+  not as directly charged leading-order targets.
+
+  \SupplementarySolution{16}{The Callan--Gross Diagnostic}
+  The pointlike Dirac tensor has only transverse absorption at leading
+  order.  Using \(2xF_1=F_2\),
+  \[
+    \boxed{F_L(x)\equiv F_2(x)-2xF_1(x)=0.}
+  \]
+  A scalar charged parton would have a different longitudinal response,
+  so a leading, unsuppressed violation would test the constituent spin.
+  In QCD, however, gluon radiation and quark transverse momentum generate
+  \(F_L\neq0\) at higher orders even though the quarks have spin
+  \(\tfrac12\).  Target-mass and higher-twist corrections also violate
+  the ideal relation by powers of \(1/Q\).
+
+  \SupplementarySolution{17}{Even Spins in the Forward OPE}
+  Crossing the two electromagnetic currents exchanges absorption and
+  emission and sends \(\nu\to-\nu\), hence
+  \(\omega\to-\omega\).  The spin-averaged parity-even forward amplitude
+  is symmetric:
+  \[
+    T_r(\omega,Q^2)=T_r(-\omega,Q^2).
+  \]
+  Its analytic expansion below threshold is therefore
+  \[
+    T_r=\sum_{n=0}^\infty c_{2n}(Q^2)\omega^{2n}.
+  \]
+  A rank-\(s\) symmetric traceless operator contributes \(s\) powers of
+  the target momentum and hence a term proportional to \(\omega^s\).
+  Only even-spin operators occur in this channel.  Odd spins appear in
+  crossing-odd or parity-violating combinations.
+
+  \SupplementarySolution{18}{Moments and Twist}
+  The matrix element of a spin-\(s\) operator supplies \(s\) powers of the
+  target momentum.  Its Wilson coefficient must compensate the
+  dimension \(d\).  At fixed Bjorken variable, the net hard-scale factor
+  is
+  \[
+    (Q^2)^{(2-\tau)/2}=Q^{2-\tau},
+    \qquad \tau=d-s.
+  \]
+  Relative to the leading twist-two contribution,
+  \[
+    \boxed{\frac{T_\tau}{T_{\tau=2}}
+      \sim\frac1{Q^{\tau-2}}}
+  \]
+  up to anomalous-dimension logarithms.  Thus twist four gives a
+  \(1/Q^2\) correction, while twist six gives \(1/Q^4\).
+
+  \SupplementarySolution{19}{Valence-Number Sum Rules}
+  The proton contains two net up quarks, one net down quark, and no net
+  strange or heavier flavor.  Therefore
+  \[
+    \boxed{\int_0^1u_v(x)\,dx=2,\qquad
+      \int_0^1d_v(x)\,dx=1,\qquad
+      \int_0^1q_v(x)\,dx=0\quad(q=s,c,b,\ldots).}
+  \]
+  Sea pairs contribute equally to \(q\) and \(\bar q\) and cancel in
+  \(q_v\).  In the OPE these zeroth moments are forward matrix elements
+  of conserved flavor-vector currents.  Their zero anomalous dimensions
+  protect the sum rules under QCD evolution.
+
+  \SupplementarySolution{20}{The Momentum Sum Rule}
+  At every factorization scale,
+  \[
+    \boxed{\int_0^1dx\,x\left[
+      g(x,\mu)+\sum_f(q_f(x,\mu)+\bar q_f(x,\mu))\right]=1.}
+  \]
+  Splittings continually transfer momentum between quarks and gluons, so
+  none of the separate integrals is scale independent.  Their sum is the
+  forward matrix element of the conserved energy-momentum tensor.  The
+  corresponding spin-two singlet anomalous-dimension matrix has a zero
+  eigenvalue, ensuring that DGLAP evolution preserves the total.
+
+  \SupplementarySolution{21}{Testing a Plus Distribution}
+  For the zeroth moment set \(f(x)=1+x^2\):
+  \[
+    \int_0^1dx\,\frac{1+x^2}{(1-x)_+}
+      =\int_0^1dx\,\frac{x^2-1}{1-x}
+      =-\int_0^1(x+1)\,dx=-\frac32.
+  \]
+  For the first moment the test function is \(x(1+x^2)\):
+  \[
+    \int_0^1dx\,x\frac{1+x^2}{(1-x)_+}
+      =-\int_0^1(x^2+x+2)\,dx=-\frac{17}{6}.
+  \]
+  A suitable \(\delta(1-x)\) term represents virtual corrections and
+  adjusts these moments so that the required number or momentum
+  conservation relation is exactly satisfied.
+
+  \SupplementarySolution{22}{Mellin Moments Diagonalize a Convolution}
+  Let \(M_n[f]=\int_0^1dx\,x^{n-1}f(x)\).  Then
+  \[
+  \begin{aligned}
+    M_n[P\otimes f]
+      &=\int_0^1dy\,\frac{f(y)}y
+        \int_0^y dx\,x^{n-1}P(x/y)\\
+      &=\left[\int_0^1dz\,z^{n-1}P(z)\right]
+        \left[\int_0^1dy\,y^{n-1}f(y)\right].
+  \end{aligned}
+  \]
+  Thus
+  \[
+    \boxed{M_n[P\otimes f]=M_n[P]M_n[f].}
+  \]
+  The integro-differential DGLAP equation becomes, for each \(n\), an
+  ordinary differential equation in the scale; in the singlet sector it
+  is a finite-dimensional matrix equation.
+
+  \SupplementarySolution{23}{Conservation Constraints on Splitting Kernels}
+  Nonsinglet flavor number is the zeroth moment of a valence
+  distribution.  Its evolution vanishes only if
+  \[
+    \boxed{\int_0^1dz\,P_{\rm NS}(z)=0.}
+  \]
+  Total momentum is the first \(x\)-weighted singlet moment.  For each
+  parent parton \(j\), conservation requires
+  \[
+    \boxed{\sum_i\int_0^1dz\,zP_{ij}(z)=0.}
+  \]
+  Real-emission kernels are positive over \(0<z<1\) and generally have
+  endpoint divergences.  Plus prescriptions and negative virtual terms
+  proportional to \(\delta(1-z)\) supply precisely the contributions
+  needed to make these conservation moments vanish.
+
+  \SupplementarySolution{24}{Recognizing Higher Twist}
+  The leading term has twist two.  Since a twist-\(\tau\) contribution is
+  suppressed by \(Q^{-(\tau-2)}\),
+  \[
+    \boxed{\frac{H}{Q^2}\ \text{is twist four},\qquad
+      \frac{K}{Q^4}\ \text{is twist six}.}
+  \]
+  They matter at modest \(Q^2\) because the power denominators are then
+  not small.  Near \(x=1\), the invariant mass of the unobserved hadronic
+  state decreases and the leading-twist phase space is squeezed;
+  multiparton correlations and target-mass effects are consequently
+  enhanced relative to the leading contribution.
+
+  \SupplementarySolution{25}{A Factorial Series and Its Borel Pole}
+  Direct summation gives
+  \[
+    B(z)=K\sum_{n=0}^\infty\left(\frac za\right)^n
+      =\boxed{\frac{K}{1-z/a}},
+  \]
+  with a pole at \(z=a\).  If \(a>0\), the pole lies on the integration
+  contour \(z\in[0,\infty)\), so upper and lower contour prescriptions
+  differ.  If \(a<0\), the singularity is on the negative axis and the
+  positive-coupling integral is unambiguous, although the perturbative
+  series still has zero radius of convergence.
+
+  \SupplementarySolution{26}{Alternating and Fixed-Sign Divergence}
+  For \(f_n\sim(-1)^nn!A^n\),
+  \[
+    B(z)\sim\sum_n(-Az)^n=\frac1{1+Az},
+  \]
+  so the leading singularity is \(z=-1/A\).  For
+  \(f_n\sim n!A^n\),
+  \[
+    B(z)\sim\frac1{1-Az},
+  \]
+  with a singularity at \(z=+1/A\).  The alternating series is Borel
+  summable along the positive axis; the fixed-sign series requires a
+  lateral or principal-value prescription because its pole lies on the
+  integration contour.
+
+  \SupplementarySolution{27}{An Ambiguity from a Positive-Axis Pole}
+  The two lateral contours differ by a closed contour around the pole.
+  Since the residue of \(B(z)=R/(z_0-z)\) at \(z_0\) is \(-R\),
+  \[
+    (gF)_+-(gF)_-
+      =-2\pi iR\,e^{-z_0/g},
+  \]
+  up to the orientation convention.  Thus the magnitude of the
+  ambiguity in \(F\) is
+  \[
+    \boxed{\left|\Delta F\right|
+      =\frac{2\pi|R|}{g}e^{-z_0/g}.}
+  \]
+  No power series in \(g\) can reproduce the exponential, which is why
+  perturbation theory alone cannot select the contour.
+
+  \SupplementarySolution{28}{Renormalon Position and OPE Power}
+  In the conventional QCD Borel variable, a singularity at \(u=p/2\)
+  produces an exponential factor
+  \[
+    \exp\!\left[-\frac{u}{\beta_0\alpha(Q)}\right]
+      =\exp\!\left[-\frac{p}{2\beta_0\alpha(Q)}\right]
+      \sim\left(\frac{\Lambda}{Q}\right)^p.
+  \]
+  Therefore its contour ambiguity has precisely the size
+  \[
+    \boxed{\Delta C_{\rm pert}\sim(\Lambda/Q)^p.}
+  \]
+  Consistency requires an OPE operator whose matrix element supplies a
+  power correction of the same order.  The Wilson-coefficient and
+  matrix-element prescription dependences can then cancel.
+
+  \SupplementarySolution{29}{Optimal Truncation of an Asymptotic Series}
+  Consecutive terms have ratio
+  \[
+    \frac{T_{n+1}}{T_n}\simeq(n+1)A\alpha.
+  \]
+  Their magnitude decreases until
+  \[
+    \boxed{n_*\simeq\frac1{A\alpha}.}
+  \]
+  Stirling's formula gives a smallest term, up to a power prefactor, of
+  order
+  \[
+    |T_{n_*}|\sim
+      \exp\!\left[-\frac1{A\alpha}\right].
+  \]
+  The nearest Borel singularity is at \(z_0=1/A\), so this is
+  \(e^{-z_0/\alpha}\), the same nonperturbative scale as the lateral
+  Borel ambiguity.  Adding terms beyond \(n_*\) worsens the approximation.
+
+  \SupplementarySolution{30}{Cancellation of a Renormalon Ambiguity}
+  Write a physical quantity schematically as
+  \[
+    \mathcal A=C_0^{(\mathcal P)}(Q)
+      +\frac{C_d(Q,\mu)}{Q^d}
+       \langle O_d(\mu)\rangle_{\mathcal P}+\cdots,
+  \]
+  where \(\mathcal P\) labels a Borel/subtraction prescription.  Changing
+  it shifts the perturbative coefficient by
+  \(\delta C_0\sim(\Lambda/Q)^d\).  The separation between short and long
+  distances also shifts the renormalized matrix element so that
+  \[
+    \boxed{\delta C_0+
+      \frac{C_d}{Q^d}\delta\langle O_d\rangle=0.}
+  \]
+  Only the sum is physical.  A perturbative coefficient or condensate
+  quoted separately is therefore incomplete unless its common
+  prescription is specified.
+\end{enumerate}
