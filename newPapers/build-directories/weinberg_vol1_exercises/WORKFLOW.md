@@ -57,9 +57,12 @@ requires zero new undefined references, duplicate labels, or overfull boxes.
 
 ## 7. Release only when complete
 
-After every chapter is finished, run `./build_and_verify.sh` without
-`--draft`. Then render representative pages to PNG, visually inspect exercise
+After every chapter in all three volumes is finished, run
+`../build_all_weinberg_qft_exercise_editions.sh`. This executes each strict
+volume gate, the cross-volume duplicate audit, and the release-manifest
+renderer. Then render representative pages to PNG, visually inspect exercise
 and solution pages and at least one transition into original references,
-verify indexes/page mapping, record PDF/font/text checks and hashes in
+verify the regenerated `INDEX_PAGINATION.md` live-page map, record
+PDF/font/text checks and hashes in
 `RELEASE_VERIFICATION.md`, and retain only the distinct exercise-edition
 export.

@@ -59,6 +59,27 @@ EDITIONS = (
     ),
 )
 
+SOURCE_PRINTED_PAGES = {
+    15: (1, 62),
+    16: (63, 79),
+    17: (80, 110),
+    18: (111, 162),
+    19: (163, 251),
+    20: (252, 294),
+    21: (295, 358),
+    22: (359, 420),
+    23: (421, 477),
+    24: (1, 24),
+    25: (25, 54),
+    26: (55, 112),
+    27: (113, 178),
+    28: (179, 247),
+    29: (248, 306),
+    30: (307, 317),
+    31: (318, 381),
+    32: (382, 410),
+}
+
 
 STYLE = r"""\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{exercise-edition}[2026/07/30 Weinberg QFT exercise-edition helpers]
@@ -68,6 +89,15 @@ STYLE = r"""\NeedsTeXFormat{LaTeX2e}
 \newcommand{\ExerciseEditorialNote}{%
   \noindent\emph{These editorial solutions were added by Codex and are not
   part of Weinberg's original text.}\par\medskip
+}
+
+\newcommand{\ExerciseIndexPaginationNote}{%
+  \par\begingroup\small\itshape
+  \noindent Pagination note: the numbers in this inherited index reproduce
+  Weinberg's printed-source pagination. They are source-page references, not
+  page numbers in this expanded, reflowed exercise PDF. Use the table of
+  contents or \texttt{INDEX\_PAGINATION.md} for live navigation.\par
+  \endgroup\medskip
 }
 
 \newcommand{\InKet}[1]{\ket{#1}_{\mathrm{in}}}
@@ -303,7 +333,7 @@ def scaffold_chapter(edition: Edition, chapter: int) -> dict[str, object]:
 
     title = chapter_title(wrapper)
     historical = title == "Historical Introduction"
-    return {
+    result = {
         "chapter": chapter,
         "title": title,
         "weinberg_exercises": count,
@@ -316,6 +346,9 @@ def scaffold_chapter(edition: Edition, chapter: int) -> dict[str, object]:
         ),
         "backmatter": str(backmatter.relative_to(edition.root)),
     }
+    if chapter in SOURCE_PRINTED_PAGES:
+        result["source_printed_pages"] = list(SOURCE_PRINTED_PAGES[chapter])
+    return result
 
 
 def scaffold_edition(edition: Edition) -> None:
@@ -341,6 +374,10 @@ def scaffold_edition(edition: Edition) -> None:
             "base; the two-component tree is a specialized derived edition."
             if edition.name == "weinberg_vol3_exercises"
             else None
+        ),
+        "source_index": edition.name != "weinberg_vol1_exercises",
+        "pdf_arabic_page_offset": (
+            6 if edition.name == "weinberg_vol1_exercises" else 4
         ),
         "chapter_range": [edition.first_chapter, edition.last_chapter],
         "chapters": chapters,
@@ -377,6 +414,19 @@ def scaffold_edition(edition: Edition) -> None:
                 )
                 + "\n"
             )
+
+    script_copies = {
+        "audit_weinberg_qft_exercises.py": "audit_exercises.py",
+        "build_weinberg_qft_exercise_edition.sh": "build_and_verify.sh",
+        "render_weinberg_qft_index_crosswalk.py": "render_index_pagination.py",
+        "render_weinberg_qft_inventory.py": "render_inventory.py",
+        "render_weinberg_qft_source_ledger.py": "render_source_ledger.py",
+    }
+    for source_name, destination_name in script_copies.items():
+        source = HERE / source_name
+        if not source.is_file():
+            raise FileNotFoundError(source)
+        (edition.root / destination_name).write_bytes(source.read_bytes())
 
 
 def main() -> None:

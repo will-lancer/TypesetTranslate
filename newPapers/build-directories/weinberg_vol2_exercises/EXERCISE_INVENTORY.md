@@ -2,15 +2,15 @@
 
 Edition: `weinberg_vol2_exercises`
 
-Totals: 50 Weinberg exercises, 13 Weinberg solutions, 60 supplementary exercises, 60 supplementary solutions, and 20 ledger sources.
+Totals: 50 Weinberg exercises, 29 Weinberg solutions, 150 supplementary exercises, 150 supplementary solutions, and 38 ledger sources.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Target | Sources | Exception |
 |---:|---|---:|---:|---:|---:|---|
 | 15 | Non-Abelian Gauge Theories | 9/9 | 30/30 | 30 | 11 |  |
 | 16 | External Field Methods | 4/4 | 30/30 | 30 | 9 |  |
-| 17 | Renormalization of Gauge Theories | 4/0 | 0/0 | 30 | 0 |  |
-| 18 | Renormalization Group Methods | 6/0 | 0/0 | 30 | 0 |  |
-| 19 | Spontaneously Broken Global Symmetries | 6/0 | 0/0 | 30 | 0 |  |
+| 17 | Renormalization of Gauge Theories | 4/4 | 30/30 | 30 | 8 |  |
+| 18 | Renormalization Group Methods | 6/6 | 30/30 | 30 | 5 |  |
+| 19 | Spontaneously Broken Global Symmetries | 6/6 | 30/30 | 30 | 5 |  |
 | 20 | Operator Product Expansions | 5/0 | 0/0 | 30 | 0 |  |
 | 21 | Spontaneously Broken Gauge Symmetries | 6/0 | 0/0 | 30 | 0 |  |
 | 22 | Anomalies | 4/0 | 0/0 | 30 | 0 |  |
@@ -20,21 +20,18 @@ Totals: 50 Weinberg exercises, 13 Weinberg solutions, 60 supplementary exercises
 
 - Chapter 15: `barnich-brandt-henneaux-2000` (1), `becchi-gauge-theories-1997` (1), `eth-qft2-fs17` (9), `gomis-paris-samuel-1995` (5), `mit-8324-f10-ps1` (2), `mit-8324-f10-ps2` (2), `mnev-bv-2017` (3), `skinner-aqft-sheet4-2018` (4), `stanford-physics331-w20-set2` (1), `uchicago-physics445-ps5-2021` (1), `uzh-phy552-fs19` (1)
 - Chapter 16: `coleman-weinberg-1973` (2), `cornwall-jackiw-tomboulis-1974` (1), `jackiw-effective-potential-1974` (3), `kaplunovsky-effective-potential-2019` (2), `lim-advanced-qft-2019` (5), `mcgreevy-physics215c-2014` (6), `mit-8323-s23-ps10` (3), `srednicki-qft-draft-2006` (3), `ucsc-physics222-effective-potential-2020` (5)
+- Chapter 17: `abbott-background-field-1981` (2), `barvinsky-et-al-background-renormalization-2017` (4), `franco-piguet-algebraic-renormalization-2013` (6), `gross-wilczek-asymptotic-freedom-1973` (1), `kaplunovsky-qcd-beta-2024` (2), `piguet-sorella-algebraic-renormalization-1995` (2), `skinner-qft2-ch8-2018` (6), `tong-gauge-theory-2018` (7)
+- Chapter 18: `kaplunovsky-rg-flows-2024` (6), `kaplunovsky-rg-techniques-2024` (6), `mit-ocw-stat-mech-ii-2014` (6), `tong-gauge-rg-2018` (6), `tong-statistical-field-theory-2021` (6)
+- Chapter 19: `mit-ocw-qft-iii-2007` (6), `pich-effective-field-theory-1998` (6), `scherer-chiral-perturbation-2002` (6), `tong-standard-model-broken-symmetries-2025` (6), `tong-statistical-field-theory-goldstone-2021` (6)
 
 ## Audit status
 
 - Mode: draft
-- Warnings: 14
+- Warnings: 8
 - Failures: 0
 
 ### Current draft warnings
 
-- Chapter 17: Weinberg solutions are incomplete or discontinuous (0/4)
-- Chapter 17: 0/30 supplementary exercises and no written count exception
-- Chapter 18: Weinberg solutions are incomplete or discontinuous (0/6)
-- Chapter 18: 0/30 supplementary exercises and no written count exception
-- Chapter 19: Weinberg solutions are incomplete or discontinuous (0/6)
-- Chapter 19: 0/30 supplementary exercises and no written count exception
 - Chapter 20: Weinberg solutions are incomplete or discontinuous (0/5)
 - Chapter 20: 0/30 supplementary exercises and no written count exception
 - Chapter 21: Weinberg solutions are incomplete or discontinuous (0/6)

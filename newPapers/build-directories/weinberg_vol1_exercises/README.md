@@ -22,11 +22,15 @@ Weinberg's existing exercise prompts are preserved verbatim in the first
 fragment. All solutions are editorial additions. Supplementary prompts are
 newly edited adaptations or original editorial problems and carry an inline
 source credit tied to `source-ledger.json`.
+Chapter 1, the Historical Introduction, intentionally has no supplementary
+set and contains no original Weinberg end-of-chapter problems.
 
 The files for Chapter `NN` are under
 `latex/exercises/chapterNN/`. See `AUTHORING.md` for the required macros and
 `NOTATION.md` for binding conventions. `WORKFLOW.md` defines the
 chapter-ownership, source-verification, audit, and release sequence.
+`INDEX_PAGINATION.md` is regenerated from the completed build and records the
+live chapter, exercise, solution, and reference page starts.
 
 ## Build and audit
 

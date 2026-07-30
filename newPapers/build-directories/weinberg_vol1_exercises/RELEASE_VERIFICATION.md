@@ -15,6 +15,8 @@ The final release record will include:
 - strict audit, LaTeX reference, layout, PDF parse, and font results;
 - representative visual-QA pages from the beginning, middle, and end;
 - a supplementary-solutions-to-original-references transition check;
+- verification of the generated displayed-label/physical-PDF pagination map;
+- the series-wide supplementary duplication audit;
 - build/export identity and SHA-256.
 
 No release hash is recorded until every strict gate passes.

@@ -39,6 +39,12 @@ REQUIRED_HOOK_INPUTS = tuple(
     rf"\input{{exercises/chapter#1/{filename}}}"
     for filename in REQUIRED_FRAGMENT_FILES
 )
+REQUIRED_ASYMPTOTIC_HELPERS = (
+    r"\newcommand{\InKet}[1]{\ket{#1}_{\mathrm{in}}}",
+    r"\newcommand{\OutKet}[1]{\ket{#1}_{\mathrm{out}}}",
+    r"\newcommand{\InBra}[1]{{}_{\mathrm{in}}\!\bra{#1}}",
+    r"\newcommand{\OutBra}[1]{{}_{\mathrm{out}}\!\bra{#1}}",
+)
 BUILD_SUFFIXES = {
     ".aux",
     ".fdb_latexmk",
@@ -211,6 +217,16 @@ def normalized_title(text: str) -> str:
     return " ".join(WORD_RE.findall(text.lower()))
 
 
+def normalized_problem(text: str) -> str:
+    clean = strip_comments(text)
+    clean = re.sub(
+        r"\\(?:begin|end)\{(?:enumerate|itemize|description)\}",
+        " ",
+        clean,
+    )
+    return " ".join(WORD_RE.findall(clean.lower()))
+
+
 def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
     path = root / "source-ledger.json"
     audit.require(path.exists(), f"Missing source ledger: {path}", incomplete=True)
@@ -305,6 +321,12 @@ def audit_hook_style(root: Path, audit: Audit) -> None:
         "These editorial solutions were added by Codex" in style,
         "The required editorial attribution note is missing",
     )
+    for definition in REQUIRED_ASYMPTOTIC_HELPERS:
+        audit.require(
+            style.count(definition) == 1,
+            "exercise-edition.sty must define the exact asymptotic-state "
+            f"helper {definition}",
+        )
 
 
 def audit_canonical_isolation(
@@ -357,6 +379,96 @@ def audit_canonical_isolation(
         )
 
 
+def audit_pagination_policy(
+    root: Path,
+    metadata: dict[str, object],
+    chapters: list[object],
+    audit: Audit,
+) -> None:
+    source_index = metadata.get("source_index")
+    audit.require(
+        isinstance(source_index, bool),
+        "Metadata source_index must be a boolean",
+    )
+    page_offset = metadata.get("pdf_arabic_page_offset")
+    audit.require(
+        isinstance(page_offset, int)
+        and not isinstance(page_offset, bool)
+        and page_offset >= 0,
+        "Metadata pdf_arabic_page_offset must be a nonnegative integer",
+    )
+    renderer = root / "render_index_pagination.py"
+    build_script = root / "build_and_verify.sh"
+    audit.require(
+        renderer.is_file(),
+        f"Missing pagination renderer: {renderer}",
+    )
+    if build_script.is_file():
+        build_text = strip_comments(build_script.read_text(encoding="utf-8"))
+        audit.require(
+            'python3 "$edition_root/render_index_pagination.py"' in build_text,
+            "Build script must regenerate INDEX_PAGINATION.md after LaTeX",
+        )
+
+    previous_end: int | None = None
+    for raw_chapter in chapters:
+        if not isinstance(raw_chapter, dict):
+            audit.failures.append("Every metadata chapter entry must be an object")
+            continue
+        number = raw_chapter.get("chapter")
+        source_pages = raw_chapter.get("source_printed_pages")
+        if source_index:
+            valid = (
+                isinstance(source_pages, list)
+                and len(source_pages) == 2
+                and all(isinstance(page, int) for page in source_pages)
+                and source_pages[0] <= source_pages[1]
+            )
+            audit.require(
+                valid,
+                f"Chapter {number}: source_printed_pages must be [start, end]",
+            )
+            if valid:
+                start, end = source_pages
+                if previous_end is not None:
+                    audit.require(
+                        start == previous_end + 1,
+                        f"Chapter {number}: printed-source page span must follow "
+                        f"page {previous_end} contiguously",
+                    )
+                previous_end = end
+        else:
+            audit.require(
+                source_pages is None,
+                f"Chapter {number}: source_printed_pages supplied although "
+                "source_index is false",
+            )
+
+    if source_index:
+        style_path = root / "latex" / "exercise-edition.sty"
+        style = (
+            strip_comments(style_path.read_text(encoding="utf-8"))
+            if style_path.is_file()
+            else ""
+        )
+        audit.require(
+            style.count(r"\newcommand{\ExerciseIndexPaginationNote}") == 1,
+            "Indexed editions must define ExerciseIndexPaginationNote exactly once",
+        )
+        note_calls = 0
+        backmatter_root = root / "latex" / "backmatter"
+        if backmatter_root.is_dir():
+            for path in backmatter_root.rglob("*.tex"):
+                note_calls += strip_comments(
+                    path.read_text(encoding="utf-8")
+                ).count(r"\ExerciseIndexPaginationNote")
+        audit.require(
+            note_calls == 2,
+            "Indexed editions must show the pagination note once in each "
+            "inherited index",
+        )
+
+
 def audit_weinberg_prompt_integrity(root: Path, audit: Audit) -> None:
     manifest_path = root / "weinberg-exercise-source-sha256.json"
     audit.require(
@@ -405,14 +517,9 @@ def audit_labels(root: Path, audit: Audit) -> None:
 
 
 def audit_asymptotic_notation(root: Path, audit: Audit) -> None:
-    """Enforce the exercise edition's outside-the-state in/out convention."""
+    """Enforce the outside-the-state in/out convention throughout the edition."""
 
-    fragment_root = root / "latex" / "exercises"
-    for path in fragment_root.glob("chapter*/*.tex"):
-        if path.name == "weinberg-exercises.tex":
-            # Original prompts are integrity-checked separately and never
-            # rewritten merely to satisfy an editorial style rule.
-            continue
+    for path in (root / "latex").rglob("*.tex"):
         text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
         checks = (
             (
@@ -464,6 +571,53 @@ def exercise_similarity(
                 audit.warn(
                     "Suspiciously similar supplementary titles "
                     f"S.{left[0]}.{left[1]} and S.{right[0]}.{right[1]} "
+                    f"(ratio {ratio:.2f})"
+                )
+
+
+def exercise_body_similarity(
+    records: list[tuple[int, str, str, str]],
+    audit: Audit,
+) -> None:
+    """Report duplicated prompts even when their titles have been changed."""
+
+    normalized = [
+        (chapter, number, title, normalized_problem(body))
+        for chapter, number, title, body in records
+    ]
+    exact: dict[str, list[tuple[int, str, str]]] = {}
+    for chapter, number, title, body in normalized:
+        if len(body.split()) >= 18:
+            exact.setdefault(body, []).append((chapter, number, title))
+    for body, locations in exact.items():
+        if len(locations) > 1:
+            audit.failures.append(
+                "Duplicate supplementary prompt body: "
+                + ", ".join(
+                    f"S.{chapter}.{number} ({title})"
+                    for chapter, number, title in locations
+                )
+            )
+
+    for left_index, left in enumerate(normalized):
+        left_words = left[3].split()
+        if len(left_words) < 24:
+            continue
+        for right in normalized[left_index + 1 :]:
+            right_words = right[3].split()
+            if len(right_words) < 24:
+                continue
+            length_ratio = min(len(left_words), len(right_words)) / max(
+                len(left_words), len(right_words)
+            )
+            if length_ratio < 0.75:
+                continue
+            ratio = difflib.SequenceMatcher(None, left[3], right[3]).ratio()
+            if ratio >= 0.90 and left[3] != right[3]:
+                audit.warn(
+                    "Suspiciously similar supplementary prompt bodies "
+                    f"S.{left[0]}.{left[1]} ({left[2]}) and "
+                    f"S.{right[0]}.{right[1]} ({right[2]}) "
                     f"(ratio {ratio:.2f})"
                 )
 
@@ -607,6 +761,11 @@ def audit_chapter(
             incomplete=True,
         )
         audit.require(
+            "adapted from" in credit.lower(),
+            f"Chapter {chapter} S.{number}: source credit must say "
+            "'Adapted from' because the prompt is editorially rewritten",
+        )
+        audit.require(
             not PART_II_RE.search(credit),
             f"Chapter {chapter} S.{number}: Cambridge Part II is forbidden",
         )
@@ -707,6 +866,15 @@ def audit_chapter(
             (chapter, call.args[0].strip(), call.args[1].strip())
             for call in s_exercises
         ],
+        "_problems": [
+            (
+                chapter,
+                call.args[0].strip(),
+                call.args[1].strip(),
+                body,
+            )
+            for call, body in zip(s_exercises, s_exercise_bodies)
+        ],
         "_source_ids": [call.args[3].strip() for call in s_exercises],
     }
 
@@ -799,6 +967,7 @@ def main() -> int:
         return 1
 
     audit_hook_style(root, audit)
+    audit_pagination_policy(root, metadata, chapters, audit)
     audit_canonical_isolation(root, metadata, audit)
     audit_weinberg_prompt_integrity(root, audit)
     audit_labels(root, audit)
@@ -821,7 +990,13 @@ def main() -> int:
         for chapter in inventory
         for source_id in chapter.pop("_source_ids")
     ]
+    all_problems = [
+        problem_record
+        for chapter in inventory
+        for problem_record in chapter.pop("_problems")
+    ]
     exercise_similarity(all_titles, audit)
+    exercise_body_similarity(all_problems, audit)
     unused_sources = sorted(set(ledger) - set(all_source_ids))
     for source_id in unused_sources:
         audit.warn(f"Ledger source is currently unused: {source_id}")

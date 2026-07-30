@@ -20,3 +20,13 @@ perform a second modernization pass on the book.
 Any mathematical correction to an original Weinberg problem must be handled
 as an explicit editorial note, never as a silent rewrite of the prompt.
 
+## Exercise-edition layout adjustments
+
+Long displays in Sections 15.7 and 17.5 are broken across additional lines in
+this independent copy. The adjustments remove inherited overfull boxes and
+do not change their mathematical content, symbols, or equation numbers.
+
+The inherited Author and Subject Index entries retain Weinberg's printed
+source pagination. A visible note now distinguishes those source-page
+references from this expanded PDF's live pages; `INDEX_PAGINATION.md` is
+regenerated after every build as the navigation crosswalk.

@@ -1,3 +1,518 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
-% Editorial solutions are inserted here with \SupplementarySolution{N}{Title}.
+\begin{enumerate}
+\SupplementarySolution{1}{Lorentz Form of the Scalar Propagator}
+Translation invariance gives
+\[
+ \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}=F(x-y).
+\]
+For spacelike separation, every proper Lorentz transformation preserves
+the possible time order because spacelike commutativity makes either
+ordering equal.  For timelike separation, proper orthochronous
+transformations preserve the sign of \(x^0-y^0\).  Scalar covariance then
+implies
+\[
+ F(x-y)=f\bigl((x-y)^2,\operatorname{sgn}(x^0-y^0)\bigr)
+\]
+in the timelike region and \(F=f((x-y)^2)\) in the spacelike region.  The
+second argument is precisely the Feynman boundary-value information; it
+is not an additional Lorentz scalar under time-reversing transformations.
+
+\SupplementarySolution{2}{The Propagator as a Green Function}
+Use the chapter convention
+\[
+ \Delta_F(z)=\int\frac{d^4q}{(2\pi)^4}
+ \frac{e^{iq\cdot z}}{q^2+m^2-i0}.
+\]
+Because \(\partial_\mu e^{iq\cdot z}=iq_\mu e^{iq\cdot z}\),
+\(\Box e^{iq\cdot z}=-q^2e^{iq\cdot z}\).  Consequently
+\[
+ (\Box-m^2)\Delta_F(z)
+ =-\int\frac{d^4q}{(2\pi)^4}
+ \frac{q^2+m^2}{q^2+m^2-i0}e^{iq\cdot z}
+ =-\delta^4(z).
+\]
+The infinitesimal remainder vanishes as a distribution with the stated
+boundary value.  Thus the sign is minus, in agreement with
+Eq.~\eqref{eq:6.2.17}; changing the Fourier phase alone would not change
+this result.
+
+\SupplementarySolution{3}{Recovering Time Ordering by Contours}
+Write \(E_{\mathbf q}=\sqrt{\mathbf q^2+m^2}\).  Since
+\[
+ q^2+m^2-i0
+ =-(q^0-E_{\mathbf q}+i0)(q^0+E_{\mathbf q}-i0),
+\]
+the positive-energy pole lies just below and the negative-energy pole
+just above the real axis.  The phase is
+\(e^{iq\cdot z}=e^{-iq^0z^0+i\mathbf q\cdot\mathbf z}\).  For \(z^0>0\)
+the contour closes below and selects \(q^0=E_{\mathbf q}-i0\); for
+\(z^0<0\) it closes above and selects \(q^0=-E_{\mathbf q}+i0\).  Hence
+\[
+ -i\Delta_F(z)=
+ \theta(z^0)\Delta_+(z)+\theta(-z^0)\Delta_+(-z),
+\]
+which is exactly the time-ordered contraction.
+
+\SupplementarySolution{4}{Oriented Complex-Scalar Lines}
+The mode expansion contains particle annihilation and antiparticle
+creation in \(\phi\), with the reverse operators in \(\phi^\dagger\).
+The only nonzero time-ordered contraction is therefore
+\[
+ \bra{\Omega}T\{\phi(x)\phi^\dagger(y)\}\ket{\Omega}
+ =-i\Delta_F(x-y).
+\]
+Both terms in
+\(\bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}\) have unequal charge and
+vanish.  Thus an internal charged-scalar line joins a \(\phi\) endpoint
+to a \(\phi^\dagger\) endpoint.  Its arrow records charge flow; reversing
+the endpoints replaces \(\Delta_F(x-y)\) by \(\Delta_F(y-x)\), which is
+equal for a translationally invariant scalar propagator although the
+field labels remain distinct.
+
+\SupplementarySolution{5}{A Linear Source and Functional Differentiation}
+With \(H_{I,J}(t)=\int d^3x\,J(x)\phi(x)\),
+\[
+ Z[J]=\bra{\Omega}T\exp\!\left[-i\int d^4x\,J(x)\phi(x)\right]
+ \ket{\Omega}.
+\]
+The linear term vanishes and Wick's theorem gives
+\[
+ Z[J]=1+\frac{(-i)^2}{2}\int d^4x\,d^4y\,
+ J(x)J(y)D(x-y)+O(J^4),
+\quad D(x-y)=-i\Delta_F(x-y).
+\]
+There are two ways for the derivatives to hit the two sources, so
+\[
+ \left.\frac{\delta^2Z}{\delta J(x)\delta J(y)}\right|_{J=0}
+ =(-i)^2D(x-y).
+\]
+Multiplication by \(i^2\) recovers the time-ordered two-point function,
+as required by the source-vertex factor \(-iJ\phi\).
+
+\SupplementarySolution{6}{Why an Adiabatic Source Makes No Particles}
+The first Dyson term is
+\[
+ \bra{\mathbf p}S^{(1)}\ket{\Omega}
+ =-\frac{i}{(2\pi)^{3/2}\sqrt{2E_{\mathbf p}}}
+ \widetilde J(E_{\mathbf p},\mathbf p),
+\]
+so only the restriction of \(\widetilde J(q)\) to
+\(q^0=E_{\mathbf p}\), \(q^2=-m^2\), creates a particle.  For an
+adiabatic source \(J_T(t,\mathbf x)=f(t/T)j(\mathbf x)\),
+\[
+ \widetilde J_T(E,\mathbf p)
+ =T\,\widetilde f(ET)\widetilde j(\mathbf p).
+\]
+If \(f\) is smooth, \(\widetilde f(\omega)\) decreases faster than any
+power.  Since \(E_{\mathbf p}\geq m>0\), this expression tends to zero as
+\(T\to\infty\).  No on-shell Fourier weight remains.
+
+\SupplementarySolution{7}{Counting a Four-Point Wick Contraction}
+At first order the relevant term is
+\[
+ \frac{-i\lambda}{4!}\int d^4z\,
+ \bra{\Omega}T\{\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\phi(z)^4\}
+ \ket{\Omega}.
+\]
+For the connected tree contribution, the four labeled external fields
+must contract with four distinct fields at \(z\).  There are
+\(4!=24\) bijections.  They cancel the \(1/4!\), leaving
+\[
+ (-i\lambda)\int d^4z\,
+ \prod_{a=1}^4D(x_a-z).
+\]
+Thus a quartic position-space vertex contributes \(-i\lambda\), with one
+propagator for each attached line; no factorial is appended to the
+diagrammatic rule.
+
+\SupplementarySolution{8}{The One-Vertex Tadpole Factor}
+The first-order normalized two-point numerator contains
+\[
+ \frac{-i\lambda}{4!}\int d^4z\,
+ \bra{\Omega}T\{\phi(x)\phi(y)\phi(z)^4\}\ket{\Omega}.
+\]
+Choose the field at \(z\) contracted with \(x\) in four ways and the one
+contracted with \(y\) in three ways.  The last two contract together in
+one way, giving \(12\) contractions.  Since \(12/4!=1/2\),
+\[
+ G^{(1)}(x,y)
+ =\frac{-i\lambda}{2}\int d^4z\,
+ D(x-z)D(y-z)D(0).
+\]
+The remaining contractions either contain a free external contraction
+times a vacuum bubble, which the denominator cancels, or belong to a
+different topology.
+
+\SupplementarySolution{9}{The Cubic Self-Energy Factor}
+At second order the coefficient before contractions is
+\[
+ \frac{(-ig)^2}{2!(3!)^2}\int d^4z\,d^4w.
+\]
+For labeled vertices, choose the field at \(z\) joined to \(x\) in three
+ways and the field at \(w\) joined to \(y\) in three ways.  Pair the two
+remaining \(z\)-fields with the two remaining \(w\)-fields in \(2!\)
+ways.  Including the assignment \(x\leftrightarrow y\) between the two
+vertices gives \(2\cdot3\cdot3\cdot2=36\) contractions.  Dividing by
+\(2(3!)^2=72\) yields \(1/2\):
+\[
+ G^{(2)}_{\rm self}
+ =\frac{(-ig)^2}{2}\int d^4z\,d^4w\,
+ D(x-z)D(z-w)^2D(w-y).
+\]
+
+\SupplementarySolution{10}{A Vacuum Bubble Cancels in the Ratio}
+Let \(X=T\{\phi(x)\phi(y)\}\) and
+\[
+ N=\bra{\Omega}T\{Xe^{-i\int\mathcal H_I}\}\ket{\Omega},\qquad
+ Z=\bra{\Omega}T\{e^{-i\int\mathcal H_I}\}\ket{\Omega}.
+\]
+Write \(Z=1+Z_1+Z_2+\cdots\).  At second order, Wick's theorem contains a
+disconnected contribution \(N_2\supset
+\bra{\Omega}X\ket{\Omega}Z_2\), and similarly at first order when
+allowed.  Expanding the inverse,
+\[
+ Z^{-1}=1-Z_1+(Z_1^2-Z_2)+\cdots,
+\]
+shows that \(N/Z\) contains
+\(+\bra X\ket{\Omega}Z_2-\bra X\ket{\Omega}Z_2=0\).
+The cancellation is algebraic and applies separately to every vacuum
+component and its symmetry factor.
+
+\SupplementarySolution{11}{A Vertex Delta Function from Fourier Phases}
+Take all momenta as flowing into the vertex.  A line of momentum \(q_a\)
+then supplies
+\[
+ D(x-x_a)=\int\frac{d^4q_a}{(2\pi)^4}
+ \widetilde D(q_a)e^{iq_a\cdot(x-x_a)}.
+\]
+The product of the \(x\)-dependent phases is
+\(\exp[i x\cdot\sum_a q_a]\).  Therefore
+\[
+ \int d^4x\,e^{ix\cdot\sum_aq_a}
+ =(2\pi)^4\delta^4\!\left(\sum_aq_a\right).
+\]
+Multiplying by the interaction coefficient gives the vertex rule
+\[
+ -ig(2\pi)^4\delta^4\!\left(\sum_{\rm in}q
+ -\sum_{\rm out}q\right).
+\]
+The powers of \(2\pi\) arise solely from the stated Fourier convention.
+
+\SupplementarySolution{12}{Independent Momentum in the Fish Graph}
+For external momentum \(P=p_1+p_2=p'_1+p'_2\), assign momenta \(q\) and
+\(r\) to the two internal lines.  Before imposing conservation, the two
+vertices contribute
+\[
+ (2\pi)^8\delta^4(P-q-r)\delta^4(q+r-P).
+\]
+One delta function fixes \(r=P-q\); the other becomes the overall
+\((2\pi)^4\delta^4(P_f-P_i)\).  The nontrivial factor is consequently
+\[
+ \int\frac{d^4q}{(2\pi)^4}
+ \frac1{(q^2+m^2-i0)((P-q)^2+m^2-i0)}.
+\]
+Here \(I=2\), \(V=2\), and the graph is connected, so
+\(L=I-V+1=1\), matching the single unfixed four-momentum.
+
+\SupplementarySolution{13}{Dirac Propagator from the Scalar One}
+The two time branches of the mode expansion contain the completeness
+sums for \(u\) and \(v\).  In the chapter convention they combine into
+\[
+ \bra{\Omega}T\{\psi_\ell(x)\bar\psi_m(y)\}\ket{\Omega}
+ =-i\Delta_{\ell m}(x-y),
+\]
+where
+\[
+ \Delta_{\ell m}(z)
+ =\left[(-\gamma^\mu\partial_\mu+M)\beta\right]_{\ell m}
+ \Delta_F(z)
+ =\int\frac{d^4q}{(2\pi)^4}
+ \frac{\bigl[(-i\gamma_\mu q^\mu+M)\beta\bigr]_{\ell m}}
+ {q^2+M^2-i0}e^{iq\cdot z}.
+\]
+Acting on the scalar propagator generates exactly the spinor numerator.
+The rightmost \(\beta=i\gamma^0\) reflects the definition
+\(\bar\psi=\psi^\dagger\beta\).
+
+\SupplementarySolution{14}{The Dirac Green Equation}
+Define \(D_F^{\rm D}(z)=-i\Delta(z)\).  The numerator is the algebraic
+inverse of the free Dirac operator because
+\[
+ (i\gamma^\mu\partial_\mu-M)
+ (-\gamma^\nu\partial_\nu+M)
+ =-(\Box-M^2)\mathbf1,
+\]
+using \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\).
+Together with
+\((\Box-M^2)\Delta_F=-\delta^4\), this yields the identity matrix times
+the delta source, with the fixed right factor \(\beta\) appropriate to
+the barred index.  In the direct time-ordered derivation, the same delta
+function comes from differentiating the step functions and using
+\(\{\psi_\ell(t,\mathbf x),\psi_m^\dagger(t,\mathbf y)\}
+=\delta_{\ell m}\delta^3(\mathbf x-\mathbf y)\).
+
+\SupplementarySolution{15}{A Derivative at Either Fermion Endpoint}
+For momentum \(q\) flowing from \(y\) to \(x\), the propagator phase is
+\(e^{iq\cdot(x-y)}\).  Therefore
+\[
+ \partial_{x^\mu}e^{iq\cdot(x-y)}
+ =iq_\mu e^{iq\cdot(x-y)},\qquad
+ \partial_{y^\mu}e^{iq\cdot(x-y)}
+ =-iq_\mu e^{iq\cdot(x-y)}.
+\]
+Thus a derivative on \(\psi(x)\) multiplies the ordinary contraction by
+\(iq_\mu\), whereas a derivative on \(\bar\psi(y)\) multiplies it by
+\(-iq_\mu\).  The relative sign is not a fermionic exchange sign; it is
+the elementary consequence of differentiating the two opposite
+arguments of a translation-invariant function.
+
+\SupplementarySolution{16}{On-Shell Residues of the Spinor Numerator}
+With \(E_{\mathbf q}=\sqrt{\mathbf q^2+M^2}\),
+\[
+ q^2+M^2-i0
+ =-(q^0-E_{\mathbf q}+i0)(q^0+E_{\mathbf q}-i0).
+\]
+At \(q^0=E_{\mathbf q}\), the numerator
+\([(-i\gamma_\mu q^\mu+M)\beta]\) equals the positive-energy spin sum,
+up to the normalization factor \(2E_{\mathbf q}\) fixed in Chapter 5.
+At \(q^0=-E_{\mathbf q}\), change \(\mathbf q\to-\mathbf q\); the
+corresponding residue is the negative-energy \(v v^\dagger\) sum.  The
+opposite pole orientations then reproduce the two terms in the
+time-ordered mode expansion.  This check fixes both the numerator and
+the \(i0\) assignment.
+
+\SupplementarySolution{17}{Fermionic Time-Ordering Sign}
+By definition,
+\[
+ T\{\psi(x)\bar\psi(y)\}
+ =\theta(x^0-y^0)\psi(x)\bar\psi(y)
+ -\theta(y^0-x^0)\bar\psi(y)\psi(x).
+\]
+The minus sign is required because interchanging two fermionic
+operators is an odd permutation.  Vacuum expectation values then give a
+positive-energy \(u\)-sum in the first branch and minus the
+negative-energy \(v\)-sum in the second.  That relative sign is exactly
+what allows both residues to be written with the single covariant
+numerator \(-i\gamma_\mu q^\mu+M\).  With a plus sign, the coefficients
+of \(q^0\) and \(M\) would not transform as one Dirac matrix polynomial.
+
+\SupplementarySolution{18}{The Minus Sign of a Closed Fermion Loop}
+Writing spinor indices explicitly, a loop with insertions
+\(\Gamma_1,\ldots,\Gamma_n\) contains
+\[
+ (\Gamma_1)_{a_1a_2}D_{a_2a_3}\cdots
+ (\Gamma_n)_{a_na_1}
+ =\operatorname{Tr}(\Gamma_1D\cdots\Gamma_nD).
+\]
+To obtain this cyclic contraction from the original operator string, one
+must move one fermionic operator around the complete loop so that every
+\(\psi\) is paired with the next \(\bar\psi\).  This is one additional
+odd permutation after the signs already represented by the propagators.
+Consequently every closed fermion loop carries a factor \(-1\), independent
+of the number \(n\) of bosonic insertions.
+
+\SupplementarySolution{19}{The Scalar Pole Prescription}
+The denominator factorizes as
+\[
+ q^2+m^2-i0
+ =-(q^0-E_{\mathbf q}+i0)(q^0+E_{\mathbf q}-i0).
+\]
+Thus \(+E_{\mathbf q}\) is displaced below and
+\(-E_{\mathbf q}\) above the real axis.  For positive time the Fourier
+contour selects the positive-energy pole; for negative time it selects
+the negative-energy pole.  A retarded Green function would place both
+poles below the real axis, forcing the function to vanish for negative
+time.  The Feynman placement instead propagates positive-frequency modes
+forward and negative-frequency modes backward, which implements vacuum
+time ordering rather than causal response to a classical source.
+
+\SupplementarySolution{20}{Three Channels from One Cubic Interaction}
+Each of the two cubic vertices must receive two external lines, with the
+remaining legs joined internally.  Holding \(p_1\) fixed, its partner at
+the first vertex can be \(p_2\), \(-p'_1\), or \(-p'_2\).  Therefore
+\[
+ \mathcal M=-g^2\left[
+ \frac1{m^2-s-i0}
+ +\frac1{m^2-t-i0}
+ +\frac1{m^2-u-i0}\right].
+\]
+Permuting identical external legs permutes \(s,t,u\) and leaves the sum
+unchanged.  This crossing symmetry is a property of the summed amplitude;
+an individual diagram singles out one pairing and is not separately
+symmetric under all crossings.
+
+\SupplementarySolution{21}{Why a Quartic Vertex Has No Factorial}
+The first Dyson term is
+\[
+ -\frac{ig}{4!}\int d^4x\,\phi(x)^4.
+\]
+For four labeled external lines there are \(4\) choices for the first
+attachment, then \(3,2,1\) for the others.  The \(4!\) contractions
+cancel the denominator exactly.  Fourier transforming the attached
+lines and doing the vertex integral gives
+\[
+ -ig(2\pi)^4\delta^4(p_1+p_2-p'_1-p'_2).
+\]
+Hence the vertex rule is \(-ig\) together with momentum conservation.
+Adding another factorial would count indistinguishable fields twice and
+would disagree with the direct Wick expansion.
+
+\SupplementarySolution{22}{Reading a Yukawa Fermion Line Backwards}
+Let the arrow run from an incoming spinor \(u_b(p)\) through vertices
+\(\Gamma_1,\Gamma_2\) to \(\bar u_a(p')\).  Explicit indices give
+\[
+ \bar u_a(p')(\Gamma_2)_{ac}
+ D_{cd}(q)(\Gamma_1)_{db}u_b(p).
+\]
+Thus the compact chain is
+\[
+ \bar u(p')\,\Gamma_2D_F(q)\Gamma_1\,u(p).
+\]
+The matrices are written in the order encountered when the fermion line
+is followed backward from its arrow, equivalently from the outgoing
+barred spinor toward the incoming spinor.  Reversing this matrix order is
+generally wrong because the gamma matrices and coupling matrices need
+not commute.
+
+\SupplementarySolution{23}{Crossing a Fermion into an Antifermion}
+Suppose the original chain ends with an incoming fermion wavefunction
+\(u(p)\).  Crossing that leg to the final state replaces
+\[
+ p\longrightarrow -p,\qquad u(p)\longrightarrow v(p),
+\]
+and reverses the external arrow, while the internal matrix order remains
+fixed by the continuous fermion line.  For example,
+\[
+ \bar u(p')\Gamma D_F(q)\Gamma u(p)
+ \longrightarrow
+ \bar u(p')\Gamma D_F(q')\Gamma v(p).
+\]
+An overall phase of the \(v\)-spinor and the sign used in defining the
+crossed invariant amplitude are conventional.  Relative signs between
+different graphs are not: they are fixed by one common ordering of all
+external fermionic operators.
+
+\SupplementarySolution{24}{Exchange of Identical External Fermions}
+Neutral-scalar exchange gives the direct chain
+\[
+ \mathcal M_d=g^2
+ \frac{\bar u(p'_1)\Gamma u(p_1)\,
+       \bar u(p'_2)\Gamma u(p_2)}
+ {(p_1-p'_1)^2+m^2-i0}.
+\]
+The crossed attachment is
+\[
+ \mathcal M_x=g^2
+ \frac{\bar u(p'_2)\Gamma u(p_1)\,
+       \bar u(p'_1)\Gamma u(p_2)}
+ {(p_1-p'_2)^2+m^2-i0}.
+\]
+To compare both contractions, the crossed final creation operators must
+be interchanged once to restore the reference order.  Therefore
+\(\mathcal M=\mathcal M_d-\mathcal M_x\).  The minus sign enforces
+antisymmetry under \(p'_1\leftrightarrow p'_2\); it is not inferred from
+whether the drawn lines cross on the page.
+
+\SupplementarySolution{25}{Pairings from a Gaussian Generator}
+For
+\[
+ Z[B]=\exp\!\left(\frac12B_i(A^{-1})_{ij}B_j\right),
+\]
+each derivative must ultimately act on a distinct remaining \(B\) for
+the result to survive at \(B=0\).  Thus the six indices are partitioned
+into three unordered pairs.  Their number is
+\[
+ \frac{6!}{2^3\,3!}=15.
+\]
+Consequently
+\[
+ \left.\partial_{i_1}\cdots\partial_{i_6}Z[B]\right|_{B=0}
+ =\sum_{\text{15 pairings}}
+ (A^{-1})_{i_ai_b}(A^{-1})_{i_ci_d}(A^{-1})_{i_ei_f}.
+\]
+Each factor \(A^{-1}\) joins the two indices in one pair and is therefore
+represented by one propagator line.
+
+\SupplementarySolution{26}{First Coefficients of a Quartic Integral}
+Let angle brackets denote the unit Gaussian average and set
+\[
+ Z=\left\langle e^{-\lambda x^4/4!}\right\rangle,\qquad
+ G=\frac{\left\langle x^2e^{-\lambda x^4/4!}\right\rangle}{Z}.
+\]
+Using \(\langle x^{2n}\rangle=(2n-1)!!\),
+\[
+ Z=1-\frac{\lambda}{8}+\frac{35\lambda^2}{384}+O(\lambda^3),
+\]
+\[
+ \langle x^2e^{-\lambda x^4/4!}\rangle
+ =1-\frac{5\lambda}{8}+\frac{315\lambda^2}{384}+O(\lambda^3).
+\]
+Division gives
+\[
+ G=1-\frac{\lambda}{2}+\frac{2\lambda^2}{3}+O(\lambda^3).
+\]
+Terms factorizing into the zeroth-order two-point function times a
+vacuum moment cancel in the ratio, leaving only diagrams attached to the
+two displayed external points.
+
+\SupplementarySolution{27}{Automorphisms and Symmetry Factors}
+Label the two internal lines joining vertices \(z\) and \(w\) as \(a\)
+and \(b\).  Wick's theorem initially counts the contraction
+\((z_a,w_a)(z_b,w_b)\) separately from
+\((z_a,w_b)(z_b,w_a)\).  After labels are erased, both yield the same
+integrand \(D(z-w)^2\).  The graph has an automorphism exchanging
+\(a\leftrightarrow b\) while fixing every vertex and external leg.
+Therefore the labeled contraction count overcounts the unlabeled graph by
+\(2!\), and its weight contains \(1/2!\).  This is the origin of the
+\(1/2\) in the cubic self-energy graph, independent of how the two lines
+are drawn.
+
+\SupplementarySolution{28}{Connected Diagrams from a Logarithm}
+At zero source, assume one-point functions vanish.  Since \(W=\log Z\),
+\[
+ W_{12}=\frac{Z_{12}}Z,\qquad
+ W_{1234}=\frac{Z_{1234}}Z
+ -\frac{Z_{12}Z_{34}+Z_{13}Z_{24}+Z_{14}Z_{23}}{Z^2}.
+\]
+The three subtractions remove every partition of four insertions into
+two disconnected pairs.  With nonzero one-point functions, further
+terms subtract the \(1+3\), \(1+1+2\), and \(1+1+1+1\) partitions by the
+same product rule.  Thus derivatives of \(W\) are cumulants: precisely
+the parts that cannot be factored into correlators of proper subsets,
+which are the connected diagrams.
+
+\SupplementarySolution{29}{Amputation of an Off-Shell Scalar Leg}
+A source derivative inserts a field, so a momentum-space correlation
+function with one off-shell leg factors as
+\[
+ \widetilde G_{n+1}(q;p_1,\ldots,p_n)
+ =\frac{-i}{q^2+m^2-i0}\,
+ \widetilde\Gamma_{n+1}(q;p_1,\ldots,p_n)
+\]
+after isolating diagrams connected through that external line.
+Multiplying by \(i(q^2+m^2-i0)\) removes the propagator and leaves the
+amputated function \(\widetilde\Gamma_{n+1}\).  The operation is performed
+before imposing \(q^2=-m^2\); otherwise the inverse propagator vanishes.
+On-shell external wavefunctions and residues are attached only after
+this off-shell amputation.
+
+\SupplementarySolution{30}{The Normalized Gell-Mann--Low Expansion}
+Interaction-picture evolution satisfies
+\[
+ U(t',t)=T\exp\!\left[-i\int_t^{t'}d\tau\,H_I(\tau)\right].
+\]
+Inserting \(U(\infty,-\infty)\) around the free-field time-ordered
+product and dividing by its vacuum matrix element gives
+\[
+ \langle T\,\Phi_1\cdots\Phi_n\rangle
+ =\frac{\langle T\,\phi_1\cdots\phi_n
+ e^{-i\int d^4z\,\mathcal H_I(z)}\rangle_0}
+ {\langle T\,e^{-i\int d^4z\,\mathcal H_I(z)}\rangle_0}.
+\]
+Through second order, expand the denominator inverse as in S.6.10.
+Every numerator contraction with a vacuum component factors into that
+vacuum graph times a lower-order external graph; the identical term from
+the inverse denominator cancels it.  Components connected to at least
+one displayed operator cannot factor this way and therefore remain.
+\end{enumerate}

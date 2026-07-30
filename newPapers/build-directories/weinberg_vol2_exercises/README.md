@@ -27,6 +27,9 @@ The files for Chapter `NN` are under
 `latex/exercises/chapterNN/`. See `AUTHORING.md` for the required macros and
 `NOTATION.md` for binding conventions. `WORKFLOW.md` defines the
 chapter-ownership, source-verification, audit, and release sequence.
+`INDEX_PAGINATION.md` is regenerated from the completed build. It crosswalks
+the inherited printed-source index pagination to live chapter, exercise,
+solution, and reference page starts in this expanded edition.
 
 ## Build and audit
 

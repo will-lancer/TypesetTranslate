@@ -55,6 +55,7 @@ python3 "$edition_root/render_source_ledger.py"
 
 cd "$latex_dir"
 latexmk -g -pdf -interaction=nonstopmode -halt-on-error master.tex
+python3 "$edition_root/render_index_pagination.py"
 
 if rg -n \
   'Undefined control sequence|LaTeX Error|Fatal error|undefined on input line|There were undefined references|Citation .* undefined|Reference .* undefined|Hyper reference .* undefined|multiply defined|destination with the same identifier|Rerun to get cross-references right' \
