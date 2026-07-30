@@ -14,10 +14,10 @@ The inherited Author and Subject Index entries reproduce Weinberg's **printed-so
 | 18 | Renormalization Group Methods | 111–162 | 166–224 / 170–228 | 206 / 210 | 206 / 210 | 209 / 213 | 214 / 218 | 222 / 226 |
 | 19 | Spontaneously Broken Global Symmetries | 163–251 | 225–320 / 229–324 | 297 / 301 | 298 / 302 | 303 / 307 | 307 / 311 | 317 / 321 |
 | 20 | Operator Product Expansions | 252–294 | 321–375 / 325–379 | 356 / 360 | 357 / 361 | 360 / 364 | 365 / 369 | 374 / 378 |
-| 21 | Spontaneously Broken Gauge Symmetries | 295–358 | 376–431 / 380–435 | 427 / 431 | 427 / 431 | 427 / 431 | 427 / 431 | 427 / 431 |
-| 22 | Anomalies | 359–420 | 432–484 / 436–488 | 481 / 485 | 481 / 485 | 481 / 485 | 481 / 485 | 481 / 485 |
-| 23 | Extended Field Configurations | 421–477 | 485–533 / 489–537 | 530 / 534 | 531 / 535 | 531 / 535 | 531 / 535 | 531 / 535 |
+| 21 | Spontaneously Broken Gauge Symmetries | 295–358 | 376–449 / 380–453 | 427 / 431 | 427 / 431 | 431 / 435 | 436 / 440 | 446 / 450 |
+| 22 | Anomalies | 359–420 | 450–502 / 454–506 | 499 / 503 | 499 / 503 | 499 / 503 | 499 / 503 | 499 / 503 |
+| 23 | Extended Field Configurations | 421–477 | 503–551 / 507–555 | 548 / 552 | 549 / 553 | 549 / 553 | 549 / 553 | 549 / 553 |
 
-Live inherited-index starts: Author Index p. 534 / PDF 538; Subject Index p. 540 / PDF 544.
+Live inherited-index starts: Author Index p. 552 / PDF 556; Subject Index p. 558 / PDF 562.
 
-Completed PDF page count: 549.
+Completed PDF page count: 567.

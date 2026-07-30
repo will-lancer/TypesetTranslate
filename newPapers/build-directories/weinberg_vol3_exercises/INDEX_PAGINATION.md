@@ -16,8 +16,8 @@ The inherited Author and Subject Index entries reproduce Weinberg's **printed-so
 | 29 | Beyond Perturbation Theory | 248–306 | 290–358 / 294–362 | 339 / 343 | 339 / 343 | 341 / 345 | 346 / 350 | 357 / 361 |
 | 30 | Supergraphs | 307–317 | 359–382 / 363–386 | 366 / 370 | 367 / 371 | 368 / 372 | 373 / 377 | 381 / 385 |
 | 31 | Supergravity | 318–381 | 383–457 / 387–461 | 436 / 440 | 437 / 441 | 441 / 445 | 446 / 450 | 455 / 459 |
-| 32 | Supersymmetry Algebras in Higher Dimensions | 382–410 | 458–481 / 462–485 | 479 / 483 | 479 / 483 | 479 / 483 | 479 / 483 | 479 / 483 |
+| 32 | Supersymmetry Algebras in Higher Dimensions | 382–410 | 458–499 / 462–503 | 479 / 483 | 479 / 483 | 483 / 487 | 487 / 491 | 498 / 502 |
 
-Live inherited-index starts: Author Index p. 482 / PDF 486; Subject Index p. 487 / PDF 491.
+Live inherited-index starts: Author Index p. 500 / PDF 504; Subject Index p. 505 / PDF 509.
 
-Completed PDF page count: 494.
+Completed PDF page count: 512.

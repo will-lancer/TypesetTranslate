@@ -2,7 +2,7 @@
 
 Edition: `weinberg_vol1_exercises`
 
-Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercises, 330 supplementary solutions, and 57 ledger sources.
+Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercises, 360 supplementary solutions, and 62 ledger sources.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Target | Sources | Exception |
 |---:|---|---:|---:|---:|---:|---|
@@ -17,7 +17,7 @@ Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercise
 | 9 | Path-Integral Methods | 4/4 | 30/30 | 30 | 5 |  |
 | 10 | Non-Perturbative Methods | 8/8 | 30/30 | 30 | 5 |  |
 | 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | 4/4 | 30/30 | 30 | 5 |  |
-| 12 | General Renormalization Theory | 4/4 | 30/0 | 30 | 5 |  |
+| 12 | General Renormalization Theory | 4/4 | 30/30 | 30 | 5 |  |
 | 13 | Infrared Effects | 5/5 | 30/30 | 30 | 5 |  |
 | 14 | Bound States in External Fields | 5/0 | 0/0 | 30 | 0 |  |
 
@@ -39,42 +39,10 @@ Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercise
 ## Audit status
 
 - Mode: draft
-- Warnings: 34
+- Warnings: 2
 - Failures: 0
 
 ### Current draft warnings
 
-- Chapter 12: supplementary solutions are incomplete or discontinuous (0/30)
-- Chapter 12 S.1: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.2: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.3: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.4: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.5: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.6: unknown source id 'mit-8851-s13-foundations-ch12'
-- Chapter 12 S.7: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.8: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.9: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.10: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.11: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.12: unknown source id 'srednicki-qft-wilsonian-ch12'
-- Chapter 12 S.13: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.14: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.15: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.16: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.17: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.18: unknown source id 'manohar-eft-2018-ch12'
-- Chapter 12 S.19: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.20: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.21: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.22: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.23: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.24: unknown source id 'skiba-tasi-eft-2010-ch12'
-- Chapter 12 S.25: unknown source id 'cohen-tasi-eft-2019-ch12'
-- Chapter 12 S.26: unknown source id 'cohen-tasi-eft-2019-ch12'
-- Chapter 12 S.27: unknown source id 'cohen-tasi-eft-2019-ch12'
-- Chapter 12 S.28: unknown source id 'cohen-tasi-eft-2019-ch12'
-- Chapter 12 S.29: unknown source id 'cohen-tasi-eft-2019-ch12'
-- Chapter 12 S.30: unknown source id 'cohen-tasi-eft-2019-ch12'
 - Chapter 14: Weinberg solutions are incomplete or discontinuous (0/5)
 - Chapter 14: 0/30 supplementary exercises and no written count exception
-- Suspiciously similar supplementary titles S.7.20 and S.12.3 (ratio 0.90)

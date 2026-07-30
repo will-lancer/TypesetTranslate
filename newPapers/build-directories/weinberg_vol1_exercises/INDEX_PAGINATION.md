@@ -19,8 +19,8 @@ The canonical source volume has no inherited printed Author or Subject Index in 
 | 9 | Path-Integral Methods | — | 460–520 / 466–526 | 502 / 508 | 502 / 508 | 505 / 511 | 509 / 515 | 519 / 525 |
 | 10 | Non-Perturbative Methods | — | 521–582 / 527–588 | 559 / 565 | 560 / 566 | 565 / 571 | 570 / 576 | 581 / 587 |
 | 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | — | 583–626 / 589–632 | 605 / 611 | 606 / 612 | 609 / 615 | 614 / 620 | 625 / 631 |
-| 12 | General Renormalization Theory | — | 627–656 / 633–662 | 654 / 660 | 654 / 660 | 655 / 661 | 655 / 661 | 655 / 661 |
-| 13 | Infrared Effects | — | 657–681 / 663–687 | 679 / 685 | 680 / 686 | 681 / 687 | 681 / 687 | 681 / 687 |
-| 14 | Bound States in External Fields | — | 682–708 / 688–714 | 707 / 713 | 708 / 714 | 708 / 714 | 708 / 714 | 708 / 714 |
+| 12 | General Renormalization Theory | — | 627–677 / 633–683 | 654 / 660 | 654 / 660 | 658 / 664 | 663 / 669 | 676 / 682 |
+| 13 | Infrared Effects | — | 678–717 / 684–723 | 700 / 706 | 701 / 707 | 704 / 710 | 709 / 715 | 717 / 723 |
+| 14 | Bound States in External Fields | — | 718–744 / 724–750 | 743 / 749 | 744 / 750 | 744 / 750 | 744 / 750 | 744 / 750 |
 
-Completed PDF page count: 714.
+Completed PDF page count: 750.

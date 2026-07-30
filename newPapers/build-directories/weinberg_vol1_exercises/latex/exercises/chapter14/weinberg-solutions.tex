@@ -1,4 +1,183 @@
 \chapterbackmatter{Solutions to Weinberg Exercises}
 \ExerciseEditorialNote
 
-% Editorial solutions are inserted here with \WeinbergSolution{N}.
+\begin{enumerate}
+\WeinbergSolution{1}
+Choose the gauge in which the static external field is time independent and
+write the charged Klein--Gordon field as
+\[
+ \phi(\mathbf x,t)=\sum_N\left[
+ a_Nu_N(\mathbf x)e^{-iE_Nt}
+ b_N^\dagger v_N(\mathbf x)e^{iE_Nt}\right].
+\]
+(A sum over \(N\) includes continuum integration.)  For a purely
+electrostatic field define
+\[
+ \epsilon_N^{(+)}(\mathbf x)=E_N+e\mathcal A^0(\mathbf x),\qquad
+ \epsilon_N^{(-)}(\mathbf x)=E_N-e\mathcal A^0(\mathbf x).
+\]
+The equal-time commutators \([\phi(\mathbf x),\phi^\dagger(\mathbf y)]=0\)
+and \([\phi(\mathbf x),\pi(\mathbf y)]=i\delta^3(\mathbf x-\mathbf y)\)
+give the two completeness identities
+\begin{align*}
+ \sum_N\{u_N(\mathbf x)u_N^*(\mathbf y)
+            -v_N(\mathbf x)v_N^*(\mathbf y)\}&=0,\\
+ \sum_N\{u_N(\mathbf x)\epsilon_N^{(+)}(\mathbf y)u_N^*(\mathbf y)
+            +v_N(\mathbf x)\epsilon_N^{(-)}(\mathbf y)v_N^*(\mathbf y)\}
+ &=\delta^3(\mathbf x-\mathbf y).
+\end{align*}
+Consequently every square-integrable test function has the expansion
+\[
+ \boxed{f(\mathbf x)=\sum_N[c_Nu_N(\mathbf x)+d_Nv_N(\mathbf x)]}
+\]
+with
+\[
+ \boxed{\begin{aligned}
+ c_N&=\int d^3y\,u_N^*(\mathbf y)
+       \epsilon_N^{(+)}(\mathbf y)f(\mathbf y),\\
+ d_N&=\int d^3y\,v_N^*(\mathbf y)
+       \epsilon_N^{(-)}(\mathbf y)f(\mathbf y).
+ \end{aligned}}
+\]
+These are the charged Klein--Gordon inner-product projections.  If a static
+vector potential is also present, the same formulas hold because only the
+covariant time derivative enters the equal-time product.
+
+\WeinbergSolution{2}
+Time-translation invariance permits the energy transform
+\[
+ \Pi_{\mathcal A}^*(\mathbf x,\mathbf y;E)
+ =\int d\tau\,e^{iE\tau}
+   \Pi_{\mathcal A}^*(x^0,\mathbf x;x^0-\tau,\mathbf y).
+\]
+Near an unperturbed one-particle pole, insert the mode expansion from
+Problem~1 on both sides of the Dyson equation.  A single proper self-energy
+insertion produces a double pole.  Comparing its coefficient with
+\[
+ \frac1{E-E_N-\delta E_N}
+ =\frac1{E-E_N}+\frac{\delta E_N}{(E-E_N)^2}+\cdots
+\]
+gives
+\[
+ \boxed{\displaystyle
+ \delta E_N=-\int d^3x\,d^3y\,
+ u_N^*(\mathbf x)\,
+ \Pi_{\mathcal A}^*(\mathbf x,\mathbf y;E_N)\,
+ u_N(\mathbf y) .}
+\]
+The Klein--Gordon normalization used in Problem~1 already contains the pole
+residue, so no additional \(1/(2E_N)\) occurs.  In a degenerate subspace the
+right-hand side is a matrix that must be diagonalized.  Its real part shifts
+the level, while an unstable level has
+\(\Gamma_N=-2\,\operatorname{Im}\delta E_N\).
+
+\WeinbergSolution{3}
+The imaginary part of Eq.~(14.3.45) gives the electric-dipole rate
+\[
+ \Gamma_N=\frac{4\alpha}{3}\sum_{E_M<E_N}
+ (E_N-E_M)|\mathbf v_{MN}|^2
+ =\frac{4\alpha}{3}\sum_{E_M<E_N}
+ (E_N-E_M)^3|\mathbf x_{MN}|^2 .
+\]
+For a \(2p\) state the only lower E1 level is \(1s\), and
+\[
+ \omega_{21}=\frac{3}{8}\alpha^2m_e,\qquad
+ \int_0^\infty dr\,r^3R_{10}(r)R_{21}(r)
+ =\frac{256}{81\sqrt6}\,a_0 .
+\]
+The angular integral gives, for each magnetic sublevel,
+\[
+ \sum_i|\langle1s|x^i|2p,m\rangle|^2
+ =\frac13\left(\frac{256a_0}{81\sqrt6}\right)^2
+ =\frac{32768}{59049}a_0^2 .
+\]
+It follows that
+\[
+ \boxed{\displaystyle
+ \Gamma_{2p\to1s}=\frac{2^8}{3^8}\alpha^5m_e .}
+\]
+Numerically this is \(6.27\times10^8\ {\rm s}^{-1}\), or
+\(\tau_{2p}\simeq1.60\ {\rm ns}\).  Fine-structure and recoil corrections
+are beyond the requested order.
+
+\WeinbergSolution{4}
+Let \(H\) be the Schrödinger--Coulomb Hamiltonian and
+\(\Delta_{MN}=E_M-E_N\).  After the free on-shell mass and residue
+subtractions, old-fashioned perturbation theory gives the state-dependent
+part of the scalar self-energy as
+\[
+ -\frac{g^2}{2}\int\frac{d^3k}{(2\pi)^3\omega_k}
+ \left\langle N\left|
+ e^{i\mathbf k\cdot\mathbf x}
+ \frac1{H-E_N+\omega_k}
+ e^{-i\mathbf k\cdot\mathbf x}
+ \right|N\right\rangle_{\rm sub},
+ \qquad \omega_k=\sqrt{\mathbf k^2+m_\phi^2}.
+\]
+In the stated range \(\Delta_{MN}\ll m_\phi\ll Z\alpha m_e\), expand the
+resolvent in \(H-E_N\) and use isotropy of the \(1s\) state.  The constant
+and linear terms are precisely the on-shell mass and residue subtractions.
+The first surviving term is
+\[
+ \delta E_N=-\frac{g^2\langle\mathbf p^2\rangle_N}{6m_e^2}
+ \int\frac{d^3k}{(2\pi)^3}
+ \frac{\mathbf k^2}{(\mathbf k^2+m_\phi^2)^2}.
+\]
+Dimensional regularization isolates the nonanalytic, scheme-independent
+term,
+\[
+ \int\frac{d^3k}{(2\pi)^3}
+ \frac{\mathbf k^2}{(\mathbf k^2+m_\phi^2)^2}
+ =-\frac{3m_\phi}{8\pi}.
+\]
+Since \(\langle\mathbf p^2\rangle_{1s}=(Z\alpha m_e)^2\),
+\[
+ \boxed{\displaystyle
+ \delta E_{1s}=\frac{g^2}{16\pi}(Z\alpha)^2m_\phi
+ O\!\left(g^2(Z\alpha)^4m_e,\,
+ g^2(Z\alpha)^2\frac{m_\phi^2}{Z\alpha m_e}\right).}
+\]
+The positive sign means that the level is made less deeply bound.  Terms
+analytic in \(m_\phi^2\) belong to the shorter-distance matching indicated
+in the remainder.
+
+\WeinbergSolution{5}
+The expansion used in Problem~4 is not uniform when \(m_\phi=0\).  After
+the on-shell mass and residue pieces have been removed, the dipole term
+\(e^{i\mathbf k\cdot\mathbf x}=1+i\mathbf k\cdot\mathbf x+\cdots\)
+leaves
+\[
+ \delta E_N^{\rm soft}
+ =\frac{g^2}{12\pi^2}\sum_M
+ \Delta_{MN}^3|\mathbf x_{MN}|^2
+ \ln\frac{\Lambda}{|\Delta_{MN}|}
+ +\hbox{nonlogarithmic matching terms}.
+\]
+The artificial scale \(\Lambda\) cancels against the hard part.  For the
+ground state define the scalar Bethe mean excitation energy by
+\[
+ \ln\Delta E_{1s}^{(\phi)}
+ =\frac{\sum_M\Delta_{M1}|\mathbf v_{M1}|^2
+                  \ln\Delta_{M1}}
+        {\sum_M\Delta_{M1}|\mathbf v_{M1}|^2}.
+\]
+The double-commutator sum rule gives
+\[
+ \sum_M\Delta_{M1}|\mathbf v_{M1}|^2
+ =\frac{Ze^2}{2m_e^2}|\psi_{1s}(0)|^2
+ =2(Z\alpha)^4m_e .
+\]
+Thus, to the leading logarithmic accuracy fixed without a full hard
+one-loop matching calculation,
+\[
+ \boxed{\displaystyle
+ \delta E_{1s}(m_\phi=0)
+ =\frac{g^2}{6\pi^2}(Z\alpha)^4m_e
+ \left[\ln\frac{m_e}{\Delta E_{1s}^{(\phi)}}+O(1)\right]
+ =\frac{g^2}{6\pi^2}(Z\alpha)^4m_e
+ \left[\ln\frac1{(Z\alpha)^2}+O(1)\right].}
+\]
+This also explains why simply setting \(m_\phi=0\) in the leading answer to
+Problem~4 is invalid: the linear term disappears and atomic excitation
+energies themselves regulate the infrared region.
+\end{enumerate}

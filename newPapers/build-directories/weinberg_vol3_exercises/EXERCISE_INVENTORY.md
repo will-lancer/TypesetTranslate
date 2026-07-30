@@ -2,7 +2,7 @@
 
 Edition: `weinberg_vol3_exercises`
 
-Totals: 39 Weinberg exercises, 35 Weinberg solutions, 210 supplementary exercises, 210 supplementary solutions, and 29 ledger sources.
+Totals: 39 Weinberg exercises, 39 Weinberg solutions, 240 supplementary exercises, 240 supplementary solutions, and 34 ledger sources.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Target | Sources | Exception |
 |---:|---|---:|---:|---:|---:|---|
@@ -14,7 +14,7 @@ Totals: 39 Weinberg exercises, 35 Weinberg solutions, 210 supplementary exercise
 | 29 | Beyond Perturbation Theory | 3/3 | 30/30 | 30 | 4 |  |
 | 30 | Supergraphs | 3/3 | 30/30 | 30 | 3 |  |
 | 31 | Supergravity | 6/6 | 30/30 | 30 | 5 |  |
-| 32 | Supersymmetry Algebras in Higher Dimensions | 4/0 | 0/0 | 30 | 0 |  |
+| 32 | Supersymmetry Algebras in Higher Dimensions | 4/4 | 30/30 | 30 | 5 |  |
 
 ## Source use by chapter
 
@@ -25,14 +25,10 @@ Totals: 39 Weinberg exercises, 35 Weinberg solutions, 210 supplementary exercise
 - Chapter 29: `bilal-introduction-susy-2001-ch29` (8), `intriligator-seiberg-gauge-duality-1995-ch29` (7), `poppitz-trivedi-dsb-1998-ch29` (7), `tong-sft-problems-2023-ch29` (8)
 - Chapter 30: `antusch-ratz-supergraphs-2002-ch30` (9), `gates-grisaru-rocek-siegel-superspace-ch30` (12), `kuzenko-tyler-wz-effective-action-2014-ch30` (9)
 - Chapter 31: `brignole-ibanez-munoz-soft-terms-ch31` (6), `freedman-van-proeyen-ingredients-sugra-ch31` (6), `glmr-gaugino-mass-1998-ch31` (6), `martin-susy-primer-v7-ch31` (6), `van-proeyen-tools-susy-ch31` (6)
+- Chapter 32: `de-wit-supergravity-2002-ch32` (6), `polchinski-tasi-d-branes-ch32` (6), `townsend-p-brane-democracy-ch32` (6), `van-proeyen-tools-susy-ch32` (6), `witten-string-dynamics-1995-ch32` (6)
 
 ## Audit status
 
-- Mode: draft
-- Warnings: 2
+- Mode: strict
+- Warnings: 0
 - Failures: 0
-
-### Current draft warnings
-
-- Chapter 32: Weinberg solutions are incomplete or discontinuous (0/4)
-- Chapter 32: 0/30 supplementary exercises and no written count exception

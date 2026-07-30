@@ -2,7 +2,7 @@
 
 Edition: `weinberg_vol2_exercises`
 
-Totals: 50 Weinberg exercises, 34 Weinberg solutions, 180 supplementary exercises, 180 supplementary solutions, and 43 ledger sources.
+Totals: 50 Weinberg exercises, 40 Weinberg solutions, 210 supplementary exercises, 210 supplementary solutions, and 48 ledger sources.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Target | Sources | Exception |
 |---:|---|---:|---:|---:|---:|---|
@@ -12,7 +12,7 @@ Totals: 50 Weinberg exercises, 34 Weinberg solutions, 180 supplementary exercise
 | 18 | Renormalization Group Methods | 6/6 | 30/30 | 30 | 5 |  |
 | 19 | Spontaneously Broken Global Symmetries | 6/6 | 30/30 | 30 | 5 |  |
 | 20 | Operator Product Expansions | 5/5 | 30/30 | 30 | 5 |  |
-| 21 | Spontaneously Broken Gauge Symmetries | 6/0 | 0/0 | 30 | 0 |  |
+| 21 | Spontaneously Broken Gauge Symmetries | 6/6 | 30/30 | 30 | 5 |  |
 | 22 | Anomalies | 4/0 | 0/0 | 30 | 0 |  |
 | 23 | Extended Field Configurations | 6/0 | 0/0 | 30 | 0 |  |
 
@@ -24,17 +24,16 @@ Totals: 50 Weinberg exercises, 34 Weinberg solutions, 180 supplementary exercise
 - Chapter 18: `kaplunovsky-rg-flows-2024` (6), `kaplunovsky-rg-techniques-2024` (6), `mit-ocw-stat-mech-ii-2014` (6), `tong-gauge-rg-2018` (6), `tong-statistical-field-theory-2021` (6)
 - Chapter 19: `mit-ocw-qft-iii-2007` (6), `pich-effective-field-theory-1998` (6), `scherer-chiral-perturbation-2002` (6), `tong-standard-model-broken-symmetries-2025` (6), `tong-statistical-field-theory-goldstone-2021` (6)
 - Chapter 20: `beneke-renormalons-1999` (6), `mit-8324-f10-ps6-ope-rg` (6), `mit-8325-s07-dis` (6), `pdg-structure-functions-2025` (6), `radyushkin-qcd-sum-rules-2001` (6)
+- Chapter 21: `greiter-superconductivity-2005` (6), `hamilton-higgs-mathematicians-2015` (6), `mit-8323-s23-rec10-ew-higgs` (6), `pdg-electroweak-2025` (6), `pdg-guts-2025` (6)
 
 ## Audit status
 
 - Mode: draft
-- Warnings: 6
+- Warnings: 4
 - Failures: 0
 
 ### Current draft warnings
 
-- Chapter 21: Weinberg solutions are incomplete or discontinuous (0/6)
-- Chapter 21: 0/30 supplementary exercises and no written count exception
 - Chapter 22: Weinberg solutions are incomplete or discontinuous (0/4)
 - Chapter 22: 0/30 supplementary exercises and no written count exception
 - Chapter 23: Weinberg solutions are incomplete or discontinuous (0/6)
