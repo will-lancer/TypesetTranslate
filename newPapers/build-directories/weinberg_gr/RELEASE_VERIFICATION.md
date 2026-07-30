@@ -13,7 +13,7 @@ Release date: 2026-07-30 PDT
 - Source PDF SHA-256:
   `da6fca5e44d31417e0d370108a622f9444602d68fb5768ec8edbc5b8ce5a78f9`
 - Modernized PDF SHA-256:
-  `dd8ceae04bee88e21b1d83bbd2252a89de3eb0ccc52d83f94e0be9ea42ec18bc`
+  `f6bd9798e72267aefb05299df6d59053b8148aa9f99d2cfbb8eaff7e92505fb8`
 - The build master and stable export are byte-for-byte identical.
 - The publisher publication-data leaf and the separate copyright-
   acknowledgements leaf are intentionally omitted from the compiled edition.
@@ -37,7 +37,7 @@ The final strict execution of `./build_and_verify.sh` passed.
   hbox.
 - Text extraction succeeds; Ghostscript parses the complete PDF without
   error; every listed font is embedded and subset.
-- The stable export is 4,382,524 bytes, PDF 1.7, unencrypted, and has 586 A4
+- The stable export is 4,388,217 bytes, PDF 1.7, unencrypted, and has 586 A4
   pages. `pdfinfo` reports `Suspects: no`.
 
 ## Visual QA
@@ -57,6 +57,13 @@ float repacking were re-inspected at full size. The exact final raster differs
 from the previously inspected raster only on pages 10, 265, and 382--416; all
 37 changed pages were separately inspected, while every other final page is
 pixel-identical to its inspected predecessor.
+
+Six vector-reconstructed figures were rebuilt after the release above, and
+their pages were re-inspected against the source scan: Figures 8.1, 8.2, 14.1,
+14.2, and 15.1 were redrawn from the governing equations, and the
+\(\sigma_{\mathrm{abs}}\) axis labels in Figure 3.1 were set horizontally to
+match the source. The pixel-identity statements above therefore no longer cover
+the pages carrying those six figures; every other page is unchanged.
 
 There are no blank pages. The deliberately low-density leaves are the five
 Part dividers on physical pages 10, 67, 157, 315, and 357; sparse

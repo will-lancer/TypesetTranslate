@@ -1,6 +1,20 @@
 % Source: Weinberg GR, physical PDF p. 439 (printed p. 419).
 % Coverage: Figure 14.1, light-ray geometry for parallax and luminosity.
 % Status: vector reconstruction; source-reviewed and compile-clean.
+% Geometry: the ray is Eq. (14.4.5) itself.  Writing s = sigma/r_1 and
+%           K = k r_1^2, and resolving x(sigma) into the radial direction
+%           x_1-hat (drawn upward) and the transverse direction epsilon
+%           (drawn to the left), that equation reads
+%             transverse:  |epsilon| r_1 s
+%             radial:      r_1 [ sqrt(1 - K s^2) - s sqrt(1 - K) ]
+%           so the ray leaves the source at s = 0 and reaches its closest
+%           approach to the origin at s = 1, where the radial part vanishes
+%           and the transverse offset is |epsilon| r_1 -- the impact parameter
+%           b of Eq. (14.4.6).  Here K = -1.6 (so sqrt(1 - K) = 1.61245),
+%           r_1 = 6.6 and |epsilon| r_1 = 1.5.  The K < 0 branch is the one
+%           the source draws: it makes the ray steepen towards the observer,
+%           and gives |epsilon| = 8.0 deg at the source against a line-of-sight
+%           shift of vartheta = 20.1 deg at the origin.
 % Uncertainties: source caption states that angles and curvature are
 %                deliberately exaggerated.
 
@@ -10,26 +24,37 @@
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
   \coordinate (O) at (0,0);
-  \coordinate (S) at (0,6.4);
-  \coordinate (B) at (1.15,0.45);
-  \coordinate (E) at (1.75,6.0);
+  \coordinate (S) at (0,6.6);
+  \coordinate (P) at (-1.5,0);
 
-  \draw[line width=0.55pt] (O)--(S);
-  \draw[line width=0.8pt]
-    (E) .. controls (1.25,4.2) and (0.55,1.7) .. (B);
-  \draw[dashed] (E)--(S);
-  \draw[<->] (O)--node[left] {\(r_1\)} (S);
-  \draw[<->] (O)--node[below right] {\(b\)} (B);
+  % Radial line from the source to the origin.
+  \draw[line width=0.55pt] (S) -- (O);
 
-  \draw (E) ++(-0.52,-0.13) arc[start angle=194,end angle=227,radius=0.55];
-  \node at (1.24,5.54) {\(\lvert\boldsymbol\epsilon\rvert\)};
-  \draw (O) ++(0,0.75) arc[start angle=90,end angle=69,radius=0.75];
-  \node at (0.26,0.92) {\(\vartheta\)};
+  % The light ray, from the source to its closest approach to the origin.
+  \draw[line width=0.9pt,
+    postaction={decorate},
+    decoration={markings,mark=at position 0.55 with {\arrow{Latex}}}]
+    plot[domain=0:1,samples=120,variable=\s]
+      ({-1.5*\s},{6.6*(sqrt(1+1.6*\s*\s)-1.61245*\s)});
 
-  \fill (O) circle (1.3pt);
-  \fill (S) circle (1.3pt);
-  \node[below left] at (O) {\(r=0\)};
-  \node[above left] at (S) {\(r=r_1\)};
+  % Impact parameter.
+  \draw[<->] (P) -- (O);
+  \node[below,inner sep=3pt] at (-0.75,0) {\(b\)};
+
+  % Angle between the ray and the radial direction, at the source.
+  \draw (0,4.40) arc[start angle=270,end angle=262,radius=2.2];
+  \node[left,inner sep=1pt] at (-0.62,4.60) {\(\lvert\boldsymbol\epsilon\rvert\)};
+  \draw[thin] (-0.60,4.47) -- (-0.17,4.42);
+
+  % Angle between the ray and the radial direction, at the origin.
+  \draw[thin] (-1.5,-0.35) -- (-1.5,2.40);
+  \draw (-1.5,1.30) arc[start angle=90,end angle=71,radius=1.3];
+  \node[inner sep=1pt] at (-1.21,1.63) {\(\vartheta\)};
+
+  \fill (O) circle (1.4pt);
+  \fill (S) circle (1.4pt);
+  \node[right,inner sep=3pt] at (O) {\(r=0\)};
+  \node[right,inner sep=3pt] at (S) {\(r=r_1\)};
 \end{tikzpicture}
 \caption{Quantities used in the calculation of parallaxes and apparent
 luminosities. The angles and the curvature of the light ray are greatly

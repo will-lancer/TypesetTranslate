@@ -7,8 +7,17 @@ of Relativity*.
 
 The original edition remains in the sibling `weinberg_gr` build directory.
 This copy has its own export path and can be changed without modifying or
-overwriting that edition. See `EXERCISES.md` for the chapter exercise hooks and
-authoring interface.
+overwriting that edition. Chapter 1 remains exercise-free; Chapters 2--16
+contain 162 source-credited exercises and 162 matching worked solutions. In
+each chapter the order is original text, Exercises, Solutions, then the
+original bibliography or references.
+
+See `EXERCISES.md` for the authoring interface and
+`EXERCISE_SOURCES.md` for the source ledger. Cambridge material is Part III
+only: the collection represents every available General Relativity exam year
+from 2001 through 2025 (there was no 2020 paper), as well as all four current
+Tong example sheets. McGreevy problem sets 1--9 and MIT 8.962 are also
+represented. Every exercise prints its credit immediately below its title.
 
 ## Source
 
@@ -93,6 +102,9 @@ The reusable QA programs are:
 - `audit_index.py`: source-page structure, entry counts, selective-italic
   locator integrity, and common OCR-failure checks for the combined index
   (`--force` runs it before the completion header is set);
+- `audit_exercises.py`: Chapter 1 exclusion, minimum chapter counts,
+  one-for-one solutions, nonempty printed credits, Part II exclusion, and
+  graduate-source coverage;
 - `audit_layout.py`: box-warning inventory and a zero-overflow strict gate.
 
 After a draft or strict build, render a page range to a fresh ignored directory

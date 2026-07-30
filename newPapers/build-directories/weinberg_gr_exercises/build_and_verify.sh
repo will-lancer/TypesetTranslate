@@ -39,6 +39,7 @@ else
 fi
 python3 "$edition_root/audit_notation.py"
 python3 "$edition_root/audit_index.py"
+python3 "$edition_root/audit_exercises.py"
 
 cd "$latex_dir"
 latexmk -g -pdf -interaction=nonstopmode -halt-on-error master.tex

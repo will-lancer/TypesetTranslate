@@ -1,57 +1,83 @@
 % Source: Weinberg GR, physical PDF p. 212 (printed p. 189).
 % Coverage: Figure 8.1, geometry of solar light deflection.
 % Status: vector reconstruction; source-reviewed and compile-clean.
+% Geometry: the ray is an exact Keplerian hyperbola about the focus at the
+%           sun's centre, drawn as r(psi) = p/(1 + e cos psi) with the point
+%           (r sin psi, -r cos psi), so psi is measured from perihelion and
+%           perihelion lies straight below the sun.  Taking the deflection
+%           Delta phi = 50 degrees fixes the half-sweep
+%           psi_max = (180 + Delta phi)/2 = 115 deg, hence e = -1/cos psi_max
+%           = 2.3662; with r_0 = 1.6 this gives p = r_0 (1 + e) = 5.3859 and
+%           an impact parameter b = a sqrt(e^2 - 1) = 2.5115, a = p/(e^2 - 1).
+%           The thin straight line is the true incoming asymptote: direction
+%           psi_max - 90 deg = 25 deg at perpendicular distance b from the
+%           centre.  The angle it makes with the outgoing branch is therefore
+%           exactly Delta phi, and the two asymptotes cross at
+%           (0, -b/cos 25 deg) = (0, -2.7711), which is the centre of the
+%           Delta phi arc.
 % Uncertainties: none; deflection is deliberately exaggerated as in source.
 
 \begingroup
 \renewcommand{\thefigure}{8.1}
 \begin{figure}[t]
 \centering
-\begin{tikzpicture}[x=0.85cm,y=0.85cm,>=Latex]
-  % Incoming and outgoing asymptotes.
-  \draw[thin] (-5.5,-2.2) -- (5.7,1.2);
-  \draw[thin] (-6.2,1.9) -- (-2.2,0.48);
-  \draw[thin] (2.55,1.05) -- (5.8,2.30);
+\begin{tikzpicture}[x=0.62cm,y=0.62cm,>=Latex,line join=round]
 
-  % Deflected ray, with arrows indicating propagation toward the right.
-  \draw[line width=0.9pt,
+  % --- The deflected ray -------------------------------------------------
+  % Arrowheads are reversed so the photon travels right to left, as in source.
+  \draw[line width=1.0pt,
     postaction={decorate},
     decoration={markings,
-      mark=at position 0.23 with {\arrow{Latex}},
-      mark=at position 0.77 with {\arrow{Latex}}}]
-    plot[smooth] coordinates {
-      (-6.2,1.9) (-4.2,1.15) (-2.2,0.48) (-0.9,0.20)
-      (0.0,0.18) (1.1,0.42) (2.55,1.05) (4.2,1.70) (5.8,2.30)
-    };
+      mark=at position 0.15 with {\arrowreversed{Latex}},
+      mark=at position 0.72 with {\arrowreversed{Latex}},
+      mark=at position 0.93 with {\arrowreversed{Latex}}}]
+    plot[domain=-102.45:102.45,samples=220,variable=\t]
+      ({5.3859/(1+2.3662*cos(\t))*sin(\t)},
+       {-5.3859/(1+2.3662*cos(\t))*cos(\t)});
 
-  % Sun and the radius of closest approach.
-  \shade[ball color=gray!35] (0,0.82) circle (0.62);
-  \draw (0,0.82) circle (0.62);
-  \draw[->] (0,0.82) -- (0.0,0.19);
-  \node[left] at (-0.06,0.45) {$r_0$};
-  \draw[->] (-0.15,1.48) -- (-0.37,1.28);
-  \node[left] at (-0.17,1.50) {$R_\odot$};
+  % --- Incoming asymptote, continued straight past the sun ---------------
+  \draw[thin] (-7.0,-6.035) -- (11.9,2.775);
 
-  % Impact parameter relative to the incident asymptote.
-  \draw[dashed] (0,0.82) -- (1.02,0.50);
-  \draw[<->] (0.36,0.71) -- (0.18,0.20);
-  \node[right] at (0.38,0.45) {$b$};
+  % --- The sun, with its stippled rim ------------------------------------
+  \draw[line width=2.4pt,gray!50,dash pattern=on 0.5pt off 1.5pt]
+    (0,0) circle (1.22);
+  \draw[line width=0.8pt,fill=white] (0,0) circle (1.10);
 
-  % A generic observation point and its polar angle.
-  \fill (3.05,1.23) circle (1.8pt);
-  \node[below right] at (3.05,1.23) {$\gamma$};
-  \draw[->] (0,0.82) -- (3.05,1.23);
-  \node[above] at (1.55,1.02) {$r$};
-  \draw[dashed] (0,0.82) -- (2.20,0.82);
-  \draw[->] (1.25,0.82) arc[start angle=0,end angle=8,radius=1.25];
-  \node[right] at (1.28,0.96) {$\varphi(r)$};
+  % Solar radius.
+  \draw[->] (0,0) -- (125:1.05);
+  \node[above left,inner sep=1pt] at (125:1.22) {$R_\odot$};
 
-  % Incident direction and net deflection.
-  \draw[thin] (4.40,1.75) -- (5.80,1.75);
-  \draw[->] (5.08,1.75) arc[start angle=0,end angle=21,radius=0.70];
-  \node[right] at (5.55,2.00) {$\varphi_\infty$};
-  \draw[<->] (-3.45,-1.55) arc[start angle=18,end angle=36,radius=2.0];
-  \node[left] at (-3.76,-0.96) {$\Delta\varphi$};
+  % --- Distance of closest approach --------------------------------------
+  \draw[dashed,->] (0,0) -- (0,-1.60);
+  \node[left,inner sep=1pt] at (-2.35,-0.58) {$r_0$};
+  \draw[->,thin] (-2.30,-0.63) -- (-0.15,-1.42);
+
+  % --- Impact parameter: perpendicular from the centre to the asymptote ---
+  \draw[->] (0,0) -- (1.061,-2.276);
+  \node[right,inner sep=1pt] at (2.55,-2.80) {$b$};
+  \draw[->,thin] (2.50,-2.74) -- (1.22,-2.33);
+
+  % --- Reference axis, the photon, and its polar angle -------------------
+  \draw[dashed] (0,0) -- (6.60,0);
+  \draw[->] (0,0) -- (7.513,0.922);
+  \node[above,inner sep=1pt] at (4.88,0.599) {$r$};
+  \fill (7.513,0.922) circle (2.0pt);
+  \node[above,inner sep=2.5pt] at (7.513,0.922) {$\gamma$};
+
+  \draw[->] (3.00,0) arc[start angle=0,end angle=7,radius=3.00];
+  \node[inner sep=1pt] at (2.15,-0.68) {$\varphi(r)$};
+  \draw[thin] (2.48,-0.44) .. controls (2.90,-0.26) .. (2.96,0.16);
+
+  % --- Asymptotic polar angle --------------------------------------------
+  \draw[thin] (9.20,1.519) -- (11.55,1.519);
+  \draw[->] (11.30,1.519) arc[start angle=0,end angle=25,radius=2.10];
+  \node[right,inner sep=1pt] at (11.62,2.02) {$\varphi_\infty$};
+
+  % --- Net deflection: angle between the two asymptotes ------------------
+  \draw[<->] ([shift={(0,-2.7711)}]153:6.6)
+    arc[start angle=153,end angle=205,radius=6.6];
+  \node[left,inner sep=1pt] at (-6.72,-2.66) {$\Delta\varphi$};
+
 \end{tikzpicture}
 \caption{Quantities referred to in the calculation of the deflection of light
 by the sun. (Deflection greatly exaggerated.)}

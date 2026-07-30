@@ -1,9 +1,7 @@
 % Exercise-edition support. This file emits no visible material by itself.
 
-\newif\ifprintexercisesolutions
-\printexercisesolutionsfalse
-
 \newcounter{exercise}
+\newcounter{solution}
 \newcommand{\exercisechapter}{0}
 
 \newcommand{\chapterexercises}[1]{%
@@ -21,20 +19,37 @@
   \par
 }
 
-\newenvironment{exercise}[1][]{%
+\newenvironment{exercise}[2][]{%
   \refstepcounter{exercise}%
   \par\medskip
   \noindent\textbf{Exercise
     \exercisechapter.\arabic{exercise}}%
   \ifstrempty{#1}{}{\textbf{\ (#1)}}%
-  \quad
+  \ifstrempty{#2}{}{%
+    \par\nobreak\noindent
+    {\footnotesize\textnormal{(#2)}}%
+  }%
+  \par\nobreak\smallskip\noindent
 }{%
   \par\medskip
 }
 
-\newcommand{\exercisesolution}[1]{%
-  \ifprintexercisesolutions
-    \par\smallskip
-    \noindent\textit{Solution.}\ #1\par
-  \fi
+\newenvironment{solutions}{%
+  \clearpage
+  \subsection*{Solutions}%
+  \addcontentsline{toc}{subsection}{Solutions}%
+  \setcounter{solution}{0}%
+}{%
+  \par
+}
+
+\newenvironment{solution}[1][]{%
+  \refstepcounter{solution}%
+  \par\medskip
+  \noindent\textbf{Solution
+    \exercisechapter.\arabic{solution}}%
+  \ifstrempty{#1}{}{\textbf{\ (#1)}}%
+  \quad
+}{%
+  \par\medskip
 }
