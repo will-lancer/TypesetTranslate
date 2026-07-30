@@ -1,0 +1,51 @@
+% Figure 11.3: charged-particle scattering with and without vacuum polarization.
+% Source: physical PDF p. 505 (printed p. 482).
+\begingroup
+\renewcommand{\thefigure}{11.\arabic{figure}}
+\setcounter{figure}{2}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  charged/.style={line width=0.65pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.58 with {\arrow{Stealth[length=4.4pt,width=3.3pt]}}}},
+  photon/.style={line width=0.6pt,decorate,
+    decoration={snake,amplitude=1.0pt,segment length=5pt}},
+  every node/.style={font=\small}
+]
+  \begin{scope}[xshift=-3.25cm]
+    \coordinate (L) at (-1.45,0);
+    \coordinate (R) at (1.45,0);
+    \draw[charged] (-2.45,-1.65) -- (L);
+    \draw[charged] (L) -- (-2.45,1.65);
+    \draw[photon] (L) -- (R);
+    \draw[charged] (2.45,-1.65) -- (R);
+    \draw[charged] (R) -- (2.45,1.65);
+    \node[left] at (-2.25,-1.40) {$1$};
+    \node[left] at (-2.28,1.42) {$2$};
+    \node[right] at (2.26,-1.40) {$1'$};
+    \node[right] at (2.27,1.42) {$2'$};
+    \node at (0,-2.30) {(a)};
+  \end{scope}
+  \begin{scope}[xshift=3.25cm]
+    \coordinate (L) at (-1.55,0);
+    \coordinate (R) at (1.55,0);
+    \draw[charged] (-2.55,-1.65) -- (L);
+    \draw[charged] (L) -- (-2.55,1.65);
+    \draw[photon] (L) -- (-0.67,0);
+    \draw[charged] (-0.67,0) arc[start angle=180,end angle=0,x radius=0.67cm,y radius=0.82cm];
+    \draw[charged] (0.67,0) arc[start angle=0,end angle=-180,x radius=0.67cm,y radius=0.82cm];
+    \draw[photon] (0.67,0) -- (R);
+    \draw[charged] (2.55,-1.65) -- (R);
+    \draw[charged] (R) -- (2.55,1.65);
+    \node[left] at (-2.35,-1.40) {$1$};
+    \node[left] at (-2.38,1.42) {$2$};
+    \node[right] at (2.36,-1.40) {$1'$};
+    \node[right] at (2.37,1.42) {$2'$};
+    \node at (0,-2.30) {(b)};
+  \end{scope}
+\end{tikzpicture}
+\caption{Two diagrams for the scattering of charged particles. Here lines carrying arrows are charged particles; wavy lines are photons. Diagram (b) represents the lowest-order vacuum polarization correction to the tree approximation graph (a).}
+\label{fig:11.3}
+\end{figure}
+\endgroup

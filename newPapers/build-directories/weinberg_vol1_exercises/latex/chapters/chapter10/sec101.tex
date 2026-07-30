@@ -1,0 +1,224 @@
+% Chunk: Chapter 10 introduction and \S10.1, Symmetries.
+% Source: Weinberg QFT Vol. I, printed pp. 425--428 (physical PDF pp. 448--451),
+% ending immediately before the \S10.2 heading on physical page 451.
+% Status: source-reviewed, isolated compile-clean, and visually checked; frozen.
+
+We are now going to begin our study of higher-order contributions to
+physical processes, corresponding to Feynman diagrams involving one or
+more loops. It will be very useful in this work to have available a method
+of deriving results valid to all orders in perturbation theory (and in some
+cases beyond perturbation theory). In this chapter we will exploit the
+field equations and commutation relations of the interacting fields in the
+Heisenberg picture for this purpose. The essential bridge between the
+Heisenberg picture and the Feynman diagrams of perturbation theory is
+provided by the theorem proved in Section 6.4: the sum of all diagrams for
+a process $\alpha\to\beta$ with extra vertices inserted corresponding to operators
+$O_a(x)$, $O_b(y)$, etc. is given by the matrix element of the time-ordered product
+of the corresponding Heisenberg-picture operators
+\[
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{-iO_a(x),-iO_b(y),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}.
+\]
+As a special case, where the operators $O_a(x)$, $O_b(x)$, etc. are elementary
+particle fields, this matrix element equals the sum of all Feynman diagrams
+with incoming lines on the mass shell corresponding to the state $\alpha$,
+outgoing lines on the mass shell corresponding to the state $\beta$, and lines
+off the mass shell (including propagators) corresponding to the operators
+$O_a(x)$, $O_b(x)$, etc. After exploring some of the non-perturbative results
+that can be obtained in this way we will be in a good position to take up
+the perturbative calculation of radiative corrections.
+
+\subsection{Symmetries}
+
+One obvious but important use of the theorem quoted above is to extend
+the application of symmetry principles from $S$-matrix elements, where all
+external lines have four-momenta on the mass shell, to parts of Feynman
+diagrams, with some or all external lines off the mass shell.
+
+For instance, consider the symmetry of spacetime translational invariance.
+This symmetry has as a consequence the existence of a Hermitian
+four-vector operator $P^\mu$, with the property that, for any local function
+$O(x)$ of field operators and their canonical conjugates,
+\begin{equation}
+  [P_\mu,O(x)]=i\frac{\partial}{\partial x^\mu}O(x).
+  \tag{10.1.1}\label{eq:10.1.1}
+\end{equation}
+(See Eqs.~\eqref{eq:7.3.28} and \eqref{eq:7.3.29}.) Also, the states $\alpha$ and $\beta$ are usually chosen
+to be eigenstates of the four-momentum:
+\begin{equation}
+  P^\mu\ket{\alpha}_{\mathrm{in}}=p_\alpha^\mu\ket{\alpha}_{\mathrm{in}},
+  \qquad
+  P^\mu\ket{\beta}_{\mathrm{out}}=p_\beta^\mu\ket{\beta}_{\mathrm{out}}.
+  \tag{10.1.2}\label{eq:10.1.2}
+\end{equation}
+It follows that for any set of local functions $O_a(x)$, $O_b(x)$, etc. of fields
+and/or field derivatives
+\begin{align}
+  &(p_{\beta\mu}-p_{\alpha\mu})
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x_1),O_b(x_2),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}
+  \notag\\
+  &\quad={}_{\mathrm{out}}\!\bra{\beta}
+  [P_\mu,T\{O_a(x_1),O_b(x_2),\ldots\}]
+  \ket{\alpha}_{\mathrm{in}}
+  \notag\\
+  &\quad=i\left(\frac{\partial}{\partial x_1^\mu}
+  +\frac{\partial}{\partial x_2^\mu}+\cdots\right)
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x_1),O_b(x_2),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}.
+  \tag{10.1.3}\label{eq:10.1.3}
+\end{align}
+This has the solution
+\begin{align}
+  &{}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x_1),O_b(x_2),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}
+  \notag\\
+  &\qquad=\exp\bigl(i(p_\beta-p_\alpha)\cdot x\bigr)
+  F_{ab\ldots}(x_1-x_2,\ldots),
+  \tag{10.1.4}\label{eq:10.1.4}
+\end{align}
+where $x$ is any sort of average spacetime coordinate
+\begin{equation}
+  x^\mu=c_1x_1^\mu+c_2x_2^\mu+\cdots,
+  \qquad c_1+c_2+\cdots=1
+  \tag{10.1.5}\label{eq:10.1.5}
+\end{equation}
+and $F$ depends only on differences among the $x$s. (In particular, a vacuum
+expectation value can depend only on the coordinate differences.) We can
+Fourier transform Eq.~\eqref{eq:10.1.4} by integrating separately over $x^\mu$ and the
+coordinate differences, with the result that
+\begin{align}
+  &\int d^4x_1\,d^4x_2\cdots
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x_1),O_b(x_2),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}
+  \notag\\
+  &\qquad\cdot\exp(-ik_1\cdot x_1-ik_2\cdot x_2-\cdots)
+  \propto\delta^4(p_\beta-p_\alpha-k_1-k_2-\cdots).
+  \tag{10.1.6}\label{eq:10.1.6}
+\end{align}
+We saw in Section 6.4 that the matrix element of the time-ordered product
+is given by applying the usual coordinate-space Feynman rules to the sum
+of all graphs with incoming particles corresponding to particles in $\alpha$,
+outgoing particles in $\beta$, and external lines that simply terminate in vertices
+at $x_1,x_2,\ldots$. The Fourier transform \eqref{eq:10.1.6} is correspondingly given
+by applying the momentum-space Feynman rules to the same sum of
+Feynman diagrams, with off-shell external lines carrying four-momenta
+$k_1,k_2,\ldots$ into the diagrams. Eq.~\eqref{eq:10.1.6} is then just the statement that
+this sum of Feynman graphs conserves four-momentum. The result is
+obvious in perturbation theory, because four-momentum is conserved at
+every vertex, so it is not surprising to see the same result emerging without
+having to rely on perturbation theory.
+
+With somewhat more effort, one can use the Lorentz transformation
+properties of the Heisenberg-picture fields and the `in' and `out' states to
+show that the sum of all graphs with a given set of on- and off-shell lines
+satisfies the same Lorentz transformation conditions as the lowest-order
+terms.
+
+Similar arguments apply to the conservation of internal quantum numbers,
+like electric charge. As shown in Section 7.3, a field or other operator
+$O_a(x)$ that destroys a charge $q_a$ (or creates a charge $-q_a$) will satisfy
+\[
+  [Q,O_a(x)]=-q_aO_a(x)
+\]
+in the Heisenberg and interaction pictures alike. Also, if the free-particle
+states $\alpha$ and $\beta$ have charges $q_\alpha$ and $q_\beta$, then so do the corresponding `in'
+and `out' states. We then have
+\begin{align*}
+  &(q_\beta-q_\alpha)
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x),O_b(y),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}
+  \\
+  &\quad={}_{\mathrm{out}}\!\bra{\beta}
+  [Q,T\{O_a(x),O_b(y),\ldots\}]
+  \ket{\alpha}_{\mathrm{in}}
+  \\
+  &\quad=-(q_a+q_b+\cdots)
+  {}_{\mathrm{out}}\!\bra{\beta}
+  T\{O_a(x),O_b(y),\ldots\}
+  \ket{\alpha}_{\mathrm{in}}.
+\end{align*}
+Thus the amplitude
+${}_{\mathrm{out}}\!\bra{\beta}T\{O_a(x),O_b(y),\ldots\}\ket{\alpha}_{\mathrm{in}}$
+vanishes unless charge is conserved
+\begin{equation}
+  q_\beta=q_\alpha-q_a-q_b-\cdots.
+  \tag{10.1.7}\label{eq:10.1.7}
+\end{equation}
+
+A somewhat less trivial example is provided by the symmetry of charge-conjugation
+invariance. As we saw in Chapter 5, there is an operator $C$
+that interchanges electron and positron operators
+\begin{align*}
+  C a_{\mathbf p,\sigma,e^-}C^{-1}&=\xi^*a_{\mathbf p,\sigma,e^+},\\
+  C a_{\mathbf p,\sigma,e^+}C^{-1}&=\xi a_{\mathbf p,\sigma,e^-},
+\end{align*}
+with $\xi$ a phase factor. For the free electron field $\psi(x)$, this gives
+\[
+  C\psi(x)C^{-1}=\xi^*\beta C\psi(x)^*,
+\]
+where $\beta C$ is a $4\cdot4$ matrix, which (for the Dirac matrix representation
+we have been using, with $\gamma_5$ diagonal) takes the form
+\[
+  \beta C=
+  \begin{bmatrix}
+    0&0&0&1\\
+    0&0&-1&0\\
+    0&-1&0&0\\
+    1&0&0&0
+  \end{bmatrix}.
+\]
+Applied to the free-particle electric current in spinor electrodynamics, this
+gives
+\[
+  C(\bar\psi\gamma^\mu\psi)C^{-1}
+  =-\bar\psi C\gamma^{\mu\mathrm T}C^{-1}\psi
+  =-\bar\psi\gamma^\mu\psi.
+\]
+If $C$ is to be conserved in electrodynamics, it must then also be defined to
+anticommute with the free photon field
+\[
+  C(a^\mu)C^{-1}=-a^\mu.
+\]
+In theories like electrodynamics for which $C$ commutes with the interaction
+as well as $H_0$, it also commutes with the similarity transformation $\Omega(t)$
+between the Heisenberg and interaction pictures, and so it anticommutes
+with the electric current of the interacting fields
+\begin{equation}
+  C(\bar\Psi\gamma^\mu\Psi)C^{-1}=-\bar\Psi\gamma^\mu\Psi
+  \tag{10.1.8}\label{eq:10.1.8}
+\end{equation}
+and the electromagnetic field in the Heisenberg-picture
+\begin{equation}
+  C(A^\mu)C^{-1}=-A^\mu.
+  \tag{10.1.9}\label{eq:10.1.9}
+\end{equation}
+It follows then that the vacuum expectation value of the time-ordered
+product of any odd number of electromagnetic currents and/or fields
+vanishes. Therefore the sum of all Feynman graphs with an odd number
+of external photon lines (off or on the photon mass shell) and no other
+external lines vanishes.
+
+This result is known as Furry's theorem~\hyperref[ref:10.1]{[1]}. It can be proved perturbatively
+by noting that a graph consisting of electron loops $\ell$, to each of which
+are attached $n_\ell$ photon lines, must have numbers $I$ and $E$ of internal and
+external photon lines related by an analog of Eq.~\eqref{eq:6.3.11}:
+\[
+  2I+E=\sum_\ell n_\ell.
+\]
+Hence if $E$ is odd at least one of the loops must have attached an
+odd number of photon lines. For any such loop there is a cancellation
+between the two diagrams in which the electron arrows circulate around
+the loop in opposite directions. Hence Furry's theorem is a somewhat less
+trivial consequence of a symmetry principle than translation or Lorentz
+invariance; it is not true of individual diagrams, but rather of certain sums
+of diagrams. Figure~\ref{fig:10.1} illustrates the application of Furry's theorem that
+was historically most important, its use to show that the scattering of a
+photon by an external electromagnetic field receives no contributions of
+first order (or any odd order) in the external field.

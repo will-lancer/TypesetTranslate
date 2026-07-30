@@ -1,0 +1,596 @@
+% Chunk: Chapter 5 introduction and \S5.1, Free Fields.
+% Source: Weinberg QFT Vol. I, physical PDF pp. 214--223 (printed pp. 191--200).
+% Equations: (5.1.1)--(5.1.35). Figures: none. Footnotes: 3.
+% Status: source-reviewed, compile-clean, and visually checked; frozen.
+% Uncertainties: none.
+
+
+We now have all the pieces needed to motivate the introduction of quantum
+fields~\hyperref[ref:5.1]{[1]}. In the course of this construction, we shall encounter some of
+the most remarkable and universal consequences of the union of relativity
+with quantum mechanics: the connection between spin and statistics, the
+existence of antiparticles, and various relationships between particles and
+antiparticles, including the celebrated CPT theorem.
+
+\subsection{Free Fields}
+
+We have seen in Chapter 3 that the $S$-matrix will be Lorentz-invariant if
+the interaction can be written as
+\begin{equation}
+  H_I(t)=\int d^3x\,\mathcal{H}_I(\mathbf{x},t),
+  \tag{5.1.1}\label{eq:5.1.1}
+\end{equation}
+where $\mathcal{H}_I$ is a scalar, in the sense that
+\begin{equation}
+  U_0(\Lambda,a)\mathcal{H}_I(x)U_0^{-1}(\Lambda,a)
+  =\mathcal{H}_I(\Lambda x+a),
+  \tag{5.1.2}\label{eq:5.1.2}
+\end{equation}
+and satisfies the additional condition:
+\begin{equation}
+  [\mathcal{H}_I(x),\mathcal{H}_I(x')]=0
+  \quad\text{for}\quad (x-x')^2\geq0.
+  \tag{5.1.3}\label{eq:5.1.3}
+\end{equation}
+As we shall see, there are more general possibilities, but none of them
+are very different from this. (For the present we are leaving it as an open
+question whether $\Lambda$ here is restricted to a proper orthochronous Lorentz
+transformation, or can also include space inversions.) In order to facilitate
+also satisfying the cluster decomposition principle we are going to construct
+$\mathcal{H}_I(x)$ out of creation and annihilation operators, but here we face
+a problem: as shown by Eq.~\eqref{eq:4.2.12}, under Lorentz transformations each
+such operator is multiplied by a matrix that depends on the momentum
+carried by that operator. How can we couple such operators together
+to make a scalar? The solution is to build $\mathcal{H}_I(x)$ out of fields---both
+annihilation fields $\psi^{(+)}_\ell(x)$ and creation fields $\psi^{(-)}_\ell(x)$:
+\begin{equation}
+  \psi^{(+)}_\ell(x)=\sum_{\sigma n}\int d^3p\,
+  u_\ell(x;\mathbf{p},\sigma,n)a_{\mathbf{p},\sigma,n},
+  \tag{5.1.4}\label{eq:5.1.4}
+\end{equation}
+\begin{equation}
+  \psi^{(-)}_\ell(x)=\sum_{\sigma n}\int d^3p\,
+  v_\ell(x;\mathbf{p},\sigma,n)a^\dagger_{\mathbf{p},\sigma,n},
+  \tag{5.1.5}\label{eq:5.1.5}
+\end{equation}
+with coefficients\footnote{A reminder: the labels $n$ and $\sigma$ run over all
+different particle species and spin $z$-components, respectively.}
+$u_\ell(x;\mathbf{p},\sigma,n)$ and $v_\ell(x;\mathbf{p},\sigma,n)$ chosen so that
+under Lorentz transformations each field is multiplied with a
+position-independent matrix:
+\begin{equation}
+  U_0(\Lambda,a)\psi^{(+)}_\ell(x)U_0^{-1}(\Lambda,a)
+  =\sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda^{-1})
+  \psi^{(+)}_{\bar\ell}(\Lambda x+a),
+  \tag{5.1.6}\label{eq:5.1.6}
+\end{equation}
+\begin{equation}
+  U_0(\Lambda,a)\psi^{(-)}_\ell(x)U_0^{-1}(\Lambda,a)
+  =\sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda^{-1})
+  \psi^{(-)}_{\bar\ell}(\Lambda x+a).
+  \tag{5.1.7}\label{eq:5.1.7}
+\end{equation}
+(We might, in principle, have different transformation matrices $D^\pm$ for the
+annihilation and creation fields, but as we shall see, it is always possible
+to choose the fields so that these matrices are the same.) By applying a
+second Lorentz transformation $\bar\Lambda$, we find that
+\[
+  D(\Lambda^{-1})D(\bar\Lambda^{-1})=D((\bar\Lambda\Lambda)^{-1}),
+\]
+so taking $\Lambda_1=(\Lambda)^{-1}$ and $\Lambda_2=(\bar\Lambda)^{-1}$,
+we see that the $D$-matrices furnish a \textit{representation} of the homogeneous
+Lorentz group:
+\begin{equation}
+  D(\Lambda_1)D(\Lambda_2)=D(\Lambda_1\Lambda_2).
+  \tag{5.1.8}\label{eq:5.1.8}
+\end{equation}
+There are many such representations, including the scalar $D(\Lambda)=\mathbf{1}$,
+the vector $D(\Lambda)^\mu{}_{\nu}=\Lambda^\mu{}_{\nu}$, and a host of tensor
+and spinor representations. These particular representations are irreducible,
+in the sense that it is not possible by a choice of basis to reduce all
+$D(\Lambda)$ to the same block-diagonal form, with two or more blocks. However,
+we do not require at this point that $D(\Lambda)$ be irreducible; in general it
+is a block-diagonal matrix with an arbitrary array of irreducible representations
+in the blocks. That is, the index $\ell$ here includes a label that runs over
+the types of particle described and the irreducible representations in the
+different blocks, as well as another that runs over the components of the
+individual irreducible representations. Later we will separate these fields
+into irreducible fields that each describe only a single particle species
+(and its antiparticle) and transform irreducibly under the Lorentz group.
+
+Once we have learned how to construct fields satisfying the Lorentz
+transformation rules \eqref{eq:5.1.6} and \eqref{eq:5.1.7}, we will be able to construct the
+interaction density as
+\begin{align}
+  \mathcal{H}_I(x)={}&\sum_{NM}\sum_{\ell'_1\cdots\ell'_N}
+  \sum_{\ell_1\cdots\ell_M}
+  g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}
+  \notag\\
+  &\cdot\psi^{(-)}_{\ell'_1}(x)\cdots\psi^{(-)}_{\ell'_N}(x)
+  \psi^{(+)}_{\ell_1}(x)\cdots\psi^{(+)}_{\ell_M}(x),
+  \tag{5.1.9}\label{eq:5.1.9}
+\end{align}
+and this will be a scalar in the sense of Eq.~\eqref{eq:5.1.2} if the constant
+coefficients $g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}$ are chosen to be
+Lorentz covariant, in the sense that for all $\Lambda$:
+\begin{align}
+  &\sum_{\ell'_1\cdots\ell'_N}\sum_{\ell_1\cdots\ell_M}
+  D_{\ell'_1\bar\ell'_1}(\Lambda^{-1})\cdots
+  D_{\ell'_N\bar\ell'_N}(\Lambda^{-1})
+  D_{\ell_1\bar\ell_1}(\Lambda^{-1})\cdots
+  D_{\ell_M\bar\ell_M}(\Lambda^{-1})
+  \notag\\
+  &\qquad\cdot g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}
+  =g_{\bar\ell'_1\cdots\bar\ell'_N,\,\bar\ell_1\cdots\bar\ell_M}.
+  \tag{5.1.10}\label{eq:5.1.10}
+\end{align}
+(Note that we do not include derivatives here, because we regard the derivatives
+of components of these fields as just additional sorts of field components.)
+The task of finding coefficients $g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}$
+that satisfy Eq.~\eqref{eq:5.1.10} is no different in principle (and not much more
+difficult in practice) than that of using Clebsch--Gordan coefficients to
+couple together various representations of the three-dimensional rotation
+group to form rotational scalars. Later we will be able to combine creation
+and annihilation fields so that this density also commutes with itself at
+space-like separations.
+
+Now, what shall we take as the coefficient functions
+$u_\ell(x;\mathbf{p},\sigma,n)$ and $v_\ell(x;\mathbf{p},\sigma,n)$?
+Eq.~\eqref{eq:4.2.12} and its adjoint give the transformation rules\footnote{This is for
+massive particles. The case of zero mass will be taken up in Section 5.9.}
+for the annihilation and creation operators
+\begin{align}
+  &U_0(\Lambda,b)a_{\mathbf{p},\sigma,n}U_0^{-1}(\Lambda,b)
+  =\exp\bigl(i(\Lambda p)\cdot b\bigr)
+  \sqrt{\frac{(\Lambda p)^0}{p^0}}
+  \notag\\
+  &\qquad\cdot\sum_{\bar\sigma}
+  D^{(j_n)}_{\sigma\bar\sigma}\bigl(W^{-1}(\Lambda,p)\bigr)
+  a_{\mathbf{p}_\Lambda,\bar\sigma,n},
+  \tag{5.1.11}\label{eq:5.1.11}
+\end{align}
+\begin{align}
+  &U_0(\Lambda,b)a^\dagger_{\mathbf{p},\sigma,n}U_0^{-1}(\Lambda,b)
+  =\exp\bigl(-i(\Lambda p)\cdot b\bigr)
+  \sqrt{\frac{(\Lambda p)^0}{p^0}}
+  \notag\\
+  &\qquad\cdot\sum_{\bar\sigma}
+  D^{(j_n)*}_{\sigma\bar\sigma}\bigl(W^{-1}(\Lambda,p)\bigr)
+  a^\dagger_{\mathbf{p}_\Lambda,\bar\sigma,n},
+  \tag{5.1.12}\label{eq:5.1.12}
+\end{align}
+where $j_n$ is the spin of particles of species $n$, and $\mathbf{p}_\Lambda$
+is the three-vector part of $\Lambda p$. (We have used the unitarity of the
+rotation matrices $D^{(j_n)}$ to put both Eqs.~\eqref{eq:5.1.11} and \eqref{eq:5.1.12} in the
+form shown here.) Also, as we saw in Section 2.5 the volume element
+$d^3p/p^0$ is Lorentz-invariant, so we can replace $d^3p$ in Eqs.~\eqref{eq:5.1.4}
+and \eqref{eq:5.1.5} with $d^3(\Lambda p)p^0/(\Lambda p)^0$. Putting this all together,
+we find
+\begin{align*}
+  &U_0(\Lambda,b)\psi^{(+)}_\ell(x)U_0^{-1}(\Lambda,b)
+  =\sum_{\sigma\bar\sigma n}\int d^3(\Lambda p)\,
+  u_\ell(x;\mathbf{p},\sigma,n)
+  \\
+  &\qquad\cdot\exp\bigl(i(\Lambda p)\cdot b\bigr)
+  D^{(j_n)}_{\sigma\bar\sigma}\bigl(W^{-1}(\Lambda,p)\bigr)
+  \sqrt{\frac{p^0}{(\Lambda p)^0}}
+  a_{\mathbf{p}_\Lambda,\bar\sigma,n}
+\end{align*}
+and
+\begin{align*}
+  &U_0(\Lambda,b)\psi^{(-)}_\ell(x)U_0^{-1}(\Lambda,b)
+  =\sum_{\sigma\bar\sigma n}\int d^3(\Lambda p)\,
+  v_\ell(x;\mathbf{p},\sigma,n)
+  \\
+  &\qquad\cdot\exp\bigl(-i(\Lambda p)\cdot b\bigr)
+  D^{(j_n)*}_{\sigma\bar\sigma}\bigl(W^{-1}(\Lambda,p)\bigr)
+  \sqrt{\frac{p^0}{(\Lambda p)^0}}
+  a^\dagger_{\mathbf{p}_\Lambda,\bar\sigma,n}.
+\end{align*}
+We see that in order for the fields to satisfy the Lorentz transformation
+rules \eqref{eq:5.1.6} and \eqref{eq:5.1.7}, it is necessary and sufficient that
+\begin{align*}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda^{-1})
+  u_{\bar\ell}(\Lambda x+b;\mathbf{p}_\Lambda,\sigma,n)
+  ={}&\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \sum_{\bar\sigma}D^{(j_n)}_{\bar\sigma\sigma}
+  \bigl(W^{-1}(\Lambda,p)\bigr)
+  \\
+  &\cdot\exp\bigl(+i(\Lambda p)\cdot b\bigr)
+  u_\ell(x;\mathbf{p},\bar\sigma,n)
+\end{align*}
+and
+\begin{align*}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda^{-1})
+  v_{\bar\ell}(\Lambda x+b;\mathbf{p}_\Lambda,\sigma,n)
+  ={}&\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \sum_{\bar\sigma}D^{(j_n)*}_{\bar\sigma\sigma}
+  \bigl(W^{-1}(\Lambda,p)\bigr)
+  \\
+  &\cdot\exp\bigl(-i(\Lambda p)\cdot b\bigr)
+  v_\ell(x;\mathbf{p},\bar\sigma,n),
+\end{align*}
+or somewhat more conveniently
+\begin{align}
+  \sum_{\bar\sigma}u_\ell(\Lambda x+b;\mathbf{p}_\Lambda,\bar\sigma,n)
+  D^{(j_n)}_{\bar\sigma\sigma}\bigl(W(\Lambda,p)\bigr)
+  ={}&\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \notag\\[-2pt]
+  &\cdot\sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda)
+  \exp\bigl(i(\Lambda p)\cdot b\bigr)
+  u_{\bar\ell}(x;\mathbf{p},\sigma,n),
+  \tag{5.1.13}\label{eq:5.1.13}
+\end{align}
+and
+\begin{align}
+  \sum_{\bar\sigma}v_\ell(\Lambda x+b;\mathbf{p}_\Lambda,\bar\sigma,n)
+  D^{(j_n)*}_{\bar\sigma\sigma}\bigl(W(\Lambda,p)\bigr)
+  ={}&\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \notag\\[-2pt]
+  &\cdot\sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda)
+  \exp\bigl(-i(\Lambda p)\cdot b\bigr)
+  v_{\bar\ell}(x;\mathbf{p},\sigma,n).
+  \tag{5.1.14}\label{eq:5.1.14}
+\end{align}
+These are the fundamental requirements that will allow us to calculate the
+$u_\ell$ and $v_\ell$ coefficient functions in terms of a finite number of
+free parameters.
+
+\subsubsection*{Translations}
+
+We will use Eqs.~\eqref{eq:5.1.13} and \eqref{eq:5.1.14} in three steps, considering in turn
+three different types of proper orthochronous Lorentz transformation.
+First we consider Eqs.~\eqref{eq:5.1.13} and \eqref{eq:5.1.14} with $\Lambda=\mathbf{1}$ and
+$b$ arbitrary. We see immediately that $u_\ell(x;\mathbf{p},\sigma,n)$ and
+$v_\ell(x;\mathbf{p},\sigma,n)$ must take the form
+\begin{equation}
+  u_\ell(x;\mathbf{p},\sigma,n)=(2\pi)^{-3/2}e^{ip\cdot x}
+  u_\ell(\mathbf{p},\sigma,n),
+  \tag{5.1.15}\label{eq:5.1.15}
+\end{equation}
+\begin{equation}
+  v_\ell(x;\mathbf{p},\sigma,n)=(2\pi)^{-3/2}e^{-ip\cdot x}
+  v_\ell(\mathbf{p},\sigma,n),
+  \tag{5.1.16}\label{eq:5.1.16}
+\end{equation}
+so the fields are Fourier transforms:
+\begin{equation}
+  \psi^{(+)}_\ell(x)=\sum_{\sigma,n}(2\pi)^{-3/2}\int d^3p\,
+  u_\ell(\mathbf{p},\sigma,n)e^{ip\cdot x}a_{\mathbf{p},\sigma,n},
+  \tag{5.1.17}\label{eq:5.1.17}
+\end{equation}
+and
+\begin{equation}
+  \psi^{(-)}_\ell(x)=\sum_{\sigma,n}(2\pi)^{-3/2}\int d^3p\,
+  v_\ell(\mathbf{p},\sigma,n)e^{-ip\cdot x}a^\dagger_{\mathbf{p},\sigma,n}.
+  \tag{5.1.18}\label{eq:5.1.18}
+\end{equation}
+(The factors $(2\pi)^{-3/2}$ could be absorbed into the definition of
+$u_\ell$ and $v_\ell$, but it is conventional to show them explicitly in
+these Fourier integrals.) Using Eqs.~\eqref{eq:5.1.15} and \eqref{eq:5.1.16}, we see that
+Eqs.~\eqref{eq:5.1.13} and \eqref{eq:5.1.14} are satisfied if and only if
+\begin{equation}
+  \sum_{\bar\sigma}u_\ell(\mathbf{p}_\Lambda,\bar\sigma,n)
+  D^{(j_n)}_{\bar\sigma\sigma}\bigl(W(\Lambda,p)\bigr)
+  =\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda)
+  u_{\bar\ell}(\mathbf{p},\sigma,n)
+  \tag{5.1.19}\label{eq:5.1.19}
+\end{equation}
+and
+\begin{equation}
+  \sum_{\bar\sigma}v_\ell(\mathbf{p}_\Lambda,\bar\sigma,n)
+  D^{(j_n)*}_{\bar\sigma\sigma}\bigl(W(\Lambda,p)\bigr)
+  =\sqrt{\frac{p^0}{(\Lambda p)^0}}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(\Lambda)
+  v_{\bar\ell}(\mathbf{p},\sigma,n)
+  \tag{5.1.20}\label{eq:5.1.20}
+\end{equation}
+for arbitrary homogeneous Lorentz transformations $\Lambda$.
+
+\subsubsection*{Boosts}
+
+Next take $\mathbf{p}=0$ in Eqs.~\eqref{eq:5.1.19} and \eqref{eq:5.1.20}, and let $\Lambda$
+be the standard boost $L(q)$ that takes a particle of mass $m$ from rest to
+some four-momentum $q^\mu$. Then $L(p)=\mathbf{1}$, and
+\[
+  W(\Lambda,p)\equiv L^{-1}(\Lambda p)\Lambda L(p)
+  =L^{-1}(q)L(q)=\mathbf{1}.
+\]
+Hence in this special case, Eqs.~\eqref{eq:5.1.19} and \eqref{eq:5.1.20} give
+\begin{equation}
+  u_\ell(\mathbf{q},\sigma,n)=(m/q^0)^{1/2}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(L(q))u_{\bar\ell}(0,\sigma,n)
+  \tag{5.1.21}\label{eq:5.1.21}
+\end{equation}
+and
+\begin{equation}
+  v_\ell(\mathbf{q},\sigma,n)=(m/q^0)^{1/2}
+  \sum_{\bar\ell}D_{\ell\bar\ell}(L(q))v_{\bar\ell}(0,\sigma,n).
+  \tag{5.1.22}\label{eq:5.1.22}
+\end{equation}
+In other words, if we know the quantities $u_\ell(0,\sigma,n)$ and
+$v_\ell(0,\sigma,n)$ for zero momentum, then for a given representation
+$D(\Lambda)$ of the homogeneous Lorentz group, we know the functions
+$u_\ell(\mathbf{p},\sigma,n)$ and $v_\ell(\mathbf{p},\sigma,n)$ for all
+$\mathbf{p}$. (Explicit formulas for the matrices $D_{\bar\ell\ell}(L(q))$
+will be given for arbitrary representations of the homogeneous Lorentz group
+in Section 5.7.)
+
+\subsubsection*{Rotations}
+
+Next, take $\mathbf{p}=0$, but this time let $\Lambda$ be a Lorentz
+transformation with $\mathbf{p}_\Lambda=0$; that is, take $\Lambda$ as a
+rotation $R$. Here obviously $W(\Lambda,p)=R$, and so Eqs.~\eqref{eq:5.1.19} and
+\eqref{eq:5.1.20} read
+\begin{equation}
+  \sum_{\bar\sigma}u_\ell(0,\bar\sigma,n)D^{(j_n)}_{\bar\sigma\sigma}(R)
+  =\sum_{\bar\ell}D_{\ell\bar\ell}(R)u_{\bar\ell}(0,\sigma,n)
+  \tag{5.1.23}\label{eq:5.1.23}
+\end{equation}
+and
+\begin{equation}
+  \sum_{\bar\sigma}v_\ell(0,\bar\sigma,n)D^{(j_n)*}_{\bar\sigma\sigma}(R)
+  =\sum_{\bar\ell}D_{\ell\bar\ell}(R)v_{\bar\ell}(0,\sigma,n),
+  \tag{5.1.24}\label{eq:5.1.24}
+\end{equation}
+or equivalently
+\begin{equation}
+  \sum_{\bar\sigma}u_\ell(0,\bar\sigma,n)J^{(j_n)}_{\bar\sigma\sigma}
+  =\sum_{\bar\ell}\mathcal{J}_{\ell\bar\ell}u_{\bar\ell}(0,\sigma,n)
+  \tag{5.1.25}\label{eq:5.1.25}
+\end{equation}
+and
+\begin{equation}
+  \sum_{\bar\sigma}v_\ell(0,\bar\sigma,n)J^{(j_n)*}_{\bar\sigma\sigma}
+  =-\sum_{\bar\ell}\mathcal{J}_{\ell\bar\ell}v_{\bar\ell}(0,\sigma,n),
+  \tag{5.1.26}\label{eq:5.1.26}
+\end{equation}
+where $\mathbf{J}^{(j)}$ and $\boldsymbol{\mathcal{J}}$ are the angular-momentum
+matrices in the representations $D^{(j)}(R)$ and $D(R)$, respectively. Any
+representation $D(\Lambda)$ of the homogeneous Lorentz group obviously yields
+a representation of the rotation group when $\Lambda$ is restricted to
+rotations $R$; Eqs.~\eqref{eq:5.1.25} and \eqref{eq:5.1.26} tell us that if the field
+$\psi^{(\pm)}_\ell(x)$ is to describe particles of some particular spin $j$,
+then this representation $D(R)$ must contain among its irreducible components
+the spin-$j$ representation $D^{(j)}(R)$, with the coefficients
+$u_\ell(0,\sigma,n)$ and $v_\ell(0,\sigma,n)$ simply describing how the spin-$j$
+representation of the rotation group is embedded in $D(R)$. We shall see in
+Section 5.5 that each irreducible representation of the proper orthochronous
+Lorentz group contains any given irreducible representation of the rotation
+group at most once, so that if the fields $\psi^{(+)}_\ell(x)$ and
+$\psi^{(-)}_\ell(x)$ transform irreducibly, then they are unique up to overall
+scale. More generally, the number of free parameters in the annihilation or
+creation fields (including their overall scales) is equal to the number of
+irreducible representations in the field.
+
+It is straightforward to show that coefficient functions
+$u_\ell(\mathbf{p},\sigma,n)$ and $v_\ell(\mathbf{p},\sigma,n)$ given by
+Eqs.~\eqref{eq:5.1.21} and \eqref{eq:5.1.22}, with $u_\ell(0,\sigma,n)$ and
+$v_\ell(0,\sigma,n)$ satisfying Eqs.~\eqref{eq:5.1.23} and \eqref{eq:5.1.24}, will automatically
+satisfy the more general requirements \eqref{eq:5.1.19} and \eqref{eq:5.1.20}. This is left as
+an exercise for the reader.
+
+Let us now return to the cluster decomposition principle. Inserting
+Eqs.~\eqref{eq:5.1.17} and \eqref{eq:5.1.18} in Eq.~\eqref{eq:5.1.9} and integrating over $\mathbf{x}$,
+the interaction Hamiltonian is
+\begin{align}
+  H_{\mathrm{int}}={}&\sum_{NM}\int d^3p'_1\cdots d^3p'_N\,
+  d^3p_1\cdots d^3p_M
+  \sum_{\sigma'_1\cdots\sigma'_N}\sum_{\sigma_1\cdots\sigma_M}
+  \sum_{n'_1\cdots n'_N}\sum_{n_1\cdots n_M}
+  \notag\\
+  &\cdot a^\dagger_{\mathbf{p}'_1,\sigma'_1,n'_1}\cdots
+  a^\dagger_{\mathbf{p}'_N,\sigma'_N,n'_N}
+  a_{\mathbf{p}_M,\sigma_M,n_M}\cdots a_{\mathbf{p}_1,\sigma_1,n_1}
+  \notag\\
+  &\cdot\mathcal{V}_{NM}(\mathbf{p}'_1\sigma'_1n'_1\cdots
+  \mathbf{p}'_N\sigma'_Nn'_N,\,\mathbf{p}_1\sigma_1n_1\cdots
+  \mathbf{p}_M\sigma_Mn_M)
+  \tag{5.1.27}\label{eq:5.1.27}
+\end{align}
+with coefficient functions given by
+\begin{align}
+  &\mathcal{V}_{NM}(\mathbf{p}'_1\sigma'_1n'_1\cdots,
+  \mathbf{p}_1\sigma_1n_1\cdots)
+  =\delta^3(\mathbf{p}'_1+\cdots-\mathbf{p}_1-\cdots)
+  \notag\\
+  &\qquad\cdot\widetilde{\mathcal{V}}_{NM}
+  (\mathbf{p}'_1\sigma'_1n'_1\cdots,\mathbf{p}_1\sigma_1n_1\cdots),
+  \tag{5.1.28}\label{eq:5.1.28}
+\end{align}
+where
+\begin{align}
+  &\widetilde{\mathcal{V}}_{NM}(\mathbf{p}'_1\sigma'_1n'_1\cdots
+  \mathbf{p}'_N\sigma'_Nn'_N,\,\mathbf{p}_1\sigma_1n_1\cdots
+  \mathbf{p}_M\sigma_Mn_M)
+  =(2\pi)^{3-3N/2-3M/2}
+  \notag\\
+  &\quad\cdot\sum_{\ell'_1\cdots\ell'_N}
+  \sum_{\ell_1\cdots\ell_M}
+  g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}
+  v_{\ell'_1}(\mathbf{p}'_1,\sigma'_1,n'_1)\cdots
+  v_{\ell'_N}(\mathbf{p}'_N,\sigma'_N,n'_N)
+  \notag\\
+  &\quad\cdot u_{\ell_1}(\mathbf{p}_1,\sigma_1,n_1)\cdots
+  u_{\ell_M}(\mathbf{p}_M,\sigma_M,n_M).
+  \tag{5.1.29}\label{eq:5.1.29}
+\end{align}
+This interaction is manifestly of the form that will guarantee that the
+$S$-matrix satisfies the cluster decomposition principle: $\mathcal{V}_{NM}$
+has a single delta function factor, with a coefficient
+$\widetilde{\mathcal{V}}_{NM}$ that (at least for a finite number of field types)
+has at most branch point singularities at zero particle momenta. In fact, we
+could turn this argument around; any operator can be written as in Eq.~\eqref{eq:5.1.27},
+and the cluster decomposition principle requires that the coefficient
+$\mathcal{V}_{NM}$ may be written as in Eq.~\eqref{eq:5.1.28} as the product of a single
+momentum-conservation delta function times a smooth coefficient function.
+Any sufficiently smooth function (but not one containing additional delta
+functions) can be expressed as in Eq.~\eqref{eq:5.1.29}.\footnote{For general functions
+the indices $\ell$ and $\ell'$ may have to run over an infinite range. The
+reasons for restricting $\ell$ and $\ell'$ to a finite range have to do with
+the principle of renormalizability, discussed in Chapter 12.}
+\textit{The cluster decomposition principle together with Lorentz invariance
+thus makes it natural that the interaction density should be constructed out
+of the annihilation and creation fields.}
+
+If all we needed were to construct a scalar interaction density that
+satisfied the cluster decomposition principle, then we could combine
+annihilation and creation operators in arbitrary polynomials \eqref{eq:5.1.9}, with
+coupling coefficients $g_{\ell'_1\cdots\ell'_N,\,\ell_1\cdots\ell_M}$ subject
+only to the invariance condition \eqref{eq:5.1.10} (and a suitable reality condition).
+However, for the Lorentz invariance of the $S$-matrix it is necessary also
+that the interaction density satisfy the commutation condition \eqref{eq:5.1.3}.
+This condition is not satisfied for arbitrary functions of the creation and
+annihilation fields because
+\begin{equation}
+  [\psi^{(+)}_\ell(x),\psi^{(-)}_{\ell'}(y)]_\mp
+  =(2\pi)^{-3}\sum_{\sigma n}\int d^3p\,
+  u_\ell(\mathbf{p},\sigma,n)v_{\ell'}(\mathbf{p},\sigma,n)
+  e^{ip\cdot(x-y)}
+  \tag{5.1.30}\label{eq:5.1.30}
+\end{equation}
+(with the sign $\mp$ indicating a commutator or anticommutator if the particles
+destroyed and created by the components $\psi^{(+)}_\ell$ and
+$\psi^{(-)}_{\ell'}$ are bosons or fermions, respectively,) and in general this
+does not vanish even for $x-y$ space-like. It is obviously not possible to
+avoid this problem by making the interaction density out of creation or
+annihilation fields alone, for then the interaction could not be Hermitian.
+The only way out of this difficulty is to combine annihilation and creation
+fields in linear combinations:
+\begin{equation}
+  \psi_\ell(x)\equiv\kappa\psi^{(+)}_\ell(x)
+  +\lambda\psi^{(-)}_\ell(x),
+  \tag{5.1.31}\label{eq:5.1.31}
+\end{equation}
+with the constants $\kappa$ and $\lambda$ and any other arbitrary constants
+in the fields adjusted so that for $x-y$ space-like
+\begin{equation}
+  [\psi_\ell(x),\psi_{\ell'}(y)]_\mp
+  =[\psi_\ell(x),\psi^\dagger_{\ell'}(y)]_\mp=0.
+  \tag{5.1.32}\label{eq:5.1.32}
+\end{equation}
+We will see in subsequent sections of this chapter how to do this for various
+irreducibly transforming fields. (By including explicit constants $\kappa$ and
+$\lambda$ in Eq.~\eqref{eq:5.1.31} we are leaving ourselves free to choose the overall
+scale of the annihilation and creation fields in any way that seems convenient.)
+The Hamiltonian density $\mathcal{H}_I(x)$ will satisfy the commutation
+condition \eqref{eq:5.1.3} if it is constructed out of such fields and their adjoints,
+with an even number of any field components that destroy and create fermions.
+
+The condition \eqref{eq:5.1.32} is often described as a \textit{causality} condition,
+because if $x-y$ is space-like then no signal can reach $y$ from $x$, so that a
+measurement of $\psi_\ell$ at point $x$ should not be able to interfere with a
+measurement of $\psi_{\ell'}$ or $\psi^\dagger_{\ell'}$ at point $y$. Such
+considerations of causality are plausible for the electromagnetic field, any
+one of whose components may be measured at a given spacetime point, as shown
+in a classic paper of Bohr and Rosenfeld~\hyperref[ref:5.2]{[2]}. However, we will be dealing here
+with fields like the Dirac field of the electron that do not seem in any sense
+measurable. The point of view taken here is that Eq.~\eqref{eq:5.1.32} is needed for the
+Lorentz invariance of the $S$-matrix, without any ancillary assumptions about
+measurability or causality.
+
+There is an obstacle to the construction of fields \eqref{eq:5.1.31} satisfying
+\eqref{eq:5.1.32}. It may be that the particles that are destroyed and created by
+these fields carry non-zero values of one or more conserved quantum numbers
+like the electric charge. For instance, if particles of species $n$ carry a
+value $q(n)$ for the electric charge $Q$, then
+\[
+  [Q,a_{\mathbf{p},\sigma,n}]=-q(n)a_{\mathbf{p},\sigma,n},
+\]
+\[
+  [Q,a^\dagger_{\mathbf{p},\sigma,n}]=+q(n)a^\dagger_{\mathbf{p},\sigma,n}.
+\]
+In order that $\mathcal{H}_I(x)$ should commute with the charge operator $Q$
+(or some other symmetry operator) it is necessary that it be formed out of
+fields that have simple commutation relations with $Q$:
+\begin{equation}
+  [Q,\psi_\ell(x)]=-q_\ell\psi_\ell(x)
+  \tag{5.1.33}\label{eq:5.1.33}
+\end{equation}
+for then we can make $\mathcal{H}_I(x)$ commute with $Q$ by constructing it as
+a sum of products of fields $\psi_{\ell_1},\psi_{\ell_2},\ldots$ and adjoints
+$\psi^\dagger_{m_1},\psi^\dagger_{m_2},\ldots$ such that
+\[
+  q_{\ell_1}+q_{\ell_2}+\cdots-q_{m_1}-q_{m_2}-\cdots=0.
+\]
+Now, Eq.~\eqref{eq:5.1.33} is satisfied for one particular component
+$\psi^{(+)}_\ell(x)$ of the annihilation field if and only if all particle
+species $n$ that are destroyed by the field carry the same charge
+$q(n)=q_\ell$, and it is satisfied for one particular component
+$\psi^{(-)}_\ell(x)$ of the creation field if and only if all particle species
+$\bar n$ that are created by the field carry the charge $q(\bar n)=-q_\ell$.
+We see that in order for such a theory to conserve quantum numbers like
+electric charge, there must be a doubling of particle species carrying
+non-zero values of such quantum numbers: if a particular component of the
+annihilation field destroys a particle of species $n$, then the same component
+of the creation field must create particles of a species $\bar n$, known as the
+\textit{antiparticles} of the particles of species $n$, which have opposite
+values of all conserved quantum numbers. \textit{This is the reason for
+antiparticles.}
+
+If the representation $D(\Lambda)$ is not irreducible, then we can adopt a
+basis for the fields in which $D(\Lambda)$ breaks up into blocks along the main
+diagonal, such that fields that belong to different blocks do not transform
+into each other under Lorentz transformations. Also, Lorentz transformations
+have no effect on the particle species. Therefore, instead of considering one
+big field, including many irreducible components and many particle species,
+we shall from now on restrict our attention to fields that destroy only a
+single type of particle (dropping the label $n$) and create only the
+corresponding antiparticle, and that transform irreducibly under the Lorentz
+group (which as mentioned above may or may not be supposed to include space
+inversion), with the understanding that, in general, we shall have to consider
+many different such fields, some perhaps formed as the derivatives of other
+fields. In the following sections we are going to finish the determination of
+the coefficient functions $u_\ell(\mathbf{p},\sigma)$ and
+$v_\ell(\mathbf{p},\sigma)$, fix the relative values of the constants $\kappa$
+and $\lambda$, and deduce the relations between the properties of particles
+and antiparticles, first for fields that belong to the simplest irreducible
+representations of the Lorentz group, the scalar, vector, and Dirac spinor
+representations. After that, we will repeat the analysis for a completely
+general irreducible representation.
+
+A word about field equations. Inspection of Eqs.~\eqref{eq:5.1.31}, \eqref{eq:5.1.17}, and
+\eqref{eq:5.1.18} shows that all the components of a field of definite mass $m$ satisfy
+the Klein--Gordon equation:
+\begin{equation}
+  (\Box-m^2)\psi_\ell(x)=0.
+  \tag{5.1.34}\label{eq:5.1.34}
+\end{equation}
+Some fields satisfy other field equations as well, depending on whether or not
+there are more field components than independent particle states.
+Traditionally in quantum field theory one begins with such field equations,
+or with the Lagrangian from which they are derived, and then uses them to
+derive the expansion of the fields in terms of one-particle annihilation and
+creation operators. In the approach followed here, we start with the particles,
+and derive the fields according to the dictates of Lorentz invariance, with the
+field equations arising almost incidentally as a byproduct of this construction.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+A technicality must be mentioned here. According to the theorem proved in
+Section 4.4, the condition that guarantees that a theory will satisfy the
+cluster decomposition principle is that the interaction can be expressed as a
+sum of products of creation and annihilation operators, with all creation
+operators to the left of all annihilation operators, and with coefficients
+that contain only a single momentum-conservation delta function. For this
+reason, we should write the interaction in the `normal ordered' form
+\begin{equation}
+  H_{\mathrm{int}}=\int d^3x:\!\mathcal{H}_I
+  (\psi(x),\psi^\dagger(x))\!:
+  \tag{5.1.35}\label{eq:5.1.35}
+\end{equation}
+the colons indicating that the enclosed expression is to be rewritten
+(ignoring non-vanishing commutators or anticommutators, but including minus
+signs for permutations of fermionic operators) so that all creation operators
+stand to the left of all annihilation operators. By using the commutation or
+anticommutation relations of the fields, any such normal-ordered function of
+the fields can just as well be written as a sum of ordinary products of the
+fields with c-number coefficients. Rewriting
+$:\!\mathcal{H}_I\!:$ in this way makes it obvious that despite the normal
+ordering, $:\!\mathcal{H}_I(\psi(x),\psi^\dagger(x))\!:$ will commute with
+$:\!\mathcal{H}_I(\psi(y),\psi^\dagger(y))\!:$ when $x-y$ is space-like,
+if it is constructed out of fields that satisfy Eq.~\eqref{eq:5.1.32}, with even numbers
+of any fermionic field components.

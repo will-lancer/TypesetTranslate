@@ -1,0 +1,273 @@
+% Physical pages: 119--123 (printed pages 96--100).
+% Figures: none.
+% Uncertainties: none.
+
+\chapterappendix{B}{Group Operators and Homotopy Classes}
+
+In this appendix we shall prove the theorem stated in Section 2.7, that the
+phases of the operators $U(T)$ for finite symmetry transformations $T$ may
+be chosen so that these operators form a representation of the symmetry
+group, rather than a projective representation, provided (a) the generators
+of the group can be defined so that there are no central charges in the Lie
+algebra, and (b) the group is simply connected. We shall also comment on
+the projective representations encountered for groups that are not simply
+connected, and their relation to the homotopy classes of the group.
+
+To prove this theorem, let us recall the method by which we construct the
+operators corresponding to symmetry transformations. As described in
+Section 2.2, we introduce a set of real variables $\theta^a$ to parameterize
+these transformations, in such a way that the transformations satisfy the
+composition rule \eqref{eq:2.2.15}:
+\begin{equation*}
+  T(\bar\theta)T(\theta)=T\bigl(f(\bar\theta,\theta)\bigr).
+\end{equation*}
+We want to construct operators $U(T(\theta))\equiv U[\theta]$ that satisfy
+the corresponding condition\footnote{Square brackets are used here to
+distinguish $U$ operators constructed as functions of the group parameters
+from those expressed as functions of the group transformations themselves.}
+\begin{equation}
+  U[\bar\theta]U[\theta]=U\bigl[f(\bar\theta,\theta)\bigr].
+  \tag{2.B.1}\label{eq:2.B.1}
+\end{equation}
+To do this, we lay down arbitrary `standard' paths
+$\Theta^a_{\theta}(s)$ in group parameter space, running from the origin to
+each point $\theta$, with $\Theta^a_{\theta}(0)=0$ and
+$\Theta^a_{\theta}(1)=\theta^a$, and define $U_{\theta}(s)$ along each such
+path by the differential equation
+\begin{equation}
+  \frac{d}{ds}U_{\theta}(s)
+    =it_aU_{\theta}(s)h^a{}_{b}\bigl(\Theta_{\theta}(s)\bigr)
+      \frac{d\Theta^b_{\theta}(s)}{ds}
+  \tag{2.B.2}\label{eq:2.B.2}
+\end{equation}
+with the initial condition
+\begin{equation}
+  U_{\theta}(0)=\mathbf{1},
+  \tag{2.B.3}\label{eq:2.B.3}
+\end{equation}
+where
+\begin{equation}
+  [h^{-1}]^a{}_{b}(\theta)
+    \equiv\left[
+      \frac{\partial f^a(\bar\theta,\theta)}{\partial\bar\theta^b}
+    \right]_{\bar\theta=0}.
+  \tag{2.B.4}\label{eq:2.B.4}
+\end{equation}
+We are eventually going to identify the operators $U[\theta]$ with
+$U_{\theta}(1)$, but first we must establish some of the properties of
+$U_{\theta}(s)$.
+
+In order to check the composition rule, consider two points $\theta_1$ and
+$\theta_2$, and define a path $\gamma$ that runs from 0 to $\theta_1$
+and thence to $f(\theta_2,\theta_1)$:
+\begin{equation}
+  \Theta^a_{\gamma}(s)\equiv
+  \begin{cases}
+    \Theta^a_{\theta_1}(2s),
+      &0\leq s\leq \tfrac12,\\
+    f^a\bigl(\Theta_{\theta_2}(2s-1),\theta_1\bigr),
+      &\tfrac12\leq s\leq 1.
+  \end{cases}
+  \tag{2.B.5}\label{eq:2.B.5}
+\end{equation}
+At the end of the first segment, we are at
+$U_{\gamma}(\tfrac12)=U_{\theta_1}(1)$. To evaluate
+$U_{\gamma}(s)$ along the second segment, we need the derivative of
+$f^a(\Theta_{\theta_2}(2s-1),\theta_1)$. For this purpose, we use the
+fundamental associativity condition:
+\begin{equation}
+  f^a\bigl(f(\theta_3,\theta_2),\theta_1\bigr)
+    =f^a\bigl(\theta_3,f(\theta_2,\theta_1)\bigr).
+  \tag{2.B.6}\label{eq:2.B.6}
+\end{equation}
+Matching the coefficients of $\theta_3^c$ in the limit $\theta_3\to0$
+yields the result:
+\begin{equation}
+  \frac{\partial f^a(\theta_2,\theta_1)}{\partial\theta_2^b}
+    h^b{}_{c}\bigl(f(\theta_2,\theta_1)\bigr)
+    =h^a{}_{c}(\theta_2).
+  \tag{2.B.7}\label{eq:2.B.7}
+\end{equation}
+Along the second segment, the differential equation~\eqref{eq:2.B.2} for
+$U_{\gamma}(s)$ is thus the same as the differential equation for
+$U_{\theta_2}(2s-1)$. They satisfy different initial conditions, but
+$U_{\gamma}(s)U^{-1}_{\theta_1}(1)$ also satisfies the same differential
+equation as $U_{\theta_2}(2s-1)$, and in addition the same initial
+condition: at $s=\tfrac12$, both are unity. We therefore conclude that for
+$\tfrac12\leq s\leq1$,
+\begin{equation*}
+  U_{\gamma}(s)U^{-1}_{\theta_1}(1)=U_{\theta_2}(2s-1)
+\end{equation*}
+and in particular
+\begin{equation}
+  U_{\gamma}(1)=U_{\theta_2}(1)U_{\theta_1}(1).
+  \tag{2.B.8}\label{eq:2.B.8}
+\end{equation}
+However, this does \emph{not} say that $U_{\theta}(1)$ satisfies the desired
+composition rule \eqref{eq:2.B.1}, because although the path
+$\Theta_{\gamma}(s)$ runs from $\theta^a=0$ to
+$\theta^a=f^a(\theta_2,\theta_1)$, in general it will not be the same as
+whatever `standard' path $\Theta_{f(\theta_2,\theta_1)}$ we have chosen to
+run directly from $\theta^a=0$ to
+$\theta^a=f^a(\theta_2,\theta_1)$. We need to show that $U_{\theta}(1)$ is
+independent of the path from 0 to $\theta$ in order to be able to identify
+$U[\theta]$ as $U_{\theta}(1)$.
+
+For this purpose, consider the variation $\delta U$ of $U_{\theta}(s)$
+produced by a variation $\delta\Theta(s)$ in the path from 0 to $\theta$.
+Taking the variation of Eq.~\eqref{eq:2.B.2} gives the differential equation
+\begin{align*}
+  \frac{d}{ds}\delta U
+  &=it_a\delta U\,h^a{}_{b}(\Theta)\frac{d\Theta^b}{ds}
+    +it_aU h^a{}_{b,c}(\Theta)\delta\Theta^c
+      \frac{d\Theta^b}{ds}\\
+  &\quad+it_aU h^a{}_{b}(\Theta)\frac{d\delta\Theta^b}{ds},
+\end{align*}
+where $h^a{}_{b,c}\equiv\partial h^a{}_{b}/\partial\theta^c$. Using the
+Lie commutation relations \eqref{eq:2.2.22} (without central charges) and rearranging
+a bit, this gives
+\begin{align}
+  \frac{d}{ds}\bigl(U^{-1}\delta U\bigr)
+  &=\frac{d}{ds}\bigl(iU^{-1}t_aU h^a{}_{b}\delta\Theta^b\bigr)
+  \notag\\
+  &\quad+iU^{-1}t_aU\delta\Theta^b\frac{d\Theta^c}{ds}
+    \left(h^a{}_{c,b}-h^a{}_{b,c}
+      +C^a{}_{ed}h^e{}_{b}h^d{}_{c}\right).
+  \tag{2.B.9}\label{eq:2.B.9}
+\end{align}
+However, by taking the limit $\theta_3,\theta_2\to0$ in the associativity
+condition \eqref{eq:2.B.6}, we find for all $\theta$:
+\begin{equation}
+  h(\theta)^a{}_{b,c}
+    =-f^a{}_{de}h(\theta)^d{}_{b}h(\theta)^e{}_{c},
+  \tag{2.B.10}\label{eq:2.B.10}
+\end{equation}
+where $f^a{}_{de}$ is the coefficient defined by \eqref{eq:2.2.19}.
+Antisymmetrizing in $b$ and $c$ shows that the last term in Eq.~\eqref{eq:2.B.9}
+vanishes
+\begin{equation}
+  h^a{}_{c,b}-h^a{}_{b,c}
+    +C^a{}_{ed}h^e{}_{b}h^d{}_{c}=0.
+  \tag{2.B.11}\label{eq:2.B.11}
+\end{equation}
+Eq.~\eqref{eq:2.B.9} thus tells us that the quantity
+\begin{equation*}
+  U^{-1}\delta U-iU^{-1}t_aU h^a{}_{b}\delta\Theta^b
+\end{equation*}
+is constant along the path $\theta(s)$. It follows that $U_{\theta}(1)$ is
+stationary under any infinitesimal variation of the path that leaves the
+endpoints $\Theta(0)=0$ and $\Theta(1)=\theta$ (and
+$U_{\theta}(0)=\mathbf{1}$) fixed. But assumption (b) tells us that any path
+from $\Theta(0)=0$ to $\Theta(1)=\theta$ can be continuously deformed into
+any other, so we may now regard $U_{\theta}(1)$ as a path-independent
+function of $\theta$ alone:
+\begin{equation}
+  U_{\theta}(1)\equiv U[\theta].
+  \tag{2.B.12}\label{eq:2.B.12}
+\end{equation}
+In particular, since the path $\gamma$ leads from 0 to
+$f(\theta_2,\theta_1)$, we have
+\begin{equation}
+  U_{\gamma}(1)=U\bigl[f(\theta_2,\theta_1)\bigr]
+  \tag{2.B.13}\label{eq:2.B.13}
+\end{equation}
+so that Eq.~\eqref{eq:2.B.8} shows that $U[\theta]$ satisfies the group
+multiplication law \eqref{eq:2.B.1}, as was to be proved.
+
+Now that we have constructed a non-projective representation $U[\theta]$,
+it remains to prove that any projective representation
+$\widetilde U[\theta]$ of the same group with the same representation
+generators $t_a$ can only differ from $U[\theta]$ by a phase:
+\begin{equation*}
+  \widetilde U[\theta]=e^{i\alpha(\theta)}U[\theta]
+\end{equation*}
+so that the phase $\phi$ in the multiplication law for
+$\widetilde U[\theta]$:
+\begin{equation*}
+  \widetilde U[\theta']\widetilde U[\theta]
+    =e^{i\phi(\theta',\theta)}
+      \widetilde U\bigl[f(\theta',\theta)\bigr]
+\end{equation*}
+can be removed by a simple change of phase of $\widetilde U[\theta]$. To
+see this, consider the operator
+\begin{equation*}
+  U[\theta]^{-1}U[\theta']^{-1}
+    \widetilde U[\theta']\widetilde U[\theta]
+  =U\bigl[f(\theta',\theta)\bigr]^{-1}
+    \widetilde U\bigl[f(\theta',\theta)\bigr]
+    e^{i\phi(\theta',\theta)}.
+\end{equation*}
+Because $U[\theta]$ and $\widetilde U[\theta]$ have the same generators,
+the derivative of the left-hand side with respect to $\theta'{}^a$ vanishes
+at $\theta'=0$, and so
+\begin{equation*}
+  0=\frac{\partial}{\partial\theta^b}
+    \left\{U[\theta]^{-1}\widetilde U[\theta]\right\}
+    +i\phi_b(\theta)U[\theta]^{-1}\widetilde U[\theta],
+\end{equation*}
+where
+\begin{equation*}
+  \phi_b(\theta)\equiv h^a{}_{b}(\theta)
+    \left[
+      \frac{\partial}{\partial\theta'{}^a}\phi(\theta',\theta)
+    \right]_{\theta'=0}.
+\end{equation*}
+Differentiating this result with respect to $\theta^c$ and
+antisymmetrizing in $b$ and $c$ gives immediately
+\begin{equation*}
+  0=\frac{\partial\phi_b(\theta)}{\partial\theta^c}
+    -\frac{\partial\phi_c(\theta)}{\partial\theta^b}.
+\end{equation*}
+A familiar theorem~\hyperref[ref:2.13]{[13]} tells us that in a simply connected
+space, this requires that $\phi_b$ is just a gradient of some function
+$\beta$:
+\begin{equation*}
+  \phi_b(\theta)=\frac{\partial\beta(\theta)}{\partial\theta^b}.
+\end{equation*}
+Thus the quantity
+$U[\theta]^{-1}\widetilde U[\theta]e^{i\beta(\theta)}$ is actually constant
+in $\theta$. Setting it equal to its value at $\theta=0$, we see that
+$\widetilde U$ is just proportional to $U$:
+\begin{equation*}
+  \widetilde U[\theta]
+    =U[\theta]\exp\bigl(-i\beta(\theta)+i\beta(0)\bigr)
+\end{equation*}
+as claimed above.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+The above analysis provides some information about the nature of the phase
+factors that can appear in the group multiplication law when the Lie
+algebra is free of central charges but the group is not simply connected.
+Suppose that the path $\gamma$ from zero to $\theta$ to
+$f(\bar\theta,\theta)$ cannot be deformed into the standard path we have
+chosen to go from zero to $f(\bar\theta,\theta)$, or in other words, that
+the loop from zero to $\theta$ to $f(\bar\theta,\theta)$ and then back to
+zero is not continuously deformable to a point. Then
+$U[f(\theta_2,\theta_1)]^{-1}U[\theta_2]U[\theta_1]$ can be a phase factor
+$\exp(i\phi(\theta_2,\theta_1))\neq\mathbf{1}$, but $\phi$ will be the same
+for all other loops into which this can be continuously deformed. The set
+consisting of all loops that start and end at the origin and that can be
+continuously deformed into a given loop is known as the \emph{homotopy
+class}~\hyperref[ref:2.14]{[14]} of that loop; we have thus seen that
+$\phi(\theta_2,\theta_1)$ depends only on the homotopy class of the loop
+from zero to $\theta$ to $f(\bar\theta,\theta)$ and then back to zero. The
+set of homotopy classes forms a group; the `product' of the homotopy class
+for loops $\mathcal{L}_1$ and $\mathcal{L}_2$ is the homotopy class of the
+loop formed by going around $\mathcal{L}_1$ and then $\mathcal{L}_2$; the
+`inverse' of the homotopy class of the loop $\mathcal{L}$ is the homotopy
+class of the loop obtained by going around $\mathcal{L}$ in the opposite
+direction; and the `identity' is the homotopy class of loops that can be
+deformed into a point at the origin. This group is known as the
+\emph{first homotopy group} or \emph{fundamental group} of the space in
+question. It is easy to see that the phase factors form a representation
+of this group: if going around loop $\mathcal{L}$ gives a phase factor
+$e^{i\phi}$, and going around loop $\bar{\mathcal{L}}$ gives a phase factor
+$e^{i\bar\phi}$, then going around both loops gives a phase factor
+$e^{i\phi}e^{i\bar\phi}$. Hence we can catalog all the possible types of
+projective representations of a given group $\mathcal{G}$ (with no central
+charges) if we know the one-dimensional representations of the first
+homotopy group of the parameter space of $\mathcal{G}$. Homotopy groups
+will be discussed in greater detail in Volume II.

@@ -1,0 +1,55 @@
+% Figure 6.6 diagram fragment. Caption remains in sec61b.tex.
+% Source: physical PDF p. 294 (printed p. 271).
+\begin{center}
+\begin{tikzpicture}[
+  fermion/.style={draw=black, line width=0.8pt},
+  boson/.style={draw=black, line width=0.75pt,
+    dash pattern=on 3pt off 2.5pt},
+  flow/.style={-{Stealth[length=2.4mm,width=1.8mm]}, line width=0.8pt},
+  label/.style={font=\small, inner sep=1pt}
+]
+  % First diagram: the internal fermion line is vertical.
+  \coordinate (aT) at (-3.25,0.95);
+  \coordinate (aB) at (-3.25,-0.95);
+  \coordinate (aUL) at (-4.45,2.15);
+  \coordinate (aUR) at (-2.05,2.15);
+  \coordinate (aLL) at (-4.35,-2.15);
+  \coordinate (aLR) at (-2.05,-2.15);
+
+  \draw[fermion] (aB)--(aT);
+  \draw[fermion] (aT)--(aUL);
+  \draw[fermion] (aLL)--(aB);
+  \draw[boson] (aT)--(aUR);
+  \draw[boson] (aB)--(aLR);
+  \draw[flow] ($(aB)!0.38!(aT)$)--($(aB)!0.62!(aT)$);
+  \draw[flow] ($(aT)!0.37!(aUL)$)--($(aT)!0.62!(aUL)$);
+  \draw[flow] ($(aLL)!0.37!(aB)$)--($(aLL)!0.62!(aB)$);
+
+  \node[label, above left=1pt] at (aUL) {$1'$};
+  \node[label, above right=1pt] at (aUR) {$2'$};
+  \node[label, below left=1pt] at (aLL) {$1$};
+  \node[label, below right=1pt] at (aLR) {$2$};
+
+  % Second diagram: the internal fermion line is horizontal.
+  \coordinate (bL) at (1.15,0);
+  \coordinate (bR) at (3.85,0);
+  \coordinate (bUL) at (0.15,1.55);
+  \coordinate (bLL) at (0.25,-1.45);
+  \coordinate (bUR) at (4.85,1.55);
+  \coordinate (bLR) at (4.75,-1.45);
+
+  \draw[fermion] (bL)--(bR);
+  \draw[fermion] (bLL)--(bL);
+  \draw[fermion] (bR)--(bUR);
+  \draw[boson] (bL)--(bUL);
+  \draw[boson] (bR)--(bLR);
+  \draw[flow] ($(bL)!0.38!(bR)$)--($(bL)!0.62!(bR)$);
+  \draw[flow] ($(bLL)!0.37!(bL)$)--($(bLL)!0.62!(bL)$);
+  \draw[flow] ($(bR)!0.37!(bUR)$)--($(bR)!0.62!(bUR)$);
+
+  \node[label, above left=1pt] at (bUL) {$2'$};
+  \node[label, below left=1pt] at (bLL) {$1$};
+  \node[label, above right=1pt] at (bUR) {$1'$};
+  \node[label, below right=1pt] at (bLR) {$2$};
+\end{tikzpicture}
+\end{center}

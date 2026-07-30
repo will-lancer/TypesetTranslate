@@ -1,0 +1,64 @@
+% Figure 12.2: overlapping divergences in the photon self-energy.
+% Source: physical PDF p. 534 (printed p. 511).
+\begingroup
+\renewcommand{\thefigure}{12.\arabic{figure}}
+\setcounter{figure}{1}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  electron/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.50 with {\arrow{Stealth[length=4.6pt,width=3.5pt]}}}},
+  electronq/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.26 with {\arrow{Stealth[length=4.6pt,width=3.5pt]}},
+      mark=at position 0.74 with {\arrow{Stealth[length=4.6pt,width=3.5pt]}}}},
+  photon/.style={line width=0.65pt,decorate,
+    decoration={snake,amplitude=1.0pt,segment length=4.8pt}},
+  callout/.style={-{Stealth[length=4.6pt,width=3.5pt]},line width=0.65pt},
+  every node/.style={font=\small}
+]
+  % Overlapping two-loop photon self-energy.
+  \begin{scope}[xshift=-3.25cm,yshift=1.35cm]
+    \draw[photon] (-3.00,0) -- (-1.45,0);
+    \draw[photon] (1.45,0) -- (3.00,0);
+    \draw[electronq] (-1.45,0) arc[start angle=180,end angle=0,x radius=1.45cm,y radius=0.88cm];
+    \draw[electronq] (1.45,0) arc[start angle=0,end angle=-180,x radius=1.45cm,y radius=0.88cm];
+    \draw[photon] (0,0.88) -- (0,-0.88);
+  \end{scope}
+  % Counterterm at the left photon-electron vertex.
+  \begin{scope}[xshift=3.25cm,yshift=1.35cm]
+    \draw[photon] (-3.00,0) -- (-1.45,0);
+    \draw[photon] (1.45,0) -- (3.00,0);
+    \draw[electron] (-1.45,0) arc[start angle=180,end angle=0,x radius=1.45cm,y radius=0.88cm];
+    \draw[electron] (1.45,0) arc[start angle=0,end angle=-180,x radius=1.45cm,y radius=0.88cm];
+    \draw[line width=0.8pt] (-1.57,-0.12)--(-1.33,0.12);
+    \draw[line width=0.8pt] (-1.57,0.12)--(-1.33,-0.12);
+    \draw[callout] (-2.05,-1.15) -- (-1.62,-0.48);
+    \node at (-1.55,-1.43) {$(Z_2-1)_2$};
+  \end{scope}
+  % Counterterm at the right photon-electron vertex.
+  \begin{scope}[xshift=-3.25cm,yshift=-1.45cm]
+    \draw[photon] (-3.00,0) -- (-1.45,0);
+    \draw[photon] (1.45,0) -- (3.00,0);
+    \draw[electron] (-1.45,0) arc[start angle=180,end angle=0,x radius=1.45cm,y radius=0.88cm];
+    \draw[electron] (1.45,0) arc[start angle=0,end angle=-180,x radius=1.45cm,y radius=0.88cm];
+    \draw[line width=0.8pt] (1.33,-0.12)--(1.57,0.12);
+    \draw[line width=0.8pt] (1.33,0.12)--(1.57,-0.12);
+    \draw[callout] (1.95,-1.12) -- (1.62,-0.45);
+    \node at (1.72,-1.42) {$(Z_2-1)_2$};
+  \end{scope}
+  % Photon-field counterterm.
+  \begin{scope}[xshift=3.25cm,yshift=-1.45cm]
+    \draw[photon] (-3.00,0) -- (3.00,0);
+    \draw[line width=0.8pt] (-0.12,-0.13)--(0.12,0.13);
+    \draw[line width=0.8pt] (-0.12,0.13)--(0.12,-0.13);
+    \draw[callout] (-0.55,-1.10) -- (-0.12,-0.42);
+    \node at (0,-1.42) {$(Z_3-1)_{\mathrm{overlap}}$};
+  \end{scope}
+\end{tikzpicture}
+\caption{Some fourth-order graphs for the photon self-energy in quantum electrodynamics that involve overlapping divergences. Lines carrying arrows are electrons; wavy lines photons. The crosses mark the contribution of counterterms.}
+\label{fig:weinberg-12-2}
+\end{figure}
+\endgroup
+

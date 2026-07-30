@@ -1,0 +1,239 @@
+% Chunk: \S13.2, Virtual Soft Photons.
+% Source: Weinberg QFT Vol. I, physical pp. 562--567 (printed pp. 539--544),
+% beginning at the \S13.2 heading and ending immediately before \S13.3.
+% Coverage: equations (13.2.1)--(13.2.11); Figure 13.3; no footnotes.
+% Uncertainty: none.
+
+\subsection{Virtual Soft Photons}
+
+We shall now use the results of the previous section to calculate the
+effect to all orders of radiative corrections involving virtual soft photons
+exchanged among the charged particle lines of a process $\alpha\to\beta$, as in
+Figure~\ref{fig:weinberg-13-3}. By a \lq soft\rq\ photon we mean one that carries momentum less
+than $\Lambda$, where $\Lambda$ is some convenient dividing point chosen low enough
+to justify the approximations made in the previous section. We shall find
+that these soft photons introduce infrared divergences, so as a stop-gap
+
+\input{chapters/chapter13/figures/fig13-03.tex}
+
+we will have to introduce also a lower bound $\lambda$ on the photon momenta.
+It is important to recognize the difference between these two limits on the
+soft photon momenta. The upper cutoff $\Lambda$ just serves to define what we
+mean by \lq soft\rq\ photons; the $\Lambda$-dependence of the soft-photon radiative
+corrections is cancelled by the $\Lambda$-dependence of the rest of the amplitude,
+which is calculated including only virtual photons with momenta \emph{greater
+than $\Lambda$}. On the other hand, the lower cutoff $\lambda$ must eventually be removed
+by taking $\lambda\to0$; as we shall see, the infrared divergences in this limit will
+be cancelled by the effects of real soft photon emission.
+
+For each virtual soft photon we must supply a propagator factor
+\begin{equation}
+  \frac{-i}{(2\pi)^4}\frac{\eta_{\mu\nu}}{q^2-i\epsilon},
+  \tag{13.2.1}\label{eq:13.2.1}
+\end{equation}
+then multiply the amplitude \eqref{eq:13.1.8} with the product of these
+propagators, contract photon polarization indices, and integrate over photon
+four-momenta. In addition for $N$ virtual photons we must divide by a factor
+$2^N N!$, because the sum over all places to which we may attach the
+two ends of the soft photon lines includes spurious sums over the $N!$
+permutations of the photon lines and over interchanges of the two ends
+of these lines. The effect of radiative corrections involving $N$ soft photons
+is then to multiply the matrix element $M_{\beta\alpha}$ for the process without such
+radiative corrections by a factor
+\begin{equation}
+  \frac{1}{N!2^N}
+  \left[\frac{1}{(2\pi)^4}\sum_{nm}e_n e_m\eta_n\eta_m J_{nm}\right]^N,
+  \tag{13.2.2}\label{eq:13.2.2}
+\end{equation}
+where
+\begin{equation}
+  J_{nm}\equiv-i(p_n\cdot p_m)
+  \int_{\lambda\leq|\mathbf q|\leq\Lambda}
+  \frac{d^4q}{[q^2-i\epsilon][p_n\cdot q-i\eta_n\epsilon]
+  [-p_m\cdot q-i\eta_m\epsilon]}.
+  \tag{13.2.3}\label{eq:13.2.3}
+\end{equation}
+Note that we have changed the sign of $p_m\cdot q$ in the denominator in
+\eqref{eq:13.2.3},
+because if we define $q$ as the momentum emitted by line $n$ then $-q$ is the
+momentum emitted by line $m$.
+
+Summing over $N$, we conclude that the matrix element for a process
+including radiative corrections due to any number of soft photons with
+momenta $|\mathbf q|\geq\lambda$ is given by
+\begin{equation}
+  M^\lambda_{\beta\alpha}=M^\Lambda_{\beta\alpha}
+  \exp\left[\frac{1}{2(2\pi)^4}
+  \sum_{nm}e_n e_m\eta_n\eta_m J_{nm}\right],
+  \tag{13.2.4}\label{eq:13.2.4}
+\end{equation}
+where $M^\Lambda_{\beta\alpha}$ is the amplitude including virtual photons only with momenta
+greater than $\Lambda$.
+
+The integral over $q^0$ in \eqref{eq:13.2.3} may be done by the method of residues.
+The integrand is analytic in $q^0$ except for four poles, at
+\[
+  \begin{array}{ll}
+    q^0=|\mathbf q|-i\epsilon, & q^0=-|\mathbf q|+i\epsilon,\\
+    q^0=\mathbf v_n\cdot\mathbf q-i\eta_n\epsilon,
+      & q^0=\mathbf v_m\cdot\mathbf q+i\eta_m\epsilon,
+  \end{array}
+\]
+where $\mathbf v_n\equiv\mathbf p_n/p_n^0$, and likewise for $\mathbf v_m$. If particle $n$ is outgoing and
+particle $m$ is incoming, then $\eta_n=+1$, $\eta_m=-1$, so by closing the $q^0$
+contour in the upper half-plane we avoid the contributions from the poles
+at $q^0=\mathbf v_n\cdot\mathbf q-i\eta_n\epsilon$ or $q^0=\mathbf v_m\cdot\mathbf q+i\eta_m\epsilon$. Similarly, if $n$ is incoming and $m$ is
+outgoing we can avoid these two poles by closing the contour in the lower
+half-plane. In these two cases it is only one of the poles at $q^0=\pm(|\mathbf q|-i\epsilon)$
+that contributes, and we find a purely real integral:
+\begin{equation}
+  J_{nm}=-\pi(p_n\cdot p_m)
+  \int_{\lambda\leq|\mathbf q|\leq\Lambda}
+  \frac{d^3q}{|\mathbf q|^3
+  (E_n-\hat{\mathbf q}\cdot\mathbf p_n)(E_m-\hat{\mathbf q}\cdot\mathbf p_m)}
+  \qquad(\text{for }\eta_n=-\eta_m=\pm1).
+  \tag{13.2.5}\label{eq:13.2.5}
+\end{equation}
+On the other hand, if particles $n$ and $m$ are both outgoing or both
+incoming, then the poles at $\mathbf v_n\cdot\mathbf q-i\eta_n\epsilon$ and $\mathbf v_m\cdot\mathbf q+i\eta_m\epsilon$ lie on opposite
+sides of the real $q^0$-axis, and we cannot avoid a contribution from one of
+them whichever way we close the contour:
+\begin{align}
+  J_{nm}={}&-\pi(p_n\cdot p_m)
+  \int_{\lambda\leq|\mathbf q|\leq\Lambda}
+  \frac{d^3q}{|\mathbf q|^3
+  (E_n-\hat{\mathbf q}\cdot\mathbf p_n)(E_m-\hat{\mathbf q}\cdot\mathbf p_m)}
+  \notag\\
+  &-\frac{4i\pi^3}{\beta_{nm}}\ln\left(\frac{\Lambda}{\lambda}\right)
+  \qquad(\text{for }\eta_n=\eta_m=\pm1),
+  \tag{13.2.6}\label{eq:13.2.6}
+\end{align}
+where $\beta_{nm}$ is the relative velocity of particles $n$ and $m$ in the rest frame of
+either:
+\begin{equation}
+  \beta_{nm}\equiv\sqrt{1-\frac{m_n^2m_m^2}{(p_n\cdot p_m)^2}}.
+  \tag{13.2.7}\label{eq:13.2.7}
+\end{equation}
+The imaginary term in Eq.~\eqref{eq:13.2.6} leads to an infrared-divergent phase
+factor~\hyperref[ref:13.4]{[4]} in Eq.~\eqref{eq:13.2.4}, which drops out when we take the absolute value of
+the matrix element to calculate the rate for the process $\alpha\to\beta$. (This infinite
+phase factor is the relativistic counterpart of the well-known feature of
+non-relativistic Coulomb scattering, that the outgoing wave part of the
+Schrödinger wave function has a dependence on the radial coordinate $r$ of
+the form $\exp(ipr-i\nu\ln r)/r$ instead of $\exp(ipr)/r$, where $\nu$ is the product
+of charges divided by the relative velocity~\hyperref[ref:13.5]{[5]}.) The reaction rate is affected
+by the real part of $J_{nm}$, which for all $\eta_n$ and $\eta_m$ takes the value
+\begin{equation}
+  \operatorname{Re}J_{nm}=-\pi(p_n\cdot p_m)
+  \int_{\lambda\leq|\mathbf q|\leq\Lambda}
+  \frac{d^3q}{|\mathbf q|^3
+  (E_n-\hat{\mathbf q}\cdot\mathbf p_n)(E_m-\hat{\mathbf q}\cdot\mathbf p_m)}.
+  \tag{13.2.8}\label{eq:13.2.8}
+\end{equation}
+An elementary calculation gives
+\begin{equation}
+  \operatorname{Re}J_{nm}=\frac{2\pi^2}{\beta_{nm}}
+  \ln\left(\frac{1+\beta_{nm}}{1-\beta_{nm}}\right)
+  \ln\left(\frac{\Lambda}{\lambda}\right).
+  \tag{13.2.9}\label{eq:13.2.9}
+\end{equation}
+Using this in the absolute value squared of Eq.~\eqref{eq:13.2.4} gives the effect of
+soft virtual photons on the rates for the process $\Gamma_{\beta\alpha}$, as
+\begin{equation}
+  \Gamma^\lambda_{\beta\alpha}=\left(\frac{\lambda}{\Lambda}\right)^{A(\alpha\to\beta)}
+  \Gamma^\Lambda_{\beta\alpha},
+  \tag{13.2.10}\label{eq:13.2.10}
+\end{equation}
+where $\Gamma^\lambda_{\beta\alpha}$ and $\Gamma^\Lambda_{\beta\alpha}$ are the rates for the process $\alpha\to\beta$ including radiative
+corrections of soft photons only with momenta greater than $\lambda$ or $\Lambda$,
+respectively, and $A$ is the exponent
+\begin{equation}
+  A(\alpha\to\beta)=-\frac{1}{8\pi^2}\sum_{nm}
+  \frac{e_n e_m\eta_n\eta_m}{\beta_{nm}}
+  \ln\left(\frac{1+\beta_{nm}}{1-\beta_{nm}}\right).
+  \tag{13.2.11}\label{eq:13.2.11}
+\end{equation}
+Note that this makes sense only because the correction factor $(\lambda/\Lambda)^A$
+has turned out to be the ratio of a function of $\lambda$ to the same function
+of $\Lambda$, since the two rates in Eq.~\eqref{eq:13.2.10} can only depend on $\lambda$ and $\Lambda$,
+respectively.
+
+The exponent $A$ is always positive. For instance, in the scattering of a
+single charged particle by a neutral particle or an external potential, we
+must add terms in Eq.~\eqref{eq:13.2.11} where both $n$ and $m$ are the initial or
+the final charged particle (in which case $\eta_n\eta_m=+1$ and $\beta_{nm}=0$), or $n$ is
+the initial or final charged particle and $m$ is the other one (in which case
+$\eta_n\eta_m=-1$ and $\beta_{nm}=\beta$, where $1>\beta>0$.) This gives
+\[
+  A=-\frac{e^2}{8\pi^2}
+  \left[4-\frac{2}{\beta}\ln\left(\frac{1+\beta}{1-\beta}\right)\right],
+\]
+which is positive for all $1>\beta>0$. Because $A$ is positive the effect of the
+infrared divergences introduced by soft virtual photons when summed to
+all orders is to make the rate for any given charged particle process $\alpha\to\beta$
+\emph{vanish} in the limit $\lambda\to0$.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+Before we go on to consider how soft real photon emission cancels
+these infrared divergences, we should pause to note a technicality in the
+above calculation which as far as I know has always been ignored in
+the literature. In calculating these radiative corrections we have included
+diagrams in which the virtual photon is absorbed and emitted at the \emph{same}
+external charged-particle line, as well as those in which it is emitted and
+absorbed at different lines. But as we learned in Chapter 10, in calculating
+the $S$-matrix we are not supposed to include radiative corrections arising
+from insertions of self-energy subgraphs in external lines. This might
+suggest that we should drop the terms $n=m$ in Eq.~\eqref{eq:13.2.11}, but then the
+cancellation of infrared divergences we will find in the next section would
+not be complete.
+
+The resolution of this problem can be found in the observation that soft
+virtual photons produce infrared divergences not only directly, but also
+through their effect on the renormalization constants $Z_n$ of the charged
+particle fields. (The renormalization constant $Z_n$ is the one usually called
+$Z_2$ in theories like quantum electrodynamics with a single charged field
+of spin $\tfrac12$.) It is the counterterms proportional to $Z_n-1$ that cancel
+the effect of radiative corrections in external lines. To be specific, the
+renormalized field of a charged particle of type $n$ is a factor $Z_n^{-1/2}$
+times the unrenormalized field, so when we calculate the $S$-matrix using
+renormalized fields (corresponding to the omission of radiative corrections
+in external lines) we are introducing an extra factor $\prod_n Z_n^{-1/2}$, the product
+running over all charged particles in the initial and final states. (Of
+course there are also factors $Z_n^{-1/2}$ for neutral particles, but these are not
+infrared-divergent.) In a slightly different notation, this factor is
+\[
+  \prod_f Z_f^{-E_f/2},
+\]
+where $Z_f$ is the field renormalization constant for fields of type $f$, $E_f$ is
+the number of external lines of type $f$, and the product now runs over \emph{all}
+charged field types. However, these field renormalization constants also
+appear in the interiors of diagrams; expressing an interaction of type $i$
+that involves $N_{if}$ charged-particle fields of type $f$ in terms of renormalized
+fields introduces an infrared-divergent factor
+\[
+  \prod_f(Z_f)^{N_{if}/2}.
+\]
+(For instance, the counterterm $-ie(Z_2-1)A_\mu\bar\psi\gamma^\mu\psi$ in Eq. (11.1.9) together
+with the ordinary electromagnetic interaction $-ie\bar\psi\gamma^\mu\psi$ yields a total
+interaction $-iZ_2e\bar\psi\gamma^\mu\psi$. It was the infrared divergence in this $Z_2$ factor that
+was responsible for the infrared divergence arising from the second term
+in the brackets in Eq. (11.3.23), and the last term in Eq. (11.4.14).) There is
+also an infrared divergence in the propagators of the renormalized fields;
+the propagator of a renormalized charged field of type $f$ when expressed
+in terms of the propagator of the unrenormalized field introduces a factor
+$Z_f^{-1}$. Putting this all together, the total number of factors of $Z_f$ for each
+charged field type $f$, introduced by the counterterms to interactions and
+to radiative corrections on internal as well as external lines, is
+\[
+  \frac12\sum_i V_iN_{if}-I_f-\frac12E_f,
+\]
+where $I_f$ and $E_f$ are the numbers of internal and external lines of type
+$f$, and $V_i$ is the number of vertices for interactions of type $i$. We have
+already noted in Section 6.3 that this quantity vanishes for each $f$. Thus
+the counterterms which cancelled the radiative corrections on external
+lines are themselves cancelled by the $Z_f$ factors arising from internal lines
+and vertices. Eq.~\eqref{eq:13.2.11} is therefore correct as it stands, including the
+terms with $n=m$.

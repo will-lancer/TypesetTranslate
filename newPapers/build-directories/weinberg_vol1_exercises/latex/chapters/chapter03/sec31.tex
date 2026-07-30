@@ -1,0 +1,397 @@
+% Chunk: §3.1 `In' and `Out' States
+% Source: Weinberg QFT Vol I, printed pp. 107-112 (PDF pp. 130-135)
+% Status: transcribed; source-reviewed; compile-clean; render-reviewed
+% Physical pages: 130--135. Figures: none. Uncertainties: none.
+
+The general principles of relativistic quantum mechanics described in the
+previous chapter have so far been applied here only to states of a single
+stable particle. Such one-particle states by themselves are not very exciting
+--- it is only when two or more particles interact with each other that
+anything interesting can happen. But experiments do not generally follow the
+detailed course of events in particle interactions. Rather, the paradigmatic
+experiment (at least in nuclear or elementary particle physics) is one in
+which several particles approach each other from a macroscopically large
+distance, and interact in a microscopically small region, after which the
+products of the interaction travel out again to a macroscopically large
+distance. The physical states before and after the collision consist of
+particles that are so far apart that they are effectively non-interacting, so
+they can be described as direct products of the one-particle states discussed
+in the previous chapter. In such an experiment, all that is measured is the
+probability distribution, or `cross-sections', for transitions between the
+initial and final states of distant and effectively non-interacting particles.
+This chapter will outline the formalism~\hyperref[ref:3.1]{[1]} used for calculating these
+probabilities and cross-sections.
+
+\subsection{`In' and `Out' States}
+
+A state consisting of several non-interacting particles may be regarded as
+one that transforms under the Poincar\'e group as a
+direct product of one-particle states. To label the one-particle states we use
+their four-momenta $p^\mu$, spin $z$-component (or, for massless particles,
+helicity) $\sigma$, and, since we now may be dealing with more than one
+species of particle, an additional discrete label $n$ for the particle type,
+which includes a specification of its mass, spin, charge, etc. The general
+transformation rule is
+\begin{align}
+U(\Lambda,a)\ket{p_1,\sigma_1,n_1;\,p_2,\sigma_2,n_2;\,\ldots}
+={}&\exp\!\left[-ia_\mu\bigl(p_1^\mu+p_2^\mu+\cdots\bigr)\right]
+\sqrt{\frac{(\Lambda p_1)^0(\Lambda p_2)^0\cdots}{p_1^0p_2^0\cdots}}
+\notag\\
+&\cdot\sum_{\sigma'_1\sigma'_2\cdots}
+D^{(j_1)}_{\sigma'_1\sigma_1}\bigl(W(\Lambda,p_1)\bigr)
+D^{(j_2)}_{\sigma'_2\sigma_2}\bigl(W(\Lambda,p_2)\bigr)\cdots
+\notag\\
+&\cdot\ket{\Lambda p_1,\sigma'_1,n_1;\,
+             \Lambda p_2,\sigma'_2,n_2;\,\ldots}.
+\tag{3.1.1}\label{eq:3.1.1}
+\end{align}
+where $W(\Lambda,p)$ is the Wigner rotation \eqref{eq:2.5.10}, and
+$D^{(j)}_{\sigma'\sigma}(W)$ are the conventional $(2j+1)$-dimensional
+unitary matrices representing the three-dimensional rotation group. (This is
+for massive particles; for any massless particle, the matrix
+$D^{(j)}_{\sigma'\sigma}(W(\Lambda,p))$ is replaced with
+$\delta_{\sigma'\sigma}\exp(i\sigma\theta(\Lambda,p))$, where $\theta$ is
+the angle defined by Eq.~\eqref{eq:2.5.43}.) The states are normalized as in
+Eq.~\eqref{eq:2.5.19}:
+\begin{align}
+&\bigl\langle p'_1,\sigma'_1,n'_1;\,p'_2,\sigma'_2,n'_2;\,\ldots
+ \bigm|
+ p_1,\sigma_1,n_1;\,p_2,\sigma_2,n_2;\,\ldots\bigr\rangle
+\notag\\
+&\quad={}
+\delta^3(\mathbf p'_1-\mathbf p_1)\delta_{\sigma'_1\sigma_1}
+\delta_{n'_1n_1}
+\delta^3(\mathbf p'_2-\mathbf p_2)\delta_{\sigma'_2\sigma_2}
+\delta_{n'_2n_2}\cdots
+\notag\\
+&\qquad\mathrel{\phantom{={}}}\pm\text{permutations}.
+\tag{3.1.2}\label{eq:3.1.2}
+\end{align}
+with the term `$\pm$ permutations' included to take account of the
+possibility that it is some permutation of the particle types
+$n'_1,n'_2,\ldots$ that are of the same species of the particle types
+$n_1,n_2,\ldots$. (As discussed more fully in Chapter~4, its sign is $-1$
+if this permutation includes an odd permutation of half-integer spin
+particles, and otherwise $+1$. This will not be important in the work of the
+present chapter.)
+
+We often use an abbreviated notation, letting one Greek letter, say $\alpha$,
+stand for the whole collection
+$p_1,\sigma_1,n_1;\,p_2,\sigma_2,n_2;\,\ldots$. In this notation,
+Eq.~\eqref{eq:3.1.2} is written simply
+\begin{equation}
+\braket{\alpha'}{\alpha}=\delta(\alpha'-\alpha),
+\tag{3.1.3}\label{eq:3.1.3}
+\end{equation}
+with $\delta(\alpha'-\alpha)$ standing for the sum of products of delta
+functions and Kronecker deltas appearing on the right-hand side of
+Eq.~\eqref{eq:3.1.2}. Also, in summing over states, we write
+\begin{equation}
+\int d\alpha\,\cdots\equiv
+\sum_{n_1\sigma_1n_2\sigma_2\cdots}
+\int d^3p_1\,d^3p_2\cdots.
+\tag{3.1.4}\label{eq:3.1.4}
+\end{equation}
+In particular, the completeness relation for states normalized as in
+Eq.~\eqref{eq:3.1.3} reads
+\begin{equation}
+\ket{\Psi}=\int d\alpha\,\ket{\alpha}\braket{\alpha}{\Psi}.
+\tag{3.1.5}\label{eq:3.1.5}
+\end{equation}
+
+The transformation rule \eqref{eq:3.1.1} is only possible for particles that for one
+reason or another are not interacting. Setting
+$\Lambda^\mu{}_{\nu}=\delta^\mu{}_{\nu}$ and $a^\mu=(\tau,0,0,0)$, for
+which $U(\Lambda,a)=\exp(iH\tau)$, Eq.~\eqref{eq:3.1.1} requires among other things
+that $\ket{\alpha}$ be an energy eigenstate,
+\begin{equation}
+H\ket{\alpha}=E_\alpha\ket{\alpha},
+\tag{3.1.6}\label{eq:3.1.6}
+\end{equation}
+with an energy equal to the sum of the one-particle energies,
+\begin{equation}
+E_\alpha=p_1^0+p_2^0+\cdots,
+\tag{3.1.7}\label{eq:3.1.7}
+\end{equation}
+and with no interaction terms, terms that would involve more than one
+particle at a time.
+
+On the other hand, the transformation rule \eqref{eq:3.1.1} does apply in scattering
+processes at times $t\to\mp\infty$. As explained at the beginning of this
+chapter, in the typical scattering experiment we start with particles at time
+$t\to-\infty$ so far apart that they are not yet interacting, and end with
+particles at $t\to+\infty$ so far apart that they have ceased interacting. We
+therefore have not one but two sets of states that transform as in
+Eq.~\eqref{eq:3.1.1}: the `in' and `out' states\footnote{The source uses the
+labels `$+$' and `$-$' for `in' and `out' states, respectively. This may seem
+backward, but the convention has become traditional; it arises from the signs
+in Eq.~\eqref{eq:3.1.16}. This edition writes the labels explicitly as
+`$\mathrm{in}$' and `$\mathrm{out}$'.}
+$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\alpha}_{\mathrm{out}}$
+will be found to contain the particles described by the label $\alpha$ if
+observations are made at $t\to-\infty$ or $t\to+\infty$,
+respectively.
+
+Note how this definition is framed. To maintain manifest Lorentz invariance,
+in the formalism we are using here, state-vectors do not change with time ---
+a state-vector $\ket{\Psi}$ describes the whole spacetime history of a system
+of particles. (This is known as the \textit{Heisenberg picture}, in
+distinction with the Schr\"odinger picture, where the operators are constant
+and the states change with time.) Thus we do \textit{not} say that
+$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\alpha}_{\mathrm{out}}$ are the
+limits at $t\to-\infty$ and $t\to+\infty$ of a time-dependent state-vector
+$\ket{\Psi(t)}$.
+
+However, implicit in the definition of the states is a choice of the inertial
+frame from which the observer views the system; different observers see
+\textit{equivalent} state-vectors, but not the \textit{same} state-vector. In
+particular, suppose that a standard observer $O$ sets his or her clock so that
+$t=0$ is at some time during the collision process, while some other observer
+$O'$ at rest with respect to the first uses a clock set so that $t'=0$ is at a
+time $t=\tau$; that is, the two observers' time coordinates are related by
+$t'=t-\tau$. Then if $O$ sees the system to be in a state $\ket{\Psi}$, $O'$
+will see the system in a state
+$U(\mathbf{1},-\tau)\ket{\Psi}=\exp(-iH\tau)\ket{\Psi}$. Thus the appearance
+of the state long before or long after the collision (in whatever basis is
+used by $O$) is found by applying a time-translation operator
+$\exp(-iH\tau)$ with $\tau\to-\infty$ or $\tau\to+\infty$, respectively. Of
+course, if the state is really an energy eigenstate, then it cannot be
+localized in time --- the operator $\exp(-iH\tau)$ yields an inconsequential
+phase factor $\exp(-iE_\alpha\tau)$. Therefore, we must consider
+wave-packets, superpositions $\int d\alpha\,g(\alpha)\ket{\alpha}$ of states,
+with an amplitude $g(\alpha)$ that is non-zero and smoothly varying over some
+finite range $\Delta E$ of energies. The `in' and `out' states are defined so
+that the superposition
+\[
+\exp(-iH\tau)\int d\alpha\,g(\alpha)
+\ket{\alpha}_{\mathrm{in/out}}
+=\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
+\ket{\alpha}_{\mathrm{in/out}}
+\]
+has the appearance of a corresponding superposition of free-particle states
+for $\tau\ll-1/\Delta E$ or $\tau\gg+1/\Delta E$, respectively.
+
+To make this concrete, suppose we can divide the time-translation generator
+$H$ into two terms, a free-particle Hamiltonian $H_0$ and an interaction
+$H_{\mathrm{int}}$,
+\begin{equation}
+H=H_0+H_{\mathrm{int}},
+\tag{3.1.8}\label{eq:3.1.8}
+\end{equation}
+in such a way that $H_0$ has eigenstates $\ket{\alpha}$ that have the same
+appearance as the eigenstates $\ket{\alpha}_{\mathrm{in}}$ and
+$\ket{\alpha}_{\mathrm{out}}$ of the complete Hamiltonian,
+\begin{equation}
+H_0\ket{\alpha}=E_\alpha\ket{\alpha},
+\tag{3.1.9}\label{eq:3.1.9}
+\end{equation}
+\begin{equation}
+\braket{\alpha'}{\alpha}=\delta(\alpha'-\alpha).
+\tag{3.1.10}\label{eq:3.1.10}
+\end{equation}
+Note that $H_0$ is assumed here to have the same spectrum as the full
+Hamiltonian $H$. This requires that the masses appearing in $H_0$ be the
+physical masses that are actually measured, which are not necessarily the
+same as the `bare' mass terms appearing in $H$; the difference if there is any
+must be included in the interaction $H_{\mathrm{int}}$, not $H_0$. Also, any
+relevant bound states in the spectrum of $H$ should be introduced into $H_0$
+as if they were elementary particles.\footnote{Alternatively, in
+non-relativistic problems we can include the binding potential in $H_0$. In
+the application of this method to `rearrangement collisions,' where some bound
+states appear in the initial state but not the final state, or vice-versa, one
+must use a different split of $H$ into $H_0$ and $H_{\mathrm{int}}$ in the
+initial and final states.}
+
+The `in' and `out' states can now be defined as eigenstates of $H$, not $H_0$,
+\begin{equation}
+H\ket{\alpha}_{\mathrm{in/out}}
+=E_\alpha\ket{\alpha}_{\mathrm{in/out}},
+\tag{3.1.11}\label{eq:3.1.11}
+\end{equation}
+which satisfy the condition
+\begin{align}
+\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
+\ket{\alpha}_{\mathrm{in}}
+&\longrightarrow
+\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)\ket{\alpha}
+&& (\tau\to-\infty),
+\notag\\
+\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
+\ket{\alpha}_{\mathrm{out}}
+&\longrightarrow
+\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)\ket{\alpha}
+&& (\tau\to+\infty).
+\tag{3.1.12}\label{eq:3.1.12}
+\end{align}
+Eq.~\eqref{eq:3.1.12} can be rewritten as the requirement that:
+\begin{align*}
+\exp(-iH\tau)\int d\alpha\,g(\alpha)
+\ket{\alpha}_{\mathrm{in/out}}
+\longrightarrow
+\exp(-iH_0\tau)\int d\alpha\,g(\alpha)\ket{\alpha}
+\end{align*}
+for $\tau\to-\infty$ or $\tau\to+\infty$, respectively. This is sometimes
+rewritten as a formula for the `in' and `out' states:
+\begin{align}
+\ket{\alpha}_{\mathrm{in}}&=\Omega(-\infty)\ket{\alpha},
+\notag\\
+\ket{\alpha}_{\mathrm{out}}&=\Omega(+\infty)\ket{\alpha},
+\tag{3.1.13}\label{eq:3.1.13}
+\end{align}
+where
+\begin{equation}
+\Omega(\tau)\equiv\exp(+iH\tau)\exp(-iH_0\tau).
+\tag{3.1.14}\label{eq:3.1.14}
+\end{equation}
+However, it should be kept in mind that $\Omega(\mp\infty)$ in
+Eq.~\eqref{eq:3.1.13} gives meaningful results only when acting on a smooth
+superposition of energy eigenstates.
+
+One immediate consequence of the definition \eqref{eq:3.1.12} is that the `in' and
+`out' states are normalized just like the free-particle states. To see this,
+note that since the left-hand side of Eq.~\eqref{eq:3.1.12} is obtained by letting the
+unitary operator $\exp(-iH\tau)$ act on a time-independent state, its norm is
+independent of time, and therefore equals the norm of its limit for
+$\tau\to\mp\infty$, i.e., the norm of the right-hand side of Eq.~\eqref{eq:3.1.12}:
+\begin{align*}
+&\int d\alpha\,d\beta\,
+\exp\bigl(-i(E_\alpha-E_\beta)\tau\bigr)
+g(\alpha)g^*(\beta)
+{}_{\mathrm{in/out}}\!\bigl\langle\beta
+\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+\\
+&\qquad={}
+\int d\alpha\,d\beta\,
+\exp\bigl(-i(E_\alpha-E_\beta)\tau\bigr)
+g(\alpha)g^*(\beta)\braket{\beta}{\alpha}.
+\end{align*}
+Since this is supposed to be true for all smooth functions $g(\alpha)$, the
+scalar products must be equal:
+\begin{equation}
+{}_{\mathrm{in/out}}\!\bigl\langle\beta
+\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+=\braket{\beta}{\alpha}=\delta(\beta-\alpha).
+\tag{3.1.15}\label{eq:3.1.15}
+\end{equation}
+
+It is useful for some purposes to have an explicit though formal solution of
+the energy eigenvalue equation \eqref{eq:3.1.11} satisfying the conditions \eqref{eq:3.1.12}.
+For this purpose, write Eq.~\eqref{eq:3.1.11} as
+\[
+(E_\alpha-H_0)\ket{\alpha}_{\mathrm{in/out}}
+=H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in/out}}.
+\]
+The operator $E_\alpha-H_0$ is not invertible; it annihilates not only the
+free-particle state $\ket{\alpha}$, but also the continuum of other
+free-particle states $\ket{\beta}$ of the same energy. Since the `in' and
+`out' states become just $\ket{\alpha}$ for $H_{\mathrm{int}}\to0$, we
+tentatively write the formal solutions as $\ket{\alpha}$ plus a term
+proportional to $H_{\mathrm{int}}$:
+\begin{align}
+\ket{\alpha}_{\mathrm{in}}
+&=\ket{\alpha}+(E_\alpha-H_0+i\epsilon)^{-1}
+H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in}},
+\notag\\
+\ket{\alpha}_{\mathrm{out}}
+&=\ket{\alpha}+(E_\alpha-H_0-i\epsilon)^{-1}
+H_{\mathrm{int}}\ket{\alpha}_{\mathrm{out}},
+\tag{3.1.16}\label{eq:3.1.16}
+\end{align}
+or, expanding in a complete set of free-particle states,
+\begin{align}
+\ket{\alpha}_{\mathrm{in}}
+&=\ket{\alpha}+\int d\beta\,
+\frac{T^{\mathrm{in}}_{\beta\alpha}\ket{\beta}}
+{E_\alpha-E_\beta+i\epsilon},
+\notag\\
+\ket{\alpha}_{\mathrm{out}}
+&=\ket{\alpha}+\int d\beta\,
+\frac{T^{\mathrm{out}}_{\beta\alpha}\ket{\beta}}
+{E_\alpha-E_\beta-i\epsilon},
+\tag{3.1.17}\label{eq:3.1.17}
+\end{align}
+\begin{equation}
+T^{\mathrm{in/out}}_{\beta\alpha}
+\equiv\bra{\beta}H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in/out}},
+\tag{3.1.18}\label{eq:3.1.18}
+\end{equation}
+with $\epsilon$ a positive infinitesimal quantity, inserted to give meaning to
+the reciprocal of $E_\alpha-H_0$. These are known as the
+\textit{Lippmann--Schwinger equations}~\hyperref[ref:3.1a]{[1a]}. We shall use Eq.~\eqref{eq:3.1.17} at the
+end of the next section to give a slightly less unrigorous proof of the
+orthonormality of the `in' and `out' states.
+
+It remains to be shown that Eq.~\eqref{eq:3.1.17}, with a $+i\epsilon$ or
+$-i\epsilon$ in the denominator, satisfies the condition \eqref{eq:3.1.12} for an
+`in' or an `out' state, respectively. For this purpose, consider the
+superpositions
+\begin{equation}
+\ket{\Psi_g(t)}_{\mathrm{in/out}}
+\equiv\int d\alpha\,e^{-iE_\alpha t}g(\alpha)
+\ket{\alpha}_{\mathrm{in/out}},
+\tag{3.1.19}\label{eq:3.1.19}
+\end{equation}
+\begin{equation}
+\ket{\Phi_g(t)}\equiv
+\int d\alpha\,e^{-iE_\alpha t}g(\alpha)\ket{\alpha}.
+\tag{3.1.20}\label{eq:3.1.20}
+\end{equation}
+We want to show that $\ket{\Psi_g(t)}_{\mathrm{in}}$ and
+$\ket{\Psi_g(t)}_{\mathrm{out}}$ approach $\ket{\Phi_g(t)}$ for
+$t\to-\infty$ and $t\to+\infty$, respectively. Using Eq.~\eqref{eq:3.1.17} in
+Eq.~\eqref{eq:3.1.19} gives
+\begin{align}
+\ket{\Psi_g(t)}_{\mathrm{in/out}}
+=\ket{\Phi_g(t)}+\int d\alpha\int d\beta\,
+\frac{e^{-iE_\alpha t}g(\alpha)
+T^{\mathrm{in/out}}_{\beta\alpha}\ket{\beta}}
+{E_\alpha-E_\beta\mathbin{\pm}i\epsilon},
+\tag{3.1.21}\label{eq:3.1.21}
+\end{align}
+where the upper and lower signs refer to `in' and `out', respectively. Let us
+recklessly interchange the order of integration, and consider first the
+integrals
+\[
+\mathcal{I}^{\mathrm{in/out}}_\beta\equiv
+\int d\alpha\,
+\frac{e^{-iE_\alpha t}g(\alpha)
+T^{\mathrm{in/out}}_{\beta\alpha}}
+{E_\alpha-E_\beta\mathbin{\pm}i\epsilon}.
+\]
+For $t\to-\infty$, we can close the contour of integration for the energy
+variable $E_\alpha$ in the upper half-plane with a large semi-circle, with the
+contribution from this semi-circle killed by the factor
+$\exp(-iE_\alpha t)$, which is exponentially small for $t\to-\infty$ and
+$\operatorname{Im}E_\alpha>0$. The integral is then given by a sum over the
+singularities of the integrand in the upper half-plane. The functions
+$g(\alpha)$ and $T^{\mathrm{in/out}}_{\beta\alpha}$ may, in general, be
+expected to have some singularities at values of $E_\alpha$ with finite
+positive imaginary parts, but just as for the large semi-circle, their
+contribution is exponentially damped for $t\to-\infty$. (Specifically, $-t$
+must be much greater than both the time-uncertainty in the wave-packet
+$g(\alpha)$ and the duration of the collision, which respectively govern the
+location of the singularities of $g(\alpha)$ and
+$T^{\mathrm{in/out}}_{\beta\alpha}$ in the complex $E_\alpha$ plane.) This
+leaves the singularity in
+$(E_\alpha-E_\beta\mathbin{\pm}i\epsilon)^{-1}$, which is in the upper
+half-plane for $\mathcal{I}^{\mathrm{out}}_\beta$ but not
+$\mathcal{I}^{\mathrm{in}}_\beta$. We conclude then that
+$\mathcal{I}^{\mathrm{in}}_\beta$ vanishes for $t\to-\infty$. In the same
+way, for $t\to+\infty$ we must close the contour of integration in the lower
+half-plane, and so $\mathcal{I}^{\mathrm{out}}_\beta$ vanishes in this limit.
+We conclude that $\ket{\Psi_g(t)}_{\mathrm{in/out}}$ approaches
+$\ket{\Phi_g(t)}$ for $t\to\mp\infty$, in agreement with the defining
+condition \eqref{eq:3.1.12}.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+For future use, we note a convenient representation of the factor
+$(E_\alpha-E_\beta\mathbin{\pm}i\epsilon)^{-1}$ in Eq.~\eqref{eq:3.1.17}. In
+general, we can write
+\begin{equation}
+(E\mathbin{\pm}i\epsilon)^{-1}
+=\frac{\Pi_\epsilon}{E}\mp i\pi\delta_\epsilon(E),
+\tag{3.1.22}\label{eq:3.1.22}
+\end{equation}

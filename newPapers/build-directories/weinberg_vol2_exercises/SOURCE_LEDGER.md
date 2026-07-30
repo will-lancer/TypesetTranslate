@@ -1,0 +1,49 @@
+# Source ledger
+
+Every supplementary exercise prints a credit and stores the corresponding stable ID in its LaTeX macro. This table is generated from `source-ledger.json`.
+
+| ID | Author/institution | Source | Year | Locator | Chapters | URL |
+|---|---|---|---:|---|---|---|
+| `barnich-brandt-henneaux-2000` | Glenn Barnich, Friedemann Brandt, and Marc Henneaux | Local BRST Cohomology in Gauge Theories | 2000 | Sections 2 and 12, BRST cohomology and consistent interactions | 15 | [source](https://arxiv.org/abs/hep-th/0002245) |
+| `becchi-gauge-theories-1997` | Carlo Becchi | Introduction to Gauge Theories | 1997 | Lectures on gauge fixing, Faddeev-Popov fields, BRST symmetry, and Ward identities | 15 | [source](https://arxiv.org/abs/hep-ph/9705211) |
+| `coleman-weinberg-1973` | Sidney Coleman and Erick Weinberg | Radiative Corrections as the Origin of Spontaneous Symmetry Breaking | 1973 | Physical Review D 7, 1888-1910, Sections II-IV | 16 | [source](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.7.1888) |
+| `cornwall-jackiw-tomboulis-1974` | John M. Cornwall, Roman Jackiw, and E. Tomboulis | Effective Action for Composite Operators | 1974 | Physical Review D 10, 2428-2445, source Legendre transforms and composite variables | 16 | [source](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.10.2428) |
+| `eth-qft2-fs17` | N. Beisert et al.; ETH Zurich | Quantum Field Theory II, Problem Sets | 2017 | Problem Set 5, Problem 5.3; Problem Set 6, Problems 6.1-6.2 | 15 | [source](https://people.phys.ethz.ch/~nbeisert/lectures/QFT2-17FS-Problems.pdf) |
+| `gomis-paris-samuel-1995` | Joaquim Gomis, Jordi Paris, and Stuart Samuel | Antibracket, Antifields and Gauge-Theory Quantization | 1995 | Sections 3, 4.1, and 6 | 15 | [source](https://arxiv.org/abs/hep-th/9412228) |
+| `jackiw-effective-potential-1974` | Roman Jackiw | Functional Evaluation of the Effective Potential | 1974 | Physical Review D 9, 1686-1701, Sections II-III | 16 | [source](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.9.1686) |
+| `kaplunovsky-effective-potential-2019` | Vadim Kaplunovsky; University of Texas at Austin | Vacuum Energy and Effective Potentials | 2019 | Graduate Quantum Field Theory notes, pp. 1-11 | 16 | [source](https://web2.ph.utexas.edu/~vadim/Classes/2019f/effpot.pdf) |
+| `lim-advanced-qft-2019` | Ian Lim; notes for Matthew Wingate's Advanced Quantum Field Theory course | Advanced Quantum Field Theory | 2019 | Lectures 5-6, connected generating functionals, Legendre transformation, and effective action | 16 | [source](https://lim.physics.ucdavis.edu/teaching/files/aqft-notes-partiii.pdf) |
+| `mcgreevy-physics215c-2014` | John McGreevy; University of California, San Diego | Physics 215C: Quantum Field Theory | 2014 | Sections 2.2-2.3.3 and 5.1, diagrammatic perturbation theory, effective action, and anomalies | 16 | [source](https://mcgreevy.physics.ucsd.edu/s13/215C-lectures.pdf) |
+| `mit-8323-s23-ps10` | Hong Liu; Massachusetts Institute of Technology OpenCourseWare | 8.323 Relativistic Quantum Field Theory I, Problem Set 10 | 2023 | Problems 3-4, Grassmann Gaussian integrals and Yukawa theory | 16 | [source](https://www.ocw.mit.edu/courses/8-323-relativistic-quantum-field-theory-i-spring-2023/mit8_323_s23_pset10.pdf) |
+| `mit-8324-f10-ps1` | Hong Liu; Massachusetts Institute of Technology OpenCourseWare | 8.324 Relativistic Quantum Field Theory II, Problem Set 1 | 2010 | Problem 2, Parallel Transport | 15 | [source](https://ocw.mit.edu/courses/8-324-relativistic-quantum-field-theory-ii-fall-2010/a502526268912c09c9cc0215fc1f647f_MIT8_324F10_ps1.pdf) |
+| `mit-8324-f10-ps2` | Hong Liu; Massachusetts Institute of Technology OpenCourseWare | 8.324 Relativistic Quantum Field Theory II, Problem Set 2 | 2010 | Problems 4-5, Non-Abelian Gauge Fields | 15 | [source](https://ocw.mit.edu/courses/8-324-relativistic-quantum-field-theory-ii-fall-2010/58219a1a3233a8396a26a96c2af8e774_MIT8_324F10_ps2.pdf) |
+| `mnev-bv-2017` | Pavel Mnev | Lectures on Batalin-Vilkovisky Formalism and Its Applications in Topological Quantum Field Theory | 2017 | Sections 4.4-4.8, BV formalism, gauge fixing, and quantum master equation | 15 | [source](https://arxiv.org/abs/1707.08096) |
+| `skinner-aqft-sheet4-2018` | David Skinner; University of Cambridge Department of Applied Mathematics and Theoretical Physics | Advanced Quantum Field Theory Example Sheet 4 | 2018 | Problems 2-4, BRST Symmetry and Cohomology | 15 | [source](https://www.damtp.cam.ac.uk/user/dbs26/AQFT/probs4.pdf) |
+| `srednicki-qft-draft-2006` | Mark Srednicki; University of California, Santa Barbara | Quantum Field Theory, Prepublication Draft | 2006 | Sections 17, 19, 21-24, 1PI vertices, quantum action, and symmetries | 16 | [source](https://web.physics.ucsb.edu/~mark/ms-qft-DRAFT.pdf) |
+| `stanford-physics331-w20-set2` | Michael Peskin; Stanford University and SLAC | Physics 331 Problem Set 2 | 2020 | Problem 2, BRST Symmetry | 15 | [source](https://s3df.slac.stanford.edu/people/mpeskin/Physics331/set2W20.pdf) |
+| `uchicago-physics445-ps5-2021` | Savdeep Sethi; University of Chicago | Physics 445 Problem Set 5 | 2021 | Problem 1, BRST Symmetry | 15 | [source](https://homes.psd.uchicago.edu/~sethi/Teaching/P445-S2021/p5.pdf) |
+| `ucsc-physics222-effective-potential-2020` | Howard E. Haber; University of California, Santa Cruz | Functional Integral Derivation of the Effective Potential | 2020 | Physics 222 handout, pp. 1-11 | 16 | [source](https://scipp.ucsc.edu/~haber/ph222/EffectivePotential3.pdf) |
+| `uzh-phy552-fs19` | M. Grazzini et al.; University of Zurich | PHY552 Quantum Field Theory II | 2019 | Series 4-6 and lecture material on non-Abelian gauge theories, ghosts, and BRST symmetry | 15 | [source](https://www.physik.uzh.ch/en/teaching/PHY552/FS2019.html) |
+
+## Adaptation notes
+
+- `barnich-brandt-henneaux-2000`: Adapted the consistent-deformation analysis of free vector fields into a bounded exercise deriving the Yang-Mills cubic and quartic vertices and the Jacobi obstruction.
+- `becchi-gauge-theories-1997`: Adapted the global ghost-number symmetry into a focused Noether-current exercise using the Lorenz-gauge ghost density and notation of Section 15.6.
+- `coleman-weinberg-1973`: Adapted dimensional-transmutation and renormalization-group themes into algebraically bounded exercises with generic coefficients and independently derived answers.
+- `cornwall-jackiw-tomboulis-1974`: Specialized the composite-operator effective-action construction to a local source for phi squared and independently supplied the stationarity and power-counting analysis.
+- `eth-qft2-fs17`: Adapted Wilson-line, gauge-fixing, ghost, and BRST prompts into Weinberg's A_alpha, omega_alpha, omega_alpha^*, and h_alpha notation; all worked solutions were independently written.
+- `gomis-paris-samuel-1995`: Adapted foundational antibracket, master-equation, and gauge-fixing material to Weinberg's ddagger antifield notation and right/left derivative convention; solutions were rederived.
+- `jackiw-effective-potential-1974`: Adapted functional-determinant, multi-scalar, and counterterm methods into Weinberg's effective-potential conventions; every calculation was independently carried through.
+- `kaplunovsky-effective-potential-2019`: Adapted the official course-note treatment of background-dependent vacuum energy, subtraction, and phase coexistence into renormalization-condition and convex-envelope problems.
+- `lim-advanced-qft-2019`: Adapted the connected-functional and Legendre-transform development into derivations using Weinberg's Gamma = W - phi J convention and independently supplied all higher-derivative and symmetry arguments.
+- `mcgreevy-physics215c-2014`: Adapted effective-action, stability, symmetry, Goldstone, and anomalous-Jacobian themes to the chapter's external-current notation; calculations and proofs were independently written.
+- `mit-8323-s23-ps10`: Adapted the Grassmann-determinant and Yukawa themes to constant external scalar backgrounds, graded Legendre derivatives, and anomalous Jacobians; solutions are independent.
+- `mit-8324-f10-ps1`: Adapted the parallel-transport and small-loop calculations to Weinberg's D_mu = partial_mu - i A_mu convention and supplied independent derivations.
+- `mit-8324-f10-ps2`: Adapted covariant-current and gauge-connection questions to the chapter's component conventions; replaced the source examples with locally derived configurations and solutions.
+- `mnev-bv-2017`: Adapted BV master-action, anticanonical-shift, and quantum-BRST constructions to the local Yang-Mills field content and notation of Section 15.9.
+- `skinner-aqft-sheet4-2018`: Adapted Lie-algebra cohomology, free BRST, propagator, and Ward-identity themes to the chapter's ghost and auxiliary-field conventions; solutions are original derivations.
+- `srednicki-qft-draft-2006`: Adapted the author's 1PI-vertex, quantum-action, dimensional-analysis, and Ward-identity material into chapter-specific functional exercises; all solutions were rederived in local conventions.
+- `stanford-physics331-w20-set2`: Adapted the auxiliary-field and off-shell nilpotency theme to Weinberg's h_alpha convention and independently supplied the Gaussian completion and BRST analysis.
+- `uchicago-physics445-ps5-2021`: Adapted the free-theory BRST-charge analysis into a one-particle cohomology problem and independently derived the transverse-polarization quotient.
+- `ucsc-physics222-effective-potential-2020`: Adapted loop-expansion, determinant, multi-field mass-matrix, and constant-background methods to Weinberg's effective-action normalization, with new examples and independent solutions.
+- `uzh-phy552-fs19`: Used the official graduate-course sequence as a basis for an SU(2) adjoint-representation calculation, rewritten in the normalization and notation of Section 15.1.

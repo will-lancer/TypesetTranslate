@@ -1,0 +1,547 @@
+% Source coverage: physical PDF pp. 234--248 (printed pp. 211--225), beginning after the Section 19.5 closing paragraph and ending immediately before the Section 19.7 heading.
+% Numbered equations: (19.6.1)--(19.6.47). Figures/tables: none. Citations: [25], [31], [32], [32a]. Footnotes: 1. Divider: 1.
+% Source anomalies preserved: the parenthetical explanations of ``reflexive'' and ``symmetric'' are interchanged; the parenthesis in ``symmetric space).'' is printed before the period; Eq. (19.6.23) prints a sum over a; one h argument in the unnumbered derivation before Eq. (19.6.25) omits g; and the prose before Eq. (19.6.26) says ``a linear combinations.''
+
+\subsection{Effective Field Theories: General Broken Symmetries}
+\label{sec:19.6}
+
+The techniques described in the previous section for constructing effective Lagrangians for the case of $SU(2)\cdot SU(2)$ broken to $SU(2)$ were soon generalized~\hyperref[ch19-ref-31]{[31]} to the case of a general group $G$ broken to an arbitrary subgroup $H$. Consider a quantum field theory whose Lagrangian is invariant under an arbitrary compact Lie group $G$ of ordinary linear spacetime-independent transformations $g$ of the fields $\psi_n(x)$:
+\begin{equation}
+\psi_n(x)\longrightarrow\sum_m g_{nm}\psi_m(x).
+\tag{19.6.1}\label{eq:19.6.1}
+\end{equation}
+We suppose that this symmetry group is spontaneously broken to some subgroup $H\subset G$ of symmetry transformations that leave all vacuum expectation values invariant: for $h\in H$,
+\begin{equation}
+\sum_m h_{nm}\bra{\Omega}\psi_m(x)\ket{\Omega}
+=\bra{\Omega}\psi_n(x)\ket{\Omega}.
+\tag{19.6.2}\label{eq:19.6.2}
+\end{equation}
+(Not all of the $\psi$s need be scalars, but of course only the scalars will have non-vanishing vacuum expectation values.) In the example at the beginning of the previous section, $G$ was the group $SO(4)$, the fields $\psi_n$ furnished a four-vector representation of this group, and their vacuum expectation values broke $SO(4)$ down to the subgroup $H=SO(3)$ of rotations that leave the four-axis invariant. In the general case the fields $\psi_n$ may furnish a reducible rather than an irreducible representation of $G$, as for instance became the case when we introduced the nucleon fields in the previous section.
+
+We next express a general `point' $\psi_n$ in field space as a $G$ transformation acting on fields $\widetilde\psi_n$ from which the massless Goldstone mode has been eliminated:
+\begin{equation}
+\psi_n(x)=\sum_m\gamma_{nm}(x)\widetilde\psi_m(x).
+\tag{19.6.3}\label{eq:19.6.3}
+\end{equation}
+For instance, in the previous section $\gamma$ was the $SO(4)$ rotation we called $R$, and the condition satisfied by $\widetilde\psi_n$ was that the first three components of the four-vector should vanish.
+
+In order to formulate this condition more generally, let us suppose that we are working with a real representation of $G$. (There is no loss of generality here, because we are not insisting on an irreducible representation, so if we start with a set of fields forming a complex representation of $G$ we can always take the $\psi_n$ to be the real and imaginary parts of these complex fields.) As shown in Section 19.2, the massless eigenvectors of the mass matrix are just the independent linear combinations of the vectors $\sum_m[t_\alpha]_{nm}\bra{\Omega}\psi_m(0)\ket{\Omega}$, where $t_\alpha$ are the generators of $G$. (The reality of the representation means that $it_\alpha$ is real, and the fact that $G$ is compact means that we can choose the representation to be unitary and hence orthogonal, so that the $t_\alpha$ are imaginary and antisymmetric.) The condition that $\widetilde\psi_n$ does not contain Goldstone modes may thus be formulated as
+\begin{equation}
+\sum_{nm}\widetilde\psi_n(x)[t^\alpha]_{nm}
+\bra{\Omega}\psi_m(0)\ket{\Omega}=0.
+\tag{19.6.4}\label{eq:19.6.4}
+\end{equation}
+The number of independent conditions here is the dimensionality of the group $G$ minus the dimensionality of the subgroup $H$ whose generators annihilate $\bra{\Omega}\psi_m(0)\ket{\Omega}$. As in the previous section, the Goldstone bosons whose fields are eliminated in this way will reappear in the $\dim(G)-\dim(H)$ fields needed to parameterize the transformation $\gamma_{nm}(x)$. In general the $\widetilde\psi_n$ include all the heavy fields of the theory, including those (like nucleons in the previous section) that have different spacetime symmetry properties from the Goldstone bosons.
+
+It is necessary to show that we may always choose the transformation $\gamma_{nm}(x)$ so as to satisfy Eq.~\eqref{eq:19.6.4}. For this purpose, consider the quantity
+\begin{equation}
+V_\psi(g)\equiv
+\sum_{nm}\psi_n g_{nm}\bra{\Omega}\psi_m(0)\ket{\Omega},
+\tag{19.6.5}\label{eq:19.6.5}
+\end{equation}
+where $g$ runs over the whole group $G$ in the real orthogonal representation furnished by the $\psi_n$. This is obviously a continuous real function of $g$, and since the group is compact $V_\psi(g)$ is also a bounded function of $g$. At each spacetime point $x$, $V_{\psi(x)}(g)$ therefore reaches a maximum value for some group element, which we shall call $\gamma(x)$. At $g=\gamma(x)$, $V_{\psi(x)}(g)$ must be stationary with respect to arbitrary variations in $g$. But any infinitesimal shift in a group element $g$ may always be written as a linear combination
+\[
+\delta g=i\sum_\alpha\epsilon_\alpha g t^\alpha,
+\]
+with real infinitesimal coefficients $\epsilon_\alpha$ that may depend on $g$. Hence the condition that $V_{\psi(x)}(g)$ be stationary with respect to the variation $\delta g$ at $g=\gamma(x)$ reads
+\[
+\begin{aligned}
+0=\delta V_{\psi(x)}\bigl(\gamma(x)\bigr)
+&=i\sum_\alpha\epsilon_\alpha
+\sum_{nm\ell}\psi_n(x)\gamma_{nm}(x)t^\alpha_{m\ell}
+\bra{\Omega}\psi_\ell(0)\ket{\Omega},
+\\
+&=i\sum_\alpha\epsilon_\alpha
+\sum_{nm\ell}[\gamma^{-1}(x)]_{\ell n}\psi_n(x)t^\alpha_{\ell m}
+\bra{\Omega}\psi_m(0)\ket{\Omega}.
+\end{aligned}
+\]
+This must be satisfied for all variations, and thus for all $\epsilon_\alpha$, so we see that Eq.~\eqref{eq:19.6.4} is satisfied for $\widetilde\psi(x)=\gamma^{-1}(x)\psi(x)$, as was to be shown. In the purely bosonic theory with Lagrangian \eqref{eq:19.4.1}, $\widetilde\psi_n$ was the four-vector field $(0,0,0,\sigma)$. This points in the direction of the vacuum expectation value $\bra{\Omega}\psi_n\ket{\Omega}$, but this is not always the case.
+
+Incidentally, it is not necessary in dealing with complex fields to formulate the condition on $\widetilde\psi(x)$ explicitly in terms of its real and imaginary parts. If a set of fields $\chi(x)$ transform according to some complex representation of $G$ with Hermitian generators $T^\alpha$, then in the real representation
+\[
+\psi(x)=
+\begin{pmatrix}
+\operatorname{Re}\chi(x)\\
+\operatorname{Im}\chi(x)
+\end{pmatrix}
+\]
+the generators are
+\[
+it^\alpha=
+\begin{pmatrix}
+-\operatorname{Im}T^\alpha&-\operatorname{Re}T^\alpha\\
+\operatorname{Re}T^\alpha&-\operatorname{Im}T^\alpha
+\end{pmatrix}.
+\]
+The condition \eqref{eq:19.6.4} may then be expressed directly in terms of $T^\alpha$ and $\chi(x)$ as
+\[
+\operatorname{Im}\left\{
+\widetilde\chi(x)^\dagger T^\alpha
+\bra{\Omega}\chi(0)\ket{\Omega}
+\right\}=0.
+\]
+
+Because the Lagrangian is assumed to be only invariant under spacetime-independent $G$ transformations, it will be found after the transformation \eqref{eq:19.6.3} to depend on $\gamma(x)$ as well as on $\widetilde\psi(x)$, though always with at least one derivative in each $\gamma$-dependent term. As already remarked, the spacetime-dependent parameters needed to specify $\gamma(x)$ will play the role of Goldstone boson fields. We now have to consider how to parameterize $\gamma(x)$.
+
+It must be recognized from the outset that the choice of $\gamma$ in Eq.~\eqref{eq:19.6.3} is generally not unique. Because $\bra{\Omega}\psi_m(0)\ket{\Omega}$ is $H$-invariant in the sense of Eq.~\eqref{eq:19.6.2}, the quantity $V_\psi(g)$ defined by Eq.~\eqref{eq:19.6.5} is invariant under right multiplication of $g$ by any element $h$ of the unbroken subgroup $H$:
+\begin{equation}
+V_\psi(g)=V_\psi(gh)\qquad\text{for}\qquad h\in H.
+\tag{19.6.6}\label{eq:19.6.6}
+\end{equation}
+It follows that if $\gamma$ maximizes $V_\psi(g)$, then so does $\gamma h$, so that condition \eqref{eq:19.6.4} is satisfied for $\widetilde\psi=h^{-1}\gamma^{-1}\psi$ as well as $\widetilde\psi=\gamma^{-1}\psi$. Hence $\gamma$ is only defined so far up to right multiplication by an element of $H$. (For instance in the example of the previous section, the four-dimensional rotation $R$ could have been multiplied on the right with any rotation acting only on the first three components of four-vectors.) We may think of two group elements $\gamma_1$ and $\gamma_2$ as equivalent if $\gamma_1=\gamma_2h$ with $h\in H$. This is an equivalence relation because it is reflexive (if $\gamma_1$ is equivalent to $\gamma_2$ then $\gamma_2$ is equivalent to $\gamma_1$), symmetric ($\gamma$ is equivalent to itself), and transitive (if $\gamma_1$ is equivalent to $\gamma_2$ and $\gamma_2$ is equivalent to $\gamma_3$ then $\gamma_1$ is equivalent to $\gamma_3$). The elements of the group $G$ can therefore be sorted into disjoint `equivalence classes', each consisting of elements $\gamma$ that differ only by right multiplication by an element of $H$. These are known as the \emph{right cosets} of $G$ with respect to $H$. What we need is a parameterization of the space (known as $G/H$) of right cosets.
+
+For this purpose we need only choose one representative group element from each right coset. For the $SO(4)$ symmetry broken to $SO(3)$ of the previous section, it was convenient to choose these representative elements as the rotations $R$ parameterized by the three-vector $\boldsymbol\zeta$. There is another choice that is available for any compact group $G$ broken to any subgroup $H$. Let us first adapt our notation for the generators of $G$ to the pattern of symmetry breaking. The complete set of independent generators of $H$ will be called $t_i$. According to Eq.~\eqref{eq:19.6.2} these satisfy
+\begin{equation}
+\sum_m(t_i)_{nm}\bra{\Omega}\psi_m\ket{\Omega}=0.
+\tag{19.6.7}\label{eq:19.6.7}
+\end{equation}
+Since $H$ is a subgroup, the $t_i$ form a subalgebra
+\begin{equation}
+[t_i,t_j]=i\sum_k C_{ijk}t_k.
+\tag{19.6.8}\label{eq:19.6.8}
+\end{equation}
+We will take the $x_a$ to be the \emph{other} independent generators of $G$, in any basis with totally antisymmetric structure constants. (Such a basis always exists for compact groups; see Section 15.2.) Since $x_a$ does not appear on the right-hand side of Eq.~\eqref{eq:19.6.8}, the structure constants $C_{ija}$ all vanish, and since they are totally antisymmetric, it follows that $C_{iaj}=0$, so
+\begin{equation}
+[t_i,x_a]=i\sum_b C_{iab}x_b.
+\tag{19.6.9}\label{eq:19.6.9}
+\end{equation}
+However, it is \emph{not} necessarily the case that commutators of $x$s with each other are linear combinations of $t$s; this depends on the nature of $G$ and $H$, and also on how $H$ is embedded in $G$. (Where $C_{abc}$ vanishes, the coset space $G/H$ is known as a \emph{symmetric space}). In general we may write
+\begin{equation}
+[x_a,x_b]
+=i\sum_i C_{abi}t_i+i\sum_c C_{abc}x_c.
+\tag{19.6.10}\label{eq:19.6.10}
+\end{equation}
+Any set of generators with commutation relations of the form \eqref{eq:19.6.8}--\eqref{eq:19.6.10} is called a \emph{Cartan decomposition} of the Lie algebra. An example is provided by the chiral $SU(2)\cdot SU(2)$ Lie algebra \eqref{eq:19.4.9}--\eqref{eq:19.4.11}, for which the $C_{abc}$ did happen to vanish.
+
+Because $t_i$ and $x_a$ span the Lie algebra of $G$, any finite element of $G$ may be expressed in the form
+\begin{equation}
+g=\exp\left[i\sum_a\xi_a x_a\right]
+\exp\left[i\sum_i\theta_i t_i\right],
+\tag{19.6.11}\label{eq:19.6.11}
+\end{equation}
+where $\xi_a$ and $\theta_i$ are a set of real parameters. But the transformation $\gamma(x)$ in Eq.~\eqref{eq:19.6.3} is only defined so far up to right-multiplication with an element of $H$, so we may standardize our definition of $\gamma$ by taking it in the form
+\begin{equation}
+\gamma(x)=\exp\left[i\sum_a\xi_a(x)x_a\right].
+\tag{19.6.12}\label{eq:19.6.12}
+\end{equation}
+The $\xi_a(x)$ may be identified (apart from normalization) with the Goldstone boson fields.
+
+In what follows we will simply assume that representative elements have been chosen from each right coset, and expressed as continuous functions $\gamma(\xi)$ of some parameters $\xi_a$. Eq.~\eqref{eq:19.6.12} in general provides one explicit example, but we will not limit ourselves to this parameterization.
+
+Now, suppose we use Eq.~\eqref{eq:19.6.3} to replace all fields $\psi(x)$ in the Lagrangian with $\gamma(x)\widetilde\psi(x)$. The derivatives of the fields are given by
+\begin{equation}
+\partial_\mu\psi(x)
+=\gamma(x)\left[
+\partial_\mu\widetilde\psi(x)
++\bigl(\gamma^{-1}(x)\partial_\mu\gamma(x)\bigr)
+\widetilde\psi(x)\right].
+\tag{19.6.13}\label{eq:19.6.13}
+\end{equation}
+Therefore when we express the Lagrangian in terms of $\widetilde\psi$ rather than $\psi$, the Goldstone boson fields appear through the dependence of $\gamma^{-1}(x)\partial_\mu\gamma(x)$ on $\xi_a(x)$ and its derivatives.
+
+Any variation of a group element like $\gamma(x)$ may be written as the group element times a linear combination of the generators of the group. In our case, we may write this as
+\begin{equation}
+\gamma^{-1}(x)\partial_\mu\gamma(x)
+=i\sum_a x_aD_{a\mu}(x)+i\sum_i t_iE_{i\mu}(x),
+\tag{19.6.14}\label{eq:19.6.14}
+\end{equation}
+where $D_{a\mu}$ and $E_{i\mu}$ take the forms
+\begin{equation}
+D_{a\mu}(x)=\sum_bD_{ab}\bigl(\xi(x)\bigr)\partial_\mu\xi_b(x),
+\tag{19.6.15}\label{eq:19.6.15}
+\end{equation}
+\begin{equation}
+E_{i\mu}(x)=\sum_bE_{ib}\bigl(\xi(x)\bigr)\partial_\mu\xi_b(x).
+\tag{19.6.16}\label{eq:19.6.16}
+\end{equation}
+The Goldstone boson fields will thus enter the Lagrangian through the appearance of the quantities $D_{a\mu}(x)$ and $E_{i\mu}(x)$ (and their derivatives). Note that for exact broken symmetries every interaction of the $\xi$s must involve at least one derivative, so mass terms $m^2_{ab}\xi_a\xi_b$ cannot appear in the Lagrangian, and all interactions vanish when any Goldstone boson four-momentum vanishes.
+
+Even where we do not know the details of the underlying Lagrangian, we can learn a great deal about the way that the quantities $D_{a\mu}$ and $E_{i\mu}$ appear in the transformed Lagrangian from their transformation properties. Under an arbitrary element $g$ of the group $G$, the original field $\psi$ transforms according to Eq.~\eqref{eq:19.6.1}:
+\begin{equation}
+\psi(x)\longrightarrow\psi'(x)
+=g\psi(x)=g\gamma\bigl(\xi(x)\bigr)\widetilde\psi(x).
+\tag{19.6.17}\label{eq:19.6.17}
+\end{equation}
+Now, $g\gamma(\xi)$ is an element of $G$, so it must be in the same right coset as some $\gamma(\xi')$, and may therefore be written in the form
+\begin{equation}
+g\gamma\bigl(\xi(x)\bigr)
+=\gamma\bigl(\xi'(x)\bigr)h\bigl(\xi(x),g\bigr),
+\tag{19.6.18}\label{eq:19.6.18}
+\end{equation}
+where $h$ is some element of the unbroken subgroup $H$. Using this in Eq.~\eqref{eq:19.6.17}, we find that $\psi'(x)$ is of the form \eqref{eq:19.6.3}
+\begin{equation}
+\psi'(x)=\gamma\bigl(\xi'(x)\bigr)\widetilde\psi'(x),
+\tag{19.6.19}\label{eq:19.6.19}
+\end{equation}
+with $\xi'(x)$ defined by Eq.~\eqref{eq:19.6.18}, and
+\begin{equation}
+\widetilde\psi'(x)
+=h\bigl(\xi(x),g\bigr)\widetilde\psi(x).
+\tag{19.6.20}\label{eq:19.6.20}
+\end{equation}
+In the example at the beginning of the previous section, $\widetilde\psi$ consisted of a single isoscalar $\sigma$, and since this was invariant under the unbroken isospin subgroup, it was also chiral invariant. More generally, we find here that $\widetilde\psi(x)$ is not necessarily invariant under general $G$ transformations, but that its $G$ transformation depends only on its transformation under the unbroken subgroup $H$. We saw this in the previous section when we introduced the nucleon fields; under a general infinitesimal broken chiral symmetry, the fields $\widetilde N$ transformed according to the field-dependent isospin rotation \eqref{eq:19.5.45}.
+
+The transformation rules $\xi\to\xi'$ and $\widetilde\psi\to\widetilde\psi'$ specified by Eqs.~\eqref{eq:19.6.18} and \eqref{eq:19.6.20} make no reference to the particular linear $G$ transformation properties of the original fields $\psi_n$. Indeed, we did not need to start with a Lagrangian that was invariant under linear $G$ transformations in order to deduce these transformation rules. Given any set of fields on which a group $G$ acts linearly or non-linearly, with a subgroup $H$ that leaves one special set of field values (their vacuum expectation values) invariant, we can always express these fields (in at least a finite neighborhood of the special field values) in terms of a set $\xi_a$ and $\widetilde\psi_n$, which transform under $G$ according to the standard realization $\xi_a\to\xi'_a$, $\widetilde\psi\to\widetilde\psi'$ defined by Eqs.~\eqref{eq:19.6.18} and \eqref{eq:19.6.20}. The essential uniqueness of this realization was first proved~\hyperref[ch19-ref-25]{[25]} for $SU(2)\cdot SU(2)$ broken to $SU(2)$, and then for general Lie groups broken to any subgroup~\hyperref[ch19-ref-31]{[31]}. For an easier argument, we may note that for any set of fields that transforms according to a non-linear realization of an arbitrary compact Lie group $G$, it is always possible to define functions of these fields (and perhaps additional fields\footnote{For instance, the polar and azimuthal angles $\theta$ and $\varphi$ furnish a non-linear realization of $SO(3)$; by adding an additional variable $r$ we can construct quantities $x_1$, $x_2$, and $x_3$ that transform linearly under $SO(3)$.}) that transform linearly under $G$~\hyperref[ch19-ref-32]{[32]}. Starting from this linear realization, the arguments of this section allow us to construct fields $\xi$ and $\widetilde\psi$ with the transformation rules \eqref{eq:19.6.18} and \eqref{eq:19.6.20}.
+
+Although the transformation of $\xi(x)$ and $\widetilde\psi(x)$ is complicated for general $g\in G$, it is much simpler when $g$ is itself a member $h$ of the unbroken subgroup $H$. It is usual and always possible to choose the Goldstone boson fields $\xi_a(x)$ to transform according to some \emph{linear} representation $\mathcal D_{ab}(h)$ of the unbroken subgroup $H$:
+\begin{equation}
+h\gamma(\xi)h^{-1}
+=\gamma\bigl(\mathcal D(h)\xi\bigr).
+\tag{19.6.21}\label{eq:19.6.21}
+\end{equation}
+For instance, in the parameterization of the coset space $SO(4)/SO(3)$ used in the previous section, the Goldstone boson fields $\xi_a$ formed an isospin three-vector. For the more generally applicable parameterization based on Eq.~\eqref{eq:19.6.12}, the commutation relations \eqref{eq:19.6.9} show that the $x_a$ transform linearly under $H$:
+\begin{equation}
+hx_bh^{-1}=\sum_a\mathcal D_{ab}(h)x_a,
+\tag{19.6.22}\label{eq:19.6.22}
+\end{equation}
+from which Eq.~\eqref{eq:19.6.21} follows immediately. Comparing Eq.~\eqref{eq:19.6.21} with Eq.~\eqref{eq:19.6.18}, we see that for $g=h\in H$,
+\begin{equation}
+\xi'_a(x)=\sum_a\mathcal D_{ab}(h)\xi_b(x),
+\tag{19.6.23}\label{eq:19.6.23}
+\end{equation}
+\begin{equation}
+\widetilde\psi'_n(x)=\sum_mh_{nm}\widetilde\psi_m(x).
+\tag{19.6.24}\label{eq:19.6.24}
+\end{equation}
+In other words, $\xi_a$ and $\widetilde\psi_n$ transform under $H$ according to the representations $\mathcal D_{ab}(h)$ and $h_{nm}$ itself, respectively.
+
+We must now consider how to construct the most general Lagrangian that is invariant under the transformations \eqref{eq:19.6.18} and \eqref{eq:19.6.20}. The transformation $\xi\to\xi'$ for general $g\in G$ is non-linear and rather complicated, and rules out the appearance of $\xi_a(x)$ in the Lagrangian except in quantities like $D_{a\mu}(x)$ and $E_{i\mu}(x)$. Fortunately, these quantities obey very simple transformation rules. Differentiate Eq.~\eqref{eq:19.6.18} with respect to $x^\mu$ and multiply on the left with its inverse. This gives
+\[
+\begin{aligned}
+\gamma^{-1}\bigl(\xi(x)\bigr)\partial_\mu\gamma\bigl(\xi(x)\bigr)
+&=\bigl[g\gamma\bigl(\xi(x)\bigr)\bigr]^{-1}
+\partial_\mu\bigl[g\gamma\bigl(\xi(x)\bigr)\bigr]
+\\
+&=h^{-1}\bigl(\xi(x),g\bigr)
+\gamma^{-1}\bigl(\xi'(x)\bigr)
+\partial_\mu\left[
+\gamma\bigl(\xi'(x)\bigr)h\bigl(\xi(x),g\bigr)\right]
+\\
+&=h^{-1}\bigl(\xi(x),g\bigr)
+\left[
+\gamma^{-1}\bigl(\xi'(x)\bigr)
+\partial_\mu\gamma\bigl(\xi'(x)\bigr)\right]
+h\bigl(\xi(x)\bigr)
+\\
+&\quad
++h^{-1}\bigl(\xi(x),g\bigr)
+\partial_\mu h\bigl(\xi(x),g\bigr),
+\end{aligned}
+\]
+and so
+\begin{align}
+\gamma^{-1}\bigl(\xi'(x)\bigr)
+\partial_\mu\gamma\bigl(\xi'(x)\bigr)
+={}&h\bigl(\xi(x),g\bigr)
+\left[
+\gamma^{-1}\bigl(\xi(x)\bigr)
+\partial_\mu\gamma\bigl(\xi(x)\bigr)\right]
+h^{-1}\bigl(\xi(x),g\bigr)
+\notag\\
+&-\left[
+\partial_\mu h\bigl(\xi(x),g\bigr)\right]
+h^{-1}\bigl(\xi(x),g\bigr).
+\tag{19.6.25}\label{eq:19.6.25}
+\end{align}
+Eq.~\eqref{eq:19.6.12} gives the quantity $\gamma^{-1}\partial_\mu\gamma$ as a linear combinations of $x$s and $t$s. Also, the second term on the right-hand side of Eq.~\eqref{eq:19.6.25} is a linear combination of $t$s alone. Since the $x_a$ and $t_i$ are all independent, the coefficients of each generator on both sides of Eq.~\eqref{eq:19.6.25} must all be equal:
+\begin{equation}
+\sum_a x_aD'_{a\mu}
+=h(\xi,g)\left(\sum_a x_aD_{a\mu}\right)h^{-1}(\xi,g),
+\tag{19.6.26}\label{eq:19.6.26}
+\end{equation}
+\begin{align}
+\sum_i t_iE'_{i\mu}
+={}&h(\xi,g)\left(\sum_i t_iE_{i\mu}\right)h^{-1}(\xi,g)
+\notag\\
+&+i\left[\partial_\mu h(\xi,g)\right]h^{-1}(\xi,g),
+\tag{19.6.27}\label{eq:19.6.27}
+\end{align}
+or in more detail
+\begin{align}
+D'_{a\mu}(x)
+&=\sum_b\mathcal D_{ab}
+\left(h\bigl(\xi(x),g\bigr)\right)D_{b\mu}(x),
+\notag\\
+E'_{i\mu}(x)
+&=\sum_j\mathcal E_{ij}
+\left(h\bigl(\xi(x),g\bigr)\right)E_{j\mu}(x)
+\notag\\
+&\quad-\sum_b\mathcal H_{ib}
+\left(h\bigl(\xi(x),g\bigr)\right)\partial_\mu\xi_b(x),
+\tag{19.6.28}\label{eq:19.6.28}
+\end{align}
+where $D_{a\mu}$ and $E_{i\mu}$ are defined by Eqs.~\eqref{eq:19.6.15} and \eqref{eq:19.6.16}, and
+\[
+\left[\partial_\mu h\bigl(\xi(x),g\bigr)\right]
+h^{-1}\bigl(\xi(x),g\bigr)
+=i\sum_{ib}\mathcal H_{ib}\bigl(\xi(x)\bigr)
+t_i\partial_\mu\xi_b(x),
+\]
+\[
+ht_jh^{-1}=\sum_i\mathcal E_{ij}(h)t_i,
+\]
+while $\mathcal D_{ab}$ is defined by Eq.~\eqref{eq:19.6.22}. We see that the quantities $D_{a\mu}(x)$ are `covariant derivatives' of the Goldstone boson fields, transforming under a general element $g\in G$ much like the fields $\widetilde\psi$: both are subjected to the $H$ transformation $h(\xi(x),g)$, though in different representations. For instance, in the $SO(4)$ theory of the previous section, the covariant derivative of the pion field $\boldsymbol\zeta$ was the quantity $\partial_\mu\boldsymbol\zeta/(1+\boldsymbol\zeta^2)$, which is transformed under an infinitesimal chiral transformation by an isospin rotation \eqref{eq:19.5.15}.
+
+On the other hand, $E_{i\mu}(x)$ transforms inhomogeneously, much like a gauge field. The extra term in Eq.~\eqref{eq:19.6.28} allows a cancellation of the inhomogeneous term in derivatives of $\widetilde\psi$. Differentiating Eq.~\eqref{eq:19.6.20}, we have
+\[
+\partial_\mu\widetilde\psi'(x)
+=h\bigl(\xi(x),g\bigr)\left[
+\partial_\mu\widetilde\psi(x)
++h^{-1}\bigl(\xi(x),g\bigr)
+\partial_\mu h\bigl(\xi(x),g\bigr)\widetilde\psi(x)
+\right].
+\]
+Combining this with Eq.~\eqref{eq:19.6.27} gives
+\begin{equation}
+\left(\mathcal D_\mu\widetilde\psi(x)\right)'
+=h\bigl(\xi(x),g\bigr)\mathcal D_\mu\widetilde\psi(x),
+\tag{19.6.29}\label{eq:19.6.29}
+\end{equation}
+where $\mathcal D_\mu\widetilde\psi$ is a covariant derivative of the heavy particle fields:
+\begin{equation}
+\mathcal D_\mu\widetilde\psi(x)
+\equiv\partial_\mu\widetilde\psi(x)
++i\sum_i t_iE_{i\mu}(x)\widetilde\psi(x).
+\tag{19.6.30}\label{eq:19.6.30}
+\end{equation}
+(Eq.~\eqref{eq:19.5.47} provides an example of such a covariant derivative in the case of $SO(4)$ broken to $SO(3)$.) \emph{Any Lagrangian that is invariant under the unbroken subgroup $H$ and is constructed from $\widetilde\psi$, $\mathcal D_\mu\widetilde\psi$, and $D_{a\mu}$ will thus also be invariant under the full group $G$.}
+
+Renormalizability is not an issue here, so we can also consider quantities involving more than one spacetime derivative. One such is $\mathcal D_\nu\mathcal D_\mu\widetilde\psi$, obtained by just repeating the operation \eqref{eq:19.6.30}:
+\begin{equation}
+\mathcal D_\nu\mathcal D_\mu\widetilde\psi
+=\left[\partial_\nu+i\sum_jt_jE_{j\nu}\right]
+\left[\partial_\mu+i\sum_it_iE_{i\mu}\right]\widetilde\psi.
+\tag{19.6.31}\label{eq:19.6.31}
+\end{equation}
+This transforms just like $\mathcal D_\mu\widetilde\psi$
+\begin{equation}
+\left(\mathcal D_\nu\mathcal D_\mu\widetilde\psi\right)'
+=h(\xi,g)\mathcal D_\nu\mathcal D_\mu\widetilde\psi.
+\tag{19.6.32}\label{eq:19.6.32}
+\end{equation}
+Another covariant quantity can be constructed from the covariant derivative of the covariant Goldstone boson derivative \eqref{eq:19.6.15}, which is defined just like \eqref{eq:19.6.30}, but with $t_i$ replaced with the corresponding matrix in the representation of $H$ furnished by the $x_a$:
+\begin{equation}
+\mathcal D_\nu D_{a\mu}
+\equiv\partial_\nu D_{a\mu}
++\sum_b C_{iab}E_{i\nu}D_{b\mu},
+\tag{19.6.33}\label{eq:19.6.33}
+\end{equation}
+which transforms just like $D_{a\mu}$:
+\begin{equation}
+\left(\mathcal D_\nu D_{a\mu}\right)'
+=\sum_b\mathcal D_{ab}(h,g)\mathcal D_\nu D_{b\mu}.
+\tag{19.6.34}\label{eq:19.6.34}
+\end{equation}
+
+Also, by antisymmetrizing the derivative of $E_{i\mu}$ we can eliminate the inhomogeneous term in \eqref{eq:19.6.27}. This yields a `curvature'
+\begin{equation}
+R_{i\mu\nu}
+\equiv\partial_\nu E_{i\mu}-\partial_\mu E_{i\nu}
+-iC_{ijk}E_{j\mu}E_{k\nu}.
+\tag{19.6.35}\label{eq:19.6.35}
+\end{equation}
+This is not really new; it is easy to see that the antisymmetric covariant derivative of the `matter' field $\widetilde\psi$ is proportional to this curvature
+\begin{equation}
+[\mathcal D_\nu,\mathcal D_\mu]\widetilde\psi
+=\sum_i t_iR_{i\mu\nu}\widetilde\psi.
+\tag{19.6.36}\label{eq:19.6.36}
+\end{equation}
+Of course, we can continue this process and construct yet more covariants by taking higher and higher covariant derivatives of $\mathcal D_\mu\widetilde\psi$ and $D_{a\mu}$.
+
+It is useful to note that the quantities $D_{a\mu}$ and $E_{i\mu}$ may be calculated once and for all for given groups $G$ and $H$ and a given parameterization of the coset space $G/H$, and do not depend on the assumed transformation properties of the fields $\psi_n$ or the specific matrices $x_a,t_i$ used to represent the Lie algebra of the broken symmetry group. For instance, in the exponential parameterization \eqref{eq:19.6.12}, the first few terms in the power series for these covariants are easily calculated from Eqs.~\eqref{eq:19.6.12} and \eqref{eq:19.6.14} as
+\begin{align}
+D_{a\mu}
+={}&\partial_\mu\xi_a
++\frac{1}{2}\sum_{bc}C_{abc}\xi_b\partial_\mu\xi_c
+\notag\\
+&+\frac{1}{6}\sum_{bcd}
+\left[
+\sum_eC_{cde}C_{bea}
++\sum_iC_{cdi}C_{bia}
+\right]\xi_b\xi_c\partial_\mu\xi_d
+\notag\\
+&+O(\xi^3\partial_\mu\xi),
+\tag{19.6.37}\label{eq:19.6.37}
+\end{align}
+\begin{align}
+E_{i\mu}
+={}&\frac{1}{2}\sum_{ab}C_{abi}\xi_a\partial_\mu\xi_b
++\frac{1}{6}\sum_{abcd}C_{acd}C_{bdi}
+\xi_a\xi_b\partial_\mu\xi_c
+\notag\\
+&+O(\xi^3\partial_\mu\xi).
+\tag{19.6.38}\label{eq:19.6.38}
+\end{align}
+All we need to know in order to construct the most general Lagrangian involving the Goldstone boson fields $\xi_a$ and a set of heavy particle fields is the pattern of spontaneous symmetry breaking, of $G$ to $H$, and the transformation of the heavy particle fields under $H$, not $G$: the Lagrangian is taken to be the most general $H$-invariant function of $\widetilde\psi$, $\mathcal D_\mu\widetilde\psi$, $D_{a\mu}$, and higher covariant derivatives.
+
+Now consider the case where the symmetry under $G$ is not only spontaneously broken, but not even exact to begin with. Suppose that there is a term $\Delta\mathcal L$ in the initial Lagrangian that is \emph{not} invariant under the group $G$ of linear transformations $\psi\to g\psi$, but transforms as a linear combination of the components of some representation (reducible or irreducible) of $G$. That is, we take
+\begin{equation}
+\Delta\mathcal L=\sum_Ac_A\mathcal O_A,
+\tag{19.6.39}\label{eq:19.6.39}
+\end{equation}
+where $\mathcal O_A$ transforms under $G$ according to some representation $D[g]_{AB}$:
+\begin{equation}
+\mathcal O_A\longrightarrow\sum_BD[g]_{AB}\mathcal O_B.
+\tag{19.6.40}\label{eq:19.6.40}
+\end{equation}
+If we now replace the fields $\psi$ with the set $\xi_a,\widetilde\psi$, this term in the Lagrangian will still take the form \eqref{eq:19.6.39}, but Eq.~\eqref{eq:19.6.40} now reads
+\begin{equation}
+\mathcal O_A\left[
+f_a(\xi,g),D[h(\xi,g)]\widetilde\psi
+\right]
+=\sum_BD[g]_{AB}\mathcal O_B[\xi,\widetilde\psi],
+\tag{19.6.41}\label{eq:19.6.41}
+\end{equation}
+where $f_a(\xi,g)$ is the result of applying the transformation $g$ to $\xi_a$, defined by Eq.~\eqref{eq:19.6.18}:
+\begin{equation}
+g\gamma(\xi)=\gamma\bigl(f(\xi,g)\bigr)h(\xi,g).
+\tag{19.6.42}\label{eq:19.6.42}
+\end{equation}
+As we shall see, it is easy to find sets of operators satisfying \eqref{eq:19.6.41}, and the solution is unique up to a specification of certain $H$-invariant functions of the $\widetilde\psi$.
+
+First, consider the case $\xi_a=0$, with $g=\gamma(\xi')$. In this case $g\gamma(\xi)=\gamma(\xi')$, so
+\[
+f_a\bigl(0,\gamma(\xi')\bigr)=\xi'_a,
+\qquad
+h\bigl(0,\gamma(\xi')\bigr)=1.
+\]
+Applying this in Eq.~\eqref{eq:19.6.41}, we find (now dropping the prime):
+\begin{equation}
+\mathcal O_A[\xi_a,\widetilde\psi]
+=\sum_BD[\gamma(\xi)]_{AB}\mathcal O_B[0,\widetilde\psi].
+\tag{19.6.43}\label{eq:19.6.43}
+\end{equation}
+This gives the operators $\mathcal O_A[\xi_a,\widetilde\psi]$ for all $\xi_a$ if we know them for $\xi_a=0$.
+
+Now take $\xi_a=0$, with $g$ an element $h$ of the unbroken subgroup $H$. Here we have $g\gamma(\xi)=h$, so
+\[
+f_a(0,h)=0,
+\qquad
+h(0,h)=h.
+\]
+Applying this in Eq.~\eqref{eq:19.6.41}, we find here
+\begin{equation}
+\mathcal O_A[0,h\widetilde\psi]
+=\sum_BD[h]_{AB}\mathcal O_B[0,\widetilde\psi].
+\tag{19.6.44}\label{eq:19.6.44}
+\end{equation}
+In other words, the $\mathcal O_A$ for $\xi=0$ must have the same transformation under linear $H$ transformations as are found in the representation \eqref{eq:19.6.40} of $G$. (However, there is nothing in this that fixes the normalization of the different irreducible $H$ representations found in the $G$ representation \eqref{eq:19.6.40}; some of them may even be absent altogether.)
+
+Finally, we note that any set of $\mathcal O$ operators satisfying \eqref{eq:19.6.44} allows the construction using Eq.~\eqref{eq:19.6.43} of operators satisfying the general $G$-transformation rules \eqref{eq:19.6.40}. Using Eqs.~\eqref{eq:19.6.43} and \eqref{eq:19.6.44}, the left-hand side of Eq.~\eqref{eq:19.6.41} becomes
+\[
+\begin{aligned}
+\mathcal O_A\left[
+f_a(\xi,g),h(\xi,g)\widetilde\psi\right]
+&=\sum_BD\left[\gamma\bigl(f(\xi,g)\bigr)\right]_{AB}
+\mathcal O_B[0,h(\xi,g)\widetilde\psi]
+\\
+&=\sum_{BC}
+D\left[\gamma\bigl(f(\xi,g)\bigr)\right]_{AB}
+D[h(\xi,g)]_{BC}\mathcal O_C[0,\widetilde\psi]
+\\
+&=\sum_BD\left[
+\gamma\bigl(f(\xi,g)\bigr)h(\xi,g)\right]_{AB}
+\mathcal O_B[0,\widetilde\psi]
+\\
+&=\sum_BD[g\gamma(\xi)]_{AB}\mathcal O_B[0,\widetilde\psi]
+\\
+&=\sum_BD[g]_{AB}\mathcal O_B[\xi,\widetilde\psi],
+\end{aligned}
+\]
+as was to be shown.
+
+As an example, consider the group $SO(4)$ spontaneously broken to $SO(3)$ as in the previous section, and suppose we want to construct operators that transform according to the four-vector representation of $SO(4)$ out of the Goldstone boson field $\boldsymbol\xi(x)$ and the other fields $\widetilde\psi(x)$. According to \eqref{eq:19.6.43}, these must take the form
+\[
+\mathcal O_n[\boldsymbol\xi,\widetilde\psi]
+=R_{nm}(\boldsymbol\xi)\mathcal O_m[0,\widetilde\psi],
+\]
+where $R$ is the $SO(4)$ rotation defined by Eqs.~\eqref{eq:19.5.8} and \eqref{eq:19.5.9}:
+\[
+R_{a4}=\frac{2\xi_a}{1+\boldsymbol\xi^2},
+\qquad
+R_{44}=\frac{1-\boldsymbol\xi^2}{1+\boldsymbol\xi^2}.
+\]
+The condition that $R$ is an orthogonal matrix is satisfied if we choose its other components as
+\[
+R_{ab}=\delta_{ab}
+-\frac{2\xi_a\xi_b}{1+\boldsymbol\xi^2},
+\qquad
+R_{4a}=-\frac{2\xi_a}{1+\boldsymbol\xi^2}.
+\]
+Thus any scalar (as opposed to pseudoscalar) operators that transform as the fourth and third components of chiral four-vectors must appear in the effective Lagrangian in the forms
+\[
+\Phi_4^+[\boldsymbol\xi,\widetilde\psi]
+=-\left(\frac{2\boldsymbol\xi}{1+\boldsymbol\xi^2}\right)
+\cdot\boldsymbol\Phi^+[0,\widetilde\psi]
++\left(\frac{1-\boldsymbol\xi^2}{1+\boldsymbol\xi^2}\right)
+\Phi_4^+[0,\widetilde\psi]
+\]
+and
+\[
+\begin{aligned}
+\Phi_3^-[\boldsymbol\xi,\widetilde\psi]
+={}&\left[
+\Phi_3^-[0,\widetilde\psi]
+-\left(\frac{2\xi_3}{1+\boldsymbol\xi^2}\right)
+\boldsymbol\xi\cdot\boldsymbol\Phi^-[0,\widetilde\psi]
+\right]
+\\
+&+\left(\frac{2\xi_3}{1+\boldsymbol\xi^2}\right)
+\Phi_4^-[0,\widetilde\psi].
+\end{aligned}
+\]
+The only condition on the operators $\boldsymbol\Phi^+[0,\widetilde\psi]$, $\Phi_4^+[0,\widetilde\psi]$, $\boldsymbol\Phi^-[0,\widetilde\psi]$, and $\Phi_4^-[0,\widetilde\psi]$ is that they should transform under Lorentz and isospin transformations respectively as a pseudoscalar isovector, a scalar isoscalar, a scalar isovector, and a pseudoscalar isoscalar, but they do not have to be related in any way. For processes involving only pions we use an effective Lagrangian that involves no fields except the pion field $\boldsymbol\xi$, so the operators $\boldsymbol\Phi^+[0,\widetilde\psi]$, $\boldsymbol\Phi^-[0,\widetilde\psi]$, and $\Phi_4^-[0,\widetilde\psi]$ must all vanish, while $\Phi_4^+[0,\widetilde\psi]$ is just a numerical constant. We see as promised in the previous section that the only non-derivative chiral symmetry breaking operator in the effective Lagrangian is proportional to $(1-\boldsymbol\xi^2)/(1+\boldsymbol\xi^2)$, and hence to the operator \eqref{eq:19.5.34}. In order to include symmetry-breaking operators bilinear in the nucleon field, parity and isospin conservation require that we take
+\[
+\begin{aligned}
+\boldsymbol\Phi^+[0,\widetilde\psi]
+&\propto\overline{\widetilde N}\gamma_5\boldsymbol t\widetilde N,
+&
+\Phi_4^+[0,\widetilde\psi]
+&\propto\overline{\widetilde N}\widetilde N,
+\\
+\boldsymbol\Phi^-[0,\widetilde\psi]
+&\propto\overline{\widetilde N}\boldsymbol t\widetilde N,
+&
+\Phi_4^-[0,\widetilde\psi]
+&\propto\overline{\widetilde N}\gamma_5\widetilde N.
+\end{aligned}
+\]
+Thus as claimed in the previous section the only non-derivative symmetry-breaking terms involving nucleon bilinears are of the form \eqref{eq:19.5.61}--\eqref{eq:19.5.64}.
+
+The phenomenological Lagrangian may be used to calculate the amplitudes for processes involving particles of small three-momentum in much the same way as was done for the chiral theory of pions and nucleons in the previous section. In counting powers of a characteristic small momentum $Q$, Goldstone boson internal lines always contribute factors of order $Q^{-2}$. Also, an internal line for one of the heavy particles (of any spin) described by the fields $\widetilde\psi$ that has absorbed a net four-momentum $q$ from the Goldstone boson field will have a propagator
+\[
+\frac{N(p+q)}{(p+q)^2+M^2}
+\longrightarrow\frac{N(p)}{2p\cdot q}
+\]
+(where $N$ is some polynomial, depending on the particle spin and field type, and $M$ is the particle mass) so it will contribute a factor of order $Q^{-1}$. The same argument that led to \eqref{eq:19.5.55} applies here, and gives the number of powers of $Q$ in a given Feynman diagram as
+\begin{equation}
+\nu=\sum_iV_i(d_i+h_i/2-2)+2L-E_h+2,
+\tag{19.6.45}\label{eq:19.6.45}
+\end{equation}
+where $V_i$ is the number of vertices of type $i$, $d_i$ is the number of derivatives (or for approximate broken symmetries, derivatives or Goldstone boson masses) at a vertex of type $i$, $h_i$ is the number of heavy particle lines at a vertex of type $i$, $L$ is the number of loops, and $E_h$ is the number of external lines of heavy particles. In general the coefficient $d_i+h_i/2-2$ is non-negative for all interactions allowed by chiral symmetries. The interactions among Goldstone bosons alone always have $d_i\geq2$, because they must either be at least bilinear in the covariant derivative \eqref{eq:19.6.15}, or proportional to symmetry-breaking parameters (like quark masses in the previous section) which are of order of the squares of the Goldstone boson masses. Interactions between Goldstone bosons and heavy particles must involve the covariant derivatives \eqref{eq:19.6.15} or \eqref{eq:19.6.30}, and so must have $d_i\geq1$ as well as $h_i\geq2$. The only interactions for which $d_i+h_i/2<2$ would be trilinear interactions among the heavy particles, which we exclude because we are only considering graphs in which all heavy hadrons remain non-relativistic. With $d_i+h_i/2\geq2$ for all interactions, the leading graphs are those constructed solely from interactions with $d_i+h_i/2=2$ and no loops. Corrections are again provided by interactions with more derivatives and/or more heavy-particle fields, and/or one or more loops.
+
+In the absence of intrinsic symmetry breaking, the part of the Lagrangian that involves only the Goldstone boson fields has a unique $d_i=2$ term
+\begin{equation}
+\mathcal L_{\mathrm{GB}}
+=-\frac{1}{2}\sum_{ab}F^2_{ab}D_{a\mu}D_b^{\mu},
+\tag{19.6.46}\label{eq:19.6.46}
+\end{equation}
+with $F^2_{ab}$ some real positive-definite matrix. For \eqref{eq:19.6.12} and a large class of other parameterizations of the cosets, $\gamma(\xi)$ approaches $1+i\xi_ax_a$ for $\xi_a\to0$, so Eq.~\eqref{eq:19.6.14} shows that the linear term in $D_{a\mu}$ is just $\partial_\mu\xi_a$. The canonically normalized Goldstone boson fields $\pi_a$ with a kinematic Lagrangian $-\tfrac12\sum_a\partial_\mu\pi_a\partial^\mu\pi_a$ are then
+\begin{equation}
+\pi_a=\sum_bF_{ab}\xi_b.
+\tag{19.6.47}\label{eq:19.6.47}
+\end{equation}
+In the $SO(4)$ theory of the previous section, the generators $x_a$ and the fields $\xi_a$ transform according to an irreducible representation of the unbroken subgroup $H=SO(3)$, so in this case $F^2_{ab}=F_\pi^2\delta_{ab}$, with $F_\pi$ a single constant that characterizes the energy scale of the spontaneous symmetry breakdown. In the general case we can choose the generators (without changing the structure constants) so that $F^2_{ab}$ is diagonal, with diagonal elements all equal within each irreducible representation of $H$, but otherwise independent.
+
+\begin{center}
+$\ast\quad\ast\quad\ast$
+\end{center}
+
+We have seen how to construct theories of Goldstone boson fields by starting with fields belonging to linear representations of the broken symmetry group, such as the $SU(2)\cdot SU(2)$ four-vector $\phi_n(x)$ with which we started in Section 19.5. At very low energy the only significant degrees of freedom are the Goldstone bosons, so we generally throw away the non-Goldstone parts of the field, such as the field $\sigma(x)$ given by Eq.~\eqref{eq:19.5.4}. But there are circumstances in which it is necessary to return to full linear representations of the broken symmetry group, in which the Goldstone boson fields are just one part.
+
+This happens when, by varying the temperature or turning on an external field of some sort, a system is brought close to a second-order transition, in which it smoothly goes from broken to unbroken symmetry. On one side of this transition the symmetry is broken, so we have massless Goldstone bosons, and various other massive excitations, not generally forming complete multiplets that would furnish linear representations of the broken symmetry group. On the other side of the transition the symmetry is unbroken, so here we have complete linear multiplets, not generally massless. If this transition is continuous, then very near the phase transition the Goldstone boson must form part of a complete linear multiplet of nearly massless excitations. Barring accidents or other symmetries, this multiplet will form an \emph{irreducible} representation of the broken symmetry group. This irreducible multiplet of fields, which become massless only just at the phase transition, is known as the \emph{order parameter}.
+
+This is a more precise definition of order parameters than usual. Often one speaks of an order parameter as any set of fields whose expectation values break the symmetry, but this is too vague---there is no one set of fields whose expectation values can be blamed for a broken symmetry. For instance, the $SU(2)\cdot SU(2)$ symmetry of quantum chromodynamics with massless $u$ and $d$ quarks is broken by the expectation value of $\bar uu+\bar dd$, which is the fourth component of a chiral four-vector, but quartic and higher powers of quark fields also have non-vanishing vacuum expectation values, and these belong to other representations of $SU(2)\cdot SU(2)$. In contrast, at a smooth phase transition at which $SU(2)\cdot SU(2)$ becomes unbroken the Goldstone boson becomes a member of just one massless representation of $SU(2)\cdot SU(2)$, and this provides an unambiguous definition of the order parameter.
+
+It is important to identify the correct order parameters, both in order to calculate the critical exponents discussed in Section 18.5, and to deal with configurations like vortex lines or magnetic monopoles, where, as we shall see in Sections 21.6 and 23.3, there is a singularity at which the broken symmetry becomes unbroken. It is often assumed that the order parameter for the chiral $SU(2)\cdot SU(2)$ symmetry of quantum chromodynamics is a chiral four-vector, but this is not known to be the case~\hyperref[ch19-ref-32a]{[32a]}.

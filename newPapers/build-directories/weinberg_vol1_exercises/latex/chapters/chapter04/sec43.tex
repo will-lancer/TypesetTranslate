@@ -1,0 +1,338 @@
+% Chunk: §4.3 Cluster Decomposition and Connected Amplitudes
+% Source: Weinberg QFT Vol. I, physical pp. 200--205 (printed pp. 177--182)
+% Figures: none.
+% Uncertainties: none.
+% Status: source-reviewed; compile-clean; visually verified.
+
+\subsection{Cluster Decomposition and Connected Amplitudes}
+
+It is one of the fundamental principles of physics (indeed, of all science)
+that experiments that are sufficiently separated in space have unrelated
+results. The probabilities for various collisions measured at Fermilab
+should not depend on what sort of experiments are being done at CERN
+at the same time. If this principle were not valid, then we could never
+make any predictions about any experiment without knowing everything
+about the universe.
+
+In $S$-matrix theory, the cluster decomposition principle states that if
+multi-particle processes $\alpha_1\to\beta_1$, $\alpha_2\to\beta_2$, $\ldots$,
+$\alpha_{\mathcal N}\to\beta_{\mathcal N}$ are studied in $\mathcal N$
+very distant laboratories, then the $S$-matrix element for the overall process
+factorizes. That is,\footnote{We are here returning to the notation used in
+Chapter 3; Greek letters $\alpha$ or $\beta$ stand for a collection of particles,
+including for each particle a specification of its momentum, spin, and species.
+Also, $\alpha_1+\alpha_2+\cdots+\alpha_{\mathcal N}$ is the state formed by
+combining all the particles in the states $\alpha_1,\alpha_2,\ldots$, and
+$\alpha_{\mathcal N}$, and likewise for
+$\beta_1+\beta_2+\cdots+\beta_{\mathcal N}$.}
+\begin{equation}
+S_{\beta_1+\beta_2+\cdots+\beta_{\mathcal N},\,
+   \alpha_1+\alpha_2+\cdots+\alpha_{\mathcal N}}
+\longrightarrow
+S_{\beta_1\alpha_1}S_{\beta_2\alpha_2}\cdots
+S_{\beta_{\mathcal N}\alpha_{\mathcal N}}
+\tag{4.3.1}
+\label{eq:4.3.1}
+\end{equation}
+if for all $i\ne j$, \emph{all} of the particles in states $\alpha_i$ and
+$\beta_i$ are at a great spatial distance from \emph{all} of the particles in
+states $\alpha_j$ and $\beta_j$. This factorization of $S$-matrix elements will
+ensure a factorization of the corresponding transition probabilities,
+corresponding to uncorrelated experimental results.
+
+There is a combinatoric trick that allows us to rewrite Eq.~\eqref{eq:4.3.1} in
+a more transparent way. Suppose we define the \emph{connected} part of the
+$S$-matrix, $S^C_{\beta\alpha}$, by the formula\footnote{This decomposition has
+been used in classical statistical mechanics by Ursell, Mayer, and others, and
+in quantum statistical mechanics by Lee and Yang and others~\hyperref[ref:4.3]{[3]}. It has also
+been used to calculate many-body ground state energies by Goldstone~\hyperref[ref:4.4]{[4]} and
+Hugenholtz~\hyperref[ref:4.5]{[5]}. In all of these applications the purpose of isolating the
+connected parts of Green's functions, partition functions, resolvents, etc., is
+to deal with objects with a simple volume dependence. This is essentially our
+purpose too, because as we shall see, the crucial property of the connected
+parts of the $S$-matrix is that they are proportional to a single
+momentum-conservation delta function, and in a box the delta function becomes
+a Kronecker delta times the volume. The cluster decomposition is also the same
+formal device as that used in the theory of noise~\hyperref[ref:4.6]{[6]} to decompose the
+correlation function of several random variables into its `cumulants'; if the
+random variable receives contributions from a large number $N$ of independent
+fluctuations, then each cumulant is proportional to $N$.}
+\begin{equation}
+S_{\beta\alpha}
+=\sum_{\mathrm{PART}}(\pm)
+ S^C_{\beta_1\alpha_1}S^C_{\beta_2\alpha_2}\cdots\,.
+\tag{4.3.2}
+\label{eq:4.3.2}
+\end{equation}
+Here the sum is over all different ways of partitioning the particles in
+the state $\alpha$ into clusters $\alpha_1,\alpha_2,\ldots$, and likewise a sum
+over all ways of partitioning the particles in the state $\beta$ into clusters
+$\beta_1,\beta_2,\ldots$; not counting as different those that merely arrange
+particles within a given cluster or permute whole clusters. The sign is $+$ or
+$-$ according to whether the rearrangements
+$\alpha\to\alpha_1\alpha_2\cdots$ and
+$\beta\to\beta_1\beta_2\cdots$ involve altogether an even or an odd number of
+fermion interchanges, respectively. The term `connected' is used because of
+the interpretation of $S^C_{\beta\alpha}$ in terms of diagrams representing
+different contributions in perturbation theory, to be discussed in the next
+section.
+
+This is a recursive definition. For each $\alpha$ and $\beta$, the sum on the
+right-hand side of Eq.~\eqref{eq:4.3.2} consists of a term $S^C_{\beta\alpha}$, plus a
+sum $\sum'$ over products of two or more $S^C$-matrix elements, with a total
+number of particles in each of the states $\alpha_j$ and $\beta_j$ that is
+\emph{less} than the number of particles in the states $\alpha$ and $\beta$
+\[
+S_{\beta\alpha}=S^C_{\beta\alpha}
++\sum_{\mathrm{PART}}'(\pm)
+ S^C_{\beta_1\alpha_1}S^C_{\beta_2\alpha_2}\cdots\,.
+\]
+Suppose that the $S^C$-matrix elements in this sum have already been chosen
+in such a way that Eq.~\eqref{eq:4.3.2} is satisfied for states $\beta,\alpha$ containing
+together fewer than, say, $N$ particles. Then no matter what values are found
+in this way for the $S^C$-matrix elements appearing in the sum $\sum'$, we can
+always choose the remaining term $S^C_{\beta\alpha}$ so that Eq.~\eqref{eq:4.3.2} is
+also satisfied for states $\alpha,\beta$ containing a total of $N$
+particles.\footnote{A technicality should be mentioned here. This argument
+works only if we neglect the possibility that for one or more of the connected
+$S$-matrix elements in Eq.~\eqref{eq:4.3.2}, the states $\alpha_j$ and $\beta_j$ both
+contain no particles at all. We must therefore define the connected
+vacuum-vacuum element $S^C_{0,0}$ to be zero. We do not use Eq.~\eqref{eq:4.3.2} for
+the vacuum-vacuum $S$-matrix $S_{0,0}$, which in the absence of time-varying
+external fields is simply defined to be unity, $S_{0,0}=1$. We will have more
+to say about the vacuum-vacuum amplitude in the presence of external fields in
+Volume II.} Thus Eq.~\eqref{eq:4.3.2} contains no information in itself; it is merely a
+definition of $S^C$.
+
+If the states $\alpha$ and $\beta$ each consist of just a single particle, say
+with quantum numbers $q$ and $q'$ respectively, then the only term on the
+right-hand-side of Eq.~\eqref{eq:4.3.2} is just $S^C_{\beta\alpha}$ itself, so for
+one-particle states
+\begin{equation}
+S^C_{q'q}=S_{q'q}=\delta(q'-q)\,.
+\tag{4.3.3}
+\label{eq:4.3.3}
+\end{equation}
+(Apart from possible degeneracies, the fact that $S_{q'q}$ is proportional to
+$\delta(q'-q)$ follows from conservation laws. The absence of any
+proportionality factor in Eq.~\eqref{eq:4.3.3} is based on a suitable choice of the
+relative phase of `in' and `out' states.) We are here assuming that
+single-particle states are stable, so that there are no transitions between
+single-particle states and any others, such as the vacuum.
+
+For transitions between two-particle states, Eq.~\eqref{eq:4.3.2} reads
+\begin{equation}
+\begin{aligned}
+S_{q'_1q'_2,\,q_1q_2}
+={}&S^C_{q'_1q'_2,\,q_1q_2}
++\delta(q'_1-q_1)\delta(q'_2-q_2) \\
+&\mathrel{\phantom{S^C_{q'_1q'_2,\,q_1q_2}}}
+\mathord{\pm}\delta(q'_1-q_2)\delta(q'_2-q_1)\,.
+\end{aligned}
+\tag{4.3.4}
+\label{eq:4.3.4}
+\end{equation}
+(We are here using Eq.~\eqref{eq:4.3.3}.) The sign $\pm$ is $-$ if both particles are
+fermions, and otherwise $+$. We recognize that the two delta function terms
+just add up to the norm~\eqref{eq:4.1.6}, so here $S^C_{\beta\alpha}$ is just
+$(S-\mathbf{1})_{\beta\alpha}$. But the general case is more complicated.
+
+For transitions between three-particle or four-particle states, Eq.~\eqref{eq:4.3.2}
+reads
+\begin{equation}
+\begin{aligned}
+S_{q'_1q'_2q'_3,\,q_1q_2q_3}
+={}&S^C_{q'_1q'_2q'_3,\,q_1q_2q_3} \\
+&+\delta(q'_1-q_1)S^C_{q'_2q'_3,\,q_2q_3}
+  \mathbin{\pm}\text{ permutations} \\
+&+\delta(q'_1-q_1)\delta(q'_2-q_2)\delta(q'_3-q_3)
+  \mathbin{\pm}\text{ permutations}
+\end{aligned}
+\tag{4.3.5}
+\label{eq:4.3.5}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+S_{q'_1q'_2q'_3q'_4,\,q_1q_2q_3q_4}
+={}&S^C_{q'_1q'_2q'_3q'_4,\,q_1q_2q_3q_4} \\
+&+S^C_{q'_1q'_2,\,q_1q_2}S^C_{q'_3q'_4,\,q_3q_4}
+  \mathbin{\pm}\text{ permutations} \\
+&+\delta(q'_1-q_1)S^C_{q'_2q'_3q'_4,\,q_2q_3q_4}
+  \mathbin{\pm}\text{ permutations} \\
+&+\delta(q'_1-q_1)\delta(q'_2-q_2)S^C_{q'_3q'_4,\,q_3q_4}
+  \mathbin{\pm}\text{ permutations} \\
+&+\delta(q'_1-q_1)\delta(q'_2-q_2)\delta(q'_3-q_3)\delta(q'_4-q_4)
+  \mathbin{\pm}\text{ permutations}\,.
+\end{aligned}
+\tag{4.3.6}
+\label{eq:4.3.6}
+\end{equation}
+(Taking account of all permutations, there are a total of $1+9+6=16$
+terms in Eq.~\eqref{eq:4.3.5} and $1+18+16+72+24=131$ terms in Eq.~\eqref{eq:4.3.6}.
+If we had not assumed that one-particle states are stable, there would be
+even more terms.) As explained previously, the definition of
+$S^C_{\beta\alpha}$ is recursive: we use Eq.~\eqref{eq:4.3.4} to define
+$S^C_{\beta\alpha}$ for two-particle states, then use this definition in
+Eq.~\eqref{eq:4.3.5} when we define $S^C_{\beta\alpha}$ for three-particle states,
+then use both of these definitions in Eq.~\eqref{eq:4.3.6} to obtain the definition of
+$S^C_{\beta\alpha}$ for four-particle states, and so on.
+
+The point of this definition of the connected part of the $S$-matrix is
+that the cluster decomposition principle is equivalent to the requirement
+that $S^C_{\beta\alpha}$ must vanish when any one or more of the particles in
+the states $\beta$ and/or $\alpha$ are far away in space from the
+others.\footnote{In order to give a meaning to `far,' we will have to Fourier
+transform $S^C$, so that each three-momentum label $\mathbf p$ is replaced with
+a spatial coordinate three-vector $\mathbf x$.} To see this, suppose that the
+particles in the states $\beta$ and $\alpha$ are grouped into clusters
+$\beta_1,\beta_2,\ldots$ and $\alpha_1,\alpha_2,\ldots$, and that all particles
+in the set $\alpha_i+\beta_i$ are far from all particles in the set
+$\alpha_j+\beta_j$ for any $j\ne i$. Then if $S^C_{\beta'\alpha'}$ vanishes if
+any particles in $\beta'$ or $\alpha'$ are far from the others, it vanishes if
+any particles in these states are in different clusters, so the definition
+Eq.~\eqref{eq:4.3.2} yields
+\begin{equation}
+\begin{aligned}
+S_{\beta\alpha}\longrightarrow{}&
+\sum_{\mathrm{PART}}^{(1)}(\pm)
+S^C_{\beta_{11}\alpha_{11}}S^C_{\beta_{12}\alpha_{12}}\cdots \\
+&\quad\cdot
+\sum_{\mathrm{PART}}^{(2)}(\pm)
+S^C_{\beta_{21}\alpha_{21}}S^C_{\beta_{22}\alpha_{22}}\cdots
+\cdot\cdots\,,
+\end{aligned}
+\tag{4.3.7}
+\label{eq:4.3.7}
+\end{equation}
+where $\sum^{(j)}$ is a sum over all different ways of partitioning the
+clusters $\beta_j$ and $\alpha_j$ into subclusters
+$\beta_{j1},\beta_{j2},\ldots$ and $\alpha_{j1},\alpha_{j2},\ldots$. But
+referring back to Eq.~\eqref{eq:4.3.2}, this is just the desired factorization property
+\eqref{eq:4.3.1}.
+
+For instance, suppose that in the four-particle reaction
+$1234\to1'2'3'4'$, we let particles $1,2,1'$, and $2'$ be very far from
+$3,4,3'$, and $4'$. Then if $S^C_{\beta\alpha}$ vanishes when any particles
+in $\beta$ and/or $\alpha$ are far from the others, the only terms in
+Eq.~\eqref{eq:4.3.6} that survive (in an even more abbreviated notation) are
+\[
+\begin{aligned}
+S_{1'2'3'4',\,1234}\longrightarrow{}&
+S^C_{1'2',\,12}S^C_{3'4',\,34} \\
+&+(\delta_{1'1}\delta_{2'2}\mathbin{\pm}
+    \delta_{1'2}\delta_{2'1})S^C_{3'4',\,34} \\
+&+(\delta_{3'3}\delta_{4'4}\mathbin{\pm}
+    \delta_{3'4}\delta_{4'3})S^C_{1'2',\,12} \\
+&+(\delta_{1'1}\delta_{2'2}\mathbin{\pm}
+    \delta_{1'2}\delta_{2'1})
+  (\delta_{3'3}\delta_{4'4}\mathbin{\pm}
+    \delta_{3'4}\delta_{4'3})\,.
+\end{aligned}
+\]
+Comparison with Eq.~\eqref{eq:4.3.4} shows that this is just the required
+factorization condition \eqref{eq:4.3.1}
+\[
+S_{1'2'3'4',\,1234}\longrightarrow
+S_{1'2',\,12}S_{3'4',\,34}\,.
+\]
+
+We have formulated the cluster decomposition principle in coordinate
+space, as the condition that $S^C_{\beta\alpha}$ vanishes if any particles in
+the states $\beta$ or $\alpha$ are far from any others. It is convenient for us
+to reexpress this in momentum space. The coordinate space matrix elements are
+defined as a Fourier transform
+\begin{equation}
+\begin{aligned}
+S^C_{\mathbf x'_1\mathbf x'_2\cdots,\,
+     \mathbf x_1\mathbf x_2\cdots}
+\equiv{}&\int d^3p'_1\,d^3p'_2\cdots d^3p_1\,d^3p_2\cdots\,
+S^C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+     \mathbf p_1\mathbf p_2\cdots} \\
+&\cdot e^{i\mathbf p'_1\cdot\mathbf x'_1}
+e^{i\mathbf p'_2\cdot\mathbf x'_2}\cdots
+e^{-i\mathbf p_1\cdot\mathbf x_1}
+e^{-i\mathbf p_2\cdot\mathbf x_2}\cdots\,.
+\end{aligned}
+\tag{4.3.8}
+\label{eq:4.3.8}
+\end{equation}
+(We are here temporarily dropping spin and species labels, which just go along
+with the momentum or coordinate labels.) If
+$\lvert S^C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+                 \mathbf p_1\mathbf p_2\cdots}\rvert$
+were sufficiently well behaved (to be specific, if it were Lebesgue
+integrable) then according to the Riemann--Lebesgue theorem~\hyperref[ref:4.7]{[7]} the integral
+\eqref{eq:4.3.8} would vanish when any combination of spatial coordinates goes to
+infinity. Now, this is certainly too strong a requirement. Translational
+invariance tells us that the connected part of the $S$-matrix, like the
+$S$-matrix itself, can only depend on differences of coordinate vectors, and
+therefore does not change at all if all of the $x_i$ and $x'_j$ vary together,
+with their differences held constant. This requires that the elements of
+$S^C$ in a momentum basis must, like those of $S$, be proportional to a
+three-dimensional delta function that ensures momentum conservation (and
+makes
+$\lvert S^C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+                 \mathbf p_1\mathbf p_2\cdots}\rvert$
+\emph{not} Lebesgue integrable), as well as the energy-conservation delta
+function required by scattering theory. That is, we can write
+\begin{equation}
+\begin{aligned}
+S^C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+     \mathbf p_1\mathbf p_2\cdots}
+={}&\delta^3(\mathbf p'_1+\mathbf p'_2+\cdots
+             -\mathbf p_1-\mathbf p_2-\cdots) \\
+&\cdot\delta(E'_1+E'_2+\cdots-E_1-E_2-\cdots) \\
+&\cdot C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+  \mathbf p_1\mathbf p_2\cdots}\,.
+\end{aligned}
+\tag{4.3.9}
+\label{eq:4.3.9}
+\end{equation}
+This is no problem: the cluster decomposition principle only requires that
+Eq.~\eqref{eq:4.3.8} vanish when the \emph{differences} among some of the $x_i$ and/or
+$x'_i$ become large. However, if $C$ itself in Eq.~\eqref{eq:4.3.9} contained additional
+delta functions of linear combinations of the three-momenta, then this
+principle would not be satisfied. For instance, suppose that there were a delta
+function in $C$ that required that the sum of the $\mathbf p'_i$ and
+$-\mathbf p_i$ for some subset of the particles vanished. Then Eq.~\eqref{eq:4.3.8}
+would not vary if all of the $\mathbf x'_i$ and $\mathbf x_i$ for the particles
+in that subset moved together (with constant differences) away from all the
+other $\mathbf x'_k$ and $\mathbf x_k$, in contradiction to the cluster
+decomposition principle. Loosely speaking then, the cluster decomposition
+principle simply says that \emph{the connected part of the $S$-matrix, unlike
+the $S$-matrix itself, contains just a single momentum-conservation delta
+function}.
+
+In order to put this a bit more precisely, we can say that the coefficient
+function
+$C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+    \mathbf p_1\mathbf p_2\cdots}$
+in Eq.~\eqref{eq:4.3.9} is a smooth function of its momentum labels. But how smooth?
+It would be most straightforward if we could simply require that
+$C_{\mathbf p'_1\mathbf p'_2\cdots,\,
+    \mathbf p_1\mathbf p_2\cdots}$
+be analytic in all of the momenta at
+$\mathbf p'_1=\mathbf p'_2=\cdots=\mathbf p_1=\mathbf p_2=\cdots=0$.
+This requirement would indeed guarantee that
+$S^C_{\mathbf x'_1\mathbf x'_2\cdots,\,
+     \mathbf x_1\mathbf x_2\cdots}$
+vanishes exponentially fast when any of the $\mathbf x$ and $\mathbf x'$ is
+very distant from any of the other $\mathbf x$ and $\mathbf x'$. However, an
+exponential fall-off of $S^C$ is not an essential part of the cluster
+decomposition principle, and, in fact, the requirement of analyticity is not
+met in all theories. Most notably, in theories with massless particles, $S^C$
+can have poles at certain values of the $\mathbf p$ and $\mathbf p'$. For
+instance, as we will see in Chapter 10, if a massless particle can be emitted in
+the transition $1\to3$ and absorbed in the transition $2\to4$, then
+$S^C_{34,12}$ will have a term proportional to
+$1/(\mathbf p_1-\mathbf p_3)^2$. After Fourier transforming, such poles yield
+terms in
+$S^C_{\mathbf x'_1\mathbf x'_2\cdots,\,
+     \mathbf x_1\mathbf x_2\cdots}$
+that fall off only as negative powers of coordinate differences~\hyperref[ref:4.1]{[1]}. There is
+no need to formulate the cluster decomposition principle so stringently that
+such behavior is ruled out. Thus the `smoothness' condition on $S^C$ should be
+understood to allow various poles and branch-cuts at certain values of the
+$\mathbf p$ and $\mathbf p'$, but not singularities as severe as delta
+functions.

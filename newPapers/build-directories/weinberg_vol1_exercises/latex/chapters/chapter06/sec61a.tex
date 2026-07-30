@@ -1,0 +1,397 @@
+% Chunk: Chapter 6 introduction and first part of \S6.1, Derivation of the Rules.
+% Source: Weinberg QFT Vol. I, physical pp. 282--289 (printed pp. 259--266).
+% Status: source-reviewed, compile-clean, and render-reviewed; equations (6.1.1)--(6.1.16); figures 6.1--6.2 integrated; one footnote; no uncertainties.
+
+In previous chapters the use of covariant free fields in the construction
+of the Hamiltonian density has been motivated by the requirement that
+the $S$-matrix satisfy Lorentz invariance and cluster decomposition
+conditions. With the Hamiltonian density constructed in this way, it makes
+no difference which form of perturbation theory we use to calculate the
+$S$-matrix; the results will automatically satisfy these invariance and
+clustering conditions in each order in the interaction density. Nevertheless,
+there are obvious practical advantages in using a version of perturbation
+theory in which the Lorentz invariance and cluster decomposition properties
+of the $S$-matrix are kept manifest at every stage in the calculation. This
+was not true for the perturbation theory used in the 1930s, now known as
+`old-fashioned perturbation theory,' described at the beginning of Section
+3.5. The great achievement of Feynman, Schwinger, and Tomonaga in the late
+1940s was to develop perturbative techniques for calculating the $S$-matrix,
+in which Lorentz invariance and cluster decomposition properties are
+transparent throughout. This chapter will outline the diagrammatic
+calculational technique first described by Feynman at the Poconos Conference
+in 1948. Feynman was led to these diagrammatic rules in part through his
+development of a path-integral approach, which will be the subject of Chapter
+9. In this chapter, we shall use the approach described by Dyson~\hyperref[ref:6.1]{[1]} in 1949,
+which until the 1970s was the basis of almost all analyses of perturbation
+theory in quantum field theory, and still provides a particularly transparent
+introduction to the Feynman rules.
+
+\subsection{Derivation of the Rules}
+
+Our starting point is a formula for the $S$-matrix, obtained by putting
+together the Dyson series \eqref{eq:3.5.10} with expression \eqref{eq:4.2.2} for the
+free-particle states:
+\begin{align}
+&S_{\mathbf p'_1\sigma'_1n'_1;\,\mathbf p'_2\sigma'_2n'_2;\,\ldots,
+       \mathbf p_1\sigma_1n_1;\,\mathbf p_2\sigma_2n_2;\,\ldots}
+\notag\\
+&\quad={}
+\sum_{N=0}^{\infty}\frac{(-i)^N}{N!}
+\int d^4x_1\cdots d^4x_N\,
+\bra{\Omega}\cdots
+a_{\mathbf p'_2\sigma'_2n'_2}a_{\mathbf p'_1\sigma'_1n'_1}
+\notag\\
+&\qquad\cdot
+T\!\left\{\mathcal H_I(x_1)\cdots\mathcal H_I(x_N)\right\}
+a^\dagger_{\mathbf p_1\sigma_1n_1}
+a^\dagger_{\mathbf p_2\sigma_2n_2}\cdots\ket{\Omega}.
+\tag{6.1.1}
+\label{eq:6.1.1}
+\end{align}
+As a reminder: $\mathbf p$, $\sigma$, and $n$ label particle momenta, spin,
+and species; primes denote labels for particles in the final state;
+$\ket{\Omega}$ is the free-particle vacuum state; $a$ and $a^\dagger$ are
+annihilation and creation operators; $T$ indicates a time-ordering, which puts
+the $\mathcal H_I(x)$ in an order in which the arguments $x^0$ decrease from
+left to right; and $\mathcal H_I(x)$ is the interaction Hamiltonian density,
+taken as a polynomial in the fields and their adjoints
+\begin{equation}
+\mathcal H_I(x)=\sum_i g_i\mathcal H_{I,i}(x),
+\tag{6.1.2}
+\label{eq:6.1.2}
+\end{equation}
+each term $\mathcal H_{I,i}$ being a product of definite numbers of fields and
+field adjoints of each type. The field of a particle of species $n$ that
+transforms under a particular representation of the homogeneous Lorentz group
+(with or without space inversions) is given by
+\begin{align}
+\psi_\ell(x)={}&\sum_\sigma(2\pi)^{-3/2}\int d^3p\,
+\bigl[u_\ell(\mathbf p,\sigma,n)a_{\mathbf p,\sigma,n}e^{ip\cdot x}
+\notag\\
+&\hspace{43mm}
++v_\ell(\mathbf p,\sigma,n)a^\dagger_{\mathbf p,\sigma,n^c}e^{-ip\cdot x}
+\bigr].
+\tag{6.1.3}
+\label{eq:6.1.3}
+\end{align}
+Here $n^c$ denotes the antiparticle of the species $n$, and
+$\exp(\pm ip\cdot x)$ is calculated with $p^0$ set equal to
+$\sqrt{\mathbf p^2+M_n^2}$. The coefficient functions $u_\ell$ and $v_\ell$
+depend on the Lorentz transformation properties of the field and the spin of
+the particle it describes; they were calculated in Chapter 5. (For instance,
+in the scalar field the $u_\ell$ for a particle of energy $E$ is simply
+$(2E)^{-1/2}$, while in a Dirac field $u_\ell$ and $v_\ell$ are the normalized
+Dirac spinors introduced in Section 5.5.) The index $\ell$ on the field should
+here be understood to indicate the particle type and the representation of the
+Lorentz group by which the field transforms, as well as including a running
+index labelling the components in this representation. There is no need to
+deal separately with interactions that involve derivatives of fields; from
+our point of view, the derivative of a field \eqref{eq:6.1.3} is just another field
+described by \eqref{eq:6.1.3}, with different $u_\ell$ and $v_\ell$. We will here make a
+distinction between some particle species that we arbitrarily call
+`particles,' for instance electrons, protons, etc., and those we call
+`antiparticles,' such as positrons and antiprotons. The field operators that
+destroy particles and create antiparticles are called simply `fields'; their
+adjoints, which destroy antiparticles and create particles, are called `field
+adjoints.' Of course, some particle species like the photon and $\pi^0$ are
+their own antiparticles; for these the field adjoints are proportional to the
+fields.
+
+We now proceed to move all annihilation operators to the right in Eq. \eqref{eq:6.1.1},
+repeatedly using for this purpose the commutation or anticommutation relations:
+\begin{align}
+a_{\mathbf p\sigma n}a^\dagger_{\mathbf p'\sigma'n'}
+={}&\mathbin{\pm}a^\dagger_{\mathbf p'\sigma'n'}a_{\mathbf p\sigma n}
++\delta^3(\mathbf p'-\mathbf p)\delta_{\sigma'\sigma}\delta_{n'n},
+\tag{6.1.4}\label{eq:6.1.4}\\
+a_{\mathbf p\sigma n}a_{\mathbf p'\sigma'n'}
+={}&\mathbin{\pm}a_{\mathbf p'\sigma'n'}a_{\mathbf p\sigma n},
+\tag{6.1.5}\label{eq:6.1.5}\\
+a^\dagger_{\mathbf p\sigma n}a^\dagger_{\mathbf p'\sigma'n'}
+={}&\mathbin{\pm}a^\dagger_{\mathbf p'\sigma'n'}a^\dagger_{\mathbf p\sigma n}
+\tag{6.1.6}
+\label{eq:6.1.6}
+\end{align}
+(and likewise for antiparticles), the $\pm$ sign on the right being $-$ if
+both particles $n,n'$ are fermions, and $+$ if either or both are bosons.
+Whenever an annihilation operator appears on the extreme right (or a creation
+operator on the extreme left), the corresponding contribution to Eq. \eqref{eq:6.1.1}
+vanishes, because these operators annihilate the vacuum state:
+\begin{align}
+a_{\mathbf p\sigma n}\ket{\Omega}&=0,
+\tag{6.1.7}\label{eq:6.1.7}\\
+\bra{\Omega}a^\dagger_{\mathbf p\sigma n}&=0.
+\tag{6.1.8}
+\label{eq:6.1.8}
+\end{align}
+The remaining contributions to Eq. \eqref{eq:6.1.1} are those arising from the delta
+function terms on the right-hand side of Eq. \eqref{eq:6.1.4}, with every creation and
+annihilation operator in the initial or final states or in the interaction
+Hamiltonian density paired in this way with some other annihilation or creation
+operator.
+
+In this way, the contribution to Eq. \eqref{eq:6.1.1} of a given order in each of the
+terms $\mathcal H_{I,i}$ in the polynomial
+$\mathcal H_I(\psi(x),\psi^\dagger(x))$ is given by a sum, over all ways of
+pairing creation and annihilation operators~\hyperref[ref:6.2]{[2]}, of the integrals of products
+of factors, as follows:
+
+\noindent\textbf{(a)} Pairing of a final particle having quantum numbers
+$\mathbf p',\sigma',n'$ with a field adjoint $\psi_\ell^\dagger(x)$ in
+$\mathcal H_{I,i}(x)$ yields a factor
+\begin{equation}
+\left[a_{\mathbf p'\sigma'n'},\psi_\ell^\dagger(x)\right]_{\mp}
+=(2\pi)^{-3/2}e^{-ip'\cdot x}u_\ell^*(\mathbf p',\sigma',n').
+\tag{6.1.9}
+\label{eq:6.1.9}
+\end{equation}
+
+\noindent\textbf{(b)} Pairing of a final antiparticle having quantum numbers
+$\mathbf p',\sigma',n'^c$ with a field $\psi_\ell(x)$ in
+$\mathcal H_{I,i}(x)$ yields a factor
+\begin{equation}
+\left[a_{\mathbf p'\sigma'n'^c},\psi_\ell(x)\right]_{\mp}
+=(2\pi)^{-3/2}e^{-ip'\cdot x}v_\ell(\mathbf p',\sigma',n').
+\tag{6.1.10}
+\label{eq:6.1.10}
+\end{equation}
+
+\noindent\textbf{(c)} Pairing of an initial particle having quantum numbers
+$\mathbf p,\sigma,n$ with a field $\psi_\ell(x)$ in
+$\mathcal H_{I,i}(x)$ yields a factor
+\begin{equation}
+\left[\psi_\ell(x),a^\dagger_{\mathbf p\sigma n}\right]_{\mp}
+=(2\pi)^{-3/2}e^{ip\cdot x}u_\ell(\mathbf p,\sigma,n).
+\tag{6.1.11}
+\label{eq:6.1.11}
+\end{equation}
+
+\noindent\textbf{(d)} Pairing of an initial antiparticle having quantum
+numbers $\mathbf p,\sigma,n^c$ with a field adjoint
+$\psi_\ell^\dagger(x)$ in $\mathcal H_{I,i}(x)$ yields a factor
+\begin{equation}
+\left[\psi_\ell^\dagger(x),a^\dagger_{\mathbf p\sigma n^c}\right]_{\mp}
+=(2\pi)^{-3/2}e^{ip\cdot x}v_\ell^*(\mathbf p,\sigma,n).
+\tag{6.1.12}
+\label{eq:6.1.12}
+\end{equation}
+
+\noindent\textbf{(e)} Pairing of a final particle (or antiparticle) having
+numbers $\mathbf p',\sigma',n'$ with an initial particle (or antiparticle)
+having quantum numbers $\mathbf p,\sigma,n$ yields a factor
+\begin{equation}
+\left[a_{\mathbf p'\sigma'n'},a^\dagger_{\mathbf p\sigma n}\right]_{\mp}
+=\delta^3(\mathbf p'-\mathbf p)\delta_{\sigma'\sigma}\delta_{n'n}.
+\tag{6.1.13}
+\label{eq:6.1.13}
+\end{equation}
+
+\noindent\textbf{(f)} Pairing of a field $\psi_\ell(x)$ in
+$\mathcal H_{I,i}(x)$ with a field adjoint $\psi_m^\dagger(y)$ in
+$\mathcal H_{I,j}(y)$ yields a factor\footnote{If the interaction
+$\mathcal H_I(x)$ is written in the normal-ordered form, as in Eq. \eqref{eq:5.1.33},
+then there is no pairing of fields and field adjoints in the \emph{same}
+interaction. Otherwise some sort of regularization is needed to give meaning
+to $\Delta_{\ell m}(0)$.}
+\begin{align}
+&\theta(x-y)
+\left[\psi_\ell^{(+)}(x),\psi_m^{(+)\dagger}(y)\right]_{\mp}
+\mathbin{\pm}\theta(y-x)
+\left[\psi_m^{(-)\dagger}(y),\psi_\ell^{(-)}(x)\right]_{\mp}
+\notag\\
+&\hspace{48mm}\equiv-i\Delta_{\ell m}(x,y),
+\tag{6.1.14}
+\label{eq:6.1.14}
+\end{align}
+where $\psi^{(+)}$ and $\psi^{(-)}$ are the terms in $\psi$ that destroy
+particles and create antiparticles, respectively:
+\begin{align}
+\psi_\ell^{(+)}(x)
+&=(2\pi)^{-3/2}\int d^3p\sum_\sigma
+u_\ell(\mathbf p\sigma n)e^{ip\cdot x}a_{\mathbf p\sigma n},
+\tag{6.1.15}\label{eq:6.1.15}\\
+\psi_\ell^{(-)}(x)
+&=(2\pi)^{-3/2}\int d^3p\sum_\sigma
+v_\ell(\mathbf p\sigma n)e^{-ip\cdot x}a^\dagger_{\mathbf p\sigma n^c}.
+\tag{6.1.16}
+\label{eq:6.1.16}
+\end{align}
+Recall that $\theta(x-y)$ is a step function, equal to $+1$ for $x^0>y^0$
+and zero for $x^0<y^0$. These step functions appear in Eq. \eqref{eq:6.1.14} because
+of the time-ordering in Eq. \eqref{eq:6.1.1}; we can encounter a pairing of an
+annihilation field $\psi^{(+)}(x)$ in $\mathcal H_I(x)$ with a creation field
+$\psi^{(+)\dagger}(y)$ in $\mathcal H_I(y)$ only if $\mathcal H_I(x)$ was initially
+to the left of $\mathcal H_I(y)$ in Eq. \eqref{eq:6.1.1}, i.e., if $x^0>y^0$;
+similarly, we encounter a pairing of an annihilation field
+$\psi^{(-)\dagger}(y)$ in $\mathcal H_I(y)$ with a creation field
+$\psi^{(-)}(x)$ in $\mathcal H_I(x)$ only if $\mathcal H_I(y)$ was initially
+to the left of $\mathcal H_I(x)$ in Eq. \eqref{eq:6.1.1}, i.e., if $y^0>x^0$. (The
+$\pm$ sign in the second term in \eqref{eq:6.1.14} will be explained a little later.)
+The quantity \eqref{eq:6.1.14} is known as a \emph{propagator}; it is calculated in the
+following section.
+
+The $S$-matrix is obtained by multiplying these factors together, along with
+additional numerical factors to be discussed below, then integrating over
+$x_1\cdots x_N$, then summing over all pairings, and then over the numbers of
+interaction of each type. Before filling in all the details, it will be
+convenient first to describe a diagrammatic formalism for keeping track of all
+these pairings.
+
+\begingroup
+\renewcommand{\thefigure}{6.\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[htbp]
+\input{figures/chapter06/fig61.tex}
+\caption{Graphical representation of pairings of operators arising in the
+coordinate-space evaluation of the $S$-matrix. The expressions on the right
+are the factors that must be included in the coordinate-space integrand of the
+$S$-matrix for each line of the Feynman diagram.}
+\label{fig:6.1}
+\end{figure}
+\endgroup
+
+The rules for calculating the $S$-matrix are conveniently summarized in terms
+of \emph{Feynman diagrams}. (See Figure~\ref{fig:6.1}.) The diagrams consist of points
+called \emph{vertices}, each representing one of the $\mathcal H_{I,i}(x)$, and
+\emph{lines}, each representing the pairing of a creation with an annihilation
+operator. More specifically:
+
+\noindent\textbf{(a)} The pairing of a final particle with a field adjoint in
+one of the $\mathcal H_{I,i}(x)$ is represented by a line running from the vertex
+representing that $\mathcal H_{I,i}(x)$ upwards out of the diagram, carrying an
+arrow pointed upwards.
+
+\noindent\textbf{(b)} The pairing of a final antiparticle with a field in one
+of the $\mathcal H_{I,i}(x)$ is also represented by a line running from the vertex
+representing that $\mathcal H_{I,i}(x)$ upwards out of the diagram, but carrying
+an arrow pointed downwards. (Arrows are omitted throughout for particles like
+$\gamma$, $\pi^0$, etc. that are their own antiparticles.)
+
+\noindent\textbf{(c)} The pairing of an initial particle with a field in one
+of the $\mathcal H_{I,i}(x)$ is represented by a line running into the diagram from
+below, ending in the vertex representing that $\mathcal H_{I,i}(x)$, carrying an
+arrow pointed upwards.
+
+\noindent\textbf{(d)} The pairing of an initial antiparticle with a field in
+one of the $\mathcal H_{I,i}(x)$ is also represented by a line running into the
+diagram from below, ending in the vertex representing that $\mathcal H_{I,i}(x)$,
+but carrying an arrow pointed downwards.
+
+\noindent\textbf{(e)} The pairing of a final particle or antiparticle with an
+initial particle or antiparticle is represented by a line running clear
+through the diagram from bottom to top, not touching any vertex, with an arrow
+pointed upwards or downwards for particles or antiparticles, respectively.
+
+\noindent\textbf{(f)} The pairing of a field in $\mathcal H_{I,i}(x)$ with a
+field adjoint in $\mathcal H_{I,j}(y)$ is represented by a line joining the
+vertices representing $\mathcal H_{I,i}(x)$ and $\mathcal H_{I,j}(y)$,
+carrying an arrow pointing from $y$ to $x$.
+
+Note that arrows always point in the direction a particle is moving, and
+opposite to the direction an antiparticle is moving. (As mentioned above,
+arrows should be omitted for particles like photons that are their own
+antiparticles.) The arrow direction indicated in rule (f) is consistent with
+this convention because a field adjoint in $\mathcal H_{I,j}(y)$ can either
+create a particle destroyed by a field in $\mathcal H_{I,i}(x)$, or destroy an
+antiparticle created by a field in $\mathcal H_{I,i}(x)$. Note also that since
+every field or field adjoint in $\mathcal H_{I,i}(x)$ must be paired with
+something, the total number of lines at a vertex of type $i$, corresponding to
+a term $\mathcal H_{I,i}(x)$ in Eq. \eqref{eq:6.1.2}, is just equal to the total number
+of field or field adjoint factors in $\mathcal H_{I,i}(x)$. Of these lines, the
+number with arrows pointed into the vertex or out of it equals the number of
+fields or field adjoints respectively in the corresponding interaction term.
+
+To calculate the contribution to the $S$-matrix for a given process, of a given
+order $N_i$ in each of the interaction terms $\mathcal H_{I,i}(x)$ in Eq.
+\eqref{eq:6.1.2}, we must carry out the following steps:
+
+\noindent\textbf{(i)} Draw all Feynman diagrams containing $N_i$ vertices of
+each type $i$, and containing a line coming into the diagrams from below for
+each particle or antiparticle in the initial state, and a line going upwards
+out of the diagram for every particle or antiparticle in the final state,
+together with any number of internal lines running from one vertex to another,
+as required to give each vertex the proper number of attached lines. The lines
+carry arrows as described above, each of which may point upwards or downwards.
+Each vertex is labelled with an interaction type $i$ and spacetime coordinate
+$x^\mu$. Each internal or external line is labelled at the end where it runs
+into a vertex with a field type $\ell$ (corresponding to the field
+$\psi_\ell(x)$ or $\psi_\ell^\dagger(x)$ that creates or destroys the particle
+or antiparticle at that vertex), and each external line where it enters or
+leaves the diagram is labelled with the quantum numbers $\mathbf p,\sigma,n$
+or $\mathbf p',\sigma',n'$ of the initial or final particle (or antiparticle).
+
+\noindent\textbf{(ii)} For each vertex of type $i$, include a factor $-i$
+(from the $(-i)^N$ in Eq. \eqref{eq:6.1.1}) and a factor $g_i$ (the coupling constant
+multiplying the product of fields in $\mathcal H_{I,i}(x)$). For each line
+running upwards out of the diagram, include a factor \eqref{eq:6.1.9} or \eqref{eq:6.1.10},
+depending on whether the arrow is pointing up or down. For each line running
+from below into the diagram, include a factor \eqref{eq:6.1.11} or \eqref{eq:6.1.12}, again
+depending on the arrow direction. For each line running straight through the
+diagram include a factor \eqref{eq:6.1.13}. For each internal line connecting two
+vertices include a factor \eqref{eq:6.1.14}.
+
+\noindent\textbf{(iii)} Integrate the product of all these factors over the
+coordinates $x_1,x_2,\ldots$ of each vertex.
+
+\noindent\textbf{(iv)} Add up the results obtained in this way from each
+Feynman diagram. The complete perturbation series for the $S$-matrix is
+obtained by adding up the contributions of each order in each interaction
+type, up to whatever order our strength permits.
+
+Note that we have not included the factor $1/N!$ from Eq. \eqref{eq:6.1.1} in these
+rules, because the time-ordered product in Eq. \eqref{eq:6.1.1} is a sum over the $N!$
+permutations of $x_1x_2\cdots x_N$, each permutation giving the same
+contribution to the final result. To put this another way, a Feynman diagram
+with $N$ vertices is one of $N!$ identical diagrams, which differ only in
+permutations of the labels on the vertices, and this yields a factor of $N!$
+which cancels the $1/N!$ in Eq. \eqref{eq:6.1.1}. (There are exceptions to this rule,
+discussed below.) For this reason, henceforth we do \emph{not} include more
+than one of a set of Feynman diagrams that differ only by relabelling the
+vertices.
+
+In some cases, there are additional combinatoric factors or signs that must be
+included in the contribution of individual Feynman diagrams:
+
+\noindent\textbf{(v)} Suppose that an interaction $\mathcal H_{I,i}(x)$
+contains (among other fields and field adjoints) $M$ factors of the same field.
+Suppose that each of these fields is paired with a field adjoint in a different
+interaction (different for each one), or in the initial or final state. The
+first of these field adjoints
+\begingroup
+\renewcommand{\thefigure}{6.\arabic{figure}}
+\setcounter{figure}{1}
+\begin{figure}[htbp]
+\input{figures/chapter06/fig62.tex}
+\caption{Example of a graph requiring extra combinatoric factors in the
+$S$-matrix. For an interaction involving, say, three factors of some field (as
+well as other fields) we usually include a factor $1/3!$ in the interaction
+Hamiltonian, to cancel factors arising from sums over ways of pairing these
+fields with their adjoints in other interactions. But in this diagram there
+are two such factors of $1/3!$ and only $3!$ different pairings, so we are left
+with an extra factor of $1/3!$.}
+\label{fig:6.2}
+\end{figure}
+\endgroup
+
+\noindent can be paired with any one of the $M$ identical fields in
+$\mathcal H_{I,i}(x)$; the second with any one of the remaining $M-1$
+identical fields; and so on, yielding an extra factor of $M!$. To compensate
+for this, it is conventional to define the coupling constants $g_i$ so that an
+explicit factor $1/M!$ appears in any $\mathcal H_{I,i}(x)$ containing $M$
+identical fields (or field adjoints.) For instance, the interaction of $M$th
+order in a scalar field $\phi(x)$ would be written $g\phi^M/M!$. (More
+generally, one often also displays an explicit factor of $1/M!$ when the
+interaction involves a sum of $M$ factors of fields from the same symmetry
+multiplet, or when for this or any other reason the coupling coefficient is
+totally symmetric or antisymmetric under permutations of $M$ boson or fermion
+fields.)
+
+However, this cancellation of $M!$ factors is not always complete. For
+instance, consider a Feynman diagram in which the $M$ identical fields in one
+interaction $\mathcal H_{I,i}(x)$ are paired with $M$ corresponding field
+adjoints in a \emph{single} other interaction $\mathcal H_{I,j}(y)$. (See
+Figure~\ref{fig:6.2}.) Then by following the above analysis, we find only $M!$ different
+pairings (since it makes no difference which of the field adjoints we call the
+first, second, $\ldots$), cancelling only one of the two factors of $1/M!$ in
+the two different interactions. In this case, we would have to insert an extra
+factor of $1/M!$ `by hand' into the contribution of such a Feynman diagram.

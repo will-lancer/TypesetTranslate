@@ -1,0 +1,46 @@
+% Figure 10.5. Source: physical PDF p. 469 (printed p. 446).
+\begingroup
+\renewcommand{\thefigure}{10.\arabic{figure}}
+\setcounter{figure}{4}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  electron/.style={draw=black, line width=0.8pt},
+  photon/.style={draw=black, line width=0.75pt,
+    decorate, decoration={snake, amplitude=1.15mm, segment length=4.4mm}},
+  fermion arrow/.style={
+    postaction={decorate},
+    decoration={markings,
+      mark=at position 0.52 with
+        {\arrow{Stealth[length=2.4mm,width=1.7mm]}}}
+  }
+]
+  % First correction to the electron propagator: a virtual photon joins
+  % two points on the electron line.  Fermion flow is from left to right.
+  \coordinate (aL) at (-1.55,1.65);
+  \coordinate (aR) at ( 1.55,1.65);
+  \draw[electron] (-3.25,1.65) -- (3.25,1.65);
+  \draw[electron,fermion arrow] (aL) -- (aR);
+  \draw[photon] (aL)
+    .. controls (-1.32,2.88) and (1.32,2.88) .. (aR);
+
+  % First correction to the electromagnetic vertex: the external photon
+  % enters at the central vertex, between two rightward electron segments.
+  \coordinate (bL) at (-1.55,-0.95);
+  \coordinate (bC) at ( 0.00,-0.95);
+  \coordinate (bR) at ( 1.55,-0.95);
+  \draw[electron] (-3.25,-0.95) -- (3.25,-0.95);
+  \draw[electron,fermion arrow] (bL) -- (bC);
+  \draw[electron,fermion arrow] (bC) -- (bR);
+  \draw[photon] (bL)
+    .. controls (-1.32,0.28) and (1.32,0.28) .. (bR);
+  \draw[photon] (bC) -- (0,-3.10);
+\end{tikzpicture}
+\caption{Diagrams for the first corrections to the electron propagator and vertex function in quantum electrodynamics. Here straight lines are electrons; wavy lines are photons.}
+\label{fig:10.5}
+\end{figure}
+\endgroup

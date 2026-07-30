@@ -1,0 +1,408 @@
+% Chunk: \S6.2 Calculation of the Propagator, through physical PDF p. 302.
+% Source: Weinberg QFT Vol. I, physical PDF pp. 297--302 (printed pp. 274--279),
+%         beginning at the subsection heading and ending at Eq. (6.2.29).
+% Status: source-reviewed and compile-clean; equations (6.2.1)--(6.2.29);
+%         no figures.
+% Footnotes: 1. Uncertainties: none. The p. 303 continuation is owned by sec63.
+
+\subsection{Calculation of the Propagator}
+
+We now turn to a calculation of the propagator \eqref{eq:6.1.14}, an essential
+ingredient in the Feynman rules that arises in the pairing of a field
+$\psi_\ell(x)$ with a field adjoint $\psi_m^\dagger(y)$. Inserting Eqs.
+\eqref{eq:6.1.15} and \eqref{eq:6.1.16} in Eq. \eqref{eq:6.1.14}, and using the commutation or
+anticommutation relations for annihilation and creation operators, we have
+immediately
+\begin{align}
+-i\Delta_{\ell m}(x,y)={}&
+ \theta(x-y)(2\pi)^{-3/2}\int d^3p\sum_\sigma
+ u_\ell(\mathbf p\sigma n)u_m^*(\mathbf p\sigma n)e^{ip\cdot(x-y)}
+\notag\\
+&\mathbin{\pm}\theta(y-x)(2\pi)^{-3/2}\int d^3p\sum_\sigma
+ v_m^*(\mathbf p\sigma n)v_\ell(\mathbf p\sigma n)e^{ip\cdot(y-x)}.
+\tag{6.2.1}
+\label{eq:6.2.1}
+\end{align}
+In the course of calculating commutators and anticommutators in Chapter 5, we
+showed that
+\begin{equation}
+\sum_\sigma u_\ell(\mathbf p\sigma n)u_m^*(\mathbf p\sigma n)
+=\left(2\sqrt{\mathbf p^2+m_n^2}\right)^{-1}
+ P_{\ell m}\!\left(\mathbf p,\sqrt{\mathbf p^2+m_n^2}\right),
+\tag{6.2.2}
+\label{eq:6.2.2}
+\end{equation}
+\begin{equation}
+\sum_\sigma v_\ell(\mathbf p\sigma n)v_m^*(\mathbf p\sigma n)
+=\mathbin{\pm}\left(2\sqrt{\mathbf p^2+m_n^2}\right)^{-1}
+ P_{\ell m}\!\left(-\mathbf p,-\sqrt{\mathbf p^2+m_n^2}\right),
+\tag{6.2.3}
+\label{eq:6.2.3}
+\end{equation}
+where $P_{\ell m}(\mathbf p,\omega)$ is a polynomial in $\mathbf p$ and
+$\omega$. (Here as in Eq. \eqref{eq:6.2.1}, the top and bottom signs refer to bosonic
+and fermionic fields, respectively.) For instance, if $\psi_\ell(x)$ and
+$\psi_m(y)$ are scalar fields $\phi(x)$ and $\phi(y)$ for a particle of spin
+zero, then we have simply
+\begin{equation}
+P(p)=1.
+\tag{6.2.4}
+\label{eq:6.2.4}
+\end{equation}
+If $\psi_\ell(x)$ and $\psi_m(y)$ are Dirac fields for a particle of spin
+$\tfrac12$, then
+\begin{equation}
+P_{\ell m}(p)=\bigl[(-i\gamma_\mu p^\mu+m)\beta\bigr]_{\ell m},
+\tag{6.2.5}
+\label{eq:6.2.5}
+\end{equation}
+where $\ell$ and $m$ are here four-valued Dirac indices. (The matrix $\beta$
+appears here because we are considering the pairing of $\psi_\ell(x)$ with
+$\psi_m^\dagger(y)$. It is absent in the pairing of $\psi_\ell(x)$ with
+$\bar\psi_m(y)=\psi_m^\dagger(y)\beta$.) If $\psi_\ell(x)$ and $\psi_m(y)$ are
+vector fields $V_\mu(x)$ and $V_\nu(y)$ for a particle of spin one, then
+\begin{equation}
+P_{\mu\nu}(p)=\eta_{\mu\nu}+m^{-2}p_\mu p_\nu.
+\tag{6.2.6}
+\label{eq:6.2.6}
+\end{equation}
+
+More generally, if $\psi_\ell(x)$ and $\psi_m(y)$ are components of fields
+$\psi_{ab}(x)$ and $\psi_{\bar a\bar b}(y)$ for a particle of spin $j$, in the
+irreducible $(A,B)$ and $(\bar A,\bar B)$ representations of the homogeneous
+Lorentz group, then
+\begin{align}
+P_{ab,\bar a\bar b}(p)={}&
+ \sum_{a'b'}\sum_{\bar a'\bar b'}\sum_\sigma
+ C_{AB}(j\sigma,a'b')C_{\bar A\bar B}(j\sigma,\bar a'\bar b')
+\notag\\
+&\cdot\left[\exp\!\left(-\theta\hat{\mathbf p}\cdot
+ \mathbf J^{(A)}\right)\right]_{aa'}
+ \left[\exp\!\left(+\theta\hat{\mathbf p}\cdot
+ \mathbf J^{(B)}\right)\right]_{bb'}
+\notag\\
+&\cdot\left[\exp\!\left(-\theta\hat{\mathbf p}\cdot
+ \mathbf J^{(\bar A)}\right)\right]_{\bar a\bar a'}
+ \left[\exp\!\left(+\theta\hat{\mathbf p}\cdot
+ \mathbf J^{(\bar B)}\right)\right]_{\bar b\bar b'}.
+\tag{6.2.7}
+\label{eq:6.2.7}
+\end{align}
+where $\sinh\theta=|\mathbf p|/m$, while $a,b,\bar a,\bar b$ run by unit
+steps from $-A$ to $+A$, $-B$ to $+B$, $-\bar A$ to $+\bar A$, and $-\bar B$
+to $+\bar B$, respectively, and likewise for the running indices $a',b',\bar
+a'$, and $\bar b'$.
+
+Inserting Eqs. \eqref{eq:6.2.2} and \eqref{eq:6.2.3} in Eq. \eqref{eq:6.2.1} yields
+\begin{align}
+-i\Delta_{\ell m}(x,y)={}&
+ \theta(x-y)P_{\ell m}\!\left(-i\frac{\partial}{\partial x}\right)
+ \Delta_+(x-y)
+\notag\\
+&+\theta(y-x)P_{\ell m}\!\left(-i\frac{\partial}{\partial x}\right)
+ \Delta_+(y-x),
+\tag{6.2.8}
+\label{eq:6.2.8}
+\end{align}
+where $\Delta_+(x)$ is the function introduced in Chapter 5
+\begin{equation}
+\Delta_+(x)\equiv(2\pi)^{-3}\int d^3p\,(2p^0)^{-1}e^{ip\cdot x}
+\tag{6.2.9}
+\label{eq:6.2.9}
+\end{equation}
+in which $p^0$ is taken as $+\sqrt{\mathbf p^2+m^2}$.
+
+To go further, we must say a bit about how to extend the definition of the
+polynomial $P(p)$. Eqs. \eqref{eq:6.2.2} and \eqref{eq:6.2.3} only define $P(p)$ for
+four-momenta `on the mass shell', i.e., with
+$p^0=\pm\sqrt{\mathbf p^2+m^2}$. Any polynomial function of such four-momentum
+can always be taken as linear in $p^0$, because any power $(p^0)^{2\nu}$ or
+$(p^0)^{2\nu+1}$ can be written as $(\mathbf p^2+m^2)^\nu$ or
+$p^0(\mathbf p^2+m^2)^\nu$, respectively. Thus we can define a polynomial
+$P^{(L)}(q)$ by the conditions that
+\begin{align}
+P^{(L)}(p)={}&P(p)
+ \qquad\left(\text{for }p^0=\pm\sqrt{\mathbf p^2+m^2}\right),
+\notag\\
+P^{(L)}(q)={}&P^{(0)}(\mathbf q)+q^0P^{(1)}(\mathbf q)
+ \qquad(\text{for general }q^\mu),
+\tag{6.2.10}
+\label{eq:6.2.10}
+\end{align}
+where $P^{(0,1)}$ are polynomials depending only on $\mathbf q$. We can now use
+the relations
+\begin{equation}
+\frac{\partial}{\partial x^0}\theta(x^0-y^0)
+=-\frac{\partial}{\partial x^0}\theta(y^0-x^0)
+=\delta(x^0-y^0)
+\tag{6.2.11}
+\label{eq:6.2.11}
+\end{equation}
+(recall that $\theta(x)$ has a unit step at $x^0$, and is otherwise constant)
+to move the derivative operators to the left of the $\theta$ functions in Eq.
+\eqref{eq:6.2.8}
+\begin{align}
+\Delta_{\ell m}(x,y)={}&P_{\ell m}^{(L)}\!\left(
+ -i\frac{\partial}{\partial x}\right)\Delta_F(x-y)
+\notag\\
+&+\delta(x^0-y^0)P_{\ell m}^{(1)}(-i\boldsymbol\nabla)
+ \bigl[\Delta_+(x-y)-\Delta_+(y-x)\bigr],
+\tag{6.2.12}
+\label{eq:6.2.12}
+\end{align}
+where $\Delta_F$ is the `Feynman propagator'
+\begin{equation}
+-i\Delta_F(x)\equiv\theta(x)\Delta_+(x)+\theta(-x)\Delta_+(-x).
+\tag{6.2.13}
+\label{eq:6.2.13}
+\end{equation}
+However, for $x^0=0$ the function $\Delta_+(x)$ is even in $\mathbf x$, since
+a change $\mathbf x\to-\mathbf x$ in Eq. \eqref{eq:6.2.9} can be compensated by a
+change $\mathbf p\to-\mathbf p$ in the integration variable. We can therefore
+drop the second term in Eq. \eqref{eq:6.2.12}, and write simply
+\begin{equation}
+\Delta_{\ell m}(x,y)=P_{\ell m}^{(L)}\!\left(
+ -i\frac{\partial}{\partial x}\right)\Delta_F(x-y).
+\tag{6.2.14}
+\label{eq:6.2.14}
+\end{equation}
+
+It will be most useful to use the expression of the Feynman propagator as a
+Fourier integral. The step functions in Eq. \eqref{eq:6.2.13} have the Fourier
+representation\footnote{To prove this, note that if $t>0$ then the contour of
+integration can be closed with a large clockwise semi-circle in the lower
+half-plane, so the integral picks up a contribution of $-2\pi i$ from the pole
+at $s=-i\epsilon$. If $t<0$ then the contour can be closed with a large
+counter-clockwise semi-circle in the upper half-plane, where the integrand is
+analytic, giving an integral equal to zero.}
+\begin{equation}
+\theta(t)=\frac{-1}{2\pi i}\int_{-\infty}^{\infty}
+ \frac{\exp(-ist)}{s+i\epsilon}\,ds.
+\tag{6.2.15}
+\label{eq:6.2.15}
+\end{equation}
+This can be combined with the Fourier integral \eqref{eq:6.2.9} for $\Delta_+(x)$. We
+introduce new integration variables, $\mathbf q=\mathbf p$,
+$q^0=p^0+s$ in the first term of Eq. \eqref{eq:6.2.13}, yielding
+\begin{align*}
+-i\Delta_F(x)={}&\frac{-1}{2\pi i}\int d^3q
+ \int_{-\infty}^{\infty}dq^0\,
+ \frac{\exp(i\mathbf q\cdot\mathbf x-iq^0x^0)}
+ {(2\pi)^3 2\sqrt{\mathbf q^2+m^2}}
+\notag\\
+&\cdot\left[
+ \left(q^0-\sqrt{\mathbf q^2+m^2}-i\epsilon\right)^{-1}
+ +\left(-q^0-\sqrt{\mathbf q^2+m^2}-i\epsilon\right)^{-1}
+ \right].
+\end{align*}
+Combining denominators and adopting a four-dimensional notation, we have
+simply
+\begin{equation}
+\Delta_F(x)=(2\pi)^{-4}\int d^4q\,
+ \frac{\exp(iq\cdot x)}{q^2+m^2-i\epsilon},
+\tag{6.2.16}
+\label{eq:6.2.16}
+\end{equation}
+where $q^2\equiv\mathbf q^2-(q^0)^2$. (In the denominator we have replaced
+$2\epsilon\sqrt{\mathbf q^2+m^2}$ with $\epsilon$, because the only important
+thing about this quantity is that it is a positive infinitesimal.) This shows
+incidentally that $\Delta_F$ is a Green's function for the Klein--Gordon
+differential operator, in the sense that
+\begin{equation}
+(\Box-m^2)\Delta_F(x)=-\delta^4(x)
+\tag{6.2.17}
+\label{eq:6.2.17}
+\end{equation}
+with boundary conditions specified by the $-i\epsilon$ in the denominator: as
+shown by Eq. \eqref{eq:6.2.13}, $\Delta_F(x)$ for $x^0\to+\infty$ or
+$x^0\to-\infty$ involves only positive or negative frequency terms,
+$\exp(-ix^0\sqrt{\mathbf p^2+m^2})$ or
+$\exp(+ix^0\sqrt{\mathbf p^2+m^2})$, respectively.
+
+Inserting Eq. \eqref{eq:6.2.16} in Eq. \eqref{eq:6.2.14} now gives the propagator as
+\begin{equation}
+\Delta_{\ell m}(x,y)=(2\pi)^{-4}\int d^4q\,
+ \frac{P_{\ell m}^{(L)}(q)e^{iq\cdot(x-y)}}{q^2+m^2-i\epsilon}.
+\tag{6.2.18}
+\label{eq:6.2.18}
+\end{equation}
+There is one obvious problem with this expression. The polynomial $P(p)$ is
+Lorentz-covariant when $p$ is on the mass shell, $p^2=-m^2$, but in Eq.
+\eqref{eq:6.2.18} we integrate over all $q^\mu$, not restricted to the mass shell. The
+polynomial $P^{(L)}(q)$ is defined for general $q^\mu$ to be linear in $q^0$,
+a condition that clearly does not respect Lorentz covariance unless the
+polynomial is also linear in each spatial component $q^i$ as well. We can
+instead always define our extension of the polynomial $P(p)$ to general
+four-momenta $q^\mu$, which we shall call simply $P(q)$, in such a way that
+$P(q)$ is Lorentz-covariant for general $q^\mu$, in the sense that
+\begin{equation*}
+P_{\ell m}(\Lambda q)=D_{\ell\ell'}(\Lambda)
+ D^*_{mm'}(\Lambda)P_{\ell'm'}(q),
+\end{equation*}
+where $\Lambda^\mu{}_{\nu}$ is a general Lorentz transformation, and
+$D(\Lambda)$ is the appropriate representation of the Lorentz group. For
+instance, for scalar, Dirac, and four-vector fields, these covariant extensions
+are obviously provided by just replacing $p^\mu$ with a general four-momentum
+$q^\mu$ in Eqs. \eqref{eq:6.2.4}, \eqref{eq:6.2.5}, and \eqref{eq:6.2.6}. For the scalar and Dirac fields,
+these are already linear in $q^0$, so here there is no difference between
+$P^{(L)}(q)$ and $P(q)$:
+\begin{equation}
+P_{\ell m}^{(L)}(q)=P_{\ell m}(q)
+ \qquad(\text{scalar, Dirac fields}).
+\tag{6.2.19}
+\label{eq:6.2.19}
+\end{equation}
+On the other hand, for the vector field of a spin one particle, the 00
+components of the covariant polynomial
+$P_{\mu\nu}(q)=\eta_{\mu\nu}+m^{-2}q_\mu q_\nu$ are quadratic in $q^0$, so
+here there is a difference:
+\begin{align}
+P_{\mu\nu}^{(L)}(q)
+={}&\eta_{\mu\nu}+m^{-2}\left[q_\mu q_\nu
+ -\delta_\mu^0\delta_\nu^0\bigl(q_0^2-\mathbf q^2-m^2\bigr)\right]
+\notag\\
+={}&P_{\mu\nu}(q)+m^{-2}(q^2+m^2)\delta_\mu^0\delta_\nu^0.
+\tag{6.2.20}
+\label{eq:6.2.20}
+\end{align}
+(The extra term here is fixed by the two conditions that it must cancel the
+$(q_0)^2$ term in $P_{00}(q)$, and must vanish when $q^\mu$ is on the mass
+shell.) Inserting this in Eq. \eqref{eq:6.2.18} gives the propagator of a vector field as
+\begin{equation}
+\Delta_{\mu\nu}(x,y)=(2\pi)^{-4}\int d^4q\,
+ \frac{P_{\mu\nu}(q)e^{iq\cdot(x-y)}}{q^2+m^2-i\epsilon}
+ +m^{-2}\delta^4(x-y)\delta_\mu^0\delta_\nu^0.
+\tag{6.2.21}
+\label{eq:6.2.21}
+\end{equation}
+
+The first term is manifestly covariant, and the second term, though not
+covariant, is local, so it can be cancelled by adding a local non-covariant
+term to the Hamiltonian density. Specifically, if $V_\mu(x)$ interacts with
+other fields through a term $V_\mu(x)J^\mu(x)$ in $\mathcal H_I(x)$, then the
+effect of the second term in Eq. \eqref{eq:6.2.21} is to produce an effective
+interaction
+\begin{equation*}
+-i\mathcal H_{\mathrm{eff}}(x)=\frac12[-iJ^\mu(x)][-iJ^\nu(x)]
+ [-im^{-2}\delta_\mu^0\delta_\nu^0].
+\end{equation*}
+(The factors $-i$ are the usual ones which always accompany vertices and
+propagators. The factor $\tfrac12$ is needed because there are two ways to pair
+other fields with $\mathcal H_{\mathrm{eff}}(x)$, differing in the interchange
+of $J^\mu$ and $J^\nu$.) Thus the effect of the non-covariant second term in
+Eq. \eqref{eq:6.2.21} can be cancelled by adding to $\mathcal H_I(x)$ the non-covariant
+term
+\begin{equation}
+\mathcal H_{\mathrm{NC}}(x)=-\mathcal H_{\mathrm{eff}}(x)
+=\frac{1}{2m^2}[J^0(x)]^2.
+\tag{6.2.22}
+\label{eq:6.2.22}
+\end{equation}
+It is the singularity of the equal-time commutators of vector fields at zero
+separation that requires us to employ a wider class of interactions than those
+with a scalar density. A detailed non-perturbative proof of the Lorentz
+invariance of the $S$-matrix in this theory will be given in the next chapter.
+
+It should not be thought that this is solely a phenomenon associated with
+spins $j\geq1$. For instance, consider the vector field associated with a
+particle of spin $j=0$, equal (as discussed in Chapter 5) to the derivative
+$\partial_\lambda\phi(x)$ of a scalar field. For the pairing of this field with
+a scalar $\phi^\dagger(y)$, the polynomial $P(p)$ on the mass shell is
+\begin{equation}
+P_\lambda(p)=ip_\lambda,
+\tag{6.2.23}
+\label{eq:6.2.23}
+\end{equation}
+while the pairing of $\partial_\lambda\phi(x)$ with
+$\partial_\eta\phi^\dagger(y)$ yields a polynomial
+\begin{equation}
+P_{\lambda\eta}(p)=p_\lambda p_\eta.
+\tag{6.2.24}
+\label{eq:6.2.24}
+\end{equation}
+The covariant polynomials for general off-shell four-momenta $q^\mu$ are again
+obtained by just substituting $q^\mu$ for $p^\mu$ in Eqs. \eqref{eq:6.2.23} and
+\eqref{eq:6.2.24}. Eq. \eqref{eq:6.2.23} shows that $P_\lambda(q)$ is already linear in $q_0$, so
+here there is no difference between $P_\lambda(q)$ and $P_\lambda^{(L)}(q)$.
+However, for Eq. \eqref{eq:6.2.24} there is a difference:
+\begin{align}
+P_{\lambda\eta}^{(L)}(q)
+={}&q_\lambda q_\eta-(q_0^2-\mathbf q^2-m^2)
+ \delta_\lambda^0\delta_\eta^0
+\notag\\
+={}&P_{\lambda\eta}(q)+(q^2+m^2)\delta_\lambda^0\delta_\eta^0,
+\tag{6.2.25}
+\label{eq:6.2.25}
+\end{align}
+so here the propagator is
+\begin{equation}
+\Delta_{\lambda\eta}(x,y)=(2\pi)^{-4}\int d^4q\,
+ \frac{q_\lambda q_\eta e^{iq\cdot x}}{q^2+m^2-i\epsilon}
+ +\delta_\lambda^0\delta_\eta^0\delta^4(x-y).
+\tag{6.2.26}
+\label{eq:6.2.26}
+\end{equation}
+
+Just as before, the non-covariant effects of the second term may be removed by
+adding to the interaction a non-covariant term
+\begin{equation}
+\mathcal H_{\mathrm{NC}}(x)=\frac12[J^0(x)]^2,
+\tag{6.2.27}
+\label{eq:6.2.27}
+\end{equation}
+where $J^\mu(x)$ is here the current which multiplies
+$\partial_\mu\phi(x)$ in the covariant part of $\mathcal H_I(x)$.
+
+It should be clear that (at least for massive particles) the effects of
+non-covariant parts of the propagator can always be cancelled in this way by
+adding non-covariant local terms to the Hamiltonian density. This is because
+the numerator $P_{\ell m}^{(L)}(q)$ in the propagator must equal the covariant
+polynomial $P_{\ell m}(q)$ when $q^\mu$ is on the mass shell, so the difference
+between $P_{\ell m}^{(L)}(q)$ and $P_{\ell m}(q)$ must contain a factor
+$q^2+m^2$. This factor cancels the denominator $(q^2+m^2-i\epsilon)$ in the
+contribution of this difference to Eq. \eqref{eq:6.2.18}, so Eq. \eqref{eq:6.2.18} always equals
+a covariant term plus a term proportional to the delta function
+$\delta^4(x-y)$ or its derivatives. The effect of the latter term may be
+cancelled by adding to the interaction a term quadratic in the currents to
+which the paired fields couple, or in their derivatives. In what follows, it
+will be assumed tacitly that such a term has been included in the interaction,
+and in consequence we shall use the \emph{covariant} polynomial
+$P_{\ell m}(q)$ in the propagator \eqref{eq:6.2.18}, and will thus henceforth drop the
+label `$L$'.
+
+It may seem that this is a rather \emph{ad hoc} procedure. Fortunately, in the
+canonical formalism discussed in the following chapter, the non-covariant term
+in the Hamiltonian density needed to cancel non-covariant terms in the
+propagator arises automatically. This, in fact, forms part of the motivation
+for introducing the canonical formalism.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+Before closing this section, it may be useful to mention some other definitions
+of the propagator, equivalent to Eq. \eqref{eq:6.2.1}, that appear commonly in the
+ literature. First, taking the vacuum expectation value of Eq. \eqref{eq:6.1.14} gives
+\begin{align}
+-i\Delta_{\ell m}(x,y)={}&\theta(x-y)
+ \left\langle[\psi_\ell^{(+)}(x),\psi_m^{(+)\dagger}(y)]_{\mp}\right\rangle_0
+\notag\\
+&\mathbin{\pm}\theta(y-x)
+ \left\langle[\psi_m^{(-)\dagger}(y),\psi_\ell^{(-)}(x)]_{\mp}\right\rangle_0.
+\tag{6.2.28}
+\label{eq:6.2.28}
+\end{align}
+(Here $\langle AB\cdots\rangle_0$ denotes the vacuum expectation value
+$\bra{\Omega}AB\cdots\ket{\Omega}$.) Both $\psi_\ell^{(+)}(x)$ and
+$\psi_m^{(-)\dagger}(y)$ annihilate the vacuum, so only one term in each
+commutator or anticommutator in Eq. \eqref{eq:6.2.28} actually contributes to the
+propagator:
+\begin{align}
+-i\Delta_{\ell m}(x,y)={}&\theta(x-y)
+ \left\langle\psi_\ell^{(+)}(x)\psi_m^{(+)\dagger}(y)\right\rangle_0
+\notag\\
+&\mathbin{\pm}\theta(y-x)
+ \left\langle\psi_m^{(-)\dagger}(y)\psi_\ell^{(-)}(x)\right\rangle_0.
+\tag{6.2.29}
+\label{eq:6.2.29}
+\end{align}

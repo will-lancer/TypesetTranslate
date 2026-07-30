@@ -1,0 +1,204 @@
+% Chunk: Chapter 4 introduction and \S4.1, Bosons and Fermions.
+% Source: Weinberg QFT Vol. I, printed pp. 169--172 (PDF pp. 192--195).
+% Status: source-reviewed, compile-clean, and visually checked; frozen.
+
+Up to this point we have not had much to say about the detailed structure
+of the Hamiltonian operator $H$. This operator can be defined by giving
+all its matrix elements between states with arbitrary numbers of particles.
+Equivalently, as we shall show here, any such operator may be expressed
+as a function of certain operators that create and destroy single particles.
+We saw in Chapter 1 that such creation and annihilation operators were
+first encountered in the canonical quantization of the electromagnetic field
+and other fields in the early days of quantum mechanics. They provided
+a natural formalism for theories in which massive particles as well as
+photons can be produced and destroyed, beginning in the early 1930s with
+Fermi's theory of beta decay.
+
+However, there is a deeper reason for constructing the Hamiltonian out
+of creation and annihilation operators, which goes beyond the need to
+quantize any pre-existing field theory like electrodynamics, and has nothing
+to do with whether particles can actually be produced or destroyed. The
+great advantage of this formalism is that if we express the Hamiltonian
+as a sum of products of creation and annihilation operators, with suitable
+non-singular coefficients, then the $S$-matrix will automatically satisfy a
+crucial physical requirement, the cluster decomposition principle~\hyperref[ref:4.1]{[1]}, which
+says in effect that distant experiments yield uncorrelated results. Indeed, it
+is for this reason that the formalism of creation and annihilation operators
+is widely used in non-relativistic quantum statistical mechanics, where the
+number of particles is typically fixed. In relativistic quantum theories, the
+cluster decomposition principle plays a crucial part in making field theory
+inevitable. There have been many attempts to formulate a relativistically
+invariant theory that would not be a local field theory, and it is indeed
+possible to construct theories that are not field theories and yet yield
+a Lorentz-invariant $S$-matrix for two-particle scattering~\hyperref[ref:4.2]{[2]}, but such efforts
+have always run into trouble in sectors with more than two particles: either
+the three-particle $S$-matrix is not Lorentz-invariant, or else it violates the
+cluster decomposition principle.
+
+In this chapter we will first discuss the basis of states containing arbitrary
+numbers of bosons and fermions, then define the creation and annihilation
+operators, and finally show how their use facilitates the construction of
+Hamiltonians that yield $S$-matrices satisfying the cluster decomposition
+condition.
+
+\subsection{Bosons and Fermions}
+
+The Hilbert space of physical states is spanned by states containing 0,
+1, 2, $\cdots$ free particles. These can be free-particle states, or `in' states, or
+`out' states; for definiteness we shall deal here with the free-particle states
+$\ket{\mathbf p_1\sigma_1n_1;\,\mathbf p_2\sigma_2n_2;\,\ldots}$, but all our results will apply
+equally to `in' or `out' states. As usual, $\sigma$ labels spin $z$-components
+(or helicities, for massless particles) and $n$ labels particle species.
+
+We must now go into a matter that has been passed over in Chapter 3;
+the symmetry properties of these states. As far as we know, all particles
+are either \textit{bosons} or \textit{fermions}, the difference being that a state is unchanged
+by the interchange of two identical bosons, and changes sign under the
+interchange of two identical fermions. That is
+\begin{equation}
+  \ket{\ldots\,\mathbf p\sigma n\,\ldots\,\mathbf p'\sigma'n\,\ldots}
+  = \pm\ket{\ldots\,\mathbf p'\sigma'n\,\ldots\,\mathbf p\sigma n\,\ldots}
+  \tag{4.1.1}
+  \label{eq:4.1.1}
+\end{equation}
+with an upper or lower sign if $n$ is a boson or a fermion, respectively,
+and dots representing other particles that may be present in the state.
+(Equivalently, this could be stated as a condition on the `wave functions,'
+the coefficients of these multi-particle basis vectors in physically allowable
+state-vectors.) These two cases are often referred to as Bose or Fermi
+`statistics.' We will see in the next chapter that Bose and Fermi statistics
+are only possible for particles that have integer or half-integer spins,
+respectively, but we shall not need this information in the present chapter. In
+this section we shall offer a non-rigorous argument that all particles must
+be either bosons or fermions, and then set up normalization conditions
+for multi-boson or multi-fermion states.
+
+First note that if two particles with spins and momenta $\mathbf p,\sigma$ and
+$\mathbf p',\sigma'$ belong to identical species $n$, then the state-vectors
+$\ket{\ldots\,\mathbf p\sigma n\,\ldots\,\mathbf p'\sigma'n\,\ldots}$ and
+$\ket{\ldots\,\mathbf p'\sigma'n\,\ldots\,\mathbf p\sigma n\,\ldots}$ represent the same physical
+state; if this were not the case then the particles would be distinguished by
+their order in the labelling of the state-vector, and the first listed would not
+be identical with the second. Since the two state-vectors are physically
+indistinguishable, they must belong to the same ray, and so
+\begin{equation}
+  \ket{\ldots\,\mathbf p\sigma n\,\ldots\,\mathbf p'\sigma'n\,\ldots}
+  = \alpha_n\ket{\ldots\,\mathbf p'\sigma'n\,\ldots\,\mathbf p\sigma n\,\ldots},
+  \tag{4.1.2}
+  \label{eq:4.1.2}
+\end{equation}
+where $\alpha_n$ is a complex number of unit absolute value. We may regard this
+as part of the definition of what we mean by identical particles.
+
+The crux of the matter is to decide on what the phase factor $\alpha_n$ may
+depend. \textit{If} it depends only on the species index $n$, then we are nearly done.
+Interchanging the two particles in Eq.~\eqref{eq:4.1.2} again, we find
+\[
+  \ket{\ldots\,\mathbf p\sigma n\,\ldots\,\mathbf p'\sigma'n\,\ldots}
+  = \alpha_n^2\ket{\ldots\,\mathbf p\sigma n\,\ldots\,\mathbf p'\sigma'n\,\ldots}
+\]
+so that $\alpha_n^2=1$, yielding Eq.~\eqref{eq:4.1.1} as the only two possibilities.
+
+On what else could $\alpha_n$ depend? It might depend on the numbers
+and species of the other particles in the state (indicated by dots in
+Eqs.~\eqref{eq:4.1.1} and \eqref{eq:4.1.2}), but this would lead to the uncomfortable result
+that the symmetry of state-vectors under interchange of particles here on
+earth may depend on the presence of particles elsewhere in the universe.
+This is the sort of thing that is ruled out by the cluster decomposition
+principle, to be discussed later in this chapter. The phase $\alpha_n$ cannot
+have any non-trivial dependence on the spins of the two particles that
+are interchanged, because then these spin-dependent phase factors would
+have to furnish a representation of the rotation group, and there are
+no non-trivial representations of the three-dimensional rotation group
+that are one-dimensional---that is, by phase factors. The phase $\alpha_n$
+might conceivably depend on the momenta of the two particles that are
+interchanged, but Lorentz invariance would require $\alpha_n$ to depend only on
+the scalar $p_1^\mu p_{2\mu}$; this is symmetric under interchange of particles 1 and 2,
+and therefore such dependence would not change the argument leading
+to the conclusion that $\alpha_n^2=1$.
+
+The logical gap in the above argument is that (although our notation
+hides the fact) the states $\ket{\mathbf p_1\sigma_1n;\,\mathbf p_2\sigma_2n;\,\ldots}$ may carry a
+phase factor that depends on the path through momentum space by which the momenta
+of the particles are brought to the values $p_1$, $p_2$, etc. In this case the
+interchange of two particles twice might change the state by a phase
+factor, so that $\alpha_n^2\ne1$. We will see in Section 9.7 that this is a real
+possibility in two-dimensional space, but not for three or more spatial
+dimensions.
+
+What about interchanges of particles belonging to different species? If
+we like, we can avoid this question by simply agreeing from the beginning
+to label the state-vector by listing all photon momenta and helicities first,
+then all electron momenta and spin $z$-components, and so on through the
+table of elementary particle types. Alternatively, we can allow the particle
+labels to appear in any order, and \textit{define} the state-vectors with particle
+labels in an arbitrary order as equal to the state-vector with particle
+labels in some standard order times phase factors, whose dependence
+on the interchange of particles of different species can be anything we
+like. In order to deal with symmetries like isospin invariance that relate
+particles of different species, it is convenient to adopt a convention that
+generalizes Eq.~\eqref{eq:4.1.1}: the state-vector will be taken to be symmetric
+under interchange of any bosons with each other, or any bosons with
+any fermions, and antisymmetric with respect to interchange of any two
+fermions with each other, in all cases, whether the particles are of the
+same species or not.\footnote{In fact, by the same reasoning, the symmetry or
+antisymmetry of the state-vector under interchange of particles of the same
+species but different helicities or spin $z$-components is purely conventional,
+because we could have agreed from the beginning to list first the momenta of
+photons of helicity $+1$, then the momenta of all photons of helicity $-1$, then
+the momenta of all electrons of spin $z$-component $+\tfrac12$, and so on. We
+adopt the \textit{convention} that the state-vector is symmetric or antisymmetric
+under interchange of identical bosons or fermions of different helicities or
+spin $z$-components in order to facilitate the use of rotational invariance.}
+
+The normalization of these states must be defined in consistency with
+these symmetry conditions. To save writing, we will use a label $q$ to
+denote all the quantum numbers of a single particle: its momentum, $\mathbf p$,
+spin $z$-component (or, for massless particles, helicity) $\sigma$, and species $n$. The
+$N$-particle states are thus labelled $\ket{q_1\cdots q_N}$ (with $N=0$ for the vacuum
+state $\ket{\Omega}$.) For $N=0$ and $N=1$ the question of symmetry does not arise:
+here we have
+\begin{equation}
+  \braket{\Omega}{\Omega}=1
+  \tag{4.1.3}
+  \label{eq:4.1.3}
+\end{equation}
+and
+\begin{equation}
+  \braket{q'}{q}=\delta(q'-q),
+  \tag{4.1.4}
+  \label{eq:4.1.4}
+\end{equation}
+where $\delta(q'-q)$ is a product of all the delta functions and Kronecker deltas
+for the particle's quantum numbers,
+\begin{equation}
+  \delta(q'-q)=\delta^3(\mathbf p'-\mathbf p)\delta_{\sigma'\sigma}\delta_{n'n}.
+  \tag{4.1.5}
+  \label{eq:4.1.5}
+\end{equation}
+On the other hand, for $N=2$ the states $\ket{q'_1q'_2}$ and $\ket{q'_2q'_1}$ are physically the
+same, so here we must take
+\begin{align}
+  \braket{q'_1q'_2}{q_1q_2}
+  ={}& \delta(q'_1-q_1)\delta(q'_2-q_2)
+  \pm \delta(q'_2-q_1)\delta(q'_1-q_2)
+  \tag{4.1.6}
+  \label{eq:4.1.6}
+\end{align}
+the sign $\pm$ being $-$ if both particles are fermions and $+$ otherwise. This
+obviously is consistent with the above stated symmetry properties of the
+states. More generally,
+\begin{equation}
+  \braket{q'_1q'_2\cdots q'_M}{q_1q_2\cdots q_N}
+  = \delta_{NM}\sum_{\mathcal P}\delta_{\mathcal P}
+    \prod_i\delta(q_i-q'_{\mathcal P i}).
+  \tag{4.1.7}
+  \label{eq:4.1.7}
+\end{equation}
+The sum here is over all permutations $\mathcal P$ of the integers $1,2,\ldots,N$. (For
+instance, in the first term in Eq.~\eqref{eq:4.1.6}, $\mathcal P$ is the identity, $\mathcal P1=1$, $\mathcal P2=2$,
+while in the second term $\mathcal P1=2$, $\mathcal P2=1$.) Also, $\delta_{\mathcal P}$ is a sign factor equal
+to $-1$ if $\mathcal P$ involves an odd permutation of fermions (an odd number of
+fermion interchanges) and $+1$ otherwise. It is easy to see that Eq.~\eqref{eq:4.1.7}
+has the desired symmetry or antisymmetry properties under interchange
+of the $q_i$, and also under interchange of the $q'_j$.

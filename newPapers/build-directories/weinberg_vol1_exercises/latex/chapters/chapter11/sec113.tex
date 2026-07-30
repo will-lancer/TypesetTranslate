@@ -1,0 +1,437 @@
+% Source/coverage: Weinberg QFT Vol. I, Ch. 11, Sec. 11.3, physical PDF
+% pp. 508--516 (printed pp. 485--493), from Figure 11.4 through the paragraph
+% ending immediately before Sec. 11.4; equations (11.3.1)--(11.3.33).
+% Figures 11.4 and 11.5 are supplied as chapter-local inputs. One symbolic
+% source footnote is converted to an ordinary numbered footnote. Superscript
+% references 5--7 are converted to bracketed inline citations.
+
+% Figure 11.4 visually precedes the section heading on physical p. 508.
+\clearpage
+\input{chapters/chapter11/figures/fig11-04.tex}
+
+\subsection{Anomalous Magnetic Moments and Charge Radii}
+
+For our next example, we shall calculate the shift in the magnetic moment
+and the charge radius of an electron or muon due to lowest-order radiative
+corrections. The one-loop graphs and renormalization corrections for the
+photon--lepton vertex are shown in Figure~\ref{fig:11.4}. Of these graphs, those
+involving insertions in incoming or outgoing lepton lines vanish because the
+lepton is on the mass shell, as discussed in Section 10.3. The graph involving
+an insertion in the external photon line is the vacuum polarization effect,
+discussed in the previous section. This leaves one one-loop graph (the last in
+Figure~\ref{fig:11.4}) that needs to be calculated here:
+\begin{align}
+\Gamma^\mu_{\text{1 loop}}(p',p)={}&\int d^4k
+ \left[e\gamma^\rho(2\pi)^4\right]
+ \left[{ -i\over(2\pi)^4}
+ { -i(\sl{p}'-\sl{k})+m\over(p'-k)^2+m^2-i\epsilon}\right]
+ \left[\gamma^\mu\right]\notag\\
+&\quad\cdot
+ \left[{ -i\over(2\pi)^4}
+ { -i(\sl{p}-\sl{k})+m\over(p-k)^2+m^2-i\epsilon}\right]
+ \left[e\gamma_\rho(2\pi)^4\right]
+ \left[{ -i\over(2\pi)^4}{1\over k^2-i\epsilon}\right],
+\tag{11.3.1}\label{eq:11.3.1}
+\end{align}
+where $p'$ and $p$ are the final and initial lepton four-momenta,
+respectively. (The contribution of the vertex connecting the external photon
+line and the internal lepton line is taken as $\gamma^\mu$, because a factor
+$e(2\pi)^4$ was extracted in defining $\Gamma^\mu$.)
+
+This integral has an obvious ultraviolet divergence, roughly like
+$\int d^4k/(k^2)^2$. Unlike the case of the vacuum polarization, here we do
+not need a fancy regularization procedure like dimensional regularization to
+maintain the structure required by gauge invariance, because the photon is a
+neutral particle and so the integral may be rendered finite by suitable
+modifications of the photon propagator (for instance by including a factor
+$M^2/(k^2+M^2)$ with a large cutoff mass $M$), without having to introduce
+modifications elsewhere to maintain gauge invariance. In any case, as we
+shall see, the anomalous magnetic moment and charge radii can be calculated
+without encountering any ultraviolet divergences at all. In what follows we
+shall leave the integrals for the vertex function in their infinite form,
+with it being understood that if necessary any divergent integrals can be
+expressed in terms of a cutoff mass $M$.
+
+We start by combining denominators, using a repeated version of the Feynman
+trick described in the Appendix to this chapter
+\begin{equation}
+{1\over ABC}=2\int_0^1dx\int_0^xdy\,
+ [Ay+B(x-y)+C(1-x)]^{-3}.
+\tag{11.3.2}\label{eq:11.3.2}
+\end{equation}
+Applied to the denominators in Eq.~\eqref{eq:11.3.1}, this gives
+\begin{align}
+&{1\over(p'-k)^2+m^2-i\epsilon}
+ {1\over(p-k)^2+m^2-i\epsilon}{1\over k^2-i\epsilon}
+\notag\\
+&=2\int_0^1dx\int_0^xdy\,
+ \Bigl[((p'-k)^2+m^2-i\epsilon)y
+ +((p-k)^2+m^2-i\epsilon)(x-y)\notag\\
+&\hspace{52mm}+(k^2-i\epsilon)(1-x)\Bigr]^{-3}
+\notag\\
+&=2\int_0^1dx\int_0^xdy\,
+ \Bigl[(k-p'y-p(x-y))^2+m^2x^2+q^2y(x-y)-i\epsilon\Bigr]^{-3},
+\tag{11.3.3}\label{eq:11.3.3}
+\end{align}
+where $q\equiv p-p'$ is the momentum transferred to the photon. Shifting the
+variable of integration
+\[
+k\longrightarrow k+p'y+p(x-y)
+\]
+the integral \eqref{eq:11.3.1} becomes
+\begin{align}
+\Gamma^\mu_{\text{1 loop}}(p',p)={}&{2ie^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy\int
+ {d^4k\over[k^2+m^2x^2+q^2y(x-y)-i\epsilon]^3}\notag\\
+&\quad\cdot\gamma^\rho
+ \left[-i\bigl(\sl{p}'(1-y)-\sl{k}-\sl{p}(x-y)\bigr)+m\right]\gamma^\mu
+\notag\\
+&\quad\cdot
+ \left[-i\bigl(\sl{p}(1-x+y)-\sl{k}-\sl{p}'y\bigr)+m\right]\gamma_\rho.
+\tag{11.3.4}\label{eq:11.3.4}
+\end{align}
+
+Our next step is a Wick rotation. As explained in the previous section, the
+$-i\epsilon$ in the denominator dictates that when we rotate the $k^0$
+contour of integration to the imaginary axis we must rotate counterclockwise,
+so that the integral over $k^0$ from $-\infty$ to $+\infty$ is replaced with
+an integral over imaginary values from $-i\infty$ to $+i\infty$, or
+equivalently over real values of $k^4\equiv-ik^0$ from $-\infty$ to
+$+\infty$. We also exploit the rotational symmetry of the denominator in
+Eq.~\eqref{eq:11.3.4}; we drop terms in the denominator of odd order in $k$, replace
+$k^\mu k^\nu$ with $\eta^{\mu\nu}\kappa^2/4$, and replace the volume element
+$d^4k=i\,dk^1dk^2dk^3dk^4$ with $2i\pi^2\kappa^3d\kappa$, where $\kappa$
+is the Euclidean length of the four-vector $k$. Putting this all together,
+Eq.~\eqref{eq:11.3.4} now becomes
+\begin{align}
+\Gamma^\mu_{\text{1 loop}}(p',p)={}&{-4\pi^2e^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy\int_0^\infty\kappa^3d\kappa
+ \Biggl\{-{\kappa^2\over4}
+ \gamma^\rho\gamma^\sigma\gamma^\mu\gamma_\sigma\gamma_\rho
+\notag\\
+&+\gamma^\rho
+ \left[-i\bigl(\sl{p}'(1-y)-\sl{p}(x-y)\bigr)+m\right]\gamma^\mu
+ \left[-i\bigl(\sl{p}(1-x+y)-\sl{p}'y\bigr)+m\right]\gamma_\rho
+ \Biggr\}\notag\\
+&\quad\cdot[\kappa^2+m^2x^2+q^2y(x-y)]^{-3}.
+\tag{11.3.5}\label{eq:11.3.5}
+\end{align}
+
+We are interested here only in the matrix element
+$\bar u'\Gamma^\mu u$ of the vertex function between Dirac spinors that
+satisfy the relations
+\[
+\bar u'[i\sl{p}'+m]=0,\qquad [i\sl{p}+m]u=0.
+\]
+We can therefore simplify this expression by using the anticommutation
+relations of the Dirac matrices to move all factors $\sl{p}'$ to the right and
+all factors $\sl{p}$ to the left, replacing them when they arrive on the right
+or left with $im$. After a straightforward but tedious calculation,
+Eq.~\eqref{eq:11.3.5} then becomes
+\begin{align}
+\bar u'\Gamma^\mu_{\text{one loop}}(p',p)u={}&
+ {-4\pi^2e^2\over(2\pi)^4}\int_0^1dx\int_0^xdy
+ \int_0^\infty\kappa^3d\kappa\,
+ \bar u'\Bigl\{\gamma^\mu\bigl[-\kappa^2+2m^2(x^2-4x+2)
+\notag\\
+&\qquad+2q^2(y(x-y)+1-x)\bigr]\notag\\
+&\qquad+4im p'{}^\mu(y-x+xy)+4im p^\mu(x^2-xy-y)\Bigr\}u
+\notag\\
+&\quad\cdot[\kappa^2+m^2x^2+q^2y(x-y)]^{-3}.
+\tag{11.3.6}\label{eq:11.3.6}
+\end{align}
+We next exploit the symmetry of the final factor under the reflection
+$y\longrightarrow x-y$. Under this reflection, the functions $y-x+xy$ and
+$x^2-xy-y$ that multiply $p'{}^\mu$ and $p^\mu$ are interchanged, so both
+may be replaced with their average:
+\[
+\tfrac12(y-x+xy)+\tfrac12(x^2-xy-y)=-\tfrac12x(1-x).
+\]
+This gives finally
+\begin{align}
+\bar u'\Gamma^\mu_{\text{one loop}}(p',p)u={}&
+ {-4\pi^2e^2\over(2\pi)^4}\int_0^1dx\int_0^xdy
+ \int_0^\infty\kappa^3d\kappa\notag\\
+&\cdot\bar u'\Bigl\{\gamma^\mu\bigl[-\kappa^2+2m^2(x^2-4x+2)
+ +2q^2(y(x-y)+1-x)\bigr]\notag\\
+&\qquad-2im(p'{}^\mu+p^\mu)x(1-x)\Bigr\}u
+ [\kappa^2+m^2x^2+q^2y(x-y)]^{-3}.
+\tag{11.3.7}\label{eq:11.3.7}
+\end{align}
+Note that $p^\mu$ and $p'{}^\mu$ now enter only in the combination
+$p^\mu+p'{}^\mu$, as required by current conservation.
+
+There are other diagrams that need to be taken into account. Of course,
+there is the zeroth-order term $\gamma^\mu$ in $\Gamma^\mu$. The term
+proportional to $Z_2-1$ in the correction term \eqref{eq:11.1.9} yields a term in
+$\Gamma^\mu$
+\begin{equation}
+\Gamma^\mu_{\mathcal L_2}=(Z_2-1)\gamma^\mu.
+\tag{11.3.8}\label{eq:11.3.8}
+\end{equation}
+Also, the effect of insertions of corrections to the external photon
+propagator is a term:
+\begin{equation}
+\Gamma^\mu_{\text{vac pol}}(p',p)=
+ {1\over(p'-p)^2-i\epsilon}\Pi^{\mu\nu}(p'-p)\gamma_\nu.
+\tag{11.3.9}\label{eq:11.3.9}
+\end{equation}
+The form of each of these terms is in agreement with the general result
+(10.6.10) (with $H(q^2)=0$)
+\begin{equation}
+\bar u'\Gamma^\mu(p',p)u
+=\bar u'\left[\gamma^\mu F(q^2)-{i\over2m}(p+p')^\mu G(q^2)\right]u.
+\tag{11.3.10}\label{eq:11.3.10}
+\end{equation}
+To order $e^2$, the form factors are
+\begin{align}
+F(q^2)={}&Z_2+\pi(q^2)+{4\pi^2e^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy\int_0^\infty\kappa^3d\kappa\notag\\
+&\cdot{\kappa^2-2m^2(x^2-4x+2)-2q^2(y(x-y)+1-x)
+ \over[\kappa^2+m^2x^2+q^2y(x-y)]^3},
+\tag{11.3.11}\label{eq:11.3.11}
+\end{align}
+\begin{equation}
+G(q^2)={-4\pi^2e^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy\int_0^\infty
+ {4m^2x(1-x)\kappa^3d\kappa
+ \over[\kappa^2+m^2x^2+q^2y(x-y)]^3},
+\tag{11.3.12}\label{eq:11.3.12}
+\end{equation}
+where $\pi(q^2)$ is the vacuum polarization function \eqref{eq:11.2.22}.
+
+The integral for the form factor $G(q^2)$ is finite as it stands:
+\begin{equation}
+G(q^2)=-{e^2m^2\over4\pi^2}\int_0^1dx\int_0^xdy\,
+ {x(1-x)\over m^2x^2+q^2y(x-y)}.
+\tag{11.3.13}\label{eq:11.3.13}
+\end{equation}
+
+\suppressfloats[t]
+\input{chapters/chapter11/figures/fig11-05.tex}
+
+This makes it easy to calculate the anomalous magnetic moment. As noted in
+Section 10.6, it is only the $\gamma^\mu$ term that contributes to the magnetic
+moment, so the effect of radiative corrections is to multiply the Dirac value
+$e/2m$ of the magnetic moment by a factor $F(0)$. But the definition of $e$
+as the true lepton charge requires that
+\begin{equation}
+F(0)+G(0)=1,
+\tag{11.3.14}\label{eq:11.3.14}
+\end{equation}
+so the magnetic moment may be expressed as
+\begin{equation}
+\mu={e\over2m}\bigl(1-G(0)\bigr).
+\tag{11.3.15}\label{eq:11.3.15}
+\end{equation}
+From Eq.~\eqref{eq:11.3.13}, we find
+\begin{equation}
+-G(0)={e^2\over8\pi^2}=0.001161.
+\tag{11.3.16}\label{eq:11.3.16}
+\end{equation}
+This is the famous $\alpha/2\pi$ correction first calculated by Schwinger~\hyperref[ref:11.5]{[5]}.
+
+Of course, this is only the first term in the radiative corrections to the
+magnetic moment. Even in just the next order, fourth order in $e$, there are
+so many terms that the calculations become quite complicated. However,
+because of the large muon--electron mass ratio, there is one fourth-order term
+in the magnetic moment of the muon that is somewhat larger than any of the
+others. It arises from the insertion of an electron loop in the virtual photon
+line of the second-order diagram, as shown in Figure~\ref{fig:11.5}. The effect of this
+electron loop is to change the photon propagator $1/k^2$ in Eq.~\eqref{eq:11.3.1} to
+$(1+\pi_e(k^2))/k^2$, where $\pi_e(k^2)$ is given by Eq.~\eqref{eq:11.2.22}, but with
+the mass $m$ taken as the electron mass:
+\[
+\pi_e(k^2)={e^2\over2\pi^2}\int_0^1x(1-x)
+ \ln\left(1+{k^2x(1-x)\over m_e^2}\right)dx.
+\]
+Inspection of Eq.~\eqref{eq:11.3.12} shows that in calculating the muon magnetic
+moment the effective cutoff on the virtual photon momentum $k$ is $m_\mu$.
+The ratio $m_\mu/m_e$ is so large that for $k^2$ of order $m_\mu^2$ we may
+approximate
+\begin{equation}
+\pi_e(k^2)\simeq{e^2\over2\pi^2}\int_0^1x(1-x)
+ \ln(m_\mu^2/m_e^2)
+ ={e^2\over12\pi^2}\ln(m_\mu^2/m_e^2),
+\tag{11.3.17}\label{eq:11.3.17}
+\end{equation}
+with the neglected terms having coefficients of order unity in place of
+$\ln(m_\mu^2/m_e^2)$. Since this is a constant, the change in $-G(0)$
+produced by adding an electron loop in the virtual photon line is simply
+given by multiplying our previous result \eqref{eq:11.3.16} for $-G(0)$ by
+Eq.~\eqref{eq:11.3.17}, so that now
+\begin{equation}
+\mu_\mu={e\over2m_\mu}\left({e^2\over8\pi^2}
+ +{e^4\over96\pi^4}\left[\ln{m_\mu^2\over m_e^2}+O(1)\right]\right).
+\tag{11.3.18}\label{eq:11.3.18}
+\end{equation}
+(As we shall see in Volume II, this argument is a primitive version of the
+method of the renormalization group.) The result \eqref{eq:11.3.18} may be compared
+with the full fourth-order result~\hyperref[ref:11.6]{[6]}
+\begin{align}
+\mu_\mu={e\over2m_\mu}\Biggl\{{e^2\over8\pi^2}
+ +{e^4\over96\pi^4}\Biggl[&\ln{m_\mu^2\over m_e^2}-{25\over6}
+ +{197\over24}+{\pi^2\over2}+{9\zeta(3)\over2}
+\notag\\[-2pt]
+&-3\pi^2\ln2+O\!\left(\left({m_e\over m_\mu}\right)^2\right)\Biggr]
+ \Biggr\}.
+\tag{11.3.19}\label{eq:11.3.19}
+\end{align}
+It turns out that the $O(1)$ terms multiplying $e^4/96\pi^4$ add up to
+$-6.137$, which is not very much smaller than
+$\ln(m_\mu^2/m_e^2)=10.663$, so the approximation \eqref{eq:11.3.18} gives the
+fourth-order terms only to a factor of order 2. The correct fourth-order
+result \eqref{eq:11.3.19} gives $\mu_\mu=1.00116546e/2m_\mu$, in comparison with the
+second-order result $\mu_\mu=1.001161e/2m_\mu$ and the current experimental
+value~\hyperref[ref:11.7]{[7]}, $\mu_\mu=1.001165923(8)e/2m_\mu$.
+
+Now let us turn to the other form factor. The integral in Eq.~\eqref{eq:11.3.11} for
+$F(q^2)$ has an ultraviolet divergence. However, in order to satisfy the
+charge-non-renormalization condition \eqref{eq:11.3.14}, it is necessary that $Z_2$
+take the value
+\begin{align}
+Z_2={}&1+{e^2\over8\pi^2}-{4\pi^2e^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy\int_0^\infty\kappa^3d\kappa
+ {\kappa^2-2m^2(x^2-4x+2)\over[\kappa^2+m^2x^2]^3}.
+\tag{11.3.20}\label{eq:11.3.20}
+\end{align}
+(Recall that $\pi(0)=0$.) This is itself ultraviolet divergent, with an
+infinite part
+\begin{equation}
+(Z_2-1)_\infty=-{e^2\over8\pi^2}\int^\infty{d\kappa\over\kappa}.
+\tag{11.3.21}\label{eq:11.3.21}
+\end{equation}
+Inserting Eq.~\eqref{eq:11.3.20} back into Eq.~\eqref{eq:11.3.11} gives
+\begin{align}
+F(q^2)={}&1+{e^2\over8\pi^2}+\pi(q^2)
+ +{4\pi^2e^2\over(2\pi)^4}\int_0^1dx\int_0^xdy
+ \int_0^\infty\kappa^3d\kappa\notag\\
+&\cdot\Biggl\{{\kappa^2-2m^2(x^2-4x+2)
+ -2q^2[y(x-y)+1-x]\over[\kappa^2+m^2x^2+q^2y(x-y)]^3}
+\notag\\
+&\hspace{28mm}-{\kappa^2-2m^2(x^2-4x+2)
+ \over[\kappa^2+m^2x^2]^3}\Biggr\}.
+\tag{11.3.22}\label{eq:11.3.22}
+\end{align}
+The integral over $\kappa$ is now convergent:
+\begin{align}
+F(q^2)={}&1+{e^2\over8\pi^2}+\pi(q^2)
+ +{2\pi^2e^2\over(2\pi)^4}\int_0^1dx\int_0^xdy
+ \Biggl\{{-m^2[x^2-4x+2]-q^2[y(x-y)+1-x]
+ \over m^2x^2+q^2y(x-y)}\notag\\
+&\hspace{18mm}+{x^2-4x+2\over x^2}
+ -\ln\left[{m^2x^2+q^2y(x-y)\over m^2x^2}\right]\Biggr\}.
+\tag{11.3.23}\label{eq:11.3.23}
+\end{align}
+However, we see that the integral over $x$ and $y$ now diverges
+logarithmically at $x=0$ and $y=0$, because there are two powers of $x$
+and/or $y$ in the denominators, and just two differentials $dx\,dy$ in the
+numerator. This divergence can be traced to the vanishing of the denominator
+$[\kappa^2+m^2x^2+q^2y(x-y)]^3$ in Eq.~\eqref{eq:11.3.11} at $x=0$, $y=0$, and
+$\kappa=0$. Because this infinity comes from the region of small rather than
+large $\kappa$, it is termed an \emph{infrared divergence} rather than an
+ultraviolet divergence.
+
+We shall give a comprehensive treatment of the infrared divergences in
+Chapter 13. It will be shown there that infrared divergences in the
+cross-section for processes like electron--electron scattering, such as those
+that are introduced by the infrared divergence in the electron form factor
+$F(q^2)$, are cancelled when we include the emission of low-energy photons as
+well as elastic scattering. Also, as we shall see in Chapter 14, when we
+calculate radiative corrections to atomic energy levels the infrared
+divergence in $F(q^2)$ is cut off because the bound electron is not exactly on
+the free-particle mass shell. For the present we shall continue our
+calculation by simply introducing a fictitious photon mass $\mu$ to cut off
+the infrared divergence in $F(q^2)$, leaving it for Chapter 14 to see how to
+use this result.
+
+With a photon mass $\mu$, the denominator $k^2-i\epsilon$ in Eq.~\eqref{eq:11.3.1}
+would be replaced with $k^2+\mu^2-i\epsilon$. The effect would than be to add
+a term $\mu^2(1-x)$ to the cubed quantity in the denominators of
+Eqs.~\eqref{eq:11.3.3}--\eqref{eq:11.3.7}, \eqref{eq:11.3.11}, \eqref{eq:11.3.20}, and \eqref{eq:11.3.22}. Eq.~\eqref{eq:11.3.23}
+then is replaced with
+\begin{align}
+F(q^2)={}&1+{e^2\over8\pi^2}+\pi(q^2)
+ +{2\pi^2e^2\over(2\pi)^4}\int_0^1dx\int_0^xdy
+ \Biggl\{{-m^2[x^2-4x+2]-q^2[y(x-y)+1-x]
+ \over m^2x^2+q^2y(x-y)+\mu^2(1-x)}\notag\\
+&\hspace{14mm}+{m^2[x^2-4x+2]\over m^2x^2+\mu^2(1-x)}
+ -\ln\left[{m^2x^2+q^2y(x-y)+\mu^2(1-x)
+ \over m^2x^2+\mu^2(1-x)}\right]\Biggr\}.
+\tag{11.3.24}\label{eq:11.3.24}
+\end{align}
+This integral is now completely convergent. It can be expressed in terms of
+Spence functions, but the result is not particularly illuminating. For our
+purposes in Chapter 14, it will be sufficient to calculate the behavior of
+$F(q^2)$ for small $q^2$. We already know from the Ward identity that
+$F(0)=1-G(0)=1+e^2/8\pi^2$, so let us consider the first derivative $F'(q^2)$
+at $q^2=0$. According to Eq.~\eqref{eq:11.3.24}, this is
+\begin{align}
+F'(0)={}&\pi'(0)+{2\pi^2e^2\over(2\pi)^4}
+ \int_0^1dx\int_0^xdy
+ \Biggl\{{2y(x-y)+1-x\over m^2x^2+\mu^2(1-x)}\notag\\
+&\hspace{25mm}+{m^2[x^2-4x+2]y(x-y)
+ \over[m^2x^2+\mu^2(1-x)]^2}\Biggr\}.
+\tag{11.3.25}\label{eq:11.3.25}
+\end{align}
+The vacuum polarization contribution is given by Eq.~\eqref{eq:11.2.22} as
+\begin{equation}
+\pi'(0)={e^2\over60\pi^2m^2}.
+\tag{11.3.26}\label{eq:11.3.26}
+\end{equation}
+Dropping all terms proportional to powers of $\mu/m$ in Eq.~\eqref{eq:11.3.25}, we
+then have\footnote{The $y$-integral is trivial. The $x$-integral is most
+easily calculated in the limit $\mu\ll m$ by dividing the range of integration
+into two parts, one from 0 to $s$, where $\mu/m\ll s\ll1$, and the second from
+$s$ to 1.}
+\begin{equation}
+F'(0)={e^2\over24\pi^2m^2}
+ \left[\ln\left({\mu^2\over m^2}\right)+{2\over5}+{1\over4}\right]
+\tag{11.3.27}\label{eq:11.3.27}
+\end{equation}
+with the term $2/5$ the contribution of vacuum polarization. On the other
+hand, Eq.~\eqref{eq:11.3.13} shows that $G(q^2)$ has a finite derivative at $q^2=0$,
+\begin{equation}
+G'(0)={e^2\over48\pi^2m^2}.
+\tag{11.3.28}\label{eq:11.3.28}
+\end{equation}
+
+These results are most conveniently expressed in terms of the charge form
+factor $F_1(q^2)$, defined by the alternative representation (10.6.15) of the
+vertex function
+\begin{align}
+&\bar u(p',\sigma')\Gamma^\mu(p',p)u(p,\sigma)\notag\\
+&\quad=\bar u(p',\sigma')\left[\gamma^\mu F_1(q^2)
+ +\tfrac12i[\gamma^\mu,\gamma^\nu](p'-p)_\nu F_2(q^2)\right]u(p,\sigma).
+\tag{11.3.29}\label{eq:11.3.29}
+\end{align}
+According to Eqs. (10.6.17) and (10.6.18),
+\begin{equation}
+F_1(q^2)=F(q^2)+G(q^2).
+\tag{11.3.30}\label{eq:11.3.30}
+\end{equation}
+For $|q^2|\ll m^2$, this form factor is approximately
+\begin{equation}
+F_1(q^2)\simeq1+{e^2\over24\pi^2}{q^2\over m^2}
+ \left[\ln\left({\mu^2\over m^2}\right)+{2\over5}+{3\over4}\right].
+\tag{11.3.31}\label{eq:11.3.31}
+\end{equation}
+This may be expressed in terms of a \emph{charge radius} $a$, defined by the
+limiting behavior of the charge form factor for $q^2\longrightarrow0$:
+\begin{equation}
+F_1(q^2)\longrightarrow1-q^2a^2/6.
+\tag{11.3.32}\label{eq:11.3.32}
+\end{equation}
+(This definition is motivated by the fact that the average of
+$\exp(i\mathbf q\cdot\mathbf x)$ over a spherical shell of radius $a$ goes as
+$1-\mathbf q^2a^2/6$ for $\mathbf q^2a^2\ll1$.) We see that the charge
+radius of the electron is given by
+\begin{equation}
+a^2=-{e^2\over4\pi^2m^2}
+ \left[\ln\left({\mu^2\over m^2}\right)+{2\over5}+{3\over4}\right].
+\tag{11.3.33}\label{eq:11.3.33}
+\end{equation}
+We will see in Chapter 14 that for electrons in atoms the role of the photon
+mass is played by an effective infrared cutoff that is much less than $m$, so
+the logarithm here is large and negative, yielding a positive value for
+$a^2$.

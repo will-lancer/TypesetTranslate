@@ -1,0 +1,47 @@
+% Figure 12.1: two-loop Compton-scattering graphs.
+% Source: physical PDF p. 527 (printed p. 504).
+\begingroup
+\renewcommand{\thefigure}{12.\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  x=0.82cm,y=0.82cm,
+  electron/.style={line width=0.72pt},
+  photon/.style={line width=0.66pt,decorate,
+    decoration={snake,amplitude=0.95pt,segment length=4.3pt}},
+  flow/.style={-{Stealth[length=4.5pt,width=3.4pt]},line width=0.58pt},
+  subgraph/.style={densely dotted,line width=0.72pt},
+  panel/.style={font=\small}
+]
+% Common Compton skeletons: vertical electron line and two external photons.
+\foreach \x in {0,6.8,13.6}{
+  \draw[electron] (\x,-3.0) -- (\x,3.0);
+  \draw[photon] (\x-2.35,1.65) -- (\x,0.92);
+  \draw[photon] (\x-2.35,-1.65) -- (\x,-0.92);
+  \draw[photon] (\x,2.15) .. controls (\x+1.15,1.95) and
+    (\x+1.15,-1.95) .. (\x,-2.15);
+}
+% (a): second broad photon loop nested inside the first.
+\draw[flow] (0,-0.25) -- (0,0.45);
+\draw[photon] (0,1.48) .. controls (0.78,1.30) and (0.78,-1.30) .. (0,-1.48);
+% (b): electron self-energy subgraph on the internal electron line.
+\draw[flow] (6.8,-0.25) -- (6.8,0.45);
+\draw[photon] (6.8,0.52) .. controls (7.35,0.42) and (7.35,-0.42) .. (6.8,-0.52);
+\draw[subgraph] (6.22,-0.76) rectangle (7.48,0.76);
+% (c): vertex subgraph containing the lower external-photon attachment.
+\draw[flow] (13.6,0.28) -- (13.6,0.84);
+\draw[photon] (13.6,0.02) .. controls (14.15,-0.08) and (14.15,-1.18) ..
+  (13.6,-1.30);
+\draw[subgraph] (13.00,-1.72) rectangle (14.35,0.20);
+\node[panel] at (0,-3.72) {(a)};
+\node[panel] at (6.8,-3.72) {(b)};
+\node[panel] at (13.6,-3.72) {(c)};
+\end{tikzpicture}
+\caption{Some two-loop graphs for Compton scattering. Here straight lines are
+electrons; wavy lines are photons. The momentum space integral for diagram
+(a) is convergent, while for (b) and (c) it is divergent, due to the
+subintegration associated with the subgraphs surrounded by dotted lines.}
+\label{fig:12.1}
+\end{figure}
+\endgroup

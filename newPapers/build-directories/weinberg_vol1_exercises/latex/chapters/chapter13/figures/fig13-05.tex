@@ -1,0 +1,87 @@
+% Figure 13.5: one-, two-, and three-photon exchanges with a heavy target.
+% Source: physical PDF p. 584 (printed p. 561).
+\begingroup
+\renewcommand{\thefigure}{13.\arabic{figure}}
+\setcounter{figure}{4}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  electron/.style={line width=0.7pt},
+  target/.style={double,double distance=2.2pt,line width=0.52pt},
+  photon/.style={line width=0.62pt,decorate,
+    decoration={snake,amplitude=0.82pt,segment length=4.1pt}},
+  every node/.style={font=\small}
+]
+  % Each panel spans x=0..2.15 and y=-1.12..1.12.
+  \newcommand{\rails}{%
+    \draw[electron] (0,-1.12) -- (0,1.12);
+    \draw[target] (2.15,-1.12) -- (2.15,1.12);
+  }
+
+  % One-photon exchange (uncrossed ladder).
+  \begin{scope}[xshift=-5.25cm,yshift=3.25cm]
+    \rails
+    \draw[photon] (0,0) -- (2.15,0);
+    \node at (1.08,-1.68) {L};
+  \end{scope}
+  % Two-photon uncrossed ladder.
+  \begin{scope}[xshift=-1.08cm,yshift=3.25cm]
+    \rails
+    \draw[photon] (0,0.55) -- (2.15,0.55);
+    \draw[photon] (0,-0.55) -- (2.15,-0.55);
+    \node at (1.08,-1.68) {L};
+  \end{scope}
+  % Two-photon crossed ladder.
+  \begin{scope}[xshift=3.08cm,yshift=3.25cm]
+    \rails
+    \draw[photon] (0,0.55) -- (2.15,-0.55);
+    \draw[photon] (0,-0.55) -- (2.15,0.55);
+  \end{scope}
+
+  % Three-photon uncrossed ladder.
+  \begin{scope}[xshift=-5.25cm,yshift=0cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,0.72);
+    \draw[photon] (0,0) -- (2.15,0);
+    \draw[photon] (0,-0.72) -- (2.15,-0.72);
+    \node at (1.08,-1.68) {L};
+  \end{scope}
+  % One upper rung, with the two lower rungs crossed.
+  \begin{scope}[xshift=-1.08cm,yshift=0cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,0.72);
+    \draw[photon] (0,0) -- (2.15,-0.72);
+    \draw[photon] (0,-0.72) -- (2.15,0);
+  \end{scope}
+  % Two upper rungs crossed, with one lower straight rung.
+  \begin{scope}[xshift=3.08cm,yshift=0cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,0);
+    \draw[photon] (0,0) -- (2.15,0.72);
+    \draw[photon] (0,-0.72) -- (2.15,-0.72);
+  \end{scope}
+
+  % The three remaining orderings.
+  \begin{scope}[xshift=-5.25cm,yshift=-3.25cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,-0.72);
+    \draw[photon] (0,0) -- (2.15,0.72);
+    \draw[photon] (0,-0.72) -- (2.15,0);
+  \end{scope}
+  \begin{scope}[xshift=-1.08cm,yshift=-3.25cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,0);
+    \draw[photon] (0,0) -- (2.15,-0.72);
+    \draw[photon] (0,-0.72) -- (2.15,0.72);
+  \end{scope}
+  \begin{scope}[xshift=3.08cm,yshift=-3.25cm]
+    \rails
+    \draw[photon] (0,0.72) -- (2.15,-0.72);
+    \draw[photon] (0,0) -- (2.15,0);
+    \draw[photon] (0,-0.72) -- (2.15,0.72);
+  \end{scope}
+\end{tikzpicture}
+\caption{Diagrams for the scattering of an electron by a heavy, charged target particle, which in the limit of large target mass yield the same result as the diagrams of Figure~\ref{fig:weinberg-13-4}. Here the single straight line is the electron; the double straight line is the heavy target particle; and wavy lines are virtual photons. Diagrams marked `L' are called uncrossed ladder graphs; they dominate the sum when the electron as well as the target particle is non-relativistic.}
+\label{fig:weinberg-13-5}
+\end{figure}
+\endgroup

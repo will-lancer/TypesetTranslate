@@ -1,0 +1,215 @@
+% Chunk: §3.2 The S-Matrix
+% Source: Weinberg QFT Vol I, printed pp. 113-115 (PDF pp. 136-138)
+% Status: transcribed; source-reviewed; compile-clean; render-reviewed
+% Physical pages: 136--138. Figures: none. Uncertainties: none.
+
+where
+\begin{equation}
+\frac{\Pi_\epsilon}{E}\equiv\frac{E}{E^2+\epsilon^2},
+\tag{3.1.23}\label{eq:3.1.23}
+\end{equation}
+\begin{equation}
+\delta_\epsilon(E)\equiv\frac{\epsilon}{\pi(E^2+\epsilon^2)}.
+\tag{3.1.24}\label{eq:3.1.24}
+\end{equation}
+The function \eqref{eq:3.1.23} is just $1/E$ for $|E|\gg\epsilon$, and vanishes for
+$E\to0$, so for $\epsilon\to0$ it behaves just like the `principal value
+function' $\Pi/E$, which allows us to give meaning to integrals of
+$1/E$ times any smooth function of $E$, by excluding an infinitesimal
+interval around $E=0$. The function \eqref{eq:3.1.24} is of order $\epsilon$ for
+$|E|\gg\epsilon$, and gives unity when integrated over all $E$, so in the
+limit $\epsilon\to0$ it behaves just like the familiar delta function
+$\delta(E)$. With this understanding, we can drop the label $\epsilon$ in
+Eq.~\eqref{eq:3.1.22}, and write simply
+\begin{equation}
+(E\mathbin{\pm}i\epsilon)^{-1}
+=\frac{\Pi}{E}\mp i\pi\delta(E).
+\tag{3.1.25}\label{eq:3.1.25}
+\end{equation}
+
+\subsection{\texorpdfstring{The $S$-Matrix}{The S-Matrix}}
+
+An experimentalist generally prepares a state to have a definite particle
+content at $t\to-\infty$, and then measures what this state looks like at
+$t\to+\infty$. If the state is prepared to have a particle content $\alpha$
+for $t\to-\infty$, then it is the `in' state
+$\ket{\alpha}_{\mathrm{in}}$, and if it is found to have the particle content
+$\beta$ at $t\to+\infty$, then it is the `out' state
+$\ket{\beta}_{\mathrm{out}}$. The probability amplitude for the transition
+$\alpha\to\beta$ is thus the scalar product
+\begin{equation}
+S_{\beta\alpha}
+={}_{\mathrm{out}}\!\left\langle\beta
+| \alpha\right\rangle_{\mathrm{in}}.
+\tag{3.2.1}\label{eq:3.2.1}
+\end{equation}
+This array of complex amplitudes is known as the $S$-matrix~\hyperref[ref:3.2]{[2]}. If there
+were no interactions then `in' and `out' states would be the same, and then
+$S_{\beta\alpha}$ would be just $\delta(\alpha-\beta)$. The rate for a
+reaction $\alpha\to\beta$ is thus proportional to
+$|S_{\beta\alpha}-\delta(\alpha-\beta)|^2$. We shall see in detail in
+Section~3.4 what $S_{\beta\alpha}$ has to do with measured rates and
+cross-sections.
+
+Perhaps it should be stressed that `in' and `out' states do not inhabit two
+different Hilbert spaces. They differ only in how they are labelled: by their
+appearance either at $t\to-\infty$ or $t\to+\infty$. Any `in' state can be
+expanded as a sum of `out' states, with expansion coefficients given by the
+$S$-matrix \eqref{eq:3.2.1}.
+
+Since $S_{\beta\alpha}$ is the matrix connecting two sets of orthonormal
+states, it must be unitary. To see this in greater detail, apply the
+completeness relation \eqref{eq:3.1.5} to the `out' states, and write
+\[
+\int d\beta\,S^*_{\beta\gamma}S_{\beta\alpha}
+=\int d\beta\,
+{}_{\mathrm{in}}\!\left\langle\gamma|\beta\right\rangle_{\mathrm{out}}
+\;
+{}_{\mathrm{out}}\!\left\langle\beta | \alpha\right\rangle_{\mathrm{in}}
+={}_{\mathrm{in}}\!\left\langle\gamma
+|\alpha\right\rangle_{\mathrm{in}}.
+\]
+Using \eqref{eq:3.1.15}, this gives
+\begin{equation}
+\int d\beta\,S^*_{\beta\gamma}S_{\beta\alpha}
+=\delta(\gamma-\alpha),
+\tag{3.2.2}\label{eq:3.2.2}
+\end{equation}
+or in brief, $S^\dagger S=\mathbf{1}$. In the same way, completeness for the
+`in' states gives\footnote{An alternative proof is given at the end of this
+section. Note that for infinite `matrices,' the unitarity conditions
+$S^\dagger S=\mathbf{1}$ and $SS^\dagger=\mathbf{1}$ are not equivalent.}
+\begin{equation}
+\int d\beta\,S_{\gamma\beta}S^*_{\alpha\beta}
+=\delta(\gamma-\alpha),
+\tag{3.2.3}\label{eq:3.2.3}
+\end{equation}
+or, in other words, $SS^\dagger=\mathbf{1}$.
+
+It is often convenient instead of dealing with the $S$-matrix to work with
+an operator $S$, defined to have matrix elements between \textit{free-particle}
+states equal to the corresponding elements of the $S$-matrix:
+\begin{equation}
+\bra{\beta}S\ket{\alpha}\equiv S_{\beta\alpha}.
+\tag{3.2.4}\label{eq:3.2.4}
+\end{equation}
+The explicit though highly formal expression \eqref{eq:3.1.13} for the `in' and `out'
+states yields a formula for the $S$-operator:
+\begin{equation}
+S=\Omega(+\infty)^\dagger\Omega(-\infty)=U(+\infty,-\infty),
+\tag{3.2.5}\label{eq:3.2.5}
+\end{equation}
+where
+\begin{equation}
+U(\tau,\tau_0)\equiv\Omega(\tau)^\dagger\Omega(\tau_0)
+=\exp(iH_0\tau)\exp\bigl(-iH(\tau-\tau_0)\bigr)
+\exp(-iH_0\tau_0).
+\tag{3.2.6}\label{eq:3.2.6}
+\end{equation}
+This will be used in the next section to examine the Lorentz invariance of the
+$S$-matrix, and in Sec.~3.5 to derive a formula for the $S$-matrix in
+time-dependent perturbation theory.
+
+The methods of the previous section can be used to derive a useful alternative
+formula for the $S$-matrix. Let's return to Eq.~\eqref{eq:3.1.21} for the `in' state
+$\ket{\Psi_g}_{\mathrm{in}}$, but this time take $t\to+\infty$. We must now
+close the contour of integration for $E_\alpha$ in the \textit{lower}
+half-$E_\alpha$-plane, and although as before the singularities in
+$T^{\mathrm{in}}_{\beta\alpha}$ and $g(\alpha)$ make no contribution for
+$t\to+\infty$, we now do pick up a contribution from the singular factor
+$(E_\alpha-E_\beta+i\epsilon)^{-1}$. The contour runs from
+$E_\alpha=-\infty$ to $E_\alpha=+\infty$, and then back to
+$E_\alpha=-\infty$ on a large semi-circle in the lower half-plane, so it
+circles the singularity in a \textit{clockwise} direction. By the method of
+residues, this contribution to the integral over $E_\alpha$ is given by the
+value of the integrand at $E_\alpha=E_\beta-i\epsilon$, times a factor
+$-2i\pi$. That is, in the limit $\epsilon\to0+$, for $t\to+\infty$ the
+integral over $\alpha$ in \eqref{eq:3.1.21} has the asymptotic behavior
+\[
+\mathcal I^{\mathrm{in}}_\beta\longrightarrow
+-2i\pi e^{-iE_\beta t}
+\int d\alpha\,\delta(E_\alpha-E_\beta)g(\alpha)
+T^{\mathrm{in}}_{\beta\alpha},
+\]
+and hence, for $t\to+\infty$,
+\[
+\ket{\Psi_g(t)}_{\mathrm{in}}\longrightarrow
+\int d\beta\,e^{-iE_\beta t}\ket{\beta}
+\left[g(\beta)-2i\pi\int d\alpha\,
+\delta(E_\alpha-E_\beta)g(\alpha)
+T^{\mathrm{in}}_{\beta\alpha}\right].
+\]
+But expanding \eqref{eq:3.1.19} for $\ket{\Psi_g}_{\mathrm{in}}$ in a complete set of
+`out' states gives
+\[
+\ket{\Psi_g(t)}_{\mathrm{in}}
+=\int d\alpha\,e^{-iE_\alpha t}g(\alpha)
+\int d\beta\,\ket{\beta}_{\mathrm{out}}S_{\beta\alpha}.
+\]
+Since $S_{\beta\alpha}$ contains a factor $\delta(E_\beta-E_\alpha)$, this
+may be rewritten
+\[
+\ket{\Psi_g(t)}_{\mathrm{in}}
+=\int d\beta\,\ket{\beta}_{\mathrm{out}}e^{-iE_\beta t}
+\int d\alpha\,g(\alpha)S_{\beta\alpha},
+\]
+and, using the defining property \eqref{eq:3.1.12} for `out' states, this has the
+asymptotic behavior for $t\to+\infty$
+\[
+\ket{\Psi_g(t)}_{\mathrm{in}}\longrightarrow
+\int d\beta\,\ket{\beta}e^{-iE_\beta t}
+\int d\alpha\,g(\alpha)S_{\beta\alpha}.
+\]
+Comparing this with our previous result, we find
+\[
+\int d\alpha\,g(\alpha)S_{\beta\alpha}
+=g(\beta)-2i\pi\int d\alpha\,
+\delta(E_\alpha-E_\beta)g(\alpha)T^{\mathrm{in}}_{\beta\alpha},
+\]
+or in other words
+\begin{equation}
+S_{\beta\alpha}=\delta(\beta-\alpha)
+-2i\pi\delta(E_\alpha-E_\beta)T^{\mathrm{in}}_{\beta\alpha}.
+\tag{3.2.7}\label{eq:3.2.7}
+\end{equation}
+This suggests a simple approximation for the $S$-matrix: for a weak
+interaction $H_{\mathrm{int}}$, we can neglect the difference between `in'
+and free-particle states in \eqref{eq:3.1.18}, in which case Eq.~\eqref{eq:3.2.7} gives
+\begin{equation}
+S_{\beta\alpha}\simeq\delta(\beta-\alpha)
+-2i\pi\delta(E_\alpha-E_\beta)
+\bra{\beta}H_{\mathrm{int}}\ket{\alpha}.
+\tag{3.2.8}\label{eq:3.2.8}
+\end{equation}
+This is known as the \textit{Born approximation}~\hyperref[ref:3.3]{[3]}. Higher-order terms are
+discussed in Section~3.5.
+
+\begin{center}
+$*\ *\ *$
+\end{center}
+
+We can use the Lippmann--Schwinger equations \eqref{eq:3.1.16} for the `in' and `out'
+states to give a proof~\hyperref[ref:3.4]{[4]} of the orthonormality of these states and the
+unitarity of the $S$-matrix, as well as Eq.~\eqref{eq:3.2.7}, without having to deal
+with limits at $t\to\mp\infty$. First, by using \eqref{eq:3.1.16} on either the left-
+or right-hand side of the matrix element
+${}_{\mathrm{in/out}}\!\langle\beta|H_{\mathrm{int}}|
+\alpha\rangle_{\mathrm{in/out}}$ and equating the results, we find that
+\begin{align*}
+&{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|H_{\mathrm{int}}
+\bigm|\alpha\bigr\rangle
++{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|
+H_{\mathrm{int}}(E_\alpha-H_0\mathbin{\pm}i\epsilon)^{-1}
+H_{\mathrm{int}}\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+\\
+&\qquad={}
+\bigl\langle\beta\bigm|H_{\mathrm{int}}
+\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
++{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|
+H_{\mathrm{int}}(E_\beta-H_0\mathbin{\mp}i\epsilon)^{-1}
+H_{\mathrm{int}}\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}.
+\end{align*}
+Summing over a complete set $\ket{\gamma}$ of intermediate states, this gives
+the
+% The sentence and proof continue on physical PDF p. 139 (printed p. 116),
+% outside this chunk's assigned range.

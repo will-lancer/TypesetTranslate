@@ -1,0 +1,431 @@
+% Chunk: §7.5 Transition to Interaction Picture: Examples (through Eq. 7.5.48)
+% Source: Weinberg QFT Vol. I, printed pp. 318--324 (physical PDF pp. 341--347)
+% Status: transcribed; source-reviewed; compile-clean; render-reviewed
+% Figures: none. Uncertainties: none.
+
+\subsection{Transition to Interaction Picture: Examples}
+
+At the end of Section 7.2 we showed how to use the Lagrangian of a
+simple scalar field theory to derive the structure of the interaction and
+the free fields it contains in the interaction picture. We will now turn to
+somewhat more complicated and revealing examples.
+
+\subsubsection*{Scalar Field, Derivative Coupling}
+
+First let's consider a neutral scalar field, but now with derivative coupling.
+We take the Lagrangian as
+\begin{equation}
+\mathcal L=-\frac12\partial_\mu\Phi\partial^\mu\Phi
+-\frac12m^2\Phi^2-J^\mu\partial_\mu\Phi-\mathcal H_I(\Phi),
+\tag{7.5.1}\label{eq:7.5.1}
+\end{equation}
+where $J^\mu$ is either a c-number external current (unrelated to currents
+$J^\mu$ introduced earlier), or a functional of various fields other than
+$\Phi$ (in which case terms involving these other fields need to be added to
+\eqref{eq:7.5.1}). The canonical conjugate to $\Phi$ is now
+\begin{equation}
+\Pi=\frac{\partial\mathcal L}{\partial\dot\Phi}=\dot\Phi-J^0
+\tag{7.5.2}\label{eq:7.5.2}
+\end{equation}
+and the Hamiltonian is
+\begin{align*}
+H&=\int d^3x\,[\Pi\dot\Phi-\mathcal L]\notag\\
+&=\int d^3x\Bigl[\Pi(\Pi+J^0)+\frac12(\boldsymbol\nabla\Phi)^2
+-\frac12(\Pi+J^0)^2+\frac12m^2\Phi^2\notag\\
+&\hspace{7.8em}{}+\mathbf J\cdot\boldsymbol\nabla\Phi
++J^0(\Pi+J^0)+\mathcal H_I(\Phi)\Bigr].
+\end{align*}
+Collecting terms, we can write this as
+\begin{equation}
+H=H_0+H_{\mathrm{int}},
+\tag{7.5.3}\label{eq:7.5.3}
+\end{equation}
+\begin{equation}
+H_0=\int d^3x\left[\frac12\Pi^2+\frac12(\boldsymbol\nabla\Phi)^2
++\frac12m^2\Phi^2\right],
+\tag{7.5.4}\label{eq:7.5.4}
+\end{equation}
+\begin{equation}
+H_{\mathrm{int}}=\int d^3x\left[\Pi J^0+\mathbf J\cdot\boldsymbol\nabla\Phi
++\frac12(J^0)^2+\mathcal H_I(\Phi)\right].
+\tag{7.5.5}\label{eq:7.5.5}
+\end{equation}
+As explained in Section 7.2, we can pass to the interaction picture by
+simply replacing $\Pi$ and $\Phi$ with $\pi$ and $\phi$ (and likewise for any
+fields in the current $J^\mu$, though we will not bother to indicate this
+explicitly):
+\begin{equation}
+H_0=\int d^3x\left[\frac12\pi^2(\mathbf x,t)
++\frac12\bigl(\boldsymbol\nabla\phi(\mathbf x,t)\bigr)^2
++\frac12m^2\phi^2(\mathbf x,t)\right],
+\tag{7.5.6}\label{eq:7.5.6}
+\end{equation}
+\begin{align}
+H_I(t)=\int d^3x\Bigl[&\pi(\mathbf x,t)J^0(\mathbf x,t)
++\mathbf J(\mathbf x,t)\cdot\boldsymbol\nabla\phi(\mathbf x,t)\notag\\
+&+\frac12\bigl[J^0(\mathbf x,t)\bigr]^2
++\mathcal H_I\bigl(\phi(\mathbf x,t)\bigr)\Bigr].
+\tag{7.5.7}\label{eq:7.5.7}
+\end{align}
+The free-particle Hamiltonian is just the same as Eq.~\eqref{eq:7.2.25}, and leads
+as in Section 7.2 to Eqs.~\eqref{eq:7.2.26}--\eqref{eq:7.2.35}. Indeed, whatever the total
+Hamiltonian may be, we \emph{must} take \eqref{eq:7.5.6} as the part we split off and
+call the free-particle part, with the remainder called the interaction,
+because as we have seen it is this form of the free-particle Hamiltonian that
+leads to the correct expansion \eqref{eq:7.2.29} of the scalar field in terms of
+creation and annihilation operators that satisfy the commutation relations
+\eqref{eq:7.2.34}, \eqref{eq:7.2.35}. The last step is to replace $\pi$ in the interaction
+Hamiltonian with its value $\dot\phi$ in the interaction picture (\emph{not}
+its value $\dot\Phi-J^0$ in the Heisenberg picture):
+\begin{equation}
+H_I(t)=\int d^3x\left[J^\mu(\mathbf x,t)\partial_\mu\phi(\mathbf x,t)
++\frac12\bigl[J^0(\mathbf x,t)\bigr]^2
++\mathcal H_I\bigl(\phi(\mathbf x,t)\bigr)\right].
+\tag{7.5.8}\label{eq:7.5.8}
+\end{equation}
+The extra non-invariant term in Eq.~\eqref{eq:7.5.8} is just what we saw in Section
+6.2 is needed to cancel a non-invariant term in the propagator of
+$\partial_0\phi$.
+
+\subsubsection*{Vector Field, Spin One}
+
+Similar results are obtained in the canonical quantization of the vector
+field $V_\mu$ for a particle of spin one. Let's here keep an open mind, and
+write the Lagrangian density in a fairly general form
+\begin{equation}
+\mathcal L=-\frac12\alpha\,\partial_\mu V_\nu\partial^\mu V^\nu
+-\frac12\beta\,\partial_\mu V_\nu\partial^\nu V^\mu
+-\frac12m^2V_\mu V^\mu-J_\mu V^\mu,
+\tag{7.5.9}\label{eq:7.5.9}
+\end{equation}
+where $\alpha$, $\beta$, and $m^2$ are so far arbitrary constants, and
+$J_\mu$ is either a c-number external current, or an operator depending on
+fields other than $V^\mu$, in which case additional terms involving these
+fields must be added to $\mathcal L$. The Euler--Lagrange field equations for
+$V_\mu$ read
+\[
+\alpha\Box V^\nu+\beta\partial^\nu(\partial_\mu V^\mu)+m^2V^\nu=-J^\nu.
+\]
+Taking the divergence gives
+\begin{equation}
+(\alpha+\beta)\Box\partial_\lambda V^\lambda
++m^2\partial_\lambda V^\lambda=-\partial_\lambda J^\lambda.
+\tag{7.5.10}\label{eq:7.5.10}
+\end{equation}
+This is the equation for an ordinary scalar field with mass
+$m^2/(\alpha+\beta)$ and source $\partial_\lambda J^\lambda/(\alpha+\beta)$.
+We want to describe a theory containing only particles of spin one, not spin
+zero, so to avoid the appearance of $\partial_\lambda V^\lambda$ as an
+independently propagating scalar field, we take $\alpha=-\beta$, in which case
+$\partial_\lambda V^\lambda$ can be expressed in terms of an external current
+or other fields, as $-\partial_\lambda J^\lambda/m^2$. The constant $\alpha$
+can be absorbed in the definition of $V_\mu$, so we can take
+$\alpha=-\beta=1$, and therefore
+\begin{equation}
+\mathcal L=-\frac14F_{\mu\nu}F^{\mu\nu}
+-\frac12m^2V_\mu V^\mu-J_\mu V^\mu,
+\tag{7.5.11}\label{eq:7.5.11}
+\end{equation}
+where
+\begin{equation}
+F_{\mu\nu}=\partial_\mu V_\nu-\partial_\nu V_\mu.
+\tag{7.5.12}\label{eq:7.5.12}
+\end{equation}
+The derivative of the Lagrangian with respect to the time-derivative of the
+vector field is
+\begin{equation}
+\frac{\partial\mathcal L}{\partial\dot V^\mu}=-F^{0\mu}.
+\tag{7.5.13}\label{eq:7.5.13}
+\end{equation}
+This is non-vanishing for $\mu$ a spatial index $i$, so the $V^i$ are
+canonical fields, with conjugates
+\begin{equation}
+\Pi^i=F^{i0}=\dot V^i+\partial_iV^0.
+\tag{7.5.14}\label{eq:7.5.14}
+\end{equation}
+On the other hand $F^{00}=0$, so $\dot V^0$ does not appear in the
+Lagrangian, and $V^0$ is therefore an auxiliary field. This causes no serious
+difficulty: the fact that $\partial\mathcal L/\partial\dot V^0$ vanishes
+means that the field equation for $V^0$ involves no second time-derivatives,
+and can therefore be used as a constraint that eliminates a field variable.
+Specifically, the Euler--Lagrange equation for $\nu=0$ is
+\begin{equation}
+\partial_iF^{i0}=m^2V^0+J^0
+\tag{7.5.15}\label{eq:7.5.15}
+\end{equation}
+or using Eq.~\eqref{eq:7.5.14}
+\begin{equation}
+V^0=\frac1{m^2}(\boldsymbol\nabla\cdot\boldsymbol\Pi-J^0).
+\tag{7.5.16}\label{eq:7.5.16}
+\end{equation}
+
+Now let us calculate the Hamiltonian
+$H=\int d^3x\,(\boldsymbol\Pi\cdot\dot{\mathbf V}-\mathcal L)$ for this
+theory. Eq.~\eqref{eq:7.5.14} allows us to write $\dot{\mathbf V}$ in terms of
+$\boldsymbol\Pi$ and $J^0$:
+\[
+\dot{\mathbf V}=-\boldsymbol\nabla V^0+\boldsymbol\Pi
+=\boldsymbol\Pi-\frac1{m^2}\boldsymbol\nabla
+(\boldsymbol\nabla\cdot\boldsymbol\Pi-J^0),
+\]
+so
+\begin{align*}
+H=\int d^3x\Bigl[&\boldsymbol\Pi^2
++m^{-2}(\boldsymbol\nabla\cdot\boldsymbol\Pi)
+(\boldsymbol\nabla\cdot\boldsymbol\Pi-J^0)
+-\frac12\boldsymbol\Pi^2+\frac12(\boldsymbol\nabla\cdot\mathbf V)^2
++\frac12m^2\mathbf V^2\notag\\
+&-\frac12m^{-2}(\boldsymbol\nabla\cdot\boldsymbol\Pi-J^0)^2
++\mathbf J\cdot\mathbf V
+-m^{-2}J^0(\boldsymbol\nabla\cdot\boldsymbol\Pi-J^0)\Bigr].
+\end{align*}
+Again, we split this up into a free-particle term $H_0$ and interaction
+$H_{\mathrm{int}}$:
+\begin{equation}
+H=H_0+H_{\mathrm{int}},
+\tag{7.5.17}\label{eq:7.5.17}
+\end{equation}
+and pass to the interaction picture by replacing the Heisenberg-picture
+quantities $\mathbf V$ and $\boldsymbol\Pi$ with their interaction-picture
+counterparts $\mathbf v$ and $\boldsymbol\pi$ (and, though not shown
+explicitly, likewise for whatever fields and conjugates are present in
+$J^\mu$):
+\begin{equation}
+H_0=\int d^3x\left[\frac12\boldsymbol\pi^2
++\frac1{2m^2}(\boldsymbol\nabla\cdot\boldsymbol\pi)^2
++\frac12(\boldsymbol\nabla\cdot\mathbf v)^2
++\frac{m^2}{2}\mathbf v^2\right],
+\tag{7.5.18}\label{eq:7.5.18}
+\end{equation}
+\begin{equation}
+H_I(t)=\int d^3x\left[\mathbf J\cdot\mathbf v
+-m^{-2}J^0\boldsymbol\nabla\cdot\boldsymbol\pi
++\frac1{2m^2}(J^0)^2\right].
+\tag{7.5.19}\label{eq:7.5.19}
+\end{equation}
+The relation between $\boldsymbol\pi$ and $\mathbf v$ is then
+\begin{equation}
+\dot{\mathbf v}=\frac{\delta H_0(\mathbf v,\boldsymbol\pi)}
+{\delta\boldsymbol\pi}
+=\boldsymbol\pi-m^{-2}\boldsymbol\nabla
+(\boldsymbol\nabla\cdot\boldsymbol\pi)
+\tag{7.5.20}\label{eq:7.5.20}
+\end{equation}
+and the `field equation' is
+\begin{equation}
+\dot{\boldsymbol\pi}=-\frac{\delta H_0(\mathbf v,\boldsymbol\pi)}
+{\delta\mathbf v}
+=+\nabla^2\mathbf v-\boldsymbol\nabla(\boldsymbol\nabla\cdot\mathbf v)
+-m^2\mathbf v.
+\tag{7.5.21}\label{eq:7.5.21}
+\end{equation}
+Since $V^0$ is not an independent field variable, it is not related by a
+similarity transformation to any interaction-picture object $v^0$. Instead,
+we can \emph{invent} a quantity
+\begin{equation}
+v^0\equiv m^{-2}\boldsymbol\nabla\cdot\boldsymbol\pi.
+\tag{7.5.22}\label{eq:7.5.22}
+\end{equation}
+Eq.~\eqref{eq:7.5.20} then allows us to write $\boldsymbol\pi$ as
+\begin{equation}
+\boldsymbol\pi=\dot{\mathbf v}+\boldsymbol\nabla v^0.
+\tag{7.5.23}\label{eq:7.5.23}
+\end{equation}
+Inserting this in Eqs.~\eqref{eq:7.5.22} and \eqref{eq:7.5.21} gives our field equations in the
+form
+\begin{align*}
+\nabla^2v^0+\boldsymbol\nabla\cdot\dot{\mathbf v}-m^2v^0&=0,\\
+\nabla^2\mathbf v-\boldsymbol\nabla(\boldsymbol\nabla\cdot\mathbf v)
+-\ddot{\mathbf v}-\boldsymbol\nabla\dot v^0-m^2\mathbf v&=0.
+\end{align*}
+These can be combined in the covariant form
+\begin{equation}
+\Box v^\mu-\partial^\mu\partial_\nu v^\nu-m^2v^\mu=0.
+\tag{7.5.24}\label{eq:7.5.24}
+\end{equation}
+Taking the divergence gives
+\begin{equation}
+\partial_\mu v^\mu=0
+\tag{7.5.25}\label{eq:7.5.25}
+\end{equation}
+and hence
+\begin{equation}
+(\Box-m^2)v^\mu=0.
+\tag{7.5.26}\label{eq:7.5.26}
+\end{equation}
+A real vector field satisfying Eqs.~\eqref{eq:7.5.25} and \eqref{eq:7.5.26} can be expressed as
+a Fourier transform
+\begin{align}
+v^\mu(x)=(2\pi)^{-3/2}\sum_\sigma\int d^3p\,(2p^0)^{-1/2}
+\Bigl\{&e^\mu(\mathbf p,\sigma)a_{\mathbf p,\sigma}e^{ip\cdot x}\notag\\
+&+e^{\mu*}(\mathbf p,\sigma)a^\dagger_{\mathbf p,\sigma}e^{-ip\cdot x}\Bigr\},
+\tag{7.5.27}\label{eq:7.5.27}
+\end{align}
+where $p^0=\sqrt{\mathbf p^2+m^2}$; the $e^\mu(\mathbf p,\sigma)$ for
+$\sigma=+1,0,-1$ are three independent vectors satisfying
+\begin{equation}
+p_\mu e^\mu(\mathbf p,\sigma)=0
+\tag{7.5.28}\label{eq:7.5.28}
+\end{equation}
+and normalized so that
+\begin{equation}
+\sum_\sigma e^\mu(\mathbf p,\sigma)e^{\nu*}(\mathbf p,\sigma)
+=\eta^{\mu\nu}+\frac{p^\mu p^\nu}{m^2};
+\tag{7.5.29}\label{eq:7.5.29}
+\end{equation}
+and the $a_{\mathbf p,\sigma}$ are operator coefficients. It is straightforward
+using Eqs.~\eqref{eq:7.5.23}, \eqref{eq:7.5.27}, and \eqref{eq:7.5.29} to calculate that $\mathbf v$ and
+$\boldsymbol\pi$ satisfy the correct commutation relations
+\begin{align}
+[v^i(\mathbf x,t),\pi^j(\mathbf y,t)]&=i\delta_{ij}\delta^3(\mathbf x-\mathbf y),
+\notag\\
+[v^i(\mathbf x,t),v^j(\mathbf x,t)]
+&=[\pi^i(\mathbf x,t),\pi^j(\mathbf x,t)]=0,
+\tag{7.5.30}\label{eq:7.5.30}
+\end{align}
+provided that $a_{\mathbf p,\sigma}$ and $a^\dagger_{\mathbf p,\sigma}$ satisfy
+the commutation relations
+\begin{equation}
+[a_{\mathbf p,\sigma},a^\dagger_{\mathbf p',\sigma'}]
+=\delta^3(\mathbf p'-\mathbf p)\delta_{\sigma'\sigma},
+\tag{7.5.31}\label{eq:7.5.31}
+\end{equation}
+\begin{equation}
+[a_{\mathbf p,\sigma},a_{\mathbf p',\sigma'}]=0.
+\tag{7.5.32}\label{eq:7.5.32}
+\end{equation}
+
+We already know that the vector field for a spin one particle must take the
+form \eqref{eq:7.5.27}, so our derivation of these results serves to verify that Eq.
+\eqref{eq:7.5.18} gives the correct free-particle Hamiltonian for a massive particle
+of spin one. It is easy to check also that Eq.~\eqref{eq:7.5.18} may be written (up to
+a constant term) in the standard form of a free-particle energy, as
+$\sum_\sigma\int d^3p\,p^0a^\dagger_{\mathbf p,\sigma}a_{\mathbf p,\sigma}$.
+Finally, using Eq.~\eqref{eq:7.5.22} in Eq.~\eqref{eq:7.5.19} yields the interaction in the
+interaction picture
+\begin{equation}
+H_I(t)=\int d^3x\left[J_\mu v^\mu+\frac1{2m^2}(J^0)^2\right].
+\tag{7.5.33}\label{eq:7.5.33}
+\end{equation}
+The extra non-invariant term in Eq.~\eqref{eq:7.5.33} is just what we found in Chapter
+6 is needed to cancel a non-invariant term in the propagator of the vector
+field.
+
+\subsubsection*{Dirac field, Spin One Half}
+
+For the Dirac field of a particle of spin $1/2$, we tentatively take the
+Lagrangian as
+\begin{equation}
+\mathcal L=-\bar\Psi(\gamma^\mu\partial_\mu+m)\Psi
+-\mathcal H_I(\bar\Psi,\Psi)
+\tag{7.5.34}\label{eq:7.5.34}
+\end{equation}
+with $\mathcal H_I$ a real function of $\bar\Psi$ and $\Psi$. This is not real,
+but the action is, because
+\[
+\bar\Psi\gamma^\mu\partial_\mu\Psi
+-(\bar\Psi\gamma^\mu\partial_\mu\Psi)^\dagger
+=\bar\Psi\gamma^\mu\partial_\mu\Psi
++(\partial_\mu\bar\Psi)\gamma^\mu\Psi
+=\partial_\mu(\bar\Psi\gamma^\mu\Psi).
+\]
+Hence the field equations obtained by requiring the action to be stationary
+with respect to $\bar\Psi$ are the adjoints of those obtained by requiring the
+action to be stationary with respect to $\Psi$, as necessary if we are to
+avoid having too many field equations. The canonical conjugate to $\Psi$ is
+\begin{equation}
+\Pi=\frac{\partial\mathcal L}{\partial\dot\Psi}=-\bar\Psi\gamma^0,
+\tag{7.5.35}\label{eq:7.5.35}
+\end{equation}
+so we should not regard $\bar\Psi$ as a field like $\Psi$, but rather as
+proportional to the canonical conjugate of $\Psi$. The Hamiltonian is
+\[
+H=\int d^3x\,[\Pi\dot\Psi-\mathcal L]
+=\int d^3x\left[\Pi\gamma^0(\boldsymbol\gamma\cdot\boldsymbol\nabla+m)\Psi
++\mathcal H_I\right].
+\]
+We write this as
+\begin{equation}
+H=H_0+H_{\mathrm{int}},
+\tag{7.5.36}\label{eq:7.5.36}
+\end{equation}
+where
+\begin{equation}
+H_0=\int d^3x\,\Pi\gamma^0(\boldsymbol\gamma\cdot\boldsymbol\nabla+m)\Psi,
+\tag{7.5.37}\label{eq:7.5.37}
+\end{equation}
+\begin{equation}
+H_{\mathrm{int}}=\int d^3x\,\mathcal H_I(\bar\Psi,\Psi).
+\tag{7.5.38}\label{eq:7.5.38}
+\end{equation}
+
+We now pass to the interaction picture. Since Eq.~\eqref{eq:7.5.35} does not involve
+the time, the similarity transformation \eqref{eq:7.1.28}, \eqref{eq:7.1.29} yields immediately
+\begin{equation}
+\pi=-\bar\psi\gamma^0.
+\tag{7.5.39}\label{eq:7.5.39}
+\end{equation}
+Likewise, $H_0$ and $H_I(t)$ can be calculated by replacing $\Psi$ and $\Pi$
+with $\psi$ and $\pi$ in Eqs.~\eqref{eq:7.5.37} and \eqref{eq:7.5.38}. This gives the equation
+of motion
+\begin{equation}
+\dot\psi=\frac{\delta H_0}{\delta\pi}
+=\gamma^0(\boldsymbol\gamma\cdot\boldsymbol\nabla+m)\psi
+\tag{7.5.40}\label{eq:7.5.40}
+\end{equation}
+or more neatly
+\begin{equation}
+(\gamma^\mu\partial_\mu+m)\psi=0.
+\tag{7.5.41}\label{eq:7.5.41}
+\end{equation}
+(The other equation of motion, $\dot\pi=-\delta H_0/\delta\psi$, yields just
+the adjoint of this one.) Any field satisfying Eq.~\eqref{eq:7.5.41} can be written as
+a Fourier transform
+\begin{equation}
+\psi(x)=(2\pi)^{-3/2}\int d^3p\sum_\sigma
+\left\{u(\mathbf p,\sigma)e^{ip\cdot x}a_{\mathbf p,\sigma}
++v(\mathbf p,\sigma)e^{-ip\cdot x}b^\dagger_{\mathbf p,\sigma}\right\},
+\tag{7.5.42}\label{eq:7.5.42}
+\end{equation}
+where $p^0=\sqrt{\mathbf p^2+m^2}$; $a_{\mathbf p,\sigma}$ and
+$b^\dagger_{\mathbf p,\sigma}$ are operator coefficients; and
+$u(\mathbf p,\mathord\pm\frac12)$ are the two independent solutions of
+\begin{equation}
+(i\gamma^\mu p_\mu+m)u(\mathbf p,\sigma)=0
+\tag{7.5.43}\label{eq:7.5.43}
+\end{equation}
+and likewise
+\begin{equation}
+(-i\gamma^\mu p_\mu+m)v(\mathbf p,\sigma)=0
+\tag{7.5.44}\label{eq:7.5.44}
+\end{equation}
+normalized so that\footnote{The matrix $i\gamma^\mu p_\mu$ has eigenvalues
+$\pm m$, so $\sum u\bar u$ and $\sum v\bar v$ must be proportional to the
+projection matrices $(-i\gamma^\mu p_\mu+m)/2m$ and
+$(i\gamma^\mu p_\mu+m)/2m$, respectively. The proportionality factor may be
+adjusted up to a sign by absorbing it in the definition of $u$ and $v$. The
+overall sign is determined by positivity; $\operatorname{Tr}\sum u\bar u\beta
+=\sum u^\dagger u$ and $\operatorname{Tr}\sum v\bar v\beta
+=\sum v^\dagger v$ must be positive.}
+\begin{equation}
+\sum_\sigma u(\mathbf p,\sigma)\bar u(\mathbf p,\sigma)
+=\frac{-i\gamma^\mu p_\mu+m}{2p^0},
+\tag{7.5.45}\label{eq:7.5.45}
+\end{equation}
+\begin{equation}
+\sum_\sigma v(\mathbf p,\sigma)\bar v(\mathbf p,\sigma)
+=-\frac{i\gamma^\mu p_\mu+m}{2p^0}.
+\tag{7.5.46}\label{eq:7.5.46}
+\end{equation}
+In order to obtain the desired anticommutators
+\begin{align}
+\{\psi_\alpha(\mathbf x,t),\bar\psi_\beta(\mathbf y,t)\}
+&=\{\psi_\alpha(\mathbf x,t),\pi_\gamma(\mathbf y,t)\}
+(\gamma^0)_{\gamma\beta}\notag\\
+&=i(\gamma^0)_{\alpha\beta}\delta^3(\mathbf x-\mathbf y),
+\tag{7.5.47}\label{eq:7.5.47}
+\end{align}
+\begin{equation}
+\{\psi_\alpha(\mathbf x,t),\psi_\beta(\mathbf y,t)\}=0,
+\tag{7.5.48}\label{eq:7.5.48}
+\end{equation}

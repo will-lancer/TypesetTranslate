@@ -1,0 +1,224 @@
+% Chunk: Chapter 12, Section 12.1, Degrees of Divergence.
+% Source: Weinberg QFT Vol. I, physical pp. 523--527 (printed pp. 500--504).
+% Coverage: equations (12.1.1)--(12.1.11); two unnumbered displays; Table 12.1;
+% Figure 12.1; two body footnotes; citations [2].
+% Boundary: physical p. 527 ends mid-sentence; physical p. 528 continues it.
+% Uncertainty: none within the assigned page range.
+
+\subsection{Degrees of Divergence}
+
+Let us consider a very general sort of theory, containing interactions of
+varying types labelled $i$. Each interaction may be characterized by the
+number $n_{if}$ of fields of each type $f$, and by the number $d_i$ of
+derivatives acting on these fields.
+
+We will start by calculating the ``superficial degree of divergence'' $D$ of
+an arbitrary connected one-particle irreducible Feynman diagram in such a
+theory. This is the number of factors of momentum in the numerator minus the
+number in the denominator of the integrand, plus four for every independent
+four-momentum over which we integrate. The superficial divergence is the
+actual degree of divergence of the integration over the region of momentum
+space in which the momenta of all internal lines go to infinity together.
+That is, if $D>0$, then the part of the amplitude where all internal momenta
+go to infinity with a common factor $\kappa\to\infty$ will diverge like
+\begin{equation}
+  \int^\infty \kappa^{D-1}\,d\kappa.
+  \tag{12.1.1}\label{eq:12.1.1}
+\end{equation}
+In the same sense, an integral with degree of divergence $D=0$ is
+logarithmically divergent, and an integral with $D<0$ is convergent, at least
+as far as this region of momentum space is concerned. We will come back later
+to the problem posed by subintegrations that behave worse than the integral
+over this region.
+
+To calculate $D$, we will need to know the following about the diagram:
+\[
+\begin{aligned}
+I_f&\equiv\text{number of internal lines of field type }f,\\
+E_f&\equiv\text{number of external lines of field type }f,\\
+N_i&\equiv\text{number of vertices of interaction type }i.
+\end{aligned}
+\]
+We will write the asymptotic behavior of the propagator $\Delta_f(k)$ of a
+field of type $f$ in the form
+\begin{equation}
+  \Delta_f(k)\sim k^{-2+2s_f}.
+  \tag{12.1.2}\label{eq:12.1.2}
+\end{equation}
+Looking back at Chapter 6, we see that $s_f=0$ for scalar fields,
+$s_f=\tfrac12$ for Dirac fields, and $s_f=1$ for massive vector fields. More
+generally, it can be shown that for massive fields of Lorentz transformation
+type $(A,B)$, we have $s_f=A+B$. Speaking loosely, we may call $s_f$ the
+``spin.'' However, dropping terms that because of gauge invariance have no
+effect, the effective photon propagator $\eta_{\mu\nu}/k^2$ has $s_f=0$. A
+similar result applies to a massive vector field coupled to a conserved
+current, provided the current does not depend on the vector field. It can also
+be shown that, in the same sense, the graviton field $g_{\mu\nu}$ has a
+propagator also with $s_f=0$.
+
+According to Eq.~\eqref{eq:12.1.2}, the propagators make a total contribution
+to $D$ equal to
+\begin{equation}
+  \sum_f I_f(2s_f-2).
+  \tag{12.1.3}\label{eq:12.1.3}
+\end{equation}
+Also, the derivatives in each interaction of type $i$ introduce $d_i$
+momentum factors into the integrand, yielding a total contribution to $D$
+equal to
+\begin{equation}
+  \sum_i N_i d_i.
+  \tag{12.1.4}\label{eq:12.1.4}
+\end{equation}
+Finally, we need the total number of independent momentum variables of
+integration. Each internal line can be labelled with a four-momentum, but
+these are not all independent; the delta function associated with each vertex
+imposes a linear relation among these internal momenta, except that one delta
+function only serves to enforce conservation of the external momenta. Thus,
+the momentum space integration volume elements contribute to $D$ a term
+\begin{equation}
+  4\left[\sum_f I_f-\left(\sum_i N_i-1\right)\right],
+  \tag{12.1.5}\label{eq:12.1.5}
+\end{equation}
+which, of course, is just four times the number of independent loops in the
+diagram. Adding the contributions \eqref{eq:12.1.3}, \eqref{eq:12.1.4}, and
+\eqref{eq:12.1.5}, we find
+\begin{equation}
+  D=\sum_f I_f(2s_f+2)+\sum_i N_i(d_i-4)+4.
+  \tag{12.1.6}\label{eq:12.1.6}
+\end{equation}
+Eq.~\eqref{eq:12.1.6} is not very convenient as it stands, because it gives a
+value for $D$ that seems to depend on the internal details of the Feynman
+diagram. Fortunately, it can be simplified by using the topological identities
+\begin{equation}
+  2I_f+E_f=\sum_i N_i n_{if}.
+  \tag{12.1.7}\label{eq:12.1.7}
+\end{equation}
+(Each internal line contributes two of the lines attached to vertices, while
+each external line contributes only one.) Using Eq.~\eqref{eq:12.1.7} to
+eliminate $I_f$, we see that Eq.~\eqref{eq:12.1.6} becomes
+\begin{equation}
+  D=4-\sum_f E_f(s_f+1)-\sum_i N_i\Delta_i,
+  \tag{12.1.8}\label{eq:12.1.8}
+\end{equation}
+where $\Delta_i$ is a parameter characterizing interactions of type $i$:
+\begin{equation}
+  \Delta_i\equiv 4-d_i-\sum_f n_{if}(s_f+1).
+  \tag{12.1.9}\label{eq:12.1.9}
+\end{equation}
+
+This result could have been obtained by simple dimensional analysis, without
+considering the structure of Feynman diagrams. The propagator of a field is a
+four-dimensional Fourier transform of the vacuum expectation value of a
+time-ordered product of a pair of free fields, so a conventionally normalized
+field $f$ whose dimensionality\footnote{In this chapter, ``dimensionality''
+will always refer to the dimensionality in powers of mass or momentum, in
+units with $\hbar=c=1$. We are using fields that are conventionally
+normalized, in the sense that the term in the free-field Lagrangian with the
+largest number of derivatives (which determines the asymptotic behavior of the
+propagator) has a dimensionless coefficient.} in powers of momentum is
+$\mathcal D_f$ will have a propagator of dimensionality $-4+2\mathcal D_f$.
+Hence if the propagator behaves like $k^{-2+2s_f}$ when $k$ is much larger
+than the mass, then the field must have a dimensionality with
+$-4+2\mathcal D_f=-2+2s_f$, or $\mathcal D_f=1+s_f$. An interaction $i$ with
+$n_{if}$ such fields and $d_i$ derivatives will then have dimensionality
+$d_i+\sum_f n_{if}(1+s_f)$. But the action must be dimensionless, so each
+term in the Lagrangian density must have dimensionality $+4$ to cancel the
+dimensionality $-4$ of $d^4x$. Hence the interaction must have a coupling
+constant of dimensionality $4-d_i-\sum_f n_{if}(1+s_f)$, which is just the
+parameter $\Delta_i$. The momentum space amplitude corresponding to a
+connected Feynman graph with $E_f$ external lines of type $f$ is the Fourier
+transform over $4\sum_f E_f$ coordinates of a vacuum expectation value of the
+time-ordered product of fields with a total dimensionality
+$\sum_f E_f(1+s_f)$, so it has dimensionality $\sum_f E_f(-3+s_f)$. Of this
+dimensionality, $-4$ comes from a momentum space delta function, and
+$\sum_f E_f(-2+2s_f)$ is the dimensionality of the propagators for the
+external lines, so the momentum space integral itself together with all
+coupling constant factors has dimensionality
+\[
+  \sum_f E_f(-3+s_f)-(-4)-\sum_f E_f(-2+2s_f)
+  =4-\sum_f E_f(s_f+1).
+\]
+The coupling constants for a given Feynman graph have total dimensionality
+$\sum_i N_i\Delta_i$, leaving the momentum space integral with dimensionality
+$4-\sum_f E_f(s_f+1)-\sum_iN_i\Delta_i$. As long as we are interested in the
+region of integration where all momenta go to infinity together, the degree of
+divergence of the momentum space integral is its dimensionality, thus
+justifying Eq.~\eqref{eq:12.1.8}.
+
+If all interactions have $\Delta_i\geq0$, then Eq.~\eqref{eq:12.1.8} provides
+an upper bound on $D$ that depends only on the numbers of external lines of
+each type, i.e., on the physical process whose amplitude is being calculated:
+\begin{equation}
+  D\leq4-\sum_f E_f(s_f+1).
+  \tag{12.1.10}\label{eq:12.1.10}
+\end{equation}
+For example, in the simple version of quantum electrodynamics studied in the
+previous chapter, the Lagrangian included terms of the types shown in
+Table~\ref{tab:12.1}. All interactions here have $\Delta_i\geq0$, and hence a
+Feynman diagram with $E_\gamma$ external photon lines and $E_e$ external Dirac
+lines will
+
+\input{chapters/chapter12/tables/table12-01.tex}
+
+have superficial degree of divergence bounded by Eq.~\eqref{eq:12.1.10}:
+\begin{equation}
+  D\leq4-\frac32E_e-E_\gamma.
+  \tag{12.1.11}\label{eq:12.1.11}
+\end{equation}
+Only a finite number of sets of external lines can yield superficially
+divergent integrals; these will be enumerated in Section 12.2. We are going to
+show that the limited number of divergences that appear in theories with
+$\Delta_i\geq0$ for all interactions are automatically removed by a
+redefinition of a finite number of physical constants and a renormalization of
+fields. For this reason, such theories are called renormalizable. In Section
+12.3 we will catalog all the renormalizable theories, and discuss the
+significance of renormalizability as a criterion for physical theories.
+
+The term ``renormalizable'' is also applied to individual interactions.
+Renormalizable interactions are those with $\Delta_i\geq0$, whose coupling
+constants have positive or zero dimensionality. Sometimes one distinguishes
+between interactions with $\Delta_i=0$, called simply renormalizable, and
+those with $\Delta_i>0$, called superrenormalizable. Since adding additional
+fields or derivatives always lowers $\Delta_i$, there can only be a finite
+number of renormalizable interactions involving fields of any given types. We
+have seen that all the interactions in the simplest version of quantum
+electrodynamics are renormalizable, with the $\bar\psi\psi$ terms
+superrenormalizable.
+
+On the other hand, if any interaction has $\Delta_i<0$, the degree of
+divergence \eqref{eq:12.1.8} becomes larger and larger the more such vertices
+we include. No matter how large we take the various $E_f$, eventually with
+enough vertices of type $i$ for which $\Delta_i<0$, Eq.~\eqref{eq:12.1.8} will
+become positive (or zero), and the integral will diverge. Such interactions,
+whose couplings have negative-definite dimensionality, are called
+non-renormalizable;\footnote{In perturbative statistical mechanics,
+non-renormalizable interactions are called irrelevant, because they become
+less important in the limit of low energies. Renormalizable and
+super-renormalizable interactions are called marginal and relevant,
+respectively.} theories with any non-renormalizable interactions are also
+known as non-renormalizable. But this does not mean that such theories are
+hopeless; we shall see that these divergences may also be absorbed into a
+redefinition of the parameters of the theory, but here we need an infinite
+number of couplings.
+
+\input{chapters/chapter12/figures/fig12-01.tex}
+
+It should be kept in mind that we have here calculated the degree of divergence
+of Feynman diagrams arising only from regions of momentum space in which all
+internal four-momenta go to infinity together. Divergences can also arise from
+regions in which only the four-momenta of lines belonging to some subgraph go
+to infinity. For instance, in quantum electrodynamics
+Eq.~\eqref{eq:12.1.11} gives $D\leq-1$ for Compton scattering (where $E_e=2$,
+$E_\gamma=2$), and indeed graphs like Figure~\ref{fig:12.1}(a) are convergent,
+but a graph like Figure~\ref{fig:12.1}(b) or \ref{fig:12.1}(c) is
+logarithmically divergent, because these graphs contain subgraphs (indicated
+by dotted boxes) with $D\geq0$. We can think of the divergence of these graphs
+as being due to an anomalously bad asymptotic behavior that occurs when the
+eight components of the two independent internal four-momenta of these graphs
+go to infinity on a particular four-dimensional subspace, namely, that
+subspace in which the only four-momentum actually going to infinity is the one
+circulating in the loops that are inserted in the internal lines or at an
+electron-photon vertex.
+
+It has been shown~\hyperref[ref:12.2]{[2]} that the requirement for the actual
+convergence of

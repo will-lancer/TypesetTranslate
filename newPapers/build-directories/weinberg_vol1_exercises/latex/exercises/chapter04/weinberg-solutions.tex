@@ -1,0 +1,136 @@
+\chapterbackmatter{Solutions to Weinberg Exercises}
+\ExerciseEditorialNote
+
+\begin{enumerate}
+\WeinbergSolution{1}
+For bosons, substitute the partition expansion
+Eq.~\eqref{eq:4.3.2} into \(F[v]\).  A term containing \(r_k\) connected
+components of type \(k\) has the product of their connected matrix
+elements and the combinatorial factor \(1/r_k!\) for each set of
+identical components.  The factors \(N!M!\) in the definition of \(F\)
+cancel the ways of distributing the outgoing and incoming labels among
+the components.  Thus
+\[
+ F[v]
+ =\prod_k\sum_{r_k=0}^{\infty}
+ \frac{\bigl(F_k^C[v]\bigr)^{r_k}}{r_k!},
+\]
+where \(F_k^C\) denotes one possible connected contribution, including
+all its label integrals.  Multiplying the exponentials and summing over
+all component types gives
+\[
+ \boxed{\qquad F[v]=\exp\!\bigl(F^C[v]\bigr),\qquad
+ F^C[v]=\log F[v].\qquad}
+\]
+The constant term is correct because \(F[0]=1\) and \(F^C[0]=0\).
+
+One can also verify the result by functional differentiation.  Every
+derivative of \(\exp(F^C)\) is a sum over set partitions of the
+derivatives of \(F^C\); after setting \(v=0\), these derivatives are the
+connected matrix elements, and the sum over partitions is exactly
+Eq.~\eqref{eq:4.3.2}.
+
+\WeinbergSolution{2}
+Let
+\[
+ \ket{i}=\ket{\mathbf k,-\mathbf k},\qquad
+ \ket{f}=\ket{\mathbf k',-\mathbf k'},\qquad
+ \varepsilon_k=\sqrt{k^2+M^2}.
+\]
+Commuting the two annihilation and two creation operators through the
+external states gives
+\[
+ \bra{f}H_{\rm int}\ket{i}
+ =4g\,\delta^3(\mathbf p_f-\mathbf p_i).
+\]
+At second order, the two-particle completeness relation contributes
+\(1/2!\).  The reduced transition matrix element is therefore
+\[
+ \mathcal M(k)
+ =4g+8g^2 I(k)+O(g^3),
+\qquad
+ I(k)=\int d^3\mathbf q\,
+ \frac{1}{2\varepsilon_k-2\varepsilon_q+i0}.
+\]
+The integral is ultraviolet divergent, as expected for an unregulated
+three-dimensional contact interaction.  With a momentum cutoff
+\(\Lambda\),
+\[
+ I_\Lambda(k)=4\pi\int_0^\Lambda dq\,
+ \frac{q^2}{2\varepsilon_k-2\varepsilon_q+i0},
+\qquad
+ \operatorname{Im}I_\Lambda(k)=-2\pi^2k\varepsilon_k
+\]
+for \(\Lambda>k\).  The divergent real part must be absorbed into a
+definition of the physical coupling.
+
+Including the identity term, the center-of-mass \(S\)-matrix through
+order \(g^2\) is
+\[
+ \begin{split}
+ \OutBra{\mathbf k',-\mathbf k'}\InKet{\mathbf k,-\mathbf k}
+ ={}&\braket{\mathbf k',-\mathbf k'}{\mathbf k,-\mathbf k}\\
+ &-2\pi i\,\delta(2\varepsilon_{k'}-2\varepsilon_k)
+ \delta^3(\mathbf p_f-\mathbf p_i)\,
+ \bigl[4g+8g^2I_\Lambda(k)\bigr]+O(g^3).
+ \end{split}
+\]
+Equation \eqref{eq:3.4.30}, with the usual \(1/2!\) for identical final
+particles when the full labeled solid angle is used, gives
+\[
+ \frac{d\sigma}{d\Omega}
+ =\frac{(2\pi)^4\varepsilon_k^2}{8}
+ \left|4g+8g^2I_\Lambda(k)\right|^2.
+\]
+In particular, the leading cross section is
+\[
+ \boxed{\quad
+ \frac{d\sigma}{d\Omega}
+ =2(2\pi)^4g^2\varepsilon_k^2+O(g^3)
+ \quad}
+\]
+over the full sphere.  Equivalently, one may omit the \(1/2!\) and
+integrate over only one hemisphere.
+
+\WeinbergSolution{3}
+Put
+\[
+ \|\lambda\|^2=\int dq\,|\lambda(q)|^2,
+\qquad
+ A^\dagger(\lambda)=\int dq\,\lambda(q)a_q^\dagger.
+\]
+The normalized coherent state is
+\[
+ \boxed{\quad
+ \ket{\lambda}
+ =e^{-\|\lambda\|^2/2}e^{A^\dagger(\lambda)}\ket{\Omega}
+ =e^{-\|\lambda\|^2/2}
+ \sum_{N=0}^{\infty}\frac1{N!}
+ \int dq_1\cdots dq_N
+ \prod_{r=1}^N\lambda(q_r)\ket{q_1\cdots q_N}.
+ \quad}
+\]
+Indeed,
+\[
+ [a_q,A^\dagger(\lambda)]=\lambda(q)
+\]
+is a c-number, so
+\[
+ a_qe^{A^\dagger(\lambda)}
+ =e^{A^\dagger(\lambda)}\bigl(a_q+\lambda(q)\bigr).
+\]
+Since \(a_q\ket{\Omega}=0\), this proves
+\(a_q\ket{\lambda}=\lambda(q)\ket{\lambda}\).
+
+Finally,
+\[
+ \bra{\Omega}e^{A(\lambda)}e^{A^\dagger(\lambda)}
+ \ket{\Omega}=e^{\|\lambda\|^2},
+\]
+so the prefactor makes the norm unity.  The probability of finding
+\(N\) particles is
+\[
+ P_N=e^{-\|\lambda\|^2}\frac{\|\lambda\|^{2N}}{N!},
+\]
+which also checks the normalization by summing the Poisson series.
+\end{enumerate}

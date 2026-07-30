@@ -1,0 +1,419 @@
+% Physical pages: 430--436 (printed pages 407--413).
+% Figures: none.
+% Uncertainties: none.
+
+$\prod_a(q_a-q'_a)$, so
+\begin{equation}
+\left(\prod_a(q_a-q'_a)\right)f(q)
+=\left(\prod_a(q_a-q'_a)\right)f(q'),
+\tag{9.5.40}\label{eq:9.5.40}
+\end{equation}
+which partly justifies our earlier remark that Eq. \eqref{eq:9.5.20} plays the role of a
+delta function for integrals over the $q$s. Using Eq. \eqref{eq:9.5.32}, we now have
+\[
+\braket{q'}{f}=(-)^N\left[
+ \int\left(\widetilde{\prod_b}dq_b\right)
+ \left(\prod_a(q_a-q'_a)\right)f(q')\right].
+\]
+The term in the integrand proportional to $\prod_aq_a$ has coefficient
+$f(q')$, so according to our definition of integration
+$\braket{q'}{f}=(-)^Nf(q')$. Inserting this back in Eq. \eqref{eq:9.5.39} gives our
+completeness relation
+\[
+\ket{f}=(-)^N\int\ket{q}
+ \left(\widetilde{\prod_b}dq_b\right)\braket{q}{f},
+\]
+or as an operator equation
+\begin{equation}
+\mathbf{1}=\int\ket{q}
+ \left(\widetilde{\prod_a}(-dq_a)\right)\bra{q}.
+\tag{9.5.41}\label{eq:9.5.41}
+\end{equation}
+In exactly the same way, we can also show that
+\begin{equation}
+\mathbf{1}=\int\ket{p}
+ \left(\widetilde{\prod_a}dp_a\right)\bra{p}.
+\tag{9.5.42}\label{eq:9.5.42}
+\end{equation}
+
+We are now in a position to calculate transition matrix elements. As before,
+we define time-dependent operators
+\begin{equation}
+Q_a(t)=\exp(iHt)Q_a\exp(-iHt)
+\tag{9.5.43}\label{eq:9.5.43}
+\end{equation}
+\begin{equation}
+P_a(t)=\exp(iHt)P_a\exp(-iHt)
+\tag{9.5.44}\label{eq:9.5.44}
+\end{equation}
+and their right- and left-eigenstates
+\begin{equation}
+\ket{q;t}\equiv\exp(iHt)\ket{q},
+\qquad
+\ket{p;t}\equiv\exp(iHt)\ket{p},
+\tag{9.5.45}\label{eq:9.5.45}
+\end{equation}
+\begin{equation}
+\bra{q;t}\equiv\bra{q}\exp(-iHt),
+\qquad
+\bra{p;t}\equiv\bra{p}\exp(-iHt).
+\tag{9.5.46}\label{eq:9.5.46}
+\end{equation}
+The scalar product between $q$-eigenstates defined at infinitesimally close
+times is then
+\[
+\braket{q';\tau+d\tau}{q;\tau}
+=\bra{q'}\exp(-iH\,d\tau)\ket{q}.
+\]
+Now insert Eq. \eqref{eq:9.5.42} to the left of the operator $\exp(-iH\,d\tau)$. It is
+convenient here to define the Hamiltonian operator $H(P,Q)$ with all $P$s to
+the left of all $Q$s, so that (for $d\tau$ infinitesimal)
+\[
+\bra{p}\exp[-iH(P,Q)d\tau]\ket{q}
+=\braket{p}{q}\exp[-iH(p,q)d\tau].
+\]
+(We could move the c-number $H(p,q)$ to either side of the matrix element
+without any sign changes because each term in the Hamiltonian is assumed to
+contain an even number of fermionic operators.) This gives
+\begin{align*}
+\braket{q';\tau+d\tau}{q;\tau}
+&=\int\braket{q'}{p}
+ \left(\widetilde{\prod_a}dp_a\right)
+ \bra{p}\exp(-iH\,d\tau)\ket{q}\\
+&=\int\braket{q'}{p}
+ \left(\widetilde{\prod_a}dp_a\right)\braket{p}{q}
+ \exp[-iH(p,q)d\tau].
+\end{align*}
+Using Eqs. \eqref{eq:9.5.26} and \eqref{eq:9.5.27}, and noting that the products $p_aq_a$ and
+$p_aq'_a$ commute with all anticommuting c-numbers, we find
+\begin{equation}
+\braket{q';\tau+d\tau}{q;\tau}
+=\int\left(\widetilde{\prod_a}i\,dp_a\right)
+ \exp\left[i\sum_ap_a(q'_a-q_a)-iH(p,q)d\tau\right].
+\tag{9.5.47}\label{eq:9.5.47}
+\end{equation}
+
+The rest of the derivation follows the same lines as in Section 9.1. To
+calculate the matrix element
+$\bra{q';t'}\mathcal{O}_A(P(t_A),Q(t_A))
+\mathcal{O}_B(P(t_B),Q(t_B))\cdots\ket{q;t}$ of a product of operators (with
+$t'>t_A>t_B>\cdots>t$), divide the time-interval from $t$ to $t'$ into a large
+number of very close time steps; at each time step insert the completeness
+relation \eqref{eq:9.5.41}; use Eq. \eqref{eq:9.5.47} to evaluate the resulting matrix elements
+(with $\mathcal{O}_A,\mathcal{O}_B$, etc. inserted where appropriate); move all
+differentials to the left (this introduces no sign changes, because at each
+step we have an equal number of $dp$s and $dq$s); and then introduce functions
+$q_a(t)$ and $p_a(t)$ that interpolate between the values of $q_a$ and $p_a$ at
+each step. We then find
+\begin{align}
+&\bra{q';t'}T\{\mathcal{O}_A(P(t_A),Q(t_A)),
+ \mathcal{O}_B(P(t_B),Q(t_B)),\ldots\}\ket{q;t}
+\notag\\
+&\quad=(-i)^N\chi_N
+ \int_{q_a(t)=q_a,\,q_a(t')=q'_a}
+ \left(\widetilde{\prod_{a\tau}}dq_a(\tau)\,dp_a(\tau)\right)
+ \notag\\
+&\qquad\quad\cdot
+ \mathcal{O}_A[p(t_A),q(t_A)]
+ \mathcal{O}_B[p(t_B),q(t_B)]\cdots
+ \notag\\
+&\qquad\quad\cdot
+ \exp\left[i\int_t^{t'}d\tau
+ \left\{\sum_ap_a(\tau)\dot q_a(\tau)
+ -H[p(\tau),q(\tau)]\right\}\right].
+\tag{9.5.48}\label{eq:9.5.48}
+\end{align}
+The symbol $T$ here denotes the ordinary product if the times are in the order
+originally assumed, $t_A>t_B>\cdots$. However, the right-hand side is totally
+symmetric in the $\mathcal{O}_A,\mathcal{O}_B,\ldots$ (except for minus signs
+where anticommuting c-numbers are interchanged) so this formula holds for
+general times (between $t$ and $t'$), provided $T$ is interpreted as the
+time-ordered product, with an overall minus sign if time-ordering the operators
+involves an odd number of permutations of fermionic operators.
+
+Up to this point we have kept track of the overall phase factor
+$(-i)^N\chi_N$. But in fact these phases contribute only to the vacuum--vacuum
+transition amplitude, and hence will not be of importance to us.
+
+The transition to quantum field theory follows along the same lines as
+described for bosonic fields in Section 9.2. The vacuum expectation value of a
+time-ordered product of operators is given by a formula just like Eq. \eqref{eq:9.2.17}:
+\begin{align}
+&{}_{\mathrm{out}}\bra{\Omega}T\{\mathcal{O}_A[P(t_A),Q(t_A)],
+\notag\\[-2pt]
+&\qquad\qquad\mathcal{O}_B[P(t_B),Q(t_B)],\ldots\}
+ \ket{\Omega}_{\mathrm{in}}
+\notag\\
+&\quad\propto\int
+ \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
+ \left[\prod_{\tau,\mathbf{x},m}dp_m(\mathbf{x},\tau)\right]
+\notag\\
+&\qquad\quad\cdot\mathcal{O}_A[p(t_A),q(t_A)]
+ \mathcal{O}_B[p(t_B),q(t_B)]\cdots
+\notag\\
+&\qquad\quad\cdot\exp\left[i\int_{-\infty}^{\infty}d\tau
+ \left\{\begin{aligned}
+ &\int d^3x\sum_mp_m(\mathbf{x},\tau)\dot q_m(\mathbf{x},\tau)\\[-2pt]
+ &\quad{}-H[q(\tau),p(\tau)]+i\epsilon\text{ terms}
+ \end{aligned}\right\}\right],
+\tag{9.5.49}\label{eq:9.5.49}
+\end{align}
+where the proportionality constant is the same for all operators
+$\mathcal{O}_A,\mathcal{O}_B$, etc., and the `$i\epsilon$ terms' again arise
+from the wave function of the vacuum. As before, we have replaced each
+discrete index like $a$ with a space position $\mathbf{x}$ and a field index
+$m$. We are also dropping the tilde on the product of differentials, since it
+only affects the constant phase in the path integral.
+
+A major difference between the fermionic and bosonic cases is that here we
+will not want to integrate out the $p$s before the $q$s. Indeed, in the
+standard model of electroweak interactions (and in other theories, such as the
+older Fermi theory of beta decay) the canonical conjugates $p_m$ are auxiliary
+fields unrelated to the $q_m$, and the Lagrangian is linear in the $\dot q_m$,
+so that the quantity $\int d^3x\sum_mp_m\dot q_m-H$ in Eq. \eqref{eq:9.5.49} as it
+stands is the Lagrangian $L$. Each term in the Hamiltonian for a fermionic
+field that carries a non-vanishing quantum number (like the electron field in
+quantum electrodynamics) generally contains an equal number of $p$s
+(proportional to $q_m^\dagger$) and $q$s. In particular, the free-particle term
+$H_0$ in the Hamiltonian is bilinear in $p$ and $q$, so that
+\begin{align}
+&\int_{-\infty}^{\infty}d\tau
+ \left\{\int d^3x\sum_mp_m(\mathbf{x},\tau)\dot q_m(\mathbf{x},\tau)
+ -H_0[q(\tau),p(\tau)]+i\epsilon\text{ terms}\right\}
+\notag\\
+&\qquad=-\sum_{mn}\int d^4x\,d^4y\,
+ \mathcal{D}_{m\mathbf{x},n\mathbf{y}}p_m(x)q_n(y)
+\tag{9.5.50}\label{eq:9.5.50}
+\end{align}
+with $\mathcal{D}$ some numerical `matrix'. The interaction Hamiltonian
+$H_{\mathrm{int}}=H-H_0$ is a sum of products of equal numbers of fermionic
+$q$s and $p$s (with coefficients that may depend on bosonic fields) so when we
+expand Eq. \eqref{eq:9.5.49} in powers of the $H_{\mathrm{int}}$ we encounter a sum of
+fermionic integrals of the form
+\begin{align}
+&\mathcal{I}_{n_1m_1n_2m_2\cdots n_Nm_N}
+ (x_1,y_1,x_2,y_2,\ldots,x_N,y_N)
+\notag\\
+&\quad\equiv\int
+ \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
+ \left[\prod_{\tau,\mathbf{x},m}dp_m(\mathbf{x},\tau)\right]
+ q_{m_1}(x_1)p_{n_1}(y_1)q_{m_2}(x_2)p_{n_2}(y_2)\cdots
+\notag\\
+&\qquad\quad\cdot q_{m_N}(x_N)p_{n_N}(y_N)
+\notag\\
+&\qquad\quad\cdot
+ \exp\left(-i\sum_{mn}\int d^4x\,d^4y\,
+ \mathcal{D}_{m\mathbf{x},n\mathbf{y}}p_m(x)q_n(y)\right),
+\tag{9.5.51}\label{eq:9.5.51}
+\end{align}
+one such term for each possible set of vertices in the Feynman diagram, with
+coefficients contributed by each vertex given by $i$ times the coefficient of
+the product of fields in the corresponding term in the interaction.
+
+To calculate this sort of integral, first consider a generating function for
+all these integrals:
+\begin{align}
+\mathcal{J}(f,g)
+={}&\int\left[\prod_{\mathbf{x},\tau,m}
+ dq_m(\mathbf{x},\tau)\,dp_m(\mathbf{x},\tau)\right]
+\notag\\
+&\quad\cdot\exp\left\{\begin{aligned}
+ &-i\sum_{mn}\int d^4x\,d^4y\,
+ \mathcal{D}_{m\mathbf{x},n\mathbf{y}}p_m(x)q_n(y)\\[-2pt]
+&-i\sum_m\int d^4x\,p_m(x)f_m(x)\\[-2pt]
+&\qquad{}-i\sum_n\int d^4y\,g_n(y)q_n(y)
+ \end{aligned}\right\},
+\tag{9.5.52}\label{eq:9.5.52}
+\end{align}
+where $f_m(x)$ and $g_n(y)$ are arbitrary anticommuting c-number functions.
+We shift to new variables of integration
+\[
+p'_m(x)=p_m(x)+\sum_n\int d^4y\,
+ g_n(y)(\mathcal{D}^{-1})_{n\mathbf{y},m\mathbf{x}},
+\]
+\[
+q'_n(y)=q_n(y)+\sum_m\int d^4x\,
+ (\mathcal{D}^{-1})_{n\mathbf{y},m\mathbf{x}}f_m(x).
+\]
+Using the translation invariance condition \eqref{eq:9.5.36}, we then find
+\begin{align}
+\mathcal{J}(f,g)
+={}&\exp\left(i\sum_{mn}\int d^4x\,d^4y\,
+ (\mathcal{D}^{-1})_{n\mathbf{y},m\mathbf{x}}g_n(y)f_m(x)\right)
+\notag\\
+&\quad\cdot\int\left[\prod_{\mathbf{x},\tau,m}
+ dq'_m(\mathbf{x},\tau)\,dp'_m(\mathbf{x},\tau)\right]
+\notag\\
+&\quad\cdot\exp\left(-i\sum_{mn}\int d^4x\,d^4y\,
+ \mathcal{D}_{m\mathbf{x},n\mathbf{y}}p'_m(x)q'_n(y)\right).
+\tag{9.5.53}\label{eq:9.5.53}
+\end{align}
+The integral is a constant (i.e., independent of the functions $f$ and $g$)
+which can be shown using Eq. \eqref{eq:9.5.38} to be proportional to
+$\operatorname{Det}\mathcal{D}$. Of more importance to us is the first factor.
+Expanding this factor in powers of $gf$ and comparing with the direct expansion
+of Eq. \eqref{eq:9.5.52}, we see that
+\begin{align}
+&\mathcal{I}_{n_1m_1n_2m_2\cdots n_Nm_N}
+ (x_1,y_1,x_2,y_2,\ldots,x_N,y_N)
+\notag\\
+&\qquad\propto\sum_{\text{pairings}}\delta_{\text{pairing}}
+ \prod_{\text{pairs}}
+ \left(-i\mathcal{D}^{-1}\right)_{\text{paired }m\mathbf{x},n\mathbf{y}},
+\tag{9.5.54}\label{eq:9.5.54}
+\end{align}
+with a proportionality constant that is independent of the $x$, $y$, $m$, or
+$n$, and also independent of the number of these variables. The sum is over
+all different ways of pairing $p$s with $q$s, not counting as different
+pairings that only differ in the order of the pairs. In other words, we sum
+over the $N!$ permutations either of the $p$s or the $q$s. The sign factor
+$\delta_{\text{pairing}}$ is $+1$ if this permutation is even; $-1$ if it is
+odd.
+
+This sign factor and sum over pairings are just the same as we encountered in
+our earlier derivation of the Feynman rules, with the sum over pairings
+corresponding to the sum over ways of connecting the lines associated with
+vertices in the Feynman diagrams, and the factors
+$(\mathcal{D}^{-1})_{m\mathbf{x},n\mathbf{y}}$ playing the role of the
+propagator for the pairing of $q_m(x)$ with $p_n(y)$. In the Dirac formalism
+for spin $\frac12$, the free-particle action is
+\begin{align}
+&\int_{-\infty}^{\infty}d\tau
+ \left\{\int d^3x\sum_mp_m(\mathbf{x},\tau)\dot q_m(\mathbf{x},\tau)
+ -H_0[q(\tau),p(\tau)]\right\}
+\notag\\
+&\qquad=-\int d^4x\,\bar\psi(x)
+ [\gamma^\mu\partial_\mu+m]\psi(x),
+\tag{9.5.55}\label{eq:9.5.55}
+\end{align}
+where in the usual notation the canonical variables here are
+\begin{equation}
+q_m(x)=\psi_m(x),
+\qquad
+p_m(x)=-[\bar\psi(x)\gamma^0]_m=i\psi_m^\dagger(x)
+\tag{9.5.56}\label{eq:9.5.56}
+\end{equation}
+with $m$ a four-valued Dirac index. Comparing this with Eq. \eqref{eq:9.5.50}, we find
+here
+\begin{align}
+\mathcal{D}_{m\mathbf{x},n\mathbf{y}}
+&=\left\{\gamma^0\left[\gamma^\mu\frac{\partial}{\partial x^\mu}
+ +m-i\epsilon\right]\right\}_{mn}
+ \delta^4(x-y)\notag\\
+&=\int\frac{d^4k}{(2\pi)^4}
+ \left\{\gamma^0[i\gamma^\mu k_\mu+m-i\epsilon]\right\}_{mn}
+ e^{ik\cdot(x-y)}.
+\tag{9.5.57}\label{eq:9.5.57}
+\end{align}
+(Though we shall not work it out in detail, the $i\epsilon$ term here arises
+in much the same way as for the scalar field in Section 9.2.) The propagator is
+then
+\begin{equation}
+(\mathcal{D}^{-1})_{m\mathbf{x},n\mathbf{y}}
+=\int\frac{d^4k}{(2\pi)^4}
+ \left\{[i\gamma^\mu k_\mu+m-i\epsilon]^{-1}[-\gamma^0]\right\}_{mn}
+ e^{ik\cdot(x-y)},
+\tag{9.5.58}\label{eq:9.5.58}
+\end{equation}
+just as we found in the operator formalism. The extra factor $-\gamma^0$
+arises because this propagator is the vacuum expectation value of
+\[
+T\{\psi_m(x),-[\bar\psi(y)\gamma^0]_n\},
+\qquad\text{not}\qquad
+T\{\psi_m(x),\bar\psi_n(y)\}.
+\]
+
+As one example of a problem that is easier to solve by path-integral than by
+operator methods, let us calculate the field dependence of the vacuum$\to$vacuum
+amplitude for a Dirac field that interacts only with an external field. Take
+the Lagrangian as
+\begin{equation}
+\mathcal{L}=-\bar\psi[\gamma^\mu\partial_\mu+m+\Gamma]\psi,
+\tag{9.5.59}\label{eq:9.5.59}
+\end{equation}
+where $\Gamma(x)$ is an $x$-dependent matrix representing the interaction of
+the fermion with the external field. According to Eq. \eqref{eq:9.5.49}, the vacuum
+persistence amplitude in the presence of this external field is
+\begin{align}
+{}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in},\Gamma}
+\propto{}&\int
+ \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
+ \left[\prod_{\tau,\mathbf{x},m}dp_m(\mathbf{x},\tau)\right]
+\notag\\
+&\quad\cdot\exp\left\{-i\int d^4x\,
+ p^T\gamma^0[\gamma^\mu\partial_\mu+m+\Gamma-i\epsilon]q\right\}
+\tag{9.5.60}\label{eq:9.5.60}
+\end{align}
+with a proportionality constant that is independent of $\Gamma(x)$. We write
+this as
+\begin{align}
+{}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in},\Gamma}
+\propto{}&\int
+ \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
+ \left[\prod_{\tau,\mathbf{x},m}dp_m(\mathbf{x},\tau)\right]
+\notag\\
+&\quad\cdot\exp\left\{-i\sum_{mn}\int d^4x\,d^4y\,
+ p_m(x)q_n(y)\mathcal{K}[\Gamma]_{m\mathbf{x},n\mathbf{y}}\right\},
+\tag{9.5.61}\label{eq:9.5.61}
+\end{align}
+where
+\begin{equation}
+\mathcal{K}[\Gamma]_{m\mathbf{x},n\mathbf{y}}
+=\left\{\gamma^0[\gamma^\mu\partial/\partial x^\mu
+ +m+\Gamma(x)-i\epsilon]\right\}_{mn}\delta^4(x-y).
+\tag{9.5.62}\label{eq:9.5.62}
+\end{equation}
+To evaluate this, we change the variables of integration $q_m(x)$ to
+\begin{equation}
+q'_m(x)=\sum_n\int d^4y\,
+ \mathcal{K}[\Gamma]_{m\mathbf{x},n\mathbf{y}}q_n(y).
+\tag{9.5.63}\label{eq:9.5.63}
+\end{equation}
+The remaining integral is now $\Gamma$-independent, so the whole dependence of
+the vacuum persistence amplitude is contained in the determinant arising
+according to Eq. \eqref{eq:9.5.38} from the change of variables:
+\begin{equation}
+{}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in},\Gamma}
+\propto\operatorname{Det}\mathcal{K}[\Gamma].
+\tag{9.5.64}\label{eq:9.5.64}
+\end{equation}
+To recover the results of perturbation theory, let us write
+\begin{equation}
+\mathcal{K}[\Gamma]\equiv\mathcal{D}+\mathcal{G}[\Gamma],
+\tag{9.5.65}\label{eq:9.5.65}
+\end{equation}
+\begin{equation}
+\mathcal{G}[\Gamma]_{m\mathbf{x},n\mathbf{y}}
+=(\gamma^0\Gamma(x))_{mn}\delta^4(x-y),
+\tag{9.5.66}\label{eq:9.5.66}
+\end{equation}
+and expand in powers of $\mathcal{G}[\Gamma]$. Eq. \eqref{eq:9.5.64} gives then
+\begin{align}
+{}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in},\Gamma}
+&\propto\operatorname{Det}
+ \left(\mathcal{D}[\mathbf{1}+\mathcal{D}^{-1}\mathcal{G}[\Gamma]]\right)
+\notag\\
+&=[\operatorname{Det}\mathcal{D}]
+ \exp\left(\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}
+ \operatorname{Tr}(\mathcal{D}^{-1}\mathcal{G}[\Gamma])^n\right).
+\tag{9.5.67}\label{eq:9.5.67}
+\end{align}
+
+This is just what we should expect from the Feynman rules: the contributions
+from internal lines and vertices in this theory are $-i\mathcal{D}^{-1}$ and
+$-i\mathcal{G}[\Gamma]$; the trace of the product of $n$ factors of
+$-\mathcal{D}^{-1}\mathcal{G}[\Gamma]$ thus corresponds to a loop with $n$
+vertices connected by $n$ internal lines; $1/n$ is the usual combinatoric
+factor associated with such loops (see Section 6.1); the sign factor is
+$(-1)^{n+1}$ rather than $(-1)^n$ because an extra minus sign is associated
+with fermion loops; and the sum over $n$ appears as the argument of an
+exponential because the vacuum persistence amplitude receives contributions
+from graphs with any number of disconnected loops. The $\Gamma$-independent
+factor $\operatorname{Det}\mathcal{D}$ is less easy to derive from the Feynman
+rules; it represents the contribution of any number of fermion loops that
+carry no vertices.
+
+More to the point, a formula like Eq. \eqref{eq:9.5.64} allows us to derive
+non-perturbative results by using topological theorems to derive information
+about the eigenvalues of kernels like $\mathcal{K}[\Gamma]$. This will be
+pursued further in Volume II.

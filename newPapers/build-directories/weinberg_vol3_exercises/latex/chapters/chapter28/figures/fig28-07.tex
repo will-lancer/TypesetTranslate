@@ -1,0 +1,58 @@
+% Source: physical PDF p. 259 (printed p. 236). Coverage: complete Figure
+% 28.7 and caption. The topology, line styles, arrows, and central dot were
+% reconstructed from the full-resolution rendered scan.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+    x=1cm,
+    y=1cm,
+    line cap=round,
+    line join=round,
+    fermion/.style={
+      draw,
+      line width=0.85pt,
+      postaction={decorate},
+      decoration={
+        markings,
+        mark=at position 0.56 with {\arrow{Stealth[length=2.0mm,width=1.6mm]}}
+      }
+    },
+    scalar/.style={
+      draw,
+      line width=0.85pt,
+      dash pattern=on 3.2pt off 3.2pt
+    },
+    gaugino/.style={
+      draw,
+      line width=0.8pt,
+      decorate,
+      decoration={snake,amplitude=1.15mm,segment length=4.8mm}
+    }
+  ]
+    \coordinate (fvertex) at (-0.55,0);
+    \coordinate (upper) at (2.05,1.20);
+    \coordinate (lower) at (2.05,-1.20);
+
+    \draw[fermion] (-3.25,1.75) -- (fvertex);
+    \draw[fermion] (-3.25,-1.75) -- (fvertex);
+    \fill (fvertex) circle[radius=0.10];
+
+    \draw[scalar] (fvertex) -- (upper);
+    \draw[scalar] (fvertex) -- (lower);
+
+    \draw[gaugino] (upper) -- (lower);
+    \draw[line width=0.65pt] (upper) -- (lower);
+
+    % All four external fermion lines run into the diagram, as in the source.
+    \draw[fermion] (4.25,1.85) -- (upper);
+    \draw[fermion] (4.25,-1.85) -- (lower);
+  \end{tikzpicture}
+  \renewcommand{\thefigure}{28.7}
+  \caption{A diagram that can produce a four-fermion interaction among
+  quarks and/or leptons that violates baryon and lepton number conservation.
+  Here solid lines are quarks and/or leptons; dashed lines are squarks and/or
+  sleptons; the combined solid and wavy line is a gaugino; and the dot is a
+  vertex arising directly from the \(\mathcal F\)-term interactions
+  \eqref{eq:28.7.3}.}
+  \label{fig:28.7}
+\end{figure}

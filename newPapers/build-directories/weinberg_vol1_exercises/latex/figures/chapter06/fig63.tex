@@ -1,0 +1,53 @@
+% Figure 6.3 diagram only; caption remains in the chapter text.
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  fermion/.style={line width=0.8pt},
+  flow/.style={-{Stealth[length=2.5mm,width=1.9mm]},line width=0.8pt},
+  external/.style={
+    line width=0.8pt,
+    decorate,
+    decoration={snake,amplitude=1.9pt,segment length=10pt}
+  }
+]
+\coordinate (TL) at (-0.72,1.72);
+\coordinate (TR) at (0.72,1.72);
+\coordinate (UR) at (1.72,0.72);
+\coordinate (LR) at (1.72,-0.72);
+\coordinate (BR) at (0.72,-1.72);
+\coordinate (BL) at (-0.72,-1.72);
+\coordinate (LL) at (-1.72,-0.72);
+\coordinate (UL) at (-1.72,0.72);
+
+% Counterclockwise fermion ring.
+\draw[fermion] (TR) -- (TL);
+\draw[flow] (0.25,1.72) -- (-0.25,1.72);
+\draw[fermion] (TL) -- (UL);
+\draw[flow] (-1.05,1.39) -- (-1.40,1.04);
+\draw[fermion] (UL) -- (LL);
+\draw[flow] (-1.72,0.25) -- (-1.72,-0.25);
+\draw[fermion] (LL) -- (BL);
+\draw[flow] (-1.40,-1.04) -- (-1.05,-1.39);
+\draw[fermion] (BL) -- (BR);
+\draw[flow] (-0.25,-1.72) -- (0.25,-1.72);
+\draw[fermion] (BR) -- (LR);
+\draw[flow] (1.05,-1.39) -- (1.40,-1.04);
+\draw[fermion] (LR) -- (UR);
+\draw[flow] (1.72,-0.25) -- (1.72,0.25);
+\draw[fermion] (UR) -- (TR);
+\draw[flow] (1.40,1.04) -- (1.05,1.39);
+
+% One external-field line at each interaction vertex.
+\draw[external] (TL) -- (-0.95,3.02);
+\draw[external] (TR) -- (0.95,3.02);
+\draw[external] (UR) -- (3.02,1.02);
+\draw[external] (LR) -- (3.02,-1.02);
+\draw[external] (BR) -- (0.95,-3.02);
+\draw[external] (BL) -- (-0.95,-3.02);
+\draw[external] (LL) -- (-3.02,-1.02);
+\draw[external] (UL) -- (-3.02,1.02);
+\end{tikzpicture}
+\end{center}

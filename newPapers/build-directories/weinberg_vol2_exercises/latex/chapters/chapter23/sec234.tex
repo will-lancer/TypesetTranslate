@@ -1,0 +1,336 @@
+% Source coverage: physical PDF pp. 468--473 (printed pp. 445--450),
+% beginning at the Section 23.4 heading and ending immediately before
+% Section 23.5. Numbered equations: (23.4.1)--(23.4.14).
+\subsection{The Cartan--Maurer Integral Invariant}
+\label{sec:23.4}
+
+In understanding the topology of various compact manifolds, it is a great
+help that there is often a topologically invariant quantity that can be
+written as an integral over the manifold. This will be important in our
+discussion of instantons in the next section, and it has already been used
+in studying Wess--Zumino--Witten terms in
+\hyperref[sec:19.8]{Sections 19.8} and \hyperref[sec:22.7]{22.7}.
+
+Consider a mapping of an arbitrary compact manifold $\mathcal S$ of odd
+dimensionality $d$ with coordinates
+$\theta^1,\theta^2,\ldots,\theta^d$ into a manifold $\mathcal M$ of
+matrices $g(\theta^1,\theta^2,\ldots,\theta^d)$ with
+$\operatorname{Det}g\ne0$. (For the applications that concern us here,
+$\mathcal S$ is usually a sphere $S_d$, and the $g$ are the elements of a
+Lie group $G$ in some representation.) We define a functional of
+$g(\theta)$, known as the \emph{Cartan--Maurer form}:
+\begin{align}
+\mathcal I[g]\equiv{}&
+\int d\theta^1\,d\theta^2\cdots d\theta^d\,
+\epsilon^{i_1i_2\cdots i_d}
+\notag\\
+&{}\cdot\operatorname{Tr}\left\{
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_1}}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_2}}
+\cdots
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_d}}
+\right\}.
+\tag{23.4.1}\label{eq:23.4.1}
+\end{align}
+Here $\epsilon^{i_1i_2\cdots i_d}$ is the totally antisymmetric quantity
+with $\epsilon^{12\cdots d}=1$. From the fact that
+$\epsilon^{i_1i_2\cdots i_d}=-(-1)^d
+\epsilon^{i_2\cdots i_di_1}$, we see that $\mathcal I[g]$ vanishes where
+$\mathcal S$ is even-dimensional, so we will restrict ourselves here to
+the case where $d$ is odd. The usefulness of this quantity arises from
+its several remarkable properties.
+
+First, this integral is independent of the coordinate system used to
+parameterize the manifold $\mathcal S$. This follows rather obviously
+from the fact that $\epsilon^{i_1i_2\cdots i_d}$ is a contravariant tensor
+density, in the sense that
+\[
+\epsilon^{i_1i_2\cdots i_d}
+\frac{\partial\theta'^{j_1}}{\partial\theta^{i_1}}
+\frac{\partial\theta'^{j_2}}{\partial\theta^{i_2}}\cdots
+\frac{\partial\theta'^{j_d}}{\partial\theta^{i_d}}
+=\operatorname{Det}\left(\frac{\partial\theta'}{\partial\theta}\right)
+\epsilon^{j_1j_2\cdots j_d}.
+\]
+
+Second, the integral \eqref{eq:23.4.1} is also invariant under small
+deformations of the mapping $\mathcal S\mapsto\mathcal M$. Using the
+properties of the trace, we see that under an infinitesimal change
+$g\to g+\delta g$ of the function $g(\theta)$, the change in each factor
+$g^{-1}\partial g/\partial\theta^{i}$ in \eqref{eq:23.4.1} makes the same
+contribution to the change in $\mathcal I[g]$:
+\begin{align*}
+\delta\mathcal I[g]={}&d\int d\theta^1\,d\theta^2\cdots d\theta^d\,
+\epsilon^{i_1i_2\cdots i_d}
+\\
+&{}\cdot\operatorname{Tr}\left\{
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_1}}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_2}}
+\cdots
+\delta\left(
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_d}}
+\right)\right\}.
+\end{align*}
+Now, the last factor in the trace is
+\begin{align*}
+\delta\left(
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_d}}
+\right)
+={}&-g^{-1}(\theta)\delta g(\theta)g^{-1}(\theta)
+\frac{\partial g(\theta)}{\partial\theta^{i_d}}
++g^{-1}(\theta)\frac{\partial\delta g(\theta)}
+{\partial\theta^{i_d}}
+\\
+={}&g^{-1}(\theta)\frac{\partial}{\partial\theta^{i_d}}
+\left(\delta g(\theta)g^{-1}(\theta)\right)g(\theta).
+\end{align*}
+When we integrate by parts, the derivative
+$\partial/\partial\theta^{i_d}$ gives no contribution when acting on the
+partial derivatives $\partial g(\theta)/\partial\theta^{i_m}$ because
+$\epsilon^{i_1i_2\cdots i_d}$ is antisymmetric. The remaining $d-1$
+terms where $\partial/\partial\theta^{i_d}$ acts on $g^{-1}(\theta)$ are
+all equal except for an alternating sign, so since there are an even
+number of them they add up to zero.
+
+Finally, let us specialize to the case where $\mathcal S$ is the sphere
+$S_d$. Because $\mathcal I[g]$ is invariant under small variations of
+$g(\theta)$, it can be regarded as a function $\mathcal I(c)$ only of the
+homotopy class $c$ to which $g(\theta)$ belongs. The integrals
+$\mathcal I(c)$ (or strictly speaking, $\exp\{\mathcal I(c)\}$) furnish a
+representation of the homotopy group $\pi_d(\mathcal M)$, in the sense
+that
+\begin{equation}
+\mathcal I(c_a\cdot c_b)=\mathcal I(c_a)+\mathcal I(c_b).
+\tag{23.4.2}\label{eq:23.4.2}
+\end{equation}
+(If $g_a(\theta)$ and $g_b(\theta)$ are elements of the homotopy classes
+$c_a$ and $c_b$ respectively, then the homotopy class $c_a\cdot c_b$
+consists of mappings homotopically equivalent to
+\[
+g_{ab}(\theta)=
+\begin{cases}
+g_a(2\theta_1,\theta_2\cdots\theta_d),
+&0\leq\theta_1\leq\tfrac12,\\
+g_b(2\theta_1-1,\theta_2\cdots\theta_d),
+&\tfrac12\leq\theta_1\leq1.
+\end{cases}
+\]
+The part of the integral $\mathcal I[g_{ab}]$ over the hemispheres with
+$0\leq\theta_1\leq1/2$ and $1/2\leq\theta_1\leq1$ can be done by changing
+variables to $\theta'_1=2\theta_1$ and $\theta'_1=2\theta_1-1$,
+respectively, yielding the terms $\mathcal I(c_a)$ and $\mathcal I(c_b)$
+in \eqref{eq:23.4.2}.)
+
+In particular, this tells us that the homotopy classes
+$e,c,c\cdot c$, etc., and $c^{-1},c^{-1}\cdot c^{-1}$, etc., have
+\begin{equation}
+\mathcal I(c^n)=n\mathcal I(c).
+\tag{23.4.3}\label{eq:23.4.3}
+\end{equation}
+If $\mathcal I(c)\ne0$ for some $c$, then these invariants are all
+different, so the classes $c^n$ are all different, and therefore form a
+subgroup $\mathbb{Z}$ of $\pi_d(\mathcal M)$. This goes far to explain the great
+difference between the sizes of the homotopy groups for odd and even
+dimensions shown in \hyperref[app:23.B]{Appendix B} of this chapter. For instance,
+$\pi_1(U(1))=\mathbb{Z}$, $\pi_3(G)=\mathbb{Z}$ for all simple Lie groups $G$, and
+$\pi_5(SU(n))=\mathbb{Z}$ for all $n\geq3$, while for all Lie groups $G$,
+$\pi_2(G)=0$ and $\pi_4(G)$ is finite.
+
+As a simple example where $\mathcal I(c)\ne0$, consider the homotopy
+group $\pi_1(U(1))$, which is the same as the group $\pi_1(S_1)$ used as
+an example at the beginning of the previous section. Any mapping
+$S_1\mapsto U(1)$ may be characterized by $\nu$, the number of times that
+the phase of the $U(1)$ element goes counterclockwise around $S_1$ minus
+the number of times it goes around $S_1$ in the opposite direction, as
+the coordinate $\theta$ goes around $S_1$, two mappings being
+homotopically equivalent if and only if they have the same $\nu$. The
+$\nu$th class contains the mapping
+$g_\nu(\theta)=\exp(2i\nu\pi\theta)$ with $0\leq\theta\leq1$, for which
+\[
+\mathcal I[g_\nu]
+=\int_0^1d\theta\,\exp(-2i\nu\pi\theta)
+\frac{d}{d\theta}\exp(2i\nu\pi\theta)
+=2i\nu\pi,
+\]
+thus verifying that $\pi_1(U(1))=\mathbb{Z}$.
+
+As an aid to calculating $\mathcal I(g)$ in less simple cases, suppose
+that we can continuously deform the manifold $\mathcal M$ into a Lie
+group $H$ of dimensionality $d$. The result of performing the $H$
+transformation with parameters $\theta$ followed by the $H$
+transformation with parameters $\varphi$ is an $H$ transformation, say
+with parameters $\theta'(\theta,\varphi)$. In terms of a matrix
+representation $g(\theta)$, this reads
+\[
+g(\varphi)g(\theta)=g\bigl(\theta'(\theta,\varphi)\bigr).
+\]
+Differentiating with respect to $\theta'$ with $\varphi$ fixed and
+multiplying on the left with the inverse of this equation gives
+\[
+\frac{\partial\theta^i}{\partial\theta'^j}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^i}
+=g^{-1}(\theta')\frac{\partial g(\theta')}{\partial\theta'^j}.
+\]
+The integrand of $\mathcal I[g]$ at a point $\theta'$ is therefore
+\begin{align*}
+&\epsilon^{j_1j_2\cdots j_d}\operatorname{Tr}\left\{
+g^{-1}(\theta')\frac{\partial g(\theta')}{\partial\theta'^{j_1}}
+g^{-1}(\theta')\frac{\partial g(\theta')}{\partial\theta'^{j_2}}
+\cdots
+g^{-1}(\theta')\frac{\partial g(\theta')}{\partial\theta'^{j_d}}
+\right\}
+\\
+&\quad=\operatorname{Det}\left(\frac{\partial\theta}
+{\partial\theta'}\right)
+\epsilon^{i_1i_2\cdots i_d}\operatorname{Tr}\left\{
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_1}}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_2}}
+\cdots
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_d}}
+\right\}.
+\end{align*}
+
+Now, every Lie group $H$ has a metric $\gamma_{ij}(\theta)$ (not
+necessarily unique) which is form-invariant in the sense that
+\begin{equation}
+\gamma_{ij}(\theta')
+=\frac{\partial\theta^k}{\partial\theta'^i}
+\frac{\partial\theta^\ell}{\partial\theta'^j}
+\gamma_{k\ell}(\theta).
+\tag{23.4.4}\label{eq:23.4.4}
+\end{equation}
+For instance, we can take
+\begin{equation}
+\gamma_{ij}(\theta)=-\frac12\operatorname{Tr}\left\{
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^i}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^j}
+\right\}.
+\tag{23.4.5}\label{eq:23.4.5}
+\end{equation}
+For any choice of $\gamma_{ij}(\theta)$, the determinant of
+Eq.~\eqref{eq:23.4.4} gives
+\[
+\operatorname{Det}\left(\frac{\partial\theta}{\partial\theta'}\right)
+=\sqrt{\frac{\operatorname{Det}\gamma(\theta')}
+{\operatorname{Det}\gamma(\theta)}}.
+\]
+By replacing the coordinates $\theta$ in Eq.~\eqref{eq:23.4.1} with
+$\theta'$, we find
+\begin{align}
+\mathcal I[g]={}&
+\epsilon^{i_1i_2\cdots i_d}\operatorname{Tr}\left\{
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_1}}
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_2}}
+\cdots
+g^{-1}(\theta)\frac{\partial g(\theta)}{\partial\theta^{i_d}}
+\right\}
+\notag\\
+&{}\cdot\frac{1}{\sqrt{\operatorname{Det}\gamma(\theta)}}
+\int d^d\theta'\sqrt{\operatorname{Det}\gamma(\theta')}.
+\tag{23.4.6}\label{eq:23.4.6}
+\end{align}
+Since the parameters $\varphi$ of the second $H$ transformation are
+arbitrary, we may regard $\theta$ and $\theta'$ as independent variables,
+and evaluate the right-hand side of \eqref{eq:23.4.6} at any value of
+$\theta$, say $\theta^i=0$. It will be convenient to normalize the
+generators $t_i$ and coordinates $\theta^i$ so that for $\theta\to0$,
+\begin{equation}
+g(\theta)\longrightarrow \mathbf{1}+2i\theta^it_i.
+\tag{23.4.7}\label{eq:23.4.7}
+\end{equation}
+In this case, Eq.~\eqref{eq:23.4.6} reads
+\begin{equation}
+\mathcal I[g]=(2i)^d\epsilon^{i_1i_2\cdots i_d}
+\operatorname{Tr}\{t_{i_1}t_{i_2}\cdots t_{i_d}\}
+\frac{1}{\sqrt{\operatorname{Det}\gamma(0)}}
+\int d^d\theta'\sqrt{\operatorname{Det}\gamma(\theta')}.
+\tag{23.4.8}\label{eq:23.4.8}
+\end{equation}
+
+We will be especially interested in the case $d=3$.
+Bott~\hyperref[ch23-ref-22]{[22]} has shown that for any simple Lie group
+$G$, all continuous mappings $S_3\mapsto G$ may be continuously deformed
+into mappings of $S_3$ into a `standard' $SU(2)$ subgroup of $G$. (Where
+$G=SU(n)$, this standard $SU(2)$ subgroup is the one that acts only on the
+first two components of the defining representation of $SU(n)$. Not all
+$SU(2)$ subgroups of $SU(n)$ are equivalent to this one.) As remarked in
+\hyperref[sec:2.7]{Section 2.7}, in a $2\cdot2$ representation the general
+element of $SU(2)$ may be written
+\begin{equation}
+g(\theta)=
+\begin{pmatrix}
+\theta_4+i\theta_3&\theta_2+i\theta_1\\
+-\theta_2+i\theta_1&\theta_4-i\theta_3
+\end{pmatrix}
+=\theta_4+2i\boldsymbol{\theta}\cdot\mathbf t,
+\tag{23.4.9}\label{eq:23.4.9}
+\end{equation}
+where as usual
+\[
+t_1=\frac12\begin{pmatrix}0&1\\1&0\end{pmatrix},
+\qquad
+t_2=\frac12\begin{pmatrix}0&-i\\i&0\end{pmatrix},
+\qquad
+t_3=\frac12\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\]
+and $\theta_4$ and $\boldsymbol{\theta}$ are real, with
+$(\theta_4)^2=1-\boldsymbol{\theta}^2$. (Note that
+Eq.~\eqref{eq:23.4.9} is consistent with the normalization convention
+\eqref{eq:23.4.7}.) A straightforward calculation gives the metric
+\eqref{eq:23.4.5} as
+\begin{equation}
+\gamma_{ij}(\theta)=\delta_{ij}
++\frac{\theta_i\theta_j}{1-\boldsymbol{\theta}^2},
+\tag{23.4.10}\label{eq:23.4.10}
+\end{equation}
+so that
+\begin{equation}
+\operatorname{Det}\gamma(\theta)
+=\frac{1}{1-\boldsymbol{\theta}^2}.
+\tag{23.4.11}\label{eq:23.4.11}
+\end{equation}
+Hence Eq.~\eqref{eq:23.4.8} here reads
+\[
+\mathcal I[g]=-8i\epsilon^{ijk}\operatorname{Tr}\{t_it_jt_k\}
+\int\frac{d^3\theta}{\sqrt{1-\boldsymbol{\theta}^2}}.
+\]
+Using $4t_it_j=\delta_{ij}+2i\epsilon^{ij\ell}t_\ell$ and
+$\operatorname{Tr}\{t_\ell t_k\}=\frac12\delta_{\ell k}$, we see that
+\[
+8\epsilon^{ijk}\operatorname{Tr}\{t_it_jt_k\}
+=2i\epsilon^{ijk}\epsilon^{ijk}=12i.
+\]
+Also, for the `identity' mapping $g_1$, the integral here runs twice over
+the interior of the unit ball (because $\theta_4$ can be positive or
+negative), and gives
+\[
+\int\frac{d^3\theta}{\sqrt{1-\boldsymbol{\theta}^2}}
+=2\int_0^1\frac{4\pi r^2\,dr}{\sqrt{1-r^2}}=2\pi^2.
+\]
+For the class $c$ of mappings homotopic to $g_1$, we have then
+\begin{equation}
+\mathcal I(c)=24\pi^2
+\tag{23.4.12}\label{eq:23.4.12}
+\end{equation}
+and so
+\begin{equation}
+\mathcal I(c^\nu)=24\pi^2\nu.
+\tag{23.4.13}\label{eq:23.4.13}
+\end{equation}
+The integer $\nu$ is known as the \emph{winding number}. This result is
+for a representation and normalization conventions for which the
+standard $SU(2)$ subalgebra has generators $t_i$ with structure constants
+$\epsilon_{ijk}$ and $\operatorname{Tr}(t_it_j)=\frac12\delta_{ij}$. More
+generally, if $[t_i,t_j]=ig\epsilon_{ijk}t_k$ and
+$\operatorname{Tr}(t_it_j)=\frac12Ng^2\delta_{ij}$, then
+\begin{equation}
+\mathcal I(c^\nu)=24\pi^2N\nu.
+\tag{23.4.14}\label{eq:23.4.14}
+\end{equation}
+
+The results \eqref{eq:23.4.13} or \eqref{eq:23.4.14} show incidentally
+that for every simple Lie group, $\pi_3(G)$ contains $\mathbb{Z}$. As listed in
+\hyperref[app:23.B]{Appendix B} to this chapter, $\pi_3(G)=\mathbb{Z}$ for all simple Lie groups. Thus
+the homotopy class of $g(\theta)$ for any simple Lie group is entirely
+determined by its homotopy class when the group is deformed into its
+standard $SU(2)$ subgroup.

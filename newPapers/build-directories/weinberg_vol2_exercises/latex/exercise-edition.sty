@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{exercise-edition}[2026/07/30 Weinberg QFT exercise-edition helpers]
+
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\ExerciseEditorialNote}{%
+  \noindent\emph{These editorial solutions were added by Codex and are not
+  part of Weinberg's original text.}\par\medskip
+}
+
+\newcommand{\InKet}[1]{\ket{#1}_{\mathrm{in}}}
+\newcommand{\OutKet}[1]{\ket{#1}_{\mathrm{out}}}
+\newcommand{\InBra}[1]{{}_{\mathrm{in}}\!\bra{#1}}
+\newcommand{\OutBra}[1]{{}_{\mathrm{out}}\!\bra{#1}}
+
+\newcommand{\chapterexercisehook}[1]{%
+  \input{exercises/chapter#1/weinberg-exercises.tex}%
+  \input{exercises/chapter#1/weinberg-solutions.tex}%
+  \input{exercises/chapter#1/supplementary-exercises.tex}%
+  \input{exercises/chapter#1/supplementary-solutions.tex}%
+}
+
+\newcommand{\WeinbergExercise}[1]{%
+  \item[\textbf{W.\thesection.#1.}]%
+  \phantomsection\label{exercise:W:\thesection:#1}%
+}
+
+\newcommand{\WeinbergSolution}[1]{%
+  \item[\textbf{W.\thesection.#1.}]%
+  \phantomsection\label{solution:W:\thesection:#1}%
+}
+
+\newcommand{\SupplementaryExercise}[4]{%
+  \item[\textbf{S.\thesection.#1.}]%
+  \phantomsection\label{exercise:S:\thesection:#1}%
+  \textbf{#2}\par
+  \noindent{\small\itshape #3}\par\smallskip
+  \expandafter\def\csname exercise@source@\thesection @#1\endcsname{#4}%
+}
+
+\newcommand{\SupplementarySolution}[2]{%
+  \item[\textbf{S.\thesection.#1.}]%
+  \phantomsection\label{solution:S:\thesection:#1}%
+  \textbf{#2}\par\smallskip
+}

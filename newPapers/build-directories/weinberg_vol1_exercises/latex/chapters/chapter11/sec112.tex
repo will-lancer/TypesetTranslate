@@ -1,0 +1,594 @@
+% Chunk: \S11.2, Vacuum Polarization.
+% Source: Weinberg QFT Vol. I, physical pp. 496--507 (printed pp. 473--484),
+% ending with Eq. (11.2.43) at the foot of physical p. 507.
+% Coverage: equations (11.2.1)--(11.2.43); Figures 11.1--11.3 by chapter-local
+% figure inputs; two footnotes; citations [1]--[4].
+% Uncertainty: none. The requested equation inventory ended at (11.2.42), but
+% the rendered source authoritatively contains (11.2.43) on physical p. 507.
+
+\subsection{Vacuum Polarization}
+
+We now begin our first calculation of a radiative correction involving
+loop graphs, the so-called vacuum polarization effect, consisting of the
+corrections to the propagator associated with an internal photon line.
+Vacuum polarization produces measurable shifts in the energy levels of
+hydrogen, and makes an important correction to the energies of muons
+bound in atomic orbits around heavy nuclei. Also, as we shall see in
+Volume II, the calculation of the vacuum polarization provides a key
+element in the calculation of the high energy behavior of electrodynamics
+and other gauge theories.
+
+\clearpage
+\input{chapters/chapter11/figures/fig11-01.tex}
+
+As in Section 10.5, we define $i(2\pi)^4\Pi^{*\mu\nu}(q)$ as the sum of all
+connected graphs with two external photon lines with polarization indices
+$\mu$ and $\nu$ and carrying four-momentum $q$ into and out of the diagram,
+not including photon propagators for the two external lines, and with the
+asterisk indicating that we exclude diagrams that can be disconnected by
+cutting through some internal photon line. The complete photon propagator
+$\Delta'^{\mu\nu}(q)$ is given by Eq. (10.5.13):
+\begin{equation}
+  \Delta'=\Delta\bigl[\mathbf 1-\Pi^*\Delta\bigr]^{-1},
+  \tag{11.2.1}\label{eq:11.2.1}
+\end{equation}
+where $\Delta^{\mu\nu}(q)$ is the photon propagator without radiative
+corrections. Our task here is to calculate the leading contributions to
+$\Pi^{*\mu\nu}(q)$.
+
+In lowest order there is a one-loop contribution to $\Pi^*$, corresponding
+to the diagram in Figure~\ref{fig:11.1}:
+\begin{align}
+  i(2\pi)^4\Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&-\int d^4p\,\operatorname{Tr}\left\{
+  \left[\frac{-i}{(2\pi)^4}\frac{-i\sl{p}+m}{p^2+m^2-i\epsilon}\right]
+  \left[(2\pi)^4e\gamma^\rho\right]
+  \right.\notag\\[-2pt]
+  &\left.\qquad\cdot
+  \left[\frac{-i}{(2\pi)^4}
+  \frac{-i(\sl{p}-\sl{q})+m}{(p-q)^2+m^2-i\epsilon}\right]
+  \left[(2\pi)^4e\gamma^\sigma\right]\right\}.
+  \tag{11.2.2}\label{eq:11.2.2}
+\end{align}
+with the first minus sign on the right required by the presence of a fermion
+loop. More simply, this is
+\begin{equation}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  =\frac{-i e^2}{(2\pi)^4}\int d^4p\,
+  \frac{\operatorname{Tr}\{[-i\sl{p}+m]\gamma^\rho
+  [-i(\sl{p}-\sl{q})+m]\gamma^\sigma\}}
+  {(p^2+m^2-i\epsilon)((p-q)^2+m^2-i\epsilon)}.
+  \tag{11.2.3}\label{eq:11.2.3}
+\end{equation}
+The first step in doing this integral is to use a trick introduced by
+Feynman~\hyperref[ref:11.1]{[1]}. We use the elementary formula
+\begin{equation}
+  \frac1{AB}=\int_0^1\frac{dx}{[(1-x)A+xB]^2}
+  \tag{11.2.4}\label{eq:11.2.4}
+\end{equation}
+to write the product of scalar propagators in Eq.~\eqref{eq:11.2.3} as
+\begin{align*}
+  &\frac1{(p^2+m^2-i\epsilon)((p-q)^2+m^2-i\epsilon)}\\
+  &\quad=\int_0^1\bigl[(p^2+m^2-i\epsilon)(1-x)
+  +((p-q)^2+m^2-i\epsilon)x\bigr]^{-2}\,dx\\
+  &\quad=\int_0^1[p^2+m^2-i\epsilon-2p\cdot qx+q^2x]^{-2}\,dx\\
+  &\quad=\int_0^1[(p-qx)^2+m^2-i\epsilon+q^2x(1-x)]^{-2}\,dx.
+\end{align*}
+(This is a special case of a class of integrals given in the Appendix to
+this chapter.) We can now shift the variable of integration in momentum
+space\footnote{Strictly speaking, this step is only valid in convergent integrals.
+In principle, in order to justify the shift of variables, we should introduce
+some regulator scheme to make all integrals converge, such as the dimensional
+regularization scheme discussed below.}
+\[
+  p\longrightarrow p+qx,
+\]
+so that Eq.~\eqref{eq:11.2.3} becomes
+\begin{align}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&\frac{-i e^2}{(2\pi)^4}\int_0^1dx\int d^4p\,
+  [p^2+m^2-i\epsilon+q^2x(1-x)]^{-2}\notag\\
+  &\cdot\operatorname{Tr}\{[-i(\sl{p}+\sl{q}x)+m]\gamma^\rho
+  [-i(\sl{p}-\sl{q}(1-x))+m]\gamma^\sigma\}.
+  \tag{11.2.5}\label{eq:11.2.5}
+\end{align}
+Using the results of the Appendix to Chapter 8, the trace here can easily
+be calculated as
+\begin{align}
+  &\operatorname{Tr}\{[-i(\sl{p}+\sl{q}x)+m]\gamma^\rho
+  [-i(\sl{p}-\sl{q}(1-x))+m]\gamma^\sigma\}\notag\\
+  &\quad=4\bigl[-(p+qx)^\rho(p-q(1-x))^\sigma
+  +(p+qx)\cdot(p-q(1-x))\eta^{\rho\sigma}\notag\\
+  &\hspace{6.6em}-(p+qx)^\sigma(p-q(1-x))^\rho+m^2\eta^{\rho\sigma}\bigr].
+  \tag{11.2.6}\label{eq:11.2.6}
+\end{align}
+
+Our next step is called a Wick rotation~\hyperref[ref:11.2]{[2]}. As long as $-q^2<4m^2$, the
+quantity $m^2+q^2x(1-x)$ is positive for all $x$ between 0 and 1, so the
+poles in the integrand of Eq.~\eqref{eq:11.2.5} are at
+$p^0=\pm\sqrt{\mathbf p^2+m^2+q^2x(1-x)-i\epsilon}$, i.e., just above the
+negative real axis and just below the positive real axis. (See Figure~\ref{fig:11.2}.)
+We can rotate the contour of integrations of $p^0$ counterclockwise without
+crossing either of these poles, so that instead of integrating $p^0$ on the
+real axis from $-\infty$ to $+\infty$, we integrate it on the imaginary axis
+from $-i\infty$ to $+i\infty$. That is, we can write $p^0=i p^4$, with $p^4$
+integrated over real values from $-\infty$ to $+\infty$. (If an $i\epsilon$
+instead of $-i\epsilon$ had appeared in the denominator of the propagator,
+then we would have been setting $p^0=-ip^4$, with $p^4$ again integrated
+over real values from $-\infty$ to $+\infty$. The effect would be a change
+of sign of $\Pi_{\text{1 loop}}^{*\rho\sigma}(q)$.)
+
+\clearpage
+\input{chapters/chapter11/figures/fig11-02.tex}
+
+Equation~\eqref{eq:11.2.5} now becomes
+\begin{align}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&\frac{4e^2}{(2\pi)^4}\int_0^1dx\int(d^4p)_{\mathrm E}
+  [p^2+m^2+q^2x(1-x)]^{-2}\notag\\
+  &\cdot\bigl[-(p+qx)^\rho(p-q(1-x))^\sigma
+  +(p+qx)\cdot(p-q(1-x))\eta^{\rho\sigma}\notag\\
+  &\hspace{5em}-(p+qx)^\sigma(p-q(1-x))^\rho+m^2\eta^{\rho\sigma}\bigr],
+  \tag{11.2.7}\label{eq:11.2.7}
+\end{align}
+where
+\[
+  (d^4p)_{\mathrm E}=dp^1dp^2dp^3dp^4
+\]
+and all scalar products are evaluated using the Euclidean norm
+\[
+  a\cdot b=a^1b^1+a^2b^2+a^3b^3+a^4b^4
+\]
+with the understanding that $q^4\equiv-iq^0$. Also, $\eta^{\rho\sigma}$ can
+be taken as either the Kronecker delta, with the indices running over
+$1,2,3,4$, or as the usual Minkowski tensor, with the indices running over
+$0,1,2,3$.
+
+The integral \eqref{eq:11.2.7} is badly divergent. Eventually all infinities will
+cancel, but to see this it is necessary at intermediate stages of the
+calculation to use some sort of regularization technique that makes the
+integrals finite. It would not do simply to cut off the integrals at some
+maximum momentum $\Lambda$, integrating only over $p^\mu$ with
+$p^2<\Lambda^2$, because this would amount to introducing a step function
+$\theta(\Lambda^2-p^2)$ into the electron propagator, and the Ward identity
+(10.4.25) shows that in order to maintain gauge invariance, any modification
+of the electron propagator must be accompanied with a modification of the
+electron--photon vertex. In fact, with an ordinary cutoff $\Lambda$, radiative
+corrections would induce a photon mass, a clear violation of the requirements
+of gauge invariance.
+
+Experience has shown that the most convenient method for regulating
+divergent integrals without impairing gauge invariance is the dimensional
+regularization technique introduced by 't Hooft and Veltman~\hyperref[ref:11.3]{[3]} in 1972,
+based on a continuation from four to an arbitrary number $d$ of spacetime
+dimensions. This amounts to carrying out angular averages in integrals
+like \eqref{eq:11.2.7} by dropping all terms that are odd in $p$, and replacing the
+terms that have even numbers of $p$-factors with\footnote{These expressions
+may most easily be derived by noting that their form is dictated by Lorentz
+invariance and the symmetry among the indices $\mu$, $\nu$, $\rho$, etc.,
+while the factors may be found by requiring that both sides give the same
+result when contracted with $\eta$'s.}
+\begin{align}
+  p^\mu p^\nu&\longrightarrow p^2\eta^{\mu\nu}/d,
+  \tag{11.2.8}\label{eq:11.2.8}\\
+  p^\mu p^\nu p^\rho p^\sigma&\longrightarrow
+  (p^2)^2\bigl[\eta^{\mu\nu}\eta^{\rho\sigma}
+  +\eta^{\mu\rho}\eta^{\nu\sigma}
+  +\eta^{\mu\sigma}\eta^{\nu\rho}\bigr]/d(d+2).
+  \tag{11.2.9}\label{eq:11.2.9}
+\end{align}
+Also, after writing the integrand in this way as a function only of $p^2$,
+the volume element $d^4p_{\mathrm E}$ is to be replaced with
+$\Omega_d\kappa^{d-1}d\kappa$, where $\kappa\equiv\sqrt{p^2}$, and
+$\Omega_d$ is the area of a unit sphere in $d$ dimensions
+\begin{equation}
+  \Omega_d=2\pi^{d/2}/\Gamma(d/2).
+  \tag{11.2.10}\label{eq:11.2.10}
+\end{equation}
+
+The integral \eqref{eq:11.2.7} now converges for complex spacetime dimensionality
+$d$. We can continue the integral through complex $d$-values to $d=4$,
+the infinities then reappearing as factors $(d-4)^{-1}$.
+
+For the integral \eqref{eq:11.2.7}, dimensional regularization gives
+\begin{align*}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&\frac{4e^2\Omega_d}{(2\pi)^4}\int_0^1dx\int_0^\infty
+  \kappa^{d-1}d\kappa\,[\kappa^2+m^2+q^2x(1-x)]^{-2}\\
+  &\cdot\left[-\frac{2\kappa^2}{d}\eta^{\rho\sigma}
+  +2q^\rho q^\sigma x(1-x)
+  +(\kappa^2-q^2x(1-x))\eta^{\rho\sigma}
+  +m^2\eta^{\rho\sigma}\right].
+\end{align*}
+The integrals over $\kappa$ can be carried out for any complex $d$ (or for
+any real $d$, aside from the even integers). We use the well-known formulas
+(given in greater generality in the Appendix to this chapter):
+\begin{align}
+  \int_0^\infty\kappa^{d-1}[\kappa^2+v^2]^{-2}d\kappa
+  &=\frac12(v^2)^{d/2-2}\Gamma(d/2)\Gamma(2-d/2),
+  \tag{11.2.11}\label{eq:11.2.11}\\
+  \int_0^\infty\kappa^{d+1}[\kappa^2+v^2]^{-2}d\kappa
+  &=\frac12(v^2)^{d/2-1}\Gamma(1+d/2)\Gamma(1-d/2).
+  \tag{11.2.12}\label{eq:11.2.12}
+\end{align}
+and find
+\begin{align*}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&\frac{2e^2\Omega_d}{(2\pi)^4}\int_0^1dx
+  \Bigl[\left(1-\frac2d\right)\eta^{\rho\sigma}
+  (m^2+q^2x(1-x))^{d/2-1}
+  \Gamma(1+d/2)\Gamma(1-d/2)\\
+  &+\bigl(2q^\rho q^\sigma x(1-x)-q^2\eta^{\rho\sigma}x(1-x)
+  +m^2\eta^{\rho\sigma}\bigr)
+  (m^2+q^2x(1-x))^{d/2-2}\\
+  &\hspace{13em}\cdot\Gamma(d/2)\Gamma(2-d/2)\Bigr].
+\end{align*}
+The two terms in the integrand can be combined, using
+\[
+  (1-2/d)\Gamma(1+d/2)\Gamma(1-d/2)
+  =-\Gamma(d/2)\Gamma(2-d/2).
+\]
+We find
+\begin{align}
+  \Pi_{\text{1 loop}}^{*\rho\sigma}(q)
+  ={}&\frac{4e^2\Omega_d}{(2\pi)^4}
+  \Gamma(d/2)\Gamma(2-d/2)(q^\rho q^\sigma-q^2\eta^{\rho\sigma})
+  \notag\\
+  &\cdot\int_0^1dx\,x(1-x)(m^2+q^2x(1-x))^{d/2-2}.
+  \tag{11.2.13}\label{eq:11.2.13}
+\end{align}
+We note the very important result that this contribution to
+$\Pi^{*\rho\sigma}$ satisfies the relation
+\begin{equation}
+  q_\rho\Pi_{\text{1 loop}}^{*\rho\sigma}(q)=0
+  \tag{11.2.14}\label{eq:11.2.14}
+\end{equation}
+that was derived in Section 10.5 on the basis of the conservation and
+neutrality of the electric current. It was precisely to achieve this result
+that we adopted the dimensional regularization scheme. The reason that
+dimensional regularization gives this result is that the conservation of
+current does not depend on the dimensionality of spacetime.
+
+The gamma function $\Gamma(2-d/2)$ in Eq.~\eqref{eq:11.2.13} blows up for
+$d\to4$. Fortunately, as we saw in Section 11.1, there is another term that
+must be added to $\Pi^{*\rho\sigma}(q)$, arising from the term
+$-\tfrac14(Z_3-1)F_{\mu\nu}F^{\mu\nu}$ in the interaction Lagrangian.
+This term has a structure like Eq.~\eqref{eq:11.2.13}
+\begin{equation}
+  \Pi_{\mathcal L_2}^{*\rho\sigma}(q)
+  =-(Z_3-1)(q^2\eta^{\rho\sigma}-q^\rho q^\sigma),
+  \tag{11.2.15}\label{eq:11.2.15}
+\end{equation}
+so to order $e^2$, the complete $\Pi^*$ has the form
+\begin{equation}
+  \Pi^{*\rho\sigma}(q)=(q^2\eta^{\rho\sigma}-q^\rho q^\sigma)\pi(q^2),
+  \tag{11.2.16}\label{eq:11.2.16}
+\end{equation}
+with
+\begin{align}
+  \pi(q^2)={}&-\frac{4e^2\Omega_d}{(2\pi)^4}
+  \Gamma(d/2)\Gamma(2-d/2)\int_0^1dx\,x(1-x)
+  (m^2+q^2x(1-x))^{d/2-2}
+  -(Z_3-1).
+  \tag{11.2.17}\label{eq:11.2.17}
+\end{align}
+
+As we saw in Section 10.5, the definition of the renormalized
+electromagnetic field requires that $\pi(0)=0$ (in order that the residue
+of the pole in the complete photon propagator at $q^2=0$ should be the
+same as for the bare propagator, aside from gauge-dependent terms).
+Therefore, to order $e^2$,
+\begin{equation}
+  Z_3=1-\frac{4e^2\Omega_d}{(2\pi)^4}\Gamma(d/2)\Gamma(2-d/2)
+  (m^2)^{d/2-2}\int_0^1x(1-x)\,dx,
+  \tag{11.2.18}\label{eq:11.2.18}
+\end{equation}
+so that, to order $e^2$,
+\begin{align}
+  \pi(q^2)={}&-\frac{4e^2\Omega_d}{(2\pi)^4}
+  \Gamma(d/2)\Gamma(2-d/2)\int_0^1dx\,x(1-x)\notag\\
+  &\cdot\left[(m^2+q^2x(1-x))^{d/2-2}-(m^2)^{d/2-2}\right].
+  \tag{11.2.19}\label{eq:11.2.19}
+\end{align}
+
+Now we can remove the regularization, allowing $d$ to approach its
+physical value $d=4$. As mentioned before, there is an infinity in the
+one-loop contribution, arising from the limiting behavior of the Gamma
+function
+\[
+  \Gamma(2-d/2)\longrightarrow\frac1{2-d/2}-\gamma,
+\]
+where $\gamma$ is the Euler constant, $\gamma=0.5772157$. The infinite part
+of $Z_3-1$ is given by using $1/(2-d/2)$ for $\Gamma(2-d/2)$, and
+replacing $d$ everywhere else by 4:
+\begin{equation}
+  (Z_3-1)_\infty
+  =-\frac{4e^2\cdot2\pi^2}{6(2\pi)^4}\frac1{2-d/2}
+  =\frac{e^2}{6\pi^2}\frac1{d-4}.
+  \tag{11.2.20}\label{eq:11.2.20}
+\end{equation}
+We shall see in Volume II that this result may be used to derive the leading
+term in the renormalization group equation for the electric charge.
+
+The poles at $d=4$ obviously cancel in $\pi(q^2)$, because for $d=4$ both
+$(m^2+q^2x(1-x))^{d/2-2}$ and $(m^2)^{d/2-2}$ have the same limit,
+unity. For the same reason, the term $-\gamma$ in $\Gamma(2-d/2)$ cancels
+in the total $\pi(q^2)$, though it does make a finite contribution to
+$Z_3-1$. There are other finite contributions to $Z_3-1$, that arise from
+the product of the pole in $\Gamma(2-d/2)$ with the linear terms in the
+expansion of $\Omega_d\Gamma(d/2)$ around $d=4$, but these also cancel in
+the total $\pi(q^2)$. Indeed, in carrying out our dimensional regularization,
+we might have replaced $(2\pi)^{-4}$ with $(2\pi)^{-d}$, and the factor
+$\operatorname{Tr}\mathbf 1=4$ might have been replaced with the dimensionality
+$2^{d/2}$ of gamma matrices in arbitrary even spacetime dimensionalities
+$d$, and these too would have contributed to the finite part of $Z_3-1$,
+but not of $\pi(q^2)$. Moreover, $e^2$ cannot be supposed to be
+$d$-independent, because as shown by inspection of Eq.~\eqref{eq:11.2.13}, it has
+the $d$-dependent dimensionality $[\text{mass}]^{4-d}$. If we take
+$e^2\propto\mu^{4-d}$, where $\mu$ is some quantity with the units of mass,
+then there are additional finite terms in $Z_3-1$, arising from the product
+of the pole in $\Gamma(2-d/2)$ with the term $(4-d)\ln\mu$ in the
+expansion of $\mu^{4-d}$ in powers of $4-d$, but again, these cancel between
+$Z_3-1$ and the one-loop contributions to $\pi(q^2)$.
+
+The only terms that do contribute to $\pi(q^2)$ in the limit $d\to4$ are
+those arising from the product of the pole in $\Gamma(2-d/2)$ with the
+linear terms in the expansion of $(m^2+q^2x(1-x))^{d/2-2}$ and
+$(m^2)^{d/2-2}$ in powers of $d-4$:
+\begin{equation}
+  (m^2+q^2x(1-x))^{d/2-2}-(m^2)^{d/2-2}
+  \longrightarrow\left(\frac d2-2\right)
+  \ln\left(1+\frac{q^2x(1-x)}{m^2}\right).
+  \tag{11.2.21}\label{eq:11.2.21}
+\end{equation}
+This gives at last
+\begin{equation}
+  \pi(q^2)=\frac{e^2}{2\pi^2}\int_0^1x(1-x)
+  \ln\left(1+\frac{q^2x(1-x)}{m^2}\right)dx.
+  \tag{11.2.22}\label{eq:11.2.22}
+\end{equation}
+
+The physical significance of the vacuum polarization can be explored by
+considering its effect on the scattering of two charged particles of spin
+$\tfrac12$. The Feynman diagrams of Figure~\ref{fig:11.3} make contributions to the
+scattering $S$-matrix element of the form
+\begin{align*}
+  S_a(1,2\to1',2')={}&(2\pi)^{-12/2}\delta^4(p_{1'}+p_{2'}-p_1-p_2)
+  \bigl[e_1(2\pi)^4\bar u_{1'}\gamma^\mu u_1\bigr]\\
+  &\cdot\left[-i(2\pi)^{-4}\frac1{q^2}\right]
+  \bigl[e_2(2\pi)^4\bar u_{2'}\gamma_\mu u_2\bigr],\\[4pt]
+  S_b(1,2\to1',2')={}&(2\pi)^{-12/2}\delta^4(p_{1'}+p_{2'}-p_1-p_2)
+  \bigl[e_1(2\pi)^4\bar u_{1'}\gamma^\mu u_1\bigr]\\
+  &\cdot\left[-i(2\pi)^{-4}\frac1{q^2}\right]^2
+  \bigl[i(2\pi)^4(q^2\eta_{\mu\nu}-q_\mu q_\nu)\pi(q^2)\bigr]
+  \bigl[e_2(2\pi)^4\bar u_{2'}\gamma^\nu u_2\bigr],
+\end{align*}
+where $e_1$ and $e_2$ are the charges of the two particles being scattered;
+$\pi(q^2)$ is calculated using for $e$ in Eq.~\eqref{eq:11.2.22} the magnitude of
+the charge of the particle circulating in the loop in Figure~\ref{fig:11.3}; and
+$q^\mu$ is the momentum transfer $q=p_1-p_{1'}=p_{2'}-p_2$. Using the
+conservation property $q_\mu\bar u_{1'}\gamma^\mu u_1=0$ the two diagrams
+together yield an $S$-matrix element:
+\begin{align}
+  S_{a+b}(1,2\to1',2')={}&\frac{-i e_1e_2}{4\pi^2q^2}
+  [1+\pi(q^2)]\delta^4(p_{1'}+p_{2'}-p_1-p_2)\notag\\
+  &\cdot[\bar u_{1'}\gamma^\mu u_1][\bar u_{2'}\gamma_\mu u_2].
+  \tag{11.2.23}\label{eq:11.2.23}
+\end{align}
+In the non-relativistic limit,
+$\bar u_{1'}\gamma^0u_1\simeq-i\delta_{\sigma_{1'}\sigma_1}$ while
+$\bar u_{1'}\gamma^iu_1\simeq0$, and likewise for particle 2. Also, in this
+limit $q^0$ is negligible compared with $|\mathbf q|$. Equation~\eqref{eq:11.2.23}
+in this limit becomes
+\begin{equation}
+  S_{a+b}(1,2\to1',2')=\frac{-i e_1e_2}{4\pi^2\mathbf q^2}
+  [1+\pi(\mathbf q^2)]\delta^4(p_{1'}+p_{2'}-p_1-p_2)
+  \delta_{\sigma_{1'}\sigma_1}\delta_{\sigma_{2'}\sigma_2}.
+  \tag{11.2.24}\label{eq:11.2.24}
+\end{equation}
+This may be compared with the $S$-matrix in the Born approximation due
+to a local spin-independent central potential $V(r)$:
+\begin{equation}
+  S_{\mathrm{Born}}(1,2\to1',2')=-2\pi i\delta(E_{1'}+E_{2'}-E_1-E_2)
+  T_{\mathrm{Born}}(1,2\to1',2').
+  \tag{11.2.25}\label{eq:11.2.25}
+\end{equation}
+\begin{align}
+  T_{\mathrm{Born}}(1,2\to1',2')={}&
+  \delta_{\sigma_{1'}\sigma_1}\delta_{\sigma_{2'}\sigma_2}
+  \int d^3x_1\int d^3x_2\,V(|\mathbf x_1-\mathbf x_2|)\notag\\
+  &\cdot(2\pi)^{-12/2}e^{-i\mathbf p_{1'}\cdot\mathbf x_1}
+  e^{-i\mathbf p_{2'}\cdot\mathbf x_2}
+  e^{i\mathbf p_1\cdot\mathbf x_1}e^{i\mathbf p_2\cdot\mathbf x_2}.
+  \tag{11.2.26}\label{eq:11.2.26}
+\end{align}
+Setting $\mathbf x_1=\mathbf x_2+\mathbf r$, this gives
+\begin{align}
+  S_{\mathrm{Born}}={}&\frac{-i}{4\pi^2}
+  \delta^4(p_{1'}+p_{2'}-p_1-p_2)
+  \delta_{\sigma_{1'}\sigma_1}\delta_{\sigma_{2'}\sigma_2}
+  \int d^3r\,V(r)e^{-i\mathbf q\cdot\mathbf r}.
+  \tag{11.2.27}\label{eq:11.2.27}
+\end{align}
+Comparing this with Eq.~\eqref{eq:11.2.23} shows that in the non-relativistic limit
+the diagrams of Figure~\ref{fig:11.3} yield the same $S$-matrix element as a potential
+$V(r)$ such that
+\[
+  \int d^3r\,V(r)e^{-i\mathbf q\cdot\mathbf r}
+  =e_1e_2\frac{1+\pi(\mathbf q^2)}{\mathbf q^2}
+\]
+or, inverting the Fourier transform,
+\begin{equation}
+  V(r)=\frac{e_1e_2}{(2\pi)^3}\int d^3q\,e^{i\mathbf q\cdot\mathbf r}
+  \left[\frac{1+\pi(\mathbf q^2)}{\mathbf q^2}\right].
+  \tag{11.2.28}\label{eq:11.2.28}
+\end{equation}
+Equation~\eqref{eq:11.2.28} is to first order in the radiative correction the same
+potential energy that would be produced by the electrostatic interaction of
+two extended charge distributions $e_1\eta(\mathbf x)$ and
+$e_2\eta(\mathbf y)$ at a distance $\mathbf r$:
+\begin{equation}
+  V(|\mathbf r|)=e_1e_2\int d^3x\int d^3y\,
+  \frac{\eta(\mathbf x)\eta(\mathbf y)}{4\pi|\mathbf x-\mathbf y+\mathbf r|},
+  \tag{11.2.29}\label{eq:11.2.29}
+\end{equation}
+where
+\begin{equation}
+  \eta(\mathbf r)=\delta^3(\mathbf r)+\frac1{2(2\pi)^3}
+  \int d^3q\,\pi(\mathbf q^2)e^{i\mathbf q\cdot\mathbf r}.
+  \tag{11.2.30}\label{eq:11.2.30}
+\end{equation}
+Note that
+\begin{equation}
+  \int d^3r\,\eta(\mathbf r)=1+\frac12\pi(0)=1,
+  \tag{11.2.31}\label{eq:11.2.31}
+\end{equation}
+so the total charges of particles 1 and 2, as determined from the long-range
+part of the Coulomb potential, are the same constants $e_1$ and $e_2$ that
+govern the interactions of the renormalized electromagnetic field.
+
+\input{chapters/chapter11/figures/fig11-03.tex}
+
+For $|\mathbf r|\ne0$ the integral \eqref{eq:11.2.30} can be carried out by a
+straightforward contour integration:
+\[
+  \eta(\mathbf r)=-\frac{e^2}{8\pi^3r^3}\int_0^1x(1-x)\,dx
+  \left[1+\frac{mr}{\sqrt{x(1-x)}}\right]
+  \exp\left(\frac{-mr}{\sqrt{x(1-x)}}\right).
+\]
+This expression is negative everywhere. However, we have seen that the
+integral of $\eta(\mathbf r)$ over all $\mathbf r$ equals $+1$. Therefore,
+$\eta(\mathbf r)$ must contain a term $(1+L)\delta^3(\mathbf r)$ that is
+singular at $\mathbf r=0$, with $L$ chosen to satisfy Eq.~\eqref{eq:11.2.31}:
+\begin{equation}
+  L=\frac{e^2}{8\pi^3}\int\frac{d^3r}{r^3}\int_0^1x(1-x)\,dx
+  \left[1+\frac{mr}{\sqrt{x(1-x)}}\right]
+  \exp\left(\frac{-mr}{\sqrt{x(1-x)}}\right).
+  \tag{11.2.32}\label{eq:11.2.32}
+\end{equation}
+The complete expression for the charge distribution function is then
+\begin{align}
+  \eta(\mathbf r)={}&(1+L)\delta^3(\mathbf r)
+  -\frac{e^2}{8\pi^3r^3}\int_0^1x(1-x)\,dx\notag\\
+  &\cdot\left[1+\frac{mr}{\sqrt{x(1-x)}}\right]
+  \exp\left(\frac{-mr}{\sqrt{x(1-x)}}\right).
+  \tag{11.2.33}\label{eq:11.2.33}
+\end{align}
+The physical interpretation of this result is that a bare point charge
+attracts particles of charge of opposite sign out of the vacuum, repelling
+their antiparticles to infinity, so that the bare charge is partially shielded,
+yielding a renormalized charge smaller by a factor $1/(1+L)$. As a check,
+we may note that if we cut off the divergent integral \eqref{eq:11.2.32} by taking the
+integral to extend only over $r\ge a$, we find that the part that is divergent
+for $a\to0$ is
+\begin{equation}
+  L_\infty=\frac{e^2}{12\pi^2}\ln a^{-1}.
+  \tag{11.2.34}\label{eq:11.2.34}
+\end{equation}
+Hence if we identify the momentum space cutoff $\Lambda$ with $a^{-1}$,
+the divergent part of $L$ is related to the divergent part of $Z_3-1$ by
+\begin{equation}
+  (Z_3-1)_\infty=-2L_\infty,
+  \tag{11.2.35}\label{eq:11.2.35}
+\end{equation}
+because to order $e^2$ the renormalized charge (10.4.18) is given by
+\begin{equation}
+  e_r=Z_3^{1/2}e_{\mathrm B r}\simeq
+  \left(1+\frac12(Z_3-1)\right)e_{\mathrm B r}\simeq
+  (1+L)^{-1}e_{\mathrm B r}.
+  \tag{11.2.36}\label{eq:11.2.36}
+\end{equation}
+Equation~\eqref{eq:11.2.35} is confirmed below.
+
+Vacuum polarization has a measurable effect on muonic atomic energy
+levels. As we shall see in Chapter 14, the effect of Feynman graph (b) in
+Figure~\ref{fig:11.3} is to shift the energy of an atomic state with wave function
+$\psi(\mathbf r)$ by
+\begin{equation}
+  \Delta E=\int d^3r\,\Delta V(\mathbf r)|\psi(\mathbf r)|^2,
+  \tag{11.2.37}\label{eq:11.2.37}
+\end{equation}
+where $\Delta V(\mathbf r)$ is the perturbation in the potential \eqref{eq:11.2.28}:
+\begin{equation}
+  \Delta V(\mathbf r)=\frac{e_1e_2}{(2\pi)^3}\int d^3q\,
+  e^{i\mathbf q\cdot\mathbf r}\left[\frac{\pi(\mathbf q^2)}{\mathbf q^2}\right].
+  \tag{11.2.38}\label{eq:11.2.38}
+\end{equation}
+This perturbation falls off exponentially for $r\gg m^{-1}$. On the other
+hand, the wave function of electrons in ordinary atoms will generally be
+confined within a much larger radius $a\gg m^{-1}$; for instance, for
+hydrogenic orbits of electrons around a nucleus of charge $Ze$ we have
+$a=137/Zm$ (where here $m=m_e$). The energy shift will then depend only
+on the behavior of the wave function for $r\ll a$. For orbital angular
+momentum $\ell$, the wave function behaves like $r^\ell$ for $r\ll a$, so
+Eq.~\eqref{eq:11.2.37} gives $\Delta E$ proportional to a factor $(ma)^{-2\ell-3}$.
+The effect of vacuum polarization is therefore very much larger for $\ell=0$
+than for higher orbital angular momenta. For $\ell=0$ the wave function is
+approximately equal to the constant $\psi(0)$ for $r$ less than or of the
+order of $m^{-1}$, so Eq.~\eqref{eq:11.2.37} becomes
+\begin{equation}
+  \Delta E=|\psi(0)|^2\int d^3r\,\Delta V(\mathbf r).
+  \tag{11.2.39}\label{eq:11.2.39}
+\end{equation}
+Using Eqs.~\eqref{eq:11.2.38} and \eqref{eq:11.2.22}, the integral of the shift in the potential
+(for $e_1e_2=-Ze^2$) is
+\begin{equation}
+  \int d^3r\,\Delta V(\mathbf r)=-Ze^2\pi'(0)
+  =-\frac{4Z\alpha^2}{15m^2}.
+  \tag{11.2.40}\label{eq:11.2.40}
+\end{equation}
+Also, in states of hydrogenic atoms with $\ell=0$ and principal quantum
+number $n$ the wave function at the origin is
+\begin{equation}
+  \psi(0)=\frac2{\sqrt{4\pi}}\left(\frac{Z\alpha m}{n}\right)^{3/2},
+  \tag{11.2.41}\label{eq:11.2.41}
+\end{equation}
+so the energy shift \eqref{eq:11.2.39} is
+\begin{equation}
+  \Delta E=-\frac{4Z^4\alpha^5m}{15\pi n^3}.
+  \tag{11.2.42}\label{eq:11.2.42}
+\end{equation}
+For instance, in the $2s$ state of hydrogen this energy shift is
+$-1.122\cdot10^{-7}$ eV, corresponding to a frequency shift
+$\Delta E/2\pi\hbar$ of $-37.13$ MHz. This is sometimes called the
+Uehling effect~\hyperref[ref:11.4]{[4]}. As discussed in Chapter 1, such tiny energy shifts became
+measurable because in the absence of various radiative corrections the pure
+Dirac theory would predict exact degeneracy of the $2s$ and $2p$ states of
+hydrogen. As we shall see in Chapter 14, most of the $+1058$ MHz ``Lamb
+shift'' between the $2s$ and the $2p$ states comes from other radiative
+corrections, but the agreement between theory and experiment is good enough
+to verify the presence of the $-37.13$ MHz shift due to vacuum polarization.
+
+Although vacuum polarization contributes only a small part of the radiative
+corrections in ordinary atoms, it dominates the radiative corrections in
+muonic atoms, in which a muon takes the place of the orbiting electron.
+This is because most radiative corrections give energy shifts in muonic atoms
+that on dimensional grounds are proportional to $m_\mu$, while the integrated
+vacuum polarization energy $\int d^3r\,\Delta V$ due to an electron loop is
+still proportional to $m_e^{-2}$ as in Eq.~\eqref{eq:11.2.40}, giving an energy shift
+proportional to $m_\mu^3m_e^{-2}=(210)^2m_\mu$. However, in this case the
+muonic atomic radius is not much larger than the electron Compton wavelength,
+so the approximate result \eqref{eq:11.2.39} only gives the order of magnitude of the
+energy shift due to vacuum polarization.
+
+\begin{center}
+  $*\ *\ *$
+\end{center}
+
+For the purposes of comparison with later calculations, note that if we
+had cut off the integral \eqref{eq:11.2.7} at $\kappa=\Lambda$, then in place of
+Eq.~\eqref{eq:11.2.20} we would have encountered an integral of the form
+\[
+  (Z_3-1)_\infty=-\frac{e^2}{6\pi^2}\int_\mu^\Lambda
+  \kappa^{d-5}\,d\kappa
+  =\frac{e^2}{6\pi^2}\frac{\mu^{d-4}-\Lambda^{d-4}}{d-4},
+\]
+where $\mu$ is an infrared effective cutoff of the order of the mass of the
+charged particle circulating in the loop of Figure~\ref{fig:11.1}. (The easiest way to
+find the constant factor here is to require that the limit of this expression
+for $d<3$ and $\Lambda\to\infty$ matches Eq.~\eqref{eq:11.2.20}.) With such an
+ultraviolet cutoff in place, we can pass to the limit $d\to4$, and obtain
+\begin{equation}
+  (Z_3-1)_\infty=-\frac{e^2}{6\pi^2}\ln(\Lambda/\mu).
+  \tag{11.2.43}\label{eq:11.2.43}
+\end{equation}

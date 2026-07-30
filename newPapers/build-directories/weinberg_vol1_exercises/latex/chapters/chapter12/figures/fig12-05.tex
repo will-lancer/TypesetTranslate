@@ -1,0 +1,33 @@
+% Figure 12.5, physical PDF p. 547 (printed p. 524).
+\begingroup
+\renewcommand{\thefigure}{12.\arabic{figure}}
+\setcounter{figure}{4}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  fermion/.style={line width=0.75pt,postaction={decorate},
+    decoration={markings,mark=at position 0.55 with
+      {\arrow{Stealth[length=5pt,width=4pt]}}}},
+  photon/.style={line width=0.7pt,decorate,
+    decoration={snake,amplitude=1.25pt,segment length=6pt}}
+]
+  \coordinate (TL) at (-1.35,1.35);
+  \coordinate (TR) at (1.35,1.35);
+  \coordinate (BR) at (1.35,-1.35);
+  \coordinate (BL) at (-1.35,-1.35);
+  \draw[fermion] (TL) -- (TR);
+  \draw[fermion] (TR) -- (BR);
+  \draw[fermion] (BR) -- (BL);
+  \draw[fermion] (BL) -- (TL);
+  \draw[photon] (-2.15,2.75) -- (TL);
+  \draw[photon] (2.15,2.75) -- (TR);
+  \draw[photon] (BR) -- (2.15,-2.75);
+  \draw[photon] (BL) -- (-2.15,-2.75);
+\end{tikzpicture}
+\caption{Diagram for photon--photon scattering, whose effect at low energy can
+be calculated from the effective Lagrangian of Euler \emph{et
+al.}~\hyperref[ref:12.16]{[16]}. Straight lines are electrons; wavy lines are
+photons.}
+\label{fig:weinberg-12-5}
+\end{figure}
+\endgroup

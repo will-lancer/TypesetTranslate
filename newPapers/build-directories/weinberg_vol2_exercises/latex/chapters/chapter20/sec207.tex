@@ -1,0 +1,182 @@
+% Source coverage: physical PDF pp. 306--311 (printed pp. 283--288), beginning at the Section 20.7 heading and ending immediately before the chapter appendix.
+% Numbered equations: (20.7.1)--(20.7.22), with two unnumbered displays. Figure: 20.3. Footnotes: 2. Inline chapter references: [18]--[22]. Uncertainty: none.
+
+\subsection[Renormalons]{Renormalons\footnotemark}
+\label{sec:20.7}
+\footnotetext{This section lies somewhat out of the book's main line of development, and may be omitted in a first reading.}
+
+Since the beginning of quantum field theory theorists have wondered whether the perturbation series for physical matrix elements converges, and if it does not, then what can be done about it? Very early in the modern period Dyson~\hyperref[ch20-ref-18]{[18]} observed that the number of diagrams of $n$th order typically grows as $n!$, which suggested that the perturbation series has zero radius of convergence.
+
+There is a well-known technique known as a Borel transformation~\hyperref[ch20-ref-19]{[19]} for improving the convergence of a power series whose $n$th order term grows as $n!$, either to make the series converge, or at least to improve the behavior of the series so that it can be used as an asymptotic expansion for a larger range of coupling constants. For a given series
+\begin{equation}
+F(g)=\sum_n f_n g^n
+\tag{20.7.1}\label{eq:20.7.1}
+\end{equation}
+we consider the related series
+\begin{equation}
+B(z)\equiv\sum_n\frac{f_nz^n}{n!}.
+\tag{20.7.2}\label{eq:20.7.2}
+\end{equation}
+
+If $f_n$ grows no faster than $n!$ then $B(z)$ will generally have at least a finite radius of convergence. The question is, can we recover the original series \eqref{eq:20.7.1} from the resummed series \eqref{eq:20.7.2}? Using the familiar formula
+\[
+\int_0^\infty \exp(-z/g)z^n\,dz=n!g^{n+1}
+\]
+we see that, at least formally,
+\begin{equation}
+gF(g)=\int_0^\infty \exp(-z/g)B(z)\,dz.
+\tag{20.7.3}\label{eq:20.7.3}
+\end{equation}
+
+Singularities of $B(z)$ anywhere in the complex plane limit the radius of convergence of the series \eqref{eq:20.7.2}, but this is not an insuperable problem if these singularities are off the positive real axis. To calculate $F(g)$ using Eq.~\eqref{eq:20.7.3} we need $B(z)$ only for real positive values of $z$ less than or of order $g$, which can be obtained from the power series \eqref{eq:20.7.1} if the singularities of $B(z)$ in the complex plane are all at distances from the origin much greater than $g$. Even if a few poles $z_1$, $z_2$, etc. have moduli of order $g$ or less, we can calculate $B(z)$ out to values of $z$ of order $g$ by using the power series for $(z-z_1)(z-z_2)\cdots B(z)$, but for this purpose we have to know where the poles are.
+
+Singularities of $B(z)$ on the positive real axis are much worse, for they invalidate Eq.~\eqref{eq:20.7.3}. The contour in this integral may be distorted to avoid singularities on the positive real axis, but then we have an ambiguity: do we distort the contour above or below the singularity?
+
+This section will show that some of the singularities of the Borel transform $B(z)$ are associated with solutions of the classical field equations known as \emph{instantons}, while other singularities, known as \emph{renormalons}, are associated with terms in the operator product expansion. In quantum chromodynamics it is the renormalons that obstruct the use of the Borel transformation to sum the perturbation series.
+
+It was Lipatov~\hyperref[ch20-ref-20]{[20]} who in 1976 showed that some of the singularities of the Borel transform $B(z)$ are associated with the existence of classical solutions of the field equations. Consider a function $F(g)$ defined by a Euclidean path integral:
+\begin{equation}
+F(g)\equiv\int[d\phi]\exp\bigl(I[\phi,g]\bigr).
+\tag{20.7.4}\label{eq:20.7.4}
+\end{equation}
+(The use of Euclidean path integration is discussed in Appendix A of Chapter 23.) The coefficients in the power series \eqref{eq:20.7.1} are given by
+\begin{align}
+f_n
+&=\frac{1}{2\pi i}\int[d\phi]\oint dg\,g^{-n-1}
+\exp\bigl(I[\phi,g]\bigr)
+\notag\\
+&=\frac{1}{2\pi i}\int[d\phi]\oint dg\,
+\exp\bigl(I[\phi,g]-(n+1)\ln g\bigr),
+\tag{20.7.5}\label{eq:20.7.5}
+\end{align}
+where $\oint$ denotes the integral counterclockwise over a closed curve in the complex $g$ plane surrounding the point $g=0$. For very large $n$, it is reasonable to suppose that the integral is dominated by the point $\phi_n,g_n$ where the argument of the exponential in the last line of Eq.~\eqref{eq:20.7.5} is stationary in both $\phi$ and $g$:
+\begin{equation}
+\left.
+\frac{\delta I[\phi,g_n]}{\delta\phi(x)}
+\right|_{\phi=\phi_n}
+=0,
+\tag{20.7.6}\label{eq:20.7.6}
+\end{equation}
+\begin{equation}
+\left.
+\frac{\partial I[\phi_n,g]}{\partial g}
+\right|_{g=g_n}
+=\frac{n+1}{g_n}.
+\tag{20.7.7}\label{eq:20.7.7}
+\end{equation}
+
+For instance, suppose that $I[\phi,g]$ is the action for a massless scalar field
+\begin{equation}
+I[\phi,g]
+=-\frac12\int \partial_i\phi\,\partial_i\phi\,d^4x
+-\frac{g}{24}\int\phi^4\,d^4x,
+\tag{20.7.8}\label{eq:20.7.8}
+\end{equation}
+the sum running over the Euclidean coordinate directions $1$, $2$, $3$, $4$. Then the field equation \eqref{eq:20.7.6} reads
+\begin{equation}
+\Box\phi_n=\frac16g_n\phi_n^3.
+\tag{20.7.9}\label{eq:20.7.9}
+\end{equation}
+We will see that $g_n$ is negative, so the solution has
+\begin{equation}
+\phi_n(x)=(-g_n)^{-1/2}\chi(x),
+\tag{20.7.10}\label{eq:20.7.10}
+\end{equation}
+with $\chi(x)$ the $g$-independent solution of the equation
+\begin{equation}
+\Box\chi=-\frac16\chi^3.
+\tag{20.7.11}\label{eq:20.7.11}
+\end{equation}
+The condition \eqref{eq:20.7.7} tells us that
+\[
+-\frac1{24}\int d^4x\,\phi_n^4=\frac{n+1}{g_n}
+\]
+or in terms of the rescaled field \eqref{eq:20.7.10}
+\begin{equation}
+g_n=-\frac{1}{24(n+1)}\int d^4x\,\chi^4.
+\tag{20.7.12}\label{eq:20.7.12}
+\end{equation}
+At this stationary point the action \eqref{eq:20.7.8} becomes
+\begin{align}
+I[\phi_n,g_n]
+&=-\frac12\int\partial_i\phi_n\,\partial_i\phi_n\,d^4x
+-\frac{g_n}{24}\int\phi_n^4\,d^4x
+\notag\\
+&=\frac{g_n}{24}\int\phi_n^4\,d^4x
+=-n-1.
+\tag{20.7.13}\label{eq:20.7.13}
+\end{align}
+
+Evaluating Eq.~\eqref{eq:20.7.5} at the stationary point then gives for $n\to\infty$\footnote{Here the symbol `$\approx$' should be interpreted to mean `asymptotically equal up to factors of constants and powers of $n$.' These factors arise from the factor $\sqrt{12\pi n}$ in Stirling's formula for $(n+1)!$, from the ratio of $(n+1)!$ and $n!$, and from the integral over the fluctuations of $g$ and $\phi(x)$ around the stationary point. Since we are not going to calculate the factors from the last source, there is no point in keeping track of the factors from the first two sources either.}
+\begin{align}
+f_n
+&\approx g_n^{-n-1}\exp\bigl(I[\phi_n,g_n]\bigr)
+\notag\\
+&=(n+1)^{n+1}
+\left(-\frac{e}{24}\int\chi^4\,d^4x\right)^{-n-1}
+\notag\\
+&\approx n!
+\left(-\frac1{24}\int\chi^4\,d^4x\right)^{-n}.
+\tag{20.7.14}\label{eq:20.7.14}
+\end{align}
+The leading singularity in $B(z)$ is therefore a pole at $z=z_1$, where
+\begin{equation}
+z_1=-\frac1{24}\int\chi^4\,d^4x.
+\tag{20.7.15}\label{eq:20.7.15}
+\end{equation}
+Because this is negative, it does not prevent us from carrying out the integration in Eq.~\eqref{eq:20.7.3}. To calculate the pole position \eqref{eq:20.7.15}, we note that the field equation \eqref{eq:20.7.11} has the solution
+\begin{equation}
+\chi=\frac{4\sqrt3\,a}{r^2+a^2},
+\tag{20.7.16}\label{eq:20.7.16}
+\end{equation}
+where $r=(x_ix_i)^{1/2}$, and $a$ is an arbitrary parameter. This solution of the field equation is an elementary example of the `instanton' solutions to be discussed in Section 23.5. (These are called instantons because instead of being concentrated along a worldline they are concentrated near a point in spacetime---in this case, the origin.) Fortunately the pole position does not depend on $a$:
+\begin{equation}
+z_1
+=-96\pi^2a^4\int_0^\infty\frac{r^2\,dr^2}{(r^2+a^2)^4}
+=-16\pi^2.
+\tag{20.7.17}\label{eq:20.7.17}
+\end{equation}
+We see that the perturbation series for $B(z)$ can be used in Eq.~\eqref{eq:20.7.3} if $g\ll16\pi^2$. If $g/16\pi^2$ is of the order or greater than unity, we may still be able to calculate $B(z)$ from the perturbation series for $(z+16\pi^2)B(z)$.
+
+We will see in Section 23.5 that there are instanton solutions in non-Abelian gauge theories like quantum chromodynamics, but these also yield relatively harmless singularities of $B(z)$ on the negative real axis. The real problem in quantum chromodynamics is with a different class of singularities, known as renormalons~\hyperref[ch20-ref-21]{[21]}. These were first discovered through the realization~\hyperref[ch20-ref-22]{[22]} that single $2n$th order diagrams, like that shown in Figure~\ref{fig:20.3}, can make individual contributions that grow like $n!$, and hence according to Eq.~\eqref{eq:20.7.2} may lead to additional singularities in $B(z)$. In this particular case the singularity is known as an \emph{infrared} renormalon,
+
+\input{chapters/chapter20/figures/fig20-03.tex}
+
+as it arises from virtual momenta that are much smaller than those used to define the running quantum chromodynamics coupling $g_\mu$. Fortunately, it is possible to use the operator product expansion to locate the infrared renormalons, without having to look at individual Feynman diagrams.
+
+For a simple but important example, consider the sum $\Pi_{\alpha\beta}^{\mu\nu}(q)$ of all vacuum diagrams in quantum chromodynamics with insertions of four-vector currents $J_\alpha^\mu$ and $J_\beta^\nu$ carrying a four-momentum $q$ into and out of the diagram. ($\Pi^{\mu\nu}(q)$ gives the hadronic contribution to the electroweak vacuum polarization, and its imaginary part yields the cross section for $e^+-e^-$ and electron-antineutrino annihilation into hadrons.) As we saw in Section 20.5, this receives contributions that go as $q^2$ (the Fourier transform of $x^{-6}$) from the operator $\mathbf{1}$, contributions that go as $q^{-2}$ from the operator $F_\alpha^{\mu\nu}F_{\alpha\mu\nu}$, contributions that go as $q^{-4}$ from four-fermion operators, and so on. (For instance, the contribution of the operator $F_\alpha^{\mu\nu}F_{\alpha\mu\nu}$ arises from diagrams like Figure~\ref{fig:20.3}, with a momentum much less than $q$ flowing through the chain of bubbles.) Dimensional analysis tells us that these momentum-dependent factors must be accompanied with vacuum matrix elements proportional to $\Lambda^0$, $\Lambda^4$, $\Lambda^6$, etc. But if we calculate Feynman diagrams using a running coupling defined at a scale $\mu\gg\Lambda$, where the coupling constants are small, then according to Eq.~\hyperref[eq:18.7.7]{(18.7.7)}
+\begin{equation}
+\Lambda^2
+=\mu^2\exp\left(
+\frac{12\pi}{(33-2n_f)\alpha_s(\mu)}
+\right),
+\tag{20.7.18}\label{eq:20.7.18}
+\end{equation}
+where $n_f$ is the number of quark flavors with mass much less than $\mu$. Operators of dimension $d>0$ would make a contribution in the operator product expansion with the coupling-constant dependence
+\begin{equation}
+\Lambda^d
+\propto
+\exp\left(
+\frac{6\pi d}{(33-2n_f)\alpha_s(\mu)}
+\right).
+\tag{20.7.19}\label{eq:20.7.19}
+\end{equation}
+
+In quantum chromodynamics, perturbation theory yields a series in powers of $\alpha_s\equiv g^2/4\pi$ rather than $g$, so we would write Eqs.~\eqref{eq:20.7.1} and \eqref{eq:20.7.3} in terms of $\alpha_s$:
+\begin{equation}
+F(\alpha_s)=\sum_n f_n\alpha_s^n,
+\tag{20.7.20}\label{eq:20.7.20}
+\end{equation}
+\begin{equation}
+\alpha_sF(\alpha_s)
+=\int_0^\infty\exp(-z/\alpha_s)B(z)\,dz.
+\tag{20.7.21}\label{eq:20.7.21}
+\end{equation}
+The presence of terms in $\Pi^{\mu\nu}$ with coupling-constant dependence \eqref{eq:20.7.19} indicates that $B(z)$ must have singularities (not necessarily poles) at
+\begin{equation}
+z_1=\frac{6\pi d}{33-2n_f}.
+\tag{20.7.22}\label{eq:20.7.22}
+\end{equation}
+These are on the positive real axis, and make the integral \eqref{eq:20.7.21} ambiguous. Thus Borel summation cannot be used to deal with low-energy effects in quantum chromodynamics.
+
+The fact that diagrams with small virtual momenta impede the use of perturbation theory is of course nothing new. As we saw in \hyperref[sec:20.2]{Section 20.2}, the whole point of the operator product expansion is to separate the parts of Feynman diagrams where every line carries a large momentum, which in asymptotically free theories can be calculated using perturbation theory, from the contribution of the parts of Feynman diagrams through which small momenta flow, which cannot be calculated perturbatively.

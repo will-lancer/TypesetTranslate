@@ -1,0 +1,294 @@
+% Chunk: \S4.2, Creation and Annihilation Operators.
+% Source: Weinberg QFT Vol. I, printed pp. 173--177 (PDF pp. 196--200),
+% ending immediately before the \S4.3 heading.
+% Status: source-reviewed, compile-clean, and visually checked; frozen.
+
+\subsection{Creation and Annihilation Operators}
+
+Creation and annihilation operators may be defined in terms of their effect
+on the normalized multi-particle states discussed in the previous section.
+The \textit{creation operator} $a^\dagger_q$ (or in more detail, $a^\dagger_{\mathbf p,\sigma,n}$) is defined as the
+operator that simply adds a particle with quantum numbers $q$ at the front
+of the list of particles in the state
+\begin{equation}
+  a^\dagger_q\ket{q_1q_2\cdots q_N}=\ket{q q_1q_2\cdots q_N}.
+  \tag{4.2.1}
+  \label{eq:4.2.1}
+\end{equation}
+In particular, the $N$-particle state can be obtained by acting on the vacuum
+with $N$ creation operators
+\begin{equation}
+  a^\dagger_{q_1}a^\dagger_{q_2}\cdots a^\dagger_{q_N}\ket{\Omega}
+  =\ket{q_1\cdots q_N}.
+  \tag{4.2.2}
+  \label{eq:4.2.2}
+\end{equation}
+It is conventional for this operator to be called $a^\dagger_q$; its adjoint, which
+is then called $a_q$, may be calculated from Eq.~\eqref{eq:4.1.7}. As we shall
+now show, $a_q$ removes a particle from any state on which it acts, and
+is therefore known as an \textit{annihilation operator}. In particular, when the
+particles $q,q_1,\ldots,q_N$ are either all bosons or all fermions, we have
+\begin{equation}
+  a_q\ket{q_1q_2\cdots q_N}
+  =\sum_{r=1}^{N}(\pm)^{r+1}\delta(q-q_r)
+    \ket{q_1\cdots q_{r-1}q_{r+1}\cdots q_N},
+  \tag{4.2.3}
+  \label{eq:4.2.3}
+\end{equation}
+with a $+1$ or $-1$ sign for bosons or fermions, respectively. (Here is the
+proof. We want to calculate the scalar product of $a_q\ket{q_1q_2\cdots q_N}$ with an
+arbitrary state $\ket{q'_1\cdots q'_M}$. Using Eq.~\eqref{eq:4.2.1}, this is
+\[
+  \bra{q'_1\cdots q'_M}a_q\ket{q_1\cdots q_N}
+  =\bigl(a^\dagger_q\ket{q'_1\cdots q'_M}\bigr)^\dagger
+    \ket{q_1\cdots q_N}
+  =\braket{q q'_1\cdots q'_M}{q_1\cdots q_N}.
+\]
+We now use Eq.~\eqref{eq:4.1.7}. The sum over permutations $\mathcal P$ of $1,2,\ldots,N$
+can be written as a sum over the integer $r$ that is permuted into the
+first place, i.e. $\mathcal P r=1$, and over mappings $\overline{\mathcal P}$ of the remaining integers
+$1,\ldots,r-1,r+1,\ldots,N$ into $1,\ldots,N-1$. Furthermore, the sign factor is
+\[
+  \delta_{\mathcal P}=(\pm)^{r-1}\delta_{\overline{\mathcal P}}
+\]
+with upper and lower signs for bosons and fermions, respectively. Hence,
+using Eq.~\eqref{eq:4.1.7} twice,
+\begin{align*}
+  \bra{q'_1\cdots q'_M}a_q\ket{q_1\cdots q_N}
+  ={}& \delta_{N,M+1}
+  \sum_{r=1}^{N}\sum_{\overline{\mathcal P}}(\pm)^{r-1}
+  \delta_{\overline{\mathcal P}}\delta(q-q_r)
+  \prod_{i=1}^{M}\delta(q'_i-q_{\overline{\mathcal P}i})
+  \\
+  ={}& \delta_{N,M+1}\sum_{r=1}^{N}(\pm)^{r-1}
+  \braket{q'_1\cdots q'_M}{q_1\cdots q_{r-1}q_{r+1}\cdots q_N}.
+\end{align*}
+Both sides of Eq.~\eqref{eq:4.2.3} thus have the same matrix element with any state
+$\ket{q'_1\cdots q'_M}$, and are therefore equal, as was to be shown.) As a special case
+of Eq.~\eqref{eq:4.2.3}, we note that for both bosons and fermions, $a_q$ annihilates
+the vacuum
+\begin{equation}
+  a_q\ket{\Omega}=0.
+  \tag{4.2.4}
+  \label{eq:4.2.4}
+\end{equation}
+
+As defined here, the creation and annihilation operators satisfy an important
+commutation or anticommutation relation. Applying the operator
+$a_{q'}$ to Eq.~\eqref{eq:4.2.1} and using Eq.~\eqref{eq:4.2.3} gives
+\begin{align*}
+  a_{q'}a^\dagger_q\ket{q_1\cdots q_N}
+  ={}& \delta(q'-q)\ket{q_1\cdots q_N}
+  \\
+  &+\sum_{r=1}^{N}(\pm)^{r+2}\delta(q'-q_r)
+    \ket{q q_1\cdots q_{r-1}q_{r+1}\cdots q_N}.
+\end{align*}
+(The sign in the second term is $(\pm)^{r+2}$ because $q_r$ is in the $(r+1)$-th place
+in $\ket{q q_1\cdots q_N}$.) On the other hand, applying the operator $a^\dagger_q$ to Eq.~\eqref{eq:4.2.3}
+gives
+\[
+  a^\dagger_q a_{q'}\ket{q_1\cdots q_N}
+  =\sum_{r=1}^{N}(\pm)^{r+1}\delta(q'-q_r)
+  \ket{q q_1\cdots q_{r-1}q_{r+1}\cdots q_N}.
+\]
+Subtracting or adding, we have then
+\[
+  \bigl[a_{q'}a^\dagger_q\mp a^\dagger_q a_{q'}\bigr]\ket{q_1\cdots q_N}
+  =\delta(q'-q)\ket{q_1\cdots q_N}.
+\]
+But this holds for all states $\ket{q_1\cdots q_N}$ (and may easily be seen to hold also
+for states containing both bosons and fermions) and therefore implies the
+operator relation
+\begin{equation}
+  a_{q'}a^\dagger_q\mp a^\dagger_q a_{q'}=\delta(q'-q).
+  \tag{4.2.5}
+  \label{eq:4.2.5}
+\end{equation}
+In addition, Eq.~\eqref{eq:4.2.2} gives immediately
+\begin{equation}
+  a^\dagger_{q'}a^\dagger_q\mp a^\dagger_q a^\dagger_{q'}=0
+  \tag{4.2.6}
+  \label{eq:4.2.6}
+\end{equation}
+and so also
+\begin{equation}
+  a_{q'}a_q\mp a_q a_{q'}=0.
+  \tag{4.2.7}
+  \label{eq:4.2.7}
+\end{equation}
+As always, the top and bottom signs apply for bosons and fermions,
+respectively. According to the conventions discussed in the previous
+section, the creation and/or annihilation operators for particles of two
+different species commute if either particle is a boson, and anticommute
+if both are fermions.
+
+The above discussion could have been presented in reverse order (and
+in most textbooks usually is). That is, we could have started with the
+commutation or anticommutation relations Eqs.~\eqref{eq:4.2.5}--\eqref{eq:4.2.7}, derived
+from the canonical quantization of some given field theory. Multi-particle
+states would have then been defined by Eq.~\eqref{eq:4.2.2}, and their scalar
+products Eq.~\eqref{eq:4.1.7} derived from the commutation or anticommutation
+relations. In fact, as discussed in Chapter 1, such a treatment would be
+much closer to the way that this formalism developed historically. We
+have followed an unhistorical approach here because we want to free
+ourselves from any dependence on pre-existing field theories, and rather
+wish to understand why field theories are the way they are.
+
+We will now prove the fundamental theorem quoted at the beginning
+of this chapter: \textit{any operator $\mathcal O$ may be expressed as a sum of products of
+creation and annihilation operators}
+\begin{align}
+  \mathcal O={}&\sum_{N=0}^{\infty}\sum_{M=0}^{\infty}
+  \int dq'_1\cdots dq'_N\,dq_1\cdots dq_M
+  \notag\\
+  &\quad\cdot a^\dagger_{q'_1}\cdots a^\dagger_{q'_N}
+  a_{q_M}\cdots a_{q_1}
+  \notag\\
+  &\quad\cdot C_{NM}(q'_1\cdots q'_N q_1\cdots q_M).
+  \tag{4.2.8}
+  \label{eq:4.2.8}
+\end{align}
+That is, we want to show that the $C_{NM}$ coefficients can be chosen to give
+the matrix elements of this expression any desired values. We do this by
+mathematical induction. First, it is trivial that by choosing $C_{00}$ properly,
+we can give $\bra{\Omega}\mathcal O\ket{\Omega}$ any desired value, irrespective of the values of $C_{NM}$
+with $N>0$ and/or $M>0$. We need only use Eq.~\eqref{eq:4.2.4} to see that
+Eq.~\eqref{eq:4.2.8} has the vacuum expectation value
+\[
+  \bra{\Omega}\mathcal O\ket{\Omega}=C_{00}.
+\]
+Now suppose that the same is true for all matrix elements of $\mathcal O$ between
+$N$- and $M$-particle states, with $N<L,M\leq K$ or $N\leq L,M<K$; that
+is, that these matrix elements have been given some desired values by
+an appropriate choice of the corresponding coefficients $C_{NM}$. To see that
+the same is then also true of matrix elements of $\mathcal O$ between any $L$- and
+$K$-particle states, use Eq.~\eqref{eq:4.2.8} to evaluate
+\begin{align*}
+  \bra{q'_1\cdots q'_L}\mathcal O\ket{q_1\cdots q_K}
+  ={}& L!K!C_{LK}(q'_1\cdots q'_L q_1\cdots q_K)
+  \\
+  &+\text{terms involving $C_{NM}$ with $N<L,M\leq K$ or $N\leq L,M<K$.}
+\end{align*}
+Whatever values have already been given to $C_{NM}$ with $N<L,M\leq K$
+or $N\leq L,M<K$, there is clearly some choice of $C_{LK}$ which gives this
+matrix element any desired value.
+
+Of course, an operator need not be expressed in the form~\eqref{eq:4.2.8}, with
+all creation operators to the left of all annihilation operators. (This
+is often called the `normal' order of the operators.) However, if the
+formula for some operator has the creation and annihilation operators
+in some other order, we can always bring the creation operators to the
+left of the annihilation operators by repeated use of the commutation or
+anticommutation relations, picking up new terms from the delta function
+in Eq.~\eqref{eq:4.2.5}.
+
+For instance, consider any sort of additive operator $F$ (like momentum,
+charge, etc.) for which
+\begin{equation}
+  F\ket{q_1\cdots q_N}
+  =\bigl(f(q_1)+\cdots+f(q_N)\bigr)\ket{q_1\cdots q_N}.
+  \tag{4.2.9}
+  \label{eq:4.2.9}
+\end{equation}
+Such an operator can be written as in Eq.~\eqref{eq:4.2.8}, but using only the term
+with $N=M=1$:
+\begin{equation}
+  F=\int dq\,a^\dagger_q a_q f(q).
+  \tag{4.2.10}
+  \label{eq:4.2.10}
+\end{equation}
+In particular, the free-particle Hamiltonian is always
+\begin{equation}
+  H_0=\int dq\,a^\dagger_q a_q E(q)
+  \tag{4.2.11}
+  \label{eq:4.2.11}
+\end{equation}
+where $E(q)$ is the single-particle energy
+\[
+  E(\mathbf p,\sigma,n)=\sqrt{\mathbf p^2+m_n^2}.
+\]
+
+We will need the transformation properties of the creation and annihilation
+operators for various symmetries. First, let's consider inhomogeneous
+proper orthochronous Lorentz transformations. Recall that the $N$-particle
+states have the Lorentz transformation property
+\begin{align*}
+  &U_0(\Lambda,a)\ket{\mathbf p_1\sigma_1n_1;\,\mathbf p_2\sigma_2n_2;\,\ldots}
+  \\
+  &\quad={}
+  e^{-i(\Lambda p_1)\cdot a}e^{-i(\Lambda p_2)\cdot a}\cdots
+  \sqrt{\frac{(\Lambda p_1)^0(\Lambda p_2)^0\cdots}{p_1^0p_2^0\cdots}}
+  \notag\\
+  &\qquad\cdot\sum_{\bar\sigma_1\bar\sigma_2\cdots}
+  D_{\bar\sigma_1\sigma_1}^{(j_1)}\bigl(W(\Lambda,p_1)\bigr)
+  D_{\bar\sigma_2\sigma_2}^{(j_2)}\bigl(W(\Lambda,p_2)\bigr)\cdots
+  \notag\\
+  &\qquad\cdot
+  \ket{\mathbf p_{1\Lambda}\bar\sigma_1n_1;\,
+       \mathbf p_{2\Lambda}\bar\sigma_2n_2;\,\ldots}.
+\end{align*}
+Here $\mathbf p_\Lambda$ is the three-vector part of $\Lambda p$, $D_{\bar\sigma\sigma}^{(j)}(R)$ is the same unitary spin-$j$
+representation of the three-dimensional rotation group as used in Section
+2.5, and $W(\Lambda,p)$ is the particular rotation
+\[
+  W(\Lambda,p)=L^{-1}(\Lambda p)\Lambda L(p),
+\]
+where $L(p)$ is the standard `boost' that takes a particle of mass $m$ from rest
+to four-momentum $p^\mu$. (Of course, $m$ and $j$ depend on the species label $n$.
+This is all for $m\ne0$; we will return to the massless particle case in the
+following chapter.) Now, these states can be expressed as in Eq.~\eqref{eq:4.2.2}
+\[
+  \ket{\mathbf p_1\sigma_1n_1;\,\mathbf p_2\sigma_2n_2;\,\ldots}
+  =a^\dagger_{\mathbf p_1,\sigma_1,n_1}a^\dagger_{\mathbf p_2,\sigma_2,n_2}\cdots
+  \ket{\Omega},
+\]
+where $\ket{\Omega}$ is the Lorentz-invariant vacuum state
+\[
+  U_0(\Lambda,a)\ket{\Omega}=\ket{\Omega}.
+\]
+In order that the state~\eqref{eq:4.2.2} should transform properly, it is necessary
+and sufficient that the creation operator have the transformation rule
+\begin{align}
+  &U_0(\Lambda,a)a^\dagger_{\mathbf p,\sigma,n}U_0^{-1}(\Lambda,a)
+  \notag\\
+  &\qquad={}
+  e^{-i(\Lambda p)\cdot a}\sqrt{\frac{(\Lambda p)^0}{p^0}}
+  \sum_{\bar\sigma}D_{\bar\sigma\sigma}^{(j)}\bigl(W(\Lambda,p)\bigr)
+  a^\dagger_{\mathbf p_\Lambda,\bar\sigma,n}.
+  \tag{4.2.12}
+  \label{eq:4.2.12}
+\end{align}
+In the same way, the operators $C$, $P$, and $T$, that induce charge-conjugation,
+space inversion, and time-reversal transformations on free particle states\footnote{We
+omit the subscript `0' on these operators, because in virtually all cases where $C$,
+$P$, and/or $T$ are conserved, the operators that induce these transformations on
+`in' and `out' states are the same as those defined by their action on free-particle
+states. This is not the case for continuous Lorentz transformations, for which it is
+necessary to distinguish between the operators $U(\Lambda,a)$ and $U_0(\Lambda,a)$.}
+transform the creation operators as:
+\begin{equation}
+  Ca^\dagger_{\mathbf p,\sigma,n}C^{-1}
+  =\xi_n a^\dagger_{\mathbf p,\sigma,n^c},
+  \tag{4.2.13}
+  \label{eq:4.2.13}
+\end{equation}
+\begin{equation}
+  Pa^\dagger_{\mathbf p,\sigma,n}P^{-1}
+  =\eta_n a^\dagger_{-\mathbf p,\sigma,n},
+  \tag{4.2.14}
+  \label{eq:4.2.14}
+\end{equation}
+\begin{equation}
+  Ta^\dagger_{\mathbf p,\sigma,n}T^{-1}
+  =\zeta_n(-1)^{j-\sigma}a^\dagger_{-\mathbf p,-\sigma,n}.
+  \tag{4.2.15}
+  \label{eq:4.2.15}
+\end{equation}
+
+As mentioned in the previous section, although we have been dealing
+with operators that create and annihilate particles in free-particle states,
+the whole formalism can be applied to `in' and `out' states, in which case
+we would introduce operators $a_{\mathrm{in}}$ and $a_{\mathrm{out}}$ defined in the same way by
+their action on these states. These operators satisfy a Lorentz transformation
+rule just like Eq.~\eqref{eq:4.2.12}, but with the true Lorentz transformation
+operator $U(\Lambda,a)$ instead of the free-particle operator $U_0(\Lambda,a)$.

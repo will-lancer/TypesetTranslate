@@ -1,0 +1,70 @@
+% Figure 13.1: dominant soft-photon emission from external charged-particle lines.
+% Source: physical PDF p. 559 (printed p. 536).
+\usetikzlibrary{decorations.markings,decorations.pathreplacing}
+\begingroup
+\renewcommand{\thefigure}{13.\arabic{figure}}
+\setcounter{figure}{0}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  charged/.style={line width=0.7pt,
+    postaction={decorate},decoration={markings,
+      mark=at position 0.56 with {\arrow{Stealth[length=4.6pt,width=3.5pt]}}}},
+  photon/.style={line width=0.62pt,decorate,
+    decoration={snake,amplitude=1.05pt,segment length=5.0pt}},
+  hard/.style={draw,line width=0.7pt,circle,minimum size=1.75cm,inner sep=0pt},
+  statebrace/.style={decorate,decoration={brace,amplitude=4.5pt}},
+  every node/.style={font=\small}
+]
+  % (a): emission from an outgoing line.
+  \begin{scope}[xshift=-3.75cm]
+    \node[hard] (Ha) at (0,0) {};
+    \draw[charged] (-0.58,0.67) -- (-1.62,2.33);
+    \draw[charged] (-0.18,0.86) -- (-0.64,2.63);
+    \draw[charged] (0.25,0.84) -- (0.91,2.63);
+    \coordinate (Ea) at (1.16,1.55);
+    \draw[charged] (0.60,0.65) -- (Ea);
+    \draw[charged] (Ea) -- (1.67,2.34);
+    \draw[photon] (Ea) -- (2.30,1.88);
+    \draw[charged] (-0.85,-2.25) -- (-0.31,-0.82);
+    \draw[charged] (0.86,-2.25) -- (0.32,-0.82);
+
+    \node[right] at (1.52,2.15) {$p$};
+    \node[right] at (0.89,1.08) {$p+q$};
+    \node[right] at (2.20,1.98) {$q$};
+    \draw[statebrace] (-2.03,2.91) -- (2.03,2.91)
+      node[midway,above=5pt] {$\beta$};
+    \draw[statebrace,decoration={brace,amplitude=4.5pt,mirror}]
+      (-2.03,-2.69) -- (2.03,-2.69)
+      node[midway,below=5pt] {$\alpha$};
+    \node at (0,-3.72) {(a)};
+  \end{scope}
+
+  % (b): emission from an incoming line.
+  \begin{scope}[xshift=3.75cm]
+    \node[hard] (Hb) at (0,0) {};
+    \draw[charged] (-0.58,0.67) -- (-1.62,2.33);
+    \draw[charged] (-0.18,0.86) -- (-0.64,2.63);
+    \draw[charged] (0.25,0.84) -- (0.91,2.63);
+    \draw[charged] (0.60,0.65) -- (1.67,2.34);
+    \draw[charged] (-0.85,-2.25) -- (-0.31,-0.82);
+    \coordinate (Eb) at (0.72,-1.42);
+    \draw[charged] (1.20,-2.25) -- (Eb);
+    \draw[charged] (Eb) -- (0.32,-0.82);
+    \draw[photon] (Eb) -- (2.10,-1.08);
+
+    \node[right] at (1.02,-2.03) {$p$};
+    \node[right] at (0.52,-1.03) {$p-q$};
+    \node[right] at (2.00,-0.97) {$q$};
+    \draw[statebrace] (-2.03,2.91) -- (2.03,2.91)
+      node[midway,above=5pt] {$\beta$};
+    \draw[statebrace,decoration={brace,amplitude=4.5pt,mirror}]
+      (-2.03,-2.69) -- (2.03,-2.69)
+      node[midway,below=5pt] {$\alpha$};
+    \node at (0,-3.72) {(b)};
+  \end{scope}
+\end{tikzpicture}
+\caption{Dominant graphs for the emission of soft photons in an arbitrary process $\alpha\to\beta$. Straight lines are particles in the states $\alpha$ and $\beta$ (including possible hard photons); wavy lines are soft photons.}
+\label{fig:weinberg-13-1}
+\end{figure}
+\endgroup

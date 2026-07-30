@@ -1,0 +1,109 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{exercise-edition}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\numberwithin{equation}{subsection}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The Quantum Theory of Fields, Volume III: Supersymmetry -- Exercise Edition},
+  pdfauthor={Steven Weinberg}
+}
+
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\newcommand{\externalvolumeanchor}[2]{%
+  \begingroup
+  \def\@currentlabel{#2}%
+  \phantomsection\label{#1}%
+  \endgroup
+}
+\makeatother
+
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\par\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+
+\pretocmd{\section}{\clearpage}{}{}
+\setcounter{tocdepth}{2}
+
+\makeatletter
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{3.2em}}
+\makeatother
+
+\newcommand{\ket}[1]{\lVert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rVert}
+\newcommand{\braket}[2]{\langle #1\Vert #2\rangle}
+\renewcommand{\sl}[1]{\slashed{#1}}
+\newcommand{\optionalreading}{\texorpdfstring{\textsuperscript{*}}{*}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\title{The Quantum Theory of Fields}
+\subheader{Volume III: Supersymmetry -- Exercise Edition}
+\author{Steven Weinberg}
+\affiliation{University of Texas at Austin}
+\abstract{
+  Weinberg's QFT in the repository's modernized notation. This independent
+  exercise edition adds editorial solutions and credited supplementary
+  problems; the added material is not part of Weinberg's original text.
+}
+
+\begin{document}
+\input{frontmatter/external-volume-anchors.tex}
+\maketitle
+\flushbottom
+
+\input{frontmatter/preface.tex}
+\input{frontmatter/notation.tex}
+
+% Volume III continues the chapter numbering of Volumes I and II.
+\setcounter{section}{23}
+
+\input{chapters/chapter24.tex}
+\input{chapters/chapter25.tex}
+\input{chapters/chapter26.tex}
+\input{chapters/chapter27.tex}
+\input{chapters/chapter28.tex}
+\input{chapters/chapter29.tex}
+\input{chapters/chapter30.tex}
+\input{chapters/chapter31.tex}
+\input{chapters/chapter32.tex}
+
+\input{backmatter/indexes.tex}
+
+\end{document}

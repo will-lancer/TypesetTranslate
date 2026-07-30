@@ -1,0 +1,284 @@
+% Section 15.4: physical PDF pp. 37--41 (printed pp. 14--18).
+% Semantic coverage: begins with the heading on p. 37 and ends immediately
+% before Section 15.5. Inventory: Eqs. (15.4.1)--(15.4.17), one footnote,
+% one citation marker [9], and one centered * * * divider. Uncertainty: none.
+
+\subsection{Quantization}
+
+We now proceed to quantize the gauge theories described in the previous two
+sections. The Lagrangian density is taken in the form \eqref{eq:15.3.1}:
+\begin{equation}
+  \mathcal L=-\frac14 F_{\alpha\mu\nu}F_\alpha{}^{\mu\nu}
+  +\mathcal L_M(\psi,D_\mu\psi),
+  \tag{15.4.1}\label{eq:15.4.1}
+\end{equation}
+with
+\begin{align*}
+  F_{\alpha\mu\nu}&\equiv\partial_\mu A_{\alpha\nu}
+  -\partial_\nu A_{\alpha\mu}+C_{\alpha\beta\gamma}
+  A_\beta{}_{\mu}A_\gamma{}_{\nu},\\
+  D_\mu\psi&\equiv\partial_\mu\psi-it_\alpha A_{\alpha\mu}\psi.
+\end{align*}
+We cannot immediately quantize this theory by setting commutators equal to
+$i$ times the corresponding Poisson brackets. The problem is one of
+constraints. In the terminology of Dirac, described in Section 7.6, there is
+a primary constraint that
+\begin{equation}
+  \Pi_{\alpha0}\equiv\frac{\partial\mathcal L}
+  {\partial(\partial_0A_\alpha{}^0)}=0
+  \tag{15.4.2}\label{eq:15.4.2}
+\end{equation}
+and a secondary constraint provided by the field equation for $A_\alpha{}^0$:
+\begin{align}
+  -\partial_\mu\frac{\partial\mathcal L}
+  {\partial(\partial_\mu A_{\alpha0})}
+  +\frac{\partial\mathcal L}{\partial A_{\alpha0}}
+  &=\partial_\mu F_\alpha{}^{\mu0}
+  +F_\gamma{}^{\mu0}C_{\gamma\alpha\beta}A_{\beta\mu}+J_\alpha{}^0
+  \notag\\
+  &=\partial_k\Pi_\alpha{}^k
+  +\Pi_\gamma{}^k C_{\gamma\alpha\beta}A_{\beta k}+J_\alpha{}^0=0,
+  \tag{15.4.3}\label{eq:15.4.3}
+\end{align}
+where $\Pi_\alpha{}^k\equiv\partial\mathcal L/
+\partial(\partial_0A_{\alpha k})=F_\alpha{}^{k0}$ is the `momentum'
+conjugate to $A_{\alpha k}$, with $k$ running over the values 1, 2, 3. The
+Poisson brackets of $\Pi_{\alpha0}$ and
+$\partial_k\Pi_\alpha{}^k+\Pi_\gamma{}^kC_{\gamma\alpha\beta}A_{\beta k}
++J_\alpha{}^0$ vanish (because the latter quantity is independent of
+$A_\alpha{}^0$), so these are first class constraints, which cannot be dealt
+with by replacing Poisson brackets with Dirac brackets.
+
+As in the case of electrodynamics, we deal with these constraints by choosing
+a gauge. The Coulomb gauge adopted for electrodynamics would lead to painful
+complications here,\footnote{In addition to purely algebraic complications,
+Coulomb gauge (like many other gauges) has a problem known as the Gribov
+ambiguity~\hyperref[ch15-ref-9]{[9]}: even with the condition that $A_\alpha$
+vanishes at spatial infinity, for each solution of the Coulomb gauge condition
+$\boldsymbol\nabla\cdot\mathbf A_\alpha=0$ there are other solutions that differ
+by finite gauge transformations. The Gribov ambiguity will not bother us here,
+because we quantize in axial gauge where it is absent, and we shall use other
+gauges like Lorentz gauge only to generate a perturbation series.} so instead
+we will work in what is known as \emph{axial gauge}, based on the condition
+\begin{equation}
+  A_{\alpha3}=0.
+  \tag{15.4.4}\label{eq:15.4.4}
+\end{equation}
+The canonical variables of the gauge field are then $A_{\alpha i}$, with $i$
+now running over the values 1 and 2, together with their canonical conjugates
+\begin{equation}
+  \Pi_{\alpha i}\equiv\frac{\partial\mathcal L}
+  {\partial(\partial_0A_{\alpha i})}=-F_\alpha{}^{0i}
+  =\partial_0A_{\alpha i}-\partial_iA_{\alpha0}
+  +C_{\alpha\beta\gamma}A_\beta{}^0A_{\gamma i}.
+  \tag{15.4.5}\label{eq:15.4.5}
+\end{equation}
+The field $A_{\alpha0}$ is not an independent canonical variable, but rather
+is defined in terms of the other variables by the constraint \eqref{eq:15.4.3}.
+To see this, note that the `electric' field strengths $F_\alpha{}^{\mu0}$ are
+\begin{equation}
+  F_\alpha{}^{i0}=\Pi_{\alpha i},
+  \qquad F_\alpha{}^{30}=\partial_3A_\alpha{}^0,
+  \tag{15.4.6}\label{eq:15.4.6}
+\end{equation}
+so the constraint \eqref{eq:15.4.3} reads
+\begin{equation}
+  -(\partial_3)^2A_\alpha{}^0
+  =\partial_i\Pi_{\alpha i}
+  +\Pi_{\gamma i}C_{\gamma\alpha\beta}A_{\beta i}+J_\alpha{}^0,
+  \tag{15.4.7}\label{eq:15.4.7}
+\end{equation}
+which can easily be solved (with reasonable boundary conditions) to give
+$A_\alpha{}^0$ as a functional of $\Pi_{\gamma i}$, $A_{\beta i}$, and
+$J_\alpha{}^0$. (We are using a summation convention, with indices $i$, $j$,
+etc. summed over the values 1 and 2.) It should be noted that the canonical
+conjugate to the matter field $\psi_\ell$ is
+\begin{equation}
+  \pi_\ell=\frac{\partial\mathcal L}{\partial(\partial_0\psi_\ell)}
+  =\frac{\partial\mathcal L_M}{\partial(D_0\psi_\ell)},
+  \tag{15.4.8}\label{eq:15.4.8}
+\end{equation}
+so the time component of the matter current can be expressed in terms of the
+canonical variables of the matter fields \emph{alone}
+\begin{equation}
+  J_\alpha{}^0=-i\frac{\partial\mathcal L_M}{\partial D_0\psi_\ell}
+  (t_\alpha)_{\ell m}\psi_m
+  =-i\pi_\ell(t_\alpha)_{\ell m}\psi_m.
+  \tag{15.4.9}\label{eq:15.4.9}
+\end{equation}
+Hence Eq.~\eqref{eq:15.4.7} defines $A_\alpha{}^0$ at a given time as a
+functional of the canonical variables $\Pi_{\gamma i}$, $A_{\beta i}$,
+$\pi_\ell$, and $\psi_m$ at the same time.
+
+Now that we have identified the canonical variables in this gauge, we can
+proceed to the construction of a Hamiltonian. The Hamiltonian density is
+\begin{align}
+  \mathcal H
+  &=\Pi_{\alpha i}\partial_0A_{\alpha i}
+  +\pi_\ell\partial_0\psi_\ell-\mathcal L
+  \notag\\
+ &=\Pi_{\alpha i}\bigl(F_{\alpha0i}+\partial_iA_{\alpha0}
+ -C_{\alpha\beta\gamma}A_{\beta0}A_{\gamma i}\bigr)
+  +\pi_\ell\partial_0\psi_\ell
+  \notag\\
+  &\quad-\frac12F_{\alpha0i}F_{\alpha0i}
+  +\frac12F_{\alpha ij}F_{\alpha ij}
+  +\frac12F_{\alpha i3}F_{\alpha i3}
+  -\frac12F_{\alpha03}F_{\alpha03}-\mathcal L_M.
+  \tag{15.4.10}\label{eq:15.4.10}
+\end{align}
+Using Eqs.~\eqref{eq:15.4.4} and \eqref{eq:15.4.6}, this is
+\begin{align}
+  \mathcal H={}&\mathcal H_M
+ +\Pi_{\alpha i}\bigl(\partial_iA_{\alpha0}
+ -C_{\alpha\beta\gamma}A_{\beta0}A_{\gamma i}\bigr)
+  +\frac12\Pi_{\alpha i}\Pi_{\alpha i}
+  \notag\\
+  &+\frac12F_{\alpha ij}F_{\alpha ij}
+  +\frac12\partial_3A_{\alpha i}\partial_3A_{\alpha i}
+  -\frac12\partial_3A_{\alpha0}\partial_3A_{\alpha0},
+  \tag{15.4.11}\label{eq:15.4.11}
+\end{align}
+where $\mathcal H_M$ is the matter Hamiltonian density:
+\begin{equation}
+  \mathcal H_M\equiv\pi_\ell\partial_0\psi_\ell-\mathcal L_M.
+  \tag{15.4.12}\label{eq:15.4.12}
+\end{equation}
+
+Following the general rules derived in Section 9.2, we can now use this
+Hamiltonian density to calculate matrix elements as path integrals over
+$A_{\alpha i}$, $\Pi_{\alpha i}$, $\psi_\ell$, and $\pi_\ell$, with weighting
+factor $\exp(iI)$, where
+\begin{equation}
+  I=\int d^4x\left[\Pi_{\alpha i}\partial_0A_{\alpha i}
+  +\pi_\ell\partial_0\psi_\ell-\mathcal H+\epsilon\text{ terms}\right],
+  \tag{15.4.13}\label{eq:15.4.13}
+\end{equation}
+in which the `$\epsilon$ terms' serve only to supply the correct imaginary
+infinitesimal terms in propagator denominators. (See Section 9.2.) We note that
+Eqs.~\eqref{eq:15.4.7} and \eqref{eq:15.4.9} give $A_\alpha{}^0$ as a
+functional of the canonical variables, linear in $\Pi_{\alpha i}$ and
+$\pi_\ell$. Inspection of Eq.~\eqref{eq:15.4.11} shows then (assuming
+$\mathcal L_M$ to be no more than quadratic in $D_\mu\psi$) that the integrand
+of the complete action \eqref{eq:15.4.13} is no more than quadratic in
+$\Pi_{\alpha i}$ and $\pi_\ell$. We could therefore carry out the path
+integral over these canonical `momenta' by the usual rules of Gaussian
+integration. The trouble with this procedure is that the coefficients of the
+terms in Eq.~\eqref{eq:15.4.13} of second order in $\Pi_{\alpha i}$ are
+functions of the $A_{\alpha i}$, so the Gaussian integral would yield an
+awkward field-dependent determinant factor. Also, the whole formalism at this
+point looks hopelessly non-Lorentz-invariant.
+
+Instead of proceeding in this way, we will apply a trick like that used in the
+path integral formulation of electrodynamics in Section 9.6. Note that if for
+a moment we think of $A_{\alpha0}$ as an independent variable, then the action
+\eqref{eq:15.4.13} is evidently quadratic in $A_{\alpha0}$, with the
+coefficient of the second-order term $A_{\alpha0}(x)A_{\beta0}(y)$ equal to the
+field-independent kernel $(\partial_3)^2\delta^4(x-y)$. As we saw in the
+appendix to Chapter 9, the integral of such a Gaussian over $A_{\alpha0}(x)$
+is, up to a constant factor, equal to the value of the integrand at the
+stationary `point' of the argument of the exponential. But the variational
+derivative of the action here is
+\begin{equation*}
+  \frac{\delta I}{\delta A_{\alpha0}}
+  =-\frac{\partial\mathcal H}{\partial A_{\alpha0}}
+  =J_\alpha{}^0+\partial_i\Pi_{\alpha i}
+  +C_{\beta\alpha\gamma}\Pi_{\beta i}A_{\gamma i}
+  -\partial_3^2A_\alpha{}^0,
+\end{equation*}
+so the stationary `point' of the action is the solution of the constraint
+equation \eqref{eq:15.4.7}. Hence, instead of using for $A_{\alpha0}$ the
+solution of Eq.~\eqref{eq:15.4.7}, we can just as well treat it as an
+independent variable of integration.
+
+With $A_{\alpha0}$ now regarded as an independent variable, the Hamiltonian
+$\int d^3x\,\mathcal H$ is evidently quadratic in $\Pi_{\alpha i}$, with the
+coefficient of the second-order term $\Pi_{\alpha i}(x)\Pi_{\beta j}(y)$ given
+by the field-independent kernel $\tfrac12\delta^4(x-y)\delta_{ij}$. Assuming
+that the same is true for the matter variable $\pi_\ell$, we can evaluate path
+integrals over $\pi_\ell$ and $\Pi_{\alpha i}$ up to a constant factor by
+simply setting $\pi_\ell$ and $\Pi_{\alpha i}$ at the stationary `points' of
+the action corresponding to Eq.~\eqref{eq:15.4.1}:
+\begin{align*}
+  0&=\frac{\delta I}{\delta\pi_\ell}
+  =\partial_0\psi_\ell-\frac{\partial\mathcal H_M}{\partial\pi_\ell},\\
+  0&=\frac{\delta I}{\delta\Pi_{\alpha i}}
+  =\partial_0A_{\alpha i}-\Pi_{\alpha i}-\partial_iA_{\alpha0}
+  +C_{\alpha\beta\gamma}A_{\beta0}A_{\gamma i}
+  =F_{\alpha0i}-\Pi_{\alpha i}.
+\end{align*}
+Inserting these back into Eq.~\eqref{eq:15.4.13} gives
+\begin{align}
+  I&=\int d^4x\left[\mathcal L_M+\frac12F_{\alpha0i}F_{\alpha0i}
+  -\frac12F_{\alpha ij}F_{\alpha ij}
+  -\frac12\partial_3A_{\alpha i}\partial_3A_{\alpha i}
+  +\frac12(\partial_3A_{\alpha0})^2\right]
+  \notag\\
+  &=\int d^4x\,\mathcal L,
+  \tag{15.4.14}\label{eq:15.4.14}
+\end{align}
+where $\mathcal L$ is the Lagrangian \eqref{eq:15.3.1} with which we started!
+In other words, \emph{we are to do path integrals over $\psi_\ell(x)$ and all
+four components of $A_{\alpha\mu}(x)$, with a manifestly covariant weighting
+factor $\exp(iI)$ given by Eqs.~\eqref{eq:15.4.14} and \eqref{eq:15.3.1}, but
+with the axial-gauge condition} enforced by inserting a factor
+\begin{equation}
+  \prod_{x,\alpha}\delta\bigl(A_{\alpha3}(x)\bigr).
+  \tag{15.4.15}\label{eq:15.4.15}
+\end{equation}
+As long as $\mathcal O_A$, $\mathcal O_B$, $\ldots$ are gauge-invariant, we have
+\begin{align}
+  \bigl\langle T\{\mathcal O_A\mathcal O_B\cdots\}\bigr\rangle_{\mathrm{VACUUM}}
+  \propto{}&\int\left[\prod_{\ell,x}d\psi_\ell(x)\right]
+  \left[\prod_{\alpha,\mu,x}dA_{\alpha\mu}(x)\right]
+  \notag\\
+  &\cdot\mathcal O_A\mathcal O_B\cdots
+  \exp\{iI+\epsilon\text{ terms}\}
+  \prod_{x,\alpha}\delta\bigl(A_{\alpha3}(x)\bigr),
+  \tag{15.4.16}\label{eq:15.4.16}
+\end{align}
+with Lorentz- and gauge-invariant action $I$ given by Eq.~\eqref{eq:15.4.14}.
+
+\begin{center}
+  * * *
+\end{center}
+
+For future reference, we note that the volume element
+$\prod_{\alpha,\mu,x}dA_{\alpha\mu}(x)$ for the integration over gauge fields
+in \eqref{eq:15.4.16} is gauge-invariant, in the sense that
+\begin{equation}
+  \prod_{\alpha,\mu,x}dA_{\Lambda\,\alpha\mu}(x)
+  =\prod_{\alpha,\mu,x}dA_{\alpha\mu}(x),
+  \tag{15.4.17}\label{eq:15.4.17}
+\end{equation}
+where $A_{\Lambda\,\alpha\mu}(x)$ is the result of acting on
+$A_{\alpha\mu}(x)$ with a gauge transformation having transformation
+parameters $\Lambda_\alpha(x)$. It will be enough to show that this is true for
+transformations near the identity, say with infinitesimal transformation
+parameters $\lambda_\alpha(x)$. In this case,
+\begin{equation*}
+  A_{\lambda\,\alpha}{}^\mu=A_\alpha{}^\mu+\partial^\mu\lambda_\alpha
+  +C_{\alpha\beta\gamma}A_\beta{}^\mu\lambda_\gamma,
+\end{equation*}
+so the volume elements are related by
+\begin{equation*}
+  \prod_{\alpha,\mu,x}dA_{\lambda\,\alpha\mu}(x)
+  =\operatorname{Det}(\mathcal N)
+  \prod_{\alpha,\mu,x}dA_{\alpha\mu}(x),
+\end{equation*}
+where $\mathcal N$ is the `matrix'
+\begin{equation*}
+  \mathcal N_{\alpha\mu x,\beta\nu y}
+  \equiv\frac{\delta A_{\lambda\,\alpha\mu}(x)}
+  {\delta A_{\beta\nu}(y)}
+  =\delta^4(x-y)\delta_\mu{}^\nu
+  \bigl[\delta_{\alpha\beta}+C_{\alpha\beta\gamma}\lambda_\gamma(x)\bigr].
+\end{equation*}
+The determinant of $\mathcal N$ is unity to first order in $\lambda_\gamma$,
+because the trace $C_{\alpha\alpha\gamma}$ vanishes.
+
+In this chapter we shall assume that the volume element
+$\prod_{n,x}d\psi_n(x)$ for the integration over matter fields is also
+gauge-invariant. There are important subtleties here, to which we shall return
+in Chapter 22, but as shown there this assumption turns out to be valid in our
+present non-Abelian gauge theories of strong and electroweak interactions.

@@ -1,0 +1,57 @@
+% Figure 6.5 diagram fragment. Caption remains in sec61b.tex.
+% Source: physical PDF p. 293 (printed p. 270).
+\begin{center}
+\begin{tikzpicture}[
+  fermion/.style={draw=black, line width=0.8pt},
+  boson/.style={draw=black, line width=0.75pt,
+    dash pattern=on 3pt off 2.5pt},
+  flow/.style={-{Stealth[length=2.4mm,width=1.8mm]}, line width=0.8pt},
+  label/.style={font=\small, inner sep=1pt}
+]
+  % First diagram: exchange channel.
+  \coordinate (aL) at (-4.25,0);
+  \coordinate (aR) at (-1.55,0);
+  \coordinate (aUL) at (-5.25,1.55);
+  \coordinate (aLL) at (-5.15,-1.45);
+  \coordinate (aUR) at (-0.55,1.55);
+  \coordinate (aLR) at (-0.65,-1.45);
+
+  \draw[boson] (aL)--(aR);
+  \draw[fermion] (aL)--(aUL);
+  \draw[fermion] (aLL)--(aL);
+  \draw[fermion] (aR)--(aUR);
+  \draw[fermion] (aR)--(aLR);
+  \draw[flow] ($(aL)!0.37!(aUL)$)--($(aL)!0.62!(aUL)$);
+  \draw[flow] ($(aLL)!0.37!(aL)$)--($(aLL)!0.62!(aL)$);
+  \draw[flow] ($(aUR)!0.37!(aR)$)--($(aUR)!0.62!(aR)$);
+  \draw[flow] ($(aR)!0.37!(aLR)$)--($(aR)!0.62!(aLR)$);
+
+  \node[label, above left=1pt] at (aUL) {$1'$};
+  \node[label, below left=1pt] at (aLL) {$1$};
+  \node[label, above right=1pt] at (aUR) {$2^{c'}$};
+  \node[label, below right=1pt] at (aLR) {$2^c$};
+
+  % Second diagram: annihilation channel, with vertical neutral-boson exchange.
+  \coordinate (bT) at (3.25,0.95);
+  \coordinate (bB) at (3.25,-0.95);
+  \coordinate (bUL) at (2.15,2.15);
+  \coordinate (bUR) at (4.35,2.15);
+  \coordinate (bLL) at (2.15,-2.15);
+  \coordinate (bLR) at (4.35,-2.15);
+
+  \draw[boson] (bT)--(bB);
+  \draw[fermion] (bT)--(bUL);
+  \draw[fermion] (bT)--(bUR);
+  \draw[fermion] (bLL)--(bB);
+  \draw[fermion] (bB)--(bLR);
+  \draw[flow] ($(bT)!0.37!(bUL)$)--($(bT)!0.62!(bUL)$);
+  \draw[flow] ($(bUR)!0.37!(bT)$)--($(bUR)!0.62!(bT)$);
+  \draw[flow] ($(bLL)!0.37!(bB)$)--($(bLL)!0.62!(bB)$);
+  \draw[flow] ($(bB)!0.37!(bLR)$)--($(bB)!0.62!(bLR)$);
+
+  \node[label, above left=1pt] at (bUL) {$1'$};
+  \node[label, above right=1pt] at (bUR) {$2^{c'}$};
+  \node[label, below left=1pt] at (bLL) {$1$};
+  \node[label, below right=1pt] at (bLR) {$2^c$};
+\end{tikzpicture}
+\end{center}

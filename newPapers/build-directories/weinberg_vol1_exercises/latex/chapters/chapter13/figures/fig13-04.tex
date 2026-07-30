@@ -1,0 +1,42 @@
+% Figure 13.4: successive external-field insertions on an electron line.
+% Source: physical PDF p. 584 (printed p. 561).
+\begingroup
+\renewcommand{\thefigure}{13.\arabic{figure}}
+\setcounter{figure}{3}
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  electron/.style={line width=0.7pt},
+  field/.style={line width=0.62pt,decorate,
+    decoration={snake,amplitude=0.95pt,segment length=4.7pt}},
+  cross/.style={line width=0.62pt},
+  every node/.style={font=\normalsize}
+]
+  \newcommand{\fieldinsertion}[2]{%
+    \draw[field] (0,#1) -- (#2,#1);
+    \draw[cross] (#2-0.09,#1-0.09) -- (#2+0.09,#1+0.09);
+    \draw[cross] (#2-0.09,#1+0.09) -- (#2+0.09,#1-0.09);
+  }
+  \begin{scope}[xshift=-5.15cm]
+    \draw[electron] (0,-1.45) -- (0,1.45);
+    \fieldinsertion{0}{1.45}
+  \end{scope}
+  \node at (-2.82,0) {$+$};
+  \begin{scope}[xshift=-1.45cm]
+    \draw[electron] (0,-1.45) -- (0,1.45);
+    \fieldinsertion{0.63}{1.45}
+    \fieldinsertion{-0.63}{1.45}
+  \end{scope}
+  \node at (0.88,0) {$+$};
+  \begin{scope}[xshift=2.25cm]
+    \draw[electron] (0,-1.45) -- (0,1.45);
+    \fieldinsertion{0.77}{1.45}
+    \fieldinsertion{0}{1.45}
+    \fieldinsertion{-0.77}{1.45}
+  \end{scope}
+  \node at (4.60,0) {$+\ \cdots$};
+\end{tikzpicture}
+\caption{Diagrams for the scattering of an electron by an external electromagnetic field. Here straight lines represent the electron; wavy lines ending in crosses represent its interaction with an external field.}
+\label{fig:weinberg-13-4}
+\end{figure}
+\endgroup

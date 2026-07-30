@@ -1,0 +1,597 @@
+\chapterbackmatter{Solutions to Supplementary Exercises}
+
+\begin{enumerate}
+\SupplementarySolution{1}{The Fourth Connected Moment}
+Write \(m_B=\langle\prod_{i\in B}X_i\rangle\).  The partition relation
+contains one four-element block, four partitions of type \(3+1\), three
+of type \(2+2\), six of type \(2+1+1\), and one of type \(1+1+1+1\).
+Solving recursively gives
+\[
+\begin{split}
+ \langle X_1X_2X_3X_4\rangle_c={}&m_{1234}
+ -\sum_{\rm 4\ triples}m_{ijk}m_l
+ -\bigl(m_{12}m_{34}+m_{13}m_{24}+m_{14}m_{23}\bigr)\\
+ &+2\sum_{\rm 6\ pairs}m_{ij}m_km_l
+ -6m_1m_2m_3m_4.
+\end{split}
+\]
+For centered variables the terms containing one-point moments vanish,
+leaving the familiar subtraction of the three pairwise products.  The
+coefficients \(1,-1,-1,2,-6\) are the partition-lattice M{\o}bius
+coefficients.
+
+\SupplementarySolution{2}{M{\o}bius Inversion on Set Partitions}
+Insert the proposed inverse into the moment formula.  The coefficient of
+a fixed product \(\prod_{B\in\rho}m(B)\) is a sum over partitions of the
+\(|\rho|\) blocks into larger groups:
+\[
+ \sum_{\sigma\in\Pi(\rho)}
+ (-1)^{|\sigma|-1}(|\sigma|-1)!.
+\]
+When \(|\rho|=1\), this is one.  When \(|\rho|>1\), group terms by the
+block containing a chosen element, or equivalently use
+\[
+ \sum_{k=1}^{n}S(n,k)(-1)^{k-1}(k-1)!=\delta_{n1},
+\]
+where \(S(n,k)\) is a Stirling number of the second kind.  Thus every
+product associated with a proper partition cancels, while the
+single-block moment remains.  This proves
+\[
+ \kappa(A)=\sum_{\pi\in\Pi(A)}
+ (-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}m(B).
+\]
+
+\SupplementarySolution{3}{Mixed Cumulants of Independent Clusters}
+Introduce sources \(t_i\) for the \(X\)'s and \(s_j\) for the \(Y\)'s.
+Independence gives
+\[
+ Z(t,s)=\left\langle
+ e^{\sum_i t_iX_i+\sum_j s_jY_j}\right\rangle
+ =Z_X(t)Z_Y(s).
+\]
+Therefore the connected generating function is
+\[
+ W(t,s)=\log Z(t,s)=W_X(t)+W_Y(s).
+\]
+Any mixed connected moment differentiates \(W\) at least once with
+respect to a \(t_i\) and once with respect to an \(s_j\), and is therefore
+zero.  Cluster decomposition is the spacetime version of this statement:
+when separated experiments become independent, connected quantities
+linking the two regions vanish, while full quantities factorize.
+
+\SupplementarySolution{4}{Why the Logarithm Selects Connected Diagrams}
+If a disconnected graph contains \(m_C\) indistinguishable copies of
+component \(C\), permutations of these copies do not produce a new graph.
+Its value is therefore
+\[
+ V_D=\prod_C\frac{V_C^{m_C}}{m_C!}.
+\]
+Summing independently over every nonnegative \(m_C\),
+\[
+ \sum_DV_D
+ =\prod_C\sum_{m_C=0}^\infty\frac{V_C^{m_C}}{m_C!}
+ =\prod_Ce^{V_C}
+ =\exp\!\left(\sum_CV_C\right).
+\]
+Taking the logarithm removes all products and leaves exactly one copy of
+each connected component value.
+
+\SupplementarySolution{5}{Connected Derivatives of a Source Functional}
+Use condensed indices and write
+\[
+ Z[J]=1+Z_1+\frac1{2!}Z_2+\frac1{3!}Z_3+\frac1{4!}Z_4+\cdots,
+\]
+where \(Z_n\) is homogeneous of degree \(n\) in \(J\).  Expanding
+\(\log Z\) gives
+\[
+ W_1=Z_1,\qquad
+ W_2=Z_2-Z_1^2,
+\]
+\[
+ W_3=Z_3-3Z_2Z_1+2Z_1^3,
+\]
+with the products understood as sums over assignments of labeled source
+indices.  At fourth order,
+\[
+ W_4=Z_4-4Z_3Z_1-3Z_2^2+12Z_2Z_1^2-6Z_1^4.
+\]
+Functional differentiation assigns the external labels to every
+displayed factor and reproduces the partition formulas of S.4.1.
+Consequently
+\[
+ \left.\frac{\delta^nW}{\delta J_1\cdots\delta J_n}\right|_{J=0}
+\]
+is the connected \(n\)-point function, while the same derivative of
+\(Z\) is the full one.
+
+\SupplementarySolution{6}{Volume Scaling of Connected Pieces}
+In a periodic box,
+\[
+ \int_Vd^3x\,e^{i(\mathbf P_f-\mathbf P_i)\cdot\mathbf x}
+ =V\,\delta_{\mathbf P_f,\mathbf P_i}.
+\]
+A connected component has one freely translatable center and therefore
+one such factor.  Its remaining integrals involve relative coordinates
+and do not acquire another overall power of \(V\).  A graph with \(C\)
+disconnected components has \(C\) independently translatable centers,
+so its leading volume dependence is \(V^C\).
+
+Since the full generating object is the exponential of its connected
+pieces, its logarithm contains only one connected component at a time and
+is proportional to \(V\).  This is the linked-cluster origin of
+extensivity.
+
+\SupplementarySolution{7}{Cancellation of Vacuum Bubbles}
+Let \(B\) be the sum of connected vacuum bubbles.  Diagram
+exponentiation gives
+\[
+ \bra0S\ket0=e^B.
+\]
+In the numerator with external fields, every diagram uniquely splits
+into vacuum components and a remainder in which each component touches
+at least one external point.  Hence
+\[
+ \bra0T\{\phi_1\cdots\phi_nS\}\ket0
+ =e^B\,\mathcal N_n.
+\]
+The Gell-Mann--Low ratio is therefore \(\mathcal N_n\): the factor \(e^B\)
+cancels exactly.
+
+A vacuum bubble touches no external point.  By contrast, a diagram may
+have two separate components, each attached to some external points.
+Such a diagram survives vacuum normalization but is removed when one
+passes from the full correlator to its connected part.
+
+\SupplementarySolution{8}{Connected Is Not One-Particle-Irreducible}
+A graph is connected if every pair of vertices is joined by some path.  It
+is one-particle irreducible if it remains connected after any one
+internal line is cut.  For example, take two interaction subgraphs joined
+by a single internal propagator, with one external leg attached at each
+end.  The complete graph is connected, but cutting the joining propagator
+separates it into two pieces.
+
+Connected correlation functions sum all connected graphs, including this
+one-particle-reducible example.  One-particle-irreducible graphs form a
+smaller set used to build effective vertices; chains of them reconstruct
+general connected graphs.
+
+\SupplementarySolution{9}{One Delta Function per Connected Component}
+Choose a spanning forest, one spanning tree in each connected component.
+It contains \(V-C\) edges.  Each of the remaining
+\[
+ L=I-(V-C)
+\]
+internal edges creates one independent cycle.  Rearrangement gives
+\[
+ V-I+L=C.
+\]
+Every vertex initially supplies one momentum delta function.  Of the
+\(I\) internal momenta, \(I-L\) are fixed by these constraints; the
+\(L\) loop momenta remain to be integrated.  The number of unused delta
+functions is therefore
+\[
+ V-(I-L)=V-I+L=C.
+\]
+They impose conservation of the total momentum entering each connected
+component.  A connected graph has \(C=1\) and hence only the overall
+conservation delta function.
+
+\SupplementarySolution{10}{Locality Produces a Single Vertex Delta Function}
+Each field mode contributes a plane wave.  A typical operator term at
+fixed time is proportional to
+\[
+ \int d^3x\,
+ e^{i(\mathbf p'_1+\cdots+\mathbf p'_N
+ -\mathbf p_1-\cdots-\mathbf p_M)\cdot\mathbf x}.
+\]
+The common spatial argument of all four fields makes the integral
+\[
+ (2\pi)^3\delta^3\!\left(
+ \sum_{r=1}^N\mathbf p'_r-\sum_{s=1}^M\mathbf p_s\right).
+\]
+There is only one spatial integration variable, so there can be only one
+independent momentum delta function.  Its coefficient contains mode
+normalizations and operator products but no further delta support.
+
+\SupplementarySolution{11}{A Bilocal Kernel and Extra Singular Support}
+Fourier expand
+\[
+ K(\mathbf r)=\int\frac{d^3k}{(2\pi)^3}
+ \widetilde K(\mathbf k)e^{i\mathbf k\cdot\mathbf r}.
+\]
+The \(x\) and \(y\) integrals give a total-momentum delta function and a
+factor \(\widetilde K(\mathbf Q)\), where \(\mathbf Q\) is the momentum
+transferred between the two pairs:
+\[
+ h\propto(2\pi)^3\delta^3(\mathbf P_f-\mathbf P_i)
+ \widetilde K(\mathbf Q).
+\]
+If \(\widetilde K\) is an ordinary function, this has only the required
+overall delta distribution.  For a local kernel
+\(K(\mathbf r)\propto\delta^3(\mathbf r)\),
+\(\widetilde K\) is constant.
+
+If \(K(\mathbf r)=K_0\), however,
+\(\widetilde K(\mathbf Q)=(2\pi)^3K_0\delta^3(\mathbf Q)\).  The vertex
+then separately conserves the momentum of each pair and contains two
+delta functions.  This infinite-range interaction correlates separated
+clusters and violates the cluster condition.
+
+\SupplementarySolution{12}{Four-Particle Cluster Factorization}
+When only the clusters \(12\) and \(34\) remain mutually connected, the
+surviving terms are
+\[
+\begin{split}
+ S_{1'2'3'4',1234}\longrightarrow{}&
+ S^C_{1'2',12}S^C_{3'4',34}\\
+ &+I_{1'2',12}S^C_{3'4',34}
+ +S^C_{1'2',12}I_{3'4',34}\\
+ &+I_{1'2',12}I_{3'4',34},
+\end{split}
+\]
+where \(I_{1'2',12}=\delta_{1'1}\delta_{2'2}\) for distinguishable
+particles.  Terms connected across the two distant laboratories vanish.
+Factoring the four surviving terms gives
+\[
+ (S^C_{1'2',12}+I_{1'2',12})
+ (S^C_{3'4',34}+I_{3'4',34})
+ =S_{1'2',12}S_{3'4',34},
+\]
+which is the cluster-decomposition statement.
+
+\SupplementarySolution{13}{Wick's Theorem for Three Fields}
+Write \(\phi_i=\phi_i^{(+)}+\phi_i^{(-)}\), with the positive-frequency
+part annihilating the vacuum and the negative-frequency part creating
+quanta.  Moving every annihilation part to the right produces one
+commutator for each interchange with a creation part.  Since three fields
+cannot be completely paired, the possibilities are no contraction or one
+contraction:
+\[
+\begin{split}
+ T\{\phi_1\phi_2\phi_3\}={}&:\phi_1\phi_2\phi_3:
+ +D_F(x_1-x_2)\phi_3\\
+ &+D_F(x_1-x_3)\phi_2
+ +D_F(x_2-x_3)\phi_1.
+\end{split}
+\]
+The propagators are c-numbers, so their position relative to the
+uncontracted field is immaterial.  The result is symmetric in all three
+points, as required by time ordering for a scalar field.
+
+\SupplementarySolution{14}{The First Vacuum Graphs in Cubic Theory}
+The zeroth-order term is one, and the first-order term vanishes because
+it contains three free fields.  With the vertex factor denoted \(i\lambda\),
+the second-order term is
+\[
+ \frac{(i\lambda)^2}{2(3!)^2}
+ \int d^4x\,d^4y\,
+ \langle0|T\{\phi(x)^3\phi(y)^3\}|0\rangle.
+\]
+There are \(3!=6\) contractions joining every field at \(x\) to one at
+\(y\), and \(3\cdot3=9\) contractions with one joining line and one
+tadpole at each vertex.  Thus
+\[
+ \bra0S\ket0
+ =1+(i\lambda)^2\int d^4x\,d^4y
+ \left[\frac{D_F(x-y)^3}{12}
+ +\frac{D_F(x-y)D_F(0)^2}{8}\right]+O(\lambda^4).
+\]
+The two connected vacuum graphs have symmetry factors \(12\) and \(8\).
+
+\SupplementarySolution{15}{Odd Orders and Vacuum Pairings}
+At order \(n\), cubic theory contains \(3n\) free fields.  A vacuum
+expectation value is a sum over complete pairings and hence vanishes when
+\(3n\) is odd.  Since \(3n\) has the parity of \(n\), every odd
+perturbative order vanishes.
+
+At fourth order, a vacuum graph is either connected across all four
+vertices or is a union of two connected two-vertex graphs.  If \(C_2\)
+denotes the complete connected second-order contribution and \(C_4\) the
+sum of connected fourth-order graphs, the order-four result has the
+universal form
+\[
+ C_4+\frac12C_2^2.
+\]
+The square includes all pairings of the two possible second-order
+topologies from S.4.14; the \(1/2!\) removes interchange of the two
+disconnected components.
+
+\SupplementarySolution{16}{Normalized Two-Point Functions}
+Let \(G_0(x,y)\) be the free two-point function and \(B_2\) the complete
+second-order vacuum contribution.  The numerator can be organized as
+\[
+ \mathcal N=G_0+\lambda^2
+ \bigl(G_{2,\rm attached}+G_0B_2\bigr)+O(\lambda^4),
+\]
+where \(G_{2,\rm attached}\) contains precisely the terms in which every
+interaction vertex connects to an external point.  The denominator is
+\[
+ \mathcal D=1+\lambda^2B_2+O(\lambda^4).
+\]
+Using \(\mathcal D^{-1}=1-\lambda^2B_2+\cdots\),
+\[
+ \frac{\mathcal N}{\mathcal D}
+ =G_0+\lambda^2G_{2,\rm attached}+O(\lambda^4).
+\]
+The two copies of \(G_0B_2\) cancel algebraically.  The same factorization
+and cancellation holds for any number of vacuum components and to every
+order.
+
+\SupplementarySolution{17}{External-Connected and Fully Connected}
+Condition (i) excludes vacuum bubbles: each interaction vertex must lie
+in a component that touches some external point.  It does not require all
+external points to share one component.  For example, a four-point
+diagram may be the product of two dressed propagators, one joining
+\((x_1,x_2)\) and one joining \((x_3,x_4)\).  Every vertex touches an
+external point, but the graph has two components.
+
+Vacuum normalization retains this product.  The connected four-point
+function subtracts
+\[
+ G(x_1,x_2)G(x_3,x_4)+G(x_1,x_3)G(x_2,x_4)
+ +G(x_1,x_4)G(x_2,x_3),
+\]
+along with one-point terms when present.  The two-component example is
+therefore removed, leaving only graphs in which all four external points
+belong to one component.
+
+\SupplementarySolution{18}{A Symmetry Factor from Wick Contractions}
+The second Dyson term supplies \(1/[2!(3!)^2]=1/72\).  For the theta graph,
+all three fields at one vertex contract with the other vertex, giving
+\(3!=6\) pairings.  Its coefficient is \(6/72=1/12\), so its symmetry
+factor is \(12\).
+
+For the tadpole graph, choose the field on the first vertex that joins the
+second in three ways and its partner there in three ways.  The remaining
+two fields at each vertex pair uniquely, for \(3\cdot3=9\) contractions.
+Its coefficient is \(9/72=1/8\), so its symmetry factor is \(8\).  These
+counts agree with the automorphism groups of the two graphs.
+
+\SupplementarySolution{19}{A Normalized Coherent Eigenstate}
+The normalized state is
+\[
+ \ket z=e^{-|z|^2/2}e^{za^\dagger}\ket0
+ =e^{-|z|^2/2}\sum_{n=0}^\infty
+ \frac{z^n}{\sqrt{n!}}\ket n.
+\]
+Since \([a,za^\dagger]=z\),
+\(ae^{za^\dagger}=e^{za^\dagger}(a+z)\), so
+\(a\ket z=z\ket z\).  Its overlap is
+\[
+ \braket{z_2}{z_1}
+ =\exp\!\left(-\frac{|z_2|^2}{2}-\frac{|z_1|^2}{2}
+ +z_2^*z_1\right).
+\]
+Setting \(z_2=z_1\) verifies unit normalization; distinct coherent states
+are generally not orthogonal.
+
+\SupplementarySolution{20}{Resolution of the Identity by Coherent States}
+Insert the number-state expansions:
+\[
+ \int\frac{d^2z}{\pi}\ket z\bra z
+ =\sum_{m,n}\frac{\ket n\bra m}{\sqrt{n!m!}}
+ \int\frac{d^2z}{\pi}e^{-|z|^2}z^n(z^*)^m.
+\]
+The angular integral vanishes unless \(m=n\), and the radial integral is
+\[
+ 2\int_0^\infty r\,dr\,e^{-r^2}r^{2n}=n!.
+\]
+Thus the operator is \(\sum_n\ket n\bra n=\mathbf1\).  Orthogonality is
+not required for a resolution of the identity: the continuous family is
+overcomplete, and its integration measure compensates for the nonzero
+overlaps.
+
+\SupplementarySolution{21}{Means and Minimal Uncertainty}
+Using \(a\ket z=z\ket z\),
+\[
+ \langle q\rangle=\frac{z+z^*}{\sqrt2}
+ =\sqrt2\,\operatorname{Re}z,\qquad
+ \langle p\rangle=\frac{z-z^*}{i\sqrt2}
+ =\sqrt2\,\operatorname{Im}z.
+\]
+Normal ordering \(q^2\) and \(p^2\) and using
+\([a,a^\dagger]=1\) gives
+\[
+ \langle q^2\rangle=\langle q\rangle^2+\frac12,\qquad
+ \langle p^2\rangle=\langle p\rangle^2+\frac12.
+\]
+Hence
+\[
+ \Delta q=\Delta p=\frac1{\sqrt2},\qquad
+ \Delta q\,\Delta p=\frac12.
+\]
+The displacement changes the means but leaves the vacuum fluctuations
+unchanged.
+
+\SupplementarySolution{22}{Multimode Number Statistics}
+Let
+\(\mu=\int dq\,|\lambda(q)|^2\).  Expanding the coherent state by total
+particle number gives a Poisson distribution, so its moment-generating
+function is
+\[
+ \langle e^{tN}\rangle
+ =e^{-\mu}\sum_{n=0}^\infty
+ \frac{\mu^n e^{tn}}{n!}
+ =\exp\!\bigl[\mu(e^t-1)\bigr].
+\]
+Differentiation at \(t=0\) yields
+\[
+ \langle N\rangle=\mu,\qquad
+ \operatorname{Var}N=\mu,
+\qquad
+ P(N=n)=e^{-\mu}\frac{\mu^n}{n!}.
+\]
+Disjoint momentum bins are independent Poisson variables, another
+manifestation of the exponential connected-state structure.
+
+\SupplementarySolution{23}{The Displacement Operator}
+Put \(A=za^\dagger\) and \(B=-z^*a\).  Their commutator
+\([A,B]=|z|^2\) is a c-number, so the
+Baker--Campbell--Hausdorff formula gives
+\[
+ D(z)=e^{A+B}=e^{-|z|^2/2}e^{za^\dagger}e^{-z^*a}.
+\]
+Since the exponent \(za^\dagger-z^*a\) is anti-Hermitian,
+\(D(z)^\dagger=D(-z)=D(z)^{-1}\).  Acting on the vacuum,
+\[
+ D(z)\ket0=e^{-|z|^2/2}e^{za^\dagger}\ket0=\ket z.
+\]
+Conjugation also gives \(D(z)^\dagger aD(z)=a+z\), directly confirming
+the coherent-state eigenvalue.
+
+\SupplementarySolution{24}{In- and Out-Vacua in a Classical Source}
+The relation in the question implies
+\[
+ a_{\rm in}(\mathbf p)
+ =a_{\rm out}(\mathbf p)-\alpha(\mathbf p).
+\]
+Therefore \(a_{\rm in}\InKet{0}=0\) is equivalent to
+\[
+ a_{\rm out}(\mathbf p)\InKet{0}
+ =\alpha(\mathbf p)\InKet{0}.
+\]
+Thus, with \(\mu=\int d^3p\,|\alpha(\mathbf p)|^2\),
+\[
+ \InKet{0}
+ =e^{-\mu/2}
+ \exp\!\left[\int d^3p\,\alpha(\mathbf p)
+ a_{\rm out}^\dagger(\mathbf p)\right]\OutKet{0}.
+\]
+The vacuum persistence amplitude is
+\(\OutBra{0}\InKet{0}=e^{-\mu/2}\), so the probability of producing no
+out-particles is \(P_0=e^{-\mu}\).
+
+\SupplementarySolution{25}{An Impulse Creates a Coherent Field}
+Choose
+\[
+ \phi(\mathbf x)=\int\frac{d^3p}{(2\pi)^{3/2}}
+ \frac{a(\mathbf p)e^{i\mathbf p\cdot\mathbf x}
+ +a^\dagger(\mathbf p)e^{-i\mathbf p\cdot\mathbf x}}
+ {\sqrt{2\omega_{\mathbf p}}},
+\quad \omega_{\mathbf p}=\sqrt{\mathbf p^2+m^2}.
+\]
+Integrating the equations across \(t=0\) gives
+\[
+ \phi(0^+)=\phi(0^-),\qquad
+ \pi(0^+)=\pi(0^-)+j.
+\]
+Inverting the mode expansion,
+\[
+ a(\mathbf p,0^+)=a(\mathbf p,0^-)
+ +\frac{i\,\widetilde j(\mathbf p)}
+ {\sqrt{2\omega_{\mathbf p}}}.
+\]
+If the state was annihilated by \(a(\mathbf p,0^-)\), then it is an
+eigenstate of the post-impulse operator with eigenvalue
+\[
+ \alpha(\mathbf p)=
+ \frac{i\,\widetilde j(\mathbf p)}
+ {\sqrt{2\omega_{\mathbf p}}},
+\]
+up to the displayed Fourier normalization.  It is therefore a multimode
+coherent state.
+
+\SupplementarySolution{26}{Classical Expectation Values from a Coherent State}
+For \(a(\mathbf p)\ket\lambda=\lambda(\mathbf p)\ket\lambda\),
+\[
+ \langle\phi(x)\rangle_\lambda
+ =\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_{\mathbf p}}}
+ \left[\lambda(\mathbf p)e^{-i\omega t+i\mathbf p\cdot\mathbf x}
+ +\lambda(\mathbf p)^*e^{i\omega t-i\mathbf p\cdot\mathbf x}\right].
+\]
+Every mode is on shell, so
+\((\Box-m^2)\langle\phi\rangle_\lambda=0\) in the local mostly-plus
+convention.
+
+Write \(a=\lambda+\delta a\).  The fluctuation operators \(\delta a\)
+annihilate the displaced vacuum and have the same contractions as the
+ordinary vacuum.  Hence
+\[
+ \langle\phi(x)\phi(y)\rangle_\lambda
+ -\langle\phi(x)\rangle_\lambda\langle\phi(y)\rangle_\lambda
+ =\langle0|\phi(x)\phi(y)|0\rangle.
+\]
+The state carries a classical mean field but unchanged connected
+Gaussian fluctuations.
+
+\SupplementarySolution{27}{The Momentum Spectrum of Source Radiation}
+From S.4.25,
+\[
+ \langle a^\dagger(\mathbf p)a(\mathbf q)\rangle
+ =\alpha(\mathbf p)^*\alpha(\mathbf q),
+\qquad
+ |\alpha(\mathbf p)|^2
+ =\frac{|\widetilde j(\mathbf p)|^2}
+ {2\omega_{\mathbf p}}.
+\]
+Thus the total mean number is
+\[
+ \mu=\int d^3p\,\frac{|\widetilde j(\mathbf p)|^2}
+ {2\omega_{\mathbf p}},
+\]
+with the matching Fourier-measure factors for the chosen convention.
+Coherent-state statistics gives \(P_0=e^{-\mu}\).  The state is a vector
+in Fock space precisely when \(\mu<\infty\); otherwise its formal
+displacement has infinite norm and belongs to an inequivalent
+representation.
+
+\SupplementarySolution{28}{Correlation Is Not Signaling}
+For spacelike separation in the mostly-plus metric, put
+\(r=\sqrt{(x-y)^2}\).  The free massive Wightman function is
+proportional to
+\[
+ \frac{m}{4\pi^2r}K_1(mr),
+\]
+which is nonzero but behaves as \(e^{-mr}\) at large \(r\).  It measures
+correlations already present in the vacuum.
+
+The commutator is the difference of the two orderings,
+\[
+ [\phi(x),\phi(y)]=D^+(x-y)-D^+(y-x).
+\]
+Lorentz invariance allows a frame in which spacelike-separated points
+are simultaneous; the two terms are then equal, so the commutator
+vanishes.  Linear response is governed by the retarded function
+\(i\theta(x^0-y^0)[\phi(x),\phi(y)]\), not by the Wightman correlation.
+It therefore has causal support even though the vacuum is correlated.
+
+\SupplementarySolution{29}{Separated Sources and Additivity of \(W\)}
+The source expansion groups into connected components.  If connected
+propagation between regions \(A\) and \(B\) is negligible, no connected
+component contains insertions from both sources.  Hence the connected
+functional splits:
+\[
+ W[J_A+J_B]\longrightarrow W[J_A]+W[J_B].
+\]
+Exponentiating gives
+\[
+ Z[J_A+J_B]\longrightarrow
+ e^{W[J_A]}e^{W[J_B]}=Z[J_A]Z[J_B].
+\]
+Functional derivatives with respect to sources in both regions therefore
+have vanishing connected part, while full transition amplitudes and
+probabilities factorize.  This is precisely the statement that the two
+distant experiments become independent.
+
+\SupplementarySolution{30}{Cluster Decay and Fourier Singularities}
+Remove the overall delta function and let \(\mathbf q\) denote momentum
+transferred between the two proposed clusters.  Translating one cluster
+by \(\mathbf R\) multiplies the wave-packet integral by
+\(e^{i\mathbf q\cdot\mathbf R}\):
+\[
+ A_C(\mathbf R)=\int d^3q\,
+ f(\mathbf q,\ldots)e^{i\mathbf q\cdot\mathbf R}.
+\]
+If the reduced connected kernel is locally integrable and the wave
+packets make it \(L^1\), the Riemann--Lebesgue lemma gives
+\(A_C(\mathbf R)\to0\) as \(|\mathbf R|\to\infty\).
+
+An extra factor \(\delta^3(\mathbf q)\) instead gives
+\[
+ A_C(\mathbf R)\supset f(\mathbf0,\ldots),
+\]
+independent of \(\mathbf R\).  It separately conserves the momentum of a
+proper cluster and prevents connected decay.  This is why one overall
+momentum delta function is compatible with cluster decomposition, while
+additional partial-momentum delta functions are not.
+\end{enumerate}

@@ -1,0 +1,477 @@
+% Physical pages: 174--181 (printed pages 151--158).
+% Figures: none.
+% Uncertainties: none.
+
+% Continuation of Section 3.6 from physical page 173.
+satisfies the inequality\footnote{The difference between the left- and
+right-hand sides approaches the positive quantity
+$(P_\alpha-P_\beta)^2/2P_\beta$ for $P_\alpha\to P_\beta$, and has a
+derivative with respect to $P_\alpha$ that is positive- or negative-definite
+for all $P_\alpha>P_\beta$ or $P_\alpha<P_\beta$, respectively.}
+\[
+  P_\beta\ln\!\left(\frac{P_\beta}{P_\alpha}\right)
+  \geq P_\beta-P_\alpha.
+\]
+The rate of change of the entropy is thus bounded by
+\[
+  -\frac{d}{dt}\int d\alpha\,P_\alpha\ln P_\alpha
+  \geq \int d\alpha\int d\beta\,[P_\beta-P_\alpha]
+  \frac{d\Gamma(\beta\to\alpha)}{d\alpha}
+\]
+or interchanging variables of integration in the second term
+\[
+  -\frac{d}{dt}\int d\alpha\,P_\alpha\ln P_\alpha
+  \geq \int d\alpha\int d\beta\,P_\beta
+  \left[
+    \frac{d\Gamma(\beta\to\alpha)}{d\alpha}
+    -\frac{d\Gamma(\alpha\to\beta)}{d\beta}
+  \right].
+\]
+But the unitarity relation \eqref{eq:3.6.18} tells us that the integral over $\alpha$
+on the right-hand side vanishes, so we may conclude that the entropy always
+increases:
+\begin{equation}
+  -\frac{d}{dt}\int d\alpha\,P_\alpha\ln P_\alpha\geq0.
+  \tag{3.6.20}\label{eq:3.6.20}
+\end{equation}
+This is the `Boltzmann $H$-theorem.' This theorem is often derived in
+statistical mechanics textbooks either by using the Born approximation, for
+which $|M_{\beta\alpha}|^2$ is symmetric in $\alpha$ and $\beta$ so that
+$d\Gamma(\beta\to\alpha)/d\alpha=d\Gamma(\alpha\to\beta)/d\beta$, or by
+assuming time-reversal invariance, which would tell us that
+$|M_{\beta\alpha}|^2$ is unchanged if we interchange $\alpha$ and $\beta$ and
+also reverse all momenta and spins. Of course, neither the Born approximation
+nor time-reversal invariance are exact, so it is a good thing that the
+unitarity result \eqref{eq:3.6.18} is all we need in order to derive the $H$-theorem.
+
+The increase of the entropy stops when the probability $P_\alpha$ becomes a
+function only of conserved quantities such as the total energy and charge. In
+this case the conservation laws require $d\Gamma(\beta\to\alpha)/d\alpha$ to
+vanish unless $P_\alpha=P_\beta$, so we can replace $P_\beta$ with $P_\alpha$
+in the first term of Eq. \eqref{eq:3.6.19}. Using Eq. \eqref{eq:3.6.18} again then shows that in
+this case, $P_\alpha$ is time-independent. Here again, we need only the
+unitarity relation \eqref{eq:3.6.18}, not the Born approximation or time-reversal
+invariance.
+
+\subsection[Partial-Wave Expansions]{Partial-Wave Expansions\texorpdfstring{\protect\footnotemark}{}}
+\footnotetext{This section lies somewhat out of the book's main line of
+development, and may be omitted in a first reading.}
+
+It is often convenient to work with the $S$-matrix in a basis of free-particle
+states in which all variables are discrete, except for the total momentum and
+energy. This is possible because the components of the momenta
+$\mathbf p_1,\ldots,\mathbf p_n$ in an $n$-particle state of definite total
+momentum $\mathbf p$ and total energy $E$ form a $(3n-4)$-dimensional compact
+space; for instance, for $n=2$ particles in the center-of-mass frame with
+$\mathbf p=0$, this space is a two-dimensional spherical surface. Any
+function on such a compact space may be expanded in a series of generalized
+`partial waves', such as the spherical harmonics that are commonly used in
+representing functions on the two-sphere. We may thus define a basis for these
+$n$-particle states that apart from the continuous variables $\mathbf p$ and
+$E$ is discrete: we label the free-particle states in such a basis as
+$\ket{E,\mathbf p,N}$, with the index $N$ incorporating all spin and species
+labels as well as whatever indices are used to label the generalized partial
+waves. These states may conveniently be chosen to be normalized so that their
+scalar products are:
+\begin{equation}
+  \braket{E',\mathbf p',N'}{E,\mathbf p,N}
+  =\delta(E'-E)\delta^3(\mathbf p'-\mathbf p)\delta_{N'N}.
+  \tag{3.7.1}\label{eq:3.7.1}
+\end{equation}
+The $S$-operator then has matrix elements in this basis of the form
+\begin{equation}
+  \langle E',\mathbf p',N'|S|E,\mathbf p,N\rangle
+  =\delta(E'-E)\delta^3(\mathbf p'-\mathbf p)
+   S_{N'N}(E,\mathbf p),
+  \tag{3.7.2}\label{eq:3.7.2}
+\end{equation}
+where $S_{N'N}$ is a unitary matrix. Similarly, the $T$-operator, whose
+free-particle matrix elements $\langle\beta|T|\alpha\rangle$ are defined to be
+the quantities $T^+_{\beta\alpha}$ defined by Eq. \eqref{eq:3.1.18}, may be expressed
+in our new basis (in accordance with Eq. \eqref{eq:3.4.12}) as
+\begin{equation}
+  \langle E',\mathbf p',N'|T|E,\mathbf p,N\rangle
+  =\delta^3(\mathbf p'-\mathbf p)M_{N'N}(E,\mathbf p)
+  \tag{3.7.3}\label{eq:3.7.3}
+\end{equation}
+and the relation \eqref{eq:3.2.7} is now an ordinary matrix equation:
+\begin{equation}
+  S_{N'N}(E,\mathbf p)=\delta_{N'N}-2\pi iM_{N'N}(E,\mathbf p).
+  \tag{3.7.4}\label{eq:3.7.4}
+\end{equation}
+We shall use this general formalism in the following section; for the present
+we will concentrate on reactions in which the initial state involves just two
+particles.
+
+For example, consider a state consisting of two non-identical particles of
+species $n_1,n_2$ with non-zero masses $M_1,M_2$ and arbitrary spins $s_1,s_2$.
+In this case, the states may be labelled by their total momentum
+$\mathbf p=\mathbf p_1+\mathbf p_2$, the energy $E$, the species labels
+$n_1,n_2$, the spin $z$-components $\sigma_1,\sigma_2$, and a pair of integers
+$\ell,m$ (with $|m|\leq\ell$) that specify the dependence of the state on the
+directions of, say, $\mathbf p_1$. Alternatively, we can form a convenient
+discrete basis by using Clebsch--Gordan coefficients~\hyperref[ref:3.9]{[9]} to combine the two
+spins to give a total spin $s$ with $z$-component $\mu$, and then using
+Clebsch--Gordan coefficients again to combine this with the orbital angular
+momentum $\ell$ with three-component $m$ to form a total angular momentum $j$
+with three-component $\sigma$. This gives a basis of states
+$\ket{E,\mathbf p,j,\sigma,\ell,s,n}$ (with $n$ a `channel index' labelling the
+two particle species $n_1,n_2$), defined by their scalar products with the
+states of definite individual momenta and spin three-components:
+\begin{align}
+  &\braket{\mathbf p_1,\sigma_1;\mathbf p_2,\sigma_2;n'}
+           {E,\mathbf p,j,\sigma,\ell,s,n}
+  =\left(\frac{|\mathbf p_1|E_1E_2}{E}\right)^{-1/2}
+    \delta^3(\mathbf p-\mathbf p_1-\mathbf p_2) \notag\\
+  &\quad\cdot
+    \delta\!\left(E-\sqrt{\mathbf p_1^2+M_1^2}
+                    -\sqrt{\mathbf p_2^2+M_2^2}\right)\delta_{n'n}
+    \sum_{m,\mu}C_{s_1s_2}(s,\mu;\sigma_1,\sigma_2)
+      C_{\ell s}(j,\sigma;m,\mu)Y_\ell^m(\widehat{\mathbf p}_1).
+  \tag{3.7.5}\label{eq:3.7.5}
+\end{align}
+where $Y_\ell^m$ are the usual spherical harmonics~\hyperref[ref:3.24]{[24]}. The factor
+$(|\mathbf p_1|E_1E_2/E)^{-1/2}$ is inserted so that in the center-of-mass
+frame these states will be properly normalized:
+\begin{align}
+  &\braket{E',\mathbf p',j',\sigma',\ell',s',n'}
+           {E,\mathbf 0,j,\sigma,\ell,s,n} \notag\\
+  &\qquad=\delta^3(\mathbf p')\delta(E'-E)
+    \delta_{j'j}\delta_{\sigma'\sigma}\delta_{\ell'\ell}
+    \delta_{s's}\delta_{n'n}.
+  \tag{3.7.6}\label{eq:3.7.6}
+\end{align}
+For identical particles to avoid double counting we must integrate only over
+half of the two-particle momentum space, so an extra factor $\sqrt2$ should
+appear in the scalar product \eqref{eq:3.7.6}.
+
+In the center-of-mass frame the matrix elements of any momentum-conserving and
+rotationally-invariant operator $O$ must take the form:
+\begin{equation}
+  \langle E,\mathbf p',j',\sigma',\ell',s',n'|O|
+          E,\mathbf 0,j,\sigma,\ell,s,n\rangle
+  =\delta^3(\mathbf p')O^j_{\ell's'n',\ell sn}(E)
+    \delta_{j'j}\delta_{\sigma'\sigma}.
+  \tag{3.7.7}\label{eq:3.7.7}
+\end{equation}
+(The fact that this is diagonal in $j$ and $\sigma$ follows from the
+commutation of $O$ with $\mathbf J^2$ and $J_3$, and the further fact that the
+coefficient of $\delta_{\sigma\sigma'}$ is independent of $\sigma$ follows
+from the commutation of $O$ with $J_1\pm iJ_2$. This is a special case of a
+general result known as the Wigner--Eckart theorem~\hyperref[ref:3.25]{[25]}.) Applying this to the
+operator $M$ whose matrix elements are the quantities $M_{\beta\alpha}$, it
+follows that the scattering amplitude \eqref{eq:3.6.7} in the center-of-mass system
+takes the form
+\begin{align}
+  &f(\mathbf k\sigma_1,-\mathbf k\sigma_2,n
+       \to\mathbf k'\sigma'_1,-\mathbf k'\sigma'_2,n') \notag\\
+  &\quad\equiv-4\pi^2
+    \sqrt{\frac{k'E'_1E'_2E_1E_2}{E^2k}}
+    M_{\mathbf k'\sigma'_1,-\mathbf k'\sigma'_2,n';
+      \mathbf k\sigma_1,-\mathbf k\sigma_2,n} \notag\\
+  &\quad=-\frac{4\pi^2}{k}
+    \sum_{j\sigma\ell m\ell'm's\mu s'\mu'}
+    C_{s_1s_2}(s,\mu;\sigma_1,\sigma_2)
+    C_{\ell s}(j,\sigma;m,\mu) \notag\\
+  &\qquad\cdot C_{s'_1s'_2}(s',\mu';\sigma'_1,\sigma'_2)
+    C_{\ell's'}(j,\sigma;m',\mu')
+    Y_{\ell'}^{m'*}(\widehat{\mathbf k}')Y_\ell^m(\widehat{\mathbf k})
+    M^j_{\ell's'n',\ell sn}(E).
+  \tag{3.7.8}\label{eq:3.7.8}
+\end{align}
+The differential scattering cross-section is $|f|^2$. We will take the
+direction of the initial momentum $\mathbf k$ to be along the three-direction,
+in which case
+\begin{equation}
+  Y_\ell^m(\widehat{\mathbf k})
+  =\delta_{m0}\sqrt{\frac{2\ell+1}{4\pi}}.
+  \tag{3.7.9}\label{eq:3.7.9}
+\end{equation}
+Integrating $|f|^2$ over the direction of the final momentum $\mathbf k'$ and
+respectively summing and averaging over final and initial spin
+three-components gives the total cross-section\footnote{In deriving this
+result, we use standard sum rules~\hyperref[ref:3.9]{[9]} for the Clebsch--Gordan coefficients:
+first
+\[
+ \sum_{\sigma_1\sigma_2}C_{s_1s_2}(s,\mu;\sigma_1,\sigma_2)
+ C_{s_1s_2}(\bar s,\bar\mu;\sigma_1,\sigma_2)
+ =\delta_{s\bar s}\delta_{\mu\bar\mu},
+\]
+and the same with primes; then
+\[
+ \sum_{m\sigma}C_{\ell s}(j,\sigma;m,\bar\sigma)
+ C_{\ell's}(\bar j,\bar\sigma;m,\bar\sigma)
+ =\delta_{j\bar j}\delta_{\sigma\bar\sigma},
+\]
+and finally
+\[
+ \sum_{\sigma\mu}C_{\ell s}(j,\sigma;0,\mu)
+ C_{\ell's}(j,\sigma;0,\mu)=\frac{2j+1}{2\ell+1}\delta_{\ell\ell'}.
+\]}
+for transitions from channel $n$ to $n'$:
+\begin{align}
+  \sigma(n\to n';E)
+  &=\frac{\pi}{k^2(2s_1+1)(2s_2+1)}
+    \sum_{j\ell s\ell's'}(2j+1) \notag\\
+  &\quad\cdot\left|
+    \delta_{\ell'\ell}\delta_{s's}\delta_{n'n}
+    -S^j_{\ell's'n',\ell sn}(E)\right|^2.
+  \tag{3.7.10}\label{eq:3.7.10}
+\end{align}
+Summing \eqref{eq:3.7.10} over all two-body channels gives the total cross-section for
+all elastic or inelastic two-body reactions:
+\begin{align}
+  \sum_{n'}\sigma(n\to n';E)
+  &=\frac{\pi}{k^2(2s_1+1)(2s_2+1)}
+    \sum_{j\ell s}(2j+1) \notag\\
+  &\quad\cdot
+    \bigl[(\mathbf{1}-S^j(E))^\dagger(\mathbf{1}-S^j(E))\bigr]_{\ell sn,\ell sn}.
+  \tag{3.7.11}\label{eq:3.7.11}
+\end{align}
+For comparison, Eqs. \eqref{eq:3.7.8}, \eqref{eq:3.7.9}, \eqref{eq:3.7.4}, and the Clebsch--Gordan sum
+rules give the spin-averaged forward scattering amplitude as
+\[
+  f(n;E)=\frac{i}{2k(2s_1+1)(2s_2+1)}
+  \sum_{j\ell s}(2j+1)[\mathbf{1}-S^j(E)]_{\ell sn,\ell sn}.
+\]
+The optical theorem \eqref{eq:3.6.10} then gives the total cross-section as
+\begin{equation}
+  \sigma_{\rm total}(n;E)
+  =\frac{2\pi}{k^2(2s_1+1)(2s_2+1)}
+  \sum_{j\ell s}(2j+1)\mathop{\rm Re}
+  [\mathbf{1}-S^j(E)]_{\ell sn,\ell sn}.
+  \tag{3.7.12}\label{eq:3.7.12}
+\end{equation}
+If only two-body channels can be reached from the channel $n$ at energy $E$,
+then the matrix $S^j(E)$ (or at least some submatrix that includes channel
+$n$) is unitary, and thus
+\begin{equation}
+  \bigl[(\mathbf{1}-S^j(E))^\dagger(\mathbf{1}-S^j(E))\bigr]_{\ell sn,\ell sn}
+  =2\mathop{\rm Re}[\mathbf{1}-S^j(E)]_{\ell sn,\ell sn},
+  \tag{3.7.13}\label{eq:3.7.13}
+\end{equation}
+so \eqref{eq:3.7.12} and \eqref{eq:3.7.11} are equal. On the other hand, if channels involving
+three or more particles are open, then the difference of \eqref{eq:3.7.12} and
+\eqref{eq:3.7.11} gives the total cross-section for producing extra particles:
+\begin{equation}
+  \sigma_{\rm production}(n;E)
+  =\frac{\pi}{k^2(2s_1+1)(2s_2+1)}
+  \sum_{j\ell s}(2j+1)
+  [\mathbf{1}-S^j(E)^\dagger S^j(E)]_{\ell sn,\ell sn},
+  \tag{3.7.14}\label{eq:3.7.14}
+\end{equation}
+and this must be positive.
+
+The partial wave expansion is particularly useful when applied to processes
+where the relevant part of the $S$-matrix is diagonal. This is the case, for
+instance, if the initial channel $n$ contains just two spinless particles, and
+no other channels are open at this energy, as in $\pi^+-\pi^+$ or
+$\pi^+-\pi^0$ scattering at energies below the threshold for producing extra
+pions (provided one ignores weak and electromagnetic interactions). For a
+pair of spinless particles we have $j=\ell$, and angular momentum conservation
+keeps the $S$-matrix diagonal. It is also possible for the $S$-matrix to be
+diagonal in certain processes involving particles with spin; for instance in
+pion--nucleon scattering we can have $j=\ell+\tfrac12$ or
+$j=\ell-\tfrac12$, but for a given $j$ these two states have opposite parity,
+so they cannot be connected by non-zero $S$-matrix elements. In any case, if
+for some $n$ and $E$ the $S$-matrix elements
+$S^j_{N',\ell sn}(E,\mathbf0)$ all vanish unless $N'$ is the two-body state
+$j,\ell,s,n$, then unitarity requires that
+\begin{equation}
+  S^j_{\ell's'n',\ell sn}(E)
+  =\exp[2i\delta_{j\ell sn}(E)]
+    \delta_{\ell'\ell}\delta_{s's}\delta_{n'n},
+  \tag{3.7.15}\label{eq:3.7.15}
+\end{equation}
+where $\delta_{j\ell sn}(E)$ is a real phase, commonly known as the
+\emph{phase shift}. This formula is also often used where the two-body part of
+the $S$-matrix is diagonal but channels containing three or more particles are
+also open; in such cases the phase shift must have a positive imaginary part,
+to keep \eqref{eq:3.7.14} positive. For real phase shifts, the elastic and total
+cross-sections are then given by Eq. \eqref{eq:3.7.10} or Eq. \eqref{eq:3.7.12} as:
+\begin{equation}
+  \sigma(n\to n;E)=\sigma_{\rm total}(n;E)
+  =\frac{4\pi}{k^2(2s_1+1)(2s_2+1)}
+    \sum_{j\ell s}(2j+1)\sin^2\delta_{j\ell sn}(E).
+  \tag{3.7.16}\label{eq:3.7.16}
+\end{equation}
+This familiar result is usually derived in non-relativistic quantum mechanics
+by studying the coordinate space wave function for a particle in a potential.
+The derivation given here is offered both to show that the partial wave
+expansion applies for elastic scattering even at relativistic velocities, and
+also to emphasize that it depends on no particular dynamical assumptions,
+only on unitarity and invariance principles.
+
+It is also often useful to introduce phase shifts in dealing with problems
+where several channels are open, forming a few irreducible representations of
+some internal symmetry group. The classic example of such an internal
+symmetry is isotopic spin symmetry, for which the channel index $n$ includes a
+specification of the isospins $T_1,T_2$ of the two particles together with
+their three-components $t_1,t_2$; the states in channel $n$ may be expressed
+as linear combinations of the $t$th components of irreducible representations
+$T$, with coefficients given by the familiar Clebsch--Gordan coefficients
+$C_{T_1T_2}(T,t;t_1,t_2)$. Suppose that for the channels and energy of
+interest the $S$-matrix is diagonal in $\ell$ and $s$ as well as $j,T$, and
+$t$. Unitarity and isospin symmetry then allow us to write the $S$-matrix as
+\begin{equation}
+  S^j_{\ell's'T't',\ell sTt}
+  =\exp[2i\delta_{j\ell sT}(E)]
+    \delta_{\ell'\ell}\delta_{s's}\delta_{T'T}\delta_{t't},
+  \tag{3.7.17}\label{eq:3.7.17}
+\end{equation}
+with $\delta_{j\ell sT}(E)$ a real phase shift, $t$-independent according to
+the Wigner--Eckart theorem. The partial cross-sections can again be calculated
+from Eq. \eqref{eq:3.7.10}, and the total cross-section is given by Eq. \eqref{eq:3.7.12} as
+\begin{align}
+  \sigma_{\rm total}(t_1,t_2;E)
+  &=\frac{4\pi}{k^2(2s_1+1)(2s_2+1)} \notag\\
+  &\quad\cdot\sum_{j\ell sTt}(2j+1)
+    C_{T_1T_2}(T,t;t_1,t_2)^2\sin^2\delta_{j\ell sT}(E).
+  \tag{3.7.18}\label{eq:3.7.18}
+\end{align}
+For instance, in pion--pion scattering we have phase shifts
+$\delta_{\ell\ell0T}(E)$ with $T=0$ or $T=2$ for each even $\ell$ and $T=1$
+for each odd $\ell$, while for pion--nucleon scattering we have phase shifts
+$\delta_{j,j\pm\frac12,\frac12,T}$ with $T=\tfrac12$ or $T=\tfrac32$.
+
+We can gain some useful insight about the threshold behavior of the scattering
+amplitudes and phase shifts from considerations of analyticity that are nearly
+independent of any dynamical assumptions. Unless there are special
+circumstances that would produce singularities in momentum space, we would
+expect the matrix element
+$M_{\mathbf k'\sigma'_1,-\mathbf k'\sigma'_2,n';
+\mathbf k\sigma_1,-\mathbf k\sigma_2,n}$ to be an analytic
+function\footnote{For instance, in the Born approximation \eqref{eq:3.2.8}, $M$ is
+proportional to the Fourier transform of the coordinate space matrix elements
+of the interaction, and hence is analytic at zero momenta as long as these
+matrix elements fall off sufficiently rapidly at large separations. The chief
+exception is for scattering involving long-distance forces, such as the
+Coulomb force.} of the three-momenta $\mathbf k$ and $\mathbf k'$ near $k=0$
+or $k'=0$ or (for elastic scattering) $k=k'=0$. Turning to the partial wave
+expansion \eqref{eq:3.7.8} for $M$, we note that $k^\ell Y_\ell^m(\widehat{\mathbf k})$
+is a simple polynomial function of the three-vector $\mathbf k$, so in order
+for the matrix element to be an analytic function of the three-momenta
+$\mathbf k$ and $\mathbf k'$ near $k=0$ or $k'=0$, the coefficients
+$M^j_{\ell's'n',\ell sn}$ or equivalently
+$\delta_{\ell'\ell}\delta_{s's}\delta_{n'n}-S^j_{\ell's'n',\ell sn}$ must
+go as $k^{\ell+1/2}k'^{\ell'+1/2}$ when $k$ and/or $k'$ go to zero. Hence for
+small $k$ and/or $k'$, it is only the lowest partial waves in the initial
+and/or final state that contribute appreciably to the scattering amplitude.
+We have three possible cases:
+
+\begin{center}\emph{Exothermic reactions}\end{center}
+
+Here $k'$ approaches a finite value as $k\to0$, and in this limit
+$\delta_{\ell'\ell}\delta_{s's}\delta_{n'n}
+-S^j_{\ell's'n',\ell sn}$ goes as $k^{\ell+1/2}$. The cross-section \eqref{eq:3.7.11}
+in this case goes as $k^{2\ell-1}$, where $\ell$ is here the \emph{lowest}
+orbital angular momentum that can lead to the reaction. In the most usual case
+$\ell=0$, so the reaction cross-section goes as $1/k$. (This is the case, for
+instance, in the absorption of slow neutrons by complex nuclei, or for the
+annihilation of electron--positron pairs into photons at low energy, aside
+from the higher-order effects of Coulomb forces.) The reaction rate is the
+cross-section times the flux, which goes like $k$, so the rate for an
+exothermic reaction behaves like a constant for $k\to0$. However, it is the
+cross-section rather than the reaction rate that determines the probability
+of absorption when a beam crosses a given thickness of target material, and
+the factor $1/k$ makes this probability very high for slow neutrons in an
+absorbing material like boron.
+
+\begin{center}\emph{Endothermic Reactions}\end{center}
+
+Here the reaction is forbidden until $k$ reaches a finite threshold value,
+where $k'=0$. Just above this threshold
+$\delta_{\ell'\ell}\delta_{s's}\delta_{n'n}
+-S^j_{\ell's'n',\ell sn}$ goes as $(k')^{\ell'+1/2}$. The cross-section
+\eqref{eq:3.7.11} in this case goes as $(k')^{2\ell'+1}$, where $\ell'$ is here the
+\emph{lowest} orbital angular momentum that can be produced at threshold. In
+the most usual case $\ell'=0$, so the reaction cross-section rises above
+threshold like $k'$, and hence like $\sqrt{E-E_{\rm threshold}}$. (This is the
+case, for instance, in the associated production of strange particles, or the
+production of electron--positron pairs in the scattering of photons.)
+
+\begin{center}\emph{Elastic Reactions}\end{center}
+
+Here $k=k'$, so $k$ and $k'$ go to zero together. (This is the case where
+$n'=n$, or where $n'$ consists of particles in the same isotopic spin
+multiplets as are those in $n$.) In elastic scattering the partial waves with
+$\ell=\ell'=0$ are always present, so in the limit $k\to0$ the scattering
+amplitude \eqref{eq:3.7.8} becomes a constant:
+\begin{align}
+  &f(\mathbf k\sigma_1,-\mathbf k\sigma_2,n
+       \to\mathbf k'\sigma'_1,-\mathbf k'\sigma'_2,n') \notag\\
+  &\qquad\to\sum_{s\sigma}
+    C_{s_1s_2}(s,\sigma;\sigma_1,\sigma_2)
+    C_{s'_1s'_2}(s,\sigma;\sigma'_1,\sigma'_2)a_s(n\to n'),
+  \tag{3.7.19}\label{eq:3.7.19}
+\end{align}
+where $a$ is a constant, known as the \emph{scattering length}, defined by the
+limit
+\begin{equation}
+  S^s_{0sn',0sn}\longrightarrow\delta_{n'n}+2ika_s(n\to n')
+  \qquad(k=k'\to0).
+  \tag{3.7.20}\label{eq:3.7.20}
+\end{equation}
+Summing $4\pi|f|^2$ over final spins and averaging over initial spins gives the
+total cross-section for the transition $n\to n'$ at $k=k'=0$:
+\begin{equation}
+  \sigma(n\to n';k=0)
+  =\frac{4\pi}{(2s_1+1)(2s_2+1)}
+    \sum_s(2s+1)|a_s(n\to n')|^2.
+  \tag{3.7.21}\label{eq:3.7.21}
+\end{equation}
+The classic instance of the use of this formula is in neutron--proton
+scattering, where there are two scattering lengths, with the spin singlet
+length $a_0$ considerably larger than the spin triplet length $a_1$.
+
+The partial wave expansion can also be used to make a crude guess about the
+behavior of cross-sections at high energy. With decreasing wavelengths, we
+may expect scattering to be described more or less classically: a particle of
+momentum $k$ and orbital angular momentum $\ell$ would have an impact
+parameter $\ell/k$, and will therefore strike a disk of radius $R$ if
+$\ell\leq kR$. This can be interpreted as a statement about $S$-matrix
+elements:
+\begin{equation}
+  S^j_{\ell's'n',\ell sn}\longrightarrow
+  \begin{cases}
+    0,&\ell\ll kR_n,\\
+    1,&\ell\gg kR_n,
+  \end{cases}
+  \tag{3.7.22}\label{eq:3.7.22}
+\end{equation}
+where $R_n$ is some sort of interaction radius for channel $n$. For a given
+$\ell\gg s$, there are $2s+1$ values of $j$, all close enough to $\ell$ to
+approximate $2j+1\simeq2\ell+1$, so the sum over $j$ and $s$ in Eq. \eqref{eq:3.7.12}
+merely gives a factor of order
+\[
+  \sum_{js}(2j+1)=(2\ell+1)\sum_s(2s+1)
+  =(2\ell+1)(2s_1+1)(2s_2+1).
+\]
+The total cross-section is then given for $k\gg1/R_n$ by Eq. \eqref{eq:3.7.12} as
+\begin{equation}
+  \sigma_{\rm total}(n;E)\longrightarrow
+  \frac{2\pi}{k^2}\sum_{\ell\lesssim kR_n}(2\ell+1)
+  \longrightarrow2\pi R_n^2.
+  \tag{3.7.23}\label{eq:3.7.23}
+\end{equation}
+In exactly the same way, Eq. \eqref{eq:3.7.10} gives the elastic scattering
+cross-section
+\begin{equation}
+  \sigma(n\to n;E)\longrightarrow\pi R_n^2.
+  \tag{3.7.24}\label{eq:3.7.24}
+\end{equation}
+The difference between Eqs. \eqref{eq:3.7.23} and \eqref{eq:3.7.24} gives an inelastic
+cross-section $\pi R_n^2$, which is what we would expect for collisions with
+an opaque disk of radius $R_n$. (The somewhat surprising elastic scattering
+cross-section $\pi R_n^2$ may be attributed to diffraction by the disk.) On
+the other hand, if we assume along with Eq. \eqref{eq:3.7.22} that
+$S^j_{\ell's'n',\ell sn}$ is complex only for impact parameters $\ell/k$
+within a small range of width $\Delta_n\ll R_n$ around $\ell/k=R_n$, then
+using the inequality $|\mathop{\rm Im}(1-S^j_{\ell's'n',\ell sn})|\leq2$, the
+same analysis gives a bound on the real part of the forward scattering
+amplitude
+\begin{equation}
+  |\mathop{\rm Re}f(n;E)|\leq2kR_n\Delta_n
+  \ll|\mathop{\rm Im}f(n;E)|.
+  \tag{3.7.25}\label{eq:3.7.25}
+\end{equation}

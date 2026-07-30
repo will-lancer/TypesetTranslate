@@ -1,0 +1,884 @@
+#!/usr/bin/env python3
+"""Audit one independent Weinberg QFT exercise-edition source tree.
+
+The audit has two modes. Draft mode reports incomplete editorial material
+without blocking ordinary scaffold builds. Strict mode is the release gate:
+every original and supplementary exercise must have one matching solution,
+every source must resolve through the ledger, and every chapter must meet its
+declared target or carry a written exception in ``exercise-edition.json``.
+"""
+
+from __future__ import annotations
+
+import argparse
+import difflib
+import hashlib
+import json
+import re
+import sys
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Iterable
+from urllib.parse import urlparse
+
+
+REQUIRED_FRAGMENT_FILES = (
+    "weinberg-exercises.tex",
+    "weinberg-solutions.tex",
+    "supplementary-exercises.tex",
+    "supplementary-solutions.tex",
+)
+REQUIRED_HEADINGS = (
+    r"\chapterbackmatter{Weinberg Exercises}",
+    r"\chapterbackmatter{Solutions to Weinberg Exercises}",
+    r"\chapterbackmatter{Supplementary Exercises}",
+    r"\chapterbackmatter{Solutions to Supplementary Exercises}",
+)
+REQUIRED_HOOK_INPUTS = tuple(
+    rf"\input{{exercises/chapter#1/{filename}}}"
+    for filename in REQUIRED_FRAGMENT_FILES
+)
+BUILD_SUFFIXES = {
+    ".aux",
+    ".fdb_latexmk",
+    ".fls",
+    ".log",
+    ".out",
+    ".pdf",
+    ".toc",
+}
+PART_II_RE = re.compile(r"\bPart[\s~–—-]*II(?!I)\b", re.IGNORECASE)
+CAMBRIDGE_2020_RE = re.compile(
+    r"Cambridge.{0,80}(?:Part[\s~–—-]*III)?.{0,80}\b2020\b",
+    re.IGNORECASE | re.DOTALL,
+)
+LABEL_RE = re.compile(r"\\label\{([^{}]+)\}")
+WORD_RE = re.compile(r"[A-Za-z0-9]+")
+PLACEHOLDER_RE = re.compile(
+    r"\b(?:TODO|TBD|FIXME|solution\s+goes\s+here|inserted\s+here)\b",
+    re.IGNORECASE,
+)
+KET_BRA_INTERNAL_ASYMPTOTIC_RE = re.compile(
+    r"\\(?:ket|bra)\{[^{}\n]*(?:"
+    r"\\(?:mathrm|text|rm)\{(?:in|out)\}"
+    r"|(?:^|[\s,;])(?:in|out)(?:$|[\s,;])"
+    r")[^{}\n]*\}",
+    re.IGNORECASE,
+)
+KET_BRA_ASYMPTOTIC_SUPERSCRIPT_RE = re.compile(
+    r"\\(?:ket|bra)\{[^{}\n]*\}\s*\^\s*"
+    r"(?:\{[^{}\n]*(?:in|out)[^{}\n]*\}|\\(?:mathrm|text)\{(?:in|out)\})",
+    re.IGNORECASE,
+)
+BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE = re.compile(
+    r"\\bra\{[^{}\n]*\}\s*_\s*"
+    r"(?:\{[^{}\n]*(?:in|out)[^{}\n]*\}|\\(?:mathrm|text)\{(?:in|out)\})",
+    re.IGNORECASE,
+)
+
+
+@dataclass(frozen=True)
+class MacroCall:
+    name: str
+    args: tuple[str, ...]
+    start: int
+    end: int
+
+
+@dataclass
+class Audit:
+    strict: bool
+    failures: list[str]
+    warnings: list[str]
+
+    def require(self, condition: bool, message: str, *, incomplete: bool = False) -> None:
+        if condition:
+            return
+        if incomplete and not self.strict:
+            self.warnings.append(message)
+        else:
+            self.failures.append(message)
+
+    def warn(self, message: str) -> None:
+        self.warnings.append(message)
+
+
+def strip_comments(text: str) -> str:
+    """Remove unescaped TeX comments while preserving line boundaries."""
+
+    output: list[str] = []
+    for line in text.splitlines(keepends=True):
+        cut = len(line)
+        for index, char in enumerate(line):
+            if char != "%":
+                continue
+            slashes = 0
+            cursor = index - 1
+            while cursor >= 0 and line[cursor] == "\\":
+                slashes += 1
+                cursor -= 1
+            if slashes % 2 == 0:
+                cut = index
+                break
+        kept = line[:cut]
+        if line.endswith("\n") and not kept.endswith("\n"):
+            kept += "\n"
+        output.append(kept)
+    return "".join(output)
+
+
+def braced_argument(text: str, cursor: int) -> tuple[str, int]:
+    while cursor < len(text) and text[cursor].isspace():
+        cursor += 1
+    if cursor >= len(text) or text[cursor] != "{":
+        raise ValueError(f"Expected braced argument near character {cursor}")
+    start = cursor + 1
+    depth = 1
+    cursor += 1
+    while cursor < len(text):
+        char = text[cursor]
+        if char == "\\":
+            cursor += 2
+            continue
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:cursor], cursor + 1
+        cursor += 1
+    raise ValueError(f"Unclosed braced argument beginning at character {start - 1}")
+
+
+def macro_calls(text: str, name: str, argument_count: int) -> list[MacroCall]:
+    """Return calls to a macro, parsing nested braced arguments."""
+
+    clean = strip_comments(text)
+    marker = "\\" + name
+    calls: list[MacroCall] = []
+    cursor = 0
+    while True:
+        start = clean.find(marker, cursor)
+        if start < 0:
+            return calls
+        after_name = start + len(marker)
+        if after_name < len(clean) and clean[after_name].isalpha():
+            cursor = after_name
+            continue
+        args: list[str] = []
+        end = after_name
+        try:
+            for _ in range(argument_count):
+                arg, end = braced_argument(clean, end)
+                args.append(arg)
+        except ValueError:
+            cursor = after_name
+            continue
+        calls.append(MacroCall(name, tuple(args), start, end))
+        cursor = end
+
+
+def macro_bodies(text: str, calls: list[MacroCall]) -> list[str]:
+    clean = strip_comments(text)
+    bodies: list[str] = []
+    for index, call in enumerate(calls):
+        end = calls[index + 1].start if index + 1 < len(calls) else len(clean)
+        bodies.append(clean[call.end:end])
+    return bodies
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def continuous_numbers(values: Iterable[str], expected_count: int | None = None) -> bool:
+    numbers: list[int] = []
+    for value in values:
+        try:
+            numbers.append(int(value.strip()))
+        except ValueError:
+            return False
+    desired_count = len(numbers) if expected_count is None else expected_count
+    return numbers == list(range(1, desired_count + 1))
+
+
+def normalized_title(text: str) -> str:
+    return " ".join(WORD_RE.findall(text.lower()))
+
+
+def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
+    path = root / "source-ledger.json"
+    audit.require(path.exists(), f"Missing source ledger: {path}", incomplete=True)
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        audit.failures.append(f"Cannot parse {path}: {error}")
+        return {}
+    sources = payload.get("sources")
+    audit.require(
+        isinstance(sources, list),
+        "source-ledger.json must contain a top-level sources array",
+    )
+    if not isinstance(sources, list):
+        return {}
+
+    required_fields = (
+        "id",
+        "author_or_institution",
+        "title",
+        "year",
+        "locator",
+        "url",
+        "chapters",
+        "adaptation_notes",
+    )
+    by_id: dict[str, dict[str, object]] = {}
+    for index, source in enumerate(sources, start=1):
+        if not isinstance(source, dict):
+            audit.failures.append(f"Ledger entry {index} is not an object")
+            continue
+        for field in required_fields:
+            value = source.get(field)
+            audit.require(
+                value not in (None, "", []),
+                f"Ledger entry {index} has empty field {field!r}",
+                incomplete=True,
+            )
+        source_id = source.get("id")
+        if not isinstance(source_id, str) or not source_id.strip():
+            continue
+        if source_id in by_id:
+            audit.failures.append(f"Duplicate source ledger id: {source_id}")
+            continue
+        url = source.get("url")
+        if isinstance(url, str):
+            parsed = urlparse(url)
+            audit.require(
+                parsed.scheme in {"http", "https"} and bool(parsed.netloc),
+                f"Ledger source {source_id}: URL is not an absolute HTTP(S) URL",
+            )
+        chapters = source.get("chapters")
+        audit.require(
+            isinstance(chapters, list)
+            and all(isinstance(chapter, int) for chapter in chapters),
+            f"Ledger source {source_id}: chapters must be an integer array",
+        )
+        searchable = json.dumps(source, ensure_ascii=False)
+        audit.require(
+            not PART_II_RE.search(searchable),
+            f"Ledger source {source_id}: Cambridge Part II material is forbidden",
+        )
+        audit.require(
+            not CAMBRIDGE_2020_RE.search(searchable),
+            f"Ledger source {source_id}: Cambridge 2020 material is forbidden",
+        )
+        by_id[source_id] = source
+    return by_id
+
+
+def audit_hook_style(root: Path, audit: Audit) -> None:
+    style_path = root / "latex" / "exercise-edition.sty"
+    audit.require(style_path.exists(), f"Missing {style_path}")
+    if not style_path.exists():
+        return
+    style = strip_comments(style_path.read_text(encoding="utf-8"))
+    positions: list[int] = []
+    for item in REQUIRED_HOOK_INPUTS:
+        audit.require(
+            style.count(item) == 1,
+            f"exercise-edition.sty must input {item} exactly once",
+        )
+        positions.append(style.find(item))
+    if all(position >= 0 for position in positions):
+        audit.require(
+            positions == sorted(positions),
+            "The four exercise fragments are not loaded in the required order",
+        )
+    audit.require(
+        "These editorial solutions were added by Codex" in style,
+        "The required editorial attribution note is missing",
+    )
+
+
+def audit_canonical_isolation(
+    root: Path,
+    metadata: dict[str, object],
+    audit: Audit,
+) -> None:
+    canonical_name = metadata.get("canonical_source")
+    if not isinstance(canonical_name, str):
+        audit.failures.append("Metadata has no canonical_source string")
+        return
+    canonical = root.parent / canonical_name
+    audit.require(canonical.exists(), f"Canonical source tree is missing: {canonical}")
+    manifest_path = root / "canonical-source-sha256.json"
+    audit.require(
+        manifest_path.exists(),
+        f"Missing canonical hash manifest: {manifest_path}",
+    )
+    if not canonical.exists() or not manifest_path.exists():
+        return
+    try:
+        expected = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        audit.failures.append(f"Cannot parse canonical hash manifest: {error}")
+        return
+    for relative, expected_hash in expected.items():
+        path = canonical / relative
+        audit.require(path.is_file(), f"Canonical file disappeared: {path}")
+        if path.is_file():
+            audit.require(
+                sha256(path) == expected_hash,
+                f"Canonical source changed after edition copy: {path}",
+            )
+    canonical_tex = canonical / "latex"
+    if canonical_tex.exists():
+        hook_hits = []
+        for path in canonical_tex.rglob("*.tex"):
+            if r"\chapterexercisehook" in path.read_text(
+                encoding="utf-8", errors="replace"
+            ):
+                hook_hits.append(path)
+        audit.require(
+            not hook_hits,
+            "Canonical edition contains exercise hooks: "
+            + ", ".join(str(path) for path in hook_hits),
+        )
+        audit.require(
+            not (canonical_tex / "exercises").exists(),
+            f"Canonical edition unexpectedly contains {canonical_tex / 'exercises'}",
+        )
+
+
+def audit_weinberg_prompt_integrity(root: Path, audit: Audit) -> None:
+    manifest_path = root / "weinberg-exercise-source-sha256.json"
+    audit.require(
+        manifest_path.exists(),
+        f"Missing Weinberg exercise hash manifest: {manifest_path}",
+    )
+    if not manifest_path.exists():
+        return
+    try:
+        expected = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        audit.failures.append(f"Cannot parse Weinberg exercise hash manifest: {error}")
+        return
+    audit.require(
+        isinstance(expected, dict) and bool(expected),
+        "Weinberg exercise hash manifest must be a nonempty object",
+    )
+    if not isinstance(expected, dict):
+        return
+    for relative, expected_hash in expected.items():
+        path = root / relative
+        audit.require(path.is_file(), f"Extracted Weinberg exercise file is missing: {path}")
+        if path.is_file():
+            audit.require(
+                sha256(path) == expected_hash,
+                f"Weinberg exercise prompt fragment changed: {path}",
+            )
+
+
+def audit_labels(root: Path, audit: Audit) -> None:
+    owners: dict[str, list[Path]] = {}
+    for path in (root / "latex").rglob("*.tex"):
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        for label in LABEL_RE.findall(text):
+            owners.setdefault(label, []).append(path)
+    duplicates = {
+        label: paths
+        for label, paths in owners.items()
+        if len(paths) > 1
+    }
+    for label, paths in sorted(duplicates.items()):
+        audit.failures.append(
+            f"Duplicate literal label {label!r}: "
+            + ", ".join(str(path.relative_to(root)) for path in paths)
+        )
+
+
+def audit_asymptotic_notation(root: Path, audit: Audit) -> None:
+    """Enforce the exercise edition's outside-the-state in/out convention."""
+
+    fragment_root = root / "latex" / "exercises"
+    for path in fragment_root.glob("chapter*/*.tex"):
+        if path.name == "weinberg-exercises.tex":
+            # Original prompts are integrity-checked separately and never
+            # rewritten merely to satisfy an editorial style rule.
+            continue
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        checks = (
+            (
+                KET_BRA_INTERNAL_ASYMPTOTIC_RE,
+                "places an in/out label inside a ket or bra",
+            ),
+            (
+                KET_BRA_ASYMPTOTIC_SUPERSCRIPT_RE,
+                "uses an in/out superscript on a ket or bra",
+            ),
+            (
+                BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE,
+                "places a bra's in/out label on the right",
+            ),
+        )
+        for pattern, explanation in checks:
+            match = pattern.search(text)
+            audit.require(
+                match is None,
+                f"{path.relative_to(root)} {explanation}: "
+                f"{match.group(0)!r}" if match else "",
+            )
+
+
+def exercise_similarity(
+    records: list[tuple[int, str, str]],
+    audit: Audit,
+) -> None:
+    exact: dict[str, list[tuple[int, str]]] = {}
+    for chapter, number, title in records:
+        exact.setdefault(normalized_title(title), []).append((chapter, number))
+    for title, locations in exact.items():
+        if title and len(locations) > 1:
+            audit.failures.append(
+                f"Duplicate supplementary title {title!r}: "
+                + ", ".join(f"S.{chapter}.{number}" for chapter, number in locations)
+            )
+
+    for left_index, left in enumerate(records):
+        left_normal = normalized_title(left[2])
+        if len(left_normal) < 24:
+            continue
+        for right in records[left_index + 1 :]:
+            right_normal = normalized_title(right[2])
+            if len(right_normal) < 24:
+                continue
+            ratio = difflib.SequenceMatcher(None, left_normal, right_normal).ratio()
+            if ratio >= 0.88:
+                audit.warn(
+                    "Suspiciously similar supplementary titles "
+                    f"S.{left[0]}.{left[1]} and S.{right[0]}.{right[1]} "
+                    f"(ratio {ratio:.2f})"
+                )
+
+
+def audit_chapter(
+    root: Path,
+    chapter_info: dict[str, object],
+    ledger: dict[str, dict[str, object]],
+    audit: Audit,
+) -> dict[str, object]:
+    chapter = int(chapter_info["chapter"])
+    chapter_id = f"{chapter:02d}"
+    fragment_dir = root / "latex" / "exercises" / f"chapter{chapter_id}"
+    for filename in REQUIRED_FRAGMENT_FILES:
+        audit.require(
+            (fragment_dir / filename).is_file(),
+            f"Chapter {chapter}: missing {filename}",
+        )
+
+    backmatter = root / str(chapter_info["backmatter"])
+    audit.require(backmatter.is_file(), f"Chapter {chapter}: missing backmatter")
+    if backmatter.is_file():
+        backmatter_text = strip_comments(backmatter.read_text(encoding="utf-8"))
+        hook = rf"\chapterexercisehook{{{chapter_id}}}"
+        audit.require(
+            backmatter_text.count(hook) == 1,
+            f"Chapter {chapter}: expected exactly one {hook}",
+        )
+        reference_positions = [
+            position
+            for marker in (
+                r"\chapterbackmatter{Bibliography}",
+                r"\chapterbackmatter{References}",
+            )
+            if (position := backmatter_text.find(marker)) >= 0
+        ]
+        audit.require(
+            bool(reference_positions),
+            f"Chapter {chapter}: original Bibliography/References marker is missing",
+        )
+        if hook in backmatter_text and reference_positions:
+            audit.require(
+                backmatter_text.index(hook) < min(reference_positions),
+                f"Chapter {chapter}: exercise hook must precede original references",
+            )
+
+    texts: dict[str, str] = {}
+    for filename, heading in zip(REQUIRED_FRAGMENT_FILES, REQUIRED_HEADINGS):
+        path = fragment_dir / filename
+        if not path.is_file():
+            texts[filename] = ""
+            continue
+        text = path.read_text(encoding="utf-8")
+        texts[filename] = text
+        audit.require(
+            strip_comments(text).count(heading) == 1,
+            f"Chapter {chapter}: {filename} must contain heading {heading}",
+        )
+
+    w_exercises = macro_calls(
+        texts.get("weinberg-exercises.tex", ""),
+        "WeinbergExercise",
+        1,
+    )
+    w_solutions = macro_calls(
+        texts.get("weinberg-solutions.tex", ""),
+        "WeinbergSolution",
+        1,
+    )
+    s_exercises = macro_calls(
+        texts.get("supplementary-exercises.tex", ""),
+        "SupplementaryExercise",
+        4,
+    )
+    s_solutions = macro_calls(
+        texts.get("supplementary-solutions.tex", ""),
+        "SupplementarySolution",
+        2,
+    )
+
+    expected_w = int(chapter_info["weinberg_exercises"])
+    audit.require(
+        len(w_exercises) == expected_w,
+        f"Chapter {chapter}: metadata expects {expected_w} Weinberg exercises, "
+        f"found {len(w_exercises)}",
+    )
+    audit.require(
+        continuous_numbers((call.args[0] for call in w_exercises), expected_w),
+        f"Chapter {chapter}: Weinberg exercise numbering is not 1--{expected_w}",
+    )
+    audit.require(
+        continuous_numbers((call.args[0] for call in w_solutions), expected_w),
+        f"Chapter {chapter}: Weinberg solutions are incomplete or discontinuous "
+        f"({len(w_solutions)}/{expected_w})",
+        incomplete=True,
+    )
+    for call, body in zip(
+        w_solutions,
+        macro_bodies(texts.get("weinberg-solutions.tex", ""), w_solutions),
+    ):
+        number = call.args[0].strip()
+        audit.require(
+            len(WORD_RE.findall(body)) >= 35,
+            f"Chapter {chapter} W.{number}: solution is too short to be worked",
+            incomplete=True,
+        )
+        audit.require(
+            not PLACEHOLDER_RE.search(body),
+            f"Chapter {chapter} W.{number}: solution contains placeholder text",
+        )
+
+    s_count = len(s_exercises)
+    audit.require(
+        continuous_numbers((call.args[0] for call in s_exercises)),
+        f"Chapter {chapter}: supplementary exercise numbering is not continuous",
+    )
+    audit.require(
+        continuous_numbers((call.args[0] for call in s_solutions), s_count),
+        f"Chapter {chapter}: supplementary solutions are incomplete or "
+        f"discontinuous ({len(s_solutions)}/{s_count})",
+        incomplete=True,
+    )
+    solution_titles = {
+        call.args[0].strip(): normalized_title(call.args[1])
+        for call in s_solutions
+    }
+    s_exercise_bodies = macro_bodies(
+        texts.get("supplementary-exercises.tex", ""),
+        s_exercises,
+    )
+    for call, body in zip(s_exercises, s_exercise_bodies):
+        number, title, credit, source_id = (arg.strip() for arg in call.args)
+        audit.require(
+            bool(title),
+            f"Chapter {chapter} S.{number}: empty title",
+            incomplete=True,
+        )
+        audit.require(
+            bool(credit),
+            f"Chapter {chapter} S.{number}: empty printed source credit",
+            incomplete=True,
+        )
+        audit.require(
+            not PART_II_RE.search(credit),
+            f"Chapter {chapter} S.{number}: Cambridge Part II is forbidden",
+        )
+        audit.require(
+            not CAMBRIDGE_2020_RE.search(credit),
+            f"Chapter {chapter} S.{number}: Cambridge 2020 is forbidden",
+        )
+        audit.require(
+            source_id in ledger,
+            f"Chapter {chapter} S.{number}: unknown source id {source_id!r}",
+            incomplete=True,
+        )
+        if source_id in ledger:
+            chapters = ledger[source_id].get("chapters")
+            audit.require(
+                isinstance(chapters, list) and chapter in chapters,
+                f"Chapter {chapter} S.{number}: ledger source {source_id!r} "
+                "does not list this chapter",
+            )
+        if number in solution_titles:
+            audit.require(
+                solution_titles[number] == normalized_title(title),
+                f"Chapter {chapter} S.{number}: exercise and solution titles differ",
+            )
+        audit.require(
+            len(WORD_RE.findall(body)) >= 18,
+            f"Chapter {chapter} S.{number}: exercise statement is too short",
+            incomplete=True,
+        )
+        audit.require(
+            not PLACEHOLDER_RE.search(body),
+            f"Chapter {chapter} S.{number}: exercise contains placeholder text",
+        )
+
+    for call, body in zip(
+        s_solutions,
+        macro_bodies(texts.get("supplementary-solutions.tex", ""), s_solutions),
+    ):
+        number = call.args[0].strip()
+        audit.require(
+            len(WORD_RE.findall(body)) >= 35,
+            f"Chapter {chapter} S.{number}: solution is too short to be worked",
+            incomplete=True,
+        )
+        audit.require(
+            not PLACEHOLDER_RE.search(body),
+            f"Chapter {chapter} S.{number}: solution contains placeholder text",
+        )
+
+    target = int(chapter_info.get("supplementary_target", 30))
+    exception = chapter_info.get("count_exception")
+    if target == 0:
+        audit.require(
+            chapter_info.get("title") == "Historical Introduction",
+            f"Chapter {chapter}: only a Historical Introduction may have target 0",
+        )
+        audit.require(
+            s_count == 0,
+            f"Chapter {chapter}: historical chapter must not contain "
+            "supplementary exercises",
+        )
+    count_ok = s_count >= target
+    justified = isinstance(exception, str) and len(exception.strip()) >= 20
+    audit.require(
+        count_ok or justified,
+        f"Chapter {chapter}: {s_count}/{target} supplementary exercises and no "
+        "written count exception",
+        incomplete=True,
+    )
+
+    source_counter = Counter(
+        call.args[3].strip() for call in s_exercises if call.args[3].strip()
+    )
+    if s_count:
+        audit.require(
+            len(source_counter) >= 3,
+            f"Chapter {chapter}: supplementary collection uses only "
+            f"{len(source_counter)} distinct ledger sources",
+            incomplete=True,
+        )
+        audit.require(
+            max(source_counter.values()) <= max(1, int(0.70 * s_count)),
+            f"Chapter {chapter}: one source supplies more than 70% of "
+            "supplementary exercises",
+            incomplete=True,
+        )
+    return {
+        "chapter": chapter,
+        "title": chapter_info.get("title"),
+        "weinberg_exercises": len(w_exercises),
+        "weinberg_solutions": len(w_solutions),
+        "supplementary_exercises": s_count,
+        "supplementary_solutions": len(s_solutions),
+        "supplementary_target": target,
+        "count_exception": exception,
+        "source_distribution": dict(sorted(source_counter.items())),
+        "_titles": [
+            (chapter, call.args[0].strip(), call.args[1].strip())
+            for call in s_exercises
+        ],
+        "_source_ids": [call.args[3].strip() for call in s_exercises],
+    }
+
+
+def audit_exports(root: Path, metadata: dict[str, object], audit: Audit) -> None:
+    canonical_name = metadata.get("canonical_source")
+    edition_name = metadata.get("edition")
+    audit.require(
+        isinstance(edition_name, str) and edition_name.endswith("_exercises"),
+        "Edition name must end in _exercises",
+    )
+    audit.require(
+        edition_name != canonical_name,
+        "Exercise edition and canonical source names must differ",
+    )
+    script = root / "build_and_verify.sh"
+    if script.exists():
+        text = strip_comments(script.read_text(encoding="utf-8"))
+        if isinstance(canonical_name, str):
+            canonical_exports = (
+                f"{canonical_name}.pdf",
+                canonical_name.replace("_", "-") + ".pdf",
+            )
+            for name in canonical_exports:
+                audit.require(
+                    name not in text,
+                    f"Build script appears to target canonical export name {name}",
+                )
+    export_manifest = root / "canonical-export-sha256.json"
+    audit.require(
+        export_manifest.exists(),
+        f"Missing canonical export hash manifest: {export_manifest}",
+    )
+    if export_manifest.exists():
+        try:
+            expected_exports = json.loads(
+                export_manifest.read_text(encoding="utf-8")
+            )
+        except json.JSONDecodeError as error:
+            audit.failures.append(f"Cannot parse canonical export manifest: {error}")
+            expected_exports = {}
+        for relative, expected_hash in expected_exports.items():
+            canonical_export = (root / relative).resolve()
+            audit.require(
+                canonical_export.is_file(),
+                f"Canonical export is missing: {canonical_export}",
+            )
+            if canonical_export.is_file():
+                audit.require(
+                    sha256(canonical_export) == expected_hash,
+                    f"Canonical export was changed or overwritten: {canonical_export}",
+                )
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path(__file__).resolve().parent,
+        help="exercise-edition root (default: directory containing this script)",
+    )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="treat unfinished counts and missing solutions as failures",
+    )
+    parser.add_argument(
+        "--inventory",
+        type=Path,
+        help="write the machine-readable chapter inventory to this path",
+    )
+    args = parser.parse_args()
+
+    root = args.root.resolve()
+    audit = Audit(args.strict, [], [])
+    metadata_path = root / "exercise-edition.json"
+    if not metadata_path.exists():
+        print(f"Missing metadata: {metadata_path}", file=sys.stderr)
+        return 1
+    try:
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        print(f"Cannot parse {metadata_path}: {error}", file=sys.stderr)
+        return 1
+
+    chapters = metadata.get("chapters")
+    if not isinstance(chapters, list):
+        print("exercise-edition.json has no chapters array", file=sys.stderr)
+        return 1
+
+    audit_hook_style(root, audit)
+    audit_canonical_isolation(root, metadata, audit)
+    audit_weinberg_prompt_integrity(root, audit)
+    audit_labels(root, audit)
+    audit_asymptotic_notation(root, audit)
+    ledger = source_ledger(root, audit)
+    inventory = [
+        audit_chapter(root, chapter, ledger, audit)
+        for chapter in chapters
+        if isinstance(chapter, dict)
+    ]
+    audit_exports(root, metadata, audit)
+
+    all_titles = [
+        title_record
+        for chapter in inventory
+        for title_record in chapter.pop("_titles")
+    ]
+    all_source_ids = [
+        source_id
+        for chapter in inventory
+        for source_id in chapter.pop("_source_ids")
+    ]
+    exercise_similarity(all_titles, audit)
+    unused_sources = sorted(set(ledger) - set(all_source_ids))
+    for source_id in unused_sources:
+        audit.warn(f"Ledger source is currently unused: {source_id}")
+
+    payload = {
+        "edition": metadata.get("edition"),
+        "strict": args.strict,
+        "chapters": inventory,
+        "totals": {
+            "weinberg_exercises": sum(
+                int(chapter["weinberg_exercises"]) for chapter in inventory
+            ),
+            "weinberg_solutions": sum(
+                int(chapter["weinberg_solutions"]) for chapter in inventory
+            ),
+            "supplementary_exercises": sum(
+                int(chapter["supplementary_exercises"]) for chapter in inventory
+            ),
+            "supplementary_solutions": sum(
+                int(chapter["supplementary_solutions"]) for chapter in inventory
+            ),
+            "ledger_sources": len(ledger),
+        },
+        "warnings": audit.warnings,
+        "failures": audit.failures,
+    }
+    inventory_path = (
+        args.inventory.resolve()
+        if args.inventory
+        else root / "exercise-inventory.json"
+    )
+    inventory_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+    for warning in audit.warnings:
+        print(f"WARNING: {warning}", file=sys.stderr)
+    if audit.failures:
+        print("EXERCISE AUDIT FAILURES", file=sys.stderr)
+        for failure in audit.failures:
+            print(f"  - {failure}", file=sys.stderr)
+        return 1
+
+    totals = payload["totals"]
+    mode = "strict" if args.strict else "draft"
+    print(
+        f"Exercise audit ({mode}) passed for {metadata.get('edition')}: "
+        f"{totals['weinberg_exercises']} W exercises / "
+        f"{totals['weinberg_solutions']} W solutions; "
+        f"{totals['supplementary_exercises']} S exercises / "
+        f"{totals['supplementary_solutions']} S solutions; "
+        f"{totals['ledger_sources']} ledger sources."
+    )
+    print(f"Wrote inventory: {inventory_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

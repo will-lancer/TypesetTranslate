@@ -1,0 +1,128 @@
+\subsection[Anomalous Terms in Effective Field Theories]{Anomalous Terms in Effective Field Theories\footnotemark}
+\label{sec:19.8}
+\footnotetext{This section lies somewhat out of the book's main line of development, and may be omitted in a first reading.}
+
+In implementing the effective field theory program described in the previous three sections, it is necessary that the action should contain all possible terms allowed by the assumed symmetries of the theory. The methods described in these sections allow us to identify all \emph{manifestly} invariant terms, either by using the general formalism of covariant derivatives described in Section 19.6, or for chiral symmetries by using a linearly transforming field subject to non-linear constraints, like the $U(x)$ of Section 19.7. But it is possible that there may be other terms in the action of the effective field theory that are anomalous in the sense of being given by integrals of four-dimensional Lagrangian densities that are \emph{not} invariant, but whose variation under the broken symmetry is a spacetime derivative, preserving the invariance of the corresponding term in the action.
+
+As we shall see in Section 22.7, such a term was discovered for $SU(3)\cdot SU(3)$ by Wess and Zumino~\hyperref[ch19-ref-42]{[42]}, in a study of `anomalies' due to quark loop graphs. However, the structure of this term can be understood without knowing anything about the underlying theory of quarks and gluons.
+
+The easiest way to describe the Wess--Zumino term is by an extension of spacetime to five dimensions, introduced for this purpose by Witten~\hyperref[ch19-ref-43]{[43]}. As long as we require the fields in an effective field theory to approach a common limit as $x^\mu\to\infty$ in any direction, we can think of spacetime as having the topology of a sphere $S_4$, with the point at infinity included as an ordinary point. As remarked in Section 19.6, when a group $G$ is broken to a subgroup $H$, the possible values of the Goldstone boson fields $\xi_a$ at any spacetime point may be regarded as defining a point in the coset space $G/H$ (the space of elements of $G$, with two elements identified if they differ by multiplication on the right by elements of $H$), so a set of functions $\xi_a(x)$ represents a mapping of the spacetime $S_4$ sphere into $G/H$. Depending on the topology of $G/H$, it may be possible smoothly to deform any four-sphere in $G/H$ to a point; that is, it may be possible to extend any $\xi_a(x)$ to a continuous function $\xi_a(x;s)$ defined for $0\geq s\geq1$, for which $\xi_a(x;0)=\xi_a(x)$ and $\xi_a(x;1)$ is any fixed point (say, $\xi_a=0$) on the original sphere. Where this is true, it is expressed mathematically as the statement that the homotopy group $\pi_4(G/H)$ is trivial. (For a discussion of homotopy groups, see Section 23.2.) It is known that this is the case for $SU(N)\cdot SU(N)$ spontaneously broken to $SU(N)$, where the coset space $SU(N)\cdot SU(N)/SU(N)$ has the topology of $SU(N)$ itself.\footnote{This is shown by the fact that we can use $SU(N)$ elements $U(x)$ to represent the right cosets of $SU(N)$ in $SU(N)\cdot SU(N)$.} Hence in the case of physical interest, where $G=SU(3)\cdot SU(3)$ and $H=SU(3)$, we may extend the Goldstone boson fields, or equivalently $U(x)$, (see Eq.~\eqref{eq:19.7.9}) to a unitary unimodular matrix $U(y)$ defined in a five-dimensional ball $B_5$ with coordinates $x^\mu$ and $s$, whose surface is the four-dimensional sphere of spacetime.
+
+Now consider the following function formed from $U(y)$:
+\begin{equation}
+\omega(y)\equiv
+-\frac{i}{240\pi^2}\epsilon^{ijklm}
+\operatorname{Tr}\left\{
+U^{-1}\frac{\partial U}{\partial y^i}
+U^{-1}\frac{\partial U}{\partial y^j}
+U^{-1}\frac{\partial U}{\partial y^k}
+U^{-1}\frac{\partial U}{\partial y^l}
+U^{-1}\frac{\partial U}{\partial y^m}
+\right\},
+\tag{19.8.1}\label{eq:19.8.1}
+\end{equation}
+where indices $i$, $j$, etc. run over the five coordinate directions for the coordinates $x^\mu$ and $s$. (The phase and numerical coefficient are chosen for later convenience.) This is manifestly invariant under the chiral transformations \eqref{eq:19.7.8}. Also, because $\epsilon^{ijklm}$ is a tensor density, the integral of $\omega(y)$ over the five-ball is manifestly independent (up to a sign) of the choice of five-dimensional coordinates $y^i$. Furthermore, this integral depends only on the values taken by $U(y)$ on the ball's surface; that is, in spacetime. To check this last point, note that when we make an infinitesimal variation $\delta U(y)$ in $U(y)$ in the interior of the ball, $\omega(y)$ changes by a derivative:
+\begin{align}
+\delta\omega(y)
+={}&-\frac{i}{48\pi^2}\epsilon^{ijklm}
+\frac{\partial}{\partial y^m}
+\operatorname{Tr}\left\{
+U^{-1}\frac{\partial U}{\partial y^i}
+U^{-1}\frac{\partial U}{\partial y^j}
+U^{-1}\frac{\partial U}{\partial y^k}
+U^{-1}\frac{\partial U}{\partial y^l}
+U^{-1}\delta U
+\right\},
+\tag{19.8.2}\label{eq:19.8.2}
+\end{align}
+(for this calculation, see Section 23.4), so a change in $U(y)$ that does not affect its value in spacetime also does not affect the integral of \eqref{eq:19.8.1} over the five-ball $B_5$ whose surface is spacetime. We can therefore include this integral as a term in the action:
+\begin{equation}
+I_{\mathrm{WZW}}[U]
+=n\int_{B_5}d^5y\,\omega(y)
+\tag{19.8.3}\label{eq:19.8.3}
+\end{equation}
+with $n$ a coefficient that so far is arbitrary.
+
+This term may be written as the four-dimensional integral of a Lagrangian density, but not of an $(SU(3)\cdot SU(3))$-invariant Lagrangian density. Using Eq.~\eqref{eq:19.7.9}, the leading term in $\omega(x)$ in the limit of small meson fields is
+\begin{equation}
+\omega(x)\longrightarrow
+\frac{8\sqrt{2}}{15\pi^2F_\pi^5}\epsilon^{ijklm}
+\operatorname{Tr}\left\{
+\frac{\partial B}{\partial y^i}
+\frac{\partial B}{\partial y^j}
+\frac{\partial B}{\partial y^k}
+\frac{\partial B}{\partial y^l}
+\frac{\partial B}{\partial y^m}
+\right\},
+\tag{19.8.4}\label{eq:19.8.4}
+\end{equation}
+where $B$ is the matrix \eqref{eq:19.7.11} of Goldstone boson fields. It follows then from Gauss's theorem that
+\begin{align}
+I_{\mathrm{WZW}}[U]
+={}&\frac{8\sqrt{2}n}{15\pi^2F_\pi^5}\epsilon^{\mu\nu\rho\sigma}
+\int_{S_4}d^4x\,
+\operatorname{Tr}\left\{
+B\frac{\partial B}{\partial x^\mu}
+\frac{\partial B}{\partial x^\nu}
+\frac{\partial B}{\partial x^\rho}
+\frac{\partial B}{\partial x^\sigma}
+\right\}
++O\left(\frac{B^6}{F_\pi^6}\right).
+\tag{19.8.5}\label{eq:19.8.5}
+\end{align}
+
+Although chiral invariant, this cannot be written as the integral of a chiral-invariant density over spacetime, because any chiral invariant density would have to be constructed out of the first and higher covariant derivatives of the Goldstone boson fields, and so, when expanded in powers of the Goldstone boson fields, such an invariant density would begin with a term involving only derivatives of $B$, not $B$ itself.
+
+As Witten noted, the inclusion of this term in the effective action resolved what otherwise would have been a conflict between the $SU(3)\cdot SU(3)$ effective field theory and experiment. Because no $\epsilon^{\mu\nu\rho\sigma}$ terms appear in the effective Lagrangians \eqref{eq:19.7.28} and \eqref{eq:19.7.30} (or in higher-order terms of this sort) parity conservation imposes the requirement that these terms are \emph{even} in the Goldstone boson fields, ruling out processes like $K+\overline K\to3\pi$. Not only is there no symmetry in the underlying theory of quantum chromodynamics that would account for such a selection rule---there is even experimental evidence against it, for as Witten pointed out, the $\phi$ meson is observed to decay both into $K+\overline K$ and $3\pi$ final states. Eq.~\eqref{eq:19.8.5} shows that this unwanted selection rule is removed by the Wess--Zumino--Witten term in the action.
+
+Remarkably, the coefficient of the Wess--Zumino--Witten term is not a freely adjustable parameter. As Witten showed~\hyperref[ch19-ref-43]{[43]}, this is because, although this term is not changed by smooth deformations of the function $U(y)$ in $B_5$ that do not affect $U(x)$ on the spacetime boundary $S_4$, the Wess--Zumino--Witten term \emph{can} be changed by a discontinuous change in $U(y)$ that leaves $U(x)$ unchanged on the boundary. We may think of the five-ball $B_5$ as half of a five-sphere $S_5$, with the spacetime $S_4$ as the border between $B_5$ and the other half $B'_5$. (Think of $S_5$ as analogous to the surface of the Earth, with the spacetime $S_4$ as the equator and $B_5$ and $B'_5$ as the northern and southern hemispheres.) Because $S_4$ is also the boundary of the other half of $S_5$, we could just as well have written a Wess--Zumino--Witten term as
+\begin{equation}
+I'_{\mathrm{WZW}}[U]
+=-n\int_{B'_5}d^5y\,\omega(y)
+\tag{19.8.6}\label{eq:19.8.6}
+\end{equation}
+with a minus sign inserted because the boundary of $B'_5$ is the four-sphere with opposite orientation. It is not possible to require that the terms \eqref{eq:19.8.3} and \eqref{eq:19.8.6} should be equal for arbitrary Goldstone boson fields without setting $n=0$, but in order that the weighting factor $\exp(iI)$ in path integrals should be unaffected by the difference between the terms \eqref{eq:19.8.3} and \eqref{eq:19.8.6}, it is only necessary to require that this difference should be $2\pi$ times an integer. That is,
+\begin{equation}
+I_{\mathrm{WZW}}[U]-I'_{\mathrm{WZW}}[U]
+=n\int_{S_5}d^5y\,\omega(y)
+=2\pi\cdot\text{integer}.
+\tag{19.8.7}\label{eq:19.8.7}
+\end{equation}
+With the normalization factors we have inserted in the definition \eqref{eq:19.8.1} of $\omega(y)$, the integral of $\omega(y)$ over any five-sphere turns out to have the value~\hyperref[ch19-ref-44]{[44]} $2\pi$. It follows that \emph{the coefficient $n$ must be an integer}.
+
+The example of the Wess--Zumino--Witten term raises the question whether there may be other anomalous terms in the action, not necessarily related to quark loops, that also are invariant under $SU(3)\cdot SU(3)$, despite not being four-dimensional integrals of $(SU(3)\cdot SU(3))$-invariant Lagrangian densities. Fortunately, the answer is no. It has been shown~\hyperref[ch19-ref-45]{[45]} that for a general group $G$ broken to an arbitrary subgroup $H$ (with $\pi_4(G/H)=0$), any term $F[\xi]$ in the action of the Goldstone boson fields $\xi_a(x)$ may always be written as the integral of a $G$-invariant five-form $\Omega$ over a five-ball $B_5$ whose boundary is the spacetime four-sphere $S_4$:
+\begin{equation}
+F[\xi]
+=\int_{B_5}d^5y\,\epsilon^{ijklm}
+\frac{\partial\xi_a}{\partial y^i}
+\frac{\partial\xi_b}{\partial y^j}
+\frac{\partial\xi_c}{\partial y^k}
+\frac{\partial\xi_d}{\partial y^l}
+\frac{\partial\xi_e}{\partial y^m}
+\Omega_{abcde}(\xi(y)).
+\tag{19.8.8}\label{eq:19.8.8}
+\end{equation}
+In order that this should be independent of the particular way that $\xi_a(x)$ is extended into the interior of the five-ball, it is necessary that $\Omega$ should be exact, in the sense that there it is the external derivative of a four-form
+\begin{equation}
+\Omega_{abcde}(\xi)
+=\left(\partial/\partial\xi_{[a}\right)\mathcal L_{bcde]}(\xi)
+\tag{19.8.9}\label{eq:19.8.9}
+\end{equation}
+(with square brackets as usual indicating antisymmetrization with respect to the enclosed indices), so that
+\begin{equation}
+F[\xi]
+=\int_{S_4}d^4x\,\epsilon^{\mu\nu\rho\sigma}
+\frac{\partial\xi^a}{\partial x^\mu}
+\frac{\partial\xi^b}{\partial x^\nu}
+\frac{\partial\xi^c}{\partial x^\rho}
+\frac{\partial\xi^d}{\partial x^\sigma}
+\mathcal L_{abcd}(\xi).
+\tag{19.8.10}\label{eq:19.8.10}
+\end{equation}
+It follows that $\Omega$ is also closed; that is, it has a vanishing exterior derivative
+\begin{equation}
+\left(\partial/\partial\xi_{[f}\right)
+\Omega_{abcde]}(\xi)=0.
+\tag{19.8.11}\label{eq:19.8.11}
+\end{equation}
+Where the four-form $\mathcal L_{abcd}(\xi)$ is also $G$-invariant, the functional \eqref{eq:19.8.10} is just one of the ordinary manifestly $G$-invariant terms in the action, discussed in the previous three sections. The anomalous terms in the action arise from the possibility that, although every term in $\Omega(y)$ is $G$-invariant and the exterior derivative of a four-form, some terms may not be the exterior derivatives of $G$-invariant four-forms. Thus the new terms in the action may be identified with the closed $G$-invariant five-forms that are independent, in the sense that no real linear combination of them is the exterior derivative of a $G$-invariant four-form. These are known in mathematics as the generators of the \emph{de Rham cohomology group} $H^5(G/H;\mathbb R)$. (The group multiplication rule here is just simple addition.) The de Rham cohomology groups have been calculated for manifolds of various topologies~\hyperref[ch19-ref-46]{[46]}. In particular, $H^5(SU(N)\cdot SU(N)/SU(N);\mathbb R)$ has a single generator, given by Eq.~\eqref{eq:19.8.1}. Thus without knowing anything about the underlying theory of quarks and gluons, we can learn everything about the anomalous terms in the Goldstone boson action, with the single exception of the value of the integer $n$. We will see in Section 22.7 that in $SU(N_c)$ gauge theories this integer equals the number $N_c$ of colors, which in quantum chromodynamics is $n=3$.
