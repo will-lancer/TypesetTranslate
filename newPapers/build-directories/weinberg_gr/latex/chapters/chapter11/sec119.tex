@@ -1,0 +1,598 @@
+% Source: Weinberg GR, physical PDF pp. 364--371
+%         (printed pp. 342--349).
+% Coverage: Section 11.9, Gravitational Collapse; equations
+%           (11.9.1)--(11.9.46).
+% Figures/tables/footnotes: no figures or tables; reference callouts 32--39.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the curvature-sign conversion is documented at
+%                Eqs. (11.9.9)--(11.9.12); none unresolved.
+
+\subsection{Gravitational Collapse}\label{sec:11.9}
+
+We saw in Sections~\ref{sec:11.3} and \ref{sec:11.4} that a cooling star of
+mass greater than a few solar masses cannot reach equilibrium as either a
+white dwarf or a neutron star. It may be that a massive star will always
+eject enough matter by the time it reaches the end of its thermonuclear
+evolution so that its mass drops below the Chandrasekhar or the
+Oppenheimer--Volkoff limits. If not, then it will collapse.
+
+A proper treatment of gravitational collapse would be prohibitively
+complicated for this book. In order to get some feeling for what can happen
+during collapse, we consider only the simplest
+case,\hyperref[ch11-ref-32]{\textsuperscript{32}} the spherically symmetric
+collapse of ``dust'' with negligible pressure. Since the dust particles are
+acted on by purely gravitational forces, they fall freely, and we can use them
+as the physical basis of a comoving coordinate system of the sort discussed
+in the last section. The metric is then given by Eq.~\eqref{eq:11.8.8}:
+\begin{equation}
+  ds^2
+  =
+  -dt^2+U(r,t)\,dr^2
+  +V(r,t)(d\theta^2+\sin^2\theta\,d\varphi^2).
+  \tag{11.9.1}\label{eq:11.9.1}
+\end{equation}
+The energy--momentum tensor for a fluid of negligible pressure is given by
+Eq.~\eqref{eq:5.4.2} as
+\begin{equation}
+  T^{\mu\nu}=\rho U^\mu U^\nu,
+  \tag{11.9.2}\label{eq:11.9.2}
+\end{equation}
+where \(\rho(r,t)\) is the proper energy density and \(U^\mu\) is the velocity
+four-vector, given for a comoving coordinate system by
+Eqs.~\eqref{eq:11.8.9} and \eqref{eq:11.8.11}:
+\begin{equation}
+  U^r=U^\theta=U^\varphi=0,\qquad U^t=1.
+  \tag{11.9.3}\label{eq:11.9.3}
+\end{equation}
+The equations of momentum conservation
+\(\nabla_\mu T_i{}^\mu=0\) are automatically satisfied, and the equation for
+energy conservation reads
+\[
+  0=\nabla_\mu T_t{}^\mu
+  =
+  -\partial_t\rho-\rho\Gamma^\lambda{}_{\lambda t}
+  =
+  -\partial_t\rho
+  -\rho\left(\frac{\dot U}{2U}+\frac{\dot V}{V}\right),
+\]
+or, in other words,
+\begin{equation}
+  \partial_t\!\left(\rho V\sqrt U\right)=0.
+  \tag{11.9.4}\label{eq:11.9.4}
+\end{equation}
+
+In the binding curvature convention, the Einstein field equations can be
+written
+\begin{equation}
+  R_{\mu\nu}=8\pi G S_{\mu\nu},
+  \tag{11.9.5}\label{eq:11.9.5}
+\end{equation}
+where
+\begin{equation}
+  S_{\mu\nu}
+  \equiv
+  T_{\mu\nu}-\frac12g_{\mu\nu}T^\lambda{}_\lambda
+  =
+  \rho\left(\frac12g_{\mu\nu}+U_\mu U_\nu\right).
+  \tag{11.9.6}\label{eq:11.9.6}
+\end{equation}
+This may be evaluated with the aid of Eqs.~\eqref{eq:11.9.1} and
+\eqref{eq:11.9.3}; we find that the only nonvanishing components of
+\(S_{\mu\nu}\) are
+\begin{equation}
+  S_{rr}=\frac{\rho U}{2},\qquad
+  S_{\theta\theta}=\frac{\rho V}{2},\qquad
+  S_{\varphi\varphi}=S_{\theta\theta}\sin^2\theta,\qquad
+  S_{tt}=\frac{\rho}{2}.
+  \tag{11.9.7}\label{eq:11.9.7}
+\end{equation}
+In particular,
+\begin{equation}
+  S_{tr}=0.
+  \tag{11.9.8}\label{eq:11.9.8}
+\end{equation}
+Using Eqs.~\eqref{eq:11.9.7}--\eqref{eq:11.9.8} and
+\eqref{eq:11.8.14}--\eqref{eq:11.8.17} in Eq.~\eqref{eq:11.9.5} yields
+four field equations:
+% MODERNIZATION CHECK: (11.9.9)--(11.9.12) display the target Ricci
+% components, so both their left- and right-hand sides are the negatives
+% of Weinberg's printed equations where appropriate.
+\begin{align}
+  &-\frac1U
+  \left[
+    \frac{V''}{V}
+    -\frac{V'^2}{2V^2}
+    -\frac{U'V'}{2UV}
+  \right]
+  +\frac{\ddot U}{2U}
+  -\frac{\dot U^2}{4U^2}
+  +\frac{\dot U\dot V}{2UV}
+  =4\pi G\rho,
+  \tag{11.9.9}\label{eq:11.9.9}\\
+  &\frac1V-\frac1U
+  \left[
+    \frac{V''}{2V}
+    -\frac{U'V'}{4UV}
+  \right]
+  +\frac{\ddot V}{2V}
+  +\frac{\dot V\dot U}{4VU}
+  =4\pi G\rho,
+  \tag{11.9.10}\label{eq:11.9.10}\\
+  &-\frac{\ddot U}{2U}
+  -\frac{\ddot V}{V}
+  +\frac{\dot U^2}{4U^2}
+  +\frac{\dot V^2}{2V^2}
+  =4\pi G\rho,
+  \tag{11.9.11}\label{eq:11.9.11}\\
+  &-\frac{\dot V'}{V}
+  +\frac{V'\dot V}{2V^2}
+  +\frac{\dot U V'}{2UV}
+  =0.
+  \tag{11.9.12}\label{eq:11.9.12}
+\end{align}
+
+Let us simplify our model even further, and assume that \(\rho\) is
+independent of position.\hyperref[ch11-ref-32]{\textsuperscript{32}} We can
+now seek a separable solution, with
+\[
+  U=a^2(t)f(r),\qquad V=b^2(t)g(r).
+\]
+Then Eq.~\eqref{eq:11.9.12} requires that \(\dot b/b\) equal \(\dot a/a\),
+so we can normalize \(f\) and \(g\) so that
+\[
+  b(t)=a(t).
+\]
+Also, we are still free to redefine the radial coordinate as an arbitrary
+function \(\tilde r\) of \(r\), and in particular we can choose
+\(\tilde r=\sqrt{g(r)}\), so \(f\) and \(g\) are replaced with
+\(\tilde f=fg'^2/(4g)\) and \(\tilde g=\tilde r^2\). Dropping the tildes,
+we have then
+\begin{equation}
+  U=a^2(t)f(r),\qquad V=a^2(t)r^2.
+  \tag{11.9.13}\label{eq:11.9.13}
+\end{equation}
+Equations~\eqref{eq:11.9.9} and \eqref{eq:11.9.10}, with both sides
+multiplied by \(-a^2\), then read
+\begin{align}
+  -\frac{f'(r)}{rf^2(r)}
+  -\ddot a(t)a(t)-2\dot a^2(t)
+  &=-4\pi G a^2(t)\rho(t),
+  \tag{11.9.14}\label{eq:11.9.14}\\
+  \left[
+    -\frac1{r^2}
+    +\frac1{r^2f(r)}
+    -\frac{f'(r)}{2rf^2(r)}
+  \right]
+  -\ddot a(t)a(t)-2\dot a^2(t)
+  &=-4\pi G a^2(t)\rho(t).
+  \tag{11.9.15}\label{eq:11.9.15}
+\end{align}
+The first terms in Eqs.~\eqref{eq:11.9.14} and \eqref{eq:11.9.15} must
+evidently be equal constants, which we shall call \(-2k\):
+\[
+  -\frac{f'(r)}{rf^2(r)}
+  =
+  -\frac1{r^2}+\frac1{r^2f(r)}
+  -\frac{f'(r)}{2rf^2(r)}
+  =-2k.
+\]
+The unique solution is
+\[
+  f(r)=(1-kr^2)^{-1},
+\]
+so the metric takes the form
+\begin{equation}
+  ds^2
+  =
+  -dt^2+a^2(t)
+  \left[
+    \frac{dr^2}{1-kr^2}
+    +r^2d\theta^2+r^2\sin^2\theta\,d\varphi^2
+  \right].
+  \tag{11.9.16}\label{eq:11.9.16}
+\end{equation}
+(Incidentally, this metric is spatially homogeneous as well as isotropic, and
+for this reason it will provide the kinematic framework for our treatment of
+relativistic cosmology in Chapter~14.)
+
+Our remaining problem is to calculate the functions \(\rho(t)\) and \(a(t)\).
+Using Eqs.~\eqref{eq:11.9.13} and \eqref{eq:11.9.14} in the
+energy-conservation equation \eqref{eq:11.9.4}, we find that
+\(\rho(t)a^3(t)\) is constant. We normalize the radial coordinate \(r\) so
+that
+\begin{equation}
+  a(0)=1,
+  \tag{11.9.17}\label{eq:11.9.17}
+\end{equation}
+and therefore
+\begin{equation}
+  \rho(t)=\rho(0)a^{-3}(t).
+  \tag{11.9.18}\label{eq:11.9.18}
+\end{equation}
+The field equations \eqref{eq:11.9.14} or \eqref{eq:11.9.15} and
+\eqref{eq:11.9.11} are now ordinary differential equations:
+\begin{align}
+  -2k-\ddot a(t)a(t)-2\dot a^2(t)
+  &=-4\pi G\rho(0)a^{-1}(t),
+  \tag{11.9.19}\label{eq:11.9.19}\\
+  \ddot a(t)a(t)
+  &=-\frac{4\pi G}{3}\rho(0)a^{-1}(t).
+  \tag{11.9.20}\label{eq:11.9.20}
+\end{align}
+We can eliminate \(\ddot a(t)\) by adding these two equations, and find
+\begin{equation}
+  \dot a^2(t)
+  =
+  -k+\frac{8\pi G}{3}\rho(0)a^{-1}(t).
+  \tag{11.9.21}\label{eq:11.9.21}
+\end{equation}
+Equations~\eqref{eq:11.9.19} and \eqref{eq:11.9.20} can be recovered from
+Eq.~\eqref{eq:11.9.21} and its time derivative, so we can forget about them
+and simply use Eq.~\eqref{eq:11.9.21} to calculate \(a(t)\).
+
+We shall now assume that the fluid is at rest (in standard coordinates) at
+\(t=0\), so
+\begin{equation}
+  \dot a(0)=0,
+  \tag{11.9.22}\label{eq:11.9.22}
+\end{equation}
+and therefore Eqs.~\eqref{eq:11.9.21} and \eqref{eq:11.9.17} give
+\begin{equation}
+  k=\frac{8\pi G}{3}\rho(0).
+  \tag{11.9.23}\label{eq:11.9.23}
+\end{equation}
+Thus Eq.~\eqref{eq:11.9.21} can be written
+\begin{equation}
+  \dot a^2(t)=k[a^{-1}(t)-1].
+  \tag{11.9.24}\label{eq:11.9.24}
+\end{equation}
+The solution is given by the parametric equations of a cycloid:
+\begin{equation}
+  t=\frac{\psi+\sin\psi}{2\sqrt k},
+  \qquad
+  a=\frac12(1+\cos\psi).
+  \tag{11.9.25}\label{eq:11.9.25}
+\end{equation}
+Note that \(a(t)\) vanishes when \(\psi=\pi\), and hence when \(t=T\), where
+\begin{equation}
+  T=\frac{\pi}{2\sqrt k}
+  =\frac{\pi}{2}
+   \left[\frac{3}{8\pi G\rho(0)}\right]^{1/2}.
+  \tag{11.9.26}\label{eq:11.9.26}
+\end{equation}
+\emph{Thus a fluid sphere of initial density \(\rho(0)\) and zero pressure
+will collapse from rest to a state of infinite proper energy density in the
+finite time \(T\).}
+
+Although the collapse is complete at a finite coordinate time \(t=T\), any
+light signal coming to us from the sphere's surface will be delayed by its
+gravitational field (see Section~\ref{sec:8.7}), so we on earth will not see
+the star suddenly vanish. To make this more specific, we have to complete our
+calculation by finding the metric outside the star.
+
+The Birkhoff theorem proved in Section~\ref{sec:11.7} shows that it is always
+possible to find a ``standard'' coordinate system
+\(\bar r,\bar\theta,\bar\varphi,\bar t\) in which the metric outside the
+sphere takes the form
+\begin{equation}
+  ds^2
+  =
+  -\left(1-\frac{2MG}{\bar r}\right)d\bar t^2
+  +\left(1-\frac{2MG}{\bar r}\right)^{-1}d\bar r^2
+  +\bar r^2(d\bar\theta^2+\sin^2\bar\theta\,d\bar\varphi^2).
+  \tag{11.9.27}\label{eq:11.9.27}
+\end{equation}
+But this metric is not in the Gaussian normal form \eqref{eq:11.9.1}, so in
+order to match solutions at the surface we either have to convert the
+interior solution \eqref{eq:11.9.16} into standard coordinates, or the
+exterior solution \eqref{eq:11.9.27} into Gaussian normal coordinates. We
+choose the former course.\hyperref[ch11-ref-32]{\textsuperscript{32}}
+
+Inspection of Eq.~\eqref{eq:11.9.16} shows immediately that the standard
+spatial coordinates \(\bar r,\bar\theta,\bar\varphi\) must be chosen as
+\begin{equation}
+  \bar r=ra(t),\qquad
+  \bar\theta=\theta,\qquad
+  \bar\varphi=\varphi.
+  \tag{11.9.28}\label{eq:11.9.28}
+\end{equation}
+In order to define a standard time coordinate such that \(ds^2\) does not
+contain a cross-term \(d\bar r\,d\bar t\), we employ the ``integrating
+factor'' technique described in Section~\ref{sec:11.7}, which gives
+\begin{equation}
+  \bar t
+  =
+  \left(\frac{1-kr_\star^2}{k}\right)^{1/2}
+  \int_{S(r,t)}^1
+  \frac{d\alpha}{1-kr_\star^2/\alpha}
+  \left(\frac{\alpha}{1-\alpha}\right)^{1/2},
+  \tag{11.9.29}\label{eq:11.9.29}
+\end{equation}
+where
+\begin{equation}
+  S(r,t)
+  =
+  1-
+  \left(\frac{1-kr^2}{1-kr_\star^2}\right)^{1/2}
+  [1-a(t)].
+  \tag{11.9.30}\label{eq:11.9.30}
+\end{equation}
+The constant \(r_\star\) is arbitrary, but may conveniently be chosen as the
+radius of the sphere in comoving coordinates. It is straightforward to check
+that the metric in the coordinate system
+\(\bar r,\bar\theta,\bar\varphi,\bar t\) takes the standard form
+\[
+  ds^2
+  =
+  -B(\bar r,\bar t)\,d\bar t^2
+  +A(\bar r,\bar t)\,d\bar r^2
+  +\bar r^2(d\bar\theta^2+\sin^2\bar\theta\,d\bar\varphi^2),
+\]
+with
+\begin{align}
+  B
+  &=
+  \frac{a(t)}{S}
+  \left(\frac{1-kr^2}{1-kr_\star^2}\right)^{1/2}
+  \frac{(1-kr_\star^2/S)^2}{1-kr^2/a(t)},
+  \tag{11.9.31}\label{eq:11.9.31}\\
+  A
+  &=
+  \left(1-\frac{kr^2}{a(t)}\right)^{-1}.
+  \tag{11.9.32}\label{eq:11.9.32}
+\end{align}
+It is now understood that \(S\) is a function of \(\bar t\) defined by
+Eq.~\eqref{eq:11.9.29}, and that \(r\) and \(a(t)\) are functions of
+\(\bar r\) and \(S\), or \(\bar r\) and \(\bar t\), defined by solving
+Eqs.~\eqref{eq:11.9.28} and \eqref{eq:11.9.30}. This is a mess, but at the
+radius \(r=r_\star\) of the star (a constant, since \(r\) is a comoving
+coordinate) we have
+\begin{align}
+  \bar r&=\bar r_\star(t)\equiv r_\star a(t),
+  \tag{11.9.33}\label{eq:11.9.33}\\
+  \bar t
+  &=
+  \left(\frac{1-kr_\star^2}{k}\right)^{1/2}
+  \int_{a(t)}^1
+  \frac{d\alpha}{1-kr_\star^2/\alpha}
+  \left(\frac{\alpha}{1-\alpha}\right)^{1/2},
+  \tag{11.9.34}\label{eq:11.9.34}\\
+  B(\bar r_\star,\bar t)&=1-\frac{kr_\star^2}{a(t)},
+  \tag{11.9.35}\label{eq:11.9.35}\\
+  A(\bar r_\star,\bar t)&=
+  \left(1-\frac{kr_\star^2}{a(t)}\right)^{-1}.
+  \tag{11.9.36}\label{eq:11.9.36}
+\end{align}
+[Equation~\eqref{eq:11.9.34} could have been obtained by integrating the
+equations for free fall given in Section~\ref{sec:8.4}.] Comparing with
+Eq.~\eqref{eq:11.9.27}, we see that the interior and exterior solutions fit
+continuously at \(\bar r=r_\star a(t)\) if
+\begin{equation}
+  k=\frac{2MG}{r_\star^3}.
+  \tag{11.9.37}\label{eq:11.9.37}
+\end{equation}
+With Eq.~\eqref{eq:11.9.23}, this just says that
+\begin{equation}
+  M=\frac{4\pi}{3}\rho(0)r_\star^3,
+  \tag{11.9.38}\label{eq:11.9.38}
+\end{equation}
+not a surprising result!
+
+Now we return to the problem of calculating the behavior of light signals
+emitted from the surface of the collapsing sphere. A light signal emitted in
+a radial direction at a standard time \(\bar t\) will have
+\(d\bar r/d\bar t\) given by Eq.~\eqref{eq:11.9.27} and the condition
+\(ds^2=0\), so it will arrive at a distant point \(\bar r'\) at a time
+\begin{equation}
+  \bar t'
+  =
+  \bar t+
+  \int_{r_\star a(t)}^{\bar r'}
+  \left(1-\frac{2MG}{\bar r}\right)^{-1}d\bar r.
+  \tag{11.9.39}\label{eq:11.9.39}
+\end{equation}
+The most striking consequence of Eqs.~\eqref{eq:11.9.39} and
+\eqref{eq:11.9.34} is that both \(\bar t\) and \(\bar t'\) approach infinity
+when the radius \eqref{eq:11.9.33} of the sphere approaches the Schwarzschild
+radius \(2GM\), that is, when
+\begin{equation}
+  a(t)\longrightarrow\frac{2GM}{r_\star}=kr_\star^2.
+  \tag{11.9.40}\label{eq:11.9.40}
+\end{equation}
+\emph{The collapse to the Schwarzschild radius therefore appears to an
+outside observer to take an infinite time, and the collapse to \(a=0\) is
+utterly unobservable from outside.}
+
+Although the collapsing sphere does not suddenly disappear, it does fade out
+of sight, because light from its surface is subject to an increasing redshift.
+The proper time for a light source on the sphere's surface is just the
+comoving time \(t\), so the comoving time interval between emission of wave
+crests at the surface equals the natural wavelength \(\lambda_0\) that would
+be emitted by the source in the absence of gravitation. The standard time
+interval \(d\bar t'\) between arrivals of wave crests at \(\bar r'\) is the
+observed wavelength \(\lambda'\); thus the fractional change of wavelength is
+\[
+  \begin{aligned}
+  z
+  &\equiv\frac{\lambda'-\lambda_0}{\lambda_0}
+   =\frac{d\bar t'}{dt}-1\\
+  &=\frac{d\bar t}{dt}
+    -r_\star\dot a(t)
+     \left(1-\frac{2MG}{r_\star a(t)}\right)^{-1}
+    -1\\
+  &=-\dot a(t)
+    \left(1-\frac{kr_\star^2}{a(t)}\right)^{-1}
+    \left[
+      \left(\frac{1-kr_\star^2}{k}\right)^{1/2}
+      \left(\frac{a(t)}{1-a(t)}\right)^{1/2}
+      +r_\star
+    \right]-1.
+  \end{aligned}
+\]
+Using Eq.~\eqref{eq:11.9.24} to determine \(\dot a(t)\), this is
+\begin{equation}
+  z
+  =
+  \left(1-\frac{kr_\star^2}{a(t)}\right)^{-1}
+  \left[
+    (1-kr_\star^2)^{1/2}
+    +r_\star\sqrt k
+     \left(\frac{1-a(t)}{a(t)}\right)^{1/2}
+  \right]-1.
+  \tag{11.9.41}\label{eq:11.9.41}
+\end{equation}
+In order to see how the redshift \(z\) varies with \(\bar t'\), let us assume
+that the sphere is initially very much larger than its Schwarzschild radius,
+\begin{equation}
+  kr_\star^2=\frac{2GM}{r_\star}\ll1,
+  \tag{11.9.42}\label{eq:11.9.42}
+\end{equation}
+and distinguish two periods in the history of the collapse:
+
+\emph{(A)} Until \(t\) gets close to \(T\), we have
+\begin{equation}
+  \frac{kr_\star^2}{a(t)}\ll1.
+  \tag{11.9.43}\label{eq:11.9.43}
+\end{equation}
+Using Eqs.~\eqref{eq:11.9.42} and \eqref{eq:11.9.43} in
+\eqref{eq:11.9.34}, \eqref{eq:11.9.39}, and \eqref{eq:11.9.41} gives
+(with \(\bar r'\gg r_\star\))
+\begin{equation}
+  \begin{aligned}
+  \bar t&\simeq t,\\
+  \bar t'
+  &\simeq\bar t+\bar r'-r_\star a(t)
+   \simeq t+\bar r'-r_\star a(t)
+   \simeq t+\bar r',\\
+  z
+  &\simeq
+  r_\star\sqrt k
+  \left(\frac{1-a(t)}{a(t)}\right)^{1/2}
+  \simeq
+  r_\star\sqrt k
+  \left[
+    \frac{1-a(\bar t'-\bar r')}{a(\bar t'-\bar r')}
+  \right]^{1/2}.
+  \end{aligned}
+  \tag{11.9.44}\label{eq:11.9.44}
+\end{equation}
+
+\emph{(B)} Eventually we have
+\[
+  \frac{kr_\star^2}{a(t)}\longrightarrow1
+\]
+at a time \(t_1\) given by Eq.~\eqref{eq:11.9.25} as
+\begin{equation}
+  t_1
+  \simeq
+  \frac1{2\sqrt k}
+  \left[\pi-\frac43(kr_\star^2)^{3/2}\right].
+  \tag{11.9.45}\label{eq:11.9.45}
+\end{equation}
+Now Eqs.~\eqref{eq:11.9.34}, \eqref{eq:11.9.39}, and
+\eqref{eq:11.9.41} give
+\begin{equation}
+  \begin{aligned}
+  \bar t
+  &\simeq
+  -kr_\star^3\ln\left[1-\frac{kr_\star^2}{a(t)}\right]
+  +\text{constant},\\
+  \bar t'
+  &\simeq
+  \bar t-kr_\star^3\ln\left[1-\frac{kr_\star^2}{a(t)}\right]
+  +\text{constant}\\
+  &\simeq
+  -2kr_\star^3\ln\left[1-\frac{kr_\star^2}{a(t)}\right]
+  +\text{constant},\\
+  z
+  &\simeq
+  2\left(1-\frac{kr_\star^2}{a(t)}\right)^{-1}
+  \propto
+  \exp\left(\frac{\bar t'}{2kr_\star^3}\right).
+  \end{aligned}
+  \tag{11.9.46}\label{eq:11.9.46}
+\end{equation}
+Putting (A) and (B) together, we conclude that the redshift \(z\) seen by an
+observer at \(\bar r'\) is zero when the collapse is observed to begin,
+increases gradually but remains of order \(r_\star\sqrt k\ll1\) until a time
+very
+close to \(T=\pi/(2\sqrt k)\) has passed, and then grows exponentially with
+a rate \(1/(2kr_\star^3)\). For example, a collapsing sphere with a mass
+\(M=10^8M_\odot\) and radius \(r_\star=100\) light-years will have a redshift
+\(z\) of order \(10^{-3}\) for a period of order \(10^5\) years, after which
+the redshift suddenly begins growing exponentially with an e-folding time of
+order \(1\) minute. For practical purposes, the collapsing sphere is suddenly
+and completely cut off from communication with the rest of the universe.
+
+Completely cut off? Even if a collapsing body does fade out of sight, it
+still has a gravitational field, and, as shown in Section~\ref{sec:7.6}, the
+measurement of this field at great distances can be used to determine the
+energy, momentum, and angular momentum of the body. If the body has a net
+electric charge, then measurement of the electric field at great distances
+will, via Gauss's theorem, also tell us the charge. It is interesting to ask
+whether measurements of the gravitational and/or electromagnetic fields
+outside a collapsing body can yield any information about the body beyond
+the energy, momentum, angular momentum, and charge. In the case of a
+spherically symmetric electrically neutral body, which we have been
+considering in this chapter, the answer is provided by Birkhoff's theorem:
+the gravitational field outside a spherically symmetric body must be of the
+Schwarzschild form, so all we can ever learn about the body is its mass.
+(Spherical symmetry, of course, implies zero momentum and zero angular
+momentum.)
+
+Carter\hyperref[ch11-ref-33]{\textsuperscript{33}} has shown that, when the
+gravitational field of an \emph{axially symmetric} collapsing body settles
+down to a stationary state, its exterior metric belongs to a
+\emph{two-parameter} family of solutions, such as the Kerr metrics (see
+Section~\ref{sec:11.7}) that are completely specified by the total mass and
+angular momentum. It is widely believed that the gravitational field of any
+electrically neutral collapsing body will eventually approach the Kerr form.
+
+As mentioned in the introduction to this chapter, interest in the phenomenon
+of gravitational collapse was rekindled in the last decade by the discovery
+of quasi-stellar sources, which appear to require some powerful new source of
+energy. The maximum energy available from fusion of hydrogen into the most
+stable nuclei, say iron, is only \(8\,\mathrm{MeV}\) per nucleon, or less than
+\(1\%\) of the rest mass. Matter--antimatter annihilation could have
+\(100\%\) efficiency (apart from neutrino energy losses), but this process can
+be important only if there is some abundant natural source of antinucleons.
+Otherwise the only likely mechanism for conversion of mass into energy with
+high efficiency is gravitational
+collapse.\hyperref[ch11-ref-34]{\textsuperscript{34}}
+
+A cloud of dust that is collapsing as in the Oppenheimer--Snyder model will
+obviously release no energy to the outside world. To extract the growing
+kinetic energy of the falling particles, something must slow them on the way
+down---either a macroscopic ``bounce'' of the whole system, or
+particle--particle collisions that heat the collapsing gas. Detailed
+calculations reveal a discouragingly low efficiency for conversion of mass
+into available energy in the gravitational collapse of an \emph{isolated}
+body.\hyperref[ch11-ref-35]{\textsuperscript{35}} However, particles falling
+into a Kerr metric can reemerge with a higher energy, acquired at the expense
+of the rotational energy of the collapsing
+body.\hyperref[ch11-ref-36]{\textsuperscript{36}}
+
+Whether or not gravitational collapse has anything to do with quasi-stellar
+sources, the question remains: What happens to a real cooling star whose mass
+is above the Chandrasekhar and Oppenheimer--Volkoff limits? In recent years
+topological methods have been used by Penrose and Hawking to prove a number
+of powerful theorems,\hyperref[ch11-ref-37]{\textsuperscript{37}} to the
+effect that under reasonable conditions (validity of general relativity,
+positivity of energy, ubiquity of matter, causality) collapse becomes
+inevitable once a \emph{trapped surface} forms. A trapped surface is a closed
+spacelike two-dimensional surface for which both the outgoing and the ingoing
+families of future-directed null geodesics orthogonal to the surface are
+converging. (For the Schwarzschild metric, the spheres with \(r\) and \(t\)
+constant are trapped surfaces for \(r\) within the Schwarzschild radius
+\(2MG\).) However, it is not known whether a real massive star will actually
+develop a trapped surface, or merely explode into fragments with small enough
+mass to form stable neutron stars or white dwarfs.
+
+If gravitational collapse is indeed the inevitable fate of massive bodies,
+then we must expect that the universe is full of \emph{black holes},
+collapsing bodies whose presence is betrayed only through their gravitational
+fields or through the energy released when matter is drawn
+in.\hyperref[ch11-ref-38]{\textsuperscript{38}} Our best hope of observing
+gravitational collapse would be to find a binary star, one member an ordinary
+visible star, and the other member a black
+hole.\hyperref[ch11-ref-39]{\textsuperscript{39}}

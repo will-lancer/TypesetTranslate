@@ -1,0 +1,408 @@
+% Source: Weinberg GR, physical PDF pp. 401--407 (printed pp. 381--385).
+% Physical pp. 404--405 repeat physical pp. 402--403 (printed pp. 382--383);
+% the duplicate pair is transcribed once. Physical p. 406 resumes at printed
+% p. 384. Physical pp. 408--409 then repeat physical pp. 406--407
+% (printed pp. 384--385); that duplicate pair is likewise transcribed once.
+% Coverage: Section 13.2, Maximally Symmetric Spaces: Uniqueness; equations
+%           (13.2.1)--(13.2.20), including all unnumbered displays.
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+% MODERNIZATION: R denotes the curvature scalar. The curvature sign is the
+% target sign, so K is the usual sectional-curvature constant:
+% R=N(N-1)K, R_{\mu\nu}=(N-1)K g_{\mu\nu}, and the constant-curvature
+% Riemann tensor has the target sign. Repeated coordinate derivatives are
+% compact except where the Jacobian structure is pedagogically essential.
+% LITERAL-OPERATOR AUDIT: every continuation operator in the curvature
+% contractions and the power-series uniqueness proof was checked against the
+% source; the contracted Bianchi identity retains its full tensor structure.
+
+\subsection{Maximally Symmetric Spaces: Uniqueness}\label{sec:13.2}
+
+We now show that the maximally symmetric spaces are uniquely specified by a
+``curvature constant'' \(K\), and by the numbers of eigenvalues of the metric
+that are positive or negative. That is, \emph{given two maximally symmetric
+metrics with the same \(K\) and the same numbers of eigenvalues of each sign,
+it will always be possible to find a coordinate transformation that carries
+one metric into the other}. Armed with this theorem, we shall be able in the
+next section to carry out an exhaustive study of maximally symmetric spaces by
+simply constructing such metrics in one convenient coordinate system.
+
+We showed in the last section that at any given point \(x\) in a maximally
+symmetric space, we can find Killing vectors for which \(\xi_\lambda(x)\)
+vanishes and for which \(\nabla_\kappa\xi_\lambda(x)\) is an arbitrary
+antisymmetric matrix. It follows then that the coefficient of
+\(\nabla_\kappa\xi_\lambda(x)\) in Eq.~\eqref{eq:13.1.12} must have a
+vanishing antisymmetric part; that is,
+\begin{align}
+  &-R^\lambda{}_{\rho\sigma\nu}\delta_\mu^\kappa
+  +R^\lambda{}_{\mu\sigma\nu}\delta_\rho^\kappa
+  -R^\lambda{}_{\sigma\rho\mu}\delta_\nu^\kappa
+  +R^\lambda{}_{\nu\rho\mu}\delta_\sigma^\kappa
+  \notag\\
+  &\qquad =
+  -R^\kappa{}_{\rho\sigma\nu}\delta_\mu^\lambda
+  +R^\kappa{}_{\mu\sigma\nu}\delta_\rho^\lambda
+  -R^\kappa{}_{\sigma\rho\mu}\delta_\nu^\lambda
+  +R^\kappa{}_{\nu\rho\mu}\delta_\sigma^\lambda.
+  \tag{13.2.1}\label{eq:13.2.1}
+\end{align}
+We also showed that at any given point \(x\) in a maximally symmetric space,
+there exist Killing vectors for which \(\xi_\lambda(x)\) takes any values
+we like, so \eqref{eq:13.1.12} and \eqref{eq:13.2.1} require that
+\begin{equation}
+  \nabla_\nu R^\lambda{}_{\sigma\rho\mu}
+  =
+  \nabla_\sigma R^\lambda{}_{\nu\rho\mu}.
+  \tag{13.2.2}\label{eq:13.2.2}
+\end{equation}
+We actually only need to use \eqref{eq:13.2.1}, because we have shown in the
+last section that a space that is isotropic about every point, and hence
+satisfies \eqref{eq:13.2.1}, must also be homogeneous, and hence must also
+satisfy \eqref{eq:13.2.2}.
+
+Our first step in the proof is to use Eq.~\eqref{eq:13.2.1} to derive a
+formula for the curvature tensor. Contracting \(\kappa\) with \(\mu\)
+yields
+\begin{align*}
+  -N R^\lambda{}_{\rho\sigma\nu}
+  +R^\lambda{}_{\rho\sigma\nu}
+  -R^\lambda{}_{\sigma\rho\nu}
+  +R^\lambda{}_{\nu\rho\sigma}
+  =
+  -R^\lambda{}_{\rho\sigma\nu}
+  +R_{\rho\sigma}\delta_\nu^\lambda
+  -R_{\nu\rho}\delta_\sigma^\lambda.
+\end{align*}
+(Recall that \(R^\kappa{}_{\kappa\sigma\nu}\) vanishes,
+\(R^\kappa{}_{\sigma\rho\kappa}=-R_{\sigma\rho}\), and in \(N\)
+dimensions, \(\delta_\kappa^\kappa=N\).) Using the cyclic sum rule
+\eqref{eq:6.6.5} and the antisymmetry of
+\(R^\lambda{}_{\rho\sigma\nu}\), we find
+\begin{equation}
+  (N-1)R_{\lambda\rho\sigma\nu}
+  =
+  R_{\nu\rho}g_{\lambda\sigma}
+  -R_{\sigma\rho}g_{\lambda\nu}.
+  \tag{13.2.3}\label{eq:13.2.3}
+\end{equation}
+But this must be antisymmetric in \(\lambda\) and \(\rho\), so
+\[
+  R_{\nu\rho}g_{\lambda\sigma}
+  -R_{\sigma\rho}g_{\lambda\nu}
+  =
+  -R_{\nu\lambda}g_{\rho\sigma}
+  +R_{\sigma\lambda}g_{\rho\nu}.
+\]
+Contracting \(\lambda\) with \(\nu\), we find
+\[
+  R_{\sigma\rho}-N R_{\sigma\rho}
+  =
+  -R g_{\sigma\rho}+R_{\rho\sigma}.
+\]
+The Ricci tensor thus takes the form
+\begin{equation}
+  R_{\sigma\rho}
+  =
+  \frac{1}{N}g_{\sigma\rho}R.
+  \tag{13.2.4}\label{eq:13.2.4}
+\end{equation}
+Inserting this in \eqref{eq:13.2.3} gives our formula for the curvature
+tensor:
+\begin{equation}
+  R_{\lambda\rho\sigma\nu}
+  =
+  \frac{R}{N(N-1)}
+  \left(
+    g_{\nu\rho}g_{\lambda\sigma}
+    -g_{\sigma\rho}g_{\lambda\nu}
+  \right).
+  \tag{13.2.5}\label{eq:13.2.5}
+\end{equation}
+This formula satisfies \eqref{eq:13.2.1}, so there is nothing further to be
+learned from that condition.
+
+In a space that is isotropic about \emph{every} point,
+Eqs.~\eqref{eq:13.2.4} and \eqref{eq:13.2.5} will hold everywhere, and
+we can use the Bianchi identities to say something about the dependence of
+the curvature scalar \(R\) on position. Using \eqref{eq:13.2.4} in
+\eqref{eq:6.8.4}, we have
+\[
+  0
+  =
+  \nabla_\rho
+  \left(
+    R^\rho{}_\sigma-\frac12\delta^\rho_\sigma R
+  \right)
+  =
+  \left(\frac1N-\frac12\right)\partial_\sigma R,
+\]
+or
+\begin{equation}
+  0
+  =
+  \left(\frac1N-\frac12\right)\partial_\sigma R.
+  \tag{13.2.6}\label{eq:13.2.6}
+\end{equation}
+Hence any space of three or more dimensions, in which
+\eqref{eq:13.2.4} holds everywhere, will have \(R\) constant. It is
+convenient to introduce a curvature constant \(K\) in place of \(R\), with
+\begin{equation}
+  R=N(N-1)K.
+  \tag{13.2.7}\label{eq:13.2.7}
+\end{equation}
+Using this in \eqref{eq:13.2.4} gives the Ricci tensor and the
+Riemann--Christoffel tensor here as
+\begin{equation}
+  R_{\sigma\rho}=(N-1)K g_{\sigma\rho},
+  \tag{13.2.8}\label{eq:13.2.8}
+\end{equation}
+\begin{equation}
+  R_{\lambda\rho\sigma\nu}
+  =
+  K\left(
+    g_{\nu\rho}g_{\lambda\sigma}
+    -g_{\sigma\rho}g_{\lambda\nu}
+  \right).
+  \tag{13.2.9}\label{eq:13.2.9}
+\end{equation}
+In differential geometry a space with these properties is called a
+\emph{space of constant curvature}.
+
+Incidentally, we showed in Section~\ref{sec:6.7} that the curvature tensor in
+two dimensions is always of the form \eqref{eq:13.2.5}, so it is not
+surprising that in this case \eqref{eq:13.2.6} does not allow us to draw any
+conclusions about the constancy of \(R\). However, by using
+\eqref{eq:13.2.2} one can show that the quantity \(K\) in
+\eqref{eq:13.2.9} is also constant for maximally symmetric spaces of
+dimensionality \(N=2\).
+
+Now suppose that we are given two metrics \(g_{\mu\nu}(x)\) and
+\(g'_{\mu\nu}(x')\), both having the same numbers of positive and negative
+eigenvalues, and both satisfying the condition \eqref{eq:13.2.9} for a
+maximally symmetric space; that is,
+\begin{equation}
+  R_{\lambda\rho\sigma\nu}
+  =
+  K\left(
+    g_{\nu\rho}g_{\lambda\sigma}
+    -g_{\sigma\rho}g_{\lambda\nu}
+  \right),
+  \tag{13.2.10}\label{eq:13.2.10}
+\end{equation}
+\begin{equation}
+  R'_{\lambda\rho\sigma\nu}
+  =
+  K\left(
+    g'_{\nu\rho}g'_{\lambda\sigma}
+    -g'_{\sigma\rho}g'_{\lambda\nu}
+  \right),
+  \tag{13.2.11}\label{eq:13.2.11}
+\end{equation}
+with the same curvature constant \(K\). We shall show that
+\(g_{\mu\nu}(x)\) and \(g'_{\mu\nu}(x')\) must be equivalent, in the sense
+that there is a transformation \(x\longrightarrow x'\) that converts
+\(g_{\mu\nu}(x)\) into \(g'_{\mu\nu}(x')\); that is, for which
+\begin{equation}
+  g'_{\mu\nu}(x')
+  \frac{\partial x'^\mu}{\partial x^\rho}
+  \frac{\partial x'^\nu}{\partial x^\sigma}
+  =
+  g_{\rho\sigma}(x).
+  \tag{13.2.12}\label{eq:13.2.12}
+\end{equation}
+We shall prove this by actually constructing \(x'^\mu(x)\) as a power series
+in \(x^\mu\). First, note that the equality in the numbers of positive and
+negative eigenvalues of \(g_{\mu\nu}\) and \(g'_{\mu\nu}\) means that we
+can find a nonsingular matrix \(d^\mu{}_\rho\) for which
+\begin{equation}
+  g'_{\mu\nu}(0)d^\mu{}_\rho d^\nu{}_\sigma
+  =
+  g_{\rho\sigma}(0).
+  \tag{13.2.13}\label{eq:13.2.13}
+\end{equation}
+(The argument here is the same as in Section~\ref{sec:6.4}.) Thus we can
+satisfy \eqref{eq:13.2.12} to zero order in \(x\) with
+\[
+  x'^\mu=d^\mu{}_\rho x^\rho.
+\]
+
+Now we proceed by mathematical induction. Suppose that we succeed in
+satisfying \eqref{eq:13.2.12} to order \(n-1\) in \(x^\mu\) with a
+polynomial
+\begin{equation}
+  x'^\mu(x)
+  =
+  d^\mu{}_\rho x^\rho
+  +\sum_{m=2}^{n}\frac{1}{m!}
+  d^\mu{}_{\rho_1\cdots\rho_m}
+  x^{\rho_1}\cdots x^{\rho_m}.
+  \tag{13.2.14}\label{eq:13.2.14}
+\end{equation}
+We want to add a term of order \(n+1\) in \(x^\mu\), so that
+\eqref{eq:13.2.12} holds to order \(n\). This condition will be satisfied
+if the derivative of \eqref{eq:13.2.12} holds in order \(n-1\); that is,
+if
+\begin{align*}
+  &\frac{\partial^2x'^\mu}{\partial x^\rho\partial x^\lambda}
+   \frac{\partial x'^\nu}{\partial x^\sigma}g'_{\mu\nu}(x')
+  +
+  \frac{\partial^2x'^\nu}{\partial x^\sigma\partial x^\lambda}
+  \frac{\partial x'^\mu}{\partial x^\rho}g'_{\mu\nu}(x')
+  \\
+  &\qquad
+  +
+  \frac{\partial x'^\mu}{\partial x^\rho}
+  \frac{\partial x'^\nu}{\partial x^\sigma}
+  \frac{\partial x'^\kappa}{\partial x^\lambda}
+  \frac{\partial g'_{\mu\nu}(x')}{\partial x'^\kappa}
+  =
+  \partial_\lambda g_{\rho\sigma}(x)
+  \qquad\text{in order \(x^{n-1}\)}.
+\end{align*}
+This will be satisfied if (and, in fact, only if)
+\begin{align*}
+  \frac{\partial^2x'^\mu}{\partial x^\rho\partial x^\lambda}
+  \frac{\partial x'^\nu}{\partial x^\sigma}g'_{\mu\nu}(x')
+  &=
+  g_{\sigma\tau}(x)\Gamma^\tau{}_{\lambda\rho}(x)
+  \\
+  &\quad
+  -
+  \frac{\partial x'^\mu}{\partial x^\rho}
+  \frac{\partial x'^\nu}{\partial x^\sigma}
+  \frac{\partial x'^\kappa}{\partial x^\lambda}
+  g'_{\nu\tau}(x')\Gamma'^\tau{}_{\mu\kappa}(x')
+  \qquad\text{in order \(x^{n-1}\)}.
+\end{align*}
+This only needs to hold in order \(n-1\) in \(x^\mu\), so we can use
+\eqref{eq:13.2.12}, which was assumed to hold to this order, to convert it
+into an equivalent requirement:
+\begin{equation}
+  \frac{\partial^2x'^\mu}{\partial x^\rho\partial x^\lambda}
+  =
+  \frac{\partial x'^\mu}{\partial x^\kappa}
+  \Gamma^\kappa{}_{\lambda\rho}(x)
+  -
+  \frac{\partial x'^\nu}{\partial x^\rho}
+  \frac{\partial x'^\kappa}{\partial x^\lambda}
+  \Gamma'^\mu{}_{\nu\kappa}(x')
+  \quad\text{in order \(x^{n-1}\)}.
+  \tag{13.2.15}\label{eq:13.2.15}
+\end{equation}
+We can use \eqref{eq:13.2.14}, which is correct to order \(x^n\), to
+calculate the term on the right-hand side of order \(x^{n-1}\). Let us write
+the result as
+\begin{align}
+  &\left[
+    \frac{\partial x'^\mu}{\partial x^\kappa}
+    \Gamma^\kappa{}_{\lambda\rho}(x)
+    -
+    \frac{\partial x'^\nu}{\partial x^\rho}
+    \frac{\partial x'^\kappa}{\partial x^\lambda}
+    \Gamma'^\mu{}_{\nu\kappa}(x')
+  \right]_{\text{order }n-1}
+  \notag\\
+  &\qquad =
+  \frac{1}{(n-1)!}
+  c^\mu{}_{\lambda\rho\sigma_1\cdots\sigma_{n-1}}
+  x^{\sigma_1}\cdots x^{\sigma_{n-1}},
+  \tag{13.2.16}\label{eq:13.2.16}
+\end{align}
+the coefficients
+\(c^\mu{}_{\lambda\rho\sigma_1\cdots\sigma_{n-1}}\) depending in a
+complicated way on the functions \(g_{\mu\nu}(x)\) and
+\(g'_{\mu\nu}(x')\), and on the previously determined coefficients
+\(d^\mu{}_{\rho_1\cdots\rho_m}\). Then \eqref{eq:13.2.15} will be
+satisfied in order \(n-1\) if we add to \eqref{eq:13.2.14} a term
+\begin{equation}
+  \bigl[x'^\mu(x)\bigr]_{\text{order }n+1}
+  =
+  \frac{1}{(n+1)!}
+  c^\mu{}_{\lambda\rho\sigma_1\cdots\sigma_{n-1}}
+  x^\lambda x^\rho x^{\sigma_1}\cdots x^{\sigma_{n-1}},
+  \tag{13.2.17}\label{eq:13.2.17}
+\end{equation}
+\emph{provided} that the coefficient
+\(c^\mu{}_{\lambda\rho\sigma_1\cdots\sigma_{n-1}}\) is totally symmetric
+in all its lower indices. These coefficients are obviously symmetric under
+interchange of \(\lambda\) and \(\rho\), or among the \(\sigma_m\)
+indices, so the only condition that needs to be satisfied is that they are
+symmetric between \(\lambda\) and any \(\sigma_m\), or equivalently, that
+the derivative of \eqref{eq:13.2.16} with respect to \(x^\sigma\) should
+be symmetric between \(\lambda\) and \(\sigma\):
+\begin{align}
+  &\partial_\sigma
+  \left(
+    \frac{\partial x'^\mu}{\partial x^\kappa}
+    \Gamma^\kappa{}_{\lambda\rho}(x)
+    -
+    \frac{\partial x'^\nu}{\partial x^\rho}
+    \frac{\partial x'^\kappa}{\partial x^\lambda}
+    \Gamma'^\mu{}_{\nu\kappa}(x')
+  \right)
+  \notag\\
+  &\qquad =
+  \partial_\lambda
+  \left(
+    \frac{\partial x'^\mu}{\partial x^\kappa}
+    \Gamma^\kappa{}_{\sigma\rho}(x)
+    -
+    \frac{\partial x'^\nu}{\partial x^\rho}
+    \frac{\partial x'^\kappa}{\partial x^\sigma}
+    \Gamma'^\mu{}_{\nu\kappa}(x')
+  \right)
+  \qquad\text{in order \(x^{n-2}\)}.
+  \tag{13.2.18}\label{eq:13.2.18}
+\end{align}
+Since \eqref{eq:13.2.12} is assumed to hold to order \(x^{n-1}\), its
+derivative, Eq.~\eqref{eq:13.2.15}, will hold to order \(x^{n-2}\), so
+we can use \eqref{eq:13.2.12} and \eqref{eq:13.2.15} to rewrite
+\eqref{eq:13.2.18} as the equivalent requirement
+\begin{equation}
+  \frac{\partial x'^\mu}{\partial x^\kappa}
+  R^\kappa{}_{\rho\lambda\eta}(x)
+  =
+  \frac{\partial x'^\nu}{\partial x^\rho}
+  \frac{\partial x'^\kappa}{\partial x^\lambda}
+  \frac{\partial x'^\sigma}{\partial x^\eta}
+  R'^\mu{}_{\nu\kappa\sigma}(x')
+  \qquad\text{in order \(x^{n-2}\)}.
+  \tag{13.2.19}\label{eq:13.2.19}
+\end{equation}
+Now for the first time we use Eqs.~\eqref{eq:13.2.10} and
+\eqref{eq:13.2.11}, which allow \eqref{eq:13.2.19} to be replaced with
+the equivalent requirement
+\begin{align}
+  &\frac{\partial x'^\mu}{\partial x^\lambda}g_{\rho\eta}(x)
+  -
+  \frac{\partial x'^\mu}{\partial x^\eta}g_{\rho\lambda}(x)
+  \notag\\
+  &\qquad =
+  \frac{\partial x'^\nu}{\partial x^\rho}
+  \left(
+    \frac{\partial x'^\mu}{\partial x^\lambda}
+    \frac{\partial x'^\sigma}{\partial x^\eta}
+    g'_{\nu\sigma}(x')
+    -
+    \frac{\partial x'^\kappa}{\partial x^\lambda}
+    \frac{\partial x'^\mu}{\partial x^\eta}
+    g'_{\nu\kappa}(x')
+  \right)
+  \qquad\text{in order \(x^{n-2}\)}.
+  \tag{13.2.20}\label{eq:13.2.20}
+\end{align}
+This condition \emph{is} satisfied, because \eqref{eq:13.2.12} was
+assumed to hold to order \(x^{n-1}\). To recapitulate, this implies that
+\eqref{eq:13.2.19} holds in order \(x^{n-2}\), which implies that
+\eqref{eq:13.2.18} holds in order \(x^{n-2}\), which implies that the
+coefficients \(c^\mu{}_{\lambda\rho\sigma_1\cdots\sigma_{n-1}}\) are
+totally symmetric in their lower indices, which implies that
+\eqref{eq:13.2.17} satisfies \eqref{eq:13.2.15}, which implies that by
+adding \eqref{eq:13.2.17} to \eqref{eq:13.2.14} we can satisfy
+\eqref{eq:13.2.12} to order \(x^n\). Thus, if \eqref{eq:13.2.12} can
+be satisfied to order \(x^{n-1}\) by a polynomial \(x'(x)\) of order
+\(n\), it can be satisfied to order \(x^n\) by a polynomial \(x'(x)\) of
+order \(n+1\), and therefore a function \(x'(x)\) satisfying
+\eqref{eq:13.2.12} exactly can be built up as a power series, as was to be
+proven.

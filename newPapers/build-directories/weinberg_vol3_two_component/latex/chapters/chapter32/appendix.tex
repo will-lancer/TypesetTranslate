@@ -1,0 +1,487 @@
+% Source: physical PDF pp. 424--430 (printed pp. 401--407), beginning at
+% the Appendix heading on p. 424 and ending immediately before Problems
+% on p. 430.
+% Inventory: Eqs. (32.A.1)--(32.A.45), zero unnumbered display groups,
+% one footnote, two unnumbered internal headings, and no citations, figures,
+% tables, or centered three-asterisk dividers.
+% Source-visible anomalies preserved: the odd-dimensional Dirac matrices are
+% printed as n-by-n rather than 2^n-by-2^n; after Eq. (32.A.40), a general
+% matrix is printed as 2n-by-2n rather than 2^n-by-2^n; Eq. (32.A.39) jumps
+% from mu_{p+1} to mu_2 on its right-hand side; and the sentence after
+% Eq. (32.A.40) says there are n+1 independent antisymmetric tensors with
+% 0 <= p <= n+1, although Eq. (32.A.40) sums only through p=n.
+% In accordance with NOTATION.md, matrix dimensions are set with centered
+% dots, identities with \mathbf{1}, and Hermitian adjoints with \dagger.
+% Thus the source's a_u^* in Eq. (32.A.44) is rendered semantically as
+% a_u^\dagger.
+% Uncertainties: none.
+
+\chapterappendix{}{Spinors in Higher Dimensions}
+
+This appendix describes the fundamental spinor representations of the Lie
+algebra of the Lorentz group \(O(d-1,1)\) in any number \(d\) of spacetime
+dimensions. These are obtained from the corresponding Clifford algebra,
+consisting of an irreducible set of finite matrices \(\gamma_\mu\) that
+satisfy the anticommutation relations
+\begin{equation}
+  \{\gamma_\mu,\gamma_\nu\}=2\eta_{\mu\nu}\,,
+  \tag{32.A.1}\label{eq:32.A.1}
+\end{equation}
+where \(\eta_{\mu\nu}\) is diagonal, with elements \(+1\) on the diagonal
+except for \(\eta_{00}=-1\), where \(x^0\) is the time-component. From these
+we can construct matrices
+\begin{equation}
+  \mathcal J_{\mu\nu}
+  \equiv\frac{1}{4i}[\gamma_\mu,\gamma_\nu]
+  =-\mathcal J_{\nu\mu}\,,
+  \tag{32.A.2}\label{eq:32.A.2}
+\end{equation}
+that satisfy the commutation relations \eqref{eq:2.4.12} of the Lorentz
+group generators
+\begin{equation}
+  i[\mathcal J_{\mu\nu},\mathcal J_{\rho\sigma}]
+  =\eta_{\nu\rho}\mathcal J_{\mu\sigma}
+   -\eta_{\mu\rho}\mathcal J_{\nu\sigma}
+   -\eta_{\sigma\mu}\mathcal J_{\rho\nu}
+   +\eta_{\sigma\nu}\mathcal J_{\rho\mu}\,.
+  \tag{32.A.3}\label{eq:32.A.3}
+\end{equation}
+As we will see, although Eq.~\eqref{eq:32.A.2} always gives a representation
+of the Lorentz algebra, it is not always an irreducible representation.
+
+We must now distinguish between the cases of even and odd dimensionality.
+
+\subsubsection*{Even Dimensions: \(d=2n\)}
+
+To construct a convenient specific representation for the gamma matrices in
+\(d=2n\) dimensions, we introduce \(n\) matrices
+\begin{equation}
+  a_u\equiv\frac{1}{2}\bigl(\gamma_{2u-1}+i\gamma_{2u}\bigr),
+  \qquad u=1,2,\ldots,n\,,
+  \tag{32.A.4}\label{eq:32.A.4}
+\end{equation}
+and take \(\gamma_1,\ldots,\gamma_{2n}\) as Hermitian, it being understood
+that as usual
+\begin{equation}
+  \gamma_{2n}\equiv-i\gamma_0\,.
+  \tag{32.A.5}\label{eq:32.A.5}
+\end{equation}
+These have the anticommutation relations
+\begin{equation}
+  \{a_u,a_v^\dagger\}=\delta_{uv}\,,
+  \qquad
+  \{a_u,a_v\}=\{a_u^\dagger,a_v^\dagger\}=0\,.
+  \tag{32.A.6}\label{eq:32.A.6}
+\end{equation}
+We introduce a vector \(\ket{0}\) in the representation space of the
+\(\gamma\)s, defined by the condition
+\begin{equation}
+  a_u^\dagger\ket{0}=0\,,
+  \tag{32.A.7}\label{eq:32.A.7}
+\end{equation}
+and define the basis vectors
+\begin{equation}
+  \ket{s_1s_2\cdots s_n}
+  =a_1^{s_1}a_2^{s_2}\cdots a_n^{s_n}\ket{0}\,.
+  \tag{32.A.8}\label{eq:32.A.8}
+\end{equation}
+Because \(a_u^2=0\), the operator \(a_u\) raises the value of \(s_u\) to
+\(+1\) if \(s_u=0\) and annihilates the vector if \(s_u=+1\) (as well as
+yielding a sign \((-1)^S\) where \(S\equiv\sum_{v<u}s_v\)), so all \(s_u\)
+take only the values 0 and \(+1\), and the vectors therefore span a space
+of dimensionality \(2^n\). In this basis, the matrices \(a_u\) take the
+form
+\begin{equation}
+  a_u=
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes\cdots\otimes
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes
+  \begin{pmatrix}
+    0&1\\
+    0&0
+  \end{pmatrix}
+  \otimes\mathbf{1}\cdots\otimes\mathbf{1}\,,
+  \tag{32.A.9}\label{eq:32.A.9}
+\end{equation}
+with the last \(2\cdot2\) matrix in the \(u\)th place. Taking the Hermitian
+and anti-Hermitian parts then gives the gamma matrices
+\begin{equation}
+  \gamma_{2u-1}=
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes\cdots\otimes
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes
+  \begin{pmatrix}
+    0&1\\
+    1&0
+  \end{pmatrix}
+  \otimes\mathbf{1}\cdots\otimes\mathbf{1}\,,
+  \tag{32.A.10}\label{eq:32.A.10}
+\end{equation}
+\begin{equation}
+  \gamma_{2u}=
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes\cdots\otimes
+  \begin{pmatrix}
+    -1&0\\
+    0&1
+  \end{pmatrix}
+  \otimes
+  \begin{pmatrix}
+    0&-i\\
+    i&0
+  \end{pmatrix}
+  \otimes\mathbf{1}\cdots\otimes\mathbf{1}\,.
+  \tag{32.A.11}\label{eq:32.A.11}
+\end{equation}
+(Note that this does not give the same representation of the gamma matrices
+in four spacetime dimensions as was introduced in Section 5.4, and has been
+used throughout this book.)
+
+The representation \eqref{eq:32.A.10}--\eqref{eq:32.A.11} gives the
+Euclidean \(\gamma\)s the simple reality and symmetry properties
+\begin{equation}
+  \gamma_i^*=\gamma_i^{\mathrm T}
+  =
+  \begin{cases}
+    \gamma_i\,,&\text{for \(i\) odd},\\
+    -\gamma_i\,,&\text{for \(i\) even},
+  \end{cases}
+  \tag{32.A.12}\label{eq:32.A.12}
+\end{equation}
+where \(i=1,2,\ldots,2n\). This can be expressed as a similarity relation
+\begin{equation}
+  \mathcal C^{-1}\gamma_i\mathcal C
+  =(-1)^n\gamma_i^{\mathrm T}
+  =(-1)^n\gamma_i^*\,,
+  \tag{32.A.13}\label{eq:32.A.13}
+\end{equation}
+where \(\mathcal C\) is the matrix
+\begin{equation}
+  \mathcal C\equiv\gamma_2\gamma_4\cdots\gamma_{2n}\,.
+  \tag{32.A.14}\label{eq:32.A.14}
+\end{equation}
+
+Taking account of the factor \(-i\) in Eq.~\eqref{eq:32.A.5}, we can write
+this in terms of Minkow\-skian components as
+\begin{equation}
+  \gamma_\mu^*
+  =-\beta\gamma_\mu^{\mathrm T}\beta
+  =-(-1)^n(\mathcal C\beta)^{-1}\gamma_\mu(\mathcal C\beta)\,,
+  \tag{32.A.15}\label{eq:32.A.15}
+\end{equation}
+where
+\begin{equation}
+  \beta\equiv\gamma_{2n}=-i\gamma_0\,.
+  \tag{32.A.16}\label{eq:32.A.16}
+\end{equation}
+
+In any even dimension we may define a matrix \(\gamma_{2n+1}\) that plays
+a role similar to that of \(\gamma_5\) in four dimensions. We take
+\begin{equation}
+  \gamma_{2n+1}\equiv i^n\gamma_1\gamma_2\cdots\gamma_{2n}\,.
+  \tag{32.A.17}\label{eq:32.A.17}
+\end{equation}
+The phase here is chosen so that
+\begin{equation}
+  \gamma_{2n+1}^2=\mathbf{1}\,.
+  \tag{32.A.18}\label{eq:32.A.18}
+\end{equation}
+From the anticommutation relations \eqref{eq:32.A.1}, it follows immediately
+that \(\gamma_{2n+1}\) anticommutes with the other gamma matrices
+\begin{equation}
+  \{\gamma_{2n+1},\gamma_\mu\}=0
+  \qquad\text{for \(\mu=1,2,\ldots,2n-1,0\)}\,.
+  \tag{32.A.19}\label{eq:32.A.19}
+\end{equation}
+It is straightforward to check that \(\gamma_{2n+1}\) is real and symmetric
+\begin{equation}
+  \gamma_{2n+1}^\dagger
+  =\gamma_{2n+1}^*
+  =\gamma_{2n+1}^{\mathrm T}
+  =\gamma_{2n+1}\,.
+  \tag{32.A.20}\label{eq:32.A.20}
+\end{equation}
+From Eq.~\eqref{eq:32.A.19} we see that \(\gamma_{2n+1}\) commutes with the
+generators \eqref{eq:32.A.2} of the \(O(2n-1,1)\) algebra:
+\begin{equation}
+  [\gamma_{2n+1},\mathcal J_{\mu\nu}]=0\,,
+  \tag{32.A.21}\label{eq:32.A.21}
+\end{equation}
+so that the \(\mathcal J_{\mu\nu}\) cannot furnish an \textit{irreducible}
+representation of the algebra of \(O(2n-1,1)\). Instead, we may define a
+pair of `Weyl' irreducible representations by projecting out the subspaces
+with \(\gamma_{2n+1}=\pm1\):
+\begin{equation}
+  \mathcal J_{\mu\nu}^{\pm}
+  \equiv\mathcal J_{\mu\nu}
+  \left(\frac{1\pm\gamma_{2n+1}}{2}\right).
+  \tag{32.A.22}\label{eq:32.A.22}
+\end{equation}
+From Eq.~\eqref{eq:32.A.15} and the relation
+\((\mathcal C\beta)^{-1}\gamma_{2n+1}\mathcal C\beta
+=-(-1)^n\gamma_{2n+1}\) we find that the complex conjugate and transpose
+of the Weyl Lorentz generators are
+\begin{equation}
+  \bigl(\mathcal J_{\mu\nu}^{\pm}\bigr)^*
+  =-(\mathcal C\beta)^{-1}
+    \mathcal J_{\mu\nu}^{\mp(-1)^n}
+    (\mathcal C\beta)\,,
+  \tag{32.A.23}\label{eq:32.A.23}
+\end{equation}
+\begin{equation}
+  \bigl(\mathcal J_{\mu\nu}^{\pm}\bigr)^{\mathrm T}
+  =-\mathcal C^{-1}\mathcal J_{\mu\nu}^{\pm(-1)^n}\mathcal C\,.
+  \tag{32.A.24}\label{eq:32.A.24}
+\end{equation}
+Hence, for \(n\) even, the Weyl irreducible representations are equivalent
+to complex conjugates of each other, while for \(n\) odd each is equivalent
+to its own complex conjugate.\footnote{We say that one representation of
+the Lorentz algebra by matrices \(\mathcal L_{\mu\nu}\) (such as
+\(\mathcal J_{\mu\nu}\) or \(\mathcal J_{\mu\nu}^+\) or
+\(\mathcal J_{\mu\nu}^-\)) is the complex conjugate of another
+representation by matrices \(\mathcal L'_{\mu\nu}\) if
+\(\mathcal L'_{\mu\nu}=-\mathcal L_{\mu\nu}^*\). The minus sign is included
+because the matrices that represent elements of the Lorentz group in the
+neighborhood of the identity are of the form
+\(\mathbf{1}+\frac{1}{2}i\omega^{\mu\nu}\mathcal L_{\mu\nu}\), with
+\(\omega^{\mu\nu}\) real infinitesimals.} For \(n\) odd, we still have to
+decide whether the Weyl representations are \textit{real}, which would mean
+that there is a matrix \(\mathcal S\) such that
+\begin{equation}
+  -\bigl(\mathcal S\mathcal J_{\mu\nu}^{\pm}\mathcal S^{-1}\bigr)^*
+  =\mathcal S\mathcal J_{\mu\nu}^{\pm}\mathcal S^{-1}\,,
+  \tag{32.A.25}\label{eq:32.A.25}
+\end{equation}
+or \textit{pseudoreal}, in which case there is no such \(\mathcal S\).
+Using Eq.~\eqref{eq:32.A.23}, the condition \eqref{eq:32.A.25} may be
+written as the requirement that
+\(\mathcal S^{-1}\mathcal S^*(\mathcal C\beta)^{-1}\) commutes with all
+\(\mathcal J_{\mu\nu}^{\pm}\). Since the matrices
+\(\mathcal J_{\mu\nu}^{\pm}\) form an irreducible set, this would require
+that \(\mathcal S^{-1}\mathcal S^*(\mathcal C\beta)^{-1}\) be proportional
+to the unit matrix
+\begin{equation}
+  \mathcal C\beta=\alpha\mathcal S^{-1}\mathcal S^*\,,
+  \tag{32.A.26}\label{eq:32.A.26}
+\end{equation}
+with \(\alpha\) some constant. For this to be possible, we must have
+\begin{equation}
+  \mathcal C\beta(\mathcal C\beta)^*
+  =|\alpha|^2\mathbin{\cdot}\mathbf{1}\,.
+  \tag{32.A.27}\label{eq:32.A.27}
+\end{equation}
+But \(\mathcal C\beta=\gamma_2\gamma_4\cdots\gamma_{2n-2}\), and since all
+\(\gamma_i\) with \(i\) even are imaginary, we have
+\begin{equation}
+  \mathcal C\beta(\mathcal C\beta)^*
+  =(-1)^{n-1}\bigl(\gamma_2\gamma_4\cdots\gamma_{2n-2}\bigr)^2
+  =(-1)^a\mathbin{\cdot}\mathbf{1}\,,
+  \tag{32.A.28}\label{eq:32.A.28}
+\end{equation}
+where
+\begin{equation}
+  a=(n-1)+(n-2)+\cdots+1=n(n-1)/2\,.
+  \tag{32.A.29}\label{eq:32.A.29}
+\end{equation}
+Hence the Weyl representations can only be real for \(n=1\pmod 4\) and
+must be pseudoreal for \(n=3\pmod 4\).
+
+We also note for use in Section 32.1 that
+\begin{equation}
+  \mathcal C^*=(-1)^n\mathcal C\,,
+  \qquad
+  \mathcal C^{\mathrm T}=(-1)^{n(n+1)/2}\mathcal C\,,
+  \qquad
+  \mathcal C^{-1}=(-1)^{n(n-1)/2}\mathcal C\,,
+  \tag{32.A.30}\label{eq:32.A.30}
+\end{equation}
+and therefore Eq.~\eqref{eq:32.A.13} gives
+\begin{equation}
+  (\mathcal C\gamma_\mu)^{\mathrm T}
+  =(-1)^{n(n-1)/2}\mathcal C\gamma_\mu\,.
+  \tag{32.A.31}\label{eq:32.A.31}
+\end{equation}
+The \(\gamma_\mu\) form a vector, in the sense that
+\begin{equation}
+  [\mathcal J_{\mu\nu},\gamma_\rho]
+  =-i\gamma_\mu\eta_{\nu\rho}
+   +i\gamma_\nu\eta_{\mu\rho}\,,
+  \tag{32.A.32}\label{eq:32.A.32}
+\end{equation}
+and they have normal parity, in the sense that
+\begin{equation}
+  \beta\gamma_0\beta=+\gamma_0\,,
+  \qquad
+  \beta\gamma_i\beta=-\gamma_i
+  \quad\text{for \(i=1,\ldots,2n-1\)}\,.
+  \tag{32.A.33}\label{eq:32.A.33}
+\end{equation}
+The anticommutation relation \eqref{eq:32.A.1} prevents us from constructing
+new tensors by taking symmetric products of \(\gamma\)s, but it allows us
+to construct antisymmetric tensors of rank up to \(2n\)
+\begin{equation}
+  \gamma_{[\mu_1}\gamma_{\mu_2}\cdots\gamma_{\mu_p]}\,,
+  \tag{32.A.34}\label{eq:32.A.34}
+\end{equation}
+where the square brackets indicate antisymmetrization, and \(p\le 2n\).
+Each has a number of independent spacetime components given by the binomial
+coefficient \(\binom{2n}{p}\), so the total number of matrices of this type
+is
+\begin{equation}
+  \sum_{p=0}^{2n}\binom{2n}{p}=2^{2n}\,.
+  \tag{32.A.35}\label{eq:32.A.35}
+\end{equation}
+None of these vanishes (as can be seen by calculating their squares) and
+they all have different Lorentz and/or parity transformation rules and are
+therefore linearly independent, so any \(2^n\cdot2^n\) matrix may be written
+as a linear combination of the \(2^{2n}\) antisymmetric tensors
+\eqref{eq:32.A.34}.
+
+\subsubsection*{Odd Dimensions: \(d=2n+1\)}
+
+Now let us consider an odd spacetime dimensionality \(d=2n+1\). We can
+easily find a set of \(2n+1\) Dirac \(n\cdot n\) matrices satisfying the
+anticommutation relations \eqref{eq:32.A.1}: we simply use the same
+\(\gamma_\mu\) with \(\mu=1,2,\ldots,2n-1,0\) as for \(d=2n\), and add
+the matrix \(\gamma_{2n+1}\) defined by Eq.~\eqref{eq:32.A.17}. According
+to Eqs.~\eqref{eq:32.A.18} and \eqref{eq:32.A.19} these gamma matrices
+satisfy the anticommutation relations \eqref{eq:32.A.1}, with \(\mu\) and
+\(\nu\) running over the values \(1,2,\ldots,2n-1,0,2n+1\), and again
+\(\gamma_0=i\gamma_{2n}\).
+
+Unlike the case of even dimensionality, we cannot here find any non-trivial
+matrix that commutes with all the Lorentz generators, because
+Eqs.~\eqref{eq:32.A.17} and \eqref{eq:32.A.18} show that the product of the
+\(2n+1\) gamma matrices is trivial:
+\begin{equation}
+  \gamma_1\gamma_2\cdots\gamma_{2n}\gamma_{2n+1}
+  =i^{-n}\mathbin{\cdot}\mathbf{1}\,.
+  \tag{32.A.36}\label{eq:32.A.36}
+\end{equation}
+The Lorentz generators \eqref{eq:32.A.2} with \(\mu\) and \(\nu\) running
+over the values \(1,2,\ldots,2n-1,0,2n+1\) therefore furnish an irreducible
+representation of the Lorentz group by themselves. To test their reality
+properties, we note that \(\gamma_{2n+1}\) is real and symmetric and
+satisfies
+\((\mathcal C\beta)^{-1}\gamma_{2n+1}\mathcal C\beta
+=-(-1)^n\gamma_{2n+1}\), so Eq.~\eqref{eq:32.A.15} applies for
+\(\mu=2n+1\) as well as for \(\mu=1,2,\ldots,2n-1,0\). The Lorentz
+generators therefore satisfy
+\begin{equation}
+  \mathcal J_{\mu\nu}^*
+  =-(\mathcal C\beta)^{-1}\mathcal J_{\mu\nu}\mathcal C\beta\,,
+  \tag{32.A.37}\label{eq:32.A.37}
+\end{equation}
+\begin{equation}
+  \mathcal J_{\mu\nu}^{\mathrm T}
+  =-\mathcal C^{-1}\mathcal J_{\mu\nu}\mathcal C\,,
+  \tag{32.A.38}\label{eq:32.A.38}
+\end{equation}
+so in each odd dimension the fundamental spinor representation is either
+real or pseudoreal. Exactly the same argument as in the case where \(d=2n\)
+tells us that the spinor representations for \(d=2n+1\) are again real or
+pseudoreal according to whether the sign \((-1)^a\) in
+Eq.~\eqref{eq:32.A.28} is positive or negative, and therefore according to
+Eq.~\eqref{eq:32.A.29} they are real for \(n=0\pmod 4\) and
+\(n=1\pmod 4\) and pseudoreal for \(n=2\pmod 4\) and \(n=3\pmod 4\).
+
+We can again construct antisymmetric tensors \eqref{eq:32.A.34}, now of rank
+\(p\) up to \(2n+1\), but only half of these are independent, because they
+obey relations
+\begin{equation}
+  \epsilon^{\mu_1\mu_2\cdots\mu_{2n+1}}
+  \gamma_{[\mu_1}\gamma_{\mu_2}\cdots\gamma_{\mu_p]}
+  \propto
+  \gamma^{[\mu_{p+1}}\gamma^{\mu_2}\cdots\gamma^{\mu_{2n+1}]}\,,
+  \tag{32.A.39}\label{eq:32.A.39}
+\end{equation}
+with \(\epsilon^{\mu_1\mu_2\cdots\mu_{2n+1}}\) as usual totally
+antisymmetric. (For \(d=2n\) no such relations are possible, because the
+left- and right-hand sides of Eq.~\eqref{eq:32.A.39} have opposite parity,
+but this argument does not apply for \(d=2n+1\), where
+\(\epsilon^{\mu_1\mu_2\cdots\mu_{2n+1}}\) has even spatial parity.) The
+total number of independent matrices of the form \eqref{eq:32.A.34} is now
+given by
+\begin{equation}
+  \sum_{p=0}^{n}\binom{2n+1}{p}=2^{2n}\,,
+  \tag{32.A.40}\label{eq:32.A.40}
+\end{equation}
+so any \(2n\cdot2n\) matrix may be written as a linear combination of the
+\(n+1\) independent antisymmetric tensors \eqref{eq:32.A.34} with
+\(0\le p\le n+1\).
+
+Finally, we note that for either \(d=2n\) or \(d=2n+1\), the \(O(d-1,1)\)
+Dirac and Lorentz algebras are related to the corresponding \(O(d)\)
+algebras by setting
+\begin{equation}
+  \gamma_{2n}\equiv-i\gamma_0\,,
+  \qquad
+  \mathcal J_{i\,2n}\equiv-i\mathcal J_{i0}\,,
+  \tag{32.A.41}\label{eq:32.A.41}
+\end{equation}
+so that
+\begin{equation}
+  \{\gamma_i,\gamma_j\}=2\delta_{ij}\,,
+  \tag{32.A.42}\label{eq:32.A.42}
+\end{equation}
+and
+\begin{equation}
+  \mathcal J_{ij}
+  \equiv\frac{1}{4i}[\gamma_i,\gamma_j]
+  =-\mathcal J_{ji}\,,
+  \tag{32.A.43}\label{eq:32.A.43}
+\end{equation}
+with \(i\) and \(j\) running from 1 to \(d\). It follows from
+Eq.~\eqref{eq:32.A.42} that for \(i\ne j\),
+\(\mathcal J_{ij}^2=1/4\), so the eigenvalues of each \(\mathcal J_{ij}\)
+are limited to \(\pm1/2\). To be more specific, in the fundamental spinor
+representation the generators of the Cartan subalgebra are represented by
+\begin{equation}
+  \mathcal J_{2u-1\,2u}
+  =\frac{1}{2}[a_u,a_u^\dagger]
+  =a_ua_u^\dagger-\frac{1}{2}\,,
+  \tag{32.A.44}\label{eq:32.A.44}
+\end{equation}
+for which the basis vectors \eqref{eq:32.A.8} are eigenvectors, with
+\begin{equation}
+  \mathcal J_{2u-1\,2u}\ket{s_1s_2\cdots s_n}
+  =\left(s_u-\frac{1}{2}\right)\ket{s_1s_2\cdots s_n}\,.
+  \tag{32.A.45}\label{eq:32.A.45}
+\end{equation}
+
+The difference between dimensionalities \(d=2n\) and \(d=2n+1\) is that
+for \(d=2n\) we have two fundamental spinor representations in which the
+eigenvalue
+\((-2\sigma_1)(-2\sigma_2)\cdots(-2\sigma_n)\) of \(\gamma_{2n+1}\) is
+constrained to be \(+1\) or \(-1\), while for \(d=2n+1\) there is one
+fundamental spinor representation with no such limitation on the
+\(\sigma_u\).
+
+It was the limitation of the eigenvalues of each \(\mathcal J_{ij}\) to
+\(\pm1/2\) that in Section 32.1 identified the fundamental spinor
+representations as the only possible representations of the Lorentz
+algebra that could be furnished by fermionic symmetry generators. Indeed,
+from this condition we could have inferred that the \(O(d)\) generators
+may be represented in a basis of the form \eqref{eq:32.A.8}, with
+\(s_u=\sigma_u+1/2\), and carried out the derivations of this appendix in
+reverse order, using Eqs.~\eqref{eq:32.A.4}--\eqref{eq:32.A.7} (along
+with Eq.~\eqref{eq:32.A.17} for \(d\) odd) to express the Lorentz
+generators in terms of a set of \(\gamma_\mu\) satisfying the
+anticommutation relations \eqref{eq:32.A.1}.

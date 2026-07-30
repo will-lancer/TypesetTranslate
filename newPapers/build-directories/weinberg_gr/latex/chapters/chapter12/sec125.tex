@@ -1,0 +1,643 @@
+% Source: Weinberg GR, physical PDF pp. 386--394
+%         (printed pp. 365--373).
+% Coverage: Section 12.5, The Tetrad Formalism; equations
+%           (12.5.1)--(12.5.36).
+% Figures/tables/footnotes: one optional-reading footnote; reference marker 1;
+%                          no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: tetrad notation and the source's inverse-tetrad/co-tetrad
+%                variation-sign mismatch are documented below; the co-tetrad
+%                formulation is checked against the Hilbert stress tensor.
+%
+% MODERNIZATION CHECK: Weinberg's V^alpha_mu is e^a_mu, its inverse is
+% e_a^mu, local-frame indices are Latin, and his starred local components are
+% written directly with Latin indices. Partial/covariant derivatives are
+% compact, and coordinate displacements are xi.
+%
+% SOURCE ANOMALY / MODERNIZATION CHOICE: In (12.5.26) the source varies the
+% inverse tetrad V_alpha^mu, but (12.5.27) assigns U the sign appropriate to a
+% variation of the co-tetrad. Taken literally, those signs conflict with the
+% metric variation printed before (12.5.35). Equations (12.5.26)--(12.5.35)
+% below consistently use the co-tetrad e^a_mu as the varied field. This keeps
+% Weinberg's positive definition (12.5.27), the binding Hilbert definition
+% T_mn=-2/sqrt(-g) delta I_M/delta g^mn, and (12.5.36) mutually consistent.
+%
+% LITERAL-OPERATOR AUDIT: every continuation-line operator in
+% (12.5.14), (12.5.17), (12.5.22)--(12.5.25), and
+% (12.5.32)--(12.5.35) was checked against physical PDF pp. 389--393.
+
+\subsection{The Tetrad Formalism\optionalreading}\label{sec:12.5}
+\begingroup
+\renewcommand{\thefootnote}{*}
+\begin{NoHyper}
+\footnotetext{This section lies somewhat out of the book's main line of
+development, and may be omitted in a first reading.}
+\end{NoHyper}
+\endgroup
+
+Until now, we have followed only one approach in determining the effects of
+gravitation on general physical systems. Given the special-relativistic
+equations that govern the system in the absence of gravitation, we replace
+all Lorentz tensors with objects that behave like tensors (or tensor
+densities) under general coordinate transformations. Also, we replace all
+ordinary derivatives with covariant derivatives, and replace
+\(\eta_{ab}\) everywhere with \(g_{\mu\nu}\). The equations of motion are
+then generally covariant. (See Chapter~5.)
+
+This method actually works \emph{only} for objects that behave like tensors
+under Lorentz transformation, and not for the spinor fields discussed in
+Section~\ref{sec:2.12}. (Mathematically, this is because the tensor
+representations of the group \(\mathrm{GL}(4)\) of general linear
+\(4\times4\) matrices behave like tensors under the subgroup of Lorentz
+transformations, but there are no representations of \(\mathrm{GL}(4)\), or
+even ``representations up to a sign,'' which behave like spinors under the
+Lorentz subgroup.) How then can we incorporate spinors into general
+relativity?
+
+The answer lies in a different approach to the problem of determining the
+effects of gravitation on physical systems, an approach that is rather
+interesting in its own right, quite apart from the problem of dealing with
+spinors.
+
+To start, let us take advantage of the Principle of Equivalence, and at every
+point \(X\) erect a set of coordinates \(\xi_X^a\) that are locally inertial
+at \(X\). (Of course, it will not be possible to erect any \emph{single}
+coordinate system that is locally inertial everywhere, unless the space-time
+continuum is ``flat.'') As shown in Sections~\ref{sec:3.2} and \ref{sec:3.3},
+the metric in any general noninertial coordinate system is then
+\begin{equation}
+  g_{\mu\nu}(x)
+  =
+  e^a{}_\mu(x)e^b{}_\nu(x)\eta_{ab},
+  \tag{12.5.1}\label{eq:12.5.1}
+\end{equation}
+where
+\begin{equation}
+  e^a{}_\mu(X)
+  \equiv
+  \left.
+  \frac{\partial\xi_X^a(x)}{\partial x^\mu}
+  \right|_{x=X}.
+  \tag{12.5.2}\label{eq:12.5.2}
+\end{equation}
+Note that we fix the locally inertial coordinates \(\xi_X^a\) once and for
+all at each physical point \(X\), so when we change our general noninertial
+coordinates from \(x^\mu\) to \(x'^\mu\), the partial derivatives
+\(e^a{}_\mu\) change according to the rule
+\begin{equation}
+  e^a{}_\mu
+  \longrightarrow
+  e'^a{}_\mu
+  =
+  \frac{\partial x^\nu}{\partial x'^\mu}e^a{}_\nu.
+  \tag{12.5.3}\label{eq:12.5.3}
+\end{equation}
+Thus, we are to think of \(e^a{}_\mu\) as forming \emph{four} covariant
+vector fields, \emph{not} as a single coordinate tensor with two coordinate
+indices. This set of four vectors is known as a \emph{tetrad}, or
+\emph{vierbein}.
+
+Now, given any contravariant vector field \(A^\mu(x)\), we can use the tetrad
+to refer its components at \(x\) to the coordinate system \(\xi_x^a\)
+locally inertial at \(x\):
+\begin{equation}
+  A^a\equiv e^a{}_\mu A^\mu.
+  \tag{12.5.4}\label{eq:12.5.4}
+\end{equation}
+We are contracting a contravariant vector \(A^\mu\) with four covariant
+vectors \(e^a{}_\mu\), so this has the effect of replacing the single
+four-vector \(A^\mu\) with the four coordinate scalars \(A^a\). We can do the
+same with covariant vector fields, and indeed with general tensor fields:
+\begin{equation}
+  A_a\equiv e_a{}^\mu A_\mu,
+  \qquad
+  B^a{}_b\equiv e^a{}_\mu e_b{}^\nu B^\mu{}_\nu,
+  \quad\text{etc.}
+  \tag{12.5.5}\label{eq:12.5.5}
+\end{equation}
+Here \(e_a{}^\mu\) is just the tetrad \eqref{eq:12.5.2}, but with the local
+index lowered with the Minkowski tensor and the coordinate index raised with
+the metric tensor:
+\begin{equation}
+  e_a{}^\mu
+  \equiv
+  \eta_{ab}g^{\mu\nu}e^b{}_\nu.
+  \tag{12.5.6}\label{eq:12.5.6}
+\end{equation}
+Note that according to Eq.~\eqref{eq:12.5.1} this is just the inverse of the
+tetrad:
+\begin{equation}
+  \delta^\mu{}_\nu=e_a{}^\mu e^a{}_\nu,
+  \tag{12.5.7}\label{eq:12.5.7}
+\end{equation}
+and hence also
+\begin{equation}
+  \delta^a{}_b=e^a{}_\mu e_b{}^\mu.
+  \tag{12.5.8}\label{eq:12.5.8}
+\end{equation}
+The coordinate-scalar components of the metric tensor are then simply
+\begin{equation}
+  g_{ab}
+  \equiv
+  e_a{}^\mu e_b{}^\nu g_{\mu\nu}
+  =
+  \eta_{ab}.
+  \tag{12.5.9}\label{eq:12.5.9}
+\end{equation}
+
+Now that we have shown how to make any tensor field into a set of coordinate
+scalars, we can forget the original tensors \(A^\mu\), \(T_{\mu\nu}\), and so
+on, with which we started, and consider how we would construct an action if
+we worked from the beginning with the scalars \(A^a\), \(T_{ab}\), and so on.
+In this way, a spinor field, like Dirac's electron field, can be brought into
+our formalism in precisely the same way as any other field, and its peculiar
+Lorentz transformation properties cause no particular trouble. There are now
+two invariance principles which must be met in constructing a suitable matter
+action \(I_M\).
+
+\begin{description}
+  \item[(A)] The action must be generally covariant, with all fields treated
+  as coordinate scalars except for the tetrad itself.
+
+  \item[(B)] The Principle of Equivalence requires that special relativity
+  should apply in locally inertial frames, and, in particular, that it should
+  make no difference which locally inertial frame we choose at each point.
+  Thus, since our coordinate-scalar field components \(A^a\), \(T_{ab}\), and
+  so on, are defined with respect to an arbitrarily chosen locally inertial
+  coordinate system, the field equations and the action must be invariant
+  with respect to a redefinition of these locally inertial coordinate systems
+  at each point, or, in other words, with respect to Lorentz transformations
+  \(\Lambda^a{}_b(x)\) that can depend on position in space-time:
+\end{description}
+\[
+  A^a(x)\longrightarrow\Lambda^a{}_b(x)A^b(x),
+\]
+\[
+  T_{ab}(x)
+  \longrightarrow
+  \Lambda_a{}^c(x)\Lambda_b{}^d(x)T_{cd}(x),
+  \quad\text{etc.},
+\]
+where
+\begin{equation}
+  \eta_{ab}\Lambda^a{}_c(x)\Lambda^b{}_d(x)
+  =
+  \eta_{cd}.
+  \tag{12.5.10}\label{eq:12.5.10}
+\end{equation}
+The tetrad \eqref{eq:12.5.2} changes according to the same rule as \(A^a\):
+\begin{equation}
+  e^a{}_\mu(x)
+  \longrightarrow
+  \Lambda^a{}_b(x)e^b{}_\mu(x),
+  \tag{12.5.11}\label{eq:12.5.11}
+\end{equation}
+and in general an arbitrary field \(\psi_n(x)\) will change according to the
+rule
+\begin{equation}
+  \psi_n(x)
+  \longrightarrow
+  \sum_m[D(\Lambda(x))]_{nm}\psi_m(x),
+  \tag{12.5.12}\label{eq:12.5.12}
+\end{equation}
+where \(D(\Lambda)\) is a matrix representation of the Lorentz group (or at
+least of the infinitesimal Lorentz group), of the sort discussed in
+Section~\ref{sec:2.12}.
+
+These two invariance principles lead to a dual classification of physical
+quantities. A \emph{coordinate scalar} or \emph{coordinate tensor} transforms
+as a scalar or a tensor under changes in the coordinate system. A
+\emph{Lorentz scalar} or \emph{Lorentz tensor} or \emph{Lorentz spinor}
+transforms according to a rule like \eqref{eq:12.5.12}, with
+\(D(\Lambda)\) the identity or a tensor representation or a spinor
+representation of the infinitesimal Lorentz group, under changes in the
+choice of the locally inertial coordinate frame. For instance, a field such
+as \eqref{eq:12.5.4} is a coordinate scalar and a Lorentz vector, the Dirac
+field of the electron is a coordinate scalar and a Lorentz spinor, and the
+tetrad \(e^a{}_\mu\) is a coordinate vector and a Lorentz vector. To be
+physically acceptable, the matter action \(I_M\) must be both a coordinate
+scalar and a Lorentz scalar.
+
+At this point, the reader may be becoming uneasy. How is the gravitational
+field going to get into this sort of theory, when the coordinate-scalar
+components \eqref{eq:12.5.9} of the metric tensor are just the constants
+\(\eta_{ab}\)? The answer is that gravitational tensor fields appear in the
+action because, and only because, of the necessity of introducing
+\emph{derivatives} into the theory. If it made sense to construct an action
+\(I_M\) solely from fields, and not their derivatives, then it would only be
+necessary to choose some arbitrary Lorentz-invariant function
+\(\mathcal L(\psi(x))\) of various fields \(\psi_n(x)\) (but not the tetrad),
+call them all coordinate scalars, and take the action as
+\[
+  I_M
+  =
+  \int\dd^4x\,\sqrt{-g(x)}\,\mathcal L(\psi(x)).
+\]
+This would then automatically be a coordinate scalar and a Lorentz scalar.
+However, the examples discussed in the previous sections of this chapter
+show that any physically sensible action must involve derivatives of physical
+quantities as well as the quantities themselves. The tetrad field must enter
+into the action in such a way as to keep it a coordinate scalar and a Lorentz
+scalar despite the presence of derivatives.
+
+An ordinary derivative is of course a coordinate vector, in the sense that
+under a coordinate transformation \(x\longrightarrow x'\), it transforms
+according to the rule
+\[
+  \partial_\mu
+  \longrightarrow
+  \partial'_\mu
+  =
+  \frac{\partial x^\nu}{\partial x'^\mu}\partial_\nu.
+\]
+If all the fields appearing in the action were coordinate scalars, there
+would be no contravariant indices with which to contract the covariant index
+\(\mu\); hence, in order to make the action a coordinate scalar, it is
+necessary to introduce the tetrad field, and incorporate derivatives into the
+action in the form
+\begin{equation}
+  e_a{}^\mu\partial_\mu.
+  \tag{12.5.13}\label{eq:12.5.13}
+\end{equation}
+However, although this is a coordinate scalar, it does not have simple
+transformation properties under position-dependent Lorentz transformations.
+Acting on a general field \(\psi\) with the Lorentz transformation rule
+\eqref{eq:12.5.12}, the coordinate-scalar derivative has the transformation
+rule
+\begin{equation}
+\begin{aligned}
+  e_a{}^\mu(x)\partial_\mu\psi(x)
+  \longrightarrow{}&
+  \Lambda_a{}^b(x)e_b{}^\mu(x)
+  \partial_\mu\!\left[D(\Lambda(x))\psi(x)\right]
+  \\
+  ={}&
+  \Lambda_a{}^b(x)e_b{}^\mu(x)
+  \left\{
+    D(\Lambda(x))\partial_\mu\psi(x)
+    +[\partial_\mu D(\Lambda(x))]\psi(x)
+  \right\}.
+\end{aligned}
+  \tag{12.5.14}\label{eq:12.5.14}
+\end{equation}
+However, what we need is to incorporate derivatives into the action in the
+form of an operator \(\mathcal D_a\) that is not only a coordinate scalar but
+also, unlike \eqref{eq:12.5.13}, is a Lorentz vector, in the sense that for a
+position-dependent Lorentz transformation \(\Lambda^a{}_b(x)\),
+\begin{equation}
+  \mathcal D_a\psi(x)
+  \longrightarrow
+  \Lambda_a{}^b(x)D(\Lambda(x))\mathcal D_b\psi(x).
+  \tag{12.5.15}\label{eq:12.5.15}
+\end{equation}
+Any action which depends only on various fields \(\psi\) and on their
+``derivatives'' \(\mathcal D_a\psi\) will then automatically be independent
+of the choice of locally inertial frames if it is invariant under ordinary
+constant Lorentz transformations. Inspection of Eq.~\eqref{eq:12.5.14}
+shows that we can construct a coordinate-scalar, Lorentz-vector
+derivative\hyperref[ch12-ref-1]{\textsuperscript{1}} \(\mathcal D_a\) of the
+form
+\begin{equation}
+  \mathcal D_a
+  \equiv
+  e_a{}^\mu\left(\partial_\mu+\Gamma_\mu\right),
+  \tag{12.5.16}\label{eq:12.5.16}
+\end{equation}
+where \(\Gamma_\mu\) is a matrix with the Lorentz transformation rule
+\begin{equation}
+\begin{aligned}
+  \Gamma_\mu(x)\longrightarrow{}&
+  D(\Lambda(x))\Gamma_\mu(x)D^{-1}(\Lambda(x))
+  \\
+  &-[\partial_\mu D(\Lambda(x))]D^{-1}(\Lambda(x)).
+\end{aligned}
+  \tag{12.5.17}\label{eq:12.5.17}
+\end{equation}
+The inhomogeneous term in Eq.~\eqref{eq:12.5.17} will then cancel the second
+term in Eq.~\eqref{eq:12.5.14}, giving \(\mathcal D_a\) the desired
+transformation property \eqref{eq:12.5.15}.
+
+In order to determine the structure of the matrix \(\Gamma_\mu(x)\), it will
+be sufficient to consider Lorentz transformations that are infinitesimally
+close to the identity. Such transformations must be of the form
+\begin{equation}
+  \Lambda^a{}_b(x)
+  =
+  \delta^a{}_b+\omega^a{}_b(x),
+  \tag{12.5.18}\label{eq:12.5.18}
+\end{equation}
+with
+\begin{equation}
+  \omega_{ab}(x)=-\omega_{ba}(x).
+  \tag{12.5.19}\label{eq:12.5.19}
+\end{equation}
+In this case, the matrix \(D\) has the form
+\begin{equation}
+  D(1+\omega(x))
+  =
+  1+\frac12\omega^{ab}(x)\sigma_{ab},
+  \tag{12.5.20}\label{eq:12.5.20}
+\end{equation}
+where \(\sigma_{ab}\) are a set of constant matrices that are antisymmetric in
+\(a\) and \(b\),
+\begin{equation}
+  \sigma_{ab}=-\sigma_{ba},
+  \tag{12.5.21}\label{eq:12.5.21}
+\end{equation}
+and that satisfy the commutation relations
+\begin{equation}
+  [\sigma_{ab},\sigma_{cd}]
+  =
+  \eta_{cb}\sigma_{ad}
+  -\eta_{ca}\sigma_{bd}
+  +\eta_{db}\sigma_{ca}
+  -\eta_{da}\sigma_{cb}.
+  \tag{12.5.22}\label{eq:12.5.22}
+\end{equation}
+The condition \eqref{eq:12.5.17} now fixes the transformation of
+\(\Gamma_\mu(x)\). Under the infinitesimal Lorentz transformation
+\eqref{eq:12.5.18}, it transforms according to
+\begin{equation}
+\begin{aligned}
+  \Gamma_\mu(x)\longrightarrow{}&
+  \Gamma_\mu(x)
+  +\frac12\omega^{ab}(x)[\sigma_{ab},\Gamma_\mu(x)]
+  \\
+  &-\frac12\sigma_{ab}\partial_\mu\omega^{ab}(x).
+\end{aligned}
+  \tag{12.5.23}\label{eq:12.5.23}
+\end{equation}
+Note that \(e^a{}_\nu(x)\) transforms into
+\[
+  e^a{}_\nu(x)
+  \longrightarrow
+  e^a{}_\nu(x)+\omega^a{}_b(x)e^b{}_\nu(x),
+\]
+and therefore, using Eq.~\eqref{eq:12.5.8},
+\[
+\begin{aligned}
+  e_b{}^\nu\nabla_\mu e_{a\nu}
+  \longrightarrow{}&
+  e_b{}^\nu\nabla_\mu e_{a\nu}
+  +\omega_b{}^c e_c{}^\nu\nabla_\mu e_{a\nu}
+  \\
+  &+\omega_a{}^c e_b{}^\nu\nabla_\mu e_{c\nu}
+  +\partial_\mu\omega_{ab}.
+\end{aligned}
+\]
+Multiplying this with \(\sigma^{ab}\) and using the commutation rules
+\eqref{eq:12.5.22}, we find that the transformation condition
+\eqref{eq:12.5.23} is satisfied by the matrix
+\begin{equation}
+  \Gamma_\mu(x)
+  =
+  \frac12\sigma^{ab}e_a{}^\nu(x)\nabla_\mu e_{b\nu}(x).
+  \tag{12.5.24}\label{eq:12.5.24}
+\end{equation}
+
+To summarize: The effects of gravitation on any physical system can be taken
+into account by writing down the matter action or the field equations that
+hold in special relativity, and then replacing all derivatives by the
+``covariant'' derivatives
+\begin{equation}
+  \mathcal D_a
+  \equiv
+  e_a{}^\mu\partial_\mu
+  +\frac12\sigma^{bc}e_a{}^\mu e_b{}^\nu
+   \nabla_\mu e_{c\nu}.
+  \tag{12.5.25}\label{eq:12.5.25}
+\end{equation}
+This prescription yields a matter action or field equations that are
+invariant under general coordinate transformations, with \(e_a{}^\mu\)
+regarded as a four-vector and with all other fields regarded as coordinate
+scalars, and that also do not depend on how we choose locally inertial frames
+in defining the tetrad.
+
+How are we to define the energy-momentum tensor in this formalism? A
+variation \(\delta e^a{}_\mu\) in the tetrad field will produce in the matter
+action a change
+\begin{equation}
+  \delta I_M
+  =
+  \int\dd^4x\,\sqrt{-g}\,
+  U_a{}^\mu\,\delta e^a{}_\mu,
+  \tag{12.5.26}\label{eq:12.5.26}
+\end{equation}
+where \(U_a{}^\mu\) is a coordinate vector and a Lorentz vector. Let us
+tentatively define the energy-momentum tensor by
+\begin{equation}
+  T_{\mu\nu}
+  \equiv
+  e^a{}_\mu U_{a\nu}.
+  \tag{12.5.27}\label{eq:12.5.27}
+\end{equation}
+As required, this is manifestly a coordinate tensor and a Lorentz scalar. To
+verify that Eq.~\eqref{eq:12.5.27} is a suitable energy-momentum tensor, we
+must also check that it is symmetric,
+\begin{equation}
+  T_{\mu\nu}=T_{\nu\mu},
+  \tag{12.5.28}\label{eq:12.5.28}
+\end{equation}
+and that it is conserved,
+\begin{equation}
+  \nabla_\nu T^\nu{}_\lambda=0.
+  \tag{12.5.29}\label{eq:12.5.29}
+\end{equation}
+
+The symmetry property of the energy-momentum tensor is not at all obvious in
+the tetrad formalism, but must be derived from the invariance of the matter
+action under the infinitesimal Lorentz transformations
+\[
+  \Lambda^a{}_b(x)
+  =
+  \delta^a{}_b+\omega^a{}_b(x),
+  \qquad
+  \lvert\omega^a{}_b(x)\rvert\ll1.
+\]
+These transformations will produce small changes in all the dynamic
+variables, but the matter action \(I_M\) is supposed to be stationary with
+respect to variations in each of these variables except the tetrad, which
+enters in \(I_M\) as an external field. Hence we only need to take account of
+the change \eqref{eq:12.5.11} in the tetrad field:
+\begin{equation}
+  \delta e^a{}_\mu(x)
+  =
+  \omega^a{}_b(x)e^b{}_\mu(x).
+  \tag{12.5.30}\label{eq:12.5.30}
+\end{equation}
+Using Eq.~\eqref{eq:12.5.30} in Eq.~\eqref{eq:12.5.26}, we find that the
+invariance of the matter action under position-dependent Lorentz
+transformations requires that
+\[
+  0
+  =
+  \int\dd^4x\,\sqrt{-g}\,
+  U_a{}^\mu e^b{}_\mu\omega^a{}_b.
+\]
+But \(\omega_{ab}(x)\) is arbitrary, except for the antisymmetry condition
+\eqref{eq:12.5.19}, so the coefficient of \(\omega_{ab}(x)\) must be
+symmetric:
+\[
+  U_a{}^\mu e_b{}_\mu
+  =
+  U_b{}^\mu e_a{}_\mu.
+\]
+Multiplying this equation by suitable inverse tetrads and using
+Eq.~\eqref{eq:12.5.7}, we find that
+\begin{equation}
+  e^a{}_\lambda U_{a\nu}
+  =
+  e^a{}_\nu U_{a\lambda},
+  \tag{12.5.31}\label{eq:12.5.31}
+\end{equation}
+which is the same as the expected symmetry condition
+\eqref{eq:12.5.28}.
+
+To show that the energy-momentum tensor defined by
+Eq.~\eqref{eq:12.5.27} is conserved, we must use the invariance of the matter
+action under infinitesimal coordinate transformations:
+\[
+  x'^\mu=x^\mu+\xi^\mu(x),
+  \qquad
+  \lvert\xi^\mu\rvert\ \text{very small}.
+\]
+Such transformations alter the tetrad field by an infinitesimal amount
+\begin{equation}
+\begin{aligned}
+  \delta e^a{}_\mu(x)
+  &\equiv
+  e'^a{}_\mu(x)-e^a{}_\mu(x)
+  \\
+  &=
+  -e^a{}_\nu(x)\partial_\mu\xi^\nu(x)
+  -\partial_\lambda e^a{}_\mu(x)\,\xi^\lambda(x)
+  \\
+  &=
+  -(\Lie_\xi e^a)_\mu.
+\end{aligned}
+  \tag{12.5.32}\label{eq:12.5.32}
+\end{equation}
+[Compare Eq.~\eqref{eq:12.3.1}.] Also, all other coordinate-scalar fields
+\(\psi(x)\) change by the amounts
+\[
+  \delta\psi(x)
+  \equiv
+  \psi'(x)-\psi(x)
+  =
+  -\partial_\lambda\psi(x)\,\xi^\lambda(x),
+\]
+but again, the matter action \(I_M\) is stationary with respect to variations
+in these fields, so it is only the variation in the tetrad field that matters
+here. Using Eq.~\eqref{eq:12.5.32} in Eq.~\eqref{eq:12.5.26}, we find that
+the invariance of the matter action \(I_M\) under general coordinate
+transformations requires that
+\[
+  0
+  =
+  -\int\dd^4x\,\sqrt{-g}\,U_a{}^\mu
+  \left[
+    e^a{}_\nu\partial_\mu\xi^\nu
+    +(\partial_\nu e^a{}_\mu)\xi^\nu
+  \right].
+\]
+But \(\xi^\nu(x)\) is arbitrary, so after integrating by parts we can set the
+coefficient of \(\xi^\nu(x)\) equal to zero, and find
+\[
+  0
+  =
+  \partial_\mu\!\left(\sqrt{-g}\,U_a{}^\mu e^a{}_\nu\right)
+  -\sqrt{-g}\,U_a{}^\mu\partial_\nu e^a{}_\mu.
+\]
+Using Eqs.~\eqref{eq:12.5.27} and \eqref{eq:12.5.8}, let us write this as
+\begin{equation}
+  0
+  =
+  \partial_\mu\!\left(\sqrt{-g}\,T^\mu{}_\nu\right)
+  -\sqrt{-g}\,
+   T_\rho{}^\mu e_a{}^\rho\partial_\nu e^a{}_\mu.
+  \tag{12.5.33}\label{eq:12.5.33}
+\end{equation}
+According to Eq.~\eqref{eq:12.5.1}, the metric tensor is related to the
+tetrad by
+\[
+  g_{\rho\mu}
+  =
+  e^a{}_\rho e_{a\mu},
+\]
+and therefore
+\[
+  \partial_\nu g_{\rho\mu}
+  =
+  e_{a\rho}\partial_\nu e^a{}_\mu
+  +e_{a\mu}\partial_\nu e^a{}_\rho.
+\]
+Since \(T_{\rho\mu}\) is symmetric, Eq.~\eqref{eq:12.5.33} may now be written
+\begin{equation}
+  0
+  =
+  \partial_\mu\!\left(\sqrt{-g}\,T^\mu{}_\nu\right)
+  -\frac12\sqrt{-g}\,T^{\rho\mu}\partial_\nu g_{\rho\mu}.
+  \tag{12.5.34}\label{eq:12.5.34}
+\end{equation}
+But Eqs.~\eqref{eq:3.3.1} and \eqref{eq:4.7.6} give
+\[
+  \partial_\nu g_{\rho\mu}
+  =
+  g_{\lambda\mu}\Gamma^\lambda{}_{\nu\rho}
+  +g_{\rho\lambda}\Gamma^\lambda{}_{\nu\mu},
+  \qquad
+  \partial_\mu\ln\sqrt{-g}
+  =
+  \Gamma^\lambda{}_{\lambda\mu},
+\]
+so Eq.~\eqref{eq:12.5.34} is the same as the usual conservation law
+\eqref{eq:12.5.29}.
+
+Our definition \eqref{eq:12.5.27} of the energy-momentum tensor is thus
+completely satisfactory. Note, however, that if the matter action were not
+invariant under position-dependent Lorentz transformations, then not only
+would \(T_{\mu\nu}\) not be symmetric, but in consequence it also would not
+be conserved.
+
+The total action for matter and gravitation is again of the form
+\[
+  I=I_M+I_G,
+\]
+with \(I_G\) of the form \eqref{eq:12.4.2}. A variation in the tetrad will
+produce in the metric a change given by Eq.~\eqref{eq:12.5.1} as
+\[
+  \delta g_{\mu\nu}
+  =
+  e_{a\mu}\delta e^a{}_\nu
+  +e_{a\nu}\delta e^a{}_\mu,
+\]
+so Eq.~\eqref{eq:12.4.3} gives the change in the gravitational action as
+\begin{equation}
+  \delta I_G
+  =
+  -\frac1{8\pi G}\int\dd^4x\,\sqrt{-g}\,
+  \left(R^\mu{}_\nu-\frac12\delta^\mu{}_\nu R\right)
+  e_{a\mu}\delta e^a{}_\nu.
+  \tag{12.5.35}\label{eq:12.5.35}
+\end{equation}
+The total action must be stationary with respect to variations in the tetrad,
+so Eqs.~\eqref{eq:12.5.26} and \eqref{eq:12.5.35} yield the field equation
+\[
+  \left(R^\mu{}_\nu-\frac12\delta^\mu{}_\nu R\right)e_{a\mu}
+  =
+  8\pi G\,U_{a\nu}.
+\]
+Contracting this with \(e^a{}_\lambda\), and using
+Eqs.~\eqref{eq:12.5.1} and \eqref{eq:12.5.27}, then yields the familiar
+Einstein field equation
+\begin{equation}
+  R_{\lambda\nu}-\frac12g_{\lambda\nu}R
+  =
+  8\pi G\,T_{\lambda\nu}.
+  \tag{12.5.36}\label{eq:12.5.36}
+\end{equation}
+These equations serve to determine only \(g_{\mu\nu}\), leaving the tetrad
+determined only up to a Lorentz transformation \eqref{eq:12.5.11}. However,
+the invariance of the matter action under such position-dependent Lorentz
+transformations ensures that all tetrads associated with a given metric have
+the same physical effects.

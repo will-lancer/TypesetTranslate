@@ -1,0 +1,319 @@
+% Source: Weinberg GR, physical PDF pp. 198--202
+%         (printed pp. 175--179).
+% Coverage: Section 8.1, The General Static Isotropic Metric; equations
+%           (8.1.1)--(8.1.16).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: source Ricci convention in (8.1.12)--(8.1.13) converted to
+%                the binding curvature convention and checked componentwise;
+%                source (8.1.10) omits \(dt\) from its stated invariant
+%                volume element, preserved and marked VERIFY SOURCE below.
+
+\subsection{The General Static Isotropic Metric}\label{sec:8.1}
+
+For the moment we put aside Einstein's equations, and consider what is the
+most general metric tensor that can represent a static isotropic
+gravitational field. By ``static and isotropic'' we mean that it must be
+possible to find a set of ``quasi-Minkowskian'' coordinates
+\(x^0=t,x^1,x^2,x^3\), such that the invariant interval
+\(ds^2=g_{\mu\nu}\,dx^\mu dx^\nu\) does not depend on \(t\), and depends on
+\(\mathbf{x}\) and \(d\mathbf{x}\) only through the rotational invariants
+\(d\mathbf{x}^2\), \(\mathbf{x}\cdot d\mathbf{x}\), and
+\(\mathbf{x}^2\). The most general interval is then
+\begin{equation}
+  ds^2
+  =
+  -F(r)\,dt^2
+  +2E(r)\,dt\,\mathbf{x}\cdot d\mathbf{x}
+  +D(r)(\mathbf{x}\cdot d\mathbf{x})^2
+  +C(r)\,d\mathbf{x}^2,
+  \tag{8.1.1}\label{eq:8.1.1}
+\end{equation}
+where \(F,E,D\), and \(C\) are unknown functions of
+\[
+  r\equiv(\mathbf{x}\cdot\mathbf{x})^{1/2}.
+\]
+(Scalar products of three-vectors are throughout this chapter defined as
+usual, e.g.,
+\(\mathbf{x}\cdot d\mathbf{x}
+=x^1dx^1+x^2dx^2+x^3dx^3\), etc.) A deeper derivation of
+Eq.~\eqref{eq:8.1.1} will be given in Chapter~13; for the present we can
+regard Eq.~\eqref{eq:8.1.1} as a definition of what we mean by a static
+isotropic metric, or alternatively as an ansatz that allows us to find some
+solutions of the field equations.
+
+It is convenient to replace \(\mathbf{x}\) with spherical polar coordinates
+\(r,\theta,\varphi\), defined as usual by
+\[
+  x^1=r\sin\theta\cos\varphi,\qquad
+  x^2=r\sin\theta\sin\varphi,\qquad
+  x^3=r\cos\theta.
+\]
+The interval \eqref{eq:8.1.1} then becomes
+\begin{equation}
+  \begin{split}
+  ds^2={}&-F(r)\,dt^2+2rE(r)\,dt\,dr+r^2D(r)\,dr^2\\
+  &+C(r)\bigl(dr^2+r^2d\theta^2
+  +r^2\sin^2\theta\,d\varphi^2\bigr).
+  \end{split}
+  \tag{8.1.2}\label{eq:8.1.2}
+\end{equation}
+We are free to reset our clocks by defining a new time coordinate
+\[
+  t'=t+\Phi(r),
+\]
+with \(\Phi\) an arbitrary function of \(r\). This allows us to eliminate the
+off-diagonal element \(g_{tr}\) by setting
+\[
+  \frac{d\Phi}{dr}=-\frac{rE(r)}{F(r)}.
+\]
+The interval \eqref{eq:8.1.2} then becomes
+\begin{equation}
+  ds^2
+  =
+  -F(r)\,dt'^2+G(r)\,dr^2
+  +C(r)\bigl(dr^2+r^2d\theta^2+r^2\sin^2\theta\,d\varphi^2\bigr),
+  \tag{8.1.3}\label{eq:8.1.3}
+\end{equation}
+where
+\[
+  G(r)\equiv r^2\left(D(r)+\frac{E^2(r)}{F(r)}\right).
+\]
+We are also free to redefine the radius \(r\), and thereby impose one
+further relation on the functions \(F,G\), and \(C\). For instance, suppose
+that we define
+\[
+  r'^2\equiv C(r)r^2.
+\]
+Then the interval \eqref{eq:8.1.3} takes what is called the
+\emph{standard form}
+\begin{equation}
+  ds^2
+  =
+  -B(r')\,dt'^2+A(r')\,dr'^2
+  +r'^2\bigl(d\theta^2+\sin^2\theta\,d\varphi^2\bigr),
+  \tag{8.1.4}\label{eq:8.1.4}
+\end{equation}
+where
+\[
+  B(r')\equiv F(r),
+  \qquad
+  A(r')
+  \equiv
+  \left(1+\frac{G(r)}{C(r)}\right)
+  \left(1+\frac{r}{2C(r)}\frac{dC(r)}{dr}\right)^{-2}.
+\]
+Alternatively, we could define
+\[
+  r''
+  =
+  \exp\left[
+    \int
+    \left(1+\frac{G(r)}{C(r)}\right)^{1/2}\frac{dr}{r}
+  \right],
+\]
+and Eq.~\eqref{eq:8.1.3} would then appear in what is called the
+\emph{isotropic form},
+\begin{equation}
+  ds^2
+  =
+  -H(r'')\,dt'^2
+  +J(r'')\bigl(dr''^2+r''^2d\theta^2
+  +r''^2\sin^2\theta\,d\varphi^2\bigr),
+  \tag{8.1.5}\label{eq:8.1.5}
+\end{equation}
+where
+\[
+  H(r'')\equiv F(r),
+  \qquad
+  J(r'')\equiv\frac{C(r)r^2}{r''^2}.
+\]
+
+We shall do most of our work with a metric of the ``standard'' form:
+\begin{equation}
+  ds^2
+  =
+  -B(r)\,dt^2+A(r)\,dr^2
+  +r^2\bigl(d\theta^2+\sin^2\theta\,d\varphi^2\bigr).
+  \tag{8.1.6}\label{eq:8.1.6}
+\end{equation}
+(We drop primes on \(r\) and \(t\) from now on.) The metric tensor has the
+nonvanishing components
+\begin{equation}
+  g_{rr}=A(r),\qquad
+  g_{\theta\theta}=r^2,\qquad
+  g_{\varphi\varphi}=r^2\sin^2\theta,\qquad
+  g_{tt}=-B(r),
+  \tag{8.1.7}\label{eq:8.1.7}
+\end{equation}
+with functions \(A(r)\) and \(B(r)\) that are to be determined by solving
+the field equations. Since \(g_{\mu\nu}\) is diagonal, it is easy to write
+down all the nonvanishing components of its inverse:
+\begin{equation}
+  g^{rr}=A^{-1}(r),\qquad
+  g^{\theta\theta}=r^{-2},\qquad
+  g^{\varphi\varphi}=r^{-2}(\sin\theta)^{-2},\qquad
+  g^{tt}=-B^{-1}(r).
+  \tag{8.1.8}\label{eq:8.1.8}
+\end{equation}
+Furthermore, the determinant of the metric tensor is
+\begin{equation}
+  g\equiv\det(g_{\mu\nu})
+  =-r^4A(r)B(r)\sin^2\theta,
+  \tag{8.1.9}\label{eq:8.1.9}
+\end{equation}
+% VERIFY SOURCE: the source calls this the invariant volume element but
+% displays the factor per unit coordinate time, omitting \(dt\).
+so the invariant volume element is
+\begin{equation}
+  \sqrt{-g}\,dr\,d\theta\,d\varphi
+  =
+  r^2\sqrt{A(r)B(r)}\sin\theta\,dr\,d\theta\,d\varphi.
+  \tag{8.1.10}\label{eq:8.1.10}
+\end{equation}
+
+The affine connection can be computed from the usual formula
+\[
+  \Gamma^\lambda{}_{\mu\nu}
+  =
+  \frac12g^{\lambda\rho}
+  \left(
+    \partial_\nu g_{\rho\mu}
+    +\partial_\mu g_{\rho\nu}
+    -\partial_\rho g_{\mu\nu}
+  \right).
+\]
+Its only nonvanishing components are
+\begin{equation}
+  \begin{gathered}
+  \Gamma^r{}_{rr}=\frac{A'}{2A},
+  \qquad
+  \Gamma^r{}_{\theta\theta}=-\frac{r}{A},
+  \qquad
+  \Gamma^r{}_{\varphi\varphi}=-\frac{r\sin^2\theta}{A},
+  \qquad
+  \Gamma^r{}_{tt}=\frac{B'}{2A},
+  \\
+  \Gamma^\theta{}_{r\theta}
+  =\Gamma^\theta{}_{\theta r}=\frac1r,
+  \qquad
+  \Gamma^\theta{}_{\varphi\varphi}=-\sin\theta\cos\theta,
+  \\
+  \Gamma^\varphi{}_{r\varphi}
+  =\Gamma^\varphi{}_{\varphi r}=\frac1r,
+  \qquad
+  \Gamma^\varphi{}_{\theta\varphi}
+  =\Gamma^\varphi{}_{\varphi\theta}=\cot\theta,
+  \\
+  \Gamma^t{}_{rt}
+  =\Gamma^t{}_{tr}=\frac{B'}{2B}.
+  \end{gathered}
+  \tag{8.1.11}\label{eq:8.1.11}
+\end{equation}
+
+We also need the Ricci tensor. In the curvature convention of this edition it
+is
+\begin{equation}
+  R_{\mu\nu}
+  =
+  \partial_\rho\Gamma^\rho{}_{\nu\mu}
+  -\partial_\nu\Gamma^\rho{}_{\rho\mu}
+  +\Gamma^\rho{}_{\rho\lambda}\Gamma^\lambda{}_{\nu\mu}
+  -\Gamma^\rho{}_{\nu\lambda}\Gamma^\lambda{}_{\rho\mu}.
+  \tag{8.1.12}\label{eq:8.1.12}
+\end{equation}
+% MODERNIZATION CHECK: Weinberg's (8.1.12)--(8.1.13) use the opposite
+% curvature sign. Every Ricci component below is therefore the negative of
+% the printed component, as required by NOTATION.md.
+(Note that despite its appearance, the second term is symmetric in
+\(\mu\) and \(\nu\), because Eq.~\eqref{eq:4.7.6} gives
+\(\Gamma^\rho{}_{\rho\mu}\) equal to
+\(\tfrac12\partial_\mu\ln(-g)\).) Inserting in Eq.~\eqref{eq:8.1.12}
+the components of the affine connection given by Eq.~\eqref{eq:8.1.11},
+we find
+\begin{equation}
+  \begin{aligned}
+  R_{rr}
+  &=
+  -\frac{B''}{2B}
+  +\frac14\frac{B'}{B}
+    \left(\frac{A'}{A}+\frac{B'}{B}\right)
+  +\frac1r\frac{A'}{A},
+  \\
+  R_{\theta\theta}
+  &=
+  1+\frac{r}{2A}
+  \left(\frac{A'}{A}-\frac{B'}{B}\right)-\frac1A,
+  \\
+  R_{\varphi\varphi}
+  &=\sin^2\theta\,R_{\theta\theta},
+  \\
+  R_{tt}
+  &=
+  \frac{B''}{2A}
+  -\frac14\frac{B'}{A}
+    \left(\frac{A'}{A}+\frac{B'}{B}\right)
+  +\frac1r\frac{B'}{A},
+  \\
+  R_{\mu\nu}&=0\qquad(\mu\ne\nu).
+  \end{aligned}
+  \tag{8.1.13}\label{eq:8.1.13}
+\end{equation}
+(A prime now means differentiation with respect to \(r\).) The results that
+\(R_{r\theta}\), \(R_{r\varphi}\), \(R_{\theta\varphi}\),
+\(R_{t\varphi}\), and \(R_{t\theta}\) vanish, and that
+\(R_{\varphi\varphi}=\sin^2\theta\,R_{\theta\theta}\), are merely
+consequences of the rotational invariance of the metric, whereas the result
+that \(R_{tr}\) vanishes is because we have set our clocks so that the metric
+is invariant under the time-reversal transformation \(t\to-t\).
+
+Neither the standard nor the isotropic coordinates are harmonic, but we can
+easily use the results \eqref{eq:8.1.7} and \eqref{eq:8.1.11} for the
+metric and affine connection in standard coordinates to construct harmonic
+coordinates \(X_1,X_2,X_3,t\). We set
+\begin{equation}
+  X_1=R(r)\sin\theta\cos\varphi,\qquad
+  X_2=R(r)\sin\theta\sin\varphi,\qquad
+  X_3=R(r)\cos\theta.
+  \tag{8.1.14}\label{eq:8.1.14}
+\end{equation}
+A straightforward calculation gives then
+\[
+  \begin{split}
+  \Box X_i
+  &=
+  g^{\mu\nu}
+  \left(
+    \partial_\mu\partial_\nu X_i
+    -\Gamma^\lambda{}_{\mu\nu}\partial_\lambda X_i
+  \right)
+  \\
+  &=
+  \frac{X_i}{AR}
+  \left[
+    \left(\frac{B'}{2B}+\frac2r-\frac{A'}{2A}\right)R'
+    +R''-\frac{2A}{r^2}R
+  \right].
+  \end{split}
+\]
+Also, the standard time coordinate \(t\) satisfies
+\[
+  \Box t=0.
+\]
+Thus the coordinates \(X_1,X_2,X_3,t\) are harmonic if \(R(r)\) satisfies
+the differential equation
+\begin{equation}
+  \frac{d}{dr}
+  \left(r^2B^{1/2}A^{-1/2}\frac{dR}{dr}\right)
+  -2A^{1/2}B^{1/2}R=0.
+  \tag{8.1.15}\label{eq:8.1.15}
+\end{equation}
+In these harmonic coordinates the interval \eqref{eq:8.1.6} becomes
+\begin{equation}
+  ds^2
+  =
+  -B\,dt^2+\frac{r^2}{R^2}\,d\mathbf{X}^2
+  +\left(\frac{A}{R^2R'^2}-\frac{r^2}{R^4}\right)
+  (\mathbf{X}\cdot d\mathbf{X})^2.
+  \tag{8.1.16}\label{eq:8.1.16}
+\end{equation}

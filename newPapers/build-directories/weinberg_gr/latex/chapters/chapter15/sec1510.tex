@@ -1,0 +1,829 @@
+% Source: Weinberg GR, physical PDF pp. 606--616
+%         (printed pp. 578--588; boundary pages are partial).
+% Coverage: Section 15.10, General-Relativistic Theory of Small Fluctuations;
+%           equations (15.10.1)--(15.10.59), including all unnumbered displays.
+% Figures/tables/footnotes: reference notes 156--157; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the curvature components (15.10.18)--(15.10.20) and field
+%                equation (15.10.28) are converted to the binding curvature
+%                sign; the resulting dynamical component equations are
+%                unchanged because both sides reverse. In the unnumbered
+%                derivation preceding (15.10.55), the source's last equality
+%                drops a minus sign; it is preserved and marked VERIFY SOURCE.
+% MODERNIZATION CHECK: R_{\mathrm{source}}(t) -> a(t), with H=\dot a/a.
+% Weinberg's gauge displacement epsilon_mu is denoted xi_mu. Covariant and
+% coordinate derivatives are written with nabla, dots, and compact partials.
+
+\subsection{General-Relativistic Theory of Small Fluctuations}\label{sec:15.10}
+
+The nonrelativistic analysis presented in the last section is adequate for the
+study of compressional and rotational perturbations during the matter-dominated
+era, when \(p\ll\rho\). However, a relativistic treatment is needed to deal
+with the radiation- or lepton-dominated eras, when \(p\) is of the same order
+as \(\rho\), or to treat the propagation of gravitational radiation in any
+era.
+
+The relativistic theory of small disturbances in an expanding universe is
+rather complicated, so the theory presented here will deal only with the
+simplest case, when the unperturbed Robertson--Walker metric has curvature
+\(k=0\). This is not too severe a restriction, because the results for
+\(k=+1\) or \(k=-1\) are essentially the same as for \(k=0\), provided that
+we keep to the early universe when \(\dot a^2\gg\lvert k\rvert\), and
+provided that we keep to perturbations of wavelength much less than \(a\).
+These are the most interesting cases in any event, particularly since the
+growth of condensations in the recent past can be treated for any value of
+\(k\) by the nonrelativistic theory of the last section.
+
+It proves convenient here to include the effects of dissipation from the
+beginning. The medium will be characterized by a coefficient of shear
+viscosity \(\eta\) and a heat-conduction coefficient \(\chi\); as mentioned
+in Section~\ref{sec:15.8}, the bulk viscosity \(\zeta\) will be negligible
+once the pressure and kinetic energy density of matter drop below those of
+radiation. The effects of dissipation can be taken into account by adding
+suitable terms to the energy--momentum tensor. These terms were calculated in
+Section~\ref{sec:2.11} for a relativistic imperfect fluid in the absence of
+gravitation; the correct energy--momentum tensor in the presence of gravitation
+can be immediately obtained by writing Eq.~\eqref{eq:2.11.21} in a generally
+covariant form:
+\begin{equation}
+  T^{\mu\nu}
+  =
+  pg^{\mu\nu}
+  +(p+\rho)U^\mu U^\nu
+  -\eta H^{\mu\rho}H^{\nu\sigma}W_{\rho\sigma}
+  -\chi\bigl(H^{\mu\rho}U^\nu+H^{\nu\rho}U^\mu\bigr)Q_\rho,
+  \tag{15.10.1}\label{eq:15.10.1}
+\end{equation}
+where
+\begin{align}
+  W_{\mu\nu}
+  &\equiv
+  \nabla_\nu U_\mu+\nabla_\mu U_\nu
+  -\frac23g_{\mu\nu}\nabla_\gamma U^\gamma,
+  \tag{15.10.2}\label{eq:15.10.2}\\
+  Q_\mu
+  &\equiv
+  \nabla_\mu T+T U^\nu\nabla_\nu U_\mu,
+  \tag{15.10.3}\label{eq:15.10.3}\\
+  H_{\mu\nu}
+  &\equiv
+  g_{\mu\nu}+U_\mu U_\nu.
+  \tag{15.10.4}\label{eq:15.10.4}
+\end{align}
+It is easy to check that the dissipative terms in \(T^{\mu\nu}\) vanish for
+a Robertson--Walker metric (with any \(k\)), so the Friedmann solutions still
+provide our starting point. In particular, for \(k=0\) the Einstein equations
+have the familiar unperturbed solution
+\begin{align}
+  g_{tt}&=-1,
+  &g_{ti}&=0,
+  &g_{ij}&=a^2(t)\delta_{ij},
+  \tag{15.10.5}\label{eq:15.10.5}\\
+  U^t&=1,
+  &U^i&=0,
+  \tag{15.10.6}\label{eq:15.10.6}
+\end{align}
+where \(x^i\) (with \(i=1,2,3\)) are a set of quasi-Euclidean comoving
+coordinates, and
+\begin{equation}
+  \dot a^2=\frac{8\pi G\rho a^2}{3}.
+  \tag{15.10.7}\label{eq:15.10.7}
+\end{equation}
+The only independent nonvanishing components of the unperturbed affine
+connection are then given by Eqs.~\eqref{eq:15.1.3}--\eqref{eq:15.1.5} as
+\begin{equation}
+  \Gamma^t{}_{ij}=a\dot a\,\delta_{ij},
+  \qquad
+  \Gamma^i{}_{tj}=H\delta^i{}_j.
+  \tag{15.10.8}\label{eq:15.10.8}
+\end{equation}
+
+We shall consider a disturbance, in which the metric is
+\(g_{\mu\nu}+h_{\mu\nu}\), with \(h_{\mu\nu}\) small. Before we write down
+the field equations for \(h_{\mu\nu}\), it is useful to recall the remark of
+Section~\ref{sec:10.9}, that by performing a coordinate transformation
+\eqref{eq:10.9.6}, we can convert the solution \(h_{\mu\nu}\) into an
+equivalent solution
+\[
+  h_{\mu\nu}^*
+  =
+  h_{\mu\nu}+\nabla_\nu\xi_\mu+\nabla_\mu\xi_\nu
+\]
+with \(\xi_\mu\) an arbitrary small vector field. Using
+Eq.~\eqref{eq:15.10.8}, this new solution takes the form
+\begin{align}
+  h_{ij}^*
+  &=
+  h_{ij}
+  +\partial_j\xi_i+\partial_i\xi_j
+  -2a\dot a\,\delta_{ij}\xi_t,
+  \tag{15.10.9}\label{eq:15.10.9}\\
+  h_{it}^*
+  &=
+  h_{it}
+  +\dot\xi_i+\partial_i\xi_t-2H\xi_i,
+  \tag{15.10.10}\label{eq:15.10.10}\\
+  h_{tt}^*
+  &=
+  h_{tt}+2\dot\xi_t.
+  \tag{15.10.11}\label{eq:15.10.11}
+\end{align}
+It is extremely convenient to choose \(\xi_\mu\) so that
+\[
+  h_{it}^*=h_{tt}^*=0,
+\]
+thus maintaining to the greatest possible extent the form of the unperturbed
+metric in Eq.~\eqref{eq:15.10.5}. This can be accomplished by constructing
+\(\xi_\mu\) according to the prescriptions
+\[
+  \xi_t=-\frac12\int h_{tt}\,\dd t,
+  \qquad
+  \xi_i
+  =
+  -a^2\int
+  \bigl(h_{it}+\partial_i\xi_t\bigr)a^{-2}\,\dd t.
+\]
+Dropping the asterisk, it will simply be assumed from now on that the
+coordinate system is chosen so that
+\begin{equation}
+  h_{it}=h_{tt}=0.
+  \tag{15.10.12}\label{eq:15.10.12}
+\end{equation}
+
+The perturbation \(\delta g_{\mu\nu}=h_{\mu\nu}\) produces in the affine
+connection a perturbation \eqref{eq:10.9.1}, which here has the components
+\begin{align}
+  \delta\Gamma^i{}_{jk}
+  &=
+  \frac1{2a^2}
+  \bigl(
+    \partial_kh_{ij}+\partial_jh_{ik}-\partial_ih_{jk}
+  \bigr),
+  \tag{15.10.13}\label{eq:15.10.13}\\
+  \delta\Gamma^t{}_{jk}
+  &=
+  \frac12\dot h_{jk},
+  \tag{15.10.14}\label{eq:15.10.14}\\
+  \delta\Gamma^i{}_{tj}
+  &=
+  \frac1{2a^2}
+  \bigl(\dot h_{ij}-2Hh_{ij}\bigr),
+  \tag{15.10.15}\label{eq:15.10.15}\\
+  \delta\Gamma^t{}_{ti}
+  &=
+  \delta\Gamma^i{}_{tt}
+  =
+  \delta\Gamma^t{}_{tt}
+  =0.
+  \tag{15.10.16}\label{eq:15.10.16}
+\end{align}
+Contracting, we find also that
+\begin{equation}
+  \delta\Gamma_\mu
+  \equiv
+  \delta\Gamma^\nu{}_{\nu\mu}
+  =
+  \delta\Gamma^i{}_{i\mu}
+  =
+  \partial_\mu\left(\frac{h_{kk}}{2a^2}\right),
+  \tag{15.10.17}\label{eq:15.10.17}
+\end{equation}
+it being understood that repeated Latin indices are summed over the values
+\(1,2,3\). The perturbation in the Ricci tensor is then given, in the
+curvature convention of this edition, by the negatives of Weinberg's printed
+components. More explicitly,
+% MODERNIZATION CHECK: each right-hand side in (15.10.18)--(15.10.20) is
+% the negative of the source expression at fixed tensor slots.
+\begin{align}
+  \delta R_{ij}
+  ={}&
+  -\frac1{2a^2}
+  \left(
+    \nabla^2h_{ij}
+    -\partial_j\partial_kh_{ik}
+    -\partial_i\partial_kh_{jk}
+    +\partial_i\partial_jh_{kk}
+  \right)
+  +\frac12\ddot h_{ij}
+  \notag\\
+  &-\frac H2\bigl(\dot h_{ij}-\delta_{ij}\dot h_{kk}\bigr)
+  +H^2\bigl(2h_{ij}-\delta_{ij}h_{kk}\bigr),
+  \tag{15.10.18}\label{eq:15.10.18}\\
+  \delta R_{ti}
+  ={}&
+  -\frac12\frac{\dd}{\dd t}
+  \left[
+    a^{-2}\bigl(\partial_i h_{kk}-\partial_kh_{ki}\bigr)
+  \right],
+  \tag{15.10.19}\label{eq:15.10.19}\\
+  \delta R_{tt}
+  ={}&
+  -\frac1{2a^2}
+  \left[
+    \ddot h_{kk}
+    -2H\dot h_{kk}
+    +2\left(H^2-\frac{\ddot a}{a}\right)h_{kk}
+  \right].
+  \tag{15.10.20}\label{eq:15.10.20}
+\end{align}
+
+According to Eq.~\eqref{eq:15.10.1}, the source term on the right-hand side
+of Einstein's field equations is
+\begin{equation}
+  \begin{split}
+  S_{\mu\nu}
+  &\equiv
+  T_{\mu\nu}-\frac12g_{\mu\nu}T^\lambda{}_\lambda\\
+  &=
+  \frac12(\rho-p)g_{\mu\nu}
+  +(\rho+p)U_\mu U_\nu
+  -\eta H_{\mu\rho}H_{\nu\sigma}W^{\rho\sigma}\\
+  &\quad
+  -\chi\bigl(H_{\mu\rho}U_\nu+H_{\nu\rho}U_\mu\bigr)Q^\rho.
+  \end{split}
+  \tag{15.10.21}\label{eq:15.10.21}
+\end{equation}
+In order to preserve the normalization of the velocity \(U\), we must have
+\[
+  0=\delta(g_{\mu\nu}U^\mu U^\nu)=-2U_1^t.
+\]
+The perturbations \(h_{ij}\), \(U_1^i\), \(\rho_1\), \(p_1\), and \(T_1\)
+then produce in \(S_{\mu\nu}\) the perturbations
+\begin{align}
+  \delta S_{ij}
+  &=
+  \frac12(\rho-p)h_{ij}
+  +\frac{a^2}{2}\delta_{ij}(\rho_1-p_1)
+  -\eta a^4\delta W^{ij},
+  \tag{15.10.22}\label{eq:15.10.22}\\
+  \delta S_{it}
+  &=
+  -a^2(\rho+p)U_1^i
+  -\chi\dot T\,\delta H_{it}
+  +\chi a^2\delta Q^i,
+  \tag{15.10.23}\label{eq:15.10.23}\\
+  \delta S_{tt}
+  &=
+  \frac12(\rho_1+3p_1)-2\chi\dot T\,\delta H_{tt},
+  \tag{15.10.24}\label{eq:15.10.24}
+\end{align}
+where
+\begin{align}
+  \delta H_{it}
+  &=-a^2U_1^i,
+  &\delta H_{tt}&=0,
+  \tag{15.10.25}\label{eq:15.10.25}\\
+  \delta W^{ij}
+  &=
+  a^{-2}
+  \left(
+    \partial_jU_1^i+\partial_iU_1^j
+    -\frac23\delta_{ij}\boldsymbol{\nabla}\cdot\mathbf U_1
+  \right)
+  \notag\\
+  &\quad
+  +a^2\frac{\dd}{\dd t}
+  \left[
+    a^{-2}
+    \left(h_{ij}-\frac13\delta_{ij}h_{kk}\right)
+  \right],
+  \tag{15.10.26}\label{eq:15.10.26}\\
+  \delta Q^i
+  &=
+  a^{-2}
+  \left[
+    \partial_iT_1
+    +T\frac{\dd}{\dd t}\bigl(a^2U_1^i\bigr)
+  \right].
+  \tag{15.10.27}\label{eq:15.10.27}
+\end{align}
+Finally, the perturbed Einstein field equations here take the form
+% MODERNIZATION CHECK: the source prints a minus sign in (15.10.28);
+% it becomes a plus in the binding curvature convention.
+\begin{equation}
+  \delta R_{\mu\nu}=8\pi G\,\delta S_{\mu\nu}.
+  \tag{15.10.28}\label{eq:15.10.28}
+\end{equation}
+Putting together Eqs.~\eqref{eq:15.10.18}--\eqref{eq:15.10.20} and
+\eqref{eq:15.10.22}--\eqref{eq:15.10.28}, we find
+\begin{equation}
+  \begin{split}
+  \nabla^2h_{ij}
+  ={}&
+  \partial_j\partial_kh_{ik}
+  -\partial_i\partial_jh_{kk}
+  +\partial_i\partial_kh_{jk}
+  -a^2\ddot h_{ij}\\
+  &+a\dot a\bigl(\dot h_{ij}-\delta_{ij}\dot h_{kk}\bigr)
+  +2\dot a^2\bigl(-2h_{ij}+\delta_{ij}h_{kk}\bigr)\\
+  ={}&
+  -8\pi G(\rho-p)a^2h_{ij}
+  -8\pi Ga^4\delta_{ij}(\rho_1-p_1)\\
+  &+16\pi G\eta a^4
+  \left(
+    \partial_jU_1^i+\partial_iU_1^j
+    -\frac23\delta_{ij}\boldsymbol{\nabla}\cdot\mathbf U_1
+  \right)\\
+  &+16\pi G\eta a^2\frac{\dd}{\dd t}
+  \left\{
+    a^{-2}
+    \left[h_{ij}-\frac13\delta_{ij}h_{kk}\right]
+  \right\}.
+  \end{split}
+  \tag{15.10.29}\label{eq:15.10.29}
+\end{equation}
+\begin{equation}
+  \begin{split}
+  \frac{\dd}{\dd t}
+  \left\{
+    a^{-2}
+    \bigl(\partial_i h_{kk}-\partial_kh_{ki}\bigr)
+  \right\}
+  ={}&
+  16\pi Ga^2(\rho+p)U_1^i
+  -16\pi G\chi\dot T\,a^2U_1^i\\
+  &-16\pi G\chi
+  \left[
+    \partial_iT_1
+    +T\frac{\dd}{\dd t}\bigl(a^2U_1^i\bigr)
+  \right].
+  \end{split}
+  \tag{15.10.30}\label{eq:15.10.30}
+\end{equation}
+\begin{equation}
+  \ddot h_{kk}
+  -2H\dot h_{kk}
+  +2\left(H^2-\frac{\ddot a}{a}\right)h_{kk}
+  =
+  -8\pi G(\rho_1+3p_1)a^2.
+  \tag{15.10.31}\label{eq:15.10.31}
+\end{equation}
+
+The equations of motion for the fluid can be obtained either from the
+conservation equations \(\nabla_\mu T^{\mu\nu}=0\), or directly from the
+field equations. By applying the operators \(\partial_i\) and
+\(\dd/\dd t+3H\) to Eqs.~\eqref{eq:15.10.29} and
+\eqref{eq:15.10.30}, and using Eqs.~\eqref{eq:15.10.30},
+\eqref{eq:15.10.31}, and the trace of \eqref{eq:15.10.29} to simplify the
+result, we obtain the momentum-conservation equation
+\begin{equation}
+  \begin{aligned}
+  \left(\frac{\dd}{\dd t}+16\pi G\eta\right)
+  &\left[
+    \begin{aligned}
+      &a^5U_1^i\bigl(\rho+p-\chi\dot T\bigr)\\[-0.2em]
+      &\quad-\chi a^3
+      \left\{
+        \partial_iT_1
+        +T\frac{\dd}{\dd t}\bigl(a^2U_1^i\bigr)
+      \right\}
+    \end{aligned}
+  \right]\\
+  &=
+  -a^3\partial_i p_1
+  +\eta a^3
+  \left\{
+    \nabla^2U_1^i
+    +\frac13\partial_i
+      \boldsymbol{\nabla}\cdot\mathbf U_1
+    +\frac23\frac{\dd}{\dd t}
+      \left(a^{-2}\partial_i h_{kk}\right)
+  \right\}.
+  \end{aligned}
+  \tag{15.10.32}\label{eq:15.10.32}
+\end{equation}
+(The vector \(\mathbf U_1\) is understood to have components \(U_1^i\),
+not \(U_{1i}\).) Also, by taking the divergence of
+Eq.~\eqref{eq:15.10.30} and using Eqs.~\eqref{eq:15.10.31} and the trace
+of Eq.~\eqref{eq:15.10.29}, we obtain the energy-conservation equation
+\begin{equation}
+  \begin{split}
+  \dot\rho_1+3H(\rho_1+p_1)
+  ={}&
+  -(\rho+p)
+  \left\{
+    \frac{\dd}{\dd t}\left(\frac{h_{kk}}{2a^2}\right)
+    +\boldsymbol{\nabla}\cdot\mathbf U_1
+  \right\}\\
+  &+\chi
+  \left\{
+    \dot T\,\boldsymbol{\nabla}\cdot\mathbf U_1
+    +a^{-2}\nabla^2T_1
+    +Ta^{-2}\frac{\dd}{\dd t}
+      \left(a^2\boldsymbol{\nabla}\cdot\mathbf U_1\right)
+  \right\}.
+  \end{split}
+  \tag{15.10.33}\label{eq:15.10.33}
+\end{equation}
+As usual in dealing with dissipative processes, we must also make use of the
+conservation law for the particle current \(nU^\mu\):
+\[
+  0=\nabla_\mu(nU^\mu)
+  =U^\mu\partial_\mu n+n\nabla_\mu U^\mu.
+\]
+(Strictly speaking, \(n\) should be taken as the density of baryon number or
+lepton numbers.) For the unperturbed solution, this gives the familiar result
+\[
+  n\propto a^{-3},
+\]
+and to first order in the perturbations \(n_1\), \(\mathbf U_1\), and
+\(h_{ij}\), we have
+\[
+  0
+  =
+  \dot n_1+3Hn_1
+  +n\bigl(\boldsymbol{\nabla}\cdot\mathbf U_1
+  +\delta\Gamma^\nu{}_{t\nu}\bigr),
+\]
+or, using Eq.~\eqref{eq:15.10.17},
+\begin{equation}
+  \frac{\dd}{\dd t}\left(\frac{n_1}{n}\right)
+  =
+  -\boldsymbol{\nabla}\cdot\mathbf U_1
+  -\frac{\dd}{\dd t}\left(\frac{h_{kk}}{2a^2}\right).
+  \tag{15.10.34}\label{eq:15.10.34}
+\end{equation}
+Equations~\eqref{eq:15.10.29}--\eqref{eq:15.10.34} provide a convenient
+set of fundamental equations, but it should be kept in mind that these
+equations are not all independent, as shown by the way they were derived.
+
+One solution of these equations can be found immediately:
+\begin{align}
+  h_{ij}(\mathbf x,t)
+  &=
+  a^2(t)
+  \bigl[\partial_jf_i(\mathbf x)+\partial_if_j(\mathbf x)\bigr],
+  \notag\\
+  \rho_1&=p_1=\mathbf U_1=n_1=T_1=0.
+  \tag{15.10.35}\label{eq:15.10.35}
+\end{align}
+Here \(f_i\) is an arbitrary function of position. [To verify
+Eq.~\eqref{eq:15.10.29}, use Eq.~\eqref{eq:15.1.20}.] However, reference
+to Eqs.~\eqref{eq:15.10.9}--\eqref{eq:15.10.11} shows that this is
+\emph{not} a physical disturbance, but represents the effects of an
+infinitesimal coordinate transformation of the form \eqref{eq:10.9.6}:
+\begin{equation}
+  x^\mu\longrightarrow x^\mu-\xi^\mu(\mathbf x),
+  \qquad
+  \xi^t=0,
+  \qquad
+  \xi_i(\mathbf x,t)=a^2(t)f_i(\mathbf x),
+  \tag{15.10.36}\label{eq:15.10.36}
+\end{equation}
+whose structure is such as to preserve the vanishing of \(h_{it}\) and
+\(h_{tt}\). We are interested only in physical disturbances, whose form
+necessarily differs from \eqref{eq:15.10.35}.
+
+The manifest spatial homogeneity of
+Eqs.~\eqref{eq:15.10.29}--\eqref{eq:15.10.34} allows us to find solutions
+with the spatial dependence
+\begin{equation}
+  h_{ij},\ \rho_1,\ p_1,\ \mathbf U_1,\ n_1,\ T_1
+  \propto
+  \exp(\ii\mathbf q\cdot\mathbf x),
+  \tag{15.10.37}\label{eq:15.10.37}
+\end{equation}
+with \(\mathbf q\) a constant wave number. Just as in the nonrelativistic
+case, it is convenient to analyze the general solution into normal modes.
+Now there are modes of three different kinds:
+
+\subsubsection*{Radiative Modes}
+
+There is a simple class of solutions with
+\begin{equation}
+  0
+  =
+  h_{kk}
+  =
+  q_i h_{ij}
+  =
+  \rho_1
+  =
+  p_1
+  =
+  \mathbf U_1
+  =
+  n_1
+  =
+  T_1.
+  \tag{15.10.38}\label{eq:15.10.38}
+\end{equation}
+Equations~\eqref{eq:15.10.30}--\eqref{eq:15.10.34} are here trivially
+satisfied, and Eq.~\eqref{eq:15.10.29}, together with
+Eq.~\eqref{eq:15.1.20}, gives
+\begin{equation}
+  \ddot h_{ij}
+  +\bigl(-H+16\pi G\eta\bigr)\dot h_{ij}
+  +\left(
+    \frac{q^2}{a^2}
+    -2\frac{\ddot a}{a}
+    -32\pi G\eta H
+  \right)h_{ij}
+  =0.
+  \tag{15.10.39}\label{eq:15.10.39}
+\end{equation}
+For very large wave numbers, we can find a general second-order WKB solution
+\begin{equation}
+  h_{ij}
+  \propto
+  a\exp\left\{
+    \int
+    \left[
+      \frac{\pm\ii\lvert\mathbf q\rvert}{a}
+      -8\pi G\eta
+    \right]\dd t
+  \right\}.
+  \tag{15.10.40}\label{eq:15.10.40}
+\end{equation}
+With \(a\) and \(\eta\) slowly varying, this result may be converted from
+the comoving spatial coordinate system to a nearly Minkowskian system by
+multiplying \(h_{ij}\) by a scale factor \(1/a^2\). Thus
+\eqref{eq:15.10.40} corresponds to a plane gravitational wave of the form
+\eqref{eq:10.2.1}, with
+\[
+  e_{\mu\nu}
+  \propto
+  \frac1a
+  \exp\left\{-8\pi G\int\eta\,\dd t\right\},
+  \qquad
+  \mathbf{k}_{\mathrm{phys}}=\frac{\mathbf q}{a}.
+\]
+According to Eq.~\eqref{eq:10.3.7}, the energy density
+\(\tau_g^{00}\) of these gravitational waves decreases as
+\begin{equation}
+  \tau_g^{00}
+  \propto
+  a^{-4}
+  \exp\left\{-16\pi G\int\eta\,\dd t\right\}.
+  \tag{15.10.41}\label{eq:15.10.41}
+\end{equation}
+The factor \(a^{-4}\) is just what we should expect for the free expansion
+of any wave representing a massless particle. [Compare
+Eq.~\eqref{eq:15.1.23}.] The extra factor in \eqref{eq:15.10.41} tells us
+that gravitational waves in a viscous medium are absorbed at a
+rate:\hyperref[ch15-ref-156]{\textsuperscript{156}}
+\begin{equation}
+  \Gamma_g=16\pi G\eta.
+  \tag{15.10.42}\label{eq:15.10.42}
+\end{equation}
+Generally, \(\eta\) will be of the order of the thermal energy density times
+some typical mean free time \(\tau\), so that \(\Gamma_g\) is at most of
+order \(\dot a^2\tau/a^2\). Hence as long as the collision rate
+\(\tau^{-1}\) is much greater than the expansion rate \(H\), the damping
+rate \(\Gamma_g\) will be much less than \(H\), and viscosity will have
+little effect on the wave propagation. With viscosity neglected, and with
+\(a(t)\) assumed to have a power-law time dependence
+\begin{equation}
+  a(t)\propto t^n,
+  \tag{15.10.43}\label{eq:15.10.43}
+\end{equation}
+we can find a solution of Eq.~\eqref{eq:15.10.39} valid for all wave
+numbers,
+\begin{equation}
+  h_{ij}
+  \propto
+  t^{(n+1)/2}
+  J_{\pm\nu}
+  \left(
+    \frac{\lvert\mathbf q\rvert t}{(1-n)a}
+  \right),
+  \tag{15.10.44}\label{eq:15.10.44}
+\end{equation}
+where \(J_{\pm\nu}\) is the usual Bessel function of order \(\pm\nu\), and
+\begin{equation}
+  \nu=\frac{3n-1}{2-2n}.
+  \tag{15.10.45}\label{eq:15.10.45}
+\end{equation}
+(In the matter-dominated or radiation-dominated eras,
+Eq.~\eqref{eq:15.10.43} holds with \(n=2/3\) or \(n=1/2\), respectively.)
+Unlike the case of electromagnetic waves in a plasma, there is no sharp lower
+limit to the frequencies at which gravitational waves can propagate; instead,
+the solutions start at \(\lvert\mathbf q\rvert t\ll a\) with the behavior
+\begin{equation}
+  h_{ij}\propto t^{2n}
+  \quad\hbox{or}\quad
+  t^{1-n},
+  \tag{15.10.46}\label{eq:15.10.46}
+\end{equation}
+and gradually go over for \(\lvert\mathbf q\rvert t\gg a\) to the wavelike
+solutions \eqref{eq:15.10.40}.
+
+\subsubsection*{Rotational Modes}
+
+There is also a simple class of solutions with
+\begin{equation}
+  0
+  =
+  \dot h_{kk}
+  =
+  \mathbf q\cdot\mathbf U_1
+  =
+  \rho_1
+  =
+  p_1
+  =
+  n_1
+  =
+  T_1.
+  \tag{15.10.47}\label{eq:15.10.47}
+\end{equation}
+Here Eqs.~\eqref{eq:15.10.31}, \eqref{eq:15.10.33}, and
+\eqref{eq:15.10.34} are trivially satisfied, and
+Eq.~\eqref{eq:15.10.32} becomes an equation for the transverse part of
+\(\mathbf U_1\):
+\begin{equation}
+  \left(\frac{\dd}{\dd t}+16\pi G\eta\right)
+  \left[
+    a^5\bigl(\rho+p-\chi\dot T\bigr)\mathbf U_1
+  \right]
+  =
+  -\eta a^3q^2\mathbf U_1.
+  \tag{15.10.48}\label{eq:15.10.48}
+\end{equation}
+Equations~\eqref{eq:15.10.29} and \eqref{eq:15.10.30} then dictate the
+gravitational field produced by the rotations represented by
+\(\mathbf U_1\); these field equations are automatically consistent with
+\eqref{eq:15.10.48}, because the equations of motion from which
+\eqref{eq:15.10.48} was derived were themselves derived from the field
+equations. With dissipation neglected, Eq.~\eqref{eq:15.10.48} simply
+tells us that \(\mathbf U_1\) has a time dependence inversely proportional
+to \(a^5(\rho+p)\),
+\begin{equation}
+  \mathbf U_1\propto\frac1{a^5(\rho+p)},
+  \tag{15.10.49}\label{eq:15.10.49}
+\end{equation}
+which may be regarded as the relativistic generalization (in comoving
+coordinates) of the Newtonian result \eqref{eq:15.9.22}.
+
+\subsubsection*{Compressional Modes}
+
+Once again, the richest time dependence is displayed by the compressional
+modes, in which the quantities \(h_{kk}\), \(\mathbf q\cdot\mathbf U_1\),
+\(\rho_1\), \(p_1\), \(T_1\), and \(n_1\) are not constrained to vanish.
+Equations~\eqref{eq:15.10.31}, \eqref{eq:15.10.33},
+\eqref{eq:15.10.34}, and the divergence of Eq.~\eqref{eq:15.10.32} here
+provide a set of coupled equations for these quantities:
+\begin{equation}
+  \ddot h_{kk}
+  -2H\dot h_{kk}
+  +2\left(H^2-\frac{\ddot a}{a}\right)h_{kk}
+  =
+  -8\pi Ga^2(\rho_1+3p_1),
+  \tag{15.10.50}\label{eq:15.10.50}
+\end{equation}
+\begin{equation}
+  \begin{split}
+  \dot\rho_1+3H(\rho_1+p_1)
+  ={}&
+  -(\rho+p)
+  \left\{
+    \frac{\dd}{\dd t}\left(\frac{h_{kk}}{2a^2}\right)
+    +\ii\mathbf q\cdot\mathbf U_1
+  \right\}\\
+  &+\chi
+  \left\{
+    \ii\dot T\,\mathbf q\cdot\mathbf U_1
+    +\frac{\ii T}{a^2}\frac{\dd}{\dd t}
+      \left(a^2\mathbf q\cdot\mathbf U_1\right)
+    -\frac{q^2}{a^2}T_1
+  \right\},
+  \end{split}
+  \tag{15.10.51}\label{eq:15.10.51}
+\end{equation}
+\begin{equation}
+  \frac{\dd}{\dd t}\left(\frac{n_1}{n}\right)
+  =
+  -\ii\mathbf q\cdot\mathbf U_1
+  -\frac{\dd}{\dd t}\left(\frac{h_{kk}}{2a^2}\right),
+  \tag{15.10.52}\label{eq:15.10.52}
+\end{equation}
+\begin{equation}
+  \begin{aligned}
+  \left(\frac{\dd}{\dd t}+16\pi G\eta\right)
+  &\left[
+    \begin{aligned}
+      &\ii\mathbf q\cdot\mathbf U_1\,
+        a^5\bigl(\rho+p-\chi\dot T\bigr)\\[-0.2em]
+      &\quad+\chi a^3
+      \left\{
+        q^2T_1
+        -\ii\frac{\dd}{\dd t}
+          \left(a^2\mathbf q\cdot\mathbf U_1\right)
+      \right\}
+    \end{aligned}
+  \right]\\
+  &=
+  a^3q^2p_1
+  -\eta a^3q^2
+  \left[
+    \frac{4\ii}{3}\mathbf q\cdot\mathbf U_1
+    +\frac23\frac{\dd}{\dd t}
+      \left(\frac{h_{kk}}{a^2}\right)
+  \right].
+  \end{aligned}
+  \tag{15.10.53}\label{eq:15.10.53}
+\end{equation}
+If we use the equation of state to express \(p_1\) and \(\rho_1\) in terms
+of \(n_1\) and \(T_1\), these can be regarded as four equations for the four
+unknowns \(h_{kk}\), \(\mathbf q\cdot\mathbf U_1\), \(n_1\), and \(T_1\).
+The reader may check that these equations yield the damping rate
+\eqref{eq:15.8.30} for fluctuation wave numbers that are much larger than the
+Jeans limit, for which gravitation and the expansion of the universe may be
+neglected. Also, in the nonrelativistic limit with damping neglected, these
+equations reduce to the previously derived Newtonian equations
+\eqref{eq:15.9.20} and \eqref{eq:15.9.21}, provided that we identify
+\[
+  \delta\equiv\frac{\rho_1}{\rho},
+  \qquad
+  \epsilon
+  \equiv
+  -\frac a{q^2}
+  \left\{
+    \ii\mathbf q\cdot\mathbf U_1
+    +\frac12\frac{\dd}{\dd t}\left(\frac{h_{kk}}{a^2}\right)
+  \right\}.
+\]
+
+For a thorough discussion of the normal modes described by
+Eqs.~\eqref{eq:15.10.50}--\eqref{eq:15.10.53}, the reader is directed to
+the review of Field.\hyperref[ch15-ref-157]{\textsuperscript{157}} For our
+present purposes, it will be sufficient to consider only the limiting case of
+very small wave numbers. In the limit \(\mathbf q\to0\), all dissipative
+effects vanish; indeed, by eliminating \(h_{kk}\) in
+Eqs.~\eqref{eq:15.10.51} and \eqref{eq:15.10.52}, we can show that the
+perturbations keep the entropy constant, so that
+\begin{equation}
+  p_1=v_s^2\rho_1.
+  \tag{15.10.54}\label{eq:15.10.54}
+\end{equation}
+Also, it is convenient to use Eq.~\eqref{eq:15.1.21} to write
+Eq.~\eqref{eq:15.10.51} as
+\[
+  \begin{aligned}
+  -\frac12\frac{\dd}{\dd t}\left(\frac{h_{kk}}{a^2}\right)
+  &=
+  -\frac1{\rho+p}
+  \left\{
+    \dot\rho_1
+    -\frac{\dot\rho(1+v_s^2)\rho_1}{\rho+p}
+  \right\}\\
+  &=
+  -\frac1{\rho+p}
+  \left\{
+    \dot\rho_1
+    -\frac{(\dot\rho+\dot p)\rho_1}{\rho+p}
+  \right\}\\
+  % VERIFY SOURCE: the preceding line is minus the derivative below, but the
+  % scan prints the final equality with a plus sign.
+  &=
+  \frac{\dd}{\dd t}\left(\frac{\rho_1}{\rho+p}\right).
+  \end{aligned}
+\]
+The addition of a time-independent term to \(h_{kk}/a^2\) would correspond
+to a mere coordinate transformation of the form \eqref{eq:15.10.36}, so the
+solution is essentially unique,
+\begin{equation}
+  h_{kk}=-2a^2\delta,
+  \tag{15.10.55}\label{eq:15.10.55}
+\end{equation}
+with \(\delta\) now defined by
+\begin{equation}
+  \rho_1=(\rho+p)\delta.
+  \tag{15.10.56}\label{eq:15.10.56}
+\end{equation}
+Using Eqs.~\eqref{eq:15.10.54}--\eqref{eq:15.10.56} in
+\eqref{eq:15.10.50} yields the second-order differential equation
+\begin{equation}
+  \ddot\delta
+  +2H\dot\delta
+  -4\pi G(\rho+p)(1+3v_s^2)\delta
+  =0.
+  \tag{15.10.57}\label{eq:15.10.57}
+\end{equation}
+
+We are now at last able to calculate the growth rate in ``Phase A,'' that is,
+in the early period when the Jeans mass is very small and the energy density
+is dominated by radiation (and neutrinos). In this case, we have
+\[
+  a\propto t^{1/2},
+  \qquad
+  \rho=\frac3{32\pi Gt^2},
+  \qquad
+  p=\frac\rho3,
+  \qquad
+  v_s=\frac1{\sqrt3},
+\]
+and Eq.~\eqref{eq:15.10.57} reads
+\begin{equation}
+  \ddot\delta+t^{-1}\dot\delta-t^{-2}\delta=0.
+  \tag{15.10.58}\label{eq:15.10.58}
+\end{equation}
+Again, there is a growing solution \(\delta_+\) and a decaying solution
+\(\delta_-\):
+\begin{equation}
+  \delta_+\propto t,
+  \qquad
+  \delta_-\propto t^{-1},
+  \tag{15.10.59}\label{eq:15.10.59}
+\end{equation}
+but no exponential growth.

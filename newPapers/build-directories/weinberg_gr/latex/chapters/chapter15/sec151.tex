@@ -1,0 +1,360 @@
+% Source: Weinberg GR, physical PDF pp. 494--499
+%         (printed pp. 470--475; boundary pages are partial).
+% Coverage: Section 15.1, Einstein's Equations; equations
+%           (15.1.1)--(15.1.26), including all unnumbered displays.
+% Figures/tables/footnotes: reference notes 1 and 2; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: curvature/sign modernization checks are documented below;
+%                no unresolved source readings.
+% MODERNIZATION: R_{\mathrm{source}}(t) -> a(t); H=\dot a/a. Compact
+% partial derivatives replace long coordinate quotients. Curvature-dependent
+% formulas use the binding convention
+% R^\rho{}_{\sigma\mu\nu}
+% =\partial_\mu\Gamma^\rho{}_{\nu\sigma}
+% -\partial_\nu\Gamma^\rho{}_{\mu\sigma}+\cdots, opposite to Weinberg's
+% printed convention. The Friedmann equations themselves are unchanged.
+
+\subsection{Einstein's Equations}\label{sec:15.1}
+
+Let us begin our discussion of dynamical cosmology by considering the
+constraints imposed by Einstein's field equations on the metric for a general
+isotropic and homogeneous universe. According to the results of
+Section~\ref{sec:14.2}, this metric can be chosen to have the
+Robertson--Walker form:
+\begin{equation}
+  g_{tt}=-1,\qquad
+  g_{it}=0,\qquad
+  g_{ij}=a^2(t)\widetilde g_{ij}(\mathbf{x}).
+  \tag{15.1.1}\label{eq:15.1.1}
+\end{equation}
+Here \(t\) is a cosmic time coordinate; \(i\) and \(j\) run over three
+comoving spatial coordinates \(r,\theta,\varphi\); and
+\(\widetilde g_{ij}\) is the metric for a three-dimensional maximally
+symmetric space:
+\begin{equation}
+  \widetilde g_{rr}=(1-kr^2)^{-1},\qquad
+  \widetilde g_{\theta\theta}=r^2,\qquad
+  \widetilde g_{\varphi\varphi}=r^2\sin^2\theta,\qquad
+  \widetilde g_{ij}=0\quad(i\ne j),
+  \tag{15.1.2}\label{eq:15.1.2}
+\end{equation}
+with \(k\) equal to \(+1\), \(-1\), or \(0\).
+
+The only nonvanishing elements of the affine connection for this metric are
+\begin{align}
+  \Gamma^t{}_{ij}
+  &=a\dot a\,\widetilde g_{ij},
+  \tag{15.1.3}\label{eq:15.1.3}\\
+  \Gamma^i{}_{tj}
+  &=\frac{\dot a}{a}\delta^i_j
+  =H\delta^i_j,
+  \tag{15.1.4}\label{eq:15.1.4}\\
+  \Gamma^i{}_{jk}
+  &=\frac12\widetilde g^{i\ell}
+    \left(
+      \partial_j\widetilde g_{\ell k}
+      +\partial_k\widetilde g_{\ell j}
+      -\partial_\ell\widetilde g_{jk}
+    \right)
+  \equiv\widetilde\Gamma^i{}_{jk}.
+  \tag{15.1.5}\label{eq:15.1.5}
+\end{align}
+Its Ricci tensor then has the elements
+% MODERNIZATION CHECK: (15.1.6), (15.1.8), and the spatial Ricci
+% definition (15.1.9) have been reversed from the source curvature sign.
+\begin{align}
+  R_{tt}
+  &=-\frac{3\ddot a}{a},
+  \tag{15.1.6}\label{eq:15.1.6}\\
+  R_{ti}
+  &=0,
+  \tag{15.1.7}\label{eq:15.1.7}\\
+  R_{ij}
+  &=\widetilde R_{ij}
+    +(a\ddot a+2\dot a^2)\widetilde g_{ij},
+  \tag{15.1.8}\label{eq:15.1.8}
+\end{align}
+where \(\widetilde R_{ij}\) is the spatial Ricci tensor calculated from the
+metric \(\widetilde g_{ij}\):
+\begin{equation}
+  \widetilde R_{ij}
+  =
+  \partial_k\widetilde\Gamma^k{}_{ij}
+  -\partial_j\widetilde\Gamma^k{}_{ki}
+  +\widetilde\Gamma^k{}_{k\ell}\widetilde\Gamma^\ell{}_{ij}
+  -\widetilde\Gamma^k{}_{j\ell}\widetilde\Gamma^\ell{}_{ki}.
+  \tag{15.1.9}\label{eq:15.1.9}
+\end{equation}
+Instead of calculating \(\widetilde R_{ij}\) directly, we can save ourselves
+a good deal of work by recalling that \(\widetilde g_{ij}\), as the metric
+of a maximally symmetric space, must necessarily have a Ricci tensor of the
+form \eqref{eq:13.2.4}:
+\begin{equation}
+  \widetilde R_{ij}=2k\widetilde g_{ij}.
+  \tag{15.1.10}\label{eq:15.1.10}
+\end{equation}
+Together with \eqref{eq:15.1.8}, this gives the space-space components of the
+spacetime Ricci tensor as
+\begin{equation}
+  R_{ij}
+  =(a\ddot a+2\dot a^2+2k)\widetilde g_{ij}.
+  \tag{15.1.11}\label{eq:15.1.11}
+\end{equation}
+
+As shown in Section~\ref{sec:14.2}, the energy-momentum tensor here must have
+the perfect-fluid form
+\begin{equation}
+  T_{\mu\nu}
+  =p\,g_{\mu\nu}+(\rho+p)U_\mu U_\nu,
+  \tag{15.1.12}\label{eq:15.1.12}
+\end{equation}
+where \(p\) and \(\rho\) are functions of \(t\) alone, and \(U^\mu\) is
+given by Eqs.~\eqref{eq:14.2.13} and \eqref{eq:14.2.14}:
+\begin{equation}
+  U^t=1,\qquad U^i=0.
+  \tag{15.1.13}\label{eq:15.1.13}
+\end{equation}
+The source term in the Einstein equations is then
+\begin{equation}
+  S_{\mu\nu}
+  \equiv T_{\mu\nu}-\frac12g_{\mu\nu}T^\lambda{}_\lambda
+  =\frac12(\rho-p)g_{\mu\nu}+(\rho+p)U_\mu U_\nu,
+  \tag{15.1.14}\label{eq:15.1.14}
+\end{equation}
+so Eqs.~\eqref{eq:15.1.1}, \eqref{eq:15.1.13}, and
+\eqref{eq:15.1.14} give
+\begin{align}
+  S_{tt}
+  &=\frac12(\rho+3p),
+  \tag{15.1.15}\label{eq:15.1.15}\\
+  S_{it}
+  &=0,
+  \tag{15.1.16}\label{eq:15.1.16}\\
+  S_{ij}
+  &=\frac12(\rho-p)a^2\widetilde g_{ij}.
+  \tag{15.1.17}\label{eq:15.1.17}
+\end{align}
+The Einstein equations read
+% MODERNIZATION CHECK: the source prints R_{\mu\nu}=-8\pi G S_{\mu\nu};
+% the sign is reversed for the binding curvature convention.
+\[
+  R_{\mu\nu}=8\pi G S_{\mu\nu}.
+\]
+With Eqs.~\eqref{eq:15.1.6}, \eqref{eq:15.1.7},
+\eqref{eq:15.1.11}, and \eqref{eq:15.1.15}--\eqref{eq:15.1.17}, the
+time-time component gives
+\begin{equation}
+  3\ddot a=-4\pi G(\rho+3p)a,
+  \tag{15.1.18}\label{eq:15.1.18}
+\end{equation}
+the space-space components give the single equation
+\begin{equation}
+  a\ddot a+2\dot a^2+2k
+  =4\pi G(\rho-p)a^2,
+  \tag{15.1.19}\label{eq:15.1.19}
+\end{equation}
+and the space-time components give \(0=0\).
+
+By eliminating \(\ddot a\) from Eqs.~\eqref{eq:15.1.18} and
+\eqref{eq:15.1.19}, we find a first-order differential equation for \(a(t)\):
+\begin{equation}
+  \dot a^2+k=\frac{8\pi G}{3}\rho a^2.
+  \tag{15.1.20}\label{eq:15.1.20}
+\end{equation}
+In addition we have the equation of energy conservation
+\eqref{eq:14.2.19}, which in modern form is
+\[
+  \dot\rho+3H(\rho+p)=0,
+\]
+or, equivalently,
+\begin{equation}
+  \frac{\dd}{\dd a}\bigl(\rho a^3\bigr)=-3pa^2.
+  \tag{15.1.21}\label{eq:15.1.21}
+\end{equation}
+Given an equation of state \(p=p(\rho)\), we can use this equation to
+determine \(\rho\) as a function of \(a\). For instance, if the energy
+density of the universe is dominated by nonrelativistic matter with negligible
+pressure, then Eq.~\eqref{eq:15.1.21} gives
+\begin{equation}
+  \rho\propto a^{-3}
+  \qquad\text{for }p\ll\rho,
+  \tag{15.1.22}\label{eq:15.1.22}
+\end{equation}
+whereas if the energy density is dominated by relativistic particles, such as
+photons, then \(p=\rho/3\), and Eq.~\eqref{eq:15.1.21} gives
+\begin{equation}
+  \rho\propto a^{-4}
+  \qquad\text{for }p=\frac{\rho}{3}.
+  \tag{15.1.23}\label{eq:15.1.23}
+\end{equation}
+
+Knowing \(\rho\) as a function of \(a\), we can determine \(a(t)\) for all
+time by solving Eq.~\eqref{eq:15.1.20}. \emph{The fundamental equations of
+dynamical cosmology are thus the Einstein equations\allowbreak
+\eqref{eq:15.1.18}--\eqref{eq:15.1.20}, the energy-conservation equation
+\eqref{eq:15.1.21}, and the equation of state.} The cosmological models,
+based on a Robertson--Walker metric, in which \(a(t)\) is derived in this way,
+are known as Friedmann models.\hyperref[ch15-ref-1]{\textsuperscript{1}}
+
+[Incidentally, the solution \(a(t)\) determined in this way will
+automatically satisfy Eqs.~\allowbreak\eqref{eq:15.1.18}
+and\allowbreak\ \eqref{eq:15.1.19}, for by differentiating
+Eq.~\allowbreak\eqref{eq:15.1.20} with respect to time and using
+Eq.~\eqref{eq:15.1.21}, we find
+\begin{align*}
+  2\dot a\ddot a
+  &=
+  \frac{8\pi G\dot a}{3a}
+  \left[
+    -\rho a^2+\frac{\dd}{\dd a}(\rho a^3)
+  \right]\\
+  &=
+  \frac{8\pi G\dot a}{3a}
+  \left(-\rho a^2-3pa^2\right),
+\end{align*}
+which is just the same as Eq.~\eqref{eq:15.1.18}.
+Equation~\eqref{eq:15.1.19} then follows trivially from
+Eqs.~\eqref{eq:15.1.18} and \eqref{eq:15.1.20}. The reason we can make
+do with the single field equation \eqref{eq:15.1.20}, instead of the two
+equations \eqref{eq:15.1.18} and \eqref{eq:15.1.19}, is of course that
+these two equations are not functionally independent, being related by the
+Bianchi identities to the energy-conservation equation
+\eqref{eq:15.1.21}.]
+
+It is possible to learn a good deal about the past and future expansion of the
+universe by simply inspecting Eqs.~\eqref{eq:15.1.18}--\eqref{eq:15.1.21},
+even without specifying a definite equation of state.
+Equation~\eqref{eq:15.1.18} shows that as long as the quantity
+\(\rho+3p\) remains positive, the ``acceleration'' \(\ddot a/a\) is
+negative. Since at present \(a>0\) (by definition), and \(\dot a/a>0\)
+(because we see red shifts, not blue shifts), it follows that the curve of
+\(a(t)\) versus \(t\) must be concave downward, and \emph{must have
+reached \(a(t)=0\) at some finite time in the past}. Let us call this time
+\(t=0\), so that
+\begin{equation}
+  a(0)=0.
+  \tag{15.1.24}\label{eq:15.1.24}
+\end{equation}
+The present time \(t_0\) is then the time elapsed since this singularity, and
+may justly be called the age of the universe. If \(\ddot a(t)\) vanished for
+\(0<t<t_0\), then \(a(t)\) would be just \(a(t_0)t/t_0\), and so the
+age \(t_0\) would just equal the Hubble time
+\(H_0^{-1}=a(t_0)/\dot a(t_0)\). With \(\ddot a\) negative for
+\(0<t<t_0\), \emph{the age of the universe must be less than the Hubble
+time}:
+\begin{equation}
+  t_0<H_0^{-1}.
+  \tag{15.1.25}\label{eq:15.1.25}
+\end{equation}
+
+Looking into the future, we see from Eq.~\eqref{eq:15.1.21} that as long as
+the pressure \(p\) does not become negative, the density \(\rho\) must
+decrease with increasing \(a\) at least as fast as \(a^{-3}\), so that for
+\(a\to\infty\), the right-hand side of Eq.~\eqref{eq:15.1.20} vanishes at
+least as fast as \(a^{-1}\). For \(k=-1\), \(\dot a^2(t)\) remains
+positive-definite, so \(a(t)\) goes on increasing, with
+\[
+  a(t)\longrightarrow t
+  \qquad\text{as }t\longrightarrow\infty
+  \qquad\text{for }k=-1.
+\]
+For \(k=0\), \(\dot a^2(t)\) remains positive-definite, so \(a(t)\) goes
+on increasing, but more slowly than \(t\). For \(k=+1\), \(\dot a^2(t)\)
+will reach zero when \(\rho a^2\) drops to the value \(3/(8\pi G)\).
+Since \(\ddot a\) is negative-definite, \(a(t)\) will then begin to
+decrease again, and eventually must again reach \(a=0\) at some finite time
+in the future. Hence the qualitative course of cosmic history is determined
+by the sign of the spatial curvature: \emph{If \(k=-1\) or \(k=0\), then
+the universe will go on expanding forever, whereas if \(k=+1\), then the
+expansion will eventually cease and be followed by a contraction back to a
+singular state with \(a(t)=0\).}
+
+The combination of the Cosmological Principle with the Einstein field
+equations illuminates some of the profound questions raised by Newton and Mach.
+(See Section~\ref{sec:1.3}.) Suppose that we want to study some physical
+system \(\mathcal S\), such as the solar system or the rotating bucket of
+Newton, whose size is much less than the cosmic scale factor \(a\). We can
+imagine \(\mathcal S\) to be placed in a spherical cavity, cut out of the
+expanding universe, and so long as the size of this cavity is much less than
+\(a\), we can safely consider this cavity to be empty apart from the system
+\(\mathcal S\). If \(\mathcal S\) were absent, the gravitational field
+inside the cavity would be a spherically symmetric field with
+\(R_{\mu\nu}=0\), and hence, according to the Birkhoff theorem (see
+Section~\ref{sec:11.7}), it would have a flat-space metric equivalent to the
+Minkowski metric \(\eta_{\mu\nu}\). As long as the system \(\mathcal S\) is
+not too big, we can then calculate its gravitational field as a perturbation on
+\(\eta_{\mu\nu}\), ignoring all matter outside our cavity, and we can
+determine the behavior of the system by using Newtonian or special-relativistic
+mechanics. The question of what determines the inertial frames is now answered,
+for the only reference frames in which the whole universe appears spherically
+symmetric, so that Birkhoff's theorem applies, are the frames at the center of
+our cavity, which do not rotate with respect to the expanding cloud of
+``typical'' galaxies. The inertial frames are any reference frames that move at
+constant velocity, and without rotation, relative to the frames in which the
+universe appears spherically symmetric.
+
+These remarks lead to an alternative
+derivation\hyperref[ch15-ref-2]{\textsuperscript{2}} of the dynamical equations
+for an expanding universe. If we mentally draw a comoving spherical surface
+anywhere in the universe, then as long as its proper radius is much less than
+\(a(t)\), the galaxies within this sphere will move under the influence of
+their own gravitational field, and the gravitational field of the rest of the
+universe may be neglected. We can then think of the universe as consisting of
+a Newtonian gas in a state of everywhere-uniform expansion. Any given gas
+particle will have a trajectory
+\[
+  \mathbf{x}(t)
+  =\mathbf{x}(t_0)\frac{a(t)}{a(t_0)},
+\]
+with \(a(t)\) a scale factor common to the whole gas. [Note that the gas
+appears the same to an observer mounted on any gas particle as it does to an
+observer at the origin. Also, the ``comoving'' coordinates of a given gas
+particle are not \(x^i(t)\), but rather
+\(r^i=x^i(t)/a(t)\).] The gravitational potential energy \(V\) of such a
+particle just arises from the matter within a sphere of radius
+\(\lvert\mathbf{x}(t)\rvert\) and center at the origin, so
+\begin{align*}
+  V(t)
+  &=-\frac{4\pi}{3}\lvert\mathbf{x}(t)\rvert^3\rho(t)
+    \frac{mG}{\lvert\mathbf{x}(t)\rvert}\\
+  &=-\frac{4\pi}{3}mG\lvert\mathbf{x}(t_0)\rvert^2\rho(t)
+    \frac{a^2(t)}{a^2(t_0)},
+\end{align*}
+where \(m\) is the particle mass and \(\rho(t)\) is the uniform mass
+density of the gas. The kinetic energy of this particle is
+\[
+  T(t)
+  =\frac12m\lvert\dot{\mathbf{x}}(t)\rvert^2
+  =\frac12m\lvert\mathbf{x}(t_0)\rvert^2
+    \frac{\dot a^2(t)}{a^2(t_0)},
+\]
+and its total energy is
+\[
+  E\equiv T(t)+V(t)
+  =\frac12m\frac{\lvert\mathbf{x}(t_0)\rvert^2}{a^2(t_0)}
+    \left[
+      \dot a^2(t)-\frac{8\pi G}{3}\rho(t)a^2(t)
+    \right].
+\]
+With \(E\) constant, this is just the same as Eq.~\eqref{eq:15.1.20},
+provided that we identify the energy of a particle as
+\begin{equation}
+  E
+  =-\frac12m\frac{\lvert\mathbf{x}(t_0)\rvert^2}{a^2(t_0)}\,k.
+  \tag{15.1.26}\label{eq:15.1.26}
+\end{equation}
+For \(k=-1\), \(E\) is positive-definite, so gravitation cannot prevent
+the gas from dispersing to infinity, with a finite asymptotic velocity. For
+\(k=0\), \(E\) vanishes, and the gas is just barely able to expand
+indefinitely. For \(k=+1\), \(E\) is negative, and the explosion must
+ultimately cease and be followed by an implosion.
+
+Although Newtonian cosmology can reproduce the chief results derived from
+Einstein's equations, it is essentially incomplete, for several reasons. We
+need general relativity to justify the neglect of all the matter outside a sphere
+of radius \(\lvert\mathbf{x}(t)\rvert\) in calculating the gravitational
+potential at \(\mathbf{x}(t)\). We cannot use Newtonian mechanics when the
+medium itself consists of particles with relativistic local velocities.
+Finally, it is only through the use of general relativity that we are able to
+interpret the observation of light signals correctly in terms of the cosmic
+scale factor \(a(t)\).

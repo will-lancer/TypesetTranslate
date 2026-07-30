@@ -1,0 +1,285 @@
+#!/usr/bin/env python3
+"""Regression audit for translation-sensitive equations.
+
+The general source audit protects structure and references.  This companion
+gate protects the algebraic hotspots found during independent equation-level
+review, where a syntactically valid edit can still lose a sign, factor,
+index position, or conjugate block.
+"""
+
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+CHAPTERS = ROOT / "latex" / "chapters"
+
+
+def read(relative: str) -> str:
+    return (ROOT / relative).read_text(encoding="utf-8")
+
+
+def compact(text: str) -> str:
+    uncommented = re.sub(r"(?<!\\)%.*", "", text)
+    return re.sub(r"\s+", "", uncommented).replace("&", "")
+
+
+def tagged_equation(relative: str, tag: str) -> str:
+    text = read(relative)
+    marker = rf"\tag{{{tag}}}"
+    marker_index = text.find(marker)
+    if marker_index < 0:
+        raise AssertionError(f"{relative}: missing tag {tag}")
+
+    begin_markers = (
+        r"\begin{equation}",
+        r"\begin{align}",
+        r"\begin{multline}",
+    )
+    starts = [text.rfind(begin, 0, marker_index) for begin in begin_markers]
+    start = max(starts)
+    if start < 0:
+        raise AssertionError(f"{relative}: cannot locate start of {tag}")
+
+    end_match = re.search(
+        r"\\end\{(?:equation|align|multline)\}",
+        text[marker_index:],
+    )
+    if end_match is None:
+        raise AssertionError(f"{relative}: cannot locate end of {tag}")
+    end = marker_index + end_match.end()
+    return compact(text[start:end])
+
+
+def require_contains(
+    name: str,
+    actual: str,
+    expected: str,
+) -> None:
+    if expected not in actual:
+        print(f"FAIL: {name}")
+        print("missing:", expected)
+        raise AssertionError(name)
+    print(f"OK: {name}")
+
+
+def require_absent(
+    name: str,
+    actual: str,
+    forbidden: str,
+) -> None:
+    if forbidden in actual:
+        print(f"FAIL: {name}")
+        print("unexpected:", forbidden)
+        raise AssertionError(name)
+    print(f"OK: {name}")
+
+
+def main() -> int:
+    chapter24 = tagged_equation(
+        "latex/chapters/chapter24/sec242.tex",
+        "24.2.8",
+    )
+    require_contains(
+        "published Wess-Zumino chiral combination",
+        chapter24,
+        r"\partial_\mu(A+iB)",
+    )
+
+    projection = tagged_equation(
+        "latex/chapters/chapter26/sec263.tex",
+        "26.3.31",
+    )
+    require_contains(
+        "two-component F-to-D projection sign",
+        projection,
+        r"=-2\intd^4x\,[h]_D",
+    )
+
+    potential_conjugate = tagged_equation(
+        "latex/chapters/chapter26/sec266.tex",
+        "26.6.11",
+    )
+    require_contains(
+        "potential-superfield squared-derivative conjugation",
+        potential_conjugate,
+        r"\Phi_n^*=D^2S_n^*",
+    )
+    for tag in ("26.6.15", "26.6.16"):
+        equation = tagged_equation(
+            "latex/chapters/chapter26/sec266.tex",
+            tag,
+        )
+        require_contains(
+            f"canonical chiral equation coefficient {tag}",
+            equation,
+            r"=4",
+        )
+
+    appendix_conjugation = tagged_equation(
+        "latex/chapters/chapter26/appendix.tex",
+        "26.A.21",
+    )
+    require_contains(
+        "Appendix 26.A ordered squared-derivative rule",
+        appendix_conjugation,
+        r"\left(\barD_{\dot\alpha}\barD^{\dot\alpha}S\right)^*"
+        r"=D^\alphaD_\alphaS^*",
+    )
+
+    current_algebra = tagged_equation(
+        "latex/chapters/chapter26/sec267.tex",
+        "26.7.45",
+    )
+    for block in (
+        r"\{S_{\mathrm{new}\,\alpha}^\mu,\barQ_{\dot\alpha}\}",
+        r"\{\barS_{\mathrm{new}\,\dot\alpha}^\mu,Q_\alpha\}",
+        r"\{S_{\mathrm{new}\,\alpha}^\mu,Q_\beta\}",
+        r"\{\barS_{\mathrm{new}\,\dot\alpha}^\mu,"
+        r"\barQ_{\dot\beta}\}",
+    ):
+        require_contains(
+            f"complete current-algebra block {block}",
+            current_algebra,
+            block,
+        )
+
+    chapter272 = compact(
+        read("latex/chapters/chapter27/sec272.tex")
+    )
+    require_contains(
+        "raised Grassmann dyad sign",
+        chapter272,
+        r"\theta^\alpha\theta^\beta"
+        r"=-\frac12\epsilon^{\alpha\beta}\theta^2",
+    )
+    require_contains(
+        "gauge-superderivative commutator sign",
+        chapter272,
+        r"[\barD^2,D_\alpha]"
+        r"=-4i\sigma^\mu_{\alpha\dot\alpha}"
+        r"\partial_\mu\barD^{\dot\alpha}",
+    )
+
+    gauge_chapters = compact(
+        "\n".join(
+            path.read_text(encoding="utf-8")
+            for chapter in ("chapter27", "chapter28")
+            for path in sorted((CHAPTERS / chapter).rglob("*.tex"))
+        )
+    )
+    require_absent(
+        "legacy projected field-strength suffix",
+        gauge_chapters,
+        r"W_{A\alphaL}",
+    )
+    require_absent(
+        "legacy lower-epsilon field-strength contraction",
+        gauge_chapters,
+        r"\epsilon_{\alpha\beta}W_\alphaW_\beta",
+    )
+
+    chapter292 = compact(
+        read("latex/chapters/chapter29/sec292.tex")
+    )
+    require_contains(
+        "goldstino spectral trace overall sign and block sum",
+        chapter292,
+        r"4\rho_{\mathrm{VAC}}"
+        r"=-\frac{\lvertF\rvert^2}{2p^0}"
+        r"\operatorname{tr}_2\left("
+        r"\sigma^0p_\mu\bar\sigma^\mu"
+        r"+\bar\sigma^0p_\mu\sigma^\mu\right)",
+    )
+
+    action_d_term = tagged_equation(
+        "latex/chapters/chapter30/sec301.tex",
+        "30.1.8",
+    )
+    require_contains(
+        "potential-superfield D-term interaction factor",
+        action_d_term,
+        r"-4\operatorname{Re}",
+    )
+    action_integral = tagged_equation(
+        "latex/chapters/chapter30/sec301.tex",
+        "30.1.9",
+    )
+    require_contains(
+        "potential-superfield superspace interaction factor",
+        action_integral,
+        r"+2\operatorname{Re}",
+    )
+
+    chapter30 = compact(
+        "\n".join(
+            path.read_text(encoding="utf-8")
+            for path in sorted(
+                (CHAPTERS / "chapter30").rglob("*.tex")
+            )
+        )
+    )
+    for daggered in (
+        r"S^\dagger",
+        r"S_n^\dagger",
+        r"\Phi^\dagger",
+        r"\Phi_n^\dagger",
+    ):
+        require_absent(
+            f"minimal Chapter 30 conjugate notation {daggered}",
+            chapter30,
+            daggered,
+        )
+
+    gravitino_numerator = tagged_equation(
+        "latex/chapters/chapter31/sec313.tex",
+        "31.3.7",
+    )
+    require_contains(
+        "gravitino same-chirality leading sign",
+        gravitino_numerator,
+        r"={}+m_g\left(",
+    )
+    require_contains(
+        "gravitino mixed-chirality leading sign",
+        gravitino_numerator,
+        r"={}-\left(",
+    )
+
+    exchange_amplitude = tagged_equation(
+        "latex/chapters/chapter31/sec313.tex",
+        "31.3.14",
+    )
+    if exchange_amplitude.count(r"\Delta^{") != 4:
+        print("FAIL: explicit four-block gravitino exchange amplitude")
+        print("Delta block count:", exchange_amplitude.count(r"\Delta^{"))
+        raise AssertionError("31.3.14 block count")
+    print("OK: explicit four-block gravitino exchange amplitude")
+
+    gravitino_mass = tagged_equation(
+        "latex/chapters/chapter31/sec316.tex",
+        "31.6.44",
+    )
+    require_contains(
+        "gravitino mass undotted block",
+        gravitino_mass,
+        r"\psi_\mu\sigma^{\mu\nu}\psi_\nu",
+    )
+    require_contains(
+        "gravitino mass dotted conjugate block",
+        gravitino_mass,
+        r"\bar\psi_\mu\bar\sigma^{\mu\nu}\bar\psi_\nu",
+    )
+
+    print("All translation-sensitive semantic hotspot checks passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except AssertionError:
+        sys.exit(1)

@@ -1,0 +1,619 @@
+% Source: Weinberg GR, physical PDF pp. 407 and 410--414
+%         (printed pp. 385--389 and 391), together with the repository
+%         supplements source-supplements/printed-p390.png and
+%         source-supplements/printed-p392.png.
+% Physical pp. 408--409 repeat physical pp. 406--407 (printed pp. 384--385)
+% and are not transcribed a second time. Printed pp. 390 and 392 are absent
+% from the local source PDF and are supplied by the matching-edition scans.
+% Coverage: Section 13.3, Maximally Symmetric Spaces: Construction;
+%           equations (13.3.1)--(13.3.43), including all unnumbered displays.
+% Figures/tables/footnotes: Figure 13.1; reference 2.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: printed p. 389 cites Eq. (13.2.21), which does not exist;
+% the affine-connection calculation plainly uses Eq. (13.3.21), and the
+% in-text cross-reference is corrected accordingly.
+% MODERNIZATION: Line elements use ds^2 and the (-+++) signature. The
+% space-time formulas (13.3.39), (13.3.41), and (13.3.43) have consequently
+% been rewritten with a negative time term. The two curvature displays after
+% (13.3.22) use the target curvature sign convention. Coordinate derivatives
+% are compact, while pedagogically useful Jacobians remain explicit.
+% LITERAL-OPERATOR AUDIT: every multiline display was checked against the
+% source; the continuation plus signs in (13.3.3), (13.3.4), (13.3.17), and
+% (13.3.23) are explicit.
+
+\subsection{Maximally Symmetric Spaces: Construction}\label{sec:13.3}
+
+Maximally symmetric spaces are essentially unique, so we can learn all about
+them by constructing examples with arbitrary curvature \(K\) in any way we
+like.
+
+This is one rather obvious way to carry out this construction. (See
+Figure~\ref{fig:13.1}.) Consider a flat \((N+1)\)-dimensional space, with
+metric given by
+\begin{equation}
+  \dd s^2
+  \equiv
+  g_{AB}\,\dd x^A\dd x^B
+  =
+  C_{\mu\nu}\,\dd x^\mu\dd x^\nu+K^{-1}\dd z^2,
+  \tag{13.3.1}\label{eq:13.3.1}
+\end{equation}
+where \(C_{\mu\nu}\) is a constant \(N\times N\) matrix and \(K\) is some
+constant. We can embed a non-Euclidean \(N\)-dimensional space in this larger
+space by restricting the variables \(x^\mu\) and \(z\) to the surface of a
+sphere (or pseudosphere)
+\begin{equation}
+  K C_{\mu\nu}x^\mu x^\nu+z^2=1.
+  \tag{13.3.2}\label{eq:13.3.2}
+\end{equation}
+
+\input{figures/chapter13/fig13-01.tex}
+
+On this surface \(\dd z^2\) is given by
+\[
+  \dd z^2
+  =
+  \frac{K^2\left(C_{\mu\nu}x^\mu\dd x^\nu\right)^2}
+       {1-KC_{\mu\nu}x^\mu x^\nu},
+\]
+and therefore \eqref{eq:13.3.1} gives
+\begin{equation}
+  \dd s^2
+  =
+  C_{\mu\nu}\,\dd x^\mu\dd x^\nu
+  +
+  \frac{K\left(C_{\mu\nu}x^\mu\dd x^\nu\right)^2}
+       {1-KC_{\mu\nu}x^\mu x^\nu}.
+  \tag{13.3.3}\label{eq:13.3.3}
+\end{equation}
+The metric is then
+\begin{equation}
+  g_{\mu\nu}(x)
+  =
+  C_{\mu\nu}
+  +
+  \frac{K}
+       {1-KC_{\rho\sigma}x^\rho x^\sigma}
+  C_{\mu\lambda}x^\lambda C_{\nu\kappa}x^\kappa.
+  \tag{13.3.4}\label{eq:13.3.4}
+\end{equation}
+A flat space appears here as the special case \(K=0\).
+
+This construction makes it obvious that \eqref{eq:13.3.4} admits an
+\(N(N+1)/2\)-parameter group of isometries, for both the
+\((N+1)\)-dimensional line element \eqref{eq:13.3.1} and the ``embedding''
+condition \eqref{eq:13.3.2} are manifestly invariant under rigid
+``rotations'' of the \((N+1)\)-dimensional space, that is, under the
+transformations
+\begin{equation}
+  x^\mu\longrightarrow x'^\mu
+  =
+  \mathcal R^\mu{}_\nu x^\nu+\mathcal R^\mu{}_{z}z,
+  \tag{13.3.5}\label{eq:13.3.5}
+\end{equation}
+\begin{equation}
+  z\longrightarrow z'
+  =
+  \mathcal R^{z}{}_\mu x^\mu+\mathcal R^{z}{}_{z}z,
+  \tag{13.3.6}\label{eq:13.3.6}
+\end{equation}
+where the \(\mathcal R^A{}_B\) are constants, with
+\begin{equation}
+  C_{\mu\nu}
+  \mathcal R^\mu{}_\rho\mathcal R^\nu{}_\sigma
+  +K^{-1}\mathcal R^{z}{}_\rho\mathcal R^{z}{}_\sigma
+  =
+  C_{\rho\sigma},
+  \tag{13.3.7}\label{eq:13.3.7}
+\end{equation}
+\begin{equation}
+  C_{\mu\nu}
+  \mathcal R^\mu{}_\rho\mathcal R^\nu{}_{z}
+  +K^{-1}\mathcal R^{z}{}_\rho\mathcal R^{z}{}_{z}
+  =
+  0,
+  \tag{13.3.8}\label{eq:13.3.8}
+\end{equation}
+\begin{equation}
+  C_{\mu\nu}
+  \mathcal R^\mu{}_{z}\mathcal R^\nu{}_{z}
+  +K^{-1}\left(\mathcal R^{z}{}_{z}\right)^2
+  =
+  K^{-1}.
+  \tag{13.3.9}\label{eq:13.3.9}
+\end{equation}
+It is convenient to distinguish two classes of simple transformations
+satisfying \eqref{eq:13.3.7}--\eqref{eq:13.3.9}:
+\begin{equation}
+  \text{(A)}
+  \qquad
+  \mathcal R^\mu{}_\nu=\mathscr R^\mu{}_\nu,
+  \qquad
+  \mathcal R^\mu{}_{z}=\mathcal R^{z}{}_\mu=0,
+  \qquad
+  \mathcal R^{z}{}_{z}=1,
+  \tag{13.3.10}\label{eq:13.3.10}
+\end{equation}
+where \(\mathscr R^\mu{}_\nu\) is any \(N\times N\) matrix with
+\begin{equation}
+  C_{\mu\nu}
+  \mathscr R^\mu{}_\rho\mathscr R^\nu{}_\sigma
+  =
+  C_{\rho\sigma}.
+  \tag{13.3.11}\label{eq:13.3.11}
+\end{equation}
+These are just rigid ``rotations'' about the origin:
+\begin{equation}
+  x'^\mu=\mathscr R^\mu{}_\nu x^\nu.
+  \tag{13.3.12}\label{eq:13.3.12}
+\end{equation}
+The second class is
+\begin{equation}
+  \text{(B)}
+  \qquad
+  \mathcal R^\mu{}_{z}=a^\mu,
+  \qquad
+  \mathcal R^{z}{}_\mu=-K C_{\mu\nu}a^\nu,
+  \qquad
+  \mathcal R^{z}{}_{z}
+  =
+  \left(1-KC_{\rho\sigma}a^\rho a^\sigma\right)^{1/2},
+  \tag{13.3.13}\label{eq:13.3.13}
+\end{equation}
+\begin{equation}
+  \mathcal R^\mu{}_\nu
+  =
+  \delta^\mu_\nu-bK C_{\nu\rho}a^\rho a^\mu,
+  \tag{13.3.14}\label{eq:13.3.14}
+\end{equation}
+where \(a^\mu\) is arbitrary except that
+\(\mathcal R^{z}{}_{z}\) must be real, that is,
+\begin{equation}
+  K C_{\rho\sigma}a^\rho a^\sigma\leq1,
+  \tag{13.3.15}\label{eq:13.3.15}
+\end{equation}
+and
+\begin{equation}
+  b
+  \equiv
+  \frac{
+    1-\left(1-KC_{\rho\sigma}a^\rho a^\sigma\right)^{1/2}
+  }{
+    KC_{\rho\sigma}a^\rho a^\sigma
+  }.
+  \tag{13.3.16}\label{eq:13.3.16}
+\end{equation}
+These are ``quasitranslations,'' with
+\begin{equation}
+  x'^\mu
+  =
+  x^\mu
+  +
+  a^\mu
+  \left[
+    \left(1-KC_{\rho\sigma}x^\rho x^\sigma\right)^{1/2}
+    -bK C_{\rho\sigma}x^\rho a^\sigma
+  \right].
+  \tag{13.3.17}\label{eq:13.3.17}
+\end{equation}
+In particular, these transformations take the origin \(x^\mu=0\) into
+\(a^\mu\).
+
+The existence of isometries \eqref{eq:13.3.17} that take the origin into any
+point (at least within a finite region) means that this space is
+\emph{homogeneous}: any point is geometrically like any other point. (Our
+coordinate system hides this property, just as a polar projection map of the
+earth hides the fact that the curvature of the earth is about the same in
+Massachusetts as at the North Pole.) Also, the existence of isometries
+\eqref{eq:13.3.10} that include all rigid ``rotations'' about the origin means
+that this space is \emph{isotropic} about the origin. Since the metric is
+homogeneous, and isotropic about the origin, it is isotropic about every
+point, and maximally symmetric.
+
+We can construct the Killing vectors for this metric by letting the finite
+transformations \eqref{eq:13.3.5}, \eqref{eq:13.3.6} approach the unit
+transformation. First, consider the transformations (A), and let
+\[
+  \mathscr R^\mu{}_\nu
+  =
+  \delta^\mu_\nu+\epsilon\Omega^\mu{}_\nu,
+  \qquad
+  \lvert\epsilon\rvert\ll1,
+\]
+\begin{equation}
+  C_{\mu\sigma}\Omega^\mu{}_\rho
+  +C_{\rho\mu}\Omega^\mu{}_\sigma
+  =
+  0.
+  \tag{13.3.18}\label{eq:13.3.18}
+\end{equation}
+Comparing with \eqref{eq:13.1.3}, the corresponding Killing vectors are
+\begin{equation}
+  \xi^\mu_\alpha(x)=\Omega^\mu{}_\nu x^\nu.
+  \tag{13.3.19}\label{eq:13.3.19}
+\end{equation}
+Next, consider the transformations (B), and let
+\[
+  a^\mu=\epsilon\alpha^\mu,
+  \qquad
+  \lvert\epsilon\rvert\ll1.
+\]
+Comparing with \eqref{eq:13.1.3}, the corresponding Killing vectors are
+\begin{equation}
+  \xi^\mu_\alpha(x)
+  =
+  \alpha^\mu
+  \left(1-KC_{\nu\rho}x^\nu x^\rho\right)^{1/2}.
+  \tag{13.3.20}\label{eq:13.3.20}
+\end{equation}
+The reader may check that \eqref{eq:13.3.19} and \eqref{eq:13.3.20} do
+satisfy the Killing conditions \eqref{eq:13.1.5}. There are \(N(N-1)/2\)
+independent parameters \(\Omega^\mu{}_\nu\) [that is, \(N^2\) elements
+\(\Omega^\mu{}_\nu\), subject to the \(N(N+1)/2\) conditions
+\eqref{eq:13.3.18}] and \(N\) parameters \(\alpha^\mu\), so this metric
+admits \(N(N+1)/2\) independent Killing vectors, verifying maximal symmetry.
+
+The geodesics of this metric take a remarkably simple form. From
+\eqref{eq:13.3.4} we can readily calculate that the affine connection is
+\begin{equation}
+  \Gamma^\mu{}_{\nu\lambda}
+  =
+  Kx^\mu g_{\nu\lambda},
+  \tag{13.3.21}\label{eq:13.3.21}
+\end{equation}
+so the differential equation for a geodesic is
+\begin{equation}
+  \frac{\dd^2x^\mu}{\dd\tau^2}+Kx^\mu=0.
+  \tag{13.3.22}\label{eq:13.3.22}
+\end{equation}
+The solutions are thus linear combinations of
+\(\sin(\tau\sqrt K)\) and \(\cos(\tau\sqrt K)\) for \(K>0\), or of
+\(\sinh(\tau\sqrt{-K})\) and \(\cosh(\tau\sqrt{-K})\) for \(K<0\).
+
+We can uncover the inner properties of this space by calculating the curvature
+tensor; a straightforward computation using Eqs.~\eqref{eq:6.6.2} and
+\eqref{eq:13.3.21} gives the Riemann--Christoffel tensor for the metric
+\eqref{eq:13.3.4} as
+% VERIFY SOURCE: printed p. 389 cites (13.2.21); the intended equation is
+% (13.3.21), the affine connection immediately above.
+\[
+  \begin{aligned}
+  R_{\kappa\nu\rho\sigma}
+  ={}&
+  -K\left(
+    C_{\kappa\sigma}C_{\nu\rho}
+    -C_{\kappa\rho}C_{\nu\sigma}
+  \right)
+  \\
+  &-\frac{K^2}{1-KC_{\mu\lambda}x^\mu x^\lambda}
+  \left(
+    C_{\kappa\sigma}x_\nu x_\rho
+    -C_{\kappa\rho}x_\nu x_\sigma
+    +C_{\nu\rho}x_\kappa x_\sigma
+    -C_{\nu\sigma}x_\rho x_\kappa
+  \right),
+  \end{aligned}
+\]
+where \(x_\nu\equiv C_{\nu\mu}x^\mu\), or
+\[
+  R_{\kappa\nu\rho\sigma}
+  =
+  K\left(
+    g_{\sigma\nu}g_{\kappa\rho}
+    -g_{\rho\nu}g_{\kappa\sigma}
+  \right),
+\]
+in agreement with Eq.~\eqref{eq:13.2.9}. Hence the constant \(K\) introduced
+in Eqs.~\eqref{eq:13.3.1} and \eqref{eq:13.3.2} is the same as the curvature
+constant introduced in the last section.
+
+Since \(K\) is an invariant parameter, we cannot by a coordinate
+transformation convert the metric \eqref{eq:13.3.4} into a similar metric
+with a different \(K\). In contrast, Eq.~\eqref{eq:13.3.3} makes it obvious
+that by a linear transformation
+\[
+  x^\mu=A^\mu{}_\nu x'^\nu
+\]
+we can convert the metric \eqref{eq:13.3.4} into a similar metric with the
+same \(K\) and with \(C_{\mu\nu}\) changed into
+\[
+  C'_{\mu\nu}
+  =
+  A^\rho{}_\mu A^\sigma{}_\nu C_{\rho\sigma}.
+\]
+Our discussion in Section~\ref{sec:3.6} shows that in this way
+\(C_{\mu\nu}\) can be changed into any real symmetric matrix we like, as long
+as we do not change the numbers of its positive and negative eigenvalues.
+Also, the numbers of eigenvalues of each sign of the matrix \(C_{\mu\nu}\)
+are the same as for the matrix \(g_{\mu\nu}\) at the point \(x=0\), and hence
+the same everywhere, since all points are equivalent.
+
+An \(N\)-dimensional metric that allows the introduction of locally Euclidean
+(as opposed, say, to Minkowskian) coordinate systems will have all its
+eigenvalues positive, so for \(K\neq0\) we can take \(C_{\mu\nu}\) as
+\(\lvert K\rvert^{-1}\) times the unit matrix, in which case
+\eqref{eq:13.3.3} becomes
+\begin{equation}
+  \dd s^2
+  =
+  K^{-1}
+  \left[
+    \dd\mathbf{x}^2
+    +
+    \frac{(\mathbf{x}\cdot\dd\mathbf{x})^2}{1-\mathbf{x}^2}
+  \right]
+  \qquad\text{for \(K>0\),}
+  \tag{13.3.23}\label{eq:13.3.23}
+\end{equation}
+or
+\begin{equation}
+  \dd s^2
+  =
+  \lvert K\rvert^{-1}
+  \left[
+    \dd\mathbf{x}^2
+    -\frac{(\mathbf{x}\cdot\dd\mathbf{x})^2}{1+\mathbf{x}^2}
+  \right]
+  \qquad\text{for \(K<0\).}
+  \tag{13.3.24}\label{eq:13.3.24}
+\end{equation}
+For \(K=0\), we take \(C_{\mu\nu}\) as just the unit matrix, and
+\eqref{eq:13.3.3} gives
+\begin{equation}
+  \dd s^2=\dd\mathbf{x}^2
+  \qquad\text{for \(K=0\).}
+  \tag{13.3.25}\label{eq:13.3.25}
+\end{equation}
+(We are using an obvious \(N\)-dimensional vector notation. Also, we have
+replaced the source's proper-time notation with a proper length
+\(\dd s^2\), because for the moment we are doing geometry rather than
+physics.) Let us explore the \emph{global} properties of these spaces.
+
+For \(K>0\), our most convenient approach is to go back to the interpretation
+of \eqref{eq:13.3.23} as the metric of the curved space embedded by
+Eq.~\eqref{eq:13.3.2} in the flat space \eqref{eq:13.3.1}; that is,
+\eqref{eq:13.3.23} describes the surface
+\begin{equation}
+  \mathbf{x}^2+z^2=1
+  \tag{13.3.26}\label{eq:13.3.26}
+\end{equation}
+in the flat space with
+\begin{equation}
+  \dd s^2
+  =
+  K^{-1}\left(\dd\mathbf{x}^2+\dd z^2\right).
+  \tag{13.3.27}\label{eq:13.3.27}
+\end{equation}
+Obviously this metric simply describes the surface of a sphere of radius
+\(K^{-1/2}\) in an \((N+1)\)-dimensional Euclidean space. (To make the
+coordinates \(\mathbf{x}\) and \(z\) truly Euclidean, we should define
+\(\mathbf{x}'=K^{-1/2}\mathbf{x}\) and \(z'=K^{-1/2}z\), in which case
+\eqref{eq:13.3.26} reads
+\(\mathbf{x}'^2+z'^2=K^{-1}\).) Indeed, in two dimensions we can introduce
+angular coordinates \(\theta,\phi\) by
+\[
+  x_1=\sin\theta\cos\phi,
+  \qquad
+  x_2=\sin\theta\sin\phi,
+\]
+and \eqref{eq:13.3.27} then becomes the familiar line element on a sphere
+of radius \(K^{-1/2}\):
+\begin{equation}
+  \dd s^2
+  =
+  K^{-1}
+  \left(
+    \dd\theta^2+\sin^2\theta\,\dd\phi^2
+  \right).
+  \tag{13.3.28}\label{eq:13.3.28}
+\end{equation}
+In general, the range of the variables \(\mathbf{x}\) is
+\[
+  \mathbf{x}^2\leq1.
+\]
+However, each \(\mathbf{x}\) actually corresponds to \emph{two} points,
+corresponding to the two roots of Eq.~\eqref{eq:13.3.26} for \(z\).
+(For instance, in two dimensions the components of \(\mathbf{x}\) are the
+coordinates of points on a sphere projected on a tangent plane; in a polar
+projection map of the earth, Boston will appear at the same point as San
+Carlos de Bariloche, Argentina.) The volume of the \(N\)-dimensional space
+described by \eqref{eq:13.3.23} is therefore
+\[
+  \begin{aligned}
+  V_N
+  &=
+  2\int_{\mathbf{x}^2\leq1}
+  \sqrt{g}\,\dd x_1\cdots\dd x_N
+  \\
+  &=
+  2K^{-N/2}
+  \int_{\mathbf{x}^2\leq1}
+  \frac{\dd x_1\cdots\dd x_N}
+       {(1-\mathbf{x}^2)^{1/2}}.
+  \end{aligned}
+\]
+A straightforward calculation gives
+\begin{equation}
+  V_N
+  =
+  \frac{2\pi^{(N+1)/2}}
+       {\Gamma\!\left((N+1)/2\right)}
+  K^{-N/2}.
+  \tag{13.3.29}\label{eq:13.3.29}
+\end{equation}
+For instance, \(V_1=2\pi K^{-1/2}\), which is just the perimeter of a
+circle of radius \(K^{-1/2}\), and \(V_2=4\pi K^{-1}\), which is just the
+area of a sphere with radius \(K^{-1/2}\). A three-dimensional space of
+constant positive curvature has the volume
+\[
+  V_3=2\pi^2K^{-3/2}.
+\]
+We can also calculate the circumference of such spaces, using for the
+geodesics the solutions of Eq.~\eqref{eq:13.3.22}, which now reads
+\begin{equation}
+  \frac{\dd^2\mathbf{x}}{\dd s^2}+K\mathbf{x}=0.
+  \tag{13.3.30}\label{eq:13.3.30}
+\end{equation}
+The solutions that pass through the point \(\mathbf{x}=0\) are
+\begin{equation}
+  \mathbf{x}
+  =
+  \mathbf{e}\sin\!\left(sK^{1/2}\right),
+  \tag{13.3.31}\label{eq:13.3.31}
+\end{equation}
+where, in order to satisfy \eqref{eq:13.3.23},
+\begin{equation}
+  \mathbf{e}\cdot\mathbf{e}=1.
+  \tag{13.3.32}\label{eq:13.3.32}
+\end{equation}
+As we go out along a geodesic from the ``North pole''
+\(\mathbf{x}=0\), we reach the ``equator'' \(\mathbf{x}=\mathbf{e}\) at
+\(s=\pi K^{-1/2}/2\), we reach the ``South pole'' \(\mathbf{x}=0\) at
+\(s=\pi K^{-1/2}\), we reach the opposite point
+\(\mathbf{x}=-\mathbf{e}\) of the ``equator'' at
+\(s=3\pi K^{-1/2}/2\), and we return to our starting point at
+\(s=2\pi K^{-1/2}\). Thus the distance from any point around the whole
+space and back to itself along a geodesic is
+\begin{equation}
+  L=2\pi K^{-1/2}
+  \tag{13.3.33}\label{eq:13.3.33}
+\end{equation}
+for spaces of constant positive curvature and arbitrary dimensionality.
+This calculation shows very clearly that the space described by
+\eqref{eq:13.3.23} is finite, but it is not bounded: when we come to the
+apparent singularity at \(\mathbf{x}^2=1\), we continue right through, but
+with \(z\) given by the root of Eq.~\eqref{eq:13.3.26} of opposite sign.
+
+For \(K<0\) the metric \eqref{eq:13.3.24} does not even have an apparent
+singularity, and there is nothing to restrict the coordinates
+\(\mathbf{x}\) to any finite range. This can be seen even more definitely
+by calculating the geodesics, which are now given by
+Eqs.~\eqref{eq:13.3.30} and \eqref{eq:13.3.24} as
+\begin{equation}
+  \mathbf{x}
+  =
+  \mathbf{e}\sinh\!\left(s(-K)^{1/2}\right),
+  \tag{13.3.34}\label{eq:13.3.34}
+\end{equation}
+\begin{equation}
+  \mathbf{e}\cdot\mathbf{e}=1.
+  \tag{13.3.35}\label{eq:13.3.35}
+\end{equation}
+We can obviously go out along this geodesic an unlimited distance from the
+origin. For \(N=2\), this space is just that discovered by Gauss, Bolyai,
+and Lobachevski. [See Section~\ref{sec:1.1}. In order to put the metric in
+the form \eqref{eq:1.1.9} of Klein's model, it is necessary to introduce a
+new set of coordinates \(\mathbf{x}'\), defined by
+\(\mathbf{x}=\mathbf{x}'(1-\mathbf{x}'^2)^{-1/2}\).] We see from
+Eqs.~\eqref{eq:13.3.1} and \eqref{eq:13.3.2} that this geometry describes
+the surface
+\begin{equation}
+  -\mathbf{x}^2+z^2=1
+  \tag{13.3.36}\label{eq:13.3.36}
+\end{equation}
+in a flat space, with
+\begin{equation}
+  \dd s^2
+  =
+  \lvert K\rvert^{-1}
+  \left(\dd\mathbf{x}^2-\dd z^2\right).
+  \tag{13.3.37}\label{eq:13.3.37}
+\end{equation}
+The minus sign in \eqref{eq:13.3.37} means that this flat space is not
+Euclidean. It is therefore understandable that the Gauss--Bolyai--Lobachevski
+geometry could not be discovered until mathematicians learned to think of
+curved surfaces, not as subspaces of an ordinary Euclidean space, but as
+spaces characterized by their own inner metric relations.
+
+Finally, let us return to space-time, and consider the structure of a
+four-dimensional maximally symmetric metric with three positive and one
+negative eigenvalue. In this case, in the target \((-+++)\) convention, we
+can set
+\begin{equation}
+  C_{\mu\nu}=\eta_{\mu\nu},
+  \tag{13.3.38}\label{eq:13.3.38}
+\end{equation}
+and the metric is
+\begin{equation}
+  \dd s^2
+  =
+  -\dd t^2+\dd\mathbf{x}^2
+  +
+  \frac{
+    K\left(\mathbf{x}\cdot\dd\mathbf{x}-t\,\dd t\right)^2
+  }{
+    1-K\left(\mathbf{x}^2-t^2\right)
+  }.
+  \tag{13.3.39}\label{eq:13.3.39}
+\end{equation}
+For \(K>0\), we can introduce coordinates in which the metric appears
+\emph{spatially} flat, by setting
+\begin{equation}
+  \begin{aligned}
+  t
+  &=
+  \frac1{\sqrt K}
+  \left[
+    \frac{K\mathbf{x}'^2}{2}\cosh\!\left(K^{1/2}t'\right)
+    +
+    \left(1+\frac{K\mathbf{x}'^2}{2}\right)
+    \sinh\!\left(K^{1/2}t'\right)
+  \right],
+  \\
+  \mathbf{x}
+  &=
+  \mathbf{x}'\exp\!\left(K^{1/2}t'\right).
+  \end{aligned}
+  \tag{13.3.40}\label{eq:13.3.40}
+\end{equation}
+Then \eqref{eq:13.3.39} becomes
+\begin{equation}
+  \dd s^2
+  =
+  -\dd t'^2
+  +\exp\!\left(2K^{1/2}t'\right)\dd\mathbf{x}'^2.
+  \tag{13.3.41}\label{eq:13.3.41}
+\end{equation}
+We can also introduce coordinates in which the metric appears
+time-independent, by setting
+\begin{equation}
+  \begin{aligned}
+  t''
+  &=
+  t'
+  -
+  \frac1{2K^{1/2}}
+  \ln\!\left[
+    1-K\mathbf{x}'^2\exp\!\left(2K^{1/2}t'\right)
+  \right],
+  \\
+  \mathbf{x}''
+  &=
+  \mathbf{x}'\exp\!\left(K^{1/2}t'\right).
+  \end{aligned}
+  \tag{13.3.42}\label{eq:13.3.42}
+\end{equation}
+Then \eqref{eq:13.3.41} becomes
+\begin{equation}
+  \dd s^2
+  =
+  -\left(1-K\mathbf{x}''^2\right)\dd t''^2
+  +\dd\mathbf{x}''^2
+  +
+  \frac{
+    K\left(\mathbf{x}''\cdot\dd\mathbf{x}''\right)^2
+  }{
+    1-K\mathbf{x}''^2
+  }.
+  \tag{13.3.43}\label{eq:13.3.43}
+\end{equation}
+This metric was first discussed in this form by de Sitter;%
+\hyperref[ch13-ref-2]{\textsuperscript{2}} it will provide the basis for our
+treatment of the steady-state cosmology in Chapter~14.
+
+Once again, it should be stressed that the maximally symmetric metric
+\eqref{eq:13.3.4}, although derived by an apparently arbitrary procedure,
+actually represents the most general possible maximally symmetric metric,
+because the uniqueness theorem of the last section tells us that any other
+maximally symmetric metric can be converted into the form
+\eqref{eq:13.3.4} by a suitable coordinate transformation.

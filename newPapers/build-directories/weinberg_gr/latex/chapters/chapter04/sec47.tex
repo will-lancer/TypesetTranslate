@@ -1,0 +1,163 @@
+% Source: Weinberg GR, physical PDF pp. 131--133 (printed pp. 106--108).
+% Coverage: Section 4.7, Gradient, Curl, and Divergence; equations
+%           (4.7.1)--(4.7.11).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Gradient, Curl, and Divergence}\label{sec:4.7}
+
+There are some special cases where the covariant derivative takes a
+particularly simple form. Simplest of all is, of course, the covariant
+derivative of a scalar, which is just the ordinary gradient:
+\begin{equation}
+  \nabla_\mu S=\partial_\mu S.
+  \tag{4.7.1}\label{eq:4.7.1}
+\end{equation}
+Another simple special case is the covariant curl. Recall that
+\[
+  \nabla_\nu V_\mu
+  =
+  \partial_\nu V_\mu-\Gamma^\lambda{}_{\mu\nu}V_\lambda.
+\]
+Since \(\Gamma^\lambda{}_{\mu\nu}\) is symmetric in \(\mu\) and \(\nu\),
+the covariant curl is just the ordinary curl:
+\begin{equation}
+  2\nabla_{[\nu}V_{\mu]}
+  =
+  \nabla_\nu V_\mu-\nabla_\mu V_\nu
+  =
+  \partial_\nu V_\mu-\partial_\mu V_\nu
+  =
+  2\partial_{[\nu}V_{\mu]}.
+  \tag{4.7.2}\label{eq:4.7.2}
+\end{equation}
+
+Another special case that will take a little more work is the covariant
+divergence of a contravariant vector:
+\begin{equation}
+  \nabla_\mu V^\mu
+  =
+  \partial_\mu V^\mu+\Gamma^\mu{}_{\mu\lambda}V^\lambda.
+  \tag{4.7.3}\label{eq:4.7.3}
+\end{equation}
+We note that \(\Gamma^\mu{}_{\mu\lambda}\) is given by
+\begin{align}
+  \Gamma^\mu{}_{\mu\lambda}
+  &=
+  \frac12 g^{\mu\rho}
+  \left(
+    \partial_\mu g_{\rho\lambda}
+    +\partial_\lambda g_{\rho\mu}
+    -\partial_\rho g_{\mu\lambda}
+  \right)
+  \notag\\
+  &=
+  \frac12 g^{\mu\rho}\partial_\lambda g_{\rho\mu}.
+  \tag{4.7.4}\label{eq:4.7.4}
+\end{align}
+We may evaluate this easily if we recall that, for an arbitrary matrix
+\(M\),
+\begin{equation}
+  \Tr\!\left(M^{-1}\partial_\lambda M\right)
+  =
+  \partial_\lambda\ln\det M,
+  \tag{4.7.5}\label{eq:4.7.5}
+\end{equation}
+where \(\det\) denotes the determinant and \(\Tr\) the trace, that is, the
+sum of the diagonal elements. To prove Eq.~\eqref{eq:4.7.5}, consider the
+variation in \(\ln\det M\) owing to a variation \(\delta x^\lambda\):
+\begin{align*}
+  \delta\ln\det M
+  &\equiv\ln\det(M+\delta M)-\ln\det M
+  \\
+  &=\ln\det\!\left[M^{-1}(M+\delta M)\right]
+  \\
+  &=\ln\det(1+M^{-1}\delta M)
+  \\
+  &\longrightarrow\ln\!\left(1+\Tr(M^{-1}\delta M)\right)
+  \longrightarrow\Tr(M^{-1}\delta M).
+\end{align*}
+Taking the coefficient of \(\delta x^\lambda\) in both sides gives
+Eq.~\eqref{eq:4.7.5}. Applying it to the case where \(M\) is the matrix
+\(g_{\mu\nu}\), we find from Eq.~\eqref{eq:4.7.4} that
+\begin{equation}
+  \Gamma^\mu{}_{\mu\lambda}
+  =
+  \frac12\partial_\lambda\ln(-g)
+  =
+  \frac{1}{\sqrt{-g}}\partial_\lambda\sqrt{-g}.
+  \tag{4.7.6}\label{eq:4.7.6}
+\end{equation}
+With Eq.~\eqref{eq:4.7.3}, we find that the covariant divergence is
+precisely
+\begin{equation}
+  \nabla_\mu V^\mu
+  =
+  \frac{1}{\sqrt{-g}}
+  \partial_\mu\!\left(\sqrt{-g}\,V^\mu\right).
+  \tag{4.7.7}\label{eq:4.7.7}
+\end{equation}
+One immediate consequence is a covariant form of Gauss's theorem: If
+\(V^\mu\) vanishes at infinity, then
+\begin{equation}
+  \int\dd^4x\,\sqrt{-g}\,\nabla_\mu V^\mu=0.
+  \tag{4.7.8}\label{eq:4.7.8}
+\end{equation}
+Note the appearance here of a factor \(\sqrt{-g}\) that makes
+\(\dd^4x\,\sqrt{-g}\) invariant.
+
+We can also use Eq.~\eqref{eq:4.7.6} to simplify the formula for the
+covariant divergence of a tensor. For instance,
+\[
+  \nabla_\mu T^{\mu\nu}
+  =
+  \partial_\mu T^{\mu\nu}
+  +\Gamma^\mu{}_{\mu\lambda}T^{\lambda\nu}
+  +\Gamma^\nu{}_{\mu\lambda}T^{\mu\lambda},
+\]
+and, applying Eq.~\eqref{eq:4.7.6}, we find that
+\begin{equation}
+  \nabla_\mu T^{\mu\nu}
+  =
+  \frac{1}{\sqrt{-g}}
+  \partial_\mu\!\left(\sqrt{-g}\,T^{\mu\nu}\right)
+  +\Gamma^\nu{}_{\mu\lambda}T^{\mu\lambda}.
+  \tag{4.7.9}\label{eq:4.7.9}
+\end{equation}
+In particular, if \(A^{\mu\lambda}=-A^{\lambda\mu}\), then the last term
+drops out, so
+\begin{equation}
+  \nabla_\mu A^{\mu\nu}
+  =
+  \frac{1}{\sqrt{-g}}
+  \partial_\mu\!\left(\sqrt{-g}\,A^{\mu\nu}\right),
+  \qquad A^{\mu\nu}=A^{[\mu\nu]}.
+  \tag{4.7.10}\label{eq:4.7.10}
+\end{equation}
+
+There is one other special case of some importance. For a covariant tensor
+\(A_{\mu\nu}\), the covariant derivative is
+\[
+  \nabla_\lambda A_{\mu\nu}
+  =
+  \partial_\lambda A_{\mu\nu}
+  -\Gamma^\rho{}_{\lambda\mu}A_{\rho\nu}
+  -\Gamma^\rho{}_{\lambda\nu}A_{\mu\rho}.
+\]
+Suppose that \(A_{\mu\nu}\) is antisymmetric, that is,
+\(A_{\mu\nu}=-A_{\nu\mu}\). If we twice add to
+\(\nabla_\lambda A_{\mu\nu}\) the same tensor with indices cyclically
+permuted, we find by virtue of the symmetry of
+\(\Gamma^\rho{}_{\mu\nu}\) and the antisymmetry of \(A_{\mu\nu}\) that all
+connection terms cancel, yielding
+\begin{equation}
+  3\nabla_{[\lambda}A_{\mu\nu]}
+  =
+  \nabla_\lambda A_{\mu\nu}
+  +\nabla_\mu A_{\nu\lambda}
+  +\nabla_\nu A_{\lambda\mu}
+  =
+  3\partial_{[\lambda}A_{\mu\nu]}.
+  \tag{4.7.11}\label{eq:4.7.11}
+\end{equation}

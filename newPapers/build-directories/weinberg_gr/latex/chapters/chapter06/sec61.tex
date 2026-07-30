@@ -1,0 +1,165 @@
+% Source: Weinberg GR, physical PDF pp. 156--158
+%         (printed pp. 131--133).
+% Coverage: Section 6.1, Definition of the Curvature Tensor; equations
+%           (6.1.1)--(6.1.7).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+% MODERNIZATION: Weinberg's curvature tensor is the negative of the target
+% convention at fixed slot order. Equations below use the binding convention
+% in NOTATION.md, with induced signs and last-index ordering rederived.
+
+\subsection{Definition of the Curvature Tensor}\label{sec:6.1}
+
+We want to construct a tensor out of the metric tensor and its derivatives.
+If we use only \(g_{\mu\nu}\) and its first derivatives, then no new tensor can
+be constructed, for at any point we can find a coordinate system in which the
+first derivatives of the metric tensor vanish. In this coordinate system the
+desired tensor must be equal to one of those that can be constructed out of
+the metric tensor alone (e.g., \(g_{\mu\nu}\), \(g^{\mu\nu}\), or
+\(\varepsilon^{\mu\nu\rho\sigma}\), and so on), and since this is an
+equality between tensors it must be true in all coordinate systems.
+
+The next simplest possibility is to construct a tensor out of the metric
+tensor and its first and second derivatives. To do this, let us recall the
+transformation rule for the affine connection,
+\begin{equation}
+  \Gamma^\lambda{}_{\mu\nu}
+  =
+  \frac{\partial x^\lambda}{\partial x'^\alpha}
+  \frac{\partial x'^\beta}{\partial x^\mu}
+  \frac{\partial x'^\gamma}{\partial x^\nu}
+  \Gamma'^\alpha{}_{\beta\gamma}
+  +
+  \frac{\partial x^\lambda}{\partial x'^\alpha}
+  \frac{\partial^2x'^\alpha}{\partial x^\mu\partial x^\nu}.
+  \tag{6.1.1}\label{eq:6.1.1}
+\end{equation}
+(This is Eq.~\eqref{eq:4.5.2} with primed and unprimed coordinates
+interchanged.) It is the inhomogeneous term on the right that keeps
+\(\Gamma^\lambda{}_{\mu\nu}\) from being a tensor, so let us isolate this
+term:
+\begin{equation}
+  \frac{\partial^2x'^\alpha}{\partial x^\mu\partial x^\nu}
+  =
+  \frac{\partial x'^\alpha}{\partial x^\lambda}
+  \Gamma^\lambda{}_{\mu\nu}
+  -
+  \frac{\partial x'^\beta}{\partial x^\mu}
+  \frac{\partial x'^\gamma}{\partial x^\nu}
+  \Gamma'^\alpha{}_{\beta\gamma}.
+  \tag{6.1.2}\label{eq:6.1.2}
+\end{equation}
+To get rid of the left-hand side, we use the commutativity of partial
+differentiation. Differentiation with respect to \(x^\kappa\), followed by
+substitution from Eq.~\eqref{eq:6.1.2}, gives
+\begin{align}
+  \frac{\partial^3x'^\alpha}
+       {\partial x^\kappa\partial x^\mu\partial x^\nu}
+  ={}&
+  \frac{\partial x'^\alpha}{\partial x^\lambda}
+  \left(
+    \partial_\kappa\Gamma^\lambda{}_{\mu\nu}
+    +\Gamma^\eta{}_{\mu\nu}\Gamma^\lambda{}_{\kappa\eta}
+  \right)
+  \notag\\
+  &-
+  \frac{\partial x'^\beta}{\partial x^\mu}
+  \frac{\partial x'^\gamma}{\partial x^\nu}
+  \frac{\partial x'^\delta}{\partial x^\kappa}
+  \left(
+    \partial'_\delta\Gamma'^\alpha{}_{\beta\gamma}
+    -\Gamma'^\eta{}_{\beta\delta}\Gamma'^\alpha{}_{\eta\gamma}
+    -\Gamma'^\eta{}_{\gamma\delta}\Gamma'^\alpha{}_{\beta\eta}
+  \right)
+  \notag\\
+  &-
+  \Gamma'^\alpha{}_{\beta\gamma}
+  \left(
+    \Gamma^\lambda{}_{\mu\nu}
+    \frac{\partial x'^\beta}{\partial x^\lambda}
+    \frac{\partial x'^\gamma}{\partial x^\kappa}
+    +\Gamma^\lambda{}_{\mu\kappa}
+    \frac{\partial x'^\beta}{\partial x^\lambda}
+    \frac{\partial x'^\gamma}{\partial x^\nu}
+    +\Gamma^\lambda{}_{\nu\kappa}
+    \frac{\partial x'^\beta}{\partial x^\mu}
+    \frac{\partial x'^\gamma}{\partial x^\lambda}
+  \right).
+  \tag{6.1.3}\label{eq:6.1.3}
+\end{align}
+Now subtracting the same equation with \(\nu\) and \(\kappa\) interchanged, we
+find that all terms involving products of \(\Gamma\) with \(\Gamma'\) drop
+out. The result may be written as the tensor transformation rule
+\begin{equation}
+  R^\lambda{}_{\mu\nu\kappa}
+  =
+  \frac{\partial x^\lambda}{\partial x'^\alpha}
+  \frac{\partial x'^\beta}{\partial x^\mu}
+  \frac{\partial x'^\gamma}{\partial x^\nu}
+  \frac{\partial x'^\delta}{\partial x^\kappa}
+  R'^\alpha{}_{\beta\gamma\delta},
+  \tag{6.1.4}\label{eq:6.1.4}
+\end{equation}
+where, in the modern curvature convention used throughout this edition,
+\begin{equation}
+  R^\rho{}_{\sigma\mu\nu}
+  \equiv
+  \partial_\mu\Gamma^\rho{}_{\nu\sigma}
+  -\partial_\nu\Gamma^\rho{}_{\mu\sigma}
+  +\Gamma^\rho{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\sigma}
+  -\Gamma^\rho{}_{\nu\lambda}\Gamma^\lambda{}_{\mu\sigma}.
+  \tag{6.1.5}\label{eq:6.1.5}
+\end{equation}
+Equation~\eqref{eq:6.1.4} says that
+\(R^\rho{}_{\sigma\mu\nu}\) is a tensor; it is called the
+Riemann--Christoffel curvature tensor.
+
+The existence of the tensor \(R^\rho{}_{\sigma\mu\nu}\) raises once again the
+question of whether or not the Principle of Equivalence or the Principle of
+General Covariance uniquely determines the effects of gravitation on
+arbitrary physical systems. For instance, let us ask whether the correct
+equation of motion for a freely falling particle of spin \(S^\mu\) might be of
+the form
+\begin{equation}
+  0
+  =
+  \Dworldline{u^\lambda}
+  +f R^\lambda{}_{\mu\rho\nu}u^\mu u^\nu S^\rho
+  \tag{6.1.6}\label{eq:6.1.6}
+\end{equation}
+(with \(f\) an unknown scalar) instead of the familiar form
+\begin{equation}
+  0
+  =
+  \Dworldline{u^\lambda}
+  =
+  \frac{\dd^2x^\lambda}{\dd\tau^2}
+  +\Gamma^\lambda{}_{\mu\nu}
+   \frac{\dd x^\mu}{\dd\tau}
+   \frac{\dd x^\nu}{\dd\tau}.
+  \tag{6.1.7}\label{eq:6.1.7}
+\end{equation}
+Both Eqs.~\eqref{eq:6.1.6} and \eqref{eq:6.1.7} are generally covariant, and
+both reduce in the absence of gravitation to the correct
+special-relativistic equation \(\dd u^\lambda/\dd\tau=0\). How then can we
+tell whether Eq.~\eqref{eq:6.1.6} or Eq.~\eqref{eq:6.1.7} is correct?
+
+The answer again is one of \emph{scale}. Suppose that our particle has a
+characteristic linear dimension \(d\), and that the gravitational field has a
+characteristic spacetime dimension \(D\). The Riemann--Christoffel tensor has
+one more derivative of the metric than the affine connection, so the ratio of
+the curvature term in Eq.~\eqref{eq:6.1.6} to the affine-connection
+contribution contained in \(\Dworldline{u^\lambda}\) is proportional to
+\(1/D\); dimensional considerations then require that this ratio be roughly
+of order \(d/D\). Thus, barring special circumstances that might make one term
+or the other anomalously large or small, we can regard the curvature term in
+Eq.~\eqref{eq:6.1.6} as being negligible if our particle is very much smaller
+than the characteristic dimensions of the gravitational field, and
+Eq.~\eqref{eq:6.1.7} is the correct equation of motion. Of course, if our
+particle is not much smaller than the gravitational field scale (as in the
+case of the moon moving in the gravitational field of the earth), then the
+Principle of Equivalence or the Principle of General Covariance must be
+applied to the infinitesimal elements of which the particle is composed,
+although Eq.~\eqref{eq:6.1.6} or Eq.~\eqref{eq:6.1.7} might give a fair
+phenomenological representation of the motion of the whole particle.

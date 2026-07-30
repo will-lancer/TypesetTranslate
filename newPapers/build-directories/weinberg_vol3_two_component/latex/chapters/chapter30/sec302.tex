@@ -1,0 +1,294 @@
+% Source: physical PDF pp. 333--336 (printed pp. 310--313), from the
+% Section 30.2 heading through the final sentence immediately before
+% Section 30.3 on physical p. 336.
+% Inventory: Eqs. (30.2.1)--(30.2.20), five unnumbered display groups,
+% no citations, figures, tables, footnotes, or typographic dividers.
+% Source anomalies preserved: Eq. (30.2.3) visibly sums on i while its
+% summand is D_{ij}\xi_j; after Eq. (30.2.9), the infinite constant is
+% visibly written as \mathcal{J}\int d\phi', without d\phi'{}^*; in the
+% unnumbered electromagnetic solution following Eq. (30.2.13), the left
+% side carries a lambda subscript while the displayed Kronecker delta and
+% derivative terms visibly carry mu subscripts.
+
+\subsection{Superpropagators}
+
+Usually the propagator can be obtained directly from the part of the action
+of second order in the fields. If we write this quadratic part for a complex
+field \(\phi_i\) (where \(i\) is a compound index including spacetime
+coordinates as well as spin and species labels) in the form
+\begin{equation}
+  I_{\mathrm{quad}}[\phi]
+  =-\sum_{ij}D_{ij}\phi_i^*\phi_j\,,
+  \tag{30.2.1}\label{eq:30.2.1}
+\end{equation}
+with \(D_{ij}\) Hermitian, then as explained in Section 9.4 the propagator is
+simply \(\Delta=D^{-1}\). The problem with this arises when the quadratic
+part of the action is invariant under a (linearized) gauge transformation
+\begin{equation}
+  \phi_i\longrightarrow\phi_i+\xi_i\,,
+  \tag{30.2.2}\label{eq:30.2.2}
+\end{equation}
+for some class of `vectors' \(\xi\). In this case we have
+\begin{equation}
+  \sum_iD_{ij}\xi_j=0\,,
+  \tag{30.2.3}\label{eq:30.2.3}
+\end{equation}
+and we clearly cannot invert the `matrix' \(D_{ij}\). In electrodynamics the
+problem arises because the Lagrangian density is invariant under a gauge
+transformation \(A_\mu\longrightarrow A_\mu+\partial_\mu\Lambda\). We have
+this problem here too: since the action is actually a functional of
+\(\bar D^2S_n\) and not of \(S_n\) itself, it is invariant under the
+transformation
+\begin{equation}
+  S_n\longrightarrow S_n+\bar D_{\dot\alpha}X_n^{\dot\alpha}\,,
+  \tag{30.2.4}\label{eq:30.2.4}
+\end{equation}
+for any superfields \(X_n\).
+
+In the electrodynamics of charged particles the problems introduced by gauge
+invariance are typically handled by choosing a gauge, for instance by the
+Faddeev--Popov--de Witt method described in Section 15.5. But the problems
+raised here by invariance under the transformation \eqref{eq:30.2.2} are much
+more like the problems of the effective field theory of photons at energies
+below the threshold for producing charged particles, where the theory is
+gauge-invariant simply because the action only involves gauge-invariant
+fields. In such theories there is a simpler option. In addition to the
+eigenvector \(\xi_i\) of \(D_{ij}\) with eigenvalue zero (taken for simplicity
+to be in a unique direction) we can find a set of orthonormal eigenvectors
+\(u_{\nu i}\) with eigenvalues \(d_\nu\neq0\):
+\begin{equation}
+  \sum_jD_{ij}u_{\nu j}=d_\nu u_{\nu i}\,,
+  \qquad
+  \sum_i u_{\nu i}^*u_{\nu'i}=\delta_{\nu\nu'}\,,
+  \qquad
+  \sum_i u_{\nu i}^*\xi_i=0\,.
+  \tag{30.2.5}\label{eq:30.2.5}
+\end{equation}
+We can introduce a new set of integration variables \(\phi'\) and
+\(\phi'_\nu\):
+\begin{equation}
+  \phi_i=\phi'\xi_i+\sum_\nu\phi'_\nu u_{\nu i}\,.
+  \tag{30.2.6}\label{eq:30.2.6}
+\end{equation}
+The sort of integral encountered in Feynman diagram calculations of quantum
+expectation values may then be written
+\begin{align}
+  &\int\left[\prod_i d\phi_i\,d\phi_i^*\right]
+    \exp\{iI_{\mathrm{quad}}[\phi]\}
+    \phi_a\cdots\phi_b^*\cdots
+  \notag\\
+  &\quad={}
+    \mathcal{J}\int d\phi'\,d\phi'{}^*
+    \int\left[\prod_\nu d\phi'_\nu\,d\phi_\nu'{}^*\right]
+    \exp\left\{-i\sum_\nu d_\nu|\phi'_\nu|^2\right\}
+  \notag\\
+  &\qquad\cdot
+    \left[\phi'\xi_a+\sum_\nu\phi'_\nu u_{\nu a}\right]\cdots
+    \left[\phi'\xi_b+\sum_\nu\phi'_\nu u_{\nu b}\right]^*\cdots\,,
+  \tag{30.2.7}\label{eq:30.2.7}
+\end{align}
+where \(\mathcal{J}\) is the Jacobian of the transformation
+\eqref{eq:30.2.6}. The integral over \(\phi'\) and \(\phi'{}^*\) is of course
+ill defined, because they do not appear in the argument of the exponential.
+But this doesn't matter if the action only involves gauge-invariant fields,
+because then \(\phi_a,\phi_b\), etc. will be contracted with `currents'
+\(J_a,J_b\), etc. for which
+\begin{equation}
+  \sum_a\xi_aJ_a=0\,.
+  \tag{30.2.8}\label{eq:30.2.8}
+\end{equation}
+We may thus write Eq.~\eqref{eq:30.2.7} as
+\begin{align}
+  &\int\left[\prod_i d\phi_i\,d\phi_i^*\right]
+    \exp\{iI_{\mathrm{quad}}[\phi]\}
+    \phi_a\cdots\phi_b^*\cdots
+  \notag\\
+  &\quad={}
+    \mathcal{C}\int
+    \left[\prod_\nu d\phi'_\nu\,d\phi_\nu'{}^*\right]
+    \exp\left\{-i\sum_\nu d_\nu|\phi'_\nu|^2\right\}
+    \left[\sum_\nu\phi'_\nu u_{\nu a}\right]\cdots
+    \left[\sum_\nu\phi'_\nu u_{\nu b}\right]^*
+    \cdots
+  \notag\\
+  &\qquad+\xi\text{-terms}\,,
+  \tag{30.2.9}\label{eq:30.2.9}
+\end{align}
+where `\(\xi\)-terms' denotes terms proportional to one or more factors of
+\(\xi_a,\xi_b\), etc., which vanish when contracted with \(J\)s satisfying
+Eq.~\eqref{eq:30.2.8}, and \(\mathcal{C}\) is the infinite constant
+\(\mathcal{J}\int d\phi'\). The integral over the \(\phi'_\nu\) then gives
+\begin{align}
+  &\int\left[\prod_i d\phi_i\,d\phi_i^*\right]
+    \exp\{iI_{\mathrm{quad}}[\phi]\}
+    \phi_a\cdots\phi_b^*\cdots
+  \notag\\
+  &\qquad\propto
+    \sum_{\text{pairings}}\bigl[-i\Delta_{ab}\bigr]\cdots
+    +\xi\text{-terms}\,,
+  \tag{30.2.10}\label{eq:30.2.10}
+\end{align}
+where the sum over pairings is over all ways of pairing indices on the
+\(\phi\)s with indices on the \(\phi^*\)s, and \(\Delta_{ab}\) is the
+propagator
+\begin{equation}
+  \Delta_{ab}=\sum_\nu\frac{u_{\nu a}u_{\nu b}^*}{d_\nu}\,.
+  \tag{30.2.11}\label{eq:30.2.11}
+\end{equation}
+Instead of actually evaluating the sum \eqref{eq:30.2.11}, we can use its
+defining property that
+\begin{equation}
+  \sum_cD_{ac}\Delta_{cb}
+  =\sum_\nu u_{\nu a}u_{\nu b}^*
+  \equiv\Pi_{ab}\,,
+  \tag{30.2.12}\label{eq:30.2.12}
+\end{equation}
+with \(\Pi\) the projection operator on the space orthogonal to \(\xi\):
+\begin{equation}
+  \Pi^2=\Pi\,,
+  \qquad
+  \Pi\xi=0\,.
+  \tag{30.2.13}\label{eq:30.2.13}
+\end{equation}
+The solution of Eq.~\eqref{eq:30.2.12} is unique only up to \(\xi\)-terms,
+but these do not matter if the fields \(\phi_i\) appear in the action only in
+gauge-invariant combinations.
+
+For instance, in electrodynamics, we can write the kinematic part of the
+action as
+\[
+  I_{\mathrm{quad}}[A]
+  =-\frac14\int d^4x\,f_{\mu\nu}f^{\mu\nu}
+  =+\frac12\int d^4x\,
+    A^\mu\bigl(\Box\delta_\mu^\nu-\partial_\mu\partial^\nu\bigr)A_\nu\,.
+\]
+The differential operator
+\(-\Box\delta_\mu^\nu+\partial^\nu\partial_\mu\) is not invertible, because
+it has a zero eigenvalue with eigenvectors of the form
+\(\xi^\mu=\partial^\mu\Lambda\). The projection matrix onto the space
+orthogonal to these vectors is
+\[
+  \Pi_\mu{}^\nu(x,y)
+  =\bigl[\delta_\mu^\nu-\partial_\mu\partial^\nu\Box^{-1}\bigr]
+    \delta^4(x-y)\,,
+\]
+where \(\Box^{-1}\delta^4(x-y)\) is any solution of the equation
+\(\Box[\Box^{-1}\delta^4(x-y)]=\delta^4(x-y)\). The defining equation for
+the propagator is
+\[
+  \bigl(-\Box\delta_\mu^\lambda+\partial_\mu\partial^\lambda\bigr)
+  \Delta_\lambda{}^\nu(x,y)
+  =\Pi_\mu{}^\nu(x,y)\,,
+\]
+with the solution
+\[
+  \Delta_\lambda{}^\nu(x,y)
+  =\delta_\mu^\nu\Delta_F(x-y)
+   +\partial_\mu\partial^\nu\text{-terms}\,,
+\]
+where \(\Delta_F(x-y)\) is the usual Feynman propagator
+\eqref{eq:6.2.16}, satisfying
+\(\Box\Delta_F(x-y)=-\delta^4(x-y)\). (The factor \(1/2\) in the action
+does not appear in the defining equation for the propagator here because
+\(A_\mu\) is a real field. The origin of the \(-i\epsilon\) in the
+denominator of the Fourier integral in Eq.~\eqref{eq:6.2.16} is explained
+in the path-integral formalism in Section 9.2.)
+
+Inspection of the first term in Eq.~\eqref{eq:30.1.9} shows that the
+defining equation for the superpropagator of the potential superfields is
+\begin{equation}
+  \frac14D^2\bar D^2
+  \Delta^S_{nm}(x,\theta,\bar\theta;x',\theta',\bar\theta')
+  =\mathcal{P}\delta^4(x-x')\delta^2(\theta-\theta')
+    \delta^2(\bar\theta-\bar\theta')\delta_{nm}\,,
+  \tag{30.2.14}\label{eq:30.2.14}
+\end{equation}
+where \(\mathcal{P}\) is a superspace differential operator satisfying the
+conditions for a projection operator
+\begin{equation}
+  \mathcal{P}^2=\mathcal{P}\,,
+  \qquad
+  \mathcal{P}\bar D_{\dot\alpha}=0\,,
+  \tag{30.2.15}\label{eq:30.2.15}
+\end{equation}
+and
+\(\delta^2(\theta-\theta')\delta^2(\bar\theta-\bar\theta')\)
+is the fermionic delta function introduced in Eq.~\eqref{eq:26.6.8}.
+The solution is
+\begin{equation}
+  \mathcal{P}=-\frac{1}{16\Box}D^2\bar D^2\,.
+  \tag{30.2.16}\label{eq:30.2.16}
+\end{equation}
+(It is obvious that \(\mathcal{P}\bar D_{\dot\alpha}=0\). To check that
+\(\mathcal{P}^2=\mathcal{P}\), we need to use Eq.~\eqref{eq:26.6.12}, which
+shows that
+\(\bar D^2D^2\bar D^2=-16\Box\bar D^2\).) The solution of
+Eq.~\eqref{eq:30.2.14} is
+\begin{align}
+  \Delta^S_{nm}(x,\theta,\bar\theta;x',\theta',\bar\theta')
+  &=-\frac{1}{4\Box}
+    \delta^4(x-x')\delta^2(\theta-\theta')
+    \delta^2(\bar\theta-\bar\theta')\delta_{nm}
+  \notag\\
+  &=\frac14\Delta_F(x-x')\delta^2(\theta-\theta')
+    \delta^2(\bar\theta-\bar\theta')\delta_{nm}
+    +\bar D_{\dot\alpha}\text{-terms}\,.
+  \tag{30.2.17}\label{eq:30.2.17}
+\end{align}
+This is the superpropagator for a line created by a potential superfield
+\(S_m^*(x',\theta',\bar\theta')\) and destroyed by a potential
+superfield \(S_n(x,\theta,\bar\theta)\), which we must use in evaluating
+supergraphs for the action
+\eqref{eq:30.1.9}. To make contact with ordinary propagators, it is also of
+some interest to consider the superpropagator of the line created by a
+left-chiral superfield
+\(\Phi_m^*(x',\theta',\bar\theta')\) and destroyed by a
+left-chiral superfield \(\Phi_n(x,\theta,\bar\theta)\). These chiral
+superfields are obtained by operating on
+\(S_n(x,\theta,\bar\theta)\) with \(\bar D^2\) and on
+\(S_m^*(x',\theta',\bar\theta')\) with
+\((\bar D^2)^\dagger=D^{\prime\,2}\), so the propagator for the
+left-chiral superfields is
+\begin{equation}
+  \Delta^\Phi_{nm}(x,\theta,\bar\theta;x',\theta',\bar\theta')
+  =\frac14\bar D^2D^{\prime\,2}
+    \Delta_F(x-x')\delta^2(\theta-\theta')
+    \delta^2(\bar\theta-\bar\theta')\delta_{nm}\,.
+  \tag{30.2.18}\label{eq:30.2.18}
+\end{equation}
+For instance, the term in the superpropagator of zeroth order in \(\theta\)
+and \(\theta'\) is
+\begin{equation}
+  \left.
+  \left[\Delta^\Phi_{nm}
+    (x,\theta,\bar\theta;x',\theta',\bar\theta')\right]
+  \right|_{\theta=\bar\theta=\theta'=\bar\theta'=0}
+  =\frac14
+    \left(\frac{\partial}{\partial\bar\theta}\right)^2
+    \left(\frac{\partial}{\partial\theta'}\right)^2
+    \Delta_F(x-x')\delta^2(\theta-\theta')
+    \delta^2(\bar\theta-\bar\theta')\delta_{nm}\,.
+  \tag{30.2.19}\label{eq:30.2.19}
+\end{equation}
+To evaluate this, we recall Eq.~\eqref{eq:26.6.8} for the fermionic delta
+function:
+\[
+  \delta^2(\theta-\theta')\delta^2(\bar\theta-\bar\theta')
+  =\frac14
+    (\theta-\theta')^2(\bar\theta-\bar\theta')^2\,,
+\]
+from which we find
+\((\partial/\partial\bar\theta)^2
+(\partial/\partial\theta')^2
+\delta^2(\theta-\theta')\delta^2(\bar\theta-\bar\theta')=4\).
+Eq.~\eqref{eq:30.2.19} therefore yields
+\begin{equation}
+  \left.
+  \left[\Delta^\Phi_{nm}
+    (x,\theta,\bar\theta;x',\theta',\bar\theta')\right]
+  \right|_{\theta=\bar\theta=\theta'=\bar\theta'=0}
+  =\Delta_F(x-x')\delta_{nm}\,,
+  \tag{30.2.20}\label{eq:30.2.20}
+\end{equation}
+which is just the usual propagator for the scalar components of the
+superfield.

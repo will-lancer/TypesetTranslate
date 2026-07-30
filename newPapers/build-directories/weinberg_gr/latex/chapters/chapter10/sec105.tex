@@ -1,0 +1,529 @@
+% Source: Weinberg GR, physical PDF pp. 289--295 (printed pp. 267--273).
+% Coverage: Section 10.5, Quadrupole Radiation; equations
+%           (10.5.1)--(10.5.25).
+% Figures/tables/footnotes: reference markers 1--4; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: Printed p. 272 says Eq. (10.5.23) gives the point-mass
+% radiated power, but (10.5.23) merely defines I; the intended reference is
+% evidently Eq. (10.5.22), used below and recorded as a source anomaly.
+
+\subsection{Quadrupole Radiation}\label{sec:10.5}
+
+Up to this point we have made no approximations beyond the basic assumption
+that the fields are weak. (Our use of the wave-zone limits \(r\gg R\),
+\(r\gg1/\omega\), \(r\gg\omega R^2\) was not really an approximation,
+since we can always choose \(r\) large enough to make these assumptions true;
+and by the conservation of energy, the power passing through a sphere at
+large \(r\) must equal that passing through any surface enclosing the
+radiating system.) We now make a further approximation, and assume that the
+source radius \(R\) is much smaller than the wavelength \(1/\omega\):
+\begin{equation}
+  \omega R\ll1.
+  \tag{10.5.1}\label{eq:10.5.1}
+\end{equation}
+Most of the radiation is emitted at frequencies of order
+\(\bar v/R\), where \(\bar v\) is some typical velocity within the system,
+so we are really making the same sort of approximation as that made in the
+previous chapter, that is, \(\bar v\ll1\).
+
+When \eqref{eq:10.5.1} holds we may approximate the Fourier transforms
+needed in \eqref{eq:10.4.14} and \eqref{eq:10.4.16} by the
+\(\mathbf{k}\)-independent integral
+\begin{equation}
+  T_{ij}(\mathbf{k},\omega)
+  \simeq
+  \int d^3x\,T_{ij}(\mathbf{x},\omega).
+  \tag{10.5.2}\label{eq:10.5.2}
+\end{equation}
+This can be rewritten in a useful way by using the conservation laws in the
+form
+\[
+  \partial_i\partial_jT^{ij}(\mathbf{x},\omega)
+  =
+  -\omega^2T^{00}(\mathbf{x},\omega).
+\]
+Multiplying by \(x^ix^j\) and integrating over \(\mathbf{x}\), we find
+\begin{equation}
+  T_{ij}(\mathbf{k},\omega)
+  \simeq
+  -\frac{\omega^2}{2}D_{ij}(\omega),
+  \tag{10.5.3}\label{eq:10.5.3}
+\end{equation}
+\begin{equation}
+  D_{ij}(\omega)
+  \equiv
+  \int d^3x\,x^ix^jT^{00}(\mathbf{x},\omega).
+  \tag{10.5.4}\label{eq:10.5.4}
+\end{equation}
+The power per solid angle is therefore
+\begin{equation}
+  \frac{dP}{d\Omega}
+  =
+  \frac{G\omega^6}{4\pi}
+  \Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  D_{ij}^*(\omega)D_{lm}(\omega).
+  \tag{10.5.5}\label{eq:10.5.5}
+\end{equation}
+If the source is a sum of Fourier components, then the power radiated is a
+sum of terms such as \eqref{eq:10.5.5}. If the source is a Fourier integral
+like \eqref{eq:10.4.1}, then the energy emitted per solid angle is
+\begin{equation}
+  \frac{dE}{d\Omega}
+  =
+  \frac12G\Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  \int_0^\infty
+  \omega^6D_{ij}^*(\omega)D_{lm}(\omega)\,d\omega.
+  \tag{10.5.6}\label{eq:10.5.6}
+\end{equation}
+
+The coefficients \(D_{ij}(\omega)\) in \eqref{eq:10.5.5} and
+\eqref{eq:10.5.6} do not depend on the direction
+\(\widehat{\mathbf{k}}\) of the emitted radiation, so we can do the
+integral over solid angle once and for all. We use the formulas
+\[
+  \int d\Omega\,\widehat k_i\widehat k_j
+  =
+  \frac{4\pi}{3}\delta_{ij},
+\]
+\[
+  \int d\Omega\,
+  \widehat k_i\widehat k_j\widehat k_l\widehat k_m
+  =
+  \frac{4\pi}{15}
+  \left(
+    \delta_{ij}\delta_{lm}
+    +\delta_{il}\delta_{jm}
+    +\delta_{im}\delta_{jl}
+  \right).
+\]
+(The form of the right-hand sides is dictated by symmetry and rotational
+invariance; the numerical coefficients can be calculated by contracting
+\(i\) with \(j\) and \(l\) with \(m\).) We then find
+\[
+  \int d\Omega\,
+  \Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  =
+  \frac{2\pi}{15}
+  \left(
+    11\delta_{il}\delta_{jm}
+    -4\delta_{ij}\delta_{lm}
+    +\delta_{im}\delta_{jl}
+  \right),
+\]
+so the power emitted at a single discrete frequency \(\omega\) is
+\begin{equation}
+  P
+  =
+  \frac{2G\omega^6}{5}
+  \left[
+    D_{ij}^*(\omega)D_{ij}(\omega)
+    -\frac13\left|D_{ii}(\omega)\right|^2
+  \right],
+  \tag{10.5.7}\label{eq:10.5.7}
+\end{equation}
+whereas for a smooth distribution of frequencies the total emitted energy is
+\begin{equation}
+  E
+  =
+  \frac{4\pi G}{5}
+  \int_0^\infty
+  \omega^6
+  \left[
+    D_{ij}^*(\omega)D_{ij}(\omega)
+    -\frac13\left|D_{ii}(\omega)\right|^2
+  \right]d\omega.
+  \tag{10.5.8}\label{eq:10.5.8}
+\end{equation}
+
+Before going on to calculate the quadrupole radiation emitted in a few
+special cases, it will be necessary to pause for a few comments on the method
+of calculation:
+
+\medskip
+\noindent\textit{(A)} The quadrupole approximation is usually applicable to
+nonrelativistic systems, and for these systems the energy density
+\(T^{00}(\mathbf{x},\omega)\) is dominated by the rest-mass density of the
+system. It may be surprising that we do not need to take explicit account of
+the potential and kinetic energy terms in the full tensor \(T^{\mu\nu}\),
+because such terms must be included if \(T^{\mu\nu}\) is to be conserved!
+Indeed, for a system of particles bound by gravitational forces we should in
+principle take \(T^{\mu\nu}\) as the total ``tensor'' \(\tau^{\mu\nu}\)
+constructed in Section~\ref{sec:7.6}, including terms nonlinear in the
+gravitational fields. However, we have already exploited energy and momentum
+conservation in our derivation of Eqs.~\eqref{eq:10.5.3}--\eqref{eq:10.5.6},
+and since this has given a result involving only \(T^{00}\), we are now free
+to approximate \(T^{00}\) with the rest-mass density.
+
+\medskip
+\noindent\textit{(B)} For general systems of vibrating and/or rotating
+solids, it is often quite difficult to evaluate the Fourier transform
+\(T^{00}(\mathbf{x},\omega)\), defined by Eq.~\eqref{eq:10.4.1} or
+\eqref{eq:10.4.2}. It is much easier first to evaluate the moments
+\begin{equation}
+  D_{ij}(t)
+  \equiv
+  \int d^3x\,x^ix^jT^{00}(\mathbf{x},t),
+  \tag{10.5.9}\label{eq:10.5.9}
+\end{equation}
+and then evaluate \(D_{ij}(\omega)\) by expressing \(D_{ij}(t)\) as a
+Fourier integral,
+\begin{equation}
+  D_{ij}(t)
+  =
+  \int_0^\infty d\omega\,D_{ij}(\omega)e^{-\ii\omega t}
+  +\text{c.c.},
+  \tag{10.5.10}\label{eq:10.5.10}
+\end{equation}
+or as a sum of Fourier components,
+\begin{equation}
+  D_{ij}(t)
+  =
+  \sum_\omega e^{-\ii\omega t}D_{ij}(\omega)+\text{c.c.}
+  \tag{10.5.11}\label{eq:10.5.11}
+\end{equation}
+
+\medskip
+\noindent\textit{(C)} The question may arise: What origin should be taken for
+the coordinates \(x^i\) in the integral \eqref{eq:10.5.4} for \(D_{ij}\)?
+In principle, it does not matter. When we shift the origin of coordinates by
+an amount \(a^i\), we change \(D_{ij}\) into
+\begin{align*}
+  \int &(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},t)\,d^3x\\
+  ={}&
+  \int x^ix^jT^{00}(\mathbf{x},t)\,d^3x
+  -a^i\int x^jT^{00}(\mathbf{x},t)\,d^3x
+  -a^j\int x^iT^{00}(\mathbf{x},t)\,d^3x
+  +a^ia^j\int T^{00}(\mathbf{x},t)\,d^3x.
+\end{align*}
+But conservation of energy and momentum tells us that the last three terms
+are at most linear functions of time, because
+\[
+  \frac{\partial}{\partial t}\int T^{00}(\mathbf{x},t)\,d^3x
+  =
+  -\int\partial_iT^{i0}(\mathbf{x},t)\,d^3x
+  =0,
+\]
+\[
+  \frac{\partial^2}{\partial t^2}
+  \int x^iT^{00}(\mathbf{x},t)\,d^3x
+  =
+  \int x^i\partial_j\partial_kT^{jk}(\mathbf{x},t)\,d^3x
+  =
+  -\int\partial_jT^{ij}(\mathbf{x},t)\,d^3x
+  =0.
+\]
+Thus the shift in origin does not affect the Fourier components with
+\(\omega\ne0\), that is,
+\begin{equation}
+  D_{ij}(\omega)
+  \equiv
+  \int x^ix^jT^{00}(\mathbf{x},\omega)\,d^3x
+  =
+  \int(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},\omega)\,d^3x.
+  \tag{10.5.12}\label{eq:10.5.12}
+\end{equation}
+However, it is only when we take \(T^{00}\) as the energy density of the
+entire system that we can shift origins freely in computing
+\(D_{ij}(\omega)\).
+
+As a first example, let us calculate the gravitational radiation produced by
+a sound wave in a tube lying in the \(z\)-direction. The density of the
+vibrating material can be written
+\[
+  \rho=\rho_0+\rho_1,
+\]
+where \(\rho_0\) is the constant unperturbed value and \(\rho_1\) is a
+small perturbation. We also treat the material velocity \(v\) (in the
+\(z\)-direction) as a small perturbation, and neglect dissipative effects.
+The equations of motion are then
+\[
+  \partial_t\rho_1+\rho_0\partial_zv=0,
+  \qquad
+  \rho_0\partial_tv+v_s^2\partial_z\rho_1=0,
+\]
+where \(v_s\) is the speed of sound. The tube is not supported at its ends
+(otherwise we would have to take into account the gravitational radiation
+emitted by the support!), so the pressure \(v_s^2\rho_1\) must vanish at the
+tube ends. With this boundary condition, the general solution for a tube
+extending from \(z=0\) to \(z=L\) is a superposition of the normal modes
+\begin{equation}
+  v=-\epsilon_{\mathrm{osc}} v_s\cos kz\sin(\omega t+\phi),
+  \tag{10.5.13}\label{eq:10.5.13}
+\end{equation}
+\begin{equation}
+  \rho_1=\epsilon_{\mathrm{osc}}\rho_0\sin kz\cos(\omega t+\phi),
+  \tag{10.5.14}\label{eq:10.5.14}
+\end{equation}
+where \(\epsilon_{\mathrm{osc}}\) is a small dimensionless oscillation amplitude,
+\(\phi\) is an arbitrary
+phase, and
+\begin{equation}
+  k=N\frac{\pi}{L},
+  \qquad
+  \omega=N\pi\frac{v_s}{L},
+  \tag{10.5.15}\label{eq:10.5.15}
+\end{equation}
+with \(N\) any positive integer. Since \(v\) is not constrained to vanish at
+the tube ends, these ends will in general be displaced by amounts
+\(\delta(0,t)\) and \(\delta(L,t)\), respectively, where
+\[
+  \delta(z,t)
+  \equiv
+  \int v(z,t)\,dt
+  =
+  \epsilon_{\mathrm{osc}}v_s\omega^{-1}\cos kz\cos(\omega t+\phi).
+\]
+The time-dependent part of the second moment of the mass density is given
+here by
+\[
+  D_{ij}(t)
+  =
+  n_in_jA
+  \left(
+    \int_0^L\rho_1(z,t)z^2\,dz
+    +L^2\rho_0\delta(L,t)
+  \right),
+\]
+where \(A\) is the cross-sectional area of the tube, and
+\(\mathbf{n}=(0,0,1)\) is a unit vector in the \(z\)-direction. This
+vanishes for \(N\) even, whereas for \(N\) odd we find
+\[
+  D_{ij}(t)
+  =
+  -\left(
+    \frac{4n_in_jML^2\epsilon_{\mathrm{osc}}}{N^3\pi^3}
+  \right)\cos(\omega t+\phi),
+\]
+where \(M\equiv\rho_0AL\) is the mass of the tube. (The reader can easily
+check that \(D_{ij}(t)\) would be the same if the second moment of the mass
+distribution were evaluated using as origin some point other than \(z=0\).)
+Comparing with Eq.~\eqref{eq:10.5.11}, we see that \(D_{ij}(t)\) has Fourier
+component
+\begin{equation}
+  D_{ij}\!\left(N\pi\frac{v_s}{L}\right)
+  =
+  -\frac{2n_in_jML^2\epsilon_{\mathrm{osc}}}{N^3\pi^3}.
+  \tag{10.5.16}\label{eq:10.5.16}
+\end{equation}
+The radiated power is thus given by Eq.~\eqref{eq:10.5.7} (in c.g.s.
+units) as
+\begin{equation}
+  P
+  =
+  \frac{16GM^2v_s^6\epsilon_{\mathrm{osc}}^2}{15L^2c^5},
+  \tag{10.5.17}\label{eq:10.5.17}
+\end{equation}
+for each odd \(N\). This may be compared with the total energy of the
+oscillation, which is simply the kinetic energy at the times when \(\rho_1\)
+vanishes, that is, when \(v\) is greatest:
+\[
+  E
+  =
+  \frac12\rho_0A\int_0^Lv_{\max}^2(z)\,dz
+  =
+  \frac14Mv_s^2\epsilon_{\mathrm{osc}}^2.
+\]
+Evidently the emission of gravitational radiation will cause the oscillator
+to lose energy at a rate
+\begin{equation}
+  \Gamma_{\mathrm{grav}}
+  \equiv
+  \frac{P}{E}
+  =
+  \frac{64GMv_s^4}{15L^2c^5}.
+  \tag{10.5.18}\label{eq:10.5.18}
+\end{equation}
+
+For instance, let us calculate the rate of gravitational radiation by
+acoustic oscillations in the large aluminum cylinders used as antennas in
+Weber's experiments on gravitational radiation.%
+\hyperref[ch10-ref-1]{\textsuperscript{1}}
+(As we shall see, the effective cross-section of such antennas is determined
+by \(\Gamma_{\mathrm{grav}}\).) Weber's cylinders have the parameters
+\[
+  L=153\ \mathrm{cm},
+  \qquad
+  v_s=5.1\times10^5\ \mathrm{cm/sec},
+  \qquad
+  M=1.4\times10^6\ \mathrm{gm}.
+\]
+Hence, if gravitational radiation were the only loss mechanism, the
+oscillations \eqref{eq:10.5.13}, \eqref{eq:10.5.14} with \(N\) odd would
+lose energy at a rate
+\begin{equation}
+  \Gamma_{\mathrm{grav}}
+  =
+  4.7\times10^{-35}\ \mathrm{sec}^{-1}.
+  \tag{10.5.19}\label{eq:10.5.19}
+\end{equation}
+In contrast, the actual decay rate \(\Gamma\) of the \(N=1\) mode in this
+cylinder is about \(0.15\ \mathrm{sec}^{-1}\), owing primarily to viscous
+dissipation within the aluminum. Hence the ``branching ratio'' of
+gravitational radiation here is of order
+\begin{equation}
+  \eta\equiv\frac{\Gamma_{\mathrm{grav}}}{\Gamma}
+  \simeq3\times10^{-34}
+  \qquad(N=1).
+  \tag{10.5.20}\label{eq:10.5.20}
+\end{equation}
+Any ordinary mechanical oscillation will always give up vastly more of its
+energy to heat than to gravitational radiation.
+
+As a second example, let us calculate the power radiated by a rotating body.
+If the body rotates rigidly about the 3-axis with angular frequency
+\(\Omega\), then the mass density \(T^{00}\) will take the form
+\[
+  T^{00}(\mathbf{x},t)=\rho(\mathbf{x}'),
+\]
+where \(\rho(\mathbf{x}')\) is the mass density expressed in coordinates
+\(\mathbf{x}'\) fixed in the body, defined by
+\[
+  x_1=x'_1\cos\Omega t-x'_2\sin\Omega t,
+  \qquad
+  x_2=x'_1\sin\Omega t+x'_2\cos\Omega t,
+  \qquad
+  x_3=x'_3.
+\]
+Hence, by changing coordinates in \eqref{eq:10.5.9}, we may express
+\(D_{ij}(t)\) in terms of the moment-of-inertia tensor in body-fixed
+coordinates
+\begin{equation}
+  I_{ij}
+  \equiv
+  \int d^3x'\,x'_ix'_j\rho(\mathbf{x}').
+  \tag{10.5.21}\label{eq:10.5.21}
+\end{equation}
+For simplicity, let us consider rotation around one of the principal axes of
+the ellipsoid of inertia, so that \(I_{13}=I_{23}=0\). We can also choose
+the \(x'_1\) and \(x'_2\) axes along the two other principal axes, so that
+\(I_{12}=0\). With \(I_{ij}\) diagonal, we now find
+\[
+  D_{11}(t)
+  =\frac12(I_{11}+I_{22})
+  +\frac12(I_{11}-I_{22})\cos2\Omega t,
+\]
+\[
+  D_{12}(t)=\frac12(I_{11}-I_{22})\sin2\Omega t,
+\]
+\[
+  D_{22}(t)
+  =\frac12(I_{11}+I_{22})
+  -\frac12(I_{11}-I_{22})\cos2\Omega t,
+\]
+\[
+  D_{13}(t)=D_{23}(t)=0,
+  \qquad
+  D_{33}(t)=I_{33}.
+\]
+The nonvanishing Fourier coefficients for \(\omega=2\Omega\) in
+Eq.~\eqref{eq:10.5.11} are then
+\[
+  D_{11}(2\Omega)
+  =
+  -D_{22}(2\Omega)
+  =
+  \ii D_{12}(2\Omega)
+  =
+  \frac14(I_{11}-I_{22}).
+\]
+According to Eq.~\eqref{eq:10.5.7}, the total power emitted at twice the
+rotation frequency is then (in c.g.s. units)
+\begin{equation}
+  P(2\Omega)
+  =
+  \frac{32G\Omega^6I^2e^2}{5c^5},
+  \tag{10.5.22}\label{eq:10.5.22}
+\end{equation}
+where \(I\) and \(e\) are the moment of inertia and equatorial ellipticity,
+\begin{equation}
+  I\equiv I_{11}+I_{22},
+  \tag{10.5.23}\label{eq:10.5.23}
+\end{equation}
+\begin{equation}
+  e\equiv\frac{I_{11}-I_{22}}{I}.
+  \tag{10.5.24}\label{eq:10.5.24}
+\end{equation}
+A body with circular symmetry around the axis of rotation will have \(e=0\),
+and therefore will not emit gravitational radiation. (Indeed, this conclusion
+does not even depend on the quadrupole approximation, since such a body,
+though rotating, has a time-independent energy-momentum tensor.) On the other
+hand, for a point mass \(m\) fixed in the rotating coordinate system at a
+point \(x'_1=r,\ x'_2=x'_3=0\), the only nonvanishing element of \(I_{ij}\)
+will be \(I_{11}=mr^2\), so that \(I=mr^2\) and \(e=1\), and
+Eq.~\eqref{eq:10.5.22} gives a radiated power
+\begin{equation}
+  P(2\Omega)
+  =
+  \frac{32G\Omega^6m^2r^4}{5c^5}.
+  \tag{10.5.25}\label{eq:10.5.25}
+\end{equation}
+For instance, for the orbital motion of the planet Jupiter, we have
+\[
+  \Omega=1.68\times10^{-8}\ \mathrm{sec}^{-1},
+  \qquad
+  m=1.9\times10^{30}\ \mathrm{g},
+  \qquad
+  r=7.78\times10^{13}\ \mathrm{cm},
+\]
+and Eq.~\eqref{eq:10.5.25} gives a gravitational radiation power of only
+\(5.3\ \mathrm{kW}\), less even than the solar thermal gravitation power
+calculated in the last section. At this rate, it would take very much longer
+than the age of the solar system to observe any effects of this energy loss
+on Jupiter's orbit.
+
+The negligibility of gravitational radiation in celestial mechanics can be
+stated in more general terms. For a system consisting of particles with
+typical mass \(\overline M\), typical separations \(\bar r\), and typical
+velocities \(\bar v\), the power radiated at a frequency \(\omega\) of order
+\(\bar v/\bar r\) will be of order [compare Eq.~\eqref{eq:10.5.7}]
+\[
+  P\sim
+  G\left(\frac{\bar v}{\bar r}\right)^6
+  \overline M^{\,2}\bar r^4,
+\]
+or, since \(G\overline M/\bar r\) is of order \(\bar v^2\),
+\[
+  P\sim\overline M\frac{\bar v^8}{\bar r}.
+\]
+The typical deceleration \(\bar a_{\mathrm{rad}}\) of particles in the system
+owing to this energy loss is given by the power \(P\) divided by the momentum
+\(\overline M\bar v\), or
+\[
+  \bar a_{\mathrm{rad}}\sim\frac{\bar v^7}{\bar r}.
+\]
+This may be compared with the accelerations computed in Newtonian mechanics,
+which are of order \(\bar v^2/\bar r\), and with the post-Newtonian
+corrections discussed in the last chapter, which are of order
+\(\bar v^4/\bar r\). [Radiation effects enter with an \emph{odd} power of
+\(\bar v\) because they represent an irreversible process, as shown by our
+use of an outgoing wave solution in Eq.~\eqref{eq:10.4.4}.] Since radiation
+reaction is smaller than the post-Newtonian effects by a factor
+\(\bar v^3<10^{-12}\), the neglect of radiation reaction in the last section
+was perfectly justified. Indeed, if we had strength we could even compute
+the post-post-Newtonian accelerations,%
+\hyperref[ch10-ref-2]{\textsuperscript{2}}
+which are of order \(\bar v^6/\bar r\), without encountering the effects of
+gravitational radiation!
+
+The discovery of the pulsars has provided us with a more promising source of
+gravitational radiation. As discussed in Section~11.4, pulsars are probably
+neutron stars,%
+\hyperref[ch10-ref-3]{\textsuperscript{3}}
+with masses of the order of one solar mass, radii of the order of
+\(10\ \mathrm{km}\), and hence moments of inertia \(I\) of the order of
+\(10^{45}\ \mathrm{g\,cm^2}\). A newborn pulsar, formed in a supernova, may
+be rotating with \(\Omega\) of order \(10^4\ \mathrm{sec}^{-1}\), so
+according to Eq.~\eqref{eq:10.5.22}, it would be emitting gravitational
+radiation at a rate of order \(10^{55}e^2\ \mathrm{ergs/sec}\). For
+comparison, the total rotational energy of the pulsar would be about
+\(10^{53}\ \mathrm{ergs}\), so most of the pulsar's kinetic energy would be
+radiated away as gravitational waves%
+\hyperref[ch10-ref-4]{\textsuperscript{4}}
+within a few years, provided that the equatorial ellipticity \(e\) is greater
+than about \(10^{-4}\). This is too large a static ellipticity to be
+maintained in the huge gravitational field of a neutron star, but it might be
+possible for dynamical effects to produce a mean ellipticity this large,
+particularly in the early period before the pulsar has settled down to its
+equilibrium configuration. Eventually the pulsar will slow down sufficiently
+so that other loss mechanisms, such as magnetic dipole radiation (for which
+\(P\propto\Omega^4\)) become more important than gravitational radiation.

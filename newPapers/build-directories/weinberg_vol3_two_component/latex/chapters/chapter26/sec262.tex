@@ -1,0 +1,633 @@
+% Coverage: physical pp. 82--91 (printed pp. 59--68), from the Section 26.2
+% heading through the final paragraph on physical p. 91, ending immediately
+% before Section 26.3. Equations (26.2.1)--(26.2.41), eleven unnumbered
+% displays, citation [1], no footnotes, one centered three-asterisk divider,
+% and no figures or tables. Uncertainty: none.
+
+\subsection{General Superfields}
+
+\providecommand{\gradedbracket}[2]{\left[#1,#2\right\}}
+\providecommand{\SuperQ}{\mathcal{Q}}
+
+It is straightforward to construct supermultiplets of fields by the direct
+technique illustrated in the previous section, but in order to construct
+supersymmetric actions we also need to know how to multiply field
+supermultiplets to make other supermultiplets. A great deal of work can be
+saved by using a formalism invented by Salam and
+Strathdee~\hyperref[ch26-ref-1]{[1]}, in which the fields in any
+supermultiplet are assembled into a single superfield.
+
+Just as the four-momentum operators $P_\mu$ generate translations of
+$x^\mu$, the supersymmetry generators \(Q_\alpha\) and
+\(\bar Q_{\dot\alpha}\) may be regarded as generators of translations of
+the two independent fermionic superspace coordinates
+\(\theta^\alpha\) and \(\bar\theta^{\dot\alpha}\).  These coordinates
+anticommute with one another and with fermionic fields, but commute with
+$x^\mu$ and all bosonic fields.  The supersymmetry generators have
+non-vanishing mixed anticommutators, so they cannot be represented by
+fermionic coordinate derivatives alone.  Salam and Strathdee instead found
+that their graded brackets with any bosonic or fermionic superfield
+$S(x,\theta,\bar\theta)$ may be represented by
+\begin{equation}
+  \gradedbracket{Q_\alpha}{S}=i\SuperQ_\alpha S,
+  \qquad
+  \gradedbracket{\bar Q_{\dot\alpha}}{S}
+  =i\bar{\SuperQ}_{\dot\alpha}S\,,
+  \tag{26.2.1}\label{eq:26.2.1}
+\end{equation}
+where the superspace differential operators are
+\begin{equation}
+  \SuperQ_\alpha
+  \equiv-\frac{\partial}{\partial\theta^\alpha}
+  -i\sigma^\mu_{\alpha\dot\alpha}\bar\theta^{\dot\alpha}\partial_\mu,
+  \qquad
+  \bar{\SuperQ}_{\dot\alpha}
+  \equiv\frac{\partial}{\partial\bar\theta^{\dot\alpha}}
+  +i\theta^\alpha\sigma^\mu_{\alpha\dot\alpha}\partial_\mu .
+  \tag{26.2.2}\label{eq:26.2.2}
+\end{equation}
+(All derivatives with respect to fermionic c-number variables are
+\emph{left}-derivatives.)  With indices displayed, the first of these
+operators is
+\begin{equation}
+  \SuperQ_\alpha
+  =-\partial_\alpha
+  -i\sigma^\mu_{\alpha\dot\beta}\bar\theta^{\dot\beta}\partial_\mu .
+  \tag{26.2.3}\label{eq:26.2.3}
+\end{equation}
+Likewise,
+\begin{equation}
+  \bar{\SuperQ}_{\dot\alpha}
+  =\bar\partial_{\dot\alpha}
+  +i\theta^\beta\sigma^\mu_{\beta\dot\alpha}\partial_\mu .
+  \tag{26.2.4}\label{eq:26.2.4}
+\end{equation}
+It is straightforward to calculate that
+\begin{equation}
+  \{\SuperQ_\alpha,\bar{\SuperQ}_{\dot\beta}\}
+  =-i\sigma^\mu_{\alpha\dot\beta}\partial_\mu
+   -i\sigma^\mu_{\alpha\dot\beta}\partial_\mu .
+  \tag{26.2.5}\label{eq:26.2.5}
+\end{equation}
+The two contributions are equal, and therefore
+\begin{equation}
+  \{\SuperQ_\alpha,\bar{\SuperQ}_{\dot\beta}\}
+  =-2i\sigma^\mu_{\alpha\dot\beta}\partial_\mu .
+  \tag{26.2.6}\label{eq:26.2.6}
+\end{equation}
+Eqs.~\eqref{eq:26.2.6} and \eqref{eq:26.2.1} together with the generalized
+Jacobi identities \eqref{eq:25.1.5} show that
+\begin{equation}
+  [\{Q_\alpha,\bar Q_{\dot\beta}\},S]
+  =-\{\SuperQ_\alpha,\bar{\SuperQ}_{\dot\beta}\}S
+  =2i\sigma^\mu_{\alpha\dot\beta}\partial_\mu S
+  =-2\sigma^\mu_{\alpha\dot\beta}[P_\mu,S]\,,
+  \tag{26.2.7}\label{eq:26.2.7}
+\end{equation}
+in agreement with the anticommutation relation \eqref{eq:25.2.36} in its
+two-component form.
+
+It is often more convenient to express the commutation and anticommutation
+relations \eqref{eq:26.2.1} as transformation rules.  A transformation
+with infinitesimal Weyl parameter \(\xi_\alpha\) changes a superfield by
+\begin{equation}
+  \delta S=(\xi\SuperQ+\bar\xi\bar{\SuperQ})S
+  =-\xi^\alpha\partial_\alpha S
+   +\bar\xi_{\dot\alpha}\bar\partial^{\dot\alpha}S
+   -i\bigl(\xi\sigma^\mu\bar\theta
+     -\theta\sigma^\mu\bar\xi\bigr)\partial_\mu S .
+  \tag{26.2.8}\label{eq:26.2.8}
+\end{equation}
+For example, the left derivatives obey
+\begin{equation}
+  \partial_\alpha(\theta\theta)=2\theta_\alpha,
+  \qquad
+  \bar\partial_{\dot\alpha}(\bar\theta\bar\theta)
+  =2\bar\theta_{\dot\alpha}.
+  \tag{26.2.9}\label{eq:26.2.9}
+\end{equation}
+
+The components of \(\theta\) and \(\bar\theta\) anticommute, so the
+expansion terminates at order \(\theta^2\bar\theta^2\).  Reducing
+Weinberg's original expansion with the comparison dictionary gives
+\begin{equation}
+  \begin{aligned}
+  S(x,\theta,\bar\theta)={}&C
+  -i(\theta\omega-\bar\theta\bar\omega)
+  -\frac{i}{2}(\theta\theta-\bar\theta\bar\theta)M
+  -\frac12(\theta\theta+\bar\theta\bar\theta)N\\
+  &+\theta\sigma_\mu\bar\theta\,V^\mu
+  -i\theta\theta\,
+    \bar\theta\left(\bar\lambda
+      -\frac{i}{2}\bar\sigma^\mu\partial_\mu\omega\right)\\
+  &+i\bar\theta\bar\theta\,
+    \theta\left(\lambda
+      -\frac{i}{2}\sigma^\mu\partial_\mu\bar\omega\right)
+  +\frac12\theta\theta\bar\theta\bar\theta
+    \left(D+\frac12\Box C\right).
+  \end{aligned}
+  \tag{26.2.10}\label{eq:26.2.10}
+\end{equation}
+(The derivative terms are separated from \(\lambda\) and \(D\) for later
+convenience.) If \(S\) is a scalar, then \(C,M,N,D\) are scalar or
+pseudoscalar fields, \(\omega_\alpha,\lambda_\alpha\) are Weyl fields, and
+\(V^\mu\) is a vector field.  If \(S=S^\dagger\), the bosonic components
+are real and barred spinors are the complex conjugates of the corresponding
+unbarred spinors.
+
+For completeness, we spell out the two-component reduction that leads to
+the component rules below.  It combines the graded-bracket prescription
+\eqref{eq:26.2.1} with the transformation convention
+\eqref{eq:26.1.18}; applying \eqref{eq:26.2.1} a second time also checks the
+relative sign of the conjugate terms.  The index positions follow
+Eq.~\eqref{eq:26.A.3} and the conjugation rule
+\eqref{eq:5.4.35}, while the two spacetime-derivative contributions are the
+same ones displayed in Eq.~\eqref{eq:26.2.5}. Acting on the expansion
+\eqref{eq:26.2.10} gives
+\[
+  \begin{aligned}
+  \delta S
+  =(\xi\SuperQ+\bar\xi\bar{\SuperQ})
+  \biggl\{&
+    C-i(\theta\omega-\bar\theta\bar\omega)
+    -\frac{i}{2}(\theta^2-\bar\theta^2)M\\
+   &-\frac12(\theta^2+\bar\theta^2)N
+    +\theta\sigma^\mu\bar\theta V_\mu+\cdots
+  \biggr\}.
+  \end{aligned}
+\]
+The left-derivative convention \eqref{eq:26.2.9} and the first dyad identity
+\eqref{eq:26.A.9} give
+\[
+  \theta_\alpha\theta_\beta
+  =\frac12\epsilon_{\alpha\beta}\theta^2,
+  \qquad
+  \bar\theta_{\dot\alpha}\bar\theta_{\dot\beta}
+  =-\frac12\epsilon_{\dot\alpha\dot\beta}\bar\theta^2 .
+\]
+The same identity \eqref{eq:26.A.9}, contracted once, yields the cubic
+reduction \eqref{eq:26.A.16}:
+\[
+  \theta_\alpha(\theta\chi)
+  =-\frac12\theta^2\chi_\alpha,
+  \qquad
+  \bar\theta_{\dot\alpha}(\bar\theta\bar\chi)
+  =-\frac12\bar\theta^2\bar\chi_{\dot\alpha}.
+\]
+The vector cubic reduction \eqref{eq:26.A.17} is
+\[
+  (\theta\sigma^\mu\bar\theta)\theta_\alpha
+  =-\frac12\theta^2(\sigma^\mu\bar\theta)_\alpha,
+  \qquad
+  (\theta\sigma^\mu\bar\theta)\bar\theta_{\dot\alpha}
+  =-\frac12(\theta\sigma^\mu)_{\dot\alpha}\bar\theta^2 .
+\]
+At fourth order, Eq.~\eqref{eq:26.A.19} becomes
+\[
+  \theta_\alpha\bar\theta_{\dot\alpha}
+  (\theta\sigma^\mu\bar\theta)
+  =\frac14\sigma^\mu_{\alpha\dot\alpha}
+    \theta^2\bar\theta^2 .
+\]
+The exchange rule \eqref{eq:26.A.7} is useful for putting every term in a
+common order:
+\[
+  \xi\sigma^\mu\bar\theta
+  =-\bar\theta\bar\sigma^\mu\xi,
+  \qquad
+  \theta\sigma^\mu\bar\xi
+  =-\bar\xi\bar\sigma^\mu\theta .
+\]
+Collecting the constant and linear terms of \eqref{eq:26.2.10} gives
+\[
+  \begin{aligned}
+  \delta S\big|_{0,1}
+  ={}&i(\xi\omega-\bar\xi\bar\omega)\\
+   &-i\theta^\alpha
+    \left[(-M+iN)\xi_\alpha
+      -(\sigma^\mu\bar\xi)_\alpha(\partial_\mu C+iV_\mu)\right]
+    +\text{c.c.}
+  \end{aligned}
+\]
+The quadratic part of the same expansion organizes itself as
+\[
+  \delta S\big|_2
+  =-\frac{i}{2}(\theta^2-\bar\theta^2)\delta M
+   -\frac12(\theta^2+\bar\theta^2)\delta N
+   +\theta\sigma^\mu\bar\theta\,\delta V_\mu .
+\]
+Finally, the cubic and quartic coefficients retain the shifted combinations
+chosen in \eqref{eq:26.2.10}:
+\[
+  \begin{aligned}
+  \delta S\big|_{3,4}={}&
+  -i\theta^2\bar\theta\,
+   \delta\left(\bar\lambda-\frac{i}{2}
+     \bar\sigma^\mu\partial_\mu\omega\right)\\
+  &+i\bar\theta^2\theta\,
+   \delta\left(\lambda-\frac{i}{2}
+     \sigma^\mu\partial_\mu\bar\omega\right)
+  +\frac12\theta^2\bar\theta^2
+   \delta\left(D+\frac12\Box C\right).
+  \end{aligned}
+\]
+
+Apply \eqref{eq:26.2.8} to the expansion \eqref{eq:26.2.10}. Reducing the
+products with the appendix identities and comparing equal powers of
+\(\theta\) and \(\bar\theta\) gives the transformation rules:
+\begin{equation}
+  \delta C=i(\xi\omega-\bar\xi\bar\omega)\,,
+  \tag{26.2.11}\label{eq:26.2.11}
+\end{equation}
+\begin{equation}
+  \delta\omega_\alpha
+  =(-M+iN)\xi_\alpha
+   -(\sigma^\mu\bar\xi)_\alpha(\partial_\mu C+iV_\mu)\,,
+  \tag{26.2.12}\label{eq:26.2.12}
+\end{equation}
+\begin{equation}
+  \delta M=-\xi\left(\lambda-i\sigma^\mu\partial_\mu\bar\omega\right)
+  -\bar\xi\left(\bar\lambda
+    -i\bar\sigma^\mu\partial_\mu\omega\right)\,,
+  \tag{26.2.13}\label{eq:26.2.13}
+\end{equation}
+\begin{equation}
+  \delta N=i\xi\left(\lambda-i\sigma^\mu\partial_\mu\bar\omega\right)
+  -i\bar\xi\left(\bar\lambda
+    -i\bar\sigma^\mu\partial_\mu\omega\right)\,,
+  \tag{26.2.14}\label{eq:26.2.14}
+\end{equation}
+\begin{equation}
+  \delta V_\mu
+  =-i\left(\xi\sigma_\mu\bar\lambda
+    +\bar\xi\bar\sigma_\mu\lambda\right)
+   +\xi\partial_\mu\omega+\bar\xi\partial_\mu\bar\omega\,.
+  \tag{26.2.15}\label{eq:26.2.15}
+\end{equation}
+The cubic and quartic terms, combined with
+\eqref{eq:26.2.11} and \eqref{eq:26.2.12}, give the simpler transformation
+rules for \(\lambda\) and \(D\):
+\begin{equation}
+  \delta\lambda_\alpha
+  =\left[(\sigma^{\mu\nu})_\alpha{}^\beta
+    (\partial_\mu V_\nu-\partial_\nu V_\mu)
+    +iD\delta_\alpha{}^\beta\right]\xi_\beta\,,
+  \tag{26.2.16}\label{eq:26.2.16}
+\end{equation}
+\begin{equation}
+  \delta D
+  =\xi\sigma^\mu\partial_\mu\bar\lambda
+   -\bar\xi\bar\sigma^\mu\partial_\mu\lambda\,.
+  \tag{26.2.17}\label{eq:26.2.17}
+\end{equation}
+It is to achieve this simplification that the terms
+\(\sigma^\mu\partial_\mu\bar\omega/2\),
+\(\bar\sigma^\mu\partial_\mu\omega/2\), and \(\Box C/2\) were separated
+from \(\lambda,\bar\lambda\), and \(D\) in the expansion
+\eqref{eq:26.2.10}.
+
+The whole point of the superfield formalism is to simplify the task of making
+supermultiplets out of other supermultiplets. Given two superfields $S_1$ and
+$S_2$ that both satisfy the transformation rule \eqref{eq:26.2.8}, their
+product $S\equiv S_1S_2$ satisfies
+\begin{equation}
+  \begin{aligned}
+  \delta S&=-i[\xi Q+\bar\xi\bar Q,S_1S_2]
+  =(\delta S_1)S_2+S_1(\delta S_2)\\
+  &=\bigl((\xi\SuperQ+\bar\xi\bar{\SuperQ})S_1\bigr)S_2
+    +S_1\bigl((\xi\SuperQ+\bar\xi\bar{\SuperQ})S_2\bigr)
+  =(\xi\SuperQ+\bar\xi\bar{\SuperQ})S\,,
+  \end{aligned}
+  \tag{26.2.18}\label{eq:26.2.18}
+\end{equation}
+and is therefore also a superfield. The calculation uses the exchange and
+cubic identities \eqref{eq:26.A.7} and \eqref{eq:26.A.16}. The quartic
+terms use Eqs.~\eqref{eq:26.A.18} and \eqref{eq:26.A.19}. The resulting
+components are
+\begin{equation}
+  C=C_1C_2\,,
+  \tag{26.2.19}\label{eq:26.2.19}
+\end{equation}
+\begin{equation}
+  \omega=C_1\omega_2+C_2\omega_1\,,
+  \tag{26.2.20}\label{eq:26.2.20}
+\end{equation}
+\begin{equation}
+  M=C_1M_2+C_2M_1
+  +\frac{i}{2}(\omega_1\omega_2-\bar\omega_1\bar\omega_2)\,,
+  \tag{26.2.21}\label{eq:26.2.21}
+\end{equation}
+\begin{equation}
+  N=C_1N_2+C_2N_1
+  -\frac12(\omega_1\omega_2+\bar\omega_1\bar\omega_2)\,,
+  \tag{26.2.22}\label{eq:26.2.22}
+\end{equation}
+\begin{equation}
+  V^\mu=C_1V_2^\mu+C_2V_1^\mu
+  -\frac12\left(
+    \omega_1\sigma^\mu\bar\omega_2
+    -\bar\omega_1\bar\sigma^\mu\omega_2\right)\,,
+  \tag{26.2.23}\label{eq:26.2.23}
+\end{equation}
+\begin{equation}
+  \begin{aligned}
+  \lambda_\alpha={}&C_1\lambda_{2\alpha}+C_2\lambda_{1\alpha}
+  +\frac{i}{2}(\sigma^\mu\bar\omega_1)_\alpha\partial_\mu C_2
+  +\frac{i}{2}(\sigma^\mu\bar\omega_2)_\alpha\partial_\mu C_1\\
+  &-\frac12V_{1\mu}(\sigma^\mu\bar\omega_2)_\alpha
+  -\frac12V_{2\mu}(\sigma^\mu\bar\omega_1)_\alpha\\
+  &+\frac12(N_1-iM_1)\omega_{2\alpha}
+  +\frac12(N_2-iM_2)\omega_{1\alpha}\,,
+  \end{aligned}
+  \tag{26.2.24}\label{eq:26.2.24}
+\end{equation}
+\begin{equation}
+  \begin{aligned}
+  D={}&-\partial_\mu C_1\partial^\mu C_2+C_1D_2+C_2D_1
+  +M_1M_2+N_1N_2\\
+  &-\omega_1\left(\lambda_2
+      -\frac{i}{2}\sigma^\mu\partial_\mu\bar\omega_2\right)
+   -\bar\omega_1\left(\bar\lambda_2
+      -\frac{i}{2}\bar\sigma^\mu\partial_\mu\omega_2\right)\\
+  &-\omega_2\left(\lambda_1
+      -\frac{i}{2}\sigma^\mu\partial_\mu\bar\omega_1\right)
+   -\bar\omega_2\left(\bar\lambda_1
+      -\frac{i}{2}\bar\sigma^\mu\partial_\mu\omega_1\right)
+  -V_{1\mu}V_2^\mu\,.
+  \end{aligned}
+  \tag{26.2.25}\label{eq:26.2.25}
+\end{equation}
+It is trivial that linear combinations of superfields are superfields, in the
+same sense, and that spacetime derivatives and complex conjugates of
+superfields are superfields. But multiplying a superfield by some function of
+$\theta$ or differentiating it with respect to $\theta$ does not in general
+yield a superfield. (For instance, $\theta$ itself is evidently not a
+superfield, because $\theta$ is a fermionic c-number and therefore commutes
+with \(\xi Q+\bar\xi\bar Q\), while $\SuperQ\theta\neq0$.) There is, however, a way of
+combining a derivative of a superfield with respect to $\theta$ and
+multiplying it by a factor $\theta$ which does yield another superfield.
+
+Consider the covariant superspace derivatives defined by
+\begin{equation}
+  D_\alpha\equiv-\frac{\partial}{\partial\theta^\alpha}
+  +i\sigma^\mu_{\alpha\dot\alpha}\bar\theta^{\dot\alpha}\partial_\mu,
+  \qquad
+  \bar D_{\dot\alpha}
+  \equiv\frac{\partial}{\partial\bar\theta^{\dot\alpha}}
+  -i\theta^\alpha\sigma^\mu_{\alpha\dot\alpha}\partial_\mu .
+  \tag{26.2.26}\label{eq:26.2.26}
+\end{equation}
+or more explicitly
+\begin{equation}
+  D_\alpha=-\partial_\alpha
+  +i\sigma^\mu_{\alpha\dot\beta}\bar\theta^{\dot\beta}\partial_\mu,
+  \qquad
+  \bar D_{\dot\alpha}=\bar\partial_{\dot\alpha}
+  -i\theta^\beta\sigma^\mu_{\beta\dot\alpha}\partial_\mu .
+  \tag{26.2.27}\label{eq:26.2.27}
+\end{equation}
+The only difference between the definitions of \(D,\bar D\) and
+\(\SuperQ,\bar{\SuperQ}\) is a
+change of sign of the terms involving the spacetime derivative. In
+consequence of this change of sign, in the mixed anticommutators, instead of
+getting two equal terms like those in
+Eq.~\eqref{eq:26.2.5} with the same sign, we get them with opposite signs, so
+that they cancel:
+\begin{equation}
+  \{D_\alpha,\SuperQ_\beta\}
+  =\{D_\alpha,\bar{\SuperQ}_{\dot\beta}\}
+  =\{\bar D_{\dot\alpha},\SuperQ_\beta\}
+  =\{\bar D_{\dot\alpha},\bar{\SuperQ}_{\dot\beta}\}=0\,.
+  \tag{26.2.28}\label{eq:26.2.28}
+\end{equation}
+Since \(\xi\) is fermionic, it follows that
+\(\xi\SuperQ+\bar\xi\bar{\SuperQ}\) commutes with \(D_\beta\), so if
+\(S(x,\theta,\bar\theta)\) is a superfield, then
+\begin{equation}
+  \delta D_\beta S
+  \equiv-i[\xi Q+\bar\xi\bar Q,D_\beta S]
+  =D_\beta(\xi\SuperQ+\bar\xi\bar{\SuperQ})S
+  =(\xi\SuperQ+\bar\xi\bar{\SuperQ})D_\beta S\,,
+  \tag{26.2.29}\label{eq:26.2.29}
+\end{equation}
+so that \(D_\beta S\) is also a superfield.
+\emph{Thus an arbitrary polynomial function of superfields $S$ and their
+superderivatives \(D_\beta S,\bar D_{\dot\beta}S\), etc.\
+is also a superfield.}
+
+It is not necessary to add here that in constructing a superfield out of other
+superfields we can also include their spacetime derivatives, because these can
+be obtained from mixed second superderivatives. Their nonzero
+anticommutator is
+\begin{equation}
+  \{D_\alpha,\bar D_{\dot\beta}\}
+  =+2i\sigma^\mu_{\alpha\dot\beta}\partial_\mu .
+  \tag{26.2.30}\label{eq:26.2.30}
+\end{equation}
+
+Now let us consider how to construct a supersymmetric action out of
+superfields. There is no such thing as a supersymmetric Lagrangian density,
+because the anticommutation relation \eqref{eq:26.2.6} shows that if
+$\delta\mathcal{L}=0$ then $\mathcal{L}$ must be a constant. Even if the
+Lagrangian density is not supersymmetric, the action will still be
+supersymmetric if $\delta\mathcal{L}(x)$ is a derivative, which would not
+contribute to $\delta\int\mathcal{L}\,d^4x$. In general, the Lagrangian
+density $\mathcal{L}$ can be written as a sum of terms, each of which is some
+component of a superfield that is constructed out of elementary superfields
+and their superderivatives. Inspection of the transformation rules
+\eqref{eq:26.2.11}--\eqref{eq:26.2.17} for the individual components shows
+that in the absence of any special conditions on a general superfield, the
+only component of such a superfield whose variation is a derivative is the
+$D$-component. Also, for the $D$-component of any superfield to be a scalar,
+the superfield itself must be a scalar. Therefore, unless there are special
+conditions on the individual superfields from which the Lagrangian density is
+constructed, a supersymmetric action can only be the integral of the
+$D$-term of a scalar superfield $\Lambda$:
+\begin{equation}
+  I=\int d^4x\,[\Lambda]_D\,.
+  \tag{26.2.31}\label{eq:26.2.31}
+\end{equation}
+But in fact no action of this sort would be physically satisfactory without
+special conditions on the superfields from which it is constructed. For a
+general superfield \(S(x,\theta,\bar\theta)\), the only sort of
+supersymmetric kinematic
+action $I_0$ that is bilinear in $S$ and $S^*$ and involves no more than two
+derivatives of the component fields is of the form
+\begin{equation}
+  I_0\mathrel{\propto}\int d^4x\,[S^*S]_D\,.
+  \tag{26.2.32}\label{eq:26.2.32}
+\end{equation}
+From Eq.~\eqref{eq:26.2.25}, we see that $S^*S$ has the $D$-component
+\begin{equation}
+  \begin{aligned}
+  [S^*S]_D={}&-\partial_\mu C^*\partial^\mu C
+  +\frac{i}{2}\left(
+    \omega\sigma^\mu\partial_\mu\bar\omega
+    +\bar\omega\bar\sigma^\mu\partial_\mu\omega\right)\\
+  &-\frac{i}{2}\left(
+    (\partial_\mu\omega)\sigma^\mu\bar\omega
+    +(\partial_\mu\bar\omega)\bar\sigma^\mu\omega\right)\\
+  &+C^*D+D^*C
+   -(\omega\lambda+\bar\omega\bar\lambda)
+   -(\lambda\omega+\bar\lambda\bar\omega)\\
+  &+M^*M+N^*N-V_\mu^*V^\mu\,.
+  \end{aligned}
+  \tag{26.2.33}\label{eq:26.2.33}
+\end{equation}
+The terms quadratic in $C$ or $\omega$ look promising as the kinematic
+Lagrangians for massless fields of spins zero and $1/2$; the final three terms
+are harmless; but the terms involving $D$ or $\lambda$ have the disastrous
+effect in path integrals of constraining $C$ and $\omega$ to vanish.
+Fortunately, as we shall see in the following section, there are constrained
+superfields from which we can construct physically sensible actions. The
+introduction of these constrained superfields will also open up ways of
+constructing supersymmetric terms in the action that are not the
+$D$-components of functions of superfields.
+
+If parity is conserved, then the space inversion properties of the component
+fields of a superfield will be related by supersymmetry. To work out this
+relation, we apply the parity operator $P$ to the commutation/anticommutation
+relation \eqref{eq:26.2.1} and use the transformation property
+\eqref{eq:25.3.16} of supersymmetry generators, which gives
+\begin{equation}
+  \begin{aligned}
+  -i\gradedbracket{\bar Q_{\dot\alpha}}
+    {P^{-1}S(x,\theta,\bar\theta)P}
+    &=\SuperQ_\alpha P^{-1}S(x,\theta,\bar\theta)P,\\
+  i\gradedbracket{Q_\alpha}
+    {P^{-1}S(x,\theta,\bar\theta)P}
+    &=\bar{\SuperQ}_{\dot\alpha}
+      P^{-1}S(x,\theta,\bar\theta)P .
+  \end{aligned}
+  \tag{26.2.34}\label{eq:26.2.34}
+\end{equation}
+Here and below parity identifies the displayed dotted and undotted indices
+with \(\sigma^0_{\alpha\dot\alpha}\).
+The solution of Eq.~\eqref{eq:26.2.34} for a scalar superfield is of the form
+\begin{equation}
+  P^{-1}S(x,\theta,\bar\theta)P
+  =\eta S(\Lambda_Px,-i\bar\theta,-i\theta)\,,
+  \tag{26.2.35}\label{eq:26.2.35}
+\end{equation}
+Substituting Eq.~\eqref{eq:26.2.35} first into the first relation in
+\eqref{eq:26.2.34}, and then into the second relation in
+\eqref{eq:26.2.34}, gives
+\[
+  \begin{aligned}
+  \SuperQ_\alpha\,
+   S(\Lambda_Px,-i\bar\theta,-i\theta)
+  &=-i(\sigma^0)_{\alpha\dot\alpha}
+    \bar{\SuperQ}^{\dot\alpha}
+    S(\Lambda_Px,-i\bar\theta,-i\theta),\\
+  \bar{\SuperQ}_{\dot\alpha}\,
+   S(\Lambda_Px,-i\bar\theta,-i\theta)
+  &=+i(\sigma^0)_{\alpha\dot\alpha}
+    \SuperQ^\alpha
+    S(\Lambda_Px,-i\bar\theta,-i\theta).
+  \end{aligned}
+\]
+Thus Eq.~\eqref{eq:26.2.35} solves Eq.~\eqref{eq:26.2.34}; applying
+Eq.~\eqref{eq:26.2.35} once more is consistent with the phase and the
+index exchange in the displayed parity relation.
+Here $\eta$ is some phase (the intrinsic parity of the superfield) and
+$\Lambda_Px\equiv(-\mathbf{x},+x^0)$.  Direct substitution into
+\eqref{eq:26.2.2} verifies this solution. Using the expansion
+\eqref{eq:26.2.10} in
+Eq.~\eqref{eq:26.2.35} then gives the space inversion properties of the
+component fields:
+\begin{equation}
+  \begin{aligned}
+  P^{-1}C(x)P&=\eta C(\Lambda_Px),\\
+  P^{-1}\omega_\alpha(x)P
+    &=-i\eta(\sigma^0)_{\alpha\dot\alpha}
+      \bar\omega^{\dot\alpha}(\Lambda_Px),\\
+  P^{-1}M(x)P&=-\eta M(\Lambda_Px),\\
+  P^{-1}N(x)P&=\eta N(\Lambda_Px),\\
+  P^{-1}V^\mu(x)P&=-\eta(\Lambda_P)^\mu{}_\nu V^\nu(\Lambda_Px),\\
+  P^{-1}\lambda_\alpha(x)P
+    &=i\eta(\sigma^0)_{\alpha\dot\alpha}
+      \bar\lambda^{\dot\alpha}(\Lambda_Px),\\
+  P^{-1}D(x)P&=\eta D(\Lambda_Px).
+  \end{aligned}
+  \tag{26.2.36}\label{eq:26.2.36}
+\end{equation}
+
+\begin{center}
+\(\ast\qquad\ast\qquad\ast\)
+\end{center}
+
+The general real superfield $S$ involves four real spinless fields $C$, $M$,
+$N$, and $D$, plus one real four-vector field $V_\mu$, for a total of eight
+independent bosonic field components. For comparison, there are two
+Weyl fields \(\omega_\alpha\) and \(\lambda_\alpha\), together with their
+conjugates, also for a total of eight independent real field components. The
+equality of the numbers of
+independent bosonic and fermionic field components holds in general not only
+for the unconstrained general superfield studied in this section, but also for
+all superfields obtained from the general superfield by imposing
+supersymmetric constraints, such as the chiral and other constrained
+superfields discussed in the next section.
+
+To see this in general, suppose that we have a representation of the
+supersymmetry algebra provided by $N_B$ linearly independent real bosonic
+field operators $b_n(x)$ and $N_F$ linearly independent fermionic field
+operators $f_k(x)$. We will assume that these fields satisfy only non-trivial
+field equations, so that no linear combination of the $b_n$ or $f_k$ with
+non-vanishing coefficients satisfies a homogeneous linear field equation.
+Consider a Hermitian supersymmetry generator \(Q(u)\), defined as
+\begin{equation}
+  Q(u)\equiv u^\alpha Q_\alpha
+    +\bar u_{\dot\alpha}\bar Q^{\dot\alpha}\,,
+  \tag{26.2.37}\label{eq:26.2.37}
+\end{equation}
+where \(u_\alpha\) is an ordinary commuting numerical Weyl spinor
+(\emph{not} an anticommuting c-number) and
+\(\bar u_{\dot\alpha}=u_\alpha^*\). (For extended supersymmetry, we could
+use any one of the \(Q_{r\alpha},\bar Q_{r\dot\alpha}\) pairs.) In order for
+the $b_n$ and $f_k$ to furnish a representation of the supersymmetry algebra,
+we must have
+\begin{equation}
+  [Q(u),b_n]=i\sum_k q_{nk}(\partial)f_k\,,
+  \tag{26.2.38}\label{eq:26.2.38}
+\end{equation}
+\begin{equation}
+  \{Q(u),f_k\}=\sum_n p_{kn}(\partial)b_n\,,
+  \tag{26.2.39}\label{eq:26.2.39}
+\end{equation}
+for some matrix differential operators $q(\partial)$ and $p(\partial)$.
+Taking the anticommutator of Eq.~\eqref{eq:26.2.38} and the commutator of
+Eq.~\eqref{eq:26.2.39} with $Q(u)$ gives
+\begin{equation}
+  [Q^2(u),b_n]
+  =i\sum_m\bigl(q(\partial)p(\partial)\bigr)_{nm}b_m\,,
+  \tag{26.2.40}\label{eq:26.2.40}
+\end{equation}
+\begin{equation}
+  [Q^2(u),f_k]
+  =i\sum_\ell\bigl(p(\partial)q(\partial)\bigr)_{k\ell}f_\ell\,.
+  \tag{26.2.41}\label{eq:26.2.41}
+\end{equation}
+The anticommutation relation \eqref{eq:25.2.36} or \eqref{eq:25.2.38} gives
+the square of \(Q(u)\) as
+\(Q^2(u)=-2(u\sigma^\mu\bar u)P_\mu\). Hence the
+square matrices $p(\partial)q(\partial)$ and $q(\partial)p(\partial)$ must
+both be non-singular, because if there were any non-vanishing coefficients
+$c_n(\partial)$ or $d_k(\partial)$ for which
+$\sum_n c_n(\partial)(q(\partial)p(\partial))_{nm}=0$ or
+$\sum_k d_k(\partial)(p(\partial)q(\partial))_{k\ell}=0$ then $b_n$ or $f_k$
+would satisfy the homogeneous linear field equations
+\[
+  (u\sigma^\mu\bar u)\partial_\mu
+    \sum_n c_n(\partial)b_n=0
+  \qquad\text{or}\qquad
+  (u\sigma^\mu\bar u)\partial_\mu
+    \sum_k d_k(\partial)f_k=0\,,
+\]
+in contradiction with our assumption that the fields do not satisfy such
+field equations. In order for $qp$ to be non-singular we must have
+$N_F\geq N_B$, and in order for $pq$ to be non-singular we must have
+$N_B\geq N_F$, so we can conclude that $N_B=N_F$. Also the square matrices
+$q$ and $p$ must both be non-singular, so the complex conjugate of
+Eq.~\eqref{eq:26.2.38} tells us that $f^*=q^{*-1}qf$, so that the number of
+independent fermion fields is $N_F$ rather than $2N_F$, and is therefore
+equal to the number $N_B$ of independent boson fields, as was to be shown.

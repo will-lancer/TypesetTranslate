@@ -1,0 +1,149 @@
+% Source: Weinberg GR, physical PDF pp. 65--67
+%         (printed pp. 39--41).
+% Coverage: Section 2.6, Currents and Densities; equations
+%           (2.6.1)--(2.6.8).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Currents and Densities}\label{sec:2.6}
+
+Suppose that we have a system of particles with positions
+\(\mathbf{x}_n(t)\) and charges \(e_n\). The current and charge densities are
+usually defined by
+\begin{equation}
+  \mathbf J(\mathbf x,t)
+  =\sum_n e_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+  \frac{d\mathbf x_n(t)}{dt},
+  \tag{2.6.1}\label{eq:2.6.1}
+\end{equation}
+\begin{equation}
+  \rho(\mathbf x,t)
+  =\sum_n e_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr).
+  \tag{2.6.2}\label{eq:2.6.2}
+\end{equation}
+Here \(\delta^3\) is the Dirac delta function, defined by the statement that
+for any smooth function \(f(\mathbf x)\),
+\[
+  \int d^3x\,f(\mathbf x)\delta^3(\mathbf x-\mathbf y)=f(\mathbf y).
+\]
+We can unite \(\mathbf J\) and \(\rho\) into a four-vector \(J^\mu\) by
+setting
+\begin{equation}
+  J^0=\rho,
+  \tag{2.6.3}\label{eq:2.6.3}
+\end{equation}
+that is,
+\begin{equation}
+  J^\mu(x)
+  =\sum_n e_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+  \frac{dx_n^\mu(t)}{dt}.
+  \tag{2.6.4}\label{eq:2.6.4}
+\end{equation}
+To show that this is a four-vector, define \(x_n^0(t)=t\), and write
+Eq.~\eqref{eq:2.6.4} as
+\[
+  J^\mu(x)=\int dt'\sum_n e_n
+  \delta^4\bigl(x-x_n(t')\bigr)\frac{dx_n^\mu(t')}{dt'} .
+\]
+The differentials \(dt'\) cancel, and hence can be replaced with an invariant
+\(d\tau\):
+\begin{equation}
+  J^\mu(x)=\int d\tau\sum_n e_n
+  \delta^4\bigl(x-x_n(\tau)\bigr)\frac{dx_n^\mu(\tau)}{d\tau}.
+  \tag{2.6.5}\label{eq:2.6.5}
+\end{equation}
+But \(\delta^4(x-x_n(\tau))\) is a scalar (because
+\(\det\Lambda=1\)) and \(dx_n^\mu\) is a four-vector, so \(J^\mu\) is a
+four-vector.
+
+We also note that
+\[
+\begin{aligned}
+  \boldsymbol{\nabla}\cdot\mathbf J(\mathbf x,t)
+  &=\sum_n e_n
+    \partial_i
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+    \frac{dx_n^i(t)}{dt}\\
+  &=-\sum_n e_n
+    % NOTATION EXCEPTION: the differentiated particle coordinate must remain
+    % explicit to distinguish it from the field coordinate in the prior line.
+    \frac{\partial}{\partial x_n^i}
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+    \frac{dx_n^i(t)}{dt}\\
+  &=-\sum_n e_n\partial_t
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)\\
+  &=-\partial_t\rho(\mathbf x,t),
+\end{aligned}
+\]
+or, in four-dimensional language,
+\begin{equation}
+  \partial_\mu J^\mu(x)=0.
+  \tag{2.6.6}\label{eq:2.6.6}
+\end{equation}
+The Lorentz invariance of this statement is evident.
+
+Whenever any current \(J^\mu(x)\) satisfies the invariant conservation law
+\eqref{eq:2.6.6}, we can form a total charge
+\begin{equation}
+  Q=\int d^3x\,J^0(x).
+  \tag{2.6.7}\label{eq:2.6.7}
+\end{equation}
+This quantity is time-independent, because Eq.~\eqref{eq:2.6.6} and Gauss's
+theorem give
+\[
+  \frac{dQ}{dt}
+  =\int d^3x\,\partial_0J^0(x)
+  =-\int d^3x\,\boldsymbol{\nabla}\cdot\mathbf J(x)=0 .
+\]
+If \(J^\mu(x)\) is a four-vector, then \(Q\) is not only constant but a
+scalar. To see this, write \(Q\) as
+\begin{equation}
+  Q=\int d^4x\,J^\mu(x)\,
+  \partial_\mu\theta(n_\nu x^\nu),
+  \tag{2.6.8}\label{eq:2.6.8}
+\end{equation}
+where \(\theta\) is the step function
+\[
+  \theta(s)=
+  \begin{cases}
+    1,&s>0,\\
+    0,&s<0,
+  \end{cases}
+\]
+and \(n_\mu\) is defined by
+\[
+  n_0=1,\qquad n_1=n_2=n_3=0 .
+\]
+The effect of a Lorentz transformation on \(Q\) is then evidently simply to
+change \(n_\mu\):
+\[
+  Q'=\int d^4x\,J^\mu(x)\,
+  \partial_\mu\theta(n'_\nu x^\nu),
+  \qquad
+  n'_\mu=\Lambda_\mu{}^\nu n_\nu ,
+\]
+and using Eq.~\eqref{eq:2.6.6}, the change in \(Q\) is then
+\[
+  Q'-Q
+  =\int d^4x\,J^\mu(x)\partial_\mu
+  \left[
+    \theta(n'_\nu x^\nu)-\theta(n_\nu x^\nu)
+  \right].
+\]
+The current \(J^\mu(x)\) can be presumed to vanish if
+\(\lvert\mathbf x\rvert\to\infty\) with \(t\) fixed, whereas the function
+\(\theta(n'_\nu x^\nu)-\theta(n_\nu x^\nu)\) vanishes if
+\(\lvert t\rvert\to\infty\) with \(\mathbf x\) fixed. Hence we can apply the
+four-dimensional Gauss theorem, and find \(Q'-Q=0\); that is, \(Q\) is a
+scalar.
+
+(For the current density \(J^\mu\) defined by Eq.~\eqref{eq:2.6.4}, the
+charge \eqref{eq:2.6.7} is
+\[
+  Q=\sum_n e_n ,
+\]
+which of course is a constant scalar; however, in dealing with the charge and
+current distributions of extended particles it is important to realize that
+Eq.~\eqref{eq:2.6.7} defines a time-independent scalar for any conserved
+four-vector \(J^\mu\).)

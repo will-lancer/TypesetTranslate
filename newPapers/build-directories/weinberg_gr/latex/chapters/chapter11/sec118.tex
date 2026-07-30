@@ -1,0 +1,273 @@
+% Source: Weinberg GR, physical PDF pp. 360--363
+%         (printed pp. 338--341).
+% Coverage: Section 11.8, Comoving Coordinates; equations
+%           (11.8.1)--(11.8.19).
+% Figures/tables/footnotes: no figures or tables; reference callout 31.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the factor-of-two source anomaly following case (B) is
+%                documented at the correction below; the curvature conversion
+%                is documented at Eqs. (11.8.14)--(11.8.17).
+
+\subsection{Comoving Coordinates}\label{sec:11.8}
+
+As a further preparation for our treatment of gravitational collapse, and
+also to lay a groundwork for our discussion of cosmology in Chapter~14, we
+now construct a very useful set of coordinates, the \emph{comoving coordinate
+system},\hyperref[ch11-ref-31]{\textsuperscript{31}} which incorporates a more
+natural separation between space and time than that provided by the standard
+coordinates used in the last section.
+
+Imagine a finite region of space filled with a dense cloud of freely falling
+particles. Each particle is assumed to carry along a little clock, and is
+given a fixed set of spatial coordinates, which can be defined as the
+coordinates \(x^i\) of the particle, in some arbitrary system, when its own
+clock reads \(t=0\). (The rules for setting these different clocks are
+discussed below.) The spacetime coordinates \(x^\mu\) of any event are defined
+by taking \(\mathbf{x}\) as the spatial coordinate label of the particle that
+is just going by when and where the event occurs, and by taking \(t\) as the
+time then shown on that particle's clock. We may think of the coordinate mesh
+as being dragged along by the cloud of particles, with time defined by clocks
+stuck on the mesh. This coordinate system will be useful throughout the
+region occupied by the particle cloud, for whatever interval of time in which
+particle trajectories do not cross.
+
+The metric in comoving coordinates is characterized by certain specially
+simple features. First, we note that the clocks are in free fall and therefore
+tell proper time, so the proper-time interval between two points
+\((\mathbf{x},t)\) and \((\mathbf{x},t+dt)\) on a given particle's trajectory
+is just \(dt\). In the binding signature this says
+\[
+  d\tau^2=-g_{\mu\nu}\,dx^\mu dx^\nu=-g_{tt}\,dt^2,
+\]
+and therefore
+\begin{equation}
+  g_{tt}=-1.
+  \tag{11.8.1}\label{eq:11.8.1}
+\end{equation}
+Also, we note that the particle trajectory
+\(\mathbf{x}=\text{constant}\), \(t=\tau\), satisfies the equation of free
+fall, so
+\[
+  \frac{d^2x^i}{d\tau^2}
+  +\Gamma^i{}_{\mu\nu}
+   \frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}
+  =0.
+\]
+Using Eq.~\eqref{eq:11.8.1}, this gives
+\[
+  0=\Gamma^i{}_{tt}
+  =\frac12 g^{ij}
+   \left(2\partial_tg_{jt}-\partial_jg_{tt}\right)
+  =g^{ij}\partial_tg_{jt},
+\]
+or, since \(g^{ij}\) is generally a nonsingular matrix,
+\begin{equation}
+  \partial_tg_{it}=0.
+  \tag{11.8.2}\label{eq:11.8.2}
+\end{equation}
+
+We have kept open the option of setting the clocks attached to the different
+particles in an arbitrary fashion. Suppose that we reset these clocks by a
+transformation
+\begin{equation}
+  t'=t+f(\mathbf{x}),\qquad x'^i=x^i.
+  \tag{11.8.3}\label{eq:11.8.3}
+\end{equation}
+The new metric will have the elements
+\begin{align}
+  g'_{tt}&=-1,
+  \tag{11.8.4}\label{eq:11.8.4}\\
+  g'_{ti}&=g_{ti}+\partial_i f,
+  \tag{11.8.5}\label{eq:11.8.5}\\
+  g'_{ij}
+  &=g_{ij}
+    -g_{ti}\partial_jf-g_{tj}\partial_if
+    -\partial_if\,\partial_jf.
+  \tag{11.8.6}\label{eq:11.8.6}
+\end{align}
+It would be a great simplification if the function \(f\) could be chosen so
+that the two terms in Eq.~\eqref{eq:11.8.5} cancel, giving \(g'_{ti}=0\).
+There are two important cases where this is possible:
+
+\emph{(A)} Suppose that we can reset all clocks so that all particles are at
+rest at a time \(t=0\). This assumption can be given an absolute physical
+significance by interpreting it to mean that, for each particle \(P\) at
+\(t=0\), it is possible to find a locally inertial coordinate system
+\(\xi^\mu\) in which the separation between \(P\) and neighboring particles is
+purely spatial,
+\[
+  \left.
+  \frac{\partial \xi^0}{\partial x^i}
+  \right|_{t=0,\,\mathbf{x}=\mathbf{x}_P}
+  =0,
+\]
+and in which the movement of \(P\) in a time interval \(dt\) is purely
+temporal,
+\[
+  \left.
+  \frac{d\xi^i}{dt}
+  \right|_{t=0,\,\mathbf{x}=\mathbf{x}_P}
+  =0.
+\]
+The metric in this locally inertial system is the Minkowski metric
+\(\eta_{\mu\nu}\), so the time--space components of the metric in the
+comoving system at \(t=0\) are
+\[
+  g_{ti}(\mathbf{x}_P,0)
+  =
+  \eta_{\mu\nu}
+  \frac{\partial\xi^\mu}{\partial t}
+  \frac{\partial\xi^\nu}{\partial x^i}
+  =0.
+\]
+With Eq.~\eqref{eq:11.8.2}, it follows that \(g_{ti}\) vanishes everywhere,
+so the metric is given by
+\begin{equation}
+  ds^2=-dt^2+g_{ij}(\mathbf{x},t)\,dx^i dx^j.
+  \tag{11.8.7}\label{eq:11.8.7}
+\end{equation}
+
+\emph{(B)} If the metric is manifestly spherically symmetric, then the line
+element must have the general form with which we started in the last section,
+that is,
+\[
+  \begin{aligned}
+  ds^2={}&-C(r,t)\,dt^2+D(r,t)\,dr^2+2E(r,t)\,dr\,dt\\
+         &+F(r,t)r^2(d\theta^2+\sin^2\theta\,d\varphi^2).
+  \end{aligned}
+\]
+The only nonvanishing time--space component \(g_{ti}\) is
+\(g_{tr}=E\), and Eq.~\eqref{eq:11.8.2} then tells us that \(E\) is
+time-independent, so
+\[
+  g_{tr}=E(r),\qquad g_{t\theta}=g_{t\varphi}=0.
+\]
+We can therefore eliminate the components \(g_{ti}\) by resetting the clocks
+as in Eq.~\eqref{eq:11.8.3}, with
+\[
+  f(r)=-\int^r E(\tilde r)\,d\tilde r.
+\]
+% VERIFY SOURCE: The printed text states g_tr=2E and f=-2\int E\,dr,
+% even though the displayed line element contains 2E\,dr\,dt and hence
+% g_tr=E.  The two factors of two have been corrected for tensor consistency.
+Using Eq.~\eqref{eq:11.8.4} and dropping primes, the metric is now of the form
+\begin{equation}
+  ds^2
+  =
+  -dt^2+U(r,t)\,dr^2
+  +V(r,t)(d\theta^2+\sin^2\theta\,d\varphi^2),
+  \tag{11.8.8}\label{eq:11.8.8}
+\end{equation}
+with \(U\) and \(V\) new unknown functions that replace \(D\) and \(F\).
+
+It is of course possible to construct coordinate systems of this sort even
+if the cloud of freely falling particles is purely imaginary. In differential
+geometry, coordinate systems satisfying Eqs.~\eqref{eq:11.8.1} and
+\eqref{eq:11.8.2} are called \emph{Gaussian}, and if \(g_{ti}\) vanishes, so
+that the line element takes the form \eqref{eq:11.8.7}, then we call the
+coordinates \emph{Gaussian normal}. However, these coordinate systems find
+their most important applications to systems that actually do consist of a
+freely falling fluid. In this case the fluid velocity four-vector by
+definition has zero space component,
+\begin{equation}
+  U^i=0,
+  \tag{11.8.9}\label{eq:11.8.9}
+\end{equation}
+and since \(U^\mu\) is normalized so that
+\begin{equation}
+  g_{\mu\nu}U^\mu U^\nu=-1,
+  \tag{11.8.10}\label{eq:11.8.10}
+\end{equation}
+[see Eq.~\eqref{eq:5.4.4}], the time component of \(U^\mu\) must be
+\begin{equation}
+  U^t=(-g_{tt})^{-1/2}=1.
+  \tag{11.8.11}\label{eq:11.8.11}
+\end{equation}
+
+We shall be working only with spherically symmetric comoving coordinate
+systems, with line element \eqref{eq:11.8.8}. The nonvanishing elements of
+the metric tensor and its inverse are
+\begin{equation}
+  \begin{gathered}
+  g_{rr}=U,\qquad
+  g_{\theta\theta}=V,\qquad
+  g_{\varphi\varphi}=V\sin^2\theta,\qquad
+  g_{tt}=-1,\\
+  g^{rr}=U^{-1},\qquad
+  g^{\theta\theta}=V^{-1},\qquad
+  g^{\varphi\varphi}=(V\sin^2\theta)^{-1},\qquad
+  g^{tt}=-1.
+  \end{gathered}
+  \tag{11.8.12}\label{eq:11.8.12}
+\end{equation}
+The nonvanishing elements of the affine connection are readily calculated as
+\begin{equation}
+  \begin{gathered}
+  \Gamma^r{}_{rr}=\frac{U'}{2U},\qquad
+  \Gamma^r{}_{\theta\theta}=-\frac{V'}{2U},\qquad
+  \Gamma^r{}_{\varphi\varphi}=-\frac{V'}{2U}\sin^2\theta,\qquad
+  \Gamma^r{}_{rt}=\Gamma^r{}_{tr}=\frac{\dot U}{2U},\\
+  \Gamma^\theta{}_{r\theta}=\Gamma^\theta{}_{\theta r}
+    =\frac{V'}{2V},\qquad
+  \Gamma^\theta{}_{t\theta}=\Gamma^\theta{}_{\theta t}
+    =\frac{\dot V}{2V},\qquad
+  \Gamma^\theta{}_{\varphi\varphi}=-\sin\theta\cos\theta,\\
+  \Gamma^\varphi{}_{r\varphi}=\Gamma^\varphi{}_{\varphi r}
+    =\frac{V'}{2V},\qquad
+  \Gamma^\varphi{}_{t\varphi}=\Gamma^\varphi{}_{\varphi t}
+    =\frac{\dot V}{2V},\qquad
+  \Gamma^\varphi{}_{\theta\varphi}
+    =\Gamma^\varphi{}_{\varphi\theta}=\cot\theta,\\
+  \Gamma^t{}_{rr}=\frac{\dot U}{2},\qquad
+  \Gamma^t{}_{\theta\theta}=\frac{\dot V}{2},\qquad
+  \Gamma^t{}_{\varphi\varphi}=\frac{\dot V}{2}\sin^2\theta.
+  \end{gathered}
+  \tag{11.8.13}\label{eq:11.8.13}
+\end{equation}
+(A prime or dot denotes \(\partial_r\) or \(\partial_t\), respectively.) From
+the definition of the Ricci tensor in the binding curvature convention we
+obtain the independent nonzero components:
+% MODERNIZATION CHECK: every component in (11.8.14)--(11.8.17) is the
+% negative of Weinberg's printed Ricci component.
+\begin{align}
+  R_{rr}
+  ={}&
+  -\frac{V''}{V}
+  +\frac{V'^2}{2V^2}
+  +\frac{U'V'}{2UV}
+  +\frac{\ddot U}{2}
+  -\frac{\dot U^2}{4U}
+  +\frac{\dot U\dot V}{2V},
+  \tag{11.8.14}\label{eq:11.8.14}\\
+  R_{\theta\theta}
+  ={}&
+  1-\frac{V''}{2U}
+  +\frac{V'U'}{4U^2}
+  +\frac{\ddot V}{2}
+  +\frac{\dot V\dot U}{4U},
+  \tag{11.8.15}\label{eq:11.8.15}\\
+  R_{tt}
+  ={}&
+  -\frac{\ddot U}{2U}
+  -\frac{\ddot V}{V}
+  +\frac{\dot U^2}{4U^2}
+  +\frac{\dot V^2}{2V^2},
+  \tag{11.8.16}\label{eq:11.8.16}\\
+  R_{tr}
+  ={}&
+  -\frac{\dot V'}{V}
+  +\frac{V'\dot V}{2V^2}
+  +\frac{\dot U V'}{2UV}.
+  \tag{11.8.17}\label{eq:11.8.17}
+\end{align}
+Also, it again follows from the spherical symmetry of the metric that
+\begin{equation}
+  R_{\varphi\varphi}=R_{\theta\theta}\sin^2\theta,
+  \tag{11.8.18}\label{eq:11.8.18}
+\end{equation}
+and
+\begin{equation}
+  R_{r\theta}=R_{r\varphi}=R_{\theta\varphi}
+  =R_{\theta t}=R_{\varphi t}=0.
+  \tag{11.8.19}\label{eq:11.8.19}
+\end{equation}
