@@ -8,9 +8,9 @@ of Relativity*.
 The original edition remains in the sibling `weinberg_gr` build directory.
 This copy has its own export path and can be changed without modifying or
 overwriting that edition. Chapter 1 remains exercise-free; Chapters 2--16
-contain 162 source-credited exercises and 162 matching worked solutions. In
-each chapter the order is original text, Exercises, Solutions, then the
-original bibliography or references.
+each contain 20 source-credited exercises and 20 matching worked solutions,
+for 300 of each in the complete book. In every chapter the order is original
+text, Exercises, Solutions, then the original bibliography or references.
 
 See `EXERCISES.md` for the authoring interface and
 `EXERCISE_SOURCES.md` for the source ledger. Cambridge material is Part III

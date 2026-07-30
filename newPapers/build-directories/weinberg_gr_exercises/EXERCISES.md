@@ -14,6 +14,12 @@ Chapters 2--16 each load one file:
 Each file prints an Exercises section followed by a Solutions section. The
 chapter's original bibliography or references follow both sections.
 
+The curated expansion is kept in modular fragments under
+`latex/exercises/additional/`. Each applicable chapter has one exercise
+fragment and one matching solution fragment. The chapter file inputs them
+inside the corresponding section, preserving continuous chapter numbering.
+There are currently 20 exercises and 20 solutions in each of Chapters 2--16.
+
 ## Authoring interface
 
 Keep every source credit in the required second argument so it appears

@@ -10,8 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 EXERCISES = ROOT / "latex" / "exercises"
+ADDITIONAL = EXERCISES / "additional"
 CHAPTERS = ROOT / "latex" / "chapters"
 MASTER = ROOT / "latex" / "master.tex"
+TARGET_EXERCISES_PER_CHAPTER = 20
 AVAILABLE_CAMBRIDGE_YEARS = [
     *range(2001, 2020),
     *range(2021, 2026),
@@ -81,12 +83,35 @@ def main() -> int:
                 failures,
             )
 
-        sources = EXERCISE_RE.findall(text)
-        solutions = SOLUTION_RE.findall(text)
-        if len(sources) < 10:
+        extra_exercises = ADDITIONAL / f"chapter{chapter}-exercises.tex"
+        extra_solutions = ADDITIONAL / f"chapter{chapter}-solutions.tex"
+        expected_inputs = [
+            rf"\input{{exercises/additional/{extra_exercises.name}}}",
+            rf"\input{{exercises/additional/{extra_solutions.name}}}",
+        ]
+        for fragment, input_line in zip(
+            (extra_exercises, extra_solutions), expected_inputs
+        ):
+            if not fragment.exists():
+                fail(f"Chapter {chapter}: missing {fragment.name}", failures)
+            if text.count(input_line) != 1:
+                fail(
+                    f"Chapter {chapter}: expected exactly one input of "
+                    f"{fragment.name}",
+                    failures,
+                )
+
+        expanded_text = text
+        for fragment in (extra_exercises, extra_solutions):
+            if fragment.exists():
+                expanded_text += "\n" + fragment.read_text(encoding="utf-8")
+
+        sources = EXERCISE_RE.findall(expanded_text)
+        solutions = SOLUTION_RE.findall(expanded_text)
+        if len(sources) < TARGET_EXERCISES_PER_CHAPTER:
             fail(
-                f"Chapter {chapter}: expected at least 10 exercises, found "
-                f"{len(sources)}",
+                f"Chapter {chapter}: expected at least "
+                f"{TARGET_EXERCISES_PER_CHAPTER} exercises, found {len(sources)}",
                 failures,
             )
         if len(sources) != len(solutions):
@@ -136,7 +161,8 @@ def main() -> int:
         "Exercise audit: "
         f"{total_exercises} exercises, {total_solutions} solutions, "
         f"{unique_sources} credited source labels; Chapters 2--16 have at "
-        "least 10 each, Chapter 1 has none, and all available Cambridge "
+        f"least {TARGET_EXERCISES_PER_CHAPTER} each, Chapter 1 has none, "
+        "and all available Cambridge "
         "Part III GR exam years 2001--2025 (except 2020) are represented."
     )
     return 0

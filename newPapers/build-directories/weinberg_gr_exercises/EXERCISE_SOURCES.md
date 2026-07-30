@@ -58,4 +58,6 @@ or stellar-structure chapters.
 
 `audit_exercises.py` enforces the per-chapter minimum, one-for-one solutions,
 inline nonempty credits, Part II exclusion, all four Tong sheets, all nine
-McGreevy problem sets, and Cambridge Part III exam-year coverage.
+McGreevy problem sets, and Cambridge Part III exam-year coverage. The expanded
+edition currently has 20 exercises and 20 solutions in every chapter from 2
+through 16, for 300 of each overall.
