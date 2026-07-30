@@ -1,0 +1,185 @@
+% Source: Weinberg GR, physical PDF pp. 381--382
+%         (printed pp. 360--361).
+% Coverage: Section 12.2, General Definition of T^{mu nu}; equations
+%           (12.2.1)--(12.2.6).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: determinant factors and the inverse-metric Hilbert definition
+%                of T are documented below and source-checked.
+%
+% MODERNIZATION CHECK: sqrt(g) is converted to sqrt(-g), and the definition
+% of T is also stated in the binding inverse-metric form. The signs in the
+% particle and electromagnetic contributions were checked directly against
+% the variation of (12.1.6).
+% LITERAL-OPERATOR AUDIT: the leading plus between the particle and field
+% pieces of the unnumbered delta I_M display, and the minus 1/4 trace term,
+% were checked against physical PDF p. 381.
+
+\subsection{General Definition of
+  \texorpdfstring{\(T^{\mu\nu}\)}{T mu nu}}\label{sec:12.2}
+
+We are going to define the energy-momentum tensor for a material system
+described by an action \(I_M\), as the functional derivative of \(I_M\) with
+respect to \(g_{\mu\nu}\). That is, we imagine \(g_{\mu\nu}(x)\) to be subject
+to an infinitesimal variation
+\begin{equation}
+  g_{\mu\nu}\longrightarrow g_{\mu\nu}+\delta g_{\mu\nu},
+  \tag{12.2.1}\label{eq:12.2.1}
+\end{equation}
+where \(\delta g_{\mu\nu}\) is arbitrary except that it is required to vanish
+as \(\lvert x^\lambda\rvert\longrightarrow\infty\). The action \(I_M\) will
+not be stationary with respect to this variation because, for the moment, we
+are regarding \(g_{\mu\nu}(x)\) not as a dynamical variable like
+\(x_n^\mu\) or \(A_\mu\), but as an external field. Rather, \(\delta I_M\)
+will be some linear functional of the infinitesimal \(\delta g_{\mu\nu}(x)\)
+and therefore takes the form
+\begin{equation}
+  \delta I_M
+  =
+  \frac12\int\dd^4x\,\sqrt{-g(x)}\,
+  T^{\mu\nu}(x)\delta g_{\mu\nu}(x).
+  \tag{12.2.2}\label{eq:12.2.2}
+\end{equation}
+The coefficient \(T^{\mu\nu}(x)\) is \emph{defined} to be the
+energy-momentum tensor of this system. Equivalently, in the inverse-metric
+form used throughout this edition,
+\[
+  T_{\mu\nu}
+  =
+  -\frac{2}{\sqrt{-g}}\frac{\delta I_M}{\delta g^{\mu\nu}}.
+\]
+
+A general proof that \(T^{\mu\nu}\) is a conserved symmetric tensor will be
+given in the next section. However, let us first check that
+Eq.~\eqref{eq:12.2.2} gives the correct energy-momentum tensor for the
+collisionless plasma described by the action \eqref{eq:12.1.6}. We are
+varying \(g_{\mu\nu}\) with \(A_\mu\) held fixed, so
+\[
+  \delta F^{\mu\nu}
+  =
+  F_{\rho\sigma}\delta(g^{\mu\rho}g^{\nu\sigma})
+  =
+  F_{\rho\sigma}g^{\mu\rho}\delta g^{\nu\sigma}
+  +F_{\rho\sigma}g^{\nu\sigma}\delta g^{\mu\rho}.
+\]
+To calculate \(\delta g^{\nu\sigma}\), we note that
+\[
+  0
+  =
+  \delta(g_{\lambda\kappa}g^{\kappa\sigma})
+  =
+  g^{\kappa\sigma}\delta g_{\lambda\kappa}
+  +g_{\lambda\kappa}\delta g^{\kappa\sigma},
+\]
+so
+\[
+  \delta g^{\nu\sigma}
+  =
+  -g^{\nu\lambda}g^{\sigma\kappa}\delta g_{\lambda\kappa},
+\]
+and therefore
+\[
+  \delta F^{\mu\nu}
+  =
+  -F^{\mu\kappa}g^{\nu\lambda}\delta g_{\lambda\kappa}
+  +F^{\nu\lambda}g^{\mu\kappa}\delta g_{\lambda\kappa}.
+\]
+Also, we showed in Section~\ref{sec:4.7} that
+\[
+  \delta g=g\,g^{\lambda\kappa}\delta g_{\lambda\kappa}.
+\]
+A straightforward calculation gives then
+\[
+\begin{aligned}
+\delta I_M={}&
+\frac12\sum_n m_n\int_{-\infty}^{\infty}\dd p\,
+\left[
+  -g_{\mu\nu}(x_n(p))
+   \frac{\dd x_n^\mu(p)}{\dd p}
+   \frac{\dd x_n^\nu(p)}{\dd p}
+\right]^{-1/2}
+\\[-2pt]
+&\qquad\times
+\frac{\dd x_n^\lambda(p)}{\dd p}
+\frac{\dd x_n^\kappa(p)}{\dd p}\,
+\delta g_{\lambda\kappa}(x_n(p))
+\\
+&+\frac12\int\dd^4x\,\sqrt{-g(x)}
+\left\{
+  F_\mu{}^\lambda(x)F^{\mu\kappa}(x)
+  -\frac14g^{\lambda\kappa}(x)
+   F_{\mu\nu}(x)F^{\mu\nu}(x)
+\right\}\delta g_{\lambda\kappa}(x).
+\end{aligned}
+\]
+This is of the form \eqref{eq:12.2.2}, with
+\[
+\begin{aligned}
+T^{\lambda\kappa}(x)={}&
+\frac1{\sqrt{-g(x)}}\sum_n m_n
+\int_{-\infty}^{\infty}\dd\tau_n\,
+\frac{\dd x_n^\lambda}{\dd\tau_n}
+\frac{\dd x_n^\kappa}{\dd\tau_n}
+\delta^4(x-x_n)
+\\
+&+F_\mu{}^\lambda(x)F^{\mu\kappa}(x)
+-\frac14g^{\lambda\kappa}(x)
+F_{\mu\nu}(x)F^{\mu\nu}(x),
+\end{aligned}
+\]
+in agreement with the previously obtained energy-momentum tensor, given by
+Eqs.~\eqref{eq:5.3.5} and \eqref{eq:5.3.7}.
+
+The definition \eqref{eq:12.2.2} is closely analogous to a similar definition
+of the electric current \(J^\mu\). We can break up the total matter action
+into a purely electromagnetic term \(I_E\) and another term \(I'_M\) that
+describes the charged particles and their electromagnetic interactions:
+\begin{equation}
+  I_M=I_E+I'_M,
+  \tag{12.2.3}\label{eq:12.2.3}
+\end{equation}
+\begin{equation}
+  I_E
+  =
+  -\frac14\int\dd^4x\,\sqrt{-g(x)}\,
+  F_{\mu\nu}(x)F^{\mu\nu}(x).
+  \tag{12.2.4}\label{eq:12.2.4}
+\end{equation}
+Consider the effect on \(I'_M\) of an infinitesimal variation in the vector
+potential
+\begin{equation}
+  A_\mu\longrightarrow A_\mu+\delta A_\mu.
+  \tag{12.2.5}\label{eq:12.2.5}
+\end{equation}
+Since \(I'_M\) is not the whole action, the change in \(I'_M\) due to this
+variation in \(A_\mu\) does not vanish, but it is necessarily a linear
+functional of \(\delta A_\mu\):
+\begin{equation}
+  \delta I'_M
+  =
+  \int\dd^4x\,\sqrt{-g(x)}\,
+  J^\mu(x)\delta A_\mu(x),
+  \tag{12.2.6}\label{eq:12.2.6}
+\end{equation}
+and the coefficient \(J^\mu(x)\) is \emph{defined} to be the electromagnetic
+current of the system.
+
+For instance, for the collisionless plasma described by
+Eq.~\eqref{eq:12.1.6}, the term \(I'_M\) is given as the sum of the first and
+third terms in Eq.~\eqref{eq:12.1.6}, and we immediately find that
+\[
+  \delta I'_M
+  =
+  \sum_n e_n\int_{-\infty}^{\infty}
+  \dd x_n^\mu\,\delta A_\mu(x_n).
+\]
+This is of the form \eqref{eq:12.2.6}, with
+\[
+  J^\mu(x)
+  =
+  \frac1{\sqrt{-g(x)}}\sum_n e_n
+  \int\delta^4(x-x_n)\,\dd x_n^\mu,
+\]
+in agreement with Eq.~\eqref{eq:5.2.13}. The proof that
+Eq.~\eqref{eq:12.2.6} always yields a \emph{conserved} current \(J^\mu(x)\)
+is given in the next section.

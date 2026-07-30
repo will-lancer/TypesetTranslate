@@ -47,6 +47,11 @@ full-PDF Ghostscript parse, and embedded/subset fonts. Only a strictly verified
 build is exported to
 `../../weinberg-gr/weinberg-gr-modernized.pdf`.
 
+The publisher publication-data leaf and the separate copyright-
+acknowledgements leaf are retained as source transcriptions under
+`latex/frontmatter/` but are intentionally excluded from `latex/master.tex`
+and from the compiled edition.
+
 `RELEASE_VERIFICATION.md` is the final hash and all-page visual-QA record. It
 must remain marked pending until the exported release binary—not an earlier
 draft—has passed those checks.
@@ -121,7 +126,7 @@ assigned without merge collisions.
 1. Assign work by physical PDF page, not the printed page number.
 2. Preserve visible wording, physical claims, numbering, references, footnotes,
    epigraphs, and front/back matter while applying the notation conversions in
-   `NOTATION.md`.
+   `NOTATION.md`, except for the two intentionally omitted copyright leaves.
 3. Remove scan-induced line-wrap hyphenation, but do not paraphrase.
 4. Recreate diagrams as TikZ where practical; use an explicit
    `TODO FIGURE:` comment rather than guessing.

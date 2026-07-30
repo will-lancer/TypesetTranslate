@@ -1,0 +1,312 @@
+% Source: Weinberg GR, physical PDF pp. 433--436
+%         (printed pp. 412--415).
+% Coverage: Section 14.2, The Robertson--Walker Metric; equations
+%           (14.2.1)--(14.2.21).
+% Figures/tables/footnotes: one source footnote following (14.2.21); no
+%                          figures, tables, or reference markers.
+% Status: source-reviewed and compile-clean; visually proofed.
+% Uncertainties: the scale-factor, quasitranslation-vector, rotation-matrix,
+%                signature, determinant, and continuity-equation
+%                modernizations are documented below.
+%
+% MODERNIZATION CHECK: R_source(t) -> a(t) everywhere. The source's arbitrary
+% quasitranslation vector a_source -> bold b in (14.2.7), avoiding a collision
+% with the scale factor. Its rotation matrix R -> O, reserving R for curvature.
+% Equation (14.2.1) is written as ds^2 in (-+++), and (14.2.16) as -g>0.
+% Equation (14.2.19) displays both Weinberg's form and the equivalent modern
+% continuity equation, defining H=dot a/a for later use.
+% LITERAL-OPERATOR AUDIT: the plus signs in (14.2.7), (14.2.12), and every
+% continuation line of (14.2.18), together with the minus sign in 1-kr^2,
+% were checked directly against physical PDF pp. 434--436.
+
+\subsection{The Robertson--Walker Metric}\label{sec:14.2}
+
+The formulation of the Cosmological Principle given in the last section
+allows us to apply the results of Section~\ref{sec:13.5} for spaces with
+maximally symmetric subspaces. We see immediately that it must be possible to
+choose coordinates \(t,r,\theta,\phi\), for which the metric takes the form
+given in Eq.~\eqref{eq:13.5.32}:
+\begin{equation}
+  \dd s^2
+  =
+  -\dd t^2
+  a^2(t)
+  \left[
+    \frac{\dd r^2}{1-kr^2}
+    +r^2\dd\theta^2
+    +r^2\sin^2\theta\,\dd\phi^2
+  \right],
+  \tag{14.2.1}\label{eq:14.2.1}
+\end{equation}
+where \(a(t)\) is an unknown function of time, and \(k\) is a constant, which
+by a suitable choice of units for \(r\) can be chosen to have the value
+\(+1\), \(0\), or \(-1\). (These are not necessarily the same as the cosmic
+standard coordinates introduced in the last section, although \(t\) in
+Eq.~\eqref{eq:14.2.1} is the cosmic standard time, or a function of it.) The
+metric \eqref{eq:14.2.1} is known in cosmology as the Robertson--Walker
+metric.
+
+It is interesting to consider the geometrical properties of the
+three-dimensional spaces of constant \(t\). These have metric
+\begin{equation}
+  {}^{(3)}g_{rr}=\frac{a^2(t)}{1-kr^2},
+  \qquad
+  {}^{(3)}g_{\theta\theta}=r^2a^2(t),
+  \qquad
+  {}^{(3)}g_{\phi\phi}=r^2\sin^2\theta\,a^2(t),
+  \tag{14.2.2}\label{eq:14.2.2}
+\end{equation}
+with \({}^{(3)}g_{\mu\nu}\) vanishing for \(\mu\neq\nu\). Comparing with
+Eqs.~\eqref{eq:13.3.23}--\eqref{eq:13.3.25} shows that the
+three-dimensional curvature constant is
+\begin{equation}
+  {}^{(3)}K(t)=\frac{k}{a^2(t)}.
+  \tag{14.2.3}\label{eq:14.2.3}
+\end{equation}
+For \(k=-1\) or \(k=0\) the space is infinite, while for \(k=+1\) it is
+finite (though unbounded), with proper circumference given by
+Eq.~\eqref{eq:13.3.33} as
+\begin{equation}
+  {}^{(3)}L=2\pi a(t)
+  \tag{14.2.4}\label{eq:14.2.4}
+\end{equation}
+and proper volume given by Eq.~\eqref{eq:13.3.29} as
+\begin{equation}
+  {}^{(3)}V=2\pi^2a^3(t).
+  \tag{14.2.5}\label{eq:14.2.5}
+\end{equation}
+For \(k=+1\) the spatial universe can be regarded as the surface of a sphere
+of radius \(a(t)\) in four-dimensional Euclidean space (see
+Section~\ref{sec:13.3}), and \(a(t)\) can justly be called the ``radius of
+the universe.'' For \(k=-1\) and \(k=0\) no such interpretation is possible,
+but \(a(t)\) still sets the scale of the geometry of space, so \(a(t)\) will
+in all cases be called the \emph{cosmic scale factor}.
+
+The construction in Section~\ref{sec:13.5} of the coordinates
+\(r,\theta,\phi,t\) was carried out in such a way that the coordinate
+transformations which leave the four-dimensional metric
+\eqref{eq:14.2.1} form-invariant are just the purely spatial transformations
+that leave \eqref{eq:14.2.2} form-invariant. These include the rigid rotations
+\begin{equation}
+  x'^i=O^i{}_j x^j,
+  \qquad i,j=1,2,3,
+  \tag{14.2.6}\label{eq:14.2.6}
+\end{equation}
+where \(O\) is an arbitrary orthogonal matrix. As usual,
+\[
+  x^1=r\sin\theta\cos\phi,\qquad
+  x^2=r\sin\theta\sin\phi,\qquad
+  x^3=r\cos\theta.
+\]
+There are also ``quasitranslations,'' obtained by setting \(KC\) equal to
+\(k\) times the unit matrix in Eq.~\eqref{eq:13.3.17}:
+\begin{equation}
+  \mathbf{x}'
+  =
+  \mathbf{x}
+  +\mathbf{b}
+  \left[
+    \sqrt{1-k\mathbf{x}^2}
+    -
+    \left(1-\sqrt{1-k\mathbf{b}^2}\right)
+    \frac{\mathbf{x}\cdot\mathbf{b}}{\mathbf{b}^2}
+  \right],
+  \tag{14.2.7}\label{eq:14.2.7}
+\end{equation}
+where \(\mathbf{b}\) is an arbitrary three-vector.
+
+The transformation \eqref{eq:14.2.7} carries the origin into the point
+\(\mathbf{b}\), so we can conclude that any fixed point can serve as the
+origin of a system of coordinates equivalent to the coordinate system of
+Eq.~\eqref{eq:14.2.1}. That is, the ``fundamental trajectories'' of
+observers, to whom the universe looks the same as it does to us, are just
+\(\mathbf{X}(t;\mathbf{b})=\mathbf{b}\). We have already noted in the last
+section that the fundamental trajectories ought to be close to the paths of
+``typical'' galaxies, so we can tentatively conclude that the spatial
+coordinates \(r,\theta,\phi\) form a \emph{comoving system}, in the sense
+that typical galaxies have constant spatial coordinates \(r,\theta,\phi\).
+One can imagine the comoving coordinate mesh to be like lines painted on the
+surface of a balloon, on which dots represent typical galaxies. As the
+balloon is inflated or deflated the dots will move, but the lines will move
+with them, so each dot will keep the same coordinates.
+
+It is important to note that the fundamental trajectories
+\(\mathbf{x}=\text{const}\) are geodesics, because Eq.~\eqref{eq:14.2.1}
+gives
+\begin{equation}
+  \Gamma^\mu{}_{00}=0.
+  \tag{14.2.8}\label{eq:14.2.8}
+\end{equation}
+Thus the statement that a galaxy has constant \(r,\theta,\phi\) is perfectly
+consistent with the supposition that galaxies are in free fall. Note also
+that the time coordinate \(t\) in \eqref{eq:14.2.1} is not only a possible
+``cosmic standard'' time in the sense of the last section; it is also the
+proper time told by a clock at rest in any typical freely falling galaxy.
+The coordinates \(\mathbf{x},t\) are thus comoving in precisely the same
+sense as the ``Gaussian normal'' coordinates introduced in
+Section~\ref{sec:11.8}.
+
+We can obtain a deeper insight into the behavior of matter in a
+Robertson--Walker universe by applying the Cosmological Principle to the
+tensors that describe the average state of cosmic matter, such as the
+energy-momentum tensor \(T^{\mu\nu}\), and the current \(J_G^\mu\) of
+galaxies. (\(J_G^\mu\) is defined exactly like the electric current
+\eqref{eq:5.2.13}, but the sum runs over galaxies instead of particles, and
+a factor \(1\) replaces \(e_n\).) All such tensors are required to be
+form-invariant [in the sense of Section~\ref{sec:13.4} or
+Eq.~\eqref{eq:14.1.2}] with respect to those coordinate transformations,
+such as \eqref{eq:14.2.6} and \eqref{eq:14.2.7}, which leave the metric
+\eqref{eq:14.2.1} form-invariant. These ``isometries'' are purely spatial,
+so they transform \(J_G^0\) and \(T^{00}\) as three-scalars;
+\(J_G^i\) and \(T^{i0}\) as three-vectors; and \(T^{ij}\) as a
+three-tensor. According to the theorems proved in Section~\ref{sec:13.4},
+this then requires that
+\begin{equation}
+  J_G^0=n_G(t),
+  \qquad
+  J_G^i=0,
+  \tag{14.2.9}\label{eq:14.2.9}
+\end{equation}
+and
+\begin{equation}
+  T_{00}=\rho(t),
+  \qquad
+  T_{0i}=0,
+  \qquad
+  T_{ij}={}^{(3)}g_{ij}p(t),
+  \tag{14.2.10}\label{eq:14.2.10}
+\end{equation}
+where \(n_G,\rho,\) and \(p\) are unknown quantities that may depend on
+\(t\), but not on \(r,\theta,\) or \(\phi\). These results can be written
+more elegantly as
+\begin{equation}
+  J_G^\mu=n_GU^\mu,
+  \tag{14.2.11}\label{eq:14.2.11}
+\end{equation}
+\begin{equation}
+  T_{\mu\nu}
+  =
+  (\rho+p)U_\mu U_\nu
+  p\,g_{\mu\nu},
+  \tag{14.2.12}\label{eq:14.2.12}
+\end{equation}
+where \(U^\mu\) is a ``velocity four-vector''
+\begin{equation}
+  U^0=1,
+  \tag{14.2.13}\label{eq:14.2.13}
+\end{equation}
+\begin{equation}
+  U^i=0.
+  \tag{14.2.14}\label{eq:14.2.14}
+\end{equation}
+Equation~\eqref{eq:14.2.14} shows that \emph{the contents of the universe
+are, on the average, at rest in the coordinate system \(r,\theta,\phi\)}, as
+expected. In addition, comparison of Eq.~\eqref{eq:14.2.12} with
+Eq.~\eqref{eq:5.4.2} shows that \emph{the energy-momentum tensor of the
+universe necessarily takes the same form as for a perfect fluid}.
+
+It will be useful to have on hand the differential equations for
+\(n_G(t)\), \(\rho(t)\), and \(p(t)\) that are provided by conservation
+principles. If galaxies are neither created nor destroyed, then \(J_G^\mu\)
+obeys the conservation equation \eqref{eq:5.2.14}:
+\begin{equation}
+  0
+  =
+  \nabla_\mu J_G^\mu
+  =
+  \frac{1}{\sqrt{-g}}
+  \partial_\mu\!\left(\sqrt{-g}\,J_G^\mu\right)
+  =
+  \frac{1}{\sqrt{-g}}
+  \frac{\dd}{\dd t}\!\left(\sqrt{-g}\,n_G\right).
+  \tag{14.2.15}\label{eq:14.2.15}
+\end{equation}
+The metric \eqref{eq:14.2.1} has \(g=\det(g_{\mu\nu})\) given by
+\begin{equation}
+  -g
+  =
+  \frac{a^6(t)r^4\sin^2\theta}{1-kr^2},
+  \tag{14.2.16}\label{eq:14.2.16}
+\end{equation}
+and therefore the conservation of galaxies yields the relation
+\begin{equation}
+  n_G(t)a^3(t)=\text{constant}.
+  \tag{14.2.17}\label{eq:14.2.17}
+\end{equation}
+(Note that \(n_G\) is the number density per unit proper volume, and
+therefore increases or decreases according as the universe shrinks or
+expands, while \(n_Ga^3\) is the number density per unit coordinate volume,
+and therefore remains constant in a comoving coordinate system.) The
+energy-momentum tensor \eqref{eq:14.2.12} obeys the conservation equation
+\eqref{eq:5.4.3}:
+\begin{align}
+  0
+  ={}&
+  \nabla_\nu T^{\mu\nu}
+  \notag\\
+  ={}&
+  \partial^\mu p
+  +\frac{1}{\sqrt{-g}}
+   \partial_\nu\!\left[
+     \sqrt{-g}\,(\rho+p)U^\mu U^\nu
+   \right]
+  +\Gamma^\mu{}_{\nu\lambda}
+   (\rho+p)U^\nu U^\lambda.
+  \tag{14.2.18}\label{eq:14.2.18}
+\end{align}
+Using Eqs.~\eqref{eq:14.2.8} and \eqref{eq:14.2.14}, we find that this
+equation is trivially satisfied for \(\mu=r,\theta,\phi\), while for
+\(\mu=0\) it reads
+\begin{equation}
+  a^3(t)\frac{\dd p(t)}{\dd t}
+  =
+  \frac{\dd}{\dd t}
+  \left\{
+    a^3(t)\bigl[\rho(t)+p(t)\bigr]
+  \right\}
+  \quad\Longleftrightarrow\quad
+  \dot\rho+3H(\rho+p)=0,
+  \qquad
+  H\equiv\frac{\dot a}{a}.
+  \tag{14.2.19}\label{eq:14.2.19}
+\end{equation}
+For instance, if the pressure of cosmic matter is negligible, then
+\eqref{eq:14.2.19} gives a result analogous to
+Eq.~\eqref{eq:14.2.17}:
+\begin{equation}
+  \rho(t)a^3(t)=\text{constant}.
+  \tag{14.2.20}\label{eq:14.2.20}
+\end{equation}
+
+The very great convenience of a comoving coordinate system should not blind
+us to the fact that the typical galaxies actually do move further apart or
+closer together when \(a(t)\) increases or decreases. To see this clearly,
+we need to consider what we mean by the distance between galaxies. Imagine a
+chain of typical galaxies lying close together on the line of sight between
+us and a distant galaxy at \(r_1,\theta_1,\phi_1\), and suppose that
+\emph{at the same cosmic time \(t\)}, observers in each galaxy measured the
+distance to the next galaxy, say by measuring the travel time for light
+signals. (Note that this is not the same as measuring the time for a single
+light signal to go from \(r=0\) to \(r=r_1\).) Adding up all these
+subdistances gives the \emph{proper distance}
+\begin{equation}
+  d_{\mathrm{prop}}(t)
+  =
+  \int_0^{r_1}\sqrt{g_{rr}}\,\dd r
+  =
+  a(t)\int_0^{r_1}\frac{\dd r}{\sqrt{1-kr^2}}.
+  \tag{14.2.21}\label{eq:14.2.21}
+\end{equation}
+\footnote{Obviously, no one is going to organize this sort of cosmic
+conspiracy, so the proper distance is not very relevant to observational
+cosmology. However, we shall see in Section~\ref{sec:14.4} that the more
+relevant measures of distance, based on apparent luminosities and angular
+diameters, all approach the proper distance \eqref{eq:14.2.21} for
+\(r_1\ll1\). Thus, in one sense or another, galaxies do move apart when
+\(a(t)\) increases, or together when \(a(t)\) decreases.}
+
+Cosmological theory presents observational astronomy with the challenge of
+measuring the function \(a(t)\) and determining whether \(k\) is \(+1\),
+\(0\), or \(-1\). This is not all there is to cosmology, but it is a central
+problem that must be solved if we are to understand the universe. The balance
+of this chapter will describe how well this challenge has been met.

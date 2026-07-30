@@ -1,0 +1,566 @@
+% Source: Weinberg GR, physical PDF pp. 282--288 (printed pp. 260--266).
+% Coverage: Section 10.4, Generation of Gravitational Waves; equations
+%           (10.4.1)--(10.4.32).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Generation of Gravitational Waves}\label{sec:10.4}
+
+We wish to calculate the energy emitted in the form of gravitational
+radiation by a system whose energy-momentum tensor can be expressed as a
+Fourier integral,
+\begin{equation}
+  T_{\mu\nu}(\mathbf{x},t)
+  =
+  \int_0^\infty d\omega\,
+  T_{\mu\nu}(\mathbf{x},\omega)e^{-\ii\omega t}
+  +\text{c.c.},
+  \tag{10.4.1}\label{eq:10.4.1}
+\end{equation}
+or as a sum of Fourier components,
+\begin{equation}
+  T_{\mu\nu}(\mathbf{x},t)
+  =
+  \sum_\omega e^{-\ii\omega t}T_{\mu\nu}(\mathbf{x},\omega)
+  +\text{c.c.}
+  \tag{10.4.2}\label{eq:10.4.2}
+\end{equation}
+(Here ``\( +\text{c.c.}\)'' means ``plus the complex conjugate of the
+preceding term.'') We first do the calculation for a single Fourier
+component,
+\begin{equation}
+  T_{\mu\nu}(\mathbf{x},t)
+  =
+  T_{\mu\nu}(\mathbf{x},\omega)e^{-\ii\omega t}
+  +\text{c.c.},
+  \tag{10.4.3}\label{eq:10.4.3}
+\end{equation}
+and will then return to the more general systems described by
+\eqref{eq:10.4.1} and \eqref{eq:10.4.2}.
+
+From \eqref{eq:10.1.11} we find that the field emitted by the source
+\eqref{eq:10.4.3} is
+\begin{equation}
+  h_{\mu\nu}(\mathbf{x},t)
+  =
+  4G\int\frac{d^3x'}{\lvert\mathbf{x}-\mathbf{x}'\rvert}
+  S_{\mu\nu}(\mathbf{x}',\omega)
+  \exp\!\left\{-\ii\omega t
+  +\ii\omega\lvert\mathbf{x}-\mathbf{x}'\rvert\right\}
+  +\text{c.c.},
+  \tag{10.4.4}\label{eq:10.4.4}
+\end{equation}
+where
+\begin{equation}
+  S_{\mu\nu}(\mathbf{x},\omega)
+  \equiv
+  T_{\mu\nu}(\mathbf{x},\omega)
+  -\frac12\eta_{\mu\nu}T^\lambda{}_\lambda(\mathbf{x},\omega).
+  \tag{10.4.5}\label{eq:10.4.5}
+\end{equation}
+Suppose that we observe this radiation in the \emph{wave zone}, that is, at
+distances \(r\equiv\lvert\mathbf{x}\rvert\) much larger than the dimension
+\(R=\lvert\mathbf{x}'\rvert_{\max}\) of the source, and also much larger
+than \(\omega R^2\) and \(1/\omega\). Then the denominator
+\(\lvert\mathbf{x}-\mathbf{x}'\rvert\) can be replaced with \(r\), while
+in the exponent we may approximate
+\[
+  \lvert\mathbf{x}-\mathbf{x}'\rvert
+  \simeq r-\mathbf{x}'\cdot\widehat{\mathbf{x}},
+  \qquad
+  \widehat{\mathbf{x}}\equiv\frac{\mathbf{x}}{r},
+\]
+and the field becomes
+\begin{equation}
+  h_{\mu\nu}(\mathbf{x},t)
+  =
+  \frac{4G}{r}e^{\ii\omega r-\ii\omega t}
+  \int d^3x'\,
+  S_{\mu\nu}(\mathbf{x}',\omega)
+  e^{-\ii\omega\widehat{\mathbf{x}}\cdot\mathbf{x}'}
+  +\text{c.c.}
+  \tag{10.4.6}\label{eq:10.4.6}
+\end{equation}
+Since \(r\omega\) is assumed large, this looks just like a plane wave,
+\begin{equation}
+  h_{\mu\nu}(\mathbf{x},t)
+  =
+  e_{\mu\nu}(\mathbf{x},\omega)
+  \exp(\ii k_\lambda x^\lambda)
+  +\text{c.c.},
+  \tag{10.4.7}\label{eq:10.4.7}
+\end{equation}
+with ``wave vector'' and ``polarization tensor'' given by
+\begin{equation}
+  \mathbf{k}\equiv\omega\widehat{\mathbf{x}},
+  \qquad
+  k^0\equiv\omega,
+  \tag{10.4.8}\label{eq:10.4.8}
+\end{equation}
+\begin{equation}
+  e_{\mu\nu}(\mathbf{x},\omega)
+  \equiv
+  \frac{4G}{r}\int d^3x'\,
+  S_{\mu\nu}(\mathbf{x}',\omega)e^{-\ii\mathbf{k}\cdot\mathbf{x}'}.
+  \tag{10.4.9}\label{eq:10.4.9}
+\end{equation}
+It will be convenient to write \(e_{\mu\nu}\) explicitly in terms of the
+Fourier transform of \(T_{\mu\nu}\):
+\begin{equation}
+  e_{\mu\nu}(\mathbf{x},\omega)
+  =
+  \frac{4G}{r}
+  \left[
+    T_{\mu\nu}(\mathbf{k},\omega)
+    -\frac12\eta_{\mu\nu}T^\lambda{}_\lambda(\mathbf{k},\omega)
+  \right],
+  \tag{10.4.10}\label{eq:10.4.10}
+\end{equation}
+\begin{equation}
+  T_{\mu\nu}(\mathbf{k},\omega)
+  \equiv
+  \int d^3x'\,
+  T_{\mu\nu}(\mathbf{x}',\omega)e^{-\ii\mathbf{k}\cdot\mathbf{x}'}.
+  \tag{10.4.11}\label{eq:10.4.11}
+\end{equation}
+
+The conservation equation for \(T_{\mu\nu}(\mathbf{x},t)\) is
+\[
+  \partial_\mu T^\mu{}_\nu(\mathbf{x},t)=0.
+\]
+Applying this to \eqref{eq:10.4.3} gives
+\[
+  \partial_iT^i{}_\nu(\mathbf{x},\omega)
+  -\ii\omega T^0{}_\nu(\mathbf{x},\omega)=0.
+\]
+Multiplying by \(e^{-\ii\mathbf{k}\cdot\mathbf{x}}\) and integrating over
+\(\mathbf{x}\), we find that \(T_{\mu\nu}(\mathbf{k},\omega)\) is subject to
+the algebraic relations
+\begin{equation}
+  k_\mu T^\mu{}_\nu(\mathbf{k},\omega)=0,
+  \tag{10.4.12}\label{eq:10.4.12}
+\end{equation}
+where \(k^\mu\) is the vector given by \eqref{eq:10.4.8}. This, incidentally,
+verifies that \eqref{eq:10.4.10} obeys the harmonic coordinate condition
+\eqref{eq:10.2.3}.
+
+Now let us calculate the power per unit solid angle emitted in a direction
+\(\widehat{\mathbf{x}}\). Since \(r\gg1/\omega\), we can use for the energy
+flux vector the value \(\langle t^{i0}\rangle\) obtained by averaging over
+spacetime dimensions large compared with \(1/\omega\), so that the power per
+solid angle is
+\[
+  \frac{dP}{d\Omega}
+  =
+  r^2\widehat x_i\left\langle t^{i0}\right\rangle.
+\]
+We use for \(\langle t^{\mu\nu}\rangle\) the value \eqref{eq:10.3.5}, so
+this gives
+\[
+  \frac{dP}{d\Omega}
+  =
+  \frac{r^2(\mathbf{k}\cdot\widehat{\mathbf{x}})k^0}{16\pi G}
+  \left[
+    e^{\lambda\nu*}(\mathbf{x},\omega)e_{\lambda\nu}(\mathbf{x},\omega)
+    -\frac12\left|e^\lambda{}_\lambda(\mathbf{x},\omega)\right|^2
+  \right].
+\]
+Inserting the values \eqref{eq:10.4.8} and \eqref{eq:10.4.10} for
+\(k^\mu\) and \(e_{\lambda\nu}\), we find that the \(r^2\) factors cancel,
+and
+\begin{equation}
+  \frac{dP}{d\Omega}
+  =
+  \frac{G\omega^2}{\pi}
+  \left[
+    T^{\lambda\nu*}(\mathbf{k},\omega)
+    T_{\lambda\nu}(\mathbf{k},\omega)
+    -\frac12
+    \left|T^\lambda{}_\lambda(\mathbf{k},\omega)\right|^2
+  \right].
+  \tag{10.4.13}\label{eq:10.4.13}
+\end{equation}
+The problem is thus solved once we have calculated the Fourier transform
+\eqref{eq:10.4.11}.
+
+It will be convenient to express this result in terms of the purely spacelike
+components of \(T^{\mu\nu}(\mathbf{k},\omega)\). From
+\eqref{eq:10.4.12} we have
+\[
+  T_{0i}(\mathbf{k},\omega)
+  =-\widehat k^jT_{ji}(\mathbf{k},\omega),
+  \qquad
+  T_{00}(\mathbf{k},\omega)
+  =\widehat k^i\widehat k^jT_{ji}(\mathbf{k},\omega),
+\]
+where
+\(\widehat{\mathbf{k}}\equiv\mathbf{k}/\omega
+=\widehat{\mathbf{x}}\). Using this in \eqref{eq:10.4.13} gives
+\begin{equation}
+  \frac{dP}{d\Omega}
+  =
+  \frac{G\omega^2}{\pi}
+  \Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  T^{ij*}(\mathbf{k},\omega)T^{lm}(\mathbf{k},\omega),
+  \tag{10.4.14}\label{eq:10.4.14}
+\end{equation}
+where
+\begin{align}
+  \Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  \equiv{}&
+  \delta_{il}\delta_{jm}
+  -2\widehat k_j\widehat k_m\delta_{il}
+  +\frac12\widehat k_i\widehat k_j\widehat k_l\widehat k_m
+  -\frac12\delta_{ij}\delta_{lm}
+  \notag\\
+  &+\frac12\delta_{ij}\widehat k_l\widehat k_m
+  +\frac12\delta_{lm}\widehat k_i\widehat k_j.
+  \tag{10.4.15}\label{eq:10.4.15}
+\end{align}
+
+If the energy-momentum tensor is a \emph{sum} of individual Fourier
+components as in \eqref{eq:10.4.2}, then the field \(h_{\mu\nu}\) in the
+wave zone will look like a sum of the plane waves \eqref{eq:10.4.7}. The
+gravitational energy-momentum tensor will then be given by a double sum over
+these Fourier components, but all cross-terms drop out when we average over a
+time interval long compared with the longest ``beat period,'' that is, the
+reciprocal of the shortest frequency difference. The power is thus given by
+a sum of terms like \eqref{eq:10.4.14}, one for each frequency in the
+source.
+
+Suppose, on the other hand, that the energy-momentum tensor is a Fourier
+\emph{integral}, as in \eqref{eq:10.4.1}. Then \(h_{\mu\nu}\) in the wave
+zone will look like an integral over \(\omega\) of the individual plane
+waves \eqref{eq:10.4.7}, and the gravitational energy-momentum tensor will
+be given by a double integral \(\iint d\omega\,d\omega'\) of products of
+these terms. The integrand again has time dependence
+\(\exp[-\ii(\omega-\omega')t]\), but now there is no ``longest beat
+period,'' so instead of computing the average power we calculate the total
+energy emitted. This is given by integrating the power over all time, and
+the effect is to replace the factors \(e^{-\ii\omega t}e^{\ii\omega't}\) in
+the double integral for the power with
+\[
+  \int_{-\infty}^{\infty}
+  \exp[-\ii(\omega-\omega')t]\,dt
+  =
+  2\pi\delta(\omega-\omega').
+\]
+The energy per solid angle emitted in a direction
+\(\widehat{\mathbf{k}}\) is thus a single integral:
+\begin{equation}
+  \frac{dE}{d\Omega}
+  =
+  2G\int_0^\infty d\omega\,\omega^2
+  \left[
+    T^{\lambda\nu*}(\mathbf{k},\omega)
+    T_{\lambda\nu}(\mathbf{k},\omega)
+    -\frac12\left|T^\lambda{}_\lambda(\mathbf{k},\omega)\right|^2
+  \right],
+  \tag{10.4.16}\label{eq:10.4.16}
+\end{equation}
+or, in terms of the space-space components,
+\[
+  \frac{dE}{d\Omega}
+  =
+  2G\Lambda_{ij,lm}(\widehat{\mathbf{k}})
+  \int_0^\infty d\omega\,\omega^2
+  T^{ij*}(\mathbf{k},\omega)T^{lm}(\mathbf{k},\omega).
+\]
+
+As an example, consider a system of free particles \(n\) that initially
+move at constant velocity \(\mathbf{v}_n\), collide at the origin at
+\(t=0\), and then move off again at velocities
+\(\widetilde{\mathbf{v}}_n\). The energy-momentum tensor is then
+\begin{align}
+  T^{\mu\nu}(\mathbf{x},t)
+  ={}&
+  \sum_n\frac{P_n^\mu P_n^\nu}{E_n}
+  \delta^3(\mathbf{x}-\mathbf{v}_nt)\theta(-t)
+  \notag\\
+  &+
+  \sum_n\frac{\widetilde P_n^\mu\widetilde P_n^\nu}{\widetilde E_n}
+  \delta^3(\mathbf{x}-\widetilde{\mathbf{v}}_nt)\theta(t),
+  \tag{10.4.17}\label{eq:10.4.17}
+\end{align}
+where \(P_n^0=E_n=m_n(1-\mathbf{v}_n^2)^{-1/2}\) and
+\(\mathbf{P}_n=E_n\mathbf{v}_n\) are the energy and momentum of the \(n\)th
+incoming particle, \(\widetilde P_n^0=\widetilde E_n\) and
+\(\widetilde{\mathbf{P}}_n\) are the corresponding quantities for the
+outgoing particles, and \(\theta\) is the step function
+\begin{equation}
+  \theta(s)=
+  \begin{cases}
+  +1,&s>0,\\
+  0,&s<0.
+  \end{cases}
+  \tag{10.4.18}\label{eq:10.4.18}
+\end{equation}
+The functions \(\theta\) and \(\delta^3\) have the well-known integral
+representations
+\begin{equation}
+  \theta(s)
+  =
+  \frac{1}{2\pi\ii}
+  \int_{-\infty}^{\infty}
+  \frac{e^{+\ii\omega s}}{\omega-\ii\epsilon}\,d\omega,
+  \qquad
+  \epsilon\to0+,
+  \tag{10.4.19}\label{eq:10.4.19}
+\end{equation}
+\begin{equation}
+  \delta^3(\mathbf{x})
+  =
+  \frac{1}{(2\pi)^3}\int d^3k\,e^{\ii\mathbf{k}\cdot\mathbf{x}}.
+  \tag{10.4.20}\label{eq:10.4.20}
+\end{equation}
+(To prove \eqref{eq:10.4.19}, note that the contour can be closed with a
+large semicircle in the lower or upper half-plane, according to whether
+\(s<0\) or \(s>0\). To prove \eqref{eq:10.4.20}, take the Fourier transform
+of both sides.)
+
+We see then that \(T^{\mu\nu}(\mathbf{x},t)\) is of the form
+\eqref{eq:10.4.1}, with
+\begin{align*}
+  T^{\mu\nu}(\mathbf{x},\omega)
+  =\frac{1}{(2\pi)^4\ii}\Biggl[
+  &\sum_n\frac{P_n^\mu P_n^\nu}{E_n}
+  \int d^3k\,
+  \frac{e^{\ii\mathbf{k}\cdot\mathbf{x}}}
+       {\omega-\mathbf{v}_n\cdot\mathbf{k}-\ii\epsilon}\\
+  &-\sum_n\frac{\widetilde P_n^\mu\widetilde P_n^\nu}{\widetilde E_n}
+  \int d^3k\,
+  \frac{e^{\ii\mathbf{k}\cdot\mathbf{x}}}
+       {\omega-\widetilde{\mathbf{v}}_n\cdot\mathbf{k}
+        +\ii\epsilon}
+  \Biggr],
+\end{align*}
+and the Fourier transform \eqref{eq:10.4.11} is
+\[
+  T^{\mu\nu}(\mathbf{k},\omega)
+  =
+  \frac{1}{2\pi\ii}
+  \left[
+    \sum_n\frac{P_n^\mu P_n^\nu}
+    {E_n(\omega-\mathbf{v}_n\cdot\mathbf{k}-\ii\epsilon)}
+    -
+    \sum_n\frac{\widetilde P_n^\mu\widetilde P_n^\nu}
+    {\widetilde E_n
+      (\omega-\widetilde{\mathbf{v}}_n\cdot\mathbf{k}+\ii\epsilon)}
+  \right].
+\]
+We can now drop the \(\pm\ii\epsilon\) in the denominators, for
+\(\omega-\mathbf{v}_n\cdot\mathbf{k}\) cannot vanish if
+\(\omega=\lvert\mathbf{k}\rvert\) and
+\(\lvert\mathbf{v}_n\rvert<1\). (For the case of particles traveling at
+the speed of light, see below.) Also,
+\(E_n(\mathbf{v}_n\cdot\mathbf{k}-\omega)
+=P_n^\lambda k_\lambda\equiv(P_n\cdot k)\), so we can write
+\begin{equation}
+  T^{\mu\nu}(\mathbf{k},\omega)
+  =
+  \frac{1}{2\pi\ii}
+  \sum_N
+  \frac{P_N^\mu P_N^\nu\eta_N}{P_N\cdot k},
+  \tag{10.4.21}\label{eq:10.4.21}
+\end{equation}
+where \(N\) runs over particles in both the initial and the final states,
+the sign factor \(\eta_N\) being
+\[
+  \eta_N=
+  \begin{cases}
+  +1,&N\text{ in final state},\\
+  -1,&N\text{ in initial state}.
+  \end{cases}
+\]
+We note that \eqref{eq:10.4.12} is satisfied, because
+\[
+  k_\mu T^{\mu\nu}(\mathbf{k},\omega)
+  =
+  \frac{1}{2\pi\ii}\sum_NP_N^\nu\eta_N,
+\]
+and this must vanish because \(\sum_NP_N^\nu\eta_N\) is simply the change
+in the total \(P^\nu\), which is conserved.
+
+The gravitational energy per solid angle and per unit frequency interval
+emitted at frequency \(\omega\) and direction \(\widehat{\mathbf{k}}\) is
+now given by \eqref{eq:10.4.16} as
+\begin{equation}
+  \frac{dE}{d\Omega\,d\omega}
+  =
+  \frac{G\omega^2}{2\pi^2}
+  \sum_{N,M}
+  \frac{\eta_N\eta_M}
+       {(P_N\cdot k)(P_M\cdot k)}
+  \left[
+    (P_N\cdot P_M)^2-\frac12m_N^2m_M^2
+  \right].
+  \tag{10.4.22}\label{eq:10.4.22}
+\end{equation}
+If we tried to compute the total emitted energy by integrating \(\omega\)
+from zero to infinity, we would get a result that diverges like
+\(\int_0^\infty d\omega\). This is just due to our approximation that the
+collision occurs instantaneously; actually it must take up some finite time
+\(\Delta t\), and the \(\omega\)-integral will be cut off at \(\omega\) of
+order \(1/\Delta t\). Note that if none of the momenta \(P_N^\mu\) are
+changed by the collision, then the contributions of the incoming and outgoing
+particles in \eqref{eq:10.4.21} will cancel, and so
+\(T^{\mu\nu}(\mathbf{k},\omega)\) will vanish. Gravitational radiation is
+only emitted when the particles actually undergo accelerations.
+
+Note also that \eqref{eq:10.4.22} seems to become infinite if one of the
+particles participating in the reaction (say, \(N=1\)) has zero mass, and
+has momentum approaching a direction parallel to \(\mathbf{k}\), since then
+\(P_1\cdot k=E_1\omega
+(\widehat{\mathbf{P}}_1\cdot\widehat{\mathbf{k}}-1)\to0\). However, this
+singularity is spurious, for when \(P_1\) becomes parallel to \(k\) we can
+treat \((P_1\cdot P_M)\) in \eqref{eq:10.4.22} as proportional for all
+\(M\ne1\) to \((k\cdot P_M)\), so the singular part of
+\eqref{eq:10.4.22} is
+\[
+  \frac{G\omega^2}{\pi^2}
+  \frac{\eta_1}{P_1\cdot k}
+  \sum_{M\ne1}\frac{\eta_M}{P_M\cdot k}(P_1\cdot P_M)^2
+  \propto
+  \sum_{M\ne1}\eta_M(P_1\cdot P_M).
+\]
+We have already remarked that \(\sum_M\eta_MP_M^\mu\) must vanish when the
+sum is extended over all particles, so the right-hand side is simply
+\(-\eta_1P_1^2\), and this vanishes because particle 1 is assumed to have
+zero mass. Thus no difficulty is encountered in applying
+\eqref{eq:10.4.22} to collisions involving photons, neutrinos, or even (to
+run ahead of ourselves a bit) gravitons.
+
+The total energy per unit frequency interval emitted as gravitational
+radiation in a collision is obtained by integrating Eq.~\eqref{eq:10.4.22}
+over the directions of \(\widehat{\mathbf{k}}\). We then find
+\begin{equation}
+  \frac{dE}{d\omega}
+  =
+  \frac{G}{2\pi}
+  \sum_{N,M}\eta_N\eta_Mm_Nm_M
+  \frac{1+\beta_{NM}^2}
+       {\beta_{NM}(1-\beta_{NM}^2)^{1/2}}
+  \ln\!\left(\frac{1+\beta_{NM}}{1-\beta_{NM}}\right),
+  \tag{10.4.23}\label{eq:10.4.23}
+\end{equation}
+with \(\beta_{NM}\) the relative speed of particles \(N\) and \(M\):
+\[
+  \beta_{NM}
+  \equiv
+  \left[
+    1-\frac{m_N^2m_M^2}{(P_N\cdot P_M)^2}
+  \right]^{1/2}.
+\]
+For nonrelativistic two-body elastic scattering this reduces to
+\begin{equation}
+  \frac{dE}{d\omega}
+  =
+  \frac{8G}{5\pi}\mu^2v^4\sin^2\theta,
+  \tag{10.4.24}\label{eq:10.4.24}
+\end{equation}
+where \(\mu\) is the reduced mass, \(v\) is the relative velocity, and
+\(\theta\) is the scattering angle in the center-of-mass reference frame.
+
+The gravitational radiation produced by the collisions occurring in a gas
+can be determined by summing up the radiated energies per collision given by
+Eq.~\eqref{eq:10.4.23} or \eqref{eq:10.4.24}, provided that there is enough
+time between collisions so that they do not interfere. This condition can be
+expressed as
+\begin{equation}
+  \omega\gg\omega_c,
+  \tag{10.4.25}\label{eq:10.4.25}
+\end{equation}
+where \(\omega_c\) is the collision frequency of a typical gas particle. (If
+\(\omega\lesssim\omega_c\), then the gas behaves as a fluid rather than as a
+collection of independent particles.) When \eqref{eq:10.4.25} is satisfied,
+the power per unit volume and per unit frequency interval is
+\begin{equation}
+  \frac{dP}{d\omega}
+  =
+  \frac{8G}{5\pi}
+  \sum_{(a,b)}\mu_{ab}^2n_an_b
+  \left\langle
+    v_{ab}^5
+    \int\frac{d\sigma_{ab}}{d\Omega}\sin^2\theta\,d\Omega
+  \right\rangle,
+  \tag{10.4.26}\label{eq:10.4.26}
+\end{equation}
+where \(n_a\) is the number density of gas particles of type \(a\),
+\(d\sigma_{ab}/d\Omega\) is the center-of-mass-system differential
+scattering cross-section, the sum runs over all different pairs of particle
+types, and the average \(\langle\cdots\rangle\) is taken over all collisions.
+
+As an example, let us calculate the gravitational radiation emitted by
+Coulomb collisions in a plasma. The Rutherford scattering cross-section is
+\begin{equation}
+  \frac{d\sigma_{ab}}{d\Omega}
+  =
+  \frac{e_a^2e_b^2}
+       {4v_{ab}^4\mu_{ab}^2\sin^4(\theta/2)}.
+  \tag{10.4.27}\label{eq:10.4.27}
+\end{equation}
+The integral over \(\theta\) must be cut off at a minimum angle
+\(1/\Lambda\), with \(\Lambda\gg1\) determined by the Debye screening of
+the Coulomb force at large impact parameters; we have then
+\begin{equation}
+  \int\frac{d\sigma_{ab}}{d\Omega}\sin^2\theta\,d\Omega
+  \simeq
+  \frac{4\pi e_a^2e_b^2\ln\Lambda}
+       {\mu_{ab}^2v_{ab}^4}.
+  \tag{10.4.28}\label{eq:10.4.28}
+\end{equation}
+We are left with an average of \(v_{ab}\), which for a Maxwell--Boltzmann
+distribution is
+\begin{equation}
+  \left\langle v_{ab}\right\rangle
+  =
+  2\left(\frac{2kT}{\pi\mu_{ab}}\right)^{1/2}.
+  \tag{10.4.29}\label{eq:10.4.29}
+\end{equation}
+Putting \eqref{eq:10.4.28} and \eqref{eq:10.4.29} into
+\eqref{eq:10.4.26} gives the power per unit volume and per unit frequency
+interval (in c.g.s. units) as
+\begin{equation}
+  \frac{dP}{d\omega}
+  =
+  \frac{64G}{5c^5}
+  \left(\frac{2kT}{\pi}\right)^{1/2}
+  \ln\Lambda
+  \sum_{(a,b)}
+  \frac{n_an_be_a^2e_b^2}{\sqrt{\mu_{ab}}}.
+  \tag{10.4.30}\label{eq:10.4.30}
+\end{equation}
+Typically \(\ln\Lambda\) is of order 10. For a plasma of completely ionized
+hydrogen we must take into account electron-electron and electron-proton
+collisions, and \eqref{eq:10.4.30} gives
+\begin{equation}
+  \frac{dP}{d\omega}
+  =
+  \frac{64Gn_e^2e^4}{5c^5}
+  \left(\frac{2kT}{\pi m_e}\right)^{1/2}
+  (1+\sqrt2)\ln\Lambda.
+  \tag{10.4.31}\label{eq:10.4.31}
+\end{equation}
+The electron collision frequency may in this case be estimated as
+\begin{equation}
+  \omega_c
+  \simeq
+  \frac{e^4n_e\langle v\rangle}{(kT)^2}
+  \simeq
+  \frac{e^4n_e}{(kT)^{3/2}\sqrt{m_e}}.
+  \tag{10.4.32}\label{eq:10.4.32}
+\end{equation}
+Equation~\eqref{eq:10.4.30} or \eqref{eq:10.4.31} holds for
+\(\omega\gg\omega_c\) and \(\hbar\omega\ll kT\).
+
+These results can be applied to the hydrogen plasma in the solar core. Within
+a volume \(V\) of order \(2\times10^{31}\ \mathrm{cm}^3\) this plasma has
+\(T\simeq10^7\ {\mathrm{K}}\), \(n_e\simeq3\times10^{25}\ \mathrm{cm}^{-3}\),
+and \(\ln\Lambda\simeq4\). The collision frequency \eqref{eq:10.4.32} is
+\(10^{15}\ \mathrm{sec}^{-1}\), three orders of magnitude less than the
+thermal frequency \(kT/\hbar\simeq10^{18}\ \mathrm{sec}^{-1}\), so the total
+power produced in gravitational radiation can be estimated by multiplying
+\eqref{eq:10.4.31} by \(VkT/\hbar\). In this way we find that the thermal
+collisions in the solar core produce about \(10^8\) watts of gravitational
+radiation.

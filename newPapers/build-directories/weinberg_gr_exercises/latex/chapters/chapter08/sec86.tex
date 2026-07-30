@@ -1,0 +1,445 @@
+% Source: Weinberg GR, physical PDF pp. 217--224
+%         (printed pp. 194--201).
+% Coverage: Section 8.6, Bound Orbits: Precession of Perihelia; equations
+%           (8.6.1)--(8.6.13), Figure 8.2, Table 8.3.
+% Figures/tables/footnotes: Figure 8.2; Table 8.3; reference markers 5--12.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: source prose says "Table 8.2" where the orbital data are in
+%                Table 8.3; preserved and marked VERIFY SOURCE below.
+
+\subsection{Bound Orbits: Precession of Perihelia}\label{sec:8.6}
+
+Now consider a test particle bound in an orbit around the sun. (See
+Figure~\ref{fig:8.2}.) At perihelia and aphelia, \(r\) reaches its minimum
+and maximum values \(r_-\) and \(r_+\), and at both points
+\(dr/d\varphi\) vanishes, so Eq.~\eqref{eq:8.4.29} gives
+\[
+  \frac{1}{r_+^2}-\frac{1}{J^2B(r_+)}=-\frac{E}{J^2},
+  \qquad
+  \frac{1}{r_-^2}-\frac{1}{J^2B(r_-)}=-\frac{E}{J^2}.
+\]
+
+\input{figures/chapter08/fig08-02.tex}
+
+From these two equations we can derive values for the two constants of the
+motion:
+\begin{equation}
+  E
+  =
+  \frac{r_+^2/B(r_+)-r_-^2/B(r_-)}
+       {r_+^2-r_-^2},
+  \tag{8.6.1}\label{eq:8.6.1}
+\end{equation}
+\begin{equation}
+  J^2
+  =
+  \frac{B^{-1}(r_+)-B^{-1}(r_-)}
+       {r_+^{-2}-r_-^{-2}}.
+  \tag{8.6.2}\label{eq:8.6.2}
+\end{equation}
+The angle swept out by the position vector as \(r\) increases from \(r_-\)
+is given by Eq.~\eqref{eq:8.4.30} as
+\[
+  \varphi(r)
+  =
+  \varphi(r_-)
+  +\int_{r_-}^{r}
+  A^{1/2}(r)
+  \left[
+    \frac{1}{J^2B(r)}-\frac{E}{J^2}-\frac{1}{r^2}
+  \right]^{-1/2}\frac{dr}{r^2},
+\]
+or, using Eqs.~\eqref{eq:8.6.1} and \eqref{eq:8.6.2},
+\begin{equation}
+  \begin{split}
+  \varphi(r)-\varphi(r_-)
+  =\int_{r_-}^{r}
+  \biggl[
+  &\frac{
+    r_-^2\!\left[B^{-1}(r)-B^{-1}(r_-)\right]
+    -r_+^2\!\left[B^{-1}(r)-B^{-1}(r_+)\right]
+  }{
+    r_+^2r_-^2\!\left[B^{-1}(r_+)-B^{-1}(r_-)\right]
+  }
+  -\frac{1}{r^2}
+  \biggr]^{-1/2}\\
+  &{}\times A^{1/2}(r)r^{-2}\,dr.
+  \end{split}
+  \tag{8.6.3}\label{eq:8.6.3}
+\end{equation}
+The change in \(\varphi\) as \(r\) decreases from \(r_+\) to \(r_-\) is
+the same as the change in \(\varphi\) as \(r\) increases from \(r_-\) to
+\(r_+\), so the total change in \(\varphi\) per revolution is
+\(2|\varphi(r_+)-\varphi(r_-)|\). This would equal \(2\pi\) if the orbit
+was a closed ellipse, so in general the orbit precesses in each revolution
+by an angle
+\begin{equation}
+  \Delta\varphi
+  =
+  2|\varphi(r_+)-\varphi(r_-)|-2\pi.
+  \tag{8.6.4}\label{eq:8.6.4}
+\end{equation}
+
+Using the exact values of \(A(r)\) and \(B(r)\) given by the Schwarzschild
+solution \eqref{eq:8.2.10}, \eqref{eq:8.2.11} in
+Eq.~\eqref{eq:8.6.3} would yield formulas for \(\varphi(r)\) and
+\(\Delta\varphi\) as elliptic integrals, and to evaluate them numerically
+we would have to expand in \(MG/r_-\) and \(MG/r_+\). Instead we shall
+expand in the integrand, using for \(A(r)\) and \(B(r)\) the Robertson
+expansions \eqref{eq:8.3.8}, \eqref{eq:8.3.9}:
+\begin{equation}
+  \begin{aligned}
+  A(r)&=1+2\gamma\frac{MG}{r}+\cdots,\\
+  B(r)&=1-\frac{2MG}{r}
+  +2(\beta-\gamma)\frac{M^2G^2}{r^2}+\cdots.
+  \end{aligned}
+  \tag{8.6.5}\label{eq:8.6.5}
+\end{equation}
+Note that there is a complete cancellation in Eq.~\eqref{eq:8.6.3} of
+the leading term in \(B(r)\) but not of that in \(A(r)\), so to calculate
+\(\varphi\) and \(\Delta\varphi\) to first order in \(MG/r_\pm\) we need
+\(B(r)\) to second order in \(MG/r\), whereas \(A(r)\) will be needed only
+to first order.
+
+It saves a great deal of work if we realize that by using the expansion
+\[
+  B^{-1}(r)
+  \simeq
+  1+\frac{2MG}{r}
+  +2(2-\beta+\gamma)\frac{M^2G^2}{r^2},
+\]
+we make the argument of the first square root in
+Eq.~\eqref{eq:8.6.3} a quadratic function of \(1/r\). Furthermore, it
+vanishes at \(r=r_\pm\), so
+\begin{equation}
+  \begin{split}
+  &\frac{
+    r_-^2\!\left[B^{-1}(r)-B^{-1}(r_-)\right]
+    -r_+^2\!\left[B^{-1}(r)-B^{-1}(r_+)\right]
+  }{
+    r_+^2r_-^2\!\left[B^{-1}(r_+)-B^{-1}(r_-)\right]
+  }
+  -\frac{1}{r^2}\\
+  &\hspace{4cm}
+  =C\left(\frac1{r_-}-\frac1r\right)
+  \left(\frac1r-\frac1{r_+}\right).
+  \end{split}
+  \tag{8.6.6}\label{eq:8.6.6}
+\end{equation}
+The constant \(C\) can be determined by letting \(r\to\infty\):
+\[
+  C
+  =
+  \frac{
+    r_+^2[1-B^{-1}(r_+)]
+    -r_-^2[1-B^{-1}(r_-)]
+  }{
+    r_+r_-[B^{-1}(r_+)-B^{-1}(r_-)]
+  },
+\]
+or factoring out of numerator and denominator a common factor
+\(2(r_--r_+)MG\),
+\begin{equation}
+  C
+  \simeq
+  1-(2-\beta+\gamma)MG
+  \left(\frac1{r_+}+\frac1{r_-}\right).
+  \tag{8.6.7}\label{eq:8.6.7}
+\end{equation}
+Using Eqs.~\eqref{eq:8.6.5}--\eqref{eq:8.6.7} in
+Eq.~\eqref{eq:8.6.3} gives then
+\[
+  \begin{split}
+  \varphi(r)-\varphi(r_-)
+  \simeq{}&
+  \left[
+    1+\frac12(2-\beta+\gamma)MG
+    \left(\frac1{r_+}+\frac1{r_-}\right)
+  \right]\\
+  &{}\times
+  \int_{r_-}^{r}
+  \frac{[1+\gamma MG/r]\,dr}
+  {r^2[(1/r_--1/r)(1/r-1/r_+)]^{1/2}}.
+  \end{split}
+\]
+The integral is made trivial by introducing a new variable \(\psi\):
+\begin{equation}
+  \frac1r
+  \equiv
+  \frac12\left(\frac1{r_+}+\frac1{r_-}\right)
+  +\frac12\left(\frac1{r_+}-\frac1{r_-}\right)\sin\psi.
+  \tag{8.6.8}\label{eq:8.6.8}
+\end{equation}
+We then find
+\begin{equation}
+  \begin{split}
+  \varphi(r)-\varphi(r_-)
+  ={}&
+  \left[
+    1+\frac12(2-\beta+2\gamma)MG
+    \left(\frac1{r_+}+\frac1{r_-}\right)
+  \right]
+  \left(\psi+\frac{\pi}{2}\right)\\
+  &-\frac12\gamma MG
+  \left(\frac1{r_+}-\frac1{r_-}\right)\cos\psi.
+  \end{split}
+  \tag{8.6.9}\label{eq:8.6.9}
+\end{equation}
+At aphelion \(\psi=\pi/2\), so Eqs.~\eqref{eq:8.6.4} and
+\eqref{eq:8.6.9} give the precession per revolution as
+\begin{equation}
+  \Delta\varphi
+  =
+  \left(\frac{6\pi MG}{L}\right)
+  \left(\frac{2-\beta+2\gamma}{3}\right)
+  \qquad\text{(radians/revolution)},
+  \tag{8.6.10}\label{eq:8.6.10}
+\end{equation}
+where \(L\) is the dimension of the ellipse called the \emph{semilatus
+rectum},
+\[
+  \frac1L
+  \equiv
+  \frac12\left(\frac1{r_+}+\frac1{r_-}\right).
+\]
+The elements of planetary orbits usually found in tables are the semimajor
+axis \(a\) and eccentricity \(e\), defined by
+\[
+  r_\pm=(1\pm e)a.
+\]
+Hence we can determine \(L\) from \(a\) and \(e\) by using the formula
+\[
+  L=(1-e^2)a.
+\]
+Einstein's field equations yield \(\beta=\gamma=1\), so they predict a
+precession
+\begin{equation}
+  \Delta\varphi
+  =
+  6\pi\frac{MG}{L}
+  \qquad\text{radians/revolution}.
+  \tag{8.6.11}\label{eq:8.6.11}
+\end{equation}
+This is positive, meaning that the whole orbit should precess in the same
+direction as the motion of the test particle. In the Brans--Dicke theory
+Eqs.~\eqref{eq:8.6.10} and \eqref{eq:8.3.3} give
+\begin{equation}
+  \Delta\varphi
+  =
+  \left(\frac{6\pi MG}{L}\right)
+  \left(\frac{3\omega+4}{3\omega+6}\right).
+  \tag{8.6.12}\label{eq:8.6.12}
+\end{equation}
+
+Once again, we should ask ourselves what the predicted value of
+\(\Delta\varphi\) means. This is not a scattering experiment like the
+deflection of light by the sun; here we are dealing with an object that
+never gets out to infinity where the metric is Minkowskian. Any observation
+of the test particle's motion by optical or radar astronomers will make use
+of light rays that are themselves affected by the gravitational field, and
+if careful corrections are not made for the deflection of light, the
+astronomer's reported \(\varphi(r)\) values will, at any given radius \(r\),
+contain errors of the order of \(MG/L\). [See Eq.~\eqref{eq:8.5.8}.]
+However, in practice these fine points do not really matter, because the
+precession is \emph{cumulative}. Equation~\eqref{eq:8.6.10} shows that
+after \(N\) revolutions the perihelia will have advanced by an angle of
+order \(NMG/L\), so if \(N\gg1\) it is unnecessary to worry about an error
+in \(\varphi\) of order \(MG/L\). Indeed, Eq.~\eqref{eq:8.6.11} tells us
+that the perihelion will return to its original azimuth after
+\(L/3MG\gg1\) revolutions, a prediction that clearly has nothing to do with
+how we define \(r\) or \(\varphi\).
+
+For Mercury we must take \(L=55.3\times10^6\,\mathrm{km}\), and of course
+\(MG=1.475\,\mathrm{km}\), so Eq.~\eqref{eq:8.6.11} gives
+\(\Delta\varphi=0.1038''\) per revolution. Since Mercury makes 415
+revolutions per century, the prediction of general relativity is that
+\[
+  \Delta\varphi=43.03''\text{ per century}\quad(\text{Mercury}).
+\]
+Fortunately there are accurate observations of Mercury going back to 1765.
+These data were reanalyzed by
+Clemence\hyperref[ch8-ref-5]{\textsuperscript{5}} in 1943; he finds
+\(\Delta\varphi=43.11\pm0.45''\) per century, essentially confirming
+Newcomb's earlier value (see Section~\ref{sec:1.2}) and in excellent
+agreement with general relativity. Taken at face value this agreement shows
+that the correction factor in Eq.~\eqref{eq:8.6.11} is
+\[
+  \left(\frac{2-\beta+2\gamma}{3}\right)=1.00\pm0.01.
+\]
+This is by far the most important experimental verification of general
+relativity, both by virtue of its high accuracy, and because it alone is
+sensitive to the coefficient \(\beta\) appearing in the second-order term
+in \(g_{tt}\).
+
+\begingroup
+\renewcommand{\thetable}{8.3}
+\begin{table}[tbp]
+\centering
+\caption{Comparison of Theoretical and Observed Centennial Precessions of
+Planetary Orbits.\hyperref[ch8-ref-6]{\textsuperscript{6}}}
+\label{tab:8.3}
+\small
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Planet & \(a\) (\(10^6\) km) & \(e\) & \(6\pi MG/L\) &
+Revolutions/century &
+\multicolumn{2}{c}{\(\Delta\varphi\) (seconds/century)}\\
+\cmidrule(l){6-7}
+ & & & & & Gen. Rel. & Observed\\
+\midrule
+Mercury & 57.91 & 0.2056 & \(0.1038''\) & 415 & 43.03 &
+  \(43.11\pm0.45\)\\
+Venus & 108.21 & 0.0068 & \(0.058''\) & 140 & 8.6 &
+  \(8.4\pm4.8\)\\
+Earth & 149.60 & 0.0167 & \(0.038''\) & 100 & 3.8 &
+  \(5.0\pm1.2\)\\
+Icarus & 161.0 & 0.827 & \(0.115''\) & 89 & 10.3 &
+  \(9.8\pm0.8\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+\endgroup
+
+Results\hyperref[ch8-ref-6]{\textsuperscript{6}} for Venus, the earth, and
+Icarus are listed together with those for Mercury in
+Table~\ref{tab:8.3}. Evidently the accuracy available from the major
+planets degrades rapidly as we move away from the sun, both because the
+smaller eccentricities make observation of the perihelia more uncertain,
+and because as \(L\) increases, the precession per revolution and the
+revolutions per century both decrease. Icarus was only discovered in 1949,
+but is in some respects the most useful object to study because its small
+size, its close approach to the earth, and the large eccentricity of its
+orbit allow its precession to be determined with high accuracy. Suggestions
+have been made to put an artificial satellite into an eccentric orbit close
+to the sun; for instance, a satellite with \(L=10R_\odot\) would have a
+centennial precession equal to \(8250''\)! The trouble here is that a small
+object would be subject to nongravitational perturbations such as radiation
+pressure, solar wind, and micrometeorites, which of course have a negligible
+effect on Mercury and Icarus.
+
+There are two caveats that should be kept in mind in assessing the agreement
+of the observed advance of perihelia with the prediction of general
+relativity. First, there are many known perturbations that contribute to the
+precession of planetary orbits. In particular, Newtonian theory would give
+Mercury a precession
+\[
+  \Delta\varphi_N=5557.62\pm0.20''\quad(\text{Mercury}),
+\]
+of which about \(5025''\) is due to the rotation of the earth-based
+astronomical coordinate system, and about \(532''\) is due to gravitational
+perturbations calculated by Newtonian perturbation theory from the motion
+of the other planets, chiefly Venus, earth, and Jupiter. The precession
+actually observed is
+\[
+  \Delta\varphi_{\mathrm{OBS}}
+  =5600.73\pm0.41''\quad(\text{Mercury}),
+\]
+and the value \(\Delta\varphi=43.11\pm0.45''\) quoted above for the
+``observed'' anomalous precession is obtained by subtracting the Newtonian
+precession from what is observed, that is,
+\begin{equation}
+  \Delta\varphi
+  =
+  \Delta\varphi_{\mathrm{OBS}}-\Delta\varphi_N.
+  \tag{8.6.13}\label{eq:8.6.13}
+\end{equation}
+One may ask how we know that this is the right quantity to compare with the
+general-relativistic result of \(43.03''\) per century. That is, how do we
+know that the total precession is correctly given by adding the Newtonian
+value \(\Delta\varphi_N\), calculated while forgetting all effects of
+general relativity, to the Einstein value \(\Delta\varphi_{\mathrm{GR}}\),
+calculated forgetting all effects of planetary perturbations? To some
+extent this question can be answered by noting that the general-relativistic
+corrections to \(\Delta\varphi_N\) would be of order \(MG/L\) times
+\(\Delta\varphi_N\), or only about \(10^{-4}\,\text{arcsec}\) per century.
+For a fuller
+answer we shall have to wait until the discussion in the next chapter of the
+post-Newtonian approximation. But even granting that
+Eq.~\eqref{eq:8.6.13} is in principle correct, we should be aware that a
+very small systematic error in either \(\Delta\varphi_N\) or
+\(\Delta\varphi_{\mathrm{OBS}}\) could completely destroy the agreement
+between theory and observation.
+
+The second warning is that very small \emph{unknown} effects may possibly be
+contributing to the observed precession of perihelia an amount comparable
+with that expected from general relativity. Indeed, we saw in Chapter~1
+that Newcomb had by 1911 abandoned his earlier suggestion of a small
+departure from the inverse-square law, because the observed anomalous
+precession of \(43''\) per century could also be explained within Newtonian
+mechanics as due to the gravitational field produced by the matter which
+causes the ``zodiacal light.'' (Today we know that there is not enough
+matter between Mercury and the sun to produce any appreciable precession.)
+It is also possible that the sun is slightly
+oblate,\hyperref[ch8-ref-7]{\textsuperscript{7}} in which case its
+Newtonian potential would have an \(r^{-3}\) term, giving the planets an
+anomalous precession per revolution decreasing as the inverse square of
+their distance from the sun.
+% VERIFY SOURCE: the printed text says Table 8.2, although the planetary
+% precession data used in this argument are in Table 8.3.
+Table 8.2 shows that in fact the observed anomalous precession per
+revolution decreases roughly as \(1/r\), not \(1/r^2\), in agreement with
+the prediction of general relativity. Even more important, a large solar
+oblateness would produce an anomalous precession of the planes of the inner
+planets' orbits that is not
+observed.\hyperref[ch8-ref-8]{\textsuperscript{8}} These two arguments
+together rule out the possibility of explaining \emph{all} of the observed
+anomalous precession as owing to solar oblateness, but this explanation
+might account for up to 20\% of the observed effect.
+
+To test this hypothesis Dicke and
+Goldenberg\hyperref[ch8-ref-9]{\textsuperscript{9}} scanned the solar disk
+photoelectrically during the period June~1 to September~23, 1966. They
+concluded that the sun's polar diameter is shorter than its equatorial
+diameter by \(5.0\pm0.7\) parts in \(10^5\). Taken at face value, this
+would give the perihelia of Mercury an extra precession of \(3.4''\) per
+century, so that only \(39.6''\) per century would be left as the
+relativistic effect, an 8\% disagreement with Einstein's prediction of
+\(43.03''\) per century. The Brans--Dicke theory can account for an excess
+centennial precession of \(39.6''\) if we take \(\omega=6.4\). However,
+there are several reasons for hesitating before we give up general
+relativity.
+
+\begin{enumerate}
+  \item[(A)] To account for the solar oblateness the solar interior would
+  have to be rotating about once in one or two days, very much faster than
+  the observed rotation rate (i.e., once in 25 days) of the sun's surface.
+  This difference in rotation rates could perhaps be
+  explained\hyperref[ch8-ref-10]{\textsuperscript{10}} as due to a
+  magnetic torque induced by the solar wind, which retards the rotation of
+  the surface, but it is not clear that this configuration would be
+  dynamically stable.\hyperref[ch8-ref-11]{\textsuperscript{11}}
+
+  \item[(B)] Two very elaborate series of
+  measurements\hyperref[ch8-ref-12]{\textsuperscript{12}} made with the
+  G\"ottingen heliometer during the period 1891--1902 gave for the
+  difference between the sun's equator and polar diameters the values
+  \(0.36\pm0.78\) parts in \(10^5\) and \(-0.10\pm0.47\) parts in
+  \(10^5\), respectively, in agreement with each other and with perfect
+  sphericity, but in disagreement with the result \(+5.0\pm0.7\) parts in
+  \(10^5\) of Dicke and Goldenberg. The G\"ottingen results were also
+  supported by subsequent heliometer measurements. To quote
+  Ashbrook:\hyperref[ch8-ref-12]{\textsuperscript{12}}
+  \begin{quote}
+  ``What are we to make of all this? In view of the astronomical evidence,
+  can the sun's polar diameter be 0.1 seconds shorter than its equatorial,
+  as Drs. Dicke and Goldenberg think? Was there some unsuspected subtle
+  systematic error in the Princeton experiment? Or was there some
+  unrecognized effect in all the heliometer series?''
+  \end{quote}
+
+  To do Dicke and Goldenberg justice, it should be noted that the axis of
+  the oblate ellipsoid they observe follows the axis of the sun's rotation
+  in its apparent annual oscillation, which certainly suggests that they
+  are seeing something real.
+
+  \item[(C)] Even if the visible solar surface is oblate, what does this
+  really tell us about the shape of its mass distribution and about the
+  sun's gravitational field? Dicke\hyperref[ch8-ref-7]{\textsuperscript{7}}
+  argues that the observed solar surface coincides with the gravitational
+  equipotential surface, but this conclusion rests on a good deal of
+  astrophysical theory and could be wrong.
+
+  \item[(D)] Finally, if Dicke and Goldenberg are right, then the 1\%
+  agreement between Einstein's prediction and the observed anomalous
+  precession is a mere coincidence.
+\end{enumerate}

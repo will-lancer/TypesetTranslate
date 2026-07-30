@@ -1,0 +1,659 @@
+% Source: Weinberg GR, physical PDF pp. 235--243
+%         (printed pp. 212--220).
+% Coverage: Section 9.1, The Post-Newtonian Approximation; equations
+%           (9.1.1)--(9.1.75).
+% Figures/tables/footnotes: no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: Weinberg's stacked perturbative-order numerals are rendered
+%                as parenthesized superscripts; curvature-sign conversion is
+%                documented immediately below and has been checked against
+%                the target Newtonian limit.
+%
+% MODERNIZATION CHECK: Weinberg prints perturbative order as a numeral over
+% the tensor symbol.  We use a parenthesized superscript, e.g.
+% g_{\mu\nu}^{(N)}.  This is an order label, not a tensor index or power.
+% MODERNIZATION CHECK: Equations (9.1.26)--(9.1.41) use the target curvature
+% convention.  Thus every displayed Ricci component is the negative of the
+% source expression at fixed slots, while the trace-reversed field equation
+% has +8 pi G rather than the source's -8 pi G.  The metric solutions
+% (9.1.53)--(9.1.75) are consequently unchanged.
+
+\subsection{The Post-Newtonian Approximation}\label{sec:9.1}
+
+Consider a system of particles that, like the sun and planets, are bound
+together by their mutual gravitational attraction. Let
+\(\bar M,\bar r,\bar v\) be typical values of the masses, separations, and
+velocities of these particles. It is a familiar result of Newtonian mechanics
+that the typical kinetic energy \(\bar M\bar v^2/2\) will be roughly of the
+same order of magnitude as the typical potential energy
+\(G\bar M^2/\bar r\), so
+\begin{equation}
+  \bar v^2\sim\frac{G\bar M}{\bar r}.
+  \tag{9.1.1}\label{eq:9.1.1}
+\end{equation}
+(For instance, a test particle in a circular orbit of radius \(r\) about a
+central mass \(M\) will have velocity \(v\) given in Newtonian mechanics by
+the exact formula \(v^2=GM/r\).) The post-Newtonian approximation may be
+described as a method for obtaining the motions of the system to one higher
+power of the small parameters \(G\bar M/\bar r\) and \(\bar v^2\) than given
+by Newtonian mechanics. It is sometimes referred to as an expansion in
+inverse powers of the speed of light, but since in our units this speed is
+unity we prefer to say that our expansion parameter is \(\bar v^2\), or
+equivalently \(G\bar M/\bar r\).
+
+We must begin by asking what we need. The equations of motion of the
+particles are
+\[
+  \frac{\dd^2x^\mu}{\dd\tau^2}
+  +\Gamma^\mu{}_{\nu\lambda}
+   \frac{\dd x^\nu}{\dd\tau}\frac{\dd x^\lambda}{\dd\tau}=0.
+\]
+Using \(t=x^0\), we may compute the coordinate accelerations as
+\[
+  \begin{aligned}
+  \frac{\dd^2x^i}{\dd t^2}
+  &=
+  \left(\frac{\dd t}{\dd\tau}\right)^{-1}
+  \frac{\dd}{\dd\tau}
+  \left[
+    \left(\frac{\dd t}{\dd\tau}\right)^{-1}
+    \frac{\dd x^i}{\dd\tau}
+  \right]\\
+  &=
+  \left(\frac{\dd t}{\dd\tau}\right)^{-2}
+  \frac{\dd^2x^i}{\dd\tau^2}
+  -
+  \left(\frac{\dd t}{\dd\tau}\right)^{-3}
+  \frac{\dd^2t}{\dd\tau^2}\frac{\dd x^i}{\dd\tau}\\
+  &=
+  -\Gamma^i{}_{\nu\lambda}
+   \frac{\dd x^\nu}{\dd t}\frac{\dd x^\lambda}{\dd t}
+  +
+  \Gamma^0{}_{\nu\lambda}
+   \frac{\dd x^\nu}{\dd t}\frac{\dd x^\lambda}{\dd t}
+   \frac{\dd x^i}{\dd t}.
+  \end{aligned}
+\]
+In detail, this is
+\begin{equation}
+  \begin{split}
+  \frac{\dd^2x^i}{\dd t^2}
+  ={}&
+  -\Gamma^i{}_{00}
+  -2\Gamma^i{}_{0j}\frac{\dd x^j}{\dd t}
+  -\Gamma^i{}_{jk}
+   \frac{\dd x^j}{\dd t}\frac{\dd x^k}{\dd t}\\
+  &+
+  \left(
+    \Gamma^0{}_{00}
+    +2\Gamma^0{}_{0j}\frac{\dd x^j}{\dd t}
+    +\Gamma^0{}_{jk}
+     \frac{\dd x^j}{\dd t}\frac{\dd x^k}{\dd t}
+  \right)\frac{\dd x^i}{\dd t}.
+  \end{split}
+  \tag{9.1.2}\label{eq:9.1.2}
+\end{equation}
+In the Newtonian approximation discussed in Section~\ref{sec:3.4}, we
+treated all velocities as vanishingly small and kept only terms of first
+order in the difference between \(g_{\mu\nu}\) and the Minkowski tensor
+\(\eta_{\mu\nu}\), and found
+\[
+  \frac{\dd^2x^i}{\dd t^2}
+  \simeq-\Gamma^i{}_{00}
+  \simeq\frac12\partial_i g_{00}.
+\]
+But \(g_{00}+1\) is of order \(G\bar M/\bar r\), so the Newtonian
+approximation gives \(\dd^2x^i/\dd t^2\) to order
+\(G\bar M/\bar r^2\), that is, to order \(\bar v^2/\bar r\).
+\emph{Therefore our objective in using the post-Newtonian approximation will
+be to compute \(\dd^2x^i/\dd t^2\) to order \(\bar v^4/\bar r\).}
+Inspection of Eq.~\eqref{eq:9.1.2} shows that we shall need the various
+components of the affine connection to the following orders:
+\begin{equation}
+  \begin{aligned}
+  \Gamma^i{}_{00}&:\quad \bar v^4/\bar r,&
+  \Gamma^i{}_{0j}&:\quad \bar v^3/\bar r,&
+  \Gamma^i{}_{jk}&:\quad \bar v^2/\bar r,\\
+  \Gamma^0{}_{00}&:\quad \bar v^3/\bar r,&
+  \Gamma^0{}_{0j}&:\quad \bar v^2/\bar r,&
+  \Gamma^0{}_{jk}&:\quad \bar v/\bar r.
+  \end{aligned}
+  \tag{9.1.3}\label{eq:9.1.3}
+\end{equation}
+
+From our experience with the Schwarzschild solution, we expect that it
+should be possible to find a coordinate system in which the metric tensor is
+nearly equal to the Minkowski tensor, the corrections being expandable in
+powers of \(G\bar M/\bar r\sim\bar v^2\). In particular, we expect
+\begin{equation}
+  g_{00}=-1+g_{00}^{(2)}+g_{00}^{(4)}+\cdots,
+  \tag{9.1.4}\label{eq:9.1.4}
+\end{equation}
+\begin{equation}
+  g_{ij}=\delta_{ij}+g_{ij}^{(2)}+g_{ij}^{(4)}+\cdots,
+  \tag{9.1.5}\label{eq:9.1.5}
+\end{equation}
+\begin{equation}
+  g_{i0}=g_{i0}^{(3)}+g_{i0}^{(5)}+\cdots,
+  \tag{9.1.6}\label{eq:9.1.6}
+\end{equation}
+where \(g_{\mu\nu}^{(N)}\) denotes the term in \(g_{\mu\nu}\) of order
+\(\bar v^N\). Odd powers occur in \(g_{i0}\), because \(g_{i0}\) must change
+sign under the time-reversal transformation \(t\to-t\). The real
+justification for these expansions will come below, when we show that they
+lead to a consistent solution of the Einstein field equations.
+
+The inverse metric is defined by
+\begin{equation}
+  g^{i\mu}g_{0\mu}=g^{i0}g_{00}+g^{ij}g_{j0}=0,
+  \tag{9.1.7}\label{eq:9.1.7}
+\end{equation}
+\begin{equation}
+  g^{0\mu}g_{0\mu}=g^{00}g_{00}+g^{0i}g_{0i}=1,
+  \tag{9.1.8}\label{eq:9.1.8}
+\end{equation}
+\begin{equation}
+  g^{i\mu}g_{j\mu}=g^{i0}g_{j0}+g^{ik}g_{jk}=\delta^i{}_j.
+  \tag{9.1.9}\label{eq:9.1.9}
+\end{equation}
+We expect that
+\begin{equation}
+  g^{00}=-1+g^{00(2)}+g^{00(4)}+\cdots,
+  \tag{9.1.10}\label{eq:9.1.10}
+\end{equation}
+\begin{equation}
+  g^{ij}=\delta^{ij}+g^{ij(2)}+g^{ij(4)}+\cdots,
+  \tag{9.1.11}\label{eq:9.1.11}
+\end{equation}
+\begin{equation}
+  g^{i0}=g^{i0(3)}+g^{i0(5)}+\cdots.
+  \tag{9.1.12}\label{eq:9.1.12}
+\end{equation}
+Inserting these expansions into Eqs.~\eqref{eq:9.1.7}--\eqref{eq:9.1.9}
+gives, to the first nontrivial orders,
+\begin{equation}
+  g^{00(2)}=-g_{00}^{(2)},\qquad
+  g^{ij(2)}=-g_{ij}^{(2)},\qquad
+  g^{i0(3)}=g_{i0}^{(3)},\quad\text{etc.}
+  \tag{9.1.13}\label{eq:9.1.13}
+\end{equation}
+
+The affine connection is obtained from
+\[
+  \Gamma^\mu{}_{\nu\lambda}
+  =\frac12g^{\mu\rho}
+  \left(
+    \partial_\lambda g_{\rho\nu}
+    +\partial_\nu g_{\rho\lambda}
+    -\partial_\rho g_{\nu\lambda}
+  \right).
+\]
+In computing it we must take account of the fact that the scales of distance
+and time in our systems are set by \(\bar r\) and \(\bar r/\bar v\),
+respectively, so
+\[
+  \partial_i\sim\frac1{\bar r},
+  \qquad
+  \partial_t\sim\frac{\bar v}{\bar r}.
+\]
+Using Eqs.~\eqref{eq:9.1.4}--\eqref{eq:9.1.6} and
+\eqref{eq:9.1.10}--\eqref{eq:9.1.13}, the components
+\(\Gamma^i{}_{00},\Gamma^i{}_{jk},\Gamma^0{}_{0i}\) have expansions
+\begin{equation}
+  \Gamma^\mu{}_{\nu\lambda}
+  =\Gamma^{\mu(2)}{}_{\nu\lambda}
+  +\Gamma^{\mu(4)}{}_{\nu\lambda}+\cdots,
+  \quad
+  (\Gamma^i{}_{00},\Gamma^i{}_{jk},\Gamma^0{}_{0i}),
+  \tag{9.1.14}\label{eq:9.1.14}
+\end{equation}
+while \(\Gamma^i{}_{0j},\Gamma^0{}_{00},\Gamma^0{}_{ij}\) have expansions
+\begin{equation}
+  \Gamma^\mu{}_{\nu\lambda}
+  =\Gamma^{\mu(3)}{}_{\nu\lambda}
+  +\Gamma^{\mu(5)}{}_{\nu\lambda}+\cdots,
+  \quad
+  (\Gamma^i{}_{0j},\Gamma^0{}_{00},\Gamma^0{}_{ij}).
+  \tag{9.1.15}\label{eq:9.1.15}
+\end{equation}
+Here \(\Gamma^{\mu(N)}{}_{\nu\lambda}\) denotes the term of order
+\(\bar v^N/\bar r\). The components required in
+Eq.~\eqref{eq:9.1.3} are explicitly
+\begin{equation}
+  \Gamma^{i(2)}{}_{00}=-\frac12\partial_i g_{00}^{(2)},
+  \tag{9.1.16}\label{eq:9.1.16}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(4)}{}_{00}
+  =-\frac12\partial_i g_{00}^{(4)}
+   +\partial_t g_{i0}^{(3)}
+   +\frac12g_{ij}^{(2)}\partial_j g_{00}^{(2)},
+  \tag{9.1.17}\label{eq:9.1.17}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(3)}{}_{0j}
+  =\frac12\left(
+    \partial_jg_{i0}^{(3)}
+    +\partial_tg_{ij}^{(2)}
+    -\partial_i g_{j0}^{(3)}
+  \right),
+  \tag{9.1.18}\label{eq:9.1.18}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(2)}{}_{jk}
+  =\frac12\left(
+    \partial_k g_{ij}^{(2)}
+    +\partial_j g_{ik}^{(2)}
+    -\partial_i g_{jk}^{(2)}
+  \right),
+  \tag{9.1.19}\label{eq:9.1.19}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(3)}{}_{00}=-\frac12\partial_tg_{00}^{(2)},
+  \tag{9.1.20}\label{eq:9.1.20}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(2)}{}_{0i}=-\frac12\partial_i g_{00}^{(2)},
+  \tag{9.1.21}\label{eq:9.1.21}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(1)}{}_{ij}=0.
+  \tag{9.1.22}\label{eq:9.1.22}
+\end{equation}
+Evidently, we shall have to know \(g_{ij}\) to order \(\bar v^2\),
+\(g_{i0}\) to order \(\bar v^3\), and \(g_{00}\) to order \(\bar v^4\).
+This should be contrasted with the Newtonian approximation, in which we
+needed \(g_{00}\) to order \(\bar v^2\), and \(g_{i0}\) and \(g_{ij}\) only
+to zeroth order.
+
+To calculate the Ricci tensor we use the target convention
+\[
+  R_{\mu\nu}
+  =
+  \partial_\lambda\Gamma^\lambda{}_{\nu\mu}
+  -\partial_\nu\Gamma^\lambda{}_{\lambda\mu}
+  +\Gamma^\lambda{}_{\lambda\rho}\Gamma^\rho{}_{\nu\mu}
+  -\Gamma^\lambda{}_{\nu\rho}\Gamma^\rho{}_{\lambda\mu}.
+\]
+The components have the expansions
+\begin{equation}
+  R_{00}=R_{00}^{(2)}+R_{00}^{(4)}+\cdots,
+  \tag{9.1.23}\label{eq:9.1.23}
+\end{equation}
+\begin{equation}
+  R_{i0}=R_{i0}^{(3)}+R_{i0}^{(5)}+\cdots,
+  \tag{9.1.24}\label{eq:9.1.24}
+\end{equation}
+\begin{equation}
+  R_{ij}=R_{ij}^{(2)}+R_{ij}^{(4)}+\cdots,
+  \tag{9.1.25}\label{eq:9.1.25}
+\end{equation}
+where \(R_{\mu\nu}^{(N)}\) is of order
+\(\bar v^N/\bar r^2\). The terms calculable from the ``known'' pieces of the
+connection are
+\begin{equation}
+  R_{00}^{(2)}=\partial_i\Gamma^{i(2)}{}_{00},
+  \tag{9.1.26}\label{eq:9.1.26}
+\end{equation}
+\begin{equation}
+  R_{00}^{(4)}
+  =
+  -\partial_t\Gamma^{i(3)}{}_{0i}
+  +\partial_i\Gamma^{i(4)}{}_{00}
+  -\Gamma^{0(2)}{}_{0i}\Gamma^{i(2)}{}_{00}
+  +\Gamma^{i(2)}{}_{00}\Gamma^{j(2)}{}_{ij},
+  \tag{9.1.27}\label{eq:9.1.27}
+\end{equation}
+\begin{equation}
+  R_{i0}^{(3)}
+  =
+  -\partial_t\Gamma^{j(2)}{}_{ij}
+  +\partial_j\Gamma^{j(3)}{}_{i0},
+  \tag{9.1.28}\label{eq:9.1.28}
+\end{equation}
+\begin{equation}
+  R_{ij}^{(2)}
+  =
+  -\partial_j\Gamma^{0(2)}{}_{i0}
+  -\partial_j\Gamma^{k(2)}{}_{ik}
+  +\partial_k\Gamma^{k(2)}{}_{ij}.
+  \tag{9.1.29}\label{eq:9.1.29}
+\end{equation}
+Using Eqs.~\eqref{eq:9.1.16}--\eqref{eq:9.1.21}, these become
+\begin{equation}
+  R_{00}^{(2)}=-\frac12\nabla^2 g_{00}^{(2)},
+  \tag{9.1.30}\label{eq:9.1.30}
+\end{equation}
+\begin{equation}
+  \begin{split}
+  R_{00}^{(4)}={}&
+  -\frac12\partial_t^2g_{ii}^{(2)}
+  +\partial_i\partial_tg_{i0}^{(3)}
+  -\frac12\nabla^2g_{00}^{(4)}
+  +\frac12g_{ij}^{(2)}\partial_i\partial_jg_{00}^{(2)}
+  \\
+  &+\frac12(\partial_jg_{ij}^{(2)})(\partial_i g_{00}^{(2)})
+  -\frac14(\partial_i g_{00}^{(2)})(\partial_i g_{00}^{(2)})
+  -\frac14(\partial_i g_{00}^{(2)})(\partial_i g_{jj}^{(2)}),
+  \end{split}
+  \tag{9.1.31}\label{eq:9.1.31}
+\end{equation}
+\begin{equation}
+  R_{i0}^{(3)}
+  =
+  -\frac12\partial_i\partial_tg_{jj}^{(2)}
+  +\frac12\partial_i\partial_jg_{j0}^{(3)}
+  +\frac12\partial_j\partial_tg_{ij}^{(2)}
+  -\frac12\nabla^2g_{i0}^{(3)},
+  \tag{9.1.32}\label{eq:9.1.32}
+\end{equation}
+\begin{equation}
+  \begin{split}
+  R_{ij}^{(2)}={}&
+  \frac12\partial_i\partial_jg_{00}^{(2)}
+  -\frac12\partial_i\partial_jg_{kk}^{(2)}
+  +\frac12\partial_k\partial_jg_{ik}^{(2)}
+  \\
+  &+\frac12\partial_k\partial_i g_{jk}^{(2)}
+  -\frac12\nabla^2g_{ij}^{(2)}.
+  \end{split}
+  \tag{9.1.33}\label{eq:9.1.33}
+\end{equation}
+
+A tremendous simplification can be achieved at this point by choosing a
+suitable coordinate system. We showed in Section~\ref{sec:7.4} that it is
+always possible to define the \(x^\mu\) so that they obey the harmonic
+coordinate conditions
+\begin{equation}
+  g^{\mu\nu}\Gamma^\lambda{}_{\mu\nu}=0.
+  \tag{9.1.34}\label{eq:9.1.34}
+\end{equation}
+The third-order term with \(\lambda=0\) gives
+\begin{equation}
+  0=
+  \frac12\partial_tg_{00}^{(2)}
+  -\partial_i g_{i0}^{(3)}
+  +\frac12\partial_tg_{ii}^{(2)},
+  \tag{9.1.35}\label{eq:9.1.35}
+\end{equation}
+while the second-order term with \(\lambda=i\) gives
+\begin{equation}
+  0=
+  \frac12\partial_i g_{00}^{(2)}
+  +\partial_jg_{ij}^{(2)}
+  -\frac12\partial_i g_{jj}^{(2)}.
+  \tag{9.1.36}\label{eq:9.1.36}
+\end{equation}
+It follows, respectively, that
+\[
+  \frac12\partial_t^2g_{ii}^{(2)}
+  -\partial_i\partial_tg_{i0}^{(3)}
+  +\frac12\partial_t^2g_{00}^{(2)}=0,
+\]
+\[
+  \partial_i\partial_tg_{jj}^{(2)}
+  -\partial_i\partial_jg_{j0}^{(3)}
+  -\partial_j\partial_tg_{ij}^{(2)}=0,
+\]
+\[
+  \partial_k\partial_i g_{ij}^{(2)}
+  +\partial_i\partial_jg_{kj}^{(2)}
+  -\partial_i\partial_k g_{jj}^{(2)}
+  +\partial_i\partial_k g_{00}^{(2)}=0.
+\]
+Equations~\eqref{eq:9.1.30}--\eqref{eq:9.1.33} therefore simplify to
+\begin{equation}
+  R_{00}^{(2)}=-\frac12\nabla^2g_{00}^{(2)},
+  \tag{9.1.37}\label{eq:9.1.37}
+\end{equation}
+\begin{equation}
+  R_{00}^{(4)}
+  =
+  -\frac12\nabla^2g_{00}^{(4)}
+  +\frac12\partial_t^2g_{00}^{(2)}
+  +\frac12g_{ij}^{(2)}\partial_i\partial_jg_{00}^{(2)}
+  -\frac12\bigl(\nabla g_{00}^{(2)}\bigr)^2,
+  \tag{9.1.38}\label{eq:9.1.38}
+\end{equation}
+\begin{equation}
+  R_{0i}^{(3)}=-\frac12\nabla^2g_{i0}^{(3)},
+  \tag{9.1.39}\label{eq:9.1.39}
+\end{equation}
+\begin{equation}
+  R_{ij}^{(2)}=-\frac12\nabla^2g_{ij}^{(2)}.
+  \tag{9.1.40}\label{eq:9.1.40}
+\end{equation}
+
+We are now ready to use the Einstein field equations, in trace-reversed form,
+\begin{equation}
+  R_{\mu\nu}
+  =
+  8\pi G\left(T_{\mu\nu}-\frac12g_{\mu\nu}T^\lambda{}_\lambda\right).
+  \tag{9.1.41}\label{eq:9.1.41}
+\end{equation}
+From their interpretation as energy density, momentum density, and momentum
+flux, we expect
+\begin{equation}
+  T^{00}=T^{00(0)}+T^{00(2)}+\cdots,
+  \tag{9.1.42}\label{eq:9.1.42}
+\end{equation}
+\begin{equation}
+  T^{i0}=T^{i0(1)}+T^{i0(3)}+\cdots,
+  \tag{9.1.43}\label{eq:9.1.43}
+\end{equation}
+\begin{equation}
+  T^{ij}=T^{ij(2)}+T^{ij(4)}+\cdots,
+  \tag{9.1.44}\label{eq:9.1.44}
+\end{equation}
+where \(T^{\mu\nu(N)}\) denotes the term in \(T^{\mu\nu}\) of order
+\((\bar M/\bar r^3)\bar v^N\). In particular, \(T^{00(0)}\) is the
+density of rest mass, while \(T^{00(2)}\) is the nonrelativistic part of
+the energy density. What we need is
+\begin{equation}
+  S_{\mu\nu}\equiv
+  T_{\mu\nu}-\frac12g_{\mu\nu}T^\lambda{}_\lambda.
+  \tag{9.1.45}\label{eq:9.1.45}
+\end{equation}
+Since \(G\bar M/\bar r\) is of order \(\bar v^2\),
+\begin{equation}
+  S_{00}=S_{00}^{(0)}+S_{00}^{(2)}+\cdots,
+  \tag{9.1.46}\label{eq:9.1.46}
+\end{equation}
+\begin{equation}
+  S_{i0}=S_{i0}^{(1)}+S_{i0}^{(3)}+\cdots,
+  \tag{9.1.47}\label{eq:9.1.47}
+\end{equation}
+\begin{equation}
+  S_{ij}=S_{ij}^{(0)}+S_{ij}^{(2)}+\cdots,
+  \tag{9.1.48}\label{eq:9.1.48}
+\end{equation}
+where \(S_{\mu\nu}^{(N)}\) denotes the term of order
+\(\bar M\bar v^N/\bar r^3\). In particular,
+\begin{equation}
+  S_{00}^{(0)}=\frac12T^{00(0)},
+  \tag{9.1.49}\label{eq:9.1.49}
+\end{equation}
+\begin{equation}
+  S_{00}^{(2)}
+  =
+  \frac12\left[
+    T^{00(2)}
+    -2g_{00}^{(2)}T^{00(0)}
+    +T^{ii(2)}
+  \right],
+  \tag{9.1.50}\label{eq:9.1.50}
+\end{equation}
+\begin{equation}
+  S_{i0}^{(1)}=-T^{0i(1)},
+  \tag{9.1.51}\label{eq:9.1.51}
+\end{equation}
+\begin{equation}
+  S_{ij}^{(0)}=\frac12\delta_{ij}T^{00(0)}.
+  \tag{9.1.52}\label{eq:9.1.52}
+\end{equation}
+Using Eqs.~\eqref{eq:9.1.37}--\eqref{eq:9.1.40} and
+\eqref{eq:9.1.46}--\eqref{eq:9.1.52} in Eq.~\eqref{eq:9.1.41}, we find
+that the field equations in harmonic coordinates are indeed consistent with
+our expansions, and give
+\begin{equation}
+  \nabla^2g_{00}^{(2)}=-8\pi G T^{00(0)},
+  \tag{9.1.53}\label{eq:9.1.53}
+\end{equation}
+\begin{equation}
+  \begin{split}
+  \nabla^2g_{00}^{(4)}={}&
+  \partial_t^2g_{00}^{(2)}
+  +g_{ij}^{(2)}\partial_i\partial_jg_{00}^{(2)}
+  -(\partial_i g_{00}^{(2)})(\partial_i g_{00}^{(2)})\\
+  &-8\pi G\left[
+    T^{00(2)}
+    -2g_{00}^{(2)}T^{00(0)}
+    +T^{ii(2)}
+  \right],
+  \end{split}
+  \tag{9.1.54}\label{eq:9.1.54}
+\end{equation}
+\begin{equation}
+  \nabla^2g_{i0}^{(3)}=16\pi G T^{i0(1)},
+  \tag{9.1.55}\label{eq:9.1.55}
+\end{equation}
+\begin{equation}
+  \nabla^2g_{ij}^{(2)}
+  =-8\pi G\delta_{ij}T^{00(0)}.
+  \tag{9.1.56}\label{eq:9.1.56}
+\end{equation}
+Equation~\eqref{eq:9.1.53} gives, as expected,
+\begin{equation}
+  g_{00}^{(2)}=-2\phi,
+  \tag{9.1.57}\label{eq:9.1.57}
+\end{equation}
+where \(\phi\) is the Newtonian potential, defined by Poisson's equation
+\begin{equation}
+  \nabla^2\phi=4\pi G T^{00(0)}.
+  \tag{9.1.58}\label{eq:9.1.58}
+\end{equation}
+Since \(g_{00}^{(2)}\) must vanish at infinity,
+\begin{equation}
+  \phi(\mathbf x,t)
+  =
+  -G\int\frac{T^{00(0)}(\mathbf x',t)}
+  {|\mathbf x-\mathbf x'|}\,\dd^3x'.
+  \tag{9.1.59}\label{eq:9.1.59}
+\end{equation}
+Likewise, Eq.~\eqref{eq:9.1.56} gives
+\begin{equation}
+  g_{ij}^{(2)}=-2\delta_{ij}\phi.
+  \tag{9.1.60}\label{eq:9.1.60}
+\end{equation}
+On the other hand, \(g_{i0}^{(3)}\) is a new vector potential
+\(\boldsymbol\zeta\):
+\begin{equation}
+  g_{i0}^{(3)}=\zeta_i,
+  \tag{9.1.61}\label{eq:9.1.61}
+\end{equation}
+and the solution of Eq.~\eqref{eq:9.1.55} that vanishes at infinity is
+\begin{equation}
+  \zeta_i(\mathbf x,t)
+  =
+  -4G\int\frac{T^{i0(1)}(\mathbf x',t)}
+  {|\mathbf x-\mathbf x'|}\,\dd^3x'.
+  \tag{9.1.62}\label{eq:9.1.62}
+\end{equation}
+
+Finally, Eq.~\eqref{eq:9.1.54} may be simplified using
+Eqs.~\eqref{eq:9.1.57}, \eqref{eq:9.1.58}, and
+\[
+  \partial_i\phi\,\partial_i\phi
+  =\frac12\nabla^2\phi^2-\phi\nabla^2\phi.
+\]
+The result is
+\begin{equation}
+  g_{00}^{(4)}=-2\phi^2-2\psi,
+  \tag{9.1.63}\label{eq:9.1.63}
+\end{equation}
+where \(\psi\) is a second potential satisfying
+\begin{equation}
+  \nabla^2\psi
+  =
+  \partial_t^2\phi
+  +4\pi G\left[T^{00(2)}+T^{ii(2)}\right].
+  \tag{9.1.64}\label{eq:9.1.64}
+\end{equation}
+Again imposing vanishing at infinity gives
+\begin{equation}
+  \psi(\mathbf x,t)
+  =
+  -\int\frac{\dd^3x'}{|\mathbf x-\mathbf x'|}
+  \left[
+    \frac1{4\pi}\partial_t^2\phi(\mathbf x',t)
+    +G T^{00(2)}(\mathbf x',t)
+    +G T^{ii(2)}(\mathbf x',t)
+  \right].
+  \tag{9.1.65}\label{eq:9.1.65}
+\end{equation}
+The coordinate condition \eqref{eq:9.1.35} imposes the further relation
+\begin{equation}
+  4\partial_t\phi+\boldsymbol\nabla\cdot\boldsymbol\zeta=0,
+  \tag{9.1.66}\label{eq:9.1.66}
+\end{equation}
+while Eq.~\eqref{eq:9.1.36} is now automatically satisfied. We shall see
+in Section~\ref{sec:9.3} that Eq.~\eqref{eq:9.1.66} is also satisfied by
+our solutions, by virtue of the conservation conditions obeyed by
+\(T^{\mu\nu}\).
+
+Using Eqs.~\eqref{eq:9.1.57}, \eqref{eq:9.1.60},
+\eqref{eq:9.1.61}, and \eqref{eq:9.1.63} in
+Eqs.~\eqref{eq:9.1.16}--\eqref{eq:9.1.22} gives the desired components
+of the affine connection:
+\begin{equation}
+  \Gamma^{i(2)}{}_{00}=\partial_i\phi,
+  \tag{9.1.67}\label{eq:9.1.67}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(4)}{}_{00}
+  =
+  \partial_i(2\phi^2+\psi)+\partial_t\zeta_i,
+  \tag{9.1.68}\label{eq:9.1.68}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(3)}{}_{0j}
+  =
+  \frac12(\partial_j\zeta_i-\partial_i\zeta_j)
+  -\delta_{ij}\partial_t\phi,
+  \tag{9.1.69}\label{eq:9.1.69}
+\end{equation}
+\begin{equation}
+  \Gamma^{i(2)}{}_{jk}
+  =
+  -\delta_{ij}\partial_k\phi
+  -\delta_{ik}\partial_j\phi
+  +\delta_{jk}\partial_i\phi,
+  \tag{9.1.70}\label{eq:9.1.70}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(3)}{}_{00}=\partial_t\phi,
+  \tag{9.1.71}\label{eq:9.1.71}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(2)}{}_{0i}=\partial_i\phi.
+  \tag{9.1.72}\label{eq:9.1.72}
+\end{equation}
+As a bonus, we can calculate three additional terms that will play a role
+in post-Newtonian hydrodynamics:
+\begin{equation}
+  \Gamma^{0(3)}{}_{ij}
+  =
+  -\frac12(\partial_i\zeta_j+\partial_j\zeta_i)
+  -\delta_{ij}\partial_t\phi,
+  \tag{9.1.73}\label{eq:9.1.73}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(4)}{}_{i0}=\partial_i\psi,
+  \tag{9.1.74}\label{eq:9.1.74}
+\end{equation}
+\begin{equation}
+  \Gamma^{0(5)}{}_{00}
+  =
+  \partial_t\psi+\boldsymbol\zeta\cdot\boldsymbol\nabla\phi.
+  \tag{9.1.75}\label{eq:9.1.75}
+\end{equation}

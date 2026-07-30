@@ -1,0 +1,336 @@
+% Source: Weinberg GR, physical PDF pp. 61--65
+%         (printed pp. 35--39).
+% Coverage: Section 2.5, Vectors and Tensors; equations
+%           (2.5.1)--(2.5.15).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Vectors and Tensors}\label{sec:2.5}
+
+Next we go on to electrodynamics and relativistic hydrodynamics, but it is
+convenient first to pause and outline a notation that makes the Lorentz
+transformation properties of physical quantities transparent. This notation
+will be extended in Chapter~4, on tensor analysis, to encompass general
+coordinate transformations, but in fact few changes will be needed.
+
+We have already introduced the term ``four-vector'' for any quantity such as
+\(dx^\mu\) or \(f^\mu\) or \(p^\mu\) that undergoes the transformation
+\begin{equation}
+  V^\mu\longrightarrow V'^\mu=\Lambda^\mu{}_\nu V^\nu
+  \tag{2.5.1}\label{eq:2.5.1}
+\end{equation}
+when the coordinate system is transformed by
+\begin{equation}
+  x^\mu\longrightarrow x'^\mu=\Lambda^\mu{}_\nu x^\nu .
+  \tag{2.5.2}\label{eq:2.5.2}
+\end{equation}
+More precisely, such a \(V^\mu\) should be called a \emph{contravariant}
+four-vector, to distinguish it from a \emph{covariant} four-vector, defined as
+a quantity \(U_\mu\) whose transformation rule is
+\begin{equation}
+  U_\mu\longrightarrow U'_\mu=\Lambda_\mu{}^\nu U_\nu ,
+  \tag{2.5.3}\label{eq:2.5.3}
+\end{equation}
+where
+\begin{equation}
+  \Lambda_\mu{}^\nu
+  \equiv\eta_{\mu\rho}\eta^{\nu\sigma}\Lambda^\rho{}_\sigma .
+  \tag{2.5.4}\label{eq:2.5.4}
+\end{equation}
+The matrix \(\eta^{\nu\sigma}\) introduced here is numerically the same as
+\(\eta_{\nu\sigma}\), that is,
+\begin{equation}
+  \eta^{\mu\nu}=\eta_{\mu\nu},
+  \tag{2.5.5}\label{eq:2.5.5}
+\end{equation}
+but we write it with indices upstairs to conform with our summation convention.
+Note that
+\begin{equation}
+  \eta^{\mu\rho}\eta_{\rho\nu}
+  =\delta^\mu{}_\nu
+  =\begin{cases}
+      1,&\mu=\nu,\\
+      0,&\mu\ne\nu,
+    \end{cases}
+  \tag{2.5.6}\label{eq:2.5.6}
+\end{equation}
+so \(\Lambda_\mu{}^\nu\) is the inverse of the matrix
+\(\Lambda^\mu{}_\nu\); that is,
+\begin{equation}
+  \Lambda_\mu{}^\rho\Lambda^\mu{}_\nu=\delta^\rho{}_\nu,
+  \qquad
+  \Lambda^\mu{}_\rho\Lambda_\nu{}^\rho=\delta^\mu{}_\nu .
+  \tag{2.5.7}\label{eq:2.5.7}
+\end{equation}
+It follows that the scalar product of a contravariant with a covariant
+four-vector is invariant; that is,
+\begin{equation}
+  U'_\mu V'^\mu
+  =\Lambda_\mu{}^\rho\Lambda^\mu{}_\sigma U_\rho V^\sigma
+  =U_\rho V^\rho .
+  \tag{2.5.8}\label{eq:2.5.8}
+\end{equation}
+To every contravariant four-vector \(V^\mu\) there corresponds a covariant
+four-vector
+\begin{equation}
+  V_\mu=\eta_{\mu\nu}V^\nu ,
+  \tag{2.5.9}\label{eq:2.5.9}
+\end{equation}
+and to every covariant \(U_\mu\) there corresponds a contravariant
+\begin{equation}
+  U^\mu=\eta^{\mu\nu}U_\nu .
+  \tag{2.5.10}\label{eq:2.5.10}
+\end{equation}
+Note that raising the index on \(V_\mu\) simply gives back \(V^\mu\), and
+lowering the index on \(U^\mu\) simply gives back \(U_\mu\):
+\[
+  \eta^{\mu\nu}V_\nu
+  =\eta^{\mu\nu}\eta_{\nu\rho}V^\rho=V^\mu,
+  \qquad
+  \eta_{\mu\nu}U^\nu
+  =\eta_{\mu\nu}\eta^{\nu\rho}U_\rho=U_\mu .
+\]
+Note also that Eq.~\eqref{eq:2.5.9} does yield a covariant, because
+\[
+\begin{aligned}
+  V'_\mu
+  &=\eta_{\mu\nu}V'^\nu
+   =\eta_{\mu\nu}\Lambda^\nu{}_\rho V^\rho\\
+  &=\eta_{\mu\nu}\eta^{\rho\sigma}\Lambda^\nu{}_\sigma V_\rho
+   =\Lambda_\mu{}^\rho V_\rho ,
+\end{aligned}
+\]
+in agreement with Eq.~\eqref{eq:2.5.3}. Similarly,
+Eq.~\eqref{eq:2.5.10} does yield a contravariant.
+
+Although any vector can be written in a contravariant or a covariant form,
+there are some vectors, such as \(dx^\mu\), that appear more naturally
+contravariant and others that appear more naturally covariant. An example of
+the latter is the gradient \(\partial_\mu\), which obeys the transformation rule
+\[
+  \partial_\mu
+  \longrightarrow
+  \partial'_\mu
+  =\frac{\partial x^\nu}{\partial x'^\mu}
+   \partial_\nu.
+\]
+Multiplying Eq.~\eqref{eq:2.5.2} by \(\Lambda_\mu{}^\rho\) gives
+\[
+  x^\rho=\Lambda_\mu{}^\rho x'^\mu ,
+\]
+so
+\[
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  =\Lambda_\mu{}^\rho ,
+\]
+and therefore the gradient is covariant:
+\begin{equation}
+  \partial'_\mu=\Lambda_\mu{}^\nu\partial_\nu .
+  \tag{2.5.11}\label{eq:2.5.11}
+\end{equation}
+One consequence is that the divergence of a contravariant vector
+\(\partial_\mu V^\mu\) is invariant. Another is that the scalar product of
+\(\partial_\mu\) with itself, the d'Alembertian operator
+\begin{equation}
+  \Box\equiv\eta^{\mu\nu}\partial_\mu\partial_\nu
+  =\nabla^2-\frac{\partial^2}{\partial t^2},
+  \tag{2.5.12}\label{eq:2.5.12}
+\end{equation}
+is also invariant.
+
+Many physical quantities are not scalars or vectors, but more complicated
+objects called \emph{tensors}. A tensor has several contravariant and/or
+covariant indices with corresponding Lorentz transformation properties, for
+example,
+\[
+  T^\mu{}_{\nu\rho}\longrightarrow
+  T'^\mu{}_{\nu\rho}
+  =\Lambda^\mu{}_\sigma\Lambda_\nu{}^\lambda
+   \Lambda_\rho{}^\kappa T^\sigma{}_{\lambda\kappa}.
+\]
+A contravariant or covariant vector can be regarded as a tensor with one index,
+and a scalar is a tensor with no indices. There are several ways of forming
+tensors out of other tensors:
+
+\noindent(A) \emph{Linear Combinations.} A linear combination of tensors with
+the same upper and lower indices is a tensor with these indices. For instance,
+if \(R^\mu{}_\nu\) and \(S^\mu{}_\nu\) are tensors, and \(a\) and \(b\) are
+scalars, and we define
+\[
+  T^\mu{}_\nu=aR^\mu{}_\nu+bS^\mu{}_\nu ,
+\]
+then \(T^\mu{}_\nu\) is a tensor; that is,
+\[
+\begin{aligned}
+  T'^\mu{}_\nu
+  &=aR'^\mu{}_\nu+bS'^\mu{}_\nu\\
+  &=a\Lambda^\mu{}_\rho\Lambda_\nu{}^\sigma R^\rho{}_\sigma
+   +b\Lambda^\mu{}_\rho\Lambda_\nu{}^\sigma S^\rho{}_\sigma\\
+  &=\Lambda^\mu{}_\rho\Lambda_\nu{}^\sigma T^\rho{}_\sigma .
+\end{aligned}
+\]
+
+\noindent(B) \emph{Direct Products.} The product of the components of two
+tensors yields a tensor whose upper and lower indices consist of all the upper
+and lower indices of the two original tensors. For instance, if
+\(A^\mu{}_\nu\) and \(B^\rho\) are tensors, and
+\[
+  T^{\mu\rho}{}_\nu=A^\mu{}_\nu B^\rho ,
+\]
+then \(T^{\mu\rho}{}_\nu\) is a tensor; that is,
+\[
+\begin{aligned}
+  T'^{\mu\rho}{}_\nu
+  &=A'^\mu{}_\nu B'^\rho\\
+  &=\Lambda^\mu{}_\sigma\Lambda^\rho{}_\lambda
+    \Lambda_\nu{}^\kappa T^{\sigma\lambda}{}_\kappa .
+\end{aligned}
+\]
+
+\noindent(C) \emph{Contraction.} Setting an upper and lower index equal and
+summing it over its values \(0,1,2,3\) yields a tensor with these two indices
+absent. For instance, if \(T^{\mu\rho}{}_{\nu\sigma}\) is a tensor and
+\[
+  T^\rho{}_\sigma=T^{\mu\rho}{}_{\mu\sigma},
+\]
+then \(T^\rho{}_\sigma\) is a tensor; that is,
+\[
+\begin{aligned}
+  T'^\rho{}_\sigma
+  &=T'^{\mu\rho}{}_{\mu\sigma}\\
+  &=\Lambda^\mu{}_\alpha\Lambda^\rho{}_\beta
+    \Lambda_\mu{}^\gamma\Lambda_\sigma{}^\delta
+    T^{\alpha\beta}{}_{\gamma\delta}\\
+  &=\delta^\gamma{}_\alpha\Lambda^\rho{}_\beta
+    \Lambda_\sigma{}^\delta T^{\alpha\beta}{}_{\gamma\delta}\\
+  &=\Lambda^\rho{}_\beta\Lambda_\sigma{}^\delta
+    T^\beta{}_\delta .
+\end{aligned}
+\]
+
+\noindent(D) \emph{Differentiation.} The derivative \(\partial_\lambda\) of
+any tensor is a tensor with one additional lower index \(\lambda\). For
+instance, if \(T^{\mu\rho}{}_{\nu\sigma}\) is a tensor and
+\[
+  T^{\mu\rho}{}_{\nu\sigma\lambda}
+  =\partial_\lambda T^{\mu\rho}{}_{\nu\sigma},
+\]
+then \(T^{\mu\rho}{}_{\nu\sigma\lambda}\) is a tensor; that is,
+\[
+\begin{aligned}
+  T'^{\mu\rho}{}_{\nu\sigma\lambda}
+  &=\partial'_\lambda T'^{\mu\rho}{}_{\nu\sigma}\\
+  &=\Lambda_\lambda{}^\kappa\partial_\kappa
+    \left(
+      \Lambda^\mu{}_\alpha\Lambda^\rho{}_\beta
+      \Lambda_\nu{}^\gamma\Lambda_\sigma{}^\delta
+      T^{\alpha\beta}{}_{\gamma\delta}
+    \right)\\
+  &=\Lambda^\mu{}_\alpha\Lambda^\rho{}_\beta
+    \Lambda_\nu{}^\gamma\Lambda_\sigma{}^\delta
+    \Lambda_\lambda{}^\kappa
+    T^{\alpha\beta}{}_{\gamma\delta\kappa}.
+\end{aligned}
+\]
+Note that the order of indices matters, even as between upper and lower
+indices. For instance, \(T^\mu{}_\nu{}^\rho\) may or may not be the same as
+\(T^{\mu\rho}{}_\nu\).
+
+Aside from the scalars, there are three special tensors whose components are
+the same in all coordinate systems:
+
+\noindent(i) \emph{The Minkowski Tensor.} The definition of Lorentz
+transformations tells us immediately that \(\eta_{\mu\nu}\) is a covariant
+tensor:
+\[
+  \eta_{\mu\nu}
+  =\Lambda_\mu{}^\rho\Lambda_\nu{}^\sigma\eta_{\rho\sigma}.
+\]
+Multiplying this equation by \(\eta^{\mu\alpha}\eta^{\nu\beta}\) and using
+Eqs.~\eqref{eq:2.5.6} and \eqref{eq:2.5.4}, we find that
+\[
+  \eta^{\alpha\beta}
+  =\Lambda^\alpha{}_\rho\Lambda^\beta{}_\sigma\eta^{\rho\sigma},
+\]
+so \(\eta^{\mu\nu}\) is a contravariant tensor. (Recall that
+\(\eta_{\mu\nu}\) and \(\eta^{\mu\nu}\) are numerically the same matrix, so
+this is a matrix that is both covariant and contravariant.) We can form a mixed
+tensor by lowering one index on \(\eta^{\mu\nu}\), or raising one index on
+\(\eta_{\mu\nu}\); this gives the Kronecker symbol
+\[
+  \delta^\mu{}_\nu=\eta^{\mu\rho}\eta_{\rho\nu}.
+\]
+That this is a tensor follows from rules (B) and (C) and the fact that
+\(\eta^{\mu\nu}\) and \(\eta_{\mu\nu}\) are tensors.
+
+\noindent(ii) \emph{The Levi-Civita Tensor.} This is a quantity
+\(\varepsilon^{\mu\nu\rho\sigma}\) defined by
+\begin{equation}
+  \varepsilon^{\mu\nu\rho\sigma}=
+  \begin{cases}
+    +1,&\mu\nu\rho\sigma\text{ an even permutation of }0123,\\
+    -1,&\mu\nu\rho\sigma\text{ an odd permutation of }0123,\\
+    0,&\text{otherwise}.
+  \end{cases}
+  \tag{2.5.13}\label{eq:2.5.13}
+\end{equation}
+Note that
+\[
+  \Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta
+  \Lambda^\rho{}_\gamma\Lambda^\sigma{}_\delta
+  \varepsilon^{\alpha\beta\gamma\delta}
+\]
+must be proportional to \(\varepsilon^{\mu\nu\rho\sigma}\), because the
+left-hand side is odd under any single permutation of the indices
+\(\mu,\nu,\rho,\sigma\). To find the constant of proportionality, set
+\(\mu\nu\rho\sigma=0123\). The left-hand side is then simply the determinant
+of \(\Lambda\), which for proper Lorentz transformations is unity (see
+Section~\ref{sec:2.1}). Thus the constant of proportionality is unity; that is,
+\begin{equation}
+  \Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta
+  \Lambda^\rho{}_\gamma\Lambda^\sigma{}_\delta
+  \varepsilon^{\alpha\beta\gamma\delta}
+  =\varepsilon^{\mu\nu\rho\sigma},
+  \tag{2.5.14}\label{eq:2.5.14}
+\end{equation}
+and therefore \(\varepsilon^{\mu\nu\rho\sigma}\) is a tensor under proper
+Lorentz transformations. Under an improper transformation it has the usual
+pseudotensor sign.
+
+\noindent(iii) \emph{The Zero Tensor.} We can define a tensor with an
+arbitrary pattern of upper and lower indices by setting all its components
+equal to zero.
+
+Since \(\eta^{\mu\nu}\) and \(\eta_{\mu\nu}\) are tensors, we can use them to
+raise or lower indices on an arbitrary tensor; rules (B) and (C) tell us that
+this gives a new tensor with one more upper or lower index and one less lower or
+upper index. For instance, if \(T_{\mu\nu\rho}\) is a tensor, then so is
+\[
+  T_\mu{}^\nu{}_\rho=\eta^{\nu\sigma}T_{\mu\sigma\rho}.
+\]
+In particular, we can lower some or all of the indices on the Levi-Civita
+tensor \(\varepsilon^{\mu\nu\rho\sigma}\). Lowering all the indices gives back
+the same numerical quantity except for a minus sign:
+\begin{equation}
+  \varepsilon_{\mu\nu\rho\sigma}=-\varepsilon^{\mu\nu\rho\sigma}.
+  \tag{2.5.15}\label{eq:2.5.15}
+\end{equation}
+
+The point of all this algebra is that it enables us to tell at a glance that an
+equation is Lorentz-invariant. The fundamental theorem is that \emph{if two
+tensors, with the same upper and lower indices, are equal in one coordinate
+system, then they are equal in any other coordinate system related to the first
+by a Lorentz transformation}. For instance, if
+\(T^\mu{}_\nu=S^\mu{}_\nu\), then
+\[
+  T'^\mu{}_\nu
+  =\Lambda^\mu{}_\rho\Lambda_\nu{}^\sigma T^\rho{}_\sigma
+  =\Lambda^\mu{}_\rho\Lambda_\nu{}^\sigma S^\rho{}_\sigma
+  =S'^\mu{}_\nu .
+\]
+In particular, the statement that a tensor vanishes is Lorentz-invariant.
+
+The formalism outlined in this section is nothing but a description of the
+representations of the homogeneous Lorentz group. We shall explore these
+representations in greater generality in Section~\ref{sec:2.12}.

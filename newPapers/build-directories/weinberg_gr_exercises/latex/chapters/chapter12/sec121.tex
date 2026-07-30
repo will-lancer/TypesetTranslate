@@ -1,0 +1,209 @@
+% Source: Weinberg GR, physical PDF pp. 379--381
+%         (printed pp. 358--360).
+% Coverage: Section 12.1, The Matter Action: An Example; equations
+%           (12.1.1)--(12.1.6).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: time-first determinant factors, D/Dtau in (12.1.1), and
+%                normalized antisymmetrization in (12.1.4) are documented
+%                below and source-checked.
+%
+% MODERNIZATION CHECK: The source lists its three spatial coordinates before
+% time; here all spacetime indices are time-first and the invariant measure is
+% sqrt(-g).
+% Weinberg's I_M notation and the charge-coupling sign are retained.
+% Equation (12.1.1) uses the requested D/Dtau notation while displaying its
+% expanded connection form once. Equation (12.1.4) uses normalized
+% antisymmetrization.
+% LITERAL-OPERATOR AUDIT: every leading + or - in the three unnumbered
+% multiline variations was checked against physical PDF pp. 380--381.
+
+\subsection{The Matter Action: An Example}\label{sec:12.1}
+
+We shall begin by displaying one example of a physical system whose equations
+of motion can be derived from a principle of stationary action. The system is
+a collisionless plasma, consisting of particles \(n\) of mass \(m_n\) and
+charge \(e_n\), together with the electromagnetic field \(F_{\mu\nu}(x)\)
+they produce. Writing
+\[
+  u_n^\mu\equiv\frac{\dd x_n^\mu}{\dd\tau_n},
+  \qquad
+  \frac{D V^\mu}{D\tau_n}\equiv u_n^\nu\nabla_\nu V^\mu,
+\]
+the equations of motion in an arbitrary external gravitational field
+\(g_{\mu\nu}\) are
+\begin{equation}
+  \frac{D u_n^\mu}{D\tau_n}
+  \equiv
+  \frac{\dd^2x_n^\mu}{\dd\tau_n^2}
+  +\Gamma^\mu{}_{\nu\lambda}(x_n)
+   \frac{\dd x_n^\nu}{\dd\tau_n}
+   \frac{\dd x_n^\lambda}{\dd\tau_n}
+  =
+  \frac{e_n}{m_n}F^\mu{}_\nu(x_n)
+  \frac{\dd x_n^\nu}{\dd\tau_n},
+  \tag{12.1.1}\label{eq:12.1.1}
+\end{equation}
+\begin{equation}
+  \dd\tau_n
+  =
+  \left(-g_{\mu\nu}\,\dd x_n^\mu\dd x_n^\nu\right)^{1/2},
+  \tag{12.1.2}\label{eq:12.1.2}
+\end{equation}
+\begin{equation}
+  \partial_\mu\!\left[\sqrt{-g(x)}\,F^{\mu\nu}(x)\right]
+  =
+  -\sum_n e_n
+   \int
+   \delta^4(x-x_n)
+   \frac{\dd x_n^\nu}{\dd\tau_n}\,\dd\tau_n,
+  \tag{12.1.3}\label{eq:12.1.3}
+\end{equation}
+\begin{equation}
+  \partial_{[\lambda}F_{\mu\nu]}=0.
+  \tag{12.1.4}\label{eq:12.1.4}
+\end{equation}
+[See Eqs.~\eqref{eq:5.2.9}, \eqref{eq:5.1.11}, \eqref{eq:5.2.6},
+\eqref{eq:5.2.13}, and \eqref{eq:5.2.7}.] In order to satisfy
+Eq.~\eqref{eq:12.1.4}, we introduce a vector potential \(A_\mu(x)\):
+\begin{equation}
+  F_{\mu\nu}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu.
+  \tag{12.1.5}\label{eq:12.1.5}
+\end{equation}
+The independent dynamical variables may then be taken as \(A_\mu(x)\) and
+\(x_n^\nu(p)\), where \(p\) is some quantity that simultaneously
+parameterizes all the space-time trajectories of the various particles.
+
+We tentatively take the action for this system as
+\begin{equation}
+  \begin{aligned}
+  I_M={}&
+  -\sum_n m_n\int_{-\infty}^{\infty}\dd p\,
+   \left[
+     -g_{\mu\nu}(x_n(p))
+      \frac{\dd x_n^\mu(p)}{\dd p}
+      \frac{\dd x_n^\nu(p)}{\dd p}
+   \right]^{1/2}
+  \\
+  &-\frac14\int\dd^4x\,\sqrt{-g(x)}\,
+    F_{\mu\nu}(x)F^{\mu\nu}(x)
+  \\
+  &+\sum_n e_n\int_{-\infty}^{\infty}\dd p\,
+    \frac{\dd x_n^\mu(p)}{\dd p}A_\mu(x_n(p)).
+  \end{aligned}
+  \tag{12.1.6}\label{eq:12.1.6}
+\end{equation}
+(The subscript \(M\) is to remind us that this is the action only for matter
+and radiation, with \(g_{\mu\nu}(x)\) taken as a prescribed external
+gravitational field.) It is understood here that \(F_{\mu\nu}\) is given by
+Eq.~\eqref{eq:12.1.5}, and the indices on \(F^{\mu\nu}\) are raised with the
+contravariant metric tensor as usual.
+
+The principle of stationary action says that the action \(I_M\) will not be
+changed by an infinitesimal variation in the dynamical variables
+\[
+  x_n^\mu(p)\longrightarrow x_n^\mu(p)+\delta x_n^\mu(p),
+  \qquad
+  A_\mu(x)\longrightarrow A_\mu(x)+\delta A_\mu(x),
+\]
+where
+\[
+  \delta x_n^\mu(p)\longrightarrow0
+  \quad\text{for}\quad |p|\longrightarrow\infty,
+  \qquad
+  \delta A_\mu(x)\longrightarrow0
+  \quad\text{for}\quad |x^\lambda|\longrightarrow\infty,
+\]
+if and only if \(x_n^\mu(p)\) and \(A_\mu(x)\) obey the dynamical equations
+\eqref{eq:12.1.1}--\eqref{eq:12.1.3}. To check that this is correct, let us
+compute the change in \(I_M\) produced by this variation, without yet assuming
+that Eqs.~\eqref{eq:12.1.1}--\eqref{eq:12.1.3} are satisfied. We find that
+\[
+\begin{aligned}
+\delta I_M={}&
+\frac12\sum_n m_n\int_{-\infty}^{\infty}\dd p\,
+\left[
+  -g_{\mu\nu}(x_n)
+   \frac{\dd x_n^\mu}{\dd p}
+   \frac{\dd x_n^\nu}{\dd p}
+\right]^{-1/2}
+\\[-2pt]
+&\quad\times
+\left\{
+  2g_{\mu\nu}(x_n)
+   \frac{\dd x_n^\mu}{\dd p}
+   \frac{\dd\,\delta x_n^\nu}{\dd p}
+  +\left.\partial_\lambda g_{\mu\nu}\right|_{x_n}
+   \frac{\dd x_n^\mu}{\dd p}
+   \frac{\dd x_n^\nu}{\dd p}\,
+   \delta x_n^\lambda
+\right\}
+\\
+&-\int\dd^4x\,\sqrt{-g(x)}\,F^{\mu\nu}(x)
+  \partial_\mu\delta A_\nu(x)
+\\
+&+\sum_n e_n\int_{-\infty}^{\infty}\dd p\,
+\left\{
+  \frac{\dd\,\delta x_n^\mu}{\dd p}A_\mu(x_n)
+  +\frac{\dd x_n^\mu}{\dd p}
+   \partial_\lambda A_\mu(x_n)\,\delta x_n^\lambda
+  +\frac{\dd x_n^\mu}{\dd p}\delta A_\mu(x_n)
+\right\}.
+\end{aligned}
+\]
+It is convenient at this point to change variables of integration from \(p\)
+to the \(\tau_n\) defined by Eq.~\eqref{eq:12.1.2}. This gives
+\[
+\begin{aligned}
+\delta I_M={}&
+\frac12\sum_n m_n\int_{-\infty}^{\infty}\dd\tau_n
+\left\{
+  2g_{\mu\lambda}(x_n)
+   \frac{\dd x_n^\mu}{\dd\tau_n}
+   \frac{\dd\,\delta x_n^\lambda}{\dd\tau_n}
+  +\partial_\lambda g_{\mu\nu}(x_n)
+   \frac{\dd x_n^\mu}{\dd\tau_n}
+   \frac{\dd x_n^\nu}{\dd\tau_n}\,
+   \delta x_n^\lambda
+\right\}
+\\
+&-\int\dd^4x\,\sqrt{-g(x)}\,F^{\mu\nu}(x)
+  \partial_\mu\delta A_\nu(x)
+\\
+&+\sum_n e_n\int_{-\infty}^{\infty}\dd\tau_n
+\left\{
+  \frac{\dd\,\delta x_n^\mu}{\dd\tau_n}A_\mu(x_n)
+  +\frac{\dd x_n^\mu}{\dd\tau_n}
+   \partial_\lambda A_\mu(x_n)\,\delta x_n^\lambda
+  +\frac{\dd x_n^\mu}{\dd\tau_n}\delta A_\mu(x_n)
+\right\}.
+\end{aligned}
+\]
+The condition that \(\delta x_n^\mu(\tau_n)\) and \(\delta A_\mu(x)\)
+vanish on the boundaries of the region of integration allows us to integrate
+by parts, and we obtain
+\[
+\begin{aligned}
+\delta I_M={}&
+\sum_n\int_{-\infty}^{\infty}\dd\tau_n\,
+g_{\mu\lambda}(x_n)
+\left\{
+  -m_n\frac{D u_n^\mu}{D\tau_n}
+  +e_n F^\mu{}_\rho(x_n)u_n^\rho
+\right\}\delta x_n^\lambda
+\\
+&+\int\dd^4x
+\left\{
+  \partial_\mu\!\left[\sqrt{-g(x)}F^{\mu\nu}(x)\right]
+  +\sum_n e_n\int_{-\infty}^{\infty}\dd\tau_n\,
+    \delta^4(x-x_n)u_n^\nu
+\right\}\delta A_\nu(x).
+\end{aligned}
+\]
+Evidently \(\delta I_M\) vanishes for general variations
+\(\delta x_n^\lambda\) and \(\delta A_\nu\) if and only if
+\(x_n^\lambda\) and \(A_\nu\) obey the dynamical equations
+\eqref{eq:12.1.1} and \eqref{eq:12.1.3}, and we therefore conclude that
+Eq.~\eqref{eq:12.1.6} does qualify as a suitable action for this system.

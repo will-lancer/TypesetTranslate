@@ -1,0 +1,181 @@
+% Source: Weinberg GR, physical PDF pp. 136--138 (printed pp. 111--113).
+% Coverage: Section 4.10, The Electromagnetic Analogy; equations
+%           (4.10.1)--(4.10.5).
+% Figures/tables/footnotes: optional-reading source note; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: Eq. (4.10.5) prints +m^2 despite the preceding -m^2;
+%                the divergence derivation drops an overall -ie. Both are
+%                preserved and flagged below.
+
+\subsection{The Electromagnetic Analogy\optionalreading}\label{sec:4.10}
+
+\begin{quote}
+\small\itshape
+This section lies somewhat out of the book's main line of development, and
+may be omitted in a first reading.
+\end{quote}
+
+I emphasized in Section~\ref{sec:4.1} of this chapter that general covariance
+is not an ordinary symmetry principle like Lorentz invariance, but is rather
+a dynamical principle that governs the effect of gravitational fields. As
+such, it bears a strong resemblance to another ``dynamic symmetry,'' local
+gauge invariance, which governs the effects of electromagnetic fields. Local
+gauge invariance says that the differential equations satisfied by a set of
+charged fields \(\psi(x)\) and the electromagnetic potential \(A_\mu(x)\)
+retain the same form when these fields are subjected to the
+transformations~\hyperref[ch4-ref-6]{[6]}
+\begin{equation}
+  \psi(x)
+  \longrightarrow
+  \psi(x)e^{\ii e\phi(x)}
+  \tag{4.10.1}\label{eq:4.10.1}
+\end{equation}
+and
+\begin{equation}
+  A_\mu(x)
+  \longrightarrow
+  A_\mu(x)+\partial_\mu\phi(x),
+  \tag{4.10.2}\label{eq:4.10.2}
+\end{equation}
+where \(e\) is the charge of the particle represented by \(\psi\), and
+\(\phi(x)\) is an arbitrary function of the spacetime coordinates \(x^\mu\).
+How are we to construct gauge-invariant equations? Note that derivatives of
+a charged field \(\psi\) do not behave under gauge transformations like
+\(\psi\), but rather
+\begin{align*}
+  \partial_\mu\psi(x)
+  &\longrightarrow
+  \partial_\mu\!\left[\psi(x)e^{\ii e\phi(x)}\right]
+  \\
+  &=
+  e^{\ii e\phi(x)}
+  \left[
+    \partial_\mu\psi(x)
+    +\ii e\psi(x)\partial_\mu\phi(x)
+  \right],
+\end{align*}
+just as derivatives of tensors do not behave like tensors under general
+coordinate transformations. It follows that an equation such as
+\[
+  (\Box-m^2)\psi(x)=0,
+  \qquad
+  \Box\equiv\eta^{\mu\nu}\partial_\mu\partial_\nu,
+  \qquad
+  \eta_{\mu\nu}=\diag(-1,+1,+1,+1),
+\]
+is not gauge invariant, just as it is not generally covariant. Also note
+that the electromagnetic potential \(A_\mu(x)\) obeys an inhomogeneous
+gauge-transformation law, just as the affine connection obeys the
+inhomogeneous transformation law \eqref{eq:4.5.2} for general coordinate
+transformations. In tensor analysis we put together derivatives of tensors
+and the affine connection to form ``covariant derivatives'' that transform
+like tensors. In electrodynamics we put together derivatives of fields and
+the vector potential to form ``gauge-covariant derivatives''
+\begin{equation}
+  \mathcal D_\mu\psi(x)
+  \equiv
+  \left[\partial_\mu-\ii eA_\mu(x)\right]\psi(x),
+  \tag{4.10.3}\label{eq:4.10.3}
+\end{equation}
+that transform like the fields themselves,
+\begin{equation}
+  \mathcal D_\mu\psi(x)
+  \longrightarrow
+  \left[\mathcal D_\mu\psi(x)\right]e^{\ii e\phi(x)}.
+  \tag{4.10.4}\label{eq:4.10.4}
+\end{equation}
+
+An equation that is invariant under gauge transformations with \(\phi\)
+constant (such invariance is simply tantamount to charge conservation) will
+be invariant under the general gauge transformations
+\eqref{eq:4.10.1}--\eqref{eq:4.10.2}, provided that it is constructed only
+out of fields \(\psi(x)\) and their gauge-covariant derivatives
+\(\mathcal D_\mu\psi(x)\), just as an equation that is invariant under
+Lorentz transformations will be invariant under general coordinate
+transformations provided that it is constructed out of tensors and their
+covariant derivatives. For instance, we can write a gauge-invariant equation
+that might represent the effect of electromagnetism on a charged scalar
+field \(\psi(x)\) as
+% VERIFY SOURCE: The scan prints +m^2 in Eq. (4.10.5), although the
+% immediately preceding free-field equation is (\Box-m^2)\psi=0.
+% MODERNIZATION CHECK: Reordering time first and adopting (-+++) leaves
+% \Box=\eta^{\mu\nu}\partial_\mu\partial_\nu unchanged as an operator, so
+% signature conversion does not resolve this discrepancy. The printed
+% +m^2 is therefore preserved rather than silently repaired.
+\begin{equation}
+  \left[\mathcal D^\mu\mathcal D_\mu+m^2\right]\psi(x)=0,
+  \tag{4.10.5}\label{eq:4.10.5}
+\end{equation}
+or, in more detail,
+\[
+  \left(
+    \Box
+    -2\ii eA^\mu\partial_\mu
+    -\ii e\,\partial_\mu A^\mu
+    -e^2A^\mu A_\mu
+    +m^2
+  \right)\psi(x)=0.
+\]
+
+One important property of such theories is that they admit the construction
+of a conserved gauge-invariant current; in this example we can define
+\[
+  J_\mu(x)
+  \equiv
+  -\ii e
+  \left\{
+    \psi^\dagger(x)\mathcal D_\mu\psi(x)
+    -\psi(x)\left[\mathcal D_\mu\psi(x)\right]^\dagger
+  \right\}.
+\]
+(A dagger denotes complex conjugation, or in quantum theories the Hermitian
+adjoint.) That this is gauge invariant is obvious; to see that it is
+conserved, we write
+\begin{align*}
+  \partial_\mu J^\mu(x)
+  =-\ii e\Bigl\{&
+    \bigl[\partial_\mu\psi^\dagger(x)\bigr]
+    \bigl[\partial^\mu\psi(x)-\ii eA^\mu(x)\psi(x)\bigr]
+    \\
+    &-
+    \bigl[\partial_\mu\psi(x)\bigr]
+    \bigl[\partial^\mu\psi^\dagger(x)+\ii eA^\mu(x)\psi^\dagger(x)\bigr]
+    \\
+    &+
+    \psi^\dagger(x)
+    \bigl[\mathcal D^\mu+\ii eA^\mu(x)\bigr]
+    \mathcal D_\mu\psi(x)
+    \\
+    &-
+    \psi(x)
+    \left[
+      \bigl(\mathcal D^\mu+\ii eA^\mu(x)\bigr)
+      \mathcal D_\mu\psi(x)
+    \right]^\dagger
+  \Bigr\}
+  \\
+  % VERIFY SOURCE: The scan drops the overall -ie prefactor on this line.
+  % MODERNIZATION CHECK: The printed equality is preserved. Restoring -ie
+  % would make the intermediate identity algebraically consistent but would
+  % not change the ensuing conservation statement.
+  &=
+  \psi^\dagger(x)\mathcal D^\mu\mathcal D_\mu\psi(x)
+  -
+  \psi(x)
+  \left[\mathcal D^\mu\mathcal D_\mu\psi(x)\right]^\dagger.
+\end{align*}
+Using Eq.~\eqref{eq:4.10.5}, this gives
+\[
+  \partial_\mu J^\mu(x)=0.
+\]
+
+We can thus use this current in the right-hand side of Maxwell's equations
+\eqref{eq:2.7.6}, and these equations will then be gauge invariant also. We
+see in Chapter~7 that the field equations for gravitation are constructed in
+an analogous manner.
+
+The analogy between the gauge invariance of electrodynamics and the general
+covariance of general relativity can be extended to a similar dynamic
+symmetry, called chirality,~\hyperref[ch4-ref-3]{[3]} that governs the
+interactions of pi-mesons. A proper explanation of this point would fill
+another book.

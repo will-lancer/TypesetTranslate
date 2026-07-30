@@ -1,0 +1,148 @@
+% Source: Weinberg GR, physical PDF pp. 133--135 (printed pp. 108--110).
+% Coverage: Section 4.8, Vector Analysis in Orthogonal Coordinates;
+%           equations (4.8.1)--(4.8.12).
+% Figures/tables/footnotes: optional-reading source note; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Vector Analysis in Orthogonal Coordinates\optionalreading}
+\label{sec:4.8}
+
+\begin{quote}
+\small\itshape
+This section lies somewhat out of the book's main line of development, and
+may be omitted in a first reading.
+\end{quote}
+
+The reader may be wondering what the tensor-analysis formalism outlined in
+this chapter has to do with the familiar formulas for gradient, curl, and
+divergence in the classical curvilinear coordinate systems. These are
+three-dimensional coordinate systems characterized by the condition that
+\(g_{ij}\) is diagonal; that is,
+\begin{equation}
+  g_{ij}=h_i^2\delta_{ij},
+  \qquad (i,j=1,2,3),
+  \tag{4.8.1}\label{eq:4.8.1}
+\end{equation}
+where \(h_i\) is some function of the coordinates. (The summation convention
+is suspended for the duration of this section.) The inverse metric tensor is
+then
+\begin{equation}
+  g^{ij}=h_i^{-2}\delta^{ij}.
+  \tag{4.8.2}\label{eq:4.8.2}
+\end{equation}
+The invariant proper length is now
+\begin{equation}
+  \dd\ell^2
+  \equiv
+  \sum_{ij}g_{ij}\,\dd x^i\dd x^j
+  =
+  h_1^2(\dd x^1)^2+h_2^2(\dd x^2)^2+h_3^2(\dd x^3)^2,
+  \tag{4.8.3}\label{eq:4.8.3}
+\end{equation}
+and the invariant volume element is
+\begin{equation}
+  \dd V
+  \equiv
+  \sqrt{\det(g_{ij})}\,\dd x^1\dd x^2\dd x^3
+  =
+  h_1h_2h_3\,\dd x^1\dd x^2\dd x^3.
+  \tag{4.8.4}\label{eq:4.8.4}
+\end{equation}
+
+What are usually called the components of a vector \(\mathbf V\) in
+elementary treatments are not the covariant components \(V_i\) or the
+contravariant components \(V^i\), but the orthonormal-frame components
+\(V_{\hat\imath}\):
+\begin{equation}
+  V_{\hat\imath}
+  \equiv
+  h_iV^i
+  =
+  h_i^{-1}V_i.
+  \tag{4.8.5}\label{eq:4.8.5}
+\end{equation}
+The scalar product of two vectors is then very simple:
+\begin{equation}
+  \mathbf V\mathbin{\cdot}\mathbf U
+  \equiv
+  \sum_{ij}g_{ij}V^iU^j
+  =
+  V_{\hat1}U_{\hat1}+V_{\hat2}U_{\hat2}+V_{\hat3}U_{\hat3}.
+  \tag{4.8.6}\label{eq:4.8.6}
+\end{equation}
+This, of course, is the motivation for the definition
+\eqref{eq:4.8.5}. However, the gradient of a scalar is now a little more
+complicated:
+\begin{equation}
+  (\bm\nabla S)_{\hat\imath}
+  \equiv
+  h_i^{-1}\partial_iS.
+  \tag{4.8.7}\label{eq:4.8.7}
+\end{equation}
+
+The curl of a vector \(V\) is likewise defined by taking the orthonormal-frame
+components of a vector:
+\begin{align}
+  (\bm\nabla\times\mathbf V)_{\hat\imath}
+  &\equiv
+  h_i\sum_{jk}\bigl[\det(g_{mn})\bigr]^{-1/2}
+  \varepsilon^{ijk}\nabla_jV_k
+  \notag\\
+  &=
+  \frac{h_i}{h_1h_2h_3}
+  \sum_{jk}\varepsilon^{ijk}\partial_j(h_kV_{\hat k}).
+  \tag{4.8.8}\label{eq:4.8.8}
+\end{align}
+(We have used Eq.~\eqref{eq:4.7.2}, since \(\varepsilon^{ijk}\) is
+antisymmetric in \(j\) and \(k\).) For instance, the first component of the
+curl is
+\begin{equation}
+  (\bm\nabla\times\mathbf V)_{\hat1}
+  =
+  \frac{1}{h_2h_3}
+  \left[
+    \partial_2(h_3V_{\hat3})
+    -\partial_3(h_2V_{\hat2})
+  \right].
+  \tag{4.8.9}\label{eq:4.8.9}
+\end{equation}
+
+The divergence of a vector \(V\) is nothing but the covariant divergence
+\eqref{eq:4.7.7}:
+\begin{align}
+  \bm\nabla\mathbin{\cdot}\mathbf V
+  &\equiv
+  \sum_i\nabla_iV^i
+  \notag\\
+  &=
+  \frac{1}{h_1h_2h_3}
+  \left[
+    \partial_1(h_2h_3V_{\hat1})
+    +\partial_2(h_1h_3V_{\hat2})
+    +\partial_3(h_1h_2V_{\hat3})
+  \right].
+  \tag{4.8.10}\label{eq:4.8.10}
+\end{align}
+The Laplacian of a scalar \(S\) is the divergence of its gradient:
+\begin{equation}
+  \nabla^2S
+  \equiv
+  \sum_{ij}\nabla_j\!\left(g^{ij}\partial_iS\right).
+  \tag{4.8.11}\label{eq:4.8.11}
+\end{equation}
+Combining Eqs.~\eqref{eq:4.8.10} and \eqref{eq:4.8.7}, this is
+\begin{equation}
+  \nabla^2S
+  =
+  \frac{1}{h_1h_2h_3}
+  \left[
+    \partial_1\!\left(\frac{h_2h_3}{h_1}\partial_1S\right)
+    +\partial_2\!\left(\frac{h_1h_3}{h_2}\partial_2S\right)
+    +\partial_3\!\left(\frac{h_1h_2}{h_3}\partial_3S\right)
+  \right].
+  \tag{4.8.12}\label{eq:4.8.12}
+\end{equation}
+The reader may easily check that the usual formulas for gradient, curl,
+divergence, and Laplacian are obtained if the \(h_i\) take the forms
+appropriate for spherical or cylindrical coordinates.

@@ -1,0 +1,40 @@
+% Exercise-edition support. This file emits no visible material by itself.
+
+\newif\ifprintexercisesolutions
+\printexercisesolutionsfalse
+
+\newcounter{exercise}
+\newcommand{\exercisechapter}{0}
+
+\newcommand{\chapterexercises}[1]{%
+  \renewcommand{\exercisechapter}{#1}%
+  \setcounter{exercise}{0}%
+  \InputIfFileExists{exercises/chapter#1.tex}{}{}%
+}
+
+\newenvironment{exercises}{%
+  \clearpage
+  \subsection*{Exercises}%
+  \addcontentsline{toc}{subsection}{Exercises}%
+  \setcounter{exercise}{0}%
+}{%
+  \par
+}
+
+\newenvironment{exercise}[1][]{%
+  \refstepcounter{exercise}%
+  \par\medskip
+  \noindent\textbf{Exercise
+    \exercisechapter.\arabic{exercise}}%
+  \ifstrempty{#1}{}{\textbf{\ (#1)}}%
+  \quad
+}{%
+  \par\medskip
+}
+
+\newcommand{\exercisesolution}[1]{%
+  \ifprintexercisesolutions
+    \par\smallskip
+    \noindent\textit{Solution.}\ #1\par
+  \fi
+}

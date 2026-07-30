@@ -1,0 +1,151 @@
+% Source: Weinberg GR, physical PDF pp. 121--123 (printed pp. 96--98).
+% Coverage: Section 4.3, Tensor Algebra; no numbered equations.
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Tensor Algebra}\label{sec:4.3}
+
+The next step in our program of constructing equations invariant under general
+coordinate transformations is to learn how to put tensors together to form
+other tensors. This is accomplished through a few simple algebraic operations.
+
+\medskip
+\noindent\textbf{(A) Linear Combinations.}
+A linear combination of tensors with the same upper and lower indices is a
+tensor with these indices. For instance, let \(A^\mu{}_\nu\) and
+\(B^\mu{}_\nu\) be mixed tensors, and let
+\[
+  T^\mu{}_\nu\equiv aA^\mu{}_\nu+bB^\mu{}_\nu,
+\]
+where \(a\) and \(b\) are scalars. Then \(T^\mu{}_\nu\) is a tensor, because
+\begin{align*}
+  T'^\mu{}_\nu
+  &=aA'^\mu{}_\nu+bB'^\mu{}_\nu
+  \\
+  &=
+  a\frac{\partial x'^\mu}{\partial x^\rho}
+   \frac{\partial x^\sigma}{\partial x'^\nu}A^\rho{}_\sigma
+  +b\frac{\partial x'^\mu}{\partial x^\rho}
+   \frac{\partial x^\sigma}{\partial x'^\nu}B^\rho{}_\sigma
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\rho}
+  \frac{\partial x^\sigma}{\partial x'^\nu}T^\rho{}_\sigma.
+\end{align*}
+
+\medskip
+\noindent\textbf{(B) Direct Products.}
+The product of the components of two tensors yields a tensor whose upper and
+lower indices consist of all the upper and lower indices of the two original
+tensors. For instance, if \(A^\mu{}_\nu\) and \(B^\rho\) are tensors, and
+\[
+  T^{\mu\rho}{}_\nu\equiv A^\mu{}_\nu B^\rho,
+\]
+then \(T^{\mu\rho}{}_\nu\) is a tensor; that is,
+\begin{align*}
+  T'^{\mu\rho}{}_\nu
+  &=A'^\mu{}_\nu B'^\rho
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\lambda}
+  \frac{\partial x^\kappa}{\partial x'^\nu}A^\lambda{}_\kappa
+  \frac{\partial x'^\rho}{\partial x^\sigma}B^\sigma
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\lambda}
+  \frac{\partial x^\kappa}{\partial x'^\nu}
+  \frac{\partial x'^\rho}{\partial x^\sigma}
+  T^{\lambda\sigma}{}_\kappa.
+\end{align*}
+
+\medskip
+\noindent\textbf{(C) Contraction.}
+Setting an upper and lower index equal and summing it over its four values
+yields a new tensor with these two indices absent. For instance, if
+\(T^\mu{}_\nu{}^{\rho\sigma}\) is a tensor and
+\[
+  T^{\mu\rho}\equiv T^\mu{}_\nu{}^{\rho\nu},
+\]
+then \(T^{\mu\rho}\) is a tensor; that is,
+\begin{align*}
+  T'^{\mu\rho}
+  &=T'^\mu{}_\nu{}^{\rho\nu}
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\kappa}
+  \frac{\partial x^\lambda}{\partial x'^\nu}
+  \frac{\partial x'^\rho}{\partial x^\eta}
+  \frac{\partial x'^\nu}{\partial x^\tau}
+  T^\kappa{}_\lambda{}^{\eta\tau}
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\kappa}
+  \frac{\partial x'^\rho}{\partial x^\eta}
+  T^\kappa{}_\lambda{}^{\eta\lambda}
+  \\
+  &=
+  \frac{\partial x'^\mu}{\partial x^\kappa}
+  \frac{\partial x'^\rho}{\partial x^\eta}T^{\kappa\eta}.
+\end{align*}
+
+These three operations can of course be combined in various ways. One
+particularly important combined operation results in the \textit{raising and
+lowering of indices}. If we take the direct product of a contravariant or
+mixed tensor \(T\) with the metric tensor \(g_{\mu\nu}\), and contract the
+index \(\mu\) with one of the contravariant indices of \(T\), we get a new
+tensor in which this contravariant index is replaced by a covariant index
+\(\nu\). For instance, if \(T^{\mu\rho}{}_\sigma\) is a tensor, and we define
+\[
+  S_\nu{}^\rho{}_\sigma\equiv g_{\mu\nu}T^{\mu\rho}{}_\sigma,
+\]
+then by rules (B) and (C), \(S_\nu{}^\rho{}_\sigma\) will be a tensor.
+Similarly, if we take the direct product of a covariant or mixed tensor \(T\)
+with the inverse metric tensor \(g^{\mu\nu}\), and contract the index \(\mu\)
+with one of the covariant indices of \(T\), we get a new tensor in which this
+covariant index is replaced by a contravariant index \(\nu\). For instance,
+if \(S_\mu{}^\rho{}_\sigma\) is a tensor, and we define
+\[
+  R^{\nu\rho}{}_\sigma\equiv g^{\mu\nu}S_\mu{}^\rho{}_\sigma,
+\]
+then \(R^{\nu\rho}{}_\sigma\) is also a tensor. Note that lowering an index
+and then raising it again gives back the original tensor; for instance, in
+the examples cited above, we lowered an index on \(T\) to get \(S\) and then
+raised it again to get \(R\), so \(R=T\), because
+\begin{align*}
+  R^{\nu\rho}{}_\sigma
+  &\equiv g^{\mu\nu}S_\mu{}^\rho{}_\sigma
+   \equiv g^{\mu\nu}g_{\mu\lambda}T^{\lambda\rho}{}_\sigma
+  \\
+  &=\delta^\nu{}_\lambda T^{\lambda\rho}{}_\sigma
+   =T^{\nu\rho}{}_\sigma.
+\end{align*}
+
+By raising and lowering indices we can write a tensor with \(N\) indices in
+\(2^N\) different ways. Since these are all physically equivalent, it is
+customary to use the same symbol for all \(2^N\) tensors, distinguishing them
+only by their index locations.
+
+For the sake of completeness, it should be mentioned that the tensor obtained
+by raising one index on the metric tensor \(g_{\mu\nu}\), or by lowering one
+index on the inverse metric tensor \(g^{\mu\nu}\), is precisely the Kronecker
+tensor, because
+\[
+  g^{\mu\lambda}g_{\lambda\nu}=\delta^\mu{}_\nu.
+\]
+Also, raising both indices on \(g_{\mu\nu}\) gives the inverse tensor,
+\[
+  g^{\lambda\mu}g^{\sigma\nu}g_{\mu\nu}
+  =g^{\lambda\mu}\delta^\sigma{}_\mu
+  =g^{\lambda\sigma},
+\]
+and lowering both indices on \(g^{\mu\nu}\) gives the metric tensor
+\(g_{\mu\nu}\).
+
+The reader will have noticed that this discussion of tensor algebra is
+precisely the same as the corresponding discussion in the chapter on special
+relativity (see Section~\ref{sec:2.5}), with one important exception. I have
+not yet mentioned differentiation. This is because the derivative of a tensor
+is in general not a tensor. In Section~\ref{sec:4.6} we shall see that there
+is a kind of differentiation, called covariant differentiation, that provides
+one more way of constructing tensors from other tensors.

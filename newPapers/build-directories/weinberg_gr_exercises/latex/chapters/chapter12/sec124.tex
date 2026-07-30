@@ -1,0 +1,127 @@
+% Source: Weinberg GR, physical PDF pp. 385--386
+%         (printed pp. 364--365).
+% Coverage: Section 12.4, The Gravitational Action; equations
+%           (12.4.1)--(12.4.3).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the curvature/action sign conversion in (12.4.2)--(12.4.3)
+%                is documented below and checked against Einstein's equation.
+%
+% MODERNIZATION CHECK: At fixed slots the target Riemann, Ricci, scalar, and
+% Einstein tensors are the negatives of Weinberg's. Consequently the source
+% minus sign in (12.4.2) becomes a plus, while its covariant-metric variation
+% (12.4.3) becomes a minus. The resulting equation is G^{mu nu}=8 pi G
+% T^{mu nu}, as required by the binding convention.
+% LITERAL-OPERATOR AUDIT: both terms in the Palatini divergence, the minus
+% sign in (12.4.3), and the matter term in the final field equation were
+% checked independently against physical PDF p. 385 after conversion.
+
+\subsection{The Gravitational Action}\label{sec:12.4}
+
+So far, in this chapter the gravitational field \(g_{\mu\nu}\) has been an
+external field that could be prescribed at will. (Indeed,
+Eq.~\eqref{eq:12.2.2} usually provides the most convenient definition of the
+energy-momentum tensor even in the absence of gravitation.) We will now give
+\(g_{\mu\nu}\) field equations of its own by adding to the total action \(I\)
+a purely gravitational term \(I_G\):
+\begin{equation}
+  I=I_M+I_G,
+  \tag{12.4.1}\label{eq:12.4.1}
+\end{equation}
+\begin{equation}
+  I_G
+  =
+  \frac1{16\pi G}\int\dd^4x\,\sqrt{-g(x)}\,R(x).
+  \tag{12.4.2}\label{eq:12.4.2}
+\end{equation}
+Clearly \(I_G\) is a scalar, so this would be a good candidate for a theory
+of gravitation even if we had no experience with gravitational phenomena. We
+shall now show that the application to \(I\) of the principle of stationary
+action does in fact yield Einstein's theory.
+
+The curvature scalar \(R\) is defined as \(g^{\mu\nu}R_{\mu\nu}\), so a
+variation \(\delta g_{\mu\nu}\) in the metric produces in the integrand of
+Eq.~\eqref{eq:12.4.2} a change
+\[
+  \delta\!\left(\sqrt{-g}\,R\right)
+  =
+  \sqrt{-g}\,R_{\mu\nu}\delta g^{\mu\nu}
+  +R\,\delta\sqrt{-g}
+  +\sqrt{-g}\,g^{\mu\nu}\delta R_{\mu\nu}.
+\]
+According to Eq.~\eqref{eq:10.9.2}, converted to the curvature convention of
+this edition, the change in the Ricci tensor is
+\[
+  \delta R_{\mu\nu}
+  =
+  \nabla_\lambda\delta\Gamma^\lambda{}_{\nu\mu}
+  -\nabla_\nu\delta\Gamma^\lambda{}_{\lambda\mu},
+\]
+the covariant derivatives being defined as if
+\(\delta\Gamma^\lambda{}_{\mu\nu}\) were a tensor (as in fact it is). Thus the
+last term in \(\delta(\sqrt{-g}\,R)\) is
+\[
+\begin{aligned}
+  \sqrt{-g}\,g^{\mu\nu}\delta R_{\mu\nu}
+  =\sqrt{-g}\big[
+    &\nabla_\lambda(g^{\mu\nu}\delta\Gamma^\lambda{}_{\nu\mu})
+    \\
+    &-\nabla_\nu(g^{\mu\nu}\delta\Gamma^\lambda{}_{\lambda\mu})
+  \big],
+\end{aligned}
+\]
+or, using Eq.~\eqref{eq:4.7.7},
+\[
+\begin{aligned}
+  \sqrt{-g}\,g^{\mu\nu}\delta R_{\mu\nu}
+  ={}&
+  \partial_\lambda\!\left(
+    \sqrt{-g}\,g^{\mu\nu}\delta\Gamma^\lambda{}_{\nu\mu}
+  \right)
+  \\
+  &-\partial_\nu\!\left(
+    \sqrt{-g}\,g^{\mu\nu}\delta\Gamma^\lambda{}_{\lambda\mu}
+  \right).
+\end{aligned}
+\]
+This term therefore drops out when we integrate over all space. Also,
+\[
+  \delta\sqrt{-g}
+  =
+  \frac12\sqrt{-g}\,g^{\mu\nu}\delta g_{\mu\nu},
+  \qquad
+  \delta g^{\mu\nu}
+  =
+  -g^{\mu\rho}g^{\nu\sigma}\delta g_{\rho\sigma},
+\]
+so the change in the action \eqref{eq:12.4.2} is
+\begin{equation}
+  \delta I_G
+  =
+  -\frac1{16\pi G}\int\dd^4x\,\sqrt{-g}\,
+  \left(R^{\mu\nu}-\frac12g^{\mu\nu}R\right)
+  \delta g_{\mu\nu}.
+  \tag{12.4.3}\label{eq:12.4.3}
+\end{equation}
+Combining Eq.~\eqref{eq:12.4.3} with Eq.~\eqref{eq:12.2.2}, we see that the
+total action \(I\) is stationary with respect to arbitrary variations in
+\(g_{\mu\nu}\) if and only if
+\[
+  R^{\mu\nu}-\frac12g^{\mu\nu}R-8\pi G\,T^{\mu\nu}=0,
+\]
+which, of course, is the Einstein field equation.
+
+[As another application of Eq.~\eqref{eq:12.4.3}, we may use it to derive the
+contracted Bianchi identity. Since \(I_G\) is a scalar, it must be stationary
+with respect to the variation \eqref{eq:12.3.1} in \(g_{\mu\nu}\). Repeating
+the reasoning that led before to Eq.~\eqref{eq:12.3.2}, we now find that
+\[
+  \nabla_\nu
+  \left(R^\nu{}_\lambda-\frac12\delta^\nu{}_\lambda R\right)=0,
+\]
+which we recognize as the contracted Bianchi identity \eqref{eq:6.8.3}.]
+
+This formalism suggests that Einstein's theory might be modified by adding to
+\(R\) in Eq.~\eqref{eq:12.4.2} terms proportional to \(R^2\), \(R^3\), etc.
+As discussed in Section~\ref{sec:7.1}, such terms would only show up on a
+sufficiently small space-time scale.

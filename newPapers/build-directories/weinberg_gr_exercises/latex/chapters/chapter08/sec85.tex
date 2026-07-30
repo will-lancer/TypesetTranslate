@@ -1,0 +1,439 @@
+% Source: Weinberg GR, physical PDF pp. 211--217
+%         (printed pp. 188--194).
+% Coverage: Section 8.5, Unbound Orbits: Deflection of Light by the Sun;
+%           equations (8.5.1)--(8.5.12), Figures 8.1, Tables 8.1--8.2.
+% Figures/tables/footnotes: Figure 8.1; Tables 8.1 and 8.2 with source notes;
+%                           reference markers 2--4.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the source prose and Table 8.1 give different uncertainty
+%                estimates for the two 1919 eclipse expeditions; both are
+%                preserved and marked VERIFY SOURCE below.
+
+\subsection{Unbound Orbits: Deflection of Light by the Sun}\label{sec:8.5}
+
+Consider a particle or photon approaching the sun from very great distances.
+(See Figure~\ref{fig:8.1}.) At infinity the metric becomes Minkowskian, that
+is, \(A(\infty)=B(\infty)=1\), and we expect motion on a straight line at
+constant velocity \(V\), that is,
+\[
+  b\simeq r\sin(\varphi-\varphi_\infty)
+  \simeq r(\varphi-\varphi_\infty),
+\]
+\[
+  -V
+  \simeq
+  \frac{d}{dt}\left[r\cos(\varphi-\varphi_\infty)\right]
+  \simeq\frac{dr}{dt},
+\]
+where \(b\) is the ``impact parameter'' and \(\varphi_\infty\) is the
+incident direction. Inserting these in Eqs.~\eqref{eq:8.4.18} and
+\eqref{eq:8.4.19}, we see that they do satisfy the equations of motion at
+infinity, where \(A=B=1\), and that the constants of the motion are
+\begin{equation}
+  J=bV,
+  \tag{8.5.1}\label{eq:8.5.1}
+\end{equation}
+\begin{equation}
+  E=1-V^2.
+  \tag{8.5.2}\label{eq:8.5.2}
+\end{equation}
+
+\input{figures/chapter08/fig08-01.tex}
+
+(Of course a photon has \(V=1\), and as we have already seen, this gives
+\(E=0\).) It is often more convenient to express \(J\) in terms of the
+distance \(r_0\) of closest approach to the sun, rather than the impact
+parameter \(b\). At \(r_0\), \(dr/d\varphi\) vanishes, so
+Eqs.~\eqref{eq:8.4.29} and \eqref{eq:8.5.2} give
+\begin{equation}
+  J
+  =
+  r_0\left(\frac{1}{B(r_0)}-1+V^2\right)^{1/2}.
+  \tag{8.5.3}\label{eq:8.5.3}
+\end{equation}
+The orbit is then described by Eq.~\eqref{eq:8.4.30}, that is,
+\begin{equation}
+  \begin{split}
+  \varphi(r)
+  =\varphi_\infty
+  +\int_r^\infty
+  \frac{A^{1/2}(r)\,dr}{r^2}
+  \biggl\{
+  \frac{1}{r_0^2}
+  \left[\frac{1}{B(r)}-1+V^2\right]
+  \left[\frac{1}{B(r_0)}-1+V^2\right]^{-1}
+  -\frac{1}{r^2}
+  \biggr\}^{-1/2}.
+  \end{split}
+  \tag{8.5.4}\label{eq:8.5.4}
+\end{equation}
+The total change in \(\varphi\) as \(r\) decreases from infinity to its
+minimum value \(r_0\) and then increases again to infinity is just twice
+its change from \(\infty\) to \(r_0\), that is,
+\(2|\varphi(r_0)-\varphi_\infty|\). If the trajectory were a straight
+line, this would equal just \(\pi\); hence the \emph{deflection} of the
+orbit from a straight line is
+\begin{equation}
+  \Delta\varphi
+  =
+  2|\varphi(r_0)-\varphi_\infty|-\pi.
+  \tag{8.5.5}\label{eq:8.5.5}
+\end{equation}
+If this is positive, then the angle \(\varphi\) changes by more than
+\(180^\circ\), that is, the trajectory is bent \emph{toward} the sun; if
+\(\Delta\varphi\) is negative then the trajectory is bent away from the
+sun.
+
+For a photon \(V^2=1\), and Eq.~\eqref{eq:8.5.4} gives
+\begin{equation}
+  \varphi(r)-\varphi_\infty
+  =
+  -\int_r^\infty
+  A^{1/2}(r)
+  \left[
+    \left(\frac{r}{r_0}\right)^2
+    \frac{B(r_0)}{B(r)}-1
+  \right]^{-1/2}
+  \frac{dr}{r}.
+  \tag{8.5.6}\label{eq:8.5.6}
+\end{equation}
+If we used the exact values of \(A(r)\) and \(B(r)\) given by the
+Schwarzschild solution \eqref{eq:8.2.10}, \eqref{eq:8.2.11}, then we
+would obtain \(\varphi(r)\) and \(\Delta\varphi\) as elliptic integrals of
+the usual sort, which could only be evaluated numerically by expanding in
+the small parameters \(MG/r_0\) and \(MG/r\). It is both easier and more
+instructive to expand before integrating, using for \(A(r)\) and \(B(r)\)
+the Robertson expansions \eqref{eq:8.3.8} and \eqref{eq:8.3.9}:
+\[
+  A(r)=1+2\gamma\frac{MG}{r}+\cdots,
+\qquad
+  B(r)=1-2\frac{MG}{r}+\cdots.
+\]
+The argument of the second square root in Eq.~\eqref{eq:8.5.6} is then
+\[
+  \begin{split}
+  \left(\frac{r}{r_0}\right)^2\frac{B(r_0)}{B(r)}-1
+  &=
+  \left(\frac{r}{r_0}\right)^2
+  \left[
+    1+2MG\left(\frac1r-\frac1{r_0}\right)+\cdots
+  \right]-1
+  \\
+  &=
+  \left[\left(\frac{r}{r_0}\right)^2-1\right]
+  \left[1-\frac{2MGr}{r_0(r+r_0)}+\cdots\right],
+  \end{split}
+\]
+so Eq.~\eqref{eq:8.5.6} gives
+\[
+  \varphi(r)-\varphi_\infty
+  =
+  \int_r^\infty
+  \frac{dr}{r[(r/r_0)^2-1]^{1/2}}
+  \left[
+    1+\frac{\gamma MG}{r}
+    +\frac{MGr}{r_0(r+r_0)}+\cdots
+  \right].
+\]
+The integral is elementary and gives
+\begin{equation}
+  \begin{split}
+  \varphi(r)-\varphi_\infty
+  ={}&
+  \sin^{-1}\left(\frac{r_0}{r}\right)
+  +\frac{MG}{r_0}
+  \biggl[
+    1+\gamma
+    -\gamma\sqrt{1-\left(\frac{r_0}{r}\right)^2}
+    -\sqrt{\frac{r-r_0}{r+r_0}}
+  \biggr]
+  +\cdots.
+  \end{split}
+  \tag{8.5.7}\label{eq:8.5.7}
+\end{equation}
+Hence to first order in \(MG/r_0\) the deflection
+\eqref{eq:8.5.5} is
+\begin{equation}
+  \Delta\varphi
+  =
+  \frac{4MG}{r_0}\left(\frac{1+\gamma}{2}\right).
+  \tag{8.5.8}\label{eq:8.5.8}
+\end{equation}
+(To this order we could just as well replace \(r_0\) here with the impact
+parameter \(b\).)
+
+For a light ray deflected by the sun we must use
+\(M=M_\odot=1.97\times10^{33}\,\mathrm{g}\), that is,
+\(MG=M_\odot G=1.475\,\mathrm{km}\), and the minimum value of \(r_0\) is
+\(R_\odot=6.95\times10^5\,\mathrm{km}\), so Eq.~\eqref{eq:8.5.8} gives
+here
+\begin{equation}
+  \Delta\varphi=\left(\frac{R_\odot}{r_0}\right)\theta_\odot,
+  \tag{8.5.9}\label{eq:8.5.9}
+\end{equation}
+where
+\begin{equation}
+  \theta_\odot
+  \equiv
+  \frac{4M_\odot G}{R_\odot}
+  \left(\frac{1+\gamma}{2}\right)
+  =
+  1.75''\left(\frac{1+\gamma}{2}\right).
+  \tag{8.5.10}\label{eq:8.5.10}
+\end{equation}
+Furthermore, general relativity gives \(\gamma=1\), so it predicts a
+deflection toward the sun with \(\theta_\odot=1.75''\). (For light just
+grazing Jupiter the deflection is only \(0.02''\), so there seems little
+hope of observing the deflection of light by any other body than the sun.)
+In the Brans--Dicke theory Eqs.~\eqref{eq:8.5.10} and
+\eqref{eq:8.3.3} give a deflection constant
+\begin{equation}
+  \theta_\odot
+  =
+  \frac{4M_\odot G}{R_\odot}
+  \left(\frac{2\omega+3}{2\omega+4}\right).
+  \tag{8.5.11}\label{eq:8.5.11}
+\end{equation}
+
+Whenever we obtain a prediction from general relativity the question always
+arises (or should arise) whether the result obtained really refers to an
+objective physical measurement or whether it has folded into it arbitrary
+subjective elements dependent on our choice of coordinate system. In the
+case at hand, we should ask ourselves what the predicted change in
+\(\varphi\) really has to do with the positions of stellar images on
+photographic plates. Fortunately, the answer is here quite simple, for this
+is really a \emph{scattering} experiment. The light ray comes in from a very
+great distance, is deflected as it passes close to the sun, and is detected
+on earth, more than 200 solar radii away from the sun. At the points of
+origin and detection the metric is sensibly Minkowskian, and at these
+distances there is no question about the meaning of \(\varphi\); it is the
+azimuthal angle in a system of coordinates within which light rays define
+lines that are essentially straight. Hence we can relate \(\Delta\varphi\)
+to the shift of stellar images on photographic plates by the ordinary rules
+of geometric optics. (We are here neglecting effects of the gravitational
+field of the earth itself, because this field is on the earth's surface more
+than \(10^3\) times weaker than that of the sun on the sun's surface.) We
+would have to be a good deal more careful about the operational significance
+of our \(\varphi\) if we had to predict the deflection of light by the sun
+as seen from an observatory deep within the sun's gravitational field, as,
+for instance, from an orbiting satellite a few solar radii away from the
+sun.
+
+Another conceptual difficulty that may arise here has to do with our
+treatment of the photon as a quantum of light moving as would any other
+particle that happened to have velocity close to unity, that is, to \(c\).
+Actually, no use is being made of quantum mechanics. The wavelength of light
+is so small compared with the scale of the solar gravitational field (i.e.,
+\(10^{-5}\,\mathrm{cm}\) as compared with \(10^{10}\,\mathrm{cm}\)) that
+at any point in this field we can erect a locally inertial coordinate system
+that covers a huge (say, \(10^{15}\)) number of wavelengths. The Principle
+of Equivalence tells us that in such a coordinate system light behaves as it
+does in gravitation-free empty space, and since the wavelength is so small,
+this means that diffraction is negligible and each element of a wave front
+moves in a straight line at unit velocity. This statement, when rewritten
+in the noninertial coordinate systems of astronomy, is nothing but our
+equation of motion \eqref{eq:8.4.2}. (This argument, incidentally, shows why
+the deflection of light cannot depend on its polarization.)
+
+Now let us see how Einstein's prediction \eqref{eq:8.5.9} compares with
+observation. The deflection angle \(\Delta\varphi\) is classically measured
+by comparing the apparent positions of stars that happen to lie near the
+solar disk during an eclipse, when their light comes close to the sun and
+yet may be detected, with their positions at night six months earlier, when
+these stars lie on opposite sides of the earth from the sun, and their light
+does not pass close to the sun on its way to us. Subtracting \(\varphi\)
+(six months earlier) from \(\varphi\) (eclipse) then, in principle, should
+give \(\Delta\varphi\). However, there is an unavoidable change in the scale
+of the photographs over a six-month interval, owing partly to small changes
+in the temperature and in the mechanical configuration of the telescope and
+camera over so long a time. A change in the scale of the photograph would
+give an apparent deflection of any star toward or away from the sun by an
+angle proportional to the distance \(r_0\) at which its light passes the
+sun, hence what is done in practice is to compare observations with a
+theoretical curve
+\begin{equation}
+  \Delta\varphi
+  =
+  \theta_\odot\left(\frac{R_\odot}{r_0}\right)
+  +S\left(\frac{r_0}{R_\odot}\right),
+  \tag{8.5.12}\label{eq:8.5.12}
+\end{equation}
+where \(S\) is the unknown scale constant (often called \(\alpha\)) and
+\(\theta\) is an angle to be compared with the theoretical value
+\(1.75''\). There are other effects that could contribute to
+\(\Delta\varphi\), such as refraction of the starlight in the solar corona
+or as it enters the colder air in the moon's shadow, but none of these is
+believed to play an important role.
+
+Observations cannot be carried closer to the sun's disk than
+\(r_0\simeq2R_\odot\), but they can still be used to determine
+\(\theta_\odot\) by fitting the observed \(\Delta\varphi\) values to the
+theoretical curve \eqref{eq:8.5.12}. The difficulty with this program is
+just that \(\Delta\varphi\) is very difficult to measure accurately in the
+brief time available during an eclipse. In 1919 eclipse expeditions were
+sent to two small islands, Sobral, off the northeast coast of Brazil, and
+Principe, in the Gulf of Guinea. About a dozen stars in all were studied and
+yielded values\hyperref[ch8-ref-2]{\textsuperscript{2}}
+% VERIFY SOURCE: the printed prose gives uncertainty estimates 0.12 and
+% 0.31 arcsec; Table 8.1 below gives 0.16 and 0.40 arcsec, respectively.
+\(1.98\pm0.12''\) and \(1.61\pm0.31''\), in substantial agreement with
+Einstein's prediction \(\theta_\odot=1.75''\). It was perhaps this dramatic
+result more than any other success that brought general relativity to the
+attention of the general public in the 1920s.
+
+Since 1919 there have been measurements on about 380 stars observed during
+the eclipses of 1922, 1929, 1936, 1947, and 1952, which we summarize in
+Table~\ref{tab:8.1} (taken from the summary of von
+Kl\"uber\hyperref[ch8-ref-3]{\textsuperscript{3}}). The values obtained for
+\(\theta_\odot\) vary from \(1.3''\) to \(2.7''\), but mostly lie between
+\(1.7''\) and \(2''\). The most recent of these results is
+\(\Delta\varphi=1.70\pm0.10''\), in very good agreement with Einstein's
+prediction, but it is not clear that the systematic error here is really
+smaller than for previous observations. From all this we can conclude that
+there definitely is a deflection of light greater than the value
+\(\theta_\odot=0.875''\) that would be predicted for \(\gamma=0\) (i.e.,
+\(A(r)=1\)), but as to its precise value we can say little more than that
+\(\theta_\odot\) is somewhere between \(1.6''\) and \(2.2''\), that is,
+\(\gamma\) is between about 0.9 and 1.3. It may become possible to improve
+the accuracy of this determination in the near future by using photoelectric
+techniques to monitor star positions without waiting for an eclipse.
+
+\begingroup
+\renewcommand{\thetable}{8.1}
+\begin{table}[p]
+\centering
+\caption{Measurements of the Deflection of Light by the Sun. The fourth
+column gives the minimum and maximum values for the distance of closest
+approach of the light ray to the sun's center for the various stars studied.
+The fifth column gives the deduced value for the deflection of a light ray
+that just grazes the sun's surface.}
+\label{tab:8.1}
+\scriptsize
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Eclipse & Site & Number of stars & \(r_0/R_\odot\) &
+\(\theta_\odot\) (sec) & Ref.\\
+\midrule
+May 29, 1919 & Sobral & 7 & 2--6 & \(1.98\pm0.16\) & a\\
+ & Principe & 5 & 2--6 & \(1.61\pm0.40\) & a\\
+September 21, 1922 & Australia & 11--14 & 2--10 &
+  \(1.77\pm0.40\) & b\\
+ & Australia & 18 & 2--10 & 1.42 to 2.16 & c\\
+ & Australia & 62--85 & 2.1--14.5 & \(1.72\pm0.15\) & d\\
+ & Australia & 145 & 2.1--42 & \(1.82\pm0.20\) & e\\
+May 9, 1929 & Sumatra & 17--18 & 1.5--7.5 & \(2.24\pm0.10\) & f\\
+June 19, 1936 & U.S.S.R. & 16--29 & 2--7.2 & \(2.73\pm0.31\) & g\\
+ & Japan & 8 & 4--7 & 1.28 to 2.13 & h\\
+May 20, 1947 & Brazil & 51 & 3.3--10.2 & \(2.01\pm0.27\) & i\\
+February 25, 1952 & Sudan & 9--11 & 2.1--8.6 & \(1.70\pm0.10\) & j\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{minipage}{0.96\textwidth}\scriptsize
+\textsuperscript{a} F.~W.~Dyson, A.~S.~Eddington, and C.~Davidson,
+\textit{Phil. Trans. Roy. Soc.} \textbf{220A}, 291 (1920);
+\textit{Mem. Roy. Astron. Soc.} \textbf{62}, 291 (1920).\par
+\textsuperscript{b} G.~F.~Dodwell and C.~R.~Davidson,
+\textit{Mon. Not. Roy. Astron. Soc.} \textbf{84}, 150 (1924).\par
+\textsuperscript{c} G.~A.~Chant and R.~K.~Young,
+\textit{Publ. Dominion Astron. Obs.} \textbf{2}, 275 (1924).\par
+\textsuperscript{d} W.~W.~Campbell and R.~Trumpler,
+\textit{Lick Observ. Bull.} \textbf{11}, 41 (1923);
+\textit{Publ. Astron. Soc. Pacific} \textbf{35}, 158 (1923).\par
+\textsuperscript{e} W.~W.~Campbell and R.~Trumpler,
+\textit{Lick Observ. Bull.} \textbf{13}, 180 (1928).\par
+\textsuperscript{f} E.~F.~Freundlich, H.~v.~Kl\"uber, and A.~v.~Brunn,
+\textit{Ab. Preuss. Akad. Wiss.}, No.~1, 1931;
+\textit{Z. Astrophys.} \textbf{3}, 171 (1931).\par
+\textsuperscript{g} A.~A.~Mikhailov,
+\textit{C. R. Acad. Sci. USSR (N. S.)} \textbf{29}, 189 (1940).\par
+\textsuperscript{h} T.~Matukuma, A.~Onuki, S.~Yosida, and Y.~Iwana,
+\textit{Jap. J. Astron. and Geophys.} \textbf{18}, 1 (1940).\par
+\textsuperscript{i} G.~van Biesbroeck,
+\textit{Astron. J.} \textbf{55}, 49, 247 (1949).\par
+\textsuperscript{j} G.~van Biesbroeck,
+\textit{Astron. J.} \textbf{58}, 87 (1953).
+\end{minipage}
+\end{table}
+\endgroup
+
+Recent developments in radio
+astronomy\hyperref[ch8-ref-4]{\textsuperscript{4}} have made it possible
+to measure the deflection of radio signals by the sun with potentially far
+greater accuracy than is possible in optical astronomy. The angular
+accuracy of optical observations is limited by inhomogeneities in the
+earth's atmosphere to about \(0.1''\), whereas a radio interferometer with
+wavelength \(\lambda\) and baseline \(D\) can in principle measure angles
+with an accuracy of order \(\lambda/2\pi D\) radians; this is \(0.1''\)
+for \(\lambda=3\,\mathrm{cm}\) and \(D=10\,\mathrm{km}\), and
+proportionately less for longer baselines.
+
+One complication that bothers the astronomer more at radio than at optical
+frequencies is the refraction of rays in the solar corona. At X-band
+frequencies (8000--12,500 MHz) the refraction is quite small, and can be
+eliminated by excluding data taken when the radio signal passes within
+about 2 solar radii of the sun's surface. However, at S-band frequencies
+(2000--4000 MHz) it is necessary to analyze the data in terms of a model,
+in which part of the deflection arises from general relativity, and the rest
+is produced by the corona. The parameters describing the solar corona can
+in principle be measured by this technique (using several frequencies) at
+the same time as the general-relativistic parameter, but the electron
+densities in the corona change with time, and it appears that the only
+really satisfactory method for dealing with coronal refraction is to use a
+radio frequency in the X band, or above.
+
+Each October, the quasi-stellar source 3C279 is occulted by the sun, and a
+number of radio astronomy groups have taken this opportunity to observe the
+changes in the angle (about \(9.5^\circ\)) between 3C279 and the
+quasi-stellar source 3C273, during the period just before and just after
+occultation. The results are given in Table~\ref{tab:8.2}. Again, we see
+general relativity confirmed, but not yet well enough to distinguish
+between the theories of Einstein and Brans and Dicke. However, the data
+taken with very long baselines, such as the ``Goldstack'' baseline of
+3900 km, contain enough information in principle to measure angular
+positions to about \(0.001''\). It is hoped that the analysis of this data
+will eventually lead to a really precise determination of \(\gamma\).
+
+\begingroup
+\renewcommand{\thetable}{8.2}
+\begin{table}[p]
+\centering
+\caption{Interferometric measurements of the deflection of radio waves from
+the source 3C279 by the sun. The data are analyzed in terms of the
+deflection \(\theta_\odot\) that would be produced by a radio signal just
+grazing the sun.}
+\label{tab:8.2}
+\scriptsize
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Facility & Radar frequency (MHz) & Baseline (km) & Period &
+\(\theta_\odot\) (sec) & Ref.\\
+\midrule
+Owens Valley & 9602 & 10,662 & 9/30--10/15, 1969 &
+  \(1.77\pm0.20\) & a\\
+Goldstone & 2388 & 21,566 & 10/2--10/10, 1969 &
+  \(1.82^{+0.24}_{-0.17}\) & b\\
+Goldstone/Haystack & 7840 & 3899 & 9/30--10/15, 1969 &
+  \(1.80\pm0.2\) & c\\
+NRAO & 2695 and 8085 & 2.7 & 10/2--10/12, 1970 &
+  \(1.57\pm0.08\) & d\\
+ & 2697 and 4993.8 & 14.1 & 10/8, 1970 &
+  \(1.87\pm0.3\) & e\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{minipage}{0.94\textwidth}\scriptsize
+\textsuperscript{a} G.~A.~Seielstad, R.~A.~Sramek, and K.~W.~Weiler,
+\textit{Phys. Rev. Letters} \textbf{24}, 1373 (1970).\par
+\textsuperscript{b} D.~O.~Muhleman, R.~D.~Ekers, and E.~B.~Fomalont,
+\textit{Phys. Rev. Letters} \textbf{24}, 1377 (1970).\par
+\textsuperscript{c} I.~I.~Shapiro, private communication.\par
+\textsuperscript{d} R.~A.~Sramek, \textit{Ap. J.} \textbf{167}, L55
+(1971).\par
+\textsuperscript{e} J.~M.~Hill, \textit{Mon. Not. Roy. Astron. Soc.}
+\textbf{153}, 7P (1971).
+\end{minipage}
+\end{table}
+\endgroup

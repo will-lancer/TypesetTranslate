@@ -1,0 +1,225 @@
+% Source: Weinberg GR, physical PDF pp. 357--360
+%         (printed pp. 335--338).
+% Coverage: Section 11.7, Time-Dependent Spherically Symmetric Fields;
+%           equations (11.7.1)--(11.7.9).
+% Figures/tables/footnotes: no figures or tables; reference callout 30.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: the curvature-sign conversion is documented at
+%                Eqs. (11.7.4)--(11.7.7); none unresolved.
+
+\subsection{Time-Dependent Spherically Symmetric Fields}\label{sec:11.7}
+
+We now turn to the problems of stellar dynamics, and begin by writing down the
+metric and Ricci tensor for a spherically symmetric but time-dependent system.
+Spherical symmetry requires the invariant interval \(ds^2\) to depend only on
+the rotational invariants
+\[
+  t,\quad dt,\quad r,\quad
+  \mathbf{x}\cdot d\mathbf{x}=r\,dr,\quad
+  d\mathbf{x}^2=dr^2+r^2(d\theta^2+\sin^2\theta\,d\varphi^2),
+\]
+so, in the binding signature, it can be written
+\[
+  \begin{aligned}
+  ds^2={}&
+  -C(r,t)\,dt^2+D(r,t)\,dr^2+2E(r,t)\,dr\,dt\\
+  &+F(r,t)r^2(d\theta^2+\sin^2\theta\,d\varphi^2).
+  \end{aligned}
+\]
+The function \(F\) can be removed by defining a new radial variable
+\[
+  r'\equiv rF^{1/2}(r,t).
+\]
+The metric will then be of the same form, but with new functions
+\(C',D',E'\) in place of \(C,D,E\), and of course with \(r'\) in place of
+\(r\) and no factor \(F\). Dropping primes, we have then
+\[
+  \begin{aligned}
+  ds^2={}&
+  -C(r,t)\,dt^2+D(r,t)\,dr^2+2E(r,t)\,dr\,dt\\
+  &+r^2(d\theta^2+\sin^2\theta\,d\varphi^2).
+  \end{aligned}
+\]
+We next remove \(E\), by defining a new time
+\[
+  dt'=\eta(r,t)[C(r,t)\,dt-E(r,t)\,dr],
+\]
+where \(\eta\) is an integrating factor defined to make the right-hand side a
+perfect differential, that is, so that
+\[
+  \partial_r[\eta(r,t)C(r,t)]
+  =
+  -\partial_t[\eta(r,t)E(r,t)].
+\]
+(This equation can be solved by treating it as an initial-value problem:
+given \(\eta(r,t_0)\) for all \(r\), we can solve for
+\(\partial_t\eta(r,t)|_{t=t_0}\) and thus determine
+\(\eta(r,t_0+dt)\) for all \(r\).) The interval is then
+\[
+  ds^2
+  =
+  -\eta^{-2}C^{-1}\,dt'^2
+  +(D+C^{-1}E^2)\,dr^2
+  +r^2(d\theta^2+\sin^2\theta\,d\varphi^2),
+\]
+or, introducing new functions \(A\) and \(B\) in place of
+\(D+C^{-1}E^2\) and \(\eta^{-2}C^{-1}\), and dropping the prime on \(t\),
+\begin{equation}
+  ds^2
+  =
+  -B(r,t)\,dt^2+A(r,t)\,dr^2
+  +r^2(d\theta^2+\sin^2\theta\,d\varphi^2).
+  \tag{11.7.1}\label{eq:11.7.1}
+\end{equation}
+Thus we can use the metric in its familiar ``standard'' form, the only new
+feature being that \(A\) and \(B\) now depend on \(t\) as well as \(r\).
+
+The nonvanishing elements of the metric tensor and its inverse are
+\begin{equation}
+  \begin{gathered}
+  g_{tt}=-B,\qquad
+  g_{rr}=A,\qquad
+  g_{\theta\theta}=r^2,\qquad
+  g_{\varphi\varphi}=r^2\sin^2\theta,\\
+  g^{tt}=-B^{-1},\qquad
+  g^{rr}=A^{-1},\qquad
+  g^{\theta\theta}=r^{-2},\qquad
+  g^{\varphi\varphi}=r^{-2}(\sin\theta)^{-2}.
+  \end{gathered}
+  \tag{11.7.2}\label{eq:11.7.2}
+\end{equation}
+It follows that the nonvanishing elements of the affine connection are
+\begin{equation}
+  \begin{gathered}
+  \Gamma^r{}_{rr}=\frac{A'}{2A},\qquad
+  \Gamma^r{}_{\theta\theta}=-\frac rA,\qquad
+  \Gamma^r{}_{\varphi\varphi}=-\frac{r\sin^2\theta}{A},\qquad
+  \Gamma^r{}_{tt}=\frac{B'}{2A},\\
+  \Gamma^r{}_{rt}=\Gamma^r{}_{tr}=\frac{\dot A}{2A},\qquad
+  \Gamma^\theta{}_{r\theta}=\Gamma^\theta{}_{\theta r}=\frac1r,\qquad
+  \Gamma^\theta{}_{\varphi\varphi}=-\sin\theta\cos\theta,\\
+  \Gamma^\varphi{}_{r\varphi}=\Gamma^\varphi{}_{\varphi r}=\frac1r,\qquad
+  \Gamma^\varphi{}_{\theta\varphi}
+  =\Gamma^\varphi{}_{\varphi\theta}=\cot\theta,\\
+  \Gamma^t{}_{rr}=\frac{\dot A}{2B},\qquad
+  \Gamma^t{}_{tt}=\frac{\dot B}{2B},\qquad
+  \Gamma^t{}_{rt}=\Gamma^t{}_{tr}=\frac{B'}{2B}.
+  \end{gathered}
+  \tag{11.7.3}\label{eq:11.7.3}
+\end{equation}
+(A prime or a dot now denotes \(\partial_r\) or \(\partial_t\),
+respectively.) From the definition of the Ricci tensor in the binding
+curvature convention we obtain the independent nonzero components:
+% MODERNIZATION CHECK: every component in (11.7.4)--(11.7.7) is the
+% negative of Weinberg's printed Ricci component.
+\begin{align}
+  R_{rr}
+  ={}&
+  -\frac{B''}{2B}
+  +\frac{B'^2}{4B^2}
+  +\frac{A'B'}{4AB}
+  +\frac{A'}{rA}
+  +\frac{\ddot A}{2B}
+  -\frac{\dot A\dot B}{4B^2}
+  -\frac{\dot A^2}{4AB},
+  \tag{11.7.4}\label{eq:11.7.4}\\
+  R_{\theta\theta}
+  ={}&
+  1-\frac1A+\frac{rA'}{2A^2}-\frac{rB'}{2AB},
+  \tag{11.7.5}\label{eq:11.7.5}\\
+  R_{tt}
+  ={}&
+  \frac{B''}{2A}
+  -\frac{B'A'}{4A^2}
+  +\frac{B'}{Ar}
+  -\frac{B'^2}{4AB}
+  -\frac{\ddot A}{2A}
+  +\frac{\dot A^2}{4A^2}
+  +\frac{\dot A\dot B}{4AB},
+  \tag{11.7.6}\label{eq:11.7.6}\\
+  R_{tr}
+  ={}&
+  \frac{\dot A}{Ar}.
+  \tag{11.7.7}\label{eq:11.7.7}
+\end{align}
+Also, it follows from the spherical symmetry of the metric that
+\begin{equation}
+  R_{\varphi\varphi}=\sin^2\theta\,R_{\theta\theta},
+  \tag{11.7.8}\label{eq:11.7.8}
+\end{equation}
+and
+\begin{equation}
+  R_{r\theta}=R_{r\varphi}=R_{\theta\varphi}
+  =R_{\theta t}=R_{\varphi t}=0.
+  \tag{11.7.9}\label{eq:11.7.9}
+\end{equation}
+
+As a simple but important application of these results, let us consider a
+spherically symmetric but not necessarily static field in \emph{empty space},
+where the field equations read \(R_{\mu\nu}=0\). According to
+Eq.~\eqref{eq:11.7.7}, the field equation \(R_{tr}=0\) just tells us that
+\(A\) is time-independent:
+\[
+  \dot A=0.
+\]
+Inspection of Eqs.~\eqref{eq:11.7.4}--\eqref{eq:11.7.6} then shows that
+\emph{all} time derivatives drop out of the field equations, and they become
+identical with the equations for a static isotropic gravitational field in
+empty space. [See Eq.~\eqref{eq:8.1.13}.] We can then repeat the arguments
+of Section~\ref{sec:8.2}; the vanishing of \(R_{rr}\) and \(R_{tt}\) gives
+\[
+  (AB)'=0,
+\]
+and the vanishing of \(R_{\theta\theta}\) gives
+\[
+  \left(\frac rA\right)'=1.
+\]
+Since \(A\) is time-independent, the general solution is
+\[
+  A=\left(1-\frac{2MG}{r}\right)^{-1},
+  \qquad
+  B=f(t)\left(1-\frac{2MG}{r}\right),
+\]
+with \(GM\) a time-independent integration constant, and \(f(t)\) an unknown
+function of \(t\). The function \(f(t)\) can be made to equal unity by
+defining a new time coordinate:
+\[
+  t'=\int^t f^{1/2}(t)\,dt.
+\]
+The metric is now entirely time-independent, and agrees with the Schwarzschild
+solution \eqref{eq:8.2.12}. We have thus proved the \emph{Birkhoff
+theorem},\hyperref[ch11-ref-30]{\textsuperscript{30}} that a spherically
+symmetric gravitational field in empty space must be static, with a metric
+given by the Schwarzschild solution.
+
+The Birkhoff theorem is analogous to the result proved by Newton in his theory
+of the lunar motion, that the gravitational field outside a spherically
+symmetric body behaves as if the whole mass of the body were concentrated at
+the center. It is a little surprising that this result should apply in general
+relativity as well as in Newton's theory, for in general relativity a nonstatic
+body will usually radiate gravitational waves. The Birkhoff theorem tells us
+that, although a pulsating spherically symmetric body can of course produce
+nonstatic gravitational fields within its mass, no gravitational radiation
+can escape into empty space. In this sense, the Birkhoff theorem is analogous
+to the well-known result of atomic theory, that a photon cannot be emitted in
+a quantum transition between two states of zero spin.
+
+The Birkhoff theorem may be applied, not only to the gravitational field
+outside a body, but also to the field inside an empty spherical cavity at the
+center of a spherically symmetric (but not necessarily static) body. In this
+case the metric is again given by the Schwarzschild solution, but since the
+point \(r=0\) is here in empty space, there can be no singularity, so the
+integration constant \(MG\) must vanish. The Birkhoff theorem thus has the
+corollary that \emph{the metric inside an empty spherical cavity at the center
+of a spherically symmetric system must be equivalent to the flat-space
+Minkowski metric \(\eta_{\mu\nu}\)}. This corollary is analogous to another
+famous result of Newtonian theory, that the gravitational field of a spherical
+shell vanishes inside the shell. Stars do not usually have holes at their
+centers, so this corollary will not be of much use to us in this chapter. Its
+importance arises from the fact that the Birkhoff theorem is a local theorem,
+not depending on any conditions on the metric for \(r\to\infty\) (aside from
+spherical symmetry), so that space must be flat in a spherical cavity at the
+center of a spherically symmetric system, even if the system is
+infinite---even, in fact, if the system is the whole universe. We shall see
+in Section~15.1 that the corollary to Birkhoff's theorem can be used to justify
+a limited use of Newtonian mechanics in cosmological problems.

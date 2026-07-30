@@ -1,0 +1,64 @@
+% Source: Weinberg GR, physical PDF p. 506 (printed p. 482).
+% Coverage: Figure 15.1, matter-dominated Friedmann solutions.
+% Status: source-reviewed and compile-clean; redrawn in TikZ with the
+%         binding scale factor a.
+% Uncertainties: none.
+
+\begingroup
+\renewcommand{\thefigure}{15.1}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[x=0.88cm,y=0.88cm,>=Stealth]
+    \draw[->] (0,0) -- (7.45,0) node[right] {\(t\)};
+    \draw[->] (0,0) -- (0,4.85) node[above] {\(a\)};
+
+    % Open, flat, and closed matter-dominated Friedmann solutions.
+    \draw[thick]
+      plot[smooth] coordinates
+      {(0,0) (0.28,0.95) (0.62,1.75) (1.05,2.45)
+       (1.48,3.12) (1.92,3.78) (2.35,4.36)};
+    \node[anchor=west] at (2.08,4.27) {\(k=-1\)};
+
+    \draw[thick]
+      plot[smooth] coordinates
+      {(0,0) (0.32,0.85) (0.78,1.62) (1.38,2.35)
+       (2.05,3.03) (2.75,3.62) (3.30,4.05)};
+    \node[anchor=west] at (3.17,4.08) {\(k=0\)};
+
+    \draw[thick]
+      (0,0)
+      .. controls (0.58,1.86) and (1.82,2.55) .. (3.55,2.62)
+      .. controls (5.25,2.57) and (6.68,1.42) .. (7.15,0);
+    \node[anchor=west] at (5.92,2.52) {\(k=+1\)};
+
+    % Values of q along the k=-1 branch.
+    \foreach \x/\y/\lab/\dx/\dy in {
+      0.00/0.00/{0.5}/0.18/0.18,
+      0.43/1.30/{0.3}/-0.48/0.07,
+      1.04/2.43/{0.25}/-0.55/0.08,
+      1.72/3.50/{0.21}/-0.58/0.08
+    }{
+      \fill[white] (\x,\y) circle (2.2pt);
+      \draw (\x,\y) circle (2.2pt);
+      \node at ({\x+\dx},{\y+\dy}) {\(\lab\)};
+    }
+
+    % Values of q along the k=+1 branch.
+    \foreach \x/\y/\lab/\dx/\dy in {
+      0.37/0.84/{1}/0.22/-0.24,
+      1.13/1.83/{2}/0.24/-0.25,
+      2.38/2.45/{7.5}/0.00/-0.32,
+      3.55/2.62/{\infty}/0.00/-0.32
+    }{
+      \fill[white] (\x,\y) circle (2.2pt);
+      \draw (\x,\y) circle (2.2pt);
+      \node at ({\x+\dx},{\y+\dy}) {\(\lab\)};
+    }
+  \end{tikzpicture}
+  \caption{Solutions of Einstein's equations for a Robertson--Walker
+  universe with curvature \(k=+1\), \(k=0\), and \(k=-1\). The numbers
+  along the curves \(k=\pm1\) give the values of the deceleration parameter
+  \(q\) at various epochs.}
+  \label{fig:15.1}
+\end{figure}
+\endgroup

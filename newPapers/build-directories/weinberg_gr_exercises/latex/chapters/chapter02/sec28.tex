@@ -1,0 +1,202 @@
+% Source: Weinberg GR, physical PDF pp. 69--72
+%         (printed pp. 43--46).
+% Coverage: Section 2.8, Energy-Momentum Tensor; equations
+%           (2.8.1)--(2.8.14), including (2.8.5a).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Energy-Momentum Tensor}\label{sec:2.8}
+
+In Section~\ref{sec:2.6} we introduced the density \(\rho\) and current
+\(\mathbf J\) of electric charge. We now give a similar definition for the
+density and current of the energy-momentum four-vector \(p^\mu\). First
+consider a system of particles labeled \(n\), with energy-momentum four-vectors
+\(p_n^\mu(t)\). The density of \(p^\mu\) is defined by
+\begin{equation}
+  T^{\mu0}(\mathbf x,t)
+  \equiv\sum_n p_n^\mu(t)
+  \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
+  \tag{2.8.1}\label{eq:2.8.1}
+\end{equation}
+and its current is defined by
+\begin{equation}
+  T^{\mu i}(\mathbf x,t)
+  \equiv\sum_n p_n^\mu(t)\frac{dx_n^i(t)}{dt}
+  \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr).
+  \tag{2.8.2}\label{eq:2.8.2}
+\end{equation}
+These two definitions can be united into a single formula,
+\begin{equation}
+  T^{\mu\nu}(x)
+  =\sum_n p_n^\mu(t)\frac{dx_n^\nu(t)}{dt}
+  \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
+  \tag{2.8.3}\label{eq:2.8.3}
+\end{equation}
+where \(x_n^0(t)=t\). We note from Eq.~\eqref{eq:2.4.10} that
+\[
+  p_n^\nu=E_n\frac{dx_n^\nu}{dt},
+\]
+so Eq.~\eqref{eq:2.8.3} can also be written as
+\begin{equation}
+  T^{\mu\nu}(x)
+  =\sum_n\frac{p_n^\mu p_n^\nu}{E_n}
+  \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
+  \tag{2.8.4}\label{eq:2.8.4}
+\end{equation}
+and we see that \(T^{\mu\nu}\) is symmetric:
+\begin{equation}
+  T^{\mu\nu}(x)=T^{\nu\mu}(x).
+  \tag{2.8.5}\label{eq:2.8.5}
+\end{equation}
+We can also write Eq.~\eqref{eq:2.8.3}, in analogy with
+Eq.~\eqref{eq:2.6.5}, as
+\begin{equation}
+  T^{\mu\nu}(x)
+  =\sum_n\int d\tau\,p_n^\mu
+    \frac{dx_n^\nu}{d\tau}\,
+    \delta^4\bigl(x-x_n(\tau)\bigr),
+  \tag{2.8.5a}\label{eq:2.8.5a}
+\end{equation}
+and we see that \(T^{\mu\nu}\) is a tensor; that is,
+\[
+  T'^{\mu\nu}
+  =\Lambda^\mu{}_\rho\Lambda^\nu{}_\sigma T^{\rho\sigma}
+\]
+under a Lorentz transformation \eqref{eq:2.1.1}.
+
+The conservation law for \(T^{\mu\nu}\) will take a little more thought.
+Returning to Eqs.~\eqref{eq:2.8.1} and \eqref{eq:2.8.2}, we see that
+\[
+\begin{aligned}
+  \partial_i T^{\mu i}(\mathbf x,t)
+  &=-\sum_n p_n^\mu(t)\frac{dx_n^i(t)}{dt}
+    % NOTATION EXCEPTION: the differentiated particle coordinate must remain
+    % explicit to distinguish it from the field coordinate.
+    \frac{\partial}{\partial x_n^i}
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)\\
+  &=-\sum_n p_n^\mu(t)\partial_t
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)\\
+  &=-\partial_t T^{\mu0}(\mathbf x,t)
+    +\sum_n\frac{dp_n^\mu(t)}{dt}
+     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
+\end{aligned}
+\]
+and so
+\begin{equation}
+  \partial_\nu T^{\mu\nu}=G^\mu ,
+  \tag{2.8.6}\label{eq:2.8.6}
+\end{equation}
+where \(G^\mu\) is the \emph{density of force},
+\[
+\begin{aligned}
+  G^\mu(\mathbf x,t)
+  &\equiv\sum_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+      \frac{dp_n^\mu(t)}{dt}\\
+  &=\sum_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+      \frac{d\tau}{dt}f_n^\mu(t).
+\end{aligned}
+\]
+If the particles are free, then \(p_n^\mu\) is constant and \(T^{\mu\nu}\)
+is conserved; that is,
+\begin{equation}
+  \partial_\nu T^{\mu\nu}(x)=0 .
+  \tag{2.8.7}\label{eq:2.8.7}
+\end{equation}
+The same is also true if the particles interact only during collisions that are
+strictly localized in space. In this case Eq.~\eqref{eq:2.8.6} gives
+\[
+  \partial_\nu T^{\mu\nu}(x)
+  =\sum_c\delta^3\bigl(\mathbf x-\mathbf x_c(t)\bigr)
+    \frac{d}{dt}\sum_{n\in c}p_n^\mu(t),
+\]
+where \(\mathbf x_c(t)\) is the location of the \(c\)th collision going on at
+time \(t\), and \(n\in c\) means we sum only over the particles participating
+in the \(c\)th collision. But each collision conserves momentum, so
+\(\sum_{n\in c}p_n^\mu(t)\) must be time-independent, yielding the
+conservation equation \eqref{eq:2.8.7}.
+
+The energy-momentum tensor \eqref{eq:2.8.3} will not be conserved if the
+particles are subject to forces that act at a distance. For instance, consider
+a gas of charged particles, with charges \(e_n\). Then
+Eqs.~\eqref{eq:2.8.6}, \eqref{eq:2.4.1}, and \eqref{eq:2.7.9} give
+\[
+  \partial_\nu T^{\mu\nu}(x)
+  =\sum_n e_nF^\mu{}_\rho(x)\frac{dx_n^\rho}{dt}
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
+\]
+and, using Eq.~\eqref{eq:2.6.4}, this gives
+\begin{equation}
+  \partial_\nu T^{\mu\nu}(x)
+  =F^\mu{}_\rho(x)J^\rho(x).
+  \tag{2.8.8}\label{eq:2.8.8}
+\end{equation}
+Although this is not conserved, we can construct a conserved tensor by adding
+a purely electromagnetic term
+\begin{equation}
+  T_{\mathrm{em}}^{\mu\nu}
+  \equiv F^\mu{}_\rho F^{\nu\rho}
+  -\frac14\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+  \tag{2.8.9}\label{eq:2.8.9}
+\end{equation}
+That is, the electromagnetic energy and momentum densities are given by
+\begin{equation}
+  T_{\mathrm{em}}^{00}
+  =\frac12(\mathbf E^2+\mathbf B^2),
+  \qquad
+  T_{\mathrm{em}}^{i0}=(\mathbf E\times\mathbf B)_i .
+  \tag{2.8.10}\label{eq:2.8.10}
+\end{equation}
+We note that
+\[
+  \partial_\nu T_{\mathrm{em}}^{\mu\nu}
+  =F^\mu{}_\rho\partial_\nu F^{\nu\rho}
+   +F^{\nu\rho}\partial_\nu F^\mu{}_\rho
+   -\frac12F_{\rho\sigma}\partial^\mu F^{\rho\sigma}.
+\]
+[Here \(\partial^\mu=\eta^{\mu\nu}\partial_\nu\).] With a little reshuffling
+of indices, this becomes
+\[
+  \partial_\nu T_{\mathrm{em}}^{\mu\nu}
+  =F^\mu{}_\rho\partial_\nu F^{\nu\rho}
+   -\frac12F^{\rho\sigma}
+   \left(
+     \partial^\mu F_{\rho\sigma}
+     +\partial_\rho F_\sigma{}^\mu
+     +\partial_\sigma F^\mu{}_\rho
+   \right).
+\]
+Using the Maxwell equations \eqref{eq:2.7.6} and \eqref{eq:2.7.10}, we find
+\begin{equation}
+  \partial_\nu T_{\mathrm{em}}^{\mu\nu}
+  =-F^\mu{}_\rho J^\rho .
+  \tag{2.8.11}\label{eq:2.8.11}
+\end{equation}
+Comparing Eq.~\eqref{eq:2.8.8} with Eq.~\eqref{eq:2.8.11}, we are led to
+redefine the energy-momentum tensor as
+\begin{equation}
+  T^{\mu\nu}
+  =\sum_n p_n^\mu\frac{dx_n^\nu}{dt}
+    \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
+   +T_{\mathrm{em}}^{\mu\nu}.
+  \tag{2.8.12}\label{eq:2.8.12}
+\end{equation}
+This is again a symmetric tensor, and is now conserved:
+\begin{equation}
+  \partial_\nu T^{\mu\nu}=0 .
+  \tag{2.8.13}\label{eq:2.8.13}
+\end{equation}
+We can continue to add more and more terms to \(T^{\mu\nu}\) to account for
+other fields and keep \(T^{\mu\nu}\) conserved. A systematic method for
+constructing these terms is presented in Chapter~12.
+
+Just as the integral of the charge density \(J^0\) is the total charge, the
+integral of the density \(T^{\mu0}\) of \(p^\mu\) is the total \(p^\mu\):
+\begin{equation}
+  p^\mu_{\mathrm{total}}
+  =\int d^3x\,T^{\mu0}(\mathbf x,t).
+  \tag{2.8.14}\label{eq:2.8.14}
+\end{equation}
+That this is a constant four-vector can be shown in the same way that we showed
+in Section~\ref{sec:2.6} that the total charge \eqref{eq:2.6.7} is a constant
+scalar.

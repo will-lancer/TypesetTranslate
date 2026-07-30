@@ -1,0 +1,267 @@
+% Source: Weinberg GR, physical PDF pp. 128--131 (printed pp. 103--106).
+% Coverage: Section 4.6, Covariant Differentiation; equations
+%           (4.6.1)--(4.6.19).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Covariant Differentiation}\label{sec:4.6}
+
+We have already remarked that differentiation of a tensor does not generally
+yield another tensor. For instance, consider a contravariant vector \(V^\mu\),
+whose transformation law is
+\[
+  V'^\mu=\frac{\partial x'^\mu}{\partial x^\nu}V^\nu.
+\]
+Differentiating with respect to \(x'^\lambda\) gives
+\begin{equation}
+  \partial'_\lambda V'^\mu
+  =
+  \frac{\partial x'^\mu}{\partial x^\nu}
+  \frac{\partial x^\rho}{\partial x'^\lambda}
+  \partial_\rho V^\nu
+  +
+  \frac{\partial^2x'^\mu}
+       {\partial x^\nu\,\partial x^\rho}
+  \frac{\partial x^\rho}{\partial x'^\lambda}V^\nu.
+  \tag{4.6.1}\label{eq:4.6.1}
+\end{equation}
+The first term on the right is what we would expect if
+\(\partial_\lambda V^\mu\) were a tensor; the second term is what destroys
+the tensor behavior.
+
+Although \(\partial_\lambda V^\mu\) is not a tensor, we can use it to
+construct a tensor. Using Eq.~\eqref{eq:4.5.8}, we see that
+\begin{equation}
+  \Gamma'^\mu{}_{\lambda\kappa}V'^\kappa
+  =
+  \frac{\partial x'^\mu}{\partial x^\nu}
+  \frac{\partial x^\rho}{\partial x'^\lambda}
+  \Gamma^\nu{}_{\rho\sigma}V^\sigma
+  -
+  \frac{\partial^2x'^\mu}
+       {\partial x^\nu\,\partial x^\rho}
+  \frac{\partial x^\rho}{\partial x'^\lambda}V^\nu.
+  \tag{4.6.2}\label{eq:4.6.2}
+\end{equation}
+Adding Eqs.~\eqref{eq:4.6.1} and \eqref{eq:4.6.2}, we find that the
+inhomogeneous terms cancel, yielding
+\begin{equation}
+  \partial'_\lambda V'^\mu
+  +\Gamma'^\mu{}_{\lambda\kappa}V'^\kappa
+  =
+  \frac{\partial x'^\mu}{\partial x^\nu}
+  \frac{\partial x^\rho}{\partial x'^\lambda}
+  \left(
+    \partial_\rho V^\nu+\Gamma^\nu{}_{\rho\sigma}V^\sigma
+  \right).
+  \tag{4.6.3}\label{eq:4.6.3}
+\end{equation}
+Thus we are led to define a \textit{covariant derivative}
+\begin{equation}
+  \nabla_\lambda V^\mu
+  \equiv
+  \partial_\lambda V^\mu+\Gamma^\mu{}_{\lambda\kappa}V^\kappa,
+  \tag{4.6.4}\label{eq:4.6.4}
+\end{equation}
+and Eq.~\eqref{eq:4.6.3} tells us that \(\nabla_\lambda V^\mu\) is a
+tensor:
+\[
+  \nabla'_\lambda V'^\mu
+  =
+  \frac{\partial x'^\mu}{\partial x^\nu}
+  \frac{\partial x^\rho}{\partial x'^\lambda}
+  \nabla_\rho V^\nu.
+\]
+
+We can also define a covariant derivative for a covariant vector \(V_\mu\).
+We recall its transformation rule,
+\[
+  V'_\mu=\frac{\partial x^\rho}{\partial x'^\mu}V_\rho.
+\]
+Differentiating with respect to \(x'^\nu\) gives
+\begin{equation}
+  \partial'_\nu V'_\mu
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  \partial_\sigma V_\rho
+  +
+  \frac{\partial^2x^\rho}
+       {\partial x'^\mu\,\partial x'^\nu}V_\rho.
+  \tag{4.6.5}\label{eq:4.6.5}
+\end{equation}
+From Eq.~\eqref{eq:4.5.2} we have
+\begin{equation}
+  \Gamma'^\lambda{}_{\mu\nu}V'_\lambda
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  \Gamma^\kappa{}_{\rho\sigma}V_\kappa
+  +
+  \frac{\partial^2x^\kappa}
+       {\partial x'^\mu\,\partial x'^\nu}V_\kappa.
+  \tag{4.6.6}\label{eq:4.6.6}
+\end{equation}
+The inhomogeneous terms cancel if we subtract Eq.~\eqref{eq:4.6.6} from
+Eq.~\eqref{eq:4.6.5}:
+\begin{equation}
+  \partial'_\nu V'_\mu-\Gamma'^\lambda{}_{\mu\nu}V'_\lambda
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  \left(
+    \partial_\sigma V_\rho-\Gamma^\kappa{}_{\rho\sigma}V_\kappa
+  \right).
+  \tag{4.6.7}\label{eq:4.6.7}
+\end{equation}
+We therefore define the covariant derivative of a covariant vector by
+\begin{equation}
+  \nabla_\nu V_\mu
+  \equiv
+  \partial_\nu V_\mu-\Gamma^\lambda{}_{\mu\nu}V_\lambda,
+  \tag{4.6.8}\label{eq:4.6.8}
+\end{equation}
+and Eq.~\eqref{eq:4.6.7} tells us that it is a tensor:
+\begin{equation}
+  \nabla'_\nu V'_\mu
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  \nabla_\sigma V_\rho.
+  \tag{4.6.9}\label{eq:4.6.9}
+\end{equation}
+
+It is obvious how these definitions are to be extended to a general tensor.
+The covariant derivative with respect to \(x^\rho\) of a tensor \(T\) equals
+\(\partial_\rho T\), plus one term
+\(\Gamma^\mu{}_{\rho\nu}T\) for each contravariant index \(\mu\), with
+\(\mu\) replaced by \(\nu\), and minus one term
+\(\Gamma^\nu{}_{\rho\lambda}T\) for each covariant index \(\lambda\), with
+\(\lambda\) replaced by \(\nu\). For instance,
+\begin{equation}
+  \nabla_\rho T^{\mu\nu}{}_\lambda
+  =
+  \partial_\rho T^{\mu\nu}{}_\lambda
+  +\Gamma^\mu{}_{\rho\kappa}T^{\kappa\nu}{}_\lambda
+  +\Gamma^\nu{}_{\rho\kappa}T^{\mu\kappa}{}_\lambda
+  -\Gamma^\kappa{}_{\rho\lambda}T^{\mu\nu}{}_\kappa.
+  \tag{4.6.10}\label{eq:4.6.10}
+\end{equation}
+The reader may easily verify that this is a tensor.
+
+We can also extend the idea of covariant differentiation to tensor densities.
+The easiest way to do this is to recall that if
+\(\mathcal T\) is a tensor density of weight \(W\), then
+\((-g)^{W/2}\mathcal T\) is an ordinary tensor. Its covariant derivative is
+also a tensor, and multiplying by \((-g)^{-W/2}\) gives back a tensor density
+of weight \(W\). Hence the covariant derivative of a tensor density of weight
+\(W\) is defined by
+\begin{equation}
+  \nabla_\rho\mathcal T
+  \equiv
+  (-g)^{-W/2}
+  \nabla_\rho\!\left[(-g)^{W/2}\mathcal T\right],
+  \tag{4.6.11}\label{eq:4.6.11}
+\end{equation}
+and we need not check that this is a tensor density of weight \(W\). The
+effect is that the covariant derivative with respect to \(x^\rho\) of a
+tensor density \(\mathcal T\) of weight \(W\) is constructed just as if it
+were an ordinary tensor, except that we add an extra term
+\((W/2g)(\partial_\rho g)\mathcal T\). For instance,
+\begin{equation}
+  \nabla_\rho\mathcal T^\mu{}_\lambda
+  =
+  \partial_\rho\mathcal T^\mu{}_\lambda
+  +\Gamma^\mu{}_{\rho\nu}\mathcal T^\nu{}_\lambda
+  -\Gamma^\nu{}_{\rho\lambda}\mathcal T^\mu{}_\nu
+  +\frac{W}{2g}(\partial_\rho g)\mathcal T^\mu{}_\lambda.
+  \tag{4.6.12}\label{eq:4.6.12}
+\end{equation}
+
+The combination of covariant differentiation with the algebraic operations
+described in Section~\ref{sec:4.3} gives results similar to those for ordinary
+differentiation. In particular:
+
+\begin{enumerate}
+  \item[(A)] For constant coefficients, the covariant derivative of a linear
+  combination of tensors is the same linear combination of their covariant
+  derivatives. For instance, if \(\alpha\) and \(\beta\) are constants, then
+  \begin{equation}
+    \nabla_\lambda(\alpha A^\mu+\beta B^\mu)
+    =
+    \alpha\nabla_\lambda A^\mu+\beta\nabla_\lambda B^\mu.
+    \tag{4.6.13}\label{eq:4.6.13}
+  \end{equation}
+
+  \item[(B)] The covariant derivative of a direct product of tensors obeys
+  the Leibniz rule. For instance,
+  \begin{equation}
+    \nabla_\rho(A^\mu B^\lambda)
+    =
+    (\nabla_\rho A^\mu)B^\lambda
+    +A^\mu\nabla_\rho B^\lambda.
+    \tag{4.6.14}\label{eq:4.6.14}
+  \end{equation}
+
+  \item[(C)] The covariant derivative of a contracted tensor is the
+  contraction of the covariant derivative. For instance, setting
+  \(\sigma=\lambda\) in Eq.~\eqref{eq:4.6.10} gives, after the last two
+  connection terms cancel,
+  \begin{equation}
+    \nabla_\rho T^{\mu\lambda}{}_\lambda
+    =
+    \partial_\rho T^{\mu\lambda}{}_\lambda
+    +\Gamma^\mu{}_{\rho\nu}T^{\nu\lambda}{}_\lambda.
+    \tag{4.6.15}\label{eq:4.6.15}
+  \end{equation}
+\end{enumerate}
+
+We also note that the covariant derivative of the metric tensor is zero,
+because it vanishes in locally inertial coordinates where
+\(\Gamma^\mu{}_{\nu\lambda}\) and \(\partial_\lambda g_{\mu\nu}\) vanish,
+and a tensor that is zero in one coordinate system is zero in all systems.
+The same result can be obtained more directly from Eq.~\eqref{eq:4.5.4}:
+\begin{equation}
+  \nabla_\lambda g_{\mu\nu}=0.
+  \tag{4.6.16}\label{eq:4.6.16}
+\end{equation}
+(This argument can be reversed to provide yet another derivation of the
+relation between \(g_{\mu\nu}\) and \(\Gamma^\lambda{}_{\mu\nu}\).) We can
+also show in the same way that the covariant derivatives of the other forms
+of the metric tensor vanish; that is,
+\begin{equation}
+  \nabla_\lambda g^{\mu\nu}=0,
+  \tag{4.6.17}\label{eq:4.6.17}
+\end{equation}
+\begin{equation}
+  \nabla_\lambda\delta^\mu{}_\nu=0.
+  \tag{4.6.18}\label{eq:4.6.18}
+\end{equation}
+From Eqs.~\eqref{eq:4.6.16}--\eqref{eq:4.6.18} it follows that the
+operations of covariant differentiation and raising and lowering indices
+commute; for example,
+\begin{equation}
+  \nabla_\lambda(g^{\mu\nu}V_\nu)
+  =
+  g^{\mu\nu}\nabla_\lambda V_\nu.
+  \tag{4.6.19}\label{eq:4.6.19}
+\end{equation}
+
+The importance of covariant differentiation arises from two of its
+properties: It converts tensors to other tensors, and it reduces to ordinary
+differentiation in the absence of gravitation, that is, when
+\(\Gamma^\mu{}_{\nu\lambda}=0\). These properties suggest the following
+algorithm for assessing the effects of gravitation on physical systems:
+
+\begin{quote}
+\itshape
+Write the appropriate special-relativistic equations that hold in the
+absence of gravitation, replace \(\eta_{\mu\nu}\) with \(g_{\mu\nu}\), and
+replace all derivatives with covariant derivatives. The resulting equations
+will be generally covariant and true in the absence of gravitation, and
+therefore, according to the Principle of General Covariance, they will be
+true in the presence of gravitational fields, provided always that we work
+on a spacetime scale sufficiently small compared with the scale of the
+gravitational field.
+\end{quote}

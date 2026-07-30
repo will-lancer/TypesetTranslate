@@ -1,0 +1,184 @@
+% Source: Weinberg GR, physical PDF pp. 118--121 (printed pp. 93--96).
+% Coverage: Section 4.2, Vectors and Tensors; equations (4.2.1)--(4.2.8).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Vectors and Tensors}\label{sec:4.2}
+
+In order to construct physical equations that are invariant under general
+coordinate transformations, we must know how the quantities described by the
+equations behave under these transformations. For some quantities, those
+defined directly in terms of coordinate differentials, the transformation
+properties may be determined by a straightforward calculation. For other
+quantities, such as the electromagnetic fields, the transformation properties
+are partially a matter of definition. However, there is a tendency for all
+quantities of physical interest to transform in a reasonably simple way, for
+otherwise it would be difficult to put them together to form invariant
+equations. In this section we describe one class of objects whose
+transformation properties are particularly simple, giving examples (where we
+can) from quantities defined directly in terms of the coordinate system.
+
+The simplest of all transformation rules is that of the \textit{scalars},
+which simply do not change under general coordinate transformations. The
+obvious example is a pure number, like 137 or \(\pi\) or zero. Another example
+is the proper time \(\dd\tau\), given by Eq.~\eqref{eq:3.2.6}; in fact, we
+shall see below that the metric tensor \(g_{\mu\nu}\) is defined to transform
+in just such a way as to keep \(\dd\tau^2\) invariant.
+
+The next simplest transformation rule is that of a \textit{contravariant
+vector}, \(V^\mu\), which under a coordinate transformation
+\(x^\mu\to x'^\mu\) transforms into
+\begin{equation}
+  V'^\mu
+  =\frac{\partial x'^\mu}{\partial x^\nu}V^\nu .
+  \tag{4.2.1}\label{eq:4.2.1}
+\end{equation}
+For instance, the rules of partial differentiation give
+\begin{equation}
+  \dd x'^\mu
+  =\frac{\partial x'^\mu}{\partial x^\nu}\,\dd x^\nu ,
+  \tag{4.2.2}\label{eq:4.2.2}
+\end{equation}
+so the coordinate differential is a contravariant vector. A very closely
+related transformation rule is that of a \textit{covariant vector} \(U_\mu\),
+which under a coordinate transformation \(x^\mu\to x'^\mu\) transforms into
+\begin{equation}
+  U'_\mu
+  =\frac{\partial x^\nu}{\partial x'^\mu}U_\nu .
+  \tag{4.2.3}\label{eq:4.2.3}
+\end{equation}
+For instance, if \(\phi\) is a scalar field, then \(\partial_\mu\phi\) is a
+covariant vector, because in a transformed coordinate system the gradient is
+\begin{equation}
+  \partial'_\mu\phi
+  =\frac{\partial x^\nu}{\partial x'^\mu}\,\partial_\nu\phi ,
+  \tag{4.2.4}\label{eq:4.2.4}
+\end{equation}
+in agreement with Eq.~\eqref{eq:4.2.3}.
+
+From the contravariant and covariant vectors we can immediately generalize to
+the \textit{tensors}. A tensor with upper indices \(\mu,\nu,\ldots\) and
+lower indices \(\kappa,\lambda,\ldots\) transforms like the product of
+contravariant vectors \(U^\mu V^\nu\cdots\) and covariant vectors
+\(V_\kappa Y_\lambda\cdots\). For instance, under a coordinate
+transformation \(x^\mu\to x'^\mu\), a tensor
+\(T^{\mu\nu}{}_{\kappa\lambda}\) will transform into
+\begin{equation}
+  T'^{\mu\nu}{}_{\kappa\lambda}
+  =
+  \frac{\partial x'^\mu}{\partial x^\rho}
+  \frac{\partial x'^\nu}{\partial x^\sigma}
+  \frac{\partial x^\tau}{\partial x'^\kappa}
+  \frac{\partial x^\omega}{\partial x'^\lambda}
+  T^{\rho\sigma}{}_{\tau\omega}.
+  \tag{4.2.5}\label{eq:4.2.5}
+\end{equation}
+If all indices are upstairs the tensor is called contravariant; if all
+indices are downstairs the tensor is called covariant; otherwise it is called
+mixed. The most important example is the metric tensor, defined in
+Section~\ref{sec:3.2} for a general coordinate system \(x^\mu\) by
+\[
+  g_{\mu\nu}
+  =\eta_{\alpha\beta}
+   \frac{\partial \xi^\alpha}{\partial x^\mu}
+   \frac{\partial \xi^\beta}{\partial x^\nu},
+\]
+where \(\xi^\alpha\) is a locally inertial coordinate system. In a different
+coordinate system \(x'^\mu\), the metric tensor is
+\begin{align*}
+  g'_{\mu\nu}
+  &=
+  \eta_{\alpha\beta}
+  \frac{\partial \xi^\alpha}{\partial x'^\mu}
+  \frac{\partial \xi^\beta}{\partial x'^\nu}
+  \\
+  &=
+  \eta_{\alpha\beta}
+  \frac{\partial \xi^\alpha}{\partial x^\rho}
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial \xi^\beta}{\partial x^\sigma}
+  \frac{\partial x^\sigma}{\partial x'^\nu},
+\end{align*}
+and therefore
+\begin{equation}
+  g'_{\mu\nu}
+  =
+  g_{\rho\sigma}
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}.
+  \tag{4.2.6}\label{eq:4.2.6}
+\end{equation}
+We see that \(g_{\mu\nu}\) is indeed a covariant tensor. Its inverse is a
+contravariant tensor, for if we define \(g^{\lambda\mu}\) so that
+\[
+  g^{\lambda\mu}g_{\mu\nu}=\delta^\lambda{}_\nu,
+\]
+we shall have
+\begin{align*}
+  &\frac{\partial x'^\lambda}{\partial x^\rho}
+   \frac{\partial x'^\mu}{\partial x^\sigma}
+   g^{\rho\sigma}g'_{\mu\nu}
+  \\
+  &\quad =
+  \frac{\partial x'^\lambda}{\partial x^\rho}
+  \frac{\partial x'^\mu}{\partial x^\sigma}
+  g^{\rho\sigma}
+  \frac{\partial x^\kappa}{\partial x'^\mu}
+  \frac{\partial x^\eta}{\partial x'^\nu}
+  g_{\kappa\eta}
+  =
+  \frac{\partial x'^\lambda}{\partial x^\rho}
+  \frac{\partial x^\eta}{\partial x'^\nu}
+  g^{\rho\kappa}g_{\kappa\eta}
+  =
+  \frac{\partial x'^\lambda}{\partial x^\rho}
+  \frac{\partial x^\rho}{\partial x'^\nu}
+  =
+  \delta^\lambda{}_\nu,
+\end{align*}
+and therefore
+\begin{equation}
+  g'^{\lambda\mu}
+  =
+  \frac{\partial x'^\lambda}{\partial x^\rho}
+  \frac{\partial x'^\mu}{\partial x^\sigma}g^{\rho\sigma},
+  \tag{4.2.7}\label{eq:4.2.7}
+\end{equation}
+as required for a contravariant tensor. Finally, the Kronecker symbol
+\(\delta^\mu{}_\nu\) is a mixed tensor, because
+\begin{equation}
+  \delta^\mu{}_\nu
+  \frac{\partial x'^\rho}{\partial x^\mu}
+  \frac{\partial x^\nu}{\partial x'^\sigma}
+  =
+  \frac{\partial x'^\rho}{\partial x^\mu}
+  \frac{\partial x^\mu}{\partial x'^\sigma}
+  =
+  \delta^\rho{}_\sigma .
+  \tag{4.2.8}\label{eq:4.2.8}
+\end{equation}
+Aside from the scalars and zero, \(\delta^\mu{}_\nu\) (together with its
+direct products) is the only tensor whose components are the same in all
+coordinate systems.
+
+A vector is just a tensor with one index and a scalar is a tensor with no
+indices, so it will not generally be necessary to give the scalars and
+vectors special treatment in the following. However, the reader should be
+warned that not everything is a tensor; in particular, the affine connection
+\(\Gamma^\rho{}_{\mu\nu}\), despite its appearance, is \textit{not} a tensor.
+
+We can now recognize one very large class of invariant equations: Any
+equation will be invariant under general coordinate transformations if it
+states the equality of two tensors with the same upper and lower indices. For
+instance, if \(A^{\mu\nu}{}_{\kappa}\) and
+\(B^{\mu\nu}{}_{\kappa}\) are two tensors with the transformation rule
+\eqref{eq:4.2.5}, and if in the \(x^\mu\) coordinate system
+\(A^{\mu\nu}{}_{\kappa}=B^{\mu\nu}{}_{\kappa}\), then obviously in the
+\(x'^\mu\) coordinate system
+\(A'^{\mu\nu}{}_{\kappa}=B'^{\mu\nu}{}_{\kappa}\). In particular, since
+zero is any kind of tensor we want, a statement that a given tensor vanishes
+is invariant under general coordinate transformations. In contrast, a
+statement that is not an equality between tensors of the same kind (for
+instance, \(T^{\mu\nu}=5\) or \(V^\mu=U_\mu\)) may be numerically true in a
+limited class of coordinate systems, but not in all coordinate systems.

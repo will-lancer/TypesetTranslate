@@ -1,0 +1,700 @@
+% Source: Weinberg GR, physical PDF pp. 417--426 (printed pp. 395--404).
+% Coverage: Section 13.5, Spaces with Maximally Symmetric Subspaces;
+%           equations (13.5.1)--(13.5.32), all intervening unnumbered
+%           displays, and Table 13.1.
+% Figures/tables/footnotes: Table 13.1; no figures or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: printed p. 400 says “multiplying (13.4.19),” but the
+% displayed equation immediately used is (13.5.19); the in-text
+% cross-reference is corrected accordingly.
+% MODERNIZATION: Line elements use ds^2. The final cosmological metric
+% (13.5.32) uses (-+++), and coordinate derivatives are written compactly.
+% The bar on \bar g^{ij} is retained where it distinguishes the inverse of
+% the submatrix g_{ij} from the ij block of the inverse full metric.
+% LITERAL-OPERATOR AUDIT: all continuation operators in the coordinate-change,
+% integrability, Killing-vector, and metric displays were checked against the
+% source, including every term in (13.5.19).
+
+\subsection{Spaces with Maximally Symmetric Subspaces}\label{sec:13.5}
+
+In many cases of physical importance, the whole space (or space-time) is not
+maximally symmetric, but it can be decomposed into maximally symmetric
+subspaces. For instance, a spherically symmetric three-dimensional space can
+be decomposed into a family of spherical surfaces centered on the origin,
+each of which is described by a metric of the form \eqref{eq:13.3.28}. Also,
+in Chapter~14 we shall deal with space-times in which the metric is
+spherically symmetric and homogeneous on each ``plane'' of constant time.
+
+We shall see here that the maximal symmetry of a family of subspaces imposes
+very strong constraints on the metric of the whole space. In order to state
+and prove these results, let us first adopt a suitable coordinate system. If
+the whole space has \(N\) dimensions and its maximally symmetric subspaces
+have \(M\) dimensions, then we can distinguish these subspaces from each
+other with \(N-M\) coordinate labels \(v^a\), and locate points within each
+subspace with \(M\) coordinates \(u^i\). Some illustrations are given in
+Table~\ref{tab:13.1}.
+
+\begingroup
+\renewcommand{\thetable}{13.1}
+\begin{table}[htbp]
+  \centering
+  \caption{Examples of Spaces with Maximally Symmetric Subspaces}
+  \label{tab:13.1}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Example & \(v\)-Coordinates & \(u\)-Coordinates \\
+    \midrule
+    Spherically symmetric space
+      & \(r\) & \(\theta,\phi\) \\
+    Spherically symmetric space-time
+      & \(r,t\) & \(\theta,\phi\) \\
+    \begin{tabular}[t]{@{}l@{}}
+      Spherically symmetric and\\
+      homogeneous space-time
+    \end{tabular}
+      & \(t\) & \(r,\theta,\phi\) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\endgroup
+
+We say that the subspaces with constant \(v^a\) are \emph{maximally
+symmetric} if the metric of the whole space is invariant under a group of
+infinitesimal transformations
+\begin{equation}
+  u^i\longrightarrow u'^i
+  =
+  u^i+\epsilon\xi^i(u,v),
+  \tag{13.5.1}\label{eq:13.5.1}
+\end{equation}
+\begin{equation}
+  v^a\longrightarrow v'^a=v^a,
+  \tag{13.5.2}\label{eq:13.5.2}
+\end{equation}
+with \(M(M+1)/2\) independent Killing vectors \(\xi^i\). These are
+transformations of the general form \eqref{eq:13.1.3}, but with the special
+feature that the \(v^a\) are invariant, so that
+\begin{equation}
+  \xi^a(u,v)=0.
+  \tag{13.5.3}\label{eq:13.5.3}
+\end{equation}
+Note that, although these transformations affect only the \(u\) variables,
+there is no reason why the transformation rules cannot depend parametrically
+on the labels \(v^a\) of the particular subspace being transformed. Also, our
+statement that there are \(M(M+1)/2\) ``independent'' Killing vectors should
+be construed to mean that there are \(M(M+1)/2\) Killing vectors that are not
+subject to any linear relations with \(u\)-independent coefficients.
+
+The general result that governs the structure of such spaces is contained in
+the following theorem. It is always possible to choose the \(u\) coordinates
+so that the metric of the whole space is given by
+\begin{equation}
+  \dd s^2
+  =
+  g_{\mu\nu}\,\dd x^\mu\dd x^\nu
+  =
+  g_{ab}(v)\,\dd v^a\dd v^b
+  +f(v)\bar g_{ij}(u)\,\dd u^i\dd u^j,
+  \tag{13.5.4}\label{eq:13.5.4}
+\end{equation}
+where \(g_{ab}(v)\) and \(f(v)\) are functions of the \(v\) coordinates
+alone, and \(\bar g_{ij}(u)\) is a function of the \(u\) coordinates alone
+that is by itself the metric of an \(M\)-dimensional maximally symmetric
+space. (The summation convention is in force, with \(a,b,\ldots\) running
+over the \(N-M\) labels of the \(v\) coordinates, and
+\(i,j,k,l,\ldots\) running over the \(M\) labels of the \(u\) coordinates.)
+
+To begin our proof, we set down the condition that \eqref{eq:13.5.1} is an
+isometry of the whole metric \(g_{\mu\nu}(x)\). It is convenient to use this
+condition here in its original form \eqref{eq:13.1.4}, rather than in the
+more elegant covariant form \eqref{eq:13.1.5}. Each index
+\(\mu,\nu,\rho\) in \eqref{eq:13.1.4} now runs over the \(N-M\) coordinate
+labels of the \(v^a\) and the \(M\) coordinate labels of the \(u^i\), so
+\eqref{eq:13.1.4} now yields three separate equations. For
+\(\rho=i,\sigma=j\) we have
+\begin{equation}
+  0
+  =
+  \partial_i\xi^k(u,v)\,g_{kj}(u,v)
+  +\partial_j\xi^k(u,v)\,g_{ik}(u,v)
+  +\xi^k(u,v)\partial_k g_{ij}(u,v),
+  \tag{13.5.5}\label{eq:13.5.5}
+\end{equation}
+for \(\rho=i,\sigma=a\) we have
+\begin{equation}
+  0
+  =
+  \partial_i\xi^k(u,v)\,g_{ka}(u,v)
+  +\partial_a\xi^k(u,v)\,g_{ik}(u,v)
+  +\xi^k(u,v)\partial_k g_{ia}(u,v),
+  \tag{13.5.6}\label{eq:13.5.6}
+\end{equation}
+and for \(\rho=a,\sigma=b\) we have
+\begin{equation}
+  0
+  =
+  \partial_a\xi^k(u,v)\,g_{kb}(u,v)
+  +\partial_b\xi^k(u,v)\,g_{ka}(u,v)
+  +\xi^k(u,v)\partial_k g_{ab}(u,v).
+  \tag{13.5.7}\label{eq:13.5.7}
+\end{equation}
+
+Of these three equations, the first simply tells us that \(g_{ij}(u,v)\)
+must, for each fixed set of \(v^a\), be the metric of an \(M\)-dimensional
+space, with coordinates \(u^i\), which admits the Killing vector \(\xi^i\).
+We assume here that there are \(M(M+1)/2\) such independent Killing vectors,
+so this means that the submatrix \(g_{ij}(u,v)\) is by itself a maximally
+symmetric metric for each set of fixed \(v^a\). According to the arguments
+of Section~\ref{sec:13.1}, it also follows that at any given point \(u_0\)
+we can find Killing vectors \(\xi^k(u,v)\) for which \(\xi^k(u_0,v)\) and
+\(\xi_{k;l}(u_0,v)\) take arbitrary values, subject only to the requirement
+that \(\xi_{k;l}=-\xi_{l;k}\). Thus the metric \(g_{ij}(u,v)\) is for each
+\(v\) both homogeneous in \(u\) and isotropic about any point.
+
+The other two equations contain information about the other elements
+\(g_{ai}\) and \(g_{ab}\), and also about the \(v\)-dependence of the Killing
+vectors. (This \(v\)-dependence is not entirely arbitrary. For instance, it
+is true that by redefining the \(u\)-coordinates we can always arrange that
+the metric \(g_{ij}(u,v)\) has \(v\)-independent Killing vectors
+\(\bar\xi^i(u)\), but the Killing vectors \(\xi^i(u,v)\) of the whole space
+will then in general be linear combinations of the \(\bar\xi^i(u)\), with
+coefficients that can depend on the \(v\)-coordinates.) In order to
+disentangle the different information contained in \eqref{eq:13.5.6} and
+\eqref{eq:13.5.7}, it is extremely useful to choose a new set of coordinates
+\(u'^i(u,v)\) of the maximally symmetric subspaces, so that \(g'_{ja}\)
+vanishes. Suppose for a moment that we can find a function
+\(U^k(v;u_0)\) that satisfies the differential equation
+\begin{equation}
+  g_{ik}(U,v)\partial_a U^k
+  =
+  -g_{ia}(U,v),
+  \tag{13.5.8}\label{eq:13.5.8}
+\end{equation}
+with the initial condition that
+\begin{equation}
+  U^k(v_0;u_0)=u_0^k
+  \tag{13.5.9}\label{eq:13.5.9}
+\end{equation}
+at some point \(v_0^a\). The coordinates \(u'^i,v'^a\) are then defined by
+\begin{equation}
+  u^i=U^i(v';u'),
+  \tag{13.5.10}\label{eq:13.5.10}
+\end{equation}
+\begin{equation}
+  v^a=v'^a.
+  \tag{13.5.11}\label{eq:13.5.11}
+\end{equation}
+In this coordinate system, the metric has
+\[
+  \begin{aligned}
+  g'_{ja}(u',v')
+  &=
+  \frac{\partial u^l}{\partial u'^j}
+  \frac{\partial u^k}{\partial v'^a}g_{lk}(u,v)
+  +
+  \frac{\partial u^l}{\partial u'^j}g_{la}(u,v)
+  \\
+  &=
+  \frac{\partial U^l(v';u')}{\partial u'^j}
+  \left[
+    \frac{\partial U^k(v';u')}{\partial v'^a}
+    g_{lk}(U,v')
+    +g_{la}(U,v')
+  \right],
+  \end{aligned}
+\]
+and thus \eqref{eq:13.5.8} gives
+\begin{equation}
+  g'_{ia}=0.
+  \tag{13.5.12}\label{eq:13.5.12}
+\end{equation}
+
+Thus we can construct \(u'\) coordinates in which \(g'_{ia}\) vanishes, if
+we can find solutions of the differential equation \eqref{eq:13.5.8} with
+arbitrary initial conditions \eqref{eq:13.5.9}. We can rewrite
+\eqref{eq:13.5.8} in the equivalent form
+\begin{equation}
+  \partial_a U^k=-F_a^k(U,v),
+  \tag{13.5.13}\label{eq:13.5.13}
+\end{equation}
+where
+\begin{equation}
+  F_a^k(U,v)
+  \equiv
+  \bar g^{ki}(U,v)g_{ia}(U,v),
+  \tag{13.5.14}\label{eq:13.5.14}
+\end{equation}
+and \(\bar g^{ij}\) is the matrix reciprocal to \(g_{ij}\), that is,
+\begin{equation}
+  \bar g^{ij}g_{jk}=\delta^i_k.
+  \tag{13.5.15}\label{eq:13.5.15}
+\end{equation}
+(The bar is to remind us that the \(ij\) element \(\bar g^{ij}\) of the
+matrix reciprocal to \(g_{ij}\) is not the same as the \(ij\) element
+\(g^{ij}\) of the matrix \(g^{\mu\nu}\) reciprocal to \(g_{\mu\nu}\).)
+When there is only one \(v\) coordinate, as will be the case in our chapters
+on cosmology, it is obvious that \eqref{eq:13.5.13} can be solved with
+arbitrary initial conditions. In the general case, we shall have to do some
+work to prove that \eqref{eq:13.5.13} is integrable.
+
+Our method is the same as in Section~\ref{sec:13.2}: we try to solve
+\eqref{eq:13.5.13} in a neighborhood of \(v_0\) with a power series in
+\(v-v_0\),
+\begin{equation}
+  U^k
+  =
+  \sum_{n=0}^{\infty}
+  \frac1{n!}
+  c^k{}_{a_1\ldots a_n}
+  (v^{a_1}-v_0^{a_1})\cdots(v^{a_n}-v_0^{a_n}).
+  \tag{13.5.16}\label{eq:13.5.16}
+\end{equation}
+Clearly the initial conditions \eqref{eq:13.5.9} are satisfied if we choose
+the \(n=0\) coefficient as
+\[
+  c^k=u_0^k,
+\]
+and Eq.~\eqref{eq:13.5.13} is satisfied to zero order in \(v-v_0\) if we
+choose
+\[
+  c^k{}_a=-F_a^k(u_0,v_0).
+\]
+Now, proceeding by mathematical induction, suppose that we are able to
+choose the terms in \eqref{eq:13.5.16} up to order \((v-v_0)^n\) so that
+\eqref{eq:13.5.13} is satisfied to order \((v-v_0)^{n-1}\). Then we can
+use these terms to calculate the term in \(F_a^k(U,v)\) of order
+\((v-v_0)^n\). Let us write this term as
+\[
+  \left[
+    F_a^k\bigl(U(v;u_0),v\bigr)
+  \right]_{\text{order }n}
+  =
+  \frac1{n!}
+  f^k{}_{a b_1\ldots b_n}
+  (v^{b_1}-v_0^{b_1})\cdots(v^{b_n}-v_0^{b_n}).
+\]
+Then \eqref{eq:13.5.16} will satisfy \eqref{eq:13.5.13} to order
+\((v-v_0)^n\) if we choose the term in \(U\) of order \(n+1\) as
+\[
+  \left[U^k(v;u_0)\right]_{n+1}
+  =
+  -\frac1{(n+1)!}
+  f^k{}_{a b_1\ldots b_n}
+  (v^a-v_0^a)
+  (v^{b_1}-v_0^{b_1})\cdots(v^{b_n}-v_0^{b_n}),
+\]
+provided that \(f\) is symmetric in all its subscripts. Since
+\(f^k{}_{a b_1\ldots b_n}\) can obviously be chosen symmetric in the
+\(b\)'s, it is sufficient to require that it should also be symmetric
+between \(a\) and any \(b\), or equivalently that
+\[
+  \left[
+    \partial_b F_a^k\bigl(U(v;u_0),v\bigr)
+  \right]_{\text{order }n-1}
+\]
+should be symmetric in \(a\) and \(b\). But \(U\) is assumed to satisfy
+\eqref{eq:13.5.13} to order \((v-v_0)^{n-1}\), so this condition is
+satisfied if
+\[
+  \left[
+    -\partial_lF_a^k(u,v)F_b^l(u,v)
+    +\partial_bF_a^k(u,v)
+  \right]_{u=U(v;u_0)}
+\]
+is symmetric in \(a\) and \(b\). We thus conclude that
+\eqref{eq:13.5.13} is integrable if
+\begin{equation}
+  \partial_lF_a^k\,F_b^l-\partial_bF_a^k
+  =
+  \partial_lF_b^k\,F_a^l-\partial_aF_b^k
+  \tag{13.5.17}\label{eq:13.5.17}
+\end{equation}
+for all \(u,v\).
+
+In order to prove that \eqref{eq:13.5.17} is indeed satisfied, we return to
+the Killing-vector condition \eqref{eq:13.5.6}. Multiplying with
+\(\bar g^{il}\), we have
+\[
+  \partial_a\xi^l
+  =
+  -\bar g^{il}\partial_i\xi^m\,g_{ma}
+  -\bar g^{il}\xi^k\partial_k g_{ia}.
+\]
+Also, multiplying \eqref{eq:13.5.5} with
+\(\bar g^{il}\bar g^{jm}\) gives
+\[
+  \bar g^{il}\partial_i\xi^m
+  +\bar g^{jm}\partial_j\xi^l
+  =
+  -\xi^k\bar g^{il}\bar g^{jm}\partial_k g_{ij}
+  =
+  \xi^k\partial_k\bar g^{lm},
+\]
+so
+\[
+  \partial_a\xi^l
+  =
+  \bar g^{jm}\partial_j\xi^l\,g_{ma}
+  -\xi^k\partial_k\bar g^{lm}\,g_{ma}
+  -\xi^k\bar g^{lm}\partial_k g_{ma}.
+\]
+Recalling \eqref{eq:13.5.14}, we can write this as
+\begin{equation}
+  \partial_a\xi^l
+  =
+  F_a^j\partial_j\xi^l-\xi^k\partial_kF_a^l.
+  \tag{13.5.18}\label{eq:13.5.18}
+\end{equation}
+
+Now differentiate with respect to \(v^b\); this gives
+\[
+  \partial_b\partial_a\xi^l
+  =
+  F_a^j\partial_j(\partial_b\xi^l)
+  +\partial_bF_a^j\,\partial_j\xi^l
+  -\partial_b\xi^k\,\partial_kF_a^l
+  -\xi^k\partial_b\partial_kF_a^l,
+\]
+or, using \eqref{eq:13.5.18} on the right-hand side,
+\[
+  \begin{aligned}
+  \partial_b\partial_a\xi^l
+  ={}&
+  F_a^jF_b^i\,\partial_j\partial_i\xi^l
+  +F_a^j\partial_jF_b^i\,\partial_i\xi^l
+  -F_a^j\partial_j\partial_kF_b^l\,\xi^k
+  -F_a^j\partial_kF_b^l\,\partial_j\xi^k
+  \\
+  &+\partial_bF_a^j\,\partial_j\xi^l
+  -F_b^i\partial_i\xi^k\,\partial_kF_a^l
+  +\partial_iF_b^k\partial_kF_a^l\,\xi^i
+  -\partial_b\partial_kF_a^l\,\xi^k.
+  \end{aligned}
+\]
+But this must be symmetric between \(a\) and \(b\), so
+\begin{align}
+  0={}&
+  \left(
+    F_a^j\partial_jF_b^i
+    -F_b^j\partial_jF_a^i
+    +\partial_bF_a^i
+    -\partial_aF_b^i
+  \right)\partial_i\xi^l
+  \notag\\
+  &+
+  \Bigl(
+    -F_a^j\partial_k\partial_jF_b^l
+    +F_b^j\partial_k\partial_jF_a^l
+    +\partial_kF_b^j\partial_jF_a^l
+    -\partial_kF_a^j\partial_jF_b^l
+    \notag\\
+  &\hspace{48mm}
+    -\partial_b\partial_kF_a^l
+    +\partial_a\partial_kF_b^l
+  \Bigr)\xi^k.
+  \tag{13.5.19}\label{eq:13.5.19}
+\end{align}
+We have already remarked that our assumption that there are \(M(M+1)/2\)
+independent Killing vectors allows us at any given point to find Killing
+vectors for which \(\xi^k\) vanishes and for which
+\(\xi_{k,j}=g_{kl}\partial_j\xi^l\) is an arbitrary antisymmetric matrix.
+In particular, we can at any given point choose \(\xi^i\) so that
+\[
+  \xi^k=0,
+  \qquad
+  \xi_{k,j}
+  =
+  g_{kl}\partial_j\xi^l
+  =
+  \delta_{km}\delta_{jn}-\delta_{kn}\delta_{jm}.
+\]
+Hence, multiplying \eqref{eq:13.5.19} with \(g_{li}\) and setting
+\(k=n\neq m\), we find that
+\[
+  F_a^j\partial_jF_b^m-F_b^j\partial_jF_a^m
+  =
+  \partial_aF_b^m-\partial_bF_a^m,
+\]
+which is just the desired relation \eqref{eq:13.5.17}. The coefficient of
+\(\xi^k\) in \eqref{eq:13.5.19} must also vanish, but we do not need this
+information here.
+% VERIFY SOURCE: printed p. 400 says “multiplying (13.4.19)”; the equation
+% immediately used is (13.5.19).
+
+To return now to the main line of our proof: having proved
+\eqref{eq:13.5.17}, we know that \eqref{eq:13.5.13} is integrable, so we
+can construct the coordinates \(u'^i,v'^a\) defined by
+\eqref{eq:13.5.10} and \eqref{eq:13.5.11}, in which the metric components
+\(g'_{ia}\) vanish. Let us do so, and drop the primes so that now
+\begin{equation}
+  g_{ia}=0.
+  \tag{13.5.20}\label{eq:13.5.20}
+\end{equation}
+The Killing-vector conditions \eqref{eq:13.5.6}, \eqref{eq:13.5.7} now
+read
+\begin{equation}
+  0=\partial_a\xi^k\,g_{ik},
+  \tag{13.5.21}\label{eq:13.5.21}
+\end{equation}
+\begin{equation}
+  0=\xi^k\partial_k g_{ab}.
+  \tag{13.5.22}\label{eq:13.5.22}
+\end{equation}
+Since \(g_{ik}\) is nonsingular, it follows from \eqref{eq:13.5.21} that
+\begin{equation}
+  \partial_a\xi^k=0.
+  \tag{13.5.23}\label{eq:13.5.23}
+\end{equation}
+Also, we have noted that at each point we can find Killing vectors for which
+\(\xi^k\) takes any arbitrary value, so the coefficient of \(\xi^k\) in
+\eqref{eq:13.5.22} must vanish:
+\begin{equation}
+  \partial_k g_{ab}=0.
+  \tag{13.5.24}\label{eq:13.5.24}
+\end{equation}
+
+It only remains to show that \(g_{ij}(u,v)\) is \(v\)-independent, except
+for a possible factor \(f(v)\). We use the fact that for any fixed \(v_0\)
+there are \(M(M+1)/2\) independent Killing vectors of \(g_{ij}(u,v_0)\)
+that, according to \eqref{eq:13.5.23}, are also Killing vectors of
+\(g_{ij}(u,v)\) for any \(v\). Each one of these Killing vectors
+\(\xi^i(u)\) will then satisfy \eqref{eq:13.5.5} at \(v=v_0\) and for
+general \(v\):
+\[
+  0
+  =
+  \partial_i\xi^k(u)\,g_{kj}(u,v_0)
+  +\partial_j\xi^k(u)\,g_{ki}(u,v_0)
+  +\xi^k(u)\partial_k g_{ij}(u,v_0),
+\]
+\[
+  0
+  =
+  \partial_i\xi^k(u)\,g_{kj}(u,v)
+  +\partial_j\xi^k(u)\,g_{ki}(u,v)
+  +\xi^k(u)\partial_k g_{ij}(u,v).
+\]
+We can interpret these two equations as saying that \(g_{ij}(u,v)\) is a
+maximally form-invariant tensor [in the sense of Eq.~\eqref{eq:13.4.3}] in
+the maximally symmetric space with metric \(g_{ij}(u,v_0)\). It follows
+then, according to Eqs.~\eqref{eq:13.4.10} and \eqref{eq:13.4.11}, that
+the tensor \(g_{ij}(u,v)\) is proportional to the metric \(g_{ij}(u,v_0)\),
+with a \(u\)-independent coefficient:
+\[
+  g_{ij}(u,v)=f(v,v_0)g_{ij}(u,v_0).
+\]
+The value of \(v_0\) can be fixed in any way we like, so we can suppress the
+label \(v_0\), and write this as
+\begin{equation}
+  g_{ij}(u,v)=f(v)\bar g_{ij}(u),
+  \tag{13.5.25}\label{eq:13.5.25}
+\end{equation}
+with
+\begin{equation}
+  f(v)\equiv f(v,v_0),
+  \qquad
+  \bar g_{ij}(u)\equiv g_{ij}(u,v_0).
+  \tag{13.5.26}\label{eq:13.5.26}
+\end{equation}
+Putting together \eqref{eq:13.5.20}, \eqref{eq:13.5.24}, and
+\eqref{eq:13.5.25} now shows that the metric \(g_{\mu\nu}(u,v)\) does have
+the form given by \eqref{eq:13.5.4}, and \eqref{eq:13.5.26} and
+\eqref{eq:13.5.5} with \(v=v_0\) show that \(\bar g_{ij}(u)\) is a
+maximally symmetric metric, as was to be proved.
+
+This theorem could also have been proved under the apparently weaker
+assumption that the whole space can be decomposed into subspaces that are
+isotropic about every point. This assumption means that at any point
+\(u_0,v\) we can find Killing vectors of the whole space with \(\xi^a=0\),
+for which \(\xi^i\) vanishes at \(u_0,v\), and for which \(\xi_{i;k}\) at
+\(u_0,v\) is an arbitrary antisymmetric matrix. In particular, we can find
+\(M(M-1)/2\) Killing vectors \(\xi^{\mu(lm)}(u,v;u_0)\) with
+\[
+  \xi^{a(lm)}(u,v;u_0)=0,
+\]
+\[
+  \xi^{i(lm)}(u,v;u_0)
+  =
+  -\xi^{i(ml)}(u,v;u_0),
+\]
+for which
+\[
+  \begin{aligned}
+  \xi_{i;j}^{(lm)}(u_0,v;u_0)
+  &=
+  g_{ik}(u_0,v)
+  \left.
+    \partial_j\xi^{k(lm)}(u,v;u_0)
+  \right|_{u=u_0}
+  \\
+  &=
+  \delta_i^l\delta_j^m-\delta_i^m\delta_j^l.
+  \end{aligned}
+\]
+We can then define
+\[
+  \xi^{\mu(l)}(u,v;u_0)
+  \equiv
+  \frac{\partial}{\partial u_0^m}
+  \xi^{\mu(lm)}(u,v;u_0),
+\]
+and the arguments of Section~\ref{sec:13.1} show that these are Killing
+vectors \emph{of the whole space}, with
+\[
+  \xi^{a(l)}(u,v;u_0)=0
+\]
+and with
+\[
+  \xi^{i(l)}(u_0,v;u_0)
+  =
+  -\frac1{M-1}\bar g^{il}(u_0,v).
+\]
+The existence of the \(M(M+1)/2\) independent Killing vectors
+\(\xi^{\mu(lm)}\) and \(\xi^{\mu(l)}\) shows that the space does have
+maximally symmetric subspaces after all.
+
+In all cases of practical importance, the maximally symmetric subspaces are
+\emph{spaces}, as opposed to space-times, so all eigenvalues of the
+submatrix \(g_{ij}\) are positive. In this case, we can use
+\eqref{eq:13.3.23}, \eqref{eq:13.3.24}, or \eqref{eq:13.3.25} to
+evaluate \(\bar g_{ij}\,\dd u^i\dd u^j\), and \eqref{eq:13.5.4} then gives
+\begin{equation}
+  \dd s^2
+  =
+  g_{ab}(v)\,\dd v^a\dd v^b
+  +f(v)
+  \left[
+    \dd\mathbf{u}^2
+    \frac{k(\mathbf{u}\cdot\dd\mathbf{u})^2}
+         {1-k\mathbf{u}^2}
+  \right],
+  \tag{13.5.27}\label{eq:13.5.27}
+\end{equation}
+where \(f(v)\) is positive and
+\begin{equation}
+  k=
+  \begin{cases}
+    +1, & \text{if the maximally symmetric subspace has \(K>0\),}\\
+    -1, & \text{if the maximally symmetric subspace has \(K<0\),}\\
+    0,  & \text{if the maximally symmetric subspace has \(K=0\).}
+  \end{cases}
+  \tag{13.5.28}\label{eq:13.5.28}
+\end{equation}
+[We have absorbed the curvature constant \(\lvert K\rvert^{-1}\) appearing
+in \eqref{eq:13.3.23} and \eqref{eq:13.3.24} into the function \(f(v)\).]
+Let us now use this formula to treat the special cases listed in
+Table~\ref{tab:13.1}.
+
+\medskip
+\noindent\emph{(A) Spherically Symmetric Space.}
+Suppose that the dimensionality of the whole space is \(N=3\), that all
+eigenvalues of its metric are positive, and that it has maximally symmetric
+two-dimensional subspaces with positive curvature. Then there is one
+\(v\)-coordinate, which we can call \(r\), and two \(u\)-coordinates, which
+we can replace with angles \(\theta,\phi\) defined by
+\begin{equation}
+  u^1=\sin\theta\cos\phi,
+  \qquad
+  u^2=\sin\theta\sin\phi.
+  \tag{13.5.29}\label{eq:13.5.29}
+\end{equation}
+Equation~\eqref{eq:13.5.27}, with \(k=1\), then gives
+\begin{equation}
+  \dd s^2
+  =
+  g(r)\,\dd r^2
+  +f(r)
+  \left(
+    \dd\theta^2+\sin^2\theta\,\dd\phi^2
+  \right),
+  \tag{13.5.30}\label{eq:13.5.30}
+\end{equation}
+with \(f(r)\) and \(g(r)\) positive functions of \(r\).
+
+\medskip
+\noindent\emph{(B) Spherically Symmetric Space-Time.}
+Suppose that the dimensionality of the whole space-time is \(N=4\), that
+three of the eigenvalues of its metric are positive and one is negative, and
+that it has maximally symmetric two-dimensional subspaces whose metric has
+positive eigenvalues and positive curvature. Then there are two
+\(v\)-coordinates, which we can call \(r\) and \(t\), and two
+\(u\)-coordinates, which can be replaced with \(\theta\) and \(\phi\) as in
+\eqref{eq:13.5.29}. Equation~\eqref{eq:13.5.27}, with \(k=1\), then gives
+\begin{equation}
+  \begin{aligned}
+  \dd s^2={}&
+  g_{tt}(r,t)\,\dd t^2
+  +2g_{rt}(r,t)\,\dd r\,\dd t
+  +g_{rr}(r,t)\,\dd r^2
+  \\
+  &+f(r,t)
+  \left(
+    \dd\theta^2+\sin^2\theta\,\dd\phi^2
+  \right),
+  \end{aligned}
+  \tag{13.5.31}\label{eq:13.5.31}
+\end{equation}
+where \(f(r,t)\) is a positive function and \(g_{ab}(r,t)\) is a
+\(2\times2\) matrix with one positive and one negative eigenvalue.
+
+\medskip
+\noindent\emph{(C) Spherically Symmetric Homogeneous Space-Time.}
+Suppose that the dimensionality of the whole space-time is \(N=4\), that
+three of the eigenvalues of its metric are positive and one is negative, and
+that it has maximally symmetric three-dimensional subspaces whose metric has
+positive eigenvalues and arbitrary curvature. Then there is one
+\(v\)-coordinate and three \(u\)-coordinates, and \eqref{eq:13.5.27} gives
+\[
+  \dd s^2
+  =
+  g(v)\,\dd v^2
+  +f(v)
+  \left[
+    \dd\mathbf{u}^2
+    +\frac{k(\mathbf{u}\cdot\dd\mathbf{u})^2}
+          {1-k\mathbf{u}^2}
+  \right],
+\]
+where \(f(v)\) is a positive function and \(g(v)\) is a negative function
+of \(v\). It is very convenient to define new coordinates
+\(t,r,\theta,\phi\) by
+\[
+  \int\!\left[-g(v)\right]^{1/2}\dd v=t,
+\]
+\[
+  u^1=r\sin\theta\cos\phi,
+  \qquad
+  u^2=r\sin\theta\sin\phi,
+  \qquad
+  u^3=r\cos\theta.
+\]
+We then have
+\begin{equation}
+  \dd s^2
+  =
+  -\dd t^2
+  +R^2(t)
+  \left[
+    \frac{\dd r^2}{1-kr^2}
+    +r^2\dd\theta^2
+    +r^2\sin^2\theta\,\dd\phi^2
+  \right],
+  \tag{13.5.32}\label{eq:13.5.32}
+\end{equation}
+where \(R(t)\equiv\sqrt{f(v)}\).
+
+The first two examples show how it is possible to capture the essence of
+spherical symmetry by giving a qualitative description of a space or
+space-time in terms of dimensionalities, signs of eigenvalues and
+curvatures, and the maximal symmetry of its subspaces. The metrics
+\eqref{eq:13.5.30} and \eqref{eq:13.5.31} are just what we would have
+expected on more elementary grounds; indeed, \eqref{eq:13.5.31} was our
+starting point in Section~\ref{sec:11.7}.
+
+On the other hand, our third example leads to a result that could not easily
+have been anticipated. It is true that Eq.~\eqref{eq:13.5.32} was already
+derived in Section~\ref{sec:11.9} as the metric inside a spherically
+symmetric collapsing star of uniform density and zero pressure. The
+beautiful new thing we have learned in this chapter is that this metric can
+be derived solely from the assumption of homogeneity and isotropy, with no
+use of the Einstein field equations.

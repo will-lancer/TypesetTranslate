@@ -1,0 +1,94 @@
+% Source: Weinberg GR, physical PDF pp. 187--189
+%         (printed pp. 163--165).
+% Coverage: Section 7.5, The Cauchy Problem; equations (7.5.1)--(7.5.3).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+% MODERNIZATION: Einstein-equation and constraint-propagation signs follow
+% the target G_{\mu\nu}=+8\pi G T_{\mu\nu} convention.
+
+\subsection{The Cauchy Problem}\label{sec:7.5}
+
+We can gain further insight into the mathematical content of Einstein's
+equations by applying them to the traditional initial-value problem of
+Cauchy. Suppose that we are given \(g_{\mu\nu}\) and
+\(\partial_0g_{\mu\nu}\) everywhere on the ``plane'' \(x^0=t\). If we could
+extract from the field equations a formula for
+\(\partial_0^2g_{\mu\nu}\) everywhere at \(x^0=t\), we could then compute
+\(g_{\mu\nu}\) and \(\partial_0g_{\mu\nu}\) at a time \(x^0=t+\delta t\),
+and by continuing this process \(g_{\mu\nu}\) could be computed for all
+\(x^i\) and \(x^0\).
+
+At first sight this looks feasible, because we need 10 second derivatives,
+and there are 10 field equations. But let us look more closely at the
+left-hand side
+\[
+  G^{\mu\nu}\equiv R^{\mu\nu}-\frac12g^{\mu\nu}R
+\]
+of the field equations. The Bianchi identities \eqref{eq:6.8.4} tell us that
+\[
+  \partial_0G^{\mu0}
+  \equiv
+  -\partial_iG^{\mu i}
+  -\Gamma^\mu{}_{\nu\lambda}G^{\lambda\nu}
+  -\Gamma^\nu{}_{\nu\lambda}G^{\mu\lambda}.
+\]
+The right-hand side contains no time derivatives higher than
+\(\partial_0^2\), so neither does the left-hand side, and therefore
+\(G^{\mu0}\) contains no time derivatives higher than \(\partial_0\). Thus
+we cannot learn anything about the time evolution of the gravitational field
+from the four equations
+\begin{equation}
+  G^{\mu0}=8\pi G T^{\mu0}.
+  \tag{7.5.1}\label{eq:7.5.1}
+\end{equation}
+Rather, these equations must be imposed as constraints on the initial data,
+that is, on \(g_{\mu\nu}\) and \(\partial_0g_{\mu\nu}\) at \(x^0=t\).
+
+This leaves as ``dynamical'' equations only the other six Einstein equations
+\begin{equation}
+  G^{ij}=8\pi G T^{ij}.
+  \tag{7.5.2}\label{eq:7.5.2}
+\end{equation}
+When we solve these equations for the 10 second derivatives
+\(\partial_0^2g_{\mu\nu}\), we must encounter a fourfold ambiguity, which of
+course we could not have hoped to escape, since it is always possible to make
+coordinate transformations that leave \(g_{\mu\nu}\) and
+\(\partial_0g_{\mu\nu}\) unchanged at \(x^0=t\) but that do alter
+\(g_{\mu\nu}\) everywhere else. To be more specific, what we find is that
+Eq.~\eqref{eq:7.5.2} determines the six \(\partial_0^2g^{ij}\), but leaves
+the other four derivatives \(\partial_0^2g^{\mu0}\) indeterminate. This
+ambiguity can be removed by imposing four coordinate conditions that fix the
+coordinate system. For instance, if we adopt the harmonic coordinate
+condition discussed in the last section, the second time derivative of
+\(\sqrt{-g}\,g^{\mu0}\) can be determined by differentiating
+Eq.~\eqref{eq:7.4.6} with respect to time:
+\begin{equation}
+  \partial_0^2\left(\sqrt{-g}\,g^{\mu0}\right)
+  =
+  -\partial_0\partial_i\left(\sqrt{-g}\,g^{\mu i}\right),
+  \tag{7.5.3}\label{eq:7.5.3}
+\end{equation}
+and the 10 equations \eqref{eq:7.5.2} and \eqref{eq:7.5.3} suffice to
+determine the second time derivatives of all \(g_{\mu\nu}\).
+
+When the initial-value problem is solved in this way, the constraints
+\eqref{eq:7.5.1} on the initial data need only be imposed once. The Bianchi
+identities and the conservation of energy and momentum tell us that, whether
+or not the Einstein field equations are satisfied, we must have
+\[
+  \nabla_\nu\left(G^{\mu\nu}-8\pi G T^{\mu\nu}\right)=0.
+\]
+Let us apply this at \(x^0=t\). Imposing the initial-data constraints
+\eqref{eq:7.5.1}, and determining the second derivatives from
+Eq.~\eqref{eq:7.5.2}, the quantity in brackets will vanish everywhere at
+\(x^0=t\), so this gives
+\[
+  \partial_0\left(G^{\mu0}-8\pi G T^{\mu0}\right)=0
+  \qquad\text{at }x^0=t,
+\]
+and the fields computed at \(x^0=t+\delta t\) will therefore automatically
+also satisfy the constraints \eqref{eq:7.5.1}. Thus this method of solving
+the initial-value problem is one that can be programmed for an automatic
+computer, once we find an initial metric at \(x^0=t\) that satisfies the
+constraints \eqref{eq:7.5.1}.

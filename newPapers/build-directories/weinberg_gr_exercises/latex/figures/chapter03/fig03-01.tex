@@ -1,0 +1,82 @@
+% Source: Weinberg GR, physical PDF p. 113 (printed p. 88).
+% Coverage: Figure 3.1, Li-7 level splitting and absorption spectra.
+% Status: vector reconstruction; source-reviewed.
+% Uncertainties: frequency differences and line splitting are intentionally
+%                exaggerated, as stated in the source caption.
+
+\begingroup
+\renewcommand{\thefigure}{3.1}
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  x=1.0cm,
+  y=0.72cm,
+  >=Latex,
+  level/.style={line width=0.55pt},
+  transition/.style={->,line width=0.55pt}
+]
+  % Isotropic levels.
+  \begin{scope}[shift={(0,4.1)}]
+    \node[anchor=east] at (-0.20,3.25) {$J=+\tfrac32$};
+    \node[anchor=east] at (-0.20,2.20) {$+\tfrac12$};
+    \node[anchor=east] at (-0.20,1.15) {$-\tfrac12$};
+    \node[anchor=east] at (-0.20,0.10) {$-\tfrac32$};
+    \draw[level] (0,3.25)--(2.55,3.25);
+    \draw[level] (0,2.20)--(2.55,2.20);
+    \draw[level] (0,1.15)--(2.55,1.15);
+    \draw[level] (0,0.10)--(2.55,0.10);
+    \draw[transition] (2.05,2.20)--(2.05,3.22);
+    \draw[transition] (1.35,1.15)--(1.35,2.17);
+    \draw[transition] (0.65,0.10)--(0.65,1.12);
+  \end{scope}
+
+  % Anisotropic levels.
+  \begin{scope}[shift={(5.0,4.1)}]
+    \node[anchor=east] at (-0.20,3.35) {$J=+\tfrac32$};
+    \node[anchor=east] at (-0.20,2.18) {$+\tfrac12$};
+    \node[anchor=east] at (-0.20,1.18) {$-\tfrac12$};
+    \node[anchor=east] at (-0.20,0.10) {$-\tfrac32$};
+    \draw[level] (0,3.35)--(2.55,3.35);
+    \draw[level] (0,2.18)--(2.55,2.18);
+    \draw[level] (0,1.18)--(2.55,1.18);
+    \draw[level] (0,0.10)--(2.55,0.10);
+    \draw[transition] (2.05,2.18)--(2.05,3.32);
+    \draw[transition] (1.35,1.18)--(1.35,2.15);
+    \draw[transition] (0.65,0.10)--(0.65,1.15);
+  \end{scope}
+
+  % Isotropic absorption line.
+  \begin{scope}[shift={(0,0)}]
+    \draw[->] (-0.15,0)--(2.75,0) node[below] {$\nu$};
+    \draw[->] (0,-0.12)--(0,2.65)
+      node[above,rotate=90,anchor=south] {$\sigma_{\mathrm{abs}}$};
+    \draw[line width=0.7pt,smooth]
+      plot coordinates {
+        (0.18,0.03) (0.35,0.07) (0.55,0.18) (0.75,0.45)
+        (0.95,1.05) (1.13,2.05) (1.27,2.42) (1.41,2.05)
+        (1.60,1.05) (1.80,0.45) (2.02,0.18) (2.25,0.07)
+        (2.52,0.03)
+      };
+    \node[below] at (1.25,-0.55) {Isotropic inertia};
+  \end{scope}
+
+  % Three exaggerated anisotropic lines.
+  \begin{scope}[shift={(5.0,0)}]
+    \draw[->] (-0.15,0)--(2.75,0) node[below] {$\nu$};
+    \draw[->] (0,-0.12)--(0,2.65)
+      node[above,rotate=90,anchor=south] {$\sigma_{\mathrm{abs}}$};
+    \draw[line width=0.7pt,smooth]
+      plot coordinates {
+        (0.30,0.02) (0.55,0.05) (0.72,0.22) (0.88,0.80)
+        (1.02,2.20) (1.13,2.50) (1.23,1.75) (1.35,2.40)
+        (1.46,2.55) (1.57,1.78) (1.70,2.38) (1.82,2.22)
+        (1.96,0.82) (2.12,0.23) (2.30,0.06) (2.52,0.02)
+      };
+    \node[below] at (1.25,-0.55) {Anisotropic inertia};
+  \end{scope}
+\end{tikzpicture}
+\caption{The $\mathrm{Li}^{7}$ absorption spectrum as a test of the isotropy
+of inertia (frequency differences and line splitting greatly exaggerated).}
+\label{fig:3.1}
+\end{figure}
+\endgroup

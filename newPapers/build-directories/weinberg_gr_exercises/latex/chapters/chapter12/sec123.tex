@@ -1,0 +1,196 @@
+% Source: Weinberg GR, physical PDF pp. 382--384
+%         (printed pp. 361--363).
+% Coverage: Section 12.3, General Covariance and Energy-Momentum
+%           Conservation; equations (12.3.1)--(12.3.2).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: coordinate displacements, Lie derivatives, and compact
+%                conservation laws are documented below and source-checked.
+%
+% MODERNIZATION CHECK: Weinberg's coordinate displacement epsilon^mu is xi^mu
+% here, and the field changes in (12.3.1) are identified explicitly as minus
+% Lie derivatives. Comma derivatives in (12.3.2) and in the current
+% conservation law are replaced by nabla.
+% LITERAL-OPERATOR AUDIT: the minus sign in front of the metric variation,
+% the minus metric-derivative term after integration by parts, and the minus
+% sign in the integrated gauge variation were checked against pp. 383--384.
+
+\subsection{General Covariance and Energy-Momentum Conservation}
+\label{sec:12.3}
+
+If the action \(I_M\) for a material system is a scalar, then the statement
+that \(\delta I_M\) vanishes is generally covariant, and so also are the
+dynamical equations derived from this statement. For instance, a glance at
+the action \eqref{eq:12.1.6} for a collisionless plasma shows that this
+\(I_M\) is a scalar, and this ensures the general covariance of the dynamical
+equations \eqref{eq:12.1.1}--\eqref{eq:12.1.3} that follow from
+Eq.~\eqref{eq:12.1.6} upon application of the principle of stationary action.
+
+We shall therefore assume that \(I_M\) is a scalar. This means that \(I_M\)
+will be unchanged if we simultaneously make the replacements
+\[
+\begin{gathered}
+  \dd^4x\longrightarrow\dd^4x',
+  \qquad
+  \partial_\mu
+  \longrightarrow
+  \partial'_\mu
+  =
+  \frac{\partial x^\nu}{\partial x'^\mu}\partial_\nu,
+  \qquad
+  x_n^\mu(p)\longrightarrow x_n'^\mu(p),
+  \\
+  A^\mu(x)
+  \longrightarrow
+  A'^\mu(x')
+  \equiv
+  A^\nu(x)\frac{\partial x'^\mu}{\partial x^\nu},
+  \\
+  g_{\mu\nu}(x)
+  \longrightarrow
+  g'_{\mu\nu}(x')
+  \equiv
+  g_{\rho\sigma}(x)
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}.
+\end{gathered}
+\]
+However, \(x'^\mu\) is a mere variable of integration (as opposed to
+\(x_n'^\mu\), which is a dynamical variable), so we can change \(x'^\mu\)
+back to \(x^\mu\) without changing \(I_M\). We conclude then that \(I_M\) is
+unchanged by the replacements
+\[
+\begin{gathered}
+  x_n^\mu(p)\longrightarrow x_n'^\mu(p),
+  \\
+  A_\mu(x)
+  \longrightarrow
+  A'_\mu(x)
+  =
+  A_\nu(x)\frac{\partial x^\nu}{\partial x'^\mu}
+  -\left[A'_\mu(x')-A'_\mu(x)\right],
+  \\
+  g_{\mu\nu}(x)
+  \longrightarrow
+  g'_{\mu\nu}(x)
+  =
+  g_{\rho\sigma}(x)
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  -\left[g'_{\mu\nu}(x')-g'_{\mu\nu}(x)\right],
+\end{gathered}
+\]
+with \(\dd^4x\) and \(\partial_\mu\) now left alone. If the original
+transformation \(x^\mu\longrightarrow x'^\mu\) was infinitesimal,
+\[
+  x'^\mu=x^\mu+\xi^\mu(x),
+\]
+then the changes in the dynamical variables are
+\begin{equation}
+\begin{aligned}
+  \delta x_n^\mu(p)
+  &=
+  \xi^\mu(x_n(p)),
+  \\
+  \delta A_\mu(x)
+  &=
+  -A_\lambda(x)\partial_\mu\xi^\lambda(x)
+  -\partial_\lambda A_\mu(x)\,\xi^\lambda(x)
+  =
+  -(\Lie_\xi A)_\mu,
+  \\
+  \delta g_{\mu\nu}(x)
+  &=
+  -g_{\mu\lambda}(x)\partial_\nu\xi^\lambda(x)
+  -g_{\lambda\nu}(x)\partial_\mu\xi^\lambda(x)
+  -\partial_\lambda g_{\mu\nu}(x)\,\xi^\lambda(x)
+  =
+  -(\Lie_\xi g)_{\mu\nu}.
+\end{aligned}
+  \tag{12.3.1}\label{eq:12.3.1}
+\end{equation}
+(This change in \(A_\mu\) or \(g_{\mu\nu}\) is just the Lie derivative; see
+Section~\ref{sec:10.9}.) The important point is that this is now an
+infinitesimal transformation of the dynamical variables alone, not of the
+coordinates over which we integrate, so the principle of stationary action
+tells us that when the dynamical equations for \(x_n^\mu\), \(A_\mu\), and so
+on, are satisfied, the change in these quantities produces no change in the
+matter action \(I_M\). The only change in \(I_M\) comes from the variation in
+the external field \(g_{\mu\nu}\), and Eq.~\eqref{eq:12.2.2} gives for this
+change
+\[
+  \delta I_M
+  =
+  -\frac12\int\dd^4x\,\sqrt{-g}\,T^{\mu\nu}
+  \left[
+    g_{\mu\lambda}\partial_\nu\xi^\lambda
+    +g_{\lambda\nu}\partial_\mu\xi^\lambda
+    +(\partial_\lambda g_{\mu\nu})\xi^\lambda
+  \right].
+\]
+If \(I_M\) is a scalar, then this must vanish; integrating by parts gives
+\[
+  0=\delta I_M
+  =
+  \int\dd^4x\,\xi^\lambda
+  \left[
+    \partial_\nu\!\left(\sqrt{-g}\,T^\nu{}_\lambda\right)
+    -\frac12(\partial_\lambda g_{\mu\nu})
+     \sqrt{-g}\,T^{\mu\nu}
+  \right],
+\]
+and since \(\xi^\lambda(x)\) is arbitrary,
+\[
+  0
+  =
+  \partial_\nu\!\left(\sqrt{-g}\,T^\nu{}_\lambda\right)
+  -\frac12(\partial_\lambda g_{\mu\nu})
+   \sqrt{-g}\,T^{\mu\nu},
+\]
+or, recalling Eq.~\eqref{eq:4.7.6},
+\begin{equation}
+  \nabla_\nu T^\nu{}_\lambda=0.
+  \tag{12.3.2}\label{eq:12.3.2}
+\end{equation}
+\emph{Thus the energy-momentum tensor defined by Eq.~\eqref{eq:12.2.2} is
+conserved (in the covariant sense) if and only if the matter action is a
+scalar.} Also, with \(I_M\) a scalar, Eq.~\eqref{eq:12.2.2} shows immediately
+that \(T^{\mu\nu}\) is a symmetric tensor, so this definition of the
+energy-momentum tensor has all the properties for which one could wish.
+
+This proof, that general covariance implies energy-momentum conservation, has
+an exact analog in the proof that gauge invariance implies charge
+conservation. The change in the action \(I'_M\) defined by
+Eq.~\eqref{eq:12.2.3}, caused by an arbitrary gauge transformation, can arise
+only from the change in \(A_\mu\), since \(I'_M\) is stationary with respect
+to all other dynamical variables. A general infinitesimal gauge
+transformation \(\chi\) will produce in \(A_\mu\) the change (see
+Sections~\ref{sec:4.11} and \ref{sec:10.2})
+\[
+  \delta A_\mu=\partial_\mu\chi.
+\]
+Using this in Eq.~\eqref{eq:12.2.6}, we see that \(I'_M\) is gauge invariant
+if and only if
+\[
+  0=\delta I'_M
+  =
+  \int\dd^4x\,\sqrt{-g}\,J^\mu\partial_\mu\chi.
+\]
+Integrating by parts gives
+\[
+  0
+  =
+  -\int\dd^4x\,\chi\,
+  \partial_\mu\!\left(\sqrt{-g}\,J^\mu\right),
+\]
+or, since \(\chi\) is arbitrary,
+\[
+  0
+  =
+  \frac1{\sqrt{-g}}
+  \partial_\mu\!\left(\sqrt{-g}\,J^\mu\right)
+  =
+  \nabla_\mu J^\mu.
+\]
+We see again how closely analogous are gauge invariance and general
+covariance.

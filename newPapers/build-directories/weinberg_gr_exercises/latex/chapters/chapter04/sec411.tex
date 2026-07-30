@@ -1,0 +1,445 @@
+% Source: Weinberg GR, physical PDF pp. 138--144 (printed pp. 113--119).
+% Coverage: Section 4.11, p-Forms and Exterior Derivatives; equations
+%           (4.11.1)--(4.11.19).
+% Figures/tables/footnotes: one optional-reading source note and one linked
+%                           reference marker; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: no unresolved readings; deliberate exterior-calculus
+%                normalization conversions are documented inline.
+
+\subsection{\texorpdfstring{\(p\)-Forms}{p-Forms} and Exterior
+Derivatives\optionalreading}\label{sec:4.11}
+
+\begin{quote}
+\small\itshape
+This section lies somewhat out of the book's main line of development, and
+may be omitted in a first reading.
+\end{quote}
+
+Antisymmetric tensors and their antisymmetrized derivatives possess certain
+remarkably simple and useful properties, some of which we have already
+encountered in Section~\ref{sec:4.7}. In order to deal with these properties
+in a unified way, mathematicians have developed a general formalism known as
+the theory of differential forms.~\hyperref[ch4-ref-7]{[7]} Unfortunately,
+the rather abstract and compact notation associated with this formalism has
+in recent years seriously impeded communication between pure mathematicians
+and physicists. This section presents some of the fundamental results of the
+theory of differential forms, using modern exterior-calculus notation while
+retaining the tensor components familiar to physicists.
+
+A covariant tensor of rank \(p\), antisymmetric under exchange of any pair of
+indices, will be called a \(p\)-form. In \(n\) dimensions, the number of
+algebraically independent components of a \(p\)-form is just the binomial
+coefficient
+\begin{equation}
+  \binom{n}{p}
+  \equiv
+  \frac{n!}{p!(n-p)!}.
+  \tag{4.11.1}\label{eq:4.11.1}
+\end{equation}
+For instance, a scalar field is a \(0\)-form, a covariant vector field is a
+\(1\)-form, and an antisymmetric covariant tensor with two indices is a
+\(2\)-form. We use the standard component normalization
+\[
+  t
+  =
+  \frac{1}{p!}\,
+  t_{\mu_1\ldots\mu_p}\,
+  \dd x^{\mu_1}\wedge\cdots\wedge\dd x^{\mu_p}.
+\]
+
+Linear combinations of \(p\)-forms are \(p\)-forms. However, the direct
+product of a \(p\)-form \(s\) and a \(q\)-form \(t\) is not a
+\((p+q)\)-form, because it is not completely antisymmetric. We can form a
+\((p+q)\)-form \(s\wedge t\), called the \textit{exterior product}, by
+antisymmetrizing the direct product:
+\begin{equation}
+  (s\wedge t)_{\mu_1\ldots\mu_{p+q}}
+  \equiv
+  \frac{(p+q)!}{p!\,q!}\,
+  s_{[\mu_1\ldots\mu_p}
+  t_{\mu_{p+1}\ldots\mu_{p+q}]}.
+  \tag{4.11.2}\label{eq:4.11.2}
+\end{equation}
+Here and below brackets denote the normalized average over all permutations:
+\begin{equation}
+  T_{[\mu_1\ldots\mu_m]}
+  \equiv
+  \frac{1}{m!}
+  \sum_{\pi\in S_m}
+  \operatorname{sgn}(\pi)\,
+  T_{\mu_{\pi(1)}\ldots\mu_{\pi(m)}} ,
+  \tag{4.11.3}\label{eq:4.11.3}
+\end{equation}
+where
+\begin{equation}
+  \operatorname{sgn}(\pi)
+  \equiv
+  \begin{cases}
+    +1,&\pi\text{ even},\\
+    -1,&\pi\text{ odd}.
+  \end{cases}
+  \tag{4.11.4}\label{eq:4.11.4}
+\end{equation}
+For instance, the exterior product of a \(0\)-form \(s\) and a \(1\)-form
+\(t\) is simply the ordinary product,
+\[
+  (s\wedge t)_\mu=s\,t_\mu,
+\]
+whereas the exterior product of two \(1\)-forms is the \(2\)-form
+\[
+  (s\wedge t)_{\mu\nu}
+  =
+  s_\mu t_\nu-s_\nu t_\mu
+  =
+  2s_{[\mu}t_{\nu]}.
+\]
+
+The reader can easily verify that the exterior product is associative,
+\begin{equation}
+  (s\wedge t)\wedge u=s\wedge(t\wedge u),
+  \tag{4.11.5}\label{eq:4.11.5}
+\end{equation}
+and bilinear,
+\begin{align}
+  (\alpha_1s_1+\alpha_2s_2)\wedge t
+  &=
+  \alpha_1(s_1\wedge t)+\alpha_2(s_2\wedge t),
+  \notag\\
+  s\wedge(\alpha_1t_1+\alpha_2t_2)
+  &=
+  \alpha_1(s\wedge t_1)+\alpha_2(s\wedge t_2),
+  \tag{4.11.6}\label{eq:4.11.6}
+\end{align}
+where \(\alpha_1\) and \(\alpha_2\) are scalars. However, the exterior
+product is not commutative. Rather, if \(s\) is a \(p\)-form and \(t\) is a
+\(q\)-form, then
+\begin{equation}
+  s\wedge t=(-1)^{pq}t\wedge s.
+  \tag{4.11.7}\label{eq:4.11.7}
+\end{equation}
+
+This is a good spot to pause and mention that in the mathematical theory of
+differential forms, a \(p\)-form \(t\) is generally represented not by the
+tensor components \(t_{\mu_1\ldots\mu_p}\) alone, but by the differential
+form displayed after Eq.~\eqref{eq:4.11.1}. The symbols
+\(\dd x^\mu\) are the coordinate coframe one-forms. Their exterior products
+are associative and anticommutative:
+\[
+  (\dd x^\mu\wedge\dd x^\nu)\wedge\dd x^\lambda
+  =
+  \dd x^\mu\wedge(\dd x^\nu\wedge\dd x^\lambda),
+  \qquad
+  \dd x^\mu\wedge\dd x^\nu
+  =
+  -\dd x^\nu\wedge\dd x^\mu.
+\]
+The tensor components of the product are given by
+Eq.~\eqref{eq:4.11.2}. The associativity rule \eqref{eq:4.11.5} and the
+graded-commutativity rule \eqref{eq:4.11.7} then follow directly.
+% MODERNIZATION CHECK: The source describes dx^mu as contravariant and then
+% declines to use differential-form notation. Here dx^mu is correctly treated
+% as a coordinate coframe one-form, and standard form notation is used.
+
+The point of developing the theory of \(p\)-forms separately from the rest
+of tensor analysis emerges when we study their derivatives. Given any
+\(p\)-form \(t\), we define the \((p+1)\)-form \(\dd t\), known as its
+\textit{exterior derivative}, by
+\begin{equation}
+  \dd t
+  \equiv
+  \dd x^\mu\wedge\partial_\mu t,
+  \tag{4.11.8}\label{eq:4.11.8}
+\end{equation}
+or, in components,
+\begin{equation}
+  (\dd t)_{\mu_0\ldots\mu_p}
+  \equiv
+  (p+1)\partial_{[\mu_0}t_{\mu_1\ldots\mu_p]}.
+  \tag{4.11.9}\label{eq:4.11.9}
+\end{equation}
+% MODERNIZATION CHECK: Weinberg's D uses normalized antisymmetrization, so
+% D acting on a p-form equals d/(p+1) in standard exterior-calculus
+% normalization. Equations 4.11.2 and 4.11.8--4.11.19 are converted
+% consistently to the standard wedge product and exterior derivative.
+For instance, the exterior derivative of a \(0\)-form \(t\) is simply the
+ordinary gradient,
+\[
+  (\dd t)_\mu=\partial_\mu t,
+\]
+whereas the exterior derivative of a \(1\)-form is just the curl,
+\[
+  (\dd t)_{\mu\nu}
+  =
+  2\partial_{[\mu}t_{\nu]}
+  =
+  \partial_\mu t_\nu-\partial_\nu t_\mu.
+\]
+In three dimensions, the exterior derivative of a \(2\)-form \(t_{ij}\) may
+be expressed as an ordinary divergence:
+\[
+  (\dd t)_{ijk}
+  =
+  \varepsilon_{ijk}
+  \left(
+    \partial_1t_{23}
+    +\partial_2t_{31}
+    +\partial_3t_{12}
+  \right).
+\]
+
+The first remarkable property of the exterior derivative is that, acting on
+a tensor \(p\)-form, it gives a tensor \((p+1)\)-form. The easiest way to see
+this is to note that the partial derivatives used in
+Eq.~\eqref{eq:4.11.9} can be replaced with covariant derivatives:
+\begin{equation}
+  (\dd t)_{\mu_0\ldots\mu_p}
+  =
+  (p+1)\nabla_{[\mu_0}t_{\mu_1\ldots\mu_p]}.
+  \tag{4.11.10}\label{eq:4.11.10}
+\end{equation}
+The contributions from the affine connections vanish upon
+antisymmetrization. Our previously derived results
+\eqref{eq:4.7.1}, \eqref{eq:4.7.2}, and \eqref{eq:4.7.11} are special
+cases of Eq.~\eqref{eq:4.11.10} for \(p=0\), \(p=1\), and \(p=2\),
+respectively.
+
+The rules \eqref{eq:4.11.5} and \eqref{eq:4.11.7} give a simple formula for
+the exterior derivative of the exterior product of a \(p\)-form \(s\) and a
+\(q\)-form \(t\):
+\begin{align}
+  \dd(s\wedge t)
+  &=
+  \dd s\wedge t+(-1)^{pq}\dd t\wedge s
+  \notag\\
+  &=
+  \dd s\wedge t+(-1)^p s\wedge\dd t.
+  \tag{4.11.11}\label{eq:4.11.11}
+\end{align}
+From the same rules it also follows that repeated exterior derivatives
+vanish:
+\begin{equation}
+  \dd^2t
+  =
+  \dd x^\mu\wedge\dd x^\nu\,
+  \partial_\mu\partial_\nu t
+  =
+  0.
+  \tag{4.11.12}\label{eq:4.11.12}
+\end{equation}
+Among the special cases of this result are two well-known statements of
+three-dimensional vector analysis: a gradient has zero curl, and a curl has
+zero divergence.
+
+The question naturally arises whether the converse is also valid. That is,
+if \(s\) is a \((p+1)\)-form for which
+\begin{equation}
+  \dd s=0,
+  \tag{4.11.13}\label{eq:4.11.13}
+\end{equation}
+can we express \(s\) as
+\begin{equation}
+  s=\dd t
+  \tag{4.11.14}\label{eq:4.11.14}
+\end{equation}
+for some \(p\)-form \(t\)? The answer is yes, provided that the region
+\(\mathcal R\) over which Eq.~\eqref{eq:4.11.13} holds, and over which we
+want Eq.~\eqref{eq:4.11.14} to hold, can be deformed to a point. This local
+exactness statement is Poincar\'e's lemma.
+% MODERNIZATION CHECK: The source calls d^2=0 itself Poincare's lemma.
+% Modern terminology reserves the name for the local exactness statement
+% represented by Eqs. 4.11.13--4.11.14.
+
+In general, we say that a region \(\mathcal R\) can be deformed to a point
+\(y^\mu\) if every point \(x^\mu\) in \(\mathcal R\) can be connected with
+\(y^\mu\) by a path \(X^\mu(\lambda;x)\) lying entirely in \(\mathcal R\).
+Here \(\lambda\) is a real parameter that can be taken to run from \(0\) to
+\(1\), with
+\[
+  X^\mu(0;x)=y^\mu,
+  \qquad
+  X^\mu(1;x)=x^\mu.
+\]
+It is straightforward to verify that if Eq.~\eqref{eq:4.11.13} holds over
+such a region \(\mathcal R\), then Eq.~\eqref{eq:4.11.14} will be satisfied
+throughout this region by the \(p\)-form
+\begin{align}
+  t_{\mu_1\ldots\mu_p}(x)
+  &=
+  \int_0^1\dd\lambda\,
+  \frac{\partial X^\nu(\lambda;x)}{\partial\lambda}
+  \frac{\partial X^{\nu_1}(\lambda;x)}{\partial x^{\mu_1}}
+  \cdots
+  \frac{\partial X^{\nu_p}(\lambda;x)}{\partial x^{\mu_p}}
+  \notag\\[-2pt]
+  &\hspace{5.2cm}\times
+  s_{\nu\nu_1\ldots\nu_p}\!\left(X(\lambda;x)\right).
+  \tag{4.11.15}\label{eq:4.11.15}
+\end{align}
+
+The well-known results of three-dimensional vector analysis, that a vector
+may be expressed as a gradient if it has zero curl, or as a curl if it has
+zero divergence, may be regarded as special cases of this theorem for
+\(p=0\) and \(p=1\), respectively. Maxwell's equations provide an example
+in four dimensions. The field-strength tensor \(F_{\mu\nu}\) is a
+\(2\)-form that, according to Eq.~\eqref{eq:2.7.10}, has vanishing exterior
+derivative, so it can be expressed as the exterior derivative of the
+potential \(1\)-form \(A\):
+\[
+  F=\dd A,
+  \qquad
+  F_{\mu\nu}
+  =
+  2\partial_{[\mu}A_{\nu]}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu,
+\]
+as in Eq.~\eqref{eq:2.7.11}.
+% MODERNIZATION CHECK: With Weinberg's normalized D, the source denotes the
+% potential 1-form by -2A. The standard d convention makes the modern
+% relation F=dA; the component sign agrees with the displayed source formula.
+
+In general, the \(p\)-form \(t\) satisfying Eq.~\eqref{eq:4.11.14} is not
+unique. Given one such \(t\), the most general \(p\)-form satisfying
+Eq.~\eqref{eq:4.11.14} is of the form
+\begin{equation}
+  t'=t+\dd u,
+  \tag{4.11.16}\label{eq:4.11.16}
+\end{equation}
+where \(u\) is an arbitrary \((p-1)\)-form. For instance, if \(A_\mu\) is
+one vector potential whose curl is \(F_{\mu\nu}\), then the most general
+such vector potential is given by the gauge transformation
+\[
+  A'=A+\dd\Phi,
+  \qquad
+  A'_\mu=A_\mu+\partial_\mu\Phi,
+\]
+where \(\Phi\) is an arbitrary \(0\)-form, that is, an arbitrary scalar.
+
+Just as the exterior derivative provides a natural generalization of the
+familiar gradient, curl, and divergence, it is also possible to construct a
+scalar integral of \(p\)-forms over manifolds of dimensionality \(p\). This
+provides a natural generalization of the familiar volume integrals of scalar
+densities and surface integrals of normal components of vector densities. A
+manifold \(\mathcal M\) of dimensionality \(p\) in an \(n\)-dimensional
+space is simply a region within which the \(n\) coordinates \(x^\mu\) may be
+expressed in a smooth one-to-one way as functions of \(p\) parameters
+\(u^i\):
+\begin{equation}
+  x^\mu=x^\mu(u^1,u^2,\ldots,u^p).
+  \tag{4.11.17}\label{eq:4.11.17}
+\end{equation}
+Actually, it is often impossible to cover the whole of a manifold with a
+single set of \(u\)-coordinates. In the general case it is necessary to
+introduce different sets of \(u\)-coordinates in overlapping patches of the
+manifold, with the proviso that in the overlap between one patch with
+coordinates \(u^i\) and another with coordinates \(\bar u^i\), each set can
+be expressed in a smooth one-to-one way as functions of the other. We shall
+be concerned here with \textit{orientable manifolds}, for which the
+coordinates in each patch can be chosen so that in the overlap regions all
+Jacobians \(\det(\partial u/\partial\bar u)\) are positive. For instance,
+the surface of a sphere is orientable.
+
+For simplicity of notation, the discussion below does not take account of
+these complications, but it should be kept in mind that more than one set of
+\(u\)-coordinates may be needed to cover the manifold. With this
+understanding, the integral of a \(p\)-form \(t\) over a manifold
+\(\mathcal M\) of dimensionality \(p\) is defined as the repeated integral
+\begin{align}
+  \int_{\mathcal M}t
+  &\equiv
+  \int
+  t_{\mu_1\ldots\mu_p}\!\left(x(u)\right)
+  \frac{\partial x^{\mu_1}}{\partial u^1}
+  \cdots
+  \frac{\partial x^{\mu_p}}{\partial u^p}
+  \,\dd u^1\cdots\dd u^p,
+  \tag{4.11.18}\label{eq:4.11.18}
+\end{align}
+with limits of integration set by the boundaries of the manifold.
+
+This integral is obviously a scalar with respect to transformations of the
+\(x^\mu\) coordinates used to define the \(p\)-form. It is also necessary
+to consider how the integral behaves if we decide to describe the manifold
+with a new set of parameters \(\bar u^1,\ldots,\bar u^p\) instead of
+\(u^1,\ldots,u^p\). Taking account of the antisymmetry of \(t\), it is easy
+to see that the pulled-back component changes by the determinant
+\(\det(\partial u/\partial\bar u)\), whereas the \(p\)-dimensional volume
+element changes by the positive factor
+\(\lvert\det(\partial\bar u/\partial u)\rvert\). Thus the whole integral is
+either unchanged or changes by a minus sign, according to whether
+\(\det(\partial u/\partial\bar u)\) is positive or negative. We tacitly
+assume that the transformation \(u\to\bar u\) is nonsingular, so this
+determinant cannot vanish and therefore keeps the same sign throughout
+\(\mathcal M\).
+
+This result also shows that, when several \(u\)-coordinate systems are
+needed to cover the manifold, the integral of a \(p\)-form over the overlap
+between two patches described by coordinates \(u^i\) and \(\bar u^i\) can
+be evaluated using either coordinate system, provided that
+\(\det(\partial u/\partial\bar u)\) is positive. It is for this reason that
+we have to restrict our attention to manifolds that are orientable.
+
+The simplest example of Eq.~\eqref{eq:4.11.18} is the special case in which
+\(p\) equals the dimensionality \(n\) of the \(x^\mu\) coordinate space.
+Here the \(x^\mu\) coordinates themselves may be used as the
+\(u\)-coordinates, so
+\[
+  \int_{\mathcal M}t
+  =
+  \int
+  t_{0\,1\,\ldots\,n-1}\,
+  \dd x^0\dd x^1\cdots\dd x^{n-1}.
+\]
+Note that the integrand \(t_{0\,1\,\ldots\,n-1}\), in addition to being one
+component of a tensor, is also a scalar density of weight \(-1\), because
+we can write it as
+\[
+  t_{0\,1\,\ldots\,n-1}
+  =
+  \frac{1}{n!}\,
+  \tilde\epsilon^{\mu_1\ldots\mu_n}
+  t_{\mu_1\ldots\mu_n},
+\]
+and \(\tilde\epsilon^{\mu_1\ldots\mu_n}\) is a tensor density of weight
+\(-1\);
+see Section~\ref{sec:4.4}.
+
+In the next simplest case, \(p=n-1\), we can write
+Eq.~\eqref{eq:4.11.18} in the familiar form
+\[
+  \int_{\mathcal M}t
+  =
+  \int t^\mu\,\dd S_\mu,
+\]
+where \(t^\mu\) is a vector density defined implicitly by
+\[
+  t_{\mu_1\ldots\mu_p}
+  \equiv
+  \tilde\epsilon_{\mu_1\ldots\mu_p\mu}\,t^\mu,
+\]
+and \(\dd S_\mu\) is a surface element oriented normal to the manifold:
+\[
+  \dd S_\mu
+  \equiv
+  \tilde\epsilon_{\mu_1\ldots\mu_p\mu}
+  \frac{\partial x^{\mu_1}}{\partial u^1}
+  \cdots
+  \frac{\partial x^{\mu_p}}{\partial u^p}
+  \,\dd u^1\cdots\dd u^p.
+\]
+
+With this general definition of the integrals of \(p\)-forms, it is possible
+to prove that the integral of the exterior derivative of a \(p\)-form over
+a manifold of dimensionality \(p+1\) is simply the integral of the
+\(p\)-form itself over the \(p\)-dimensional boundary of the manifold:
+\begin{equation}
+  \int_{\mathcal M}\dd t
+  =
+  \int_{\partial\mathcal M}t.
+  \tag{4.11.19}\label{eq:4.11.19}
+\end{equation}
+We shall not go into the problem of defining the orientation of the
+boundary, which is needed in order to specify the sign of the right-hand
+side. Stokes's theorem and Gauss's theorem are simply the special cases of
+this general formula for \(n=3,p=1\) and \(n=3,p=2\), respectively.

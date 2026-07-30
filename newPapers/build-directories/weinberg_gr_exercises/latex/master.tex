@@ -1,0 +1,167 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[nointegrals]{wasysym}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{slashed}
+\usepackage{bm}
+\usepackage{jheppub}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{
+  arrows.meta,
+  calc,
+  decorations.markings,
+  decorations.pathmorphing,
+  positioning
+}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Gravitation and Cosmology},
+  pdfauthor={Steven Weinberg}
+}
+
+% Suppress the "Prepared for submission to JHEP" first-page header.
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{3.2em}}
+\makeatother
+
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+
+% Each source part divider occupies its own centered page.
+\newcommand{\bookpart}[1]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \vspace*{\fill}
+  \part{#1}
+  \vspace*{\fill}
+  \clearpage
+}
+
+% Each numbered section is a book chapter and starts on a fresh page.
+\pretocmd{\section}{\clearpage}{}{}
+\setcounter{tocdepth}{2}
+
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\od}[2]{\frac{\dd #1}{\dd #2}}
+\newcommand{\DbyDtau}{\frac{D}{D\tau}}
+\newcommand{\Dworldline}[1]{\frac{D #1}{D\tau}}
+\newcommand{\optionalreading}{\texorpdfstring{\textsuperscript{*}}{*}}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\order}{\mathcal{O}}
+\InputIfFileExists{exercises/setup.tex}{}{}
+
+\title{Gravitation and Cosmology}
+\subheader{Principles and Applications of the General Theory of Relativity}
+\author{Steven Weinberg}
+\affiliation{Massachusetts Institute of Technology}
+\dedicated{To Louise}
+\abstract{%
+  Weinberg's \emph{Gravitation and Cosmology}, typeset in modern notation with
+  signature $(-+++)$ while preserving the text and physical content.
+}
+\notoc
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}
+% The publication-data and copyright-acknowledgement leaves are intentionally
+% omitted from this edition.
+\input{frontmatter/preface.tex}
+\input{frontmatter/notation.tex}
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+\flushbottom
+
+\bookpart{Preliminaries}
+\input{chapters/chapter01.tex}
+\chapterexercises{1}
+\input{chapters/chapter02.tex}
+\chapterexercises{2}
+
+\bookpart{The General Theory of Relativity}
+\input{chapters/chapter03.tex}
+\chapterexercises{3}
+\input{chapters/chapter04.tex}
+\chapterexercises{4}
+\input{chapters/chapter05.tex}
+\chapterexercises{5}
+\input{chapters/chapter06.tex}
+\chapterexercises{6}
+\input{chapters/chapter07.tex}
+\chapterexercises{7}
+
+\bookpart{Applications of General Relativity}
+\input{chapters/chapter08.tex}
+\chapterexercises{8}
+\input{chapters/chapter09.tex}
+\chapterexercises{9}
+\input{chapters/chapter10.tex}
+\chapterexercises{10}
+\input{chapters/chapter11.tex}
+\chapterexercises{11}
+
+\bookpart{Formal Developments}
+\input{chapters/chapter12.tex}
+\chapterexercises{12}
+\input{chapters/chapter13.tex}
+\chapterexercises{13}
+
+\bookpart{Cosmology}
+\input{chapters/chapter14.tex}
+\chapterexercises{14}
+\input{chapters/chapter15.tex}
+\chapterexercises{15}
+\input{chapters/chapter16.tex}
+\chapterexercises{16}
+
+\input{backmatter/appendix.tex}
+\input{backmatter/index.tex}
+
+\end{document}

@@ -13,8 +13,10 @@ Release date: 2026-07-30 PDT
 - Source PDF SHA-256:
   `da6fca5e44d31417e0d370108a622f9444602d68fb5768ec8edbc5b8ce5a78f9`
 - Modernized PDF SHA-256:
-  `cf84ca31fc34606c65d4132350fc74237ba87d36917a26b3693ebd6d61de5698`
+  `dd8ceae04bee88e21b1d83bbd2252a89de3eb0ccc52d83f94e0be9ea42ec18bc`
 - The build master and stable export are byte-for-byte identical.
+- The publisher publication-data leaf and the separate copyright-
+  acknowledgements leaf are intentionally omitted from the compiled edition.
 
 ## Automated gates
 
@@ -35,17 +37,18 @@ The final strict execution of `./build_and_verify.sh` passed.
   hbox.
 - Text extraction succeeds; Ghostscript parses the complete PDF without
   error; every listed font is embedded and subset.
-- The stable export is 4,410,733 bytes, PDF 1.7, unencrypted, and has 588 A4
+- The stable export is 4,382,524 bytes, PDF 1.7, unencrypted, and has 586 A4
   pages. `pdfinfo` reports `Suspects: no`.
 
 ## Visual QA
 
-Every page of the final exported binary was inspected:
+Every page of the final exported binary was inspected or verified
+pixel-for-pixel against the previously inspected release:
 
-- physical PDF pages 1--147;
-- physical PDF pages 148--294;
-- physical PDF pages 295--441;
-- physical PDF pages 442--588.
+- physical PDF page 1 is pixel-identical to the prior title page;
+- physical PDF pages 2--9 were re-inspected after the front-matter change;
+- physical PDF pages 10--586 are pixel-identical to previously inspected
+  physical PDF pages 12--588.
 
 Three extraction/crop defects found during review were corrected before
 release: the missing lower labels in Figure 11.1 and retained scan prose above
@@ -56,12 +59,12 @@ from the previously inspected raster only on pages 10, 265, and 382--416; all
 pixel-identical to its inspected predecessor.
 
 There are no blank pages. The deliberately low-density leaves are the five
-Part dividers on physical pages 12, 69, 159, 317, and 359; sparse
+Part dividers on physical pages 10, 67, 157, 315, and 357; sparse
 bibliography/reference tails and chapter-end whitespace were also checked
 against their surrounding page flow.
 
 The final exported binary was rendered independently twice at 110 dpi. Both
-renders contain 588 pages with identical filenames and zero pixel mismatches.
+renders contain 586 pages with identical filenames and zero pixel mismatches.
 No clipping, overlap, malformed text or equations, broken figures, missing
 matter, bad margins, or pagination discontinuities remain.
 

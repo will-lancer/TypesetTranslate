@@ -1,0 +1,480 @@
+% Source: Weinberg GR, physical PDF pp. 395--401 (printed pp. 375--381).
+% Coverage: Section 13.1, Killing Vectors; equations (13.1.1)--(13.1.12),
+%           including all intervening unnumbered displays.
+% Figures/tables/footnotes: no figures, tables, or footnotes; reference 1.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+% MODERNIZATION: Coordinate derivatives are compact, comma/semicolon
+% derivatives are explicit partial/covariant derivatives, and xi denotes the
+% infinitesimal displacement/Killing field. Curvature terms in
+% (13.1.6), (13.1.9), and the rank-two commutator following the flat-space
+% example have been converted to the target curvature sign convention.
+% LITERAL-OPERATOR AUDIT: all continuation operators in (13.1.4),
+% (13.1.8), (13.1.12), and the unnumbered rank-two commutator were checked
+% against the source; the two continuation plus signs in (13.1.4) are explicit.
+
+\subsection{Killing Vectors}\label{sec:13.1}
+
+A metric \(g_{\mu\nu}(x)\) is said to be \emph{form-invariant} under a given
+coordinate transformation \(x\longrightarrow x'\), when the transformed
+metric \(g'_{\mu\nu}(x')\) is the same function of its argument \(x'^\mu\) as
+the original metric \(g_{\mu\nu}(x)\) was of \emph{its} argument \(x^\mu\);
+that is,
+\begin{equation}
+  g'_{\mu\nu}(y)=g_{\mu\nu}(y)
+  \qquad\text{for all \(y\)}.
+  \tag{13.1.1}\label{eq:13.1.1}
+\end{equation}
+[This is different from the condition for a scalar, which is that
+\(S'(x')=S(x)\).] At any given \emph{point} the transformed metric is given
+by the relation
+\[
+  g'_{\mu\nu}(x')
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  g_{\rho\sigma}(x),
+\]
+or equivalently
+\[
+  g_{\mu\nu}(x)
+  =
+  \frac{\partial x'^\rho}{\partial x^\mu}
+  \frac{\partial x'^\sigma}{\partial x^\nu}
+  g'_{\rho\sigma}(x').
+\]
+When \eqref{eq:13.1.1} is valid, we can replace
+\(g'_{\rho\sigma}(x')\) with \(g_{\rho\sigma}(x')\), and so obtain the
+fundamental requirement for a form invariance of the metric:
+\begin{equation}
+  g_{\mu\nu}(x)
+  =
+  \frac{\partial x'^\rho}{\partial x^\mu}
+  \frac{\partial x'^\sigma}{\partial x^\nu}
+  g_{\rho\sigma}(x').
+  \tag{13.1.2}\label{eq:13.1.2}
+\end{equation}
+Any transformation \(x\longrightarrow x'\) that satisfies
+\eqref{eq:13.1.2} is called an \emph{isometry}.
+
+In general, Eq.~\eqref{eq:13.1.2} is a very complicated restriction on the
+function \(x'^\mu(x)\). It can be greatly simplified by descending to the
+special case of an infinitesimal coordinate transformation
+\begin{equation}
+  x'^\mu=x^\mu+\epsilon\xi^\mu(x),
+  \qquad \lvert\epsilon\rvert\ll1.
+  \tag{13.1.3}\label{eq:13.1.3}
+\end{equation}
+To first order in \(\epsilon\), Eq.~\eqref{eq:13.1.2} now reads
+\begin{equation}
+  0
+  =
+  g_{\mu\sigma}\partial_\rho\xi^\mu
+  +
+  g_{\rho\nu}\partial_\sigma\xi^\nu
+  +
+  \xi^\mu\partial_\mu g_{\rho\sigma}.
+  \tag{13.1.4}\label{eq:13.1.4}
+\end{equation}
+This can be rewritten in terms of derivatives of the covariant components
+\(\xi_\sigma=g_{\mu\sigma}\xi^\mu\):
+\begin{align*}
+  0
+  &=
+  \partial_\rho\xi_\sigma+\partial_\sigma\xi_\rho
+  +\xi^\mu
+  \left(
+    \partial_\mu g_{\rho\sigma}
+    -\partial_\rho g_{\mu\sigma}
+    -\partial_\sigma g_{\rho\mu}
+  \right)
+  \\
+  &=
+  \partial_\rho\xi_\sigma+\partial_\sigma\xi_\rho
+  -2\Gamma^\mu{}_{\rho\sigma}\xi_\mu,
+\end{align*}
+or, more compactly,
+\begin{equation}
+  0=\nabla_\rho\xi_\sigma+\nabla_\sigma\xi_\rho.
+  \tag{13.1.5}\label{eq:13.1.5}
+\end{equation}
+Any four-vector field \(\xi_\sigma(x)\) that satisfies
+Eq.~\eqref{eq:13.1.5} will be said to form a \emph{Killing vector}%
+\hyperref[ch13-ref-1]{\textsuperscript{1}} of the metric
+\(g_{\mu\nu}(x)\). The problem of determining all infinitesimal isometries
+of a given metric is now reduced to the problem of determining all Killing
+vectors of the metric. Any linear combination of Killing vectors (with
+constant coefficients) is a Killing vector, so it is the space of vector
+fields spanned by the Killing vectors that really determines the
+infinitesimal isometries of a metric.
+
+The Killing condition \eqref{eq:13.1.5} is much more restrictive than it
+looks, for it allows us to determine the whole function \(\xi_\mu(x)\) from
+given values of \(\xi_\mu\) and \(\nabla_\nu\xi_\mu\) at some point \(X\).
+To see this, we need only recall our formula \eqref{eq:6.5.1} for the
+commutator of two covariant derivatives,
+\begin{equation}
+  \nabla_\mu\nabla_\rho\xi_\sigma
+  -\nabla_\rho\nabla_\mu\xi_\sigma
+  =
+  R^\lambda{}_{\sigma\rho\mu}\xi_\lambda,
+  \tag{13.1.6}\label{eq:13.1.6}
+\end{equation}
+and the cyclic sum rule \eqref{eq:6.6.5} for the curvature tensor,
+\begin{equation}
+  R^\lambda{}_{\sigma\rho\mu}
+  +R^\lambda{}_{\mu\sigma\rho}
+  +R^\lambda{}_{\rho\mu\sigma}
+  =0.
+  \tag{13.1.7}\label{eq:13.1.7}
+\end{equation}
+By adding \eqref{eq:13.1.6} and its two cyclic permutations, we find that
+any vector \(\xi_\mu\) must satisfy the relation
+\begin{align}
+  0={}&
+  \nabla_\mu\nabla_\rho\xi_\sigma
+  -\nabla_\rho\nabla_\mu\xi_\sigma
+  +\nabla_\rho\nabla_\sigma\xi_\mu
+  -\nabla_\sigma\nabla_\rho\xi_\mu
+  \notag\\
+  &+\nabla_\sigma\nabla_\mu\xi_\rho
+  -\nabla_\mu\nabla_\sigma\xi_\rho.
+  \tag{13.1.8}\label{eq:13.1.8}
+\end{align}
+For a Killing vector, \eqref{eq:13.1.5} and \eqref{eq:13.1.8} give
+\[
+  0
+  =
+  \nabla_\mu\nabla_\rho\xi_\sigma
+  -\nabla_\rho\nabla_\mu\xi_\sigma
+  -\nabla_\rho\nabla_\sigma\xi_\mu,
+\]
+and thus \eqref{eq:13.1.6} becomes
+\begin{equation}
+  \nabla_\sigma\nabla_\rho\xi_\mu
+  =
+  R^\lambda{}_{\sigma\rho\mu}\xi_\lambda.
+  \tag{13.1.9}\label{eq:13.1.9}
+\end{equation}
+Hence, given \(\xi_\lambda\) and \(\nabla_\nu\xi_\lambda\) at some point
+\(X\), we can determine the second derivatives of \(\xi_\lambda(x)\) at
+\(X\) from Eq.~\eqref{eq:13.1.9}, and we can find successively higher
+derivatives of \(\xi_\lambda\) at \(X\) by taking derivatives of
+Eq.~\eqref{eq:13.1.9}. All the derivatives of \(\xi_\lambda\) at \(X\)
+will thus be determined as linear combinations of \(\xi_\lambda(X)\) and
+\(\nabla_\nu\xi_\lambda(X)\). The function \(\xi_\lambda(x)\) can then
+(when it exists) be constructed as a Taylor series in \(x^\lambda-X^\lambda\)
+within some finite neighborhood of \(X\), and will again be linear in the
+initial values \(\xi_\lambda(X)\), \(\nabla_\nu\xi_\lambda(X)\). Thus any
+particular Killing vector \(\xi_\rho^{\,n}(x)\) of the metric
+\(g_{\mu\nu}(x)\) can be expressed as
+\begin{equation}
+  \xi_\rho^{\,n}(x)
+  =
+  A_\rho{}^\lambda(x;X)\xi_\lambda^{\,n}(X)
+  +B_\rho{}^{\lambda\nu}(x;X)
+  \nabla_\nu\xi_\lambda^{\,n}(X),
+  \tag{13.1.10}\label{eq:13.1.10}
+\end{equation}
+where \(A_\rho{}^\lambda\) and \(B_\rho{}^{\lambda\nu}\) are functions
+that of course depend on the metric and on \(X\), but do not depend on the
+initial values \(\xi_\lambda(X)\) and \(\nabla_\nu\xi_\lambda(X)\), and
+hence are the same for all Killing vectors. Each Killing vector
+\(\xi_\rho(x)\) of a given metric is uniquely specified by the values of
+\(\xi_\rho(X)\) and \(\nabla_\sigma\xi_\rho(X)\) at any particular point
+\(X\).
+
+A set of Killing vectors \(\xi_\rho^{\,n}(x)\) is said to be
+\emph{independent} if they do not satisfy any linear relations of the form
+\begin{equation}
+  \sum_n c_n\xi_\rho^{\,n}(x)=0
+  \tag{13.1.11}\label{eq:13.1.11}
+\end{equation}
+with \emph{constant} coefficients \(c_n\). Equation~\eqref{eq:13.1.10}
+tells us that \emph{there can be at most \(N(N+1)/2\) independent Killing
+vectors in \(N\) dimensions}. For consider any \(M\) Killing vectors
+\(\xi_\rho^{\,n}(x)\). For each \(n\), there are \(N\) quantities
+\(\xi_\rho^{\,n}(X)\) and \(N(N-1)/2\) independent quantities
+\(\nabla_\nu\xi_\rho^{\,n}(X)\) [recall Eq.~\eqref{eq:13.1.5}], so we can
+think of the quantities \(\xi_\rho^{\,n}(X)\) and
+\(\nabla_\nu\xi_\rho^{\,n}(X)\) as the components of \(M\) vectors in an
+\(N(N+1)/2\)-dimensional space. If \(M>N(N+1)/2\), then these \(M\)
+vectors cannot be linearly independent, so they must satisfy relations of
+the form
+\[
+  \sum_n c_n\xi_\rho^{\,n}(X)
+  =
+  \sum_n c_n\nabla_\nu\xi_\rho^{\,n}(X)
+  =0.
+\]
+Equation~\eqref{eq:13.1.10} then tells us that the Killing vectors
+\(\xi_\rho^{\,n}(x)\) satisfy the relations \eqref{eq:13.1.11}
+everywhere, and are therefore not independent Killing vectors.
+
+This result is significant only because we defined independent Killing
+vectors as vectors that are not subject to any linear relations with
+\emph{constant} coefficients. At some given point \(X\) in an
+\(N\)-dimensional space, any set of more than \(N\) Killing vectors will of
+course be subject to one or more linear relations such as
+\eqref{eq:13.1.11}. However, the coefficients \(c_n\) in these linear
+relations need not be constant in \(x^\mu\). The above theorem says that any
+set of more than \(N(N+1)/2\) Killing vectors will be subject to linear
+relations with constant coefficients.
+
+A metric space is said to be \emph{homogeneous} if there exist infinitesimal
+isometries \eqref{eq:13.1.3} that carry any given point \(X\) into any other
+point in its immediate neighborhood. That is, the metric must admit Killing
+vectors that at any given point take all possible values. In particular, in
+an \(N\)-dimensional space we can choose a set of \(N\) Killing vectors
+\(\xi_\lambda^{(\mu)}(x;X)\) with
+\[
+  \xi_\lambda^{(\mu)}(X;X)=\delta_\lambda^\mu.
+\]
+These are evidently independent, because any relation of the form
+\(c_\mu\xi_\lambda^{(\mu)}(x;X)=0\) would at \(x=X\) imply that all
+\(c_\lambda\) vanish.
+
+A metric space is said to be \emph{isotropic} about a given point \(X\) if
+there exist infinitesimal isometries \eqref{eq:13.1.3} that leave the point
+\(X\) fixed, so that \(\xi^\mu(X)=0\), and for which the first derivatives
+\(\nabla_\nu\xi_\lambda(X)\) take all possible values, subject only to the
+antisymmetry condition \eqref{eq:13.1.5}. In particular, in \(N\)
+dimensions we can choose a set of \(N(N-1)/2\) Killing vectors
+\(\xi_\lambda^{(\mu\nu)}(x;X)\) with
+\begin{gather*}
+  \xi_\lambda^{(\mu\nu)}(x;X)
+  \equiv-\xi_\lambda^{(\nu\mu)}(x;X),\\
+  \xi_\lambda^{(\mu\nu)}(X;X)=0,\\
+  \nabla_\rho\xi_\lambda^{(\mu\nu)}(X;X)
+  =
+  \left[
+    \partial_\rho\xi_\lambda^{(\mu\nu)}(x;X)
+  \right]_{x=X}
+  =
+  \delta_\lambda^\mu\delta_\rho^\nu
+  -\delta_\rho^\mu\delta_\lambda^\nu.
+\end{gather*}
+These are independent, because any relation of the form
+\(c_{\mu\nu}\xi_\lambda^{(\mu\nu)}(x;X)=0\), with
+\(c_{\mu\nu}=-c_{\nu\mu}\), would at \(X\) imply that
+\(c_{\lambda\rho}-c_{\rho\lambda}=2c_{\lambda\rho}=0\).
+
+We shall also have to deal with spaces that are isotropic about \emph{every}
+point. In this case there are Killing vectors
+\(\xi_\lambda^{(\mu\nu)}(x;X)\) and
+\(\xi_\lambda^{(\mu\nu)}(x;X+dX)\) that satisfy the above initial
+conditions at \(X\) and at \(X+dX\), respectively. Any linear combination
+of these will be a Killing vector, and so
+\(\partial\xi_\lambda^{(\mu\nu)}(x;X)/\partial X^\rho\) will also be a
+Killing vector of the metric. In order to evaluate this Killing vector at
+\(x=X\), we need only recall that \(\xi_\lambda^{(\mu\nu)}(X;X)\)
+vanishes, and therefore
+\[
+  0
+  =
+  \frac{\partial}{\partial X^\rho}
+  \xi_\lambda^{(\mu\nu)}(X;X)
+  =
+  \left[
+    \partial_\rho\xi_\lambda^{(\mu\nu)}(x;X)
+  \right]_{x=X}
+  +
+  \left[
+    \frac{\partial}{\partial X^\rho}
+    \xi_\lambda^{(\mu\nu)}(x;X)
+  \right]_{x=X}.
+\]
+This gives
+\[
+  \left[
+    \frac{\partial}{\partial X^\rho}
+    \xi_\lambda^{(\mu\nu)}(x;X)
+  \right]_{x=X}
+  =
+  -\delta_\lambda^\mu\delta_\rho^\nu
+  +\delta_\rho^\mu\delta_\lambda^\nu.
+\]
+It is now obvious that we can construct a Killing vector \(\xi_\lambda(x)\)
+that takes any arbitrary value \(a_\lambda\) at \(x=X\); we need only take
+\[
+  \xi_\lambda(x)
+  =
+  \frac{a_\nu}{N-1}
+  \frac{\partial}{\partial X^\rho}
+  \xi_\lambda^{(\rho\nu)}(x;X).
+\]
+Hence \emph{any space that is isotropic about every point is also
+homogeneous}.
+
+A metric that admits the maximum number \(N(N+1)/2\) of Killing vectors is
+said to be \emph{maximally symmetric}. In particular, a space that is both
+homogeneous and isotropic about some given point \(X\) will admit the
+\(N(N+1)/2\) Killing vectors \(\xi_\lambda^{(\mu)}(x;X)\) and
+\(\xi_\lambda^{(\mu\nu)}(x;X)\). These Killing vectors are obviously
+independent, for if they satisfy a linear relation
+\[
+  0
+  =
+  c_\mu\xi_\lambda^{(\mu)}(x;X)
+  +c_{\mu\nu}\xi_\lambda^{(\mu\nu)}(x;X),
+  \qquad
+  c_{\mu\nu}=-c_{\nu\mu},
+\]
+then differentiating with respect to \(x^\rho\) and setting \(x=X\) gives
+\(c_{\lambda\rho}=0\), and setting \(x=X\) then gives \(c_\lambda=0\).
+Thus \emph{a homogeneous space that is isotropic about some point is
+maximally symmetric}. It then also follows that \emph{any space that is
+isotropic about every point is maximally symmetric}.
+
+We can also prove the converse, that \emph{a maximally symmetric space is
+necessarily homogeneous and isotropic about all points}. If there are
+\(N(N+1)/2\) independent Killing vectors \(\xi_\lambda^{\,n}(x)\), then
+we can think of the quantities \(\xi_\rho^{\,n}(X)\),
+\(\nabla_\nu\xi_\lambda^{\,n}(X)\) as forming a square matrix, with
+\(N(N+1)/2\) rows labeled by \(n\), and \(N(N+1)/2\) columns labeled by
+the \(N\) values of \(\rho\) and the \(N(N-1)/2\) values of \(\lambda\)
+and \(\nu\) with \(\lambda>\nu\). Furthermore, this matrix must have a
+nonvanishing determinant, because any relation of the form
+\[
+  \sum_n c_n\xi_\rho^{\,n}(X)
+  =
+  \sum_n c_n\nabla_\nu\xi_\lambda^{\,n}(X)
+  =0
+\]
+would with \eqref{eq:13.1.10} imply that
+\(\sum_n c_n\xi_\rho^{\,n}(x)\) vanishes, contrary to our assumption that
+these Killing vectors are independent. It must therefore be possible, for any
+``row vector'' with ``components'' \(a_\mu\) and
+\(b_{\mu\nu}=-b_{\nu\mu}\), to find a solution of the equations
+\[
+  \sum_n d_n\xi_\mu^{\,n}(X)=a_\mu,
+  \qquad
+  \sum_n d_n\nabla_\nu\xi_\mu^{\,n}(X)=b_{\mu\nu}.
+\]
+Hence we can find a Killing vector \(\xi_\mu(x)\) for which
+\(\xi_\mu(X)\) takes the value \(a_\mu\) and
+\(\nabla_\nu\xi_\mu(X)\) takes the value \(b_{\mu\nu}\), by choosing
+\[
+  \xi_\mu(x)=\sum_n d_n\xi_\mu^{\,n}(x).
+\]
+But \(a_\mu\) is arbitrary, so the space is homogeneous, and \(b_{\mu\nu}\)
+is arbitrary (except that \(b_{\mu\nu}=-b_{\nu\mu}\)), so the space is
+isotropic about \(X\).
+
+As an example of a maximally symmetric space, consider an \(N\)-dimensional
+flat space, with vanishing curvature tensor. We can then choose Cartesian
+coordinates with a constant metric and vanishing affine connection. In this
+coordinate system, Eq.~\eqref{eq:13.1.9} reads
+\[
+  \partial_\rho\partial_\sigma\xi_\mu=0.
+\]
+The solution is
+\[
+  \xi_\mu(x)=a_\mu+b_{\mu\nu}x^\nu
+\]
+with \(a_\mu\) and \(b_{\mu\nu}\) constant. This satisfies the Killing-vector
+condition \eqref{eq:13.1.5} if and only if
+\[
+  b_{\mu\nu}=-b_{\nu\mu}.
+\]
+We can thus choose a set of \(N(N+1)/2\) Killing vectors as follows:
+\[
+  \xi_\mu^{(\nu)}(x)=\delta_\mu^\nu,
+  \qquad
+  \xi_\mu^{(\nu\lambda)}(x)
+  =
+  \delta_\mu^\nu x^\lambda-\delta_\mu^\lambda x^\nu,
+\]
+and the general Killing vector is
+\[
+  \xi_\mu(x)
+  =
+  a_\nu\xi_\mu^{(\nu)}(x)
+  +b_{\nu\lambda}\xi_\mu^{(\nu\lambda)}(x).
+\]
+The \(N\) vectors \(\xi_\mu^{(\nu)}(x)\) represent translations, whereas
+the \(N(N-1)/2\) vectors \(\xi_\mu^{(\nu\lambda)}(x)\) represent
+infinitesimal rotations (or, for a Minkowski space, Lorentz transformations).
+Thus any flat metric admits \(N(N+1)/2\) independent Killing vectors and is
+therefore maximally symmetric.
+
+Of course not all metrics admit the maximum number of Killing vectors.
+Whether \eqref{eq:13.1.9} is soluble for a given set of initial data
+\(\xi_\lambda(X)\), \(\nabla_\rho\xi_\lambda(X)\) depends on the
+integrability of this equation, which in turn depends on the metric. One
+integrability condition we shall use below follows from the general formula
+for commutators of covariant derivatives of tensors:
+\[
+  \nabla_\nu\nabla_\sigma\xi_{\rho\mu}
+  -\nabla_\sigma\nabla_\nu\xi_{\rho\mu}
+  =
+  R^\lambda{}_{\rho\sigma\nu}\xi_{\lambda\mu}
+  +R^\lambda{}_{\mu\sigma\nu}\xi_{\rho\lambda}.
+\]
+Equation~\eqref{eq:13.1.9} will satisfy this condition if and only if
+\begin{align*}
+  R^\lambda{}_{\sigma\rho\mu}\nabla_\nu\xi_\lambda
+  -R^\lambda{}_{\nu\rho\mu}\nabla_\sigma\xi_\lambda
+  &+
+  \left(
+    \nabla_\nu R^\lambda{}_{\sigma\rho\mu}
+    -\nabla_\sigma R^\lambda{}_{\nu\rho\mu}
+  \right)\xi_\lambda
+  \\
+  &=
+  -R^\lambda{}_{\rho\sigma\nu}\nabla_\mu\xi_\lambda
+  -R^\lambda{}_{\mu\sigma\nu}\nabla_\lambda\xi_\rho,
+\end{align*}
+or, using \eqref{eq:13.1.5},
+\begin{align}
+  \Bigl[
+    -R^\lambda{}_{\rho\sigma\nu}\delta_\mu^\kappa
+    +R^\lambda{}_{\mu\sigma\nu}\delta_\rho^\kappa
+    -R^\lambda{}_{\sigma\rho\mu}\delta_\nu^\kappa
+    +R^\lambda{}_{\nu\rho\mu}\delta_\sigma^\kappa
+  \Bigr]\nabla_\kappa\xi_\lambda
+  &=
+  \Bigl[
+    \nabla_\nu R^\lambda{}_{\sigma\rho\mu}
+    -\nabla_\sigma R^\lambda{}_{\nu\rho\mu}
+  \Bigr]\xi_\lambda.
+  \tag{13.1.12}\label{eq:13.1.12}
+\end{align}
+These conditions are of course empty for a flat space, but in general they
+will impose linear relations among the \(\xi_\lambda\) and
+\(\nabla_\kappa\xi_\lambda\) at any given point. Alternatively, if we know
+something about the Killing vectors admitted by an unknown metric, then we can
+use \eqref{eq:13.1.12} to learn something about its curvature tensor. In this
+way, we shall be able in the following sections to deduce the form of a
+maximally symmetric metric from its isometries.
+
+It should be emphasized that the existence of a definite number of independent
+Killing vectors does not depend on a particular choice of coordinate system.
+If \(\xi^\mu(x)\) is a Killing vector of a metric \(g_{\mu\nu}(x)\), then
+by performing a coordinate transformation \(x^\mu\longrightarrow x'^\mu\)
+we obtain a metric
+\[
+  g'_{\mu\nu}(x')
+  =
+  \frac{\partial x^\rho}{\partial x'^\mu}
+  \frac{\partial x^\sigma}{\partial x'^\nu}
+  g_{\rho\sigma}(x)
+\]
+and, since \eqref{eq:13.1.5} is generally covariant, this obviously has a
+Killing vector
+\[
+  \xi'^\mu(x')
+  =
+  \frac{\partial x'^\mu}{\partial x^\nu}\xi^\nu(x).
+\]
+If \(M\) Killing vectors \(\xi_\mu^{\,n}(x)\) are independent, then so are
+the \(M\) Killing vectors \(\xi'{}_\mu^{\,n}(x')\), for any linear relation
+among the \(\xi'{}^{\,n}\) would imply a linear relation among the
+\(\xi^{\,n}\). Thus the maximal symmetry of a given space is an inner
+property, not depending on how we choose the coordinate system. In particular,
+it follows that any space with vanishing curvature tensor is maximally
+symmetric; the converse, however, is not true. It is also easy to see that the
+homogeneity or isotropy of a given space is independent of the choice of
+coordinates. As far as these simple symmetries are concerned, we have
+accomplished the task laid out in the introduction to this chapter, that of
+describing symmetries of the metric in a generally covariant language.

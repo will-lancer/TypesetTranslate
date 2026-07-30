@@ -1,0 +1,246 @@
+% Source: Weinberg GR, physical PDF pp. 160--163
+%         (printed pp. 135--138).
+% Coverage: Section 6.3, Round Trips by Parallel Transport; equations
+%           (6.3.1)--(6.3.11).
+% Figures/tables/footnotes: one linked reference marker; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Round Trips by Parallel Transport}\label{sec:6.3}
+
+Both for its own sake and as preparation for the next section, we now take up
+the question whether a vector \(S_\mu\), when carried along a closed curve
+\(C\) by the equation of parallel transport (see Sections~\ref{sec:4.9} and
+\ref{sec:5.1}),
+\begin{equation}
+  \frac{\dd S_\mu}{\dd\tau}
+  =
+  \Gamma^\lambda{}_{\mu\nu}
+  \frac{\dd x^\nu}{\dd\tau}S_\lambda,
+  \tag{6.3.1}\label{eq:6.3.1}
+\end{equation}
+will come back to its original value after one complete circuit of the curve.
+
+We can answer this question by applying the method used in the familiar proof
+of Stokes's theorem. Consider the curve \(C\) as the edge of some
+two-dimensional surface \(A\), and divide \(A\) into small cells bounded by
+little closed curves \(C_N\). The change in \(S_\mu\) when
+parallel-transported around \(C\) can be written as the sum of the changes in
+\(S_\mu\) when transported around each of these little curves,
+\begin{equation}
+  \Delta S_\mu
+  =
+  \sum_N\Delta_N S_\mu,
+  \tag{6.3.2}\label{eq:6.3.2}
+\end{equation}
+because the change in \(S_\mu\) around any one interior cell is canceled by
+the changes around adjacent cells, leaving only the contribution from the
+outer cell edges that make up \(C\). Therefore we must ask only whether
+\(S_\mu\) changes when parallel-transported around a small closed curve. If
+the curve is small enough, we can expand
+\(\Gamma^\lambda{}_{\mu\nu}(x)\) around some point
+\(X=x(\tau_0)\) on the curve:
+\begin{equation}
+  \Gamma^\lambda{}_{\mu\nu}(x)
+  =
+  \Gamma^\lambda{}_{\mu\nu}(X)
+  +(x^\rho-X^\rho)
+   \partial_\rho\Gamma^\lambda{}_{\mu\nu}(X)
+  +\cdots.
+  \tag{6.3.3}\label{eq:6.3.3}
+\end{equation}
+Then Eq.~\eqref{eq:6.3.1} gives to first order in \(x^\mu-X^\mu\)
+\begin{equation}
+  S_\mu(\tau)
+  =
+  S_\mu(\tau_0)
+  +\Gamma^\lambda{}_{\mu\nu}(X)
+   \bigl[x^\nu(\tau)-X^\nu\bigr]S_\lambda(\tau_0)
+  +\cdots,
+  \tag{6.3.4}\label{eq:6.3.4}
+\end{equation}
+and by using Eqs.~\eqref{eq:6.3.3} and \eqref{eq:6.3.4} in
+Eq.~\eqref{eq:6.3.1} we obtain an equation valid to second order:
+\begin{align*}
+  S_\mu(\tau)
+  \simeq{}&
+  S_\mu(\tau_0)
+  +\int_{\tau_0}^{\tau}
+  \left[
+    \Gamma^\lambda{}_{\mu\nu}(X)
+    +(x^\rho(\tau')-X^\rho)
+     \partial_\rho\Gamma^\lambda{}_{\mu\nu}(X)
+    +\cdots
+  \right]
+  \\
+  &\qquad\times
+  \left[
+    S_\lambda(\tau_0)
+    +S_\sigma(\tau_0)\Gamma^\sigma{}_{\lambda\rho}(X)
+     (x^\rho(\tau')-X^\rho)
+    +\cdots
+  \right]
+  \frac{\dd x^\nu(\tau')}{\dd\tau'}\,\dd\tau'.
+\end{align*}
+Discarding terms of third or higher order in \(x-X\), this is
+\begin{align*}
+  S_\mu(\tau)
+  \simeq{}&
+  S_\mu(\tau_0)
+  +\Gamma^\lambda{}_{\mu\nu}(X)S_\lambda(\tau_0)
+   \int_{\tau_0}^{\tau}
+   \frac{\dd x^\nu}{\dd\tau'}\,\dd\tau'
+  \\
+  &+
+  \left[
+    \partial_\rho\Gamma^\sigma{}_{\mu\nu}(X)
+    +\Gamma^\lambda{}_{\mu\nu}(X)
+     \Gamma^\sigma{}_{\lambda\rho}(X)
+  \right]S_\sigma(\tau_0)
+  \int_{\tau_0}^{\tau}
+  (x^\rho-X^\rho)\frac{\dd x^\nu}{\dd\tau'}\,\dd\tau'.
+\end{align*}
+If \(x^\mu(\tau)\) returns to its original value \(X^\mu\) at some
+\(\tau=\tau_1\), then obviously
+\[
+  \int_{\tau_0}^{\tau_1}
+  \frac{\dd x^\nu}{\dd\tau}\,\dd\tau=0,
+\]
+so the change in \(S_\mu\) when parallel-transported around the small closed
+curve \(x^\mu(\tau)\) is of second order:
+\begin{equation}
+  \begin{split}
+  \Delta S_\mu
+  &\equiv S_\mu(\tau_1)-S_\mu(\tau_0)
+  \\
+  &=
+  \left[
+    \partial_\rho\Gamma^\sigma{}_{\mu\nu}(X)
+    +\Gamma^\lambda{}_{\mu\nu}(X)
+     \Gamma^\sigma{}_{\lambda\rho}(X)
+  \right]S_\sigma(\tau_0)
+  \oint_C x^\rho\,\dd x^\nu.
+  \end{split}
+  \tag{6.3.5}\label{eq:6.3.5}
+\end{equation}
+Here
+\[
+  \oint_C x^\rho\,\dd x^\nu
+  =
+  \int_{\tau_0}^{\tau_1}
+  x^\rho\frac{\dd x^\nu}{\dd\tau}\,\dd\tau.
+\]
+This integral does not generally vanish; for instance, if our curve is a
+small parallelogram with edges \(\delta a^\mu,\delta b^\mu\), it equals
+\[
+  \oint_C x^\rho\,\dd x^\nu
+  =
+  \delta a^\rho\delta b^\nu-\delta a^\nu\delta b^\rho.
+\]
+However, it is always antisymmetric in \(\rho\) and \(\nu\), as can be seen by
+partial integration:
+\begin{equation}
+  \oint_C x^\rho\,\dd x^\nu
+  =
+  \int_{\tau_0}^{\tau_1}
+  \frac{\dd}{\dd\tau}(x^\rho x^\nu)\,\dd\tau
+  -
+  \int_{\tau_0}^{\tau_1}
+  x^\nu\frac{\dd x^\rho}{\dd\tau}\,\dd\tau
+  =
+  -\oint_C x^\nu\,\dd x^\rho.
+  \tag{6.3.6}\label{eq:6.3.6}
+\end{equation}
+Thus the coefficient of this integral in Eq.~\eqref{eq:6.3.5} can be
+replaced by its antisymmetric part, which is just half the curvature tensor
+in Eq.~\eqref{eq:6.1.5}, so
+\begin{equation}
+  \Delta S_\mu
+  =
+  \frac12
+  R^\sigma{}_{\mu\rho\nu}(X)S_\sigma(\tau_0)
+  \oint_C x^\rho\,\dd x^\nu.
+  \tag{6.3.7}\label{eq:6.3.7}
+\end{equation}
+\emph{Our conclusion is that an arbitrary vector \(S_\mu\) will not change
+when parallel-transported around an arbitrary small closed curve at \(X\), if
+and only if \(R^\sigma{}_{\mu\rho\nu}\) vanishes at \(X\).} We have already
+remarked that the change in \(S_\mu\) when parallel-transported about a finite
+closed curve \(C\) may be computed by breaking up the area \(A\) bounded by
+\(C\) into small cells and then adding up the changes in \(S_\mu\) when
+parallel-transported around the edges of these cells; hence, if
+\(R^\sigma{}_{\mu\rho\nu}\) vanishes throughout \(A\), then an arbitrary
+vector \(S_\mu\) will not change when parallel-transported around \(C\).
+
+Now suppose that \(R^\sigma{}_{\mu\nu\rho}\) does vanish. Consider a closed
+curve consisting of two segments \(A\) and \(B\) joining points \(x^\mu\) and
+\(X^\mu\). The change in a vector \(S_\mu\) when parallel-transported from
+\(x\) to \(X\) along \(A\) must be canceled by the change in \(S_\mu\) when
+parallel-transported along \(B\) from \(X\) to \(x\), that is,
+\[
+  \Delta^A_{x\to X}S_\mu+\Delta^B_{X\to x}S_\mu=0.
+\]
+But the change in \(S_\mu\) when parallel-transported from \(x\) to \(X\)
+along \(B\) is minus the change when parallel-transported from \(X\) to \(x\)
+along \(B\):
+\[
+  \Delta^B_{x\to X}S_\mu=-\Delta^B_{X\to x}S_\mu,
+\]
+and therefore
+\begin{equation}
+  \Delta^A_{X\to x}S_\mu
+  =
+  \Delta^B_{X\to x}S_\mu.
+  \tag{6.3.8}\label{eq:6.3.8}
+\end{equation}
+That is, we get the same value of \(S_\mu\) by parallel transportation from
+\(X\) to \(x\), irrespective of which curve we follow. (For instance, if two
+gyroscopes are placed in different intersecting orbits about the earth, and
+have the same orientation when they pass close to each other at \(X^\mu\),
+then any difference in their orientations when they next pass close to each
+other at \(x^\mu\) will be a measure of some average of the curvature produced
+by the earth's gravitational field.)
+
+It follows that, given \(S_\mu\) at \(X\), we may determine a \emph{field}
+\(S_\mu(x)\), defined throughout the spacetime region where
+\(R^\sigma{}_{\mu\nu\rho}\) vanishes, by parallel transport from \(X\) to
+\(x\); Eq.~\eqref{eq:6.3.8} ensures that the \(S_\mu(x)\) so defined will
+depend only on \(x\), and not on the path from \(X\) to \(x\). For this field
+the derivative along any curve \(x(\tau)\) is
+\[
+  \frac{\dd S_\mu}{\dd\tau}
+  =
+  \partial_\nu S_\mu\frac{\dd x^\nu}{\dd\tau},
+\]
+and since the direction of \(\dd x^\nu(\tau)/\dd\tau\) is arbitrary,
+Eq.~\eqref{eq:6.3.1} becomes
+\begin{equation}
+  \partial_\nu S_\mu
+  =
+  \Gamma^\lambda{}_{\mu\nu}S_\lambda,
+  \tag{6.3.9}\label{eq:6.3.9}
+\end{equation}
+or, in other words,
+\begin{equation}
+  \nabla_\nu S_\mu=0.
+  \tag{6.3.10}\label{eq:6.3.10}
+\end{equation}
+Hence, if the curvature tensor vanishes, we may always construct solutions of
+Eq.~\eqref{eq:6.3.9}, with any given value of \(S_\mu(X)\), by parallel
+transport of \(S_\mu\) from \(X\) to \(x\). Conversely, if there exists any
+covariant vector field with vanishing covariant derivatives, then
+Eq.~\eqref{eq:6.3.1} will certainly be satisfied; and since parallel
+transport cannot change a field when carried about any closed curve, we
+conclude from Eq.~\eqref{eq:6.3.7} that
+\begin{equation}
+  R^\sigma{}_{\mu\nu\rho}S_\sigma=0
+  \tag{6.3.11}\label{eq:6.3.11}
+\end{equation}
+throughout the region where \(S_\mu\) satisfies Eq.~\eqref{eq:6.3.10}.
+
+(These conclusions could have been obtained by using well-known results from
+the theory of partial differential
+equations\hyperref[ch6-ref-1]{\textsuperscript{1}} instead of the method of
+parallel displacement. In this approach Eq.~\eqref{eq:6.3.11} appears as the
+necessary and sufficient condition that Eq.~\eqref{eq:6.3.9} can be solved by
+a power-series expansion in \(x^\mu-X^\mu\).)
