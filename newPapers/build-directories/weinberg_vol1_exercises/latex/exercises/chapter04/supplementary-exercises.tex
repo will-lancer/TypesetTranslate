@@ -101,138 +101,305 @@ show directly that the surviving terms combine into
 \SupplementaryExercise{5}{Wick's Theorem for Three Fields}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 4, 2022, Problem 1.)}
   {zhou-stanford-phys330-ps4-2022-curated-parent-1}
+You may use Wick's theorem for a product of two free real scalar fields.
 \begin{enumerate}
-\item For a free scalar, compare time ordering, normal ordering, and the
-Feynman two-point function.  Prove
-\(T\{\phi(x)\phi(y)\}=:\!\phi(x)\phi(y)\!:+D_F(x-y)\).
-\item Then prove Wick's theorem for
-\(T\{\phi(x_1)\phi(x_2)\phi(x_3)\}\) by separating every field into
-creation and annihilation parts, displaying all single contractions.
+\item
+For a free real scalar, show separately that
+\(T\{\phi(x_1)\phi(x_2)\}\) and
+\(:\!\phi(x_1)\phi(x_2)\!:\) are unchanged under
+\(x_1\leftrightarrow x_2\).  Use
+\[
+ T\{\phi(x_1)\phi(x_2)\}
+ =:\!\phi(x_1)\phi(x_2)\!:+D_F(x_1-x_2)
+\]
+to prove \(D_F(x_1-x_2)=D_F(x_2-x_1)\).
+\item
+By separating each field into creation and annihilation parts, prove
+\[
+\begin{split}
+T\{\phi(x_1)\phi(x_2)\phi(x_3)\}
+={}&:\!\phi(x_1)\phi(x_2)\phi(x_3)\!:
+ +\phi(x_1)D_F(x_2-x_3)\\
+&+\phi(x_2)D_F(x_3-x_1)
+ +\phi(x_3)D_F(x_1-x_2).
+\end{split}
+\]
 \end{enumerate}
 
 \SupplementaryExercise{6}{Cubic-Theory Vacuum Graphs and Normalized Correlators}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 4, 2022, Problem 2.)}
   {zhou-stanford-phys330-ps4-2022-curated-parent-2}
+Consider a real scalar field of mass \(m\) with
+\[
+ \mathcal L_0=-\frac12(\partial_\mu\phi)(\partial^\mu\phi)
+ -\frac12m^2\phi^2,
+ \qquad
+ \mathcal L_{\rm int}=\frac{\lambda}{3!}\phi^3.
+\]
+Let \(\ket0\) be the free vacuum,
+\(\mathcal H_{\rm int}=-\mathcal L_{\rm int}\), and \(H_I(t)\) the
+interaction-picture Hamiltonian.
 \begin{enumerate}
 \item
-For
-\(\mathcal L_{\rm int}=+\lambda\phi^3/3!\), evaluate
-\(\langle0|T\exp[-i\int dt\,H_I(t)]|0\rangle\) through order
-\(\lambda^2\).  Identify the connected vacuum terms and their symmetry
-factors.
+Use Wick's theorem to evaluate
+\[
+ \bra0T\exp\!\left[-i\int dt\,H_I(t)\right]\ket0
+\]
+through order \(\lambda^2\), as an explicit sum of position-space
+propagator integrals.  Terms containing \(D_F(0)\) should be retained.
 \item
-Draw and count every vacuum topology at orders \(\lambda^3\) and
-\(\lambda^4\), assigning a symmetry factor to each.  Explain from
-pairing parity why the third-order list is empty.
+Draw every distinct vacuum diagram at orders \(\lambda^3\) and
+\(\lambda^4\).  No evaluation or symmetry-factor calculation is required
+in this part.
 \item
-Draw every two-point diagram through order \(\lambda^4\), including
-disconnected vacuum factors, and assign its Wick-contraction symmetry
-factor.  Then expand the normalized numerator and denominator and show
-that all vacuum components cancel.
-\item
-Explain the difference between (i) every interaction vertex being
-connected to at least one external point and (ii) every external point
-belonging to one connected component.  Give a four-point example that
-satisfies (i) but not (ii), and show how the connected four-point
-function removes it.
-\item
-In cubic theory at order \(\lambda^2\), compute the symmetry factors of
-the connected theta vacuum graph (three lines joining the two vertices)
-and of the graph with one line joining the vertices and a tadpole at each
-vertex.  Derive the answer by counting contractions.
+For the interacting-vacuum two-point function
+\[
+ \bra\Omega T\{\phi_H(x)\phi_H(y)\}\ket\Omega
+ =
+ \frac{\bra0T\{\phi_I(x)\phi_I(y)
+ \exp[-i\int dt\,H_I(t)]\}\ket0}
+ {\bra0T\exp[-i\int dt\,H_I(t)]\ket0},
+\]
+draw every contributing diagram through order \(\lambda^4\) and give
+its symmetry factor.  Include diagrams with more than one component
+when every component touches \(x\) or \(y\), but omit vacuum components.
+As a check, thirteen diagrams in the complete list are fully connected,
+meaning that every field is connected to both external points.
 \end{enumerate}
 
-\SupplementaryExercise{7}{Coherent States, Completeness, and In--Out Vacua}
+\SupplementaryExercise{7}{A Classical Source and Coherent In--Out States}
   {(Adapted from A. Guth, MIT 8.323, Problem Set 5, 2008, Problem 3.)}
   {mit-823-s08-ps5-curated-parent-1}
+For a quantized scalar field driven by a fixed classical source \(j(x)\),
+suppose the in- and out-fields obey
+\[
+ \phi_{\rm out}(x)=S^{-1}\phi_{\rm in}(x)S,\qquad
+ a_{\rm out}(\mathbf p)=S^{-1}a_{\rm in}(\mathbf p)S.
+\]
+Write
+\[
+ \mu=\int\frac{d^3p}{(2\pi)^3}\,
+       \frac{|\widetilde j(p)|^2}{2E_{\mathbf p}},
+ \qquad
+ \widetilde j(p)=\int d^4y\,e^{ip\cdot y}j(y),
+\]
+and take
+\[
+ S=e^{-\mu/2}e^Fe^G,
+\]
+\[
+ F=\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}\,
+       \widetilde j(p)a_{\rm in}^\dagger(\mathbf p),
+ \qquad
+ G=\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}\,
+       \widetilde j(-p)a_{\rm in}(\mathbf p).
+\]
 \begin{enumerate}
 \item
-For one oscillator, construct the normalized eigenstate
-\(a\ket z=z\ket z\), expand it in number states, and compute
-\(\braket{z_2}{z_1}\).
-\item
-Prove
+Define \(F'\) and \(G'\) by replacing the in-operators in \(F,G\) with
+out-operators.  Prove
 \[
- \int_{\mathbb C}\frac{d^2z}{\pi}\ket z\bra z=\mathbf1
+ S=e^{-\mu/2}e^{F'}e^{G'}
 \]
-for normalized oscillator coherent states.  Explain why an overcomplete
-family can resolve the identity even though its members are not
-orthogonal.
-\item
-With \(q=(a+a^\dagger)/\sqrt2\) and
-\(p=(a-a^\dagger)/(i\sqrt2)\), compute
-\(\langle q\rangle,\langle p\rangle,\Delta q,\Delta p\) in \(\ket z\)
-and verify minimum uncertainty.
-\item
-For a normalized field coherent state \(\ket\lambda\), find the generating
-function \(\langle e^{tN}\rangle\) of the total particle number
-\(N=\int dq\,a_q^\dagger a_q\).  Derive its mean, variance, and
-probability distribution.
-\item
-Define \(D(z)=\exp(za^\dagger-z^*a)\).  Use the
-Baker--Campbell--Hausdorff formula to normal order \(D(z)\), prove it is
-unitary, and show \(D(z)\ket0=\ket z\).
-\item
-A classical source produces the relation
+and hence
 \[
- a_{\rm out}(\mathbf p)=a_{\rm in}(\mathbf p)+\alpha(\mathbf p).
+ \InKet{0}=e^{-\mu/2}e^{F'}\OutKet{0}.
 \]
-Express the in-vacuum as a coherent state built on the out-vacuum and
-compute the no-particle probability.
+\item
+For one harmonic oscillator,
+\[
+ H=\frac{p^2}{2m}+\frac{m\omega^2q^2}{2},
+\]
+make the canonical rescaling
+\(p=\sqrt{m\omega}\,\bar p\),
+\(q=\bar q/\sqrt{m\omega}\), drop the bars, and use
+\[
+ a^\dagger=\frac{q-ip}{\sqrt2},\qquad
+ a=\frac{q+ip}{\sqrt2}.
+\]
+For the unnormalized coherent state
+\(\ket z=e^{za^\dagger}\ket0\), show that it is an eigenstate of \(a\)
+and determine the eigenvalue.
+\item
+Compute \(\braket{z_2}{z_1}\).
+\item
+Using expectation values normalized by \(\braket z z\), find
+\(\langle q\rangle_z\) and \(\langle p\rangle_z\).
+\item
+Compute \((\Delta q)^2\) and \((\Delta p)^2\), and show
+\(\Delta q\,\Delta p=1/2\).
 \end{enumerate}
 
-\SupplementaryExercise{8}{Classical Radiation from a Coherent Impulse}
+\SupplementaryExercise{8}{Recovering a Classical Field from an Impulse}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 3, 2022, Problem 2.)}
   {zhou-stanford-phys330-ps3-2022-curated-parent-1}
+Let a free real scalar field couple to a classical source through
+\[
+ H(t)=H_0-\int d^3x\,\phi(\mathbf x,t)J(\mathbf x,t).
+\]
+For an operator with no explicit Schr\"odinger-picture time dependence,
+use the Heisenberg equation \(\dot O=i[H,O]\).
 \begin{enumerate}
 \item
-A free real scalar field couples to
-\(J(\mathbf x,t)=\delta(t)j(\mathbf x)\).  Integrate the equations of
-motion across the impulse, determine the shift of \(a(\mathbf p)\), and
-show that the post-impulse state is coherent.
+Derive the sourced Klein--Gordon equation in the local mostly-plus
+convention,
+\[
+ (\Box-m^2)\phi(x)=-J(x).
+\]
 \item
-For a free scalar field in a multimode coherent state, compute
-\(\langle\phi(x)\rangle\) and prove that it obeys the classical
-Klein--Gordon equation.  Show that the connected two-point function is
-the same as in the vacuum.
+Starting in the vacuum, apply
+\[
+ J(\mathbf x,t)=\delta(t)j(\mathbf x).
+\]
+With \(0^\pm\) denoting the limits just after and before the impulse,
+show
+\[
+ \phi(\mathbf x,0^+)=\phi(\mathbf x,0^-),\qquad
+ \pi(\mathbf x,0^+)=\pi(\mathbf x,0^-)+j(\mathbf x).
+\]
 \item
-For the impulsive source of S.4.8(a), compute the mean occupation density,
-the total mean number, and the probability of producing no quanta.
-State the condition for the coherent state to be normalizable.
+For
+\[
+ \phi(\mathbf x,0)=
+ \int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
+ \left[a(\mathbf p,0)e^{i\mathbf p\cdot\mathbf x}
+ +a^\dagger(\mathbf p,0)e^{-i\mathbf p\cdot\mathbf x}\right],
+\]
+show
+\[
+ a(\mathbf p,0^+)=a(\mathbf p,0^-)
+ +\frac{i\,\widetilde j(\mathbf p)}{\sqrt{2E_{\mathbf p}}},
+\qquad
+ \widetilde j(\mathbf p)=\int d^3x\,
+ e^{-i\mathbf p\cdot\mathbf x}j(\mathbf x).
+\]
+\item
+Show that the state is a multimode coherent state with respect to
+\(a(\mathbf p,0^+)\), and evaluate its produced-particle momentum
+density
+\(\langle a^\dagger(\mathbf p,0^+)a(\mathbf q,0^+)\rangle\).
 \end{enumerate}
 
 \SupplementaryExercise{9}{Relativistic Propagators and Causal Support}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 3, 2022, Problem 1.)}
   {zhou-stanford-phys330-ps3-2022-curated-parent-2}
+For a free real scalar, define
+\[
+ D(z)=\bra0\phi(x)\phi(y)\ket0,\qquad z=x-y.
+\]
 \begin{enumerate}
-\item Starting from the free-field expansion, obtain
+\item
+Starting from the free-field expansion, show
 \[
  D(z)=\int\frac{d^4p}{(2\pi)^3}\,
  \delta(p^2+m^2)\theta(p^0)e^{ip\cdot z}.
 \]
-\item Prove that \(D(z)\) is Lorentz invariant.
-\item Evaluate it at spacelike separation in terms of a modified Bessel
-function and extract the large-distance exponential behavior.
-\item Use the result to prove that the scalar commutator vanishes outside
-the light cone.
-\item Couple the Klein--Gordon field to a c-number source and derive its
-inhomogeneous equation of motion.
-\item Solve that equation using an arbitrary Green function plus a
-homogeneous solution.
-\item Define the retarded, advanced, and Feynman Green functions by their
-momentum-contour prescriptions and write their position-space support
-properties.
-\item Show explicitly that the retarded solution vanishes at spacelike
-separation from the source.
-\item Show that the Feynman function need not vanish there, and explain
-why this correlation does not permit acausal signaling.
+\item
+For a proper orthochronous Lorentz transformation, prove
+\(D(\Lambda z)=D(z)\).  In particular, verify the invariance of
+\(d^4p\) and \(\delta(p^2+m^2)\theta(p^0)\).
+\item
+At spacelike separation \(z^2>0\), derive
+\[
+ D(z)=\frac{m}{4\pi^2\sqrt{z^2}}\,
+ K_1\!\left(m\sqrt{z^2}\right)
+\]
+or verify it by numerical integration, and extract the large-distance
+exponential falloff.  Standard tables or computer algebra may be used.
+
+Although \(D(z)\) is nonzero at spacelike separation, relativistic
+locality concerns the propagation of a change in the state, not the
+existence of vacuum correlations.
+\item
+Show
+\[
+ \bra0[\phi(x),\phi(y)]\ket0=0
+\]
+when \(x-y\) is spacelike.
+\item
+Now take
+\[
+ \mathcal L=-\frac12(\partial_\mu\phi)(\partial^\mu\phi)
+ -\frac12m^2\phi^2+\phi(x)J(x).
+\]
+Derive
+\[
+ (\Box-m^2)\phi(x)=-J(x).
+\]
+\item
+Show that a particular solution is
+\[
+ \phi(x)=i\int d^4y\,G(x-y)J(y),
+\]
+provided
+\[
+ (\Box-m^2)G(z)=i\delta^4(z),
+\]
+and state the freedom to add a homogeneous solution.
+\item
+Using the residue theorem for the \(p^0\) integral, evaluate
+\[
+\begin{split}
+G_R(z)&=\lim_{\epsilon\to0^+}\int\frac{d^4p}{(2\pi)^4}
+\frac{-i\,e^{ip\cdot z}}
+{-(p^0+i\epsilon)^2+\mathbf p^2+m^2},\\
+G_A(z)&=\lim_{\epsilon\to0^+}\int\frac{d^4p}{(2\pi)^4}
+\frac{-i\,e^{ip\cdot z}}
+{-(p^0-i\epsilon)^2+\mathbf p^2+m^2},\\
+G_F(z)&=\lim_{\epsilon\to0^+}\int\frac{d^4p}{(2\pi)^4}
+\frac{-i\,e^{ip\cdot z}}{p^2+m^2-i\epsilon},
+\end{split}
+\]
+and prove
+\[
+\begin{split}
+G_R(z)&=\theta(z^0)\,[D(z)-D(-z)],\\
+G_A(z)&=\theta(-z^0)\,[D(-z)-D(z)],\\
+G_F(z)&=\theta(z^0)D(z)+\theta(-z^0)D(-z).
+\end{split}
+\]
+\item
+For a field that vanishes before the source acts, use \(G_R\) to show
+that the response vanishes at spacelike separation from the source.
+\item
+Does \(G_F\) vanish at spacelike separation?  Explain why its answer is
+consistent with causal signaling.
 \end{enumerate}
 
-\SupplementaryExercise{10}{Separated Sources and Additivity of \(W\)}
-  {(Inspired by B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 3, 2022, Problems 1--2.)}
-  {zhou-stanford-phys330-ps3-2022-curated-parent-3}
-Let \(J=J_A+J_B\), with the two sources supported in widely separated
-regions and with negligible connected propagation between them.  Show
-that \(Z[J]\to Z[J_A]Z[J_B]\) and hence
-\(W[J]\to W[J_A]+W[J_B]\).  Relate this to independent experiments.
+\SupplementaryExercise{10}{The Force Between Static Sources}
+  {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 4, 2022, Problem 4.)}
+  {zhou-stanford-phys330-ps4-2022-curated-parent-3}
+Consider a free real scalar field coupled to a source,
+\[
+ \mathcal L=-\frac12(\partial_\mu\phi)(\partial^\mu\phi)
+ -\frac12m^2\phi^2+\phi(x)J(x).
+\]
+\begin{enumerate}
+\item
+Using Wick's theorem, prove
+\[
+ \bra0T\exp\!\left(i\int d^4x\,\phi(x)J(x)\right)\ket0
+ =
+ \exp\!\left[-\frac12\int d^4x\,d^4y\,
+ J(x)D_F(x-y)J(y)\right].
+\]
+\item
+Take two point sources, separated by \(\mathbf R\), that remain on for a
+time \(T\):
+\[
+ J(x)=g f(t)
+ \left[\delta^3(\mathbf x)+\delta^3(\mathbf x-\mathbf R)\right],
+\qquad
+ f(t)=
+ \begin{cases}
+ 1,&-T/2<t<T/2,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+Discard the \(D_F(0)\) self-energy terms and evaluate the remaining
+vacuum amplitude when \(T\gg R\gg m^{-1}\).
+\item
+Match the result to \(\exp[-iV(R)T]\), determine \(V(R)\), and decide
+whether the force is attractive or repulsive.
+\end{enumerate}
 \end{enumerate}

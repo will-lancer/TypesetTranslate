@@ -43,7 +43,7 @@
         W_L=\lambda_L(x_+)
           +\frac12\gamma^\mu\gamma^\nu\theta_Lf_{\mu\nu}(x_+)
           -i\theta_LD(x_+)
-          +(\theta_L^{\rm T}\epsilon\theta_L)
+          +(\theta_L^{\mathsf T}\epsilon\theta_L)
              \sl{\partial}\lambda_R(x_+).
       \]
       The symmetric part of \(\gamma^\mu\gamma^\nu\) drops out against the
@@ -76,14 +76,14 @@
       yields, up to a spacetime derivative,
       \[
         -\frac12\operatorname{Re}
-          [W_L^{\rm T}\epsilon W_L]_{\mathcal F}
+          [W_L^{\mathsf T}\epsilon W_L]_{\mathcal F}
           =-\frac14f_{\mu\nu}f^{\mu\nu}
            -\frac12\bar\lambda\sl{\partial}\lambda+\frac12D^2.
       \]
       The imaginary part contains no new local field equation:
       \[
         \operatorname{Im}
-          [W_L^{\rm T}\epsilon W_L]_{\mathcal F}
+          [W_L^{\mathsf T}\epsilon W_L]_{\mathcal F}
           \ \propto\
           \epsilon^{\mu\nu\rho\sigma}f_{\mu\nu}f_{\rho\sigma}
           =4\partial_\mu\!
@@ -121,9 +121,9 @@
       \]
       Cyclicity of the trace then gives
       \[
-        \operatorname{Tr}(W_L^{\rm T}\epsilon W_L)
+        \operatorname{Tr}(W_L^{\mathsf T}\epsilon W_L)
           \longmapsto
-        \operatorname{Tr}(W_L^{\rm T}\epsilon W_L).
+        \operatorname{Tr}(W_L^{\mathsf T}\epsilon W_L).
       \]
       Expanding to the term linear in \(\theta_L\), the commutator part supplies
       \[
@@ -238,44 +238,53 @@ Because the action is real it is enough to keep the parameter
   \(\epsilon\) and set \(\bar\epsilon=0\); the conjugate calculation then
   supplies the other half.  In this sector
   \[
-    \delta_\epsilon A_\mu=\epsilon\sigma_\mu\bar\lambda,
+    \delta_\epsilon A_\mu=\epsilon s_\mu\bar\lambda,
     \qquad
-    \delta_\epsilon\lambda=\sigma^{\rho\sigma}\epsilon F_{\rho\sigma},
+    \delta_\epsilon\lambda=\Sigma^{\rho\sigma}\epsilon F_{\rho\sigma},
     \qquad
     \delta_\epsilon\bar\lambda=0.
   \]
   Gauge covariance gives
   \[
     \delta F_{\mu\nu}
-      =D_\mu(\epsilon\sigma_\nu\bar\lambda)
-       -D_\nu(\epsilon\sigma_\mu\bar\lambda).
+      =D_\mu(\epsilon s_\nu\bar\lambda)
+       -D_\nu(\epsilon s_\mu\bar\lambda).
   \]
-  After one integration by parts, the gauge-field variation is proportional
-  to
-  \((D_\mu F^{\mu\nu})\epsilon\sigma_\nu\bar\lambda\), plus a divergence.
+  After one integration by parts, the gauge-field variation is
+  \[
+    \delta\mathcal L_{\rm gauge}
+      =2\operatorname{Tr}\!\left[
+        (D_\mu F^{\mu\nu})\epsilon s_\nu\bar\lambda\right]
+        +\partial_\mu(\cdots).
+  \]
 
-  Varying \(\lambda\) in the fermion kinetic term and using
+  The supplied triple-product identity gives
   \[
-    \sigma^\nu\bar\sigma^\mu\sigma^\rho
-      =\eta^{\mu\nu}\sigma^\rho+\eta^{\mu\rho}\sigma^\nu
-       -\eta^{\nu\rho}\sigma^\mu
-       +i\epsilon^{\nu\mu\rho\kappa}\sigma_\kappa
+    \Sigma^{\rho\sigma}F_{\rho\sigma}s^\mu
+      =iF^\mu{}_\nu s^\nu+{}^\star F^{\mu\nu}s_\nu .
   \]
-  produces the negative of that equation-of-motion term.  The remaining
-  derivative terms combine, up to the same total divergence, into
+  Therefore variation of \(\lambda\), followed by a covariant integration
+  by parts, yields
   \[
-    \epsilon\sigma_\nu\bar\lambda\,
-      D_\mu\,{}^\star F^{\mu\nu}.
+  \begin{aligned}
+    \delta_\lambda\mathcal L_{\rm ferm}
+      ={}&-2\operatorname{Tr}\!\left[
+        (D_\mu F^{\mu\nu})\epsilon s_\nu\bar\lambda\right]\\
+       &+2i\operatorname{Tr}\!\left[
+        (D_\mu{}^\star F^{\mu\nu})\epsilon s_\nu\bar\lambda\right]
+        +\partial_\mu(\cdots).
+  \end{aligned}
   \]
-  This vanishes by the non-Abelian Bianchi identity
+  The first line cancels \(\delta\mathcal L_{\rm gauge}\).  The second
+  vanishes by the non-Abelian Bianchi identity
   \(D_{[\mu}F_{\nu\rho]}=0\).
 
   There is one further contribution because \(D_\mu\bar\lambda\) contains
   the gauge connection.  It is proportional to
   \[
-    \operatorname{Tr}\!
-      \left(\lambda\sigma^\mu
-        [\,\epsilon\sigma_\mu\bar\lambda,\bar\lambda\,]\right).
+    -2\operatorname{Tr}\!
+      \left(\lambda s^\mu
+        [\,\epsilon s_\mu\bar\lambda,\bar\lambda\,]\right).
   \]
   The two-component Fierz identity converts the product of the two
   \(\bar\lambda\)'s into its antisymmetric spinor contraction; cyclicity of
@@ -410,7 +419,7 @@ Because the action is real it is enough to keep the parameter
               +\frac16a_{ijk}\phi_i\phi_j\phi_k \right.\\
             &\hspace{5.5em}\left.
               +\frac12b_{ij}\phi_i\phi_j+t_i\phi_i
-              +\text{c.c.}\right].
+              +\mathrm{c.c.}\right].
         \end{aligned}
       \]
       Gauge invariance restricts every tensor exactly as for the corresponding

@@ -1,0 +1,366 @@
+PHYS-330: QFT I
+Stanford University, 2022
+Problem Set 9 (due 12/8)
+Bernhard Mistlberger, Kevin Zhou
+This problem set guides you through the calculation of loop diagrams and their application
+to the renormalization of QED. Unlike previous problem sets, it is ordered sequentially:
+each problem is easiest to approach after completing the previous problems. For reference,
+you may find it useful to consult sections 6.3 and 7.5 of Peskin and Schroeder, but this
+problem set is self-contained and its results are somewhat more general.
+We will use dimensional regularization with d = 4 − 2. To avoid confusion, we will
+rename the i in the Feynman propagator to i0 in this problem set.
+1. e+
+e−
+→ µ+
+µ−
+at one loop. (8 points)
+In the previous problem set, you considered the leading order (or “tree level”) contribution
+to the scattering matrix element for e+
+e−
+→ µ+
+µ−
+,
+MLO
+=
+<latexit sha1_base64="QhC5fnvr4hKK11n5dSdYhhPaXlY=">AAAB+nicbVBNS8NAEN3Ur1q/Uj16CRahgpZEinosevFYwX5Am4bNdtIu3STL7kYpsT/FiwdFvPpLvPlv3LY5aOuDgcd7M8zM8zmjUtn2t5FbWV1b38hvFra2d3b3zOJ+U8aJINAgMYtF28cSGI2goahi0OYCcOgzaPmjm6nfegAhaRzdqzEHN8SDiAaUYKUlzyxC76zMPedU9bpc0BBOPLNkV+wZrGXiZKSEMtQ986vbj0kSQqQIw1J2HJsrN8VCUcJgUugmEjgmIzyAjqYRDkG66ez0iXWslb4VxEJXpKyZ+nsixaGU49DXnSFWQ7noTcX/vE6igis3pRFPFERkvihImKVia5qD1acCiGJjTTARVN9qkSEWmCidVkGH4Cy+vEya5xXnolK9q5Zq11kceXSIjlAZOegS1dAtqqMGIugRPaNX9GY8GS/Gu/Exb80Z2cwB+gPj8wfR1pMW</latexit>
+e (p1,t0
+)
+<latexit sha1_base64="dZ4UJJ+u0Bzd6zyBL3iQ0Ji9hLE=">AAAB+nicbVBNS8NAEN3Ur1q/Uj16CRahopSkFPVY9OKxgv2ANg2b7aRdukmW3Y1SYn+KFw+KePWXePPfuG1z0OqDgcd7M8zM8zmjUtn2l5FbWV1b38hvFra2d3b3zOJ+S8aJINAkMYtFx8cSGI2gqahi0OECcOgzaPvj65nfvgchaRzdqQkHN8TDiAaUYKUlzyxC/7TMveqZ7Pe4oCGceGbJrthzWH+Jk5ESytDwzM/eICZJCJEiDEvZdWyu3BQLRQmDaaGXSOCYjPEQuppGOATppvPTp9axVgZWEAtdkbLm6s+JFIdSTkJfd4ZYjeSyNxP/87qJCi7dlEY8URCRxaIgYZaKrVkO1oAKIIpNNMFEUH2rRUZYYKJ0WgUdgrP88l/Sqlac80rttlaqX2Vx5NEhOkJl5KALVEc3qIGaiKAH9IRe0KvxaDwbb8b7ojVnZDMH6BeMj2/OtJMU</latexit>
+e+
+(p2,s0
+)
+<latexit sha1_base64="yNeowRHQ3GyELz8zFbGuqTUDR08=">AAAB83icbVDLSgMxFM3UV62vqks3wSJUlDIjRV0W3bisYB/QGUsmzbShSSbkIZShv+HGhSJu/Rl3/o3pY6GtBy4czrmXe++JJaPa+P63l1tZXVvfyG8WtrZ3dveK+wdNnVqFSQOnLFXtGGnCqCANQw0jbakI4jEjrXh4O/FbT0RpmooHM5Ik4qgvaEIxMk4KQ24fz8qyWz03p91iya/4U8BlEsxJCcxR7xa/wl6KLSfCYIa07gS+NFGGlKGYkXEhtJpIhIeoTzqOCsSJjrLpzWN44pQeTFLlShg4VX9PZIhrPeKx6+TIDPSiNxH/8zrWJNdRRoW0hgg8W5RYBk0KJwHAHlUEGzZyBGFF3a0QD5BC2LiYCi6EYPHlZdK8qASXlep9tVS7mceRB0fgGJRBAK5ADdyBOmgADCR4Bq/gzbPei/fufcxac9585hD8gff5A4fKkLY=</latexit>
+µ+
+(p4,t)
+<latexit sha1_base64="ptyD9f5LS/3ZuIb5OwmIr0ae7Mo=">AAAB83icbVDLSgMxFM3UV62vqks3wSJU0DKjRV0W3bisYB/QGUsmzbShSSbkIZShv+HGhSJu/Rl3/o3pY6HVAxcO59zLvffEklFtfP/Lyy0tr6yu5dcLG5tb2zvF3b2mTq3CpIFTlqp2jDRhVJCGoYaRtlQE8ZiRVjy8mfitR6I0TcW9GUkScdQXNKEYGSeFIbcPp2XZPT/Rx91iya/4U8C/JJiTEpij3i1+hr0UW06EwQxp3Ql8aaIMKUMxI+NCaDWRCA9Rn3QcFYgTHWXTm8fwyCk9mKTKlTBwqv6cyBDXesRj18mRGehFbyL+53WsSa6ijAppDRF4tiixDJoUTgKAPaoINmzkCMKKulshHiCFsHExFVwIweLLf0nzrBJcVKp31VLteh5HHhyAQ1AGAbgENXAL6qABMJDgCbyAV896z96b9z5rzXnzmX3wC97HN4fUkLY=</latexit>
+µ (p3,s)
+<latexit sha1_base64="fnzbHGPXS7I4AvqvtWqIVfkHvUg=">AAAB7nicbVBNSwMxEJ2tX7V+VT16CRZBEMpuKdVj0YvHCvYD2mXJptk2NJsNSVYoS3+EFw+KePX3ePPfmLZ70NYHA4/3ZpiZF0rOtHHdb6ewsbm1vVPcLe3tHxwelY9POjpJFaFtkvBE9UKsKWeCtg0znPakojgOOe2Gk7u5332iSrNEPJqppH6MR4JFjGBjpa4MvCsZ1IJyxa26C6B14uWkAjlaQflrMExIGlNhCMda9z1XGj/DyjDC6aw0SDWVmEzwiPYtFTim2s8W587QhVWGKEqULWHQQv09keFY62kc2s4Ym7Fe9ebif14/NdGNnzEhU0MFWS6KUo5Mgua/oyFTlBg+tQQTxeytiIyxwsTYhEo2BG/15XXSqVW9RrX+UK80b/M4inAG53AJHlxDE+6hBW0gMIFneIU3RzovzrvzsWwtOPnMKfyB8/kDYqiO9Q==</latexit>
+p1 + p2
+(1)
+= ūs(p3)(−ieγν
+)vt(p4)
+−iηµν
+(p1 + p2)2 + i0
+v̄s0(p2)(−ieγµ
+)ut0(p1) (2)
+which is proportional to e2
+. The next-to-leading order contribution MNLO
+is of order e4
+,
+and contains Feynman diagrams with one loop.
+a) Draw all Feynman diagrams that contribute to MNLO
+.
+b) Write down MNLO
+using the Feynman rules. You don’t have to evaluate the loop
+integrals; this is just to show you examples of their typical form.
+2. Feynman parameters. (12 points)
+As you saw in problem 1, loop integrals take a few generic forms. For simplicity, let’s
+consider a scalar theory, which doesn’t have nontrivial factors in the numerator of the loop
+integrand. Then some generic loop integrals are the “tadpole”, “bubble”, and “triangle”,
+IT (a;m2
+) =
+Z
+dd
+k
+(2π)d
+1
+(k2 − m2)a
+(3)
+IB(a,b;p2
+) =
+Z
+dd
+k
+(2π)d
+1
+(k2)a((k + p)2)b
+(4)
+I4(a,b,c;p1,p2) =
+Z
+dd
+k
+(2π)d
+1
+(k2)a((k + p1)2)b((k − p2)2)c
+(5)
+named after the kinds of Feynman diagrams in which they appear. Here we have sup-
+pressed i0 terms, but you should keep in mind that they’re implicitly there, which will be
+important in the last subpart. We regard a, b, and c as general real exponents, though
+in practice they will usually be positive integers. The dimension d is also a real parameter.
+1To compute the bubble and triangle integrals, it is helpful to introduce Feynman param-
+eters, which combine the factors into the denominator into a power of a single quantity,
+like the tadpole integral. We will first have to build up some mathematical machinery.
+a) The gamma function is defined by
+Γ(z) =
+Z ∞
+0
+dxxz−1
+e−x
+(6)
+and for positive integer n, satisfies Γ(n) = (n − 1)!. Show that for real ν,
+1
+Aν
+=
+1
+Γ(ν)
+Z ∞
+0
+dxxν−1
+e−xA
+. (7)
+b) Show that for general νi,
+1
+Qn
+i=1 Aνi
+i
+=
+Γ(
+Pn
+i=1 νi)
+Qn
+i=1 Γ(νi)
+Z 1
+0
+n Y
+i=1
+dxi
+!
+δ 1 −
+n X
+i=1
+xi
+! Qn
+i=1 xνi−1
+i
+[
+Pn
+i=1 xiAi]
+Pn
+i=1 νi
+. (8)
+Here, the xi are called Feynman parameters. (Hint: you should not base your answer
+on the derivation in Peskin and Schroeder, which only works for integer ν. Instead,
+start from the result you proved in part (a).)
+c) Apply (8) to IB(a,b;p2
+) to get an integrand whose denominator contains a single
+quantity raised to the a + b power.
+d) Complete the evaluation of IB(a,b;p2
+) by Wick rotating to Euclidean signature and
+performing all the remaining integrals. As a hint, the Euclidean integration measure
+is dd
+kE = |kE|d−1
+d|kE|dΩd, where the surface area of a unit sphere in d dimensions is
+Ωd =
+2π
+d
+2
+Γ d
+2
+. (9)
+As a second hint, you can use the result
+Γ(a)Γ(b)
+Γ(a + b)
+=
+Z 1
+0
+dxxa−1
+(1 − x)b−1
+. (10)
+To check your answer, if you set d = 4 − 2 then you should find
+IB(1,1;p2
+) =
+
+−p2
+− i0
+4π
+−
+iΓ(1 − )2
+Γ(1 + )
+(4π)2(1 − 2)Γ(1 − 2)
+. (11)
+3. Passarino–Veltman reduction. (10 points)
+More generally, loop integrands will have momenta and other factors in the numerator.
+However, we can often use symmetry properties and a technique called Passarino–Veltman
+reduction to reduce them to the simpler loop integrands considered in problem 2. For
+example, consider the rank 2 tadpole integral
+Iµν
+T (a;m2
+) =
+Z
+dd
+k
+(2π)d
+kµ
+kν
+(k2 − m2)a
+. (12)
+2Because the right-hand side is a Lorentz tensor, the left-hand side must be as well. As
+there are no momenta in the integral, the only option is the metric, so we must have
+Iµν
+T (a;m2
+) = ηµν
+A (13)
+for some Lorentz scalar A. Contracting both sides with the metric, we find
+A =
+1
+d
+Z
+dd
+k
+(2π)d
+k2
+(k2 − m2)a
+(14)
+=
+1
+d
+Z
+dd
+k
+(2π)d
+(k2
+− m2
+) + m2
+(k2 − m2)a
+. (15)
+This is just two “scalar” tadpole integrals, as defined in (3), so we conclude
+Iµν
+T (a;m2
+) =
+ηµν
+d
+
+IT (a − 1;m2
+) + m2
+IT (a;m2
+)
+
+. (16)
+a) Apply the same reasoning to the rank 3 and rank 4 tadpole integrals,
+Iµνρ
+T (a;m2
+) =
+Z
+dd
+k
+(2π)d
+kµ
+kν
+kρ
+(k2 − m2)a
+, (17)
+Iµνρσ
+T (a;m2
+) =
+Z
+dd
+k
+(2π)d
+kµ
+kν
+kρ
+kσ
+(k2 − m2)a
+. (18)
+b) Similarly, the rank 1 and 2 bubble integrals can be written as
+Iµ
+B(a,b;p2
+) =
+Z
+dd
+k
+(2π)d
+kµ
+(k2)a((k + p)2)b
+= pµ
+C.
+Iµν
+B (a,b;p2
+) =
+Z
+dd
+k
+(2π)d
+kµ
+kν
+(k2)a((k + p)2)b
+=
+
+ηµν
+−
+pµ
+pν
+p2
+
+A⊥ +
+pµ
+pν
+p2
+B||. (19)
+Express A⊥ and B|| and C in terms of p2
+and the scalar bubble integral (4).
+4. Self-energy corrections in QED. (10 points)
+Loop corrections to the two-point correlation function play a key role in renormalization,
+and are often referred to as self-energy corrections. The one-loop self-energy corrections
+for the electron and photon in QED are given by the diagrams below.
+Σ(p2
+) = <latexit sha1_base64="mcbuxDXTW9QgPzCOHFrdFyHodyI=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOlZtIvV9yqOwdZJV5OKpCj0S9/9QYxSyOUhgmqdddzE+NnVBnOBE5LvVRjQtmYDrFrqaQRaj+bHzolZ1YZkDBWtqQhc/X3REYjrSdRYDsjakZ62ZuJ/3nd1ITXfsZlkhqUbLEoTAUxMZl9TQZcITNiYgllittbCRtRRZmx2ZRsCN7yy6ukfVH1Lqu1Zq1Sv8njKMIJnMI5eHAFdbiDBrSAAcIzvMKb8+i8OO/Ox6K14OQzx/AHzucP3QeM/Q==</latexit>
+p <latexit sha1_base64="mcbuxDXTW9QgPzCOHFrdFyHodyI=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOlZtIvV9yqOwdZJV5OKpCj0S9/9QYxSyOUhgmqdddzE+NnVBnOBE5LvVRjQtmYDrFrqaQRaj+bHzolZ1YZkDBWtqQhc/X3REYjrSdRYDsjakZ62ZuJ/3nd1ITXfsZlkhqUbLEoTAUxMZl9TQZcITNiYgllittbCRtRRZmx2ZRsCN7yy6ukfVH1Lqu1Zq1Sv8njKMIJnMI5eHAFdbiDBrSAAcIzvMKb8+i8OO/Ox6K14OQzx/AHzucP3QeM/Q==</latexit>
+p
+<latexit sha1_base64="22ayNhSfxXcShAAyfExNzJXubLY=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOl5rhfrrhVdw6ySrycVCBHo1/+6g1ilkYoDRNU667nJsbPqDKcCZyWeqnGhLIxHWLXUkkj1H42P3RKzqwyIGGsbElD5urviYxGWk+iwHZG1Iz0sjcT//O6qQmv/YzLJDUo2WJRmApiYjL7mgy4QmbExBLKFLe3EjaiijJjsynZELzll1dJ+6LqXVZrzVqlfpPHUYQTOIVz8OAK6nAHDWgBA4RneIU359F5cd6dj0VrwclnjuEPnM8f1XOM+A==</latexit>
+k
+<latexit sha1_base64="2LtOBqH3/JIq9DFTOHuwwZnFxFA=">AAAB6nicbVBNS8NAEJ34WetX1aOXxSIIQkmkqMeiF48V7Qe0oWy2m3bpZhN2J0IJ/QlePCji1V/kzX/jts1BWx8MPN6bYWZekEhh0HW/nZXVtfWNzcJWcXtnd2+/dHDYNHGqGW+wWMa6HVDDpVC8gQIlbyea0yiQvBWMbqd+64lrI2L1iOOE+xEdKBEKRtFKD6PzpFcquxV3BrJMvJyUIUe9V/rq9mOWRlwhk9SYjucm6GdUo2CST4rd1PCEshEd8I6likbc+Nns1Ak5tUqfhLG2pZDM1N8TGY2MGUeB7YwoDs2iNxX/8zophtd+JlSSIldsvihMJcGYTP8mfaE5Qzm2hDIt7K2EDammDG06RRuCt/jyMmleVLzLSvW+Wq7d5HEU4BhO4Aw8uIIa3EEdGsBgAM/wCm+OdF6cd+dj3rri5DNH8AfO5w8LSI2n</latexit>
+k + p
+Πµν
+(p2
+) =
+<latexit sha1_base64="mcbuxDXTW9QgPzCOHFrdFyHodyI=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOlZtIvV9yqOwdZJV5OKpCj0S9/9QYxSyOUhgmqdddzE+NnVBnOBE5LvVRjQtmYDrFrqaQRaj+bHzolZ1YZkDBWtqQhc/X3REYjrSdRYDsjakZ62ZuJ/3nd1ITXfsZlkhqUbLEoTAUxMZl9TQZcITNiYgllittbCRtRRZmx2ZRsCN7yy6ukfVH1Lqu1Zq1Sv8njKMIJnMI5eHAFdbiDBrSAAcIzvMKb8+i8OO/Ox6K14OQzx/AHzucP3QeM/Q==</latexit>
+p <latexit sha1_base64="mcbuxDXTW9QgPzCOHFrdFyHodyI=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOlZtIvV9yqOwdZJV5OKpCj0S9/9QYxSyOUhgmqdddzE+NnVBnOBE5LvVRjQtmYDrFrqaQRaj+bHzolZ1YZkDBWtqQhc/X3REYjrSdRYDsjakZ62ZuJ/3nd1ITXfsZlkhqUbLEoTAUxMZl9TQZcITNiYgllittbCRtRRZmx2ZRsCN7yy6ukfVH1Lqu1Zq1Sv8njKMIJnMI5eHAFdbiDBrSAAcIzvMKb8+i8OO/Ox6K14OQzx/AHzucP3QeM/Q==</latexit>
+p
+<latexit sha1_base64="22ayNhSfxXcShAAyfExNzJXubLY=">AAAB6HicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48t2FpoQ9lsJ+3azSbsboQS+gu8eFDEqz/Jm//GbZuDtj4YeLw3w8y8IBFcG9f9dgpr6xubW8Xt0s7u3v5B+fCoreNUMWyxWMSqE1CNgktsGW4EdhKFNAoEPgTj25n/8IRK81jem0mCfkSHkoecUWOl5rhfrrhVdw6ySrycVCBHo1/+6g1ilkYoDRNU667nJsbPqDKcCZyWeqnGhLIxHWLXUkkj1H42P3RKzqwyIGGsbElD5urviYxGWk+iwHZG1Iz0sjcT//O6qQmv/YzLJDUo2WJRmApiYjL7mgy4QmbExBLKFLe3EjaiijJjsynZELzll1dJ+6LqXVZrzVqlfpPHUYQTOIVz8OAK6nAHDWgBA4RneIU359F5cd6dj0VrwclnjuEPnM8f1XOM+A==</latexit>
+k
+<latexit sha1_base64="2LtOBqH3/JIq9DFTOHuwwZnFxFA=">AAAB6nicbVBNS8NAEJ34WetX1aOXxSIIQkmkqMeiF48V7Qe0oWy2m3bpZhN2J0IJ/QlePCji1V/kzX/jts1BWx8MPN6bYWZekEhh0HW/nZXVtfWNzcJWcXtnd2+/dHDYNHGqGW+wWMa6HVDDpVC8gQIlbyea0yiQvBWMbqd+64lrI2L1iOOE+xEdKBEKRtFKD6PzpFcquxV3BrJMvJyUIUe9V/rq9mOWRlwhk9SYjucm6GdUo2CST4rd1PCEshEd8I6likbc+Nns1Ak5tUqfhLG2pZDM1N8TGY2MGUeB7YwoDs2iNxX/8zophtd+JlSSIldsvihMJcGYTP8mfaE5Qzm2hDIt7K2EDammDG06RRuCt/jyMmleVLzLSvW+Wq7d5HEU4BhO4Aw8uIIa3EEdGsBgAM/wCm+OdF6cd+dj3rri5DNH8AfO5w8LSI2n</latexit>
+k + p
+<latexit sha1_base64="9W6W5mEAPHuoMKZo9Hi0v0h0Abk=">AAAB6nicbVBNSwMxEJ3Ur1q/qh69BIvgqexKUY9FLx4r2g9ol5JNs21okl2SrFCW/gQvHhTx6i/y5r8xbfegrQ8GHu/NMDMvTAQ31vO+UWFtfWNzq7hd2tnd2z8oHx61TJxqypo0FrHuhMQwwRVrWm4F6ySaERkK1g7HtzO//cS04bF6tJOEBZIMFY84JdZJDz2Z9ssVr+rNgVeJn5MK5Gj0y1+9QUxTyZSlghjT9b3EBhnRllPBpqVealhC6JgMWddRRSQzQTY/dYrPnDLAUaxdKYvn6u+JjEhjJjJ0nZLYkVn2ZuJ/Xje10XWQcZWklim6WBSlAtsYz/7GA64ZtWLiCKGau1sxHRFNqHXplFwI/vLLq6R1UfUvq7X7WqV+k8dRhBM4hXPw4QrqcAcNaAKFITzDK7whgV7QO/pYtBZQPnMMf4A+fwBgTI3f</latexit>
+µ <latexit sha1_base64="ZdwZZRY4yltDKU6D4D7eibOERsM=">AAAB6nicbVBNS8NAEJ3Ur1q/qh69LBbBU0mkqMeiF48V7Qe0oWy2k3bpZhN2N0IJ/QlePCji1V/kzX/jts1BWx8MPN6bYWZekAiujet+O4W19Y3NreJ2aWd3b/+gfHjU0nGqGDZZLGLVCahGwSU2DTcCO4lCGgUC28H4dua3n1BpHstHM0nQj+hQ8pAzaqz00JNpv1xxq+4cZJV4OalAjka//NUbxCyNUBomqNZdz02Mn1FlOBM4LfVSjQllYzrErqWSRqj9bH7qlJxZZUDCWNmShszV3xMZjbSeRIHtjKgZ6WVvJv7ndVMTXvsZl0lqULLFojAVxMRk9jcZcIXMiIkllClubyVsRBVlxqZTsiF4yy+vktZF1bus1u5rlfpNHkcRTuAUzsGDK6jDHTSgCQyG8Ayv8OYI58V5dz4WrQUnnzmGP3A+fwBh0Y3g</latexit>
+⌫
+(20)
+Throughout this problem we will work in massless QED, me = 0.
+a) Using the Feynman rules, write down Σ(p2
+) and Πµν
+(p2
+). Since we are viewing these
+quantities as corrections to the electron and photon propagators, you should not
+3include factors for the external legs, such as us(p) or µ, to get a scalar matrix element.
+Instead, Σ should be a 4 × 4 spinor matrix and Πµν
+a rank 2 Lorentz tensor.
+b) Evaluate the resulting loop integrals, expressing your final result in terms of p2
+and
+. (Hint: once you handle the gamma matrices, all of the integrals you get will be
+ones evaluated earlier in the problem set.)
+c) The Euler–Mascheroni constant is defined as
+γE = −
+Z ∞
+0
+dxe−x
+logx ≈ 0.577. (21)
+Show that
+Γ(1 − ) = 1 + γE + O(2
+). (22)
+d) Using (22), expand your results from part (b), dropping terms that vanish as  → 0.
+5. ? The scalar triangle integral. (5 points)
+In this optional problem, we consider a somewhat more difficult loop integral.
+a) Evaluate the scalar triangle integral I4(a,b,c;p1,p2) when p2
+1 = p2
+2 = 0, but for general
+a, b, c, and d, and give your answer in terms of s = (p1 + p2)2
+.
+b) It turns out there is a simple relation between the triangle and bubble integrals,
+I4(1,1,1;p1,p2)
+p2
+1=p2
+2=0
+= CIB(1,1;(p1 + p2)2
+). (23)
+Find the coefficient C in terms of d and s.
+4

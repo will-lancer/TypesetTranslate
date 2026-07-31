@@ -1,0 +1,148 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                     Physics 215B QFT Winter 2025
+                              Assignment 3
+                                                Due 11:59pm Tuesday, January 28, 2025
+
+  1. Brain-warmer.
+        Use the Clifford algebra to show that in 3+1 dimensions
+
+                                  γ µ xp/ + m γµ = −2xp/ + 4m
+                                             
+
+        where as usual p/ ≡ pµ γµ . This identity will be useful in the numerator of the
+        electron self-energy.
+
+  2. An example of renormalization in classical physics.
+        Consider a classical scalar field in D + 2 spacetime dimensions coupled to an
+        impurity (or defect or brane) in D dimensions, located at X = (xµ , 0, 0). Suppose
+        the field has a self-interaction which is localized on the defect. For definiteness
+        and calculability, we’ll consider the simple (quadratic) action
+                             Z                                             
+                                 D+2     1          M           2      2
+                    S[φ] = d         X     ∂M φ(X)∂ φ(X) + gδ (~x⊥ )φ (X) .
+                                         2
+        Here X M = (xµ , xi⊥ ), µ = 0..D − 1, i = 1, 2, i.e. x⊥ are coordinates transverse to
+        the impurity.
+
+         (a) What is the mass dimension of the coupling g? This is why I picked a
+             codimension1 -two defect.
+         (b) Find the equation of motion for φ. Where have you seen an equation like
+             this before?
+         (c) We will study the propagator for the field in a mixed representation:
+                                                    Z
+                                                                µ
+                     Gk (x, y) ≡ hφ(k, x)φ(−k, y)i = dD z eikµ z hφ(z, x)φ(0, y)i
+
+              – i.e. we go to momentum space in the directions in which translation sym-
+              metry is preserved by the defect. Find and evaluate the diagrams contribut-
+              ing to Gk (x, y) in terms of the free propagator Dk (x, y) ≡ hφ(k, x)φ(−k, y)ig=0 .
+              (We will not need the full form of Dk (x, y).) Note that there are no loop
+              diagrams, and in this sense, all the physics here is classical. Sum the series.
+              I found it convenient to do this problem in Euclidean spacetime, so G and
+              D are Euclidean propagators.
+  1
+      An object whose position requires specification of p coordinates has codimension p.
+
+
+                                                   1
+       (d) You should find that your answer to part 2c depends on Dk (0, 0), which
+           is divergent. This divergence arises from the fact that we are treating the
+           defect as infinitely thin, as a pointlike object – the δ 2 -function in the in-
+           teraction involves arbitrarily short wavelengths. In general, as usual, we
+           must really be agnostic about the short-distance structure of things. To re-
+           flect this, we introduce a regulator. For example, we can replace the fourier
+           representation of Dk (0, 0) with the cutoff version
+                                                   Z Λ
+                                                             eiq·0
+                                    Dk (0, 0; Λ) =     d̄2 q 2     .                   (1)
+                                                    0       k + q2
+            Do the integral.
+        (e) Now we renormalize. We will let the bare coupling g (the one which appears
+            in the Lagrangian, and in the series from part 2c) depend on the cutoff
+            g = g(Λ). We wish to eliminate g(Λ) in our expressions in favor of some
+            measurable quantity. To do this, we impose a renormalization condition:
+            choose some reference scale µ, and demand that2
+                                         !
+                              Gµ (x, y) = Dµ (x, y) − g(µ)Dµ (x, 0)Dµ (0, y).                   (2)
+
+            This equation defines g(µ), which we regard as a physical quantity. Show
+            that (2) is satisfied if we let the bare coupling be g(Λ) = g(µ)Z, with
+                                                          1
+                                             Z=                         .
+                                                  1 − g(µ)
+                                                       4π
+                                                           ln       Λ2
+                                                                    µ2
+
+
+        (f) Find the beta function for g,
+                                                           dg(µ)
+                                              βg (g) ≡ µ         ,
+                                                            dµ
+            and solve the resulting RG equation for g(µ) in terms of some initial condi-
+            tion g(µ0 ). Does the coupling get weaker or stronger in the UV?
+
+   3. Scale invariance in QFT in D = 0 + 0, part 1. [I got this problem from
+      Frederik Denef.]
+       A nice realization of QFT in 0 + 0 dimensions is the statistical mechanics of
+       a collection of non-interacting particles. The canonical partition function for a
+       single particle (moving in one dimension) is
+                                     Z               √
+                                Z = d̄P dXe−βH ∝ T ZV (T )                           (3)
+
+   2
+   Note that if we worked in real time, there would be an extra i in front of the second term on the
+RHS.
+
+
+                                                  2
+             2
+with H = P2 + V (X) and T = 1/β. The momentum integral is Gaussian and
+we can just do it. The partition function of N non-interacting indistinguishable
+particles is then Z N /N !, which just multiplies the energy U = T 2 ∂T log Z by a
+factor of N , so we don’t miss anything by focussing on the single particle.
+Let’s consider the case
+
+                            V (X) = aX 2 + bX 4 + cX 6                           (4)
+
+and figure out the important features of the temperature dependence of the ther-
+modynamic quantities by scaling arguments.
+
+(a) Assuming a 6= 0, b 6= 0, c 6= 0, find the behavior of the thermal energy U and
+    the heat capacity C = ∂T U in the limit T → 0 and in the limit T → ∞ using
+    scaling arguments. Which parts of the potential determine the respective
+    limiting behaviors?
+(b) If some of the couplings a, b, c vanish, the low or high temperature scal-
+    ing behavior may change. For example, what is the heat capacity at low
+    temperature when a = 0, b 6= 0?
+ (c) When b is sufficiently large (and a 6= 0, c 6= 0), there will be an intermediate
+     temperature regime over which the heat capacity is again constant, but
+     different from the low- and high-temperature limits. What is this heat
+     capacity?
+(d) In general, we can think of the change of C with T as a kind of classical
+    renormalization group (RG) flow, interpolating between ‘fixed points’ where
+    C becomes constant. In general, these fixed points correspond to potentials
+    V (X) with a scaling symmetry V (λ∆ X) = λV (X) for some choice of scaling
+    dimension ∆ of X. What is the heat capacity for a fixed point with scaling
+    dimension ∆ for X?
+ (e) Borrowing more language of the renormalization group, we can classify
+     deformations δV (X) = X m of a fixed point V (X) ∝ X 2n as irrelevant,
+     marginal, or relevant, depending on whether the deformation becomes dom-
+     inant or negligible in the IR limit, i.e. in the limit of low T . Here and below
+      can take on any value, not necessarily small. Restricting to deformations
+     with an X → −X symmetry, what are the relevant and irrelevant defor-
+     mations of V (X) = X 2n ? (Note that a deformation δV = X 2n can be
+     absorbed into a redefinition of X, which does not change the heat capacity.)
+ (f) The T -dependence of correlation functions (here, expectation values of pow-
+     ers of X) at fixed points is also determined by the scaling properties. What
+     is the T -dependence of X k at a fixed point V (X) = X 2n ?
+
+                                      3
+(g) Non-polynomial V (X) can be considered as well. For example, what is the
+    heat capacity at small and large T for V (X) = (1 + X 2 )1/n ?
+
+
+
+
+                                  4
+

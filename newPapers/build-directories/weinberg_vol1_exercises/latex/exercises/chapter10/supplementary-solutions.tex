@@ -75,74 +75,98 @@ For a renormalized field the right-hand side is rescaled with the field
 normalization.
 \end{enumerate}
 
-\SupplementarySolution{2}{Euclidean Positivity, Fermion Parity, and Ghost Tests}
-\begin{enumerate}
-\item
-After Wick rotation,
+\SupplementarySolution{2}{The Thermal Lehmann Representation}
+Choose simultaneous energy--momentum eigenstates,
 \[
- D_E(Q^2)=\int_0^\infty
- \frac{\rho(\mu^2)\,d\mu^2}{Q^2+\mu^2}.
+ H\ket n=E_n\ket n,
+ \qquad \mathbf P\ket n=\mathbf p_n\ket n,
 \]
-Differentiation under the integral gives
+and define
 \[
- \frac{d^nD_E}{d(Q^2)^n}
- =(-1)^n n!\int_0^\infty
- \frac{\rho(\mu^2)\,d\mu^2}{(Q^2+\mu^2)^{n+1}}.
+ O_{nm}=\bra nO(0)\ket m,qquad
+ \omega_{mn}=E_m-E_n,qquad
+ \mathbf q_{mn}=\mathbf p_m-\mathbf p_n.
 \]
-Hence
+For Hermitian \(O\), inserting a complete set on each side of the time
+ordering and interchanging \(n\) and \(m\) in the negative-time term gives
 \[
- \boxed{(-1)^nD_E^{(n)}(Q^2)\geq0}
+ \begin{split}
+ -iD_\beta(t,\mathbf x)
+ =\frac1{Z_\beta}\sum_{n,m}|O_{nm}|^2
+ e^{-i\omega_{mn}t+i\mathbf q_{mn}\cdot\mathbf x}
+ \bigl[\theta(t)e^{-\beta E_n}
+ +\theta(-t)e^{-\beta E_m}\bigr].
+ \end{split}
 \]
-for all \(Q^2>0\) and \(n\geq0\).  The propagator is therefore a
-Stieltjes, and in particular a completely monotone, function.  The crucial
-input is positivity of the Hilbert-space norm, which makes
-\(\rho\) a nonnegative measure.  An indefinite-metric ghost contribution
-can violate these inequalities.
-\item
-In the rest frame of an intermediate state of mass \(\mu\), rotational
-invariance makes the spinor spectral matrix a linear combination of the
-two energy projectors.  Denote their nonnegative weights by
-\(\rho_+\) and \(\rho_-\).  Covariantly,
+This is already the thermal Lehmann representation in position space.
+With the Fourier convention
+\(F(\omega,\mathbf p)=\int d^4x\,
+e^{i\omega t-i\mathbf p\cdot\mathbf x}F(x)\), it becomes
 \[
- S(p)=\int_0^\infty d\mu^2\,
- \frac{-i\slashed p\,\rho_1(\mu^2)+\rho_2(\mu^2)}
- {p^2+\mu^2-i0},
+ \begin{split}
+ -iD_\beta(\omega,\mathbf p)
+ ={}&\frac{i}{Z_\beta}\sum_{n,m}(2\pi)^3
+ \delta^3(\mathbf p-\mathbf q_{mn})|O_{nm}|^2\\
+ &\times\left[
+ \frac{e^{-\beta E_n}}{\omega-\omega_{mn}+i0}
+ -\frac{e^{-\beta E_m}}{\omega-\omega_{mn}-i0}
+ \right].
+ \end{split}
 \]
-with
-\[
- \rho_1=\rho_++\rho_-,
-\qquad
- \rho_2=\mu(\rho_+-\rho_-).
-\]
-Solving for the projector weights gives
-\[
- \rho_\pm=\frac12\left(\rho_1\pm\frac{\rho_2}{\mu}\right)\geq0.
-\]
-It follows pointwise that
-\[
- \boxed{\rho_1\geq0,\qquad |\rho_2|\leq\mu\rho_1.}
-\]
-The stable positive-parity pole has
-\(\rho_1=Z\delta(\mu^2-m^2)\) and
-\(\rho_2=Zm\delta(\mu^2-m^2)\), reproducing the free Dirac numerator at
-the pole.
-\item
-The proposed propagator already has spectral form, with
-\[
- \rho(\mu^2)=\delta(\mu^2-m^2)-c\delta(\mu^2-M^2).
-\]
-The second delta function has negative weight.  It would create a state
-whose norm or residue has the wrong sign, contradicting the
-nonnegativity of a scalar K\"all\'en--Lehmann measure.  Hence this
-propagator cannot arise from a positive-metric local scalar field.
 
-If the second sign is positive, then
-\(\rho=\delta(\mu^2-m^2)+c\delta(\mu^2-M^2)\) is nonnegative and can
-describe an interpolating operator coupled to two stable particles.
-For a canonically normalized field the total weight must additionally
-obey its spectral sum rule; an overall field rescaling or continuum
-contribution may be needed to give the prescribed normalization.
-\end{enumerate}
+It is useful to separate the two thermal Wightman functions.  Their common
+positive-frequency weight and the commutator spectral function are
+\[
+ \begin{split}
+ G_\beta^>(\omega,\mathbf p)
+ &\equiv\frac{(2\pi)^4}{Z_\beta}\sum_{n,m}e^{-\beta E_n}
+ |O_{nm}|^2\delta(\omega-\omega_{mn})
+ \delta^3(\mathbf p-\mathbf q_{mn}),\\
+ \rho_\beta(\omega,\mathbf p)
+ &\equiv\frac{(2\pi)^4}{Z_\beta}\sum_{n,m}
+ \bigl(e^{-\beta E_n}-e^{-\beta E_m}\bigr)|O_{nm}|^2
+ \delta(\omega-\omega_{mn})
+ \delta^3(\mathbf p-\mathbf q_{mn}).
+ \end{split}
+\]
+Since \(E_m=E_n+\omega\) on the support of the delta function,
+\[
+ G_\beta^<(\omega,\mathbf p)
+ =e^{-\beta\omega}G_\beta^>(\omega,\mathbf p),
+ \qquad
+ \rho_\beta=(1-e^{-\beta\omega})G_\beta^>.
+\]
+This is detailed balance, or the frequency-space KMS relation.  In terms of
+\(n_B(\omega)=(e^{\beta\omega}-1)^{-1}\), the time-ordered answer may also
+be written
+\[
+ -iD_\beta(\omega,\mathbf p)
+ =i\int_{-\infty}^{\infty}\frac{d\omega'}{2\pi}\,
+ \rho_\beta(\omega',\mathbf p)
+ \left[
+ \frac{1+n_B(\omega')}{\omega-\omega'+i0}
+ -\frac{n_B(\omega')}{\omega-\omega'-i0}
+ \right].
+\]
+The heat bath selects a rest frame, so the thermal density depends
+separately on \(\omega\) and \(\mathbf p\), rather than only on a Lorentz
+invariant mass.
+
+Assume a unique vacuum with \(E_0=0\).  As \(\beta\to\infty\), only
+\(n=0\) survives in the positive-time term and only \(m=0\) in the
+negative-time term.  Thus
+\[
+ \begin{split}
+ -iD(\omega,\mathbf p)=i\sum_m(2\pi)^3\Bigg[
+ &\frac{|O_{0m}|^2\delta^3(\mathbf p-\mathbf p_m)}
+       {\omega-E_m+i0}\\
+ &-\frac{|O_{m0}|^2\delta^3(\mathbf p+\mathbf p_m)}
+       {\omega+E_m-i0}\Bigg],
+ \end{split}
+\]
+which is the usual vacuum Lehmann representation; Lorentz invariance then
+reorganizes the intermediate states into the standard invariant-mass
+spectral density.
 
 \SupplementarySolution{3}{Local and Momentum-Space Ward--Takahashi Identities}
 \begin{enumerate}
@@ -210,39 +234,105 @@ kinetic term and the one-photon vertex are tied; in standard notation the
 Ward identity enforces \(Z_1=Z_2\).
 \end{enumerate}
 
-\SupplementarySolution{4}{Neutral Insertions and Vanishing Contact Terms and Charge Conservation as a Correlator Selection Rule}
+\SupplementarySolution{4}{Charge Conjugation and Odd-Photon Selection Rules}
 \begin{enumerate}
 \item
-For operators satisfying \([Q,O_i]=-q_iO_i\), the local identity is
+Set
 \[
- \partial_\mu^x
- \left\langle Tj^\mu(x)\prod_{i=1}^nO_i(x_i)\right\rangle
- =-\sum_{i=1}^n q_i\delta^4(x-x_i)
- \left\langle T\prod_{j=1}^nO_j(x_j)\right\rangle,
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+ \qquad D_\mu=\partial_\mu+ieA_\mu.
 \]
-with the obvious graded ordering for fermionic insertions.  Thus the
-universal charge contact terms vanish if each \(q_i=0\).
+In the volume's mostly-plus convention the two Lagrangians are
+\[
+ \boxed{\mathcal L_{\mathrm{SQED}}
+ =-\frac14F_{\mu\nu}F^{\mu\nu}
+ -(D_\mu\phi)^\dagger D^\mu\phi-M^2\phi^\dagger\phi,}
+\]
+\[
+ \boxed{\mathcal L_{\mathrm{QED}}
+ =-\frac14F_{\mu\nu}F^{\mu\nu}
+ -\bar\psi(\gamma^\mu D_\mu+m)\psi.}
+\]
+They are invariant under
+\[
+ A_\mu\longmapsto A_\mu+\partial_\mu\Lambda,qquad
+ \phi\longmapsto e^{-ie\Lambda}\phi,qquad
+ \psi\longmapsto e^{-ie\Lambda}\psi,
+\]
+because \(D_\mu\phi\) and \(D_\mu\psi\) acquire the same phase as their
+fields and \(F_{\mu\nu}\) is unchanged.
 
-This does not assert that the time-ordered divergence is an ordinary
-function equal to zero at coincidence.  Composite currents can have local
-renormalization ambiguities or Schwinger terms involving derivatives of
-delta functions.  Those terms are separately constrained by locality and
-the symmetries; neutrality only removes the displayed charge-action terms.
+For a constant phase \(\varepsilon=e\Lambda\), so that
+\(\delta\phi=-i\varepsilon\phi\) and
+\(\delta\psi=-i\varepsilon\psi\), the unit-normalized Noether currents are
+\[
+ \boxed{J_\phi^\mu
+ =-i\bigl[\phi^\dagger D^\mu\phi
+ -(D^\mu\phi)^\dagger\phi\bigr],
+ \qquad
+ J_\psi^\mu=i\bar\psi\gamma^\mu\psi.}
+\]
+Multiplication by the coupling gives the corresponding gauge-source
+normalization.  The Euler--Lagrange equations give
+\(\partial_\mu J_\phi^\mu=\partial_\mu J_\psi^\mu=0\).
 \item
-Integrating the local identity over \(x\) makes the left side a surface
-term.  If it vanishes, then
+Charge conjugation must send
 \[
- 0=-\left(\sum_iq_i\right)
- \left\langle T\prod_iO_i\right\rangle.
+ \boxed{\widehat C^{-1}A_\mu\widehat C=-A_\mu.}
 \]
-The correlator can therefore be nonzero only if
+Indeed, it then maps
 \[
- \boxed{\sum_iq_i=0.}
+ D_\mu\phi\longmapsto
+ (\partial_\mu-ieA_\mu)\phi^\dagger=(D_\mu\phi)^\dagger,
+ \qquad F_{\mu\nu}\longmapsto-F_{\mu\nu}.
 \]
-For \(r\) copies of a field of charge \(q\) and \(s\) copies of its
-conjugate, the total charge is \((r-s)q\).  Unless \(r=s\), the vacuum
-correlator vanishes.  This is the correlator form of the statement that an
-invariant vacuum cannot absorb net conserved charge.
+Both the Maxwell term and every scalar term are therefore invariant.  The
+same calculation gives
+\(\widehat C^{-1}J_\phi^\mu\widehat C=-J_\phi^\mu\).
+\item
+The supplied matrix identities imply \(\mathsf C^2=-\mathbf1\) and
+\(\mathsf C(\gamma^\mu)^{\mathsf T}\mathsf C=\gamma^\mu\).  Therefore
+\[
+ \begin{split}
+ \widehat C^{-1}(\bar\psi\psi)\widehat C
+ &=\psi^{\mathsf T}\mathsf C^2\bar\psi^{\mathsf T}
+ =-\psi^{\mathsf T}\bar\psi^{\mathsf T}=\bar\psi\psi,\\
+ \widehat C^{-1}(\bar\psi\gamma^\mu\psi)\widehat C
+ &=\psi^{\mathsf T}\mathsf C\gamma^\mu\mathsf C\bar\psi^{\mathsf T}
+ =-\bar\psi(\mathsf C\gamma^\mu\mathsf C)^{\mathsf T}\psi
+ =-\bar\psi\gamma^\mu\psi.
+ \end{split}
+\]
+For the kinetic term the same Grassmann rearrangement gives
+\[
+ \bar\psi^C\gamma^\mu\partial_\mu\psi^C
+ =-(\partial_\mu\bar\psi)\gamma^\mu\psi
+ =\bar\psi\gamma^\mu\partial_\mu\psi
+ -\partial_\mu(\bar\psi\gamma^\mu\psi).
+\]
+It is invariant in the action.  The interaction is invariant because both
+\(A_\mu\) and \(\bar\psi\gamma^\mu\psi\) are odd, while the mass and Maxwell
+terms are even.  Hence \(\mathcal L_{\mathrm{QED}}\) is charge-conjugation
+invariant up to the displayed total derivative, and
+\(\widehat C^{-1}J_\psi^\mu\widehat C=-J_\psi^\mu\).
+\item
+Let \(X_i\) be either \(A^{\mu_i}(x_i)\) or \(J^{\mu_i}(x_i)\).  Since the
+vacuum and the time-ordering operation are invariant,
+\[
+ \begin{split}
+ \bra\Omega T\{X_1\cdots X_n\}\ket\Omega
+ &=\bra\Omega\widehat C^{-1}T\{X_1\cdots X_n\}\widehat C\ket\Omega\\
+ &=(-1)^n\bra\Omega T\{X_1\cdots X_n\}\ket\Omega.
+ \end{split}
+\]
+For odd \(n\) the correlator equals its negative and must vanish.  This is
+an exact operator argument, so it is valid to all orders rather than merely
+diagram by diagram.  LSZ reduction then says that any amplitude having an
+odd number of external photons and no charged external particles vanishes:
+three-photon scattering or splitting is forbidden, while even-photon
+light-by-light scattering is not.  Perturbatively this is Furry's theorem,
+the cancellation between the two orientations of each charged loop with an
+odd number of photon attachments.
 \end{enumerate}
 
 \SupplementarySolution{5}{Current Conservation after LSZ Reduction}
@@ -463,123 +553,176 @@ and positive.  If a genuinely once-subtracted relation is justified, the
 displayed formula also proves \(F'(z_0)\geq0\).
 \end{enumerate}
 
-\SupplementarySolution{10}{Bubble Reconstruction and Discontinuities}
+\SupplementarySolution{10}{Muon Vacuum Polarization from the Optical Theorem}
 \begin{enumerate}
 \item
-Let \(z\) denote the conventional timelike invariant.  Cutting the two
-equal-mass internal lines gives the two-body phase-space factor
+The required graph is the forward \(s\)-channel photon exchange with a
+muon loop inserted into the photon line:
+\begin{center}
+\begin{tikzpicture}[x=0.85cm,y=0.85cm,>=stealth]
+ \draw[->] (-3,1)--(-2,0) node[midway,above left] {\(e^-\)};
+ \draw[<-] (-3,-1)--(-2,0) node[midway,below left] {\(e^+\)};
+ \draw (-2,0)--(-0.75,0) node[midway,above] {\(\gamma^*\)};
+ \draw[->] (-0.75,0) arc (180:0:0.75 and 0.62)
+   node[midway,above] {\(\mu^-\)};
+ \draw[->] (0.75,0) arc (0:-180:0.75 and 0.62)
+   node[midway,below] {\(\mu^+\)};
+ \draw (0.75,0)--(2,0) node[midway,above] {\(\gamma^*\)};
+ \draw[->] (2,0)--(3,1) node[midway,above right] {\(e^-\)};
+ \draw[<-] (2,0)--(3,-1) node[midway,below right] {\(e^+\)};
+\end{tikzpicture}
+\end{center}
+Write the transverse muon contribution as
 \[
- \operatorname{Im}B(z+i0)
- =\frac{1}{16\pi}
- \sqrt{1-\frac{4m^2}{z}}\,
- \theta(z-4m^2),
+ \Pi_\mu^{\alpha\beta}(q)
+ =(q^\alpha q^\beta-q^2\eta^{\alpha\beta})\Pi_\mu(s),
+ \qquad s=-q^2.
 \]
-for the standard scalar-integral normalization.  A subtraction at the
-origin then gives
+Cutting the two muon propagators is equivalent to inserting the on-shell
+\(\mu^+\mu^-\) states in the current two-point function.  With
 \[
- \boxed{\;
- B_R(z)-B_R(0)
- =\frac{z}{16\pi^2}
- \int_{4m^2}^{\infty}
- \frac{\sqrt{1-4m^2/s}}{s(s-z-i0)}\,ds.\;}
+ \beta_\mu=\sqrt{1-\frac{4m_\mu^2}{s}},
+ \qquad x_\pm=\frac12(1\pm\beta_\mu),
 \]
-This one-dimensional integral has a branch point at \(4m^2\), is real
-below threshold, and its discontinuity reproduces the cut.  Evaluation by
-a change to the pair velocity gives the familiar logarithmic Feynman-
-parameter result, up to the chosen finite subtraction.
+the scalar absorptive part is
+\[
+ \begin{split}
+ \operatorname{Im}\Pi_\mu(s+i0)
+ &=\frac{Q_\mu^2}{2\pi}
+   \int_{x_-}^{x_+}dx\,x(1-x)\\
+ &=\boxed{\frac{Q_\mu^2}{12\pi}
+ \left(1+\frac{2m_\mu^2}{s}\right)
+ \sqrt{1-\frac{4m_\mu^2}{s}}\,
+ \theta(s-4m_\mu^2)}.
+ \end{split}
+\]
+Indeed, a regulator-dependent representation has the form
+\[
+ \Pi_\mu(s)=C_{\mathrm{UV}}
+ -\frac{Q_\mu^2}{2\pi^2}\int_0^1dx\,x(1-x)
+ \log\!\left[m_\mu^2-sx(1-x)-i0\right],
+\]
+up to a real convention-dependent additive constant.  The cutoff occurs
+only in the real local term \(C_{\mathrm{UV}}\); the logarithm acquires an
+imaginary part only for \(x_-<x<x_+\).  The boxed answer is consequently
+cutoff independent.
+
+For negligible electron mass, the same cut gives
+\[
+ \sigma(e^+e^-\to\mu^+\mu^-)
+ =\frac{Q_e^2}{s}\operatorname{Im}\Pi_\mu(s+i0)
+ =\frac{Q_e^2Q_\mu^2}{12\pi s}
+ \left(1+\frac{2m_\mu^2}{s}\right)\beta_\mu,
+\]
+which identifies precisely the \(Q_e^2Q_\mu^2\) contribution to the
+forward amplitude.
 \item
-For the usual dimensionless transverse scalar \(\Pi(z)\), the cut through a
-Dirac pair gives
+Write \(S=\mathbf1+iT\).  Unitarity gives
 \[
- \operatorname{Im}\Pi(z+i0)
- =\frac{\alpha}{3}
- \left(1+\frac{2m^2}{z}\right)
- \sqrt{1-\frac{4m^2}{z}}\,
- \theta(z-4m^2).
+ -i(T-T^\dagger)=T^\dagger T,
 \]
-On-shell charge renormalization sets \(\Pi_R(0)=0\), so
+and hence the correctly conjugated matrix-element identity is
 \[
- \Pi_R(z)=\frac{z}{\pi}\int_{4m^2}^{\infty}
- \frac{\operatorname{Im}\Pi(s+i0)}{s(s-z-i0)}\,ds.
+ -i\bigl[\mathcal M(a\to b)-\mathcal M(b\to a)^*\bigr]
+ =\sum_f\int d\Phi_f\,
+ \mathcal M(b\to f)^*\mathcal M(a\to f).
 \]
-For \(|z|\ll m^2\), expand the last denominator.  The elementary spectral
-integral gives
+Thus the missing conjugation in the source display is a typographical
+omission, not a changed unitarity convention.  Setting \(b=a\) gives
 \[
- \boxed{\Pi_R(z)=\frac{\alpha}{15\pi}\frac{z}{m^2}
- +O(z^2/m^4).}
+ 2\operatorname{Im}\mathcal M(a\to a)
+ =\sum_f\int d\Phi_f\,|\mathcal M(a\to f)|^2\geq0.
 \]
-The sign of \(z\) must of course be translated if one uses the volume's
-mostly-plus invariant instead of the conventional timelike variable used
-here.
-\item
-Write \(S=1+iT\).  Unitarity gives
+For the \(\mu^+\mu^-\) intermediate state, division by the incident flux
+reproduces
 \[
- -i(T-T^\dagger)=T^\dagger T.
+ \frac{Q_e^2}{s}\operatorname{Im}\Pi_\mu(s)
+ =\sigma(e^+e^-\to\mu^+\mu^-)\geq0,
 \]
-Taking the matrix element in the same initial state and inserting a complete
-set yields
-\[
- 2\operatorname{Im}\mathcal M_{ii}
- =\sum_X\int d\Pi_X\,
- (2\pi)^4\delta^4(p_i-p_X)|\mathcal M_{Xi}|^2.
-\]
-After division by the incident flux, the right side is proportional to the
-total cross-section.  Real analyticity then identifies
-\[
- \boxed{\operatorname{Disc}\mathcal M(s)
- =2i\,\operatorname{Im}\mathcal M(s+i0).}
-\]
-Thus tree-level on-shell production probabilities determine the
-discontinuity of a loop amplitude.  A dispersion relation reconstructs its
-real part, with only the necessary local subtraction constants left
-undetermined.
+which is the optical theorem for this cut.
+
+In a Wick expansion, closing a chain of fermion contractions into a cycle
+requires one additional odd permutation of Grassmann fields.  Each
+independent closed fermion loop therefore contributes \((-1)\).  Directly
+in the present example, omitting that sign reverses the cut of the loop and
+would give
+\(\operatorname{Im}\Pi_\mu=-Q_\mu^2\beta_\mu
+(1+2m_\mu^2/s)/(12\pi)\), making the cross-section negative.  Including the
+closed-loop minus sign gives the positive absorptive part above and exactly
+restores unitarity.
 \end{enumerate}
 
-\SupplementarySolution{11}{Compton Gauge Cancellation before Squaring and Forward Thomson Limit}
-\begin{enumerate}
-\item
-Suppressing the charge and overall phase, the two orderings are
+\SupplementarySolution{11}{The Complete Compton Trace}
+Put
 \[
- \mathcal M^{\mu\nu}
- =\bar u(p')\left[
- \gamma^\mu S_F(p+k)\gamma^\nu
- +\gamma^\nu S_F(p-k')\gamma^\mu
- \right]u(p).
+ a=k_1\cdot k_2,
+ \qquad b=k_1\cdot k_2'.
 \]
-Contract the incoming index with \(k_\nu\).  The identities
+Momentum conservation and the mass-shell conditions imply
 \[
- \slashed k=S_F^{-1}(p+k)-S_F^{-1}(p),
-\qquad
- \slashed k=S_F^{-1}(p')-S_F^{-1}(p-k')
+ k_2\cdot k_2'=a-b,
+ \qquad k_1'\cdot k_2=b,
+ \qquad k_1'\cdot k_2'=a,
+ \qquad k_1'\cdot k_1=-m^2+a-b.
 \]
-turn the first ordering into
-\(\bar u(p')\gamma^\mu u(p)\) and the crossed ordering into its negative,
-after the external Dirac equations are used.  Therefore
+These relations eliminate every scalar product generated by the trace in
+favor of \(a,b,m^2\).
+
+Denote the two numerator structures in the first parenthesis of the prompt
+by \(N_s^{\mu\nu}\) and \(N_u^{\mu\nu}\), and those in the second by
+\(\bar N_s^{\alpha\beta}\) and \(\bar N_u^{\alpha\beta}\), before their
+denominators \(a\) and \(b\) are included.  Apply the supplied contractions
+with \(d=4\), and then use
 \[
- \boxed{k_\nu\mathcal M^{\mu\nu}=0.}
+ \operatorname{tr}\mathbf1=4,
+ \qquad
+ \operatorname{tr}(\gamma^\mu\gamma^\nu)=4\eta^{\mu\nu},
 \]
-The cancellation occurs in the unsquared amplitude and requires both
-electron-line orderings.
-\item
-Expanding the sum of the direct and crossed electron propagators for
-\(\omega\ll m\), the nominal \(1/\omega\) pieces cancel.  For transverse
-polarizations the surviving spin-independent amplitude is
+and
 \[
- f(0)=-\frac{\alpha}{m}\,
- \boldsymbol\epsilon'^{\,*}\cdot\boldsymbol\epsilon .
+ \operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+ =4\bigl(\eta^{\mu\nu}\eta^{\rho\sigma}
+ -\eta^{\mu\rho}\eta^{\nu\sigma}
+ +\eta^{\mu\sigma}\eta^{\nu\rho}\bigr).
 \]
-The unpolarized differential cross-section is therefore
+All traces with an odd number of gamma matrices vanish.  The four pieces of
+the contracted trace reduce to
 \[
- \frac{d\sigma}{d\Omega}
- =\frac{\alpha^2}{2m^2}(1+\cos^2\theta).
+ \begin{array}{c|c}
+ \text{numerator pair}&
+ \eta_{\mu\alpha}\eta_{\nu\beta}
+ \operatorname{tr}\bigl[(\slashed{k}_1'+im)
+ N^{\mu\nu}(\slashed{k}_1+im)\bar N^{\alpha\beta}\bigr]\\ \hline
+ s\text{--}s&32(ab-m^2a+m^4)\\
+ u\text{--}u&32(ab+m^2b+m^4)\\
+ s\text{--}u&16m^2(a-b)-32m^4\\
+ u\text{--}s&16m^2(a-b)-32m^4
+ \end{array}
 \]
-Angular integration gives the Thomson value
+The denominators are respectively \(a^2,b^2,ab,ab\).  Their sum is therefore
 \[
- \boxed{\sigma_T=\frac{8\pi\alpha^2}{3m^2}.}
+ \begin{split}
+ \mathcal T
+ &=32\left[
+ \frac ba+\frac ab
+ +2m^2\left(\frac1b-\frac1a\right)
+ +m^4\left(\frac1b-\frac1a\right)^2
+ \right].
+ \end{split}
 \]
-The finite limit is fixed by the renormalized charge and mass, not by a
-separate low-energy counterterm.
-\end{enumerate}
+Finally Eq.~(11.46) contributes the prefactor \(e^4/4\), and the requested
+unpolarized average supplies another factor \(1/4\).  Hence
+\[
+ \boxed{
+ \frac14\sum_{\sigma,\sigma'}|\widetilde{\mathcal M}_{c}|^2
+ =2e^4\left[
+ \frac ba+\frac ab
+ +2m^2\left(\frac1b-\frac1a\right)
+ +m^4\left(\frac1b-\frac1a\right)^2
+ \right],}
+\]
+which is precisely the stated result after restoring
+\(a=k_1\cdot k_2\) and \(b=k_1\cdot k_2'\).
 
 \SupplementarySolution{12}{Integrating the Klein--Nishina Distribution}
 With \(x=\omega/m\) and

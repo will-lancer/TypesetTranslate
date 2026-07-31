@@ -1,0 +1,163 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                   Physics 215A QFT Fall 2023
+                          Assignment 7
+                                      Due 11:00am Monday, November 20, 2023
+
+  1. Brain-warmer: Wick example.
+     For a real scalar field, verify by hand Wick’s prediction for the difference
+                         T (φ(x1 )φ(x2 )φ(x3 )) − : φ(x1 )φ(x2 )φ(x3 ) :
+
+  2. Brain-warmers: Feynman rules.
+         Consider the field theory with action
+                              Z                                  
+                                  d+1     1       µ     2 2   g 3
+                       S[φ] = d x           (∂µ φ∂ φ − m φ ) − φ .
+                                          2                   3!
+      (a) Briefly state the Feynman rules in position space, emphasizing the differ-
+          ences from the φ4 theory.
+      (b) Draw the diagrams that correct the position-space two-point function at
+          order g 2 .
+      (c) Find the symmetry factor for these diagrams and verify them directly.
+
+  3. Particle creation by an external source.
+     Compare this problem with problem 6 on HW06.
+     Consider the Hamiltonian
+                                          Z
+                              H = H0 +            d3 x (−j(t, ~x)φ(x))
+
+     where H0 is the free Klein-Gordon Hamiltonian, φ is the Klein-Gordon field, and
+     j is a c-number scalar function.
+
+      (a) Show that the probability that the source creates no particles is given by
+                                                           d4 xj(x)φI (x)        2
+                                                       R
+                               P (0) = h0| T {e+i                           } |0i .
+
+      (b) Evaluate the term in P (0) of order j 2 , and show that P (0) = 1 − λ + O(j 4 )
+          where                            Z 3
+                                              d̄ p
+                                       λ=            |j̃(p)|2 .
+                                              2Ep
+          We will show below that λ = hN i is the mean number of particles created
+          by the source.
+
+                                              1
+   (c) Represent the term computed in part 3b as a Feynman diagram. Now rep-
+       resent the whole perturbation series for P (0) in terms of Feynman diagrams.
+       (Hint: you have done this calculation already.) Show that this series expo-
+       nentiates, so that it can be summed exactly P (0) = e−λ .
+   (d) On the next problem set, after learning about the notion of final-state phase
+       space, we’ll find the probability for the source to create any number of
+       particles.
+
+4. Propagator corrections in a solvable field theory.
+  Consider a theory of a scalar field in D dimensions with action
+
+                                      S = S0 + S1
+
+  where                          Z
+                                            1
+                                     dD x     ∂µ φ∂ µ φ − m20 φ2
+                                                                 
+                          S0 =
+                                            2
+  and                                   Z
+                                             1
+                              S1 = −     dD x δm2 φ2 .
+                                             2
+  We have artificially decomposed the mass term into two parts. We will do per-
+  turbation theory in small δm2 , treating S1 as an ‘interaction’ term. We wish to
+  show that the organization of perturbation theory that we’ve seen lecture will
+  correctly reassemble the mass term.
+
+   (a) Write down all the Feynman rules for this perturbation theory.
+   (b) Determine the 1PI two-point function in this model, defined by
+                          X
+                   −iΣ ≡      (all 1PI diagrams with two nubbins) .
+
+   (c) Show that the (geometric) summation of the propagator corrections cor-
+       rectly produces the propagator that you would have used had we not split
+       up m20 + δm2 .
+
+5. Wick’s theorem from Schwinger-Dyson equations. [Bonus problem] Study
+   the derivation of Wick’s theorem from the Schwinger-Dyson equation for the n-
+   point function of a free scalar field on page 81 of Schwartz’ book.
+
+6. A background field. [This is a bonus problem.]
+  Consider the following action for a real scalar field Φ:
+                         Z
+                                  1
+                  S[Φ] = dd+1 x ∂µ Φ∂ µ Φ − m2 Φ2 − gφ(x)Φ2 .
+                                                           
+                                  2
+
+                                            2
+The last term here is a cubic coupling between φ and Φ. But here we will treat
+φ(x) as a fixed background field (analogous to j(x) on previous problems) which
+acts as a spacetime-dependent mass for the dynamical field Φ.
+
+(a) Show that the two-point Green’s function, G(x, y) ≡ hΩ|T Φ(x)Φ(y)|Ωi,
+    satisfies the Schwinger-Dyson equation
+
+                     − iδ d+1 (x − y) = ∂ 2 + m2 + gφ(x) G(x, y).
+                                                        
+                                                                               (1)
+
+(b) We would like to solve this differential equation. As a warmup, consider the
+    case g = 0. Here is a trick: add a fictitious additional time direction T
+
+                    ∂T − ∂ 2 + m2         G(x, y, T ) = iδ d+1 (x − y)δ(T )
+                                     
+                                                                               (2)
+
+     This is just a diffusion equation (in d + 2 dimensions and with a funny factor
+     of i!). Show that given a solution to (9), you can find the solution of (8)
+     with g = 0 by                       Z       ∞
+                             G(x, y) =               dT G(x, y, T ).           (3)
+                                             0
+
+ (c) Show that the solution to the diffusion equation (9) is
+
+                                              i        (x−y)2   2
+                                                      a 2T +b m2 T
+                          G(x, y, T ) =           α
+                                                    e              .           (4)
+                                           (2πT )
+
+     Find α, a, b. Use this to construct the path integral representation
+                                     Z x(T )=y              RT
+                                                 [Dx]e−i 0 dτ (ẋ ẋµ +m ) .
+                                                                   µ    2
+                     G(x, y, T ) =
+                                      x(0)=x
+
+
+(d) For the case of constant m2 , the infinitesimal solution (12) actually works
+    for finite T . Show by differentiation that plugging (12) into (10) gives an
+    integral representation of the free Klein-Gordon propagator.
+ (e) Now let g 6= 0 and suppose that φ is slowly varying. Generalize the path
+     integral representation to include the dependence on φ.
+ (f) Consider a non-relativistic situation, where the spacetime points x and y
+     are separated by a timelike distance large compared to 1/m. Justify and
+     use stationary-phase methods to show that the dominant contribution to
+     the path integral is a straight-line trajectory between the two points x and
+     y. Evaluate the resulting amplitude as a functional of φ(x).
+     This calculation shows that the heavy particle made by the field Φ can be
+     treated as a source for φ propagating on a fixed path in spacetime.
+
+                                       3
+(g) Redo the problem for a charged scalar field, Φ in the background of a vector
+    potential Aµ , with
+                    Z
+                             1
+           S[Φ] = dd+1 x Dµ Φ? Dµ Φ − m2 Φ? Φ , Dµ Φ ≡ ∂µ Φ − iAµ Φ.
+                                                       
+                             2
+                                                                             R
+    It will help to recall that the action of a classical charged particle is dτ (ẋ2 + ẋµ Aµ (x)).
+
+
+
+
+                                       4
+

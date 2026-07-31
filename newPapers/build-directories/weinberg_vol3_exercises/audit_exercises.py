@@ -88,6 +88,31 @@ USE_MODES = {
     "original-inspired",
     "verbatim-permitted",
 }
+FIDELITY_AUDIT_STATUSES = {
+    "passed",
+    "pending",
+    "rejected",
+}
+FIDELITY_CHECK_STATES = {
+    "pass",
+    "not-applicable",
+    "pending",
+    "fail",
+}
+FIDELITY_CHECKS = (
+    "source_parent_complete",
+    "setup_self_contained",
+    "action_or_lagrangian",
+    "conventions_and_definitions",
+    "supplied_formulas_data_figures",
+    "hints",
+    "connected_subparts",
+    "one_parent_one_number",
+    "credit_and_locator",
+    "chapter_fit_and_quality",
+    "solution_coverage",
+)
+ISO_DATE_RE = re.compile(r"\A\d{4}-\d{2}-\d{2}\Z")
 EXACT_PROBLEM_LOCATOR_RE = re.compile(
     r"\b(?:problem|question|exercise|exam(?:ination)?\s+question)\b",
     re.IGNORECASE,
@@ -256,6 +281,14 @@ def sha256(path: Path) -> str:
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
+    return digest.hexdigest()
+
+
+def text_sha256(*parts: str) -> str:
+    digest = hashlib.sha256()
+    for part in parts:
+        digest.update(part.encode("utf-8"))
+        digest.update(b"\x00")
     return digest.hexdigest()
 
 
@@ -458,6 +491,250 @@ def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
         )
         by_id[source_id] = source
     return by_id
+
+
+def pending_fidelity_record(
+    expected: dict[str, str],
+    *,
+    changed: bool = False,
+) -> dict[str, object]:
+    use_mode = expected["use_mode"]
+    checklist = {
+        check: (
+            "not-applicable"
+            if use_mode == "original-inspired"
+            and check in {"source_parent_complete", "one_parent_one_number"}
+            else "pending"
+        )
+        for check in FIDELITY_CHECKS
+    }
+    note = (
+        "Prompt, solution, source classification, or locator changed after the "
+        "previous review; repeat the side-by-side audit."
+        if changed
+        else ""
+    )
+    return {
+        **expected,
+        "status": "pending",
+        "checked_at": "",
+        "auditor": "",
+        "checklist": checklist,
+        "notes": note,
+    }
+
+
+def source_fidelity_audit(
+    root: Path,
+    ledger: dict[str, dict[str, object]],
+    expected_records: list[dict[str, str]],
+    audit: Audit,
+    *,
+    write_template: bool,
+) -> dict[str, int]:
+    """Require a current, content-addressed review for every S problem."""
+
+    path = root / "source-fidelity-audit.json"
+    payload: object = {}
+    if path.is_file():
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            audit.failures.append(f"Cannot parse {path}: {error}")
+            payload = {}
+
+    raw_audits = payload.get("audits") if isinstance(payload, dict) else None
+    existing: dict[str, dict[str, object]] = {}
+    if isinstance(raw_audits, list):
+        for index, record in enumerate(raw_audits, start=1):
+            if not isinstance(record, dict):
+                audit.failures.append(
+                    f"Source-fidelity audit entry {index} is not an object"
+                )
+                continue
+            source_id = record.get("source_id")
+            if not isinstance(source_id, str) or not source_id:
+                audit.failures.append(
+                    f"Source-fidelity audit entry {index} has no source_id"
+                )
+                continue
+            if source_id in existing:
+                audit.failures.append(
+                    f"Duplicate source-fidelity audit id: {source_id}"
+                )
+                continue
+            existing[source_id] = record
+
+    expected_by_id = {record["source_id"]: record for record in expected_records}
+    if write_template:
+        merged: list[dict[str, object]] = []
+        for expected in expected_records:
+            source_id = expected["source_id"]
+            prior = existing.get(source_id)
+            stable_fields = tuple(expected)
+            unchanged = (
+                isinstance(prior, dict)
+                and all(prior.get(field) == expected[field] for field in stable_fields)
+            )
+            if unchanged:
+                merged.append(prior)
+            else:
+                merged.append(
+                    pending_fidelity_record(
+                        expected,
+                        changed=isinstance(prior, dict),
+                    )
+                )
+        payload = {
+            "schema_version": 1,
+            "audits": merged,
+        }
+        path.write_text(
+            json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        existing = {
+            str(record["source_id"]): record
+            for record in merged
+        }
+
+    audit.require(
+        path.is_file(),
+        f"Missing source-fidelity audit: {path}",
+        incomplete=True,
+    )
+    if not path.is_file():
+        return {
+            "expected": len(expected_records),
+            "passed": 0,
+            "pending": len(expected_records),
+            "rejected": 0,
+        }
+    audit.require(
+        isinstance(payload, dict) and payload.get("schema_version") == 1,
+        "source-fidelity-audit.json must declare schema_version 1",
+    )
+    audit.require(
+        isinstance(raw_audits, list) or write_template,
+        "source-fidelity-audit.json must contain an audits array",
+    )
+
+    missing = sorted(set(expected_by_id) - set(existing))
+    obsolete = sorted(set(existing) - set(expected_by_id))
+    audit.require(
+        not missing,
+        "Source-fidelity audit is missing current supplementary records: "
+        + ", ".join(missing),
+        incomplete=True,
+    )
+    audit.require(
+        not obsolete,
+        "Source-fidelity audit contains obsolete supplementary records: "
+        + ", ".join(obsolete),
+        incomplete=True,
+    )
+
+    status_counter: Counter[str] = Counter()
+    not_passed: list[str] = []
+    for source_id, expected in expected_by_id.items():
+        record = existing.get(source_id)
+        if not isinstance(record, dict):
+            status_counter["pending"] += 1
+            continue
+        for field, expected_value in expected.items():
+            audit.require(
+                record.get(field) == expected_value,
+                f"Source-fidelity record {source_id}: stale or incorrect {field}",
+                incomplete=True,
+            )
+        ledger_record = ledger.get(source_id, {})
+        audit.require(
+            record.get("source_url") == ledger_record.get("url"),
+            f"Source-fidelity record {source_id}: source_url differs from ledger",
+            incomplete=True,
+        )
+        audit.require(
+            record.get("source_locator") == ledger_record.get("locator"),
+            f"Source-fidelity record {source_id}: source_locator differs from ledger",
+            incomplete=True,
+        )
+        status = record.get("status")
+        audit.require(
+            status in FIDELITY_AUDIT_STATUSES,
+            f"Source-fidelity record {source_id}: invalid status {status!r}",
+        )
+        if isinstance(status, str):
+            status_counter[status] += 1
+        if status != "passed":
+            not_passed.append(source_id)
+        checked_at = record.get("checked_at")
+        auditor = record.get("auditor")
+        notes = record.get("notes")
+        checklist = record.get("checklist")
+        audit.require(
+            status != "passed"
+            or (
+                isinstance(checked_at, str)
+                and bool(ISO_DATE_RE.fullmatch(checked_at))
+            ),
+            f"Source-fidelity record {source_id}: passed review needs ISO checked_at",
+        )
+        audit.require(
+            status != "passed"
+            or (isinstance(auditor, str) and bool(auditor.strip())),
+            f"Source-fidelity record {source_id}: passed review needs an auditor",
+        )
+        audit.require(
+            status != "passed"
+            or (isinstance(notes, str) and bool(notes.strip())),
+            f"Source-fidelity record {source_id}: passed review needs substantive notes",
+        )
+        audit.require(
+            isinstance(checklist, dict)
+            and set(checklist) == set(FIDELITY_CHECKS),
+            f"Source-fidelity record {source_id}: checklist keys are incomplete",
+        )
+        if not isinstance(checklist, dict):
+            continue
+        for check in FIDELITY_CHECKS:
+            state = checklist.get(check)
+            audit.require(
+                state in FIDELITY_CHECK_STATES,
+                f"Source-fidelity record {source_id}: invalid {check} state {state!r}",
+            )
+            audit.require(
+                status != "passed" or state in {"pass", "not-applicable"},
+                f"Source-fidelity record {source_id}: passed review leaves "
+                f"{check} at {state!r}",
+            )
+        use_mode = expected["use_mode"]
+        if status == "passed" and use_mode in {"adapted", "verbatim-permitted"}:
+            for check in ("source_parent_complete", "one_parent_one_number"):
+                audit.require(
+                    checklist.get(check) == "pass",
+                    f"Source-fidelity record {source_id}: {use_mode} use requires "
+                    f"{check}=pass",
+                )
+        elif status == "passed" and use_mode == "original-inspired":
+            for check in ("source_parent_complete", "one_parent_one_number"):
+                audit.require(
+                    checklist.get(check) == "not-applicable",
+                    f"Source-fidelity record {source_id}: original-inspired use "
+                    f"requires {check}=not-applicable",
+                )
+
+    audit.require(
+        not not_passed,
+        f"{len(not_passed)} source-fidelity records have not passed; "
+        "inspect source-fidelity-audit.json for the pending or rejected entries",
+        incomplete=True,
+    )
+    return {
+        "expected": len(expected_records),
+        "passed": status_counter["passed"],
+        "pending": status_counter["pending"] + len(missing),
+        "rejected": status_counter["rejected"],
+    }
 
 
 def audit_hook_style(root: Path, audit: Audit) -> None:
@@ -1154,9 +1431,13 @@ def audit_chapter(
         )
 
     s_solution_word_counts: list[int] = []
+    s_solution_bodies = macro_bodies(
+        texts.get("supplementary-solutions.tex", ""),
+        s_solutions,
+    )
     for call, body in zip(
         s_solutions,
-        macro_bodies(texts.get("supplementary-solutions.tex", ""), s_solutions),
+        s_solution_bodies,
     ):
         number = call.args[0].strip()
         word_count = len(WORD_RE.findall(body))
@@ -1349,6 +1630,43 @@ def audit_chapter(
             for call, body in zip(s_exercises, s_exercise_bodies)
         ],
         "_source_ids": [call.args[3].strip() for call in s_exercises],
+        "_fidelity_records": [
+            {
+                "source_id": exercise_call.args[3].strip(),
+                "supplementary_id": f"S.{chapter}.{exercise_call.args[0].strip()}",
+                "use_mode": str(
+                    ledger.get(exercise_call.args[3].strip(), {}).get(
+                        "use_mode",
+                        "",
+                    )
+                ),
+                "source_url": str(
+                    ledger.get(exercise_call.args[3].strip(), {}).get("url", "")
+                ),
+                "source_locator": str(
+                    ledger.get(exercise_call.args[3].strip(), {}).get(
+                        "locator",
+                        "",
+                    )
+                ),
+                "prompt_sha256": text_sha256(
+                    *exercise_call.args,
+                    exercise_body,
+                ),
+                "solution_sha256": (
+                    text_sha256(
+                        *s_solutions[index].args,
+                        s_solution_bodies[index],
+                    )
+                    if index < len(s_solutions)
+                    and index < len(s_solution_bodies)
+                    else ""
+                ),
+            }
+            for index, (exercise_call, exercise_body) in enumerate(
+                zip(s_exercises, s_exercise_bodies)
+            )
+        ],
         "_literal_references": (
             [
                 (
@@ -1465,6 +1783,14 @@ def main() -> int:
         type=Path,
         help="write the machine-readable chapter inventory to this path",
     )
+    parser.add_argument(
+        "--write-fidelity-template",
+        action="store_true",
+        help=(
+            "create or refresh pending content-addressed source-fidelity "
+            "records without marking any review as passed"
+        ),
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
@@ -1510,6 +1836,11 @@ def main() -> int:
         for chapter in inventory
         for source_id in chapter.pop("_source_ids")
     ]
+    all_fidelity_records = [
+        record
+        for chapter in inventory
+        for record in chapter.pop("_fidelity_records")
+    ]
     all_literal_references = [
         reference
         for chapter in inventory
@@ -1547,6 +1878,13 @@ def main() -> int:
             "coherent parent problem",
             incomplete=True,
         )
+    fidelity_summary = source_fidelity_audit(
+        root,
+        ledger,
+        all_fidelity_records,
+        audit,
+        write_template=args.write_fidelity_template,
+    )
     exercise_similarity(all_titles, audit)
     exercise_body_similarity(all_problems, audit)
     unused_sources = sorted(set(ledger) - set(all_source_ids))
@@ -1594,6 +1932,10 @@ def main() -> int:
                 source.get("use_mode") == "original-inspired"
                 for source in ledger.values()
             ),
+            "fidelity_records_expected": fidelity_summary["expected"],
+            "fidelity_records_passed": fidelity_summary["passed"],
+            "fidelity_records_pending": fidelity_summary["pending"],
+            "fidelity_records_rejected": fidelity_summary["rejected"],
         },
         "warnings": audit.warnings,
         "failures": audit.failures,

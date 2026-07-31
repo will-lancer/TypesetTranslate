@@ -177,21 +177,21 @@ Poincar\'e representation.
 \item
 From Eq.~\eqref{eq:2.4.3},
 \[
- U(\mathbf1,a)=\exp(-ia_\mu P^\mu),
+ U(\mathbf{1},a)=\exp(-ia_\mu P^\mu),
 \]
 and therefore
 \[
- U(\mathbf1,a)\ket{p,\sigma}
+ U(\mathbf{1},a)\ket{p,\sigma}
  =e^{-ia_\mu p^\mu}\ket{p,\sigma}.
 \]
 Using \(U(\Lambda)P^\mu U(\Lambda)^{-1}
 =\Lambda_\nu{}^\mu P^\nu\),
 \[
 \begin{split}
- U(\Lambda)U(\mathbf1,a)U(\Lambda)^{-1}
+ U(\Lambda)U(\mathbf{1},a)U(\Lambda)^{-1}
  &=\exp\!\left[-ia_\mu\Lambda_\nu{}^\mu P^\nu\right]\\
  &=\exp[-i(\Lambda a)_\nu P^\nu]
- =U(\mathbf1,\Lambda a).
+ =U(\mathbf{1},\Lambda a).
 \end{split}
 \]
 This is the operator form of the semidirect-product multiplication law.
@@ -200,6 +200,11 @@ This is the operator form of the semidirect-product multiplication law.
 \SupplementarySolution{4}{Pauli--Lubanski Spin and the Massive Casimir}
 \begin{enumerate}
 \item
+The differential operators give
+\[
+ [J^{\mu\nu},P^\rho]
+ =i\bigl(\eta^{\mu\rho}P^\nu-\eta^{\nu\rho}P^\mu\bigr).
+\]
 Antisymmetry alone gives
 \[
  \mathcal W_\mu P^\mu
@@ -217,6 +222,14 @@ Inserting the Poincar\'e commutator produces two terms, each containing a
 symmetric product of momenta contracted with an antisymmetric pair of
 indices.  They cancel, so
 \([\mathcal W_\mu,P^\lambda]=0\).
+
+For the remaining commutator, expand both Pauli--Lubanski operators, move
+momenta through one another, and use \([J,J]\) plus the result just proved.
+Terms with two momenta cancel in antisymmetric pairs, leaving
+\[
+ [\mathcal W_\mu,\mathcal W_\nu]
+ =-i\epsilon_{\mu\nu\rho\sigma}\mathcal W^\rho P^\sigma .
+\]
 \item
 At \(p^\mu=(m,\mathbf0)\), the antisymmetry of
 \(\epsilon_{\mu\nu\rho\sigma}\) gives
@@ -230,9 +243,32 @@ spin-\(j\) rest state,
 \[
  \mathcal W^2=m^2\mathbf J^2=m^2j(j+1).
 \]
-Since S.2.11 shows that \(\mathcal W^2\) is a Lorentz scalar and a
-Poincar\'e Casimir, its eigenvalue is the same in every inertial frame and
+The next part proves directly that \(\mathcal W^2\) is a Poincar\'e
+Casimir, so its eigenvalue is the same in every inertial frame and
 throughout an irreducible massive multiplet.
+\item
+Contracting
+\(\epsilon_{\mu\nu\rho\sigma}\epsilon^{\mu\alpha\beta\gamma}\)
+and expanding the generalized Kronecker delta gives
+\[
+ \mathcal W^2
+ =-\frac12J_{\mu\nu}J^{\mu\nu}P^2
+  +J_{\mu\rho}J_\nu{}^\rho P^\mu P^\nu .
+\]
+The translation commutators of \(P^2\) vanish immediately.  In
+\([J^{\alpha\beta},P^2]\), the two terms from the Leibniz rule cancel after
+interchanging the contracted momentum indices.  Thus \(P^2\) is a
+Casimir.
+
+The result of the first part gives
+\[
+ [\mathcal W^2,P^\lambda]
+ =\mathcal W^\mu[\mathcal W_\mu,P^\lambda]
+  +[\mathcal W^\mu,P^\lambda]\mathcal W_\mu=0.
+\]
+The remaining Lorentz commutator is most cleanly obtained from the finite
+transformation law in the next part, avoiding the direct expansion
+explicitly waived in the source problem.
 \item
 Under a translation,
 \[
@@ -248,8 +284,11 @@ tensor gives
 \]
 It is a vector for proper transformations and changes the additional sign
 appropriate to a pseudovector for improper ones.  In either case
-\(\mathcal W'^2=\mathcal W^2\).  Infinitesimally this says
-\([\mathcal W^2,P^\mu]=[\mathcal W^2,J^{\mu\nu}]=0\).
+\(\mathcal W'^2=\mathcal W^2\).  Its translation invariance and Lorentz
+scalar character are precisely the finite group statements whose
+infinitesimal versions are
+\([\mathcal W^2,P^\mu]=[\mathcal W^2,J^{\mu\nu}]=0\), completing the
+Casimir result.
 \end{enumerate}
 
 \SupplementarySolution{5}{Massive Little-Group Representations and Normalization}
@@ -279,7 +318,7 @@ representation of the rotational part of the little group---the helicity
 If \(\Lambda k=k\) for \(k=(m,\mathbf0)\), then
 \(\Lambda^\mu{}_0=\delta^\mu{}_0\).  The Lorentz condition forces
 \(\Lambda^0{}_i=0\) and leaves a spatial matrix \(R\) satisfying
-\(R^{\mathsf T}R=\mathbf1\).  Properness gives \(\det R=1\), so
+\(R^{\mathsf T}R=\mathbf{1}\).  Properness gives \(\det R=1\), so
 \[
  \Lambda=\begin{pmatrix}1&0\\0&R\end{pmatrix},
  \qquad R\in SO(3).
@@ -304,7 +343,7 @@ up to a momentum-independent phase.  For a massive standard momentum
 fixed value cancels from physical transformation laws.
 
 Applying \(U(\Lambda)\), inserting
-\(\mathbf1=U(L(\Lambda p))U(L(\Lambda p))^{-1}\), and using the ratio of
+\(\mathbf{1}=U(L(\Lambda p))U(L(\Lambda p))^{-1}\), and using the ratio of
 the two normalization factors gives
 \[
  \frac{N(p)}{N(\Lambda p)}
@@ -441,15 +480,15 @@ For \(X'=AXA^\dagger\),
 \]
 so the induced real linear map preserves the Minkowski norm.  Hermitian
 \(X\) remains Hermitian, so real four-vectors map to real four-vectors.
-Continuity from \(A=\mathbf1\) places the image in the proper
+Continuity from \(A=\mathbf{1}\) places the image in the proper
 orthochronous component.
 
 If \(AXA^\dagger=X\) for every Hermitian \(X\), then \(A\) commutes with
-the full matrix algebra and is proportional to \(\mathbf1\).  The
-determinant-one condition and the action on \(X=\mathbf1\) leave
-\(A=\pm\mathbf1\).  Thus
+the full matrix algebra and is proportional to \(\mathbf{1}\).  The
+determinant-one condition and the action on \(X=\mathbf{1}\) leave
+\(A=\pm\mathbf{1}\).  Thus
 \[
- SL(2,\mathbb C)/\{\pm\mathbf1\}\simeq SO^+(3,1).
+ SL(2,\mathbb C)/\{\pm\mathbf{1}\}\simeq SO^+(3,1).
 \]
 \item
 Using
@@ -496,16 +535,16 @@ real components and gives an ordinary real Lorentz vector.
 \item
 At \(\theta=2\pi\),
 \[
- A(2\pi)=e^{-i\pi\sigma_3}=-\mathbf1,
+ A(2\pi)=e^{-i\pi\sigma_3}=-\mathbf{1},
 \]
-whereas at \(4\pi\), \(A(4\pi)=+\mathbf1\).  Both
-\(\pm\mathbf1\) induce the same Lorentz transformation, so the image path
+whereas at \(4\pi\), \(A(4\pi)=+\mathbf{1}\).  Both
+\(\pm\mathbf{1}\) induce the same Lorentz transformation, so the image path
 at \(2\pi\) is already the identity rotation although the lifted path in
 \(SL(2,\mathbb C)\) has not closed.
 
 In the spin-\(j\) representation,
 \[
- U(R(2\pi))=(-1)^{2j}\mathbf1,\qquad U(R(4\pi))=\mathbf1.
+ U(R(2\pi))=(-1)^{2j}\mathbf{1},\qquad U(R(4\pi))=\mathbf{1}.
 \]
 Thus half-integer spin gives a representation of the Lorentz group only up
 to a sign, or equivalently an ordinary representation of its double cover.
@@ -535,7 +574,7 @@ spacetime transformation.
 The relation in S.2.11(a) immediately gives
 \[
  U(\mathbf v)T(\mathbf a)U(\mathbf v)^{-1}T(\mathbf a)^{-1}
- =e^{im\mathbf v\cdot\mathbf a}\mathbf1.
+ =e^{im\mathbf v\cdot\mathbf a}\mathbf{1}.
 \]
 The associated sequence of coordinate transformations has zero net boost
 and zero net translation, so it is the identity in the unextended Galilei

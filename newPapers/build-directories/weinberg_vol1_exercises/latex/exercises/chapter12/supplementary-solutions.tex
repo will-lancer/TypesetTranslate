@@ -142,7 +142,7 @@ The dipole contains opposite chiralities:
 \]
 Under \(U(1)_L\times U(1)_R\), the first term has phase
 \(e^{i(\alpha_R-\alpha_L)}\).  The mass spurion in
-\(m\bar\psi_L\psi_R+\text{h.c.}\) has the compensating transformation.
+\(m\bar\psi_L\psi_R+\mathrm{H.c.}\) has the compensating transformation.
 If it is the only source of chiral breaking, the Wilson coefficient must
 therefore be proportional to \(m\):
 \[
@@ -157,146 +157,306 @@ order \(c\,m/M\), whereas the chirally protected estimate is
 Setting \(m=0\) restores the symmetry and forces the correction to vanish,
 which makes the small coefficient technically natural.
 
-\SupplementarySolution{5}{Power Counting, Momentum Subtraction, and BPHZ Forests}
+\SupplementarySolution{5}{Massless \(\phi^4\) Theory at a Symmetric Subtraction Point}
 \begin{enumerate}
 \item
-For a graph with \(L\) loops and \(I\) internal scalar propagators,
+A convenient counterterm organization in the volume's convention is
 \[
- D=4L-2I.
+ \mathcal L=-\frac12(1+\delta Z)\partial_\mu\phi\partial^\mu\phi
+ -\frac12\delta m^2\phi^2
+ -\frac{\lambda+\delta\lambda}{4!}\phi^4.
 \]
-Connectedness and counting line ends give
+The scalar propagator, ordinary quartic vertex, two-point counterterm, and
+four-point counterterm are respectively
 \[
- L=I-V+1,\qquad 4V=2I+E.
+ \frac{-i}{p^2-i0},\qquad -i\lambda,\qquad
+ -i(\delta Zp^2+\delta m^2),\qquad -i\delta\lambda.
 \]
-Eliminating \(I,V\) yields
-\[
- \boxed{D=4-E.}
-\]
-The \(Z_2\) symmetry allows only even \(E\).  Vacuum graphs have \(E=0\)
-and renormalize the vacuum energy.  Two-point graphs have \(D=2\), so their
-local divergent polynomial is \(A+Bp^2\), requiring \(\phi^2\) and
-\((\partial\phi)^2\) counterterms.  Four-point graphs have \(D=0\), hence a
-momentum-independent divergence canceled by \(\phi^4\).  Graphs with
-\(E\geq6\) are superficially convergent, although they can still contain
-two- or four-point subdivergences.  Those subdivergences are removed by the
-same three non-vacuum counterterms.
+Through order \(\lambda^2\), the 1PI four-point diagrams are the tree
+vertex, the one-loop bubble in each of the \(s,t,u\) channels (each with
+symmetry factor \(1/2\)), and the four-point counterterm.  The massless
+tadpole is scaleless in dimensional regularization, and the one-loop
+two-point function has no momentum-dependent pole, so
+\(\delta m^2=0\) and \(\delta Z=0\) at the order used here.
+
 \item
-After introducing a Feynman parameter and shifting the loop momentum,
+After Wick rotation, Feynman parametrization, and a shift of loop momentum,
+the bubble at a Euclidean momentum \(Q\) is
 \[
- B(p^2)=\int_0^1dx\int\frac{d^4\ell}{(2\pi)^4}
- \frac1{[\ell^2+\Delta(p^2,x)]^2},\qquad
- \Delta=m^2+x(1-x)p^2.
+\begin{aligned}
+ B(Q^2)
+ &\equiv \mu^\epsilon\int\frac{d^{4-\epsilon}\ell_E}
+ {(2\pi)^{4-\epsilon}}
+ \frac1{\ell_E^2(\ell_E+Q)^2}\\
+ &=\frac1{16\pi^2}\int_0^1dx\left[
+ \frac2\epsilon-\gamma+\ln(4\pi)
+ +\ln\frac{\mu^2}{x(1-x)Q^2}\right]+O(\epsilon).
+\end{aligned}
 \]
-Let \(p_0^2=-\mu^2\).  At fixed \(x\),
+Thus
 \[
- \frac1{(\ell^2+\Delta)^2}
- -\frac1{(\ell^2+\Delta_0)^2}=O(\ell^{-6}),
+ \Gamma_4=-i\lambda
+ +\frac{i\lambda^2}{2}\bigl[B(-s)+B(-t)+B(-u)\bigr]
+ -i\delta\lambda+O(\lambda^3),
 \]
-so the difference is ultraviolet convergent.  The standard Euclidean
-master integral gives
+where the arguments indicate the positive Euclidean invariants reached by
+continuation.  At \(s=t=u=-M^2\),
+\[
+\begin{aligned}
+ -i\lambda_{\mathrm{eff}}
+ ={}&-i\lambda
+ +\frac{i\lambda^2}{32\pi^2}\int_0^1dx\left[
+ \frac6\epsilon-3\gamma+3\ln(4\pi)
+ +3\ln\frac{\mu^2}{x(1-x)M^2}\right]\\
+ &{}-i\delta\lambda+O(\lambda^3),
+\end{aligned}
+\]
+which is the displayed form in the question after using
+\(-i(-i\lambda)^2=+i\lambda^2\).
+
+Choose \(\mu=M\).  Since
+\(\int_0^1dx\,[-\ln(x(1-x))]=2\), a momentum-subtraction counterterm that
+enforces \(\lambda_{\mathrm{eff}}(M)=\lambda\) is
 \[
  \boxed{\;
- B(p^2)-B(p_0^2)
- =\frac1{16\pi^2}\int_0^1dx\,
- \ln\frac{m^2+x(1-x)p_0^2}
- {m^2+x(1-x)p^2}. \;}
+ \delta\lambda_{\mathrm{MOM}}
+ =\frac{3\lambda^2}{32\pi^2}
+ \left(\frac2\epsilon-\gamma+\ln(4\pi)+2\right).
+ \;}
 \]
-Analytic continuation supplies the usual cut when a denominator crosses
-zero.  Because the removed term is independent of external momentum, it is
-implemented by a local \(\delta\lambda\,\phi^4/4!\) counterterm fixed by the
-chosen momentum-subtraction condition.
-\item
-The allowed forests are the empty forest, \(\{\gamma\}\), \(\{G\}\), and
-\(\{\gamma,G\}\).  The inner subtraction must be carried out before the
-outer Taylor expansion, so
+The \(\overline{\mathrm{MS}}\) choice instead removes only
 \[
- \boxed{\;
- R I_G=(1-t_G)(1-t_\gamma)I_G
- =I_G-t_\gamma I_G-t_G I_G+t_Gt_\gamma I_G.\;}
+ \delta\lambda_{\overline{\mathrm{MS}}}
+ =\frac{3\lambda^2}{16\pi^2}\frac1{\bar\epsilon},
+ \qquad
+ \frac1{\bar\epsilon}
+ =\frac1\epsilon-\frac\gamma2+\frac12\ln(4\pi),
 \]
-Here \(t_\gamma\) keeps the degree-zero Taylor term of the logarithmic
-subgraph.  It contracts \(\gamma\) to a local vertex and is the subgraph
-counterterm.  The operator \(t_G\) keeps the Taylor polynomial of the whole
-graph through degree two and supplies the overall mass and kinetic
-counterterms.  The last term is required because the counterterm graph
-\(-t_\gamma I_G\) can itself have an overall divergence.  Omitting it would
-subtract the nested ultraviolet region incorrectly.  Applied in this
-order, the formula improves every divergent subintegration and the overall
-large-momentum region.
+and therefore differs by a finite redefinition of the coupling.
+
+\item
+For the renormalized 1PI \(n\)-point function the Callan--Symanzik equation
+is
+\[
+ \left[\mu\frac{\partial}{\partial\mu}
+ +\beta(\lambda)\frac{\partial}{\partial\lambda}
+ +n\gamma_\phi(\lambda)\right]\Gamma^{(n)}=0.
+\]
+Here \(\gamma_\phi=O(\lambda^2)\), so it does not enter the one-loop
+four-point calculation.  The pole part may be encoded as
+\[
+ \lambda_0=\mu^\epsilon\left[
+ \lambda+\frac{3\lambda^2}{16\pi^2\epsilon}
+ +O(\lambda^3)\right].
+\]
+The bare coupling is independent of \(\mu\); differentiating gives
+\[
+ \beta(\lambda)=-\epsilon\lambda
+ +\frac{3\lambda^2}{16\pi^2}+O(\lambda^3).
+\]
+Taking \(\epsilon\to0\) therefore yields
+\[
+ \boxed{\beta(\lambda)=\frac{3\lambda^2}{16\pi^2}
+ +O(\lambda^3).}
+\]
 \end{enumerate}
 
-\SupplementarySolution{6}{Integrating Out a Thin Momentum Shell and Shell Correction to the Quartic Coupling}
+\SupplementarySolution{6}{Wilsonian Shell Integration in \(\Phi^3\) Theory}
 \begin{enumerate}
 \item
-The term quadratic in the slow field obtained from one quartic vertex is
+Use the Fourier convention
 \[
- \frac12\delta m^2\,\phi_<^2,\qquad
- \delta m^2=\frac{\lambda}{2}
- \int_{\Lambda-\delta\Lambda<|k|<\Lambda}
- \frac{d^4k}{(2\pi)^4}\frac1{k^2+m^2}.
+ \Phi(x)=\int_{p^2<\Lambda^2}\frac{d^dp}{(2\pi)^d}
+ e^{ip\cdot x}\widetilde\Phi(p).
 \]
-Using \(\Omega_3=2\pi^2\),
+The two characteristic functions in the definition of
+\(\widetilde\phi\) and \(\widetilde\chi\) partition the cutoff ball (up to
+its measure-zero boundary), so
 \[
- \delta m^2
- =\frac{\lambda}{16\pi^2}
- \frac{\Lambda^3\,\delta\Lambda}{\Lambda^2+m^2}
- =\boxed{\frac{\lambda}{16\pi^2}\Lambda\,\delta\Lambda
- +O\left(\frac{m^2}{\Lambda^2}\right)}.
+ \widetilde\Phi(p)=\widetilde\phi(p)+\widetilde\chi(p).
 \]
-The factor \(1/2\) is the tadpole symmetry factor.  This quadratic
-sensitivity concerns the relation between Wilsonian parameters at two
-cutoffs; a low-energy mass can remain small only if its boundary value and
-the accumulated shell corrections satisfy the required renormalization
-condition.
+Fourier inversion immediately gives
+\(\Phi(x)=\phi(x)+\chi(x)\).  Their momentum supports are disjoint, which
+also makes the kinetic cross term vanish:
+\(\int d^dx\,\partial\phi\cdot\partial\chi=0\).
+
 \item
-The connected second cumulant contains two fast propagators.  For
-negligible external momenta, each of the \(s,t,u\) channels gives the same
-shell integral, with a factor \(1/2\):
+Expanding the cubic action gives
 \[
- \delta\lambda=-\frac{3\lambda^2}{2}
- \int_{\rm shell}\frac{d^4k}{(2\pi)^4}
- \frac1{(k^2+m^2)^2}.
+ S[\phi+\chi]=S[\phi]+S_{\chi,0}+S_{\mathrm{int}}[\phi,\chi],
 \]
-For a thin shell,
+where
 \[
- \int_{\rm shell}\frac{d^4k}{(2\pi)^4}
- \frac1{(k^2+m^2)^2}
- =\frac1{8\pi^2}
- \frac{\Lambda^3\,\delta\Lambda}{(\Lambda^2+m^2)^2}.
+ S_{\chi,0}=\frac12\int d^dx\,\partial_\mu\chi\partial^\mu\chi
 \]
-Hence, for \(\Lambda\gg m\),
+and
 \[
- \boxed{\delta\lambda
- =-\frac{3\lambda^2}{16\pi^2}\frac{\delta\Lambda}{\Lambda}.}
+ \boxed{\;
+ S_{\mathrm{int}}[\phi,\chi]
+ =g\int d^dx\left(
+ \frac12\phi^2\chi+\frac12\phi\chi^2+\frac1{3!}\chi^3
+ \right).\;}
 \]
-Integrating from \(\Lambda_0\) down to \(\Lambda\) gives
-\(\lambda(\Lambda)=\lambda(\Lambda_0)
--3\lambda^2\ln(\Lambda_0/\Lambda)/(16\pi^2)+\cdots\), with the coupling on
-the right evaluated at the upper scale to this order.
+To reproduce the functional-derivative sign printed in the question,
+define
+\[
+ Z_\chi[J]=\mathcal N\int\mathcal D\chi\,
+ \exp\left[-S_{\chi,0}-\int d^dx\,J\chi\right],
+ \qquad Z_\chi[0]=1.
+\]
+Then each insertion of \(\chi(x)\) is generated by
+\(-\delta/\delta J(x)\), and direct expansion of the exponential proves
+\[
+ e^{-W[\phi]}=e^{-S[\phi]}
+ \left[
+ \exp\left(-S_{\mathrm{int}}
+ \left[\phi,-\frac{\delta}{\delta J}\right]\right)Z_\chi[J]
+ \right]_{J=0}.
+\]
+Perturbation theory is obtained either by expanding this operator in powers
+of \(g\) and performing Gaussian derivatives, or equivalently by using the
+connected-cumulant expansion
+\[
+ W[\phi]=S[\phi]+\langle S_{\mathrm{int}}\rangle_>
+ -\frac12\langle S_{\mathrm{int}}^2\rangle_{>,c}
+ +\frac1{3!}\langle S_{\mathrm{int}}^3\rangle_{>,c}+\cdots,
+\]
+where every internal propagator is restricted to
+\(b\Lambda<|p|<\Lambda\).
+
+\item
+Neglecting wavefunction rescaling, the diagrams relevant to the local
+three-low-field vertex through order \(g^3\) are the original tree-level
+cubic vertex and the one-loop triangle made from three
+\(g\phi\chi^2/2\) vertices.  A vertex containing only one high-mode line
+cannot contribute at zero external momentum: momentum conservation would
+force that line outside the high shell.  Disconnected vacuum factors cancel
+from \(W=-\ln Z\).
+
+The connected Wick contraction is
+\[
+ \langle\chi^2(x)\chi^2(y)\chi^2(z)\rangle_{>,c}
+ =8G_>(x-y)G_>(y-z)G_>(z-x).
+\]
+Its coefficient in the third cumulant is
+\[
+ \frac1{3!}\left(\frac g2\right)^3 8=\frac{g^3}{3!}.
+\]
+For external momenta small compared with the shell momenta, the triangle is
+local, and hence
+\[
+ \frac{g_{\mathrm{eff}}}{3!}
+ =\frac g{3!}+\frac{g^3}{3!}I_d+O(g^5),
+ \qquad
+ I_d=\int_{b\Lambda<|k|<\Lambda}
+ \frac{d^dk}{(2\pi)^d}\frac1{(k^2)^3}.
+\]
+For \(d\neq6\),
+\[
+ I_d=\frac{\Omega_{d-1}}{(2\pi)^d}
+ \frac{\Lambda^{d-6}-(b\Lambda)^{d-6}}{d-6}.
+\]
+At \(d=6\), \(\Omega_5=\pi^3\), so
+\[
+ I_6=\frac{\pi^3}{(2\pi)^6}\ln\frac1b
+ =\frac1{64\pi^3}\ln\frac1b.
+\]
+Therefore
+\[
+ \boxed{\;
+ g_{\mathrm{eff}}
+ =g+\frac{g^3}{64\pi^3}\ln\frac1b+O(g^5)
+ =g-\frac{g^3}{64\pi^3}\ln b+O(g^5),
+ \qquad C=-\frac1{64\pi^3}.\;}
+\]
 \end{enumerate}
 
-\SupplementarySolution{7}{Why an Infinite Action Can Still Predict}
-A vertex of dimension \(d\) contributes
+\SupplementarySolution{7}{The One-Loop Yukawa Beta Function}
+Work in \(d=4-\epsilon\) and introduce
 \[
- c_d\left(\frac{E}{\Lambda}\right)^{d-4}
+ \phi_0=Z_\phi^{1/2}\phi,
+ \qquad \psi_0=Z_\psi^{1/2}\psi,
+ \qquad
+ g_0=\mu^{\epsilon/2}Z_g g.
 \]
-relative to a marginal interaction, apart from ordinary couplings and loop
-factors.  A graph with \(V_d\) such insertions therefore has suppression
+It is useful to write the renormalized interaction and its vertex
+counterterm as
 \[
- \left(\frac E\Lambda\right)^P,\qquad
- P=\sum_dV_d(d-4).
+ \mathcal L_{\mathrm{Yuk}}
+ =-i\mu^{\epsilon/2}gZ_1\phi\bar\psi\psi,
+ \qquad Z_1=Z_gZ_\psi Z_\phi^{1/2}.
 \]
-For nonnegative integers \(V_d\), only finitely many partitions satisfy
-\(P\leq N\), and only operators with \(d\leq4+N\) can occur.  Light-field
-loops do not supply positive powers of \(\Lambda\); their divergences are
-local and renormalize operators at the same or higher EFT order.
+With Harlow's phases, also used in the prompt, the tree-level Yukawa vertex
+is \(+g\).
 
-The conclusion assumes dimensionless \(c_d=O(1)\), a finite set of light
-fields and exact symmetries, and no hidden small denominator.  It can fail
-naively if, for example, a coefficient is enhanced by fine tuning or a
-nearby resonance, so that an infinite bubble chain must be resummed.  A
-refined power counting then restores a finite calculation at each revised
-order.
+There are three ultraviolet computations: the fermion self-energy with one
+internal fermion and one scalar, the scalar self-energy from a closed
+fermion loop, and the proper Yukawa vertex triangle.  At nonexceptional
+momenta their poles can all be extracted from
+\[
+ \mu^\epsilon\int\frac{d^{4-\epsilon}\ell_E}{(2\pi)^{4-\epsilon}}
+ \frac1{(\ell_E^2+\Delta)^2}
+ =\frac1{16\pi^2}\left(\frac2\epsilon+O(1)\right).
+\]
+For the fermion self-energy, Feynman parametrization leaves the pole
+proportional to
+\[
+ 2\int_0^1dx\,(1-x)i\slashed p=i\slashed p.
+\]
+For the scalar self-energy, the fermion trace and the two terms obtained
+after the momentum shift give four times the corresponding pole in the
+coefficient of \(p^2\).  The required minimal-subtraction field factors are
+therefore
+\[
+ \boxed{\;
+ Z_\psi=1-\frac{g^2}{16\pi^2\epsilon}+O(g^4),
+ \qquad
+ Z_\phi=1-\frac{4g^2}{16\pi^2\epsilon}+O(g^4).\;}
+\]
+These values give
+\(\gamma_\psi=g^2/(32\pi^2)\) and
+\(\gamma_\phi=g^2/(8\pi^2)\), a useful normalization check.
+
+The divergent part of the one-loop proper vertex, relative to the
+tree-level rule, is
+\[
+ \Gamma^{(3)}_{\mathrm{loop}}\big|_{\mathrm{UV}}
+ =-g\frac{2g^2}{16\pi^2\epsilon}.
+\]
+It is canceled by
+\[
+ Z_1=1+\frac{2g^2}{16\pi^2\epsilon}+O(g^4).
+\]
+Consequently the coupling renormalization includes both the proper vertex
+and the three external-field square roots:
+\[
+\begin{aligned}
+ Z_g&=Z_1Z_\psi^{-1}Z_\phi^{-1/2}\\
+ &=1+\frac{5g^2}{16\pi^2\epsilon}+O(g^4),
+\end{aligned}
+\]
+and hence
+\[
+ g_0=\mu^{\epsilon/2}g\left[
+ 1+\frac{5g^2}{16\pi^2\epsilon}+O(g^4)\right].
+\]
+Holding \(g_0\) fixed while differentiating with respect to \(\mu\) gives
+\[
+ \beta_g=-\frac\epsilon2g+\frac{5g^3}{16\pi^2}+O(g^5).
+\]
+Thus in four dimensions
+\[
+ \boxed{\beta_g=\frac{5g^3}{16\pi^2}+O(g^5).}
+\]
+
+The Lagrangian displayed in the source is not, by itself, the most general
+renormalizable scalar--fermion theory.  Unless an additional exact symmetry
+is imposed, fermion loops require scalar-potential counterterms, including
+the allowed linear, cubic, and quartic terms.  Their couplings do not enter
+the one-loop pole of the Yukawa vertex or the one-loop wavefunction factors
+above, so they do not change this one-loop beta function.  They must still
+be included when renormalizing the full theory beyond the restricted
+question.
 
 \SupplementarySolution{8}{Euler--Heisenberg, Rayleigh Scattering, and Fermi Theory}
 \begin{enumerate}
@@ -660,85 +820,178 @@ If a spurion \(\epsilon\) is assigned a transformation that makes
 carry at least one \(\epsilon\).  Thus
 \[
  \delta m^2=\epsilon\,M^2
- \times\{\text{couplings and loop factors}\},
+ \cdot\{\text{couplings and loop factors}\},
 \]
 or a higher power if the spurion charges require it.  The limit
 \(\epsilon\to0\) restores the exact symmetry, making a small scalar mass
 radiatively stable.
 \end{enumerate}
 
-\SupplementarySolution{13}{Unitarity, Matching Logs, and Finite EFT Predictivity}
+\SupplementarySolution{13}{Symmetry Is Attractive: Two-Scalar Renormalization}
+It is convenient to define
+\[
+ h\equiv\frac\lambda3.
+\]
+Then the completely symmetric quartic-coupling tensor has nonzero
+components
+\[
+ \lambda_{1111}=\lambda_{2222}=g,
+ \qquad
+ \lambda_{1122}=\lambda_{1212}=\cdots=h,
+\]
+because the six permutations of \(1122\) turn
+\(-h\phi_1^2\phi_2^2/4\) into the cross-interaction printed in the
+question.
+
 \begin{enumerate}
 \item
-The four-point vertex gives, for massless external particles,
+At \(\lambda=g\),
 \[
- \mathcal M(s,t,u)=\frac{2c}{M^4}(s^2+t^2+u^2).
+ \mathcal L_{\mathrm{int}}
+ =-\frac g{4!}\left(
+ \phi_1^4+2\phi_1^2\phi_2^2+\phi_2^4\right)
+ =-\frac g{4!}(\phi_1^2+\phi_2^2)^2.
 \]
-In the center-of-mass frame,
-\[
- t=-\frac s2(1-\cos\theta),\qquad
- u=-\frac s2(1+\cos\theta),
-\]
-so
-\[
- \mathcal M=\frac{cs^2}{M^4}(3+\cos^2\theta).
-\]
-With
-\(a_0=(32\pi)^{-1}\int_{-1}^1d(\cos\theta)\,\mathcal M\),
-\[
- a_0=\frac{5cs^2}{24\pi M^4}.
-\]
-The perturbative condition \(|\Re a_0|\leq1/2\) gives
-\[
- \boxed{\sqrt s\lesssim
- \left(\frac{12\pi}{5|c|}\right)^{1/4}M.}
-\]
-Order-one convention changes only alter the prefactor.  The violation says
-the truncated weakly coupled expansion has failed; it does not determine
-whether the completion contains a resonance, strong dynamics, or some
-other new description.
-\item
-The differential equation integrates immediately:
-\[
- \boxed{C(\mu)=C_0\left(\frac{\mu}{M}\right)^\gamma.}
-\]
-For \(\mu=E\),
-\[
- C(E)=C_0\left[
- 1-\gamma\ln\frac ME
- +\frac{\gamma^2}{2}\ln^2\frac ME-\cdots\right].
-\]
-Thus the closed form sums the tower
-\((\gamma\ln(M/E))^n\).  Matching at \(\mu=M\) determines the hard boundary
-condition \(C_0\) without large logarithms.  Renormalization-group evolution
-then transports that short-distance information to the scale where the
-matrix element is evaluated.  A direct fixed-order calculation at
-\(\mu=E\) is algebraically possible, but its matching coefficient contains
-large logarithms and perturbation theory becomes poorly ordered when
-\(|\gamma\ln(M/E)|\) is not small.
-\item
-Assign every vertex an EFT weight \(w_i=d_i-4\), supplemented by its loop
-and symmetry counting.  A graph with multiplicities \(V_i\) has total
-inverse-heavy-scale weight
-\[
- W=\sum_iV_iw_i.
-\]
-At accuracy \(N\), only \(W\leq N\) is needed.  There are finitely many
-operators with bounded dimension and finitely many partitions of \(W\).
-Each extra loop supplies the usual perturbative factor and, in a consistent
-counting, can be included only up to a finite loop order.  Ultraviolet poles
-are local and have weight no smaller than the graph that generated them, so
-the finite operator list is closed under counterterms.  Multiple insertions
-are already included through the sum over \(V_i\).  Relevant masses and
-couplings are kept in propagators or treated with their assigned small
-scaling rather than expanded indiscriminately.
+This depends only on the length of the vector
+\((\phi_1,\phi_2)\), and is therefore \(O(2)\)-invariant.
 
-Naive dimensional counting needs refinement when a relevant parameter is
-fine-tuned near a pole, requiring resummation, or when several separated
-scales produce large logarithms.  Large anomalous dimensions, collective
-large-\(N\) factors, and strong coupling are further examples.  Once the
-appropriate counting is specified, predictivity remains finite at every
-fixed accuracy.
+\item
+For arbitrary \(g,\lambda\), the action is invariant under the two
+independent reflections
+\[
+ \phi_1\longmapsto-\phi_1,
+ \qquad
+ \phi_2\longmapsto-\phi_2,
+\]
+as well as under \(\phi_1\leftrightarrow\phi_2\).  Both
+\(\phi_1\phi_2\) and \(\phi_1\Box\phi_2\) are odd under either one of the
+individual reflections.  A regulator that respects these symmetries cannot
+generate either counterterm.  The exchange symmetry also keeps the two
+diagonal masses and wavefunction factors equal.
+
+\item
+The symmetry-allowed counterterm Lagrangian may be written
+\[
+\begin{aligned}
+ \mathcal L_{\mathrm{ct}}={}&
+ -\frac{\delta Z}{2}\sum_{a=1}^2
+ \partial_\mu\phi_a\partial^\mu\phi_a
+ -\frac{\delta m^2}{2}\sum_{a=1}^2\phi_a^2\\
+ &-\frac{\delta g}{4!}(\phi_1^4+\phi_2^4)
+ -\frac{2\delta\lambda}{4!}\phi_1^2\phi_2^2.
+\end{aligned}
+\]
+There is no momentum-dependent one-loop self-energy in a quartic scalar
+theory, so \(\delta Z=0\) at this order.  With a Euclidean cutoff, the two
+equal zero-momentum self-energies are
+\[
+ \Sigma_{11}(0)=\Sigma_{22}(0)
+ =\frac{g+h}{2}I_\Lambda,
+ \qquad
+ I_\Lambda=\int_{|k|<\Lambda}\frac{d^4k}{(2\pi)^4}\frac1{k^2}
+ =\frac{\Lambda^2}{16\pi^2}.
+\]
+The massless pole condition fixes
+\(\delta m^2=-\Sigma_{aa}(0)\) when the inverse propagator is written as
+\(p^2+\delta m^2+\Sigma_{aa}(p^2)\).  No off-diagonal self-energy occurs.
+
+For the four-point functions, define the dimensionally regulated massless
+bubble \(B(q^2)\) so that
+\[
+ B(q^2)\big|_{\mathrm{UV}}=\frac2{16\pi^2\epsilon}.
+\]
+The two independent 1PI amplitudes are
+\[
+\begin{aligned}
+ \Gamma_{1111}={}&-ig
+ +\frac i2(g^2+h^2)\bigl[B(s)+B(t)+B(u)\bigr]
+ -i\delta g,\\
+ \Gamma_{1122}={}&-ih
+ +\frac i2\left[2ghB(s)+2h^2B(t)+2h^2B(u)\right]
+ -i\delta h,
+\end{aligned}
+\]
+where \(\delta h=\delta\lambda/3\), and the assignment of \(s,t,u\) in
+the second line follows the displayed external ordering.  These formulas
+also give an explicit diagram census: three bubbles for four identical
+external fields; for \(1122\), the \(s\)-channel has either internal
+species and the crossed channels contain the mixed vertex twice.
+
+At a chosen nonexceptional subtraction point, momentum subtraction is
+implemented by
+\[
+\begin{aligned}
+ \delta g_{\mathrm{MOM}}
+ &=\frac12(g^2+h^2)
+ \bigl[B(s_0)+B(t_0)+B(u_0)\bigr],\\
+ \delta h_{\mathrm{MOM}}
+ &=\frac12\left[2ghB(s_0)
+ +2h^2B(t_0)+2h^2B(u_0)\right].
+\end{aligned}
+\]
+These choices impose
+\(\Gamma_{1111}(s_0,t_0,u_0)=-ig\) and
+\(\Gamma_{1122}(s_0,t_0,u_0)=-ih\).  Their pole parts, equivalently the
+minimal-subtraction counterterms, are
+\[
+ \boxed{\;
+ \delta g=\frac{3(g^2+h^2)}{16\pi^2\epsilon},
+ \qquad
+ \delta h=\frac{2gh+4h^2}{16\pi^2\epsilon}.\;}
+\]
+Thus every one-loop divergence is canceled by a term already present in
+the symmetry-closed Lagrangian.
+
+\item
+The general one-loop quartic-tensor formula
+\[
+ 16\pi^2\beta_{ijkl}
+ =\lambda_{ijmn}\lambda_{mnkl}
+ +\lambda_{ikmn}\lambda_{mnjl}
+ +\lambda_{ilmn}\lambda_{mnjk}
+\]
+gives, in four dimensions,
+\[
+ \boxed{\;
+ \beta_g=\frac{3g^2+\lambda^2/3}{16\pi^2},
+ \qquad
+ \beta_\lambda
+ =\frac{2g\lambda+4\lambda^2/3}{16\pi^2}.\;}
+\]
+The equality \(\lambda=g\) is preserved: both beta functions become
+\(10g^2/(48\pi^2)\) there, as required by \(O(2)\).
+
+For \(r=\lambda/g\),
+\[
+ \boxed{\;
+ \mu\frac{dr}{d\mu}
+ =\frac{gr}{48\pi^2}(1-r)(r-3).\;}
+\]
+Let \(\ell=\ln(\mu_0/\mu)\) increase toward the infrared.  Then
+\[
+ \frac{dr}{d\ell}
+ =\frac{gr}{48\pi^2}(r-1)(r-3).
+\]
+For positive couplings, \(0<r<1\) gives \(dr/d\ell>0\), while
+\(1<r<3\) gives \(dr/d\ell<0\).  Hence every trajectory in
+\(0<r<3\), apart from the decoupled endpoint \(r=0\), is attracted to
+\[
+ \boxed{r=1}
+\]
+at low energy.  The second fixed ratio \(r=3\) is the boundary of this
+basin.
+
+This also states precisely how to read the source's large-cutoff
+formulation: integrating from a regulator scale \(\Lambda\) down to fixed
+physical momenta produces an RG time \(\ln(\Lambda/\mu)\), so increasing
+the scale separation drives the low-energy ratio toward one.  With the
+standard convention \(\beta_r=\mu,dr/d\mu\), the symmetric direction is
+infrared-attractive, not ultraviolet-attractive; solving the matching
+relation backward for bare parameters reverses the direction.  Finally,
+positive four-dimensional scalar theory has a Landau pole, so a literal
+interacting \(\Lambda\to\infty\) limit lies outside one-loop perturbation
+theory.  The controlled claim is the logarithmic low-energy attraction
+demonstrated above.
 \end{enumerate}
 
 \SupplementarySolution{14}{Scale Symmetry, the Dilatation Current, and Its Generator}

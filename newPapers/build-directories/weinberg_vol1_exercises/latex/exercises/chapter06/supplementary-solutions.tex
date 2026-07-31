@@ -228,21 +228,43 @@ Multiplying by the interaction coefficient gives the vertex rule
 The powers of \(2\pi\) arise solely from the stated Fourier convention.
 \end{enumerate}
 
-\SupplementarySolution{6}{Independent Momentum in the Fish Graph}
-For external momentum \(P=p_1+p_2=p'_1+p'_2\), assign momenta \(q\) and
-\(r\) to the two internal lines.  Before imposing conservation, the two
-vertices contribute
+\SupplementarySolution{6}{A Two-Loop Four-Point Correlator}
+Take all four external momenta to point outward and put
 \[
- (2\pi)^8\delta^4(P-q-r)\delta^4(q+r-P).
+ p_1+p_2+p_3+p_4=0,
+ \qquad P=p_1+p_2=-(p_3+p_4).
 \]
-One delta function fixes \(r=P-q\); the other becomes the overall
-\((2\pi)^4\delta^4(P_f-P_i)\).  The nontrivial factor is consequently
+Direct the two lines from the left vertex to the middle vertex and assign
+them momenta \(q\) and \(-P-q\).  Direct the two lines from the middle
+vertex to the right vertex and assign them \(k\) and \(-P-k\).  Momentum
+conservation then holds at each vertex.  Of the twelve components initially
+present in the three vertex delta functions, eight fix the other internal
+momenta and four remain as the single overall delta function.  Thus \(q\)
+and \(k\) are independent loop momenta.
+
+For brevity define
 \[
- \int\frac{d^4q}{(2\pi)^4}
- \frac1{(q^2+m^2-i0)((P-q)^2+m^2-i0)}.
+ D(\ell)=\ell^2+m^2-i0.
 \]
-Here \(I=2\), \(V=2\), and the graph is connected, so
-\(L=I-V+1=1\), matching the single unfixed four-momentum.
+With the Fourier convention of Chapter 6, the requested contribution is
+\[
+ \begin{split}
+ \widetilde G^{(4)}_{c,D}(p_1,p_2,p_3,p_4)
+ ={}&\frac{(-i\lambda)^3}{4}(2\pi)^4
+ \delta^4\!\left(\sum_{a=1}^4p_a\right)
+ \prod_{a=1}^4\frac{-i}{D(p_a)}
+ \\
+ &\times\int\frac{d^4q}{(2\pi)^4}\frac{d^4k}{(2\pi)^4}
+ \frac{(-i)^4}{D(q)D(P+q)D(k)D(P+k)}.
+ \end{split}
+\]
+This retains the four external propagators because the source asks for the
+Fourier transform of the time-ordered correlator, not an amputated vertex.
+The factor \(1/4\) is the inverse symmetry factor: the two parallel lines on
+the left may be exchanged, and independently the two on the right may be
+exchanged.  Hence
+\(s_D=2!\,2!=4\).  Finally \(I=4\), \(V=3\), so
+\(L=I-V+1=2\), in agreement with the two remaining integrations.
 
 \SupplementarySolution{7}{The Free Dirac Propagator, Its Residues, and Fermionic Signs}
 \begin{enumerate}
@@ -271,7 +293,7 @@ inverse of the free Dirac operator because
 \[
  (i\gamma^\mu\partial_\mu-M)
  (-\gamma^\nu\partial_\nu+M)
- =-(\Box-M^2)\mathbf1,
+ =-(\Box-M^2)\mathbf{1},
 \]
 using \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\).
 Together with
@@ -354,37 +376,116 @@ time.  The Feynman placement instead propagates positive-frequency modes
 forward and negative-frequency modes backward, which implements vacuum
 time ordering rather than causal response to a classical source.
 
-\SupplementarySolution{9}{Three Channels from One Cubic Interaction and Why a Quartic Vertex Has No Factorial}
+\SupplementarySolution{9}{Five-Particle Scattering in Cubic Scalar Theory}
 \begin{enumerate}
 \item
-Each of the two cubic vertices must receive two external lines, with the
-remaining legs joined internally.  Holding \(p_1\) fixed, its partner at
-the first vertex can be \(p_2\), \(-p'_1\), or \(-p'_2\).  Therefore
+In four dimensions the action is dimensionless and
+\([\mathcal L]=4\).  The kinetic term gives \([\phi]=1\), so
 \[
- \mathcal M=-g^2\left[
- \frac1{m^2-s-i0}
- +\frac1{m^2-t-i0}
- +\frac1{m^2-u-i0}\right].
+ [g]+3[\phi]=4,
+ \qquad [g]=1.
 \]
-Permuting identical external legs permutes \(s,t,u\) and leaves the sum
-unchanged.  This crossing symmetry is a property of the summed amplitude;
-an individual diagram singles out one pairing and is not separately
-symmetric under all crossings.
+Thus the cubic coupling has dimensions of mass.
 \item
-The first Dyson term is
+For every internal scalar line carrying momentum \(q\), include
 \[
- -\frac{ig}{4!}\int d^4x\,\phi(x)^4.
+ \frac{-i}{q^2+m^2-i0};
 \]
-For four labeled external lines there are \(4\) choices for the first
-attachment, then \(3,2,1\) for the others.  The \(4!\) contractions
-cancel the denominator exactly.  Fourier transforming the attached
-lines and doing the vertex integral gives
+for every cubic vertex include \(-ig\) and enforce four-momentum
+conservation; integrate each undetermined internal momentum with
+\(d^4q/(2\pi)^4\); divide by the graph symmetry factor; and sum all
+topologically distinct connected graphs.  For a correlation function one
+also includes an external propagator on every displayed field insertion.
+LSZ amputation removes those propagators for a scattering matrix element.
+
+\item
+In terms of asymptotic creation and annihilation operators the connected
+matrix element is
 \[
- -ig(2\pi)^4\delta^4(p_1+p_2-p'_1-p'_2).
+ S_{fi,c}=
+ \bra{\Omega}a_{\mathrm{out}}(k_3)a_{\mathrm{out}}(k_2)
+ a_{\mathrm{out}}(k_1)
+ a_{\mathrm{in}}^\dagger(p_1)a_{\mathrm{in}}^\dagger(p_2)
+ \ket{\Omega}_{c}.
 \]
-Hence the vertex rule is \(-ig\) together with momentum conservation.
-Adding another factorial would count indistinguishable fields twice and
-would disagree with the direct Wick expansion.
+Expressing each asymptotic oscillator as a large-time Klein--Gordon inner
+product with the Heisenberg field and integrating the time surfaces inward
+gives LSZ reduction.  Let
+\[
+ G_c^{(5)}(x_1,x_2,x_3;y_1,y_2)
+ =\bra{\Omega}T\{\phi(x_1)\phi(x_2)\phi(x_3)
+                 \phi(y_1)\phi(y_2)\}\ket{\Omega}_{c}.
+\]
+With the chapter's Fourier phases, and suppressing only the common external
+state-normalization factors, the result is
+\[
+ \begin{split}
+ S_{fi,c}={}&Z^{-5/2}
+ \prod_{r=1}^{3}\left[
+  \int d^4x_r\,e^{-ik_r\cdot x_r}
+  \bigl(-i(\Box_{x_r}-m^2)\bigr)\right]
+ \\
+ &\times
+ \prod_{s=1}^{2}\left[
+  \int d^4y_s\,e^{+ip_s\cdot y_s}
+  \bigl(-i(\Box_{y_s}-m^2)\bigr)\right]
+ G_c^{(5)}(x_1,x_2,x_3;y_1,y_2).
+ \end{split}
+\]
+Indeed \(-i(\Box-m^2)\) is the inverse of the position-space propagator
+whose momentum-space value is \(-i/(q^2+m^2-i0)\).  At tree level \(Z=1\).
+The same expression follows by expanding the Dyson exponential and
+contracting its fields with the five external oscillators.
+
+\item
+Put every external momentum in outgoing convention:
+\[
+ q_1=-p_1,\qquad q_2=-p_2,\qquad
+ q_3=k_1,\quad q_4=k_2,\quad q_5=k_3,
+ \qquad \sum_{a=1}^{5}q_a=0.
+\]
+For a connected cubic tree with five external legs,
+\(3V=2I+5\) and \(I=V-1\), so \(V=3\) and \(I=2\).  Its unique topology is
+a chain of three vertices: one external momentum \(q_a\) attaches to the
+middle vertex, while two unordered pairs attach to the end vertices.  The
+complete set of external assignments is
+\[
+ \begin{split}
+ \mathcal P=\{&1;23|45,\ 1;24|35,\ 1;25|34,\\
+               &2;13|45,\ 2;14|35,\ 2;15|34,\\
+               &3;12|45,\ 3;14|25,\ 3;15|24,\\
+               &4;12|35,\ 4;13|25,\ 4;15|23,\\
+               &5;12|34,\ 5;13|24,\ 5;14|23\}.
+ \end{split}
+\]
+Here \(a;bc|de\) means that \(q_a\) is attached to the middle vertex and
+the pairs \((q_b,q_c)\), \((q_d,q_e)\) to the two ends.  There are
+\(5\times3=15\) labeled diagrams.  This list is precisely the set of
+external permutations allowed by the one chain topology.
+
+\item
+Define
+\[
+ D_{ab}=(q_a+q_b)^2+m^2-i0.
+\]
+The diagram \(a;bc|de\) has symmetry factor one once the five external
+momenta are fixed, and its reduced scattering-matrix contribution is
+\[
+ S^{(a;bc|de)}_{fi,c}
+ =(2\pi)^4\delta^4(p_1+p_2-k_1-k_2-k_3)
+ \frac{-ig^3}{D_{bc}D_{de}}.
+\]
+The numerator follows directly from
+\((-ig)^3(-i)^2=-ig^3\).  Consequently the complete tree answer is
+\[
+ S^{\mathrm{tree}}_{fi,c}
+ =(2\pi)^4\delta^4(p_1+p_2-k_1-k_2-k_3)
+ (-ig^3)\sum_{a;bc|de\in\mathcal P}\frac1{D_{bc}D_{de}},
+\]
+again with the common external normalization factors understood.  This
+compact sum evaluates every one of the fifteen diagrams and is manifestly
+symmetric under permutations of the three outgoing particles (indeed, under
+permutations of all five legs after crossing).
 \end{enumerate}
 
 \SupplementarySolution{10}{Reading a Yukawa Fermion Line Backwards and Crossing a Fermion into an Antifermion}
@@ -465,41 +566,49 @@ Consequently
 Each factor \(A^{-1}\) joins the two indices in one pair and is therefore
 represented by one propagator line.
 
-\SupplementarySolution{13}{First Coefficients of a Quartic Integral and Automorphisms and Symmetry Factors}
-\begin{enumerate}
-\item
-Let angle brackets denote the unit Gaussian average and set
+\SupplementarySolution{13}{Symmetry Factors from Diagram Automorphisms}
+For the Figure 16 two-point topologies, external points are fixed throughout.
+
+\begin{itemize}
+\item The free propagator has no interaction vertex and only the identity
+automorphism, so \(s_D=1\).
+\item In the one-tadpole graph the two half-edges making the self-contracted
+loop may be exchanged.  Nothing else moves, so \(s_D=2\).
+\item In the sunset graph the three propagators joining the two interaction
+vertices may be permuted arbitrarily.  The external points prevent exchange
+of the vertices, hence \(s_D=3!=6\).
+\item In the graph with two tadpoles in series, each self-loop may be flipped
+independently.  Thus \(s_D=2\cdot2=4\).
+\item In the nested graph, exchange of the two propagators joining the lower
+and upper vertices gives one \(\mathbb Z_2\), and flipping the self-loop at
+the upper vertex gives another.  Hence \(s_D=2\cdot2=4\).
+\end{itemize}
+These are exactly the quoted \(1,2,6,4,4\).
+
+For source Figure 18, the one-vertex tree has no nontrivial automorphism once
+the four external points are fixed, so its factor is one.  Each of the four
+external-leg tadpole diagrams has precisely the flip of its self-loop and
+therefore has factor two.  Each of the three two-vertex diagrams has precisely
+the exchange of its two parallel internal propagators and therefore also has
+factor two.  This proves the complete caption statement, including all seven
+order-\(\lambda^2\) diagrams.
+
+For the left diagram of source Figure 20, the four interaction vertices form
+a square.  The square has the dihedral automorphism group \(D_4\), of order
+eight.  Independently, the self-loop at each of the four vertices may be
+flipped.  The automorphism group is consequently
 \[
- Z=\left\langle e^{-\lambda x^4/4!}\right\rangle,\qquad
- G=\frac{\left\langle x^2e^{-\lambda x^4/4!}\right\rangle}{Z}.
+ D_4\ltimes(\mathbb Z_2)^4,
+ \qquad s_D=8\cdot2^4=128.
 \]
-Using \(\langle x^{2n}\rangle=(2n-1)!!\),
+For the right diagram, each of the four outer interaction vertices is attached
+to a distinct fixed external point.  Every automorphism must therefore fix
+those four vertices, and then it must also fix the central vertex and every
+edge.  There are no parallel edges or self-loops to permute, so the group is
+trivial and
 \[
- Z=1-\frac{\lambda}{8}+\frac{35\lambda^2}{384}+O(\lambda^3),
+ s_D=1.
 \]
-\[
- \langle x^2e^{-\lambda x^4/4!}\rangle
- =1-\frac{5\lambda}{8}+\frac{315\lambda^2}{384}+O(\lambda^3).
-\]
-Division gives
-\[
- G=1-\frac{\lambda}{2}+\frac{2\lambda^2}{3}+O(\lambda^3).
-\]
-Terms factorizing into the zeroth-order two-point function times a
-vacuum moment cancel in the ratio, leaving only diagrams attached to the
-two displayed external points.
-\item
-Label the two internal lines joining vertices \(z\) and \(w\) as \(a\)
-and \(b\).  Wick's theorem initially counts the contraction
-\((z_a,w_a)(z_b,w_b)\) separately from
-\((z_a,w_b)(z_b,w_a)\).  After labels are erased, both yield the same
-integrand \(D(z-w)^2\).  The graph has an automorphism exchanging
-\(a\leftrightarrow b\) while fixing every vertex and external leg.
-Therefore the labeled contraction count overcounts the unlabeled graph by
-\(2!\), and its weight contains \(1/2!\).  This is the origin of the
-\(1/2\) in the cubic self-energy graph, independent of how the two lines
-are drawn.
-\end{enumerate}
 
 \SupplementarySolution{14}{Connected Diagrams from a Logarithm}
 At zero source, assume one-point functions vanish.  Since \(W=\log Z\),
@@ -515,39 +624,50 @@ same product rule.  Thus derivatives of \(W\) are cumulants: precisely
 the parts that cannot be factored into correlators of proper subsets,
 which are the connected diagrams.
 
-\SupplementarySolution{15}{Amputation of an Off-Shell Scalar Leg and Normalized Gell-Mann--Low Expansion}
+\SupplementarySolution{15}{Propagator Corrections in a Solvable Theory}
 \begin{enumerate}
 \item
-A source derivative inserts a field, so a momentum-space correlation
-function with one off-shell leg factors as
+The free propagator is
 \[
- \widetilde G_{n+1}(q;p_1,\ldots,p_n)
- =\frac{-i}{q^2+m^2-i0}\,
- \widetilde\Gamma_{n+1}(q;p_1,\ldots,p_n)
+ D_0(p)=\frac{-i}{p^2+m_0^2-i0}.
 \]
-after isolating diagrams connected through that external line.
-Multiplying by \(i(q^2+m^2-i0)\) removes the propagator and leaves the
-amputated function \(\widetilde\Gamma_{n+1}\).  The operation is performed
-before imposing \(q^2=-m^2\); otherwise the inverse propagator vanishes.
-On-shell external wavefunctions and residues are attached only after
-this off-shell amputation.
+Expanding \(e^{iS_1}\), a mass-insertion vertex with two scalar lines gives
+\(-i\delta m^2\) and conserves the momentum entering it.  The factor
+\(1/2\) in \(S_1\) is canceled by the two attachments of its identical
+fields.  There are no vertices with any other valence, no additional
+couplings, and no closed-loop integration unless a diagram contains an
+undetermined momentum.  Each undetermined momentum is integrated with
+\(d^Dp/(2\pi)^D\), and ordinary graph symmetry factors apply.
 \item
-Interaction-picture evolution satisfies
+The sole 1PI diagram with two external nubbins is one mass insertion:
 \[
- U(t',t)=T\exp\!\left[-i\int_t^{t'}d\tau\,H_I(\tau)\right].
+ -i\Sigma(p)=-i\delta m^2,
+ \qquad \Sigma(p)=\delta m^2.
 \]
-Inserting \(U(\infty,-\infty)\) around the free-field time-ordered
-product and dividing by its vacuum matrix element gives
+Any diagram with two or more insertions contains a free propagator between
+successive insertions; cutting that line disconnects it.  Such a graph is
+one-particle reducible and therefore is not another term in \(\Sigma\).
+There are no loop corrections because the interaction is purely quadratic.
+
+\item
+Put \(A=p^2+m_0^2-i0\) and \(V=-i\delta m^2\).  The complete two-point
+function is the geometric chain
 \[
- \langle T\,\Phi_1\cdots\Phi_n\rangle
- =\frac{\langle T\,\phi_1\cdots\phi_n
- e^{-i\int d^4z\,\mathcal H_I(z)}\rangle_0}
- {\langle T\,e^{-i\int d^4z\,\mathcal H_I(z)}\rangle_0}.
+ \begin{split}
+ D(p)={}&D_0(p)+D_0(p)VD_0(p)\\
+ &+D_0(p)VD_0(p)VD_0(p)+\cdots\\
+ ={}&\frac{-i}{A}\left[1-\frac{\delta m^2}{A}
+ +\left(\frac{\delta m^2}{A}\right)^2-\cdots\right].
+ \end{split}
 \]
-Through second order, expand the denominator inverse as in S.6.10.
-Every numerator contraction with a vacuum component factors into that
-vacuum graph times a lower-order external graph; the identical term from
-the inverse denominator cancels it.  Components connected to at least
-one displayed operator cannot factor this way and therefore remain.
+Summing gives
+\[
+ D(p)=\frac{-i}{A+\delta m^2}
+ =\frac{-i}{p^2+m_0^2+\delta m^2-i0}.
+\]
+This is exactly the free propagator with the unsplit mass
+\(m^2=m_0^2+\delta m^2\).  Thus the perturbative organization has
+reassembled the original quadratic theory, including all signs and the
+full mass dependence.
 \end{enumerate}
 \end{enumerate}

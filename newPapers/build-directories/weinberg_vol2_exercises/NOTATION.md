@@ -21,6 +21,8 @@ conjugation or an antiparticle field.
 
 ## Product notation
 
+- Use boldface rather than arrow accents for vectors: `\mathbf{x}` for Latin
+  symbols and `\boldsymbol{\pi}` for Greek symbols. Do not use arrow accents.
 - Use `\cdot` for ordinary or scalar multiplication and for inner products.
 - Use `\times` for Cartesian and direct products, vector cross products and
   curls, and dimensions such as \(2\times2\).
@@ -54,7 +56,7 @@ positive- and negative-frequency field pieces such as \(\psi^{(+)}\) and
 ## Spinors and operators
 
 - Use \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\),
-  \(\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3\),
+  \(\gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3\),
   \(\beta=i\gamma^0\), and \(\bar u=u^\dagger\beta\).
 - Write complex conjugation, transpose, and Hermitian conjugation as
   \(A^*\), \(A^{\mathsf T}\), and \(A^\dagger\).

@@ -1,0 +1,271 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                    Physics 215A QFT Fall 2023
+                           Assignment 5
+                                             Due 11:00am Monday, November 6, 2023
+
+
+  1. The i prescription produces time-ordered correlators. [Bonus problem]
+     Check that the four-point function of a free scalar field of mass m
+                                      Z                   4
+                                                          Y
+                                 −1               iS[φ]
+                             Z            [Dφ]e                 φ(xi )|m2 →m2 −i ,
+                                                          i=1
+
+     defined by the i prescription, is the time-ordered vacuum expectation value
+
+                              = h0| T φ(x1 )φ(x2 )φ(x3 )φ(x4 ) |0i .
+
+     One way to do this is to show that they are both equal to
+
+                     DT (12)DT (34) + DT (13)DT (24) + DT (14)DT (23),                              (1)
+
+     where DT (ij) ≡ h0| T φ(xi )φ(xj ) |0i.
+
+  2. The propagator is a Green’s function.
+
+      (a) Consider the retarded propagator for a real, free, massive scalar field:
+
+                            DR (x − y) ≡ θ(x0 − y 0 ) h0| [φ(x), φ(y)] |0i .
+
+          Show that it is a Green’s function for the Klein-Gordon operator, in the
+          sense that
+                                                                                         ∂ ∂
+                     2x + m2 DR (x − y) = aδ d+1 (x − y),
+                            
+                                                                                 2x ≡           .
+                                                                                        ∂xµ ∂xµ
+
+          Find a.
+      (b) Use the previous result to generalize the mode expansion of the scalar field
+          to the situation with an external source, i.e. when we add to the lagrangian
+          density φ(x)j(x) for some fixed c-number function j(x).
+      (c) Show that the time-ordered propagator for a real, free, massive scalar field
+
+          D(x−y) ≡ h0| T φ(x)φ(y) |0i ≡ θ(x0 −y 0 ) h0| φ(x)φ(y) |0i+θ(y 0 −x0 ) h0| φ(y)φ(x) |0i
+
+                                                    1
+       is also a Green’s function for the Klein-Gordon operator. That is, consider
+       what happens when you act with the wave operator +2x + m2 on the time-
+       ordered two-point function.
+       [Hints: Use the canonical equal-time commutation relations:
+
+                    [φ(~x), φ(~y )] = 0,       [∂x0 φ(~x), φ(~y )] = −iδ D−1 (~x − ~y ).
+
+       Do not neglect the fact that ∂t θ(t) = δ(t): the time derivatives act on the
+       time-ordering symbol!]
+   (d) This is an example of something that is easier to understand from the path
+       integral. In the next problem, we’ll understand why the correlation functions
+       of φ should solve the equations of motion, up to ‘contact terms’.
+
+3. Schwinger-Dyson equations.
+  Consider the path integral               Z
+                                               [Dφ]eiS[φ] .
+
+  Using the fact that the integration measure is independent of the choice of field
+  variable, we have             Z
+                                         δ
+                            0 = [Dφ]         (anything)
+                                       δφ(x)
+  (as long as ‘anything’ doesn’t grow too fast at large φ). So this equation says
+  that we can integrate by parts in the functional integral.
+  (Why is this true? As always when questions about functional calculus arise,
+  you should think of spacetime as discrete and hence the path integral measure
+  as simply the product of integrals of the field value at each spacetime point,
+  R        RQ
+    [Dφ] ≡     x dφ(x), this is just the statement that
+                                   Z
+                                           ∂
+                              0 = dφx         (anything)
+                                          ∂φx
+
+  with φx ≡ φ(x), i.e. that we can integrate by parts in an ordinary integral if there
+  is no boundary of the integration region.)
+  This trivial-seeming set of equations (we get to pick the ‘anything’) can be
+  quite useful and they are called Schwinger-Dyson equations (or sometimes Ward
+  identities). Unlike many of the other things we’ll discuss, they are true non-
+  perturbatively, i.e. are really true, even at finite coupling. They provide a quan-
+  tum implementation of the equations of motion.
+
+
+
+                                                2
+   (a) Evaluate the RHS of
+                                      Z
+                                                     δ
+                                                         φ(y)eiS[φ]
+                                                                    
+                                 0=       [Dφ]
+                                                   δφ(x)
+
+       (defined by the i prescription) to conclude that
+                             Z
+                           1             δS
+                                [Dφ]eiS       φ(y) = +iδ(x − y).                 (2)
+                           Z            δφ(x)
+
+   (b) These Schwinger-Dyson equations are true in interacting field theories; to
+       get some practice with them we consider here a free theory. Evaluate (2)
+       for the case of a free massive real scalar field to show that the (two-point)
+       time-ordered correlation functions of φ satisfy the equations of motion, most
+       of the time. That is: the equations of motion are satisfied away from other
+       operator insertions:
+
+                             +2x + m2 hT φ(x)φ(y)i = −iδ(x − y),
+                                     
+                                                                                 (3)
+                         µ
+       with 2x ≡ ∂xµ ∂ x .
+   (c) Find the generalization of (3) satisfied by (time-ordered) three-point func-
+       tions of the free field φ.
+
+4. QFT in 0 + 0 dimensions.
+  In this problem we return to the simplest scalar QFT, namely a single integral
+  with quartic action.
+
+   (a) By a change of integration variable show that
+                                        Z ∞
+                                   Z=        dq e−S(q)
+                                                   −∞
+
+       with S(q) = 12 m2 q 2 + gq 4 is of the form
+
+                                               1          √ 
+                                    Z=              Z m2 / g .
+                                           g 1/4
+       This means you can make your life easier by setting g = 1, without loss of
+       generality.
+   (b) Convince yourself (e.g. with Mathematica) that the integral really is ex-
+       pressible as a Bessel function.
+
+
+
+                                           3
+   (c) It would be nice to find a better understanding for why the partition function
+       of (0+0)-dimensional φ4 theory is a Bessel function. Find a Schwinger-Dyson
+       equation for this system which has the form of Bessel’s equation for
+                                               2
+                               K(x2 /a) ≡ e−x /a (x2 )−1/4 Z (x)
+        for some constant a. (If you get stuck I can tell you what function to choose
+        for the ‘anything’ in the S-D equation.)
+   (d) Make a plot of the perturbative approximations to the ‘Green function’
+       G ≡ hq 2 i as a function of g, truncated at orders 1 through 6 or so. Plot
+       them against the exact answer.
+   (e) (Bonus problem) Show that cn+1 ∼ − 32 ncn at large n, where cn is the coef-
+       ficient of g n in either G or Z (by brute force or by cleverness).
+
+5. Diagrams in 0+0d field theory. [Bonus problem] Here we will study a bit
+   more some field theories with no dimensions at all, that is, integrals.
+  Consider the case where we put a label on the ‘field’: q → qa , a = 1..N . So we
+  are studying                  Z Z ∞Y
+                           Z=              dqa e−S(q) .
+                                        −∞ a
+
+  Let
+                                    1
+                            S(q) = qa Kab qb + Tabcd qa qb qc qd
+                                    2
+  where Tabcd is a collection of couplings. Assume Kab is a real symmetric matrix.
+
+   (a) Show that the propagator has the form:
+                                                          X        1
+                a − − − − − −b ≡ hqa qb iT =0 = K −1 ab =   φa (k)? φb (k)
+                                                    
+                                                          k
+                                                                   k
+        where {k} are the eigenvalues of the matrix K and φa (k) are the eigenvectors
+        in the a-basis.
+   (b) Develop a diagrammatic expansion for the propagator hqa qb i. Show that
+       in a diagram with a loop, we must sum over the eigenvalue label k. (For
+       definiteness, consider the order-T correction to the propagator hqk qk0 i, where
+       k, k 0 label eigenvectors of K, and qk ≡ a φa (k)? qa ).
+                                                P
+
+   (c) Consider the case where Kab = t (δa,b+1 + δa+1,b ), with periodic boundary
+       conditions: a + N ≡ a. Find the eigenvalues. Show that in this case if
+                                                    X
+                                Tabcd qa qb qc qd =   gqa4
+                                                     a
+
+        the k-label is conserved at vertices, i.e. the vertex is accompanied by a delta
+        function on the sum of the incoming eigenvalues.
+
+                                         4
+   (d) (Bonus question) What is the more general condition on Tabcd in order that
+       the k-label is conserved at vertices?
+   (e) (Bonus question) Study the physics of the model described in 5c.
+
+6. The vacuum is a fluid with p = −ρ. [Bonus problem]
+  We said in lecture that the vacuum energy density ρ gravitates and that, when
+  positive, its effect is to cause space to inflate – to expand exponentially in time.
+  An important aspect of this phenomenon is that the vacuum fluctuations produce
+  not only an energy density, but a pressure, p = Tii (no sum on i), of the form
+  p = −ρ, which is negative for ρ > 0. The vacuum therefore acts as a perfect fluid
+  with P = −ρ. (The stress tensor for a perfect fluid in terms of its velocity field
+  uµ takes the form T µν = (p + ρ)uµ uν + pg µν , so in a frame with uµ = (1, ~0µ ),
+  T00 = ρ, Tii = P .) Solving Einstein’s equations with such a source produces an
+  inflating universe. In this problem we show that this is is the case.
+
+   (a) Show that the energy-momentum tensor for a free relativistic scalar field
+                   √                             2
+       (S[φ] = dD x gL, L = 21 g µν ∂µ φ∂ν φ − m2 φ2 ) takes the form
+              R
+
+                                   Tµν = a∂µ φ∂ν φ − bgµν L
+
+       with some constants a, b.
+   (b) Reproduce the formal expression for the vacuum energy
+                                            Z
+                                                  1
+                               h0|H|0i = V d̄d k ~ω~k
+                                                  2
+       using the two point function
+
+                   h0| φ(x)2 |0i = h0|φ(0)φ(0)|0i = lim h0| φ(x)φ(0) |0i
+                                                         ~
+                                                         x,t→0
+
+       and its derivatives. (V is the volume of space.)
+       (We will learn to draw this amplitude as a Feynman diagram which is a
+       circle (a line connecting a point to itself).)
+   (c) Show that the vacuum expectation value of the pressure
+
+                                            h0|Tii |0i
+
+       (no sum on i) gives the same answer, up to a sign.
+       [Hints: You’ll find a quite different looking integral from the vacuum en-
+       ergy. Use rotation invariance of the vacuum to simplify the answer. The
+       claim is that however you regulate the integral for the vacuum pressure and
+       1
+         R d
+       2
+           d̄ kωk , you’ll get the same answer. A convenient regulator is dimensional
+       regularization: treat the dimension d as an arbitrary complex number.]
+
+                                        5
+(d) Show that the resulting vacuum energy momentum tensor (T00 = ρ, Tii = −ρ
+    (no sum on i)) is the same as the contribution to the energy-momentum
+    tensor from an action of the form
+                                            √
+                                      Z
+                                 Scc = dD x gΛ
+
+    where Λ is a constant (the cosmological constant).
+    If you wish, plug in the FRW ansatz for the metric ds2 = −dt2 + a(t)2 d~x2
+    and show that Einstein’s equations in the presence of a positive cosmological
+    constant
+                                                          √
+                                                   Z
+                 δS[g]                        1
+                         = 0, with S[g] =            dD x gR + Scc            (4)
+                δgµν (x)                   16πGN
+
+    have the solution a(t) = eHt for some H determined by Λ and GN .
+(e) Argue that p = −ρ is required in order that the vacuum energy does not
+    specify a preferred rest frame.
+
+
+
+
+                                    6
+

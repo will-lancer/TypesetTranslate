@@ -4,67 +4,64 @@
   \SupplementarySolution{1}{A Free-Field Operator-Product Expansion}
   \begin{enumerate}
     \item[(a)]
-    Wick's theorem gives
+    There are six choices for a single self-contraction and three pairings
+    for a double self-contraction.  Therefore
     \[
-      \phi(x)\phi(0)=D(x)\mathbf1+:\!\phi(x)\phi(0)\!:,
-      \qquad D(x)=\frac1{4\pi^2x^2}.
+      \boxed{\phi^4(x)=:\!\phi^4(x)\!:
+        +6D(0):\!\phi^2(x)\!:+3D(0)^2\mathbf{1}.}
     \]
-    Taylor expansion inside normal ordering yields
-    \[
-      :\!\phi(x)\phi(0)\!:
-        =:\!\phi^2(0)\!:
-         +x^\mu:\!\partial_\mu\phi(0)\phi(0)\!:+O(x^2).
-    \]
-    Since
-    \(2:\!\phi\partial_\mu\phi\!:
-      =\partial_\mu:\!\phi^2\!:\), the result is
-    \[
-      \boxed{\phi(x)\phi(0)
-        =\frac{\mathbf1}{4\pi^2x^2}
-         +:\!\phi^2(0)\!:
-         +\frac{x^\mu}{2}\partial_\mu:\!\phi^2(0)\!:
-         +O(x^2).}
-    \]
-    The same coefficient multiplies every matrix element, illustrating the
-    state independence of a Wilson coefficient.
+    This identity also specifies how the regulator dependence in \(D(0)\)
+    is absorbed into the definition of the composite operators.
     \item[(b)]
-    Only cross-contractions are allowed between the two normal-ordered
-    factors.  There are two double contractions and four single
-    contractions:
+    Normal ordering forbids contractions within either factor, so only
+    cross-contractions occur.  Contracting \(k\) fields across the two
+    factors gives
     \[
       O(x)O(0)
-        =2D(x)^2\mathbf1
-         +4D(x):\!\phi(x)\phi(0)\!:
-         +:\!\phi^2(x)\phi^2(0)\!:.
-    \]
-    The last term begins with the dimension-four operator
-    \(:\!\phi^4\!:\).  Keeping the requested terms and using the expansion
-    from Solution 1 gives
-    \[
-      \boxed{O(x)O(0)
-        =2D^2\mathbf1+4D:\!\phi^2\!:
-         +2D\,x^\mu\partial_\mu:\!\phi^2\!:+O(d\geq4).}
-    \]
-    Thus the descendant coefficient is fixed by translation invariance
-    once the primary coefficient is known.
-    \item[(c)]
-    If \(k\) fields are contracted across the two factors, the
-    combinatorial coefficient is
-    \(\binom4k^2k!\), and the uncontracted operator is
-    \(:\!\phi^{8-2k}\!:\).  Hence
-    \[
-      :\!\phi^4(x)\!::\!\phi^4(0)\!:
-        =\sum_{k=0}^4\binom4k^2k!D(x)^k
+       =\sum_{k=0}^4\binom4k^2k!\,D(x)^k
           :\!\phi^{4-k}(x)\phi^{4-k}(0)\!:.
     \]
-    The operators of dimension at most four arise for \(k=4,3,2\):
+    Terms with \(k\leq1\) begin with operators of dimensions eight and six,
+    respectively.  The three relevant contraction sectors are thus
     \[
-      \boxed{24D^4\mathbf1
-        +96D^3:\!\phi^2\!:
-        +72D^2:\!\phi^4\!:+\text{descendants and }d>4.}
+      24D(x)^4\mathbf{1},\qquad
+      96D(x)^3:\!\phi(x)\phi(0)\!:,\qquad
+      72D(x)^2:\!\phi^2(x)\phi^2(0)\!:.
     \]
-    Taylor expansion of the uncontracted fields supplies descendants; it
-    does not change these leading primary coefficients.
+    Taylor expansion within normal ordering gives
+    \[
+      :\!\phi(x)\phi(0)\!:
+       =:\!\phi^2\!:
+        +\frac{x^\mu}{2}\partial_\mu:\!\phi^2\!:
+        +x^\mu x^\nu
+          \left[\frac14\partial_\mu\partial_\nu:\!\phi^2\!:
+                -\frac12:\!\partial_\mu\phi\,\partial_\nu\phi\!:\right]
+        +O(\Delta\geq5),
+    \]
+    where all operators on the right are evaluated at the origin.  Also
+    \[
+      :\!\phi^2(x)\phi^2(0)\!:
+        =:\!\phi^4(0)\!:+O(\Delta\geq5).
+    \]
+    Combining these results, the complete OPE through canonical dimension
+    four is
+    \[
+      \begin{aligned}
+      O(x)O(0)={}&24D(x)^4\mathbf{1}\\
+       &+96D(x)^3\Bigl[
+          :\!\phi^2\!:
+          +\frac{x^\mu}{2}\partial_\mu:\!\phi^2\!:
+          +x^\mu x^\nu\!
+            \left(\frac14\partial_\mu\partial_\nu:\!\phi^2\!:
+                 -\frac12:\!\partial_\mu\phi\,\partial_\nu\phi\!:\right)
+        \Bigr]\\
+       &+72D(x)^2:\!\phi^4\!:+O(\Delta\geq5).
+      \end{aligned}
+    \]
+    Thus the dimension-four tensor operators as well as the scalar
+    primaries and descendants are retained.  If one imposes the free field
+    equation, traces of the dimension-four tensor basis may be reduced; the
+    unreduced basis above is the complete local Taylor expansion.
   \end{enumerate}
 
   \SupplementarySolution{2}{An \(O(N)\) OPE and the Wilson--Fisher Exponent}
@@ -75,7 +72,7 @@
     Therefore
     \[
       \boxed{E(x)E(0)
-        =2N\,G(x)^2\mathbf1+4G(x)E(0)+O(d\geq4).}
+        =2N\,G(x)^2\mathbf{1}+4G(x)E(0)+O(d\geq4).}
     \]
     The omitted terms include the quartic operator and descendants.
     \item[(b)]
@@ -331,7 +328,7 @@
         \end{pmatrix}.}
       \]
       The RG equation for
-      \((A_{2u},A_{2d},A_{2\gamma})^T\) is governed by this matrix.
+      \((A_{2u},A_{2d},A_{2\gamma})^{\mathsf T}\) is governed by this matrix.
       Evolving the pointlike photon boundary vector and contracting the
       quark entries with \(3Q_q^2\) gives the second moment of
       \(F_2^\gamma\).

@@ -63,9 +63,9 @@
     Under \((L,R)\in SU(N_f)_L\times SU(N_f)_R\), the condensate matrix
     transforms as
     \[
-      \Sigma\mathbf1\longmapsto L(\Sigma\mathbf1)R^\dagger.
+      \Sigma\mathbf{1}\longmapsto L(\Sigma\mathbf{1})R^\dagger.
     \]
-    It is unchanged precisely when \(LR^\dagger=\mathbf1\), or \(L=R\).
+    It is unchanged precisely when \(LR^\dagger=\mathbf{1}\), or \(L=R\).
     The unbroken group is therefore \(SU(N_f)_V\).  The number of broken
     generators is
     \[
@@ -106,62 +106,81 @@
     theorem can be applied.
   \end{enumerate}
 
-  \SupplementarySolution{3}{Nonlinear Sigma-Model Geometry and Soft Zeros}
+  \SupplementarySolution{3}{An Abelian Coset with Charged Matter}
   \begin{enumerate}
     \item[(a)]
-    With the overall factor \(F^2\) appropriate to a sphere of radius \(F\),
+    The Maurer--Cartan form is
     \[
-      F^2\partial_\mu n\cdot\partial^\mu n
-        =\partial_\mu\boldsymbol\pi\cdot\partial^\mu\boldsymbol\pi
-         +\frac{(\boldsymbol\pi\cdot\partial_\mu\boldsymbol\pi)
-                (\boldsymbol\pi\cdot\partial^\mu\boldsymbol\pi)}
-               {F^2-\boldsymbol\pi^2}.
+      g^{-1}\partial_\mu g
+        =(i\partial_\mu\theta_L,i\partial_\mu\theta_R).
     \]
-    Hence
+    Projection parallel and perpendicular to the diagonal gives
     \[
-      \boxed{g_{ab}(\pi)
-        =\delta_{ab}+\frac{\pi_a\pi_b}{F^2-\boldsymbol\pi^2}
-        =\delta_{ab}+\frac{\pi_a\pi_b}{F^2}+O(\pi^4/F^4).}
+      \boxed{\begin{aligned}
+        E_\mu&=i(a_\mu,a_\mu),&
+        a_\mu&=\frac12\partial_\mu(\theta_L+\theta_R),\\
+        F_\mu&=\frac i2
+          (\partial_\mu\theta_A,-\partial_\mu\theta_A),&
+        \theta_A&=\theta_L-\theta_R .
+      \end{aligned}}
     \]
-    The interactions are derivative interactions because this metric
-    depends on position on the target sphere but there is no potential.
     \item[(b)]
-    The Baker--Campbell--Hausdorff expansion gives
+    Left multiplication by a global group element gives
     \[
-      \gamma^{-1}\partial_\mu\gamma
-        =i t_aD_{a\mu}+it_3E_\mu,
+      \theta_L\mapsto\theta_L+\alpha_L,\qquad
+      \theta_R\mapsto\theta_R+\alpha_R.
     \]
-    with
+    Right multiplication by
+    \(h^{-1}=(e^{-i\beta(x)},e^{-i\beta(x)})\) instead gives
     \[
-      D_{a\mu}
-        =\partial_\mu\xi_a
-         -\frac16\left[
-          \boldsymbol\xi^2\partial_\mu\xi_a
-          -\xi_a(\boldsymbol\xi\cdot\partial_\mu\boldsymbol\xi)
-         \right]+O(\xi^4\partial\xi),
+      \theta_L\mapsto\theta_L-\beta,\qquad
+      \theta_R\mapsto\theta_R-\beta.
     \]
-    \[
-      E_\mu=\frac12
-        (\xi_1\partial_\mu\xi_2-\xi_2\partial_\mu\xi_1)
-        +O(\xi^3\partial\xi).
-    \]
-    Under a general \(SO(3)\) transformation, \(D_{a\mu}\) is rotated
-    homogeneously by the compensating \(SO(2)\), whereas \(E_\mu\) acquires
-    the derivative of that local compensator.  Thus \(D\) is a covariant
-    matter-like object and \(E\) is a connection.
+    Therefore \(\theta_L+\theta_R\) is representative dependent, whereas
+    \(\theta_A=\theta_L-\theta_R\) is the physical Goldstone coordinate.
+    It shifts by the broken global parameter
+    \(\alpha_L-\alpha_R\).
     \item[(c)]
-    LSZ reduction replaces the external Goldstone by its momentum \(q\).
-    Since every local vertex containing that leg supplies at least one
-    derivative, a diagram with no singularity at \(q=0\) is proportional to
-    \(q\) and vanishes:
+    Under the representative change,
     \[
-      \mathcal M(\cdots,\pi^a(q))=O(q).
+      \widetilde\Phi\mapsto
+        e^{i(q_L+q_R)\beta}\widetilde\Phi,\qquad
+      a_\mu\mapsto a_\mu-\partial_\mu\beta .
     \]
-    The qualification is an emission from an external on-shell line.  The
-    neighboring propagator can behave as
-    \(1/(2p\cdot q)\), canceling the explicit soft momentum.  The full soft
-    theorem therefore consists of the Adler zero plus separately evaluated
-    external-leg pole terms.
+    Hence, with \(q_V=q_L+q_R\),
+    \[
+      D_\mu\widetilde\Phi
+        =(\partial_\mu+iq_Va_\mu)\widetilde\Phi
+    \]
+    transforms by the same phase as \(\widetilde\Phi\).  Substitution of
+    the dressed field yields the useful representative-independent form
+    \[
+      \boxed{D_\mu\widetilde\Phi
+        =e^{-i(q_L\theta_L+q_R\theta_R)}
+        \left[\partial_\mu
+        -\frac i2(q_L-q_R)\partial_\mu\theta_A\right]\Phi .}
+    \]
+    \item[(d)]
+    Normalize the Abelian trace by
+    \(\operatorname{Tr}[(ix_L,ix_R)(iy_L,iy_R)]
+      =-(x_Ly_L+x_Ry_R)\).  Then
+    \[
+      \boxed{\operatorname{Tr}(F_\mu F^\mu)
+        =-\frac12\partial_\mu\theta_A\partial^\mu\theta_A,}
+    \]
+    and
+    \[
+      \boxed{(D_\mu\widetilde\Phi)^\dagger
+        D^\mu\widetilde\Phi
+        =\left|\left(\partial_\mu
+          -\frac i2(q_L-q_R)\partial_\mu\theta_A\right)\Phi\right|^2.}
+    \]
+    The first expression depends only on the representative-independent
+    difference \(\theta_A\).  In the second, a global \(G\) transformation
+    shifts \(\theta_A\) by a constant and multiplies \(\Phi\) by its charge
+    phase, so the norm is unchanged.  Under a local representative change,
+    the phase of \(\widetilde\Phi\) is canceled by the transformation of
+    \(a_\mu\), proving invariance directly.
   \end{enumerate}
 
   \SupplementarySolution{4}{Goldstone Power Counting, Curvature, and Pseudo-Goldstones}

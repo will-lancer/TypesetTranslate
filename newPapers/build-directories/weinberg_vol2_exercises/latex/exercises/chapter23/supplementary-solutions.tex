@@ -443,7 +443,7 @@
   \begin{enumerate}
     \item[(a)]
     Under
-    \(q_i\to e^{i\beta_i\gamma^5}q_i\), the left- and right-handed fields
+    \(q_i\to e^{i\beta_i\gamma_5}q_i\), the left- and right-handed fields
     acquire opposite phases.  Written again in the original field
     variables, the mass matrix changes so that
     \[
@@ -462,7 +462,7 @@
     masses, but no observable can depend on either one separately.
     \item[(b)]
     When \(m_u=0\), the transformation
-    \(u\to e^{i\beta\gamma^5}u\) changes no mass term.  Choose \(\beta\)
+    \(u\to e^{i\beta\gamma_5}u\) changes no mass term.  Choose \(\beta\)
     so that its anomalous Jacobian shifts \(\theta\) to zero.  Because
     there is no \(u\)-quark mass coefficient, no new phase is deposited
     in \(M_q\); the vacuum angle is unobservable.
@@ -705,59 +705,189 @@
   \(\Gamma/\mathcal V=-2\,\operatorname{Im}E_f>0\).
 
   \SupplementarySolution{13}{Anomaly-Induced Domain-Wall Charge}
-  The rotation \(\psi\mapsto e^{-i\gamma^5\theta/2}\psi\) makes the mass
-  real.  Its anomalous Jacobian adds, to leading order in derivatives,
-  \[
-    I_{\rm top}=\frac{q}{2\pi}\int d^2x\,
-      \theta\,\epsilon^{\mu\nu}\partial_\mu A_\nu .
-  \]
-  Varying with respect to the background field gives the Goldstone--Wilczek
-  current
-  \[
-    \boxed{j^\mu_{\rm ind}
-      =\frac{q}{2\pi}\epsilon^{\mu\nu}\partial_\nu\theta}
-  \]
-  up to the simultaneous convention choice for \(\epsilon^{01}\) and the
-  sign of the gauge coupling.  For a static wall,
-  \[
-    Q=\int dx\,j^0
-      =\frac{q}{2\pi}\bigl[\theta(+\infty)-\theta(-\infty)\bigr].
-  \]
-  Thus \(\Delta\theta=\pi\) binds \(Q=q/2\).
+  \begin{enumerate}
+    \item[(a)] For constant \(\theta\), a global chiral change of variables
+      makes the mass real.  Translation and Lorentz invariance then leave
+      no nonzero vector with which \(\langle j^\mu\rangle\) could be
+      formed.  Charge conjugation gives the same conclusion.
+    \item[(b)] Define
+      \[
+        e^{i\Gamma[A,\theta]}
+          =\int D\psi D\overline\psi\,
+            e^{iS[\psi,\overline\psi;A,\theta]} .
+      \]
+      Functional differentiation inserts the current:
+      \[
+        \left.\frac{\delta\Gamma}{\delta A_\mu(x)}\right|_{A=0}
+          =\langle j^\mu(x)\rangle .
+      \]
+      Hence
+      \(\Gamma=\Gamma[0,\theta]+\int A_\mu\langle j^\mu\rangle
+      +O(A^2)\).
+    \item[(c)] Put
+      \(\psi=e^{-i\gamma_5\theta/2}\chi\) and transform
+      \(\overline\psi\) consistently.  The mass becomes real, while the
+      kinetic term acquires
+      \[
+        -\frac12(\partial_\mu\theta)
+          \overline\chi\gamma^\mu\gamma_5\chi .
+      \]
+      The fermion measure is not invariant.  With vector gauge invariance
+      preserved, its Jacobian contributes
+      \[
+        \Gamma_{\rm top}
+          =\frac{q}{2\pi}\int d^2x\,
+            \theta\,\epsilon^{\mu\nu}\partial_\mu A_\nu ,
+      \]
+      up to the linked sign conventions for \(A_\mu\) and
+      \(\epsilon^{01}\).
+    \item[(d)] Varying the topological term and integrating by parts gives
+      \[
+        \boxed{\langle j^\mu\rangle
+          =\frac{q}{2\pi}
+             \epsilon^{\mu\nu}\partial_\nu\theta+O(\partial^2/m).}
+      \]
+      The leading coefficient is fixed by the anomaly, so changing the
+      nonzero mass cannot change it continuously.  The mass only controls
+      higher-derivative corrections and the wall thickness over which the
+      response is localized.
+    \item[(e)] For a static wall,
+      \[
+        Q_{\rm wall}=\int dx\,j^0
+          =\frac{q}{2\pi}\Delta\theta .
+      \]
+      Thus a \(0\)-to-\(\pi\) wall carries \(q/2\) modulo \(q\).  Filling or
+      emptying a localized level changes the answer by one elementary
+      charge.  A \(2\pi\) interpolation pumps the integer charge \(q\);
+      it has no invariant fractional remainder.
+    \item[(f)] Choose
+      \(H=-i\sigma_2\partial_x+\sigma_1M(x)\), with
+      \(M(-\infty)<0<M(+\infty)\).  The zero-energy equation is
+      \[
+        \partial_x\psi_0=-M(x)\sigma_3\psi_0 .
+      \]
+      For \(\sigma_3\chi_s=s\chi_s\),
+      \[
+        \psi_s(x)=\mathcal N
+          \exp\left[-s\int_0^xdy\,M(y)\right]\chi_s .
+      \]
+      The integral tends to \(+\infty\) at both ends for the sign-changing
+      profile, so \(s=+1\) is normalizable.  This is the exponentially
+      localized wall mode whose two occupations realize the integer
+      ambiguity around the anomaly-fixed half charge.
+  \end{enumerate}
 
-  A localized fermion level may be filled or emptied, shifting the wall
-  charge by an integer multiple of \(q\); the fractional part is the
-  invariant response.  For \(\Delta\theta=2\pi\), the induced value is
-  \(q\), which is integral and can be removed by changing the occupation of
-  one localized state.  The adiabatic cycle still represents quantized
-  charge pumping even though a single wall has no fractional residue.
+  \SupplementarySolution{14}{Peierls Dimerization and the Polyacetylene Wall Mode}
+  \begin{enumerate}
+    \item[(a)] Put \(a_j=c_{2j}\), \(b_j=c_{2j+1}\).  The two alternating
+      hoppings are \(t_1=t(1+\phi)\) and \(t_2=t(1-\phi)\), so the Bloch
+      Hamiltonian is
+      \[
+        h(k)=-\begin{pmatrix}
+          0&t_1+t_2e^{-2ik}\\
+          t_1+t_2e^{2ik}&0
+        \end{pmatrix}.
+      \]
+      Therefore
+      \[
+        \boxed{E_\pm(k)=\pm2t
+          \sqrt{\cos^2k+\phi^2\sin^2k}},
+        \qquad -\frac\pi2<k\leq\frac\pi2 .
+      \]
+      The band gap is \(4t|\phi|\).  With
+      \(k=\pi/2+p\),
+      \[
+        E_\pm\simeq\pm2t\sqrt{p^2+\phi^2},
+      \]
+      which is a Dirac spectrum with velocity \(v_F=2t\) and mass
+      \(M=2t\phi\).
+    \item[(b)] At half filling the lower band is occupied.  For \(N\)
+      sites,
+      \[
+        \frac{E_F(\phi)}N
+          =-\frac{2t}{\pi}\,
+            \mathsf E(1-\phi^2),
+      \]
+      where
+      \(\mathsf E(m)=\int_0^{\pi/2}d\vartheta
+      \sqrt{1-m\sin^2\vartheta}\).
+      Thus \(E_F(0)/N=-2t/\pi\), while
+      \(E_F(1)/N=-t\), the energy of isolated strong-bond dimers.
+      Since \(u_n-u_{n+1}=2\phi(-1)^n\),
+      \(E_{\rm el}/N=4K\phi^2\).
 
-  \SupplementarySolution{14}{The Polyacetylene Domain-Wall Zero Mode}
-  Multiplying the zero-mode equation by \(i\sigma_2\) gives
-  \[
-    \partial_x\psi_0=-m(x)\sigma_3\psi_0.
-  \]
-  If \(\sigma_3\chi_s=s\chi_s\), then
-  \[
-    \psi_s(x)=\mathcal N
-      \exp\left(-s\int_0^x m(y)\,dy\right)\chi_s .
-  \]
-  Because the integral tends to \(+\infty\) at both spatial ends for the
-  stated kink, only \(s=+1\) is normalizable.  Hence exactly one localized
-  zero mode occurs.  Since \(\sigma_3H\sigma_3=-H\), every nonzero state has
-  a partner of opposite energy; an unpaired state must remain at zero
-  unless the spectral symmetry or the bulk gap is destroyed.
-
-  Relative to the charge-conjugation-symmetric vacuum, the empty and filled
-  zero mode carry
-  \[
-    \boxed{Q=-\frac q2,\qquad Q=+\frac q2}.
-  \]
-  With two spin species there are two zero modes.  Filling one gives total
-  charge zero and spin \(1/2\); filling neither or both gives charge
-  \(-q\) or \(+q\) and spin zero.  These are the neutral spinful and charged
-  spinless solitons characteristic of the continuum polyacetylene
-  description.
+      For small \(|\phi|\),
+      \[
+        \mathsf E(1-\phi^2)
+          =1+\frac{\phi^2}{2}
+            \left[\log\frac4{|\phi|}-\frac12\right]
+            +O(\phi^4\log|\phi|).
+      \]
+      Hence
+      \[
+        \frac{E_{\rm tot}}N
+          =-\frac{2t}{\pi}
+           -\frac{t}{\pi}\phi^2
+             \left[\log\frac4{|\phi|}-\frac12\right]
+           +4K\phi^2+\cdots .
+      \]
+      Besides the unstable solution \(\phi=0\), stationarity gives
+      \[
+        \boxed{|\phi_*|
+          =4\exp\left(-1-\frac{4\pi K}{t}\right)}
+      \]
+      within the small-\(\phi\) regime.  The logarithm is the Peierls
+      instability: arbitrarily weak lattice coupling favors dimerization.
+    \item[(c)] The band energy and elastic energy depend only on
+      \(\phi^2\), so \(\phi_*\) and \(-\phi_*\) are degenerate.  A slowly
+      varying wall gives
+      \[
+        H_D=-iv_F\sigma_2\partial_x+\sigma_1M(x),
+        \qquad M(-\infty)<0<M(+\infty).
+      \]
+      At zero energy,
+      \[
+        \partial_x\psi_0
+          =-\frac{M(x)}{v_F}\sigma_3\psi_0,
+        \qquad
+        \psi_0=\mathcal N
+          e^{-\int_0^xM(y)dy/v_F}\chi_+ .
+      \]
+      It is normalizable at both ends.  Nonzero energies occur in
+      \(\pm E\) pairs because the real bipartite Hamiltonian has spectral
+      symmetry, leaving one unpaired midgap state.  Relative to the
+      symmetric half-filled vacuum, its empty and occupied states carry
+      \[
+        \boxed{Q=-\frac q2,\qquad Q=+\frac q2}.
+      \]
+    \item[(d)] At \(E=0\), the tight-binding equation on one sublattice is
+      \[
+        t_{n-1}\psi_{n-1}+t_n\psi_{n+1}=0,
+        \qquad
+        \psi_{n+1}=-\frac{t_{n-1}}{t_n}\psi_{n-1}.
+      \]
+      Across a dimerization wall, choosing the sublattice for which the
+      ratio is the weak hopping divided by the strong hopping makes the
+      amplitudes decay geometrically on both sides.  Direct diagonalization
+      of the finite hopping matrix therefore produces a midgap eigenvector
+      with this profile.  A periodic chain contains an even number of
+      walls; the two wall modes split by an amount exponentially small in
+      their separation, tending to exact zero in the infinite-separation
+      limit.
+    \item[(e)] Real hopping restricts the continuum mass to one real axis,
+      so going from \(+M\) to \(-M\) forces the gap to close locally.
+      Complex hopping supplies a second mass component:
+      \[
+        H_D=-iv_F\sigma_2\partial_x
+          +M_1(x)\sigma_1+M_2(x)\sigma_3 .
+      \]
+      The vector \((M_1,M_2)\) can rotate by \(\pi\) at fixed nonzero
+      length, and no single matrix anticommutes with the full Hamiltonian
+      throughout the interpolation.  On the lattice the hopping phases
+      similarly break the real spectral symmetry that pinned the wall
+      eigenvalue.  The bound level may move away from midgap and merge into
+      a band, so a zero mode is no longer protected.
+  \end{enumerate}
 
   \SupplementarySolution{15}{The Complete \(\phi^4\) Kink}
   Multiplying \(\phi''=V'(\phi)\) by \(\phi'\) gives

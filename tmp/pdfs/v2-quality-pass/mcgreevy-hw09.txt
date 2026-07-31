@@ -1,0 +1,214 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                 Physics 215C QFT Spring 2025
+                         Assignment 9
+                                                                              Due never
+
+  1. The Hohenberg-Mermin-Wagner-Coleman Fact.
+
+      (a) Consider a massless scalar X in 2d, with (Euclidean) action
+                                              Z
+                                          1
+                                 S[X] =         d2 σ∂a X∂ a X.                         (1)
+                                         4πg
+          Show that the euclidean propagator
+                                     G2 (z, z 0 ) ≡ hX(z)X(z 0 )i
+          satisfies
+                                     ∇2 G2 (z, z 0 ) = bδ 2 (z − z 0 )                 (2)
+          where z = σ1E + iσ2E , for some constant b; find b. Show that the solution is
+          given by
+                                      G2 (z, z 0 ) = a ln |z − z 0 |,
+          for some constant a (for example by Fourier transform); find a.
+      (b) The long-distance behavior of G2 has important implications for the sponta-
+          neous breaking of continuous symmetries in D = 2 – it can’t happen. Argue
+          that if a system with a continuous (say U(1), for definiteness) symmetry
+          were to have an unsymmetric groundstate, the excitations about that state
+          would include a field X with the action (1). Conclude from the form of G2
+          that there is in fact no long-range order.
+
+  2. Correlators of composite operators made of free bosons in 1+1 dimen-
+     sions.
+     Consider a collection of n two-dimensional free bosons X µ governed by the (Eu-
+     clidean) action                     Z
+                                      1
+                                S=         d2 σ∂a Xµ ∂ a X µ .
+                                     4πg
+     Until further notice, we will assume that X takes values on the real line.
+     [If X ∈ R, the coupling g can be absorbed into the definition of X if we prefer,
+     but it is useful to leave this coupling constant arbitrary for several reasons. First,
+     different physicists use different conventions for the normalization and as you will
+     see this affects the appearance of the final answer. But more importantly, in part
+     2d, g will become meaningful.]
+
+                                             1
+(a) Compute the Euclidean generating functional
+                     D R 2            E       Z
+                        (d σ)E J µ Xµ
+                                                         R 2      µ
+                                           −1
+              Z[J] = e                  ≡ Z0    [dX]e−S e (d σ)E J Xµ
+
+    (where Z0−1 ≡ Z[J = 0] but please don’t worry too much about the normal-
+    ization of the path integral).
+    [Hint: use the Green function from the previous problem, and Wick’s theo-
+    rem. Or use our general formula for Gaussian integrals with sources.]
+    [Warning: In the problem at hand, even the euclidean kinetic operator has a
+    kernel, namely the zero-momentum mode. You will need to do this integral
+    separately.]
+    [Cultural remark 1: this field theory describes the propagation of featureless
+    strings in n-dimensional flat space Rn – think of X µ (σ) as the parametrizing
+    the position in Rn to which the point σ is mapped.
+    Cultural remark 2: this is an example of a conformal field theory. In par-
+    ticular recall that massless scalars in D = 2 have engineering dimension
+    zero.]
+(b) Show that
+           *N                                       +                          ! N
+                            √
+                                2α0 ki ·X(σ (i) )                                                    0
+             Y                                                      X            Y
+                    : e−i                           :       = δn         kiµ            |zi − zj |−α gki ·kj   (3)
+              i=1                                                    i          i,j=1
+
+                                                                                              (i)        (i)
+    where σ (i) label points in 2d Euclidean space, zi ≡ σ1 + iσ2 , α0 is a
+    parameter with dimensions of [X 2 /g] (called the ‘Regge slope’), and kiµ are
+    a set of arbitrary n-vectors in the target space. The : ... : indicate the
+    following prescription for defining composite operators. The prescription is
+    simply to leave out Wick contractions of objects within a pair of : ... :. Give
+    a symmetry explanation of the delta function in k.
+    [Cultural remark: this calculation is the central ingredient in the Veneziano
+    amplitude for scattering of bosonic strings at tree level.]
+(c) Conclude that the composite operator Oa ≡: eiaX : has scaling dimension
+            2
+    ∆a = ga2 , in the sense that
+                                    D                        E                    1
+                                        Oa (z)Ob† (0)            = δ(a − b)           .
+                                                                               |z|2∆a
+
+    Notice that the correlation functions of these operators do not describe the
+    propagation of particles in any sense. The operator O produces some power-
+    law excitation of the CFT soup.
+
+                                                        2
+   (d) Suppose we have one field (n = 1) X which takes values on the circle, that
+       is, we identify
+                                    X ≃ X + 2πR .
+       What values of a label single-valued operators : eiaX : ? How should we
+       modify (3)?
+
+3. The stress tensor is not a conformal primary if c 6= 0.
+  (a) For any 2d CFT, use the general form of the T T OPE to show that the
+  transformation of T under an infinitesimal conformal transformation z 7→ z +ξ(z)
+  is
+                                                    c
+                     δξ T (w) = (ξ∂ + 2∂ξ)T (w) + ∂ 3 ξ. (1)
+                                                   12
+  (b) Consider the finite conformal transformation z 7→ f (z). Show that (1) is the
+  infinitesimal version of the transformation law
+                                                       c
+                           T (z) 7→ (∂f )2 T (f (z)) + {f, z}
+                                                      12
+  where
+                                      ∂f ∂ 3 f − 23 (∂ 2 f )2
+                             {f, z} ≡
+                                              (∂f )2
+  is called a Schwarzian derivative.
+  [Optional: verify that this extra term does the right thing when composing two
+  maps z → f (z) → g(f (z)).]
+  (c) Given that the conformal map from the cylinder to the plane is z = e−iw ,
+  show that (b) means that
+                                                   c
+                      Tcyl (w)(dw)2 = Tplane (z) −     (dz)2 .
+                                                   24
+  Use this relation to show that the Hamiltonian on the cylinder
+                                       Z
+                                           dσ
+                                   H=         Tτ τ
+                                           2π
+  is
+                                                 c + c̄
+                                  H = L0 + L̃0 −        .
+                                                   24
+  Comment: After all this complication, the result has a very simple physical
+  interpretation: when putting a CFT on a cylinder, the scale invariance is spon-
+  taneously broken by the fact that the cylinder has a radius, i.e. the cylinder
+  introduces a (worldsheet) length scale into the problem. The term in the energy
+  extensive in the radius of the cylinder but not the length (and proportional to c)
+  is actually experimentally observable sometimes.
+
+                                          3
+   4. SU(2) current algebra from free scalar.
+       Consider again a compact free boson φ ≃ φ + 2π in D = 1 + 1 with action
+
+                                        R2
+                                           Z
+                                S[φ] =       dxdt∂µ φ∂ µ φ.                                       (4)
+                                        8π
+
+       [Notice that if we redefine φ̃ ≡ Rφ then we absorb the coupling R from the action
+                1
+                  R
+       S[φ̃] = 8π   dxdt∂µ φ̃∂ µ φ̃ but now φ̃ ≃ φ̃ + 2πR has a different period – hence the
+       name ‘radius’.1 ]
+       So: there is a special radius (naturally called the SU(2) radius) where new opera-
+       tors of dimension (1, 0) and (0, 1) appear, and which are charged under the boson
+       number current ∂± φ. Their dimensions tell us that they are (chiral) currents, and
+       their charges indicate that they combine with the obvious currents ∂± φ to form
+       the (Kac-Moody-Bardakci-Halpern) algebra SU(2)L × SU(2)R .
+       Here you will verify that the model (4) does in fact host an SU (2)L × SU (2)R al-
+       gebra involving winding modes – configurations of φ where the field winds around
+       its target space circle as we go around the spatial circle. We’ll focus on the holo-
+       morphic (R) part, φ(z) ≡ φR (z); the antiholomorphic part will be identical, with
+       bars on everything.
+       Define
+                                  J ± (z) ≡: e±iφ(z) :,    J 3 ≡ i∂φ(z).
+       The dots indicate a normal ordering prescription for defining the composite op-
+       erator: no wick contractions between operators within a set of dots.
+       (a) Show that J 3 , J ± are single-valued under φ → φ + 2π.
+       (b) Compute the scaling dimensions of J 3 , J ± . Recall that the scaling dimension
+       ∆ of a holomorphic operator in 2d CFT can be extracted from its two-point
+       correlation function:
+                                                          1
+                                         O† (z)O(0) ∼ 2∆ .
+                                                        z
+       For free bosons, all correlation functions of composite operators may be computed
+       using Wick’s theorem and
+                                                          1
+                                        hφ(z)φ(0)i = −       log z.
+                                                          R2
+       Find the value of R where the vertex operators J ± have dimension 1.
+   1
+   Relative to the notation I used in lecture, I have set πT ≡ R2 . A note for the string theorists: I
+am using units where α0 = 2.
+
+
+
+
+                                                  4
+  (c) Defining J ± ≡ √12 (J 1 ± iJ 2 ) show that the operator product algebra of these
+  currents is
+                                          kδ ab       J c (0)
+                          J a (z)J b (0) ∼ 2 + iabc          + ...
+                                           z             z
+  with k = 1. This is the level-k = 1 SU(2)Kac-Moody-Bardakci-Halpern algebra.
+  (d) [Bonus tedium] Defining a mode expansion for a dimension 1 operator,
+                                         X
+                               J a (z) =   Jna z −n−1
+                                             n∈Z
+
+  show that
+                            a
+                          [Jm , Jnb ] = iabc Jm+n
+                                               c
+                                                   + mkδ ab δm+n
+  with k = 1, which is an algebra called Affine SU (2) at level k = 1. Note that the
+  m = 0 modes satisfy the ordinary SU (2) lie algebra.
+  For hints (and some applications in string theory) see problem 5 here.
+
+5. Constraints from Unitarity. Show that in a unitary CFT, c > 0, and h ≥ 0
+   for all primaries. Hint: consider hφ| [Ln , L−n ] |φi.
+
+
+
+
+                                         5
+

@@ -157,54 +157,141 @@ so the result is covariant.
 \SupplementarySolution{3}{Orbital Lorentz Charge and Spin Zero}
 \begin{enumerate}
 \item
-Because \(d^4x\), \(\partial_\mu\phi\,\partial^\mu\phi\), and \(\phi^2\)
-are Lorentz scalars when \(\phi'(x')=\phi(x)\), the action is invariant.
-Variation gives \((\Box-m^2)\phi=0\).
-\item
-\(\pi=\dot\phi\) and
-\(\mathcal H=\tfrac12[\pi^2+(\nabla\phi)^2+m^2\phi^2]\).
-The stress tensor yields \(P^\mu=\int d^3x\,T^{0\mu}\), which after
-normal ordering is
+Expanding the Lorentz condition to first order gives
 \[
- P^\mu=\int\frac{d^3p}{(2\pi)^3}\,
- p^\mu a^\dagger(\mathbf p)a(\mathbf p).
+\begin{split}
+ \Lambda^\mu{}_\rho\Lambda^\nu{}_\lambda\eta^{\rho\lambda}
+ &=(\delta^\mu{}_\rho+\omega^\mu{}_\rho)
+   (\delta^\nu{}_\lambda+\omega^\nu{}_\lambda)
+   \eta^{\rho\lambda}+O(\omega^2)\\
+ &=\eta^{\mu\nu}+\omega^{\mu\nu}+\omega^{\nu\mu}
+   +O(\omega^2)=\eta^{\mu\nu}+O(\omega^2),
+\end{split}
+\]
+where the final equality uses \(\omega^{\mu\nu}=-\omega^{\nu\mu}\).
+\item
+At the same spacetime point, the scalar transformation law reads
+\[
+ \delta\phi(x)
+ =-\frac12\omega_{\mu\nu}
+ (x^\mu\partial^\nu-x^\nu\partial^\mu)\phi(x).
+\]
+Applying Noether's theorem to each independent antisymmetric parameter
+\(\omega_{\mu\nu}\) gives
+\[
+ M^{\rho\mu\nu}=x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu}.
 \]
 \item
-Under an infinitesimal Lorentz transformation,
-\(\delta\phi=-\tfrac12\omega_{\mu\nu}
-(x^\mu\partial^\nu-x^\nu\partial^\mu)\phi\).
-Noether's theorem therefore gives
+Its divergence is
 \[
- M^{\rho\mu\nu}=x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu},
-\qquad \partial_\rho M^{\rho\mu\nu}=0.
+\begin{split}
+ \partial_\rho M^{\rho\mu\nu}
+ &=T^{\mu\nu}-T^{\nu\mu}
+   +x^\mu\partial_\rho T^{\rho\nu}
+   -x^\nu\partial_\rho T^{\rho\mu}=0.
+\end{split}
 \]
-For rotations, insertion of the mode expansion and integration by parts in
-momentum space gives
+The first two terms cancel because the scalar stress tensor is symmetric,
+and the remaining terms vanish by stress-tensor conservation.
+\item
+After inserting the free-field expansion and normal ordering, the three
+rotation charges are
 \[
  M^{ij}=i\int\frac{d^3p}{(2\pi)^3}\,
  a^\dagger(\mathbf p)
- \left(p^i\frac{\partial}{\partial p_j}
- -p^j\frac{\partial}{\partial p_i}\right)a(\mathbf p).
+ \left(p^j\frac{\partial}{\partial p_i}
+ -p^i\frac{\partial}{\partial p_j}\right)a(\mathbf p),
+\qquad 1\leq i<j\leq3,
 \]
-This is purely the orbital differential operator.  A field with an internal
-spin index would have an additional finite matrix acting on that index.
-There is no such term here, so a rest one-particle scalar state has zero
-angular momentum and the quanta have spin zero.
-More explicitly,
+and the three boost charges are
 \[
- [M^{ij},a^\dagger(\mathbf p)]
- =i\left(p^i\frac{\partial}{\partial p_j}
- -p^j\frac{\partial}{\partial p_i}\right)a^\dagger(\mathbf p).
+ M^{0i}=i\int\frac{d^3p}{(2\pi)^3}\,
+ a^\dagger(\mathbf p)
+ \left(E_{\mathbf p}\frac{\partial}{\partial p_i}
+ +\frac{p_i}{2E_{\mathbf p}}\right)a(\mathbf p),
+\qquad i=1,2,3.
 \]
-For a wave packet
-\(\ket f=\int d^3p\,f(\mathbf p)a^\dagger(\mathbf p)\ket\Omega\),
-integration by parts transfers this orbital operator to \(f\).  There is no
-momentum-independent spin matrix, so the packet carries only orbital angular
-momentum.
+The \(p_i/(2E_{\mathbf p})\) term makes the boost operator Hermitian for
+the \(d^3p\) oscillator normalization used here.  These formulas list all
+six independent charges.  In particular, \(M^{ij}\) contains only an
+orbital differential operator and no momentum-independent matrix acting on
+an internal index.  Thus the one-particle quanta have spin zero.
 \end{enumerate}
 
 \SupplementarySolution{4}{The Lorentz Algebra in the Vector Representation}
-On a four-vector, take
+\begin{enumerate}
+\item
+In matrix notation, preservation of every inner product is
+\[
+ x^{\mathsf T}\Lambda^{\mathsf T}\eta\Lambda y
+ =x^{\mathsf T}\eta y
+\quad\hbox{for all \(x,y\)}.
+\]
+Hence
+\(\Lambda^{\mathsf T}\eta\Lambda=\eta\), or in components,
+\[
+ \eta_{\mu\nu}
+ =\eta_{\rho\sigma}\Lambda^\rho{}_\mu\Lambda^\sigma{}_\nu.
+\]
+\item
+Writing \(\Lambda=\mathbf1+\varepsilon\omega\) and retaining first order
+in \(\varepsilon\) gives
+\[
+ \omega^{\mathsf T}\eta+\eta\omega=0.
+\]
+After lowering the first index this is
+\(\omega_{\mu\nu}+\omega_{\nu\mu}=0\).  The proper, orthochronous
+component contains the identity and is connected, so a continuous path
+from the identity can be partitioned into infinitesimal transformations;
+their ordered product reconstructs the finite transformation.
+\item
+Choose the orientation in which
+\[
+ iJ_3=
+ \begin{pmatrix}
+ 0&0&0&0\\
+ 0&0&1&0\\
+ 0&-1&0&0\\
+ 0&0&0&0
+ \end{pmatrix}.
+\]
+Then
+\[
+ R_3(\theta)=e^{i\theta J_3}
+ =
+ \begin{pmatrix}
+ 1&0&0&0\\
+ 0&\cos\theta&\sin\theta&0\\
+ 0&-\sin\theta&\cos\theta&0\\
+ 0&0&0&1
+ \end{pmatrix}.
+\]
+Changing the orientation of positive rotations changes both signs in the
+off-diagonal entries and amounts to \(J_3\mapsto-J_3\).
+\item
+For a boost along the 1-axis, take
+\[
+ iK_1=
+ \begin{pmatrix}
+ 0&-1&0&0\\
+ -1&0&0&0\\
+ 0&0&0&0\\
+ 0&0&0&0
+ \end{pmatrix}.
+\]
+With rapidity \(\chi=\operatorname{arctanh}v\),
+\[
+ B_1(v)=e^{i\chi K_1}
+ =
+ \begin{pmatrix}
+ \cosh\chi&-\sinh\chi&0&0\\
+ -\sinh\chi&\cosh\chi&0&0\\
+ 0&0&1&0\\
+ 0&0&0&1
+ \end{pmatrix}.
+\]
+\item
+The convention above is generated by
 \[
  (J_i)^0{}_\nu=(J_i)^\mu{}_0=0,\qquad
  (J_i)^j{}_k=-i\epsilon_{ijk},
@@ -223,141 +310,139 @@ opposite boost convention.  Direct matrix multiplication, together with
 \[
  [K_i,K_j]=-i\epsilon_{ijk}J_k.
 \]
-Rotations are compact and have anti-Hermitian infinitesimal coordinate
-matrices, whereas boosts are noncompact.  The last minus sign is the
-algebraic expression of this distinction; geometrically, two non-collinear
-boosts differ by a Wigner rotation.
-For example, exponentiation about the 3-axis and along the 1-axis gives
+For \((i,j)=(1,1)\), all three equations reduce to a vanishing
+commutator.  For \((i,j)=(1,2)\), direct multiplication of the displayed
+matrices and their cyclic analogues gives
 \[
- R_3(\theta)=
- \begin{pmatrix}
- 1&0&0&0\\
- 0&\cos\theta&-\sin\theta&0\\
- 0&\sin\theta&\cos\theta&0\\
- 0&0&0&1
- \end{pmatrix},
-\qquad
- B_1(\chi)=
- \begin{pmatrix}
- \cosh\chi&\sinh\chi&0&0\\
- \sinh\chi&\cosh\chi&0&0\\
- 0&0&1&0\\
- 0&0&0&1
- \end{pmatrix},
+\begin{split}
+ [J_1,J_2]&=iJ_3,\\
+ [J_1,K_2]&=iK_3,\\
+ [K_1,K_2]&=-iJ_3,
+\end{split}
 \]
-up to the sign chosen for rapidity.  Direct multiplication verifies
-\(R_3^{\mathsf T}\eta R_3=\eta\) and
-\(B_1^{\mathsf T}\eta B_1=\eta\).
+which are precisely the three nontrivial checks requested.  The first
+two lines say that rotations and boosts each transform as spatial
+vectors.  The minus sign in the last line is the algebraic origin of the
+rotation produced by composing non-collinear boosts.
+\end{enumerate}
 
-\SupplementarySolution{5}{Charged-Scalar Quantization, Charge, Energy, and Locality}
+\SupplementarySolution{5}{Quantization and Noether Charges of a Complex Scalar}
 \begin{enumerate}
 \item
-For
-\(\mathcal L=-\partial_\mu\Phi^\dagger\partial^\mu\Phi
--m^2\Phi^\dagger\Phi\), independent variation gives the conjugate
-Klein--Gordon equations.  The canonical momenta are
-\(\Pi_\Phi=\dot\Phi^\dagger\) and
-\(\Pi_{\Phi^\dagger}=\dot\Phi\), and
-\[
- \mathcal H=\Pi_\Phi\Pi_{\Phi^\dagger}
- +\nabla\Phi^\dagger\cdot\nabla\Phi+m^2\Phi^\dagger\Phi.
-\]
-Use
-\[
- \Phi(x)=\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
- \left[a(\mathbf p)e^{ip\cdot x}
- +b^\dagger(\mathbf p)e^{-ip\cdot x}\right],
-\]
-\[
- \Phi^\dagger(x)=\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
- \left[b(\mathbf p)e^{ip\cdot x}
- +a^\dagger(\mathbf p)e^{-ip\cdot x}\right].
-\]
-The canonical pairs are
-\((\Phi,\Pi_\Phi)\) and
-\((\Phi^\dagger,\Pi_{\Phi^\dagger})\).  Their equal-time algebra gives
+Insert the four supplied mode expansions in the two nonzero canonical
+commutators.  Fourier orthogonality gives
 \[
  [a(\mathbf p),a^\dagger(\mathbf q)]
  =[b(\mathbf p),b^\dagger(\mathbf q)]
  =(2\pi)^3\delta^3(\mathbf p-\mathbf q),
 \]
-with all mixed commutators zero.  Thus
-\(a^\dagger(\mathbf p)\ket\Omega\) and
-\(b^\dagger(\mathbf p)\ket\Omega\) create independent one-particle
-states.  They will be identified by the charge operator as a particle and
-its antiparticle.
+with every \(aa\), \(bb\), \(ab\), \(ab^\dagger\), and conjugate
+commutator equal to zero.  Conversely, these oscillator relations
+reproduce all the stated canonical commutators.
 \item
-Choose the phase convention
-\(\Phi\mapsto e^{-i\alpha}\Phi\).  The conserved current is
+For
+\(\delta\Phi=i\alpha\Phi\) and
+\(\delta\Phi^\dagger=-i\alpha\Phi^\dagger\), Noether's theorem gives
 \[
  j^\mu=i\left(\Phi^\dagger\partial^\mu\Phi
  -(\partial^\mu\Phi^\dagger)\Phi\right).
 \]
-After normal ordering and fixing \(Q\ket\Omega=0\),
+Thus
+\[
+ Q=\int d^3x\,j^0
+ =i\int d^3x\,
+ \left(\dot\Phi^\dagger\Phi-\Phi^\dagger\dot\Phi\right),
+\qquad \dot Q=0.
+\]
+\item
+Substitution of the modes gives an ordering-dependent vacuum constant.
+Normal ordering and \(Q\ket0=0\) fix it:
 \[
  Q=\int\frac{d^3p}{(2\pi)^3}
- \left[a^\dagger(\mathbf p)a(\mathbf p)
- -b^\dagger(\mathbf p)b(\mathbf p)\right].
+ \left[b^\dagger(\mathbf p)b(\mathbf p)
+ -a^\dagger(\mathbf p)a(\mathbf p)\right].
 \]
-Therefore
+Consequently the charges of
 \[
- [Q,a^\dagger]=a^\dagger,\qquad
- [Q,b^\dagger]=-b^\dagger,\qquad [Q,\Phi]=-\Phi.
+ a^\dagger(\mathbf k)\ket0,\qquad
+ b^\dagger(\mathbf k)\ket0,\qquad
+ a^\dagger(\mathbf k_1)a^\dagger(\mathbf k_2)\ket0
 \]
-Exponentiation yields
-\(e^{i\alpha Q}\Phi e^{-i\alpha Q}=e^{-i\alpha}\Phi\).
-The \(a^\dagger\) state has charge \(+1\), the \(b^\dagger\) state has
-charge \(-1\), and a state containing one of each is neutral.
+are respectively \(-1,+1,-2\).
 \item
-The stress tensor calculation is the complex-field version of S.5.3.
-After normal ordering,
+The oscillator expression immediately yields
+\[
+ [Q,\Phi]=\Phi,\qquad [Q,\Phi^\dagger]=-\Phi^\dagger.
+\]
+If \(F(\alpha)=e^{i\alpha Q}\Phi e^{-i\alpha Q}\), then
+\(F'(\alpha)=iF(\alpha)\), and hence
+\[
+ e^{i\alpha Q}\Phi e^{-i\alpha Q}=e^{i\alpha}\Phi.
+\]
+The adjoint calculation similarly gives the phase \(e^{-i\alpha}\).
+\item
+The symmetric stress tensor and conserved four-momentum are
+\[
+\begin{split}
+ T^{\mu\nu}
+ &=(\partial^\mu\Phi^\dagger)(\partial^\nu\Phi)
+  +(\partial^\nu\Phi^\dagger)(\partial^\mu\Phi)
+  +\eta^{\mu\nu}\mathcal L,\\
+ P^\mu&=\int d^3x\,T^{0\mu}.
+\end{split}
+\]
+\item
+After normal ordering and setting the vacuum four-momentum to zero,
 \[
  P^\mu=\int\frac{d^3p}{(2\pi)^3}\,p^\mu
  \left[a^\dagger(\mathbf p)a(\mathbf p)
  +b^\dagger(\mathbf p)b(\mathbf p)\right].
 \]
-In particular,
-\[
- H=\int\frac{d^3p}{(2\pi)^3}\,E_{\mathbf p}
- \left[a^\dagger a+b^\dagger b\right]\geq0.
-\]
-Both \(a^\dagger(\mathbf p)\ket\Omega\) and
-\(b^\dagger(\mathbf p)\ket\Omega\) have four-momentum \(p^\mu\).
-Their opposite signs in \(Q\) reflect opposite internal charge; the plus
-signs in \(P^\mu\) show that both are positive-energy excitations.
+In particular, \(H=P^0\) is a sum of positive number operators.  Both
+one-particle states have four-momentum \(k^\mu\), while the two-\(a\)
+state has four-momentum \(k_1^\mu+k_2^\mu\).
 \item
-The two oscillator families are independent, so every term in
-\([\Phi(x),\Phi(y)]\) contains either an \(aa\), \(b^\dagger b^\dagger\),
-or mixed commutator.  Hence
+From the number-operator formula,
 \[
- [\Phi(x),\Phi(y)]=0
+ [P^i,a(\mathbf k)]=-k^i a(\mathbf k),\qquad
+ [P^i,b^\dagger(\mathbf k)]=k^i b^\dagger(\mathbf k).
 \]
-for all \(x,y\).  The nontrivial commutator is
+Applying these relations to the field expansion gives
 \[
-\begin{split}
- [\Phi(x),\Phi^\dagger(y)]
- &=\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
- \left[e^{ip\cdot(x-y)}-e^{-ip\cdot(x-y)}\right]\\
- &=\Delta(x-y).
-\end{split}
+ [P^i,\Phi(x)]=i\partial^i\Phi(x).
 \]
-The two frequency parts have equal magnitude and opposite sign.  The
-Pauli--Jordan function \(\Delta\) vanishes for spacelike separation, so the
-charged field and its adjoint satisfy microcausality.
+For \(F(s)=e^{is\mathbf a\cdot\mathbf P}
+\Phi(x)e^{-is\mathbf a\cdot\mathbf P}\), this commutator implies
+\(F'(s)=-\mathbf a\cdot\nabla F(s)\), and therefore
+\[
+ e^{i\mathbf a\cdot\mathbf P}\Phi(x)
+ e^{-i\mathbf a\cdot\mathbf P}=\Phi(x-\mathbf a).
+\]
+The sign differs from the source's upper-index formula only because its
+mostly-minus metric has been translated to the present mostly-plus
+convention.
 \end{enumerate}
 
 \SupplementarySolution{6}{Boost Charges on Scalar Creation Operators}
 \begin{enumerate}
 \item
-Noether's theorem gives
+The scalar variation
+\(\delta\phi=-\tfrac12\omega_{\nu\rho}
+(x^\nu\partial^\rho-x^\rho\partial^\nu)\phi\)
+and Noether's theorem give
 \[
  M^{\rho\mu\nu}=x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu},
-\qquad \partial_\rho M^{\rho\mu\nu}=0,
+ \qquad \partial_\rho M^{\rho\mu\nu}=0,
 \]
-using symmetry and conservation of \(T^{\mu\nu}\).
+and the charges are
+\[
+ M^{\mu\nu}=\int d^3x\,M^{0\mu\nu}.
+\]
 \item
-Hermiticity with respect to the measure \(d^3p\) requires the symmetrized
-differential operator
+The three \(M^{ij}\) generate rotations.  The remaining \(M^{0i}\)
+generate Lorentz boosts, mixing energy with the \(i\)-th momentum
+component.  For example, with the oscillator normalization in the
+problem, their normal-ordered form is
 \[
  M^{0i}=
  i\int\frac{d^3p}{(2\pi)^3}\,
@@ -365,168 +450,217 @@ differential operator
  \left(E_{\mathbf p}\frac{\partial}{\partial p_i}
  +\frac{p_i}{2E_{\mathbf p}}\right)a(\mathbf p).
 \]
-Indeed, integration by parts uses
-\(\partial E_{\mathbf p}/\partial p_i=p_i/E_{\mathbf p}\); the half of
-this derivative is exactly the second term.  The oscillator algebra gives
-\[
- [M^{0i},a^\dagger(\mathbf p)]
- =i\left(E_{\mathbf p}\frac{\partial}{\partial p_i}
- +\frac{p_i}{2E_{\mathbf p}}\right)a^\dagger(\mathbf p).
-\]
-For \(\ket p=\sqrt{2E_{\mathbf p}}a^\dagger(\mathbf p)\ket\Omega\), the
-derivative acting on \(\sqrt{2E_{\mathbf p}}\) combines with the measure
-term so that the state transforms with the standard scalar one-particle
-normalization.  Thus \(M^{0i}\) generates the infinitesimal change
-\(\delta p^0=\varepsilon p^i\), \(\delta p^i=\varepsilon p^0\).
-The same differential representation gives
-\[
- [M^{0i},P^0]=iP^i,\qquad
- [M^{0i},P^j]=i\delta^{ij}P^0,
-\]
-which is the boost--momentum part of the Poincar\'e algebra in the adopted
-sign convention.
+The \(p_i/(2E_{\mathbf p})\) term is the measure term required for
+Hermiticity with respect to \(d^3p\).
 \item
-Likewise,
+Inserting the free scalar modes into
+\(M^{ij}=\int d^3x\,(x^iT^{0j}-x^jT^{0i})\), using
+\(x^i e^{i(\mathbf p-\mathbf q)\cdot\mathbf x}
+=-i\partial_{p_i}e^{i(\mathbf p-\mathbf q)\cdot\mathbf x}\), and
+integrating by parts gives
 \[
  M^{ij}=i\int\frac{d^3p}{(2\pi)^3}a^\dagger
- \left(p^i\partial_{p_j}-p^j\partial_{p_i}\right)a.
+ \left(p^j\partial_{p_i}-p^i\partial_{p_j}\right)a.
 \]
 It contains no momentum-independent matrix, so it is purely orbital and
 the scalar one-particle representation has spin zero.
 \end{enumerate}
 
-\SupplementarySolution{7}{Representation-Independent Gamma Traces}
-Repeated use of
-\(\gamma^\mu\gamma^\nu=2\eta^{\mu\nu}-\gamma^\nu\gamma^\mu\) gives
-\[
-\begin{gathered}
- \gamma^\mu\gamma_\mu=4,\qquad
- \gamma^\mu\gamma^\nu\gamma_\mu=-2\gamma^\nu,\qquad
- \gamma^\mu\gamma^\nu\gamma^\rho\gamma_\mu=4\eta^{\nu\rho},\\
- \gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_\mu
- =-2\gamma^\sigma\gamma^\rho\gamma^\nu.
-\end{gathered}
-\]
-Conjugating one gamma by an invertible gamma with a different index and
-using trace invariance shows \(\operatorname{tr}\gamma^\mu=0\).
-Since \(\gamma^5\) anticommutes with every \(\gamma^\mu\), cyclicity gives
-\[
- \operatorname{tr}(\gamma^{\mu_1}\cdots\gamma^{\mu_{2n+1}})
- =-\operatorname{tr}(\gamma^{\mu_1}\cdots\gamma^{\mu_{2n+1}})=0.
-\]
-For two matrices,
+\SupplementarySolution{7}{Representation-Independent Clifford Identities}
+First note that \(\gamma_5^2=1\) and
+\(\{\gamma_5,\gamma^\mu\}=0\): moving the four gamma matrices in the
+second \(\gamma_5\) through the first four gives six interchanges, while
+\((\gamma^0)^2=-1\) and \((\gamma^i)^2=1\).  These facts, the Clifford
+algebra, and cyclicity suffice for the entire list.
+\begin{enumerate}
+\item
+\(\operatorname{tr}\gamma^\mu
+=\operatorname{tr}(\gamma_5\gamma^\mu\gamma_5)
+=-\operatorname{tr}\gamma^\mu\), so the trace is zero.
+\item
+Taking the trace of the anticommutator gives
 \[
  2\operatorname{tr}(\gamma^\mu\gamma^\nu)
- =\operatorname{tr}\{\gamma^\mu,\gamma^\nu\}
- =8\eta^{\mu\nu},
+ =2\eta^{\mu\nu}\operatorname{tr}\mathbf1
+ =8\eta^{\mu\nu}.
 \]
-so \(\operatorname{tr}(\gamma^\mu\gamma^\nu)=4\eta^{\mu\nu}\).
-Anticommuting \(\gamma^\mu\) successively through the other three factors
-and using cyclicity yields
+\item
+Conjugating three gamma matrices by \(\gamma_5\) changes their sign, so
+their trace vanishes.
+\item
+The preliminary calculation gives \(\gamma_5^2=1\).
+\item
+Choose any invertible \(\gamma^\mu\).  Conjugating \(\gamma_5\) by it
+changes its sign, so trace invariance gives
+\(\operatorname{tr}\gamma_5=0\).
+\item
+The Clifford algebra gives
 \[
- \operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
- =4\left(
- \eta^{\mu\nu}\eta^{\rho\sigma}
- -\eta^{\mu\rho}\eta^{\nu\sigma}
- +\eta^{\mu\sigma}\eta^{\nu\rho}\right).
+ \slashed p\slashed q+\slashed q\slashed p=2p\cdot q.
 \]
-Finally the definition
-\(\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3\), with the corresponding
-metric-sign adjustment, gives
+Separating the symmetric and antisymmetric gamma products yields
 \[
- (\gamma^5)^2=1,\qquad\{\gamma^5,\gamma^\mu\}=0,
+ \slashed p\slashed q
+ =p\cdot q+\frac12p_\mu q_\nu[\gamma^\mu,\gamma^\nu]
+ =p\cdot q+2S^{\mu\nu}p_\mu q_\nu.
 \]
+\item
+Taking the trace of part 6 and using
+\(\operatorname{tr}S^{\mu\nu}=0\) gives
+\(\operatorname{tr}(\slashed p\slashed q)=4p\cdot q\).
+\item
+For odd \(n\), insert \(\gamma_5^2\), move one \(\gamma_5\) through all
+\(n\) slashed vectors, and use cyclicity.  The trace equals its negative.
+\item
+Successive anticommutation and cyclicity give
 \[
- \operatorname{tr}\gamma^5
- =\operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu)
- =\operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho)=0,
+\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+=4(\eta^{\mu\nu}\eta^{\rho\sigma}
+-\eta^{\mu\rho}\eta^{\nu\sigma}
++\eta^{\mu\sigma}\eta^{\nu\rho}).
 \]
-and anticommutation plus the four-gamma trace fixes
+Contracting with the four momenta gives the displayed result.
+\item
+\(\operatorname{tr}(\gamma_5\gamma^\mu\gamma^\nu)\) is antisymmetric in
+\(\mu,\nu\), while inserting and contracting a further Clifford pair
+shows it equals its negative; hence it vanishes.  Contracting with
+\(p_\mu q_\nu\) proves the claim.
+\item
+Move the left \(\gamma_\mu\) through \(\slashed p\):
 \[
- \operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho
- \gamma^\sigma)=4i\epsilon^{\mu\nu\rho\sigma}
+ \gamma_\mu\slashed p\gamma^\mu
+ =2p_\mu\gamma^\mu-\slashed p\,\gamma_\mu\gamma^\mu
+ =2\slashed p-4\slashed p=-2\slashed p.
 \]
-for the convention in the exercise.
+\item
+Applying part 11 twice,
+\[
+ \gamma_\mu\slashed p_1\slashed p_2\gamma^\mu
+ =2\slashed p_2\slashed p_1
+ +2\slashed p_1\slashed p_2
+ =4p_1\cdot p_2.
+\]
+\item
+The same anticommutation step, followed by part 12, gives
+\[
+ \gamma_\mu\slashed p_1\slashed p_2\slashed p_3\gamma^\mu
+ =-2\slashed p_3\slashed p_2\slashed p_1.
+\]
+\item
+The trace is totally antisymmetric in the four indices, so it is a
+constant times \(\epsilon^{\mu\nu\rho\sigma}\).  Evaluating \(0123\),
+\[
+ \operatorname{tr}(\gamma_5\gamma^0\gamma^1\gamma^2\gamma^3)
+ =i\,\operatorname{tr}
+ [(\gamma^0\gamma^1\gamma^2\gamma^3)^2]
+ =-4i.
+\]
+Thus
+\[
+ \operatorname{tr}(\gamma_5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+ =-4i\epsilon^{\mu\nu\rho\sigma},
+\]
+and contraction gives the requested slash identity.
+\end{enumerate}
 
-\SupplementarySolution{8}{Spinor Generators of Lorentz Transformations}
-The Clifford algebra implies
-\[
- [[\gamma^\mu,\gamma^\nu],\gamma^\rho]
- =4(\eta^{\nu\rho}\gamma^\mu-\eta^{\mu\rho}\gamma^\nu).
-\]
-Therefore
-\[
- [\mathcal J^{\mu\nu},\gamma^\rho]
- =-i(\eta^{\nu\rho}\gamma^\mu-\eta^{\mu\rho}\gamma^\nu).
-\]
-For
-\(D=1+\tfrac i2\omega_{\mu\nu}\mathcal J^{\mu\nu}+O(\omega^2)\),
-this gives
-\[
- D^{-1}\gamma^\rho D
- =\gamma^\rho+\omega^\rho{}_\sigma\gamma^\sigma+O(\omega^2)
- =\Lambda^\rho{}_\sigma\gamma^\sigma+O(\omega^2).
-\]
-A second use of the same Clifford identities gives
+\SupplementarySolution{8}{The Clifford Representation of the Lorentz Algebra}
+Expand the commutator and repeatedly use
+\(\gamma^\alpha\gamma^\beta
+=2\eta^{\alpha\beta}-\gamma^\beta\gamma^\alpha\).
+The terms with four unreduced gamma matrices cancel, leaving
 \[
 \begin{split}
- [\mathcal J^{\mu\nu},\mathcal J^{\rho\sigma}]
- =i(&\eta^{\mu\rho}\mathcal J^{\nu\sigma}
- -\eta^{\nu\rho}\mathcal J^{\mu\sigma}\\
- &-\eta^{\mu\sigma}\mathcal J^{\nu\rho}
- +\eta^{\nu\sigma}\mathcal J^{\mu\rho}),
+[\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
+={}&2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
+-2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu\\
+&+2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
+-2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda.
 \end{split}
 \]
-the Lorentz Lie algebra.
+The Clifford algebra also gives
+\[
+ \frac14[\gamma^\mu,\gamma^\nu]
+ =\frac14(2\gamma^\mu\gamma^\nu-2\eta^{\mu\nu})
+ =\frac12(\gamma^\mu\gamma^\nu-\eta^{\mu\nu}).
+\]
+Substituting this expression into the first identity and collecting
+antisymmetric pairs yields
+\[
+\begin{split}
+[S^{\mu\nu},S^{\rho\sigma}]
+={}&\eta^{\nu\rho}S^{\mu\sigma}
+-\eta^{\mu\rho}S^{\nu\sigma}\\
+&-\eta^{\nu\sigma}S^{\mu\rho}
++\eta^{\mu\sigma}S^{\nu\rho}.
+\end{split}
+\]
+This is the Lorentz Lie algebra in the anti-Hermitian-generator
+convention used for \(S^{\mu\nu}\).
 
 \SupplementarySolution{9}{Dirac Spinor Norms and Orthogonality}
-In the normalization of Section 5.5, the boosted coefficient functions
-contain the factor \(\sqrt{m/E_{\mathbf p}}\).  Pseudounitarity of the
-Dirac boost and the rest-frame normalizations give
+Set
 \[
- u^\dagger(\mathbf p,r)u(\mathbf p,s)=\delta_{rs},\qquad
- v^\dagger(\mathbf p,r)v(\mathbf p,s)=\delta_{rs},
+ A=\sqrt{p\cdot\sigma},\qquad B=\sqrt{p\cdot\bar\sigma}.
 \]
+The two Hermitian matrices are functions of
+\(\mathbf p\cdot\boldsymbol\sigma\), so they commute.  Moreover,
 \[
- \bar u(\mathbf p,r)u(\mathbf p,s)
- =\frac m{E_{\mathbf p}}\delta_{rs},\qquad
- \bar v(\mathbf p,r)v(\mathbf p,s)
- =-\frac m{E_{\mathbf p}}\delta_{rs}.
+ A^2+B^2=2E_{\mathbf p}\mathbf1,\qquad
+ A^2B^2=(E_{\mathbf p}^2-\mathbf p^2)\mathbf1=m^2\mathbf1,
 \]
-The Dirac equations place \(u\) and \(v\) in distinct eigenvalue subspaces,
-so
+and hence \(AB=BA=m\mathbf1\).  It follows immediately that
 \[
- \bar u(\mathbf p,r)v(\mathbf p,s)
- =\bar v(\mathbf p,r)u(\mathbf p,s)=0.
+\begin{split}
+u^{r\dagger}u^s
+&=\xi^{r\dagger}(A^2+B^2)\xi^s
+=2E_{\mathbf p}\delta^{rs},\\
+v^{r\dagger}v^s
+&=\xi^{r\dagger}(A^2+B^2)\xi^s
+=2E_{\mathbf p}\delta^{rs}.
+\end{split}
 \]
-For the ordinary Hermitian product, the compatible negative-frequency
-spinor carries reversed spatial momentum:
+In the displayed Weyl basis
+\(\beta=\left(\begin{smallmatrix}0&\mathbf1\\
+\mathbf1&0\end{smallmatrix}\right)\).  Therefore
 \[
- u^\dagger(\mathbf p,r)v(-\mathbf p,s)=0.
+ \bar u^r=(\xi^{r\dagger}B,\xi^{r\dagger}A),\qquad
+ \bar v^r=(-\xi^{r\dagger}B,\xi^{r\dagger}A),
 \]
-Multiplying all spinors by \(\sqrt{2E_{\mathbf p}}\) converts these formulas
-to the frequently used \(2E\) and \(\pm2m\) normalization.
+which gives
+\[
+ \bar u^ru^s=2m\delta^{rs},\qquad
+ \bar v^rv^s=-2m\delta^{rs},\qquad
+ \bar u^rv^s=0.
+\]
+Finally \(A(-\mathbf p)=B(\mathbf p)\) and
+\(B(-\mathbf p)=A(\mathbf p)\), so
+\[
+ u^{r\dagger}(\mathbf p)v^s(-\mathbf p)
+ =\xi^{r\dagger}(AB-BA)\xi^s=0.
+\]
 
 \SupplementarySolution{10}{Completeness of Free Dirac Spinors}
-Lorentz covariance restricts each spin sum to a linear combination of
-\(\slashed p\) and the identity.  The rest-frame projectors and the Dirac
-equations fix the coefficients.  In the conventions of this volume,
+Completeness of the two-component basis gives
+\(\sum_s\xi^s\xi^{s\dagger}=\mathbf1\).  With the \(A,B\) notation of
+S.5.9,
 \[
- \sum_su(\mathbf p,s)u^\dagger(\mathbf p,s)
- =\frac1{2E_{\mathbf p}}[-i\slashed p+m]\beta,
+\sum_su^s\bar u^s
+=\begin{pmatrix}AB&A^2\\B^2&BA\end{pmatrix}
+=\begin{pmatrix}
+m\mathbf1&p\cdot\sigma\\
+p\cdot\bar\sigma&m\mathbf1
+\end{pmatrix}.
 \]
+For the local Weyl gamma matrices, the off-diagonal matrix is
+\(-i\slashed p\), so this is \(-i\slashed p+m\).  Similarly,
 \[
- \sum_sv(\mathbf p,s)v^\dagger(\mathbf p,s)
- =\frac1{2E_{\mathbf p}}[-i\slashed p-m]\beta.
+\sum_sv^s\bar v^s
+=\begin{pmatrix}-AB&A^2\\B^2&-BA\end{pmatrix}
+=-i\slashed p-m.
 \]
-Multiplying on the right by \(\beta\), if desired, gives the corresponding
-\(u\bar u\) and \(v\bar v\) formulas.  On shell,
-\[
- (i\slashed p+m)u=0,\qquad (-i\slashed p+m)v=0,
-\]
-so the first numerator annihilates the negative-frequency subspace and the
-second annihilates the positive-frequency subspace.  Their sum gives the
-identity needed for equal-time completeness.
+These are outer-product identities in the \(4\times4\) spinor space.
+They also agree with the on-shell equations
+\((i\slashed p+m)u=0\) and \((-i\slashed p+m)v=0\).
 
 \SupplementarySolution{11}{Equal-Time Dirac Anticommutators}
 Insert the field expansion and use the oscillator anticommutators.  Mixed
@@ -543,37 +677,56 @@ particle--antiparticle terms vanish.  The remaining terms are
 \]
 In the second term change \(\mathbf p\to-\mathbf p\).  The spatial-gamma
 and mass pieces cancel; the time-gamma piece equals
-\(2E_{\mathbf p}\mathbf1\).  Therefore
+\(2E_{\mathbf p}\mathbf{1}\).  Therefore
 \[
  \{\psi_\ell(\mathbf x,t),\psi_m^\dagger(\mathbf y,t)\}
  =\delta_{\ell m}\int\frac{d^3p}{(2\pi)^3}
  e^{i\mathbf p\cdot(\mathbf x-\mathbf y)}
  =\delta_{\ell m}\delta^3(\mathbf x-\mathbf y).
 \]
-The \(aa\), \(bb\), and mixed anticommutators vanish, proving the other
+The \(bb\), \(cc\), and mixed anticommutators vanish, proving the other
 equal-time relations.
 
 \SupplementarySolution{12}{What Fails with Bosonic Spinors}
-Replacing anticommutators by commutators changes the relative sign of the
-negative-frequency contribution.  To reproduce the local equal-time field
-commutator one is forced to choose
+\begin{enumerate}
+\item
+In the particle term, the commutator calculation is identical to the
+anticommutator calculation in S.5.11.  Interchanging the two
+antiparticle operators would normally introduce the opposite sign; the
+explicit minus sign in
+\([c,c^\dagger]\) cancels it.  Thus the same spin-sum combination
+appears and gives
 \[
- [a_r(\mathbf p),a_s^\dagger(\mathbf q)]
- =(2\pi)^3\delta_{rs}\delta^3(\mathbf p-\mathbf q),
+ [\psi_\alpha(\mathbf x),\psi_\beta^\dagger(\mathbf y)]
+ =\delta_{\alpha\beta}\delta^3(\mathbf x-\mathbf y).
 \]
-\[
- [b_r(\mathbf p),b_s^\dagger(\mathbf q)]
- =-(2\pi)^3\delta_{rs}\delta^3(\mathbf p-\mathbf q).
-\]
-The second relation gives negative-norm states:
-\(\|b^\dagger\ket\Omega\|^2<0\).  If one instead redefines the inner
-product to hide that problem, normal ordering the Hamiltonian gives
+The \(bb\), \(cc\), and mixed commutators vanish, proving the other two
+relations.
+\item
+Substitution of the modes into the Hamiltonian uses
+\((i\slashed p+m)u=0\),
+\((-i\slashed p+m)v=0\), and the norms in S.5.9.  Before normal ordering,
+the particle term is \(E_{\mathbf p}b_{\mathbf p}^{s\dagger}
+b_{\mathbf p}^s\), while the antiparticle term is
+\(-E_{\mathbf p}c_{\mathbf p}^sc_{\mathbf p}^{s\dagger}\).  Moving
+\(c^\dagger\) to the left with the negative commutator and dropping the
+c-number gives
 \[
  H=\int\frac{d^3p}{(2\pi)^3}E_{\mathbf p}
- \sum_s\left(a_s^\dagger a_s-b_s^\dagger b_s\right).
+ \sum_{s=1}^2
+ \left(b_{\mathbf p}^{s\dagger}b_{\mathbf p}^s
+ -c_{\mathbf p}^{s\dagger}c_{\mathbf p}^s\right).
 \]
-Adding \(b\)-quanta lowers the energy without bound.  Thus wrong statistics
-forces either an indefinite Hilbert-space norm or an unstable vacuum.
+Adding \(c\)-quanta lowers the energy without bound.  Independently,
+\[
+ \|c_{\mathbf p}^{s\dagger}\ket0\|^2
+ =\bra0c_{\mathbf p}^sc_{\mathbf p}^{s\dagger}\ket0<0
+\]
+because of the same minus-sign commutator.  The construction therefore
+has both an indefinite norm and an energy spectrum unbounded below:
+bosonic statistics is incompatible with a healthy spin-\(\tfrac12\)
+field.
+\end{enumerate}
 
 \SupplementarySolution{13}{Massive-Vector Constraints and Polarizations}
 \begin{enumerate}
@@ -819,7 +972,7 @@ indices transforms as
 \]
 Scalar and vector fields obey this directly.  For a Dirac bilinear,
 anticommutation of the fermion fields supplies the sign that combines with
-\(\gamma^5M\gamma^5=(-1)^nM\), producing the same rule.
+\(\gamma_5M\gamma_5=(-1)^nM\), producing the same rule.
 
 A Lorentz scalar contracts an even total number of spacetime indices, so all
 index signs multiply to \(+1\).  Therefore

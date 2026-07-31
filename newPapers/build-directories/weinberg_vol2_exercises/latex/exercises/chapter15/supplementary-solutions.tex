@@ -101,27 +101,47 @@
   \SupplementarySolution{3}{Equal Curvature Is Not Gauge Equivalence}
   \begin{enumerate}
     \item[(a)]
-    With \(F_{12}=\partial_1A_2-\partial_2A_1+[A_1,A_2]\), the first
-    connection gives
+    If Abelian connections \(A\) and \(A'\) have the same curvature, then
+    \(d(A'-A)=0\).  The Poincar\'e lemma on a contractible patch gives
+    \(A'-A=d\lambda\), which is precisely a local Abelian gauge
+    transformation.  The corresponding non-Abelian equation contains a
+    commutator and does not reduce to the statement that the difference is
+    a closed one-form.
+    \item[(b)]
+    Since the first connection is proportional to \(T_3\), its components
+    commute.  Therefore
     \[
-      F_{12}=a^2[T_1,T_2]=a^2T_3.
+      F_{xy}=\partial_x\left(\frac{gx}{2}T_3\right)
+       -\partial_y\left(-\frac{gy}{2}T_3\right)=gT_3.
     \]
-    The second gives
-    \(F'_{12}=\partial_1(a^2x^1T_3)=a^2T_3\).
-    Nevertheless their covariant derivatives of the curvature differ:
+    For the constant second connection the derivative terms vanish, while
     \[
-      D_1F_{12}=a^3[T_1,T_3]\ne0,\qquad
-      D_2F_{12}=a^3[T_2,T_3]\ne0,
+      F'_{xy}=-ig[T_1,T_2]
+        =-ig(iT_3)=gT_3.
     \]
-    while \(D'_1F'_{12}=D'_2F'_{12}=0\).  Hence, for example,
+    Thus the two curvatures agree pointwise.
+    \item[(c)]
+    The covariant derivative of the curvature transforms by conjugation.
+    For the first connection it vanishes,
     \[
-      \operatorname{tr}\bigl(D_\rho F_{12}D^\rho F_{12}\bigr)
+      D_xF_{xy}=D_yF_{xy}=0,
     \]
-    distinguishes the connections.  This scalar is gauge invariant, so the
-    two connections cannot be related by a gauge transformation.  In an
-    Abelian theory equal curvatures imply \(d(A-A')=0\).  The Poincaré lemma
-    makes \(A-A'=d\lambda\) on a simply connected contractible patch, which
-    is exactly an Abelian gauge transformation.
+    because both \(A_\mu\) and \(F_{xy}\) lie in the \(T_3\) direction.
+    For the second connection,
+    \[
+      D'_xF'_{xy}=-ig[T_1,gT_3]=-g^2T_2,
+      \qquad
+      D'_yF'_{xy}=-ig[T_2,gT_3]=g^2T_1.
+    \]
+    With \(\operatorname{tr}(T_aT_b)=\delta_{ab}/2\), the local
+    gauge-invariant scalar
+    \[
+      \mathcal I=\operatorname{tr}\!\left[
+        (D_xF_{xy})^2+(D_yF_{xy})^2\right]
+    \]
+    is zero for the first connection and \(g^4\) for the second.  Gauge
+    transformations cannot change a conjugation-invariant scalar, so one
+    such mismatch is enough to rule out gauge equivalence.
   \end{enumerate}
 
   \SupplementarySolution{4}{Gauge Transport and Curvature}
@@ -225,48 +245,62 @@
   \SupplementarySolution{6}{BRST Nilpotency and Gauge-Fermion Fixing}
   \begin{enumerate}
     \item[(a)]
-    Nilpotency on \(\omega^*\) and \(h\) is immediate.  On the ghost,
-    the graded Leibniz rule gives
+    Write \(\omega=\omega^aT_a\).  Grassmann antisymmetry removes the
+    symmetric generator product, so
     \[
-      s^2\omega_a
-        =\frac14C_{abc}C_{bde}\omega_d\omega_e\omega_c
-         -\frac14C_{abc}C_{cde}\omega_b\omega_d\omega_e.
+      \omega^2=\frac12\omega^a\omega^b[T_a,T_b]
+        =\frac{i}{2}f_{ab}{}^c\omega^a\omega^bT_c.
     \]
-    Anticommuting the ghosts puts this in the form
+    The graded Leibniz rule then gives
     \[
-      s^2\omega_a
-        \propto C_{ae[b}C_{ecd]}\omega_b\omega_c\omega_d=0,
+      s^2\psi
+       =ig\left(s\omega^c
+          +\frac g2f_{ab}{}^c\omega^a\omega^b\right)T_c\psi.
     \]
-    which is the Jacobi identity.  For the gauge field,
+    Hence nilpotency on every matter field requires
     \[
-      s^2A_\mu=D_\mu(s\omega)+[sA_\mu,\omega].
+      \boxed{s\omega^c=-\frac g2f_{ab}{}^c\omega^a\omega^b.}
     \]
-    Substituting \(s\omega=-\tfrac12[\omega,\omega]\) and
-    \(sA_\mu=D_\mu\omega\), the derivative terms cancel because the ghosts
-    anticommute, while the remaining triple-ghost coefficient is again the
-    Jacobi combination.  Hence \(s^2A_\mu=0\).  No equation of motion was
-    used; the two ingredients are Grassmann antisymmetry, which selects
-    antisymmetrized structure-constant products, and the Lie-algebra Jacobi
-    identity, which kills them.
     \item[(b)]
-    Put
-    \(\Delta_a\equiv sf_a\).  Since \(\omega_a^*\) is odd, the graded
-    Leibniz rule and \(s\omega_a^*=-h_a\) give
+    Applying \(s\) once more to the ghost gives
+    \[
+      s^2\omega^a
+       =\frac{g^2}{4}
+        \left(f^a{}_{bc}f^b{}_{de}
+             +f^a{}_{bd}f^b{}_{ec}
+             +f^a{}_{be}f^b{}_{cd}\right)
+        \omega^c\omega^d\omega^e=0.
+    \]
+    The three-ghost product performs the required total antisymmetrization;
+    the coefficient vanishes by Jacobi.  Similarly,
+    \[
+      s^2A^a_\mu
+       =\partial_\mu(s\omega^a)
+        +gf^a{}_{bc}
+          \left[(sA^b_\mu)\omega^c+A^b_\mu(s\omega^c)\right].
+    \]
+    Substitution first cancels every term containing
+    \(\partial_\mu\omega\); the remaining \(A\omega\omega\) coefficient is
+    the same Jacobi combination.  Thus \(s^2A^a_\mu=0\), without field
+    equations.
+    \item[(c)]
+    Since \(\omega_a^*\) is odd, \(s\omega_a^*=-h_a\), and \(sh_a=0\),
     \[
       s\Psi=\int d^4x\left[
-        \omega_a^*\Delta_a+h_af_a+\frac{\xi}{2}h_ah_a\right].
+        \omega_a^*\partial^\mu(D_\mu\omega)_a
+        +h_a\partial^\mu A^a_\mu+\frac{\xi}{2}h_ah_a\right].
     \]
-    Thus the first term is precisely the Faddeev--Popov ghost action and the
-    other two are the auxiliary form of gauge fixing.  Nilpotency immediately
-    yields \(s(s\Psi)=0\), so this entire sector is BRST invariant.  The
-    \(h_a\) equation,
-    \(h_a=-f_a/\xi\), reduces it to
+    These are respectively the Faddeev--Popov ghost term and the auxiliary
+    form of Lorenz gauge fixing.  Nilpotency gives \(s(s\Psi)=0\)
+    immediately.  The algebraic field equation
+    \(h_a=-\partial^\mu A_{a\mu}/\xi\) reduces the gauge-fixing sector to
     \[
-      \int d^4x\left(\omega_a^*\Delta_a-\frac{f_af_a}{2\xi}\right).
+      \int d^4x\left[
+        \omega_a^*\partial^\mu(D_\mu\omega)_a
+        -\frac{(\partial^\mu A_{a\mu})^2}{2\xi}\right].
     \]
-    The minus sign in the definition of \(\Psi\) is the one compatible with
-    \(s\omega^*=-h\) and the left-acting graded convention; changing both
-    conventions leaves the physics unchanged.
+    The overall minus sign in \(\Psi\) is tied to the local convention
+    \(s\omega^*=-h\); reversing both signs leaves \(s\Psi\) unchanged.
   \end{enumerate}
 
   \SupplementarySolution{7}{The Adjoint of \(SU(2)\)}
@@ -302,7 +336,7 @@
       \(s^2\omega^*=-sh=0\), and nilpotence on \(\omega,h\) is immediate.
     \item[(b)] After integrating derivatives by parts,
       \[
-        S=-\frac12\int d^Dx\,\Phi^T
+        S=-\frac12\int d^Dx\,\Phi^{\mathsf T}
         \begin{pmatrix}
           -\partial^2\eta^{\mu\nu}+\partial^\mu\partial^\nu
             &\partial^\mu\\
@@ -316,7 +350,7 @@
       time-ordered correlators gives delta functions.  Fourier inversion
       yields, with the source's overall convention,
       \[
-        \int d^Dx\,e^{-ipx}\langle\Phi(x)\Phi^T(0)\rangle
+        \int d^Dx\,e^{-ipx}\langle\Phi(x)\Phi^{\mathsf T}(0)\rangle
         =-\frac1{p^2}
         \begin{pmatrix}
           i\!\left[\eta_{\mu\nu}
@@ -350,29 +384,35 @@
   \SupplementarySolution{9}{Lie-Algebra BRST Cohomology}
   \begin{enumerate}
     \item[(a)]
-    On a generator,
+    Decompose \(Q=\rho+d_{\rm CE}\), where
+    \(\rho=\omega^aR_a\) acts on the representation factor and
+    \(d_{\rm CE}\omega^a=-\tfrac12C^a{}_{bc}\omega^b\omega^c\).
+    For a constant representation vector \(v\), the graded Leibniz rule
+    gives
+    \[
+      Q^2v
+       =-\frac12C^c{}_{ab}\omega^a\omega^bR_cv
+        -\omega^a\omega^bR_bR_av.
+    \]
+    Anticommutativity retains only the commutator in the second term:
+    \[
+      -\omega^a\omega^bR_bR_a
+        =\frac12\omega^a\omega^b[R_a,R_b]
+        =\frac12C^c{}_{ab}\omega^a\omega^bR_c,
+    \]
+    so the representation-dependent terms cancel.  On a ghost generator,
     \[
       Q^2\omega^a
         =\frac16C^a{}_{e[b}C^e{}_{cd]}
-          \omega^b\omega^c\omega^d .
+          \omega^b\omega^c\omega^d=0,
     \]
-    The brackets denote total antisymmetrization, forced by the Grassmann
-    product.  Thus the Jacobi identity makes \(Q^2\omega^a=0\).  Because
-    \(Q\) is an odd graded derivation, vanishing on all generators implies
-    vanishing on every polynomial.  Conversely, if \(Q^2=0\), the
-    coefficient of each independent cubic ghost monomial must vanish, which
-    is precisely Jacobi.
-
-    The polynomial algebra is the exterior algebra
-    \(\Lambda^\bullet\mathfrak g^*\); \(Q\) is the
-    Chevalley--Eilenberg differential for trivial coefficients.  Its ghost
-    number is the cochain degree, and
-    \[
-      \ker Q/\operatorname{im}Q=H^\bullet(\mathfrak g)
-    \]
-    is the Lie-algebra cohomology.
+    by the Jacobi identity.  Since \(Q\) is an odd derivation, it therefore
+    squares to zero on every \(R\)-valued polynomial.
     \item[(b)]
-    Applying \(Q\) produces four ghosts:
+    In the trivial representation, the polynomial algebra is
+    \(\Lambda^\bullet\mathfrak g^*\), and \(Q\) is the
+    Chevalley--Eilenberg differential.  Applying it to the three-cochain
+    produces four ghosts:
     \[
       Q\Omega
         =-\frac1{12}C_{abc}C^a{}_{de}

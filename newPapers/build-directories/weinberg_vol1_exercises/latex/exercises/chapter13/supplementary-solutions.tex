@@ -56,39 +56,57 @@ this zero, so every gauge-dependent term drops out.  The physical
 probability may consequently be evaluated with a convenient covariant
 sum, provided the complete set of charged external legs is retained.
 
-\SupplementarySolution{4}{The Soft Spectrum and Mean Multiplicity and Real--Virtual Regulator Cancellation}
-\begin{enumerate}
-\item
-For independent emission the mean occupation is the integral of the
-one-photon measure:
+\SupplementarySolution{4}{Soft Photons}
+Put
 \[
- \overline N=A\int_\lambda^E\frac{d\omega}{\omega}
- =A\ln\frac E\lambda .
+ J^\mu(k)=\frac{p'^\mu}{p'\cdot k}-\frac{p^\mu}{p\cdot k}.
 \]
-Weighting instead by photon energy gives
+The second eikonal bracket in the problem is \(-J^\mu(k)\).  After the
+Wick rotation, write \(k_E=\kappa\widehat k\).  The photon propagator and
+the two eikonal denominators separate the singular integral into a radial
+factor \(d\kappa/\kappa\) and a finite angular factor.  For the mixed term
+use
 \[
- \overline E_\gamma=A\int_\lambda^E d\omega=A(E-\lambda).
+ \frac{1}{(p\cdot\widehat k)(p'\cdot\widehat k)}
+ =\int_0^1dx\,
+ \frac{1}{\bigl[(xp+(1-x)p')\cdot\widehat k\bigr]^2}.
 \]
-Thus infinitely many photons accumulate at zero energy as the regulator is
-removed, but their total energy stays finite.  This is why exact Fock
-states fail while finite-resolution energy measurements remain meaningful.
-\item
-Independent emissions exponentiate:
+The interpolating momentum obeys
 \[
- \sum_{N=0}^\infty\frac1{N!}
- \left(A\int_\lambda^E\frac{d\omega}{\omega}\right)^N
- =\exp\left(A\ln\frac E\lambda\right)
- =\left(\frac E\lambda\right)^A.
+ \bigl[xp+(1-x)p'\bigr]^2
+ =-m_e^2-x(1-x)Q^2,
+ \qquad p\cdot p'=-m_e^2-\frac{Q^2}{2}.
 \]
-Multiplication by the virtual factor gives
+Consequently the angular integral of the mixed term, minus the two
+self-terms, is proportional to
 \[
- \left(\frac\lambda\Lambda\right)^A
- \left(\frac E\lambda\right)^A
- =\boxed{\left(\frac E\Lambda\right)^A}.
+ \int_0^1dx\left[
+ \frac{m_e^2+Q^2/2}{m_e^2+x(1-x)Q^2}-1\right]
+ =f_{\mathrm{IR}}(Q^2).
 \]
-The absence of a total-energy restriction is what makes the real sum a
-plain exponential; imposing one produces the function \(F(E/E_T;A)\).
-\end{enumerate}
+All dependence on the photon mass is now in the radial integral.  Its
+singular part is
+\[
+ \int^{O(Q)}_0\frac{\kappa\,d\kappa}
+ {\kappa^2+m_\gamma^2}
+ =\frac12\ln\!\left(\frac{Q^2}{m_\gamma^2}\right)+O(1).
+\]
+Keeping the measure and the prefactor \(e^2/2\), the angular normalization
+then gives
+\[
+ I_{\mathrm{virt}}^{\mathrm{IR}}
+ =-\frac{\alpha}{2\pi}f_{\mathrm{IR}}(Q^2)
+ \ln\!\left(\frac{Q^2}{m_\gamma^2}\right),
+\]
+with everything independent of \(m_\gamma\) included in ``finite.''  As a
+check, \(f_{\mathrm{IR}}(0)=0\), because an undeflected charge does not
+radiate.
+
+Cutting the virtual photon replaces its propagator by the positive-energy
+on-shell delta function.  The remaining eikonal current is the same
+\(J^\mu(k)\), so precisely the same angular integral
+\(f_{\mathrm{IR}}(Q^2)\) multiplies the real-emission logarithm.  The
+opposite real--virtual signs are the origin of the inclusive cancellation.
 
 \SupplementarySolution{5}{The Infrared Vertex Function}
 \begin{enumerate}
@@ -186,49 +204,140 @@ remove \(\ln E\).  Only the real--virtual inclusive sum replaces the
 unphysical infrared regulator by that physical resolution.
 \end{enumerate}
 
-\SupplementarySolution{7}{Collinear Kinematics and Detector Resolution}
+\SupplementarySolution{7}{Equivalent-Photon Approximation}
 \begin{enumerate}
 \item
-Choose null vectors \(P,n\) with \(P\cdot n\ne0\) and
-\(P\cdot k_\perp=n\cdot k_\perp=0\).  The on-shell momenta may be written
+Take \(q=p-p'\).  For a massless electron the Dirac equations give the
+electron Ward identity
 \[
- p=zP+k_\perp-\frac{k_\perp^2}{2zP\cdot n}n,\qquad
- q=(1-z)P-k_\perp-\frac{k_\perp^2}{2(1-z)P\cdot n}n.
+ q_\mu\bar u(p')\gamma^\mu u(p)
+ =\bar u(p')(\slashed p-\slashed p')u(p)=0.
 \]
-Their parent has
+The two transverse polarization vectors have zero contraction with
+\(q\), so the parametrization in the problem implies
 \[
- (p+q)^2=-\frac{k_\perp^2}{z(1-z)}
+ 0=Aq^2+Bq\cdot\widetilde q,
+ \qquad
+ B=-A\frac{q^2}{q\cdot\widetilde q}.
 \]
-in the mostly-plus convention.  Its propagator is therefore enhanced as
-\(k_\perp^{-2}\); the collinear singularity is \(k_\perp\to0\) at fixed
-\(0<z<1\).
+Now \(q^2=2EE'(1-\cos\theta)=O(EE'\theta^2)\), whereas
+\(q\cdot\widetilde q=-(q^0)^2-\lvert\mathbf q\rvert^2\) is generically of
+hard order.  Thus \(B/A=O(\theta^2)\).  Finally the target Ward identity
+\(q_\nu\widehat{\mathcal M}^{\nu}=0\) removes the entire term
+proportional to \(A\).
 \item
-In six dimensions the transverse space has four dimensions.  Up to a
-normalization independent of the singular variables,
+One representation compatible with the volume conventions is obtained by
+taking \(\gamma^\mu=i\gamma^\mu_{\mathrm W}\), where
+\(\gamma^\mu_{\mathrm W}\) are the usual Weyl matrices for the opposite
+metric signature.  A convenient phase choice gives
 \[
- d\Phi_{\rm split}\propto dz\,d^4k_\perp\,
- \frac1{z(1-z)}.
+ \begin{array}{ll}
+ u_+(p)=\sqrt{2E}(0,0,1,0)^{\mathsf T},&
+ u_-(p)=\sqrt{2E}(0,1,0,0)^{\mathsf T},\\[2mm]
+ u_+(p')=\sqrt{2E'}(0,0,c,s)^{\mathsf T},&
+ u_-(p')=\sqrt{2E'}(-s,c,0,0)^{\mathsf T},
+ \end{array}
 \]
-The squared parent propagator contributes
-\([z(1-z)]^2/(k_\perp^2)^2\).  Since
-\(d^4k_\perp=\Omega_3 k_\perp^3dk_\perp
-=(\Omega_3/2)k_\perp^2d(k_\perp^2)\), the singular product is
+where \(c=\cos(\theta/2)\) and \(s=\sin(\theta/2)\).  With
+\(q=p-p'\), choose
 \[
- dz\,z(1-z)\frac{d(k_\perp^2)}{k_\perp^2}.
+ \epsilon_\perp=(0,0,1,0),\qquad
+ \epsilon_\parallel=
+ \frac{(0,E-E'\cos\theta,0,E'\sin\theta)}
+ {\sqrt{E^2+E'^2-2EE'\cos\theta}}.
 \]
-It is logarithmic, as expected for the dimensionless cubic coupling in
-six dimensions.
+Both are unit spacelike vectors orthogonal to \(\mathbf q\).  For
+\(E>E'\),
+\[
+ \epsilon_\parallel=
+ \left(0,1,0,\frac{E'}{E-E'}\theta\right)+O(\theta^2).
+\]
+Using \(\bar u=u^\dagger\beta\), direct multiplication yields, for
+helicity \(h=\pm1\),
+\[
+ \begin{split}
+ \bar u_h(p')\gamma\cdot\epsilon_\perp u_h(p)
+ &=h\sqrt{EE'}\,\theta+O(\theta^2),\\
+ \bar u_h(p')\gamma\cdot\epsilon_\parallel u_h(p)
+ &=-i\sqrt{EE'}\,\frac{E+E'}{E-E'}\theta+O(\theta^2),\\
+ \bar u_h(p')\gamma\cdot\epsilon_\alpha u_{-h}(p)&=0.
+ \end{split}
+\]
+Individual phases change if the helicity spinors are rephased, but the
+squared magnitudes and the essential conclusion do not: every nonzero
+transverse matrix element is \(O(\theta)\).  The longitudinal component of
+\(\epsilon_\parallel\) is required to obtain the factor
+\((E+E')/(E-E')\).
 \item
-The pair invariant mass is
+Define the inclusive target tensor
 \[
- s_{pq}=-(p+q)^2=\frac{k_\perp^2}{z(1-z)}.
+ W^{\mu\nu}(q)=\sum_X\int d\Phi_X\,
+ (2\pi)^4\delta^4(P+q-p_X)
+ \widehat{\mathcal M}_X^\mu(q)
+ \widehat{\mathcal M}_X^{\nu}(q)^*.
 \]
-The merge condition is therefore
-\(k_\perp^2<z(1-z)s_{\rm res}\).  A probability that insists on exactly one
-particle excludes this degenerate two-particle region and retains the
-virtual collinear logarithm.  A merged probability assigns both
-configurations the same outcome, so the real integral over this region is
-included and can cancel the virtual term.
+Apart from the standard incident flux \(\mathcal F_{eT}\), the inclusive
+cross section is
+\[
+ d\sigma_{eT}=
+ \frac1{\mathcal F_{eT}}
+ \frac{d^3p'}{(2\pi)^3\,2E'}
+ \frac{e^2}{(q^2)^2}
+ j_\mu j_\nu^*W^{\mu\nu}(q),
+ \qquad j^\mu=\bar u(p')\gamma^\mu u(p).
+\]
+Only the transverse projection contributes at leading order.  Part (b)
+gives \(j_\perp j_\perp^*=O(EE'\theta^2)\), while
+\((q^2)^2=O(E^2E'^2\theta^4)\).  At fixed energy loss,
+\(d^2\mathbf p'_\perp\simeq E'^2\theta\,d\theta\,d\phi\).  Hence the
+singular part is
+\[
+ \int\frac{\theta\,d\theta\,\theta^2}{\theta^4}
+ =\int\frac{d\theta}{\theta},
+\]
+which is logarithmic.
+\item
+Let \(x=(E-E')/E\), so \(E'=(1-x)E\) to leading power.  Expanding
+\(p=\sqrt{E^2-m^2}\), \(p'=\sqrt{E'^2-m^2}\), and the supplied exact
+kinematic relation at small angle gives
+\[
+ q^2=EE'\theta^2
+ +m^2\frac{(E-E')^2}{EE'}+O(\theta^4,m^2\theta^2)
+ =\frac{\mathbf p_\perp'^2+x^2m^2}{1-x}+\cdots.
+\]
+Thus \(q^2\) cannot fall below
+\(q^2_{\min}=m^2x^2/(1-x)\).  With a hard upper limit of order \(s\),
+\[
+ \int_{q^2_{\min}}^{q^2_{\max}}\frac{dq^2}{q^2}
+ =\ln\!\left(\frac{s}{m^2}\right)+O(1),
+\]
+where the omitted terms depend on \(x\) but are not enhanced by the large
+collinear logarithm.
+\item
+Projecting the spin-averaged electron tensor onto the two transverse
+polarizations, or equivalently squaring the bilinears in part (b), gives
+the universal collinear splitting probability
+\[
+ dN_\gamma=
+ \frac{\alpha}{2\pi}
+ \frac{1+(1-x)^2}{x}\,dx\,\frac{dq^2}{q^2}
+ +\text{terms without a collinear logarithm}.
+\]
+In the nearly on-shell region the target tensor is the same one that enters
+the real-photon target cross section.  If that cross section is independent
+of polarization, the electron--target result therefore factorizes as
+\[
+ d\sigma_{eT}=N_\gamma(x)\,dx\;
+ d\sigma_{\gamma T}(xE)+\text{subleading terms}.
+\]
+Using the integral from part (d) gives
+\[
+ N_\gamma(x)\,dx
+ =\frac{dx}{x}\frac{\alpha}{2\pi}
+ \bigl[1+(1-x)^2\bigr]
+ \ln\!\left(\frac{s}{m^2}\right),
+\]
+which is the Weisz\"acker--Williams spectrum requested.
 \end{enumerate}
 
 \SupplementarySolution{8}{Collinear Logarithms and KLN Safety}
@@ -295,9 +404,9 @@ Using
 the Baker--Campbell--Hausdorff series terminates after the first
 commutator.  Acting on the vacuum,
 \[
- E_i(\mathbf z)\Psi_D^\dagger(\mathbf x)\lvert0\rangle
+ E_i(\mathbf z)\Psi_D^\dagger(\mathbf x)\ket{0}
  =\frac{e(z-x)_i}{4\pi|\mathbf z-\mathbf x|^3}
- \Psi_D^\dagger(\mathbf x)\lvert0\rangle
+ \Psi_D^\dagger(\mathbf x)\ket{0}
  +\text{vacuum fluctuations}.
 \]
 Its divergence is
@@ -398,49 +507,116 @@ Thus the soft factor is crossing covariant; apparent sign changes cancel
 when momentum, charge, and in/out assignment are transformed together.
 \end{enumerate}
 
-\SupplementarySolution{12}{Large-Gauge Ward Identities and Electromagnetic Memory}
+\SupplementarySolution{12}{Soft Gravitons?}
 \begin{enumerate}
 \item
-Between asymptotic states, the hard charges act diagonally:
+For a symmetric tensor the identity operator is
 \[
- Q_\varepsilon^H\InKet{\alpha}
- =\sum_{k\in\alpha}e_k\varepsilon(\widehat p_k)\InKet{\alpha},
+ I_{\mu\nu,\rho\sigma}
+ =\frac12\left(
+ \eta_{\mu\rho}\eta_{\nu\sigma}
+ +\eta_{\mu\sigma}\eta_{\nu\rho}\right).
 \]
-with the analogous outgoing action.  Inserting
-\(Q=Q^H+Q^S\) in the Ward identity moves the hard terms to the right:
+The inverse of the schematic quadratic kernel in the problem is therefore
 \[
- \OutBra{\beta}(Q_{\varepsilon}^{S+}S-SQ_{\varepsilon}^{S-})
- \InKet{\alpha}
- =-\left[\sum_{\beta}e_k\varepsilon_k-\sum_{\alpha}e_k\varepsilon_k\right]
- \OutBra{\beta}S\InKet{\alpha}.
+ D_{\mu\nu,\rho\sigma}(k)
+ =\frac{-i}{k^2-i0}I_{\mu\nu,\rho\sigma}.
 \]
-The soft charge is the zero-frequency photon creation/annihilation mode.
-Choosing \(\varepsilon\) localized at a direction on the celestial sphere
-turns its matrix element into the angular eikonal factor, reproducing the
-leading soft theorem.
+This is the propagator for the trace-reversed, gauge-fixed variable used in
+the statement.  If one rewrites it for the unreversed metric perturbation,
+the familiar numerator is
+\(I_{\mu\nu,\rho\sigma}-\tfrac12\eta_{\mu\nu}\eta_{\rho\sigma}\), up to
+gauge-dependent momentum terms.  Conserved sources remove those momentum
+terms.
 \item
-Use the distribution identity
+In four dimensions the canonical fields have
+\([h]=1\), \([\psi]=3/2\), and hence \([T_{\mu\nu}]=4\).  Since the
+Lagrangian density has dimension four,
 \[
- \int\frac{d\omega}{2\pi}\,
- \frac{e^{-i\omega u}}{\omega+i0}=-i\,\theta(u).
+ [G]=-1,
 \]
-Hence the pole contributes \(-iC\theta(u)\), and
+in agreement with \(G\sim\sqrt{G_N}\).  If momentum \(p\) flows into the
+vertex along the differentiated \(\psi\) line, the interaction as written
+gives, up to the overall Fourier-transform phase convention,
 \[
- A(u=+\infty)-A(u=-\infty)=-iC.
+ \mathcal V_{\mu\nu}(p)
+ =G(\gamma_\mu p_\nu+\gamma_\nu p_\mu).
 \]
-In a scattering solution the coefficient \(C\) is the zero-frequency
-soft factor determined by the asymptotic charged currents.  Its Fourier
-pole is therefore equivalent to a permanent change of the radiative gauge
-field: electromagnetic memory.
+For the Hermitian, symmetrized stress tensor the corresponding rule has
+\(p\) replaced by one half the sum of the incoming and outgoing fermion
+momenta.  Either form displays the crucial derivative momentum and the
+dimensionful coupling.
 \item
-Squaring the leading soft theorem and using
-\(d^3q/(2\omega)=\omega\,d\omega\,d\Omega/2\) gives the stated formula.
-It is a sum of absolute squares and is therefore nonnegative.  Under
-\(\epsilon_\lambda\to\epsilon_\lambda+c_\lambda q\), the quantity inside
-the absolute value changes by
-\(c_\lambda\sum_k\eta_ke_k\), which vanishes by charge conservation.
-Thus the angular distribution is gauge invariant.  Its
-\(d\omega/\omega\) dependence also displays directly the logarithmically
-large photon multiplicity.
+Let the incoming photon and outgoing graviton momenta be \(k\) and \(r\),
+so \(p+k=p'+r\).  There are two Compton-like orderings on the electron
+line: absorb \(k\) before emitting \(r\), or emit \(r\) before absorbing
+\(k\).  With \(\mathcal V_{\mu\nu}\) denoting the preceding graviton
+vertex, their sum is schematically
+\[
+ \begin{split}
+ \mathcal M_{e\gamma\to eh}=e\bar u(p')\bigl[&
+ \epsilon_h^{*\mu\nu}\mathcal V_{\mu\nu}
+ S_F(p+k)\gamma\cdot\epsilon_\gamma\\
+ &+\gamma\cdot\epsilon_\gamma S_F(p-r)
+ \epsilon_h^{*\mu\nu}\mathcal V_{\mu\nu}\bigr]u(p).
+ \end{split}
+\]
+At energy \(E\gg m\), dimensional analysis gives
+\(\mathcal M\sim eGE\).  The two-body cross section contains a factor
+\(1/E^2\), and therefore
+\[
+ \sigma(e\gamma\to eh)\sim e^2G^2\sim\alpha G^2
+\]
+up to numerical constants and angular dependence.  This has the correct
+dimension of area and is energy independent at leading high-energy power.
+Gauge-dependent terms in the graviton polarization sum vanish against the
+conserved stress tensor.
+\item
+It \emph{is} infrared divergent.  The derivatives in the matter stress
+tensor act on the hard electron fields, so a soft graviton attachment
+supplies hard momenta rather than powers of the soft loop momentum \(k\).
+The eikonal region of the vertex correction therefore contains
+\[
+ G^2\int\frac{d^4k}{(2\pi)^4}
+ \frac{\mathcal N(p,p')}
+ {(k^2-i0)(p\cdot k-i0)(p'\cdot k+i0)},
+\]
+where \(\mathcal N(p,p')\) is nonzero as \(k\to0\).  Radially this behaves
+as \(k^3dk/(k^2kk)=dk/k\).  Equivalently the leading soft-graviton factor
+is proportional to \(Gp^\mu p^\nu/(p\cdot k)\).  Thus virtual graviton
+corrections have a logarithmic infrared divergence, and a physical rate
+must include unresolved real soft gravitons.  The conditional wording in
+the source prompt should not be read as asserting the opposite conclusion.
+\item
+For derivative scalar coupling each soft-scalar vertex contains a factor
+of its momentum \(k_\mu\).  Two such vertices change the preceding soft
+power count by \(k^2\), making the origin integrable.  More strongly,
+integration by parts gives
+\[
+ \lambda\,\partial_\mu\pi\,\bar\psi\gamma^\mu\psi
+ =-\lambda\pi\,\partial_\mu(\bar\psi\gamma^\mu\psi)
+ +\text{a total derivative},
+\]
+which vanishes for the conserved vector current, subject to the usual
+boundary conditions.  Direct Yukawa coupling has no soft momentum in its
+vertex, so its two eikonal denominators remain and the virtual correction
+is logarithmically infrared divergent for a massive fermion.  This is why
+the derivative-scalar analogy does not reproduce the graviton answer: the
+graviton derivative acts on a hard matter field, not on the soft graviton.
+\item
+Using the symmetry of \(T^{\mu\nu}\) and discarding a boundary term,
+\[
+ \begin{split}
+ \delta S_G
+ &=G\int d^4x\,
+ (\partial_\mu\lambda_\nu+\partial_\nu\lambda_\mu)T^{\mu\nu}\\
+ &=-2G\int d^4x\,\lambda_\nu\partial_\mu T^{\mu\nu}.
+ \end{split}
+\]
+Invariance for arbitrary \(\lambda_\nu(x)\) therefore requires
+\[
+ \boxed{\partial_\mu T^{\mu\nu}=0}.
+\]
+Thus the object coupled to the graviton must be a conserved stress tensor.
 \end{enumerate}
 \end{enumerate}

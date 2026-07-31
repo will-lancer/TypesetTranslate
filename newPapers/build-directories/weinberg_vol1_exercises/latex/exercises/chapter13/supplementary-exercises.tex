@@ -32,22 +32,45 @@ sum changes a soft-emission probability only by terms proportional to
 \(\sum_n\eta_ne_n\).  Explain precisely why charge conservation removes
 those terms.
 
-\SupplementaryExercise{4}{The Soft Spectrum and Mean Multiplicity and Real--Virtual Regulator Cancellation}
-  {(Inspired by Hong Liu and MIT OpenCourseWare, 8.324 Lecture 16.)}
-  {mit-8324-f10-lecture16-ch13-curated-parent-4}
-\begin{enumerate}
-\item
-Suppose the angularly integrated one-photon probability is
-\(dP=A\,d\omega/\omega\) for \(\lambda<\omega<E\).  Find the mean photon
-number and the mean emitted energy.  Explain why only the first quantity
-diverges as \(\lambda\to0\).
-\item
-If virtual soft photons multiply a rate by
-\((\lambda/\Lambda)^A\), sum independent real photons with individual
-energies below \(E\), without imposing a total-energy constraint.  Show
-that the regulator cancels and determine the remaining power of
-\(E/\Lambda\).
-\end{enumerate}
+\SupplementaryExercise{4}{Soft Photons}
+  {(Adapted from John McGreevy, Physics 215B QFT, Winter 2025,
+  Assignment 5, Problem 4.)}
+  {mcgreevy-215b-w25-hw05-p4}
+Let an electron be deflected from on-shell momentum \(p\) to \(p'\), with
+\(p^2=p'^2=-m_e^2\), and write \(q=p'-p\).  Regulate the infrared region by
+giving the photon a small mass \(m_\gamma\).  In the mostly-plus convention
+of this volume a spacelike transfer has \(Q^2\equiv q^2>0\), and write
+\(\overline{d^4k}\equiv d^4k/(2\pi)^4\).
+
+Check that the contribution from a single virtual photon (Eq.~(2.60) of
+McGreevy's lecture notes, with \(n=2\)) is
+\[
+ \begin{split}
+ &\frac{e^2}{2}\int\overline{d^4k}\,
+ \frac{-i\eta_{\rho\sigma}}{k^2+m_\gamma^2-i0}
+ \left(\frac{p'}{p'\cdot k}-\frac{p}{p\cdot k}\right)^{\!\rho}
+ \left(\frac{p'}{-p'\cdot k}-\frac{p}{-p\cdot k}\right)^{\!\sigma}
+ \\
+ &\hspace{35mm}={}-\frac{\alpha}{2\pi}f_{\mathrm{IR}}(Q^2)
+ \ln\!\left(\frac{Q^2}{m_\gamma^2}\right)+\text{finite},
+ \end{split}
+\]
+where
+\[
+ f_{\mathrm{IR}}(Q^2)=\int_0^1dx\,
+ \frac{m_e^2+Q^2/2}{m_e^2+x(1-x)Q^2}-1.
+\]
+
+Hints: Wick rotate.  Scale out the overall magnitude of \(k\), writing
+\(k^\mu=k\widehat k^\mu\).  Use a Feynman parameter to combine
+\((p\cdot\widehat k)(p'\cdot\widehat k)\).  Observe that this same
+integral appears in the cross section involving the emission of one real
+soft photon.
+
+\emph{Editorial note.}  The source prints one dummy integration variable
+in the measure and another in the integrand; the display above consistently
+calls that variable \(k\).  The signs of \(Q^2\) and \(m_\gamma^2\) have
+also been translated from the source's mostly-minus convention.
 
 \SupplementaryExercise{5}{The Infrared Vertex Function}
   {(Inspired by Nicolai Lang, University of Stuttgart, QFT Problem Set 10.)}
@@ -95,25 +118,85 @@ each regulator controls.  Explain why an ultraviolet counterterm cannot
 remove a dependence on experimental soft resolution.
 \end{enumerate}
 
-\SupplementaryExercise{7}{Collinear Kinematics and Detector Resolution}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapter 26.)}
-  {srednicki-qft-infrared-ch13-curated-parent-1}
+\SupplementaryExercise{7}{Equivalent-Photon Approximation}
+  {(Adapted from John McGreevy, Physics 215B QFT, Winter 2025,
+  Assignment 6, Problem 6.)}
+  {mcgreevy-215b-w25-hw06-p6}
+Consider a process in which very-high-energy electrons scatter from a
+target.  At leading order in \(\alpha\), the electron line is connected to
+the rest of the diagram by a single photon propagator.  If the initial and
+final electron energies are \(E\) and \(E'\), the exchanged photon carries
+momentum \(q=p-p'\) with
+\[
+ q^2=2EE'(1-\cos\theta)
+\]
+when the electron mass \(m\ll E\) is neglected.  Here and below the signs
+have been translated to the mostly-plus convention, in which this
+spacelike \(q\) has \(q^2>0\).  In the forward limit \(\theta\to0\), the
+photon approaches its mass shell.  To what extent may it be treated as a
+real photon?
 \begin{enumerate}
 \item
-In massless six-dimensional \(\phi^3\) theory, let an energetic momentum
-\(P\) split into \(p=zP+k_\perp+\cdots\) and
-\(q=(1-z)P-k_\perp+\cdots\).  Use the on-shell conditions to find the
-virtuality of the parent and identify the collinear singular limit.
+The matrix element for the scattering process can be written as
+\[
+ \mathcal M=(-ie)\bar u(p')\gamma^\mu u(p)
+ \frac{-i\eta_{\mu\nu}}{q^2-i0}\,\widehat{\mathcal M}^{\nu}(q),
+\]
+where \(\widehat{\mathcal M}^{\nu}\) represents the coupling of the
+virtual photon to the target.  Let \(q=(q^0,\mathbf q)\) and define
+\(\widetilde q=(q^0,-\mathbf q)\).  Parametrize the electron current as
+\[
+ \bar u(p')\gamma^\mu u(p)
+ =Aq^\mu+B\widetilde q^\mu+C\epsilon_1^\mu+D\epsilon_2^\mu,
+\]
+where \(\epsilon_\alpha\) are unit spacelike vectors transverse to
+\(\mathbf q\), with \(\epsilon_\alpha^0=0\).  Show, by contracting with
+\(q\), that \(B\) is at most of order \(\theta^2\), and hence may be
+ignored at leading order about forward scattering.  Why is the coefficient
+\(A\) irrelevant?
 \item
-Factorize the phase space for a nearly collinear massless pair in six
-space-time dimensions.  Determine the powers of \(k_\perp\) and \(z(1-z)\),
-and combine them with the squared splitting propagator to show that the
-transverse integral is logarithmic.
+Work in the frame \(p=(E,0,0,E)\), and compute
+\[
+ \bar u(p')\gamma\cdot\epsilon_\alpha u(p)
+\]
+explicitly for massless electrons in states of definite helicity.  The
+vectors \(\epsilon_{\alpha=\parallel,\perp}\) are respectively parallel
+and perpendicular to the scattering plane.  Keep terms through order
+\(\theta\).  Note that the small \(\widehat{\mathbf 3}\) component of
+\(\epsilon_\parallel\) matters.  For definiteness one may take
+\(p'=(E',E'\sin\theta,0,E'\cos\theta)\).
 \item
-Model a detector that merges two massless particles whenever their invariant
-mass is below \(s_{\rm res}\).  Translate this criterion into a bound on
-\(k_\perp^2\), and explain why the exclusive one-particle probability is
-not infrared safe while the merged probability can be.
+Write the electron--target cross section in terms of
+\(\lvert\widehat{\mathcal M}^\mu\rvert^2\) and the target phase-space
+integral.  This expression must be integrated over the final electron
+momentum \(\mathbf p'\); the integral over \(p'^3\) is an integral over
+the electron's energy loss.  Show that the integral over
+\(\mathbf p'_\perp\) diverges logarithmically as
+\(\mathbf p'_\perp\), or equivalently \(\theta\), tends to zero.
+\item
+The electron mass regulates the divergence that was exposed after setting
+\(m=0\).  Reintroduce it in the mostly-plus form of the source's supplied
+relation,
+\[
+ q^2=2(EE'-pp'\cos\theta)-2m^2,
+ \qquad p=\lvert\mathbf p\rvert,\quad
+ p'=\lvert\mathbf p'\rvert,
+\]
+and show that the forward divergence is replaced by a factor
+\(\ln(s/m^2)\).
+\item
+Assemble all factors.  Assuming that the target cross sections are
+independent of photon polarization, show that the leading part of the
+electron--target cross section is obtained by treating the electron as a
+source of real photons with energy distribution
+\[
+ N_\gamma(x)\,dx
+ =\frac{dx}{x}\frac{\alpha}{2\pi}
+ \bigl[1+(1-x)^2\bigr]\ln\!\left(\frac{s}{m^2}\right),
+ \qquad x\equiv\frac{E_\gamma}{E}.
+\]
+This is the Weisz\"acker--Williams equivalent-photon approximation, a
+precursor of the theory of jets and partons in QCD.
 \end{enumerate}
 
 \SupplementaryExercise{8}{Collinear Logarithms and KLN Safety}
@@ -208,31 +291,73 @@ momentum, charge, and \(\eta\) signs and prove that its contribution to the
 soft factor is unchanged under the all-outgoing convention.
 \end{enumerate}
 
-\SupplementaryExercise{12}{Large-Gauge Ward Identities and Electromagnetic Memory}
-  {(Inspired by Andrew Strominger, Lectures on the Infrared Structure of Gravity and Gauge Theory.)}
-  {strominger-infrared-lectures-2017-ch13-curated-parent-2}
+\SupplementaryExercise{12}{Soft Gravitons?}
+  {(Adapted from John McGreevy, Physics 215B QFT, Winter 2025,
+  Assignment 6, Problem 5.)}
+  {mcgreevy-215b-w25-hw06-p5}
+Photons are massless, so measured cross sections include soft photons that
+the detector does not resolve; omitting them gives infrared-divergent
+nonsense.  Gravitons are also massless.  Must they be treated in the same
+way?  The following connected parts sketch how to answer this question.
 \begin{enumerate}
 \item
-Split a large-gauge charge into hard and soft pieces,
-\(Q_\varepsilon=Q_\varepsilon^{H}+Q_\varepsilon^{S}\).  Insert
-\(\OutBra{\beta}(Q_\varepsilon^+S-SQ_\varepsilon^-)\InKet{\alpha}=0\)
-and show how the soft-charge matrix element reproduces the leading
-soft-photon theorem.
-\item
-Show that a radiative field with Fourier behavior
-\(\widetilde A(\omega)=C/(\omega+i0)+O(\omega^0)\) has a step between early
-and late retarded times.  Relate the step coefficient to the soft factor
-and identify the corresponding electromagnetic memory.
-\item
-For specified massive external momenta and charges, derive
+Consider the schematic gauge-fixed action
 \[
- \frac{dN}{d\omega\,d\Omega}
- =\frac1{2(2\pi)^3\omega}
- \sum_\lambda\left|
- \sum_k\eta_ke_k\frac{p_k\cdot\epsilon_\lambda}{p_k\cdot\widehat q}
- \right|^2 .
+ S_0[h_{\mu\nu}]=\int d^4x\,\frac12h_{\mu\nu}\Box h^{\mu\nu}.
 \]
-Show that it is nonnegative and invariant under
-\(\epsilon_\lambda\to\epsilon_\lambda+c_\lambda q\).
+This is a kinetic term for too many polarizations of a symmetric tensor
+\(h_{\mu\nu}=h_{\nu\mu}\), regarded as a small fluctuation of the metric,
+\(g_{\mu\nu}\simeq\eta_{\mu\nu}+h_{\mu\nu}\).  As with the photon, rely
+on the coupling to matter to prevent the production of unphysical
+polarizations.  Write the propagator for \(h\), continuing to raise and
+lower indices with \(\eta_{\mu\nu}\).\footnote{The source gives two
+warnings.  First, the Einstein--Hilbert term is schematically
+\(\int d^4x\,(8\pi G_N)^{-1}\sqrt{|g|}R
+=\int d^4x\,(8\pi G_N)^{-1}(\partial h)^2+\cdots\): it contains a factor
+of \(G_N^{-1}\).  Since \(R\) has dimensions of inverse length squared and
+\(g\) is dimensionless, \(G_N\) has dimensions of length squared, with
+\(8\pi G_N=M_{\mathrm{Pl}}^{-2}\).  A factor of \(\sqrt{G_N}\) has been
+absorbed into \(h\) so that its kinetic term has unit coefficient.
+Second, \((\partial h)^2\) suppresses several index contractions, and de
+Donder gauge fixing is needed to obtain the simple expression above.  The
+field denoted by \(h_{\mu\nu}\) here is actually the trace-reversed field
+\(\bar h_{\mu\nu}=h_{\mu\nu}-\tfrac12h\eta_{\mu\nu}\), with
+\(h=\eta^{\mu\nu}h_{\mu\nu}\); the source deliberately drops the bar.
+Details, which are not needed here, are in
+\href{https://mcgreevy.physics.ucsd.edu/f13/225A-lectures.pdf}{Chapter 10
+of McGreevy's GR notes}.}
+\item
+Couple the graviton to the electron field through
+\[
+ S_G=\int d^4x\,G h^{\mu\nu}T_{\mu\nu},
+ \qquad
+ T_{\mu\nu}\equiv
+ \bar\psi(\gamma_\mu\partial_\nu+\gamma_\nu\partial_\mu)\psi.
+\]
+What is the engineering dimension of \(G\)?  What is the new Feynman rule?
+\item
+Draw the tree-level diagrams for production of gravitational radiation
+when an electron is accelerated by absorbing a photon,
+\(e\gamma\to eh\).  Evaluate them if desired, and estimate or calculate
+the cross section.  Hint: use dimensional analysis.
+\item
+Study the one-loop diagram in which a graviton corrects the QED vertex.
+Is it infrared divergent?  If not, why not?
+\item
+If the preceding part is troublesome, replace the graviton by a massless
+scalar \(\pi(x)\).  Compare derivative coupling
+\(\lambda\,\partial_\mu\pi\,\bar\psi\gamma^\mu\psi\) with direct Yukawa
+coupling \(y\pi\bar\psi\psi\).  Warning: although this example resembles
+the graviton case, its conclusion is different.
+\item
+Much of the coupling of gravity to matter is fixed by coordinate
+invariance, which plays a role analogous to QED gauge invariance.  On the
+small fluctuation the infinitesimal transformation is
+\[
+ h_{\mu\nu}(x)\longrightarrow h_{\mu\nu}(x)
+ +\partial_\mu\lambda_\nu(x)+\partial_\nu\lambda_\mu(x).
+\]
+What condition does invariance impose on the \(T_{\mu\nu}\) appearing in
+the coupling above?
 \end{enumerate}
 \end{enumerate}

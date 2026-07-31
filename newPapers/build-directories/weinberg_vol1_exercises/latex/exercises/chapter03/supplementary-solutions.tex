@@ -79,6 +79,13 @@ Applying the wave operators gives
 These are identities on the corresponding two-particle asymptotic
 subspaces.  Asymptotic completeness asserts that the sum over every
 open particle-number channel supplies the full scattering projector.
+For a general multiparticle state the divisor is
+\[
+ S(n)=\prod_a N_a!,
+\]
+where \(N_a\) is the number of identical particles of species and
+polarization type \(a\).  It removes the permutations already generated
+by the creation-operator algebra.
 
 \SupplementarySolution{3}{Invariant Flux, Two-Body Phase Space, and Decay Widths}
 \begin{enumerate}
@@ -220,6 +227,11 @@ Continuity gives \(t=1+r\), while
  r=\frac{-i\lambda}{1+i\lambda}.
 \]
 Reflection symmetry gives the right-incident solution by \(x\mapsto-x\).
+For this real, time-reversal-invariant potential, complex conjugating the
+two incoming eigenfunctions gives the corresponding outgoing basis.
+Thus all four boundary-condition states solve the full stationary
+Schr\"odinger equation; neither a lone left-incident state nor free plane
+waves form a complete scattering basis.
 In the basis of incoming waves from the left and right,
 \[
  S=\begin{pmatrix}t&r\\ r&t\end{pmatrix}.
@@ -274,7 +286,7 @@ Choose
  p_3=\frac E2(1,\sin\theta,0,\cos\theta),
 \]
 with \(p_4\) opposite to \(p_3\) and \(E=E_{\rm cm}\).  In the definitions
-of S.3.11,
+of S.3.7,
 \[
  s=E^2,\qquad
  t=-\frac{E^2}{2}(1-\cos\theta),\qquad
@@ -290,6 +302,12 @@ and \(t+u=-s\).
 \SupplementarySolution{8}{Yukawa Decay, Exchange, and Heavy-Field Matching}
 \begin{enumerate}
 \item
+The supplied mostly-plus rules are
+\[
+ D_\phi(p)=\frac{-i}{p^2+M^2-i0},\qquad
+ D_\psi(p)=\frac{-i}{p^2+m^2-i0},\qquad
+ V_{\phi\psi\psi^*}=-ig.
+\]
 The vertex gives the covariant invariant amplitude
 \(\mathcal M=-g\), so \(|\mathcal M|^2=g^2\).  In the rest frame of
 \(\phi\),
@@ -325,7 +343,7 @@ a local four-field interaction.
 Write \(X=\psi^*\psi\).  At momenta small compared with \(M\), the heavy
 field equation is
 \[
- (\Box+M^2)\phi=-gX,\qquad
+ (\Box-M^2)\phi=gX,\qquad
  \phi=-\frac g{M^2}X+O(M^{-4}\Box X).
 \]
 Substitution into the mass and interaction terms gives
@@ -374,7 +392,7 @@ Choose \(\Phi_N=v+\sigma\), \(\Phi_a=\pi_a\),
 \item
 With \(\pi^2=\pi_a\pi_a\), the expanded theory is
 \[
- \mathcal L=\frac12(\partial\sigma)^2+\frac12(\partial\pi_a)^2
+ \mathcal L=-\frac12(\partial\sigma)^2-\frac12(\partial\pi_a)^2
  -\mu^2\sigma^2-\lambda v\sigma^3-\frac{\lambda}{4}\sigma^4
  -\lambda v\sigma\pi^2-\frac{\lambda}{2}\sigma^2\pi^2
  -\frac{\lambda}{4}(\pi^2)^2+\frac{\mu^4}{4\lambda}.
@@ -383,7 +401,8 @@ Thus \(m_\sigma^2=2\mu^2\) and \(m_\pi^2=0\), and the displayed
 coefficients exhaust the cubic and quartic interactions.
 \item
 The \(\sigma\) and pion propagators are
-\(i/(p^2-m_\sigma^2+i0)\) and \(i\delta_{ab}/(p^2+i0)\).  The
+\(-i/(p^2+m_\sigma^2-i0)\) and
+\(-i\delta_{ab}/(p^2-i0)\).  The
 \(\sigma^3,\sigma^4,\pi_a\pi_b\sigma,\pi_a\pi_b\sigma\sigma\) rules are
 \[
  -6i\lambda v,\quad-6i\lambda,\quad
@@ -410,8 +429,12 @@ Using \(2\lambda v^2=m_\sigma^2\), contact and pole terms combine into
  +\delta_{il}\delta_{jk}\frac{u}{u-m_\sigma^2}\right].
 \]
 \item
-For massless external pions, one soft on-shell momentum sends
-\(s,t,u\) to zero, so every term in the last expression vanishes.
+At vanishing external spatial momenta the pions are massless, so every
+external four-momentum tends to zero and hence \(s,t,u\to0\); the
+amplitude vanishes.  More strongly, taking only one external pion soft
+on shell also sends the three channel invariants multiplying its possible
+flavor tensors to zero.  Every term in the last expression therefore
+vanishes, which is the Adler zero.
 \item
 The shifted vacuum \(v_a\) obeys
 \[
@@ -436,10 +459,10 @@ each vertex forms the internal line.  Taking all six external momenta
 \(k_a\) incoming, a chosen split \(A\cup A^c\), \(|A|=3\), contributes
 \[
  i\mathcal M_A=(-i\lambda)^2
- \frac{i}{q_A^2-m^2+i0},\qquad
+ \frac{-i}{q_A^2+m^2-i0},\qquad
  q_A=\sum_{a\in A}k_a
 \]
-in the mostly-minus propagator convention.  The replacement
+in the volume's mostly-plus convention.  The replacement
 \(A\leftrightarrow A^c\) describes the same graph, so the number of
 distinct labeled trees is
 \[
@@ -449,10 +472,21 @@ The Dyson \(1/2!\) is cancelled by interchanging the two vertices, and
 the \(4!\) factors are cancelled by their Wick contractions.
 
 \SupplementarySolution{11}{Exponentiation of Vacuum Bubbles}
-Let \(C_1\) be the sum of connected one-vertex vacuum bubbles, including
-their integrals and symmetry factors, and \(C_2\) the connected
-two-vertex contribution.  Wick's theorem organizes the vacuum amplitude
-as
+At one vertex the three pairings of four fields give the
+double-tadpole with symmetry factor \(8\).  At two vertices, \(4!=24\)
+contractions join all four legs between the vertices, giving the
+four-line basketball with symmetry factor \(48\).  Choosing two legs at
+each vertex and pairing them across gives
+\(\binom42^2 2!=72\) contractions; the remaining two legs at each vertex
+self-contract, so this connected topology has symmetry factor \(16\).
+Finally, the \(3^2=9\) contractions that self-pair both vertices form a
+disconnected pair of one-vertex bubbles.
+
+Let \(C_1\) denote the connected one-vertex contribution and \(C_2\) the
+sum of the two connected two-vertex topologies, including their integrals
+and the symmetry factors just found.  The Dyson \(1/2!\) makes the
+disconnected \(9\)-contraction term exactly \(\frac12C_1^2\).
+Wick's theorem therefore organizes the vacuum amplitude as
 \[
  \braket{0}{S|0}
  =1+C_1+\left(C_2+\frac12C_1^2\right)+O(\lambda^3).
@@ -478,7 +512,7 @@ The canonical commutator is diagonal in flavor, so
 \]
 \item
 An internal scalar line therefore carries
-\(i\delta_{ij}/(p^2-m^2+i0)\).
+\(-i\delta_{ij}/(p^2+m^2-i0)\).
 An invariant rank-four tensor with the required Bose symmetries is a
 multiple of
 \[
@@ -572,6 +606,30 @@ common distribution as
  \widehat g(\omega)=\pi\delta(\omega-\omega_0)
  +i\,\operatorname{P.V.}\frac1{\omega-\omega_0}.
 \]
+\item
+Fix the Gaussian in the question and put
+\(\Delta=\omega_1-\omega_0\).  Let
+\[
+ T_\epsilon=\epsilon^{-1},\qquad w_\epsilon=\epsilon^3,\qquad
+ A_\epsilon=w_\epsilon^{-1}
+ \exp\!\left(\frac{\sigma^2T_\epsilon^2}{2}-i\Delta T_\epsilon\right),
+\]
+and define
+\[
+ g_\epsilon(t)=g(t)\left[
+ 1+A_\epsilon\,
+ \mathbf 1_{[T_\epsilon,T_\epsilon+w_\epsilon]}(t)\right].
+\]
+For every fixed \(t\), the moving interval eventually lies to its right,
+so \(g_\epsilon(t)\to g(t)\).  The extra pulse is not uniformly
+dominated.  Its Gaussian pairing is
+\[
+ A_\epsilon\int_{T_\epsilon}^{T_\epsilon+w_\epsilon}
+ dt\,e^{i\Delta t-\sigma^2t^2/2}=1+o(1).
+\]
+Thus this regulator adds a nonzero constant to the limiting functional,
+even though it converges pointwise.  This exhibits why a domination
+hypothesis, not pointwise convergence alone, is needed.
 \end{enumerate}
 
 \SupplementarySolution{15}{Partial-Wave Unitarity and Cross-Section Bounds}

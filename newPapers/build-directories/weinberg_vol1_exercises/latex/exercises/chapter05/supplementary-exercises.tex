@@ -47,142 +47,407 @@ Lorentz transformation law.
   {(Adapted from H. Liu, MIT 8.323, Assignment 2, 2023, Problem 4.)}
   {mit-823-s23-ps2-curated-parent-3}
 \begin{enumerate}
-\item Verify that the free real-scalar action is Lorentz invariant and
-that \(\phi'(x')=\phi(x)\); derive the corresponding field equation.
-\item Find the canonical momentum, Hamiltonian density, and conserved
-four-momentum, and express the latter in oscillator variables.
-\item Derive
-\(M^{\rho\mu\nu}=x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu}\), prove its
-conservation, and put \(M^{0i}\) and \(M^{ij}\) in momentum space.
-Show from their action on creation operators that scalar quanta have no
-intrinsic spin.
+\item
+For an infinitesimal transformation
+\(\Lambda^\mu{}_\nu=\delta^\mu{}_\nu+\omega^\mu{}_\nu\), with
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\), verify directly to first order
+that
+\[
+ \Lambda^\mu{}_\rho\Lambda^\nu{}_\lambda\eta^{\rho\lambda}
+ =\eta^{\mu\nu}.
+\]
+\item
+Use \(\phi'(x')=\phi(x)\) for a real scalar to derive the Lorentz
+Noether current
+\[
+ M^{\rho\mu\nu}
+ =x^\mu T^{\rho\nu}-x^\nu T^{\rho\mu}.
+\]
+This part should follow from the transformation law and Noether's
+theorem without a long component calculation.
+\item
+Using symmetry and conservation of \(T^{\mu\nu}\), verify
+\(\partial_\rho M^{\rho\mu\nu}=0\).
+\item
+For the free scalar theory
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac12m^2\phi^2,
+\]
+write all six charges
+\[
+ M^{\mu\nu}=\int d^3x\,M^{0\mu\nu}
+\]
+in terms of \(a(\mathbf p)\) and \(a^\dagger(\mathbf p)\).  This final,
+calculation-heavy part is optional in the source assignment.
 \end{enumerate}
 
 \SupplementaryExercise{4}{The Lorentz Algebra in the Vector Representation}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 2, 2022, Problem 1.)}
   {zhou-stanford-phys330-ps2-2022-curated-parent-1}
-Construct the \(4\times4\) generators \(J_i\) and \(K_i\) acting on
-four-vectors and verify
+\begin{enumerate}
+\item
+Starting from preservation of inner products under
+\(x'^\mu=\Lambda^\mu{}_\nu x^\nu\), prove
+\[
+ \eta_{\mu\nu}
+ =\eta_{\rho\sigma}\Lambda^\rho{}_\mu\Lambda^\sigma{}_\nu.
+\]
+\item
+For \(\Lambda^\mu{}_\nu
+=\delta^\mu{}_\nu+\varepsilon\omega^\mu{}_\nu\), prove
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\).  Explain why proper,
+orthochronous Lorentz transformations can be built from such
+infinitesimal transformations.
+\item
+Write the \(4\times4\) matrix \(iJ_3\) for an infinitesimal rotation
+\(\varepsilon=d\theta\) about the 3-axis, and identify the exponential
+that gives a finite rotation through \(\theta\).
+\item
+Write the matrix \(iK_1\) for an infinitesimal boost
+\(\varepsilon=dv\) along the 1-axis.  Express the finite boost of
+velocity \(v\) as an exponential of \(K_1\).
+\item
+Define the remaining generators analogously.  The Lorentz algebra is
 \[
  [J_i,J_j]=i\epsilon_{ijk}J_k,\quad
  [J_i,K_j]=i\epsilon_{ijk}K_k,\quad
  [K_i,K_j]=-i\epsilon_{ijk}J_k.
 \]
-Explain the minus sign in the last commutator.  Then exponentiate one
-rotation and one boost, checking directly that both finite matrices preserve
-the Minkowski metric.
+Verify these relations explicitly for \((i,j)=(1,1)\) and
+\((i,j)=(1,2)\); the remaining cases follow in the same way.  Interpret
+the first two commutators as the vector transformation laws for angular
+velocity and velocity, and the third as the possibility of obtaining a
+rotation by composing non-collinear boosts.
+\end{enumerate}
 
-\SupplementaryExercise{5}{Charged-Scalar Quantization, Charge, Energy, and Locality}
+\SupplementaryExercise{5}{Quantization and Noether Charges of a Complex Scalar}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 2, 2022, Problem 2.)}
   {zhou-stanford-phys330-ps2-2022-curated-parent-2}
+Consider
+\[
+ \mathcal L=-\partial_\mu\Phi^\dagger\partial^\mu\Phi
+ -m^2\Phi^\dagger\Phi,
+\qquad E_{\mathbf k}=\sqrt{\mathbf k^2+m^2}.
+\]
+At \(t=0\), use
+\[
+\begin{split}
+\Phi(\mathbf x)&=\int\frac{d^3k}{(2\pi)^3\sqrt{2E_{\mathbf k}}}
+\left[a(\mathbf k)e^{i\mathbf k\cdot\mathbf x}
++b^\dagger(\mathbf k)e^{-i\mathbf k\cdot\mathbf x}\right],\\
+\Phi^\dagger(\mathbf x)&=\int\frac{d^3k}{(2\pi)^3\sqrt{2E_{\mathbf k}}}
+\left[b(\mathbf k)e^{i\mathbf k\cdot\mathbf x}
++a^\dagger(\mathbf k)e^{-i\mathbf k\cdot\mathbf x}\right],\\
+\Pi_\Phi(\mathbf x)&=-i\int\frac{d^3k}{(2\pi)^3}
+\sqrt{\frac{E_{\mathbf k}}2}
+\left[b(\mathbf k)e^{i\mathbf k\cdot\mathbf x}
+-a^\dagger(\mathbf k)e^{-i\mathbf k\cdot\mathbf x}\right],\\
+\Pi_{\Phi^\dagger}(\mathbf x)&=-i\int\frac{d^3k}{(2\pi)^3}
+\sqrt{\frac{E_{\mathbf k}}2}
+\left[a(\mathbf k)e^{i\mathbf k\cdot\mathbf x}
+-b^\dagger(\mathbf k)e^{-i\mathbf k\cdot\mathbf x}\right].
+\end{split}
+\]
+Quantize with
+\[
+ [\Phi(\mathbf x),\Pi_\Phi(\mathbf y)]
+ =[\Phi^\dagger(\mathbf x),\Pi_{\Phi^\dagger}(\mathbf y)]
+ =i\delta^3(\mathbf x-\mathbf y),
+\]
+all other canonical commutators being zero.  The vacuum obeys
+\(a(\mathbf k)\ket0=b(\mathbf k)\ket0=0\).  As in the source
+assignment, parallel calculations need not be repeated once the common
+argument has been made explicit.
 \begin{enumerate}
-\item Derive the complex scalar equation of motion and canonical
-momenta, treating \(\Phi\) and \(\Phi^\dagger\) as independent fields.
-\item Quantize the field and show that two commuting oscillator families
-\(a(\mathbf p)\), \(b(\mathbf p)\) are required.
-\item Derive the Hamiltonian before and after normal ordering, and show
-that both species have positive energy.
-\item Derive the global \(U(1)\) current and charge.
-\item Put the normal-ordered charge in oscillator form and determine the
-charges of the \(a^\dagger\)- and \(b^\dagger\)-states.
-\item Compute the four-momentum and verify that both species have the
-same positive mass shell despite opposite charge.
-\item Calculate \([\Phi(x),\Phi(y)]\) and
-\([\Phi(x),\Phi^\dagger(y)]\), proving microcausality.
+\item
+Derive the commutators of \(a,a^\dagger,b,b^\dagger\), including the
+vanishing mixed commutators.
+\item
+For
+\(\Phi\to e^{i\alpha}\Phi\),
+\(\Phi^\dagger\to e^{-i\alpha}\Phi^\dagger\), derive the Noether current
+and conserved charge \(Q\).
+\item
+Normal order \(Q\), impose \(Q\ket0=0\), and find the charge of
+\(a^\dagger(\mathbf k)\ket0\),
+\(b^\dagger(\mathbf k)\ket0\), and
+\(a^\dagger(\mathbf k_1)a^\dagger(\mathbf k_2)\ket0\).
+\item
+Prove
+\[
+ e^{i\alpha Q}\Phi(x)e^{-i\alpha Q}=e^{i\alpha}\Phi(x),
+ \qquad
+ e^{i\alpha Q}\Phi^\dagger(x)e^{-i\alpha Q}
+ =e^{-i\alpha}\Phi^\dagger(x),
+\]
+first by deriving the infinitesimal commutators with \(Q\).
+\item
+Use Noether's theorem to derive \(T^{\mu\nu}\) and
+\(P^\mu=\int d^3x\,T^{0\mu}\).
+\item
+Normal order \(H=P^0\) and \(\mathbf P\) in oscillator variables, set
+\(P^\mu\ket0=0\), and find the four-momentum of the three states in
+part (c).
+\item
+Show
+\[
+ e^{ia\cdot P}\Phi(x)e^{-ia\cdot P}=\Phi(x-a),
+ \qquad
+ [P^i,\Phi(x)]=i\partial^i\Phi(x),
+\]
+and verify the commutator from the oscillator expression for
+\(\mathbf P\).
 \end{enumerate}
 
 \SupplementaryExercise{6}{Boost Charges on Scalar Creation Operators}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 2, 2022, Problem 3.)}
   {zhou-stanford-phys330-ps2-2022-curated-parent-3}
+Under a Lorentz transformation, a scalar profile obeys
+\[
+ \phi'(x')=\phi(x),\qquad
+ \phi'(x)=\phi(\Lambda^{-1}x).
+\]
+For
+\(\Lambda^\mu{}_\nu
+=\delta^\mu{}_\nu+\varepsilon\omega^\mu{}_\nu\), this gives, through
+first order,
+\[
+ \phi'(x)=\phi(x)-\varepsilon\omega^\mu{}_\nu
+ x^\nu\partial_\mu\phi(x).
+\]
+Work with a real scalar field.  Equivalently, one may obtain the same
+real field by identifying the two oscillator families in a
+complex-scalar mode expansion,
+\(a(\mathbf k)=b(\mathbf k)\).
 \begin{enumerate}
-\item Derive the Lorentz Noether current of a real scalar and prove its
-conservation.
-\item Explain geometrically and algebraically why \(M^{0i}\) generates a
-boost.  Put it in momentum space, including the measure term needed for
-Hermiticity, and check its commutator with a creation operator.
-\item Put \(M^{ij}\) in oscillator form and show that it is purely orbital,
-so a one-particle scalar carries spin zero.
+\item
+For a real scalar, derive
+\[
+ M^{\mu\nu\rho}=x^\nu T^{\mu\rho}-x^\rho T^{\mu\nu}
+\]
+and the associated charges \(M^{\nu\rho}\).
+\item
+The six antisymmetric charges split into \(M^{ij}\) and \(M^{0i}\).
+Explain the physical meaning of the three \(M^{0i}\).
+\item
+After normal ordering, prove
+\[
+ M^{ij}=i\int\frac{d^3k}{(2\pi)^3}\,
+ a^\dagger(\mathbf k)
+ \left(k^j\frac{\partial}{\partial k_i}
+ -k^i\frac{\partial}{\partial k_j}\right)a(\mathbf k),
+\]
+and explain why this shows that scalar quanta have no intrinsic angular
+momentum.
 \end{enumerate}
 
-\SupplementaryExercise{7}{Representation-Independent Gamma Traces}
+\SupplementaryExercise{7}{Representation-Independent Clifford Identities}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 3.)}
   {tong-qft-sheet3-2006-curated-parent-1}
-Work in four dimensions using only the Clifford algebra and
-\(\operatorname{tr}\mathbf1=4\).  Without choosing a representation,
-derive the following fourteen consequences:
+Work in four dimensions with
+\[
+ \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},\qquad
+ \gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3,\qquad
+ \slashed p=p_\mu\gamma^\mu,\qquad
+ S^{\mu\nu}=\frac14[\gamma^\mu,\gamma^\nu].
+\]
+Useful methods include cyclicity of the trace and inserting
+\(\gamma_5^2=\mathbf1\) into a trace.
+Without choosing a representation, prove:
 \begin{enumerate}
-\item \(\gamma^\mu\gamma_\mu=4\);
-\item \(\gamma^\mu\gamma^\nu\gamma_\mu=-2\gamma^\nu\);
-\item \(\gamma^\mu\gamma^\nu\gamma^\rho\gamma_\mu=4\eta^{\nu\rho}\);
-\item
-\(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_\mu
-=-2\gamma^\sigma\gamma^\rho\gamma^\nu\);
 \item \(\operatorname{tr}\gamma^\mu=0\);
-\item the trace of every odd product of ordinary gamma matrices vanishes;
 \item \(\operatorname{tr}(\gamma^\mu\gamma^\nu)=4\eta^{\mu\nu}\);
-\item the trace of four gamma matrices;
-\item \((\gamma^5)^2=1\);
-\item \(\{\gamma^5,\gamma^\mu\}=0\);
-\item \(\operatorname{tr}\gamma^5=0\);
+\item \(\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho)=0\);
+\item \(\gamma_5^2=1\);
+\item \(\operatorname{tr}\gamma_5=0\);
 \item
-\(\operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu)=0\);
+\(\slashed p\slashed q
+=2p\cdot q-\slashed q\slashed p
+=p\cdot q+2S^{\mu\nu}p_\mu q_\nu\);
+\item \(\operatorname{tr}(\slashed p\slashed q)=4p\cdot q\);
 \item
-\(\operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho)=0\);
+\(\operatorname{tr}(\slashed p_1\cdots\slashed p_n)=0\) for odd \(n\);
 \item
-\(\operatorname{tr}(\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho
-\gamma^\sigma)=4i\epsilon^{\mu\nu\rho\sigma}\), with the sign checked
-against the stated metric and \(\gamma^5\) convention.
+\[
+\operatorname{tr}(\slashed p_1\slashed p_2\slashed p_3\slashed p_4)
+=4\bigl[
+(p_1\cdot p_2)(p_3\cdot p_4)
++(p_1\cdot p_4)(p_2\cdot p_3)
+-(p_1\cdot p_3)(p_2\cdot p_4)\bigr];
+\]
+\item \(\operatorname{tr}(\gamma_5\slashed p\slashed q)=0\);
+\item \(\gamma_\mu\slashed p\gamma^\mu=-2\slashed p\);
+\item
+\(\gamma_\mu\slashed p_1\slashed p_2\gamma^\mu
+=4p_1\cdot p_2\);
+\item
+\(\gamma_\mu\slashed p_1\slashed p_2\slashed p_3\gamma^\mu
+=-2\slashed p_3\slashed p_2\slashed p_1\);
+\item
+\[
+\operatorname{tr}(\gamma_5
+\slashed p_1\slashed p_2\slashed p_3\slashed p_4)
+=-4i\epsilon^{\mu\nu\rho\sigma}
+p_{1\mu}p_{2\nu}p_{3\rho}p_{4\sigma}.
+\]
 \end{enumerate}
 
-\SupplementaryExercise{8}{Spinor Generators of Lorentz Transformations}
+\SupplementaryExercise{8}{The Clifford Representation of the Lorentz Algebra}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 2.)}
   {tong-qft-sheet3-2006-curated-parent-2}
-For an infinitesimal antisymmetric Lorentz parameter, define
-\(\mathcal J^{\mu\nu}=-\tfrac i4[\gamma^\mu,\gamma^\nu]\).
-Verify that these matrices obey the Lorentz Lie algebra and prove that
-\(D(\Lambda)^{-1}\gamma^\rho D(\Lambda)
-=\Lambda^\rho{}_\sigma\gamma^\sigma\) infinitesimally.  Keep every sign
-fixed by the mostly-plus metric rather than by an explicit matrix basis.
+Starting only from the Clifford algebra, prove
+\[
+\begin{split}
+[\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
+={}&2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
+-2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu\\
+&+2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
+-2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda.
+\end{split}
+\]
+Then show
+\[
+ S^{\mu\nu}\equiv\frac14[\gamma^\mu,\gamma^\nu]
+ =\frac12(\gamma^\mu\gamma^\nu-\eta^{\mu\nu}),
+\]
+and use the first identity to verify that \(S^{\mu\nu}\) furnish a
+spinor representation of the Lorentz Lie algebra.
 
 \SupplementaryExercise{9}{Dirac Spinor Norms and Orthogonality}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 4.)}
   {tong-qft-sheet3-2006-curated-parent-3}
-Begin with a normalized rest-frame spin basis and boost it to arbitrary
-on-shell momentum.  For positive- and negative-frequency Dirac spinors,
-derive their
-ordinary and Dirac-adjoint norms and the orthogonality relations.  State
-clearly which momentum reversal is needed for an ordinary Hermitian inner
-product and why it does not appear in the Dirac-adjoint relations.
+Use the local Weyl basis
+\[
+ \gamma^0=-i\begin{pmatrix}0&\mathbf1\\ \mathbf1&0\end{pmatrix},
+ \qquad
+ \gamma^i=-i\begin{pmatrix}0&\sigma^i\\-\sigma^i&0\end{pmatrix},
+ \qquad
+ \beta=i\gamma^0,
+\]
+and let \(\xi^s\), \(s=1,2\), be orthonormal two-component spinors.
+For \(p^0=E_{\mathbf p}>0\), define
+\[
+ p\cdot\sigma=E_{\mathbf p}\mathbf1-\mathbf p\cdot\boldsymbol\sigma,
+ \qquad
+ p\cdot\bar\sigma=E_{\mathbf p}\mathbf1+\mathbf p\cdot\boldsymbol\sigma,
+\]
+\[
+ u^s(\mathbf p)=
+ \begin{pmatrix}\sqrt{p\cdot\sigma}\,\xi^s\\
+ \sqrt{p\cdot\bar\sigma}\,\xi^s\end{pmatrix},
+ \qquad
+ v^s(\mathbf p)=
+ \begin{pmatrix}\sqrt{p\cdot\sigma}\,\xi^s\\
+ -\sqrt{p\cdot\bar\sigma}\,\xi^s\end{pmatrix}.
+\]
+Prove
+\[
+\begin{array}{rcl@{\qquad}rcl}
+u^r(\mathbf p)^\dagger u^s(\mathbf p)&=&2E_{\mathbf p}\delta^{rs},
+&\bar u^r(\mathbf p)u^s(\mathbf p)&=&2m\delta^{rs},\\
+v^r(\mathbf p)^\dagger v^s(\mathbf p)&=&2E_{\mathbf p}\delta^{rs},
+&\bar v^r(\mathbf p)v^s(\mathbf p)&=&-2m\delta^{rs}.
+\end{array}
+\]
+as well as
+\[
+ \bar u^s(\mathbf p)v^r(\mathbf p)=0,\qquad
+ u^r(\mathbf p)^\dagger v^s(-\mathbf p)=0.
+\]
 
 \SupplementaryExercise{10}{Completeness of Free Dirac Spinors}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 5.)}
   {tong-qft-sheet3-2006-curated-parent-4}
-Starting from the rest-frame basis and covariant normalization, derive the
-positive- and negative-frequency spin sums in the conventions of this volume.
-Show that they project onto the two on-shell eigenspaces of the Dirac
-operator, and fix their coefficients by taking traces and acting on the
-corresponding spinors.
+Using exactly the notation and normalization of S.5.9, prove the
+matrix identities
+\[
+ \sum_{s=1}^2u^s(\mathbf p)\bar u^s(\mathbf p)
+ =-i\slashed p+m,
+ \qquad
+ \sum_{s=1}^2v^s(\mathbf p)\bar v^s(\mathbf p)
+ =-i\slashed p-m.
+\]
+The spinors on each left-hand side are outer products, not contracted
+spinor indices.
 
 \SupplementaryExercise{11}{Equal-Time Dirac Anticommutators}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 6.)}
   {tong-qft-sheet3-2006-curated-parent-5}
-Keep the particle and antiparticle contributions separate until after the
-spin sums are inserted.  Use the free Dirac mode expansion to prove
+At fixed time, take
 \[
- \{\psi_\ell(\mathbf x,t),\psi_m^\dagger(\mathbf y,t)\}
+\begin{split}
+\psi(\mathbf x)
+={}&\sum_{s=1}^2\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
+\left[
+b^s_{\mathbf p}u^s(\mathbf p)e^{i\mathbf p\cdot\mathbf x}
++c_{\mathbf p}^{s\dagger}v^s(\mathbf p)e^{-i\mathbf p\cdot\mathbf x}
+\right],\\
+\psi^\dagger(\mathbf x)
+={}&\sum_{s=1}^2\int\frac{d^3p}{(2\pi)^3\sqrt{2E_{\mathbf p}}}
+\left[
+b_{\mathbf p}^{s\dagger}u^s(\mathbf p)^\dagger
+ e^{-i\mathbf p\cdot\mathbf x}
++c^s_{\mathbf p}v^s(\mathbf p)^\dagger
+ e^{i\mathbf p\cdot\mathbf x}
+\right].
+\end{split}
+\]
+Assume
+\[
+\{b^r_{\mathbf p},b_{\mathbf q}^{s\dagger}\}
+=\{c^r_{\mathbf p},c_{\mathbf q}^{s\dagger}\}
+=(2\pi)^3\delta^{rs}\delta^3(\mathbf p-\mathbf q),
+\]
+with every other oscillator anticommutator zero.  Prove
+\[
+\{\psi_\alpha(\mathbf x),\psi_\beta(\mathbf y)\}
+=\{\psi_\alpha^\dagger(\mathbf x),
+\psi_\beta^\dagger(\mathbf y)\}=0,
+\]
+\[
+ \{\psi_\ell(\mathbf x),\psi_m^\dagger(\mathbf y)\}
  =\delta_{\ell m}\delta^3(\mathbf x-\mathbf y),
 \]
-with the other equal-time anticommutators zero.  Show explicitly how the
-change of momentum variable makes the spatial derivative terms cancel.
+using the two completeness identities in S.5.10.
 
 \SupplementaryExercise{12}{What Fails with Bosonic Spinors}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 8.)}
   {tong-qft-sheet3-2006-curated-parent-6}
-Attempt to impose bosonic commutators on the Dirac mode expansion while
-simultaneously demanding a local equal-time field algebra, positive norms,
-and a Hamiltonian bounded below.  Show that one oscillator family must have
-the wrong sign, derive the normal-ordered Hamiltonian, and identify exactly
-which of the three requirements must fail.
+Use the mode expansion of S.5.11, but impose bosonic commutators
+\[
+[b^r_{\mathbf p},b_{\mathbf q}^{s\dagger}]
+=(2\pi)^3\delta^{rs}\delta^3(\mathbf p-\mathbf q),
+\qquad
+[c^r_{\mathbf p},c_{\mathbf q}^{s\dagger}]
+=-(2\pi)^3\delta^{rs}\delta^3(\mathbf p-\mathbf q),
+\]
+with all others zero.
+\begin{enumerate}
+\item
+Repeat S.5.11 and show
+\[
+[\psi_\alpha(\mathbf x),\psi_\beta(\mathbf y)]
+=[\psi_\alpha^\dagger(\mathbf x),
+\psi_\beta^\dagger(\mathbf y)]=0,
+\qquad
+[\psi_\alpha(\mathbf x),\psi_\beta^\dagger(\mathbf y)]
+=\delta_{\alpha\beta}\delta^3(\mathbf x-\mathbf y).
+\]
+\item
+Starting from
+\[
+ H=\int d^3x\,\bar\psi(\gamma^i\partial_i+m)\psi,
+\]
+normal order the Hamiltonian and prove
+\[
+ H=\int\frac{d^3p}{(2\pi)^3}E_{\mathbf p}
+ \sum_{s=1}^2
+ \left(b_{\mathbf p}^{s\dagger}b_{\mathbf p}^s
+ -c_{\mathbf p}^{s\dagger}c_{\mathbf p}^s\right).
+\]
+Explain why this bosonic spin-\(\tfrac12\) theory is inconsistent.
+\end{enumerate}
 
 \SupplementaryExercise{13}{Massive-Vector Constraints and Polarizations}
   {(Inspired by D. Tong, \emph{Lectures on Quantum Field Theory}, 2006, Section 6.1 | D. Tong, \emph{Lectures on Quantum Field Theory}, 2006, Sections 6.1--6.2.)}

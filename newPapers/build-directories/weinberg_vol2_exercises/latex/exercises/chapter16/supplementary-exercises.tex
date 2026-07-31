@@ -1,23 +1,69 @@
 \chapterbackmatter{Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementaryExercise{1}{Connected Graphs and the Quantum Action}
-  {Inspired by Ian Lim, Advanced Quantum Field Theory, Section 5 (2019).}
-  {lim-advanced-qft-2019-v2ch16-p01}
+  \SupplementaryExercise{1}{Integrating Out a Momentum Shell in \(\Phi^3\) Theory}
+  {Adapted from Cambridge Part III, Advanced Quantum Field Theory,
+  2024 Paper 304, Question 3.}
+  {cambridge-part-iii-aqft-2024-p304-q3-v2ch16-p01}
+  In \(d\)-dimensional Euclidean space consider
+  \[
+    S[\Phi]=\int d^dx\left[
+      \frac12\partial_\mu\Phi\,\partial^\mu\Phi+
+      \frac{g}{3!}\Phi^3\right],
+  \]
+  with Fourier modes restricted to \(|p|<\Lambda\).  Choose
+  \(0<b<1\) and split the momentum-space field as
+  \[
+    \widetilde\Phi(p)=
+    \begin{cases}
+      \widetilde\varphi(p),& |p|<b\Lambda,\\
+      \widetilde\chi(p),& b\Lambda<|p|<\Lambda.
+    \end{cases}
+  \]
   \begin{enumerate}
     \item[(a)]
-    Let \(Z[J]\) be the sum of all vacuum graphs in the presence of a source.
-    By decomposing each graph into connected components and accounting for
-    permutations of identical components, prove that
-    \(Z[J]=\exp(iW[J])\), where \(iW[J]\) is the sum of connected vacuum
-    graphs.  Explain why derivatives of \(W\), rather than \(Z\), generate
-    connected correlation functions.
+    Prove that \(\Phi(x)=\varphi(x)+\chi(x)\), where
+    \(\varphi\) and \(\chi\) are the inverse Fourier transforms of the two
+    fields displayed above.
     \item[(b)]
-    Differentiate the inverse-Hessian identity once with respect to the
-    current.  Express \(W_{,ijk}\) in terms of the full propagator and the
-    1PI three-point vertex, keeping the sign convention
-    \(W^{(2)}=-\Gamma^{(2)-1}\).  Draw or describe the corresponding tree
-    and include its external propagators.
+    Define the shell effective action by
+    \[
+      e^{-W[\varphi]}=\int\mathcal D\chi\,e^{-S[\varphi+\chi]}.
+    \]
+    Let
+    \[
+      Z_\chi[J]=\int\mathcal D\chi\,
+      \exp\left[-\frac12\int d^dx\,(\partial\chi)^2
+      -\int d^dx\,J\chi\right].
+    \]
+    Find \(S_{\rm int}[\varphi,\chi]\) and show that
+    \[
+      e^{-W[\varphi]}=
+      e^{-S[\varphi]}
+      \left.
+      \exp\!\left[-S_{\rm int}
+        \!\left(\varphi,-\frac{\delta}{\delta J}\right)\right]
+      Z_\chi[J]\right|_{J=0}.
+    \]
+    Explain how this expression organizes a perturbative expansion.
+    \item[(c)]
+    Suppose the local part of the effective action is written
+    \[
+      W[\varphi]=\int d^dx\left[
+        \frac12(\partial\varphi)^2+
+        \frac{g_{\rm eff}}{3!}\varphi^3+\cdots\right],
+    \]
+    where wavefunction rescaling and the omitted operators may be ignored.
+    Identify every diagram required for \(g_{\rm eff}\) through order
+    \(g^3\), evaluate the shell integral, and show in \(d=6\) that
+    \[
+      g_{\rm eff}=g+Cg^3\ln b+\cdots .
+    \]
+    Determine \(C\).
+
+    \emph{Hint.}  The area of the unit \((d-1)\)-sphere is
+    \(2\pi^{d/2}/\Gamma(d/2)\), and
+    \(\Gamma(n)=(n-1)!\) for positive integers \(n\).
   \end{enumerate}
 
   \SupplementaryExercise{2}{Convexity and Linear Symmetries of the Effective Action}

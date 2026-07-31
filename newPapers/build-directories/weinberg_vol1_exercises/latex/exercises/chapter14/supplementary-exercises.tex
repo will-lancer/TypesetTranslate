@@ -7,7 +7,7 @@
 \begin{enumerate}
 \item
 For a charge \(q\) in a static electromagnetic background, write a positive
-energy Dirac spinor as \(e^{-i(m+\varepsilon)t}(\varphi,\chi)^T\).
+energy Dirac spinor as \(e^{-i(m+\varepsilon)t}(\varphi,\chi)^{\mathsf T}\).
 Derive the coupled equations for \(\varphi\) and \(\chi\), solve for \(\chi\)
 through relative order \(1/m\), and obtain the leading nonrelativistic
 Hamiltonian for \(\varphi\).
@@ -53,7 +53,7 @@ assignments to predict the order of the fine-structure energy shift.
 \begin{enumerate}
 \item
 Let \(H(\lambda)\) have a normalized, nondegenerate eigenstate
-\(\lvert n(\lambda)\rangle\).  Derive the Feynman--Hellmann theorem by
+\(\ket{n(\lambda)}\).  Derive the Feynman--Hellmann theorem by
 differentiating the eigenvalue equation.  State what must be done inside a
 degenerate eigenspace.
 \item
@@ -130,93 +130,215 @@ coefficient and the induced one-photon width of \(2s\).  State the
 perturbative condition on the field.
 \end{enumerate}
 
-\SupplementaryExercise{7}{Atomic Scales and the Uehling Contact Interaction}
-  {(Inspired by Charles Thorn, QFT Problem Set 13 Solutions.)}
-  {thorn-qft-ps13-lamb-2019-ch14-curated-parent-1}
-\begin{enumerate}
-\item
-Use the Coulomb virial theorem to identify the momentum, radius, and binding
-energy scales of a hydrogenic atom.  Then show why a one-loop vacuum
-polarization produced by an electron of mass \(m_e\) can be expanded at
-small momentum transfer when \(Z\alpha\ll1\).
-\item
-Starting from the on-shell-subtracted one-loop representation
+\SupplementaryExercise{7}{Vacuum-Polarization Contribution to the Lamb Shift}
+  {(Adapted from Charles B. Thorn, Quantum Field Theory Problem Set 13, Problem 48.)}
+  {thorn-qft-ps13-2019-p48}
+After charge renormalization, the one-loop relation between the electric
+displacement and electric field, through first order in \(e^2\), is
 \[
- \Pi_R(-\mathbf q^2)=\frac{2\alpha}{\pi}\int_0^1dx\,x(1-x)
- \ln\!\left[1+\frac{x(1-x)\mathbf q^2}{m_e^2}\right],
+ \widetilde{\mathbf E}(k)=
+ \left[
+ 1+\frac{e^2}{2\pi^2}\int_0^1dx\,x(1-x)
+ \ln\!\left(1+x(1-x)\frac{\mathbf k^2}{m_e^2}\right)
+ \right]\widetilde{\mathbf D}(k).
 \]
-derive the leading term for \(|\mathbf q|\ll m_e\).
-\item
-Insert the result of part (b) into the Coulomb kernel
-\(-4\pi Z\alpha/\mathbf q^2\).  Fourier transform the leading correction
-and identify the corresponding local operator in the atomic Hamiltonian.
-\end{enumerate}
-
-\SupplementaryExercise{8}{Vacuum-Polarization Shifts of Hydrogenic Levels}
-  {(Inspired by Charles Thorn, QFT Problem Set 13 Solutions.)}
-  {thorn-qft-ps13-lamb-2019-ch14-curated-parent-2}
+Consequently the potential energy of the electron in hydrogen is
+modified from its lowest-order value \(-e^2/(4\pi r)\).  Calculate this
+modification in lowest-order nonrelativistic perturbation theory.
 \begin{enumerate}
 \item
-Evaluate the first-order shift produced by \(C\delta^3(\mathbf r)\) in a
-hydrogenic \(n\ell m\) state.  Prove that it vanishes for \(\ell>0\), and
-derive \(|\psi_{ns}(0)|^2\) including its \(n\) dependence.
+Explain why the momentum transfers obey
+\(\mathbf k^2/m_e^2\ll1\) and
+\((k^0)^2\ll\mathbf k^2\).
 \item
-Combine the low-momentum polarization and contact interaction from
-S.14.7(b)--(c) with S.14.8(a) to calculate the leading electronic
-vacuum-polarization shift of a hydrogenic \(ns\) level.  Determine its
-dependence on \(Z\), \(\alpha\), \(m_e\), and \(n\), and compare its
-parametric order with the electron self-energy Lamb shift.
+Use those estimates to expand the logarithm and evaluate the parameter
+integral.  Show that the additional potential has the form
+\[
+ \delta V(\mathbf r)=-V_1\delta^3(\mathbf r)
+\]
+and determine \(V_1\).
 \item
-Specialize part (b) to hydrogen \(2s\).  Determine the sign from
-charge screening, estimate the answer in MHz, and explain why this
-contribution is much smaller than the observed \(2s_{1/2}-2p_{1/2}\)
-splitting.
+Explain why this perturbation affects only \(s\)-levels
+\((\ell=0)\).
+\item
+Calculate the energy shift of the hydrogen \(2s\) state in
+electron-volts.  Natural units have been used above; restore
+\(\hbar\) and \(c\) at a convenient late stage to check the dimensions.
 \end{enumerate}
 
-\SupplementaryExercise{9}{Bound-State Poles, Self-Energies, and Feshbach Projection}
-  {(Inspired by V. Antonelli et al., Effective Lagrangians in Bound State Calculations.)}
-  {antonelli-et-al-bound-state-eft-2000-ch14-curated-parent-1}
+\SupplementaryExercise{8}{The Magnetic Moment of a Dirac Fermion}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 10, Problem 5.)}
+  {mcgreevy-215a-f23-hw10-p5}
+Consider the interaction Hamiltonian density
+\[
+ \mathcal H_I=-iq\,\bar\Psi\gamma^\mu\Psi A_\mu,
+\]
+where the vector potential \(A_\mu\) is a fixed classical
+electromagnetic background.  The factor \(-i\) translates the source
+interaction to the volume's gamma-matrix convention.  Define
+one-particle states by
+\[
+ \bra{0}\Psi(x)\ket{\mathbf p,s}
+ =e^{-ip\cdot x}u_s(p).
+\]
+The goal is to show that, in the rest frame, the one-particle
+Hamiltonian contains a magnetic-dipole term proportional to
+\(\mathbf S\cdot\mathbf B\), where
+\(\mathbf S=\boldsymbol\sigma/2\).
 \begin{enumerate}
 \item
-For a charged field in a time-independent external potential, Fourier
-transform its two-point function only in the time difference.  Insert a
-complete set of exact energy eigenstates and show that a stable bound state
-produces a simple pole.  Determine the factorized residue.
+The charge \(q\) is real.  What condition on \(A_\mu\) is required for
+\[
+ H_I=\int d^3x\,\mathcal H_I
+\]
+to be Hermitian?
 \item
-Expand the Dyson equation to first order in a proper self-energy
-\(\Sigma(E)\) near a nondegenerate bound-state pole.  Show that the
-coefficient of the double pole determines the energy shift and give the
-corresponding expression for a degenerate multiplet.
+As a bonus, determine how \(A_\mu\) must transform under parity \(P\)
+and charge conjugation \(C\) for \(H_I\) to be invariant.  How do
+\(\mathbf E\) and \(\mathbf B\) transform?  Explain why these symmetries
+allow a magnetic dipole moment but forbid an electric dipole moment.
 \item
-Let \(P\) project onto one unperturbed bound state and \(Q=1-P\).  Starting
-from \(G(E)=(E-H_0-V)^{-1}\), eliminate the \(Q\) sector and derive the exact
-energy-dependent effective Hamiltonian in the \(P\) sector.  Expand it
-through third order in \(V\).
+Let
+\[
+ \gamma^{\mu\nu}\equiv\frac12[\gamma^\mu,\gamma^\nu].
+\]
+In the nonrelativistic limit, show that
+\[
+ \bar u(p')\gamma^{\mu\nu}u(p)F_{\mu\nu}
+ =a\,\xi'^\dagger\boldsymbol\sigma\cdot\mathbf B\,\xi
+\]
+and determine \(a\).  In a Weyl basis compatible with the volume
+conventions, use
+\[
+ u(p)\longrightarrow\sqrt{m_\Psi}\binom{\xi}{\xi},
+ \qquad
+ u(p')\longrightarrow\sqrt{m_\Psi}\binom{\xi'}{\xi'}.
+\]
+\item
+Take \(A_\mu\) to describe a magnetic field \(\mathbf B\) that is
+uniform in space and time.  Show in the nonrelativistic limit that
+\[
+ \bra{\mathbf p',s'}H_I\ket{\mathbf p,s}
+ =(2\pi)^3\delta^3(\mathbf p-\mathbf p')\,
+ h(\xi',\xi,\mathbf B)
+ +\text{terms independent of spin}.
+\]
+Find \(h\), using the Gordon identity if helpful.  Convert to
+one-particle states with nonrelativistic normalization and interpret
+the result as a gyromagnetic ratio \(g_{\rm mag}=2\).
+\item
+Optionally determine how the answer changes after adding
+\[
+ \Delta\mathcal H
+ =\frac{c}{M}\bar\Psi F_{\mu\nu}
+ [\gamma^\mu,\gamma^\nu]\Psi.
+\]
+Include the condition on \(c\) required for this Hamiltonian term to be
+Hermitian in the stated gamma-matrix convention.
 \end{enumerate}
 
-\SupplementaryExercise{10}{Bound-State EFT Power Counting and Matching}
-  {(Inspired by V. Antonelli et al., Effective Lagrangians in Bound State Calculations.)}
-  {antonelli-et-al-bound-state-eft-2000-ch14-curated-parent-2}
+\SupplementaryExercise{9}{Bubble-Chain Bound States in \(2+1\) Dimensions}
+  {(Adapted from J. McGreevy, Physics 215B Quantum Field Theory, Winter 2025, Assignment 8, Problem 1.)}
+  {mcgreevy-215b-w25-hw08-p1}
+Besides a one-particle delta function at \(s=m^2\) and a continuum
+above \(s=(2m)^2\), the spectral density of an operator that creates a
+massive particle can contain bound-state delta functions with
+\(m^2<s<(2m)^2\).  To see how such a pole can arise, work in
+\(D=2+1\) dimensions with the mostly-plus form of the source action
+\[
+ S[\phi]=\int d^3x\left[
+ -\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{g}{4!}\phi^4\right],
+\qquad m,g\in\mathbb R.
+\]
+Consider both signs of \(g\), setting aside vacuum stability; as the
+source notes, a small stabilizing \(\phi^6\) interaction may be imagined
+without affecting this calculation.
 \begin{enumerate}
 \item
-For a heavy particle in \(V_C=-\lambda/r\), rescale
-\(\mathbf r=\boldsymbol\rho/(M\lambda)\).  Derive the scaling of the
-normalized wave function, a Coulomb insertion, a reduced resolvent, and a
-local operator \(C_{2n}\nabla^{2n}\delta^3(\mathbf r)\).  Use the result to
-organize bound-state perturbation theory.
+For elastic \(\phi\phi\to\phi\phi\) scattering, let
+\(s=E_T^2\), where \(E_T\) is the total center-of-mass energy.  Compute
+\(\mathcal M(s)\) in the bubble-chain approximation defined by
+\[
+\begin{gathered}
+\begin{tikzpicture}[baseline=-0.55ex,scale=0.62]
+ \coordinate (v) at (0,0);
+ \fill (v) circle (2pt);
+ \draw (-0.8,0.55)--(v)--(0.8,0.55);
+ \draw (-0.8,-0.55)--(v)--(0.8,-0.55);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.55ex,scale=0.62]
+ \coordinate (a) at (-0.48,0);
+ \coordinate (b) at (0.48,0);
+ \fill (a) circle (2pt); \fill (b) circle (2pt);
+ \draw (-1.15,0.55)--(a); \draw (-1.15,-0.55)--(a);
+ \draw (b)--(1.15,0.55); \draw (b)--(1.15,-0.55);
+ \draw (a) to[bend left=48] (b);
+ \draw (a) to[bend right=48] (b);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.55ex,scale=0.62]
+ \coordinate (a) at (-0.78,0);
+ \coordinate (b) at (0,0);
+ \coordinate (c) at (0.78,0);
+ \fill (a) circle (2pt); \fill (b) circle (2pt); \fill (c) circle (2pt);
+ \draw (-1.42,0.55)--(a); \draw (-1.42,-0.55)--(a);
+ \draw (c)--(1.42,0.55); \draw (c)--(1.42,-0.55);
+ \draw (a) to[bend left=45] (b);
+ \draw (a) to[bend right=45] (b);
+ \draw (b) to[bend left=45] (c);
+ \draw (b) to[bend right=45] (c);
+\end{tikzpicture}
+\quad+\ \cdots .
+\end{gathered}
+\]
+These are respectively the contact term, the one-bubble term, the
+two-bubble term, and their continuation.  Do not justify the
+approximation or the convergence of the series.  The loop may be left
+as a Feynman-parameter integral.
 \item
-Suppose a relativistic amplitude for scattering from a weak static source
-has the low-momentum form
-\(\mathcal M(\mathbf p',\mathbf p)=c_0+c_2(\mathbf p'-\mathbf p)^2/M^2+\cdots\).
-Construct the corresponding nonrelativistic potential through \(M^{-2}\),
-including the normalization conversion, and state how its coefficients are
-fixed.
+Verify the optical theorem explicitly within this approximation.  In
+the center-of-mass frame in three spacetime dimensions,
+\[
+ \frac{d\sigma}{d\theta}
+ =\frac{|\mathcal M|^2}{32\pi pE_T^2},
+\]
+where \(p\) is the magnitude of either spatial momentum.
 \item
-Consider two effective Hamiltonians related by
-\(H'\!=e^{iS}He^{-iS}\), with \(S\) local and perturbatively small.  Show
-that their potentials differ by terms proportional to the leading equation
-of motion and that off-shell Green functions change.  Prove nevertheless
-that the positions of their bound-state poles agree order by order when all
-induced operators are retained.
+Look for a real pole at \(s=M_B^2\) below threshold,
+\[
+ 0<M_B^2<4m^2.
+\]
+Determine the signs and range of \(g\) for which the bubble-chain
+approximation predicts such a bound state.  An analytic formula for
+\(M_B\) is not required.
+\end{enumerate}
+
+\SupplementaryExercise{10}{Nonrelativistic Forces from QED and Pseudoscalar Exchange}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 10, Problem 6.)}
+  {mcgreevy-215a-f23-hw10-p6}
+\begin{enumerate}
+\item
+Starting from QED, derive the repulsive \(1/r^2\) force between two
+nonrelativistic electrons.
+\item
+Consider a massive Dirac field \(\Psi\) and a massive pseudoscalar
+\(\phi\), interacting through
+\[
+ V_5=g_5\bar\Psi\gamma_5\Psi\,\phi.
+\]
+\begin{enumerate}
+\item Assign parity transformations to both fields and prove that the
+interaction is parity invariant.
+\item List all propagator and vertex rules needed at leading order.
+\item Draw and evaluate every leading-order diagram for
+\(\Psi\Psi\to\Psi\Psi\), including the exchange required for identical
+fermions.
+\item Take \(m_\Psi\gg|\mathbf p|\) and derive the effective
+nonrelativistic interaction Hamiltonian.  If the naive leading term
+vanishes, continue to the first nonzero term, as emphasized in the
+source.
+\end{enumerate}
 \end{enumerate}
 \end{enumerate}

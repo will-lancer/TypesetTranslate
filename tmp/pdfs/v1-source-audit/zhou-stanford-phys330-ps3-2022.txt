@@ -1,0 +1,197 @@
+PHYS-330: QFT I                                  Problem Set 3 (due 10/18)
+Stanford University, 2022                                     Bernhard Mistlberger, Kevin Zhou
+
+1. Locality in relativistic quantum field theory. (20 points)
+The vacuum two-point correlation function of a real scalar field is
+
+                                 D(x − y) = ⟨0|ϕ(x)ϕ(y)|0⟩.                                (1)
+
+It only depends on the difference of positions z = x − y, by translational invariance, and
+it quantifies correlations between the field values at x and y in the vacuum state.
+a) Show that
+                                      d4 p
+                                 Z
+                        D(z) =             4
+                                             (2π)δ(p2 − m2 ) θ(p0 ) e−ip·z                 (2)
+                                     (2π)
+    where the Heaviside step function θ is 1 if the argument is positive and 0 otherwise.
+b) Show that if z ′µ = Λµν z ν for a proper orthochronous Lorentz transformation Λ, then
+   D(z ′ ) = D(z). (Hint: show that d4 p and δ(p2 − m2 ) θ(p0 ) are each Lorentz invariant.)
+ c) Show that for spacelike separation, z 2 < 0, the correlation function is exponentially
+    decaying but nonzero. You can do this in two ways. First, you can show that
+                                         m         √
+                            D(z) =       √     K1 ( −z 2 m)                            (3)
+                                     4π 2 −z 2
+    where K1 is a modified Bessel function of the second kind. Alternatively, you may
+    numerically integrate D(z) and graph the result. In both cases you may use any books
+    or computer programs needed, such as Mathematica or Abramowitz and Stegun.
+A key requirement for a relativistic theory is that it is local, meaning that effects don’t
+propagate faster than the speed of light. That means any change applied to the field at x
+should only affect observable results at y if x and y aren’t spacelike separated, (y−x)2 ≥ 0.
+
+You might thus be concerned about part (c), which implies a field in the vacuum “knows”
+about the values of the field at spacelike separation. But there’s nothing wrong with this.
+For example, to define a reference frame in special relativity, one synchronizes the clocks
+by sending light pulses throughout all space. After synchronization, all the clocks “know”
+about the values on the other clocks, even at spacelike separation. But that doesn’t mean
+that changes propagate faster than light; it’s just a consequence of how we set up the
+system. Similarly, ensuring a field is in the vacuum state requires absorbing all particles
+throughout all space, and this process sets up correlations between field values.
+
+To test if our theory is local, we must see whether changes in the state propagate faster
+than light; that is the subject of the rest of the question.
+d) One way to interact with a quantum field is to measure its value at a point, a process
+   which changes the state. From quantum mechanics, we know that measurements of
+   two operators O1 and O2 do not affect each other if [O1 , O2 ] = 0. Show that
+
+                                     ⟨0|[ϕ(x), ϕ(y)]|0⟩ = 0                                (4)
+
+    for spacelike separation, (x − y)2 < 0, as expected from locality.
+
+                                                1
+e) Another way to interact with a field is to couple it to a classical source J(x), which
+   for a real scalar field corresponds to taking the Lagrangian
+                           1               1
+                        L = (∂µ ϕ)(∂ µ ϕ) − m2 ϕ2 + ϕ(x)J(x).                           (5)
+                           2               2
+   This is the scalar analogue of driving the electromagnetic field with a current J µ (x).
+   For simplicity, we’ll treat ϕ(x) as a classical field for now, though similar conclusions
+   will hold when it is a quantum field. Show that the classical equation of motion is
+
+                                (∂µ ∂ µ + m2 ) ϕ(x) = J(x).                             (6)
+
+f ) Show that the equation of motion is solved by
+                                     Z
+                             ϕ(x) = i d4 y G(x − y)J(y)                                 (7)
+
+   where G is a Green’s function of the Klein–Gordan operator, which means
+
+                             (∂µ ∂ µ + m2 ) G(z) = −i δ (4) (z).                        (8)
+
+   The factors of −i here are purely conventional, and will simplify results later.
+g) By taking Fourier transforms, we may heuristically write the Green’s function as
+
+                                         d4 p i e−ip·z
+                                     Z
+                              G(z) =                                                (9)
+                                        (2π)4 p2 − m2
+
+   which formally obeys Eq. (8). However, this expression is not mathematically well-
+   defined because the integral blows up when p2 = m2 . To get a definite result, we must
+   add “iϵ” terms to the denominator to keep it from vanishing. There are multiple ways
+   to do this, which physically corresponds to the fact that there are multiple possible
+   Green’s functions, depending on the field’s boundary conditions. Three key examples
+   are the retarded, advanced, and Feynman Green’s functions,
+
+                                        d4 p          i e−ip·z
+                                    Z
+                     GR (z) = lim+                                                   (10)
+                               ϵ→0     (2π)4 (p0 + iϵ)2 − |p|2 − m2
+                                        d4 p          i e−ip·z
+                                    Z
+                     GA (z) = lim+                                                   (11)
+                               ϵ→0     (2π)4 (p0 − iϵ)2 − |p|2 − m2
+                                        d4 p    i e−ip·z
+                                    Z
+                     GF (z) = lim+                                                   (12)
+                               ϵ→0     (2π)4 p2 − m2 + iϵ
+   where the limit notation means ϵ approaches zero from the positive end. By using
+   the residue theorem to perform the integral over p0 , show that
+
+                          GR (z) = θ(z 0 )(D(z) − D(−z))                               (13)
+                          GA (z) = θ(−z 0 )(D(−z) − D(z))                              (14)
+                          GF (z) = θ(z 0 )D(z) + θ(−z 0 )D(−z)                         (15)
+
+h) The retarded Green’s function applies when the field is zero before the source acts.
+   Show that GR (x − y) vanishes for spacelike separation, as expected from locality.
+
+                                             2
+ i) The Feynman propagator will play a crucial role when we introduce Feynman dia-
+    grams because it is equal to ⟨0|T ϕ(x)ϕ(y)|0⟩. Does it vanish for spacelike separation?
+
+2. Recovering classical field theory. (10 points)
+If an operator O is time-independent in Schrodinger picture, then in Heisenberg picture,
+                                  dO(t)
+                                        = i [H(t), O(t)].                              (16)
+                                   dt
+In quantum field theory, working in the Heisenberg picture allows fields to depend on
+spacetime, making results look more Lorentz invariant. For example, we saw that in
+Heisenberg picture, a real scalar field obeys the Klein–Gordan equation (∂ 2 + m2 )ϕ = 0.
+Now consider the Lagrangian of Eq. (5), which additionally includes a source term J(x).
+In this case, the Hamiltonian is explicitly time-dependent,
+                                           Z
+                            H(t) = H0 − d3 x ϕ(x, t)J(x, t)                          (17)
+
+where H0 is the free Hamiltonian.
+a) Show that in Heisenberg picture, the field ϕ(x) obeys Eq. (6). (Thus, by the logic of
+   problem 1, expectation values of a quantum field ϕ(x) respond locally to sources.)
+With the source, quantum fields can evolve in time nontrivially. Suppose we start in the
+vacuum state |0⟩, and at time t = 0 apply an impulse to the field via
+
+                                     J(x) = δ(t) j(x).                                 (18)
+
+This is the scalar analogue of suddenly turning an electric current on and off in electro-
+magnetism. It is also closely related to the last half of problem 2 of problem set 1.
+b) The impulse causes operators to instantaneously shift in value at t = 0. Show that
+
+                  ϕ(x, 0+ ) = ϕ(x, 0− ),      π(x, 0+ ) = π(x, 0− ) + j(x).            (19)
+
+    Here, 0+ means a time right after t = 0, and 0− means a time right before, i.e.
+                                                 Z ϵ
+                              +        −             df (t)
+                          f (0 ) − f (0 ) = lim+            dt                      (20)
+                                             ϵ→0  −ϵ dt
+
+    for any function of time.
+ c) Show that this is equivalent to the annihilation operators shifting by
+                                                      i
+                            a(p, 0+ ) = a(p, 0− ) + p    j̃(p)                         (21)
+                                                     2ωp
+
+    where j̃ is the Fourier transform of j.
+d) Show that the field is in a coherent state after the impulse, in the sense that the state
+   is an eigenvector of a(p, 0+ ). Then evaluate ⟨0|a† (p, 0+ )a(p, 0+ )|0⟩, which gives the
+   number of particles of momentum p produced, per unit volume of momentum space.
+As you saw in problem set 1, coherent states of the quantum harmonic oscillator have the
+same position and momentum uncertainties as the vacuum state. Similarly, in quantum
+
+                                              3
+field theory, coherent states of the field have the same ϕ and π uncertainties as the
+vacuum, while their expectation values behave classically. When the driving is strong,
+the uncertainties become negligible compared to the expectation values, and the number
+of particles becomes large so that we can no longer see their discreteness. We therefore
+recover a classical field.
+
+3. Practice with time-ordered exponentials. (10 points)
+Suppose the Hamiltonian is H = H0 + Hint , where H0 is a time-independent free Hamil-
+tonian, and Hint is an interaction which could be time-dependent. In interaction picture,
+operators evolve under the free Hamiltonian H0 alone, and the states are |ψ(t)⟩I . Let’s
+first review some results derived in lecture.
+a) Show that
+                                 i ∂t |ψ(t)⟩I = Hint,I (t)|ψ(t)⟩I .                             (22)
+    where Hint,I (t) is the interaction Hamiltonian in the interaction picture.
+b) Show that if the interaction picture time evolution operator is defined as
+
+                                   |ψ(tf )⟩I = U (tf , ti )|ψ(ti )⟩I                            (23)
+
+    for tf > ti , then it is given by Dyson’s formula,
+                                                  Z tf              
+                             U (tf , ti ) = T exp −i    dt Hint,I (t)                           (24)
+                                                        ti
+
+    where T denotes time ordering.
+Now let’s do some concrete calculations with the time evolution operator.
+ c) Suppose the interaction is only turned on for two moments, i.e. it has the form
+
+                           Hint,I (t) = g (h1 δ(t − t1 ) + h2 δ(t − t2 )).                      (25)
+
+    Write out U (tf , ti ) up to and including terms of order g 2 , assuming ti < t1 < t2 < tf .
+d) Now consider a general Hint,I (t) which is proportional to a coupling g. It is generally
+   true that U (t3 , t2 )U (t2 , t1 ) = U (t3 , t1 ). Explicitly show that this result is true, up to
+   and including terms of order g 2 , in the case t1 < t2 < t3 .
+
+
+
+
+                                                  4
+

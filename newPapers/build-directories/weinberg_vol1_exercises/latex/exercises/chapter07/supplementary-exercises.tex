@@ -1,95 +1,247 @@
 \chapterbackmatter{Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementaryExercise{1}{Canonical Transformations and Noether Charges}
-  {(Inspired by David Tong, Lectures on Quantum Field Theory, Sections 1.1 and 1.4 | David Tong, Lectures on Quantum Field Theory, Sections 1.3.1 and 1.3.4.)}
-  {tong-qft-classical-fields-ch7-curated-parent-1}
+\SupplementaryExercise{1}{Symmetries, Currents, Charges, and Lorentz Boosts}
+  {(Adapted from University of Cambridge, Part III Quantum Field Theory, Paper 301, 2023, Question 1.)}
+  {cambridge-partiii-2023-qft-paper301-q1}
+Consider a relativistic theory of one real scalar field \(\phi(x)\),
+with Lagrangian density \(\mathcal L\) and action
+\[
+ S=\int d^4x\,\mathcal L.
+\]
 \begin{enumerate}
 \item
-Show that the complex-scalar Lagrangian is a Lorentz scalar and derive
-the two Euler--Lagrange equations, treating \(\phi\) and
-\(\phi^\dagger\) independently.
+Define a continuous symmetry of \(S\), a conserved current, and its
+conserved charge.  Explain carefully how these three notions are
+related, including the assumptions under which the existence of any
+one implies either of the other two.
 \item
-Find the canonical momenta and Hamiltonian density, and verify that the
-Hamiltonian generates the field equations.
+Define the energy--momentum tensor \(T^{\rho\sigma}\).  For the
+mostly-plus form of the source theory,
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\,\partial^\mu\phi-V(\phi),
+\]
+derive an explicit formula valid for arbitrary \(V\).  Explain why
+\(T^{\rho\sigma}\) supplies four conserved currents and find their
+charges.
 \item
-For
-\(\mathcal L=\frac12Z(\phi)\dot\phi^2
--\frac12Z(\phi)(\boldsymbol\nabla\phi)^2-U(\phi)\),
-derive the conjugate momentum and Hamiltonian density without expanding
-in \(Z(\phi)-1\).
+Starting from invariance of the action under infinitesimal Lorentz
+transformations, show that
+\[
+ \partial_\mu\left(x^\rho T^{\mu\sigma}
+                   -x^\sigma T^{\mu\rho}\right)=0.
+\]
 \item
-Add \(\partial_tF(\phi)\) to a scalar Lagrangian.  Determine how the
-canonical momentum changes, exhibit the corresponding canonical
-transformation, and prove that Hamilton's equations are unchanged.
-\item
-For two equal-mass real scalars with an interaction
-\(U(\phi_1^2+\phi_2^2)\), derive the \(SO(2)\) Noether current and verify
-that its charge generates both infinitesimal field rotations.
+Hence prove that the three-vector
+\[
+ V^i\equiv\frac{d}{dt}\int d^3x\,x^iT^{00}
+\]
+is constant in time.
 \end{enumerate}
 
-\SupplementaryExercise{2}{Improved Stress Tensors and Derivative Couplings}
-  {(Inspired by David Tong, Lectures on Quantum Field Theory, Sections 1.3.2--1.3.3 | David Tong, Lectures on Quantum Field Theory, Section 1.4.)}
-  {tong-qft-classical-fields-ch7-curated-parent-2}
+\SupplementaryExercise{2}{The Maxwell Stress Tensor and Metric Response}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 3, Problem 1; lightly edited there from Peskin and Schroeder, Problem 2.1.)}
+  {mcgreevy-215a-f23-hw03-p1}
+Classical electromagnetism follows from
+\[
+ S[A]=\int d^4x\left(
+ -\frac14F_{\mu\nu}F^{\mu\nu}-j^\mu A_\mu\right),
+\qquad
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
 \begin{enumerate}
 \item
-Show that adding
-\((\partial^\mu\partial^\nu-\eta^{\mu\nu}\Box)\phi^2\)
-to a scalar energy--momentum tensor preserves conservation and total
-four-momentum under standard falloff conditions.
+Treat the four components \(A_\mu(x)\) as the dynamical variables and
+derive the Euler--Lagrange equations
+\[
+ \frac{\delta S[A]}{\delta A_\mu(x)}=0.
+\]
+Write them in standard vector form using
+\[
+ E^i=-F^{0i},\qquad
+ \varepsilon^{ijk}B^k=-F^{ij}.
+\]
+In the source, the two resulting equations are called Gauss's and
+Faraday's laws; more precisely, variation of \(A_\mu\) gives Gauss's
+law and the Amp\`ere--Maxwell law, while Faraday's law is the Bianchi
+identity.
 \item
-Starting from the canonical tensor of a free Dirac field, calculate the
-spin current and show that the Belinfante improvement produces a
-symmetric conserved energy--momentum tensor.
+Set \(j^\mu=0\).  Construct the canonical energy--momentum tensor and
+show explicitly that it is neither symmetric nor gauge invariant.
+The source starts from its canonical convention
+\[
+ (T_{\rm src})^\mu{}_\nu
+ =\frac{\partial\mathcal L}
+        {\partial(\partial_\mu A_\rho)}
+   \partial_\nu A_\rho-\mathcal L\delta^\mu{}_\nu.
+\]
+Improve it according to
+\[
+ \widetilde T_{\rm src}^{\mu\nu}
+ =T_{\rm src}^{\mu\nu}+\partial_\lambda K_{\rm src}^{\lambda\mu\nu},
+\qquad
+ K_{\rm src}^{\lambda\mu\nu}=F^{\mu\lambda}A^\nu.
+\]
+This is the source's canonical-tensor convention.  With the sign
+convention for \(T^\mu{}_\nu\) used in this volume, the translated
+improvement is
+\[
+ \widetilde T^{\mu\nu}
+ =T^{\mu\nu}-\partial_\lambda
+ \left(F^{\mu\lambda}A^\nu\right).
+\]
+Explain why the added term is identically conserved and does not change
+the global charges.  Prove that \(\widetilde T^{\mu\nu}\) is symmetric
+and gauge invariant, and recover
+\[
+ \mathcal E=\frac12(\mathbf E^2+\mathbf B^2),
+\qquad
+ \mathbf S=\mathbf E\times\mathbf B
+\]
+as the electromagnetic energy and momentum densities.
 \item
-For
-\(\mathcal L=\frac12\dot\phi^2-\frac12(\boldsymbol\nabla\phi)^2
-+gJ^0\dot\phi+g\mathbf J\cdot\boldsymbol\nabla\phi\),
-perform the Legendre transform and identify the quadratic local term
-that prevents \(H_I=-L_I\).
+As a bonus, couple the theory to a background metric:
+\[
+ S[A,g]=\int d^4x\,\sqrt{|g|}
+ \left(-\frac14F_{\mu\nu}F_{\rho\sigma}
+ g^{\mu\rho}g^{\nu\sigma}+j^\mu A_\mu\right).
+\]
+The displayed source uses the opposite sign for its source term here;
+the comparison below is made at \(j^\mu=0\), so this mismatch is
+irrelevant.  The source's mostly-minus metric-response convention has
+a plus sign; in the volume's mostly-plus convention, compare the result
+of
+\[
+ T^{(g)}_{\mu\nu}
+ =\left.-\frac{2}{\sqrt{|g|}}
+ \frac{\delta S[A,g]}{\delta g^{\mu\nu}}\right|_{g_{\mu\nu}=\eta_{\mu\nu}}
+\]
+with part (b), using
+\[
+ \frac{\delta g^{\mu\nu}(x)}{\delta g_{\rho\sigma}(y)}
+ =-g^{\mu\rho}g^{\nu\sigma}\delta^D(x-y),
+\qquad
+ \frac{\delta\det g(x)}{\delta g_{\mu\nu}(y)}
+ =\delta^D(x-y)\det g\,g^{\mu\nu}.
+\]
+The source points to its accompanying notes for proofs of these two
+identities; they may be taken as supplied here.
+Explain why the metric-response tensor is automatically symmetric and
+gauge invariant.
 \end{enumerate}
 
-\SupplementaryExercise{3}{Complex-Scalar Phase Current and Charge as a Canonical Generator}
+\SupplementaryExercise{3}{A Complex Scalar Field}
   {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Assignment 1, Problem 3.)}
   {mit-823-s23-ps1-ch7-curated-parent-1}
+Consider a complex scalar field \(\phi(x)\) with
+\[
+ S=\int d^4x\left[
+ -\partial_\mu\phi^\dagger\partial^\mu\phi
+ -V(\phi^\dagger\phi)\right].
+\]
+Treat \(\phi\) and \(\phi^\dagger\), rather than their real and
+imaginary parts, as independent dynamical variables.
 \begin{enumerate}
 \item
-For
-\(\mathcal L=-\partial_\mu\phi^\dagger\partial^\mu\phi
--V(\phi^\dagger\phi)\),
-derive the rigid \(U(1)\) current and verify its conservation directly
-from the two Euler--Lagrange equations.
+Check that the action is Lorentz invariant and derive the two
+Euler--Lagrange equations.
 \item
-Express the complex-scalar \(U(1)\) charge in terms of the two canonical
-momenta, then use equal-time commutators to show that it generates the
-opposite phases of \(\phi\) and \(\phi^\dagger\).
+Find the momenta canonically conjugate to \(\phi\) and
+\(\phi^\dagger\), and construct the Hamiltonian \(H\).
+\item
+The action is invariant under the rigid transformation
+\[
+ \phi\longmapsto e^{i\alpha}\phi,\qquad
+ \phi^\dagger\longmapsto e^{-i\alpha}\phi^\dagger,
+\]
+where \(\alpha\) is constant.  Use Noether's theorem to find the
+corresponding conserved current \(j^\mu\) and charge \(Q\).
+\item
+Use the equations of motion from part (a) to verify directly that
+\(\partial_\mu j^\mu=0\).
 \end{enumerate}
 
-\SupplementaryExercise{4}{Energy Density of an Interacting Complex Scalar and Stress-Tensor Conservation Component by Component}
+\SupplementaryExercise{4}{The Energy--Momentum Tensor of a Complex Scalar}
   {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Assignment 1, Problem 4.)}
   {mit-823-s23-ps1-ch7-curated-parent-2}
+Continue with the complex-scalar theory
+\[
+ S=\int d^4x\left[
+ -\partial_\mu\phi^\dagger\partial^\mu\phi
+ -V(\phi^\dagger\phi)\right].
+\]
 \begin{enumerate}
 \item
-Derive the symmetric stress tensor for a complex scalar with arbitrary
-\(V(\phi^\dagger\phi)\), and show that its \(00\) component equals the
-canonical Hamiltonian density in the mostly-plus convention.
+Under a spacetime translation
+\[
+ x^\mu\longmapsto x'^\mu=x^\mu+a^\mu,
+\qquad
+ \phi'(x')=\phi(x),
+\]
+show that the action is invariant under
+\(\phi(x)\mapsto\phi'(x)\), and likewise for \(\phi^\dagger\).
 \item
-Integrate the \(0i\) component of the complex-scalar stress tensor and
-prove, using the canonical algebra, that the resulting operator
-generates spatial translations of both fields.
+Write the infinitesimal transformations of \(\phi\) and
+\(\phi^\dagger\), and use Noether's theorem to derive the four
+conserved translation currents \(T^{\mu\nu}\).
 \item
-Calculate \(\partial_\mu\Theta^{\mu\nu}\) for the interacting
-complex-scalar theory, keeping every potential derivative explicit,
-and demonstrate the cancellation separately for each free index
-\(\nu\).
+For a time translation, the conserved charge is
+\[
+ H=\int d^3x\,T^{00},
+\]
+while a spatial translation gives
+\[
+ P^i=\int d^3x\,T^{0i}.
+\]
+Write \(H\) and \(P^i\) explicitly and compare \(H\) with the
+Hamiltonian found in S.7.3(b).
+\item
+Use the field equations from S.7.3(a) to verify directly that
+\(\partial_\mu T^{\mu\nu}=0\).
 \end{enumerate}
 
-\SupplementaryExercise{5}{Current Conservation with a Covariant Derivative}
-  {(Inspired by Hong Liu and MIT OpenCourseWare, 8.323 Assignment 1, Problems 3--4.)}
-  {mit-823-s23-ps1-ch7-curated-parent-3}
-Replace ordinary derivatives by \(D_\mu=\partial_\mu-igV_\mu\) in the
-complex-scalar theory.  Derive the gauge-covariant phase current and
-show that ordinary divergence conservation still follows on shell.
+\SupplementaryExercise{5}{Non-Abelian Currents of Two Complex Scalars}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 6, Problem 2.)}
+  {mcgreevy-215a-f23-hw06-p2}
+Consider two complex scalar fields
+\(\Phi_{\alpha}\), \(\alpha=1,2\), with the mostly-plus form of the
+source action
+\[
+ S[\Phi_\alpha]=\int d^dx\,dt\left[
+ -\frac12\partial_\mu\Phi_\alpha^\dagger
+             \partial^\mu\Phi_\alpha
+ -V(\Phi_\alpha^\dagger\Phi_\alpha)\right].
+\]
+Let \(\Pi_\alpha\) and \(\Pi_\alpha^\dagger\) be the canonical momenta,
+and consider the three objects written in the source as
+\[
+ Q^i\equiv\frac12\int d^dx\,
+ i\left(\Pi_\alpha^\dagger
+ \sigma^i_{\alpha\beta}\Phi_\beta^\dagger\right)
+ +\text{h.c.},
+\qquad i=1,2,3,
+\]
+where \(\sigma^i\) are the Pauli matrices.
+\begin{enumerate}
+\item
+Determine the transformations generated by the three charges and prove
+that they are symmetries of \(S\).
+\item
+Optionally verify directly that \([Q^i,H]=0\).
+\item
+Evaluate \([Q^i,Q^j]\), show that the charges are non-Abelian, and
+identify the resulting familiar Lie algebra.
+\item
+Derive the Noether currents \(J_\mu^i\) for the transformations in
+part (a), and prove that
+\[
+ Q^i=\int d^dx\,J^{0i}
+\]
+agrees with the supplied canonical expression.  (The mostly-minus
+source writes the time component with a lower index.)
+\item
+Generalize the construction to \(N\) complex scalar fields.
+\end{enumerate}
 
 \SupplementaryExercise{6}{Primary and Secondary Constraints in Hamiltonian Dynamics}
   {(Inspired by Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 2 and 4 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 4 and 6 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 3--4.)}

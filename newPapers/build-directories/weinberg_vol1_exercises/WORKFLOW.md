@@ -48,6 +48,19 @@ python3 render_source_ledger.py
 Resolve numbering, title, provenance, duplicate, notation, short-solution, and
 source-diversity findings before proceeding.
 
+Generate or refresh content-addressed review records with:
+
+```sh
+python3 audit_exercises.py --write-fidelity-template
+```
+
+Then compare every adapted prompt side by side with its exact source parent,
+and review every independently written problem for self-containment, quality,
+chapter fit, and solution coverage. Mark a record passed in
+`source-fidelity-audit.json` only after every checklist item has been inspected.
+Any subsequent prompt, solution, locator, or use-mode change invalidates the
+record and requires a new review.
+
 ## 6. Build the complete volume
 
 Run:

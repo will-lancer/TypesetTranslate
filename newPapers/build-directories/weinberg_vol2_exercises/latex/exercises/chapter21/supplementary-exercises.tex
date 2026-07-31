@@ -27,35 +27,99 @@
       mechanism.
   \end{enumerate}
 
-  \SupplementaryExercise{2}{Unitarity Gauge, \(R_\xi\) Poles, and the \(\rho\) Parameter}
-  {Inspired by M. J. D. Hamilton, The Higgs Boson for Mathematicians
-  (2015), Section 6.}
-  {hamilton-higgs-mathematicians-2015-v2ch21-p02}
+  \SupplementaryExercise{2}{Unitarity Gauge for General Higgsing}
+  {Adapted from Daniel Harlow, \emph{Relativistic Quantum Field Theory III},
+  Section 10.7, Problem 1 (2026).}
+  {harlow-qft3-2026-sec10p7-problem1-v2ch21-p02}
+  Let a compact gauge group \(G\) act on a scalar multiplet through
+  \(D(g)\), with Hermitian Lie-algebra generators \(\tau_a\).  Consider
+  \[
+    \mathcal L=-\frac14\sum_a\frac1{g_a^2}
+      F_{\mu\nu}^aF^{a\mu\nu}
+      -(D_\mu\phi)^\dagger D^\mu\phi-V(\phi),
+    \qquad
+    D_\mu\phi=\partial_\mu\phi-i\tau_aA_\mu^a\phi ,
+  \]
+  and write
+  \[
+    \langle\phi\rangle=\frac v{\sqrt2},\qquad
+    H=\{h\in G:D(h)v=v\}.
+  \]
+  On each gauge orbit choose \(g_\phi(x)\) to maximize
+  \[
+    f_\phi(g)=\operatorname{Re}\!\left[\phi^\dagger(x)D(g)v\right],
+  \]
+  and define the unitary-gauge fields
+  \[
+    \widetilde\phi=D(g_\phi^{-1})\phi,\qquad
+    \widetilde A_\mu=g_\phi^{-1}A_\mu g_\phi+
+      i g_\phi^{-1}\partial_\mu g_\phi .
+  \]
   \begin{enumerate}
     \item[(a)]
-    Unitarity gauge removes fluctuations tangent to the orbit through
-    \(v\).  Determine which infinitesimal gauge transformations preserve
-    this condition.  Explain why massless gauge fields still require an
-    ordinary gauge-fixing condition and why a global unitary-gauge slice
-    may fail where the scalar modulus vanishes.
-    \item[(b)]
-    In a broken Abelian theory use
-    \(f=\partial_\mu A^\mu-\xi m\chi\).  Derive the vector, Goldstone, and
-    ghost propagator denominators.  Identify their physical and
-    gauge-dependent poles and show how the limit \(\xi\to\infty\) recovers
-    the unitary-gauge vector propagator.
-    \item[(c)]
-    Scalar multiplets have weak isospin \(T_i\), hypercharge \(Y_i\), and
-    neutral vacuum values \(v_i\), so \(T_{3i}=-Y_i\).  For complex
-    multiplets derive
+    Derive the stationarity condition
     \[
-      \rho_{\rm tree}
-        =\frac{\sum_i [T_i(T_i+1)-Y_i^2]|v_i|^2}
-               {\sum_i2Y_i^2|v_i|^2}.
+      \operatorname{Im}(\widetilde\phi^\dagger\tau_av)=0 .
     \]
-    Evaluate it for a doublet with \((T,Y)=(\tfrac12,\tfrac12)\) and
-    explain why a \(Y=0\) triplet needs separate treatment in the
-    denominator.
+    Show also that a configuration equal to \(v\) may be represented by
+    \(\widetilde\phi=v\), so the gauge choice preserves the stated vacuum.
+    \item[(b)]
+    Prove that \(g_\phi h\) is another maximum for every \(h(x)\in H\).
+    Interpret this as a residual local \(H\) symmetry.  For an
+    \(H\)-invariant decomposition
+    \(\mathfrak g=\mathfrak h\oplus\mathfrak h^\perp\), determine how the
+    unbroken and broken components of \(\widetilde A_\mu\) transform under
+    this residual symmetry.
+    \item[(c)]
+    A global maximum need not be unique on \(G/H\), but perturbation theory
+    only needs a unique local maximum near the vacuum.  Expand
+    \[
+      f_{\widetilde\phi}(e^{i\theta^aT_a})
+        =\operatorname{Re}\!
+        \left[\widetilde\phi^\dagger
+          e^{i\theta^a\tau_a}v\right]
+    \]
+    to second order in \(\theta\).  Show for
+    \(\widetilde\phi\) sufficiently close to \(v\) that the maximum is
+    strict on \(G/H\), and that a flat direction obeys
+    \(\theta^a\tau_av=0\), hence lies in \(\mathfrak h\).
+    \item[(d)]
+    Parameterize the remaining scalar fluctuation by
+    \[
+      \widetilde\phi=\frac1{\sqrt2}(v+h).
+    \]
+    Rewrite the Lagrangian in terms of \(h\) and \(\widetilde A_\mu\),
+    using the condition from part~(a).  For canonically normalized vector
+    fields \(\widehat A_\mu^a=\widetilde A_\mu^a/g_a\), prove that
+    \[
+      (\mu^2)_{ab}=\frac{g_ag_b}{2}\,
+        v^\dagger\{\tau_a,\tau_b\}v .
+    \]
+    Show that this matrix is real, symmetric, and positive semidefinite,
+    and characterize its null vectors in terms of \(\mathfrak h\).
+    \item[(e)]
+    Specialize to \(G=U(1)\) and a scalar of integer charge \(p\).  Find
+    \(g_\phi\), \(\widetilde\phi\), \(\widetilde A_\mu\), the residual
+    subgroup, and the vector mass.  Compare with the usual Abelian Higgs
+    description of unitary gauge.
+    \item[(f)]
+    Finally take \(G=SU(2)\times U(1)_Y\), with a Higgs doublet of
+    hypercharge \(-1/2\) and
+    \[
+      \langle\phi\rangle=\frac1{\sqrt2}
+        \begin{pmatrix}v\\0\end{pmatrix},\qquad v>0 .
+    \]
+    Show that unitary gauge leaves one real Higgs field and that, in the
+    basis \((A^1,A^2,A^3,B)\), the vector mass matrix is
+    \[
+      \mu^2=\frac{v^2}{4}
+      \begin{pmatrix}
+        g_2^2&0&0&0\\
+        0&g_2^2&0&0\\
+        0&0&g_2^2&-g_1g_2\\
+        0&0&-g_1g_2&g_1^2
+      \end{pmatrix}.
+    \]
   \end{enumerate}
 
   \SupplementaryExercise{3}{Chiral Charges and Unbroken Gauge Generators}
@@ -117,7 +181,7 @@
     the \(Z\) coupling to a fermion is
     \[
       -\frac{g}{2\cos\theta_W}\,
-      \bar f\gamma^\mu(g_V^f-g_A^f\gamma^5)fZ_\mu,
+      \bar f\gamma^\mu(g_V^f-g_A^f\gamma_5)fZ_\mu,
       \quad
       g_V^f=T_3^f-2Q_f\sin^2\theta_W,\quad
       g_A^f=T_3^f.

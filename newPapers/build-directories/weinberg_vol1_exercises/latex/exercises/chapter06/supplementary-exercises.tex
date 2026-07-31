@@ -93,13 +93,54 @@ Fourier transform every line incident on a position-space vertex at
 four-momentum conservation, including all powers of \(2\pi\).
 \end{enumerate}
 
-\SupplementaryExercise{6}{Independent Momentum in the Fish Graph}
-  {(Inspired by MIT OpenCourseWare, 8.323 Recitation 6, Section 1.3.)}
-  {mit-823-s23-rec6-ch6-curated-parent-4}
-Assign a separate four-momentum to each internal line of the one-loop
-four-point fish diagram in \(\phi^4\) theory.  Use the two vertex delta
-functions to reduce the expression to one independent momentum integral
-and verify \(L=I-V+1\).
+\SupplementaryExercise{6}{A Two-Loop Four-Point Correlator}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.323},
+  Section 7.8, Homework Problem 4.)}
+  {harlow-qft1-2024-ch6-hw4}
+Consider the real scalar theory
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{\lambda}{4!}\phi^4
+\]
+in four-dimensional Minkowski spacetime.  The diagram below is a two-loop
+contribution to the Fourier transform of the connected Lorentzian
+time-ordered four-point function.  Its black end-points are the four
+external positions and its three internal dots are quartic vertices.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=1.25cm,y=1.05cm,
+  line/.style={line width=0.65pt},
+  vertex/.style={circle,fill,inner sep=1.5pt},
+  endpoint/.style={circle,fill,inner sep=1.7pt}]
+  \coordinate (L) at (-1.25,0);
+  \coordinate (C) at (0,0);
+  \coordinate (R) at (1.25,0);
+  \coordinate (LT) at (-2.15,.75);
+  \coordinate (LB) at (-2.15,-.75);
+  \coordinate (RT) at (2.15,.75);
+  \coordinate (RB) at (2.15,-.75);
+  \draw[line] (LT)--(L)--(LB) (RT)--(R)--(RB);
+  \draw[line] (L) .. controls (-.85,.72) and (-.38,.72) .. (C);
+  \draw[line] (L) .. controls (-.85,-.72) and (-.38,-.72) .. (C);
+  \draw[line] (C) .. controls (.38,.72) and (.85,.72) .. (R);
+  \draw[line] (C) .. controls (.38,-.72) and (.85,-.72) .. (R);
+  \node[vertex] at (L) {};
+  \node[vertex] at (C) {};
+  \node[vertex] at (R) {};
+  \node[endpoint] at (LT) {};
+  \node[endpoint] at (LB) {};
+  \node[endpoint] at (RT) {};
+  \node[endpoint] at (RB) {};
+\end{tikzpicture}
+\end{center}
+
+Using the momentum-space Feynman rules, write the complete contribution of
+this diagram, including the overall momentum-conserving delta function, all
+four external propagators, all internal propagators, the vertex factors, and
+the symmetry factor.  Assign a direction and momentum to every internal
+line.  Carry out every momentum integral fixed by a vertex delta function,
+but leave the two independent loop integrations unevaluated.
 
 \SupplementaryExercise{7}{The Free Dirac Propagator, Its Residues, and Fermionic Signs}
   {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Assignment 9, Problem 2.)}
@@ -142,19 +183,42 @@ the chapter's \(-i0\) denominator convention.  Explain how their
 displacement implements vacuum boundary conditions rather than retarded
 boundary conditions.
 
-\SupplementaryExercise{9}{Three Channels from One Cubic Interaction and Why a Quartic Vertex Has No Factorial}
-  {(Inspired by David Tong, Lectures on Quantum Field Theory, Sections 3.4--3.5 | David Tong, Lectures on Quantum Field Theory, Sections 3.3--3.4.)}
-  {tong-qft-feynman-rules-2006-curated-parent-2}
+\SupplementaryExercise{9}{Five-Particle Scattering in Cubic Scalar Theory}
+  {(Adapted from University of Cambridge, Part III, Quantum Field Theory,
+  Paper 301, 2024, Question 2.)}
+  {cambridge-partiii-2024-paper301-q2-ch6}
+Consider a real scalar field in four dimensions with the mostly-plus
+Lagrangian
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{g}{3!}\phi^3,
+\]
+where \(m\) and \(g\) are real and positive.
 \begin{enumerate}
 \item
-For identical scalar \(2\to2\) scattering in \(g\phi^3/3!\) theory,
-enumerate the inequivalent connected tree graphs and write their
-invariant denominators in terms of the mostly-plus variables \(s,t,u\).
-Check crossing symmetry of the sum.
+What is the mass dimension of \(g\)?  Briefly justify the answer.
 \item
-Derive the momentum-space vertex for \(g\phi^4/4!\) directly from the
-Dyson expansion.  Track the external-field attachments and show why no
-residual \(4!\) appears in the Feynman rule.
+State the Feynman rules for this theory.  A brief but clear explanation is
+sufficient; a derivation of the rules is not required.
+\item
+Consider two incoming particles with momenta \(p_1,p_2\) and three outgoing
+particles with momenta \(k_i\), \(i=1,2,3\).  Starting from the expression
+for the scattering operator in terms of creation and annihilation operators,
+relate the corresponding matrix element
+\[
+ \OutBra{k_1,k_2,k_3}S\InKet{p_1,p_2}
+\]
+to a time-ordered correlation function.  You may use either LSZ reduction
+or the Dyson formula.
+\item
+Draw every connected tree diagram contributing to this process.  If diagrams
+differ only by permutations of external particles, one representative may be
+drawn provided all allowed permutations are stated explicitly.
+\item
+Use the Feynman rules to evaluate the contribution to the scattering matrix
+from every connected tree diagram in the preceding part.  Again, a compact
+representative expression is acceptable only if all external permutations
+and their number are made explicit.
 \end{enumerate}
 
 \SupplementaryExercise{10}{Reading a Yukawa Fermion Line Backwards and Crossing a Fermion into an Antifermion}
@@ -188,21 +252,261 @@ Differentiate a multidimensional Gaussian generating function six times.
 Prove that the result is a sum over fifteen pairings and interpret every
 inverse quadratic kernel as a propagator line.
 
-\SupplementaryExercise{13}{First Coefficients of a Quartic Integral and Automorphisms and Symmetry Factors}
-  {(Inspired by Daniel Harlow, Lecture Notes for Physics 8.323, Section 7.3 | Daniel Harlow, Lecture Notes for Physics 8.323, Sections 7.3--7.4.)}
-  {harlow-qft1-diagrams-2024-curated-parent-2}
-\begin{enumerate}
-\item
-For the normalized zero-dimensional integral with interaction
-\(\lambda x^4/4!\), expand through order \(\lambda^2\).  Compute the
-Gaussian moments, divide by the vacuum normalization, and identify the
-connected two-point contributions diagrammatically.
-\item
-Choose a scalar graph with two identical internal lines joining the same
-vertices.  Starting from labeled Wick contractions, show that exchanging
-those lines is an automorphism and produces a divisor \(2!\) in the
-graph's symmetry factor.
-\end{enumerate}
+\SupplementaryExercise{13}{Symmetry Factors from Diagram Automorphisms}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.323},
+  Section 7.8, Homework Problem 3.)}
+  {harlow-qft1-2024-ch6-hw3}
+Consider the real scalar theory
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{\lambda}{4!}\phi^4.
+\]
+Define the symmetry factor \(s_D\) of a diagram \(D\) as the number of its
+graph automorphisms, with every external point held fixed.  A self-contracted
+propagator may be flipped, parallel propagators may be permuted, and
+interaction vertices may be permuted only when all incidences and all fixed
+external points are preserved.
+
+The connected part of source Figure 16 contains the following two-point
+diagrams.  The factors quoted in its caption, in the displayed order, are
+\(s_D=1,2,6,4,4\).  (The full numerator also contains products with vacuum
+bubbles; division by the vacuum functional removes those disconnected
+components.)
+
+\begin{center}
+\begin{tikzpicture}[
+ x=.67cm,y=.67cm,
+ line/.style={line width=.6pt},
+ vertex/.style={circle,fill,inner sep=1.25pt},
+ endpoint/.style={circle,fill,inner sep=1.35pt},
+ every node/.style={font=\scriptsize}]
+ % Free line.
+ \begin{scope}[xshift=0cm]
+  \draw[line] (-1,0)--(1,0);
+  \node[endpoint] at (-1,0){}; \node[endpoint] at (1,0){};
+  \node at (0,-1.18){\(s_D=1\)};
+ \end{scope}
+ % One tadpole.
+ \begin{scope}[xshift=2.8cm]
+  \draw[line] (-1,0)--(1,0);
+  \draw[line] (0,0)..controls(-.62,.95)and(.62,.95)..(0,0);
+  \node[vertex] at (0,0){};
+  \node[endpoint] at (-1,0){}; \node[endpoint] at (1,0){};
+  \node at (0,-1.18){\(s_D=2\)};
+ \end{scope}
+ % Sunset: three parallel internal lines.
+ \begin{scope}[xshift=5.7cm]
+  \coordinate (a) at (-.48,0); \coordinate (b) at (.48,0);
+  \draw[line] (-1.25,0)--(a) (b)--(1.25,0) (a)--(b);
+  \draw[line] (a)..controls(-.18,.72)and(.18,.72)..(b);
+  \draw[line] (a)..controls(-.18,-.72)and(.18,-.72)..(b);
+  \node[vertex] at (a){}; \node[vertex] at (b){};
+  \node[endpoint] at (-1.25,0){}; \node[endpoint] at (1.25,0){};
+  \node at (0,-1.18){\(s_D=6\)};
+ \end{scope}
+ % Two tadpoles in series.
+ \begin{scope}[xshift=8.9cm]
+  \draw[line] (-1.25,0)--(1.25,0);
+  \foreach \v in {-.43,.43}{
+   \draw[line] (\v,0)..controls(\v-.48,.82)and(\v+.48,.82)..(\v,0);
+   \node[vertex] at (\v,0){};
+  }
+  \node[endpoint] at (-1.25,0){}; \node[endpoint] at (1.25,0){};
+  \node at (0,-1.18){\(s_D=4\)};
+ \end{scope}
+ % Nested tadpole.
+ \begin{scope}[xshift=12.0cm]
+  \coordinate (a) at (0,-.22); \coordinate (b) at (0,.58);
+  \draw[line] (-1.2,-.22)--(a)--(1.2,-.22);
+  \draw[line] (a)..controls(-.62,.04)and(-.62,.45)..(b);
+  \draw[line] (a)..controls(.62,.04)and(.62,.45)..(b);
+  \draw[line] (b)..controls(-.52,1.32)and(.52,1.32)..(b);
+  \node[vertex] at (a){}; \node[vertex] at (b){};
+  \node[endpoint] at (-1.2,-.22){}; \node[endpoint] at (1.2,-.22){};
+  \node at (0,-1.18){\(s_D=4\)};
+ \end{scope}
+\end{tikzpicture}
+\end{center}
+
+For completeness, the disconnected terms drawn in the same source Figure 16
+are the free line times one vacuum figure-eight, the free line times two such
+vacuum components, the one-tadpole two-point graph times a vacuum
+figure-eight, and the free line times each of the two connected two-vertex
+vacuum topologies shown below.  These are precisely the terms removed by the
+vacuum denominator.
+
+\begin{center}
+\begin{tikzpicture}[
+ x=.54cm,y=.54cm,
+ line/.style={line width=.56pt},
+ vertex/.style={circle,fill,inner sep=1.12pt},
+ endpoint/.style={circle,fill,inner sep=1.22pt},
+ every node/.style={font=\scriptsize}]
+ % Free line times a one-vertex vacuum figure-eight.
+ \begin{scope}[xshift=0cm]
+  \draw[line] (-1.05,.55)--(1.05,.55);
+  \node[endpoint] at (-1.05,.55){}; \node[endpoint] at (1.05,.55){};
+  \coordinate (v) at (0,-.35);
+  \draw[line] (v)..controls(-.52,.35)and(-.52,-1.05)..(v);
+  \draw[line] (v)..controls(.52,.35)and(.52,-1.05)..(v);
+  \node[vertex] at (v){};
+ \end{scope}
+ % Free line times two one-vertex vacuum figure-eights.
+ \begin{scope}[xshift=3.1cm]
+  \draw[line] (-1.05,.65)--(1.05,.65);
+  \node[endpoint] at (-1.05,.65){}; \node[endpoint] at (1.05,.65){};
+  \foreach \vx in {-.48,.48}{
+   \coordinate (v) at (\vx,-.35);
+   \draw[line] (v)..controls(\vx-.34,.15)and(\vx-.34,-.85)..(v);
+   \draw[line] (v)..controls(\vx+.34,.15)and(\vx+.34,-.85)..(v);
+   \node[vertex] at (v){};
+  }
+ \end{scope}
+ % Tadpole two-point graph times a one-vertex vacuum figure-eight.
+ \begin{scope}[xshift=6.3cm]
+  \draw[line] (-1.05,.58)--(1.05,.58);
+  \draw[line] (0,.58)..controls(-.44,1.18)and(.44,1.18)..(0,.58);
+  \node[vertex] at (0,.58){};
+  \node[endpoint] at (-1.05,.58){}; \node[endpoint] at (1.05,.58){};
+  \coordinate (v) at (0,-.4);
+  \draw[line] (v)..controls(-.46,.22)and(-.46,-1.02)..(v);
+  \draw[line] (v)..controls(.46,.22)and(.46,-1.02)..(v);
+  \node[vertex] at (v){};
+ \end{scope}
+ % Free line times the four-parallel-line vacuum graph.
+ \begin{scope}[xshift=9.5cm]
+  \draw[line] (-1.05,.7)--(1.05,.7);
+  \node[endpoint] at (-1.05,.7){}; \node[endpoint] at (1.05,.7){};
+  \coordinate (a) at (-.42,-.35); \coordinate (b) at (.42,-.35);
+  \draw[line] (a)--(b);
+  \draw[line] (a)..controls(-.18,.1)and(.18,.1)..(b);
+  \draw[line] (a)..controls(-.18,-.8)and(.18,-.8)..(b);
+  \draw[line] (a)..controls(-.08,-1.12)and(.08,-1.12)..(b);
+  \node[vertex] at (a){}; \node[vertex] at (b){};
+ \end{scope}
+ % Free line times two connected self-loop vertices.
+ \begin{scope}[xshift=12.7cm]
+  \draw[line] (-1.05,.72)--(1.05,.72);
+  \node[endpoint] at (-1.05,.72){}; \node[endpoint] at (1.05,.72){};
+  \coordinate (a) at (-.38,-.42); \coordinate (b) at (.38,-.42);
+  \draw[line] (a)..controls(-.1,-.05)and(.1,-.05)..(b);
+  \draw[line] (a)..controls(-.1,-.78)and(.1,-.78)..(b);
+  \draw[line] (a)..controls(-.82,.05)and(-.82,-.88)..(a);
+  \draw[line] (b)..controls(.82,.05)and(.82,-.88)..(b);
+  \node[vertex] at (a){}; \node[vertex] at (b){};
+ \end{scope}
+\end{tikzpicture}
+\end{center}
+
+Source Figure 18 gives all connected four-point diagrams through order
+\(\lambda^2\): the one-vertex tree, four diagrams obtained by inserting a
+tadpole on one of its external legs, and the three pairings of the external
+points across a pair of vertices joined by two propagators.  Its caption
+quotes \(s_D=1\) for the tree and \(s_D=2\) for each of the other seven
+diagrams.  The complete topology data are displayed below; the labels on the
+last three diagrams record the three partitions of four fixed external
+points.
+
+\begin{center}
+\begin{tikzpicture}[
+ x=.62cm,y=.62cm,
+ line/.style={line width=.58pt},
+ vertex/.style={circle,fill,inner sep=1.18pt},
+ endpoint/.style={circle,fill,inner sep=1.3pt},
+ every node/.style={font=\scriptsize}]
+ % tree and four external-leg tadpoles
+ \foreach \sx/\loopleg in {0/0,3/1,6/2,9/3,12/4}{
+  \begin{scope}[xshift=\sx cm]
+   \coordinate (c) at (0,0);
+   \coordinate (nw) at (-.9,.9); \coordinate (ne) at (.9,.9);
+   \coordinate (sw) at (-.9,-.9); \coordinate (se) at (.9,-.9);
+   \draw[line] (nw)--(c)--(se) (sw)--(c)--(ne);
+   \node[vertex] at (c){};
+   \node[endpoint] at (nw){}; \node[endpoint] at (ne){};
+   \node[endpoint] at (sw){}; \node[endpoint] at (se){};
+   \ifnum\loopleg=1
+    \coordinate (v) at (-.48,.48);
+    \draw[line] (v)..controls(-.95,.62)and(-.62,1.02)..(v); \node[vertex] at (v){};
+   \fi
+   \ifnum\loopleg=2
+    \coordinate (v) at (.48,.48);
+    \draw[line] (v)..controls(.62,1.02)and(.95,.62)..(v); \node[vertex] at (v){};
+   \fi
+   \ifnum\loopleg=3
+    \coordinate (v) at (-.48,-.48);
+    \draw[line] (v)..controls(-.95,-.62)and(-.62,-1.02)..(v); \node[vertex] at (v){};
+   \fi
+   \ifnum\loopleg=4
+    \coordinate (v) at (.48,-.48);
+    \draw[line] (v)..controls(.62,-1.02)and(.95,-.62)..(v); \node[vertex] at (v){};
+   \fi
+   \ifnum\loopleg=0 \node at (0,-1.35){\(s_D=1\)};
+   \else \node at (0,-1.35){\(s_D=2\)}; \fi
+  \end{scope}
+ }
+ % three two-vertex channels
+ \foreach \sx/\lab in {3/{12|34},7.5/{13|24},12/{14|23}}{
+  \begin{scope}[xshift=\sx cm,yshift=-3.2cm]
+   \coordinate (a) at (-.55,0); \coordinate (b) at (.55,0);
+   \coordinate (lt) at (-1.35,.75); \coordinate (lb) at (-1.35,-.75);
+   \coordinate (rt) at (1.35,.75); \coordinate (rb) at (1.35,-.75);
+   \draw[line] (lt)--(a)--(lb) (rt)--(b)--(rb);
+   \draw[line] (a)..controls(-.15,.5)and(.15,.5)..(b);
+   \draw[line] (a)..controls(-.15,-.5)and(.15,-.5)..(b);
+   \node[vertex] at (a){}; \node[vertex] at (b){};
+   \node[endpoint] at (lt){}; \node[endpoint] at (lb){};
+   \node[endpoint] at (rt){}; \node[endpoint] at (rb){};
+   \node at (0,-1.18){\(\lab,\ s_D=2\)};
+  \end{scope}
+ }
+\end{tikzpicture}
+\end{center}
+
+Finally, compute rather than assume the symmetry factors of the two diagrams
+from source Figure 20:
+
+\begin{center}
+\begin{tikzpicture}[
+ x=.72cm,y=.72cm,
+ line/.style={line width=.6pt},
+ vertex/.style={circle,fill,inner sep=1.25pt},
+ endpoint/.style={circle,fill,inner sep=1.35pt},
+ every node/.style={font=\scriptsize}]
+ % Square vacuum graph with a tadpole at every vertex.
+ \begin{scope}[xshift=0cm]
+  \coordinate (nw) at (-.72,.72); \coordinate (ne) at (.72,.72);
+  \coordinate (sw) at (-.72,-.72); \coordinate (se) at (.72,-.72);
+  \draw[line] (nw)--(ne)--(se)--(sw)--cycle;
+  \draw[line] (nw)..controls(-1.35,.78)and(-.95,1.35)..(nw);
+  \draw[line] (ne)..controls(.95,1.35)and(1.35,.78)..(ne);
+  \draw[line] (sw)..controls(-1.35,-.78)and(-.95,-1.35)..(sw);
+  \draw[line] (se)..controls(.95,-1.35)and(1.35,-.78)..(se);
+  \foreach \v in {nw,ne,sw,se}{\node[vertex] at (\v){};}
+  \node at (0,-1.75){square with four self-loops};
+ \end{scope}
+ % Wheel graph with four fixed external points.
+ \begin{scope}[xshift=6.0cm]
+  \coordinate (c) at (0,0); \coordinate (n) at (0,.8);
+  \coordinate (e) at (.8,0); \coordinate (s) at (0,-.8);
+  \coordinate (w) at (-.8,0);
+  \draw[line] (n)..controls(.52,.72)and(.72,.52)..(e)
+              (e)..controls(.72,-.52)and(.52,-.72)..(s)
+              (s)..controls(-.52,-.72)and(-.72,-.52)..(w)
+              (w)..controls(-.72,.52)and(-.52,.72)..(n);
+  \draw[line] (c)--(n)--(0,1.65) (c)--(e)--(1.65,0)
+              (c)--(s)--(0,-1.65) (c)--(w)--(-1.65,0);
+  \foreach \v in {c,n,e,s,w}{\node[vertex] at (\v){};}
+  \foreach \p in {(0,1.65),(1.65,0),(0,-1.65),(-1.65,0)}{
+    \node[endpoint] at \p{};
+  }
+  \node at (0,-2.0){wheel with four fixed external points};
+ \end{scope}
+\end{tikzpicture}
+\end{center}
+
+Verify every symmetry factor quoted for the Figure 16 and Figure 18
+topologies, and determine both Figure 20 factors directly from their
+automorphism groups.
 
 \SupplementaryExercise{14}{Connected Diagrams from a Logarithm}
   {(Inspired by Daniel Harlow, Lecture Notes for Physics 8.323, Section 7.4.)}
@@ -212,19 +516,35 @@ Using the first four source derivatives, prove algebraically that
 derivatives of \(W\) generate connected correlation functions rather than
 all Wick partitions.
 
-\SupplementaryExercise{15}{Amputation of an Off-Shell Scalar Leg and Normalized Gell-Mann--Low Expansion}
-  {(Inspired by Daniel Harlow, Lecture Notes for Physics 8.323, Section 7.5 | Daniel Harlow, Lecture Notes for Physics 8.323, Sections 7.4--7.5.)}
-  {harlow-qft1-diagrams-2024-curated-parent-4}
+\SupplementaryExercise{15}{Propagator Corrections in a Solvable Theory}
+  {(Adapted from John McGreevy, Physics 215A, Fall 2023, Assignment 7,
+  Problem 4.)}
+  {mcgreevy-215a-f23-hw07-p4-ch6}
+Consider a scalar field in \(D\) spacetime dimensions with action
+\[
+ S=S_0+S_1,
+ \qquad
+ S_0=-\frac12\int d^Dx\,
+   \bigl(\partial_\mu\phi\partial^\mu\phi+m_0^2\phi^2\bigr),
+ \qquad
+ S_1=-\frac12\int d^Dx\,\delta m^2\phi^2.
+\]
+The mass term has been artificially split into two pieces.  Perform
+perturbation theory in small \(\delta m^2\), treating \(S_1\) as an
+interaction, and show that the resulting expansion reassembles the complete
+mass.
 \begin{enumerate}
 \item
-A functional derivative with respect to a linear source creates an
-off-shell external scalar line.  Fourier transform that line and show
-that multiplying by its inverse propagator removes it, leaving the
-amputated vertex function.
+Write every Feynman rule for this perturbation theory.
 \item
-Derive the normalized Gell-Mann--Low formula by inserting interaction
-picture evolution on both sides of a time-ordered product.  Expand to
-second order and show explicitly that only components connected to at
-least one displayed operator survive the vacuum denominator.
+Determine the one-particle-irreducible two-point function, defined by
+\[
+ -i\Sigma(p)\equiv
+ \sum\bigl(\text{all 1PI diagrams with two external nubbins}\bigr).
+\]
+\item
+Geometrically sum all propagator corrections and show that the result is
+the propagator one would have written without splitting
+\(m_0^2+\delta m^2\).
 \end{enumerate}
 \end{enumerate}

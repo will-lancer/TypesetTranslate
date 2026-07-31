@@ -24,6 +24,8 @@ two-component-edition conventions.
 
 ## Product notation
 
+- Use boldface rather than arrow accents for vectors: `\mathbf{x}` for Latin
+  symbols and `\boldsymbol{\pi}` for Greek symbols. Do not use arrow accents.
 - Use `\cdot` for ordinary or scalar multiplication and for inner products.
 - Use `\times` for Cartesian and direct products, vector cross products and
   curls, and dimensions such as \(2\times2\).

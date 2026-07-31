@@ -58,62 +58,150 @@ chiral-symmetry-breaking insertion.  Compare the natural estimates
 \(c/M\) and \(cm/M^2\) for its coefficient and the corresponding
 contributions to a magnetic moment.
 
-\SupplementaryExercise{5}{Power Counting, Momentum Subtraction, and BPHZ Forests}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapters 18--19 and 29 | Mark Srednicki, Quantum Field Theory, Chapters 18--19.)}
-  {srednicki-qft-wilsonian-ch12-curated-parent-1}
-\begin{enumerate}
-\item
-For a connected graph in four-dimensional \(\phi^4\) theory, use the
-topological identities relating loops, internal lines, vertices, and
-external lines to prove that its superficial degree of divergence is
-\(D=4-E\).  Identify every primitively divergent amplitude and its allowed
-local counterterm.
-\item
-For
+\SupplementaryExercise{5}{Massless \(\phi^4\) Theory at a Symmetric Subtraction Point}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2023, Paper 304: Advanced Quantum Field Theory, Question 2.)}
+  {cambridge-partiii-2023-aqft-paper304-q2}
+In the volume's mostly-plus convention, consider the massless real scalar
+theory in four-dimensional Minkowski space with Lagrangian
 \[
- B(p^2)=\int\frac{d^4k_E}{(2\pi)^4}
- \frac1{(k_E^2+m^2)((k_E+p_E)^2+m^2)},
+ \mathcal L=-\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac{\lambda}{4!}\phi^4.
 \]
-form the momentum-subtracted difference \(B(p^2)-B(-\mu^2)\).  Show
-directly at the integrand level that it is ultraviolet convergent, evaluate
-it as a Feynman-parameter integral, and identify the local counterterm that
-implements the subtraction.
-\item
-Let a graph \(G\) contain one logarithmically divergent proper subgraph
-\(\gamma\), while \(G\) itself has superficial degree two.  Write the
-BPHZ forest formula explicitly in terms of \(t_\gamma\) and \(t_G\).
-Explain the order of the Taylor operations and show how the four resulting
-terms are represented by the original graph, a subgraph counterterm, an
-overall counterterm, and a counterterm graph with a further overall
-subtraction.
-\end{enumerate}
-
-\SupplementaryExercise{6}{Integrating Out a Thin Momentum Shell and Shell Correction to the Quartic Coupling}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapter 29.)}
-  {srednicki-qft-wilsonian-ch12-curated-parent-2}
 \begin{enumerate}
 \item
-In Euclidean \(\lambda\phi^4/4!\) theory, split the field into modes below
-\(\Lambda-\delta\Lambda\) and modes in the shell
-\(\Lambda-\delta\Lambda<|k|<\Lambda\).  To first order in \(\lambda\),
-integrate the shell and obtain the induced change of the light-field mass.
-Give the leading result for \(\Lambda\gg m\).
+Without derivation, write down the momentum-space Feynman rules for the
+theory, including counterterms.  Draw the diagrams that contribute to the
+renormalized 1PI four-point function \(\Gamma_4\) through order
+\(\lambda^2\).
 \item
-Continue Exercise S.12.10 to second order in \(\lambda\).  Evaluate the
-connected contraction with two quartic vertices that is local for external
-momenta much smaller than the shell momentum.  Include the three channels
-and derive the leading logarithmic change in the quartic coupling.
+The function \(\Gamma_4\) may be written in terms of the Mandelstam
+variables \(s,t,u\), defined as in Eq.~\eqref{eq:12.2.23}.  Define the
+effective coupling \(\lambda_{\mathrm{eff}}\) at an energy scale \(M\) by
+\[
+ -i\lambda_{\mathrm{eff}}=\Gamma_4
+ \qquad\text{when}\qquad s=t=u=-M^2.
+\]
+Using dimensional regularization in \(d=4-\epsilon\), evaluate the relevant
+integrals and show that
+\[
+ -i\lambda_{\mathrm{eff}}
+ =-i\lambda
+ -\frac{i(-i\lambda)^2}{32\pi^2}\int_0^1dx
+ \left(\frac6\epsilon-3\gamma+\cdots\right)
+ -i\delta\lambda+\cdots.
+\]
+Here \(\gamma\) is the Euler--Mascheroni constant, and the ellipses inside
+the parentheses contain the finite scale- and Feynman-parameter-dependent
+terms.  Find a suitable choice of \(\delta\lambda\) such that
+\(\lambda_{\mathrm{eff}}=\lambda\) at the renormalization scale \(M\).
+\item
+State, without derivation, the Callan--Symanzik equation for this theory.
+Assuming that there is no wavefunction renormalization at this order in
+\(\lambda\), show that
+\[
+ \beta(\lambda)=\frac{3\lambda^2}{16\pi^2}+O(\lambda^3).
+\]
 \end{enumerate}
+You may use, for integers \(a,b\),
+\[
+ \int_{\mathbb R^d}\frac{d^d\ell}{(2\pi)^d}
+ \frac{(\ell^2)^a}{(\ell^2+\Delta)^b}
+ =\frac{\Gamma(b-a-d/2)\Gamma(a+d/2)}
+ {(4\pi)^{d/2}\Gamma(b)\Gamma(d/2)}
+ \Delta^{-(b-a-d/2)},
+\]
+as well as
+\[
+ \Gamma(z)=\frac1z-\gamma+O(z)
+ \qquad (z\to0).
+\]
 
-\SupplementaryExercise{7}{Why an Infinite Action Can Still Predict}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapter 29.)}
-  {srednicki-qft-wilsonian-ch12-curated-parent-3}
-Write a Wilson action at cutoff \(\Lambda\) as a sum of operators
-\(\mathcal O_d\) with coefficients \(c_d/\Lambda^{d-4}\).  For an amplitude
-at scale \(E\ll\Lambda\), prove that only finitely many operators contribute
-through relative order \((E/\Lambda)^N\).  State precisely which assumption
-about the dimensionless coefficients is required, and exhibit how the
-conclusion can fail under fine tuning.
+\SupplementaryExercise{6}{Wilsonian Shell Integration in \(\Phi^3\) Theory}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2024, Paper 304: Advanced Quantum Field Theory, Question 3.)}
+  {cambridge-partiii-2024-aqft-paper304-q3}
+Consider a scalar field theory in \(d\)-dimensional Euclidean space with
+action
+\[
+ S[\Phi]=\int d^dx\left(
+ \frac12\partial_\mu\Phi\,\partial^\mu\Phi+\frac{g}{3!}\Phi^3
+ \right).
+\]
+The quantum field \(\Phi(x)\) is defined with a momentum cutoff \(\Lambda\).
+\begin{enumerate}
+\item
+Decompose its Fourier transform into low- and high-momentum modes at an
+arbitrary scale \(b\Lambda<\Lambda\), where \(0<b<1\), by
+\[
+ \widetilde\Phi(p)=
+ \begin{cases}
+  \widetilde\phi(p),&p^2<b^2\Lambda^2,\\
+  \widetilde\chi(p),&b^2\Lambda^2<p^2<\Lambda^2.
+ \end{cases}
+\]
+Show that
+\[
+ \Phi(x)=\phi(x)+\chi(x),
+\]
+where \(\widetilde\phi(p)\) and \(\widetilde\chi(p)\) are the Fourier
+transforms of \(\phi(x)\) and \(\chi(x)\), respectively.
+\item
+Define the effective action by
+\[
+ e^{-W[\phi]}=\int\mathcal D\chi\,e^{-S[\Phi]}.
+\]
+Show that it may be written as
+\[
+ e^{-W[\phi]}=e^{-S[\phi]}
+ \left[
+  \exp\left(-S_{\mathrm{int}}
+  \left[\phi,-\frac{\delta}{\delta J}\right]\right)Z_\chi[J]
+ \right]_{J=0},
+\]
+where \(Z_\chi[J]\) is the generating functional of the free massless
+high-momentum field \(\chi\).  Find \(S_{\mathrm{int}}\), define the source
+sign in \(Z_\chi[J]\) so that the displayed identity holds, and briefly
+explain how to evaluate the action perturbatively.
+\item
+Assume that, to the order of interest, the effective action has the form
+\[
+ W[\phi]=\int d^dx\left(
+ \frac12\partial_\mu\phi\,\partial^\mu\phi
+ +\frac{g_{\mathrm{eff}}}{3!}\phi^3+\cdots\right),
+\]
+where the omitted effective-Lagrangian terms may be neglected.  Draw all
+Feynman diagrams needed to determine \(g_{\mathrm{eff}}\) through order
+\(g^3\).  Find \(g_{\mathrm{eff}}\) to this order and show that for \(d=6\)
+\[
+ g_{\mathrm{eff}}=g+Cg^3\ln b+\cdots,
+\]
+specifying \(C\).  You may neglect wavefunction rescaling.
+\end{enumerate}
+You may use
+\[
+ \Omega_{d-1}=\frac{2\pi^{d/2}}{\Gamma(d/2)},
+ \qquad \Gamma(n)=(n-1)!\quad(n\in\mathbb Z_+),
+\]
+where \(\Omega_{d-1}\) is the area of the unit \((d-1)\)-sphere.
+
+\SupplementaryExercise{7}{The One-Loop Yukawa Beta Function}
+  {(Adapted from Daniel Harlow, Lecture Notes for Physics 8.324: Relativistic Quantum Field Theory II, Section 12.8, Problem 2, with the Yukawa Lagrangian from Eq. (4.34).)}
+  {harlow-qft2-sec12p8-problem2-yukawa-beta}
+Consider the Yukawa theory used in the source problem: a real scalar
+\(\phi\) and a Dirac field \(\psi\) with the mostly-plus Lagrangian
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac{m_\phi^2}{2}\phi^2
+ -i\left(\bar\psi\slashed\partial\psi+m_\psi\bar\psi\psi\right)
+ -ig\phi\bar\psi\psi.
+\]
+Using dimensional regularization, compute the complete one-loop
+renormalization of the Yukawa coupling \(g\), including the field-strength
+renormalizations required when the interaction is expressed in canonically
+normalized fields, and extract the beta function.  You may take the masses
+to zero after choosing nonexceptional external momenta, because the
+ultraviolet pole and beta function are mass-independent.  State whether
+additional scalar interactions needed to close the full theory under
+renormalization affect this one-loop result.
 
 \SupplementaryExercise{8}{Euler--Heisenberg, Rayleigh Scattering, and Fermi Theory}
   {(Inspired by Aneesh V. Manohar, Introduction to Effective Field Theories, Chapter 3 | Aneesh V. Manohar, Introduction to Effective Field Theories, Chapter 3, Section 7 | Aneesh V. Manohar, Introduction to Effective Field Theories, Chapter 3, Sections 8--9.)}
@@ -249,32 +337,37 @@ Then introduce a small spurion that breaks the symmetry and determine how
 radiative mass corrections must depend on it.
 \end{enumerate}
 
-\SupplementaryExercise{13}{Unitarity, Matching Logs, and Finite EFT Predictivity}
-  {(Inspired by Timothy Cohen, As Scales Become Separated, Sections 2--3 | Timothy Cohen, As Scales Become Separated, Sections 3--5 | Timothy Cohen, As Scales Become Separated, Sections 2--4.)}
-  {cohen-tasi-eft-2019-ch12-curated-parent-2}
+\SupplementaryExercise{13}{Symmetry Is Attractive: Two-Scalar Renormalization}
+  {(Adapted from John McGreevy, Physics 215B Quantum Field Theory, Winter 2025, Assignment 6, Problem 3.)}
+  {mcgreevy-215b-w25-hw06-p3}
+In \(D=3+1\), consider two real scalar fields of equal mass with the
+mostly-plus interaction
+\[
+ \mathcal L_{\mathrm{int}}
+ =-\frac{g}{4!}\left(\phi_1^4+\phi_2^4\right)
+ -\frac{2\lambda}{4!}\phi_1^2\phi_2^2.
+\]
 \begin{enumerate}
 \item
-For a massless scalar with
-\(\mathcal L_{\rm int}=c(\partial_\mu\phi\partial^\mu\phi)^2/M^4\),
-compute the tree-level \(2\to2\) amplitude in terms of \(s,t,u\).
-Project its angle-independent part onto the \(J=0\) partial wave and
-estimate the energy at which perturbative unitarity fails.  Explain what
-this bound does and does not say about the ultraviolet completion.
+Show that the model has an \(O(2)\) symmetry when \(\lambda=g\).
 \item
-A Wilson coefficient satisfies
-\(\mu\,dC/d\mu=\gamma C\) with constant \(\gamma\) at the order considered
-and is matched as \(C(M)=C_0\).  Solve for \(C(\mu)\), expand the result,
-and show how choosing \(\mu\sim E\ll M\) sums the powers of
-\(\gamma\ln(M/E)\).  Explain why matching at \(M\) and evaluating directly
-at \(E\) are logically distinct steps.
+For general \(g,\lambda\), determine whether counterterms of the form
+\(\phi_1\phi_2\) or \(\phi_1\Box\phi_2\) are required.  If not, explain
+which symmetry forbids them.
 \item
-Consider a four-dimensional EFT with all operators allowed by its exact
-symmetries and a single heavy scale \(M\).  Give a proof that a calculation
-of an \(E\)-scale observable through \(O((E/M)^N)\) requires only finitely
-many Wilson coefficients and loop graphs.  Your argument must include
-counterterm closure, multiple insertions, loop counting, and the role of
-relevant parameters.  State two circumstances in which naive dimensional
-power counting needs refinement.
+Renormalize the theory through one loop using, for example, a Euclidean
+momentum cutoff or Pauli--Villars regularization.  Add all necessary
+counterterms and impose renormalization conditions on the propagators in
+the case where both scalars are massless and on the independent
+\(2\to2\) amplitudes at nonexceptional kinematic values
+\(s_0,t_0,u_0\).  You may reuse the ordinary \(\phi^4\) bubble integral.
+\item
+In the low-energy limit \(s_0,t_0,u_0\ll\Lambda^2\), where \(\Lambda\) is
+the cutoff, tune both propagator poles to \(p^2=0\).  Show that for positive
+couplings with \(\lambda/g<3\) the low-energy coupling ratio flows toward
+the \(O(2)\)-symmetric value when it begins nearby.  Equivalently, analyze
+the beta function of \(r=\lambda/g\) and relate the flow to the source's
+fixed-physical-coupling, large-cutoff formulation.
 \end{enumerate}
 
 \SupplementaryExercise{14}{Scale Symmetry, the Dilatation Current, and Its Generator}

@@ -22,11 +22,21 @@ function.
 \SupplementaryExercise{2}{Completeness on the Scattering Subspace}
   {(Adapted from D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 8.6, Problem 3.)}
   {harlow-qft1-2024-curated-parent-2}
-For free identical scalar states normalized by
-\(\braket{\mathbf q}{\mathbf p}=\delta^3(\mathbf q-\mathbf p)\), verify
-the two-particle resolution of the identity, including its \(1/2!\)
-factor.  State how asymptotic completeness transports this identity to
-the in and out scattering bases.
+For a free identical scalar, let
+\(\ket{\mathbf p,\mathbf q}
+=a^\dagger(\mathbf p)a^\dagger(\mathbf q)\ket{\Omega}\) and use
+\([a(\mathbf p),a^\dagger(\mathbf q)]
+=\delta^3(\mathbf p-\mathbf q)\).  Verify explicitly on an arbitrary
+two-particle state that the two-particle part of the source resolution
+of the identity,
+\[
+ I_2=\frac1{2!}\int d^3\mathbf p\,d^3\mathbf q\,
+ \ket{\mathbf p,\mathbf q}\bra{\mathbf p,\mathbf q},
+\]
+acts as the identity.  Explain the origin of the \(1/2!\), generalize the
+symmetry factor to repeated species in a multiparticle basis, and state
+how asymptotic completeness transports the resolution to the in and out
+scattering bases.
 
 \SupplementaryExercise{3}{Invariant Flux, Two-Body Phase Space, and Decay Widths}
   {(Inspired by D. Harlow, \emph{Quantum Field Theory I}, 2024, Sections 8.4 and 8.6, Problem 6 | D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 8.4.)}
@@ -70,10 +80,13 @@ normalization explicit.
 \SupplementaryExercise{5}{Exact Scattering from a Delta Potential}
   {(Adapted from D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 8.6, Problem 4.)}
   {harlow-qft1-2024-curated-parent-5}
-For \(H=p^2/(2m)+V_0\delta(x)\), \(V_0>0\), construct stationary
-left- and right-incident in-states.  Determine the reflection and
-transmission amplitudes and the \(2\times2\) \(S\)-matrix, and verify its
-unitarity.
+For \(H=p^2/(2m)+V_0\delta(x)\), \(V_0>0\), construct explicit stationary
+left- and right-incident in-states and the corresponding out basis.
+Determine the reflection and transmission amplitudes and the \(2\times2\)
+\(S\)-matrix, and verify its unitarity.  As emphasized in the source hint,
+both incidence directions are needed for completeness, and every state
+used must be an eigenstate of the full Hamiltonian rather than of the free
+Hamiltonian alone.
 
 \SupplementaryExercise{6}{Disconnected Spectators}
   {(Inspired by D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 8.4.)}
@@ -106,78 +119,154 @@ the physical ranges of \(t\) and \(u\).
   {zhou-stanford-phys330-ps5-2022-curated-parent-2}
 \begin{enumerate}
 \item
-Let a real scalar \(\phi\) of mass \(M\) couple to a complex scalar
-\(\psi\) of mass \(m\) through
-\(\mathcal L_{\rm int}=-g\psi^*\psi\phi\).  For \(M>2m\), calculate
+Let a real scalar \(\phi\) of mass \(M\) and a complex scalar \(\psi\) of
+mass \(m\) have
+\[
+ \mathcal L=
+ -\frac12\partial_\mu\phi\,\partial^\mu\phi-\frac12M^2\phi^2
+ -\partial_\mu\psi^*\partial^\mu\psi-m^2\psi^*\psi
+ -g\psi^*\psi\phi .
+\]
+The source supplies the usual scalar rules; in this volume's mostly-plus
+convention they are
+\[
+ D_\phi(p)=\frac{-i}{p^2+M^2-i0},\qquad
+ D_\psi(p)=\frac{-i}{p^2+m^2-i0},\qquad
+ V_{\phi\psi\psi^*}=-ig.
+\]
+For \(M>2m\), calculate
 \(\Gamma(\phi\to\psi\psi^*)\) using covariantly normalized states.
 \item
 Find the leading invariant amplitude for
 \(\psi(p_1)\psi^*(p_2)\to\psi(p_3)\psi^*(p_4)\).  Identify the two
-channels and give the low-energy limit when every invariant is small
-compared with \(M^2\).
+channels, define the Mandelstam variables used, and give the low-energy
+limit when every momentum component is small compared with \(M\).
 \item
 Use the classical equation of motion for the heavy field in the preceding
 part to derive the leading local four-\(\psi\) interaction.  Check
 that its tree amplitude agrees with the low-energy expansion of heavy
-exchange, including the combinatorial factor.
+exchange, including the combinatorial factor, and determine the
+\(\lambda\) for which
+\(\mathcal L_{\rm eff,int}=-\lambda(\psi^*\psi)^2\).
 \end{enumerate}
 
 \SupplementaryExercise{9}{The Linear \(O(N)\) Sigma Model}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 5, 2022, Problem 4.)}
   {zhou-stanford-phys330-ps5-2022-curated-parent-3}
 \begin{enumerate}
-\item Quantize \(N\) real free scalar fields of equal mass and show that
-their two-point function is diagonal in the \(O(N)\) indices.
+\item Start from
+\[
+ \mathcal L_0=-\frac12\partial_\mu\Phi_i\partial^\mu\Phi_i
+ -\frac12m^2\Phi_i\Phi_i,\qquad
+ [\Phi_i(\mathbf x,0),\Pi_j(\mathbf y,0)]
+ =i\delta_{ij}\delta^3(\mathbf x-\mathbf y).
+\]
+Quantize the \(N\) equal-mass real fields and show that
+\(\langle0|T\{\Phi_i(x)\Phi_j(y)\}|0\rangle
+=\delta_{ij}D_F(x-y)\), including its momentum-space rule.
 \item Add
 \(\mathcal L_{\rm int}=-(\lambda/4)(\Phi_i\Phi_i)^2\), and obtain the
 four-scalar rule by differentiating with respect to labeled fields.
+As in the source hint, check separately the all-equal-flavor case and
+the case of two equal-flavor pairs.
 \item Calculate the center-of-mass total cross sections for
 \(\Phi_1\Phi_2\to\Phi_1\Phi_2\),
 \(\Phi_1\Phi_1\to\Phi_2\Phi_2\), and
-\(\Phi_1\Phi_1\to\Phi_1\Phi_1\), including final-state symmetry factors.
-\item Take \(m^2=-\mu^2<0\).  Find the vacuum manifold, choose a vacuum
-in the \(N\)-direction, and introduce one radial field \(\sigma\) and
-\(N-1\) fields \(\pi_a\).
-\item Expand about that vacuum.  Determine both masses, the constant
-term, and every cubic and quartic coupling.
+\(\Phi_1\Phi_1\to\Phi_1\Phi_1\), in terms of \(E_{\rm cm}\).  Start from
+the invariant two-body cross-section formula and include the
+final-state symmetry factors highlighted in the source hint.
+\item The uniform-field potential is
+\[
+ V(\Phi)=\frac12m^2\Phi_i\Phi_i
+ +\frac{\lambda}{4}(\Phi_i\Phi_i)^2.
+\]
+Take \(m^2=-\mu^2<0\).  Find the vacuum manifold, choose a vacuum in the
+\(N\)-direction, and define
+\[
+ \sigma=\Phi_N-v,\qquad \pi_a=\Phi_a,\quad a=1,\ldots,N-1.
+\]
+\item Expand about that vacuum and put the answer in the supplied form
+\[
+\begin{split}
+ \mathcal L={}&-\frac12(\partial\pi)^2-\frac12(\partial\sigma)^2
+ -\frac12m_\sigma^2\sigma^2
+ -\frac{\lambda_{4\pi}}4(\pi^2)^2-\lambda_{3\sigma}\sigma^3
+ -\frac{\lambda_{4\sigma}}4\sigma^4\\
+ &-\lambda_{\pi\sigma1}\pi^2\sigma
+ -\lambda_{\pi\sigma2}\pi^2\sigma^2+C .
+\end{split}
+\]
+Determine \(m_\sigma\), the pion mass, \(C\), and every displayed cubic
+and quartic coupling in terms of \(\mu,\lambda\).
 \item List all propagators and vertices in the broken parameterization,
-with their flavor tensors and numerical factors.
+with their flavor tensors and numerical factors.  No rule corresponds to
+the constant \(C\); use the source's pattern-recognition hint rather than
+expanding every flavor assignment separately.
 \item Find the total width for \(\sigma\) to decay into every allowed
 two-pion state.  Evaluate the lifetime for \(N=3\), \(\lambda=0.1\),
 and \(\mu=10\,\mathrm{GeV}\).
 \item Sum the contact and three \(\sigma\)-exchange graphs for
-\(\pi_i\pi_j\to\pi_k\pi_l\).
-\item Show that the pion amplitude vanishes when one external pion is
-taken soft on shell.
+\(\pi_i\pi_j\to\pi_k\pi_l\), writing the result in terms of \(s,t,u\).
+\item First show, as asked in the source, that the pion amplitude vanishes
+when all external spatial momenta tend to zero.  Then prove the stronger
+single-soft on-shell limit.  In the preceding part there should be four
+diagrams: one contact graph and three exchange graphs.
 \item Add \(+a\Phi_N\) to the Lagrangian.  Determine the shifted-vacuum
-condition and the pion mass through first order in \(a\).
+condition and the pion mass through first order in \(a\), keeping only
+the lowest useful order in \(a\) as suggested by the source.
 \end{enumerate}
 
 \SupplementaryExercise{10}{A Connected \(3\to3\) Tree Amplitude}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 4}, 2007, Problem 1.)}
   {tong-qft-sheet4-2007-curated-parent-1}
-In real \(\lambda\phi^4/4!\) theory, use the Dyson series to identify the
-connected \(3\to3\) contribution at order \(\lambda^2\).  For one chosen
-partition of the external momenta, derive the internal propagator and
-count the distinct tree topologies.
+For the real scalar theory
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{\lambda}{4!}\phi^4,
+\]
+use the Dyson series and Wick's theorem to identify the connected
+\(3\to3\) contribution at order \(\lambda^2\).  For a chosen three-leg
+partition \(A\) of six all-incoming external momenta, with
+\(q_A=\sum_{a\in A}k_a\), show that the graph contains
+\[
+ (-i\lambda)^2\frac{-i}{q_A^2+m^2-i0}.
+\]
+Check this against the Feynman rules and enumerate all other distinct
+labeled tree graphs contributing to the process.
 
 \SupplementaryExercise{11}{Exponentiation of Vacuum Bubbles}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 4}, 2007, Problem 2.)}
   {tong-qft-sheet4-2007-curated-parent-2}
-Through order \(\lambda^2\) in real \(\phi^4\) theory, use Wick's theorem
-to show that disconnected vacuum bubbles assemble into the first terms
-of the exponential of connected vacuum bubbles.  Explain why normalized
+For
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2-\frac{\lambda}{4!}\phi^4,
+\]
+examine
+\(\braket{0}{S|0}\) through order \(\lambda^2\).  Use Wick's theorem to
+identify the one-vertex double-tadpole, the connected two-vertex
+four-line ``basketball,'' the connected two-vertex graph with one
+self-contraction at each vertex and two lines joining the vertices, and
+the disconnected pair of one-vertex bubbles.  Show from their
+combinatorial factors that the result is the beginning of the exponential
+of the sum of connected vacuum-bubble types.  Explain why normalized
 scattering amplitudes contain no vacuum-bubble factor.
 
 \SupplementaryExercise{12}{An \(O(3)\)-Symmetric Scattering Theory}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 4}, 2007, Problem 3.)}
   {tong-qft-sheet4-2007-curated-parent-3}
 \begin{enumerate}
-\item Starting from three degenerate free real scalars, derive their
-propagator and explain why it is proportional to \(\delta_{ij}\).
-\item For
-\(\mathcal L_{\rm int}=-(\lambda/8)(\phi_i\phi_i)^2\), give all free and
-interacting Feynman rules, including the invariant rank-four tensor.
+\item Start from the complete \(O(3)\)-invariant Lagrangian
+\[
+ \mathcal L=-\frac12\partial_\mu\phi_i\partial^\mu\phi_i
+ -\frac12m^2\phi_i\phi_i-\frac{\lambda}{8}(\phi_i\phi_i)^2,
+ \qquad i=1,2,3.
+\]
+In the free theory derive
+\(\langle0|T\{\phi_i(x)\phi_j(y)\}|0\rangle
+=\delta_{ij}D_F(x-y)\).
+\item Give all free and interacting Feynman rules, including the
+invariant rank-four flavor tensor and every numerical factor.
 \item Evaluate \(\phi_i\phi_j\to\phi_k\phi_l\) at tree level.
 \end{enumerate}
 
@@ -186,15 +275,42 @@ interacting Feynman rules, including the invariant rank-four tensor.
   {tong-qft-sheet4-2007-curated-parent-4}
 For
 \[
- \mathcal L=\frac12(\partial\phi)^2-\frac12\mu^2\phi^2
- +\bar\psi(i\slashed\partial-m)\psi-\lambda\phi\bar\psi\psi ,
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12\mu^2\phi^2
+ -\bar\psi(\gamma^\mu\partial_\mu+m)\psi
+ -\lambda\phi\bar\psi\psi ,
 \]
+use covariantly normalized external states.  For example,
+\[
+ \ket{i_{\psi\psi}}
+ =\sqrt{4E_{\mathbf p}E_{\mathbf q}}\,
+ b^\dagger_{\mathbf p s}b^\dagger_{\mathbf q r}\ket0,\qquad
+ \ket{f_{\psi\psi}}
+ =\sqrt{4E_{\mathbf p'}E_{\mathbf q'}}\,
+ b^\dagger_{\mathbf p's'}b^\dagger_{\mathbf q'r'}\ket0,
+\]
+and replace the second \(b^\dagger\) by \(c^\dagger\) for a
+fermion--antifermion state.
 \begin{enumerate}
-\item compute \(\psi\psi\to\psi\psi\), retaining both scalar-exchange
-graphs and deriving their relative sign from the external Fock states;
-\item compute \(\psi\bar\psi\to\psi\bar\psi\), including elastic exchange
-and annihilation.  Display the spinor order and Mandelstam channel of
-each term.
+\item Starting from the Dyson formula and Wick's theorem, compute
+\(\psi\psi\to\psi\psi\), retaining both scalar-exchange graphs and
+deriving their relative sign from the external Fock states.  In local
+Mandelstam conventions, show that the answer has the form
+\[
+ \mathcal M_{\psi\psi}=-\lambda^2\left[
+ \frac{(\bar u_3u_1)(\bar u_4u_2)}{t-\mu^2+i0}
+ -\frac{(\bar u_4u_1)(\bar u_3u_2)}{u-\mu^2+i0}\right].
+\]
+\item Compute \(\psi\bar\psi\to\psi\bar\psi\), including elastic exchange
+and annihilation, and show
+\[
+ \mathcal M_{\psi\bar\psi}=-\lambda^2\left[
+ \frac{(\bar u_3u_1)(\bar v_2v_4)}{t-\mu^2+i0}
+ -\frac{(\bar v_2u_1)(\bar u_3v_4)}{s-\mu^2+i0}\right]
+\]
+up to the common overall \(S\)-matrix convention.  Display the spinor
+order and Mandelstam channel of each term and account for every minus
+sign.
 \end{enumerate}
 
 \SupplementaryExercise{14}{Three Routes to a Half-Line Fourier Transform}
@@ -208,13 +324,23 @@ distribution.  Pair its Fourier transform with
  e^{-(\omega-\omega_1)^2/(2\sigma^2)}
 \]
 by transforming the test function first, and evaluate the half-line
-integral.
+integral.  As in the source, the answer may be left as a definite
+integral or expressed with the error function.
 \item Replace \(g(t)\) by \(g_\epsilon(t)=g(t)e^{-\epsilon t}\).
-Perform the Gaussian pairing before taking \(\epsilon\to0^+\).
+Perform the Gaussian pairing before taking \(\epsilon\to0^+\).  Use the
+source hint that absolute convergence permits the order of integration to
+be exchanged.
 \item Instead truncate the time integral at \(T\).  Pair its ordinary
 Fourier transform with the Gaussian and take \(T\to\infty\).  Prove
 that all three routes give the same principal-value-plus-delta
-distribution.
+distribution.  Relate this to the source conditions
+\(\lvert g_\epsilon(t)\rvert\leq\lvert g(t)\rvert\) and
+\(g_\epsilon(t)\to g(t)\) pointwise.
+\item The preceding regulators are pointwise convergent and uniformly
+dominated.  Construct a family \(g_\epsilon(t)\) that still converges to
+\(g(t)\) at every fixed \(t\) but violates domination so strongly that
+its pairing with the same Gaussian has a different limit.  It is enough
+to carry the construction far enough to exhibit the nonzero extra term.
 \end{enumerate}
 
 \SupplementaryExercise{15}{Partial-Wave Unitarity and Cross-Section Bounds}

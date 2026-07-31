@@ -1,0 +1,213 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                  Physics 215A QFT Fall 2023
+                         Assignment 3
+                                      Due 11:00am Monday, October 23, 2023
+
+
+  1. Classical Maxwell theory. [Peskin problem 2.1, lightly edited] Classical elec-
+     tromagnetism follows from the action
+                  Z                        
+                       4     1     µν     µ
+           S[A] = d x − Fµν F − j Aµ , where Fµν = ∂µ Aν − ∂ν Aµ .
+                             4
+
+      (a) Derive two of the Maxwell equations (Gauss’ Law and Faraday’s Law) as
+          the Euler-Lagrange equations of this action, treating the components Aµ (x)
+          as the dynamical variables:
+                                                  δS[A]
+                                            0=           .
+                                                 δAµ (x)
+
+          Write the equations in the standard form by identifying E i = −F 0i and
+          ijk B k = −F ij .
+      (b) Construct the energy-momentum tensor for this theory, when j µ = 0. Note
+          that the usual procedure
+                                              ∂L
+                                    Tνµ =           ∂ν φ − Lδνµ
+                                            ∂(∂µ φ)
+
+          does not result in a symmetric tensor. (It is also not gauge invariant.) To
+          remedy that, we can add to T µν a term of the form ∂λ K λµν , where K λµν
+          is antisymmetric in its first two indices. Such an object is automatically
+          divergenceless, so
+                                      Tbµν ≡ T µν + ∂λ K λµν
+          is an equally good energy-momentum tensor with the same globally con-
+          served energy and momentum. Show that this construction, with
+
+                                       K λµν = F µλ Aν ,
+
+          leads to an energy-momentum tensor Tb that is symmetric and yields the
+          standard formulae for the electromagnetic energy and momentum densities:
+                                    1           ~=E
+                                                  ~ × B.
+                                                      ~
+                                      E2 + B2 , S
+                                             
+                               E=
+                                    2
+
+                                            1
+   (c) [Bonus problem] A better way to think about the energy-momentum tensor
+       is to regard it as the response to a change in the background metric. (This is
+       why it appears as a source in Einstein’s equations.) To couple the Maxwell
+       theory to a general background metric gµν , we replace all the ηµν s with gµν s:
+                                                                     
+                                     4 √
+                                 Z
+                                                 1        µρ νσ   µ
+                       S[A, g] = d x g − Fµν Fρσ g g + j Aµ
+                                                 4
+                               √      p
+       where the factor of g ≡           | det g| is required to make the integration
+       measure coordinate-invariant, and g µν is the inverse metric: g µν gνρ = δρµ .
+       Compare the resulting energy-momentum tensor
+
+                                            2 δS[A, g]
+                                    Tgµν = √           |gµν =ηµν .
+                                             g δgµν
+
+       with that of the previous part.
+       Notice that Tgµν is automatically symmetric and gauge invariant.
+       [Some useful identities are:
+
+             δg µν (x)                              δ det g(x)
+                       = −g µρ g νσ δ D (x − y) and            = δ D (x − y) det gg µν .
+             δgρσ (y)                                δgµν (y)
+
+       For proofs of these statements see page 93 of this document.]
+
+2. Maxwell’s equations, quantumly.
+
+   (a) Check that the oscillator algebra for the photon creation and annihilation
+       operators
+                                [aks , a†k0 s ] = δ 3 (k − k 0 )δss0 .        (1)
+       implies (using the mode expansion for A) that
+                                              Z                                
+                                                       ~       0
+                     [Ai (~r), Ej (~r )] = −i~ d̄3 k eik·(~r−~r ) δij − k̂i k̂j
+                                     0
+
+
+
+       (and also [Ai (~r), Aj (~r0 )] = 0 and [Ei (~r), Ej (~r0 )] = 0).
+       Conclude that it’s not possible to simultaneously measure Ex (~r) and By (~r).
+   (b) Using the result of the previous part, check that the wave equation for Ai (x)
+       follows from the Heisenberg equations of motion
+
+                                              ~ =   i     ~
+                                           ∂t E       [H, E].
+                                                    ~
+
+
+
+                                             2
+3. Goldstone boson. Here is a simple example of the Goldstone phenomenon,
+   which I mentioned briefly in lecture. Consider again the complex scalar field
+   from a previous assignment.
+  Suppose the potential is
+                                                        2
+                              V (Φ? Φ) = g Φ? Φ − v 2
+
+  where g, v are constants. The important features of V are that (1) it is only
+  a function of |Φ|2 = ΦΦ? , so that it preserves the particle-number symmetry
+  generated by q which was the hero a previous homework problem, and (2) the
+  minimum of V (x) away from x = 0.
+  Treat the system classically. Write the action S[Φ, Φ? ] in polar coordinates in
+  field space:
+                                  Φ(x, t) = ρeiθ
+  where both ρ, θ are functions of space and time.
+
+   (a) Consider constant field configurations, and show that minimizing the po-
+       tential fixes ρ but not the phase θ.
+   (b) Compute the mass2 of the ρ field about its minimum, m2ρ = 21 ∂ρ2 V |ρ=v .
+   (c) Now ignore the deviations of ρ from its minimum (it’s heavy and slow and
+       hard to excite), but continue to treat θ as a field. Plug the resulting expres-
+       sion
+                                        Φ = veiθ(x,t)
+       into the action. Show that θ is a massless scalar field.
+   (d) How does the U (1) symmetry generated by q act on θ?
+
+4. Angular momentum as Noether charge.
+  Consider an arbitrary local scalar field theory with Lagrangian density L =
+  L(φ, ∂µ φ) such that the action is invariant under rotations of space. A rotation
+  acts on a scalar field by
+                                   φ(xi ) 7→ φ(Rji xj )                         (2)
+  where R is a rotation matrix RT R = 1. Consider an infinitesimal rotation Rji =
+  δji + ωji , for ω an arbitrary (small) real antisymmetric matrix specifying the plane
+  and angle of rotation. Find the associated Noether currents in terms of φ.
+  Relate your answer to the form of the stress tensor. [Hint for interpreting the
+  answer: a rotation is a space-dependent translation.]
+
+
+
+                                        3
+  If you prefer, you may consider instead the full Lorentz group, which acts by
+                                          φ(xµ ) 7→ φ(Λµν xν )                    (3)
+  where Λ is a D × D matrix preserving the Minkowski metric ηµν .
+  Bonus problem: find the associated Noether charges in the case of a field theory of
+                                                                           ν
+  a vector such as electromagnetism, which transforms like Aµ (x) 7→ (R−1 )µ Aν (Rx).
+
+The following two problems can be handed either with HW03 or with HW04.
+
+5. Casimir force is regulator-independent. [Bonus problem] Suppose we use a
+                                                          P
+   different regulator for the sum in the vacuum energy j ~ωj . The regulator we’ll
+   use here is an analog of Pauli-Villars. In the notation introduced in the lecture
+   notes, we replace
+                                             ∞
+                                          1X
+                                  f (d)         ωj K(ωj )
+                                          2 j=1
+  where the function K is                       X              Λα
+                                    K(ω) =              cα          .
+                                                    α
+                                                             ω + Λα
+  We impose two conditions on the parameters cα , Λα :
+
+     • We want the low-frequency answer to be unmodified:
+                                                         ω→0
+                                                K(ω) → 1
+                          P
+        – this requires       α cα = 1.
+
+     • We want the sum over j to converge; this requires that K(ω) falls off faster
+       than ω −2 . Taylor expanding in the limit ω  Λα , we have
+                             ω→∞ 1               1 X
+                                    X
+                       K(ω) →           cα Λ α − 2    cα Λ2α + · · · .
+                                  ω α            ω α
+
+       So we also require α cα Λα = 0 and α cα Λ2α = 0.
+                           P                  P
+
+  First, verify the previous claims about K(ω).
+  Then compute f (d) and show that with these assumptions, the Casimir force is
+  independent of the parameters cα , Λα .
+  [A hint for doing the sum: use the identity
+                                       Z ∞
+                                  1
+                                    =       dse−sX
+                                  X     0
+
+  inside the sum to make it a geometric series. To do the remaining integral over
+  s, Taylor expand the integrand in the regime of interest.]
+
+                                                4
+6. Casimir energy from balls and springs. [More difficult bonus problem]
+   Regularize the Casimir energy of a 1d scalar field by discretizing space. If you
+   suppose there are N ≡ d/a ∈ Z lattice points in the left cavity
+
+                         | ← d → | ←−       L−d        −→ |
+
+  what answer do you find for the force on the middle plate?
+  [Hint: you will find the wrong answer! The problem is that with these assump-
+  tions d cannot vary continuously. One way to allow d to vary continuously (and
+  get the right answer) is to impose φ(0) = 0 = φ(d), but do not assume d corre-
+  sponds to a lattice site.]
+
+
+
+
+                                        5
+

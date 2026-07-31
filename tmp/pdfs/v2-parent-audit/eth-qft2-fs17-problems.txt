@@ -1,0 +1,1159 @@
+      Quantum Field Theory II
+                Problem Sets
+
+              ETH Zurich, FS17
+
+
+
+
+K. Ferreira, S. Lionetti, S. Trifinopoulos,
+             Prof. N. Beisert
+c 2017 Niklas Beisert, ETH Zurich
+This document as well as its parts is protected by copyright.
+This work is licensed under the Creative Commons
+“Attribution-NonCommercial-ShareAlike 4.0 International”
+License (CC BY-NC-SA 4.0).
+
+
+
+
+To view a copy of this license, visit:
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Contents
+Sheet 1                                                                                   1.1
+  1.1. Transition amplitude for the harmonic oscillator . . . . . . . . . . . . . .       1.1
+
+Sheet 2                                                                                   2.1
+  2.1. Generating functionals . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2.1
+  2.2. Propagator of a free Klein–Gordon field . . . . . . . . . . . . . . . . . . .      2.2
+
+Sheet 3                                                                                   3.1
+  3.1. Classical and quantum field configurations . . . . . . . . . . . . . . . . . .     3.1
+
+Sheet 4                                                                                   4.1
+  4.1. BCH formula . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    4.1
+  4.2. Simple Lie groups and simple Lie algebras . . . . . . . . . . . . . . . . . .      4.1
+  4.3. Tensor product representations . . . . . . . . . . . . . . . . . . . . . . . .     4.2
+  4.4. Dual and complex conjugate representations . . . . . . . . . . . . . . . .         4.2
+  4.5. Killing form and Casimir invariant . . . . . . . . . . . . . . . . . . . . . .     4.2
+
+Sheet 5                                                                                   5.1
+  5.1. Completeness relation and Casimirs for su(N ) . . . . . . . . . . . . . . .        5.1
+  5.2. Chromodynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       5.1
+  5.3. Wilson lines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5.2
+
+Sheet 6                                                                                   6.1
+  6.1. Gauge fixing in the path integral . . . . . . . . . . . . . . . . . . . . . . .    6.1
+  6.2. Construction of BRST transformations . . . . . . . . . . . . . . . . . . .         6.2
+
+Sheet 7                                                                                   7.1
+  7.1. Passarino–Veltman reduction . . . . . . . . . . . . . . . . . . . . . . . . .      7.1
+  7.2. Feynman’s parametrisation of loop integrals . . . . . . . . . . . . . . . . .      7.2
+  7.3. Renormalisation of cubic scalar theory in 6D . . . . . . . . . . . . . . . .       7.2
+
+Sheet 8                                                                                   8.1
+  8.1. Ward–Takahashi identity . . . . . . . . . . . . . . . . . . . . . . . . . . .      8.1
+  8.2. Axial anomaly in two dimensions . . . . . . . . . . . . . . . . . . . . . . .      8.2
+
+Sheet 9                                                                                   9.1
+  9.1. The Higgs mechanism in the standard model . . . . . . . . . . . . . . . .          9.1
+
+Sheet 10                                                                           10.1
+  10.1. The QED running coupling at one loop . . . . . . . . . . . . . . . . . . . 10.1
+
+Sheet 11                                                                           11.1
+  11.1. The Coleman–Weinberg Potential . . . . . . . . . . . . . . . . . . . . . . 11.1
+
+
+
+
+                                             iii
+Quantum Field Theory II                                                            Problem Set 1
+ETH Zurich, FS17                        K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                                      13. 03. 2017
+1.1. Transition amplitude for the harmonic oscillator
+A standard exercise regarding path integrals in quantum mechanics is the computation
+of the transition amplitude for a harmonic oscillator. The harmonic oscillator is specified
+by the Lagrange function
+                                L(q, q̇) = 12 mq̇ 2 − 21 mω 2 q 2 ,                   (1.1)
+where q and q̇ are the position and velocity variables.
+Compute the transition amplitude for the harmonic oscillator
+                                                         Z       Z tf            
+                                                                 ı̊
+                 U (qf , qi , t) := hqf , tf |qi , ti i = Dq exp       dt L(q, q̇) ,                        (1.2)
+                                                                 ~ ti
+
+where t := tf − ti . Show that it equals
+                                               1/2
+                                                           ı̊mω 12 (qi2 + qf2 ) cos(ωt) − qi qf
+                                                                                              
+                                   mω
+             U (qf , qi , t) =                        exp                                         .         (1.3)
+                               2π~ı̊ sin(ωt)                 ~              sin(ωt)
+
+Walkthrough:
+
+ a) Split up the path q(t) in n intermediate steps qk , k = 1, . . . , n − 1,
+                                     Z "n−1     #              " n            #
+                                        Y         h nm in/2     ı̊ X t
+               U (qf , qi , t) = lim        dqj             exp            Lk ,                             (1.4)
+                                 n→∞
+                                        j=1
+                                                   2π~ı̊t       ~   k=1
+                                                                         n
+
+    where q0 := qi , qn := qf and Lk = hqk |L(q̂, ˆ
+                                                  q̇)|qk−1 i.
+    Write the Lagrangian expectation value Lk in terms of the qk . Choose a suitable
+    definition of “ordering” of the operators with
+
+                                           ˆ k−1 i = qk − qk−1 ;
+                                      hqk |q̇|q                                                             (1.5)
+                                                        t/n
+
+    make some choice for evaluating V (q̂).
+
+b) Reexpress the exponential in (1.4) as a Gaußian function of the form
+                   " n          #       
+                     ı̊ X t               ı̊nm  1 T               
+                exp          Lk = exp                      ~ q~ + C ,
+                                                  q~ M~q + B T
+                                                                                                            (1.6)
+                     ~ k=1 n                ~t 2
+
+    where q~ = (q1 , q2 , . . . , qn−1 ) is an (n − 1)-dimensional vector, M is an (n − 1) × (n − 1)
+    matrix, B~ is an (n−1)-dimensional vector and C a constant (the latter two depending
+    on q0 = qi , qn = qf ). With this form, you should be able to compute the integral
+    (rather) easily.
+
+
+
+
+                                                                                                            −→
+
+                                                       1.1
+c) Let Mj denote the minor of M of size j × j with the last n − 1 − j rows and columns
+   eliminated. Show that the determinant of Dj := det Mj satisfies the equality
+
+                             Dj+1 − 2Dj + Dj−1
+                                               = −a2 Dj .                             (1.7)
+                                   (t/n)2
+
+   Determine the constant a, then solve the equation.
+   Hint: This difference equation is the discretised version of a well-known differential
+   equation. In order to solve it, you can solve the continuum equations for D(τ ), re-
+   express the solution in discretised time and match the coefficients to some small values
+   of j. You should find
+                  n
+           Dj ≃      sin(ωt) + (j − n + 1) cos(ωt) + O(1/n) for j ≈ n → ∞.            (1.8)
+                  ωt
+
+d) Now you are left with the computation of the coefficients of qi2 , qf2 and qi qf in the
+   exponent. You can compute them by computing the appropriate minors of M and
+   get the correct result. Enjoy!
+
+
+
+
+                                           1.2
+Quantum Field Theory II                                                 Problem Set 2
+ETH Zurich, FS17                  K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                        13. 07. 2017
+2.1. Generating functionals
+Consider a Lagrangian for scalars with a quartic interaction
+
+            L = L0 + Lint ,     L0 = − 21 ∂µ φ ∂ µ φ − 12 m2 φ2 ,            1
+                                                                    Lint = − 24 λφ4 .         (2.1)
+
+From the lecture you know that the interacting generating functional is then
+                                   Z                 
+                                          4       −ı̊δ
+                       Z[j] = exp ı̊ dx Lint             Z0 [j],                              (2.2)
+                                                 δj(x)
+
+expressed in terms of the free generating functional
+                               Z         Z               
+                                                4
+                                                         
+                      Z0 [j] = Dφ exp ı̊ dx L0 + j(x)φ(x) .                                   (2.3)
+
+
+a) Show that                            Z                        
+                                        ı̊   4  4
+                    Z0 [j] = Z0 [0] exp    dx dy j(x)GF (x, y)j(y) ,                          (2.4)
+                                        2
+    where GF (x, y) is exactly the Feynman propagator (and not just any Green function).
+
+b) Compute the vacuum contributions to Z[j] to order λ2 ,
+                       Z                  
+   Z[0]       1                4       −ı̊δ
+          =        exp ı̊ dx Lint              Z0 [j]
+   Z0 [0]   Z0 [0]                    δj(x)           j=0
+                   Z
+          = 1 + λ dx4 C1 GF (x, x)2
+                   Z         h
+                2
+            +λ       dx4 dy 4 C2,1 GF (x, x)2 GF (y, y)2
+                                                                          i
+                     + C2,2 GF (x, x)GF (y, y)GF (x, y)2 + C2,3 GF (x, y)4 + O(λ3 ),          (2.5)
+
+    being particularly careful in the computation of the combinatorial factors C1 , C2,1 ,
+    C2,2 , C2,3 . These factors can be computed either from the functional derivative ex-
+    pression or as symmetry factors of the related diagrams.
+    Describe graphically each term and identify connected and disconnected terms.
+
+ c) Show that the functional
+                                                          
+                                                  Z[j]
+                                 W [j] := −ı̊ log                                             (2.6)
+                                                  Z0 [0]
+
+    at j = 0 generates only the connected contributions to the vacuum amplitude.
+
+
+
+
+                                                                                              −→
+
+                                             2.1
+2.2. Propagator of a free Klein–Gordon field
+In this problem we will derive the Feynman propagator of a free scalar field using the path
+integral formalism. To that end, we will frequently need some generic Gaußian integrals.
+a) Compute the Gaußian integrals
+             Z                                           Z
+               dxn exp − 12 xT M x and                       dxn xj xk exp − 21 xT M x ,
+                                                                                     
+                                                                                              (2.7)
+
+    where x is an n-dimensional vector and M is a symmetric n × n matrix.
+    Hint: For the first integral, diagonalise M by a change of variables. Express the
+    prefactor of the second integral using a derivative w.r.t. a suitable element of M .
+To compute the relevant path integral
+                                                     R                         R +T      
+                                                         Dφ φ(x1 )φ(x2 ) exp ı̊ −T dx4 L
+            h0| T[φ(x1 )φ(x2 )]|0i =       lim              R            R +T       
+                                       T →∞(1−ı̊)            Dφ exp ı̊ −T dx4 L
+                                            dk 4 −ı̊ e−ı̊k(x1 −x2 )
+                                       Z
+                                  =                                 .                         (2.8)
+                                           (2π)4 k 2 + m2 −ı̊
+we discretise spacetime by considering a four-dimensional lattice with N lattice points
+per side of length L. In the continuum limit, the lattice spacing L/N goes to zero, and
+the lattice size L goes to infinity. We perform a discrete mode expansion of the free scalar
+field
+                                          1 X −ı̊kn x
+                                  φ(x) = 4      e     φ(kn ),                          (2.9)
+                                         L n
+where knµ = 2πnµ /L is the discretised momentum, with −N/2 ≤ nµ ≤ N/2 an integer.
+The individual Fourier coefficients φ(kn ) are complex but the field φ(x) is real, so that
+φ(kn )∗ = φ(−kn ). However, we can treat the real and imaginary part φr (k), φi (k) of
+φ(k) as independent variables if we restrict ourselves to modes with kn0 > 0. Finally, the
+integrals are replaced by (the range ‘n, +’ indicates the restriction to modes with kn0 > 0)
+
+                                                            dk 4
+                Z         Z Y                           Z
+                                                                     1 X
+                   Dφ →          dφr (kn ) dφi (kn ) ,           4
+                                                                   →   4
+                                                                           .          (2.10)
+                             n,+
+                                                           (2π)      L   n
+
+b) Find the discretised equivalent to the action of the Klein–Gordon field
+                          Z
+                      S = dx4 − 12 ∂µ φ(x)∂ µ φ(x) − 21 m2 φ(x)2 .
+                                                                
+                                                                                             (2.11)
+
+    Hint: Use reality of φ(x) to express the result quadratically in φr (kn ) and φi (kn ).
+ c) Making use of the results obtained in part a), compute the discrete equivalent of
+                                       Z
+                                          Dφ eı̊S .                                (2.12)
+
+d) Now compute the discretised version of (2.8) by inserting the mode expansion for
+   φ(x1 )φ(x2 ). Make use of the symmetry of the integrand (even or odd in φ) to maintain
+   only non-vanishing terms. Can you relate your expressions to what you found in
+   part a)? Finally, take the continuum limit and recover the Feynman propagator.
+
+
+                                                  2.2
+Quantum Field Theory II                                                  Problem Set 3
+ETH Zurich, FS17                    K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                       07. 03. 2017
+3.1. Classical and quantum field configurations
+Consider the action for φ4 -theory
+                              Z
+                     S[φ] = dxD − 21 ∂µ φ ∂ µ φ − 12 m2 φ2 − 4!1 λ φ4 ,
+                                                                    
+                                                                                             (3.1)
+
+and its generating functional Z[j] in the path integral
+                              Z                 Z       
+                                                       D
+                      Z[j] = Dφ expı̊ S[φ] + dx φ(x)j(x) .                                   (3.2)
+
+Z[j] may be approximated via the method of stationary phase. Namely, if φC [j] is the
+field configuration where the functional derivative of the exponent’s argument vanishes,
+
+                              δS             δS[φ]
+                                 [φC [j]] :=              = −j,                              (3.3)
+                              δφ              δφ φ=φC [j]
+
+the path integral is approximated by evaluating the exponent at this point (up to an
+irrelevant factor independent of j)
+                                              Z                 
+                                                  D
+                       Z[j] ≃ expı̊ S[φC [j]] + dx φC [j](x) j(x) .             (3.4)
+
+This implies for the connected functional
+                                                    Z
+               W [j] = −ı̊ log Z[j] ≃ S[φC [j]] +       dxD φC [j](x) j(x) =: T [j],         (3.5)
+
+where the last equality defines T [j].
+In the following two tasks use algebraic equations to obtain your answers, then give a
+graphical representation of results.
+
+a) Compute the classical field configuration φC [j] that solves the classical equation of
+   motion (3.3), in position space, using perturbation theory up to and including order
+   λ2 .
+
+b) Compute the two-point correlation function that stems fromı̊T [j] by taking functional
+   derivatives. What can be stated about higher-order perturbative corrections to this
+   result?
+
+
+
+
+                                                                                             −→
+
+                                             3.1
+The quantum effective action G[φ] is defined as the Legendre transform of the connected
+functional W [j]:
+                                                     Z
+                  δW
+              φ=      [jQ [φ]],   G[φ] = W [jQ [φ]] − dxD jQ [φ](x) φ(x).         (3.6)
+                   δj
+
+ c) The generating functional constructed using the quantum effective action then reads
+                              Z                 Z              
+                                                      D
+                     ZG [j] := Dφ expı̊ G[φ] + dx φ(x)j(x) .                       (3.7)
+
+    In the spirit of evaluating this path integral with the method of stationary phase, in
+    ZG [j]’s “classical limit” the only field configuration that contributes is the solution
+    φQ of the quantum equation of motion
+
+                                     δG
+                                        [φQ [j]] = −j.                                 (3.8)
+                                     δφ
+    Prove that the quantum field configuration φQ is given by
+
+                                             δW [j]
+                                  φQ [j] =          = hφij .                           (3.9)
+                                              δj
+
+d) Compute φQ [j] in position space up to and including order λ using functional manip-
+   ulations. After having drawn the diagrams that correspond to the terms you found,
+   extend your answer to order λ2 using graphical methods.
+
+e) Recursively invert the functional φQ [j] to obtain the functional jQ [φ] at order λ2 . In
+   other words, solve the definition of the functional jQ [φ] in (3.6) at order λ2 .
+
+ f ) Use the result for jQ [φ] to reconstruct the quantum effective action G[φ], as an ex-
+     pansion in λ at order λ2 , from its functional derivative (3.8)
+
+                                     δG[φ]
+                                           = −jQ [φ].                                (3.10)
+                                      δφ
+
+
+
+
+                                              3.2
+Quantum Field Theory II                                            Problem Set 4
+ETH Zurich, FS17                  K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                   17. 03. 2017
+4.1. BCH formula
+The Baker–Campbell–Hausdorff (BCH) formula states that
+
+                         exp(A) exp(B) = exp(A + B + A ? B),                             (4.1)
+
+where A ? B is an element of the Lie algebra generated by A and B given by
+                                      q         y 1q           y
+               A ? B = 21 JA, BK + 12
+                                   1
+                                       A, JA, BK + 12 B, JB, AK + . . . .                (4.2)
+
+Prove the BCH formula to this order assuming that A and B are matrices.
+Hint: Replace the exponents X by X and expand both sides to cubic order in .
+
+4.2. Simple Lie groups and simple Lie algebras
+A simple Lie group is a connected non-abelian Lie group with no proper connected normal
+subgroups (a subgroup H of a group G is called normal if ghg −1 ∈ H for all h ∈ H, g ∈ G;
+a subgroup of a group G is called proper if it is neither trivial nor the whole of G). We
+want to understand what this condition means in terms of the Lie algebra g of the group.
+In this exercise, we will only consider compact connected Lie groups, for which the expo-
+nential map is onto, i.e. each g ∈ G can be written as g = eA for some A ∈ g.
+
+a) A subalgebra is a subspace of an algebra which is closed under multiplication. In the
+   case of a Lie algebra this means that a subalgebra h of g obeys
+
+                                  h ⊂ g,     Jh, hK ⊂ h.                                 (4.3)
+
+    Show that the exponential map maps a subalgebra h into a subgroup H of G.
+    Hint: recall the Baker–Campbell–Hausdorff formula discussed in Problem 4.1.
+
+b) An ideal h of g is a subalgebra h ⊂ g with the property that
+
+                                        Jg, hK ⊂ h.                                      (4.4)
+
+    A proper subalgebra of g is a subalgebra which is neither trivial nor all of g.
+    Show, using the exponential map, that a Lie group is simple if and only if its Lie
+    algebra contains no proper ideals.
+    Hint: it is sufficient to work with infinitesimal elements of the group, i.e. exp(A) =
+    1 + A + O(2 ).
+
+
+
+
+                                                                                         −→
+
+                                           4.1
+4.3. Tensor product representations
+Representations of a Lie algebra g can be combined to give bigger representations via
+direct sums and tensor products
+                                  
+                      R1 (a)   0
+         R1⊕2 (a) =                  ,   R1⊗2 (a) = R1 (a) ⊗ id2 + id1 ⊗R2 (a). (4.5)
+                        0    R2 (a)
+Here R1 , R2 are representations of g on the spaces V1 , V2 and a ∈ g.
+a) Verify that the tensor product of two representations is again a representation.
+b) Consider the tensor product R⊗2 of two identical representations R. Show that it can
+   be decomposed as the direct sum R⊗2 = R+ ⊕ R− of representations R± acting on
+   the symmetric and anti-symmetric subspaces V± ⊂ V ⊗ V
+                            R± := P ± R⊗2 ,           P ± := 21 (id ±P ),                (4.6)
+    where P ± are projectors onto the subspaces V± and P is the permutation on V ⊗ V
+    acting as P (v ⊗ w) = w ⊗ v for any two vectors v, w ∈ V.
+    Hint: It is useful to show that P ± R⊗2 = R⊗2 P ± .
+
+4.4. Dual and complex conjugate representations
+The dual of a representation R of a Lie algebra g on the vector space V is defined as the
+representation R∗ on the dual vector space V∗ by R∗ (a) = −R(a)T for all a ∈ g.
+a) Verify that R∗ is a representation.
+b) For a unitary representation R of a real Lie algebra, show that R∗ is the complex
+   conjugate representation R̄.
+ c) Show that the tensor product R ⊗ R∗ contains the trivial representation.
+    Hint: Consider the representation acting on the state v i ⊗ vi∗ , where v i is a basis of V
+    and vi∗ is the dual basis of V∗ with vi∗ (v k ) = δik .
+
+4.5. Killing form and Casimir invariant
+The Killing bilinear form for a Lie algebra g is defined as
+                       K(a, b) := Tr Rad (a)Rad (b)
+                                                   
+                                                         for a, b ∈ g.                   (4.7)
+It can be expanded in a basis Ta of g as the matrix kab := K(Ta , Tb ). For semi-simple g
+this matrix is invertible and its inverse shall be denoted by k ab . Define the representation
+R of the quadratic Casimir invariant C2 = K −1 as
+                                  R(C2 ) := k ab R(Ta )R(Tb ).                           (4.8)
+
+a) For generic a, b, c ∈ g show that
+                   K(a, b) = K(b, a),         K(Jc, aK, b) + K(a, Jc, bK) = 0.           (4.9)
+    Express these relationships in terms of kab and fabc := fab d kdc .
+b) Show that R(C2 ) is invariant, i.e. [R(a), R(C2 )] = 0 for all a ∈ g.
+ c) Argue that R(C2 ) = C2R idR for an irreducible representation R.
+
+                                                4.2
+Quantum Field Theory II                                                       Problem Set 5
+ETH Zurich, FS17                      K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                       13. 07. 2017
+5.1. Completeness relation and Casimirs for su(N )
+The special unitary algebra su(N ) is defined as the commutator algebra on the space of
+anti-hermitian traceless matrices. We can use an imaginary basis Tadef , a = 1, . . . N 2 − 1,
+so that Tadef is hermitian (Tadef )† = Tadef . The Killing metric kab is
+                                     tr[Tadef Tbdef ] = B def kab .                          (5.1)
+
+a) Let X be a generic N × N complex matrix. Prove the completeness relation
+                    k ab tr[Tadef X] Tbdef = B def X − N −1 tr[X] id .
+                                                                    
+                                                                                             (5.2)
+    Hint: consider the space of N × N complex matrices as an N 2 -dimensional vector
+    space over C and find a suitable basis by extending the basis of su(N ).
+b) Knowing the previous identity (5.2), prove the completeness relation
+                      k ab Tadef XTbdef = B def tr[X] id −N −1 X .
+                                                                
+                                                                                             (5.3)
+
+ c) Consider the symmetric structure constants dab c as defined by
+                              {Tadef , Tbdef } = dab c Tcdef + q kab id .                    (5.4)
+    By choosing the coefficient q appropriately, show that dab c is traceless in the first two
+    indices,
+                                       k ab dab c = 0.                                    (5.5)
+d) Show that the quadratic and cubic Casimir invariants for the defining representation,
+   k ab Tadef Tbdef = C2def id and dabc Tadef Tbdef Tcdef = C3def id, are given by
+                          N 2 − 1 def                   (N 2 − 4)(N 2 − 1) def 2
+                C2def =          B ,          C3def =                     (B ) .             (5.6)
+                            N                                  N2
+
+5.2. Chromodynamics
+The chromodynamics Lagrangian is given by
+                                                          1
+                           L = ψ̄(γ µ Dµ − m)ψ −          2
+                                                             tr(Fµν F µν ),                  (5.7)
+                                                        2gYM
+where Fµν is the field strength tensor of a SU(3) gauge field Aµ and ψ is 3-vector of Dirac
+fields transforming in the defining representation of SU(3).
+a) Write down the equations of motion for the fields.
+b) Show that the fermionic current (J µ )α β =ı̊ψ̄β γ µ ψ α is covariantly conserved
+                                           [Dµ , J µ ] = 0.                                  (5.8)
+
+ c) Expand the terms in the Lagrangian in terms of the gauge field Aµ = gTadef Aaµ and
+    interpret pictorially the individual terms.
+d) Can you write down a Lagrangian for a scalar field that is invariant under SU(3)?
+                                                                                             −→
+
+                                                 5.1
+5.3. Wilson lines
+Consider a group-valued smooth function U (y, x) called comparator which allows to re-
+late the gauge phase of fields at different points in spacetime. The comparator satisfies
+U (x, x) = 1, as well as U (y, x)−1 = U (x, y). Under a gauge transformation V (x) it
+transforms as
+                              U 0 (y, x) = V (y)U (y, x)V −1 (x).                  (5.9)
+Expanding the comparator for a short distance in direction nµ yields
+   U (x + n, x) = 1 +ı̊nµ Aµ (x) + 12 2 ı̊nµ nν ∂ν Aµ (x) − (nµ Aµ (x))2 + O(3 ).
+                                                                          
+                                                                                                     (5.10)
+a) Using the comparator, we can construct a quantity W (x) which connects a spacetime
+   point x to itself along a small quadrangle spanned by the vectors m and n
+                       W (x) = U (x, x + n)U (x + n, x + n + m)
+                                 · U (x + n + m, x + m)U (x + m, x).                             (5.11)
+    Show that this quantity is gauge covariant at x. Expand W (x) to second order in 
+    and compare to the field strength Fµν = −ı̊[Dµ , Dν ].
+    Hint: You may restrict to the abelian case to get started.
+The comparator is the infinitesimal version of an object called the Wilson line. Let us
+first consider the abelian case. Then the Wilson line for a path γ is defined by
+                                               Z 
+                                   U [γ] = exp ı̊ A .                            (5.12)
+                                                              γ
+                  µ
+Here A(x) = dx Aµ (x) is the gauge field one-form. If the path γ is closed, U [γ] is called
+a Wilson loop.
+b) Using Stokes’ theorem, rewrite an abelian Wilson loop U [γ] in terms of the field
+   strength F = 21 dxµ ∧ dxν Fµν . Conclude that the abelian Wilson loop is gauge
+   invariant. Show that the Wilson loop U [γ] reduces to W (x) at leading non-trivial
+   order for a small quadrangular path γ as described in part a).
+ c) Consider a fixed parametrised path γ : τ 7→ y µ (τ ), and denote by γt,s the sub-path
+    on the interval τ ∈ [s, t].
+    Show that U [γt,s ] satisfies the differential equations (ẏ µ := dy µ /dτ )
+      ∂t U [γt,s ] −ı̊ẏ µ (t)Aµ (y(t))U [γt,s ] = ∂s U [γt,s ] +ı̊ẏ µ (s)U [γt,s ]Aµ (y(s)) = 0.   (5.13)
+    Hint: Parametrise the integral of the Wilson line as
+                             Z         Z t
+                                 A=        dτ ẏ µ (τ )Aµ (y(τ )).                                   (5.14)
+                                     γt,s        s
+
+Consider now a non-abelian gauge field for which the Wilson line is given by
+                                    Z t                       
+                                                 µ
+                     U [γt,s ] = P exp ı̊   dτ ẏ (τ )Aµ (y(τ )) .                                   (5.15)
+                                                     s
+Here P denotes path ordering which means that the terms in the expansion of the expo-
+nential are ordered in such a way that higher values of τ stand to the left.
+d) Show that the non-abelian Wilson line satisfies the same differential equations as in
+   the abelian case paying close attention to the particular ordering in (5.13).
+ e) Show that the differential equation (5.13) is gauge covariant. Note that U [γt,s ] trans-
+    forms analogously to (5.9): U 0 [γt,s ] = V (y(t))U [γt,s ]V (y(s))−1 .
+
+                                                     5.2
+Quantum Field Theory II                                           Problem Set 6
+ETH Zurich, FS17                 K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                  21. 03. 2017
+6.1. Gauge fixing in the path integral
+a) Consider the action for pure electrodynamics
+                                     Z
+                             SED = dxD − 41 Fµν F µν .
+                                                   
+                                                                                        (6.1)
+
+   Perform the gauge fixing via the Faddeev–Popov method, using the non-linear gauge
+   condition
+                           G[A, Ω] = ∂µ Aµ + 12 ζAµ Aµ − Ω.                     (6.2)
+   Invert the kinetic operators that appear in the action to find the propagators for the
+   photon field and for the ghost field.
+   Is the ghost field decoupled in this gauge? Show that in the limit ζ → 0 the modified
+   Lorenz gauge with gauge-fixing parameter ξ is restored.
+
+b) Consider the action for pure Yang–Mills theory
+                                  Z
+                            SYM = dxD − 14 kab Fµνa
+                                                    F b µν .
+                                                         
+                                                                                        (6.3)
+
+   Perform the gauge fixing via the Faddeev–Popov method using the axial gauge con-
+   dition along a fixed four-vector nµ
+
+                                G[A, Ω]a = nµ Aaµ − Ω a .                               (6.4)
+
+   Invert the kinetic operators that appear in the action to find the propagators for the
+   ghost field and for the gluon field.
+   Under which condition do ghosts decouple from gluon fields in this gauge? How can
+   this be exploited in practice?
+
+
+
+
+                                                                                        −→
+
+                                          6.1
+6.2. Construction of BRST transformations
+Consider the Yang–Mills Lagrangian with fermions
+                                           a 2
+                              LYM = − 14 (Fµν ) + ψ̄(γ µ Dµ − m)ψ.                    (6.5)
+
+One possibility to construct BRST transformations for this theory is to proceed as follows:
+Start from the infinitesimal change of fields under a gauge transformation parametrised
+by αa (x),
+                 δAaµ (x) = (Dµ )a b αb (x), δψ i (x) =ı̊gαa (x)(Ta )i j ψ j (x),     (6.6)
+where (Dµ )a b is the covariant derivative in the adjoint representation
+
+                                   (Dµ )a b = δba ∂µ − gfbc a Acµ .                   (6.7)
+
+Then promote the parameter αa (x) to a set of dynamical anti-commuting fields C a (x)
+and a constant anti-commuting variational parameter δ
+
+                                        αa (x) = δ C a (x).                          (6.8)
+
+This defines the BRST transformation Q for matter and gauge fields via
+
+                                            δφ ≡ δ Qφ,                               (6.9)
+
+where φ is a generic field.
+
+a) By requiring that the BRST transformation for a matter field is nilpotent, Q2 ψ i = 0,
+   determine the BRST variation QC a of ghost fields.
+
+b) Check explicitly that, using the same rule for the transformation of C a , applying the
+   Q operator two times on a gauge field Aaµ or a ghost field C a gives zero.
+
+Because the BRST transformation acts exactly as a gauge transformation on matter
+fields, the Yang–Mills Lagrangian is obviously BRST-invariant. Moreover, since Q has
+been constructed in such a way that Q2 = 0, any extra term
+
+                                       LBRST = QKBRST ,                             (6.10)
+
+will make the total Lagrangian L = LYM + LBRST BRST-invariant.
+
+ c) Show that the choice
+
+                                KBRST = kab C̄ a ( 12 ξB b − ∂ µ Abµ ),             (6.11)
+
+    together with
+                                   QC̄ a = B a ,         QB a = 0,                  (6.12)
+    still preserves trivially Q2 = 0 and gives the gauge-fixing Lagrangian for modified
+    Lorenz gauges with gauge-fixing parameter ξ, the ghost kinetic term and ghost inter-
+    actions.
+
+
+
+
+                                                   6.2
+Quantum Field Theory II                                              Problem Set 7
+ETH Zurich, FS17                    K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                     14. 06. 2017
+7.1. Passarino–Veltman reduction
+We will study a method to reduce one-loop tensor integrals to linear combinations of
+scalar integrals. The integrals are defined in D dimensions with Wick-rotated momenta.
+Specifically, we define the integrals as
+
+                                       dk D
+                                   Z
+                             2                   1
+                       A0 (m ) :=                      ,                         (7.1)
+                                      (2π) k + m2
+                                           D  2
+
+                                       dk D
+                                   Z
+                                                   (1, kµ , kµ kν )
+                        B0,µ,µν :=                                        .      (7.2)
+                                      (2π)D [k 2 + m21 ][(k − p)2 + m22 ]
+
+For simplicity, we shall suppress the arguments (p; m21 , m22 ) of the functions B.
+The goal is to reduce the integrals Bµ , Bµν to a linear combination of integrals A0 , B0 with
+suitable coefficient functions. The ansatz is to decompose the tensor integrals according
+to their Lorentz structure; the allowed structures for the two tensor integrals are
+
+                                  Bµ = pµ B1 ,                                             (7.3)
+                                 Bµν = pµ pν B21 + ηµν B22 ,                               (7.4)
+
+where B1 , B21 , B22 are linear combinations of A0 and B0 which are to be determined.
+
+a) Express B1 in (7.3) as a linear combination of A0 (m21 ), A0 (m22 ) and B0 .
+   Hint: Write Bµ as the integral of (7.2), contract both sides of (7.3) with pµ and then
+   rewrite the numerator of the integrand as a linear combination of the factors in the
+   denominator of the integrand as well as m21 , m22 and p2 . You should find
+
+                            1       2      1       2     p2 + m22 − m21
+                  B1 = −       A0 (m1 ) +     A0 (m2 ) +                B0 .               (7.5)
+                           2p2            2p2                 2p2
+
+b) For the tensor integral Bµν , we can obtain a 2 × 2 linear system of equations by
+   contracting both sides of (7.4) with η µν and pµ pν , respectively.
+   Repeat the steps for the manipulation of the numerator of the integrands. Show that
+   the linear system expressing B21 , B22 in terms of the scalar integrals A0 , B0 is
+
+                           p2 B21 + DB22 = X1 A0 (m22 ) + X2 B0 ,                          (7.6)
+                             p2 B21 + B22 = Y1 A0 (m22 ) + Y2 B1 ,                         (7.7)
+
+    where Xi , Yi are some functions to be determined. Finally, solve for B21 , B22 .
+    Hint: You may recycle the results of part a); furthermore, recall the integral
+
+                                     dk D     kµ
+                                  Z
+                                                    = 0.                                   (7.8)
+                                    (2π)D k 2 + m2
+
+
+
+
+                                                                                           −→
+
+                                             7.1
+7.2. Feynman’s parametrisation of loop integrals
+Prove the following identity, which is used to combine the denominators of integrands in
+loop integrals
+                      Γ( nj=1 aj )                            δ(1 − nj=1 xj )xa11 −1 . . . xann −1
+                        P               Z 1           Z 1            P
+          1
+                   =                        dx1 . . .     dxn                                      . (7.9)
+   D1a1 . . . Dnan   Γ(a1 ) . . . Γ(an ) 0             0       [x1 D1 + . . . + xn Dn ]a1 +...+an
+Hint: carry out the proof by induction, starting from n = 2; to prove the n = 2 case,
+you will need the following definition for the Gaußian hypergeometric function 2 F1 (for
+Re(c) > Re(b), Re(a) > 0, |z| < 1)
+                                               Z 1
+                                     Γ(c)
+            2 F1 (a, b; c; z) :=                   dx xb−1 (1 − x)c−b−1 (1 − zx)−a
+                                 Γ(b) Γ(c − b) 0
+                                            ∞
+                                   Γ(c) X Γ(a + k) Γ(b + k) z k
+                               =                                      .            (7.10)
+                                 Γ(a) Γ(b) k=0      Γ(c + k)       k!
+
+It makes sense to show that
+                                                                   −a
+                                2 F1 (a + b, a; a + b; z) = (1 − z) .                              (7.11)
+
+7.3. Renormalisation of cubic scalar theory in 6D
+Consider a scalar theory in D = 6 with cubic interaction
+
+                               L = − 12 ∂µ φ0 ∂ µ φ0 − 12 m20 φ20 − 61 λ0 φ30 .                    (7.12)
+
+In this problem we want to derive the one-loop renormalisation of the bare couplings in
+dimensional regularisation at D = 6 − 2.
+ a) Show, by power counting, that the theory is renormalisable in D = 6.
+b) Rewrite the Lagrangian in terms of the renormalised field φ = κ−1 φ0 . Then adjust
+   the interaction term by a suitable power of the scale parameter µ for dimensional
+   regularisation such that the coupling constant λ0 becomes dimensionless.
+ c) Derive the Feynman rules for the theory.
+d) Compute the one-loop self energy contribution to the effective action. Express the
+   final result as a function of , and extract the divergent contribution at  → 0.
+   Hint: Perform the integral over the Feynman parameter at the very end.
+Next we introduce the renormalised mass m and coupling λ, and express the bare constants
+κ, m0 , λ0 as functions of them
+
+  κ = 1 + c1 λ2 + O(λ4 ), m20 = m2 1 + c2 λ2 + O(λ4 ) , λ0 = λ + c3 λ3 + O(λ5 ). (7.13)
+                                                     
+
+
+ e) Write the two-point contributions to the effective action (tree level plus one loop) as a
+    function of the renormalised mass and coupling. Determine the one-loop contributions
+    to (7.13) such that the divergences due to the self energy cancel.
+ f ) Compute the one-loop correction to the vertex. Identify the divergent part, and
+     determine the remaining coefficient in (7.13) to make the effective action finite.
+
+
+                                                     7.2
+Quantum Field Theory II                                                         Problem Set 8
+ETH Zurich, FS17                         K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                                  25. 04. 2017
+8.1. Ward–Takahashi identity
+The Ward–Takahashi identities in QED are the extension of the conservation of the
+Noether current for the U(1) global symmetry
+
+                                        Nµ (x) =ı̊q ψ̄(x)γµ ψ(x)                                         (8.1)
+
+to correlation functions. The Ward–Takahashi identity reads
+
+     ∂zµ Nµ (z) ψ(x1 )ψ̄(y1 ) . . . ψ(xn )ψ̄(yn ) Aν1 (z1 ) . . . Aνp (zp )                               (8.2)
+                                                                      X n
+                                                                            δ 4 (z − yi ) − δ 4 (z − xi ) .
+                                                                                                         
+    = −q ψ(x1 )ψ̄(y1 ) . . . ψ(xn )ψ̄(yn ) Aν1 (z1 ) . . . Aνp (zp )
+                                                                      i=1
+
+Define the full propagator for the electron in momentum space as
+                                        Z
+                   −ı̊G(k)δ (k − p) := dy 4 dz 4 ψ(y)ψ̄(z) eı̊p·z−ik·y .
+                            4
+                                                                                                         (8.3)
+
+and the electromagnetic vertex function V µ (k, l) as
+ Z
+    dx4 dy 4 dz 4 e−ı̊(p·x+k·y−l·z) N µ (x)ψ(y)ψ̄(z) =:ı̊qG(k)V µ (k, l)G(l)δ 4 (p + k − l). (8.4)
+
+ a) Show that the Ward–Takahashi identity implies that
+
+                            pµ V µ (k, k + p) =ı̊G−1 (p + k) −ı̊G−1 (k).                                 (8.5)
+
+b) Define the counterterms Z1 and Z2 as
+
+                                         V µ (k, k) = (Z1 )−1 γ µ ,                                      (8.6)
+
+    and
+                                 −ı̊Z2 = 2 lim 2 (ı̊γ µ kµ + m)G(k).                                     (8.7)
+                                            k →−m
+
+    Note that V µ (k, k) is the complete vertex function when the momentum of the external
+    photon goes to zero, and Z2 is defined for on-shell electrons with momentum kµ . Show
+    that, with these definitions,
+                                           Z1 = Z2 .                                 (8.8)
+
+
+
+
+                                                                                                         −→
+
+                                                    8.1
+8.2. Axial anomaly in two dimensions
+Consider a massless Dirac spinor field ψ in two spacetime dimensions coupled to a fixed
+background gauge field A
+                                 L = ψ̄γ µ (∂µ −ı̊Aµ )ψ.                          (8.9)
+The Dirac matrices satisfy the Clifford algebra {γ µ , γ ν } = 2η µν . The matrix γ 3 is the
+two-dimensional analog of γ 5 in four dimensions
+                                γ 3 = − 21 εµν γ µ γ ν = −γ 0 γ 1 ,                  (8.10)
+where εµν is the totally anti-symmetric tensor in two dimensions with ε01 := +1. It
+satisfies
+                               γ 3 γ µ = −γ µ γ 3 = η µν ενρ γ ρ .            (8.11)
+a) Choose the spinor field and gamma-matrices as follows:
+                                                           
+         ψ+        0       0 +1       1     0 −1          3  +1 0
+    ψ=        , γ =                , γ =              , γ =         .                (8.12)
+         ψ−               −1 0             −1 0               0 −1
+    Write the Lagrangian (8.9) in terms of these components, and derive the equations
+    of motion. What do you observe?
+b) Use the equations of motion to show that the vector and axial currents
+                          NVµ = −ı̊ψ̄γ µ ψ,        NAµ = −ı̊ψ̄γ 3 γ µ ψ.             (8.13)
+    are separately conserved.
+ c) optional:  Compute the correlator of two currents at A = 0
+
+                                                                    p µ pν
+                                                                          
+      µ      ν            µ                       2 2       ı̊   µν
+     NV (p) NV (q) A=0 = NV (p)       ν
+                                    NV (q) = (2π) δ (p + q)     η − 2 .              (8.14)
+                                                            π         p
+
+    Hint: Use dimensional regularisation and assume massless tadpole integrals to vanish.
+d) Express the vector current expectation value hNVµ (p)i at one loop and to linear order
+   in the vector field A in terms of the current correlator (8.14). In other words, compute
+   the graph
+                                       NVµ (p)          A.                           (8.15)
+
+    Check that the current is conserved at this order.
+ e) Show that the axial current is no longer conserved at the quantum level. To this end
+    compute the expectation value hNAµ (p)i at one loop and at linear order in A
+
+                                       NAµ (p)          A                            (8.16)
+
+    using your results of part d) together with (8.11) to relate the currents.
+ f ) Can you obtain the anomaly from a computation in position space? What do you
+     find for h∂·NV (x)i and h∂·NA (x)i? Can you make it agree with parts d) and e)?
+     Hint: No regularisation is required here.
+
+                                                 8.2
+Quantum Field Theory II                                                Problem Set 9
+ETH Zurich, FS17                    K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                     26. 04. 2017
+9.1. The Higgs mechanism in the standard model
+In this exercise we review the Higgs mechanism in the standard model. Let us consider
+first of all the mass terms of matter fields. Take the first lepton generation, i.e. the
+electron and its neutrino. The electroweak gauge group is SU(2)I × U(1)Y (weak isospin
+and hypercharge). Left- and right-handed fermions appear in different structures in the
+Lagrangian. The left-handed leptons form a doublet with respect to SU(2)I
+                                    
+                                     ν                  a
+                            LL := L ,         L0L = eı̊θ Ia LL ,                   (9.1)
+                                     eL
+
+where the generators of SU(2)I in the fundamental representation may be chosen to be
+Ia = 12 σa (σa are the Pauli matrices). The right-handed electron is a singlet under SU(2)I .
+
+                                           e0R = eR .                                      (9.2)
+Neutrinos are taken to be massless: the corresponding right-handed field is thus not
+needed.
+Under U(1)Y the fields transform as
+
+                             L0L = e−ı̊θ/2 LL ,     e0R = e−ı̊θ eR .                       (9.3)
+
+a) Why is a mass term of the form
+
+                                Lmass := −me (ēL eR + h.c.),                              (9.4)
+
+    not allowed?
+
+b) In order to assign a mass to our fields we introduce a new scalar field H. This field
+   couples to the electron and neutrino as
+
+                              LYukawa := −y(L̄L HeR + h.c.),                               (9.5)
+
+    where y is the coupling constant. How should H change with respect to a gauge
+    transformation?
+
+ c) Show that it is always possible to find a gauge transformation U that sets the first
+    component of H to zero and makes the second one real,
+                                          +  
+                                          H         0
+                              UH = U        0   =       .                         (9.6)
+                                          H        Hr
+
+    The gauge that brings H in this form is called unitary gauge.
+
+
+
+
+                                                                                           −→
+
+                                              9.1
+d) Consider a gauge-invariant, renormalisable potential term for the scalar field
+
+                                 Lpot = µ2 (H † H) − 21 λ(H † H)2 .                             (9.7)
+
+    Find the minima of this potential and show that for µ2 > 0 they correspond to field
+    configuration(s) H 6= 0.
+
+e) Assume µ2 > 0 and redefine
+                                               1
+                                         Hr = √ (v + η),                                        (9.8)
+                                                2
+    to make excitations of H with respect to the ground state more explicit. η is thus
+    the new physical Higgs boson field. Write down (9.5) in terms of the Higgs field and
+    the vacuum expectation value v. Note that the fermions acquire a mass term, and
+    express the fermion mass in terms of y and v. What is the coupling of the Higgs
+    boson to the fermions in terms of me and v?
+
+The standard model Lagrangian density also contains a kinetic term for the Higgs doublet
+
+                                     Lkin := −(Dµ H)† (Dµ H).                                   (9.9)
+
+The covariant derivative acting on the Higgs doublet involves the gauge fields for the
+SU(2)I and U(1)Y symmetry Wµa and Bµ , respectively
+
+                                  Dµ = ∂µ −ı̊gIa Wµa −ı̊g 0 Y Bµ .                             (9.10)
+
+In the following you should try to find the masses and the couplings to the Higgs boson
+of the physical standard model fields.
+
+ f ) Diagonalise the quadratic term by introducing the physical fields
+
+                   1                                 gWµ3 − g 0 Bµ           gBµ + g 0 Wµ3
+  Wµ+ = (Wµ− )† = √        (Wµ1 −ı̊Wµ2 ),    Zµ0 =    p            ,    Aµ = p             .   (9.11)
+                       2                               g2 + g02                g2 + g02
+
+    Read off the masses and couplings of the theory in terms of g, g 0 , v, λ and µ by
+    comparing the resulting expression for Lkin to
+
+          (Dµ H)† (Dµ H) = 21 (∂µ η)2
+                           + 12 m2Z Zµ0 Z 0,µ + 12 ρZ ηZµ0 Z 0,µ + 14 λZ η 2 Zµ0 Z 0,µ         (9.12)
+                               + m2W Wµ+ W −,µ + ρW ηWµ+ W −,µ + 21 λW η 2 Wµ+ W −,µ .
+
+g) The original doublet H included four degrees of freedom. Which symmetry was bro-
+   ken? Where are the degrees of freedom hidden after spontaneous symmetry breaking?
+   Why did the photon field Aµ not acquire a mass term? Why does it couple to the
+   fermion vector currents, but not to the axial currents?
+
+
+
+
+                                                  9.2
+Quantum Field Theory II                                                 Problem Set 10
+ETH Zurich, FS17                    K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                            10. 05. 2017
+10.1. The QED running coupling at one loop
+Consider the Lagrangian of quantum electrodynamics,
+
+                            L = ψ̄0 (γµ D0µ − m0 )ψ0 − 14 (F0µν )2 ,                            (10.1)
+
+where the covariant derivative is given by
+
+                                     D0µ = ∂ µ −ı̊q0 Aµ0 .                                      (10.2)
+
+The gauge may be fixed in a covariant way by adding the term
+                                              1
+                                   Lgf = −       (∂µ Aµ0 )2 .                                   (10.3)
+                                             2ξ0
+This theory may be renormalised via a multiplicative redefinition of each field and pa-
+rameter appearing in the Lagrangian,
+
+            1/2            1/2             Zm                    Zq                 ZA
+     ψ0 = Zψ ψ,    A0 = ZA A,       m0 =      m,      q0 =       1/2
+                                                                        q,   ξ0 =      ξ.       (10.4)
+                                           Zψ                   ZA Zψ               Zξ
+
+a) Determine which one-particle irreducible correlation functions are superficially diver-
+   gent in the UV and thus need to be renormalised.
+
+The Ward–Takahashi identity for the connected generating functional can be obtained
+from the one for the partition function Z, by expressing expectation values as functional
+derivatives and substituting Z = exp(ı̊W ). With sources
+
+                                  Lsrc = ψ̄ρ + ρ̄ψ − J·A,                                       (10.5)
+
+it reads
+                                                         
+       1 2 µ ı̊δW               1 δW         1 δW
+      − ∂x ∂x µ     +ı̊q0 ρ̄(x)            −          ρ(x) −ı̊∂xµ Jµ (x) = 0.                   (10.6)
+       ξ0    δJ (x)             ı̊ δ ρ̄(x)   ı̊ δρ(x)
+
+b) Generate an identity for the photon two-point function by taking a functional deriva-
+   tive of equation (10.6) with respect to Jν (y) and setting sources to zero. Use it to show
+   that the gauge-fixing term does not need renormalisation, i.e. that it is consistent to
+   set Zξ = 1 to all orders.
+
+ c) Compute the one-loop correction to the photon propagator. Use dimensional regu-
+    larisation in D = 4 − 2 to handle UV-divergences, and let µ0 be the regularisation
+    scale that is introduced by this procedure.
+    Hint: While it is necessary to carry out the integral over the loop momentum, evalu-
+    ating the last integral over Feynman parameters in a closed form is not required.
+
+
+
+                                                                                                  −→
+
+                                             10.1
+d) Determine the renormalisation constant ZA by imposing the condition that the prop-
+   agator for a photon of momentum p equals its tree-level value for a euclidean point
+   p2 = µ2 . This renormalisation prescription is known as momentum subtraction. Note
+   that, within such scheme, the renormalisation scale µ that is introduced is distinct
+   from the regularisation scale µ0 .
+
+e) Find the anomalous dimension of the photon field at one loop
+                                                   1/2
+                                          ∂ log ZA
+                                    γA :=           ,                               (10.7)
+                                            ∂ log µ
+
+   in the high energy limit µ2  m2 .
+
+From this point onwards, it is convenient to use Feynman gauge (ξ = 1) to make calcu-
+lations less cumbersome.
+
+ f ) Compute the one-loop correction to the electron propagator. Determine the renor-
+     malisation constants Zψ and Zm by imposing the condition that the propagator for
+     an electron of momentum p equals its tree-level value for a euclidean point p2 = µ2 .
+
+g) Write down a Ward identity for the photon-electron-positron three-point function by
+   taking two consecutive functional derivatives of equation (10.6) with respect to ρ(y)
+   and ρ̄(z) and setting sources to zero. Use it to show that Zψ and Zq have the same
+   divergent part to all orders.
+
+h) Compute the one-loop correction to the QED vertex with on-shell fermions. Take the
+   limit of massless electrons to make this part of the calculation easier. Determine the
+   renormalisation constant Zq by imposing the condition that the vertex for a photon
+   momentum p equals its tree-level value for a euclidean point p2 = µ2 .
+
+ i) Show that, consistently with the Ward identity,
+
+                                  ∂ log Zψ   ∂ log Zq
+                                           =          .                             (10.8)
+                                   ∂ log µ   ∂ log µ
+
+ j) Using the fact that the bare coupling cannot depend on the renormalisation scale,
+    compute the beta-function of QED
+                                              ∂ log q
+                                    β(µ) :=           .                             (10.9)
+                                              ∂ log µ
+
+   Solve this differential equation in the limit of high energies µ2  m2 to find the QED
+   running coupling α(µ) and plot the corresponding function. Assuming α(m) ≃ 1/137
+   with m ≃ 0.5 MeV the electron mass, compute the value of α(µEW ) where µEW ≃
+   MW ≃ MZ ≃ 100 GeV is the electroweak scale.
+
+k) Does the fermion mass also depend on the renormalisation scale in this scheme?
+
+
+
+
+                                          10.2
+Quantum Field Theory II                                              Problem Set 11
+ETH Zurich, FS17                    K. Ferreira, S. Lionetti, S. Trifinopoulos, Prof. N. Beisert
+                                                                                     25. 05. 2017
+11.1. The Coleman–Weinberg Potential
+The Coleman–Weinberg model represents quantum electrodynamics of a scalar field in
+four dimensions. The Lagrangian is
+                   L = − 41 F µν Fµν − (Dµ φ)∗ Dµ φ + µ2 φ∗ φ − 41 λ(φ∗ φ)2 ,            (11.1)
+where φ(x) is a complex scalar field and Dµ = ∂ µ −ı̊qAµ is the covariant derivative.
+a) Assume that µ2 > 0, so that the U(1) symmetry of the Lagrangian is spontaneously
+   broken by means of the Higgs mechanism. Define the complex field φ in such a way,
+   that one of its two degrees of freedom is gauged away by a proper gauge transformation
+   and expand the other degree of freedom around its saddle point. Finally by expanding
+   the Lagrangian itself, show that the field Aµ acquires a mass.
+b) Consider a generic action S[φ] of a scalar field φ. Show that the one-loop effective
+   action takes the form
+                                                    δ2S
+                                                       
+                                      ı̊
+                        G[φ] = S[φ] + log Det −ı̊ 2 + . . . .                    (11.2)
+                                      2             δφ
+    In order to compute the underlying partition function Z, we employ the so-called
+    background field method and write the quantum scalar field φ̂(x) as a classical back-
+    ground field φ(x) plus quantum fluctuations η(x)
+                                    φ̂(x) = φ(x) + η(x).                                 (11.3)
+
+    Hint: Use the argument φ of the effective action G[φ] as the background field, expand
+    the exponent of Z[j] to quadratic order in η and choose j and φ in accordance with
+    the saddle point condition
+                                      δS
+                                          + j = 0.                                  (11.4)
+                                       δφ
+ c) Let us return to the Lagrangian (11.1). Compute the one-loop correction to the
+    effective potential
+                                  Veff (φ) = −G[φ],                          (11.5)
+    where φ is a constant background field. Eliminate the arising divergences by adjusted
+    minimal subtraction (MS-bar) at the renormalisation scale M .
+    Hint: After performing the gauge transformation of part a), expand the remaining
+    scalar degree of freedom according to (11.3). Then use (11.2) to compute the one-loop
+    effective action due to the scalar and vector degrees of freedom for which the formula
+    holds equivalently. Note, that only terms quadratic in the fluctuating fields Aµ and
+    η contribute to the functional determinant of (11.2).
+d) In the result of part b), take the limit µ2 → 0. The result should be an effective
+   potential that is scale-invariant up to logarithms of M . For λ very small, of order
+   q 4 , show that V (φ) has a symmetry-breaking minimum at a value of φ for which no
+   logarithm is large and so the perturbation theory analysis is still valid. Thus the
+   µ2 = 0 theory, for this choice of coupling constants, still has spontaneously broken
+   symmetry, due to the influence of first-order quantum corrections.
+                                                                                           −→
+
+                                             11.1
+e) The beta-functions for the running couplings q and λ and the gamma-function of φ
+   are defined by the equations
+
+          ∂ λ̄                       ∂ q̄                        ∂ φ̄
+      M        = βλ (λ̄, q̄),   M         = βq (λ̄, q̄),   M          = −γφ (λ̄, q̄)φ̄.   (11.6)
+          ∂M                        ∂M                           ∂M
+  Explicit calculation yields the following one-loop results
+
+                     q3                15λ2 − 36λq 2 + 72q 4                    2q 2
+             βq =         ,     βλ =                         ,        γφ = −         .    (11.7)
+                    48π 2                     32π 2                            16π 2
+  Construct the RG-improved effective potential for the µ2 = 0 model and discuss
+  qualitatively whether the spontaneous symmetry breaking still occurs.
+  Finally, compute the mass of the scalar particle m as a function of q 2 , λ and M and
+  determine the ratio m/mA to leading order in q 2 , for λ  q 2 .
+  Hint: The RG-improved effective potential should be such that when expanded in
+  terms of the coupling constants around the energy M , it will recover the result in
+  part d).
+
+
+
+
+                                               11.2
+

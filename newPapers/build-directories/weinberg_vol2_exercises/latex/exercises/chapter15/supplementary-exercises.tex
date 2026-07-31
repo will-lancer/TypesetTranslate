@@ -47,19 +47,30 @@
   \SupplementaryExercise{3}{Equal Curvature Is Not Gauge Equivalence}
   {Adapted from Hong Liu, MIT OpenCourseWare 8.324, Problem Set 2, Problem 5 (2010).}
   {mit-8324-f10-ps2-v2ch15-p03}
+  Use Hermitian generators \(T_a=\sigma_a/2\),
+  \(D_\mu=\partial_\mu-igA_\mu\), and
+  \[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu
+      -ig[A_\mu,A_\nu].
+  \]
   \begin{enumerate}
     \item[(a)]
-    Work on the \(x^1x^2\)-plane with an \(SU(2)\) basis satisfying
-    \([T_a,T_b]=\epsilon_{abc}T_c\).  Compare the two connections
+    Suppose two Abelian connections have the same field strength on a
+    contractible patch.  Prove that they are locally gauge equivalent.
+    Explain why the same conclusion need not hold for a non-Abelian group.
+    \item[(b)]
+    On the \(xy\)-plane compare the two \(SU(2)\) connections whose only
+    nonzero components are
     \[
-      A_1=aT_1,\quad A_2=aT_2,
+      A_x=-\frac{g y}{2}T_3,\qquad A_y=\frac{g x}{2}T_3,
       \qquad
-      A'_1=0,\quad A'_2=a^2x^1T_3.
+      A'_x=T_1,\qquad A'_y=T_2.
     \]
-    Show that they have the same curvature \(F_{12}=a^2T_3\), but are not
-    gauge equivalent.  Find a local gauge-covariant quantity that
-    distinguishes them, and explain why this phenomenon has no Abelian
-    analogue on a simply connected patch.
+    Show by direct calculation that both have the same field strength.
+    \item[(c)]
+    Find a local gauge-covariant object that vanishes for one connection
+    but not the other.  Use it to prove that the connections are not gauge
+    equivalent, and explain why one such object is sufficient.
   \end{enumerate}
 
   \SupplementaryExercise{4}{Gauge Transport and Curvature}
@@ -131,18 +142,34 @@
   \SupplementaryExercise{6}{BRST Nilpotency and Gauge-Fermion Fixing}
   {Adapted from N. Beisert et al., ETH Zurich Quantum Field Theory II, Problem Set 6, Problem 6.2 (2017).}
   {eth-qft2-fs17-v2ch15-p06}
+  Consider Yang--Mills theory with fermions in a representation with
+  Hermitian generators \(T_a\),
+  \[
+    \mathcal L_{\rm YM}
+      =-\frac14F^a_{\mu\nu}F_a^{\mu\nu}
+       -\bar\psi(\gamma^\mu D_\mu+m)\psi,
+    \qquad
+    D_\mu\psi=(\partial_\mu-igA^a_\mu T_a)\psi,
+  \]
+  where \([T_a,T_b]=if_{ab}{}^cT_c\).  Promote an infinitesimal gauge
+  parameter to a Grassmann-odd ghost \(\omega^a\) and define
+  \[
+    s\psi=ig\omega^aT_a\psi,
+    \qquad
+    sA^a_\mu=(D_\mu\omega)^a
+      =\partial_\mu\omega^a+gf^a{}_{bc}A^b_\mu\omega^c.
+  \]
   \begin{enumerate}
     \item[(a)]
-    For
-    \[
-      sA_{a\mu}=(D_\mu\omega)_a,\quad
-      s\omega_a=-\frac12C_{abc}\omega_b\omega_c,\quad
-      s\omega_a^*=-h_a,\quad sh_a=0,
-    \]
-    prove \(s^2=0\) on each field without using any field equation.  Identify
-    exactly where Grassmann antisymmetry and the Jacobi identity enter.
+    Require \(s^2\psi=0\) and derive the BRST transformation of the ghost.
     \item[(b)]
-    Let
+    With that ghost transformation, verify explicitly that
+    \(s^2A^a_\mu=0\) and \(s^2\omega^a=0\).  Identify where Grassmann
+    antisymmetry and the Jacobi identity enter; do not use field equations.
+    \item[(c)]
+    Introduce an antighost \(\omega_a^*\) and auxiliary field \(h_a\) with
+    \(s\omega_a^*=-h_a\) and \(sh_a=0\).  For
+    \(f_a[A]=\partial^\mu A_{a\mu}\), let
     \[
       \Psi=-\int d^4x\,\omega_a^*
         \left(f_a[A]+\frac{\xi}{2}h_a\right).
@@ -174,12 +201,12 @@
     \item[(a)] Verify invariance and nilpotence for
       \(sA_\mu=\partial_\mu\omega\), \(s\omega=0\),
       \(s\omega^*=-h\), and \(sh=0\).
-    \item[(b)] With \(\Phi^T=(A_\mu,h)\), rewrite the bosonic action as
-      \(-\frac12\int\Phi^T\Delta\Phi\) and determine the full block
+    \item[(b)] With \(\Phi^{\mathsf T}=(A_\mu,h)\), rewrite the bosonic action as
+      \(-\frac12\int\Phi^{\mathsf T}\Delta\Phi\) and determine the full block
       operator \(\Delta\).
     \item[(c)] Derive the Green-function equations for the normalized
       correlators
-      \(\langle\Phi(x)\Phi^T(0)\rangle\) and
+      \(\langle\Phi(x)\Phi^{\mathsf T}(0)\rangle\) and
       \(\langle\omega(x)\omega^*(0)\rangle\).  Invert the block operator in
       momentum space, displaying the \(AA\), \(Ah\), \(hA\), and \(hh\)
       entries as well as the ghost propagator.
@@ -193,19 +220,25 @@
   \SupplementaryExercise{9}{Lie-Algebra BRST Cohomology}
   {Adapted from David Skinner, Advanced Quantum Field Theory Example Sheet 4, Problem 2 (2018).}
   {skinner-aqft-sheet4-2018-v2ch15-p09}
+  Let \(R_a\) be anti-Hermitian generators of a Lie algebra acting in a
+  representation \(R\), with
+  \([R_a,R_b]=C^c{}_{ab}R_c\), and let \(\omega^a\) be Grassmann variables.
+  Equivalently, \(R_a=-it_a\) for Hermitian generators satisfying
+  \([t_a,t_b]=iC^c{}_{ab}t_c\); this displays the factor of \(i\) implicit
+  in the source convention.
   \begin{enumerate}
     \item[(a)]
-    On polynomials of anticommuting variables \(\omega^a\), define
+    On \(R\)-valued polynomials define
     \[
-      Q=-\frac12C^a{}_{bc}\omega^b\omega^c
+      Q=\omega^aR_a-\frac12C^a{}_{bc}\omega^b\omega^c
         \frac{\partial_L}{\partial\omega^a}.
     \]
-    Compute \(Q^2\omega^a\) and prove that \(Q^2=0\) on every polynomial if
-    and only if the structure constants satisfy the Jacobi identity.
-    Interpret this complex as Lie-algebra cohomology.
+    Prove \(Q^2=0\), displaying separately the cancellation that uses the
+    representation commutator and the cancellation that uses the Jacobi
+    identity.
     \item[(b)]
-    For a compact simple Lie algebra with an invariant inner product, lower the
-    first index on the structure constants and consider
+    Now take the trivial representation.  If an invariant inner product makes
+    \(C_{abc}\) completely antisymmetric, consider
     \[
       \Omega=\frac1{3!}C_{abc}\omega^a\omega^b\omega^c.
     \]

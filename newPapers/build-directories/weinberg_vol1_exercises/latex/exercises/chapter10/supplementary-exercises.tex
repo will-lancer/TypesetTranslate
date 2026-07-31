@@ -23,31 +23,29 @@ Derive the normalization sum rule for the spectral density and use it to
 bound the isolated pole residue.
 \end{enumerate}
 
-\SupplementaryExercise{2}{Euclidean Positivity, Fermion Parity, and Ghost Tests}
-  {(Inspired by Mark Srednicki, \emph{Quantum Field Theory}, Chapters 13 and 15 | Mark Srednicki, \emph{Quantum Field Theory}, Chapter 51 | Mark Srednicki, \emph{Quantum Field Theory}, Chapters 13 and 51.)}
-  {srednicki-qft-spectral-2006-ch10-curated-parent-2}
-\begin{enumerate}
-\item
-Set \(Q^2=p_E^2>0\) in a scalar spectral representation and regard
-\(D_E(Q^2)\) as a function of \(Q^2\).  Prove that
-\((-1)^n d^nD_E/d(Q^2)^n\geq0\) for every nonnegative integer \(n\).
-Explain which assumption makes these inequalities possible.
-\item
-Resolve the rest-frame intermediate states in a Dirac two-point function
-into the two parity projectors.  Derive the two-function fermionic spectral
-representation and prove the pointwise inequality relating its scalar and
-vector spectral densities.
-\item
-Consider the proposed scalar propagator
+\SupplementaryExercise{2}{The Thermal Lehmann Representation}
+  {(Adapted from John McGreevy, \emph{Physics 215B Quantum Field Theory}, Winter 2025, Assignment 7, Problem 3, p.~1.)}
+  {mcgreevy-215b-w25-hw07-p3}
+In the vacuum, a scalar operator has the time-ordered two-point function
 \[
- D(p)=\frac{1}{p^2+m^2-i0}
- -\frac{c}{p^2+M^2-i0},
- \qquad M>m,\quad c>0.
+ -iD(x)=\bra{0}T\{O(x)O^\dagger(0)\}\ket{0}.
 \]
-Determine its spectral density and decide whether it can be the exact
-two-point function of a positive-metric local scalar field.  State how the
-answer changes if the second sign is positive.
-\end{enumerate}
+Derive the corresponding spectral representation when the system is in
+thermal equilibrium at nonzero temperature \(T=\beta^{-1}\), starting from
+\[
+ \begin{split}
+ -iD_\beta(x)
+ &\equiv \operatorname{tr}\!\left(
+       \frac{e^{-\beta H}}{Z_\beta}
+       T\{O(x)O^\dagger(0)\}\right)\\
+ &=\frac{1}{Z_\beta}\sum_n e^{-\beta E_n}
+   \bra{n}T\{O(x)O^\dagger(0)\}\ket{n},
+ \qquad Z_\beta\equiv\operatorname{tr}e^{-\beta H}.
+ \end{split}
+\]
+Make the thermal spectral weight and its detailed-balance relation explicit,
+and verify that the limit \(\beta\to\infty\) reproduces the vacuum
+representation.  You may take \(O=O^\dagger\).
 
 \SupplementaryExercise{3}{Local and Momentum-Space Ward--Takahashi Identities}
   {(Inspired by David Skinner, \emph{Symmetries in Quantum Field Theory}, Section 6.)}
@@ -71,22 +69,61 @@ the exact inverse propagator.  Explain why this relates field and vertex
 renormalization constants.
 \end{enumerate}
 
-\SupplementaryExercise{4}{Neutral Insertions and Vanishing Contact Terms and Charge Conservation as a Correlator Selection Rule}
-  {(Inspired by David Skinner, \emph{Symmetries in Quantum Field Theory}, Section 6.)}
-  {skinner-aqft-ward-2017-ch10-curated-parent-2}
+\SupplementaryExercise{4}{Charge Conjugation and Odd-Photon Selection Rules}
+  {(Adapted from University of Cambridge, \emph{Mathematical Tripos Part III, Quantum Field Theory, Paper 301}, 2024, Question 3, p.~4.)}
+  {cambridge-partiii-2024-qft-paper301-q3}
 \begin{enumerate}
 \item
-Let \(O_1,\ldots,O_n\) be local operators with charges \(q_1,\ldots,q_n\).
-Derive the Ward identity for one current insertion and these operators.
-Show that all universal contact terms disappear when every \(O_i\) is
-neutral, and distinguish this statement from conservation at coincident
-points.
+Scalar QED consists of a complex scalar \(\phi\) of mass \(M\) and an
+electromagnetic field \(A_\mu\), coupled only by minimal coupling with
+coupling \(e\).  Write its Lagrangian \(\mathcal L_{\mathrm{SQED}}\).
+Likewise write \(\mathcal L_{\mathrm{QED}}\) for a Dirac field \(\psi\) of
+mass \(m\) minimally coupled to \(A_\mu\).  Give the local \(U(1)\) gauge
+transformations of both theories and derive, in each case, the Noether
+current \(j^\mu\) for the global symmetry obtained by taking the gauge
+parameter constant.
 \item
-Integrate the local Ward identity over the current insertion point, assuming
-that the surface term vanishes.  Prove that a vacuum correlator of charged
-operators is zero unless their total charge vanishes.  Check the conclusion
-for a correlator containing \(r\) fields \(\Phi\) and \(s\) fields
-\(\Phi^\dagger\).
+Let the linear, unitary charge-conjugation operator \(\widehat C\) act on the
+scalar field by
+\[
+ \widehat C^{-1}\phi(x)\widehat C=\phi^\dagger(x),
+ \qquad
+ \widehat C^{-1}\phi^\dagger(x)\widehat C=\phi(x),
+ \qquad \widehat C^\dagger\widehat C=\mathbf 1.
+\]
+Determine the necessary transformation of \(A_\mu\), and show that
+\(\mathcal L_{\mathrm{SQED}}\) is invariant.  Operator-ordering issues such
+as normal ordering may be ignored.
+\item
+For the Dirac field, take
+\[
+ \widehat C^{-1}\psi(x)\widehat C=\mathsf C\,\bar\psi(x)^{\mathsf T},
+ \qquad
+ \widehat C^{-1}\bar\psi(x)\widehat C=\psi(x)^{\mathsf T}\mathsf C,
+\]
+where the \(4\times4\) matrix \(\mathsf C\) obeys
+\[
+ \mathsf C^{\mathsf T}=\mathsf C^{-1}=-\mathsf C,
+ \qquad
+ \mathsf C^{-1}(\gamma^\mu)^{\mathsf T}\mathsf C=-\gamma^\mu.
+\]
+Using the transformation of \(A_\mu\) found in the preceding part, prove
+that \(\mathcal L_{\mathrm{QED}}\) is invariant.  You may use
+\[
+ \bar\psi M\psi=-\psi^{\mathsf T}M^{\mathsf T}\bar\psi^{\mathsf T}
+\]
+for any spinor matrix \(M\), and again may ignore normal-ordering issues.
+\item
+Assume that the vacuum \(\ket{\Omega}\) of either theory is invariant under
+charge conjugation.  Without using Feynman diagrams, prove to all orders in
+\(e\) that, for odd \(n\),
+\[
+ \bra{\Omega}T\{A^{\mu_1}(x_1)\cdots A^{\mu_n}(x_n)\}\ket{\Omega}=0,
+ \qquad
+ \bra{\Omega}T\{j^{\mu_1}(x_1)\cdots j^{\mu_n}(x_n)\}\ket{\Omega}=0.
+\]
+What do these identities imply physically for photon scattering in scalar
+and spinor QED?
 \end{enumerate}
 
 \SupplementaryExercise{5}{Current Conservation after LSZ Reduction}
@@ -168,42 +205,112 @@ order two and higher.  State precisely why the first derivative may require
 separate care.
 \end{enumerate}
 
-\SupplementaryExercise{10}{Bubble Reconstruction and Discontinuities}
-  {(Inspired by Bernd A. Kniehl, \emph{Dispersion Relations in Loop Calculations}, Sections 3--4 | Bernd A. Kniehl, \emph{Dispersion Relations in Loop Calculations}, Section 4 | Bernd A. Kniehl, \emph{Dispersion Relations in Loop Calculations}, Sections 2--3.)}
-  {kniehl-dispersion-hepph9607255-ch10-curated-parent-2}
+\SupplementaryExercise{10}{Muon Vacuum Polarization from the Optical Theorem}
+  {(Adapted from John McGreevy, \emph{Physics 215B Quantum Field Theory}, Winter 2025, Assignment 7, Problem 4, p.~2.)}
+  {mcgreevy-215b-w25-hw07-p4}
+For general initial and final states \(a\) and \(b\), the source sheet
+states the optical theorem as
+\[
+ -i\bigl[\mathcal M(a\to b)-\mathcal M(b\to a)\bigr]
+ =\sum_f\int d\Phi_f\,
+   \mathcal M(b\to f)^*\mathcal M(a\to f).
+\]
+\emph{Editorial source note.}  The sheet omits complex conjugation from the
+second amplitude on the left.  The identity following from
+\(S^\dagger S=\mathbf 1\) contains \(\mathcal M(b\to a)^*\) there.  Keep
+track of this printed omission explicitly and state which form is used in
+the calculation.
 \begin{enumerate}
 \item
-For two equal-mass scalar propagators, use two-body phase space to determine
-the threshold dependence of the one-loop bubble's discontinuity.  Insert it
-into a once-subtracted dispersion relation and recover a one-dimensional
-representation of the renormalized bubble.
+In QED with electrons of charge \(Q_e\) and muons of charge \(Q_\mu\),
+consider forward \(e^-e^+\to e^-e^+\) scattering.  Isolate the contribution
+to its imaginary part proportional to \(Q_e^2Q_\mu^2\).  Draw the relevant
+Feynman diagram and compute the absorptive part
+\(\operatorname{Im}\Pi_\mu\) of the muon vacuum polarization as a function
+of the physical timelike invariant
+\[
+ s\equiv-(k_1+k_2)^2>0,
+\]
+where \(k_1,k_2\) are the incoming electron and positron momenta.  (The
+minus sign is the translation of the source's mostly-minus definition to
+this volume's metric.)  Results from the tree calculation of
+\(e^+e^-\to\mu^+\mu^-\) may be reused.  Check that the imaginary part is
+independent of the ultraviolet cutoff.
 \item
-Use the tree cross-section for a timelike photon to produce a charged Dirac
-pair to find the absorptive part of the one-loop photon vacuum-polarization
-scalar.  Write a subtraction at \(q^2=0\) and determine the first term of
-the low-momentum expansion.
-\item
-Starting from \(S^\dagger S=1\), derive the forward optical theorem and
-express it as the discontinuity of a forward amplitude across its physical
-cut.  Explain how this relation supplies exactly the input needed for a
-dispersive reconstruction of a loop amplitude.
+Use the optical theorem and
+\[
+ \sigma(e^+e^-\to\mu^+\mu^-)\geq0
+\]
+to show that every Feynman diagram containing a closed fermion loop must
+carry a minus sign.  With that sign included, verify the optical theorem for
+the contribution calculated in the preceding part.
 \end{enumerate}
 
-\SupplementaryExercise{11}{Compton Gauge Cancellation before Squaring and Forward Thomson Limit}
-  {(Inspired by Daniel Harlow, \emph{Lecture Notes for Physics 8.324}, Sections 11.3--11.6.)}
-  {harlow-qft2-forward-qed-2024-ch10-curated-parent-1}
-\begin{enumerate}
-\item
-Write the two tree diagrams for spinor Compton scattering.  Replace the
-incoming photon polarization by its momentum and use inverse-propagator
-identities to prove cancellation before imposing a gauge or summing over
-polarizations.
-\item
-Evaluate the spin-averaged forward Compton amplitude for an electron in the
-limit \(\omega/m\to0\).  Show that the apparent pole terms combine to give
-the finite Thomson amplitude and recover the corresponding low-energy total
-cross-section.
-\end{enumerate}
+\SupplementaryExercise{11}{The Complete Compton Trace}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.324: Relativistic Quantum Field Theory II}, Fall 2024, Section 11.6, Problem 3, p.~133, with Eqs.~(11.38), (11.45)--(11.47), pp.~129--131.)}
+  {harlow-qft2-fall2024-sec11-6-p3}
+Consider tree-level Compton scattering
+\(e^-(k_1)+\gamma(k_2)\to e^-(k_1')+\gamma(k_2')\).  The direct and crossed
+electron-exchange diagrams are both included, with
+\[
+ k_1+k_2=k_1'+k_2',\qquad
+ k_1^2=k_1'^2=-m^2,\qquad k_2^2=k_2'^2=0.
+\]
+For their gauge-invariant sum, current conservation permits the physical
+photon polarization sums to be replaced by
+\[
+ \sum_\lambda\epsilon_\mu(k,\lambda)
+ \epsilon_\nu(k,\lambda)^*\longrightarrow\eta_{\mu\nu},
+\]
+and the electron spin sums are
+\(\sum_\sigma u(k,\sigma)\bar u(k,\sigma)=\slashed{k}+im\).
+Consequently Harlow's Eq.~(11.46), translated only by replacing the charge
+\(q\) by this volume's \(e\), is
+\[
+\begin{split}
+ \sum_{\sigma,\sigma'}|\widetilde{\mathcal M}_{c}|^2
+={}&\frac{e^4}{4}\eta_{\mu\alpha}\eta_{\nu\beta}
+ \operatorname{tr}\!\Bigg[(\slashed{k}_1'+im)
+ \left(
+ \frac{\gamma^\nu\slashed{k}_2\gamma^\mu
+       +2k_1^\mu\gamma^\nu}{k_1\cdot k_2}
+ +\frac{\gamma^\mu\slashed{k}_2'\gamma^\nu
+       -2k_1^\nu\gamma^\mu}{k_1\cdot k_2'}
+ \right)\\
+ &\qquad\quad\times(\slashed{k}_1+im)
+ \left(
+ \frac{\gamma^\alpha\slashed{k}_2\gamma^\beta
+       +2k_1^\alpha\gamma^\beta}{k_1\cdot k_2}
+ +\frac{\gamma^\beta\slashed{k}_2'\gamma^\alpha
+       -2k_1^\beta\gamma^\alpha}{k_1\cdot k_2'}
+ \right)\Bigg].
+\end{split}
+\]
+Evaluate this trace and prove
+\[
+ \begin{split}
+ \frac14\sum_{\sigma,\sigma'}|\widetilde{\mathcal M}_{c}|^2
+ =2e^4\Bigg[&
+ \frac{k_1\cdot k_2'}{k_1\cdot k_2}
+ +\frac{k_1\cdot k_2}{k_1\cdot k_2'}\\
+ &+2m^2\left(\frac1{k_1\cdot k_2'}-\frac1{k_1\cdot k_2}\right)
+ +m^4\left(\frac1{k_1\cdot k_2'}-\frac1{k_1\cdot k_2}\right)^2
+ \Bigg].
+ \end{split}
+\]
+You should first use the \(d\)-dimensional contraction identities
+\[
+\begin{gathered}
+ \gamma^\mu\gamma_\mu=d,\qquad
+ \gamma^\mu\gamma^\alpha\gamma_\mu=-(d-2)\gamma^\alpha,\\
+ \gamma^\mu\gamma^\alpha\gamma^\beta\gamma_\mu
+ =(d-4)\gamma^\alpha\gamma^\beta+4\eta^{\alpha\beta},\\
+ \gamma^\mu\gamma^\alpha\gamma^\beta\gamma^\gamma\gamma_\mu
+ =-2\gamma^\gamma\gamma^\beta\gamma^\alpha
+ -(d-4)\gamma^\alpha\gamma^\beta\gamma^\gamma,
+\end{gathered}
+\]
+so that no trace of more than four gamma matrices need be evaluated.
 
 \SupplementaryExercise{12}{Integrating the Klein--Nishina Distribution}
   {(Inspired by Daniel Harlow, \emph{Lecture Notes for Physics 8.324}, Section 11.6.)}

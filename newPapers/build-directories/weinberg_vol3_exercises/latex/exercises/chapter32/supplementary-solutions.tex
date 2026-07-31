@@ -1,136 +1,155 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Clifford Modules, Weyl Projection, and Reality}
+  \SupplementarySolution{1}{Axion--Kalb--Ramond Duality from a Parent Action}
+  It is cleanest to use the differential-form normalization stated in the
+  problem; numerical factors for the component normalization follow by
+  rescaling \(H\) and \(a\).
   \begin{enumerate}
-    \item \emph{Fermionic Clifford Module.}
-    Choose a vacuum \(\lvert0\rangle\) annihilated by every \(a_i\).
-      Anticommutation makes each creator nilpotent and fixes an ordered
-      basis
+    \item Variation with respect to \(a\) gives
       \[
-        (a_1^\dagger)^{n_1}\cdots(a_n^\dagger)^{n_n}
-          \lvert0\rangle,\qquad n_i\in\{0,1\}.
+        dH=0,
+        \qquad\text{or equivalently}\qquad
+        \epsilon^{\mu\nu\rho\sigma}\partial_\mu H_{\nu\rho\sigma}=0.
       \]
-      The \(n\) independent binary choices give \(2^n\) states.  A state
-      with \(r=\sum_i n_i\) has fermion parity \((-1)^r\), so the even and
-      odd counts are
+      On a contractible patch, the Poincare lemma implies
       \[
-        \sum_{r\ {\rm even}}\binom nr
-          =\frac{(1+1)^n+(1-1)^n}{2}=2^{n-1},
+        H=dB,
+        \qquad H_{\mu\nu\rho}=3\partial_{[\mu}B_{\nu\rho]}.
       \]
+      The action becomes
       \[
-        \sum_{r\ {\rm odd}}\binom nr
-          =\frac{(1+1)^n-(1-1)^n}{2}=2^{n-1}
+        S_B=-\frac1{2g^2}\int dB\wedge *dB,
       \]
-      for \(n>0\).  Applying annihilators reduces any nonzero invariant
-      subspace to the vacuum, after which the creators regenerate the
-      whole basis; hence the module is irreducible.
-    \item \emph{Weyl Projectors in Even Dimension.}
-    Let
-      \[
-        \gamma_*=\alpha\,\gamma^0\gamma^1\cdots\gamma^{d-1},
-      \]
-      where the phase \(\alpha\) is chosen so that \(\gamma_*^2=1\).
-      Moving any \(\gamma^\mu\) through the other \(d-1\) matrices gives an
-      odd number of sign changes, and therefore
-      \[
-        \{\gamma_*,\gamma^\mu\}=0.
-      \]
-      It follows that
-      \(P_\pm=(1\pm\gamma_*)/2\) obey
-      \(P_\pm^2=P_\pm\), \(P_+P_-=0\), and \(P_++P_-=1\).
+      and is invariant under \(B\mapsto B+d\Lambda_1\).  Global closed
+      but non-exact sectors of \(H\) must be summed separately when the
+      spacetime has nontrivial third cohomology.
 
-      Since \(\gamma^\mu\) maps the \(+1\) eigenspace of \(\gamma_*\)
-      invertibly onto the \(-1\) eigenspace, the two spaces have equal
-      dimension.  A Dirac spinor in \(d=2m\) has dimension \(2^m\), so each
-      Weyl spinor has dimension \(2^{m-1}\).  The identity
-      \(\gamma^\mu P_\pm=P_\mp\gamma^\mu\) also shows why a vector gamma
-      matrix reverses chirality.
-    \item \emph{Reality Conditions Modulo Eight.}
-    Complex-conjugating
-      \(B\gamma^\mu B^{-1}=(\gamma^\mu)^*\) and substituting the original
-      relation back gives
+    \item Up to a boundary term,
       \[
-        (B^*B)\gamma^\mu(B^*B)^{-1}=\gamma^\mu .
+        \int a\,dH=-\int da\wedge H.
       \]
-      Irreducibility and Schur's lemma imply \(B^*B=\epsilon\mathbf1\).
-      Rescaling \(B\) fixes \(\epsilon=\pm1\).
+      Varying the independent three-form then gives
+      \[
+        *H=g^2 da,
+        \qquad H=g^2*da
+      \]
+      with the displayed orientation convention.  Substitution completes
+      the square and yields
+      \[
+        S_a=-\frac{g^2}{2}\int da\wedge *da.
+      \]
+      Thus a kinetic coefficient proportional to \(g^{-2}\) on the
+      two-form side becomes one proportional to \(g^2\) on the scalar
+      side: the dual coupling is inverted.  The two descriptions each
+      carry one local degree of freedom in four dimensions.
 
-      A reality condition \(\psi^*=B\psi\) is consistent only if applying
-      it twice returns \(\psi\):
+    \item For a \(p\)-form potential \(A_p\), take an independent
+      \((p+1)\)-form \(H\) and a dual potential
+      \(\widetilde A_{D-p-2}\), with
+      \(\widetilde F=d\widetilde A\).  A parent action is
       \[
-        \psi=B^*\psi^*=B^*B\psi=\epsilon\psi.
+        S[H,\widetilde A]
+          =-\frac1{2g^2}\int H\wedge *H
+           +\int H\wedge\widetilde F,
       \]
-      Thus \(\epsilon=+1\) permits a Majorana spinor.  When
-      \(\epsilon=-1\), introduce an even number of spinors and an
-      antisymmetric matrix \(\Omega\) with \(\Omega^2=-1\):
+      where an orientation-dependent sign may be placed in the second
+      term.  Eliminating \(\widetilde A\) gives \(dH=0\), hence
+      \(H=dA\).  Eliminating \(H\) instead gives
       \[
-        (\psi^i)^*=B\,\Omega^i{}_j\psi^j.
+        \widetilde F=\pm g^{-2}*H
       \]
-      The two minus signs then cancel on the second conjugation.  A
-      six-dimensional Weyl spinor is pseudoreal, so one such spinor cannot
-      satisfy an ordinary Majorana condition; a symplectic Majorana-Weyl
-      pair is the minimal real supercharge.
+      and a dual kinetic coefficient proportional to \(g^2\).  The ranks
+      are
+      \[
+        \deg H=p+1,\qquad
+        \deg\widetilde F=D-p-1,\qquad
+        \deg\widetilde A=D-p-2.
+      \]
   \end{enumerate}
 
-  \SupplementarySolution{2}{Spinor Bilinears and Automorphisms of the Superalgebra}
+  \SupplementarySolution{2}{Massive Antisymmetric-Tensor Duality}
   \begin{enumerate}
-    \item \emph{Symmetric Gamma-Matrix Bilinears.}
-    Reversing the order in an antisymmetrized product requires
-      \(p(p-1)/2\) interchanges.  Applying
-      \((\gamma^\mu)^T=-C\gamma^\mu C^{-1}\) to every factor gives
+    \item With \(F_{\mu_0\cdots\mu_q}=(q+1)
+      \partial_{[\mu_0}A_{\mu_1\cdots\mu_q]}\), the mostly-plus
+      Lorentzian Lagrangian is
       \[
-        \bigl(\gamma^{[\mu_1\cdots\mu_p]}C\bigr)^T
-          =\eta_C(-1)^{p(p+1)/2}
-            \gamma^{[\mu_1\cdots\mu_p]}C .
+        \mathcal L_A
+          =-\frac1{2(q+1)!}F_{\mu_0\cdots\mu_q}F^{\mu_0\cdots\mu_q}
+           -\frac{m^2}{2q!}A_{\mu_1\cdots\mu_q}A^{\mu_1\cdots\mu_q}.
       \]
-      A convention with the opposite sign in the defining charge
-      conjugation relation changes the displayed exponent by \(p\), but
-      not the method.
+      Its equation of motion is \(d^\dagger F-m^2A=0\).  Applying
+      \(d^\dagger\) gives \(d^\dagger A=0\) for \(m\ne0\), the massive
+      transversality condition.
 
-      Because \(\{Q^i_\alpha,Q^j_\beta\}\) is symmetric under simultaneous
-      interchange \((\alpha,i)\leftrightarrow(\beta,j)\), a symmetric
-      spinor matrix must multiply a charge symmetric in \(i,j\), whereas
-      an antisymmetric spinor matrix must multiply a charge antisymmetric
-      in \(i,j\).  For \(N=1\), only the symmetric spinor matrices survive.
-    \item \emph{Six-Dimensional Automorphism Group.}
-    Let \(\rho\) be the antilinear pseudoreality map on a Weyl spinor,
-      with \(\rho^2=-1\).  A real structure on \(2p\) copies is
+    \item The algebra is most transparent after Euclidean continuation.
+      Let \((X,Y)=\int X\wedge *Y\), and let
+      \(B\) have rank \(D-q-1\).  A Gaussian parent action is
       \[
-        {\cal R}=\rho\otimes\Omega,\qquad
-        \Omega^T=-\Omega,\qquad \Omega^2=-1,
+        S_{\rm P}^{E}[A,B]
+          =\frac12(B,B)-i\int B\wedge dA
+            +\frac{m^2}{2}(A,A),
       \]
-      so that \({\cal R}^2=+1\).  A unitary transformation \(U\) on the
-      copy index preserves this condition precisely when
+      with the harmless phase and a rank-dependent sign fixed by the
+      convention for \(*^2\).  The \(B\) equation says
       \[
-        U^T\Omega U=\Omega .
+        B=\pm i*dA.
       \]
-      The compact unitary group satisfying this equation is \(USp(2p)\).
-      Supercharges of opposite chirality have separate symplectic forms,
-      so the full automorphism group of six-dimensional \((p,q)\)
-      supersymmetry is
-      \[
-        USp(2p)\times USp(2q).
-      \]
-    \item \emph{Why Supercharges Are Spinors.}
-    Let an odd generator contain a component of helicity \(s>1/2\).
-      Commuting it with rotations produces all components from \(-s\) to
-      \(+s\).  Acting on a one-particle state therefore produces states
-      whose helicities differ by \(s\).  Because the odd generators close
-      on translations and act nontrivially on scattering states, repeated
-      products generate progressively larger helicity differences unless
-      \(s=1/2\).  Fermi nilpotence limits repeated use of one component,
-      but Lorentz covariance supplies independent components, and
-      multiparticle tensor products then propagate the excessive spins
-      through scattering channels.
+      Substitution gives the Euclidean continuation of the original
+      kinetic term plus \(m^2(A,A)/2\).
 
-      The conclusion uses the Coleman--Mandula/Haag--Lopuszanski--Sohnius
-      assumptions: a nontrivial analytic \(S\)-matrix, finitely many
-      one-particle species below any fixed mass, and ordinary
-      finite-particle asymptotic states.  Under these assumptions the only
-      non-scalar odd extension compatible with Lorentz symmetry is a
-      spinor supercharge.  Free theories or theories with infinitely many
-      higher-spin states need not satisfy the hypotheses.
+      Alternatively, integrate the mixed term by parts.  The \(A\)
+      equation is algebraic and gives
+      \[
+        m^2A=\pm i*dB.
+      \]
+      Substituting it and defining \(\widetilde A=B/m\) gives, after
+      returning to Lorentzian signature,
+      \[
+        \mathcal L_{\widetilde A}
+          =-\frac1{2(D-q)!}(d\widetilde A)^2
+           -\frac{m^2}{2(D-q-1)!}\widetilde A^2 .
+      \]
+      Hence the dual potential has rank \(D-q-1\) and the same mass.  Up
+      to the orientation signs, the first-order duality equations are
+      \[
+        m\widetilde A=*dA,
+        \qquad d\widetilde A=m*A.
+      \]
+
+    \item A massive particle in \(D\) dimensions has little group
+      \(SO(D-1)\).  The original field is a rank-\(q\) antisymmetric tensor
+      of that group, so
+      \[
+        N_A=\binom{D-1}{q}.
+      \]
+      The dual field has rank \(D-q-1\), and therefore
+      \[
+        N_{\widetilde A}
+          =\binom{D-1}{D-q-1}
+          =\binom{D-1}{q}=N_A.
+      \]
+
+    \item The identity underlying the construction is the functional
+      Gaussian transform
+      \[
+        e^{-\frac12(*dA,*dA)}
+          =\mathcal{N}\int\mathcal{D}B\,
+             \exp\!\left[-\frac12(B,B)+i\int B\wedge dA\right],
+      \]
+      with gauge zero modes treated separately.  Integrating \(B\) is the
+      inverse transform; integrating \(A\) produces the dual description.
+
+      At \(m=0\), the step \(A=\pm i*dB/m^2\) and the rescaling
+      \(B=m\widetilde A\) are singular.  The parent integral itself still
+      makes sense: integration over \(A\) now imposes \(dB=0\).  Locally
+      \(B=dC\), where \(C\) has rank \(D-q-2\), the familiar massless
+      dual rank.  The count changes consistently to
+      \[
+        \binom{D-2}{q}
+          =\binom{D-2}{D-q-2},
+      \]
+      because both massless potentials have gauge redundancy.
   \end{enumerate}
 
   \SupplementarySolution{3}{Graviton and Gravitino Counts in Even Dimensions}
@@ -143,11 +162,11 @@
         N_g=\frac{n(n+1)}2-1
           =\boxed{\frac{D(D-3)}2}.
       \]
-    \item Let \(s_{D-2}\) denote the dimension of the appropriate
-      irreducible little-group spinor after the required reality and
-      chirality conditions have been imposed.  A vector-spinor initially
-      has \((D-2)s_{D-2}\) components.  Its gamma trace is an arbitrary
-      spinor with \(s_{D-2}\) components, so the gamma-traceless
+    \item Let \(s_{D-2}\) denote the real physical dimension of the
+      appropriate irreducible little-group spinor after the required
+      reality and chirality conditions have been imposed.  A vector-spinor
+      initially has \((D-2)s_{D-2}\) components.  Its gamma trace is an
+      arbitrary spinor with \(s_{D-2}\) components, so the gamma-traceless
       gravitino has
       \[
         N_{\psi_\mu}
@@ -306,7 +325,7 @@ Let \(q\) be the number of real supercharges.  After dimensional
     Split the eleven-dimensional index as \(M=(\mu,10)\).  The momentum
       term in the eleven-dimensional algebra is
       \[
-        \{Q,Q^T\}\supset i\Gamma^M C P_M
+        \{Q,Q^{\mathsf T}\}\supset i\Gamma^M C P_M
           =i\Gamma^\mu C P_\mu+i\Gamma^{10}C P_{10}.
       \]
       Ten-dimensional Lorentz transformations act only on \(\mu\).
@@ -494,69 +513,59 @@ Let \(q\) be the number of real supercharges.  After dimensional
       The two- and five-form terms are the M2- and M5-brane charges.
   \end{enumerate}
 
-  \SupplementarySolution{9}{Dual Charges, Brane Couplings, and M2/M5 Projectors}
+  \SupplementarySolution{9}{Self-Dual Tensor Fields and Their Branes}
   \begin{enumerate}
-    \item \emph{Hodge-Dual Charge Redundancy.}
-    Let \(\Gamma_*\) denote the normalized product of all \(d\) gamma
-      matrices.  Reordering the product gives
+    \item On a \(p\)-form in a spacetime with one timelike direction,
       \[
-        \gamma^{\mu_1\cdots\mu_p}
-          =\frac{\sigma_{p,d}}{(d-p)!}
-           \epsilon^{\mu_1\cdots\mu_p\nu_1\cdots\nu_{d-p}}
-           \gamma_{\nu_1\cdots\nu_{d-p}}\Gamma_*,
+        *^2=(-1)^{p(D-p)+1}.
       \]
-      where \(\sigma_{p,d}\) is a convention-dependent phase and sign.
-      In odd dimension \(\Gamma_*\) is proportional to the identity; on an
-      even-dimensional Weyl spinor it is the fixed eigenvalue \(\pm1\).
+      For a middle form, \(p=n=D/2\), this becomes
+      \[
+        *^2=(-1)^{n^2+1}.
+      \]
+      A nonzero real eigenform satisfying \(*F_n=\pm F_n\) requires
+      \(*^2=1\), hence \(n\) must be odd.  Writing \(n=2k+1\) gives
+      \[
+        D=2n=4k+2.
+      \]
 
-      Consequently a coefficient multiplying a rank-\(p\) matrix can be
-      rewritten as the Hodge dual coefficient multiplying rank \(d-p\).
-      The two descriptions use the same spinor matrix and cannot be
-      independent central extensions.  At middle degree in even
-      dimension, the decomposition instead becomes self-dual plus
-      anti-self-dual, and chirality selects the appropriate part.
-    \item \emph{Which Potential Couples to a Brane?.}
-    The worldvolume has coordinates
-      \(\xi^a\), \(a=0,\ldots,p\).  Pulling back a spacetime
-      \((p+1)\)-form gives the reparametrization-invariant coupling
+    \item The field strength \(F_n=dA_{n-1}\) belongs before imposing
+      self-duality to a massless \((n-1)\)-form gauge potential.  Its
+      little-group polarization count is
       \[
-        S_{\rm WZ}
-          =q_p\int_{\Sigma_{p+1}}X^*A_{p+1}
-          =\frac{q_p}{(p+1)!}\int d^{p+1}\xi\,
-           \epsilon^{a_0\cdots a_p}
-           A_{\mu_0\cdots\mu_p}
-           \partial_{a_0}X^{\mu_0}\cdots
-           \partial_{a_p}X^{\mu_p}.
+        N_{\rm unconstrained}=\binom{D-2}{n-1}.
       \]
-      Under \(A_{p+1}\to A_{p+1}+d\Lambda_p\), its variation is a boundary
-      term.  Thus the electric source for a \((p+1)\)-form potential is a
-      brane with \(p\) spatial dimensions.
+      At middle degree the Hodge star splits the physical polarizations
+      into two equal eigenspaces.  A self-dual or anti-self-dual field has
+      \[
+        N_{\rm SD}=\frac12\binom{D-2}{n-1}
+          =\frac12\binom{D-2}{D/2-1}.
+      \]
+      For example, a chiral two-form in \(D=6\) has
+      \(\tfrac12\binom42=3\) polarizations.
 
-      On a time slice, the corresponding conserved topological quantity
-      has \(p\) spatial spacetime indices.  It therefore enters the
-      supersymmetry algebra as a \(p\)-form charge (with time components
-      of the covariant charge related by the BPS rest-frame choice).
-    \item \emph{M2 and M5 BPS Projectors.}
-    For a static planar M2, the relevant rest-frame terms can be arranged
-      as
+    \item An electric \(p\)-brane couples through
+      \(\int_{\Sigma_{p+1}}A_{p+1}\).  Here the potential has rank
+      \(n-1\), so
       \[
-        \{Q,Q\}\propto T_2\bigl(1\mp\Gamma^{012}\bigr).
+        p+1=n-1,
+        \qquad p=n-2=\frac D2-2=2k-1.
       \]
-      Because \((\Gamma^{012})^2=1\) in the physical convention, positivity
-      gives the tension-charge bound, and saturation requires
-      \[
-        \Gamma^{012}\epsilon=\pm\epsilon .
-      \]
-      The matrix is traceless and has eigenvalues \(+1\) and \(-1\) with
-      equal multiplicity.  Thus \((1\pm\Gamma^{012})/2\) has rank \(16\).
+      The magnetic brane associated with an \((n-1)\)-form potential has
+      spatial dimension \(D-(n-1)-3=D-n-2=n-2\), the same answer.  This
+      coincidence is the brane-level reflection of middle-degree
+      self-duality.
 
-      For an M5 along \(x^1,\ldots,x^5\), the same argument gives
+    \item With no timelike direction, the Hodge formula is instead
       \[
-        \Gamma^{012345}\epsilon=\pm\epsilon .
+        *^2=(-1)^{p(D-p)}.
       \]
-      This matrix also squares to one and is traceless on the
-      thirty-two-component Majorana spinor, so its projector again has
-      rank \(16\).  Each isolated planar M2 or M5 is therefore half-BPS.
+      On a middle form it is \((-1)^{n^2}\).  Real eigenvalues \(\pm1\)
+      therefore occur when \(n\) is even, namely in \(D=4k\).  In
+      Euclidean \(D=4k+2\), \(*^2=-1\); after complexification the
+      eigenvalues are \(\pm i\), so the Lorentzian real self-duality
+      condition becomes an imaginary self-duality condition rather than a
+      real one.
   \end{enumerate}
 
   \SupplementarySolution{10}{Dp-Brane Spectra and Type-II Parity}

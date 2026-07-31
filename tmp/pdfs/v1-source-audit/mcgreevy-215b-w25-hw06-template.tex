@@ -1,0 +1,443 @@
+\documentclass[12pt]{report}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+
+\def\nd{{ \vphantom{\dagger}}}
+
+\def\dd{\text{d}}
+\def\dbar{{\mathchar'26\mkern-12mu \dd}} 
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+\def\CO{{\cal O}}
+\def\CL{{\cal L}}
+\def\IZ{\mathbb{Z}}
+\def\CN{{\cal N}}
+\def\CM{{\cal M}}
+\def\IR{\mathbb{R}}
+\def\CD{{\cal D}}
+\def\gO{{\mathsf{O}}}
+
+
+\def\ie{{\it i.e.}}
+\def\eg{{\it e.g.}}
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri,automata,shadows,calendar,mindmap, graphs}
+
+% from flip tanedo.
+% Based on:
+% http://www.texample.net/tikz/examples/feynman-diagram/
+
+\tikzset{
+	% >=stealth', %% more traditional arrows, I don't like them
+    vector/.style={decorate, decoration={snake}, draw},
+    fermion/.style={postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow{>}}}},
+    fermionbar/.style={draw, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow{<}}}},
+    fermionnoarrow/.style={},
+    gluon/.style={decorate,
+        decoration={coil,amplitude=4pt, segment length=5pt}},
+    scalar/.style={dashed, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow{>}}}},
+    scalarbar/.style={dashed, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow{<}}}},
+    scalarnoarrow/.style={dashed,draw},
+%
+%%% 	Special vectors (when you need to fine-tune wiggles)
+%	provector/.style={decorate, decoration={snake,amplitude=2.5pt}, draw},
+%	antivector/.style={decorate, decoration={snake,amplitude=-2.5pt}, draw},
+%	    electron/.style={draw=black, postaction={decorate},
+%        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+%	bigvector/.style={decorate, decoration={snake,amplitude=4pt}, draw},
+	vectorscalar/.style={loosely dotted,draw=black, postaction={decorate}},
+}
+
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+\eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 215B QFT Winter 2025}\\
+{\Large\bf Assignment 6 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+%Posted September 17, 2015 
+\hfill {\bf Due  11:59pm Tuesday, February 18, 2025}
+
+
+
+
+\bigskip
+\hrule
+\begin{enumerate}
+\item {\bf Brain-warmer.}
+Check that $ \(\Delta_T\)^\mu_\rho\equiv 
+\delta^\mu_\rho - {q^\mu q_\rho\over q^2} $ 
+is a projector onto momenta transverse to $q^\rho$.
+This requires showing both that $ \Delta q = 0 $ and that $\Delta^2 = \Delta$.
+
+\def\CA{{\cal A}}
+
+\item {\bf A better formula for the superficial degree of divergence.}
+[Thanks to Haoran Sun for suggesting this formula.]
+
+Starting from the definition of an (amputated!) amplitude $\CA$ 
+from a connected Feynman diagram, show that its superficial degree of divergence is 
+\be 
+D_\CA = 
+D + \sum_{ \{g\}}  [g] V_g(\CA) - \sum_{ \{ f\} } E_f(\CA) [f] \ee
+where $\{g\}$ is the set of coupling constants and $\{ f \}$ is the set of fields,
+$V_g(\CA)$ is the number of vertices of the coupling $g$ in the diagram $\CA$,
+and $E_f(\CA)$ is the number of external $f$ fields.  
+For example, for the Yukawa theory you studied on a previous homework, this formula reduces to 
+\be 
+D_\CA = 
+D +  [g] V_g + [y] V_y -B_E [\phi] - F_E [\phi] \ee
+where $B_E\equiv E_\phi$ is the number of external scalars and $F_E \equiv E_\psi$ is the number of external fermions in the diagram.  
+If you prefer, for definiteness, you could just show the formula for this case.  
+
+
+
+\item {\bf Symmetry is attractive.}
+ Consider a field theory in $D=3+1$ with two scalar fields
+ with the same mass
+which interact via the interaction 
+$$ V = - { g \over 4!} \( \phi_1^4 + \phi_2^4 \) - { 2 \lambda \over 4!} \phi_1^2 \phi_2^2 .$$
+
+\begin{enumerate}
+\item Show that when $ \lambda= g$ the model 
+possesses an $\gO(2)$ symmetry.
+
+
+\item Will you need a counterterm of the form $ \phi_1 \phi_2$ 
+or $ \phi_1 \Box \phi_2$ (for general $g, \lambda$)?  If not, why not?  
+
+
+
+\item  Renormalize the theory to one loop order 
+by regularizing (for example with a euclidean momentum cutoff or Pauli Villars),
+adding the necessary counterterms, and imposing a renormalization
+condition on the propagators  (consider the case where the scalars are both massless) and $ 2 \to 2 $ scattering amplitudes
+at some values of the kinematical variables $s_0, t_0, u_0$.
+Feel free to re-use our results from $\phi^4$ theory where appropriate.
+%at some energy $\sqrt{s_0}$ and momentum transfer $\sqrt{t_0}$.
+
+
+
+\item Consider the limit of low energies, \ie~when $ s_0, t_0, u_0 \ll \Lambda^2$ where $\Lambda$ is the cutoff scale.
+Tune the location of the poles in both propagators to $p^2=0$.
+Show that the coupling goes to the $\gO(2)$-symmetric value if it starts nearby (nearby means $ \lambda/g < 3$).  
+(That is, show that at fixed physical coupling, 
+the ratio of bare couplings $\lambda/g \to 1$ as we take the cutoff to infinity.)
+A nice way to organize this is by computing the beta function for the coupling $\lambda/g$.
+
+
+\end{enumerate}
+\item {\bf Yes, please, gauge invariance.}  Verify for yourself that the one-loop vacuum polarization amplitude in QED (when computed using either the improved Pauli-Villars regulator or dim reg) satisfies the Ward identity, \ie~is proportional to 
+$ q^\mu q^\nu - \eta^{\mu\nu} q^2 $.  It's up to you how much of this to hand in.
+
+
+\item {\bf Soft gravitons?} [optional]
+Photons are massless, and this means 
+that the cross sections we measure 
+actually include soft ones that we don't detect.
+If we don't include them we get IR-divergent nonsense.
+
+Gravitons are also massless.  Do we need to worry about them in the same way?
+Here we'll sketch some hints for how to think about this question.  
+%Warning: I just wrote these problems and haven't debugged them carefully yet.
+%If something seems questionable to you, please ask me about it.
+
+
+\begin{enumerate}
+\item Consider the action
+$$ S_0[h_{\mu\nu}] = \int d^4 x  \half h_{\mu\nu} \Box h^{\mu\nu} .$$
+This is a kinetic term for (too many polarizations of a) two-index symmetric-tensor field $h_{\mu\nu} = h_{\nu\mu}$
+(which we'll think of as a small fluctuation of the metric about flat space: $ g_{\mu\nu} \simeq \eta_{\mu\nu} + h_{\mu\nu}$, 
+and this is where the coupling below comes from).
+Like with the photon, we'll rely on the couplings to matter to keep
+unphysical polarizations from being made.
+Write the propagator for $h$.
+We still raise and lower indices with $\eta_{\mu\nu}$.
+\footnote{A warning:
+%\answer{
+I've done two misdeeds in the statement of this problem.
+First, the Einstein-Hilbert term is 
+$ \int d^4 x {1\over 8 \pi G_N}  \sqrt{g } R  = \int d^4 x {1\over 8 \pi G_N} ( \partial h)^2 + ...$
+-- it has a factor of $G_N$ in front of it.  $R$ has units of $1 \over \text{length}^2$, 
+and $g$ is dimensionless, so $G_N$ has units of $\text{length}^2$ -- it is 
+$  8 \pi G_N = {1\over M_{\text{Pl}}^2} $, where $M_{\text{Pl}}$ is the Planck mass.
+I've absorbed a factor of $ \sqrt{G_N}$ into $h$ 
+so that the coefficient of the kinetic term is unity.
+Second, the $(\partial h)^2$ here involves various index contractions, which I haven't written.
+Some gauge fixing (de Donder gauge) is required to arrive at the simple expression I wrote above,
+and one more thing -- the $h_{\mu\nu}$ I've written is actually the `trace-reversed' 
+graviton field
+$$ \bar h_{\mu\nu} \equiv h_{\mu\nu} - \half h \eta_{\mu\nu} $$
+where $ h \equiv \eta^{\mu\nu} h_{\mu\nu}$ is the trace.
+(I didn't write the bar.)
+For the details of this, which are not needed for this problem, see chapter 10 of 
+\htmladdnormallink{my GR notes}{http://mcgreevy.physics.ucsd.edu/f13/225A-lectures.pdf}.
+}
+
+
+
+\item Couple the graviton to the electron field via 
+\bea\label{eq:couple-to-gravity} S_G &=& \int d^4 x~G h^{\mu\nu} T_{\mu\nu}  
+\cr 
+T_{\mu\nu} &\equiv& \bar \psi \( \gamma_\mu \partial_\nu  + \gamma_\nu \partial_\mu  \) \psi .\eea
+What are the engineering dimensions of the coupling constant $G$? 
+What is the new Feynman rule?
+%(Note that this coupling is only the leading one in a more complete description.)
+
+
+\item  Draw a (tree level) Feynman diagram that describes the creation
+of gravitational radiation from an electron as 
+a result of its acceleration from the absorption of a photon
+($ e \gamma \to e h $).
+Evaluate it if you dare.
+Estimate or calculate the cross section (hint: use dimensional analysis).
+
+
+\item Now the main event: 
+study the one-loop diagram by which the 
+graviton corrects the QED vertex.
+Is it IR divergent?  If not, why not?
+
+
+
+%\answer{
+%The extra powers of the momentum in the numerator from the derivative coupling
+%prevent an IR divergence.
+%}
+
+\item If you get stuck on the previous part,
+replace the graviton field by a massless scalar $\pi(x)$.
+Compare the case of derivative coupling $ \lambda \partial_\mu \pi \bar \psi \gamma^\mu \psi $
+with the more direct Yukawa coupling $ y \pi \bar \psi\psi $.
+[Warning: though this example has some similarities with the graviton case, the conclusion is different.]
+
+
+
+\item Quite a bit about the form of the coupling of gravity to matter
+is determined by the demand of coordinate invariance.
+This plays a role like gauge invariance in QED.  
+Acting on the small fluctuation, the transformation is
+$$ h_{\mu\nu}(x)  \to h_{\mu\nu}(x) + \partial_\mu \lambda_\nu(x)  + \partial_\nu \lambda_{\mu}(x) .$$
+What condition does the invariance under this (infinitesimal) transformation impose
+on the object $T_{\mu\nu}$ appearing in \eqref{eq:couple-to-gravity}.
+
+
+\end{enumerate}
+
+
+
+
+\item {\bf Equivalent photon approximation.} [optional]
+Consider a process in which very high-energy electrons scatter off a target.  
+At leading order in $\alpha$, the electron line is connected
+to the rest of the diagram by a single photon propagator.  
+If the initial and final energies of the electron are $E$ and $E'$, the photon
+will carry momentum $q$ with $q^2 = - 2 EE' (1-\cos\theta)$ 
+(ignoring the electron mass $m \ll E$).  In the limit
+of forward scattering ($\theta \to 0$), we have $q^2 \to 0$, 
+so the photon approaches its mass shell.  In this problem, we ask: To what extent
+can we treat it as a real photon?
+
+\begin{enumerate}
+\item The matrix element for the scattering process can be written as 
+$$ \CM = - \ii e \bar u(p') \gamma^\mu u(p) { - \ii \eta_{\mu\nu} \over q^2 } \hat \CM^\nu(q) $$
+where $\hat \CM^\nu$ represents the coupling of the virtual photon to the target.  
+Let $ q = (q^0, \vec q)$ and define $ \tilde q = (q^0, - \vec q)$.  
+The contribution to the amplitude from the electron line can be parametrized as 
+$$ \bar u(p') \gamma^\mu u(p) = A q^\mu + B \tilde q^\mu + C \eps_1^\mu + D \eps_2^\mu $$
+where $\eps_\alpha$ are unit vectors transverse to $\vec q$.   
+Show that $B$ is at most of order $\theta^2$ (dot it with $q$), so we can ignore 
+it at leading order in an expansion about forward scattering.
+Why do we not care about the coefficient $A$?
+
+%\answer{I will wait to post the solutions to this problem, since
+%some folks said they would like more time to think about it.}
+
+
+%
+\item Working in the frame with $p = (E,0,0,E)$, compute
+$$ \bar u(p') \gamma \cdot \eps_\alpha u(p) $$
+explicitly using massless electrons, where $\bar u$ and $u$ are spinors of definite helicity, 
+and $\eps_{\alpha = \parallel, \perp }$ are unit vectors parallel and perpendicular to the plane of 
+scattering.  Keep only terms through order $\theta$.  
+Note that for $\eps_\parallel$, the (small) $\hat 3$ component matters.
+
+
+
+\item Now write the expression for the electron scattering cross section, in terms of 
+$| \hat \CM^\mu|^2$ and the integral over phase space of the target.  
+This expression must be integrated over the final electron momentum $\vec p'$.   The integral
+over $p^{3'}$ is an integral over the energy loss of the electron.  Show that the integral over $p'_\perp$ 
+diverges logarithmically as $ p'_\perp$ or $\theta \to 0$.
+
+
+\item The divergence as $\theta \to 0$ 
+is regulated by the electron mass (which we've ignored above).
+Show that reintroducing the electron mass in the expression 
+$$ q^2 = - 2 (EE' - p p' \cos \theta) + 2 m^2 $$
+cuts off the divergence and gives a factor of $\log\(s/m^2\)$ in its place.
+
+
+
+\item Assembling all the factors, and assuming that the target cross sections
+are independent of photon polarization, show that the largest part of the electron-target
+cross section is given by considering the electron to be the source of a beam of real photons
+with energy distribution given by
+$$ N_\gamma(x) dx = { dx \over x} {\alpha \over 2\pi} ( 1 + (1-x)^2 ) \log {s \over m^2 } $$
+where $ x \equiv E_\gamma/E$.  
+This is the Weisz\"acker-Williams equivalent photon approximation.  It is a precursor 
+to the theory of jets and partons in QCD. 
+
+
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+\end{document}

@@ -2,19 +2,19 @@
 
 Edition: `weinberg_vol2_exercises`
 
-Totals: 50 Weinberg exercises, 50 Weinberg solutions, 109 supplementary exercises, 109 supplementary solutions, 109 provenance records across 73 source documents; 18 problems use a first-choice source family, 15 preserve an exact source-problem parent, and 94 are original syntheses.
+Totals: 50 Weinberg exercises, 50 Weinberg solutions, 109 supplementary exercises, 109 supplementary solutions, 109 provenance records across 73 source documents; 18 problems use a first-choice source family, 29 preserve an exact source-problem parent, and 80 are original syntheses.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Allowed | Documents | First-choice pool | Exact parents | Median prompt/solution words | Exception |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---|
-| 15 | Non-Abelian Gauge Theories | 9/9 | 15/15 | 10–30 | 11 | 2 | 5 | 109/285 |  |
-| 16 | External Field Methods | 4/4 | 11/11 | 10–30 | 10 | 2 | 0 | 160/358 |  |
+| 15 | Non-Abelian Gauge Theories | 9/9 | 15/15 | 10–30 | 11 | 2 | 10 | 126/280 |  |
+| 16 | External Field Methods | 4/4 | 11/11 | 10–30 | 10 | 2 | 1 | 160/358 |  |
 | 17 | Renormalization of Gauge Theories | 4/4 | 11/11 | 10–30 | 9 | 2 | 1 | 168/349 |  |
-| 18 | Renormalization Group Methods | 6/6 | 12/12 | 10–30 | 6 | 2 | 1 | 133/272 |  |
+| 18 | Renormalization Group Methods | 6/6 | 12/12 | 10–30 | 6 | 2 | 2 | 136/272 |  |
 | 19 | Spontaneously Broken Global Symmetries | 6/6 | 11/11 | 10–30 | 6 | 1 | 1 | 137/286 |  |
-| 20 | Operator Product Expansions | 5/5 | 10/10 | 10–30 | 6 | 1 | 2 | 125.5/279.5 |  |
-| 21 | Spontaneously Broken Gauge Symmetries | 6/6 | 10/10 | 10–30 | 6 | 1 | 0 | 153/289 |  |
-| 22 | Anomalies | 4/4 | 12/12 | 10–30 | 7 | 2 | 2 | 158/308.5 |  |
-| 23 | Extended Field Configurations | 6/6 | 17/17 | 10–30 | 15 | 5 | 3 | 90/193 |  |
+| 20 | Operator Product Expansions | 5/5 | 10/10 | 10–30 | 6 | 1 | 4 | 132/279.5 |  |
+| 21 | Spontaneously Broken Gauge Symmetries | 6/6 | 10/10 | 10–30 | 6 | 1 | 1 | 163/309.5 |  |
+| 22 | Anomalies | 4/4 | 12/12 | 10–30 | 7 | 2 | 4 | 159/328.5 |  |
+| 23 | Extended Field Configurations | 6/6 | 17/17 | 10–30 | 15 | 5 | 5 | 115/230 |  |
 
 ## Source use by chapter
 
@@ -42,35 +42,82 @@ Totals: 50 Weinberg exercises, 50 Weinberg solutions, 109 supplementary exercise
 
 ## Source-use mode by chapter
 
-- Chapter 15: `adapted` (5), `original-inspired` (10)
-- Chapter 16: `original-inspired` (11)
+- Chapter 15: `adapted` (10), `original-inspired` (5)
+- Chapter 16: `adapted` (1), `original-inspired` (10)
 - Chapter 17: `adapted` (1), `original-inspired` (10)
-- Chapter 18: `adapted` (1), `original-inspired` (11)
+- Chapter 18: `adapted` (2), `original-inspired` (10)
 - Chapter 19: `adapted` (1), `original-inspired` (10)
-- Chapter 20: `adapted` (2), `original-inspired` (8)
-- Chapter 21: `original-inspired` (10)
-- Chapter 22: `adapted` (2), `original-inspired` (10)
-- Chapter 23: `adapted` (3), `original-inspired` (14)
+- Chapter 20: `adapted` (4), `original-inspired` (6)
+- Chapter 21: `adapted` (1), `original-inspired` (9)
+- Chapter 22: `adapted` (4), `original-inspired` (8)
+- Chapter 23: `adapted` (5), `original-inspired` (12)
 
 ## Curation notes
 
-- Chapter 15: Fifteen parents combine exact MIT and Cambridge arcs with independently developed exercises inspired by ETH, Stanford, Chicago, and Skinner materials across curvature, gauge fixing, BRST, cohomology, and BV.
-- Chapter 16: Eleven parents cover connected functionals, Legendre geometry, determinants, derivative expansions, dimensional transmutation, bilocal composite sources, and an independently developed Cambridge-inspired background-field identity.
+- Chapter 15: Fifteen parents preserve complete MIT, ETH, Skinner, Stanford, Chicago, and Cambridge arcs across curvature, gauge fixing, BRST, cohomology, and BV.
+- Chapter 16: Eleven parents cover connected functionals, Legendre geometry, determinants, derivative expansions, dimensional transmutation, bilocal composite sources, and the complete Cambridge generating-functional, diagram, and split-independence arc.
 - Chapter 17: Eleven parents preserve the cohomological, background-field, counterterm-stability, group-theory, vacuum-polarization, and asymptotic-freedom chain, capped by a complete Cambridge QED Ward-identity problem.
-- Chapter 18: Twelve parents retain five complementary RG source blocks, an exact McGreevy phi-six deformation, and an independently developed Weyl relevance-counting exercise, covering flows, fixed points, exponents, and marginal corrections.
+- Chapter 18: Twelve parents retain five complementary RG source blocks and exact McGreevy phi-six and particle-potential/Weyl parents, covering flows, fixed points, exponents, and marginal corrections.
 - Chapter 19: Eleven parents balance five source traditions with an exact McGreevy infrared-fluctuation problem, retaining vacuum geometry, soft limits, current algebra, chiral perturbation theory, anomalies, and two-dimensional Goldstone obstruction.
 - Chapter 20: Ten parents combine exact MIT and McGreevy OPE architectures with QCD sum rules, deep-inelastic structure, parton evolution, and renormalon cancellation; further microproblems would repeat their internal stages.
-- Chapter 21: Ten parents begin with a Cambridge-inspired Goldstone-to-Abelian-Higgs arc and retain coherent treatments of gauge fixing, electroweak charges and precision tests, unification, and superconducting infrared physics.
-- Chapter 22: Twelve parents follow Fujikawa, spectral flow, descent, inflow, triangle routing, and matching, including an exact McGreevy heat-kernel parent, an exact MIT anomaly parent, and independently developed Standard-Model checks.
-- Chapter 23: Seventeen parents keep classic defect, monopole, instanton, axion, and bounce investigations distinct, then add McGreevy-inspired domain-wall exercises and exact Cambridge kink and vortex parents as a stronger sheet-style backbone.
+- Chapter 21: Ten parents begin with the complete Cambridge charge, Goldstone, and Abelian-Higgs arc and retain coherent treatments of gauge fixing, electroweak charges and precision tests, unification, and superconducting infrared physics.
+- Chapter 22: Twelve parents follow Fujikawa, spectral flow, descent, inflow, triangle routing, and matching, including complete McGreevy heat-kernel and Standard-Model anomaly parents and the complete MIT dimensional-regularization anomaly parent.
+- Chapter 23: Seventeen parents keep classic defect, monopole, instanton, axion, and bounce investigations distinct, then add complete McGreevy domain-wall and polyacetylene parents and complete Cambridge kink and vortex parents as a stronger sheet-style backbone.
 
 ## Audit status
 
-- Mode: strict
-- Warnings: 0
-- Failures: 2
+- Mode: draft
+- Warnings: 1
+- Failures: 45
+
+### Current draft warnings
+
+- 92 source-fidelity records have not passed; inspect source-fidelity-audit.json for the pending or rejected entries
 
 ### Failures
 
-- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/master.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/backmatter/subject-index.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter15/appendixA.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter15/appendixB.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter16/sec164.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter18/sec187.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/backmatter.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec1910.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec193.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec194.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec195.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec196.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec197.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec198.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter19/sec199.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter20/backmatter.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter20/sec204.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter20/sec205.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter20/sec206.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/backmatter.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/sec212.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/sec213.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/sec214.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/sec215.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter21/sec216.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec221.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec222.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec223.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec224.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec225.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec226.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter22/sec227.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/appendixB.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/backmatter.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/sec232.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/sec233.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/sec234.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/sec235.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/chapters/chapter23/sec236.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/frontmatter/notation.tex
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2/latex/frontmatter/preface.tex
+- Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter19/weinberg-exercises.tex
+- Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter20/weinberg-exercises.tex
+- Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter21/weinberg-exercises.tex
+- Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter23/weinberg-exercises.tex
 - Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-qft/weinberg-vol2.pdf

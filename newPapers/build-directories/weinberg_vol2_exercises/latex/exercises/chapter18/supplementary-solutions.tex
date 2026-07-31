@@ -403,116 +403,205 @@
     so there is no term linear in \(\epsilon\).
   \end{enumerate}
 
-  \SupplementarySolution{9}{Homogeneity, Susceptibility, and Hyperscaling}
+  \SupplementarySolution{9}{Cubic Anisotropy and Competing Fixed Points}
   \begin{enumerate}
     \item[(a)]
-    Choose
-    \(b=|t|^{-1/y_t}\).  The homogeneity relation becomes
+    Independent sign flips force every component to occur with even
+    exponent, and permutations require symmetric combinations.  At degree
+    two the only invariant is \(\phi^2\), which is already \(O(N)\)
+    invariant.  At degree four there are two independent invariants,
     \[
-      f_s(t,h)=|t|^{d/y_t}
-        \Phi_\pm\left(h|t|^{-y_h/y_t}\right).
+      (\phi^2)^2,\qquad \sum_a\phi_a^4.
     \]
-    Twice differentiating with respect to \(h\) and then setting \(h=0\)
-    gives
-    \[
-      \chi(t,0)\propto
-        |t|^{(d-2y_h)/y_t}.
-    \]
-    Therefore
-    \[
-      \boxed{\gamma_{\rm crit}=
-        \frac{2y_h-d}{y_t}.}
-    \]
-    The two signs of \(t\) may have different amplitudes
-    \(\Phi_\pm''(0)\), but the exponent is the same.
+    Their difference is a genuine cubic anisotropy.  Higher power sums,
+    such as \(\sum_a\phi_a^6\), give further cubic but non-\(O(N)\)
+    invariants.
     \item[(b)]
-    If \(\xi\) is the only large length, one statistically independent
-    critical degree of freedom occupies a correlation volume
-    \(\xi^d\).  The singular free-energy density is therefore
-    \[
-      f_s\sim\xi^{-d}\sim |t|^{d\nu}.
-    \]
-    By definition, \(f_s\sim|t|^{2-\alpha_{\rm crit}}\), because two
-    derivatives with respect to temperature give the singular specific
-    heat.  Equating powers yields
-    \[
-      \boxed{2-\alpha_{\rm crit}=d\nu,\qquad
-        \alpha_{\rm crit}=2-d\nu.}
-    \]
-    Hyperscaling can fail above the upper critical dimension when a
-    dangerously irrelevant variable invalidates the single-scale argument.
+    At the Gaussian point
+    \([\phi]=(d-2)/2=1-\epsilon/2\).  A nonderivative monomial of degree
+    \(k\) has coupling dimension \(d-k(d-2)/2\).  Apart from the common
+    mass deformation, the only cubic-symmetric non-\(O(N)\) operator with
+    nonnegative coupling dimension near \(d=4\) is therefore the quartic
+    \(\sum_a\phi_a^4\).  Operators of degree six or higher and additional
+    derivatives are irrelevant near four dimensions.
     \item[(c)]
-    If \(X\) has scaling dimension \(x_X\), then
+    The one-loop four-point fish graphs can be organized by the general
+    quartic-coupling tensor formula.  It is convenient to define
+    \(\bar u=u/(8\pi^2)\) and \(\bar v=v/(8\pi^2)\), and then suppress the
+    bars.  Minimal subtraction gives
     \[
-      X(t,u)=b^{-x_X}X(tb^{y_t},ub^{y_u}).
+      \boxed{\begin{aligned}
+        \beta_u&=-\epsilon u+\frac{N+8}{6}u^2+uv,\\
+        \beta_v&=-\epsilon v+2uv+\frac32v^2.
+      \end{aligned}}
     \]
-    Setting \(b=|t|^{-1/y_t}\) gives
+    Restoring the unscaled couplings, the quadratic numerators over
+    \(48\pi^2\) are
+    \((N+8)u^2+6uv\) and \(12uv+9v^2\), respectively.  The absence of
+    \(v^2\) in \(\beta_u\) and of \(u^2\) in \(\beta_v\) follows because
+    two purely diagonal vertices remain diagonal, whereas two
+    \(O(N)\)-invariant vertices cannot generate anisotropy.
+    \item[(d)]
+    In the rescaled variables the four fixed points are
     \[
-      X(t,u)=|t|^{x_X/y_t}
-        F_\pm\left(u|t|^{-y_u/y_t}\right).
+      \begin{aligned}
+        (u_*,v_*)_{\rm G}&=(0,0),\\
+        (u_*,v_*)_{O(N)}&=\left(\frac{6\epsilon}{N+8},0\right),\\
+        (u_*,v_*)_{\rm I^N}&=\left(0,\frac{2\epsilon}{3}\right),\\
+        (u_*,v_*)_{\rm cub}&=\left(\frac{2\epsilon}{N},
+          \frac{2\epsilon(N-4)}{3N}\right).
+      \end{aligned}
     \]
-    Since \(y_u<0\), the second argument tends to zero.  Regularity gives
+    When \(u=0\), the action is a sum of \(N\) independent one-component
+    \(\phi^4\) theories.  Its interacting fixed point is therefore \(N\)
+    decoupled copies of the Ising Wilson--Fisher theory.
+    \item[(e)]
+    For \(M_{ij}=\partial\beta_i/\partial g_j|_*\), positive eigenvalues
+    decay toward the infrared in the convention
+    \(\beta=\mu\,d/d\mu\).  The eigenvalues are
     \[
-      X=|t|^{x_X/y_t}
-        \left[F_\pm(0)+F_\pm'(0)u
-        |t|^{-y_u/y_t}+\cdots\right].
+      \begin{aligned}
+        \operatorname{spec}M_{\rm G}&=(-\epsilon,-\epsilon),\\
+        \operatorname{spec}M_{O(N)}&=
+          \left(\epsilon,\epsilon\frac{4-N}{N+8}\right),\\
+        \operatorname{spec}M_{\rm I^N}&=
+          \left(\epsilon,-\frac{\epsilon}{3}\right),\\
+        \operatorname{spec}M_{\rm cub}&=
+          \left(\epsilon,\epsilon\frac{N-4}{3N}\right).
+      \end{aligned}
     \]
-    Thus \(u\) changes amplitudes and supplies subleading powers, but not
-    the leading exponent \(x_X/y_t\).
+    Hence the \(O(N)\) point is infrared stable for \(N<4\), while the
+    cubic point is stable for \(N>4\).  They merge at \(N=4\), where the
+    anisotropy is marginal at this order.  The Gaussian and
+    decoupled-Ising points are unstable or saddle points.  A flow sketch
+    therefore has the generic critical trajectories ending at \(O(N)\)
+    below four components and at the mixed cubic point above four
+    components, separated from runaway regions by the stable manifolds of
+    the saddles.
+    \item[(f)]
+    Once a trajectory leaves the stability cone of the quartic form, the
+    quartic truncation cannot decide the global potential.  Positive
+    sextic terms such as
+    \((\phi^2)^3\), \((\phi^2)\sum_a\phi_a^4\), and
+    \(\sum_a\phi_a^6\), as well as the bounded microscopic spin length,
+    stabilize large fields.  A flow that runs away before reaching a
+    scale-invariant fixed point is the perturbative signal of a
+    fluctuation-induced first-order transition.  It is therefore a real
+    change from the continuous mean-field prediction, not merely a shift
+    of critical exponents.
   \end{enumerate}
 
-  \SupplementarySolution{10}{Coupled Scaling Fields and Marginal Corrections}
+  \SupplementarySolution{10}{The \(O(N)\) Model at Large \(N\)}
   \begin{enumerate}
     \item[(a)]
-    The normalized choice is unnecessary; convenient eigenvectors are
+    The free kinetic term gives
+    \([\phi]=(D-2)/2\).  Since the action is dimensionless,
     \[
-      V_+=\begin{pmatrix}1\\1\end{pmatrix},\quad y_+=3,
-      \qquad
-      V_-=\begin{pmatrix}1\\-1\end{pmatrix},\quad y_-=1.
+      \boxed{[g]=D-4[\phi]=4-D.}
     \]
-    Hence the scaling fields are proportional to
-    \(u_+=t+v\) and \(u_-=t-v\).  The general flow is
-    \[
-      \begin{pmatrix}t(\ell)\\v(\ell)\end{pmatrix}
-        =c_+e^{3\ell}V_++c_-e^\ell V_-.
-    \]
-    Both perturbations are relevant for increasing coarse-graining
-    parameter \(\ell\), but the symmetric direction \(V_+\) is more
-    relevant because its eigenvalue is larger.
+    Thus the quartic coupling is relevant below four dimensions,
+    irrelevant above four dimensions, and classically marginal at \(D=4\).
     \item[(b)]
-    Separation gives
-    \[
-      \boxed{T(\ell)=\frac{T_0}{1+aT_0\ell}.}
-    \]
-    For \(T_0>0\) and increasing infrared coarse graining
-    \(\ell\), the coupling tends to zero only as \(1/\ell\).  It is
-    therefore marginally irrelevant rather than linearly irrelevant.
-    Reversing the flow, the denominator becomes small after a logarithmic
-    interval of order \(1/(aT_0)\).  Since physical lengths scale as
-    \(e^\ell\), the associated crossover or correlation length is
-    \[
-      \boxed{\xi\sim a_0
-        \exp\left(\frac{1}{aT_0}\right)}
-    \]
-    up to a nonuniversal factor of order unity.
+    Every quartic vertex contributes \(g/N\), whereas every freely summed
+    closed \(O(N)\) index loop contributes \(N\).  The leading connected
+    vacuum graphs maximize the number of index loops and scale as
+    \(N^{L_{\rm index}-V}=N\).  Choosing a coupling independent of \(N\)
+    would suppress interactions; omitting the \(1/N\) would make them
+    overwhelm the free \(O(N)\) contribution.  The normalization \(g/N\)
+    therefore produces a nontrivial saddle and an extensive
+    \(O(N)\) free energy.
     \item[(c)]
-    Choosing \(b=|t|^{-1/y_t}\) gives
+    Introduce fields \(\rho\) and \(\lambda\) so that
+    \(\phi^2/N=\rho\) is enforced by \(\lambda\).  Up to a choice of
+    contour for \(\lambda\), the action becomes
     \[
-      X(t,h)=|t|^{x_X/y_t}
-        F_\pm\left(\frac{h}{|t|^{y_h/y_t}}\right).
+      S_E=\frac12\int d^Dx\,\phi_a(-\partial^2+\lambda)\phi_a
+      +N\int d^Dx\left[
+        \frac g4\rho^2+\frac{r-\lambda}{2}\rho\right].
     \]
-    Alternatively, choosing \(b=|h|^{-1/y_h}\) gives
+    Integrating out the \(N\) Gaussian fields gives
     \[
-      X(t,h)=|h|^{x_X/y_h}
-        G_\pm\left(\frac{t}{|h|^{y_t/y_h}}\right).
+      \frac{S_{\rm eff}}N=
+      \frac12\operatorname{Tr}\ln(-\partial^2+\lambda)
+      +\int d^Dx\left[
+        \frac g4\rho^2+\frac{r-\lambda}{2}\rho\right].
     \]
-    The invariant crossover variable may be written
+    The overall \(N\) makes the saddle exact at leading order.
+
+    For a translation-invariant symmetric saddle put
+    \(m^2=\lambda\).  With a sharp ultraviolet cutoff,
     \[
-      \boxed{z=\frac{h}{|t|^\Delta},\qquad
-        \Delta=\frac{y_h}{y_t},}
+      \rho=I_D(m),\qquad m^2=r+g\rho,\qquad
+      I_D(m)=\int_{|k|<\Lambda}\frac{d^Dk}{(2\pi)^D}
+        \frac1{k^2+m^2}.
     \]
-    or equivalently \(t/|h|^{1/\Delta}\).  Holding this combination fixed
-    defines a scaling trajectory toward the critical point.
+    At this order the \(\phi_a\) are free massive fields with propagator
+    \(\delta_{ab}/(k^2+m^2)\), while fluctuations of the auxiliary fields
+    begin at relative order \(1/N\).
+
+    To display the broken phase, allow
+    \(\langle\phi_1\rangle=\sqrt N\,\varphi\).  The saddle equations become
+    \[
+      m^2\varphi=0,\qquad
+      m^2=r+g\bigl[\varphi^2+I_D(m)\bigr].
+    \]
+    For \(D>2\), define the cutoff-dependent critical parameter
+    \[
+      r_c=-gI_D(0).
+    \]
+    If \(r>r_c\), then \(\varphi=0\) and \(m>0\).  At \(r=r_c\), \(m=0\).
+    If \(r<r_c\), then \(m=0\) and
+    \(\varphi^2=(r_c-r)/g\); the \(N-1\) transverse modes are Goldstone
+    bosons.
+
+    Write \(t=r-r_c\).  On the symmetric side,
+    \[
+      t=m^2+g\,[I_D(0)-I_D(m)].
+    \]
+    The small-\(m\) behavior separates the requested regimes:
+    \[
+    \begin{array}{c|c}
+      D>4&
+      I_D(0)-I_D(m)=c_D\Lambda^{D-4}m^2+\cdots\\
+      D=4&
+      I_4(0)-I_4(m)=
+        \dfrac{m^2}{16\pi^2}\ln\dfrac{\Lambda^2}{m^2}
+        +O(m^2)\\[6pt]
+      2<D<4&
+      I_D(0)-I_D(m)=
+        A_Dm^{D-2}+o(m^{D-2})
+    \end{array}
+    \]
+    with
+    \[
+      A_D=-\frac{\Gamma(1-D/2)}{(4\pi)^{D/2}}>0 .
+    \]
+    Thus \(D>4\) has mean-field scaling; \(D=4\) has mean-field powers
+    multiplied by logarithms; and \(2<D<4\) has interacting large-\(N\)
+    scaling.  For \(D\le2\), \(I_D(0)\) is infrared divergent.  No finite
+    \(r_c\) supports a massless broken saddle, in accord with the
+    lower-critical-dimension obstruction.
+    \item[(d)]
+    Since \(\xi=m^{-1}\), the preceding gap equation gives
+    \[
+      \boxed{\nu=
+      \begin{cases}
+        \dfrac1{D-2},&2<D<4,\\[4pt]
+        \dfrac12,&D>4,
+      \end{cases}}
+    \]
+    with \(\nu=1/2\) and logarithmic corrections at \(D=4\).
+    At \(D=4-\epsilon\),
+    \[
+      \nu=\frac1{2-\epsilon}
+        =\frac12+\frac{\epsilon}{4}+O(\epsilon^2).
+    \]
+    The one-loop Wilson--Fisher result is
+    \[
+      \nu=\frac12+
+        \frac{N+2}{4(N+8)}\epsilon+O(\epsilon^2),
+    \]
+    whose \(N\to\infty\) limit agrees exactly with the expansion above.
   \end{enumerate}
 
   \SupplementarySolution{11}{The \(\phi^6\) Deformation at Wilson--Fisher}

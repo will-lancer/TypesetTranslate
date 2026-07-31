@@ -1,0 +1,224 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                   Physics 215A QFT Fall 2023
+                          Assignment 6
+                                      Due 11:00am Monday, November 13, 2023
+
+  1. Brain-warmer: the identity does nothing twice. Check our relativistic
+     state normalization by squaring the expression for the identity in the 1-particle
+     sector:                               Z d
+                                 2 !         d̄ p
+                                11 = 11 =         |~pi h~p| .
+                                             2ωp~
+  2. Non-Abelian currents. [bonus problem] On a previous homework, we studied
+     a complex scalar field. Now, we make a big leap to two complex scalar fields,
+     Φα=1,2 , with            Z                                
+                                  d    1     ? µ          ?
+                      S[Φα ] = d xdt     ∂µ Φα ∂ Φα − V (Φα Φα )
+                                       2
+     Consider the objects
+                                     Z
+                                 1                       
+                               i
+                             Q ≡         dd xi Π†α σαβ
+                                                    i
+                                                       Φ†β + h.c.
+                                 2
+     where σ i=1,2,3 are the three Pauli matrices.
+
+      (a) What symmetries do these charges generate (i.e. how do the fields trans-
+          form)? Show that they are symmetries of S.
+      (b) If you want to, show that [Qi , H] = 0, where H is the Hamiltonian.
+      (c) Evaluate [Qi , Qj ]. Hence, non-Abelian. Where have you seen this algebra
+          before?
+      (d) To complete the circle, find the Noether currents Jµi associated to the sym-
+          metry transformations you found in part 2a. Show that the resulting charge
+               R
+          Qi = dd xJ0i agrees with our starting point.
+      (e) Generalize to the case of N scalar fields.
+
+  3. Recovering non-relativistic quantum mechanics.
+     Consider a complex scalar field, in the non-relativistic limit,
+                                   √
+                             Φ = 2me−imt Ψ, |Ψ̇|  mΨ.
+     Recall that in this limit, the antiparticles disappear and the mode expansion is
+                              Z                         Z
+                                        p·~
+                     Ψ(x) = d̄ p ed   +i~ x
+                                            ap , Ψ (x) = d̄d p e−i~p·~x a†p .
+                                                  †
+
+
+
+                                           1
+   (a) Show that                                 Z
+                                        P̂i ≡        d̄d ppi a†p ap
+
+       is the generator of translations and commutes with the Hamiltonian.
+   (b) Let                                  Z
+                                    i
+                                  X̂ ≡           dd xΨ† (x)xi Ψ(x).
+
+       A state of one particle at location ~x is
+                                        |xi = Ψ† (x) |0i .
+       Show that
+                                         X̂ i |xi = xi |xi .
+   (c) Consider the general one-particle state
+                           Z                   Z
+                                          †
+                     |ψi = d x ψ(x)Ψ (x) |0i = dx x ψ(x) |xi .
+                               d
+
+
+
+       Show that                                 Z
+                                   i
+                                  X̂ |ψi =           dd xxi ψ(x) |xi
+
+       and (a little more involved)
+                                        Z                   
+                              i                  d     ∂
+                            P̂ |ψi =            d x −i i ψ(x) |xi ,
+                                                      ∂x
+       which is the usual action of these operators on single-particle wavefunctions
+       ψ(x).
+
+4. Combinatorics from 0-dimensional QFT. [This is a more sophisticated
+   bonus problem. I will not post the solutions of this problem until later. If
+   you have a hard time with it now, please try again in a week.]
+                            (2n)!
+  Catalan numbers Cn = n!(n+1)!   arise as the answer to many combinatorics prob-
+  lems (beware: there is some disagreement in the literature about whether this is
+  Cn or Cn+1 ).
+  One such problem is: count random walks on a 1d chain
+  with 2n steps that start at 0 and end at 0 without cross-
+  ing 0 in between.
+
+
+  Another such problem is: in how many ways can 2n (dis-
+  tinguishable) points on a circle be connected by chords
+  that do not intersect within the circle.
+
+
+
+                                            2
+      Consider a zero-dimensional QFT with the following Feynman rules:
+
+          • There are two fields h and l.
+                        √
+          • There is an th2 l vertex in terms of a coupling t.
+          • The bare l propagator is 1.
+          • The bare h propagator is 1.
+          • All diagrams can be drawn on a piece of paper without crossing.
+          • An annoying extra rule: All the l propagators must be on one side of the h
+            propagators1 .
+          • There are no loops of h.
+
+      The last two rules can be realized from a lagrangian by introducing a large N
+      (below).
+
+       (a) Show that the full two-point green’s function for h is
+                                                X
+                                        G(t) =      tn Cn
+                                                     n
+
+             the generating function of Catalan numbers.
+       (b) Let Σ(t) be the sum of diagrams with two h lines sticking out that may
+           not be divided into two parts by cutting a single intermediate line. (This
+           property is called 1PI (one-particle irreducible), and Σ is called the “1PI
+           self-energy of h”. We’ll use this manipulation all the time later on.) Show
+                           1
+           that G(t) = 1−Σ(t) .
+        (c) Argue by diagrams for the equation (sometimes this is also called a Schwinger-
+            Dyson equation)
+
+
+
+
+             where Σ is the 1PI self-energy of h.
+       (d) Solve this equation for the generating function G(t).
+1
+    You’ll see in part 4f how to justify this.
+
+
+
+                                                 3
+   (e) If you are feeling ambitious, add another coupling N −1 which counts the
+       crossings of the l propagators. The resulting numbers can be called Touchard-
+       Riordan numbers.
+    (f) How to realize the no-crossings rule? Consider
+                                 √
+                                   t           X
+                                                     2
+                                                          X
+                            L = √ lαβ hα hβ +       lαβ +   h2α
+                                   N            α,β       α
+
+
+       where α, β = 1 · · · N . By counting index loops, show that the dominant
+       diagrams at large N are the ones we kept above. Hint: to keep track of the
+       factors of N , introduce (’t Hooft’s) double-line notation: since l is a matrix,
+                                  α−−−−−−−α
+       its propagator looks like: β − − − − − − − β, while the h propagator is just
+       one index line α       α, and the vertex is !! . If you don’t like my ascii
+       diagrams, here are the respective pictures: hlαβ lαβ i =                       ,
+
+       hhα hα i =                    and the hhl vertex is:                       . A
+
+       closed index loop gives a factor of N .
+   (g) Use properties of Catalan numbers to estimate the size of non-perturbative
+       effects in this field theory.
+   (h) There are many other examples like this. Another similar one is the rela-
+       tionship between symmetric functions and homogeneous products. A more
+       different one is the enumeration of planar graphs. For that, see BIPZ.
+
+5. Scalar Yukawa amplitudes.
+  Consider again the scalar Yukawa theory of a complex scalar Φ and a real scalar φ.
+  In the following, assume all particles are in momentum eigenstates. Use artisanal
+  methods.
+
+   (a) Compute the amplitude for the annihilation of a Φ particle and a Φ? particle
+       into a φ particle, at leading order in the coupling g.
+   (b) Compute the amplitude for Φ + φ → Φ + φ scattering to the leading non-
+       trivial order in the coupling. Focus on the generic case where none of the
+       initial momenta is the same as any of the final momenta.
+       Can you write the answer in a manifestly Lorentz-invariant way?
+
+6. Fields and forces.   Consider a real free relativistic scalar field of mass m
+         R d+1 1
+   S[φ] = d x 2 (∂µ φ∂ φ − m2 φ2 ).
+                      µ
+
+
+
+                                        4
+(a) Calculate the vacuum expectation value
+                             R d+1            
+                       h0| T ei d   x φ(x)J(x)
+                                                 |0i ≡ eiW [J]
+
+    where J is a fixed, external (c-number) source. Use Wick’s theorem. Make
+    a series expansion in powers of J and draw some diagrams. To understand
+    the structure of the series, recall the formula on a previous homework for
+     eK·q in any gaussian theory.
+(b) Now specialize to the case where the source is static and is present for a
+    time 2T :
+
+                J(x) = Jstatic ≡ θ(T − t)θ(t + T ) δ d (x) − δ d (x − R)
+                                                                        
+
+
+    with T  R  1/m. You should find an answer of the form
+
+                               W [Jstatic (x)] = −T V (R)
+
+    where V (R) is the Yukawa potential.
+(c) Chant the following incantation:
+       Static sources experience a force due to exchange of virtual particles.
+    Feel happy at having reproduced by canonical methods the answer we found
+    earlier using path integral methods.
+
+
+
+
+                                      5
+

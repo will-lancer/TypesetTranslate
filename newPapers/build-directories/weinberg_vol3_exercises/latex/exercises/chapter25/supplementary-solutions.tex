@@ -67,40 +67,49 @@
   \SupplementarySolution{2}{Spinorial Lorentz Generators}
 The Clifford identity
   \[
-    \sigma^\mu\bar\sigma^\nu+\sigma^\nu\bar\sigma^\mu
-      =2\eta^{\mu\nu}\mathbf1
+    s^\mu\bar s^\nu+s^\nu\bar s^\mu
+      =-2\eta^{\mu\nu}\mathbf{1}
   \]
   gives
   \[
   \begin{aligned}
-    \sigma^{\mu\nu}
+    \Sigma^{\mu\nu}
       &=\frac{i}{4}
-        \left(2\eta^{\mu\nu}\mathbf1
-              -2\sigma^\nu\bar\sigma^\mu\right)\\
-      &=\frac{i}{2}
-        \left(\eta^{\mu\nu}\mathbf1
-              -\sigma^\nu\bar\sigma^\mu\right).
+        \left(-2\eta^{\mu\nu}\mathbf{1}
+              -2s^\nu\bar s^\mu\right)\\
+      &=-\frac{i}{2}
+        \left(\eta^{\mu\nu}\mathbf{1}
+              +s^\nu\bar s^\mu\right).
   \end{aligned}
   \]
   This form is convenient because scalar terms drop out of a commutator.
-  Expanding the remaining four-sigma products and repeatedly replacing each
-  adjacent pair by its symmetric and antisymmetric parts gives
+  Direct multiplication of the Pauli matrices, or one further use of their
+  Clifford identity, gives the mostly-plus triple-product formula
+  \[
+    s^\mu\bar s^\nu s^\rho
+      =-\eta^{\mu\nu}s^\rho-\eta^{\nu\rho}s^\mu
+       +\eta^{\mu\rho}s^\nu
+       -i\epsilon^{\mu\nu\rho\kappa}s_\kappa .
+  \]
+  Insert this formula twice in
+  \[
+    [\Sigma^{\mu\nu},\Sigma^{\rho\sigma}]
+      =-\frac14
+       [s^\nu\bar s^\mu,s^\sigma\bar s^\rho].
+  \]
+  The epsilon terms cancel between the two matrix orders, whereas the metric
+  terms give
   \[
   \begin{aligned}
-    [\sigma^{\mu\nu},\sigma^{\rho\sigma}]
-      =i\big(&
-        \eta^{\nu\rho}\sigma^{\mu\sigma}
-        -\eta^{\nu\sigma}\sigma^{\mu\rho}\\
-        &+\eta^{\mu\sigma}\sigma^{\nu\rho}
-        -\eta^{\mu\rho}\sigma^{\nu\sigma}\big).
+    [\Sigma^{\mu\nu},\Sigma^{\rho\sigma}]
+      =-i\big(&
+        \eta^{\nu\rho}\Sigma^{\mu\sigma}
+        -\eta^{\nu\sigma}\Sigma^{\mu\rho}\\
+        &+\eta^{\mu\sigma}\Sigma^{\nu\rho}
+        -\eta^{\mu\rho}\Sigma^{\nu\sigma}\big).
   \end{aligned}
   \]
-  One way to organize the expansion is first to reduce
-  \(\sigma^\mu\bar\sigma^\nu\sigma^\rho\) to terms linear in
-  \(\sigma^\kappa\) plus the completely antisymmetric epsilon term.  The
-  epsilon terms occur with opposite signs in the two orders of the
-  commutator and cancel, while the metric terms combine into the expression
-  displayed above.  Thus \(\sigma^{\mu\nu}\) obeys precisely the Lorentz
+  Thus \(\Sigma^{\mu\nu}\) obeys precisely the Lorentz
   algebra and acts on an undotted spinor as the \((\tfrac12,0)\)
   representation.
 
@@ -207,47 +216,117 @@ The odd generators transform in the two inequivalent Weyl
   supercharges, so the common positive-energy representation space and
   the trace identity used above are no longer available.
 
-  \SupplementarySolution{6}{The \(N=2\) BPS Bound and Multiplet Shortening}
+  \SupplementarySolution{6}{Massive \(N=2\) Multiplets and the BPS Bound}
   \begin{enumerate}
-    \item \emph{The \(N=2\) BPS Bound.}
-    After rephasing the charges, define two spinor pairs schematically by
+    \item The nonzero anticommutators are
       \[
-        A_\alpha=\frac{1}{\sqrt2}
-          \left(Q_{\alpha1}+
-           \epsilon_{\alpha\beta}Q^\dagger_{\dot\beta2}\right),
+        \{\WeylQ_{ar},\WeylQ_{bs}^\dagger\}
+          =2\delta_{rs}\sigma^\mu_{ab}P_\mu,
         \qquad
-        B_\alpha=\frac{1}{\sqrt2}
-          \left(Q_{\alpha1}
-           -\epsilon_{\alpha\beta}Q^\dagger_{\dot\beta2}\right),
+        \{\WeylQ_{ar},\WeylQ_{bs}\}=e_{ab}Z_{rs},
+        \qquad Z_{rs}=-Z_{sr},
       \]
-      with the dotted and undotted rest-frame indices identified.  The signs
-      for the second component are fixed by \(\epsilon_{12}=1\).  Direct use of
-      the algebra gives, up to the common Kronecker delta,
+      together with the Hermitian conjugate of the second relation.  The
+      charges transform as Weyl spinors,
       \[
-        \{A_\alpha,A_\beta^\dagger\}=(2M+|z|)\delta_{\alpha\beta},
+        [J_i,\WeylQ_{ar}]
+          =-\frac12(\sigma_i)_{ab}\WeylQ_{br},
         \qquad
-        \{B_\alpha,B_\beta^\dagger\}=(2M-|z|)\delta_{\alpha\beta}.
+        [K_i,\WeylQ_{ar}]
+          =-\frac{i}{2}(\sigma_i)_{ab}\WeylQ_{br},
       \]
-      Positivity of the second anticommutator requires \(2M-|z|\geq0\).
-      Identifying \(z\) with this chapter's \(Z_{12}\) gives
+      and
+      \[
+        [P_\mu,\WeylQ_{ar}]=[P_\mu,\WeylQ_{ar}^\dagger]=0,
+        \qquad [Z_{rs},P_\mu]=[Z_{rs},\WeylQ_{at}]=0,
+      \]
+      with the remaining central-charge commutators and their adjoints also
+      zero.
+
+    \item At rest and with \(Z=0\), set
+      \[
+        a_{ar}=\frac{\WeylQ_{ar}}{\sqrt{2M}},
+        \qquad
+        a_{ar}^\dagger=\frac{\WeylQ_{ar}^\dagger}{\sqrt{2M}}.
+      \]
+      These are four canonical fermionic oscillators.  If
+      \(a_{ar}\ket\Omega=0\) and \(\ket\Omega\) has spin zero, the states form
+      \(\bigwedge^\bullet(\mathbf2_{\rm spin}\otimes\mathbf2_R)\).  By level,
+      \[
+      \begin{array}{c|c|c}
+        F&\text{rotation content}&\text{number of states}\\ \hline
+        0&\mathbf1&1\\
+        1&2\,\mathbf2&4\\
+        2&\mathbf3\oplus3\,\mathbf1&6\\
+        3&2\,\mathbf2&4\\
+        4&\mathbf1&1
+      \end{array}
+      \]
+      because
+      \(\bigwedge^2(\mathbf2\otimes\mathbf2)
+       =(\operatorname{Sym}^2\mathbf2\otimes\bigwedge^2\mathbf2)
+       \oplus(\bigwedge^2\mathbf2\otimes\operatorname{Sym}^2\mathbf2)\).
+      Thus the multiplet contains one spin-one multiplet, four spin-half
+      multiplets, and five spin-zero multiplets, for
+      \(3+4(2)+5=16=2^4\) states.
+
+    \item Choose the phase so that \(z=|z|\).  With the spinor indices
+      identified in the rest frame, define unnormalized combinations
+      \[
+        A_a=\frac1{\sqrt2}
+          (\WeylQ_{a1}+e_{ab}\WeylQ_{b2}^\dagger),
+        \qquad
+        B_a=\frac1{\sqrt2}
+          (\WeylQ_{a1}-e_{ab}\WeylQ_{b2}^\dagger).
+      \]
+      Direct substitution in the algebra gives
+      \[
+        \{A_a,A_b^\dagger\}=(2M+|z|)\delta_{ab},
+        \qquad
+        \{B_a,B_b^\dagger\}=(2M-|z|)\delta_{ab},
+        \qquad \{A_a,B_b^\dagger\}=0.
+      \]
+      Positivity therefore requires
       \[
         M\geq\frac{|Z_{12}|}{2}.
       \]
-      Other common normalizations absorb the factor of two into the definition
-      of the central charge; the positive-operator argument is unchanged.
-    \item \emph{Null Oscillators and Shortening.}
-    At \(2M=|z|\),
+      At equality, for every \(\ket\psi\),
       \[
-        \lVert B_\alpha^\dagger\ket\psi\rVert^2
-          +\lVert B_\alpha\ket\psi\rVert^2=0
+        \lVert B_a\ket\psi\rVert^2
+          +\lVert B_a^\dagger\ket\psi\rVert^2=0,
       \]
-      for every state in the representation.  Positivity makes both terms
-      vanish, so the \(B\) pair acts trivially.  A generic massive \(N=2\)
-      representation has four independent fermionic creation operators and,
-      on a spin-zero vacuum, \(2^4=16\) states.  At half-BPS saturation only
-      two creation operators remain, giving \(2^2=4\) states: two scalar states
-      and the two spin projections of a spin-\(1/2\) state.  This factor-of-four
-      reduction is the shortening.
+      so both \(B_a\) and \(B_a^\dagger\) act trivially.  Only the two
+      normalized \(A_a^\dagger\) creators remain.  On a spin-zero Clifford
+      vacuum they give
+      \(\mathbf1\oplus\mathbf2\oplus\mathbf1\): two scalar states and one
+      spin-half particle, four states in all.  Two of the four real
+      supersymmetry pairs annihilate the representation, so it is
+      half-BPS.  Relative to the long multiplet, its dimension is reduced by
+      a factor of four.
+
+    \item A unitary congruence puts an even-dimensional complex
+      antisymmetric matrix into the form
+      \[
+        UZU^{\mathsf T}
+          =\bigoplus_{i=1}^{N/2}
+            z_i\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+        \qquad z_i\geq0.
+      \]
+      Each block repeats the preceding construction and yields
+      \(2M\pm z_i\) as the two oscillator norms.  Hence
+      \[
+        M\geq\frac12\max_i z_i.
+      \]
+      A generic massive multiplet has \(2N\) creation operators and therefore
+      \(2^{2N}\) states for a one-dimensional Clifford vacuum.  Each
+      saturated skew block makes two creation operators null.  If exactly
+      \(k\) blocks saturate, the remaining exterior algebra has dimension
+      \[
+        2^{2N-2k}.
+      \]
+      For a Clifford vacuum of spin \(j\), this is multiplied by
+      \(2j+1\).  The shortening records the corresponding preserved
+      supercharges; in particular, saturation of every block is half-BPS.
   \end{enumerate}
 
   \SupplementarySolution{7}{Massive \(N=1\) Multiplets and Parity}

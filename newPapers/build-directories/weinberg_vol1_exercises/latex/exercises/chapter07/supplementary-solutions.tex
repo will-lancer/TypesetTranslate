@@ -1,140 +1,224 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementarySolution{1}{Canonical Transformations and Noether Charges}
+\SupplementarySolution{1}{Symmetries, Currents, Charges, and Lorentz Boosts}
 \begin{enumerate}
 \item
-The momentum is
+A continuous symmetry is a differentiable family of field
+transformations
 \[
- \Pi=\frac{\partial\mathcal L}{\partial\dot\phi}
-     =Z(\phi)\dot\phi ,
- \qquad \dot\phi=\frac{\Pi}{Z(\phi)} .
+ \phi(x)\longmapsto\phi(x)+\epsilon\,\Delta\phi(x)+O(\epsilon^2)
 \]
-The Legendre transform must be carried out before any perturbative
-expansion:
+under which the action is unchanged, possibly up to a boundary term.
+A conserved current is a local vector \(j^\mu\) satisfying
+\(\partial_\mu j^\mu=0\) on the equations of motion.  Its charge is
 \[
- \mathcal H=\Pi\dot\phi-\mathcal L
- =\frac{\Pi^2}{2Z(\phi)}
- +\frac12Z(\phi)(\boldsymbol\nabla\phi)^2+U(\phi).
+ Q(t)=\int d^3x\,j^0(t,\mathbf x).
 \]
-Thus a field-dependent coefficient of \(\dot\phi^2\) is inverted in the
-momentum part of the Hamiltonian but not in the gradient part.  If
-\(Z=1+h\), the exact inverse \(1/(1+h)\), rather than merely \(1-h\),
-generates the full tower of momentum interactions.
+Current conservation implies
+\[
+ \dot Q=-\int d^3x\,\boldsymbol\nabla\cdot\mathbf j
+       =-\oint_{S_\infty}d\mathbf S\cdot\mathbf j,
+\]
+so \(Q\) is conserved when the flux at spatial infinity vanishes.
+
+Noether's first theorem takes a differentiable action symmetry to an
+on-shell conserved current; it assumes the variational equations and
+keeps track of any boundary term in the action variation.  A conserved
+local current gives a conserved charge only with suitable boundary
+conditions.  Conversely, a charge gives a symmetry when it is a
+well-defined canonical generator, for example
+\(\delta\phi=i\epsilon[Q,\phi]\), and conservation is equivalent to
+\([Q,H]=0\) when the charge has no explicit time dependence.  An inverse
+Noether statement from a current to a local variational symmetry also
+requires a regular local action and is understood modulo identically
+conserved improvement currents.  These qualifications are why none of
+the three implications is purely formal.
 \item
-Let \(L'=L+dF(\phi)/dt\).  Then
+For translations, the scalar energy--momentum tensor in the volume's
+convention is
 \[
- \Pi'=\frac{\partial L'}{\partial\dot\phi}
- =\Pi+F'(\phi).
+ T^{\rho\sigma}
+ =(\partial^\rho\phi)(\partial^\sigma\phi)
+  +\eta^{\rho\sigma}\mathcal L
+ =(\partial^\rho\phi)(\partial^\sigma\phi)
+  -\eta^{\rho\sigma}\left[
+    \frac12\partial_\mu\phi\,\partial^\mu\phi+V(\phi)\right].
 \]
-The coordinates are unchanged and the momenta are translated:
+The field equation is \(\Box\phi=V'(\phi)\).  Direct differentiation
+then gives
 \[
- Q'=\phi,\qquad \Pi'=\Pi+F'(Q').
+ \partial_\rho T^{\rho\sigma}
+ =(\Box\phi-V')\partial^\sigma\phi=0.
 \]
-This is canonical because
-\(\Pi'dQ'=\Pi\,dQ+dF\), so the symplectic two-form is unchanged.
-The transformed Hamiltonian is
+For each fixed \(\sigma\), \(T^{\rho\sigma}\) is a conserved current.
+The corresponding four charges are
 \[
- H'(Q',\Pi')=H\bigl(Q',\Pi'-F'(Q')\bigr).
+ P^\sigma=\int d^3x\,T^{0\sigma},
 \]
-Hamilton's equations for \(Q'\) and \(\Pi'\), after substituting this
-relation, are exactly the original equations for \(\phi\) and \(\Pi\).
-The action changes only by endpoint values of \(F\).
+namely the energy and the three components of momentum, with the
+index-position signs fixed as in Section 7.3.
 \item
-For
-\(\delta\phi_1=-\epsilon\phi_2\) and
-\(\delta\phi_2=\epsilon\phi_1\), Noether's formula gives
+For a scalar,
 \[
- j^\mu=\phi_2\partial^\mu\phi_1
-       -\phi_1\partial^\mu\phi_2 .
+ \delta\phi
+ =-\frac12\omega_{\rho\sigma}
+  (x^\rho\partial^\sigma-x^\sigma\partial^\rho)\phi.
 \]
-The equations
-\(\Box\phi_a-m^2\phi_a-2U'(\phi_1^2+\phi_2^2)\phi_a=0\)
-make \(\partial_\mu j^\mu=0\).  Since
-\(\pi_a=\dot\phi_a\),
+Noether's theorem therefore gives the six Lorentz currents
 \[
- Q=\int d^3x\,j^0
- =\int d^3x\,(\pi_2\phi_1-\pi_1\phi_2).
+ M^{\mu\rho\sigma}
+ =x^\rho T^{\mu\sigma}-x^\sigma T^{\mu\rho}.
 \]
-The canonical algebra yields
-\([Q,\phi_1]=i\phi_2\) and
-\([Q,\phi_2]=-i\phi_1\).  Therefore
-\(\delta\phi_a=i\epsilon[Q,\phi_a]\) reproduces the stated rotation.
+Equivalently, differentiating and using symmetry of the scalar tensor,
+\[
+\begin{split}
+ \partial_\mu M^{\mu\rho\sigma}
+ &=T^{\rho\sigma}-T^{\sigma\rho}
+   +x^\rho\partial_\mu T^{\mu\sigma}
+   -x^\sigma\partial_\mu T^{\mu\rho}=0.
+\end{split}
+\]
+\item
+Let
+\[
+ X^i(t)=\int d^3x\,x^iT^{00}.
+\]
+Stress-tensor conservation and vanishing surface terms give
+\[
+\begin{split}
+ \dot X^i
+ &=-\int d^3x\,x^i\partial_jT^{j0}
+   =\int d^3x\,T^{i0}
+   =\int d^3x\,T^{0i}=P^i.
+\end{split}
+\]
+Thus the vector defined in the problem is
+\(V^i=\dot X^i=P^i\).  Since the translation charge is conserved,
+\(\dot V^i=\dot P^i=0\).
 \end{enumerate}
 
-\SupplementarySolution{2}{Improved Stress Tensors and Derivative Couplings}
+\SupplementarySolution{2}{The Maxwell Stress Tensor and Metric Response}
 \begin{enumerate}
 \item
-Set
+The variation of the field strength is
 \[
- I^{\mu\nu}
- =c(\partial^\mu\partial^\nu-\eta^{\mu\nu}\Box)\phi^2 .
+ \delta F_{\mu\nu}
+ =\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu.
 \]
-Commutativity of partial derivatives gives the off-shell identity
+Using antisymmetry and integrating by parts,
 \[
- \partial_\mu I^{\mu\nu}
- =c(\Box\partial^\nu-\partial^\nu\Box)\phi^2=0.
+ \delta S
+ =\int d^4x\,
+ \left(\partial_\mu F^{\mu\nu}-j^\nu\right)\delta A_\nu,
 \]
-Thus \(\Theta^{\mu\nu}+I^{\mu\nu}\) is conserved whenever
-\(\Theta^{\mu\nu}\) is.  Moreover,
-\(\int d^3x\,I^{0\nu}\) is a spatial surface term after separating the
-time and spatial derivatives.  It vanishes for fields and first
-derivatives that decrease sufficiently rapidly at spatial infinity.
-The improvement changes local densities but neither the conserved
-four-momentum nor the translation generators.
+so
+\[
+ \partial_\mu F^{\mu\nu}=j^\nu.
+\]
+The \(\nu=0\) equation is
+\[
+ \boldsymbol\nabla\cdot\mathbf E=j^0,
+\]
+and the spatial equations are
+\[
+ \boldsymbol\nabla\times\mathbf B-\partial_t\mathbf E
+ =\mathbf j.
+\]
+The remaining two Maxwell equations follow instead from
+\(\partial_{[\lambda}F_{\mu\nu]}=0\):
+\[
+ \boldsymbol\nabla\cdot\mathbf B=0,\qquad
+ \boldsymbol\nabla\times\mathbf E+\partial_t\mathbf B=0.
+\]
+This makes explicit the terminology correction recorded in the prompt.
 \item
-For
-\(\mathcal L_{\rm D}=-\bar\psi(\gamma^\rho\partial_\rho+m)\psi\),
-the Lorentz generator is
+In the energy--momentum convention of this volume, the canonical tensor
+is
 \[
- \mathcal J^{\mu\nu}=-\frac{i}{4}[\gamma^\mu,\gamma^\nu].
+ T_{\rm can}^{\mu\nu}
+ =F^{\mu\lambda}\partial^\nu A_\lambda
+  -\frac14\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
 \]
-The canonical tensor is not symmetric because the field carries this
-spin current.  Inserting the corresponding current into the Belinfante
-formula~\eqref{eq:7.4.11}, and using the Dirac equation plus its adjoint,
-gives the equivalent Hermitian expression
+The explicit \(A_\lambda\) makes it gauge dependent, and
+\(T_{\rm can}^{\mu\nu}\ne T_{\rm can}^{\nu\mu}\).  In the source's
+opposite canonical-tensor convention the stated improvement is
+\(+\partial_\lambda(F^{\mu\lambda}A^\nu)\); after translating to the
+volume's convention it is
 \[
- \Theta^{\mu\nu}
- =-\frac14\bar\psi\left(
- \gamma^\mu\overleftrightarrow{\partial^\nu}
- +\gamma^\nu\overleftrightarrow{\partial^\mu}\right)\psi
- +\eta^{\mu\nu}\mathcal L_{\rm D}.
+ \widetilde T^{\mu\nu}
+ =T_{\rm can}^{\mu\nu}
+ -\partial_\lambda(F^{\mu\lambda}A^\nu).
 \]
-It is symmetric by inspection and conserved on shell.  The improvement
-is a spatial divergence in the integrated charges, so the four-momentum
-is unchanged.
+For \(j^\mu=0\),
+\[
+ \partial_\lambda(F^{\mu\lambda}A^\nu)
+ =F^{\mu\lambda}\partial_\lambda A^\nu,
+\]
+and hence
+\[
+ \widetilde T^{\mu\nu}
+ =F^{\mu\lambda}F^\nu{}_\lambda
+  -\frac14\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+\]
+This expression is symmetric and contains only \(F\), so it is gauge
+invariant.  Antisymmetry of the first two indices of the improvement
+superpotential makes its double divergence vanish identically; its
+spatial integral is a surface term, so the total four-momentum is
+unchanged.
+
+Using
+\(F_{\rho\sigma}F^{\rho\sigma}
+=2(\mathbf B^2-\mathbf E^2)\), one obtains
+\[
+ \widetilde T^{00}
+ =\frac12(\mathbf E^2+\mathbf B^2),
+\qquad
+ \widetilde T^{0i}=(\mathbf E\times\mathbf B)^i.
+\]
 \item
-The conjugate momentum is
+At \(j^\mu=0\), vary
 \[
- \Pi=\dot\phi+gJ^0,\qquad \dot\phi=\Pi-gJ^0 .
+ S[A,g]=-\frac14\int d^4x\,\sqrt{|g|}\,
+ F_{\mu\nu}F_{\rho\sigma}g^{\mu\rho}g^{\nu\sigma}.
 \]
-The exact Legendre transform gives
+The determinant variation in inverse-metric variables is
 \[
- \mathcal H
- =\frac12(\Pi-gJ^0)^2
- +\frac12(\boldsymbol\nabla\phi)^2
- -g\mathbf J\cdot\boldsymbol\nabla\phi .
+ \delta\sqrt{|g|}
+ =-\frac12\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu}.
 \]
-Taking the free momentum in the interaction picture to be
-\(\Pi=\dot\phi\), the interaction density is
+The two inverse metrics in the Maxwell term give equal contributions.
+After symmetrizing the free metric indices,
 \[
- \mathcal H_I
- =-gJ^0\dot\phi-g\mathbf J\cdot\boldsymbol\nabla\phi
- +\frac12g^2(J^0)^2 .
+ \delta S
+ =-\frac12\int d^4x\,\sqrt{|g|}
+ \left[
+ F_{\mu\rho}F_\nu{}^\rho
+ -\frac14g_{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}
+ \right]\delta g^{\mu\nu}.
 \]
-The last term comes from completing the square in the velocity.  Since
-it is absent from \(-\mathcal L_I\), a derivative interaction cannot in
-general be converted to an interaction Hamiltonian by changing only an
-overall sign.
+Therefore the mostly-plus response definition in the prompt yields
+\[
+ T^{(g)}_{\mu\nu}
+ =F_{\mu\rho}F_\nu{}^\rho
+  -\frac14g_{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+\]
+Raising both indices and taking \(g_{\mu\nu}=\eta_{\mu\nu}\) reproduces
+the improved tensor in part (b).  Symmetry follows because the
+functional derivative is with respect to the symmetric metric, and
+gauge invariance follows because the metric-coupled action depends on
+\(A_\mu\) only through \(F_{\mu\nu}\) when \(j^\mu=0\).
 \end{enumerate}
 
-\SupplementarySolution{3}{Complex-Scalar Phase Current and Charge as a Canonical Generator}
+\SupplementarySolution{3}{A Complex Scalar Field}
 \begin{enumerate}
 \item
-Every Lorentz index in
-\(-\partial_\mu\phi^\dagger\partial^\mu\phi
--V(\phi^\dagger\phi)\) is contracted, and both fields transform as
-scalars.  Independent variation gives
+Under \(x\mapsto x'=\Lambda x\), a scalar obeys
+\(\phi'(x')=\phi(x)\), and similarly for \(\phi^\dagger\).
+The measure \(d^4x\), the contraction
+\(\partial_\mu\phi^\dagger\partial^\mu\phi\), and
+\(\phi^\dagger\phi\) are Lorentz invariant, so \(S'=S\).
+Independent variation of \(\phi\) and \(\phi^\dagger\) gives
 \[
  \Box\phi-V'(\phi^\dagger\phi)\phi=0,\qquad
  \Box\phi^\dagger-V'(\phi^\dagger\phi)\phi^\dagger=0.
@@ -153,88 +237,89 @@ Under
 \(\delta\phi^\dagger=-i\epsilon\phi^\dagger\), the chapter's Noether
 normalization gives
 \[
- j^\mu=i\left[(\partial^\mu\phi^\dagger)\phi
-              -\phi^\dagger\partial^\mu\phi\right].
+ j^\mu=i\left[\phi^\dagger\partial^\mu\phi
+              -(\partial^\mu\phi^\dagger)\phi\right].
 \]
-Its divergence is
+The charge is therefore
+\[
+ Q=\int d^3x\,j^0
+ =i\int d^3x\left(
+ \dot\phi^\dagger\phi-\phi^\dagger\dot\phi\right).
+\]
+\item
+Direct differentiation cancels the terms bilinear in first
+derivatives:
 \[
  \partial_\mu j^\mu
- =i\left[(\Box\phi^\dagger)\phi-\phi^\dagger\Box\phi\right].
+ =i\left[\phi^\dagger\Box\phi
+         -(\Box\phi^\dagger)\phi\right].
 \]
-The field equations are
-\[
- \Box\phi-V'(\phi^\dagger\phi)\phi=0,\qquad
- \Box\phi^\dagger-V'(\phi^\dagger\phi)\phi^\dagger=0 .
-\]
-Substitution makes the two remaining terms identical with opposite
-signs, proving \(\partial_\mu j^\mu=0\).
-\item
-The canonical momenta are
-\[
- \pi=\dot\phi^\dagger,\qquad \pi^\dagger=\dot\phi .
-\]
-Consequently the time component of the current in S.7.7 is
-\[
- j^0=i(\phi^\dagger\pi^\dagger-\pi\phi),\qquad
- Q=\int d^3x\,j^0 .
-\]
-Using
-\([\,\phi(\mathbf x),\pi(\mathbf y)\,]
-=i\delta^3(\mathbf x-\mathbf y)\) and the analogous daggered relation
-gives
-\[
- [Q,\phi]=-\phi,\qquad [Q,\phi^\dagger]=+\phi^\dagger .
-\]
-Weinberg's convention
-\(\delta\phi=i\epsilon\phi\) is therefore
-\(\delta\phi=-i\epsilon[Q,\phi]\); the conjugate field acquires the
-opposite phase.  The sign is tied to the chosen definition of \(j^\mu\).
+Using the two equations from part (a), both terms become
+\(iV'(\phi^\dagger\phi)\phi^\dagger\phi\) with opposite signs.
+Thus \(\partial_\mu j^\mu=0\), as required.
 \end{enumerate}
 
-\SupplementarySolution{4}{Energy Density of an Interacting Complex Scalar and Stress-Tensor Conservation Component by Component}
+\SupplementarySolution{4}{The Energy--Momentum Tensor of a Complex Scalar}
 \begin{enumerate}
 \item
-Metric variation, or the translation Noether procedure, gives
+The scalar transformation law gives
+\(\phi'(x)=\phi(x-a)\) and
+\(\phi'^\dagger(x)=\phi^\dagger(x-a)\).  Hence
 \[
- \Theta^{\mu\nu}
+\begin{split}
+ S'&=\int d^4x\left[
+ -\partial_\mu\phi^\dagger(x-a)\partial^\mu\phi(x-a)
+ -V\!\left(\phi^\dagger(x-a)\phi(x-a)\right)\right]\\
+ &=S
+\end{split}
+\]
+after the translation \(y=x-a\), whose Jacobian is one.
+\item
+Infinitesimally,
+\[
+ \delta\phi=-a^\rho\partial_\rho\phi,\qquad
+ \delta\phi^\dagger=-a^\rho\partial_\rho\phi^\dagger,\qquad
+ \delta\mathcal L=-a^\rho\partial_\rho\mathcal L.
+\]
+Noether's theorem, with the coefficient of each independent
+\(a^\rho\) extracted, gives the symmetric tensor
+\[
+ T^{\mu\nu}
  =(\partial^\mu\phi^\dagger)\partial^\nu\phi
  +(\partial^\nu\phi^\dagger)\partial^\mu\phi
  +\eta^{\mu\nu}\mathcal L .
 \]
+For every fixed \(\nu\), \(T^{\mu\nu}\) is the current associated with
+translation in that direction.
+\item
 Because \(\partial^0=-\partial_0\) and \(\eta^{00}=-1\),
 \[
- \Theta^{00}
+ T^{00}
  =\dot\phi^\dagger\dot\phi
   +\boldsymbol\nabla\phi^\dagger\cdot\boldsymbol\nabla\phi
   +V(\phi^\dagger\phi).
 \]
-The Legendre transform with
-\(\pi=\dot\phi^\dagger\) and \(\pi^\dagger=\dot\phi\) gives precisely
-the same density.  Thus the energy from the symmetric tensor equals the
-canonical Hamiltonian, including the interacting potential.
-\item
-Raising and lowering the spatial index does not change its sign, and
+Thus
 \[
- P_i=\int d^3x\,\Theta^0{}_i
+ H=\int d^3x\left[
+ \dot\phi^\dagger\dot\phi
+ +\boldsymbol\nabla\phi^\dagger\cdot\boldsymbol\nabla\phi
+ +V(\phi^\dagger\phi)\right],
+\]
+which agrees with the Legendre transform in S.7.3(b), since
+\(\pi=\dot\phi^\dagger\) and
+\(\pi^\dagger=\dot\phi\).  The spatial charges are
+\[
+ P^i=\int d^3x\,T^{0i}
  =-\int d^3x\left(
- \pi\,\partial_i\phi+\pi^\dagger\partial_i\phi^\dagger\right).
+ \dot\phi^\dagger\partial_i\phi
+ +\partial_i\phi^\dagger\dot\phi\right).
 \]
-Only the momentum conjugate to a displayed field contributes to its
-commutator.  The equal-time algebra therefore gives
-\[
- [P_i,\phi(\mathbf x)]=i\partial_i\phi(\mathbf x),\qquad
- [P_i,\phi^\dagger(\mathbf x)]
- =i\partial_i\phi^\dagger(\mathbf x).
-\]
-By the Leibniz rule the same relation holds for every local polynomial
-without explicit position dependence.  This confirms directly that
-the integrated stress tensor has the normalization required of the
-spatial-translation generator.
 \item
-Differentiate the tensor of S.7.9:
+Differentiate the tensor found in part (b):
 \[
  \begin{split}
- \partial_\mu\Theta^{\mu\nu}
+ \partial_\mu T^{\mu\nu}
  ={}&(\Box\phi^\dagger)\partial^\nu\phi
  +(\partial^\nu\phi^\dagger)\Box\phi\\
  &-\partial^\nu\phi^\dagger
@@ -248,28 +333,124 @@ Using
 \(\Box\phi=V'\phi\) and
 \(\Box\phi^\dagger=V'\phi^\dagger\), with the signs inherited from the
 mostly-plus Lagrangian, cancels the remaining potential derivative
-terms.  No special choice of \(\nu\) was made, so the cancellation holds
-for energy conservation and for each of the three momentum components.
+terms.  Hence \(\partial_\mu T^{\mu\nu}=0\) for all four values of
+\(\nu\).
 \end{enumerate}
 
-\SupplementarySolution{5}{Current Conservation with a Covariant Derivative}
-The rigid phase current is
+\SupplementarySolution{5}{Non-Abelian Currents of Two Complex Scalars}
+Write the fields as a column \(\Phi\), set
 \[
- j^\mu=i\left[(D^\mu\phi)^\dagger\phi
-              -\phi^\dagger D^\mu\phi\right].
+ t_i=-\frac12\sigma_i^{\mathsf T},
 \]
-It is gauge invariant, so its covariant and ordinary divergences agree.
-Using the product rule in gauge-covariant form,
+and impose
 \[
- \partial_\mu j^\mu
- =i\left[(D_\mu D^\mu\phi)^\dagger\phi
-         -\phi^\dagger D_\mu D^\mu\phi\right].
+ [\Phi_\alpha(\mathbf x),\Pi_\beta(\mathbf y)]
+ =i\delta_{\alpha\beta}\delta^d(\mathbf x-\mathbf y),
+\qquad
+ [\Phi_\alpha^\dagger(\mathbf x),\Pi_\beta^\dagger(\mathbf y)]
+ =i\delta_{\alpha\beta}\delta^d(\mathbf x-\mathbf y).
 \]
-The scalar equation and its adjoint set both second derivatives equal
-to \(V'(\phi^\dagger\phi)\) times the corresponding field.  The two
-terms cancel.  The vector potential therefore changes the current's
-local expression but does not turn the global conservation equation
-into a merely covariant one.
+For the local mostly-plus action,
+\[
+ \Pi_\alpha=\frac12\dot\Phi_\alpha^\dagger,\qquad
+ \Pi_\alpha^\dagger=\frac12\dot\Phi_\alpha.
+\]
+Expanding the source's ``h.c.'' term, reordering equal-time bosonic
+fields, and relabelling dummy indices gives exactly the canonical form
+\[
+ Q^i=i\int d^dx\left[
+ \Pi_\alpha(t_i)_{\alpha\beta}\Phi_\beta
+ -\Phi_\alpha^\dagger(t_i)_{\alpha\beta}
+  \Pi_\beta^\dagger\right].
+\]
+The transpose simply realizes the conjugate doublet representation;
+for \(SU(2)\) it is equivalent to the usual Pauli-matrix basis.
+\begin{enumerate}
+\item
+The canonical algebra gives
+\[
+ [Q^i,\Phi]=t_i\Phi,\qquad
+ [Q^i,\Phi^\dagger]=-\Phi^\dagger t_i.
+\]
+Thus
+\[
+ \delta_i\Phi=i\epsilon_i t_i\Phi,\qquad
+ \delta_i\Phi^\dagger=-i\epsilon_i\Phi^\dagger t_i,
+\]
+or, finitely, \(\Phi\mapsto U\Phi\) with
+\(U=\exp(i\epsilon_i t_i)\in SU(2)\).  Both
+\(\partial_\mu\Phi^\dagger\partial^\mu\Phi\) and
+\(\Phi^\dagger\Phi\) are invariant because \(U^\dagger U=\mathbf1\).
+The complete action is therefore invariant.
+\item
+The Hamiltonian is
+\[
+ H=\int d^dx\left[
+ 2\Pi_\alpha\Pi_\alpha^\dagger
+ +\frac12\boldsymbol\nabla\Phi_\alpha^\dagger\cdot
+             \boldsymbol\nabla\Phi_\alpha
+ +V(\Phi^\dagger\Phi)\right].
+\]
+Every flavor index is contracted with the identity.  It follows either
+term by term from the canonical algebra or from finite \(SU(2)\)
+invariance that
+\[
+ [Q^i,H]=0.
+\]
+\item
+Because
+\[
+ [t_i,t_j]=i\varepsilon_{ijk}t_k,
+\]
+the commutator of two generated transformations on either canonical
+field is the transformation generated by
+\(i\varepsilon_{ijk}Q^k\).  Direct evaluation of the bilinear charges
+has no central remainder and gives
+\[
+ [Q^i,Q^j]=i\varepsilon_{ijk}Q^k.
+\]
+This is the Lie algebra \(\mathfrak{su}(2)\), the same angular-momentum
+algebra obeyed by the Pauli matrices.
+\item
+Promote \(\epsilon_i\) temporarily to \(\epsilon_i(x)\).  The
+coefficient of \(\partial_\mu\epsilon_i\) in the action variation gives
+\[
+ J_i^\mu
+ =\frac{i}{2}\left[
+ \Phi^\dagger t_i\partial^\mu\Phi
+ -(\partial^\mu\Phi^\dagger)t_i\Phi\right].
+\]
+The field equations make \(\partial_\mu J_i^\mu=0\); the two potential
+terms cancel because \(V\) depends only on \(\Phi^\dagger\Phi\).
+Using \(\partial^0=-\partial_t\) and the canonical momenta,
+\[
+ \int d^dx\,J_i^0
+ =i\int d^dx\left[
+ \Pi_\alpha(t_i)_{\alpha\beta}\Phi_\beta
+ -\Phi_\alpha^\dagger(t_i)_{\alpha\beta}
+  \Pi_\beta^\dagger\right]
+ =Q^i,
+\]
+as required.
+\item
+For \(N\) complex scalars, let \(t_A\) be Hermitian \(N\times N\)
+matrices satisfying
+\[
+ [t_A,t_B]=if_{AB}{}^Ct_C.
+\]
+Then
+\[
+ \delta_A\Phi=i\epsilon_A t_A\Phi,\qquad
+ J_A^\mu=\frac{i}{2}\left[
+ \Phi^\dagger t_A\partial^\mu\Phi
+ -(\partial^\mu\Phi^\dagger)t_A\Phi\right],
+\]
+and
+\([Q_A,Q_B]=if_{AB}{}^CQ_C\).
+All Hermitian generators give the full \(U(N)\) symmetry of the stated
+action; restricting to traceless generators gives its non-Abelian
+\(SU(N)\) subgroup.
+\end{enumerate}
 
 \SupplementarySolution{6}{Primary and Secondary Constraints in Hamiltonian Dynamics}
 \begin{enumerate}
@@ -386,8 +567,8 @@ surface,
 \qquad M=\operatorname{diag}(e^f,e^{-f}).
 \]
 All derivatives of \(f\) in \(C'_{AB}\) multiply at least one
-constraint, so \(C'\simeq MCM^T\) and
-\((C')^{-1}\simeq(M^T)^{-1}C^{-1}M^{-1}\).  The matrices \(M\) cancel in
+constraint, so \(C'\simeq MCM^{\mathsf T}\) and
+\((C')^{-1}\simeq(M^{\mathsf T})^{-1}C^{-1}M^{-1}\).  The matrices \(M\) cancel in
 the Dirac correction.  Therefore
 \(\{F,G\}'_{\rm D}\simeq\{F,G\}_{\rm D}\), including the derivative
 terms that disappear only after restriction.

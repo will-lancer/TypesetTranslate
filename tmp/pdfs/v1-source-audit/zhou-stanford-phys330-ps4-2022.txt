@@ -1,0 +1,142 @@
+PHYS-330: QFT I                                 Problem Set 4 (due 10/25)
+Stanford University, 2022                                    Bernhard Mistlberger, Kevin Zhou
+
+1. Using Wick’s theorem. (7 points)
+For both parts of this problem, you can use Wick’s theorem for two real scalar fields.
+a) Show that T (φ(x1 )φ(x2 )) and : φ(x1 )φ(x2 ) : both remain the same when x1 and x2
+   are exchanged. Using these results, explain why DF (x1 − x2 ) = DF (x2 − x1 ).
+b) Prove Wick’s theorem for a time ordered product of three scalar fields,
+
+  T (φ(x1 )φ(x2 )φ(x3 )) = : φ(x1 )φ(x2 )φ(x3 ) : + φ(x1 )DF (x2 − x3 )
+                                                 + φ(x2 )DF (x3 − x1 ) + φ(x3 )DF (x1 − x2 ). (1)
+
+
+2. Diagrams in φ3 theory. (18 points)
+Consider a real scalar field φ of mass m with a cubic self-interaction, so that
+                           1               1                         λ 3
+                       L0 = (∂µ φ)(∂ µ φ) − m2 φ2 ,         Lint =      φ.                   (2)
+                           2               2                         3!
+In this problem, you will draw some diagrams in this interacting theory and compute
+some symmetry factors. As in lecture, |0i is the free vacuum, the interaction Hamiltonian
+density is Hint = −Lint , and HI is the interaction Hamiltonian in interaction picture.
+a) Using Wick’s theorem, evaluate the vacuum correlation function
+                                     Z           
+                           h0| T exp −i dt HI (t) |0i                                        (3)
+
+    up to and including terms of order λ2 . Your result should be an explicit expression
+    in terms of integrals of the position-space Feynman propagator. (You will run into
+    terms proportional to DF (0), which is infinite. Don’t worry about this for now; we’ll
+    come back to this issue when we discuss renormalization.)
+b) Draw all distinct diagrams that contribute to the vacuum correlation function at order
+   λ3 and λ4 . For this part, you do not need to evaluate the diagrams or compute any
+   symmetry factors, but you should neatly display all of your diagrams in one box.
+ c) Now consider the two-point correlation function
+                                                               R     
+                                       h0|T φI (x)φI (y) exp −i dt HI |0i
+             hΩ|T (φH (x)φH (y)) |Ωi =                     R                                (4)
+                                             h0|T exp −i dt HI |0i
+
+    where φH and φI are Heisenberg and interaction picture fields. As discussed in class,
+    only connected diagrams contribute to the left-hand side, i.e. diagrams where all
+    fields are connected to at least one of the external points. Find all diagrams that
+    contribute up to and including order λ4 , along with their symmetry factors, which
+    you can compute with any method. Again, give your answer by drawing everything
+    neatly inside one box. (Hint: there are 13 fully connected diagrams, i.e. diagrams
+    where all fields are connected to both of the external points.)
+
+                                               1
+3. Recovering nonrelativistic quantum mechanics. (15 points)
+A free complex scalar field Φ of mass m satisfies the Klein–Gordan equation, so its plane
+wave modes e−ip·x satisfy ω 2 = |k|2 + m2 . This implies we have plane waves with both
+positive and negative ω, which is universal in relativistic theories. Upon quantization,
+excitations of these modes correspond to matter and antimatter, with opposite charges.
+
+The nonrelativistic limit is |k|  m, but since antimatter is inherently a feature of
+relativistic theories, we should also throw away the negative ω modes. To do this, take
+                                                    √
+                                  Φ(x) = e−imt χ(x)/ 2m                               (5)
+
+√ assume |χ̇|  mχ, so that only nonrelativistic positive ω modes are excited. The
+and
+  2m factor transfers us back to nonrelativistic normalization.
+a) Simplify the complex scalar field action to
+                             Z                           
+                                   4      ∗     1   ∗
+                         S = d x iχ χ̇ −          ∇χ · ∇χ                               (6)
+                                               2m
+
+    by dropping a term that is small for |χ̇|  mχ.
+b) Find the Euler–Lagrange equations for χ and χ∗ , and the conserved current J µ =
+   (ρ, J) corresponding to the symmetry χ → e−iα χ and χ∗ → eiα χ∗ . (Be careful to
+   account for minus signs from the relativistic metric.)
+For the relativistic complex scalar field, we had to canonically quantize Φ, Π, Φ∗ , and
+Π∗ as two pairs of phase space variables. But for this nonrelativistic field, the canonical
+momentum for χ is just iχ∗ , so we only have one pair. This is because we threw away the
+negative ω solutions, and it implies the canonical commutation relations are
+
+                                 [χ(x), χ∗ (y)] = δ (3) (x − y)                         (7)
+
+with all other commutators vanishing. These can be satisfied with the mode expansion
+                         d3 p                             d3 p †
+                      Z                                Z
+                                    −ip·x      ∗
+               χ(x) =         a(p)e       ,  χ   (x) =         a (p)eip·x .        (8)
+                        (2π)3                            (2π)3
+
+ c) Show that [a(p), a† (q)] = (2π)3 δ (3) (p−q). (Of course, the other commutators vanish.)
+    Then show that the single-particle states |xi = χ∗ (x)|0i and |pi = a† (p)|0i behave
+    like nonrelativistic position and momentum states, obeying
+
+             hy|xi = δ (3) (y − x),   hq|pi = (2π)3 δ (3) (q − p),   hp|xi = eip·x .    (9)
+
+    The factors of 2π are just due to our Fourier transform convention.
+d) A general single-particle state takes the form
+                                         Z
+                                |ψ(t)i = d3 x ψ(x, t)|xi                               (10)
+
+    where ψ(x, t) is the particle’s position-space wavefunction at time t. As always in
+    quantum theories, the state evolves over time as i ∂t |ψi = H|ψi, where H is the
+    Hamiltonian. Write this equation as a partial differential equation involving ψ(x, t).
+
+                                               2
+ e) Take the term in the action you dropped in part (a) and simplify it by applying the
+    Euler–Lagrange equations you found in part (b). Find how the Hamiltonian in part
+    (d) changes when this term is added. What is its physical interpretation?
+
+4. ? The force between sources. (5 points)
+In this optional problem, we’ll compute a directly measurable quantity with quantum
+field theory, for the first time in this course. So far we have only learned to compute cor-
+relation functions, which often do not have a direct physical interpretation. For example,
+the vacuum correlation function Eq. (3) can be used to find the energy of the interacting
+vacuum relative to the free vacuum, but this isn’t directly measurable. (You can’t turn
+off the interaction in real life.)
+
+Instead, let’s again consider a free real scalar field with source J(x),
+                            1               1
+                         L = (∂µ φ)(∂ µ φ) − m2 φ2 + φ(x)J(x).                           (11)
+                            2               2
+If we change the vacuum by including a static source J(x), the resulting shift in vacuum
+energy can be directly interpreted as the energy of the source, which is measurable.
+a) Using Wick’s theorem, show that
+             Z                         Z                           
+                  4                     1    4   4
+   h0| T exp i d x φ(x)J(x) |0i = exp −     d x d y J(x)DF (x − y)J(y) .                 (12)
+                                        2
+
+b) Now consider the case where two point sources are turned on for a long time T ,
+                                                          (
+                                                           1 −T /2 < t < T /2
+      J(x) = g f (t) (δ (3) (x) + δ (3) (x − R)), f (t) =                     .    (13)
+                                                           0 otherwise
+
+    If you plug this into Eq. (12), you’ll get infinite terms involving DF (0), reflecting the
+    fact that point sources have infinite energy. Discarding these terms so we can focus
+    on the sources’ interaction energy, evaluate Eq. (12) assuming T  R  1/m.
+ c) Relate your answer to the interaction energy V (R) between the sources, and find it.
+    Is the force between them attractive or repulsive?
+
+
+
+
+                                              3
+

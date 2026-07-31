@@ -1,0 +1,160 @@
+PHYS-330: QFT I                                            Problem Set 2 (due 10/11)
+Stanford University, 2022                                                Bernhard Mistlberger, Kevin Zhou
+
+1. Lorentz transformations. (10 points)
+Lorentz transformations xµ → x0 µ = Λµν xν are linear transformations that leave inner
+products invariant, meaning that xµ yµ = x0 µ yµ0 for any four-vectors x and y.
+a) Show that this implies
+                                               ηµν = ηρσ Λρµ Λσν .                                     (1)
+b) All proper, orthochronous Lorentz transformations (i.e. all those which preserve the
+   orientation of space and the direction of time) can be decomposed into infinitesimal
+   Lorentz transformations. These take the form
+                                           xµ → x0µ = xµ +  ω µν xν                                   (2)
+    where  is infinitesimal. Show that ωµν = −ωνµ .
+ c) The elements of any infinitesimal Lorentz transformation ω µν can be written as a 4×4
+    matrix, where µ and ν index the row and column, respectively. For an infinitesimal
+    rotation  = dθ about the z-axis, write out this matrix, and denote it by iJ 3 for later.
+    What exponential of J 3 corresponds to a finite rotation by an angle θ?
+d) Write down the matrix iK 1 corresponding to an infinitesimal boost by  = dv about
+   the x-axis. What exponential of K 1 corresponds to a finite boost by a velocity v?
+ e) Defining J 1 , J 2 , K 2 , and K 3 similarly, the generators obey commutation relations
+            [J i , J j ] = iijk J k ,      [J i , K j ] = iijk K k ,   [K i , K j ] = −iijk J k .   (3)
+    This is the Lie algebra of the Lorentz group. Physically, these results tells us that
+    infinitesimal rotations and boosts are vectors (i.e. angular velocity and velocity are
+    vectors), and that composing boosts can yield a rotation. Prove these results for the
+    cases (i, j) = (1, 1) and (i, j) = (1, 2). (The proofs for other cases are similar.)
+
+2. Quantization of the complex scalar field. (30 points)
+This will be an involved problem, but it will teach you everything there is to know about
+free field mode expansions. (You don’t have to write every detail; when it’s clear other
+computations will go the same way as one you just did, it’s fine to just say so and move
+on.) In problem set 1 we considered a complex scalar field Φ with Lagrangian density
+                                         L = (∂µ Φ∗ )(∂ µ Φ) − m2 Φ∗ Φ,                                (4)
+                                                                                                   p
+and found the canonical fields Φ and Φ∗ and momenta Π and Π∗ . Letting ωk = |k|2 + m2 ,
+introduce the following mode expansion for the canonical fields and momenta:
+                                 d3 k
+                             Z
+                                           1         ik·x      †        −ik·x
+                                                                               
+                    Φ(x) =             √        a(k)e      +  b   (k)e           ,     (5)
+                                (2π)3 2ωk
+                                 d3 k
+                             Z
+                     ∗                     1        ik·x       †        −ik·x
+                                                                               
+                   Φ (x) =             √        b(k)e      +  a   (k)e           ,     (6)
+                                (2π)3 2ωk
+                                            r
+                                     d3 k
+                                Z
+                                              ωk 
+                                                  b(k)eik·x − a† (k)e−ik·x ,
+                                                                                   
+                    Π(x) = −i             3
+                                                                                       (7)
+                                   (2π)       2
+                                            r
+                                     d3 k
+                                Z
+                     ∗                        ωk        ik·x        †     −ik·x
+                                                                                   
+                   Π (x) = −i                     a(k)e       −    b   (k)e          . (8)
+                                   (2π)3      2
+
+                                                          1
+We quantize the fields by imposing the canonical commutation relations
+
+                       [Φ(x), Π(y)] = [Φ∗ (x), Π∗ (y)] = iδ (3) (x − y),                 (9)
+
+with all other commutators between these fields vanishing. (Technically, we should write
+Hermitian conjugates Φ† and Π† here, since Φ and Π are now operators, but we’ll continue
+to use stars to emphasize the links between the classical and quantum theories.)
+a) Show that the operators a(k), a† (k), b(k) and b† (k) obey
+
+                    a(k), a† (p) = b(k), b† (p) = (2π)3 δ (3) (k − p),
+                                            
+                                                                                        (10)
+
+    with all other commutators between these operators vanishing. This implies that we
+    have two sets of independent creation and annihilation operators for each k.
+The vacuum state |0i is defined to be the unique state where a(k)|0i = b(k)|0i = 0
+for all k. The states a† (k)|0i and b† (k)|0i each contain one particle, while the state
+a† (k1 )a† (k2 )|0i contains two particles, and so on.
+b) In problem set 1, you showed that the complex scalar field Lagrangian had the sym-
+   metry Φ → eiα Φ, Φ∗ → e−iα Φ∗ . Compute the Noether current J µ and conserved
+   charge Q associated with the symmetry.
+ c) Write Q in terms of the creation and annihilation operators. You should find the
+    result is indeterminate up to a constant; resolve this by defining the vacuum to have
+    zero charge, Q|0i = 0. What is the charge in the three other states mentioned above?
+d) To check that this is the same symmetry operation that we started out with, we can
+   see how it acts on the operators of the theory. Quantum mechanically, symmetries
+   act on operators by conjugation, and we expect to have
+
+             eiαQ Φ(x) e−iαQ = eiα Φ(x),          eiαQ Φ∗ (x) e−iαQ = e−iα Φ∗ (x).      (11)
+
+    Show that this implies the commutation relations
+
+                       [Q, Φ(x)] = Φ(x),          [Q, Φ∗ (x)] = −Φ∗ (x)                 (12)
+
+    and show that these relations hold. Thus, Q generates phase rotations of the field.
+e) Use Noether’s theorem to find the stress-energy tensor T µν and the associated con-
+   served total four-momentum P µ .
+ f ) Write the Hamiltonian H = P 0 and the spatial momenta P in terms of the creation
+     and annihilation operators, again defining the vacuum to have zero four-momentum.
+     What is the four-momentum in the three other states mentioned above?
+g) By definition, the operator H generates time translations of the field – this is the con-
+   tent of the Schrodinger equation, i∂t |Ψi = H|Ψi, which holds unchanged in quantum
+   field theory. As for the momenta P, we expect
+
+                                eia·P Φ(x) e−ia·P = Φ(x − a)                            (13)
+
+    for any vector a, with a similar result for all the other fields. Show that this implies
+
+                                   [P i , Φ(x)] = −i∂ i Φ(x)                            (14)
+
+                                              2
+    and show that this relation holds. Thus, P generates spatial translations.
+
+3. ? Conserved currents of Lorentz transformations. (10 points)
+This somewhat tricky problem combines the ideas of the first two. It is completely op-
+tional: the problem set will be graded out of 40 points, so that you will receive up to
+100% credit if you don’t do this problem, and up to 125% credit if you do.
+
+Under a Lorentz transformation, a scalar field profile φ gets mapped to φ0 , so that φ0 (x0 ) =
+φ(x). This implies that
+                                   φ0 (x) = φ(Λ−1 x).                                     (15)
+For an infinitesimal Lorentz transformation (2), this corresponds to
+
+                               φ0 (x) = φ(x) −  ω µν xν ∂µ φ(x)                          (16)
+
+to first order in . Because an infinitesimal Lorentz transformation is parametrized by a
+rank 2 tensor ω µν , the corresponding Noether current will be a rank 3 tensor J µνρ , where
+the first index is the usual index that comes from Noether’s theorem, and the last two
+describe the Lorentz transformation. For simplicity, you can do the entire problem for a
+real scalar field. (This corresponds to a complex scalar field with a(k) = b(k), which in
+turn implies Φ = Φ∗ and Π = Π∗ .)
+a) Show that for a scalar field,
+
+                                   J µνρ = xν T µρ − xρ T µν                              (17)
+
+    where T µν is the stress-energy tensor. Let the associated conserved charges be M µν .
+b) Since M µν is antisymmetric, there are six independent conserved charges. The three
+   independent M ij physically correspond to the angular momentum of the field. What
+   is the physical meaning of the other three conserved quantities M 0i ?
+ c) Show that after normal ordering, the angular momentum is
+
+                                d3 k
+                             Z                            
+                       ij                 †   j ∂     i ∂
+                     M =i             a(k) k       −k        a(k)                         (18)
+                               (2π)3           ∂ki     ∂kj
+
+    The form of this answer implies that the particles created and annihilated by scalar
+    fields do not carry any intrinsic angular momentum (i.e. spin).
+
+
+
+
+                                              3
+

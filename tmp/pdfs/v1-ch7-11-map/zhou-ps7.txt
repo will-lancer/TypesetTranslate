@@ -1,0 +1,196 @@
+PHYS-330: QFT I                                          Problem Set 7 (due 11/15)
+Stanford University, 2022                                                 Bernhard Mistlberger, Kevin Zhou
+
+1. Plane wave solutions of the Dirac equation. (10 points)
+In the Weyl representation the gamma matrices are given by
+                    
+               0 σµ
+       µ
+      γ =               ,     σ µ = (12 , σ 1 , σ 2 , σ 3 ), σ̄ µ = (12 , −σ 1 , −σ 2 , −σ 3 ).        (1)
+              σ̄ µ 0
+
+Here, 1n denotes an n × n identity matrix.
+ a) Show that (p · σ)(p · σ̄) = p2 12 .
+b) Show that the Dirac equation has positive-frequency plane wave solutions
+                                                     √           
+                                  −ip·x                 p · σ ξs
+                    ψ(x) = us (p)e      ,   us (p) =  √                                                (2)
+                                                        p · σ̄ ξs
+
+    where ξs is a two-component spinor, i.e. a complex vector with two elements. (For-
+    mally, given a matrix A with a complete
+                                     √      basis of eigenvectors, with eigenvalues λi , we
+    can
+    √ define a matrix square root A to have the same eigenvectors,    √ with
+                                                                           √ eigenvalues
+      λi . But the only thing you need to know to do this problem is A A = A.)
+ c) Show that if we pick an orthonormal basis of two-component spinors ξs with s ∈ {1, 2},
+    satisfying (ξr )† ξs = δrs , then the Dirac spinors satisfy the orthogonality relations
+
+                            ur (p)† us (p) = 2p0 δrs ,        ūr (p)us (p) = 2m δrs .                 (3)
+
+d) Similarly, the Dirac equation has negative-frequency plane wave solutions
+                                                    √           
+                                   ip·x                p · σ ξs
+                     ψ(x) = vs (p)e ,      vs (p) =   √            .                                   (4)
+                                                     − p · σ̄ ξs
+
+    Show that these solve the Dirac equation, and satisfy the orthogonality relations
+
+                         vr (p)† vs (p) = 2p0 δrs ,          v̄r (p)vs (p) = −2m δrs .                 (5)
+
+ e) Show the completeness relations for the Dirac spinors,
+                  2                                          2
+                        us (p)ūs (p) = p/ + m14 ,                  vs (p)v̄s (p) = p/ − m14 .
+                  X                                          X
+                                                                                                       (6)
+                  s=1                                         s=1
+
+
+
+2. Useful spinor identities. (10 points)
+ a) Prove the Gordon identity,
+                                               0µ
+                                               p + pµ iσ µν (p0ν − pν )
+                                                                        
+                        0     µ                0
+                  ūr (p )γ us (p) = ūr (p )        +                    us (p)                       (7)
+                                                  2m         2m
+
+    where σ µν = 2i [γ µ , γ ν ]. (Hint: this can be done using only the Dirac equation and the
+    defining property of the gamma matrices.)
+
+                                                         1
+Combinations of gamma matrices can be used to produce a basis ΓI for the space of 4 × 4
+matrices, where I ranges from 1 to 16. Concretely, we have
+
+                                                                         Γ11 = (i/2)[γ 0 , γ 1 ]
+                          Γ3 = γ 0                      Γ7 = iγ 5 γ 0    Γ12 = (i/2)[γ 0 , γ 2 ]
+        Γ1 = 14           Γ4 = γ 1                      Γ8 = iγ 5 γ 1    Γ13 = (i/2)[γ 0 , γ 3 ]
+        Γ2 = γ 5          Γ5 = γ 2                      Γ9 = iγ 5 γ 2    Γ14 = (i/2)[γ 1 , γ 2 ]
+                          Γ6 = γ 3                     Γ10 = iγ 5 γ 3    Γ15 = (i/2)[γ 1 , γ 3 ]
+                                                                         Γ16 = (i/2)[γ 2 , γ 3 ]
+
+We define the matrices Γ̃I similarly, but with lowered Lorentz indices; for example, Γ̃4 =
+γ1 = −γ 1 = −Γ4 . (This ensures the equations below won’t have annoying extra signs due
+to the signs in the metric.) An inner product for 4 × 4 matrices can be defined by
+                                             X
+                                  tr(AB) =       Aab Bba .                              (8)
+                                                        ab
+
+Under this inner product, the matrices given above are orthogonal, in the sense that
+
+                                              tr(Γ̃I ΓJ ) = 4δ IJ                                   (9)
+
+which implies they are linearly independent, and thus indeed form a basis. (You don’t
+have to check (9), but it follows directly from the results you proved in problem set 6.)
+b) Show the completeness relation for the Γ matrices,
+                                                       1X I I
+                                           δac δdb =       Γ̃ Γ .                                  (10)
+                                                       4 I dc ab
+
+    (Hint: it suffices to show that both sides give the same result when multiplied by a
+    general matrix Mcd .)
+ c) Using (10), show the Fierz identity
+                                            1 X h I K J Li L K
+                            Γ̃Iab ΓJcd =         tr Γ̃ Γ̃ Γ Γ Γ̃ad Γcb .                           (11)
+                                           16 KL
+
+
+Contracting both sides of the Fierz identity with four spinors ū1a u2b ū3c u4d yields
+                                         1 X h I K J Li
+             (ū1 Γ̃I u2 )(ū3 ΓJ u4 ) =       tr Γ̃ Γ̃ Γ Γ (ū1 Γ̃L u4 )(ū3 ΓK u2 ).             (12)
+                                         16 KL
+
+In other words, the Fierz identity relates the product of a contraction of ū1 with u2 and a
+contraction of ū3 and u4 (with arbitrary gamma matrices in the middle) to a combination
+of contractions of ū1 with u4 and ū3 with u2 . This “Fierz transformation” rearranges how
+the spinors are contracted with each other, which can be useful in calculations.
+d) Find the Fierz transformations for (ū1 u2 )(ū3 u4 ) and (ū1 γ µ u2 )(ū3 γµ u4 ) explicitly. (Your
+   final result should only contain the spinors and gamma matrices, not the ΓI .)
+
+
+
+                                                        2
+3. Electromagnetism in relativistic notation. (20 points)
+In electromagnetism, the Lagrangian is a function of the four-potential Aµ = (φ, A),
+                     1
+                L = − Fµν F µν − J µ Aµ ,          where Fµν = ∂µ Aν − ∂ν Aµ ,          (13)
+                     4
+and J µ = (ρ, J) is a classical current density.
+a) Show that if the current is conserved, ∂µ J µ = 0, then the action remains the same
+   under the gauge symmetry Aµ → Aµ + ∂µ α, for any smooth function α.
+b) Show that the Euler–Lagrange equation for Aµ is
+
+                                          ∂µ F µν = J ν .                               (14)
+
+ c) Defining the electric and magnetic fields by E i = F i0 and ijk B k = −F ij , show
+    that (14) is equivalent to two of Maxwell’s equations.
+d) The other two of Maxwell’s equations are
+
+                                        µνρσ ∂µ Fνρ = 0                                (15)
+
+    which follows directly from the definition of Fµν . Interestingly, all four of Maxwell’s
+    equations can be written as a single spinor equation. Show that the equation
+
+                                    γ ν γ ρ γ σ ∂ν Fρσ = 2γ ν Jν                        (16)
+
+    contains both (14) and (15). (This is just a mathematical trick with no physical
+    meaning, but it’s a nice application of the properties of gamma matrices.)
+ e) In the Lagrangian (13), we could have also included a term of the form µνρσ Fµν Fρσ ,
+    which is Lorentz invariant and gauge invariant. What is it in terms of E and B?
+    Show that this term is a total derivative, and thus does not contribute to the action.
+For the rest of this problem suppose there is no current, J µ = 0.
+ f ) Construct the stress-energy tensor by directly applying Noether’s theorem.
+g) The stress-energy tensor you found in part (e) is conserved, but neither symmetric
+   nor gauge invariant. However, we can define an “improved” stress-energy tensor,
+
+                                  T̂ µν = T µν + ∂ρ (F µρ Aν ).                         (17)
+
+    Assuming the equations of motion hold, show that T̂ µν is symmetric, gauge invari-
+    ant, conserved (∂µ T̂ µν = 0), and traceless (ηµν T̂ µν = 0). Furthermore, show that it
+    contains the familiar electromagnetic energy and momentum densities,
+                               1
+                        T̂ 00 = (|E|2 + |B|2 ) ,         T̂ 0i = (E × B)i .             (18)
+                               2
+
+In general, the improved stress-energy tensor considered here is called the Belinfante
+tensor; it is this stress-energy tensor that sources gravity in general relativity. We didn’t
+see it earlier because the improvement terms are related to the spin angular momentum
+of the field, which is zero for scalar fields.
+
+                                                 3
+4. ? Chern–Simons theory. (5 points)
+This optional problem presents a way to produce massive gauge fields.
+a) The Proca Lagrangian for a massive vector field is
+                                    1          1
+                               L = − Fµν F µν + m2 Aµ Aµ .                              (19)
+                                    4          2
+    Find the equation of motion for Aµ and show that for m 6= 0, it implies
+
+                             (∂ 2 + m2 )Aµ = 0,      ∂µ Aµ = 0.                         (20)
+
+    However, this action does not have a gauge symmetry.
+b) On the other hand, in two spatial dimensions it is possible to have massive gauge
+   fields. We consider a Lagrangian with a “Chern–Simons” term,
+                                   1          α
+                              L = − Fµν F µν + µνρ Fµν Aρ                              (21)
+                                   4          4
+    where all indices take the values 0, 1, and 2, and 012 = 1. (This new term is a relative
+    of the term we considered in 3(e), but it is not a total derivative.) Show that the
+    action is gauge invariant, and find the Euler–Lagrange equation for Aµ .
+ c) The Chern–Simons term is sometimes called a “topological” mass term, because it
+    doesn’t depend on the metric. Show that the equation of motion implies
+
+                                     (∂ 2 + m2 )F µν = 0                                (22)
+
+    for some m you should find. Thus the field is massive, yet still has a gauge symmetry.
+Since there is no Chern–Simons term in three spatial dimensions, it has little role in parti-
+cle physics, but it is important in the description of topological effects in two-dimensional
+condensed matter systems.
+
+
+
+
+                                             4
+

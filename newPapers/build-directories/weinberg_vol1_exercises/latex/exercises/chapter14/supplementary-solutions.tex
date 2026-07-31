@@ -125,9 +125,9 @@ correction \(-\mathbf p^4/(8m^3)\).
 \begin{enumerate}
 \item
 Differentiate
-\(H(\lambda)\lvert n\rangle=E_n\lvert n\rangle\), multiply on the left by
-\(\langle n\rvert\), and use normalization.  The terms containing
-\(\partial_\lambda\lvert n\rangle\) cancel, leaving
+\(H(\lambda)\ket{n}=E_n\ket{n}\), multiply on the left by
+\(\bra{n}\), and use normalization.  The terms containing
+\(\partial_\lambda\ket{n}\) cancel, leaving
 \[
  \boxed{\frac{dE_n}{d\lambda}
  =\left\langle n\left|\frac{\partial H}{\partial\lambda}\right|n\right\rangle.}
@@ -314,8 +314,8 @@ magnetic substates.
 \item
 To first order in the dc field,
 \[
- \lvert\widetilde{2s}\rangle
- =\lvert2s\rangle+c\,\lvert2p,0\rangle,\qquad
+ \ket{\widetilde{2s}}
+ =\ket{2s}+c\,\ket{2p,0},\qquad
  c=\frac{\langle2p,0|e\mathcal Ez|2s\rangle}{\Delta_{\rm LS}}
  =-\frac{3ea_0\mathcal E}{\Delta_{\rm LS}}.
 \]
@@ -330,213 +330,410 @@ This perturbative expression requires
 laboratory electric field can quench the otherwise long-lived \(2s\) level.
 \end{enumerate}
 
-\SupplementarySolution{7}{Atomic Scales and the Uehling Contact Interaction}
+\SupplementarySolution{7}{Vacuum-Polarization Contribution to the Lamb Shift}
 \begin{enumerate}
 \item
-For \(V=-Z\alpha/r\), the virial theorem gives
+The Coulomb virial estimate gives
 \[
- \frac{\mathbf p^2}{2m_e}\sim\frac{Z\alpha}{r},
+ |\mathbf p|\sim m_e\alpha,\qquad
+ r\sim(m_e\alpha)^{-1},\qquad
+ |E_{\rm bind}|\sim m_e\alpha^2.
 \]
-and hence
+The electron wave functions therefore restrict a typical spatial
+momentum transfer to
+\(|\mathbf k|\sim m_e\alpha\), while an energy transfer is only
+\(|k^0|\sim m_e\alpha^2\).  Consequently
 \[
- |\mathbf p|\sim Z\alpha m_e,\qquad
- r\sim(Z\alpha m_e)^{-1},\qquad
- |E_{\rm bind}|\sim(Z\alpha)^2m_e.
+ \frac{\mathbf k^2}{m_e^2}=O(\alpha^2)\ll1,
+ \qquad
+ \frac{(k^0)^2}{\mathbf k^2}=O(\alpha^2)\ll1.
 \]
-Thus the momentum through a Coulomb photon is typically
-\(|\mathbf q|/m_e\sim Z\alpha\ll1\).  An electron loop has its first
-nonanalytic threshold at momenta of order \(m_e\), so its renormalized
-vacuum polarization admits a local series in \(\mathbf q^2/m_e^2\) for a
-light atom.
 \item
-Expand the logarithm:
+Expanding the supplied logarithm gives
 \[
- \Pi_R(-\mathbf q^2)=\frac{2\alpha}{\pi}
- \frac{\mathbf q^2}{m_e^2}
- \int_0^1dx\,x^2(1-x)^2+O(\mathbf q^4/m_e^4).
+\begin{split}
+ \widetilde{\mathbf E}(k)
+ &=\left[
+ 1+\frac{e^2}{2\pi^2}\frac{\mathbf k^2}{m_e^2}
+ \int_0^1dx\,x^2(1-x)^2
+ +O(\mathbf k^4/m_e^4)\right]\widetilde{\mathbf D}(k)\\
+ &=\left[
+ 1+\frac{\alpha}{15\pi}\frac{\mathbf k^2}{m_e^2}
+ +O(\mathbf k^4/m_e^4)\right]\widetilde{\mathbf D}(k),
+\end{split}
 \]
-Since the parameter integral equals \(1/30\),
+where \(\int_0^1x^2(1-x)^2dx=1/30\) and
+\(e^2=4\pi\alpha\).  Applied to the proton Coulomb field, the
+momentum-independent correction to the electron's potential energy is
 \[
- \boxed{\Pi_R(-\mathbf q^2)
- =\frac{\alpha}{15\pi}\frac{\mathbf q^2}{m_e^2}
- +O\!\left(\frac{\mathbf q^4}{m_e^4}\right).}
+ \delta\widetilde V(\mathbf k)
+ =-\frac{4\alpha^2}{15m_e^2}.
 \]
-The subtraction \(\Pi_R(0)=0\) expresses the definition of the physical
-long-distance electric charge.
-\item
-To first order in \(\Pi_R\),
-\[
- \delta\widetilde V(\mathbf q)
- =-\frac{4\pi Z\alpha}{\mathbf q^2}\Pi_R(-\mathbf q^2)
- =-\frac{4Z\alpha^2}{15m_e^2}+O(\mathbf q^2/m_e^4).
-\]
-A momentum-independent kernel Fourier transforms to a delta function:
+Thus
 \[
  \boxed{\delta V(\mathbf r)
- =-\frac{4Z\alpha^2}{15m_e^2}\delta^3(\mathbf r).}
+ =-V_1\delta^3(\mathbf r),\qquad
+ V_1=\frac{4\alpha^2}{15m_e^2}.}
 \]
-Higher terms in the small-momentum expansion produce derivatives of
-\(\delta^3(\mathbf r)\).
-\end{enumerate}
-
-\SupplementarySolution{8}{Vacuum-Polarization Shifts of Hydrogenic Levels}
-\begin{enumerate}
 \item
 First-order perturbation theory gives
 \[
- \delta E_{n\ell m}=C|\psi_{n\ell m}(0)|^2.
+ \delta E_{n\ell m}
+ =-V_1|\psi_{n\ell m}(0)|^2.
 \]
-Regular Coulomb radial functions behave as \(R_{n\ell}(r)\propto r^\ell\)
-near the origin, so the answer vanishes for \(\ell>0\).  Normalization of
-the \(s\)-wave radial function gives
-\[
- \boxed{|\psi_{ns}(0)|^2
- =\frac{(Z\alpha m_e)^3}{\pi n^3},\qquad
- \delta E_{n\ell m}=C\frac{(Z\alpha m_e)^3}{\pi n^3}
- \delta_{\ell0}.}
-\]
+A regular Coulomb radial wave function behaves as
+\(R_{n\ell}(r)\propto r^\ell\) near the origin, so
+\(\psi_{n\ell m}(0)=0\) unless \(\ell=0\).  Only \(s\)-levels shift.
 \item
-Combining the contact coefficient with the wave function at the origin
-gives
+For the hydrogen \(2s\) state,
 \[
- \boxed{\delta E_{ns}^{\rm VP}
- =-\frac{4Z^4\alpha^5m_e}{15\pi n^3}.}
+ R_{20}(r)
+ =\frac{1}{\sqrt{2a_0^3}}
+ \left(1-\frac{r}{2a_0}\right)e^{-r/(2a_0)},
+ \qquad
+ a_0=\frac{1}{m_e\alpha},
 \]
-It is of order \(\alpha(Z\alpha)^4m_e\), the same nominal order as the
-one-loop electron self-energy Lamb shift.  The self-energy, however,
-contains the large logarithm \(\ln[(Z\alpha)^{-2}]\), whereas the
-vacuum-polarization coefficient is a modest constant.
-\item
-For \(Z=1,n=2\),
+and hence
 \[
- \delta E_{2s}^{\rm VP}=-\frac{\alpha^5m_e}{30\pi}.
+ |\psi_{2s}(0)|^2=\frac{1}{8\pi a_0^3}.
 \]
-The sign is negative: virtual pairs screen the charge at long distance, so
-the effective attraction is slightly stronger at the short distances
-sampled by an \(s\) wave.  Dividing by \(h\) gives approximately
+The shift is
 \[
- \boxed{\delta\nu_{2s}^{\rm VP}\simeq-27\ {\rm MHz}.}
+ \boxed{\delta E_{2s}
+ =-\frac{V_1}{8\pi a_0^3}
+ =-\frac{m_e\alpha^5}{30\pi}
+ \simeq-1.1\times10^{-7}\ {\rm eV}.}
 \]
-This is only a few percent of the roughly \(1.06\ {\rm GHz}\) Lamb
-splitting; the much larger electron self-energy carries the atomic
-logarithm absent here.
+Equivalently, \(\delta E/h\simeq-27\ {\rm MHz}\).  The observed
+\(2s-2p\) Lamb splitting is about \(4\times10^{-6}\ {\rm eV}\), is
+opposite in sign, and is dominated by the electron self-energy rather
+than this smaller vacuum-polarization contribution.
 \end{enumerate}
 
-\SupplementarySolution{9}{Bound-State Poles, Self-Energies, and Feshbach Projection}
+\SupplementarySolution{8}{The Magnetic Moment of a Dirac Fermion}
 \begin{enumerate}
 \item
-For a field \(\Phi\) in a static background, insert exact eigenstates in
+With \(\beta=i\gamma^0\), the volume current
 \[
- G(E;\mathbf x,\mathbf y)
- =\int dt\,e^{iEt}
- \langle\Omega|T\Phi(t,\mathbf x)\Phi^\dagger(0,\mathbf y)|\Omega\rangle.
+ j^\mu=-i\bar\Psi\gamma^\mu\Psi
 \]
-The positive-energy part contains
+is Hermitian.  Since \(q\) is real, \(H_I\) is Hermitian precisely when
+the classical four-potential is real:
 \[
- G(E;\mathbf x,\mathbf y)\supset
- \frac{\psi_B(\mathbf x)\psi_B^*(\mathbf y)}
- {E-E_B+i0},\qquad
- \psi_B(\mathbf x)=\langle\Omega|\Phi(0,\mathbf x)|B\rangle .
+ \boxed{A_\mu(x)^*=A_\mu(x).}
 \]
-Thus a stable bound state is a simple pole and its residue factorizes into
-the wave function at the two endpoints.  Continuum states instead produce
-cuts beginning at their thresholds.
 \item
-Adopt \(G^{-1}=G_0^{-1}-\Sigma\).  Near the unperturbed pole,
+A polar four-vector transforms under parity as
 \[
- G_0(E)\simeq\frac{P}{E-E_B},\qquad
- G_0\Sigma G_0\simeq
- \frac{P\Sigma(E_B)P}{(E-E_B)^2}.
+ A^0(t,\mathbf x)\longmapsto A^0(t,-\mathbf x),
+ \qquad
+ \mathbf A(t,\mathbf x)\longmapsto-\mathbf A(t,-\mathbf x),
 \]
-Comparison with
-\((E-E_B-\delta E_B)^{-1}\) gives
+so
 \[
- \boxed{\delta E_B=\langle B|\Sigma(E_B)|B\rangle}
+ \mathbf E\overset{P}{\longmapsto}-\mathbf E,\qquad
+ \mathbf B\overset{P}{\longmapsto}+\mathbf B.
 \]
-in this sign convention.  For a degenerate subspace \(P\), the shifts are
-the eigenvalues of the finite matrix \(P\Sigma(E_B)P\).  Derivatives of
-\(\Sigma\) affect the pole residue at this order, not its first-order
-position.
+The Dirac vector current transforms in the same way, making
+\(j^\mu A_\mu\) parity even.  Under charge conjugation the vector
+current is odd, so invariance requires
+\[
+ A_\mu\overset{C}{\longmapsto}-A_\mu,
+ \qquad
+ \mathbf E\overset{C}{\longmapsto}-\mathbf E,\qquad
+ \mathbf B\overset{C}{\longmapsto}-\mathbf B.
+\]
+Spin is an axial vector.  Therefore
+\(\mathbf S\cdot\mathbf B\) is parity even, whereas
+\(\mathbf S\cdot\mathbf E\) is parity odd.  A magnetic dipole coupling
+is allowed, but an electric dipole coupling would violate parity
+(and, in the relativistic theory, the corresponding \(CP\) symmetry).
 \item
-Projecting \((E-H)\lvert\Psi\rangle=0\) into \(P\) and \(Q\) and eliminating
-\(Q\lvert\Psi\rangle\) gives
+In the Weyl basis used in the prompt, the spatial commutators are
 \[
- \boxed{H_{\rm eff}(E)=PHP+
- PHQ\frac1{E-QHQ}QHP .}
+ \gamma^{ij}
+ =i\varepsilon^{ijk}
+ \begin{pmatrix}\sigma^k&0\\0&\sigma^k\end{pmatrix},
+ \qquad
+ F_{ij}=-\varepsilon_{ij\ell}B^\ell.
 \]
-For a one-dimensional \(P=\lvert n\rangle\langle n\rvert\), iteration gives
-\begin{align*}
- \delta E_n={}&V_{nn}
- +\sum_{m\ne n}\frac{V_{nm}V_{mn}}{E_n-E_m}\\
- &+\sum_{m,l\ne n}
- \frac{V_{nm}V_{ml}V_{ln}}
- {(E_n-E_m)(E_n-E_l)}
- -V_{nn}\sum_{m\ne n}
- \frac{|V_{nm}|^2}{(E_n-E_m)^2}+O(V^4).
-\end{align*}
-The last term comes from the energy dependence of the projected resolvent.
+The terms containing \(F_{0i}\) are velocity suppressed at rest.
+Consequently
+\[
+ \gamma^{\mu\nu}F_{\mu\nu}
+ \longrightarrow
+ -2i
+ \begin{pmatrix}
+ \boldsymbol\sigma\cdot\mathbf B&0\\
+ 0&\boldsymbol\sigma\cdot\mathbf B
+ \end{pmatrix}.
+\]
+Using the two rest spinors and
+\(\bar u=u^\dagger\beta\) gives
+\[
+ \boxed{
+ \bar u(p')\gamma^{\mu\nu}u(p)F_{\mu\nu}
+ =-4im_\Psi\,
+ \xi'^\dagger\boldsymbol\sigma\cdot\mathbf B\,\xi,
+ \qquad a=-4im_\Psi.}
+\]
+The imaginary coefficient is a consequence of the volume's
+anti-Hermitian vector gamma convention; the physical current contains
+the compensating factor \(-i\).
+\item
+The Gordon identity in the same convention may be written
+\[
+ -i\bar u(p')\gamma^\mu u(p)
+ =\frac{1}{2m_\Psi}\bar u(p')
+ \left[(p'+p)^\mu+\gamma^{\mu\nu}(p'-p)_\nu\right]u(p).
+\]
+The first term gives the spin-independent convection current.  The
+second term, integrated against a uniform background field, gives
+\[
+ \bra{\mathbf p',s'}H_I\ket{\mathbf p,s}
+ =(2\pi)^3\delta^3(\mathbf p-\mathbf p')
+ \left[
+ -q\,\xi'^\dagger\boldsymbol\sigma\cdot\mathbf B\,\xi
+ +\text{spin-independent terms}\right]
+\]
+for relativistically normalized one-particle states.  Dividing by
+\(\sqrt{2E_{\mathbf p'}\,2E_{\mathbf p}}\to2m_\Psi\) gives the
+nonrelativistic kernel
+\[
+ \boxed{
+ h_{\rm spin}
+ =-\frac{q}{2m_\Psi}
+ \xi'^\dagger\boldsymbol\sigma\cdot\mathbf B\,\xi.}
+\]
+Thus
+\[
+ H_{\rm spin}
+ =-\frac{q}{m_\Psi}\mathbf S\cdot\mathbf B
+ =-g_{\rm mag}\frac{q}{2m_\Psi}\mathbf S\cdot\mathbf B,
+ \qquad
+ \boxed{g_{\rm mag}=2.}
+\]
+\item
+The bilinear
+\(\bar\Psi F_{\mu\nu}[\gamma^\mu,\gamma^\nu]\Psi\)
+is anti-Hermitian in the stated convention.  Hence
+\[
+ \boxed{c^*=-c.}
+\]
+Write \(c=ic_H\) with \(c_H\) real.  Since
+\([\gamma^\mu,\gamma^\nu]=2\gamma^{\mu\nu}\), part (c) gives, after
+conversion to nonrelativistic normalization,
+\[
+ \Delta h_{\rm spin}
+ =\frac{4c_H}{M}\,
+ \xi'^\dagger\boldsymbol\sigma\cdot\mathbf B\,\xi.
+\]
+The magnetic coefficient becomes
+\[
+ -\frac{q}{2m_\Psi}+\frac{4c_H}{M}
+ =-\frac{g_{\rm mag}q}{4m_\Psi},
+\]
+or
+\[
+ \boxed{
+ g_{\rm mag}
+ =2-\frac{16c_Hm_\Psi}{qM}.}
+\]
+An opposite convention for the sign of the added Pauli operator
+correspondingly reverses the sign of the shift; its invariant content
+is a correction of order \(m_\Psi/M\).
 \end{enumerate}
 
-\SupplementarySolution{10}{Bound-State EFT Power Counting and Matching}
+\SupplementarySolution{9}{Bubble-Chain Bound States in \(2+1\) Dimensions}
 \begin{enumerate}
 \item
-With \(\mathbf r=\boldsymbol\rho/(M\lambda)\),
+Include the factor \(1/2\) that exchanges the two identical lines in
+each bubble and define
 \[
- H_C=M\lambda^2\left[-\frac{\nabla_\rho^2}{2}-\frac1\rho\right].
+ B(s)=\frac{1}{16\pi}\int_0^1
+ \frac{dx}{\sqrt{m^2-x(1-x)s-i0}}.
+\]
+This follows by combining the two propagators with a Feynman parameter,
+shifting the loop momentum, and using the elementary three-dimensional
+Euclidean integral.  Below threshold it can also be written
+\[
+ B(s)=\frac{1}{8\pi\sqrt{s}}\,
+ \operatorname{artanh}\!\left(\frac{\sqrt{s}}{2m}\right),
+\qquad 0<s<4m^2.
+\]
+With the tree amplitude normalized as \(-g\), the displayed chain is
+\[
+ \mathcal M(s)
+ =-g+g^2B(s)-g^3B(s)^2+\cdots
+ =\boxed{-\frac{g}{1+gB(s)}}.
+\]
+No assertion about convergence of the geometric series is needed; the
+last expression defines the bubble-chain resummation.
+\item
+For \(s>4m^2\), continuation through the two-particle cut gives
+\[
+ \operatorname{Im}B(s)=\frac{1}{16\sqrt{s}}.
 \]
 Consequently
 \[
- \psi(\mathbf r)\sim(M\lambda)^{3/2},\quad
- V_C\sim M\lambda^2,\quad
- G'_C\sim(M\lambda^2)^{-1}.
+ \operatorname{Im}\mathcal M(s)
+ =\frac{g^2\operatorname{Im}B(s)}
+ {|1+gB(s)|^2}
+ =\frac{|\mathcal M(s)|^2}{16E_T}.
 \]
-A local operator has the matrix-element scaling
+This is exactly the two-body optical theorem.  To see it from the
+cross section supplied in the problem, avoid double counting identical
+final scalars by integrating over an angular range of length \(\pi\)
+(equivalently integrate over \(2\pi\) and divide by \(2!\)):
 \[
- \boxed{\langle C_{2n}\nabla^{2n}\delta^3(\mathbf r)\rangle
- \sim C_{2n}(M\lambda)^{3+2n}.}
+ \sigma_{\rm el}
+ =\frac{|\mathcal M|^2}{32pE_T^2}.
 \]
-Each additional Coulomb insertion accompanied by a reduced resolvent is of
-order unity, which is why the Coulomb potential must be resummed, while
-short-distance operators can be treated perturbatively according to their
-derivative order.
+Multiplication by the center-of-mass flux \(4pE_T\) gives
+\[
+ 4pE_T\,\sigma_{\rm el}
+ =\frac{|\mathcal M|^2}{8E_T}
+ =2\,\operatorname{Im}\mathcal M,
+\]
+which verifies unitarity within the approximation.
 \item
-With covariant and nonrelativistic one-particle states related by
-\(\lvert\mathbf p\rangle_{\rm rel}=\sqrt{2E_{\mathbf p}}\,
-\lvert\mathbf p\rangle_{\rm NR}\), the Born kernel is
+Below threshold \(B(s)\) is real, positive, and monotone, with
 \[
- \widetilde V(\mathbf p',\mathbf p)
- =\frac{\mathcal M(\mathbf p',\mathbf p)}
- {2\sqrt{E_{\mathbf p'}E_{\mathbf p}}}.
+ B(0)=\frac{1}{16\pi m},\qquad
+ \lim_{s\to4m^2-}B(s)=+\infty.
 \]
-Expanding through \(M^{-2}\) relative to the leading term,
+A pole requires
 \[
- \widetilde V=
- \frac{c_0}{2M}
- +\frac{c_2\mathbf q^2}{2M^3}
- -\frac{c_0(\mathbf p'^2+\mathbf p^2)}{8M^3}+\cdots .
+ 1+gB(M_B^2)=0.
 \]
-Thus the coordinate-space Hamiltonian contains a delta function, a
-\(-\nabla^2\delta^3\) term, and the Hermitian normalization correction
-proportional to \(\{\mathbf p^2,\delta^3\}\).  The \(c_i\) are fixed by
-equating low-momentum on-shell amplitudes in the two theories; off-shell
-continuations are not additional matching data.
+It is therefore possible only for attractive coupling \(g<0\).
+The value \(-1/g\) lies strictly inside the range of \(B(s)\) for
+\[
+ \boxed{-16\pi m<g<0.}
+\]
+At \(g=-16\pi m\) the pole has reached \(M_B^2=0\), and for more
+negative \(g\) there is no pole in the requested interval
+\(0<M_B^2<4m^2\).
+\end{enumerate}
+
+\SupplementarySolution{10}{Nonrelativistic Forces from QED and Pseudoscalar Exchange}
+\begin{enumerate}
 \item
-Expanding the unitary transformation gives
+For momentum transfer \(q^\mu\simeq(0,\mathbf q)\), the temporal Dirac
+current dominates:
 \[
- H'=H+i[S,H]-\frac12[S,[S,H]]+\cdots .
+ \bar u(\mathbf p')\gamma^0u(\mathbf p)\simeq2m_\Psi.
 \]
-At leading order, matrix elements of \(i[S,H_0]\) are proportional to
-\(E_{\mathbf p'}-E_{\mathbf p}\), and hence vanish on shell.  They alter
-off-shell kernels and Green functions and are precisely
-equation-of-motion operators.  Nevertheless
+The direct one-photon graph therefore gives
 \[
- E-H'=e^{iS}(E-H)e^{-iS},
+ \mathcal M_{\rm NR}
+ \simeq\frac{4m_\Psi^2e^2}{\mathbf q^2}.
+\]
+Removing the two relativistic external-state normalization factors
+leaves the Born kernel
+\[
+ \widetilde V(\mathbf q)=\frac{e^2}{\mathbf q^2}.
+\]
+Fourier transformation yields
+\[
+ V(r)=\frac{e^2}{4\pi r}=\frac{\alpha}{r},
 \qquad
- (E-H')^{-1}=e^{iS}(E-H)^{-1}e^{-iS}.
+ \mathbf F=-\boldsymbol\nabla V
+ =\frac{\alpha}{r^2}\widehat{\mathbf r}.
 \]
-The resolvents are related by nonsingular endpoint transformations, so
-their pole positions are identical.  Perturbative equality follows only
-when the commutators generate and retain all induced operators through the
-working order; dropping one can create a spurious off-shell dependence.
+The force is outward and hence repulsive.  The identical-fermion
+exchange graph antisymmetrizes the two-particle state but does not
+alter this long-range direct force between separated wave packets.
+\item
+\begin{enumerate}
+\item
+Let
+\[
+ \mathsf P\,\Psi(t,\mathbf x)\,\mathsf P^{-1}
+ =\eta_P\beta\Psi(t,-\mathbf x),\qquad
+ \mathsf P\,\phi(t,\mathbf x)\,\mathsf P^{-1}
+ =-\phi(t,-\mathbf x),
+\]
+where \(\beta=i\gamma^0\) in the volume's convention and
+\(|\eta_P|=1\).  Since
+\(\beta^{-1}\gamma_5\beta=-\gamma_5\),
+\(\bar\Psi\gamma_5\Psi\) is a pseudoscalar.  Its product with the
+pseudoscalar field \(\phi\) is parity even.
+\item
+Taking \(\mathcal L_{\rm int}=-g_5\bar\Psi\gamma_5\Psi\phi\), a
+consistent mostly-plus set of rules is
+\[
+ S_F(k)=\frac{-i\slashed k+m_\Psi}
+ {k^2+m_\Psi^2-i0},\qquad
+ \Delta_F(k)=\frac{-i}{k^2+m_\phi^2-i0},\qquad
+ \Gamma_5=-ig_5\gamma_5,
+\]
+together with momentum conservation at the vertex and a minus sign
+for exchanging identical external fermions.  An overall phase of
+\(\Gamma_5\) changes if the Hermitian interaction is written with an
+explicit \(i\); none of the following force laws changes.
+\item
+For
+\(\Psi(p_1)\Psi(p_2)\to\Psi(p_3)\Psi(p_4)\), the two leading graphs are
+the direct and exchange scalar-exchange diagrams:
+\[
+\begin{split}
+ i\mathcal M_t
+ &=\bigl[\bar u(p_3)\Gamma_5u(p_1)\bigr]\,
+   \Delta_F(p_1-p_3)\,
+   \bigl[\bar u(p_4)\Gamma_5u(p_2)\bigr],\\
+ i\mathcal M_u
+ &=-\bigl[\bar u(p_4)\Gamma_5u(p_1)\bigr]\,
+   \Delta_F(p_1-p_4)\,
+   \bigl[\bar u(p_3)\Gamma_5u(p_2)\bigr].
+\end{split}
+\]
+The relative minus sign is fixed by Fermi statistics.  These two
+expressions are the complete leading-order relativistic answer.
+\item
+At zero three-momentum,
+\(\bar u\gamma_5u=0\).  Keeping the first nonzero term gives, with
+\(\mathbf q=\mathbf p'-\mathbf p\),
+\[
+ \bar u(\mathbf p')\gamma_5u(\mathbf p)
+ =-\xi'^\dagger\boldsymbol\sigma\cdot\mathbf q\,\xi
+ +O(|\mathbf p|^3/m_\Psi^2).
+\]
+After converting relativistic external states to nonrelativistic
+normalization, the direct interaction is
+\[
+ \boxed{\widetilde V_5(\mathbf q)
+ =-\frac{g_5^2}{4m_\Psi^2}
+ \frac{(\boldsymbol\sigma_1\cdot\mathbf q)
+       (\boldsymbol\sigma_2\cdot\mathbf q)}
+      {\mathbf q^2+m_\phi^2}.}
+\]
+Thus the naive momentum-independent force vanishes; the first force is
+spin dependent and suppressed by \(1/m_\Psi^2\).
+
+For completeness, let
+\[
+ Y(r)=\frac{e^{-m_\phi r}}{4\pi r},\qquad
+ S_{12}=3(\boldsymbol\sigma_1\cdot\widehat{\mathbf r})
+          (\boldsymbol\sigma_2\cdot\widehat{\mathbf r})
+          -\boldsymbol\sigma_1\cdot\boldsymbol\sigma_2.
+\]
+Fourier transformation gives the effective coordinate-space
+Hamiltonian
+\[
+\begin{split}
+ V_5(\mathbf r)
+ =\frac{g_5^2}{12m_\Psi^2}\Bigg\{&
+ (\boldsymbol\sigma_1\cdot\boldsymbol\sigma_2)
+ \left[m_\phi^2Y(r)-\delta^3(\mathbf r)\right]\\
+ &+S_{12}
+ \left(m_\phi^2+\frac{3m_\phi}{r}+\frac{3}{r^2}\right)Y(r)
+ \Bigg\}.
+\end{split}
+\]
+For identical particles this kernel acts on an antisymmetric
+two-fermion wave function; that antisymmetrization is the
+nonrelativistic counterpart of the \(u\)-channel graph.
+\end{enumerate}
 \end{enumerate}
 \end{enumerate}

@@ -246,11 +246,24 @@ which is the cluster-decomposition statement.
 \SupplementarySolution{5}{Wick's Theorem for Three Fields}
 \begin{enumerate}
 \item
-Writing \(\phi=\phi^{(+)}+\phi^{(-)}\) and commuting annihilation parts
-to the right gives
+For bosonic fields, interchanging \(x_1\) and \(x_2\) merely interchanges
+the two terms
 \[
- T\{\phi(x)\phi(y)\}=:\!\phi(x)\phi(y)\!:+D_F(x-y).
+ \theta(x_1^0-x_2^0)\phi(x_1)\phi(x_2)
+ \quad\hbox{and}\quad
+ \theta(x_2^0-x_1^0)\phi(x_2)\phi(x_1)
 \]
+in the time-ordered product.  The equal-time ambiguity is harmless
+because scalar fields commute at equal time.  In the normal-ordered
+product, creation parts commute with creation parts and annihilation
+parts commute with annihilation parts; the two mixed terms exchange
+places.  Thus both products are symmetric.  Subtracting them in
+\[
+ D_F(x_1-x_2)
+ =T\{\phi(x_1)\phi(x_2)\}
+ -:\!\phi(x_1)\phi(x_2)\!:
+\]
+proves \(D_F(x_1-x_2)=D_F(x_2-x_1)\).
 \item
 Write \(\phi_i=\phi_i^{(+)}+\phi_i^{(-)}\), with the positive-frequency
 part annihilating the vacuum and the negative-frequency part creating
@@ -298,123 +311,148 @@ expectation value is a sum over complete pairings and hence vanishes when
 \(3n\) is odd.  Since \(3n\) has the parity of \(n\), every odd
 perturbative order vanishes.
 
-At fourth order, assign three half-edges to each of four vertices and
-identify pairings related by graph isomorphism.  An exact algebraic
-census uses symmetric nonnegative integers \(n_{ij}\), with a loop
-counted twice, satisfying
+Here is a figure-independent complete list at fourth order.  Label the
+four cubic vertices \(1,\ldots,4\); write \(ij^r\) for \(r\) parallel
+lines between distinct vertices and \(ii\) for a tadpole at \(i\).
+Relabelings of \(1,\ldots,4\) do not make a new diagram.  The five
+connected topologies are
 \[
- 2n_{ii}+\sum_{j\ne i}n_{ij}=3.
+\begin{array}{c|l|c}
+ &\text{edge multiset}&S_\Gamma\\ \hline
+V_1&12,13,14,23,24,34&24\\
+V_2&12,13,14,23^2,44&8\\
+V_3&12,13,14,22,33,44&48\\
+V_4&12^2,14,23,33,44&16\\
+V_5&13,14^2,23^2,24&16
+\end{array}
 \]
-Each connected solution is one connected four-vertex topology; each
-disconnected solution is a pair of the second-order topologies.  Its
-symmetry factor follows directly by dividing \(4!(3!)^4\) by the
-number of labeled Wick pairings (equivalently by its vertex, loop, and
-parallel-line automorphisms).  Thus this criterion both enumerates the
-requested diagrams and fixes their factors without ambiguity.  If
-\(C_2\) and \(C_4\) are the complete connected sums, the order-four
-answer has the universal form
+and the three disconnected topologies are
 \[
- C_4+\frac12C_2^2.
+\begin{array}{c|l|c}
+V_6&12^3;\ 33,34,44&96\\
+V_7&14^3;\ 23^3&288\\
+V_8&11,14;\ 22,23,33,44&128 .
+\end{array}
 \]
-The square includes all pairings of the two possible second-order
-topologies from S.4.6(a); the \(1/2!\) removes interchange of the two
-disconnected components.
+The semicolon separates components.  The last column, though not
+required in this part, supplies a check and will be useful below.
 \item
-Give the two external points degree one and every interaction vertex
-degree three.  The same half-edge census, with the external vertices
-distinguished, lists every two-point Wick graph through four vertices
-and fixes each factor by its labeled-pairing multiplicity.  Let
-\(G_0(x,y)\) be the free line, \(G_{2,c},G_{4,c}\) the terms without
-vacuum components, and \(B_2,B_4\) the connected vacuum sums.  Then
+Extend the notation by writing \(xi\) and \(yi\) for the two labeled
+external attachments.  Each row below denotes the corresponding
+position-space propagator product integrated over all numbered vertices;
+its coefficient is \((i\lambda)^n/S_\Gamma\), where \(n\) is the number
+of cubic vertices.  The free diagram is
 \[
- \mathcal N=G_0+\lambda^2
- \bigl(G_{2,c}+G_0B_2\bigr)
- +\lambda^4\bigl(G_{4,c}+G_{2,c}B_2
- +G_0(B_4+\tfrac12B_2^2)\bigr)+O(\lambda^6),
+ \begin{array}{c|l|c}
+ C_0&xy&1 .
+ \end{array}
 \]
-and
+At order \(\lambda^2\), the two connected diagrams and the one
+two-component diagram are
 \[
- \mathcal D=1+\lambda^2B_2
- +\lambda^4(B_4+\tfrac12B_2^2)+O(\lambda^6).
+\begin{array}{c|l|c}
+C_{2,1}&x1,y1,12,22&2\\
+C_{2,2}&x2,y1,12^2&2\\ \hline
+D_{2,1}&x2,y1,11,22&4 .
+\end{array}
 \]
-Series division gives
+At order \(\lambda^4\), the ten connected diagrams are
 \[
- \frac{\mathcal N}{\mathcal D}
- =G_0+\lambda^2G_{2,c}+\lambda^4G_{4,c}+O(\lambda^6).
+\begin{array}{c|l|c}
+C_{4,1}&x2,y1,12,14,23,33,44&4\\
+C_{4,2}&x2,y2,12,13,14,33,44&8\\
+C_{4,3}&x3,y2,12,13,14,23,44&2\\
+C_{4,4}&x3,y2,12,13^2,24,44&4\\
+C_{4,5}&x3,y2,12^2,13,34,44&4\\
+C_{4,6}&x3,y3,12^2,14,23,44&4\\
+C_{4,7}&x4,y3,12,13,14,23,24&2\\
+C_{4,8}&x4,y3,12,14^2,23^2&4\\
+C_{4,9}&x4,y3,12^2,14,23,34&2\\
+C_{4,10}&x4,y4,12,13,14,23^2&4 ,
+\end{array}
 \]
-Thus every \(B_2\), \(B_4\), and \(B_2^2\) factor cancels.
-\item
-Condition (i) excludes vacuum bubbles: each interaction vertex must lie
-in a component that touches some external point.  It does not require all
-external points to share one component.  For example, a four-point
-diagram may be the product of two dressed propagators, one joining
-\((x_1,x_2)\) and one joining \((x_3,x_4)\).  Every vertex touches an
-external point, but the graph has two components.
+and the six diagrams with two components are
+\[
+\begin{array}{c|l|c}
+D_{4,1}&x1,y4,12,13,22,33,44&16\\
+D_{4,2}&x2,y4,12^2,13,33,44&8\\
+D_{4,3}&x3,y4,12^2,13,23,44&8\\
+D_{4,4}&x4,y1,12,13,22,33,44&16\\
+D_{4,5}&x4,y2,12^2,13,33,44&8\\
+D_{4,6}&x4,y3,12^2,13,23,44&8 .
+\end{array}
+\]
+The free row, the two \(C_2\) rows, and the ten \(C_4\) rows give the
+thirteen fully connected diagrams advertised in the question.  The
+seven \(D\) rows are not vacuum bubbles: each of their two components
+touches one external point and therefore survives the vacuum
+normalization.
 
-Vacuum normalization retains this product.  The connected four-point
-function subtracts
+For completeness, the tabulated factors follow from
 \[
- G(x_1,x_2)G(x_3,x_4)+G(x_1,x_3)G(x_2,x_4)
- +G(x_1,x_4)G(x_2,x_3),
+ S_\Gamma=
+ |\operatorname{Aut}_{x,y}\Gamma|
+ \prod_i2^{\ell_i}\ell_i!
+ \prod_{i<j}m_{ij}!,
 \]
-along with one-point terms when present.  The two-component example is
-therefore removed, leaving only graphs in which all four external points
-belong to one component.
-\item
-The second Dyson term supplies \(1/[2!(3!)^2]=1/72\).  For the theta graph,
-all three fields at one vertex contract with the other vertex, giving
-\(3!=6\) pairings.  Its coefficient is \(6/72=1/12\), so its symmetry
-factor is \(12\).
-
-For the tadpole graph, choose the field on the first vertex that joins the
-second in three ways and its partner there in three ways.  The remaining
-two fields at each vertex pair uniquely, for \(3\cdot3=9\) contractions.
-Its coefficient is \(9/72=1/8\), so its symmetry factor is \(8\).  These
-counts agree with the automorphism groups of the two graphs.
+where \(\ell_i\) is the number of tadpoles at vertex \(i\),
+\(m_{ij}\) is the number of parallel \(ij\)-lines, and automorphisms fix
+\(x,y\).  This is equivalent to dividing the number of labeled Wick
+pairings by the Dyson factor \(n!(3!)^n\), so the list contains both
+every requested topology and its contraction weight.
 \end{enumerate}
 
-\SupplementarySolution{7}{Coherent States, Completeness, and In--Out Vacua}
+\SupplementarySolution{7}{A Classical Source and Coherent In--Out States}
 \begin{enumerate}
 \item
-The normalized state is
+The in--out relation gives
 \[
- \ket z=e^{-|z|^2/2}e^{za^\dagger}\ket0
- =e^{-|z|^2/2}\sum_{n=0}^\infty
- \frac{z^n}{\sqrt{n!}}\ket n.
+ F'=S^{-1}FS,\qquad G'=S^{-1}GS,
 \]
+and therefore
+\[
+ e^{F'}=S^{-1}e^FS,\qquad e^{G'}=S^{-1}e^GS.
+\]
+Because \(\mu\) is a c-number,
+\[
+ e^{-\mu/2}e^{F'}e^{G'}
+ =S^{-1}\!\left(e^{-\mu/2}e^Fe^G\right)S
+ =S^{-1}SS=S.
+\]
+With the convention \(\InKet0=S\OutKet0\), and since
+\(G'\OutKet0=0\),
+\[
+ \InKet0=S\OutKet0
+ =e^{-\mu/2}e^{F'}\OutKet0.
+\]
+Thus the in-vacuum is a normalized multimode coherent state of
+out-particles.
+\item
 Since \([a,za^\dagger]=z\),
 \(ae^{za^\dagger}=e^{za^\dagger}(a+z)\), so
-\(a\ket z=z\ket z\).  Its overlap is
+\(a\ket z=z\ket z\).  Equivalently,
+\[
+ \ket z=\sum_{n=0}^{\infty}\frac{z^n}{\sqrt{n!}}\ket n,
+\]
+so the eigenvalue is \(z\).
+\item
+Using the number-state expansion,
 \[
  \braket{z_2}{z_1}
- =\exp\!\left(-\frac{|z_2|^2}{2}-\frac{|z_1|^2}{2}
- +z_2^*z_1\right).
+ =\sum_{n=0}^\infty\frac{(z_2^*z_1)^n}{n!}
+ =e^{z_2^*z_1}.
 \]
-Setting \(z_2=z_1\) verifies unit normalization; distinct coherent states
-are generally not orthogonal.
+In particular, \(\braket z z=e^{|z|^2}\); the state in this problem is
+deliberately unnormalized.
 \item
-Insert the number-state expansions:
-\[
- \int\frac{d^2z}{\pi}\ket z\bra z
- =\sum_{m,n}\frac{\ket n\bra m}{\sqrt{n!m!}}
- \int\frac{d^2z}{\pi}e^{-|z|^2}z^n(z^*)^m.
-\]
-The angular integral vanishes unless \(m=n\), and the radial integral is
-\[
- 2\int_0^\infty r\,dr\,e^{-r^2}r^{2n}=n!.
-\]
-Thus the operator is \(\sum_n\ket n\bra n=\mathbf1\).  Orthogonality is
-not required for a resolution of the identity: the continuous family is
-overcomplete, and its integration measure compensates for the nonzero
-overlaps.
-\item
-Using \(a\ket z=z\ket z\),
+Since \(a\ket z=z\ket z\) and \(\bra z a^\dagger=z^*\bra z\),
 \[
  \langle q\rangle=\frac{z+z^*}{\sqrt2}
  =\sqrt2\,\operatorname{Re}z,\qquad
  \langle p\rangle=\frac{z-z^*}{i\sqrt2}
  =\sqrt2\,\operatorname{Im}z.
 \]
+\item
 Normal ordering \(q^2\) and \(p^2\) and using
 \([a,a^\dagger]=1\) gives
 \[
@@ -428,136 +466,67 @@ Hence
 \]
 The displacement changes the means but leaves the vacuum fluctuations
 unchanged.
-\item
-Let
-\(\mu=\int dq\,|\lambda(q)|^2\).  Expanding the coherent state by total
-particle number gives a Poisson distribution, so its moment-generating
-function is
-\[
- \langle e^{tN}\rangle
- =e^{-\mu}\sum_{n=0}^\infty
- \frac{\mu^n e^{tn}}{n!}
- =\exp\!\bigl[\mu(e^t-1)\bigr].
-\]
-Differentiation at \(t=0\) yields
-\[
- \langle N\rangle=\mu,\qquad
- \operatorname{Var}N=\mu,
-\qquad
- P(N=n)=e^{-\mu}\frac{\mu^n}{n!}.
-\]
-Disjoint momentum bins are independent Poisson variables, another
-manifestation of the exponential connected-state structure.
-\item
-Put \(A=za^\dagger\) and \(B=-z^*a\).  Their commutator
-\([A,B]=|z|^2\) is a c-number, so the
-Baker--Campbell--Hausdorff formula gives
-\[
- D(z)=e^{A+B}=e^{-|z|^2/2}e^{za^\dagger}e^{-z^*a}.
-\]
-Since the exponent \(za^\dagger-z^*a\) is anti-Hermitian,
-\(D(z)^\dagger=D(-z)=D(z)^{-1}\).  Acting on the vacuum,
-\[
- D(z)\ket0=e^{-|z|^2/2}e^{za^\dagger}\ket0=\ket z.
-\]
-Conjugation also gives \(D(z)^\dagger aD(z)=a+z\), directly confirming
-the coherent-state eigenvalue.
-\item
-The relation in the question implies
-\[
- a_{\rm in}(\mathbf p)
- =a_{\rm out}(\mathbf p)-\alpha(\mathbf p).
-\]
-Therefore \(a_{\rm in}\InKet{0}=0\) is equivalent to
-\[
- a_{\rm out}(\mathbf p)\InKet{0}
- =\alpha(\mathbf p)\InKet{0}.
-\]
-Thus, with \(\mu=\int d^3p\,|\alpha(\mathbf p)|^2\),
-\[
- \InKet{0}
- =e^{-\mu/2}
- \exp\!\left[\int d^3p\,\alpha(\mathbf p)
- a_{\rm out}^\dagger(\mathbf p)\right]\OutKet{0}.
-\]
-The vacuum persistence amplitude is
-\(\OutBra{0}\InKet{0}=e^{-\mu/2}\), so the probability of producing no
-out-particles is \(P_0=e^{-\mu}\).
 \end{enumerate}
 
-\SupplementarySolution{8}{Classical Radiation from a Coherent Impulse}
+\SupplementarySolution{8}{Recovering a Classical Field from an Impulse}
 \begin{enumerate}
 \item
-Choose
+The equal-time algebra and the free Hamiltonian give
 \[
- \phi(\mathbf x)=\int\frac{d^3p}{(2\pi)^{3/2}}
- \frac{a(\mathbf p)e^{i\mathbf p\cdot\mathbf x}
- +a^\dagger(\mathbf p)e^{-i\mathbf p\cdot\mathbf x}}
- {\sqrt{2\omega_{\mathbf p}}},
-\quad \omega_{\mathbf p}=\sqrt{\mathbf p^2+m^2}.
+ \dot\phi=i[H,\phi]=\pi,\qquad
+ \dot\pi=i[H,\pi]=(\boldsymbol\nabla^2-m^2)\phi+J.
 \]
-Integrating the equations across \(t=0\) gives
+Consequently
+\[
+ \ddot\phi=(\boldsymbol\nabla^2-m^2)\phi+J,
+\]
+which is precisely
+\((\Box-m^2)\phi=-J\) for
+\(\Box=\boldsymbol\nabla^2-\partial_t^2\).
+\item
+Integrating the equation across an infinitesimal interval containing
+\(t=0\), the finite spatial and mass terms vanish in the limit, while
+\(\int dt\,J=j\).  Hence
+\[
+ \dot\phi(0^+)-\dot\phi(0^-)=j.
+\]
+The field itself cannot jump without producing a derivative of a delta
+function, so
 \[
  \phi(0^+)=\phi(0^-),\qquad
  \pi(0^+)=\pi(0^-)+j.
 \]
-Inverting the mode expansion,
-\[
- a(\mathbf p,0^+)=a(\mathbf p,0^-)
- +\frac{i\,\widetilde j(\mathbf p)}
- {\sqrt{2\omega_{\mathbf p}}}.
-\]
-If the state was annihilated by \(a(\mathbf p,0^-)\), then it is an
-eigenstate of the post-impulse operator with eigenvalue
-\[
- \alpha(\mathbf p)=
- \frac{i\,\widetilde j(\mathbf p)}
- {\sqrt{2\omega_{\mathbf p}}},
-\]
-up to the displayed Fourier normalization.  It is therefore a multimode
-coherent state.
 \item
-For \(a(\mathbf p)\ket\lambda=\lambda(\mathbf p)\ket\lambda\),
+The inverse of the displayed mode expansion is
 \[
- \langle\phi(x)\rangle_\lambda
- =\int\frac{d^3p}{(2\pi)^{3/2}\sqrt{2\omega_{\mathbf p}}}
- \left[\lambda(\mathbf p)e^{-i\omega t+i\mathbf p\cdot\mathbf x}
- +\lambda(\mathbf p)^*e^{i\omega t-i\mathbf p\cdot\mathbf x}\right].
+ a(\mathbf p,0)=\int d^3x\,e^{-i\mathbf p\cdot\mathbf x}
+ \left[
+ \sqrt{\frac{E_{\mathbf p}}2}\,\phi(\mathbf x,0)
+ +\frac{i}{\sqrt{2E_{\mathbf p}}}\,\pi(\mathbf x,0)
+ \right].
 \]
-Every mode is on shell, so
-\((\Box-m^2)\langle\phi\rangle_\lambda=0\) in the local mostly-plus
-convention.
-
-Write \(a=\lambda+\delta a\).  The fluctuation operators \(\delta a\)
-annihilate the displaced vacuum and have the same contractions as the
-ordinary vacuum.  Hence
+Only the momentum jump contributes, giving
 \[
- \langle\phi(x)\phi(y)\rangle_\lambda
- -\langle\phi(x)\rangle_\lambda\langle\phi(y)\rangle_\lambda
- =\langle0|\phi(x)\phi(y)|0\rangle.
+ a(\mathbf p,0^+)-a(\mathbf p,0^-)
+ =\frac{i\,\widetilde j(\mathbf p)}{\sqrt{2E_{\mathbf p}}}.
 \]
-The state carries a classical mean field but unchanged connected
-Gaussian fluctuations.
 \item
-From S.4.8(a),
+Let
+\(\alpha(\mathbf p)=i\widetilde j(\mathbf p)/
+\sqrt{2E_{\mathbf p}}\).  Since the pre-impulse vacuum obeys
+\(a(\mathbf p,0^-)\ket0=0\),
 \[
- \langle a^\dagger(\mathbf p)a(\mathbf q)\rangle
+ a(\mathbf p,0^+)\ket0=\alpha(\mathbf p)\ket0.
+\]
+Thus the same state is a multimode coherent state for the post-impulse
+annihilation operators.  Its one-particle density matrix is
+\[
+ \bra0a^\dagger(\mathbf p,0^+)a(\mathbf q,0^+)\ket0
  =\alpha(\mathbf p)^*\alpha(\mathbf q),
-\qquad
- |\alpha(\mathbf p)|^2
- =\frac{|\widetilde j(\mathbf p)|^2}
- {2\omega_{\mathbf p}}.
 \]
-Thus the total mean number is
-\[
- \mu=\int d^3p\,\frac{|\widetilde j(\mathbf p)|^2}
- {2\omega_{\mathbf p}},
-\]
-with the matching Fourier-measure factors for the chosen convention.
-Coherent-state statistics gives \(P_0=e^{-\mu}\).  The state is a vector
-in Fock space precisely when \(\mu<\infty\); otherwise its formal
-displacement has infinite norm and belongs to an inequivalent
-representation.
+so the diagonal momentum density is
+\(|\widetilde j(\mathbf p)|^2/(2E_{\mathbf p})\), with the
+\((2\pi)^3\) measure fixed by the mode convention in the question.
 \end{enumerate}
 
 \SupplementarySolution{9}{Relativistic Propagators and Causal Support}
@@ -578,30 +547,44 @@ For spacelike \(z\), choose \(z^0=0\) and set \(r=\sqrt{z^2}\).  The
 radial integral gives
 \[
  D(z)=\frac{m}{4\pi^2r}K_1(mr)
- \sim \frac{\sqrt m}{(2\pi r)^{3/2}}e^{-mr}.
+ \sim \frac{\sqrt m}{2(2\pi)^{3/2}r^{3/2}}e^{-mr}.
 \]
 \item
 \([\phi(x),\phi(y)]=D(x-y)-D(y-x)\).  Spacelike-separated points have
 a frame in which they are simultaneous, so the two terms coincide and
-the commutator vanishes.
+the vacuum expectation value vanishes.  For a free field the commutator
+is a c-number, so the operator commutator vanishes as well.
 \item
 For \(\mathcal L=\mathcal L_0+J\phi\), variation gives
 \((\Box-m^2)\phi=-J\).
 \item
-If \((\Box-m^2)G(x-y)=\delta^4(x-y)\), the general solution is
+Applying the Klein--Gordon operator gives
 \[
- \phi(x)=\phi_{\rm hom}(x)-\int d^4y\,G(x-y)J(y).
+ (\Box-m^2)\left[i\int d^4y\,G(x-y)J(y)\right]
+ =i^2J(x)=-J(x).
+\]
+Thus
+\[
+ \phi(x)=\phi_{\rm hom}(x)
+ +i\int d^4y\,G(x-y)J(y),
+\qquad
+(\Box-m^2)\phi_{\rm hom}=0.
 \]
 \item
-Retarded poles are displaced below the \(p^0\) contour, advanced poles
-above it, and the Feynman contour passes below the positive-energy pole
-and above the negative-energy pole.  Thus \(G_R=0\) for negative time,
-\(G_A=0\) for positive time, while
+For \(z^0>0\), close the \(p^0\) contour in the lower half-plane; for
+\(z^0<0\), close it in the upper half-plane.  The retarded prescription
+places both poles below the real axis, the advanced prescription places
+both above it, and the Feynman prescription places the positive-energy
+pole below and the negative-energy pole above.  Summing residues gives
 \[
- G_F(x)=\theta(x^0)D(x)+\theta(-x^0)D(-x).
+\begin{split}
+ G_R(z)&=\theta(z^0)[D(z)-D(-z)],\\
+ G_A(z)&=\theta(-z^0)[D(-z)-D(z)],\\
+ G_F(z)&=\theta(z^0)D(z)+\theta(-z^0)D(-z).
+\end{split}
 \]
 \item
-Since \(G_R(x)=i\theta(x^0)[\phi(x),\phi(0)]\), part 4 makes it vanish
+Since \(G_R(z)=\theta(z^0)[D(z)-D(-z)]\), part 4 makes it vanish
 outside the future light cone.  The retarded source response is causal.
 \item
 At spacelike separation \(G_F=D\), which is nonzero but exponentially
@@ -609,21 +592,70 @@ small.  It encodes vacuum correlation; signaling is governed by the
 retarded commutator and therefore remains causal.
 \end{enumerate}
 
-\SupplementarySolution{10}{Separated Sources and Additivity of \(W\)}
-The source expansion groups into connected components.  If connected
-propagation between regions \(A\) and \(B\) is negligible, no connected
-component contains insertions from both sources.  Hence the connected
-functional splits:
+\SupplementarySolution{10}{The Force Between Static Sources}
+\begin{enumerate}
+\item
+Expand the exponential and use Wick's theorem.  Odd terms vanish.  At
+order \(2n\), complete pairings contribute
+\((2n)!/(2^n n!)\) copies of the same product, so
 \[
- W[J_A+J_B]\longrightarrow W[J_A]+W[J_B].
+\begin{split}
+ Z[J]
+ &=\sum_{n=0}^\infty
+ \frac{i^{2n}}{(2n)!}\frac{(2n)!}{2^n n!}
+ \left[\int d^4x\,d^4y\,
+ J(x)D_F(x-y)J(y)\right]^n\\
+ &=\exp\!\left[-\frac12\int d^4x\,d^4y\,
+ J(x)D_F(x-y)J(y)\right].
+\end{split}
 \]
-Exponentiating gives
+This is the exact Gaussian result.
+\item
+Write \(J=J_1+J_2\).  The terms \(J_1D_FJ_1\) and \(J_2D_FJ_2\)
+are the discarded point-source self-energies.  The factor \(1/2\)
+cancels the two equal cross terms, leaving
 \[
- Z[J_A+J_B]\longrightarrow
- e^{W[J_A]}e^{W[J_B]}=Z[J_A]Z[J_B].
+ \log Z_{\rm int}
+ =-g^2\int_{-T/2}^{T/2}dt\,dt'\,
+ D_F(t-t',\mathbf R).
 \]
-Functional derivatives with respect to sources in both regions therefore
-have vanishing connected part, while full transition amplitudes and
-probabilities factorize.  This is precisely the statement that the two
-distant experiments become independent.
+For \(T\) much longer than every other scale, set
+\(\tau=t-t'\) and replace the overlap length by \(T\):
+\[
+ \log Z_{\rm int}
+ =-g^2T\int_{-\infty}^{\infty}d\tau\,
+ D_F(\tau,\mathbf R)+O(T^0).
+\]
+With the mostly-plus propagator convention,
+\[
+ D_F(x)=\int\frac{d^4p}{(2\pi)^4}
+ \frac{-i\,e^{ip\cdot x}}{p^2+m^2-i\epsilon},
+\]
+the time integral sets \(p^0=0\), and therefore
+\[
+ \int d\tau\,D_F(\tau,\mathbf R)
+ =-i\int\frac{d^3p}{(2\pi)^3}
+ \frac{e^{i\mathbf p\cdot\mathbf R}}{\mathbf p^2+m^2}
+ =-\frac{i}{4\pi R}e^{-mR}.
+\]
+Consequently
+\[
+ Z_{\rm int}
+ =\exp\!\left[\frac{ig^2T}{4\pi R}e^{-mR}\right]
+\]
+up to the omitted self-energy phase and endpoint corrections.
+\item
+Comparison with \(Z_{\rm int}=e^{-iV(R)T}\) gives the Yukawa potential
+\[
+ V(R)=-\frac{g^2}{4\pi R}e^{-mR}.
+\]
+Since
+\[
+ -\frac{dV}{dR}
+ =-\frac{g^2e^{-mR}}{4\pi}
+ \left(\frac{m}{R}+\frac1{R^2}\right)<0
+\]
+when the positive radial direction points from one source away from the
+other, the force is attractive.
+\end{enumerate}
 \end{enumerate}
