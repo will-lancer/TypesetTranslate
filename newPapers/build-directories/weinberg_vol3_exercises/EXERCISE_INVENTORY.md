@@ -2,19 +2,19 @@
 
 Edition: `weinberg_vol3_exercises`
 
-Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercises, 102 supplementary solutions, 102 exact parent-problem records across 31 source documents; 31 problems use a priority source family, 18 preserve an exact source-problem parent, and 84 are original syntheses.
+Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercises, 102 supplementary solutions, 102 provenance records across 31 source documents; 31 problems use a first-choice source family, 31 preserve an exact source-problem parent, and 71 are original syntheses.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Allowed | Documents | First-choice pool | Exact parents | Median prompt/solution words | Exception |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---|
 | 24 | Historical Introduction | 3/3 | 0/0 | 0–0 | 0 | 0 | 0 | 0/0 | Historical chapter: supplementary exercises are intentionally omitted at the user's direction. |
-| 25 | Supersymmetry Algebras | 4/4 | 12/12 | 10–30 | 7 | 3 | 1 | 128.5/254 |  |
-| 26 | Supersymmetric Field Theories | 6/6 | 14/14 | 10–30 | 8 | 5 | 3 | 95.5/174.5 |  |
-| 27 | Supersymmetric Gauge Theories | 5/5 | 13/13 | 10–30 | 8 | 6 | 4 | 110/240 |  |
-| 28 | Supersymmetric Versions of the Standard Model | 5/5 | 15/15 | 10–30 | 6 | 2 | 1 | 98/256 |  |
+| 25 | Supersymmetry Algebras | 4/4 | 12/12 | 10–30 | 7 | 3 | 3 | 128.5/254 |  |
+| 26 | Supersymmetric Field Theories | 6/6 | 14/14 | 10–30 | 8 | 5 | 5 | 100.5/180 |  |
+| 27 | Supersymmetric Gauge Theories | 5/5 | 13/13 | 10–30 | 8 | 6 | 6 | 114/231 |  |
+| 28 | Supersymmetric Versions of the Standard Model | 5/5 | 15/15 | 10–30 | 6 | 2 | 2 | 100/265 |  |
 | 29 | Beyond Perturbation Theory | 3/3 | 14/14 | 10–30 | 6 | 8 | 8 | 100.5/256 |  |
 | 30 | Supergraphs | 3/3 | 10/10 | 10–30 | 4 | 1 | 1 | 131/342.5 |  |
-| 31 | Supergravity | 6/6 | 12/12 | 10–30 | 6 | 3 | 0 | 123.5/356 |  |
-| 32 | Supersymmetry Algebras in Higher Dimensions | 4/4 | 12/12 | 10–30 | 6 | 3 | 0 | 130/340 |  |
+| 31 | Supergravity | 6/6 | 12/12 | 10–30 | 6 | 3 | 3 | 109.5/234.5 |  |
+| 32 | Supersymmetry Algebras in Higher Dimensions | 4/4 | 12/12 | 10–30 | 6 | 3 | 3 | 136/374.5 |  |
 
 ## Source use by chapter
 
@@ -27,7 +27,7 @@ Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercise
 - Chapter 31: `brignole-ibanez-munoz-soft-terms` (3), `cambridge-supergravity-sheet-2008` (2), `cambridge-susy-extra-sheet4-2015` (1), `freedman-van-proeyen-ingredients-sugra` (1), `glmr-gaugino-mass-1998` (2), `martin-susy-primer-v7` (3)
 - Chapter 32: `cambridge-supergravity-sheet-2008` (1), `cambridge-susy-extra-sheet4-2015` (2), `polchinski-tasi-d-branes` (3), `townsend-p-brane-democracy` (2), `van-proeyen-tools-susy` (2), `witten-string-dynamics-1995` (2)
 
-## Priority-source families by chapter
+## First-choice source families by chapter
 
 - Chapter 25: `cambridge-part-iii` (2), `mcgreevy` (1), `other` (9)
 - Chapter 26: `cambridge-part-iii` (5), `other` (9)
@@ -40,14 +40,14 @@ Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercise
 
 ## Source-use mode by chapter
 
-- Chapter 25: `adapted` (1), `original-inspired` (11)
-- Chapter 26: `adapted` (3), `original-inspired` (11)
-- Chapter 27: `adapted` (4), `original-inspired` (9)
-- Chapter 28: `adapted` (1), `original-inspired` (14)
+- Chapter 25: `adapted` (3), `original-inspired` (9)
+- Chapter 26: `adapted` (5), `original-inspired` (9)
+- Chapter 27: `adapted` (6), `original-inspired` (7)
+- Chapter 28: `adapted` (2), `original-inspired` (13)
 - Chapter 29: `adapted` (8), `original-inspired` (6)
 - Chapter 30: `adapted` (1), `original-inspired` (9)
-- Chapter 31: `original-inspired` (12)
-- Chapter 32: `original-inspired` (12)
+- Chapter 31: `adapted` (3), `original-inspired` (9)
+- Chapter 32: `adapted` (3), `original-inspired` (9)
 
 ## Curation notes
 
@@ -64,4 +64,9 @@ Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercise
 
 - Mode: strict
 - Warnings: 0
-- Failures: 0
+- Failures: 2
+
+### Failures
+
+- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol3/latex/master.tex
+- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-qft/weinberg-vol3.pdf
