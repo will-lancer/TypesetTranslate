@@ -64,9 +64,4 @@ Totals: 39 Weinberg exercises, 39 Weinberg solutions, 102 supplementary exercise
 
 - Mode: strict
 - Warnings: 0
-- Failures: 2
-
-### Failures
-
-- Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol3/latex/master.tex
-- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-qft/weinberg-vol3.pdf
+- Failures: 0

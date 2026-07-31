@@ -63,66 +63,69 @@
   \end{enumerate}
 
   \SupplementaryExercise{4}{Gauge Transport and Curvature}
-  {Inspired by N. Beisert et al., ETH Zurich Quantum Field Theory II, the gauge-transport and curvature material (2017).}
+  {Adapted from N. Beisert et al., ETH Zurich Quantum Field Theory II, Problem Set 5, Problem 5.3 (2017).}
   {eth-qft2-fs17-v2ch15-p04}
+  Let \(U(y,x)\) compare gauge frames at two points, with
+  \(U(x,x)=1\), \(U(y,x)^{-1}=U(x,y)\), and
+  \(U(y,x)\mapsto V(y)U(y,x)V^{-1}(x)\).  Its short-segment expansion is
+  \[
+    U(x+\epsilon n,x)=1+i\epsilon n^\mu A_\mu(x)
+      +\frac{\epsilon^2}{2}
+       \left[in^\mu n^\nu\partial_\nu A_\mu
+             (in^\mu A_\mu)^2\right]+O(\epsilon^3).
+  \]
   \begin{enumerate}
-    \item[(a)]
-    For an oriented path \(\gamma:y\to x\), define
+    \item[(a)] Form the ordered product of four comparators around the
+      infinitesimal parallelogram spanned by \(\epsilon m\) and
+      \(\epsilon n\).  Prove that it transforms covariantly at its base
+      point and show that its first nontrivial term is proportional to
+      \(m^\mu n^\nu F_{\mu\nu}\).
+    \item[(b)] In an Abelian theory, use Stokes' theorem to express a closed
+      Wilson loop as the exponential of the field-strength flux.
+    \item[(c)] For a parametrized path \(y(\tau)\), let
+      \(\gamma_{t,s}\) denote the segment from \(s\) to \(t\).  Beginning
+      with the Abelian line integral, derive the two endpoint equations
+      \[
+        \partial_tU[\gamma_{t,s}]
+          =i\dot y^\mu(t)A_\mu(y(t))U[\gamma_{t,s}],
+        \qquad
+        \partial_sU[\gamma_{t,s}]
+          =-i\dot y^\mu(s)U[\gamma_{t,s}]A_\mu(y(s)).
+      \]
+    \item[(d)] Define the non-Abelian transporter by
     \[
-      W_\gamma(x,y)=\mathcal P\exp\left(i\int_\gamma A_\mu\,dz^\mu\right).
+      U[\gamma_{t,s}]
+        =\mathcal P\exp\left(i\int_s^t d\tau\,
+          \dot y^\mu A_\mu(y(\tau))\right).
     \]
-    Derive the gauge-transformation law of \(W_\gamma(x,y)\).  Use it to show
-    that a closed Wilson loop has a gauge-invariant trace, and that
-    \(\psi^\dagger(x)W_\gamma(x,y)\psi(y)\) is gauge invariant when \(\psi\)
-    transforms in the same representation.
-    \item[(b)]
-    Specialize the Wilson loop to an Abelian gauge theory.  Show that path
-    ordering drops out and use Stokes' theorem to express the loop as the
-    exponential of the field-strength flux through a spanning surface.  State
-    precisely when the result is independent of the chosen spanning surface.
-    \item[(c)]
-    Starting with
-    \(F=dA-iA\wedge A\) in matrix notation, prove
-    \[
-      D_{[\lambda}F_{\mu\nu]}=0.
-    \]
-    Then show that the equation transforms covariantly under a finite gauge
-    transformation and reduce it to the two homogeneous Maxwell equations in
-    the Abelian limit.
+      Use the ordered series, rather than commutativity, to prove the same
+      two endpoint equations.
+    \item[(e)] Verify directly that the endpoint equations are covariant
+      under
+      \(U[\gamma_{t,s}]\mapsto
+       V(y(t))U[\gamma_{t,s}]V^{-1}(y(s))\), deriving along the way the
+      finite transformation of \(A_\mu\).
   \end{enumerate}
 
-  \SupplementaryExercise{5}{Faddeev--Popov Operators and Ghost Vertices}
-  {Inspired by N. Beisert et al., ETH Zurich Quantum Field Theory II, the gauge-fixing and ghost material (2017).}
+  \SupplementaryExercise{5}{Nonlinear Lorenz and Axial Gauges}
+  {Adapted from N. Beisert et al., ETH Zurich Quantum Field Theory II, Problem Set 6, Problem 6.1 (2017).}
   {eth-qft2-fs17-v2ch15-p05}
   \begin{enumerate}
-    \item[(a)]
-    For \(f_\alpha=\partial_\mu A_\alpha^\mu\), compute
-    \(\mathcal F_{\alpha x,\beta y}=\delta f_\alpha(x)/
-    \delta\lambda_\beta(y)\).  Separate it into field-independent and
-    interacting pieces, derive the ghost Lagrangian after integration by
-    parts, and identify the free ghost propagator.
-    \item[(b)]
-    In electrodynamics choose
-    \(f[A]=\partial_\mu A^\mu+\frac{\kappa}{2}A_\mu A^\mu\).
-    Compute the Faddeev--Popov determinant and its ghost representation.
-    Derive the photon--ghost--antighost vertex for incoming ghost momentum
-    \(q\), and explain why Abelian ghosts fail to decouple in this gauge.
-    \item[(c)]
-    In Yang--Mills theory take \(f_\alpha=n^\mu A_{\alpha\mu}\).
-    Derive the Faddeev--Popov operator.  Show that on the sharp gauge slice
-    \(n\cdot A_\alpha=0\) its determinant is field independent.  State the
-    assumptions under which the ghost fields can therefore be removed from
-    perturbation theory.
-    \item[(d)]
-    Starting from
+    \item[(a)] Gauge-fix electrodynamics with
     \[
-      \mathcal L_{\rm GH}
-        =-\partial_\mu\omega_a^*\partial^\mu\omega_a
-         +C_{abc}(\partial_\mu\omega_a^*)A_c^\mu\omega_b ,
+      G[A,\Omega]=\partial_\mu A^\mu+\frac{\zeta}{2}A_\mu A^\mu-\Omega .
     \]
-    derive the momentum-space ghost--gluon vertex with all momenta incoming.
-    Record which ghost momentum appears, and explain the extra minus sign
-    associated with a closed ghost loop.
+      Carry out the Faddeev--Popov construction, including Gaussian
+      averaging over \(\Omega\) with parameter \(\xi\).  Find the photon and
+      ghost propagators, list the interactions created by the nonlinear
+      condition, decide whether the Abelian ghosts decouple, and recover the
+      ordinary covariant gauge as \(\zeta\to0\).
+    \item[(b)] For pure Yang--Mills theory impose
+      \(G^a[A,\Omega]=n^\mu A^a_\mu-\Omega^a\), where \(n^\mu\) is fixed.
+      Derive the ghost operator and invert the quadratic gauge-field kernel
+      to obtain the general axial-gauge propagator.  State exactly when the
+      ghosts decouple and explain how that fact is used in perturbation
+      theory.
   \end{enumerate}
 
   \SupplementaryExercise{6}{BRST Nilpotency and Gauge-Fermion Fixing}
@@ -158,29 +161,33 @@
   the quadratic Casimir in the fundamental representation
   \(t_a=\sigma_a/2\).
 
-  \SupplementaryExercise{8}{Covariant Propagators and Ward Identities}
-  {Inspired by David Skinner, Advanced Quantum Field Theory Example Sheet 4, the BRST and Ward-identity material (2018).}
+  \SupplementaryExercise{8}{The Complete Free Abelian BRST Multiplet}
+  {Adapted from David Skinner, Advanced Quantum Field Theory Example Sheet 4, Problem 3 (2018).}
   {skinner-aqft-sheet4-2018-v2ch15-p08}
+  Consider
+  \[
+    S=\int d^Dx\left[-\frac14F_{\mu\nu}F^{\mu\nu}
+      +h\,\partial^\mu A_\mu+\frac{\xi}{2}h^2
+      +\omega^*\partial^2\omega\right].
+  \]
   \begin{enumerate}
-    \item[(a)]
-    Add the gauge-fixing term
-    \[
-      -\frac1{2\xi}(\partial_\mu A_a^\mu)^2
-    \]
-    to the free Yang--Mills Lagrangian.  Invert the quadratic
-    momentum-space operator to obtain the
-    gauge-field propagator.  Check explicitly its Feynman-gauge and
-    Landau-gauge limits and its longitudinal contraction with \(p^\mu\).
-    \item[(b)]
-    For free electrodynamics use
-    \[
-      sA_\mu=\partial_\mu\omega,\qquad s\omega=0,\qquad
-      s\omega^*=-h,\qquad sh=0.
-    \]
-    Apply BRST invariance of the vacuum to
-    \(A_\mu(x)\omega^*(y)\).  Derive the resulting two-point Ward identity,
-    eliminate \(h\), and verify the identity using the covariant-gauge photon
-    and ghost propagators.
+    \item[(a)] Verify invariance and nilpotence for
+      \(sA_\mu=\partial_\mu\omega\), \(s\omega=0\),
+      \(s\omega^*=-h\), and \(sh=0\).
+    \item[(b)] With \(\Phi^T=(A_\mu,h)\), rewrite the bosonic action as
+      \(-\frac12\int\Phi^T\Delta\Phi\) and determine the full block
+      operator \(\Delta\).
+    \item[(c)] Derive the Green-function equations for the normalized
+      correlators
+      \(\langle\Phi(x)\Phi^T(0)\rangle\) and
+      \(\langle\omega(x)\omega^*(0)\rangle\).  Invert the block operator in
+      momentum space, displaying the \(AA\), \(Ah\), \(hA\), and \(hh\)
+      entries as well as the ghost propagator.
+    \item[(d)] Use \(\langle sY\rangle=0\) first with
+      \(Y=h(x)\omega^*(0)\) and then with
+      \(Y=A_\mu(x)\omega^*(0)\).  Derive
+      \(\langle hh\rangle=0\) and the mixed ghost--auxiliary Ward identity,
+      and verify both with the propagators from part (c).
   \end{enumerate}
 
   \SupplementaryExercise{9}{Lie-Algebra BRST Cohomology}
@@ -207,13 +214,28 @@
   \end{enumerate}
 
   \SupplementaryExercise{10}{Auxiliary-Field Gauge Fixing}
-  {Inspired by Michael Peskin, Stanford Physics 331, the BRST material in Problem Set 2 (2020).}
+  {Adapted from Michael Peskin, Stanford Physics 331, Problem Set 2, Problem 2 (2020).}
   {stanford-physics331-w20-set2-v2ch15-p10}
-  Introduce an auxiliary field \(h_a\) and replace
-  \(-f_af_a/(2\xi)\) by \(h_af_a+\xi h_ah_a/2\).
-  Integrate out \(h_a\) to recover the original gauge-fixing term,
-  including its normalization up to a field-independent determinant.
-  Explain why keeping \(h_a\) makes BRST nilpotency off shell.
+  For QED introduce ghosts \(\omega,\omega^*\) and a bosonic auxiliary
+  field \(h\):
+  \[
+    \mathcal L=-\frac14F^2+h\,\partial\cdot A+\frac{\xi}{2}h^2
+      +\omega^*(-\partial^2)\omega
+      +\bar\psi(i\gamma^\mu D_\mu-m)\psi .
+  \]
+  \begin{enumerate}
+    \item[(a)] Integrate over \(h\) in the functional integral and recover
+      the usual covariant-gauge QED Lagrangian, including the
+      field-independent Gaussian factor.
+    \item[(b)] Prove invariance under
+      \[
+        sA_\mu=\partial_\mu\omega,\quad
+        s\psi=-ie\omega\psi,\quad s\bar\psi=ie\bar\psi\omega,\quad
+        s\omega=0,\quad s\omega^*=h,\quad sh=0 .
+      \]
+    \item[(c)] Check \(s^2=0\) separately on every field, keeping careful
+      track of the Grassmann nature of \(\omega\).
+  \end{enumerate}
 
   \SupplementaryExercise{11}{Ghost Number and Its Current}
   {Inspired by Carlo Becchi, Introduction to Gauge Theories, BRST and Ward Identities (1997).}
@@ -225,18 +247,29 @@
   equations, and show that the corresponding charge assigns ghost numbers
   \(+1\) and \(-1\) to \(\omega\) and \(\omega^*\), respectively.
 
-  \SupplementaryExercise{12}{Physical Polarizations as Cohomology}
-  {Inspired by Savdeep Sethi, University of Chicago Physics 445, the BRST material in Problem Set 5 (2021).}
+  \SupplementaryExercise{12}{The Free QED BRST Charge}
+  {Adapted from Savdeep Sethi, University of Chicago Physics 445, Problem Set 5, Problem 1 (2021).}
   {uchicago-physics445-ps5-2021-v2ch15-p12}
-  In the free Abelian theory, determine the action of the BRST charge on
-  one-particle states created by
-  \[
-    a_\mu^\dagger(p),\qquad
-    \omega^\dagger(p),\qquad \omega^{*\dagger}(p).
-  \]
-  At ghost number zero, compute \(\ker Q/\operatorname{im}Q\) for
-  \(p^2=0\) and show that it contains
-  precisely the two transverse photon polarizations.
+  In Lorenz-gauge QED, retain the ghost sector and use
+  \(sA_\mu=\partial_\mu\omega\), \(s\psi=ig\omega\psi\),
+  \(s\omega=0\), and \(s\omega^*=\partial\cdot A\).
+  \begin{enumerate}
+    \item[(a)] Verify BRST invariance and derive a conserved Noether current
+      and charge \(Q\).
+    \item[(b)] Take \(g\to0\), canonically quantize \(A_\mu,\omega,\omega^*\),
+      and express \(Q\) in creation and annihilation operators.
+    \item[(c)] Derive
+      \[
+      [Q,a_\mu]=-p_\mu\omega,\quad
+      [Q,a_\mu^\dagger]=p_\mu\omega^\dagger,\quad
+      \{Q,\omega^*\}=p^\mu a_\mu,\quad
+      \{Q,\omega^{*\dagger}\}=p^\mu a_\mu^\dagger,
+      \]
+      together with
+      \(\{Q,\omega\}=\{Q,\omega^\dagger\}=0\).
+      Use these relations to identify the ghost-number-zero one-particle
+      cohomology.
+  \end{enumerate}
 
   \SupplementaryExercise{13}{The BV Antibracket and Master Equation}
   {Inspired by J. Gomis, J. París, and S. Samuel, Antibracket, Antifields and Gauge-Theory Quantization, Section 4.1 (1995).}

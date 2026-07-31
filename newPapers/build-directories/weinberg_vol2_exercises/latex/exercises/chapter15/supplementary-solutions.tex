@@ -126,160 +126,100 @@
 
   \SupplementarySolution{4}{Gauge Transport and Curvature}
   \begin{enumerate}
-    \item[(a)]
-    Parameterize the path by \(z(s)\), with \(z(0)=y\) and \(z(1)=x\).  The
-    Wilson line solves
-    \[
-      \frac{dW(s,0)}{ds}
-        =i\dot z^\mu A_\mu(z(s))W(s,0),\qquad W(0,0)=1.
-    \]
-    Substitution of the finite transformation of \(A_\mu\) shows that
-    \(U(z(s))W(s,0)U^{-1}(y)\) solves the transformed equation with the same
-    initial condition.  Uniqueness gives
-    \[
-      W_\gamma(x,y)\longrightarrow
-        U(x)W_\gamma(x,y)U^{-1}(y).
-    \]
-    For \(x=y\), cyclicity of the trace therefore makes
-    \(\operatorname{tr}W_\gamma(x,x)\) gauge invariant.  Also,
-    \[
-      \psi^\dagger(x)W_\gamma(x,y)\psi(y)
-        \longrightarrow
-        \psi^\dagger(x)U^\dagger(x)U(x)W_\gamma
-        U^{-1}(y)U(y)\psi(y),
-    \]
-    which equals the original bilocal operator for a unitary
-    representation.
-    \item[(b)]
-    All Abelian connection values commute, so
-    \[
-      W(C)=\exp\left(iq\oint_C A_\mu\,dx^\mu\right).
-    \]
-    If \(C=\partial\Sigma\), Stokes' theorem yields
-    \[
-      W(C)
-        =\exp\left(\frac{iq}{2}
-          \int_\Sigma F_{\mu\nu}\,d\Sigma^{\mu\nu}\right).
-    \]
-    Two spanning surfaces \(\Sigma_1,\Sigma_2\) give the same answer if their
-    union bounds a three-chain in a region where \(dF=0\).  Indeed, their
-    flux difference is \(\int_VdF=0\).  Magnetic sources, excluded points, or
-    nontrivial topology can obstruct this argument.  Quantum mechanically the
-    exponentials can still agree when the flux difference is an integral
-    multiple of \(2\pi/q\), the setting in which flux quantization enters.
-    \item[(c)]
-    For a matrix-valued \(p\)-form \(X\), write
-    \(DX=dX-i(A\wedge X-(-1)^pX\wedge A)\).  With
-    \(F=dA-iA\wedge A\),
-    \[
-      \begin{split}
-      DF
-        &=d(dA-iA\wedge A)-i(A\wedge F-F\wedge A)\\
-        &=-i(dA\wedge A-A\wedge dA)
-          -i(A\wedge dA-dA\wedge A)=0.
-      \end{split}
-    \]
-    The cubic terms cancel as well.  In components this is
-    \(D_\lambda F_{\mu\nu}+D_\mu F_{\nu\lambda}
-    +D_\nu F_{\lambda\mu}=0\).
-    Since \(F'=UFU^{-1}\) and \(D'=UDU^{-1}\), one has
-    \((DF)'=U(DF)U^{-1}\), so the identity is gauge covariant.  In the
-    Abelian limit it is \(\partial_{[\lambda}F_{\mu\nu]}=0\); its purely
-    spatial component is \(\boldsymbol\nabla\cdot\mathbf B=0\), and its
-    component with one time index is
-    \(\boldsymbol\nabla\times\mathbf E+\partial_t\mathbf B=0\), with signs
-    adjusted to the definitions of \(\mathbf E\) and \(\mathbf B\).
+    \item[(a)] Endpoint factors cancel around the quadrangle, so its
+      ordered product transforms by conjugation at the base point.  Applying
+      the short-segment expansion on each edge, including the translated
+      connection, gives
+      \[
+        \mathcal W(x)=1+i\epsilon^2m^\mu n^\nu
+        \bigl(\partial_\mu A_\nu-\partial_\nu A_\mu
+              i[A_\mu,A_\nu]\bigr)+O(\epsilon^3).
+      \]
+      The bracket is \(F_{\mu\nu}\), up to the orientation and covariant
+      derivative conventions.
+    \item[(b)] Commutativity removes path ordering in the Abelian case.
+      Thus, for \(C=\partial\Sigma\),
+      \[
+        U[C]=\exp\left(i\oint_C A\right)
+          =\exp\left(i\int_\Sigma F\right).
+      \]
+      Two surfaces give the same result when their union bounds a region
+      with \(dF=0\); magnetic sources and nontrivial topology are the
+      standard qualifications.
+    \item[(c)] Put
+      \(I(t,s)=\int_s^t d\tau\,\dot y^\mu A_\mu(y(\tau))\).
+      Differentiating \(U=e^{iI}\) gives
+      \[
+        \partial_tU=i\dot y(t)\cdot A(y(t))U,\qquad
+        \partial_sU=-iU\dot y(s)\cdot A(y(s)).
+      \]
+    \item[(d)] The ordered expansion is
+      \[
+        U(t,s)=1+\sum_{r\geq1}i^r
+        \int_{s<\tau_r<\cdots<\tau_1<t}
+        d^r\tau\,A(\tau_1)\cdots A(\tau_r).
+      \]
+      Differentiating the upper boundary inserts \(A(t)\) on the left;
+      differentiating the lower boundary inserts \(A(s)\) on the right
+      with a minus sign.  These are precisely the two endpoint equations.
+    \item[(e)] Let
+      \(U'(t,s)=V(y(t))U(t,s)V^{-1}(y(s))\).  The upper endpoint equation
+      is preserved provided
+      \[
+        A'_\mu=VA_\mu V^{-1}-i(\partial_\mu V)V^{-1}.
+      \]
+      The lower equation yields the same law and the correct right endpoint
+      multiplication.  Hence the complete pair of transport equations is
+      gauge covariant.
   \end{enumerate}
 
-  \SupplementarySolution{5}{Faddeev--Popov Operators and Ghost Vertices}
+  \SupplementarySolution{5}{Nonlinear Lorenz and Axial Gauges}
   \begin{enumerate}
-    \item[(a)]
-    From
-    \(\delta A_\alpha^\mu=\partial^\mu\lambda_\alpha+
-    C_{\alpha\gamma\beta}A_\gamma^\mu\lambda_\beta\),
-    \[
-      \mathcal F_{\alpha x,\beta y}
-        =\delta_{\alpha\beta}\Box_x\delta^4(x-y)
-         +C_{\alpha\gamma\beta}\partial_\mu^x
-          \left[A_\gamma^\mu(x)\delta^4(x-y)\right].
-    \]
-    The first term is \(\mathcal F_0\); the second is
-    \(\mathcal F_1\).  Inserting the operator between
-    \(\omega_\alpha^*\) and \(\omega_\beta\), then integrating by parts,
-    gives
-    \[
-      \mathcal L_{\rm GH}
-        =-\partial_\mu\omega_\alpha^*\partial^\mu\omega_\alpha
-         +C_{\alpha\beta\gamma}
-          (\partial_\mu\omega_\alpha^*)A_\gamma^\mu\omega_\beta .
-    \]
-    The free propagator is the inverse of \(\Box\):
-    \[
-      \Delta_{\alpha\beta}(x,y)
-        =\delta_{\alpha\beta}\int\frac{d^4p}{(2\pi)^4}
-          \frac{e^{ip\cdot(x-y)}}{p^2-i\epsilon}.
-    \]
-    \item[(b)]
-    Since \(\delta A_\mu=\partial_\mu\lambda\),
-    \[
-      \delta f
-        =\left(\Box+\kappa A^\mu\partial_\mu\right)\lambda .
-    \]
-    Thus
-    \[
-      \det\mathcal F
-        \propto\int[d\omega^*][d\omega]\,
-        \exp\left\{i\int d^4x\,
-        \omega^*\bigl(\Box+\kappa A^\mu\partial_\mu\bigr)\omega\right\}.
-    \]
-    The interaction is
-    \(\kappa\omega^*A^\mu\partial_\mu\omega\).  With Fourier convention
-    \(e^{iq\cdot x}\), its action coefficient is
-    \(i\kappa q_\mu\), where \(q\) is the incoming ghost momentum.  Including
-    the usual extra \(i\) for an interaction vertex gives
-    \(-\kappa q_\mu\); both signs reverse together if the opposite Fourier
-    convention is adopted.  The operator depends on \(A_\mu\), so its
-    determinant is not a harmless constant: even an Abelian theory has
-    interacting ghosts in this nonlinear gauge.
-    \item[(c)]
-    The gauge variation is
-    \[
-      \delta f_\alpha=n^\mu(D_\mu\lambda)_\alpha,
-    \]
-    so \(\mathcal F=n\cdot D\) and
-    \[
-      \mathcal L_{\rm GH}
-        =\omega_\alpha^*n\cdot\partial\,\omega_\alpha
-         +C_{\alpha\gamma\beta}\omega_\alpha^*
-          (n\cdot A_\gamma)\omega_\beta.
-    \]
-    On the exact gauge slice \(n\cdot A_\gamma=0\), this becomes the
-    field-independent operator \(n\cdot\partial\).  Its determinant can be
-    absorbed into the normalization, so no ghost vertex remains.
-
-    This decoupling assumes the sharp axial gauge (or a limit that reaches it),
-    boundary conditions for which \(n\cdot\partial\) has no unremoved zero
-    modes, and a consistent prescription for the \(1/(n\cdot p)\) poles.
-    Residual transformations satisfying \(n\cdot\partial\lambda=0\), global
-    Gribov issues, or an incompletely fixed boundary-value problem must be
-    handled separately.
-    \item[(d)]
-    Fourier transformation replaces the derivative of the antighost by
-    \(ip_\mu\), where \(p\) is the incoming antighost momentum.  Thus the
-    vertex contribution in the convention of the chapter is
-    \[
-      i(2\pi)^4\delta^4(p+q+k)\,
-        ip_\mu C_{abc},
-    \]
-    for antighost, ghost, and gauge indices \(a,b,c\), respectively.  It is
-    the antighost momentum, not the ghost or gluon momentum, that appears
-    because the displayed Lagrangian has the derivative on \(\omega_a^*\).
-    Integration by parts moves the derivative and reshuffles the apparently
-    different momentum factors; momentum conservation makes the resulting
-    rules equivalent when all terms are retained.  Ghost variables are
-    Grassmann odd, so cyclically closing a chain of ghost contractions
-    requires an odd permutation.  Every closed ghost loop therefore carries
-    the same extra factor \(-1\) as a closed fermion loop.
+    \item[(a)] The infinitesimal Abelian gauge change gives
+      \[
+        \delta G=(\partial^2+\zeta A^\mu\partial_\mu)\lambda,
+      \]
+      so \(M=\partial^2+\zeta A\cdot\partial\).  Exponentiating
+      \(\det M\) and averaging \(\Omega\) gives
+      \[
+        \mathcal L_{\rm gf+gh}
+        =-\frac1{2\xi}
+          \left(\partial\cdot A+\frac{\zeta}{2}A^2\right)^2
+          \omega^*(\partial^2+\zeta A\cdot\partial)\omega .
+      \]
+      Its quadratic inverse is
+      \[
+        D_{\mu\nu}(p)=\frac{-i}{p^2+i0}
+          \left[\eta_{\mu\nu}-(1-\xi)\frac{p_\mu p_\nu}{p^2}\right],
+        \qquad D_{\rm gh}(p)=\frac{i}{p^2+i0}.
+      \]
+      The nonlinear gauge also produces
+      \(\zeta\omega^*A^\mu\partial_\mu\omega\),
+      \(-\zeta(\partial\cdot A)A^2/(2\xi)\), and
+      \(-\zeta^2(A^2)^2/(8\xi)\).  The field-dependent ghost operator
+      prevents Abelian ghost decoupling.  All three extra vertices vanish
+      when \(\zeta\to0\), restoring the usual covariant gauge.
+    \item[(b)] In Yang--Mills theory
+      \[
+        \delta(n\cdot A)^a=(n\cdot D)^{ab}\lambda^b,
+        \qquad M^{ab}=(n\cdot D)^{ab}.
+      \]
+      Inverting the quadratic kernel gives, in one common metric convention,
+      \[
+        D_{\mu\nu}^{ab}(p)=\frac{-i\delta^{ab}}{p^2+i0}
+        \left[\eta_{\mu\nu}
+          \frac{(\xi p^2+n^2)p_\mu p_\nu}{(p\cdot n)^2}
+          \frac{p_\mu n_\nu+n_\mu p_\nu}{p\cdot n}\right].
+      \]
+      Reversing the sign used for the gauge kinetic operator reverses the
+      last two displayed signs; multiplying by that operator is the
+      convention-independent check.  The ghost inverse is \(n\cdot p\),
+      and its only gauge interaction is proportional to
+      \(C^{abc}\omega_a^*(n\cdot A_b)\omega_c\).  On the sharp slice
+      \(n\cdot A=0\), \(M=n\cdot\partial\) is field independent and the
+      ghosts may be omitted.  One must still fix residual
+      \(n\cdot\partial\lambda=0\) transformations and prescribe the axial
+      poles \(1/(p\cdot n)\).
   \end{enumerate}
 
   \SupplementarySolution{6}{BRST Nilpotency and Gauge-Fermion Fixing}

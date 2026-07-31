@@ -70,44 +70,67 @@ equal for a translationally invariant scalar propagator although the
 field labels remain distinct.
 \end{enumerate}
 
-\SupplementarySolution{2}{A Linear Source and Functional Differentiation and Why an Adiabatic Source Makes No Particles}
+\SupplementarySolution{2}{Particle Production by a Classical Source}
 \begin{enumerate}
 \item
-With \(H_{I,J}(t)=\int d^3x\,J(x)\phi(x)\),
+For \((\Box-m^2)\phi=-J\),
 \[
- Z[J]=\bra{\Omega}T\exp\!\left[-i\int d^4x\,J(x)\phi(x)\right]
- \ket{\Omega}.
+ \phi(x)=\phi_{\rm hom}(x)-\int d^4y\,G_R(x-y)J(y).
 \]
-The linear term vanishes and Wick's theorem gives
-\[
- Z[J]=1+\frac{(-i)^2}{2}\int d^4x\,d^4y\,
- J(x)J(y)D(x-y)+O(J^4),
-\quad D(x-y)=-i\Delta_F(x-y).
-\]
-There are two ways for the derivatives to hit the two sources, so
-\[
- \left.\frac{\delta^2Z}{\delta J(x)\delta J(y)}\right|_{J=0}
- =(-i)^2D(x-y).
-\]
-Multiplication by \(i^2\) recovers the time-ordered two-point function,
-as required by the source-vertex factor \(-iJ\phi\).
 \item
-The first Dyson term is
+Taking \(\phi_{\rm hom}=\phi_{\rm in}\) fixes the solution to contain
+only the specified incoming free modes before the source acts.
+\item
+The residues of \(G_R\) at late time give
 \[
- \bra{\mathbf p}S^{(1)}\ket{\Omega}
- =-\frac{i}{(2\pi)^{3/2}\sqrt{2E_{\mathbf p}}}
- \widetilde J(E_{\mathbf p},\mathbf p),
+ a_{\rm out}(\mathbf p)=a_{\rm in}(\mathbf p)+\alpha(\mathbf p),
+\qquad
+ \alpha(\mathbf p)=\frac{i\widetilde J(E_{\mathbf p},\mathbf p)}
+ {(2\pi)^{3/2}\sqrt{2E_{\mathbf p}}},
 \]
-so only the restriction of \(\widetilde J(q)\) to
-\(q^0=E_{\mathbf p}\), \(q^2=-m^2\), creates a particle.  For an
-adiabatic source \(J_T(t,\mathbf x)=f(t/T)j(\mathbf x)\),
+up to the common Fourier convention.
+\item
 \[
- \widetilde J_T(E,\mathbf p)
- =T\,\widetilde f(ET)\widetilde j(\mathbf p).
+ \lambda=\int d^3p\,|\alpha(\mathbf p)|^2
+ =\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
+ |\widetilde J(E_{\mathbf p},\mathbf p)|^2.
 \]
-If \(f\) is smooth, \(\widetilde f(\omega)\) decreases faster than any
-power.  Since \(E_{\mathbf p}\geq m>0\), this expression tends to zero as
-\(T\to\infty\).  No on-shell Fourier weight remains.
+\item
+The displacement is implemented by
+\[
+ S=e^{iB},\qquad
+ iB=\int d^3p\,[\alpha(\mathbf p)a_{\rm in}^\dagger(\mathbf p)
+ -\alpha(\mathbf p)^*a_{\rm in}(\mathbf p)].
+\]
+\item
+\(S\InKet{0}\) is the coherent state satisfying
+\(a_{\rm in}(\mathbf p)S\InKet{0}=\alpha(\mathbf p)S\InKet{0}\).
+\item
+Because the commutator of the creation and annihilation pieces is
+\(\lambda\),
+\[
+ S=e^{-\lambda/2}
+ \exp\!\left(\int\alpha a_{\rm in}^\dagger\right)
+ \exp\!\left(-\int\alpha^*a_{\rm in}\right).
+\]
+\item
+Hence \(|\OutBra{0}S\InKet{0}|^2=e^{-\lambda}\).
+\item
+For a normalized specified out-state,
+\[
+ \OutBra{\mathbf p_1,\ldots,\mathbf p_n}S\InKet{0}
+ =e^{-\lambda/2}\prod_{r=1}^n\alpha(\mathbf p_r),
+\]
+with the chosen covariant-normalization factors understood.
+\item
+Integrating the squared amplitude over identical-particle phase space
+gives
+\[
+ P_n=e^{-\lambda}\frac{\lambda^n}{n!}.
+\]
+\item
+\(\sum_nP_n=1\) and \(\sum_n nP_n=\lambda\), completing the Poisson
+normalization and mean check.
 \end{enumerate}
 
 \SupplementarySolution{3}{Counting a Four-Point Wick Contraction}

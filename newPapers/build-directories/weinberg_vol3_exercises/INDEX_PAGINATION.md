@@ -10,14 +10,14 @@ The inherited Author and Subject Index entries reproduce Weinberg's **printed-so
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
 | 24 | Historical Introduction | 1–24 | 7–28 / 11–32 | 24 / 28 | 25 / 29 | 27 / 31 | 27 / 31 | 27 / 31 |
 | 25 | Supersymmetry Algebras | 25–54 | 29–68 / 33–72 | 54 / 58 | 54 / 58 | 56 / 60 | 61 / 65 | 68 / 72 |
-| 26 | Supersymmetric Field Theories | 55–112 | 69–134 / 73–138 | 119 / 123 | 120 / 124 | 123 / 127 | 127 / 131 | 133 / 137 |
-| 27 | Supersymmetric Gauge Theories | 113–178 | 135–209 / 139–213 | 189 / 193 | 190 / 194 | 194 / 198 | 198 / 202 | 207 / 211 |
-| 28 | Supersymmetric Versions of the Standard Model | 179–247 | 210–285 / 214–289 | 261 / 265 | 262 / 266 | 265 / 269 | 270 / 274 | 280 / 284 |
-| 29 | Beyond Perturbation Theory | 248–306 | 286–352 / 290–356 | 335 / 339 | 335 / 339 | 337 / 341 | 341 / 345 | 351 / 355 |
-| 30 | Supergraphs | 307–317 | 353–374 / 357–378 | 360 / 364 | 361 / 365 | 362 / 366 | 366 / 370 | 374 / 378 |
-| 31 | Supergravity | 318–381 | 375–449 / 379–453 | 428 / 432 | 429 / 433 | 433 / 437 | 437 / 441 | 447 / 451 |
-| 32 | Supersymmetry Algebras in Higher Dimensions | 382–410 | 450–491 / 454–495 | 471 / 475 | 471 / 475 | 475 / 479 | 479 / 483 | 490 / 494 |
+| 26 | Supersymmetric Field Theories | 55–112 | 69–136 / 73–140 | 119 / 123 | 120 / 124 | 123 / 127 | 127 / 131 | 135 / 139 |
+| 27 | Supersymmetric Gauge Theories | 113–178 | 137–210 / 141–214 | 191 / 195 | 192 / 196 | 196 / 200 | 200 / 204 | 209 / 213 |
+| 28 | Supersymmetric Versions of the Standard Model | 179–247 | 211–287 / 215–291 | 262 / 266 | 263 / 267 | 266 / 270 | 271 / 275 | 281 / 285 |
+| 29 | Beyond Perturbation Theory | 248–306 | 288–354 / 292–358 | 337 / 341 | 337 / 341 | 339 / 343 | 343 / 347 | 353 / 357 |
+| 30 | Supergraphs | 307–317 | 355–376 / 359–380 | 362 / 366 | 363 / 367 | 364 / 368 | 368 / 372 | 376 / 380 |
+| 31 | Supergravity | 318–381 | 377–451 / 381–455 | 430 / 434 | 431 / 435 | 435 / 439 | 439 / 443 | 448 / 452 |
+| 32 | Supersymmetry Algebras in Higher Dimensions | 382–410 | 452–493 / 456–497 | 473 / 477 | 473 / 477 | 477 / 481 | 481 / 485 | 492 / 496 |
 
-Live inherited-index starts: Author Index p. 492 / PDF 496; Subject Index p. 497 / PDF 501.
+Live inherited-index starts: Author Index p. 494 / PDF 498; Subject Index p. 499 / PDF 503.
 
-Completed PDF page count: 504.
+Completed PDF page count: 506.
