@@ -1,0 +1,229 @@
+University of California at San Diego – Department of Physics – Prof. John McGreevy
+                Physics 215B QFT Winter 2025
+                         Assignment 8
+                                           Due 11:59pm Tuesday, March 4, 2025
+
+
+  1. Bubble-chain approximation for bound states.
+     In discussing the form of the spectral density for an operator that creates a
+     massive particle, I mentioned that in addition to the single-particle delta function
+     at s = m2 , and the continuum above s = (2m)2 , there could be delta functions
+     associated with bound states at m2 < s < (2m)2 . Here we’ll get an idea how we
+     might discover such a thing theoretically.
+     For this problem, we’re going to work in D = 2 + 1 dimensions, so that we can
+     avoid the problem of UV divergences. Consider the theory of a single real scalar
+     with action              Z                               
+                                  3    1      µ   1 2 2 g 4
+                       S[φ] = d x        ∂µ φ∂ φ − m φ − φ
+                                       2          2       4!
+     where m, g are real. In this problem we will consider both signs of g, without
+     worrying about questions of the stability of the vacuum (maybe there is a small
+     φ6 term that saves the day but can be ignored here).
+
+      (a) Consider the amplitude M(s) for elastic scattering φφ → φφ, with s = ET2 ,
+          the square of the total center of mass energy. Compute M(s) in the bubble-
+          chain approximation, defined as the following infinite sum of Feynman dia-
+          grams:
+
+
+                                                                          + ···
+
+
+          Do not worry about justifying the validity of the approximation (it is not
+          justified in this theory, though it is in a large-n version of the theory), and
+          do not worry about convergence of the series. You can leave your answer as
+          a Feynman parameter integral.
+      (b) Show, by explicit calculation, that the bubble chain approximation to the
+          scattering amplitude obeys the optical theorem. [In elastic scattering in the
+          center of mass frame in 3d, the element of solid angle dΩ is just an element
+                                               |M|2
+          of ordinary angle dθ, and dσ/dθ = 32πpE   2 where p is the magnitude of the
+                                                    T
+          spatial momentum of either particle.]
+
+
+                                           1
+   (c) The interaction between the φ quanta could result in two of them forming a
+       bound state of mass MB . A signal of such a bound state is the appearance
+       of a pole in M(s) at s = MB2 on the real axis, but below threshold (0 <
+       MB2 < 4m2 ). Find the values of g for which the bubble-chain approximation
+       predicts bound states. [You are not asked to give an analytic expression for
+       MB .]
+
+2. Another consequence of unitarity of the S matrix.
+
+   (a) Show that unitarity of S, S † S = I = SS † , implies that the transition matrix
+       is normal:
+                                       T T † = T †T .                              (1)
+
+   (b) What does this mean for the amplitudes Mαβ (defined as usual by Tαβ =
+       /δ(pα − pβ )Mαβ )?
+   (c) The probability of a transition from α to β is
+
+                          Pα→β = |Sβα |2 = V T δ/(pα − pβ )|Mαβ |2
+
+       which is IR divergent. More useful is the transition rate per unit time per
+       unit volume:
+                                              Pα→β
+                                     Γα→β ≡         .
+                                               VT
+       Show that the the total decay rate of the state α is
+                                   Z
+                              Γα ≡ dβΓα→β = 2ImMαα .
+
+   (d) Consider an ensemble of states pα evolving according to the evolution rule
+                                              Z
+                            ∂t pα = −pα Γα + dβpβ Γβ→α .                       (2)
+               R
+       S[p] ≡ − dαpα ln pα is the Shannon entropy of the distribution. Show that
+
+                                            dS
+                                               ≥0
+                                            dt
+       as a consequence of (1). This is a version of the Boltzmann H-theorem.
+   (e) [Bonus] Notice that we are doing something weird in the previous part by
+       using classical probabilities. This is a special case; more generally, we should
+       describe such an ensemble by a density matrix ραβ . Generalize the result of
+       the previous part appropriately.
+
+                                        2
+3. Abrikosov-Nielsen-Oleson vortex string.
+      Consider the Abelian Higgs model in D = 3 + 1:
+                                       1          1
+                                 Lh ≡ − Fµν F µν + |Dµ φ|2 − V (|φ|)
+                                       4          2
+      where φ is a (complex) scalar field of charge q whose covariant derivative is
+      Dµ φ = (∂µ − iqeAµ ) φ, and let’s take
+                                                        κ
+                                          V (|φ|) =       (|φ|2 − v 2 )2
+                                                        2
+      for some couplings κ, v. Here we are going to do some interesting classical field
+      theory. Set q = 1 for a bit.
+
+       (a) Consider a configuration that is independent of x3 , one of the spatial co-
+           ordinates, and static (independent of time). Show that its energy density
+           (energy per unit length in x3 ) is
+                                 Z                               
+                                     2      1 2  1      2
+                            U= dx             F + |Di φ| + V (|φ|) .
+                                            2 12 2
+
+       (b) [optional, but used crucially below] Consider the special case where κ =
+                    2
+           κ0 = eq2 . Assuming that the integrand falls off sufficiently quickly at
+           large x1,2 , show that
+                                     √                                     √ 2
+                   Z                                                                               
+                         2    1             2   2 2
+                                                     1                2           1         ?
+           Uκ=1 = d x           F12 + κ |φ| − v     + |Di φ + iij Dj φ| + κv F12 − ik` ∂k (φ D` φ) .
+                              2                        4                            2
+
+        (c) The first two terms in the energy density of the previous part are squares and
+            hence manifestly positive, so setting to zero the things being squared will
+            minimize the energy density. Show that the resulting first-order equations
+            (they are called BPS equations after people with those initials, Bogolmonyi,
+            Prasad, Sommerfeld)1
+
+                                   0 = (Di + iij Dj ) φ,       F12 = −|φ|2 + v 2
+
+            are solved by (x1 + ix2 ≡ reiϕ )
+                                                                           a(r) − n
+                                  φ = einϕ f (r), A1 + iA2 = −ieiϕ
+                                                                              r
+            if
+                                                 a
+                                            f 0 = f, a0 = r(f 2 − v 2 )
+                                                 r
+1
+    Let’s set κ = 1 for this discussion; it does not affect the qualitative conclusions.
+
+
+                                                    3
+        with boundary conditions
+
+                            a → 0, f → v + O e−mr , at r → ∞
+                                                 
+                                                                                        (3)
+
+                       a → n + O(r2 ), f → rn (1 + O(r2 )),    at r → 0.
+        (For other values of κ, the story is not as simple, but there is a solution
+        with the same qualitative properties. See for example §3.3 of E. Weinberg,
+        Classical solutions in Quantum Field Theory.)
+   (d) The second BPS equation and (3) imply that all the action (in particular the
+       support of F12 ) is localized near r = 0. Evaluate the magnetic flux through
+                                  R
+       the x1 − x2 plane, Φ ≡ B · da in the vortex configuration labelled by n.
+                                                2
+       Show that the energy density is U = v2 · Φ.
+    (e) Show that the previous result for the flux follows from demanding that the
+        two terms in Di φ cancel at large r so that
+                                               r→∞
+                                          Di φ → 0                                      (4)
+                                                                        R
+        faster than 1/r. Solve (4) for Ai in terms of φ and integrate       d2 xF12 .
+    (f) Argue that a single vortex (string) in the ungauged theory (with global U(1)
+        symmetry)
+                                     L = |∂φ|2 + V (|φ|)
+        does not have finite energy per unit length. By a vortex, I mean a configu-
+                       r→∞
+        ration where φ → veiϕ , where x1 + ix2 = reiϕ .
+    (g) Consider now the case where the scalar field has charge q. (Recall that in a
+        superconductor made by BCS pairing of electrons, the charged field which
+        condenses has electric charge two.) Show that the magnetic flux in the core
+        of the minimal (n = 1) vortex is now (restoring units) hc qe
+                                                                     . This is a real
+        thing that people can measure.
+
+4. BPS conditions from supersymmetry. [bonus!] What’s special about κ =
+   κ0 ? For one thing, it is the boundary between type I and type II superconductors
+   (which are distinguished by the size of the vortex core). More sharply, it means
+   the mass of the scalar equals the mass of the vector, at least classically. Moreover,
+   in the presence of some extra fermionic fields, the model with this coupling has an
+   additional symmetry mixing bosons and fermions, namely supersymmetry. This
+   symmetry underlies the special features we found above. Here is an outline (you
+   can do some parts without doing others) of how this works. The logic in part
+   (c) underlies a lot of the progress in string theory since the mid-1990s. Please do
+   not trust my numerical factors.
+
+                                         4
+(a) Add to Lh a charged fermion Ψ (partner of φ) and a neutral Majorana
+    fermion λ (partner of Aµ ):
+
+                             1
+                         Lf = iΨ̄ /
+                                 DΨ + iλ̄ /
+                                         Dλ + λ̄Ψφ + h.c..
+                             2
+    Consider the transformation rules
+                                                             1
+    δ Aµ = i¯γµ λ, δ Ψ = Dµ φγ µ , δ φ = −i¯Ψ, δ λ = − iσ µν Fµν  + i(|φ|2 − v)
+                                                             2
+    where the transformation parameter  is a Majorana spinor (and a grass-
+    mann variable). Show that (something like this) is a symmetry of L =
+    Lh + Lf . This is N = 1 supersymmetry in D = 4.
+(b) Show that the conserved charges associated with these transformations Qα
+    (they are grassmann objects and spinors, since they generate the transfor-
+    mations, via δ fields = [α Qα + h.c., fields]), satisfy the algebra
+
+                               {Q, Q̄} = 2γ µ Pµ + 2γ µ Σµ                          (5)
+
+    where Pµ is the usual generator of spacetime translations and Σµ is the vortex
+    string charge, which is nonzero in a state with a vortex string stretching in
+    the µ direction. Q̄ ≡ Q† γ 0 as usual.
+(c) If we multiply (5) on the right by γ 0 , we get the positive operator {Qα , Q†β }.
+    This operator annihilates states which satisfy Q |BP Si = 0 for some com-
+    ponents of Q. Such a state is therefore invariant under some subgroup of
+    the superymmetry, and is called a BPS state. Now look at the right hand
+    side of (5)×γ 0 in a configuration where Σ3 = πnv 2 and show that its energy
+    density is E ≥ π|n|v 2 , with the inequality saturated only for BPS states.
+(d) To find BPS configurations, we can simply set to zero the relevant supersym-
+    metry variations of the fields. Since we are going to get rid of the fermion
+    fields anyway, we can set them to zero and consider just the (bosonic) vari-
+    ations of the fermionic fields. Show that this reproduces the BPS equations.
+
+
+
+
+                                       5
+

@@ -452,66 +452,172 @@ action; restricting to traceless generators gives its non-Abelian
 \(SU(N)\) subgroup.
 \end{enumerate}
 
-\SupplementarySolution{6}{Primary and Secondary Constraints in Hamiltonian Dynamics}
+\SupplementarySolution{6}{A Massive Vector Field: Positivity and the Longitudinal Mode}
+Put \(D\equiv\partial_\mu V^\mu\).
 \begin{enumerate}
 \item
-The velocity Hessian is
-\[
- W_{ab}=\frac{\partial^2L}{\partial\dot q_a\partial\dot q_b}
- =\begin{pmatrix}1&0\\0&0\end{pmatrix},
-\]
-so it cannot be inverted.  The momenta are
-\[
- p_1=\dot q_1-q_2,\qquad p_2=0,
-\]
-and \(\chi_1=p_2\simeq0\) is primary.  Solving only the first relation
-gives \(\dot q_1=p_1+q_2\).  The canonical and total Hamiltonians are
-\[
- H_c=\frac12p_1^2+p_1q_2+\frac12\mu^2q_2^2
-     +\frac12\omega^2q_1^2,\qquad
- H_T=H_c+u\,p_2 .
-\]
-The arbitrary multiplier \(u(t)\) represents the velocity not fixed by
-the singular Legendre map.
+\begin{enumerate}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
 \item
-Preservation of the primary constraint gives
+Integrating each quadratic derivative term once by parts gives
 \[
- \dot p_2=\{p_2,H_T\}
- =-(p_1+\mu^2q_2)\simeq0,
+\begin{split}
+ (\partial_\mu V_\nu)(\partial^\mu V^\nu)
+ &\simeq -V_\nu\Box V^\nu,\\
+ (\partial_\mu V_\nu)(\partial^\nu V^\mu)
+ &\simeq -V^\nu\partial_\nu D,\\
+ D^2&\simeq -V^\nu\partial_\nu D,
+\end{split}
 \]
-so \(\chi_2=p_1+\mu^2q_2\simeq0\).  Their constraint matrix has
+where \(\simeq\) denotes equality up to a four-divergence.  Therefore
 \[
- \{\chi_1,\chi_2\}=\{p_2,p_1+\mu^2q_2\}=-\mu^2 ,
+ \boxed{\widetilde a=-a,\qquad
+        \widetilde b=-(b+c)}.
 \]
-which is invertible for \(\mu\ne0\); the pair is second class.  Finally,
-\[
- \dot\chi_2=\{\chi_2,H_T\}
- =-\omega^2q_1+\mu^2u\simeq0
-\]
-fixes \(u=\omega^2q_1/\mu^2\).  No new constraint appears.  Thus the
-Dirac--Bergmann algorithm both discovers the missing restriction and
-determines the previously arbitrary velocity.
 \item
-For \(\chi_1=q_2,\chi_2=p_2\),
+Varying the symmetric quadratic form \((*)\), integrating by parts,
+and dividing by the common factor of two gives
 \[
- C_{AB}=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \boxed{
+ \widetilde a\,\Box V_\nu
+ +\widetilde b\,\partial_\nu D
+ -m^2V_\nu=0.}
+\]
+Its divergence is
+\[
+ (\widetilde a+\widetilde b)\Box D-m^2D=0.
+\]
+\item
+For the Noether calculation it is convenient to use the equivalent
+first-derivative representative
+\[
+ \mathcal L\simeq
+ -\widetilde a(\partial_\mu V_\rho)(\partial^\mu V^\rho)
+ -\widetilde bD^2-m^2V_\rho V^\rho.
+\]
+The derivative of this density is
+\[
+ \frac{\partial\mathcal L}
+ {\partial(\partial_\mu V^\rho)}
+ =-2\widetilde a\,\partial^\mu V_\rho
+  -2\widetilde bD\,\delta^\mu{}_{\rho}.
+\]
+Thus the canonical translation current in the convention of this
+volume is
+\[
+ T^\mu{}_{\nu}
+ =\delta^\mu{}_{\nu}\mathcal L
+ +2\widetilde a\,\partial^\mu V_\rho\partial_\nu V^\rho
+ +2\widetilde bD\,\partial_\nu V^\mu,
+ \qquad \partial_\mu T^\mu{}_{\nu}=0.
+\]
+Writing \(V^\mu=(V^0,\mathbf V)\), the Hamiltonian
+\(H=-\int d^3x\,T^0{}_0\) is
+\[
+\begin{split}
+ H=\int d^3x\Bigl\{&
+ \widetilde a\bigl[
+   \dot V^i\dot V^i+(\partial_iV_j)(\partial_iV_j)
+   -(\partial_iV^0)(\partial_iV^0)\bigr]
+ -(\widetilde a+\widetilde b)(\dot V^0)^2\\
+ &+\widetilde b(\partial_iV^i)^2
+ +m^2\bigl[V^iV^i-(V^0)^2\bigr]\Bigr\}.
+\end{split}
+\]
+Surface terms can of course move derivatives among the displayed
+spatial terms without changing the charge.
+\item
+When \(\widetilde b=0\), the time derivatives of \(V^0\) and
+\(V^i\) occur with opposite signs.  If \(\widetilde a>0\), a
+configuration with only rapidly varying \(V^0\) has arbitrarily
+negative energy; if \(\widetilde a<0\), the same is true for a spatial
+component.  At \(\widetilde a=0\), the mass term
+\(m^2[\mathbf V^2-(V^0)^2]\) is itself indefinite.  Hence no value of
+\(\widetilde a\) makes the energy positive definite.
+\item
+The required relation is
+\[
+ \boxed{\widetilde b=-\widetilde a}.
+\]
+Indeed, up to a total derivative,
+\[
+ \mathcal L=-\frac{\widetilde a}{2}F_{\mu\nu}F^{\mu\nu}
+             -m^2V_\mu V^\mu,
  \qquad
- C^{AB}=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+ F_{\mu\nu}=\partial_\mu V_\nu-\partial_\nu V_\mu.
 \]
-The variables \(q_1,p_1\) have zero Poisson brackets with both
-constraints, so
+Its momenta are
 \[
- \{q_1,p_1\}_{\rm D}=1,\qquad
- \{q_1,q_1\}_{\rm D}=\{p_1,p_1\}_{\rm D}=0.
+ \Pi_i=2\widetilde aF_{0i},\qquad \Pi_0=0.
 \]
-Direct substitution also gives
+Before eliminating \(V^0\), integration by parts in the Hamiltonian
+gives the \(V^0\)-dependent combination
+\(V^0\partial_i\Pi_i-m^2(V^0)^2\).  Its stationary value is
 \[
- \{q_2,F\}_{\rm D}=\{p_2,F\}_{\rm D}=0
+ V^0=\frac{\partial_i\Pi_i}{2m^2},
 \]
-for every \(F\), including
-\(\{q_2,p_2\}_{\rm D}=0\).  Hence the constrained pair can be imposed
-strongly, leaving precisely the ordinary canonical algebra of
-\((q_1,p_1)\).
+and substitution yields
+\[
+ H=\int d^3x\left[
+ \frac{\Pi_i\Pi_i}{4\widetilde a}
+ +\frac{\widetilde a}{2}F_{ij}F_{ij}
+ +m^2V_iV_i
+ +\frac{(\partial_i\Pi_i)^2}{4m^2}
+ \right].
+\]
+This is positive for \(\widetilde a>0\) and \(m^2>0\).  The divergence
+of the field equation simultaneously becomes \(-m^2D=0\), and hence
+\[
+ \partial_\mu V^\mu=0
+\]
+for a massive field.
+\end{enumerate}
+\item
+\begin{enumerate}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+\item
+Substitute \(V^\mu=A^\mu+\partial^\mu\pi\) into \((*)\).  All mixed
+terms vanish after integration by parts because
+\(\partial_\mu A^\mu=0\).  With
+\[
+ \widetilde c\equiv\widetilde a+\widetilde b,
+\]
+the result may be written
+\[
+\begin{split}
+ \mathcal L_A&=\widetilde aA_\nu\Box A^\nu-m^2A_\nu A^\nu,\\
+ \mathcal L_\pi
+ &=\widetilde c(\partial_\nu\pi)\Box(\partial^\nu\pi)
+   -m^2\partial_\nu\pi\partial^\nu\pi\\
+ &\simeq-\widetilde c(\Box\pi)^2+m^2\pi\Box\pi.
+\end{split}
+\]
+The independent equations are therefore
+\[
+ (\widetilde a\Box-m^2)A_\mu=0,
+ \qquad
+ \Box(\widetilde c\Box-m^2)\pi=0.
+\]
+\item
+On \(e^{-ik\cdot x}\), the mostly-plus wave operator acts as
+\(\Box=-k^2\).  The scalar kinetic operator is consequently
+proportional to
+\[
+ k^2(\widetilde c k^2+m^2).
+\]
+Inverting it as a Green function and using partial fractions gives
+\[
+ \frac{i}{k^2(\widetilde c k^2+m^2)}
+ =\frac{i}{m^2}\left(
+   \frac1{k^2}-\frac{\widetilde c}
+   {\widetilde c k^2+m^2}\right),
+\]
+up to the common normalization and the usual pole prescriptions.  This
+is the displayed propagator and specifies
+\(\widetilde c=\widetilde a+\widetilde b\).  For the positive-energy
+choice \(\widetilde b=-\widetilde a\), one has
+\(\widetilde c=0\), so the second pole term vanishes exactly.
+\end{enumerate}
 \end{enumerate}
 
 \SupplementarySolution{7}{Dirac Brackets and the Reduced Poisson Geometry}
@@ -574,65 +680,171 @@ the Dirac correction.  Therefore
 terms that disappear only after restriction.
 \end{enumerate}
 
-\SupplementarySolution{8}{Equation-of-Motion and Boundary Operators}
+\SupplementarySolution{8}{Field Redefinition and Vanishing Scalar Scattering}
 \begin{enumerate}
 \item
-For an action depending on \(\phi\) and its first derivatives,
+Since
 \[
- \delta S=\int d^4x\left[
- \frac{\partial\mathcal L}{\partial\phi}\delta\phi
- +\frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}
-  \partial_\mu\delta\phi\right].
+ \partial_\mu\Phi=(1+2\lambda\phi)\partial_\mu\phi,
 \]
-With \(\delta\phi=\epsilon F\), integration by parts yields
+direct substitution gives
 \[
- \delta S=\epsilon\int d^4x\,
- \frac{\delta S}{\delta\phi(x)}F(x)
- +\epsilon\int d^4x\,\partial_\mu\left[
- \frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}F\right].
+\begin{split}
+ \mathcal L={}&-\frac12(\partial\phi)^2-\frac12m^2\phi^2\\
+ &-2\lambda\phi(\partial\phi)^2-m^2\lambda\phi^3\\
+ &-2\lambda^2\phi^2(\partial\phi)^2
+   -\frac12m^2\lambda^2\phi^4.
+\end{split}
 \]
-The same statement holds for derivative-dependent \(F\); further
-integrations by parts only enlarge the displayed boundary current.
-Thus the bulk shift is proportional to the Euler--Lagrange functional,
-which characterizes a redundant coupling.
+The first line is \(\mathcal L_0\), the second is the cubic interaction
+\(\mathcal L_3\), and the third is the quartic interaction
+\(\mathcal L_4\).  No higher powers occur because the field
+redefinition is quadratic.
 \item
-Take
+Take every momentum at a vertex to be incoming and suppress the common
+factor \((2\pi)^4\delta^4(\sum p_i)\).  The rules are
 \[
- \mathcal L_0=-\frac12(\partial\phi)^2-\frac12m^2\phi^2
-              -\frac{\lambda}{4!}\phi^4 ,
+ \text{propagator:}\qquad
+ \frac{-i}{p^2+m^2-i0},
 \]
-for which
 \[
- \frac{\delta S_0}{\delta\phi}
- =\Box\phi-m^2\phi-\frac{\lambda}{6}\phi^3 .
+ \text{cubic vertex:}\qquad
+ -2i\lambda\sum_{r=1}^{3}(p_r^2+m^2),
 \]
-Suppose the interaction contains
-\(+\epsilon\phi^3(\Box-m^2)\phi\).  Under
-\(\phi\mapsto\phi-\epsilon\phi^3\),
+and
 \[
- \delta\mathcal L_0
- =-\epsilon\phi^3(\Box-m^2)\phi
-  +\frac{\epsilon\lambda}{6}\phi^6
+ \text{quartic vertex:}\qquad
+ -4i\lambda^2\left(\sum_{r=1}^{4}p_r^2+3m^2\right).
 \]
-up to a divergence.  The equation-of-motion operator cancels, while a
-local \(\phi^6\) interaction is induced.  Terms of order
-\(\epsilon^2\) lie beyond this first-order change of variables and must
-be retained only in a calculation at the corresponding higher order.
+For example, the two differentiated slots in
+\(-2\lambda\phi(\partial\phi)^2\) can be assigned to the three
+identical legs in all ways.  Their sum, together with the
+\(-m^2\lambda\phi^3\) term, is
+\[
+ 4i\lambda\sum_{r<s}p_r\cdot p_s-6i\lambda m^2
+ =-2i\lambda\sum_r(p_r^2+m^2),
+\]
+where momentum conservation was used.  The same identical-field
+counting produces the displayed quartic rule.
 \item
-A total divergence,
-\(\Delta\mathcal L=\partial_\mu K^\mu\), changes the action only by a
-boundary integral.  With fixed boundary data it has no bulk effect and
-requires no change of variables.  By contrast,
+Every leading connected graph is of order \(\lambda^2\): there is one
+quartic contact graph and three graphs made from two cubic vertices,
+with the internal line in the \(s\)-, \(t\)-, or \(u\)-channel:
+% The four graphs share one frame: external legs end at (\pm1.42,\pm1.05),
+% leg labels hang off the four corners, and the invisible \path strut fixes a
+% common bounding box so the channel captions line up across the row.  The
+% momentum labels are what distinguish the t- and u-channel graphs, which are
+% otherwise the same topology relabelled.
 \[
- \Delta\mathcal L=F(\phi,\partial\phi)
- \frac{\delta S_0}{\delta\phi}
+\begin{tikzpicture}[x=.58cm,y=.58cm,baseline=-.55ex,
+                    line/.style={line width=.65pt},
+                    vertex/.style={circle,fill,inner sep=1.35pt},
+                    every node/.style={font=\small}]
+ \path (-2.05,-2.35) (2.05,1.45);
+ \coordinate (c) at (0,0);
+ \draw[line] (-1.42,1.05)--(c)--(1.42,1.05);
+ \draw[line] (-1.42,-1.05)--(c)--(1.42,-1.05);
+ \node[vertex] at (c) {};
+ \node[anchor=south east] at (-1.45,1.08) {\(p_1\)};
+ \node[anchor=north east] at (-1.45,-1.08) {\(p_2\)};
+ \node[anchor=south west] at (1.45,1.08) {\(p_3\)};
+ \node[anchor=north west] at (1.45,-1.08) {\(p_4\)};
+ \node at (0,-2.05) {contact};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=.58cm,y=.58cm,baseline=-.55ex,
+                    line/.style={line width=.65pt},
+                    vertex/.style={circle,fill,inner sep=1.35pt},
+                    every node/.style={font=\small}]
+ \path (-2.05,-2.35) (2.05,1.45);
+ \coordinate (a) at (-.52,0); \coordinate (b) at (.52,0);
+ \draw[line] (-1.42,1.05)--(a)--(-1.42,-1.05);
+ \draw[line] (a)--(b);
+ \draw[line] (1.42,1.05)--(b)--(1.42,-1.05);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-1.45,1.08) {\(p_1\)};
+ \node[anchor=north east] at (-1.45,-1.08) {\(p_2\)};
+ \node[anchor=south west] at (1.45,1.08) {\(p_3\)};
+ \node[anchor=north west] at (1.45,-1.08) {\(p_4\)};
+ \node at (0,-2.05) {\(s\)};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=.58cm,y=.58cm,baseline=-.55ex,
+                    line/.style={line width=.65pt},
+                    vertex/.style={circle,fill,inner sep=1.35pt},
+                    every node/.style={font=\small}]
+ \path (-2.05,-2.35) (2.05,1.45);
+ \coordinate (a) at (0,.52); \coordinate (b) at (0,-.52);
+ \draw[line] (-1.42,1.05)--(a)--(1.42,1.05);
+ \draw[line] (a)--(b);
+ \draw[line] (-1.42,-1.05)--(b)--(1.42,-1.05);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-1.45,1.08) {\(p_1\)};
+ \node[anchor=north east] at (-1.45,-1.08) {\(p_2\)};
+ \node[anchor=south west] at (1.45,1.08) {\(p_3\)};
+ \node[anchor=north west] at (1.45,-1.08) {\(p_4\)};
+ \node at (0,-2.05) {\(t\)};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=.58cm,y=.58cm,baseline=-.55ex,
+                    line/.style={line width=.65pt},
+                    vertex/.style={circle,fill,inner sep=1.35pt},
+                    every node/.style={font=\small}]
+ \path (-2.05,-2.35) (2.05,1.45);
+ \coordinate (a) at (0,.52); \coordinate (b) at (0,-.52);
+ \draw[line] (-1.42,1.05)--(a)--(1.42,-1.05);
+ \draw[line] (a)--(b);
+ \draw[line] (-1.42,-1.05)--(b)--(1.42,1.05);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-1.45,1.08) {\(p_1\)};
+ \node[anchor=north east] at (-1.45,-1.08) {\(p_2\)};
+ \node[anchor=south west] at (1.45,1.08) {\(p_3\)};
+ \node[anchor=north west] at (1.45,-1.08) {\(p_4\)};
+ \node at (0,-2.05) {\(u\)};
+\end{tikzpicture}.
 \]
-is generally not itself a divergence off shell.  It vanishes only after
-using the leading equation of motion.  The local redefinition
-\(\phi\mapsto\phi-\epsilon F\) removes it to first order while also
-generating other operators.  Equating the two mechanisms without those
-induced terms would incorrectly treat an on-shell relation as an
-off-shell identity.
+\item
+Let \(p_1,p_2,p_3,p_4\) denote all-incoming external momenta.  Then
+\[
+ \sum_{i=1}^4p_i=0,
+ \qquad p_i^2=-m^2.
+\]
+For
+\(q_s=p_1+p_2\), \(q_t=p_1+p_3\), and
+\(q_u=p_1+p_4\), these relations imply
+\[
+ q_s^2+q_t^2+q_u^2=-4m^2.
+\]
+At either end of an exchange line, the two external inverse
+propagators vanish on shell, so the cubic rule reduces to
+\(-2i\lambda(q_x^2+m^2)\).  The contribution of one channel is
+therefore
+\[
+ \bigl[-2i\lambda(q_x^2+m^2)\bigr]^2
+ \frac{-i}{q_x^2+m^2-i0}
+ =4i\lambda^2(q_x^2+m^2).
+\]
+Summing the three exchange graphs gives
+\[
+ \mathcal A_{\rm exch}
+ =4i\lambda^2(q_s^2+q_t^2+q_u^2+3m^2)
+ =-4i\lambda^2m^2.
+\]
+The on-shell contact rule is
+\[
+ \mathcal A_{\rm contact}
+ =-4i\lambda^2(-4m^2+3m^2)
+ =4i\lambda^2m^2.
+\]
+Consequently
+\[
+ \boxed{\mathcal A_{\rm connected}
+ =\mathcal A_{\rm contact}+\mathcal A_{\rm exch}=0}.
+\]
+The original \(\Phi\) theory is free, so this cancellation is exactly
+what invariance of the on-shell \(S\)-matrix under a local invertible
+field redefinition requires, even though the redefined Lagrangian
+contains nonzero off-shell vertices.
 \end{enumerate}
 
 \SupplementarySolution{9}{Field Redefinitions, External Poles, and Order Bookkeeping}

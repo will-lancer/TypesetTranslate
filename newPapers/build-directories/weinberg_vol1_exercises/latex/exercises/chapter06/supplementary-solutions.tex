@@ -1,137 +1,285 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementarySolution{1}{The Scalar Feynman Propagator and Oriented Charged Lines}
+\SupplementarySolution{1}{Properties of Wightman and Feynman Functions}
 \begin{enumerate}
 \item
-Translation invariance gives
+Use the free complex-scalar expansion supplied in the problem:
 \[
- \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}=F(x-y).
+ \phi(x)=\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[a(\mathbf k)e^{ik\cdot x}
+ +b^\dagger(\mathbf k)e^{-ik\cdot x}\right].
 \]
-For spacelike separation, every proper Lorentz transformation preserves
-the possible time order because spacelike commutativity makes either
-ordering equal.  For timelike separation, proper orthochronous
-transformations preserve the sign of \(x^0-y^0\).  Scalar covariance then
-implies
+Apply \(U_\Lambda\) and use the supplied particle and antiparticle
+oscillator laws.  In the
+annihilation term, for example, this gives
 \[
- F(x-y)=f\bigl((x-y)^2,\operatorname{sgn}(x^0-y^0)\bigr)
+ \int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \sqrt{\frac{\omega_{\Lambda\mathbf k}}{\omega_{\mathbf k}}}\,
+ a(\Lambda\mathbf k)e^{ik\cdot x}.
 \]
-in the timelike region and \(F=f((x-y)^2)\) in the spacelike region.  The
-second argument is precisely the Feynman boundary-value information; it
-is not an additional Lorentz scalar under time-reversing transformations.
+Set \(k'=\Lambda k\).  Invariance of the mass-shell measure,
+\(d^3\mathbf k/\omega_{\mathbf k}=d^3\mathbf k'/\omega_{\mathbf k'}\),
+turns the measure and square-root factor into
+\(d^3\mathbf k'/\sqrt{2\omega_{\mathbf k'}}\).  Lorentz invariance of the
+inner product gives \(k\cdot x=k'\cdot(\Lambda x)\).  The
+antiparticle-creation term works identically, and therefore
+\[
+ U_\Lambda\phi(x)U_\Lambda^\dagger=\phi(\Lambda x).
+\]
+
 \item
-Use the chapter convention
+Translation invariance of the vacuum means
+\(U_y\ket{\Omega}=\ket{\Omega}\), after the vacuum energy has been
+subtracted.  Insert \(U_y^\dagger U_y\) between the factors in the Wightman
+function and choose \(y=-x'\):
 \[
- \Delta_F(z)=\int\frac{d^4q}{(2\pi)^4}
- \frac{e^{iq\cdot z}}{q^2+m^2-i0}.
+ \begin{split}
+ G_+(x,x')
+ &=\bra{\Omega}U_{-x'}^\dagger
+ \bigl(U_{-x'}\phi(x)U_{-x'}^\dagger\bigr)
+ \bigl(U_{-x'}\phi^\dagger(x')U_{-x'}^\dagger\bigr)
+ U_{-x'}\ket{\Omega}\\
+ &=\bra{\Omega}\phi(x-x')\phi^\dagger(0)\ket{\Omega}
+ \equiv G_+(x-x').
+ \end{split}
 \]
-Because \(\partial_\mu e^{iq\cdot z}=iq_\mu e^{iq\cdot z}\),
-\(\Box e^{iq\cdot z}=-q^2e^{iq\cdot z}\).  Consequently
-\[
- (\Box-m^2)\Delta_F(z)
- =-\int\frac{d^4q}{(2\pi)^4}
- \frac{q^2+m^2}{q^2+m^2-i0}e^{iq\cdot z}
- =-\delta^4(z).
-\]
-The infinitesimal remainder vanishes as a distribution with the stated
-boundary value.  Thus the sign is minus, in agreement with
-Eq.~\eqref{eq:6.2.17}; changing the Fourier phase alone would not change
-this result.
+The argument uses only translation covariance of the interacting field, not a
+free-field expansion.
+
 \item
-Write \(E_{\mathbf q}=\sqrt{\mathbf q^2+m^2}\).  Since
+Put \(z=x-x'\).  Scalar covariance and vacuum invariance imply
+\(G_+(z)=G_+(\Lambda z)\).  In addition,
 \[
- q^2+m^2-i0
- =-(q^0-E_{\mathbf q}+i0)(q^0+E_{\mathbf q}-i0),
+ G_+(z)^*
+ =\bra{\Omega}\phi(0)\phi^\dagger(z)\ket{\Omega}
+ =G_+(-z),
 \]
-the positive-energy pole lies just below and the negative-energy pole
-just above the real axis.  The phase is
-\(e^{iq\cdot z}=e^{-iq^0z^0+i\mathbf q\cdot\mathbf z}\).  For \(z^0>0\)
-the contour closes below and selects \(q^0=E_{\mathbf q}-i0\); for
-\(z^0<0\) it closes above and selects \(q^0=-E_{\mathbf q}+i0\).  Hence
+where the final equality is translation invariance.  For timelike \(z\), the
+proper orthochronous Lorentz group has separate future- and past-directed
+orbits.  Define \(G(z^2)\) on the future-directed orbit; the identity above
+then fixes the past-directed value to be \(G^*(z^2)\).  Hence
 \[
- -i\Delta_F(z)=
- \theta(z^0)\Delta_+(z)+\theta(-z^0)\Delta_+(-z),
+ G_+(x,x')=
+ \theta(z^0)G(z^2)+\theta(-z^0)G^*(z^2).
 \]
-which is exactly the time-ordered contraction.
+For spacelike \(z\), for which \(z^2>0\) in the mostly-plus convention, a
+proper Lorentz transformation can map \(z\) to \(-z\).  Lorentz invariance and
+the conjugation identity then give
+\[
+ G(z^2)=G^*(z^2),\qquad z^2>0.
+\]
+
 \item
-The mode expansion contains particle annihilation and antiparticle
-creation in \(\phi\), with the reverse operators in \(\phi^\dagger\).
-The only nonzero time-ordered contraction is therefore
+For a real scalar field, \(\phi^\dagger=\phi\), so time ordering gives
 \[
- \bra{\Omega}T\{\phi(x)\phi^\dagger(y)\}\ket{\Omega}
- =-i\Delta_F(x-y).
+ G_F(x,x')=
+ \theta(z^0)G_+(z)+\theta(-z^0)G_+(-z).
 \]
-Both terms in
-\(\bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}\) have unequal charge and
-vanish.  Thus an internal charged-scalar line joins a \(\phi\) endpoint
-to a \(\phi^\dagger\) endpoint.  Its arrow records charge flow; reversing
-the endpoints replaces \(\Delta_F(x-y)\) by \(\Delta_F(y-x)\), which is
-equal for a translationally invariant scalar propagator although the
-field labels remain distinct.
+If \(z^0>0\), the first term is \(G(z^2)\).  If \(z^0<0\), then \(-z\) is
+future directed, so the second term is also \(G((-z)^2)=G(z^2)\).  Therefore
+\[
+ G_F(x,x')=G\bigl((x-x')^2\bigr),
+\]
+with the same function \(G\) as in the preceding part.
 \end{enumerate}
 
-\SupplementarySolution{2}{Particle Production by a Classical Source}
+\SupplementarySolution{2}{Particle Production by an External Source}
 \begin{enumerate}
 \item
-For \((\Box-m^2)\phi=-J\),
+Varying the action gives
 \[
- \phi(x)=\phi_{\rm hom}(x)-\int d^4y\,G_R(x-y)J(y).
+ (-\Box+m^2)\phi(x)=J(x).
 \]
-\item
-Taking \(\phi_{\rm hom}=\phi_{\rm in}\) fixes the solution to contain
-only the specified incoming free modes before the source acts.
-\item
-The residues of \(G_R\) at late time give
+Let
 \[
- a_{\rm out}(\mathbf p)=a_{\rm in}(\mathbf p)+\alpha(\mathbf p),
-\qquad
- \alpha(\mathbf p)=\frac{i\widetilde J(E_{\mathbf p},\mathbf p)}
- {(2\pi)^{3/2}\sqrt{2E_{\mathbf p}}},
+ \Delta(z)=\int\frac{d^3\mathbf k}{(2\pi)^3\,2\omega_{\mathbf k}}
+ \left(e^{ik\cdot z}-e^{-ik\cdot z}\right),
+ \qquad
+ G_R(z)=\theta(z^0)\Delta(z).
 \]
-up to the common Fourier convention.
-\item
+The free equation annihilates \(\Delta\) away from \(z^0=0\), while
+\(\Delta(0,\mathbf z)=0\) and
+\(\partial_{z^0}\Delta(0,\mathbf z)=-i\delta^3(\mathbf z)\).  It follows
+distributionally that
 \[
- \lambda=\int d^3p\,|\alpha(\mathbf p)|^2
- =\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
- |\widetilde J(E_{\mathbf p},\mathbf p)|^2.
+ (-\Box+m^2)G_R(z)=-i\delta^4(z).
 \]
-\item
-The displacement is implemented by
+Thus
 \[
- S=e^{iB},\qquad
- iB=\int d^3p\,[\alpha(\mathbf p)a_{\rm in}^\dagger(\mathbf p)
- -\alpha(\mathbf p)^*a_{\rm in}(\mathbf p)].
+ \phi(x)=\phi_0(x)+i\int d^4x'\,G_R(x-x')J(x')
 \]
+solves the sourced equation.  The retarded Green function is required: it
+makes the response at \(x\) depend only on source values in its causal past.
+The advanced function would impose future data, while the Feynman function
+implements vacuum time ordering rather than a causal initial-value problem.
+
 \item
-\(S\InKet{0}\) is the coherent state satisfying
-\(a_{\rm in}(\mathbf p)S\InKet{0}=\alpha(\mathbf p)S\InKet{0}\).
-\item
-Because the commutator of the creation and annihilation pieces is
-\(\lambda\),
+At times earlier than the support of \(J\), the retarded integral vanishes.
+The full Heisenberg field must then approach the specified incoming free
+field, so
 \[
- S=e^{-\lambda/2}
- \exp\!\left(\int\alpha a_{\rm in}^\dagger\right)
- \exp\!\left(-\int\alpha^*a_{\rm in}\right).
+ \phi_0(x)=\phi_{\mathrm{in}}(x).
 \]
+Because the source is a c-number, the added response is also a c-number and
+does not alter the canonical commutators.
+
 \item
-Hence \(|\OutBra{0}S\InKet{0}|^2=e^{-\lambda}\).
-\item
-For a normalized specified out-state,
+At a time later than the support of the source, the step function in \(G_R\)
+is one throughout the integral.  Using the mode representation of \(\Delta\)
+and the stated Fourier transform,
 \[
- \OutBra{\mathbf p_1,\ldots,\mathbf p_n}S\InKet{0}
- =e^{-\lambda/2}\prod_{r=1}^n\alpha(\mathbf p_r),
+ \begin{split}
+ i\int d^4x'\,G_R(x-x')J(x')
+ =i\int\frac{d^3\mathbf k}{(2\pi)^3\,2\omega_{\mathbf k}}
+ \left[J(k)e^{ik\cdot x}-J(-k)e^{-ik\cdot x}\right].
+ \end{split}
 \]
-with the chosen covariant-normalization factors understood.
-\item
-Integrating the squared amplitude over identical-particle phase space
-gives
+Comparison with the future mode expansion gives the exact shifts
 \[
- P_n=e^{-\lambda}\frac{\lambda^n}{n!}.
+ \boxed{
+ a_{\mathrm{out}}(\mathbf k)
+ =a_{\mathrm{in}}(\mathbf k)+\frac{iJ(k)}{\sqrt{2\omega_{\mathbf k}}}}
 \]
+and
+\[
+ a_{\mathrm{out}}^\dagger(\mathbf k)
+ =a_{\mathrm{in}}^\dagger(\mathbf k)
+ -\frac{iJ(-k)}{\sqrt{2\omega_{\mathbf k}}}.
+\]
+For a real source, \(J(-k)=J(k)^*\), as required by Hermiticity of the field.
+
 \item
-\(\sum_nP_n=1\) and \(\sum_n nP_n=\lambda\), completing the Poisson
-normalization and mean check.
+With the continuum normalization used in the prompt, the future number
+operator is
+\[
+ N_{\mathrm{out}}=\int\frac{d^3\mathbf k}{(2\pi)^3}
+ a_{\mathrm{out}}^\dagger(\mathbf k)a_{\mathrm{out}}(\mathbf k).
+\]
+In the incoming vacuum, every term containing an incoming annihilator on the
+right or creator on the left vanishes.  The remaining c-number term is
+\[
+ \lambda=\InBra{0}N_{\mathrm{out}}\InKet{0}
+ =\int\frac{d^3\mathbf k}{(2\pi)^3}
+ \frac{J(-k)J(k)}{2\omega_{\mathbf k}}
+ =\int\frac{d^3\mathbf k}{(2\pi)^3}
+ \frac{|J(k)|^2}{2\omega_{\mathbf k}}.
+\]
+
+\item
+Insert the incoming expansion into \(B\):
+\[
+ B=\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[J(-k)a_{\mathrm{in}}(\mathbf k)
+ +J(k)a_{\mathrm{in}}^\dagger(\mathbf k)\right].
+\]
+For real \(J\), this operator is Hermitian, so \(S=e^{iB}\) is unitary.  Since
+\([a_{\mathrm{in}}(\mathbf k),iB]
+=iJ(k)/\sqrt{2\omega_{\mathbf k}}\) is a c-number, all higher nested
+commutators vanish.  Therefore
+\[
+ S^\dagger a_{\mathrm{in}}(\mathbf k)S
+ =e^{-iB}a_{\mathrm{in}}(\mathbf k)e^{iB}
+ =a_{\mathrm{in}}(\mathbf k)
+ +\frac{iJ(k)}{\sqrt{2\omega_{\mathbf k}}}
+ =a_{\mathrm{out}}(\mathbf k).
+\]
+
+\item
+The preceding operator identity is equivalent to
+\[
+ a_{\mathrm{in}}(\mathbf k)S
+ =S a_{\mathrm{out}}(\mathbf k).
+\]
+Consequently \(a_{\mathrm{in}}(\mathbf k)S\OutKet{0}=0\) for every
+\(\mathbf k\); uniqueness of the normalized vacuum fixes the irrelevant
+common phase so that
+\[
+ S\OutKet{0}=\InKet{0}.
+\]
+Taking the adjoint of the oscillator relation also gives
+\(a_{\mathrm{in}}^\dagger S=S a_{\mathrm{out}}^\dagger\).  Acting on the
+normalized multiparticle definitions then yields
+\[
+ S\OutKet{\mathbf k_1,\ldots,\mathbf k_n}
+ =\InKet{\mathbf k_1,\ldots,\mathbf k_n}.
+\]
+Taking the overlap with an incoming bra proves
+\(\OutBra{\beta}\InKet{\alpha}
+=\InBra{\beta}S\InKet{\alpha}\).
+
+\item
+The expansion of \(B\) shows that \(iB=F+G\), with \(F\) and \(G\) exactly as
+defined in the prompt.  Their commutator is a c-number:
+\[
+ \begin{split}
+ [F,G]
+ &=\int\frac{d^3\mathbf k}{(2\pi)^3}
+ \frac{J(k)J(-k)}{2\omega_{\mathbf k}}\\
+ &=\lambda.
+ \end{split}
+\]
+The Baker--Campbell--Hausdorff formula therefore terminates and gives
+\[
+ S=e^{F+G}=e^F e^G e^{-[F,G]/2}
+ =e^F e^G e^{-\lambda/2}.
+\]
+
+\item
+Using the scattering-operator relation from part (f),
+\[
+ \OutBra{0}\InKet{0}=\InBra{0}S\InKet{0}.
+\]
+In the normal-ordered form, \(G\InKet{0}=0\) and
+\(\InBra{0}F=0\), so
+\[
+ \OutBra{0}\InKet{0}=e^{-\lambda/2},
+ \qquad
+ \boxed{P_0=e^{-\lambda}}.
+\]
+
+\item
+The covariantly normalized bra contributes one factor
+\(\sqrt{2\omega_{\mathbf k_i}}a_{\mathrm{in}}(\mathbf k_i)\) for each
+particle.  Since
+\[
+ [a_{\mathrm{in}}(\mathbf k),F]
+ =\frac{iJ(k)}{\sqrt{2\omega_{\mathbf k}}},
+\]
+commuting all annihilators through \(e^F\) cancels the square roots in the
+state normalization and gives
+\[
+ \boxed{
+ \OutBra{\mathbf k_1,\ldots,\mathbf k_n}\InKet{0}
+ =i^nJ(k_1)\cdots J(k_n)e^{-\lambda/2}}.
+\]
+
+\item
+Substitution of the amplitude into the supplied probability formula gives
+\[
+ dP=e^{-\lambda}\prod_{i=1}^n
+ \left[
+ \frac{d^3\mathbf k_i}{(2\pi)^3\,2\omega_{\mathbf k_i}}
+ |J(k_i)|^2
+ \right].
+\]
+Integrating over all unordered \(n\)-particle configurations introduces the
+identical-particle factor \(1/n!\).  Each momentum integral equals
+\(\lambda\), so
+\[
+ \boxed{P_n=e^{-\lambda}\frac{\lambda^n}{n!}}.
+\]
+Indeed \(\sum_{n=0}^\infty P_n=1\), and differentiating the exponential
+generating function gives \(\sum_n nP_n=\lambda\).
 \end{enumerate}
+
+The formula for \(\lambda\) samples \(J(p)\) only at
+\(p^0=\omega_{\mathbf p}\), so only an on-shell source component can create
+particles.  An adiabatically varying source has Fourier support concentrated
+near \(p^0=0\) and therefore produces no massive on-shell quanta.  More
+generally, the calculation exhibits how a time-dependent background makes
+the natural past and future vacua inequivalent, the mechanism underlying many
+particle-production effects in cosmology and black-hole physics.
 
 \SupplementarySolution{3}{Counting a Four-Point Wick Contraction}
 At first order the relevant term is

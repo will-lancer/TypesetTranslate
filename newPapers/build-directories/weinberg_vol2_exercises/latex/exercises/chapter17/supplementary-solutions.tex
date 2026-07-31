@@ -424,225 +424,247 @@
     Grassmann-loop minus sign.
   \end{enumerate}
 
-  \SupplementarySolution{7}{Background Transversality and Coupling Renormalization}
+  \SupplementarySolution{7}{Adjoint Scalars, Gauge Covariance, and BRST Gauge Independence}
   \begin{enumerate}
     \item[(a)]
-    Combining the classical term and its divergence gives
-    \[
-      -\frac14(1+L_A)F_{\mu\nu}[A;g]^2 .
-    \]
-    Put \(A^R=Z_A^{1/2}A\), \(Z_A=1+L_A\).  Since
-    \[
-      F[A;g]=Z_A^{-1/2}
-        F[A^R;gZ_A^{-1/2}],
-    \]
-    the entire expression becomes
-    \[
-      -\frac14F_{\mu\nu}[A^R;gZ_A^{-1/2}]^2 .
-    \]
-    Therefore
-    \[
-      \boxed{g^R=gZ_A^{-1/2},\qquad Z_gZ_A^{1/2}=1.}
-    \]
-    The same relation follows separately from the cubic and quartic terms;
-    they cannot acquire independent counterterms because background gauge
-    invariance packages them with the kinetic term in one \(F^2\).
-    \item[(b)]
-    The Ward identity gives
-    \(q^\mu\Gamma_{\mu\nu}^{\alpha\beta}=0\).  The most general Lorentz
-    tensor depending on one momentum is
-    \(\delta^{\alpha\beta}
-    [A(q^2)\eta_{\mu\nu}+B(q^2)q_\mu q_\nu]\).
-    Transversality sets \(A=-q^2B\), hence
-    \[
-      \boxed{\Gamma_{\mu\nu}^{\alpha\beta}(q)
-        =\delta^{\alpha\beta}
-         (q^2\eta_{\mu\nu}-q_\mu q_\nu)\Pi(q^2).}
-    \]
-    Counterterms and subtractions can be chosen background gauge invariant,
-    so the identity holds for the renormalized functional at every loop
-    order.  It constrains the sum of all diagrams at a given order.  An
-    individual quantum-gauge, seagull, or ghost graph is not itself a
-    background-gauge-invariant functional and need not be transverse.
-  \end{enumerate}
-
-  \SupplementarySolution{8}{Group Theory and the Gauge Beta Function}
-  \begin{enumerate}
-    \item[(a)]
-    Set \(X_1=M_0^{-1}M_1\) and \(X_2=M_0^{-1}M_2\).  Then
-    \[
-      \operatorname{Tr}\ln M
-        =\operatorname{Tr}\ln M_0+
-         \operatorname{Tr}\left[
-         X-\frac12X^2+\frac13X^3-\frac14X^4+\cdots\right],
-      \quad X=X_1+X_2 .
-    \]
-    Counting \(X_j\) as order \(j\), the fourth-order terms are
-    \(-X_2^2/2\), the three orderings of \(X_1X_1X_2/3\), and
-    \(-X_1^4/4\).  Cyclicity makes the three cubic orderings equal, so
-    \[
-      \boxed{\operatorname{Tr}\!\left[
-        -\frac12(M_0^{-1}M_2)^2
-        +(M_0^{-1}M_1)^2M_0^{-1}M_2
-        -\frac14(M_0^{-1}M_1)^4\right].}
-    \]
-    \item[(b)]
-    Write \(C_{\alpha\beta\gamma}=gf_{\alpha\beta\gamma}\) and
-    \(t_\alpha=gT_\alpha\), with
-    \[
-      f_{\gamma\alpha\beta}f_{\delta\alpha\beta}
-        =C_A\delta_{\gamma\delta},\qquad
-      {\rm tr}_r(T_\gamma T_\delta)=T(r)\delta_{\gamma\delta}.
-    \]
-    The first chapter definition gives \(C_1=C_A\).  With the fermion-trace
-    normalization used in Eq.~\eqref{eq:17.5.34}, the second gives
-    \[
-      C_2=\sum_{\text{Dirac }r}T(r).
-    \]
-    (The anticommutator normalization is already included in that equation
-    and must not be inserted a second time.)
-
-    For \(SU(N)\),
-    \(C_A=N\) and \(T(\boldsymbol N)=1/2\).  Therefore
-    \[
-      \boxed{C_1=N,\qquad C_2=\frac{n_f}{2},}
-    \]
-    as in Eq.~\eqref{eq:17.5.35}.
-    \item[(c)]
-    The color trace of a two-vertex loop in representation \(r\) is
-    \[
-      {\rm tr}_r(T^aT^b)=T(r)\delta^{ab}.
-    \]
-    Independent fields have independent Gaussian determinants, so their
-    logarithms and hence their indices add:
-    \[
-      C_2^{\rm Dirac}=\sum_{\text{Dirac }r}n_rT(r),\qquad
-      C_s=\sum_{\text{complex }r}n_rT(r).
-    \]
-    For \(SU(N)\),
-    \[
-      T(\boldsymbol N)=\frac12,\qquad T({\rm adj})=N.
-    \]
-    Thus \(n_F\) fundamental and \(n_A\) adjoint multiplets have total index
-    \(n_F/2+n_AN\), with separate sums for fermions and scalars when their
-    spin coefficients are applied.
-    \item[(d)]
     Write
     \[
-      \Delta_0=-\partial^2+V_1+V_2,\qquad
-      V_1=-g\bigl(2A^\mu\partial_\mu+\partial_\mu A^\mu\bigr),\qquad
-      V_2=-g^2A_\mu A^\mu ,
+      A'_\mu=UA_\mu U^\dagger+\frac{i}{g}U\partial_\mu U^\dagger,
+      \qquad \phi'=U\phi U^\dagger.
     \]
-    with adjoint matrices understood.  The quadratic trace--log is
+    Expanding \(D'_\mu\phi'\) and using
+    \(\partial_\mu U^\dagger=-U^\dagger(\partial_\mu U)U^\dagger\), the
+    two terms containing \(\partial_\mu U\) cancel, leaving
     \[
-      \operatorname{Tr}(\Delta_{00}^{-1}V_2)
-        -\frac12\operatorname{Tr}
-         (\Delta_{00}^{-1}V_1\Delta_{00}^{-1}V_1).
+      \boxed{D'_\mu\phi'=U(D_\mu\phi)U^\dagger.}
     \]
-    The first term is the seagull and the second is the bubble.  Their
-    sum has logarithmic part
+    Acting twice and antisymmetrizing gives
     \[
-      \operatorname{Tr}\ln\Delta_0\big|_{\log}
-        =\frac{C_A}{3(4\pi)^2}
-         \int\frac{d^4q}{(2\pi)^4}\,
-         A_\mu^a(-q)A_\nu^a(q)
-         (q^\mu q^\nu-q^2\eta^{\mu\nu})
-         \ln\frac{\Lambda^2}{-q^2},
+    \begin{split}
+      [D_\mu,D_\nu]\phi
+       &=-ig[\partial_\mu A_\nu-\partial_\nu A_\mu,\phi]
+         -g^2\bigl([A_\mu,[A_\nu,\phi]]
+                  -[A_\nu,[A_\mu,\phi]]\bigr)\\
+       &=-ig[F_{\mu\nu},\phi],
+    \end{split}
     \]
-    up to the convention-dependent overall continuation factor.  In a
-    momentum routing before the seagull is added, the bubble contains
+    where the Jacobi identity was used in the last step.  Covariance of the
+    left-hand side implies
     \[
-      g^2C_A\delta^{ab}
-        \int\frac{d^dk}{(2\pi)^d}
-        \frac{(2k+q)_\mu(2k+q)_\nu}{k^2(k+q)^2};
+      [F'_{\mu\nu},U\phi U^\dagger]
+        =[UF_{\mu\nu}U^\dagger,U\phi U^\dagger]
     \]
-    Feynman parametrization and symmetric integration turn the sum into the
-    transverse tensor displayed above.  Finally, the Grassmann integral
-    produces \(\det\Delta_0\), so the effective action contains
-    \(-\operatorname{Tr}\ln\Delta_0\), the opposite sign from a complex
-    commuting scalar determinant.
-    \item[(e)]
-    The one-loop pure-gauge functional is
+    for arbitrary adjoint \(\phi\), hence
+    \(F'_{\mu\nu}=UF_{\mu\nu}U^\dagger\).  Cyclicity of the trace now makes
+    \(\operatorname{Tr}F^2\), \(\operatorname{Tr}(D\phi)^2\), and
+    \(\operatorname{Tr}\phi^3\) separately invariant.
+    \item[(b)]
+    The commutator and anticommutator give
     \[
-      \Gamma^{(1)}_{\rm gauge}
-        =\frac12\operatorname{Tr}\ln\Delta_1
-         -\operatorname{Tr}\ln\Delta_0 .
+      T_aT_b=\frac1{2N}\delta_{ab}\mathbf1
+        +\frac12(d_{ab}{}^c+if_{ab}{}^c)T_c,
     \]
-    If the spin term in \(\Delta_1\) is temporarily omitted, the four
-    Lorentz components give
-    \(\operatorname{Tr}\ln\Delta_1=4\operatorname{Tr}\ln\Delta_0\).
-    The remaining
-    \(-2\,{\rm ad}(F_{\mu\nu})\) may be expanded to second order; its
-    linear trace vanishes by antisymmetry, while the quadratic trace is
-    reduced with
+    and therefore
     \[
-      \int d^d\ell\,\ell_\mu\ell_\nu F(\ell^2)
-        =\frac{\eta_{\mu\nu}}d
-         \int d^d\ell\,\ell^2F(\ell^2).
+      \operatorname{Tr}(T_aT_bT_c)
+        =\frac14(d_{abc}+if_{abc}).
     \]
-    In units of
-    \(C_A(4\pi)^{-2}
-    (q^\mu q^\nu-q^2\eta^{\mu\nu})\ln(\Lambda^2/(-q^2))\), the ghost
-    determinant supplies \(-1/3\), the four covariant vector components supply
-    \(\tfrac12(4/3)\), and the spin coupling supplies
-    \(\tfrac12(-8)\).  Hence
+    Since \(\phi^a\phi^b\phi^c\) is totally symmetric, its contraction with
+    the antisymmetric \(f_{abc}\) vanishes.  Thus the entire interaction is
     \[
-      -\frac13+\frac12\left(\frac43-8\right)=-\frac{11}{3}.
+      \boxed{-\frac1{3!}\operatorname{Tr}(\phi^3)
+        =-\frac1{24}d_{abc}\phi^a\phi^b\phi^c.}
     \]
-    This is the logarithmic coefficient in the inverse coupling.  Define
-    the beta-function coefficient by
-    \[
-      \beta(g)=-\frac{b_0g^3}{16\pi^2}+\cdots .
-    \]
-    The opposite sign then gives
-    \[
-      \boxed{b_0^{\rm gauge}=\frac{11}{3}C_A.}
-    \]
-    Equivalently, in dimensional regularization the pole may be written
-    \[
-      \Pi_{\mu\nu}^{ab}\big|_{\rm gauge+ghost}
-        =\delta^{ab}(q^2\eta_{\mu\nu}-q_\mu q_\nu)
-         \frac{g^2}{16\pi^2\epsilon}\frac{11}{3}C_A ,
-    \]
-    modulo the overall pole-sign convention.  The split between the three
-    displayed pieces depends on gauge and convention; the sum does not.
-    \item[(f)]
-    Adding the independent determinants gives
-    \[
-      \boxed{b_0=\frac{11}{3}C_A
-        -\frac43\sum_{\rm Dirac}T(r)
-        -\frac13\sum_{\rm complex}T(r)
-        -\frac16\sum_{\rm real}T(r).}
-    \]
-    For \(SU(N)\), a fundamental has \(T=1/2\) and an adjoint has
-    \(T=N\).  Hence the matter content specified in the question gives
-    \[
-      \boxed{b_0=\frac{11}{3}N-\frac23n_f
-        -\frac16n_s-\frac16Nn_{\rm adj}.}
-    \]
-    All multiplicities count complete multiplets.  A complex adjoint scalar
-    would count as two real adjoint scalars.
-    \item[(g)]
-    The condition is
-    \[
-      \boxed{\frac{11}{3}N-\frac23n_f-\frac16n_s
-        -\frac16Nn_{\rm adj}>0,}
-    \]
-    or \(4n_f+n_s+Nn_{\rm adj}<22N\).  With scalars absent,
-    \(n_f<11N/2\).  Thus the largest allowed integer is
-    \[
-      n_f^{\max}=
-      \begin{cases}
-        \lfloor 11N/2\rfloor,&11N/2\notin\mathbb Z,\\
-        11N/2-1,&11N/2\in\mathbb Z.
-      \end{cases}
-    \]
-    Matter polarization screens the charge and lowers \(b_0\).  Gauge-field
-    self-interactions and their ghosts produce the non-Abelian
-    antiscreening term \(11N/3\).  Asymptotic freedom persists only when the
-    latter wins.
+    This also shows explicitly that it vanishes for \(SU(2)\), for which
+    \(d_{abc}=0\).
+    \item[(c)]
+    \begin{enumerate}
+      \item[(i)] Put \(U=1+ig\vartheta\omega\), where \(\vartheta\) is a
+      constant Grassmann-odd parameter.  The coefficient of \(\vartheta\)
+      in the finite transformations is
+      \[
+        \boxed{sA_\mu=D_\mu\omega
+          =\partial_\mu\omega-ig[A_\mu,\omega],\qquad
+        s\phi=ig[\omega,\phi].}
+      \]
+      Together with \(s\omega=ig\omega^2\), these transformations square to
+      zero.  For example, the graded Leibniz rule gives
+      \[
+      \begin{split}
+        s^2\phi
+          &=ig\bigl([s\omega,\phi]-\{\omega,s\phi\}\bigr)\\
+          &=-g^2[\omega^2,\phi]
+            +g^2\{\omega,[\omega,\phi]\}=0,
+      \end{split}
+      \]
+      because \(\{\omega,[\omega,\phi]\}=[\omega^2,\phi]\).  The
+      calculation for \(A_\mu\) is the covariant-derivative version of the
+      same identity.
+      \item[(ii)] Gauge invariance gives \(s\int\mathcal L=0\).  Nilpotence
+      gives \(s(s\Psi)=0\), so
+      \[
+        \boxed{sS_\Psi=0.}
+      \]
+      This statement is off shell because the auxiliary field satisfies
+      \(s\omega^*=-h\) and \(sh=0\).
+      \item[(iii)] For a product \({\cal O}\) of gauge-invariant operators,
+      \(s{\cal O}=0\).  Differentiating its normalized expectation value
+      under \(\Psi\to\Psi+\lambda\delta\Psi\) yields
+      \[
+        \frac{d}{d\lambda}\langle{\cal O}\rangle_\lambda\Big|_{0}
+        =i\bigl(\langle{\cal O}\,s\delta\Psi\rangle
+          -\langle{\cal O}\rangle\langle s\delta\Psi\rangle\bigr).
+      \]
+      BRST invariance of the measure implies \(\langle sX\rangle=0\).
+      Taking \(X=\delta\Psi\) kills the second term, while
+      \(s({\cal O}\delta\Psi)=(-1)^{|{\cal O}|}{\cal O}s\delta\Psi\)
+      kills the first.  Hence the derivative vanishes.  A BRST anomaly or
+      a nonzero boundary term in field space is precisely what would spoil
+      the conclusion.
+    \end{enumerate}
   \end{enumerate}
 
+  \SupplementarySolution{8}{Fundamental and Adjoint Matter in a Gluon Self-Energy}
+  \begin{enumerate}
+    \item[(a)]
+    Direct substitution of
+    \[
+      A'_\mu=UA_\mu U^\dagger+\frac{i}{g}U\partial_\mu U^\dagger
+    \]
+    into the definition of \(F_{\mu\nu}\) cancels all terms with two
+    derivatives of \(U\), as well as the cross terms with one derivative.
+    The result is
+    \[
+      \boxed{F'_{\mu\nu}=UF_{\mu\nu}U^\dagger.}
+    \]
+    For \(U=1+i\alpha^cT_c+O(\alpha^2)\),
+    \[
+      \delta F_{\mu\nu}
+       =i[\alpha^cT_c,F_{\mu\nu}^bT_b]
+       =f_{bc}{}^aF_{\mu\nu}^b\alpha^cT_a,
+    \]
+    where
+    \[
+      \boxed{[T_b,T_c]=if_{bc}{}^aT_a.}
+    \]
+    Hence \(\delta F_{\mu\nu}^a=f_{bc}{}^aF_{\mu\nu}^b\alpha^c\), exactly
+    as stated.  Raising or lowering adjoint indices with \(\delta_{ab}\)
+    makes \(f_{abc}\) totally antisymmetric.
+    \item[(b)]
+    With \(\operatorname{Tr}(T_aT_b)=\delta_{ab}/2\), the source coupling is
+    \(J_a^\mu A_\mu^a=2\operatorname{Tr}(J^\mu A_\mu)\).  Its homogeneous
+    part is invariant only when
+    \[
+      \boxed{J^\mu\longmapsto UJ^\mu U^\dagger.}
+    \]
+    More concretely, define
+    \[
+      D_\mu\psi=(\partial_\mu-igA_\mu^aT_a)\psi .
+    \]
+    The inhomogeneous term in \(A'_\mu\) gives
+    \(D'_\mu\psi'=U D_\mu\psi\), so the invariant fermion Lagrangian is
+    \(-\overline\psi(\gamma^\mu D_\mu+m)\psi\).  Expanding it and comparing
+    with \(J_a^\mu A_\mu^a\) gives
+    \[
+      \boxed{J_a^\mu=ig\,\overline\psi\gamma^\mu T_a\psi.}
+    \]
+    The factor \(i\) is a consequence of the volume's mostly-plus gamma
+    convention; converting back to the source's mostly-minus matrices
+    yields the familiar \(g\overline\psi\Gamma^\mu T_a\psi\).
+    The bilinear transforms in the adjoint because
+    \(\overline\psi\mapsto\overline\psi U^\dagger\).
+    \item[(c)]
+    Infinitesimally,
+    \[
+      \delta\Psi=i[\alpha^aT_a,\Psi^bT_b]
+        =f_{bc}{}^a\Psi^b\alpha^cT_a,
+      \qquad
+      \boxed{\delta\Psi^a=f_{bc}{}^a\Psi^b\alpha^c.}
+    \]
+    The adjoint covariant derivative and its transformation are
+    \[
+      D_\mu\Psi=\partial_\mu\Psi-ig[A_\mu,\Psi],
+      \qquad D'_\mu\Psi'=U(D_\mu\Psi)U^\dagger.
+    \]
+    In the trace normalization used in the question, one gauge-invariant
+    Lagrangian is therefore
+    \[
+      \boxed{\mathcal L_{\rm adj}
+       =-\frac14\operatorname{Tr}(F_{\mu\nu}F^{\mu\nu})
+        -\operatorname{Tr}\!\left[
+          \overline\Psi(\gamma^\mu D_\mu+m)\Psi\right].}
+    \]
+    Overall trace normalizations can of course be absorbed into the
+    corresponding coefficients without changing the gauge-invariance
+    argument.
+    \item[(d)]
+    The required graph list is
+    \begin{center}
+    % The tadpole loop is an explicit closed Bezier.  Drawn as
+    % "to[out=110,in=70,looseness=5] (v)" it starts and ends at the same
+    % point, so the |to| path computes a zero-length chord, divides by it and
+    % aborts the picture with "Dimension too large".  Loop arrows are placed
+    % mid-arc so that no arrowhead lands on a gluon attachment point, and each
+    % scope carries vertex blobs.
+    \begin{tikzpicture}[scale=0.8,
+      gluon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=4pt},thick},
+      flow/.style={thick,postaction={decorate},decoration={markings,
+        mark=at position 0.5 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}},
+      every node/.style={font=\scriptsize}]
+      \begin{scope}[shift={(0,1.25)}]
+        \draw[gluon] (-1,0)--(1,0); \node at (0,-.9) {tree};
+      \end{scope}
+      \begin{scope}[shift={(3,1.25)}]
+        \coordinate (l) at (-.55,0); \coordinate (r) at (.55,0);
+        \draw[gluon] (-1.25,0)--(l); \draw[gluon] (r)--(1.25,0);
+        \draw[flow] (l) arc (180:0:.55);
+        \draw[flow] (r) arc (0:-180:.55);
+        \fill (l) circle (1.4pt); \fill (r) circle (1.4pt);
+        \node at (0,-.9) {fermion bubble};
+      \end{scope}
+      \begin{scope}[shift={(6,1.25)}]
+        \coordinate (l) at (-.55,0); \coordinate (r) at (.55,0);
+        \draw[gluon] (-1.25,0)--(l); \draw[gluon] (r)--(1.25,0);
+        \draw[flow,dashed] (l) arc (180:0:.55);
+        \draw[flow,dashed] (r) arc (0:-180:.55);
+        \fill (l) circle (1.4pt); \fill (r) circle (1.4pt);
+        \node at (0,-.9) {ghost bubble};
+      \end{scope}
+      \begin{scope}[shift={(1.5,-1.25)}]
+        \coordinate (l) at (-.55,0); \coordinate (r) at (.55,0);
+        \draw[gluon] (-1.25,0)--(l); \draw[gluon] (r)--(1.25,0);
+        \draw[gluon] (l) arc (180:0:.55);
+        \draw[gluon] (r) arc (0:-180:.55);
+        \fill (l) circle (1.4pt); \fill (r) circle (1.4pt);
+        \node at (0,-.9) {gluon bubble};
+      \end{scope}
+      \begin{scope}[shift={(4.8,-1.25)}]
+        \coordinate (v) at (0,0);
+        \draw[gluon] (-1.25,0)--(v); \draw[gluon] (v)--(1.25,0);
+        \draw[gluon] (v) .. controls (-.58,.32) and (-.58,.98) .. (0,1.06)
+                          .. controls (.58,.98) and (.58,.32) .. (v);
+        \fill (v) circle (1.4pt); \node at (0,-.9) {four-gluon tadpole};
+      \end{scope}
+    \end{tikzpicture}
+    \end{center}
+    The fermion graph has color trace
+    \[
+      \operatorname{tr}_r(T_aT_b)=T(r)\delta_{ab}.
+    \]
+    All pure-gauge and ghost graphs are unchanged when the matter
+    representation changes.  For \(SU(N)\),
+    \[
+      T(\boldsymbol N)=\frac12,\qquad
+      T(\mathrm{adj})=C_A=N.
+    \]
+    Thus one adjoint Dirac fermion multiplies the fermion-loop contribution
+    by
+    \[
+      \boxed{\frac{T(\mathrm{adj})}{T(\boldsymbol N)}=2N}
+    \]
+    relative to one fundamental Dirac fermion.  An adjoint Majorana fermion
+    has half the Dirac multiplicity.
+  \end{enumerate}
   \SupplementarySolution{9}{A Complex Scalar in the Gauge Beta Function}
   Expanding the covariant kinetic term gives
   \[
@@ -706,26 +728,166 @@
   has half as many independent fields and therefore contributes half this
   amount.
 
-  \SupplementarySolution{10}{From Counterterms to Asymptotic Freedom}
-  At fixed \(g\) and \(\Lambda\), differentiate the stated relation:
+  \SupplementarySolution{10}{The One-Loop Three-Gluon Counterterm}
+  Put \(p+q+r=0\), and abbreviate the tree tensor by
   \[
-    \boxed{\beta(g_R)\equiv\mu\frac{dg_R}{d\mu}
-      =-\frac{b_0}{16\pi^2}g_R^3+O(g_R^5).}
+    {\cal V}_{\mu\nu\rho}^{abc}(p,q,r)
+      =g f^{abc}V_{\mu\nu\rho}(p,q,r),\qquad
+    h\equiv\frac{g^2}{16\pi^2\epsilon}.
   \]
-  To this accuracy,
-  \(d(1/g^2)/d\ln\mu=b_0/(8\pi^2)\), and hence
+  It is useful first to make the graph calculation explicit.  Apart from
+  the common continuation factor, the two fermion orientations give
   \[
-    \boxed{\frac1{g^2(\mu_2)}
-      =\frac1{g^2(\mu_1)}
-       +\frac{b_0}{8\pi^2}\ln\frac{\mu_2}{\mu_1}.}
+  \begin{split}
+    \Gamma_{\!F}^{abc}={}&-n_Fg^3\mu^{2\epsilon}
+      \int\frac{d^d\ell}{(2\pi)^d}\,
+      \frac{\operatorname{tr}_{D}\!\left[
+        \gamma_\mu\slashed\ell\gamma_\nu(\slashed\ell+\slashed q)
+        \gamma_\rho(\slashed\ell-\slashed p)\right]}
+      {\ell^2(\ell+q)^2(\ell-p)^2}\,
+      \operatorname{tr}_r(T^aT^bT^c)\\
+    &+\bigl[(b,\nu,q)\leftrightarrow(c,\rho,r)\bigr].
+  \end{split}
   \]
-  For \(b_0>0\), the right-hand side grows with energy, so the coupling
-  decreases logarithmically.  The integration constant can be written
+  The leading cubic power of \(\ell\) is odd and integrates to zero; the
+  ultraviolet pole comes from the terms linear in the external momenta.
+  The difference of the two color orderings is
   \[
-    \boxed{\Lambda_{\rm RG}
-      =\mu\exp\!\left[-\frac{8\pi^2}{b_0g^2(\mu)}\right],}
+    \operatorname{tr}_r(T^aT^bT^c)
+      -\operatorname{tr}_r(T^aT^cT^b)
+      =iT(r)f^{bca}.
   \]
-  which is independent of \(\mu\) at one loop.
+  This both removes the symmetric trace and produces the tree color
+  tensor.  The initial minus sign is the closed-fermion-loop sign.
+
+  For the two ghost orientations one may route the three denominators as
+  \(k_1=\ell\), \(k_2=\ell+q\), and \(k_3=\ell-p\).  A representative
+  orientation is
+  \[
+    \Gamma_{\rm gh}^{abc}
+      =-g^3\mu^{2\epsilon}
+       f^{ade}f^{bef}f^{cfd}
+       \int\frac{d^d\ell}{(2\pi)^d}\,
+       \frac{(k_1)_\mu(k_2)_\nu(k_3)_\rho}
+            {k_1^2k_2^2k_3^2},
+  \]
+  and the second is obtained by reversing the ghost flow.  Here too the
+  overall minus sign is the closed-Grassmann-loop sign.
+
+  To display the remaining four graphs compactly, let
+  \(W_{\mu\nu\rho\sigma}^{abcd}\) denote the complete color--Lorentz tensor
+  inside the square brackets of the four-gluon rule in the question.  The
+  gluon triangle is
+  \[
+  \begin{split}
+    \Gamma_{\triangle}^{abc}
+     ={}&g^3\mu^{2\epsilon}
+       f^{ade}f^{bef}f^{cfd}
+       \int\frac{d^d\ell}{(2\pi)^d}\,
+       \frac{{\cal N}_{\mu\nu\rho}}{k_1^2k_2^2k_3^2},\\
+    {\cal N}_{\mu\nu\rho}={}&
+       V_{\mu\alpha\beta}(p,-k_2,k_1)
+       V_{\nu\gamma\alpha'}(q,-k_3,k_2)\\
+      &{}\times V_{\rho\beta'\gamma'}(r,-k_1,k_3)
+       \eta^{\alpha\alpha'}\eta^{\beta\beta'}
+       \eta^{\gamma\gamma'}.
+  \end{split}
+  \]
+  A representative swordfish, with external legs \(a,b\) on the
+  four-gluon vertex and \(c\) on the three-gluon vertex, is
+  \[
+    \Gamma_{{\rm sf},(ab)|c}
+      =\frac12g^3\mu^{2\epsilon}
+       \int\frac{d^d\ell}{(2\pi)^d}\,
+       \frac{
+         W_{\mu\nu\alpha\beta}^{abde}
+         f^{dec}V_{\alpha'\beta'\rho}
+            (-\ell,\ell+r,-r)
+         \eta^{\alpha\alpha'}\eta^{\beta\beta'}}
+       {\ell^2(\ell+r)^2}.
+  \]
+  The other two graphs are the cyclic relabelings
+  \((ab)|c\to(bc)|a\to(ca)|b\).  The factor \(1/2\) in each expression is
+  essential: exchanging the two indistinguishable internal gluon lines is
+  an automorphism of the graph.
+
+  Feynman parametrization reduces all four expressions to the pole
+  integrals
+  \[
+  \begin{aligned}
+    \mu^{2\epsilon}\int\frac{d^dL}{(2\pi)^d}
+       \frac1{(L^2+\Delta-i0)^2}
+       &=\frac{i}{16\pi^2\epsilon}+O(1),\\
+    \mu^{2\epsilon}\int\frac{d^dL}{(2\pi)^d}
+       \frac{L_\alpha L_\beta}{(L^2+\Delta-i0)^3}
+       &=\frac{i\eta_{\alpha\beta}}{64\pi^2\epsilon}+O(1).
+  \end{aligned}
+  \]
+  In the second formula we used
+  \(L_\alpha L_\beta\mapsto\eta_{\alpha\beta}L^2/d\).
+  The color reductions needed in addition to the fermion trace are
+  \[
+    f^{ade}f^{bde}=C_A\delta^{ab},\qquad
+    f^{ade}f^{bef}f^{cfd}=\frac12C_Af^{abc},
+  \]
+  together with the Jacobi identity.
+
+  The Lorentz reduction is best audited in Bose-symmetric graph families:
+  the two orientations in each directed loop and the three cyclic
+  swordfish graphs must be summed before comparing with the full tree
+  tensor.  Define \(k_{\cal G}\) by
+  \[
+    \Gamma_{\cal G}^{\rm pole}
+      =-h\,k_{\cal G}\,{\cal V}_{\mu\nu\rho}^{abc},
+    \qquad
+    \delta Z_{1,3g}^{({\cal G})}=h\,k_{\cal G}.
+  \]
+  Direct contraction of the numerators above gives
+  \[
+  \begin{array}{c|c}
+    \text{Bose-symmetric graph family}&k_{\cal G}\\ \hline
+    \text{two fermion orientations}
+      &-\dfrac43\,n_FT(r)\\[3pt]
+    \text{two ghost orientations}
+      &\dfrac1{24}C_A\\[3pt]
+    \text{gluon triangle plus all three half-weight swordfish graphs}
+      &\dfrac58C_A
+  \end{array}
+  \]
+  For example, the fermion numerator uses
+  \(\operatorname{tr}_{D}(\gamma_\mu\gamma_\alpha
+  \gamma_\nu\gamma_\beta\gamma_\rho\gamma_\gamma)\);
+  after symmetric integration its three metric contractions reconstruct
+  the three terms of \(V_{\mu\nu\rho}\).  The ghost numerator supplies the
+  \(C_A/24\) row.  In the pure-gauge family, terms not separately
+  proportional to the Bose-symmetric tree tensor cancel between the
+  triangle and the three cyclic swordfish graphs; retaining their
+  \(1/2\) factors leaves \(5C_A/8\).  This is also a strong routing check:
+  a shift of \(\ell\) changes no entry in dimensional regularization.
+
+  Summing the rows gives
+  \[
+    \boxed{\delta Z_{1,3g}
+      =\frac{g^2}{16\pi^2\epsilon}
+       \left(\frac23C_A-\frac43n_FT(r)\right).}
+  \]
+  Finally, the counterterms supplied in the question give independently
+  \[
+  \begin{split}
+    \delta Z_1+\delta Z_3-\delta Z_2
+      &=
+      h\left[-C_2(r)-C_A+\frac53C_A
+        -\frac43n_FT(r)+C_2(r)\right]\\
+      &=h\left(\frac23C_A-\frac43n_FT(r)\right)
+       =\delta Z_{1,3g}.
+  \end{split}
+  \]
+  Thus the \(C_2(r)\) terms cancel and the explicit diagrams verify
+  \[
+    \boxed{Z_{1,3g}=\frac{Z_3Z_1}{Z_2}}
+  \]
+  at one loop.  Omitting either a reversed directed loop, any external-leg
+  permutation, or the swordfish symmetry factor destroys this equality.
 
   \SupplementarySolution{11}{Schwinger--Dyson, Ward--Takahashi, and QED Renormalization}
   \begin{enumerate}

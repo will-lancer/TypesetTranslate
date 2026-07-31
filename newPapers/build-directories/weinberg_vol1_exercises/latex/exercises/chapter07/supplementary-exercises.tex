@@ -243,28 +243,116 @@ source writes the time component with a lower index.)
 Generalize the construction to \(N\) complex scalar fields.
 \end{enumerate}
 
-\SupplementaryExercise{6}{Primary and Secondary Constraints in Hamiltonian Dynamics}
-  {(Inspired by Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 2 and 4 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 4 and 6 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 3--4.)}
-  {dolan-constrained-dynamics-2112.12216-curated-parent-1}
+\SupplementaryExercise{6}{A Massive Vector Field: Positivity and the Longitudinal Mode}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, Quantum Field Theory, Paper 301, 2025, Question 2, printed p.~3.)}
+  {cambridge-partiii-2025-qft-paper301-q2}
+Consider a real vector field \(V^\mu(x)\) in four-dimensional
+Minkowski space.  In the mostly-plus convention of this volume, the
+signature-translated form of the source Lagrangian is
+\[
+ \mathcal L
+ =a(\partial_\mu V_\nu)(\partial^\mu V^\nu)
+ +b(\partial_\mu V_\nu)(\partial^\nu V^\mu)
+ +c(\partial_\mu V^\mu)(\partial_\nu V^\nu)
+ -m^2V^\mu V_\mu,
+\]
+where \(a,b,c\), and \(m\) are real constants.  (The source uses the
+mostly-minus metric, for which the last term is written
+\(+m^2V^\mu V_\mu\).)
 \begin{enumerate}
 \item
-For
-\(L=\frac12(\dot q_1-q_2)^2-\frac12\mu^2q_2^2
--\frac12\omega^2q_1^2\), compute the velocity Hessian, find the primary
-constraint, and construct the total Hamiltonian with its multiplier.
+\begin{enumerate}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
 \item
-Continue S.7.6(a) by demanding preservation of the primary constraint.
-Find the secondary constraint, classify the complete pair, and
-determine the multiplier when consistency is imposed again.
+Show that \(\mathcal L\) can be simplified, up to total derivatives,
+to
+\[
+ \mathcal L
+ =\widetilde a\,V_\nu\Box V^\nu
+ +\widetilde b\,V^\nu\partial_\nu\partial_\mu V^\mu
+ -m^2V^\mu V_\mu,                                      \tag{*}
+\]
+with \(\widetilde a,\widetilde b\) real constants.
 \item
-On a two-pair phase space impose \(\chi_1=q_2\) and \(\chi_2=p_2\).
-Compute every fundamental Dirac bracket and show explicitly that only
-\((q_1,p_1)\) remains dynamical.
+Using \((*)\), derive the equations of motion for \(V^\mu\).
+\item
+Using Noether's theorem, construct the energy--momentum tensor
+associated with this Lagrangian, and give an expression for the
+Hamiltonian.
+\item
+Consider the case \(\widetilde b=0\).  Show that, for any value of
+\(\widetilde a\), the energy of the system is not positive definite.
+\item
+Assuming \(\widetilde a>0\), find a relation between
+\(\widetilde b\) and \(\widetilde a\) such that the energy is positive
+definite on shell, up to total derivatives.  Show that with this choice
+the vector-field equations imply \(\partial_\mu V^\mu=0\).
+\end{enumerate}
+\item
+Another way to constrain \(\widetilde a\) and \(\widetilde b\) to
+their physical values is to decompose a general vector field as
+\[
+ V^\mu=A^\mu+\partial^\mu\pi,
+ \qquad \partial_\mu A^\mu=0,
+\]
+where \(\pi(x)\) is a scalar field.
+\begin{enumerate}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+\item
+Write \((*)\) in terms of \(A^\mu\) and \(\pi\), and derive the
+equations of motion for both fields.
+\item
+Show that the propagator of \(\pi\), up to a numerical factor, is
+\[
+ \bra{0}T\pi(x)\pi(y)\ket{0}
+ =\int\frac{d^4k}{(2\pi)^4}\,
+ \frac{i}{m^2}
+ \left(\frac{1}{k^2}
+       -\frac{\widetilde c}{\widetilde c k^2+m^2}\right)
+ e^{-ik\cdot(x-y)},
+\]
+where \(\widetilde c\) is a constant that you should specify.
+\emph{Hint:} You may use without proof that the propagator is a
+Green's function.  The plus sign in the second denominator is the
+mostly-plus translation of the source expression
+\(\widetilde c k_{\rm src}^2-m^2\).
+
+Show that the term involving \(\widetilde c\) vanishes when
+\(\widetilde a\) and \(\widetilde b\) obey the relation found in
+part (a)(v).
+\end{enumerate}
 \end{enumerate}
 
 \SupplementaryExercise{7}{Dirac Brackets and the Reduced Poisson Geometry}
-  {(Inspired by Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Section 4 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 3--4 | Brian P. Dolan, Constrained Dynamics in the Hamiltonian Formalism, Sections 4 and 6.)}
+  {(Inspired by Brian P. Dolan, \emph{Constrained Dynamics in the Hamiltonian Formalism}, Sections 4--6, especially Section 5.)}
   {dolan-constrained-dynamics-2112.12216-curated-parent-2}
+Let \(z^I\) be local coordinates on phase space, with Poisson tensor
+\(P^{IJ}(z)\) and bracket
+\[
+ \{F,G\}=\partial_I F\,P^{IJ}\partial_JG.
+\]
+Let the constraint surface be
+\[
+ \Gamma=\{z:\chi_A(z)=0\text{ for every }A\}.
+\]
+The constraints are called \emph{second class} when the antisymmetric
+constraint matrix
+\[
+ C_{AB}(z)=\{\chi_A,\chi_B\}
+\]
+is invertible on a neighborhood of \(\Gamma\).  Write its inverse as
+\(C^{AB}\), so that \(C_{AC}C^{CB}=\delta_A{}^B\).
+
+\pagebreak[3]
+The associated Dirac bracket is
+\[
+ \{F,G\}_{\rm D}
+ =\{F,G\}-\{F,\chi_A\}C^{AB}\{\chi_B,G\}.
+\]
+The corresponding projected Poisson tensor \(P_{\rm D}^{IJ}\) is defined by
+\(\{F,G\}_{\rm D}=\partial_I F\,P_{\rm D}^{IJ}\partial_JG\).  Equalities
+that hold only after restriction to the constraint surface will be denoted
+by \(\simeq\).
 \begin{enumerate}
 \item
 For arbitrary second-class constraints, prove directly from the inverse
@@ -280,24 +368,67 @@ Replace constraints \((\chi_1,\chi_2)\) by
 agree on the common constraint surface, including all derivative terms.
 \end{enumerate}
 
-\SupplementaryExercise{8}{Equation-of-Motion and Boundary Operators}
-  {(Inspired by Iain Stewart and MIT OpenCourseWare, 8.851 Lecture 3, Field Redefinitions.)}
-  {mit-8851-s13-field-redefinitions-curated-parent-1}
+\SupplementaryExercise{8}{Field Redefinition and Vanishing Scalar Scattering}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, Quantum Field Theory, Paper 301, 2025, Question 4, printed p.~6.)}
+  {cambridge-partiii-2025-qft-paper301-q4}
+Suppose that a massive scalar field in four dimensions has the
+mostly-plus Lagrangian
+\[
+ \mathcal L=-\frac12\partial_\mu\Phi\,\partial^\mu\Phi
+             -\frac{m^2}{2}\Phi^2.
+\]
+This is the signature-translated form of the source's mostly-minus
+free Lagrangian.  Consider the field redefinition
+\[
+ \Phi(x)=\phi(x)+\lambda\phi(x)^2,
+\]
+where \(\lambda\) is real.  Scattering amplitudes for particles
+created by \(\Phi\) or \(\phi\) should be unchanged by this field
+redefinition.  Check explicitly that physical observables do not
+change as follows.
 \begin{enumerate}
 \item
-For \(\phi\mapsto\phi+\epsilon F(\phi,\partial\phi)\), derive the
-first-order change of the action as an Euler--Lagrange functional times
-\(F\), plus an explicit boundary term.
+Work out the Lagrangian in terms of \(\phi\).  Identify its free and
+interaction terms.
 \item
-In a massive scalar theory, use
-\(\phi\mapsto\phi-\epsilon\phi^3\) to eliminate an interaction
-\(\epsilon\phi^3(\Box-m^2)\phi\) through first order and list the
-induced nonderivative operators.
+For the Lagrangian in terms of \(\phi\), write without derivation the
+momentum-space Feynman rules for the \(S\)-matrix.
 \item
-Compare a total four-divergence with an operator proportional to the
-leading field equation.  Explain precisely why the first changes no
-action while the second requires a field redefinition.
+For \(\phi\phi\to\phi\phi\), draw the connected Feynman diagrams that
+contribute to the \(S\)-matrix at leading order in \(\lambda\).
+\item
+Using parts (b) and (c), evaluate the connected contribution to
+\(\phi\phi\to\phi\phi\) at leading order in \(\lambda\).  Comment on
+the answer.
 \end{enumerate}
+
+\emph{Hint for part (b).}  If three scalar fields interact through
+\[
+ \mathcal L_{\rm int}
+ =\lambda\phi_1(\partial_\mu\phi_2)(\partial^\mu\phi_3),
+\]
+then, with \(k_1\) incoming and \(k_2,k_3\) outgoing, the derivative
+vertex and its rule are
+\[
+\begin{tikzpicture}[baseline=-0.55ex,x=1cm,y=1cm,>=Stealth,
+                    every node/.style={font=\small}]
+  \coordinate (v) at (0,0);
+  \draw[->] (-1.8,0)--(v);
+  \draw[double,->] (v)--(1.55,.9);
+  \draw[dashed,->] (v)--(1.55,-.9);
+  \node[left] at (-1.8,0) {\(\phi_1\)};
+  \node[above right] at (1.55,.9) {\(\phi_2\)};
+  \node[below right] at (1.55,-.9) {\(\phi_3\)};
+  \node[below] at (-.95,0) {\(k_1\)};
+  \node at (.82,.72) {\(k_2\)};
+  \node at (.82,-.72) {\(k_3\)};
+\end{tikzpicture}
+\quad =\quad
+(i\lambda)(ik_2)_\mu(ik_3)^\mu
+(2\pi)^4\delta^4(k_1-k_2-k_3).
+\]
+Consider carefully how this rule applies when the three scalars are
+identical.
 
 \SupplementaryExercise{9}{Field Redefinitions, External Poles, and Order Bookkeeping}
   {(Inspired by Iain Stewart and MIT OpenCourseWare, 8.851 Lecture 3, Field Redefinitions.)}

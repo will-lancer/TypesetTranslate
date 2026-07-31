@@ -151,137 +151,104 @@
     vertices in \(\eta\) need not vanish.
   \end{enumerate}
 
-  \SupplementarySolution{3}{Legendre Geometry and Nonlinear Ward Identities}
+  \SupplementarySolution{3}{Generating Functionals and Linear Symmetries}
   \begin{enumerate}
     \item[(a)]
-    Varying the Legendre transform while using
-    \(\phi^i=W_{,i}[J_\phi]\) cancels the terms proportional to
-    \(\delta J_\phi\), leaving
+    With the stated source sign,
     \[
-      \Gamma_{,i}=-J_{\phi i}.
+      Z[J]=\int\mathcal D\phi\,
+        \exp\!\left[-S[\phi]-\int d^dx\,J_a(x)\phi_a(x)\right].
     \]
-    Differentiate this equation with respect to \(J_k\):
+    The source is a freely specifiable classical function, one for each
+    field component.  Differentiating inserts fields:
     \[
-      \Gamma_{,ij}\frac{\delta\phi^j}{\delta J_k}
-        =-\delta_i{}^k.
+      \frac{\delta^n Z}{\delta J_{a_1}(x_1)\cdots
+        \delta J_{a_n}(x_n)}
+        =(-1)^n Z[J]
+          \left\langle\phi_{a_1}(x_1)\cdots
+          \phi_{a_n}(x_n)\right\rangle_J.
     \]
-    Since \(\delta\phi^j/\delta J_k=W_{,jk}\),
-    \[
-      \boxed{\Gamma_{,ij}W_{,jk}=-\delta_i{}^k},
-      \qquad W^{(2)}=-\Gamma^{(2)-1}.
-    \]
-    Invertibility requires that zero modes have first been removed or
-    regulated and that the source-to-field map be locally one-to-one.
-    \(W^{(2)}\) is the full connected propagator.  \(\Gamma^{(2)}\) is its
-    full 1PI inverse kernel, with the minus sign fixed by the chapter's
-    Legendre-transform convention.
+    Thus the derivatives at \(J=0\), divided by \(Z[0]\) and supplied with
+    the displayed sign, give all Euclidean correlation functions.
     \item[(b)]
-    For \(m^2(\phi)=-a\) with \(a>0\), the prescribed continuation gives
+    The classical field and Legendre transform are
     \[
-      \ln[-a-i0]=\ln a-i\pi.
+      \Phi_a(x)=\frac{\delta W}{\delta J_a(x)}
+        =\langle\phi_a(x)\rangle_J,
+      \qquad
+      \Gamma[\Phi]=W[J_\Phi]
+        -\int d^dx\,J_{\Phi a}(x)\Phi_a(x).
     \]
-    Hence
+    Varying and using \(\delta W=\int\Phi_a\,\delta J_a\) gives
     \[
-      \operatorname{Im}V_1(\phi)
-        =-\frac{a^2}{64\pi}
+      \frac{\delta\Gamma}{\delta\Phi_a(x)}=-J_{\Phi a}(x).
     \]
-    for the displayed \(-i0\) prescription.  Reversing the prescription
-    reverses the sign.  The magnitude is associated with modes whose
-    quadratic fluctuation operator has negative eigenvalues.
-
-    Such a homogeneous configuration is not a stable saddle about which an
-    ordinary vacuum loop expansion is valid.  The exact effective potential
-    is defined by a constrained minimum energy and is real and convex.  The
-    imaginary part therefore diagnoses decay or spinodal instability of the
-    perturbative branch; it is not an imaginary exact ground-state energy.
+    A second derivative followed by the chain rule gives the ordered kernel
+    identity
+    \[
+      \int d^dy\,
+        \frac{\delta^2\Gamma}
+          {\delta\Phi_a(x)\delta\Phi_b(y)}
+        \frac{\delta^2W}
+          {\delta J_b(y)\delta J_c(z)}
+        =-\delta_{ac}\delta^{(d)}(x-z).
+    \]
+    Here
+    \[
+      \frac{\delta^2W}{\delta J_a(x)\delta J_b(y)}
+        =-\langle\phi_a(x)\phi_b(y)\rangle_{J,\mathrm c}.
+    \]
+    Hence \(\Gamma^{(2)}\) is the inverse full connected propagator, while
+    higher derivatives of \(\Gamma\) are proper, or 1PI, vertices.  The
+    first derivative is the external source required to sustain the chosen
+    mean field and vanishes at a physical configuration with \(J=0\).
     \item[(c)]
-    During the long interval in which the source is constant, evolution of
-    the adiabatically prepared lowest-energy state supplies the phase
-    \(e^{-iE[J]T}\).  Switching regions contribute only terms that do not
-    grow with \(T\).  Comparing with \(Z=e^{iW}\) gives
+    Every diagram contributing to \(Z\) is a disjoint union of connected
+    components.  The exponential formula for such unions says
     \[
-      W[J]=-E[J]T+O(T^0).
+      Z[J]=\exp C[J],
     \]
-    Since \(\phi=\delta W/\delta J\), the Legendre transform is
-    \[
-      -\frac{\Gamma[\phi]}T
-        =E[J_\phi]+\int d^3x\,J_{\phi n}(\mathbf x)
-          \phi^n(\mathbf x)+O(T^{-1}).
-    \]
-    The right-hand side is the Lagrange-multiplier expression that minimizes
-    the source-free energy over normalized states subject to
-    \(\langle\Phi^n(\mathbf x)\rangle=\phi^n(\mathbf x)\).  Adiabatic
-    switching selects the continuously connected lowest state; the
-    \(T\to\infty\) limit removes switching effects.  The infinite-volume
-    limit suppresses interfaces and interference between distinct phases.
+    where \(C[J]\) is the sum of connected vacuum diagrams with source
+    insertions.  Therefore \(W=-C\) in the present Euclidean sign convention,
+    so its derivatives generate connected correlators with the signs already
+    found in part (b).
+
+    Every connected diagram, in turn, has a unique decomposition into a
+    tree whose vertices are maximal 1PI subdiagrams and whose edges are full
+    connected propagators.  The Legendre transform removes these connecting
+    tree edges: the inverse-Hessian identity shows that differentiation of
+    \(\Gamma\) amputates the full external propagators, and any bridge would
+    instead be generated by joining two lower proper vertices with
+    \(-W^{(2)}\).  Consequently the perturbative expansion of \(\Gamma\) is
+    precisely the sum of 1PI diagrams with external propagators removed.
     \item[(d)]
-    Evaluate the once-differentiated Ward identity at a constant stationary
-    point \(v\), where \(\Gamma_{,a}[v]=0\).  It reduces to
+    Put \(J'_a=J_bU_{ba}\) and change variables to
+    \(\chi_a=U_{ab}\phi_b\).  Invariance of the action and measure gives
     \[
-      \int d^4x\,\Gamma_{,ca}^{(2)}(y,x;v)
-        (T^Av)_a=0.
+      \begin{split}
+      Z[J']
+        &=\int\mathcal D\phi\,
+          e^{-S[\phi]-\int J_bU_{ba}\phi_a}\\
+        &=\int\mathcal D\chi\,
+          e^{-S[\chi]-\int J_b\chi_b}=Z[J].
+      \end{split}
     \]
-    Translation invariance turns the integral into the zero-momentum
-    component:
+    Thus \(W[U^{\mathsf T}J]=W[J]\).  Applying the same statement to
+    \(U^{-1}\) gives \(W[U^{-\mathsf T}J]=W[J]\).  If \(J_\Phi\) produces
+    \(\Phi\), differentiation of this identity shows that
+    \(U^{-\mathsf T}J_\Phi\) produces \(U\Phi\).  The source pairing is
+    unchanged,
     \[
-      \boxed{\Gamma_{ca}^{(2)}(p=0;v)(T^Av)_a=0.}
+      (U^{-\mathsf T}J_\Phi)_a(U\Phi)_a=J_{\Phi a}\Phi_a,
     \]
-    If \(T^Av\ne0\), the exact inverse propagator has a zero eigenvector at
-    zero momentum, so the spectrum contains a massless mode.  The number of
-    independent modes is the dimension of the span of \(T^Av\), equivalently
-    \(\dim G-\dim H\) when \(H\) is the unbroken subgroup, subject to the
-    usual qualifications for spacetime or nonrelativistic symmetries.
-    \item[(e)]
-    Invariance under the change of variables gives, to first order,
+    and therefore
     \[
-      J_n\left\langle F^n[\widehat\chi]\right\rangle_J=0.
+      \Gamma[U\Phi]
+        =W[U^{-\mathsf T}J_\Phi]
+          -\int (U^{-\mathsf T}J_\Phi)\cdot(U\Phi)
+        =\Gamma[\Phi].
     \]
-    Substituting
-    \(J_{\chi n}=-\delta\Gamma/\delta\chi^n\) yields
-    \[
-      \frac{\delta\Gamma}{\delta\chi^n}
-        \left\langle F^n[\widehat\chi]\right\rangle_{J_\chi}=0.
-    \]
-    Thus \(\Gamma\) is invariant under the generally nonlocal transformation
-    \[
-      \delta\chi^n
-        =\epsilon\left\langle
-          F^n[\widehat\chi]\right\rangle_{J_\chi}.
-    \]
-    For one field and \(F[\widehat\chi]=\widehat\chi^2\),
-    \[
-      \left\langle\widehat\chi^2(x)\right\rangle_J
-        =\chi^2(x)+
-         \left\langle
-         [\widehat\chi(x)-\chi(x)]^2\right\rangle_J
-        =\chi^2(x)+W_{,JJ}(x,x),
-    \]
-    up to the conventional factor of \(i\) relating the last derivative to
-    the connected propagator.  This fluctuation term is precisely why a
-    nonlinear symmetry of the microscopic action does not act on the mean
-    field by simple substitution.
-    \item[(f)]
-    The action is invariant, while the source term and Jacobian change the
-    integrand by
-    \[
-      i\epsilon\left[
-        J_nF^n[\chi]+\mathcal A[\chi]\right].
-    \]
-    Since a change of integration variables cannot change \(Z\),
-    \[
-      J_n\left\langle F^n[\widehat\chi]\right\rangle_J
-        +\left\langle\mathcal A[\widehat\chi]\right\rangle_J=0.
-    \]
-    At \(J=J_\chi\), this becomes
-    \[
-      \frac{\delta\Gamma}{\delta\chi^n}
-        \left\langle F^n[\widehat\chi]\right\rangle_{J_\chi}
-        =\left\langle\mathcal A[\widehat\chi]\right\rangle_{J_\chi}.
-    \]
-    The right-hand side obstructs invariance of the quantum action.  If it
-    is the variation of an allowed local counterterm, redefining the
-    renormalized action moves or removes it.  A local term that cannot be
-    removed while preserving all required symmetries is an anomaly.
+    Only invertibility, not orthogonality, was used.
   \end{enumerate}
 
   \SupplementarySolution{4}{Four-Point Vertices, Even-Dimensional Logs, and Goldstone Modes}
@@ -670,50 +637,150 @@
     rather than ordinary transposition.
   \end{enumerate}
 
-  \SupplementarySolution{8}{Renormalization Conditions and the Maxwell Segment}
+  \SupplementarySolution{8}{Particle-Number Breaking and the Phase-Only Theory}
   \begin{enumerate}
     \item[(a)]
-    Separate the calculated expression into a fixed part \(F(\phi)\),
-    containing the classical terms and the chosen logarithm, and the most
-    general even polynomial left by the three integrations:
+    The Noether charge is the particle number,
     \[
-      V(\phi)=F(\phi)+c_0+c_2\phi^2+c_4\phi^4.
+      N=\int d^dx\,\Psi^\dagger\Psi=\int d^dx\,\rho.
     \]
-    The three conditions determine the coefficients directly:
+    Substitution of \(\Psi=\sqrt\rho\,e^{-i\theta}\) gives
     \[
-      c_0=-F(0),\qquad
-      c_2=\frac12\bigl[m_R^2-F''(0)\bigr],\qquad
-      c_4=\frac1{24}\bigl[g_R-F^{(4)}(\kappa)\bigr].
+      i\Psi^\dagger\partial_t\Psi
+        =\rho\,\partial_t\theta+\frac i2\partial_t\rho,
+      \qquad
+      \partial_i\Psi^\dagger\partial_i\Psi
+        =\frac{(\boldsymbol\nabla\rho)^2}{4\rho}
+          +\rho(\boldsymbol\nabla\theta)^2.
     \]
-    Since
-    \(\mu^2(\phi)=m^2+g\phi^2/2\), the original constants
-    \(A+B\mu^2+C\mu^4\) span exactly the same basis
-    \(1,\phi^2,\phi^4\), so these equations uniquely fix \(A,B,C\) whenever
-    the change of basis is nonsingular.
-
-    Moving \(\kappa\) changes the split between the logarithm and the local
-    polynomial.  The renormalized parameters must run so that their sum,
-    and hence physical quantities derived from the potential, are unchanged
-    to the calculated order.
+    Dropping the total derivative \(i\partial_t\rho/2\),
+    \[
+      \mathcal L
+        =\rho\,\partial_t\theta
+         -\frac{(\boldsymbol\nabla\rho)^2}{8m\rho}
+         -\frac{\rho}{2m}(\boldsymbol\nabla\theta)^2
+         -r\rho-\lambda\rho^2+\cdots .
+    \]
+    Thus \(\rho=\Psi^\dagger\Psi\) is the particle-number density and
+    \(\pi_\theta=\rho\).  Canonical quantization gives
+    \([\theta(\mathbf x),\rho(\mathbf y)]=i\delta^{(d)}(\mathbf x-\mathbf y)\).
+    In a volume \(\mathcal V_d\),
+    \[
+      [\theta_0,N]=i\mathcal V_d,
+      \qquad
+      \Delta\theta_0\,\Delta N\ge\frac{\mathcal V_d}{2}.
+    \]
+    Equivalently the volume-averaged phase
+    \(\bar\theta=\theta_0/\mathcal V_d\) satisfies
+    \(\Delta\bar\theta\,\Delta N\ge1/2\).  A number eigenstate has no sharp
+    global phase.  A symmetry-breaking state with a sharp phase must instead
+    superpose number sectors; in the thermodynamic limit its macroscopic
+    number fluctuations can coexist with a sharply defined average phase.
     \item[(b)]
-    Fill a fraction \(\alpha\) of a very large volume with phase 1 and the
-    rest with phase 2.  The volume averages are
+    Stability requires \(\lambda>0\).  Since the homogeneous potential is
+    \(V(\rho)=r\rho+\lambda\rho^2\) for \(\rho\ge0\), a nonzero minimum
+    exists when \(r<0\), at
     \[
-      \phi=\alpha\phi_1+(1-\alpha)\phi_2,\qquad
-      \mathcal E=\alpha V_1+(1-\alpha)V_2+O(A_{\rm wall}/\mathcal V_3).
+      \bar\rho=-\frac r{2\lambda}.
     \]
-    Solving for
-    \(\alpha=(\phi_2-\phi)/(\phi_2-\phi_1)\) and taking the
-    infinite-volume limit gives
+    With \(\rho=\bar\rho+\delta\rho\), the condition
+    \(r+2\lambda\bar\rho=0\) cancels the linear potential term.  To quadratic
+    order,
     \[
-      V_{\rm mix}(\phi)
-        =\frac{\phi_2-\phi}{\phi_2-\phi_1}V_1
-         +\frac{\phi-\phi_1}{\phi_2-\phi_1}V_2.
+      \mathcal L_2
+        =\bar\rho\,\partial_t\theta
+         +\delta\rho\,\partial_t\theta
+         -\lambda(\delta\rho)^2
+         -\frac{(\boldsymbol\nabla\delta\rho)^2}{8m\bar\rho}
+         -\frac{\bar\rho}{2m}(\boldsymbol\nabla\theta)^2.
     \]
-    This is the straight chord between the two homogeneous phases.  The
-    interface energy scales like area and vanishes per unit volume.  When
-    \(V_1=V_2\), the chord is horizontal, producing the flat Maxwell segment
-    between degenerate vacua.
+    The first term is a total derivative in the topologically trivial sector.
+    The density fluctuation is gapped, whereas the phase has no mass term.
+    \item[(c)]
+    Ignoring the displayed total derivative, the quadratic functional
+    integral is
+    \[
+      Z_2=\int\mathcal D\delta\rho\,\mathcal D\theta\,
+        \exp\!\left(i\int dt\,d^dx\,\mathcal L_2\right).
+    \]
+    After integrating the density-gradient term by parts, define
+    \[
+      A=2\lambda-\frac{\nabla^2}{4m\bar\rho}.
+    \]
+    Completing the square in
+    \(-\delta\rho A\delta\rho/2+\delta\rho\,\partial_t\theta\) and carrying
+    out the Gaussian integral gives
+    \[
+      \mathcal L_{\rm eff}
+        =\frac12(\partial_t\theta)A^{-1}(\partial_t\theta)
+         -\frac{\bar\rho}{2m}(\boldsymbol\nabla\theta)^2.
+    \]
+    At wavelengths much longer than the density correlation length,
+    \[
+      \mathcal L_{\rm eff}
+        =\frac1{4\lambda}(\partial_t\theta)^2
+         -\frac{\bar\rho}{2m}(\boldsymbol\nabla\theta)^2
+         +O(\partial^4)
+        =\frac\chi2\left[(\partial_t\theta)^2
+          -v^2(\boldsymbol\nabla\theta)^2\right]+O(\partial^4),
+    \]
+    where
+    \[
+      \chi=\frac1{2\lambda},
+      \qquad
+      v^2=\frac{2\lambda\bar\rho}{m}=-\frac rm.
+    \]
+    Hence \(\omega=v|\mathbf k|\), the Goldstone sound mode.
+    \item[(d)]
+    The Mittag--Leffler expansion
+    \[
+      \pi\coth(\pi a)=\frac1a
+        +2a\sum_{n=1}^{\infty}\frac1{a^2+n^2}
+    \]
+    follows, for example, by summing the residues of
+    \(\coth(\pi z)/(z^2-a^2)\).  Division by \(a\) and inclusion of positive
+    and negative integers proves the required identity.  With
+    \(E_k=v k\), it implies
+    \[
+      T\sum_{\omega_n}\frac1{\omega_n^2+E_k^2}
+        =\frac1{2E_k}\coth\!\left(\frac{E_k}{2T}\right).
+    \]
+    Therefore, with a microscopic ultraviolet cutoff \(\Lambda\),
+    \[
+      \langle\theta^2\rangle
+        =\frac{\operatorname{Area}(S^{d-1})}
+          {2\chi v(2\pi)^d}
+          \int_0^\Lambda dk\,k^{d-2}
+            \coth\!\left(\frac{vk}{2T}\right).
+    \]
+    At small \(k\), the thermal integrand behaves as \(k^{d-3}\).  It is
+    infrared finite only for \(d>2\).  Thus among \(d=1,2,3\), true
+    finite-temperature long-range order is possible only in \(d=3\).
+    In \(d=2\) the logarithmic divergence forbids a nonzero order parameter
+    even though a Berezinskii--Kosterlitz--Thouless phase with algebraic order
+    may occur; the \(d=1\) divergence is stronger.  The raw continuum
+    integral is ultraviolet divergent in every case, but this is unrelated
+    to the infrared obstruction and is cut off by microscopic physics.
+    \item[(e)]
+    Subtracting the zero-temperature contribution replaces the coth by its
+    thermal part:
+    \[
+      \delta_T\langle\theta^2\rangle
+        =\frac1{\chi v}\int\frac{d^3k}{(2\pi)^3}\,
+          \frac1{k(e^{vk/T}-1)}
+        =\frac{T^2}{12\chi v^3}.
+    \]
+    Since Gaussian phase fluctuations reduce the order parameter as
+    \(\langle\Psi\rangle\sim\sqrt{\bar\rho}\,
+    e^{-\langle\theta^2\rangle/2}\), a phase-only estimate of restoration is
+    obtained when the thermal variance becomes order unity:
+    \[
+      T_{\rm restore}\sim\sqrt{12\chi v^3}
+        =\sqrt{\frac6\lambda}\left(-\frac rm\right)^{3/4}.
+    \]
+    The numerical threshold is not universal: near restoration, vortices,
+    amplitude fluctuations, and the ultraviolet completion of the
+    Landau--Ginzburg theory can no longer be neglected.
   \end{enumerate}
 
   \SupplementarySolution{9}{Dimensional Transmutation and RG Invariance}
@@ -773,57 +840,155 @@
     field normalization.
   \end{enumerate}
 
-  \SupplementarySolution{10}{Composite Sources and the Two-Particle-Irreducible Action}
-  Differentiating the connected generator gives
-  \[
-    \varphi(x)=\frac{\delta W}{\delta J(x)},\qquad
-    2\frac{\delta W}{\delta K(x,y)}
-      =\langle\phi(x)\phi(y)\rangle
-      =\varphi(x)\varphi(y)+G(x,y).
-  \]
-  Varying the double Legendre transform while using these definitions
-  cancels the implicit variations of \(J\) and \(K\).  Because \(K\) is
-  symmetric,
-  \[
-    \boxed{\frac{\delta\Gamma}{\delta\varphi(x)}
-      =-J(x)-\int_yK(x,y)\varphi(y),\qquad
-      \frac{\delta\Gamma}{\delta G(x,y)}=-\frac12K(x,y).}
-  \]
-
-  Let
-  \(iD^{-1}(x,y;\varphi)=\delta^2S[\varphi]/
-    [\delta\varphi(x)\delta\varphi(y)]\), with the factor of \(i\)
-  adjusted if the quadratic kernel is defined directly in the exponent.
-  Shifting to \(\eta=\phi-\varphi\), expanding the action, and collecting
-  the Gaussian determinant gives the CJT form
-  \[
-    \Gamma[\varphi,G]
-      =S[\varphi]
-       +\frac{i}{2}\operatorname{Tr}\ln G^{-1}
-       +\frac{i}{2}\operatorname{Tr}\!\bigl[D^{-1}(\varphi)G-\mathbf{1}\bigr]
-       +\Gamma_2[\varphi,G].
-  \]
-  The first trace is the entropy-like determinant and the second replaces
-  the free quadratic kernel by the full trial propagator.  Expanding the
-  shifted interactions with propagator \(G\), every two-particle-reducible
-  vacuum graph is generated by iterating these explicit trace terms and the
-  stationarity equation.  The remainder \(\Gamma_2\) is therefore the sum
-  of vacuum skeletons that cannot be disconnected by cutting two internal
-  \(G\) lines.
-
-  With the external sources removed,
-  \[
-    \frac{\delta\Gamma}{\delta\varphi}=0,\qquad
-    \frac{\delta\Gamma}{\delta G}=0.
-  \]
-  The second equation is the self-consistent Dyson equation
-  \[
-    G^{-1}=D^{-1}(\varphi)-\Sigma,\qquad
-    \Sigma=2i\,\frac{\delta\Gamma_2}{\delta G},
-  \]
-  up to the same continuation convention.  Thus \(G\) is the full
-  propagator, rather than merely its coincident local value; the bilocal
-  Legendre variable is what makes the construction genuinely 2PI.
+  \SupplementarySolution{10}{Large-\(N\) Sigma Model at Finite Temperature}
+  \begin{enumerate}
+    \item[(a)]
+    Integrating by parts puts the quadratic form for each component in terms
+    of
+    \[
+      K[\lambda]=-\partial_\tau^2-v^2\nabla^2+i\lambda.
+    \]
+    The \(N\) Gaussian integrals give \((\det K)^{-N/2}\).  Up to a
+    \(\lambda\)-independent normalization,
+    \[
+      \boxed{
+      \widetilde S[\lambda]
+        =\frac N2\operatorname{Tr}\ln K[\lambda]
+         -\frac{iN}{2vg}\int d^2x\int_0^{1/T}d\tau\,\lambda.}
+    \]
+    A constant such as \(\operatorname{Tr}\ln(vg)\) may be included inside
+    the logarithm without affecting any saddle equation.
+    \item[(b)]
+    Both terms in \(\widetilde S\) are proportional to \(N\), so fluctuations
+    of \(\lambda\) about a stationary configuration are suppressed at large
+    \(N\).  For \(i\lambda=m^2\), variation of the trace logarithm gives
+    \[
+      \boxed{
+      \frac1{vg}
+        =T\sum_{n=-\infty}^{\infty}
+          \int\frac{d^2k}{(2\pi)^2}\,
+          \frac1{\omega_n^2+v^2\mathbf k^2+m^2},
+      \qquad \omega_n=2\pi nT.}
+    \]
+    This is also the constraint equation enforcing the prescribed length of
+    \(\mathbf n\).
+    \item[(c)]
+    At zero temperature, the sum becomes a frequency integral.  With a sharp
+    spatial momentum cutoff,
+    \[
+      \begin{split}
+      \frac1{vg}
+        &=\int_{|\mathbf k|<\Lambda}\frac{d^2k}{(2\pi)^2}
+          \int_{-\infty}^{\infty}\frac{d\omega}{2\pi}\,
+          \frac1{\omega^2+v^2\mathbf k^2+m^2}\\
+        &=\frac{\sqrt{v^2\Lambda^2+m^2}-m}{4\pi v^2}.
+      \end{split}
+    \]
+    Define the critical coupling by setting \(m=0\):
+    \[
+      \frac1{g_c}=\frac\Lambda{4\pi}.
+    \]
+    Taking \(\Lambda\to\infty\) in the difference of the two equations gives
+    \[
+      \frac1g=\frac1{g_c}-\frac{m}{4\pi v},
+      \qquad
+      \boxed{m=\frac{4\pi v(g-g_c)}{gg_c}.}
+    \]
+    A positive symmetric saddle therefore exists only for \(g>g_c\); this is
+    the quantum-disordered phase with a finite gap.  For \(g<g_c\), the
+    constant massive saddle is replaced by a condensate of \(\mathbf n\),
+    which breaks \(O(N)\) to \(O(N-1)\) and produces Goldstone modes.
+    \item[(d)]
+    Let \(E_k=\sqrt{v^2\mathbf k^2+m(T)^2}\).  Deforming the two pieces of
+    \(\mathcal C\) around the poles at \(z=\pm E_k\) gives
+    \[
+      T\sum_n\frac1{\omega_n^2+E_k^2}
+        =\frac1{2E_k}\coth\!\left(\frac{E_k}{2T}\right)
+        =\frac{1+2n_B(E_k)}{2E_k},
+    \]
+    where \(n_B(E)=1/(e^{E/T}-1)\).  The finite-temperature saddle equation
+    is consequently
+    \[
+      \frac1{vg}
+        =\int\frac{d^2k}{(2\pi)^2}\,
+          \frac1{2E_k}\coth\!\left(\frac{E_k}{2T}\right).
+    \]
+    \item[(e)]
+    Using \(k\,dk=E\,dE/v^2\), the cutoff equation is
+    \[
+      \frac1{vg}
+        =\frac1{4\pi v^2}
+          \int_{m(T)}^{\sqrt{v^2\Lambda^2+m(T)^2}}
+            dE\,\coth\!\left(\frac E{2T}\right)
+        =\frac{T}{2\pi v^2}
+          \left[\ln\sinh\!\left(\frac E{2T}\right)\right]_{m(T)}^{E_\Lambda}.
+    \]
+    The zero-temperature critical equation, evaluated with the supplied
+    frequency integral, is
+    \[
+      \frac1{vg_c}=\frac\Lambda{4\pi v}.
+    \]
+    For large \(\Lambda\),
+    \(\ln\sinh(E_\Lambda/2T)=E_\Lambda/(2T)-\ln2+o(1)\).
+    Subtracting the critical equation and using
+    \(\Delta=4\pi v(1/g_c-1/g)\) leaves
+    \[
+      \frac{\Delta}{2T}
+        =\ln\!\left[2\sinh\!\left(\frac{m(T)}{2T}\right)\right].
+    \]
+    Therefore
+    \[
+      \boxed{m(T)=2T\sinh^{-1}\!\left(\frac12e^{\Delta/(2T)}\right).}
+    \]
+    \item[(f)]
+    At low temperature the argument of the inverse hyperbolic sine is large,
+    and
+    \[
+      m(T)=\Delta+2T e^{-\Delta/T}
+        +O\!\left(Te^{-2\Delta/T}\right).
+    \]
+    The zero-temperature quantum-disordered gap is therefore changed only by
+    thermally activated corrections.  At high temperature,
+    \[
+      m(T)=2T\sinh^{-1}\!\left(\frac12\right)
+        +\frac{\Delta}{\sqrt5}
+        +O\!\left(\frac{\Delta^2}{T}\right).
+    \]
+    In particular, at the quantum-critical coupling \(\Delta=0\),
+    \(m(T)=\Theta T\), where
+    \(\Theta=2\ln[(1+\sqrt5)/2]\).  Thus temperature itself sets the inverse
+    correlation length, \(\xi^{-1}=m/v\), in the quantum-critical regime.
+    \item[(g)]
+    Analytic continuation \(i\omega_n\to\omega+i0\) gives, with
+    \(E_k^2=v^2\mathbf k^2+m(T)^2\),
+    \[
+      G^R(\omega,\mathbf k)
+        =\frac{vg}{N}\frac1{E_k^2-(\omega+i0)^2}.
+    \]
+    Its imaginary part is
+    \[
+      \boxed{
+      \operatorname{Im}G^R(\omega,\mathbf k)
+        =\frac{\pi vg}{2NE_k}
+          \left[\delta(\omega-E_k)-\delta(\omega+E_k)\right].}
+    \]
+    Finally write
+    \[
+      m(T)=T f(\Delta/T),
+      \qquad
+      f(x)=2\sinh^{-1}\!\left(\frac12e^{x/2}\right).
+    \]
+    Apart from the nonuniversal normalization \(vg/N\),
+    \[
+      G^R(\omega,\mathbf k)
+        =\frac{vg}{N T^2}\,
+          \frac1{(v|\mathbf k|/T)^2
+            -[(\omega+i0)/T]^2+f(\Delta/T)^2}.
+    \]
+    It depends only on the scaling variables
+    \(\omega/T\), \(v|\mathbf k|/T\), and \(\Delta/T\), which is the
+    expected \(z=1\) quantum-critical form.
+  \end{enumerate}
 
   \SupplementarySolution{11}{Generating Functionals, Legendre Geometry, and Split Independence}
   \begin{enumerate}

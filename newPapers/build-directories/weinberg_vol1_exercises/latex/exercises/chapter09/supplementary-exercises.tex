@@ -47,15 +47,55 @@ operator with Dirichlet boundary conditions, and explain how its determinant
 produces the \(T^{-1/2}\) kernel scaling.
 \end{enumerate}
 
-\SupplementaryExercise{4}{The Oscillator Feynman Green Function}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapter 7, Problems 7.1--7.2.)}
-  {srednicki-qft-path-integrals-ch9-curated-parent-1}
-Evaluate the energy contour integral for the harmonic-oscillator Green
-function with the Feynman prescription.  Verify explicitly that applying
-the oscillator wave operator gives a delta function and identify the
-time-ordering encoded by the poles.  Give both the frequency-space and
-time-domain forms, fixing their normalization from the discontinuity of the
-first derivative.
+\SupplementaryExercise{4}{The Cubic Anharmonic Oscillator through Order \(\lambda^2\)}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III,
+  Advanced Quantum Field Theory, Paper 304 (2023), Question 1, p.~2,
+  parts (a)--(c).)}
+  {cambridge-partiii-2023-aqft-paper304-q1}
+Use the source convention
+\[
+ Z[J]=\int\mathcal D x\,
+ \exp\left[-iS[x]-i\int dt\,J(t)x(t)\right],
+ \qquad
+ x(t)\longleftrightarrow i\frac{\delta}{\delta J(t)}.
+\]
+The action for a harmonic oscillator of unit mass is
+\[
+ S[x]=\int dt\left(\frac12\dot x^{\,2}(t)
+ -\frac12\omega^2x^2(t)\right),
+ \qquad \omega>0.
+\]
+\begin{enumerate}
+\item
+Show, by Fourier transform or otherwise, that the propagator is
+\[
+ D(t-t')=\frac{1}{2\omega}e^{i\omega|t-t'|}.
+\]
+By introducing the source \(J(t)\), show that the harmonic-oscillator
+generating functional can be written
+\[
+ Z_0[J]=Z_0[0]\exp\left[-\frac12\int dt\int dt'\,
+ J(t)D(t-t')J(t')\right].
+\]
+\item
+Now add the anharmonic term
+\[
+ S_\lambda[x]=-\frac{\lambda}{3!}\int dt\,x^3(t)
+\]
+to the action.  Write the interacting generating functional \(Z[J]\) as an
+infinite series involving \(Z_0[J]\) and its functional derivatives.  Briefly
+comment on the convergence of this series.
+\item
+Write down the Feynman rules for the anharmonic oscillator.  Hence find an
+integral expression for the connected correlation function
+\[
+ \bra{\Omega}T\{x(t_1)x(t_2)\}\ket{\Omega}_{\rm conn}
+\]
+through order \(\lambda^2\), including every connected contribution at that
+order.  Without evaluating the integrals, do you expect this correlation
+function to diverge?  Briefly explain your reasoning, including its
+ultraviolet behavior.
+\end{enumerate}
 
 \SupplementaryExercise{5}{Vacuum Survival under an External Force}
   {(Adapted from Mark Srednicki, Quantum Field Theory, Chapter 7, Problem 7.4.)}
@@ -80,14 +120,79 @@ the source to zero.  Derive the three pairings of the four-point function
 and generalize the counting to \(2n\) insertions.
 \end{enumerate}
 
-\SupplementaryExercise{7}{The Contact Term in the Green Equation}
-  {(Inspired by Mark Srednicki, Quantum Field Theory, Chapter 8, Problems 8.1--8.4.)}
-  {srednicki-qft-path-integrals-ch9-curated-parent-4}
-Act with the Klein--Gordon operator on the time-ordered scalar two-point
-function.  Track derivatives of the step functions and show how the
-equal-time canonical commutator generates the four-dimensional delta
-function.  Perform the calculation in both time-ordering branches and
-explain why all noncontact terms obey the homogeneous field equation.
+\SupplementaryExercise{7}{The Propagator Is a Green Function}
+  {(Adapted from John McGreevy, Physics 215A QFT, Fall 2023, Assignment 5,
+  Problem 2, ``The propagator is a Green's function,'' pp.~1--2,
+  parts (a)--(d).)}
+  {mcgreevy-215a-f23-hw05-p2}
+Work in \(d+1\) spacetime dimensions with the volume convention
+\[
+ \Box_x\equiv\partial_{x^\mu}\partial_x^{\mu}
+ =\nabla_{\mathbf x}^2-\partial_{x^0}^2.
+\]
+For reference, the free real scalar has the mode expansion
+\[
+ \phi_0(x)=\int\frac{d^d\mathbf p}{(2\pi)^d\sqrt{2E_{\mathbf p}}}
+ \left[a_{\mathbf p}e^{ip\cdot x}
+ +a_{\mathbf p}^\dagger e^{-ip\cdot x}\right],
+ \qquad E_{\mathbf p}=\sqrt{\mathbf p^2+m^2},\quad p^0=E_{\mathbf p},
+\]
+with
+\[
+ [a_{\mathbf p},a_{\mathbf q}^\dagger]
+ =(2\pi)^d\delta^d(\mathbf p-\mathbf q),
+ \qquad a_{\mathbf p}\ket{\Omega}=0.
+\]
+\begin{enumerate}
+\item
+Consider the retarded propagator
+\[
+ D_R(x-y)\equiv\theta(x^0-y^0)
+ \bra{\Omega}[\phi(x),\phi(y)]\ket{\Omega}.
+\]
+Show that it is a Green function for the Klein--Gordon operator in the
+sense that
+\[
+ (\Box_x-m^2)D_R(x-y)=a\,\delta^{d+1}(x-y),
+\]
+and find \(a\).
+\item
+Add the external-source term
+\[
+ \mathcal L= -\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac12m^2\phi^2+\phi(x)j(x),
+\]
+where \(j(x)\) is a fixed \(c\)-number function.  Use the preceding result to
+generalize the free mode expansion to a solution of the sourced field
+equation with retarded boundary conditions.
+\item
+The time-ordered propagator is
+\[
+\begin{split}
+ D(x-y)&\equiv
+ \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}\\
+ &=\theta(x^0-y^0)\bra{\Omega}\phi(x)\phi(y)\ket{\Omega}
+ +\theta(y^0-x^0)\bra{\Omega}\phi(y)\phi(x)\ket{\Omega}.
+\end{split}
+\]
+Show that it too is a Green function for the Klein--Gordon operator, and
+determine its delta-function normalization.
+
+\emph{Hint.}  Use the canonical equal-time commutation relations
+\[
+ [\phi(x^0,\mathbf x),\phi(x^0,\mathbf y)]=0,
+ \qquad
+ [\partial_{x^0}\phi(x^0,\mathbf x),\phi(x^0,\mathbf y)]
+ =-i\delta^d(\mathbf x-\mathbf y).
+\]
+Do not neglect \(\partial_t\theta(t)=\delta(t)\): the time derivatives act
+on the time-ordering symbol.
+\item
+This is an example of a fact that is easier to understand from the path
+integral: explain why correlation functions solve the field equations only
+up to contact terms, and relate that statement to the delta function found
+in the preceding part.
+\end{enumerate}
 
 \SupplementaryExercise{8}{The Scalar Vacuum Wave Functional}
   {(Adapted from Mark Srednicki, Quantum Field Theory, Chapter 8, Problem 8.8.)}

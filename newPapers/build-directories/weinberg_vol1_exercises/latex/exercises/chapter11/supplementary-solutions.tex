@@ -58,70 +58,139 @@ subdivergences, while the on-shell LSZ condition removes explicit
 external self-energy factors.
 \end{enumerate}
 
-\SupplementarySolution{2}{The General Feynman-Parameter Simplex and Massless Bubble in \(d\) Dimensions}
+\SupplementarySolution{2}{Feynman Parameters}
 \begin{enumerate}
 \item
-For \(\Re\nu_i>0\),
+For \(\Re\nu>0\), rescale the defining Gamma-function integral by
+\(y=Ax\), initially taking \(\Re A>0\):
 \[
- A_i^{-\nu_i}=\frac{1}{\Gamma(\nu_i)}
- \int_0^\infty dt_i\,t_i^{\nu_i-1}e^{-t_iA_i}.
+ \Gamma(\nu)=\int_0^\infty dy\,y^{\nu-1}e^{-y}
+ =A^\nu\int_0^\infty dx\,x^{\nu-1}e^{-Ax}.
 \]
-Set \(t_i=T x_i\), where \(T\geq0\), \(x_i\geq0\), and
-\(\sum_i x_i=1\).  The Jacobian is \(T^{n-1}\), so if
-\(\nu=\sum_i\nu_i\),
+Dividing by \(A^\nu\Gamma(\nu)\) proves (7).  Both sides are analytic in
+their common convergence domain, and the formula elsewhere is defined by
+analytic continuation with the branch of \(A^{-\nu}\) fixed by the
+prescription in the propagator denominator.
+
+\item
+Apply (7) independently to all \(n\) factors:
+\[
+ \frac{1}{\prod_iA_i^{\nu_i}}
+ =\frac{1}{\prod_i\Gamma(\nu_i)}
+ \int_0^\infty\prod_i(dt_i\,t_i^{\nu_i-1})
+ \exp\!\left[-\sum_i t_iA_i\right].
+\]
+Introduce an overall scale \(T=\sum_i t_i\) and simplex coordinates
+\(x_i=t_i/T\).  The measure is
+\[
+ \prod_i dt_i
+ =T^{n-1}dT\left(\prod_i dx_i\right)
+ \delta\!\left(1-\sum_i x_i\right),
+\]
+so, with \(\nu=\sum_i\nu_i\),
 \[
 \begin{aligned}
- \prod_iA_i^{-\nu_i}
+ \frac{1}{\prod_iA_i^{\nu_i}}
  ={}&\frac{1}{\prod_i\Gamma(\nu_i)}
- \int_0^\infty dT\,T^{\nu-1}\\
- &{}\cdot\int_0^1\prod_i dx_i\,
- \delta\left(1-\sum_i x_i\right)
- \prod_i x_i^{\nu_i-1}
+ \int_0^1\!\left(\prod_i dx_i\right)
+ \delta\!\left(1-\sum_i x_i\right)
+ \prod_i x_i^{\nu_i-1}\\
+ &{}\times\int_0^\infty dT\,T^{\nu-1}
  e^{-T\sum_i x_iA_i}.
 \end{aligned}
 \]
-The \(T\)-integral is
-\(\Gamma(\nu)(\sum_i x_iA_i)^{-\nu}\).  Therefore
-\[
- \boxed{\;
- \frac{1}{\prod_iA_i^{\nu_i}}
- =\frac{\Gamma(\nu)}{\prod_i\Gamma(\nu_i)}
- \int_0^1\prod_i dx_i\,
- \frac{\delta(1-\sum_i x_i)\prod_i x_i^{\nu_i-1}}
- {(\sum_i x_iA_i)^\nu}.
- \;}
-\]
-For all \(\nu_i=1\), the normalization becomes \((n-1)!\), as required.
+The last integral is
+\(\Gamma(\nu)(\sum_i x_iA_i)^{-\nu}\), giving precisely (8).  No
+integer-exponent step has been used.  As a check, when every
+\(\nu_i=1\), the prefactor becomes \(\Gamma(n)=(n-1)!\).
+
 \item
-The two-denominator identity gives
+For the bubble choose
+\(A=k^2-i0\) and \(B=(k+p)^2-i0\).  Equation (8) for two factors gives
 \[
- \frac1{A^aB^b}
- =\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}
- \int_0^1dx\,\frac{x^{a-1}(1-x)^{b-1}}
- {[xA+(1-x)B]^{a+b}}.
+\begin{aligned}
+ I_B(a,b;p^2)
+ ={}&\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}
+ \int_0^1dx\,x^{a-1}(1-x)^{b-1}\\
+ &{}\times\int\frac{d^dk}{(2\pi)^d}
+ \frac{1}{[x(k^2-i0)+(1-x)((k+p)^2-i0)]^{a+b}}.
+\end{aligned}
 \]
-After shifting the loop momentum and Wick rotating, the radial integral and
-the remaining beta integral give
+Since
+\[
+ xk^2+(1-x)(k+p)^2
+ =[k+(1-x)p]^2+x(1-x)p^2,
+\]
+the shift \(\ell=k+(1-x)p\) yields the requested single denominator:
+\[
+ \boxed{\begin{aligned}
+ I_B(a,b;p^2)
+ ={}&\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}
+ \int_0^1dx\,x^{a-1}(1-x)^{b-1}\\
+ &{}\times\int\frac{d^d\ell}{(2\pi)^d}
+ \frac{1}{[\ell^2+x(1-x)p^2-i0]^{a+b}}.
+ \end{aligned}}
+\]
+Dimensional regularization justifies the translation of loop momentum by
+analytic continuation from a convergence domain.
+
+\item
+Write \(N=a+b\) and \(\Delta=x(1-x)p^2\).  Wick rotation in the
+mostly-plus convention gives
+\[
+ \int\frac{d^d\ell}{(2\pi)^d}
+ \frac{1}{(\ell^2+\Delta-i0)^N}
+ =i\frac{\Omega_d}{(2\pi)^d}
+ \int_0^\infty dr\,\frac{r^{d-1}}{(r^2+\Delta-i0)^N}.
+\]
+With \(u=r^2/(\Delta-i0)\), the radial integral is
+\[
+ \frac12(\Delta-i0)^{d/2-N}
+ \frac{\Gamma(d/2)\Gamma(N-d/2)}{\Gamma(N)}.
+\]
+Using (9), the loop integral therefore becomes
+\[
+ \frac{i}{(4\pi)^{d/2}}
+ \frac{\Gamma(N-d/2)}{\Gamma(N)}
+ (\Delta-i0)^{d/2-N}.
+\]
+Substitution in the preceding part leaves a beta integral,
+\[
+ \int_0^1dx\,
+ x^{d/2-b-1}(1-x)^{d/2-a-1}
+ =\frac{\Gamma(d/2-b)\Gamma(d/2-a)}
+ {\Gamma(d-a-b)}.
+\]
+Consequently
 \[
  \boxed{\;
  I_B(a,b;p^2)
  =\frac{i}{(4\pi)^{d/2}}
- (-p^2-i0)^{d/2-a-b}
+ (p^2-i0)^{d/2-a-b}
  \frac{\Gamma(a+b-d/2)\Gamma(d/2-a)\Gamma(d/2-b)}
- {\Gamma(a)\Gamma(b)\Gamma(d-a-b)} .
+ {\Gamma(a)\Gamma(b)\Gamma(d-a-b)}.
  \;}
 \]
-The phase follows from the stated \(i0\) prescription.  With
-\(d=4-2\varepsilon\), \(a=b=1\), and a scale \(\mu\) inserted to keep the
-integral dimensionless,
+For \(a=b=1\) and \(d=4-2\varepsilon\), use
 \[
- I_B(1,1;p^2)=\frac{i}{(4\pi)^2}
- \left[
- \frac1\varepsilon-\gamma+\ln4\pi
- +2-\ln\frac{-p^2-i0}{\mu^2}+O(\varepsilon)
- \right].
+ \Gamma(\varepsilon)=\frac{\Gamma(1+\varepsilon)}{\varepsilon},
+ \qquad
+ \Gamma(2-2\varepsilon)=(1-2\varepsilon)
+ \Gamma(1-2\varepsilon),
 \]
-The \(1/\varepsilon\) term is the logarithmic ultraviolet divergence.
+and
+\((4\pi)^{-d/2}(p^2-i0)^{-\varepsilon}
+=(4\pi)^{-2}[(p^2-i0)/(4\pi)]^{-\varepsilon}\).  The result is exactly
+the required check (11):
+\[
+ I_B(1,1;p^2)
+ =\left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ \frac{i\,\Gamma(1-\varepsilon)^2\Gamma(1+\varepsilon)}
+ {(4\pi)^2(1-2\varepsilon)\varepsilon
+ \Gamma(1-2\varepsilon)}.
+\]
+The Gamma function \(\Gamma(\varepsilon)\) displays the logarithmic
+ultraviolet pole.
 \end{enumerate}
 
 \SupplementarySolution{3}{Rank-Four Rotational Averaging and Tensor Reduction of a Bubble}
@@ -184,56 +253,177 @@ Its trace vanishes, consistently with dimensional regularization of the
 scaleless tadpole.
 \end{enumerate}
 
-\SupplementarySolution{4}{One-Loop Self-Energies in Massless QED}
+\SupplementarySolution{4}{Self-Energy Corrections in QED}
 \begin{enumerate}
 \item
-With \(\int_k=\mu^{2\varepsilon}\int d^dk/(2\pi)^d\),
+Use the momentum routing printed on the two diagrams.  The volume's
+Feynman-gauge rules give
 \[
- \Sigma(p)=-ie^2\int_k
- \frac{\gamma_\mu(\slashed p-\slashed k)\gamma^\mu}
- {(k^2+i0)((p-k)^2+i0)},
+ \boxed{\;
+ \Sigma(p^2)=ie^2\int\frac{d^dk}{(2\pi)^d}
+ \frac{\gamma_\rho[-i(\slashed k+\slashed p)]\gamma^\rho}
+ {(k^2-i0)((k+p)^2-i0)}
+ \;}
 \]
+and
 \[
- i\Pi^{\mu\nu}(q)=-(-ie)^2\int_k
- \frac{\operatorname{tr}[\gamma^\mu\slashed k
- \gamma^\nu(\slashed k+\slashed q)]}
- {(k^2+i0)((k+q)^2+i0)}.
+ \boxed{\;
+ \Pi^{\mu\nu}(p^2)=-ie^2\int\frac{d^dk}{(2\pi)^d}
+ \frac{\operatorname{tr}\!\left[
+ (-i\slashed k)\gamma^\mu
+ (-i(\slashed k+\slashed p))\gamma^\nu\right]}
+ {(k^2-i0)((k+p)^2-i0)}.
+ \;}
 \]
-The first minus sign in the photon expression is the closed-loop sign.
-\item
-In Feynman gauge, gamma algebra reduces the electron numerator to
-\(\gamma_\mu(\sl p-\sl k)\gamma^\mu=(2-d)(\sl p-\sl k)\).
-Feynman parametrization and the rank-one reduction then yield the pole
-\[
- \Sigma_{\rm loop}^{\rm div}(p)
- =-\frac{e^2}{16\pi^2\varepsilon}\,i\sl p
-\]
-in the inverse-propagator convention used here.  It is cancelled by
-\[
- Z_2=1-\frac{e^2}{16\pi^2\varepsilon}+O(e^4)
-\]
-with the associated sign determined by the counterterm placement in
-\(S_R^{-1}\).
+The overall minus sign in the second expression is the closed-fermion-loop
+sign.  No external spinor or polarization occurs, so the first expression
+is a spinor matrix and the second carries its two free Lorentz indices.
 
 \item
-For the photon, the trace and symmetric integration give
+In \(d\) dimensions,
 \[
- \Pi_{\rm loop}^{\mu\nu}(q)\big|_{\rm div}
- =\frac{e^2}{12\pi^2\varepsilon}
- (q^2\eta^{\mu\nu}-q^\mu q^\nu).
+ \gamma_\rho\gamma_\alpha\gamma^\rho=(2-d)\gamma_\alpha.
 \]
-Thus \(q_\mu\Pi_{\rm loop}^{\mu\nu}=0\) before subtraction, and
+Writing \(I_B=I_B(1,1;p^2)\), the supplied rank-one reduction gives
 \[
- Z_3=1-\frac{e^2}{12\pi^2\varepsilon}+O(e^4)
+\begin{aligned}
+ \Sigma(p^2)
+ &=e^2(2-d)\int\frac{d^dk}{(2\pi)^d}
+ \frac{\slashed k+\slashed p}
+ {(k^2-i0)((k+p)^2-i0)}\\
+ &=\frac{e^2(2-d)}2\slashed p\,I_B
+ =-e^2(1-\varepsilon)\slashed p\,I_B.
+\end{aligned}
 \]
-cancels the pole.  The absence of a term proportional to
-\(\eta^{\mu\nu}\) alone is the regulator-preserved statement that no photon
-mass is induced.
+Substituting the supplied exact bubble yields
+\[
+ \boxed{\;
+ \Sigma(p^2)
+ =-\frac{ie^2}{(4\pi)^2}\slashed p
+ \left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ \frac{(1-\varepsilon)\Gamma(1-\varepsilon)^2
+ \Gamma(1+\varepsilon)}
+ {(1-2\varepsilon)\varepsilon\Gamma(1-2\varepsilon)}.
+ \;}
+\]
+
+For the photon, first take the trace:
+\[
+ \operatorname{tr}[\slashed k\gamma^\mu
+ (\slashed k+\slashed p)\gamma^\nu]
+ =4\left[k^\mu(k+p)^\nu+k^\nu(k+p)^\mu
+ -\eta^{\mu\nu}k\cdot(k+p)\right].
+\]
+The two factors \(-i\) in the fermion numerators turn the prefactor into
+\(+ie^2\).  Let
+\[
+ \begin{aligned}
+ I^\mu&=\int\frac{d^dk}{(2\pi)^d}
+ \frac{k^\mu}{(k^2-i0)((k+p)^2-i0)},\\
+ I^{\mu\nu}&=\int\frac{d^dk}{(2\pi)^d}
+ \frac{k^\mu k^\nu}{(k^2-i0)((k+p)^2-i0)}.
+ \end{aligned}
+\]
+Scaleless tadpoles give
+\(I^\rho{}_{\rho}=0\), while the supplied formulas give
+\(I^\mu=-p^\mu I_B/2\) and
+\[
+ I^{\mu\nu}=\frac{d p^\mu p^\nu-p^2\eta^{\mu\nu}}
+ {4(d-1)}I_B.
+\]
+It follows that
+\[
+\begin{aligned}
+ \Pi^{\mu\nu}(p^2)
+ &=4ie^2\left[2I^{\mu\nu}+p^\mu I^\nu+p^\nu I^\mu
+ -\eta^{\mu\nu}(I^\rho{}_{\rho}+p\cdot I)\right]\\
+ &=ie^2\frac{2(d-2)}{d-1}
+ (p^2\eta^{\mu\nu}-p^\mu p^\nu)I_B.
+\end{aligned}
+\]
+With \(d=4-2\varepsilon\), this is
+\[
+ \boxed{\;
+ \Pi^{\mu\nu}(p^2)
+ =-\frac{e^2}{(4\pi)^2}
+ (p^2\eta^{\mu\nu}-p^\mu p^\nu)
+ \left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ \frac{4(1-\varepsilon)\Gamma(1-\varepsilon)^2
+ \Gamma(1+\varepsilon)}
+ {(3-2\varepsilon)(1-2\varepsilon)\varepsilon
+ \Gamma(1-2\varepsilon)}.
+ \;}
+\]
+The exact tensor is transverse, which checks both the tensor reduction and
+the relative numerator terms.
+
 \item
-The displayed tensor obeys \(q_\mu\Pi^{\mu\nu}=0\).  Its pole is canceled
-by the \(Z_3F_{\mu\nu}F^{\mu\nu}\) counterterm, and the electron pole by
-\((Z_2-1)\bar\psi i\slashed\partial\psi\), with the values found in
-parts 2 and 3.
+From the defining integral,
+\[
+\begin{aligned}
+ \Gamma(1-\varepsilon)
+ &=\int_0^\infty dx\,x^{-\varepsilon}e^{-x}\\
+ &=\int_0^\infty dx\,e^{-x}
+ \left[1-\varepsilon\log x+O(\varepsilon^2)\right]\\
+ &=1+\gamma_E\varepsilon+O(\varepsilon^2),
+\end{aligned}
+\]
+where the last equality is exactly definition (21).  This proves (22).
+
+\item
+Equation (22), with \(\varepsilon\) replaced by \(-\varepsilon\) or
+\(2\varepsilon\), gives
+\[
+ \Gamma(1+\varepsilon)=1-\gamma_E\varepsilon+O(\varepsilon^2),
+ \qquad
+ \Gamma(1-2\varepsilon)=1+2\gamma_E\varepsilon
+ +O(\varepsilon^2).
+\]
+Thus
+\[
+ \frac{\Gamma(1-\varepsilon)^2\Gamma(1+\varepsilon)}
+ {\Gamma(1-2\varepsilon)}
+ =1-\gamma_E\varepsilon+O(\varepsilon^2).
+\]
+Set
+\[
+ L_p\equiv\log\!\left(\frac{p^2-i0}{4\pi}\right),
+ \qquad
+ \left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ =1-\varepsilon L_p+O(\varepsilon^2).
+\]
+The rational factors expand as
+\[
+ \frac{1-\varepsilon}{1-2\varepsilon}
+ =1+\varepsilon+O(\varepsilon^2),
+ \qquad
+ \frac{4(1-\varepsilon)}{(3-2\varepsilon)(1-2\varepsilon)}
+ =\frac43\left(1+\frac53\varepsilon\right)
+ +O(\varepsilon^2).
+\]
+Therefore, after dropping terms that vanish with \(\varepsilon\),
+\[
+ \boxed{\;
+ \Sigma(p^2)
+ =-\frac{ie^2}{(4\pi)^2}\slashed p
+ \left[\frac1\varepsilon+1-\gamma_E-L_p\right]
+ +O(\varepsilon).
+ \;}
+\]
+and
+\[
+ \boxed{\;
+ \Pi^{\mu\nu}(p^2)
+ =-\frac{e^2}{12\pi^2}
+ (p^2\eta^{\mu\nu}-p^\mu p^\nu)
+ \left[\frac1\varepsilon+\frac53-\gamma_E-L_p\right]
+ +O(\varepsilon).
+ \;}
+\]
+If one inserts the conventional dimensional-regularization scale through
+\(e^2\mapsto e^2\mu^{2\varepsilon}\), replace
+\(L_p\) by \(\log[(p^2-i0)/(4\pi\mu^2)]\).  This restores a dimensionless
+logarithm without changing the source's requested Laurent coefficients.
 \end{enumerate}
 
 \SupplementarySolution{5}{Euclidean Master Integrals and Shifted Tensor Integrals}

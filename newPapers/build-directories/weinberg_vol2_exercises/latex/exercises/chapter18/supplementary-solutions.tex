@@ -52,59 +52,154 @@
     triviality problem.
   \end{enumerate}
 
-  \SupplementarySolution{2}{Thresholds, Simple Poles, and Characteristic Curves}
+  \SupplementarySolution{2}{Wilsonian Flow with Cubic and Quartic Interactions}
   \begin{enumerate}
     \item[(a)]
-    One active unit-charge Dirac fermion gives
-    \(d\alpha^{-1}/d\ln\mu=-2/(3\pi)\).  There is no running in the
-    assumed low-energy effective theory below \(m_1\).  Matching
-    continuously gives
-    \[
-      \alpha^{-1}(m_2)=\alpha^{-1}(\mu_0)
-        -\frac{2}{3\pi}\ln\left(\frac{m_2}{m_1}\right).
-    \]
-    Above \(m_2\), both fermions contribute, so
-    \[
-      \boxed{\alpha^{-1}(E)=\alpha^{-1}(\mu_0)
-        -\frac{2}{3\pi}\left[
-          \ln\left(\frac{m_2}{m_1}\right)
-          +2\ln\left(\frac{E}{m_2}\right)\right].}
-    \]
-    Finite matching constants and threshold smoothing are beyond this
-    step-function approximation.
+    \begin{enumerate}
+      \item[(i)] Choose \(\zeta>1\), split the field into retained and shell
+      modes,
+      \[
+        \phi=\phi^-+\phi^+,
+        \qquad
+        |\mathbf k|<\frac{\Lambda}{\zeta}\quad\hbox{or}\quad
+        \frac{\Lambda}{\zeta}<|\mathbf k|<\Lambda,
+      \]
+      and integrate over \(\phi^+\).  Next rescale momenta
+      \(\mathbf k'=\zeta\mathbf k\), equivalently
+      \(\mathbf x'=\mathbf x/\zeta\), to restore the cutoff to
+      \(\Lambda\).  Finally rescale the retained field so that the kinetic
+      term again has its chosen normalization.  The resulting local action
+      has the same symmetry-allowed operator basis but new coefficients.
+      Repetition composes these maps, and therefore traces a trajectory in
+      coupling space.
+
+      \item[(ii)] With \(s=\ln\zeta\) and dimensionless couplings
+      \(u^I(s)\), define
+      \[
+        \beta^I(\mathbf u)=\frac{du^I}{ds}.
+      \]
+      At a fixed point \(\mathbf u_*\), all beta functions vanish.  For
+      \(\delta u^I=u^I-u_*^I\),
+      \[
+        \frac{d\delta u^I}{ds}=M^I{}_{J}\delta u^J+\cdots,
+        \qquad
+        M^I{}_{J}=\left.
+          \frac{\partial\beta^I}{\partial u^J}\right|_{\mathbf u_*}.
+      \]
+      If \(M V_r=y_rV_r\), the corresponding scaling field behaves as
+      \(e^{y_rs}\).  The numbers \(y_r\) are the RG eigenvalues, or
+      coupling scaling dimensions, in this coarse-graining convention.
+
+      \item[(iii)] A coupling is relevant, irrelevant, or marginal when
+      \(y_r\) is respectively positive, negative, or zero.  Nonlinear terms
+      decide the fate of a marginal direction.  The critical surface is the
+      set of microscopic couplings whose RG trajectories approach the same
+      infrared fixed point.  Irrelevant differences between microscopic
+      models decay along this surface, so long-distance observables depend
+      only on the fixed point and its relevant scaling fields.  This is the
+      RG explanation of universality.
+    \end{enumerate}
+
     \item[(b)]
-    Differentiating at fixed bare coupling gives
+    Let \(\mathcal S\) denote the eliminated shell and write
     \[
-      0=\rho\epsilon\left(g+\frac{ag^2}{\epsilon}\right)
-        +\beta(g,\epsilon)
-         \left(1+\frac{2ag}{\epsilon}\right)+O(g^3).
+      \begin{aligned}
+        I_1&=\int_{\mathcal S}\frac{d^dq}{(2\pi)^d}\,G_0(\mathbf q),\\
+        I_2(\mathbf p)&=\int\frac{d^dq}{(2\pi)^d}\,
+          \chi_{\mathcal S}(\mathbf q)\chi_{\mathcal S}(\mathbf q+\mathbf p)\\
+        &\hspace{27mm}\times
+          G_0(\mathbf q)G_0(\mathbf q+\mathbf p),
+      \end{aligned}
     \]
-    Put
-    \(\beta=-\rho\epsilon g+\beta_2g^2+O(g^3)\).  At order \(g^2\),
-    the three contributions are
-    \(\rho ag^2+\beta_2g^2-2\rho ag^2\), so
-    \(\beta_2=\rho a\).  Therefore
+    where \(\chi_{\mathcal S}\) is the shell characteristic function.
+    The Wilson free energy follows from the cumulant expansion
     \[
-      \boxed{\beta(g,\epsilon)
-        =-\rho\epsilon g+\rho a g^2+O(g^3),\qquad
-        \beta(g)=\rho a g^2+O(g^3).}
+      F_{\mathrm W}[\phi^-]=F_0[\phi^-]
+      +\langle F_{\mathrm{int}}\rangle_+
+      -\frac12\left(
+        \langle F_{\mathrm{int}}^2\rangle_+
+        -\langle F_{\mathrm{int}}\rangle_+^2
+      \right)+\cdots.
     \]
-    The residue of the simple pole is sufficient at this order.
-    \item[(c)]
-    Along a characteristic, the boundary coupling evolves according to
-    \(dg/dL=bg^2\).  With value \(g\) at \(L=0\), this gives
-    \[
-      F(L,g)=\frac{g}{1-bgL}.
-    \]
-    Direct differentiation verifies
-    \((-\partial_L+bg^2\partial_g)F=0\) and \(F(0,g)=g\).
-    Expanding,
-    \[
-      \boxed{F(L,g)=\sum_{n=0}^{\infty}b^n g^{n+1}L^n.}
-    \]
-    Thus the coefficient of \(g^{n+1}L^n\) is \(b^n\).  A one-loop
-    beta-function has fixed an infinite sequence of perturbative
-    logarithms.
+    \begin{enumerate}
+      \item[(i)] At first order in \(g_0\), the term with two retained and
+      two shell fields is
+      \[
+        g_0\int d^dx\,6(\phi^-)^2
+          \langle(\phi^+)^2\rangle_+
+        =6g_0I_1\int d^dx\,(\phi^-)^2.
+      \]
+      Since the mass term is \(\mu^2\phi^2/2\), this gives
+      \(\delta\mu_g^2=12g_0I_1\).
+
+      The leading quadratic term from the cubic interaction comes from two
+      vertices, each supplying one retained field and two shell fields.
+      There are three choices at each vertex and two connected Wick
+      contractions between them.  Thus
+      \[
+        \begin{aligned}
+        &-\frac12\lambda_0^2(3)(3)(2)
+          \int d^dx\,d^dy\,
+            \phi^-(x)\phi^-(y)G_+(x-y)^2\\
+        &\hspace{22mm}
+          =-9\lambda_0^2\int d^dx\,d^dy\,
+            \phi^-(x)\phi^-(y)G_+(x-y)^2.
+        \end{aligned}
+      \]
+      Comparing again with the quadratic normalization gives, at external
+      momentum \(\mathbf p\),
+      \[
+        \delta\mu_\lambda^2(\mathbf p)
+          =-18\lambda_0^2I_2(\mathbf p).
+      \]
+      Hence, before the coordinate and field rescalings,
+      \[
+        \boxed{\begin{aligned}
+          \mu'^2={}&\mu_0^2
+            +12g_0\int_{\mathcal S}\frac{d^dq}{(2\pi)^d}
+              \frac{1}{\mathbf q^2+\mu_0^2}\\
+          &-18\lambda_0^2
+            \int_{\mathcal S}\frac{d^dq}{(2\pi)^d}
+              \frac{1}{(\mathbf q^2+\mu_0^2)^2}
+            +\cdots.
+        \end{aligned}}
+      \]
+      In the last integral the zero-momentum limit was taken; more
+      precisely both internal momenta must lie in \(\mathcal S\), as in
+      \(I_2(\mathbf p)\).  The cubic interaction also produces the linear
+      term \(3\lambda_0I_1\int d^dx\,\phi^-\).  Thus \(\phi=0\) is not a
+      stationary background unless that tadpole is cancelled or the field
+      is shifted; the boxed expression is the quadratic coefficient in the
+      unshifted Wilson action requested here.
+
+      \item[(ii)] Two cubic vertices can supply four external legs and be
+      joined by one internal line.  Therefore the first correction to the
+      quartic coupling is of order \(\lambda_0^2\):
+      \begin{center}
+      \begin{tikzpicture}[baseline=(current bounding box.center),scale=0.78]
+        \coordinate (v1) at (-0.9,0);
+        \coordinate (v2) at (0.9,0);
+        \draw (-2.2,0.9)--(v1);
+        \draw (-2.2,-0.9)--(v1);
+        \draw (v1)--(v2);
+        \draw (v2)--(2.2,0.9);
+        \draw (v2)--(2.2,-0.9);
+        \fill (v1) circle (2pt);
+        \fill (v2) circle (2pt);
+        \node[below=3pt] at (v1) {$\lambda_0$};
+        \node[below=3pt] at (v2) {$\lambda_0$};
+      \end{tikzpicture}
+      \end{center}
+      The three choices of channel are obtained by permuting the four
+      external momenta.  In a sharp shell implementation the exchanged
+      momentum must lie in the eliminated shell.
+
+      \item[(iii)] When \(\lambda_0=0\), both the Gaussian part and the
+      \(g_0\phi^4\) interaction are invariant under
+      \(\phi\mapsto-\phi\).  Integrating out modes preserves this symmetry,
+      so no \(\phi^3\) operator is generated at any order in \(g_0\).
+      There is therefore no lowest nonzero order.
+    \end{enumerate}
   \end{enumerate}
 
   \SupplementarySolution{3}{Fixed-Point Stability and Scheme Independence}
@@ -162,153 +257,405 @@
     nonsingular at the fixed point, so that \(S^{-1}\) exists.
   \end{enumerate}
 
-  \SupplementarySolution{4}{Marginal Directions and Ultraviolet Critical Surfaces}
+  \SupplementarySolution{4}{The \(O(N)\) Nonlinear Sigma Model Near Two Dimensions}
   \begin{enumerate}
-    \item[(a)]
-    The solutions are
+    \item[(a)] Since \(\mathbf n\) has fixed unit length, it is
+    dimensionless.  Requiring the free energy to be dimensionless gives
     \[
-      x(\mu)=x_0\frac{\mu_0}{\mu},\qquad
-      y(\mu)=\frac{y_0}{
-        1-a y_0\ln(\mu/\mu_0)}.
+      [g]=[\text{momentum}]^{\,2-d},
+      \qquad [g]_{\mathrm{mass}}=2-d.
     \]
-    The \(x\) direction is ultraviolet attractive.  For \(a>0\), negative
-    \(y_0\) approaches zero in the ultraviolet, while positive \(y_0\)
-    runs away; the infrared behavior is reversed.  For \(a<0\), the two
-    sides interchange.  Since the stability eigenvalue in the \(y\)
-    direction is exactly zero, only the quadratic beta-function term
-    reveals this marginally attractive or repulsive behavior.
-    \item[(b)]
-    In the convention
-    \(\mu\,d\delta g/d\mu=M\delta g\), a negative eigenvalue gives a
-    component that vanishes as \(\mu\to\infty\).  There are three such
-    eigenvalues here: \(-4,-1,-0.3\).  Therefore
+    Thus \(g\) is classically marginal in two dimensions.
+
+    \item[(b)] The constraint gives
+    \(\sigma=\sqrt{1-\boldsymbol\pi^2}\) in a coordinate patch on the
+    target sphere.  Consequently
     \[
-      \boxed{\dim\mathcal S_{\rm UV}=3,\qquad
-        {\rm codim}\,\mathcal S_{\rm UV}=3.}
+      \partial_i\sigma
+        =-\frac{\boldsymbol\pi\cdot\partial_i\boldsymbol\pi}
+          {\sqrt{1-\boldsymbol\pi^2}},
     \]
-    The coefficients of the three attractive eigenvectors are the three
-    independent parameters labeling asymptotically safe trajectories.
-    Components along the three positive-eigenvalue directions must be
-    tuned to zero.
-    \item[(c)]
-    With the anomalous dimension convention of the chapter, the
-    dimensionless mass satisfies
+    and
     \[
-      \mu\frac{d\widehat m}{d\mu}
-        =(-1-\gamma_m)\widehat m.
+      (\partial_i\mathbf n)^2
+      =(\partial_i\boldsymbol\pi)^2
+       +\frac{(\boldsymbol\pi\cdot
+          \partial_i\boldsymbol\pi)^2}{1-\boldsymbol\pi^2}.
     \]
-    If \(\gamma_m\) is constant at the fixed point,
+    Substitution proves the stated exact \(\boldsymbol\pi\)-space free
+    energy.
+
+    \item[(c)] To the order needed,
     \[
-      \boxed{\widehat m(\mu)=\widehat m(\mu_0)
-        \left(\frac{\mu}{\mu_0}\right)^{-1-\gamma_m}.}
+      F=\frac{1}{2g_0}\int d^dx\left[
+        (\partial_i\boldsymbol\pi)^2
+        +(\pi_a\partial_i\pi_a)(\pi_b\partial_i\pi_b)
+        +O(\pi^6)
+      \right].
     \]
-    The mass becomes negligible in the ultraviolet when
-    \(1+\gamma_m>0\).  If this inequality is reversed it grows as a
-    dimensionless perturbation; equality makes it marginal and requires
-    examination of higher-order terms.
+    Split \(\boldsymbol\pi=\boldsymbol\pi^-+\boldsymbol\pi^+\).
+    Contracting the two undifferentiated shell fields in the quartic term
+    gives the retained kinetic contribution
+    \[
+      \frac{1}{2g_0}\int d^dx\,
+        \bigl\langle\pi_a^+\pi_b^+\bigr\rangle_+
+        (\partial_i\pi_a^-)(\partial_i\pi_b^-)
+      =\frac{I_d}{2}\int d^dx\,
+        (\partial_i\boldsymbol\pi^-)^2.
+    \]
+    Here
+    \(\langle\pi_a^+(x)\pi_b^+(x)\rangle_+
+      =g_0\delta_{ab}I_d\).
+    The quadratic part of the Wilson free energy is therefore
+    \[
+      F_{\mathrm W}^{(2)}
+      =\frac12\left(\frac{1}{g_0}+I_d\right)
+        \int d^dx\,(\partial_i\boldsymbol\pi^-)^2.
+    \]
+    The supplied wavefunction rescaling means
+    \(\boldsymbol\pi^-=A\boldsymbol\pi'\), with
+    \[
+      A^2=1-(N-1)g_0I_d+O(g_0^2).
+    \]
+    Hence
+    \[
+      \left(\frac{1}{g_0}+I_d\right)A^2
+      =\frac{1}{g_0}+(2-N)I_d+O(g_0I_d^2).
+    \]
+    Finally set \(\mathbf x=\zeta\mathbf x'\).  The kinetic integral
+    acquires \(\zeta^{d-2}\), giving
+    \[
+      \boxed{
+      \frac{1}{g(\zeta)}=\zeta^{d-2}\left[
+        \frac{1}{g_0}+(2-N)I_d
+      \right].}
+    \]
+    The field-rescaling contribution is what changes the direct loop
+    coefficient into \(2-N\).
+
+    \item[(d)] With \(d=2+\epsilon\),
+    \[
+      I_d=\frac{\Omega_{d-1}}{(2\pi)^d}
+        \int_{\Lambda/\zeta}^{\Lambda}dq\,q^{d-3}
+      =\frac{\Omega_{d-1}}{(2\pi)^d}
+        \Lambda^\epsilon\frac{1-e^{-\epsilon s}}{\epsilon}.
+    \]
+    In an infinitesimal step,
+    \(dI_d/ds|_{s=0}
+      =\Omega_{d-1}\Lambda^\epsilon/(2\pi)^d\).  Differentiating the
+    result of part~(c) at \(s=0\) gives
+    \[
+      -\frac{1}{g^2}\frac{dg}{ds}
+      =\frac{\epsilon}{g}
+       -(N-2)\frac{\Omega_{d-1}}{(2\pi)^d}\Lambda^\epsilon,
+    \]
+    and therefore
+    \[
+      \boxed{
+      \frac{dg}{ds}=-\epsilon g
+       +(N-2)\frac{\Omega_{d-1}}{(2\pi)^d}
+        \Lambda^\epsilon g^2+O(g^3).}
+    \]
+    Since \(\Omega_1=2\pi\), the coefficient near \(d=2\) is
+    \(1/(2\pi)\), as quoted.
+
+    \item[(e)] To this order the zeros are
+    \[
+      \boxed{g_*^{(0)}=0,\qquad
+      g_*^{(c)}=
+        \frac{\epsilon(2\pi)^d}
+        {(N-2)\Omega_{d-1}\Lambda^\epsilon}
+        \simeq\frac{2\pi\epsilon}
+        {(N-2)\Lambda^\epsilon}.}
+    \]
+    The second zero is at positive temperature for \(N>2\).  For
+    \(N=2\) it is absent at this order, while for \(N<2\) its formal value
+    is negative.
+
+    \item[(f)] At the nonzero fixed point,
+    \[
+      \beta'(g_*^{(c)})=-\epsilon
+        +2(N-2)\frac{\Omega_{d-1}}{(2\pi)^d}
+          \Lambda^\epsilon g_*^{(c)}
+      =\epsilon.
+    \]
+    Thus a reduced-temperature displacement grows as
+    \(\delta g(s)=\delta g(0)e^{\epsilon s}\).  The RG evolution stops
+    at \(e^{s_\xi}\sim\xi/a\) when this displacement becomes order one,
+    so
+    \[
+      \boxed{\xi\propto|g-g_*^{(c)}|^{-1/\epsilon},
+      \qquad \nu=\frac{1}{\epsilon}.}
+    \]
+    For \(N>2\) and \(\epsilon>0\), the Gaussian point is the stable
+    zero-temperature phase rather than the finite-temperature critical
+    point.  At \(\epsilon=0\), the nonzero fixed point merges with the
+    origin and the one-loop flow gives essential rather than power-law
+    scaling,
+    \(\xi\sim a\exp[2\pi/((N-2)g)]\); a finite \(\nu\) is then not
+    defined by this approximation.
   \end{enumerate}
 
-  \SupplementarySolution{5}{Banks--Zaks Flow and Short-Distance Forces}
+  \SupplementarySolution{5}{Dimensional Transmutation in the Gross--Neveu Model}
   \begin{enumerate}
-    \item[(a)]
-    Besides \(g=0\), the two-loop beta-function vanishes at
+    \item[(a)] The kinetic term fixes
+    \([\psi]=[\bar\psi]=(D-1)/2\).  Therefore
+    \([\bar\psi\psi]=D-1\), and dimensionality of the Lagrangian gives
     \[
-      \boxed{\frac{g_*^2}{16\pi^2}=-\frac{b_0}{b_1}.}
+      \boxed{[g]_{\mathrm{mass}}=D-2(D-1)=2-D.}
     \]
-    This is perturbative when \(b_0/|b_1|\ll1\).  Differentiating and using
-    the fixed-point relation gives
+    The coupling is dimensionless at \(D=2\), so the massless classical
+    action has no intrinsic scale there.
+
+    \item[(b)] Applying the supplied identity gives
     \[
-      \beta'(g_*)=-3b_0\frac{g_*^2}{16\pi^2}
-        -5b_1\frac{g_*^4}{(16\pi^2)^2}
-        =\boxed{-\frac{2b_0^2}{b_1}>0}.
+      S[\psi,\sigma]=\int d^Dx\left[
+        \bar\psi^a(i\slashed\partial-\sigma)\psi^a
+        +\frac{N}{4g}\sigma^2
+      \right].
     \]
-    A displacement obeys
-    \(\delta g(\mu)\propto\mu^{\beta'(g_*)}\), so it vanishes as
-    \(\mu\to0\).  The Banks--Zaks zero is infrared attractive along the
-    gauge-coupling direction.
-    \item[(b)]
-    In four spacetime dimensions a static potential has mass dimension one.
-    At an exact fixed point there is no intrinsic scale, so scale invariance
-    permits only
+    Eliminating \(\sigma\) classically gives
+    \(\sigma=2g\bar\psi^a\psi^a/N\) and exactly recovers
+    \(-g(\bar\psi^a\psi^a)^2/N\), so the normalization and sign agree with
+    the original action.
+
+    Each flavor produces the same fermion determinant.  Hence
     \[
-      \boxed{V(r)=-\frac{\kappa_*}{r},}
+      \begin{aligned}
+        Z&=\int_{\mathcal C}\mathcal D\sigma\,
+          e^{iS_{\mathrm{eff}}[\sigma]},\\
+        S_{\mathrm{eff}}[\sigma]
+        &=N\left[
+          \int d^Dx\,\frac{\sigma^2}{4g}
+          -i\operatorname{Tr}\ln
+            (i\slashed\partial-\sigma+i0)
+        \right].
+      \end{aligned}
     \]
-    where the dimensionless coefficient depends on the fixed-point coupling
-    and the probe representation.  If an irrelevant displacement satisfies
-    \(\delta g(\mu)\propto\mu^\omega\), then at separation \(r\) the natural
-    scale is \(\mu\sim r^{-1}\).  Expanding \(\kappa(g)\) therefore gives
+    The trace includes spacetime and spinor indices.  Its variation gives
+    the saddle equation
     \[
-      \boxed{V(r)=-\frac{\kappa_*}{r}
-        \left[1+c\,r^{-\omega}
-        +O(r^{-2\omega})\right],}
+      \frac{\sigma(x)}{2g}
+      +i\operatorname{tr}_{\mathrm{spin}}
+        \langle x|(i\slashed\partial-\sigma+i0)^{-1}|x\rangle=0.
     \]
-    with a trajectory-dependent coefficient \(c\).
-    \item[(c)]
-    The leading momentum-space interaction is proportional to
-    \(-C_Fg^2(\mu)/\mathbf q^2\).  Choosing
-    \(\mu\sim|\mathbf q|\sim r^{-1}\) moves the large logarithms into the
-    running coupling.  For \(b_0>0\),
+    The whole effective action is proportional to \(N\); stationary-phase
+    configurations therefore dominate as \(N\to\infty\), while normalized
+    \(\sigma\) fluctuations are suppressed by powers of \(N^{-1/2}\).
+
+    For a translation-invariant saddle \(\sigma(x)=m\), Wick rotation gives
+    the effective potential per flavor
     \[
-      g^2(1/r)=\frac{8\pi^2}{
-        b_0\ln[1/(r\Lambda)]}.
+      \frac{V_{\mathrm{eff}}(m)}{N}
+      =\frac{m^2}{4g_B}
+       -\frac{d_\gamma}{2}
+        \int_{|p_E|<\Lambda}\frac{d^Dp_E}{(2\pi)^D}
+          \ln(p_E^2+m^2)+\text{constant},
     \]
-    The Fourier transform of the Coulomb kernel then gives, to leading-log
-    accuracy,
+    where \(d_\gamma=\operatorname{tr}\mathbf1\).  The factor
+    \(d_\gamma/2\) follows from
+    \(\det(\slashed p_E+m)=(p_E^2+m^2)^{d_\gamma/2}\).  Thus
     \[
-      \boxed{V(r)\simeq-\frac{C_Fg^2(1/r)}{4\pi r}
-        =-\frac{2\pi C_F}{
-        b_0\,r\ln[1/(r\Lambda)]}.}
+      m\left[
+        \frac{1}{2g_B}
+        -d_\gamma\int_{|p_E|<\Lambda}
+          \frac{d^Dp_E}{(2\pi)^D}\frac{1}{p_E^2+m^2}
+      \right]=0.
     \]
-    Corrections from the Fourier transform's range of momenta and from
-    higher beta-function coefficients are suppressed by additional inverse
-    logarithms.
+
+    In \(D=2\), take two-component spinors, so \(d_\gamma=2\).  For the
+    nonzero saddle,
+    \[
+      \begin{aligned}
+        \frac{1}{2g_B}&=2I_\Lambda(m),\\
+        I_\Lambda(m)&=\int_{|p_E|<\Lambda}
+          \frac{d^2p_E}{(2\pi)^2}\frac{1}{p_E^2+m^2}\\
+        &=\frac{1}{4\pi}\ln\left(
+          \frac{\Lambda^2+m^2}{m^2}\right).
+      \end{aligned}
+    \]
+    Equivalently,
+    \[
+      m^2=\frac{\Lambda^2}{e^{\pi/g_B}-1}
+      \underset{\Lambda\gg|m|}{\simeq}
+      \Lambda^2e^{-\pi/g_B}.
+    \]
+    Introduce the renormalized coupling at a reference scale \(\mu\) by
+    \[
+      \frac{1}{g_R(\mu)}
+        =\frac{1}{g_B}-\frac{2}{\pi}\ln\left(\frac{\Lambda}{\mu}\right).
+    \]
+    Removing the cutoff at fixed \(g_R(\mu)\) turns the gap equation into
+    \[
+      \boxed{|m|=\mu
+        \exp\left[-\frac{\pi}{2g_R(\mu)}\right].}
+    \]
+    The right-hand side is RG invariant: differentiation at fixed bare
+    coupling gives
+    \[
+      \mu\frac{dg_R}{d\mu}=-\frac{2}{\pi}g_R^2,
+    \]
+    and the running of \(g_R\) cancels that of \(\mu\) in the boxed
+    expression.  A dimensionless classical coupling has thus been exchanged
+    for a physical mass scale, which is dimensional transmutation.
+
+    At the saddle the fermion action is
+    \[
+      S_{\mathrm{saddle}}=\int d^2x\left[
+        \bar\psi^a(i\slashed\partial-m)\psi^a
+        +\frac{Nm^2}{4g_B}
+      \right].
+    \]
+    Therefore the leading large-\(N\) dynamics consists of \(N\) fermions
+    with dynamically generated mass \(|m|\), together with a vacuum-energy
+    term; interactions mediated by \(\sigma\) fluctuations enter at
+    subleading order in \(1/N\).  In the massless theory the discrete chiral
+    transformation sends \(\bar\psi\psi\mapsto-\bar\psi\psi\) and hence
+    \(\sigma\mapsto-\sigma\).  The two saddles \(m=\pm|m|\) select one of
+    the two vacua and spontaneously break that discrete symmetry in the
+    large-\(N\) limit.
   \end{enumerate}
 
-  \SupplementarySolution{6}{Heavy-Flavor Matching and Inclusive Running-Coupling Probes}
+  \SupplementarySolution{6}{Asymptotic Freedom, Unification, and \(SU(5)\)}
   \begin{enumerate}
-    \item[(a)]
-    Write the one-loop solutions on the two sides as
+    \item[(i)] Differentiating the supplied expression gives
     \[
-      \frac{1}{g_H^2(\mu)}
-        =\frac{b_H}{8\pi^2}\ln\left(\frac{\mu}{\Lambda_H}\right),
+      \frac{d}{d\ln\mu}\frac{1}{g^2(\mu)}
+        =\frac{2b_0}{3(4\pi)^2},
       \qquad
-      \frac{1}{g_L^2(\mu)}
-        =\frac{b_L}{8\pi^2}\ln\left(\frac{\mu}{\Lambda_L}\right).
+      \beta(g)\equiv\mu\frac{dg}{d\mu}
+        =-\frac{b_0}{3(4\pi)^2}g^3.
     \]
-    Continuity at \(\mu=M\) requires
-    \(b_H\ln(M/\Lambda_H)=b_L\ln(M/\Lambda_L)\).  Therefore
+    Asymptotic freedom means that the interaction becomes weak at
+    arbitrarily high renormalization scale, \(g(\mu)\to0\) as
+    \(\mu\to\infty\).  At one loop this requires
     \[
-      \boxed{\Lambda_L=M
-        \left(\frac{\Lambda_H}{M}\right)^{b_H/b_L}.}
+      \boxed{b_0>0
+      \quad\Longleftrightarrow\quad
+      11N_c-N_f-\frac12N_s>0.}
     \]
-    Here \(b_H=b_0^{(n_f)}\) and
-    \(b_L=b_0^{(n_f-1)}\).  Higher orders add a finite matching correction.
-    \item[(b)]
-    There are two active up-type flavors and three active down-type
-    flavors.  Including three colors,
+
+    \item[(ii)] Define \(\Lambda\) as the scale where the one-loop inverse
+    coupling extrapolates to zero.  The supplied formula gives
     \[
-      R=3\left[2\left(\frac23\right)^2+
-        3\left(-\frac13\right)^2\right]
-        =\boxed{\frac{11}{3}}.
+      \ln\left(\frac{\Lambda_{\mathrm{UV}}^2}{\Lambda^2}\right)
+        =\frac{3(4\pi)^2}{b_0g_0^2},
+      \qquad
+      \boxed{\Lambda=\Lambda_{\mathrm{UV}}
+        \exp\left[-\frac{3(4\pi)^2}{2b_0g_0^2}\right].}
     \]
-    The inclusive sum permits cancellation of soft and collinear
-    singularities between real and virtual contributions, so perturbative
-    corrections to \(R\) are infrared safe.  A specified isolated quark or
-    gluon state is colored and is not an infrared-safe observable; arbitrarily
-    soft or collinear radiation changes that exclusive state.
-    \item[(c)]
-    The electromagnetic current can create a quark--antiquark pair without
-    a QCD vertex, so the leading two-parton, and hence two-jet, rate is
-    order \(\alpha_s^0\).  A resolved third jet requires emission of a hard
-    gluon and therefore one QCD vertex in the amplitude:
+    Equivalently, at any perturbative reference scale \(\mu\),
     \[
-      \frac{\sigma_{3j}(E)}{\sigma_{2j}(E)}
-        =C_{\rm jet}\alpha_s(E)+O(\alpha_s^2).
+      \frac{1}{g^2(\mu)}
+        =\frac{b_0}{3(4\pi)^2}
+          \ln\left(\frac{\mu^2}{\Lambda^2}\right),
+      \qquad
+      \Lambda=\mu\exp\left[-
+        \frac{3(4\pi)^2}{2b_0g^2(\mu)}\right].
     \]
-    For the same infrared-safe jet definition at \(E_1<E_2\), the decrease
-    of this ratio tests \(\alpha_s(E_2)<\alpha_s(E_1)\).  No internal
-    hadron momentum distribution is required, since that distribution is
-    not itself infrared safe.
+    The divergence at \(\mu=\Lambda\) only signals the failure of the
+    one-loop weak-coupling approximation; in QCD it identifies the
+    nonperturbative scale.
+
+    \item[(iii)] For color \(SU(3)\), each generation contains two color
+    fundamentals in the weak doublet \(Q_L\), plus the two singlets
+    \(u_R\) and \(d_R\).  A right-handed fundamental may equivalently be
+    counted as a left-handed antifundamental, which has the same quadratic
+    index.  Thus
+    \[
+      N_f^{(3)}=4N_g,\qquad N_s^{(3)}=0,\qquad
+      b_s=33-4N_g.
+    \]
+    Strict positivity gives \(N_g<33/4\), so
+    \[
+      \boxed{N_{g,\max}^{SU(3)}=8.}
+    \]
+
+    For weak \(SU(2)\), each generation gives three quark doublets, one for
+    each color, and one lepton doublet.  The Standard Model Higgs is one
+    complex scalar doublet:
+    \[
+      N_f^{(2)}=4N_g,\qquad N_s^{(2)}=1,\qquad
+      b_w=22-4N_g-\frac12=\frac{43}{2}-4N_g.
+    \]
+    Therefore \(N_g<43/8\), and
+    \[
+      \boxed{N_{g,\max}^{SU(2)}=5.}
+    \]
+
+    \item[(iv)] Let
+    \[
+      L=\frac{1}{3(4\pi)^2}\ln\left(\frac{M^2}{\mu^2}\right).
+    \]
+    Running down from \(M\) gives, for each factor,
+    \[
+      \frac{1}{g_i^2(\mu)}=\frac{1}{g_i^2(M)}-b_iL.
+    \]
+    At the unification scale,
+    \[
+      \frac{1}{g_s^2(M)}=\frac{1}{g_w^2(M)}
+        =\frac{3}{5g_Y^2(M)}.
+    \]
+    Hence
+    \[
+      \frac{1}{g_s^2(\mu)}-\frac{1}{g_w^2(\mu)}
+        =(b_w-b_s)L,
+    \]
+    while
+    \[
+      \frac{3}{5g_Y^2(\mu)}-\frac{1}{g_w^2(\mu)}
+        =\left(b_w-\frac35b_Y\right)L.
+    \]
+    Eliminating \(L\) yields exactly
+    \[
+      \boxed{
+      \frac{1}{g_s^2(\mu)}-\frac{1}{g_w^2(\mu)}
+      =\frac{b_s-b_w}{\tfrac35b_Y-b_w}\left[
+        \frac{3}{5g_Y^2(\mu)}-\frac{1}{g_w^2(\mu)}
+      \right].}
+    \]
+
+    \item[(v)] A convenient embedding is
+    \[
+      (e^{i\theta},U_2,U_3)\longmapsto
+      \begin{pmatrix}
+        e^{-i\theta/3}U_3&0\\
+        0&e^{i\theta/2}U_2
+      \end{pmatrix}\in SU(5),
+    \]
+    because \(\det U_2=\det U_3=1\) and the two phases have total
+    determinant \(e^{-i\theta}e^{i\theta}=1\).  Globally this map has a
+    discrete kernel, so the embedded Standard Model group is more precisely
+    \([SU(3)\times SU(2)\times U(1)_Y]/\mathbb Z_6\); its Lie algebra is the
+    requested direct sum.
+
+    In the \(\mathbf5\), the conventional hypercharge matrix is
+    \[
+      Y=\operatorname{diag}\left(
+        -\frac13,-\frac13,-\frac13,\frac12,\frac12
+      \right),
+      \qquad \operatorname{tr}Y^2=\frac56.
+    \]
+    If the \(SU(5)\) generators obey
+    \(\operatorname{tr}(T^AT^B)=\delta^{AB}/2\), the normalized generator
+    in the hypercharge direction is
+    \[
+      T_Y=\sqrt{\frac35}\,Y,
+      \qquad \operatorname{tr}T_Y^2=\frac12.
+    \]
+    The \(SU(5)\) covariant derivative contains
+    \(-ig_5B_\mu T_Y\), while the Standard Model convention contains
+    \(-ig_YB_\mu Y\).  Therefore
+    \[
+      g_Y=\sqrt{\frac35}\,g_5,
+      \qquad
+      g_s=g_w=g_5,
+    \]
+    and consequently
+    \[
+      \boxed{g_s^2=g_w^2=\frac53g_Y^2}
+    \]
+    at the \(SU(5)\)-symmetric scale.
   \end{enumerate}
 
   \SupplementarySolution{7}{The Wilson--Fisher Fixed Point and Its Thermal Exponent}

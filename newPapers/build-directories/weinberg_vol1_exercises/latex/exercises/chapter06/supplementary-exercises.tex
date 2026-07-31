@@ -1,60 +1,344 @@
 \chapterbackmatter{Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementaryExercise{1}{The Scalar Feynman Propagator and Oriented Charged Lines}
-  {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Assignment 4, Problem 1.)}
+\SupplementaryExercise{1}{Properties of Wightman and Feynman Functions}
+  {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Relativistic Quantum
+  Field Theory I, Spring 2023, Assignment 4, Notes 1--3 and Problem 1,
+  pp. 1--3.)}
   {mit-823-s23-ps4-ch6-curated-parent-1}
-\begin{enumerate}
-\item
-For a free real scalar field, prove from translation and Lorentz invariance
-that the Feynman function depends only on \((x-y)^2\), apart from the
-boundary-value information at timelike separation.  Explain why proper
-orthochronous Lorentz transformations preserve that information.
-\item
-Starting from the four-momentum representation in the mostly-plus
-convention, act with \(\Box-m^2\) on \(\Delta_F(x-y)\).  Derive the
-delta-function source and state precisely which sign follows from the
-chapter's Fourier convention.
-\item
-Perform the \(q^0\) contour integral in the scalar Feynman propagator.
-Show explicitly that positive-frequency propagation occurs for
-\(x^0>y^0\) and negative-frequency propagation for \(x^0<y^0\).
-\item
-For a free complex scalar field, evaluate the two correlators
+For this problem use the following definitions and transformation laws.  For a
+complex scalar field \(\phi\), define
 \[
- \bra{\Omega}T\{\phi(x)\phi^\dagger(y)\}\ket{\Omega},
+ \begin{split}
+ G_+(x,x')&=\bra{\Omega}\phi(x)\phi^\dagger(x')\ket{\Omega},\\
+ G_R(x,x')&=\theta(x^0-x'^0)\Delta(x,x'),\\
+ G_A(x,x')&=-\theta(x'^0-x^0)\Delta(x,x'),
+ \end{split}
  \qquad
- \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}.
+ \Delta(x,x')=\bra{\Omega}[\phi(x),\phi^\dagger(x')]\ket{\Omega},
 \]
-Relate the answer to the orientation assigned to an internal charged-scalar
-line.
+and
+\[
+ \begin{split}
+ G_F(x,x')
+ &=\bra{\Omega}T\{\phi(x)\phi^\dagger(x')\}\ket{\Omega}\\
+ &=\theta(x^0-x'^0)\bra{\Omega}\phi(x)\phi^\dagger(x')\ket{\Omega}
+ +\theta(x'^0-x^0)\bra{\Omega}\phi^\dagger(x')\phi(x)\ket{\Omega}.
+ \end{split}
+\]
+These definitions can differ from those in other texts by an overall factor
+of \(i\) or by a minus sign.
+
+The unitary operator generating a spacetime translation \(y^\mu\) is
+\[
+ U_y=e^{-iP^\mu y_\mu}=e^{iHy^0-iP^iy_i},
+ \qquad P^\mu=(H,\mathbf P),
+\]
+where the vacuum energy is understood to have been subtracted from \(H\).  For
+an on-shell momentum \(k^\mu=(\omega_{\mathbf k},\mathbf k)\),
+the free complex field and its adjoint have the mode expansions
+\[
+ \phi(x)=\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[a(\mathbf k)e^{ik\cdot x}
+       +b^\dagger(\mathbf k)e^{-ik\cdot x}\right],
+\]
+\[
+ \phi^\dagger(x)=\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[b(\mathbf k)e^{ik\cdot x}
+       +a^\dagger(\mathbf k)e^{-ik\cdot x}\right],
+ \qquad \omega_{\mathbf k}=\sqrt{\mathbf k^2+m^2}.
+\]
+The antiparticle oscillators transform in the same way as the particle
+oscillators.  Explicitly,
+\[
+ \begin{aligned}
+ U_y a(\mathbf k)U_y^\dagger&=e^{ik\cdot y}a(\mathbf k),&
+ U_y a^\dagger(\mathbf k)U_y^\dagger&=e^{-ik\cdot y}a^\dagger(\mathbf k),\\
+ U_y b(\mathbf k)U_y^\dagger&=e^{ik\cdot y}b(\mathbf k),&
+ U_y b^\dagger(\mathbf k)U_y^\dagger&=e^{-ik\cdot y}b^\dagger(\mathbf k).
+ \end{aligned}
+\]
+The operator generating a Lorentz transformation is
+\[
+ U_\Lambda=e^{\frac{i}{2}\omega_{\mu\nu}M^{\mu\nu}},
+ \qquad \omega_{\mu\nu}=-\omega_{\nu\mu},
+\]
+where the \(\omega_{\mu\nu}\) are finite constants.  It acts as
+\[
+ \begin{split}
+ U_\Lambda a(\mathbf k)U_\Lambda^\dagger
+ &=\sqrt{\frac{\omega_{\Lambda\mathbf k}}{\omega_{\mathbf k}}}\,
+   a(\Lambda\mathbf k),\\
+ U_\Lambda a^\dagger(\mathbf k)U_\Lambda^\dagger
+ &=\sqrt{\frac{\omega_{\Lambda\mathbf k}}{\omega_{\mathbf k}}}\,
+   a^\dagger(\Lambda\mathbf k),
+ \\
+ U_\Lambda b(\mathbf k)U_\Lambda^\dagger
+ &=\sqrt{\frac{\omega_{\Lambda\mathbf k}}{\omega_{\mathbf k}}}\,
+   b(\Lambda\mathbf k),\\
+ U_\Lambda b^\dagger(\mathbf k)U_\Lambda^\dagger
+ &=\sqrt{\frac{\omega_{\Lambda\mathbf k}}{\omega_{\mathbf k}}}\,
+   b^\dagger(\Lambda\mathbf k),
+ \end{split}
+\]
+where \(\Lambda\mathbf k\) denotes the spatial part of \(\Lambda k\).
+
+\begin{enumerate}
+\item For a free scalar field theory, use the two oscillator transformation
+laws above to show that
+\[
+ U_\Lambda\phi(x)U_\Lambda^\dagger=\phi(\Lambda x).
+\]
+
+\item In this and the remaining parts, consider a general interacting theory,
+for which the free-field mode expansion of \(\phi\) does not apply.  If the
+system is translation and Lorentz invariant, the result of the preceding part
+and
+\[
+ U_y\phi(x)U_y^\dagger=\phi(x+y)
+\]
+remain valid.\footnote{The latter relation can be proved by writing
+\(H\), \(P^i\), and \(M^{\mu\nu}\) in terms of \(\phi\) and its conjugate
+momentum and using their canonical commutation relations.}  Use translation
+invariance to prove
+\[
+ G_+(x,x')=G_+(x-x').
+\]
+The same conclusion holds for all the two-point functions defined above, but
+you need not prove each case separately.
+
+\item Use Lorentz invariance and the preceding result to show that
+\[
+ G_+(x,x')=
+ \theta(x^0-x'^0)G\bigl((x-x')^2\bigr)
+ +\theta(x'^0-x^0)G^*\bigl((x-x')^2\bigr),
+\]
+where \(G(\xi)\) is a function satisfying
+\[
+ G(\xi)=G^*(\xi),\qquad \xi>0.
+\]
+
+\item Now take \(\phi\) to be real and show that
+\[
+ G_F(x,x')=G\bigl((x-x')^2\bigr),
+\]
+where \(G\) is the same function as in the preceding part.
 \end{enumerate}
 
-\SupplementaryExercise{2}{Particle Production by a Classical Source}
-  {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Assignment 4, Problem 2.)}
+\SupplementaryExercise{2}{Particle Production by an External Source}
+  {(Adapted from Hong Liu and MIT OpenCourseWare, 8.323 Relativistic Quantum
+  Field Theory I, Spring 2023, Assignment 4, Problem 2, pp. 3--6.)}
   {mit-823-s23-ps4-ch6-curated-parent-2}
+This is the simplest example in which the \(S\)-matrix can be calculated
+exactly; the source sheet develops it from Peskin and Schroeder's example on
+p.~32 and Problem 4.1.  Consider a free real scalar field coupled to a fixed
+external source \(J(x)\), with Lagrangian density
+\[
+ \mathcal L=-\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2+J(x)\phi
+ =\mathcal L_0+J(x)\phi.
+\]
+Assume
+\[
+ J(t,\mathbf x)\longrightarrow0
+ \quad\text{as}\quad t\longrightarrow\pm\infty
+ \quad\text{or}\quad |\mathbf x|\longrightarrow\infty,
+\]
+and define
+\[
+ J(p)=\int d^4x\,e^{-ip\cdot x}J(x).
+\]
+Suppose that \(J(p)\) is analytic in the complex \(p^0\) plane.
+For reference, the Green functions used below are
+\[
+ \begin{split}
+ \Delta(x,x')&=\bra{\Omega}[\phi(x),\phi(x')]\ket{\Omega},\\
+ G_R(x,x')&=\theta(x^0-x'^0)\Delta(x,x'),\\
+ G_A(x,x')&=-\theta(x'^0-x^0)\Delta(x,x'),\\
+ G_F(x,x')&=\bra{\Omega}T\{\phi(x)\phi(x')\}\ket{\Omega}.
+ \end{split}
+\]
+
+Because \(J(x)\) depends on time, the system does not have time-translation
+symmetry.  In particular, the vacuum at past infinity is generally different
+from the vacuum at future infinity.  Suppose the system starts in the past
+vacuum \(\InKet{0}\).  In the Heisenberg picture it remains in this same state
+at all times.  At future infinity it is therefore not the ground state,
+because \(\InKet{0}\ne\OutKet{0}\), and it contains particle excitations.  In
+other words, turning on the source has produced particles.  We shall find the
+relation between the past and future vacua and calculate the probability for
+producing particles.  In the far past the field has the expansion
+\[
+ \phi(x)=\phi_{\mathrm{in}}(x)\equiv
+ \int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[a_{\mathrm{in}}(\mathbf k)e^{ik\cdot x}
+ +a_{\mathrm{in}}^\dagger(\mathbf k)e^{-ik\cdot x}\right],
+ \qquad x^0\longrightarrow-\infty,
+\]
+where \(k^0=\omega_{\mathbf k}=\sqrt{\mathbf k^2+m^2}\) and
+\[
+ [a_{\mathrm{in}}(\mathbf k),a_{\mathrm{in}}^\dagger(\mathbf k')]
+ =(2\pi)^3\delta^3(\mathbf k-\mathbf k').
+\]
+Define
+\[
+ a_{\mathrm{in}}(\mathbf k)\InKet{0}=0,
+ \qquad \InBra{0}\InKet{0}=1,
+\]
+and
+\[
+ \InKet{\mathbf k_1,\ldots,\mathbf k_n}
+ =\sqrt{2\omega_{\mathbf k_1}}\cdots\sqrt{2\omega_{\mathbf k_n}}\,
+ a_{\mathrm{in}}^\dagger(\mathbf k_1)\cdots
+ a_{\mathrm{in}}^\dagger(\mathbf k_n)\InKet{0}.
+\]
+Thus
+\[
+ \InBra{\mathbf k}\InKet{\mathbf k'}
+ =2\omega_{\mathbf k}(2\pi)^3\delta^3(\mathbf k-\mathbf k').
+\]
+Similarly, in the far future,
+\[
+ \phi(x)=\phi_{\mathrm{out}}(x)\equiv
+ \int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ \left[a_{\mathrm{out}}(\mathbf k)e^{ik\cdot x}
+ +a_{\mathrm{out}}^\dagger(\mathbf k)e^{-ik\cdot x}\right],
+ \qquad x^0\longrightarrow+\infty,
+\]
+with
+\[
+ a_{\mathrm{out}}(\mathbf k)\OutKet{0}=0,
+ \qquad \OutBra{0}\OutKet{0}=1,
+\]
+and
+\[
+ \OutKet{\mathbf k_1,\ldots,\mathbf k_n}
+ =\sqrt{2\omega_{\mathbf k_1}}\cdots\sqrt{2\omega_{\mathbf k_n}}\,
+ a_{\mathrm{out}}^\dagger(\mathbf k_1)\cdots
+ a_{\mathrm{out}}^\dagger(\mathbf k_n)\OutKet{0}.
+\]
+Because of the external source,
+\(a_{\mathrm{in}}(\mathbf k)\ne a_{\mathrm{out}}(\mathbf k)\).  The full field
+for \(-\infty<x^0<+\infty\) interpolates between the two asymptotic
+expansions.  Take the initial state to be \(\InKet{0}\).
+
 \begin{enumerate}
-\item Solve the sourced Klein--Gordon equation with a retarded Green
-function plus a homogeneous solution.
-\item Choose the homogeneous field to be the incoming free field and
-extract its incoming oscillator coefficients.
-\item Take the late-time limit and derive the exact shift relating
-\(a_{\rm out}(\mathbf p)\) to \(a_{\rm in}(\mathbf p)\).
-\item Express the mean number of produced particles as an on-shell
-integral and denote it by \(\lambda\).
-\item Show that the source-induced scattering operator can be written
-as \(S=e^{iB}\), with \(B\) linear in \(a_{\rm in}\) and
-\(a_{\rm in}^\dagger\).
-\item Determine the state \(S\InKet{0}\) and its coherent-state
-eigenvalue.
-\item Use Baker--Campbell--Hausdorff to normal order \(S\), including
-the c-number factor.
-\item Compute the vacuum-survival probability.
-\item Compute the amplitude for an arbitrary specified \(n\)-particle
-out-state.
-\item Sum over \(n\)-particle phase space and prove that the multiplicity
-distribution is Poisson with mean \(\lambda\).
+\item For general \(x^0\), solve the classical field equation and show that
+the solution can be written
+\[
+ \phi(x)=\phi_0(x)+i\int d^4x'\,G(x-x')J(x'),
+\]
+where
+\[
+ (-\Box+m^2)\phi_0(x)=0,
+ \qquad
+ (-\Box+m^2)G(x-x')=-i\delta^4(x-x').
+\]
+Which of the retarded, advanced, and Feynman Green functions must be used?
+
+\item Promote \(\phi\) to a quantum operator, treating the expression in
+part (a) as an operator equation.  Show that \(\phi_0\) must be
+\(\phi_{\mathrm{in}}\).
+
+\item Evaluate the solution at \(x^0\to+\infty\) and find the relation between
+\(a_{\mathrm{out}}(\mathbf k)\) and \(a_{\mathrm{in}}(\mathbf k)\).
+
+\item Use the preceding relation to show that the expectation value
+\(\lambda\) of the total number of produced particles is
+\[
+ \lambda=\int\frac{d^3\mathbf k}{(2\pi)^3}\,
+ \frac{|J(k)|^2}{2\omega_{\mathbf k}},
+ \qquad k^0=\omega_{\mathbf k}.
+\]
+
+\item Show that
+\[
+ a_{\mathrm{out}}(\mathbf k)=S^\dagger
+ a_{\mathrm{in}}(\mathbf k)S,
+\]
+where the unitary operator \(S\) is
+\[
+ S=e^{iB},\qquad B=\int d^4x\,J(x)\phi_{\mathrm{in}}(x).
+\]
+
+\item Use the preceding result to show
+\[
+ S\OutKet{0}=\InKet{0},
+ \qquad
+ S\OutKet{\mathbf k_1,\ldots,\mathbf k_n}
+ =\InKet{\mathbf k_1,\ldots,\mathbf k_n}.
+\]
+These relations identify \(S\) as the scattering operator: for arbitrary
+free-theory states \(\ket{\alpha}\) and \(\ket{\beta}\),
+\[
+ S_{\beta\alpha}
+ =\OutBra{\beta}\InKet{\alpha}
+ =\InBra{\beta}S\InKet{\alpha}.
+\]
+
+\item Show that \(S\) can be normal ordered as
+\[
+ S=e^{iB}=e^F e^G e^{-\lambda/2},
+\]
+where
+\[
+ F=i\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ J(k)a_{\mathrm{in}}^\dagger(\mathbf k),
+ \qquad
+ G=i\int\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2\omega_{\mathbf k}}}
+ J(-k)a_{\mathrm{in}}(\mathbf k),
+\]
+and \(\lambda\) is the quantity defined above.
+
+\item Use the state relation and the normal-ordered form of \(S\) to find the
+vacuum-to-vacuum probability
+\[
+ P_0=|\OutBra{0}\InKet{0}|^2.
+\]
+This is the probability that no particles are produced.
+
+\item Show that
+\[
+ \OutBra{\mathbf k_1,\ldots,\mathbf k_n}\InKet{0}
+ =i^nJ(k_1)\cdots J(k_n)e^{-\lambda/2}.
+\]
+
+\item The probability \(dP\) of finding exactly \(n\) particles, with one
+particle in each momentum cell \(d^3\mathbf k_i\) around \(\mathbf k_i\), is
+\[
+ dP=
+ \left|\OutBra{\mathbf k_1,\ldots,\mathbf k_n}\InKet{0}\right|^2
+ \prod_{i=1}^n
+ \left(\frac{d^3\mathbf k_i}{(2\pi)^3\,2\omega_{\mathbf k_i}}\right).
+\]
+Use this formula to show that the probability of producing exactly \(n\)
+particles is
+\[
+ P_n=e^{-\lambda}\frac{\lambda^n}{n!}.
+\]
+Thus the multiplicity is Poisson distributed with mean \(\lambda\).
+You are not being asked to derive the displayed differential-probability
+formula.
 \end{enumerate}
+
+\medskip
+\noindent\textbf{Remarks on Problem 2.}\par\smallskip
+\noindent\textbf{1.}
+Although the setup is simple, the fact that past and future vacua can be
+inequivalent in a time-dependent situation, with particle production as a
+result, is very general and is important in cosmology and black-hole physics.
+In particular, Hawking radiation is also a consequence of this phenomenon.
+
+\noindent\textbf{2.}
+Only the on-shell component of \(J(k)\), with
+\(k^0=\omega_{\mathbf k}\), contributes to particle production.  This is the
+field-theory analogue of resonance in a forced harmonic oscillator.
+
+\noindent\textbf{3.}
+If the source is turned on and off very slowly, the adiabatic theorem suggests
+that the system remains in its vacuum throughout.  Indeed, in the adiabatic
+limit \(J(\omega,\mathbf k)\) has support only near \(\omega=0\), so it has no
+massive on-shell component and no particles are produced.
 
 \SupplementaryExercise{3}{Counting a Four-Point Wick Contraction}
   {(Inspired by MIT OpenCourseWare, 8.323 Recitation 6, Sections 1.1--1.2.)}

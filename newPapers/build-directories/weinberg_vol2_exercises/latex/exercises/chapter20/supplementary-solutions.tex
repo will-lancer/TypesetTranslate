@@ -151,113 +151,228 @@
       dimensionful \(\Lambda\).
   \end{enumerate}
 
-  \SupplementarySolution{4}{Current Correlators, Dispersion Relations, and Finite-Energy Sum Rules}
+  \SupplementarySolution{4}{Correlators of Composite Operators Made of Free Bosons}
   \begin{enumerate}
     \item[(a)]
-    Define
+    On a finite world sheet of area \(A\), decompose each field and source
+    as
     \[
-      \Pi^{\mu\nu}(q)
-        =i\int d^4x\,e^{-iq\cdot x}
-         \langle\Omega|T\{J^\mu(x)J^\nu(0)\}|\Omega\rangle.
+      X^\mu(\sigma)=x_0^\mu+\widetilde X^\mu(\sigma),
+      \qquad
+      \int d^2\sigma\,\widetilde X^\mu=0,
+      \qquad
+      J_0^\mu=\int d^2\sigma\,J^\mu(\sigma).
     \]
-    Current conservation and the Ward identity give
-    \(q_\mu\Pi^{\mu\nu}=0\), apart from local contact polynomials.
-    Lorentz covariance then leaves one nonlocal tensor:
+    The action contains only \(\widetilde X\).  Consequently the path
+    integral factorizes:
     \[
-      \boxed{\Pi^{\mu\nu}
-        =(q^\mu q^\nu-q^2\eta^{\mu\nu})\Pi(q^2)
-         +\text{contact terms}.}
+      Z[J]=
+      \frac{\int_{\mathbb R^n}d^nx_0\,
+        e^{x_0\cdot J_0}}
+      {\int_{\mathbb R^n}d^nx_0}\,
+      \exp\left\{\frac12\int d^2\sigma\,d^2\sigma'\,
+        J_\mu(\sigma)G(\sigma,\sigma')J^\mu(\sigma')\right\}.
+      \tag{20.4.S1}
     \]
-    Inserting a complete set of states shows that the transverse spectral
-    density is nonnegative for a Hermitian current: every contraction with
-    a physical transverse polarization is a sum of absolute squares.
+    For an ordinary real source the first ratio is not defined when
+    \(J_0\neq0\); this is the zero-mode obstruction, not an innocuous
+    normalization constant.  For neutral sources, \(J_0=0\), the same
+    regulated target-space volume cancels between numerator and
+    denominator, leaving
+    \[
+      \boxed{Z_{\rm osc}[J]=
+      \exp\left\{\frac12\int J_\mu GJ^\mu\right\},
+      \qquad \int J^\mu=0.}
+      \tag{20.4.S2}
+    \]
+    For Fourier sources \(J=ij\), integration over \(x_0\) instead gives
+    \((2\pi)^n\delta^{(n)}(j_0)\).  Thus the familiar delta function is
+    the distributional version of the same neutrality condition.
+
+    To verify the Green function, write the quadratic kernel as
+    \(K=-(2\pi g)^{-1}\nabla^2\).  Then \(KG=1\) requires
+    \(\nabla^2G=-2\pi g\,\delta^{(2)}\), and hence
+    \(G=-g\log(|z-w|/\ell)\) after its zero mode is removed.
+
     \item[(b)]
-    For \(Q^2\) larger than the relevant spectral scales,
+    Insert the distributional source
     \[
-      \frac1{s+Q^2}
-        =\frac1{Q^2}\left(1-\frac{s}{Q^2}
-          +\frac{s^2}{Q^4}-\cdots\right).
+      J^\mu(\sigma)=-i\sqrt{2\alpha'}
+        \sum_i k_i^\mu\delta^{(2)}(\sigma-\sigma^{(i)}).
     \]
-    Therefore
+    The zero-mode integral gives
+    \(\delta^{(n)}(\sum_i k_i)\), with constants involving
+    \(2\pi\) and \(\alpha'\) absorbed into the chosen normalization of the
+    noncompact measure.  Normal ordering deletes all \(i=j\)
+    contractions.  The remaining terms in (20.4.S2) give
     \[
-      \boxed{\Pi(Q^2)
-        =\frac{M_0}{Q^2}-\frac{M_1}{Q^4}
-         +\frac{M_2}{Q^6}+\cdots,\qquad
-         M_n=\int_0^\infty ds\,s^n\rho(s).}
+      \frac12\sum_{i\ne j}
+      (-i\sqrt{2\alpha'}\,k_i)\mathbin{\cdot}
+      (-i\sqrt{2\alpha'}\,k_j)\,
+      [-g\log|z_i-z_j|]
+      =
+      2\alpha'g\sum_{i<j}k_i\mathbin{\cdot}k_j
+        \log|z_i-z_j|.
     \]
-    The interchange of series and integral requires the displayed moments
-    to converge.  In a field theory they often do not; subtractions,
-    weighted differences of correlators, or an asymptotic OPE must then be
-    used instead of treating the expansion as a convergent identity.
+    Therefore the result consistent with the stated Euclidean action is
+    \[
+      \boxed{
+      \left\langle\prod_i
+        :e^{-i\sqrt{2\alpha'}\,k_i\cdot X(z_i)}:
+      \right\rangle
+      =
+      \delta^{(n)}\!\left(\sum_i k_i\right)
+      \prod_{i<j}|z_i-z_j|^{\,2\alpha'g\,k_i\cdot k_j}.}
+      \tag{20.4.S3}
+    \]
+    Equivalently, the product may be over ordered pairs \(i\ne j\) with
+    exponent \(+\alpha'g\,k_i\cdot k_j\).  Thus (20.4.1), as printed in
+    the source, has both undefined self-contraction factors and the
+    opposite exponent sign.  The latter also conflicts with the
+    two-point scaling law in part (c); it is a printed sign error in the
+    conventions of this problem.
+
+    The action is invariant under the constant shift
+    \(X^\mu\mapsto X^\mu+a^\mu\).  The product of vertices acquires the
+    phase
+    \(\exp[-i\sqrt{2\alpha'}\,a\cdot\sum_i k_i]\).
+    Averaging over the symmetry orbit kills the correlator unless
+    \(\sum_i k_i=0\), explaining the delta function.
+
     \item[(c)]
-    Let
-    \(\rho(s)=\operatorname{Im}\Pi(s+i0)/\pi\).
-    Deforming the counterclockwise contour around the cut gives
+    For general charges \(a_i\), the same calculation gives
     \[
-      \boxed{\int_0^{s_0}ds\,s^n\rho(s)
-        =-\frac1{2\pi i}\oint_{|s|=s_0}ds\,s^n\Pi(s).}
+      \left\langle\prod_i:\!e^{ia_iX(z_i)}\!:\right\rangle
+      =
+      \delta\!\left(\sum_i a_i\right)
+      \prod_{i<j}|z_i-z_j|^{g a_i a_j}.
+      \tag{20.4.S4}
     \]
-    The sign follows because the two sides of the cut are traversed
-    oppositely when the outer circle is counterclockwise.  If \(s_0\) is
-    large, the correlator on the circle can be replaced by its OPE.  The
-    equality then relates a measured spectral moment to perturbative
-    terms and vacuum condensates.
+    In the two-point function the zero mode enforces \(a=b\), and then
+    \[
+      \langle\mathcal O_a(z)\mathcal O_b^\dagger(0)\rangle
+        =\delta(a-b)|z|^{-ga^2}.
+    \]
+    Comparing with \(|z|^{-2\Delta_a}\) yields
+    \[
+      \boxed{\Delta_a=\frac{ga^2}{2}.}
+    \]
+    The arbitrary length \(\ell\) drops out when the charges are neutral.
+
+    \item[(d)]
+    Single-valuedness requires
+    \[
+      e^{ia(X+2\pi R)}=e^{iaX},
+      \qquad\Longrightarrow\qquad
+      \boxed{a=\frac{m}{R},\quad m\in\mathbb Z.}
+    \]
+    With a normalized compact zero-mode integral,
+    \[
+      \frac{1}{2\pi R}\int_0^{2\pi R}dx_0\,
+       e^{ix_0\sum_i m_i/R}
+       =\delta_{\sum_i m_i,0}.
+    \]
+    Hence on the plane
+    \[
+      \boxed{
+      \left\langle\prod_i
+        :e^{i(m_i/R)X(z_i)}:
+      \right\rangle
+      =
+      \delta_{\sum_i m_i,0}
+      \prod_{i<j}|z_i-z_j|^{g m_i m_j/R^2}.}
+    \]
+    For the vertices of part (b),
+    \(-\sqrt{2\alpha'}\,k_i=m_i/R\); their continuous delta function is
+    replaced by the Kronecker neutrality condition.  On a world sheet
+    with noncontractible cycles one must additionally sum over winding
+    sectors, but that global sum does not alter this local plane result.
   \end{enumerate}
 
-  \SupplementarySolution{5}{Borel Sum Rules, Spectral Models, and Condensate Power Counting}
+  \SupplementarySolution{5}{The Stress Tensor Is Not a Conformal Primary}
   \begin{enumerate}
     \item[(a)]
-    With the standard QCD-sum-rule definition
+    Expand the test function about the contour center:
     \[
-      \mathcal B_{M^2}
-        =\lim_{\substack{Q^2,n\to\infty\\Q^2/n=M^2}}
-         \frac{(Q^2)^n}{(n-1)!}
-         \left(-\frac{d}{dQ^2}\right)^n,
+      \xi(z)=\xi(w)+(z-w)\partial\xi(w)
+       +\frac{(z-w)^2}{2}\partial^2\xi(w)
+       +\frac{(z-w)^3}{6}\partial^3\xi(w)+\cdots .
     \]
-    one finds
+    The contour selects the coefficient of \((z-w)^{-1}\).  The three
+    singular terms in the \(TT\) OPE respectively contribute
+    \(c\,\partial^3\xi/12\), \(2(\partial\xi)T\), and
+    \(\xi\partial T\).  Thus
     \[
-      \boxed{\mathcal B_{M^2}\frac1{s+Q^2}
-        =\frac1{M^2}e^{-s/M^2}.}
+      \boxed{\delta_\xi T
+        =\xi\partial T+2(\partial\xi)T
+          +\frac{c}{12}\partial^3\xi.}
     \]
-    Thus the dispersion relation becomes exponentially weighted, so
-    states with \(s\gg M^2\) are suppressed relative to a low resonance.
-    Any finite polynomial in \(Q^2\) is annihilated after sufficiently many
-    derivatives, which removes the subtraction ambiguity.
+    The last term is the obstruction to treating \(T\) as a primary of
+    weight two when \(c\neq0\).
+
     \item[(b)]
-    The Borel-transformed dispersion relation is
+    Put \(f(z)=z+\xi(z)\).  To first order,
     \[
-      \mathcal B\Pi
-        =\frac1{M^2}\left[
-          f_R^2e^{-m_R^2/M^2}
-          +\int_{s_0}^\infty ds\,
-            \rho_{\rm pert}(s)e^{-s/M^2}\right].
+      [f'(z)]^2T(f(z))
+        =T+\xi\partial T+2(\partial\xi)T+O(\xi^2),
+      \qquad
+      \{f,z\}=\partial^3\xi+O(\xi^2).
     \]
-    After moving the modeled continuum to the OPE side, define
+    The finite law therefore reduces exactly to the result of part (a).
+    Its consistency under successive maps follows from
     \[
-      R_0(M^2)=f_R^2e^{-m_R^2/M^2},\qquad
-      R_1(M^2)=-\frac{dR_0}{d(1/M^2)}
-        =m_R^2R_0.
+      \boxed{\{h\circ f,z\}
+        =[f'(z)]^2\{h,f(z)\}+\{f,z\}.}
+      \tag{20.5.S1}
     \]
-    Hence
-    \[
-      \boxed{m_R^2=\frac{R_1(M^2)}{R_0(M^2)}.}
-    \]
-    A reliable extraction requires a window in which the truncated OPE
-    converges and the pole is not overwhelmed by the continuum.
+    This identity follows directly by differentiating \(h(f(z))\) three
+    times and collecting the terms in the definition of the Schwarzian.
+    It supplies the optional composition check.
+
     \item[(c)]
-    Since the invariant amplitude is dimensionless, an operator
-    \(O_d\) of dimension \(d\) must occur as
+    It is clearest first to use the Euclidean cylinder coordinate
+    \(u=-iw\), so \(z=e^u\).  Direct differentiation gives
     \[
-      \Pi(Q^2)\supset
-        \frac{C_d(Q^2/\mu^2,\alpha_s)}{Q^d}
-        \langle O_d(\mu)\rangle,
+      \{e^u,u\}=1-\frac32=-\frac12 .
     \]
-    apart from logarithms and possible powers already removed in the
-    tensor decomposition.  Thus the gluon condensate contributes as
-    \(\langle F^2\rangle/Q^4\), whereas a four-quark condensate contributes
-    as \(\langle(\bar q\Gamma q)^2\rangle/Q^6\).  The latter is suppressed
-    by an additional \(1/Q^2\), although its numerical matrix element and
-    Wilson coefficient also matter.
+    The finite transformation law then gives
+    \[
+      \boxed{T_{\rm cyl}(u)
+        =z^2T_{\rm plane}(z)-\frac{c}{24}.}
+      \tag{20.5.S2}
+    \]
+    In quadratic-differential notation this is
+    \[
+      \boxed{
+      T_{\rm cyl}(u)(du)^2
+        =\left(T_{\rm plane}(z)-\frac{c}{24z^2}\right)(dz)^2.}
+      \tag{20.5.S3}
+    \]
+    Equation (20.5.2) as printed is missing the \(z^{-2}\) multiplying
+    \(c/24\).  Without it the two terms inside its parentheses have
+    different conformal weights.  Returning to \(w\) simply uses
+    \(du=-i\,dw\); the stress-tensor components acquire the corresponding
+    tensor factors.
+
+    Now expand
+    \[
+      T_{\rm plane}(z)=\sum_{n\in\mathbb Z}L_nz^{-n-2}.
+    \]
+    Equation (20.5.S2) becomes
+    \[
+      T_{\rm cyl}(u)
+        =\sum_nL_ne^{-nu}-\frac{c}{24}.
+    \]
+    The spatial integral keeps the zero mode.  Including the
+    antiholomorphic sector gives, for a cylinder of circumference
+    \(2\pi\),
+    \[
+      \boxed{H=L_0+\widetilde L_0-\frac{c+\bar c}{24}.}
+    \]
+    For circumference \(L\), dimensional analysis supplies the overall
+    factor \(2\pi/L\).  The constant term is the universal cylinder
+    Casimir energy: introducing the radius breaks plane scale invariance
+    by selecting a length scale.
   \end{enumerate}
 
   \SupplementarySolution{6}{Deep-Inelastic Scattering from a Photon}
@@ -334,96 +449,182 @@
       \(F_2^\gamma\).
   \end{enumerate}
 
-  \SupplementarySolution{7}{Parton Sum Rules and Plus Distributions}
+  \SupplementarySolution{7}{\(SU(2)\) Current Algebra from a Free Scalar}
   \begin{enumerate}
     \item[(a)]
-    The proton contains two net up quarks, one net down quark, and no net
-    strange or heavier flavor.  Therefore
+    The derivative is unchanged by a constant shift, so \(J^3\) is
+    single-valued.  For the vertex currents,
     \[
-      \boxed{\int_0^1u_v(x)\,dx=2,\qquad
-        \int_0^1d_v(x)\,dx=1,\qquad
-        \int_0^1q_v(x)\,dx=0\quad(q=s,c,b,\ldots).}
+      :e^{\pm i(\phi+2\pi)}:
+        =e^{\pm2\pi i}:e^{\pm i\phi}:
+        =:e^{\pm i\phi}: .
     \]
-    Sea pairs contribute equally to \(q\) and \(\bar q\) and cancel in
-    \(q_v\).  In the OPE these zeroth moments are forward matrix elements
-    of conserved flavor-vector currents.  Their zero anomalous dimensions
-    protect the sum rules under QCD evolution.
+    Hence all three currents are single-valued on the target circle.
+
     \item[(b)]
-    At every factorization scale,
+    Wick's theorem and (20.7.3) give
     \[
-      \boxed{\int_0^1dx\,x\left[
-        g(x,\mu)+\sum_f(q_f(x,\mu)+\bar q_f(x,\mu))\right]=1.}
+      \langle J^-(z)J^+(0)\rangle=z^{-1/R^2}.
     \]
-    Splittings continually transfer momentum between quarks and gluons, so
-    none of the separate integrals is scale independent.  Their sum is the
-    forward matrix element of the conserved energy-momentum tensor.  The
-    corresponding spin-two singlet anomalous-dimension matrix has a zero
-    eigenvalue, ensuring that DGLAP evolution preserves the total.
+    Since the exponent is \(2\Delta\),
+    \[
+      \Delta[J^\pm]=\frac{1}{2R^2}.
+    \]
+    Differentiating the logarithmic correlator shows that
+    \[
+      \langle J^3(z)J^3(0)\rangle
+        =\frac{1}{R^2z^2},
+    \]
+    so \(\Delta[J^3]=1\) for every radius.  The extra vertices become
+    currents when
+    \[
+      \boxed{R^2=\frac12.}
+    \]
+
     \item[(c)]
-    For the zeroth moment set \(f(x)=1+x^2\):
+    At this radius,
+    \(\langle\phi(z)\phi(0)\rangle=-2\log z\).  Direct contractions using
+    the definitions printed in (20.7.2) yield
     \[
-      \int_0^1dx\,\frac{1+x^2}{(1-x)_+}
-        =\int_0^1dx\,\frac{x^2-1}{1-x}
-        =-\int_0^1(x+1)\,dx=-\frac32.
+      \begin{aligned}
+        J^3(z)J^3(0)&\sim\frac{2}{z^2},\\
+        J^3(z)J^\pm(0)&\sim
+          \pm\frac{2J^\pm(0)}{z},\\
+        J^+(z)J^-(0)&\sim
+          \frac{1}{z^2}+\frac{J^3(0)}{z}+\cdots,\\
+        J^-(z)J^+(0)&\sim
+          \frac{1}{z^2}-\frac{J^3(0)}{z}+\cdots .
+      \end{aligned}
+      \tag{20.7.S1}
     \]
-    For the first moment the test function is \(x(1+x^2)\):
+    For example,
     \[
-      \int_0^1dx\,x\frac{1+x^2}{(1-x)_+}
-        =-\int_0^1(x^2+x+2)\,dx=-\frac{17}{6}.
+      J^+(z)J^-(0)
+       =z^{-2}:\!e^{i[\phi(z)-\phi(0)]}\!:
+       =\frac{1}{z^2}+\frac{i\partial\phi(0)}{z}+\cdots .
     \]
-    A suitable \(\delta(1-x)\) term represents virtual corrections and
-    adjusts these moments so that the required number or momentum
-    conservation relation is exactly satisfied.
+    Equations (20.7.S1) do not obey (20.7.4) with the same \(J^3\) and
+    with structure constants \(\epsilon^{abc}\).  This is the promised
+    factor-of-two mismatch in the printed conventions.
+
+    A convention-consistent Cartan--Weyl basis is
+    \[
+      H\equiv\frac{J^3}{2}=\frac{i}{2}\partial\phi,
+      \qquad E^\pm\equiv J^\pm .
+    \]
+    Then
+    \[
+      \begin{aligned}
+        H(z)H(0)&\sim\frac{1}{2z^2},&
+        H(z)E^\pm(0)&\sim\pm\frac{E^\pm(0)}{z},\\
+        E^+(z)E^-(0)&\sim
+          \frac{1}{z^2}+\frac{2H(0)}{z},&
+        E^-(z)E^+(0)&\sim
+          \frac{1}{z^2}-\frac{2H(0)}{z}.
+      \end{aligned}
+      \tag{20.7.S2}
+    \]
+    Defining \(E^\pm=K^1\pm iK^2\) and \(H=K^3\), these relations become
+    \[
+      \boxed{K^a(z)K^b(0)\sim
+        \frac{k\delta^{ab}}{2z^2}
+        +i\epsilon^{abc}\frac{K^c(0)}{z}+\cdots,
+        \qquad k=1.}
+      \tag{20.7.S3}
+    \]
+    This is the standard \(SU(2)_1\) convention with
+    \(\operatorname{tr}(t^at^b)=\delta^{ab}/2\).
+    If instead the currents are rescaled to
+    \(\widehat K^a=\sqrt2K^a\) so their double pole is
+    \(\delta^{ab}/z^2\), the simple pole becomes
+    \(i\sqrt2\,\epsilon^{abc}\widehat K^c/z\).
+    The printed formula (20.7.4) takes the double pole from this rescaled
+    convention but the simple pole from (20.7.S3), so no uniform
+    rescaling gives all of its coefficients simultaneously.
+
+    \item[(d)]
+    For a general OPE
+    \[
+      A^a(z)A^b(w)\sim
+        \frac{\kappa\delta^{ab}}{(z-w)^2}
+        +if^{abc}\frac{A^c(w)}{z-w},
+    \]
+    radial quantization gives
+    \[
+      [A_m^a,A_n^b]
+      =\frac{1}{(2\pi i)^2}
+        \oint_0dw\,w^n\oint_wdz\,z^m A^a(z)A^b(w).
+    \]
+    The simple pole produces \(if^{abc}A^c_{m+n}\).  Since
+    \(\mathop{\rm Res}_{z=w}z^m/(z-w)^2=mw^{m-1}\), the double pole
+    produces \(\kappa m\delta^{ab}\delta_{m+n,0}\).
+    Applying this mechanically to the source's printed OPE yields its
+    printed algebra (20.7.5).
+
+    In the consistent basis (20.7.S3), however, the modes obey
+    \[
+      \boxed{
+      [K_m^a,K_n^b]
+        =i\epsilon^{abc}K_{m+n}^c
+          +\frac{k}{2}m\delta^{ab}\delta_{m+n,0},
+      \qquad k=1.}
+      \tag{20.7.S4}
+    \]
+    Equivalently,
+    \[
+      \begin{aligned}
+        [H_m,H_n]&=\frac{m}{2}\delta_{m+n,0},\\
+        [H_m,E_n^\pm]&=\pm E_{m+n}^\pm,\\
+        [E_m^+,E_n^-]&=2H_{m+n}+m\delta_{m+n,0}.
+      \end{aligned}
+    \]
+    Setting \(m=n=0\) removes every central term and leaves the ordinary
+    \(SU(2)\) Lie algebra.
   \end{enumerate}
 
-  \SupplementarySolution{8}{Mellin Evolution, Conservation Constraints, and Higher Twist}
-  \begin{enumerate}
-    \item[(a)]
-    Let \(M_n[f]=\int_0^1dx\,x^{n-1}f(x)\).  Then
-    \[
+  \SupplementarySolution{8}{Constraints from Unitarity}
+  Let \(|h\rangle\) be a primary of positive norm.  For every positive
+  integer \(n\),
+  \[
     \begin{aligned}
-      M_n[P\otimes f]
-        &=\int_0^1dy\,\frac{f(y)}y
-          \int_0^y dx\,x^{n-1}P(x/y)\\
-        &=\left[\int_0^1dz\,z^{n-1}P(z)\right]
-          \left[\int_0^1dy\,y^{n-1}f(y)\right].
+      \|L_{-n}|h\rangle\|^2
+        &=\langle h|L_nL_{-n}|h\rangle\\
+        &=\langle h|[L_n,L_{-n}]|h\rangle\\
+        &=\left[2nh+\frac{c}{12}(n^3-n)\right]
+          \langle h|h\rangle .
     \end{aligned}
-    \]
-    Thus
-    \[
-      \boxed{M_n[P\otimes f]=M_n[P]M_n[f].}
-    \]
-    The integro-differential DGLAP equation becomes, for each \(n\), an
-    ordinary differential equation in the scale; in the singlet sector it
-    is a finite-dimensional matrix equation.
-    \item[(b)]
-    Nonsinglet flavor number is the zeroth moment of a valence
-    distribution.  Its evolution vanishes only if
-    \[
-      \boxed{\int_0^1dz\,P_{\rm NS}(z)=0.}
-    \]
-    Total momentum is the first \(x\)-weighted singlet moment.  For each
-    parent parton \(j\), conservation requires
-    \[
-      \boxed{\sum_i\int_0^1dz\,zP_{ij}(z)=0.}
-    \]
-    Real-emission kernels are positive over \(0<z<1\) and generally have
-    endpoint divergences.  Plus prescriptions and negative virtual terms
-    proportional to \(\delta(1-z)\) supply precisely the contributions
-    needed to make these conservation moments vanish.
-    \item[(c)]
-    The leading term has twist two.  Since a twist-\(\tau\) contribution is
-    suppressed by \(Q^{-(\tau-2)}\),
-    \[
-      \boxed{\frac{H}{Q^2}\ \text{is twist four},\qquad
-        \frac{K}{Q^4}\ \text{is twist six}.}
-    \]
-    They matter at modest \(Q^2\) because the power denominators are then
-    not small.  Near \(x=1\), the invariant mass of the unobserved hadronic
-    state decreases and the leading-twist phase space is squeezed;
-    multiparton correlations and target-mass effects are consequently
-    enhanced relative to the leading contribution.
-  \end{enumerate}
+    \tag{20.8.S1}
+  \]
+  Here the term with \(L_{-n}L_n\) vanishes because \(L_n|h\rangle=0\).
+  Positivity at \(n=1\) gives
+  \[
+    0\leq\|L_{-1}|h\rangle\|^2
+      =2h\langle h|h\rangle,
+    \qquad\Longrightarrow\qquad
+    \boxed{h\geq0.}
+  \]
+
+  Now take the vacuum, for which \(h=0\) and \(L_2|0\rangle=0\).
+  Equation (20.8.S1) at \(n=2\) gives
+  \[
+    \|L_{-2}|0\rangle\|^2
+      =\langle0|[L_2,L_{-2}]|0\rangle
+      =\frac{c}{2}\langle0|0\rangle.
+  \]
+  Positive semidefiniteness therefore implies \(c\geq0\).  The state
+  \(L_{-2}|0\rangle\) is the state created by the stress tensor.  In a
+  nontrivial unitary CFT it is nonzero in the physical Hilbert space, so
+  positive definiteness strengthens the result to
+  \[
+    \boxed{c>0.}
+  \]
+  If \(c=0\), the stress-tensor state is null.  After quotienting null
+  states, the Virasoro stress-tensor sector is trivial; under the usual
+  CFT assumptions this is the trivial theory (with possible
+  topological or otherwise degenerate exceptions).  Thus unitarity by
+  itself first proves \(c\geq0\); the qualifier \emph{nontrivial} is what
+  makes the strict inequality precise.  The antiholomorphic sector gives
+  the same conclusions for \(\bar h\) and \(\bar c\).
 
   \SupplementarySolution{9}{Borel Singularities and Renormalon Ambiguities}
   \begin{enumerate}

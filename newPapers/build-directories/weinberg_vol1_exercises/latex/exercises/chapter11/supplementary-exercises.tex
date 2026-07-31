@@ -14,24 +14,99 @@ and overall sign.  State how on-shell renormalization reorganizes the
 external-leg and subdivergent pieces.
 \end{enumerate}
 
-\SupplementaryExercise{2}{The General Feynman-Parameter Simplex and Massless Bubble in \(d\) Dimensions}
-  {(Adapted from Bernhard Mistlberger and Kevin Zhou, Stanford PHYS 330, Problem Set 9, Problem 2.)}
-  {stanford-phys330-ps9-2022-ch11-curated-parent-2}
-\begin{enumerate}
-\item
-Starting from the Schwinger representation for \(A_i^{-\nu_i}\), derive the
-general \(n\)-denominator Feynman-parameter identity with arbitrary positive
-\(\nu_i\).  Include the simplex delta function and all Gamma-function
-normalizations.
-\item
-Evaluate
+\SupplementaryExercise{2}{Feynman Parameters}
+  {(Adapted from Bernhard Mistlberger and Kevin Zhou, Stanford PHYS 330: QFT I, Problem Set 9 (2022), Problem 2, ``Feynman parameters,'' pp. 1--2.)}
+  {zhou-mistlberger-phys330-f22-ps9-p2}
+Loop integrals take a few generic forms.  For simplicity, consider a scalar
+theory, so that the loop-integrand numerator contains no nontrivial factors.
+In the volume's mostly-plus convention, define the tadpole, bubble, and
+triangle families by
+\[
+ I_T(a;m^2)=\int\frac{d^dk}{(2\pi)^d}
+ \frac{1}{(k^2+m^2-i0)^a},
+ \tag{3}
+\]
 \[
  I_B(a,b;p^2)=\int\frac{d^dk}{(2\pi)^d}
- \frac{1}{(k^2-i0)^a((k+p)^2-i0)^b}
+ \frac{1}{(k^2-i0)^a((k+p)^2-i0)^b},
+ \tag{4}
 \]
-by Feynman parametrization and Wick rotation.  Give the answer for general
-\(a,b,d\), and identify the ultraviolet pole of \(I_B(1,1;p^2)\) near
-\(d=4\).
+\[
+ I_\triangle(a,b,c;p_1,p_2)=\int\frac{d^dk}{(2\pi)^d}
+ \frac{1}{(k^2-i0)^a((k+p_1)^2-i0)^b
+ ((k-p_2)^2-i0)^c}.
+ \tag{5}
+\]
+They are named after the Feynman diagrams in which they appear.  The source
+suppresses the displayed \(i0\) terms, but they are essential in the last
+part and have therefore been restored here.  Regard \(a,b,c\) as general
+real exponents (although in applications they are usually positive
+integers), and regard \(d\) as a real parameter.  We use dimensional
+regularization with \(d=4-2\varepsilon\) when taking the final check.
+\begin{enumerate}
+\item
+The Gamma function is defined by
+\[
+ \Gamma(z)=\int_0^\infty dx\,x^{z-1}e^{-x},
+ \tag{6}
+\]
+and for a positive integer \(n\) it satisfies
+\(\Gamma(n)=(n-1)!\).  Show, for real \(\nu\) in the convergence domain and
+then by analytic continuation, that
+\[
+ \frac{1}{A^\nu}=\frac{1}{\Gamma(\nu)}
+ \int_0^\infty dx\,x^{\nu-1}e^{-xA}.
+ \tag{7}
+\]
+
+\item
+Show that for general \(\nu_i\),
+\[
+ \frac{1}{\prod_{i=1}^n A_i^{\nu_i}}
+ =\frac{\Gamma(\sum_{i=1}^n\nu_i)}
+ {\prod_{i=1}^n\Gamma(\nu_i)}
+ \int_0^1\!\left(\prod_{i=1}^n dx_i\right)
+ \delta\!\left(1-\sum_{i=1}^n x_i\right)
+ \frac{\prod_{i=1}^n x_i^{\nu_i-1}}
+ {(\sum_{i=1}^n x_iA_i)^{\sum_{i=1}^n\nu_i}}.
+ \tag{8}
+\]
+Here the \(x_i\) are Feynman parameters.
+
+\emph{Hint.} Do not base the answer on the Peskin--Schroeder derivation,
+which works only for integer \(\nu_i\).  Instead start from the result of
+the preceding part.
+
+\item
+Apply (8) to \(I_B(a,b;p^2)\) to obtain an integrand whose denominator is a
+single quantity raised to the \(a+b\) power.
+
+\item
+Complete the evaluation of \(I_B(a,b;p^2)\) by Wick rotating to Euclidean
+signature and performing all remaining integrals.  The Euclidean measure
+may be written
+\(d^dk_E=|k_E|^{d-1}d|k_E|\,d\Omega_d\), where the area of the unit sphere
+in \(d\) dimensions is
+\[
+ \Omega_d=\frac{2\pi^{d/2}}{\Gamma(d/2)}.
+ \tag{9}
+\]
+You may also use
+\[
+ \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+ =\int_0^1dx\,x^{a-1}(1-x)^{b-1}.
+ \tag{10}
+\]
+As a check, after translating the source's mostly-minus invariant to the
+volume convention and setting \(d=4-2\varepsilon\), the answer must obey
+\[
+ I_B(1,1;p^2)
+ =\left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ \frac{i\,\Gamma(1-\varepsilon)^2\Gamma(1+\varepsilon)}
+ {(4\pi)^2(1-2\varepsilon)\varepsilon
+ \Gamma(1-2\varepsilon)}.
+ \tag{11}
+\]
 \end{enumerate}
 
 \SupplementaryExercise{3}{Rank-Four Rotational Averaging and Tensor Reduction of a Bubble}
@@ -50,19 +125,123 @@ vanishing of scaleless tadpoles to obtain the particularly simple result for
 \(a=b=1\).
 \end{enumerate}
 
-\SupplementaryExercise{4}{One-Loop Self-Energies in Massless QED}
-  {(Adapted from Bernhard Mistlberger and Kevin Zhou, Stanford PHYS 330, Problem Set 9, Problem 4.)}
-  {stanford-phys330-ps9-2022-ch11-curated-parent-4}
+\SupplementaryExercise{4}{Self-Energy Corrections in QED}
+  {(Adapted from Bernhard Mistlberger and Kevin Zhou, Stanford PHYS 330: QFT I, Problem Set 9 (2022), Problem 4, ``Self-energy corrections in QED,'' pp. 3--4.)}
+  {zhou-mistlberger-phys330-f22-ps9-p4}
+Loop corrections to two-point correlation functions play a key role in
+renormalization and are often called self-energy corrections.  The one-loop
+electron and photon self-energies in QED are the following labelled graphs:
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  line cap=round,line join=round,
+  electron/.style={line width=0.75pt},
+  right arrow/.style={postaction={decorate},decoration={markings,
+    mark=at position 0.55 with {\arrow{Stealth[length=4.5pt,width=3.4pt]}}}},
+  photon/.style={line width=0.7pt,decorate,
+    decoration={snake,amplitude=1.0pt,segment length=4.8pt}},
+  every node/.style={font=\small}
+]
+  % Electron self-energy.
+  \node[anchor=east] at (-3.65,1.45) {$\Sigma(p^2)=$};
+  \coordinate (aL) at (-2.75,1.45);
+  \coordinate (aR) at (-0.75,1.45);
+  \draw[electron,right arrow] (-3.55,1.45)--(aL);
+  \draw[electron,right arrow] (aL)--(aR);
+  \draw[electron,right arrow] (aR)--(0.05,1.45);
+  \draw[photon] (aL)..controls (-2.55,2.65) and (-0.95,2.65)..(aR);
+  \node[above] at (-3.15,1.53) {$p$};
+  \node[below] at (-1.75,1.37) {$k+p$};
+  \node[above] at (-0.35,1.53) {$p$};
+  \node at (-1.75,2.72) {$k$};
+  \draw[-{Stealth[length=4.3pt,width=3.2pt]},line width=0.55pt]
+    (-1.40,2.45)--(-1.88,2.45);
+
+  % Photon self-energy.
+  \node[anchor=east] at (-3.65,-1.15) {$\Pi^{\mu\nu}(p^2)=$};
+  \coordinate (bL) at (-2.75,-1.15);
+  \coordinate (bR) at (-0.35,-1.15);
+  \draw[photon] (-3.55,-1.15)--(bL);
+  \draw[photon] (bR)--(0.45,-1.15);
+  \draw[electron,right arrow] (bL)
+    arc[start angle=180,end angle=0,x radius=1.2cm,y radius=0.92cm];
+  \draw[electron,right arrow] (bR)
+    arc[start angle=0,end angle=-180,x radius=1.2cm,y radius=0.92cm];
+  \node[above] at (-1.55,-0.18) {$k+p$};
+  \node[below] at (-1.55,-2.12) {$k$};
+  \node at (-3.14,-0.72) {$p$};
+  \node at (0.05,-0.72) {$p$};
+  \node[below left] at (bL) {$\mu$};
+  \node[below right] at (bR) {$\nu$};
+  \draw[-{Stealth[length=4.3pt,width=3.2pt]},line width=0.55pt]
+    (-3.33,-0.93)--(-2.94,-0.93);
+  \draw[-{Stealth[length=4.3pt,width=3.2pt]},line width=0.55pt]
+    (0.25,-0.93)--(-0.14,-0.93);
+  \node[anchor=west] at (0.75,0.12) {(20)};
+\end{tikzpicture}
+\end{center}
+Throughout this problem work in Feynman gauge and massless QED,
+\(m_e=0\), using dimensional regularization with
+\(d=4-2\varepsilon\).  In the volume convention an internal photon carries
+the scalar denominator \((k^2-i0)^{-1}\), a massless internal fermion carries
+the numerator \(-i\slashed q\) over \(q^2-i0\), a vertex contributes
+\(e\gamma^\mu\), and a closed fermion loop contributes an additional minus
+sign.
+
+For self-containment, the complete scalar and tensor results needed from
+Problems 2 and 3 of the source are supplied here.  With
+\(I_B\equiv I_B(1,1;p^2)\),
+\[
+ I_B=\left(\frac{p^2-i0}{4\pi}\right)^{-\varepsilon}
+ \frac{i\,\Gamma(1-\varepsilon)^2\Gamma(1+\varepsilon)}
+ {(4\pi)^2(1-2\varepsilon)\varepsilon
+ \Gamma(1-2\varepsilon)},
+\]
+\[
+ \int\frac{d^dk}{(2\pi)^d}
+ \frac{k^\mu}{(k^2-i0)((k+p)^2-i0)}
+ =-\frac{p^\mu}{2}I_B,
+\]
+\[
+ \int\frac{d^dk}{(2\pi)^d}
+ \frac{k^\mu k^\nu}{(k^2-i0)((k+p)^2-i0)}
+ =\frac{d p^\mu p^\nu-p^2\eta^{\mu\nu}}
+ {4(d-1)}I_B.
+\]
+The last two formulas use the dimensional-regularization rule that
+scaleless tadpoles vanish.
 \begin{enumerate}
-\item Draw the one-loop electron and photon two-point graphs in massless
-QED and derive their dimensionally regulated integral expressions,
-including the closed-fermion-loop sign.
-\item Reduce the electron numerator in Feynman gauge, perform the
-Feynman-parameter integral, and extract its ultraviolet pole.
-\item Trace and tensor-reduce the photon vacuum-polarization numerator,
-then extract its ultraviolet pole.
-\item Prove that the photon result is transverse and identify the local
-\(Z_2\) and \(Z_3\) counterterms that cancel the two poles.
+\item
+Using the Feynman rules, write down \(\Sigma(p^2)\) and
+\(\Pi^{\mu\nu}(p^2)\).  Because these are corrections to the electron and
+photon propagators, do \emph{not} include external-leg factors such as
+\(u_s(p)\) or \(\epsilon_\mu\) to form a scalar matrix element.  Instead,
+\(\Sigma\) must remain a \(4\times4\) spinor matrix and \(\Pi^{\mu\nu}\) a
+rank-two Lorentz tensor.
+
+\item
+Evaluate the loop integrals, expressing the final results in terms of
+\(p^2\) and \(\varepsilon\).
+
+\emph{Hint.} Once the gamma matrices have been handled, every integral that
+remains is one of the supplied scalar or tensor integrals.
+
+\item
+The Euler--Mascheroni constant is defined by
+\[
+ \gamma_E=-\int_0^\infty dx\,e^{-x}\log x\simeq0.577.
+ \tag{21}
+\]
+Show that
+\[
+ \Gamma(1-\varepsilon)=1+\gamma_E\varepsilon
+ +O(\varepsilon^2).
+ \tag{22}
+\]
+
+\item
+Using (22), expand the results from the second part, dropping all terms that
+vanish as \(\varepsilon\to0\).
 \end{enumerate}
 
 \SupplementaryExercise{5}{Euclidean Master Integrals and Shifted Tensor Integrals}

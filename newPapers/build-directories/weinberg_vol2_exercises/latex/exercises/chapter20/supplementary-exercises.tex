@@ -83,48 +83,181 @@
       \(g(\mu)=f(\log(\mu/\Lambda))\).  Explain dimensional transmutation.
   \end{enumerate}
 
-  \SupplementaryExercise{4}{Current Correlators, Dispersion Relations, and Finite-Energy Sum Rules}
-  {Inspired by A. V. Radyushkin, Introduction to QCD Sum Rule Approach
-  (2001), Sections 3--4.}
-  {radyushkin-qcd-sum-rules-2001-v2ch20-p04}
+  \SupplementaryExercise{4}{Correlators of Composite Operators Made of Free Bosons}
+  {Adapted from John McGreevy, Physics 215C QFT, Spring 2025,
+  Assignment 9, Problem 2 (printed pp.~1--3).}
+  {mcgreevy-215c-s25-hw9-problem2-v2ch20-p04}
+  Consider \(n\) free bosons \(X^\mu\) in two Euclidean dimensions, with
+  \[
+    S[X]=\frac{1}{4\pi g}\int d^2\sigma\,
+      \partial_aX_\mu\,\partial^aX^\mu ,
+    \qquad z=\sigma^1+i\sigma^2 .
+  \]
+  Until part (d), take the target to be \(\mathbb R^n\).  For a
+  noncompact target the constant \(g\) can be absorbed into \(X^\mu\),
+  but retaining it makes normalization conventions visible; in part (d)
+  it becomes physical.  Use
+  \[
+    \nabla^2\log|z-w|=2\pi\delta^{(2)}(z-w),\qquad
+    G(z,w)\equiv\langle X^\mu(z)X^\nu(w)\rangle
+      =-g\,\delta^{\mu\nu}\log\frac{|z-w|}{\ell}
+  \]
+  on the subspace orthogonal to the constant mode.
   \begin{enumerate}
     \item[(a)]
-    For a conserved Hermitian current \(J^\mu\), show that its vacuum
-    correlator has the form
-    \(\Pi^{\mu\nu}(q)=(q^\mu q^\nu-q^2\eta^{\mu\nu})\Pi(q^2)\), up to
-    contact terms.  State the positivity property of its spectral density.
+    Compute the normalized Euclidean generating functional
+    \[
+      \begin{aligned}
+        Z[J]&\equiv
+        \left\langle
+          \exp\left\{\int d^2\sigma\,J^\mu X_\mu\right\}
+        \right\rangle\\
+        &=Z_0^{-1}\int[dX]\,e^{-S[X]}
+          \exp\left\{\int d^2\sigma\,J^\mu X_\mu\right\},\\
+        Z_0&\equiv\int[dX]\,e^{-S[X]} .
+      \end{aligned}
+    \]
+    The source parenthetical prints
+    \(Z_0^{-1}\equiv Z[J=0]\) and asks the reader not to worry about the
+    path-integral normalization.  With the explicit definition above,
+    \(Z_0\) is the unnormalized vacuum integral and the normalized
+    functional obeys \(Z[0]=1\); this states the intended normalization
+    without hiding the printed inverse.
+    The Euclidean kinetic operator has a zero-momentum kernel.  Separate
+    that mode and do its integral explicitly; state precisely what
+    neutrality condition is needed for the remaining Gaussian formula.
+    You may instead derive the result with Wick's theorem.
+
+    This theory describes the propagation of featureless strings in flat
+    target space \(\mathbb R^n\): \(X^\mu(\sigma)\) gives the target-space
+    position assigned to the world-sheet point \(\sigma\).  It is also a
+    conformal field theory, and a massless scalar in two dimensions has
+    engineering dimension zero.
+
     \item[(b)]
-    Starting from
-    \(\Pi(Q^2)=\int_0^\infty ds\,\rho(s)/(s+Q^2)\), expand for large
-    Euclidean \(Q^2\).  Relate the first three inverse powers of \(Q^2\) to
-    moments of \(\rho\), and state when this termwise expansion is valid.
+    For arbitrary target-space vectors \(k_i^\mu\), points
+    \(\sigma^{(i)}\), and a parameter \(\alpha'\) with dimensions
+    \([X^2/g]\), evaluate
+    \[
+      \left\langle
+        \prod_{i=1}^{N}
+        :\!\exp\!\left[-i\sqrt{2\alpha'}\,
+          k_i\mathbin{\cdot}X(\sigma^{(i)})\right]\!:
+      \right\rangle ,
+      \qquad
+      z_i\equiv\sigma^{(i)}_1+i\sigma^{(i)}_2 .
+    \]
+    Normal ordering means that Wick contractions within one pair of
+    colons are omitted.  Explain the symmetry origin of the delta
+    function enforcing target-space momentum conservation.
+
+    The source prints the target formula
+    \[
+      \delta^{(n)}\!\left(\sum_i k_i\right)
+      \prod_{i,j=1}^{N}
+        |z_i-z_j|^{-\alpha' g\,k_i\cdot k_j}.
+      \tag{20.4.1}
+    \]
+    Preserve this comparison, but check its sign and its \(i=j\) factors
+    against the action, Green function, and normal-ordering prescription
+    stated above; give the convention-consistent form and identify any
+    printed mismatch rather than silently repairing it.
+
+    This calculation is the central ingredient in the Veneziano
+    amplitude for tree-level scattering of bosonic strings.
+
     \item[(c)]
-    Let \(\Pi(s)\) be analytic except for a cut on the positive real axis.
-    Apply Cauchy's theorem to \(s^n\Pi(s)\) on a circle \(|s|=s_0\) and
-    derive a finite-energy sum rule for
-    \(\int_0^{s_0}ds\,s^n\rho(s)\).
+    For
+    \[
+      \mathcal O_a(z)\equiv:\!e^{iaX(z)}\!:
+    \]
+    show that
+    \[
+      \Delta_a=\frac{ga^2}{2},\qquad
+      \left\langle\mathcal O_a(z)\mathcal O_b^\dagger(0)\right\rangle
+        =\delta(a-b)\frac{1}{|z|^{2\Delta_a}},
+    \]
+    up to the conventional normalization of the noncompact zero-mode
+    measure.  Notice that these correlators do not describe particle
+    propagation: \(\mathcal O_a\) creates a power-law excitation of the
+    CFT soup.
+
+    \item[(d)]
+    Now take one field with compact target
+    \[
+      X\simeq X+2\pi R .
+    \]
+    Which \(a\) label single-valued operators
+    \(:\!e^{iaX}\!:\)?  How is the \(N\)-vertex result in part (b)
+    modified?
   \end{enumerate}
 
-  \SupplementaryExercise{5}{Borel Sum Rules, Spectral Models, and Condensate Power Counting}
-  {Inspired by A. V. Radyushkin, Introduction to QCD Sum Rule Approach
-  (2001), Sections 2--4.}
-  {radyushkin-qcd-sum-rules-2001-v2ch20-p05}
+  \SupplementaryExercise{5}{The Stress Tensor Is Not a Conformal Primary}
+  {Adapted from John McGreevy, Physics 215C QFT, Spring 2025,
+  Assignment 9, Problem 3 (printed p.~3).}
+  {mcgreevy-215c-s25-hw9-problem3-v2ch20-p05}
+  In a two-dimensional CFT, take the holomorphic stress-tensor OPE and
+  contour convention to be
+  \[
+    T(z)T(w)\sim
+      \frac{c/2}{(z-w)^4}
+      +\frac{2T(w)}{(z-w)^2}
+      +\frac{\partial T(w)}{z-w}+\cdots ,
+  \]
+  \[
+    \delta_\xi T(w)=\frac{1}{2\pi i}\oint_w dz\,
+      \xi(z)T(z)T(w).
+  \]
   \begin{enumerate}
     \item[(a)]
-    Apply the QCD-sum-rule Borel operator to
-    \(1/(s+Q^2)\) and show that it produces an exponential weight.
-    Explain why this suppresses a high-energy continuum relative to a
-    narrow low-mass resonance and removes polynomial subtraction terms.
+    Show that under the infinitesimal conformal transformation
+    \(z\mapsto z+\xi(z)\),
+    \[
+      \delta_\xi T(w)
+        =(\xi\partial+2\partial\xi)T(w)
+          +\frac{c}{12}\partial^3\xi(w).
+      \tag{20.5.1}
+    \]
+
     \item[(b)]
-    Take
-    \(\rho(s)=f_R^2\delta(s-m_R^2)+\theta(s-s_0)\rho_{\rm pert}(s)\).
-    Write its Borel-weighted sum rule and show how differentiating with
-    respect to \(1/M^2\) can isolate \(m_R^2\) as a ratio of moments.
+    For a finite conformal transformation \(z\mapsto f(z)\), show that
+    (20.5.1) is the infinitesimal version of
+    \[
+      T(z)\longmapsto
+        [\partial f(z)]^2T(f(z))+\frac{c}{12}\{f,z\},
+      \qquad
+      \{f,z\}\equiv
+        \frac{(\partial f)(\partial^3 f)
+          -\tfrac32(\partial^2f)^2}{(\partial f)^2}.
+    \]
+    The last expression is the Schwarzian derivative.
+
+    \emph{Optional.} Verify directly that the extra term has the correct
+    composition law under
+    \(z\mapsto f(z)\mapsto h(f(z))\).
+
     \item[(c)]
-    A correlator of two dimension-three currents has scalar invariant
-    \(\Pi(Q^2)\) of dimension zero.  Determine the large-\(Q^2\) power
-    multiplying a vacuum condensate of dimension \(d\), and compare the
-    dimension-four gluon and dimension-six four-quark contributions.
+    The conformal map from the cylinder to the plane is
+    \(z=e^{-iw}\).  Use part (b) to obtain the relation between the
+    cylinder and plane stress tensors and then show that
+    \[
+      H=\int\frac{d\sigma}{2\pi}\,T_{\tau\tau}
+       =L_0+\widetilde L_0-\frac{c+\bar c}{24}.
+    \]
+    The source prints the intermediate quadratic-differential formula
+    \[
+      T_{\rm cyl}(w)(dw)^2
+        =\left(T_{\rm plane}(z)-\frac{c}{24}\right)(dz)^2.
+      \tag{20.5.2}
+    \]
+    Check it dimensionally and by direct substitution.  If a factor of
+    \(z\) is missing, display the corrected formula explicitly rather
+    than silently altering (20.5.2).
+
+    The answer has a simple physical interpretation.  The cylinder
+    introduces a world-sheet length scale through its radius; the
+    resulting \(c\)-dependent Casimir energy is physically observable in
+    appropriate systems.
   \end{enumerate}
 
   \SupplementaryExercise{6}{Deep-Inelastic Scattering from a Photon}
@@ -152,49 +285,131 @@
       moment of the photon structure function.
   \end{enumerate}
 
-  \SupplementaryExercise{7}{Parton Sum Rules and Plus Distributions}
-  {Inspired by the Particle Data Group, Structure Functions review
-  (2025), Sections 18.1--18.2.}
-  {pdg-structure-functions-2025-v2ch20-p07}
+  \SupplementaryExercise{7}{\(SU(2)\) Current Algebra from a Free Scalar}
+  {Adapted from John McGreevy, Physics 215C QFT, Spring 2025,
+  Assignment 9, Problem 4 (printed pp.~4--5).}
+  {mcgreevy-215c-s25-hw9-problem4-v2ch20-p07}
+  Consider a compact free boson \(\phi\simeq\phi+2\pi\) in
+  \(D=1+1\), with the source action
+  \[
+    S[\phi]=\frac{R^2}{8\pi}\int dx\,dt\,
+      \partial_\mu\phi\,\partial^\mu\phi .
+    \tag{20.7.1}
+  \]
+  Equation (20.7.1) is quoted with the source's real-time sign; the
+  holomorphic two-point function below fixes the Euclidean OPE
+  convention.  The redefinition \(\widetilde\phi=R\phi\) removes \(R\)
+  from the kinetic term,
+  \[
+    S[\widetilde\phi]=\frac{1}{8\pi}\int dx\,dt\,
+      \partial_\mu\widetilde\phi\,\partial^\mu\widetilde\phi ,
+    \qquad
+    \widetilde\phi\simeq\widetilde\phi+2\pi R,
+  \]
+  so \(R\) is the target-space radius.  Relative to the notation used in
+  the source lectures, \(\pi T=R^2\); in string conventions the source
+  uses \(\alpha'=2\).
+
+  At a special \(SU(2)\) radius, new operators of dimensions \((1,0)\)
+  and \((0,1)\), charged under the currents \(\partial_\pm\phi\), join
+  those currents to form an \(SU(2)_L\times SU(2)_R\) chiral algebra.
+  These operators involve winding sectors, in which \(\phi\) winds around
+  its target circle as one traverses the spatial circle.  Work with the
+  holomorphic part \(\phi(z)=\phi_R(z)\); the antiholomorphic calculation
+  is identical with bars added.  Define
+  \[
+    J^\pm(z)\equiv:\!e^{\pm i\phi(z)}\!:,
+    \qquad
+    J^3(z)\equiv i\partial\phi(z).
+    \tag{20.7.2}
+  \]
+  Normal ordering omits Wick contractions within a single pair of
+  colons.
   \begin{enumerate}
     \item[(a)]
-    Define \(q_v(x)=q(x)-\bar q(x)\).  State and justify the proton sum
-    rules for the integrals of \(u_v,d_v\), and all other light-flavor
-    valence distributions.  Identify the conserved local operators behind
-    these relations.
+    Show that \(J^3\) and \(J^\pm\) are single-valued under
+    \(\phi\mapsto\phi+2\pi\).
+
     \item[(b)]
-    Write the quark, antiquark, and gluon momentum sum rule at a
-    factorization scale \(\mu\).  Explain why QCD evolution changes the
-    individual terms but cannot change their sum.
+    Compute the scaling dimensions of \(J^3\) and \(J^\pm\).  Recall that
+    for a holomorphic operator
+    \[
+      \langle\mathcal O^\dagger(z)\mathcal O(0)\rangle
+        \sim\frac{1}{z^{2\Delta}},
+      \qquad
+      \langle\phi(z)\phi(0)\rangle=-\frac{1}{R^2}\log z .
+      \tag{20.7.3}
+    \]
+    Find the radius at which \(J^\pm\) have dimension one.
+
     \item[(c)]
-    Using
-    \(\int_0^1dx\,f(x)/(1-x)_+
-      =\int_0^1dx\,[f(x)-f(1)]/(1-x)\),
-    evaluate the zeroth and first moments of
-    \((1+x^2)/(1-x)_+\).  Explain the role of an accompanying
-    \(\delta(1-x)\) term.
+    The source defines
+    \[
+      J^\pm\equiv\frac{1}{\sqrt2}(J^1\pm iJ^2)
+    \]
+    and asks for the current OPE
+    \[
+      J^a(z)J^b(0)\sim
+        \frac{k\delta^{ab}}{z^2}
+        +i\epsilon^{abc}\frac{J^c(0)}{z}+\cdots ,
+      \qquad k=1.
+      \tag{20.7.4}
+    \]
+    Reproduce the Wick contractions from (20.7.2)--(20.7.3) and track
+    every normalization.  The printed source combines two common
+    generator normalizations in (20.7.2) and (20.7.4); retain the printed
+    target (20.7.4), identify the factor-of-two mismatch, and then state a
+    convention-consistent level-one \(SU(2)\) OPE explicitly.
+
+    \item[(d)]
+    \emph{Bonus tedium.}  Introduce modes for each dimension-one current,
+    \[
+      J^a(z)=\sum_{n\in\mathbb Z}J_n^a z^{-n-1}.
+    \]
+    Starting from the printed OPE convention (20.7.4), show formally that
+    \[
+      [J_m^a,J_n^b]
+        =i\epsilon^{abc}J_{m+n}^c
+          +mk\delta^{ab}\delta_{m+n,0},
+      \qquad k=1,
+      \tag{20.7.5}
+    \]
+    and then give the mode algebra in the convention-consistent
+    normalization found in part (c).  The \(m=0\) modes obey the ordinary
+    \(SU(2)\) Lie algebra.
+
+    \emph{Hint.} Use
+    \(J_n^a=(2\pi i)^{-1}\oint dz\,z^nJ^a(z)\) and evaluate the
+    radially ordered double contour.  The source points to a linked
+    follow-up problem for further hints and string-theory applications.
   \end{enumerate}
 
-  \SupplementaryExercise{8}{Mellin Evolution, Conservation Constraints, and Higher Twist}
-  {Inspired by the Particle Data Group, Structure Functions review
-  (2025), Section 18.2.}
-  {pdg-structure-functions-2025-v2ch20-p08}
-  \begin{enumerate}
-    \item[(a)]
-    For
-    \((P\otimes f)(x)=\int_x^1dy\,P(x/y)f(y)/y\), prove that its
-    \(n\)th Mellin moment equals the product of the \(n\)th moments of
-    \(P\) and \(f\).  State the resulting simplification of DGLAP evolution.
-    \item[(b)]
-    Derive the Mellin-moment constraints on nonsinglet and singlet splitting
-    kernels that preserve valence number and total momentum.  Explain why
-    these constraints require virtual \(\delta(1-x)\) contributions.
-    \item[(c)]
-    Suppose a structure-function moment is fitted by
-    \(M(Q^2)=M_{\rm LT}(Q^2)+H/Q^2+K/Q^4\).
-    Assign the twists of the two power corrections, and explain why they
-    become most visible at modest \(Q^2\) or near \(x=1\).
-  \end{enumerate}
+  \SupplementaryExercise{8}{Constraints from Unitarity}
+  {Adapted from John McGreevy, Physics 215C QFT, Spring 2025,
+  Assignment 9, Problem 5 (printed p.~5).}
+  {mcgreevy-215c-s25-hw9-problem5-v2ch20-p08}
+  In the holomorphic sector of a unitary two-dimensional CFT, use
+  \[
+    [L_m,L_n]=(m-n)L_{m+n}
+      +\frac{c}{12}(m^3-m)\delta_{m+n,0},
+    \qquad
+    L_n^\dagger=L_{-n}.
+    \tag{20.8.1}
+  \]
+  A primary state of positive norm obeys
+  \[
+    L_0|h\rangle=h|h\rangle,\qquad
+    L_n|h\rangle=0\quad(n>0),
+  \]
+  and the conformal vacuum obeys \(L_n|0\rangle=0\) for \(n\geq-1\).
+  Show that unitarity requires \(h\geq0\) for every primary and
+  \(c>0\) for every nontrivial unitary CFT.  State carefully what
+  unitarity alone says before null states are quotiented out, and explain
+  the exceptional \(c=0\) case.
+
+  \emph{Hint.} Evaluate
+  \(\langle h|[L_n,L_{-n}]|h\rangle\), first for \(n=1\), and then apply
+  the same calculation to the vacuum with \(n=2\).
 
   \SupplementaryExercise{9}{Borel Singularities and Renormalon Ambiguities}
   {Inspired by M. Beneke, Renormalons (1999), Sections 1--2.}

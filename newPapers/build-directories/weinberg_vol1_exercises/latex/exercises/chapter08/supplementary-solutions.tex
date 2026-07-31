@@ -1,57 +1,106 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementarySolution{1}{The Transverse Delta Distribution and Coulomb Energy from Gauss's Law}
+\SupplementarySolution{1}{The Proca Field}
 \begin{enumerate}
 \item
-Choose two orthonormal spatial polarizations perpendicular to
-\(\mathbf k\).  Their completeness relation is
+The Maxwell term is invariant under
+\(A_\mu\mapsto A_\mu+\partial_\mu\Lambda\), but the mass term changes by
 \[
- \sum_{\lambda=1}^{2}e_i(\mathbf k,\lambda)
- e_j(\mathbf k,\lambda)^*
- =\delta_{ij}-\frac{k_i k_j}{\mathbf k^2}.
+ -\frac12m^2\left[
+ 2A^\mu\partial_\mu\Lambda
+ +\partial^\mu\Lambda\,\partial_\mu\Lambda\right],
 \]
-Inserting the mode expansion into
-\([A_i(t,\mathbf x),\dot A_j(t,\mathbf y)]\) therefore gives
+which is not a total derivative for a general local \(\Lambda\).  Varying
+\(A_\nu\) gives
 \[
- [A_i(\mathbf x),\Pi_{\perp j}(\mathbf y)]
- =i\delta^T_{ij}(\mathbf x-\mathbf y),
-\quad
- \delta^T_{ij}(\mathbf r)
- =\int\frac{d^3k}{(2\pi)^3}
- \left(\delta_{ij}-\frac{k_i k_j}{\mathbf k^2}\right)e^{i\mathbf k\cdot\mathbf r}.
+ \partial_\mu F^{\mu\nu}-m^2A^\nu=0.
 \]
-Since
-\(\int d^3k\,e^{i\mathbf k\cdot\mathbf r}/[(2\pi)^3\mathbf k^2]
-=1/(4\pi r)\), this is equivalently
+Taking a divergence and using the antisymmetry of \(F^{\mu\nu}\) yields
 \[
- \delta^T_{ij}(\mathbf r)
- =\delta_{ij}\delta^3(\mathbf r)
- +\partial_i\partial_j\frac1{4\pi r}.
+ m^2\partial_\nu A^\nu=0.
 \]
-Its divergence vanishes distributionally, as the Coulomb-gauge constraint
-requires.
+Since \(m^2>0\), the field is transverse.  Expanding the remaining
+equation then gives
+\[
+ \boxed{\partial_\mu A^\mu=0,\qquad
+ (\Box-m^2)A^\nu=0.}
+\]
+
 \item
-Coulomb gauge makes the temporal Maxwell equation elliptic:
+A metric variation gives the symmetric energy-momentum tensor
 \[
- -\nabla^2A^0(\mathbf x)=\rho(\mathbf x).
+ T_{\mu\nu}
+ =F_{\mu\rho}F_\nu{}^\rho
+ -\frac14\eta_{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}
+ +m^2\left(A_\mu A_\nu-\frac12\eta_{\mu\nu}A_\rho A^\rho\right).
 \]
-With fields vanishing at infinity, the unique solution is
+The canonical Noether tensor differs from this expression, on the equations
+of motion, by the divergence of a local superpotential.  Thus their
+integrated energies differ only by a spatial boundary term.  With
+\(E_i=F_{0i}\) and \(B_i=\frac12\epsilon_{ijk}F_{jk}\),
 \[
- A^0(\mathbf x)=\int d^3y\,
- \frac{\rho(\mathbf y)}{4\pi|\mathbf x-\mathbf y|}.
+ \boxed{
+ T_{00}
+ =\frac12\left(\mathbf E^2+\mathbf B^2\right)
+ +\frac{m^2}{2}\left[(A^0)^2+\mathbf A^2\right]\geq0.}
 \]
-The longitudinal electric contribution to the constrained Hamiltonian may
-be written as \(\tfrac12\int d^3x\,\rho A^0\).  Substitution gives
+This is manifestly positive; the qualification about a total spatial
+derivative is needed only if one starts from the canonical tensor.
+
+\item
+For
 \[
- V_{\rm C}
- =\frac12\int d^3x\,d^3y\,
- \frac{\rho(\mathbf x)\rho(\mathbf y)}
- {4\pi|\mathbf x-\mathbf y|}.
+ A^\mu(x)=\epsilon^\mu(p)e^{-ip\cdot x},
 \]
-The factor \(1/2\) prevents counting each unordered pair twice.  For point
-charges the diagonal self-energies are divergent constants, while the
-off-diagonal terms give the ordinary Coulomb potential.
+the field equations become
+\[
+ p^2=-m^2,\qquad p_\mu\epsilon^\mu(p)=0.
+\]
+In the rest frame \(p^\mu=(m,\mathbf0)\), transversality sets
+\(\epsilon^0=0\), leaving three independent spatial vectors.  For general
+\(\mathbf p\), choose two orthonormal vectors
+\(\mathbf e_1,\mathbf e_2\perp\mathbf p\) and take
+\[
+ \epsilon^\mu_{1,2}=(0,\mathbf e_{1,2}),\qquad
+ \epsilon^\mu_L
+ =\frac1m\left(|\mathbf p|,p^0\widehat{\mathbf p}\right).
+\]
+All three have unit spacelike norm and are orthogonal to \(p^\mu\).  Their
+completeness relation is
+\[
+ \sum_{\lambda=1}^{3}
+ \epsilon_\mu(p,\lambda)\epsilon_\nu(p,\lambda)^*
+ =\eta_{\mu\nu}+\frac{p_\mu p_\nu}{m^2}.
+\]
+
+\item
+Before imposing the constraint, the differential operator is
+\[
+ \Pi_{\mu\nu}
+ =(\Box-m^2)\eta_{\mu\nu}-\partial_\mu\partial_\nu .
+\]
+In momentum space it becomes
+\[
+ \Pi_{\mu\nu}(p)
+ =-(p^2+m^2)\eta_{\mu\nu}+p_\mu p_\nu .
+\]
+Its inverse is
+\[
+ [\Pi^{-1}(p)]_{\mu\nu}
+ =-\frac{\eta_{\mu\nu}+p_\mu p_\nu/m^2}{p^2+m^2},
+\]
+as direct multiplication verifies.  The Feynman prescription therefore
+gives
+\[
+ \boxed{
+ \Delta_{\mu\nu}(x-y)
+ =\int\frac{d^4p}{(2\pi)^4}\,
+ \frac{-i\left(\eta_{\mu\nu}+p_\mu p_\nu/m^2\right)}
+ {p^2+m^2-i0}\,
+ e^{ip\cdot(x-y)} .}
+\]
+The numerator is precisely the polarization sum found in part (c).
 \end{enumerate}
 
 \SupplementarySolution{2}{A Covariant Polarization Replacement}
@@ -75,137 +124,452 @@ with \(J\) or \(J^*\), and vanishes.  Consequently
 The replacement is valid only after the full conserved current, rather than
 an individual nonconserved diagram, has been assembled.
 
-\SupplementarySolution{3}{Threshold Law for Pair Production and Tree-Level Electromagnetic \(R\) Ratio}
+\SupplementarySolution{3}{Electron--Positron Annihilation to Muons}
 \begin{enumerate}
 \item
-For a final pair of equal mass \(M\), the center-of-mass momentum is
+There is one tree diagram: the electron--positron pair annihilates into a
+virtual photon, which creates the muon pair.  Suppressing a
+convention-dependent common phase, the amplitude is
 \[
- |\mathbf k_f|=\frac{\sqrt s}{2}
- \sqrt{1-\frac{4M^2}{s}}
- \equiv\frac{\sqrt s}{2}\beta .
+ \boxed{
+ \mathcal M
+ =\frac{e^2}{s}
+ \left[\bar v_e(p_{e^+})\gamma^\mu u_e(p_{e^-})\right]
+ \left[\bar u_\mu(p_{\mu^-})\gamma_\mu
+ v_\mu(p_{\mu^+})\right].}
 \]
-Two-body phase space contributes one power of \(\beta\).  A regular
-\(S\)-wave tree amplitude approaches a nonzero constant at threshold, so
-\[
- \sigma\propto\beta\qquad (s\downarrow4M^2).
-\]
-More generally a partial wave of orbital angular momentum \(L\) has
-\(\mathcal M_L\propto|\mathbf k_f|^L\), producing
-\(\sigma_L\propto\beta^{2L+1}\).  A vector electromagnetic current permits
-the charged-fermion pair to be created in an \(S\)-wave, so its leading
-threshold law is the linear one.
-\item
-For a massless Dirac fermion of electric charge \(Q_fe\), the annihilation
-cross-section differs from the muon result only by \(Q_f^2\).  A quark also
-comes in \(N_c=3\) colors, and the color final states are orthogonal, so
-their probabilities add.  Thus
-\[
- R(s)\equiv
- \frac{\sigma(e^+e^-\to{\rm hadrons})}
- {\sigma(e^+e^-\to\mu^+\mu^-)}
- =N_c\sum_{2m_f<\sqrt s}Q_f^2
-\]
-at tree level, away from thresholds and narrow resonances.  For
-\(u,d,s\), for example,
-\[
- R=3\left[\left(\frac23\right)^2
- +2\left(\frac13\right)^2\right]=2.
-\]
-Strong radiative corrections multiply this parton-model answer by a
-series beginning with \(1+\alpha_s/\pi\).
-\end{enumerate}
 
-\SupplementarySolution{4}{The Scalar-QED Ward Cancellation}
-Denote the incoming scalar and photon momenta by \(p,k\), and the outgoing
-ones by \(p',k'\).  The scalar-exchange denominators are
-\[
- (p+k)^2-m^2=2p\cdot k,\qquad
- (p-k')^2-m^2=-2p\cdot k'.
-\]
-Contracting the incoming momentum \(k\) into its adjacent scalar vertex
-uses the identity
-\[
- k\cdot(2p+k)=(p+k)^2-p^2.
-\]
-It therefore cancels the first propagator.  At the crossed vertex,
-momentum conservation and the analogous difference-of-inverse-propagators
-identity cancel the second propagator.  The two exchange graphs reduce to
-\(-q^2(2p'+k')^\mu+q^2(2p-k')^\mu=-2q^2k^\mu\).
-The seagull contraction is \(+2q^2k^\mu\).  Their sum is zero:
-\[
- k_\nu\mathcal M^{\mu\nu}=0.
-\]
-The contact graph is consequently essential; neither exchange graph is
-gauge invariant by itself.
-
-\SupplementarySolution{5}{Gauge Covariance, Current, and Vertices in Scalar QED}
-\begin{enumerate}
 \item
-Let \(\Phi'=e^{iq\Lambda}\Phi\).  Requiring
-\((D_\mu\Phi)'=e^{iq\Lambda}D_\mu\Phi\) gives
+The standard spin sums, translated to the volume gamma convention, reduce
+the product of currents to two Dirac traces.  Writing
+\[
+ A_t=m_e^2+m_\mu^2-t,\qquad
+ A_u=m_e^2+m_\mu^2-u,
+\]
+the result is
+\[
+ \boxed{
+ \overline{|\mathcal M|^2}
+ =\frac{2e^4}{s^2}
+ \left[
+ A_t^2+A_u^2+2s(m_e^2+m_\mu^2)
+ \right].}
+\]
+Using the four-gamma trace identity and
+\(s+t+u=2m_e^2+2m_\mu^2\) gives the boxed expression.  It reduces to
+\(2e^4(t^2+u^2)/s^2\) when both masses vanish.
+
+\item
+Define
+\[
+ \beta_e=\sqrt{1-\frac{4m_e^2}{s}},\qquad
+ \beta_\mu=\sqrt{1-\frac{4m_\mu^2}{s}}.
+\]
+In the center-of-mass frame,
+\[
+ |\mathbf p_i|=\frac{\sqrt s}{2}\beta_e,\qquad
+ |\mathbf p_f|=\frac{\sqrt s}{2}\beta_\mu,
+\]
+and
 \[
  \begin{split}
- (\partial_\mu-iqA'_\mu)e^{iq\Lambda}\Phi
- &=e^{iq\Lambda}(\partial_\mu-iqA_\mu)\Phi,
+ t&=m_e^2+m_\mu^2-\frac{s}{2}
+ +\frac{s}{2}\beta_e\beta_\mu\cos\theta,\\
+ u&=m_e^2+m_\mu^2-\frac{s}{2}
+ -\frac{s}{2}\beta_e\beta_\mu\cos\theta.
  \end{split}
 \]
-and hence
+Substitution gives
 \[
- A'_\mu=A_\mu+\partial_\mu\Lambda.
+ \boxed{
+ \overline{|\mathcal M|^2}
+ =e^4\left[
+ 3-\beta_e^2-\beta_\mu^2
+ +\beta_e^2\beta_\mu^2\cos^2\theta
+ \right].}
 \]
-The conjugate derivative transforms with the opposite phase:
-\[
- (D_\mu\Phi)'^\dagger=e^{-iq\Lambda}(D_\mu\Phi)^\dagger .
-\]
-Therefore
-\[
- (D_\mu\Phi)'^\dagger(D^\mu\Phi)'
- =(D_\mu\Phi)^\dagger(D^\mu\Phi).
-\]
-The same transformation leaves \(F_{\mu\nu}\) invariant because the two
-second derivatives of \(\Lambda\) cancel.
+
 \item
-Varying the matter Lagrangian with respect to \(A_\mu\) gives, up to the
-sign used to define the Maxwell equation,
+The supplied two-body formula now yields
 \[
+ \boxed{
+ \frac{d\sigma}{d\Omega}
+ =\frac{\alpha^2}{4s}\frac{\beta_\mu}{\beta_e}
+ \left[
+ 3-\beta_e^2-\beta_\mu^2
+ +\beta_e^2\beta_\mu^2\cos^2\theta
+ \right],}
+\qquad \alpha=\frac{e^2}{4\pi}.
+\]
+Using \(\int d\Omega\,\cos^2\theta=4\pi/3\), the total cross section is
+\[
+ \boxed{
+ \sigma(e^+e^-\to\mu^+\mu^-)
+ =\frac{\pi\alpha^2}{s}\frac{\beta_\mu}{\beta_e}
+ \left[
+ 3-\beta_e^2-\beta_\mu^2
+ +\frac13\beta_e^2\beta_\mu^2
+ \right].}
+\]
+As a check, when \(m_e\to0\),
+\[
+ \sigma
+ =\frac{4\pi\alpha^2}{3s}\,
+ \beta_\mu\left(1+\frac{2m_\mu^2}{s}\right),
+\]
+the usual result.  No identical-particle factor is present because
+\(\mu^+\) and \(\mu^-\) are distinct.
+\end{enumerate}
+
+\SupplementarySolution{4}{Gauge Symmetry, QED Rules, and Three Tree Processes}
+\begin{enumerate}
+\item
+A gauge symmetry is a local redundancy in the field variables: functions
+related by the gauge transformation describe the same physical
+configuration.  For an electron of charge \(-e\), define
+\[
+ D_\mu=\partial_\mu+ieA_\mu,\qquad
+ \mathcal L_{\rm QED}
+ =-\frac14F_{\mu\nu}F^{\mu\nu}
+ -\bar\Psi(\gamma^\mu D_\mu+m)\Psi .
+\]
+Under
+\[
+ A'_\mu=A_\mu+\partial_\mu\Lambda,\qquad
+ \Psi'=e^{-ie\Lambda}\Psi,\qquad
+ \bar\Psi'=\bar\Psi e^{ie\Lambda},
+\]
+one has
+\[
+ D'_\mu\Psi'=e^{-ie\Lambda}D_\mu\Psi,
+ \qquad F'_{\mu\nu}=F_{\mu\nu}.
+\]
+The phases cancel in the Dirac bilinear, and the Maxwell term is unchanged,
+which proves the local invariance.
+
+\pagebreak[3]
+\item
+Suppressing the momentum-conserving delta functions and powers of \(2\pi\),
+a consistent set of rules in the volume convention is as follows.  Direct
+each fermion line along its arrow and use
+\[
+ \begin{split}
+ &\text{vertex:}\quad e\gamma^\mu,\\
+ &\text{fermion line:}\quad
+ \frac{-i[-i\slashed q+m]}{q^2+m^2-i0},\\
+ &\text{photon line:}\quad
+ \frac{-i}{q^2-i0}
+ \left[\eta_{\mu\nu}
++(\xi-1)\frac{q_\mu q_\nu}{q^2-i0}\right].
+ \end{split}
+\]
+Feynman gauge is \(\xi=1\).  Attach \(u,\bar u\) to incoming and outgoing
+electrons, \(\bar v,v\) to incoming and outgoing positrons, and
+\(\epsilon_\mu,\epsilon_\mu^*\) to incoming and outgoing photons,
+respectively.  Integrate every undetermined internal momentum.  Include a
+minus sign for each closed fermion loop and for every odd permutation needed
+to restore a fixed ordering of external fermionic operators.  These rules,
+together with four-momentum conservation at each vertex, are complete for
+the requested tree graphs.
+
+\item
+Each process has two tree topologies.  The labels shown are also the
+complete one-particle quantum numbers required in the question.
+
+% Photons are drawn wavy and charged lines solid, matching the convention used
+% for the self-energy graphs in the Chapter 11 problems.  Fermion-flow arrows
+% sit at the middle of each segment rather than at its end, so no arrowhead
+% lands on a vertex, and every momentum label hangs off the free end of its
+% own leg instead of straddling it.
+\smallskip
+\noindent\emph{Bhabha scattering: \(s\)-channel annihilation and
+\(t\)-channel exchange}
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (-1.05,0); \coordinate (b) at (1.05,0);
+ \draw[ferm] (-2.45,1.15)--(a);
+ \draw[ferm] (a)--(-2.45,-1.15);
+ \draw[photon] (a)--(b);
+ \draw[ferm] (b)--(2.45,1.15);
+ \draw[ferm] (2.45,-1.15)--(b);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-2.5,1.2) {\(\scriptstyle p_1,s_1\)};
+ \node[anchor=north east] at (-2.5,-1.2) {\(\scriptstyle p_2,s_2\)};
+ \node[anchor=south west] at (2.5,1.2) {\(\scriptstyle p_3,s_3\)};
+ \node[anchor=north west] at (2.5,-1.2) {\(\scriptstyle p_4,s_4\)};
+ \node[above=3pt] at (0,0) {\(\scriptstyle\gamma^*(s)\)};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (0,0.9); \coordinate (b) at (0,-0.9);
+ \draw[ferm] (-2.3,0.9)--(a);
+ \draw[ferm] (a)--(2.3,0.9);
+ \draw[ferm] (b)--(-2.3,-0.9);
+ \draw[ferm] (2.3,-0.9)--(b);
+ \draw[photon] (a)--(b);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[above] at (-1.2,0.95) {\(\scriptstyle p_1,s_1\)};
+ \node[above] at (1.2,0.95) {\(\scriptstyle p_3,s_3\)};
+ \node[below] at (-1.2,-0.95) {\(\scriptstyle p_2,s_2\)};
+ \node[below] at (1.2,-0.95) {\(\scriptstyle p_4,s_4\)};
+ \node[right=4pt] at (0,0) {\(\scriptstyle\gamma^*(t)\)};
+\end{tikzpicture}
+\end{center}
+
+\noindent\emph{Pair annihilation: the two orders of photon emission}
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (0,0.78); \coordinate (b) at (0,-0.78);
+ \draw[ferm] (-2.0,1.6)--(a);
+ \draw[ferm] (a)--(b);
+ \draw[ferm] (b)--(-2.0,-1.6);
+ \draw[photon] (a)--(2.0,1.6);
+ \draw[photon] (b)--(2.0,-1.6);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-2.05,1.65) {\(\scriptstyle p_1,s_1\)};
+ \node[anchor=north east] at (-2.05,-1.65) {\(\scriptstyle p_2,s_2\)};
+ \node[anchor=south west] at (2.05,1.65) {\(\scriptstyle k_1,\lambda_1\)};
+ \node[anchor=north west] at (2.05,-1.65) {\(\scriptstyle k_2,\lambda_2\)};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (0,0.78); \coordinate (b) at (0,-0.78);
+ \draw[ferm] (-2.0,1.6)--(a);
+ \draw[ferm] (a)--(b);
+ \draw[ferm] (b)--(-2.0,-1.6);
+ \draw[photon] (a)--(2.0,1.6);
+ \draw[photon] (b)--(2.0,-1.6);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=south east] at (-2.05,1.65) {\(\scriptstyle p_1,s_1\)};
+ \node[anchor=north east] at (-2.05,-1.65) {\(\scriptstyle p_2,s_2\)};
+ \node[anchor=south west] at (2.05,1.65) {\(\scriptstyle k_2,\lambda_2\)};
+ \node[anchor=north west] at (2.05,-1.65) {\(\scriptstyle k_1,\lambda_1\)};
+\end{tikzpicture}
+\end{center}
+
+\noindent\emph{Positron Compton scattering: the two orders along the
+positron line}
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (-0.95,0); \coordinate (b) at (0.95,0);
+ \draw[ferm] (a)--(-2.55,0);
+ \draw[ferm] (b)--(a);
+ \draw[ferm] (2.55,0)--(b);
+ \draw[photon] (-1.95,1.75)--(a);
+ \draw[photon] (b)--(1.95,1.75);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=east] at (-2.6,0) {\(\scriptstyle p_1,s_1\)};
+ \node[anchor=west] at (2.6,0) {\(\scriptstyle p_2,s_2\)};
+ \node[anchor=south] at (-1.95,1.82) {\(\scriptstyle k_1,\lambda_1\)};
+ \node[anchor=south] at (1.95,1.82) {\(\scriptstyle k_2,\lambda_2\)};
+ \path (0,-0.9);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.6pt,width=3.4pt]}}}},
+  ferm/.default=0.55,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (a) at (-0.95,0); \coordinate (b) at (0.95,0);
+ \draw[ferm] (a)--(-2.55,0);
+ \draw[ferm] (b)--(a);
+ \draw[ferm] (2.55,0)--(b);
+ \draw[photon] (-1.95,1.75)--(a);
+ \draw[photon] (b)--(1.95,1.75);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node[anchor=east] at (-2.6,0) {\(\scriptstyle p_1,s_1\)};
+ \node[anchor=west] at (2.6,0) {\(\scriptstyle p_2,s_2\)};
+ \node[anchor=south] at (-1.95,1.82) {\(\scriptstyle k_2,\lambda_2\)};
+ \node[anchor=south] at (1.95,1.82) {\(\scriptstyle k_1,\lambda_1\)};
+ \path (0,-0.9);
+\end{tikzpicture}
+\end{center}
+
+\item
+It is convenient to strip one common overall phase and define
+\[
+ G(q)\equiv\frac{-i\slashed q+m}{q^2+m^2-i0},
+ \qquad
+ \slashed\epsilon\equiv\gamma^\mu\epsilon_\mu .
+\]
+For Bhabha scattering, a fixed ordering of the four external fermion
+operators gives
+\[
+ \begin{split}
+ \mathcal A_{\rm Bh}=e^2\Bigg[
+ &\frac{
+ [\bar v_2\gamma^\mu u_1]
+ [\bar u_3\gamma_\mu v_4]}
+ {(p_1+p_2)^2-i0}\\
+ &-\frac{
+ [\bar u_3\gamma^\mu u_1]
+ [\bar v_2\gamma_\mu v_4]}
+ {(p_1-p_3)^2-i0}
+ \Bigg].
+ \end{split}
+\]
+The relative minus sign is the fermion-interchange sign; a different common
+ordering changes only an overall sign.
+
+For pair annihilation, \(p_1+p_2=k_1+k_2\), and the two possible photon
+orders give
+\[
+ \boxed{
+ \mathcal A_{\gamma\gamma}
+ =e^2\bar v_2\left[
+ \slashed\epsilon_2^*G(p_1-k_1)\slashed\epsilon_1^*
+ +\slashed\epsilon_1^*G(p_1-k_2)\slashed\epsilon_2^*
+ \right]u_1 .}
+\]
+The expression is symmetric under interchange of the two final photons, as
+it must be.
+
+Finally \(p_1+k_1=p_2+k_2\) for positron Compton scattering.  Following
+momentum along the fermion arrow gives
+\[
+ \boxed{
+ \mathcal A_{e^+\gamma}
+ =e^2\bar v_1\left[
+ \slashed\epsilon_1G(-p_1-k_1)\slashed\epsilon_2^*
+ +\slashed\epsilon_2^*G(-p_1+k_2)\slashed\epsilon_1
+ \right]v_2 .}
+\]
+In all three answers the omitted common phase depends only on the convention
+used to define \(S=\mathbf1+iT\).  Replacing either external photon
+polarization by its momentum makes the two terms cancel after the external
+Dirac equations are used, providing a check on the relative signs and
+momentum routing.
+\end{enumerate}
+
+\SupplementarySolution{5}{Canonical Structure of Scalar Electrodynamics}
+Write
+\[
+ D_\mu\Phi=(\partial_\mu-iqA_\mu)\Phi,\qquad
+ (D_\mu\Phi)^*=(\partial_\mu+iqA_\mu)\Phi^* .
+\]
+\begin{enumerate}
+\item
+Variation with respect to \(A_\mu\) gives
+\[
+ \partial_\nu F^{\nu\mu}=j^\mu,\qquad
+ \boxed{
  j^\mu=iq\left[
- \Phi^\dagger D^\mu\Phi-(D^\mu\Phi)^\dagger\Phi
- \right].
+ \Phi^*D^\mu\Phi-(D^\mu\Phi)^*\Phi
+ \right].}
 \]
-Expanding the covariant derivatives displays the term sometimes missed:
+Equivalently,
 \[
- j^\mu=iq(\Phi^\dagger\partial^\mu\Phi
- -\partial^\mu\Phi^\dagger\,\Phi)+2q^2A^\mu\Phi^\dagger\Phi.
+ j^\mu
+ =iq\left(\Phi^*\partial^\mu\Phi
+ -\partial^\mu\Phi^*\,\Phi\right)
+ +2q^2A^\mu|\Phi|^2 .
 \]
-The field equations are
-\((D_\mu D^\mu-m^2)\Phi=0\) and its conjugate, with the sign of the mass
-term set by the mostly-plus convention.  Taking the divergence covariantly,
-the two second-derivative terms cancel after multiplication by
-\(\Phi^\dagger\) and \(\Phi\).  Since \(j^\mu\) is neutral, its covariant
-and ordinary divergences coincide, giving \(\partial_\mu j^\mu=0\).
+Thus the term quadratic in \(q\), which would be absent for a fixed
+background current, is required by the dynamical charged field.
+
 \item
-Expansion gives
+Varying \(\Phi^*\) and integrating the covariant derivative by parts gives
 \[
- -(D_\mu\Phi)^\dagger(D^\mu\Phi)
- =-\partial_\mu\Phi^\dagger\partial^\mu\Phi
- +iqA_\mu\bigl(
- \partial^\mu\Phi^\dagger\,\Phi-\Phi^\dagger\partial^\mu\Phi\bigr)
- -q^2A_\mu A^\mu\Phi^\dagger\Phi .
+ \boxed{(D_\mu D^\mu-m^2)\Phi=0.}
 \]
-For a charged line whose momentum changes from \(p\) to \(p'\), Fourier
-differentiation makes the one-photon rule proportional to
+The conjugate equation is
+\((D_\mu^*D^{*\mu}-m^2)\Phi^*=0\).  Multiplying these equations by
+\(\Phi^*\) and \(\Phi\), subtracting, and using the neutrality of \(j^\mu\)
+also verifies \(\partial_\mu j^\mu=0\).
+
+\item
+Because the mostly-plus scalar kinetic term is
+\((D_0\Phi)^*D_0\Phi-(\mathbf D\Phi)^*\cdot\mathbf D\Phi\), the canonical
+momenta are
 \[
- iq(p+p')^\mu .
+ \boxed{\begin{aligned}
+ \Pi_\Phi
+ &=\frac{\partial\mathcal L}{\partial\dot\Phi}
+ =(D_0\Phi)^*=\dot\Phi^*+iqA_0\Phi^*,\\
+ \Pi_{\Phi^*}
+ &=\frac{\partial\mathcal L}{\partial\dot\Phi^*}
+ =D_0\Phi=\dot\Phi-iqA_0\Phi .
+ \end{aligned}}
 \]
-The overall sign changes if all momenta and the definition of \(i\mathcal M\)
-are reversed together.  Differentiating the quadratic term with respect to
-two identical photon fields gives the seagull rule
+The charge density and spatial current are therefore
 \[
- 2iq^2\eta^{\mu\nu}.
+ \boxed{
+ j^0=iq\left(\Pi_\Phi\Phi-\Phi^*\Pi_{\Phi^*}\right),}
 \]
-The remaining rule is the scalar propagator
-\(i/(p^2-m^2+i0)\) in mostly-minus notation, or its translated
-mostly-plus form.  The relative factor two in the seagull is fixed.
+\[
+ \boxed{
+ \mathbf j
+ =iq\left[\Phi^*\boldsymbol\nabla\Phi
+ -(\boldsymbol\nabla\Phi^*)\Phi\right]
+ +2q^2\mathbf A|\Phi|^2 .}
+\]
+These expressions contain only the canonical coordinates, their conjugate
+momenta, \(A_i\), and spatial derivatives; \(A_0\) has disappeared from the
+charge density.
+
+\item
+Under the stated transformation,
+\[
+ D'_\mu\Phi'
+ =(\partial_\mu-iqA_\mu-iq\partial_\mu\Omega)
+   e^{iq\Omega}\Phi
+ =e^{iq\Omega}D_\mu\Phi .
+\]
+Its conjugate transforms with the inverse phase, while
+\[
+ F'_{\mu\nu}
+ =F_{\mu\nu}
+ +\partial_\mu\partial_\nu\Omega
+ -\partial_\nu\partial_\mu\Omega
+ =F_{\mu\nu}.
+\]
+Hence each of the Maxwell, scalar kinetic, and mass terms is separately
+invariant.  The canonical variables transform as
+\[
+ \Phi'\!=e^{iq\Omega}\Phi,\quad
+ \Pi'_\Phi=e^{-iq\Omega}\Pi_\Phi,\quad
+ \Phi'^*\!=e^{-iq\Omega}\Phi^*,\quad
+ \Pi'_{\Phi^*}=e^{iq\Omega}\Pi_{\Phi^*},
+\]
+so the phase-space form of \(j^\mu\) is gauge invariant as well.
 \end{enumerate}
 
 \SupplementarySolution{6}{Coulomb Exchange and Tree-Level Gauge Independence}
@@ -608,7 +972,16 @@ at tree level.  The difference from the classical rigid-body value
 charge distribution.
 \end{enumerate}
 
-\SupplementarySolution{12}{A Pauli Term Shifts the Magnetic Moment and Anapole Coupling}
+\SupplementarySolution{12}{Nonminimal Electromagnetic Couplings}
+For compact coefficients define the volume-convention Pauli tensor
+\[
+ \sigma^{\mu\nu}\equiv\frac{i}{2}[\gamma^\mu,\gamma^\nu].
+\]
+Thus the operator in part (a) is proportional to
+\(\bar\psi\sigma^{\mu\nu}\psi F_{\mu\nu}\).  Overall phases needed to make
+each Hamiltonian Hermitian are understood below; they are fixed by the
+volume's anti-Hermitian vector gamma matrices and do not change the
+nonrelativistic interpretation.
 \begin{enumerate}
 \item
 Choose the conventional normalization

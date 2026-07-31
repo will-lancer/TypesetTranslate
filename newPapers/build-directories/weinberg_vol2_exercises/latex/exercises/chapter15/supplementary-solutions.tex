@@ -303,26 +303,119 @@
     \(s\omega^*=-h\); reversing both signs leaves \(s\Psi\) unchanged.
   \end{enumerate}
 
-  \SupplementarySolution{7}{The Adjoint of \(SU(2)\)}
-  The adjoint generators are
-  \[
-    t^A_1=\begin{pmatrix}0&0&0\\0&0&-i\\0&i&0\end{pmatrix},\quad
-    t^A_2=\begin{pmatrix}0&0&i\\0&0&0\\-i&0&0\end{pmatrix},\quad
-    t^A_3=\begin{pmatrix}0&-i&0\\i&0&0\\0&0&0\end{pmatrix}.
-  \]
-  Direct multiplication gives
-  \([t^A_a,t^A_b]=i\epsilon_{abc}t^A_c\).  It also gives
-  \[
-    \sum_{a=1}^3t^A_at^A_a=2\,\mathbf1_3,
-  \]
-  so \(C_A=2\), as appropriate to spin one.  In the fundamental
-  representation,
-  \[
-    \sum_at_at_a=\frac14\sum_a\sigma_a^2
-      =\frac34\,\mathbf1_2,
-  \]
-  giving \(C_F=3/4\).  The different eigenvalues reflect the different
-  representations, even though both sets realize the same Lie algebra.
+  \SupplementarySolution{7}{Matter, an Adjoint Scalar, and BRST in \(SU(2)\)}
+  Write \(A_\mu=A_\mu^aT^a\) and
+  \(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu
+  -ig[A_\mu,A_\nu]\).
+  \begin{enumerate}
+    \item[(a)] The covariant derivatives are
+      \[
+        D_\mu\psi=(\partial_\mu-igA_\mu)\psi,
+        \qquad
+        D_\mu\bar\psi=\partial_\mu\bar\psi+ig\bar\psi A_\mu,
+      \]
+      and
+      \[
+        D_\mu\phi=\partial_\mu\phi-ig[A_\mu,\phi],
+        \qquad
+        (D_\mu\phi)^a=\partial_\mu\phi^a
+          +g\epsilon^{abc}A_\mu^b\phi^c.
+      \]
+      Requiring \(D_\mu\psi\mapsto U D_\mu\psi\) gives
+      \[
+        \boxed{A_\mu\longmapsto
+          UA_\mu U^{-1}-\frac{i}{g}(\partial_\mu U)U^{-1}.}
+      \]
+      Substitution then gives
+      \(D_\mu\bar\psi\mapsto(D_\mu\bar\psi)U^{-1}\) and
+      \(D_\mu\phi\mapsto U(D_\mu\phi)U^{-1}\).  The same calculation or
+      the commutator \([D_\mu,D_\nu]\) gives
+      \(F_{\mu\nu}\mapsto UF_{\mu\nu}U^{-1}\).
+
+    \item[(b)] With real couplings and the usual conserved Dirac fermion
+      number and parity, the complete power-counting-renormalizable
+      Euclidean Lagrangian can be written
+      \[
+        \begin{split}
+        \mathcal L_E={}&\frac14F^a_{\mu\nu}F^a_{\mu\nu}
+          +\bar\psi(\gamma_\mu D_\mu+m)\psi
+          +\frac12(D_\mu\phi)^a(D_\mu\phi)^a
+          +\frac12M^2\phi^a\phi^a\\
+          &+\frac\lambda4(\phi^a\phi^a)^2
+          +y\,\bar\psi\phi^aT^a\psi .
+        \end{split}
+      \]
+      Cyclicity of the trace proves invariance of the gauge kinetic term:
+      \[
+        \operatorname{tr}(UFU^{-1}UFU^{-1})
+          =\operatorname{tr}F^2.
+      \]
+      It proves invariance of the scalar kinetic term and potential in the
+      same way.  The fermion kinetic and mass
+      terms are invariant because \(D\psi\mapsto UD\psi\) and
+      \(\bar\psi\mapsto\bar\psi U^{-1}\).  Finally,
+      \[
+        \bar\psi\phi\psi\longmapsto
+        \bar\psi U^{-1}(U\phi U^{-1})U\psi
+        =\bar\psi\phi\psi.
+      \]
+      There is no independent adjoint-scalar cubic: for
+      \(\phi=\phi^a\sigma^a/2\),
+      \(\operatorname{tr}\phi^3=0\), and
+      \(\operatorname{tr}\phi^4=\tfrac12(\operatorname{tr}\phi^2)^2\).
+      If parity or CP is not imposed, one may also include the topological
+      density \(i\theta F^a_{\mu\nu}\widetilde F^a_{\mu\nu}\) and
+      independent pseudoscalar mass and Yukawa terms
+      \(i m_5\bar\psi\gamma_5\psi\) and
+      \(i y_5\bar\psi\gamma_5\phi\psi\).  These do not alter the gauge
+      invariance argument.
+
+    \item[(c)] Gauge-related configurations are redundant directions of the
+      quadratic gauge-field operator, so without gauge fixing that operator
+      has zero modes and no propagator.  In the functional integral, imposing
+      a gauge condition produces the Faddeev--Popov determinant.  A pair of
+      Grassmann scalar fields \(c,\bar c\) exponentiates that determinant.
+      A bosonic Nakanishi--Lautrup field \(B\) rewrites the quadratic
+      gauge-fixing weight in a local form linear in the gauge condition; its
+      algebraic equation of motion returns the usual squared gauge-fixing
+      term.  This enlarged field content makes off-shell BRST nilpotence
+      manifest.
+
+    \item[(d)] Remove the parameter by writing
+      \(\delta_B=\eta s\).  In vector notation in the adjoint,
+      \[
+        sA_\mu=D_\mu c,\qquad
+        sc=-\frac g2[c,c],\qquad
+        s\bar c=B,\qquad sB=0,
+      \]
+      where the bracket includes the structure constants and the
+      Grassmann coefficients.  The last two equations immediately give
+      \(s^2\bar c=s^2B=0\).  For the ghost,
+      \[
+        (s^2c)^a
+          =\frac{g^2}{4}
+            \epsilon^{a}{}_{e[b}\epsilon^{e}{}_{cd]}
+            c^bc^cc^d=0,
+      \]
+      by the Jacobi identity.  For the gauge field,
+      \[
+        s^2A_\mu=D_\mu(sc)+g[sA_\mu,c]
+          =-\frac g2D_\mu[c,c]+g[D_\mu c,c]=0,
+      \]
+      because the covariant derivative is a derivation and the two ghost
+      factors are odd.
+
+      The BRST operator is itself an odd derivation.  Hence for homogeneous
+      fields \(X,Y\),
+      \[
+        s^2(XY)=(s^2X)Y+X(s^2Y),
+      \]
+      since the two cross terms cancel.  Induction proves \(s^2O=0\) for
+      every polynomial \(O(A_\mu,c,\bar c,B)\).  With independent
+      parameters, the successive variation is proportional to
+      \(\eta_2\eta_1s^2O\), so the conclusion does not rely on setting a
+      single \(\eta^2\) to zero.
+  \end{enumerate}
 
   \SupplementarySolution{8}{The Complete Free Abelian BRST Multiplet}
   \begin{enumerate}
@@ -472,35 +565,133 @@
       to \(\bar\psi\).  Thus nilpotence is algebraic and off shell.
   \end{enumerate}
 
-  \SupplementarySolution{11}{Ghost Number and Its Current}
-  It is convenient to write the ghost density as
-  \[
-    \mathcal L_{\rm GH}
-      =-(\partial_\mu\omega_a^*)(D^\mu\omega)_a
-  \]
-  with the adjoint derivative chosen to reproduce
-  Eq.~\eqref{eq:15.6.13}.  Promote the phase to
-  \(\theta(x)\).  The terms proportional to \(\theta\) cancel, while
-  \[
-    \delta\mathcal L_{\rm GH}
-      =(\partial_\mu\theta)j^\mu_{\rm gh},\qquad
-    j^\mu_{\rm gh}
-      =i\left[\omega_a^*(D^\mu\omega)_a
-       -(\partial^\mu\omega_a^*)\omega_a\right],
-  \]
-  up to an overall sign convention for the Noether charge.  Taking the
-  divergence and using
-  \(D_\mu\partial^\mu\omega^*=0\) and
-  \(\partial_\mu D^\mu\omega=0\), in their adjointly contracted forms,
-  gives \(\partial_\mu j^\mu_{\rm gh}=0\).  The generator
-  \(N_{\rm gh}=\int d^3x\,j^0_{\rm gh}\) obeys the graded canonical
-  relations
-  \[
-    [N_{\rm gh},\omega]=\omega,\qquad
-    [N_{\rm gh},\omega^*]=-\omega^*,
-  \]
-  after the conventional factor of \(i\) is assigned to the generator.
-  Thus its eigenvalue is ghost number.
+  \SupplementarySolution{11}{Lorenz and Axial BRST Gauges at One Loop}
+  \begin{enumerate}
+    \item[(a)] The finite form of the transformation is
+      \[
+        A_\mu' =UA_\mu U^{-1}-\frac{i}{g}(\partial_\mu U)U^{-1}.
+      \]
+      Therefore \(D_\mu'=UD_\mu U^{-1}\), and the commutator of two
+      covariant derivatives gives
+      \[
+        F_{\mu\nu}'=UF_{\mu\nu}U^{-1}.
+      \]
+      Infinitesimally,
+      \(\delta F_{\mu\nu}=i[\alpha,F_{\mu\nu}]\).  Thus
+      \[
+        \delta\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+          =i\operatorname{tr}
+            ([\alpha,F_{\mu\nu}]F^{\mu\nu}
+             +F_{\mu\nu}[\alpha,F^{\mu\nu}])=0,
+      \]
+      by cyclicity.  Since
+      \(\operatorname{tr}F^2=\tfrac12F^aF^a\) for
+      \(\operatorname{tr}(T^aT^b)=\delta^{ab}/2\), this proves the stated
+      invariance.
+
+    \item[(b)] In components the transformations are
+      \[
+        sA_\mu^a=\partial_\mu c^a+gf^{abc}A_\mu^bc^c,
+        \qquad
+        sc^a=-\frac g2f^{abc}c^bc^c,
+        \qquad s\bar c^a=B^a,\qquad sB^a=0.
+      \]
+      Nilpotence on \(\bar c\) and \(B\) is immediate.  On the ghost,
+      total antisymmetrization by \(c^bc^cc^d\) gives
+      \[
+        s^2c^a=\frac{g^2}{4}f^a{}_{e[b}f^e{}_{cd]}
+          c^bc^cc^d=0.
+      \]
+      On the gauge field, the graded Leibniz rule gives
+      \[
+        s^2A_\mu^a
+          =\partial_\mu(sc^a)+gf^{abc}
+             \bigl[(sA_\mu^b)c^c+A_\mu^b(sc^c)\bigr].
+      \]
+      The terms containing \(\partial_\mu c\) cancel pairwise.  The
+      remaining coefficient of \(A_\mu^bc^cc^d\) is the same Jacobi
+      combination as above, so \(s^2A_\mu^a=0\).
+
+    \item[(c)] The Yang--Mills term is BRST invariant because a BRST
+      transformation is a gauge transformation with an odd parameter.
+      Nilpotence also gives
+      \(s^2\{\bar c^a(L[A^a]-\xi B^a/2)\}=0\).  Therefore
+      \(s\mathcal L=0\).  Applying the odd product rule once gives
+      \[
+        \boxed{\mathcal L=\frac14F^a_{\mu\nu}F^{a\mu\nu}
+          +B^aL[A^a]-\frac\xi2B^aB^a
+          -\bar c^aL[(D c)^a].}
+      \]
+      The algebraic equation \(B^a=L[A^a]/\xi\) yields the equivalent
+      Euclidean gauge-fixing term \((L[A^a])^2/(2\xi)\).
+
+    \item[(d)] For Lorenz gauge, the terms after eliminating \(B\) are
+      \[
+        \frac{1}{2\xi}(\partial^\mu A_\mu^a)^2,
+        \qquad
+        -\bar c^a\partial^\mu(D_\mu c)^a.
+      \]
+      The first makes the gauge-field quadratic operator invertible; the
+      second is the Faddeev--Popov determinant and contains the
+      ghost--gluon vertex.  The nonzero one-loop two-point graphs are the
+      gluon bubble with two cubic vertices, the gluon tadpole from one
+      quartic vertex, and the ghost bubble:
+      \begin{center}
+      % Ghost lines are dashed and directed, as in the Chapter 17 vertex
+      % catalogue; drawn solid they would be indistinguishable from a quark
+      % loop.  The flow arrows sit mid-arc so they clear the vertex blobs, and
+      % all three captions share one baseline.
+      \begin{tikzpicture}[scale=0.75,baseline=(current bounding box.center),
+        gluon/.style={decorate,
+          decoration={snake,amplitude=1.2pt,segment length=5pt}},
+        ghost/.style={dash pattern=on 2.6pt off 2.2pt,
+          postaction={decorate},decoration={markings,
+            mark=at position 0.55 with {\arrow{Latex[length=1.6mm]}}}},
+        every node/.style={font=\small}]
+        \begin{scope}[xshift=-5.0cm]
+          \coordinate (l) at (-0.85,0); \coordinate (r) at (0.85,0);
+          \draw[gluon] (-2,0)--(l);
+          \draw[gluon] (r)--(2,0);
+          \draw[gluon] (l) .. controls (-0.3,0.85) and (0.3,0.85) .. (r);
+          \draw[gluon] (l) .. controls (-0.3,-0.85) and (0.3,-0.85) .. (r);
+          \fill (l) circle (1.8pt); \fill (r) circle (1.8pt);
+          \node[below=12pt] at (0,-0.85) {gluon bubble};
+        \end{scope}
+        \begin{scope}
+          \coordinate (v) at (0,0);
+          \draw[gluon] (-2,0)--(v)--(2,0);
+          \draw[gluon]
+            (v) .. controls (-0.75,0.45) and (-0.75,1.35) .. (0,1.45)
+                .. controls (0.75,1.35) and (0.75,0.45) .. (v);
+          \fill (v) circle (1.8pt);
+          \node[below=12pt] at (0,-0.85) {gluon tadpole};
+        \end{scope}
+        \begin{scope}[xshift=5.0cm]
+          \coordinate (l) at (-0.85,0); \coordinate (r) at (0.85,0);
+          \draw[gluon] (-2,0)--(l);
+          \draw[gluon] (r)--(2,0);
+          \draw[ghost] (l) .. controls (-0.3,0.85) and (0.3,0.85) .. (r);
+          \draw[ghost] (r) .. controls (0.3,-0.85) and (-0.3,-0.85) .. (l);
+          \fill (l) circle (1.8pt); \fill (r) circle (1.8pt);
+          \node[below=12pt] at (0,-0.85) {ghost bubble};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+
+      For axial gauge the auxiliary term imposes \(n^\mu A_\mu^a=0\), and
+      the ghost operator is
+      \[
+        n^\mu D_\mu^{ab}
+          =n\cdot\partial\,\delta^{ab}
+             +gf^{acb}n\cdot A^c.
+      \]
+      On the strict axial-gauge slice, the second term vanishes.  The
+      determinant is then field independent, so the ghosts decouple.
+      Equivalently, the putative ghost vertex is proportional to \(n^\mu\)
+      and vanishes against the axial propagator.  Consequently only the
+      gluon bubble and gluon tadpole drawn above are nonzero in axial gauge;
+      the ghost bubble is absent.
+  \end{enumerate}
 
   \SupplementarySolution{12}{The Free QED BRST Charge}
   \begin{enumerate}
@@ -541,129 +732,97 @@
       \(p\), the quotient has the two transverse photon polarizations.
   \end{enumerate}
 
-  \SupplementarySolution{13}{The BV Antibracket and Master Equation}
+  \SupplementarySolution{13}{BRST Gauge Independence and Physical States}
   \begin{enumerate}
-    \item[(a)]
-    Directly from Eq.~\eqref{eq:15.9.13},
-    \[
-      (\chi^n,\chi_m^\ddagger)=\delta^n_m,\qquad
-      (\chi^n,\chi^m)=0,\qquad
-      (\chi_n^\ddagger,\chi_m^\ddagger)=0,
-    \]
-    and
-    \((\chi_m^\ddagger,\chi^n)=-\delta^n_m\).
-    The bracket has parity one and raises ghost number by one, consistent with
-    \(\epsilon(\chi_n^\ddagger)=\epsilon_n+1\) and
-    \(\operatorname{gh}(\chi_n^\ddagger)=-1-\operatorname{gh}(\chi^n)\).
+    \item[(a)] First use the transformations as printed in the question;
+      the sign of \(Q\bar c\) is immaterial for nilpotence.  For the ghost,
+      \[
+        Q^2c^a=\frac{g^2}{4}f^a{}_{e[b}f^e{}_{cd]}
+          c^bc^cc^d=0,
+      \]
+      where the three ghosts perform the total antisymmetrization and the
+      coefficient vanishes by Jacobi.  For the gauge field,
+      \[
+        Q^2A_\mu^a
+          =\partial_\mu(Qc^a)+gf^a{}_{bc}
+            \bigl[(QA_\mu^b)c^c+A_\mu^b(Qc^c)\bigr].
+      \]
+      Terms containing \(\partial_\mu c\) cancel by antisymmetry; the
+      remaining \(A_\mu c c\) coefficient is again the Jacobi identity.
+      Thus \(Q^2A_\mu^a=0\).
 
-    The product rule gives
-    \[
-      (\chi^n\chi^m,\chi_k^\ddagger)
-        =\chi^n\delta^m_k
-         +(-1)^{\epsilon_m\epsilon_k}\delta^n_k\chi^m.
-    \]
-    The sign arises when the derivative associated with
-    \(\chi_k^\ddagger\), whose bracket action has parity
-    \(\epsilon_k\), passes through \(\chi^m\).  For two bosonic fields both
-    terms have plus signs; for two fermionic fields the exchange term has a
-    minus sign, as an explicit right-derivative calculation confirms.
-    \item[(b)]
-    Repeated use of the left- and right-derivative product rules gives
-    \[
-      (F,GH)=(F,G)H
-        +(-1)^{(\epsilon_F+1)\epsilon_G}G(F,H)
-    \]
-    and
-    \[
-      (FG,H)=F(G,H)
-        +(-1)^{\epsilon_G(\epsilon_H+1)}(F,H)G.
-    \]
-    Exchange \(F\) and \(G\) in the defining expression.  Moving the two
-    derivatives and their results back to the original order contributes
-    \((-1)^{(\epsilon_F+1)(\epsilon_G+1)}\), while exchanging the two terms
-    in the odd symplectic pairing contributes an additional minus sign.
-    Hence
-    \[
-      (F,G)=-(-1)^{(\epsilon_F+1)(\epsilon_G+1)}(G,F).
-    \]
-    In particular the bracket is symmetric for two even functionals and
-    antisymmetric in all the other parity combinations.
-    \item[(c)]
-    Expanding
-    \((F,(G,H))\) produces terms with a second derivative of \(G\), terms
-    with a second derivative of \(H\), and, if \(E\) varies, derivatives of
-    \(E\).  For constant \(E^{AB}\), graded symmetry of second derivatives
-    and graded antisymmetry of \(E\) make the first two classes cancel in
-    \[
-      (-1)^{(\epsilon_F+1)(\epsilon_H+1)}(F,(G,H))
-        +\text{cyclic permutations}.
-    \]
-    This proves the Jacobi identity in Darboux coordinates.
+      On the fermion, the odd Leibniz rule gives
+      \[
+        Q^2\psi=ig\left[(Qc^a)T_a\psi-c^aT_aQ\psi\right].
+      \]
+      Only the commutator part of \(T_aT_b\) survives contraction with
+      \(c^ac^b\), and
+      \([T_a,T_b]=if_{ab}{}^cT_c\) cancels the term containing \(Qc\).
+      Hence \(Q^2\psi=0\); the row-spinor calculation gives
+      \(Q^2\bar\psi=0\) in the same way.  Finally,
+      \(Q^2\bar c=QB=0\) and \(Q^2B=0\).  Nilpotence is off shell for every
+      field.
 
-    If \(E^{AB}=E^{AB}(z)\), the surviving coefficient is the graded cyclic
-    sum of
-    \[
-      E^{AD}\partial_D E^{BC}.
-    \]
-    Jacobi then requires this odd Schouten bracket \([E,E]\) to vanish.  A
-    nondegenerate \(E\) obeys the condition exactly when its inverse odd
-    two-form is closed.  Darboux coordinates make that form, and hence
-    \(E^{AB}\), locally constant.
-    \item[(d)]
-    Write \(S=S_0+S_1+S_2+\cdots\) by antifield number.  The term
-    \(2(S_0,S_1)=0\) is
-    \[
-      \frac{\delta S_0}{\delta\phi^r}R^r{}_a\omega^a=0,
-    \]
-    so every \(R_a\) generates a gauge symmetry.  The coefficient of
-    \(\phi_r^\ddagger\omega^b\omega^c\) at the next order is
-    \[
-      R_b^s\partial_sR_c^r-R_c^s\partial_sR_b^r
-        +C^a{}_{bc}R_a^r=0,
-    \]
-    up to the sign chosen in the definition of \(C\); this is closure.  The
-    coefficient of
-    \(\omega_a^\ddagger\omega^b\omega^c\omega^d\) is
-    \[
-      R_{[b}^r\partial_rC^a{}_{cd]}
-        -C^e{}_{[bc}C^a{}_{d]e}=0,
-    \]
-    the field-dependent Jacobi identity.
+    \item[(b)] We now adopt the explicit convention announced in the
+      editorial note, \(Q\bar c_a=-B_a\), while retaining the displayed
+      positive ghost term.  The gauge-invariant part
+      \[
+        \mathcal L_0=-\frac14F^a_{\mu\nu}F_a^{\mu\nu}
+          +\bar\psi(i\slashed D-m)\psi
+      \]
+      obeys \(Q\mathcal L_0=0\).  Moreover,
+      \[
+        QG^a=\frac{\delta G^a}{\delta A_\mu^b}
+          D_\mu^{bc}c_c.
+      \]
+      Since \(\bar c\) is odd and \(B\) is even,
+      \[
+        \begin{split}
+        -Q\Psi
+          &=-Q\!\left[\bar c_a
+             \left(G^a-\frac\xi2B^a\right)\right]\\
+          &=B_aG^a-\frac\xi2B_aB^a
+            +\bar c_a\frac{\delta G^a}{\delta A_\mu^b}
+              D_\mu^{bc}c_c.
+        \end{split}
+      \]
+      Thus the full displayed Lagrangian is
+      \(\mathcal L=\mathcal L_0-Q\Psi\), and
+      \[
+        Q\mathcal L=Q\mathcal L_0-Q^2\Psi=0.
+      \]
+      If instead one keeps the source rule \(Q\bar c=B\), the same proof
+      goes through after reversing the ghost-term sign.  This is precisely
+      the equivalent convention recorded after the exercise.
 
-    For an open algebra, closure and Jacobi hold only modulo the equations
-    \(\delta S_0/\delta\phi^r=0\).  The ellipsis must then include terms
-    quadratic and higher in antifields, such as
-    \(\phi_r^\ddagger\phi_s^\ddagger
-    M^{rs}{}_{ab}\omega^a\omega^b\).  Their antibrackets with \(S_0\)
-    supply precisely the equation-of-motion terms and all higher consistency
-    conditions.
-    \item[(e)]
-    Add the nonminimal term
-    \(-\int d^4x\,h_a\omega_a^{*\ddagger}\) to \(S_{\min}\).  From the
-    gauge fermion in the question,
-    \[
-      A_a^{\ddagger\mu}=\partial^\mu\omega_a^*,\quad
-      \omega_a^{*\ddagger}
-        =-\left(\partial\cdot A_a+\frac{\xi}{2}h_a\right),\quad
-      h_a^\ddagger=-\frac{\xi}{2}\omega_a^*,\quad
-      \omega_a^\ddagger=0.
-    \]
-    Substitution gives
-    \[
-      S_\Psi=S_{\rm YM}+\int d^4x\left[
-        -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
-        +h_a\partial_\mu A_a^\mu+\frac{\xi}{2}h_ah_a
-      \right],
-    \]
-    where the first sign follows by reordering the two odd factors
-    \((D_\mu\omega)_a\) and \(\partial^\mu\omega_a^*\).
-    The auxiliary equation \(h_a=-\partial\cdot A_a/\xi\) yields
-    \[
-      S_\Psi=S_{\rm YM}+\int d^4x\left[
-        -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
-        -\frac1{2\xi}(\partial_\mu A_a^\mu)^2\right],
-    \]
-    the Lorenz-gauge Faddeev--Popov action.
+    \item[(c)] Let \(\delta\Psi\) be an arbitrary infinitesimal change of
+      gauge fixing.  Absorb the inessential overall sign from part~(b) into
+      the definition of \(\Psi\).  To first order, the amplitude changes by
+      an insertion
+      \[
+        \delta_\Psi\braket{f}{i}
+          =i\left\langle f\left|
+             \int d^4x\,\{\widehat Q,\delta\Psi\}
+            \right|i\right\rangle .
+      \]
+      If
+      \(\widehat Q\ket{i}=0\) and
+      \(\langle f|\widehat Q=0\), the two terms in the anticommutator
+      vanish separately, for every \(\delta\Psi\).  If
+      \(\widehat Q\) is Hermitian, the second condition is equivalent to
+      \(\widehat Q\ket{f}=0\), which is the form stated in the problem.
+
+      Conversely, because the gauge-fixing change is arbitrary, a state on
+      which \(\widehat Q\) acts nontrivially would in general give a
+      gauge-dependent transition amplitude.  Physical external states must
+      therefore be BRST closed:
+      \[
+        \boxed{\widehat Q\ket{\mathrm{phys}}=0.}
+      \]
+      Nilpotence, \(\widehat Q^2=0\), also means that adding an exact state
+      \(\widehat Q\ket{\chi}\) does not change its matrix elements with
+      closed states.  Thus the physical state space is the BRST cohomology,
+      the kernel of \(\widehat Q\) modulo its image.
   \end{enumerate}
 
   \SupplementarySolution{14}{Minimal and Quantum BV Constructions}

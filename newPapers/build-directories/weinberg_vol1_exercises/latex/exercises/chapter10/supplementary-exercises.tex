@@ -47,26 +47,59 @@ Make the thermal spectral weight and its detailed-balance relation explicit,
 and verify that the limit \(\beta\to\infty\) reproduces the vacuum
 representation.  You may take \(O=O^\dagger\).
 
-\SupplementaryExercise{3}{Local and Momentum-Space Ward--Takahashi Identities}
-  {(Inspired by David Skinner, \emph{Symmetries in Quantum Field Theory}, Section 6.)}
-  {skinner-aqft-ward-2017-ch10-curated-parent-1}
+\SupplementaryExercise{3}{The Ward--Takahashi Identity in Euclidean QED}
+  {(Adapted from University of Cambridge, \emph{Mathematical Tripos Part III, Advanced Quantum Field Theory, Paper 304}, 2022, Question 3, p.~4.)}
+  {cambridge-partiii-2022-aqft-paper304-q3}
+For this problem only, work in Euclidean spacetime, with indices contracted
+using \(\delta_{\mu\nu}\) and Euclidean gamma matrices satisfying
+\(\{\gamma_E^\mu,\gamma_E^\nu\}=2\delta^{\mu\nu}\).  The QED Lagrangian is
+\[
+ \mathcal L_E=\frac14F_{\mu\nu}F^{\mu\nu}
+ +\bar\psi(\slashed D_E+m)\psi,
+ \qquad
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+ \qquad
+ \slashed D_E=\gamma_E^\mu(\partial_\mu-ieA_\mu).
+\]
 \begin{enumerate}
 \item
-For a complex scalar with current \(j^\mu\), derive the local Ward--Takahashi
-identity for
-\(\langle Tj^\mu(x)\Phi(y)\Phi^\dagger(z)\rangle\) directly from a
-position-dependent phase change in the path integral.  Display every
-contact term and its sign.
+Show that the Lagrangian is invariant under the global \(U(1)\)
+transformations
+\[
+ \psi(x)\longmapsto e^{i\alpha}\psi(x),\qquad
+ \bar\psi(x)\longmapsto\bar\psi(x)e^{-i\alpha},\qquad
+ A_\mu(x)\longmapsto A_\mu(x).
+\]
+Use this invariance to show that the current
+\[
+ j^\mu(x)=\bar\psi(x)\gamma_E^\mu\psi(x)
+\]
+is conserved.
 \item
-Fourier transform the identity of the preceding part, factor the full
-external scalar propagators from the connected three-point function, and
-derive the relation between the amputated current vertex and the inverse
-exact propagator.
+Derive the Schwinger--Dyson equation
+\[
+ \partial_\mu
+ \left\langle j^\mu(x)\psi(x_1)\bar\psi(x_2)\right\rangle
+ =-\left[\delta^{(4)}(x-x_1)-\delta^{(4)}(x-x_2)\right]
+ \left\langle\psi(x_1)\bar\psi(x_2)\right\rangle.
+\]
 \item
-Take the zero-current-momentum limit of the scalar Ward--Takahashi identity.
-Show that the vertex at zero momentum transfer is a momentum derivative of
-the exact inverse propagator.  Explain why this relates field and vertex
-renormalization constants.
+Use the preceding result to derive the Ward--Takahashi identity involving
+the exact vertex function \(V_3^\mu\) and exact fermion propagator
+\(G(\slashed p)\):
+\[
+ iq_\mu V_3^\mu(q,p_1,p_2)
+ =ie\left[G^{-1}(\slashed p_1)
+ -G^{-1}(\slashed p_1-\slashed q)\right],
+ \qquad p_2=p_1-q.
+\]
+Here \(\slashed p=\gamma_E^\mu p_\mu\), and the charge \(e\) is included
+in the normalization of \(V_3^\mu\).
+\item
+Explain what the Ward--Takahashi identity implies for renormalization of
+terms in the Lagrangian, for example in the on-shell renormalization
+scheme.  Comment on what, if any, conclusions continue to hold
+nonperturbatively.
 \end{enumerate}
 
 \SupplementaryExercise{4}{Charge Conjugation and Odd-Photon Selection Rules}
@@ -126,13 +159,102 @@ What do these identities imply physically for photon scattering in scalar
 and spinor QED?
 \end{enumerate}
 
-\SupplementaryExercise{5}{Current Conservation after LSZ Reduction}
-  {(Inspired by David Skinner, \emph{Symmetries in Quantum Field Theory}, Section 6.)}
-  {skinner-aqft-ward-2017-ch10-curated-parent-3}
-Apply LSZ reduction to a time-ordered correlator with one electromagnetic
-current and otherwise charged-field insertions.  Show why the Ward contact
-terms lack the simultaneous external-particle poles and prove that replacing
-an external photon polarization by its momentum gives zero.
+\SupplementaryExercise{5}{Scalar and Pseudoscalar Decays from Schwinger--Dyson and LSZ}
+  {(Adapted from University of Cambridge, \emph{Mathematical Tripos Part III, Quantum Field Theory, Paper 301}, 2025, Question 3, pp.~4--5.)}
+  {cambridge-partiii-2025-qft-paper301-q3}
+Consider in four dimensions a massive real scalar field \(\phi(x)\) and a
+massive Dirac field \(\psi(x)\).  In the volume's mostly-plus conventions,
+the free Lagrangian is
+\[
+ \mathcal L_0=-\frac12\partial_\mu\phi\,\partial^\mu\phi
+ -\frac12M^2\phi^2-\bar\psi(\gamma^\mu\partial_\mu+m)\psi,
+\]
+where \(M\) and \(m\) are the scalar and fermion masses.
+\begin{enumerate}
+\item
+Consider first \(\mathcal L_0+\mathcal L_1\), with
+\[
+ \mathcal L_1=-\lambda\phi\bar\psi\psi.
+\]
+\begin{enumerate}
+\item
+Write down the classical equations of motion.  State, without derivation,
+the three Schwinger--Dyson equations for this theory.
+\item
+Following the LSZ approach, derive the \(S\)-matrix element for the decay
+\(\phi\to\psi\bar\psi\) by defining the asymptotic states and identifying
+the correlation function that enters the matrix element.
+\item
+To leading order in \(\lambda\), evaluate the connected contribution to
+the correlation function appearing in \(\phi\to\psi\bar\psi\) by using
+the Schwinger--Dyson equations.  Hence evaluate the \(S\)-matrix element
+to leading order and identify the corresponding invariant amplitude
+\(\mathcal A_{s,s'}\).
+\item
+Compute the spin-summed/averaged squared matrix element
+\[
+ \mathcal P\equiv\frac14\sum_{s,s'=1}^{2}
+ \left|\mathcal A_{s,s'}\right|^2,
+\]
+where \(s\) and \(s'\) are the spins of the final particles.
+\end{enumerate}
+\item
+Now consider instead \(\mathcal L_0+\mathcal L_2\), with
+\[
+ \mathcal L_2=-ig\phi\bar\psi\gamma_5\psi,
+ \qquad \gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3.
+\]
+What is the \(S\)-matrix element for \(\phi\to\psi\bar\psi\)?  You need
+not repeat the derivation: state the appropriate modification of the
+answer in part (a)(iii).  Evaluate the spin-summed/averaged squared matrix
+element in this case.  Could an experiment distinguish the effects of
+\(\mathcal L_1\) and \(\mathcal L_2\)?
+\end{enumerate}
+
+You may use without proof the following free-field mode expansions and
+spinor identities.  With \(p^0>0\), define
+\[
+ \widetilde\omega_{\mathbf p}^{2}=M^2+\mathbf p^2,
+ \qquad \omega_{\mathbf p}^{2}=m^2+\mathbf p^2,
+ \qquad \widehat p\equiv-i\gamma^\mu p_\mu.
+\]
+The last definition translates the source's mostly-minus slash to the
+volume convention.  The mode expansions are
+\[
+ \phi(x)=\int\frac{d^3p}{(2\pi)^3}\frac1{\sqrt{2\widetilde\omega_{\mathbf p}}}
+ \left[a_{\mathbf p}e^{ip\cdot x}
+ +a_{\mathbf p}^\dagger e^{-ip\cdot x}\right],
+\]
+\[
+ \psi(x)=\int\frac{d^3p}{(2\pi)^3}\frac1{\sqrt{2\omega_{\mathbf p}}}
+ \sum_{r=1}^{2}\left[
+ b^r_{\mathbf p}u^r(\mathbf p)e^{ip\cdot x}
+ +c^{r\dagger}_{\mathbf p}v^r(\mathbf p)e^{-ip\cdot x}
+ \right].
+\]
+For on-shell \(p\),
+\[
+ (\widehat p-m)u^s(\mathbf p)=0,
+ \qquad (\widehat p+m)v^s(\mathbf p)=0,
+\]
+\[
+ \sum_{s=1}^{2}u^s(\mathbf p)\bar u^s(\mathbf p)=\widehat p+m,
+ \qquad
+ \sum_{s=1}^{2}v^s(\mathbf p)\bar v^s(\mathbf p)=\widehat p-m,
+\]
+and
+\[
+ \begin{aligned}
+ u^{s'\dagger}(\mathbf p)u^s(\mathbf p)
+ &=v^{s'\dagger}(\mathbf p)v^s(\mathbf p)
+ =2\omega_{\mathbf p}\delta^{ss'},\\
+ \bar u^{s'}(\mathbf p)u^s(\mathbf p)
+ &=-\bar v^{s'}(\mathbf p)v^s(\mathbf p)
+ =2m\delta^{ss'},\\
+ u^{s\dagger}(\mathbf p)v^{s'}(-\mathbf p)
+ &=v^{s\dagger}(\mathbf p)u^{s'}(-\mathbf p)=0.
+ \end{aligned}
+\]
 
 \SupplementaryExercise{6}{Two Form Factors for an Elastic Dirac Current and Charge and Magnetic Moment at Zero Transfer}
   {(Inspired by David Tong, \emph{Lectures on Quantum Field Theory}, Sections 4.4 and 6.5.)}

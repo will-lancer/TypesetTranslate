@@ -168,70 +168,113 @@ which is the usual vacuum Lehmann representation; Lorentz invariance then
 reorganizes the intermediate states into the standard invariant-mass
 spectral density.
 
-\SupplementarySolution{3}{Local and Momentum-Space Ward--Takahashi Identities}
+\SupplementarySolution{3}{The Ward--Takahashi Identity in Euclidean QED}
 \begin{enumerate}
 \item
-Perform the infinitesimal change of variables
+Under a constant phase, \(D_\mu\psi\) transforms in the same way as
+\(\psi\), while \(F_{\mu\nu}\) is unchanged.  Every term in
+\(\mathcal L_E\) is therefore invariant.  To extract the current, promote
+the phase to \(\alpha(x)\).  To first order,
 \[
- \delta\Phi=i q\alpha(x)\Phi,\qquad
- \delta\Phi^\dagger=-iq\alpha(x)\Phi^\dagger.
+ \delta\psi=i\alpha\psi,\qquad
+ \delta\bar\psi=-i\alpha\bar\psi,\qquad
+ \delta\mathcal L_E=i(\partial_\mu\alpha)
+ \bar\psi\gamma_E^\mu\psi.
 \]
-Invariance of the functional measure and integration by parts in the
-action give a term
-\(-\int d^4x\,\alpha\,\partial_\mu j^\mu\).  Variation of the inserted
-fields gives delta functions at their positions.  Removing the arbitrary
-\(\alpha(x)\) yields
+Thus the Noether current is \(j^\mu=\bar\psi\gamma_E^\mu\psi\).
+Equivalently, the Euclidean equations of motion are
 \[
- \boxed{
- \begin{aligned}
- \partial_\mu^x
- \langle Tj^\mu(x)\Phi(y)\Phi^\dagger(z)\rangle
- ={}&-q\delta^4(x-y)
-       \langle T\Phi(y)\Phi^\dagger(z)\rangle\\
- &+q\delta^4(x-z)
-       \langle T\Phi(y)\Phi^\dagger(z)\rangle .
- \end{aligned}}
+ (\slashed D_E+m)\psi=0,\qquad
+ \bar\psi(-\overleftarrow{\slashed D}_E+m)=0,
 \]
-The relative signs reflect the opposite charges of \(\Phi\) and
-\(\Phi^\dagger\).  The same result follows from differentiating the
-step functions in the operator time ordering.
+where
+\(\bar\psi\overleftarrow D_\mu=\partial_\mu\bar\psi+ieA_\mu\bar\psi\).
+They give
+\[
+ \partial_\mu j^\mu
+ =(\partial_\mu\bar\psi)\gamma_E^\mu\psi
+ +\bar\psi\gamma_E^\mu\partial_\mu\psi=0.
+\]
 \item
-Let \(q=\ell-k\), and define the connected three-point function by
+Use the Euclidean functional integral with weight \(e^{-S_E}\), and make
+the position-dependent change of integration variables used in the
+preceding part.  For
+\(\mathcal O=\psi(x_1)\bar\psi(x_2)\),
 \[
- G^\mu(k,\ell)
- =-iq\,\Delta'(k)\Gamma^\mu(k,\ell)\Delta'(\ell).
+ \delta\mathcal O
+ =i[\alpha(x_1)-\alpha(x_2)]\mathcal O,
+\qquad
+ \delta S_E
+ =-i\int d^4x\,\alpha(x)\partial_\mu j^\mu(x).
 \]
-Fourier transformation of the two contact terms in the local identity
-gives the difference of full propagators.  After cancelling the common
-charge and amputating both scalar legs,
+Invariance of both the measure and the integral gives
+\(\langle\delta\mathcal O-\mathcal O\,\delta S_E\rangle=0\).
+Because \(\alpha(x)\) is arbitrary, the coefficient of it is
 \[
  \boxed{\;
- q_\mu\Gamma^\mu(k,\ell)
- =i\Delta'^{-1}(k)-i\Delta'^{-1}(\ell).\;}
+ \partial_\mu\left\langle
+ j^\mu(x)\psi(x_1)\bar\psi(x_2)\right\rangle
+ =-\left[\delta^{(4)}(x-x_1)-\delta^{(4)}(x-x_2)\right]
+ \left\langle\psi(x_1)\bar\psi(x_2)\right\rangle.\;}
 \]
-For the free inverse propagator \(k^2+m^2\), the vertex
-\(-i(k+\ell)^\mu\) gives
-\(q_\mu\Gamma^\mu=i(k^2-\ell^2)\), exactly the required difference.
-The equality therefore holds for the fully dressed quantities with the
-same convention.
+The two contact terms have opposite signs because \(\psi\) and
+\(\bar\psi\) carry opposite \(U(1)\) charges.
 \item
-Set \(\ell=k+q\), expand for small \(q\), and retain the linear term:
+Let \(p_2=p_1-q\), and normalize the amputated vertex so that it includes
+the charge \(e\).  Fourier transforming the connected current insertion
+and factoring its two exact external propagators gives
 \[
- q_\mu\Gamma^\mu(k,k)
- =-i q_\mu\frac{\partial}{\partial k_\mu}
- \Delta'^{-1}(k)+O(q^2).
+ iq_\mu G(\slashed p_1)V_3^\mu(q,p_1,p_2)G(\slashed p_2)
+ =ie\left[G(\slashed p_2)-G(\slashed p_1)\right].
 \]
-Because \(q_\mu\) is arbitrary,
+Multiplication by the inverse propagators on the two sides yields the
+exact identity
 \[
- \boxed{\Gamma^\mu(k,k)
- =-i\frac{\partial\Delta'^{-1}(k)}{\partial k_\mu}.}
+ \boxed{\;
+ iq_\mu V_3^\mu(q,p_1,p_2)
+ =ie\left[G^{-1}(\slashed p_1)
+ -G^{-1}(\slashed p_1-\slashed q)\right].\;}
 \]
-Near the pole, the coefficient multiplying \(k^2+m^2\) in the inverse
-propagator is the field-strength normalization.  The same coefficient
-appears in the zero-momentum vertex through the derivative formula.
-Consequently the ultraviolet counterterms multiplying the charged-field
-kinetic term and the one-photon vertex are tied; in standard notation the
-Ward identity enforces \(Z_1=Z_2\).
+At zero momentum transfer this becomes
+\[
+ \boxed{\;
+ V_3^\mu(0,p,p)
+ =e\,\frac{\partial G^{-1}(\slashed p)}{\partial p_\mu}. \;}
+\]
+This derivative form is a useful check on every factor of \(i\) and on the
+momentum routing.
+\item
+Write the renormalized fermion kinetic and vertex terms schematically as
+\[
+ Z_2\bar\psi\slashed\partial_E\psi
+ -ieZ_1\bar\psi\gamma_E^\mu A_\mu\psi.
+\]
+The derivative identity says that the ultraviolet coefficient of the
+zero-momentum vertex is the same as that of the inverse fermion
+propagator.  Hence
+\[
+ \boxed{Z_1=Z_2.}
+\]
+In an on-shell scheme the residue counterterm fixed at the fermion pole
+therefore fixes the vertex counterterm in the Thomson limit.  With
+\(A_{0\mu}=Z_3^{1/2}A_\mu\), this also gives
+\[
+ e_0=Z_3^{-1/2}e
+\]
+in the usual notation: charge renormalization is determined by photon
+field-strength renormalization, not by an independent fermion--photon
+vertex counterterm.  The same gauge symmetry makes the vacuum
+polarization transverse and forbids a photon mass counterterm in the
+unbroken theory.
+
+Nothing in the change-of-variables derivation used a loop expansion.
+Consequently the identity between the exact propagator and exact vertex,
+current conservation, and transversality hold nonperturbatively whenever
+the regulator and functional measure preserve the vector \(U(1)\)
+symmetry.  The vector current of QED has no anomaly.  A symmetry-breaking
+regulator would require symmetry-restoring counterterms, while a genuinely
+broken phase would change the assumptions rather than invalidate the
+identity.
 \end{enumerate}
 
 \SupplementarySolution{4}{Charge Conjugation and Odd-Photon Selection Rules}
@@ -255,8 +298,8 @@ In the volume's mostly-plus convention the two Lagrangians are
 \]
 They are invariant under
 \[
- A_\mu\longmapsto A_\mu+\partial_\mu\Lambda,qquad
- \phi\longmapsto e^{-ie\Lambda}\phi,qquad
+ A_\mu\longmapsto A_\mu+\partial_\mu\Lambda,\qquad
+ \phi\longmapsto e^{-ie\Lambda}\phi,\qquad
  \psi\longmapsto e^{-ie\Lambda}\psi,
 \]
 because \(D_\mu\phi\) and \(D_\mu\psi\) acquire the same phase as their
@@ -335,23 +378,204 @@ the cancellation between the two orientations of each charged loop with an
 odd number of photon attachments.
 \end{enumerate}
 
-\SupplementarySolution{5}{Current Conservation after LSZ Reduction}
-The divergence of the current correlator is a sum of terms in which the
-current point is collapsed onto one charged-field insertion.  Such a term
-has one fewer independent spacetime point and therefore lacks the complete
-set of simultaneous one-particle poles required by LSZ for the original
-process.  Multiplying by every external inverse propagator and taking all
-mass-shell limits annihilates it.
-
-An external photon contributes a polarization contraction
-\(\epsilon_\mu\mathcal M^\mu\).  Replacing
-\(\epsilon_\mu\) by its momentum turns the current insertion into its
-Fourier-space divergence.  The preceding pole argument then gives
+\SupplementarySolution{5}{Scalar and Pseudoscalar Decays from Schwinger--Dyson and LSZ}
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item
+Varying \(\phi\), \(\bar\psi\), and \(\psi\), respectively, gives
 \[
- \boxed{k_\mu\mathcal M^\mu=0.}
+ \boxed{\begin{aligned}
+ (\Box-M^2)\phi&=\lambda\bar\psi\psi,\\
+ (\gamma^\mu\partial_\mu+m+\lambda\phi)\psi&=0,\\
+ \bar\psi(\overleftarrow{\partial}_\mu\gamma^\mu-m-\lambda\phi)&=0.
+ \end{aligned}}
 \]
-The assertion applies to the gauge-invariant sum of diagrams; an individual
-diagram need not contain all contact-term cancellations.
+The relative signs in the scalar equation follow from
+\(\mathcal L_\phi=-\tfrac12(\partial\phi)^2-\tfrac12M^2\phi^2\).
+
+For completeness, the three Schwinger--Dyson identities can be stated in
+a form that covers any time-ordered insertion \(\mathcal X\).  With left
+Grassmann differentiation in the second line and right differentiation in
+the third,
+\[
+ \boxed{\begin{aligned}
+ \left\langle T\!\left\{
+ \bigl[(\Box-M^2)\phi-\lambda\bar\psi\psi\bigr](x)
+ \mathcal X\right\}\right\rangle
+ &=i\left\langle T\frac{\delta\mathcal X}{\delta\phi(x)}
+ \right\rangle,\\
+ \left\langle T\!\left\{
+ \bigl[(\gamma^\mu\partial_\mu+m+\lambda\phi)\psi\bigr](x)
+ \mathcal X\right\}\right\rangle
+ &=-i\left\langle T\frac{\delta\mathcal X}{\delta\bar\psi(x)}
+ \right\rangle,\\
+ \left\langle T\!\left\{\mathcal X
+ \bigl[\bar\psi(\overleftarrow{\partial}_\mu\gamma^\mu
+ -m-\lambda\phi)\bigr](x)\right\}\right\rangle
+ &=i\left\langle T\mathcal X
+ \frac{\overleftarrow\delta}{\delta\psi(x)}\right\rangle.
+ \end{aligned}}
+\]
+These equations include all contact terms: differentiating a field inside
+\(\mathcal X\) produces its delta function.  For example, the free limits
+give \((\Box-M^2)D_F=i\delta^{(4)}\) and
+\((\gamma^\mu\partial_\mu+m)S_F=-i\delta^{(4)}\), consistent with the
+volume's propagator phases.
+\item
+Use covariantly normalized one-particle states.  In terms of the
+noncovariantly normalized operators in the supplied mode expansions,
+\[
+ \begin{aligned}
+ \InKet{\phi(k)}
+ &=\sqrt{2\widetilde\omega_{\mathbf k}}\,
+ a^\dagger_{\mathrm{in},\mathbf k}\ket{\Omega},\\
+ \OutKet{\psi(p,s),\bar\psi(q,s')}
+ &=\sqrt{2\omega_{\mathbf p}\,2\omega_{\mathbf q}}\,
+ b^{s\dagger}_{\mathrm{out},\mathbf p}
+ c^{s'\dagger}_{\mathrm{out},\mathbf q}\ket{\Omega}.
+ \end{aligned}
+\]
+The connected correlation function having all three required
+one-particle poles is
+\[
+ G_{\alpha\beta}(x,y,z)
+ =\left[\bra{\Omega}T\{\psi_\alpha(x)\bar\psi_\beta(y)\phi(z)\}
+ \ket{\Omega}\right]_{c}.
+\]
+Define its Fourier transform with the external-state phases by
+\[
+ \widetilde G_{\alpha\beta}(p,q;k)
+ =\int d^4x\,d^4y\,d^4z\,
+ e^{-ip\cdot x-iq\cdot y+ik\cdot z}
+ G_{\alpha\beta}(x,y,z).
+\]
+Near the three mass shells it factors as
+\[
+ \begin{aligned}
+ \widetilde G(p,q;k)
+ ={}&(2\pi)^4\delta^{(4)}(k-p-q)\\
+ &\times S_F(p)\,\Gamma(p,q;k)\,S_F(-q)\,D_F(k)
+ +R(p,q;k).
+ \end{aligned}
+\]
+Here \(R\) denotes terms missing at least one of the three external
+one-particle poles.
+LSZ multiplies by the three inverse propagators, takes
+\(p^2=q^2=-m^2\), \(k^2=-M^2\), and contracts the fermion residues with
+\(\bar u^s(\mathbf p)\) and \(v^{s'}(\mathbf q)\).  Thus, defining the
+amputated invariant vertex by \(\Gamma=-i\mathcal V\),
+\[
+ \boxed{\begin{aligned}
+ \OutBra{\psi(p,s),\bar\psi(q,s')}S\InKet{\phi(k)}
+ &={}\,i(2\pi)^4\delta^{(4)}(k-p-q)\mathcal A_{s,s'},\\
+ \mathcal A_{s,s'}
+ &=\bar u^s(\mathbf p)\mathcal V(p,q;k)v^{s'}(\mathbf q).
+ \end{aligned}}
+\]
+The mode expansions supplied in the prompt fix both the pole residues and
+the square-root normalizations in this formula.
+\item
+Apply the scalar Schwinger--Dyson equation to \(G\).  Its contact term
+vanishes because the other insertion contains no scalar field, and its
+right-hand side contains
+\(\langle T\{\bar\psi\psi\,\psi\bar\psi\}\rangle\).
+At lowest order Wick contraction gives two free fermion propagators.
+Applying the two fermion Schwinger--Dyson equations then exposes their
+delta-function sources.  Equivalently, before amputation the result is
+\[
+ \boxed{\;
+ G_c(x,y,z)
+ =-i\lambda\int d^4w\,
+ D_F(z-w)S_F(x-w)S_F(w-y)+O(\lambda^3),\;}
+\]
+with the displayed order of spinor indices.  Fourier transformation gives
+\[
+ \widetilde G_c(p,q;k)
+ =(2\pi)^4\delta^{(4)}(k-p-q)
+ S_F(p)(-i\lambda)S_F(-q)D_F(k)+O(\lambda^3).
+\]
+The three LSZ amputations therefore leave
+\[
+ \boxed{\mathcal V=-\lambda\mathbf1,\qquad
+ \mathcal A_{s,s'}=-\lambda\,
+ \bar u^s(\mathbf p)v^{s'}(\mathbf q),}
+\]
+and
+\[
+ \boxed{\begin{aligned}
+ \OutBra{\psi(p,s),\bar\psi(q,s')}S\InKet{\phi(k)}
+ ={}&-i\lambda(2\pi)^4\delta^{(4)}(k-p-q)\\
+ &\times\bar u^s(\mathbf p)v^{s'}(\mathbf q)+O(\lambda^3).
+ \end{aligned}}
+\]
+\item
+The supplied completeness relations give
+\[
+ \begin{aligned}
+ \sum_{s,s'}|\mathcal A_{s,s'}|^2
+ &=\lambda^2\operatorname{tr}
+ \bigl[(\widehat p+m)(\widehat q-m)\bigr]\\
+ &=-4\lambda^2(p\cdot q+m^2).
+ \end{aligned}
+\]
+Momentum conservation and the mostly-plus mass shells imply
+\[
+ -M^2=k^2=(p+q)^2=-2m^2+2p\cdot q,
+ \qquad p\cdot q=m^2-\frac{M^2}{2}.
+\]
+Consequently
+\[
+ \sum_{s,s'}|\mathcal A_{s,s'}|^2
+ =2\lambda^2(M^2-4m^2),
+ \qquad
+ \boxed{\mathcal P_{\mathrm S}
+ =\frac{\lambda^2}{2}(M^2-4m^2).}
+\]
+The expression is nonnegative precisely when the decay is kinematically
+allowed, \(M\geq2m\).
+\end{enumerate}
+\item
+The pseudoscalar interaction replaces the scalar vertex
+\(-i\lambda\mathbf1\) by \(g\gamma_5\).  Hence
+\[
+ \boxed{\mathcal A^{(5)}_{s,s'}
+ =-ig\,\bar u^s(\mathbf p)\gamma_5v^{s'}(\mathbf q),}
+\]
+and
+\[
+ \boxed{\;
+ \OutBra{\psi(p,s),\bar\psi(q,s')}S\InKet{\phi(k)}
+ =g(2\pi)^4\delta^{(4)}(k-p-q)
+ \bar u^s(\mathbf p)\gamma_5v^{s'}(\mathbf q)+O(g^3).\;}
+\]
+Since
+\((\bar u\gamma_5v)^*=-\bar v\gamma_5u\), the spin sum is
+\[
+ \begin{aligned}
+ \sum_{s,s'}|\mathcal A^{(5)}_{s,s'}|^2
+ &=-g^2\operatorname{tr}\left[
+ (\widehat p+m)\gamma_5(\widehat q-m)\gamma_5\right]\\
+ &=2g^2M^2,
+ \end{aligned}
+\]
+where \(\{\gamma_5,\widehat p\}=0\) was used.  Therefore
+\[
+ \boxed{\mathcal P_{\mathrm P}=\frac{g^2M^2}{2}.}
+\]
+
+The distinction is physical.  Writing
+\(\beta=\sqrt{1-4m^2/M^2}\), the actual decay widths, which use the full
+final-spin sum \(4\mathcal P\), are
+\[
+ \Gamma_{\mathrm S}=\frac{\lambda^2M}{8\pi}\beta^3,\qquad
+ \Gamma_{\mathrm P}=\frac{g^2M}{8\pi}\beta.
+\]
+Thus scalar and pseudoscalar couplings have different threshold behavior
+and different final-state spin/parity correlations.  A single width could
+be imitated by choosing different numerical couplings, but threshold or
+angular/spin information distinguishes the two interactions.
+\end{enumerate}
 
 \SupplementarySolution{6}{Two Form Factors for an Elastic Dirac Current and Charge and Magnetic Moment at Zero Transfer}
 \begin{enumerate}
@@ -559,17 +783,38 @@ displayed formula also proves \(F'(z_0)\geq0\).
 The required graph is the forward \(s\)-channel photon exchange with a
 muon loop inserted into the photon line:
 \begin{center}
-\begin{tikzpicture}[x=0.85cm,y=0.85cm,>=stealth]
- \draw[->] (-3,1)--(-2,0) node[midway,above left] {\(e^-\)};
- \draw[<-] (-3,-1)--(-2,0) node[midway,below left] {\(e^+\)};
- \draw (-2,0)--(-0.75,0) node[midway,above] {\(\gamma^*\)};
- \draw[->] (-0.75,0) arc (180:0:0.75 and 0.62)
-   node[midway,above] {\(\mu^-\)};
- \draw[->] (0.75,0) arc (0:-180:0.75 and 0.62)
-   node[midway,below] {\(\mu^+\)};
- \draw (0.75,0)--(2,0) node[midway,above] {\(\gamma^*\)};
- \draw[->] (2,0)--(3,1) node[midway,above right] {\(e^-\)};
- \draw[<-] (2,0)--(3,-1) node[midway,below right] {\(e^+\)};
+% The two virtual photons are wavy, the muon loop circulates consistently, and
+% each loop arrowhead sits at the middle of its arc so that it does not land on
+% the photon attachment point.  Species labels are placed clear of the lines.
+\begin{tikzpicture}[x=0.85cm,y=0.85cm,line width=0.65pt,
+  ferm/.style={postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{Stealth[length=4.8pt,width=3.6pt]}}}},
+  ferm/.default=0.5,
+  photon/.style={decorate,
+    decoration={snake,amplitude=1.05pt,segment length=4.6pt}},
+  vertex/.style={circle,fill,inner sep=1.25pt}]
+ \coordinate (l) at (-2,0);   \coordinate (r) at (2,0);
+ \coordinate (ll) at (-0.75,0); \coordinate (rr) at (0.75,0);
+ \draw[ferm] (-3,1)--(l);
+ \draw[ferm] (l)--(-3,-1);
+ \draw[photon] (l)--(ll);
+ \draw[ferm] (ll) arc[start angle=180,end angle=0,
+   x radius=0.75,y radius=0.62];
+ \draw[ferm] (rr) arc[start angle=0,end angle=-180,
+   x radius=0.75,y radius=0.62];
+ \draw[photon] (rr)--(r);
+ \draw[ferm] (r)--(3,1);
+ \draw[ferm] (3,-1)--(r);
+ \node[vertex] at (l) {};  \node[vertex] at (r) {};
+ \node[vertex] at (ll) {}; \node[vertex] at (rr) {};
+ \node[anchor=south east] at (-3.05,1.05) {\(e^-\)};
+ \node[anchor=north east] at (-3.05,-1.05) {\(e^+\)};
+ \node[anchor=south west] at (3.05,1.05) {\(e^-\)};
+ \node[anchor=north west] at (3.05,-1.05) {\(e^+\)};
+ \node[above=3pt] at (-1.375,0) {\(\gamma^*\)};
+ \node[above=3pt] at (1.375,0) {\(\gamma^*\)};
+ \node[above=2pt] at (0,0.62) {\(\mu^-\)};
+ \node[below=2pt] at (0,-0.62) {\(\mu^+\)};
 \end{tikzpicture}
 \end{center}
 Write the transverse muon contribution as
