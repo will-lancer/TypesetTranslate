@@ -112,40 +112,46 @@
 
   \SupplementarySolution{3}{Scheme Changes and Dimensional Transmutation}
   \begin{enumerate}
-    \item[(a)]
-    The chain rule gives the exact transformation law
+    \item[(a)] The exact chain rule is
     \[
       \boxed{\bar\beta(\bar g)
         =\frac{d\bar g}{dg}\,\beta(g).}
     \]
-    Inverting the redefinition,
-    \[
-      g=\bar g-a_2\bar g^2+(2a_2^2-a_3)\bar g^3+\cdots,
-    \]
-    and re-expanding yields
-    \[
-      \bar\beta(\bar g)
-        =b_2\bar g^2+b_3\bar g^3
-         +\bigl[b_4-a_2b_3+(a_3-a_2^2)b_2\bigr]\bar g^4+\cdots.
-    \]
-    Thus \(b_2\) and \(b_3\) are invariant, whereas \(b_4\) is
-    scheme-dependent.  Geometrically, the beta function is a vector field
-    on the one-dimensional space of couplings.
-    \item[(b)]
-    Separating variables gives
-    \[
-      \frac1{g(\mu)}=b\ln\frac{\mu}{\Lambda},\qquad
-      \boxed{g(\mu)=\frac1{b\ln(\mu/\Lambda)}}.
-    \]
-    Equivalently,
-    \[
-      \Lambda=\mu\exp\!\left[-\frac1{b\,g(\mu)}\right].
-    \]
-    Differentiation using the beta function shows
-    \(\mu\,d\Lambda/d\mu=0\).  Specifying \(g\) at one scale is therefore
-    equivalent to specifying the dimensionful constant \(\Lambda\).
-    Classical scale invariance is replaced by dependence on this
-    dynamically generated scale; this is dimensional transmutation.
+      Hence \(\beta=\beta^i\partial_i\) is a contravariant vector on
+      coupling space.
+    \item[(b)] Series inversion and re-expansion give
+      \[
+        \bar b_2=b_2,\qquad \bar b_3=b_3,\qquad
+        \bar b_4=b_4-a_2b_3+(a_3-a_2^2)b_2 .
+      \]
+      Thus \(a_3\) can choose \(\bar b_4\) freely when \(b_2\ne0\).
+      The chain rule maps a zero \(\lambda_F\) to a zero
+      \(\bar\lambda_F\).  Differentiating it and then setting
+      \(\beta(\lambda_F)=0\) gives
+      \[
+        \bar\beta'(\bar\lambda_F)=\beta'(\lambda_F),
+      \]
+      so the fixed-point eigenvalue is invariant.
+    \item[(c)] Expanding the inverse flow,
+      \[
+        \frac1{-bg^2-cg^3-\cdots}
+          =-\frac1{bg^2}+\frac{c}{b^2g}+O(1),
+      \]
+      and integrating gives
+      \[
+        \log\frac{\mu}{\Lambda}
+          =\frac1{bg}+\frac{c}{b^2}\log(bg)+O(g).
+      \]
+      Equivalently,
+      \(\Lambda=\mu\exp[-\int^g dg'/\beta(g')]\); applying
+      \(\mu d/d\mu\) proves \(d\Lambda/d\mu=0\).
+    \item[(d)] With one dimensionless coupling and no mass parameter, the
+      autonomous RG equation has one integration constant.  Dimensional
+      analysis writes it as a scale \(\Lambda\), so inversion of the
+      integrated flow gives
+      \(g(\mu)=f(\log(\mu/\Lambda))\).  Fixing a dimensionless coupling at
+      one reference scale is therefore equivalent to fixing the
+      dimensionful \(\Lambda\).
   \end{enumerate}
 
   \SupplementarySolution{4}{Current Correlators, Dispersion Relations, and Finite-Energy Sum Rules}
@@ -257,102 +263,78 @@
     Wilson coefficient also matter.
   \end{enumerate}
 
-  \SupplementarySolution{6}{Deep-Inelastic Scattering, Forward OPEs, and Twist}
+  \SupplementarySolution{6}{Deep-Inelastic Scattering from a Photon}
   \begin{enumerate}
-    \item[(a)]
-    A symmetric tensor made from \(p,q,\eta\) initially has four
-    independent structures after identifying the equal mixed
-    coefficients.  The two equations from
-    \(q_\mu W^{\mu\nu}=0\) leave two independent combinations.  A convenient
-    basis is
-    \[
-      \boxed{\begin{aligned}
-      W^{\mu\nu}={}&-\left(\frac{q^\mu q^\nu}{q^2}
-        -\eta^{\mu\nu}\right)W_1\\
-        &+\frac1{m_N^2}
-        \left(p^\mu-\frac{p\cdot q}{q^2}q^\mu\right)
-        \left(p^\nu-\frac{p\cdot q}{q^2}q^\nu\right)W_2 .
-      \end{aligned}}
-    \]
-    Both bracketed tensors are transverse.  Parity violation would allow
-    one additional antisymmetric structure proportional to
-    \(\epsilon^{\mu\nu\rho\sigma}p_\rho q_\sigma\).
-    \item[(b)]
-    With the project's mostly-plus metric, put \(Q^2=q^2>0\) for a
-    spacelike transfer.  Neglecting the target and parton masses,
-    \[
-      0=(xp+q)^2=Q^2+2x\,p\cdot q.
-    \]
-    Therefore
-    \[
-      \boxed{x=x_B=-\frac{Q^2}{2p\cdot q}.}
-    \]
-    A parton moving with the parent hadron carries a positive fraction of
-    its longitudinal momentum, so \(x>0\); it cannot carry more momentum
-    than the whole hadron, so \(x\leq1\).  The endpoint \(x=1\) is the
-    elastic parton limit, and \(x_B>1\) has no massless-parton support.
-    \item[(c)]
-    The incoherent probability to strike a quark or antiquark of flavor
-    \(f\) is weighted by the squared electromagnetic charge.  The
-    on-shell delta function fixes the parton fraction to Bjorken \(x\),
-    giving
-    \[
-      \boxed{F_2(x)=x\sum_fQ_f^2
-        \bigl[q_f(x)+\bar q_f(x)\bigr].}
-    \]
-    The transverse response of a massless Dirac constituent gives the
-    Callan--Gross relation,
-    \[
-      \boxed{F_1(x)=\frac{F_2(x)}{2x}
-        =\frac12\sum_fQ_f^2
-         [q_f(x)+\bar q_f(x)].}
-    \]
-    Gluons enter these electromagnetic functions through QCD corrections,
-    not as directly charged leading-order targets.
-    \item[(d)]
-    The pointlike Dirac tensor has only transverse absorption at leading
-    order.  Using \(2xF_1=F_2\),
-    \[
-      \boxed{F_L(x)\equiv F_2(x)-2xF_1(x)=0.}
-    \]
-    A scalar charged parton would have a different longitudinal response,
-    so a leading, unsuppressed violation would test the constituent spin.
-    In QCD, however, gluon radiation and quark transverse momentum generate
-    \(F_L\neq0\) at higher orders even though the quarks have spin
-    \(\tfrac12\).  Target-mass and higher-twist corrections also violate
-    the ideal relation by powers of \(1/Q\).
-    \item[(e)]
-    Crossing the two electromagnetic currents exchanges absorption and
-    emission and sends \(\nu\to-\nu\), hence
-    \(\omega\to-\omega\).  The spin-averaged parity-even forward amplitude
-    is symmetric:
-    \[
-      T_r(\omega,Q^2)=T_r(-\omega,Q^2).
-    \]
-    Its analytic expansion below threshold is therefore
-    \[
-      T_r=\sum_{n=0}^\infty c_{2n}(Q^2)\omega^{2n}.
-    \]
-    A rank-\(s\) symmetric traceless operator contributes \(s\) powers of
-    the target momentum and hence a term proportional to \(\omega^s\).
-    Only even-spin operators occur in this channel.  Odd spins appear in
-    crossing-odd or parity-violating combinations.
-    \item[(f)]
-    The matrix element of a spin-\(s\) operator supplies \(s\) powers of the
-    target momentum.  Its Wilson coefficient must compensate the
-    dimension \(d\).  At fixed Bjorken variable, the net hard-scale factor
-    is
-    \[
-      (Q^2)^{(2-\tau)/2}=Q^{2-\tau},
-      \qquad \tau=d-s.
-    \]
-    Relative to the leading twist-two contribution,
-    \[
-      \boxed{\frac{T_\tau}{T_{\tau=2}}
-        \sim\frac1{Q^{\tau-2}}}
-    \]
-    up to anomalous-dimension logarithms.  Thus twist four gives a
-    \(1/Q^2\) correction, while twist six gives \(1/Q^4\).
+    \item[(a)] For a quark of charge \(Q_qe\) and three colors,
+      \[
+      \begin{split}
+        \partial_{\log Q}f_q^\gamma
+          &=\frac{3Q_q^2\alpha}{\pi}
+            [P_{e\leftarrow e}\otimes f_q^\gamma+
+             P_{e\leftarrow\gamma}\otimes f_\gamma^\gamma],\\
+        \partial_{\log Q}f_{\bar q}^\gamma
+          &=\frac{3Q_q^2\alpha}{\pi}
+            [P_{e\leftarrow e}\otimes f_{\bar q}^\gamma+
+             P_{e\leftarrow\gamma}\otimes f_\gamma^\gamma],\\
+        \partial_{\log Q}f_\gamma^\gamma
+          &=\sum_q\frac{3Q_q^2\alpha}{\pi}
+            [P_{\gamma\leftarrow e}\otimes
+             (f_q^\gamma+f_{\bar q}^\gamma)
+             +P_{\gamma\leftarrow\gamma}\otimes f_\gamma^\gamma].
+      \end{split}
+      \]
+      Here \((P\otimes f)(x)=\int_x^1dz\,P(z)f(x/z)/z\).
+      With \(f_\gamma^\gamma(x,Q_0)=\delta(1-x)\) and zero initial quark
+      densities,
+      \[
+        f_q^\gamma=f_{\bar q}^\gamma
+          =\frac{3Q_q^2\alpha}{2\pi}
+            \log\frac{Q^2}{Q_0^2}[x^2+(1-x)^2],
+      \]
+      \[
+        f_\gamma^\gamma=
+        \left[1-\sum_q\frac{Q_q^2\alpha}{\pi}
+          \log\frac{Q^2}{Q_0^2}\right]\delta(1-x).
+      \]
+    \item[(b)] For a photon target of momentum \(P\),
+      \[
+        W^{\mu\nu}=i\int d^4x\,e^{iqx}
+        \langle\gamma(P)|T\{J^\mu(x)J^\nu(0)\}|\gamma(P)\rangle
+      \]
+      decomposes into the two standard transverse tensors.  The
+      leading-twist \(W_2\) expansion is
+      \[
+        W_2=\sum_q3Q_q^2\sum_{\substack{n\ge2\\n\ {\rm even}}}
+        \frac{8(2q\cdot P)^{n-2}}{(Q^2)^n}A_{nq}(Q^2).
+      \]
+      The one-loop operator-mixing coefficients are
+      \[
+      \begin{split}
+        a_{qq}^{(n)}&=-2Q_q^2\left[
+          1+4\sum_{j=2}^n\frac1j-\frac{2}{n(n+1)}\right],\\
+        a_{q\gamma}^{(n)}
+          &=\frac{8Q_q^2(n^2+n+2)}{n(n+1)(n+2)},\\
+        a_{\gamma q}^{(n)}
+          &=\frac{4Q_q^2(n^2+n+2)}{n(n^2-1)},\qquad
+        a_{\gamma\gamma}^{(n)}=0,
+      \end{split}
+      \]
+      with color multiplicity in the quark-from-photon entry and
+      \(\gamma^{(n)}=-(\alpha/4\pi)a^{(n)}\).
+    \item[(c)] With \(Q_u=2/3\), \(Q_d=-1/3\), and \(n=2\),
+      \[
+        \boxed{\gamma^{(2)}=-\frac{\alpha}{4\pi}
+        \begin{pmatrix}
+          -64/27&0&32/27\\
+          0&-16/27&8/27\\
+          64/27&16/27&0
+        \end{pmatrix}.}
+      \]
+      The RG equation for
+      \((A_{2u},A_{2d},A_{2\gamma})^T\) is governed by this matrix.
+      Evolving the pointlike photon boundary vector and contracting the
+      quark entries with \(3Q_q^2\) gives the second moment of
+      \(F_2^\gamma\).
   \end{enumerate}
 
   \SupplementarySolution{7}{Parton Sum Rules and Plus Distributions}

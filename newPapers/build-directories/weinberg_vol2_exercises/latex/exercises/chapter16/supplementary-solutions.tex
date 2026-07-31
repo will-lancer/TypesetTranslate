@@ -797,26 +797,58 @@
   propagator, rather than merely its coincident local value; the bilocal
   Legendre variable is what makes the construction genuinely 2PI.
 
-  \SupplementarySolution{11}{The Exact Background-Field Effective-Action Identity}
-  Write \(Z[J]=e^{iW[J]}\), set
-  \(\bar\phi=\delta W/\delta J\), and use
-  \(\Gamma=W-\int J\bar\phi\).  Then
-  \(J=-\delta\Gamma/\delta\bar\phi\) in this sign convention.  Shifting the
-  integration variable to \(\eta=\phi-\bar\phi\) gives the stated identity.
-  Its linear term cancels because \(\Gamma^{(0)}=S\), and Gaussian
-  integration yields
-  \[
-    \boxed{\Gamma[\bar\phi]
-      =S[\bar\phi]+\frac{i}{2}\operatorname{Tr}
-        \log S^{(2)}[\bar\phi]+O(\hbar^2)}
-  \]
-  for bosons.
-
-  If \(\delta\phi=T\phi\) is linear, transform both
-  \(\bar\phi\) and \(\eta\) by \(T\).  Invariance of the action and measure
-  leaves the integral unchanged, hence \(\delta\Gamma=0\).  The formula is
-  implicit because \(\delta\Gamma/\delta\bar\phi\) itself occurs in the
-  exponent; the loop expansion solves that self-consistency relation
-  iteratively.
+  \SupplementarySolution{11}{Generating Functionals, Legendre Geometry, and Split Independence}
+  \begin{enumerate}
+    \item[(a)] In Euclidean conventions one may take
+      \[
+        Z[J]=\int\mathcal D\phi\,
+        e^{-[S[\phi]-\int J\phi]/\hbar}.
+      \]
+      For example,
+      \[
+        \langle\phi(x)\phi(y)\rangle_J
+        =\frac{\hbar^2}{Z[J]}
+          \frac{\delta^2Z[J]}{\delta J(x)\delta J(y)} .
+      \]
+      Factors of \(i\) move in the usual way in Lorentzian signature.
+    \item[(b)] Define
+      \(W[J]=\hbar\log Z[J]\),
+      \(\Phi=\delta W/\delta J\), and
+      \[
+        \Gamma[\Phi]=\int J\Phi-W[J],\qquad
+        \frac{\delta\Gamma}{\delta\Phi}=J .
+      \]
+      The classical action is the tree-level input; \(\Gamma\) includes
+      all quantum fluctuations and its derivatives are proper vertices.
+      A Wilsonian action instead results from integrating out only modes
+      above a chosen scale and therefore retains low modes as variables.
+    \item[(c)] Every vacuum graph in \(Z\) is a disjoint union of connected
+      components.  The exponential formula for such unions gives
+      \(Z=\exp(W/\hbar)\), so the logarithm selects connected graphs.
+      Connected graphs themselves are trees of maximal 1PI subgraphs joined
+      by exact propagators.  The Legendre transform removes precisely those
+      tree connections: differentiating \(\Gamma\) produces the 1PI
+      vertices, while reconnecting them with
+      \(G=(\Gamma^{(2)})^{-1}\) reconstructs connected correlators.
+    \item[(d)] Change variables from \(\eta\) to
+      \(\phi=\phi_0+\eta\).  Then
+      \[
+        W(J;\phi_0)=W(J;0)-J\phi_0 .
+      \]
+      Consequently
+      \[
+        \chi=\partial_JW(J;\phi_0)
+          =\partial_JW(J;0)-\phi_0 .
+      \]
+      Thus the same saddle source \(J_\chi\) is the source associated in
+      the unshifted description with \(\Phi=\phi_0+\chi\).  The Legendre
+      transform now gives
+      \[
+        \Gamma(\chi;\phi_0)
+        =W(J_\chi;0)-J_\chi(\phi_0+\chi)
+        =\Gamma(\phi_0+\chi;0),
+      \]
+      an exact change-of-variables identity with no loop expansion.
+  \end{enumerate}
 
 \end{enumerate}

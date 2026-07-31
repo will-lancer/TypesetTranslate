@@ -15,6 +15,12 @@ frontmatter remains the primary mathematical reference.
 - Except in historical Chapter 1, set \(\hbar=c=1\). The electron has charge
   \(-e\), and \(\alpha=e^2/(4\pi)\).
 
+## Product notation
+
+- Use `\cdot` for ordinary or scalar multiplication and for inner products.
+- Use `\times` for Cartesian and direct products, vector cross products and
+  curls, and dimensions such as \(2\times2\).
+
 ## States and asymptotic labels
 
 Use Dirac notation throughout:
@@ -60,4 +66,3 @@ Do not import the GR project's curvature or action conventions. Do not
 silently repair a suspected source error. Record any such issue in a comment
 and keep the exercise statement and the editorial convention visibly
 separate.
-

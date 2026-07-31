@@ -22,6 +22,12 @@ and multiplets. Four-component spinor indices are
 generators are labelled \(A,B,\ldots\). Do not import the separate
 two-component-edition conventions.
 
+## Product notation
+
+- Use `\cdot` for ordinary or scalar multiplication and for inner products.
+- Use `\times` for Cartesian and direct products, vector cross products and
+  curls, and dimensions such as \(2\times2\).
+
 ## States and asymptotic labels
 
 Use Dirac notation throughout:

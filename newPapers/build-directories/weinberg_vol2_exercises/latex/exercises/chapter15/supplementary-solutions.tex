@@ -290,61 +290,61 @@
   giving \(C_F=3/4\).  The different eigenvalues reflect the different
   representations, even though both sets realize the same Lie algebra.
 
-  \SupplementarySolution{8}{Covariant Propagators and Ward Identities}
+  \SupplementarySolution{8}{The Complete Free Abelian BRST Multiplet}
   \begin{enumerate}
-    \item[(a)]
-    After integration by parts, the quadratic operator is
-    \[
-      K_{\mu\nu}(p)
-        =p^2\eta_{\mu\nu}
-         -\left(1-\frac1\xi\right)p_\mu p_\nu .
-    \]
-    Decompose into transverse and longitudinal projectors
-    \(P^T_{\mu\nu}=\eta_{\mu\nu}-p_\mu p_\nu/p^2\) and
-    \(P^L_{\mu\nu}=p_\mu p_\nu/p^2\).  Then
-    \(K=p^2P^T+(p^2/\xi)P^L\), so
-    \[
-      \Delta^{ab}_{\mu\nu}(p)
-        =\frac{\delta^{ab}}{p^2-i\epsilon}
-          \left[\eta_{\mu\nu}
-            (\xi-1)\frac{p_\mu p_\nu}{p^2}\right].
-    \]
-    For \(\xi=1\) this is the Feynman-gauge propagator
-    \(\eta_{\mu\nu}/(p^2-i\epsilon)\).  For \(\xi=0\) it is transverse,
-    \(p^\mu\Delta_{\mu\nu}=0\).  At general \(\xi\),
-    \[
-      p^\mu\Delta^{ab}_{\mu\nu}(p)
-        =\frac{\xi\,\delta^{ab}p_\nu}{p^2-i\epsilon},
-    \]
-    apart from the immaterial placement of \(i\epsilon\) in the longitudinal
-    algebraic factor.
-    \item[(b)]
-    BRST invariance of the measure and vacuum gives
-    \[
-      0=\left\langle s\bigl(A_\mu(x)\omega^*(y)\bigr)\right\rangle
-        =\left\langle\partial_\mu\omega(x)\omega^*(y)\right\rangle
-         -\langle A_\mu(x)h(y)\rangle .
-    \]
-    Since the auxiliary equation is
-    \(h=-\partial\cdot A/\xi\),
-    \[
-      \partial_\mu^x\Delta_{\rm gh}(x-y)
-        =-\frac1\xi\,
-          \partial_y^\nu\Delta_{\mu\nu}(x-y).
-    \]
-    With the common Fourier factor \(e^{ip\cdot(x-y)}\), this is
-    \[
-      p^\nu\Delta_{\mu\nu}(p)
-        =\xi p_\mu\Delta_{\rm gh}(p).
-    \]
-    The free propagators are
-    \[
-      \Delta_{\rm gh}(p)=\frac1{p^2-i\epsilon},\qquad
-      \Delta_{\mu\nu}(p)=\frac1{p^2-i\epsilon}
-        \left[\eta_{\mu\nu}
-        (\xi-1)\frac{p_\mu p_\nu}{p^2}\right],
-    \]
-    and their contraction verifies the identity directly.
+    \item[(a)] The Maxwell term is gauge invariant.  The remaining variation
+      is
+      \[
+        s(h\,\partial\cdot A)+s(\omega^*\partial^2\omega)
+        =h\partial^2\omega-h\partial^2\omega=0.
+      \]
+      Also \(s^2A_\mu=\partial_\mu s\omega=0\),
+      \(s^2\omega^*=-sh=0\), and nilpotence on \(\omega,h\) is immediate.
+    \item[(b)] After integrating derivatives by parts,
+      \[
+        S=-\frac12\int d^Dx\,\Phi^T
+        \begin{pmatrix}
+          -\partial^2\eta^{\mu\nu}+\partial^\mu\partial^\nu
+            &\partial^\mu\\
+          -\partial^\nu&-\xi
+        \end{pmatrix}\Phi
+        +\int d^Dx\,\omega^*\partial^2\omega .
+      \]
+      The opposite off-diagonal signs arise from the integration by parts
+      and make the block operator transpose correctly.
+    \item[(c)] Acting with the quadratic operators on normalized
+      time-ordered correlators gives delta functions.  Fourier inversion
+      yields, with the source's overall convention,
+      \[
+        \int d^Dx\,e^{-ipx}\langle\Phi(x)\Phi^T(0)\rangle
+        =-\frac1{p^2}
+        \begin{pmatrix}
+          i\!\left[\eta_{\mu\nu}
+             -(1-\xi)\dfrac{p_\mu p_\nu}{p^2}\right]&ip_\mu\\
+          -ip_\nu&0
+        \end{pmatrix},
+      \]
+      and
+      \[
+        \int d^Dx\,e^{-ipx}
+          \langle\omega(x)\omega^*(0)\rangle=-\frac{i}{p^2}.
+      \]
+      Direct multiplication by the matrix in part (b) gives the identity
+      block and fixes every mixed sign.
+    \item[(d)] Since \(sh=0\),
+      \[
+        0=\langle s[h(x)\omega^*(0)]\rangle
+          =-\langle h(x)h(0)\rangle .
+      \]
+      Likewise,
+      \[
+        0=\langle s[A_\mu(x)\omega^*(0)]\rangle
+          =\langle\partial_\mu\omega(x)\omega^*(0)\rangle
+           -\langle A_\mu(x)h(0)\rangle .
+      \]
+      The \(hh\) entry above is zero, while the mixed entry and the
+      derivative of \(-i/p^2\) agree exactly, verifying both BRST Ward
+      identities.
   \end{enumerate}
 
   \SupplementarySolution{9}{Lie-Algebra BRST Cohomology}
@@ -402,23 +402,35 @@
   \end{enumerate}
 
   \SupplementarySolution{10}{Auxiliary-Field Gauge Fixing}
-  Complete the square:
-  \[
-    h_af_a+\frac{\xi}{2}h_ah_a
-      =\frac{\xi}{2}\left(h_a+\frac{f_a}{\xi}\right)^2
-       -\frac{f_af_a}{2\xi}.
-  \]
-  Translating \(h_a\) in the Gaussian path integral leaves only a
-  field-independent normalization and reproduces
-  \(-f^2/(2\xi)\).  The auxiliary equation is \(h_a=-f_a/\xi\).
-
-  Before eliminating \(h\), the transformations
-  \(s\omega_a^*=-h_a\), \(sh_a=0\) give
-  \(s^2\omega_a^*=0\) algebraically.  If \(h_a\) is eliminated,
-  \(s\omega_a^*=f_a/\xi\), and a second transformation gives
-  \(s^2\omega_a^*=(sf_a)/\xi\), which vanishes only after using the
-  gauge-fixed equations or compensating terms.  The \(h\) formulation
-  therefore realizes nilpotency off shell.
+  \begin{enumerate}
+    \item[(a)] Completing the square gives
+      \[
+        h\,\partial\cdot A+\frac{\xi}{2}h^2
+        =\frac{\xi}{2}\left(h+\frac{\partial\cdot A}{\xi}\right)^2
+          -\frac{(\partial\cdot A)^2}{2\xi}.
+      \]
+      Translation invariance of \(Dh\) leaves a field-independent
+      determinant and produces the standard covariant-gauge term.  The
+      free Abelian ghost determinant is likewise field independent.
+    \item[(b)] The Maxwell term is invariant because
+      \(sF_{\mu\nu}=0\).  The matter transformation is an infinitesimal
+      gauge transformation, so
+      \(s[\bar\psi(i\slashed D-m)\psi]=0\).  Finally,
+      \[
+        s(h\partial\cdot A)=h\partial^2\omega,\qquad
+        s[\omega^*(-\partial^2)\omega]
+          =-h\partial^2\omega ,
+      \]
+      while \(s(h^2)=0\).  The two remaining variations cancel.
+    \item[(c)] Clearly \(s^2A_\mu=s^2\omega=s^2\omega^*=s^2h=0\).
+      For the fermion,
+      \[
+        s^2\psi=-ie[(s\omega)\psi-\omega s\psi]
+          =e^2\omega^2\psi=0,
+      \]
+      because \(\omega\) is Grassmann odd; the same calculation applies
+      to \(\bar\psi\).  Thus nilpotence is algebraic and off shell.
+  \end{enumerate}
 
   \SupplementarySolution{11}{Ghost Number and Its Current}
   It is convenient to write the ghost density as
@@ -450,29 +462,44 @@
   after the conventional factor of \(i\) is assigned to the generator.
   Thus its eigenvalue is ghost number.
 
-  \SupplementarySolution{12}{Physical Polarizations as Cohomology}
-  Overall normalizations aside, the free transformations imply
-  \[
-    Q\,a_\mu^\dagger(p)\ket0
-      =p_\mu\omega^\dagger(p)\ket0,\qquad
-    Q\,\omega^\dagger(p)\ket0=0,\qquad
-    Q\,\omega^{*\dagger}(p)\ket0
-      =p^\mu a_\mu^\dagger(p)\ket0.
-  \]
-  The auxiliary excitation completes a BRST-trivial pair and does not
-  change the cohomology.  A ghost-number-zero photon state
-  \(\epsilon^\mu a_\mu^\dagger(p)\ket0\) is \(Q\)-closed exactly when
-  \(p\cdot\epsilon=0\).  States whose polarization is proportional to
-  \(p^\mu\) are \(Q\)-exact because they arise by applying \(Q\) to an
-  antighost state.  Hence
-  \[
-    H^0(Q)\big|_{\text{one particle}}
-      =\{\epsilon:p\cdot\epsilon=0\}/\{\epsilon\sim\epsilon+\alpha p\}.
-  \]
-  For null nonzero \(p\), the numerator is three-dimensional and the
-  quotient removes one null longitudinal direction, leaving two
-  transverse polarizations.  The scalar, longitudinal, ghost, and
-  antighost modes form BRST-trivial quartets.
+  \SupplementarySolution{12}{The Free QED BRST Charge}
+  \begin{enumerate}
+    \item[(a)] The gauge-invariant part changes by an ordinary gauge
+      transformation.  In Lorenz gauge, the variation of the gauge-fixing
+      term is canceled by that of the ghosts after one integration by
+      parts.  A convenient free-theory Noether current, differing from
+      other choices only by improvements and equations of motion, is
+      \[
+        j_Q^\mu=-(\partial_\nu A^\nu)\partial^\mu\omega
+          +F^{\mu\nu}\partial_\nu\omega .
+      \]
+      The free equations give \(\partial_\mu j_Q^\mu=0\), and
+      \(Q=\int d^3x\,j_Q^0\) generates the stated graded transformations.
+    \item[(b)] Inserting the standard massless mode expansions and using
+      the canonical brackets gives, up to a common normalization and a
+      harmless overall sign,
+      \[
+        Q=\int\frac{d^3p}{(2\pi)^3\,2|\mathbf p|}
+        \left[
+          \omega^\dagger(\mathbf p)\,p^\mu a_\mu(\mathbf p)
+          +p^\mu a_\mu^\dagger(\mathbf p)\,\omega(\mathbf p)
+        \right].
+      \]
+      Hermiticity fixes the relative coefficient of the two terms.
+    \item[(c)] Taking graded commutators with this expression yields
+      \[
+        [Q,a_\mu]=-p_\mu\omega,\quad
+        [Q,a_\mu^\dagger]=p_\mu\omega^\dagger,\quad
+        \{Q,\omega^*\}=p\cdot a,\quad
+        \{Q,\omega^{*\dagger}\}=p\cdot a^\dagger,
+      \]
+      and \(Q\) anticommutes with both \(\omega\) and
+      \(\omega^\dagger\).  Hence a state
+      \(\epsilon^\mu a_\mu^\dagger\ket0\) is closed when
+      \(p\cdot\epsilon=0\), while \(\epsilon^\mu\sim
+      \epsilon^\mu+\alpha p^\mu\) differs by an exact state.  For null
+      \(p\), the quotient has the two transverse photon polarizations.
+  \end{enumerate}
 
   \SupplementarySolution{13}{The BV Antibracket and Master Equation}
   \begin{enumerate}

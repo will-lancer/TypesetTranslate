@@ -2,21 +2,21 @@
 
 Edition: `weinberg_vol1_exercises`
 
-Totals: 70 Weinberg exercises, 70 Weinberg solutions, 177 supplementary exercises, 177 supplementary solutions, 177 exact parent-problem records across 68 source documents; 51 problems use a priority source family, 60 preserve an exact source-problem parent, and 117 are original syntheses.
+Totals: 70 Weinberg exercises, 70 Weinberg solutions, 177 supplementary exercises, 177 supplementary solutions, 177 provenance records across 68 source documents; 51 problems use a first-choice source family, 60 preserve an exact source-problem parent, and 117 are original syntheses.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Allowed | Documents | First-choice pool | Exact parents | Median prompt/solution words | Exception |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---|
 | 1 | Historical Introduction | 0/0 | 0/0 | 0–0 | 0 | 0 | 0 | 0/0 | Historical chapter: exercises are intentionally omitted at the user's direction. |
 | 2 | Relativistic Quantum Mechanics | 6/6 | 14/14 | 10–30 | 8 | 0 | 3 | 104.5/251 |  |
 | 3 | Scattering Theory | 7/7 | 17/17 | 10–30 | 4 | 12 | 10 | 81/193 |  |
-| 4 | The Cluster Decomposition Principle | 3/3 | 10/10 | 10–30 | 5 | 7 | 5 | 123.5/359 |  |
-| 5 | Quantum Fields and Antiparticles | 7/7 | 16/16 | 10–30 | 5 | 5 | 11 | 62.5/205.5 |  |
+| 4 | The Cluster Decomposition Principle | 3/3 | 10/10 | 10–30 | 5 | 7 | 5 | 129/359 |  |
+| 5 | Quantum Fields and Antiparticles | 7/7 | 16/16 | 10–30 | 5 | 5 | 11 | 79.5/281.5 |  |
 | 6 | The Feynman Rules | 5/5 | 15/15 | 10–30 | 5 | 4 | 3 | 75/215 |  |
 | 7 | The Canonical Formalism | 7/7 | 11/11 | 10–30 | 5 | 0 | 2 | 94/322 |  |
-| 8 | Electrodynamics | 5/5 | 12/12 | 10–30 | 5 | 6 | 5 | 73.5/272 |  |
-| 9 | Path-Integral Methods | 4/4 | 19/19 | 10–30 | 6 | 6 | 12 | 70/199 |  |
+| 8 | Electrodynamics | 5/5 | 12/12 | 10–30 | 5 | 6 | 5 | 88.5/297 |  |
+| 9 | Path-Integral Methods | 4/4 | 19/19 | 10–30 | 6 | 6 | 12 | 74/223 |  |
 | 10 | Non-Perturbative Methods | 8/8 | 13/13 | 10–30 | 5 | 6 | 0 | 101/259 |  |
-| 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | 4/4 | 14/14 | 10–30 | 5 | 2 | 8 | 90/345 |  |
+| 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | 4/4 | 14/14 | 10–30 | 5 | 2 | 8 | 90/354.5 |  |
 | 12 | General Renormalization Theory | 4/4 | 14/14 | 10–30 | 6 | 1 | 1 | 151.5/391.5 |  |
 | 13 | Infrared Effects | 5/5 | 12/12 | 10–30 | 5 | 2 | 0 | 131/259.5 |  |
 | 14 | Bound States in External Fields | 5/5 | 10/10 | 10–30 | 5 | 0 | 0 | 134/274.5 |  |
@@ -37,7 +37,7 @@ Totals: 70 Weinberg exercises, 70 Weinberg solutions, 177 supplementary exercise
 - Chapter 13: `harlow-qft2-soft-qed-2024-ch13` (2), `mit-8324-f10-lecture16-ch13` (4), `srednicki-qft-infrared-ch13` (2), `strominger-infrared-lectures-2017-ch13` (2), `stuttgart-qft-ps10-2023-ch13` (2)
 - Chapter 14: `antonelli-et-al-bound-state-eft-2000-ch14` (2), `dine-ph217-background-field-2013-ch14` (2), `mit-806-s18-ps2-hydrogen-ch14` (2), `thorn-qft-ps13-lamb-2019-ch14` (2), `tong-topicsqm-atomic-radiation-ch14` (2)
 
-## Priority-source families by chapter
+## First-choice source families by chapter
 
 - Chapter 2: `other` (14)
 - Chapter 3: `harlow` (8), `knzhou` (4), `other` (5)
@@ -87,6 +87,6 @@ Totals: 70 Weinberg exercises, 70 Weinberg solutions, 177 supplementary exercise
 
 ## Audit status
 
-- Mode: strict
+- Mode: draft
 - Warnings: 0
 - Failures: 0

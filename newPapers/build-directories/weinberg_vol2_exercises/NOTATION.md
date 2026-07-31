@@ -19,6 +19,12 @@ In the Batalin--Vilkovisky formalism, write the antifield of \(x^n\) as
 \(x_n^{\ddagger}\). The star remains reserved for ordinary complex
 conjugation or an antiparticle field.
 
+## Product notation
+
+- Use `\cdot` for ordinary or scalar multiplication and for inner products.
+- Use `\times` for Cartesian and direct products, vector cross products and
+  curls, and dimensions such as \(2\times2\).
+
 ## States and asymptotic labels
 
 Use Dirac notation throughout:
