@@ -25,3 +25,6 @@ Completed:
   - I have an edited copy and an unedited one in the repo. The edited
     one adds more examples and pedagogy to the text.
 - Weinberg's QFT: volumes I - III
+    - There is also an edited version with exercises + solutions after each chapter
+- Weinberg's GR
+    - There is also an edited version with exercises + solutions after each chapter
