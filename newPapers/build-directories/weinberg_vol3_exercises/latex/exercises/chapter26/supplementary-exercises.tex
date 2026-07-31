@@ -173,14 +173,54 @@
       that this vector is the scalar-plus-fermion Noether current.
   \end{enumerate}
 
-  \SupplementaryExercise{9}{The Linear Superfield Constraint}
-    {(Inspired by Adel Bilal, \emph{Introduction to Supersymmetry}, Sections 4.1--4.3; independently formulated.)}
-    {ch26-s09-the-linear-superfield-constraint}
-Apply \(\SuperD_R^2\) and \(\SuperD_L^2\) to a general real superfield.
-  Derive
-  \(M=N=0,\ \partial_\mu V^\mu=0,\ 
-  \lambda=-\sl{\partial}\omega,\ D=-\Box C\).
-  Count the remaining independent off-shell components.
+  \SupplementaryExercise{9}{On-Shell Wess--Zumino Supersymmetry}
+    {Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.324:
+    Relativistic Quantum Field Theory II}, Fall 2024, Section 5.6,
+    Problem 5 (printed p.~46).}
+    {harlow-qft2-2024-s5p6-problem5-v3ch26-s09}
+  Let \(A\) and \(B\) be real scalar fields and let \(\psi\) be a Majorana
+  spinor.  In the four-component conventions of this volume, the free
+  Wess--Zumino Lagrangian is
+  \[
+    \mathcal L={}
+      -\frac12\partial_\mu A\,\partial^\mu A
+      -\frac12\partial_\mu B\,\partial^\mu B
+      -\frac{m^2}{2}(A^2+B^2)
+      -\frac12\bar\psi(\gamma^\mu\partial_\mu+m)\psi .
+  \]
+  Show that its action is invariant under all three infinitesimal
+  transformations
+  \[
+    \begin{aligned}
+      \delta_S A&=\bar\alpha\psi,\\
+      \delta_S B&=-i\bar\alpha\gamma_5\psi,\\
+      \delta_S\psi
+        &=\partial_\mu(A+i\gamma_5B)\gamma^\mu\alpha
+          -m(A-i\gamma_5B)\alpha .
+    \end{aligned}
+  \]
+  Here \(\alpha\) is a position-independent Grassmann-odd Majorana spinor:
+  it anticommutes with \(\psi\) and obeys the same Majorana reality
+  condition.  You may use the supplied charge-conjugation identity
+  \[
+    \mathcal C\gamma^\mu\mathcal C^{-1}
+      =-(\gamma^\mu)^{\mathsf T}.
+  \]
+
+  \emph{Convention and source note.}
+  Harlow writes \(\Phi_1,\Phi_2,\Psi,\epsilon\) and a chirality matrix
+  \(\gamma_{\rm H}\).  The translation used above is
+  \[
+    \begin{aligned}
+      A&=\Phi_1,& B&=-\Phi_2,& \psi&=\Psi,\\
+      \alpha&=\epsilon,& \gamma_{\rm H}&=-\gamma_5,&
+      \bar\psi_{\rm W}&=i\bar\Psi_{\rm H}.
+    \end{aligned}
+  \]
+  The same adjoint conversion gives
+  \(\bar\alpha_{\rm W}=i\bar\epsilon_{\rm H}\).  It changes no physical
+  assumption.  The source's word ``Grassman'' is the evident spelling error
+  ``Grassmann.''
 
   \SupplementaryExercise{10}{Nonlinear Kähler Sigma Models}
     {(Inspired by David Tong, \emph{Supersymmetric Field Theory}, Section 3.3; independently formulated.)}
@@ -259,12 +299,58 @@ Apply \(\SuperD_R^2\) and \(\SuperD_L^2\) to a general real superfield.
       parity in terms of massless helicity.
   \end{enumerate}
 
-  \SupplementaryExercise{14}{Dimension-Five Supersymmetric Operators}
-    {(Inspired by Stephen P. Martin, \emph{A Supersymmetry Primer}, version 7, Section 4.10; independently formulated.)}
-    {ch26-s14-dimension-five-supersymmetric-operators}
-For one neutral left-chiral scalar superfield, classify all Lorentz-scalar
-  supersymmetric operators of component dimension five.  Work modulo
-  complex conjugation, ordinary and superspace integration by parts, and
-  chiral \(D\)-terms.  Include the higher-derivative class.
+  \SupplementaryExercise{14}{K\"ahler Data, Superspace Components, and Chiral Vacua}
+    {Independently adapted from University of Cambridge, 2023 Part III
+    Paper 307, \emph{Supersymmetry and Duality}, Question 1 (printed p.~2).}
+    {cambridge-part-iii-susy-2023-p307-q1-v3ch26-s14}
+  \begin{enumerate}
+    \item[(a)] Briefly explain the roles of the K\"ahler potential and the
+    superpotential in a supersymmetric field theory.
+
+    \item[(b)] For this source parent, use two-component superspace notation.
+    A chiral superfield is supplied with the full expansion
+    \[
+      \begin{aligned}
+        \Phi(x,\theta,\bar\theta)={}&
+          \phi(x)+\sqrt2\,\theta\psi(x)+\theta^2\mathcal F(x)
+          +i\theta\sigma^\mu\bar\theta\,\partial_\mu\phi(x)\\
+          &-\frac{i}{\sqrt2}\theta^2
+            \partial_\mu\psi(x)\sigma^\mu\bar\theta
+          -\frac14\theta^2\bar\theta^2\Box\phi(x).
+      \end{aligned}
+    \]
+    Compute all bosonic terms in
+    \[
+      I_K=\int d^4x\int d^4\theta\,\Phi^\dagger\Phi .
+    \]
+
+    \item[(c)] Compute all bosonic terms in the chiral action printed on the
+    examination,
+    \[
+      I_W=\int d^4x\int d^2\theta\,W(\Phi).
+    \]
+    The source prints only this chiral half.  State explicitly the
+    Hermitian-conjugate term that must be appended to obtain a real action.
+
+    \item[(d)] Assume canonical K\"ahler potentials.  For each of the
+    following theories, determine the complete set of classical vacua and
+    its vacuum energy:
+    \begin{enumerate}
+      \item[(i)] two chiral multiplets \(X,Z\), with
+      \(W=X^2Z\);
+      \item[(ii)] three chiral multiplets \(X,Y,Z\), with
+      \(W=XYZ\);
+      \item[(iii)] three chiral multiplets \(X,Y,Z\), with
+      \[
+        W=\alpha Y+\beta YX^2+\gamma XZ,
+        \qquad
+        \alpha\beta\gamma\ne0,
+        \qquad
+        |\gamma|^2\gg|\alpha\beta|.
+      \]
+    \end{enumerate}
+    In the third theory, show how the stated hierarchy selects the vacuum
+    and decide whether supersymmetry is broken.
+  \end{enumerate}
 
 \end{enumerate}

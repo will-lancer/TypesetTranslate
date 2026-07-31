@@ -438,22 +438,110 @@ Substitution of the gravitino transformation into the variation of
       Supplementary Exercise 6.
   \end{enumerate}
 
-  \SupplementarySolution{8}{Tree-Level Gaugino Masses}
-For diagonal \(f_{AB}=\delta_{AB}f_A\), the kinetic term is
-  \(-(\operatorname{Re}f_A)\bar\lambda_A\slashed{\mathcal D}\lambda_A/2\).
-  Rescale
-  \(\lambda_A^{(c)}=(\operatorname{Re}f_A)^{1/2}\lambda_A\).
-  The bilinear in Eq.~\eqref{eq:31.6.75}, after identifying the
-  on-shell auxiliary field \(F^n\), gives
+  \SupplementarySolution{8}{Coupling the Wess--Zumino Supercurrent to the Gravitino}
+  Put
   \[
-    M_A=\frac{F^n\partial_nf_A}
-              {2\operatorname{Re}f_A},
+    C_+=A+i\gamma_5B,
+    \qquad C_-=A-i\gamma_5B,
+    \qquad
+    J_\sigma=A\overleftrightarrow{\partial_\sigma}B.
   \]
-  with complex conjugation moved between \(F^n\) and \(f_A\) according
-  to the Majorana mass convention.  If \(f_A\) is constant, every
-  \(\partial_nf_A\) vanishes, and so does the tree-level mass.  The
-  anomaly-mediated contribution is not included in this classical
-  statement.
+  A convenient symmetric representative of the free stress tensor is
+  \[
+  \begin{split}
+    T_{\mu\nu}={}&\partial_\mu A\partial_\nu A
+      +\partial_\mu B\partial_\nu B
+      -\frac12\eta_{\mu\nu}
+        \bigl[(\partial A)^2+(\partial B)^2\bigr]\\
+      &+\frac{i}{4}\bar\psi
+        \bigl(\gamma_\mu\overleftrightarrow{\partial_\nu}
+             +\gamma_\nu\overleftrightarrow{\partial_\mu}\bigr)\psi .
+  \end{split}
+  \tag{1}
+  \]
+  Terms proportional to the free fermion equation may be moved between
+  (1) and an improvement without changing the following Noether argument.
+
+  First vary the gravitino in the interaction.  Since
+  \(\delta\bar\psi_\mu=(2/\kappa)\partial_\mu\bar\epsilon\),
+  \[
+    -\frac{\kappa}{2}(\delta\bar\psi_\mu)j^\mu
+      =-(\partial_\mu\bar\epsilon)j^\mu.
+  \tag{2}
+  \]
+  This is already the negative of the local-parameter variation of the
+  free Wess--Zumino Lagrangian.
+
+  It remains to vary the matter fields in \(j^\mu\).  Starting from
+  \[
+    j^\mu=(\gamma^\alpha\partial_\alpha C_-)\gamma^\mu\psi,
+  \]
+  insert \(\delta A\), \(\delta B\), and
+  \(\delta\psi=-i\slashed\partial C_+\epsilon\).  Reorder Majorana
+  bilinears and use
+  \[
+    \gamma^\alpha\gamma^\mu\gamma^\beta
+      =\eta^{\alpha\mu}\gamma^\beta
+       -\eta^{\alpha\beta}\gamma^\mu
+       +\eta^{\mu\beta}\gamma^\alpha
+       +i\epsilon^{\alpha\mu\beta\nu}\gamma_5\gamma_\nu,
+  \tag{3}
+  \]
+  with the corresponding sign if the opposite convention for
+  \(\epsilon^{0123}\) is chosen.  The terms symmetric in the two scalar
+  derivatives and the fermion bilinears assemble into (1); the
+  antisymmetric part of (3) gives the scalar rotation current.  For the
+  improved current representative used in the question, the result is
+  \[
+    \delta j^\mu
+      =-2i\gamma^\nu\epsilon\,T^\mu{}_{\nu}
+       +i\epsilon^{\mu\nu\rho\sigma}\gamma_\nu\epsilon\,
+          \partial_\rho J_\sigma,
+  \tag{4}
+  \]
+  up to the free matter equations and a divergence of an antisymmetric
+  improvement tensor.  Equation (4) is the component supercurrent
+  multiplet identity needed here.
+
+  Combining (2) and (4) gives
+  \[
+  \begin{split}
+    \delta\mathcal L_1={}&-(\partial_\mu\bar\epsilon)j^\mu
+      +i\kappa\bar\psi^\mu\gamma^\nu\epsilon T_{\mu\nu}\\
+      &-\frac{i\kappa}{2}\epsilon^{\mu\nu\rho\sigma}
+       \bar\psi_\mu\gamma_\nu\epsilon\,\partial_\rho J_\sigma.
+  \end{split}
+  \tag{5}
+  \]
+  Integrating the last line by parts,
+  \[
+  \begin{split}
+    -\bar\psi_\mu\gamma_\nu\epsilon\,\partial_\rho J_\sigma
+      ={}&(\partial_\rho\bar\psi_\mu)\gamma_\nu\epsilon J_\sigma
+       +\bar\psi_\mu\gamma_\nu(\partial_\rho\epsilon)J_\sigma\\
+       &-\partial_\rho
+          (\bar\psi_\mu\gamma_\nu\epsilon J_\sigma),
+  \end{split}
+  \]
+  turns (5) into precisely
+  \[
+  \begin{split}
+    \delta\mathcal L_1={}&-(\partial_\mu\bar\epsilon)j^\mu
+      +i\kappa\bar\psi^\mu\gamma^\nu\epsilon T_{\mu\nu}\\
+      &+\frac{i\kappa}{2}\epsilon^{\mu\nu\rho\sigma}
+        \bar\psi_\mu\gamma_\nu\partial_\rho\epsilon J_\sigma
+       +\frac{i\kappa}{2}\epsilon^{\mu\nu\rho\sigma}
+        (\partial_\rho\bar\psi_\mu)\gamma_\nu\epsilon J_\sigma,
+  \end{split}
+  \]
+  modulo the displayed total derivative.
+
+  The first term cancels \(\delta\mathcal L\).  The stress-tensor term
+  demands the usual coupling of the graviton to \(T_{\mu\nu}\), together
+  with the supersymmetry variation of the graviton.  The two
+  \(J_\sigma\) terms demand further order-\(\kappa\) contact terms and
+  supercovariant completions.  Iterating these cancellations is the
+  Noether construction of the locally supersymmetric theory.
 
   \SupplementarySolution{9}{Scalar Soft Terms, Trilinears, and Flavor}
   \begin{enumerate}
@@ -609,51 +697,81 @@ For diagonal \(f_{AB}=\delta_{AB}f_A\), the kinetic term is
       long-lived parent.
   \end{enumerate}
 
-  \SupplementarySolution{12}{Polonyi Stability and Hidden Scales}
+  \SupplementarySolution{12}{The Polonyi Model}
   \begin{enumerate}
-    \item \emph{Polonyi Stability Check.}
-    Use \(x=\kappa\operatorname{Re}\phi\),
-      \(y=\kappa\operatorname{Im}\phi\), and \(b=2-\sqrt3\).  Expanding the
-      potential of Weinberg Solution 6 about
-      \(x_0=\sqrt3-1,\ y_0=0\), the mixed derivative vanishes.  Canonically
-      normalized fluctuations are
-      \(a=\sqrt2\,\delta x/\kappa\) and
-      \(c=\sqrt2\,\delta y/\kappa\).  The Hessian gives
+    \item Since \(K_{z\bar z}=K^{z\bar z}=1\),
       \[
-        m_a^2=2\sqrt3\,m_g^2,\qquad
-        m_c^2=(4-2\sqrt3)m_g^2.
+        D_zW=m^2\bigl[1+z^*(z+\beta)\bigr].
+      \tag{1}
       \]
-      Both coefficients are positive:
-      \(2\sqrt3\simeq3.464\) and
-      \(4-2\sqrt3\simeq0.536\).  The tuned Minkowski point is therefore a
-      local minimum in both real scalar directions, not merely a stationary
-      point of the real-field restriction.
-    \item \emph{Hidden-Sector Scale Comparison.}
-    If the dominant auxiliary order parameter is
-      \(F=O(\Lambda^2)\), Planck-suppressed interactions give
+      For \(m\ne0\), supersymmetry at a vacuum would require
       \[
-        m_{\rm soft}=O(\kappa\Lambda^2).
+        1+\langle z\rangle^*(\langle z\rangle+\beta)=0.
+      \tag{2}
       \]
-      If instead the nonperturbative quantity is a superpotential or
-      condensate \(W=O(\Lambda^3)\), the gravitino and soft scales are
+      Writing \(z=x+iy\) and using real \(\beta>0\), the imaginary part of
+      (2) gives \(y=0\), while the real part is
+      \(x^2+\beta x+1=0\).  Thus a real supersymmetric solution can exist
+      only for \(\beta\geq2\).  An unbroken Minkowski vacuum would also
+      require \(W=0\), but \(z=-\beta\) makes
+      \(D_zW=m^2\), so no such vacuum exists for \(m\ne0\).  The tuned
+      stable solution found below has \(\beta=2-\sqrt3<2\) and therefore
+      breaks supersymmetry.  The exceptional case \(m=0\) is the trivial
+      theory.
+
+    \item Substitution of (1) into the supplied supergravity formula gives
+      the complete potential
       \[
-        m_{\rm soft}=O(\kappa^2\Lambda^3).
+        \boxed{V(z)=|m|^4e^{|z|^2}
+          \left(\left|1+z^*(z+\beta)\right|^2
+                -3|z+\beta|^2\right)}.
+      \tag{3}
       \]
-      Taking \(\kappa^{-1}=2.4\times10^{18}\) GeV and
-      \(m_{\rm soft}=10^3\) GeV gives
+
+    \item At a stationary vacuum the phase is fixed at
+      \(\operatorname{Im}z=0\), so put \(z=x\),
+      \(u=x+\beta\), and \(f=1+xu\).  Apart from the positive factor
+      \(|m|^4e^{x^2}\), the potential is
       \[
-        \Lambda_F\simeq
-          \sqrt{\frac{10^3}{\kappa}}
-          \simeq5\times10^{10}\ {\rm GeV},
+        Q(x)=f^2-3u^2.
       \]
-      and
+      Zero vacuum energy says \(f=s\sqrt3\,u\), with \(s=\pm1\).
+      Because \(Q=0\), stationarity of the full exponential potential is
+      simply \(Q'=0\):
       \[
-        \Lambda_W\simeq
-          \left(\frac{10^3}{\kappa^2}\right)^{1/3}
-          \simeq2\times10^{13}\ {\rm GeV}.
+        0=2f(2x+\beta)-6u
+          =2u\bigl[s\sqrt3(x+u)-3\bigr].
       \]
-      Order-one coefficients round these to the \(10^{11}\) and
-      \(10^{13}\) GeV scales quoted in Section~31.7.
+      The branch \(u=0\) is incompatible with \(f=1\), so
+      \(x+u=s\sqrt3\).  Combining this with
+      \(1+xu=s\sqrt3u\) gives \(u^2=1\).  The locally stable solution is
+      \[
+        u=1,qquad s=+1,qquad
+        x=\sqrt3-1,qquad
+        \beta=2-\sqrt3.
+      \tag{4}
+      \]
+      Indeed, at (4) the two real Hessian eigenvalues are proportional to
+      \(4\sqrt3\) and \(8-4\sqrt3\), both positive.  The alternative
+      positive-\(\beta\) stationary branch
+      \(\beta=2+\sqrt3\), \(x=-1-\sqrt3\) has a negative real-direction
+      eigenvalue and is not the vacuum.  Comparing (4) with
+      \(\beta=-\sqrt A+B\) gives
+      \[
+        \boxed{A=3,\qquad B=2.}
+      \]
+
+    \item The same solution has
+      \[
+        \langle z\rangle=\sqrt3-1.
+      \]
+      Hence
+      \[
+        \boxed{C=3,\qquad D=-1.}
+      \]
+      Finally,
+      \(D_zW=m^2\sqrt3\ne0\) at this point, explicitly confirming the
+      spontaneous breaking asserted in part (a).
   \end{enumerate}
 
 \end{enumerate}

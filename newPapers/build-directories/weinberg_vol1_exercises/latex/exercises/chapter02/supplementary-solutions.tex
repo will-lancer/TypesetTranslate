@@ -147,54 +147,156 @@ noncompact Lorentz boosts.  The relations involving \(H\) also show why a
 boost does not preserve an energy eigenspace.
 \end{enumerate}
 
-\SupplementarySolution{3}{Scalar Momentum-Space Generators and Finite Translations}
+\SupplementarySolution{3}{The Poincar\'e Group Commutator and Its Lie Algebra}
+We use the group-commutator convention
+\([g,h]=ghg^{-1}h^{-1}\).
 \begin{enumerate}
-\item
-Multiplication by real \(p^\mu\) is Hermitian.  The rotation vector fields
-preserve both \(\mathbf p^2\) and \(d^3\mathbf p\), so integration by parts
-makes \(\mathbf J\) Hermitian.  For a boost,
+\item[(i)] Applying \((\Lambda,a)\) first and \((L,b)\) second gives
 \[
- \frac{d^3\mathbf p}{2E}\,E\partial_{p_i}
- =\frac12d^3\mathbf p\,\partial_{p_i};
+ x\longmapsto L(\Lambda x+a)+b=L\Lambda x+La+b,
 \]
-the boundary term vanishes for smooth rapidly decreasing functions, and
-\(iE\partial_{p_i}\) is Hermitian.
+and hence
+\[
+ (L,b)(\Lambda,a)=(L\Lambda,La+b).
+\]
+This is the semidirect-product law: the Lorentz factor acts on the
+translation before the translations are added.
 
-The useful direct checks are
+\item[(ii)] Requiring the product with \((\Lambda,a)\) to equal
+\((I,0)\) gives
 \[
-\begin{aligned}
- [K_i,P_j]\psi&=iE\partial_i(p_j\psi)-p_j iE\partial_i\psi
-   =i\delta_{ij}E\psi,\\
- [K_i,H]\psi&=iE(\partial_iE)\psi=ip_i\psi,\\
- [K_i,K_j]\psi
- &=-\bigl(p_i\partial_j-p_j\partial_i\bigr)\psi
- =-i\epsilon_{ijk}J_k\psi.
-\end{aligned}
+ (\Lambda,a)^{-1}=(\Lambda^{-1},-\Lambda^{-1}a).
 \]
-The remaining brackets follow from the usual orbital angular-momentum
-algebra.  Hence these operators realize the spin-zero one-particle
-Poincar\'e representation.
-\item
-From Eq.~\eqref{eq:2.4.3},
-\[
- U(\mathbf{1},a)=\exp(-ia_\mu P^\mu),
-\]
-and therefore
-\[
- U(\mathbf{1},a)\ket{p,\sigma}
- =e^{-ia_\mu p^\mu}\ket{p,\sigma}.
-\]
-Using \(U(\Lambda)P^\mu U(\Lambda)^{-1}
-=\Lambda_\nu{}^\mu P^\nu\),
+
+\item[(iii)] Successive use of the composition law gives
 \[
 \begin{split}
- U(\Lambda)U(\mathbf{1},a)U(\Lambda)^{-1}
- &=\exp\!\left[-ia_\mu\Lambda_\nu{}^\mu P^\nu\right]\\
- &=\exp[-i(\Lambda a)_\nu P^\nu]
- =U(\mathbf{1},\Lambda a).
+ (\Lambda_c,a_c)
+ &=(L,b)(\Lambda,a)(L^{-1},-L^{-1}b)
+   (\Lambda^{-1},-\Lambda^{-1}a),\\
+ \Lambda_c&=L\Lambda L^{-1}\Lambda^{-1},\\
+ a_c&=La+b-L\Lambda L^{-1}b
+      -L\Lambda L^{-1}\Lambda^{-1}a.
 \end{split}
 \]
-This is the operator form of the semidirect-product multiplication law.
+The result also makes clear that translations fail to commute with
+Lorentz transformations even though the translation subgroup itself is
+abelian.
+
+\item[(iv)] To the required orders,
+\[
+\begin{aligned}
+ L\Lambda L^{-1}
+ &=I+\omega_\Lambda+[\omega_L,\omega_\Lambda]+\cdots,\\
+ L\Lambda L^{-1}\Lambda^{-1}
+ &=I+[\omega_L,\omega_\Lambda]+\cdots.
+\end{aligned}
+\]
+Substitution in the exact answer from part (iii) yields
+\[
+ a_c=\omega_La-\omega_\Lambda b
+ -[\omega_L,\omega_\Lambda](a+b)+\cdots.
+\]
+When all four infinitesimal parameters \(\omega_L,\omega_\Lambda,a,b\)
+are counted as first order, as in part (vii), the last displayed
+commutator term is cubic.  The bilinear truncation is therefore
+\[
+ a_c=\omega_La-\omega_\Lambda b+O(3).
+\]
+
+\item[(v)] The Lorentz component found above immediately gives
+\[
+ \omega_c=[\omega_L,\omega_\Lambda]
+ =\omega_L\omega_\Lambda-\omega_\Lambda\omega_L.
+\]
+
+\item[(vi)] A Lorentz matrix obeys
+\[
+ \Lambda^{\mathsf T}\eta\Lambda=\eta,
+ \qquad
+ \eta_{\rho\sigma}\Lambda^\rho{}_{\mu}
+ \Lambda^\sigma{}_{\nu}=\eta_{\mu\nu}.
+\]
+At first order,
+\[
+ \omega_\Lambda^{\mathsf T}\eta+\eta\omega_\Lambda=0.
+\]
+Thus, after lowering the first index,
+\[
+ (\omega_\Lambda)_{\mu\nu}
+ :=\eta_{\mu\rho}(\omega_\Lambda)^\rho{}_{\nu}
+ =-(\omega_\Lambda)_{\nu\mu}.
+\]
+
+\item[(vii)] Define
+\[
+ A=\frac12\omega_L^{\mu\nu}M_{\mu\nu}+b^\mu P_\mu,
+ \qquad
+ B=\frac12\omega_\Lambda^{\rho\sigma}M_{\rho\sigma}+a^\rho P_\rho.
+\]
+The representation property turns the group commutator into
+\[
+ U[(L,b)]U[(\Lambda,a)]U[(L,b)]^{-1}U[(\Lambda,a)]^{-1}.
+\]
+Multiplying the four infinitesimal expansions, or using the
+Baker--Campbell--Hausdorff formula, gives
+\[
+ (I+A)(I+B)(I-A)(I-B)=I+[A,B]+O(3).
+\]
+On the other hand, parts (iv)--(v) give
+\[
+ U[(\Lambda_c,a_c)]
+ =I+\frac12[\omega_L,\omega_\Lambda]^{\mu\nu}M_{\mu\nu}
+ +(\omega_La-\omega_\Lambda b)^\mu P_\mu+O(3),
+\]
+which is precisely the asserted identity.
+
+\item[(viii)] Equating independently the coefficients of
+\(a^\mu b^\nu\), \(\omega_L^{\mu\nu}a^\rho\), and
+\(\omega_L^{\mu\nu}\omega_\Lambda^{\rho\sigma}\) gives, in the
+anti-Hermitian generator normalization supplied in the source,
+\[
+ [P_\mu,P_\nu]=0,
+\]
+\[
+ [M_{\mu\nu},P_\rho]
+ =\eta_{\nu\rho}P_\mu-\eta_{\mu\rho}P_\nu,
+\]
+and
+\[
+\begin{split}
+ [M_{\mu\nu},M_{\rho\sigma}]
+ ={}&\eta_{\nu\rho}M_{\mu\sigma}
+    -\eta_{\mu\rho}M_{\nu\sigma}\\
+   &+\eta_{\mu\sigma}M_{\nu\rho}
+    -\eta_{\nu\sigma}M_{\mu\rho}.
+\end{split}
+\]
+The absence of an explicit \(i\) follows from the source expansion
+\(U=I+\frac12\omega M+aP+\cdots\): unitarity makes these generators
+anti-Hermitian.  To return to the Hermitian convention used elsewhere in
+this volume, set
+\[
+ \widehat M_{\mu\nu}=-iM_{\mu\nu},\qquad
+ \widehat P_\mu=-iP_\mu.
+\]
+Then
+\[
+ [\widehat M_{\mu\nu},\widehat P_\rho]
+ =i(\eta_{\mu\rho}\widehat P_\nu
+    -\eta_{\nu\rho}\widehat P_\mu),
+\]
+and
+\[
+\begin{split}
+ [\widehat M_{\mu\nu},\widehat M_{\rho\sigma}]
+ =i(&\eta_{\mu\rho}\widehat M_{\nu\sigma}
+    -\eta_{\nu\rho}\widehat M_{\mu\sigma}\\
+   &+\eta_{\nu\sigma}\widehat M_{\mu\rho}
+    -\eta_{\mu\sigma}\widehat M_{\nu\rho}),
+\end{split}
+\]
+in agreement with the Chapter~2 convention.
 \end{enumerate}
 
 \SupplementarySolution{4}{Pauli--Lubanski Spin and the Massive Casimir}
@@ -403,26 +505,101 @@ unchanged and the state acquires \(e^{i\lambda\theta}\), confirming that
 \(\lambda\) is the angular momentum along the direction of motion.
 \end{enumerate}
 
-\SupplementarySolution{7}{Discrete Symmetries and Helicity}
-Parity sends
+\SupplementarySolution{7}{Finite-Dimensional \(SU(2)\) Representations and Charge Conjugation}
+For readability we suppress the representation symbol \(d\) on the
+generators.
+\begin{enumerate}
+\item[(a)] The algebra implies
 \[
- \mathbf p\mapsto-\mathbf p,\qquad
- \mathbf J\mapsto\mathbf J,
+ [J_3,J_\pm]=\pm J_\pm,
+ \qquad [J_+,J_-]=2J_3.
 \]
-because angular momentum is axial.  Therefore
-\(P:\lambda\mapsto-\lambda\).  A parity-invariant spectrum containing a
-nonzero-helicity particle must also contain an equal-mass
-opposite-helicity partner.
+Thus \(J_+v_m\) and \(J_-v_m\), when nonzero, have weights \(m+1\) and
+\(m-1\).  Choose a highest-weight vector \(v_I\) with
+\(J_+v_I=0\).  The quadratic Casimir
+\[
+ J^2=J_3^2+\frac12(J_+J_-+J_-J_+)
+\]
+commutes with all three generators.  Acting on the highest-weight vector
+shows that its eigenvalue is \(I(I+1)\).  Positivity of norms then gives
+\[
+\begin{aligned}
+ \lVert J_-\ket{I,m}\rVert^2&=(I+m)(I-m+1),\\
+ \lVert J_+\ket{I,m}\rVert^2&=(I-m)(I+m+1).
+\end{aligned}
+\]
+The descending ladder therefore terminates at \(m=-I\), so
+\(2I\in\mathbb Z_{\ge0}\).  Irreducibility says that this ladder exhausts
+the representation:
+\[
+ m=I,I-1,\ldots,-I,
+ \qquad \dim d=2I+1.
+\]
 
-Time reversal is antiunitary and sends both
+\item[(b)] With phases chosen so that the ladder coefficients are
+positive,
 \[
- \mathbf p\mapsto-\mathbf p,\qquad
- \mathbf J\mapsto-\mathbf J.
+ J_-\ket{I,m}
+ =\sqrt{(I+m)(I-m+1)}\ket{I,m-1}.
 \]
-Hence \(T:\lambda\mapsto\lambda\).  Time-reversal invariance can act within
-a single helicity representation and does not by itself require the
-opposite helicity.  These conclusions concern helicity; additional
-internal quantum numbers may of course also be transformed.
+Put \(n=I-m\).  Repeated lowering from the highest-weight state gives
+\[
+ (J_-)^n\ket{I,I}
+ =\left[\prod_{k=0}^{n-1}(2I-k)(k+1)\right]^{1/2}
+ \ket{I,I-n}.
+\]
+The product is
+\[
+ \prod_{k=0}^{n-1}(2I-k)(k+1)
+ =\frac{(2I)!\,n!}{(2I-n)!}
+ =\frac{(2I)!(I-m)!}{(I+m)!}.
+\]
+Consequently
+\[
+ \boxed{A(I,m)=
+ \sqrt{\frac{(I+m)!}{(2I)!(I-m)!}}}\,.
+\]
+
+\item[(c)] The transformed generators are
+\[
+ J_1'=-J_1,\qquad J_2'=J_2,\qquad J_3'=-J_3.
+\]
+Directly,
+\[
+ [J_1',J_2']=iJ_3',\qquad
+ [J_2',J_3']=iJ_1',\qquad
+ [J_3',J_1']=iJ_2'.
+\]
+Equivalently, conjugation preserves every commutator:
+\([J_i',J_j']=C[J_i,J_j]C^{-1}=i\epsilon_{ijk}J_k'\).
+It is also useful below that
+\[
+ CJ_+C^{-1}=-J_-,\qquad CJ_-C^{-1}=-J_+.
+\]
+
+\item[(d)] Fix the relative phases of the triplet by
+\[
+ J_+\ket{\pi^0}=\sqrt2\ket{\pi^+},
+ \qquad
+ J_-\ket{\pi^0}=\sqrt2\ket{\pi^-}.
+\]
+Using \(C\ket{\pi^0}=\ket{\pi^0}\), conjugating the first relation gives
+\[
+ \sqrt2\,C\ket{\pi^+}
+ =CJ_+C^{-1}\ket{\pi^0}
+ =-J_-\ket{\pi^0}
+ =-\sqrt2\ket{\pi^-}.
+\]
+The second relation similarly gives
+\[
+ \boxed{C\ket{\pi^+}=-\ket{\pi^-},\qquad
+ C\ket{\pi^-}=-\ket{\pi^+}}.
+\]
+The common minus sign depends on the stated ladder-phase convention;
+independent rephasings of the charged basis vectors can move it between
+the ladder relations and the action of \(C\), without changing the fact
+that charge conjugation exchanges the two states.
+\end{enumerate}
 
 \SupplementarySolution{8}{A Wigner Rotation from Non-Collinear Boosts}
 \begin{enumerate}
@@ -603,64 +780,413 @@ additional physical restriction on observables or accessibility of that
 central degree of freedom.
 \end{enumerate}
 
-\SupplementarySolution{12}{The Galilean Algebra as a Relativistic Contraction}
-Let \(H_{\rm rel}=cP^0=Mc^2+H_{\rm NR}+O(c^{-2})\) and
-\(K_i^{\rm G}=J^{i0}/c\).  Restoring \(c\) in the Poincar\'e brackets gives
+\SupplementarySolution{12}{The Heisenberg Group and Its Schr\"odinger Representation}
+\begin{enumerate}
+\item[(a)]
+  \begin{enumerate}
+  \item[(i)] The integers are closed under addition, addition is
+  associative, \(0\) is the identity, and the inverse of \(n\) is
+  \(-n\).  Thus \((\mathbb Z,+)\) is a group.
+  \item[(ii)] Multiplication is associative and closed on
+  \(\mathbb Z^*\), with identity \(1\), but an element such as \(2\) has
+  no multiplicative inverse in \(\mathbb Z^*\).  Therefore
+  \((\mathbb Z^*,\times)\) is not a group.
+  \item[(iii)] Write \(f_{u,b}(x)=ux+b\).  Then
+  \[
+   f_{u,b}\circ f_{u',b'}=f_{uu',\,ub'+b},
+  \]
+  which remains in \(\mathcal L\).  Composition is associative, the
+  identity is \(f_{1,0}\), and
+  \[
+   f_{u,b}^{-1}=f_{u^{-1},-b/u}.
+  \]
+  Hence \((\mathcal L,\circ)\) is the affine group of the line.
+  \end{enumerate}
+
+\item[(b)] Denote the displayed matrix by \(g(q,r,s)\).  Direct matrix
+multiplication gives
+\[
+ g(q,r,s)g(q',r',s')
+ =g(q+q',r+r',s+s'+qr'),
+\]
+and therefore
+\[
+ g(q,r,s)^{-1}=g(-q,-r,-s+qr).
+\]
+  \begin{enumerate}
+  \item[(i)] Two elements commute precisely when
+  \(qr'=q'r\).  For this to hold for every \(q',r'\), one must have
+  \(q=r=0\), while \(s\) is unrestricted.  Thus
+  \[
+   Z(G)=\{g(0,0,s)\mid s\in\mathbb R\}.
+  \]
+
+  \item[(ii)] The Lie algebra consists of strictly upper-triangular
+  matrices
+  \[
+   X(q,r,s)=
+   \begin{pmatrix}0&q&s\\0&0&r\\0&0&0\end{pmatrix}
+   =qQ+rR+sS,
+  \]
+  with
+  \[
+   Q=E_{12},\qquad R=E_{23},\qquad S=E_{13}.
+  \]
+  The only nonzero basis brackets are
+  \[
+   [Q,R]=S,\qquad [R,Q]=-S.
+  \]
+  Hence \(f_{QR}{}^S=1\), \(f_{RQ}{}^S=-1\), and all other structure
+  constants vanish.
+
+  \item[(iii)] Since \(X^2=qrS\) and \(X^3=0\),
+  \[
+   e^{X(q,r,s)}=I+X+\frac12X^2
+   =g\!\left(q,r,s+\frac12qr\right).
+  \]
+  Every \(g(q,r,s_0)\) therefore has the unique logarithm
+  \[
+   X\!\left(q,r,s_0-\frac12qr\right).
+  \]
+  Thus the exponential map is one-to-one and onto.  It identifies the
+  underlying manifold of \(G\) continuously with \(\mathbb R^3\), so
+  \(G\) is connected (indeed, simply connected).
+
+  \item[(iv)] The one-dimensional space \(\mathbb R\,S\) is a nonzero
+  central ideal, so \(L(G)\) is not simple.  Moreover,
+  \[
+   [L(G),L(G)]=\mathbb R\,S,\qquad
+   [\mathbb R\,S,\mathbb R\,S]=0.
+  \]
+  The algebra is nilpotent, its Killing form is degenerate, and it is
+  not a direct sum of simple ideals.  It is therefore neither simple nor
+  semisimple.
+  \end{enumerate}
+
+\item[(c)] The condition \((\psi,\psi)=1\) in the source describes the
+unit sphere rather than a vector space; the representation acts linearly
+on the full Hilbert space \(L^2(\mathbb R)\) and preserves that unit
+sphere.  Let \(g=g(q,r,s)\) and \(g'=g(q',r',s')\).  Then
+\[
+\begin{split}
+ (D(g)D(g')\psi)(x)
+ &=e^{-i(s+s')}e^{irx}e^{ir'(x-q)}
+   \psi(x-q-q')\\
+ &=e^{-i(s+s'+qr')}e^{i(r+r')x}
+   \psi(x-q-q')\\
+ &=(D(gg')\psi)(x).
+\end{split}
+\]
+Thus \(D\) respects the exact matrix-group multiplication law.  It also
+preserves the inner product:
+\[
+\begin{split}
+ (D(g)\phi,D(g)\psi)
+ &=\int_{-\infty}^{\infty}dx\,
+   \phi(x-q)^*\psi(x-q)\\
+ &=\int_{-\infty}^{\infty}dy\,\phi(y)^*\psi(y)
+ = (\phi,\psi).
+\end{split}
+\]
+Since \(D(g^{-1})=D(g)^{-1}\), this is a unitary representation.
+
+With \(\widehat p=-i\,d/dx\) and \(\widehat x\) multiplication by \(x\),
+the operator can be written
+\[
+ D(g)=e^{-is}e^{ir\widehat x}e^{-iq\widehat p}.
+\]
+Thus \(q\) translates position, \(r\) translates momentum, and \(s\) is
+an overall phase.  The extra term \(qr'\) in the group law is the central
+phase forced by the canonical noncommutativity of position and momentum;
+this is the Schr\"odinger representation of the Heisenberg group.
+\end{enumerate}
+
+\SupplementarySolution{13}{The Poincar\'e Group in \(1+2\) Dimensions}
+Throughout this solution, scalar products use the source metric
+\[
+ \eta_{\mathrm s}=\operatorname{diag}(+1,-1,-1).
+\]
+\begin{enumerate}
+\item[(a)] The Lorentz condition is
+\[
+ \Lambda^{\mathsf T}\eta_{\mathrm s}\Lambda=\eta_{\mathrm s}.
+\]
+Taking determinants gives
+\[
+ (\det\Lambda)^2=1,
+ \qquad \det\Lambda=\pm1.
+\]
+The norm of the zeroth column gives
+\[
+ (\Lambda^0{}_{0})^2-(\Lambda^1{}_{0})^2
+ -(\Lambda^2{}_{0})^2=1,
+\]
+and therefore \(|\Lambda^0{}_{0}|\ge1\).  The proper component has
+\(\det\Lambda=+1\), and the orthochronous component containing the
+identity has \(\Lambda^0{}_{0}\ge1\).
+
+\item[(b)] Map a Minkowski vector to the real symmetric matrix
+\[
+ X=\varphi(x)=x^0\tau_0+x^1\tau_1+x^2\tau_2
+ =\begin{pmatrix}x^0+x^1&x^2\\x^2&x^0-x^1\end{pmatrix}.
+\]
+Its determinant is exactly the Minkowski norm:
+\[
+ \det X=(x^0)^2-(x^1)^2-(x^2)^2=x^2.
+\]
+For \(A\in SL(2,\mathbb R)\), define
+\[
+ X' = AXA^{\mathsf T}=\varphi(x').
+\]
+The result is again real and symmetric, and
+\[
+ \det X'=\det A\,\det X\,\det A^{\mathsf T}=\det X.
+\]
+Thus \(x'=\Lambda(A)x\) for a Lorentz transformation.  Moreover,
+\[
+ \varphi(\Lambda(AB)x)=ABX(AB)^{\mathsf T}
+ =A(BXB^{\mathsf T})A^{\mathsf T},
+\]
+so \(\Lambda(AB)=\Lambda(A)\Lambda(B)\).
+
+For an explicit formula, write
+\[
+ A=\begin{pmatrix}a&b\\c&d\end{pmatrix},
+ \qquad ad-bc=1.
+\]
+Then
+\[
+ \Lambda(A)=
+ \begin{pmatrix}
+ \frac12(a^2+b^2+c^2+d^2)&
+ \frac12(a^2-b^2+c^2-d^2)&ab+cd\\
+ \frac12(a^2+b^2-c^2-d^2)&
+ \frac12(a^2-b^2-c^2+d^2)&ab-cd\\
+ ac+bd&ac-bd&ad+bc
+ \end{pmatrix}.
+\]
+Continuity places the image in \(SO^+(2,1)\).  The differential at the
+identity is an isomorphism of the three-dimensional Lie algebras, so the
+image is all of the connected group.  The kernel is
+\[
+ \ker\Lambda=\{I,-I\}.
+\]
+Hence
+\[
+ SO^+(2,1)\simeq SL(2,\mathbb R)/\{\pm I\},
+\]
+and the map is a two-to-one covering homomorphism, not an isomorphism.
+
+\item[(c)] For the full Lorentz group,
+\[
+ \operatorname{ISO}(2,1)=\mathbb R^{1,2}\rtimes O(2,1),
+\]
+while its identity component is
+\[
+ \operatorname{ISO}^+(2,1)=\mathbb R^{1,2}\rtimes SO^+(2,1).
+\]
+The group law is
+\[
+ (a,\Lambda)(b,L)=(a+\Lambda b,\Lambda L).
+\]
+Thus translations form a normal subgroup, but Lorentz transformations
+act nontrivially on them; this is a semidirect rather than a direct
+product.  In momentum space that action organizes momenta into Lorentz
+orbits.  For a representative momentum \(k\), its little group is
+\[
+ G_k=\{\Lambda\in SO^+(2,1)\mid\Lambda k=k\}.
+\]
+Wigner's construction combines a translation character
+\(e^{-ia\cdot p}\) on a Lorentz orbit with a unitary irreducible
+representation of \(G_k\).
+
+\item[(d)] A future-directed massive orbit has \(p^2=m^2\), \(p^0>0\),
+and representative
+\[
+ k=(m,0,0).
+\]
+Its connected little group is the spatial rotation group \(SO(2)\).
+Every irreducible unitary representation is a character
+\[
+ D_s(R(\theta))=e^{is\theta}.
+\]
+For the group \(SO(2)\) itself, single-valuedness requires
+\(s\in\mathbb Z\); the double cover permits
+\(s\in\tfrac12\mathbb Z\); and the universal cover has
+\(\theta\in\mathbb R\), allowing arbitrary real \(s\).  The last
+possibility is the group-theoretic origin of anyonic spin in
+\(2+1\) dimensions.
+
+Choose a standard Lorentz transformation \(L(p)k=p\).  The induced
+massive representation may be written
+\[
+ U(a,\Lambda)\ket{p,s}
+ =e^{-ia\cdot\Lambda p}
+  e^{is\Omega(\Lambda,p)}\ket{\Lambda p,s},
+\]
+up to the normalization factor dictated by the choice of momentum-state
+normalization, where
+\[
+ L(\Lambda p)^{-1}\Lambda L(p)=R(\Omega(\Lambda,p)).
+\]
+Thus a massive irreducible representation is labeled by \(m>0\) and the
+allowed spin \(s\).
+
+\item[(e)] Take the future-directed null representative
+\(k=(\kappa,\kappa,0)\).  In the \(SL(2,\mathbb R)\) description it is
+\[
+ \varphi(k)=\begin{pmatrix}2\kappa&0\\0&0\end{pmatrix}.
+\]
+Its connected stabilizer is represented by
+\[
+ A(u)=\begin{pmatrix}1&u\\0&1\end{pmatrix},
+ \qquad u\in\mathbb R.
+\]
+Using the explicit map from part (b), the corresponding Lorentz matrix is
+\[
+ N(u)=
+ \begin{pmatrix}
+ 1+\frac12u^2&-\frac12u^2&u\\
+ \frac12u^2&1-\frac12u^2&u\\
+ u&-u&1
+ \end{pmatrix},
+ \qquad N(u)k=k,
+\]
+and \(N(u)N(v)=N(u+v)\).  Hence the connected massless little group is
+\((\mathbb R,+)\).  Its irreducible unitary representations are the
+one-dimensional characters
+\[
+ D_\rho(N(u))=e^{i\rho u},
+ \qquad \rho\in\mathbb R.
+\]
+Together with the null momentum orbit and translation character, each
+\(\rho\) induces a massless Poincar\'e representation.  The conventional
+single-polarization massless particle described by a finite-component
+local field uses the trivial character \(\rho=0\); nonzero \(\rho\) gives
+the nontrivial null-rotation family.
+\end{enumerate}
+
+\SupplementarySolution{14}{Parity Symmetry of Scalar Field Theory}
+\begin{enumerate}
+\item[(a)] Differentiating the parity transformation gives
 \[
 \begin{aligned}
- [K_i^{\rm G},P_j]
- &=i\delta_{ij}\frac{H_{\rm rel}}{c^2}
- =i\delta_{ij}\left(M+\frac{H_{\rm NR}}{c^2}+\cdots\right),\\
- [K_i^{\rm G},H_{\rm NR}]&=iP_i+O(c^{-2}),\\
- [K_i^{\rm G},K_j^{\rm G}]
- &=-\frac{i}{c^2}\epsilon_{ijk}J_k.
+ P\,\partial_0\phi(t,\mathbf x)P^{-1}
+ &=\eta_P\,\partial_0\phi(t,-\mathbf x),\\
+ P\,\partial_i\phi(t,\mathbf x)P^{-1}
+ &=-\eta_P\,\partial_i\phi(t,-\mathbf x).
 \end{aligned}
 \]
-Taking \(c\to\infty\) leaves
+The two signs from each quadratic term cancel, as does
+\(\eta_P^2=1\), so
 \[
- [K_i^{\rm G},P_j]=i\delta_{ij}M,\qquad
- [K_i^{\rm G},H_{\rm NR}]=iP_i,\qquad
- [K_i^{\rm G},K_j^{\rm G}]=0.
+ P\mathcal L_0(t,\mathbf x)P^{-1}=\mathcal L_0(t,-\mathbf x).
 \]
-The relativistic rest energy becomes the central mass charge of the
-contracted Galilean algebra.
+The density at a fixed point is generally not unchanged.  The
+Lagrangian is, because a change of variables in the spatial integral
+gives
+\[
+ P L_0(t)P^{-1}
+ =\int d^3\mathbf x\,\mathcal L_0(t,-\mathbf x)
+ =\int d^3\mathbf y\,\mathcal L_0(t,\mathbf y)
+ =L_0(t).
+\]
+This works for either intrinsic parity.
 
-\SupplementarySolution{13}{Massive Spin in \(2+1\) Dimensions}
-Fixing \(k=(m,0,0)\) leaves only rotations of the two spatial coordinates,
-so the connected little group is \(SO(2)\).  Its unitary characters are
+\item[(b)] Comparing the transformed mode expansion with
+\(\eta_P\phi(t,-\mathbf x)\) gives
 \[
- D_s(\theta)=e^{is\theta}.
+ Pa_{\mathbf k}P^{-1}=\eta_Pa_{-\mathbf k},
+ \qquad
+ Pa_{\mathbf k}^\dagger P^{-1}=\eta_Pa_{-\mathbf k}^\dagger.
 \]
-For \(SO(2)\), \(D_s(\theta+2\pi)=D_s(\theta)\) requires
-\(s\in\mathbb Z\).  On the double cover, a \(4\pi\) period permits
-\(s\in\frac12\mathbb Z\).  The universal cover has
-\(\theta\in\mathbb R\), so every \(s\in\mathbb R\) is allowed.
+For
+\[
+ \ket{\mathbf k_1,\ldots,\mathbf k_n}
+ =a_{\mathbf k_1}^\dagger\cdots
+  a_{\mathbf k_n}^\dagger\ket0,
+\]
+vacuum invariance then gives
+\[
+ P\ket{\mathbf k_1,\ldots,\mathbf k_n}
+ =\eta_P^n\ket{-\mathbf k_1,\ldots,-\mathbf k_n}.
+\]
 
-A spatial reflection conjugates \(R(\theta)\) to \(R(-\theta)\), and hence
+\item[(c)] Let
 \[
- D_s\longmapsto D_{-s}.
+ N=\sum_{\mathbf q}a_{\mathbf q}^\dagger a_{\mathbf q},
+ \qquad
+ B=\sum_{\mathbf q}a_{\mathbf q}^\dagger a_{-\mathbf q}.
 \]
-Therefore a reflection-invariant theory must pair a nonzero \(s\) with
-\(-s\), while a representation of the connected universal cover alone may
-contain a single arbitrary real spin.
+The canonical algebra gives
+\[
+ [N,a_{\mathbf k}]=-a_{\mathbf k},
+\]
+so the supplied Campbell--Baker--Hausdorff series sums to
+\[
+ P_1a_{\mathbf k}P_1^{-1}
+ =e^{i\pi/2}a_{\mathbf k}=ia_{\mathbf k}.
+\]
+For the second operator,
+\[
+ [B,a_{\mathbf k}]=-a_{-\mathbf k},\qquad
+ [B,[B,a_{\mathbf k}]]=a_{\mathbf k},
+\]
+and the nested commutators alternate.  Therefore
+\[
+ e^{i\alpha B}a_{\mathbf k}e^{-i\alpha B}
+ =\cos\alpha\,a_{\mathbf k}
+ -i\sin\alpha\,a_{-\mathbf k}.
+\]
+Putting \(\alpha=\eta_P\pi/2\) gives
+\[
+ P_2a_{\mathbf k}P_2^{-1}=-i\eta_Pa_{-\mathbf k}.
+\]
+Both \(N\) and \(B\) are Hermitian: for \(B\), take the adjoint and
+relabel \(\mathbf q\mapsto-\mathbf q\).  Hence \(P_1\), \(P_2\), and
+their product are unitary.  Finally,
+\[
+ Pa_{\mathbf k}P^{-1}
+ =P_1(-i\eta_Pa_{-\mathbf k})P_1^{-1}
+ =\eta_Pa_{-\mathbf k}.
+\]
+The adjoint relation follows similarly, and substitution in the field
+expansion proves
+\[
+ P\phi(t,\mathbf x)P^{-1}=\eta_P\phi(t,-\mathbf x).
+\]
 
-\SupplementarySolution{14}{Massless Little-Group Characters in \(2+1\) Dimensions}
-The stabilizer of \(k=(\kappa,0,\kappa)\) has one connected generator: a
-null rotation \(N\), a particular linear combination of the single spatial
-rotation and a transverse boost.  Its exponential satisfies
+\item[(d)] Extend parity to a complex field by
 \[
- S(\alpha)S(\beta)=S(\alpha+\beta),
+ P\Phi(t,\mathbf x)P^{-1}=\eta_P\Phi(t,-\mathbf x),
+ \qquad
+ P\Phi^\dagger(t,\mathbf x)P^{-1}
+ =\eta_P^*\Phi^\dagger(t,-\mathbf x).
 \]
-so the connected little group is \((\mathbb R,+)\).
-Every unitary irreducible representation is one-dimensional,
+In oscillator language this is
 \[
- D_\rho(S(\alpha))=e^{i\rho\alpha},\qquad \rho\in\mathbb R.
+ Pa_{\mathbf k}P^{-1}=\eta_Pa_{-\mathbf k},
+ \qquad
+ Pb_{\mathbf k}P^{-1}=\eta_P^*b_{-\mathbf k},
 \]
-A reflection conjugates \(S(\alpha)\) to \(S(-\alpha)\), so it maps
-\(\rho\) to \(-\rho\); nonzero \(\rho\) must be paired in a
-reflection-invariant spectrum.  The representation used for ordinary
-finite-polarization massless particles is the trivial character
-\(\rho=0\).  Since the transverse rotation group in \(2+1\) dimensions is
-trivial, this gives a single state at each null momentum rather than a
-helicity multiplet.
+for particle and antiparticle annihilators.  The phases cancel in the
+current.  With
+\[
+ \mathcal P^\mu{}_{\nu}=\operatorname{diag}(1,-1,-1,-1),
+\]
+the result is the vector transformation law
+\[
+ \boxed{
+ Pj^\mu(t,\mathbf x)P^{-1}
+ =\mathcal P^\mu{}_{\nu}j^\nu(t,-\mathbf x)}.
+\]
+Equivalently,
+\[
+ Pj^0(t,\mathbf x)P^{-1}=j^0(t,-\mathbf x),
+ \qquad
+ P\mathbf j(t,\mathbf x)P^{-1}=-\mathbf j(t,-\mathbf x).
+\]
+Thus charge density is parity even and the spatial particle current is
+parity odd, as required for a Lorentz vector.
+\end{enumerate}
 \end{enumerate}

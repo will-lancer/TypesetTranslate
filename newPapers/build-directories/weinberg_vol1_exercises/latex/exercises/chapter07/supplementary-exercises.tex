@@ -323,49 +323,72 @@ part (a)(v).
 \end{enumerate}
 \end{enumerate}
 
-\SupplementaryExercise{7}{Dirac Brackets and the Reduced Poisson Geometry}
-  {(Inspired by Brian P. Dolan, \emph{Constrained Dynamics in the Hamiltonian Formalism}, Sections 4--6, especially Section 5.)}
-  {dolan-constrained-dynamics-2112.12216-curated-parent-2}
-Let \(z^I\) be local coordinates on phase space, with Poisson tensor
-\(P^{IJ}(z)\) and bracket
+\SupplementaryExercise{7}{Recovering Nonrelativistic Quantum Mechanics}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 6, Problem 3, printed pp.~1--2.)}
+  {mcgreevy-215a-f23-hw06-p3-v1ch07-s07}
+Take the nonrelativistic limit of a complex scalar field by writing
 \[
- \{F,G\}=\partial_I F\,P^{IJ}\partial_JG.
+ \Phi(x)=\sqrt{2m}\,e^{-imt}\Psi(x),
+ \qquad |\dot\Psi|\ll m|\Psi|.
 \]
-Let the constraint surface be
+Antiparticles then decouple.  At a fixed time, use the mode expansions
 \[
- \Gamma=\{z:\chi_A(z)=0\text{ for every }A\}.
+ \Psi(\mathbf x)=\int_{\mathbf p}e^{i\mathbf p\cdot\mathbf x}
+ a_{\mathbf p},
+ \qquad
+ \Psi^\dagger(\mathbf x)=\int_{\mathbf p}e^{-i\mathbf p\cdot\mathbf x}
+ a_{\mathbf p}^\dagger,
+ \qquad
+ \int_{\mathbf p}\equiv\int\frac{d^d\mathbf p}{(2\pi)^d},
 \]
-The constraints are called \emph{second class} when the antisymmetric
-constraint matrix
+with
 \[
- C_{AB}(z)=\{\chi_A,\chi_B\}
+ [a_{\mathbf p},a_{\mathbf q}^\dagger]
+ =(2\pi)^d\delta^d(\mathbf p-\mathbf q),
+ \qquad
+ H=\int_{\mathbf p}\frac{\mathbf p^2}{2m}
+ a_{\mathbf p}^\dagger a_{\mathbf p}.
 \]
-is invertible on a neighborhood of \(\Gamma\).  Write its inverse as
-\(C^{AB}\), so that \(C_{AC}C^{CB}=\delta_A{}^B\).
-
-\pagebreak[3]
-The associated Dirac bracket is
-\[
- \{F,G\}_{\rm D}
- =\{F,G\}-\{F,\chi_A\}C^{AB}\{\chi_B,G\}.
-\]
-The corresponding projected Poisson tensor \(P_{\rm D}^{IJ}\) is defined by
-\(\{F,G\}_{\rm D}=\partial_I F\,P_{\rm D}^{IJ}\partial_JG\).  Equalities
-that hold only after restriction to the constraint surface will be denoted
-by \(\simeq\).
 \begin{enumerate}
 \item
-For arbitrary second-class constraints, prove directly from the inverse
-constraint matrix that \(\{\chi_A,F\}_{\rm D}=0\) for every phase-space
-function \(F\).
+Show that
+\[
+ P^i=\int_{\mathbf p}p^i a_{\mathbf p}^\dagger a_{\mathbf p}
+\]
+generates spatial translations and commutes with the Hamiltonian.
 \item
-Write the Dirac bracket as a projected Poisson tensor.  Show that the
-projection annihilates every constraint gradient and restricts to the
-ordinary symplectic inverse on tangent vectors.
+Define the second-quantized position operator and a localized one-particle
+state by
+\[
+ X^i=\int d^d\mathbf x\,
+ \Psi^\dagger(\mathbf x)x^i\Psi(\mathbf x),
+ \qquad
+ \ket{\mathbf x}=\Psi^\dagger(\mathbf x)\ket{\Omega}.
+\]
+Prove that
+\[
+ X^i\ket{\mathbf x}=x^i\ket{\mathbf x}.
+\]
 \item
-Replace constraints \((\chi_1,\chi_2)\) by
-\((e^{f(z)}\chi_1,e^{-f(z)}\chi_2)\).  Prove that their Dirac brackets
-agree on the common constraint surface, including all derivative terms.
+For a general one-particle wave packet
+\[
+ \ket{\psi}=\int d^d\mathbf x\,
+ \psi(\mathbf x)\Psi^\dagger(\mathbf x)\ket{\Omega}
+ =\int d^d\mathbf x\,\psi(\mathbf x)\ket{\mathbf x},
+\]
+show that
+\[
+ X^i\ket{\psi}
+ =\int d^d\mathbf x\,x^i\psi(\mathbf x)\ket{\mathbf x},
+\]
+and, with the surface term at spatial infinity discarded,
+\[
+ P^i\ket{\psi}
+ =\int d^d\mathbf x\left(-i\frac{\partial}{\partial x^i}
+ \psi(\mathbf x)\right)\ket{\mathbf x}.
+\]
+Thus recover the usual position- and momentum-operator actions on a
+one-particle Schr\"odinger wavefunction.
 \end{enumerate}
 
 \SupplementaryExercise{8}{Field Redefinition and Vanishing Scalar Scattering}
@@ -467,22 +490,51 @@ with rotations in the \(AB\)-plane and verify its conservation using
 the constrained equation of motion.
 \end{enumerate}
 
-\SupplementaryExercise{11}{Target-Space Covariance, Curvature, and Stereographic Coordinates}
-  {(Inspired by David Tong, Lectures on Statistical Field Theory, Section 4.3.)}
-  {tong-sft-sigma-models-2017-curated-parent-2}
+\SupplementaryExercise{11}{Quantization and Charge of a Complex Scalar Field}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.323: Relativistic Quantum Field Theory I} (2024), Section 3.8, Homework Problem 4, printed p.~44.)}
+  {harlow-qft1-2024-s3p8-problem4-v1ch07-s11}
+In \(D\) spacetime dimensions, consider the free complex scalar theory
+\[
+ \mathcal L=-\partial_\mu\Phi^\dagger\partial^\mu\Phi
+ -m^2\Phi^\dagger\Phi,
+ \qquad E_{\mathbf p}=\sqrt{\mathbf p^2+m^2}.
+\]
+The field, its canonical momentum, and the equal-time commutators are
+\[
+ \Phi(x)=\int\frac{d^{D-1}\mathbf p}
+ {(2\pi)^{D-1}\sqrt{2E_{\mathbf p}}}
+ \left(e^{ip\cdot x}a_{\mathbf p}
+ +e^{-ip\cdot x}b_{\mathbf p}^\dagger\right),
+ \qquad \Pi(x)=\dot\Phi^\dagger(x),
+\]
+\[
+ [\Phi(t,\mathbf x),\dot\Phi^\dagger(t,\mathbf y)]
+ =[\Phi^\dagger(t,\mathbf x),\dot\Phi(t,\mathbf y)]
+ =i\delta^{D-1}(\mathbf x-\mathbf y),
+\]
+with every other equal-time field commutator equal to zero.  The global
+phase symmetry is \(\Phi'(x)=e^{i\theta}\Phi(x)\).  Use the volume's
+current convention
+\[
+ j^\mu=i\left[
+ \Phi^\dagger\partial^\mu\Phi
+ -(\partial^\mu\Phi^\dagger)\Phi\right],
+ \qquad Q=\int d^{D-1}\mathbf x\,j^0.
+\]
 \begin{enumerate}
 \item
-Under an invertible reparametrization
-\(\pi^a=\pi^a(\xi)\), derive the transformation law of the sigma-model
-metric and show directly that the Lagrangian remains a target-space
-scalar.
+Starting from the displayed field expansion and canonical commutators,
+calculate all commutators among
+\(a_{\mathbf p},b_{\mathbf p},a_{\mathbf p}^\dagger\), and
+\(b_{\mathbf p}^\dagger\).
 \item
-For the two-sphere target metric, compute one nonzero component of the
-Riemann tensor and explain why no field redefinition can make the
-kinetic term globally free.
+Derive the Hamiltonian in terms of these creation and annihilation
+operators, retaining the vacuum constant before normal ordering.
 \item
-Parametrize \(S^2\) by stereographic fields \((u,v)\), derive the
-conformally flat target metric, and obtain the canonical Hamiltonian
-including its exact field-dependent inverse factor.
+Evaluate the conserved charge \(Q\) in the same oscillator basis.
+Identify the charges of the one-particle states
+\(a_{\mathbf p}^\dagger\ket{\Omega}\) and
+\(b_{\mathbf p}^\dagger\ket{\Omega}\) in the stated current convention,
+and explain why the two species are particle and antiparticle.
 \end{enumerate}
 \end{enumerate}

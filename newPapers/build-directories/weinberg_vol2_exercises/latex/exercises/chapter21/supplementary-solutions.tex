@@ -222,185 +222,326 @@
     generator is \(Q=T_3+Y\), which annihilates the stated vacuum.
   \end{enumerate}
 
-  \SupplementarySolution{3}{Chiral Charges and Unbroken Gauge Generators}
+  \SupplementarySolution{3}{Goldstone's Theorem and Fundamental \(SU(3)\) Higgsing}
   \begin{enumerate}
     \item[(a)]
-    Under the two groups,
+    First consider the classical theory and write the scalar fields as
+    real components.  Invariance of the potential under an infinitesimal
+    transformation gives
     \[
-      \bar\psi_L\psi_R\longrightarrow
-      e^{\,i[(Q_R-Q_L)\alpha+(Y_R-Y_L)\beta]}
-        \bar\psi_L\psi_R.
+      \frac{\partial V}{\partial\phi_i}
+        (T^a)_{ij}\phi_j=0.
     \]
-    A bare Dirac mass is allowed only if
-    \(Q_R=Q_L\) and \(Y_R=Y_L\).  For the stated assignments,
+    Let \(v_i\) be a stationary vacuum and differentiate this identity
+    with respect to \(\phi_k\).  At \(\phi=v\),
     \[
-      Q_R-Q_L=\frac12,\qquad
-      Y_R-Y_L=-\frac12,
+      (M^2)_{ki}(T^a)_{ij}v_j=0,\qquad
+      (M^2)_{ki}
+        =\left.\frac{\partial^2V}
+          {\partial\phi_k\partial\phi_i}\right|_{\phi=v}.
     \]
-    so the bilinear is charged under both independent symmetries.  The
-    chiral gauge symmetry forbids a mass until an additional field
-    compensates these charges.
+    If generator \(a\) is broken, \(T^av\ne0\), so the Hessian has a
+    zero eigenvector.  Each linearly independent broken orbit direction
+    is therefore a massless classical normal mode.
+
+    The quantum statement is encoded in the current--field correlator
+    \[
+      G^\mu_{ai}(p)=i\int d^4x\,e^{-ip\cdot x}
+        \langle0|T\{J^\mu_a(x)\phi_i(0)\}|0\rangle .
+    \]
+    The Ward identity following from \(\partial_\mu J^\mu_a=0\) is
+    \[
+      p_\mu G^\mu_{ai}(p)
+        =\langle0|[Q^a,\phi_i(0)]|0\rangle
+        =-i(T^a)_{ij}v_j
+    \]
+    up to the common Fourier-sign convention.  Lorentz invariance makes
+    the spin-zero contribution proportional to \(p^\mu\).  A nonzero
+    right-hand side can then persist as \(p\to0\) only if
+    \[
+      G^\mu_{ai}(p)\supset
+        \frac{p^\mu F_{ai}}{p^2-i0},
+        \qquad F_{ai}\ne0.
+    \]
+    Equivalently, insertion of a complete set gives a state
+    \(\lvert\pi^a(p)\rangle\) with
+    \(\langle0|J^\mu_a(0)|\pi^b(p)\rangle
+      =ip^\mu F_a{}^b\) and \(p^2=0\).  This is the quantum Goldstone
+    boson.  The theorem assumes a global symmetry; after the symmetry is
+    gauged this scalar need not remain in the physical spectrum.
+
     \item[(b)]
-    For the interaction \(H\bar\psi_L\psi_R\), invariance requires
+    Take Hermitian generators \(T^a=\lambda^a/2\), write
+    \(A_\mu=A_\mu^aT^a\), and use
+    \(D_\mu=\partial_\mu-igA_\mu\).  For
+    \(\Phi'=U\Phi\), covariance \(D'_\mu\Phi'=UD_\mu\Phi\) requires
     \[
-      Q_H-Q_L+Q_R=0,\qquad
-      Y_H-Y_L+Y_R=0.
+      \boxed{A'_\mu
+        =UA_\mu U^{-1}+\frac{i}{g}U\partial_\mu U^{-1}.}
     \]
-    The assignments of part~(a) therefore give
+    Since
+    \([D_\mu,D_\nu]=-igF_{\mu\nu}\), it follows immediately that
     \[
-      \boxed{(Q_H,Y_H)=(-\tfrac12,+\tfrac12).}
+      F'_{\mu\nu}=UF_{\mu\nu}U^{-1}.
     \]
-    If \(H=(v+h)/\sqrt2\) in a gauge where its vacuum value is real, then
+    Thus, apart from the topological \(\theta\)-term, the canonically
+    normalized renormalisable Lagrangian is
     \[
-      yH\bar\psi_L\psi_R+\mathrm{H.c.}
-        =\frac{yv}{\sqrt2}\bar\psi\psi
-         +\frac{y}{\sqrt2}h\bar\psi\psi.
-    \]
-    Thus the same gauge-invariant coupling generates both the Dirac mass
-    \(m=yv/\sqrt2\) and the scalar interaction.
-    \item[(c)]
-    The vacuum kinetic term is
-    \[
-      |D_\mu\langle\Phi\rangle|^2
-        =\frac{v^2}{2}
-         (g_1q_1A_\mu^1+g_2q_2A_\mu^2)^2.
-    \]
-    With \(N=\sqrt{g_1^2q_1^2+g_2^2q_2^2}\), define
-    \[
-      A_\mu^M=\frac{g_1q_1A_\mu^1+g_2q_2A_\mu^2}{N},
+      \mathcal L=-\frac12\operatorname{tr}F_{\mu\nu}F^{\mu\nu}
+        -(D_\mu\Phi)^\dagger D^\mu\Phi
+        -V(\Phi^\dagger\Phi),
       \qquad
-      A_\mu^0=\frac{-g_2q_2A_\mu^1+g_1q_1A_\mu^2}{N}.
+      V=\lambda\left(\Phi^\dagger\Phi-\frac{v^2}{2}\right)^2 ,
     \]
-    Then \(m_M^2=v^2N^2\) in the usual complex-scalar normalization,
-    whereas \(A^0\) is massless.  The unbroken transformation satisfies
-    \(q_1\alpha_1+q_2\alpha_2=0\); its generator is proportional to
-    \(q_2Q_1-q_1Q_2\).
+    where an additive constant is immaterial and
+    \(\lambda>0\).  This is the same as
+    \(m_0^2\Phi^\dagger\Phi+\lambda(\Phi^\dagger\Phi)^2\) in the broken
+    range \(m_0^2<0\).
+
+    An \(SU(3)\) transformation can rotate any vacuum to
+    \[
+      \Phi_{\mathrm v}=\frac{v}{\sqrt2}
+        \begin{pmatrix}0\\0\\1\end{pmatrix}.
+    \]
+    The generators \(T^{1,2,3}\), acting in the upper \(2\times2\)
+    block, leave this vector fixed.  Hence
+    \[
+      \boxed{SU(3)\longrightarrow SU(2),}
+    \]
+    with five broken generators \(T^{4,5,6,7,8}\).  Before gauging, the
+    five vectors \(T^a\Phi_{\mathrm v}\) are precisely the five
+    zero-eigenvectors of the potential Hessian found in part~(a), so the
+    classical Goldstone count is verified.
+
+    To see the Higgs mechanism explicitly, write locally
+    \[
+      \Phi(x)=U(x)\frac1{\sqrt2}
+        \begin{pmatrix}0\\0\\v+h(x)\end{pmatrix},
+      \qquad U(x)\in SU(3)/SU(2).
+    \]
+    A gauge transformation by \(U^{-1}\) removes the five fields in
+    \(U(x)\).  The vacuum kinetic term then gives
+    \[
+      (M_A^2)_{ab}
+        =g^2\Phi_{\mathrm v}^\dagger
+          \{T^a,T^b\}\Phi_{\mathrm v}.
+    \]
+    In the Gell-Mann basis,
+    \[
+      m_{1,2,3}^2=0,\qquad
+      m_{4,5,6,7}^2=\frac{g^2v^2}{4},\qquad
+      m_8^2=\frac{g^2v^2}{3}.
+    \]
+    Each of the five Goldstone fields supplies the longitudinal
+    polarization of one massive vector.  The only remaining scalar is
+    the radial mode, with
+    \[
+      \boxed{m_h^2=2\lambda v^2.}
+    \]
+    The degree-of-freedom check is
+    \(8\cdot2+6=3\cdot2+5\cdot3+1=22\).
   \end{enumerate}
 
-  \SupplementarySolution{4}{Yukawa Masses, Electric Charge, and the Neutrino Operator}
-  \begin{enumerate}
-    \item[(a)]
-    Substitution of \(H=(v+h)/\sqrt2\) gives
-    \[
-      \mathcal L_Y
-        =-\frac{yv}{\sqrt2}\bar\psi\psi
-         -\frac{y}{\sqrt2}h\bar\psi\psi.
-    \]
-    Hence
-    \[
-      \boxed{m_\psi=\frac{yv}{\sqrt2},\qquad
-        \mathcal L_{h\bar\psi\psi}
-         =-\frac{m_\psi}{v}h\bar\psi\psi.}
-    \]
-    The Higgs coupling is therefore not a new independent parameter once
-    the fermion mass and \(v\) are known.
-    \item[(b)]
-    Since \(Q(\nu_L,e_L)=(0,-1)\) and
-    \(T_3=(+\tfrac12,-\tfrac12)\),
-    \[
-      Y_L=-\frac12.
-    \]
-    The singlet has \(T_3=0\) and \(Q=-1\), so \(Y_{e_R}=-1\).
-    Requiring \(Q(H^+,H^0)=(1,0)\) gives \(Y_H=+\tfrac12\).
-    The hypercharge of
-    \(\bar LHe_R\) is
-    \[
-      -Y_L+Y_H+Y_{e_R}
-        =\frac12+\frac12-1=0.
-    \]
-    The doublet indices contract to an \(SU(2)\) singlet, so the Yukawa
-    interaction is gauge invariant.
-    \item[(c)]
-    A convenient form, with flavor labels suppressed, is
-    \[
-      \boxed{\mathcal L_5
-        =\frac{c}{\Lambda}
-         \bigl(L^{\mathsf T}C\,i\sigma_2H\bigr)
-         \bigl(H^{\mathsf T}i\sigma_2L\bigr)
-         +\mathrm{H.c.}}
-    \]
-    with the spinor contraction understood.  Each \(LH\) factor is an
-    \(SU(2)\) singlet and has zero hypercharge.  Since
-    \([L]=3/2\) and \([H]=1\), the operator has dimension five.
-    With \(\langle H\rangle=(0,v/\sqrt2)^{\mathsf T}\), it becomes a
-    Majorana mass term for \(\nu_L\), with
-    \[
-      \boxed{m_\nu=\frac{|c|v^2}{2\Lambda}}
-    \]
-    up to a convention-dependent factor absorbed into the symmetric
-    flavor coefficient.
-  \end{enumerate}
+  \SupplementarySolution{4}{Neutrino Masses and a Hypercharge-One Scalar Triplet}
+  With \(Q=T_3+Y\), one generation of chiral fermions is
+  \[
+    \begin{array}{c|c}
+      \text{field}&SU(3)_C\times SU(2)_L\times U(1)_Y\\ \hline
+      Q_L=(u_L,d_L)&(\mathbf3,\mathbf2,+\tfrac16)\\
+      u_R&(\mathbf3,\mathbf1,+\tfrac23)\\
+      d_R&(\mathbf3,\mathbf1,-\tfrac13)\\
+      L_L=(\nu_L,e_L)&(\mathbf1,\mathbf2,-\tfrac12)\\
+      e_R&(\mathbf1,\mathbf1,-1)\\
+      \nu_R&(\mathbf1,\mathbf1,0)
+    \end{array}
+  \]
+  A Dirac bilinear joins a left-handed doublet to a right-handed singlet,
+  so it is neither an \(SU(2)_L\) singlet nor, in general, neutral under
+  hypercharge.  The exception among possible bare terms is a Majorana
+  mass for the gauge singlet \(\nu_R\).
 
-  \SupplementarySolution{5}{Neutral Currents, Mass Relations, and the Electroweak Scale}
+  A Higgs field \(H\sim(\mathbf1,\mathbf2,+\tfrac12)\), together with
+  \(\widetilde H=i\sigma_2H^*\), permits
+  \[
+    \mathcal L_Y=
+      -\overline Q_LY_dHd_R-\overline Q_LY_u\widetilde Hu_R
+      -\overline L_LY_eHe_R-\overline L_LY_\nu\widetilde H\nu_R
+      +\mathrm{H.c.}
+  \]
+  Each term is a singlet of all three gauge factors.  With
+  \(\langle H\rangle=(0,v/\sqrt2)^{\mathsf T}\), they give
+  \(M_f=Y_fv/\sqrt2\).
+
+  Since \(\nu_R\) is a gauge singlet, add
+  \[
+    \mathcal L_M=-\frac12\nu_R^{\mathsf T}CM_R\nu_R+\mathrm{H.c.}
+  \]
+  For one flavor the neutral-fermion mass matrix is
+  \[
+    \mathcal M_\nu=
+      \begin{pmatrix}0&m_D\\m_D&M_R\end{pmatrix},
+      \qquad m_D=\frac{Y_\nu v}{\sqrt2}.
+  \]
+  If \(M_R\gg m_D\), its eigenvalues are
+  \[
+    m_{\rm light}\simeq-\frac{m_D^2}{M_R},\qquad
+    m_{\rm heavy}\simeq M_R.
+  \]
+  With flavors,
+  \(M_{\rm light}=-M_D M_R^{-1}M_D^{\mathsf T}\).
+  Integrating out \(\nu_R\), or omitting it from the low-energy theory,
+  leaves the dimension-five Weinberg operator
+  \[
+    \mathcal L_5=
+      \frac{c_{ij}}{\Lambda}
+      (L_i^{\mathsf T}C\,i\sigma_2H)
+      (H^{\mathsf T}i\sigma_2L_j)+\mathrm{H.c.},
+      \qquad
+      (m_\nu)_{ij}=\frac{c_{ij}v^2}{2\Lambda}
+  \]
+  in the displayed normalization.
+
+  The triplet may be represented by a traceless matrix transforming as
+  \(\phi\mapsto U\phi U^\dagger\).  Under \(T_3\), its upper-right,
+  diagonal, and lower-left components have weights \(+1,0,-1\),
+  respectively.  Since \(Y=+1\), their electric charges are
+  \[
+    \begin{array}{c|c|c}
+      \text{component}&T_3&Q\\ \hline
+      \phi^1-i\phi^2&+1&+2\\
+      \phi^3&0&+1\\
+      \phi^1+i\phi^2&-1&0
+    \end{array}.
+  \]
+  Thus the neutral field is the lower-left component
+  \[
+    \phi_{21}=\frac12(\phi^1+i\phi^2).
+  \]
+
+  The lepton-triplet Yukawa interaction is
+  \[
+    \boxed{\mathcal L_\phi
+      =-\frac12y_{ij}L_i^{\mathsf T}C\,i\sigma_2\phi L_j
+        +\mathrm{H.c.},}
+  \]
+  where \(y_{ij}=y_{ji}\).  The two lepton doublets have total
+  hypercharge \(-1\), cancelled by \(Y_\phi=+1\), while
+  \(i\sigma_2\) supplies the invariant \(SU(2)\) tensor.  The
+  neutrino-neutrino term is
+  \[
+    \mathcal L_\phi\supset
+      -\frac12y_{ij}\phi_{21}\,
+        \nu_{Li}^{\mathsf T}C\nu_{Lj}+\mathrm{H.c.}
+  \]
+  Consequently a neutral condensate
+  \(u=\langle\phi_{21}\rangle\) gives the left-handed Majorana mass
+  \[
+    \boxed{(m_\nu)_{ij}=y_{ij}u.}
+  \]
+
+  \SupplementarySolution{5}{The Abelian Higgs Model and a Two-Scalar Vacuum}
   \begin{enumerate}
-    \item[(a)]
-    Write
+    \item[(i)]
+    The parent action is written with a mostly-minus metric.  Its physical
+    masses are signature independent; in this volume's mostly-plus
+    convention the scalar kinetic term carries the corresponding minus
+    sign.  Write, in unitary gauge,
     \[
-      Z_\mu=\cos\theta_W W_\mu^3-\sin\theta_WB_\mu,
+      \phi=v+\frac{h}{\sqrt2}.
+    \]
+    Then the quadratic terms are
+    \[
+      \mathcal L^{(2)}
+        =-\frac14F_{\mu\nu}F^{\mu\nu}
+         +\frac12m_A^2A_\mu A^\mu
+         +\frac12\partial_\mu h\,\partial^\mu h
+         -\frac12m_h^2h^2
+    \]
+    in the source signature, with
+    \[
+      \boxed{m_A^2=2e^2v^2,\qquad m_h^2=2\lambda v^2.}
+    \]
+    The phase of \(\phi\) is eaten.  The spectrum is therefore one
+    massive spin-one particle with three polarizations and one massive
+    spin-zero particle.
+
+    \item[(ii)]
+    Varying the action with respect to \(A_\nu\) gives
+    \[
+      \partial_\mu F^{\mu\nu}=J^\nu,\qquad
+      \boxed{J^\nu=-ie\left[
+        \phi^\dagger D^\nu\phi-(D^\nu\phi)^\dagger\phi\right].}
+    \]
+    In a region with fixed modulus write \(\phi=ve^{i\theta}\).  Then
+    \[
+      \mathbf J=2ev^2(\boldsymbol\nabla\theta-e\mathbf A),
       \qquad
-      g\sin\theta_W=g'\cos\theta_W=e.
+      \boldsymbol\nabla\times\mathbf J=-2e^2v^2\mathbf B.
     \]
-    Substituting \(Y=Q-T_3\) into \(gT_3W^3+g'YB\) gives the \(Z\)
-    generator
+    For static fields, Maxwell's equation
+    \(\boldsymbol\nabla\times\mathbf B=\mathbf J\), together with
+    \(\boldsymbol\nabla\cdot\mathbf B=0\), implies
     \[
-      \frac{g}{\cos\theta_W}(T_3-Q\sin^2\theta_W).
+      -\nabla^2\mathbf B
+        =\boldsymbol\nabla\times\mathbf J
+        =-2e^2v^2\mathbf B.
     \]
-    Separating left and right chiralities yields
+    Therefore
     \[
-      g_V^f=T_3^f-2Q_fs_W^2,\qquad g_A^f=T_3^f.
+      \boxed{\nabla^2\mathbf B=\frac1{\xi^2}\mathbf B,\qquad
+        \xi=\frac1{\sqrt2\,|e|v}=\frac1{m_A}.}
     \]
-    Thus
+    A field applied at a planar surface decays as
+    \(B(x)\propto e^{-x/\xi}\).  This is the Meissner effect, and
+    \(\xi\) here is the magnetic penetration depth.
+
+    \item[(iii)]
+    Assemble the scalars into
+    \(\boldsymbol\phi=(\phi_1,\phi_2)^{\mathsf T}\).  Besides the local
+    common-phase \(U(1)\), the action has a global flavor
+    \(SU(2)_F\) symmetry
+    \(\boldsymbol\phi\mapsto U_F\boldsymbol\phi\).  The central phase of
+    \(U(2)\) is already the constant part of the gauged \(U(1)\), so the
+    faithful physical global symmetry is \(SU(2)_F\), up to a discrete
+    quotient.
+
+    Choose
     \[
-      (g_V^\ell,g_A^\ell)
-        =(-\tfrac12+2s_W^2,-\tfrac12),
-      \qquad
-      (g_V^\nu,g_A^\nu)=(\tfrac12,\tfrac12).
+      \langle\boldsymbol\phi\rangle=
+        \begin{pmatrix}v\\0\end{pmatrix}.
     \]
-    \item[(b)]
-    The vacuum derivative is
+    A global rotation generated by
+    \(T_3=\operatorname{diag}(1/2,-1/2)\) multiplies the vacuum by
+    \(e^{i\beta/2}\), which can be cancelled by a gauge rotation.
+    Hence the vacuum preserves the diagonal combination generated by
     \[
-      D_\mu\langle H\rangle
-        =-\frac{i v}{2\sqrt2}
-         \begin{pmatrix}
-           g(W_\mu^1-iW_\mu^2)\\
-           -gW_\mu^3+g'B_\mu
-         \end{pmatrix}.
+      \boxed{T_3-\frac12Q_{\rm gauge}.}
     \]
-    Hence
+    Three generators of \(SU(2)_F\times U(1)_{\rm gauge}\) move the
+    vacuum.  One is a gauge direction and supplies the longitudinal mode
+    of \(A_\mu\); the other two give physical Goldstone bosons.
+
+    Expanding about this vacuum gives
     \[
-      m_W^2=\frac{g^2v^2}{4},
-      \qquad
-      \mathcal L_{\rm neutral,mass}
-        =\frac{v^2}{8}(gW^3-g'B)^2.
+      \boxed{m_A^2=2e^2v^2,\qquad
+        m_h^2=2\lambda v^2,}
     \]
-    Diagonalizing the neutral matrix gives
+    together with two massless real scalars, the two components of
+    \(\phi_2\).  Thus the spectrum contains one massive vector, one
+    massive radial scalar, and two massless scalars.
+
+    Before quotienting by gauge transformations the minima form
     \[
-      Z=\cos\theta_WW^3-\sin\theta_WB,\qquad
-      A=\sin\theta_WW^3+\cos\theta_WB,
+      |\phi_1|^2+|\phi_2|^2=v^2,\qquad \mathcal V\simeq S^3.
     \]
-    with \(\tan\theta_W=g'/g\).  Therefore
+    The gauged common phase acts along the Hopf fibers, so the
+    gauge-inequivalent vacuum manifold is
     \[
-      \boxed{m_Z=\frac v2\sqrt{g^2+g'^2},\quad
-        m_A=0,\quad m_W=m_Z\cos\theta_W.}
+      \boxed{\mathcal M_{\rm vac}
+        =S^3/U(1)\simeq\mathbb{CP}^1\simeq S^2.}
     \]
-    \item[(c)]
-    Each charged-current vertex contributes \(g/\sqrt2\) times a chiral
-    projector.  At low momentum the \(W\) propagator reduces to
-    \(1/m_W^2\), and comparison with the conventional four-fermion
-    interaction gives
-    \[
-      \frac{G_F}{\sqrt2}=\frac{g^2}{8m_W^2}.
-    \]
-    Using \(m_W=gv/2\),
-    \[
-      \frac{G_F}{\sqrt2}=\frac1{2v^2},
-      \qquad
-      \boxed{v=(\sqrt2G_F)^{-1/2}.}
-    \]
-    Numerically,
-    \[
-      \boxed{v\simeq246.22\ {\rm GeV}.}
-    \]
+    Its two tangent directions are the two physical Goldstone fields
+    found above.
   \end{enumerate}
 
   \SupplementarySolution{6}{Precision Electroweak Widths and Loop Diagnostics}
@@ -575,129 +716,288 @@
     alter coupling differences, so it cannot repair a mismatch.
   \end{enumerate}
 
-  \SupplementarySolution{9}{London Screening, Flux Quantization, and Josephson Dynamics}
+  \SupplementarySolution{9}{\(R_\xi\)-Gauge Feynman Rules for the Abelian Higgs Model}
   \begin{enumerate}
     \item[(a)]
-    Varying the matter part of the free energy with respect to
-    \(\mathbf A\) gives
+    Define
     \[
-      \mathbf J
-        =\rho_s\frac q\hbar
-         \left(\boldsymbol\nabla\theta-\frac q\hbar\mathbf A\right).
+      \mu=\sqrt2\,q\phi_0,\qquad
+      m_\zeta^2=\lambda\phi_0^2=2m^2.
     \]
-    In a simply connected static region choose a gauge with constant
-    \(\theta\).  Then
+    Direct substitution gives, up to the constant vacuum energy,
     \[
-      \mathbf J=-\frac{\rho_sq^2}{\hbar^2}\mathbf A.
+      \begin{split}
+      \mathcal L={}&-\frac14F_{\mu\nu}F^{\mu\nu}
+       -\frac12(\partial\zeta)^2-\frac12(\partial\chi)^2
+       -\frac12\mu^2A_\mu A^\mu-\frac12m_\zeta^2\zeta^2
+       \mu A^\mu\partial_\mu\chi\\
+      &+qA^\mu(\zeta\partial_\mu\chi-\chi\partial_\mu\zeta)
+       -q\mu\,\zeta A_\mu A^\mu
+       -\frac{q^2}{2}A_\mu A^\mu(\zeta^2+\chi^2)\\
+      &-\frac{\lambda\phi_0}{2\sqrt2}\,
+        \zeta(\zeta^2+\chi^2)
+       -\frac{\lambda}{16}(\zeta^2+\chi^2)^2 .
+      \end{split}
     \]
-    Taking the curl of \(\boldsymbol\nabla\times\mathbf B=\mathbf J\),
-    using \(\boldsymbol\nabla\cdot\mathbf B=0\), gives
-    \[
-      (\nabla^2-\lambda^{-2})\mathbf B=0,\qquad
-      \boxed{\lambda=\frac{\hbar}{|q|\sqrt{\rho_s}}}
-    \]
-    in the units of the exercise.  A surface field therefore decays
-    exponentially over the penetration depth \(\lambda\).
+    The term
+    \(\mu A^\mu\partial_\mu\chi\) is the announced quadratic mixing.
+
     \item[(b)]
-    Vanishing bulk current requires
+    Since \(q\sqrt2\,\phi_0=\mu\), the gauge-fixing term expands as
     \[
-      \boldsymbol\nabla\theta=\frac q\hbar\mathbf A.
+      \mathcal L_{\rm gf}
+       =-\frac1{2\xi}(\partial\cdot A)^2
+        +\mu\chi\,\partial\cdot A
+        -\frac12\xi\mu^2\chi^2.
     \]
-    Single-valuedness gives
-    \(\oint\nabla\theta\cdot d\mathbf x=2\pi n\), so
+    Integrating the middle term by parts gives
+    \(-\mu A^\mu\partial_\mu\chi\), exactly cancelling the mixing.
+
+    There is a qualification to the printed Faddeev--Popov instruction.
+    Under the full infinitesimal gauge transformation
     \[
-      \boxed{\Phi=\oint\mathbf A\cdot d\mathbf x
-        =\frac{2\pi\hbar}{q}n=\frac hq n.}
+      \delta A_\mu=\partial_\mu\alpha,\qquad
+      \delta\zeta=-q\alpha\chi,\qquad
+      \delta\chi=q\alpha(\sqrt2\phi_0+\zeta),
     \]
-    The sign records orientation.  For a Cooper-pair condensate
-    \(q=-2e\), the magnitude of the smallest nonzero flux is
+    the gauge functional \(G=\partial\cdot A-\xi\mu\chi\) varies as
     \[
-      \boxed{\Phi_0=\frac h{2e}=\frac{\pi\hbar}{e}.}
+      \delta G=
+        \left(\partial^2-\xi\mu^2-\xi q\mu\zeta\right)\alpha.
     \]
+    At quadratic order one linearizes about the vacuum and drops the
+    \(\zeta\) term.  The determinant is then field independent, so it can
+    indeed be omitted when finding the free propagators.  Under the exact
+    nonlinear transformation, however, the determinant is field
+    dependent.  A fully exact \(R_\xi\) treatment has
+    \[
+      \mathcal L_{\rm gh}\ \sim\
+        \bar c(\partial^2-\xi\mu^2-\xi q\mu\zeta)c
+    \]
+    and hence a ghost--antighost--\(\zeta\) vertex.  Thus the source's
+    field-independence claim is correct for its linearized free-field
+    calculation, but not literally for the full nonlinear gauge
+    transformation.
+
     \item[(c)]
-    Differentiating the junction energy gives the charge current
+    After cancellation of the mixing, the nonzero momentum-space
+    propagators in the volume's mostly-plus convention are
     \[
-      I=\frac{qE_J}{\hbar}\sin\delta
+      \boxed{
+      D_{\mu\nu}(p)=
+        \frac{-i}{p^2+\mu^2-i0}
+        \left[
+          \eta_{\mu\nu}
+          -(1-\xi)\frac{p_\mu p_\nu}
+            {p^2+\xi\mu^2-i0}
+        \right],}
     \]
-    up to the orientation convention.  Gauge invariance and the phase
-    equation of motion give
     \[
-      \dot\delta=-\frac q\hbar\Delta V.
+      \boxed{
+      D_\zeta(p)=\frac{-i}{p^2+m_\zeta^2-i0},
+      \qquad
+      D_\chi(p)=\frac{-i}{p^2+\xi\mu^2-i0}.}
     \]
-    Thus a constant voltage produces a sinusoidal current of angular
-    frequency and ordinary frequency
+    There are no mixed propagators.  The \(\chi\) pole is gauge dependent
+    and has \(m_\chi^2=\xi\mu^2\); neither it nor the longitudinal
+    gauge-field pole is a physical mass.  At \(\xi=1\) the vector
+    propagator is proportional to \(\eta_{\mu\nu}\), while
+    \(\xi\to\infty\) approaches the unitary-gauge form.
+
+    \item[(d)]
+    The complete interaction content can be read from the last two lines
+    of the expansion in part~(a).  Each row below denotes a vertex with
+    the listed external legs:
     \[
-      \boxed{\omega_J=\frac{|q\Delta V|}{\hbar},\qquad
-        \nu_J=\frac{|q\Delta V|}{2\pi\hbar}
-         =\frac{|q\Delta V|}{h}.}
+      \begin{array}{c|l}
+        \text{external legs}&\text{originating term}\\ \hline
+        A\zeta\chi&
+          qA^\mu(\zeta\partial_\mu\chi-\chi\partial_\mu\zeta)\\
+        AA\zeta&-q\mu\,\zeta A^2\\
+        AA\zeta\zeta&-\tfrac12q^2A^2\zeta^2\\
+        AA\chi\chi&-\tfrac12q^2A^2\chi^2\\
+        \zeta\zeta\zeta&
+          -\lambda\phi_0\zeta^3/(2\sqrt2)\\
+        \zeta\chi\chi&
+          -\lambda\phi_0\zeta\chi^2/(2\sqrt2)\\
+        \zeta\zeta\zeta\zeta&-\lambda\zeta^4/16\\
+        \zeta\zeta\chi\chi&-\lambda\zeta^2\chi^2/8\\
+        \chi\chi\chi\chi&-\lambda\chi^4/16
+      \end{array}
     \]
-    For \(q=-2e\), this is the standard \(2e|\Delta V|/h\).
+    Momentum flows through the derivative \(A\zeta\chi\) vertex.  If the
+    exact determinant rather than the source's linearized prescription is
+    used, one must append the
+    \(\bar c c\zeta\) vertex proportional to \(\xi q\mu\).
   \end{enumerate}
 
-  \SupplementarySolution{10}{Phase Slips and Multicomponent Condensates}
+  \SupplementarySolution{10}{Diagrammatic Understanding of the BCS Instability}
   \begin{enumerate}
     \item[(a)]
-    On any contour where the order parameter never vanishes, its
-    normalized phase defines a continuous map \(S^1\to S^1\).  The
-    integer
+    Write the momentum of a low-energy fermion as
+    \(\vec k=\vec k_F+\hat n\,\ell\), where only the normal displacement
+    \(\ell\) and frequency scale toward zero.  A generic four-fermion
+    process cannot keep all four legs in the shrinking shell.  The
+    exceptional channels are forward scattering and, for the pairing
+    instability, Cooper scattering
     \[
-      n=\frac1{2\pi}\oint\nabla\theta\cdot d\mathbf x
+      (\vec k,-\vec k)\longrightarrow(\vec k',-\vec k').
     \]
-    is a homotopy invariant and cannot change under a continuous
-    deformation.  During a phase slip the modulus must therefore vanish
-    at some spacetime point, making the phase undefined and allowing
-    \(n\to n\pm1\).  Since \(\Phi=nh/q\) deep in the ring, one slip changes
-    the flux by
+    Its total momentum remains zero for every point on the Fermi surface,
+    so each pair bubble has an unconstrained angular integral and a
+    logarithmic radial integral.  A chain with \(n\) bubbles therefore
+    contributes
     \[
-      \boxed{\Delta\Phi=\pm\frac hq}
+      V^{n+1}\bigl[\nu_F\log(E_D/E)\bigr]^n.
     \]
-    with sign set by the direction of the slip.
+    Diagrams in which the loops overlap impose additional momentum
+    constraints and lose at least one independent Cooper logarithm.
+    Thus the leading infrared terms are the cactus diagrams: a sequence
+    of Cooper bubbles attached at articulation points, precisely the
+    topology drawn in the question.
+
     \item[(b)]
-    Write a gauge transformation as
-    \(\theta_i\to\theta_i+n_i\alpha\), with
-    \(\alpha\simeq\alpha+2\pi\).  It leaves every condensate invariant when
-    \(n_i\alpha\in2\pi\mathbb Z\) for all \(i\).  If
-    \(d=\gcd(n_i)\), the solutions are
-    \(\alpha=2\pi k/d\), so the residual group is
+    A bubble insertion in a single-fermion line produces an analytic
+    self-energy near the Fermi surface,
     \[
-      \boxed{\mathbb Z_d.}
+      \Sigma(i\omega,\ell)
+        =\Sigma(0,0)+(1-Z^{-1})i\omega
+          +\delta v_F\,\ell+\cdots .
     \]
-    The simultaneous flux conditions are
-    \(n_iq_0\Phi/\hbar\in2\pi\mathbb Z\).  Their smallest common nonzero
-    solution is
-    \[
-      \boxed{\Phi_0=\frac h{d q_0}}
-    \]
-    in magnitude.  Josephson harmonics have frequencies
-    \(|n_iq_0\Delta V|/h\); all integer combinations share the fundamental
-    frequency
-    \[
-      \boxed{\nu_0=\frac{d|q_0\Delta V|}{h}.}
-    \]
+    The constant term shifts the chemical potential and hence the
+    location of the Fermi surface; the other displayed terms merely
+    replace the residue and Fermi velocity by their renormalized values.
+    No Cooper logarithm is generated in this one-particle correction.
+    Once \(\nu_F\) and \(v_F\) are understood as physical low-energy
+    parameters, using the corrected line changes only nonsingular
+    prefactors.  It is therefore consistent to use the free quasiparticle
+    propagator in the leading-log cactus sum.
+
     \item[(c)]
-    Each condensate separately requires
+    Let
     \[
-      \Phi\in\frac h{q_1}\mathbb Z,
+      G(i\omega,\vec k)=\frac1{i\omega-\xi_{\vec k}},
+      \qquad \xi_{-\vec k}=\xi_{\vec k},
+    \]
+    and define the one-loop zero-momentum pair kernel
+    \[
+      K(i\Omega)=
+        \int_{\vec k,\omega}
+        G(i\omega,\vec k)G(i\Omega-i\omega,-\vec k),
       \qquad
-      \Phi\in\frac h{q_2}\mathbb Z.
+      \int_{\vec k,\omega}\equiv
+        \int\frac{d^dk}{(2\pi)^d}\frac{d\omega}{2\pi}.
     \]
-    If \(q_1/q_2\) is irrational, equality
-    \(n_1/q_1=n_2/q_2\) has no nonzero integer solution.  Therefore
+    The spin-singlet tensors at the external legs factor out.  With the
+    interaction convention
+    \(H_{\rm int}=V\Phi^\dagger\Phi\), successive rungs alternate in sign:
     \[
-      \boxed{\frac h{q_1}\mathbb Z\cap
-        \frac h{q_2}\mathbb Z=\{0\}.}
+      \chi=K-KVK+KVKVK-\cdots
+        =\boxed{\frac{K}{1+VK}}.
     \]
-    Under a gauge transformation,
-    \(\theta_i\to\theta_i+q_i\Lambda/\hbar\), so
+    A different sign convention for the interaction moves both minus
+    signs simultaneously; the invariant pole condition for an attractive
+    \(V\) is \(1-|V|K=0\).
+
+    \item[(d)]
+    The frequency integral, done by closing the contour around the
+    occupied pole, gives at zero temperature
     \[
-      \boxed{\Theta_{\rm rel}=q_2\theta_1-q_1\theta_2}
+      K(i\Omega)=
+        \int_{\vec k}
+        \frac{1-2n_F(\xi_{\vec k})}{2\xi_{\vec k}-i\Omega}.
     \]
-    is gauge invariant.  Without a locking interaction it is an
-    independent collective coordinate.  Nonzero common flux sectors are
-    absent, while a junction current contains oscillations at
-    \(|q_1\Delta V|/h\) and \(|q_2\Delta V|/h\).  Their irrational ratio
-    makes the total current quasiperiodic rather than periodic with one
-    Josephson frequency.
+    For a round Fermi surface the density of states per spin is
+    \[
+      \nu_F=\frac{\operatorname{vol}(S^{d-1})k_F^{d-1}}
+        {(2\pi)^dv_F},
+    \]
+    so the symmetric Debye shell yields
+    \[
+      \begin{split}
+      K(i\Omega)
+       &=\nu_F\int_0^{E_D}d\xi
+          \left(\frac1{2\xi-i\Omega}
+                +\frac1{2\xi+i\Omega}\right)\\
+       &=\nu_F\log
+          \frac{\sqrt{\Omega^2+4E_D^2}}{|\Omega|}
+        \simeq \nu_F\log\frac{2E_D}{|\Omega|}
+        \quad (|\Omega|\ll E_D).
+      \end{split}
+    \]
+    This logarithm is the infrared enhancement of every cactus bubble.
+
+    \item[(e)]
+    For \(V=-|V|\), the denominator of the susceptibility vanishes when
+    \[
+      1=|V|\nu_F
+        \log\frac{\sqrt{\Omega_*^2+4E_D^2}}{|\Omega_*|}.
+    \]
+    Hence
+    \[
+      \boxed{|\Omega_*|
+       =\frac{2E_D}
+        {\sqrt{\exp[2/(|V|\nu_F)]-1}}
+       \simeq2E_D e^{-1/(|V|\nu_F)}.}
+    \]
+    After analytic continuation this is an instability pole of the
+    assumed normal Fermi-liquid state, rather than a stable
+    positive-energy particle pole.  An arbitrarily weak attraction makes
+    the pair channel grow and drives condensation.
+
+    The leading Cooper-channel renormalization group equation is
+    \[
+      \frac{dV}{d\ell}=-\nu_FV^2,\qquad
+      V(\ell)=\frac{V}
+        {1+\nu_FV\ell}.
+    \]
+    For \(V<0\) it diverges at
+    \(\ell_*=1/(|V|\nu_F)\), giving
+    \[
+      E_{\rm BCS}\sim E_D e^{-1/(|V|\nu_F)}.
+    \]
+    Thus the susceptibility pole and the RG strong-coupling scale agree,
+    up to the cutoff-dependent factor \(2\).
+
+    \item[(f)]
+    Solving the supplied Schrödinger equation for \(a_{\vec k}\) gives
+    \[
+      a_{\vec k}=
+        \frac{Vw_{\vec k}C}{\omega-2\epsilon_{\vec k}}.
+    \]
+    Multiplication by \(w_{\vec k}^*\) and summation produces
+    \(C=VC\sum_{\vec k}|w_{\vec k}|^2/
+      (\omega-2\epsilon_{\vec k})\).  A nonzero state therefore obeys
+    exactly the displayed condition (1).
+
+    Measure energy from the Fermi surface and write a bound-state energy
+    as \(\omega=-E_B\), \(E_B>0\).  With constant \(\nu_F\) in the Debye
+    shell and \(V=-|V|\), condition (1) becomes
+    \[
+      1=\frac{|V|\nu_F}{2}
+        \log\left(1+\frac{2E_D}{E_B}\right).
+    \]
+    Therefore
+    \[
+      \boxed{E_B=
+        \frac{2E_D}{\exp[2/(|V|\nu_F)]-1}
+        \simeq2E_D e^{-2/(|V|\nu_F)},\qquad
+        \omega=-E_B.}
+    \]
+    The wavefunction is
+    \(a_{\vec k}\propto
+      w_{\vec k}/(E_B+2\epsilon_{\vec k})\), and it is a genuine
+    two-particle bound state below the continuum built on \(|F\rangle\).
+
+    The Cooper calculation uses only empty particle states
+    \(0<\epsilon<E_D\), whereas the many-body pair susceptibility obtains
+    equal logarithmic contributions from particles and holes on the two
+    sides of the Fermi surface.  That doubles the logarithm and changes
+    the exponent from \(2/(|V|\nu_F)\) to \(1/(|V|\nu_F)\).  Both results
+    demonstrate Cooper's central conclusion: an arbitrarily weak
+    attraction is nonperturbatively important.  The parent assignment's
+    reference to (14) is the source typo already noted in the exercise;
+    the comparison is with its displayed condition (1).
   \end{enumerate}
 
 \end{enumerate}

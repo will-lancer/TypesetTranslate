@@ -214,23 +214,185 @@
     with another BRST source.
   \end{enumerate}
 
-  \SupplementarySolution{4}{Slavnov Stability under Renormalization}
-  Write the broken identity at the first nonvanishing order as
-  \[
-    \frac12(\Gamma,\Gamma)=\hbar^N\mathcal A_N+O(\hbar^{N+1}).
-  \]
-  Applying the antibracket with \(\Gamma\) and using the Jacobi identity
-  gives \((\Gamma,(\Gamma,\Gamma))=0\).  At order \(N\), lower orders may
-  be replaced by \(S_R\), so
-  \[
-    \boxed{\mathcal B_{S_R}\mathcal A_N
-      =(S_R,\mathcal A_N)=0.}
-  \]
-  If \(\mathcal A_N=\mathcal B_{S_R}X_N\) for a local ghost-number-zero
-  functional \(X_N\), adding the counterterm \(-\hbar^NX_N\) restores the
-  identity.  A closed but non-exact ghost-number-one local functional is a
-  gauge anomaly.  Its cohomology class, rather than a regulator-dependent
-  representative, is the obstruction.
+  \SupplementarySolution{4}{Gauge Fields with Adjoint-Scalar and Fundamental-Fermion Matter}
+  \begin{enumerate}
+    \item[(a)] With the convention used in the question, the finite
+      transformations are
+      \[
+        A_\mu' =U^\dagger A_\mu U
+          +\frac{i}{g}U^\dagger\partial_\mu U,
+        \qquad
+        F_{\mu\nu}'=U^\dagger F_{\mu\nu}U.
+      \]
+      The second formula follows either by direct substitution or from
+      \([D_\mu,D_\nu]=-ig[F_{\mu\nu},\,\cdot\,]\).  Cyclicity of the trace
+      then gives
+      \[
+        \operatorname{Tr}(F_{\mu\nu}'F'^{\mu\nu})
+          =\operatorname{Tr}
+            (U^\dagger F_{\mu\nu}F^{\mu\nu}U)
+          =\operatorname{Tr}(F_{\mu\nu}F^{\mu\nu}).
+      \]
+      Before gauge fixing, the quadratic Yang--Mills kernel is
+      proportional to
+      \(p^2\eta_{\mu\nu}-p_\mu p_\nu\).  It annihilates \(p^\nu\), the
+      linearized gauge direction, and therefore has no inverse.  A gauge
+      condition removes this zero mode and makes a propagator definable.
+
+    \item[(b)] Acting on the transformed scalar gives
+      \[
+      \begin{split}
+        D_\mu'\phi'
+          &=\partial_\mu(U^\dagger\phi U)
+            -ig[A_\mu',U^\dagger\phi U]\\
+          &=U^\dagger(\partial_\mu\phi-ig[A_\mu,\phi])U
+           =U^\dagger(D_\mu\phi)U,
+      \end{split}
+      \]
+      which proves covariance.  Put
+      \([T_a,T_b]=if_{ab}{}^cT_c\).  Since
+      \(U=1+i\alpha+O(\alpha^2)\),
+      \[
+        \delta\phi=-i[\alpha,\phi]
+          =\alpha^a\phi^b f_{ab}{}^cT_c,
+        \qquad
+        \boxed{\delta\phi^c=f_{ab}{}^c\alpha^a\phi^b.}
+      \]
+
+    \item[(c)]
+      \begin{enumerate}
+        \item[(i)] For definiteness, take a local, Lorentz-invariant
+          two-derivative basis and retain polynomial interactions through
+          four matter fields.  A convenient complete form, modulo
+          integrations by parts, field redefinitions, and group-specific
+          identities among invariant tensors, is
+          \[
+          \begin{split}
+            \mathcal L={}&-\frac14\operatorname{Tr}F_{\mu\nu}F^{\mu\nu}
+              +\frac12\operatorname{Tr}(D_\mu\phi D^\mu\phi)
+              -\frac{m_\phi^2}{2}\operatorname{Tr}\phi^2
+              +\bar\psi(i\slashed D-m_\psi)\psi\\
+             &-\sum_r\frac{\lambda_r}{4!}\,
+                I_r(\phi,\phi,\phi,\phi)
+              -\sum_s h_s\,
+                \bar\psi\,J_s(\phi,\phi)\psi
+              -\sum_t G_t\,\mathcal O_{4\psi,t}.
+          \end{split}                                      \tag{1}
+          \]
+          Here \(I_r\) ranges over independent invariant rank-four tensors
+          in the adjoint representation; familiar representatives are
+          \((\operatorname{Tr}\phi^2)^2\) and
+          \(\operatorname{Tr}\phi^4\).  The matrices
+          \(J_s(\phi,\phi)\) range over independent fundamental
+          endomorphisms constructed from two adjoint scalars, for example
+          \(\phi^2\) and \(\mathbf1\operatorname{Tr}\phi^2\), and
+          \(\mathcal O_{4\psi,t}\) ranges over a Fierz-complete set of
+          gauge-singlet four-fermion operators.  Equation~(1) makes clear
+          that the scalar cubic and the Yukawa interaction
+          \(\bar\psi\phi\psi\) are forbidden by
+          \(\phi\mapsto-\phi\).  Odd-fermion operators are forbidden by
+          \(\psi\mapsto-\psi\).  The gauge interactions
+          \(A^3,A^4,A\phi^2,A^2\phi^2\), and \(A\bar\psi\psi\) are already
+          fixed by the single coupling \(g\) inside \(F_{\mu\nu}\) and the
+          covariant derivatives.
+
+          The canonical dimensions are
+          \[
+            [A_\mu]=[\phi]=\frac{d-2}{2},\qquad
+            [\psi]=\frac{d-1}{2},
+          \]
+          and hence
+          \[
+          \begin{array}{c|cccccc}
+            \text{parameter}&g&m_\phi^2&m_\psi&\lambda_r&h_s&G_t\\ \hline
+            \text{mass dimension}&(4-d)/2&2&1&4-d&3-d&2-d.
+          \end{array}
+          \]
+          Positive-, zero-, and negative-dimension couplings are
+          classically relevant, marginal, and irrelevant, respectively.
+          Thus in four dimensions the masses are relevant, \(g\) and the
+          scalar quartics are classically marginal and acquire logarithmic
+          running, while the \(h_s\) and \(G_t\) interactions are
+          irrelevant EFT operators.  In other dimensions the same table
+          gives the leading classical term in each beta function; quantum
+          anomalous dimensions and operator mixing then refine the flow.
+
+        \item[(ii)] Use a solid line for \(\phi\), a wavy line for
+          \(A_\mu\), and an arrowed line for \(\psi\).  Up to permutations
+          of the four external scalars and the different invariant-tensor
+          contractions, the one-loop 1PI topology list is
+          \begin{center}
+          \begin{tikzpicture}[scale=0.72,
+            scalar/.style={thick},
+            gauge/.style={decorate,decoration={snake,amplitude=1pt,segment length=4pt},thick},
+            fermion/.style={thick,postaction={decorate},
+              decoration={markings,
+                mark=at position 0.5 with {\arrow{Latex[length=1.6mm]}}}},
+            every node/.style={font=\scriptsize}]
+            \begin{scope}[shift={(0,3.0)}]
+              \coordinate (l) at (-.65,0); \coordinate (r) at (.65,0);
+              \draw[scalar] (l) arc (180:0:.65);
+              \draw[scalar] (r) arc (0:-180:.65);
+              \draw[scalar] (l)--(-1.35,.65); \draw[scalar] (l)--(-1.35,-.65);
+              \draw[scalar] (r)--(1.35,.65); \draw[scalar] (r)--(1.35,-.65);
+              \node at (0,-1.05) {two \(\phi^4\) vertices};
+            \end{scope}
+            \begin{scope}[shift={(4.1,3.0)}]
+              \coordinate (l) at (-.65,0); \coordinate (r) at (.65,0);
+              \draw[gauge] (l) arc (180:0:.65);
+              \draw[gauge] (r) arc (0:-180:.65);
+              \draw[scalar] (l)--(-1.35,.65); \draw[scalar] (l)--(-1.35,-.65);
+              \draw[scalar] (r)--(1.35,.65); \draw[scalar] (r)--(1.35,-.65);
+              \node at (0,-1.05) {two \(A^2\phi^2\) vertices};
+            \end{scope}
+            \begin{scope}[shift={(8.2,3.0)}]
+              \coordinate (l) at (-.65,0); \coordinate (r) at (.65,0);
+              \draw[fermion] (l) arc (180:0:.65);
+              \draw[fermion] (r) arc (0:-180:.65);
+              \draw[scalar] (l)--(-1.35,.65); \draw[scalar] (l)--(-1.35,-.65);
+              \draw[scalar] (r)--(1.35,.65); \draw[scalar] (r)--(1.35,-.65);
+              \node at (0,-1.05) {two \(\bar\psi\phi^2\psi\) vertices};
+            \end{scope}
+            \begin{scope}[shift={(1.3,-.1)}]
+              \coordinate (a) at (0,.72); \coordinate (b) at (-.7,-.52);
+              \coordinate (c) at (.7,-.52);
+              \draw[gauge] (a)--(b); \draw[gauge] (a)--(c);
+              \draw[scalar] (b)--(c);
+              \draw[scalar] (a)--(-.55,1.35); \draw[scalar] (a)--(.55,1.35);
+              \draw[scalar] (b)--(-1.35,-.85); \draw[scalar] (c)--(1.35,-.85);
+              \node at (0,-1.62) {\(A^2\phi^2\) plus two \(A\phi^2\)};
+            \end{scope}
+            \begin{scope}[shift={(5.2,-.1)}]
+              \coordinate (a) at (0,.72); \coordinate (b) at (-.7,-.52);
+              \coordinate (c) at (.7,-.52);
+              \draw[scalar] (a)--(b); \draw[scalar] (a)--(c);
+              \draw[gauge] (b)--(c);
+              \draw[scalar] (a)--(-.55,1.35); \draw[scalar] (a)--(.55,1.35);
+              \draw[scalar] (b)--(-1.35,-.85); \draw[scalar] (c)--(1.35,-.85);
+              \node at (0,-1.62) {\(\phi^4\) plus two \(A\phi^2\)};
+            \end{scope}
+            \begin{scope}[shift={(8.8,-.1)}]
+              \coordinate (a) at (-.65,.65); \coordinate (b) at (.65,.65);
+              \coordinate (c) at (.65,-.65); \coordinate (d) at (-.65,-.65);
+              \draw[gauge] (a)--(b); \draw[scalar] (b)--(c);
+              \draw[gauge] (c)--(d); \draw[scalar] (d)--(a);
+              \draw[scalar] (a)--(-1.3,1.15); \draw[scalar] (b)--(1.3,1.15);
+              \draw[scalar] (c)--(1.3,-1.15); \draw[scalar] (d)--(-1.3,-1.15);
+              \node at (0,-1.62) {four \(A\phi^2\) vertices};
+            \end{scope}
+          \end{tikzpicture}
+          \end{center}
+          The first topology has the usual \(s,t,u\) channel assignments.
+          The gauge bubble, the two mixed triangles, and the alternating
+          gauge--scalar box also come with all inequivalent external-leg
+          permutations.  The fermion bubble is present only when the
+          allowed higher-dimensional \(h_s\) operators are retained; it is
+          absent in the power-counting-renormalizable four-dimensional
+          truncation.  External-leg self-energy insertions are one-particle
+          reducible and therefore do not belong to the requested 1PI
+          vertex.
+      \end{enumerate}
+  \end{enumerate}
 
   \SupplementarySolution{5}{Invariant Scalar and Yukawa Counterterms}
   \begin{enumerate}
@@ -782,14 +944,14 @@
   \begin{split}
     \Gamma_{\triangle}^{abc}
      ={}&g^3\mu^{2\epsilon}
-       f^{ade}f^{bef}f^{cfd}
-       \int\frac{d^d\ell}{(2\pi)^d}\,
+       f^{ade}f^{bef}f^{cfd}\\
+      &{}\times\int\frac{d^d\ell}{(2\pi)^d}\,
        \frac{{\cal N}_{\mu\nu\rho}}{k_1^2k_2^2k_3^2},\\
     {\cal N}_{\mu\nu\rho}={}&
-       V_{\mu\alpha\beta}(p,-k_2,k_1)
-       V_{\nu\gamma\alpha'}(q,-k_3,k_2)\\
-      &{}\times V_{\rho\beta'\gamma'}(r,-k_1,k_3)
-       \eta^{\alpha\alpha'}\eta^{\beta\beta'}
+       V_{\mu\alpha\beta}(p,-k_2,k_1)\\
+      &{}\times V_{\nu\gamma\alpha'}(q,-k_3,k_2)\\
+      &{}\times V_{\rho\beta'\gamma'}(r,-k_1,k_3)\\
+      &{}\times\eta^{\alpha\alpha'}\eta^{\beta\beta'}
        \eta^{\gamma\gamma'}.
   \end{split}
   \]
@@ -812,14 +974,13 @@
   an automorphism of the graph.
 
   Feynman parametrization reduces all four expressions to the pole
-  integrals
+  integrals.  Abbreviating the regulated measure as
+  \(\int_L\equiv\mu^{2\epsilon}\int d^dL/(2\pi)^d\),
   \[
   \begin{aligned}
-    \mu^{2\epsilon}\int\frac{d^dL}{(2\pi)^d}
-       \frac1{(L^2+\Delta-i0)^2}
+    \int_L\frac1{(L^2+\Delta-i0)^2}
        &=\frac{i}{16\pi^2\epsilon}+O(1),\\
-    \mu^{2\epsilon}\int\frac{d^dL}{(2\pi)^d}
-       \frac{L_\alpha L_\beta}{(L^2+\Delta-i0)^3}
+    \int_L\frac{L_\alpha L_\beta}{(L^2+\Delta-i0)^3}
        &=\frac{i\eta_{\alpha\beta}}{64\pi^2\epsilon}+O(1).
   \end{aligned}
   \]

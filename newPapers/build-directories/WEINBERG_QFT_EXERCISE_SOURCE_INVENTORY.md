@@ -33,17 +33,32 @@ selected parent, and `out-of-scope` is not a good fit for these volumes.
 | Harlow QFT II | Physics 8.324 notes, Fall 2024 | Problem sections 2.5--13.7 are locally available and under parent-level review | Finish the per-problem disposition table; prioritize intact later-section parents |
 | Harlow QFT III | Physics 8.325 notes, Spring 2026 | Homework/problem sections 1.6--10.7 are locally available and under parent-level review | Finish the per-problem disposition table and retain all required figure dependencies |
 | McGreevy QFT | Physics 215A Fall 2023, 215B Winter 2025, and 215C Spring 2025 | 215C Assignments 1--9 and the currently used 215A/215B sheets are locally available | Complete the parent-by-parent 215A/215B register and audit older split adaptations |
-| Cambridge Part III QFT | Papers 301, 2021--2025 | All questions locally available as PDF and layout-preserving text | Complete final disposition of unused parents |
-| Cambridge Part III Advanced QFT | Papers 304, 2021--2025, plus 2020 source used in Volume II | All questions locally available as PDF and layout-preserving text | Complete final disposition of unused parents and example sheets |
-| Cambridge Part III Statistical Field Theory | Papers 303, 2021--2025 | All questions locally available as PDF and layout-preserving text | Complete final disposition of unused parents |
-| Cambridge Part III Standard Model | Papers 305, 2021--2025 | All questions locally available as PDF and layout-preserving text | Complete final disposition of unused parents |
-| Cambridge Part III Applications of QFT | Papers 337, 2023--2025 | All questions locally available as PDF and layout-preserving text | Locate and inspect earlier papers/example sheets where published |
-| Cambridge Part III Supersymmetry | Papers 307, 2021--2025 | All questions locally available as PDF and layout-preserving text | Implement and source-audit selected Volume III parents |
+| Cambridge Part III QFT | Papers 301, 2021--2025; Example Sheets 3P1a--d (Michaelmas 2024) | All exam questions and all four current example sheets are locally available as PDF and layout-preserving text | Complete parent-level disposition of the newly cached example sheets and unused exam parents |
+| Cambridge Part III Advanced QFT | Papers 304, 2021--2025, plus 2020 source used in Volume II; Example Sheets 3P5b--e (2022) | All exam questions and four example sheets are locally available as PDF and layout-preserving text | Complete parent-level disposition of the example sheets and unused exam parents |
+| Cambridge Part III Statistical Field Theory | Papers 303, 2021--2025; Example Sheets 3P3a--c (Michaelmas 2025) | All exam questions and three current example sheets are locally available as PDF and layout-preserving text | Complete parent-level disposition of the newly cached example sheets and unused exam parents |
+| Cambridge Part III Standard Model | Papers 305, 2021--2025; Example Sheets 3P4a--d (2024/25) | All exam questions and four example sheets are locally available as PDF and layout-preserving text | Complete parent-level disposition of the newly cached example sheets and unused exam parents |
+| Cambridge Part III Applications of QFT | Papers 337, 2023--2025 | All questions locally available as PDF and layout-preserving text; the official 2021/2022 paper lists do not contain this course under its later title/code | Locate and inspect the course example sheets; no earlier Paper 337 was found before the course first appears in the 2023 examination list |
+| Cambridge Part III Supersymmetry | Papers 307, 2021--2025; Example Sheets 3P7a--d (archived 2015--2022) | All exam questions and four archived example sheets are locally available as PDF and layout-preserving text | Implement and source-audit selected Volume III parents; complete parent-level example-sheet disposition |
 | Cambridge Part III Solitons | Paper 308 (2021), Paper 313 (2022--2025), and Example Sheet 1 | All exam questions and the currently used example-sheet parents are locally available | Implement and source-audit selected Volume II parents; inspect remaining example sheets |
 | Kevin Zhou / Stanford PHYS 330 | Problem Sets 2--9, 2022 | Sets 2--9 are locally available; several complete parents are already selected | Complete per-problem disposition and redo older fragmented adaptations |
 
 The register remains open until every row's remaining-work item has been
 resolved.  The tables below are expanded source by source.
+
+## Cambridge Part III: Advanced Quantum Field Theory
+
+| Parent | Complete scope retained during selection | Best fit | Status |
+|---|---|---:|---|
+| 2019, Paper 304, Q1 | Source functional, connected and 1PI generators, diagrammatic interpretation, and exact zero-dimensional split-independence identity | V2 Ch. 16 | selected; fidelity re-audit required |
+| 2021, Paper 304, Q1 | Full generating-functional and Legendre-transform problem, including first/second derivatives, connected/1PI diagram expansions, and arbitrary invertible linear symmetries | V2 Ch. 16 | selected |
+| 2021, Paper 304, Q4 | Complete fundamental-fermion/adjoint-scalar (SU(2)) gauge theory, all renormalizable terms, gauge fixing, and off-shell BRST nilpotence | V2 Ch. 15 | selected |
+| 2022, Paper 304, Q3 | Complete QED current-conservation, Schwinger--Dyson, Ward--Takahashi, and renormalization problem | V2 Ch. 17 | selected |
+| 2022, Paper 304, Q4 | Complete Yang--Mills gauge invariance, BRST nilpotence, general linear gauge fixing, and Lorenz/axial-gauge one-loop graph problem | V2 Ch. 15 | selected |
+| 2023, Paper 304, Q3 | Complete Yang--Mills plus adjoint scalar and fundamental fermion problem: field-strength covariance, component adjoint transformation, all gauge-invariant interactions through quartic order with coupling dimensions/RG behavior, and the full one-loop four-scalar 1PI topology request | V2 Ch. 17 | selected |
+| 2023, Paper 304, Q4 | Complete non-Abelian BRST nilpotence, gauge-fixing-fermion construction, gauge-choice independence, and physical-state condition | V2 Ch. 15 | selected |
+| 2024, Paper 304, Q3 | Complete momentum-shell integration in (d)-dimensional (Phi^3) theory through the order-(g^3) coupling flow | V2 Ch. 16 | selected |
+| 2024, Paper 304, Q4 | Fundamental versus adjoint matter, gauge covariance/current construction, and every connected gluon-propagator graph through one loop | V2 Ch. 17 | selected |
+| 2025, Paper 304, Q4 | Adjoint scalar gauge covariance, invariant cubic tensor, BRST rules, and gauge-fixing independence | V2 Ch. 17 | selected |
 
 ## Cambridge Part III: Statistical Field Theory and Standard Model
 
@@ -70,8 +85,8 @@ resolved.  The tables below are expanded source by source.
 
 | Parent | Complete scope retained during selection | Best fit | Status |
 |---|---|---:|---|
-| 2021, Paper 307, Q1 | Supersymmetric quantum mechanics action, Noether symmetry/charges, canonical quantization, differential-form realization, and supersymmetric ground states | V3 Chs. 25/29 | retain |
-| 2021, Paper 307, Q2 | Two-dimensional \(\mathcal N=(2,2)\) \(U(1)\) gauge theory, twisted-chiral field strength, component structure, and axial anomaly | V3 Ch. 27 | retain |
+| 2021, Paper 307, Q1 | Supersymmetric quantum mechanics action, Noether symmetry/charges, canonical quantization, differential-form realization, and supersymmetric ground states | V3 Ch. 29 | selected |
+| 2021, Paper 307, Q2 | Two-dimensional \(\mathcal N=(2,2)\) \(U(1)\) gauge theory, twisted-chiral field strength, component structure, and axial anomaly | V3 Ch. 29 | selected |
 | 2021, Paper 307, Q3 | Complete \((0,2)\) superspace construction with chiral and Fermi multiplets, supersymmetric actions, constraints, and scalar potential | V3 Chs. 26/30 | retain |
 | 2022, Paper 307, Q1 | Chiral superspace, chiral multiplets, superpotential interactions, and nonrenormalization argument | V3 Ch. 26 | selected |
 | 2022, Paper 307, Q2 | Real vector superfield, Wess--Zumino gauge, field-strength multiplet, Maxwell action and supersymmetry | V3 Ch. 27 | selected; fidelity re-audit required |
@@ -93,8 +108,8 @@ resolved.  The tables below are expanded source by source.
 | Parent | Complete scope retained during selection | Best fit | Status |
 |---|---|---:|---|
 | 2021, Paper 308, Q1 | Complete scalar \(\phi^6\) kink, perturbing force/acceleration, and kink--antikink separation problem | V2 Ch. 23 | selected |
-| 2021, Paper 308, Q2 | Vortex moduli space and low-energy scattering | V2 Ch. 23 | retain |
-| 2021, Paper 308, Q3 | Skyrmion topology and rational-map construction | V2 Ch. 23 | retain |
+| 2021, Paper 308, Q2 | Vortex moduli space and low-energy scattering | V2 Ch. 23 | selected |
+| 2021, Paper 308, Q3 | Skyrmion topology and rational-map construction | V2 Ch. 23 | selected |
 | 2022, Paper 313, Q1 | Derrick scaling followed by the complete \(\phi^6\) kink profile and mass | V2 Ch. 23 | selected |
 | 2022, Paper 313, Q2 | Abelian-Higgs vortices and Bogomolny equations/bound | V2 Ch. 23 | selected |
 | 2022, Paper 313, Q3 | Hodge star, anti-self-dual Yang--Mills and its Lax formulation | V2 Ch. 23 | retain |
@@ -114,6 +129,8 @@ resolved.  The tables below are expanded source by source.
 |---|---|---:|---|
 | QFT II, Sec. 13.7, Problem 3 | Matrix scalar Lagrangian, exact minima, generic stabilizer, Goldstone count, special vacua, and the \(SU(N)/\mathbb Z_N\) qualification | V2 Ch. 19 | selected |
 | QFT II, Sec. 13.7, Problem 4 | Complete Abelian-Higgs expansion, gauge fixing, propagators and all interaction vertices | V2 Ch. 21 | selected |
+| QFT II, Sec. 5.6, Problem 5 | Complete free Wess--Zumino Lagrangian and the supplied Majorana supersymmetry transformations, with the requested direct invariance proof and charge-conjugation identity | V3 Ch. 26 | selected |
+| QFT III, Sec. 7.8, Problem 1 | Complex scalar contribution to the non-Abelian one-loop beta function, including both vacuum-polarization graphs, the massless seagull limit, and the source's coupling-renormalization footnote | V2 Ch. 17 | selected |
 | QFT III, Sec. 7.8, Problem 2 | Counterterm relation from every diagram in Figure 15, with all definitions and hints needed to read the figure | V2 Ch. 17 | selected |
 | QFT III, Sec. 9.8, Problem 1 | \(SU(3)\) triple-product decomposition and baryon-decuplet branching to \(SU(2)\) | V2 Ch. 19 | retain |
 | QFT III, Sec. 9.8, Problem 3 | Full \(U(1)_L\times U(1)_R/U(1)\) coset, transformation laws, matter covariant derivative and invariant terms | V2 Ch. 19 | selected |

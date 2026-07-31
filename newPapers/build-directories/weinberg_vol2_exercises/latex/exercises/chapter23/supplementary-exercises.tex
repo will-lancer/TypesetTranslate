@@ -53,16 +53,35 @@
     probabilities.
   \end{enumerate}
 
-  \SupplementaryExercise{2}{Derrick Scaling with Several Derivative Orders}
-  {Inspired by G. H. Derrick, Comments on Nonlinear Wave Equations as
-  Models for Elementary Particles (1964), pp.~1252--1254.}
-  {derrick-nonlinear-wave-1964-ch23-v2ch23-p02}
-  In \(d\) Euclidean dimensions suppose a positive action is a sum
-  \(I(R)=\sum_k R^{d-k}I_k\), where \(I_k\) contains \(k\) derivatives
-  and \(I_k>0\).  Derive the stationarity and stability conditions under
-  a scale transformation.  Show that a finite stable size requires
-  nonzero terms on both sides of \(k=d\), and find the stationary radius
-  when only terms of orders \(k_-<d<k_+\) are present.
+  \SupplementaryExercise{2}{Derrick Scaling and \(\phi^6\) Kinks}
+  {Adapted from Cambridge Part III, Solitons, 2022 Paper 313,
+  Question 1.}
+  {cambridge-part-iii-solitons-2022-p313-q1-v2ch23-p02}
+  Use the Derrick scaling argument to show that if \(\phi\) satisfies the
+  field equation arising from extremising the functional
+  \[
+    E[\phi]=\int_{-\infty}^{\infty}
+      \left[\frac12\left(\frac{d\phi}{dx}\right)^2+U(\phi)\right]dx
+  \]
+  and is such that \(E[\phi]\) is finite, then
+  \[
+    \int_{-\infty}^{\infty}
+      \frac12\left(\frac{d\phi}{dx}\right)^2dx
+      =\int_{-\infty}^{\infty}U(\phi)\,dx.
+  \]
+
+  Find the potential \(U(\phi)\) corresponding to the static field
+  equation
+  \[
+    \frac{d^2\phi}{dx^2}=3\phi^5-4\phi^3+\phi,
+  \]
+  and such that the minimum of \(U\) is zero.  How many elements are
+  there in the set \(U^{-1}(0)\)?  How many types of kink solution exist
+  for this potential?
+
+  Find the Bogomolny equation satisfied by one of these kink solutions,
+  and construct the kink explicitly.  Using the Bogomolny argument or
+  otherwise, find the mass of this kink.
 
   \SupplementaryExercise{3}{Monopole Topology and Gauge-Invariant Magnetic Charge}
   {Inspired by G. 't Hooft, Magnetic Monopoles in Unified Gauge
@@ -127,24 +146,40 @@
     length scales controlling the gauge and scalar tails.
   \end{enumerate}
 
-  \SupplementaryExercise{5}{Regular BPS Monopole Profiles}
-  {Inspired by M. K. Prasad and C. M. Sommerfield, Exact Classical
-  Solution for the 't Hooft Monopole and the Julia--Zee Dyon (1975),
-  pp.~760--762.}
-  {prasad-sommerfield-monopole-1975-ch23-v2ch23-p05}
-  For \(x=evr\), consider
+  \SupplementaryExercise{5}{A Biased Kink and a Static Antikink--Kink Pair}
+  {Adapted from Cambridge Part III, Solitons, 2021 Paper 308,
+  Question 1.}
+  {cambridge-part-iii-solitons-2021-p308-q1-v2ch23-p05}
+  Consider the scalar field theory in one spatial dimension with
+  Lagrangian density
   \[
-    \phi^a=v\widehat r^a h(x),\qquad
-    A_i^a=\epsilon_{aij}\widehat r^j
-      \frac{1-K(x)}{er},
-    \qquad
-    K(x)=\frac{x}{\sinh x},\quad
-    h(x)=\coth x-\frac1x .
+    \mathcal L=\frac12(\partial_t\phi)^2
+      -\frac12(\partial_x\phi)^2-U(\phi),
   \]
-  Find the small- and large-\(x\) behavior of \(K\) and \(h\).
-  Demonstrate that the fields are regular at the origin, approach the
-  broken-symmetry vacuum at infinity, and have a core radius of order
-  \((ev)^{-1}\).
+  where the potential \(U\) has the form
+  \[
+    U(\phi)=\frac12(1-\phi^2)^2
+      +2\epsilon\left(\phi-\frac13\phi^3\right),
+    \qquad |\epsilon|<1.
+  \]
+  Show that \(U\) has local minima at \(\phi=\pm1\).
+
+  In the case \(\epsilon=0\), derive the first-order equation satisfied by
+  a static kink solution.  Find the explicit kink solution and its
+  energy.
+
+  Assume now that \(\epsilon\) is small and positive.  Find the
+  acceleration of a field configuration that initially has the form of
+  a kink at rest.  Show also that there is a static antikink--kink
+  solution, satisfying \(\phi\to1\) as \(x\to\pm\infty\), and estimate
+  the separation of the antikink and kink.
+
+  \emph{Hint.}  You may assume that when \(\epsilon=0\) the force exerted
+  by an antikink on a kink is
+  \[
+    32e^{-2s},
+  \]
+  where \(s\) is the antikink--kink separation.
 
   \SupplementaryExercise{6}{Instanton Topology, Self-Duality, and the BPST Modulus}
   {Inspired by A. A. Belavin, A. M. Polyakov, A. S. Schwartz, and
@@ -200,33 +235,97 @@
     fixed parameter.
   \end{enumerate}
 
-  \SupplementaryExercise{7}{Small-Instanton Convergence}
-  {Inspired by Claude W. Bernard, Gauge Zero Modes, Instanton
-  Determinants, and Quantum-Chromodynamic Calculations (1979),
-  one-instanton measure.}
-  {bernard-instanton-zero-modes-1979-ch23-v2ch23-p07}
-  For pure \(SU(N)\), \(N\ge2\), suppose the one-instanton size measure
-  has the one-loop form
-  \[
-    dn\propto d\rho\,\rho^{-5}(\rho\mu)^{b_0}
-      \exp\left[-\frac{8\pi^2}{g^2(\mu)}\right],
-    \qquad b_0=\frac{11N}{3}.
-  \]
-  Find the small-\(\rho\) power of the integrand and determine whether
-  the size integral converges at \(\rho=0\).  Analyze its behavior at
-  large \(\rho\) and explain why that region signals a breakdown of the
-  dilute semiclassical calculation rather than a physical divergence
-  that can be trusted quantitatively.
+  \SupplementaryExercise{7}{Hodge Duality, the Yang--Mills Bound, and an ASDYM Lax Pair}
+  {Adapted from Cambridge Part III, Solitons, 2023 Paper 313,
+  Question 3.}
+  {cambridge-part-iii-solitons-2023-p313-q3-v2ch23-p07}
+  Let \(g\) be a Euclidean metric on \(\mathbb R^4\), and let
+  \(\operatorname{vol}\) be a volume form.  Define the Hodge
+  \(\star\)-operator of
+  \((\mathbb R^4,g,\operatorname{vol})\) and find an expression for
+  \(\star^2\) on \(\Lambda^2(\mathbb R^4)\).
 
-  \SupplementaryExercise{8}{The Dilute Instanton Gas and Vacuum Angle}
-  {Inspired by C. G. Callan Jr., R. F. Dashen, and D. J. Gross,
-  The Structure of the Gauge Theory Vacuum (1976), pp.~334--340.}
-  {callan-dashen-gross-gauge-vacuum-1976-ch23-v2ch23-p08}
-  Suppose each instanton or anti-instanton has spacetime-volume weight
-  \(K e^{-8\pi^2/g^2}\) and phases \(e^{\pm i\theta}\).  Sum over
-  independent numbers \(n_+\) and \(n_-\) to obtain the dilute-gas
-  partition function.  Extract the \(\theta\)-dependent vacuum-energy
-  density and the leading topological susceptibility.
+  Define a decomposition of \(\Lambda^2(\mathbb R^4)\) into self-dual
+  (SD) and anti-self-dual (ASD) two-forms, and show that
+  \(H\wedge G=0\) if \(H\) is SD and \(G\) is ASD.  Use this, together
+  with a Bogomolny argument, to show that the \(SU(n)\) Yang--Mills
+  action on \(\mathbb R^4\) is bounded from below by a multiple of the
+  second Chern number.
+
+  Let
+  \[
+    g=d\mathbf x\cdot d\mathbf x+d\tau^2
+  \]
+  and let \(A\) be an \(\mathfrak{su}(2)\)-valued one-form on
+  \(\mathbb R^4\).  Consider a gauge in which \(A_\tau=0\), and show that
+  the ASD Yang--Mills equations take the form
+  \[
+    \frac{\partial A_i}{\partial\tau}
+      =\frac12\epsilon_{ijk}F_{jk},
+    \qquad k=1,2,3.
+  \]
+  Find the Lax pair for ASDYM in this gauge.
+
+  \SupplementaryExercise{8}{Anti-Self-Dual Yang--Mills in Complex Coordinates}
+  {Adapted from Cambridge Part III, Solitons, 2025 Paper 313,
+  Question 2.}
+  {cambridge-part-iii-solitons-2025-p313-q2-v2ch23-p08}
+  Let \(\eta\) be a Euclidean metric on \(\mathbb R^4\), and let
+  \(\operatorname{vol}\) be a volume form.
+  \begin{enumerate}
+    \item[(i)]
+    Define the Hodge \(\star\)-operator of
+    \((\mathbb R^4,\eta,\operatorname{vol})\) and show that
+    \[
+      \star\omega\wedge\star\omega=\omega\wedge\omega,
+      \qquad \omega\in\Lambda^2(\mathbb R^4).
+    \]
+    Deduce that, if
+    \(F\in\Lambda^2(\mathbb R^4)\otimes\mathfrak{su}(2)\) satisfies
+    \(F=-\star F\), then the Yang--Mills action for instantons equals
+    \(8\pi^2c_2\), where \(c_2\) is the second Chern number.
+
+    The anti-self-dual Yang--Mills equations on \(\mathbb R^4\) with the
+    Euclidean metric
+    \[
+      ds^2=|dz|^2+|dw|^2
+    \]
+    are given by
+    \begin{equation}
+      F_{wz}=0,\qquad
+      F_{\bar w\bar z}=0,\qquad
+      F_{w\bar w}+F_{z\bar z}=0,
+      \tag{1}
+    \end{equation}
+    where \(F=dA+A\wedge A\), and
+    \[
+      A=A_w\,dw+A_{\bar w}\,d\bar w
+        +A_z\,dz+A_{\bar z}\,d\bar z
+    \]
+    takes values in a Lie algebra \(\mathfrak g\) of a Lie group \(G\),
+    and \((z,w)\) are complex coordinates on \(\mathbb R^4\).
+    \item[(ii)]
+    Write down a Lax pair with spectral parameter for (1).
+    \item[(iii)]
+    Show that there exists a gauge such that \(A_w=A_z=0\).
+    \item[(iv)]
+    Use the second equation in (1) to show that there exists a
+    \(G\)-valued function
+    \(J=J(w,z,\bar w,\bar z)\) such that
+    \[
+      A=J^{-1}\partial_{\bar w}J\,d\bar w
+        +J^{-1}\partial_{\bar z}J\,d\bar z,
+    \]
+    and deduce that the ASDYM system reduces to
+    \[
+      \partial_w(J^{-1}\partial_{\bar w}J)
+        +\partial_z(J^{-1}\partial_{\bar z}J)=0.
+    \]
+    \item[(v)]
+    Hence show that in this gauge the anti-self-dual Maxwell equations on
+    \(\mathbb R^4\) are equivalent to the Laplace equation for a function
+    which you should specify.
+  \end{enumerate}
 
   \SupplementaryExercise{9}{Strong \(CP\), Topological Susceptibility, and Axion Observables}
   {Inspired by the axion mechanism in Steven Weinberg, A New Light
@@ -347,20 +446,56 @@
     vanishing total energy relative to the false vacuum.
   \end{enumerate}
 
-  \SupplementaryExercise{12}{The Unique Negative Bounce Mode}
-  {Inspired by Curtis G. Callan Jr. and Sidney Coleman, Fate of the
-  False Vacuum. II. First Quantum Corrections (1977), pp.~1762--1768.}
-  {callan-coleman-false-vacuum-ii-1977-ch23-v2ch23-p12}
-  For the thin-wall function
+  \SupplementaryExercise{12}{A Three-Vacuum \(\phi^8\) Kink with Unequal Tails}
+  {Adapted from Cambridge Part III, Solitons, 2025 Paper 313,
+  Question 1.}
+  {cambridge-part-iii-solitons-2025-p313-q1-v2ch23-p12}
+  Let \(\phi=\phi(x,t)\).  Find the Euler--Lagrange equation
+  corresponding to the Lagrangian density
   \[
-    B(R)=2\pi^2\sigma R^3-\frac{\pi^2}{2}\epsilon R^4,
+    \mathcal L=\frac12\left[
+      \left(\frac{\partial\phi}{\partial t}\right)^2
+      -\left(\frac{\partial\phi}{\partial x}\right)^2\right]
+      -U(\phi).
   \]
-  evaluate its second derivative at the critical radius and identify
-  the associated fluctuation.  Explain why one negative eigenvalue
-  produces an imaginary part of the false-vacuum energy, why four
-  translational zero modes instead produce a spacetime-volume factor,
-  and how the sign of the imaginary part is fixed to give a positive
-  decay rate.
+  Write down the expression for the total energy corresponding to
+  \(\mathcal L\), and show from the Euler--Lagrange equation that it is
+  conserved.
+
+  From now on set
+  \[
+    U(\phi)=\frac12(1-\phi^2)^2\phi^4.
+  \]
+  \begin{enumerate}
+    \item[(i)] Let \(\phi_{(0,1)}(x)\) be a kink interpolating between the
+      two vacua \(\phi=0\) and \(\phi=1\).  Find \(\alpha\) and \(\beta\)
+      such that \(\phi\mapsto\alpha\phi\) and \(x\mapsto\beta x\) are
+      discrete symmetries of the field equations, and express all other
+      kinks and antikinks in terms of \(\phi_{(0,1)}\).
+    \item[(ii)] Construct a superpotential \(W\) such that
+      \[
+        U=\frac12\left(\frac{dW}{d\phi}\right)^2,
+      \]
+      and use the Bogomolny argument to find the energy of
+      \(\phi_{(0,1)}\).
+    \item[(iii)] Show that the kink \(\phi\equiv\phi_{(0,1)}\) is
+      implicitly given by
+      \[
+        \frac12\ln\left(\frac{1+\phi}{1-\phi}\right)
+          -\frac1\phi=x-A,
+      \]
+      where \(A\) is a constant.
+    \item[(iv)] Show that
+      \[
+        \phi_{(0,1)}\sim
+        \begin{cases}
+          \dfrac1{A-x},&x\to-\infty,\\[6pt]
+          1-e^{-2(x-b)},&x\to+\infty,
+        \end{cases}
+      \]
+      where \(b\) is a constant which should be determined in terms of
+      \(A\).  Sketch the kink profile.
+  \end{enumerate}
 
   \SupplementaryExercise{13}{Anomaly-Induced Domain-Wall Charge}
   {Adapted from John McGreevy, Physics 215C, Assignment 2, Problem 4 (2025).}
@@ -479,5 +614,118 @@
   Show that the first-order equations imply the second-order field
   equations, and explain why well-separated critical vortices exert no
   static force.
+
+  \SupplementaryExercise{18}{Bright Solitons in Slowly Varying and Harmonic Potentials}
+  {Adapted from Cambridge Part III, Solitons, 2024 Paper 313,
+  Question 1.}
+  {cambridge-part-iii-solitons-2024-p313-q1-v2ch23-p18}
+  Show that the nonlinear Schr\"odinger equation
+  \begin{equation}
+    i\phi_t=-\frac12\phi_{xx}-|\phi|^2\phi
+      +\epsilon V(\epsilon x)\phi
+    \tag{1}
+  \end{equation}
+  can be derived as the Euler--Lagrange equation for the action
+  \[
+    S[\phi]=\int\left[
+      \langle i\phi,\dot\phi\rangle
+      +\frac12|\phi_x|^2-\frac12|\phi|^4
+      +\epsilon V(\epsilon x)|\phi|^2\right]dx\,dt.
+  \]
+  In this question,
+  \[
+    \langle a,b\rangle=\frac{\bar a b+a\bar b}{2}.
+  \]
+  \begin{enumerate}
+    \item[(i)] For the case \(\epsilon=0\), show that if \(E<0\), then
+      (1) has a solution \(e^{-itE}f_E(x)\), with
+      \[
+        f_E(x)=\sqrt{2|E|}\,
+          \operatorname{sech}\!\left(\sqrt{2|E|}\,x\right).
+      \]
+    \item[(ii)] Next, still with \(\epsilon=0\), show that this exact
+      solution of (1) can be generalized to a solution
+      \(\phi(x;t)=\Phi(x;E,\theta(t),X(t),u(t))\), where
+      \begin{equation}
+        \Phi(x;E,\theta,X,u)
+          =f_E(x-X)e^{i\theta+iu(x-X)},
+        \tag{2}
+      \end{equation}
+      with \(E\) constant, but \(\theta,X,u\) evolving in time according
+      to
+      \begin{equation}
+        \dot\theta=-E+\frac12u^2,\qquad
+        \dot X=u,\qquad \dot u=0.
+        \tag{3}
+      \end{equation}
+      Calculate the energy and momentum at time \(t\) of these solutions,
+      as defined, respectively, by the values of the functionals
+      \[
+        H[\phi]=\int\left[
+          \frac12|\phi_x|^2-\frac12|\phi|^4\right]dx,
+        \qquad
+        P[\phi]=\int\langle\phi,-i\phi_x\rangle dx.
+      \]
+      Calculate a relation between these two values, and comment briefly.
+    \item[(iii)] For \(\epsilon=1\) and \(V(x)=\tfrac12x^2\), find a
+      generalization of (2)--(3) so that \(\phi(x;t)\), as defined in
+      part~(ii), solves (1).
+
+      \emph{Hint.}  Replace \(f_E\) in (2) by
+      \(g_E:\mathbb R\to\mathbb R\), which solves
+      \[
+        Eg_E=-\frac12\frac{d^2g_E}{dy^2}-g_E^3
+          +\frac12y^2g_E,
+      \]
+      and modify (3) as needed.  You need not find \(g_E\) explicitly.
+      Comment briefly on your answer in relation to the classical
+      Hamiltonian \(H(x,p)=p^2/2+V(x)\).
+    \item[(iv)] For small \(\epsilon\), define and compute an effective
+      Lagrangian to approximate the time evolution of the four parameters
+      \(E,\theta,X,u\), and derive the predicted dynamics of the soliton
+      in the potential \(\epsilon V(\epsilon x)\).
+  \end{enumerate}
+
+  \SupplementaryExercise{19}{Two-Vortex Moduli-Space Scattering}
+  {Adapted from Cambridge Part III, Solitons, 2021 Paper 308,
+  Question 2.}
+  {cambridge-part-iii-solitons-2021-p308-q2-v2ch23-p19}
+  Explain what is meant by the \(N\)-vortex moduli space
+  \(\mathcal M_N\) for Abelian Higgs vortices at critical coupling, and
+  how \(\mathcal M_N\) acquires a Riemannian metric from the field theory.
+  Describe the geometry of the moduli spaces for \(N=1\) and \(N=2\).
+
+  Consider the scattering of two vortices in the center-of-mass frame,
+  using the geodesic approximation to scattering.  Describe qualitatively
+  how the scattering angle varies with impact parameter.  Compare this
+  scattering behavior of vortices with the scattering behavior of two
+  identical point particles in two dimensions, subject to a repulsive
+  central potential that has a finite maximum when the particles coincide.
+  Comment on the difference between the range of scattering angles that
+  occur.
+
+  \emph{In each case, sketch a graph of scattering angle versus impact
+  parameter, for impact parameters running from \(-\infty\) to \(\infty\),
+  and for two fixed values of the incoming speeds---one small and one
+  large.}
+
+  \SupplementaryExercise{20}{The Rational-Map Approximation to the \(B=7\) Skyrmion}
+  {Adapted from Cambridge Part III, Solitons, 2021 Paper 308,
+  Question 3.}
+  {cambridge-part-iii-solitons-2021-p308-q3-v2ch23-p20}
+  Give an account of the rational-map approximation for Skyrmions,
+  mentioning some of its topological and energetic aspects.
+
+  There is an icosahedrally symmetric Skyrmion with baryon number \(7\)
+  that can be approximated using the rational map
+  \[
+    R(z)=\frac{z^7-7z^2}{7z^5+1}.
+  \]
+  Verify that \(R(z)\) has \(C_5\) symmetry around the point \(z=0\), and
+  that this extends to \(D_{5d}\) symmetry.
+
+  Find the Wronskian of \(R(z)\), and hence the zeros of the Wronskian.
+  Sketch the locations of the zeros in the complex plane.  Interpret these
+  locations geometrically and physically in the context of the Skyrmion.
 
 \end{enumerate}

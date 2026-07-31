@@ -1,0 +1,576 @@
+                                                                                                       II: Ginzburg Landau Vortices and the Abelian Higgs model
+                                                                                                                                                           David Stuart
+                                                                                                                                                           dmas2@cam.ac.uk
+                                                                                                  These are informal notes for the second part of the course, which concerns vortices in Ginzburg Landau theory.
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                               Precise statements and proofs can be found in the book “Vortices and Monopoles” by Jaffe and Taubes (Birkhauser
+                                                                                               1982).
+
+                                                                                               II.1 Ungauged Ginzburg Landau vortices
+                                                                                               Consider a Higgs field Φ : R2 → C in 2 spatial dimensions with potential energy
+                                                                                                                                           Z                                 
+                                                                                                                                         1             2     λ             
+                                                                                                                                                                          2 2
+                                                                                                                             GL(Φ) =              ∇Φ     +      1 −   |Φ|       d2 x .                                (II.1)
+                                                                                                                                         2 R2                4
+                                                                                               Here, λ > 0 is a real parameter. Minimizers, or more generally stationary points, will satisfy the Euler Lagrange
+                                                                                               equation
+                                                                                                                                                     λ            
+                                                                                                                                          − △Φ − Φ 1 − |Φ|2 = 0 .                                                 (II.2)
+                                                                                                                                                     2
+                                                                                               It is natural to impose the boundary condition lim|x|→∞ |Φ(x)| = 1 in view of the form of the self-interaction potential.
+                                                                                               The basic vortex solutions have the following form in polar coordinates reiθ = x1 + ix2 :
+                                                                                                                                                    Φ(x) = fN (r)eiN θ ,                                              (II.3)
+                                                                                               where fN is satisfies
+                                                                                                                                               ′
+                                                                                                                                       ′′     fN   N2        λ       2
+                                                                                                                                                                       
+                                                                                                                                    − fN  −      + 2 fN =       1 − fN   fN ,
+                                                                                                                                               r    r        2
+                                                                                                                                    lim fN (r) = 0 ,  lim fN (r) = 1 .                                                (II.4)
+                                                                                                                                    r→0                          r→∞
+                                                                                                                                         R            2
+                                                                                               The potential itself has a finite piece            2
+                                                                                                                                             1 − fN        r dr dθ < ∞, but the angular gradient terms make the R2 integral
+                                                                                               diverge at spatial infinity:
+                                                                                                               Z                    Z                                                             Z∞
+                                                                                                                        2   2                 ′2           N2 2                     r→∞         2        dr
+                                                                                                                   ∇Φ       d x =            fN  (r) +        f (r)       r dr dθ   ∼     2πN               → ∞.      (II.5)
+                                                                                                                                                           r2 N                                          r
+                                                                                                                                                                                                    0
+
+                                                                                               The boundary condition at spatial infinity means that the Higgs field defines a map from large circles kxk = R to the
+                                                                                               unit circle (as R → ∞):
+                                                                                                                           Φ      n              o               n             o
+                                                                                                                              :     x : kxk = R → S 1 = Φ : |Φ| = 1 ⊂ C .                                      (II.6)
+                                                                                                                          |Φ|
+                                                                                               One can associate to such maps an integer called the winding number, given as an integral
+                                                                                                                                        I                              I
+                                                                                                                               1                               1
+                                                                                                                       w :=        lim           d(argΦ) =        lim          hiΦ , dΦi ,                            (II.7)
+                                                                                                                              2π R→∞ kxk=R                    2π R→∞ kxk=R
+                                                                                               for sufficiently regular fields. For the basic vortex, defined in polar co-ordinates by (II.3) and (II.4), the winding
+                                                                                               number clearly equals the number N .
+                                                                                                   Exercise: use the Stokes-Green identity to obtain an alternative formula for the winding number as a two dimen-
+                                                                                               sional integral. (See (II.30) below.)
+                                                                                                   Exercise: check that if Φ is a smooth solution of (II.2) then w = 1 − |Φ|2 verifies −∆w + λ|Φ|2 w = 2|∇Φ|2 ≥ 0.
+                                                                                               Deduce from the maximum principle that as long as λ ≥ 0, this solution satisfies 0 ≤ |Φ| ≤ 1 in any disc (or arbitrary
+                                                                                               regular domain) such that 0 ≤ |Φ| ≤ 1 holds on the boundary of the domain.
+                                                                                               II.2 Gauged Ginzburg Landau vortices
+                                                                                               Electromagnetic fields on R2 can be described by a real 1-form:
+                                                                                                                                               A = A1 dx1 + A2 dx2 ∈ Ω1 (R2 )                                  (II.8)
+                                                                                               The corresponding magnetic field B is given by the two-dimensional curl B = ∂1 A2 − ∂2 A1 . To understand the
+                                                                                               coupling of electromagnetic fields to complex scalar fields such as the Higgs field we introduce the formalism of
+                                                                                               gauge theories.
+
+                                                                                               II.2.1 Covariant derivatives and gauge invariance
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                               The covariant derivative of a (complex scalar) Φ : R2 → C is defined as
+                                                                                                                                     2                               2
+                                                                                                                                    X     ∂Φ                         X      
+                                                                                                                          DΦ :=              j
+                                                                                                                                               −   iAj Φ  dx j
+                                                                                                                                                                 =:      ∇A   j
+                                                                                                                                                                                Φ dxj .                        (II.9)
+                                                                                                                                    j=1
+                                                                                                                                          ∂x                         j=1
+
+                                                                                               This definition can be motivated by the gauge principle - the potential (II.1) for Φ has a global gauge invariance
+                                                                                               GL(Φ) = GL eiχ Φ for χ = const which can be extended to a local gauge invariance in which the phase factor
+                                                                                               depends upon x, i.e. χ = χ(x), by introducing the additional field (II.8) with transformaion rule
+                                                                                                                                           Φ 7→ eiχ Φ         ⇒       A 7→ A + dχ .                           (II.10)
+                                                                                               The covariant derivative (II.9) then transforms to
+                                                                                                                           2                                2             
+                                                                                                                         X        ∂                          X     ∂                
+                                                                                                              D̃Φ̃ =                j
+                                                                                                                                                          j
+                                                                                                                                      − iÃj − i∂j χ Φ̃ dx =         j
+                                                                                                                                                                       − iAj   eiχ Φ dxj
+                                                                                                                         j=1
+                                                                                                                                ∂x                           j=1
+                                                                                                                                                                  ∂x
+                                                                                                                                   2                  
+                                                                                                                              iχ
+                                                                                                                                   X   ∂
+                                                                                                                        = e                    − iAj       Φ dxj = eiχ DΦ .                                   (II.11)
+                                                                                                                                   j=1
+                                                                                                                                         ∂xj
+                                                                                                            2           2
+                                                                                               Since D̃Φ̃ = DΦ , one can easily construct gauge invariant theories from the former which also involve a gauge
+                                                                                               invariant field strength B:
+                                                                                                                                   Z                                    
+                                                                                                                                 1                2     λ              
+                                                                                                                     Vλ (A, Φ) =        2
+                                                                                                                                      B + DΦ +              1 − |Φ|  2
+                                                                                                                                                                           d2 x = Vλ (Ã, Φ̃)          (II.12)
+                                                                                                                                 2 R2                   4
+                                                                                                                                                     
+                                                                                                                                         ∂A2     ∂A1
+                                                                                                                  B dx1 ∧ dx2 = dA =        1
+                                                                                                                                              −         dx1 ∧ dx2                                      (II.13)
+                                                                                                                                         ∂x      ∂x2
+                                                                                               The integral (II.12) defines the Abelian Higgs functional Vλ .
+
+                                                                                               II.2.2 Geometric interpretation of gauge fields
+                                                                                               We briefly relate gauge theories to the formalism of connections on vector bundles described in differential geometry.
+                                                                                               The set F of physical fields - in this case complex-valued functions Φ : R2 → C - forms a vector space1 . One can
+                                                                                               multiply elements of F by real-valued functions f ∈ C ∞ (M ) defined on the spatial domain M = R2 , i.e. f · Φ ∈ F
+                                                                                               for Φ ∈ F - they have the structure of a module over C ∞ (M ). We define an inner product
+                                                                                                                                                                                   1            
+                                                                                                                        h· , ·i :    F × F → C ∞ (M ) ,               hΦ , Ψi :=     Φ∗ Ψ + Φ Ψ∗ .            (II.14)
+                                                                                                                                                                                   2
+                                                                                               The covariant derivative operator (II.9) is constructed (as a map from F to the space Ω1 (F) of 1-forms taking values
+                                                                                               in F) which satisfies:
+                                                                                                                           
+                                                                                                                     D f Φ = df · Φ + f · DΦ                                    Leibnitz proprety             (II.15)
+                                                                                                                      dhΦ , Ψi = hDΦ , Ψi + hΦ , DΨi                                         unitarity        (II.16)
+                                                                                                 1 Ignoring boundary conditions
+
+
+
+
+                                                                                                                                                                  2
+                                                                                               In the geometrical view of this formalism, one regards the fields as sections of a vector bundle over the spatial manifold
+                                                                                               (base space) M , in this case R2 . A vector bundle V with base space R2 and fibre Cj means that we have
+                                                                                                   • total space V := R2 × Cj
+                                                                                                   • projection map π : V → R2
+                                                                                               The set π −1 (x) ∼= Cj is the fibre over x ∈ M , and has the structure of a vector space. (If curves in M are not
+                                                                                               contractible to points (e.g. on the torus), then V may well have more structure than a mere product space.) A crucial
+                                                                                               point is that we do not have a pre-determined way to relate points on different fibres, i.e. there is no given identification
+                                                                                               of π −1 (x) and π −i (y). A connection gives a way to relate fibres over different points in the base space, i.e.
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                                                                          n                                          o
+                                                                                                                  F = Γ(V ) := sections of V = functions s : M → V : π s(x) = x .                                     (II.17)
+
+                                                                                               Given a pointwise inner product on F, a unitary connection is characterized by properties (II.15) and (II.16).
+                                                                                               A connection gives a way to ”lift” a curve t 7→ x(t) ∈ M to a curve in total space t 7→ Φ(t) ∈ V , given Φ(0) such
+                                                                                               that                                             
+                                                                                                                                          π Φ(t) = x(t)        ∀t∈R.                                          (II.18)
+                                                                                               From this point of view, a connection corresponds to the specification of a family of horizontal subspaces Hp ⊂ Tp V
+                                                                                               with dim Hp = dim M , which can be used to define an identification of fibres over different points of the base space
+                                                                                               lying on a curve. In our case at p = (x, Φ) ∈ V , introduce the 2 (real) dimensional target space
+                                                                                                                                         n                                         o
+                                                                                                                                Hp := (ẋ, Φ̇) ∈ Tp V : Φ̇ − iAj ẋj Φ = 0 ,                                  (II.19)
+
+                                                                                               then t 7→ Φ(t) is a lift of the curve t → x(t) ∈ M if
+
+                                                                                                                               dΦ         dxj   ∂Φ dxj         dxj
+                                                                                                                                  − iAj Φ     =    j
+                                                                                                                                                       − iAj Φ     = 0
+                                                                                                                               dt          dt   ∂x dt           dt
+                                                                                                                                   ⇒ ẋ · DΦ = 0 ,                                                                    (II.20)
+
+                                                                                               using the chain rule.
+                                                                                               The section Φ(t) so constructed is a horizontal lift of the curve x(t). The phrase parallel transport is also used. For
+                                                                                               a full development of this formalism, see “Bleecker, Gauge theory and variational principle” or “Jost, Riemannian
+                                                                                               geometry and geometric analysis”.
+                                                                                               The notion of curvature can be introduced in analogous fashion to Riemannian geometry, as the commutator of co-
+                                                                                               variant derivatives:                                                            
+                                                                                                                                Dj Dk Φ − Dk Dj Φ = −i ∂j Ak − ∂k Aj Φ                                          (II.21)
+
+                                                                                               In R2 , there is only one algebraically independent component
+                                                                                                                                           D1 D2 Φ − D2 D1 Φ = −iB Φ .                                                (II.22)
+
+                                                                                               II.2.3 Finite energy critical points of the gauge invariant potential
+                                                                                               We are interested in field configurations (A, Φ) which make the potential Vλ (A, Φ) given by (II.12) stationary and
+                                                                                               finite, i.e. impose boundary conditions
+                                                                                                                                                                                              2
+                                                                                                                      lim B(x) = 0 ,             lim    DΦ(x)      = 0,         lim    Φ(x)       = 1.                (II.23)
+                                                                                                                    kxk→∞                      kxk→∞                          kxk→∞
+
+                                                                                               Critical points have to satisfy the Euler Lagrange equations:
+                                                                                                                                                           λ           
+                                                                                                                                     − (D1 )2 + (D2 )2 Φ =     1 − |Φ|2 Φ
+                                                                                                                                                            2
+                                                                                                                                                     ∂2 B = −hiΦ , D1 Φi
+                                                                                                                                                        ∂1 B = +hiΦ , D2 Φi                                           (II.24)
+
+
+                                                                                                                                                             3
+                                                                                               Single vortex solutions are of the form
+
+                                                                                                                               Φ(x) = fN (r) eiN θ ,              A(x) = N αN (r) dθ ,                          (II.25)
+
+                                                                                               where the exclusively r dependent functions fN , αN are determined by ordinary differential equations resulting
+                                                                                               from (II.24), subject to the boundary conditions limr→∞ fN (r) = limr→∞ αN (r) = 1 and limr→0 fN (r) =
+                                                                                               limr→0 αN (r) = 0, which can be seen to be the natural conditions for finite energy (exercise).
+                                                                                                   The winding number can alternatively be computed in terms of the gauge field A: indeed, assume that ∃ δ >
+                                                                                               0, C > 0 such that
+                                                                                                                                                                      C
+                                                                                                                                     DΦ + 1 − |Φ|2 ≤                          .                        (II.26)
+                                                                                                                                                                (1 + r)1+δ
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                               then
+                                                                                                                                          I                           I
+                                                                                                                                  1                           1
+                                                                                                                           N =       lim        hiΦ , dΦi =       lim     A
+                                                                                                                                 2π R→∞ kxk=R                2π R→∞ kxk=R
+                                                                                                                                          I
+                                                                                                                                  1                               
+                                                                                                                               =     lim          A1 dx1 + A2 dx2
+                                                                                                                                 2π R→∞ kxk=R
+                                                                                                                                    Z
+                                                                                                                                  1
+                                                                                                                               =         B dx1 ∧ dx2 .                                                          (II.27)
+                                                                                                                                 2π R2
+
+                                                                                               The proof is based on the identity
+                                                                                                      I                       I                                       I                       I
+                                                                                                                                                                                                         2
+                                                                                                              hiΦ , dΦi =                hiΦ , DΦ + iA Φi =                     hiΦ , DΦi +              Φ A.   (II.28)
+                                                                                                        kxk=R                  kxk=R                                      kxk=R |   {z }          kxk=R |{z}
+                                                                                                                                                                                =O(R−δ )               →1
+
+                                                                                               and then using Stoke’s theorem to arrive at the magnetic field B. In the geometric picture, N gives the degree of the
+                                                                                               line bundle of which Φ in section. For finite action solutions to the Euler Lagrange equations (II.24), the fields |B|,
+                                                                                               |DΦ| and 1 − |Φ|2 decay exponentially fast as kxk → ∞, and so the above calculation is certainly justified.
+                                                                                                   Finally, regarding Φ as a function R2 → C ∼    = R2 , we can use the Jacobian of the derivative to introduce the
+                                                                                               topological charge density:
+                                                                                                                                                            !                   
+                                                                                                                                                ∂Φ1    ∂Φ1              ∂Φ ∂Φ
+                                                                                                                             0                  ∂x 1   ∂x 2
+                                                                                                                            j (Φ) = det         ∂Φ2    ∂Φ2
+                                                                                                                                                                =     i     ,
+                                                                                                                                                ∂x1    ∂x2
+                                                                                                                                                                        ∂x1 ∂x2
+                                                                                                                                                                                
+                                                                                                                                        1     ∂            ∂Φ        ∂          ∂Φ
+                                                                                                                                    =                iΦ ,        −         iΦ ,
+                                                                                                                                        2 ∂x1             ∂x2       ∂x2         ∂x1
+                                                                                                                                         1         ∂Φa ∂Φb
+                                                                                                                                    =      ǫab ǫij                                                              (II.29)
+                                                                                                                                         2         ∂xi ∂xj
+                                                                                               to derive another expression for N by Stoke’s theorem:
+                                                                                                                    I                          I                                      
+                                                                                                                  1                         1                   ∂Φ       1      ∂Φ       2
+                                                                                                                            hiΦ , dΦi =                    iΦ ,       dx + iΦ ,       dx
+                                                                                                                 2π kxk=R                  2π kxk=R             ∂x1             ∂x2
+                                                                                                                                              Z
+                                                                                                                                           1
+                                                                                                                                       =             j 0 (Φ) dx1 ∧ dx2 ,
+                                                                                                                                           π kxk≤R
+
+                                                                                               which implies that                           I                           Z
+                                                                                                                                     1                                1
+                                                                                                                          N = lim                       hiΦ , dΦi =        j 0 (Φ) dx1 ∧ dx2 .                  (II.30)
+                                                                                                                                R→∞ 2π          kxk=R                 π R2
+
+
+
+
+                                                                                                                                                              4
+                                                                                               II.3 λ = 1: the Bogomolny argument for self-dual vortices
+                                                                                               For λ = 1 the gauge invariant potential can be put into the form
+                                                                                                                                  Z (                      2              )
+                                                                                                                                1                1 − |Φ|2                 2
+                                                                                                                V1 (A, Φ) =                B −                  + 4 ∂¯A Φ     dx1 ∧ dx2 + N π ,                    (II.31)
+                                                                                                                                2 R2                  2
+
+                                                                                               where the differential operator ∂¯A is defined by
+                                                                                                                                                          1                     
+                                                                                                                                            ∂¯A Φ :=          D1 Φ + iD2 Φ .                                       (II.32)
+                                                                                                                                                          2
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                               In order to prove the identity (II.31), we first of all expand the two expressions in the integrand on the right hand side:
+                                                                                                                                            2
+                                                                                                                                  1 − |Φ|2                       1             2                
+                                                                                                                           B −                     = B2 +          1 − |Φ|2 − B 1 − |Φ|2                           (II.33)
+                                                                                                                                       2                         4
+                                                                                                                                               2               2            2
+                                                                                                                                      4 ∂¯A Φ      = D1 Φ + D2 Φ + 2 hD1 Φ , iD2 Φi                                (II.34)
+                                                                                                     2
+                                                                                                                                                  
+                                                                                               The R integral of the mixed term B 1 − |Φ|2 in (II.33) can be rewritten by integration by parts
+                                                                                                              Z                                          Z                           
+                                                                                                                                   2
+                                                                                                                                      1         2                   ∂A2        ∂A1             
+                                                                                                                       B 1 − |Φ| dx ∧ dx =                              1
+                                                                                                                                                                           −        2
+                                                                                                                                                                                        1 − |Φ|2 dx1 ∧ dx2
+                                                                                                                kxk≤R                                      kxk≤R     ∂x         ∂x
+                                                                                                                                                            Z
+                                                                                                                                                                           ∂              
+                                                                                                                                                     = −             A2      1
+                                                                                                                                                                                 1 − |Φ|2 dx1 ∧ dx2
+                                                                                                                                                              kxk≤R       ∂x
+                                                                                                                                                            Z
+                                                                                                                                                                           ∂              
+                                                                                                                                                         +           A1       2
+                                                                                                                                                                                  1 − |Φ|2 dx1 ∧ dx2
+                                                                                                                                                              kxk≤R       ∂x
+                                                                                                                                                            I
+                                                                                                                                                                                                    
+                                                                                                                                                         +            1 − |Φ|2 A1 dx1 + A2 dx2 .                   (II.35)
+                                                                                                                                                           kxk=R
+
+                                                                                               When extending the integral to R2 , i.e. sending the the circle radius R → ∞, the surface term vanishes and we are
+                                                                                               left with
+                                                                                                        Z                                   Z                                  
+                                                                                                                         1                                   ∂Φ               ∂Φ
+                                                                                                                      2             2
+                                                                                                             B 1 − |Φ| dx ∧ dx = 2 2 A2 Φ ,                          − A1 Φ ,           dx1 ∧ dx2 .        (II.36)
+                                                                                                          R2                                  R               ∂x1              ∂x2
+                                                                                               Up to a Jacobian j 0 (Φ), this is cancelled by the R2 integral of the D1 ↔ D2 mixing terms which arise due to (II.34):
+                                                                                                         Z                                          Z                                         
+                                                                                                                                  1      2                              ∂Φ           ∂Φ
+                                                                                                       2 2 hD1 Φ , iD2 Φi dx ∧ dx = −2 2 A1 −iΦ , i 2 +                                  , A2 Φ       dx1 ∧ dx2
+                                                                                                           R                                         R                  ∂x           ∂x1
+                                                                                                                                                    Z
+                                                                                                                                                − 2 2 j 0 (Φ) dx1 ∧ dx2                                         (II.37)
+                                                                                                                                                      R
+                                                                                               Altogether, (II.31), (II.36) and (II.37) imply that
+                                                                                                           Z (                                     2 )                                Z
+                                                                                                         1            ¯     2              1 − |Φ|2         1       2
+                                                                                                                  4   ∂ A Φ   +     B −                  dx   ∧  dx   =   V 1 (A, Φ) −       j 0 (Φ) dx1 ∧ dx2
+                                                                                                         2 R2                                 2                                           R2
+                                                                                                                                                                      = V1 (A, Φ) − N π .                          (II.38)
+                                                                                               cf. (II.30) for the j 0 (Φ) integral.
+                                                                                               Remark II.1 The identity (II.38)should be regarded as analogous to the identity
+                                                                                                                          Z                                Z
+                                                                                                                       1       dθ 2                      1      dθ          θ
+                                                                                                                                    + 2(1 − cos θ) dx =       (     − 2 sin )2 dx + 8
+                                                                                                                       2 R dx                            2 R dx             2
+                                                                                               which provides the identification of the kinks set of kinks {θK (· − X)}X∈R with arbitrary centre X as the set of
+                                                                                               all minimizers of the sine-Gordon potential energy with boundary conditions θ → 2π as x → +∞ and θ → 0 as
+                                                                                               x → −∞.
+
+
+                                                                                                                                                           5
+                                                                                                  We rewrite the identity as
+                                                                                                                                            Z
+                                                                                                                                          1            2
+                                                                                                                               V1 (A, Φ) =     B(A, Φ) dx1 ∧ dx2 + N π
+                                                                                                                                          2 R2
+                                                                                                                                                                 
+                                                                                                                                B(A, Φ) = B − 21 1 − |Φ|2 , 2 ∂¯A Φ ,                                            (II.39)
+
+                                                                                               with a two component Bogomolny operator B(A, Φ). It shows that if there exists a solution of B(A, Φ) = 0 then it
+                                                                                               minimizes the energy amongst configurations of winding number N ∈ N, and we say the Bogomolny bound V1 ≥ N π
+                                                                                               is saturated.            n                        o      n                         o
+                                                                                                                          (A, Φ) : B(A, Φ) = 0 ⊂ (A, Φ) : V1 (A, Φ) = N π .                             (II.40)
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                               If we change signs in the computations (II.34) and (II.37), we obtain
+                                                                                                                                    Z (                    2               )
+                                                                                                                                  1               1 − |Φ|2                 2
+                                                                                                                  V1 (A, Φ) =                B −                + 4 ∂A Φ       dx1 ∧ dx2 − N π
+                                                                                                                                  2 R2                 2
+                                                                                                                                  1                 
+                                                                                                                       ∂A Φ :=       D1 Φ − iD2 Φ .                                                          (II.41)
+                                                                                                                                  2
+                                                                                               When N > 0, the first version (II.39) is appropriate and we will only consider this case. If N < 0, one could use the
+                                                                                               related formula (II.41) with sign changes to deduce completely analogous results.
+
+                                                                                               II.4 The Self-dual case: Finite energy solutions to the Bogomolny equations
+                                                                                               Theorem: Fix N ∈ N0 , then for any choice z = (z1 , z2 , ..., zN ) of N unordered, possibly repeated points zj ∈ C ∼
+                                                                                                                                                                                                                  =
+                                                                                               R2 , there is a smooth, uniquely determined pair of functions a, φ with
+                                                                                                                        
+                                                                                                 (i) V1 a(·; z), φ(·, z) = N π
+                                                                                                                       
+                                                                                                (ii) B a(·; z), φ(·, z) = 0
+                                                                                                (iii) a(·; z) and φ(·, z) solve the Euler Lagrange equations (II.24) at λ = 1. Conversely, all the solutions of
+                                                                                                      (II.24)        with finite action and winding number N solve B = 0 and are gauge equivalent to one of the
+                                                                                                               λ=1     
+                                                                                                       a(·; z), φ(·, z) .
+                                                                                                (iv) Φ ≈ cj (z − zj )nj as z → zj where cj ∈ C and nj is the number of times zj appears in the list z.
+                                                                                                 (v) ∃ positive numbers k1 , k2 , k3 and δ < 1 such that
+                                                                                                                                                                  
+                                                                                                                                   DΦ(x)       ≤ k1 1 − |Φ|2                ≤ k2 e−(1+δ)kxk
+                                                                                                                                                                      2
+                                                                                                                                                                        
+                                                                                                                                          0 ≤ B = 1 − |Φ|                   ≤ k3 e−(1+δ)kxk .                    (II.42)
+
+                                                                                                (vi) The winding number N can be expressed as
+                                                                                                                            I                     Z               Z
+                                                                                                                     1                          1               1
+                                                                                                             N =        lim         hiΦ , dΦi =      dΦ ∧ dΦ =       B dx1 ∧ dx2 .                               (II.43)
+                                                                                                                    2π R→∞ kxk=R                π R2           2π R2
+
+                                                                                               (vii) At N = 0, all the solutions of (II.24)         are gauge equivalent to a = 0 and φ = 1.
+                                                                                                                                              λ=1
+
+                                                                                               (viii) For N < 0, there are completely analogous solutions as we discussed above.
+                                                                                                (ix) Note that the zeros of φ are unchanged by gauge transformations since eiχ = 1.
+                                                                                                   To interpret generic (a, φ) solutions physically, keep in mind that Φ = fN (r)eiN θ behaves like Φ ≈ cN rN eiN θ =
+                                                                                               cN z N as r → 0. Thus regard the a(·; z) and φ(·, z) as being non-linear superpositions of N vortices of arbitrary
+                                                                                               locations z1 ,...,zN ∈ R2 . At the very special self dual value λ = 1, single vortices can be interpreted as non-
+                                                                                               interacting. At the level of the energy, the total energy of these solutions is N π which is precisely N times the energy
+                                                                                               π of one vortex.
+
+
+                                                                                                                                                            6
+                                                                                               II.4.1 Sketch of the proof
+                                                                                               For the complete proof of this theorem, see chapter III of the book of “Jaffe Taubes”. We will just discuss the most
+                                                                                               important ingredients.
+                                                                                                 (i) The second component of the Bogomolny equation B = 0, namely,
+                                                                                                                                                                     
+                                                                                                                             1                    1    ∂         ∂         i         
+                                                                                                                  ∂¯A Φ =          D1 + iD2 Φ =           1
+                                                                                                                                                            + i     2
+                                                                                                                                                                        Φ −   A1 + iA2 Φ
+                                                                                                                             2                     2 ∂x         ∂x          2
+                                                                                                                             ∂Φ                               A1 + iA2
+                                                                                                                        =:          − iᾱ Φ = 0 ,  where ᾱ =            ,                                           (II.44)
+                                                                                                                              ∂ z̄                                 2
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                     almost takes the form of the holomorphicity condition ∂Φ  ∂ z̄ = 0. To get rid of the ᾱ perturbation, use the method
+                                                                                                     of integrating factors. If we can solve ∂w
+                                                                                                                                             ∂ z̄ =  iᾱ, then
+                                                                                                                                                                               
+                                                                                                                                      ∂                           ∂Φ
+                                                                                                                                           e−iw Φ = e−w                  − iᾱ Φ    = 0,                             (II.45)
+                                                                                                                                     ∂ z̄                           ∂ z̄
+
+                                                                                                     i.e. f = e−w Φ is holomorphic. Now recall the proposition from complex analysis that, if a function f is
+                                                                                                     holomorphic ∂f
+                                                                                                                 ∂ z̄ = 0, then the zeros {zj ∈ C : f (zj ) = 0} of f are isolated. Near zj , f has the local form
+
+                                                                                                                                 f (z) ≈ cj (z − zj )nj ,             nj ≡ multiplicity, cj ∈ C .                    (II.46)
+
+                                                                                                     from which we can read off the local behaviour of Φ near its zeros. The solution of ∂∂z̄ = iᾱ can be written as
+                                                                                                                                                     Z
+                                                                                                                                                  1             iᾱ(u, ū)
+                                                                                                                                      w(z) =                               du ∧ dū                             (II.47)
+                                                                                                                                                 2πi |u−z|<ε u − z
+                                                                                                            1
+                                                                                                     since u−z is the Green function of the ∂∂z̄ operator
+
+                                                                                                                                               ∂      1
+                                                                                                                                                          = 2πi δ(z − u) ,                                           (II.48)
+                                                                                                                                               ∂ z̄ u − z
+                                                                                                     see the introduction to Principles of algebraic geometry by “Griffiths & Harris”.
+                                                                                                (ii) Once Φ is known, A1 , A2 are determined by ∂Φ
+                                                                                                                                                ∂ z̄ − iᾱΦ = 0:
+
+                                                                                                                                                   ∂                              ∂
+                                                                                                                                       ᾱ = −i          ln Φ ,         α = +i        ln Φ .                          (II.49)
+                                                                                                                                                   ∂ z̄                           ∂z
+                                                                                                     Using a polar decomposition for Φ, the phase Θ is given by the arguments of z − zj ,
+                                                                                                                                                                                 N
+                                                                                                                                             1                                     X
+                                                                                                                             Φ = exp           (u + iΘ)           ⇒    Θ(z) = 2          arg(z − zj ) ,              (II.50)
+                                                                                                                                             2                                     j=1
+
+                                                                                                     and we can solve for the radial part u using (II.49):
+                                                                                                                                         1                                      1            
+                                                                                                                               A1 =        ∂2 u + ∂1 Θ ,              A2 = −       ∂1 u − ∂2 Θ .                     (II.51)
+                                                                                                                                         2                                       2
+
+                                                                                                (iii) The magnetic field is in principle determined by (II.51), but it is a bit delicate to treat because Θ is not a
+                                                                                                      smooth function due to (II.50), in particular its second derivatives do not commute on the full complex plane, as
+                                                                                                      indicated by an application of the Stokes-Green identity:
+                                                                                                                      Z            2                                         I
+                                                                                                                                    ∂ Θ            ∂2Θ          1       2
+                                                                                                                                             −               dx   ∧ dx     =               dΘ = 4π nj .         (II.52)
+                                                                                                                        |z−zj |≤ε  ∂x1 ∂x2       ∂x2 ∂x1                         |z−zj |=ε
+
+
+                                                                                                                                                              7
+                                                                                                     More precisely, (II.52) demonstrates their difference to equal a sum of delta functions:
+                                                                                                                                                                           N
+                                                                                                                                        ∂2Θ       ∂2Θ         X
+                                                                                                                                         1   2
+                                                                                                                                               −   2   1
+                                                                                                                                                         = 4π     δ(z − zj )                                      (II.53)
+                                                                                                                                       ∂x ∂x     ∂x ∂x        j=1
+
+
+                                                                                                     From (II.51) and (II.53), we can compute the magnetic field as
+                                                                                                                                                                                                      
+                                                                                                                                                              1      1          ∂2Θ       ∂2Θ
+                                                                                                                          B = ∂1 A2 − ∂2 A1 = −                 △u +             1   2
+                                                                                                                                                                                       −
+                                                                                                                                                              2      2         ∂x ∂x     ∂x2 ∂x1
+
+
+
+
+Copyright © 2017 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                                                                N
+                                                                                                                                     1         X
+                                                                                                                              = −      △u + 2π     δ(z − zj ) .                                                   (II.54)
+                                                                                                                                     2         j=1
+
+                                                                                                     On the other hand, the first component Bogomolny equation fixes B as
+                                                                                                                                              1                 1       
+                                                                                                                                       B =       1 − |Φ|2 =          1 − eu ,                                     (II.55)
+                                                                                                                                              2                   2
+                                                                                                     so putting (II.54) and (II.55) together, we arrive at the non-linear partial differential equation:
+                                                                                                                                                                          N
+                                                                                                                                                                          X
+                                                                                                                                        − △u + eu − 1 = −4π                     δ(z − zj )                        (II.56)
+                                                                                                                                                                          j=1
+
+                                                                                                     Explicit solutions (II.56) are unknown so far, but one can bring (II.56) into a finite form by regularization: If we
+                                                                                                     introduce
+                                                                                                                                                            N                       
+                                                                                                                                                          X                   µ
+                                                                                                                         v := u − u0 ,        u0 := −          ln 1 +                   ,     µ≫1,                (II.57)
+                                                                                                                                                           j=1
+                                                                                                                                                                          |z − zj |2
+
+                                                                                                     then (II.56) reads
+                                                                                                                                                                  N                     
+                                                                                                                                         u0       v
+                                                                                                                                                                  X          µ
+                                                                                                                             − △v + e         e       = 1 − 4     ln 1 +                     =: g0 .              (II.58)
+                                                                                                                                                              j=1
+                                                                                                                                                                         |z − zj |2
+
+                                                                                                     This modified equation (II.58) has a unique C ∞ solution for any z1 , ..., zN obtained by minimizing the func-
+                                                                                                     tional                           Z                                               
+                                                                                                                                            1      2
+                                                                                                                           I[v] =              ∇v    +  (g 0 −  1) v +  e u
+                                                                                                                                                                             (e v
+                                                                                                                                                                                  − 1)   d2 x                (II.59)
+                                                                                                                                       R2 2
+                                                                                                     see chapter III in the book of Jaffe and Taubes.
+                                                                                               A generalization to curved spaces In the article of Witten, (PRL (1977) Vol.38, 121-124), the Bogomolny argument
+                                                                                               was carried out on the Poincare unit disc, i.e. the domain
+                                                                                                                                                      n            o
+                                                                                                                                              Σ := z ∈ C : |z| < 1                                        (II.60)
+
+                                                                                               with metric                                                    
+                                                                                                                                           8 dx2 + dy 2                            
+                                                                                                                                 ds2 =                            =: e2ρ dx2 + dy 2 .                             (II.61)
+                                                                                                                                            (1 − |z|2 )2
+                                                                                               Let Φ denote a section of V → Σ with Φ(x) ∈ C and A = A1 dx + A2 dy a connection 1 form, moreover define
+
+                                                                                                                            Ω0 (Σ) ≡ set of functions Σ → R ≡ zero forms
+                                                                                                                                     n                  o
+                                                                                                                            Ω1 (Σ) ≡ A1 dx + A2 dy , Ai : Σ → R ≡ 1 forms
+                                                                                                                                     n            o
+                                                                                                                            Ω2 (Σ) ≡ f dx ∧ dy , f : Σ → R ≡ 2 forms .                                            (II.62)
+
+
+
+                                                                                                                                                              8
+

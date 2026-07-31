@@ -1,57 +1,84 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Vector Superfields in Wess--Zumino Gauge}
-  \begin{enumerate}
-    \item \emph{Residual Gauge Transformations in Wess--Zumino Gauge.}
-    In the Abelian limit Eq.~\eqref{eq:27.1.17} is exact.  Starting with
-      \(C=\omega=M=N=0\), preservation of the gauge requires
-      \[
-        \operatorname{Im}W=0,\qquad w=0,\qquad\mathcal W=0.
-      \]
-      Thus the only independent lowest component is a real function
-      \(\Lambda(x)=\operatorname{Re}W(x)\).  The derivative terms forced by
-      chirality do not restore any of the eliminated components; they give
-      \[
-        V_\mu\longmapsto V_\mu+\partial_\mu\Lambda,\qquad
-        \lambda\longmapsto\lambda,\qquad D\longmapsto D.
-      \]
-      Wess--Zumino gauge therefore fixes the extended part of the gauge group,
-      but not the ordinary gauge symmetry.
-    \item \emph{Chirality and Gauge Invariance of \(W_\alpha\).}
-    The Abelian definition is a chiral projection of a superderivative of
-      \(V\).  Acting with \(\SuperD_R\) gives zero because the projected product
-      contains three identical right-chiral Grassmann derivatives, of which
-      only two are independent.  Under
-      \(\delta V=\tfrac i2(\Omega-\Omega^*)\), the term containing \(\Omega\)
-      vanishes because \(\Omega\) is left chiral, and the term containing
-      \(\Omega^*\) vanishes after the opposite chiral projection.  Thus
-      \[
-        \SuperD_RW_L=0,\qquad \delta W_L=0.
-      \]
-      The two ingredients are chirality,
-      \[
-        \SuperD_R\Omega=0,\qquad \SuperD_L\Omega^*=0,
-      \]
-      and the nilpotence and anticommutation algebra of the covariant
-      superderivatives.
-    \item \emph{Recovering the Abelian Components.}
-    On the left-chiral slice only the left-chiral Grassmann coordinate
-      remains.  Applying the field-strength projection to
-      Eq.~\eqref{eq:27.1.19} gives
-      \[
-        W_L=\lambda_L(x_+)
-          +\frac12\gamma^\mu\gamma^\nu\theta_Lf_{\mu\nu}(x_+)
-          -i\theta_LD(x_+)
-          +(\theta_L^{\mathsf T}\epsilon\theta_L)
-             \sl{\partial}\lambda_R(x_+).
-      \]
-      The symmetric part of \(\gamma^\mu\gamma^\nu\) drops out against the
-      antisymmetry of \(f_{\mu\nu}\).  The derivative term arises from the
-      shifted coordinate \(x_+\), not from a new independent component.
-      This reproduces Eq.~\eqref{eq:27.2.11}; complex conjugation gives the
-      right-chiral expression.
-  \end{enumerate}
+  \SupplementarySolution{1}{Vector Superfields and Supersymmetric Maxwell Theory}
+The lowest components of the shift
+  \(\delta V=i(\Omega-\Omega^\dagger)\) give
+  \[
+    \delta C=i(\omega-\omega^*),\qquad
+    \delta\chi=i\sqrt2\,\psi,\qquad
+    \delta M=F,\qquad
+    \delta A_\mu=-\partial_\mu(\omega+\omega^*).
+  \]
+  Thus \(\operatorname{Im}\omega,\psi,F\) may be chosen to set
+  \(C=\chi=M=0\).  This is Wess--Zumino gauge:
+  \[
+    V_{\mathrm{WZ}}
+      =\theta s^\mu\bar\theta\,A_\mu
+       +\theta^2\bar\theta\,\bar\lambda
+       +\bar\theta^2\theta\,\lambda
+       +\frac12\theta^2\bar\theta^2D.
+  \]
+  The unused real part of \(\omega\) remains.  With
+  \(\Lambda=-2\operatorname{Re}\omega\), it acts as
+  \[
+    A_\mu\longmapsto A_\mu+\partial_\mu\Lambda,
+    \qquad \lambda\longmapsto\lambda,\qquad D\longmapsto D.
+  \]
+  Hence the extended superfield gauge freedom removes the extra fields,
+  while its residual freedom is the ordinary Abelian gauge transformation.
+
+  The projection
+  \[
+    W_a=-\frac14\bar{\mathcal D}^{\,2}\mathcal D_aV
+  \]
+  is chiral because three identical dotted Grassmann derivatives vanish:
+  \(\bar{\mathcal D}_{\dot a}W_b=0\).  It is gauge invariant as well.
+  Indeed, \(\bar{\mathcal D}^{\,2}\mathcal D_a\Omega=0\) for chiral
+  \(\Omega\), while
+  \(\mathcal D_a\Omega^\dagger=0\) for antichiral
+  \(\Omega^\dagger\).  Therefore the \(F\)-term
+  \[
+    S_{\mathrm{gauge}}
+      =\frac1{4e^2}\int d^4x
+       \left[\int d^2\theta\,W^aW_a
+             +\int d^2\bar\theta\,
+                \overline W_{\dot a}\overline W^{\dot a}\right]
+  \]
+  is both supersymmetric and gauge invariant.  Its component expansion
+  gives the displayed Maxwell--gaugino action, together with the auxiliary
+  term \(D^2/(2e^2)\); eliminating \(D\) gives the on-shell action in the
+  question.
+
+  It remains to check that action directly.  Antisymmetry of \(F_{\mu\nu}\)
+  and one integration by parts give
+  \[
+  \begin{aligned}
+    \delta\mathcal L_{\mathrm{Maxwell}}
+      &=-\frac1{2e^2}F^{\mu\nu}\delta F_{\mu\nu}\\
+      &=\frac1{e^2}(\partial_\mu F^{\mu\nu})
+         \bigl(\epsilon s_\nu\bar\lambda
+               +\lambda s_\nu\bar\epsilon\bigr)
+        +\partial_\mu K_1^\mu .
+  \end{aligned}
+  \]
+  Varying both gauginos and using the supplied triple-sigma identity yields
+  \[
+  \begin{aligned}
+    \delta\mathcal L_{\mathrm{gaugino}}
+      ={}&-\frac1{e^2}(\partial_\mu F^{\mu\nu})
+         \bigl(\epsilon s_\nu\bar\lambda
+               +\lambda s_\nu\bar\epsilon\bigr)\\
+       &+\frac{i}{2e^2}\epsilon_{\mathrm s}^{\mu\nu\rho\sigma}
+          (\partial_\mu F_{\nu\rho})
+          \bigl(\epsilon s_\sigma\bar\lambda
+                -\lambda s_\sigma\bar\epsilon\bigr)
+        +\partial_\mu K_2^\mu .
+  \end{aligned}
+  \]
+  The first line cancels the Maxwell variation.  The second vanishes by
+  \(\partial_{[\mu}F_{\nu\rho]}=0\), and the remaining terms are a boundary
+  term.  Hence \(\delta S=0\).
 
   \SupplementarySolution{2}{The Superspace Bianchi Identity and Abelian Gauge Action}
   \begin{enumerate}
@@ -293,75 +320,126 @@ Because the action is real it is enough to keep the parameter
   \(\epsilon\)-variation is a boundary term, and complex conjugation proves
   invariance under the full transformation.
 
-  \SupplementarySolution{7}{Fayet--Iliopoulos Breaking, Goldstino, and Supertrace}
+  \SupplementarySolution{7}{Chiral Superfields and a Gauged \(U(1)\) Model}
   \begin{enumerate}
-    \item \emph{The Two Phases of Fayet--Iliopoulos SQED.}
-    Write \(x=|\phi_+|^2\), \(y=|\phi_-|^2\), and
-      \(D=\xi+q(x-y)\).  At an interior stationary point,
-      \(m^2+qD=0\) if \(x\ne0\) and
-      \(m^2-qD=0\) if \(y\ne0\); both cannot hold for \(m\ne0\).
-      Hence
+    \item Chirality means
       \[
-      \begin{array}{c|c|c}
-        \text{range}&\text{vacuum}&V_{\min}\\ \hline
-        |\xi|\le |m|^2/|q|&x=y=0&\frac12\xi^2\\
-        \xi>|m|^2/q&x=0,\,
-          y=\dfrac{\xi-|m|^2/q}{q}
-          &\dfrac{|m|^2\xi}{q}-\dfrac{|m|^4}{2q^2}\\
-        \xi<-|m|^2/q&y=0,\,
-          x=\dfrac{-\xi-|m|^2/q}{q}
-          &-\dfrac{|m|^2\xi}{q}-\dfrac{|m|^4}{2q^2}.
-      \end{array}
+        \bar{\mathcal D}_{\dot a}\Phi=0.
       \]
-      Here \(q>0\) was chosen without loss of generality.  The gauge group is
-      unbroken in the first phase and Higgsed in the other two.  For
-      \(\xi\ne0\), every listed vacuum has positive energy, so supersymmetry is
-      broken in both phases.
-    \item \emph{The General Goldstino Direction.}
-    Multiplying the mass-squared matrix in Eq.~\eqref{eq:27.5.6} by
-      \((i\sqrt2\mathcal F_0,D_0)\), the chiral block cancels by the
-      stationarity condition \eqref{eq:27.5.13}, and the gauge block cancels
-      by Eq.~\eqref{eq:27.5.14}.  Therefore
+      For example, the MSSM superfield \(H_u\) contains the physical complex
+      Higgs scalar \(h_u\) and a left-handed Weyl higgsino
+      \(\widetilde h_u\); its \(F\)-component is auxiliary rather than
+      physical.
+
+      The chiral constraint is solved by a function of \(y^\mu\) and
+      \(\theta\) alone:
       \[
-        M^\dagger M
-           \binom{i\sqrt2\mathcal F_0}{D_0}=0.
+        \Phi(y,\theta)=\phi(y)+\sqrt2\,\theta\psi(y)+\theta^2F(y),
+        \qquad y^\mu=x^\mu+i\theta s^\mu\bar\theta.
       \]
-      With
-      \[
-        \mathcal N^2=2\sum_n|\mathcal F_{n0}|^2+\sum_AD_{A0}^2,
-      \]
-      the original fields contain the normalized goldstino as
-      \[
-        \psi_{nL}=\frac{i\sqrt2\mathcal F_{n0}}{\mathcal N}G_L+\cdots,
-        \qquad
-        \lambda_{AL}=\frac{D_{A0}}{\mathcal N}G_L+\cdots.
-      \]
-      The chiral and gaugino fractions are respectively
-      \(2\sum|\mathcal F_0|^2/\mathcal N^2\) and
-      \(\sum D_0^2/\mathcal N^2\).
-    \item \emph{The Tree-Level Mass Supertrace.}
-    The off-diagonal blocks do not contribute to a trace.  The three mass
-      matrices give
+      Taylor expansion about \(x\), followed by the two-spinor identities
+      for \(\theta^a\theta^b\), gives
       \[
       \begin{aligned}
-        \operatorname{Tr}M_0^2
-          &=2\operatorname{Tr}(\mathcal M^*\mathcal M)
-            +\operatorname{Tr}\mu^2
-            +2D_{A0}\operatorname{Tr}t_A,\\
-        \operatorname{Tr}(M^\dagger M)
-          &=\operatorname{Tr}(\mathcal M^*\mathcal M)
-            +2\operatorname{Tr}\mu^2.
+        \Phi(x,\theta,\bar\theta)={}&
+          \phi+\sqrt2\,\theta\psi+\theta^2F
+          +i\theta s^\mu\bar\theta\,\partial_\mu\phi\\
+        &-\frac{i}{\sqrt2}\theta^2
+           \partial_\mu\psi\,s^\mu\bar\theta
+          -\frac14\theta^2\bar\theta^2
+           \Box_{\mathrm s}\phi .
       \end{aligned}
       \]
-      Weighting a real scalar, Majorana fermion, and vector by \(1,-2,3\)
-      yields
+      Hence
       \[
-        \operatorname{STr}M^2=-2D_{A0}\operatorname{Tr}t_A.
+        A=i,\qquad B=-\frac{i}{\sqrt2},\qquad C=-\frac14.
       \]
-      Semisimple generators are traceless.  For a \(U(1)\),
-      \(\operatorname{Tr}t\) is the mixed gauge--gravitational anomaly
-      coefficient, so consistency sets it to zero and hence
-      \(\operatorname{STr}M^2=0\).
+
+    \item Only the chiral fermions contribute to the Abelian gauge anomaly.
+      The relevant one-loop graphs are the gauge-current triangle and its
+      mixed gauge--gravitational counterpart:
+      \begin{center}
+      \begin{tikzpicture}[x=0.72cm,y=0.68cm,baseline=-0.4ex,font=\scriptsize]
+        \begin{scope}
+          \coordinate (a) at (0,0);
+          \coordinate (b) at (1.5,1.45);
+          \coordinate (c) at (3,0);
+          \draw[thick,->] (a)--(b);
+          \draw[thick,->] (b)--(c);
+          \draw[thick,->] (c)--(a);
+          \draw[thick] (a)--(-0.75,-0.45) node[left] {\(A_\mu\)};
+          \draw[thick] (b)--(1.5,2.25) node[above] {\(A_\nu\)};
+          \draw[thick] (c)--(3.75,-0.45) node[right] {\(A_\rho\)};
+          \node at (1.5,0.55) {Weyl fermion};
+          \node at (1.5,-0.72) {\(U(1)^3\)};
+        \end{scope}
+        \begin{scope}[xshift=5.7cm]
+          \coordinate (a) at (0,0);
+          \coordinate (b) at (1.5,1.45);
+          \coordinate (c) at (3,0);
+          \draw[thick,->] (a)--(b);
+          \draw[thick,->] (b)--(c);
+          \draw[thick,->] (c)--(a);
+          \draw[thick] (a)--(-0.75,-0.45) node[left] {\(A_\mu\)};
+          \draw[thick,double] (b)--(1.5,2.25) node[above] {\(h_{\nu\lambda}\)};
+          \draw[thick,double] (c)--(3.75,-0.45) node[right] {\(h_{\rho\sigma}\)};
+          \node at (1.5,0.55) {Weyl fermion};
+          \node at (1.5,-0.72) {\(U(1)\text{--gravity}^2\)};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+      Their coefficients are
+      \[
+        \mathcal A_{U(1)^3}\propto\sum_iq_i^3
+           =(+2)^3+0^3+(-2)^3=0,
+        \qquad
+        \mathcal A_{U(1)\text{-grav}^2}\propto\sum_iq_i=0.
+      \]
+      The Abelian gaugino is neutral.  Thus the two oppositely charged
+      chiral multiplets cancel both anomalies, and the theory is
+      gauge-anomaly free.
+
+      Up to an irrelevant constant, the most general renormalizable
+      gauge-invariant superpotential is
+      \[
+        W=aX_0+\frac12m_0X_0^2+mX_{2+}X_{2-}
+          +\frac{\kappa}{3}X_0^3
+          +\lambda X_0X_{2+}X_{2-}.
+      \]
+      Setting \(a=m_0=m=0\) leaves
+      \[
+        W=\frac{\kappa}{3}X_0^3+\lambda X_0X_{2+}X_{2-}.
+      \]
+      The perturbative non-renormalization theorem for the Wilsonian
+      superpotential prevents the absent linear and quadratic holomorphic
+      terms from being generated.
+
+      Let \(x_0,x_+,x_-\) be the scalar components.  With the convention
+      \(D=2|x_+|^2-2|x_-|^2+\xi\), the scalar potential is
+      \[
+      \begin{aligned}
+        V={}&|\lambda x_0x_-|^2+|\lambda x_0x_+|^2
+          +|\kappa x_0^2+\lambda x_+x_-|^2\\
+          &+\frac{g^2}{2}
+            \left(2|x_+|^2-2|x_-|^2+\xi\right)^2.
+      \end{aligned}
+      \]
+      For generic nonzero \(\lambda,\kappa\), \(F_+=F_-=F_0=0\) first
+      implies \(x_0=0\) and \(x_+x_-=0\).  The remaining \(D\)-flatness
+      equation then has the solutions
+      \[
+      \begin{array}{c|c}
+        \xi>0 & x_+=x_0=0,\quad |x_-|^2=\xi/2,\\[2pt]
+        \xi<0 & x_-=x_0=0,\quad |x_+|^2=-\xi/2,\\[2pt]
+        \xi=0 & x_+=x_-=x_0=0.
+      \end{array}
+      \]
+      A gauge transformation removes the phase of the nonzero field.
+      Consequently supersymmetry is unbroken in every case:
+      \(V_{\min}=0\).  The \(U(1)\) gauge symmetry is Higgsed for
+      \(\xi\ne0\) and unbroken at \(\xi=0\).  Nongeneric choices such as
+      \(\lambda=0\) or \(\kappa=0\) introduce additional flat directions,
+      but do not describe the most general cubic model.
   \end{enumerate}
 
   \SupplementarySolution{8}{Wilsonian Gauge Couplings and FI Protection}
@@ -442,37 +520,256 @@ Because the action is real it is enough to keep the parameter
       ``soft''.
   \end{enumerate}
 
-  \SupplementarySolution{10}{The Second Supersymmetry of Pure \(N=2\) Yang--Mills}
-In the adjoint representation
-  \((t_A)_{BC}=-iC_{ABC}\).  Substitution in
-  Eq.~\eqref{eq:27.4.1} gives Eq.~\eqref{eq:27.9.3}: the two Majorana
-  fields \(\psi_A,\lambda_A\) have identical covariant kinetic terms, and
-  the Yukawa coupling is rotated into itself by their \(SU(2)\) doublet
-  rotation.  The three real auxiliaries
-  \((\operatorname{Re}\mathcal F_A,\operatorname{Im}\mathcal F_A,D_A)\)
-  rotate so that their quadratic terms and their couplings to \(\phi\)
-  are invariant.  Conjugating the known \(N=1\) supersymmetry by the
-  exchange \(\psi_A\leftrightarrow\lambda_A\) gives a second transformation
-  with an independent Majorana parameter.  The action therefore has
-  \(N=2\) supersymmetry.
+  \SupplementarySolution{10}{Superspace and Finite \(SU(3)\) Gauge Transformations}
+  \begin{enumerate}
+    \item[(i)] Use left Grassmann derivatives and put
+      \(\mathcal P_\mu=-i\partial_\mu\).  A representation consistent with
+      the transformation in the question is
+      \[
+      \begin{aligned}
+        \mathcal Q_a
+          &=-i\partial_a
+            -(s^\mu)_{a\dot b}\bar\theta^{\dot b}\partial_\mu,\\
+        \overline{\mathcal Q}_{\dot a}
+          &=+i\bar\partial_{\dot a}
+            +\theta^b(s^\mu)_{b\dot a}\partial_\mu .
+      \end{aligned}
+      \]
+      These operators generate
+      \[
+        \delta\theta=\epsilon,\qquad
+        \delta\bar\theta=\bar\epsilon,\qquad
+        \delta x^\mu
+          =i\theta s^\mu\bar\epsilon
+             -i\epsilon s^\mu\bar\theta,
+      \]
+      and obey
+      \[
+        \{\mathcal Q_a,\overline{\mathcal Q}_{\dot b}\}
+          =2(s^\mu)_{a\dot b}\mathcal P_\mu,\qquad
+        \{\mathcal Q_a,\mathcal Q_b\}
+          =\{\overline{\mathcal Q}_{\dot a},
+              \overline{\mathcal Q}_{\dot b}\}=0.
+      \]
 
-  \SupplementarySolution{11}{Allowed \(N=2\) Hypermultiplet Couplings}
-Let \(Q_n,\widetilde Q_m\) be the two \(N=1\) chiral fields and
-  \(\Phi_A\) the adjoint chiral field in the \(N=2\) vector multiplet.
-  Gauge invariance pairs \(Q\) with \(\widetilde Q\); the \(SU(2)\)
-  automorphism rotating the two supersymmetries fixes the adjoint Yukawa
-  coupling to the gauge representation matrices.  The allowed
-  superpotential is therefore
+    \item[(ii)] A vector superfield is real:
+      \[
+        V_A^\dagger=V_A,\qquad V^\dagger=V
+      \]
+      for Hermitian \(T_A\).
+
+    \item[(iii)] A chiral superfield satisfies
+      \[
+        \overline{\mathcal D}_{\dot a}\Phi=0.
+      \]
+      Its Hermitian conjugate is antichiral.
+
+    \item[(iv)] Since \(\Phi\) has mass dimension one, the exponent in
+      \(e^{-2i\Lambda}\Phi\) shows that
+      \[
+        [\Lambda_A]=0.
+      \]
+      Each \(\Lambda_A\) is a complex chiral scalar superfield,
+      \(\overline{\mathcal D}_{\dot a}\Lambda_A=0\), and
+      \(\Lambda=\Lambda_AT_A\) is valued in the complexified
+      \(\mathfrak{su}(3)\) algebra.  Its conjugate
+      \(\Lambda^\dagger\) is antichiral.  Restricting its lowest component
+      to be real recovers an ordinary \(SU(3)\) gauge transformation, but
+      the generalized superspace parameter itself need not be real.
+
+    \item[(v)] With conventional normalization, the renormalizable
+      Lagrangian is
+      \[
+      \begin{aligned}
+        \mathcal L={}&
+          \int d^4\theta\,\Phi^\dagger e^{2V}\Phi\\
+        &+\left[
+          \frac1{4g^2}\int d^2\theta\,
+             \operatorname{Tr}(W^aW_a)
+          +\int d^2\theta\,W_{\mathrm{tree}}(\Phi)
+          +\mathrm{H.c.}\right].
+      \end{aligned}
+      \]
+      There is no nonconstant gauge-invariant renormalizable
+      \(W_{\mathrm{tree}}\) for a single fundamental of \(SU(3)\).
+      In particular,
+      \(\epsilon_{ijk}\Phi^i\Phi^j\Phi^k=0\), because identical chiral
+      superfields commute.
+
+    \item[(vi)] Put \(U=e^{-2i\Lambda}\).  Invariance of the K\"ahler
+      expression,
+      \[
+        \Phi^{\prime\dagger}e^{2V'}\Phi'
+          =\Phi^\dagger e^{2V}\Phi,
+      \]
+      requires
+      \[
+        \boxed{\;
+        e^{2V'}=e^{-2i\Lambda^\dagger}
+                  e^{2V}e^{2i\Lambda}\; }.
+      \]
+      This finite matrix relation, rather than an additive shift of \(V\),
+      is essential for a non-Abelian group.
+
+    \item[(vii)] The preceding relation immediately proves invariance of
+      the matter term:
+      \[
+      \begin{aligned}
+        \Phi^{\prime\dagger}e^{2V'}\Phi'
+          &=\Phi^\dagger e^{2i\Lambda^\dagger}
+             \left(e^{-2i\Lambda^\dagger}
+                   e^{2V}e^{2i\Lambda}\right)
+             e^{-2i\Lambda}\Phi\\
+          &=\Phi^\dagger e^{2V}\Phi.
+      \end{aligned}
+      \]
+      Because \(\Lambda\) is chiral and \(\Lambda^\dagger\) antichiral,
+      substituting the finite relation into the field-strength definition
+      makes all inhomogeneous derivative terms disappear under
+      \(\overline{\mathcal D}^{\,2}\).  The result is the homogeneous law
+      \[
+        W'_a=e^{-2i\Lambda}W_a e^{2i\Lambda}.
+      \]
+      Cyclicity of the trace then gives
+      \[
+        \operatorname{Tr}(W^{\prime a}W'_a)
+          =\operatorname{Tr}(W^aW_a).
+      \]
+      The chiral and full superspace measures are supersymmetry invariant,
+      and the only possible superpotential is a gauge-invariant constant.
+      Therefore every term in \(\mathcal L\) is invariant.
+  \end{enumerate}
+
+  \SupplementarySolution{11}{SQED Vacua and the Moduli-Space Metric}
+Let \(\phi^i,\widetilde\phi_i,x\) denote the scalar components of
+  \(\Phi^i,\widetilde\Phi_i,X\).  For canonical K\"ahler normalization and
+  \(D=\sum_i|\phi^i|^2-\sum_i|\widetilde\phi_i|^2-\zeta\), eliminating the
+  auxiliary fields gives
   \[
-    f=\frac12(s_A)_{nm}Q_n\widetilde Q_m\Phi_A
-       +\frac12\mu_{nm}Q_n\widetilde Q_m.
+  \begin{aligned}
+    V={}&\sum_{i=1}^N|x-m_i|^2
+       \left(|\phi^i|^2+|\widetilde\phi_i|^2\right)
+       +\left|\sum_{i=1}^N\widetilde\phi_i\phi^i\right|^2\\
+      &+\frac{e^2}{2}
+       \left(\sum_i|\phi^i|^2
+             -\sum_i|\widetilde\phi_i|^2-\zeta\right)^2.
+  \end{aligned}
   \]
-  Terms with two adjoint fields would give \(\psi_A\) masses or
-  interactions without matching ones for \(\lambda_A\).  Cubics made only
-  from hypermultiplet fields and bilinears \(QQ\) or
-  \(\widetilde Q\widetilde Q\) similarly violate the required \(SU(2)\)
-  pairing.  Renormalizability excludes higher powers, leaving exactly
-  Eq.~\eqref{eq:27.9.29}.
+  A different positive normalization for the \(X\) kinetic term merely
+  multiplies the second term by a positive constant and leaves all vacuum
+  equations unchanged.  Thus \(V=0\) is equivalent to
+  \[
+  \begin{gathered}
+    (x-m_i)\phi^i=(x-m_i)\widetilde\phi_i=0
+       \quad\text{for every }i,\\
+    \sum_i\widetilde\phi_i\phi^i=0,\qquad
+    \sum_i|\phi^i|^2-\sum_i|\widetilde\phi_i|^2=\zeta,
+  \end{gathered}
+  \]
+  modulo the \(U(1)\) action
+  \(\phi^i\mapsto e^{i\alpha}\phi^i\),
+  \(\widetilde\phi_i\mapsto e^{-i\alpha}\widetilde\phi_i\).
+
+  \begin{enumerate}
+    \item[(i)] If all \(m_i=0\) and \(\zeta\ne0\), the \(D\)-equation forces
+      some charged scalar to be nonzero, so \(x=0\).  The remaining vacuum
+      space is
+      \[
+        \left\{(\phi,\widetilde\phi)\in
+           \mathbb C^N\oplus\mathbb C^N:
+           \widetilde\phi\cdot\phi=0,\;
+           |\phi|^2-|\widetilde\phi|^2=\zeta\right\}\big/U(1).
+      \]
+      One complex equation, one real equation, and the one-dimensional
+      gauge quotient leave
+      \[
+        \dim_{\mathbb C}\mathcal M=2N-2,\qquad
+        \dim_{\mathbb R}\mathcal M=4N-4.
+      \]
+      For \(\zeta>0\) this is the smooth cotangent bundle
+      \(T^*\mathbb{CP}^{N-1}\); for \(\zeta<0\) the roles of
+      \(\phi\) and \(\widetilde\phi\) are exchanged.
+
+    \item[(ii)] Suppose the masses are distinct.  A nonzero field of flavor
+      \(j\) fixes \(x=m_j\), and no other flavor can then be nonzero.  For
+      \(\zeta>0\), the equations give
+      \[
+        x=m_j,\qquad |\phi^j|^2=\zeta,\qquad
+        \widetilde\phi_j=0,
+      \]
+      with all other fields zero.  For \(\zeta<0\), instead
+      \[
+        x=m_j,\qquad |\widetilde\phi_j|^2=-\zeta,\qquad
+        \phi^j=0.
+      \]
+      The gauge quotient removes the remaining phase.  There are therefore
+      exactly \(N\) isolated vacua.
+
+    \item[(iii)] With \(\zeta=0\) and distinct masses, a putative nonzero
+      flavor must satisfy both
+      \(|\phi^j|=|\widetilde\phi_j|\) and
+      \(\widetilde\phi_j\phi^j=0\), so both fields vanish.  Consequently
+      \[
+        \phi=\widetilde\phi=0,\qquad x\in\mathbb C.
+      \]
+      This is a Coulomb branch of complex dimension one.  At
+      \(x=m_i\), the \(i\)th charged pair becomes massless, although no
+      additional classical Higgs vacuum opens when the masses are distinct.
+
+    \item[(iv)] When \(m_i=\zeta=0\), the vacuum space is the union of two
+      branches.  The Coulomb branch is
+      \[
+        \phi=\widetilde\phi=0,\qquad x\in\mathbb C,
+        \qquad \dim_{\mathbb C}\mathcal M_C=1.
+      \]
+      The Higgs branch has \(x=0\) and is the zero-level quotient
+      \[
+        \mathcal M_H=
+        \{\widetilde\phi\cdot\phi=0,\;
+          |\phi|^2=|\widetilde\phi|^2\}/U(1),
+        \qquad
+        \dim_{\mathbb C}\mathcal M_H=2N-2.
+      \]
+      The two branches meet at the origin.  For \(N=1\), the Higgs branch
+      collapses to that single point.
+  \end{enumerate}
+
+  There is a literal inconsistency in the last paragraph of the printed
+  parent problem.  In the model as stated, \(X\) is dynamical, and its
+  auxiliary equation is
+  \[
+    F_X^*=-\widetilde\phi\phi=-M.
+  \]
+  Thus a supersymmetric vacuum has \(M=0\), and for one flavor there is no
+  nontrivial vacuum moduli space parametrized by \(M\).  The actual moduli
+  space of the printed model is the Coulomb branch parametrized by \(x\).
+
+  The requested metric is instead the standard result for one-flavor
+  \(N=1\) SQED with the neutral \(X\) coupling omitted or decoupled.  For
+  that intended quotient, \(D=0\) gives
+  \(|\phi|=|\widetilde\phi|\), and
+  \(M=\widetilde\phi\phi\) gives
+  \[
+    K=\Phi^\dagger\Phi+
+       \widetilde\Phi^\dagger\widetilde\Phi
+      =2|\phi|^2
+      =2\sqrt{M^\dagger M}.
+  \]
+  Therefore
+  \[
+    g_{M\bar M}=\partial_M\partial_{\bar M}K
+      =\frac1{2|M|},
+    \qquad
+    ds^2=\frac{|dM|^2}{2|M|}.
+  \]
+  The metric is singular at \(M=0\).  Away from the origin the photon and
+  gaugino are massive by the supersymmetric Higgs mechanism and may be
+  integrated out.  At the origin the gauge symmetry is restored and this
+  vector multiplet becomes massless, so the low-energy description in
+  terms of \(M\) alone necessarily breaks down.  Equivalently,
+  \(w=\sqrt{2M}\) makes the metric locally flat but identifies
+  \(w\sim-w\), displaying the conical \(\mathbb C/\mathbb Z_2\)
+  singularity.
 
   \SupplementarySolution{12}{The \(SU(3)\) Coulomb Branch}
   \begin{enumerate}

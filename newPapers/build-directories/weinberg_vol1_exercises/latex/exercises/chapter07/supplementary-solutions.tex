@@ -620,64 +620,71 @@ choice \(\widetilde b=-\widetilde a\), one has
 \end{enumerate}
 \end{enumerate}
 
-\SupplementarySolution{7}{Dirac Brackets and the Reduced Poisson Geometry}
+\SupplementarySolution{7}{Recovering Nonrelativistic Quantum Mechanics}
 \begin{enumerate}
 \item
-By definition,
+The number-operator algebra gives
 \[
- \{\chi_A,F\}_{\rm D}
- =\{\chi_A,F\}
- -\{\chi_A,\chi_B\}C^{BC}\{\chi_C,F\}.
+ [P^i,a_{\mathbf q}]=-q^i a_{\mathbf q},
+ \qquad
+ [P^i,a_{\mathbf q}^\dagger]=q^i a_{\mathbf q}^\dagger.
 \]
-Since
-\(\{\chi_A,\chi_B\}=C_{AB}\) and
-\(C_{AB}C^{BC}=\delta_A{}^C\), the second term is exactly
-\(-\{\chi_A,F\}\).  Thus
+Consequently
 \[
- \boxed{\{\chi_A,F\}_{\rm D}=0}
+ [P^i,\Psi(\mathbf x)]=i\partial_i\Psi(\mathbf x),
+ \qquad
+ [P^i,\Psi^\dagger(\mathbf x)]
+ =i\partial_i\Psi^\dagger(\mathbf x).
 \]
-without first imposing the constraints.  This strong identity is why
-the second-class equations may be used before or after computing a
-Dirac bracket, and why quantization by replacing Dirac brackets with
-commutators is consistent with setting the constraint operators to
-zero.
+Thus
+\(e^{-i\boldsymbol\epsilon\cdot\mathbf P}\Psi(\mathbf x)
+e^{i\boldsymbol\epsilon\cdot\mathbf P}
+=\Psi(\mathbf x+\boldsymbol\epsilon)\) to first order, so \(P^i\)
+generates translations.  Since both \(H\) and \(P^i\) are diagonal
+integrals of mutually commuting number operators,
+\[
+ \boxed{[P^i,H]=0.}
+\]
 \item
-Let \(P^{IJ}\) be the Poisson tensor and
-\(\chi_{A,I}=\partial_I\chi_A\).  The Dirac tensor is
+The field commutator is
 \[
- P_{\rm D}^{IJ}
- =P^{IJ}-P^{IK}\chi_{A,K}C^{AB}\chi_{B,L}P^{LJ}.
+ [\Psi(\mathbf y),\Psi^\dagger(\mathbf x)]
+ =\delta^d(\mathbf y-\mathbf x).
 \]
-Contracting with a constraint gradient gives
+Normal ordering makes \(X^i\ket{\Omega}=0\), and therefore
 \[
- P_{\rm D}^{IJ}\chi_{C,J}
- =P^{IJ}\chi_{C,J}
- -P^{IK}\chi_{A,K}C^{AB}C_{BC}=0.
+ [X^i,\Psi^\dagger(\mathbf x)]
+ =\int d^d\mathbf y\,
+ y^i\Psi^\dagger(\mathbf y)
+ [\Psi(\mathbf y),\Psi^\dagger(\mathbf x)]
+ =x^i\Psi^\dagger(\mathbf x).
 \]
-It therefore removes every component normal to the constraint surface.
-For functions whose Hamiltonian vector fields are tangent to the
-surface, the subtracted normal component vanishes, and \(P_{\rm D}\)
-acts as the inverse of the pullback symplectic form.  This identifies
-the Dirac bracket with the intrinsic Poisson bracket of the reduced
-phase space.
+It follows immediately that
+\[
+ \boxed{X^i\ket{\mathbf x}=x^i\ket{\mathbf x}.}
+\]
 \item
-Let
-\(\chi'_1=e^f\chi_1\) and \(\chi'_2=e^{-f}\chi_2\).  Product rules give
+Linearity and the preceding commutator give
 \[
- \{F,\chi'_1\}=e^f\{F,\chi_1\}+e^f\chi_1\{F,f\},
+ X^i\ket{\psi}
+ =\int d^d\mathbf x\,x^i\psi(\mathbf x)\ket{\mathbf x}.
 \]
-and the analogous expression for \(\chi'_2\).  Hence, on the common
-surface,
+For momentum,
 \[
- \{F,\chi'_A\}\simeq M_A{}^B\{F,\chi_B\},
-\qquad M=\operatorname{diag}(e^f,e^{-f}).
+ \begin{split}
+ P^i\ket{\psi}
+ &=\int d^d\mathbf x\,\psi(\mathbf x)
+ [P^i,\Psi^\dagger(\mathbf x)]\ket{\Omega}\\
+ &=i\int d^d\mathbf x\,\psi(\mathbf x)
+ \partial_i\ket{\mathbf x}\\
+ &=-i\int d^d\mathbf x\,
+ (\partial_i\psi(\mathbf x))\ket{\mathbf x}.
+ \end{split}
 \]
-All derivatives of \(f\) in \(C'_{AB}\) multiply at least one
-constraint, so \(C'\simeq MCM^{\mathsf T}\) and
-\((C')^{-1}\simeq(M^{\mathsf T})^{-1}C^{-1}M^{-1}\).  The matrices \(M\) cancel in
-the Dirac correction.  Therefore
-\(\{F,G\}'_{\rm D}\simeq\{F,G\}_{\rm D}\), including the derivative
-terms that disappear only after restriction.
+The final equality is integration by parts; the assumed falloff removes
+the boundary term.  Hence the one-particle sector carries exactly the
+Schr\"odinger representation
+\(X^i=x^i\) and \(P^i=-i\partial_i\).
 \end{enumerate}
 
 \SupplementarySolution{8}{Field Redefinition and Vanishing Scalar Scattering}
@@ -974,69 +981,82 @@ The unknown multiplier cancels, so conservation follows without solving
 for it.
 \end{enumerate}
 
-\SupplementarySolution{11}{Target-Space Covariance, Curvature, and Stereographic Coordinates}
+\SupplementarySolution{11}{Quantization and Charge of a Complex Scalar Field}
 \begin{enumerate}
 \item
-Let
-\(\pi^a=\pi^a(\xi)\).  Then
+At equal time, insert the mode expansion into
+\([\Phi(\mathbf x),\dot\Phi^\dagger(\mathbf y)]\).  The terms containing
+\(a\) and \(a^\dagger\) and those containing \(b^\dagger\) and \(b\)
+must reproduce the Fourier representation of the delta function.  One
+finds two independent oscillator algebras,
 \[
- \partial_\mu\pi^a
- =\frac{\partial\pi^a}{\partial\xi^\alpha}
-  \partial_\mu\xi^\alpha .
+ \boxed{
+ [a_{\mathbf p},a_{\mathbf q}^\dagger]
+ =[b_{\mathbf p},b_{\mathbf q}^\dagger]
+ =(2\pi)^{D-1}\delta^{D-1}(\mathbf p-\mathbf q),}
 \]
-Substitution into the kinetic term gives the transformed metric
+with
 \[
- g'_{\alpha\beta}(\xi)
- =\frac{\partial\pi^a}{\partial\xi^\alpha}
-  \frac{\partial\pi^b}{\partial\xi^\beta}g_{ab}(\pi(\xi)).
+ [a_{\mathbf p},a_{\mathbf q}]
+ =[b_{\mathbf p},b_{\mathbf q}]
+ =[a_{\mathbf p},b_{\mathbf q}]
+ =[a_{\mathbf p},b_{\mathbf q}^\dagger]=0,
 \]
-Thus
-\[
- g_{ab}\partial_\mu\pi^a\partial^\mu\pi^b
- =g'_{\alpha\beta}
-  \partial_\mu\xi^\alpha\partial^\mu\xi^\beta.
-\]
-The spacetime Lagrangian is unchanged: it is a scalar under
-reparametrizations of the target.  Only the coordinate representation
-of the field-space metric changes.
+and the Hermitian conjugates of these relations.  In particular the
+particle and antiparticle oscillators are unrelated, as required for a
+complex field.
 \item
-In angular coordinates the unit two-sphere has
-\[
- ds^2=d\theta^2+\sin^2\theta\,d\varphi^2 .
-\]
-The nonzero Christoffel symbols include
-\(\Gamma^\theta_{\varphi\varphi}=-\sin\theta\cos\theta\) and
-\(\Gamma^\varphi_{\theta\varphi}=\cot\theta\).  They give
-\[
- R_{\theta\varphi\theta\varphi}=\sin^2\theta,
-\]
-which is nonzero away from the coordinate poles.  Curvature is a tensor,
-so an invertible field redefinition cannot make it vanish.  A globally
-constant kinetic metric would have zero Riemann tensor.  One may flatten
-the metric at a single field value by normal coordinates, but not over
-an open region of the sphere.
-\item
-With \(r^2=u^2+v^2\), choose
-\[
- n=\frac1{1+r^2}(2u,2v,1-r^2).
-\]
-Direct differentiation gives
-\[
- dn\cdot dn=\frac{4(du^2+dv^2)}{(1+r^2)^2}.
-\]
-For the mostly-plus sigma-model density, the canonical momenta are
-\[
- p_u=\frac{4\dot u}{e^2(1+r^2)^2},\qquad
- p_v=\frac{4\dot v}{e^2(1+r^2)^2}.
-\]
-The exact Hamiltonian density is
+The Hamiltonian density is
 \[
  \mathcal H
- =\frac{e^2(1+r^2)^2}{8}(p_u^2+p_v^2)
- +\frac{2}{e^2(1+r^2)^2}
- \left[(\boldsymbol\nabla u)^2+(\boldsymbol\nabla v)^2\right].
+ =\dot\Phi^\dagger\dot\Phi
+ +\boldsymbol\nabla\Phi^\dagger\cdot\boldsymbol\nabla\Phi
+ +m^2\Phi^\dagger\Phi.
 \]
-The stereographic conformal factor is inverted only in the momentum
-term, as required by the Legendre transform.
+The spatial integral kills the mixed terms; on the mass shell
+\(E_{\mathbf p}^2=\mathbf p^2+m^2\).  Hence
+\[
+ H=\int\frac{d^{D-1}\mathbf p}{(2\pi)^{D-1}}
+ E_{\mathbf p}
+ \left(a_{\mathbf p}^\dagger a_{\mathbf p}
+ +b_{\mathbf p}b_{\mathbf p}^\dagger\right).
+\]
+Reordering the second term gives
+\[
+ \boxed{
+ H=\int\frac{d^{D-1}\mathbf p}{(2\pi)^{D-1}}
+ E_{\mathbf p}
+ \left(a_{\mathbf p}^\dagger a_{\mathbf p}
+ +b_{\mathbf p}^\dagger b_{\mathbf p}\right)
+ +E_{\rm vac},}
+\]
+where
+\(E_{\rm vac}=\delta^{D-1}(0)\int d^{D-1}\mathbf p\,E_{\mathbf p}\)
+in the displayed continuum normalization.  Normal ordering removes this
+state-independent constant.
+\item
+Since \(\partial^0=-\partial_0\), the supplied current gives
+\[
+ Q=i\int d^{D-1}\mathbf x\left(
+ \dot\Phi^\dagger\Phi-\Phi^\dagger\dot\Phi\right).
+\]
+Substitution of the modes yields, after normal ordering,
+\[
+ \boxed{
+ Q=\int\frac{d^{D-1}\mathbf p}{(2\pi)^{D-1}}
+ \left(b_{\mathbf p}^\dagger b_{\mathbf p}
+ -a_{\mathbf p}^\dagger a_{\mathbf p}\right).}
+\]
+Therefore
+\[
+ Q,a_{\mathbf p}^\dagger\ket{\Omega}
+ =-a_{\mathbf p}^\dagger\ket{\Omega},
+ \qquad
+ Q,b_{\mathbf p}^\dagger\ket{\Omega}
+ =+b_{\mathbf p}^\dagger\ket{\Omega}.
+\]
+Thus the two equal-mass species have opposite conserved charges.  Which
+one is called the particle is a convention tied to the sign chosen for
+the current; either way, one species is the antiparticle of the other.
 \end{enumerate}
 \end{enumerate}

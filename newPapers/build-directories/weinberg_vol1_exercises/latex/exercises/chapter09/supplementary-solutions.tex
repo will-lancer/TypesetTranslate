@@ -84,66 +84,80 @@ Replacing \(V(x-\xi)\) by \(V(x)\) changes the integrand by a term linear in
 displayed equation at this order; differences first matter in the
 higher-order definition of the discretized path integral.
 
-\SupplementarySolution{3}{The Free Kernel, Composition, and Dirichlet Fluctuations}
-\begin{enumerate}
-\item
-Successive convolution of the \(N\) identical Gaussian slices gives
+\SupplementarySolution{3}{The Harmonic-Oscillator Propagator from the Path Integral}
+The Lorentzian action is
 \[
- K_0(x_f,T;x_i,0)=
- \left(\frac{m}{2\pi iT}\right)^{1/2}
- \exp\left[\frac{im(x_f-x_i)^2}{2T}\right],
-\qquad T>0.
+ S[q]=\frac m2\int_0^Tdt\,
+ \left(\dot q^{,2}-\omega^2q^2\right).
 \]
-Equivalently, this is the momentum integral
+The unique classical path away from the caustics
+\(\sin\omega T=0\) is
 \[
- \int\frac{dp}{2\pi}
- e^{ip(x_f-x_i)-ip^2T/(2m)}.
+ q_{\rm cl}(t)=
+ \frac{q\sin[\omega(T-t)]+q'\sin(\omega t)}{\sin(\omega T)}.
 \]
-As \(T\to0^+\), the latter representation converges distributionally to
-\(\delta(x_f-x_i)\), fixing the branch of the square root.  In units with
-\(\hbar=1\), \(m/T\) has dimension length\(^{-2}\), so the prefactor has
-dimension length\(^{-1}\), as required for a one-dimensional position
-kernel.
-\item
-Write
+Using the equation of motion to reduce the action to its endpoint term
+gives
 \[
- K_0(x_2,T;x_0,0)=A(T)
- e^{im(x_2-x_0)^2/(2T)}.
+ \boxed{
+ S_{\rm cl}=
+ \frac{m\omega}{2\sin(\omega T)}
+ \left[(q'^2+q^2)\cos(\omega T)-2qq'\right].}
 \]
-Composition at \(T=T_1+T_2\) requires
+
+Write \(q=q_{\rm cl}+\eta\).  The cross term vanishes by the classical
+equation and the fixed endpoint conditions, leaving
 \[
- A(T)=A(T_2)A(T_1)
- \left(\frac{2\pi iT_1T_2}{mT}\right)^{1/2}.
+ S[q]=S_{\rm cl}
+ +\frac m2\int_0^Tdt\left(\dot\eta^{,2}-\omega^2\eta^2\right).
 \]
-Hence \(B(T)\equiv A(T)\sqrt T\) is constant, and substitution back into
-the same equation gives \(B=\sqrt{m/(2\pi i)}\).  Therefore
+The complete Dirichlet expansion is
 \[
- A(T)=\left(\frac{m}{2\pi iT}\right)^{1/2}.
+ \eta(t)=\sum_{n=1}^{\infty}\eta_n
+ \sin\frac{n\pi t}{T},
 \]
-The sign and phase of the root are chosen continuously from \(T=0^+\);
-with this choice \(K_0\) approaches the delta distribution rather than its
-negative.
-\item
-Set \(x=x_{\rm cl}+\eta\), where
-\(\eta(0)=\eta(T)=0\).  The fluctuation action is
+for which
 \[
- S_{\rm fl}=\frac m2\int_0^Tdt\,\dot\eta^2
- =\frac12\int_0^Tdt\,\eta(-m\partial_t^2)\eta.
+ S_{\rm fl}
+ =\frac{mT}{4}\sum_{n=1}^{\infty}
+ \left[\left(\frac{n\pi}{T}\right)^2-\omega^2\right]\eta_n^2.
 \]
-The normalized eigenfunctions and eigenvalues are
+Each mode is an ordinary Fresnel Gaussian.  Dividing its determinant by
+the free-particle determinant removes every \(k\)-independent measure
+factor:
 \[
- u_n(t)=\sqrt{\frac2T}\sin\frac{n\pi t}{T},
-\qquad
- \lambda_n=m\left(\frac{n\pi}{T}\right)^2,
-\qquad n=1,2,\ldots.
+ \frac{\mathcal N_\omega(T)}{\mathcal N_0(T)}
+ =\prod_{n=1}^{\infty}
+ \left[1-\frac{\omega^2T^2}{n^2\pi^2}\right]^{-1/2}.
 \]
-The Gaussian fluctuation integral is formally
-\((\det[-m\partial_t^2])^{-1/2}\).  Comparing determinant ratios at two
-times, or using zeta regularization with \(\zeta(0)=-1/2\), leaves the
-scaling \(T^{-1/2}\).  The absolute constant is not fixed by the continuum
-determinant alone; the short-time delta normalization supplies
-\(\sqrt{m/(2\pi i)}\).
-\end{enumerate}
+Euler's product
+\[
+ \frac{\sin z}{z}
+ =\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2\pi^2}\right)
+\]
+therefore gives
+\[
+ \mathcal N_\omega(T)
+ =\sqrt{\frac{\omega T}{\sin(\omega T)}}
+ \sqrt{\frac{m}{2\pi iT}}
+ =\sqrt{\frac{m\omega}{2\pi i\sin(\omega T)}}.
+\]
+The full answer is
+\[
+ \boxed{
+ K_\omega(q',T;q,0)
+ =\sqrt{\frac{m\omega}{2\pi i\sin(\omega T)}}
+ \exp\left\{
+ \frac{im\omega}{2\sin(\omega T)}
+ \left[(q'^2+q^2)\cos(\omega T)-2qq'\right]
+ \right\}.}
+\]
+The square root is continued from \(T=0^+\) with the same \(i0\)
+prescription as the free kernel; crossing a zero of \(\sin\omega T\)
+produces the usual Maslov phase.  Finally,
+\(\sin\omega T\sim\omega T\) and
+\(\cos\omega T\sim1-\omega^2T^2/2\), so the boxed result tends exactly to
+the supplied free-particle kernel when \(k=m\omega^2\to0\).
 
 \SupplementarySolution{4}{The Cubic Anharmonic Oscillator through Order \(\lambda^2\)}
 \begin{enumerate}
@@ -483,47 +497,59 @@ for the reality relation between \(\mathbf p\) and \(-\mathbf p\).  This
 regulator-dependent constant cancels between normalized matrix elements,
 whereas the kernel \(E_{\mathbf p}\) and its inverse covariance remain.
 
-\SupplementarySolution{9}{Vacuum Boundaries and the Normalized Ratio and No-Production Probability from a Source}
+\SupplementarySolution{9}{Schwinger--Dyson Equations from Functional Integration by Parts}
 \begin{enumerate}
 \item
-On a finite interval the path integral contains the boundary factors
-\(\Psi_0[\phi_i]\Psi_0[\phi_f]^*\).  Thus
+The functional product rule gives
 \[
- \langle T\phi(x_1)\cdots\phi(x_n)\rangle
- =\lim_{T\to\infty}
- \frac{\int_{\!-T}^{T}\mathcal D\phi\,
- \Psi_0[\phi_f]^*\phi(x_1)\cdots\phi(x_n)
- e^{iS[\phi]}\Psi_0[\phi_i]}
- {\int_{\!-T}^{T}\mathcal D\phi\,
- \Psi_0[\phi_f]^*e^{iS[\phi]}\Psi_0[\phi_i]}.
+ \begin{split}
+ 0={}&\int\mathcal D\phi\left[
+ \delta^{d+1}(x-y)
+ +i\phi(y)\frac{\delta S}{\delta\phi(x)}
+ \right]e^{iS[\phi]}.
+ \end{split}
 \]
-Equivalently, adiabatically replace \(H\) by \((1-i\epsilon)H\).  Excited
-components at the two ends are exponentially damped, leaving the vacuum.
-The denominator removes the vacuum-to-vacuum amplitude, including its
-phase and disconnected vacuum bubbles, so the normalized expectation of
-\(\mathbf{1}\) is exactly one.
+The \(i0\) prescription makes the boundary term in field space vanish.
+After division by \(Z\), solving for the second term gives
+\[
+ \boxed{
+ \left\langle\frac{\delta S}{\delta\phi(x)}\phi(y)\right\rangle
+ =i\delta^{d+1}(x-y).}
+\]
+The brackets denote the normalized, time-ordered path-integral
+expectation value.  No expansion in the couplings was used.
 \item
-The normalized vacuum amplitude is
+Varying the free action and integrating the kinetic term by parts gives
 \[
- \OutBra{\Omega}\InKet{\Omega;J}
- =\exp\left[\frac i2\int\frac{d^4p}{(2\pi)^4}
- \frac{\widetilde J(-p)\widetilde J(p)}
- {p^2+m^2-i0}\right].
+ \frac{\delta S_0}{\delta\phi(x)}
+ =(\Box_x-m^2)\phi(x).
 \]
-Using
-\((u-i0)^{-1}=\operatorname{PV}(1/u)+i\pi\delta(u)\), the principal-value
-part is a phase.  Hence
+Substitution in the first result yields
 \[
- \boxed{\quad
- P_0=
- \left|\OutBra{\Omega}\InKet{\Omega;J}\right|^2
- =\exp\left[-\int\frac{d^3p}{(2\pi)^3\,2E_{\mathbf p}}
- |\widetilde J(E_{\mathbf p},\mathbf p)|^2\right].
- \quad}
+ \boxed{
+ (\Box_x-m^2)
+ \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}
+ =i\delta^{d+1}(x-y).}
 \]
-The exponent is minus the mean number of produced quanta.  Only the
-on-shell source appears, so a sufficiently slow source produces no
-particles.
+Thus the classical equation holds whenever \(x\ne y\); the failure at
+coincidence is the contact term generated when the functional derivative
+acts on the insertion.
+\item
+Use \(\phi(y)\phi(z)e^{iS_0}\) as the differentiated expression.  The two
+possible insertion derivatives give
+\[
+ \begin{split}
+ &(\Box_x-m^2)
+ \bra{\Omega}T\{\phi(x)\phi(y)\phi(z)\}\ket{\Omega}\\
+ &\quad=i\delta^{d+1}(x-y)\bra{\Omega}\phi(z)\ket{\Omega}
+ +i\delta^{d+1}(x-z)\bra{\Omega}\phi(y)\ket{\Omega}.
+ \end{split}
+\]
+The free vacuum is invariant under \(\phi\mapsto-\phi\), so both
+one-point functions vanish.  Hence the three-point function and the
+right-hand side are zero, but the unsimplified equation displays the two
+contact terms and generalizes directly to theories with nonzero one-point
+functions.
 \end{enumerate}
 
 \SupplementarySolution{10}{Low-Order Correlators in \(\lambda\phi^4\)}

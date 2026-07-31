@@ -108,171 +108,374 @@
     the integral of the Chern--Pontryagin density.
   \end{enumerate}
 
-  \SupplementarySolution{2}{Anomalous Ward Identities and Removable Terms}
+  \SupplementarySolution{2}{Axial and Standard-Model Anomalies}
   \begin{enumerate}
     \item[(a)]
-    In a background field,
-    \[
-      \partial_\mu\langle J_5^\mu(x)\rangle_A
-        =C F_{\alpha\beta}(x)\widetilde F^{\alpha\beta}(x).
-    \]
-    Each derivative with respect to \(A\) inserts a vector current.  At
-    \(A=0\),
-    \[
-      \frac{\delta^2(F_{\alpha\beta}\widetilde F^{\alpha\beta})(x)}
-        {\delta A_\nu(y)\delta A_\rho(z)}
-        =
-        4\epsilon^{\nu\rho\lambda\sigma}
-         \partial_\lambda^x\delta^4(x-y)
-         \partial_\sigma^x\delta^4(x-z),
-    \]
-    with the overall sign fixed by the definition of
-    \(\widetilde F\).  Thus, suppressing conventional factors of \(i\)
-    associated with current insertions,
-    \[
-      \partial_\mu^x
-      \langle T J_5^\mu(x)J^\nu(y)J^\rho(z)\rangle
-        =
-        4C\epsilon^{\nu\rho\lambda\sigma}
-         \partial_\lambda^x\delta^4(x-y)
-         \partial_\sigma^x\delta^4(x-z).
-    \]
-    Fourier transformation gives
-    \[
-      q_\mu T^{\mu\nu\rho}(k_1,k_2)
-        =4C\epsilon^{\nu\rho\lambda\sigma}
-         k_{1\lambda}k_{2\sigma},
-      \qquad q=k_1+k_2,
-    \]
-    again up to the common Fourier-sign convention.
+    An anomaly is the failure of a symmetry of the classical action to
+    survive quantization.  Equivalently, no regulator and set of local
+    counterterms preserves all of the corresponding Ward identities.  If
+    the symmetry is global, the quantum theory remains consistent, but
+    the current is not conserved.  The anomalous Ward identity then has
+    observable consequences, such as the decay
+    \(\pi^0\to\gamma\gamma\).  A gauge symmetry instead removes
+    unphysical polarizations and is needed for the BRST construction of
+    the physical Hilbert space.  A gauge anomaly therefore destroys gauge
+    invariance, unitarity, and consistency; it must cancel among the
+    chiral fields.
+
     \item[(b)]
-    If
-    \(\mathcal G(\alpha,A)=\delta_\alpha B[A]\), define
-    \(\Gamma'=\Gamma-B\).  Then
+    The equations of motion and their adjoints give
     \[
-      \delta_\alpha\Gamma'
-        =\mathcal G-\delta_\alpha B=0.
+      \gamma^\mu D_\mu\psi=0,\qquad
+      (D_\mu\overline\psi)\gamma^\mu=0.
     \]
-    Locality of \(B\) is essential: a nonlocal subtraction would change
-    the physical long-distance theory rather than select a
-    renormalization prescription.
+    Consequently the vector current
+    \(J^\mu=-i\overline\psi\gamma^\mu\psi\) obeys
+    \[
+      \partial_\mu J^\mu
+       =-i(D_\mu\overline\psi)\gamma^\mu\psi
+        -i\overline\psi\gamma^\mu D_\mu\psi=0.
+    \]
+    Since \(\{\gamma_5,\gamma^\mu\}=0\), the same calculation gives
+    \(\partial_\mu J_5^\mu=0\) classically for
+    \(J_5^\mu=-i\overline\psi\gamma^\mu\gamma_5\psi\).
 
-    In BRST language replace \(\alpha\) by the ghost \(\omega\).
-    Consistency requires \(s\mathcal G=0\).  An anomaly of the form
-    \(\mathcal G=sB\) is exact and removable, while a closed functional
-    that is not exact defines a nonzero class in local BRST cohomology at
-    ghost number one.  Finiteness and locality say that the obstruction is
-    a definite local quantum effect; non-exactness says that no allowed
-    counterterm can erase it.
-  \end{enumerate}
+    Quantum mechanically, choose a regulator that preserves the vector
+    gauge symmetry.  Under the local axial change of variables
+    \(\psi\mapsto e^{i\beta(x)\gamma_5}\psi\), the action produces the
+    classical divergence, while the fermion measure has the regulated
+    Jacobian
+    \[
+      \delta\log\mathcal D\psi\,\mathcal D\overline\psi
+       =-2i\int d^4x\,\beta(x)
+        \lim_{M\to\infty}
+        \operatorname{tr}_{D}
+        \left[\gamma_5e^{-\slashed D^{\,2}/M^2}\right]_{x,x}.
+    \]
+    In the heat-kernel expansion only the term quadratic in
+    \(F_{\mu\nu}\) has four gamma matrices and survives the
+    \(\gamma_5\) trace.  The Gaussian momentum integral and the supplied
+    identity give
+    \[
+      \lim_{M\to\infty}
+        \operatorname{tr}_{D}
+        \left[\gamma_5e^{-\slashed D^{\,2}/M^2}\right]_{x,x}
+       =\frac{ie^2}{32\pi^2}
+        \epsilon^{\alpha\beta\gamma\delta}
+        F_{\alpha\beta}F_{\gamma\delta},
+    \]
+    with the displayed sign fixed by the volume's orientation and current
+    convention.  The anomalous Ward identity is therefore
+    \[
+      \boxed{\partial_\mu J_5^\mu
+       =-\frac{e^2}{16\pi^2}
+        \epsilon^{\alpha\beta\gamma\delta}
+        F_{\alpha\beta}F_{\gamma\delta}.}
+    \]
+    The same regulator preserves
+    \(\partial_\mu J^\mu=0\): the anomaly has been assigned to the axial,
+    not the gauge, Ward identity.
 
-  \SupplementarySolution{3}{Spectral Flow from Two to Four Dimensions}
-  \begin{enumerate}
-    \item[(a)]
-    The number of momentum levels per interval \(dp\) is
-    \(L\,dp/(2\pi)\).  In time \(dt\), every charged level moves by
-    \(dp=qE\,dt\), so
-    \[
-      dN_{\rm cross}=\frac{qEL}{2\pi}\,dt.
-    \]
-    A crossing creates a right-moving particle and a left-moving hole, so
-    the axial charge \(Q_5=N_R-N_L\) changes by two units.  Therefore
-    \[
-      \frac{dQ_5}{dt}
-        =2\frac{qEL}{2\pi}
-        =\frac{qEL}{\pi}.
-    \]
-    Dividing by \(L\) gives
-    \[
-      \boxed{\partial_\mu J_5^\mu=\frac{q}{\pi}E}
-    \]
-    for the convention in which \(J_5^\mu\) counts chirality but does not
-    include an additional factor of \(q\).  Reversing the orientation of
-    the circle or the sign convention for \(E\) reverses both sides.
-    \item[(b)]
-    Each lowest-Landau-level channel behaves as a massless
-    \(1+1\)-dimensional fermion along the magnetic field.  The number of
-    channels per transverse area is
-    \[
-      \frac{|qB|}{2\pi}.
-    \]
-    Multiplying by the two-dimensional production rate per unit length,
-    and using the spin orientation of the lowest level to restore the sign
-    of \(qB\), gives
-    \[
-      \frac1V\frac{dQ_5}{dt}
-        =\frac{qE}{\pi}\frac{qB}{2\pi}
-        =\boxed{\frac{q^2}{2\pi^2}\,
-          \mathbf E\cdot\mathbf B}.
-    \]
-    This is the usual four-dimensional axial anomaly.  In covariant
-    notation it is proportional to
-    \(q^2F_{\mu\nu}\widetilde F^{\mu\nu}\); the sign relating that scalar
-    to \(\mathbf E\cdot\mathbf B\) depends on the definitions of
-    \(F_{0i}\) and \(\widetilde F\).
-  \end{enumerate}
-
-  \SupplementarySolution{4}{Chiral Spectra, Representation Indices, and Anomaly Matching}
-  \begin{enumerate}
-    \item[(a)]
-    The local gauge anomaly and the mixed gauge--gravitational anomaly
-    vanish when
-    \[
-      \sum_iq_i^3=0,\qquad \sum_iq_i=0.
-    \]
-    Here
-    \[
-      1+5-7-8+9=0,
-    \]
-    and
-    \[
-      1^3+5^3-7^3-8^3+9^3
-        =1+125-343-512+729=0.
-    \]
-    A Lorentz-invariant mass pairs two left-handed Weyl fields of opposite
-    charges, or permits a Majorana mass for a neutral field.  The set has
-    neither a zero charge nor any pair \(q,-q\).  Thus it is anomaly-free
-    but genuinely chiral: none of its fields can be removed by a
-    gauge-invariant mass term.
-    \item[(b)]
-    On \(R\otimes S\),
-    \(T^a=T_R^a\otimes\mathbf{1}+\mathbf{1}\otimes T_S^a\).
-    In the completely symmetric trace, all mixed terms contain
-    \(\operatorname{tr}T_R^a\) or \(\operatorname{tr}T_S^a\), which
-    vanishes for a simple algebra.  The unmixed terms give
-    \[
-      A(R\otimes S)=d(S)A(R)+d(R)A(S).
-    \]
-    Complex conjugation reverses all three generators, so
-    \(A(\overline R)=-A(R)\).
-
-    For \(SU(3)\),
-    \[
-      A(\mathbf3\otimes\mathbf3)=3+3=6.
-    \]
-    But
-    \(\mathbf3\otimes\mathbf3=\mathbf6\oplus\overline{\mathbf3}\),
-    whence
-    \[
-      6=A(\mathbf6)-1,\qquad
-      \boxed{A(\mathbf6)=7.}
-    \]
     \item[(c)]
-    The background-field variation of the generating functional is a
-    local functional representing the anomaly.  Integrating out a
-    momentum shell can add local counterterms, which change the anomaly
-    only by a cohomologically trivial variation.  A nontrivial class,
-    often quantized by charges or topology, therefore cannot vary
-    continuously with \(\mu\).
+    Work entirely with the left-handed spectrum in the question.  With
+    \(A(\mathbf3)=1\) and
+    \(A(\overline{\mathbf3})=-1\), the pure color anomaly is
+    \[
+      \mathcal A_{SU(3)^3}=2-1-1=0.
+    \]
+    There is no local \(SU(2)^3\) anomaly because every \(SU(2)\)
+    representation is real or pseudoreal.  There are
+    \(3+1=4\) left-handed weak doublets, so the mod-two global
+    \(SU(2)\) anomaly also vanishes.  Anomalies with only one insertion
+    from a simple group vanish because its generators are traceless.
 
-    The infrared functional must reproduce the same background variation.
-    Gapless particles may do so through their own anomalous loops.  If the
-    symmetry is spontaneously broken, Goldstone fields reproduce it
-    through a Wess--Zumino-type action.  A gapped phase may instead carry
-    a topological sector whose response has the required variation.
-    A unique, trivially gapped, symmetry-preserving infrared theory is
-    impossible when the ultraviolet anomaly is nonzero.
+    Omitting common positive Dynkin-index factors, the remaining mixed
+    gauge anomalies are
+    \[
+    \begin{aligned}
+      SU(3)^2U(1)_Y:\quad&
+       2\left(\frac16\right)-\frac23+\frac13=0,\\
+      SU(2)^2U(1)_Y:\quad&
+       3\left(\frac16\right)-\frac12=0.
+    \end{aligned}
+    \]
+    Including color and weak multiplicities,
+    \[
+    \begin{aligned}
+      \mathcal A_{Y^3}
+       &=6\left(\frac16\right)^3
+        +3\left(-\frac23\right)^3
+        +3\left(\frac13\right)^3
+        +2\left(-\frac12\right)^3+1=0,\\
+      \mathcal A_{\mathrm{grav}^2Y}
+       &=6\left(\frac16\right)
+        +3\left(-\frac23\right)
+        +3\left(\frac13\right)
+        +2\left(-\frac12\right)+1=0.
+    \end{aligned}
+    \]
+    The neutral \(\nu^c\) contributes to none of these sums.
+
+    Finally, write the physical electric charges in terms of the
+    doublet hypercharges:
+    \[
+      Q_u=Y_Q+\frac12,\qquad
+      Q_d=Y_Q-\frac12,\qquad
+      Q_e=Y_L-\frac12.
+    \]
+    The \(SU(2)^2U(1)_Y\) condition is
+    \(3Y_Q+Y_L=0\).  Hence
+    \[
+      Q_p=2Q_u+Q_d=3Y_Q+\frac12
+       =-Y_L+\frac12=-Q_e.
+    \]
+    Thus the equality of the proton and electron charge magnitudes is a
+    direct consequence of anomaly cancellation.
   \end{enumerate}
+
+  \SupplementarySolution{3}{Standard-Model Anomalies, CKM Mixing, and CP Violation}
+  \begin{enumerate}
+    \item[(i)]
+    The perturbative color anomaly cancels between two color triplets in
+    \(Q\) and the two antitriplets:
+    \[
+      \mathcal A_{SU(3)^3}=2-1-1=0.
+    \]
+    The weak representation is pseudoreal, so there is no perturbative
+    \(SU(2)^3\) anomaly.  The number of weak doublets per family is
+    \(3+1=4\), which is even, so the Witten mod-two anomaly is absent as
+    well.  Anomalies with a single simple-group generator vanish by
+    tracelessness.  The remaining coefficients are
+    \[
+    \begin{aligned}
+      \mathcal A_{SU(3)^2Y}
+       &\propto
+        2\left(\frac16\right)-\frac23+\frac13=0,\\
+      \mathcal A_{SU(2)^2Y}
+       &\propto
+        3\left(\frac16\right)-\frac12=0,\\
+      \mathcal A_{Y^3}
+       &=6\left(\frac16\right)^3
+        +3\left(-\frac23\right)^3
+        +3\left(\frac13\right)^3
+        +2\left(-\frac12\right)^3+1=0,\\
+      \mathcal A_{\mathrm{grav}^2Y}
+       &=6\left(\frac16\right)
+        +3\left(-\frac23\right)
+        +3\left(\frac13\right)
+        +2\left(-\frac12\right)+1=0.
+    \end{aligned}
+    \]
+    The sterile neutrino has \(Y=0\) and changes none of the results.
+
+    \item[(ii)]
+    Gauge invariance is not merely an optional global symmetry.  It
+    enforces the Ward or Slavnov--Taylor identities that decouple
+    negative-norm polarizations.  With an uncancelled gauge anomaly the
+    BRST charge ceases to be nilpotent, longitudinal gauge modes do not
+    decouple, and amplitudes become gauge dependent and nonunitary.
+    No choice of local counterterm can repair a nontrivial anomaly.
+
+    \item[(iii)]
+    Baryon number is perturbatively conserved at ordinary vertices, but
+    its current has electroweak mixed anomalies.  In an all-left-handed
+    sum,
+    \[
+      \mathcal A_{SU(2)^2B}
+        =N_g\,3\left(\frac13\right)T(\mathbf2)
+        =\frac{N_g}{2},
+    \]
+    and the \(U(1)_Y^2U(1)_B\) coefficient is also nonzero.  The
+    topologically quantized selection rule comes from the \(SU(2)_L\)
+    term.  For a transition of topological charge \(\nu\),
+    \[
+      \boxed{\Delta B=\Delta L=N_g\nu,\qquad
+       \Delta(B-L)=0.}
+    \]
+    Thus for the observed \(N_g=3\), a unit transition has
+    \(\Delta B=\Delta L=3\).  At zero temperature the corresponding
+    instanton amplitude is exponentially tiny, so baryon number is an
+    excellent accidental symmetry in laboratory perturbation theory.
+    At temperatures near or above the electroweak scale, thermal
+    sphaleron transitions are not exponentially suppressed in the same
+    way and can efficiently reprocess \(B+L\), while preserving \(B-L\).
+
+    \item[(iv)]
+    Let unitary matrices diagonalize the Yukawa couplings according to
+    \[
+      U_{uL}^\dagger Y_uU_{uR}=D_u,\qquad
+      U_{dL}^\dagger Y_dU_{dR}=D_d,
+    \]
+    where \(D_u,D_d\) are real, positive, and diagonal.  The neutral and
+    Higgs couplings are diagonal in this mass basis, whereas the charged
+    current becomes
+    \[
+      \mathcal L_W
+       =\frac{g}{\sqrt2}\,
+        \overline u_L^{\,\mathrm{mass}}\gamma^\mu
+        V_{\mathrm{CKM}}d_L^{\,\mathrm{mass}}W_\mu^+
+        +\text{h.c.},
+      \qquad
+      \boxed{V_{\mathrm{CKM}}=U_{uL}^\dagger U_{dL}.}
+    \]
+    A \(3\times3\) unitary matrix has three angles and six phases.
+    Independent rephasings of the six quark fields remove five phases:
+    the common rephasing is baryon number and leaves \(V_{\mathrm{CKM}}\)
+    unchanged.  Thus the CKM matrix contains
+    \[
+      \boxed{3\ \text{mixing angles}+1\ \text{irreducible phase}.}
+    \]
+
+    \item[(v)]
+    The weak source of CP violation is the irreducible CKM phase.  A
+    basis-independent measure is the Jarlskog invariant
+    \[
+      J=\operatorname{Im}
+       \left(V_{ij}V_{kl}V_{il}^*V_{kj}^*\right)
+    \]
+    for any choice of distinct \(i,k\) and \(j,l\), together with
+    nondegenerate up- and down-type masses.  Equivalently one may use the
+    imaginary part of a determinant or trace constructed from
+    \([Y_uY_u^\dagger,Y_dY_d^\dagger]\).
+
+    The second source is the strong-CP angle.  Axial quark rephasings move
+    phase between the QCD theta term and the Yukawa determinants, but the
+    invariant combination is
+    \[
+      \boxed{\overline\theta
+       =\theta_{\mathrm{QCD}}+\arg\det(Y_uY_d)}
+    \]
+    up to the sign convention for the theta term.  The Jarlskog invariant
+    and \(\overline\theta\) are independent.  Field redefinitions can
+    change their parametrization but cannot relate the two physical
+    invariants.
+  \end{enumerate}
+
+  \SupplementarySolution{4}{Anomalies Determine Standard-Model Hypercharge}
+  A gauge anomaly is an obstruction to gauging the symmetry and makes a
+  dynamical gauge theory inconsistent.  An ABJ anomaly is the quantum
+  nonconservation of a classically conserved global current; the theory is
+  consistent, but the symmetry is not exact.  A 't~Hooft anomaly is the
+  obstruction encountered when an exact global symmetry is coupled to
+  background gauge fields.  It is invariant under renormalization-group
+  flow and must be reproduced by the infrared degrees of freedom, symmetry
+  breaking, or a topological sector.
+
+  \begin{enumerate}
+    \item[(i)]
+    Convert each right-handed field to a left-handed conjugate when
+    evaluating anomalies.  The \(SU(3)^3\) coefficient is
+    \(2-1-1=0\) independently of the hypercharges.  The local
+    \(SU(2)^3\) coefficient vanishes because the doublet is pseudoreal,
+    and the global mod-two anomaly vanishes because there are four
+    doublets: three in \(Q_L\) and one in \(L_L\).  Diagrams with only one
+    generator of either simple group vanish by tracelessness.  Thus the
+    nontrivial local gauge-anomaly conditions are
+    \[
+    \begin{aligned}
+      SU(3)^2U(1):\quad&2q-u-d=0,\\
+      SU(2)^2U(1):\quad&3q+l=0,\\
+      U(1)^3:\quad&
+        6q^3+2l^3-3u^3-3d^3-x^3=0.
+    \end{aligned}
+    \]
+    These are all the conditions requested before imposing the mixed
+    gravitational anomaly.
+
+    \item[(ii)]
+    The first equation gives \(u+d=2q\).  Hence
+    \[
+      u-d=(u+d)-2d=2(q-d).
+    \]
+    Since all charges are integers, one may define
+    \[
+      y=\frac{u-d}{2}\in\mathbb Z,\qquad
+      u=q+y,\qquad d=q-y.
+    \]
+
+    \item[(iii)]
+    The second mixed-anomaly equation gives \(l=-3q\).  Substitute this
+    and \(u=q+y,d=q-y\) into the cubic equation:
+    \[
+    \begin{split}
+      0={}&6q^3+2(-3q)^3
+        -3\big[(q+y)^3+(q-y)^3\big]-x^3\\
+       ={}&-54q^3-18qy^2-x^3.
+    \end{split}
+    \]
+    Therefore
+    \[
+      \boxed{54q^3+18y^2q+x^3=0.}
+    \]
+
+    \item[(iv)]
+    For \(q\ne0\), set
+    \[
+      \widetilde y=\frac{y}{q},\qquad
+      \widetilde x=\frac{x}{q}.
+    \]
+    These numbers are rational, and division by \(q^3\) gives
+    \[
+      \boxed{54+18\widetilde y^{\,2}
+       +\widetilde x^{\,3}=0.}
+    \]
+
+    \item[(v)]
+    Define rational \(v,w\) by the change of variables in the question.
+    Solving for them gives
+    \[
+      v=-\frac{3+\widetilde y}{\widetilde x},
+      \qquad
+      w=-\frac{3-\widetilde y}{\widetilde x}.
+    \]
+    The cubic equation is precisely
+    \[
+      v^3+w^3
+       =-\frac{(3+\widetilde y)^3
+                    +(3-\widetilde y)^3}
+                   {\widetilde x^{\,3}}
+       =1.
+    \]
+    Clearing denominators would give an integer solution of
+    \(a^3+b^3=c^3\).  By the stated result, the solution must be trivial:
+    \(v=0,w=1\) or \(w=0,v=1\).  These alternatives give
+    \[
+      \widetilde x=-6,\qquad
+      \widetilde y=\mp3.
+    \]
+    It follows that
+    \[
+      l=-3q,\qquad x=-6q,\qquad
+      \{u,d\}=\{4q,-2q\}.
+    \]
+    The two orderings merely interchange the labels \(u_R,d_R\).
+    Choosing \(q=1\), one conventional ordering is
+    \[
+      \boxed{l=-3,\qquad u=4,\qquad d=-2,\qquad x=-6.}
+    \]
+    These are six times the usual Standard-Model hypercharges.
+
+    \item[(vi)]
+    The mixed gauge--gravitational coefficient, with the same chirality
+    signs, is
+    \[
+      \mathcal A_{\mathrm{grav}^2U(1)}
+       =6q+2l-3u-3d-x.
+    \]
+    Using \(l=-3q\), \(u+d=2q\), and \(x=-6q\), one obtains
+    \[
+      6q-6q-6q+6q=0.
+    \]
+    Thus it cancels automatically on the nonzero-\(q\) solution.
+  \end{enumerate}
+
+  If \(q=0\), the equations instead imply
+  \[
+    l=x=0,\qquad d=-u,
+  \]
+  with \(u\) arbitrary.  This is a vectorlike branch and is not an
+  overall rescaling of the Standard-Model solution.  The assumption
+  \(q\ne0\) is therefore essential to the uniqueness statement.
 
   \SupplementarySolution{5}{Standard-Model Anomaly Cancellation}
   \begin{enumerate}
@@ -592,64 +795,164 @@
     \]
   \end{enumerate}
 
-  \SupplementarySolution{10}{Anomaly Poles, Symmetric Masses, and Real Representations}
+  \SupplementarySolution{10}{Anomaly Matching in an \(SU(2)\) Gauge Theory}
+  A gauge anomaly makes a dynamical gauge symmetry inconsistent.  An ABJ
+  anomaly is the quantum nonconservation of a classical global current.
+  A 't~Hooft anomaly is an obstruction to gauging an exact global symmetry
+  as a background symmetry; it must match between ultraviolet and
+  infrared descriptions.
+
   \begin{enumerate}
-    \item[(a)]
-    Let \(q\) enter the current whose divergence is anomalous.  If the
-    correlator were analytic at \(q=0\), its Taylor expansion would contain
-    no term whose contraction with \(q_\lambda\) reproduces a fixed
-    nonzero anomalous polynomial at the required order while maintaining
-    the other Ward identities.  The longitudinal part must instead have
-    the form
+    \item[(i)]
+    Within the chiral subgroup stipulated in the question, the axial
+    \(U(1)\) is broken by the \(SU(2)\) instanton anomaly, whereas the
+    vector combination survives.  The continuous group is therefore
     \[
-      T_{\rm L}^{\lambda\mu\nu}
-        =C\frac{q^\lambda}{q^2}
-         \epsilon^{\mu\nu\rho\sigma}
-         k_{1\rho}k_{2\sigma},
+      SU(N_f)_L\times SU(N_f)_R\times U(1)_V
     \]
-    so that contraction with \(q_\lambda\) removes the pole and yields the
-    anomaly.
+    up to common center quotients, and the axial transformation leaves a
+    discrete \(\mathbb Z_{2N_f}\) remnant.  The physical right-handed
+    fields transform as
+    \[
+    \begin{array}{c|ccc}
+       &SU(N_f)_L&SU(N_f)_R&U(1)_V\\ \hline
+      \psi_L&\mathbf{N_f}&\mathbf1&+1\\
+      \psi_R&\mathbf1&\mathbf{N_f}&+1
+    \end{array}
+    \]
+    For anomaly sums, \(\psi_R\) is replaced by the left-handed conjugate
+    \(\psi_R^c\), which is in
+    \(\overline{\mathbf{N_f}}\) of \(SU(N_f)_R\) and has \(V=-1\).
 
-    The \(1/q^2\) singularity signals massless propagation.  In a symmetric
-    confining phase it must be supplied by massless composite fermions.
-    In a broken phase a Goldstone pole and its anomalous effective
-    interaction can supply it.  A completely massive, symmetry-preserving
-    spectrum with no topological response cannot.
-    \item[(b)]
-    A symmetry-preserving Dirac mass pairs \(R\) with \(\overline R\); a
-    Majorana mass is possible only in a real or pseudoreal representation.
-    Since
+    \item[(ii)]
+    There are two gauge components for every flavor fundamental.  In the
+    normalization of the question,
     \[
-      A(\overline R)=-A(R),\qquad
-      A(R)=0\quad\text{for real or pseudoreal }R,
+    \begin{aligned}
+      \mathcal A_{SU(N_f)_L^3}&=2,\\
+      \mathcal A_{SU(N_f)_L^2V}&=2,\\
+      \mathcal A_{V^3}
+       &=2N_f(1)^3+2N_f(-1)^3=0,\\
+      \mathcal A_{\mathrm{grav}^2V}
+       &=2N_f-2N_f=0.
+    \end{aligned}
     \]
-    every massive block has zero cubic \(G^3\) anomaly.
+    The first line is a perturbative cubic anomaly for \(N_f\ge3\);
+    the corresponding local cubic invariant vanishes for \(N_f=2\).
 
-    At external momenta \(p\ll m\), massive loops are analytic in \(p/m\)
-    and can be represented by local invariant operators.  They cannot
-    produce the nonanalytic massless pole required by a nonzero anomaly.
-    Thus only degrees of freedom that remain massless, or a Goldstone or
-    topological sector, can carry the infrared matching contribution.
-    \item[(c)]
-    Complex conjugating the symmetric trace and using the intertwiner,
+    A gauge singlet made from \(SU(2)\) fundamentals contains an even
+    number of doublets.  In the theory \(S_0\), it therefore contains an
+    even number of fermions and is bosonic.  A confining phase cannot
+    furnish massless gauge-singlet fermions to match the nonzero flavor
+    anomaly.  Barring a compensating topological sector, the chiral
+    symmetry must consequently break, with its Goldstone effective action
+    matching the anomaly.
+
+    \item[(iii)]
+    The perturbative \(SU(2)_{\rm gauge}^3\) anomaly vanishes because both
+    the fundamental and adjoint representations are pseudoreal or real
+    and have no symmetric cubic invariant.  The Witten anomaly counts
+    doublets modulo two.  The \(N_f\) Dirac fermions give \(2N_f\)
+    left-handed doublets, an even number, while the adjoint has integer
+    isospin and does not change the mod-two obstruction.  Hence neither
+    gauge anomaly is present.
+
+    \item[(iv)]
+    Convert the physical \(\psi_R\) to \(\psi_R^c\).  Both \(\psi_L\) and
+    \(\psi_R^c\) then have \(X=-1\).  The mixed gauge coefficient is
     \[
-      D_R^{abc*}
-        =\operatorname{tr}
-         \left[T_R^{a*}\{T_R^{b*},T_R^{c*}\}\right]
-        =-D_R^{abc}.
+      \mathcal A_{SU(2)_{\rm gauge}^2X}
+       =-N_fI(\mathbf2)-N_fI(\overline{\mathbf2})
+         +qI(\operatorname{adj})
+       =-2N_f+4q.
     \]
-    For Hermitian generators \(D_R^{abc}\) is real: cyclicity makes the
-    trace of \(T^aT^bT^c+T^aT^cT^b\) equal to its complex conjugate.
-    Therefore
+    It vanishes for
     \[
-      \boxed{D_R^{abc}=0.}
+      \boxed{q=\frac{N_f}{2}.}
     \]
-    All finite-dimensional \(SU(2)\) representations are real or
-    pseudoreal, so no perturbative cubic anomaly exists.  The argument is
-    local and perturbative; it does not test the sign of the fermion
-    determinant under a large gauge transformation, which is where a
-    global \(SU(2)\) anomaly can reside.
+
+    \item[(v)]
+    It is useful to list the physical-field charges:
+    \[
+    \begin{array}{c|cccc}
+       &SU(N_f)_L&SU(N_f)_R&U(1)_V&U(1)_X\\ \hline
+      \psi_L&\mathbf{N_f}&\mathbf1&+1&-1\\
+      \psi_R&\mathbf1&\mathbf{N_f}&+1&+1\\
+      \lambda_L&\mathbf1&\mathbf1&0&N_f/2
+    \end{array}
+    \]
+    In a left-handed anomaly sum, \(\psi_R^c\) has \(V=-1,X=-1\).
+    The adjoint has three gauge components.  Thus
+    \[
+    \begin{aligned}
+      \mathcal A_{SU(N_f)_L^3}&=2,\\
+      \mathcal A_{SU(N_f)_L^2X}&=2(-1)=-2,\\
+      \mathcal A_{X^3}
+       &=-2N_f-2N_f
+         +3\left(\frac{N_f}{2}\right)^3
+        =\frac{N_f(3N_f^2-32)}8,\\
+      \mathcal A_{\mathrm{grav}^2X}
+       &=-2N_f-2N_f+3\frac{N_f}{2}
+        =-\frac{5N_f}{2}.
+    \end{aligned}
+    \]
+    For \(N_f=3\), the last two coefficients are
+    \(-15/8\) and \(-15/2\), respectively.
+
+    \item[(vi)]
+    At \(N_f=3\), \(q=3/2\).  Adding the charges and tensoring the
+    flavor representations of the constituents gives
+    \[
+    \begin{array}{c|cccc}
+       &SU(3)_L&SU(3)_R&U(1)_V&U(1)_X\\ \hline
+      \chi&\mathbf3&\overline{\mathbf3}&0&-\tfrac12\\
+      \eta&\overline{\mathbf3}&\mathbf1&+2&-\tfrac12\\
+      \widetilde\eta&\mathbf1&\mathbf3&-2&-\tfrac12
+    \end{array}
+    \]
+    For example,
+    \(X(\chi)=-1+3/2-1=-1/2\).  The epsilon tensor turns the
+    antisymmetric product of two \(SU(3)\) fundamentals into an
+    antifundamental, which gives the representation of \(\eta\);
+    the conjugate construction gives the representation of
+    \(\widetilde\eta\).
+
+    \item[(vii)]
+    The bifundamental \(\chi\) supplies three copies of an
+    \(SU(3)_L\) fundamental, while \(\eta\) supplies one
+    antifundamental.  Therefore
+    \[
+      \mathcal A_{SU(3)_L^3}^{\mathrm{IR}}
+       =3-1=2.
+    \]
+    Both the fundamental and antifundamental have quadratic index one, so
+    \[
+      \mathcal A_{SU(3)_L^2X}^{\mathrm{IR}}
+       =3\left(-\frac12\right)
+        +\left(-\frac12\right)=-2.
+    \]
+    There are \(9\) components of \(\chi\), \(3\) of \(\eta\), and
+    \(3\) of \(\widetilde\eta\), all with \(X=-1/2\).  Hence
+    \[
+    \begin{aligned}
+      \mathcal A_{X^3}^{\mathrm{IR}}
+       &=(9+3+3)\left(-\frac12\right)^3
+        =-\frac{15}{8},\\
+      \mathcal A_{\mathrm{grav}^2X}^{\mathrm{IR}}
+       &=(9+3+3)\left(-\frac12\right)
+        =-\frac{15}{2}.
+    \end{aligned}
+    \]
+    Every requested infrared coefficient equals the \(N_f=3\)
+    ultraviolet coefficient.  The proposed massless composites therefore
+    pass these 't~Hooft anomaly-matching tests in the stipulated chiral
+    subgroup.
   \end{enumerate}
+
+  The calculation above follows the subgroup used by the examination.
+  Because the gauge fundamental is pseudoreal, the actual continuous
+  flavor group is enhanced to \(SU(2N_f)\); a complete phase analysis
+  should formulate matching for that enhanced symmetry as well.
 
   \SupplementarySolution{11}{Spectator Matching and a Wess--Zumino Compensator}
   \begin{enumerate}

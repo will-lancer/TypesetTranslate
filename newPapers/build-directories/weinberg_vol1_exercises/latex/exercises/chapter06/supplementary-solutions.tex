@@ -299,41 +299,96 @@ Thus a quartic position-space vertex contributes \(-i\lambda\), with one
 propagator for each attached line; no factorial is appended to the
 diagrammatic rule.
 
-\SupplementarySolution{4}{The One-Vertex Tadpole Factor and Cubic Self-Energy Factor}
+\SupplementarySolution{4}{Position-Space Feynman Rules in Cubic Scalar Theory}
 \begin{enumerate}
 \item
-The first-order normalized two-point numerator contains
-\[
- \frac{-i\lambda}{4!}\int d^4z\,
- \bra{\Omega}T\{\phi(x)\phi(y)\phi(z)^4\}\ket{\Omega}.
-\]
-Choose the field at \(z\) contracted with \(x\) in four ways and the one
-contracted with \(y\) in three ways.  The last two contract together in
-one way, giving \(12\) contractions.  Since \(12/4!=1/2\),
-\[
- G^{(1)}(x,y)
- =\frac{-i\lambda}{2}\int d^4z\,
- D(x-z)D(y-z)D(0).
-\]
-The remaining contractions either contain a free external contraction
-times a vacuum bubble, which the denominator cancels, or belong to a
-different topology.
+Write \(D_F(x-y)=\bra\Omega T\{\phi(x)\phi(y)\}\ket\Omega\) for the
+free propagator.  The position-space rules are:
+\begin{itemize}
+\item attach a factor \(D_F(x-y)\) to a line whose endpoints are \(x,y\);
+\item attach \(-ig\int d^Dz\) to each cubic interaction vertex;
+\item integrate every internal vertex position and divide by the graph's
+automorphism factor.
+\end{itemize}
+External insertions occur at their specified positions.  Relative to
+\(\phi^4\) theory, every interaction vertex has three incident lines and
+the vertex factor is \(-ig\), rather than four lines and \(-i\lambda\).
+There is no order-\(g\) two-point correction because the corresponding
+vacuum expectation value contains five fields.
+
 \item
-At second order the coefficient before contractions is
+Vacuum normalization removes components touching neither external point.
+The three surviving order-\(g^2\) topologies of the full normalized
+two-point function are
 \[
- \frac{(-ig)^2}{2!(3!)^2}\int d^4z\,d^4w.
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,baseline=-0.5ex,line width=0.65pt,
+ vertex/.style={circle,fill=black,inner sep=1.5pt}]
+ \node at (-0.35,0) {$x$}; \node[vertex] (a) at (0.5,0) {};
+ \node[vertex] (b) at (2.1,0) {}; \node at (2.95,0) {$y$};
+ \draw (-0.1,0)--(a); \draw (b)--(2.7,0);
+ \draw (a) to[bend left=28] (b); \draw (a) to[bend right=28] (b);
+ \node at (3.45,0) {$,$};
+ \node at (3.9,0.38) {$x$}; \node at (3.9,-0.38) {$y$};
+ \node[vertex] (c) at (4.8,0) {}; \node[vertex] (d) at (6.25,0) {};
+ \draw (4.15,0.38)--(c); \draw (4.15,-0.38)--(c); \draw (c)--(d);
+ % A "to[out=..,in=..]" loop leaves and re-enters the vertex marker a hair
+ % apart, which reads as a bulge rather than a loop.  Closed Beziers whose
+ % control arms open by 55 degrees come out round.
+ \draw (6.25,0) .. controls (6.98,-1.04) and (6.98,1.04) .. (6.25,0);
+ \node at (7.10,0) {$,$};
+ \node at (7.55,0) {$x$}; \node[vertex] (e) at (8.3,0) {};
+ \draw (7.8,0)--(e);
+ \draw (8.3,0) .. controls (9.03,-1.04) and (9.03,1.04) .. (8.3,0);
+ \node at (9.30,0) {$\times$};
+ \node[vertex] (f) at (10.3,0) {}; \node at (11.05,0) {$y$};
+ \draw (f)--(10.8,0);
+ \draw (10.3,0) .. controls (9.57,1.04) and (9.57,-1.04) .. (10.3,0);
+\end{tikzpicture}
 \]
-For labeled vertices, choose the field at \(z\) joined to \(x\) in three
-ways and the field at \(w\) joined to \(y\) in three ways.  Pair the two
-remaining \(z\)-fields with the two remaining \(w\)-fields in \(2!\)
-ways.  Including the assignment \(x\leftrightarrow y\) between the two
-vertices gives \(2\cdot3\cdot3\cdot2=36\) contractions.  Dividing by
-\(2(3!)^2=72\) yields \(1/2\):
+They are, respectively, the two-line self-energy graph, the tadpole-chain
+graph (with both external insertions on one vertex), and the disconnected
+product of two one-point tadpoles.  The last graph belongs to the full
+two-point function but not to its connected part.
+
+\item
+Before contractions the second-order coefficient is
 \[
- G^{(2)}_{\rm self}
- =\frac{(-ig)^2}{2}\int d^4z\,d^4w\,
- D(x-z)D(z-w)^2D(w-y).
+ \frac{(-ig)^2}{2!(3!)^2}\int d^Dz\,d^Dw
+ =\frac{(-ig)^2}{72}\int d^Dz\,d^Dw.
 \]
+For the self-energy graph there are
+\[
+ 2\cdot3\cdot3\cdot2!=36
+\]
+contractions: choose which labeled vertex receives \(x\), choose its
+field and the field receiving \(y\), and pair the two remaining legs at
+each vertex.  For the tadpole chain there are likewise
+\[
+ 2\cdot(3\cdot2)\cdot3=36
+\]
+contractions: choose the vertex receiving both labeled external fields,
+assign those fields to two of its legs, and choose the leg at the second
+vertex joined to the first.  For the two one-point components there are
+\[
+ 2\cdot3\cdot3=18
+\]
+contractions.  Thus the multiplicative graph factors are
+\(1/2,1/2,1/4\), or equivalently the symmetry factors are
+\(2,2,4\).
+
+In formulas, with \(D_{ab}=D_F(a-b)\), the complete non-vacuum part is
+\[
+\begin{split}
+ G^{(2)}(x,y)=(-ig)^2\int d^Dz\,d^Dw\Bigl[
+ &\frac12D_{xz}D_{zw}^2D_{wy}\\
+ &+\frac12D_{xz}D_{yz}D_{zw}D_{ww}\\
+ &+\frac14D_{xz}D_{zz}D_{yw}D_{ww}\Bigr].
+\end{split}
+\]
+Diagrams in which \(x\) contracts directly with \(y\) and the two
+vertices form a vacuum graph cancel against the Gell-Mann--Low
+denominator.  If the connected correlator is requested, the final
+\(1/4\) term is also omitted.
 \end{enumerate}
 
 \SupplementarySolution{5}{A Vacuum Bubble Cancels in the Ratio and A Vertex Delta Function from Fourier Phases}
@@ -595,8 +650,27 @@ Put every external momentum in outgoing convention:
 For a connected cubic tree with five external legs,
 \(3V=2I+5\) and \(I=V-1\), so \(V=3\) and \(I=2\).  Its unique topology is
 a chain of three vertices: one external momentum \(q_a\) attaches to the
-middle vertex, while two unordered pairs attach to the end vertices.  The
-complete set of external assignments is
+middle vertex, while two unordered pairs attach to the end vertices.  A
+representative labelling \(a;bc|de\) is
+\begin{center}
+\begin{tikzpicture}[x=0.68cm,y=0.68cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \coordinate (L) at (-1.15,0); \coordinate (M) at (0,0);
+ \coordinate (R) at (1.15,0);
+ \draw (L)--(M)--(R);
+ \draw (L)--(-2.15,0.95); \draw (L)--(-2.15,-0.95);
+ \draw (M)--(0,1.30);
+ \draw (R)--(2.15,0.95); \draw (R)--(2.15,-0.95);
+ \node[vertex] at (L) {}; \node[vertex] at (M) {}; \node[vertex] at (R) {};
+ \node[anchor=south east] at (-2.20,1.00) {\(q_b\)};
+ \node[anchor=north east] at (-2.20,-1.00) {\(q_c\)};
+ \node[anchor=south] at (0,1.34) {\(q_a\)};
+ \node[anchor=south west] at (2.20,1.00) {\(q_d\)};
+ \node[anchor=north west] at (2.20,-1.00) {\(q_e\)};
+\end{tikzpicture}
+\end{center}
+The complete set of external assignments is
 \[
  \begin{split}
  \mathcal P=\{&1;23|45,\ 1;24|35,\ 1;25|34,\\
@@ -636,42 +710,71 @@ symmetric under permutations of the three outgoing particles (indeed, under
 permutations of all five legs after crossing).
 \end{enumerate}
 
-\SupplementarySolution{10}{Reading a Yukawa Fermion Line Backwards and Crossing a Fermion into an Antifermion}
-\begin{enumerate}
-\item
-Let the arrow run from an incoming spinor \(u_b(p)\) through vertices
-\(\Gamma_1,\Gamma_2\) to \(\bar u_a(p')\).  Explicit indices give
+\SupplementarySolution{10}{Pair Creation Through Scalar Exchange}
+The first contribution connecting the two species is the cross term in
+the second-order Dyson expansion,
 \[
- \bar u_a(p')(\Gamma_2)_{ac}
- D_{cd}(q)(\Gamma_1)_{db}u_b(p).
+ \frac{(-ig)^2}{2!}\int d^4x\,d^4y\,
+ T\!\left\{
+ \phi\Psi_1^*\Psi_1(x)\,
+ \phi\Psi_2^*\Psi_2(y)+(x\leftrightarrow y)
+ \right\}.
 \]
-Thus the compact chain is
+The two assignments of the species to \(x,y\) cancel the \(2!\).  Wick
+contracting the two real fields produces one internal \(\phi\) propagator;
+the charged fields at one vertex annihilate the incoming
+\(\Psi_1\overline\Psi_1\) pair and those at the other create the outgoing
+\(\Psi_2\overline\Psi_2\) pair.  The position integrals impose
+four-momentum conservation and set
 \[
- \bar u(p')\,\Gamma_2D_F(q)\Gamma_1\,u(p).
+ k=p+q=p'+q'.
 \]
-The matrices are written in the order encountered when the fermion line
-is followed backward from its arrow, equivalently from the outgoing
-barred spinor toward the incoming spinor.  Reversing this matrix order is
-generally wrong because the gamma matrices and coupling matrices need
-not commute.
-\item
-Suppose the original chain ends with an incoming fermion wavefunction
-\(u(p)\).  Crossing that leg to the final state replaces
+There is no second tree topology: each vertex preserves the species and
+the corresponding complex-scalar charge.
+
+With the convention
 \[
- p\longrightarrow -p,\qquad u(p)\longrightarrow v(p),
+ \left.\OutBra{f}\InKet{i}\right|_c
+ =i(2\pi)^4\delta^4(p+q-p'-q')\,\mathcal M
 \]
-and reverses the external arrow, while the internal matrix order remains
-fixed by the continuous fermion line.  For example,
+and the mostly-plus propagator \(-i/(k^2+\mu^2-i0)\), the diagram gives
 \[
- \bar u(p')\Gamma D_F(q)\Gamma u(p)
- \longrightarrow
- \bar u(p')\Gamma D_F(q')\Gamma v(p).
+\begin{split}
+ i\mathcal M
+ &=(-ig)^2\frac{-i}{k^2+\mu^2-i0},\\
+ \mathcal M
+ &=\boxed{\frac{g^2}{(p+q)^2+\mu^2-i0}}
+ =\frac{g^2}{\mu^2-s-i0}
+ =-\frac{g^2}{s-\mu^2+i0},
+\end{split}
 \]
-An overall phase of the \(v\)-spinor and the sign used in defining the
-crossed invariant amplitude are conventional.  Relative signs between
-different graphs are not: they are fixed by one common ordering of all
-external fermionic operators.
-\end{enumerate}
+where \(s\equiv-(p+q)^2\).  The overall delta function and the standard
+external-state normalizations are displayed separately by the stated
+\(S\)-matrix convention.
+
+In the center-of-momentum frame, put
+\(\mathbf q=-\mathbf p\).  The incoming energy is
+\[
+ E_{\rm in}=2\sqrt{M_1^2+|\mathbf p|^2}.
+\]
+The least possible final energy occurs when the outgoing particles are
+both at rest in their center-of-momentum frame and equals \(2M_2\).
+Energy conservation therefore requires
+\[
+ 2\sqrt{M_1^2+|\mathbf p|^2}\geq2M_2.
+\]
+Consequently
+\[
+ \boxed{
+ |\mathbf p|_{\min}=
+ \begin{cases}
+ \sqrt{M_2^2-M_1^2},&M_2>M_1,\\[2pt]
+ 0,&M_2\leq M_1.
+ \end{cases}}
+\]
+The exchanged-particle pole at \(s=\mu^2\) affects the value (and in an
+ideal stable theory the interpretation) of the amplitude, but not this
+kinematic pair-production threshold.
 
 \SupplementarySolution{11}{Exchange of Identical External Fermions}
 Neutral-scalar exchange gives the direct chain

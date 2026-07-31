@@ -1,47 +1,88 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Witten Index and Vacua at Infinity}
+  \SupplementarySolution{1}{Supersymmetric Quantum Mechanics and Normalizable Ground States}
   \begin{enumerate}
-    \item \emph{Cancellation Behind the Witten Index.}
-    Fix an eigenvalue \(E>0\), and restrict all operators to its
-      eigenspace.  There
-      \[
-        q_E\equiv \frac{Q}{\sqrt E}
-      \]
-      is an involution: \(q_E^2=\mathbf{1}\).  Since
-      \(\{q_E,(-1)^F\}=0\), it maps every bosonic eigenvector bijectively to
-      a fermionic eigenvector of the same energy; its inverse is itself.
-      Therefore
-      \[
-        \operatorname{Tr}_{E}(-1)^F=0
-      \]
-      for every \(E>0\).  The Boltzmann factor is constant on each such
-      eigenspace, so the cancellation also holds in
-      \(\operatorname{Tr}(-1)^F e^{-\beta H}\).  Only vectors with
-      \(E=0\), on which \(Q\) may vanish without providing a partner, can
-      contribute.  Thus the index is the number of bosonic supersymmetric
-      ground states minus the number of fermionic ones and is independent of
-      \(\beta\).
-    \item \emph{A Vacuum Escaping to Infinity.}
-    The auxiliary equation is controlled by
-      \[
-        f_\epsilon'(X)=f+\epsilon X.
-      \]
-      For every \(\epsilon\ne0\) there is one supersymmetric vacuum,
-      \[
-        X_{\rm vac}=-\frac f\epsilon,\qquad V_{\rm vac}=0.
-      \]
-      Its small fluctuations form a massive chiral multiplet of mass
-      \(\lvert\epsilon\rvert\), and the vacuum contributes \(+1\) to the
-      index.  As \(\epsilon\to0\), however,
-      \(\lvert X_{\rm vac}\rvert\to\infty\).  At \(\epsilon=0\) the
-      potential is the positive constant \(V=\lvert f\rvert^2\), so there is
-      no zero-energy state and supersymmetry is broken.  Index invariance
-      assumes that varying parameters does not alter the large-field
-      asymptotics and does not let normalizable states enter from or escape
-      to infinity.  That hypothesis fails here, exactly accounting for the
-      change.
+    \item Complex conjugation reverses the order of the Grassmann factors.
+    In particular,
+    \[
+      \bigl(i\bar\psi\dot\psi\bigr)^*
+       =i\bar\psi\dot\psi
+        -i\frac{d}{dt}(\bar\psi\psi),
+    \]
+    while the remaining terms in (29.1.1) are real.  Direct substitution
+    of (29.1.2), using \(\psi^2=\bar\psi^2=0\), cancels all bulk terms;
+    the terms left over are total time derivatives proportional to
+    \(d(h'\psi)/dt\) and \(d(h'\bar\psi)/dt\).
+
+    The canonical bosonic momentum is \(p=\dot x\).  A convenient phase
+    convention for the two Noether charges is
+    \[
+      \boxed{
+      Q=-\psi\bigl(p-ih'(x)\bigr),
+      \qquad
+      \bar Q=-\bar\psi\bigl(p+ih'(x)\bigr),}
+      \tag{29.1.S1}
+    \]
+    where \(Q\) multiplies \(\bar\epsilon\), \(\bar Q\) multiplies
+    \(\epsilon\), and \(\bar Q=Q^\dagger\).  A simultaneous overall phase
+    change of the charges and supersymmetry parameters is physically
+    immaterial.
+
+    \item The second-class fermionic constraint from the first-order
+    kinetic term gives, after quantization,
+    \[
+      [x,p]=i,
+      \qquad \{\psi,\bar\psi\}=1,
+      \qquad \{\psi,\psi\}=\{\bar\psi,\bar\psi\}=0,
+      \tag{29.1.S2}
+    \]
+    with all bosonic operators commuting with the fermionic ones.  Take
+    \(p=-i\,d/dx\), identify \(\bar\psi\) with exterior multiplication by
+    \(dx\), and identify \(\psi\) with contraction by
+    \(\partial_x\).  The Hilbert space is then
+    \[
+      \mathcal H=L^2\!\left(\mathbb R,\Lambda^*T^*\mathbb R\right),
+      \qquad
+      \Psi(x)=f_0(x)+f_1(x)\,dx.
+      \tag{29.1.S3}
+    \]
+    In this representation,
+    \[
+      Q=i\,\iota_{\partial_x}\bigl(\partial_x+h'\bigr),
+      \qquad
+      \bar Q=i\,dx\wedge\bigl(\partial_x-h'\bigr).
+      \tag{29.1.S4}
+    \]
+    Thus the supercharges are the adjoint pair of differentials obtained
+    by conjugating the de Rham differential by \(e^{-h}\).  Their
+    anticommutator gives
+    \[
+      H=\frac12\{Q,\bar Q\}
+       =\frac12\left[-\partial_x^2+(h')^2
+          +h''\bigl(1-2\bar\psi\psi\bigr)\right]\geq0.
+      \tag{29.1.S5}
+    \]
+
+    \item A zero-energy state must be annihilated by both supercharges.
+    Equation (29.1.S4) gives the two formal possibilities
+    \[
+      f_0(x)=C_0e^{h(x)},
+      \qquad
+      f_1(x)=C_1e^{-h(x)}.
+      \tag{29.1.S6}
+    \]
+    For \(h=-x^4\), only the zero-form is square integrable:
+    \[
+      \boxed{\Psi_0(x)=C e^{-x^4},\qquad
+      |C|^{-2}=\int_{-\infty}^{\infty}e^{-2x^4}\,dx<\infty.}
+      \tag{29.1.S7}
+    \]
+    The one-form candidate grows as \(e^{x^4}\), so the ground state is
+    unique.  A generic cubic has opposite signs at the two ends of the real
+    line.  Consequently \(e^h\) diverges at one end and \(e^{-h}\) at the
+    other; neither formal state in (29.1.S6) is normalizable, and there is
+    no zero-energy state.
   \end{enumerate}
 
   \SupplementarySolution{2}{The Goldstino Direction}
@@ -76,24 +117,88 @@ At a stationary vacuum the tree-level fermion mass matrix annihilates
   Thus the norm of the goldstino direction is fixed directly by the
   positive vacuum energy.
 
-  \SupplementarySolution{3}{Holomorphic Spurions}
-Give \(\Phi\) charge \(+1\) under a bookkeeping \(U(1)\), and assign
-  \(\mu_r\) charge \(-r\).  Independently choose \(R(\Phi)=r_\Phi\);
-  since a superpotential has \(R=2\),
-  \[
-    R(\mu_r)=2-r\,r_\Phi.
-  \]
-  A Wilsonian correction must be holomorphic in \(\Phi,\mu_2,\mu_3\),
-  have mass dimension three, and have both spurionic charges of the
-  original action.  Analyticity at \(\mu_2=\mu_3=0\) excludes negative
-  or fractional powers of the couplings.  The simultaneous charge and
-  dimension equations then leave only the monomials
-  \(\mu_2\Phi^2\) and \(\mu_3\Phi^3\).  Their coefficients cannot contain
-  a nonconstant analytic neutral function of the couplings, because no
-  dimensionless holomorphic neutral ratio is regular at the free point.
-  Matching that point fixes the coefficients to their tree values.
-  Perturbative effects may renormalize the Kahler potential but not this
-  Wilsonian superpotential.
+  \SupplementarySolution{3}{Two-Dimensional Gauge Superspace and the Axial Anomaly}
+  \begin{enumerate}
+    \item Let \(\Lambda\) be a chiral gauge parameter,
+    \(\bar D_\pm\Lambda=0\).  In one standard Abelian convention,
+    \[
+      \Phi^i\longmapsto e^{iq_i\Lambda}\Phi^i,
+      \qquad
+      \bar\Phi^{\bar i}\longmapsto
+        \bar\Phi^{\bar i}e^{-iq_i\bar\Lambda},
+      \qquad
+      V\longmapsto V+i(\bar\Lambda-\Lambda).
+      \tag{29.3.S1}
+    \]
+    These transformations leave
+    \(\bar\Phi^{\bar i}e^{q_iV}\Phi^i\) invariant.  Wess--Zumino gauge
+    uses the nonphysical components of \(\Lambda\) to remove the lowest
+    scalar and spinor components of \(V\); the surviving components are
+    the gauge field, the complex vector-multiplet scalar, the gauginos,
+    and the real auxiliary field.  Ordinary gauge transformations remain
+    as the residual gauge freedom.
+
+    Define
+    \[
+      \boxed{\Sigma=\frac1{\sqrt2}\bar D_+D_-V.}
+      \tag{29.3.S2}
+    \]
+    The normalization is conventional.  Its variation contains
+    \(\bar D_+D_-\Lambda\), which vanishes because
+    \(\bar D_+\Lambda=0\) and \(\{\bar D_+,D_-\}=0\), and
+    \(\bar D_+D_-\bar\Lambda=0\), which vanishes because
+    \(D_-\bar\Lambda=0\).  Hence \(\Sigma\) is gauge invariant.  Moreover,
+    \[
+      \bar D_+\Sigma=0,
+      \qquad D_-\Sigma=0,
+      \tag{29.3.S3}
+    \]
+    by nilpotence and the same anticommutator.  These are precisely the
+    twisted-chiral constraints.
+
+    \item In the Cambridge-course axial convention,
+    \(R_A(\theta^\pm)=\mp1\) and
+    \(R_A(\bar\theta^\pm)=\pm1\).  The twisted-chiral measure
+    \(d\theta^+d\bar\theta^-\) therefore has charge \(+2\).  Treating the
+    constant FI parameter \(t\) as neutral, invariance of (29.3.1) requires
+    \[
+      \boxed{R_A(\Sigma)=-2.}
+      \tag{29.3.S4}
+    \]
+    Reversing the sign convention for the axial generator reverses both
+    charges and gives the equivalent assignment
+    \(R_A(d\theta^+d\bar\theta^-)=-2\), \(R_A(\Sigma)=+2\).
+
+    \item The two matter fermions in a charged \(N=(2,2)\) chiral
+    multiplet have opposite world-sheet chirality, so their vector charges
+    cancel in the vector-current anomaly but add in the axial-current
+    anomaly.  For background flux
+    \[
+      k=\frac1{2\pi}\int_{T^2}F\in\mathbb Z,
+    \]
+    the charged Dirac operator has index \(q_i k\).  A Fujikawa axial
+    rotation by \(\alpha\) therefore changes the complete fermion measure
+    by a phase proportional to
+    \[
+      \exp\!\left(2i\alpha k\sum_iq_i\right),
+      \tag{29.3.S5}
+    \]
+    equivalently
+    \[
+      \partial_\mu j_A^\mu
+        =\frac1\pi\left(\sum_iq_i\right)F_{01}
+      \tag{29.3.S6}
+    \]
+    in these normalizations.  Since the torus admits arbitrary integral
+    flux, a continuous axial symmetry is present for every background
+    precisely when
+    \[
+      \boxed{\sum_iq_i=0.}
+    \]
+    Otherwise the functional measure is anomalous (and the axial rotation
+    shifts the theta angle), even though the classical superspace action is
+    invariant.
+  \end{enumerate}
 
   \SupplementarySolution{4}{The Supersymmetric One-Loop Gauge Coefficient}
 In a convention with
@@ -137,32 +242,111 @@ A Euclidean configuration of winding number \(\nu>0\) has
   contribute to the conjugate \(\mathcal F\)-term, not to the same
   holomorphic function.
 
-  \SupplementarySolution{6}{Mass-Deformed ADS Vacua}
-Put \(d=N_c-N_f\) and define
-  \[
-    A=\left(\frac{\Lambda^{3N_c-N_f}}{\det M}\right)^{1/d}.
-  \]
-  Differentiating \(dA+\operatorname{Tr}(mM)\) gives
-  \[
-    m=A\,M^{-1},\qquad M=A\,m^{-1}.
-  \]
-  Taking determinants and using the definition of \(A\) yields
-  \[
-    A^{N_c}=\det(m)\Lambda^{3N_c-N_f}.
-  \]
-  Hence there are \(N_c\) choices of phase and
-  \[
-    M=m^{-1}
-      \left[\det(m)\Lambda^{3N_c-N_f}\right]^{1/N_c}.
-  \]
-  At a stationary point \(f_{\rm eff}=N_cA\).  Identifying
-  \(A=\Lambda_{\rm low}^3\) gives the holomorphic threshold relation
-  \[
-    \Lambda_{\rm low}^{3N_c}
-      =\det(m)\Lambda^{3N_c-N_f}.
-  \]
-  The \(N_c\) roots are the \(N_c\) supersymmetric vacua of the pure
-  low-energy gauge theory.
+  \SupplementarySolution{6}{\(SU(2)\) SQCD: Runaways, Quantum Moduli, and Anomaly Matching}
+  \begin{enumerate}
+    \item A holomorphic instanton factor transforms with the charges of
+    the fermion zero-mode measure.  The baryon-number contributions of
+    \(\Phi\) and \(\widetilde\Phi\) cancel.  For \(U(1)_A\), each of the
+    \(2N_f\) matter zero modes has charge one.  For \(U(1)_R\), the four
+    adjoint gaugino zero modes have charge \(+1\), whereas each matter
+    fermion has charge
+    \(R[\Phi]-1=-2/N_f\).  Hence
+    \[
+      \begin{array}{c|ccc}
+        &U(1)_B&U(1)_A&U(1)_R\\ \hline
+        \Lambda^{6-N_f}&0&2N_f&0 .
+      \end{array}
+      \tag{29.6.S1}
+    \]
+    Equivalently, an axial rotation by \(\alpha\) sends
+    \(\Lambda^{6-N_f}\to e^{2iN_f\alpha}\Lambda^{6-N_f}\), while the
+    other two symmetries leave it invariant.  The vanishing total
+    \(R\)-charge, \(4+2N_f(-2/N_f)=0\), is the anomaly-cancellation
+    condition.
+
+    \item For \(N_f=1\), the only nonzero gauge invariant is
+    \[
+      M=\widetilde\Phi_a\Phi^a.
+    \]
+    A would-be baryon made from two identical commuting \(\Phi\)'s
+    vanishes after contraction with \(\epsilon_{ab}\), and similarly for
+    \(\widetilde\Phi\).  There is therefore no algebraic constraint on
+    \(M\).  Its charges are
+    \((B,A,R)=(0,2,-2)\), while \(\Lambda^5\) has charges
+    \((0,2,0)\).  Holomorphy, dimension, and all symmetries fix
+    \[
+      \boxed{W_{N_f=1}=\frac{\Lambda^5}{M}.}
+      \tag{29.6.S2}
+    \]
+    Since \(\partial_MW=-\Lambda^5/M^2\) never vanishes at finite
+    \(M\), there is no supersymmetric vacuum at finite distance.  The
+    potential approaches zero only as \(|M|\to\infty\): the theory has a
+    supersymmetric runaway rather than a normalizable finite-field ground
+    state.
+
+    \item For \(N_f=2\), write
+    \[
+      M_i{}^j=\widetilde\Phi^j_a\Phi_i^a,
+      \qquad
+      B=\epsilon_{ab}\Phi_1^a\Phi_2^b,
+      \qquad
+      \widetilde B=\epsilon^{ab}\widetilde\Phi^1_a
+        \widetilde\Phi^2_b.
+      \tag{29.6.S3}
+    \]
+    The rank-two determinant identity gives the classical constraint
+    \[
+      \det M-B\widetilde B=0.
+      \tag{29.6.S4}
+    \]
+    Every quadratic invariant has axial charge two, baryon charge zero or
+    \(\pm2\), and \(R\)-charge zero.  No holomorphic function regular on
+    the moduli space has both dimension three and \(R\)-charge two, so no
+    dynamical superpotential is generated.  However, both sides of
+    (29.6.S4) have the same charges and dimension as \(\Lambda^4\).
+    The symmetry-allowed quantum moduli space is therefore
+    \[
+      \boxed{\det M-B\widetilde B=\Lambda^4.}
+      \tag{29.6.S5}
+    \]
+    The nonzero right-hand side smooths the classical conical singularity
+    and removes the origin.
+
+    \item For \(N_f=3\), the infrared chiral coordinates are
+    \[
+      M_i{}^j=\widetilde\Phi^j\Phi_i,
+      \qquad
+      B_{ij}=\epsilon_{ab}\Phi_i^a\Phi_j^b,
+      \qquad
+      \widetilde B^{ij}=\epsilon^{ab}\widetilde\Phi^i_a
+        \widetilde\Phi^j_b,
+      \tag{29.6.S6}
+    \]
+    with \(B_{ij}\) and \(\widetilde B^{ij}\) antisymmetric.  At the
+    origin they provide \(9+3+3=15\) unconstrained chiral multiplets.
+
+    A microscopic matter fermion has \(R=-2/3\); there are
+    \(2\times2\times3=12\) of them.  The three gauginos have charge one.
+    Thus
+    \[
+      \mathcal A_R^{\rm UV}=3+12\left(-\frac23\right)=-5,
+      \qquad
+      \mathcal A_{R^3}^{\rm UV}
+       =3+12\left(-\frac23\right)^3=-\frac59.
+      \tag{29.6.S7}
+    \]
+    Each composite superfield has \(R=2/3\), so each of its fifteen Weyl
+    fermions has charge \(-1/3\).  Consequently
+    \[
+      \boxed{
+      \mathcal A_R^{\rm IR}=15\left(-\frac13\right)=-5,
+      \qquad
+      \mathcal A_{R^3}^{\rm IR}
+       =15\left(-\frac13\right)^3=-\frac59,}
+      \tag{29.6.S8}
+    \]
+    exactly matching the ultraviolet anomalies.
+  \end{enumerate}
 
   \SupplementarySolution{7}{Special Geometry and Abelian Dualization}
   \begin{enumerate}
@@ -338,115 +522,227 @@ Put \(d=N_c-N_f\) and define
   \end{enumerate}
 
   \SupplementarySolution{10}{\(Sp(N_c)\) Conformal Window and Seiberg Duality}
-The mixed \(Sp(N_c)^2U(1)_R\) anomaly is proportional to
-  \[
-    (N_c+1)+N_f\bigl(R[\Phi]-1\bigr).
-  \]
-  Its cancellation gives
-  \[
-    R[\Phi]=1-\frac{N_c+1}{N_f}.
-  \]
-  With the standard \(Sp\) indices, the electric one-loop coefficient
-  is
-  \[
-    b_0^{\rm el}=3(N_c+1)-N_f.
-  \]
-  Thus asymptotic freedom is lost at \(N_f=3(N_c+1)\).
+  \begin{enumerate}
+    \item[(i)]
+    The fermion in a chiral multiplet of superfield charge \(R[\Phi]\)
+    has charge \(R[\Phi]-1\), whereas the gaugino has charge \(+1\).
+    Using the indices supplied in (29.10.5), cancellation of the mixed
+    \(Sp(N_c)^2U(1)_R\) anomaly gives
+    \[
+      2(N_c+1)+2N_f\bigl(R[\Phi]-1\bigr)=0.
+    \]
+    Therefore
+    \[
+      \boxed{R[\Phi]=1-\frac{N_c+1}{N_f}
+        =\frac{N_f-N_c-1}{N_f}.}
+      \tag{29.10.S1}
+    \]
 
-  A chiral primary obeys \(\Delta=\tfrac32R\), so
-  \[
-    \Delta(M)=3R[\Phi]
-      =3\left(1-\frac{N_c+1}{N_f}\right).
-  \]
-  It equals \(2\) at the upper edge and reaches the free-scalar bound
-  \(\Delta=1\) at \(N_f=\tfrac32(N_c+1)\).  The expected window is
-  therefore
-  \[
-    \frac32(N_c+1)<N_f<3(N_c+1).
-  \]
+    \item[(ii)]
+    The one-loop coefficient (29.10.4) is
+    \[
+      b_0^{\rm el}
+       =\frac32\,2(N_c+1)-\frac12(2N_f)
+       =3(N_c+1)-N_f.
+      \tag{29.10.S2}
+    \]
+    The theory is asymptotically free for \(b_0^{\rm el}>0\), and it
+    ceases to be so at
+    \[
+      \boxed{N_f=3(N_c+1).}
+    \]
 
-  Put \(\widetilde N_c=N_f-N_c-2\).  Cancellation of the magnetic
-  mixed anomaly gives
-  \[
-    R[q]=1-\frac{\widetilde N_c+1}{N_f}
-        =\frac{N_c+1}{N_f}.
-  \]
-  The superpotential has charge two, hence
-  \[
-    R[M]=2-2R[q]
-      =2\left(1-\frac{N_c+1}{N_f}\right),
-  \]
-  exactly the electric meson charge.  Moreover
-  \[
-    b_0^{\rm mag}
-      =3(\widetilde N_c+1)-N_f
-      =2N_f-3(N_c+1),
-  \]
-  so the magnetic theory is asymptotically free precisely above the
-  lower edge.
+    \item[(iii)]
+    At a four-dimensional \(N=1\) superconformal fixed point, a chiral
+    primary obeys \(\Delta=\tfrac32R\).  Since
+    \(R[M]=2R[\Phi]\),
+    \[
+      \Delta(M)=3\left(1-\frac{N_c+1}{N_f}\right).
+      \tag{29.10.S3}
+    \]
+    At \(N_f=3(N_c+1)\), this becomes
+    \(\boxed{\Delta(M)=2}\), as requested.
 
-  The electric quark fermions give \(2N_c\) flavor fundamentals, so
-  \(\mathcal A_{\rm el}=2N_c\).  In the magnetic theory the dual
-  quarks are flavor antifundamentals and contribute
-  \(-2\widetilde N_c\); the antisymmetric meson fermion contributes
-  \(2N_f-4\).  Consequently
-  \[
-    \mathcal A_{\rm mag}
-      =-2(N_f-N_c-2)+(2N_f-4)=2N_c
-      =\mathcal A_{\rm el}.
-  \]
+    \item[(iv)]
+    A gauge-invariant scalar saturates the free-field unitarity bound at
+    \(\Delta=1\).  Equation (29.10.S3) reaches this value when
+    \[
+      N_f=\frac32(N_c+1).
+    \]
+    The expected interacting conformal window is therefore
+    \[
+      \boxed{\frac32(N_c+1)<N_f<3(N_c+1).}
+      \tag{29.10.S4}
+    \]
+
+    \item[(v)]
+    Put
+    \(\widetilde N_c=N_f-N_c-2\).  The magnetic mixed anomaly vanishes
+    when
+    \[
+      2(\widetilde N_c+1)
+       +2N_f\bigl(R[q]-1\bigr)=0.
+    \]
+    Hence
+    \[
+      \boxed{R[q]
+       =1-\frac{\widetilde N_c+1}{N_f}
+       =\frac{N_c+1}{N_f}.}
+      \tag{29.10.S5}
+    \]
+
+    \item[(vi)]
+    The superpotential \(qMq\) must have \(R\)-charge two, so
+    \[
+      \boxed{R[M]=2-2R[q]
+        =2\left(1-\frac{N_c+1}{N_f}\right).}
+    \]
+    Therefore
+    \[
+      \boxed{\Delta(M)=\frac32R[M]
+        =3\left(1-\frac{N_c+1}{N_f}\right),}
+    \]
+    which is exactly the charge and dimension of the electric composite
+    \(\Phi^i\Phi^j\).
+
+    \item[(vii)]
+    The magnetic coefficient is
+    \[
+      \begin{split}
+      b_0^{\rm mag}
+       &=3(\widetilde N_c+1)-N_f\\
+       &=2N_f-3(N_c+1).
+      \end{split}
+      \tag{29.10.S6}
+    \]
+    Thus the magnetic theory ceases to be asymptotically free at
+    \(N_f=\tfrac32(N_c+1)\).  For a nontrivial magnetic gauge group, its
+    infrared-free range is
+    \[
+      \boxed{N_c+3\leq N_f\leq\frac32(N_c+1),}
+    \]
+    where the upper equality is the marginally-free boundary.  This is
+    precisely the lower edge inferred from the electric meson's unitarity
+    bound.  Inside the strict conformal window both descriptions flow to
+    the same interacting infrared fixed point; in the range displayed
+    above, the magnetic variables furnish the weakly coupled description.
+
+    \item[(viii)]
+    The electric quark fermions are flavor fundamentals, with one copy
+    for each of the \(2N_c\) gauge components:
+    \[
+      \mathcal A_{SU(2N_f)^3}^{\rm el}=2N_c.
+    \]
+    In the magnetic theory, the \(2\widetilde N_c\) gauge components of
+    \(q\) transform as flavor antifundamentals and contribute
+    \(-2\widetilde N_c\).  The antisymmetric meson fermion has anomaly
+    coefficient \(2N_f-4\).  Consequently
+    \[
+      \boxed{\mathcal A_{SU(2N_f)^3}^{\rm mag}
+        =-2(N_f-N_c-2)+(2N_f-4)
+        =2N_c
+        =\mathcal A_{SU(2N_f)^3}^{\rm el}.}
+      \tag{29.10.S7}
+    \]
+  \end{enumerate}
 
   \SupplementarySolution{11}{Chiral Gauge Theory and 't Hooft Anomaly Matching}
-With \(A(\text{antisymmetric})=N-4\) and
-  \(A(\overline{\boldsymbol N})=-1\), gauge-anomaly cancellation gives
-  \[
-    p=N-4.
-  \]
-  The classical Abelian phase rotations have one gauge-anomalous
-  combination.  A convenient normalization for the surviving one is
-  \[
-    q_\lambda=p=N-4,\qquad q_\psi=-(N-2),
-  \]
-  because
-  \((N-2)q_\lambda+p q_\psi=0\).
+  \begin{enumerate}
+    \item[(a)]
+    A gauge anomaly violates a redundancy needed to remove negative-norm
+    polarizations.  It spoils the Ward or BRST identities and makes the
+    gauge theory inconsistent, so it must cancel.  An ABJ anomaly instead
+    says that a classical global current is not conserved after
+    quantization; the quantum theory can remain consistent, but the
+    symmetry and its selection rules are lost.  A 't~Hooft anomaly is an
+    obstruction to gauging a global symmetry, detected by coupling it to
+    background fields.  It is invariant under renormalization-group flow,
+    so it must be matched in the infrared by massless fields, spontaneous
+    symmetry breaking, or suitable topological degrees of freedom.
 
-  Using unit index and anomaly coefficient for a flavor fundamental,
-  the ultraviolet anomalies are
-  \[
-  \begin{aligned}
-    \mathcal A_{SU(p)^3}^{\rm UV}&=N,\\
-    \mathcal A_{SU(p)^2U(1)}^{\rm UV}&=-N(N-2),\\
-    \mathcal A_{U(1)^3}^{\rm UV}
-      &=\frac{N(N-1)}2\,(N-4)^3
-        +N(N-4)\bigl(-(N-2)\bigr)^3,\\
-    \mathcal A_{\mathrm{grav}^2U(1)}^{\rm UV}
-      &=\frac{N(N-1)}2\,(N-4)
-        +N(N-4)\bigl(-(N-2)\bigr).
-  \end{aligned}
-  \]
+    \item[(i)]
+    With \(A(\wedge^2\boldsymbol N)=N-4\) and
+    \(A(\overline{\boldsymbol N})=-1\), the gauge anomaly is
+    \[
+      \mathcal A_{SU(N)^3}=(N-4)-p.
+    \]
+    Consistency therefore requires
+    \[
+      \boxed{p=N-4.}
+      \tag{29.11.S1}
+    \]
 
-  The composite is in the symmetric representation of \(SU(p)\) and
-  has
-  \[
-    q_\chi=2q_\psi+q_\lambda=-N.
-  \]
-  For that representation,
-  \[
-    \dim=\frac{p(p+1)}2,\qquad I=p+2,\qquad A=p+4.
-  \]
-  Therefore
-  \[
-  \begin{aligned}
-    \mathcal A_{SU(p)^3}^{\rm IR}&=p+4=N,\\
-    \mathcal A_{SU(p)^2U(1)}^{\rm IR}&=(p+2)(-N)=-N(N-2),\\
-    \mathcal A_{U(1)^3}^{\rm IR}
-      &=\frac{p(p+1)}2(-N)^3,\\
-    \mathcal A_{\mathrm{grav}^2U(1)}^{\rm IR}
-      &=\frac{p(p+1)}2(-N).
-  \end{aligned}
-  \]
-  Substituting \(p=N-4\) reduces the last two ultraviolet expressions
-  to the corresponding infrared values, completing the match.
+    \item[(ii)]
+    Classically, the \(p\) identical antifundamentals have a \(U(p)\)
+    flavor symmetry, and \(\lambda\) has an independent phase rotation.
+    Equivalently, this is
+    \(SU(p)\times U(1)_\psi\times U(1)_\lambda\).
+    One Abelian combination has a mixed \(SU(N)^2U(1)\) anomaly.  The
+    surviving combination obeys
+    \[
+      (N-2)q_\lambda+p q_\psi=0.
+    \]
+    A convenient integral normalization is
+    \[
+      \boxed{q_\lambda=p=N-4,\qquad q_\psi=-(N-2).}
+      \tag{29.11.S2}
+    \]
+    The exact continuous quantum global symmetry is therefore
+    \(SU(p)\times U(1)\), up to discrete identifications.
+
+    \item[(iii)]
+    There are \(N\) gauge-color copies of the flavor fundamental
+    \(\psi^i\).  Using the normalization in (29.11.2), the ultraviolet
+    anomalies are
+    \[
+    \begin{aligned}
+      \mathcal A_{SU(p)^3}^{\rm UV}
+        &=N,\\
+      \mathcal A_{SU(p)^2U(1)}^{\rm UV}
+        &=Nq_\psi=-N(N-2),\\
+      \mathcal A_{U(1)^3}^{\rm UV}
+        &=\frac{N(N-1)}2\,(N-4)^3
+          +N(N-4)\bigl(-(N-2)\bigr)^3,\\
+      \mathcal A_{\mathrm{grav}^2U(1)}^{\rm UV}
+        &=\frac{N(N-1)}2\,(N-4)
+          +N(N-4)\bigl(-(N-2)\bigr).
+    \end{aligned}
+    \tag{29.11.S3}
+    \]
+    The first terms in the last two lines are the
+    \(N(N-1)/2\) components of \(\lambda\); the second terms are the
+    \(Np=N(N-4)\) components of the \(\psi^i\).
+
+    \item[(iv)]
+    The composite \(\chi^{ij}\) is symmetric in its flavor indices and
+    has charge
+    \[
+      q_\chi=2q_\psi+q_\lambda=-N.
+      \tag{29.11.S4}
+    \]
+    For \(\mathrm{Sym}^2\boldsymbol p\),
+    \[
+      \dim=\frac{p(p+1)}2,\qquad I=p+2,\qquad A=p+4.
+    \]
+    Its infrared anomalies are consequently
+    \[
+    \begin{aligned}
+      \mathcal A_{SU(p)^3}^{\rm IR}
+        &=p+4=N,\\
+      \mathcal A_{SU(p)^2U(1)}^{\rm IR}
+        &=(p+2)(-N)=-N(N-2),\\
+      \mathcal A_{U(1)^3}^{\rm IR}
+        &=\frac{p(p+1)}2(-N)^3,\\
+      \mathcal A_{\mathrm{grav}^2U(1)}^{\rm IR}
+        &=\frac{p(p+1)}2(-N).
+    \end{aligned}
+    \tag{29.11.S5}
+    \]
+    Substituting \(p=N-4\) into (29.11.S3) reduces its last two lines to
+    the corresponding expressions in (29.11.S5).  All four 't~Hooft
+    anomalies therefore match, so the proposed confining spectrum passes
+    this necessary infrared consistency test.
+  \end{enumerate}
 
   \SupplementarySolution{12}{Pseudomoduli in Dynamical Supersymmetry Breaking}
   \begin{enumerate}
@@ -613,6 +909,116 @@ With \(A(\text{antisymmetric})=N-4\) and
       \]
       reproducing the auxiliary-field expression for the positive vacuum
       energy.
+  \end{enumerate}
+
+  \SupplementarySolution{15}{A Chiral \(SU(N)\)--\(\operatorname{Spin}(8)\) Seiberg Dual Pair}
+  Seiberg-dual theories have different ultraviolet gauge fields and
+  elementary matter, but their renormalization-group flows approach the
+  same infrared quantum field theory.  Gauge-invariant operators and
+  deformations must admit a consistent map, exact global symmetries and
+  their 't~Hooft anomalies must agree, and correlation functions of the
+  mapped infrared observables coincide.
+  \begin{enumerate}
+    \item[(i)] The cubic gauge-anomaly coefficient of the symmetric tensor
+    is \(A(\mathrm{Sym}^2\boldsymbol N)=N+4\), while every gauge
+    antifundamental contributes \(-1\).  Hence
+    \[
+      \mathcal A_{SU(N)^3}=N+4-p,
+    \]
+    and consistency fixes
+    \[
+      \boxed{p=N+4.}
+      \tag{29.15.S1}
+    \]
+
+    \item[(ii)] The fermion in a chiral multiplet has charge one less than
+    the superfield.  Thus
+    \[
+      R[\psi_S]=\frac{2-N}{2+N}-1=-\frac{2N}{N+2},
+      \qquad R[\psi_{\widetilde\Phi}]=0.
+    \]
+    The mixed gauge anomaly is
+    \[
+      \mathcal A_{SU(N)^2U(1)_R}
+       =2N+(N+2)\left(-\frac{2N}{N+2}\right)+p(1)(0)=0,
+      \tag{29.15.S2}
+    \]
+    where the first term comes from the gaugino.  The proposed
+    \(R\)-symmetry therefore survives quantization.
+
+    \item[(iii)] Using \(p=N+4\), the electric coefficient is
+    \[
+      \begin{split}
+      b_0^{\rm el}
+       &=\frac32(2N)-\frac12\bigl[(N+2)+p\bigr]\\
+       &=2N-3.
+      \end{split}
+      \tag{29.15.S3}
+    \]
+    It is positive for every nontrivial \(SU(N)\), namely \(N\geq2\), so
+    the electric theory is asymptotically free.
+
+    \item[(iv)] Only the magnetic gaugino, \(q\), and \(t\) can contribute
+    to the mixed \(\operatorname{Spin}(8)^2U(1)_R\) anomaly.  Their
+    fermion charges are \(1\), \(R[q]-1=0\), and
+    \(R[t]-1=-6\), respectively.  Consequently
+    \[
+      \mathcal A_{\operatorname{Spin}(8)^2U(1)_R}
+        =6+p(1)(0)+1(-6)=0.
+      \tag{29.15.S4}
+    \]
+    The magnetic \(R\)-symmetry is nonanomalous as well.
+
+    \item[(v)] The Spin(8) invariant in
+    \(\boldsymbol8_v\otimes\boldsymbol8_v\) is symmetric, so it contracts
+    with the flavor-symmetric singlet \(M^{ij}\).  Likewise two spinors
+    \(t\) admit a singlet bilinear.  Both terms have \(R\)-charge two, and
+    the symmetry-allowed superpotential is
+    \[
+      \boxed{W=y\,M^{ij}q_iq_j+\kappa\,Utt,}
+      \tag{29.15.S5}
+    \]
+    with gauge contractions implicit.  The constants \(y\) and \(\kappa\)
+    may be changed by field normalizations.
+
+    \item[(vi)] The magnetic theory contains \(p\) vector multiplets
+    \(q_i\) in \(\boldsymbol8_v\) and one \(t\) in
+    \(\boldsymbol8_s\).  Therefore
+    \[
+      b_0^{\rm mag}
+       =\frac32(6)-\frac12(p+1)
+       =\frac{13-N}{2}.
+      \tag{29.15.S6}
+    \]
+    In the phase-diagram convention of (29.15.4), the infrared-free range
+    begins at
+    \[
+      \boxed{N\geq13.}
+    \]
+    For \(N>13\), the one-loop coefficient is strictly negative; at
+    \(N=13\), it vanishes and the magnetic theory lies at the
+    marginally-free boundary.  In this range, duality says
+    that the strongly coupled infrared limit of the asymptotically free
+    electric \(SU(N)\) theory is equivalently described by weakly coupled
+    Spin(8) gauge fields, the magnetic quarks, and the singlets in
+    (29.15.2), with their mapped interactions (29.15.S5).
+
+    \item[(vii)] The electric \(\widetilde\Phi^i\) is a flavor
+    fundamental, with one copy for each of the \(N\) gauge-color
+    components.  Thus
+    \[
+      \mathcal A_{SU(p)^3}^{\rm el}=N.
+    \]
+    In the magnetic theory, the eight Spin(8) components of \(q_i\) are
+    flavor antifundamentals and contribute \(-8\).  The fermion in
+    \(M^{ij}\) is in \(\mathrm{Sym}^2\boldsymbol p\) and contributes
+    \(p+4\); \(t\) and \(U\) are flavor singlets.  Hence
+    \[
+      \boxed{\mathcal A_{SU(p)^3}^{\rm mag}
+        =-8+(p+4)=p-4=N
+        =\mathcal A_{SU(p)^3}^{\rm el}.}
+      \tag{29.15.S7}
+    \]
   \end{enumerate}
 
 \end{enumerate}

@@ -1,27 +1,91 @@
 \chapterbackmatter{Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementaryExercise{1}{Large Logarithms, Scalar Running, and the Landau Scale}
-  {Inspired by Vadim Kaplunovsky, Renormalization Group Techniques (2024).}
-  {kaplunovsky-rg-techniques-2024-v2ch18-p01}
+  \SupplementaryExercise{1}{Sine--Gordon Vertex Operator under Shell RG}
+  {Independently adapted from Harvey Reall, University of Cambridge,
+  Part III Statistical Field Theory, Example Sheet 3 (3P3c), Question 4
+  (printed pp.~2--3; site update 12 December 2025).  The PDF header reads
+  \emph{Michaelmas 2024}.}
+  {cambridge-part-iii-sft-2025-sheet3-q4-v2ch18-p01}
+  In two Euclidean dimensions, regulate the Sine--Gordon free energy at
+  momentum \(\Lambda\):
+  \[
+    F[\phi]=\int d^2x\left[
+      \frac12(\boldsymbol\nabla\phi)^2
+      -\lambda_0\cos(\beta_0\phi)
+    \right].
+    \tag{18.1.1}
+  \]
   \begin{enumerate}
     \item[(a)]
-    In massive \(\lambda\phi^4\) theory, suppose a fixed-angle amplitude has
-    terms \(\lambda+\lambda^2L/(16\pi^2)
-    +\lambda^3L^2/(16\pi^2)^2+\cdots\), where
-    \(L=\ln(E^2/m^2)\).  State the domain in which fixed-order perturbation
-    theory fails even though \(\lambda/(16\pi^2)\ll1\), and explain what the
-    renormalization group reorganizes.
+    Determine the engineering dimensions of \(\beta_0\) and \(\lambda_0\).
+
     \item[(b)]
-    Solve
-    \(\mu\,d\lambda/d\mu=3\lambda^2/(16\pi^2)\) with
-    \(\lambda(\mu_0)=\lambda_0\).  Expand the exact one-loop solution through
-    order \(\lambda_0^3\) and identify the leading logarithm at each order.
+    For \(\zeta>1\), split every Fourier mode as
+    \[
+      \phi_{\mathbf k}=\phi_{\mathbf k}^-+\phi_{\mathbf k}^+,
+      \qquad
+      \operatorname{supp}\phi^+
+      =\mathcal S_\zeta
+      \equiv\{\mathbf k:\Lambda/\zeta<|\mathbf k|<\Lambda\}.
+      \tag{18.1.2}
+    \]
+    Let \(\phi^\pm(x)\) denote the corresponding inverse Fourier
+    transforms.  Define explicitly the normalized Gaussian average
+    \(\langle\,\cdot\,\rangle_+\) over the shell field, and integrate
+    \(\phi^+\) to first order in \(\lambda_0\).  Show that the Wilson free
+    energy before coordinate rescaling is
+    \[
+      F'[\phi^-]=\int d^2x\left[
+        \frac12(\boldsymbol\nabla\phi^-)^2
+        -\lambda_0
+          \bigl\langle
+            \cos\!\bigl(\beta_0(\phi^-+\phi^+)\bigr)
+          \bigr\rangle_+
+      \right]+O(\lambda_0^2).
+      \tag{18.1.3}
+    \]
+
     \item[(c)]
-    For the running coupling found in part~(b), determine the
-    scale at which it diverges.  If \(\lambda_0>0\), explain why fixing
-    \(\lambda_0\) while taking an ultraviolet cutoff to infinity is
-    incompatible with a perturbatively interacting continuum theory.
+    Evaluate the shell expectation in (18.1.3) and obtain
+    \[
+      F'[\phi^-]=\int d^2x\left[
+        \frac12(\boldsymbol\nabla\phi^-)^2
+        -\lambda_0\zeta^{-\beta_0^2/(4\pi)}
+          \cos(\beta_0\phi^-)
+      \right]+O(\lambda_0^2).
+      \tag{18.1.4}
+    \]
+    Complete the momentum and coordinate rescaling, then decide when the
+    cosine perturbation is relevant and when it is irrelevant.
+
+    \emph{Hint.}
+    Use the Wick identity cited in the source from Question 8 on Example
+    Sheet 2.  For a centered Gaussian variable \(X\),
+    \[
+      \bigl\langle e^{iaX}\bigr\rangle
+      =\exp\!\left[-\frac{a^2}{2}\langle X^2\rangle\right].
+      \tag{18.1.5}
+    \]
+    The sheet states its exponential decomposition with \(\beta_0=1\);
+    in the normalization of (18.1.1), use
+    \[
+      \cos\!\bigl(\beta_0(\phi^-+\phi^+)\bigr)
+      =\frac12\left(
+        e^{i\beta_0\phi^-}e^{i\beta_0\phi^+}
+        +e^{-i\beta_0\phi^-}e^{-i\beta_0\phi^+}
+      \right).
+      \tag{18.1.6}
+    \]
+    The position-space shell covariance is
+    \[
+      \bigl\langle\phi^+(x)\phi^+(y)\bigr\rangle_+
+      =\int_{\Lambda/\zeta<|\mathbf k|<\Lambda}
+        \frac{d^2k}{(2\pi)^2}\,
+        \frac{e^{-i\mathbf k\cdot(\mathbf x-\mathbf y)}}{\mathbf k^2}.
+      \tag{18.1.7}
+    \]
+    Take the coincident-point limit \(x\to y\).
   \end{enumerate}
 
   \SupplementaryExercise{2}{Wilsonian Flow with Cubic and Quartic Interactions}
@@ -77,26 +141,73 @@
     \end{enumerate}
   \end{enumerate}
 
-  \SupplementaryExercise{3}{Fixed-Point Stability and Scheme Independence}
-  {Inspired by Vadim Kaplunovsky, Types of Renormalization Group Flows (2024).}
-  {kaplunovsky-rg-flows-2024-v2ch18-p03}
+  \SupplementaryExercise{3}{Fluctuating Membrane and the Running Bending Modulus}
+  {Independently adapted from Harvey Reall, University of Cambridge,
+  Part III Statistical Field Theory, Example Sheet 3 (3P3c), Question 5*
+  (printed p.~3; site update 12 December 2025).  The PDF header reads
+  \emph{Michaelmas 2024}.}
+  {cambridge-part-iii-sft-2025-sheet3-q5-v2ch18-p03}
+  A two-dimensional membrane embedded in three-dimensional space is described
+  in Monge gauge by its height \(h(x)\).  Consider
+  \[
+    \begin{split}
+      F[h]
+      &=\int d^2x\left[
+        \frac{r_0}{2}(\boldsymbol\nabla h)^2
+        +\frac{\lambda_0}{2}
+          \bigl(1+(\boldsymbol\nabla h)^2\bigr)^{-5/2}
+          (\boldsymbol\nabla^2h)^2
+      \right]\\
+      &\simeq\int d^2x\left[
+        \frac{r_0}{2}(\boldsymbol\nabla h)^2
+        +\frac{\lambda_0}{2}(\boldsymbol\nabla^2h)^2
+        -\frac{5\lambda_0}{4}
+          (\boldsymbol\nabla h)^2(\boldsymbol\nabla^2h)^2
+        +\cdots
+      \right].
+    \end{split}
+    \tag{18.3.1}
+  \]
   \begin{enumerate}
     \item[(a)]
-    Let \(\beta(g)=-\omega(g-g_*)+c(g-g_*)^2+\cdots\), with
-    \(\omega>0\).  Find the first two powers in the large-\(\mu\) expansion
-    of \(g(\mu)-g_*\), including the relation between their coefficients.
+    Find the engineering dimensions of the height \(h\), the tension \(r_0\),
+    and the bending modulus \(\lambda_0\).
+
     \item[(b)]
-    Near a fixed point let
-    \(M=\begin{pmatrix}-2&1\\0&1\end{pmatrix}\).
-    Find its eigenvalues and eigenvectors, solve the linearized flow, and
-    identify the set of initial conditions that reaches the fixed point as
-    \(\mu\to\infty\).
+    Write \(F=F_0+F_I\), taking the two quadratic terms in (18.3.1) as
+    \(F_0\) and the displayed quartic term as \(F_I\).  Split
+    \[
+      h_{\mathbf k}=h_{\mathbf k}^-+h_{\mathbf k}^+,
+      \qquad
+      \operatorname{supp}h^+
+      =\{\mathbf k:\Lambda/\zeta<|\mathbf k|<\Lambda\}.
+      \tag{18.3.2}
+    \]
+    Using the normalized weight \(e^{-F_0[h^+]}\), derive
+    \[
+      \bigl\langle h_{\mathbf k_1}^+h_{\mathbf k_2}^+\bigr\rangle_+
+      =\frac{(2\pi)^2\delta^{(2)}
+        (\mathbf k_1+\mathbf k_2)}
+        {r_0\mathbf k_1^2+\lambda_0\mathbf k_1^4}.
+      \tag{18.3.3}
+    \]
+
     \item[(c)]
-    Under a nonsingular redefinition
-    \(\widetilde g^\ell=f^\ell(\mathbf g)\), prove that the linearized
-    beta-function matrices at corresponding fixed points are related by a
-    similarity transformation.  State precisely which assumption is needed
-    for their eigenvalues to agree.
+    Fourier-transform \(F_I\), insert \(h=h^-+h^+\), and isolate the
+    contraction that changes the coefficient of
+    \((\boldsymbol\nabla^2h^-)^2\).  Retain only this contribution, thereby
+    omitting field renormalization as in the source, and for
+    \(\zeta=e^s\) derive the bending-dominated beta function
+    \[
+      \frac{d\lambda}{ds}\simeq-\frac{5}{4\pi}.
+      \tag{18.3.4}
+    \]
+    The constant right-hand side in (18.3.4) is the tensionless, or
+    ultraviolet bending-dominated, limit
+    \(r_0/(\lambda_0\Lambda^2)\to0\) implicit in the sheet's stated target;
+    keep \(r_0\) during the calculation so this limit is visible.  Finally,
+    say whether integrating out short-wavelength fluctuations makes the
+    long-distance membrane more or less flexible.
   \end{enumerate}
 
   \SupplementaryExercise{4}{The \(O(N)\) Nonlinear Sigma Model Near Two Dimensions}
@@ -269,45 +380,186 @@
     unification relation.
   \end{enumerate}
 
-  \SupplementaryExercise{7}{The Wilson--Fisher Fixed Point and Its Thermal Exponent}
-  {Inspired by David Tong, Statistical Field Theory, Section 3 (2021).}
-  {tong-statistical-field-theory-2021-v2ch18-p07}
+  \SupplementaryExercise{7}{Momentum-Shell RG with \(\phi^4\) and \(\phi^6\) Interactions}
+  {Adapted from University of Cambridge, Part III Statistical Field Theory,
+  2023, Paper 303, Question 2 (printed p.~3).}
+  {cambridge-part-iii-sft-2023-p303-q2-v2ch18-p07}
+  Consider a real scalar field \(\phi\) in \(d\) dimensions with free
+  energy
+  \[
+    F[\phi]=\int d^dx\left[
+      \frac12\boldsymbol\nabla\phi\mathbin{\cdot}\boldsymbol\nabla\phi
+      +\frac12\mu_0^2\phi^2+\cdots\right].
+    \tag{18.7.1}
+  \]
+  Impose an ultraviolet momentum cutoff \(\Lambda\).
   \begin{enumerate}
     \item[(a)]
-    At the Gaussian fixed point in \(d\) dimensions, determine the RG
-    eigenvalue of the coupling \(g_{2n}\) multiplying
-    \(\phi^{2n}\).  Classify \(\phi^4\) and \(\phi^6\) as relevant,
-    marginal, or irrelevant in \(d=3\) and \(d=4\).
+    Describe the three steps of the renormalization-group procedure in
+    momentum space for (18.7.1), and explain how they generate a flow of
+    the parameters in the free energy.  Denote the original cutoff by
+    \(\Lambda\) and the new cutoff by \(\Lambda/\zeta\), with
+    \(\zeta>1\).
+
     \item[(b)]
-    For
-    \(\beta(g)=-\epsilon g+A g^2+O(g^3)\), with \(A>0\),
-    find both perturbative fixed points and determine the linearized
-    eigenvalue of the quartic direction at the nontrivial one.
+    Suppose that, in addition to the quadratic terms in (18.7.1), the free
+    energy contains
+    \[
+      \int d^dx\,
+        g_{n,m}\,\phi^n(\boldsymbol\nabla^2\phi)^m,
+      \qquad n,m\in\mathbb Z_{>0}.
+      \tag{18.7.2}
+    \]
+    What is the naive, or engineering, dimension of \(g_{n,m}\)?  Why
+    can its scaling dimension differ from this value?  For which
+    dimension \(d\), expressed in terms of \(n\) and \(m\), is the
+    coupling marginal?  Treat separately any exceptional case in which
+    the general expression is indeterminate.
+
     \item[(c)]
-    In the theory with interaction \(g(\phi_n\phi_n)^2/4\), use
-    \(\beta_g=-\epsilon g+(N+8)g^2/(8\pi^2)\) and
-    \(\beta_{g_2}=[-2+(N+2)g/(8\pi^2)]g_2\) to calculate the thermal
-    eigenvalue through first order in \(\epsilon\).
+    Instead take the interaction part to be
+    \[
+      F_{\rm int}[\phi]=\int d^dx\,
+        \left(g_0\phi^4+\lambda_0\phi^6\right),
+      \tag{18.7.3}
+    \]
+    with no factorials absorbed into the couplings.
+    \begin{enumerate}
+      \item[(i)]
+      Draw Feynman diagrams representing every correction to
+      \(\mu^2(\zeta)\) from the \(g_0\phi^4\) and
+      \(\lambda_0\phi^6\) interactions through orders
+      \(g_0^2\), \(\lambda_0g_0\), and \(\lambda_0\).  Include the
+      lower order \(g_0\) graph.
+
+      \item[(ii)]
+      Calculate the contributions proportional to \(\lambda_0\) and to
+      \(\lambda_0g_0\) in the flow of \(\mu^2(\zeta)\).
+
+      Let \(\phi^+\) denote the modes in the eliminated shell
+      \[
+        \mathcal S_\zeta
+          =\{\mathbf k:\Lambda/\zeta<|\mathbf k|<\Lambda\}.
+      \]
+      You may assume
+      \[
+        \left\langle
+          \phi_{\mathbf k}^+\phi_{\mathbf k'}^+
+        \right\rangle_+
+        =(2\pi)^d\delta^{(d)}(\mathbf k+\mathbf k')G_0(\mathbf k),
+        \qquad
+        G_0(\mathbf k)=\frac{1}{\mathbf k^2+\mu_0^2}.
+        \tag{18.7.4}
+      \]
+      You may use Wick's theorem without proof and leave the final answer
+      as integrals.  Ignore other corrections, including those produced
+      by the field rescaling.
+    \end{enumerate}
   \end{enumerate}
 
-  \SupplementaryExercise{8}{Correlation-Length and Correction-to-Scaling Exponents}
-  {Inspired by David Tong, Statistical Field Theory, Sections 3--4 (2021).}
-  {tong-statistical-field-theory-2021-v2ch18-p08}
+  \SupplementaryExercise{8}{Derivative Power Counting and \(\phi^6\)-Induced Quartic Flow}
+  {Adapted from University of Cambridge, Part III Statistical Field Theory,
+  2024, Paper 303, Question 2 (printed p.~3).}
+  {cambridge-part-iii-sft-2024-p303-q2-v2ch18-p08}
+  Consider a real scalar field \(\phi\) in \(d\) dimensions with free
+  energy
+  \[
+    F[\phi]=\int d^dx\left[
+      \frac12\boldsymbol\nabla\phi\mathbin{\cdot}\boldsymbol\nabla\phi
+      +\frac12\mu_0^2\phi^2+\cdots\right],
+    \tag{18.8.1}
+  \]
+  regulated by a momentum cutoff \(\Lambda\).
   \begin{enumerate}
     \item[(a)]
-    Use the thermal eigenvalue at the Wilson--Fisher fixed point to derive
-    the first-order epsilon expansion of \(\nu\).  Evaluate the result for
-    \(N=1,2,3\) at \(\epsilon=1\), without claiming higher-order accuracy.
+    Describe the three momentum-space renormalization-group steps and
+    explain how they generate a flow of the parameters.  Denote the new
+    cutoff after eliminating the shell by \(\Lambda/\zeta\).
+
     \item[(b)]
-    Linearize the quartic flow at the Wilson--Fisher fixed point and derive
-    the leading correction-to-scaling exponent \(\omega\).  Explain why an
-    observable generically has a relative correction proportional to
-    \(\xi^{-\omega}\).
+    Calculate the naive, or engineering, dimensions of \(\phi\) and
+    \(\mu_0^2\).
+
     \item[(c)]
-    Use the topology and momentum dependence of one-loop two-point graphs in
-    \(O(N)\) \(\phi^4\) theory to show that field-strength renormalization
-    vanishes at order \(g\).  Deduce the order in \(\epsilon\) at which the
-    anomalous exponent \(\eta\) first appears.
+    Why can the scaling dimension \(\Delta_\phi\) differ from the
+    engineering dimension?
+
+    \item[(d)]
+    Suppose that, besides the quadratic terms in (18.8.1), the free energy
+    contains the schematic local operator
+    \[
+      \int d^dx\,\alpha\,\boldsymbol\nabla^{2m}\phi^{2n},
+      \qquad n>1,\quad m\geq0,
+      \tag{18.8.2}
+    \]
+    where \(n,m\) are integers.  Compute the engineering dimension of
+    \(\alpha\), and give the conditions on \(d\), in terms of \(n,m\),
+    for the coupling to be relevant, marginal, or irrelevant.
+
+    \emph{Source-notation note.}  Equation (18.8.2) is reproduced in the
+    source's schematic form.  Interpret it as a local scalar containing
+    \(2n\) fields and a total of \(2m\) derivatives distributed among
+    them, not as the integral of a literal total derivative.
+
+    \item[(e)]
+    Instead take
+    \[
+      F_{\rm int}[\phi]=\int d^dx\,
+        \left(g_0\phi^4+\gamma_0\phi^5+\lambda_0\phi^6\right),
+      \tag{18.8.3}
+    \]
+    again with no factorials absorbed into the couplings.
+    \begin{enumerate}
+      \item[(i)]
+      Draw a Feynman diagram representing an order-\(g_0^2\)
+      contribution that produces a nonzero anomalous dimension for
+      \(\phi\).  No calculation is required, but explain why the graph
+      produces a nonzero anomalous dimension.
+
+      \item[(ii)]
+      Ignoring the other interactions, does the
+      \(\lambda_0\phi^6\) term alone correct the flow of the coupling
+      \(\gamma(\zeta)\)?  If it does, draw a graph; if it does not,
+      explain why.
+
+      \item[(iii)]
+      Draw the order-\(\lambda_0\) correction to the flow of the quartic
+      coupling \(g(\zeta)\) from the sextic interaction, and calculate it.
+      Here and in the remaining subparts, you may use the shell
+      propagator (18.7.4), Wick's theorem, and unevaluated integrals.
+      Ignore other corrections, including those from field rescaling.
+
+      \item[(iv)]
+      Calculate the order-\(\lambda_0^2\) contribution to \(g(\zeta)\)
+      represented by the graph supplied in the source:
+      \begin{center}
+      \begin{tikzpicture}[scale=0.86,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \coordinate (v) at (-1.2,0);
+        \coordinate (w) at (1.2,0);
+        \draw[thick] (-2.25,.75)--(v);
+        \draw[thick] (-2.25,-.75)--(v);
+        \draw[thick] (w)--(2.25,.75);
+        \draw[thick] (w)--(2.25,-.75);
+        \draw[fast] (v) to[out=78,in=102] (w);
+        \draw[fast] (v) to[out=28,in=152] (w);
+        \draw[fast] (v) to[out=-28,in=-152] (w);
+        \draw[fast] (v) to[out=-78,in=-102] (w);
+        \fill (v) circle (1.8pt);
+        \fill (w) circle (1.8pt);
+        \node[below=3pt] at (v) {\(\lambda_0\)};
+        \node[below=3pt] at (w) {\(\lambda_0\)};
+      \end{tikzpicture}
+      \end{center}
+      Thus the topology has two sextic vertices, two external legs at
+      each vertex, and four shell propagators joining the vertices.
+
+      \item[(v)]
+      Draw every other order-\(\lambda_0^2\) correction to \(g(\zeta)\)
+      from the sextic interaction.  These additional contributions need
+      not be calculated.
+    \end{enumerate}
   \end{enumerate}
 
   \SupplementaryExercise{9}{Cubic Anisotropy and Competing Fixed Points}

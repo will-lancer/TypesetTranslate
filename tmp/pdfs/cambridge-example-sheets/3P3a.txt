@@ -1,0 +1,224 @@
+                                                                                               Statistical Field Theory: Example Sheet 1
+
+                                                                                               Harvey Reall, Michaelmas 2025
+                                                                                               Comments and corrections to hsr1000@cam.ac.uk.
+
+
+
+
+Copyright © 2023 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                 1. The purpose of this question is to solve the 1d Ising model with N spins, using
+                                                                                                    periodic boundary conditions such that sN +1 = s1 . The partition function is
+                                                                                                    given by
+                                                                                                                                                                      
+                                                                                                                   X         X Y                       βB
+                                                                                                              Z=        ...          exp βJsi si+1 +      (si + si+1 )
+                                                                                                                  s =±1     s =±1 i
+                                                                                                                                                        2
+                                                                                                                     1       N
+
+
+                                                                                                    Show that the partition can be written in terms of the 2 × 2 transfer matrix T as
+                                                                                                                                                                !
+                                                                                                                                                 βJ−βB     −βJ
+                                                                                                                                               e         e
+                                                                                                                  Z = tr T N with T =
+                                                                                                                                                 e−βJ eβJ+βB
+
+                                                                                                    [Hint: Think of the ith transfer matrix in the string T N using index notation,
+                                                                                                    written as Tsi ,si+1 = exp βJsi si+1 + βB
+                                                                                                                                                             
+                                                                                                                                            2
+                                                                                                                                              (s i + s i+1 )   . Here si = ±1 labels the
+                                                                                                    column and si+1 = ±1 labels the row.]
+                                                                                                    Show that the eigenvalues of T are given by
+                                                                                                                                     q
+                                                                                                                 λ± = e cosh βB ± e2βJ cosh2 βB − 2 sinh 2βJ
+                                                                                                                        βJ
+
+
+
+                                                                                                    and hence that, as N → ∞, the partition function is Z ≈ λN
+                                                                                                                                                             + . Use this to show
+                                                                                                    that, for B = 0, the magnetisation always vanishes and hence that there is no
+                                                                                                    phase transition as a function of temperature.
+
+                                                                                                 2. This question provides an alternative, mean field approach to the Ising model.
+                                                                                                    (This is, in fact, the original approach, first suggested by Weiss.) Write the
+                                                                                                    interaction terms in the Ising model as
+
+                                                                                                               si sj = (si − m)(sj − m) + m(sj − m) + m(si − m) + m2
+
+                                                                                                    where m is the equilibrium magnetisation. The mean field “approximation”
+                                                                                                    hinges on assuming that the deviation from equilibrium, (si − m), is small and
+                                                                                                    so the first term above can be neglected. With this assumption, show that the
+                                                                                                    partition function of the Ising model can be written as
+                                                                                                             X 1             2
+                                                                                                                                       P          1       2
+                                                                                                        Z=        e− 2 βJN qm +β(Jqm+B) i si = e− 2 βJN qm 2N coshN (βJqm + βB)
+                                                                                                             {si }
+
+
+                                                                                                                                          1
+                                                                                                  with q the number of nearest neighbour pairs. Use this partition function to de-
+                                                                                                  termine the equilibrium magnetisation and show that it obeys the self-consistency
+                                                                                                  condition
+
+                                                                                                                             m = tanh (βB + βJqm)
+
+
+
+
+Copyright © 2023 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                  For B = 0, show that the form of the solution differs for T > Tc and T < Tc
+                                                                                                  where Tc = Jq. [Hint: Think graphically.] For B 6= 0, find the asymptotic form
+                                                                                                  of the solution as T → ∞.
+
+                                                                                               3. This question describes a more rigorous approach to mean field theory. First
+                                                                                                  recall that the Gibbs entropy of a probability distribution {pi } is defined as S =
+                                                                                                     P
+                                                                                                  − i pi log pi . For a physical system with energy levels Ei define the “variational
+                                                                                                  free energy” of the probability distribution as F = hEi − T S where hEi =
+                                                                                                  P
+                                                                                                     i Ei pi is the expectation value of the energy and T is the temperature. Show
+                                                                                                  that minimizing F w.r.t. the probability distribution leads to the Boltzmann
+                                                                                                  distribution. Hence the minimum of F over all probability distributions is the
+                                                                                                  usual free energy F .
+                                                                                                  This motivates a variational approximation for statistical physics problems: start
+                                                                                                  from an Ansatz for the probability distribution {pi } containing some free param-
+                                                                                                  eters and then minimize F w.r.t. these parameters. Let’s apply this to the Ising
+                                                                                                  model. Mean field theory corresponds to the Ansatz of a “factorized” probabil-
+                                                                                                  ity distribution, where each spin behaves independently of its neighbours with
+                                                                                                  p(si = ±1) = (1 ± m)/2 where m ∈ [−1, 1] is a parameter. Show that hsi i = m
+                                                                                                  and hsi sj i = m2 and hence show that F(m) is the same as the effective free
+                                                                                                  energy of mean field theory. Finally show that minimizing w.r.t. m reproduces
+                                                                                                  the self-consistency condition of the previous question.
+
+                                                                                               4. The long range Ising model, in which each spin interacts with all other spins,
+                                                                                                  including itself, provides an example where mean field theory is exact. The
+                                                                                                  energy is
+                                                                                                                                                !        !
+                                                                                                                             X         J X        X
+                                                                                                                     E = −B      si −        si       sj
+                                                                                                                               i
+                                                                                                                                      2N  i        j
+
+
+                                                                                                  Why is there an extra factor of N in the coupling? First, show that
+                                                                                                                              r
+                                                                                                                                N βJ +∞
+                                                                                                                                     Z
+                                                                                                                       2                             2
+                                                                                                                  e βJα /2N
+                                                                                                                            =              dx e−N βJx /2+αβJx
+                                                                                                                                  2π −∞
+
+
+
+                                                                                                                                       2
+                                                                                                 Use this identity to write the partition function as
+                                                                                                      r
+                                                                                                        N βJ +∞                                   βJx2
+                                                                                                              Z
+                                                                                                 Z=                  dx e−N S(x) where S(x) =          − log 2 cosh β(B + Jx)
+                                                                                                          2π −∞                                     2
+
+                                                                                                 In the large N limit, the partition function can be evaluated by saddle point so
+
+
+
+
+Copyright © 2023 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                 that, ignoring a pre-factor, Z ≈ e−N S(x⋆ ) where x⋆ is the minimum of S(x). Find
+                                                                                                 an equation for x⋆ . Show that the equilibrium magnetisation is given by m = x⋆ .
+
+                                                                                               5. (*) Consider the free energy
+
+                                                                                                                       f (m) = α2 (T )m2 + α4 m4 + α6 m6
+
+                                                                                                 where α4 < 0 and α6 > 0 and α2 (T ) varies from positive to negative as the
+                                                                                                 temperature is lowered. Sketch f (m) for various values of the temperature. Show
+                                                                                                 that the system undergoes a first order phase transition at α2 = α42 /4α6 . What
+                                                                                                 is the jump in the magnetisation? Draw the phase diagram in the α2 − α4 plane.
+                                                                                                 When α4 = 0, the phase transition occurs at α2 (Tc ) = 0. This is said to be a
+                                                                                                 tri-critical point. Compute the mean field critical exponents α, β, γ and δ. [You
+                                                                                                 may assume that α2 (T ) ∼ (T − Tc ) close to Tc and should recall that for two of
+                                                                                                 the critical exponents a −Bm term needs to be added to f (m).]
+
+                                                                                               6. A superfluid has complex order parameter ψ and free energy given by the so-called
+                                                                                                  XY-model
+
+                                                                                                                             f (ψ) = α2 |ψ|2 + α4 |ψ|4
+
+                                                                                                 Sketch the free energy for α2 < 0 and α4 > 0. What are the possible ground
+                                                                                                 states when α2 < 0? What is the meaning of “spontaneous symmetry breaking”
+                                                                                                 in this context? Show that the critical point at α2 = 0 has the same mean field
+                                                                                                 exponents as the Ising model. (To define some of these you need to couple to a
+                                                                                                 complex B-field by adding the term −Re(B̄ψ) to f .)
+
+                                                                                               7. Consider a lattice model where there lives, on each site, a unit 3-vector s =
+                                                                                                  (sx , sy , sz ) with |s| = 1. The energy is given by
+                                                                                                                            X               X         1 x 2          
+                                                                                                                                                 z 2               y 2
+                                                                                                                  E = −J        si · sj + g    (si ) −   (si ) + (si )
+                                                                                                                                            i
+                                                                                                                                                       2
+                                                                                                                      hiji
+
+
+                                                                                                 with J > 0. Use mean field theory to give plausibility arguments for why the
+                                                                                                 phase diagram takes the form shown below.
+
+
+                                                                                                                                       3
+                                                                                                                       g
+                                                                                                                             XY type                 2nd order
+                                                                                                                              order                  transition
+
+                                                                                                                        1st order transition               T
+
+
+
+
+Copyright © 2023 University of Cambridge. Not to be quoted or reproduced without permission.
+                                                                                                                                                   disordered
+                                                                                                                            Ising type                phase
+                                                                                                                               order
+
+
+
+
+                                                                                                  [Hint: Consider the ground states, and the phase transitions, between them in
+                                                                                                  the following regimes: (i) At low T , as g changes from negative to positive. (ii)
+                                                                                                  With g > 0 as T changes from low to high. (iii)With g < 0 as T changes from
+                                                                                                  low to high. ]
+
+                                                                                               8. (*) Consider the Landau-Ginsberg free energy for a complex scalar ψ,
+                                                                                                                                                                  !
+                                                                                                                                                    2       2   2
+                                                                                                                                                dψ        d   ψ
+                                                                                                                 Z
+                                                                                                            F = dx α2 (T )|ψ|2 + α4 |ψ|4 − γ          +κ
+                                                                                                                                                dx        dx2
+
+                                                                                                  with α4 , γ, κ > 0. Consider an ansatz in which a single Fourier mode ψk = Ak eikx
+                                                                                                  with k = ±k0 is non-vanishing. What value of k0 minimises the free energy?
+                                                                                                  Show that the system undergoes a phase transition to a spatially modulated
+                                                                                                  phase when α2 = γ 2 /4κ. What symmetries are broken in the ordered phase?
+
+                                                                                               9. A multi-critical point arises from the free energy
+
+                                                                                                                      f (m) = α2 m2 + α2n m2n         , n ∈ Z+
+
+                                                                                                  Determine the mean field critical exponent m ∼ (Tc − T )β in the ordered phase.
+                                                                                                  Substitute this back into the free energy to show that the mean field critical
+                                                                                                  exponent c ∼ (Tc −T )−α in the ordered phase is given by α = 1−2β. Compare this
+                                                                                                  with the contribution to the free energy from fluctuations in the Gaussian path
+                                                                                                  integral. Show that the mean field contribution to the heat capacity dominates
+                                                                                                  at the critical point provided d > dc = 2n/(n − 1).
+
+
+
+
+                                                                                                                                               4
+

@@ -174,7 +174,75 @@ four-point counterterm are respectively
 \]
 Through order \(\lambda^2\), the 1PI four-point diagrams are the tree
 vertex, the one-loop bubble in each of the \(s,t,u\) channels (each with
-symmetry factor \(1/2\)), and the four-point counterterm.  The massless
+symmetry factor \(1/2\)), and the four-point counterterm:
+\begin{center}
+\begin{tikzpicture}[x=0.60cm,y=0.60cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \path (-2.0,-2.15) (2.0,1.55);
+ \coordinate (v) at (0,0);
+ \draw (-1.35,0.95)--(v)--(1.35,0.95);
+ \draw (-1.35,-0.95)--(v)--(1.35,-0.95);
+ \node[vertex] at (v) {};
+ \node at (0,-1.85) {tree};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=0.60cm,y=0.60cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \path (-2.0,-2.15) (2.0,1.55);
+ \coordinate (a) at (-0.60,0); \coordinate (b) at (0.60,0);
+ \draw (-1.65,0.95)--(a)--(-1.65,-0.95);
+ \draw (1.65,0.95)--(b)--(1.65,-0.95);
+ \draw (a) to[bend left=48] (b);
+ \draw (a) to[bend right=48] (b);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node at (0,-1.85) {\(s\)};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=0.60cm,y=0.60cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \path (-2.0,-2.15) (2.0,1.55);
+ \coordinate (a) at (0,0.62); \coordinate (b) at (0,-0.62);
+ \draw (-1.55,1.30)--(a)--(1.55,1.30);
+ \draw (-1.55,-1.30)--(b)--(1.55,-1.30);
+ \draw (a) to[bend left=48] (b);
+ \draw (a) to[bend right=48] (b);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node at (0,-1.85) {\(t\)};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=0.60cm,y=0.60cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \path (-2.0,-2.15) (2.0,1.55);
+ \coordinate (a) at (0,0.62); \coordinate (b) at (0,-0.62);
+ \draw (-1.55,1.30)--(a);
+ \draw (-1.55,-1.30)--(b);
+ % The outgoing legs have to cross for the u channel.  Straight legs put that
+ % crossing about 1.4mm from the loop, where it reads as a blot; leaving each
+ % vertex horizontally first moves it three times further out.
+ \draw (a) .. controls (0.90,0.62) and (1.05,-0.15) .. (1.55,-1.30);
+ \draw (b) .. controls (0.90,-0.62) and (1.05,0.15) .. (1.55,1.30);
+ \draw (a) to[bend left=48] (b);
+ \draw (a) to[bend right=48] (b);
+ \node[vertex] at (a) {}; \node[vertex] at (b) {};
+ \node at (0,-1.85) {\(u\)};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}[x=0.60cm,y=0.60cm,baseline=-0.5ex,line width=0.65pt,
+  vertex/.style={circle,fill,inner sep=1.25pt},
+  every node/.style={font=\small}]
+ \path (-2.0,-2.15) (2.0,1.55);
+ \coordinate (v) at (0,0);
+ \draw (-1.35,0.95)--(v)--(1.35,0.95);
+ \draw (-1.35,-0.95)--(v)--(1.35,-0.95);
+ \node[fill=white,inner sep=0.6pt] at (v) {\(\otimes\)};
+ \node at (0,-1.85) {\(\delta\lambda\)};
+\end{tikzpicture}
+\end{center}
+  The massless
 tadpole is scaleless in dimensional regularization, and the one-loop
 two-point function has no momentum-dependent pole, so
 \(\delta m^2=0\) and \(\delta Z=0\) at the order used here.

@@ -85,15 +85,59 @@
     fermion BRST sources.
   \end{enumerate}
 
-  \SupplementaryExercise{4}{Slavnov Stability under Renormalization}
-  {Inspired by Andrei O.\ Barvinsky et al., Renormalization of Gauge Theories in the Background-Field Approach, Sections 4--5 (2017).}
-  {barvinsky-et-al-background-renormalization-2017-v2ch17-p04}
-  Suppose the regularized \(N\)-loop effective action violates the
-  Zinn--Justin equation by a local ghost-number-one functional
-  \(\mathcal A_N\).  Use the Jacobi identity to derive the consistency
-  condition \(\mathcal B_{S_R}\mathcal A_N=0\).  Explain when a local
-  counterterm restores the identity and identify the cohomological
-  obstruction.
+  \SupplementaryExercise{4}{Gauge Fields with Adjoint-Scalar and Fundamental-Fermion Matter}
+  {Adapted from University of Cambridge, Part III Advanced Quantum
+  Field Theory, 2023 Paper 304, Question 3 (printed p.~4).}
+  {cambridge-part-iii-aqft-2023-p304-q3-v2ch17-p04}
+  A Yang--Mills vector field \(A_\mu\) has field strength
+  \[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu
+      -ig[A_\mu,A_\nu].
+  \]
+  \begin{enumerate}
+    \item[(a)] State how \(F_{\mu\nu}\) transforms under gauge
+      transformations and show that the Lagrangian
+      \[
+        \mathcal L=-\frac14\operatorname{Tr}
+          (F_{\mu\nu}F^{\mu\nu})
+      \]
+      is gauge invariant.  Briefly explain why gauge fixing is necessary
+      to find the propagator.
+    \item[(b)] A scalar field \(\phi(x)\) in the adjoint representation
+      transforms under the gauge symmetry as
+      \[
+        \phi\longmapsto U^\dagger\phi U.
+      \]
+      Show that the covariant derivative of \(\phi\) is given by
+      \[
+        D_\mu\phi=\partial_\mu\phi-ig[A_\mu,\phi].
+      \]
+      By writing
+      \[
+        A_\mu=A_\mu^a(x)T_a,\qquad
+        \phi(x)=\phi^a(x)T_a,\qquad
+        U(x)=\exp\!\bigl(i\alpha^a(x)T_a\bigr),
+      \]
+      where \(T_a\) are generators of the gauge group, find the
+      infinitesimal form (to first order in \(\alpha^a(x)\)) of the gauge
+      transformations of \(\phi^a(x)\) in terms of the fields and the
+      structure constants of the gauge group.
+    \item[(c)] Suppose we also have a fermion \(\psi(x)\), which transforms
+      in the fundamental representation of the gauge group.
+      \begin{enumerate}
+        \item[(i)] Write down the general gauge-invariant Lagrangian in
+          \(d\) dimensions, up to and including terms quartic in the fields
+          \(\psi(x)\), \(\phi(x)\), and \(A_\mu(x)\), that is invariant
+          under the transformations
+          \(\phi\mapsto-\phi\) and \(\psi\mapsto-\psi\).  Clearly state
+          the mass dimension of any coupling constants you introduce and
+          comment on how each term is expected to evolve under
+          renormalization-group flow.
+        \item[(ii)] Draw the Feynman diagrams that contribute to the
+          four-scalar 1PI correlation function through one loop.  You do
+          not have to evaluate the diagrams or include counterterms.
+      \end{enumerate}
+  \end{enumerate}
 
   \SupplementaryExercise{5}{Invariant Scalar and Yukawa Counterterms}
   {Inspired by Olivier Piguet and Silvio Sorella, Algebraic Renormalization, sections on Yang--Mills theories and invariant interactions (1995).}
@@ -357,7 +401,7 @@
        +(r-q)_\mu\eta_{\nu\rho},
   \]
   so the vertex is \(g_0f^{abc}V_{\mu\nu\rho}(p,q,r)\).  For ordered gluon
-  legs \(a\mu,b\nu,c\rho,d\sigma\), the four-gluon vertex is
+  legs \(a\mu\), \(b\nu\), \(c\rho\), \(d\sigma\), the four-gluon vertex is
   \[
   \begin{split}
    -ig_0^2\bigl[{}
@@ -412,44 +456,46 @@
   the external pair attached to the four-gluon vertex.
   \begin{center}
   \begin{tikzpicture}[scale=0.78,
-    gluon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=4pt},thick},
+    gluon/.style={decorate,decoration={snake,amplitude=1pt,segment length=3.4pt},thick},
+    circ/.style={postaction={decorate},decoration={markings,
+      mark=at position 0.5 with {\arrow{Latex[length=1.6mm]}}}},
     every node/.style={font=\scriptsize}]
-    \begin{scope}[shift={(0,3.2)}]
+    \begin{scope}[shift={(0,3.7)}]
       \coordinate (a) at (-.48,-.3); \coordinate (b) at (.48,-.3);
       \coordinate (c) at (0,.54);
       \draw[gluon] (a)--(b); \draw[gluon] (b)--(c); \draw[gluon] (c)--(a);
       \draw[gluon] (a)--(-1,-.78); \draw[gluon] (b)--(1,-.78);
       \draw[gluon] (c)--(0,1.08); \node at (0,-1.05) {gluon triangle};
     \end{scope}
-    \begin{scope}[shift={(3.2,3.2)}]
-      \draw[thick,->] (.55,0) arc (0:180:.55);
-      \draw[thick,->] (-.55,0) arc (180:360:.55);
+    \begin{scope}[shift={(3.2,3.7)}]
+      \draw[thick,circ] (.55,0) arc (0:180:.55);
+      \draw[thick,circ] (-.55,0) arc (180:360:.55);
       \draw[gluon] (0,.55)--(0,1.08); \draw[gluon] (-.48,-.28)--(-1,-.75);
       \draw[gluon] (.48,-.28)--(1,-.75); \node at (0,-1.05) {fermion};
     \end{scope}
-    \begin{scope}[shift={(6.4,3.2)}]
-      \draw[thick,<-] (.55,0) arc (0:180:.55);
-      \draw[thick,<-] (-.55,0) arc (180:360:.55);
+    \begin{scope}[shift={(6.4,3.7)}]
+      \draw[thick,circ] (-.55,0) arc (180:0:.55);
+      \draw[thick,circ] (.55,0) arc (360:180:.55);
       \draw[gluon] (0,.55)--(0,1.08); \draw[gluon] (-.48,-.28)--(-1,-.75);
       \draw[gluon] (.48,-.28)--(1,-.75); \node at (0,-1.05) {reversed fermion};
     \end{scope}
-    \begin{scope}[shift={(1.6,1.05)}]
-      \draw[thick,dashed,->] (.55,0) arc (0:180:.55);
-      \draw[thick,dashed,->] (-.55,0) arc (180:360:.55);
+    \begin{scope}[shift={(1.6,1.15)}]
+      \draw[thick,dashed,circ] (.55,0) arc (0:180:.55);
+      \draw[thick,dashed,circ] (-.55,0) arc (180:360:.55);
       \draw[gluon] (0,.55)--(0,1.08); \draw[gluon] (-.48,-.28)--(-1,-.75);
       \draw[gluon] (.48,-.28)--(1,-.75); \node at (0,-1.05) {ghost};
     \end{scope}
-    \begin{scope}[shift={(4.8,1.05)}]
-      \draw[thick,dashed,<-] (.55,0) arc (0:180:.55);
-      \draw[thick,dashed,<-] (-.55,0) arc (180:360:.55);
+    \begin{scope}[shift={(4.8,1.15)}]
+      \draw[thick,dashed,circ] (-.55,0) arc (180:0:.55);
+      \draw[thick,dashed,circ] (.55,0) arc (360:180:.55);
       \draw[gluon] (0,.55)--(0,1.08); \draw[gluon] (-.48,-.28)--(-1,-.75);
       \draw[gluon] (.48,-.28)--(1,-.75); \node at (0,-1.05) {reversed ghost};
     \end{scope}
     \foreach \x/\lab in {0/{(12)|3},3.2/{(23)|1},6.4/{(31)|2}}{
-      \begin{scope}[shift={(\x,-1.25)}]
-        \coordinate (v) at (-.38,0); \coordinate (w) at (.42,0);
-        \draw[gluon] (v) to[out=65,in=115] (w);
-        \draw[gluon] (v) to[out=-65,in=-115] (w);
+      \begin{scope}[shift={(\x,-1.35)}]
+        \coordinate (v) at (-.45,0); \coordinate (w) at (.45,0);
+        \draw[gluon] (v) to[out=72,in=108] (w);
+        \draw[gluon] (v) to[out=-72,in=-108] (w);
         \draw[gluon] (v)--(-1,.55); \draw[gluon] (v)--(-1,-.55);
         \draw[gluon] (w)--(1,0); \fill (v) circle (1.4pt); \fill (w) circle (1.4pt);
         \node at (0,-.92) {swordfish \(\lab\)};

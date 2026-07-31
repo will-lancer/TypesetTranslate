@@ -1,55 +1,106 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Large Logarithms, Scalar Running, and the Landau Scale}
+  \SupplementarySolution{1}{Sine--Gordon Vertex Operator under Shell RG}
   \begin{enumerate}
     \item[(a)]
-    The relevant expansion parameter is not merely
-    \(\lambda/(16\pi^2)\), but
+    In mass units, \([x]=-1\) and \([\boldsymbol\nabla]=1\).  The kinetic
+    term in two dimensions gives
     \[
-      x=\frac{\lambda}{16\pi^2}\ln\left(\frac{E^2}{m^2}\right).
+      2[\phi]+2-2=0,
+      \qquad\hbox{so}\qquad [\phi]=0.
     \]
-    Fixed-order perturbation theory ceases to be ordered when
-    \(|x|\gtrsim1\), even if every loop without its logarithm is small.  At
-    \(n\) loops, terms \(x^n\) can then compete with the tree result.  The
-    renormalization group replaces the low-scale coupling by a running
-    coupling evaluated near \(E\), thereby summing the tower of leading
-    logarithms; higher beta-function and anomalous-dimension coefficients
-    similarly organize subleading towers.
+    The argument of the cosine must be dimensionless, while its coefficient
+    supplies the two units carried by a free-energy density.  Hence
+    \[
+      \boxed{[\beta_0]=0,\qquad [\lambda_0]=2.}
+      \tag{18.1.S1}
+    \]
+
     \item[(b)]
-    Separation of variables gives
+    Orthogonality of the retained and shell Fourier supports separates the
+    Gaussian free energy:
+    \(F_0[\phi^-+\phi^+]=F_0[\phi^-]+F_0[\phi^+]\).  Define
     \[
-      -\frac{1}{\lambda(\mu)}+\frac{1}{\lambda_0}
-        =-\frac{3}{16\pi^2}\ln\left(\frac{\mu}{\mu_0}\right),
+      Z_+=\int[\mathcal D\phi^+]\,e^{-F_0[\phi^+]},
+      \qquad
+      \langle\mathcal O\rangle_+
+      =\frac{1}{Z_+}\int[\mathcal D\phi^+]\,\mathcal O[\phi^+]\,
+        e^{-F_0[\phi^+]},
+      \tag{18.1.S2}
     \]
-    and hence
+    where every mode of \(\phi^+\) lies in \(\mathcal S_\zeta\).  The
+    shell-integrated Boltzmann weight is therefore
     \[
-      \boxed{\lambda(\mu)=
-        \frac{\lambda_0}{
-        1-\dfrac{3\lambda_0}{16\pi^2}
-        \ln(\mu/\mu_0)}}.
+      e^{-F'[\phi^-]}
+      =e^{-F_0[\phi^-]}
+        \left\langle
+          \exp\!\left\{
+            \lambda_0\int d^2x\,
+            \cos\!\bigl[\beta_0(\phi^-+\phi^+)\bigr]
+          \right\}
+        \right\rangle_+ .
     \]
-    With \(L=\ln(\mu/\mu_0)\), the geometric expansion is
+    Expanding the exponential and then the logarithm through first order
+    gives
     \[
-      \lambda(\mu)=\lambda_0+
-        \frac{3\lambda_0^2}{16\pi^2}L+
-        \frac{9\lambda_0^3}{(16\pi^2)^2}L^2+O(\lambda_0^4L^3).
+      F'[\phi^-]
+      =F_0[\phi^-]
+       -\lambda_0\int d^2x\,
+        \bigl\langle
+          \cos\!\bigl[\beta_0(\phi^-+\phi^+)\bigr]
+        \bigr\rangle_+
+       +O(\lambda_0^2),
     \]
-    Thus order \(\lambda_0^{n+1}\) contains the leading logarithm
-    \([3L/(16\pi^2)]^n\).
+    which is (18.1.3).
+
     \item[(c)]
-    The denominator of the one-loop solution vanishes at
+    At coincident points, (18.1.7) becomes
     \[
-      \boxed{\mu_L=\mu_0
-        \exp\left(\frac{16\pi^2}{3\lambda_0}\right).}
+      C_\zeta\equiv
+      \langle[\phi^+(x)]^2\rangle_+
+      =\frac{1}{2\pi}\int_{\Lambda/\zeta}^{\Lambda}\frac{dk}{k}
+      =\frac{\ln\zeta}{2\pi}.
+      \tag{18.1.S3}
     \]
-    A cutoff must lie below this scale if the one-loop running is to remain
-    meaningful.  Conversely, if a cutoff \(\Lambda\) is taken arbitrarily
-    high while a finite positive \(\lambda_0\) is held fixed, the trajectory
-    encounters the pole.  Avoiding it requires
-    \(\lambda_0\lesssim16\pi^2/[3\ln(\Lambda/\mu_0)]\), which tends to zero
-    as \(\Lambda\to\infty\).  This is the perturbative form of the
-    triviality problem.
+    Since the Gaussian is centered, (18.1.5) yields
+    \[
+      \bigl\langle e^{\pm i\beta_0\phi^+(x)}\bigr\rangle_+
+      =e^{-\beta_0^2C_\zeta/2}
+      =\zeta^{-\beta_0^2/(4\pi)}.
+    \]
+    Combining this with (18.1.6),
+    \[
+      \bigl\langle
+        \cos\!\bigl[\beta_0(\phi^-+\phi^+)\bigr]
+      \bigr\rangle_+
+      =\zeta^{-\beta_0^2/(4\pi)}\cos(\beta_0\phi^-),
+    \]
+    and substitution proves (18.1.4).
+
+    Now put \(\mathbf x=\zeta\mathbf x'\) and
+    \(\phi'(\mathbf x')=\phi^-(\zeta\mathbf x')\).  No field amplitude
+    rescaling is required because \([\phi]=0\), so the kinetic term remains
+    normalized and \(\beta'=\beta_0+O(\lambda_0^2)\).  The area element
+    supplies the remaining factor:
+    \[
+      \lambda'=\lambda_0
+        \zeta^{\,2-\beta_0^2/(4\pi)}+O(\lambda_0^2).
+    \]
+    With \(s=\ln\zeta\),
+    \[
+      \frac{d\lambda}{ds}
+      =\left(2-\frac{\beta_0^2}{4\pi}\right)\lambda+O(\lambda^2).
+      \tag{18.1.S4}
+    \]
+    Thus
+    \[
+      \boxed{\beta_0^2<8\pi:\ \hbox{relevant},
+      \qquad
+      \beta_0^2>8\pi:\ \hbox{irrelevant}.}
+    \]
+    At \(\beta_0^2=8\pi\) the perturbation is marginal at this order; the
+    coupled higher-order flow resolves that boundary.
   \end{enumerate}
 
   \SupplementarySolution{2}{Wilsonian Flow with Cubic and Quartic Interactions}
@@ -202,59 +253,147 @@
     \end{enumerate}
   \end{enumerate}
 
-  \SupplementarySolution{3}{Fixed-Point Stability and Scheme Independence}
+  \SupplementarySolution{3}{Fluctuating Membrane and the Running Bending Modulus}
   \begin{enumerate}
     \item[(a)]
-    Let \(\delta=g-g_*\) and try
+    The sum \(1+(\boldsymbol\nabla h)^2\) in the unexpanded geometric free
+    energy forces \(\boldsymbol\nabla h\) to be dimensionless.  Consequently
     \[
-      \delta(\mu)=A\mu^{-\omega}+B\mu^{-2\omega}
-        +O(\mu^{-3\omega}).
+      [h]=-1.
     \]
-    Substitution into
-    \(d\delta/d\ln\mu=-\omega\delta+c\delta^2+\cdots\)
-    makes the first power automatic.  At order \(\mu^{-2\omega}\),
+    The tension term and bending term then give, respectively,
     \[
-      -2\omega B=-\omega B+cA^2,
+      [r_0]-2=0,
+      \qquad
+      [\lambda_0]+2-2=0.
     \]
-    whence
+    Therefore
     \[
-      \boxed{g(\mu)-g_*
-        =A\mu^{-\omega}-\frac{cA^2}{\omega}\mu^{-2\omega}
-         +O(\mu^{-3\omega}).}
+      \boxed{[h]=-1,\qquad [r_0]=2,\qquad [\lambda_0]=0.}
+      \tag{18.3.S1}
     \]
-    The exponent is fixed by the beta-function slope, while \(A\) labels
-    the trajectory.
+
     \item[(b)]
-    The eigenvalues are \(-2\) and \(+1\).  Convenient eigenvectors are
+    Use
     \[
-      V_-=\begin{pmatrix}1\\0\end{pmatrix},\qquad
-      V_+=\begin{pmatrix}1\\3\end{pmatrix}.
+      h(x)=\int_{\mathbf k}e^{i\mathbf k\cdot\mathbf x}h_{\mathbf k},
+      \qquad
+      \int_{\mathbf k}\equiv\int\frac{d^2k}{(2\pi)^2}.
     \]
-    Therefore the displacement from the fixed point is
+    The quadratic part is
     \[
-      \begin{pmatrix}x(\mu)\\y(\mu)\end{pmatrix}
-        =c_-\mu^{-2}V_-+c_+\mu V_+.
+      F_0[h]=\frac12\int_{\mathbf k}
+        \bigl(r_0\mathbf k^2+\lambda_0\mathbf k^4\bigr)
+        h_{\mathbf k}h_{-\mathbf k}.
+      \tag{18.3.S2}
     \]
-    The positive-eigenvalue component grows toward the ultraviolet.  The
-    trajectory reaches the fixed point as \(\mu\to\infty\) precisely when
-    \(c_+=0\).  Thus the ultraviolet critical surface is one-dimensional
-    in the linear neighborhood and is tangent to \(V_-\).
+    With \(Z_+=\int[\mathcal Dh^+]e^{-F_0[h^+]}\), define the shell average
+    by
+    \[
+      \langle\mathcal O\rangle_+
+      =Z_+^{-1}\int[\mathcal Dh^+]\,\mathcal O[h^+]e^{-F_0[h^+]}.
+    \]
+    Inverting the quadratic kernel in (18.3.S2) gives, for momenta in the
+    shell,
+    \[
+      \boxed{
+      \bigl\langle h_{\mathbf k_1}^+h_{\mathbf k_2}^+\bigr\rangle_+
+      =\frac{(2\pi)^2\delta^{(2)}
+        (\mathbf k_1+\mathbf k_2)}
+        {r_0\mathbf k_1^2+\lambda_0\mathbf k_1^4}.}
+      \tag{18.3.S3}
+    \]
+    The correlator is zero if either momentum lies outside
+    \(\mathcal S_\zeta\).
+
     \item[(c)]
-    The transformed beta-function is
+    The quartic interaction is
     \[
-      \widetilde\beta^\ell(\widetilde{\mathbf g})
-        =\frac{\partial f^\ell}{\partial g^m}\beta^m(\mathbf g).
+      F_I[h]=-\frac{5\lambda_0}{4}\int d^2x\,
+        (\partial_a h\,\partial_a h)(\boldsymbol\nabla^2h)^2.
     \]
-    At a fixed point the term containing second derivatives of \(f\)
-    vanishes because \(\beta^m(\mathbf g_*)=0\).  If
-    \(S^\ell{}_m=(\partial f^\ell/\partial g^m)_*\), differentiation gives
+    The stated Fourier convention gives
     \[
-      \widetilde M S=SM,\qquad
-      \widetilde M=SMS^{-1}.
+      \begin{split}
+      F_I[h]
+      ={}&\frac{5\lambda_0}{4}
+        \int_{\mathbf k_1}\!\cdots\!\int_{\mathbf k_4}
+        (2\pi)^2\delta^{(2)}
+          (\mathbf k_1+\mathbf k_2+\mathbf k_3+\mathbf k_4)\\
+      &\quad{}\times
+        (\mathbf k_1\!\cdot\!\mathbf k_2)
+        \mathbf k_3^2\mathbf k_4^2\,
+        h_{\mathbf k_1}h_{\mathbf k_2}
+        h_{\mathbf k_3}h_{\mathbf k_4}.
+      \end{split}
+      \tag{18.3.S4}
     \]
-    Similar matrices have identical eigenvalues.  The necessary assumption
-    is that the coupling redefinition is differentiable and locally
-    nonsingular at the fixed point, so that \(S^{-1}\) exists.
+    To renormalize the displayed bending operator, retain the two
+    Laplacian fields as slow fields and contract the two gradient fields in
+    the shell.  The first cumulant then contains
+    \[
+      \left.\langle F_I\rangle_+\right|_{(\nabla^2h^-)^2}
+      =-\frac{5\lambda_0}{4}\,I_\zeta
+        \int d^2x\,(\boldsymbol\nabla^2h^-)^2,
+      \tag{18.3.S5}
+    \]
+    where
+    \[
+      \begin{split}
+      I_\zeta
+      &\equiv\bigl\langle
+        (\boldsymbol\nabla h^+)^2\bigr\rangle_+\\
+      &=\int_{\Lambda/\zeta<|\mathbf k|<\Lambda}
+        \frac{d^2k}{(2\pi)^2}\,
+        \frac{\mathbf k^2}
+          {r_0\mathbf k^2+\lambda_0\mathbf k^4}\\
+      &=\frac{1}{4\pi\lambda_0}
+        \ln\!\left(
+          \frac{r_0+\lambda_0\Lambda^2}
+               {r_0+\lambda_0\Lambda^2/\zeta^2}
+        \right).
+      \end{split}
+      \tag{18.3.S6}
+    \]
+    The other quadratic contraction,
+    \((\boldsymbol\nabla h^-)^2
+      \langle(\boldsymbol\nabla^2h^+)^2\rangle_+\),
+    changes the tension; the mixed contraction is odd in shell momentum.
+    Neither is part of the requested bending-only flow.
+
+    Comparing (18.3.S5) with
+    \(\lambda(\boldsymbol\nabla^2h^-)^2/2\) gives
+    \[
+      \lambda_{\rm W}
+      =\lambda_0-\frac{5\lambda_0}{2}I_\zeta.
+      \tag{18.3.S7}
+    \]
+    Under \(\mathbf x=\zeta\mathbf x'\), take
+    \(h'(\mathbf x')=\zeta^{-1}h^-(\zeta\mathbf x')\).  The bending integral
+    is invariant, consistently with \([\lambda_0]=0\), so it contributes no
+    additional tree-level factor.  For an infinitesimal shell
+    \(\zeta=e^{ds}\),
+    \[
+      I_\zeta
+      =\frac{\Lambda^2}{2\pi
+        (r_0+\lambda_0\Lambda^2)}\,ds+O(ds^2).
+    \]
+    Thus the result with the tension retained is
+    \[
+      \boxed{
+      \frac{d\lambda}{ds}
+      =-\frac{5}{4\pi}\,
+        \frac{\lambda\Lambda^2}{r+\lambda\Lambda^2}.}
+      \tag{18.3.S8}
+    \]
+    In the bending-dominated limit
+    \(r/(\lambda\Lambda^2)\to0\), this reduces to the sheet's target,
+    \[
+      \boxed{\frac{d\lambda}{ds}\simeq-\frac{5}{4\pi}.}
+    \]
+    Coarse graining therefore lowers the bending modulus.  Since a smaller
+    bending modulus costs less free energy for curvature, the
+    long-wavelength membrane becomes more flexible.
   \end{enumerate}
 
   \SupplementarySolution{4}{The \(O(N)\) Nonlinear Sigma Model Near Two Dimensions}
@@ -658,96 +797,627 @@
     at the \(SU(5)\)-symmetric scale.
   \end{enumerate}
 
-  \SupplementarySolution{7}{The Wilson--Fisher Fixed Point and Its Thermal Exponent}
+  \SupplementarySolution{7}{Momentum-Shell RG with \(\phi^4\) and \(\phi^6\) Interactions}
   \begin{enumerate}
     \item[(a)]
-    The Gaussian field dimension is
-    \([\phi]=(d-2)/2\).  The coupling of \(\phi^{2n}\) consequently has
-    infrared RG eigenvalue
+    Split the field into retained and shell modes,
     \[
-      \boxed{y_{2n}=d-n(d-2).}
+      \phi=\phi^-+\phi^+,\qquad
+      \phi^-_{\mathbf k}=0\ \hbox{for }|\mathbf k|>\Lambda/\zeta,
+      \qquad
+      \phi^+_{\mathbf k}=0\ \hbox{unless }
+        \Lambda/\zeta<|\mathbf k|<\Lambda .
     \]
-    In \(d=3\), \(y_4=1\), so \(\phi^4\) is relevant, while
-    \(y_6=0\), so \(\phi^6\) is marginal by power counting.  In \(d=4\),
-    \(y_4=0\), so \(\phi^4\) is marginal, and \(y_6=-2\), so
-    \(\phi^6\) is irrelevant.  Nonlinear beta-function terms decide a
-    marginal coupling's ultimate behavior.
+    The first step integrates out the shell:
+    \[
+      e^{-F_{\rm W}[\phi^-]}
+        =\int[d\phi^+]\,e^{-F[\phi^-+\phi^+]}.
+    \]
+    This leaves a Wilson free energy with cutoff \(\Lambda/\zeta\).
+    Second, rescale
+    \[
+      \mathbf k'=\zeta\mathbf k,\qquad
+      \mathbf x'=\mathbf x/\zeta
+    \]
+    to restore the cutoff to \(\Lambda\).  Third, rescale the retained
+    field,
+    \[
+      \phi'(\mathbf x')
+        =\zeta^{(d-2)/2}\phi^-(\zeta\mathbf x'),
+    \]
+    so the coefficient of \((\boldsymbol\nabla'\phi')^2/2\) is again
+    unity.  Re-expanding the result in the same basis of local,
+    symmetry-allowed operators gives new couplings
+    \(\mu^2(\zeta),g(\zeta),\lambda(\zeta),\ldots\).  Repeating the three
+    steps therefore traces a flow in coupling space.
+
     \item[(b)]
-    The zeros of the beta-function are
+    In mass units,
     \[
-      g_0=0,\qquad
-      \boxed{g_*=\frac{\epsilon}{A}+O(\epsilon^2).}
+      [x]=-1,\qquad[\boldsymbol\nabla]=1,\qquad
+      [\phi]=\frac{d-2}{2}.
     \]
-    Its derivative at the interacting fixed point is
+    The operator in (18.7.2) has dimension
     \[
-      \beta'(g_*)=-\epsilon+2Ag_*+O(\epsilon^2)
-        =\boxed{\epsilon+O(\epsilon^2)}.
+      n[\phi]+m([\phi]+2)
+        =\frac{n+m}{2}(d-2)+2m.
     \]
-    With the chapter's momentum-scale convention, this positive eigenvalue
-    means that the quartic perturbation decays as the scale is lowered
-    toward the infrared fixed point.  It is the leading irrelevant
-    direction and controls corrections to scaling.
+    Because the free-energy exponent is dimensionless,
+    \[
+      \boxed{[g_{n,m}]
+        =d-\frac{n+m}{2}(d-2)-2m
+        =n-m-\frac{n+m-2}{2}d.}
+      \tag{18.7.S1}
+    \]
+    Except when \(n+m=2\), marginality gives
+    \[
+      \boxed{d_{\rm c}=\frac{2(n-m)}{n+m-2}.}
+    \]
+    Since \(n,m>0\), the exceptional case is \(n=m=1\):
+    \(\phi\boldsymbol\nabla^2\phi\) is the kinetic operator up to
+    integration by parts, and its coefficient is dimensionless in every
+    \(d\).  At an interacting fixed point, field anomalous dimensions and
+    mixing among operators with the same quantum numbers shift the
+    engineering result (18.7.S1), so the true scaling dimension need not
+    equal it.
+
     \item[(c)]
-    The nontrivial zero of the quartic beta-function is
+    Write the shell covariance in position space as
     \[
-      g_*=\frac{8\pi^2}{N+8}\epsilon+O(\epsilon^2).
+      \begin{gathered}
+        G_+(x)=\int_{\mathcal S_\zeta}\frac{d^dq}{(2\pi)^d}\,
+          \frac{e^{i\mathbf q\cdot\mathbf x}}
+            {\mathbf q^2+\mu_0^2},
+        \qquad C\equiv G_+(0),\\
+        B_r\equiv\int d^dx\,[G_+(x)]^r\quad(r\geq2).
+      \end{gathered}
+      \tag{18.7.S2}
     \]
-    Linearization of the mass flow at \(g_2=0\) then gives
+    Equivalently,
     \[
-      \boxed{\lambda_t=-2+
-        \frac{N+2}{N+8}\epsilon+O(\epsilon^2).}
+      B_r=\int\prod_{j=1}^{r-1}\left[
+        \frac{d^dq_j}{(2\pi)^d}\,
+        \frac{\chi_{\mathcal S_\zeta}(\mathbf q_j)}
+             {\mathbf q_j^2+\mu_0^2}\right]
+        \frac{\chi_{\mathcal S_\zeta}(-\sum_j\mathbf q_j)}
+             {(\sum_j\mathbf q_j)^2+\mu_0^2},
+      \tag{18.7.S3}
     \]
-    This \(\lambda_t\) is negative in Weinberg's \(\mu\)-flow convention
-    and hence is the single relevant infrared perturbation.  In the
-    common coarse-graining convention its positive eigenvalue is
-    \(y_t=-\lambda_t
-      =2-(N+2)\epsilon/(N+8)+O(\epsilon^2)\).
+    where \(\chi_{\mathcal S_\zeta}\) is the shell characteristic
+    function.  The Wilson free energy is obtained from
+    \[
+      F_{\rm W}=F_0+
+        \langle F_{\rm int}\rangle_+
+        -\frac12\langle F_{\rm int}^2\rangle_{+,c}+\cdots .
+      \tag{18.7.S4}
+    \]
+
+    \begin{enumerate}
+      \item[(i)]
+      Solid lines below are retained external fields, dashed lines are
+      shell contractions, and a loop beginning and ending on one vertex
+      is a shell tadpole.  At first order there is one \(g_0\) tadpole and
+      one \(\lambda_0\) double tadpole:
+      \begin{center}
+      \begin{tikzpicture}[scale=0.72,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \begin{scope}[shift={(0,0)}]
+          \coordinate (v) at (0,0);
+          \draw[thick] (-1.25,0)--(v)--(1.25,0);
+          \draw[fast] (v) .. controls (-.4,.35) and (-.4,.9) .. (0,.95)
+            .. controls (.4,.9) and (.4,.35) .. (v);
+          \fill (v) circle (1.8pt);
+          \node at (0,-.58) {\(g_0\)};
+        \end{scope}
+        \begin{scope}[shift={(3.5,0)}]
+          \coordinate (v) at (0,0);
+          \draw[thick] (-1.25,0)--(v)--(1.25,0);
+          \draw[fast] (v) .. controls (-.4,.3) and (-.4,.8) .. (0,.85)
+            .. controls (.4,.8) and (.4,.3) .. (v);
+          \draw[fast] (v) .. controls (-.4,-.3) and (-.4,-.8) .. (0,-.85)
+            .. controls (.4,-.8) and (.4,-.3) .. (v);
+          \fill (v) circle (1.8pt);
+          \node at (0,-1.18) {\(\lambda_0\)};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+
+      The three order-\(g_0^2\) connected shell topologies are
+      \begin{center}
+      \begin{tikzpicture}[scale=0.66,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \begin{scope}[shift={(0,0)}]
+          \coordinate (v) at (-.65,0); \coordinate (w) at (.65,0);
+          \draw[thick] (-1.65,.55)--(v); \draw[thick] (-1.65,-.55)--(v);
+          \draw[fast] (v) to[out=45,in=135] (w);
+          \draw[fast] (v) to[out=-45,in=-135] (w);
+          \draw[fast] (w) .. controls (.95,.3) and (1.25,.55) .. (1.25,.85)
+            .. controls (.85,1.05) and (.5,.55) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.05) {\(2+0;\ r=2\)};
+        \end{scope}
+        \begin{scope}[shift={(3.25,0)}]
+          \coordinate (v) at (-.65,0); \coordinate (w) at (.65,0);
+          \draw[thick] (-1.55,0)--(v); \draw[thick] (w)--(1.55,0);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) .. controls (-.95,.3) and (-1.1,.75) .. (-.65,.85)
+            .. controls (-.2,.75) and (-.35,.3) .. (v);
+          \draw[fast] (w) .. controls (.35,.3) and (.2,.75) .. (.65,.85)
+            .. controls (1.1,.75) and (.95,.3) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.05) {\(1+1;\ r=1\)};
+        \end{scope}
+        \begin{scope}[shift={(6.5,0)}]
+          \coordinate (v) at (-.65,0); \coordinate (w) at (.65,0);
+          \draw[thick] (-1.55,0)--(v); \draw[thick] (w)--(1.55,0);
+          \draw[fast] (v) to[out=55,in=125] (w);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) to[out=-55,in=-125] (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.05) {\(1+1;\ r=3\)};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+      Here \(a+b=2\) labels the numbers of external legs at the two
+      vertices and \(r\) is the number of cross-contractions.  The
+      single-bridge graph is present in the Wick-contraction list but
+      vanishes for a strict sharp-shell split: its sole internal momentum
+      is a retained external momentum and cannot lie in the shell.
+
+      Finally, the five order-\(\lambda_0g_0\) topologies are
+      \begin{center}
+      \begin{tikzpicture}[scale=0.61,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \begin{scope}[shift={(0,1.7)}]
+          \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
+          \draw[thick] (w)--(1.55,.5); \draw[thick] (w)--(1.55,-.5);
+          \draw[fast] (v) to[out=40,in=140] (w);
+          \draw[fast] (v) to[out=-40,in=-140] (w);
+          \draw[fast] (v) .. controls (-.95,.25) and (-1.05,.65) .. (-.6,.78)
+            .. controls (-.15,.65) and (-.25,.25) .. (v);
+          \draw[fast] (v) .. controls (-.95,-.25) and (-1.05,-.65) .. (-.6,-.78)
+            .. controls (-.15,-.65) and (-.25,-.25) .. (v);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
+          \node at (0,-1.80) {\(a=0,r=2\)};
+        \end{scope}
+        \begin{scope}[shift={(3.15,1.7)}]
+          \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
+          \draw[thick] (-1.5,0)--(v); \draw[thick] (w)--(1.5,0);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) .. controls (-.95,.25) and (-1.05,.65) .. (-.6,.78)
+            .. controls (-.15,.65) and (-.25,.25) .. (v);
+          \draw[fast] (v) .. controls (-.95,-.25) and (-1.05,-.65) .. (-.6,-.78)
+            .. controls (-.15,-.65) and (-.25,-.25) .. (v);
+          \draw[fast] (w) .. controls (.25,.25) and (.15,.65) .. (.6,.78)
+            .. controls (1.05,.65) and (.95,.25) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
+          \node at (0,-1.80) {\(a=1,r=1\)};
+        \end{scope}
+        \begin{scope}[shift={(6.3,1.7)}]
+          \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
+          \draw[thick] (-1.5,0)--(v); \draw[thick] (w)--(1.5,0);
+          \draw[fast] (v) to[out=52,in=128] (w);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) to[out=-52,in=-128] (w);
+          \draw[fast] (v) .. controls (-.95,.3) and (-1.05,.72) .. (-.6,.82)
+            .. controls (-.15,.72) and (-.25,.3) .. (v);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
+          \node at (0,-1.80) {\(a=1,r=3\)};
+        \end{scope}
+        \begin{scope}[shift={(1.6,-1.35)}]
+          \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
+          \draw[thick] (-1.55,.5)--(v); \draw[thick] (-1.55,-.5)--(v);
+          \draw[fast] (v) to[out=40,in=140] (w);
+          \draw[fast] (v) to[out=-40,in=-140] (w);
+          \draw[fast] (v) .. controls (-.9,.25) and (-1,.65) .. (-.6,.78)
+            .. controls (-.2,.65) and (-.3,.25) .. (v);
+          \draw[fast] (w) .. controls (.3,.25) and (.2,.65) .. (.6,.78)
+            .. controls (1,.65) and (.9,.25) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
+          \node at (0,-1.80) {\(a=2,r=2\)};
+        \end{scope}
+        \begin{scope}[shift={(4.75,-1.35)}]
+          \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
+          \draw[thick] (-1.55,.5)--(v); \draw[thick] (-1.55,-.5)--(v);
+          \draw[fast] (v) to[out=70,in=110] (w);
+          \draw[fast] (v) to[out=24,in=156] (w);
+          \draw[fast] (v) to[out=-24,in=-156] (w);
+          \draw[fast] (v) to[out=-70,in=-110] (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
+          \node at (0,-1.80) {\(a=2,r=4\)};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+      In these labels, \(a\) is the number of retained legs at the sextic
+      vertex; the quartic vertex has \(2-a\).  This exhausts the allowed
+      positive cross-contraction numbers after the remaining shell legs
+      are paired into tadpoles.
+
+      \item[(ii)]
+      At first order in \(\lambda_0\), choose two retained fields from the
+      sextic vertex and pair the other four:
+      \[
+        \lambda_0\binom62
+          \langle(\phi^+)^4\rangle_+
+          \int d^dx\,(\phi^-)^2
+        =15\lambda_0(3C^2)
+          \int d^dx\,(\phi^-)^2 .
+      \]
+      Since the mass term is \(\mu^2\phi^2/2\),
+      \[
+        \boxed{\delta\mu_{\lambda}^2=90\lambda_0C^2.}
+        \tag{18.7.S5}
+      \]
+
+      For the mixed term, the cross part of (18.7.S4) is
+      \[
+        -\lambda_0g_0\int d^dx\,d^dy\,
+        \left\langle
+          (\phi^-_x+\phi^+_x)^6
+          (\phi^-_y+\phi^+_y)^4
+        \right\rangle_{+,c}.
+      \]
+      If \(a\) retained fields are selected at the sextic vertex and
+      \(2-a\) at the quartic vertex, the numbers of shell fields are
+      \(p=6-a\) and \(q=2+a\).  With \(r\) cross-contractions, the Wick
+      multiplicity is
+      \[
+        N_{p,q,r}
+        =\binom pr\binom qr r!\,
+          (p-r-1)!!(q-r-1)!! .
+        \tag{18.7.S6}
+      \]
+      Including the two binomial choices for the retained fields gives
+      \[
+      \begin{array}{c|c|c|c}
+        a&r&
+        \binom6a\binom4{2-a}N_{6-a,\,2+a,\,r}&
+        \hbox{shell kernel}\\ \hline
+        0&2&540&C^2G_+(x-y)^2\\
+        1&1&1080&C^3G_+(x-y)\\
+        1&3&1440&C\,G_+(x-y)^3\\
+        2&2&1080&C^2G_+(x-y)^2\\
+        2&4&360&G_+(x-y)^4
+      \end{array}
+      \tag{18.7.S7}
+      \]
+      The \(r=1\) row vanishes because the only cross-line momentum would
+      be a retained momentum, whereas the propagator is supported only in
+      \(\mathcal S_\zeta\).  Expanding the retained fields locally and
+      using (18.7.S2), the coefficient of
+      \(\int d^dx\,(\phi^-)^2\) is therefore
+      \[
+        -\lambda_0g_0
+          \left(1620C^2B_2+1440CB_3+360B_4\right).
+      \]
+      Hence, before coordinate and field rescaling,
+      \[
+        \boxed{\delta\mu_{\lambda g}^2
+          =-3240\lambda_0g_0C^2B_2
+           -2880\lambda_0g_0CB_3
+           -720\lambda_0g_0B_4.}
+        \tag{18.7.S8}
+      \]
+      Equations (18.7.S5) and (18.7.S8) are the requested contributions.
+      They retain the sharp-shell restrictions through the definitions of
+      \(C\) and \(B_r\); no field-rescaling correction has been included.
+    \end{enumerate}
   \end{enumerate}
 
-  \SupplementarySolution{8}{Correlation-Length and Correction-to-Scaling Exponents}
+  \SupplementarySolution{8}{Derivative Power Counting and \(\phi^6\)-Induced Quartic Flow}
   \begin{enumerate}
     \item[(a)]
-    Since \(\nu=1/y_t=-1/\lambda_t\),
+    For \(\zeta>1\), decompose
     \[
-      \boxed{\nu=\frac12+
-        \frac{N+2}{4(N+8)}\epsilon+O(\epsilon^2).}
+      \phi=\phi^-+\phi^+,\qquad
+      |\mathbf k|<\Lambda/\zeta
+      \quad\hbox{or}\quad
+      \Lambda/\zeta<|\mathbf k|<\Lambda .
     \]
-    Setting \(\epsilon=1\) in this first-order truncation gives
+    First integrate over \(\phi^+\), producing a Wilson free energy with
+    cutoff \(\Lambda/\zeta\).  Next set
+    \(\mathbf k'=\zeta\mathbf k\), or
+    \(\mathbf x'=\mathbf x/\zeta\), to restore the original cutoff.
+    Finally set
     \[
-      \nu_{N=1}\simeq0.5833,\qquad
-      \nu_{N=2}\simeq0.6000,\qquad
-      \nu_{N=3}\simeq0.6136.
+      \phi'(\mathbf x')
+        =\zeta^{(d-2)/2}\phi^-(\zeta\mathbf x')
     \]
-    These numbers illustrate the trend of the epsilon expansion, but
-    omitted higher orders are not parametrically small when
-    \(\epsilon=1\), so the displayed precision is not an error estimate.
+    so that the kinetic term is canonically normalized.  The coefficients
+    of the resulting local operator expansion are the flowed parameters.
+
     \item[(b)]
-    For
-    \(\beta(g)=-\epsilon g+Ag^2\), the interacting fixed point is
-    \(g_*=\epsilon/A\), and
+    The kinetic term is dimensionless only if
     \[
-      \boxed{\omega=\beta'(g_*)=\epsilon+O(\epsilon^2).}
+      -d+2+2[\phi]=0.
     \]
-    Under infrared evolution a displacement in the quartic direction
-    decays as \(\mu^\omega\).  Near criticality the inverse correlation
-    length is the natural infrared scale, \(\mu\sim\xi^{-1}\).  Therefore a
-    regular observable has the form
+    Therefore
     \[
-      X=X_{\rm leading}
-        [1+c\,\xi^{-\omega}+\cdots],
+      \boxed{[\phi]=\frac{d-2}{2}.}
     \]
-    with a nonuniversal amplitude \(c\) but a universal exponent \(\omega\).
+    Comparing the mass and gradient terms gives
+    \[
+      \boxed{[\mu_0^2]=2}
+    \]
+    (and hence \([\mu_0]=1\)).
+
     \item[(c)]
-    At order \(g\), the only one-loop 1PI two-point graph is a tadpole.
-    Its loop carries no external momentum, so it changes the mass term but
-    cannot generate a divergence proportional to \(p^2\).  Thus
-    \(Z_\phi=1+O(g^2)\) and the field anomalous dimension begins at
-    \(O(g^2)\).  The first momentum-dependent divergent two-point topology
-    is the two-loop sunset graph.  Since \(g_*=O(\epsilon)\),
+    Interactions require a scale-dependent field renormalization
+    \(Z_\phi\).  At a fixed point one writes
     \[
-      \boxed{\eta=O(g_*^2)=O(\epsilon^2),}
+      \Delta_\phi=\frac{d-2+\eta}{2}.
     \]
-    so there is no term linear in \(\epsilon\).
+    Here the anomalous exponent \(\eta\) is determined by the scale
+    dependence of \(Z_\phi\); its sign convention depends on whether
+    \(Z_\phi\) multiplies the bare or renormalized field.
+    Composite operators can also mix with every operator having the same
+    symmetries.  These quantum effects are absent from engineering power
+    counting and explain the difference.
+
+    \item[(d)]
+    Interpreting (18.8.2) as \(2n\) fields and \(2m\) derivatives, its
+    operator dimension is \(n(d-2)+2m\).  Thus
+    \[
+      \boxed{[\alpha]
+        =d-n(d-2)-2m
+        =2(n-m)-(n-1)d.}
+      \tag{18.8.S1}
+    \]
+    Because \(n>1\), define
+    \[
+      d_{\rm c}=\frac{2(n-m)}{n-1}.
+    \]
+    In the coarse-graining convention the coupling is
+    \[
+      \boxed{\begin{array}{c|c}
+        d<d_{\rm c}&\hbox{relevant}\\
+        d=d_{\rm c}&\hbox{marginal}\\
+        d>d_{\rm c}&\hbox{irrelevant}.
+      \end{array}}
+    \]
+    If \(m\geq n\), then \(d_{\rm c}\leq0\), so the operator is irrelevant
+    in every positive physical dimension except for a formal marginal
+    endpoint at \(d=0\) when \(m=n\).  If (18.8.2) were read literally as
+    \(\int\nabla^{2m}(\phi^{2n})\), it would instead be a boundary term for
+    \(m>0\); that is why the source notation must be understood
+    schematically.
+
+    \item[(e)]
+    Use the shell quantities
+    \begin{gather}
+      G_+(x)=\int_{\mathcal S_\zeta}\frac{d^dq}{(2\pi)^d}
+        \frac{e^{i\mathbf q\cdot\mathbf x}}
+             {\mathbf q^2+\mu_0^2},
+      \qquad C=G_+(0),
+      \notag\\
+      B_r=\int d^dx\,[G_+(x)]^r.
+      \tag{18.8.S2}
+    \end{gather}
+    The cumulant expansion is
+    \(F_{\rm W}=F_0+\langle F_{\rm int}\rangle_+
+      -\langle F_{\rm int}^2\rangle_{+,c}/2+\cdots\).
+    \begin{enumerate}
+      \item[(i)]
+      The required two-loop sunset has one external leg at each quartic
+      vertex and three shell propagators between the vertices:
+      \begin{center}
+      \begin{tikzpicture}[scale=0.78,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \coordinate (v) at (-.8,0); \coordinate (w) at (.8,0);
+        \draw[thick] (-1.9,0)--(v); \draw[thick] (w)--(1.9,0);
+        \draw[fast] (v) to[out=58,in=122] (w);
+        \draw[fast] (v)--(w);
+        \draw[fast] (v) to[out=-58,in=-122] (w);
+        \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+        \node[below=3pt] at (v) {\(g_0\)};
+        \node[below=3pt] at (w) {\(g_0\)};
+      \end{tikzpicture}
+      \end{center}
+      The combinatorial factor follows by selecting one retained field at
+      each vertex and pairing all three remaining fields across:
+      \[
+      \begin{split}
+        &-\frac12g_0^2\binom41^2 3!
+        \int d^dx\,d^dy\,
+          \phi^-(x)\phi^-(y)G_+(x-y)^3\\
+        &\qquad{}=
+        -48g_0^2\int d^dx\,d^dy\,
+          \phi^-(x)\phi^-(y)G_+(x-y)^3.
+      \end{split}
+      \]
+      Its Fourier transform depends nontrivially on the external momentum,
+      \[
+        \widetilde{G_+^3}(\mathbf p)
+        =\int\frac{d^dq\,d^d\ell}{(2\pi)^{2d}}\,
+          \frac{\chi_{\mathcal S}(\mathbf q)
+                \chi_{\mathcal S}(\boldsymbol\ell)
+                \chi_{\mathcal S}(\mathbf p-\mathbf q-\boldsymbol\ell)}
+          {(\mathbf q^2+\mu_0^2)(\boldsymbol\ell^2+\mu_0^2)
+           [(\mathbf p-\mathbf q-\boldsymbol\ell)^2+\mu_0^2]},
+      \]
+      Each characteristic function enforces the shell restriction on its
+      corresponding internal line.
+      Expanding this kernel as a constant plus a term proportional to
+      \(\mathbf p^2\) renormalizes both the mass and the kinetic term.
+      The latter produces \(Z_\phi\neq1\) and hence a nonzero anomalous
+      dimension.  A one-vertex tadpole has no such momentum dependence.
+
+      \item[(ii)]
+      With only the Gaussian and sextic terms present, the theory is
+      invariant under \(\phi\mapsto-\phi\).  Shell integration preserves
+      that symmetry, whereas \(\phi^5\) is odd.  Therefore
+      \[
+        \boxed{\delta\gamma(\zeta)=0}
+      \]
+      to every order in \(\lambda_0\) alone, and there is no diagram to
+      draw.
+
+      \item[(iii)]
+      Choose four retained fields from one sextic vertex and contract the
+      other two into a shell tadpole:
+      \begin{center}
+      \begin{tikzpicture}[scale=0.76,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \coordinate (v) at (0,0);
+        \draw[thick] (-1.35,.65)--(v); \draw[thick] (-1.35,-.65)--(v);
+        \draw[thick] (v)--(1.35,.65); \draw[thick] (v)--(1.35,-.65);
+        \draw[fast] (v) .. controls (-.4,.35) and (-.4,1) .. (0,1.05)
+          .. controls (.4,1) and (.4,.35) .. (v);
+        \fill (v) circle (1.8pt);
+        \node[below=3pt] at (v) {\(\lambda_0\)};
+      \end{tikzpicture}
+      \end{center}
+      Hence
+      \[
+        \lambda_0\binom64
+          \langle(\phi^+)^2\rangle_+
+          \int d^dx\,(\phi^-)^4
+        =15\lambda_0C\int d^dx\,(\phi^-)^4,
+      \]
+      and, before the rescaling steps,
+      \[
+        \boxed{\delta g_{\lambda}=15\lambda_0C
+          =15\lambda_0\int_{\mathcal S_\zeta}
+            \frac{d^dq}{(2\pi)^d}\frac{1}{\mathbf q^2+\mu_0^2}.}
+        \tag{18.8.S3}
+      \]
+
+      \item[(iv)]
+      In the supplied graph, each vertex provides two retained and four
+      shell fields.  All four shell fields at one vertex contract with
+      those at the other.  The cumulant coefficient is therefore
+      \[
+        -\frac12\lambda_0^2
+          \binom62^2 4!
+        =-2700\lambda_0^2.
+      \]
+      Thus its exact bilocal contribution is
+      \[
+        -2700\lambda_0^2
+        \int d^dx\,d^dy\,
+          [\phi^-(x)]^2[\phi^-(y)]^2G_+(x-y)^4.
+      \]
+      At leading order in the local derivative expansion,
+      \[
+        \boxed{\delta g_{\rm supplied}
+          =-2700\lambda_0^2B_4.}
+        \tag{18.8.S4}
+      \]
+      For a four-point momentum channel with total momentum \(\mathbf P\),
+      the integral is
+      \[
+        B_4(\mathbf P)=
+        \int\prod_{j=1}^{3}\left[
+          \frac{d^dq_j}{(2\pi)^d}
+          \frac{\chi_{\mathcal S_\zeta}(\mathbf q_j)}
+               {\mathbf q_j^2+\mu_0^2}\right]
+        \frac{\chi_{\mathcal S_\zeta}
+          (\mathbf P-\mathbf q_1-\mathbf q_2-\mathbf q_3)}
+        {(\mathbf P-\mathbf q_1-\mathbf q_2-\mathbf q_3)^2+\mu_0^2},
+      \]
+      and (18.8.S4) uses \(\mathbf P=0\).
+
+      \item[(v)]
+      Apart from the supplied \(2+2,r=4\) graph, four connected
+      topologies remain.  The label \(a+b\) is the distribution of the
+      four external legs and \(r\) is the number of shell lines joining
+      the vertices; mirror assignments are not new topologies.
+      \begin{center}
+      \begin{tikzpicture}[scale=0.6,
+        fast/.style={thick,dashed},
+        every node/.style={font=\scriptsize}]
+        \begin{scope}[shift={(0,1.55)}]
+          \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
+          \draw[thick] (w)--(1.5,.72); \draw[thick] (w)--(1.6,.25);
+          \draw[thick] (w)--(1.6,-.25); \draw[thick] (w)--(1.5,-.72);
+          \draw[fast] (v) to[out=42,in=138] (w);
+          \draw[fast] (v) to[out=-42,in=-138] (w);
+          \draw[fast] (v) .. controls (-.92,.25) and (-1.05,.65) .. (-.58,.78)
+            .. controls (-.11,.65) and (-.24,.25) .. (v);
+          \draw[fast] (v) .. controls (-.92,-.25) and (-1.05,-.65) .. (-.58,-.78)
+            .. controls (-.11,-.65) and (-.24,-.25) .. (v);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.15) {\(4+0,\ r=2\)};
+        \end{scope}
+        \begin{scope}[shift={(3.35,1.55)}]
+          \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
+          \draw[thick] (-1.5,0)--(v);
+          \draw[thick] (w)--(1.5,.65); \draw[thick] (w)--(1.58,0);
+          \draw[thick] (w)--(1.5,-.65);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) .. controls (-.92,.25) and (-1.05,.65) .. (-.58,.78)
+            .. controls (-.11,.65) and (-.24,.25) .. (v);
+          \draw[fast] (v) .. controls (-.92,-.25) and (-1.05,-.65) .. (-.58,-.78)
+            .. controls (-.11,-.65) and (-.24,-.25) .. (v);
+          \draw[fast] (w) .. controls (.25,.25) and (.12,.65) .. (.58,.78)
+            .. controls (1.04,.65) and (.92,.25) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.15) {\(3+1,\ r=1\)};
+        \end{scope}
+        \begin{scope}[shift={(1.65,-1.2)}]
+          \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
+          \draw[thick] (-1.5,0)--(v);
+          \draw[thick] (w)--(1.5,.65); \draw[thick] (w)--(1.58,0);
+          \draw[thick] (w)--(1.5,-.65);
+          \draw[fast] (v) to[out=52,in=128] (w);
+          \draw[fast] (v)--(w);
+          \draw[fast] (v) to[out=-52,in=-128] (w);
+          \draw[fast] (v) .. controls (-.92,.28) and (-1.02,.7) .. (-.58,.8)
+            .. controls (-.14,.7) and (-.24,.28) .. (v);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.15) {\(3+1,\ r=3\)};
+        \end{scope}
+        \begin{scope}[shift={(5,-1.2)}]
+          \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
+          \draw[thick] (-1.5,.5)--(v); \draw[thick] (-1.5,-.5)--(v);
+          \draw[thick] (w)--(1.5,.5); \draw[thick] (w)--(1.5,-.5);
+          \draw[fast] (v) to[out=42,in=138] (w);
+          \draw[fast] (v) to[out=-42,in=-138] (w);
+          \draw[fast] (v) .. controls (-.9,.25) and (-1,.65) .. (-.58,.78)
+            .. controls (-.16,.65) and (-.26,.25) .. (v);
+          \draw[fast] (w) .. controls (.26,.25) and (.16,.65) .. (.58,.78)
+            .. controls (1,.65) and (.9,.25) .. (w);
+          \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
+          \node at (0,-1.15) {\(2+2,\ r=2\)};
+        \end{scope}
+      \end{tikzpicture}
+      \end{center}
+
+      For completeness, the Wick counts can be organized with
+      \[
+        N_{p,q,r}=\binom pr\binom qr r!
+          (p-r-1)!!(q-r-1)!! .
+      \]
+      Including the factor \(1/2\) in the second cumulant and grouping
+      mirror assignments gives
+      \[
+      \begin{array}{c|c|c|c}
+        a+b&r&\hbox{multiplicity}&\hbox{local kernel}\\ \hline
+        4+0&2&1350&C^2B_2\\
+        3+1&1&5400&C^3\int d^dx\,G_+(x)\\
+        3+1&3&7200&CB_3\\
+        2+2&2&8100&C^2B_2\\
+        2+2&4&2700&B_4
+      \end{array}
+      \tag{18.8.S5}
+      \]
+      Each entry contributes minus
+      \(\lambda_0^2\) times the displayed multiplicity and kernel.
+      The last row is the supplied graph.  At zero external momentum the
+      \(r=1\) row vanishes for a sharp shell because
+      \(\int d^dx\,G_+(x)\) probes the excluded zero mode.  The first four
+      rows, represented above, are every other requested topology.
+    \end{enumerate}
   \end{enumerate}
 
   \SupplementarySolution{9}{Cubic Anisotropy and Competing Fixed Points}

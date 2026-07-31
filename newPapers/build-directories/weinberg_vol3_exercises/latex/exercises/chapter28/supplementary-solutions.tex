@@ -71,48 +71,149 @@
       tree-level proton-decay catastrophe.
   \end{enumerate}
 
-  \SupplementarySolution{2}{One-Loop Unification and Superpartner Thresholds}
+  \SupplementarySolution{2}{Supersymmetric Gauge Unification}
   \begin{enumerate}
-    \item \emph{One-Loop Supersymmetric Unification Coefficients.}
-    In the convention
-      \[
-        \mu\frac{dg_a}{d\mu}=\frac{b_a}{16\pi^2}g_a^3,
-      \]
-      a Weyl fermion contributes \(2T(R)/3\), a complex scalar contributes
-      \(T(R)/3\), and a gauge multiplet contributes \(-3C_2(G)\).
-      Summing three generations and two Higgs doublets gives, for
-      \(g_1=\sqrt{5/3}\,g'\),
-      \[
-        (b_1,b_2,b_3)=\left(\frac{33}{5},1,-3\right).
-      \]
-      Equivalently the unnormalized hypercharge coupling has \(b_{g'}=11\).
-      The factor \(3/5\) follows from embedding hypercharge in a normalized
-      unified generator:
-      \[
-        g_1^2=\frac53g'^2,\qquad
-        g_3^2=g_2^2=g_1^2
-      \]
-      at the unification scale.  These values reproduce
-      Eqs.~\eqref{eq:28.2.8}--\eqref{eq:28.2.10} with
-      \(n_g=3,n_s=2\).
-    \item \emph{Threshold Split Between Scalar and Fermion Partners.}
-    For a representation of index \(T_i(R)\), the scalar and Weyl
-      contributions to \(b_i\) are
-      \[
-        b_i^{s}=\frac13T_i(R),\qquad
-        b_i^{f}=\frac23T_i(R).
-      \]
-      Since
-      \(d(1/g_i^2)/d\ln\mu=-b_i/(8\pi^2)\), both particles contribute above
-      \(m_f\), only the scalar contributes for \(m_s<\mu<m_f\), and neither
-      contributes below \(m_s\).  Relative to placing both thresholds at
-      \(m_f\), the light scalar adds
-      \[
-        \Delta\!\left(\frac1{g_i^2}\right)
-          =\frac{T_i(R)}{24\pi^2}\ln\frac{m_f}{m_s}
-      \]
-      at scales below \(m_s\).  The result depends only logarithmically on
-      the splitting and vanishes when the multiplet is degenerate.
+    \item[(a)]
+    Unification means that, after the standard grand-unified normalization
+    \(g_1=\sqrt{5/3}\,g'\), the three gauge couplings arise from one coupling
+    at a high scale:
+    \[
+      g_1(M_{\rm GUT})=g_2(M_{\rm GUT})=g_3(M_{\rm GUT})\equiv g_U.
+    \]
+    The extra MSSM particles change the beta-function slopes.  At one loop,
+    for three generations and two Higgs doublets,
+    \[
+      (b_1,b_2,b_3)=\left(\frac{33}{5},1,-3\right),
+      \qquad \beta_a=\frac{b_a}{16\pi^2}.
+      \tag{28.2.3}
+    \]
+    Consequently the three inverse squared couplings come much closer to a
+    common intersection in the MSSM than in the nonsupersymmetric Standard
+    Model.  The following sketches show the qualitative comparison; the
+    vertical coordinate is \(g_a^{-2}\), so every one-loop trajectory is a
+    straight line.
+    \begin{center}
+    \begin{tikzpicture}[x=0.82cm,y=0.58cm,font=\scriptsize]
+      \begin{scope}
+        \draw[->] (0,0)--(4.7,0) node[right] {\(\ln\mu\)};
+        \draw[->] (0,0)--(0,4.8) node[above] {\(g_a^{-2}\)};
+        \draw[thick] (0,4.1)--(4.0,2.45);
+        \draw[thick,dashed] (0,3.25)--(4.0,2.45);
+        \draw[thick,dotted] (0,1.05)--(4.0,2.45);
+        \fill (4.0,2.45) circle (1.6pt);
+        \node[left] at (0,4.1) {\(1\)};
+        \node[left] at (0,3.25) {\(2\)};
+        \node[left] at (0,1.05) {\(3\)};
+        \node[below] at (2.35,-0.38) {MSSM};
+      \end{scope}
+      \begin{scope}[xshift=6.1cm]
+        \draw[->] (0,0)--(4.7,0) node[right] {\(\ln\mu\)};
+        \draw[->] (0,0)--(0,4.8) node[above] {\(g_a^{-2}\)};
+        \draw[thick] (0,4.1)--(4.1,2.05);
+        \draw[thick,dashed] (0,3.25)--(4.1,2.55);
+        \draw[thick,dotted] (0,1.05)--(4.1,2.85);
+        \node[left] at (0,4.1) {\(1\)};
+        \node[left] at (0,3.25) {\(2\)};
+        \node[left] at (0,1.05) {\(3\)};
+        \node[below] at (2.35,-0.38) {Standard Model};
+      \end{scope}
+    \end{tikzpicture}
+    \end{center}
+
+    For example, a left-handed fermion doublet and its scalar superpartner
+    give the following two contributions to the \(W\)-boson vacuum
+    polarization.  Their group factors are the same, while their spin
+    numerators and statistical factors differ.
+    \begin{center}
+    \begin{tikzpicture}[font=\scriptsize]
+      \begin{scope}
+        \coordinate (a) at (-0.7,0);
+        \coordinate (b) at (0.7,0);
+        \draw[thick] (-1.8,0)--(a) node[midway,above] {\(W\)};
+        \draw[thick] (b)--(1.8,0) node[midway,above] {\(W\)};
+        \draw[thick,->] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[thick,->] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
+        \node at (0,1.02) {SM fermion};
+      \end{scope}
+      \begin{scope}[xshift=5.0cm]
+        \coordinate (a) at (-0.7,0);
+        \coordinate (b) at (0.7,0);
+        \draw[thick] (-1.8,0)--(a) node[midway,above] {\(W\)};
+        \draw[thick] (b)--(1.8,0) node[midway,above] {\(W\)};
+        \draw[thick,dashed] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[thick,dashed] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
+        \node at (0,1.02) {sfermion};
+      \end{scope}
+    \end{tikzpicture}
+    \end{center}
+
+    \item[(b)]
+    Separating variables in (28.2.1) gives
+    \[
+      \frac{d}{d\ln\mu}\frac{1}{g_a^2}=-2\beta_a.
+    \]
+    Hence
+    \[
+      \boxed{
+      \frac{1}{g_a^2(\mu)}
+        =\frac{1}{g_a^2(\mu_0)}
+          -2\beta_a\ln\frac{\mu}{\mu_0}}
+      \tag{28.2.4}
+    \]
+    or, on the branch continuously connected to the input coupling,
+    \[
+      \boxed{
+      g_a(\mu)=
+        \frac{g_a(\mu_0)}{
+        \sqrt{1-2\beta_a g_a^2(\mu_0)
+          \ln(\mu/\mu_0)}}.}
+      \tag{28.2.5}
+    \]
+
+    \item[(c)]
+    Write \(L=\ln(M_{\rm GUT}/M_Z)\).  Running down from the common
+    coupling gives
+    \[
+      g_a^{-2}(M_Z)=g_U^{-2}+2\beta_aL.
+      \tag{28.2.6}
+    \]
+    Subtracting the \(a=2\) equation from the \(a=1\) equation yields
+    \[
+      L=\frac{g_1^{-2}(M_Z)-g_2^{-2}(M_Z)}
+              {2(\beta_1-\beta_2)},
+    \]
+    and therefore
+    \[
+      \boxed{M_{\rm GUT}=M_Z\exp\!\left[
+        \frac{g_1^{-2}(M_Z)-g_2^{-2}(M_Z)}
+             {2(\beta_1-\beta_2)}\right].}
+      \tag{28.2.7}
+    \]
+
+    \item[(d)]
+    Eliminating \(L\) between the \(a=1,2,3\) versions of (28.2.6) gives
+    \[
+      g_3^{-2}-g_2^{-2}
+       =\frac{\beta_3-\beta_2}{\beta_1-\beta_2}
+          (g_1^{-2}-g_2^{-2}).
+    \]
+    Thus the coefficient in the form requested in (28.2.2) is
+    \[
+      \boxed{A=\frac{\beta_2-\beta_3}{\beta_1-\beta_2}.}
+      \tag{28.2.8}
+    \]
+    With the MSSM coefficients (28.2.3),
+    \[
+      \boxed{A=\frac{1-(-3)}{33/5-1}=\frac57.}
+    \]
+    The relation is approximately, but not exactly, obeyed: the MSSM
+    one-loop slopes make the three measured couplings nearly intersect,
+    whereas the Standard-Model slopes miss a common intersection by a visibly
+    larger amount.  Precise equality is not expected from (28.2.2), because
+    two-loop running and weak-scale, superpartner, and grand-unified threshold
+    corrections have deliberately been omitted.
   \end{enumerate}
 
   \SupplementarySolution{3}{Right-Handed Neutrinos and the Dimension-Five Operator}
@@ -679,23 +780,199 @@ For Eq.~\eqref{eq:28.5.51},
       supersymmetry-breaking scale even when the visible spectrum is fixed.
   \end{enumerate}
 
-  \SupplementarySolution{14}{The Gauge-Mediation \(\mu\)--\(B\mu\) Problem}
-If a product of messenger couplings \(c\) generates the Higgs bilinear
-  at one loop, dimensional analysis gives
-  \[
-    \mu\sim\frac{c}{16\pi^2}\frac{F}{S},\qquad
-    B\mu\sim\frac{c}{16\pi^2}\left(\frac{F}{S}\right)^2.
-  \]
-  Therefore
-  \[
-    \frac{B\mu}{\mu^2}\sim\frac{16\pi^2}{c},
-  \]
-  which is parametrically much larger than unity for perturbative
-  \(c\).  Electroweak minimization instead needs \(B\mu\) comparable to
-  the Higgs soft squared masses and \(\mu^2\), all of weak-scale size.
-  The same mechanism that produces a viable \(\mu\) thus typically
-  overproduces \(B\mu\) by a loop factor.  Separating their origins or
-  adding symmetries and additional dynamics is necessary.
+  \SupplementarySolution{14}{Naturalness, \(R\)-Parity, and Proton Decay}
+  \begin{enumerate}
+    \item[(a)]
+    In an unbroken supersymmetric multiplet, bosonic and fermionic loops have
+    the same couplings and cancel the quadratic sensitivity of scalar masses.
+    For the Higgs, the most important pair is the top loop and the stop loops:
+    \begin{center}
+    \begin{tikzpicture}[font=\scriptsize]
+      \begin{scope}
+        \coordinate (a) at (-0.7,0);
+        \coordinate (b) at (0.7,0);
+        \draw[thick] (-1.8,0)--(a) node[midway,above] {\(H\)};
+        \draw[thick] (b)--(1.8,0) node[midway,above] {\(H^*\)};
+        \draw[thick,->] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[thick,->] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
+        \node at (0,1.02) {top};
+      \end{scope}
+      \begin{scope}[xshift=5.0cm]
+        \coordinate (a) at (-0.7,0);
+        \coordinate (b) at (0.7,0);
+        \draw[thick] (-1.8,0)--(a) node[midway,above] {\(H\)};
+        \draw[thick] (b)--(1.8,0) node[midway,above] {\(H^*\)};
+        \draw[thick,dashed] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[thick,dashed] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
+        \node at (0,1.02) {stops};
+      \end{scope}
+    \end{tikzpicture}
+    \end{center}
+    Once supersymmetry is softly broken, the cancellation stops at the
+    superpartner threshold.  Parametrically,
+    \[
+      \delta m_{H_u}^2\simeq
+      -\frac{3y_t^2}{8\pi^2}
+       \left(m_{\widetilde Q_3}^2+m_{\widetilde U_3}^2+|A_t|^2\right)
+       \ln\frac{\Lambda}{M_S},
+      \tag{28.14.2}
+    \]
+    with analogous gauge and higgsino contributions.  Requiring the separate
+    corrections not to be far larger than the electroweak Higgs mass
+    parameter, unless one accepts fine tuning, puts the particles coupled
+    most strongly to the Higgs at roughly the TeV scale.  Allowing modest
+    logarithms and tuning relaxes this to a few TeV (and the volume's cruder
+    \(\delta m_H^2\sim g^2\Delta m^2/(8\pi^2)\) estimate gives an upper scale
+    of order \(10\,\mathrm{TeV}\)); the conclusion is an order-of-magnitude
+    naturalness expectation, not a strict experimental bound.
+
+    \item[(b)]
+    The component-field parity is
+    \[
+      \boxed{R_p=(-1)^{3(B-L)+2s}.}
+      \tag{28.14.3}
+    \]
+    Ordinary Standard-Model particles have \(R_p=+1\), while their
+    superpartners have \(R_p=-1\).  In conventional MSSM notation the full
+    renormalizable violating superpotential is
+    \[
+      \boxed{
+      W_{\rm RPV}=\mu_iL_iH_u
+       +\frac12\lambda_{ijk}L_iL_jE_k^c
+       +\lambda'_{ijk}L_iQ_jD_k^c
+       +\frac12\lambda''_{ijk}U_i^cD_j^cD_k^c.}
+      \tag{28.14.4}
+    \]
+    Weak and color antisymmetry imply
+    \(\lambda_{ijk}=-\lambda_{jik}\) and
+    \(\lambda''_{ijk}=-\lambda''_{ikj}\), respectively.
+
+    \item[(c)]
+    Choose couplings sharing the same right-handed down-squark flavor,
+    \(\lambda'_{ijk}\) and \(\lambda''_{mnk}\).  Exchange of
+    \(\widetilde d_{Rk}\) gives the schematic tree graph
+    \begin{center}
+    \begin{tikzpicture}[font=\scriptsize]
+      \coordinate (v1) at (0,0);
+      \coordinate (v2) at (2.8,0);
+      \draw[thick,->] (-1.65,0.65)--(v1) node[midway,above left] {\(u_{Rm}\)};
+      \draw[thick,->] (-1.65,-0.65)--(v1) node[midway,below left] {\(d_{Rn}\)};
+      \draw[thick,dashed] (v1)--(v2) node[midway,above] {\(\widetilde d_{Rk}\)};
+      \draw[thick,<-] (v2)--(4.45,-0.65) node[midway,below right] {\(d_{Lj}\)};
+      \draw[thick,->] (v2)--(4.45,0.65) node[midway,above right] {\(\bar\nu_i\)};
+      \fill (v1) circle (1.6pt); \fill (v2) circle (1.6pt);
+      \node[below=5pt] at (v1) {\(\lambda''\)};
+      \node[below=5pt] at (v2) {\(\lambda'\)};
+    \end{tikzpicture}
+    \end{center}
+    The resulting local operator contains three quarks and a left-chiral
+    neutrino field; when it annihilates a proton, that field creates an
+    antineutrino.  Charge conservation therefore gives
+    \[
+      p\longrightarrow\pi^++\bar\nu_i.
+    \]
+    The flavor \(i=e,\mu,\tau\) is whichever one occurs in the nonzero
+    \(\lambda'_{ijk}\); all three antineutrino families are kinematically
+    possible.  Flavor rotations can instead produce kaon or charged-lepton
+    channels, but they do not change the dimensional estimate below.
+
+    \item[(d)]
+    Integrating out the squark gives a dimension-six coefficient
+    \[
+      C\sim\frac{\lambda'\lambda''}{M_{\widetilde d}^2}.
+    \]
+    Ignoring order-one phase-space and hadronic factors, dimensional analysis
+    then gives
+    \[
+      \boxed{\Gamma_p\sim
+        \frac{|\lambda'\lambda''|^2}{8\pi}
+        \frac{m_p^5}{M_{\widetilde d}^4}.}
+      \tag{28.14.5}
+    \]
+    For \(m_p\sim1\,\mathrm{GeV}\) and
+    \(M_{\widetilde d}=10^4\,\mathrm{GeV}\), this is
+    \(\Gamma_p\sim10^{-18}|\lambda'\lambda''|^2\,\mathrm{GeV}\) with the
+    displayed \(8\pi\), or \(10^{-16}|\lambda'\lambda''|^2\,\mathrm{GeV}\)
+    at the coarser accuracy requested in the examination.
+
+    \item[(e)]
+    Using the supplied conversion,
+    \[
+      10^{34}\ \mathrm{yr}
+        \sim 3\times10^{34+7+24}\,\mathrm{GeV}^{-1}
+        \sim3\times10^{65}\,\mathrm{GeV}^{-1},
+    \]
+    so \(\Gamma_p\lesssim3\times10^{-66}\,\mathrm{GeV}\).  Substitution in
+    (28.14.5) yields
+    \[
+      |\lambda'\lambda''|
+       \lesssim
+       \left(8\pi\Gamma_p\frac{M_{\widetilde d}^4}{m_p^5}\right)^{1/2}
+       \sim10^{-24}\text{--}10^{-25}.
+      \tag{28.14.6}
+    \]
+    Hadronic matrix elements and flavor factors move this crude number, but
+    the essential result is the extraordinarily strong constraint on the
+    simultaneous presence of \(B\)- and \(L\)-violating couplings.
+
+    \item[(f)]
+    The spin-independent factor acting on a whole chiral superfield is matter
+    parity \((-1)^{3(B-L)}\).  Every quark or lepton matter superfield is
+    odd, while \(H_u,H_d\) are even.  Thus \(L H_u\), \(LLE^c\),
+    \(LQD^c\), and \(U^cD^cD^c\) each contain an odd number of odd
+    superfields and change sign.  The ordinary Yukawa terms contain two
+    matter superfields, and \(H_uH_d\) contains none, so they remain.  Imposing
+    \(R_p\) therefore sets all coefficients in (28.14.4) to zero and makes the
+    lightest superpartner stable.
+
+    \item[(g)]
+    The required nongauge fields are members of a left-squark doublet.  The
+    interaction follows from its gauge-covariant kinetic term.  In the
+    volume's mostly-plus convention,
+    \[
+      \mathcal L_{\rm kin}=-(D_\mu\widetilde Q)^\dagger
+        D^\mu\widetilde Q,
+      \qquad
+      D_\mu=\partial_\mu-i g_sG_\mu^AT^A-i g_2W_\mu^at^a-\cdots,
+    \]
+    whose mixed quadratic term is
+    \[
+      \mathcal L_{\widetilde Q^*\widetilde QGW}
+       =-2g_sg_2\,
+        \widetilde Q^\dagger T^At^a\widetilde Q\,
+        G_\mu^AW^{a\mu}.
+      \tag{28.14.7}
+    \]
+    Since color and weak generators act on different indices, they commute.
+    A representative component graph is
+    \begin{center}
+    \begin{tikzpicture}[font=\scriptsize]
+      \coordinate (v) at (0,0);
+      \draw[thick,dashed,->] (-1.8,-0.9)--(v)
+        node[midway,below left] {\(\widetilde u_{L\alpha}\)};
+      \draw[thick,dashed,->] (v)--(1.8,-0.9)
+        node[midway,below right] {\(\widetilde d^{\,*}_{L\beta}\)};
+      \draw[thick] (-1.8,0.9)--(v)
+        node[midway,above left] {\(G_\mu^A\)};
+      \draw[thick] (v)--(1.8,0.9)
+        node[midway,above right] {\(W_\nu^-\)};
+      \fill (v) circle (1.8pt);
+    \end{tikzpicture}
+    \end{center}
+    With every momentum incoming, the four-point rule before choosing a
+    charged weak component is
+    \[
+      \boxed{-2i g_sg_2\eta_{\mu\nu}
+        (T^A)_{\beta\alpha}(t^a)_{ji}.}
+      \tag{28.14.8}
+    \]
+    For \(W^-=(W^1+iW^2)/\sqrt2\), it becomes
+    \(-i\sqrt2g_sg_2\eta_{\mu\nu}(T^A)_{\beta\alpha}\) for
+    \(\widetilde u_{L\alpha}\)--\(\widetilde d^{\,*}_{L\beta}\), with the
+    overall sign reversed if the opposite scalar-kinetic convention is used.
+  \end{enumerate}
 
   \SupplementarySolution{15}{Unitary Gauge for a General Higgs Mechanism}
   \begin{enumerate}

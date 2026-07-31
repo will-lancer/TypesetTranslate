@@ -126,33 +126,84 @@
     dimensions of walls, strings, and point defects.
   \end{enumerate}
 
-  \SupplementarySolution{2}{Derrick Scaling with Several Derivative Orders}
-  Differentiating the scaled action gives
+  \SupplementarySolution{2}{Derrick Scaling and \(\phi^6\) Kinks}
+  Put
   \[
-    I'(R)=\sum_k(d-k)I_kR^{d-k-1},
+    T=\frac12\int_{-\infty}^{\infty}(\phi')^2dx,
+    \qquad
+    V=\int_{-\infty}^{\infty}U(\phi)\,dx.
   \]
-  so stationarity at \(R=R_*\) requires
+  For the scaled configuration \(\phi_\lambda(x)=\phi(\lambda x)\),
+  changing variables gives
   \[
-    \sum_k(d-k)I_kR_*^{d-k}=0.
+    E[\phi_\lambda]=\lambda T+\lambda^{-1}V.
   \]
-  Because every \(I_k\) is positive, this sum cannot vanish unless
-  there are contributions with \(k<d\) and \(k>d\).  Terms with \(k=d\)
-  are scale invariant and do not help establish a size.  Stability
-  also requires \(I''(R_*)>0\).
+  A finite-energy solution of the Euler--Lagrange equation is stationary
+  under this admissible variation, so
+  \[
+    0=\left.\frac{dE[\phi_\lambda]}{d\lambda}\right|_{\lambda=1}
+      =T-V.
+  \]
+  Therefore
+  \[
+    \boxed{\int_{-\infty}^{\infty}
+      \frac12(\phi')^2dx
+      =\int_{-\infty}^{\infty}U(\phi)\,dx.}
+  \]
 
-  Put \(a=d-k_->0\) and \(b=k_+-d>0\).  With only two terms,
+  The static field equation is \(\phi''=dU/d\phi\).  Integrating the
+  supplied right-hand side gives
   \[
-    I(R)=I_-R^a+I_+R^{-b},
+    U(\phi)=\frac12\phi^6-\phi^4+\frac12\phi^2+C
+      =\frac12\phi^2(1-\phi^2)^2+C.
   \]
-  and the stationary scale is
+  The polynomial preceding \(C\) is nonnegative and vanishes at
+  \(\phi=-1,0,+1\), so the required choice is \(C=0\).  Hence
   \[
-    \boxed{R_*^{a+b}=\frac{bI_+}{aI_-}.}
+    \boxed{U^{-1}(0)=\{-1,0,+1\}.}
   \]
-  At this point
-  \(I''(R_*)=a(a+b)I_-R_*^{a-2}>0\), where the stationarity relation
-  was used.  The term with more than \(d\) derivatives prevents
-  collapse, and the term with fewer than \(d\) derivatives prevents
-  unlimited expansion.
+  There are two adjacent-vacuum kink species,
+  \(-1\to0\) and \(0\to1\), and their two oppositely oriented
+  antikinks.  Thus there are two unoriented types, or four oriented
+  topological sectors.  A finite-width solution cannot pass directly
+  from \(-1\) to \(+1\): it approaches the intermediate vacuum
+  \(\phi=0\) only at infinite \(x\).
+
+  On the interval \(0\le\phi\le1\),
+  \[
+    \sqrt{2U}=\phi(1-\phi^2).
+  \]
+  Completing the square gives
+  \[
+    E=\frac12\int dx\,
+      [\phi'-\phi(1-\phi^2)]^2
+      +\int_{\phi(-\infty)}^{\phi(+\infty)}
+        \phi(1-\phi^2)\,d\phi.
+  \]
+  The \(0\to1\) kink therefore obeys
+  \[
+    \boxed{\phi'=\phi(1-\phi^2).}
+  \]
+  Separating variables,
+  \[
+    \log\frac{\phi}{\sqrt{1-\phi^2}}=x-x_0,
+  \]
+  and hence
+  \[
+    \boxed{\phi_{0,1}(x)
+      =\frac1{\sqrt{1+e^{-2(x-x_0)}}}.}
+  \]
+  The other kink is
+  \(\phi_{-1,0}(x)=-\phi_{0,1}(-x)\), with an independent choice of
+  center; spatial reflection gives the antikinks.
+
+  Saturation of the bound gives the kink mass
+  \[
+    \boxed{M=\int_0^1\phi(1-\phi^2)\,d\phi=\frac14.}
+  \]
+  Each adjacent-vacuum kink has this mass.  The limiting
+  \(-1\to+1\) configuration consists of two infinitely separated kinks
+  and has mass \(1/2\).
 
   \SupplementarySolution{3}{Monopole Topology and Gauge-Invariant Magnetic Charge}
   \begin{enumerate}
@@ -273,28 +324,94 @@
     is massless and its tail is power-law rather than exponential.
   \end{enumerate}
 
-  \SupplementarySolution{5}{Regular BPS Monopole Profiles}
-  Near the origin,
+  \SupplementarySolution{5}{A Biased Kink and a Static Antikink--Kink Pair}
+  Differentiating the potential gives
   \[
-    K(x)=1-\frac{x^2}{6}+O(x^4),\qquad
-    h(x)=\frac x3-\frac{x^3}{45}+O(x^5).
+    U'(\phi)=2(1-\phi^2)(\epsilon-\phi),
+    \qquad
+    U''(\phi)=2(3\phi^2-2\epsilon\phi-1).
   \]
-  Hence \(1-K=O(r^2)\), so \(A_i^a=O(r)\), while componentwise
-  \(\phi^a=(ev^2/3)r^a+O(r^3)=O(r)\).  Both fields are smooth at
-  \(r=0\), despite the unit vectors in the ansatz.
+  Thus \(U'(\pm1)=0\), while
+  \[
+    U''(+1)=4(1-\epsilon)>0,\qquad
+    U''(-1)=4(1+\epsilon)>0
+  \]
+  for \(|\epsilon|<1\).  Both points are local minima.  Their energy
+  densities are
+  \[
+    U(+1)=\frac{4\epsilon}{3},\qquad
+    U(-1)=-\frac{4\epsilon}{3}.
+  \]
 
-  At large \(x\),
+  When \(\epsilon=0\),
+  \(U_0=\frac12(1-\phi^2)^2\).  For a kink increasing from
+  \(-1\) to \(+1\), the Bogomolny completion is
   \[
-    K(x)=2xe^{-x}\left[1+O(e^{-2x})\right],\qquad
-    h(x)=1-\frac1x+O(e^{-2x}).
+    E=\frac12\int dx\,[\phi'-(1-\phi^2)]^2
+      +\int_{-1}^{1}(1-\phi^2)\,d\phi.
   \]
-  Thus \(\lvert\phi\rvert\to v\), the massive non-Abelian gauge
-  components die exponentially, and the remaining \(1/r\) gauge field
-  produces the monopole's radial magnetic field.  The profiles change
-  when \(x=evr\) is of order unity, so the gauge core has radius
+  Hence
   \[
-    r_c\sim\frac1{ev}.
+    \phi'=1-\phi^2,\qquad
+    \boxed{\phi_K(x;X)=\tanh(x-X),\qquad E_K=\frac43.}
   \]
+  The antikink is \(-\tanh(x-X)\).
+
+  For small positive \(\epsilon\), initially take
+  \(\phi(x,t)=\tanh(x-X(t))\) with \(\dot X=0\).  The field equation is
+  \[
+    \phi_{tt}-\phi_{xx}+U_0'(\phi)
+      +2\epsilon(1-\phi^2)=0.
+  \]
+  At the initial instant the unperturbed static equation cancels the
+  middle two terms, while
+  \(\phi_{tt}=-\ddot X\,\phi_K'\) and
+  \(\phi_K'=1-\phi_K^2\).  Therefore
+  \[
+    -\ddot X(1-\phi_K^2)
+      +2\epsilon(1-\phi_K^2)=0,
+    \qquad
+    \boxed{\ddot X=2\epsilon.}
+  \]
+  The same result follows from the pressure difference
+  \[
+    \Delta U=U(+1)-U(-1)=\frac{8\epsilon}{3}
+  \]
+  divided by the zeroth-order kink mass \(4/3\).  The kink accelerates
+  toward the false \(+1\) region, enlarging the true \(-1\) region.
+
+  A static configuration approaching \(+1\) at both ends has the first
+  integral
+  \[
+    \frac12(\phi')^2=U(\phi)-U(+1).
+  \]
+  Now
+  \[
+    U(\phi)-U(+1)
+      =(\phi-1)^2\left[
+        \frac12(\phi+1)^2-\frac{2\epsilon}{3}(\phi+2)\right].
+  \]
+  Besides the double root at \(+1\), the bracket has a turning point
+  \[
+    \phi_*=-1+\frac{2\epsilon}{3}
+      +2\sqrt{\frac{\epsilon}{3}+\frac{\epsilon^2}{9}},
+  \]
+  which lies just above \(-1\) for small positive \(\epsilon\).
+  Integrating the first-order equation from \(+1\) down to \(\phi_*\)
+  and reflecting about the turning point constructs a static
+  antikink--kink configuration.  It is the unstable critical bubble of
+  the lower-energy \(-1\) phase inside the metastable \(+1\) phase.
+
+  At large separation \(s\), the outward pressure force on either wall is
+  \(8\epsilon/3\).  The supplied attractive force has magnitude
+  \(32e^{-2s}\).  Static balance therefore requires
+  \[
+    32e^{-2s}=\frac{8\epsilon}{3},
+    \qquad
+    \boxed{s\simeq\frac12\log\frac{12}{\epsilon}.}
+  \]
+  Since \(\epsilon\ll1\), this indeed gives \(s\gg1\), the regime in
+  which the force estimate is valid.
 
   \SupplementarySolution{6}{Instanton Topology, Self-Duality, and the BPST Modulus}
   \begin{enumerate}
@@ -392,52 +509,235 @@
     semiclassical measure.
   \end{enumerate}
 
-  \SupplementarySolution{7}{Small-Instanton Convergence}
-  At fixed \(\mu\) and \(g(\mu)\), all factors except the power of
-  \(\rho\) are constant, so
+  \SupplementarySolution{7}{Hodge Duality, the Yang--Mills Bound, and an ASDYM Lax Pair}
+  The Hodge operator is characterized by
   \[
-    dn\propto d\rho\,\rho^{b_0-5},
-    \qquad b_0-5=\frac{11N}{3}-5.
+    \alpha\wedge\star\beta
+      =\langle\alpha,\beta\rangle_g\operatorname{vol}
   \]
-  The integral at the lower endpoint converges when
-  \(b_0-5>-1\), or \(b_0>4\).  For every \(N\ge2\),
-  \(b_0\ge22/3>4\), and therefore
+  for forms \(\alpha\) and \(\beta\) of the same degree.  On
+  \(p\)-forms in four-dimensional Euclidean space,
   \[
-    \boxed{\int_0 d\rho\,\rho^{11N/3-5}
-      \ \text{is ultraviolet convergent}.}
+    \star^2=(-1)^{p(4-p)},
+  \]
+  and consequently \(\star^2=1\) on two-forms.  Every two-form has the
+  unique decomposition
+  \[
+    \omega=\omega_++\omega_-,\qquad
+    \omega_\pm=\frac12(\omega\pm\star\omega),
+    \qquad \star\omega_\pm=\pm\omega_\pm.
+  \]
+  The two eigenspaces are orthogonal: if \(H\) is self-dual and \(G\)
+  is anti-self-dual, then
+  \[
+    \langle H,G\rangle_g
+      =\langle\star H,\star G\rangle_g
+      =-\langle H,G\rangle_g=0.
+  \]
+  It follows that
+  \[
+    \boxed{H\wedge G=-H\wedge\star G=0.}
   \]
 
-  The same one-loop expression grows as a positive power at large
-  \(\rho\), so its upper-end size integral does not converge.  Large
-  instantons probe the scale \(1/\rho\), where the running gauge
-  coupling becomes strong.  Their action is no longer parametrically
-  large, instantons cease to be dilute, and higher-loop and
-  nonperturbative effects are unsuppressed.  The large-\(\rho\)
-  behavior is therefore an infrared warning that the semiclassical
-  formula has left its domain of validity, not a reliable quantitative
-  prediction of an infinite density.
-
-  \SupplementarySolution{8}{The Dilute Instanton Gas and Vacuum Angle}
-  Put
-  \(\zeta=K e^{-8\pi^2/g^2}\) and let \(\mathcal V_4\) be the Euclidean
-  spacetime volume.  Independence of the dilute objects gives
+  To make the normalization of the bound explicit, take the matrices in
+  \(\mathfrak{su}(n)\) to be anti-Hermitian and use the positive
+  invariant form \(-\operatorname{tr}(XY)\).  Define
+  \[
+    S_{\mathrm{YM}}
+      =-\frac1{g_{\mathrm{YM}}^2}
+        \int_{\mathbb R^4}\operatorname{tr}(F\wedge\star F),
+    \qquad
+    c_2=\frac1{8\pi^2}
+        \int_{\mathbb R^4}\operatorname{tr}(F\wedge F).
+  \]
+  Writing \(F=F_++F_-\), the mixed wedge products vanish and
   \[
   \begin{split}
-    Z(\theta)
-      &=
-      \sum_{n_+,n_-=0}^{\infty}
-       \frac{(\zeta\mathcal V_4e^{i\theta})^{n_+}}{n_+!}
-       \frac{(\zeta\mathcal V_4e^{-i\theta})^{n_-}}{n_-!}\\
-      &=\exp\left(2\zeta\mathcal V_4\cos\theta\right).
+    g_{\mathrm{YM}}^2S_{\mathrm{YM}}
+      &=\lVert F_+\rVert^2+\lVert F_-\rVert^2,\\
+    8\pi^2c_2
+      &=-\lVert F_+\rVert^2+\lVert F_-\rVert^2.
   \end{split}
   \]
-  Since \(Z=e^{-\mathcal V_4E(\theta)}\),
+  Therefore
   \[
-    E(\theta)-E(0)=2\zeta(1-\cos\theta),
-    \qquad
-    \boxed{\chi=E''(0)=2K e^{-8\pi^2/g^2}.}
+    \boxed{S_{\mathrm{YM}}
+      \geq\frac{8\pi^2}{g_{\mathrm{YM}}^2}|c_2|.}
   \]
-  The result is \(2\pi\)-periodic and even in \(\theta\), as required.
+  Equality holds for an ASD field when \(c_2>0\) and for an SD field
+  when \(c_2<0\) with these orientation and trace conventions.  Reversing
+  either convention reverses the sign assigned to \(c_2\), but not the
+  bound.
+
+  Now set \(x^4=\tau\) and choose the orientation for which the ASD
+  equations read
+  \[
+    F_{\tau i}=\frac12\epsilon_{ijk}F_{jk}.
+  \]
+  In temporal gauge,
+  \[
+    F_{\tau i}=\partial_\tau A_i
+      -\partial_iA_\tau+[A_\tau,A_i]
+      =\partial_\tau A_i,
+  \]
+  so this gives
+  \[
+    \boxed{\partial_\tau A_i
+      =\frac12\epsilon_{ijk}F_{jk},\qquad i=1,2,3.}
+  \]
+  (The question's displayed qualifier \(k=1,2,3\) is naturally read as
+  the range of the free spatial index \(i\).)
+
+  Let \(D_\mu=\partial_\mu+A_\mu\).  One Lax pair, with complex spectral
+  parameter \(\lambda\), is
+  \[
+  \begin{split}
+    L_0(\lambda)
+      &=D_1+iD_2-\lambda(D_3-iD_\tau),\\
+    L_1(\lambda)
+      &=D_3+iD_\tau+\lambda(D_1-iD_2),
+  \end{split}
+  \qquad
+    L_0(\lambda)\Psi=L_1(\lambda)\Psi=0,
+  \]
+  where \(D_\tau=\partial_\tau\) in temporal gauge.  Expanding the
+  compatibility condition
+  \([L_0(\lambda),L_1(\lambda)]=0\) in powers of \(\lambda\), the
+  constant and quadratic terms give
+  \[
+    F_{\tau1}=F_{23},\qquad F_{\tau2}=F_{31},
+  \]
+  and the linear term gives \(F_{\tau3}=F_{12}\).  These are precisely
+  the three evolution equations above.
+
+  \SupplementarySolution{8}{Anti-Self-Dual Yang--Mills in Complex Coordinates}
+  \begin{enumerate}
+    \item[(i)]
+    For equal-degree forms, the Hodge operator is defined by
+    \[
+      \alpha\wedge\star\beta
+        =\langle\alpha,\beta\rangle_\eta\operatorname{vol}.
+    \]
+    Since \(\star^2=1\) on two-forms in four-dimensional Euclidean
+    space, write
+    \(\omega=\omega_++\omega_-\), where
+    \(\star\omega_\pm=\pm\omega_\pm\).  The SD and ASD summands are
+    orthogonal and their wedge product vanishes.  Hence
+    \[
+    \begin{split}
+      \omega\wedge\omega
+        &=\omega_+\wedge\omega_+
+          +\omega_-\wedge\omega_-,\\
+      \star\omega\wedge\star\omega
+        &=(\omega_+-\omega_-)\wedge(\omega_+-\omega_-)
+         =\omega\wedge\omega.
+    \end{split}
+    \]
+
+    For anti-Hermitian \(\mathfrak{su}(2)\) matrices, use
+    \[
+      S_{\mathrm{YM}}=-\int\operatorname{tr}(F\wedge\star F),
+      \qquad
+      c_2=\frac1{8\pi^2}
+        \int\operatorname{tr}(F\wedge F).
+    \]
+    If \(F=-\star F\), then
+    \[
+      \boxed{S_{\mathrm{YM}}
+        =\int\operatorname{tr}(F\wedge F)=8\pi^2c_2.}
+    \]
+    Thus the stated equality follows with the source's normalization;
+    the opposite trace or orientation convention changes the sign used
+    in defining \(c_2\).
+
+    \item[(ii)]
+    Put \(D_a=\partial_a+A_a\).  A spectral-parameter Lax pair is
+    \[
+      \boxed{(D_w-\lambda D_{\bar z})\Psi=0,
+      \qquad
+      (D_z+\lambda D_{\bar w})\Psi=0.}
+    \]
+    Its compatibility condition is
+    \[
+    \begin{split}
+      0={}&[D_w-\lambda D_{\bar z},
+             D_z+\lambda D_{\bar w}]\\
+       ={}&F_{wz}
+          +\lambda(F_{w\bar w}+F_{z\bar z})
+          +\lambda^2F_{\bar w\bar z}.
+    \end{split}
+    \]
+    Since this must hold for every \(\lambda\), its three coefficients
+    are exactly equations~(1).
+
+    \item[(iii)]
+    Under
+    \(A_a\mapsto g^{-1}A_ag+g^{-1}\partial_ag\), the conditions
+    \(A_w'=A_z'=0\) amount to
+    \[
+      (\partial_w+A_w)g=0,
+      \qquad
+      (\partial_z+A_z)g=0.
+    \]
+    Their integrability condition is
+    \([D_w,D_z]g=F_{wz}g=0\), which is the first equation in~(1).
+    Thus the desired gauge exists locally.  It exists globally on
+    \(\mathbb R^4\) for a smooth connection on the trivial bundle, with
+    the usual choice of gauge at a base point.
+
+    \item[(iv)]
+    In this gauge the second equation becomes
+    \[
+      \partial_{\bar w}A_{\bar z}
+       -\partial_{\bar z}A_{\bar w}
+       +[A_{\bar w},A_{\bar z}]=0.
+    \]
+    This is the integrability condition for a group-valued function
+    \(J\) satisfying
+    \[
+      A_{\bar w}=J^{-1}\partial_{\bar w}J,
+      \qquad
+      A_{\bar z}=J^{-1}\partial_{\bar z}J.
+    \]
+    Consequently
+    \[
+      A=J^{-1}\partial_{\bar w}J\,d\bar w
+        +J^{-1}\partial_{\bar z}J\,d\bar z.
+    \]
+    Since \(A_w=A_z=0\), the remaining curvature components are
+    \[
+      F_{w\bar w}=\partial_w(J^{-1}\partial_{\bar w}J),
+      \qquad
+      F_{z\bar z}=\partial_z(J^{-1}\partial_{\bar z}J).
+    \]
+    The third equation in~(1) therefore reduces to Yang's equation
+    \[
+      \boxed{\partial_w(J^{-1}\partial_{\bar w}J)
+       +\partial_z(J^{-1}\partial_{\bar z}J)=0.}
+    \]
+
+    \item[(v)]
+    For Maxwell theory take \(G=U(1)\) and write, locally,
+    \(J=e^{i\chi}\) with \(\chi\) real.  Commutators vanish and Yang's
+    equation becomes
+    \[
+      i\bigl(\partial_w\partial_{\bar w}\chi
+        +\partial_z\partial_{\bar z}\chi\bigr)=0.
+    \]
+    With \(ds^2=|dz|^2+|dw|^2\),
+    \[
+      \Delta=4\left(
+        \partial_z\partial_{\bar z}
+       +\partial_w\partial_{\bar w}\right).
+    \]
+    Hence the anti-self-dual Maxwell equations in this gauge are
+    equivalent to
+    \[
+      \boxed{\Delta\chi=0,}
+    \]
+    or equivalently to the Laplace equation for the locally defined
+    Lie-algebra-valued logarithm \(\log J=i\chi\).
+  \end{enumerate}
 
   \SupplementarySolution{9}{Strong \(CP\), Topological Susceptibility, and Axion Observables}
   \begin{enumerate}
@@ -679,30 +979,125 @@
     area and kinetic energy of the accelerating wall.
   \end{enumerate}
 
-  \SupplementarySolution{12}{The Unique Negative Bounce Mode}
-  Differentiating the stated thin-wall action twice gives
+  \SupplementarySolution{12}{A Three-Vacuum \(\phi^8\) Kink with Unequal Tails}
+  Varying the field gives
   \[
-    B''(R)=12\pi^2\sigma R-6\pi^2\epsilon R^2.
+    \boxed{\phi_{tt}-\phi_{xx}+U'(\phi)=0.}
   \]
-  At \(R_*=3\sigma/\epsilon\),
+  The corresponding total energy is
   \[
-    \boxed{B''(R_*)=-\frac{18\pi^2\sigma^2}{\epsilon}<0.}
+    E=\int_{-\infty}^{\infty}dx\left[
+      \frac12\phi_t^2+\frac12\phi_x^2+U(\phi)\right].
   \]
-  The associated fluctuation expands or contracts the bubble, so this
-  establishes a negative dilation direction in the thin-wall
-  approximation.  It does not by itself prove uniqueness.  A separate
-  spectral analysis of the full fluctuation operator establishes that,
-  in this thin-wall regime, the bounce has exactly one negative
-  eigenvalue.
+  For a field whose boundary terms vanish,
+  \[
+  \begin{split}
+    \frac{dE}{dt}
+      &=\int dx\,[\phi_t\phi_{tt}+\phi_x\phi_{xt}
+                    +U'(\phi)\phi_t]\\
+      &=\int dx\,\phi_t[\phi_{tt}-\phi_{xx}+U'(\phi)]
+        +[\phi_x\phi_t]_{-\infty}^{\infty}=0.
+  \end{split}
+  \]
 
-  Steepest-descent integration through this mode produces a factor of
-  \(i/2\), giving an imaginary part to the metastable vacuum energy.
-  By contrast, the four translational modes cost no action; integrating
-  over the bounce center produces the total Euclidean spacetime volume,
-  which becomes a decay rate per unit volume after division by that
-  factor.  The contour is fixed by analytic continuation from a stable
-  potential, selecting the sign for which
-  \(\Gamma/\mathcal V=-2\,\operatorname{Im}E_f>0\).
+  The specified potential is even and has three degenerate vacua,
+  \(\phi=-1,0,+1\).
+  \begin{enumerate}
+    \item[(i)]
+    The two nontrivial discrete transformations are
+    \[
+      \boxed{\alpha=-1,\qquad\beta=-1,}
+    \]
+    namely field reflection and spatial reflection.  Translations of the
+    argument are understood.  If
+    \(K(x)=\phi_{(0,1)}(x)\), then the four oriented adjacent-vacuum
+    solutions can be written
+    \[
+    \begin{array}{c|c}
+      \text{sector}&\text{profile}\\ \hline
+      0\longrightarrow1&K(x)\\
+      1\longrightarrow0&K(-x)\\
+      -1\longrightarrow0&-K(-x)\\
+      0\longrightarrow-1&-K(x).
+    \end{array}
+    \]
+    Thus there are two kink sectors and their two antikinks.  A direct
+    \(-1\)-to-\(+1\) profile separates into two kinks because the
+    intermediate vacuum is reached only at infinite distance.
+
+    \item[(ii)]
+    A convenient superpotential is
+    \[
+      \boxed{W(\phi)=\frac{\phi^3}{3}-\frac{\phi^5}{5},
+      \qquad W'(\phi)=\phi^2(1-\phi^2).}
+    \]
+    It obeys \(U=\tfrac12(W')^2\).  In the \(0\)-to-\(1\) sector,
+    \[
+      E=\frac12\int dx\,[\phi'-W'(\phi)]^2
+        +W(1)-W(0),
+    \]
+    so the Bogomolny equation and its saturated energy are
+    \[
+      \boxed{\phi'=\phi^2(1-\phi^2),
+      \qquad E_{(0,1)}=\frac13-\frac15=\frac{2}{15}.}
+    \]
+
+    \item[(iii)]
+    Separating the Bogomolny equation gives
+    \[
+      x-A=\int^\phi\frac{d\varphi}{\varphi^2(1-\varphi^2)}.
+    \]
+    Since
+    \[
+      \frac{d}{d\phi}\left[
+        \frac12\ln\left(\frac{1+\phi}{1-\phi}\right)
+          -\frac1\phi\right]
+        =\frac1{\phi^2(1-\phi^2)},
+    \]
+    the required implicit profile follows:
+    \[
+      \boxed{\frac12\ln\left(\frac{1+\phi}{1-\phi}\right)
+        -\frac1\phi=x-A.}
+    \]
+
+    \item[(iv)]
+    As \(\phi\to0^+\), the left-hand side is
+    \(-1/\phi+O(\phi)\).  Hence
+    \[
+      \phi\sim\frac1{A-x}\qquad(x\to-\infty).
+    \]
+    At the other end put \(\delta=1-\phi\).  Then
+    \[
+      \frac12\ln\left(\frac{1+\phi}{1-\phi}\right)
+        -\frac1\phi
+      =-\frac12\ln\delta+\frac12\ln2-1+O(\delta).
+    \]
+    Comparing with \(x-A\) gives
+    \[
+      \delta\sim2e^{2A-2}e^{-2x}=e^{-2(x-b)},
+      \qquad
+      \boxed{b=A-1+\frac12\ln2.}
+    \]
+    The kink is consequently highly asymmetric: its approach to the
+    quartic vacuum at \(\phi=0\) is algebraic, whereas its approach to the
+    quadratic vacuum at \(\phi=1\) is exponential.
+
+    \begin{center}
+    \begin{tikzpicture}[x=0.57cm,y=3.2cm]
+      \draw[->] (-8.5,0) -- (3.0,0)
+        node[right] {$x-A$};
+      \draw[->] (0,-0.04) -- (0,1.16) node[above] {$\phi$};
+      \draw[densely dashed,gray] (-8.3,1) -- (2.8,1);
+      \draw[very thick,blue!70!black,smooth,variable=\p,
+        domain=0.12:0.995,samples=140]
+        plot ({0.5*ln((1+\p)/(1-\p))-1/\p},{\p});
+      \node[anchor=east] at (-4.0,0.18) {algebraic tail};
+      \node[anchor=west] at (0.8,0.82) {exponential tail};
+      \node[anchor=east] at (-0.1,1.02) {$1$};
+      \fill (0,0) circle (0.035);
+    \end{tikzpicture}
+    \end{center}
+  \end{enumerate}
 
   \SupplementarySolution{13}{Anomaly-Induced Domain-Wall Charge}
   \begin{enumerate}
@@ -1002,5 +1397,409 @@
   separated collection of unit vortices has the same energy as a coincident
   \(n\)-vortex.  The scalar attraction and magnetic repulsion cancel,
   yielding no static force at critical coupling.
+
+  \SupplementarySolution{18}{Bright Solitons in Slowly Varying and Harmonic Potentials}
+  Write the symplectic term as
+  \[
+    \langle i\phi,\dot\phi\rangle
+      =\frac{i}{2}(\phi\dot{\bar\phi}-\bar\phi\dot\phi).
+  \]
+  Treating \(\phi\) and \(\bar\phi\) as independent fields, variation
+  with respect to \(\bar\phi\), followed by an integration by parts,
+  gives
+  \[
+    -i\phi_t-\frac12\phi_{xx}-|\phi|^2\phi
+      +\epsilon V(\epsilon x)\phi=0.
+  \]
+  Thus the Euler--Lagrange equation is precisely (1).
+
+  \begin{enumerate}
+    \item[(i)]
+    Set
+    \[
+      k=\sqrt{2|E|},\qquad f_E(x)=k\operatorname{sech}(kx).
+    \]
+    The elementary identity
+    \[
+      f_E''=k^2f_E-2f_E^3
+    \]
+    implies
+    \[
+      -\frac12f_E''-f_E^3=-\frac{k^2}{2}f_E=Ef_E.
+    \]
+    Therefore \(\phi=e^{-iEt}f_E\) solves (1) when \(\epsilon=0\).
+
+    \item[(ii)]
+    Put \(y=x-X(t)\) and
+    \(\phi=f_E(y)e^{i\theta(t)+iu(t)y}\).  Direct differentiation gives
+    \[
+    \begin{split}
+      i\phi_t={}&e^{i\theta+iuy}
+       \left[-i\dot X f_E'
+        -(\dot\theta+\dot u\,y-u\dot X)f_E\right],\\
+      -\frac12\phi_{xx}-|\phi|^2\phi
+        ={}&e^{i\theta+iuy}
+       \left[Ef_E-iu f_E'+\frac12u^2f_E\right].
+    \end{split}
+    \]
+    The coefficients of \(f_E'\), \(yf_E\), and \(f_E\) agree exactly
+    when
+    \[
+      \boxed{\dot X=u,\qquad\dot u=0,\qquad
+        \dot\theta=-E+\frac12u^2.}
+    \]
+
+    The norm of the profile is
+    \[
+      \mathcal N(E)=\int_{-\infty}^{\infty}f_E^2dx=2k.
+    \]
+    The other useful integrals are
+    \[
+      \int(f_E')^2dx=\frac23k^3,
+      \qquad
+      \int f_E^4dx=\frac43k^3.
+    \]
+    Since \(|\phi_x|^2=(f_E')^2+u^2f_E^2\),
+    \[
+      \boxed{H=-\frac13k^3+ku^2,
+      \qquad P=2ku=\mathcal N u.}
+    \]
+    Eliminating \(u\) gives either of the equivalent relations
+    \[
+      \boxed{H=H_0(E)+\frac{P^2}{2\mathcal N(E)}
+        =-\frac{\mathcal N^3}{24}
+          +\frac{P^2}{2\mathcal N},
+      \qquad H_0(E)=\frac13E\mathcal N.}
+    \]
+    For fixed internal profile, the bright soliton therefore has the
+    ordinary particle dispersion with inertial mass equal to its conserved
+    norm \(\mathcal N\), in addition to its negative binding energy.
+
+    \item[(iii)]
+    Let \(g_E(y)\) be any real localized solution of
+    \[
+      Eg_E=-\frac12g_E''-g_E^3+\frac12y^2g_E
+    \]
+    and take
+    \[
+      \phi(x,t)=g_E(x-X(t))
+        e^{i\theta(t)+iu(t)(x-X(t))}.
+    \]
+    Repeating the preceding substitution, but using
+    \(x^2=(y+X)^2\), gives
+    \[
+      \boxed{\dot X=u,\qquad
+        \dot u=-X,\qquad
+        \dot\theta=-E+\frac12u^2-\frac12X^2.}
+    \]
+    Hence \(\ddot X+X=0\).  The center and momentum parameter obey
+    Hamilton's equations for
+    \[
+      H_{\mathrm{cl}}(X,u)=\frac12u^2+\frac12X^2,
+    \]
+    while the phase accumulates the internal frequency \(-E\) plus the
+    classical center-of-mass Lagrangian
+    \((u^2-X^2)/2\).  The nonlinear shape \(g_E\) is carried rigidly by
+    the same harmonic orbit as a point particle.
+
+    \item[(iv)]
+    Use the four-parameter ansatz from part~(ii), now allowing all four
+    parameters to depend on time.  Because \(f_E\) is real and even,
+    the terms proportional to \(\dot E\) and
+    \(\dot u\int y f_E^2dy\) make no contribution to the symplectic
+    integral.  Define
+    \[
+    \begin{split}
+      \mathcal N(E)&=2\sqrt{2|E|},\\
+      H_0(E)&=-\frac13(2|E|)^{3/2},\\
+      \mathcal V_\epsilon(E,X)
+        &=\int_{-\infty}^{\infty}dy\,
+          V\bigl(\epsilon(X+y)\bigr)f_E(y)^2.
+    \end{split}
+    \]
+    Substitution into the source action gives the effective Lagrangian
+    \[
+      \boxed{L_{\mathrm{eff}}
+        =\mathcal N(E)(\dot\theta-u\dot X)
+         +H_0(E)+\frac12\mathcal N(E)u^2
+         +\epsilon\mathcal V_\epsilon(E,X).}
+    \]
+    The \(\theta\) equation conserves \(\mathcal N\), and hence
+    \(\dot E=0\).  The \(u\)- and \(X\)-equations give
+    \[
+      \boxed{\dot X=u,\qquad
+        \dot u=-\frac{\epsilon}{\mathcal N}
+          \frac{\partial\mathcal V_\epsilon}{\partial X}.}
+    \]
+    Finally, variation with respect to \(E\) yields
+    \[
+      \boxed{\dot\theta=-E+\frac12u^2
+        -\epsilon\frac{\partial_E\mathcal V_\epsilon}
+          {\mathcal N'(E)},}
+    \]
+    where the identity
+    \(-H_0'(E)/\mathcal N'(E)=-E\) was used.
+
+    Since the external potential varies on the scale \(\epsilon^{-1}\),
+    parity of \(f_E^2\) gives
+    \[
+      \mathcal V_\epsilon(E,X)
+        =\mathcal N(E)V(\epsilon X)+O(\epsilon^2).
+    \]
+    To leading nontrivial order, the collective-coordinate dynamics is
+    therefore
+    \[
+      \boxed{\dot E=0,\qquad \dot X=u,\qquad
+        \dot u=-\epsilon^2V'(\epsilon X),\qquad
+        \dot\theta=-E+\frac12u^2-\epsilon V(\epsilon X).}
+    \]
+    In particular,
+    \(\ddot X=-\partial_X[\epsilon V(\epsilon X)]\): the soliton center
+    follows the classical Hamiltonian
+    \(u^2/2+\epsilon V(\epsilon X)\), while its norm and internal
+    parameter remain fixed at this order.
+  \end{enumerate}
+
+  \SupplementarySolution{19}{Two-Vortex Moduli-Space Scattering}
+  At critical coupling the static energy has a Bogomolny bound.  In the
+  sector of flux \(2\pi N\), the moduli space \(\mathcal M_N\) is the set
+  of all solutions of the first-order vortex equations modulo gauge
+  transformations.  A solution is determined, up to gauge, by the
+  unordered zeros \(Z_1,\ldots,Z_N\) of its Higgs field.  Thus
+  \[
+    \mathcal M_N\simeq\operatorname{Sym}^N(\mathbb C),
+  \]
+  a smooth complex \(N\)-manifold; elementary symmetric polynomials in
+  the \(Z_a\), rather than the individually labeled zeros, are regular
+  global coordinates.
+
+  Promote the moduli \(q^a\) slowly to functions of time and solve Gauss's
+  law, equivalently impose background gauge on each zero mode.  The
+  field-theory kinetic energy then has the form
+  \[
+    T=\frac12g_{ab}(q)\dot q^a\dot q^b,
+  \]
+  where \(g\) is the \(L^2\) inner product of the gauge and Higgs zero
+  modes.  This is the natural smooth, complete K\"ahler metric on
+  \(\mathcal M_N\).  With no potential on the critical moduli space, its
+  geodesics approximate low-speed vortex motion.
+
+  For \(N=1\), translation invariance makes
+  \(\mathcal M_1\simeq\mathbb C\) a flat plane, with an overall metric
+  coefficient equal to the one-vortex mass.  For \(N=2\), separate the
+  center of mass \(Z=(Z_1+Z_2)/2\) and relative coordinate
+  \(w=(Z_1-Z_2)/2\).  Interchange of the vortices sends \(w\mapsto-w\),
+  so the single-valued relative coordinate is
+  \[
+    \zeta=w^2.
+  \]
+  Accordingly
+  \[
+    \mathcal M_2\simeq\mathbb C_{\mathrm{cm}}
+      \times\mathcal M_2^0,
+  \]
+  where \(\mathcal M_2^0\) is asymptotic to the flat cone
+  \(\mathbb C/\mathbb Z_2\).  The exact metric rounds off the apparent
+  conical tip: \(\zeta=0\), the coincident two-vortex, is a smooth point.
+
+  In a head-on center-of-mass collision the geodesic passes smoothly
+  through \(\zeta=0\) and continues to the opposite side of the
+  \(\zeta\)-plane.  Thus \(\zeta\mapsto-\zeta\), so
+  \(w\mapsto iw\):
+  \[
+    \boxed{\text{two vortices scatter through }90^\circ\text{ head on}.}
+  \]
+  For increasing \(|b|\), the trajectory samples less of the rounded
+  tip and its deflection decreases monotonically to zero.  Because
+  multiplying the initial velocity merely reparametrizes a geodesic, the
+  scattering curve is independent of speed within the geodesic
+  approximation.  In the following signed-angle convention the two
+  branches at \(b=0\) represent the same unlabeled right-angle event.
+
+  \begin{center}
+  \begin{tikzpicture}[x=1.15cm,y=4.0cm]
+    \draw[->] (-4.4,0) -- (4.4,0) node[right] {$b$};
+    \draw[->] (0,-0.64) -- (0,0.64) node[above] {$\Theta/\pi$};
+    \draw[blue!70!black,very thick,domain=0.08:4,samples=80]
+      plot (\x,{0.5*exp(-0.85*\x)});
+    \draw[blue!70!black,very thick,domain=-4:-0.08,samples=80]
+      plot (\x,{-0.5*exp(0.85*\x)});
+    \draw[red!70!black,densely dashed,thick,domain=0.08:4,samples=80]
+      plot (\x,{0.5*exp(-0.85*\x)});
+    \draw[red!70!black,densely dashed,thick,domain=-4:-0.08,samples=80]
+      plot (\x,{-0.5*exp(0.85*\x)});
+    \filldraw[fill=white] (0,0.5) circle (0.045);
+    \filldraw[fill=white] (0,-0.5) circle (0.045);
+    \node[left] at (-0.08,0.5) {$\tfrac12$};
+    \node[right] at (0.08,-0.5) {$-\tfrac12$};
+    \draw[blue!70!black,very thick] (1.4,0.55) -- (2.0,0.55)
+      node[right,black] {$v_{\rm small}$};
+    \draw[red!70!black,densely dashed,thick] (1.4,0.46) -- (2.0,0.46)
+      node[right,black] {$v_{\rm large}$};
+    \node at (0,-0.72) {two-vortex geodesic scattering};
+  \end{tikzpicture}
+  \end{center}
+
+  For comparison, let the point-particle relative potential be repulsive,
+  finite ranged, and bounded by \(V_{\max}=V(0)\).  Choose the smaller
+  speed below the barrier and the larger speed above it.  Below the
+  barrier, a nearly head-on orbit turns around, so the signed deflection
+  approaches \(\pm\pi\) as \(b\to0^\pm\), and approaches zero for large
+  \(|b|\).  Above the barrier, the head-on orbit passes across the finite
+  maximum and has zero deflection.  Its deflection must therefore rise
+  from zero, attain a maximum at nonzero \(|b|\), and return to zero at
+  infinity.  For the sufficiently large incoming speed shown below,
+  that maximum is less than \(\pi/2\).  A representative pair of
+  qualitative curves is:
+
+  \begin{center}
+  \begin{tikzpicture}[x=1.15cm,y=2.6cm]
+    \draw[->] (-4.4,0) -- (4.4,0) node[right] {$b$};
+    \draw[->] (0,-1.12) -- (0,1.12) node[above] {$\Theta/\pi$};
+    \draw[blue!70!black,very thick,domain=0.06:4,samples=80]
+      plot (\x,{exp(-0.8*\x)});
+    \draw[blue!70!black,very thick,domain=-4:-0.06,samples=80]
+      plot (\x,{-exp(0.8*\x)});
+    \draw[red!70!black,densely dashed,very thick,domain=0:4,samples=80]
+      plot (\x,{0.9*\x*exp(-\x)});
+    \draw[red!70!black,densely dashed,very thick,domain=-4:0,samples=80]
+      plot (\x,{0.9*\x*exp(\x)});
+    \filldraw[fill=white] (0,1) circle (0.045);
+    \filldraw[fill=white] (0,-1) circle (0.045);
+    \node[left] at (-0.08,1) {$1$};
+    \node[right] at (0.08,-1) {$-1$};
+    \draw[blue!70!black,very thick] (1.35,1.0) -- (1.95,1.0)
+      node[right,black] {$E<V_{\max}$};
+    \draw[red!70!black,densely dashed,very thick] (1.35,0.84) -- (1.95,0.84)
+      node[right,black] {$E>V_{\max}$};
+    \node at (0,-1.28) {bounded repulsive point-particle potential};
+  \end{tikzpicture}
+  \end{center}
+
+  Thus point-particle scattering is speed dependent and, below the
+  barrier, includes deflections larger than \(90^\circ\) all the way to
+  backscattering.  Vortex geodesic scattering instead has the universal
+  right-angle endpoint and the range
+  \(|\Theta|\leq\pi/2\).  At exact coincidence labels of identical
+  particles are conventional; the graphs use a continuously followed
+  incoming representative so that the signed comparison is unambiguous.
+
+  \SupplementarySolution{20}{The Rational-Map Approximation to the \(B=7\) Skyrmion}
+  Compactifying physical space gives
+  \(\mathbb R^3\cup\{\infty\}\simeq S^3\), and a finite-energy Skyrme
+  field \(U:S^3\to SU(2)\simeq S^3\) has integer baryon number equal to
+  its degree.  In the rational-map ansatz one writes
+  \[
+    U(r,z)=\exp\!\left[i f(r)\,
+      \widehat{\mathbf n}_{R(z)}\cdot\boldsymbol\tau\right],
+    \qquad
+    \widehat{\mathbf n}_{R}
+      =\frac{(2\operatorname{Re}R,2\operatorname{Im}R,1-|R|^2)}
+             {1+|R|^2},
+  \]
+  where \(z\) is the stereographic coordinate on the angular two-sphere,
+  \(R(z)=p(z)/q(z)\) is a degree-\(N\) rational map, and
+  \(f(0)=\pi\), \(f(\infty)=0\).  The angular degree and radial winding
+  factorize, so
+  \[
+    \boxed{B=N.}
+  \]
+
+  In standard dimensionless Skyrme units the energy reduces to
+  \[
+    E=4\pi\int_0^\infty dr\left[
+      r^2f'^2+2N(f'^2+1)\sin^2f
+      +\mathcal I\frac{\sin^4f}{r^2}\right],
+  \]
+  up to the conventional overall normalization, where
+  \[
+    \mathcal I=\frac1{4\pi}\int_{S^2}
+      \left(\frac{1+|z|^2}{1+|R|^2}
+        \left|\frac{dR}{dz}\right|\right)^4d\Omega.
+  \]
+  One first minimizes \(\mathcal I\) over degree-\(N\) maps and then
+  solves the remaining radial equation for \(f\).  This preserves the
+  topology exactly and usually captures the symmetry and shell structure
+  of the numerical Skyrmion while reducing a three-dimensional variational
+  problem to a finite-dimensional angular minimization and one radial ODE.
+
+  For the map in the question let
+  \(\omega=e^{2\pi i/5}\).  Since \(\omega^5=1\),
+  \[
+    R(\omega z)=\omega^2R(z).
+  \]
+  A spatial rotation through \(2\pi/5\) is therefore compensated by a
+  target-sphere rotation through \(4\pi/5\), establishing the combined
+  \(C_5\) symmetry.  Two further direct identities are
+  \[
+    R\!\left(-\frac1z\right)=-\frac1{R(z)},
+    \qquad
+    R(\bar z)=\overline{R(z)}.
+  \]
+  The first supplies a two-fold rotation perpendicular to the five-fold
+  axis, and the second supplies the corresponding reflection.  Together
+  with the \(C_5\) generator these combined spatial and target
+  transformations generate \(D_{5d}\).  They are, in fact, contained in
+  the full icosahedral symmetry of the map.
+
+  Write
+  \[
+    p(z)=z^7-7z^2,\qquad q(z)=7z^5+1.
+  \]
+  With the convention \(\mathcal W=p'q-pq'\),
+  \[
+  \begin{split}
+    \mathcal W(z)
+      &=(7z^6-14z)(7z^5+1)
+        -(z^7-7z^2)(35z^4)\\
+      &=\boxed{14z(z^{10}+11z^5-1).}
+  \end{split}
+  \]
+  Put \(y=z^5\).  The two values of \(y\) are
+  \[
+    y_\pm=\frac{-11\pm5\sqrt5}{2}.
+  \]
+  If \(\varphi_g=(1+\sqrt5)/2\) is the golden ratio, then
+  \(y_+=\varphi_g^{-5}\) and \(y_-=-\varphi_g^5\).  The eleven finite
+  zeros are therefore
+  \[
+    \boxed{z=0,\qquad
+      z=\varphi_g^{-1}e^{2\pi ik/5},\qquad
+      z=\varphi_g e^{(2k+1)\pi i/5},\qquad k=0,\ldots,4.}
+  \]
+  A degree-seven rational map has \(2B-2=12\) critical points on
+  \(\mathbb{CP}^1\), counted with multiplicity.  Because the displayed
+  polynomial has degree eleven, the twelfth zero is at
+  \(z=\infty\).
+
+  \begin{center}
+  \begin{tikzpicture}[scale=2.05]
+    \draw[->,gray] (-2.05,0) -- (2.05,0) node[right] {$\operatorname{Re}z$};
+    \draw[->,gray] (0,-2.05) -- (0,2.05) node[above] {$\operatorname{Im}z$};
+    \draw[densely dashed,gray] (0,0) circle (0.618);
+    \draw[densely dashed,gray] (0,0) circle (1.618);
+    \fill[blue!70!black] (0,0) circle (0.045);
+    \foreach \k in {0,...,4}{
+      \fill[blue!70!black]
+        ({0.618*cos(72*\k)},{0.618*sin(72*\k)}) circle (0.045);
+      \fill[red!75!black]
+        ({1.618*cos(36+72*\k)},{1.618*sin(36+72*\k)}) circle (0.045);
+    }
+    \node[anchor=west] at (0.68,0.12) {$|z|=\varphi_g^{-1}$};
+    \node[anchor=west] at (1.18,-1.55) {$|z|=\varphi_g$};
+    \node[draw,fill=white,align=center] at (-1.25,1.72)
+      {one further zero\\at $z=\infty$};
+  \end{tikzpicture}
+  \end{center}
+
+  Under inverse stereographic projection these are two polar points and
+  two staggered pentagonal rings.  They are precisely the twelve vertices
+  of an icosahedron.  Since
+  \(R'=\mathcal W/q^2\), the Wronskian zeros are directions in which the
+  rational-map angular Jacobian, and hence the leading angular baryon
+  density, vanishes.  Physically they mark the twelve holes in the
+  baryon-density shell.  The complementary shell has the familiar
+  dodecahedral appearance, with full icosahedral symmetry, of the
+  \(B=7\) Skyrmion.
 
 \end{enumerate}

@@ -58,33 +58,66 @@ commutators among \(\mathbf J,\mathbf K,\mathbf P,H\), including
 \([K_i,K_j]\), \([K_i,P_j]\), and \([K_i,H]\).
 \end{enumerate}
 
-\SupplementaryExercise{3}{Scalar Momentum-Space Generators and Finite Translations}
-  {(Inspired by M. Gaberdiel, ETH Z\"urich QFT I, HS 2011, Sheet 4, Exercises 1--3 | M. Gaberdiel, ETH Z\"urich QFT I, HS 2011, Sheet 4, Exercise 4.)}
-  {eth-qft1-hs11-sheet4-curated-parent-2}
+\SupplementaryExercise{3}{The Poincar\'e Group Commutator and Its Lie Algebra}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2022, Paper 302, \emph{Symmetries, Fields and Particles}, Question 2, printed p.~3.)}
+  {cambridge-partiii-2022-sfp-paper302-q2}
+
+A Poincar\'e transformation
+\[
+ x^\mu\longmapsto x'{}^\mu=\Lambda^\mu{}_{\nu}x^\nu+a^\mu
+\]
+is written as \((\Lambda,a)\), where \(\Lambda^\mu{}_{\nu}\) is a
+Lorentz transformation.
 \begin{enumerate}
-\item
-On scalar wavefunctions with inner product
+\item[(i)] Compute \((L,b)(\Lambda,a)\).
+\item[(ii)] Determine \((\Lambda,a)^{-1}\) in terms of \(\Lambda\) and
+\(a\).
+\item[(iii)] Defining
 \[
- \braket{\phi}{\psi}
- =\int\frac{d^3\mathbf p}{2E_{\mathbf p}}\,
-   \phi(\mathbf p)^*\psi(\mathbf p),
+ (\Lambda_c,a_c):=[(L,b),(\Lambda,a)],
 \]
-show that one may take
+where the brackets denote the group commutator, find \(\Lambda_c\) and
+\(a_c\) in terms of \(L,\Lambda,b,a\).
+\item[(iv)] Define infinitesimal Lorentz transformations by
 \[
- P^\mu=p^\mu,\quad
- \mathbf J=-i\,\mathbf p\times\nabla_{\mathbf p},\quad
- K_i=iE_{\mathbf p}\frac{\partial}{\partial p_i}.
+ \Lambda:=I+\omega_\Lambda+O(\omega_\Lambda^2),\qquad
+ L:=I+\omega_L+O(\omega_L^2).
 \]
-Verify Hermiticity on a suitable dense domain and check the nontrivial
-Poincar\'e commutators.
-\item
-Exponentiate the translation generators to find
-\(U(\mathbf{1},a)\ket{p,\sigma}\).  Then use the Poincar\'e group
-multiplication law to prove
+Find \(a_c\) to first order in \(\omega_L\) and first order in
+\(\omega_\Lambda\).
+\item[(v)] Put \(\Lambda_c:=I+\omega_c+O(\omega_c^2)\), neglect terms
+of order \(\omega_L^2\) and \(\omega_\Lambda^2\), and find \(\omega_c\)
+in terms of \(\omega_L\) and \(\omega_\Lambda\).
+\item[(vi)] Write the defining relation for \(\Lambda^\mu{}_{\nu}\) in
+terms of the Minkowski metric \(\eta_{\rho\sigma}\), and hence derive a
+symmetry relation for \(\omega_\Lambda\) under interchange of its
+indices.
+\item[(vii)] Introduce a unitary operator corresponding to a Poincar\'e
+transformation, \(U[(\Lambda,a)]\), imposing
 \[
- U(\Lambda)U(\mathbf{1},a)U(\Lambda)^{-1}
- =U(\mathbf{1},\Lambda a).
+ U[(\Lambda_2,a_2)]U[(\Lambda_1,a_1)]
+ =U[(\Lambda_2,a_2)(\Lambda_1,a_1)].
 \]
+Expanding in infinitesimal \(\omega\) and \(a\), use the source
+normalization
+\[
+ U[(\Lambda(\omega),a)]
+ :=I+\frac12\omega^{\mu\nu}M_{\mu\nu}+a^\mu P_\mu+\cdots,
+ \qquad M_{\mu\nu}=-M_{\nu\mu}.
+\]
+Retaining constant, linear, and mixed bilinear terms in
+\(\omega_\Lambda,\omega_L,a,b\), but neglecting pure squares and higher
+orders, show that
+\[
+ U[(\Lambda_c(\omega_c),a_c)]
+ =I+\left[
+ \frac12\omega_L^{\mu\nu}M_{\mu\nu}+b^\mu P_\mu,
+ \frac12\omega_\Lambda^{\rho\sigma}M_{\rho\sigma}+a^\rho P_\rho
+ \right]+\cdots.
+\]
+\item[(viii)] Hence derive the Poincar\'e algebra: determine
+\([P_\mu,P_\nu]\), \([M_{\mu\sigma},P_\rho]\), and
+\([M_{\mu\nu},M_{\rho\sigma}]\).
 \end{enumerate}
 
 \SupplementaryExercise{4}{Pauli--Lubanski Spin and the Massive Casimir}
@@ -179,14 +212,55 @@ rotation angle of \(L^{-1}(\Lambda p)\Lambda L(p)\).  Check the result for
 a rotation through \(\theta\) about \(\mathbf p\).
 \end{enumerate}
 
-\SupplementaryExercise{7}{Discrete Symmetries and Helicity}
-  {(Inspired by J. Preskill, Physics 205abc notes, Chapter 3, 1986--87.)}
-  {preskill-ph205-ch3-curated-parent-1}
-Using that spin is an axial vector, determine the action of \(P\) and \(T\)
-on the helicity \(\lambda=\mathbf J\cdot\widehat{\mathbf p}\).  State the
-particle-content condition imposed by parity invariance when
-\(\lambda\ne0\), and explain why time reversal imposes no analogous
-opposite-helicity partner.
+\SupplementaryExercise{7}{Finite-Dimensional \(SU(2)\) Representations and Charge Conjugation}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2023, Paper 302, \emph{Symmetries, Fields and Particles}, Question 2, printed p.~3.)}
+  {cambridge-partiii-2023-sfp-paper302-q2}
+
+Consider a finite-dimensional irreducible representation \(d\) of the
+\(SU(2)\) Lie algebra.  Denote its Hermitian generators by
+\(J_1,J_2,J_3\), with
+\[
+ [J_i,J_j]=i\epsilon_{ijk}J_k.
+\]
+Let \(I\) be the maximum weight of \(d\), and let \(v_m\) be an
+eigenvector of \(d(J_3)\), so that
+\[
+ d(J_3)v_m=mv_m.
+\]
+\begin{enumerate}
+\item[(a)] Construct the \(J_3\)-eigenvector basis for the vector space
+on which \(d\) acts, showing that its dimension is \(2I+1\).
+\emph{Hint:} use \(J_\pm=J_1\pm iJ_2\).
+\item[(b)] Write \(\lVert v_m\rVert=N_m\), so that
+\(v_m^\dagger v_m=N_m^2\), and define normalized eigenvectors by
+\[
+ \ket{I,m}:=\frac1{N_m}v_m.
+\]
+Show that
+\[
+ \ket{I,m}=A(I,m)\bigl(d(J_-)\bigr)^{I-m}\ket{I,I},
+\]
+and determine the numerical factor \(A(I,m)\).
+\emph{Hint:} note that \(J_-^\dagger=J_+\).
+\item[(c)] An operator \(C\) maps the \(SU(2)\) generators according to
+\[
+ CJ_1C^{-1}=-J_1,\qquad
+ CJ_2C^{-1}=+J_2,\qquad
+ CJ_3C^{-1}=-J_3.
+\]
+Show that the set \(\{J_i'\}\), where \(J_i':=CJ_iC^{-1}\), also
+generates an \(SU(2)\) algebra.
+\item[(d)] Because the up and down quarks have very light masses, the
+strong force has an approximate \(SU(2)\) symmetry called isospin
+symmetry; for this problem, assume it is exact.  The three pion states
+form an \(I=1\) triplet
+\[
+ \bigl\{\ket{\pi^-},\ket{\pi^0},\ket{\pi^+}\bigr\},
+\]
+corresponding respectively to \(m=-1,0,1\).  Given that
+\(C\ket{\pi^0}=\ket{\pi^0}\), how are \(C\ket{\pi^+}\) and
+\(C\ket{\pi^-}\) related to the original states?
+\end{enumerate}
 
 \SupplementaryExercise{8}{A Wigner Rotation from Non-Collinear Boosts}
   {(Inspired by J. Preskill, Physics 236c notes, Chapter 1, 1990.)}
@@ -272,25 +346,164 @@ how treating mass as a central operator of an enlarged symmetry group
 changes the interpretation.
 \end{enumerate}
 
-\SupplementaryExercise{12}{The Galilean Algebra as a Relativistic Contraction}
-  {(Inspired by E. Annigoni and V. Moretti, arXiv:1205.1372, Sections 2 and 5, 2012.)}
-  {annigoni-moretti-1205.1372-curated-parent-2}
-Restore \(c\), write \(P^0=Mc+H_{\rm NR}/c+O(c^{-3})\), and rescale the
-relativistic boosts by \(K_i^{\rm G}=J^{i0}/c\).  Take \(c\to\infty\) in
-the Poincar\'e algebra and identify the central charge.
+\SupplementaryExercise{12}{The Heisenberg Group and Its Schr\"odinger Representation}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2024, Paper 302, \emph{Symmetries, Fields and Particles}, Question 1, printed p.~2.)}
+  {cambridge-partiii-2024-sfp-paper302-q1}
 
-\SupplementaryExercise{13}{Massive Spin in \(2+1\) Dimensions}
-  {(Inspired by P. Woit, \emph{Quantum Field Theory for Mathematicians}, Chapter 11, 2026; specialized to \(2+1\) dimensions.)}
-  {woit-qftmath-ch11-curated-parent-2}
-Determine the connected little group of \(k^\mu=(m,0,0)\).  Classify its
-one-dimensional unitary representations for \(SO(2)\), its double cover,
-and its universal cover.  Show how a reflection acts on the spin label.
+\begin{enumerate}
+\item[(a)] For each set and binary operation below, determine whether it
+forms a group.  If it does, verify the group axioms; if it does not, give
+an axiom that fails.
+  \begin{enumerate}
+  \item[(i)] The integers under addition, \((\mathbb Z,+)\).
+  \item[(ii)] The nonzero integers under multiplication,
+  \((\mathbb Z^*,\times)\).
+  \item[(iii)] The set \(\mathcal L\) of linear functions under
+  composition, where
+  \[
+   \mathcal L=\{f:\mathbb R\to\mathbb R\mid
+   f(x)=ux+b;\ b\in\mathbb R,\ u\in\mathbb R,\ u\ne0\}.
+  \]
+  \end{enumerate}
+\item[(b)] Consider the matrix Lie group
+\[
+ G=\left\{
+ \begin{pmatrix}1&q&s\\0&1&r\\0&0&1\end{pmatrix}
+ \mathrel{\Big|}q,r,s\in\mathbb R
+ \right\},
+\]
+with matrix multiplication as the group operation.
+  \begin{enumerate}
+  \item[(i)] Find the centre \(Z(G)\).
+  \item[(ii)] Find the Lie algebra \(L(G)\).  Choose a basis and determine
+  the corresponding structure constants.
+  \item[(iii)] Show that \(\exp:L(G)\to G\) is both one-to-one and onto.
+  Explain whether \(G\) is connected.
+  \item[(iv)] Explain whether \(L(G)\) is simple, semisimple, or neither.
+  \end{enumerate}
+\item[(c)] Consider the inner-product space of square-integrable complex
+functions, written in the source with the normalization convention
+\[
+ V=\{\psi:\mathbb R\to\mathbb C\mid(\psi,\psi)=1\},\qquad
+ (\phi,\psi)=\int_{-\infty}^{\infty}dx\,\phi(x)^*\psi(x).
+\]
+For checking linearity, regard \(V\) as the underlying space
+\(L^2(\mathbb R)\); the displayed condition selects its normalized
+wavefunctions.  For the same group \(G\), define \(D:G\to GL(V)\) by
+\[
+ g=\begin{pmatrix}1&q&s\\0&1&r\\0&0&1\end{pmatrix},\qquad
+ (D(g)\psi)(x)=e^{-is}e^{irx}\psi(x-q).
+\]
+Show that \(D\) is a unitary representation of \(G\).  If \(\psi(x)\)
+is a time-independent quantum wavefunction in one spatial dimension,
+interpret this transformation physically.
+\end{enumerate}
 
-\SupplementaryExercise{14}{Massless Little-Group Characters in \(2+1\) Dimensions}
-  {(Inspired by J. Preskill, Physics 236c notes, Chapter 1, 1990; specialized to \(2+1\) dimensions.)}
-  {preskill-ph236c-ch1-curated-parent-3}
-For \(k^\mu=(\kappa,0,\kappa)\), find the connected Lorentz transformations
-that leave \(k^\mu\) fixed.  Classify their unitary irreducible
-representations, determine the effect of a reflection, and identify the
-representation that gives the usual single massless polarization.
+\SupplementaryExercise{13}{The Poincar\'e Group in \(1+2\) Dimensions}
+  {(Adapted from University of Cambridge, Mathematical Tripos Part III, 2025, Paper 302, \emph{Symmetries, Fields and Particles}, Question 2, printed p.~3.)}
+  {cambridge-partiii-2025-sfp-paper302-q2}
+
+This problem uses the source metric
+\(\eta_{\mathrm s}=\operatorname{diag}(+1,-1,-1)\).  In Minkowski
+spacetime with one time and two space dimensions, Poincar\'e
+transformations act as
+\[
+ x^\mu\longmapsto\Lambda^\mu{}_{\nu}x^\nu+a^\mu,
+ \qquad \mu,\nu\in\{0,1,2\}.
+\]
+\begin{enumerate}
+\item[(a)] State the condition that a real \(3\times3\) matrix \(\Lambda\)
+must satisfy to belong to the Lorentz group in \(1+2\) dimensions.  Show
+what this condition implies for \(\det\Lambda\) and
+\(\Lambda^0{}_{0}\).
+\item[(b)] Recall that \(SL(2,\mathbb R)\) is the group of real
+\(2\times2\) matrices with determinant one.  Show that there is a group
+homomorphism from \(SL(2,\mathbb R)\) to the proper orthochronous Lorentz
+group in \(1+2\) dimensions, and find an explicit expression for the
+map.  Is it an isomorphism?
+
+\emph{Hint.} Consider the space \(\mathcal M\) of real \(2\times2\)
+matrices spanned by
+\[
+ \tau_0=\begin{pmatrix}1&0\\0&1\end{pmatrix},\qquad
+ \tau_1=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+ \tau_2=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+Construct a map \(\varphi\) from \(1+2\)-dimensional Minkowski space to
+\(\mathcal M\), \(\varphi(x)=X\), such that \(\det X=x^2\).
+\item[(c)] Write the Poincar\'e group in \(1+2\) dimensions as a
+semidirect product, and define the subgroups known as little groups.  A
+full derivation is not expected, but explain why the semidirect-product
+nature of the group is important.
+\item[(d)] Determine the unitary irreducible representations of the
+Poincar\'e group suitable for describing states of a single massive
+particle.
+\item[(e)] Determine the unitary irreducible representations of the
+Poincar\'e group suitable for describing states of a single massless
+particle.
+\end{enumerate}
+
+\SupplementaryExercise{14}{Parity Symmetry of Scalar Field Theory}
+  {(Adapted from J. McGreevy, Physics 215A QFT, Fall 2023, Assignment 9, Problem 8, printed pp.~4--5.)}
+  {mcgreevy-215a-f23-hw09-p8}
+
+Under parity, \(\mathbf x\mapsto\mathbf x'=-\mathbf x\), and a real
+Klein--Gordon field transforms as
+\[
+ P\phi(t,\mathbf x)P^{-1}=\eta_P\phi(t,-\mathbf x),
+ \qquad \eta_P=\pm1,
+\]
+where \(P\) is unitary, \(\eta_P\) is the intrinsic parity of \(\phi\),
+and \(P\ket0=\ket0\).  For completeness, use
+\[
+ \mathcal L_0=-\frac12\partial_\mu\phi\,\partial^\mu\phi
+              -\frac12m^2\phi^2,
+\]
+and the mode conventions
+\[
+ \phi(t,\mathbf x)=\int\!\frac{d^3\mathbf k}{(2\pi)^3\sqrt{2E_{\mathbf k}}}
+ \left(a_{\mathbf k}e^{-iE_{\mathbf k}t+i\mathbf k\cdot\mathbf x}
+ +a_{\mathbf k}^\dagger e^{iE_{\mathbf k}t-i\mathbf k\cdot\mathbf x}\right),
+ \quad
+ [a_{\mathbf k},a_{\mathbf q}^\dagger]=(2\pi)^3\delta^3(\mathbf k-\mathbf q).
+\]
+\begin{enumerate}
+\item[(a)] Show that parity preserves the free Lagrangian, though not the
+Lagrangian density at a fixed point, for both values of \(\eta_P\).
+\item[(b)] Show that an arbitrary \(n\)-particle state transforms as
+\[
+ P\ket{\mathbf k_1,\ldots,\mathbf k_n}
+ =\eta_P^n\ket{-\mathbf k_1,\ldots,-\mathbf k_n}.
+\]
+\item[(c)] Here is an explicit realization of the parity operator.  Let
+\[
+ P_1=\exp\!\left[-\frac{i\pi}{2}\sum_{\mathbf k}
+ a_{\mathbf k}^\dagger a_{\mathbf k}\right],\qquad
+ P_2=\exp\!\left[\frac{i\eta_P\pi}{2}\sum_{\mathbf k}
+ a_{\mathbf k}^\dagger a_{-\mathbf k}\right].
+\]
+Show that
+\[
+ P_1a_{\mathbf k}P_1^{-1}=ia_{\mathbf k},\qquad
+ P_2a_{\mathbf k}P_2^{-1}=-i\eta_Pa_{-\mathbf k}.
+\]
+\emph{Hint.} Use the Campbell--Baker--Hausdorff formula
+\[
+ e^{i\alpha A}Be^{-i\alpha A}
+ =\sum_{n=0}^{\infty}\frac{(i\alpha)^n}{n!}B_n,
+ \qquad B_0=B,\quad B_n=[A,B_{n-1}]\quad(n\ge1).
+\]
+Show that \(P=P_1P_2\) is unitary and satisfies the parity transformation
+above.  (The source cross-reference reads ``(24)'' here, while the
+displayed transformation is its Eq.~(14).)
+\item[(d)] Now take a complex scalar field.  Using the preceding results
+and the particle current
+\[
+ j^\mu=i\left(\Phi^\dagger\partial^\mu\Phi
+ -(\partial^\mu\Phi^\dagger)\Phi\right),
+\]
+find the action of parity on \(j^\mu\), namely
+\(j^\mu\mapsto Pj^\mu P^{-1}\).  Extend the action of \(P\) from the real
+field to the complex field as needed.
+\end{enumerate}
 \end{enumerate}

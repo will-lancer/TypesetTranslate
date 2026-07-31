@@ -1,31 +1,65 @@
 \chapterbackmatter{Supplementary Exercises}
 
 \begin{enumerate}
-\SupplementaryExercise{1}{Connected Moments, M{\o}bius Inversion, and Independence}
-  {(Inspired by D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 7.5, Eqs. 7.47--7.49 | D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 7.5 | D. Harlow, \emph{Quantum Field Theory I}, 2024, Sections 7.4--7.5.)}
-  {harlow-qft1-linked-2024-curated-parent-1}
-\begin{enumerate}
-\item
-For four not-necessarily-centered random variables \(X_1,\ldots,X_4\),
-write the full fourth moment as a sum over set partitions into connected
-moments.  Invert the relation explicitly to obtain
-\(\langle X_1X_2X_3X_4\rangle_c\).
-\item
-If moments and connected moments obey
+\SupplementaryExercise{1}{A Complex Gaussian and Its Pairings}
+  {(Adapted from D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 7.8, Homework Problem 5.)}
+  {harlow-qft1-2024-s7p8-problem5-v1ch04-s01}
+Let \(x\) be an \(n\)-component complex vector, let \(A\) be a positive
+real symmetric matrix, and let \(B\) and \(\widetilde B\) be independent
+complex vectors.  With the componentwise convention
 \[
- m(A)=\sum_{\pi\in\Pi(A)}\prod_{B\in\pi}\kappa(B),
+ dx\,dx^*\equiv\prod_{a=1}^n dx_a\,dx_a^*,
+ \qquad
+ dx_a\,dx_a^*=-2i\,d(\operatorname{Re}x_a)\,
+ d(\operatorname{Im}x_a),
 \]
-prove the inverse formula
+show that
 \[
- \kappa(A)=\sum_{\pi\in\Pi(A)}
- (-1)^{|\pi|-1}(|\pi|-1)!\prod_{B\in\pi}m(B).
+ \int dx\,dx^*\,
+ e^{-x^\dagger A x+B^Tx+\widetilde B^Tx^*}
+ =\frac{1}{\det\!\left(\dfrac{iA}{2\pi}\right)}
+ e^{\widetilde B^TA^{-1}B}.
 \]
-\item
-Let two collections of variables \(X\) and \(Y\) be statistically
-independent.  Using a joint generating function, prove that every connected
-moment containing at least one \(X\) and at least one \(Y\) vanishes.
-Relate this result to cluster decomposition.
-\end{enumerate}
+Use this identity to evaluate the normalized Gaussian correlators
+\[
+ \left\langle
+ x_{i_1}\cdots x_{i_M}
+ x^*_{j_1}\cdots x^*_{j_N}
+ \right\rangle_A
+ \equiv
+ \frac{\displaystyle\int dx\,dx^*\,
+ e^{-x^\dagger A x}
+ x_{i_1}\cdots x_{i_M}x^*_{j_1}\cdots x^*_{j_N}}
+ {\displaystyle\int dx\,dx^*\,e^{-x^\dagger A x}}.
+\]
+Prove that the answer vanishes unless \(M=N\), and that when \(M=N\)
+it is the sum over every pairing in which each unstarred variable is joined
+to one starred variable.  State the factor contributed by each joined pair.
+
+The source prints \(j_M\), rather than \(j_N\), as the final starred index
+on the right-hand side of its correlator formula even though its left-hand
+side contains \(N\) starred variables.  Diagnose this mismatch before giving
+the corrected general formula.  For \(M=N=2\), the two allowed arrow
+patterns are
+\[
+\begin{tikzpicture}[baseline=-0.4ex,scale=.78,
+  every node/.style={font=\small},
+  pair/.style={->,>=stealth,thick}]
+ \node (x1) at (0,0.5) {$x_{i_1}$};
+ \node (x2) at (0,-0.5) {$x_{i_2}$};
+ \node (y1) at (2.0,0.5) {$x^*_{j_1}$};
+ \node (y2) at (2.0,-0.5) {$x^*_{j_2}$};
+ \draw[pair] (x1)--(y1);
+ \draw[pair] (x2)--(y2);
+ \node at (2.75,0) {$+$};
+ \node (u1) at (3.5,0.5) {$x_{i_1}$};
+ \node (u2) at (3.5,-0.5) {$x_{i_2}$};
+ \node (v1) at (5.5,0.5) {$x^*_{j_1}$};
+ \node (v2) at (5.5,-0.5) {$x^*_{j_2}$};
+ \draw[pair] (u1)--(v2);
+ \draw[pair] (u2)--(v1);
+\end{tikzpicture}
+\]
 
 \SupplementaryExercise{2}{Generating Connected Contributions and Their Volume Scaling}
   {(Inspired by D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 7.4 | D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 7.5 | D. Harlow, \emph{Quantum Field Theory I}, 2024, Sections 7.4--7.5.)}
@@ -71,32 +105,43 @@ momenta, and \(C\) connected components, prove
 exactly \(C\) independent momentum delta functions remain.
 \end{enumerate}
 
-\SupplementaryExercise{4}{Locality, Singular Support, and Cluster Factorization}
-  {(Inspired by D. Tong, \emph{Lectures on Quantum Field Theory}, 2006, Sections 1.1.4 and 3.4.1 | D. Tong, \emph{Lectures on Quantum Field Theory}, 2006, Section 1.1.4 | D. Tong, \emph{Lectures on Quantum Field Theory}, 2006, Section 3.5.4.)}
-  {tong-qft-connected-2006-curated-parent-2}
-\begin{enumerate}
-\item
-Fourier transform a local interaction
+\SupplementaryExercise{4}{Microcausality, Statistics, and Cluster Decomposition}
+  {(Adapted from D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 6.6, Homework Problem 5.)}
+  {harlow-qft1-2024-s6p6-problem5-v1ch04-s04}
+Suppose that at spacelike separation a nontrivial local field obeys
 \[
- H_I(t)=\frac{\lambda}{4!}\int d^3x\,\phi(\mathbf x,t)^4.
+ \Phi(x)\Phi^\dagger(y)
+ \mathbin{\pm}\Phi^\dagger(y)\Phi(x)=0.
 \]
-Show that each term in momentum space contains one and only one
-three-momentum-conservation delta function.
-\item
-Consider
+Show that the same choice of sign must occur in both of the relations
 \[
- H_{\rm biloc}=\frac12\int d^3x\,d^3y\,
- K(\mathbf x-\mathbf y)\phi(\mathbf x)^2\phi(\mathbf y)^2.
+ \Phi(x)\Phi(y)\mathbin{\pm}\Phi(y)\Phi(x)=0,
+ \qquad
+ \Phi^\dagger(x)\Phi^\dagger(y)
+ \mathbin{\pm}\Phi^\dagger(y)\Phi^\dagger(x)=0
 \]
-Find its momentum-space kernel.  Determine when it contains more singular
-support than one total-momentum delta function, and analyze the special
-case \(K(\mathbf r)=K_0\).
-\item
-For distinguishable particles, expand the \(4\to4\) \(S\)-matrix into
-connected pieces.  Then separate particles \(1,2\) far from \(3,4\) and
-show directly that the surviving terms combine into
-\(S_{1'2',12}S_{3'4',34}\).
-\end{enumerate}
+at spacelike separation.
+
+\emph{Hint.}  Write the first same-field relation provisionally as
+\[
+ \Phi(x)\Phi(y)+s\Phi(y)\Phi(x)=0,
+ \qquad s=\pm1,
+\]
+and determine \(s\) by considering the norm of
+\(\Phi(x)\Phi(y)\ket\Omega\).  You will need the Reeh--Schlieder
+property and the large-separation limit
+\[
+ \left\langle
+ \Phi^\dagger(x)\Phi(x)\Phi^\dagger(y)\Phi(y)
+ \right\rangle
+ \longrightarrow
+ \left\langle\Phi^\dagger(x)\Phi(x)\right\rangle
+ \left\langle\Phi^\dagger(y)\Phi(y)\right\rangle
+ \quad\text{as }(x-y)^2\to+\infty.
+\]
+This is cluster decomposition: connected correlators of local operators
+decay at large separation.  Here it is being applied to the connected
+two-point function of the composite local operator \(\Phi^\dagger\Phi\).
 
 \SupplementaryExercise{5}{Wick's Theorem for Three Fields}
   {(Adapted from B. Mistlberger and K. Zhou, Stanford PHYS-330, Problem Set 4, 2022, Problem 1.)}

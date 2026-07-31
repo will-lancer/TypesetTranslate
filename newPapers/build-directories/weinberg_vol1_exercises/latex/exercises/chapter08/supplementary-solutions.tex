@@ -103,26 +103,141 @@ gives
 The numerator is precisely the polarization sum found in part (c).
 \end{enumerate}
 
-\SupplementarySolution{2}{A Covariant Polarization Replacement}
-For a photon of momentum \(k\), a physical polarization sum can be expressed
-using a reference vector \(n\) as
+\SupplementarySolution{2}{Massless QED with a Pauli Interaction}
+For brevity define
 \[
- P_{\mu\nu}(k,n)=\eta_{\mu\nu}
- +\frac{k_\mu n_\nu+n_\mu k_\nu}{-k\cdot n}
- +\frac{n^2k_\mu k_\nu}{(k\cdot n)^2},
+ C^{\mu\nu}=[\gamma^\mu,\gamma^\nu],
+ \qquad B^{\mu\nu}=\bar\psi C^{\mu\nu}\psi.
 \]
-with convention-dependent overall signs absorbed into the norm of the
-polarizations.  If an amplitude has the form
-\(\mathcal M=e^\mu J_\mu\), gauge invariance gives \(k^\mu J_\mu=0\).
-Every term in \(P_{\mu\nu}-\eta_{\mu\nu}\) then contains a \(k\) contracted
-with \(J\) or \(J^*\), and vanishes.  Consequently
+\begin{enumerate}
+\item
+In four dimensions,
+\([psi]=3/2\), \([A_\mu]=1\), and \([F_{\mu\nu}]=2\).  Hence the
+minimal operator \(\bar\psi\gamma^\mu A_\mu\psi\) has dimension four,
+whereas \(B^{\mu\nu}F_{\mu\nu}\) has dimension five.  Therefore
 \[
- \sum_{\lambda}|\mathcal M_\lambda|^2
- =J^\mu P_{\mu\nu}J^{\nu *}
- =J^\mu\eta_{\mu\nu}J^{\nu *}.
+ \boxed{[e]=0\quad\hbox{(marginal)},\qquad
+ [\lambda]=-1\quad\hbox{(irrelevant)}.}
 \]
-The replacement is valid only after the full conserved current, rather than
-an individual nonconserved diagram, has been assembled.
+This is the classical or engineering classification; quantum running can
+make the marginal coupling logarithmically scale dependent.
+\item
+For \(x'=\Lambda x\),
+\[
+ \psi'(x')=S(\Lambda)\psi(x),\qquad
+ \bar\psi'(x')=\bar\psi(x)S(\Lambda)^{-1},\qquad
+ A'^\mu(x')=\Lambda^\mu{}_{\nu}A^\nu(x),
+\]
+where
+\(S^{-1}\gamma^\mu S=\Lambda^\mu{}_{\nu}\gamma^\nu\).
+Thus \(D_\mu\psi\) is a vector-spinor, \(F_{\mu\nu}\) is an
+antisymmetric tensor, and \(\bar\psi C^{\mu\nu}\psi\) is an
+antisymmetric tensor.  Every index in the Lagrangian is contracted.
+
+The volume gamma matrices obey
+\[
+ \beta^{-1}(\gamma^\mu)^\dagger\beta=-\gamma^\mu,
+ \qquad
+ \beta^{-1}(C^{\mu\nu})^\dagger\beta=-C^{\mu\nu}.
+\]
+The Maxwell term is real, \(iB^{\mu\nu}F_{\mu\nu}\) is Hermitian, and
+the gauge interaction is Hermitian because
+\(\bar\psi\gamma^\mu\psi\) is anti-Hermitian.  Finally,
+\[
+ \left(-\bar\psi\gamma^\mu\partial_\mu\psi\right)^\dagger
+ =-\bar\psi\gamma^\mu\partial_\mu\psi
+ +\partial_\mu(\bar\psi\gamma^\mu\psi).
+\]
+Hence the action is real; the only mismatch in the density is the displayed
+total derivative.
+\item
+Independent variation of \(\bar\psi\) and \(\psi\) gives
+\[
+ \boxed{
+ \gamma^\mu D_\mu\psi-i\lambda C^{\mu\nu}F_{\mu\nu}\psi=0,}
+\]
+\[
+ \boxed{
+ (D_\mu\bar\psi)\gamma^\mu
+ +i\lambda\bar\psi C^{\mu\nu}F_{\mu\nu}=0,}
+ \qquad
+ D_\mu\bar\psi=\partial_\mu\bar\psi-ieA_\mu\bar\psi.
+\]
+Variation of the gauge field, including the derivative inside
+\(F_{\mu\nu}\), yields
+\[
+ \boxed{
+ \partial_\mu F^{\mu\nu}
+ =ie\bar\psi\gamma^\nu\psi
+ +2i\lambda\partial_\mu
+ \left(\bar\psi C^{\mu\nu}\psi\right).}
+\]
+The factor two follows from the antisymmetry of \(C^{\mu\nu}\).
+\item
+For an arbitrary real function \(\Lambda(x)\),
+\[
+ A'_\mu=A_\mu+\partial_\mu\Lambda,
+ \qquad
+ \psi'=e^{-ie\Lambda}\psi,
+ \qquad
+ \bar\psi'=\bar\psi e^{ie\Lambda}.
+\]
+Then \(D'_\mu\psi'=e^{-ie\Lambda}D_\mu\psi\), while
+\(F'_{\mu\nu}=F_{\mu\nu}\); all three terms are locally invariant.
+Taking \(\Lambda\) constant gives the global symmetry.  With the
+unit-normalized infinitesimal transformation
+\(\delta\psi=-i\epsilon\psi\), Noether's theorem gives
+\[
+ \boxed{j^\mu=i\bar\psi\gamma^\mu\psi,qquad
+ Q=\int d^3\mathbf x\,j^0.}
+\]
+Its divergence is
+\[
+ \partial_\mu j^\mu
+ =i\left[(D_\mu\bar\psi)\gamma^\mu\psi
+ +\bar\psi\gamma^\mu D_\mu\psi\right]=0,
+\]
+because the two Pauli terms supplied by the conjugate field equations
+cancel.  Thus \(\dot Q=0\) when the spatial flux vanishes at infinity.
+
+The current sourcing Maxwell's equation is
+\[
+ J_{\rm Max}^\nu
+ =e j^\nu+2i\lambda\partial_\mu B^{\mu\nu}.
+\]
+The second term is an identically conserved magnetization current:
+\(\partial_\nu\partial_\mu B^{\mu\nu}=0\).  Its contribution to the
+integrated charge is a spatial boundary term, so for localized fields
+\(\int d^3\mathbf x\,J_{\rm Max}^0=eQ\), even though the local source
+density is not simply \(e j^0\).
+\item
+Because \(\{\gamma_5,\gamma^\mu\}=0\), the massless kinetic and minimal
+coupling terms are invariant under a constant axial rotation; the adjoint
+transforms as \(\bar\psi\mapsto\bar\psi e^{i\alpha\gamma_5}\).  In
+contrast, \([\gamma_5,C^{\mu\nu}]=0\), so
+\[
+ \bar\psi C^{\mu\nu}\psi
+ \longmapsto
+ \bar\psi C^{\mu\nu}e^{2i\alpha\gamma_5}\psi.
+\]
+For a continuous chiral symmetry one must therefore set
+\[
+ \boxed{\lambda=0.}
+\]
+If a mass term is present, \(\bar\psi\psi\) acquires the same
+\(e^{2i\alpha\gamma_5}\) factor, so one also needs \(m=0\).
+
+For \(\alpha=\alpha(x)\), the kinetic term produces
+\[
+ \delta\mathcal L
+ =-i(\partial_\mu\alpha)
+ \bar\psi\gamma^\mu\gamma_5\psi.
+\]
+A variation of the existing vector gauge field couples instead to
+\(\bar\psi\gamma^\mu\psi\); adjusting \(e\) or \(\lambda\) cannot cancel
+the axial current.  A new axial gauge field would be required, so no
+choice of the two displayed couplings makes this chiral symmetry local.
+\end{enumerate}
 
 \SupplementarySolution{3}{Electron--Positron Annihilation to Muons}
 \begin{enumerate}
@@ -572,71 +687,43 @@ invariant.  The canonical variables transform as
 so the phase-space form of \(j^\mu\) is gauge invariant as well.
 \end{enumerate}
 
-\SupplementarySolution{6}{Coulomb Exchange and Tree-Level Gauge Independence}
-\begin{enumerate}
-\item
-For momentum transfer \(q^\mu\simeq(0,\mathbf q)\), each scalar current is
-dominated by its temporal component,
-\((p+p')^0\simeq2m\).  One-photon exchange therefore has the
-nonrelativistic form
+\SupplementarySolution{6}{Magnetic Flux, Holonomy, and Dirac Quantization}
+The field strength is the intrinsic two-form
 \[
- \mathcal M_{\rm NR}\simeq
- \frac{4m_1m_2q_1q_2}{\mathbf q^2}.
+ F=dA=(\partial_\theta A_\varphi)\,d\theta\wedge d\varphi
+ =\frac{n}{2e}\sin\theta\,d\theta\wedge d\varphi.
 \]
-Removing the external relativistic normalizations, the Born potential in
-momentum space is
+It is proportional to the area form on the unit sphere, so the radial
+magnetic flux density is constant.  Its total flux is
 \[
- \widetilde V(\mathbf q)=\frac{q_1q_2}{\mathbf q^2}.
+ \boxed{
+ \int_{S^2}F
+ =\frac{n}{2e}\int_0^\pi d\theta\,\sin\theta
+ \int_0^{2\pi}d\varphi
+ =\frac{2\pi n}{e}.}
 \]
-Using
-\(\int d^3q\,e^{i\mathbf q\cdot\mathbf r}/[(2\pi)^3\mathbf q^2]
-=1/(4\pi r)\) gives
+Along a latitude, \(A_\varphi\) is constant, and hence
 \[
- V(r)=\frac{q_1q_2}{4\pi r}.
+ \boxed{h(\theta)=-\frac{\pi n}{e}(1+\cos\theta).}
 \]
-It is positive and repulsive for equal signs and negative and attractive
-for opposite signs.  The conclusion is independent of the scalar spin.
-\item
-Suppressing constants, the two diagrams contain
+At the south pole, \(\theta=\pi\), this is zero.  At the north pole,
+\(\theta=0\), the coordinate circle also shrinks to a point but
 \[
- \bar u(p')\left[
- \slashed e^{\prime *}S_F(p+k)\slashed e
- +\slashed e\,S_F(p-k')\slashed e^{\prime *}
- \right]u(p).
+ h(0)=-\frac{2\pi n}{e}.
 \]
-Set \(e^\mu\to k^\mu\).  The elementary identity
+The gauge potential is singular in this patch at that pole; the
+gauge-invariant Wilson line must nevertheless become the identity:
 \[
- \slashed k=S_F^{-1}(p+k)-S_F^{-1}(p)
+ W(0)=e^{ieh(0)}=e^{-2\pi i n}=1.
 \]
-turns the first term into
-\(\bar u(p')\slashed e^{\prime *}u(p)\), because
-\(S_F^{-1}(p)u(p)=0\).  Momentum conservation gives the crossed identity
-\(\slashed k=S_F^{-1}(p')-S_F^{-1}(p-k')\); using
-\(\bar u(p')S_F^{-1}(p')=0\), the second graph becomes the negative of
-the first.  Thus their sum vanishes.  Gauge invariance belongs to the sum
-of orderings.
-\item
-The covariant-gauge propagator may be written
+Therefore
 \[
- D_{\mu\nu}(k)=\frac{-i}{k^2+i0}
- \left[
- \eta_{\mu\nu}-(1-\xi)\frac{k_\mu k_\nu}{k^2+i0}
- \right].
+ \boxed{n\in\mathbb Z.}
 \]
-Between two currents the gauge-dependent part of the amplitude is
-proportional to
-\[
- (1-\xi)\frac{(k\cdot J_1)(k\cdot J_2)}{(k^2+i0)^2}.
-\]
-For an on-shell fermion current,
-\[
- k_\mu\bar u(p')\gamma^\mu u(p)
- =\bar u(p')(\slashed p'-\slashed p)u(p)=0
-\]
-by the Dirac equations, so this term vanishes.  A truncated set of diagrams,
-an explicitly nonconserved source, or an interaction that violates the
-Ward identity would invalidate the conclusion.
-\end{enumerate}
+Equivalently, the magnetic flux is quantized in units of \(2\pi/e\).
+The apparent nonzero holonomy of a vanishing contour records the
+nontrivial transition function between gauge patches, not a physical
+singularity of the field strength.
 
 \SupplementarySolution{7}{The Gupta--Bleuler Physical Space and Residual Gauge Modes}
 \begin{enumerate}

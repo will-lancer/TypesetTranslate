@@ -293,26 +293,67 @@ p_{1\mu}p_{2\nu}p_{3\rho}p_{4\sigma}.
 \]
 \end{enumerate}
 
-\SupplementaryExercise{8}{The Clifford Representation of the Lorentz Algebra}
-  {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 2.)}
-  {tong-qft-sheet3-2006-curated-parent-2}
-Starting only from the Clifford algebra, prove
+\SupplementaryExercise{8}{Finite Rotations and Boosts of Dirac Spinors}
+  {(Adapted from University of Cambridge, Part III Quantum Field Theory, Paper 301, 2023, Question 3.)}
+  {cambridge-partiii-qft-2023-p301-q3-v1ch05-s08}
+Define the Dirac-spinor representation of the proper orthochronous Lorentz
+group.  In particular, give the spinor representative \(S[\Lambda]\) when
 \[
-\begin{split}
-[\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
-={}&2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
--2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu\\
-&+2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
--2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda.
-\end{split}
+ \Lambda=\exp\!\left(\frac12\Omega_{\rho\sigma}M^{\rho\sigma}\right),
+ \qquad \Omega_{\rho\sigma}=-\Omega_{\sigma\rho},
 \]
-Then show
+and the vector-representation generators are
 \[
- S^{\mu\nu}\equiv\frac14[\gamma^\mu,\gamma^\nu]
- =\frac12(\gamma^\mu\gamma^\nu-\eta^{\mu\nu}),
+ (M^{\rho\sigma})^{\mu\nu}
+ =\eta^{\rho\mu}\eta^{\sigma\nu}
+ -\eta^{\sigma\mu}\eta^{\rho\nu}.
 \]
-and use the first identity to verify that \(S^{\mu\nu}\) furnish a
-spinor representation of the Lorentz Lie algebra.
+Using a suitable representation of the Dirac matrices, calculate
+\(S[\Lambda]\) explicitly for
+\[
+ R(\varphi)=
+ \begin{pmatrix}
+ 1&0&0&0\\
+ 0&\cos\varphi&\sin\varphi&0\\
+ 0&-\sin\varphi&\cos\varphi&0\\
+ 0&0&0&1
+ \end{pmatrix},
+ \qquad
+ B(\beta)=
+ \begin{pmatrix}
+ \cosh\beta&\sinh\beta&0&0\\
+ \sinh\beta&\cosh\beta&0&0\\
+ 0&0&1&0\\
+ 0&0&0&1
+ \end{pmatrix}.
+\]
+Find \(S[R(2\pi)]\) and explain the significance of the result.
+
+For the final part, use the local mostly-plus Weyl basis
+\[
+ \gamma^0=-i\begin{pmatrix}0&\mathbf1\\ \mathbf1&0\end{pmatrix},
+ \qquad
+ \gamma^i=-i\begin{pmatrix}0&\sigma^i\\-\sigma^i&0\end{pmatrix}.
+\]
+A positive-frequency spinor may then be written as
+\[
+ u(p)=
+ \begin{pmatrix}
+ \sqrt{E\mathbf1-\mathbf p\cdot\boldsymbol\sigma}\,\xi\\[2pt]
+ \sqrt{E\mathbf1+\mathbf p\cdot\boldsymbol\sigma}\,\xi
+ \end{pmatrix},
+ \qquad \xi\in\mathbb C^2.
+\]
+Compare this spinor in the rest frame
+\(p_1=(m,0,0,0)\) and in the boosted frame
+\(p_2=(m\cosh\beta,m\sinh\beta,0,0)\).  Show directly that
+\[
+ u(p_2)=S[B(\beta)]u(p_1).
+\]
+The source uses the mostly-minus metric; all metric, gamma-matrix, and
+factor-of-\(i\) conventions above have been translated to those of this
+volume, while its two Lorentz matrices and all requested calculations are
+unchanged.
 
 \SupplementaryExercise{9}{Dirac Spinor Norms and Orthogonality}
   {(Adapted from D. Tong, \emph{Quantum Field Theory: Example Sheet 3}, 2006, Problem 4.)}
@@ -519,24 +560,25 @@ suitable Lorentz frame, and explain why the separate positive-frequency
 function does not vanish.
 \end{enumerate}
 
-\SupplementaryExercise{16}{CPT, Local Interactions, and Spin--Statistics}
-  {(Inspired by D. Harlow, \emph{Lecture Notes for Physics 8.323}, 2024, Section 6.1, pp. 69--71 | D. Harlow, \emph{Lecture Notes for Physics 8.323}, 2024, Section 6.2, pp. 71--74.)}
-  {harlow-qft1-fields-2024-curated-parent-2}
-\begin{enumerate}
-\item
-Let \(\Theta\) be antiunitary and implement CPT on local fields.  Show how a
-vacuum correlator transforms, including complex conjugation and reversal of
-operator order.  Explain why locality is needed to compare the transformed
-correlator with the original one.
-\item
-Using the CPT rules for scalar, vector, and Dirac bilinears, prove that a
-local Hermitian Lorentz-scalar interaction density satisfies
-\(\Theta\mathcal H_I(x)\Theta^{-1}=\mathcal H_I(-x)\).
-Deduce invariance of \(H_I(0)\).
-\item
-For a covariant free field of spin \(j\), compare its two-point function at
-spacelike-separated points before and after a rotation that exchanges the
-points.  Show how positivity and locality require the exchange sign
-\((-1)^{2j}\), and state the resulting statistics assignment.
-\end{enumerate}
+\SupplementaryExercise{16}{Wigner's Characterization of Antiunitary Operators}
+  {(Adapted from D. Harlow, \emph{Quantum Field Theory I}, 2024, Section 4.7, Homework Problem 7.)}
+  {harlow-qft1-2024-s4p7-problem7-v1ch05-s16}
+Let \(\Theta\) be an antiunitary operator.  First show that \(\Theta^2\)
+is unitary.  There is consequently a basis \(\{\ket i\}\) in which
+\[
+ \Theta^2\ket i=e^{-2i\theta_i}\ket i,
+ \qquad
+ (\Theta^\dagger)^2\ket i=(\Theta^2)^\dagger\ket i
+ =e^{2i\theta_i}\ket i,
+ \qquad
+ \theta_i\in\left(-\frac\pi2,\frac\pi2\right].
+\]
+Determine how \(\Theta\) and \(\Theta^\dagger\) act in such a basis, and
+then use antilinearity to determine their action on arbitrary
+superpositions.
+
+\emph{Hint.}  Up to rephasing, the basis can be chosen to consist of states
+that are invariant under \(\Theta\) and pairs of states that \(\Theta\)
+exchanges up to a phase.  Begin by proving that \(\Theta\ket i\) is also an
+eigenstate of \(\Theta^2\).
 \end{enumerate}

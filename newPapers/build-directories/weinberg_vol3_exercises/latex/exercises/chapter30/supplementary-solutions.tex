@@ -1,125 +1,193 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Superspace Delta Functions and Chiral Projection}
-  \begin{enumerate}
-    \item \emph{Grassmann Delta Saturation.}
-    Choose a leaf of the tree and call its adjacent vertex \(v\).  The
-      corresponding propagator contains
-      \(\delta^4(\theta_{\rm leaf}-\theta_v)\), so integration over the leaf
-      coordinate simply replaces it by \(\theta_v\).  Repeating this operation
-      removes one vertex and one delta function at each step, leaving
-      \[
-        \int d^4\theta\,\mathcal I(\theta)
-      \]
-      at the final vertex.  This proves the assertion by induction on the
-      number of vertices.  A line that closes a loop supplies another
-      \(\delta^4(\theta-\theta')\) after the two coordinates have already
-      been identified.  Its undifferentiated value is
-      \(\delta^4(0)=0\), because a fermionic delta function is a product of
-      four Grassmann differences.  A nonzero loop therefore requires four
-      spinor derivatives, distributed by the \(D\)-algebra, to saturate that
-      remaining delta function.
-    \item \emph{Chiral Projection Test.}
-    The algebra quoted below Eq.~\eqref{eq:30.2.16} gives
-      \[
-        \mathcal D_R^2\mathcal D_L^2\mathcal D_R^2
-          =-16\Box\mathcal D_R^2 .
-      \]
-      Hence
-      \[
-        \mathcal P_L^2
-          =\frac{\mathcal D_L^2
-            (\mathcal D_R^2\mathcal D_L^2\mathcal D_R^2)}
-            {(16\Box)^2}
-          =-\frac{\mathcal D_L^2\mathcal D_R^2}{16\Box}
-          =\mathcal P_L .
-      \]
-      Three right-handed superderivatives vanish by antisymmetry, so
-      \(\mathcal D_R\mathcal P_L=0\); the image is left-chiral.
-      The inverse \(\Box^{-1}\) is defined with a boundary prescription on
-      modes of nonzero four-momentum.  Harmonic or exactly zero-momentum modes
-      lie in the kernel of \(\Box\) and must either be fixed separately or
-      removed from the projected function space.
-    \item \emph{Potential-Field Redundancy.}
-    Since there are only two independent right-handed Grassmann
-      derivatives,
-      \[
-        \delta\Phi=\mathcal D_R^2\mathcal D_RX=0.
-      \]
-      Thus \(S\) contains a redundancy analogous to the longitudinal part of
-      an ordinary vector potential.  Couple it to a source through
-      \(I_J=\int d^4x\,d^4\theta\,SJ+\mathrm{H.c.}\).  Superspace integration
-      by parts gives
-      \[
-        \delta I_J
-          =\int d^4x\,d^4\theta\,(\mathcal D_RX)J
-          =-\int d^4x\,d^4\theta\,X\mathcal D_RJ
-      \]
-      for bosonic \(X\).  Invariance for arbitrary \(X\) therefore requires
-      \(\mathcal D_RJ=0\).  Equivalently, only the projected chiral part of a
-      source couples to the physical combination \(\Phi=\mathcal D_R^2S\).
-  \end{enumerate}
+  \SupplementarySolution{1}{Chiral and Fermi Multiplets in \texorpdfstring{\((0,2)\)}{(0,2)} Superspace}
+  Write \(\theta=\theta^+\), \(\bar\theta=\bar\theta^+\), and
+  \(\partial_+=\partial/\partial x^+\).  With the barred Berezin-derivative
+  convention used in the question, \(\bar D_+\) becomes
+  \(-\partial/\partial\bar\theta\) at fixed
+  \(y^+=x^++i\theta\bar\theta\).  Hence a chiral multiplet is
+  \[
+    \Phi^i(y,\theta)=\phi^i(y)+\sqrt2\,\theta\psi_+^i(y),
+  \]
+  or, in the original coordinates,
+  \[
+    \Phi^i(x,\theta,\bar\theta)
+      =\phi^i+\sqrt2\,\theta\psi_+^i
+       +i\theta\bar\theta\,\partial_+\phi^i.
+  \]
+  A convenient kinetic action is
+  \[
+    S_1=-\frac{i}{2}\int d^2x\,d\theta\,d\bar\theta\,
+       \bar\Phi_i\partial_-\Phi^i .
+  \]
+  After one integration by parts, and up to the conventional normalization
+  of the light-cone coordinates, its component Lagrangian is
+  \[
+    \mathcal L_1
+      =-\partial_\mu\bar\phi_i\partial^\mu\phi^i
+       +i\bar\psi_{+i}\partial_-\psi_+^i.
+  \]
 
-  \SupplementarySolution{2}{Projectors, Gauge Fixing, and Propagator Kernels}
-  \begin{enumerate}
-    \item \emph{Projector Completeness.}
-    The proof of \(\mathcal P_L^2=\mathcal P_L\) was given in
-      Supplementary Exercise S.30.1, part (b); complex conjugation gives
-      \(\mathcal P_R^2=\mathcal P_R\).  Products such as
-      \(\mathcal P_L\mathcal P_R\) contain three consecutive derivatives of
-      one chirality and vanish.  Consequently
-      \[
-        \mathcal P_T^2
-          =(\mathbf{1}-\mathcal P_L-\mathcal P_R)^2
-          =\mathcal P_T,\qquad
-        \mathcal P_T\mathcal P_L
-          =\mathcal P_T\mathcal P_R=0,
-      \]
-      while their sum is the identity by definition.  Under
-      \(V\to V+\Omega+\Omega^*\), a chiral \(\Omega\) belongs to the image of
-      \(\mathcal P_L\) and \(\Omega^*\) to that of \(\mathcal P_R\).  Thus
-      \(\mathcal P_TV\) is the gauge-invariant sector.
-    \item \emph{Weighted Vector Gauge.}
-    Orthogonality makes the inversion algebraic on the three projected
-      subspaces.  The inverse kernel is
-      \[
-        \Delta_\alpha^V
-          =-\frac1{\Box}
-           \left[
-             \mathcal P_T+\alpha(\mathcal P_L+\mathcal P_R)
-           \right]\delta^8(z-z').
-      \]
-      Multiplication by the stated quadratic operator gives
-      \(\mathcal P_T+\mathcal P_L+\mathcal P_R=\mathbf{1}\).  If
-      \(J=\mathcal P_TJ\) and \(J'=\mathcal P_TJ'\), then
-      \[
-        J\Delta_\alpha^VJ'
-          =-\frac1{\Box}J\mathcal P_TJ',
-      \]
-      because both longitudinal projectors annihilate either source.
-      Therefore physical amplitudes are independent of \(\alpha\), although
-      off-shell Green functions of \(V\) need not be.
-    \item \emph{Massive Chiral Kernel.}
-    In the basis \((\Phi,\Phi^*)\), the diagonal entries of the quadratic
-      kernel are the chiral mass insertions \(m,m^*\), while the off-diagonal
-      entries are the projected kinetic operator.  Multiplying the kernel by
-      its conjugate block form diagonalizes it and produces
-      \(\Box-|m|^2\).  Thus the mixed propagator has the structure
-      \[
-        \Delta_{\Phi\Phi^*}
-          =\frac14\mathcal D_R^2\mathcal D_L^{\prime\,2}
-           \Delta_{F,m}(x-x')\delta^4(\theta-\theta'),
-        \qquad
-        (\Box-|m|^2)\Delta_{F,m}=-\delta^4 ,
-      \]
-      while the same-chirality kernels contain \(m\mathcal D_R^2\) or
-      \(m^*\mathcal D_L^2\) divided by the same operator.  Every component
-      therefore has the common momentum-space denominator
-      \(p^2+|m|^2-i\epsilon\), displaying equal scalar and fermion masses;
-      the auxiliary component still contributes only numerator contact
-      pieces in addition to this pole.
-  \end{enumerate}
+  It is useful to put the remaining formulae in canonical \((0,2)\)
+  normalization by defining
+  \[
+    E_a(\Phi)=\frac{f_a(\Phi)}{\sqrt2},
+    \qquad \mathcal J^a(\Phi)=\sqrt2\,J^a(\Phi).
+  \]
+  The constraint is then \(\bar D_+\Lambda_{-a}=\sqrt2 E_a\), and its
+  complete solution is
+  \[
+    \Lambda_{-a}(y,\theta,\bar\theta)
+      =\lambda_{-a}(y)-\sqrt2\,\theta G_a(y)
+       -\sqrt2\,\bar\theta E_a\bigl(\Phi(y,\theta)\bigr).
+  \]
+  Thus
+  \[
+    \Lambda_{-a}
+      =\lambda_{-a}-\sqrt2\,\theta G_a-\sqrt2\,\bar\theta E_a
+       +i\theta\bar\theta\,\partial_+\lambda_{-a}
+       +2\theta\bar\theta\,E_{a,i}\psi_+^i,
+    \qquad E_{a,i}=\frac{\partial E_a}{\partial\phi^i}.
+  \]
+  Direct substitution in \(S_2\) gives, after a harmless integration by
+  parts,
+  \[
+    \mathcal L_2
+      =i\bar\lambda_{-a}\partial_+\lambda_{-a}
+       +\bar G_aG_a-|E_a|^2
+       -\bar\lambda_{-a}E_{a,i}\psi_+^i
+       -\bar\psi_+^{\bar\imath}\bar E_{a,\bar\imath}\lambda_{-a}.
+  \]
+  The complex scalar \(G_a\), and only \(G_a\), is an independent auxiliary
+  component of \(\Lambda_{-a}\).  The coefficient of \(\bar\theta\) is fixed
+  by the constraint rather than being independent.
+
+  In the canonical notation the chiral interaction is
+  \[
+    S_3=-\frac1{\sqrt2}\left(
+       \int d^2y\,d\theta\,\Lambda_{-a}\mathcal J^a(\Phi)
+       +\text{complex conjugate}\right).
+  \]
+  Its component terms are, up to the common fermion-ordering convention,
+  \[
+    \mathcal L_3
+      =G_a\mathcal J^a
+       -\lambda_{-a}\psi_+^i\mathcal J^a{}_{,i}
+       +\text{complex conjugate}.
+  \]
+  The integrand of the half-superspace integral must itself be chiral.  Since
+  \[
+    \bar D_+\bigl(\Lambda_{-a}J^a(\Phi)\bigr)
+       =f_a(\Phi)J^a(\Phi),
+  \]
+  supersymmetry requires the holomorphic identity
+  \[
+    \boxed{\ \sum_a f_a(\Phi)J^a(\Phi)=0\ }
+    \qquad\text{or, equivalently,}\qquad
+    \sum_aE_a\mathcal J^a=0.
+  \]
+  Finally, \(G_a=-\overline{\mathcal J}^{\,a}\) (with the displayed
+  auxiliary-field convention), and the scalar potential is the sum of
+  squares
+  \[
+    V(\phi,\bar\phi)
+      =\sum_a\left(|E_a(\phi)|^2+|\mathcal J^a(\phi)|^2\right)
+      =\sum_a\left(\frac12|f_a(\phi)|^2+2|J^a(\phi)|^2\right).
+  \]
+  Rescaling the Fermi auxiliary field and calling the canonically normalized
+  functions themselves \(f_a,J^a\) gives the frequently used form
+  \(V=\sum_a(|f_a|^2+|J^a|^2)\); the invariant content is the positive sum of
+  the \(E\)- and \(J\)-squares.
+
+  \SupplementarySolution{2}{Nilpotent and Orthogonally Constrained Chiral Superfields}
+  Chirality means
+  \[
+    \bar D_{\dot\alpha}\Phi=0.
+  \]
+  In the chiral coordinates of the question its general solution is
+  \[
+    \Phi(y,\theta)=\phi(y)+\sqrt2\,\theta\psi(y)+\theta^2F(y).
+  \]
+  Taylor expansion about \(x\) gives
+  \[
+  \begin{split}
+    \Phi(x,\theta,\bar\theta)={}&\phi
+      +i\theta\sigma^\mu\bar\theta\,\partial_\mu\phi
+      +\frac14\theta^2\bar\theta^2\Box\phi
+      +\sqrt2\,\theta\psi+\theta^2F\\
+      &-\frac{i}{\sqrt2}\theta^2
+        \partial_\mu\psi\,\sigma^\mu\bar\theta .
+  \end{split}
+  \]
+  The signs in this expression follow the barred-derivative convention
+  displayed in the question.
+
+  Write
+  \[
+    X=x+\sqrt2\,\theta G+\theta^2F_X,
+  \]
+  where \(G_\alpha\) is the goldstino candidate.  The three component
+  equations in \(X^2=0\) are
+  \[
+    x^2=0,\qquad xG_\alpha=0,\qquad 2xF_X-GG=0.
+  \]
+  On the nontrivial branch \(F_X\ne0\), they are solved by
+  \[
+    \boxed{\ x=\frac{GG}{2F_X}\ },
+  \]
+  while \(G_\alpha\) and \(F_X\) remain independent.  Thus the scalar is a
+  goldstino bilinear, not an independent field.
+
+  Analyticity and \(X^2=0\) truncate the most general functions to
+  \[
+    W(X)=W_0+fX,
+    \qquad
+    K(X,\bar X)=K_0+aX+\bar a\bar X+Z X\bar X,
+    \qquad Z>0.
+  \]
+  In rigid supersymmetry a K\"ahler transformation removes the linear terms,
+  and a field rescaling may set \(Z=1\).  At zero fermion fields,
+  \[
+    F_X=-\frac{\bar f}{Z},
+    \qquad
+    V_X=K^{X\bar X}|W_X|^2=\frac{|f|^2}{Z}.
+  \]
+  Therefore \(f\ne0\) forces \(F_X\ne0\): supersymmetry is spontaneously
+  broken and \(G_\alpha\) is the goldstino.  This is also the branch on which
+  the nilpotent solution above is nonsingular.
+
+  For
+  \[
+    Y=y+\sqrt2\,\theta\chi+\theta^2F_Y,
+  \]
+  the constraint \(XY=0\) gives
+  \[
+    xy=0,\qquad x\chi_\alpha+yG_\alpha=0,
+    \qquad xF_Y+yF_X-G\chi=0.
+  \]
+  Substituting the nilpotent solution for \(x\), all three equations are
+  solved by
+  \[
+    \boxed{\ y=\frac{G\chi}{F_X}
+      -\frac{GG}{2F_X^2}F_Y\ }.
+  \]
+  Hence \(\chi_\alpha\) and \(F_Y\) remain independent, while the scalar of
+  \(Y\) is again composite.  Modulo \(X^2=XY=0\) and their conjugates, the
+  most general analytic superpotential and real K\"ahler potential are
+  \[
+    W(X,Y)=W_0(Y)+fX,
+  \]
+  \[
+    K(X,Y,\bar X,\bar Y)
+      =K_0(Y,\bar Y)+X A(\bar Y)+\bar X\,\bar A(Y)+Z X\bar X.
+  \]
+  Here \(W_0\) and \(A\) are arbitrary holomorphic or antiholomorphic
+  functions of their displayed arguments, \(K_0\) is an arbitrary real
+  function, and constant pieces removable by a K\"ahler transformation are
+  understood.  Terms \(X Y^n\), \(\bar X\bar Y^n\), and
+  \(X\bar X Y^m\bar Y^n\) with \(m+n>0\) vanish by the constraints, which is
+  why no further independent functions occur.
 
   \SupplementarySolution{3}{D-Algebra in a One-Loop Supergraph}
   \begin{enumerate}
@@ -177,42 +245,77 @@
       boson--fermion cancellation manifest.
   \end{enumerate}
 
-  \SupplementarySolution{4}{Spurion Holomorphy and Perturbative Non-Renormalization}
-Give each \(\Phi^i\) arbitrary formal flavor charges \(q_i\) and
-  \(R\)-charges \(r_i\).  Invariance is restored by assigning
+  \SupplementarySolution{4}{The Wess--Zumino Model and Non-Renormalization}
+  The superspace Lagrangian is
   \[
-    q(m_{ij})=-q_i-q_j,\qquad
-    R(m_{ij})=2-r_i-r_j,
+    \mathcal L
+      =\int d^4\theta\,\Phi^\dagger\Phi
+       +\left[\int d^2\theta\left(
+          \frac m2\Phi^2+\frac g3\Phi^3\right)+\mathrm{H.c.}\right].
   \]
-  and
+  For a general superpotential, the \(\theta^2\) component is
   \[
-    q(y_{ijk})=-q_i-q_j-q_k,\qquad
-    R(y_{ijk})=2-r_i-r_j-r_k.
+    \bigl.W(\Phi)\bigr|_{\theta^2}
+      =F W'(\phi)-\frac12W''(\phi)\psi\psi.
   \]
-  The couplings can therefore be treated as chiral backgrounds without
-  changing the symmetry bookkeeping.
+  Consequently the terms involving \(F\), together with the Yukawa term,
+  are
+  \[
+  \begin{split}
+    \mathcal L_{F,\mathrm{Yuk}}={}&F^*F
+      +F(m\phi+g\phi^2)+F^*(m^*\phi^*+g^*\phi^{*2})\\
+      &-\frac12(m+2g\phi)\psi\psi
+       -\frac12(m^*+2g^*\phi^*)\bar\psi\bar\psi .
+  \end{split}
+  \]
+  The algebraic field equations are
+  \[
+    F^*=-(m\phi+g\phi^2),
+    \qquad
+    F=-(m^*\phi^*+g^*\phi^{*2}).
+  \]
+  Eliminating \(F\) therefore gives
+  \[
+    \mathcal L_F\big|_{\mathrm{on\ shell}}=-V(\phi,\phi^*),
+    \qquad
+    \boxed{\ V=|m\phi+g\phi^2|^2\ }.
+  \]
+  This is manifestly positive semidefinite.  Its supersymmetric vacua obey
+  \(\phi(m+g\phi)=0\).
 
-  A Wilsonian \(F\)-term must be a local holomorphic function of the
-  chiral fields and chiral spurions, have mass dimension three, and
-  have \(R\)-charge two.  The formal flavor symmetries exclude terms
-  with unmatched indices or inverse powers that are singular at weak
-  coupling.  Analyticity around \(m=y=0\), together with the limit in
-  which each interaction is turned off, fixes the allowed coefficients
-  to their tree values.  Thus, perturbatively,
+  Expanding about the vacuum \(\phi=0\),
   \[
-    W_{\rm Wilsonian}=W_{\rm tree}.
+    V=|m|^2|\phi|^2
+      +m g^*\phi\phi^{*2}+m^*g\phi^*\phi^2
+      +|g|^2|\phi|^4,
   \]
-  The same argument allows renormalization of the real \(D\)-term
+  while the fermion bilinear is
+  \(-m\psi\psi/2+\mathrm{H.c.}\).  Thus the Weyl fermion and the two real
+  components of \(\phi\) all have mass \(|m|\), as required by unbroken
+  supersymmetry.  The interaction
   \[
-    \int d^4\theta\,
-       Z_i{}^j(\mu)\,\Phi^{\dagger i}\Phi_j .
+    -g\phi\psi\psi+\mathrm{H.c.}
   \]
-  On rescaling to canonical fields, \(m\) and \(y\) acquire the
-  corresponding anomalous-dimension factors.  Hence physical
-  parameters run even though the holomorphic Wilsonian
-  superpotential does not.  Finally, massless propagation can make the
-  1PI action nonlocal; apparent chiral terms generated by infrared
-  singularities do not contradict the local Wilsonian statement.
+  has Yukawa strength \(g\), and the scalar quartic has coefficient
+  \(|g|^2\).  The quartic coupling is therefore fixed by the absolute square
+  of the Yukawa coupling rather than being an independent parameter.  The
+  same conclusions hold after shifting to the second supersymmetric vacuum
+  \(\phi=-m/g\).
+
+  Perturbative non-renormalization may be seen directly in supergraphs.
+  Chiral vertices carry \(d^2\theta\), antichiral vertices carry
+  \(d^2\bar\theta\), and propagators carry superspace delta functions and
+  supercovariant derivatives.  Performing the \(D\)-algebra around a loop
+  leaves any local ultraviolet counterterm with a full \(d^4\theta\) measure.
+  Such terms renormalize the K\"ahler potential, in particular the
+  wavefunction factor \(Z(\mu)\Phi^\dagger\Phi\), but they cannot produce a
+  new local \(d^2\theta\) superpotential term.  Equivalently, if \(m\) and
+  \(g\) are regarded as background chiral spurions, holomorphy, the formal
+  flavor and \(R\)-symmetries, dimensional analysis, and regularity at weak
+  coupling restrict the Wilsonian superpotential to its tree form.
+  Canonically normalized masses and Yukawa couplings can nevertheless run
+  through \(Z(\mu)\); this wavefunction renormalization does not contradict
+  the theorem.
 
   \SupplementarySolution{5}{Tensor Beta Functions for Superpotential Operators}
   \begin{enumerate}

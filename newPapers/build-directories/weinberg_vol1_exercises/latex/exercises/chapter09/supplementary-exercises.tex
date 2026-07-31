@@ -27,25 +27,37 @@ the correct kinetic and potential terms.  Track the Gaussian moments that
 survive through first order and state how the endpoint prescription for the
 potential enters the result.
 
-\SupplementaryExercise{3}{The Free Kernel, Composition, and Dirichlet Fluctuations}
-  {(Inspired by Hong Liu and MIT OpenCourseWare, 8.323 Assignment 5, Problem 3 | Hong Liu and MIT OpenCourseWare, 8.323 Assignment 5, Problems 3--4 | Hong Liu and MIT OpenCourseWare, 8.323 Assignment 5, Problem 4.)}
-  {mit-823-s23-ps5-ch9-curated-parent-3}
-\begin{enumerate}
-\item
-Evaluate the time-sliced path integral of a free particle by successive
-Gaussian integration.  Obtain the exact kernel, and check both its
-short-time delta-function limit and its physical dimensions.
-\item
-Assume the free kernel has its classical exponential but an unknown
-time-dependent prefactor.  Use the composition law at an intermediate time
-to determine the functional dependence of the prefactor and fix its phase
-from the short-time limit.
-\item
-Expand a free-particle path with fixed endpoints about its classical path.
-Find the eigenfunctions and eigenvalues of the quadratic fluctuation
-operator with Dirichlet boundary conditions, and explain how its determinant
-produces the \(T^{-1/2}\) kernel scaling.
-\end{enumerate}
+\SupplementaryExercise{3}{The Harmonic-Oscillator Propagator from the Path Integral}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.323: Relativistic Quantum Field Theory I} (2024), Section 5.8, Homework Problem 3, printed p.~68.)}
+  {harlow-qft1-2024-s5p8-problem3-v1ch09-s03}
+Use the path integral to calculate the propagator
+\[
+ K_\omega(q',T;q,0)=\braket{q'}{e^{-iHT}q}
+\]
+of the simple harmonic oscillator
+\[
+ H=\frac{P^2}{2m}+\frac{k}{2}Q^2,
+ \qquad \omega=\sqrt{\frac{k}{m}},
+ \qquad T>0.
+\]
+The endpoints are fixed: \(q(0)=q\) and \(q(T)=q'\).  For comparison, the
+preceding free-particle problem gives
+\[
+ K_0(q',T;q,0)
+ =\sqrt{\frac{m}{2\pi iT}}
+ \exp\left[\frac{im(q'-q)^2}{2T}\right],
+\]
+where the square-root phase is selected by the short-time
+\(i0\) prescription.
+
+Write each path as a classical solution plus a fluctuation,
+\(q(t)=q_{\rm cl}(t)+\eta(t)\), with
+\(\eta(0)=\eta(T)=0\).  Expand \(\eta\) in its complete Fourier sine
+series and perform the Gaussian integrals over all mode coefficients.
+You may first keep only factors that depend on \(k\); fix every
+\(k\)-independent factor at the end by requiring the result to approach
+the displayed free-particle kernel as \(k\to0\).  Determine both the full
+classical exponential and the determinant prefactor.
 
 \SupplementaryExercise{4}{The Cubic Anharmonic Oscillator through Order \(\lambda^2\)}
   {(Adapted from University of Cambridge, Mathematical Tripos Part III,
@@ -203,20 +215,70 @@ the equal-time covariance of two field modes.  Fix the normalization as a
 regulated product of oscillator normalizations and identify which part
 survives in normalized expectation values.
 
-\SupplementaryExercise{9}{Vacuum Boundaries and the Normalized Ratio and No-Production Probability from a Source}
-  {(Inspired by Hong Liu and MIT OpenCourseWare, 8.323 Assignment 6, introductory notes | Hong Liu and MIT OpenCourseWare, 8.323 Assignment 6, Problem 1.)}
-  {mit-823-s23-ps6-ch9-curated-parent-1}
+\SupplementaryExercise{9}{Schwinger--Dyson Equations from Functional Integration by Parts}
+  {(Adapted from J. McGreevy, Physics 215A Quantum Field Theory, Fall 2023, Assignment 5, Problem 3, printed pp.~2--3.)}
+  {mcgreevy-215a-f23-hw05-p3-v1ch09-s09}
+Consider the Lorentzian path integral
+\[
+ Z=\int\mathcal D\phi\,e^{iS[\phi]},
+\]
+defined with the usual \(i0\) prescription.  Invariance of the measure
+under a change of field variable implies
+\[
+ 0=\int\mathcal D\phi\,
+ \frac{\delta}{\delta\phi(x)}\bigl(\hbox{anything}\bigr),
+\]
+provided the differentiated expression has no boundary contribution at
+large field.  To explain this rather than merely assume it, discretize
+spacetime.  Then
+\[
+ \int\mathcal D\phi=\int\prod_zd\phi_z,
+ \qquad \phi_z\equiv\phi(z),
+\]
+and the identity is just ordinary integration by parts in the variable
+\(\phi_x\):
+\[
+ \int d\phi_x\,\frac{\partial}{\partial\phi_x}
+ \bigl(\hbox{anything}\bigr)=0.
+\]
+These functional integration-by-parts identities are the
+Schwinger--Dyson equations.  They are nonperturbative and implement the
+field equations inside correlation functions.
 \begin{enumerate}
 \item
-Derive the normalized path-integral formula for a scalar time-ordered
-\(n\)-point function by retaining the initial and final vacuum
-wavefunctionals.  Explain how their large-time limit supplies convergence
-and why the denominator is necessary.
+Evaluate
+\[
+ 0=\int\mathcal D\phi\,
+ \frac{\delta}{\delta\phi(x)}
+ \left(\phi(y)e^{iS[\phi]}\right)
+\]
+and prove the normalized identity
+\[
+ \boxed{
+ \frac1Z\int\mathcal D\phi\,e^{iS[\phi]}
+ \frac{\delta S}{\delta\phi(x)}\phi(y)
+ =i\delta^{d+1}(x-y).}
+\]
 \item
-For a free real scalar coupled to a real classical source of compact
-support, evaluate the normalized functional integral and derive the
-probability that the \(\InKet{\Omega}\) state evolves into
-\(\OutKet{\Omega}\).
+Apply this result to the free massive real scalar action in the volume
+convention,
+\[
+ S_0[\phi]=\int d^{d+1}x\left(
+ -\frac12\partial_\mu\phi\partial^\mu\phi
+ -\frac12m^2\phi^2\right).
+\]
+Show that the time-ordered two-point function obeys the classical field
+equation away from the other insertion and derive its contact term:
+\[
+ \boxed{
+ (\Box_x-m^2)
+ \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}
+ =i\delta^{d+1}(x-y).}
+\]
+\item
+Derive the corresponding Schwinger--Dyson equation for the time-ordered
+three-point function of the free field.  Display every contact term and
+then simplify the result using the free-vacuum one-point function.
 \end{enumerate}
 
 \SupplementaryExercise{10}{Low-Order Correlators in \(\lambda\phi^4\)}

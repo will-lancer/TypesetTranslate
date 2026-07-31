@@ -113,26 +113,151 @@ The Clifford identity
   algebra and acts on an undotted spinor as the \((\tfrac12,0)\)
   representation.
 
-  \SupplementarySolution{3}{Scalar Central Charges in Three Dimensions}
-Lorentz covariance permits
+  \SupplementarySolution{3}{The Superspin Casimir}
+With the orientation and mostly-plus metric of this volume, take
   \[
-    \{Q^I_\alpha,Q^J_\beta\}
-      =A^{IJ}(\gamma^\mu C)_{\alpha\beta}P_\mu
-       +C_{\alpha\beta}Z^{IJ}.
+    W_\mu=\frac12\epsilon_{\mu\nu\rho\sigma}
+                 P^\nu M^{\rho\sigma}.
   \]
-  The left side is unchanged when the complete labels
-  \((\alpha,I)\) and \((\beta,J)\) are exchanged.  Because
-  \((\gamma^\mu C)_{\alpha\beta}\) is symmetric, this demands
-  \(A^{IJ}=A^{JI}\).  Positivity allows a real change of basis that makes
-  \(A^{IJ}\) proportional to \(\delta^{IJ}\).  Because
-  \(C_{\alpha\beta}\) is antisymmetric, the second term is symmetric only
-  when
+  Antisymmetry of \(\epsilon_{\mu\nu\rho\sigma}\), together with the
+  Poincar\'e algebra, gives \([W_\mu,P_\rho]=0\).
+
+  For \(x'^\mu=\Lambda^\mu{}_\nu x^\nu+a^\mu\), a left-handed spinor
+  transforms as
   \[
-    Z^{IJ}=-Z^{JI}.
+    \psi'_a(x')
+      =S_{\mathrm L}(\Lambda)_a{}^b\psi_b(x),
+    \qquad
+    S_{\mathrm L}(\Lambda)
+      =\exp\left[-\frac{i}{2}
+                   \omega_{\mu\nu}\Sigma^{\mu\nu}\right].
   \]
-  A real antisymmetric \(N\times N\) matrix has
-  \(N(N-1)/2\) independent entries, which is therefore the maximum number
-  of real scalar central charges in this form.
+  The tensor product is
+  \[
+    \left(\frac12,0\right)\otimes\left(\frac12,0\right)
+       =(1,0)\oplus(0,0).
+  \]
+  Explicitly,
+  \[
+    \psi_a\chi_b
+      =\psi_{(a}\chi_{b)}+\psi_{[a}\chi_{b]}
+      =T_{ab}+\epsilon_{ab}S .
+  \]
+  The symmetric tensor \(T_{ab}\) has three components and furnishes
+  \((1,0)\); the antisymmetric tensor has one component and furnishes
+  \((0,0)\).  Equivalently, \(S\) is fixed by contracting the last
+  equation with \(\epsilon^{ab}\).
+
+  It is useful to denote by \(\mathsf P_{a\dot b}\) the Hermitian momentum
+  bispinor.  This notation keeps the signature translation out of the
+  dotted-index bookkeeping.  The complete \(N=1\) relations involving
+  supercharges are
+  \[
+  \begin{aligned}
+    [Q_a,M^{\mu\nu}]
+      &=(\Sigma^{\mu\nu})^b{}_aQ_b,&
+    [\overline Q_{\dot a},M^{\mu\nu}]
+      &=(\overline\Sigma^{\mu\nu})_{\dot a}{}^{\dot b}
+        \overline Q_{\dot b},\\
+    [P_\mu,Q_a]&=0,&
+    [P_\mu,\overline Q_{\dot a}]&=0,\\
+    \{Q_a,Q_b\}&=0,&
+    \{\overline Q_{\dot a},\overline Q_{\dot b}\}&=0,\\
+    \{Q_a,\overline Q_{\dot b}\}
+      &=2\mathsf P_{a\dot b}.&&
+  \end{aligned}
+  \]
+  Here
+  \[
+    \overline\Sigma^{\mu\nu}
+      =\frac{i}{4}
+         \left(\bar s^\mu s^\nu-\bar s^\nu s^\mu\right).
+  \]
+  In the source convention
+  \(\mathsf P_{a\dot b}=(s^\mu)_{a\dot b}P_\mu\); the definition above is
+  its Hermitian, mostly-plus translation.
+
+  \begin{enumerate}
+    \item Since \([W_\mu,P_\rho]=0\) and each supercharge commutes with
+      momentum,
+      \[
+        [B_\mu,P_\rho]
+          =[W_\mu,P_\rho]
+           -\frac14
+             [\overline Q\,\bar s_\mu Q,P_\rho]
+          =0.
+      \]
+    \item It follows at once that
+      \[
+      \begin{aligned}
+        [C_{\mu\nu},P_\rho]
+          &=[B_\mu P_\nu-B_\nu P_\mu,P_\rho]\\
+          &=[B_\mu,P_\rho]P_\nu
+            -[B_\nu,P_\rho]P_\mu=0.
+      \end{aligned}
+      \]
+    \item Put
+      \(F_\mu=\overline Q_{\dot b}
+        (\bar s_\mu)^{\dot b c}Q_c\).
+      Moving \(Q_a\) through the two odd factors gives
+      \[
+      \begin{aligned}
+        [F_\mu,Q_a]
+          &=-\{Q_a,\overline Q_{\dot b}\}
+              (\bar s_\mu)^{\dot b c}Q_c\\
+          &=-2P_\mu Q_a
+            -4iP^\nu(\Sigma_{\mu\nu})^b{}_aQ_b .
+      \end{aligned}
+      \]
+      The second line is the vector form of the first, obtained from the
+      two-component Clifford identity.  It also displays both the piece
+      proportional to \(P_\mu Q_a\) and the spin piece that must cancel
+      against the Pauli--Lubanski commutator.
+    \item The self-duality relation supplied in the question gives
+      \[
+        [W_\mu,Q_a]
+          =-iP^\nu(\Sigma_{\mu\nu})^b{}_aQ_b .
+      \]
+      Consequently,
+      \[
+      \begin{aligned}
+        [B_\mu,Q_a]
+          &=[W_\mu,Q_a]-\frac14[F_\mu,Q_a]\\
+          &=\frac12P_\mu Q_a .
+      \end{aligned}
+      \]
+    \item Using \([P_\mu,Q_a]=0\),
+      \[
+      \begin{aligned}
+        [C_{\mu\nu},Q_a]
+          &=[B_\mu,Q_a]P_\nu-[B_\nu,Q_a]P_\mu\\
+          &=\frac12
+             \left(P_\mu Q_aP_\nu-P_\nu Q_aP_\mu\right)=0.
+      \end{aligned}
+      \]
+      Hermitian conjugation gives
+      \([C_{\mu\nu},\overline Q_{\dot a}]=0\).
+    \item The operator \(B_\mu\) is a Lorentz vector, so
+      \(C_{\mu\nu}\) is an antisymmetric Lorentz tensor.  In particular,
+      \[
+      \begin{aligned}
+        [M^{\rho\sigma},C_{\mu\nu}]
+          =i\big(&\delta_\mu^\sigma C^\rho{}_\nu
+                 -\delta_\mu^\rho C^\sigma{}_\nu\\
+                &+\delta_\nu^\sigma C_\mu{}^\rho
+                 -\delta_\nu^\rho C_\mu{}^\sigma\big).
+      \end{aligned}
+      \]
+      Contracting both tensor indices therefore gives
+      \[
+        [M^{\rho\sigma},\widetilde C_2]
+          =[M^{\rho\sigma},C_{\mu\nu}C^{\mu\nu}]=0.
+      \]
+      Parts (ii) and (v), together with their Hermitian conjugates, show
+      that \(\widetilde C_2\) also commutes with \(P_\rho,Q_a\), and
+      \(\overline Q_{\dot a}\).  Hence it commutes with every generator
+      of the super-Poincar\'e algebra and is a Casimir.
+  \end{enumerate}
 
   \SupplementarySolution{4}{Antisymmetric Central Charges and Their Normal Form}
   \begin{enumerate}
@@ -164,57 +289,142 @@ Lorentz covariance permits
       \]
   \end{enumerate}
 
-  \SupplementarySolution{5}{The \(N=1\) Algebra, Parity, Positivity, and State Pairing}
-The odd generators transform in the two inequivalent Weyl
-  representations.  Up to normalization, the brackets are
-  \[
-    [P_\mu,Q_\alpha]=[P_\mu,\overline Q_{\dot\alpha}]=0,\qquad
-    \{Q_\alpha,Q_\beta\}
-      =\{\overline Q_{\dot\alpha},\overline Q_{\dot\beta}\}=0,
-  \]
-  and
-  \[
-    \{Q_\alpha,\overline Q_{\dot\beta}\}
-       =2(\sigma^\mu)_{\alpha\dot\beta}P_\mu .
-  \]
-  The Lorentz commutators say that \(Q\) and \(\overline Q\) are
-  spinors.  Allowing odd generators and anticommutators is exactly the
-  graded weakening of the ordinary Lie-algebra hypothesis.
+  \SupplementarySolution{5}{The \(N=1\) Algebra, Parity, and State Pairing}
+  \begin{enumerate}
+    \item Under the usual hypotheses of the theorem, every continuous
+      bosonic symmetry of a nontrivial relativistic \(S\)-matrix is a
+      direct product of the Poincar\'e group with an internal-symmetry
+      group.  Supersymmetry evades the conclusion by weakening the
+      assumption that the symmetry generators form an ordinary Lie
+      algebra: they instead form a \(\mathbb Z_2\)-graded Lie algebra,
+      whose odd--odd bracket is an anticommutator and whose brackets obey
+      the graded Jacobi identity.
 
-  Parity interchanges \(\sigma^\mu P_\mu\) with
-  \(\overline\sigma^\mu P'_\mu\), where
-  \(P'=(P^0,-\boldsymbol P)\).  Substitution of the two parity rules
-  into the anticommutator gives a factor
-  \(\eta_{\mathsf P}\eta_{\mathsf P}^*=1\); the sigma-matrix
-  intertwining identity then returns
-  \(2\sigma^\mu P'_\mu\).  Thus parity preserves the algebra.
+    \item The Coleman--Mandula conclusion makes an internal generator a
+      Lorentz scalar.  The Haag--{\L}opusza\'nski--Sohnius extension then
+      permits it to rotate supercharges only through an \(R\)-symmetry.
+      Since those symmetries are excluded here,
+      \[
+        [T_A,Q_a]=[T_A,\overline Q_{\dot a}]=0.
+      \]
+      The complete simple algebra is
+      \[
+      \begin{aligned}
+        [Q_a,M^{\mu\nu}]
+          &=(\Sigma^{\mu\nu})^b{}_aQ_b,\\
+        [\overline Q_{\dot a},M^{\mu\nu}]
+          &=(\overline\Sigma^{\mu\nu})_{\dot a}{}^{\dot b}
+            \overline Q_{\dot b},\\
+        [P_\mu,Q_a]&=[P_\mu,\overline Q_{\dot a}]=0,\\
+        \{Q_a,Q_b\}
+          &=\{\overline Q_{\dot a},\overline Q_{\dot b}\}=0,\\
+        \{Q_a,\overline Q_{\dot b}\}
+          &=2\mathsf P_{a\dot b}.
+      \end{aligned}
+      \]
+      Here \(\mathsf P_{a\dot b}\) is the Hermitian momentum bispinor;
+      it is the mostly-plus translation of
+      \((s^\mu)_{a\dot b}P_\mu\) in the source convention.  Also
+      \[
+        \overline\Sigma^{\mu\nu}
+          =\frac{i}{4}
+             (\bar s^\mu s^\nu-\bar s^\nu s^\mu).
+      \]
 
-  Taking the trace over spinor indices gives, with a convention-dependent
-  positive constant \(c\),
-  \[
-    cH=\sum_\alpha\{Q_\alpha,Q_\alpha^\dagger\}.
-  \]
-  Hence for any state
-  \[
-    c\langle H\rangle
-      =\sum_\alpha\bigl(\|Q_\alpha|\Psi\rangle\|^2
-                        +\|Q_\alpha^\dagger|\Psi\rangle\|^2\bigr)
-      \geq0 .
-  \]
-  The right-hand side vanishes exactly when all supercharges annihilate
-  the state.  This proves both the vacuum criterion and its converse.
+      These forms can be recovered rather than guessed.  Lorentz
+      covariance fixes the first two lines because \(Q\) and
+      \(\overline Q\) furnish the two Weyl representations.  The product
+      \((\tfrac12,0)\otimes(0,\tfrac12)\) is a vector, and the only
+      allowed vector generator is \(P_\mu\); Hermiticity fixes the
+      conjugate relation and a rescaling of \(Q\) fixes the coefficient
+      to \(2\).  A scalar term in \(\{Q_a,Q_b\}\) would be a central
+      charge antisymmetric in the supersymmetry labels, so it vanishes
+      for \(N=1\).  A Lorentz-generator term is incompatible with the
+      Jacobi identity involving \(P_\rho\).  The same Jacobi identities
+      force the supercharges to commute with momentum.
 
-  Fermion parity is \(+1\) on bosons and \(-1\) on fermions, and it
-  anticommutes with every odd generator.  On a positive-energy
-  eigenspace, cyclicity of the trace gives
-  \[
-    \operatorname{Tr}\!\left((-1)^F\{Q_\alpha,Q_\alpha^\dagger\}\right)=0.
-  \]
-  Summing over \(\alpha\) and using the Hamiltonian relation yields
-  \(cE\,\operatorname{Tr}(-1)^F=0\).  Since \(E>0\),
-  \(n_B-n_F=0\).  Explicit soft terms need not commute with the
-  supercharges, so the common positive-energy representation space and
-  the trace identity used above are no longer available.
+    \item Write \(P'^\mu=(P^0,-\boldsymbol P)\).  Applying parity to the
+      left side of the mixed anticommutator gives
+      \[
+      \begin{aligned}
+        &\widehat{\mathsf P}
+          \{Q_a,\overline Q_{\dot b}\}
+          \widehat{\mathsf P}^{-1}\\
+        &\qquad
+          =\eta_{\mathsf P}\eta_{\mathsf P}^{*}
+            \,(s^0)_{a\dot c}
+            \{\overline Q^{\dot c},Q^d\}
+            \,(\bar s^0)_{\dot b d}.
+      \end{aligned}
+      \]
+      The explicit minus sign in the transformation of
+      \(\overline Q^{\dot a}\) is cancelled by raising and lowering the
+      antisymmetric spinor indices.  Since
+      \(|\eta_{\mathsf P}|^2=1\), the phase drops out.  Finally the
+      intertwining identity
+      \[
+        s^0\bar s^\mu s^0
+          =\bigl(s^0,-\boldsymbol s\bigr)^\mu
+      \]
+      sends the momentum bispinor \(\mathsf P\) to the bispinor
+      \(\mathsf P'\) constructed from \(P'^\mu\).  Thus
+      \[
+        \widehat{\mathsf P}
+          \{Q_a,\overline Q_{\dot b}\}
+          \widehat{\mathsf P}^{-1}
+          =2\mathsf P'_{a\dot b},
+      \]
+      exactly the parity transform of the right side.  The algebra is
+      parity consistent.
+
+    \item Fermion parity is defined by
+      \[
+        (-1)^F\ket{B}=\ket{B},
+        \qquad
+        (-1)^F\ket{F}=-\ket{F}.
+      \]
+      Every supercharge reverses statistics, and hence
+      \[
+        \{(-1)^F,Q_a\}
+          =\{(-1)^F,\overline Q_{\dot a}\}=0.
+      \]
+      Take the trace over a finite-dimensional supermultiplet
+      \(\mathcal R_p\) of fixed nonzero four-momentum \(p\).  Cyclicity
+      and the preceding anticommutation give
+      \[
+      \begin{aligned}
+        \operatorname{Tr}_{\mathcal R_p}
+          \left((-1)^F\{Q_a,\overline Q_{\dot b}\}\right)
+          &=
+          \operatorname{Tr}_{\mathcal R_p}
+          \left(-Q_a(-1)^F\overline Q_{\dot b}
+                 +Q_a(-1)^F\overline Q_{\dot b}\right)\\
+          &=0.
+      \end{aligned}
+      \]
+      The algebra gives the same trace as
+      \[
+        2\mathsf p_{a\dot b}
+          \operatorname{Tr}_{\mathcal R_p}(-1)^F.
+      \]
+      For a positive-energy particle multiplet some component of
+      \(\mathsf p_{a\dot b}\) is nonzero, and therefore
+      \[
+        0=\operatorname{Tr}_{\mathcal R_p}(-1)^F
+          =n_B-n_F.
+      \]
+      Zero-energy states annihilated by all supercharges are the familiar
+      possible singlet exception to this trace argument.
+
+      If supersymmetry-breaking terms are added explicitly to the
+      Lagrangian, the supercharges are no longer conserved:
+      \([H,Q_a]\ne0\).  They therefore do not act within a common
+      energy eigenspace, and the states are not an exact representation
+      of the displayed superalgebra.  The trace step that enforced
+      \(n_B=n_F\) is then unavailable.  Calling the breaking terms
+      \emph{soft} controls their ultraviolet behavior; it does not
+      restore exact state pairing.
+  \end{enumerate}
 
   \SupplementarySolution{6}{Massive \(N=2\) Multiplets and the BPS Bound}
   \begin{enumerate}

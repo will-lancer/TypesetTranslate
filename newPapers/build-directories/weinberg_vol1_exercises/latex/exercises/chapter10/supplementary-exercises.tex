@@ -272,21 +272,166 @@ of \(F_1(0)\) and \(F_2(0)\), and state the value for a minimally coupled
 point Dirac particle at tree level.
 \end{enumerate}
 
-\SupplementaryExercise{7}{Why a Transition Charge Must Vanish and Opposite-Parity Electromagnetic Transitions}
-  {(Inspired by David Tong, \emph{Lectures on Quantum Field Theory}, Sections 4.4 and 6.5 | David Tong, \emph{Lectures on Quantum Field Theory}, Sections 4.3--4.4.)}
-  {tong-qft-form-factors-2006-ch10-curated-parent-2}
-\begin{enumerate}
-\item
-Consider a conserved vector current between stable spin-\(\tfrac12\) states
-of unequal masses.  Construct a manifestly transverse two-form-factor
-basis.  By demanding regularity at \(q^2=0\), prove that the transition
-charge form factor vanishes there.
-\item
-Repeat the unequal-mass current analysis when the initial and final states
-have opposite intrinsic parity.  Determine where \(\gamma_5\) must occur
-and show explicitly why the mass sum, rather than the mass difference,
-appears in the current-conservation relation.
-\end{enumerate}
+\SupplementaryExercise{7}{The Ordered Time Integrals in the General LSZ Pole}
+  {(Adapted from Daniel Harlow, \emph{Lecture Notes for Physics 8.323:
+  Relativistic Quantum Field Theory I} (2024), Section 9.5, Homework
+  Problem 4, printed p.~120, with Eqs.~(9.44)--(9.53), printed
+  pp.~115--116.)}
+  {harlow-qft1-2024-sec9-5-p4}
+Let \(O_1^{b_1},\ldots,O_M^{b_M}\) and
+\(O_1'{}^{a_1},\ldots,O_N'{}^{a_N}\) be Heisenberg operators in a quantum
+field theory with a scattering description, transforming in irreducible
+Lorentz representations.  With
+\(O(k)=\int d^dx\,e^{-ik\cdot x}O(x)\), introduce the regulated Fourier
+transform
+\[
+\begin{split}
+G_\epsilon={}&
+ \langle\Omega|T\{O_N'{}^{a_N}(k_N')\cdots O_1'{}^{a_1}(k_1')
+ O_1^{b_1\dagger}(k_1)\cdots O_M^{b_M\dagger}(k_M)\}|\Omega\rangle_\epsilon
+\\
+:={}&\int d^dx_1\cdots d^dx_{M+N}\,
+ e^{-i(k_1\cdot x_1+\cdots+k_M\cdot x_M
+       +k_1'\cdot x_{M+1}+\cdots+k_N'\cdot x_{M+N})}
+\\[-2pt]
+&\quad\times
+ \langle\Omega|T\{O_N'{}^{a_N}(x_{M+N})\cdots
+ O_1'{}^{a_1}(x_{M+1})O_1^{b_1\dagger}(x_1)\cdots
+ O_M^{b_M\dagger}(x_M)\}|\Omega\rangle
+ e^{-\epsilon(t_{\max}-t_{\min})}.
+\end{split}
+\tag{9.44}
+\]
+Here \(t_{\min}\) and \(t_{\max}\) are the least and greatest of the
+times \(t_1,\ldots,t_{M+N}\).  The incoming and outgoing on-shell limits
+are
+\[
+ k_i^0\longrightarrow-\omega_{n_i,\mathbf k_i},
+ \qquad
+ k_j'{}^0\longrightarrow\omega_{n_j',\mathbf k_j'}.
+\tag{9.45}
+\]
+The pole of interest comes from the ordered region
+\[
+ t_1\leq t_2\leq\cdots\leq t_{M+N}.
+\tag{9.46}
+\]
+Insert complete sets of scattering states, writing the \(r\)-particle
+states as \(\ket{\alpha_r;\mathrm{in}}\) and
+\(\ket{\beta_r;\mathrm{out}}\).  The contribution from this ordered
+region is
+\[
+\begin{split}
+G_\epsilon\supset{}&
+ \int_{t_1\leq\cdots\leq t_{M+N}}
+ d^dx_1\cdots d^dx_{M+N}
+ \int d\alpha_1\cdots d\alpha_M\,d\beta_1\cdots d\beta_N
+\\
+&\times e^{-i(k_1\cdot x_1+\cdots+k_M\cdot x_M
+ +k_1'\cdot x_{M+1}+\cdots+k_N'\cdot x_{M+N})
+ -\epsilon(t_{M+N}-t_1)}
+\\
+&\times\langle\Omega|O_N'{}^{a_N}(x_{M+N})
+ |\beta_1;\mathrm{out}\rangle\cdots
+ \langle\beta_{N-1};\mathrm{out}|O_1'{}^{a_1}(x_{M+1})
+ |\beta_N;\mathrm{out}\rangle
+\\
+&\times\langle\beta_N;\mathrm{out}|\alpha_M;\mathrm{in}\rangle
+ \langle\alpha_M;\mathrm{in}|O_1^{b_1\dagger}(x_1)
+ |\alpha_{M-1};\mathrm{in}\rangle\cdots
+ \langle\alpha_1;\mathrm{in}|O_M^{b_M\dagger}(x_M)|\Omega\rangle.
+\end{split}
+\tag{9.48}
+\]
+Use translation invariance in the form
+\[
+ \langle\gamma|O(x)|\delta\rangle
+ =e^{-i(p_\gamma-p_\delta)\cdot x}
+  \langle\gamma|O(0)|\delta\rangle.
+\tag{9.49}
+\]
+After extracting the matrix elements at the origin, the spacetime
+dependence is therefore
+\[
+\begin{split}
+G_\epsilon\supset{}&
+ \int d\alpha_1\cdots d\alpha_M\,d\beta_1\cdots d\beta_N\,
+ \langle\beta_N;\mathrm{out}|\alpha_M;\mathrm{in}\rangle
+ \int_{t_1\leq\cdots\leq t_{M+N}}d^dx_1\cdots d^dx_{M+N}
+\\
+&\times\exp\!\Bigl\{-i\bigl[
+ (k_1+p_{\alpha_M}-p_{\alpha_{M-1}})\cdot x_1+\cdots
+ +(k_M+p_{\alpha_1})\cdot x_M
+\\[-2pt]
+&\hspace{105pt}
+ +(k_1'-p_{\beta_N}+p_{\beta_{N-1}})\cdot x_{M+1}+\cdots
+ +(k_N'-p_{\beta_1})\cdot x_{M+N}\bigr]
+ -\epsilon(t_{M+N}-t_1)\Bigr\}
+\\
+&\times\langle\Omega|O_N'{}^{a_N}(0)|\beta_1;\mathrm{out}\rangle
+ \cdots\langle\beta_{N-1};\mathrm{out}|O_1'{}^{a_1}(0)
+ |\beta_N;\mathrm{out}\rangle
+\\
+&\times\langle\alpha_M;\mathrm{in}|O_1^{b_1\dagger}(0)
+ |\alpha_{M-1};\mathrm{in}\rangle\cdots
+ \langle\alpha_1;\mathrm{in}|O_M^{b_M\dagger}(0)|\Omega\rangle.
+\end{split}
+\tag{9.50}
+\]
+The spatial integrations give delta functions.  The remaining nested time
+integral is
+\[
+\begin{split}
+\mathcal T:={}&\int_{-\infty}^{\infty}dt_1\,
+ e^{i(k_1^0+p_{\alpha_M}^0-p_{\alpha_{M-1}}^0-i\epsilon)t_1}
+ \int_{t_1}^{\infty}dt_2\,
+ e^{i(k_2^0+p_{\alpha_{M-1}}^0-p_{\alpha_{M-2}}^0)t_2}
+ \cdots
+ \int_{t_{M-1}}^{\infty}dt_M\,
+ e^{i(k_M^0+p_{\alpha_1}^0)t_M}
+\\
+&\times\int_{t_M}^{\infty}dt_{M+1}\,
+ e^{i(k_1'{}^0-p_{\beta_N}^0+p_{\beta_{N-1}}^0)t_{M+1}}
+ \cdots
+ \int_{t_{M+N-2}}^{\infty}dt_{M+N-1}\,
+ e^{i(k_{N-1}'{}^0-p_{\beta_2}^0+p_{\beta_1}^0)t_{M+N-1}}
+\\
+&\times\int_{t_{M+N-1}}^{\infty}dt_{M+N}\,
+ e^{i(k_N'{}^0-p_{\beta_1}^0+i\epsilon)t_{M+N}}.
+\end{split}
+\tag{9.51}
+\]
+Define
+\[
+ k_{\mathrm{tot}}=k_1+\cdots+k_M,
+ \qquad
+ k'_{\mathrm{tot}}=k_1'+\cdots+k_N'.
+\tag{9.53}
+\]
+Evaluate the integrations in \(\mathcal T\), going from right to left, and
+show that
+\[
+\begin{split}
+\mathcal T={}&2\pi\delta\!\left(
+ k_{\mathrm{tot}}^0+k_{\mathrm{tot}}'{}^0
+ +p_{\alpha_M}^0-p_{\beta_N}^0\right)
+\\
+&\times
+ \frac{-i}{k_1^0+p_{\alpha_M}^0-p_{\alpha_{M-1}}^0-i\epsilon}
+ \frac{-i}{k_1^0+k_2^0+p_{\alpha_M}^0-p_{\alpha_{M-2}}^0-i\epsilon}
+ \cdots
+ \frac{-i}{k_{\mathrm{tot}}^0-k_M^0+p_{\alpha_M}^0-p_{\alpha_1}^0-i\epsilon}
+\\
+&\times
+ \frac{i}{k_{\mathrm{tot}}'{}^0-p_{\beta_N}^0+i\epsilon}
+ \cdots
+ \frac{i}{k_{N-1}'{}^0+k_N'{}^0-p_{\beta_2}^0+i\epsilon}
+ \frac{i}{k_N'{}^0-p_{\beta_1}^0+i\epsilon}.
+\end{split}
+\tag{9.52}
+\]
+Be prepared to use the final delta function to rewrite the poles involving
+the incoming energies \(k_i^0\).
 
 \SupplementaryExercise{8}{The Scalar Charge-Radius Expansion and Transverse Decomposition of Vacuum Polarization}
   {(Inspired by David Tong, \emph{Lectures on Quantum Field Theory}, Sections 2.2 and 6.1 | David Tong, \emph{Lectures on Quantum Field Theory}, Sections 6.1--6.4.)}
@@ -434,34 +579,97 @@ You should first use the \(d\)-dimensional contraction identities
 \]
 so that no trace of more than four gamma matrices need be evaluated.
 
-\SupplementaryExercise{12}{Integrating the Klein--Nishina Distribution}
-  {(Inspired by Daniel Harlow, \emph{Lecture Notes for Physics 8.324}, Section 11.6.)}
-  {harlow-qft2-forward-qed-2024-ch10-curated-parent-2}
-Starting with the unpolarized Klein--Nishina differential cross-section in
-the electron rest frame, integrate over the final photon direction.  Obtain
-the exact total cross-section as a function of \(x=\omega/m\) and check both
-its low- and high-energy limits.
-
-\SupplementaryExercise{13}{Forward Compton Crossing and Dispersion}
-  {(Inspired by Daniel Harlow, \emph{Lecture Notes for Physics 8.324}, Section 11.6 | Daniel Harlow, \emph{Lecture Notes for Physics 8.324}, Sections 11.3--11.6.)}
-  {harlow-qft2-forward-qed-2024-ch10-curated-parent-3}
+\SupplementaryExercise{12}{The Photon Propagator Contour and Scalar QED Rules}
+  {(Adapted from University of Cambridge, \emph{Mathematical Tripos Part III,
+  Quantum Field Theory}, Paper 301, 2021, Question 4, printed p.~4,
+  parts (a)--(b).)}
+  {cambridge-partiii-2021-qft-paper301-q4}
+For this exercise use the source metric
+\(\eta_{\mathrm s}=\operatorname{diag}(+1,-1,-1,-1)\).
 \begin{enumerate}
 \item
-Derive the physical photon polarization sum using an arbitrary reference
-vector.  Prove that it may be replaced by the covariant metric tensor in a
-squared amplitude only after the full current obeys its Ward identity, and
-give a counterexample using a single Compton diagram.
+Starting from an appropriate mode expansion of the Heisenberg-picture field
+operator \(\widehat A_\mu(x)\), which may be stated without proof, derive the
+integral representation of the photon propagator in Feynman gauge,
+\[
+ \langle0|T\{\widehat A^\mu(x)\widehat A^\nu(y)\}|0\rangle
+ =\int_{C_F}\frac{d^4k}{(2\pi)^4}
+ \frac{-i\eta_{\mathrm s}^{\mu\nu}}{k^2}
+ e^{-ik\cdot(x-y)},
+\]
+and specify the contour \(C_F\), with justification.
 \item
-Decompose the forward Compton amplitude into spin-independent and
-spin-dependent scalar functions.  Determine their parity under
-\(\omega\mapsto-\omega\) from photon crossing and infer which subtraction
-polynomials are allowed for each function.
+A complex scalar field \(\Phi(x)\) of mass \(M\) has Lagrangian density
+\[
+ \mathcal L=\partial_\mu\Phi^*\partial^\mu\Phi-M^2\Phi^*\Phi.
+\]
+Identify a global \(U(1)\) symmetry and explain what it means to gauge this
+symmetry.  Define a covariant derivative and write a gauge-invariant
+Lagrangian for \(\Phi\) coupled to an electromagnetic four-potential
+\(A_\mu\) with coupling \(e\).  Identify every interaction term and derive
+the momentum-space Feynman rules for all internal lines and vertices that
+can appear.  External-line factors need not be discussed.
+\end{enumerate}
+
+\SupplementaryExercise{13}{Callan--Symanzik Evolution and Asymptotic Freedom}
+  {(Adapted from University of Cambridge, \emph{Mathematical Tripos Part III,
+  Advanced Quantum Field Theory}, Paper 304, 2021, Question 3, printed
+  p.~4.)}
+  {cambridge-partiii-2021-aqft-paper304-q3}
+Consider a theory of a single scalar field with one dimensionless coupling
+\(g\) and no mass parameters.  Let
+\[
+ G^{(n)}(x_1,\ldots,x_n)
+ =\langle\phi(x_1)\cdots\phi(x_n)\rangle_{\mathrm{conn}}
+\]
+be the renormalized connected \(n\)-point function.
+\begin{enumerate}
 \item
-Use the optical theorem, crossing, the renormalized Thomson constant, and the
-tree Klein--Nishina total cross-section to write the complete
-spin-independent forward electron Compton amplitude through order \(e^4\).
-Determine its leading low-energy imaginary part and explain why the
-zero-energy photon threshold prevents an ordinary term-by-term Taylor
-expansion of the dispersive integral.
+Explain why this correlation function depends on an additional scale
+\(\mu\), define \(\beta(g)\) and \(\gamma(g)\), and derive
+\[
+ \left(\mu\frac{\partial}{\partial\mu}
+ +\beta(g)\frac{\partial}{\partial g}+n\gamma(g)\right)
+ G^{(n)}(x_1,\ldots,x_n)=0.
+\tag{*}
+\]
+\item
+What is the significance of the beta function and of a fixed point
+\(g_*\)?  What does the sign of \(\beta(g)\) say about the behavior of the
+coupling as \(\mu\) is increased from a reference scale \(\mu_0\)?
+\item
+Take as given that the renormalized propagator obeys
+\[
+ \int d^4x\,e^{ip\cdot x}G^{(2)}(x,0)
+ =\frac1{p^2}C\!\left(\frac{p^2}{\mu^2},g(\mu)\right).
+\]
+For \(n=2\), solve (*) in the form
+\[
+ C\!\left(\frac{p^2}{\mu^2},g(\mu)\right)
+ =f(\mu)
+ C\!\left(\frac{p^2}{\mu_0^2},g(\mu_0)\right)
+\]
+for arbitrary \(\mu_0\) and unspecified running coupling \(g(\mu)\).
+Show that \(f(\mu)=e^{h(\mu)}\), where
+\[
+ h(\mu)\propto\int_{g(\mu_0)}^{g(\mu)}dg\,
+ \frac{\gamma(g)}{\beta(g)}.
+\]
+\emph{Hint.}  Use \(t=\log(\mu/\mu_0)\).
+\item
+Now assume
+\[
+ \beta(g)=-bg^3,
+ \qquad b>0.
+\]
+Find every fixed point and describe its nature.  Express \(g(\mu)\) in
+terms of \(g(\mu_0)\) and \(\mu/\mu_0\).  Let \(\Lambda\) be the scale at
+which this expression makes \(g(\mu)\) diverge; rewrite \(g(\mu)\) in
+terms of \(\mu\) and \(\Lambda\).
+\item
+Assuming further that \(\gamma(g)=cg^2\), evaluate
+\[
+ \frac{C(p^2/\mu^2,g(\mu))}{C(1,g(p))}.
+\]
 \end{enumerate}
 \end{enumerate}

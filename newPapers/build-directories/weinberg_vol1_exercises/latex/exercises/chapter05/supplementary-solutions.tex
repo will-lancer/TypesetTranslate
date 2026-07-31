@@ -563,39 +563,87 @@ Thus
 and contraction gives the requested slash identity.
 \end{enumerate}
 
-\SupplementarySolution{8}{The Clifford Representation of the Lorentz Algebra}
-Expand the commutator and repeatedly use
-\(\gamma^\alpha\gamma^\beta
-=2\eta^{\alpha\beta}-\gamma^\beta\gamma^\alpha\).
-The terms with four unreduced gamma matrices cancel, leaving
+\SupplementarySolution{8}{Finite Rotations and Boosts of Dirac Spinors}
+For the conventions of this volume, introduce
 \[
-\begin{split}
-[\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
-={}&2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
--2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu\\
-&+2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
--2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda.
-\end{split}
+ \mathcal J^{\mu\nu}=-\frac{i}{4}[\gamma^\mu,\gamma^\nu].
 \]
-The Clifford algebra also gives
+These matrices obey the Lorentz algebra and satisfy
+\([\mathcal J^{\mu\nu},\gamma^\rho]
+=-i\gamma^\mu\eta^{\nu\rho}+i\gamma^\nu\eta^{\mu\rho}\).
+It follows that
 \[
- \frac14[\gamma^\mu,\gamma^\nu]
- =\frac14(2\gamma^\mu\gamma^\nu-2\eta^{\mu\nu})
- =\frac12(\gamma^\mu\gamma^\nu-\eta^{\mu\nu}).
+ \boxed{
+ S[\Lambda]
+ =\exp\!\left(\frac{i}{2}\Omega_{\mu\nu}
+ \mathcal J^{\mu\nu}\right)
+ =\exp\!\left(\frac18\Omega_{\mu\nu}
+ [\gamma^\mu,\gamma^\nu]\right) }
 \]
-Substituting this expression into the first identity and collecting
-antisymmetric pairs yields
+implements
+\(S[\Lambda]\gamma^\rho S[\Lambda]^{-1}
+=\Lambda_\sigma{}^\rho\gamma^\sigma\).  The factor \(1/2\) compensates
+for summing both orders of the antisymmetric pair.
+
+In the Weyl basis displayed in the question, direct multiplication gives
 \[
-\begin{split}
-[S^{\mu\nu},S^{\rho\sigma}]
-={}&\eta^{\nu\rho}S^{\mu\sigma}
--\eta^{\mu\rho}S^{\nu\sigma}\\
-&-\eta^{\nu\sigma}S^{\mu\rho}
-+\eta^{\mu\sigma}S^{\nu\rho}.
-\end{split}
+ \mathcal J^{12}
+ =\frac12\begin{pmatrix}\sigma^3&0\\0&\sigma^3\end{pmatrix},
+ \qquad
+ \mathcal J^{10}
+ =\frac{i}{2}\begin{pmatrix}\sigma^1&0\\0&-\sigma^1\end{pmatrix}.
 \]
-This is the Lorentz Lie algebra in the anti-Hermitian-generator
-convention used for \(S^{\mu\nu}\).
+For the rotation matrix in the question, \(\Omega_{12}=\varphi\), and
+hence
+\[
+ \boxed{
+ S[R(\varphi)]
+ =\begin{pmatrix}
+ e^{i\varphi\sigma^3/2}&0\\
+ 0&e^{i\varphi\sigma^3/2}
+ \end{pmatrix}. }
+\]
+For the displayed boost, \(\Omega_{10}=\beta\), and
+\[
+ \boxed{
+ S[B(\beta)]
+ =\begin{pmatrix}
+ e^{-\beta\sigma^1/2}&0\\
+ 0&e^{\beta\sigma^1/2}
+ \end{pmatrix}. }
+\]
+These expressions may also be checked directly in the gamma-matrix
+transformation law, so their signs are tied to the two explicit Lorentz
+matrices rather than to a convention for naming the parameters.
+
+Since \(e^{i\pi\sigma^3}=-\mathbf1_2\),
+\[
+ S[R(2\pi)]=-\mathbf1_4.
+\]
+Thus the Dirac representation is a representation of the double cover
+\(\operatorname{Spin}^+(1,3)\), not a single-valued representation of
+\(SO^+(1,3)\): a \(2\pi\) rotation changes a spinor's sign, while a
+\(4\pi\) rotation acts trivially.
+
+Finally,
+\[
+ u(p_1)=\sqrt m\begin{pmatrix}\xi\\\xi\end{pmatrix}.
+\]
+For \(p_2=(m\cosh\beta,m\sinh\beta,0,0)\), use
+\[
+ \cosh\beta\,\mathbf1\mathbin{\mp}
+ \sinh\beta\,\sigma^1=e^{\mp\beta\sigma^1}
+\]
+and take the positive Hermitian square roots.  This gives
+\[
+ u(p_2)=\sqrt m
+ \begin{pmatrix}
+ e^{-\beta\sigma^1/2}\xi\\
+ e^{\beta\sigma^1/2}\xi
+ \end{pmatrix}
+ =S[B(\beta)]u(p_1),
+\]
+which is the required finite-spinor transformation.
 
 \SupplementarySolution{9}{Dirac Spinor Norms and Orthogonality}
 Set
@@ -931,89 +979,76 @@ it is generally nonzero at spacelike separation.  Locality belongs to the
 full field, not to either frequency part separately.
 \end{enumerate}
 
-\SupplementarySolution{16}{CPT, Local Interactions, and Spin--Statistics}
-\begin{enumerate}
-\item
-For antiunitary \(\Theta\),
+\SupplementarySolution{16}{Wigner's Characterization of Antiunitary Operators}
+The product of two antilinear maps is linear.  Moreover, antiunitarity gives
 \[
- \bra\alpha O\ket\beta
- =\left[
- \bra{\Theta\alpha}\Theta O\Theta^{-1}\ket{\Theta\beta}
- \right]^*.
+ \langle\Theta\psi\mid\Theta\phi\rangle
+ =\langle\phi\mid\psi\rangle,
 \]
-Taking the invariant vacuum and
-\(O=\phi_1(x_1)\cdots\phi_n(x_n)\) gives
+and applying this twice yields
 \[
- \bra\Omega O\ket\Omega
- =\left[
- \bra\Omega
- \phi_1^\Theta(-x_1)\cdots\phi_n^\Theta(-x_n)
- \ket\Omega\right]^*.
+ \langle\Theta^2\psi\mid\Theta^2\phi\rangle
+ =\langle\psi\mid\phi\rangle.
 \]
-Complex conjugating a matrix element replaces the operator product by its
-adjoint and reverses its order:
-\[
- \bra\Omega O\ket\Omega
- =
- \bra\Omega
- \phi_n^{\Theta\dagger}(-x_n)\cdots
- \phi_1^{\Theta\dagger}(-x_1)\ket\Omega.
-\]
-At mutually spacelike points, locality permits reversing this order, with
-the fermionic exchange signs dictated by the number of swaps.  That step is
-what allows the transformed correlator to be compared with the original
-Lorentz-covariant one.
-\item
-With phases chosen as in Section 5.8, a tensor operator with \(n\) spacetime
-indices transforms as
-\[
- \Theta O_{\mu_1\cdots\mu_n}(x)\Theta^{-1}
- =(-1)^n O_{\mu_1\cdots\mu_n}^\dagger(-x).
-\]
-Scalar and vector fields obey this directly.  For a Dirac bilinear,
-anticommutation of the fermion fields supplies the sign that combines with
-\(\gamma_5M\gamma_5=(-1)^nM\), producing the same rule.
+Thus \(U\equiv\Theta^2\) is unitary.
 
-A Lorentz scalar contracts an even total number of spacetime indices, so all
-index signs multiply to \(+1\).  Therefore
+As maps, \(U\Theta=\Theta U\).  If
+\(U\ket i=\lambda_i\ket i\), however, antilinearity complex-conjugates
+the eigenvalue:
 \[
- \Theta\mathcal H_I(x)\Theta^{-1}
- =\mathcal H_I^\dagger(-x)=\mathcal H_I(-x),
+ U\Theta\ket i=\Theta U\ket i
+ =\lambda_i^*\Theta\ket i.
 \]
-where Hermiticity is used in the last equality.  At \(x^0=0\), change
-\(\mathbf x\to-\mathbf x\) in the spatial integral:
+Therefore \(\Theta\) pairs the \(e^{-2i\theta}\) eigenspace of \(U\)
+with its \(e^{2i\theta}\) eigenspace.  For each such pair choose
+orthonormal vectors \(\ket i,\ket{\bar i}\) and phases so that
 \[
- \Theta H_I(0)\Theta^{-1}
- =\int d^3x\,\mathcal H_I(-\mathbf x,0)=H_I(0).
+ \boxed{
+ \Theta\ket i=e^{i\theta_i}\ket{\bar i},
+ \qquad
+ \Theta\ket{\bar i}=e^{-i\theta_i}\ket i. }
 \]
-\item
-Let
+Because the first coefficient is conjugated on the second application,
+these equations give
 \[
- W_{mn}(x-y)=\bra\Omega\psi_m(x)\psi_n^\dagger(y)\ket\Omega
+ \Theta^2\ket i=e^{-2i\theta_i}\ket i,
+ \qquad
+ \Theta^2\ket{\bar i}=e^{2i\theta_i}\ket{\bar i}.
 \]
-for spacelike \(x-y\).  In a frame where the points are simultaneous, a
-\(\pi\)-rotation about an axis through their midpoint exchanges them.
-Applying this rotation twice is a \(2\pi\)-rotation and contributes
-\((-1)^{2j}\) in the spin-\(j\) representation.  Covariance therefore
-relates the exchanged two-point function to the original with this spin
-phase.
+Since \(\Theta^\dagger=\Theta^{-1}\), inversion gives
+\[
+ \boxed{
+ \Theta^\dagger\ket i=e^{-i\theta_i}\ket{\bar i},
+ \qquad
+ \Theta^\dagger\ket{\bar i}=e^{i\theta_i}\ket i. }
+\]
 
-Locality supplies an exchange sign \(\varepsilon\):
+There are two self-conjugate eigenvalues requiring separate mention.  If
+\(\Theta^2=+1\), a real orthonormal basis can be chosen with
+\(\Theta\ket a=\ket a\).  If \(\Theta^2=-1\), no nonzero state can be
+fixed by \(\Theta\); the states occur in orthogonal Kramers pairs, which
+may be phased so that
 \[
- \psi_m(x)\psi_n^\dagger(y)
- =\varepsilon\,\psi_n^\dagger(y)\psi_m(x),
- \qquad \varepsilon=\begin{cases}+1&\text{commutator locality},\\
- -1&\text{anticommutator locality}.
- \end{cases}
+ \Theta\ket a=\ket b,
+ \qquad
+ \Theta\ket b=-\ket a.
 \]
-Smearing with test functions and using positivity of
-\(\|\psi(f)\ket\Omega\|^2\) rules out a further minus sign for a nonzero
-field.  Compatibility with the rotation relation requires
+This is the \(\theta=\pi/2\) case of the paired construction after a
+rephasing.
+
+Finally, for arbitrary coefficients, antilinearity supplies the complete
+action:
 \[
- \varepsilon=(-1)^{2j}.
+\begin{split}
+ \Theta\sum_i(c_i\ket i+d_i\ket{\bar i})
+ &=\sum_i\left(c_i^*e^{i\theta_i}\ket{\bar i}
+ +d_i^*e^{-i\theta_i}\ket i\right),\\
+ \Theta^\dagger\sum_i(c_i\ket i+d_i\ket{\bar i})
+ &=\sum_i\left(c_i^*e^{-i\theta_i}\ket{\bar i}
+ +d_i^*e^{i\theta_i}\ket i\right).
+\end{split}
 \]
-Thus integer-spin fields commute at spacelike separation and have Bose
-statistics, while half-integer-spin fields anticommute and have Fermi
-statistics.
-\end{enumerate}
+Together with invariant states in the \(+1\) sector and Kramers pairs in
+the \(-1\) sector, these blocks characterize a general antiunitary
+operator up to unitary changes of basis within degenerate eigenspaces.
 \end{enumerate}

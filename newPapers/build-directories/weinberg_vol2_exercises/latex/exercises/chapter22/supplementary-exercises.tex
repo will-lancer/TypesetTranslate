@@ -44,82 +44,195 @@
     the Dirac operator.
   \end{enumerate}
 
-  \SupplementaryExercise{2}{Anomalous Ward Identities and Removable Terms}
-  {Inspired by Adel Bilal, Lectures on Anomalies (2008),
-  Sections 4.2--4.3.}
-  {bilal-lectures-anomalies-2008-v2ch22-p02}
+  \SupplementaryExercise{2}{Axial and Standard-Model Anomalies}
+  {Adapted from Cambridge Part III, The Standard Model, 2021 Paper 305,
+  Question 2.}
+  {cambridge-part-iii-standard-model-2021-p305-q2-v2ch22-p02}
   \begin{enumerate}
     \item[(a)]
-    Suppose
-    \(\partial_\mu J_5^\mu=C F_{\mu\nu}\widetilde F^{\mu\nu}\).
-    Differentiate the background-field identity twice with respect to
-    \(A_\nu(y)\) and \(A_\rho(z)\).  Derive the anomalous divergence of
-    \(\langle T J_5^\mu(x)J^\nu(y)J^\rho(z)\rangle\), including its
-    delta-function support, and give its momentum-space tensor
-    structure.
+    Define an anomaly in quantum field theory.  Distinguish carefully
+    between an anomaly in a global symmetry and an anomaly in a local
+    gauge symmetry, and explain the physical consequence in each case.
     \item[(b)]
-    Let the variation of an effective action be
-    \(\delta_\alpha\Gamma=\mathcal G[\alpha,A]\).
-    Show that if
-    \(\mathcal G=\delta_\alpha B[A]\) for a local functional \(B\), the
-    anomaly can be removed by a counterterm.  Explain why a local,
-    finite anomaly that is not of this form is a nontrivial obstruction,
-    and express the distinction as BRST exactness versus cohomology.
-  \end{enumerate}
-
-  \SupplementaryExercise{3}{Spectral Flow from Two to Four Dimensions}
-  {Inspired by David Tong, Lectures on Gauge Theory (2018),
-  Section 3.1.1.}
-  {tong-gauge-theory-anomalies-2018-v2ch22-p03}
-  \begin{enumerate}
-    \item[(a)]
-    Put a massless Dirac fermion of charge \(q\) on a spatial circle of
-    length \(L\) in a uniform electric field \(E\).  Use
-    \(\dot p=qE\) and the density of one-particle states to calculate the
-    rates at which right- and left-moving levels cross zero.  Derive the
-    local axial-current anomaly in \(1+1\) dimensions.
-    \item[(b)]
-    Place a massless Dirac fermion of charge \(q\) in parallel constant
-    electric and magnetic fields.  The lowest Landau level has transverse
-    degeneracy \(|qB|/(2\pi)\) per unit area.  Reduce its dynamics to the
-    two-dimensional spectral-flow problem and derive
-    \(\partial_\mu J_5^\mu\) in terms of
-    \(\mathbf E\cdot\mathbf B\).
-  \end{enumerate}
-
-  \SupplementaryExercise{4}{Chiral Spectra, Representation Indices, and Anomaly Matching}
-  {Inspired by David Tong, Lectures on Gauge Theory (2018),
-  Section 3.4.1.}
-  {tong-gauge-theory-anomalies-2018-v2ch22-p04}
-  \begin{enumerate}
-    \item[(a)]
-    A four-dimensional \(U(1)\) theory contains only left-handed Weyl
-    fermions with charges
+    Consider a massless Dirac fermion of charge \(e\) coupled to a
+    \(U(1)\) gauge field.  In the volume's mostly-plus convention take
     \[
-      q_i=\{1,5,-7,-8,9\}.
+      \mathcal L=-\frac14F_{\mu\nu}F^{\mu\nu}
+        -\overline\psi\gamma^\mu(\partial_\mu-ieA_\mu)\psi,
+      \qquad
+      \gamma_5=i\gamma^0\gamma^1\gamma^2\gamma^3 .
     \]
-    State the cubic gauge-anomaly and mixed gauge--gravitational anomaly
-    conditions.  Verify that this spectrum satisfies both, and show that
-    no gauge-invariant fermion mass bilinear can pair all five fields.
-    \item[(b)]
-    Define \(A(R)\) by
-    \(\operatorname{tr}_R[T^a\{T^b,T^c\}]=A(R)d^{abc}\).
-    Prove
+    Show that the vector gauge current is conserved.  Show also that the
+    global axial transformation
+    \(\psi\mapsto e^{i\beta\gamma_5}\psi\) has the classically conserved
+    current
     \[
-      A(R\otimes S)=d(S)A(R)+d(R)A(S)
+      J_5^\mu=-i\overline\psi\gamma^\mu\gamma_5\psi .
     \]
-    and \(A(\overline R)=-A(R)\).  Use
-    \(\mathbf3\otimes\mathbf3
-      =\mathbf6\oplus\overline{\mathbf3}\)
-    to find \(A(\mathbf6)\) when \(A(\mathbf3)=1\).
+    Using a regulator that preserves the vector gauge symmetry, derive the
+    quantum anomaly
+    \[
+      \boxed{\partial_\mu J_5^\mu
+        =-\frac{e^2}{16\pi^2}
+          \epsilon^{\alpha\beta\gamma\delta}
+          F_{\alpha\beta}F_{\gamma\delta}.}
+    \]
+    You may use
+    \[
+      \operatorname{tr}_{D}\!\left[
+        \gamma_5[\gamma_\mu,\gamma_\nu]
+        [\gamma_\rho,\gamma_\sigma]\right]
+        =16i\epsilon_{\mu\nu\rho\sigma}.
+    \]
+    The source uses mostly-minus gamma matrices and writes its axial
+    bilinear without the displayed factor \(-i\); the current and kinetic
+    term above are the explicit translation to the volume convention.
     \item[(c)]
-    Couple a global current to a nondynamical background gauge field.
-    Explain why integrating out modes above a scale \(\mu\) cannot change
-    a nontrivial anomaly by a continuous amount.  Deduce the alternatives
-    available to an infrared theory with a nonzero ultraviolet anomaly:
-    massless degrees of freedom, spontaneous symmetry breaking with an
-    anomalous Goldstone action, or a nontrivial topological sector.
+    Verify that one Standard-Model family is free of all perturbative gauge
+    anomalies.  Include the mixed gauge--gravitational check, and explain
+    why the cancellation relates the proton and electron charges by
+    \(Q_p=-Q_e\).
+
+    For unambiguous anomaly bookkeeping, use only left-handed fields:
+    \[
+    \begin{gathered}
+      Q:(\mathbf3,\mathbf2)_{1/6},\qquad
+      u^c:(\overline{\mathbf3},\mathbf1)_{-2/3},\qquad
+      d^c:(\overline{\mathbf3},\mathbf1)_{1/3},\\
+      L:(\mathbf1,\mathbf2)_{-1/2},\qquad
+      e^c:(\mathbf1,\mathbf1)_1,\qquad
+      \nu^c:(\mathbf1,\mathbf1)_0 .
+    \end{gathered}
+    \]
+    \emph{Source convention note.}  The examination's recall line prints
+    conjugate color representations together with the hypercharge signs of
+    physical right-handed fields.  Those two conventions cannot be used
+    simultaneously in a left-handed anomaly sum; the consistent
+    all-left-handed list above makes the required conjugation explicit.
   \end{enumerate}
+
+  \SupplementaryExercise{3}{Standard-Model Anomalies, CKM Mixing, and CP Violation}
+  {Adapted from Cambridge Part III, The Standard Model, 2022 Paper 305,
+  Question 4.}
+  {cambridge-part-iii-standard-model-2022-p305-q4-v2ch22-p03}
+  Consider one Standard-Model family, including a right-handed neutrino.
+  For anomaly calculations, write every fermion as a left-handed field:
+  \[
+  \begin{gathered}
+    Q:(\mathbf3,\mathbf2)_{1/6},\qquad
+    u^c:(\overline{\mathbf3},\mathbf1)_{-2/3},\qquad
+    d^c:(\overline{\mathbf3},\mathbf1)_{1/3},\\
+    L:(\mathbf1,\mathbf2)_{-1/2},\qquad
+    e^c:(\mathbf1,\mathbf1)_1,\qquad
+    \nu^c:(\mathbf1,\mathbf1)_0,
+  \end{gathered}
+  \]
+  under \(SU(3)_c\times SU(2)_L\times U(1)_Y\).
+  \begin{enumerate}
+    \item[(i)]
+    Show that all perturbative gauge anomalies and the mixed
+    gauge--gravitational anomaly cancel for this spectrum.  Include the
+    \(SU(3)^3\), \(SU(3)^2U(1)_Y\), \(SU(2)^2U(1)_Y\),
+    \(U(1)_Y^3\), and gravitational--\(U(1)_Y\) checks, and explain why
+    there is no perturbative \(SU(2)^3\) anomaly.  Also check the
+    nonperturbative mod-two \(SU(2)\) anomaly.
+    \item[(ii)]
+    What would go wrong with the quantum gauge theory if any gauge anomaly
+    failed to cancel?
+    \item[(iii)]
+    Is baryon number anomalous in the Standard Model?  Identify the gauge
+    fields responsible, state the resulting selection rule for a
+    topological transition of unit charge, and discuss how significant the
+    effect is in ordinary perturbation theory and at high temperature.
+    \item[(iv)]
+    For three generations, write the quark Yukawa couplings and the charged
+    weak-current coupling,
+    \[
+      -\mathcal L_Y
+       =\overline Q_LY_dHd_R+\overline Q_LY_u\widetilde H u_R
+        +\text{h.c.},
+      \qquad
+      \mathcal L_W=\frac{g}{\sqrt2}\,
+        \overline u_L\gamma^\mu d_LW^+_\mu+\text{h.c.}
+    \]
+    Diagonalize the two Yukawa matrices, define the
+    Cabibbo--Kobayashi--Maskawa matrix in the mass eigenbasis, and determine
+    the number of its independent physical parameters.
+    \item[(v)]
+    Exhibit two independent sources of CP violation in the Standard Model.
+    State the associated basis-invariant quantities, and explain whether
+    the two sources can be related by field redefinitions.
+  \end{enumerate}
+
+  \emph{Source convention note.}  The examination's recall line combines
+  conjugate color representations with the hypercharge signs of physical
+  right-handed fields.  Those conventions cannot be mixed in a chiral
+  anomaly sum; the consistent all-left-handed spectrum displayed above is
+  the intended one.
+
+  \SupplementaryExercise{4}{Anomalies Determine Standard-Model Hypercharge}
+  {Adapted from Cambridge Part III, The Standard Model, 2024 Paper 305,
+  Question 3.}
+  {cambridge-part-iii-standard-model-2024-p305-q3-v2ch22-p04}
+  Explain first the meaning and physical implications of each of the
+  following: a gauge anomaly, a chiral or Adler--Bell--Jackiw anomaly, and
+  a 't~Hooft anomaly.
+
+  Consider one Standard-Model generation, without a right-handed neutrino,
+  whose left- and right-handed Weyl fermions transform under
+  \(U(1)\times SU(2)\times SU(3)\) as
+  \[
+    Q_L:(\mathbf2,\mathbf3)_q,\qquad
+    L_L:(\mathbf2,\mathbf1)_l,\qquad
+    u_R:(\mathbf1,\mathbf3)_u,\qquad
+    d_R:(\mathbf1,\mathbf3)_d,\qquad
+    e_R:(\mathbf1,\mathbf1)_x.
+  \]
+  The integer subscripts are arbitrary hypercharges:
+  \(q,l,u,d,x\in\mathbb Z\).  Remember that a right-handed fermion enters
+  an anomaly sum with the opposite chirality sign.
+  \begin{enumerate}
+    \item[(i)]
+    Write all conditions for cancellation of local gauge anomalies for one
+    generation, excluding the mixed gauge--gravitational anomaly.  Include
+    the pure simple-group anomalies and all mixed anomalies, explaining
+    which vanish identically.
+    \item[(ii)]
+    Show that the anomaly equations require
+    \(u-d=2y\) for some \(y\in\mathbb Z\).
+    \item[(iii)]
+    Reduce the anomaly equations to the Diophantine equation
+    \[
+      54q^3+18y^2q+x^3=0.
+    \]
+    \item[(iv)]
+    Assume \(q\ne0\).  Divide out the overall normalization and show that
+    there must be rational numbers \(\widetilde x,\widetilde y\in\mathbb Q\)
+    satisfying
+    \[
+      54+18\widetilde y^{\,2}+\widetilde x^{\,3}=0.
+    \]
+    \item[(v)]
+    Retaining the assumption \(q\ne0\), show that the anomaly equations
+    have a unique solution up to an overall rescaling and interchange of
+    \(u_R\) and \(d_R\).  With \(q=1\), determine \(l,u,d,x\).
+
+    You may assume without proof that there is no nontrivial integer
+    solution of \(a^3+b^3=c^3\).  The change of variables
+    \[
+      \widetilde x=-\frac{6}{v+w},
+      \qquad
+      \widetilde y=\frac{3(v-w)}{v+w}
+    \]
+    may be useful.
+    \item[(vi)]
+    Show that this solution automatically satisfies the mixed
+    gauge--gravitational anomaly.
+  \end{enumerate}
+
+  Finally, identify the additional vectorlike branch that would have been
+  present had the assumption \(q\ne0\) not been imposed.  This qualification
+  is logically necessary for the uniqueness claim in part~(v).
 
   \SupplementaryExercise{5}{Standard-Model Anomaly Cancellation}
   {Adapted from John McGreevy, Physics 215C, Assignment 3, Problem 2 (2025).}
@@ -265,31 +378,88 @@
     rule for arbitrary integer \(\nu\).
   \end{enumerate}
 
-  \SupplementaryExercise{10}{Anomaly Poles, Symmetric Masses, and Real Representations}
-  {Inspired by John Preskill, Physics 230abc Field Theory Notes
-  (1983--1984), Chapter 3, pp. 75--117.}
-  {preskill-qcd-anomalies-1984-v2ch22-p10}
+  \SupplementaryExercise{10}{Anomaly Matching in an \(SU(2)\) Gauge Theory}
+  {Adapted from Cambridge Part III, The Standard Model, 2025 Paper 305,
+  Question 3.}
+  {cambridge-part-iii-standard-model-2025-p305-q3-v2ch22-p10}
+  Briefly describe the implications when a symmetry has a gauge anomaly, a
+  chiral or Adler--Bell--Jackiw anomaly, or a 't~Hooft anomaly.
+
+  Consider \(SU(2)\) Yang--Mills theory coupled to \(N_f\) massless Dirac
+  fermions in the fundamental representation.  In two-component notation,
+  \[
+    S_0=\int d^4x\left[-\frac12\operatorname{Tr}F_{\mu\nu}F^{\mu\nu}
+      +i\sum_{i=1}^{N_f}\left(
+        \overline\psi_{L i}\overline\sigma^\mu D_\mu\psi_L^i
+       +\overline\psi_{R i}\sigma^\mu D_\mu\psi_R^i\right)\right].
+  \]
   \begin{enumerate}
-    \item[(a)]
-    A three-current correlator has an anomalous divergence that approaches
-    a nonzero polynomial in external momenta.  Show that a correlator
-    analytic at zero momentum cannot reproduce this Ward identity.
-    Identify the necessary longitudinal pole and explain its possible
-    realization by a massless fermion or Goldstone boson.
-    \item[(b)]
-    Suppose a set of Weyl fermions can acquire a nonzero mass without
-    breaking a global symmetry \(G\).  Show that the massive states form a
-    real or pseudoreal representation of \(G\), or conjugate pairs, and
-    hence have zero cubic \(G^3\) anomaly.  Relate this to decoupling at
-    momenta much smaller than the mass.
-    \item[(c)]
-    If \(R\) is real or pseudoreal, there is a unitary matrix \(U\) such
-    that \(T_R^{a*}=-UT_R^aU^{-1}\).  Use this relation and cyclicity of
-    the trace to prove
-    \(\operatorname{tr}_R[T^a\{T^b,T^c\}]=0\).
-    Explain why this eliminates perturbative \(SU(2)^3\) anomalies but
-    does not by itself address a possible global \(SU(2)\) anomaly.
+    \item[(i)]
+    The source stipulates the classical chiral subgroup
+    \(SU(N_f)_L\times SU(N_f)_R\times U(1)_L\times U(1)_R\).
+    What subgroup survives in the quantum theory?  Give a table showing
+    how the fermions transform under it, and identify the discrete axial
+    remnant.
+    \item[(ii)]
+    For \(N_f\ge3\), compute the
+    \(SU(N_f)_L^3\), \(SU(N_f)_L^2U(1)\), \(U(1)^3\), and mixed
+    \(U(1)\)--gravity 't~Hooft anomalies, where \(U(1)\) is the continuous
+    Abelian symmetry that survives quantum mechanically.  Explain why,
+    under the ordinary assumption of no compensating topological order,
+    confinement implies chiral-symmetry breaking in this theory.
+    \item[(iii)]
+    Add a massless left-handed Weyl fermion \(\lambda_L\) in the adjoint
+    representation of the gauge group.  Does the extended theory have a
+    perturbative gauge anomaly or the mod-two global \(SU(2)\) anomaly?
+    Justify both answers.
+    \item[(iv)]
+    The extended theory has a candidate Abelian symmetry
+    \[
+      U(1)_X:\qquad
+      \psi_L\mapsto e^{-i\alpha}\psi_L,\qquad
+      \psi_R\mapsto e^{i\alpha}\psi_R,\qquad
+      \lambda_L\mapsto e^{iq\alpha}\lambda_L.
+    \]
+    Determine \(q\) by requiring the mixed
+    \(SU(2)_{\rm gauge}^2U(1)_X\) anomaly to vanish.  Use the source
+    normalization
+    \[
+      I(\mathbf2)=I(\overline{\mathbf2})=1,
+      \qquad I(\operatorname{adj}_{SU(N)})=2N.
+    \]
+    \item[(v)]
+    Compute the ultraviolet \(SU(N_f)_L^3\),
+    \(SU(N_f)_L^2U(1)_X\), \(U(1)_X^3\), and mixed
+    \(U(1)_X\)--gravity 't~Hooft anomalies of the extended theory.
+    \item[(vi)]
+    For \(N_f=3\), suppose that the theory confines without breaking its
+    chiral symmetry and that its massless left-handed gauge singlets are
+    \[
+      \chi_i{}^j=\overline\psi_{R i}\lambda_L\psi_L^j,
+      \qquad
+      \eta_i=\epsilon_{ijk}\psi_L^j\lambda_L\psi_L^k,
+      \qquad
+      \widetilde\eta^{\,i}
+       =\epsilon^{ijk}\overline\psi_{R j}\lambda_L
+          \overline\psi_{R k}.
+    \]
+    Determine how \(\chi\), \(\eta\), and \(\widetilde\eta\) transform
+    under the full continuous global subgroup, including \(U(1)_X\).
+    \item[(vii)]
+    Treating these composites as free Weyl fermions, calculate their
+    \(SU(3)_L^3\), \(SU(3)_L^2U(1)_X\), \(U(1)_X^3\), and mixed
+    \(U(1)_X\)--gravity anomalies and show that they match the ultraviolet
+    anomalies.
   \end{enumerate}
+
+  Normalize the flavor coefficients by
+  \(A(\mathbf{N_f})=1\),
+  \(A(\overline{\mathbf{N_f}})=-1\), and
+  \(I(\mathbf{N_f})=I(\overline{\mathbf{N_f}})=1\).
+  Because the \(SU(2)\) fundamental is pseudoreal, the actual continuous
+  flavor symmetry of the massless theory is enhanced to \(SU(2N_f)\).
+  The examination nevertheless formulates the problem in the displayed
+  chiral subgroup; perform the requested matching in that subgroup.
 
   \SupplementaryExercise{11}{Spectator Matching and a Wess--Zumino Compensator}
   {Inspired by John Preskill, Physics 230abc Field Theory Notes
