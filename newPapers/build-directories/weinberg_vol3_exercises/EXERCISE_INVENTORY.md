@@ -29,6 +29,6 @@ Totals: 39 Weinberg exercises, 39 Weinberg solutions, 240 supplementary exercise
 
 ## Audit status
 
-- Mode: strict
+- Mode: draft
 - Warnings: 0
 - Failures: 0

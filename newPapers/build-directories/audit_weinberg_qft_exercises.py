@@ -54,6 +54,24 @@ BUILD_SUFFIXES = {
     ".pdf",
     ".toc",
 }
+KNOWN_CHAPTER_RANGES = {
+    "weinberg_vol1_exercises": (1, 14),
+    "weinberg_vol2_exercises": (15, 23),
+    "weinberg_vol3_exercises": (24, 32),
+}
+ZERO_TARGET_HISTORY_EXCEPTIONS = {
+    (
+        "weinberg_vol1_exercises",
+        1,
+    ): "Historical chapter: exercises are intentionally omitted at the user's direction.",
+    (
+        "weinberg_vol3_exercises",
+        24,
+    ): (
+        "Historical chapter: supplementary exercises are intentionally omitted "
+        "at the user's direction."
+    ),
+}
 PART_II_RE = re.compile(r"\bPart[\s~–—-]*II(?!I)\b", re.IGNORECASE)
 CAMBRIDGE_2020_RE = re.compile(
     r"Cambridge.{0,80}(?:Part[\s~–—-]*III)?.{0,80}\b2020\b",
@@ -352,6 +370,21 @@ def audit_canonical_isolation(
     except json.JSONDecodeError as error:
         audit.failures.append(f"Cannot parse canonical hash manifest: {error}")
         return
+    audit.require(
+        isinstance(expected, dict) and bool(expected),
+        "Canonical hash manifest must be a nonempty object",
+    )
+    if not isinstance(expected, dict):
+        return
+    actual_files = {
+        str(path.relative_to(canonical))
+        for path in canonical.rglob("*")
+        if path.is_file() and path.suffix not in BUILD_SUFFIXES
+    }
+    audit.require(
+        set(expected) == actual_files,
+        "Canonical hash manifest does not cover the exact canonical source file set",
+    )
     for relative, expected_hash in expected.items():
         path = canonical / relative
         audit.require(path.is_file(), f"Canonical file disappeared: {path}")
@@ -377,6 +410,69 @@ def audit_canonical_isolation(
             not (canonical_tex / "exercises").exists(),
             f"Canonical edition unexpectedly contains {canonical_tex / 'exercises'}",
         )
+
+
+def audit_metadata_structure(
+    root: Path,
+    metadata: dict[str, object],
+    chapters: list[object],
+    audit: Audit,
+) -> None:
+    """Pin each edition to its authoritative, ordered chapter sequence."""
+
+    edition_name = metadata.get("edition")
+    audit.require(
+        edition_name == root.name,
+        f"Metadata edition must equal the edition directory name {root.name!r}",
+    )
+    known_range = KNOWN_CHAPTER_RANGES.get(root.name)
+    audit.require(
+        known_range is not None,
+        f"Unsupported exercise-edition directory: {root.name}",
+    )
+    raw_range = metadata.get("chapter_range")
+    valid_range = (
+        isinstance(raw_range, list)
+        and len(raw_range) == 2
+        and all(
+            isinstance(number, int) and not isinstance(number, bool)
+            for number in raw_range
+        )
+        and raw_range[0] <= raw_range[1]
+    )
+    audit.require(
+        valid_range,
+        "Metadata chapter_range must be an ordered two-integer array",
+    )
+    if not valid_range or known_range is None:
+        return
+    declared_range = (raw_range[0], raw_range[1])
+    audit.require(
+        declared_range == known_range,
+        f"Metadata chapter_range must be {list(known_range)} for {root.name}",
+    )
+
+    chapter_numbers: list[int] = []
+    valid_chapters = True
+    for raw_chapter in chapters:
+        if not isinstance(raw_chapter, dict):
+            valid_chapters = False
+            continue
+        number = raw_chapter.get("chapter")
+        if not isinstance(number, int) or isinstance(number, bool):
+            valid_chapters = False
+            continue
+        chapter_numbers.append(number)
+    audit.require(
+        valid_chapters,
+        "Every metadata chapter entry must have an integer chapter number",
+    )
+    expected_numbers = list(range(known_range[0], known_range[1] + 1))
+    audit.require(
+        chapter_numbers == expected_numbers,
+        "Metadata chapters must be the exact ordered unique sequence "
+        f"{expected_numbers}",
+    )
 
 
 def audit_pagination_policy(
@@ -469,7 +565,11 @@ def audit_pagination_policy(
         )
 
 
-def audit_weinberg_prompt_integrity(root: Path, audit: Audit) -> None:
+def audit_weinberg_prompt_integrity(
+    root: Path,
+    chapters: list[object],
+    audit: Audit,
+) -> None:
     manifest_path = root / "weinberg-exercise-source-sha256.json"
     audit.require(
         manifest_path.exists(),
@@ -488,6 +588,21 @@ def audit_weinberg_prompt_integrity(root: Path, audit: Audit) -> None:
     )
     if not isinstance(expected, dict):
         return
+    required_keys = {
+        (
+            "latex/exercises/"
+            f"chapter{int(chapter['chapter']):02d}/weinberg-exercises.tex"
+        )
+        for chapter in chapters
+        if isinstance(chapter, dict)
+        and isinstance(chapter.get("chapter"), int)
+        and not isinstance(chapter.get("chapter"), bool)
+    }
+    audit.require(
+        set(expected) == required_keys,
+        "Weinberg exercise hash manifest must cover exactly one prompt fragment "
+        "for every declared chapter",
+    )
     for relative, expected_hash in expected.items():
         path = root / relative
         audit.require(path.is_file(), f"Extracted Weinberg exercise file is missing: {path}")
@@ -622,24 +737,76 @@ def exercise_body_similarity(
                 )
 
 
+def recorded_build_inputs(root: Path, audit: Audit) -> set[Path] | None:
+    """Return resolved TeX recorder inputs for strict post-build verification."""
+
+    recorder = root / "latex" / "master.fls"
+    if not audit.strict or not recorder.is_file():
+        return None
+    latex_root = recorder.parent.resolve()
+    inputs: set[Path] = set()
+    for line in recorder.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.startswith("INPUT "):
+            continue
+        raw_path = line.removeprefix("INPUT ").strip()
+        if not raw_path:
+            continue
+        path = Path(raw_path)
+        if not path.is_absolute():
+            path = latex_root / path
+        inputs.add(path.resolve())
+    return inputs
+
+
 def audit_chapter(
     root: Path,
     chapter_info: dict[str, object],
     ledger: dict[str, dict[str, object]],
     audit: Audit,
+    recorder_inputs: set[Path] | None,
 ) -> dict[str, object]:
     chapter = int(chapter_info["chapter"])
     chapter_id = f"{chapter:02d}"
     fragment_dir = root / "latex" / "exercises" / f"chapter{chapter_id}"
-    for filename in REQUIRED_FRAGMENT_FILES:
+    fragment_paths = [fragment_dir / filename for filename in REQUIRED_FRAGMENT_FILES]
+    for path, filename in zip(fragment_paths, REQUIRED_FRAGMENT_FILES):
         audit.require(
-            (fragment_dir / filename).is_file(),
+            path.is_file(),
             f"Chapter {chapter}: missing {filename}",
         )
 
-    backmatter = root / str(chapter_info["backmatter"])
-    audit.require(backmatter.is_file(), f"Chapter {chapter}: missing backmatter")
-    if backmatter.is_file():
+    backmatter_value = chapter_info.get("backmatter")
+    backmatter: Path | None = None
+    if isinstance(backmatter_value, str) and backmatter_value:
+        relative_backmatter = Path(backmatter_value)
+        candidate = (root / relative_backmatter).resolve()
+        try:
+            candidate.relative_to(root)
+            inside_root = not relative_backmatter.is_absolute()
+        except ValueError:
+            inside_root = False
+        audit.require(
+            inside_root,
+            f"Chapter {chapter}: backmatter path must stay inside the edition root",
+        )
+        if inside_root:
+            backmatter = candidate
+    else:
+        audit.failures.append(f"Chapter {chapter}: invalid backmatter path")
+
+    audit.require(
+        backmatter is not None and backmatter.is_file(),
+        f"Chapter {chapter}: missing backmatter",
+    )
+    if recorder_inputs is not None:
+        recorder_paths = fragment_paths + ([backmatter] if backmatter is not None else [])
+        for path in recorder_paths:
+            audit.require(
+                path.resolve() in recorder_inputs,
+                f"Chapter {chapter}: build recorder did not load "
+                f"{path.relative_to(root)}",
+            )
+    if backmatter is not None and backmatter.is_file():
         backmatter_text = strip_comments(backmatter.read_text(encoding="utf-8"))
         hook = rf"\chapterexercisehook{{{chapter_id}}}"
         audit.require(
@@ -817,22 +984,43 @@ def audit_chapter(
 
     target = int(chapter_info.get("supplementary_target", 30))
     exception = chapter_info.get("count_exception")
-    if target == 0:
+    history_key = (root.name, chapter)
+    expected_exception = ZERO_TARGET_HISTORY_EXCEPTIONS.get(history_key)
+    if expected_exception is not None:
         audit.require(
             chapter_info.get("title") == "Historical Introduction",
-            f"Chapter {chapter}: only a Historical Introduction may have target 0",
+            f"Chapter {chapter}: the zero-target exception must be Historical Introduction",
         )
         audit.require(
-            s_count == 0,
-            f"Chapter {chapter}: historical chapter must not contain "
-            "supplementary exercises",
+            target == 0,
+            f"Chapter {chapter}: the pinned historical supplementary target must be 0",
         )
-    count_ok = s_count >= target
-    justified = isinstance(exception, str) and len(exception.strip()) >= 20
+        audit.require(
+            exception == expected_exception,
+            f"Chapter {chapter}: historical count exception text is not authoritative",
+        )
+        expected_count = 0
+    else:
+        audit.require(
+            target == 30,
+            f"Chapter {chapter}: nonhistorical supplementary target must be exactly 30",
+        )
+        audit.require(
+            exception in (None, ""),
+            f"Chapter {chapter}: only the two pinned historical chapters may "
+            "carry count exceptions",
+        )
+        expected_count = 30
     audit.require(
-        count_ok or justified,
-        f"Chapter {chapter}: {s_count}/{target} supplementary exercises and no "
-        "written count exception",
+        s_count == expected_count,
+        f"Chapter {chapter}: expected exactly {expected_count} supplementary "
+        f"exercises, found {s_count}",
+        incomplete=True,
+    )
+    audit.require(
+        len(s_solutions) == expected_count,
+        f"Chapter {chapter}: expected exactly {expected_count} supplementary "
+        f"solutions, found {len(s_solutions)}",
         incomplete=True,
     )
 
@@ -887,6 +1075,10 @@ def audit_exports(root: Path, metadata: dict[str, object], audit: Audit) -> None
         "Edition name must end in _exercises",
     )
     audit.require(
+        edition_name == root.name,
+        "Edition name must match its directory",
+    )
+    audit.require(
         edition_name != canonical_name,
         "Exercise edition and canonical source names must differ",
     )
@@ -915,6 +1107,21 @@ def audit_exports(root: Path, metadata: dict[str, object], audit: Audit) -> None
             )
         except json.JSONDecodeError as error:
             audit.failures.append(f"Cannot parse canonical export manifest: {error}")
+            expected_exports = {}
+        expected_key = (
+            f"../../weinberg-qft/{canonical_name.replace('_', '-')}.pdf"
+            if isinstance(canonical_name, str)
+            else None
+        )
+        audit.require(
+            isinstance(expected_exports, dict)
+            and bool(expected_exports)
+            and expected_key is not None
+            and set(expected_exports) == {expected_key},
+            "Canonical export manifest must contain exactly the authoritative "
+            "canonical PDF",
+        )
+        if not isinstance(expected_exports, dict):
             expected_exports = {}
         for relative, expected_hash in expected_exports.items():
             canonical_export = (root / relative).resolve()
@@ -966,15 +1173,17 @@ def main() -> int:
         print("exercise-edition.json has no chapters array", file=sys.stderr)
         return 1
 
+    audit_metadata_structure(root, metadata, chapters, audit)
     audit_hook_style(root, audit)
     audit_pagination_policy(root, metadata, chapters, audit)
     audit_canonical_isolation(root, metadata, audit)
-    audit_weinberg_prompt_integrity(root, audit)
+    audit_weinberg_prompt_integrity(root, chapters, audit)
     audit_labels(root, audit)
     audit_asymptotic_notation(root, audit)
     ledger = source_ledger(root, audit)
+    recorder_inputs = recorded_build_inputs(root, audit)
     inventory = [
-        audit_chapter(root, chapter, ledger, audit)
+        audit_chapter(root, chapter, ledger, audit, recorder_inputs)
         for chapter in chapters
         if isinstance(chapter, dict)
     ]
@@ -999,7 +1208,11 @@ def main() -> int:
     exercise_body_similarity(all_problems, audit)
     unused_sources = sorted(set(ledger) - set(all_source_ids))
     for source_id in unused_sources:
-        audit.warn(f"Ledger source is currently unused: {source_id}")
+        audit.require(
+            False,
+            f"Ledger source is currently unused: {source_id}",
+            incomplete=True,
+        )
 
     payload = {
         "edition": metadata.get("edition"),

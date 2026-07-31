@@ -15,9 +15,9 @@ The inherited Author and Subject Index entries reproduce Weinberg's **printed-so
 | 19 | Spontaneously Broken Global Symmetries | 163–251 | 225–320 / 229–324 | 297 / 301 | 298 / 302 | 303 / 307 | 307 / 311 | 317 / 321 |
 | 20 | Operator Product Expansions | 252–294 | 321–375 / 325–379 | 356 / 360 | 357 / 361 | 360 / 364 | 365 / 369 | 374 / 378 |
 | 21 | Spontaneously Broken Gauge Symmetries | 295–358 | 376–449 / 380–453 | 427 / 431 | 427 / 431 | 431 / 435 | 436 / 440 | 446 / 450 |
-| 22 | Anomalies | 359–420 | 450–502 / 454–506 | 499 / 503 | 499 / 503 | 499 / 503 | 499 / 503 | 499 / 503 |
-| 23 | Extended Field Configurations | 421–477 | 503–551 / 507–555 | 548 / 552 | 549 / 553 | 549 / 553 | 549 / 553 | 549 / 553 |
+| 22 | Anomalies | 359–420 | 450–520 / 454–524 | 499 / 503 | 499 / 503 | 502 / 506 | 507 / 511 | 518 / 522 |
+| 23 | Extended Field Configurations | 421–477 | 521–590 / 525–594 | 566 / 570 | 567 / 571 | 569 / 573 | 576 / 580 | 588 / 592 |
 
-Live inherited-index starts: Author Index p. 552 / PDF 556; Subject Index p. 558 / PDF 562.
+Live inherited-index starts: Author Index p. 591 / PDF 595; Subject Index p. 597 / PDF 601.
 
-Completed PDF page count: 567.
+Completed PDF page count: 606.

@@ -1,3 +1,672 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
-% Editorial solutions are inserted here with \SupplementarySolution{N}{Title}.
+\begin{enumerate}
+  \SupplementarySolution{1}{A Grassmann Measure Jacobian}
+  Let
+  \(M_{mn}=\int d^4x\,\phi_m^\dagger U\phi_n\).  The transformed
+  coefficients obey \(a'_m=M_{mn}a_n\), and the barred coefficients
+  transform with the corresponding transpose matrix.  A Grassmann
+  differential transforms inversely, so
+  \[
+    \prod_m da'_m=(\det M)^{-1}\prod_m da_m,\qquad
+    \prod_m d\bar b'_m=(\det M)^{-1}\prod_m d\bar b_m.
+  \]
+  Hence
+  \[
+    [d\psi'][d\bar\psi']=(\det M)^{-2}[d\psi][d\bar\psi].
+  \]
+  For \(U=1+i\alpha\gamma^5T\),
+  \[
+    \ln J=-2\operatorname{Tr}\ln M
+      =-2i\operatorname{Tr}(\alpha\gamma^5T)+O(\alpha^2).
+  \]
+  In a finite basis this is an ordinary trace.  In field theory it
+  contains the undefined coincidence limit
+  \(\delta^4(x-x)\).  The formal spin trace vanishes while the mode sum
+  diverges, so their product cannot be assigned a value before a
+  symmetry-preserving regulator is specified.
+
+  \SupplementarySolution{2}{The Heat-Kernel Term that Survives}
+  At short distance the diagonal heat kernel supplies an overall factor
+  of order \(M^4\).  Expanding the exponential gives
+  \[
+    e^{-\slashed D^{\,2}/M^2}
+      =e^{-D^2/M^2}
+       \left[
+        1-\frac{E}{M^2}
+        +\frac{E^2}{2M^4}+\cdots
+       \right],
+    \qquad
+    E=\frac14[\gamma^\mu,\gamma^\nu]F_{\mu\nu},
+  \]
+  up to derivative terms that are suppressed or combine covariantly.
+  The \(M^4\) term contains
+  \(\operatorname{tr}_D\gamma^5=0\).  The possible \(M^2\) term
+  contains only two gamma matrices and vanishes because
+  \(\operatorname{tr}_D(\gamma^5\gamma^\mu\gamma^\nu)=0\).
+
+  The \(E^2\) term contains four gamma matrices and is finite:
+  \[
+    \operatorname{tr}_D\!
+      \left(\gamma^5
+       [\gamma^\mu,\gamma^\nu]
+       [\gamma^\rho,\gamma^\sigma]\right)
+      \propto\epsilon^{\mu\nu\rho\sigma}.
+  \]
+  Therefore
+  \[
+    \lim_{M\to\infty}\mathcal A_M(x)
+      \propto
+      \epsilon^{\mu\nu\rho\sigma}
+      \operatorname{tr}
+       \bigl(TF_{\mu\nu}F_{\rho\sigma}\bigr).
+  \]
+  Dimensional analysis also shows why this is the unique finite local
+  term: two field strengths have dimension four and exactly compensate
+  the four-dimensional heat-kernel measure.
+
+  \SupplementarySolution{3}{Regulator Independence of the Jacobian}
+  After Fourier transforming the coincidence limit and scaling
+  \(k=M\ell\), gamma-matrix counting again selects the term quadratic in
+  the curvature.  Its regulator dependence is proportional to
+  \[
+    \int d^4\ell\,f''(\ell^2)
+      =\pi^2\int_0^\infty ds\,s f''(s).
+  \]
+  Integrating twice by parts,
+  \[
+    \int_0^\infty ds\,s f''(s)
+      =[sf'(s)]_0^\infty-\int_0^\infty f'(s)\,ds
+      =f(0)-f(\infty)=1.
+  \]
+  Thus every admissible smooth regulator gives the same coefficient.
+  Changing the profile of \(f\) changes only terms that vanish with
+  \(M^{-1}\) or local scheme-dependent terms that do not alter the
+  anomaly class.
+
+  \SupplementarySolution{4}{The Index Hidden in the Anomaly}
+  If \(\lambda_n\neq0\), anticommutation gives
+  \[
+    i\slashed D(\gamma^5\phi_n)
+      =-\lambda_n(\gamma^5\phi_n).
+  \]
+  The two states have the same value of
+  \(f(\lambda_n^2/M^2)\), while their matrix elements of \(\gamma^5\)
+  enter with opposite signs.  Hence every nonzero pair cancels in
+  \[
+    \operatorname{Tr}\!
+      \left[\gamma^5f(\slashed D^{\,2}/M^2)\right].
+  \]
+  Zero modes can instead be chosen to satisfy
+  \(\gamma^5\phi=\pm\phi\).  Because \(f(0)=1\), only these modes remain,
+  and integration over spacetime gives
+  \[
+    \boxed{\operatorname{Tr}\!
+      \left[\gamma^5f(\slashed D^{\,2}/M^2)\right]
+      =n_+-n_-=\operatorname{ind}(i\slashed D).}
+  \]
+  The heat-kernel evaluation of the same trace equates this integer to
+  the integral of the Chern--Pontryagin density.
+
+  \SupplementarySolution{5}{An Anomalous Three-Current Ward Identity}
+  In a background field,
+  \[
+    \partial_\mu\langle J_5^\mu(x)\rangle_A
+      =C F_{\alpha\beta}(x)\widetilde F^{\alpha\beta}(x).
+  \]
+  Each derivative with respect to \(A\) inserts a vector current.  At
+  \(A=0\),
+  \[
+    \frac{\delta^2(F_{\alpha\beta}\widetilde F^{\alpha\beta})(x)}
+      {\delta A_\nu(y)\delta A_\rho(z)}
+      =
+      4\epsilon^{\nu\rho\lambda\sigma}
+       \partial_\lambda^x\delta^4(x-y)
+       \partial_\sigma^x\delta^4(x-z),
+  \]
+  with the overall sign fixed by the definition of
+  \(\widetilde F\).  Thus, suppressing conventional factors of \(i\)
+  associated with current insertions,
+  \[
+    \partial_\mu^x
+    \langle T J_5^\mu(x)J^\nu(y)J^\rho(z)\rangle
+      =
+      4C\epsilon^{\nu\rho\lambda\sigma}
+       \partial_\lambda^x\delta^4(x-y)
+       \partial_\sigma^x\delta^4(x-z).
+  \]
+  Fourier transformation gives
+  \[
+    q_\mu T^{\mu\nu\rho}(k_1,k_2)
+      =4C\epsilon^{\nu\rho\lambda\sigma}
+       k_{1\lambda}k_{2\sigma},
+    \qquad q=k_1+k_2,
+  \]
+  again up to the common Fourier-sign convention.
+
+  \SupplementarySolution{6}{Relevant and Removable Anomalies}
+  If
+  \(\mathcal G(\alpha,A)=\delta_\alpha B[A]\), define
+  \(\Gamma'=\Gamma-B\).  Then
+  \[
+    \delta_\alpha\Gamma'
+      =\mathcal G-\delta_\alpha B=0.
+  \]
+  Locality of \(B\) is essential: a nonlocal subtraction would change
+  the physical long-distance theory rather than select a
+  renormalization prescription.
+
+  In BRST language replace \(\alpha\) by the ghost \(\omega\).
+  Consistency requires \(s\mathcal G=0\).  An anomaly of the form
+  \(\mathcal G=sB\) is exact and removable, while a closed functional
+  that is not exact defines a nonzero class in local BRST cohomology at
+  ghost number one.  Finiteness and locality say that the obstruction is
+  a definite local quantum effect; non-exactness says that no allowed
+  counterterm can erase it.
+
+  \SupplementarySolution{7}{Spectral Flow in Two Dimensions}
+  The number of momentum levels per interval \(dp\) is
+  \(L\,dp/(2\pi)\).  In time \(dt\), every charged level moves by
+  \(dp=qE\,dt\), so
+  \[
+    dN_{\rm cross}=\frac{qEL}{2\pi}\,dt.
+  \]
+  A crossing creates a right-moving particle and a left-moving hole, so
+  the axial charge \(Q_5=N_R-N_L\) changes by two units.  Therefore
+  \[
+    \frac{dQ_5}{dt}
+      =2\frac{qEL}{2\pi}
+      =\frac{qEL}{\pi}.
+  \]
+  Dividing by \(L\) gives
+  \[
+    \boxed{\partial_\mu J_5^\mu=\frac{q}{\pi}E}
+  \]
+  for the convention in which \(J_5^\mu\) counts chirality but does not
+  include an additional factor of \(q\).  Reversing the orientation of
+  the circle or the sign convention for \(E\) reverses both sides.
+
+  \SupplementarySolution{8}{Four-Dimensional Anomaly from the Lowest Landau Level}
+  Each lowest-Landau-level channel behaves as a massless
+  \(1+1\)-dimensional fermion along the magnetic field.  The number of
+  channels per transverse area is
+  \[
+    \frac{|qB|}{2\pi}.
+  \]
+  Multiplying by the two-dimensional production rate per unit length,
+  and using the spin orientation of the lowest level to restore the sign
+  of \(qB\), gives
+  \[
+    \frac1V\frac{dQ_5}{dt}
+      =\frac{qE}{\pi}\frac{qB}{2\pi}
+      =\boxed{\frac{q^2}{2\pi^2}\,
+        \mathbf E\cdot\mathbf B}.
+  \]
+  This is the usual four-dimensional axial anomaly.  In covariant
+  notation it is proportional to
+  \(q^2F_{\mu\nu}\widetilde F^{\mu\nu}\); the sign relating that scalar
+  to \(\mathbf E\cdot\mathbf B\) depends on the definitions of
+  \(F_{0i}\) and \(\widetilde F\).
+
+  \SupplementarySolution{9}{A Chiral but Anomaly-Free \(U(1)\)}
+  The local gauge anomaly and the mixed gauge--gravitational anomaly
+  vanish when
+  \[
+    \sum_iq_i^3=0,\qquad \sum_iq_i=0.
+  \]
+  Here
+  \[
+    1+5-7-8+9=0,
+  \]
+  and
+  \[
+    1^3+5^3-7^3-8^3+9^3
+      =1+125-343-512+729=0.
+  \]
+  A Lorentz-invariant mass pairs two left-handed Weyl fields of opposite
+  charges, or permits a Majorana mass for a neutral field.  The set has
+  neither a zero charge nor any pair \(q,-q\).  Thus it is anomaly-free
+  but genuinely chiral: none of its fields can be removed by a
+  gauge-invariant mass term.
+
+  \SupplementarySolution{10}{Cubic Anomalies in Tensor Products}
+  On \(R\otimes S\),
+  \(T^a=T_R^a\otimes\mathbf1+\mathbf1\otimes T_S^a\).
+  In the completely symmetric trace, all mixed terms contain
+  \(\operatorname{tr}T_R^a\) or \(\operatorname{tr}T_S^a\), which
+  vanishes for a simple algebra.  The unmixed terms give
+  \[
+    A(R\otimes S)=d(S)A(R)+d(R)A(S).
+  \]
+  Complex conjugation reverses all three generators, so
+  \(A(\overline R)=-A(R)\).
+
+  For \(SU(3)\),
+  \[
+    A(\mathbf3\otimes\mathbf3)=3+3=6.
+  \]
+  But
+  \(\mathbf3\otimes\mathbf3=\mathbf6\oplus\overline{\mathbf3}\),
+  whence
+  \[
+    6=A(\mathbf6)-1,\qquad
+    \boxed{A(\mathbf6)=7.}
+  \]
+
+  \SupplementarySolution{11}{One Generation Cancels Its Gauge Anomalies}
+  Taking \(T(\mathbf3)=T(\mathbf2)=1/2\),
+  \[
+    SU(3)^2U(1):\quad
+    2\left(\frac16\right)\frac12
+      +\left(-\frac23\right)\frac12
+      +\left(\frac13\right)\frac12=0,
+  \]
+  \[
+    SU(2)^2U(1):\quad
+    3\left(\frac16\right)\frac12
+      +\left(-\frac12\right)\frac12=0.
+  \]
+  Including all color and weak multiplicities,
+  \[
+    \sum Y^3
+      =6\left(\frac16\right)^3
+       +3\left(-\frac23\right)^3
+       +3\left(\frac13\right)^3
+       +2\left(-\frac12\right)^3+1=0,
+  \]
+  while
+  \[
+    \sum Y
+      =6\left(\frac16\right)
+       +3\left(-\frac23\right)
+       +3\left(\frac13\right)
+       +2\left(-\frac12\right)+1=0.
+  \]
+  Hence all four perturbative gauge consistency conditions cancel
+  within one generation.
+
+  \SupplementarySolution{12}{Anomalies Survive Renormalization-Group Flow}
+  The background-field variation of the generating functional is a
+  local functional representing the anomaly.  Integrating out a
+  momentum shell can add local counterterms, which change the anomaly
+  only by a cohomologically trivial variation.  A nontrivial class,
+  often quantized by charges or topology, therefore cannot vary
+  continuously with \(\mu\).
+
+  The infrared functional must reproduce the same background variation.
+  Gapless particles may do so through their own anomalous loops.  If the
+  symmetry is spontaneously broken, Goldstone fields reproduce it
+  through a Wess--Zumino-type action.  A gapped phase may instead carry
+  a topological sector whose response has the required variation.
+  A unique, trivially gapped, symmetry-preserving infrared theory is
+  impossible when the ultraviolet anomaly is nonzero.
+
+  \SupplementarySolution{13}{Closed Characteristic Forms}
+  The Bianchi identity is \(DF=0\).  Since the trace of a covariant
+  derivative equals the ordinary exterior derivative,
+  \[
+    d\,\operatorname{Tr}F^n
+      =\operatorname{Tr}D(F^n)
+      =n\operatorname{Tr}\bigl((DF)F^{n-1}\bigr)=0.
+  \]
+  Under an infinitesimal gauge transformation,
+  \(\delta_\alpha F=[F,\alpha]\), and hence
+  \[
+    \delta_\alpha\operatorname{Tr}F^n
+      =n\operatorname{Tr}\bigl([F,\alpha]F^{n-1}\bigr)=0
+  \]
+  by cyclicity.  Thus Bianchi plus cyclicity prove closedness and gauge
+  invariance.  Closed invariant forms have topological integrals and,
+  through descent, furnish local anomaly polynomials in two dimensions
+  higher than the anomalous theory.
+
+  \SupplementarySolution{14}{The Wess--Zumino Consistency Condition}
+  Acting successively on \(\Gamma\),
+  \[
+    [\delta_\alpha,\delta_\beta]\Gamma
+      =\delta_\alpha\mathcal G(\beta,A)
+       -\delta_\beta\mathcal G(\alpha,A).
+  \]
+  The gauge algebra requires this to equal
+  \(\delta_{[\alpha,\beta]}\Gamma
+    =\mathcal G([\alpha,\beta],A)\).  Therefore
+  \[
+    \boxed{\delta_\alpha\mathcal G(\beta,A)
+      -\delta_\beta\mathcal G(\alpha,A)
+      =\mathcal G([\alpha,\beta],A).}
+  \]
+  For an Abelian group the commutator vanishes, leaving
+  \[
+    \delta_\alpha\mathcal G(\beta,A)
+      =\delta_\beta\mathcal G(\alpha,A).
+  \]
+  This is an integrability condition on any proposed Abelian anomaly.
+
+  \SupplementarySolution{15}{Anomalies as Ghost-Number-One Cohomology}
+  Replacing the gauge parameter by the ghost packages the gauge algebra
+  into \(s^2=0\).  The two successive variations in the Wess--Zumino
+  condition are exactly the terms in \(s\mathcal G\), so consistency is
+  \[
+    s\mathcal G=0.
+  \]
+  If \(\mathcal G=sB\), redefining the effective action by
+  \(\Gamma'=\Gamma-B\) gives \(s\Gamma'=0\).  Such a term is therefore
+  removable.  Candidate anomalies are classified by
+  \[
+    \boxed{H_{\rm loc}^{\,1}(s)
+      =\frac{\{\text{local }\mathcal G:\operatorname{gh}\mathcal G=1,
+          \ s\mathcal G=0\}}
+       {\{\mathcal G=sB:\operatorname{gh}B=0,\ B\text{ local}\}}.}
+  \]
+  If total derivatives are retained locally, this is written
+  \(H_{\rm loc}^{1}(s\mid d)\).
+
+  \SupplementarySolution{16}{The First Descent Step}
+  Direct differentiation, using graded cyclicity, gives
+  \[
+    d\,\operatorname{Tr}\left(A\,dA+\frac23A^3\right)
+      =\operatorname{Tr}\left(dA\,dA+2A^2dA\right)
+      =\operatorname{Tr}F^2.
+  \]
+  Under \(sA=-D\omega\), the variation of
+  \(\operatorname{Tr}F^2\) vanishes.  Hence \(d(sQ_3)=0\), and locally
+  \(sQ_3\) is exact.  A standard representative is
+  \[
+    \boxed{Q_2^{\,1}=\operatorname{Tr}(\omega\,dA),\qquad
+      sQ_3+dQ_2^{\,1}=0.}
+  \]
+  Adding \(d\operatorname{Tr}(\omega A)\) changes the representative
+  but not its integrated anomaly class.  This is the first nontrivial
+  step of the descent from the four-form \(\operatorname{Tr}F^2\).
+
+  \SupplementarySolution{17}{Abelian Anomaly Inflow from Five Dimensions}
+  Since \(F\) is gauge invariant,
+  \[
+    \delta_\alpha S_{\rm CS}
+      =k\int_{X_5}d\alpha\wedge F\wedge F
+      =k\int_{X_5}d(\alpha F\wedge F)
+      =k\int_{M_4}\alpha F\wedge F.
+  \]
+  Thus a boundary theory with
+  \[
+    \delta_\alpha\Gamma_{\partial}
+      =-k\int_{M_4}\alpha F\wedge F
+  \]
+  is rendered consistent by the bulk term:
+  \(\delta_\alpha(S_{\rm CS}+\Gamma_\partial)=0\).
+  Gauge charge flows between the boundary and bulk.  Separate
+  conservation fails in each subsystem, but the combined system has an
+  exactly conserved gauge current.
+
+  \SupplementarySolution{18}{Inflow onto an Axion String}
+  For an Abelian field,
+  \(F\wedge F=d(A\wedge F)\).  Away from the string,
+  \[
+    S_\theta
+      =c\int d(\theta A\wedge F)
+       -c\int d\theta\wedge A\wedge F.
+  \]
+  The second term defines a bulk Chern--Simons current proportional to
+  \(d\theta\wedge F\).  Although \(d^2\theta=0\) for a smooth
+  single-valued field, a \(2\pi\) winding gives distributionally
+  \[
+    d^2\theta=2\pi\,\delta_2(\Sigma),
+  \]
+  where \(\Sigma\) is the string world sheet.  Consequently
+  \[
+    d{*J_{\rm inflow}}
+      =-2\pi c\,\delta_2(\Sigma)\wedge F
+  \]
+  up to the orientation convention.  The right-hand side is localized
+  on \(\Sigma\) and has precisely the form of the two-dimensional gauge
+  anomaly of chiral zero modes.  Choosing \(c\) from the underlying
+  fermion anomaly makes their sum vanish.
+
+  \SupplementarySolution{19}{Why Momentum Routing Matters}
+  Write the routed integral schematically as
+  \(I(a)=\int d^4p\,f(p+a)\).  Expanding in \(a\),
+  \[
+    I(a)-I(0)
+      =a_\mu\int d^4p\,\partial_{p_\mu}f(p)+O(a^2).
+  \]
+  For a convergent integral the boundary term vanishes.  In a linearly
+  divergent triangle, \(f(p)\) falls too slowly, and Gauss's theorem
+  gives a finite integral over the sphere at \(|p|\to\infty\).  The
+  routing shift is therefore a finite local surface term.
+
+  One may choose this surface term so that the two vector Ward identities
+  hold; the remaining divergence is then assigned to the axial current.
+  A different choice redistributes the local polynomial among the three
+  vertices.  The sum fixed by the ultraviolet surface term is invariant,
+  so no routing can make all three Ward identities homogeneous.
+
+  \SupplementarySolution{20}{The Massive Axial Ward Identity}
+  The equations of motion give
+  \[
+    \partial_\mu J_5^\mu
+      =2im\bar\psi\gamma^5\psi
+  \]
+  classically.  A regulator that preserves the vector gauge symmetry
+  adds the quantum term
+  \[
+    \boxed{\partial_\mu J_5^\mu
+      =2im\bar\psi\gamma^5\psi
+       +\frac{q^2}{16\pi^2}
+        \epsilon^{\mu\nu\rho\sigma}
+        F_{\mu\nu}F_{\rho\sigma},}
+  \]
+  with an overall sign change if the opposite epsilon convention is
+  used.  At \(m=0\) the divergence is purely anomalous.  For external
+  momenta much smaller than a large \(m\), the matrix element of the
+  pseudoscalar mass term cancels the local anomalous term in amplitudes
+  of the explicitly broken axial current, allowing a massive vectorlike
+  fermion to decouple.  The operator anomaly itself has not disappeared;
+  the axial transformation is simply not a symmetry when \(m\neq0\).
+
+  \SupplementarySolution{21}{The Electroweak Anomaly of Baryon Number}
+  Only left-handed \(SU(2)_L\) doublets contribute.  Per generation the
+  quark doublet has three colors, baryon number \(1/3\), and index
+  \(T(\mathbf2)=1/2\), so
+  \[
+    \mathcal A_{SU(2)^2B}^{(1)}
+      =3\left(\frac13\right)\frac12=\frac12.
+  \]
+  Therefore
+  \[
+    \boxed{\mathcal A_{SU(2)^2B}=\frac{N_g}{2}.}
+  \]
+  Right-handed quarks are \(SU(2)_L\) singlets and have zero quadratic
+  index, so they do not affect this coefficient.
+
+  \SupplementarySolution{22}{Why \(B-L\) Escapes the Weak Anomaly}
+  Each generation has one lepton doublet of lepton number \(1\), giving
+  \[
+    \mathcal A_{SU(2)^2L}^{(1)}=1\cdot\frac12=\frac12.
+  \]
+  Thus the baryon and lepton coefficients are equal:
+  \[
+    \mathcal A_{SU(2)^2(B-L)}=0,\qquad
+    \mathcal A_{SU(2)^2(B+L)}=N_g.
+  \]
+  A unit electroweak topological transition produces one unit of baryon
+  number and one unit of lepton number per generation,
+  \[
+    \boxed{\Delta B=\Delta L=N_g,\qquad
+      \Delta(B-L)=0,\qquad
+      \Delta(B+L)=2N_g.}
+  \]
+
+  \SupplementarySolution{23}{A Gauge-Invariant AVV Tensor}
+  Lorentz invariance and odd parity require epsilon tensors.  After
+  imposing
+  \[
+    k_{1\mu}T^{\lambda\mu\nu}=0,\qquad
+    k_{2\nu}T^{\lambda\mu\nu}=0
+  \]
+  and Bose symmetry
+  \((\mu,k_1)\leftrightarrow(\nu,k_2)\), the only local rank-two
+  pseudotensor available for the axial divergence is
+  \[
+    \boxed{q_\lambda T^{\lambda\mu\nu}
+      =C_{\rm AVV}\,
+       \epsilon^{\mu\nu\rho\sigma}
+       k_{1\rho}k_{2\sigma}.}
+  \]
+  The two momenta carry mass dimension two.  The anomaly coefficient
+  \(C_{\rm AVV}\) is dimensionless and contains the charge factors and
+  the loop factor.  Momentum routing can change local representatives,
+  but vector gauge invariance fixes the displayed allocation.
+
+  \SupplementarySolution{24}{The \(B+L\) Selection Rule}
+  With the topological-charge convention in the problem, the local
+  equations are
+  \[
+    \partial_\mu J_B^\mu
+      =N_g\frac{g^2}{32\pi^2}
+        W^a_{\mu\nu}\widetilde W^{a\mu\nu},
+    \qquad
+    \partial_\mu J_L^\mu
+      =N_g\frac{g^2}{32\pi^2}
+        W^a_{\mu\nu}\widetilde W^{a\mu\nu}.
+  \]
+  Hence
+  \[
+    \partial_\mu J_{B+L}^\mu
+      =2N_g\frac{g^2}{32\pi^2}
+        W^a_{\mu\nu}\widetilde W^{a\mu\nu}.
+  \]
+  Integrating over spacetime gives
+  \[
+    \boxed{\Delta B=\Delta L=N_g\nu,\qquad
+      \Delta(B+L)=2N_g\nu,\qquad
+      \Delta(B-L)=0.}
+  \]
+
+  \SupplementarySolution{25}{The Anomaly Requires a Massless Pole}
+  Let \(q\) enter the current whose divergence is anomalous.  If the
+  correlator were analytic at \(q=0\), its Taylor expansion would contain
+  no term whose contraction with \(q_\lambda\) reproduces a fixed
+  nonzero anomalous polynomial at the required order while maintaining
+  the other Ward identities.  The longitudinal part must instead have
+  the form
+  \[
+    T_{\rm L}^{\lambda\mu\nu}
+      =C\frac{q^\lambda}{q^2}
+       \epsilon^{\mu\nu\rho\sigma}
+       k_{1\rho}k_{2\sigma},
+  \]
+  so that contraction with \(q_\lambda\) removes the pole and yields the
+  anomaly.
+
+  The \(1/q^2\) singularity signals massless propagation.  In a symmetric
+  confining phase it must be supplied by massless composite fermions.
+  In a broken phase a Goldstone pole and its anomalous effective
+  interaction can supply it.  A completely massive, symmetry-preserving
+  spectrum with no topological response cannot.
+
+  \SupplementarySolution{26}{Why Symmetric Masses Do Not Carry Anomalies}
+  A symmetry-preserving Dirac mass pairs \(R\) with \(\overline R\); a
+  Majorana mass is possible only in a real or pseudoreal representation.
+  Since
+  \[
+    A(\overline R)=-A(R),\qquad
+    A(R)=0\quad\text{for real or pseudoreal }R,
+  \]
+  every massive block has zero cubic \(G^3\) anomaly.
+
+  At external momenta \(p\ll m\), massive loops are analytic in \(p/m\)
+  and can be represented by local invariant operators.  They cannot
+  produce the nonanalytic massless pole required by a nonzero anomaly.
+  Thus only degrees of freedom that remain massless, or a Goldstone or
+  topological sector, can carry the infrared matching contribution.
+
+  \SupplementarySolution{27}{The Spectator Proof of Anomaly Matching}
+  Let the confined elementary fermions have anomaly \(A_{\rm UV}\).
+  Add spectators of anomaly \(-A_{\rm UV}\), making the weakly gauged
+  ultraviolet theory consistent.  Confinement does not affect the
+  spectators.  If \(G\) remains unbroken, there are no Goldstone bosons
+  to carry an anomalous gauge variation.
+
+  The infrared theory must still be a consistent gauge theory.  Its
+  anomaly is
+  \[
+    A_{\rm IR}^{\rm composite}-A_{\rm UV}.
+  \]
+  Gauge consistency forces this to vanish, and therefore
+  \[
+    \boxed{A_{\rm IR}^{\rm composite}=A_{\rm UV}.}
+  \]
+  This conclusion uses no weak-coupling expansion for the confining
+  dynamics; it follows from the consistency of the arbitrarily weak
+  spectator gauging.
+
+  \SupplementarySolution{28}{Two-Flavor Nucleon Matching}
+  In the ultraviolet, the three color copies of the left-handed flavor
+  doublet each have baryon number \(1/3\).  Hence
+  \[
+    \mathcal A_{\rm UV}
+      =3\left(\frac13\right)T(\mathbf2)
+      =\frac12.
+  \]
+  A single left-handed nucleon doublet has baryon number \(1\), so
+  \[
+    \mathcal A_{\rm IR}=1\cdot T(\mathbf2)=\frac12.
+  \]
+  It matches the perturbative \(SU(2)_L^2U(1)_B\) anomaly.
+
+  There are three ultraviolet \(SU(2)_L\) doublets and one proposed
+  infrared doublet.  Both numbers are odd, so their parity also agrees.
+  This is the datum relevant to the nonperturbative mod-two \(SU(2)\)
+  anomaly, although the perturbative cubic \(SU(2)^3\) anomaly vanishes
+  identically.
+
+  \SupplementarySolution{29}{Why Real Representations Have No Cubic Anomaly}
+  Complex conjugating the symmetric trace and using the intertwiner,
+  \[
+    D_R^{abc*}
+      =\operatorname{tr}
+       \left[T_R^{a*}\{T_R^{b*},T_R^{c*}\}\right]
+      =-D_R^{abc}.
+  \]
+  For Hermitian generators \(D_R^{abc}\) is real: cyclicity makes the
+  trace of \(T^aT^bT^c+T^aT^cT^b\) equal to its complex conjugate.
+  Therefore
+  \[
+    \boxed{D_R^{abc}=0.}
+  \]
+  All finite-dimensional \(SU(2)\) representations are real or
+  pseudoreal, so no perturbative cubic anomaly exists.  The argument is
+  local and perturbative; it does not test the sign of the fermion
+  determinant under a large gauge transformation, which is where a
+  global \(SU(2)\) anomaly can reside.
+
+  \SupplementarySolution{30}{An Abelian Wess--Zumino Compensator}
+  Add
+  \[
+    S_{\rm WZ}=\frac{C}{f}\int a\,F\wedge F.
+  \]
+  Because \(\delta_\alpha a=-f\alpha\),
+  \[
+    \delta_\alpha S_{\rm WZ}
+      =-C\int\alpha F\wedge F,
+  \]
+  which cancels the variation of \(\Gamma\).
+
+  The one-form
+  \[
+    da+fA
+  \]
+  is gauge invariant when \(A\to A+d\alpha\).  The canonical kinetic
+  term is therefore
+  \[
+    S_{\rm kin}=-\frac12\int(da+fA)\wedge{*}(da+fA).
+  \]
+  In the gauge \(a=0\), it contains
+  \(-f^2A_\mu A^\mu/2\).  For a canonically normalized gauge kinetic
+  term,
+  \[
+    \boxed{m_A=|f|.}
+  \]
+  The anomaly has been cancelled by adding a transforming degree of
+  freedom, not by a counterterm built from \(A\) alone.
+\end{enumerate}

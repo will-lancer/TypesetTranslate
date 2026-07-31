@@ -2,7 +2,7 @@
 
 Edition: `weinberg_vol1_exercises`
 
-Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercises, 360 supplementary solutions, and 62 ledger sources.
+Totals: 70 Weinberg exercises, 70 Weinberg solutions, 390 supplementary exercises, 390 supplementary solutions, and 67 ledger sources.
 
 | Chapter | Title | W ex./sol. | S ex./sol. | Target | Sources | Exception |
 |---:|---|---:|---:|---:|---:|---|
@@ -19,7 +19,7 @@ Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercise
 | 11 | One-Loop Radiative Corrections in Quantum Electrodynamics | 4/4 | 30/30 | 30 | 5 |  |
 | 12 | General Renormalization Theory | 4/4 | 30/30 | 30 | 5 |  |
 | 13 | Infrared Effects | 5/5 | 30/30 | 30 | 5 |  |
-| 14 | Bound States in External Fields | 5/0 | 0/0 | 30 | 0 |  |
+| 14 | Bound States in External Fields | 5/5 | 30/30 | 30 | 5 |  |
 
 ## Source use by chapter
 
@@ -35,14 +35,10 @@ Totals: 70 Weinberg exercises, 65 Weinberg solutions, 360 supplementary exercise
 - Chapter 11: `heidelberg-qft1-sheet11-2009-ch11` (6), `mit-8324-f10-lecture15-ch11` (6), `skinner-aqft-qed-renormalization-2018-ch11` (6), `srednicki-qft-qed-loops-ch11` (6), `stanford-phys330-ps9-2022-ch11` (6)
 - Chapter 12: `cohen-tasi-eft-2019-ch12` (6), `manohar-eft-2018-ch12` (6), `mit-8851-s13-foundations-ch12` (6), `skiba-tasi-eft-2010-ch12` (6), `srednicki-qft-wilsonian-ch12` (6)
 - Chapter 13: `harlow-qft2-soft-qed-2024-ch13` (6), `mit-8324-f10-lecture16-ch13` (6), `srednicki-qft-infrared-ch13` (6), `strominger-infrared-lectures-2017-ch13` (6), `stuttgart-qft-ps10-2023-ch13` (6)
+- Chapter 14: `antonelli-et-al-bound-state-eft-2000-ch14` (6), `dine-ph217-background-field-2013-ch14` (6), `mit-806-s18-ps2-hydrogen-ch14` (6), `thorn-qft-ps13-lamb-2019-ch14` (6), `tong-topicsqm-atomic-radiation-ch14` (6)
 
 ## Audit status
 
 - Mode: draft
-- Warnings: 2
+- Warnings: 0
 - Failures: 0
-
-### Current draft warnings
-
-- Chapter 14: Weinberg solutions are incomplete or discontinuous (0/5)
-- Chapter 14: 0/30 supplementary exercises and no written count exception

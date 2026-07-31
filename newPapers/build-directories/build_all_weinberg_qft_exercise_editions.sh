@@ -3,6 +3,18 @@ set -eu
 
 build_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 export_root="$build_root/../weinberg-qft-exercises"
+fingerprint_script="$build_root/fingerprint_weinberg_qft_release_inputs.py"
+source_state_before=$(python3 "$fingerprint_script")
+
+verify_source_state()
+{
+  source_state_now=$(python3 "$fingerprint_script")
+  if [ "$source_state_now" != "$source_state_before" ]
+  then
+    echo "Release inputs changed after the build began; refusing export." >&2
+    exit 1
+  fi
+}
 
 for edition in \
   weinberg_vol1_exercises \
@@ -27,6 +39,8 @@ done
 
 python3 "$build_root/audit_weinberg_qft_cross_volume.py"
 
+verify_source_state
+
 mkdir -p "$export_root"
 for volume in 1 2 3
 do
@@ -42,6 +56,8 @@ do
     exit 1
   fi
 done
+
+verify_source_state
 
 for volume in 1 2 3
 do
