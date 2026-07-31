@@ -25,3 +25,7 @@ Completed:
   - I have an edited copy and an unedited one in the repo. The edited
     one adds more examples and pedagogy to the text.
 - Weinberg's QFT: volumes I - III
+    - There is also an edited version with exercises + solutions after each chapter
+    - There is also a version of vol. III with two-component spinor notation implemented throughout
+- Weinberg's GR
+    - There is also an edited version with exercises + solutions after each chapter
