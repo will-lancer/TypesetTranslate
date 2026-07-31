@@ -23,13 +23,17 @@ manuals, Cambridge Part II, and nonexistent Cambridge 2020 papers.
 
 - Leave `weinberg-exercises.tex` unchanged.
 - Solve every W item in `weinberg-solutions.tex`.
-- Curate about 30 nonduplicative, chapter-specific items in
-  `supplementary-exercises.tex`.
+- Curate 10--30 complete, nonduplicative, chapter-specific parent problems in
+  `supplementary-exercises.tex`; never split one source problem to raise the
+  item count.
 - Give every S item a complete independently written solution in
   `supplementary-solutions.tex`.
 
 Follow `AUTHORING.md` for macros, titles, credits, and numbering. Use the
 modernized in/out helpers and prefer unnumbered editorial displays.
+Treat McGreevy, Harlow, official Cambridge Part III examinations and example
+sheets, and Kevin Zhou as an unordered first-choice pool. Choose within it by
+quality and chapter fit, then consult other strong sources.
 
 ## 5. Audit continuously
 

@@ -36,8 +36,8 @@ def main() -> int:
             "generated from `source-ledger.json`."
         ),
         "",
-        "| ID | Author/institution | Source | Year | Locator | Chapters | URL |",
-        "|---|---|---|---:|---|---|---|",
+        "| Parent ID | Family | Document | Provenance parent / source scope | Use | Author/institution | Source | Year | Locator | Chapters | URL |",
+        "|---|---|---|---|---|---|---|---:|---|---|---|",
     ]
     for source in sources:
         chapters = ", ".join(str(chapter) for chapter in source["chapters"])
@@ -47,6 +47,10 @@ def main() -> int:
             + " | ".join(
                 (
                     f"`{escaped(source['id'])}`",
+                    escaped(source["source_family"]),
+                    f"`{escaped(source['document_id'])}`",
+                    escaped(source["parent_problem"]),
+                    escaped(source["use_mode"]),
                     escaped(source["author_or_institution"]),
                     escaped(source["title"]),
                     escaped(source["year"]),

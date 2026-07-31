@@ -8,16 +8,16 @@ The inherited Author and Subject Index entries reproduce Weinberg's **printed-so
 
 | Chapter | Title | Source printed pages | Live chapter pages | W exercises | W solutions | S exercises | S solutions | References |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
-| 15 | Non-Abelian Gauge Theories | 1–62 | 7–82 / 11–86 | 57 / 61 | 58 / 62 | 62 / 66 | 69 / 73 | 80 / 84 |
-| 16 | External Field Methods | 63–79 | 83–117 / 87–121 | 96 / 100 | 96 / 100 | 99 / 103 | 105 / 109 | 117 / 121 |
-| 17 | Renormalization of Gauge Theories | 80–110 | 118–165 / 122–169 | 144 / 148 | 144 / 148 | 148 / 152 | 153 / 157 | 164 / 168 |
-| 18 | Renormalization Group Methods | 111–162 | 166–224 / 170–228 | 206 / 210 | 206 / 210 | 209 / 213 | 214 / 218 | 222 / 226 |
-| 19 | Spontaneously Broken Global Symmetries | 163–251 | 225–320 / 229–324 | 297 / 301 | 298 / 302 | 303 / 307 | 307 / 311 | 317 / 321 |
-| 20 | Operator Product Expansions | 252–294 | 321–375 / 325–379 | 356 / 360 | 357 / 361 | 360 / 364 | 365 / 369 | 374 / 378 |
-| 21 | Spontaneously Broken Gauge Symmetries | 295–358 | 376–449 / 380–453 | 427 / 431 | 427 / 431 | 431 / 435 | 436 / 440 | 446 / 450 |
-| 22 | Anomalies | 359–420 | 450–520 / 454–524 | 499 / 503 | 499 / 503 | 502 / 506 | 507 / 511 | 518 / 522 |
-| 23 | Extended Field Configurations | 421–477 | 521–590 / 525–594 | 566 / 570 | 567 / 571 | 569 / 573 | 576 / 580 | 588 / 592 |
+| 15 | Non-Abelian Gauge Theories | 1–62 | 7–81 / 11–85 | 57 / 61 | 58 / 62 | 62 / 66 | 68 / 72 | 79 / 83 |
+| 16 | External Field Methods | 63–79 | 82–115 / 86–119 | 95 / 99 | 95 / 99 | 98 / 102 | 103 / 107 | 115 / 119 |
+| 17 | Renormalization of Gauge Theories | 80–110 | 116–163 / 120–167 | 142 / 146 | 142 / 146 | 146 / 150 | 150 / 154 | 162 / 166 |
+| 18 | Renormalization Group Methods | 111–162 | 164–222 / 168–226 | 204 / 208 | 204 / 208 | 207 / 211 | 211 / 215 | 220 / 224 |
+| 19 | Spontaneously Broken Global Symmetries | 163–251 | 223–317 / 227–321 | 295 / 299 | 296 / 300 | 301 / 305 | 304 / 308 | 313 / 317 |
+| 20 | Operator Product Expansions | 252–294 | 318–371 / 322–375 | 353 / 357 | 354 / 358 | 357 / 361 | 361 / 365 | 370 / 374 |
+| 21 | Spontaneously Broken Gauge Symmetries | 295–358 | 372–443 / 376–447 | 423 / 427 | 423 / 427 | 427 / 431 | 431 / 435 | 440 / 444 |
+| 22 | Anomalies | 359–420 | 444–514 / 448–518 | 493 / 497 | 493 / 497 | 496 / 500 | 501 / 505 | 511 / 515 |
+| 23 | Extended Field Configurations | 421–477 | 515–586 / 519–590 | 560 / 564 | 561 / 565 | 563 / 567 | 570 / 574 | 584 / 588 |
 
-Live inherited-index starts: Author Index p. 591 / PDF 595; Subject Index p. 597 / PDF 601.
+Live inherited-index starts: Author Index p. 587 / PDF 591; Subject Index p. 593 / PDF 597.
 
-Completed PDF page count: 606.
+Completed PDF page count: 602.

@@ -26,6 +26,10 @@ Weinberg's existing exercise prompts are preserved verbatim in the first
 fragment. All solutions are editorial additions. Supplementary prompts are
 newly edited adaptations or original editorial problems and carry an inline
 source credit tied to `source-ledger.json`.
+Each substantive chapter contains 10--30 complete supplementary parent
+problems. Connected subparts remain under one number; thirty is a ceiling, not
+a quota. McGreevy, Harlow, official Cambridge Part III exams and example
+sheets, and Kevin Zhou form an unordered first-choice source pool.
 Chapter 24, the Historical Introduction, retains and solves its three
 original Weinberg problems but intentionally has no supplementary set.
 
@@ -53,7 +57,8 @@ solutions. The release gate is:
 ```
 
 Strict mode requires complete one-to-one solutions, source-ledger coverage,
-continuous numbering, count targets or written exceptions, canonical-source
+continuous numbering, the 10--30 range, unique exact parent problems,
+anti-fragmentation depth checks, canonical-source
 hash integrity, zero undefined or duplicate references, zero overfull boxes,
 parseable PDF output, and embedded/subset fonts. It exports only to:
 

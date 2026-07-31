@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 
 
@@ -64,6 +65,25 @@ def release_inputs() -> list[Path]:
             if not path.is_file():
                 raise SystemExit(f"Missing release metadata input: {path}")
             paths.add(path)
+        metadata = json.loads(
+            (edition_root / "exercise-edition.json").read_text(encoding="utf-8")
+        )
+        canonical_name = metadata.get("canonical_source")
+        if not isinstance(canonical_name, str) or not canonical_name:
+            raise SystemExit(f"{edition_name} has no canonical_source")
+        canonical_root = HERE / canonical_name
+        manifest = json.loads(
+            (edition_root / "canonical-source-sha256.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        if not isinstance(manifest, dict) or not manifest:
+            raise SystemExit(f"{edition_name} canonical source manifest is malformed")
+        for relative in manifest:
+            canonical_path = canonical_root / relative
+            if not canonical_path.is_file():
+                raise SystemExit(f"Missing canonical release input: {canonical_path}")
+            paths.add(canonical_path)
         paths.update(release_scripts(edition_root))
     return sorted(paths, key=lambda path: str(path.relative_to(HERE)))
 

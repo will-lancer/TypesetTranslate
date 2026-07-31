@@ -1,152 +1,335 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Covariant-Derivative Curvature}
-  Acting on a test field,
-  \[
-    [D_\mu,D_\nu]\psi
-      =-i\left(\partial_\mu A_\nu-\partial_\nu A_\mu
-        -i[A_\mu,A_\nu]\right)\psi .
-  \]
-  Thus
-  \[
-    F_{\mu\nu}
-      =\partial_\mu A_\nu-\partial_\nu A_\mu-i[A_\mu,A_\nu],
-  \]
-  which in components is Eq.~\eqref{eq:15.1.13}.  A finite gauge
-  transformation is defined by requiring
-  \(D'_\mu\psi'=UD_\mu\psi\) with \(\psi'=U\psi\); hence
-  \(D'_\mu=UD_\mu U^{-1}\).  It follows without further expansion that
-  \[
-    [D'_\mu,D'_\nu]
-      =U[D_\mu,D_\nu]U^{-1}
-      =-iUF_{\mu\nu}U^{-1}.
-  \]
-  Comparing this with
-  \([D'_\mu,D'_\nu]=-iF'_{\mu\nu}\) gives
-  \(F'_{\mu\nu}=UF_{\mu\nu}U^{-1}\).
+  \SupplementarySolution{1}{Curvature from Parallel Transport}
+  \begin{enumerate}
+    \item[(a)]
+    Acting on a test field,
+    \[
+      [D_\mu,D_\nu]\psi
+        =-i\left(\partial_\mu A_\nu-\partial_\nu A_\mu
+          -i[A_\mu,A_\nu]\right)\psi .
+    \]
+    Thus
+    \[
+      F_{\mu\nu}
+        =\partial_\mu A_\nu-\partial_\nu A_\mu-i[A_\mu,A_\nu],
+    \]
+    which in components is Eq.~\eqref{eq:15.1.13}.  A finite gauge
+    transformation is defined by requiring
+    \(D'_\mu\psi'=UD_\mu\psi\) with \(\psi'=U\psi\); hence
+    \(D'_\mu=UD_\mu U^{-1}\).  It follows without further expansion that
+    \[
+      [D'_\mu,D'_\nu]
+        =U[D_\mu,D_\nu]U^{-1}
+        =-iUF_{\mu\nu}U^{-1}.
+    \]
+    Comparing this with
+    \([D'_\mu,D'_\nu]=-iF'_{\mu\nu}\) gives
+    \(F'_{\mu\nu}=UF_{\mu\nu}U^{-1}\).
+    \item[(b)]
+    The transporter on a short displacement \(u^\mu\) from \(z\) is
+    \[
+      U(z+u,z)
+        =1+i u^\mu A_\mu(z)
+         +\frac{i}{2}u^\mu u^\nu\partial_\mu A_\nu(z)
+         -\frac12u^\mu u^\nu A_\mu(z)A_\nu(z)+O(u^3).
+    \]
+    Multiply the corresponding expressions for the four oriented sides in
+    their traversal order.  The terms linear in \(a\) or \(b\) cancel.  The
+    derivative terms give
+    \(i(\partial_\mu A_\nu-\partial_\nu A_\mu)a^\mu b^\nu\), while the
+    products whose order differs on the two routes give
+    \([A_\mu,A_\nu]a^\mu b^\nu\).  Therefore
+    \[
+      U_\square
+        =1+i\bigl(\partial_\mu A_\nu-\partial_\nu A_\mu
+          -i[A_\mu,A_\nu]\bigr)a^\mu b^\nu+O(\ell^3)
+        =1+iF_{\mu\nu}a^\mu b^\nu+O(\ell^3).
+    \]
+    Replacing the ordered product by an ordinary exponential would
+    symmetrize the matrix factors and lose the commutator; path ordering is
+    precisely what retains the non-Abelian part of the curvature.
+  \end{enumerate}
 
-  \SupplementarySolution{2}{Infinitesimal Plaquette Holonomy}
-  The transporter on a short displacement \(u^\mu\) from \(z\) is
-  \[
-    U(z+u,z)
-      =1+i u^\mu A_\mu(z)
-       +\frac{i}{2}u^\mu u^\nu\partial_\mu A_\nu(z)
-       -\frac12u^\mu u^\nu A_\mu(z)A_\nu(z)+O(u^3).
-  \]
-  Multiply the corresponding expressions for the four oriented sides in
-  their traversal order.  The terms linear in \(a\) or \(b\) cancel.  The
-  derivative terms give
-  \(i(\partial_\mu A_\nu-\partial_\nu A_\mu)a^\mu b^\nu\), while the
-  products whose order differs on the two routes give
-  \([A_\mu,A_\nu]a^\mu b^\nu\).  Therefore
-  \[
-    U_\square
-      =1+i\bigl(\partial_\mu A_\nu-\partial_\nu A_\mu
-        -i[A_\mu,A_\nu]\bigr)a^\mu b^\nu+O(\ell^3)
-      =1+iF_{\mu\nu}a^\mu b^\nu+O(\ell^3).
-  \]
-  Replacing the ordered product by an ordinary exponential would
-  symmetrize the matrix factors and lose the commutator; path ordering is
-  precisely what retains the non-Abelian part of the curvature.
+  \SupplementarySolution{2}{Yang--Mills Equation and Covariant Conservation}
+  \begin{enumerate}
+    \item[(a)]
+    Applying a covariant divergence to the field equation gives
+    \[
+      D_\nu J^\nu=D_\nu D_\mu F^{\mu\nu}
+        =\frac12[D_\nu,D_\mu]F^{\mu\nu}.
+    \]
+    In the adjoint representation,
+    \([D_\nu,D_\mu]X=-i[F_{\nu\mu},X]\), up to the convention for where
+    \(g\) is absorbed.  Therefore
+    \[
+      D_\nu J^\nu
+        =-\frac{i}{2}[F_{\nu\mu},F^{\mu\nu}]=0.
+    \]
+    The last contraction vanishes because interchanging the two field
+    strengths reverses the Lie bracket while leaving the summed Lorentz
+    indices unchanged.  Thus the Yang--Mills equation requires the
+    covariant, rather than ordinary, conservation law
+    \[
+      \boxed{D_\nu J^\nu=0.}
+    \]
+    \item[(b)]
+    Since \(\Psi'=U\Psi\) and
+    \(\overline\Psi'=\overline\Psi U^{-1}\),
+    \[
+      J'^\nu
+        =g\overline\Psi U^{-1}\gamma^\nu T^aU\Psi\,T^a
+        =UJ^\nu U^{-1},
+    \]
+    where the final equality is the matrix form of the adjoint action on
+    the components.
 
-  \SupplementarySolution{3}{Endpoint Law for Wilson Lines}
-  Parameterize the path by \(z(s)\), with \(z(0)=y\) and \(z(1)=x\).  The
-  Wilson line solves
-  \[
-    \frac{dW(s,0)}{ds}
-      =i\dot z^\mu A_\mu(z(s))W(s,0),\qquad W(0,0)=1.
-  \]
-  Substitution of the finite transformation of \(A_\mu\) shows that
-  \(U(z(s))W(s,0)U^{-1}(y)\) solves the transformed equation with the same
-  initial condition.  Uniqueness gives
-  \[
-    W_\gamma(x,y)\longrightarrow
-      U(x)W_\gamma(x,y)U^{-1}(y).
-  \]
-  For \(x=y\), cyclicity of the trace therefore makes
-  \(\operatorname{tr}W_\gamma(x,x)\) gauge invariant.  Also,
-  \[
-    \psi^\dagger(x)W_\gamma(x,y)\psi(y)
-      \longrightarrow
-      \psi^\dagger(x)U^\dagger(x)U(x)W_\gamma
-      U^{-1}(y)U(y)\psi(y),
-  \]
-  which equals the original bilocal operator for a unitary
-  representation.
+    The transformed covariant derivative satisfies
+    \(D'_\mu=UD_\mu U^{-1}\), while
+    \(F'^{\mu\nu}=UF^{\mu\nu}U^{-1}\).  Acting on the curvature therefore
+    gives
+    \[
+      D'_\mu F'^{\mu\nu}
+        =U(D_\mu F^{\mu\nu})U^{-1}.
+    \]
+    Both sides of the field equation transform homogeneously in the
+    adjoint representation, so its covariance follows from the independent
+    transformations of the matter current and curvature.
+  \end{enumerate}
 
-  \SupplementarySolution{4}{Abelian Wilson Loop and Flux}
-  All Abelian connection values commute, so
-  \[
-    W(C)=\exp\left(iq\oint_C A_\mu\,dx^\mu\right).
-  \]
-  If \(C=\partial\Sigma\), Stokes' theorem yields
-  \[
-    W(C)
-      =\exp\left(\frac{iq}{2}
-        \int_\Sigma F_{\mu\nu}\,d\Sigma^{\mu\nu}\right).
-  \]
-  Two spanning surfaces \(\Sigma_1,\Sigma_2\) give the same answer if their
-  union bounds a three-chain in a region where \(dF=0\).  Indeed, their
-  flux difference is \(\int_VdF=0\).  Magnetic sources, excluded points, or
-  nontrivial topology can obstruct this argument.  Quantum mechanically the
-  exponentials can still agree when the flux difference is an integral
-  multiple of \(2\pi/q\), the setting in which flux quantization enters.
+  \SupplementarySolution{3}{Equal Curvature Is Not Gauge Equivalence}
+  \begin{enumerate}
+    \item[(a)]
+    With \(F_{12}=\partial_1A_2-\partial_2A_1+[A_1,A_2]\), the first
+    connection gives
+    \[
+      F_{12}=a^2[T_1,T_2]=a^2T_3.
+    \]
+    The second gives
+    \(F'_{12}=\partial_1(a^2x^1T_3)=a^2T_3\).
+    Nevertheless their covariant derivatives of the curvature differ:
+    \[
+      D_1F_{12}=a^3[T_1,T_3]\ne0,\qquad
+      D_2F_{12}=a^3[T_2,T_3]\ne0,
+    \]
+    while \(D'_1F'_{12}=D'_2F'_{12}=0\).  Hence, for example,
+    \[
+      \operatorname{tr}\bigl(D_\rho F_{12}D^\rho F_{12}\bigr)
+    \]
+    distinguishes the connections.  This scalar is gauge invariant, so the
+    two connections cannot be related by a gauge transformation.  In an
+    Abelian theory equal curvatures imply \(d(A-A')=0\).  The Poincaré lemma
+    makes \(A-A'=d\lambda\) on a simply connected contractible patch, which
+    is exactly an Abelian gauge transformation.
+  \end{enumerate}
 
-  \SupplementarySolution{5}{Covariant Bianchi Identity in Matrix Form}
-  For a matrix-valued \(p\)-form \(X\), write
-  \(DX=dX-i(A\wedge X-(-1)^pX\wedge A)\).  With
-  \(F=dA-iA\wedge A\),
-  \[
-    \begin{split}
-    DF
-      &=d(dA-iA\wedge A)-i(A\wedge F-F\wedge A)\\
-      &=-i(dA\wedge A-A\wedge dA)
-        -i(A\wedge dA-dA\wedge A)=0.
-    \end{split}
-  \]
-  The cubic terms cancel as well.  In components this is
-  \(D_\lambda F_{\mu\nu}+D_\mu F_{\nu\lambda}
-  +D_\nu F_{\lambda\mu}=0\).
-  Since \(F'=UFU^{-1}\) and \(D'=UDU^{-1}\), one has
-  \((DF)'=U(DF)U^{-1}\), so the identity is gauge covariant.  In the
-  Abelian limit it is \(\partial_{[\lambda}F_{\mu\nu]}=0\); its purely
-  spatial component is \(\boldsymbol\nabla\cdot\mathbf B=0\), and its
-  component with one time index is
-  \(\boldsymbol\nabla\times\mathbf E+\partial_t\mathbf B=0\), with signs
-  adjusted to the definitions of \(\mathbf E\) and \(\mathbf B\).
+  \SupplementarySolution{4}{Gauge Transport and Curvature}
+  \begin{enumerate}
+    \item[(a)]
+    Parameterize the path by \(z(s)\), with \(z(0)=y\) and \(z(1)=x\).  The
+    Wilson line solves
+    \[
+      \frac{dW(s,0)}{ds}
+        =i\dot z^\mu A_\mu(z(s))W(s,0),\qquad W(0,0)=1.
+    \]
+    Substitution of the finite transformation of \(A_\mu\) shows that
+    \(U(z(s))W(s,0)U^{-1}(y)\) solves the transformed equation with the same
+    initial condition.  Uniqueness gives
+    \[
+      W_\gamma(x,y)\longrightarrow
+        U(x)W_\gamma(x,y)U^{-1}(y).
+    \]
+    For \(x=y\), cyclicity of the trace therefore makes
+    \(\operatorname{tr}W_\gamma(x,x)\) gauge invariant.  Also,
+    \[
+      \psi^\dagger(x)W_\gamma(x,y)\psi(y)
+        \longrightarrow
+        \psi^\dagger(x)U^\dagger(x)U(x)W_\gamma
+        U^{-1}(y)U(y)\psi(y),
+    \]
+    which equals the original bilocal operator for a unitary
+    representation.
+    \item[(b)]
+    All Abelian connection values commute, so
+    \[
+      W(C)=\exp\left(iq\oint_C A_\mu\,dx^\mu\right).
+    \]
+    If \(C=\partial\Sigma\), Stokes' theorem yields
+    \[
+      W(C)
+        =\exp\left(\frac{iq}{2}
+          \int_\Sigma F_{\mu\nu}\,d\Sigma^{\mu\nu}\right).
+    \]
+    Two spanning surfaces \(\Sigma_1,\Sigma_2\) give the same answer if their
+    union bounds a three-chain in a region where \(dF=0\).  Indeed, their
+    flux difference is \(\int_VdF=0\).  Magnetic sources, excluded points, or
+    nontrivial topology can obstruct this argument.  Quantum mechanically the
+    exponentials can still agree when the flux difference is an integral
+    multiple of \(2\pi/q\), the setting in which flux quantization enters.
+    \item[(c)]
+    For a matrix-valued \(p\)-form \(X\), write
+    \(DX=dX-i(A\wedge X-(-1)^pX\wedge A)\).  With
+    \(F=dA-iA\wedge A\),
+    \[
+      \begin{split}
+      DF
+        &=d(dA-iA\wedge A)-i(A\wedge F-F\wedge A)\\
+        &=-i(dA\wedge A-A\wedge dA)
+          -i(A\wedge dA-dA\wedge A)=0.
+      \end{split}
+    \]
+    The cubic terms cancel as well.  In components this is
+    \(D_\lambda F_{\mu\nu}+D_\mu F_{\nu\lambda}
+    +D_\nu F_{\lambda\mu}=0\).
+    Since \(F'=UFU^{-1}\) and \(D'=UDU^{-1}\), one has
+    \((DF)'=U(DF)U^{-1}\), so the identity is gauge covariant.  In the
+    Abelian limit it is \(\partial_{[\lambda}F_{\mu\nu]}=0\); its purely
+    spatial component is \(\boldsymbol\nabla\cdot\mathbf B=0\), and its
+    component with one time index is
+    \(\boldsymbol\nabla\times\mathbf E+\partial_t\mathbf B=0\), with signs
+    adjusted to the definitions of \(\mathbf E\) and \(\mathbf B\).
+  \end{enumerate}
 
-  \SupplementarySolution{6}{Yang--Mills Equation and Covariant Conservation}
-  The variation of the curvature is
-  \[
-    \delta F^a_{\mu\nu}
-      =(D_\mu\delta A_\nu)^a-(D_\nu\delta A_\mu)^a.
-  \]
-  Covariant integration by parts then gives
-  \[
-    \delta I=\int d^4x\,
-      \bigl[(D_\mu F^{\mu\nu})_a+J_a^\nu\bigr]\delta A^a_\nu.
-  \]
-  Thus, for the sign of the source term in the question,
-  \[
-    (D_\mu F^{\mu\nu})_a=-J_a^\nu.
-  \]
-  Now use antisymmetry of \(F^{\mu\nu}\):
-  \[
-    D_\nu D_\mu F^{\mu\nu}
-      =\frac12[D_\nu,D_\mu]F^{\mu\nu}.
-  \]
-  The right-hand side is an adjoint commutator of \(F_{\nu\mu}\) with
-  \(F^{\mu\nu}\).  Its component contraction vanishes because the product
-  is symmetric in the two adjoint labels while the structure constant is
-  antisymmetric.  Applying \(D_\nu\) to the field equation therefore
-  requires
-  \[
-    (D_\nu J^\nu)_a=0.
-  \]
-  This is covariant, rather than ordinary, current conservation.
+  \SupplementarySolution{5}{Faddeev--Popov Operators and Ghost Vertices}
+  \begin{enumerate}
+    \item[(a)]
+    From
+    \(\delta A_\alpha^\mu=\partial^\mu\lambda_\alpha+
+    C_{\alpha\gamma\beta}A_\gamma^\mu\lambda_\beta\),
+    \[
+      \mathcal F_{\alpha x,\beta y}
+        =\delta_{\alpha\beta}\Box_x\delta^4(x-y)
+         +C_{\alpha\gamma\beta}\partial_\mu^x
+          \left[A_\gamma^\mu(x)\delta^4(x-y)\right].
+    \]
+    The first term is \(\mathcal F_0\); the second is
+    \(\mathcal F_1\).  Inserting the operator between
+    \(\omega_\alpha^*\) and \(\omega_\beta\), then integrating by parts,
+    gives
+    \[
+      \mathcal L_{\rm GH}
+        =-\partial_\mu\omega_\alpha^*\partial^\mu\omega_\alpha
+         +C_{\alpha\beta\gamma}
+          (\partial_\mu\omega_\alpha^*)A_\gamma^\mu\omega_\beta .
+    \]
+    The free propagator is the inverse of \(\Box\):
+    \[
+      \Delta_{\alpha\beta}(x,y)
+        =\delta_{\alpha\beta}\int\frac{d^4p}{(2\pi)^4}
+          \frac{e^{ip\cdot(x-y)}}{p^2-i\epsilon}.
+    \]
+    \item[(b)]
+    Since \(\delta A_\mu=\partial_\mu\lambda\),
+    \[
+      \delta f
+        =\left(\Box+\kappa A^\mu\partial_\mu\right)\lambda .
+    \]
+    Thus
+    \[
+      \det\mathcal F
+        \propto\int[d\omega^*][d\omega]\,
+        \exp\left\{i\int d^4x\,
+        \omega^*\bigl(\Box+\kappa A^\mu\partial_\mu\bigr)\omega\right\}.
+    \]
+    The interaction is
+    \(\kappa\omega^*A^\mu\partial_\mu\omega\).  With Fourier convention
+    \(e^{iq\cdot x}\), its action coefficient is
+    \(i\kappa q_\mu\), where \(q\) is the incoming ghost momentum.  Including
+    the usual extra \(i\) for an interaction vertex gives
+    \(-\kappa q_\mu\); both signs reverse together if the opposite Fourier
+    convention is adopted.  The operator depends on \(A_\mu\), so its
+    determinant is not a harmless constant: even an Abelian theory has
+    interacting ghosts in this nonlinear gauge.
+    \item[(c)]
+    The gauge variation is
+    \[
+      \delta f_\alpha=n^\mu(D_\mu\lambda)_\alpha,
+    \]
+    so \(\mathcal F=n\cdot D\) and
+    \[
+      \mathcal L_{\rm GH}
+        =\omega_\alpha^*n\cdot\partial\,\omega_\alpha
+         +C_{\alpha\gamma\beta}\omega_\alpha^*
+          (n\cdot A_\gamma)\omega_\beta.
+    \]
+    On the exact gauge slice \(n\cdot A_\gamma=0\), this becomes the
+    field-independent operator \(n\cdot\partial\).  Its determinant can be
+    absorbed into the normalization, so no ghost vertex remains.
 
-  \SupplementarySolution{7}{Adjoint \(SU(2)\) and Its Casimir}
+    This decoupling assumes the sharp axial gauge (or a limit that reaches it),
+    boundary conditions for which \(n\cdot\partial\) has no unremoved zero
+    modes, and a consistent prescription for the \(1/(n\cdot p)\) poles.
+    Residual transformations satisfying \(n\cdot\partial\lambda=0\), global
+    Gribov issues, or an incompletely fixed boundary-value problem must be
+    handled separately.
+    \item[(d)]
+    Fourier transformation replaces the derivative of the antighost by
+    \(ip_\mu\), where \(p\) is the incoming antighost momentum.  Thus the
+    vertex contribution in the convention of the chapter is
+    \[
+      i(2\pi)^4\delta^4(p+q+k)\,
+        ip_\mu C_{abc},
+    \]
+    for antighost, ghost, and gauge indices \(a,b,c\), respectively.  It is
+    the antighost momentum, not the ghost or gluon momentum, that appears
+    because the displayed Lagrangian has the derivative on \(\omega_a^*\).
+    Integration by parts moves the derivative and reshuffles the apparently
+    different momentum factors; momentum conservation makes the resulting
+    rules equivalent when all terms are retained.  Ghost variables are
+    Grassmann odd, so cyclically closing a chain of ghost contractions
+    requires an odd permutation.  Every closed ghost loop therefore carries
+    the same extra factor \(-1\) as a closed fermion loop.
+  \end{enumerate}
+
+  \SupplementarySolution{6}{BRST Nilpotency and Gauge-Fermion Fixing}
+  \begin{enumerate}
+    \item[(a)]
+    Nilpotency on \(\omega^*\) and \(h\) is immediate.  On the ghost,
+    the graded Leibniz rule gives
+    \[
+      s^2\omega_a
+        =\frac14C_{abc}C_{bde}\omega_d\omega_e\omega_c
+         -\frac14C_{abc}C_{cde}\omega_b\omega_d\omega_e.
+    \]
+    Anticommuting the ghosts puts this in the form
+    \[
+      s^2\omega_a
+        \propto C_{ae[b}C_{ecd]}\omega_b\omega_c\omega_d=0,
+    \]
+    which is the Jacobi identity.  For the gauge field,
+    \[
+      s^2A_\mu=D_\mu(s\omega)+[sA_\mu,\omega].
+    \]
+    Substituting \(s\omega=-\tfrac12[\omega,\omega]\) and
+    \(sA_\mu=D_\mu\omega\), the derivative terms cancel because the ghosts
+    anticommute, while the remaining triple-ghost coefficient is again the
+    Jacobi combination.  Hence \(s^2A_\mu=0\).  No equation of motion was
+    used; the two ingredients are Grassmann antisymmetry, which selects
+    antisymmetrized structure-constant products, and the Lie-algebra Jacobi
+    identity, which kills them.
+    \item[(b)]
+    Put
+    \(\Delta_a\equiv sf_a\).  Since \(\omega_a^*\) is odd, the graded
+    Leibniz rule and \(s\omega_a^*=-h_a\) give
+    \[
+      s\Psi=\int d^4x\left[
+        \omega_a^*\Delta_a+h_af_a+\frac{\xi}{2}h_ah_a\right].
+    \]
+    Thus the first term is precisely the Faddeev--Popov ghost action and the
+    other two are the auxiliary form of gauge fixing.  Nilpotency immediately
+    yields \(s(s\Psi)=0\), so this entire sector is BRST invariant.  The
+    \(h_a\) equation,
+    \(h_a=-f_a/\xi\), reduces it to
+    \[
+      \int d^4x\left(\omega_a^*\Delta_a-\frac{f_af_a}{2\xi}\right).
+    \]
+    The minus sign in the definition of \(\Psi\) is the one compatible with
+    \(s\omega^*=-h\) and the left-acting graded convention; changing both
+    conventions leaves the physics unchanged.
+  \end{enumerate}
+
+  \SupplementarySolution{7}{The Adjoint of \(SU(2)\)}
   The adjoint generators are
   \[
     t^A_1=\begin{pmatrix}0&0&0\\0&0&-i\\0&i&0\end{pmatrix},\quad
@@ -167,148 +350,118 @@
   giving \(C_F=3/4\).  The different eigenvalues reflect the different
   representations, even though both sets realize the same Lie algebra.
 
-  \SupplementarySolution{8}{Equal Curvature Is Not Gauge Equivalence}
-  With \(F_{12}=\partial_1A_2-\partial_2A_1+[A_1,A_2]\), the first
-  connection gives
-  \[
-    F_{12}=a^2[T_1,T_2]=a^2T_3.
-  \]
-  The second gives
-  \(F'_{12}=\partial_1(a^2x^1T_3)=a^2T_3\).
-  Nevertheless their covariant derivatives of the curvature differ:
-  \[
-    D_1F_{12}=a^3[T_1,T_3]\ne0,\qquad
-    D_2F_{12}=a^3[T_2,T_3]\ne0,
-  \]
-  while \(D'_1F'_{12}=D'_2F'_{12}=0\).  Hence, for example,
-  \[
-    \operatorname{tr}\bigl(D_\rho F_{12}D^\rho F_{12}\bigr)
-  \]
-  distinguishes the connections.  This scalar is gauge invariant, so the
-  two connections cannot be related by a gauge transformation.  In an
-  Abelian theory equal curvatures imply \(d(A-A')=0\).  The Poincaré lemma
-  makes \(A-A'=d\lambda\) on a simply connected contractible patch, which
-  is exactly an Abelian gauge transformation.
-
-  \SupplementarySolution{9}{Lorenz-Gauge Faddeev--Popov Kernel}
-  From
-  \(\delta A_\alpha^\mu=\partial^\mu\lambda_\alpha+
-  C_{\alpha\gamma\beta}A_\gamma^\mu\lambda_\beta\),
-  \[
-    \mathcal F_{\alpha x,\beta y}
-      =\delta_{\alpha\beta}\Box_x\delta^4(x-y)
-       +C_{\alpha\gamma\beta}\partial_\mu^x
-        \left[A_\gamma^\mu(x)\delta^4(x-y)\right].
-  \]
-  The first term is \(\mathcal F_0\); the second is
-  \(\mathcal F_1\).  Inserting the operator between
-  \(\omega_\alpha^*\) and \(\omega_\beta\), then integrating by parts,
-  gives
-  \[
-    \mathcal L_{\rm GH}
-      =-\partial_\mu\omega_\alpha^*\partial^\mu\omega_\alpha
-       +C_{\alpha\beta\gamma}
-        (\partial_\mu\omega_\alpha^*)A_\gamma^\mu\omega_\beta .
-  \]
-  The free propagator is the inverse of \(\Box\):
-  \[
-    \Delta_{\alpha\beta}(x,y)
-      =\delta_{\alpha\beta}\int\frac{d^4p}{(2\pi)^4}
-        \frac{e^{ip\cdot(x-y)}}{p^2-i\epsilon}.
-  \]
-
-  \SupplementarySolution{10}{Ghost Interactions from a Nonlinear Abelian Gauge}
-  Since \(\delta A_\mu=\partial_\mu\lambda\),
-  \[
-    \delta f
-      =\left(\Box+\kappa A^\mu\partial_\mu\right)\lambda .
-  \]
-  Thus
-  \[
-    \det\mathcal F
-      \propto\int[d\omega^*][d\omega]\,
-      \exp\left\{i\int d^4x\,
-      \omega^*\bigl(\Box+\kappa A^\mu\partial_\mu\bigr)\omega\right\}.
-  \]
-  The interaction is
-  \(\kappa\omega^*A^\mu\partial_\mu\omega\).  With Fourier convention
-  \(e^{iq\cdot x}\), its action coefficient is
-  \(i\kappa q_\mu\), where \(q\) is the incoming ghost momentum.  Including
-  the usual extra \(i\) for an interaction vertex gives
-  \(-\kappa q_\mu\); both signs reverse together if the opposite Fourier
-  convention is adopted.  The operator depends on \(A_\mu\), so its
-  determinant is not a harmless constant: even an Abelian theory has
-  interacting ghosts in this nonlinear gauge.
-
-  \SupplementarySolution{11}{Ghost Decoupling in Axial Gauge}
-  The gauge variation is
-  \[
-    \delta f_\alpha=n^\mu(D_\mu\lambda)_\alpha,
-  \]
-  so \(\mathcal F=n\cdot D\) and
-  \[
-    \mathcal L_{\rm GH}
-      =\omega_\alpha^*n\cdot\partial\,\omega_\alpha
-       +C_{\alpha\gamma\beta}\omega_\alpha^*
-        (n\cdot A_\gamma)\omega_\beta.
-  \]
-  On the exact gauge slice \(n\cdot A_\gamma=0\), this becomes the
-  field-independent operator \(n\cdot\partial\).  Its determinant can be
-  absorbed into the normalization, so no ghost vertex remains.
-
-  This decoupling assumes the sharp axial gauge (or a limit that reaches it),
-  boundary conditions for which \(n\cdot\partial\) has no unremoved zero
-  modes, and a consistent prescription for the \(1/(n\cdot p)\) poles.
-  Residual transformations satisfying \(n\cdot\partial\lambda=0\), global
-  Gribov issues, or an incompletely fixed boundary-value problem must be
-  handled separately.
-
-  \SupplementarySolution{12}{General Covariant-Gauge Propagator}
-  After integration by parts, the quadratic operator is
-  \[
-    K_{\mu\nu}(p)
-      =p^2\eta_{\mu\nu}
-       -\left(1-\frac1\xi\right)p_\mu p_\nu .
-  \]
-  Decompose into transverse and longitudinal projectors
-  \(P^T_{\mu\nu}=\eta_{\mu\nu}-p_\mu p_\nu/p^2\) and
-  \(P^L_{\mu\nu}=p_\mu p_\nu/p^2\).  Then
-  \(K=p^2P^T+(p^2/\xi)P^L\), so
-  \[
-    \Delta^{ab}_{\mu\nu}(p)
-      =\frac{\delta^{ab}}{p^2-i\epsilon}
+  \SupplementarySolution{8}{Covariant Propagators and Ward Identities}
+  \begin{enumerate}
+    \item[(a)]
+    After integration by parts, the quadratic operator is
+    \[
+      K_{\mu\nu}(p)
+        =p^2\eta_{\mu\nu}
+         -\left(1-\frac1\xi\right)p_\mu p_\nu .
+    \]
+    Decompose into transverse and longitudinal projectors
+    \(P^T_{\mu\nu}=\eta_{\mu\nu}-p_\mu p_\nu/p^2\) and
+    \(P^L_{\mu\nu}=p_\mu p_\nu/p^2\).  Then
+    \(K=p^2P^T+(p^2/\xi)P^L\), so
+    \[
+      \Delta^{ab}_{\mu\nu}(p)
+        =\frac{\delta^{ab}}{p^2-i\epsilon}
+          \left[\eta_{\mu\nu}
+            (\xi-1)\frac{p_\mu p_\nu}{p^2}\right].
+    \]
+    For \(\xi=1\) this is the Feynman-gauge propagator
+    \(\eta_{\mu\nu}/(p^2-i\epsilon)\).  For \(\xi=0\) it is transverse,
+    \(p^\mu\Delta_{\mu\nu}=0\).  At general \(\xi\),
+    \[
+      p^\mu\Delta^{ab}_{\mu\nu}(p)
+        =\frac{\xi\,\delta^{ab}p_\nu}{p^2-i\epsilon},
+    \]
+    apart from the immaterial placement of \(i\epsilon\) in the longitudinal
+    algebraic factor.
+    \item[(b)]
+    BRST invariance of the measure and vacuum gives
+    \[
+      0=\left\langle s\bigl(A_\mu(x)\omega^*(y)\bigr)\right\rangle
+        =\left\langle\partial_\mu\omega(x)\omega^*(y)\right\rangle
+         -\langle A_\mu(x)h(y)\rangle .
+    \]
+    Since the auxiliary equation is
+    \(h=-\partial\cdot A/\xi\),
+    \[
+      \partial_\mu^x\Delta_{\rm gh}(x-y)
+        =-\frac1\xi\,
+          \partial_y^\nu\Delta_{\mu\nu}(x-y).
+    \]
+    With the common Fourier factor \(e^{ip\cdot(x-y)}\), this is
+    \[
+      p^\nu\Delta_{\mu\nu}(p)
+        =\xi p_\mu\Delta_{\rm gh}(p).
+    \]
+    The free propagators are
+    \[
+      \Delta_{\rm gh}(p)=\frac1{p^2-i\epsilon},\qquad
+      \Delta_{\mu\nu}(p)=\frac1{p^2-i\epsilon}
         \left[\eta_{\mu\nu}
-          (\xi-1)\frac{p_\mu p_\nu}{p^2}\right].
-  \]
-  For \(\xi=1\) this is the Feynman-gauge propagator
-  \(\eta_{\mu\nu}/(p^2-i\epsilon)\).  For \(\xi=0\) it is transverse,
-  \(p^\mu\Delta_{\mu\nu}=0\).  At general \(\xi\),
-  \[
-    p^\mu\Delta^{ab}_{\mu\nu}(p)
-      =\frac{\xi\,\delta^{ab}p_\nu}{p^2-i\epsilon},
-  \]
-  apart from the immaterial placement of \(i\epsilon\) in the longitudinal
-  algebraic factor.
+        (\xi-1)\frac{p_\mu p_\nu}{p^2}\right],
+    \]
+    and their contraction verifies the identity directly.
+  \end{enumerate}
 
-  \SupplementarySolution{13}{Momentum-Space Ghost--Gluon Vertex}
-  Fourier transformation replaces the derivative of the antighost by
-  \(ip_\mu\), where \(p\) is the incoming antighost momentum.  Thus the
-  vertex contribution in the convention of the chapter is
-  \[
-    i(2\pi)^4\delta^4(p+q+k)\,
-      ip_\mu C_{abc},
-  \]
-  for antighost, ghost, and gauge indices \(a,b,c\), respectively.  It is
-  the antighost momentum, not the ghost or gluon momentum, that appears
-  because the displayed Lagrangian has the derivative on \(\omega_a^*\).
-  Integration by parts moves the derivative and reshuffles the apparently
-  different momentum factors; momentum conservation makes the resulting
-  rules equivalent when all terms are retained.  Ghost variables are
-  Grassmann odd, so cyclically closing a chain of ghost contractions
-  requires an odd permutation.  Every closed ghost loop therefore carries
-  the same extra factor \(-1\) as a closed fermion loop.
+  \SupplementarySolution{9}{Lie-Algebra BRST Cohomology}
+  \begin{enumerate}
+    \item[(a)]
+    On a generator,
+    \[
+      Q^2\omega^a
+        =\frac16C^a{}_{e[b}C^e{}_{cd]}
+          \omega^b\omega^c\omega^d .
+    \]
+    The brackets denote total antisymmetrization, forced by the Grassmann
+    product.  Thus the Jacobi identity makes \(Q^2\omega^a=0\).  Because
+    \(Q\) is an odd graded derivation, vanishing on all generators implies
+    vanishing on every polynomial.  Conversely, if \(Q^2=0\), the
+    coefficient of each independent cubic ghost monomial must vanish, which
+    is precisely Jacobi.
 
-  \SupplementarySolution{14}{Auxiliary-Field Form of Gauge Fixing}
+    The polynomial algebra is the exterior algebra
+    \(\Lambda^\bullet\mathfrak g^*\); \(Q\) is the
+    Chevalley--Eilenberg differential for trivial coefficients.  Its ghost
+    number is the cochain degree, and
+    \[
+      \ker Q/\operatorname{im}Q=H^\bullet(\mathfrak g)
+    \]
+    is the Lie-algebra cohomology.
+    \item[(b)]
+    Applying \(Q\) produces four ghosts:
+    \[
+      Q\Omega
+        =-\frac1{12}C_{abc}C^a{}_{de}
+          \omega^d\omega^e\omega^b\omega^c+\text{cyclic terms}.
+    \]
+    After total antisymmetrization, its coefficient is the invariant-metric
+    form of the Jacobi identity,
+    \[
+      C_{a[bc}C^a{}_{de]}=0,
+    \]
+    so \(Q\Omega=0\).
+
+    This is the Cartan three-cocycle and represents the nonzero generator of
+    \(H^3(\mathfrak g)\) for each compact simple factor.  For
+    \(\mathfrak{su}(2)\), choose \(C_{abc}=\epsilon_{abc}\).  Then
+    \(\Omega=\omega^1\omega^2\omega^3\), apart from normalization, and
+    \[
+      Q\omega^1=-\omega^2\omega^3,\quad
+      Q\omega^2=-\omega^3\omega^1,\quad
+      Q\omega^3=-\omega^1\omega^2.
+    \]
+    Every quadratic monomial has zero \(Q\)-image because a ghost is repeated.
+    Therefore no degree-two polynomial can map to \(\Omega\), proving
+    non-exactness explicitly.  Restriction to the \(SU(2)\) subgroup
+    associated with a root gives the same obstruction in the general compact
+    simple case.
+  \end{enumerate}
+
+  \SupplementarySolution{10}{Auxiliary-Field Gauge Fixing}
   Complete the square:
   \[
     h_af_a+\frac{\xi}{2}h_ah_a
@@ -327,52 +480,7 @@
   gauge-fixed equations or compensating terms.  The \(h\) formulation
   therefore realizes nilpotency off shell.
 
-  \SupplementarySolution{15}{Off-Shell BRST Nilpotency}
-  Nilpotency on \(\omega^*\) and \(h\) is immediate.  On the ghost,
-  the graded Leibniz rule gives
-  \[
-    s^2\omega_a
-      =\frac14C_{abc}C_{bde}\omega_d\omega_e\omega_c
-       -\frac14C_{abc}C_{cde}\omega_b\omega_d\omega_e.
-  \]
-  Anticommuting the ghosts puts this in the form
-  \[
-    s^2\omega_a
-      \propto C_{ae[b}C_{ecd]}\omega_b\omega_c\omega_d=0,
-  \]
-  which is the Jacobi identity.  For the gauge field,
-  \[
-    s^2A_\mu=D_\mu(s\omega)+[sA_\mu,\omega].
-  \]
-  Substituting \(s\omega=-\tfrac12[\omega,\omega]\) and
-  \(sA_\mu=D_\mu\omega\), the derivative terms cancel because the ghosts
-  anticommute, while the remaining triple-ghost coefficient is again the
-  Jacobi combination.  Hence \(s^2A_\mu=0\).  No equation of motion was
-  used; the two ingredients are Grassmann antisymmetry, which selects
-  antisymmetrized structure-constant products, and the Lie-algebra Jacobi
-  identity, which kills them.
-
-  \SupplementarySolution{16}{A BRST-Exact Gauge-Fixing Sector}
-  Put
-  \(\Delta_a\equiv sf_a\).  Since \(\omega_a^*\) is odd, the graded
-  Leibniz rule and \(s\omega_a^*=-h_a\) give
-  \[
-    s\Psi=\int d^4x\left[
-      \omega_a^*\Delta_a+h_af_a+\frac{\xi}{2}h_ah_a\right].
-  \]
-  Thus the first term is precisely the Faddeev--Popov ghost action and the
-  other two are the auxiliary form of gauge fixing.  Nilpotency immediately
-  yields \(s(s\Psi)=0\), so this entire sector is BRST invariant.  The
-  \(h_a\) equation,
-  \(h_a=-f_a/\xi\), reduces it to
-  \[
-    \int d^4x\left(\omega_a^*\Delta_a-\frac{f_af_a}{2\xi}\right).
-  \]
-  The minus sign in the definition of \(\Psi\) is the one compatible with
-  \(s\omega^*=-h\) and the left-acting graded convention; changing both
-  conventions leaves the physics unchanged.
-
-  \SupplementarySolution{17}{Conserved Ghost-Number Current}
+  \SupplementarySolution{11}{Ghost Number and Its Current}
   It is convenient to write the ghost density as
   \[
     \mathcal L_{\rm GH}
@@ -402,35 +510,7 @@
   after the conventional factor of \(i\) is assigned to the generator.
   Thus its eigenvalue is ghost number.
 
-  \SupplementarySolution{18}{Abelian BRST Ward Identity}
-  BRST invariance of the measure and vacuum gives
-  \[
-    0=\left\langle s\bigl(A_\mu(x)\omega^*(y)\bigr)\right\rangle
-      =\left\langle\partial_\mu\omega(x)\omega^*(y)\right\rangle
-       -\langle A_\mu(x)h(y)\rangle .
-  \]
-  Since the auxiliary equation is
-  \(h=-\partial\cdot A/\xi\),
-  \[
-    \partial_\mu^x\Delta_{\rm gh}(x-y)
-      =-\frac1\xi\,
-        \partial_y^\nu\Delta_{\mu\nu}(x-y).
-  \]
-  With the common Fourier factor \(e^{ip\cdot(x-y)}\), this is
-  \[
-    p^\nu\Delta_{\mu\nu}(p)
-      =\xi p_\mu\Delta_{\rm gh}(p).
-  \]
-  The free propagators are
-  \[
-    \Delta_{\rm gh}(p)=\frac1{p^2-i\epsilon},\qquad
-    \Delta_{\mu\nu}(p)=\frac1{p^2-i\epsilon}
-      \left[\eta_{\mu\nu}
-      (\xi-1)\frac{p_\mu p_\nu}{p^2}\right],
-  \]
-  and their contraction verifies the identity directly.
-
-  \SupplementarySolution{19}{Physical Polarizations from BRST Cohomology}
+  \SupplementarySolution{12}{Physical Polarizations as Cohomology}
   Overall normalizations aside, the free transformations imply
   \[
     Q\,a_\mu^\dagger(p)\ket0
@@ -454,264 +534,212 @@
   transverse polarizations.  The scalar, longitudinal, ghost, and
   antighost modes form BRST-trivial quartets.
 
-  \SupplementarySolution{20}{Lie-Algebra BRST Differential}
-  On a generator,
-  \[
-    Q^2\omega^a
-      =\frac16C^a{}_{e[b}C^e{}_{cd]}
-        \omega^b\omega^c\omega^d .
-  \]
-  The brackets denote total antisymmetrization, forced by the Grassmann
-  product.  Thus the Jacobi identity makes \(Q^2\omega^a=0\).  Because
-  \(Q\) is an odd graded derivation, vanishing on all generators implies
-  vanishing on every polynomial.  Conversely, if \(Q^2=0\), the
-  coefficient of each independent cubic ghost monomial must vanish, which
-  is precisely Jacobi.
+  \SupplementarySolution{13}{The BV Antibracket and Master Equation}
+  \begin{enumerate}
+    \item[(a)]
+    Directly from Eq.~\eqref{eq:15.9.13},
+    \[
+      (\chi^n,\chi_m^\ddagger)=\delta^n_m,\qquad
+      (\chi^n,\chi^m)=0,\qquad
+      (\chi_n^\ddagger,\chi_m^\ddagger)=0,
+    \]
+    and
+    \((\chi_m^\ddagger,\chi^n)=-\delta^n_m\).
+    The bracket has parity one and raises ghost number by one, consistent with
+    \(\epsilon(\chi_n^\ddagger)=\epsilon_n+1\) and
+    \(\operatorname{gh}(\chi_n^\ddagger)=-1-\operatorname{gh}(\chi^n)\).
 
-  The polynomial algebra is the exterior algebra
-  \(\Lambda^\bullet\mathfrak g^*\); \(Q\) is the
-  Chevalley--Eilenberg differential for trivial coefficients.  Its ghost
-  number is the cochain degree, and
-  \[
-    \ker Q/\operatorname{im}Q=H^\bullet(\mathfrak g)
-  \]
-  is the Lie-algebra cohomology.
+    The product rule gives
+    \[
+      (\chi^n\chi^m,\chi_k^\ddagger)
+        =\chi^n\delta^m_k
+         +(-1)^{\epsilon_m\epsilon_k}\delta^n_k\chi^m.
+    \]
+    The sign arises when the derivative associated with
+    \(\chi_k^\ddagger\), whose bracket action has parity
+    \(\epsilon_k\), passes through \(\chi^m\).  For two bosonic fields both
+    terms have plus signs; for two fermionic fields the exchange term has a
+    minus sign, as an explicit right-derivative calculation confirms.
+    \item[(b)]
+    Repeated use of the left- and right-derivative product rules gives
+    \[
+      (F,GH)=(F,G)H
+        +(-1)^{(\epsilon_F+1)\epsilon_G}G(F,H)
+    \]
+    and
+    \[
+      (FG,H)=F(G,H)
+        +(-1)^{\epsilon_G(\epsilon_H+1)}(F,H)G.
+    \]
+    Exchange \(F\) and \(G\) in the defining expression.  Moving the two
+    derivatives and their results back to the original order contributes
+    \((-1)^{(\epsilon_F+1)(\epsilon_G+1)}\), while exchanging the two terms
+    in the odd symplectic pairing contributes an additional minus sign.
+    Hence
+    \[
+      (F,G)=-(-1)^{(\epsilon_F+1)(\epsilon_G+1)}(G,F).
+    \]
+    In particular the bracket is symmetric for two even functionals and
+    antisymmetric in all the other parity combinations.
+    \item[(c)]
+    Expanding
+    \((F,(G,H))\) produces terms with a second derivative of \(G\), terms
+    with a second derivative of \(H\), and, if \(E\) varies, derivatives of
+    \(E\).  For constant \(E^{AB}\), graded symmetry of second derivatives
+    and graded antisymmetry of \(E\) make the first two classes cancel in
+    \[
+      (-1)^{(\epsilon_F+1)(\epsilon_H+1)}(F,(G,H))
+        +\text{cyclic permutations}.
+    \]
+    This proves the Jacobi identity in Darboux coordinates.
 
-  \SupplementarySolution{21}{A Cubic Ghost Cocycle}
-  Applying \(Q\) produces four ghosts:
-  \[
-    Q\Omega
-      =-\frac1{12}C_{abc}C^a{}_{de}
-        \omega^d\omega^e\omega^b\omega^c+\text{cyclic terms}.
-  \]
-  After total antisymmetrization, its coefficient is the invariant-metric
-  form of the Jacobi identity,
-  \[
-    C_{a[bc}C^a{}_{de]}=0,
-  \]
-  so \(Q\Omega=0\).
+    If \(E^{AB}=E^{AB}(z)\), the surviving coefficient is the graded cyclic
+    sum of
+    \[
+      E^{AD}\partial_D E^{BC}.
+    \]
+    Jacobi then requires this odd Schouten bracket \([E,E]\) to vanish.  A
+    nondegenerate \(E\) obeys the condition exactly when its inverse odd
+    two-form is closed.  Darboux coordinates make that form, and hence
+    \(E^{AB}\), locally constant.
+    \item[(d)]
+    Write \(S=S_0+S_1+S_2+\cdots\) by antifield number.  The term
+    \(2(S_0,S_1)=0\) is
+    \[
+      \frac{\delta S_0}{\delta\phi^r}R^r{}_a\omega^a=0,
+    \]
+    so every \(R_a\) generates a gauge symmetry.  The coefficient of
+    \(\phi_r^\ddagger\omega^b\omega^c\) at the next order is
+    \[
+      R_b^s\partial_sR_c^r-R_c^s\partial_sR_b^r
+        +C^a{}_{bc}R_a^r=0,
+    \]
+    up to the sign chosen in the definition of \(C\); this is closure.  The
+    coefficient of
+    \(\omega_a^\ddagger\omega^b\omega^c\omega^d\) is
+    \[
+      R_{[b}^r\partial_rC^a{}_{cd]}
+        -C^e{}_{[bc}C^a{}_{d]e}=0,
+    \]
+    the field-dependent Jacobi identity.
 
-  This is the Cartan three-cocycle and represents the nonzero generator of
-  \(H^3(\mathfrak g)\) for each compact simple factor.  For
-  \(\mathfrak{su}(2)\), choose \(C_{abc}=\epsilon_{abc}\).  Then
-  \(\Omega=\omega^1\omega^2\omega^3\), apart from normalization, and
-  \[
-    Q\omega^1=-\omega^2\omega^3,\quad
-    Q\omega^2=-\omega^3\omega^1,\quad
-    Q\omega^3=-\omega^1\omega^2.
-  \]
-  Every quadratic monomial has zero \(Q\)-image because a ghost is repeated.
-  Therefore no degree-two polynomial can map to \(\Omega\), proving
-  non-exactness explicitly.  Restriction to the \(SU(2)\) subgroup
-  associated with a root gives the same obstruction in the general compact
-  simple case.
+    For an open algebra, closure and Jacobi hold only modulo the equations
+    \(\delta S_0/\delta\phi^r=0\).  The ellipsis must then include terms
+    quadratic and higher in antifields, such as
+    \(\phi_r^\ddagger\phi_s^\ddagger
+    M^{rs}{}_{ab}\omega^a\omega^b\).  Their antibrackets with \(S_0\)
+    supply precisely the equation-of-motion terms and all higher consistency
+    conditions.
+    \item[(e)]
+    Add the nonminimal term
+    \(-\int d^4x\,h_a\omega_a^{*\ddagger}\) to \(S_{\min}\).  From the
+    gauge fermion in the question,
+    \[
+      A_a^{\ddagger\mu}=\partial^\mu\omega_a^*,\quad
+      \omega_a^{*\ddagger}
+        =-\left(\partial\cdot A_a+\frac{\xi}{2}h_a\right),\quad
+      h_a^\ddagger=-\frac{\xi}{2}\omega_a^*,\quad
+      \omega_a^\ddagger=0.
+    \]
+    Substitution gives
+    \[
+      S_\Psi=S_{\rm YM}+\int d^4x\left[
+        -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
+        +h_a\partial_\mu A_a^\mu+\frac{\xi}{2}h_ah_a
+      \right],
+    \]
+    where the first sign follows by reordering the two odd factors
+    \((D_\mu\omega)_a\) and \(\partial^\mu\omega_a^*\).
+    The auxiliary equation \(h_a=-\partial\cdot A_a/\xi\) yields
+    \[
+      S_\Psi=S_{\rm YM}+\int d^4x\left[
+        -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
+        -\frac1{2\xi}(\partial_\mu A_a^\mu)^2\right],
+    \]
+    the Lorenz-gauge Faddeev--Popov action.
+  \end{enumerate}
 
-  \SupplementarySolution{22}{Elementary BV Antibrackets}
-  Directly from Eq.~\eqref{eq:15.9.13},
-  \[
-    (\chi^n,\chi_m^\ddagger)=\delta^n_m,\qquad
-    (\chi^n,\chi^m)=0,\qquad
-    (\chi_n^\ddagger,\chi_m^\ddagger)=0,
-  \]
-  and
-  \((\chi_m^\ddagger,\chi^n)=-\delta^n_m\).
-  The bracket has parity one and raises ghost number by one, consistent with
-  \(\epsilon(\chi_n^\ddagger)=\epsilon_n+1\) and
-  \(\operatorname{gh}(\chi_n^\ddagger)=-1-\operatorname{gh}(\chi^n)\).
+  \SupplementarySolution{14}{Minimal and Quantum BV Constructions}
+  \begin{enumerate}
+    \item[(a)]
+    With the ordering convention of Eq.~\eqref{eq:15.9.1}, the minimal action
+    is
+    \[
+      S_{\min}=S_{\rm YM}
+        +\int d^4x\left[
+          (D_\mu\omega)_a A_a^{\ddagger\mu}
+          -\frac12C_{abc}\omega_b\omega_c\omega_a^\ddagger
+        \right].
+    \]
+    Here
+    \[
+      \operatorname{gh}(A^\ddagger)=-1,\quad
+      \operatorname{gh}(\omega^\ddagger)=-2,
+    \]
+    while \(A^\ddagger\) is odd and \(\omega^\ddagger\) is even.  Every term
+    in \(S_{\min}\) is therefore even and has ghost number zero.
 
-  The product rule gives
-  \[
-    (\chi^n\chi^m,\chi_k^\ddagger)
-      =\chi^n\delta^m_k
-       +(-1)^{\epsilon_m\epsilon_k}\delta^n_k\chi^m.
-  \]
-  The sign arises when the derivative associated with
-  \(\chi_k^\ddagger\), whose bracket action has parity
-  \(\epsilon_k\), passes through \(\chi^m\).  For two bosonic fields both
-  terms have plus signs; for two fermionic fields the exchange term has a
-  minus sign, as an explicit right-derivative calculation confirms.
+    Sort \((S_{\min},S_{\min})\) by antifield number.  The term with no
+    antifield is twice the gauge variation of \(S_{\rm YM}\), hence vanishes.
+    Terms linear in \(A^\ddagger\) state
+    \(s^2A_\mu=0\); terms linear in \(\omega^\ddagger\) state
+    \(s^2\omega=0\).  The former is closure of the Yang--Mills gauge
+    transformations, and the latter is the Jacobi identity.  These are
+    exactly the calculations in Supplementary Exercise 15, so all
+    coefficients vanish and \((S_{\min},S_{\min})=0\).
+    \item[(b)]
+    Because \(\Psi\) depends only on fields,
+    \[
+      (\chi^{\prime n},\chi^{\prime m})=0.
+    \]
+    Also,
+    \[
+      (\chi^{\prime n},\chi_m^{\ddagger\prime})
+        =(\chi^n,\chi_m^\ddagger)
+         -\left(\chi^n,\frac{\delta\Psi}{\delta\chi^m}\right)
+        =\delta^n_m.
+    \]
+    Finally,
+    \[
+      (\chi_n^{\ddagger\prime},\chi_m^{\ddagger\prime})
+        =-\frac{\delta^2\Psi}{\delta\chi^n\delta\chi^m}
+         +\hbox{the graded-transposed second derivative}=0.
+    \]
+    The cancellation is graded symmetry of the Hessian of the fermionic
+    functional.  Thus all fundamental brackets are preserved and the shift is
+    anticanonical.  Setting the shifted antifields to zero immediately gives
+    \[
+      \chi_n^\ddagger=\frac{\delta\Psi}{\delta\chi^n},
+    \]
+    which is the BV gauge-fixing Lagrangian submanifold.
+    \item[(c)]
+    The compatibility of \(\Delta\) with the antibracket, the Jacobi identity,
+    and \(\Delta^2=0\) give
+    \[
+      \sigma^2F
+        =\frac12\left(F,(S,S)-2i\Delta S\right)
+    \]
+    in the right/left derivative convention of Section~15.9.  Therefore the
+    quantum master equation
+    \[
+      (S,S)-2i\Delta S=0
+    \]
+    implies \(\sigma^2=0\).  Equivalently, the weighted measure
+    \(e^{iS}[d\chi]\) has vanishing quantum BRST divergence.
 
-  \SupplementarySolution{23}{Graded Derivation Rules for the Antibracket}
-  Repeated use of the left- and right-derivative product rules gives
-  \[
-    (F,GH)=(F,G)H
-      +(-1)^{(\epsilon_F+1)\epsilon_G}G(F,H)
-  \]
-  and
-  \[
-    (FG,H)=F(G,H)
-      +(-1)^{\epsilon_G(\epsilon_H+1)}(F,H)G.
-  \]
-  Exchange \(F\) and \(G\) in the defining expression.  Moving the two
-  derivatives and their results back to the original order contributes
-  \((-1)^{(\epsilon_F+1)(\epsilon_G+1)}\), while exchanging the two terms
-  in the odd symplectic pairing contributes an additional minus sign.
-  Hence
-  \[
-    (F,G)=-(-1)^{(\epsilon_F+1)(\epsilon_G+1)}(G,F).
-  \]
-  In particular the bracket is symmetric for two even functionals and
-  antisymmetric in all the other parity combinations.
+    A quantum observable is a cohomology class of this differential:
+    \[
+      \sigma O=0,\qquad O\sim O+\sigma K.
+    \]
+    In explicit form its closure condition is
+    \[
+      (O,S)=i\Delta O.
+    \]
+    This is also the condition that makes its expectation value independent
+    of the gauge-fixing Lagrangian submanifold.
+  \end{enumerate}
 
-  \SupplementarySolution{24}{Jacobi Identity in BV Darboux Coordinates}
-  Expanding
-  \((F,(G,H))\) produces terms with a second derivative of \(G\), terms
-  with a second derivative of \(H\), and, if \(E\) varies, derivatives of
-  \(E\).  For constant \(E^{AB}\), graded symmetry of second derivatives
-  and graded antisymmetry of \(E\) make the first two classes cancel in
-  \[
-    (-1)^{(\epsilon_F+1)(\epsilon_H+1)}(F,(G,H))
-      +\text{cyclic permutations}.
-  \]
-  This proves the Jacobi identity in Darboux coordinates.
-
-  If \(E^{AB}=E^{AB}(z)\), the surviving coefficient is the graded cyclic
-  sum of
-  \[
-    E^{AD}\partial_D E^{BC}.
-  \]
-  Jacobi then requires this odd Schouten bracket \([E,E]\) to vanish.  A
-  nondegenerate \(E\) obeys the condition exactly when its inverse odd
-  two-form is closed.  Darboux coordinates make that form, and hence
-  \(E^{AB}\), locally constant.
-
-  \SupplementarySolution{25}{Minimal Yang--Mills BV Action}
-  With the ordering convention of Eq.~\eqref{eq:15.9.1}, the minimal action
-  is
-  \[
-    S_{\min}=S_{\rm YM}
-      +\int d^4x\left[
-        (D_\mu\omega)_a A_a^{\ddagger\mu}
-        -\frac12C_{abc}\omega_b\omega_c\omega_a^\ddagger
-      \right].
-  \]
-  Here
-  \[
-    \operatorname{gh}(A^\ddagger)=-1,\quad
-    \operatorname{gh}(\omega^\ddagger)=-2,
-  \]
-  while \(A^\ddagger\) is odd and \(\omega^\ddagger\) is even.  Every term
-  in \(S_{\min}\) is therefore even and has ghost number zero.
-
-  Sort \((S_{\min},S_{\min})\) by antifield number.  The term with no
-  antifield is twice the gauge variation of \(S_{\rm YM}\), hence vanishes.
-  Terms linear in \(A^\ddagger\) state
-  \(s^2A_\mu=0\); terms linear in \(\omega^\ddagger\) state
-  \(s^2\omega=0\).  The former is closure of the Yang--Mills gauge
-  transformations, and the latter is the Jacobi identity.  These are
-  exactly the calculations in Supplementary Exercise 15, so all
-  coefficients vanish and \((S_{\min},S_{\min})=0\).
-
-  \SupplementarySolution{26}{Master Equation Encodes the Gauge Algebra}
-  Write \(S=S_0+S_1+S_2+\cdots\) by antifield number.  The term
-  \(2(S_0,S_1)=0\) is
-  \[
-    \frac{\delta S_0}{\delta\phi^r}R^r{}_a\omega^a=0,
-  \]
-  so every \(R_a\) generates a gauge symmetry.  The coefficient of
-  \(\phi_r^\ddagger\omega^b\omega^c\) at the next order is
-  \[
-    R_b^s\partial_sR_c^r-R_c^s\partial_sR_b^r
-      +C^a{}_{bc}R_a^r=0,
-  \]
-  up to the sign chosen in the definition of \(C\); this is closure.  The
-  coefficient of
-  \(\omega_a^\ddagger\omega^b\omega^c\omega^d\) is
-  \[
-    R_{[b}^r\partial_rC^a{}_{cd]}
-      -C^e{}_{[bc}C^a{}_{d]e}=0,
-  \]
-  the field-dependent Jacobi identity.
-
-  For an open algebra, closure and Jacobi hold only modulo the equations
-  \(\delta S_0/\delta\phi^r=0\).  The ellipsis must then include terms
-  quadratic and higher in antifields, such as
-  \(\phi_r^\ddagger\phi_s^\ddagger
-  M^{rs}{}_{ab}\omega^a\omega^b\).  Their antibrackets with \(S_0\)
-  supply precisely the equation-of-motion terms and all higher consistency
-  conditions.
-
-  \SupplementarySolution{27}{Lorenz Gauge from a Gauge Fermion}
-  Add the nonminimal term
-  \(-\int d^4x\,h_a\omega_a^{*\ddagger}\) to \(S_{\min}\).  From the
-  gauge fermion in the question,
-  \[
-    A_a^{\ddagger\mu}=\partial^\mu\omega_a^*,\quad
-    \omega_a^{*\ddagger}
-      =-\left(\partial\cdot A_a+\frac{\xi}{2}h_a\right),\quad
-    h_a^\ddagger=-\frac{\xi}{2}\omega_a^*,\quad
-    \omega_a^\ddagger=0.
-  \]
-  Substitution gives
-  \[
-    S_\Psi=S_{\rm YM}+\int d^4x\left[
-      -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
-      +h_a\partial_\mu A_a^\mu+\frac{\xi}{2}h_ah_a
-    \right],
-  \]
-  where the first sign follows by reordering the two odd factors
-  \((D_\mu\omega)_a\) and \(\partial^\mu\omega_a^*\).
-  The auxiliary equation \(h_a=-\partial\cdot A_a/\xi\) yields
-  \[
-    S_\Psi=S_{\rm YM}+\int d^4x\left[
-      -(\partial_\mu\omega_a^*)(D^\mu\omega)_a
-      -\frac1{2\xi}(\partial_\mu A_a^\mu)^2\right],
-  \]
-  the Lorenz-gauge Faddeev--Popov action.
-
-  \SupplementarySolution{28}{Gauge-Fermion Shift Is Anticanonical}
-  Because \(\Psi\) depends only on fields,
-  \[
-    (\chi^{\prime n},\chi^{\prime m})=0.
-  \]
-  Also,
-  \[
-    (\chi^{\prime n},\chi_m^{\ddagger\prime})
-      =(\chi^n,\chi_m^\ddagger)
-       -\left(\chi^n,\frac{\delta\Psi}{\delta\chi^m}\right)
-      =\delta^n_m.
-  \]
-  Finally,
-  \[
-    (\chi_n^{\ddagger\prime},\chi_m^{\ddagger\prime})
-      =-\frac{\delta^2\Psi}{\delta\chi^n\delta\chi^m}
-       +\hbox{the graded-transposed second derivative}=0.
-  \]
-  The cancellation is graded symmetry of the Hessian of the fermionic
-  functional.  Thus all fundamental brackets are preserved and the shift is
-  anticanonical.  Setting the shifted antifields to zero immediately gives
-  \[
-    \chi_n^\ddagger=\frac{\delta\Psi}{\delta\chi^n},
-  \]
-  which is the BV gauge-fixing Lagrangian submanifold.
-
-  \SupplementarySolution{29}{Nilpotency of the Quantum BRST Operator}
-  The compatibility of \(\Delta\) with the antibracket, the Jacobi identity,
-  and \(\Delta^2=0\) give
-  \[
-    \sigma^2F
-      =\frac12\left(F,(S,S)-2i\Delta S\right)
-  \]
-  in the right/left derivative convention of Section~15.9.  Therefore the
-  quantum master equation
-  \[
-    (S,S)-2i\Delta S=0
-  \]
-  implies \(\sigma^2=0\).  Equivalently, the weighted measure
-  \(e^{iS}[d\chi]\) has vanishing quantum BRST divergence.
-
-  A quantum observable is a cohomology class of this differential:
-  \[
-    \sigma O=0,\qquad O\sim O+\sigma K.
-  \]
-  In explicit form its closure condition is
-  \[
-    (O,S)=i\Delta O.
-  \]
-  This is also the condition that makes its expectation value independent
-  of the gauge-fixing Lagrangian submanifold.
-
-  \SupplementarySolution{30}{Yang--Mills as a Consistent Deformation}
+  \SupplementarySolution{15}{Yang--Mills as a Consistent Deformation}
   Let \(f^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu\).
   A representative first-order deformation is
   \[
@@ -749,4 +777,5 @@
   +gC^a{}_{bc}A^b_\mu A^c_\nu\): the unique nontrivial deformation is
   Yang--Mills theory, up to field redefinitions and strictly
   gauge-invariant additions.
+
 \end{enumerate}

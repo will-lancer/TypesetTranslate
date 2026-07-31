@@ -29,6 +29,10 @@ class Record:
     number: str
     title: str
     body: str
+    source_id: str = ""
+    source_family: str = ""
+    document_id: str = ""
+    parent_problem: str = ""
 
     @property
     def identifier(self) -> str:
@@ -41,6 +45,7 @@ def records_for(
     filename: str,
     macro: str,
     argument_count: int,
+    ledger: dict[str, dict[str, object]] | None = None,
 ) -> list[Record]:
     records: list[Record] = []
     pattern = f"chapter*/{filename}"
@@ -50,6 +55,8 @@ def records_for(
         calls = edition_audit.macro_calls(text, macro, argument_count)
         bodies = edition_audit.macro_bodies(text, calls)
         for call, body in zip(calls, bodies):
+            source_id = call.args[3].strip() if argument_count >= 4 else ""
+            source = ledger.get(source_id, {}) if ledger is not None else {}
             records.append(
                 Record(
                     volume=volume,
@@ -57,6 +64,10 @@ def records_for(
                     number=call.args[0].strip(),
                     title=call.args[1].strip(),
                     body=body,
+                    source_id=source_id,
+                    source_family=str(source.get("source_family", "")),
+                    document_id=str(source.get("document_id", "")),
+                    parent_problem=str(source.get("parent_problem", "")),
                 )
             )
     return records
@@ -113,12 +124,24 @@ def main() -> int:
         if not edition_root.is_dir():
             failures.append(f"Missing exercise edition: {edition_root}")
             continue
+        ledger_path = edition_root / "source-ledger.json"
+        try:
+            raw_ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            ledger = {
+                str(source["id"]): source
+                for source in raw_ledger.get("sources", [])
+                if isinstance(source, dict) and "id" in source
+            }
+        except (OSError, json.JSONDecodeError, TypeError) as error:
+            failures.append(f"Cannot load source ledger for {name}: {error}")
+            ledger = {}
         volume_prompts = records_for(
             edition_root,
             volume,
             "supplementary-exercises.tex",
             "SupplementaryExercise",
             4,
+            ledger,
         )
         volume_solutions = records_for(
             edition_root,
@@ -132,6 +155,21 @@ def main() -> int:
         counts[name] = {
             "supplementary_exercises": len(volume_prompts),
             "supplementary_solutions": len(volume_solutions),
+            "source_family_distribution": dict(
+                sorted(
+                    {
+                        family: sum(
+                            record.source_family == family
+                            for record in volume_prompts
+                        )
+                        for family in {
+                            record.source_family
+                            for record in volume_prompts
+                            if record.source_family
+                        }
+                    }.items()
+                )
+            ),
         }
 
     prompt_by_id = {
@@ -158,6 +196,49 @@ def main() -> int:
             failures.append(
                 "Supplementary title mismatch across exercise/solution records: "
                 f"{prompt_by_id[key].identifier}"
+            )
+
+    source_id_groups: dict[str, list[Record]] = defaultdict(list)
+    parent_groups: dict[tuple[str, str], list[Record]] = defaultdict(list)
+    parent_root_groups: dict[tuple[str, str, str], list[Record]] = defaultdict(list)
+    for record in prompts:
+        if record.source_id:
+            source_id_groups[record.source_id].append(record)
+        if record.document_id and record.parent_problem:
+            parent_groups[
+                (
+                    record.document_id,
+                    "\x1f".join(
+                        edition_audit.normalized_parent_problem(
+                            record.parent_problem
+                        )
+                    ),
+                )
+            ].append(record)
+            for kind, number in edition_audit.exact_parent_roots(
+                record.parent_problem
+            ):
+                parent_root_groups[
+                    (record.document_id, kind, number)
+                ].append(record)
+    for source_id, group in sorted(source_id_groups.items()):
+        if len({record.volume for record in group}) > 1:
+            failures.append(
+                f"Exact parent source id {source_id!r} is reused across volumes: "
+                + ", ".join(record.identifier for record in group)
+            )
+    for parent_key, group in sorted(parent_groups.items()):
+        if len({record.volume for record in group}) > 1:
+            failures.append(
+                f"Source parent problem {parent_key!r} is reused across volumes: "
+                + ", ".join(record.identifier for record in group)
+            )
+    for parent_root, group in sorted(parent_root_groups.items()):
+        if len({record.volume for record in group}) > 1:
+            failures.append(
+                f"Source parent root {parent_root!r} is split or reused across "
+                "volumes: "
+                + ", ".join(record.identifier for record in group)
             )
 
     title_groups = exact_duplicate_groups(

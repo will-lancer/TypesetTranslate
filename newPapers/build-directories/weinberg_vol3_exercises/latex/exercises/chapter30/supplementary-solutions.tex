@@ -1,561 +1,554 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Grassmann Delta Saturation}
-  Choose a leaf of the tree and call its adjacent vertex \(v\).  The
-  corresponding propagator contains
-  \(\delta^4(\theta_{\rm leaf}-\theta_v)\), so integration over the leaf
-  coordinate simply replaces it by \(\theta_v\).  Repeating this operation
-  removes one vertex and one delta function at each step, leaving
-  \[
-    \int d^4\theta\,\mathcal I(\theta)
-  \]
-  at the final vertex.  This proves the assertion by induction on the
-  number of vertices.  A line that closes a loop supplies another
-  \(\delta^4(\theta-\theta')\) after the two coordinates have already
-  been identified.  Its undifferentiated value is
-  \(\delta^4(0)=0\), because a fermionic delta function is a product of
-  four Grassmann differences.  A nonzero loop therefore requires four
-  spinor derivatives, distributed by the \(D\)-algebra, to saturate that
-  remaining delta function.
+  \SupplementarySolution{1}{Superspace Delta Functions and Chiral Projection}
+  \begin{enumerate}
+    \item \emph{Grassmann Delta Saturation.}
+    Choose a leaf of the tree and call its adjacent vertex \(v\).  The
+      corresponding propagator contains
+      \(\delta^4(\theta_{\rm leaf}-\theta_v)\), so integration over the leaf
+      coordinate simply replaces it by \(\theta_v\).  Repeating this operation
+      removes one vertex and one delta function at each step, leaving
+      \[
+        \int d^4\theta\,\mathcal I(\theta)
+      \]
+      at the final vertex.  This proves the assertion by induction on the
+      number of vertices.  A line that closes a loop supplies another
+      \(\delta^4(\theta-\theta')\) after the two coordinates have already
+      been identified.  Its undifferentiated value is
+      \(\delta^4(0)=0\), because a fermionic delta function is a product of
+      four Grassmann differences.  A nonzero loop therefore requires four
+      spinor derivatives, distributed by the \(D\)-algebra, to saturate that
+      remaining delta function.
+    \item \emph{Chiral Projection Test.}
+    The algebra quoted below Eq.~\eqref{eq:30.2.16} gives
+      \[
+        \mathcal D_R^2\mathcal D_L^2\mathcal D_R^2
+          =-16\Box\mathcal D_R^2 .
+      \]
+      Hence
+      \[
+        \mathcal P_L^2
+          =\frac{\mathcal D_L^2
+            (\mathcal D_R^2\mathcal D_L^2\mathcal D_R^2)}
+            {(16\Box)^2}
+          =-\frac{\mathcal D_L^2\mathcal D_R^2}{16\Box}
+          =\mathcal P_L .
+      \]
+      Three right-handed superderivatives vanish by antisymmetry, so
+      \(\mathcal D_R\mathcal P_L=0\); the image is left-chiral.
+      The inverse \(\Box^{-1}\) is defined with a boundary prescription on
+      modes of nonzero four-momentum.  Harmonic or exactly zero-momentum modes
+      lie in the kernel of \(\Box\) and must either be fixed separately or
+      removed from the projected function space.
+    \item \emph{Potential-Field Redundancy.}
+    Since there are only two independent right-handed Grassmann
+      derivatives,
+      \[
+        \delta\Phi=\mathcal D_R^2\mathcal D_RX=0.
+      \]
+      Thus \(S\) contains a redundancy analogous to the longitudinal part of
+      an ordinary vector potential.  Couple it to a source through
+      \(I_J=\int d^4x\,d^4\theta\,SJ+\mathrm{H.c.}\).  Superspace integration
+      by parts gives
+      \[
+        \delta I_J
+          =\int d^4x\,d^4\theta\,(\mathcal D_RX)J
+          =-\int d^4x\,d^4\theta\,X\mathcal D_RJ
+      \]
+      for bosonic \(X\).  Invariance for arbitrary \(X\) therefore requires
+      \(\mathcal D_RJ=0\).  Equivalently, only the projected chiral part of a
+      source couples to the physical combination \(\Phi=\mathcal D_R^2S\).
+  \end{enumerate}
 
-  \SupplementarySolution{2}{Chiral Projection Test}
-  The algebra quoted below Eq.~\eqref{eq:30.2.16} gives
-  \[
-    \mathcal D_R^2\mathcal D_L^2\mathcal D_R^2
-      =-16\Box\mathcal D_R^2 .
-  \]
-  Hence
-  \[
-    \mathcal P_L^2
-      =\frac{\mathcal D_L^2
-        (\mathcal D_R^2\mathcal D_L^2\mathcal D_R^2)}
-        {(16\Box)^2}
-      =-\frac{\mathcal D_L^2\mathcal D_R^2}{16\Box}
-      =\mathcal P_L .
-  \]
-  Three right-handed superderivatives vanish by antisymmetry, so
-  \(\mathcal D_R\mathcal P_L=0\); the image is left-chiral.
-  The inverse \(\Box^{-1}\) is defined with a boundary prescription on
-  modes of nonzero four-momentum.  Harmonic or exactly zero-momentum modes
-  lie in the kernel of \(\Box\) and must either be fixed separately or
-  removed from the projected function space.
+  \SupplementarySolution{2}{Projectors, Gauge Fixing, and Propagator Kernels}
+  \begin{enumerate}
+    \item \emph{Projector Completeness.}
+    The proof of \(\mathcal P_L^2=\mathcal P_L\) was given in
+      Supplementary Exercise S.30.1, part (b); complex conjugation gives
+      \(\mathcal P_R^2=\mathcal P_R\).  Products such as
+      \(\mathcal P_L\mathcal P_R\) contain three consecutive derivatives of
+      one chirality and vanish.  Consequently
+      \[
+        \mathcal P_T^2
+          =(\mathbf1-\mathcal P_L-\mathcal P_R)^2
+          =\mathcal P_T,\qquad
+        \mathcal P_T\mathcal P_L
+          =\mathcal P_T\mathcal P_R=0,
+      \]
+      while their sum is the identity by definition.  Under
+      \(V\to V+\Omega+\Omega^*\), a chiral \(\Omega\) belongs to the image of
+      \(\mathcal P_L\) and \(\Omega^*\) to that of \(\mathcal P_R\).  Thus
+      \(\mathcal P_TV\) is the gauge-invariant sector.
+    \item \emph{Weighted Vector Gauge.}
+    Orthogonality makes the inversion algebraic on the three projected
+      subspaces.  The inverse kernel is
+      \[
+        \Delta_\alpha^V
+          =-\frac1{\Box}
+           \left[
+             \mathcal P_T+\alpha(\mathcal P_L+\mathcal P_R)
+           \right]\delta^8(z-z').
+      \]
+      Multiplication by the stated quadratic operator gives
+      \(\mathcal P_T+\mathcal P_L+\mathcal P_R=\mathbf1\).  If
+      \(J=\mathcal P_TJ\) and \(J'=\mathcal P_TJ'\), then
+      \[
+        J\Delta_\alpha^VJ'
+          =-\frac1{\Box}J\mathcal P_TJ',
+      \]
+      because both longitudinal projectors annihilate either source.
+      Therefore physical amplitudes are independent of \(\alpha\), although
+      off-shell Green functions of \(V\) need not be.
+    \item \emph{Massive Chiral Kernel.}
+    In the basis \((\Phi,\Phi^*)\), the diagonal entries of the quadratic
+      kernel are the chiral mass insertions \(m,m^*\), while the off-diagonal
+      entries are the projected kinetic operator.  Multiplying the kernel by
+      its conjugate block form diagonalizes it and produces
+      \(\Box-|m|^2\).  Thus the mixed propagator has the structure
+      \[
+        \Delta_{\Phi\Phi^*}
+          =\frac14\mathcal D_R^2\mathcal D_L^{\prime\,2}
+           \Delta_{F,m}(x-x')\delta^4(\theta-\theta'),
+        \qquad
+        (\Box-|m|^2)\Delta_{F,m}=-\delta^4 ,
+      \]
+      while the same-chirality kernels contain \(m\mathcal D_R^2\) or
+      \(m^*\mathcal D_L^2\) divided by the same operator.  Every component
+      therefore has the common momentum-space denominator
+      \(p^2+|m|^2-i\epsilon\), displaying equal scalar and fermion masses;
+      the auxiliary component still contributes only numerator contact
+      pieces in addition to this pole.
+  \end{enumerate}
 
-  \SupplementarySolution{3}{Potential-Field Redundancy}
-  Since there are only two independent right-handed Grassmann
-  derivatives,
-  \[
-    \delta\Phi=\mathcal D_R^2\mathcal D_RX=0.
-  \]
-  Thus \(S\) contains a redundancy analogous to the longitudinal part of
-  an ordinary vector potential.  Couple it to a source through
-  \(I_J=\int d^4x\,d^4\theta\,SJ+\mathrm{H.c.}\).  Superspace integration
-  by parts gives
-  \[
-    \delta I_J
-      =\int d^4x\,d^4\theta\,(\mathcal D_RX)J
-      =-\int d^4x\,d^4\theta\,X\mathcal D_RJ
-  \]
-  for bosonic \(X\).  Invariance for arbitrary \(X\) therefore requires
-  \(\mathcal D_RJ=0\).  Equivalently, only the projected chiral part of a
-  source couples to the physical combination \(\Phi=\mathcal D_R^2S\).
+  \SupplementarySolution{3}{D-Algebra in a One-Loop Supergraph}
+  \begin{enumerate}
+    \item \emph{Derivative Transfer Rule.}
+    Translation invariance of the Berezin integral implies that the
+      integral of a total superderivative vanishes.  If \(A\) has Grassmann
+      parity \(|A|\), the graded Leibniz rule gives
+      \[
+        0=\int d^4\theta\,\mathcal D(AB)
+         =\int d^4\theta\,
+           \left[(\mathcal DA)B+(-1)^{|A|}A\mathcal DB\right].
+      \]
+      Therefore
+      \[
+        \int d^4\theta\,(\mathcal DA)B
+          =-(-1)^{|A|}\int d^4\theta\,A\mathcal DB .
+      \]
+      For two fermionic superfields \(A,B\), \(|A|=1\), so the right-hand
+      side has a plus sign.  Applied to a translation-invariant propagator,
+      this rule is equivalent to
+      \(\mathcal D_z\Delta(z-z')=-\mathcal D_{z'}\Delta(z-z')\), with the
+      additional graded sign supplied when the derivative crosses a
+      fermionic external factor.
+    \item \emph{One-Loop Self-Energy Algebra.}
+    One chiral and one antichiral cubic vertex are required by line
+      orientation.  Move their spinor derivatives onto one internal line.
+      The identity
+      \(\mathcal D_R^2\mathcal D_L^2\mathcal D_R^2
+      =-16\Box\mathcal D_R^2\) cancels one propagator denominator, while the
+      two fermionic delta functions identify the vertex coordinates.  The
+      remaining structure is therefore
+      \[
+        \Gamma_{\rm div}^{(1)}
+          \propto |g|^2
+          \int d^4x\,d^4\theta\,\Phi^*(x,\theta)\Phi(x,\theta)
+          \int\frac{d^dp}{(2\pi)^d}
+            \frac1{p^2(p+k)^2}.
+      \]
+      The momentum integral has a logarithmic pole.  Because the external
+      fields occur with the full \(d^4\theta\) measure, the counterterm is a
+      wavefunction or Kahler correction proportional to
+      \([\Phi^*\Phi]_D\); it cannot renormalize the chiral superpotential.
+    \item \emph{Vanishing Vacuum Loop.}
+    First collapse a spanning tree of propagators.  All vertex Grassmann
+      coordinates then become a single \(\theta\), but each remaining loop
+      line contributes a fermionic delta function evaluated at coincident
+      arguments.  Without external superfields, integration by parts can
+      move all surplus spinor derivatives around the graph; there is no
+      external factor on which to leave them.  At least one loop delta
+      therefore remains unsaturated and supplies
+      \(\delta^4(0)=0\).  Equivalently, if the derivatives saturate every
+      loop delta, the last overall factor is independent of \(\theta\), and
+      \(\int d^4\theta\,1=0\).  Hence a supersymmetric vacuum graph vanishes
+      before any bosonic momentum integration, making the component
+      boson--fermion cancellation manifest.
+  \end{enumerate}
 
-  \SupplementarySolution{4}{Projector Completeness}
-  The proof of \(\mathcal P_L^2=\mathcal P_L\) was given in the preceding
-  exercise; complex conjugation gives
-  \(\mathcal P_R^2=\mathcal P_R\).  Products such as
-  \(\mathcal P_L\mathcal P_R\) contain three consecutive derivatives of
-  one chirality and vanish.  Consequently
+  \SupplementarySolution{4}{Spurion Holomorphy and Perturbative Non-Renormalization}
+Give each \(\Phi^i\) arbitrary formal flavor charges \(q_i\) and
+  \(R\)-charges \(r_i\).  Invariance is restored by assigning
   \[
-    \mathcal P_T^2
-      =(\mathbf1-\mathcal P_L-\mathcal P_R)^2
-      =\mathcal P_T,\qquad
-    \mathcal P_T\mathcal P_L
-      =\mathcal P_T\mathcal P_R=0,
+    q(m_{ij})=-q_i-q_j,\qquad
+    R(m_{ij})=2-r_i-r_j,
   \]
-  while their sum is the identity by definition.  Under
-  \(V\to V+\Omega+\Omega^*\), a chiral \(\Omega\) belongs to the image of
-  \(\mathcal P_L\) and \(\Omega^*\) to that of \(\mathcal P_R\).  Thus
-  \(\mathcal P_TV\) is the gauge-invariant sector.
+  and
+  \[
+    q(y_{ijk})=-q_i-q_j-q_k,\qquad
+    R(y_{ijk})=2-r_i-r_j-r_k.
+  \]
+  The couplings can therefore be treated as chiral backgrounds without
+  changing the symmetry bookkeeping.
 
-  \SupplementarySolution{5}{Weighted Vector Gauge}
-  Orthogonality makes the inversion algebraic on the three projected
-  subspaces.  The inverse kernel is
+  A Wilsonian \(F\)-term must be a local holomorphic function of the
+  chiral fields and chiral spurions, have mass dimension three, and
+  have \(R\)-charge two.  The formal flavor symmetries exclude terms
+  with unmatched indices or inverse powers that are singular at weak
+  coupling.  Analyticity around \(m=y=0\), together with the limit in
+  which each interaction is turned off, fixes the allowed coefficients
+  to their tree values.  Thus, perturbatively,
   \[
-    \Delta_\alpha^V
-      =-\frac1{\Box}
-       \left[
-         \mathcal P_T+\alpha(\mathcal P_L+\mathcal P_R)
-       \right]\delta^8(z-z').
+    W_{\rm Wilsonian}=W_{\rm tree}.
   \]
-  Multiplication by the stated quadratic operator gives
-  \(\mathcal P_T+\mathcal P_L+\mathcal P_R=\mathbf1\).  If
-  \(J=\mathcal P_TJ\) and \(J'=\mathcal P_TJ'\), then
+  The same argument allows renormalization of the real \(D\)-term
   \[
-    J\Delta_\alpha^VJ'
-      =-\frac1{\Box}J\mathcal P_TJ',
+    \int d^4\theta\,
+       Z_i{}^j(\mu)\,\Phi^{\dagger i}\Phi_j .
   \]
-  because both longitudinal projectors annihilate either source.
-  Therefore physical amplitudes are independent of \(\alpha\), although
-  off-shell Green functions of \(V\) need not be.
+  On rescaling to canonical fields, \(m\) and \(y\) acquire the
+  corresponding anomalous-dimension factors.  Hence physical
+  parameters run even though the holomorphic Wilsonian
+  superpotential does not.  Finally, massless propagation can make the
+  1PI action nonlocal; apparent chiral terms generated by infrared
+  singularities do not contradict the local Wilsonian statement.
 
-  \SupplementarySolution{6}{Massive Chiral Kernel}
-  In the basis \((\Phi,\Phi^*)\), the diagonal entries of the quadratic
-  kernel are the chiral mass insertions \(m,m^*\), while the off-diagonal
-  entries are the projected kinetic operator.  Multiplying the kernel by
-  its conjugate block form diagonalizes it and produces
-  \(\Box-|m|^2\).  Thus the mixed propagator has the structure
-  \[
-    \Delta_{\Phi\Phi^*}
-      =\frac14\mathcal D_R^2\mathcal D_L^{\prime\,2}
-       \Delta_{F,m}(x-x')\delta^4(\theta-\theta'),
-    \qquad
-    (\Box-|m|^2)\Delta_{F,m}=-\delta^4 ,
-  \]
-  while the same-chirality kernels contain \(m\mathcal D_R^2\) or
-  \(m^*\mathcal D_L^2\) divided by the same operator.  Every component
-  therefore has the common momentum-space denominator
-  \(p^2+|m|^2-i\epsilon\), displaying equal scalar and fermion masses;
-  the auxiliary component still contributes only numerator contact
-  pieces in addition to this pole.
+  \SupplementarySolution{5}{Tensor Beta Functions for Superpotential Operators}
+  \begin{enumerate}
+    \item \emph{Yukawa Beta Tensor.}
+    Write the bare fields as
+      \(\Phi_{B\,i}=(Z^{1/2})_i{}^j\Phi_j\).  Since the holomorphic tensor
+      has no independent vertex counterterm, its scale dependence comes
+      entirely from the three factors of \(Z^{-1/2}\) needed to express the
+      bare superpotential in canonical fields.  Defining
+      \(\gamma_i{}^j=\mu(dZ^{1/2}/d\mu)(Z^{-1/2})_i{}^j\), differentiation
+      gives
+      \[
+        \beta_{Y\,ijk}
+          =\gamma_i{}^\ell Y_{\ell jk}
+           +\gamma_j{}^\ell Y_{i\ell k}
+           +\gamma_k{}^\ell Y_{ij\ell}.
+      \]
+      The right-hand side is symmetric in \(i,j,k\), as required, and
+      contains only external-leg renormalization.  This is the
+      renormalization-group form of the supergraph non-renormalization
+      theorem.
+    \item \emph{Mass-Matrix Running.}
+    The same external-leg argument now acts on two indices.  At fixed bare
+      mass tensor,
+      \[
+        \beta_{M\,ij}
+          =\gamma_i{}^kM_{kj}+\gamma_j{}^kM_{ik},
+      \]
+      or in matrix notation
+      \(\beta_M=\gamma M+M\gamma^{\mathsf T}\).  If
+      \(\Phi'=U\Phi\) with constant unitary \(U\), then
+      \(M'=U^*MU^\dagger\) and
+      \(\gamma'=U\gamma U^\dagger\).  Substitution gives
+      \[
+        \beta_{M'}=U^*\beta_MU^\dagger,
+      \]
+      so the equation transforms in the same way as the mass tensor.
+      Symmetry of \(M\) is also preserved because the two terms are
+      transposes of one another.
+    \item \emph{Higher-Operator Running.}
+    Every field in the operator must be converted from bare to canonical
+      normalization.  With a symmetric coefficient tensor this yields
+      \[
+        \beta_{C\,i_1\cdots i_n}
+          =\sum_{r=1}^{n}
+           \gamma_{i_r}{}^j
+           C_{i_1\cdots i_{r-1}j i_{r+1}\cdots i_n}.
+      \]
+      The explicit power \(M^{3-n}\) is fixed if the matching scale is held
+      constant; a running matching parameter would add its ordinary
+      dimensional contribution separately.  The derivation never used
+      power-counting renormalizability.  It used only chirality and the
+      absence of a perturbative \(\mathcal F\)-term counterterm, so it
+      remains valid for \(n>3\) order by order in the effective-field-theory
+      expansion.
+  \end{enumerate}
 
-  \SupplementarySolution{7}{Derivative Transfer Rule}
-  Translation invariance of the Berezin integral implies that the
-  integral of a total superderivative vanishes.  If \(A\) has Grassmann
-  parity \(|A|\), the graded Leibniz rule gives
-  \[
-    0=\int d^4\theta\,\mathcal D(AB)
-     =\int d^4\theta\,
-       \left[(\mathcal DA)B+(-1)^{|A|}A\mathcal DB\right].
-  \]
-  Therefore
-  \[
-    \int d^4\theta\,(\mathcal DA)B
-      =-(-1)^{|A|}\int d^4\theta\,A\mathcal DB .
-  \]
-  For two fermionic superfields \(A,B\), \(|A|=1\), so the right-hand
-  side has a plus sign.  Applied to a translation-invariant propagator,
-  this rule is equivalent to
-  \(\mathcal D_z\Delta(z-z')=-\mathcal D_{z'}\Delta(z-z')\), with the
-  additional graded sign supplied when the derivative crosses a
-  fermionic external factor.
+  \SupplementarySolution{6}{Anomalous Dimensions and Group Factors}
+  \begin{enumerate}
+    \item \emph{One-Loop Anomalous Dimension.}
+    Flavor covariance permits the Yukawa combination only in the form
+      \(Y_{imn}Y^{*jmn}\).  Gauge invariance permits the self-energy group
+      factor only as \(C_2(R_i)\delta_i{}^j\).  With the standard
+      normalization \(W=Y_{ijk}\Phi_i\Phi_j\Phi_k/6\), one finds
+      \[
+        \gamma_i{}^j
+          =\frac1{16\pi^2}
+           \left[
+             \frac12Y_{imn}Y^{*jmn}
+             -2g^2C_2(R_i)\delta_i{}^j
+           \right].
+      \]
+      The positive Yukawa sign reflects matter-field screening from the
+      chiral loop.  The gauge contribution has the opposite sign because
+      vector exchange antiscreens the chiral wavefunction in this
+      convention.  Both terms are Hermitian in flavor space and
+      dimensionless, providing independent checks.
+    \item \emph{Casimir Conversion.}
+    By definition,
+      \[
+        \sum_A T_R^AT_R^A=C_2(R)\mathbf1_R,
+        \qquad
+        \operatorname{tr}_R(T_R^AT_R^B)=T(R)\delta^{AB}.
+      \]
+      Taking the trace of the first equation gives
+      \(C_2(R)\dim R\).  Summing the second equation over \(A=B\) gives
+      \(T(R)\dim G\), proving equality.  For \(SU(N)\),
+      \(\dim G=N^2-1\), \(\dim\mathbf N=N\), and
+      \(T(\mathbf N)=1/2\).  Hence
+      \[
+        C_2(\mathbf N)=\frac{N^2-1}{2N}.
+      \]
+      The two sides of the trace identity are then both
+      \((N^2-1)/2\).
+    \item \emph{Abelian Charge Factor.}
+    A chiral superfield of charge \(q\) couples through
+      \(\Phi^*e^{-2qV}\Phi\).  Expanding to second order supplies either two
+      linear vertices, each proportional to \(q\), or one quadratic seagull
+      vertex proportional to \(q^2\).  Thus every one-loop gauge
+      self-energy contribution carries \(q^2\).  The non-Abelian product
+      \(T^AT^A=C_2(R)\mathbf1\) is therefore replaced by \(q^2\).
+      A term linear in \(q\) would contain one external vector insertion or
+      an unpaired gauge vertex; it cannot form the neutral chiral two-point
+      function and is also forbidden by invariance under charge conjugation
+      \(q\to-q\), \(V\to-V\).
+  \end{enumerate}
 
-  \SupplementarySolution{8}{One-Loop Self-Energy Algebra}
-  One chiral and one antichiral cubic vertex are required by line
-  orientation.  Move their spinor derivatives onto one internal line.
-  The identity
-  \(\mathcal D_R^2\mathcal D_L^2\mathcal D_R^2
-  =-16\Box\mathcal D_R^2\) cancels one propagator denominator, while the
-  two fermionic delta functions identify the vertex coordinates.  The
-  remaining structure is therefore
-  \[
-    \Gamma_{\rm div}^{(1)}
-      \propto |g|^2
-      \int d^4x\,d^4\theta\,\Phi^*(x,\theta)\Phi(x,\theta)
-      \int\frac{d^dp}{(2\pi)^d}
-        \frac1{p^2(p+k)^2}.
-  \]
-  The momentum integral has a logarithmic pole.  Because the external
-  fields occur with the full \(d^4\theta\) measure, the counterterm is a
-  wavefunction or Kahler correction proportional to
-  \([\Phi^*\Phi]_D\); it cannot renormalize the chiral superpotential.
+  \SupplementarySolution{7}{Field Redefinitions and Effective-Operator Running}
+  \begin{enumerate}
+    \item \emph{Field-Redefinition Contribution.}
+    Differentiate
+      \(\Phi_B=Z^{1/2}\Phi\) at fixed \(\Phi_B\):
+      \[
+        \mu\frac{d\Phi}{d\mu}
+          =-(Z^{-1/2}\mu\,dZ^{1/2}/d\mu)\Phi
+          =-\gamma\Phi .
+      \]
+      A coefficient multiplying \(n\) chiral fields must compensate the
+      running of every factor.  Therefore its beta function is the sum of
+      \(n\) terms, with \(\gamma\) acting on one tensor index at a time.
+      There is no extra vertex term because a loop supergraph cannot
+      generate an \(\mathcal F\)-term.  This derivation also shows why
+      flavor mixing must be treated by matrix multiplication rather than
+      by assigning a separate scalar anomalous dimension to each field.
+    \item \emph{EFT Triangularity.}
+    Insertions of an operator \(M^{-k}\mathcal O_{4+k}\) carry an explicit
+      negative power of the heavy scale.  A mass-independent regulator
+      cannot turn this factor into \(M^0\); doing so would require a
+      compensating positive power of \(M\), which is absent from the light
+      theory.  Hence such an insertion contributes only at order \(M^{-k}\)
+      or lower and cannot alter the leading renormalizable counterterms.
+      Conversely, loops built solely from renormalizable vertices contain
+      ultraviolet local terms of arbitrarily high field or derivative
+      order when expanded in external momenta.  Those terms have precisely
+      the form of higher-dimensional operators and therefore renormalize
+      their coefficients.  The mixing matrix is triangular in powers of
+      \(1/M\).
+    \item \emph{Holomorphic versus Canonical Coupling.}
+    For one field, write the holomorphic interaction as
+      \(Y_h\Phi^3/6\).  The canonical field
+      \(\Phi_{\mathrm c}=Z^{1/2}\Phi\) gives
+      \[
+        Y_{\mathrm c}=Y_hZ^{-3/2}.
+      \]
+      Holomorphy and the non-renormalization theorem imply
+      \(\mu\,dY_h/d\mu=0\), but differentiating the last equation yields
+      \[
+        \beta_{Y_{\mathrm c}}
+          =-3Y_{\mathrm c}\,
+           \mu\frac{d\ln Z^{1/2}}{d\mu}.
+      \]
+      If the anomalous dimension is defined with the opposite sign for
+      field running, this is conventionally written
+      \(\beta_Y=3\gamma Y\).  Thus the Wilsonian holomorphic coefficient can
+      be fixed while the measurable coupling runs through the normalization
+      of its external legs.
+  \end{enumerate}
 
-  \SupplementarySolution{9}{Vanishing Vacuum Loop}
-  First collapse a spanning tree of propagators.  All vertex Grassmann
-  coordinates then become a single \(\theta\), but each remaining loop
-  line contributes a fermionic delta function evaluated at coincident
-  arguments.  Without external superfields, integration by parts can
-  move all surplus spinor derivatives around the graph; there is no
-  external factor on which to leave them.  At least one loop delta
-  therefore remains unsaturated and supplies
-  \(\delta^4(0)=0\).  Equivalently, if the derivatives saturate every
-  loop delta, the last overall factor is independent of \(\theta\), and
-  \(\int d^4\theta\,1=0\).  Hence a supersymmetric vacuum graph vanishes
-  before any bosonic momentum integration, making the component
-  boson--fermion cancellation manifest.
+  \SupplementarySolution{8}{Background Hessian and the One-Loop Kähler Term}
+  \begin{enumerate}
+    \item \emph{Background Hessian.}
+    Put \(\Phi_{\rm total}=\Phi+\varphi\).  Expanding the superpotential,
+      \[
+        W(\Phi+\varphi)
+          =W(\Phi)+W'(\Phi)\varphi
+           +\frac12\Psi\,\varphi^2
+           +\frac16W'''(\Phi)\varphi^3+\cdots,
+        \qquad \Psi=W''(\Phi).
+      \]
+      The quadratic action contains the mixed kinetic term
+      \(\varphi^*\varphi\) and the diagonal chiral entries
+      \(\Psi\varphi^2/2\), \(\Psi^*\varphi^{*2}/2\).  Thus, schematically,
+      \[
+        H=
+        \begin{pmatrix}
+          \Psi\,\delta_L & K_{LR}\\
+          K_{RL} & \Psi^*\,\delta_R
+        \end{pmatrix}.
+      \]
+      A connected diagram containing a cubic quantum vertex has at least
+      two loops: contracting its three quantum legs requires another cubic
+      vertex and gives \(I=3,V=2\), hence \(L=2\).  The one-loop action is
+      therefore determined entirely by this Hessian.
+    \item \emph{Logarithm of the Hessian.}
+    A bosonic Gaussian integral with quadratic operator \(H\) contributes
+      \((\det H)^{-1/2}\).  Dividing by the background-independent
+      determinant \(H_0\) and taking the logarithm gives
+      \[
+        \Gamma^{(1)}
+          =\frac{i}{2}\operatorname{Tr}\ln(H/H_0).
+      \]
+      Writing \(H=H_0(1+X)\) produces
+      \[
+        \Gamma^{(1)}
+          =\frac{i}{2}\sum_{n=1}^{\infty}
+           \frac{(-1)^{n+1}}n\operatorname{Tr}X^n .
+      \]
+      The factor \(1/n\) removes the \(n\) cyclic choices of a starting
+      vertex around a ring, while the Gaussian \(1/2\) removes reversal or
+      double counting of the quadratic contraction.  Chiral orientation
+      may split the expression into a term and its complex conjugate, but
+      the combined symmetry factor is unchanged.
+    \item \emph{Kahler Dimensional Check.}
+    A full-superspace integrand must have mass dimension two because
+      \(d^4\theta\) has dimension two.  The only derivative-free,
+      phase-invariant background combination with this dimension is
+      \(\Psi^*\Psi\).  A loop can introduce the renormalization scale only
+      through a dimensionless logarithm.  Consequently
+      \[
+        K^{(1)}
+          =c\,\Psi^*\Psi
+           \left[
+             \ln\!\left(\frac{\Psi^*\Psi}{\mu^2}\right)-c_0
+           \right].
+      \]
+      Here \(c\) is fixed by the loop integral and \(c_0\) is
+      scheme-dependent because it multiplies the local counterterm
+      \(\Psi^*\Psi\).  No holomorphic function of \(\Psi\) contributes to
+      the full superspace integral except through a Kahler transformation.
+  \end{enumerate}
 
-  \SupplementarySolution{10}{Superficial Divergence Bound}
-  Before \(D\)-algebra, each loop contributes four powers of momentum
-  and each massless internal line contributes \(p^{-2}\).  The
-  derivatives needed to saturate the loop delta functions consume the
-  numerator powers associated with all but one overall superspace
-  integral.  Using \(L=I-V+1\) and cubic incidence then reduces the
-  superficial degree to
-  \[
-    \omega=2-E,
-  \]
-  where \(E\) is the total number of external chiral and antichiral
-  superfields after the external spinor derivatives are counted.
-  Thus \(E=2\) can be logarithmically divergent, whereas \(E>2\) is
-  superficially convergent.  The apparent \(E=0,1\) cases are removed
-  by the Grassmann argument and by the absence of an allowed invariant
-  tadpole in the cubic model.  Only the two-point full-superspace
-  counterterm remains.
+  \SupplementarySolution{9}{Momentum Integration and Regulator Ordering}
+  \begin{enumerate}
+    \item \emph{Logarithmic Momentum Integral.}
+    In Euclidean signature,
+      \[
+        \frac{dJ}{dM^2}
+          =\mu^{2\epsilon}
+           \int\frac{d^{4-2\epsilon}p}{(2\pi)^{4-2\epsilon}}
+           \frac1{p^2+M^2}
+          =\frac{\mu^{2\epsilon}}{(4\pi)^{2-\epsilon}}
+           \Gamma(-1+\epsilon)(M^2)^{1-\epsilon}.
+      \]
+      With the modified scale \(\bar\mu\), this is
+      \[
+        \frac{dJ}{dM^2}
+          =-\frac{M^2}{16\pi^2}
+           \left[
+             \frac1\epsilon+1-\ln\!\left(\frac{M^2}{\bar\mu^2}\right)
+           \right]+O(\epsilon).
+      \]
+      Integrating with respect to \(M^2\) gives
+      \[
+        J(M^2)
+          =-\frac{M^4}{32\pi^2}
+           \left[
+             \frac1\epsilon+\frac32
+             -\ln\!\left(\frac{M^2}{\bar\mu^2}\right)
+           \right]+\text{constant}.
+      \]
+      The integration constant is field independent and can be discarded.
+    \item \emph{Regulator Ordering Warning.}
+    Fubini's theorem permits exchange of integrations only for an
+      absolutely convergent integral.  A proper-time representation may
+      contain separate ultraviolet and infrared divergent pieces whose
+      sum is finite.  Rescaling variables or integrating momentum before
+      proper time changes how those pieces are paired, so different orders
+      can leave different finite remainders.  The safe prescription is to
+      keep a common regulator---for example \(d=4-2\epsilon\) together with
+      the same \(i\epsilon\) or proper-time contour---through every
+      integration and superspace partial integration.  Combine all terms
+      in the domain where they converge, analytically continue the combined
+      expression, subtract its local pole, and only then take
+      \(\epsilon\to0\).  The resulting finite coefficient is independent
+      of intermediate integration order.
+  \end{enumerate}
 
-  \SupplementarySolution{11}{One Overall Superspace Point}
-  The one-vertex graph plainly has one coordinate.  Assume every
-  connected graph with \(V\) vertices can be reduced to one overall
-  \(\theta\).  A connected graph with \(V+1\) vertices contains a
-  spanning-tree edge joining one vertex to a \(V\)-vertex connected
-  subgraph.  Transfer any derivatives away from that edge and use its
-  delta function to perform the new vertex integral.  The induction
-  hypothesis then reduces the remaining graph to one coordinate.
-  Extra non-tree lines change only the \(D\)-algebra needed to saturate
-  coincident deltas.  No analogous delta function identifies the
-  spacetime coordinates after the bosonic propagators are included, so
-  the result can contain nonlocal kernels such as
-  \(\Delta_F(x-y)\).  It is local in superspace's fermionic coordinate,
-  not necessarily in \(x\).
+  \SupplementarySolution{10}{Higher-Derivative Terms, Scaling, and Decoupling}
+  \begin{enumerate}
+    \item \emph{Four-Derivative Invariant.}
+    Chirality requires left derivatives on \(\Phi\) and right derivatives
+      on \(\Phi^*\).  Lorentz scalar contraction and Grassmann parity require
+      an even number of each.  The lowest real candidate is therefore
+      \[
+        (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
+        \,\mathcal G\!
+        \left(\Phi,\Phi^*,\mathcal D_L^2\Phi,
+          \mathcal D_R^2\Phi^*\right),
+      \]
+      plus terms related by superspace integration by parts.  It contains
+      two derivatives of each chirality and is manifestly bosonic.  If all
+      spinor derivatives of the background vanish, the expression vanishes,
+      so it is distinct from the ordinary Kahler potential
+      \(K(\Phi,\Phi^*)\).  Fewer derivatives cannot form a real scalar with
+      both chiralities and the required Grassmann parity.
+    \item \emph{Auxiliary-Field Order.}
+    With fermions and spacetime derivatives set to zero, the chiral
+      expansion has
+      \(\mathcal D_L\Phi\sim\theta_L\mathcal F\) and
+      \(\mathcal D_R\Phi^*\sim\theta_R\mathcal F^*\).  Hence
+      \[
+        (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
+          \sim
+          (\theta_L^T\epsilon\theta_L)
+          (\theta_R^T\epsilon\theta_R)
+          |\mathcal F|^4 .
+      \]
+      The \(d^4\theta\) integral selects this coefficient.  Its leading
+      bosonic contribution is therefore quartic in the auxiliary field,
+      multiplied by the scalar-dependent value of \(\mathcal G\).  The
+      ordinary Kahler term instead begins with
+      \(K_{\phi\phi^*}|\mathcal F|^2\).  This higher-order dependence is why
+      the new invariant is classified as an effective auxiliary-field
+      potential.
+    \item \emph{Massless Scaling Form.}
+    Each factor \(\mathcal D\Phi\) has dimension \(3/2\), so the four-factor
+      numerator has dimension six.  A full-superspace integrand must have
+      dimension two; the denominator must therefore have dimension four.
+      In the massless theory the only phase-neutral algebraic choice is
+      \[
+        \frac{
+          (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
+        }{(\Phi^*\Phi)^2}.
+      \]
+      The numerator and denominator are separately invariant under constant
+      phases \(\Phi\to e^{i\tau}\Phi\), and their dimensions are six and
+      four, respectively.  The integrand thus has dimension two, while
+      \(d^4x\,d^4\theta\) has dimension \(-2\), producing a dimensionless
+      action as required.
+    \item \emph{Heavy-Field Decoupling.}
+    Let \(X=|m+\lambda\Phi|^2=|m|^2+\delta X\) and
+      \(F(X)=X[\ln(X/\mu^2)-2]\).  Then
+      \(F'(|m|^2)=\ln(|m|^2/\mu^2)-1\) and
+      \(F''(|m|^2)=|m|^{-2}\).  Expanding to second order, the terms linear
+      in \(\Phi\), as well as the pure \(\Phi^2\) and \(\Phi^{*2}\) terms,
+      are chiral plus antichiral Kahler transformations and vanish under
+      the full superspace integral.  The mixed term is
+      \[
+        F(X)\supset
+          |\lambda|^2
+          \ln\!\left(\frac{|m|^2}{\mu^2}\right)\Phi^*\Phi .
+      \]
+      Multiplying by the overall one-loop coefficient gives the threshold
+      wavefunction correction.  It grows only logarithmically with the
+      heavy mass and is absorbed by matching the light-field normalization
+      at the scale \(|m|\).
+  \end{enumerate}
 
-  \SupplementarySolution{12}{Cubic Vertex Counting}
-  Count the ends of directed lines at chiral vertices.  Each cubic
-  chiral vertex supplies three incoming ends, so
-  \[
-    I+E=3V.
-  \]
-  Counting ends at antichiral vertices similarly gives
-  \(I+E^*=3V^*\).  For a connected graph the Euler relation is
-  \[
-    L=I-(V+V^*)+1.
-  \]
-  Each chiral vertex leaves two factors of \(\mathcal D_R^2\), hence
-  \(N_R=2V=I+E-V\).  Substituting the loop relation gives
-  \[
-    N_R=L+V^*+E-1.
-  \]
-  Complex conjugation yields
-  \(N_L=L+V+E^*-1\).  These are precisely the special cubic cases of
-  Eqs.~\eqref{eq:30.3.3}--\eqref{eq:30.3.4}; for \(L>0\), every external
-  field can be projected into a full-superspace \(D\)-term.
-
-  \SupplementarySolution{13}{Yukawa Beta Tensor}
-  Write the bare fields as
-  \(\Phi_{B\,i}=(Z^{1/2})_i{}^j\Phi_j\).  Since the holomorphic tensor
-  has no independent vertex counterterm, its scale dependence comes
-  entirely from the three factors of \(Z^{-1/2}\) needed to express the
-  bare superpotential in canonical fields.  Defining
-  \(\gamma_i{}^j=\mu(dZ^{1/2}/d\mu)(Z^{-1/2})_i{}^j\), differentiation
-  gives
-  \[
-    \beta_{Y\,ijk}
-      =\gamma_i{}^\ell Y_{\ell jk}
-       +\gamma_j{}^\ell Y_{i\ell k}
-       +\gamma_k{}^\ell Y_{ij\ell}.
-  \]
-  The right-hand side is symmetric in \(i,j,k\), as required, and
-  contains only external-leg renormalization.  This is the
-  renormalization-group form of the supergraph non-renormalization
-  theorem.
-
-  \SupplementarySolution{14}{Mass-Matrix Running}
-  The same external-leg argument now acts on two indices.  At fixed bare
-  mass tensor,
-  \[
-    \beta_{M\,ij}
-      =\gamma_i{}^kM_{kj}+\gamma_j{}^kM_{ik},
-  \]
-  or in matrix notation
-  \(\beta_M=\gamma M+M\gamma^{\mathsf T}\).  If
-  \(\Phi'=U\Phi\) with constant unitary \(U\), then
-  \(M'=U^*MU^\dagger\) and
-  \(\gamma'=U\gamma U^\dagger\).  Substitution gives
-  \[
-    \beta_{M'}=U^*\beta_MU^\dagger,
-  \]
-  so the equation transforms in the same way as the mass tensor.
-  Symmetry of \(M\) is also preserved because the two terms are
-  transposes of one another.
-
-  \SupplementarySolution{15}{Higher-Operator Running}
-  Every field in the operator must be converted from bare to canonical
-  normalization.  With a symmetric coefficient tensor this yields
-  \[
-    \beta_{C\,i_1\cdots i_n}
-      =\sum_{r=1}^{n}
-       \gamma_{i_r}{}^j
-       C_{i_1\cdots i_{r-1}j i_{r+1}\cdots i_n}.
-  \]
-  The explicit power \(M^{3-n}\) is fixed if the matching scale is held
-  constant; a running matching parameter would add its ordinary
-  dimensional contribution separately.  The derivation never used
-  power-counting renormalizability.  It used only chirality and the
-  absence of a perturbative \(\mathcal F\)-term counterterm, so it
-  remains valid for \(n>3\) order by order in the effective-field-theory
-  expansion.
-
-  \SupplementarySolution{16}{One-Loop Anomalous Dimension}
-  Flavor covariance permits the Yukawa combination only in the form
-  \(Y_{imn}Y^{*jmn}\).  Gauge invariance permits the self-energy group
-  factor only as \(C_2(R_i)\delta_i{}^j\).  With the standard
-  normalization \(W=Y_{ijk}\Phi_i\Phi_j\Phi_k/6\), one finds
-  \[
-    \gamma_i{}^j
-      =\frac1{16\pi^2}
-       \left[
-         \frac12Y_{imn}Y^{*jmn}
-         -2g^2C_2(R_i)\delta_i{}^j
-       \right].
-  \]
-  The positive Yukawa sign reflects matter-field screening from the
-  chiral loop.  The gauge contribution has the opposite sign because
-  vector exchange antiscreens the chiral wavefunction in this
-  convention.  Both terms are Hermitian in flavor space and
-  dimensionless, providing independent checks.
-
-  \SupplementarySolution{17}{Casimir Conversion}
-  By definition,
-  \[
-    \sum_A T_R^AT_R^A=C_2(R)\mathbf1_R,
-    \qquad
-    \operatorname{tr}_R(T_R^AT_R^B)=T(R)\delta^{AB}.
-  \]
-  Taking the trace of the first equation gives
-  \(C_2(R)\dim R\).  Summing the second equation over \(A=B\) gives
-  \(T(R)\dim G\), proving equality.  For \(SU(N)\),
-  \(\dim G=N^2-1\), \(\dim\mathbf N=N\), and
-  \(T(\mathbf N)=1/2\).  Hence
-  \[
-    C_2(\mathbf N)=\frac{N^2-1}{2N}.
-  \]
-  The two sides of the trace identity are then both
-  \((N^2-1)/2\).
-
-  \SupplementarySolution{18}{Abelian Charge Factor}
-  A chiral superfield of charge \(q\) couples through
-  \(\Phi^*e^{-2qV}\Phi\).  Expanding to second order supplies either two
-  linear vertices, each proportional to \(q\), or one quadratic seagull
-  vertex proportional to \(q^2\).  Thus every one-loop gauge
-  self-energy contribution carries \(q^2\).  The non-Abelian product
-  \(T^AT^A=C_2(R)\mathbf1\) is therefore replaced by \(q^2\).
-  A term linear in \(q\) would contain one external vector insertion or
-  an unpaired gauge vertex; it cannot form the neutral chiral two-point
-  function and is also forbidden by invariance under charge conjugation
-  \(q\to-q\), \(V\to-V\).
-
-  \SupplementarySolution{19}{Field-Redefinition Contribution}
-  Differentiate
-  \(\Phi_B=Z^{1/2}\Phi\) at fixed \(\Phi_B\):
-  \[
-    \mu\frac{d\Phi}{d\mu}
-      =-(Z^{-1/2}\mu\,dZ^{1/2}/d\mu)\Phi
-      =-\gamma\Phi .
-  \]
-  A coefficient multiplying \(n\) chiral fields must compensate the
-  running of every factor.  Therefore its beta function is the sum of
-  \(n\) terms, with \(\gamma\) acting on one tensor index at a time.
-  There is no extra vertex term because a loop supergraph cannot
-  generate an \(\mathcal F\)-term.  This derivation also shows why
-  flavor mixing must be treated by matrix multiplication rather than
-  by assigning a separate scalar anomalous dimension to each field.
-
-  \SupplementarySolution{20}{EFT Triangularity}
-  Insertions of an operator \(M^{-k}\mathcal O_{4+k}\) carry an explicit
-  negative power of the heavy scale.  A mass-independent regulator
-  cannot turn this factor into \(M^0\); doing so would require a
-  compensating positive power of \(M\), which is absent from the light
-  theory.  Hence such an insertion contributes only at order \(M^{-k}\)
-  or lower and cannot alter the leading renormalizable counterterms.
-  Conversely, loops built solely from renormalizable vertices contain
-  ultraviolet local terms of arbitrarily high field or derivative
-  order when expanded in external momenta.  Those terms have precisely
-  the form of higher-dimensional operators and therefore renormalize
-  their coefficients.  The mixing matrix is triangular in powers of
-  \(1/M\).
-
-  \SupplementarySolution{21}{Holomorphic versus Canonical Coupling}
-  For one field, write the holomorphic interaction as
-  \(Y_h\Phi^3/6\).  The canonical field
-  \(\Phi_{\mathrm c}=Z^{1/2}\Phi\) gives
-  \[
-    Y_{\mathrm c}=Y_hZ^{-3/2}.
-  \]
-  Holomorphy and the non-renormalization theorem imply
-  \(\mu\,dY_h/d\mu=0\), but differentiating the last equation yields
-  \[
-    \beta_{Y_{\mathrm c}}
-      =-3Y_{\mathrm c}\,
-       \mu\frac{d\ln Z^{1/2}}{d\mu}.
-  \]
-  If the anomalous dimension is defined with the opposite sign for
-  field running, this is conventionally written
-  \(\beta_Y=3\gamma Y\).  Thus the Wilsonian holomorphic coefficient can
-  be fixed while the measurable coupling runs through the normalization
-  of its external legs.
-
-  \SupplementarySolution{22}{Background Hessian}
-  Put \(\Phi_{\rm total}=\Phi+\varphi\).  Expanding the superpotential,
-  \[
-    W(\Phi+\varphi)
-      =W(\Phi)+W'(\Phi)\varphi
-       +\frac12\Psi\,\varphi^2
-       +\frac16W'''(\Phi)\varphi^3+\cdots,
-    \qquad \Psi=W''(\Phi).
-  \]
-  The quadratic action contains the mixed kinetic term
-  \(\varphi^*\varphi\) and the diagonal chiral entries
-  \(\Psi\varphi^2/2\), \(\Psi^*\varphi^{*2}/2\).  Thus, schematically,
-  \[
-    H=
-    \begin{pmatrix}
-      \Psi\,\delta_L & K_{LR}\\
-      K_{RL} & \Psi^*\,\delta_R
-    \end{pmatrix}.
-  \]
-  A connected diagram containing a cubic quantum vertex has at least
-  two loops: contracting its three quantum legs requires another cubic
-  vertex and gives \(I=3,V=2\), hence \(L=2\).  The one-loop action is
-  therefore determined entirely by this Hessian.
-
-  \SupplementarySolution{23}{Logarithm of the Hessian}
-  A bosonic Gaussian integral with quadratic operator \(H\) contributes
-  \((\det H)^{-1/2}\).  Dividing by the background-independent
-  determinant \(H_0\) and taking the logarithm gives
-  \[
-    \Gamma^{(1)}
-      =\frac{i}{2}\operatorname{Tr}\ln(H/H_0).
-  \]
-  Writing \(H=H_0(1+X)\) produces
-  \[
-    \Gamma^{(1)}
-      =\frac{i}{2}\sum_{n=1}^{\infty}
-       \frac{(-1)^{n+1}}n\operatorname{Tr}X^n .
-  \]
-  The factor \(1/n\) removes the \(n\) cyclic choices of a starting
-  vertex around a ring, while the Gaussian \(1/2\) removes reversal or
-  double counting of the quadratic contraction.  Chiral orientation
-  may split the expression into a term and its complex conjugate, but
-  the combined symmetry factor is unchanged.
-
-  \SupplementarySolution{24}{Kahler Dimensional Check}
-  A full-superspace integrand must have mass dimension two because
-  \(d^4\theta\) has dimension two.  The only derivative-free,
-  phase-invariant background combination with this dimension is
-  \(\Psi^*\Psi\).  A loop can introduce the renormalization scale only
-  through a dimensionless logarithm.  Consequently
-  \[
-    K^{(1)}
-      =c\,\Psi^*\Psi
-       \left[
-         \ln\!\left(\frac{\Psi^*\Psi}{\mu^2}\right)-c_0
-       \right].
-  \]
-  Here \(c\) is fixed by the loop integral and \(c_0\) is
-  scheme-dependent because it multiplies the local counterterm
-  \(\Psi^*\Psi\).  No holomorphic function of \(\Psi\) contributes to
-  the full superspace integral except through a Kahler transformation.
-
-  \SupplementarySolution{25}{Logarithmic Momentum Integral}
-  In Euclidean signature,
-  \[
-    \frac{dJ}{dM^2}
-      =\mu^{2\epsilon}
-       \int\frac{d^{4-2\epsilon}p}{(2\pi)^{4-2\epsilon}}
-       \frac1{p^2+M^2}
-      =\frac{\mu^{2\epsilon}}{(4\pi)^{2-\epsilon}}
-       \Gamma(-1+\epsilon)(M^2)^{1-\epsilon}.
-  \]
-  With the modified scale \(\bar\mu\), this is
-  \[
-    \frac{dJ}{dM^2}
-      =-\frac{M^2}{16\pi^2}
-       \left[
-         \frac1\epsilon+1-\ln\!\left(\frac{M^2}{\bar\mu^2}\right)
-       \right]+O(\epsilon).
-  \]
-  Integrating with respect to \(M^2\) gives
-  \[
-    J(M^2)
-      =-\frac{M^4}{32\pi^2}
-       \left[
-         \frac1\epsilon+\frac32
-         -\ln\!\left(\frac{M^2}{\bar\mu^2}\right)
-       \right]+\text{constant}.
-  \]
-  The integration constant is field independent and can be discarded.
-
-  \SupplementarySolution{26}{Four-Derivative Invariant}
-  Chirality requires left derivatives on \(\Phi\) and right derivatives
-  on \(\Phi^*\).  Lorentz scalar contraction and Grassmann parity require
-  an even number of each.  The lowest real candidate is therefore
-  \[
-    (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
-    \,\mathcal G\!
-    \left(\Phi,\Phi^*,\mathcal D_L^2\Phi,
-      \mathcal D_R^2\Phi^*\right),
-  \]
-  plus terms related by superspace integration by parts.  It contains
-  two derivatives of each chirality and is manifestly bosonic.  If all
-  spinor derivatives of the background vanish, the expression vanishes,
-  so it is distinct from the ordinary Kahler potential
-  \(K(\Phi,\Phi^*)\).  Fewer derivatives cannot form a real scalar with
-  both chiralities and the required Grassmann parity.
-
-  \SupplementarySolution{27}{Auxiliary-Field Order}
-  With fermions and spacetime derivatives set to zero, the chiral
-  expansion has
-  \(\mathcal D_L\Phi\sim\theta_L\mathcal F\) and
-  \(\mathcal D_R\Phi^*\sim\theta_R\mathcal F^*\).  Hence
-  \[
-    (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
-      \sim
-      (\theta_L^T\epsilon\theta_L)
-      (\theta_R^T\epsilon\theta_R)
-      |\mathcal F|^4 .
-  \]
-  The \(d^4\theta\) integral selects this coefficient.  Its leading
-  bosonic contribution is therefore quartic in the auxiliary field,
-  multiplied by the scalar-dependent value of \(\mathcal G\).  The
-  ordinary Kahler term instead begins with
-  \(K_{\phi\phi^*}|\mathcal F|^2\).  This higher-order dependence is why
-  the new invariant is classified as an effective auxiliary-field
-  potential.
-
-  \SupplementarySolution{28}{Massless Scaling Form}
-  Each factor \(\mathcal D\Phi\) has dimension \(3/2\), so the four-factor
-  numerator has dimension six.  A full-superspace integrand must have
-  dimension two; the denominator must therefore have dimension four.
-  In the massless theory the only phase-neutral algebraic choice is
-  \[
-    \frac{
-      (\mathcal D_L\Phi)^2(\mathcal D_R\Phi^*)^2
-    }{(\Phi^*\Phi)^2}.
-  \]
-  The numerator and denominator are separately invariant under constant
-  phases \(\Phi\to e^{i\tau}\Phi\), and their dimensions are six and
-  four, respectively.  The integrand thus has dimension two, while
-  \(d^4x\,d^4\theta\) has dimension \(-2\), producing a dimensionless
-  action as required.
-
-  \SupplementarySolution{29}{Heavy-Field Decoupling}
-  Let \(X=|m+\lambda\Phi|^2=|m|^2+\delta X\) and
-  \(F(X)=X[\ln(X/\mu^2)-2]\).  Then
-  \(F'(|m|^2)=\ln(|m|^2/\mu^2)-1\) and
-  \(F''(|m|^2)=|m|^{-2}\).  Expanding to second order, the terms linear
-  in \(\Phi\), as well as the pure \(\Phi^2\) and \(\Phi^{*2}\) terms,
-  are chiral plus antichiral Kahler transformations and vanish under
-  the full superspace integral.  The mixed term is
-  \[
-    F(X)\supset
-      |\lambda|^2
-      \ln\!\left(\frac{|m|^2}{\mu^2}\right)\Phi^*\Phi .
-  \]
-  Multiplying by the overall one-loop coefficient gives the threshold
-  wavefunction correction.  It grows only logarithmically with the
-  heavy mass and is absorbed by matching the light-field normalization
-  at the scale \(|m|\).
-
-  \SupplementarySolution{30}{Regulator Ordering Warning}
-  Fubini's theorem permits exchange of integrations only for an
-  absolutely convergent integral.  A proper-time representation may
-  contain separate ultraviolet and infrared divergent pieces whose
-  sum is finite.  Rescaling variables or integrating momentum before
-  proper time changes how those pieces are paired, so different orders
-  can leave different finite remainders.  The safe prescription is to
-  keep a common regulator---for example \(d=4-2\epsilon\) together with
-  the same \(i\epsilon\) or proper-time contour---through every
-  integration and superspace partial integration.  Combine all terms
-  in the domain where they converge, analytically continue the combined
-  expression, subtract its local pole, and only then take
-  \(\epsilon\to0\).  The resulting finite coefficient is independent
-  of intermediate integration order.
 \end{enumerate}

@@ -17,27 +17,20 @@ VOLUMES = (
     ("weinberg_vol2_exercises", "weinberg-vol2-exercises.pdf"),
     ("weinberg_vol3_exercises", "weinberg-vol3-exercises.pdf"),
 )
-EXPECTED_TOTALS = {
+EXPECTED_WEINBERG_TOTALS = {
     "weinberg_vol1_exercises": {
         "weinberg_exercises": 70,
         "weinberg_solutions": 70,
-        "supplementary_exercises": 390,
-        "supplementary_solutions": 390,
     },
     "weinberg_vol2_exercises": {
         "weinberg_exercises": 50,
         "weinberg_solutions": 50,
-        "supplementary_exercises": 270,
-        "supplementary_solutions": 270,
     },
     "weinberg_vol3_exercises": {
         "weinberg_exercises": 39,
         "weinberg_solutions": 39,
-        "supplementary_exercises": 240,
-        "supplementary_solutions": 240,
     },
 }
-EXPECTED_SERIES_SUPPLEMENTARY = 900
 
 
 def sha256(path: Path) -> str:
@@ -70,13 +63,23 @@ def validated_inventory_totals(
     totals = inventory.get("totals")
     if not isinstance(totals, dict):
         raise SystemExit(f"{edition_name} inventory totals are malformed")
-    expected = EXPECTED_TOTALS[edition_name]
-    for key, expected_value in expected.items():
+    expected = EXPECTED_WEINBERG_TOTALS[edition_name]
+    count_keys = (
+        "weinberg_exercises",
+        "weinberg_solutions",
+        "supplementary_exercises",
+        "supplementary_solutions",
+    )
+    for key in count_keys:
         actual_value = totals.get(key)
-        if actual_value != expected_value:
+        if not isinstance(actual_value, int) or isinstance(actual_value, bool):
+            raise SystemExit(
+                f"{edition_name} inventory {key} is malformed: {actual_value!r}"
+            )
+        if key in expected and actual_value != expected[key]:
             raise SystemExit(
                 f"{edition_name} inventory {key} is {actual_value!r}, "
-                f"expected {expected_value}"
+                f"expected {expected[key]}"
             )
         chapter_values: list[int] = []
         for chapter in chapters:
@@ -89,10 +92,28 @@ def validated_inventory_totals(
                     f"malformed {key}"
                 )
             chapter_values.append(value)
-        if sum(chapter_values) != expected_value:
+        if sum(chapter_values) != actual_value:
             raise SystemExit(
                 f"{edition_name} chapter {key} sum does not match its inventory total"
             )
+    for chapter in chapters:
+        if not isinstance(chapter, dict):
+            continue
+        minimum = chapter.get("supplementary_minimum")
+        maximum = chapter.get("supplementary_maximum")
+        count = chapter.get("supplementary_exercises")
+        if (
+            not isinstance(minimum, int)
+            or not isinstance(maximum, int)
+            or not isinstance(count, int)
+            or not minimum <= count <= maximum
+        ):
+            raise SystemExit(
+                f"{edition_name} chapter {chapter.get('chapter')} violates its "
+                "supplementary count range"
+            )
+    if totals["supplementary_exercises"] != totals["supplementary_solutions"]:
+        raise SystemExit(f"{edition_name} supplementary totals do not pair")
     return totals
 
 
@@ -142,16 +163,19 @@ def main() -> int:
     if cross_report.get("failures") != [] or cross_report.get("warnings") != []:
         raise SystemExit("Cross-volume audit contains failures or similarity warnings")
     cross_editions = cross_report.get("editions")
-    if not isinstance(cross_editions, dict) or set(cross_editions) != set(EXPECTED_TOTALS):
+    if (
+        not isinstance(cross_editions, dict)
+        or set(cross_editions) != set(EXPECTED_WEINBERG_TOTALS)
+    ):
         raise SystemExit("Cross-volume audit edition set is malformed")
     for volume in volumes:
         edition_name = str(volume["edition"])
         cross_counts = cross_editions.get(edition_name)
         if not isinstance(cross_counts, dict):
             raise SystemExit(f"Missing cross-volume counts for {edition_name}")
-        expected_supplementary = EXPECTED_TOTALS[edition_name][
-            "supplementary_exercises"
-        ]
+        expected_supplementary = int(
+            volume["totals"]["supplementary_exercises"]
+        )
         if (
             cross_counts.get("supplementary_exercises") != expected_supplementary
             or cross_counts.get("supplementary_solutions") != expected_supplementary
@@ -173,22 +197,28 @@ def main() -> int:
     cross_totals = cross_report.get("totals")
     if not isinstance(cross_totals, dict):
         raise SystemExit("Cross-volume totals are malformed")
+    series_supplementary = sum(
+        int(volume["totals"]["supplementary_exercises"]) for volume in volumes
+    )
     if (
-        cross_totals.get("supplementary_exercises")
-        != EXPECTED_SERIES_SUPPLEMENTARY
-        or cross_totals.get("supplementary_solutions")
-        != EXPECTED_SERIES_SUPPLEMENTARY
-        or sum(
-            int(volume["totals"]["supplementary_exercises"])
-            for volume in volumes
-        )
-        != EXPECTED_SERIES_SUPPLEMENTARY
+        cross_totals.get("supplementary_exercises") != series_supplementary
+        or cross_totals.get("supplementary_solutions") != series_supplementary
     ):
-        raise SystemExit("Cross-volume series totals are not the authoritative 900 pairs")
+        raise SystemExit(
+            "Cross-volume series totals do not reconcile with the volume inventories"
+        )
 
     payload = {
         "series": "Weinberg, The Quantum Theory of Fields — Exercise Editions",
-        "canonical_trees_modified": False,
+        "canonical_tree_isolation": {
+            "exercise_pipeline_writes_canonical_trees": False,
+            "release_fingerprint_includes_canonical_sources": True,
+            "note": (
+                "The exercise editions are pinned to the current canonical "
+                "source hashes. Earlier separately authorized notation "
+                "normalization is part of that baseline."
+            ),
+        },
         "volumes": volumes,
         "cross_volume_audit": cross_report,
     }
@@ -203,8 +233,8 @@ def main() -> int:
     lines = [
         "# Weinberg QFT exercise-edition release manifest",
         "",
-        "| Edition | Pages | W solved | Supplementary pairs | Sources | SHA-256 |",
-        "|---|---:|---:|---:|---:|---|",
+        "| Edition | Pages | W solved | Supplementary pairs | Source documents | First-choice-pool problems | Exact source parents | SHA-256 |",
+        "|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for volume in volumes:
         totals = volume["totals"]
@@ -212,7 +242,10 @@ def main() -> int:
             f"| {volume['edition']} | {volume['pages']} | "
             f"{totals['weinberg_solutions']} | "
             f"{totals['supplementary_exercises']} | "
-            f"{totals['ledger_sources']} | `{volume['sha256']}` |"
+            f"{totals['ledger_documents']} | "
+            f"{totals['preferred_source_records']} | "
+            f"{totals['exact_source_problem_records']} | "
+            f"`{volume['sha256']}` |"
         )
     lines.extend(
         [
@@ -222,7 +255,10 @@ def main() -> int:
             "",
             "Cross-volume duplicate failures: 0.",
             "",
-            "The three canonical source trees were not modified.",
+            "The exercise-edition pipeline does not write the canonical source "
+            "trees. Their current files are hash-pinned and included in the "
+            "release fingerprint; earlier separately authorized notation "
+            "normalization is part of that baseline.",
             "",
         ]
     )

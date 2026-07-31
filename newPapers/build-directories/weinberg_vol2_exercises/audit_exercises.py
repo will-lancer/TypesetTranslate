@@ -15,6 +15,7 @@ import difflib
 import hashlib
 import json
 import re
+import statistics
 import sys
 from collections import Counter
 from dataclasses import dataclass
@@ -72,6 +73,30 @@ ZERO_TARGET_HISTORY_EXCEPTIONS = {
         "at the user's direction."
     ),
 }
+MIN_SUPPLEMENTARY_EXERCISES = 10
+MAX_SUPPLEMENTARY_EXERCISES = 30
+SOURCE_FAMILIES = {
+    "mcgreevy",
+    "harlow",
+    "cambridge-part-iii",
+    "knzhou",
+    "other",
+}
+PREFERRED_SOURCE_FAMILIES = SOURCE_FAMILIES - {"other"}
+USE_MODES = {
+    "adapted",
+    "original-inspired",
+    "verbatim-permitted",
+}
+EXACT_PROBLEM_LOCATOR_RE = re.compile(
+    r"\b(?:problem|question|exercise|exam(?:ination)?\s+question)\b",
+    re.IGNORECASE,
+)
+EXACT_PARENT_ROOT_RE = re.compile(
+    r"\b(?P<kind>problem|question|exercise|exam(?:ination)?\s+question)"
+    r"\s*(?:no\.?\s*)?(?P<number>\d+(?:\.\d+)*[A-Za-z]?)\b",
+    re.IGNORECASE,
+)
 PART_II_RE = re.compile(r"\bPart[\s~–—-]*II(?!I)\b", re.IGNORECASE)
 CAMBRIDGE_2020_RE = re.compile(
     r"Cambridge.{0,80}(?:Part[\s~–—-]*III)?.{0,80}\b2020\b",
@@ -98,6 +123,20 @@ KET_BRA_ASYMPTOTIC_SUPERSCRIPT_RE = re.compile(
 BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE = re.compile(
     r"\\bra\{[^{}\n]*\}\s*_\s*"
     r"(?:\{[^{}\n]*(?:in|out)[^{}\n]*\}|\\(?:mathrm|text)\{(?:in|out)\})",
+    re.IGNORECASE,
+)
+LITERAL_SUPPLEMENTARY_REFERENCE_RE = re.compile(
+    r"\b(?P<kind>Exercise|Solution)\s+S\."
+    r"(?P<chapter>\d+)\.(?P<number>\d+)\b"
+)
+LOCAL_SUPPLEMENTARY_REFERENCE_RE = re.compile(
+    r"\bSupplementary\s+(?P<kind>Exercise|Solution)(?:\s|~)+"
+    r"(?P<number>\d+)\b",
+    re.IGNORECASE,
+)
+AMBIGUOUS_DEPENDENCY_RE = re.compile(
+    r"\b(?:preceding|previous)\s+(?:two\s+)?"
+    r"(?:exercise|solution)s?\b",
     re.IGNORECASE,
 )
 
@@ -245,6 +284,32 @@ def normalized_problem(text: str) -> str:
     return " ".join(WORD_RE.findall(clean.lower()))
 
 
+def normalized_parent_problem(text: str) -> tuple[str, ...]:
+    """Canonicalize a ledger parent, ignoring repeated constituent locators."""
+
+    parts = {
+        normalized_title(part)
+        for part in text.split("|")
+        if normalized_title(part)
+    }
+    return tuple(sorted(parts))
+
+
+def exact_parent_roots(text: str) -> tuple[tuple[str, str], ...]:
+    """Return source-question roots while deliberately discarding subpart labels."""
+
+    roots = {
+        (
+            re.sub(r"\s+", " ", match.group("kind").lower()).replace(
+                "examination question", "exam question"
+            ),
+            match.group("number").lower(),
+        )
+        for match in EXACT_PARENT_ROOT_RE.finditer(text)
+    }
+    return tuple(sorted(roots))
+
+
 def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
     path = root / "source-ledger.json"
     audit.require(path.exists(), f"Missing source ledger: {path}", incomplete=True)
@@ -265,6 +330,10 @@ def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
 
     required_fields = (
         "id",
+        "source_family",
+        "document_id",
+        "parent_problem",
+        "use_mode",
         "author_or_institution",
         "title",
         "year",
@@ -274,6 +343,8 @@ def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
         "adaptation_notes",
     )
     by_id: dict[str, dict[str, object]] = {}
+    parent_owners: dict[tuple[str, str], str] = {}
+    exact_root_owners: dict[tuple[str, str, str], str] = {}
     for index, source in enumerate(sources, start=1):
         if not isinstance(source, dict):
             audit.failures.append(f"Ledger entry {index} is not an object")
@@ -291,6 +362,78 @@ def source_ledger(root: Path, audit: Audit) -> dict[str, dict[str, object]]:
         if source_id in by_id:
             audit.failures.append(f"Duplicate source ledger id: {source_id}")
             continue
+        source_family = source.get("source_family")
+        audit.require(
+            source_family in SOURCE_FAMILIES,
+            f"Ledger source {source_id}: source_family must be one of "
+            + ", ".join(sorted(SOURCE_FAMILIES)),
+        )
+        document_id = source.get("document_id")
+        parent_problem = source.get("parent_problem")
+        if (
+            isinstance(document_id, str)
+            and document_id.strip()
+            and isinstance(parent_problem, str)
+            and parent_problem.strip()
+        ):
+            parent_key = (
+                document_id.strip(),
+                "\x1f".join(normalized_parent_problem(parent_problem)),
+            )
+            previous_owner = parent_owners.get(parent_key)
+            audit.require(
+                previous_owner is None,
+                f"Ledger sources {previous_owner!r} and {source_id!r} describe "
+                f"the same parent problem {parent_key!r}",
+            )
+            parent_owners[parent_key] = source_id
+        use_mode = source.get("use_mode")
+        audit.require(
+            use_mode in USE_MODES,
+            f"Ledger source {source_id}: use_mode must be one of "
+            + ", ".join(sorted(USE_MODES)),
+        )
+        if use_mode == "verbatim-permitted":
+            reproduction_basis = source.get("reproduction_basis")
+            audit.require(
+                isinstance(reproduction_basis, str)
+                and bool(reproduction_basis.strip()),
+                f"Ledger source {source_id}: verbatim-permitted use requires "
+                "a concrete reproduction_basis",
+            )
+        if isinstance(use_mode, str) and use_mode in {
+            "adapted",
+            "verbatim-permitted",
+        }:
+            normalized_parents = (
+                normalized_parent_problem(parent_problem)
+                if isinstance(parent_problem, str)
+                else ()
+            )
+            audit.require(
+                isinstance(parent_problem, str)
+                and bool(EXACT_PROBLEM_LOCATOR_RE.search(parent_problem)),
+                f"Ledger source {source_id}: {use_mode} use must identify an "
+                "exact source Problem, Question, or Exercise; use "
+                "original-inspired for a general section or chapter",
+            )
+            audit.require(
+                len(normalized_parents) == 1,
+                f"Ledger source {source_id}: {use_mode} use combines multiple "
+                "constituent parent locators; keep one source problem intact "
+                "or classify a genuinely new synthesis as original-inspired",
+            )
+            if isinstance(document_id, str) and isinstance(parent_problem, str):
+                for kind, number in exact_parent_roots(parent_problem):
+                    root_key = (document_id.strip(), kind, number)
+                    previous_owner = exact_root_owners.get(root_key)
+                    audit.require(
+                        previous_owner is None,
+                        f"Ledger sources {previous_owner!r} and {source_id!r} split "
+                        f"the same source parent {kind.title()} {number}; retain all "
+                        "connected subparts under one supplementary number",
+                    )
+                    exact_root_owners[root_key] = source_id
         url = source.get("url")
         if isinstance(url, str):
             parsed = urlparse(url)
@@ -843,6 +986,16 @@ def audit_chapter(
             strip_comments(text).count(heading) == 1,
             f"Chapter {chapter}: {filename} must contain heading {heading}",
         )
+        if filename.startswith("supplementary-"):
+            match = AMBIGUOUS_DEPENDENCY_RE.search(strip_comments(text))
+            audit.require(
+                match is None,
+                f"Chapter {chapter}: {filename} contains ambiguous dependency "
+                f"{match.group(0)!r}; use 'preceding part,' restate the needed "
+                "result, or cite an explicit supplementary number"
+                if match
+                else "",
+            )
 
     w_exercises = macro_calls(
         texts.get("weinberg-exercises.tex", ""),
@@ -915,6 +1068,19 @@ def audit_chapter(
         texts.get("supplementary-exercises.tex", ""),
         s_exercises,
     )
+    prompt_prefixes = Counter(
+        " ".join(normalized_problem(body).split()[:12])
+        for body in s_exercise_bodies
+        if len(normalized_problem(body).split()) >= 12
+    )
+    for prefix, repetition_count in sorted(prompt_prefixes.items()):
+        audit.require(
+            repetition_count < 3,
+            f"Chapter {chapter}: {repetition_count} supplementary prompts repeat "
+            f"the same boilerplate opening ({prefix!r})",
+            incomplete=True,
+        )
+    s_exercise_word_counts: list[int] = []
     for call, body in zip(s_exercises, s_exercise_bodies):
         number, title, credit, source_id = (arg.strip() for arg in call.args)
         audit.require(
@@ -926,11 +1092,6 @@ def audit_chapter(
             bool(credit),
             f"Chapter {chapter} S.{number}: empty printed source credit",
             incomplete=True,
-        )
-        audit.require(
-            "adapted from" in credit.lower(),
-            f"Chapter {chapter} S.{number}: source credit must say "
-            "'Adapted from' because the prompt is editorially rewritten",
         )
         audit.require(
             not PART_II_RE.search(credit),
@@ -946,19 +1107,44 @@ def audit_chapter(
             incomplete=True,
         )
         if source_id in ledger:
-            chapters = ledger[source_id].get("chapters")
+            source_record = ledger[source_id]
+            chapters = source_record.get("chapters")
             audit.require(
                 isinstance(chapters, list) and chapter in chapters,
                 f"Chapter {chapter} S.{number}: ledger source {source_id!r} "
                 "does not list this chapter",
             )
+            use_mode = source_record.get("use_mode")
+            credit_lower = credit.lower()
+            if use_mode == "adapted":
+                audit.require(
+                    "adapted from" in credit_lower,
+                    f"Chapter {chapter} S.{number}: an adapted problem's credit "
+                    "must say 'Adapted from'",
+                )
+            elif use_mode == "original-inspired":
+                audit.require(
+                    "inspired by" in credit_lower,
+                    f"Chapter {chapter} S.{number}: an independently written "
+                    "counterpart's credit must say 'Inspired by'",
+                )
+            elif use_mode == "verbatim-permitted":
+                audit.require(
+                    "from" in credit_lower
+                    and "adapted from" not in credit_lower
+                    and "inspired by" not in credit_lower,
+                    f"Chapter {chapter} S.{number}: a verbatim-permitted problem "
+                    "must use a direct 'From' credit",
+                )
         if number in solution_titles:
             audit.require(
                 solution_titles[number] == normalized_title(title),
                 f"Chapter {chapter} S.{number}: exercise and solution titles differ",
             )
+        word_count = len(WORD_RE.findall(body))
+        s_exercise_word_counts.append(word_count)
         audit.require(
-            len(WORD_RE.findall(body)) >= 18,
+            word_count >= 18,
             f"Chapter {chapter} S.{number}: exercise statement is too short",
             incomplete=True,
         )
@@ -967,13 +1153,16 @@ def audit_chapter(
             f"Chapter {chapter} S.{number}: exercise contains placeholder text",
         )
 
+    s_solution_word_counts: list[int] = []
     for call, body in zip(
         s_solutions,
         macro_bodies(texts.get("supplementary-solutions.tex", ""), s_solutions),
     ):
         number = call.args[0].strip()
+        word_count = len(WORD_RE.findall(body))
+        s_solution_word_counts.append(word_count)
         audit.require(
-            len(WORD_RE.findall(body)) >= 35,
+            word_count >= 35,
             f"Chapter {chapter} S.{number}: solution is too short to be worked",
             incomplete=True,
         )
@@ -984,6 +1173,7 @@ def audit_chapter(
 
     target = int(chapter_info.get("supplementary_target", 30))
     exception = chapter_info.get("count_exception")
+    curation_note = chapter_info.get("curation_note")
     history_key = (root.name, chapter)
     expected_exception = ZERO_TARGET_HISTORY_EXCEPTIONS.get(history_key)
     if expected_exception is not None:
@@ -1003,40 +1193,111 @@ def audit_chapter(
     else:
         audit.require(
             target == 30,
-            f"Chapter {chapter}: nonhistorical supplementary target must be exactly 30",
+            f"Chapter {chapter}: nonhistorical supplementary ceiling must be 30",
         )
         audit.require(
             exception in (None, ""),
             f"Chapter {chapter}: only the two pinned historical chapters may "
             "carry count exceptions",
         )
-        expected_count = 30
-    audit.require(
-        s_count == expected_count,
-        f"Chapter {chapter}: expected exactly {expected_count} supplementary "
-        f"exercises, found {s_count}",
-        incomplete=True,
-    )
+        audit.require(
+            isinstance(curation_note, str)
+            and len(WORD_RE.findall(curation_note)) >= 12,
+            f"Chapter {chapter}: metadata needs a substantive curation_note "
+            "explaining why the selected 10--30 parent problems form the "
+            "natural complete set",
+            incomplete=True,
+        )
+        audit.require(
+            MIN_SUPPLEMENTARY_EXERCISES
+            <= s_count
+            <= MAX_SUPPLEMENTARY_EXERCISES,
+            f"Chapter {chapter}: expected "
+            f"{MIN_SUPPLEMENTARY_EXERCISES}--{MAX_SUPPLEMENTARY_EXERCISES} "
+            f"complete supplementary exercises, found {s_count}",
+            incomplete=True,
+        )
+        expected_count = s_count
     audit.require(
         len(s_solutions) == expected_count,
-        f"Chapter {chapter}: expected exactly {expected_count} supplementary "
+        f"Chapter {chapter}: expected {expected_count} matching supplementary "
         f"solutions, found {len(s_solutions)}",
         incomplete=True,
     )
 
-    source_counter = Counter(
-        call.args[3].strip() for call in s_exercises if call.args[3].strip()
-    )
     if s_count:
+        median_prompt_words = float(statistics.median(s_exercise_word_counts))
+        median_solution_words = (
+            float(statistics.median(s_solution_word_counts))
+            if s_solution_word_counts
+            else 0.0
+        )
+        short_prompt_count = sum(
+            word_count < 35 for word_count in s_exercise_word_counts
+        )
+        short_solution_count = sum(
+            word_count < 70 for word_count in s_solution_word_counts
+        )
         audit.require(
-            len(source_counter) >= 3,
-            f"Chapter {chapter}: supplementary collection uses only "
-            f"{len(source_counter)} distinct ledger sources",
+            median_prompt_words >= 55,
+            f"Chapter {chapter}: median supplementary prompt is only "
+            f"{median_prompt_words:g} words; the collection still appears "
+            "fragmented",
             incomplete=True,
         )
         audit.require(
-            max(source_counter.values()) <= max(1, int(0.70 * s_count)),
-            f"Chapter {chapter}: one source supplies more than 70% of "
+            short_prompt_count <= max(2, s_count // 4),
+            f"Chapter {chapter}: {short_prompt_count}/{s_count} prompts are "
+            "under 35 words; retain short checks as subparts unless they are "
+            "independently worthwhile",
+            incomplete=True,
+        )
+        audit.require(
+            median_solution_words >= 100,
+            f"Chapter {chapter}: median supplementary solution is only "
+            f"{median_solution_words:g} words; solutions need fuller reasoning",
+            incomplete=True,
+        )
+        audit.require(
+            short_solution_count <= max(2, s_count // 4),
+            f"Chapter {chapter}: {short_solution_count}/{s_count} solutions are "
+            "under 70 words",
+            incomplete=True,
+        )
+    else:
+        median_prompt_words = 0.0
+        median_solution_words = 0.0
+        short_prompt_count = 0
+        short_solution_count = 0
+
+    source_ids = [
+        call.args[3].strip() for call in s_exercises if call.args[3].strip()
+    ]
+    document_counter = Counter(
+        str(ledger[source_id].get("document_id"))
+        for source_id in source_ids
+        if source_id in ledger
+    )
+    family_counter = Counter(
+        str(ledger[source_id].get("source_family"))
+        for source_id in source_ids
+        if source_id in ledger
+    )
+    use_mode_counter = Counter(
+        str(ledger[source_id].get("use_mode"))
+        for source_id in source_ids
+        if source_id in ledger
+    )
+    if s_count:
+        audit.require(
+            len(document_counter) >= 3,
+            f"Chapter {chapter}: supplementary collection uses only "
+            f"{len(document_counter)} distinct source documents",
+            incomplete=True,
+        )
+        audit.require(
+            max(document_counter.values()) <= max(1, int(0.70 * s_count)),
+            f"Chapter {chapter}: one source document supplies more than 70% of "
             "supplementary exercises",
             incomplete=True,
         )
@@ -1047,9 +1308,33 @@ def audit_chapter(
         "weinberg_solutions": len(w_solutions),
         "supplementary_exercises": s_count,
         "supplementary_solutions": len(s_solutions),
+        "supplementary_minimum": 0
+        if expected_exception is not None
+        else MIN_SUPPLEMENTARY_EXERCISES,
+        "supplementary_maximum": 0
+        if expected_exception is not None
+        else MAX_SUPPLEMENTARY_EXERCISES,
         "supplementary_target": target,
         "count_exception": exception,
-        "source_distribution": dict(sorted(source_counter.items())),
+        "curation_note": curation_note,
+        "source_distribution": dict(sorted(document_counter.items())),
+        "source_family_distribution": dict(sorted(family_counter.items())),
+        "use_mode_distribution": dict(sorted(use_mode_counter.items())),
+        "exact_source_problem_exercises": (
+            use_mode_counter["adapted"]
+            + use_mode_counter["verbatim-permitted"]
+        ),
+        "preferred_source_exercises": sum(
+            family_counter[family] for family in PREFERRED_SOURCE_FAMILIES
+        ),
+        "prompt_word_statistics": {
+            "median": median_prompt_words,
+            "under_35": short_prompt_count,
+        },
+        "solution_word_statistics": {
+            "median": median_solution_words,
+            "under_70": short_solution_count,
+        },
         "_titles": [
             (chapter, call.args[0].strip(), call.args[1].strip())
             for call in s_exercises
@@ -1064,6 +1349,32 @@ def audit_chapter(
             for call, body in zip(s_exercises, s_exercise_bodies)
         ],
         "_source_ids": [call.args[3].strip() for call in s_exercises],
+        "_literal_references": (
+            [
+                (
+                    chapter,
+                    match.group("kind"),
+                    int(match.group("chapter")),
+                    int(match.group("number")),
+                )
+                for text in texts.values()
+                for match in LITERAL_SUPPLEMENTARY_REFERENCE_RE.finditer(
+                    strip_comments(text)
+                )
+            ]
+            + [
+                (
+                    chapter,
+                    match.group("kind").title(),
+                    chapter,
+                    int(match.group("number")),
+                )
+                for text in texts.values()
+                for match in LOCAL_SUPPLEMENTARY_REFERENCE_RE.finditer(
+                    strip_comments(text)
+                )
+            ]
+        ),
     }
 
 
@@ -1199,11 +1510,43 @@ def main() -> int:
         for chapter in inventory
         for source_id in chapter.pop("_source_ids")
     ]
+    all_literal_references = [
+        reference
+        for chapter in inventory
+        for reference in chapter.pop("_literal_references")
+    ]
     all_problems = [
         problem_record
         for chapter in inventory
         for problem_record in chapter.pop("_problems")
     ]
+    available_supplementary_numbers = {
+        (int(chapter["chapter"]), number)
+        for chapter in inventory
+        for number in range(1, int(chapter["supplementary_exercises"]) + 1)
+    }
+    for (
+        owner_chapter,
+        reference_kind,
+        reference_chapter,
+        reference_number,
+    ) in all_literal_references:
+        audit.require(
+            (reference_chapter, reference_number)
+            in available_supplementary_numbers,
+            f"Chapter {owner_chapter}: literal {reference_kind} reference "
+            f"S.{reference_chapter}.{reference_number} has no matching "
+            "supplementary parent after consolidation",
+        )
+    source_use_counts = Counter(all_source_ids)
+    for source_id, use_count in sorted(source_use_counts.items()):
+        audit.require(
+            use_count == 1,
+            f"Provenance source id {source_id!r} is used by "
+            f"{use_count} supplementary exercises; merge split parts into one "
+            "coherent parent problem",
+            incomplete=True,
+        )
     exercise_similarity(all_titles, audit)
     exercise_body_similarity(all_problems, audit)
     unused_sources = sorted(set(ledger) - set(all_source_ids))
@@ -1232,6 +1575,25 @@ def main() -> int:
                 int(chapter["supplementary_solutions"]) for chapter in inventory
             ),
             "ledger_sources": len(ledger),
+            "ledger_documents": len(
+                {
+                    str(source.get("document_id"))
+                    for source in ledger.values()
+                    if source.get("document_id")
+                }
+            ),
+            "preferred_source_records": sum(
+                source.get("source_family") in PREFERRED_SOURCE_FAMILIES
+                for source in ledger.values()
+            ),
+            "exact_source_problem_records": sum(
+                source.get("use_mode") in {"adapted", "verbatim-permitted"}
+                for source in ledger.values()
+            ),
+            "original_inspired_records": sum(
+                source.get("use_mode") == "original-inspired"
+                for source in ledger.values()
+            ),
         },
         "warnings": audit.warnings,
         "failures": audit.failures,
@@ -1262,7 +1624,9 @@ def main() -> int:
         f"{totals['weinberg_solutions']} W solutions; "
         f"{totals['supplementary_exercises']} S exercises / "
         f"{totals['supplementary_solutions']} S solutions; "
-        f"{totals['ledger_sources']} ledger sources."
+        f"{totals['ledger_sources']} provenance records, including "
+        f"{totals['exact_source_problem_records']} exact-source problem "
+        f"records, across {totals['ledger_documents']} source documents."
     )
     print(f"Wrote inventory: {inventory_path}")
     return 0

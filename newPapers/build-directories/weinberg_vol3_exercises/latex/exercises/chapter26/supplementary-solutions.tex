@@ -1,256 +1,348 @@
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
-  \SupplementarySolution{1}{Counting a General Real Superfield}
-  Reality makes \(C,M,N,D,V_\mu\) real: there are four scalar components
-  plus four vector components, hence eight bosonic components.  Each of
-  \(\omega,\lambda\) is Majorana and has four real components, hence eight
-  fermionic components.  No equation has been used.  In particular,
-  \(V_\mu\) is not yet transverse and \(M,N,D,\lambda\) are not eliminated;
-  the equality is therefore an off-shell statement.
+  \SupplementarySolution{1}{Off-Shell Superfields and Closure}
+  \begin{enumerate}
+    \item \emph{Counting a General Real Superfield.}
+    Reality makes \(C,M,N,D,V_\mu\) real: there are four scalar components
+      plus four vector components, hence eight bosonic components.  Each of
+      \(\omega,\lambda\) is Majorana and has four real components, hence eight
+      fermionic components.  No equation has been used.  In particular,
+      \(V_\mu\) is not yet transverse and \(M,N,D,\lambda\) are not eliminated;
+      the equality is therefore an off-shell statement.
+    \item \emph{Closure on the Wess--Zumino Scalar.}
+    From \(\delta A=\bar\alpha\psi\),
+      \[
+      \begin{aligned}
+        [\delta_\alpha,\delta_\beta]A
+         ={}&\bar\beta\!
+           \left[\partial_\mu(A+i\gamma_5B)\gamma^\mu\alpha
+                 +(F-i\gamma_5G)\alpha\right]-(\alpha\leftrightarrow\beta).
+      \end{aligned}
+      \]
+      Majorana interchange identities make the \(F,G\) terms and the
+      \(\partial B\) terms cancel, while the vector bilinear is antisymmetric.
+      Thus
+      \[
+        [\delta_\alpha,\delta_\beta]A
+          =2(\bar\beta\gamma^\mu\alpha)\partial_\mu A.
+      \]
+      Direct substitution gives the same translation on
+      \(B,\psi,F,G\).  The auxiliaries are precisely what permits this closure
+      without imposing a field equation on \(\psi\).
+  \end{enumerate}
 
-  \SupplementarySolution{2}{Closure on the Wess--Zumino Scalar}
-  From \(\delta A=\bar\alpha\psi\),
-  \[
-  \begin{aligned}
-    [\delta_\alpha,\delta_\beta]A
-     ={}&\bar\beta\!
-       \left[\partial_\mu(A+i\gamma_5B)\gamma^\mu\alpha
-             +(F-i\gamma_5G)\alpha\right]-(\alpha\leftrightarrow\beta).
-  \end{aligned}
-  \]
-  Majorana interchange identities make the \(F,G\) terms and the
-  \(\partial B\) terms cancel, while the vector bilinear is antisymmetric.
-  Thus
-  \[
-    [\delta_\alpha,\delta_\beta]A
-      =2(\bar\beta\gamma^\mu\alpha)\partial_\mu A.
-  \]
-  Direct substitution gives the same translation on
-  \(B,\psi,F,G\).  The auxiliaries are precisely what permits this closure
-  without imposing a field equation on \(\psi\).
+  \SupplementarySolution{2}{Covariant Superderivatives, Chiral Coordinates, and Integration}
+  \begin{enumerate}
+    \item \emph{Why the Covariant Superderivative Works.}
+    Write \(\SuperQ=A+B\) and \(\SuperD=A-B\), where \(A\) differentiates
+      with respect to \(\theta\) and \(B\) is linear in \(\theta\partial_\mu\).
+      Then \(\{A,A\}=\{B,B\}=0\), while the two cross terms cancel in
+      \(\{\SuperD,\SuperQ\}\) and add in
+      \(\{\SuperD,\bar{\SuperD}\}\), giving
+      \[
+        \{\SuperD_\alpha,\SuperQ_\beta\}=0,\qquad
+        \{\SuperD_\alpha,\bar{\SuperD}_\beta\}
+          =-2\gamma^\mu_{\alpha\beta}\partial_\mu .
+      \]
+      Hence \((\bar\alpha\SuperQ)\SuperD S=\SuperD(\bar\alpha\SuperQ)S\).
+      A bare \(\theta\)-derivative lacks the compensating
+      \(-\gamma^\mu\theta\partial_\mu\) term and does not commute with
+      supersymmetry.
+    \item \emph{A Superspace Integration by Parts.}
+    The \(\theta\)-derivative part of \(\SuperD_\alpha S\) has Grassmann
+      degree at most three and cannot contain a nonderivative \(D\)-component.
+      Its remaining part is
+      \(-(\gamma^\mu\theta)_\alpha\partial_\mu S\), whose \(D\)-component is a
+      spacetime derivative.  Therefore
+      \(\int d^4x[\SuperD_\alpha S]_D=0\).  Applying this to \(S_1S_2\) and
+      using the graded Leibniz rule yields
+      \[
+        \int[S_1\SuperD_\alpha S_2]_D
+          =-\int[(\SuperD_\alpha S_1)S_2]_D
+          =-\int[S_2\SuperD_\alpha S_1]_D .
+      \]
+    \item \emph{Solving the Chiral Constraint.}
+    Substitution in Eq.~\eqref{eq:26.2.26} gives
+      \(\SuperD_Rx_+^\mu=0\) and \(\SuperD_R\theta_L=0\).
+      A scalar solution is therefore an arbitrary polynomial in the two
+      components of \(\theta_L\):
+      \[
+        \Phi=\phi(x_+)-\sqrt2\,
+          (\theta_L^T\epsilon\psi_L(x_+))
+          +\mathcal F(x_+)(\theta_L^T\epsilon\theta_L).
+      \]
+      This is Eq.~\eqref{eq:26.3.21}.  The complex \(\phi,\mathcal F\) give
+      four real bosonic components, and the Majorana field represented by
+      \(\psi_L\) gives four real fermionic components.
+  \end{enumerate}
 
-  \SupplementarySolution{3}{The Product Rule for Lowest Components}
-  Multiplication of the two finite expansions, followed by the Majorana
-  interchange rules, gives
-  \[
-  \begin{aligned}
-    C&=C_1C_2,&
-    \omega&=C_1\omega_2+C_2\omega_1,\\
-    M&=C_1M_2+C_2M_1+\frac i2\bar\omega_1\gamma_5\omega_2,\\
-    N&=C_1N_2+C_2N_1-\frac12\bar\omega_1\omega_2,\\
-    V^\mu&=C_1V_2^\mu+C_2V_1^\mu
-       -\frac i2\bar\omega_1\gamma_5\gamma^\mu\omega_2 .
-  \end{aligned}
-  \]
-  These are Eqs.~\eqref{eq:26.2.19}--\eqref{eq:26.2.23}.  The signs in
-  the last three lines arise when a fermionic component is moved through
-  \(\bar\theta\).
+  \SupplementarySolution{3}{Chiral Superspace and Non-Renormalization}
+  \begin{enumerate}
+    \item \emph{Covariant-Derivative Algebra.}
+    The terms with two Grassmann derivatives cancel by antisymmetry, while the
+      cross terms between a Grassmann derivative and a coordinate-dependent
+      translation survive.  Thus
+      \[
+        \{D_\alpha,D_\beta\}=0,\qquad
+        \{\bar D_{\dot\alpha},\bar D_{\dot\beta}\}=0,\qquad
+        \{D_\alpha,\bar D_{\dot\alpha}\}
+          =-2i\sigma^\mu_{\alpha\dot\alpha}\partial_\mu .
+      \]
+      Therefore \(P_\mu=-i\partial_\mu\), and the mixed relation is
+      \(2\sigma^\mu_{\alpha\dot\alpha}P_\mu\).  The signs agree with the
+      four-component operators \(\SuperD_L,\SuperD_R\) after the chiral
+      projections are made.
+    \item \emph{Chiral and Antichiral Superfields.}
+    A chiral scalar obeys
+      \(\bar D_{\dot\alpha}\Phi=0\), while an antichiral scalar obeys
+      \(D_\alpha\Phi^\dagger=0\).  Since
+      \(\bar D_{\dot\alpha}y^\mu=0\), the general chiral solution is
+      \[
+        \Phi(y,\theta)=\phi(y)+\sqrt2\,\theta\psi(y)+\theta^2F(y).
+      \]
+      Taylor expansion back at \(x^\mu\) gives
+      \[
+      \begin{aligned}
+        \Phi={}&\phi+\sqrt2\,\theta\psi+\theta^2F
+          +i\theta\sigma^\mu\bar\theta\,\partial_\mu\phi\\
+          &-\frac{i}{\sqrt2}\theta^2
+             \partial_\mu\psi\,\sigma^\mu\bar\theta
+          +\frac14\theta^2\bar\theta^2\Box\phi .
+      \end{aligned}
+      \]
+      Complex conjugation, with
+      \(y^{\dagger\mu}=x^\mu-i\theta\sigma^\mu\bar\theta\), gives the
+      antichiral expansion.
+    \item \emph{Half-Superspace Actions.}
+    The supersymmetry transformation of the top component is
+      \[
+        \delta F
+          =i\sqrt2\,\bar\epsilon\bar\sigma^\mu\partial_\mu\psi,
+      \]
+      a spacetime divergence.  A holomorphic function of chiral superfields
+      is itself chiral, so its \(\theta^2\) coefficient has the same property.
+      Hence
+      \(\int d^4x\,d^2\theta\,W(\Phi)+\mathrm{H.c.}\) is supersymmetric for
+      fields with the usual boundary behavior.
+    \item \emph{Holomorphy and Physical Couplings.}
+    Regard \(m\) and \(\lambda\) as background chiral spurions.  Holomorphy,
+      dimensional analysis, and the two independent phase symmetries of
+      \(\Phi,m,\lambda\) leave only the tree monomials
+      \(m\Phi^2/2\) and \(\lambda\Phi^3/3\).  A perturbative correction that
+      vanished as \(\lambda\to0\) cannot be both holomorphic and neutral under
+      these spurion symmetries.  Thus the Wilsonian superpotential is not
+      perturbatively renormalized.
 
-  \SupplementarySolution{4}{Why the Covariant Superderivative Works}
-  Write \(\SuperQ=A+B\) and \(\SuperD=A-B\), where \(A\) differentiates
-  with respect to \(\theta\) and \(B\) is linear in \(\theta\partial_\mu\).
-  Then \(\{A,A\}=\{B,B\}=0\), while the two cross terms cancel in
-  \(\{\SuperD,\SuperQ\}\) and add in
-  \(\{\SuperD,\bar{\SuperD}\}\), giving
-  \[
-    \{\SuperD_\alpha,\SuperQ_\beta\}=0,\qquad
-    \{\SuperD_\alpha,\bar{\SuperD}_\beta\}
-      =-2\gamma^\mu_{\alpha\beta}\partial_\mu .
-  \]
-  Hence \((\bar\alpha\SuperQ)\SuperD S=\SuperD(\bar\alpha\SuperQ)S\).
-  A bare \(\theta\)-derivative lacks the compensating
-  \(-\gamma^\mu\theta\partial_\mu\) term and does not commute with
-  supersymmetry.
+      The Kähler term is not protected:
+      \(Z(\mu)\int d^4\theta\,\Phi^\dagger\Phi\) is generated.  With
+      \(\Phi_c=Z^{1/2}\Phi\), the physical parameters are
+      \[
+        m_{\rm phys}=\frac{m}{Z},\qquad
+        \lambda_{\rm phys}=\frac{\lambda}{Z^{3/2}}.
+      \]
+      Their running is therefore entirely wavefunction renormalization and
+      does not contradict superpotential non-renormalization.
+  \end{enumerate}
 
-  \SupplementarySolution{5}{A Superspace Integration by Parts}
-  The \(\theta\)-derivative part of \(\SuperD_\alpha S\) has Grassmann
-  degree at most three and cannot contain a nonderivative \(D\)-component.
-  Its remaining part is
-  \(-(\gamma^\mu\theta)_\alpha\partial_\mu S\), whose \(D\)-component is a
-  spacetime derivative.  Therefore
-  \(\int d^4x[\SuperD_\alpha S]_D=0\).  Applying this to \(S_1S_2\) and
-  using the graded Leibniz rule yields
-  \[
-    \int[S_1\SuperD_\alpha S_2]_D
-      =-\int[(\SuperD_\alpha S_1)S_2]_D
-      =-\int[S_2\SuperD_\alpha S_1]_D .
-  \]
+  \SupplementarySolution{4}{Kähler Equivalence and Renormalizable Chiral Actions}
+  \begin{enumerate}
+    \item \emph{Kahler Transformations.}
+    Both \(h(\Phi)\) and \(h(\Phi)^*\) are chiral superfields.  Chiral
+      superfields have \(D\)-components that are spacetime derivatives, so
+      \[
+        \int d^4x\,[h(\Phi)+h(\Phi)^*]_D=0 .
+      \]
+      Also
+      \(\partial_n\partial_{\bar m}h=
+        \partial_n\partial_{\bar m}h^*=0\).  Hence
+      \(K_{n\bar m}\), and therefore the component kinetic terms, are
+      unchanged.
+    \item \emph{Renormalizability by Dimension Counting.}
+    Since an \(\mathcal F\)-component raises dimension by one and a
+      \(D\)-component by two, a dimension-four Lagrangian requires
+      \(d(f)\le3\) and \(d(K)\le2\).  With \(d(\Phi)=1\), the derivative-free
+      possibilities are a cubic holomorphic polynomial for \(f\) and a
+      quadratic function for \(K\).  Purely holomorphic or antiholomorphic
+      terms in \(K\) have vanishing integrated \(D\)-terms.  Positivity and
+      reality then leave
+      \[
+        K=g_{n\bar m}\Phi_n\Phi_m^*,\qquad
+        g_{n\bar m}=g_{m\bar n}^*,
+      \]
+      while derivative terms are either too large in dimension or removable
+      by the integrations described in Section 26.3.
+  \end{enumerate}
 
-  \SupplementarySolution{6}{Solving the Chiral Constraint}
-  Substitution in Eq.~\eqref{eq:26.2.26} gives
-  \(\SuperD_Rx_+^\mu=0\) and \(\SuperD_R\theta_L=0\).
-  A scalar solution is therefore an arbitrary polynomial in the two
-  components of \(\theta_L\):
-  \[
-    \Phi=\phi(x_+)-\sqrt2\,
-      (\theta_L^T\epsilon\psi_L(x_+))
-      +\mathcal F(x_+)(\theta_L^T\epsilon\theta_L).
-  \]
-  This is Eq.~\eqref{eq:26.3.21}.  The complex \(\phi,\mathcal F\) give
-  four real bosonic components, and the Majorana field represented by
-  \(\psi_L\) gives four real fermionic components.
+  \SupplementarySolution{5}{Auxiliary Elimination, Masses, and \(F\)-Term Vacua}
+  \begin{enumerate}
+    \item \emph{Eliminating the Chiral Auxiliary Field.}
+    The auxiliary part is
+      \[
+        \mathcal L_{\rm aux}
+          =\sum_n\left(\mathcal F_n^*\mathcal F_n
+           +\mathcal F_nf_n+\mathcal F_n^*f_n^*\right)
+          =\sum_n|\mathcal F_n+f_n^*|^2-\sum_n|f_n|^2 .
+      \]
+      Therefore \(\mathcal F_n=-f_n^*\), and the on-shell Lagrangian contains
+      \(-V\), with
+      \[
+        V(\phi,\phi^*)=\sum_n|f_n(\phi)|^2.
+      \]
+    \item \emph{When Does an \(F\)-Term Vacuum Exist?.}
+    The potential is a sum of nonnegative terms.  If all \(f_n\) vanish at a
+      point, then \(V=0\), the auxiliary expectation values vanish, and the
+      supersymmetry variations of the fermions have no constant term.
+      Conversely a supersymmetric vacuum is annihilated by the supercharges and
+      has zero energy.  Positivity of
+      \(V=\sum|f_n|^2\) then forces every \(f_n\) separately to vanish.  Thus a
+      common zero is necessary and sufficient at tree level.
+    \item \emph{Symmetry of the Fermion Mass Matrix.}
+    Around \(\phi=v+\varphi\),
+      \[
+        f=f(v)+f_n(v)\varphi_n+\frac12f_{nm}(v)\varphi_n\varphi_m+\cdots .
+      \]
+      Eq.~\eqref{eq:26.4.4} supplies
+      \(-\tfrac12f_{nm}\bar\psi_n\psi_{mL}\).  Ordinary mixed partial
+      derivatives commute, so \(f_{nm}=f_{mn}\), as also required by the
+      symmetry of the Majorana chiral bilinear.  Complex conjugation gives
+      \(-\tfrac12f_{nm}^*\bar\psi_n\psi_{mR}\).
+  \end{enumerate}
 
-  \SupplementarySolution{7}{Multiplying Chiral Superfields}
-  Direct multiplication in \(x_+,\theta_L\) coordinates gives
-  \[
-  \begin{aligned}
-    \phi_{12}&=\phi_1\phi_2,\\
-    \psi_{12,L}&=\phi_1\psi_{2L}+\phi_2\psi_{1L},\\
-    \mathcal F_{12}
-      &=\phi_1\mathcal F_2+\phi_2\mathcal F_1
-        -(\psi_{1L}^T\epsilon\psi_{2L}).
-  \end{aligned}
-  \]
-  Although the spinors anticommute, \(\epsilon\) is antisymmetric too, so
-  \(\psi_{1L}^T\epsilon\psi_{2L}
-   =\psi_{2L}^T\epsilon\psi_{1L}\).  The last line is consequently
-  symmetric under interchange of the multiplets.
+  \SupplementarySolution{6}{Moduli and the Goldstino Null Vector}
+  \begin{enumerate}
+    \item \emph{A Moduli-Space Tangent Vector.}
+    Differentiating the vacuum equations gives
+      \[
+        0=\frac{d f_n}{ds}
+          =f_{nm}(\phi(s))\frac{d\phi_m}{ds}.
+      \]
+      Hence the tangent \(v_m=d\phi_m/ds\) is a zero eigenvector of the
+      fermion mass matrix.  Supersymmetry pairs this massless fermion with the
+      two real scalar fluctuations tangent to the complex vacuum family, giving
+      one massless chiral multiplet.
+    \item \emph{The Goldstino Null Eigenvector.}
+    Stationarity with respect to \(\phi_m\) gives
+      \[
+        0=\frac{\partial V}{\partial\phi_m}
+          =f_{nm}f_n^*.
+      \]
+      Thus \(f_n^*\) is a right null vector of the symmetric fermion mass
+      matrix.  If \(F^2=\sum_n|f_n|^2>0\), the normalized field
+      \[
+        \psi_G=\frac{f_n^*\psi_{nL}}{F}
+      \]
+      is massless.  Its supersymmetry variation has the nonzero constant
+      \(\delta\psi_G\propto F\alpha_L\), identifying it as the goldstino.
+  \end{enumerate}
 
-  \SupplementarySolution{8}{Why an \(\mathcal F\)-Term Is Invariant}
-  Eq.~\eqref{eq:26.3.16} gives immediately
-  \[
-    \delta\mathcal F
-      =\sqrt2\,\bar\alpha_L\sl{\partial}\psi_L
-      =\partial_\mu(\sqrt2\,\bar\alpha_L\gamma^\mu\psi_L).
-  \]
-  Its spacetime integral is invariant for the usual boundary conditions.
-  Likewise Eq.~\eqref{eq:26.2.17} gives
-  \(\delta D=\partial_\mu(i\bar\alpha\gamma_5\gamma^\mu\lambda)\).
-  Thus both top components change only by total derivatives.
+  \SupplementarySolution{7}{Supertrace and the O'Raifeartaigh Spectrum}
+  \begin{enumerate}
+    \item \emph{The Chiral-Multiplet Supertrace.}
+    Write \(m_{ij}=W_{ij}\).  For canonical kinetic terms the fermion
+      squared-mass trace is
+      \(\operatorname{tr}(m^\dagger m)\).  In the basis
+      \((\delta\phi^i,\delta\phi^{*\bar\imath})\), the real-scalar
+      squared-mass matrix has the block form
+      \[
+        \mathcal M_0^2=
+        \begin{pmatrix}
+          m^\dagger m&W_{ijk}^*W_k\\
+          W_{ijk}W_k^*&mm^\dagger
+        \end{pmatrix}.
+      \]
+      Its trace is \(2\operatorname{tr}(m^\dagger m)\); the
+      supersymmetry-breaking off-diagonal blocks do not contribute.
+      A Weyl fermion carries two spin states in the supertrace convention, so
+      \[
+        \operatorname{Str}M^2
+          =\operatorname{tr}\mathcal M_0^2
+           -2\operatorname{tr}(m^\dagger m)=0.
+      \]
+      Applied directly to visible MSSM multiplets, this rule prevents all
+      scalar partners from being uniformly raised above their fermion
+      partners at tree level without compensating light or tachyonic states.
+      Realistic spectra therefore require a separate breaking/mediation
+      sector, gauge or noncanonical effects, and radiative corrections.
+    \item \emph{O'Raifeartaigh Vacuum and Spectrum.}
+    The auxiliary equations follow from
+      \[
+        W_X=\lambda(Z^2-\mu^2),\qquad
+        W_Y=MZ,\qquad
+        W_Z=2\lambda XZ+MY .
+      \]
+      Since \(W_X=W_Y=0\) would require simultaneously \(Z^2=\mu^2\) and
+      \(Z=0\), supersymmetry is broken.  At \(x=y=z=0\),
+      \(F_X=\lambda\mu^2\), \(V=\lambda^2\mu^4\), and \(\psi_X\) is the
+      goldstino.  The complex \(x\) direction is a tree-level pseudomodulus.
 
-  \SupplementarySolution{9}{Kahler Transformations}
-  Both \(h(\Phi)\) and \(h(\Phi)^*\) are chiral superfields.  Chiral
-  superfields have \(D\)-components that are spacetime derivatives, so
-  \[
-    \int d^4x\,[h(\Phi)+h(\Phi)^*]_D=0 .
-  \]
-  Also
-  \(\partial_n\partial_{\bar m}h=
-    \partial_n\partial_{\bar m}h^*=0\).  Hence
-  \(K_{n\bar m}\), and therefore the component kinetic terms, are
-  unchanged.
+      The quadratic scalar potential is
+      \[
+        V^{(2)}
+          =M^2(|y|^2+|z|^2)
+             -\lambda^2\mu^2(z^2+z^{*2}).
+      \]
+      For \(z=(z_R+iz_I)/\sqrt2\), the six real scalar masses are
+      \[
+      \begin{array}{c|cccccc}
+        \text{field}&x_R&x_I&y_R&y_I&z_R&z_I\\ \hline
+        m^2&0&0&M^2&M^2&
+          M^2-2\lambda^2\mu^2&M^2+2\lambda^2\mu^2 .
+      \end{array}
+      \]
+      Thus the origin is locally stable when
+      \(M^2>2\lambda^2\mu^2\).
 
-  \SupplementarySolution{10}{Renormalizability by Dimension Counting}
-  Since an \(\mathcal F\)-component raises dimension by one and a
-  \(D\)-component by two, a dimension-four Lagrangian requires
-  \(d(f)\le3\) and \(d(K)\le2\).  With \(d(\Phi)=1\), the derivative-free
-  possibilities are a cubic holomorphic polynomial for \(f\) and a
-  quadratic function for \(K\).  Purely holomorphic or antiholomorphic
-  terms in \(K\) have vanishing integrated \(D\)-terms.  Positivity and
-  reality then leave
-  \[
-    K=g_{n\bar m}\Phi_n\Phi_m^*,\qquad
-    g_{n\bar m}=g_{m\bar n}^*,
-  \]
-  while derivative terms are either too large in dimension or removable
-  by the integrations described in Section 26.3.
+      At the same point
+      \[
+        W_{ij}=
+        \begin{pmatrix}
+          0&0&0\\
+          0&0&M\\
+          0&M&0
+        \end{pmatrix}_{X,Y,Z}.
+      \]
+      Hence \(\psi_X\) is massless and \(\psi_Y,\psi_Z\) form a Dirac
+      fermion of mass \(M\).  The bosonic squared-mass sum is
+      \(4M^2\); the two massive Weyl fermions contribute
+      \(2M^2+2M^2=4M^2\).  The explicit spectrum therefore verifies
+      \(\operatorname{Str}M^2=0\).
+  \end{enumerate}
 
-  \SupplementarySolution{11}{Eliminating the Chiral Auxiliary Field}
-  The auxiliary part is
-  \[
-    \mathcal L_{\rm aux}
-      =\sum_n\left(\mathcal F_n^*\mathcal F_n
-       \mathcal F_nf_n+\mathcal F_n^*f_n^*\right)
-      =\sum_n|\mathcal F_n+f_n^*|^2-\sum_n|f_n|^2 .
-  \]
-  Therefore \(\mathcal F_n=-f_n^*\), and the on-shell Lagrangian contains
-  \(-V\), with
-  \[
-    V(\phi,\phi^*)=\sum_n|f_n(\phi)|^2.
-  \]
+  \SupplementarySolution{8}{Moment Maps and Current Multiplets}
+  \begin{enumerate}
+    \item \emph{The Current as a Moment Map.}
+    Infinitesimal invariance of \(K\) gives
+      \[
+        0=i\epsilon\left(
+          K_n\mathcal T_{nm}\Phi_m
+          -K_{\bar n}\mathcal T_{mn}\Phi_m^*\right).
+      \]
+      Therefore the two expressions for \(\mathcal J\) are equal and are
+      complex conjugates, so \(\mathcal J\) is real.  Adding a real constant
+      preserves this property and changes none of its superderivatives or its
+      vector current, which is the usual moment-map ambiguity.
+    \item \emph{The Canonical \(U(1)\) Current Multiplet.}
+    The product formulas give
+      \[
+      \begin{aligned}
+        C^{\mathcal J}&=|\phi|^2,\\
+        \omega^{\mathcal J}&=-i\sqrt2\gamma_5
+           (\phi^*\psi_L+\phi\psi_R),\\
+        V_\mu^{\mathcal J}&=-i(\phi^*\partial_\mu\phi
+           -\phi\partial_\mu\phi^*)
+           +i\bar\psi_R\gamma_\mu\psi_L.
+      \end{aligned}
+      \]
+      Varying the canonical scalar and fermion kinetic terms under
+      \(\delta\phi=i\epsilon\phi,\ \delta\psi_L=i\epsilon\psi_L\) yields this
+      same vector, up to the overall sign fixed by whether the current is
+      defined from \(\delta\mathcal L=-(\partial_\mu\epsilon)J^\mu\) or with
+      the opposite convention.
+  \end{enumerate}
 
-  \SupplementarySolution{12}{When Does an \(F\)-Term Vacuum Exist?}
-  The potential is a sum of nonnegative terms.  If all \(f_n\) vanish at a
-  point, then \(V=0\), the auxiliary expectation values vanish, and the
-  supersymmetry variations of the fermions have no constant term.
-  Conversely a supersymmetric vacuum is annihilated by the supercharges and
-  has zero energy.  Positivity of
-  \(V=\sum|f_n|^2\) then forces every \(f_n\) separately to vanish.  Thus a
-  common zero is necessary and sufficient at tree level.
-
-  \SupplementarySolution{13}{Symmetry of the Fermion Mass Matrix}
-  Around \(\phi=v+\varphi\),
-  \[
-    f=f(v)+f_n(v)\varphi_n+\frac12f_{nm}(v)\varphi_n\varphi_m+\cdots .
-  \]
-  Eq.~\eqref{eq:26.4.4} supplies
-  \(-\tfrac12f_{nm}\bar\psi_n\psi_{mL}\).  Ordinary mixed partial
-  derivatives commute, so \(f_{nm}=f_{mn}\), as also required by the
-  symmetry of the Majorana chiral bilinear.  Complex conjugation gives
-  \(-\tfrac12f_{nm}^*\bar\psi_n\psi_{mR}\).
-
-  \SupplementarySolution{14}{A Moduli-Space Tangent Vector}
-  Differentiating the vacuum equations gives
-  \[
-    0=\frac{d f_n}{ds}
-      =f_{nm}(\phi(s))\frac{d\phi_m}{ds}.
-  \]
-  Hence the tangent \(v_m=d\phi_m/ds\) is a zero eigenvector of the
-  fermion mass matrix.  Supersymmetry pairs this massless fermion with the
-  two real scalar fluctuations tangent to the complex vacuum family, giving
-  one massless chiral multiplet.
-
-  \SupplementarySolution{15}{The Goldstino Null Eigenvector}
-  Stationarity with respect to \(\phi_m\) gives
-  \[
-    0=\frac{\partial V}{\partial\phi_m}
-      =f_{nm}f_n^*.
-  \]
-  Thus \(f_n^*\) is a right null vector of the symmetric fermion mass
-  matrix.  If \(F^2=\sum_n|f_n|^2>0\), the normalized field
-  \[
-    \psi_G=\frac{f_n^*\psi_{nL}}{F}
-  \]
-  is massless.  Its supersymmetry variation has the nonzero constant
-  \(\delta\psi_G\propto F\alpha_L\), identifying it as the goldstino.
-
-  \SupplementarySolution{16}{A Minimal O'Raifeartaigh Model}
-  The derivatives are
-  \[
-    f_X=\lambda\Phi^2-\mu^2,\qquad
-    f_Y=m\Phi,\qquad
-    f_\Phi=2\lambda X\Phi+mY.
-  \]
-  The first two cannot both vanish for \(m\mu\ne0\).  At
-  \(\Phi=Y=0\), \(X\) is arbitrary and \(V=|\mu|^4\).
-  Expanding in \(\Phi\) shows local stability, for example at \(X=0\),
-  when \(|m|^2>2|\lambda\mu^2|\); the precise inequality follows from the
-  two real \(\Phi\) eigenvalues.  The field \(X\) is the tree-level
-  pseudomodulus and \(\psi_X\) is the goldstino.
-
-  \SupplementarySolution{17}{The Current as a Moment Map}
-  Infinitesimal invariance of \(K\) gives
-  \[
-    0=i\epsilon\left(
-      K_n\mathcal T_{nm}\Phi_m
-      -K_{\bar n}\mathcal T_{mn}\Phi_m^*\right).
-  \]
-  Therefore the two expressions for \(\mathcal J\) are equal and are
-  complex conjugates, so \(\mathcal J\) is real.  Adding a real constant
-  preserves this property and changes none of its superderivatives or its
-  vector current, which is the usual moment-map ambiguity.
-
-  \SupplementarySolution{18}{The Canonical \(U(1)\) Current Multiplet}
-  The product formulas give
-  \[
-  \begin{aligned}
-    C^{\mathcal J}&=|\phi|^2,\\
-    \omega^{\mathcal J}&=-i\sqrt2\gamma_5
-       (\phi^*\psi_L+\phi\psi_R),\\
-    V_\mu^{\mathcal J}&=-i(\phi^*\partial_\mu\phi
-       -\phi\partial_\mu\phi^*)
-       +i\bar\psi_R\gamma_\mu\psi_L.
-  \end{aligned}
-  \]
-  Varying the canonical scalar and fermion kinetic terms under
-  \(\delta\phi=i\epsilon\phi,\ \delta\psi_L=i\epsilon\psi_L\) yields this
-  same vector, up to the overall sign fixed by whether the current is
-  defined from \(\delta\mathcal L=-(\partial_\mu\epsilon)J^\mu\) or with
-  the opposite convention.
-
-  \SupplementarySolution{19}{Components of a Linear Superfield}
-  The independent coefficients of
+  \SupplementarySolution{9}{The Linear Superfield Constraint}
+The independent coefficients of
   \(\SuperD_R^2S=\SuperD_L^2S=0\) give
   \[
     M=N=0,\qquad \partial_\mu V^\mu=0,\qquad
@@ -261,151 +353,159 @@
   Majorana fermionic components; \(\lambda,D\) are derivative descendants,
   not independent auxiliaries.
 
-  \SupplementarySolution{20}{The Superfield Euler--Lagrange Equation}
-  With \(\delta\Phi_n=\SuperD_R^2\delta S_n\), superspace integration by
-  parts moves both derivatives onto \(K_n\):
-  \[
-    \delta I_K\propto
-      \int d^4x\,d^4\theta\,
-      \delta S_n\SuperD_R^2K_n .
-  \]
-  The chiral projection identity
-  \(\int[(\SuperD_R^2h)]_{\mathcal F}
-    =2\int[h]_D\), together with the normalizations
-  \eqref{eq:26.6.5}--\eqref{eq:26.6.6}, turns the superpotential variation
-  into \(4f_n\) in the same equation.  Arbitrary \(\delta S_n\) therefore
-  gives
-  \[
-    \SuperD_R^2K_n=-4f_n,
-  \]
-  as in Eq.~\eqref{eq:26.6.15}.
+  \SupplementarySolution{10}{Nonlinear Kähler Sigma Models}
+  \begin{enumerate}
+    \item \emph{The Superfield Euler--Lagrange Equation.}
+    With \(\delta\Phi_n=\SuperD_R^2\delta S_n\), superspace integration by
+      parts moves both derivatives onto \(K_n\):
+      \[
+        \delta I_K\propto
+          \int d^4x\,d^4\theta\,
+          \delta S_n\SuperD_R^2K_n .
+      \]
+      The chiral projection identity
+      \(\int[(\SuperD_R^2h)]_{\mathcal F}
+        =2\int[h]_D\), together with the normalizations
+      \eqref{eq:26.6.5}--\eqref{eq:26.6.6}, turns the superpotential variation
+      into \(4f_n\) in the same equation.  Arbitrary \(\delta S_n\) therefore
+      gives
+      \[
+        \SuperD_R^2K_n=-4f_n,
+      \]
+      as in Eq.~\eqref{eq:26.6.15}.
+    \item \emph{The Kahler Metric in Components.}
+    The mixed quadratic term in the \(\theta\)-expansion of \(K\) yields
+      \[
+        \mathcal L_{\rm scalar}
+          =-K_{n\bar m}(\phi,\phi^*)
+            \partial_\mu\phi_n\partial^\mu\phi_m^* .
+      \]
+      Around any constant background, diagonalize the Hermitian matrix
+      \(K_{n\bar m}\).  A negative eigenvalue gives a scalar mode with a
+      wrong-sign kinetic term and hence negative norm or unbounded energy.
+      Absence of such ghosts requires, and locally is guaranteed by, positive
+      definiteness of the Kahler metric.
+    \item \emph{Auxiliaries with Noncanonical \(K\).}
+    Varying Eq.~\eqref{eq:26.8.6} with respect to
+      \(\mathcal F_{\bar n}^*\) gives
+      \[
+        K_{m\bar n}\mathcal F_m
+          -\frac12K_{mp\bar n}(\bar\psi_m\psi_{pL})
+          +f_{\bar n}^*=0.
+      \]
+      Its conjugate determines \(\mathcal F_m^*\).  With fermions set to zero,
+      \(\mathcal F_m=-(K^{-1})^{m\bar n}f_{\bar n}^*\).  Completing the
+      square then yields
+      \[
+        V=f_n(K^{-1})^{n\bar m}f_{\bar m}^*.
+      \]
+    \item \emph{Kahler Curvature and Four Fermions.}
+    Solving the auxiliary equation produces a term quadratic in the Kahler
+      connection \(K_{np\bar q}\).  Combining it with the explicit
+      \(K_{np\bar m\bar q}\) term gives
+      \[
+        R_{n\bar m p\bar q}
+          =K_{n\bar m p\bar q}
+           -K_{np\bar r}(K^{-1})^{s\bar r}K_{s\bar m\bar q}.
+      \]
+      Hence the four-fermion interaction is proportional to
+      \(R_{n\bar m p\bar q}
+      (\bar\psi_n\psi_{pL})(\bar\psi_q\psi_{mR})\).
+      Reordering the Grassmann fields can move an overall sign or a factor
+      between this formula and the definition of \(R\), but the covariant
+      curvature tensor is invariant.
+  \end{enumerate}
 
-  \SupplementarySolution{21}{The Kahler Metric in Components}
-  The mixed quadratic term in the \(\theta\)-expansion of \(K\) yields
-  \[
-    \mathcal L_{\rm scalar}
-      =-K_{n\bar m}(\phi,\phi^*)
-        \partial_\mu\phi_n\partial^\mu\phi_m^* .
-  \]
-  Around any constant background, diagonalize the Hermitian matrix
-  \(K_{n\bar m}\).  A negative eigenvalue gives a scalar mode with a
-  wrong-sign kinetic term and hence negative norm or unbounded energy.
-  Absence of such ghosts requires, and locally is guaranteed by, positive
-  definiteness of the Kahler metric.
+  \SupplementarySolution{11}{Supercurrent Conservation and Improvement}
+  \begin{enumerate}
+    \item \emph{Conservation of the Supersymmetry Current.}
+    Differentiating Eq.~\eqref{eq:26.7.10} produces terms containing
+      \(\Box\phi_n\), \(\sl{\partial}\psi_{nL,R}\), and
+      \(\partial_\mu f_n=f_{nm}\partial_\mu\phi_m\).
+      Use Eq.~\eqref{eq:26.7.17} for the fermions and the scalar equation
+      \[
+        \Box\phi_n=f_{nm}^*f_m
+          +\frac12f_{nmp}^*(\bar\psi_m\psi_{pR})
+      \]
+      with its conjugate.  The \(f_{nm}\partial\phi\) terms cancel the
+      differentiated superpotential terms, while the remaining Yukawa terms
+      cancel pairwise by \(f_{nm}=f_{mn}\).  Thus
+      \(\partial_\mu S^\mu=0\).
+    \item \emph{An Identically Conserved Improvement.}
+    The derivatives commute and are symmetric in \(\mu,\nu\), whereas
+      \([\gamma^\mu,\gamma^\nu]\) is antisymmetric:
+      \[
+        \partial_\mu\partial_\nu
+          ([\gamma^\mu,\gamma^\nu]\chi)=0.
+      \]
+      The time component of the improvement is a spatial divergence because
+      the \(\nu=0\) term vanishes.  Its integral is therefore a boundary term,
+      so it changes neither the charge nor the commutators of that charge with
+      fields.
+  \end{enumerate}
 
-  \SupplementarySolution{22}{Auxiliaries with Noncanonical \(K\)}
-  Varying Eq.~\eqref{eq:26.8.6} with respect to
-  \(\mathcal F_{\bar n}^*\) gives
-  \[
-    K_{m\bar n}\mathcal F_m
-      -\frac12K_{mp\bar n}(\bar\psi_m\psi_{pL})
-      +f_{\bar n}^*=0.
-  \]
-  Its conjugate determines \(\mathcal F_m^*\).  With fermions set to zero,
-  \(\mathcal F_m=-(K^{-1})^{m\bar n}f_{\bar n}^*\).  Completing the
-  square then yields
-  \[
-    V=f_n(K^{-1})^{n\bar m}f_{\bar m}^*.
-  \]
+  \SupplementarySolution{12}{Gamma Trace and the Improved Current Multiplet}
+  \begin{enumerate}
+    \item \emph{Gamma Trace and Scale Invariance.}
+    For homogeneous cubic \(f\), Euler's theorem gives
+      \(\phi_mf_m=3f\).  Differentiating with respect to \(\phi_n\) yields
+      \[
+        \phi_m f_{nm}=2f_n,
+      \]
+      so every parenthesis in Eq.~\eqref{eq:26.7.19} vanishes.  A quadratic
+      term instead gives \(\phi_mf_{nm}=f_n\), and a linear term gives zero;
+      both leave a nonzero difference from \(2f_n\).  These dimensionful mass
+      and tadpole couplings are precisely the classical obstructions to a
+      gamma-traceless improved current.
+    \item \emph{Inverting the Supercurrent Relation.}
+    Gamma tracing gives
+      \[
+        \gamma_\mu S^\mu
+          =-2\gamma_\mu\omega^\mu
+           +2\gamma_\mu\gamma^\mu\gamma^\nu\omega_\nu
+          =6\gamma^\nu\omega_\nu.
+      \]
+      Thus
+      \[
+        \omega_\mu=-\frac12S_\mu
+          +\frac16\gamma_\mu\gamma^\nu S_\nu.
+      \]
+      Substitution back into the original relation verifies the inverse.
+  \end{enumerate}
 
-  \SupplementarySolution{23}{Kahler Curvature and Four Fermions}
-  Solving the auxiliary equation produces a term quadratic in the Kahler
-  connection \(K_{np\bar q}\).  Combining it with the explicit
-  \(K_{np\bar m\bar q}\) term gives
-  \[
-    R_{n\bar m p\bar q}
-      =K_{n\bar m p\bar q}
-       -K_{np\bar r}(K^{-1})^{s\bar r}K_{s\bar m\bar q}.
-  \]
-  Hence the four-fermion interaction is proportional to
-  \(R_{n\bar m p\bar q}
-  (\bar\psi_n\psi_{pL})(\bar\psi_q\psi_{mR})\).
-  Reordering the Grassmann fields can move an overall sign or a factor
-  between this formula and the definition of \(R\), but the covariant
-  curvature tensor is invariant.
+  \SupplementarySolution{13}{Parity, Time Reversal, and Chirality}
+  \begin{enumerate}
+    \item \emph{Parity Exchanges Chiralities.}
+    The parity substitution gives
+      \(x_+\mapsto\Lambda_Px_-\) and
+      \(P_L(-i\beta\theta)=-i\beta P_R\theta\).  Hence a function only of
+      \(x_+,\theta_L\) becomes one only of \(x_-,\theta_R\), so left chirality
+      becomes right chirality.  Up to the intrinsic phase,
+      \[
+        \begin{aligned}
+          \phi(x)&\mapsto\phi(\Lambda_Px),\\
+          \psi_L(x)&\mapsto-i\beta\psi_L(\Lambda_Px)
+            &&\text{in the right slot},\\
+          \mathcal F(x)&\mapsto-\mathcal F(\Lambda_Px),
+        \end{aligned}
+      \]
+      consistently with Eqs.~\eqref{eq:26.3.35}--\eqref{eq:26.3.36}.
+    \item \emph{Time Reversal Preserves Chirality.}
+    The matrix \(B_T\) intertwines complex-conjugate gamma matrices with the
+      time-reflected ones.  When \(T\) is moved through
+      \(\SuperD_R\Phi=0\), its antiunitarity also sends \(i\to-i\).  This
+      extra sign compensates the interchange that occurred for unitary parity,
+      giving
+      \[
+        \SuperD_R\Phi^T=0.
+      \]
+      Equivalently, time reversal flips both momentum and spin, so helicity is
+      unchanged; parity flips momentum but not angular momentum, so helicity
+      and chirality are exchanged.
+  \end{enumerate}
 
-  \SupplementarySolution{24}{Conservation of the Supersymmetry Current}
-  Differentiating Eq.~\eqref{eq:26.7.10} produces terms containing
-  \(\Box\phi_n\), \(\sl{\partial}\psi_{nL,R}\), and
-  \(\partial_\mu f_n=f_{nm}\partial_\mu\phi_m\).
-  Use Eq.~\eqref{eq:26.7.17} for the fermions and the scalar equation
-  \[
-    \Box\phi_n=f_{nm}^*f_m
-      +\frac12f_{nmp}^*(\bar\psi_m\psi_{pR})
-  \]
-  with its conjugate.  The \(f_{nm}\partial\phi\) terms cancel the
-  differentiated superpotential terms, while the remaining Yukawa terms
-  cancel pairwise by \(f_{nm}=f_{mn}\).  Thus
-  \(\partial_\mu S^\mu=0\).
-
-  \SupplementarySolution{25}{An Identically Conserved Improvement}
-  The derivatives commute and are symmetric in \(\mu,\nu\), whereas
-  \([\gamma^\mu,\gamma^\nu]\) is antisymmetric:
-  \[
-    \partial_\mu\partial_\nu
-      ([\gamma^\mu,\gamma^\nu]\chi)=0.
-  \]
-  The time component of the improvement is a spatial divergence because
-  the \(\nu=0\) term vanishes.  Its integral is therefore a boundary term,
-  so it changes neither the charge nor the commutators of that charge with
-  fields.
-
-  \SupplementarySolution{26}{Gamma Trace and Scale Invariance}
-  For homogeneous cubic \(f\), Euler's theorem gives
-  \(\phi_mf_m=3f\).  Differentiating with respect to \(\phi_n\) yields
-  \[
-    \phi_m f_{nm}=2f_n,
-  \]
-  so every parenthesis in Eq.~\eqref{eq:26.7.19} vanishes.  A quadratic
-  term instead gives \(\phi_mf_{nm}=f_n\), and a linear term gives zero;
-  both leave a nonzero difference from \(2f_n\).  These dimensionful mass
-  and tadpole couplings are precisely the classical obstructions to a
-  gamma-traceless improved current.
-
-  \SupplementarySolution{27}{Inverting the Supercurrent Relation}
-  Gamma tracing gives
-  \[
-    \gamma_\mu S^\mu
-      =-2\gamma_\mu\omega^\mu
-       +2\gamma_\mu\gamma^\mu\gamma^\nu\omega_\nu
-      =6\gamma^\nu\omega_\nu.
-  \]
-  Thus
-  \[
-    \omega_\mu=-\frac12S_\mu
-      +\frac16\gamma_\mu\gamma^\nu S_\nu.
-  \]
-  Substitution back into the original relation verifies the inverse.
-
-  \SupplementarySolution{28}{Parity Exchanges Chiralities}
-  The parity substitution gives
-  \(x_+\mapsto\Lambda_Px_-\) and
-  \(P_L(-i\beta\theta)=-i\beta P_R\theta\).  Hence a function only of
-  \(x_+,\theta_L\) becomes one only of \(x_-,\theta_R\), so left chirality
-  becomes right chirality.  Up to the intrinsic phase,
-  \[
-    \phi(x)\mapsto\phi(\Lambda_Px),\quad
-    \psi_L(x)\mapsto-i\beta\psi_L(\Lambda_Px)\ \hbox{in the right slot},
-    \quad
-    \mathcal F(x)\mapsto-\mathcal F(\Lambda_Px),
-  \]
-  consistently with Eqs.~\eqref{eq:26.3.35}--\eqref{eq:26.3.36}.
-
-  \SupplementarySolution{29}{Time Reversal Preserves Chirality}
-  The matrix \(B_T\) intertwines complex-conjugate gamma matrices with the
-  time-reflected ones.  When \(T\) is moved through
-  \(\SuperD_R\Phi=0\), its antiunitarity also sends \(i\to-i\).  This
-  extra sign compensates the interchange that occurred for unitary parity,
-  giving
-  \[
-    \SuperD_R\Phi^T=0.
-  \]
-  Equivalently, time reversal flips both momentum and spin, so helicity is
-  unchanged; parity flips momentum but not angular momentum, so helicity
-  and chirality are exchanged.
-
-  \SupplementarySolution{30}{A Dimension-Five Operator Basis}
-  An \(\mathcal F\)-integrand must have dimension four and a \(D\)-integrand
+  \SupplementarySolution{14}{Dimension-Five Supersymmetric Operators}
+An \(\mathcal F\)-integrand must have dimension four and a \(D\)-integrand
   dimension three.  The nonderivative representatives are
   \[
     [\Phi^4]_{\mathcal F}+\text{c.c.},\qquad
@@ -421,4 +521,5 @@
   invariance excludes one ordinary derivative, and all other placements of
   two spinor derivatives reduce to this representative.  These three
   classes exhaust the basis.
+
 \end{enumerate}
