@@ -1,6 +1,6 @@
 # Release Verification
 
-Release date: 2026-07-30 PDT
+Release date: 2026-08-01 PDT
 
 ## Artifacts
 
@@ -13,7 +13,7 @@ Release date: 2026-07-30 PDT
 - Source PDF SHA-256:
   `da6fca5e44d31417e0d370108a622f9444602d68fb5768ec8edbc5b8ce5a78f9`
 - Exercise-ready PDF SHA-256:
-  `09d40e129ea00b5800cfde7c7b2e8268b1d6a841b1a7e5e88a8df9ebe9081ad0`
+  `d6023f924ef32dbe0b95cf910839b6d441f646692ea38b1b9b359f6475df5b6f`
 - The build master and stable export are byte-for-byte identical.
 - The publisher publication-data leaf and the separate copyright-
   acknowledgements leaf are intentionally omitted from the compiled edition.
@@ -44,7 +44,7 @@ The final strict execution of `./build_and_verify.sh` passed.
   hbox.
 - Text extraction succeeds; Ghostscript parses the complete PDF without
   error; every listed font is embedded and subset.
-- The stable export is 4,719,005 bytes, PDF 1.7, unencrypted, and has 694 A4
+- The stable export is 4,719,540 bytes, PDF 1.7, unencrypted, and has 694 A4
   pages. `pdfinfo` reports `Suspects: no`.
 - Extracted text contains no copyright-acknowledgement, rights-reservation,
   Library of Congress, or ISBN leaf text. It also confirms fifteen complete
@@ -53,19 +53,16 @@ The final strict execution of `./build_and_verify.sh` passed.
 
 ## Visual QA
 
-The unchanged book transcription and figures inherit the canonical edition's
-completed visual review. The exercise additions were separately sampled at the
-beginning, middle, and end of the book, including exercise openings, source
-credits, multi-page solutions, and the transition into the original
-bibliography/reference matter.
+The exercise additions retain their completed release review. For this errata
+update, every affected book-content location in the final exercise export was
+rendered at 144 dpi and inspected at full size: physical PDF pages 121,
+220--222, 331--333, 505, 527, 605, 613--614, 617, 674, and 676. These pages
+cover the same corrections as the canonical edition while accounting for the
+exercise edition's expanded pagination.
 
-The final review included the beginning of the expanded Chapter 2 set, the
-new black-hole exercises and solutions in Chapter 8, and the complete expanded
-Chapter 16 ending through its bibliography/reference transition. Long source
-credits remain on a dedicated line below each title. The rebuilt pages were
-rendered and inspected at full size. No clipping, overlap, orphaned source
-fragments, malformed equations, bad margins, or broken chapter-end transitions
-were observed.
+No clipping, overlap, malformed equations, broken tables, bad margins, or
+exercise/book transition defects were observed on the rebuilt pages. The
+strict exercise and layout gates both pass, with zero overfull boxes.
 
 ## Exercise infrastructure
 
@@ -90,3 +87,5 @@ The edition uses signature `(-+++)`, time-first coordinates, compact partial
 and covariant derivatives, and the notation documented in `NOTATION.md` and
 `MODERNIZATION.md`.  Weinberg's action notation \(I\), \(I_M\), and \(I_G\),
 and his worldline derivative \(D/D\tau\), are deliberately retained.
+At the user's direction, the reviewed timelike-geodesic wording following
+Eq. (3.3.10) remains unchanged from the source.

@@ -5,7 +5,7 @@
 % Status: source-reviewed and compile-clean.
 % Uncertainties: Eq. (4.10.5) prints +m^2 despite the preceding -m^2;
 %                the divergence derivation drops an overall -ie. Both are
-%                preserved and flagged below.
+%                corrected as SOURCE ERRATA below.
 
 \subsection{The Electromagnetic Analogy\optionalreading}\label{sec:4.10}
 
@@ -96,14 +96,10 @@ transformations provided that it is constructed out of tensors and their
 covariant derivatives. For instance, we can write a gauge-invariant equation
 that might represent the effect of electromagnetism on a charged scalar
 field \(\psi(x)\) as
-% VERIFY SOURCE: The scan prints +m^2 in Eq. (4.10.5), although the
-% immediately preceding free-field equation is (\Box-m^2)\psi=0.
-% MODERNIZATION CHECK: Reordering time first and adopting (-+++) leaves
-% \Box=\eta^{\mu\nu}\partial_\mu\partial_\nu unchanged as an operator, so
-% signature conversion does not resolve this discrepancy. The printed
-% +m^2 is therefore preserved rather than silently repaired.
+% SOURCE ERRATUM: the scan prints +m^2, but the immediately preceding
+% free-field equation and the adopted (-+++) convention require -m^2.
 \begin{equation}
-  \left[\mathcal D^\mu\mathcal D_\mu+m^2\right]\psi(x)=0,
+  \left[\mathcal D^\mu\mathcal D_\mu-m^2\right]\psi(x)=0,
   \tag{4.10.5}\label{eq:4.10.5}
 \end{equation}
 or, in more detail,
@@ -113,7 +109,7 @@ or, in more detail,
     -2\ii eA^\mu\partial_\mu
     -\ii e\,\partial_\mu A^\mu
     -e^2A^\mu A_\mu
-    +m^2
+    -m^2
   \right)\psi(x)=0.
 \]
 
@@ -154,15 +150,14 @@ conserved, we write
     \right]^\dagger
   \Bigr\}
   \\
-  % VERIFY SOURCE: The scan drops the overall -ie prefactor on this line.
-  % MODERNIZATION CHECK: The printed equality is preserved. Restoring -ie
-  % would make the intermediate identity algebraically consistent but would
-  % not change the ensuing conservation statement.
+  % SOURCE ERRATUM: the scan drops the overall -ie prefactor on this line.
   &=
-  \psi^\dagger(x)\mathcal D^\mu\mathcal D_\mu\psi(x)
-  -
-  \psi(x)
-  \left[\mathcal D^\mu\mathcal D_\mu\psi(x)\right]^\dagger.
+  -\ii e\left\{
+    \psi^\dagger(x)\mathcal D^\mu\mathcal D_\mu\psi(x)
+    -
+    \psi(x)
+    \left[\mathcal D^\mu\mathcal D_\mu\psi(x)\right]^\dagger
+  \right\}.
 \end{align*}
 Using Eq.~\eqref{eq:4.10.5}, this gives
 \[

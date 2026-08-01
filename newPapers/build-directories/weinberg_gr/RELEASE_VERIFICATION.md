@@ -1,6 +1,6 @@
 # Release Verification
 
-Release date: 2026-07-30 PDT
+Release date: 2026-08-01 PDT
 
 ## Artifacts
 
@@ -13,7 +13,7 @@ Release date: 2026-07-30 PDT
 - Source PDF SHA-256:
   `da6fca5e44d31417e0d370108a622f9444602d68fb5768ec8edbc5b8ce5a78f9`
 - Modernized PDF SHA-256:
-  `f6bd9798e72267aefb05299df6d59053b8148aa9f99d2cfbb8eaff7e92505fb8`
+  `c4a0aaf00ea9b32ab934c92b603b3bff49b49203cebd7d7d323be5fa32cb5d64`
 - The build master and stable export are byte-for-byte identical.
 - The publisher publication-data leaf and the separate copyright-
   acknowledgements leaf are intentionally omitted from the compiled edition.
@@ -37,43 +37,23 @@ The final strict execution of `./build_and_verify.sh` passed.
   hbox.
 - Text extraction succeeds; Ghostscript parses the complete PDF without
   error; every listed font is embedded and subset.
-- The stable export is 4,388,217 bytes, PDF 1.7, unencrypted, and has 586 A4
+- The stable export is 4,389,162 bytes, PDF 1.7, unencrypted, and has 587 A4
   pages. `pdfinfo` reports `Suspects: no`.
 
 ## Visual QA
 
-Every page of the final exported binary was inspected or verified
-pixel-for-pixel against the previously inspected release:
+The 2026-07-30 release completed the all-page visual review and remains the
+baseline for unchanged matter. For this errata update, every affected content
+location in the final export was rendered at 144 dpi and inspected at full
+size: physical PDF pages 107, 178--179, 265--267, 412, 433, 511, 519--520,
+523, 567, and 569. These pages cover the corrected electromagnetic equation
+and current, table reference, stellar thermodynamics and volume measure,
+bibliographic year, horizon, Jeans inequalities, relativistic perturbation
+signs, early-universe factors, galaxy datum, and index locator.
 
-- physical PDF page 1 is pixel-identical to the prior title page;
-- physical PDF pages 2--9 were re-inspected after the front-matter change;
-- physical PDF pages 10--586 are pixel-identical to previously inspected
-  physical PDF pages 12--588.
-
-Three extraction/crop defects found during review were corrected before
-release: the missing lower labels in Figure 11.1 and retained scan prose above
-Figures 14.5 and 14.9. The repaired pages and all Chapter 14 pages affected by
-float repacking were re-inspected at full size. The exact final raster differs
-from the previously inspected raster only on pages 10, 265, and 382--416; all
-37 changed pages were separately inspected, while every other final page is
-pixel-identical to its inspected predecessor.
-
-Six vector-reconstructed figures were rebuilt after the release above, and
-their pages were re-inspected against the source scan: Figures 8.1, 8.2, 14.1,
-14.2, and 15.1 were redrawn from the governing equations, and the
-\(\sigma_{\mathrm{abs}}\) axis labels in Figure 3.1 were set horizontally to
-match the source. The pixel-identity statements above therefore no longer cover
-the pages carrying those six figures; every other page is unchanged.
-
-There are no blank pages. The deliberately low-density leaves are the five
-Part dividers on physical pages 10, 67, 157, 315, and 357; sparse
-bibliography/reference tails and chapter-end whitespace were also checked
-against their surrounding page flow.
-
-The final exported binary was rendered independently twice at 110 dpi. Both
-renders contain 586 pages with identical filenames and zero pixel mismatches.
-No clipping, overlap, malformed text or equations, broken figures, missing
-matter, bad margins, or pagination discontinuities remain.
+No clipping, overlap, malformed equations, broken tables, bad margins, or
+pagination discontinuities were observed on the rebuilt pages. The strict
+layout gate independently reports zero overfull boxes.
 
 ## Editorial scope
 
@@ -81,3 +61,5 @@ The edition uses signature `(-+++)`, time-first coordinates, compact partial
 and covariant derivatives, and the notation documented in `NOTATION.md` and
 `MODERNIZATION.md`.  Weinberg's action notation \(I\), \(I_M\), and \(I_G\),
 and his worldline derivative \(D/D\tau\), are deliberately retained.
+At the user's direction, the reviewed timelike-geodesic wording following
+Eq. (3.3.10) remains unchanged from the source.

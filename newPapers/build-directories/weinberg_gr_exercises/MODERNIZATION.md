@@ -77,4 +77,6 @@ Modernize notation aggressively when it shortens or clarifies the calculation.
 Do not modernize the physics historically: do not insert later discoveries,
 replace Weinberg's arguments with textbook-standard proofs, or silently update
 1971 observational values. Such additions belong in clearly labeled editor's
-notes, if separately authorized.
+notes, if separately authorized. When a source error is explicitly reviewed
+and authorized for correction, use the corrected text and retain a nearby
+`SOURCE ERRATUM` comment documenting the printed form.
