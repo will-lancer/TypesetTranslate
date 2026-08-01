@@ -47,6 +47,65 @@
   ,pdfa=true
 ]{hyperref}
 
+% Keep square citation delimiters black while linked citation numbers stay blue.
+\RequirePackage{xstring}
+\let\WeinbergOriginalHyperref\hyperref
+\newcommand{\WeinbergHyperrefText}[1]{%
+  \Weinberg@hyperref@dispatch#1\Weinberg@hyperref@end
+}
+\def\Weinberg@hyperref@dispatch#1#2\Weinberg@hyperref@end{%
+  \ifx#1[%
+    \Weinberg@hyperref@color@start{#1#2}%
+  \else
+    \ifcat\noexpand#1\relax
+      #1#2%
+    \else
+      \Weinberg@hyperref@color@end{#1#2}%
+    \fi
+  \fi
+}
+\def\Weinberg@hyperref@color@start#1{%
+  \IfEndWith{#1}{]}{%
+    \StrGobbleLeft{#1}{1}[\Weinberg@hyperref@body]%
+    \StrGobbleRight{\Weinberg@hyperref@body}{1}[\Weinberg@hyperref@body]%%
+    \textcolor{black}{[}\Weinberg@hyperref@body\textcolor{black}{]}%
+  }{%
+    \StrGobbleLeft{#1}{1}[\Weinberg@hyperref@body]%%
+    \textcolor{black}{[}\Weinberg@hyperref@body%
+  }%
+}
+\def\Weinberg@hyperref@color@end#1{%
+  \IfEndWith{#1}{]}{%
+    \StrGobbleRight{#1}{1}[\Weinberg@hyperref@body]%%
+    \Weinberg@hyperref@body\textcolor{black}{]}%
+  }{#1}%
+}
+\def\Weinberg@hyperref@unstar{%
+  \@ifnextchar[{
+    \Weinberg@hyperref@unstar@label
+  }{\Weinberg@hyperref@unstar@nolabel}%
+}
+\def\Weinberg@hyperref@unstar@label[#1]#2{%
+  \WeinbergOriginalHyperref[#1]{\WeinbergHyperrefText{#2}}%
+}
+\def\Weinberg@hyperref@unstar@nolabel#1{%
+  \WeinbergOriginalHyperref{\WeinbergHyperrefText{#1}}%
+}
+\def\Weinberg@hyperref@star{%
+  \@ifnextchar[{
+    \Weinberg@hyperref@star@label
+  }{\Weinberg@hyperref@star@nolabel}%
+}
+\def\Weinberg@hyperref@star@label[#1]#2{%
+  \WeinbergOriginalHyperref*[#1]{\WeinbergHyperrefText{#2}}%
+}
+\def\Weinberg@hyperref@star@nolabel#1{%
+  \WeinbergOriginalHyperref*{\WeinbergHyperrefText{#1}}%
+}
+\protected\def\hyperref{%
+  \@ifstar{\Weinberg@hyperref@star}{\Weinberg@hyperref@unstar}%
+}
+
 \def\@subheader{\@empty}
 \def\@keywords{\@empty}
 \def\@abstract{\@empty}
