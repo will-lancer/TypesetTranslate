@@ -28,6 +28,11 @@ dimension-independent Clifford notation.
   retained to avoid a gratuitous rewrite of the representation-theory
   argument.  Equation (25.2.34) gives the explicit bridge to
   `Q_alpha,bar Q_dotalpha`; no four-component generator is introduced.
+- For an ordinary commuting test spinor `u_alpha`, the Hermitian contraction
+  is `Q(u)=u^alpha Q_alpha-bar u_dotalpha bar Q^dotalpha`, and hence
+  `Q(u)^2=-2(u sigma^mu bar u)P_mu`.  This differs in appearance from the
+  plus sign used with anticommuting supersymmetry-transformation parameters,
+  where reordering the Grassmann-odd factors supplies the extra sign.
 - Latin `a,b,...` remain available for local Lorentz vector indices in
   supergravity.
 

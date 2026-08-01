@@ -10,8 +10,10 @@ The original four-component edition remains unchanged in
 Release SHA-256:
 
 ```text
-38ccbfffee7626988bc599063166c6c18aeddd99c67268dbc89e60812dfbe90b
+8054a1624f75ebc847055700a58d716d7814dd60340a698d549c273699307b83
 ```
 
 The full build and QA record is
 `../build-directories/weinberg_vol3_two_component/RELEASE_VERIFICATION.md`.
+The corrected errors are listed in
+`../build-directories/weinberg_vol3_two_component/ERRATA.md`.

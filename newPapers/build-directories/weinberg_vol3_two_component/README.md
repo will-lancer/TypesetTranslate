@@ -11,7 +11,8 @@ The editorial invariants are:
   four-component packaging or notation;
 - preserve physical content, signs, normalizations, factor ordering,
   equation tags, labels, cross-references, section structure, problems,
-  references, figures, and indexes;
+  references, figures, and indexes, except for independently verified source
+  errors recorded in `ERRATA.md`;
 - retain the mostly-plus metric
   `eta = diag(-1,+1,+1,+1)`;
 - use two-component notation throughout the four-dimensional material in
@@ -39,4 +40,5 @@ The convention checks are split between
 `verify_spinor_conventions.py`, which verifies the sigma/gamma dictionary,
 and `verify_superspace_conventions.py`, which verifies the Grassmann
 operator signs independently with an exterior algebra.  The final release
-record is `RELEASE_VERIFICATION.md`.
+record is `RELEASE_VERIFICATION.md`; corrected errors are listed in
+`ERRATA.md`.

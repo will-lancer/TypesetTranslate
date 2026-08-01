@@ -29,6 +29,43 @@ TARGET_PATTERNS = {
     "hyperlink targets": re.compile(r"\\hyperref\[([^\]]+)\]"),
 }
 
+# The edition normally preserves the baseline reference inventory exactly.
+# These deltas document reviewed source errata whose corrected targets are
+# deliberately different. Positive values add an expected target occurrence;
+# negative values remove one.
+TARGET_ADJUSTMENTS = {
+    26: {"equation references": {"eq:26.7.35": 1}},
+    28: {
+        "equation references": {
+            "eq:28.1.2": -1,
+            "eq:28.1.3": -1,
+            "eq:28.1.4": 1,
+            "eq:28.1.5": 1,
+            "eq:28.2.1": -1,
+            "eq:28.2.2": 1,
+        }
+    },
+    29: {
+        "equation references": {
+            "eq:29.3.11": -1,
+            "eq:29.3.15": 1,
+        }
+    },
+    31: {
+        "equation references": {
+            "eq:26.3.9": -1,
+            "eq:26.2.10": 1,
+        }
+    },
+    32: {
+        "equation references": {
+            "eq:32.3.2": 1,
+            "eq:32.3.4": 1,
+            "eq:32.3.7": 1,
+        }
+    },
+}
+
 FORBIDDEN = {
     "gamma5": re.compile(r"\\gamma_?5(?![0-9])"),
     "gamma-matrix": re.compile(
@@ -83,6 +120,25 @@ def count_matches(pattern: re.Pattern[str], files: list[Path]) -> int:
     )
 
 
+def adjusted_baseline_targets(
+    chapter: int,
+    name: str,
+    targets: Counter[str],
+) -> Counter[str]:
+    adjusted = targets.copy()
+    for target, delta in TARGET_ADJUSTMENTS.get(chapter, {}).get(
+        name, {}
+    ).items():
+        adjusted[target] += delta
+        if adjusted[target] < 0:
+            raise AssertionError(
+                f"invalid target adjustment for Chapter {chapter}: {target}"
+            )
+        if adjusted[target] == 0:
+            del adjusted[target]
+    return adjusted
+
+
 def compare_inventory() -> bool:
     ok = True
     for chapter in range(24, 33):
@@ -106,7 +162,11 @@ def compare_inventory() -> bool:
         }
         target_changes = {}
         for name, pattern in TARGET_PATTERNS.items():
-            old_targets = collect(pattern, old_files)
+            old_targets = adjusted_baseline_targets(
+                chapter,
+                name,
+                collect(pattern, old_files),
+            )
             new_targets = collect(pattern, new_files)
             if old_targets != new_targets:
                 target_changes[name] = (old_targets, new_targets)

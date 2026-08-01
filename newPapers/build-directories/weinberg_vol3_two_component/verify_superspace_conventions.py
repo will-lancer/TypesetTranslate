@@ -142,6 +142,21 @@ def main() -> int:
         multiply(theta_squared, bar_theta_squared),
     )
 
+    theta_lower = (VARIABLES[1], scale(-1, VARIABLES[0]))
+    bar_theta_lower = (VARIABLES[3], scale(-1, VARIABLES[2]))
+    for index in range(2):
+        require_equal(
+            f"partial_{index + 1}(theta^2)=2 theta_{index + 1}",
+            left_derivative(index, theta_squared),
+            scale(2, theta_lower[index]),
+        )
+        require_equal(
+            "bar partial_dot"
+            f"{index + 1}(bar theta^2)=-2 bar theta_dot{index + 1}",
+            left_derivative(index + 2, bar_theta_squared),
+            scale(-2, bar_theta_lower[index]),
+        )
+
     require_equal(
         "D^2(theta^2)=-4",
         d_squared(theta_squared),

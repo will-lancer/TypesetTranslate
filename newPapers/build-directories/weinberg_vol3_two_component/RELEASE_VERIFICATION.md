@@ -1,6 +1,6 @@
 # Release Verification
 
-Release date: 2026-07-30 PDT
+Release date: 2026-07-31 PDT
 
 ## Artifacts
 
@@ -9,9 +9,9 @@ Release date: 2026-07-30 PDT
 - Two-component edition:
   `../../weinberg-qft-two-component/weinberg-vol3-two-component.pdf`
 - Two-component PDF SHA-256:
-  `38ccbfffee7626988bc599063166c6c18aeddd99c67268dbc89e60812dfbe90b`
+  `8054a1624f75ebc847055700a58d716d7814dd60340a698d549c273699307b83`
 - Comparison PDF SHA-256:
-  `5a69c9fbd0fa6f3ef570e88750762b71ce9f2980a634530d0356f9a823c68f3d`
+  `d9e3f5552091e13019402fde159603f54c09851931b9e137a23a24aca8ab56b3`
 
 ## Automated gates
 
@@ -21,9 +21,9 @@ Release date: 2026-07-30 PDT
 - independent four-generator exterior-algebra checks give
   `D^2 theta^2 = bar D^2 bar theta^2 = -4` and verify the F-to-D
   projection and even-superfield conjugation rules;
-- Chapters 24–32 have exact equation-label, equation-tag,
-  cross-reference-target, heading, display, and footnote parity with the
-  comparison source;
+- Chapters 24–32 have exact equation-label, equation-tag, heading, display,
+  and footnote parity with the comparison source; corrected cross-reference
+  targets are explicitly declared in the audit and `ERRATA.md`;
 - no unmarked forbidden four-component syntax remains in the strict
   four-dimensional scope;
 - all guarded semantic hotspots pass;
@@ -39,20 +39,16 @@ Independent integrity checks also pass:
   structure;
 - every listed font is embedded and subset;
 - layout-preserving text extraction contains 370 page separators and
-  759,664 non-whitespace characters.
+  759,426 non-whitespace characters;
+- the built PDF and stable exported PDF are byte-identical.
 
 ## Visual QA
 
-Every one of the 370 rendered pages was inspected across three independent
-page ranges: 1–128, 129–256, and 257–370. Dense formula pages, figures,
-chapter transitions, appendices, references, and both indexes received
-additional checks. No clipping, overlap, malformed equation, broken
-figure, black box, missing page, bad margin, or font corruption was found.
-Page 2 is the intentional blank title verso, and the whitespace at the end
-of page 370 is the intentional end of the subject index. A fresh
-370-page render of the final release binary was then compared
-pixel-for-pixel with the inspected render at the QA resolution, with zero
-mismatches.
+All 57 affected or adjacent pages were freshly rendered at 120 dpi and
+inspected in ten contact sheets. No clipping, overlap, malformed formula,
+missing content, or bad margin was found. The complete 370-page release also
+passed Ghostscript parsing, PDF metadata, font embedding, layout, and text
+extraction checks.
 
 ## Editorial scope
 
@@ -61,4 +57,5 @@ dotted/undotted two-component notation under
 `TWO_COMPONENT_CONVENTIONS.md`. Chapter 32 retains general
 dimension-dependent Clifford notation where a four-dimensional Weyl
 decomposition is unavailable; its strictly four-dimensional references use
-the edition conventions.
+the edition conventions. The source errors corrected in this review are
+listed in `ERRATA.md`.

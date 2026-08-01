@@ -99,6 +99,33 @@ def main() -> int:
         r"=-2\intd^4x\,[h]_D",
     )
 
+    grassmann_derivatives = tagged_equation(
+        "latex/chapters/chapter26/sec262.tex",
+        "26.2.9",
+    )
+    require_contains(
+        "barred left derivative of bar theta squared",
+        grassmann_derivatives,
+        r"\bar\partial_{\dot\alpha}(\bar\theta\bar\theta)"
+        r"=-2\bar\theta_{\dot\alpha}",
+    )
+
+    commuting_generator = tagged_equation(
+        "latex/chapters/chapter26/sec262.tex",
+        "26.2.37",
+    )
+    require_contains(
+        "Hermitian commuting-spinor generator contraction",
+        commuting_generator,
+        r"u^\alphaQ_\alpha-\baru_{\dot\alpha}\barQ^{\dot\alpha}",
+    )
+    chapter262 = compact(read("latex/chapters/chapter26/sec262.tex"))
+    require_contains(
+        "commuting-spinor generator square",
+        chapter262,
+        r"Q^2(u)=-2(u\sigma^\mu\baru)P_\mu",
+    )
+
     potential_conjugate = tagged_equation(
         "latex/chapters/chapter26/sec266.tex",
         "26.6.11",
@@ -164,6 +191,47 @@ def main() -> int:
         r"\partial_\mu\barD^{\dot\alpha}",
     )
 
+    nonabelian_strength = tagged_equation(
+        "latex/chapters/chapter27/sec273.tex",
+        "27.3.12",
+    )
+    require_contains(
+        "non-Abelian field-strength normalization",
+        nonabelian_strength,
+        r"\equiv{}\frac{i}{4}\barD^2",
+    )
+
+    gauge_kinetic_components = tagged_equation(
+        "latex/chapters/chapter27/sec274.tex",
+        "27.4.42",
+    )
+    require_contains(
+        "gauge-kinetic lambda-lambda-scalar block",
+        gauge_kinetic_components,
+        r"\left(\lambda_B\sigma^\mu\bar\sigma^\nu\psi_n\right)"
+        r"f_{A\mu\nu}",
+    )
+
+    external_superfields = tagged_equation(
+        "latex/chapters/chapter27/sec276.tex",
+        "27.6.4",
+    )
+    require_contains(
+        "external-superfield canonical D-term normalization",
+        external_superfields,
+        r"=\left[\Phi^\daggere^{-V}\Phi\right]_D",
+    )
+
+    extended_beta = tagged_equation(
+        "latex/chapters/chapter27/sec279.tex",
+        "27.9.50",
+    )
+    require_contains(
+        "N=2 beta-function coupling power",
+        extended_beta,
+        r"\beta(g)=-\frac{g^3}{8\pi^2}",
+    )
+
     gauge_chapters = compact(
         "\n".join(
             path.read_text(encoding="utf-8")
@@ -193,6 +261,31 @@ def main() -> int:
         r"\operatorname{tr}_2\left("
         r"\sigma^0p_\mu\bar\sigma^\mu"
         r"+\bar\sigma^0p_\mu\sigma^\mu\right)",
+    )
+
+    higgs_bound = tagged_equation(
+        "latex/chapters/chapter28/sec285.tex",
+        "28.5.43",
+    )
+    require_contains(
+        "dimensionally consistent light-Higgs bound",
+        higgs_bound,
+        r"m_h^2\leqm_h^2(m_A\longrightarrow\infty)",
+    )
+
+    higgs_soft_mass = tagged_equation(
+        "latex/chapters/chapter28/sec286.tex",
+        "28.6.23",
+    )
+    require_contains(
+        "gauge-mediated Higgs soft-mass normalization",
+        higgs_soft_mass,
+        r"=2\sum_nM_{sn}^2",
+    )
+    require_absent(
+        "no spurious square of gauge-mediated loop bracket",
+        higgs_soft_mass,
+        r"\right]^2",
     )
 
     action_d_term = tagged_equation(
@@ -272,6 +365,26 @@ def main() -> int:
         "gravitino mass dotted conjugate block",
         gravitino_mass,
         r"\bar\psi_\mu\bar\sigma^{\mu\nu}\bar\psi_\nu",
+    )
+
+    weyl_metric = tagged_equation(
+        "latex/chapters/chapter31/sec316.tex",
+        "31.6.63",
+    )
+    require_contains(
+        "supergravity Weyl-rescaling power",
+        weyl_metric,
+        r"=(1-\kappa^2K/3)g_{\mu\nu}",
+    )
+
+    even_dimensional_reality = tagged_equation(
+        "latex/chapters/chapter32/sec321.tex",
+        "32.1.26",
+    )
+    require_contains(
+        "even-dimensional spinor reality sign",
+        even_dimensional_reality,
+        r"\mathcalS^{\pm*}\mathcalS^{\mp(-1)^{d/2}}",
     )
 
     print("All translation-sensitive semantic hotspot checks passed.")
