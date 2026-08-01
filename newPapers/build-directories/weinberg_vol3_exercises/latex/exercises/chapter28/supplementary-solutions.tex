@@ -125,14 +125,16 @@
     polarization.  Their group factors are the same, while their spin
     numerators and statistical factors differ.
     \begin{center}
-    \begin{tikzpicture}[font=\scriptsize]
+    \begin{tikzpicture}[font=\scriptsize,
+        arc/.style={thick,postaction={decorate},decoration={markings,
+          mark=at position 0.5 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}}]
       \begin{scope}
         \coordinate (a) at (-0.7,0);
         \coordinate (b) at (0.7,0);
         \draw[thick] (-1.8,0)--(a) node[midway,above] {\(W\)};
         \draw[thick] (b)--(1.8,0) node[midway,above] {\(W\)};
-        \draw[thick,->] (a) arc[start angle=180,end angle=0,radius=0.7];
-        \draw[thick,->] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \draw[arc] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[arc] (b) arc[start angle=0,end angle=-180,radius=0.7];
         \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
         \node at (0,1.02) {SM fermion};
       \end{scope}
@@ -787,14 +789,16 @@ For Eq.~\eqref{eq:28.5.51},
     the same couplings and cancel the quadratic sensitivity of scalar masses.
     For the Higgs, the most important pair is the top loop and the stop loops:
     \begin{center}
-    \begin{tikzpicture}[font=\scriptsize]
+    \begin{tikzpicture}[font=\scriptsize,
+        arc/.style={thick,postaction={decorate},decoration={markings,
+          mark=at position 0.5 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}}]
       \begin{scope}
         \coordinate (a) at (-0.7,0);
         \coordinate (b) at (0.7,0);
         \draw[thick] (-1.8,0)--(a) node[midway,above] {\(H\)};
         \draw[thick] (b)--(1.8,0) node[midway,above] {\(H^*\)};
-        \draw[thick,->] (a) arc[start angle=180,end angle=0,radius=0.7];
-        \draw[thick,->] (b) arc[start angle=0,end angle=-180,radius=0.7];
+        \draw[arc] (a) arc[start angle=180,end angle=0,radius=0.7];
+        \draw[arc] (b) arc[start angle=0,end angle=-180,radius=0.7];
         \fill (a) circle (1.4pt); \fill (b) circle (1.4pt);
         \node at (0,1.02) {top};
       \end{scope}
@@ -854,17 +858,24 @@ For Eq.~\eqref{eq:28.5.51},
     \(\lambda'_{ijk}\) and \(\lambda''_{mnk}\).  Exchange of
     \(\widetilde d_{Rk}\) gives the schematic tree graph
     \begin{center}
-    \begin{tikzpicture}[font=\scriptsize]
+    \begin{tikzpicture}[font=\scriptsize,
+        fin/.style={thick,postaction={decorate},decoration={markings,
+          mark=at position 0.56 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}}]
       \coordinate (v1) at (0,0);
       \coordinate (v2) at (2.8,0);
-      \draw[thick,->] (-1.65,0.65)--(v1) node[midway,above left] {\(u_{Rm}\)};
-      \draw[thick,->] (-1.65,-0.65)--(v1) node[midway,below left] {\(d_{Rn}\)};
-      \draw[thick,dashed] (v1)--(v2) node[midway,above] {\(\widetilde d_{Rk}\)};
-      \draw[thick,<-] (v2)--(4.45,-0.65) node[midway,below right] {\(d_{Lj}\)};
-      \draw[thick,->] (v2)--(4.45,0.65) node[midway,above right] {\(\bar\nu_i\)};
+      \draw[fin] (-1.65,0.72)--(v1);
+      \draw[fin] (-1.65,-0.72)--(v1);
+      \draw[thick,dashed] (v1)--(v2);
+      \draw[fin] (4.45,-0.72)--(v2);
+      \draw[fin] (v2)--(4.45,0.72);
       \fill (v1) circle (1.6pt); \fill (v2) circle (1.6pt);
-      \node[below=5pt] at (v1) {\(\lambda''\)};
-      \node[below=5pt] at (v2) {\(\lambda'\)};
+      \node[above=3pt] at (1.4,0) {\(\widetilde d_{Rk}\)};
+      \node[anchor=east] at (-1.72,0.72) {\(u_{Rm}\)};
+      \node[anchor=east] at (-1.72,-0.72) {\(d_{Rn}\)};
+      \node[anchor=west] at (4.52,0.72) {\(\bar\nu_i\)};
+      \node[anchor=west] at (4.52,-0.72) {\(d_{Lj}\)};
+      \node[below=10pt] at (v1) {\(\lambda''\)};
+      \node[below=10pt] at (v2) {\(\lambda'\)};
     \end{tikzpicture}
     \end{center}
     The resulting local operator contains three quarks and a left-chiral
@@ -948,17 +959,21 @@ For Eq.~\eqref{eq:28.5.51},
     Since color and weak generators act on different indices, they commute.
     A representative component graph is
     \begin{center}
-    \begin{tikzpicture}[font=\scriptsize]
+    \begin{tikzpicture}[font=\scriptsize,
+        sq/.style={thick,dashed,postaction={decorate},decoration={markings,
+          mark=at position 0.56 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}},
+        gauge/.style={thick,decorate,
+          decoration={snake,amplitude=1.05pt,segment length=4.6pt}}]
       \coordinate (v) at (0,0);
-      \draw[thick,dashed,->] (-1.8,-0.9)--(v)
-        node[midway,below left] {\(\widetilde u_{L\alpha}\)};
-      \draw[thick,dashed,->] (v)--(1.8,-0.9)
-        node[midway,below right] {\(\widetilde d^{\,*}_{L\beta}\)};
-      \draw[thick] (-1.8,0.9)--(v)
-        node[midway,above left] {\(G_\mu^A\)};
-      \draw[thick] (v)--(1.8,0.9)
-        node[midway,above right] {\(W_\nu^-\)};
+      \draw[sq] (-1.8,-0.95)--(v);
+      \draw[sq] (v)--(1.8,-0.95);
+      \draw[gauge] (-1.8,0.95)--(v);
+      \draw[gauge] (v)--(1.8,0.95);
       \fill (v) circle (1.8pt);
+      \node[anchor=north east] at (-1.86,-0.99) {\(\widetilde u_{L\alpha}\)};
+      \node[anchor=north west] at (1.86,-0.99) {\(\widetilde d^{\,*}_{L\beta}\)};
+      \node[anchor=south east] at (-1.86,0.99) {\(G_\mu^A\)};
+      \node[anchor=south west] at (1.86,0.99) {\(W_\nu^-\)};
     \end{tikzpicture}
     \end{center}
     With every momentum incoming, the four-point rule before choosing a

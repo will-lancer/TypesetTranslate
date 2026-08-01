@@ -1,3 +1,10 @@
+% #1 vertex, #2 direction, #3 loop length, #4 control half-angle.
+% The arms are mirror images about #2, so the loop closes on itself cleanly; a
+% smaller #4 narrows the loop where the vertex is crowded.
+\providecommand{\Sloop}[4]{%
+  \draw[fast] (#1)
+    .. controls ($(#1)+({#2-#4}:{#3/(0.75*cos(#4))})$)
+    and ($(#1)+({#2+#4}:{#3/(0.75*cos(#4))})$) .. (#1);}
 \chapterbackmatter{Solutions to Supplementary Exercises}
 
 \begin{enumerate}
@@ -905,18 +912,15 @@
         \begin{scope}[shift={(0,0)}]
           \coordinate (v) at (0,0);
           \draw[thick] (-1.25,0)--(v)--(1.25,0);
-          \draw[fast] (v) .. controls (-.4,.35) and (-.4,.9) .. (0,.95)
-            .. controls (.4,.9) and (.4,.35) .. (v);
+          \Sloop{v}{90}{0.95}{55}
           \fill (v) circle (1.8pt);
           \node at (0,-.58) {\(g_0\)};
         \end{scope}
         \begin{scope}[shift={(3.5,0)}]
           \coordinate (v) at (0,0);
           \draw[thick] (-1.25,0)--(v)--(1.25,0);
-          \draw[fast] (v) .. controls (-.4,.3) and (-.4,.8) .. (0,.85)
-            .. controls (.4,.8) and (.4,.3) .. (v);
-          \draw[fast] (v) .. controls (-.4,-.3) and (-.4,-.8) .. (0,-.85)
-            .. controls (.4,-.8) and (.4,-.3) .. (v);
+          \Sloop{v}{90}{0.85}{48}
+          \Sloop{v}{270}{0.85}{48}
           \fill (v) circle (1.8pt);
           \node at (0,-1.18) {\(\lambda_0\)};
         \end{scope}
@@ -933,8 +937,7 @@
           \draw[thick] (-1.65,.55)--(v); \draw[thick] (-1.65,-.55)--(v);
           \draw[fast] (v) to[out=45,in=135] (w);
           \draw[fast] (v) to[out=-45,in=-135] (w);
-          \draw[fast] (w) .. controls (.95,.3) and (1.25,.55) .. (1.25,.85)
-            .. controls (.85,1.05) and (.5,.55) .. (w);
+          \Sloop{w}{0}{0.85}{55}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.05) {\(2+0;\ r=2\)};
         \end{scope}
@@ -942,10 +945,8 @@
           \coordinate (v) at (-.65,0); \coordinate (w) at (.65,0);
           \draw[thick] (-1.55,0)--(v); \draw[thick] (w)--(1.55,0);
           \draw[fast] (v)--(w);
-          \draw[fast] (v) .. controls (-.95,.3) and (-1.1,.75) .. (-.65,.85)
-            .. controls (-.2,.75) and (-.35,.3) .. (v);
-          \draw[fast] (w) .. controls (.35,.3) and (.2,.75) .. (.65,.85)
-            .. controls (1.1,.75) and (.95,.3) .. (w);
+          \Sloop{v}{90}{0.85}{50}
+          \Sloop{w}{90}{0.85}{50}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.05) {\(1+1;\ r=1\)};
         \end{scope}
@@ -971,59 +972,51 @@
       \begin{tikzpicture}[scale=0.61,
         fast/.style={thick,dashed},
         every node/.style={font=\scriptsize}]
-        \begin{scope}[shift={(0,1.7)}]
+        \begin{scope}[shift={(0,1.9)}]
           \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
           \draw[thick] (w)--(1.55,.5); \draw[thick] (w)--(1.55,-.5);
           \draw[fast] (v) to[out=40,in=140] (w);
           \draw[fast] (v) to[out=-40,in=-140] (w);
-          \draw[fast] (v) .. controls (-.95,.25) and (-1.05,.65) .. (-.6,.78)
-            .. controls (-.15,.65) and (-.25,.25) .. (v);
-          \draw[fast] (v) .. controls (-.95,-.25) and (-1.05,-.65) .. (-.6,-.78)
-            .. controls (-.15,-.65) and (-.25,-.25) .. (v);
+          \Sloop{v}{125}{0.85}{34}
+          \Sloop{v}{235}{0.85}{34}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
-          \node at (0,-1.80) {\(a=0,r=2\)};
+          \node at (-.6,-1.28) {\(\lambda_0\)}; \node at (.6,-1.28) {\(g_0\)};
+          \node at (0,-1.98) {\(a=0,r=2\)};
         \end{scope}
-        \begin{scope}[shift={(3.15,1.7)}]
+        \begin{scope}[shift={(3.15,1.9)}]
           \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
           \draw[thick] (-1.5,0)--(v); \draw[thick] (w)--(1.5,0);
           \draw[fast] (v)--(w);
-          \draw[fast] (v) .. controls (-.95,.25) and (-1.05,.65) .. (-.6,.78)
-            .. controls (-.15,.65) and (-.25,.25) .. (v);
-          \draw[fast] (v) .. controls (-.95,-.25) and (-1.05,-.65) .. (-.6,-.78)
-            .. controls (-.15,-.65) and (-.25,-.25) .. (v);
-          \draw[fast] (w) .. controls (.25,.25) and (.15,.65) .. (.6,.78)
-            .. controls (1.05,.65) and (.95,.25) .. (w);
+          \Sloop{v}{90}{0.85}{32}
+          \Sloop{v}{270}{0.85}{32}
+          \Sloop{w}{90}{0.85}{38}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
-          \node at (0,-1.80) {\(a=1,r=1\)};
+          \node at (-.6,-1.28) {\(\lambda_0\)}; \node at (.6,-1.28) {\(g_0\)};
+          \node at (0,-1.98) {\(a=1,r=1\)};
         \end{scope}
-        \begin{scope}[shift={(6.3,1.7)}]
+        \begin{scope}[shift={(6.3,1.9)}]
           \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
-          \draw[thick] (-1.5,0)--(v); \draw[thick] (w)--(1.5,0);
+          \draw[thick] (-1.42,0.80)--(v); \draw[thick] (w)--(1.5,0);
           \draw[fast] (v) to[out=52,in=128] (w);
           \draw[fast] (v)--(w);
           \draw[fast] (v) to[out=-52,in=-128] (w);
-          \draw[fast] (v) .. controls (-.95,.3) and (-1.05,.72) .. (-.6,.82)
-            .. controls (-.15,.72) and (-.25,.3) .. (v);
+          \Sloop{v}{215}{0.78}{40}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
-          \node at (0,-1.80) {\(a=1,r=3\)};
+          \node at (-.6,-1.28) {\(\lambda_0\)}; \node at (.6,-1.28) {\(g_0\)};
+          \node at (0,-1.98) {\(a=1,r=3\)};
         \end{scope}
-        \begin{scope}[shift={(1.6,-1.35)}]
+        \begin{scope}[shift={(1.6,-1.75)}]
           \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
-          \draw[thick] (-1.55,.5)--(v); \draw[thick] (-1.55,-.5)--(v);
-          \draw[fast] (v) to[out=40,in=140] (w);
-          \draw[fast] (v) to[out=-40,in=-140] (w);
-          \draw[fast] (v) .. controls (-.9,.25) and (-1,.65) .. (-.6,.78)
-            .. controls (-.2,.65) and (-.3,.25) .. (v);
-          \draw[fast] (w) .. controls (.3,.25) and (.2,.65) .. (.6,.78)
-            .. controls (1,.65) and (.9,.25) .. (w);
+          \draw[thick] (-1.55,.68)--(v); \draw[thick] (-1.55,-.68)--(v);
+          \draw[fast] (v) to[out=35,in=145] (w);
+          \draw[fast] (v) to[out=-35,in=-145] (w);
+          \Sloop{v}{90}{0.85}{30}
+          \Sloop{w}{0}{0.85}{55}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
-          \node at (0,-1.80) {\(a=2,r=2\)};
+          \node at (-.6,-1.28) {\(\lambda_0\)}; \node at (.6,-1.28) {\(g_0\)};
+          \node at (0,-1.98) {\(a=2,r=2\)};
         \end{scope}
-        \begin{scope}[shift={(4.75,-1.35)}]
+        \begin{scope}[shift={(4.75,-1.75)}]
           \coordinate (v) at (-.6,0); \coordinate (w) at (.6,0);
           \draw[thick] (-1.55,.5)--(v); \draw[thick] (-1.55,-.5)--(v);
           \draw[fast] (v) to[out=70,in=110] (w);
@@ -1031,8 +1024,8 @@
           \draw[fast] (v) to[out=-24,in=-156] (w);
           \draw[fast] (v) to[out=-70,in=-110] (w);
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-          \node at (-.6,-1.08) {\(\lambda_0\)}; \node at (.6,-1.08) {\(g_0\)};
-          \node at (0,-1.80) {\(a=2,r=4\)};
+          \node at (-.6,-1.28) {\(\lambda_0\)}; \node at (.6,-1.28) {\(g_0\)};
+          \node at (0,-1.98) {\(a=2,r=4\)};
         \end{scope}
       \end{tikzpicture}
       \end{center}
@@ -1218,8 +1211,8 @@
         \draw[fast] (v)--(w);
         \draw[fast] (v) to[out=-58,in=-122] (w);
         \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
-        \node[below=3pt] at (v) {\(g_0\)};
-        \node[below=3pt] at (w) {\(g_0\)};
+        \node[below=14pt] at (v) {\(g_0\)};
+        \node[below=14pt] at (w) {\(g_0\)};
       \end{tikzpicture}
       \end{center}
       The combinatorial factor follows by selecting one retained field at
@@ -1271,10 +1264,9 @@
         \coordinate (v) at (0,0);
         \draw[thick] (-1.35,.65)--(v); \draw[thick] (-1.35,-.65)--(v);
         \draw[thick] (v)--(1.35,.65); \draw[thick] (v)--(1.35,-.65);
-        \draw[fast] (v) .. controls (-.4,.35) and (-.4,1) .. (0,1.05)
-          .. controls (.4,1) and (.4,.35) .. (v);
+        \Sloop{v}{90}{1.05}{42}
         \fill (v) circle (1.8pt);
-        \node[below=3pt] at (v) {\(\lambda_0\)};
+        \node[below=10pt] at (v) {\(\lambda_0\)};
       \end{tikzpicture}
       \end{center}
       Hence
@@ -1342,10 +1334,8 @@
           \draw[thick] (w)--(1.6,-.25); \draw[thick] (w)--(1.5,-.72);
           \draw[fast] (v) to[out=42,in=138] (w);
           \draw[fast] (v) to[out=-42,in=-138] (w);
-          \draw[fast] (v) .. controls (-.92,.25) and (-1.05,.65) .. (-.58,.78)
-            .. controls (-.11,.65) and (-.24,.25) .. (v);
-          \draw[fast] (v) .. controls (-.92,-.25) and (-1.05,-.65) .. (-.58,-.78)
-            .. controls (-.11,-.65) and (-.24,-.25) .. (v);
+          \Sloop{v}{125}{0.85}{34}
+          \Sloop{v}{235}{0.85}{34}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.15) {\(4+0,\ r=2\)};
         \end{scope}
@@ -1355,25 +1345,21 @@
           \draw[thick] (w)--(1.5,.65); \draw[thick] (w)--(1.58,0);
           \draw[thick] (w)--(1.5,-.65);
           \draw[fast] (v)--(w);
-          \draw[fast] (v) .. controls (-.92,.25) and (-1.05,.65) .. (-.58,.78)
-            .. controls (-.11,.65) and (-.24,.25) .. (v);
-          \draw[fast] (v) .. controls (-.92,-.25) and (-1.05,-.65) .. (-.58,-.78)
-            .. controls (-.11,-.65) and (-.24,-.25) .. (v);
-          \draw[fast] (w) .. controls (.25,.25) and (.12,.65) .. (.58,.78)
-            .. controls (1.04,.65) and (.92,.25) .. (w);
+          \Sloop{v}{90}{0.85}{32}
+          \Sloop{v}{270}{0.85}{32}
+          \Sloop{w}{90}{0.85}{38}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.15) {\(3+1,\ r=1\)};
         \end{scope}
         \begin{scope}[shift={(1.65,-1.2)}]
           \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
-          \draw[thick] (-1.5,0)--(v);
+          \draw[thick] (-1.42,0.80)--(v);
           \draw[thick] (w)--(1.5,.65); \draw[thick] (w)--(1.58,0);
           \draw[thick] (w)--(1.5,-.65);
           \draw[fast] (v) to[out=52,in=128] (w);
           \draw[fast] (v)--(w);
           \draw[fast] (v) to[out=-52,in=-128] (w);
-          \draw[fast] (v) .. controls (-.92,.28) and (-1.02,.7) .. (-.58,.8)
-            .. controls (-.14,.7) and (-.24,.28) .. (v);
+          \Sloop{v}{215}{0.78}{40}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.15) {\(3+1,\ r=3\)};
         \end{scope}
@@ -1381,12 +1367,10 @@
           \coordinate (v) at (-.58,0); \coordinate (w) at (.58,0);
           \draw[thick] (-1.5,.5)--(v); \draw[thick] (-1.5,-.5)--(v);
           \draw[thick] (w)--(1.5,.5); \draw[thick] (w)--(1.5,-.5);
-          \draw[fast] (v) to[out=42,in=138] (w);
-          \draw[fast] (v) to[out=-42,in=-138] (w);
-          \draw[fast] (v) .. controls (-.9,.25) and (-1,.65) .. (-.58,.78)
-            .. controls (-.16,.65) and (-.26,.25) .. (v);
-          \draw[fast] (w) .. controls (.26,.25) and (.16,.65) .. (.58,.78)
-            .. controls (1,.65) and (.9,.25) .. (w);
+          \draw[fast] (v) to[out=30,in=150] (w);
+          \draw[fast] (v) to[out=-30,in=-150] (w);
+          \Sloop{v}{90}{0.85}{30}
+          \Sloop{w}{90}{0.85}{30}
           \fill (v) circle (1.8pt); \fill (w) circle (1.8pt);
           \node at (0,-1.15) {\(2+2,\ r=2\)};
         \end{scope}

@@ -359,32 +359,38 @@ Because the action is real it is enough to keep the parameter
       The relevant one-loop graphs are the gauge-current triangle and its
       mixed gauge--gravitational counterpart:
       \begin{center}
-      \begin{tikzpicture}[x=0.72cm,y=0.68cm,baseline=-0.4ex,font=\scriptsize]
+      % "Weyl fermion" is wider than the triangle is at the height it sat at,
+      % so it ran across both slanted edges; it is now the first line of the
+      % caption.  The circulation arrows are marked mid-edge rather than at the
+      % vertices, where three strokes already meet.
+      \begin{tikzpicture}[x=0.72cm,y=0.68cm,baseline=-0.4ex,font=\scriptsize,
+          flow/.style={thick,postaction={decorate},decoration={markings,
+            mark=at position 0.55 with {\arrow{Stealth[length=4.4pt,width=3.2pt]}}}}]
         \begin{scope}
           \coordinate (a) at (0,0);
           \coordinate (b) at (1.5,1.45);
           \coordinate (c) at (3,0);
-          \draw[thick,->] (a)--(b);
-          \draw[thick,->] (b)--(c);
-          \draw[thick,->] (c)--(a);
+          \draw[flow] (a)--(b);
+          \draw[flow] (b)--(c);
+          \draw[flow] (c)--(a);
           \draw[thick] (a)--(-0.75,-0.45) node[left] {\(A_\mu\)};
           \draw[thick] (b)--(1.5,2.25) node[above] {\(A_\nu\)};
           \draw[thick] (c)--(3.75,-0.45) node[right] {\(A_\rho\)};
-          \node at (1.5,0.55) {Weyl fermion};
-          \node at (1.5,-0.72) {\(U(1)^3\)};
+          \node[align=center] at (1.5,-1.32)
+            {Weyl fermion\\\(U(1)^3\)};
         \end{scope}
         \begin{scope}[xshift=5.7cm]
           \coordinate (a) at (0,0);
           \coordinate (b) at (1.5,1.45);
           \coordinate (c) at (3,0);
-          \draw[thick,->] (a)--(b);
-          \draw[thick,->] (b)--(c);
-          \draw[thick,->] (c)--(a);
+          \draw[flow] (a)--(b);
+          \draw[flow] (b)--(c);
+          \draw[flow] (c)--(a);
           \draw[thick] (a)--(-0.75,-0.45) node[left] {\(A_\mu\)};
           \draw[thick,double] (b)--(1.5,2.25) node[above] {\(h_{\nu\lambda}\)};
           \draw[thick,double] (c)--(3.75,-0.45) node[right] {\(h_{\rho\sigma}\)};
-          \node at (1.5,0.55) {Weyl fermion};
-          \node at (1.5,-0.72) {\(U(1)\text{--gravity}^2\)};
+          \node[align=center] at (1.5,-1.32)
+            {Weyl fermion\\\(U(1)\text{--gravity}^2\)};
         \end{scope}
       \end{tikzpicture}
       \end{center}

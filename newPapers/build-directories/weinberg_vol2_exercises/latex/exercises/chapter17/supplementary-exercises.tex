@@ -491,13 +491,19 @@
       \draw[gluon] (0,.55)--(0,1.08); \draw[gluon] (-.48,-.28)--(-1,-.75);
       \draw[gluon] (.48,-.28)--(1,-.75); \node at (0,-1.05) {reversed ghost};
     \end{scope}
-    \foreach \x/\lab in {0/{(12)|3},3.2/{(23)|1},6.4/{(31)|2}}{
+    % The three bottom graphs share one topology and differ only in which
+    % external pair sits on the four-gluon vertex, so the legs are numbered.
+    \foreach \x/\p/\q/\rr/\lab in
+        {0/1/2/3/{(12)|3},3.2/2/3/1/{(23)|1},6.4/3/1/2/{(31)|2}}{
       \begin{scope}[shift={(\x,-1.35)}]
         \coordinate (v) at (-.45,0); \coordinate (w) at (.45,0);
         \draw[gluon] (v) to[out=72,in=108] (w);
         \draw[gluon] (v) to[out=-72,in=-108] (w);
         \draw[gluon] (v)--(-1,.55); \draw[gluon] (v)--(-1,-.55);
         \draw[gluon] (w)--(1,0); \fill (v) circle (1.4pt); \fill (w) circle (1.4pt);
+        \node[anchor=east,inner sep=1.5pt] at (-1.04,.58) {\(\p\)};
+        \node[anchor=east,inner sep=1.5pt] at (-1.04,-.58) {\(\q\)};
+        \node[anchor=west,inner sep=1.5pt] at (1.04,0) {\(\rr\)};
         \node at (0,-.92) {swordfish \(\lab\)};
       \end{scope}}
   \end{tikzpicture}
