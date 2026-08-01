@@ -29,42 +29,9 @@ TARGET_PATTERNS = {
     "hyperlink targets": re.compile(r"\\hyperref\[([^\]]+)\]"),
 }
 
-# The edition normally preserves the baseline reference inventory exactly.
-# These deltas document reviewed source errata whose corrected targets are
-# deliberately different. Positive values add an expected target occurrence;
-# negative values remove one.
-TARGET_ADJUSTMENTS = {
-    26: {"equation references": {"eq:26.7.35": 1}},
-    28: {
-        "equation references": {
-            "eq:28.1.2": -1,
-            "eq:28.1.3": -1,
-            "eq:28.1.4": 1,
-            "eq:28.1.5": 1,
-            "eq:28.2.1": -1,
-            "eq:28.2.2": 1,
-        }
-    },
-    29: {
-        "equation references": {
-            "eq:29.3.11": -1,
-            "eq:29.3.15": 1,
-        }
-    },
-    31: {
-        "equation references": {
-            "eq:26.3.9": -1,
-            "eq:26.2.10": 1,
-        }
-    },
-    32: {
-        "equation references": {
-            "eq:32.3.2": 1,
-            "eq:32.3.4": 1,
-            "eq:32.3.7": 1,
-        }
-    },
-}
+# The corrected comparison source now carries the shared reference errata, so
+# the two-component edition preserves its reference inventory without deltas.
+TARGET_ADJUSTMENTS: dict[int, dict[str, dict[str, int]]] = {}
 
 FORBIDDEN = {
     "gamma5": re.compile(r"\\gamma_?5(?![0-9])"),

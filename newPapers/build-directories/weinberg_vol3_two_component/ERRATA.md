@@ -1,11 +1,21 @@
 # Corrected Errata
 
 This record lists errors found during the independent review completed on
-2026-07-31. The corrections are applied to the two-component edition; the
-comparison edition remains unchanged.
+2026-07-31 and the comparison integration completed on 2026-08-01. The latter
+added 15 shared editorial and bibliographic correction sites found during the
+four-component sweep. The corrected four-component edition is now used as the
+comparison edition.
+
+## Chapter 24
+
+- Corrected the Appendix A cross-reference to the general
+  supersymmetry-algebra discussions in Sections 25.2 and 32.1.
 
 ## Chapter 26
 
+- Confirmed that the converted Appendix A identities already use distinct
+  Lorentz indices in the two-component counterparts of Eqs. (26.A.20) and
+  (26.A.21).
 - Removed a spurious factor of `-i` in the derivation leading to Eq. (26.1.6).
 - Corrected the barred left derivative in Eq. (26.2.9) and the Hermitian
   commuting-spinor contraction in Eq. (26.2.37).
@@ -21,8 +31,9 @@ comparison edition remains unchanged.
 - Restored the factor `i/4` in Eq. (27.3.12).
 - Corrected a generator label after Eq. (27.4.19), and restored the gaugino,
   field-strength, and auxiliary-field terms leading to Eq. (27.4.42).
-- Corrected the auxiliary-field label in Eq. (27.5.15) and removed an extra
-  factor of one half in Eq. (27.6.4).
+- Corrected the auxiliary-field label in Eq. (27.5.15), standardized
+  “minimal supersymmetric extension,” and removed an extra factor of one half
+  in Eq. (27.6.4).
 - Removed duplicated scalar factors in Eqs. (27.8.1) and (27.8.4), and restored
   a missing plus sign in Eq. (27.8.3).
 - Restored missing gauge-index sums in Eq. (27.9.33) and the correct coupling
@@ -46,6 +57,8 @@ comparison edition remains unchanged.
 - Corrected the superpotential R charge, completed an F-term expression,
   corrected the instanton condition to `N_c = N_f + 1`, and repaired its
   cross-reference in Section 29.3.
+- Confirmed that the converted field-strength bilinears already use the
+  correct contracted undotted indices.
 - Corrected the orthogonal-group threshold and a statement about unbroken
   supersymmetry in Section 29.4.
 - Corrected an internal-line label, a group-theory coefficient, a modular
@@ -58,13 +71,19 @@ comparison edition remains unchanged.
 - Corrected cross-references, a spacetime differential and integral, a Weyl
   rescaling power, two logarithm arguments, and gauge and modular indices in
   Chapter 31.
+- Corrected minimal-model terminology, two verified Chapter 31 bibliography
+  volumes, and the spelling of Ibáñez.
 - Corrected the Lorentz-group signature, odd-dimensional spinor classes,
   fermion-parity notation, Clifford-matrix dimensions and index ranges, and
   several duality cross-references in Chapter 32 and its appendix.
+- Corrected the Chapter 32 bibliography and matching author-index spellings
+  for Aitken and Güven, as well as a punctuation and prose typo.
 
 ## Regression coverage
 
 The review also added explicit tests for the barred Grassmann derivative,
 commuting-spinor Hermiticity, corrected coupling powers and normalizations,
 mass dimensions, Weyl rescaling, fermion parity, and every intentionally
-corrected cross-reference target.
+corrected cross-reference target. The integration pass additionally guards
+the post-(27.4.19) mass-matrix index flow, the converted field-strength
+contractions, and the shared bibliography and author-index corrections.

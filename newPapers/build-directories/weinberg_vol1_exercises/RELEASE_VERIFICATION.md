@@ -1,13 +1,36 @@
 # Release verification
 
-Status: **complete**
+Status: **work in progress (2026-08-01 errata rebuild complete)**
 
 Canonical source: `../weinberg_vol1`
 
-Stable export (written only by a strict passing build):
+Verified errata export:
 `../../weinberg-qft-exercises/weinberg-vol1-exercises.pdf`
 
-## Corpus
+## 2026-08-01 errata rebuild
+
+Five confirmed corrections in `../weinberg_vol1/ERRATA.md` were mirrored into
+this edition and protected by `audit_errata.py`.
+
+- Canonical PDF: 528 pages, SHA-256
+  `e65469e0822c64cccdddfd08c09554e84dd7df27f0021bd736763ea86ff04dd2`.
+- Exercise PDF: 844 pages, SHA-256
+  `1c45800449cf2f347fc2cf132c4a63083e552574135fa6ae6da40d08583c7f3d`.
+- Both PDFs passed LaTeX error/reference checks, text extraction, Ghostscript
+  interpretation, embedded/subset-font checks, and affected-page visual QA.
+- The exercise PDF has zero overfull boxes.
+
+The strict exercise-content gate remains blocked by pre-existing editorial
+state outside this errata port: stale canonical-source hashes, Chapter 10
+inventory/source-ID issues, and incomplete source-fidelity approval records.
+Those findings were preserved rather than reset. The errata regression and
+physical PDF checks pass, but this rebuild is not represented as a strict-gate
+release.
+
+The historical release record below is retained for provenance and does not
+describe the current strict-audit state.
+
+## Historical corpus record
 
 The released volume contains 70 Weinberg exercises with 70 solutions and
 177 supplementary parent exercises with 177 solutions.  The supplementary
@@ -41,7 +64,7 @@ dependent calculations.  Chapter-specific curation notes in
 `EXERCISE_INVENTORY.md` document the same editorial decisions for every
 nonhistorical chapter.
 
-## Automated verification
+## Historical automated verification
 
 - `audit_exercises.py --strict`: passed with zero warnings and zero failures.
 - Inventory and ledger agreement: 70/70 W, 177/177 S, and 177/177 exact
@@ -58,7 +81,7 @@ Series-wide cross-volume duplication remains a release-driver responsibility;
 this record certifies the Volume I gates and does not represent a standalone
 series-wide result.
 
-## Pagination and visual QA
+## Historical pagination and visual QA
 
 The generated pagination crosswalk was verified against the completed PDF.
 Physical PDF pages equal the displayed Arabic page label plus six, accounting
@@ -73,7 +96,7 @@ Representative rendered pages inspected:
 - physical 743 and 747: Chapter 14 supplementary exercises and solutions;
 - physical 755: supplementary-solutions-to-original-references transition.
 
-## Release identity
+## Historical release identity
 
 - Stable export:
   `../../weinberg-qft-exercises/weinberg-vol1-exercises.pdf`

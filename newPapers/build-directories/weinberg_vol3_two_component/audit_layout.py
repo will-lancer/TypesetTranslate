@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reject horizontal-overflow regressions relative to the untouched edition."""
+"""Reject horizontal-overflow regressions relative to the comparison edition."""
 
 from __future__ import annotations
 

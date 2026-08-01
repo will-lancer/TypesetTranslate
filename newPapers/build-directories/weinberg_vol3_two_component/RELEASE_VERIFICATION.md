@@ -1,17 +1,17 @@
 # Release Verification
 
-Release date: 2026-07-31 PDT
+Release date: 2026-08-01 PDT
 
 ## Artifacts
 
-- Untouched comparison edition:
+- Corrected comparison edition:
   `../../weinberg-qft/weinberg-vol3.pdf`
 - Two-component edition:
   `../../weinberg-qft-two-component/weinberg-vol3-two-component.pdf`
 - Two-component PDF SHA-256:
-  `8054a1624f75ebc847055700a58d716d7814dd60340a698d549c273699307b83`
+  `4b854add595303e833dca642283c1a14e89d68a71b06396e0996fac4b3f28e1f`
 - Comparison PDF SHA-256:
-  `d9e3f5552091e13019402fde159603f54c09851931b9e137a23a24aca8ab56b3`
+  `e031856555caaca5425dd7c4539652a95f6f129b5998b4344871b7f6b3db84e2`
 
 ## Automated gates
 
@@ -22,8 +22,7 @@ Release date: 2026-07-31 PDT
   `D^2 theta^2 = bar D^2 bar theta^2 = -4` and verify the F-to-D
   projection and even-superfield conjugation rules;
 - Chapters 24–32 have exact equation-label, equation-tag, heading, display,
-  and footnote parity with the comparison source; corrected cross-reference
-  targets are explicitly declared in the audit and `ERRATA.md`;
+  footnote, and reference-target parity with the corrected comparison source;
 - no unmarked forbidden four-component syntax remains in the strict
   four-dimensional scope;
 - all guarded semantic hotspots pass;
@@ -39,16 +38,18 @@ Independent integrity checks also pass:
   structure;
 - every listed font is embedded and subset;
 - layout-preserving text extraction contains 370 page separators and
-  759,426 non-whitespace characters;
+  759,427 non-whitespace characters;
 - the built PDF and stable exported PDF are byte-identical.
 
 ## Visual QA
 
-All 57 affected or adjacent pages were freshly rendered at 120 dpi and
-inspected in ten contact sheets. No clipping, overlap, malformed formula,
-missing content, or bad margin was found. The complete 370-page release also
-passed Ghostscript parsing, PDF metadata, font embedding, layout, and text
-extraction checks.
+The original 57-page review remains valid. For the comparison integration, 11
+affected two-component pages were freshly rendered along with the matching
+mass-matrix pages in the original and exercise editions, for 13 pages across
+three contact sheets. No clipping, overlap, malformed formula, missing
+content, bad glyph, or bad margin was found. The complete 370-page release
+also passed Ghostscript parsing, PDF metadata, font embedding, layout, and
+text extraction checks.
 
 ## Editorial scope
 

@@ -4,13 +4,13 @@ The verified release PDF is `weinberg-vol3-two-component.pdf`. It contains
 370 A4 pages and was generated from
 `../build-directories/weinberg_vol3_two_component`.
 
-The original four-component edition remains unchanged in
+The corrected four-component comparison edition is available at
 `../weinberg-qft/weinberg-vol3.pdf`.
 
 Release SHA-256:
 
 ```text
-8054a1624f75ebc847055700a58d716d7814dd60340a698d549c273699307b83
+4b854add595303e833dca642283c1a14e89d68a71b06396e0996fac4b3f28e1f
 ```
 
 The full build and QA record is

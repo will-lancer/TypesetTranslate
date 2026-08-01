@@ -3,11 +3,12 @@
 This is an independent, expanded exercise edition of the repository's
 modernized transcription of Steven Weinberg's *The Quantum Theory of Fields,
 Volume III: Supersymmetry*. It is built from the sibling canonical tree
-`../weinberg_vol3`, which is never modified by this project.
+`../weinberg_vol3`. The exercise build never writes into that canonical tree.
 
 The conventional four-component Volume III is the authoritative base for this
-edition. The repository's two-component-spinor tree is a specialized parallel
-edition and is not modified here.
+edition. Confirmed corrections are synchronized from that base and recorded in
+`ERRATA.md`. The repository's two-component-spinor tree is a specialized
+parallel edition and is not modified here.
 
 The edition is a work in progress until `./build_and_verify.sh` passes without
 `--draft` and `RELEASE_VERIFICATION.md` records a stable export.

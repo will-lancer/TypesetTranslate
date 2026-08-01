@@ -2,8 +2,9 @@
 
 This is an independent, expanded exercise edition of the repository's
 modernized transcription of Steven Weinberg's *The Quantum Theory of Fields,
-Volume II: Modern Applications*. It is built from the sibling canonical tree
-`../weinberg_vol2`, which is never modified by this project.
+Volume II: Modern Applications*. Its authoritative inherited text is
+synchronized from the sibling canonical tree `../weinberg_vol2`; confirmed
+corrections are recorded in `ERRATA.md`.
 
 The edition is a work in progress until `./build_and_verify.sh` passes without
 `--draft` and `RELEASE_VERIFICATION.md` records a stable export.

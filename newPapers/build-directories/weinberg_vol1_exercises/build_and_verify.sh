@@ -46,8 +46,10 @@ esac
 
 if [ "$strict" -eq 1 ]
 then
+  python3 "$edition_root/audit_errata.py"
   python3 "$edition_root/audit_exercises.py" --strict
 else
+  python3 "$edition_root/audit_errata.py"
   python3 "$edition_root/audit_exercises.py"
 fi
 python3 "$edition_root/render_inventory.py"

@@ -1,6 +1,7 @@
 # Conversion Status
 
-The untouched comparison source is `../weinberg_vol3`.
+The corrected comparison source is `../weinberg_vol3`; shared source errata
+are synchronized before structural and layout comparison.
 
 | Scope | Status | Verification |
 |---|---|---|

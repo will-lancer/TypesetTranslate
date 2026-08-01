@@ -44,6 +44,8 @@ case "${1-}" in
     ;;
 esac
 
+python3 "$edition_root/../weinberg_vol2/verify_errata.py"
+
 if [ "$strict" -eq 1 ]
 then
   python3 "$edition_root/audit_exercises.py" --strict

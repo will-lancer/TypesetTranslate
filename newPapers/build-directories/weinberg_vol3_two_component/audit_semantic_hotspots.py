@@ -79,6 +79,20 @@ def require_absent(
 
 
 def main() -> int:
+    chapter24_appendix = compact(
+        read("latex/chapters/chapter24/appendixA.tex")
+    )
+    require_contains(
+        "Chapter 24 supersymmetry-algebra cross-reference",
+        chapter24_appendix,
+        "Sections25.2and32.1",
+    )
+    require_absent(
+        "no stale Chapter 24 supersymmetry-algebra cross-reference",
+        chapter24_appendix,
+        "Sections25.1and31.1",
+    )
+
     chapter24 = tagged_equation(
         "latex/chapters/chapter24/sec242.tex",
         "24.2.8",
@@ -156,6 +170,29 @@ def main() -> int:
         r"\left(\barD_{\dot\alpha}\barD^{\dot\alpha}S\right)^*"
         r"=D^\alphaD_\alphaS^*",
     )
+    chapter26_appendix = compact(
+        read("latex/chapters/chapter26/appendix.tex")
+    )
+    require_contains(
+        "Appendix 26.A distinct Lorentz indices",
+        chapter26_appendix,
+        r"\sigma^{\mu\nu}",
+    )
+    require_absent(
+        "no repeated Lorentz index in Appendix 26.A tensor",
+        chapter26_appendix,
+        r"\sigma^{\mu\mu}",
+    )
+
+    chapter266 = compact(
+        read("latex/chapters/chapter26/sec266.tex")
+    )
+    require_contains(
+        "superspace variation factor and spacetime measure",
+        chapter266,
+        r"=-\frac14\sum_n\intd^4x\intd^2\theta\,d^2\bar\theta\,"
+        r"\deltaS_n\barD^2",
+    )
 
     current_algebra = tagged_equation(
         "latex/chapters/chapter26/sec267.tex",
@@ -212,6 +249,23 @@ def main() -> int:
         r"f_{A\mu\nu}",
     )
 
+    chapter274 = compact(
+        read("latex/chapters/chapter27/sec274.tex")
+    )
+    require_contains(
+        "post-27.4.19 mass-matrix input carries free B index",
+        chapter274,
+        r"M_0^2\begin{bmatrix}t_B\phi_0\\"
+        r"\mathord{\pm}(t_B\phi_0)^*\end{bmatrix}=\sum_A",
+    )
+    require_contains(
+        "post-27.4.19 mass-matrix output carries summed A index",
+        chapter274,
+        r"\left(\phi_0^\dagger[t_At_B\mathord{\pm}t_Bt_A]\phi_0\right)"
+        r"\begin{bmatrix}t_A\phi_0\\"
+        r"\mathord{\pm}(t_A\phi_0)^*\end{bmatrix}",
+    )
+
     external_superfields = tagged_equation(
         "latex/chapters/chapter27/sec276.tex",
         "27.6.4",
@@ -261,6 +315,15 @@ def main() -> int:
         r"\operatorname{tr}_2\left("
         r"\sigma^0p_\mu\bar\sigma^\mu"
         r"+\bar\sigma^0p_\mu\sigma^\mu\right)",
+    )
+
+    chapter293 = compact(
+        read("latex/chapters/chapter29/sec293.tex")
+    )
+    require_contains(
+        "Chapter 29 field-strength spinor contraction",
+        chapter293,
+        r"\sum_{AB}W_A^\alphaW_{B\alpha}",
     )
 
     higgs_bound = tagged_equation(
@@ -385,6 +448,41 @@ def main() -> int:
         "even-dimensional spinor reality sign",
         even_dimensional_reality,
         r"\mathcalS^{\pm*}\mathcalS^{\mp(-1)^{d/2}}",
+    )
+
+    chapter31_bibliography = compact(
+        read("latex/chapters/chapter31/backmatter.tex")
+    )
+    for expected in (
+        r"\textit{PhysicaA}\textbf{96},141(1979)",
+        r"L.~Ib\'a\~nez",
+        r"\textbf{123B},214(1983)",
+    ):
+        require_contains(
+            f"corrected Chapter 31 bibliography entry {expected}",
+            chapter31_bibliography,
+            expected,
+        )
+
+    chapter32_bibliography = compact(
+        read("latex/chapters/chapter32/backmatter.tex")
+    )
+    author_index = compact(read("latex/backmatter/indexes.tex"))
+    for name in ("Aitken", r"G\"uven"):
+        require_contains(
+            f"corrected Chapter 32 bibliography name {name}",
+            chapter32_bibliography,
+            name,
+        )
+    require_contains(
+        "corrected Aitken author-index spelling",
+        author_index,
+        "Aitken,A.C.",
+    )
+    require_contains(
+        "corrected Güven author-index spelling",
+        author_index,
+        "Güven,R.",
     )
 
     print("All translation-sensitive semantic hotspot checks passed.")
