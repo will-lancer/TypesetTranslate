@@ -5,19 +5,25 @@ Steven Weinberg's
 *Gravitation and Cosmology: Principles and Applications of the General Theory
 of Relativity*.
 
-The original edition remains in the sibling `weinberg_gr` build directory.
-This copy has its own export path and can be changed without modifying or
-overwriting that edition. Chapter 1 remains exercise-free; Chapters 2--16
-each contain 20 source-credited exercises and 20 matching worked solutions,
-for 300 of each in the complete book. In every chapter the order is original
-text, Exercises, Solutions, then the original bibliography or references.
+The original edition remains in the sibling `weinberg_gr` build directory and
+is protected by `canonical-baseline.json` plus `canonical_guard.py`.  This copy
+has its own export path and can be changed without modifying or overwriting
+that edition.  The inherited 300-item exercise layer is currently being
+replaced: none of those items is accepted merely because the old build passed.
+Its immutable, exercise-by-exercise keep/rebuild/reject evidence is recorded in
+`provisional-exercise-dispositions.json`; the twelve entries whose old credits
+did identify a parent receive full side-by-side findings in
+`provisional-exact-parent-comparisons.json`.  Chapter 1 remains exercise-free;
+the release target for each of Chapters 2--16 is 10--30 independently usable,
+source-bound exercises with complete matching solutions.
 
-See `EXERCISES.md` for the authoring interface and
-`EXERCISE_SOURCES.md` for the source ledger. Cambridge material is Part III
-only: the collection represents every available General Relativity exam year
-from 2001 through 2025 (there was no 2020 paper), as well as all four current
-Tong example sheets. McGreevy problem sets 1--9 and MIT 8.962 are also
-represented. Every exercise prints its credit immediately below its title.
+See `EXERCISES.md` for the authoring interface and `EXERCISE_SOURCES.md` for
+the source policy.  The content-addressed source cache is indexed by
+`source-corpus.json`; the comprehensive parent-level decisions are merged into
+`exercise-source-inventory.json`; final selections will be bound through
+`exercise-ledger.json` and `source-fidelity-audit.json`.  While this rebuild is
+in progress, `./build_and_verify.sh --draft` is the appropriate command and the
+release record remains pending.
 
 ## Source
 
@@ -45,10 +51,10 @@ For an in-progress integration build, run from this directory:
 ./build_and_verify.sh --draft
 ```
 
-Draft mode verifies the immutable source, audits every materialized section,
-checks equation tags and labels, scans for definite notation regressions,
-compiles the whole book, and reports unresolved forward references and layout
-warnings without treating incomplete chapters as a publication.
+Draft mode verifies the immutable book source and canonical sibling, checks the
+downloaded source corpus and currently available disposition fragments, audits
+every materialized section, scans exercise notation, compiles the whole book,
+and reports unfinished editorial work without treating it as a publication.
 
 The final gate is:
 
@@ -102,9 +108,15 @@ The reusable QA programs are:
 - `audit_index.py`: source-page structure, entry counts, selective-italic
   locator integrity, and common OCR-failure checks for the combined index
   (`--force` runs it before the completion header is set);
-- `audit_exercises.py`: Chapter 1 exclusion, minimum chapter counts,
-  one-for-one solutions, nonempty printed credits, Part II exclusion, and
-  graduate-source coverage;
+- `source_corpus.py`: exact official-source URLs, local PDF/text paths, page
+  counts, and content hashes for the inspected research corpus;
+- `source_inventory.py`: comprehensive document and complete-parent
+  disposition coverage, including duplicate and dependency decisions;
+- `provisional_dispositions.py`: immutable 300-item inherited-layer audit;
+- `audit_exercises.py`: stable prompt/solution IDs, Chapter 1 exclusion,
+  10--30 bounds, one-complete-parent/one-number binding, exact ledger
+  reconciliation, and two current content-addressed review passes;
+- `canonical_guard.py`: exact canonical subtree and canonical-export guard;
 - `audit_layout.py`: box-warning inventory and a zero-overflow strict gate.
 
 After a draft or strict build, render a page range to a fresh ignored directory

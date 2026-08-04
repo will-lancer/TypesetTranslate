@@ -2,6 +2,13 @@
 % repeated in the local scan).
 % Coverage: Figure 14.2, angular diameter and proper-motion geometry.
 % Status: vector reconstruction; source-reviewed and compile-clean.
+% Geometry: the two edge rays reach the origin on a cone of half-angle
+%           delta/2, as the accompanying text states, so the marked angle
+%           delta spans both rays.  Here delta/2 = 8 degrees and the source
+%           lies at radius 6.4, putting its edges at (-+0.8907, 6.3378).  The
+%           proper diameter D is an arc length across the source, so it is
+%           drawn as a circular arc of that radius about the origin, with the
+%           straight measuring arrow set above it.
 % Uncertainties: source caption states that the angle is deliberately
 %                exaggerated.
 
@@ -11,21 +18,32 @@
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
   \coordinate (O) at (0,0);
-  \coordinate (L) at (-1.65,6.0);
-  \coordinate (R) at (1.65,6.0);
-  \coordinate (C) at (0,6.0);
+  \coordinate (L) at (-0.8907,6.3378);
+  \coordinate (R) at (0.8907,6.3378);
 
-  \draw[line width=0.7pt,->] (L)--(O);
-  \draw[line width=0.7pt,->] (R)--(O);
-  \draw[dashed] (C)--(O);
-  \draw[<->] (L)--node[above] {\(D\)} (R);
-  \draw (O) ++(0,1.0) arc[start angle=90,end angle=74.6,radius=1.0];
-  \draw (O) ++(0,1.0) arc[start angle=90,end angle=105.4,radius=1.0];
-  \node at (0.34,1.17) {\(\delta/2\)};
+  % Edge rays, travelling from the source down to the observer.
+  \draw[line width=0.7pt,
+    postaction={decorate},
+    decoration={markings,mark=at position 0.45 with {\arrow{Latex}}}]
+    (L) -- (O);
+  \draw[line width=0.7pt,
+    postaction={decorate},
+    decoration={markings,mark=at position 0.45 with {\arrow{Latex}}}]
+    (R) -- (O);
 
-  \fill (O) circle (1.3pt);
-  \node[below] at (O) {\(r=0\)};
-  \node[right] at (R) {\(r=r_1\)};
+  % The source itself: proper diameter D, an arc length at radius r_1.
+  \draw[line width=0.7pt] (98:6.4) arc[start angle=98,end angle=82,radius=6.4];
+  \draw[line width=0.5pt] (0,6.4) -- (O);
+
+  \draw[|<->|] (-0.8907,6.95) -- node[above,inner sep=2pt] {\(D\)}
+               (0.8907,6.95);
+
+  % The angular diameter subtended at the observer.
+  \draw[<->] (-0.3232,2.30)
+    -- node[above,inner sep=1.5pt,fill=white] {\(\delta\)} (0.3232,2.30);
+
+  \node[right,inner sep=4pt] at (O) {\(r=0\)};
+  \node[right,inner sep=4pt] at (R) {\(r=r_1\)};
 \end{tikzpicture}
 \caption{Quantities used in the calculation of angular diameters and proper
 motions. The angle \(\delta\) is greatly exaggerated.}

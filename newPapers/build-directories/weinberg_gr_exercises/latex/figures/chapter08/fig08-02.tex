@@ -1,6 +1,15 @@
 % Source: Weinberg GR, physical PDF p. 218 (printed p. 195).
 % Coverage: Figure 8.2, geometric elements of an eccentric ellipse.
 % Status: vector reconstruction; source-reviewed and compile-clean.
+% Geometry: e = 0.827, the eccentricity listed for Icarus in Table 8.2, as the
+%           source caption requires.  With a = 4.4 this fixes every other
+%           length, so all five marked quantities are mutually consistent:
+%             semiminor axis  a sqrt(1-e^2) = 2.4738
+%             focal offset    ea            = 3.6388
+%             semilatus rectum L = a(1-e^2) = 1.3908  (= the ellipse's height
+%                                                      above the focus)
+%             aphelion        r_+ = a(1+e)  = 8.0388
+%             perihelion      r_- = a(1-e)  = 0.7612
 % Uncertainties: none.
 
 \begingroup
@@ -8,35 +17,35 @@
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[x=0.82cm,y=0.82cm,>=Latex]
-  \draw[line width=0.75pt] (0,0) ellipse (4.4 and 2.25);
-  \coordinate (F) at (3.35,0);
+  \draw[line width=0.75pt] (0,0) ellipse (4.4 and 2.4738);
+  \coordinate (F) at (3.6388,0);
   \fill (F) circle (1.8pt);
 
   % Aphelion and perihelion distances measured from the occupied focus.
   \draw[<->] (-4.4,0) -- (F);
   \node[above] at (-0.55,0) {$r_+$};
   \draw[<->] (F) -- (4.4,0);
-  \node[below] at (3.88,-0.02) {$r_-$};
+  \node[below,inner sep=3pt] at (4.02,-0.06) {$r_-$};
 
-  % Semilatus rectum at the focus.
-  \draw[<->] (F) -- (3.35,1.45);
-  \node[left] at (3.28,0.83) {$L$};
+  % Semilatus rectum: from the focus up to the ellipse.
+  \draw[<->] (F) -- (3.6388,1.3908);
+  \node[left,inner sep=2pt] at (3.6388,0.80) {$L$};
 
   % Semimajor axis and focal offset above the ellipse.
-  \draw (0,2.45) -- (0,4.18);
-  \draw (4.4,2.28) -- (4.4,4.18);
-  \draw[<->] (0,3.92) -- (4.4,3.92);
-  \node[above] at (2.2,3.92) {$a$};
+  \draw (0,2.4738) -- (0,4.30);
+  \draw (4.4,0.10) -- (4.4,4.30);
+  \draw[<->] (0,4.04) -- (4.4,4.04);
+  \node[above,inner sep=1.5pt] at (2.2,4.04) {$a$};
 
-  \draw (3.35,2.10) -- (3.35,3.35);
-  \draw[<->] (0,3.10) -- (3.35,3.10);
-  \node[above] at (1.68,3.10) {$ea$};
+  \draw (3.6388,1.50) -- (3.6388,3.46);
+  \draw[<->] (0,3.20) -- (3.6388,3.20);
+  \node[above,inner sep=1.5pt] at (1.82,3.20) {$ea$};
 
   % Semiminor axis.
-  \draw (4.95,0) -- (5.95,0);
-  \draw (0,2.25) -- (5.95,2.25);
-  \draw[<->] (5.65,0) -- (5.65,2.25);
-  \node[right] at (5.75,1.15) {$a\sqrt{1-e^2}$};
+  \draw (4.40,0) -- (6.00,0);
+  \draw (4.40,2.4738) -- (6.00,2.4738);
+  \draw[<->] (5.72,0) -- (5.72,2.4738);
+  \node[right,inner sep=2pt] at (5.82,1.24) {$a\sqrt{1-e^2}$};
 \end{tikzpicture}
 \caption{Elements of an ellipse referred to in the calculation of the
 precession of planetary orbits. (The ellipse here has the same eccentricity

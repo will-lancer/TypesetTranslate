@@ -53,3 +53,39 @@
 }{%
   \par\medskip
 }
+
+% Audited exercise-edition interfaces.  The explicit stable identifier and
+% display number make prompt--solution matching machine-checkable instead of
+% depending on positional counters.  The legacy environments above remain
+% available only while the provisional collection is being replaced.
+\newenvironment{sourceexercise}[4]{%
+  \setcounter{exercise}{#2}%
+  \addtocounter{exercise}{-1}%
+  \refstepcounter{exercise}%
+  \def\sourceexerciseid{#1}%
+  \label{exercise:#1}%
+  \par\medskip
+  \noindent\textbf{Exercise \exercisechapter.#2}%
+  \ifstrempty{#3}{}{\textbf{\ (#3)}}%
+  \ifstrempty{#4}{}{%
+    \par\nobreak\noindent
+    {\footnotesize\textnormal{(#4)}}%
+  }%
+  \par\nobreak\smallskip\noindent
+}{%
+  \par\medskip
+}
+
+\newenvironment{sourcesolution}[3]{%
+  \setcounter{solution}{#2}%
+  \addtocounter{solution}{-1}%
+  \refstepcounter{solution}%
+  \def\sourcesolutionid{#1}%
+  \label{solution:#1}%
+  \par\medskip
+  \noindent\textbf{Solution \exercisechapter.#2}%
+  \ifstrempty{#3}{}{\textbf{\ (#3)}}%
+  \quad
+}{%
+  \par\medskip
+}

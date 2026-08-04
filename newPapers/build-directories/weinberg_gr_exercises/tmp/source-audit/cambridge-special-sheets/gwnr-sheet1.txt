@@ -1,0 +1,195 @@
+        Gravitational Waves and Numerical Relativity: Example Sheet 1
+                                    Part III, Easter Term 2026
+                                           U. Sperhake
+  Comments are welcome and may be sent to U.Sperhake@damtp.cam.ac.uk.
+
+
+
+1. Riemann tensor in linearized theory
+  Show that in linearized theory, the components of the Riemann tensor,
+                              1
+                       Rµνρσ = (∂ρ ∂ν hµσ + ∂σ ∂µ hνρ − ∂ρ ∂µ hνσ − ∂σ ∂ν hµρ ) ,
+                              2
+  are invariant under first-order coordinate transformations x̃α = xα − ξ α where ξ α = O(),  
+  1.
+
+2. Advection equation
+  Consider the advection equation
+
+                                      ∂t f + λ∂x f = 0 ,    λ ∈ R,
+
+  for a function f on the domain (t, x) ∈ R2 .
+
+  (i)   Show that f remains constant along curves x(t) = λt + x0 , where x0 = const. These are
+        the characteristic curves of the advection equation.
+  (ii) Consider Gaussian initial data
+                                                                  2
+                                            f (0, x) = e−(x−x0 ) .
+
+        Sketch the characteristic curves in the (t, x) plane (with t pointing upwards and x horizon-
+        tally. Also graphically sketch the solution f (t, x). Quantitative precision is not required
+        in this sketch and there are multiple ways to generate a graphic illustration; one figure is
+        sufficient.
+  (iii) Now consider the case of a varying λ = λ(t, x) where we write the advection equation in
+        the form
+                                            ∂f      ∂           
+                                                +       λ(t, x)f = 0 .
+                                             ∂t    ∂x
+        The characteristic curves of this differential equation are solutions of
+                                                 dx
+                                                    = λ(t, x) .
+                                                 dt
+        Show that the advection equation can be written as an ordinary differential equation along
+        the characteristic curves.
+
+3. Burgers’ equation
+  A more dramatic variation of the advection equation arises when we allow the flux term λf
+  to be a non-linear function of the evolution variable f , i.e. where λ itself depends on f . This
+  results in so-called quasi-linear PDEs which are linear in the derivatives but not in the function
+  f itself. The prototypical example for this type of PDEs is Burgers’ equation, where λ(f ) = 12 f .
+  In a more common notation, this is written as F ..= λf = 12 f 2 , so that
+
+                                    ∂t f + ∂x F = ∂t f + ∂x 12 f 2 = 0 .
+                                                                  
+
+
+                                                    1
+  (i)   Determine the characteristic curves for this PDE, i.e. the curves along which the PDE
+        can be written as an ordinary differential equation. Write down this ordinary differential
+        equation.
+  (ii) Sketch the characteristic curves in the (t, x) plane (with t pointing upwards and x hori-
+       zontal) for Gaussian initial data
+                                                                  2
+                                              f (0, x) = e−(x−x0 ) .
+
+  (iii) Sketch the time evolution of the Gaussian initial data. Compare the result with that ob-
+        tained for the advection equation in Question 2.
+
+4. Quasi-linear first-order PDE systems
+  Let f : RN → RM and let us use the notation
+                                                         
+                       f1                             ∂α f1
+                                             ∂
+                f =  ...  ,      ∂α f ..=     f =  ...  , α = 1, . . . , N .
+                                                         
+                                            ∂xα
+                      fM                             ∂α fM
+
+  The general quasi-linear first-order PDE for f is
+
+                     Aµ (x, f )∂µ f + b(x, f ) = 0 ,
+
+                     ⇔ Aµmn (xα , fi )∂µ fn + bm (xα , fi ) = 0 (sum over µ, m, n) ,                (†)
+
+  where b is a vector valued function, each Aµ is an M × M matrix and initial data for f are
+  given on a surface S defined as the level set of a function θ(xα ) = 0 with ∇θ 6= 0. We introduce
+  coordinates adapted to this hypersurface S by
+
+                                ξ α = ξ α (xµ )    for α = 1, . . . , N − 1 ,
+
+                                ξ N = θ(xµ ) .
+
+  (i) Show that the initial data f on S determine all derivatives ∂fi /∂ξα for α = 1, . . . , N − 1.
+  Show that the PDE (†) also determines the derivative ∂fi /∂ξN if and only if
+                                                   
+                                              µ ∂θ
+                                        det A          6= 0 .
+                                                ∂xµ
+
+  (ii) The characteristic equation associated with the PDE (†) is
+                                                       
+                                                     ∂θ
+                                            det Aµ        = 0,                                     (∗)
+                                                    ∂xµ
+  and a level surface S defined through θ(xα ) = 0 by a solution to this equation is a characteristic
+  surface.
+
+   (a) Determine the matrices Aα for the advection equation ∂t f + ∂x f = 0 and write down the
+       characteristic equation. Note that the Aα are just scalars in this case.
+   (b) Introducing ψ ..= ∂t f and λ ..= ∂x f , write the 1+1 dimensional wave equation ∂t2 f −
+       c2 ∂x2 f = 0, c > 0 as a first-order system of two equations, one each for ∂t ψ and ∂t λ. [Hint:
+       Partial derivatives commute.] Determine the Aα and the characteristic equation.
+   (c) Introducing ψ ..= ∂x f and λ ..= ∂y f , write the 2 dimensional Laplace equation ∂x2 f + ∂y2 f =
+       0 as a first-order system of two equations, one each for ∂x ψ and ∂x λ. Determine the Aα
+       and the characteristic equation.
+
+                                                       2
+5. Classification of first-order PDE systems
+  (This question directly proceeds from question 4 and employs all definitions therefrom.)
+
+  For the classification of first-order PDE systems, we define for an N dimensional vector ζ,
+                                         C(x, f , ζ) ..= det [Aµ (x, f )ζµ ] .
+  We furthermore introduce a linear mapping
+                                 ζ = Mη , where η = (η1 , . . . , ηN −1 , κ) ,
+  with a non-degenerate matrix M, and write
+                                                                                                       
+                  C(x, f , η) = C(x, f , η1 , . . . , ηN −1 , κ) ..= C x, f , ζ(η1 , . . . , ηN −1 , κ) .
+  This reparametrization of the vector ζ is necessary to single out a specific parameter κ that
+  does not necessarily coincide with a single component of ζ in the coordinates xµ .
+  We then define the PDE
+                                           Aµ (x, f )∂µ f + b(x, f ) = 0
+  to be
+    • hyperbolic at x if there exists a regular linear mapping ζ = Mη, such that there exist M real
+      roots κi = κi (x, f (x), η1 , . . . , ηN −1 ), i = 1, . . . , M of C(x, f , η) = 0 for all (η1 , . . . , ηn−1 ).
+      Note that the number of roots required equals the number of independent variables in f ,
+      not the dimensionality N of the domain.
+    • parabolic at x if there exists a linear mapping ζ = Mη such that C is independent of κ,
+      i.e. depends on fewer than N parameters.
+    • elliptic if C(x, f , ζ) = 0 only if ζ = 0.
+  Determine the type of the advection equation, the 2-dimensional wave equation and 2-dimensional
+  Laplace equation from question 4 according to this classification.
+
+6. The constraint equations
+  Let (M, g) be a globally hyperbolic spacetime with a foliation Σt . Let xα = (t, xi ) denote
+  coordinates adapted to this foliation.
+
+  (i) Show that the components of the Ricci tensor can be written as
+                                               1
+                                        R00 = − g mn ∂02 gmn + M00 ,
+                                               2
+                                                     1 0m 2
+                                         R0i =         g ∂0 gim + M0i ,
+                                                     2
+                                             1
+                                       = − g 00 ∂02 gij + Mij ,
+                                         Rij
+                                             2
+  where M00 , M0i and Mij are a collection of terms that include at most first time derivatives of
+  the metric gαβ .
+
+  (ii) Show that the components Gα 0 of the Einstein tensor can be written as
+                                                    1 00     1
+                                       G0 0 =         g M00 − g mn Mmn ,
+                                                    2        2
+
+                                        Gi 0 = g 00 M0i + g 0m Mim ,
+  and therefore contain no second time derivative of the metric.
+
+                                                            3
+7. The Bondi metric
+  The Bondi metric is given by
+                         V 2β
+                         − r e + r2 U 2 e2γ    −e2β −r2 U e2γ
+                                                                                  
+                                                                         0
+                              −e2β             0       0                0        
+                  gαβ =                                                          .      (1)
+                             −r2 U e2γ         0    r e2γ
+                                                      2                  0        
+                                 0              0       0        r2 e−2γ sin2 θ
+
+  Use the cofactor matrices to compute the inverse Bondi metric g αβ .
+
+
+8. Bianchi identities
+  Le M be a Lorentzian manifold with metric gαβ . Show that the contracted Bianchi identities
+  ∇µ Gαµ can be written as                                 
+                              µρ            σ        1
+                            g     ∂ρ Rαµ − Γµρ Rασ − ∂α Rµρ .
+                                                     2
+
+
+
+
+                                                 4
+

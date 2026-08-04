@@ -1,9 +1,22 @@
-# Exercise source inventory
+# Exercise source policy and entry points
 
-The exercises are newly edited adaptations arranged to match Weinberg's
-chapters and the notation of this edition. Each exercise carries its source
-credit in print; the worked solutions are part of this exercise edition.
-Cambridge undergraduate Part II material is intentionally excluded.
+The inherited exercise layer is provisional and is not a source ledger.  Its
+300 item-level decisions are frozen in
+`provisional-exercise-dispositions.json`; the twelve question-resolvable
+rebuild candidates have side-by-side completeness findings in
+`provisional-exact-parent-comparisons.json`.  The replacement edition accepts an
+exercise only when one complete parent problem has been inspected, selected in
+`exercise-source-inventory.json`, bound to one stable exercise ID in
+`exercise-ledger.json`, and passed both source-fidelity and independent-solution
+review in `source-fidelity-audit.json`.  Each final exercise prints an exact
+document/question/page credit; any adaptation or convention departure is
+recorded explicitly.  Cambridge undergraduate Part II material is excluded.
+
+The comprehensive human-readable inventory is
+`EXERCISE_SOURCE_INVENTORY.md`; its machine source is assembled from the
+independently reviewable files under `source-inventory-fragments/`.  The cache
+manifest `source-corpus.json` records the official URL, page count, local PDF
+and layout-preserving text derivative, and SHA-256 hashes for every document.
 
 ## Cambridge Part III General Relativity
 
@@ -56,8 +69,11 @@ or stellar-structure chapters.
 - [MIT 8.962 General Relativity problem sets](https://web.mit.edu/8.962/www/psets.html)
 - [Rutgers Physics 617 General Relativity](https://www.physics.rutgers.edu/grad/617/)
 
-`audit_exercises.py` enforces the per-chapter minimum, one-for-one solutions,
-inline nonempty credits, Part II exclusion, all four Tong sheets, all nine
-McGreevy problem sets, and Cambridge Part III exam-year coverage. The expanded
-edition currently has 20 exercises and 20 solutions in every chapter from 2
-through 16, for 300 of each overall.
+The inspected corpus is deliberately broader than the final selection:
+nonselected parents remain visible with `duplicate`, `too_dependent`,
+`unsuitable_for_weinberg`, or `outside_scope` dispositions and a substantive
+rationale.  `source_inventory.py --strict` requires complete document
+coverage.  `audit_exercises.py --strict` then enforces 10--30 final exercises
+per Chapter 2--16, none in Chapter 1, one complete parent per number,
+one-for-one full solutions, exact printed credits/departures, and two current
+content-hash-bound review passes.

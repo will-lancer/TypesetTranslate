@@ -1,0 +1,236 @@
+                    MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+                               Physics Department
+Physics 8.962: General Relativity                                                       March 3, 2018
+Prof. Alan Guth
+
+                                   PROBLEM SET 4*
+DUE DATE: Thursday, March 8, 2018, at 5:00 pm.
+TOPICS COVERED AND RELEVANT LECTURES: This problem set covers as-
+  pects of the Schwarzschild metric, primarily following material presented in lecture. The
+  last problem is a guided derivation of the geodesic equation from the equivalence princi-
+  ple, with emphasis on the meaning of an affine parameter.
+MAXIMUM GRADE: This problem set has a total of 60 points.
+
+PROBLEM 1: COUNTING TENSORS (5 pts)
+   In lecture we derived the fact that if Sµ1 ···µR is fully symmetric in its indices, and each
+index can take on D different values, then the number of independent components is
+                                               (R + D − 1)!
+                                         N=                 .
+                                                R!(D − 1)!
+Suppose that Aµ1 ···µR is fully antisymmetric in its indices, with each index again taking on
+D different values. How many independent components does Aµ1 ···µR have?
+
+PROBLEM 2: CLOCKS ON EARTH AND IN SPACE (10 pts)
+    In this problem we consider the effects of relativity on a clock on the surface of a planet,
+using an idealized version of the Earth as an interesting example. Assume that the planet is
+perfectly spherical, and floats in empty space in a Schwarzchild geometry created by its own
+mass distribution. The planet has mass M , and the radius as measured by the Schwarzschild
+coordinates is R. The planet rotates in time T as measured by an observer at infinity who
+is at rest relative to the Schwarzschild coordinates. (Here we will ignore the effect of the
+rotation on the metric, which we will learn about later in the course.) Now consider a clock
+(C) that lies on the surface of the planet at a point on the equator.
+
+ (a) [2 pts] Compute the time TC,SR measured by the clock C after a single rotation,
+     incorporating only the effects of special relativity. (That is, assuming that the clock is
+     moving along a circular path of radius R in Minkowski space and completes a circuit
+     around the circle in time T as measured by a stationary observer in Minkowski space.)
+     To lowest order in R/T , by how much does this time differ from T (i.e., find the time
+     difference ∆TC,SR ≡ TC,SR − T )? Using R = R⊕ = 6378.1 km for the radius of the
+     Earth and T = 23 hours, 56 minutes, and 4.09 seconds for the length of a sidereal day,
+     what is the numerical value of this time difference?
+  ∗
+   A preliminary version of this problem set was posted on March 2, 2018. This final version includes one
+more problem, Problem 5.
+
+
+                                                   1
+8.962 General Relativity: Problem Set 4, Spring 2018                                     p. 2
+
+
+ (b) [2 pts] Compute the time TC,GTD measured by the clock C after a single rotation of
+     the planet, incorporating only the effect of gravitational time dilation from the metric
+     component gtt in the Schwarzschild metric. (That is, calculate the time measured
+     by a clock that travels relative to the surface of the planet, remaining stationary
+     in the Schwarzschild coordinates.) To lowest order in GM/R, by how much does
+     this time differ from T (i.e., find the time difference ∆TGTD ≡ TC,GTD − T )? Using
+     M⊕ = 5.9724 × 1024 kg as the mass of the Earth, and G = 6.6741 × 10−11 m3 kg−1 s−2 ,
+     and c = 2.998 × 108 m/s, what is the numerical value of the time difference?
+
+ (c) [2 pts] Compute the proper time TSch measured by the clock C along the prescribed
+     trajectory in the full Schwarzschild metric. To lowest order in the small quantities
+     indicated in parts (a) and (b), by how much does your result differ from the sum of
+     the results from (a) and (b)? That is, compute
+
+                               ∆T(c) ≡ (TSch − T ) − ∆T(a) − ∆T(b)
+
+     to lowest nonvanishing order in the small quantities R/T and GM/R. Here ∆T(a)
+     and ∆T(b) refer to the (correct) answers to parts (a) and (b), which means that they
+     are each expanded only through the lowest order in their respective small quantities.
+     Numerically, for the case of the Earth, how big is this difference.
+
+ (d) [2 pts] Compute the difference in time measured by a clock on Earth at sea level on
+     the equator and a second clock on a mountain at 2000 m, also on the equator, over a
+     period of one rotation of the planet. I.e., compute
+
+                                 ∆T(d) = TC,mountain − TC,sea level
+
+     to lowest nonvanishing order in small quantities, and evaluate it numerically for the
+     Earth.
+
+ (e) [2 pts] Consider a geosynchronous satellite in a circular orbit above the equator, with
+     an altitude of 42,164 km. Compute the time TC,sat measured by a clock on the satellite
+     during one rotation of the planet. Compute the time differences
+
+                                        ∆T1 ≡ TC,sat − T
+
+     and
+                                   ∆T2 ≡ TC,sat − TC,sea level .
+     In each case, give an expression to lowest nonvanishing order in the small quantities,
+     and evaluate numerically for the Earth.
+8.962 General Relativity: Problem Set 4, Spring 2018                                         p. 3
+
+
+PROBLEM 3: GRAVITATIONAL RED SHIFT (10 pts)
+   In this problem we consider the gravitational redshift from two perspectives.
+
+ (a) [4 pts] The gravitational redshift can be seen as a direct consequence of Einstein’s
+     equivalence principle. Consider a photon that travels upward by a distance d in Earth’s
+     near-surface gravitational field. Compute its redshift ∆λ/λ by computing the time ∆t
+     needed for light to travel the distance d, the change in velocity ∆v that an inertial
+     observer would experience compared to a stationary observer in the time ∆t, and the
+     Doppler shift when you boost into the stationary observer’s frame. Express your answer
+     in terms of g, d, and c.
+
+ (b) [6 pts] Now consider the same situation in general relativity. Compute the redshift by
+     determining the relationship between the frequencies of emitted and received light at
+     two heights differing by d. Show that in the Newtonian limit of Earth’s near-surface
+     field you reproduce the results of part (a).
+
+
+PROBLEM 4: RADIAL SCHWARZSCHILD GEODESICS (15 pts)
+   Consider a particle falling radially inward (i.e., at fixed θ, φ) along a geodesic in a
+Schwarzschild geometry with Schwarzschild radius R∗ = 2GM . The particle has total energy
+E = 1, where                                     
+                                            2GM dt
+                                  E = 1−                .
+                                              r      dτ
+Thus, the particle has the same energy as it would have if it were at rest at infinity. As
+t → −∞, such a geodesic has r → ∞ and dt/dτ → 1.
+
+ (a) [8 pts] Use conservation of energy to compute dt/dτ and dr/dτ as functions of r(τ ).
+
+ (b) [7 pts] Integrate to solve for r(τ ). Compute the proper time difference experienced by
+     the particle between the moments when it is at radius r = 2R∗ and at radius r = R∗ . In
+     class we learned that an observer at fixed radius r will see an infalling object approach
+     the horizon but never reach it. Does this calculation indicate that an infalling observer
+     will have a different experience?
+
+
+PROBLEM 5: DERIVING THE GEODESIC EQUATION FROM THE EQUIV-
+  ALENCE PRINCIPLE (20 pts)
+   In lecture some time ago, we derived the geodesic equation from the assumption that
+the geodesic path is a stationary point of the path length. This is perfectly well-defined for
+spacelike or timelike geodesics, but for lightlike geodesics the path length is zero and its first
+order variation is singular. So here we will derive the geodesic equation by a method that is
+8.962 General Relativity: Problem Set 4, Spring 2018                                            p. 4
+
+
+valid for all geodesics, and which also lends more physical insight into the equation. At each
+point in spacetime we can find a coordinate system that is locally inertial, and a geodesic
+is defined by the statement that its acceleration, in the locally inertial coordinates, is zero.
+The treatment here roughly follows that of Steven Weinberg’s Gravitation and Cosmology
+(1972), pp. 70–77, although the notation will follow that of Carroll. (You should feel free to
+look at Weinberg’s book, but I will try to exlain the setup well enough so that it will not be
+necessary.)
+   The starting point is to imagine that we start with some global coordinate system with
+coordinates  xµ , and for each spacetime point X µ we construct a locally inertial coordinate
+         µ0
+system xX (x). Here the subscript X denotes that spacetime point at which the coordinate
+system is locally inertial, meaning that gµ0 ν 0 = ηµ0 ν 0 and ∂λ0 gµ0 ν 0 = 0. The argument x is the
+                                                                                0
+spacetime point that is being described by the coordinate vector xµ in the locally inertial
+system. Note that x must be in the vicinity of X, but of course it need not be equal to X.
+Both X and x can be described concretely in the original global coordinate system.
+   For spacelike or timelike trajectories, there is a natural choice for the path parameter λ,
+which can be taken to be equal to (or at least proportional to) the proper length (spacelike
+case) or proper time (timelike case). The path can then be described in global coordinates
+as xµ (λ), and the vanishing of the locally inertial acceleration can be described by
+                                           0
+                                     d2 xµX x(λ)
+                                                
+                                                             =0.                                 (1)
+                                          dλ2
+                                                    X=x(λ)
+
+Note that the point X, the center of the locally inertial coordinate system, is held fixed
+when the differentiation with respect to λ is carried out, since it is the acceleration in this
+one coordinate system that should vanish. To simplify the notation, from here we will stop
+writing the restriction X = x(λ), remembering that the primed coordinates will always
+refer to the locally inertial coordinates of the particle at position λ along its path, and that
+derivatives are all taken with a fixed choice of the primed coordinate system.
+    For lightlike trajectories, however, the invariant distance along the path is zero, so it
+cannot be used as a parameter. So we begin with some completely arbitrary parameterization
+xµ (σ). Then the statement that the particle moves without acceleration in the locally inertial
+coordinates becomes the statement that the particle moves along a straight line in spacetime
+in the locally inertial coordinates. Since the parameterization was arbitrary, however, we
+cannot assume that it moves along this line at a fixed rate with respect to σ. Thus, with
+respect to σ, the trajectory can accelerate, but to stay on the line the acceleration must be
+proportional to the velocity:
+                                      0                 0
+                                d2 xµX x(σ)         dxµX x(σ)
+                                                            
+                                             = β(σ)            ,                           (2)
+                                     dσ 2                 dσ
+for some function β(σ) that depends on our choice of parameterization.
+8.962 General Relativity: Problem Set 4, Spring 2018                                              p. 5
+
+
+ (a) [5 pts] Suppose that we have chosen an arbitrary parameterization xµ (σ) and calculated
+     β(σ). Show that if we find a new parameterization λ(σ) for which
+                                                 2
+                                    d2 σ          dσ
+                                       2
+                                         + β(σ)         =0,                              (3)
+                                    dλ            dλ
+
+      then Eq. (1) will hold for the new parameterization xµ (λ).
+
+Any parameter for which Eq. (1) holds is called an affine parameter. For spacelike or timelike
+geodesics, any affine parameter is a linear function (i.e., λ = c1 + c2 τ ) of the proper length or
+proper time. For lightlike trajectories, any affine parameter is a linear function of any other
+affine parameter.
+
+ (b) [5 pts] Show that Eq. (1) implies that the trajectory xµ (λ) satisfies the equation
+                                                         ν  ρ
+                                         d2 xτ      τ dx dx
+                                               = −Γ νρ        ,                                    (4)
+                                         dλ2           dλ dλ
+      where                                                    0
+                                               ∂xτ ∂ 2 xµ
+                                          Γτνρ ≡            .                               (5)
+                                               ∂xµ0 ∂xν ∂xρ
+      We will be showing that Γτνρ is equal to the usual Christoffel connection, but for now it
+      is defined by this equation. Since Eqs. (1) and (4) are equivalent, we can equally well
+      say that λ is an affine parameter if and only if Eq. (4) is satisfied.
+
+ (c) [5 pts] Using the usual rules of coordinate transformations, the metric gµν (x) in the
+     global coordinate system can be expressed in terms of the metric of the locally inertial
+     coordinate system by
+                                                       0   0
+                                                ∂xµ ∂xν
+                                   gµν (x) =                 gµ0 ν 0 (x),                          (6)
+                                                ∂xµ ∂xν
+     where of course, for x = X, gµ0 ν 0 (x) = ηµ0 ν 0 and ∂ρ0 gµ0 ν 0 (x) = 0. Show that this implies,
+     at x = X, that
+                                  ∂ρ gµν (x) = Γτρµ gτ ν + Γτρν gµτ ,                              (7)
+      where Γτρµ is given Eq. (5).
+
+ (d) [5 pts] Use Eq. (7) to show that Γτµν is the usual Christoffel connection,
+
+                                        1
+                                  Γτµν = g τ ρ [∂µ gρν + ∂ν gµρ − ∂ρ gµν ] .                       (8)
+                                        2
+      Hint: try writing out Eq. (7) with different orderings of ρ, µ, and ν. See if you can
+      find a linear combination with only one term on the right-hand side, and then solve
+      for Γ.
+

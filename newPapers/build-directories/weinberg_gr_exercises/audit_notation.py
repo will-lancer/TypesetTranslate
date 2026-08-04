@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from dataclasses import dataclass
@@ -156,15 +157,23 @@ RULES = (
 
 
 def chapter_number(path: Path) -> int | None:
-    match = re.search(r"chapter(\d{2})", str(path))
+    match = re.search(r"chapter0?(\d{1,2})", str(path))
     return int(match.group(1)) if match else None
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="make exercise-edition notation regressions release-blocking",
+    )
+    args = parser.parse_args()
     scopes = (
         LATEX / "chapters",
         LATEX / "backmatter",
         LATEX / "figures",
+        LATEX / "exercises",
     )
     files = sorted(
         path
@@ -193,7 +202,10 @@ def main() -> int:
                     f"{path.relative_to(ROOT)}:{line_number}: {rule.name}: "
                     f"{rule.explanation}"
                 )
-                if rule.fatal and not excepted:
+                is_provisional_exercise = (
+                    not args.strict and (LATEX / "exercises") in path.parents
+                )
+                if rule.fatal and not excepted and not is_provisional_exercise:
                     failures.append(finding)
                 elif not excepted:
                     reviews.append(finding)

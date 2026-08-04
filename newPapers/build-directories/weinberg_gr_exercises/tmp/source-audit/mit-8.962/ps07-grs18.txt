@@ -1,0 +1,169 @@
+                  MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+                             Physics Department
+
+Physics 8.962: General Relativity                                              March 23, 2018
+Prof. Alan Guth
+
+                                 PROBLEM SET 7
+DUE DATE: Thursday, April 5, 2018, at 5:00 pm.
+TOPICS COVERED AND RELEVANT LECTURES: This problem set focuses on
+  two properties of curvature. Problem 1 concerns the relation between curvature and the
+  parallel transport of a vector around an infinitesimal loop, discussed in Carroll’s Sec. 3.6.
+  The second two concern the geodesic deviation equation, which is discussed in Carroll’s
+  Sec. 3.10. Both of these topics will also be discussed in lecture on April 2, which will
+  include a discussion of Eq. (2.4) below, which is not in Carroll’s book.
+MAXIMUM GRADE: This problem set has a total of 65 points.
+
+PROBLEM 1: PARALLEL TRANSPORT AROUND AN INFINITESIMAL
+  LOOP (15 pts)
+    Following Carroll’s description on p. 121, we can imagine parallel transporting a vector V µ
+around an infinitesimal loop, specified by two infinitesimal vectors. We will depart slightly
+from Carroll’s notation by calling these two vectors Aµ and B ν (rather than Aµ and B ν ),
+where  is infinitesimal, and Aµ and B µ are finite. We then imagine parallel transporting
+V µ by first moving it along the vector Aµ , then along B ν , then backward along Aµ and
+backward along B ν , to return to the starting point, as shown in the figure below (adapted
+from Fig. 3.5 of Carroll):
+
+
+
+
+Show that to second order in , the change in V µ is given by
+
+                                  δV ρ = −2 Rρ σµν V σ Aµ B ν ,                           (1.1)
+
+where Rρ σµν is the Riemann curvature tensor, defined by the statement that
+
+                                    [∇µ , ∇ν ]V ρ = Rρ σµν V σ ,                           (1.2)
+
+
+                                                 1
+8.962 General Relativity: Problem Set 7, Spring 2018                                        p. 2
+
+
+for any vector field V ρ , or equivalently as
+
+                         Rρ σµν = ∂µ Γρνσ − ∂ν Γρµσ + Γρµλ Γλνσ − Γρνλ Γλµσ .              (1.3)
+
+Note that the sign shown in Eq. (1.1) is the opposite of the sign in Carroll’s book, but I
+think the sign shown here is correct. Recall that a vector V µ (λ) defined on a curve xµ (λ) is
+said to be parallel transported along the curve if
+                                     DV µ   dxν
+                                          ≡     ∇ν V µ = 0 ,                               (1.4)
+                                      dλ    dλ
+which can be written more explicitly as
+
+                     dxν ∂V µ               dV µ dxν µ σ
+                                         
+                                    µ   σ
+                               + Γνσ V =        +   Γ V =0.                                (1.5)
+                      dλ ∂xν                 dλ   dλ νσ
+
+
+PROBLEM 2: GEODESIC DEVIATION ON A TWO-SPHERE (25 pts)
+    In Problem 3 of Problem Set 6, you calculated the metric, connection, Riemann curvature
+tensor, Ricci tensor, and Ricci scalar on a two-sphere of radius A. In this problem we will
+consider a family of geodesics on the two-sphere of radius A, using them as an example to
+explore the meaning of the geodesic deviation equation. We will use the usual polar angles
+θ (angle from north pole) and φ (azimuthal angle) as coordinates.
+    Consider the family of geodesics xµ (φ0 , t) that start on the equator at longitude (az-
+imuthal angle) φ0 , with an initial tangent vector dxµ /dt pointing north. Take t to be the
+distance along the geodesics, starting with t = 0 on the equator.
+
+ (a) (5 pts) Consider in particular two trajecties in the family described above, one starting
+     at φ0 = 0 and the other at φ0 = ∆φ. Calculate the geodesic separation h (i.e., the
+     great circle distance) between the two trajectories as a function of t. Calculate this first
+     exactly, and then imagine that ∆φ is very small, giving a small angle approximation for
+     h(t) that is accurate to first order in ∆φ. Calculate the acceleration of the separation,
+     d2 h/dt2 , using this small angle approximation.
+
+ (b) (8 pts) Using the notation of Carroll, Section 3.10, which we also used in lecture,
+     consider the geodesic deviation equation,
+
+                              µ D2 µ
+                             A ≡ 2 S ≡ ∇T (∇T S µ ) = Rµ νρσ T ν T ρ S σ ,                 (2.1)
+                                dt
+      where
+                                           ∂xµ                    ∂xµ
+                                    Tµ ≡           and     Sµ ≡       ,                    (2.2)
+                                            ∂t                    ∂s
+8.962 General Relativity: Problem Set 7, Spring 2018                                      p. 3
+
+
+     where s parameterizes a family of geodesics xµ (s, t) ∈ M , so for each s, xµ (s, t) is a
+     geodesic with affine parameter t, and
+
+                               ∇T ≡ T ρ ∇ρ      and    ∇S ≡ S ρ ∇ρ .                     (2.3)
+
+     For the family of geodesics described in the preamble, taking s = φ, calculate the two
+     components of the right-hand side of Eq. (2.1).
+
+ (c) (7 pts) The left-hand side of the geodesic equation, Aµ ≡ ∇T (∇T S µ ) is also rather
+     complicated, since each ∇ involves both derivative and connection terms. Expand the
+     left-hand side, deriving expressions for Aθ and Aφ in terms of ordinary derivatives of
+     S µ with respect to t, plus other terms. Is the behavior that you found in part (a)
+     consistent with the geodesic deviation equation?
+
+ (d) (5 pts) Aµ is referred to as the “relative acceleration of geodesics,” but Carroll warns
+     us that we should take this name with a grain of salt. Carroll doesn’t explain the
+     need for the salt, but the calculations in part (c) should give you an example of the
+     complications: the calculation of Aµ involves derivatives of connections, which give
+     nontrivial corrections which need not vanish even in a locally inertial frame. In lecture
+     we developed a related equation which directly determines the 2nd derivative of the
+     metric distance between infinitesimally separated geodesics:
+                                                    "                      2 #
+                   d2 `
+                                                                  
+                          1                       1     DS   DS        DS
+                        = Rµνρσ S µ T ν T ρ S σ + 3 S 2    ·    − S·            ,        (2.4)
+                   dt2    `                      `      dt dt           dt
+                p
+     where ` ≡ gµν S µ S ν , and for any two vectors, A · B ≡ Aµ Bµ . Show that the second
+     term on the right-hand side of Eq. (2.4) vanishes (either by direct calculation or by
+     a more general argument), and evaluate the first term, as applied to the family of
+     geodesics described in the preamble. Is the behavior you found in part (a) consistent
+     with Eq. (2.4)?
+
+
+PROBLEM 3: GEODESIC DEVIATION IN THE HYPERBOLIC PLANE (25
+  pts)
+   In Problem 4 of Problem Set 6, you calculated the connection, Riemann curvature tensor,
+Ricci tensor, and Ricci scalar for a space of constant negative curvature, described by the
+metric
+                                        a
+                                 ds2 = 2 (dx2 + dy 2 + dz 2 ) ,                       (3.1)
+                                        z
+where {(x, y, z), x ∈ R, y ∈ R, z > 0}. In Problem 4 of Problem Set 2, you showed that
+geodsics in this space are semicircles centered around any point with z = 0. Here we will
+consider a one-parameter family of such geodesics, defined by initial conditions
+
+                                   xµ (s, 0) = (0, 0, Z + s)                             (3.2)
+8.962 General Relativity: Problem Set 7, Spring 2018                                          p. 4
+
+
+and
+                                    ∂xµ
+                                        (s, t)     = (1, 0, 0) .                             (3.3)
+                                     ∂t        t=0
+
+
+ (a) (8 pts) Using the same definitions as in Problem 1, calculate the right-hand side of
+     the geodesic deviation equation, Eq. (2.1), for this family of geodesics, at the point
+     (s, t) = (0, 0).
+
+ (b) (7 pts) Calculate the left-hand side of the geodesic deviation equation for this family
+     of geodesics, again at (s, t) = (0, 0). Does your answer agree with what you found in
+     part (a)?
+      Hint: The calculation involves taking partial derivatives of xµ (s, t), but we only need
+      the behavior of xµ (s, t) near the origin, (s, t) = (0, 0). So we can describe xµ (s, t) as a
+      power series in s and t, and calculate the desired coefficients from the initial condition
+      equations (3.2) and (3.3) and the geodesic equations of motion.
+
+ (c) (10 pts) Eq. (2.4) holds for any smooth family of geodesics xµ (s, t), but it is much
+     simpler for the cases in which the second term vanishes. The second term will not
+     vanish for the family of geodesics described above. However, the term can be made
+     to vanish by reparameterizing the family, replacing t by t̃, the distance along the
+     geodesic curves, so that then T̃ µ ≡ ∂xµ /∂ t̃ is a unit vector, with T̃ 2 = 1. With this
+     reparameterization, show that, at (s, t) = (0, 0), the second term in Eq. (2.4) vanishes,
+     and evaluate the left-hand side and the first term on the right-hand side. Did you find
+     that the equation holds?
+

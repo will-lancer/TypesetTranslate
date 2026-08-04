@@ -28,18 +28,25 @@ case "${1-}" in
     ;;
 esac
 
+python3 "$edition_root/canonical_guard.py"
 python3 "$edition_root/verify_source.py"
+python3 "$edition_root/source_corpus.py"
+python3 "$edition_root/provisional_dispositions.py"
 
 if [ "$strict" -eq 1 ]; then
+  python3 "$edition_root/source_inventory.py" --strict
   python3 "$edition_root/audit_transcription.py" --strict
   python3 "$edition_root/source_manifest.py" --check
+  python3 "$edition_root/audit_notation.py" --strict
+  python3 "$edition_root/audit_exercises.py" --strict
 else
+  python3 "$edition_root/source_inventory.py"
   python3 "$edition_root/audit_transcription.py"
   python3 "$edition_root/source_manifest.py" --check || true
+  python3 "$edition_root/audit_notation.py"
+  python3 "$edition_root/audit_exercises.py"
 fi
-python3 "$edition_root/audit_notation.py"
 python3 "$edition_root/audit_index.py"
-python3 "$edition_root/audit_exercises.py"
 
 cd "$latex_dir"
 latexmk -g -pdf -interaction=nonstopmode -halt-on-error master.tex
@@ -64,6 +71,7 @@ pdftotext master.pdf - >/dev/null
 pdfinfo master.pdf
 
 if [ "$strict" -eq 1 ]; then
+  python3 "$edition_root/canonical_guard.py"
   gs -q -dNOPAUSE -dBATCH -sDEVICE=nullpage master.pdf
   if pdffonts master.pdf | sed '1,2d' | rg -v ' yes +yes +'
   then

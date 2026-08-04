@@ -1,0 +1,218 @@
+                    MASSACHUSETTS INSTITUTE OF TECHNOLOGY
+                               Physics Department
+Physics 8.962: General Relativity                                                    March 16, 2018
+Prof. Alan Guth
+
+                                   PROBLEM SET 6
+DUE DATE: Thursday, March 22, 2018, at 5:00 pm.
+TOPICS COVERED AND RELEVANT LECTURES: This problem set covers co-
+  variant derivatives and curvature, primarily following material presented in lecture. Rel-
+  evant sections of Carroll are 3.1–3.4, 3.6, 3.7.
+MAXIMUM GRADE: This problem set has a total of 70 points.
+
+PROBLEM 1: WALD’S DEFINITION OF A TANGENT SPACE (15 pts)
+   Wald (Robert M. Wald, General Relativity, The University of Chicago Press, 1984) defines
+the tangent space of a point p in a manifold M by first defining F as the collection of C ∞
+functions from M into R. Then a tangent vector v at point p ∈ M is a map v : F → R
+which (1) is linear and (2) obeys the Leibnitz rule:
+
+ (1) v[af + bg] = av[f ] + bv[g], for all f, g ∈ F ; a, b ∈ R;                                   (1.1)
+ (2) v[f g] = f (p)v[g] + g(p)v[f ] .                                                            (1.2)
+
+Note that the definition allows v[f ] to be an arbitrary functional of f , subject only to
+Eqs. (1.1) and (1.2). In particular, the only indication that v[f ] depends on the behavior of
+f (x) in the vicinity of p is the appearance of p in the Leibnitz rule.
+Our goal is to reconstruct Wald’s argument that these conditions imply that, within a coor-
+dinate chart, the tangent space is spanned by the basis vectors ∂/∂xµ , so the most general
+functional v can be written as
+                                                ∂f (x)
+                                    v[f ] = v µ          ,                            (1.3)
+                                                 ∂xµ x=p
+for an n-tuple of real numbers (v 1 , v 2 , . . . , v n ), where n is the dimension of M . This implies
+that Wald’s definition is equivalent to the coordinate-based definition that we used in lecture,
+where the tangent space was defined as the space of first-order differential operators as in
+Eq. (1.3). You may look at Wald’s argument if you wish, but we recommend that you first
+try the problem without looking at Wald’s book.
+    Wald’s text uses parentheses v(f ) for the argument of v, but we are using square brackets,
+which are frequently used to indicate the argument of a functional, a mapping from a function
+to a real number. A goal of this problem will be to simplify Wald’s argument, at least from
+the viewpoint of most physicists, by using notation more familiar to physicists. Hence we
+will use a chart that contains the point p, and say that a point in the manifold can be called
+x, and is specified by its chart coordinates xµ . In Wald’s text, by contrast, a general point is
+indicated by q, and its coordinates are written as xµ ◦ ψ(q), where ψ(q) maps q to the subset
+of Rn of the chart, and then xµ maps from the point in Rn to the µ’th coordinate.
+
+                                                  1
+8.962 General Relativity: Problem Set 6, Spring 2018                                              p. 2
+
+
+ (a) [5 pts] Show that conditions (1) and (2) imply that if h ∈ F is a constant function
+     (i.e., if for all x, h(x) is equal to a constant c), then v[h] = 0. Hint: consider v[h2 ], and
+     separately see what you can learn about it from conditions (1) and (2).
+
+ (b) [5 pts] Let the coordinates of p be xµp , and consider any other point xµ in the chart.
+     Consider a linear path
+                                   ξ µ (t) = t(xµ − xµp ) + xµp ,                      (1.4)
+     so ξ(0) = xµp and ξ(1) = xµ . Starting from the identity
+                                                                Z 1
+                                           µ                               d
+                                               ) = f (xµp ) +                 f ξ µ (t) ,
+                                                                                       
+                                    f (x                              dt                          (1.5)
+                                                                 0         dt
+
+     show that f (xµ ) can be written as
+
+                                    f (xµ ) = f (xµp ) + (xµ − xµp ) Hµ (x) ,                     (1.6)
+
+     where Hµ (x) is a (C ∞ ) function of x with the property that
+
+                                                                ∂f (x)
+                                                  Hµ (p) =               .                        (1.7)
+                                                                 ∂xµ x=p
+
+     Write an explicit equation for Hµ (x). You do not have to show that it is C ∞ .
+     (For intuition, note that if f (xµ ) can be expanded in a Taylor series about xµp ,
+                                                                            2
+                                         ∂f (x)    1 µ                 ν ∂ f (x)
+      f (xµ ) = f (xµp ) + (xµ − xµp )           +  (x − x µ
+                                                           p )(x ν
+                                                                   − x p )              + . . . , (1.8)
+                                          ∂xµ x=p 2                        ∂xµ ∂xν x=xp
+
+     then Eq. (1.6) follows immediately, with
+                                                            2
+                                     ∂f (x)    1 ν     ν ∂ f (x)
+                        Hµ (x) =             +  (x − x p )             + ... .                    (1.9)
+                                      ∂xµ x=p 2            ∂xµ ∂xν x=p
+
+     Thus Eq. (1.6) is essentially just a way of writing the Taylor series so that the first
+     term is explicit, and the rest of the information is hidden in the behavior of Hµ (x)
+     for xµ 6= xµp . It is important, however, that C ∞ functions do not necessarily have
+     convergent Taylor series, but Eq. (1.6) is always valid if f is C ∞ .)
+
+ (c) [5 pts] Calculate v[f ], where f is written as in Eq. (1.6), and show that it reduces to
+     something of the form of Eq. (1.3). Explicitly justify each step in terms of Eqs. (1.1)
+     and (1.2).
+8.962 General Relativity: Problem Set 6, Spring 2018                                        p. 3
+
+
+PROBLEM 2: COVARIANT DERIVATIVES AND LOCALLY INERTIAL FRAMES
+  (15 pts)
+    In lecture I stated that a covariant derivative can be defined by the statement that in a
+locally inertial coordinate system, the covariant derivative is equal to the ordinary derivative.
+We implemented this definition indirectly, by noting that the definition implies that the
+covariant derivative of the metric must vanish (a property called metric compatibility), and
+we used this criterion to determine the form of the connection.
+    In this problem we will apply the locally-inertial-frame definition of the covariant deriva-
+tive directly. We will assume that a region of the manifold is covered by coordinates xµ , and
+                                         0
+that we have also found coordinates ξ ν (x) that are locally inertial coordinates at some point
+X0 . So, by the definition of locally inertial coordinates,
+
+                                     gµ0 ν 0 = ηµ0 ν 0     (at X0 ),                        (2.1)
+
+and
+                                   ∂ρ0 gµ0 ν 0 (x0 ) = 0    (at X0 ).                       (2.2)
+Since gµν is a tensor, it follows that in the original coordinates,
+                                             0     0
+                                      ∂ξ µ ∂ξ ν
+                                gµν =           ηµ0 ν 0        (at X0 ) ,                   (2.3)
+                                      ∂xµ ∂xν
+and                                   0     0       0        0 
+                               ∂ 2 ξ µ ∂ξ ν     ∂ξ µ ∂ 2 ξ ν
+                              
+                 ∂ρ gµν (x) =                 +                  ηµ0 ν 0    (at X0 ).       (2.4)
+                              ∂xρ ∂xµ ∂xν       ∂xµ ∂xρ ∂xν
+
+ (a) [5 pts] Assuming that the covariant derivative ∇µ V ν of the vector field V ν transforms
+     as a tensor, and assuming that in the locally inertial frame it is equal to the ordinary
+     derivative, so
+                                                         0
+                                             ν0   ∂V ν
+                                       ∇µ V =
+                                          0                ,                             (2.5)
+                                                   ∂ξ ν 0
+      show that the covariant derivative in the original coordinate system can be written in
+      the form
+                                              ∂V ν
+                                     ∇µ V ν =           ν
+                                                    + Fµλ Vλ ,                          (2.6)
+                                              ∂xµ
+              ν
+      where Fµλ  is an expression in terms of partial derivatives of the coordinate transfor-
+               µ ν0
+      mation x (ξ ) and/or its inverse.
+
+ (b) [5 pts] Using the answer to part (a) and Eq. (2.4) for ∂ρ gµν (x), find an expression for
+       ν                                                                   ν
+     Fµλ  in terms of gµν , its inverse, and its derivatives. Verify that Fµλ = Γνµλ , the usual
+     Christoffel symbol.
+8.962 General Relativity: Problem Set 6, Spring 2018                                       p. 4
+
+
+ (c) [5 pts] Carry out the same exercise for a covariant (i.e., lower-indexed) vector field, to
+     show that
+                                              ∂Vν
+                                    ∇µ Vν =      µ
+                                                   − Γλµν Vλ ,                            (2.7)
+                                              ∂x
+     where Γλµν is the usual Christoffel symbol, as in part (b). Again assume that the
+     covariant derivative can be defined to be just the ordinary derivative in the locally
+     inertial frame.1
+
+
+PROBLEM 3: CURVATURE ON A TWO-SPHERE (15 pts)
+   Consider a sphere of radius A. Answer the following questions in whatever coordinate
+system is most convenient.
+
+ (a) [10 pts] Compute the metric, connection, Riemann curvature tensor, Ricci tensor, and
+     Ricci scalar. Show that the Ricci scalar is constant.
+
+ (b) [5 pts] Compute the change in direction of a vector that is parallel transported around
+     a closed counter-clockwise loop surrounding a region of area A2 /10 on the sphere using
+     the Christoffel connection. The answer should be the same for any region of this area,
+     but you are not asked to show that.
+
+
+PROBLEM 4: NEGATIVE CURVATURE (10 pts)
+   Consider a 3-dimensional space given by the set of points {(x, y, z), x ∈ R, y ∈ R, z > 0}
+with the metric
+                                      a
+                              ds2 = 2 (dx2 + dy 2 + dz 2 ) .                             (4.1)
+                                     z
+Compute the metric, connection, Riemann curvature tensor, Ricci tensor, and Ricci scalar.
+
+PROBLEM 5: CURVATURE AND THE SCHWARZSCHILD METRIC (15 pts)
+   Consider the Schwarzschild metric
+                                                −1
+                   2          2GM       2      2GM
+                 ds = − 1 −           dt + 1 −         dr2 + r2 dΩ2 ,                     (5.1)
+                                r                r
+
+where
+                                  dΩ2 = dθ2 + sin2 θ dφ2 .                                (5.2)
+8.962 General Relativity: Problem Set 6, Spring 2018                                  p. 5
+
+
+ (a) [10 pts] For this metric, calculate all nonvanishing components of the Riemann tensor
+     Rλ σµν . You may use the affine connections
+
+                                                           GM
+                               Γttr = Γtrt = −Γrrr =                  ,
+                                                       r(r − 2GM )
+                                                       GM (r − 2GM )
+                                                Γrtt =                  ,
+                                                              r3
+                                               Γrθθ = −(r − 2GM ) ,
+                                               Γrφφ = −(r − 2GM ) sin2 θ ,           (5.3)
+                                                       1
+                          Γθrθ = Γθθr = Γφrφ = Γφφr = ,
+                                                       r
+                                               Γθφφ = − sin θ cos θ ,
+                                       Γφθφ = Γφφθ = cot θ .
+
+     which are also given in Carroll as Eq. (5.52).
+
+ (b) [5 pts] Calculate the Ricci tensor, showing (hopefully) that it vanishes.
+
