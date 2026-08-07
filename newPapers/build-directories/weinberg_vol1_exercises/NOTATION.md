@@ -15,6 +15,13 @@ frontmatter remains the primary mathematical reference.
 - Except in historical Chapter 1, set \(\hbar=c=1\). The electron has charge
   \(-e\), and \(\alpha=e^2/(4\pi)\).
 
+## Internal and spacetime indices
+
+- When a quantity carries both a gauge-adjoint index and spacetime indices,
+  put the opposing scripts together: write
+  `F^a_{\mu\nu}` and `A_a^\mu`, not
+  `F^a{}_{\mu\nu}` or `A_a{}^\mu`.
+
 ## Product notation
 
 - Use boldface rather than arrow accents for vectors: `\mathbf{x}` for Latin
@@ -43,11 +50,35 @@ never as a superscript:
 \OutBra{\beta}    % {}_{\mathrm{out}}\!\bra{\beta}
 ```
 
+When one displayed identity applies to both choices at once, use the paired
+helpers `\InOutKet`, `\OutInKet`, `\InOutBra`, and `\OutInBra`; these preserve
+the same outside-label spacing without splitting a compact `in/out` formula.
+When an in-state also carries an external-source qualifier, use
+`\InKetWith{\alpha}{\epsilon}` so both `in` and `\epsilon` remain outside the
+ket delimiter.
+
 For example, write
 \({}_{\mathrm{out}}\!\bra{\beta}S\ket{\alpha}_{\mathrm{in}}\), implemented as
 `\OutBra{\beta}S\InKet{\alpha}`. Reserve superscripts \(+\) and \(-\) for
 positive- and negative-frequency field pieces such as \(\psi^{(+)}\) and
 \(\psi^{(-)}\).
+
+## Momentum modes and internal gauge indices
+
+- Write the on-shell energy of a momentum mode as `\omega_{\mathbf k}` (or
+  `\omega_k` when the momentum variable is not bold), and likewise use
+  `\omega_{\mathbf p}`, `\omega_{\mathbf q}`, and so on when the mode variable
+  changes. Do not use `E_{\mathbf k}`, `E_k`, or the corresponding `E` notation
+  for other individual momentum modes. This does not rename total energies,
+  bound-state levels such as `E_n`, or scattering-state energies such as
+  `E_\alpha`.
+- Use lowercase Latin letters from the beginning of the alphabet for internal
+  adjoint gauge indices: \(a,b,c,\ldots\), not
+  \(\alpha,\beta,\gamma,\ldots\).
+- Rename collision-safely. If \(a,b,c\) already label other objects in the same
+  formula, continue with unused lowercase Latin letters such as \(d,e,f\) or
+  \(r,s,t\), state the index range, and do not silently reuse spacetime,
+  spatial, spinor, flavor, or particle-state labels.
 
 ## Spinors and operators
 

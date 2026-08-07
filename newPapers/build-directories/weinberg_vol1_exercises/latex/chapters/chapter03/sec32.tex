@@ -33,14 +33,12 @@ An experimentalist generally prepares a state to have a definite particle
 content at $t\to-\infty$, and then measures what this state looks like at
 $t\to+\infty$. If the state is prepared to have a particle content $\alpha$
 for $t\to-\infty$, then it is the `in' state
-$\ket{\alpha}_{\mathrm{in}}$, and if it is found to have the particle content
+$\InKet{\alpha}$, and if it is found to have the particle content
 $\beta$ at $t\to+\infty$, then it is the `out' state
-$\ket{\beta}_{\mathrm{out}}$. The probability amplitude for the transition
+$\OutKet{\beta}$. The probability amplitude for the transition
 $\alpha\to\beta$ is thus the scalar product
 \begin{equation}
-S_{\beta\alpha}
-={}_{\mathrm{out}}\!\left\langle\beta
-| \alpha\right\rangle_{\mathrm{in}}.
+S_{\beta\alpha}=\OutBra{\beta}\InKet{\alpha}.
 \tag{3.2.1}\label{eq:3.2.1}
 \end{equation}
 This array of complex amplitudes is known as the $S$-matrix~\hyperref[ref:3.2]{[2]}. If there
@@ -63,11 +61,10 @@ completeness relation \eqref{eq:3.1.5} to the `out' states, and write
 \[
 \int d\beta\,S^*_{\beta\gamma}S_{\beta\alpha}
 =\int d\beta\,
-{}_{\mathrm{in}}\!\left\langle\gamma|\beta\right\rangle_{\mathrm{out}}
+\InBra{\gamma}\OutKet{\beta}
 \;
-{}_{\mathrm{out}}\!\left\langle\beta | \alpha\right\rangle_{\mathrm{in}}
-={}_{\mathrm{in}}\!\left\langle\gamma
-|\alpha\right\rangle_{\mathrm{in}}.
+\OutBra{\beta}\InKet{\alpha}
+=\InBra{\gamma}\InKet{\alpha}.
 \]
 Using \eqref{eq:3.1.15}, this gives
 \begin{equation}
@@ -112,7 +109,7 @@ time-dependent perturbation theory.
 
 The methods of the previous section can be used to derive a useful alternative
 formula for the $S$-matrix. Let's return to Eq.~\eqref{eq:3.1.21} for the `in' state
-$\ket{\Psi_g}_{\mathrm{in}}$, but this time take $t\to+\infty$. We must now
+$\InKet{\Psi_g}$, but this time take $t\to+\infty$. We must now
 close the contour of integration for $E_\alpha$ in the \textit{lower}
 half-$E_\alpha$-plane, and although as before the singularities in
 $T^{\mathrm{in}}_{\beta\alpha}$ and $g(\alpha)$ make no contribution for
@@ -133,30 +130,30 @@ T^{\mathrm{in}}_{\beta\alpha},
 \]
 and hence, for $t\to+\infty$,
 \[
-\ket{\Psi_g(t)}_{\mathrm{in}}\longrightarrow
+\InKet{\Psi_g(t)}\longrightarrow
 \int d\beta\,e^{-iE_\beta t}\ket{\beta}
 \left[g(\beta)-2i\pi\int d\alpha\,
 \delta(E_\alpha-E_\beta)g(\alpha)
 T^{\mathrm{in}}_{\beta\alpha}\right].
 \]
-But expanding \eqref{eq:3.1.19} for $\ket{\Psi_g}_{\mathrm{in}}$ in a complete set of
+But expanding \eqref{eq:3.1.19} for $\InKet{\Psi_g}$ in a complete set of
 `out' states gives
 \[
-\ket{\Psi_g(t)}_{\mathrm{in}}
+\InKet{\Psi_g(t)}
 =\int d\alpha\,e^{-iE_\alpha t}g(\alpha)
-\int d\beta\,\ket{\beta}_{\mathrm{out}}S_{\beta\alpha}.
+\int d\beta\,\OutKet{\beta}S_{\beta\alpha}.
 \]
 Since $S_{\beta\alpha}$ contains a factor $\delta(E_\beta-E_\alpha)$, this
 may be rewritten
 \[
-\ket{\Psi_g(t)}_{\mathrm{in}}
-=\int d\beta\,\ket{\beta}_{\mathrm{out}}e^{-iE_\beta t}
+\InKet{\Psi_g(t)}
+=\int d\beta\,\OutKet{\beta}e^{-iE_\beta t}
 \int d\alpha\,g(\alpha)S_{\beta\alpha},
 \]
 and, using the defining property \eqref{eq:3.1.12} for `out' states, this has the
 asymptotic behavior for $t\to+\infty$
 \[
-\ket{\Psi_g(t)}_{\mathrm{in}}\longrightarrow
+\InKet{\Psi_g(t)}\longrightarrow
 \int d\beta\,\ket{\beta}e^{-iE_\beta t}
 \int d\alpha\,g(\alpha)S_{\beta\alpha}.
 \]
@@ -193,21 +190,19 @@ states to give a proof~\hyperref[ref:3.4]{[4]} of the orthonormality of these st
 unitarity of the $S$-matrix, as well as Eq.~\eqref{eq:3.2.7}, without having to deal
 with limits at $t\to\mp\infty$. First, by using \eqref{eq:3.1.16} on either the left-
 or right-hand side of the matrix element
-${}_{\mathrm{in/out}}\!\langle\beta|H_{\mathrm{int}}|
-\alpha\rangle_{\mathrm{in/out}}$ and equating the results, we find that
+$\InOutBra{\beta}H_{\mathrm{int}}\InOutKet{\alpha}$ and equating the results,
+we find that
 \begin{align*}
-&{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|H_{\mathrm{int}}
-\bigm|\alpha\bigr\rangle
-+{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|
+&\InOutBra{\beta}H_{\mathrm{int}}\ket{\alpha}
++\InOutBra{\beta}
 H_{\mathrm{int}}(E_\alpha-H_0\mathbin{\pm}i\epsilon)^{-1}
-H_{\mathrm{int}}\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+H_{\mathrm{int}}\InOutKet{\alpha}
 \\
 &\qquad={}
-\bigl\langle\beta\bigm|H_{\mathrm{int}}
-\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
-+{}_{\mathrm{in/out}}\!\bigl\langle\beta\bigm|
+\bra{\beta}H_{\mathrm{int}}\InOutKet{\alpha}
++\InOutBra{\beta}
 H_{\mathrm{int}}(E_\beta-H_0\mathbin{\mp}i\epsilon)^{-1}
-H_{\mathrm{int}}\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}.
+H_{\mathrm{int}}\ket{\alpha}.
 \end{align*}
 Summing over a complete set $\ket{\gamma}$ of intermediate states, this gives
 the

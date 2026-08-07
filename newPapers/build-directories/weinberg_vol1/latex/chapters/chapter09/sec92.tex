@@ -38,13 +38,13 @@ between eigenstates $\bra{q';t'}$ and $\ket{q;t}$ of the quantum field $Q$,
 but rather $S$-matrix elements, the probability amplitudes for transitions
 between states that at $t\to-\infty$ or $t\to+\infty$ contain definite
 numbers of particles of various types. These are called `in' and `out' states,
-$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\beta}_{\mathrm{out}}$, where $\alpha$
+$\InKet{\alpha}$ and $\OutKet{\beta}$, where $\alpha$
 and $\beta$ denote sets of particles characterized by the various particles'
 momenta, spin $z$-component (or helicity), and species. To calculate a matrix
 element of a time-ordered product (perhaps empty) between such states, we
 need to multiply Eq. \eqref{eq:9.2.1} by the `wave functions'
-${}_{\mathrm{out}}\braket{\beta}{q';t'}$ and
-$\braket{q;t}{\alpha}_{\mathrm{in}}$ at any fixed times $t$ and $t'$, taken
+$\OutBra{\beta}\ket{q';t'}$ and
+$\bra{q;t}\InKet{\alpha}$ at any fixed times $t$ and $t'$, taken
 for convenience here to be $-\infty$ and $+\infty$, respectively, and then
 perform an integral over the `arguments' $q_m(\mathbf{x})$ and
 $q'_m(\mathbf{x})$ of these wave functions. But instead of constraining the
@@ -60,9 +60,9 @@ just as well do an unconstrained integral over $q_m(\mathbf{x},\tau)$ (and
 also over $p_m(\mathbf{x},\tau)$), and set the arguments of the wave
 functions equal to the values given by Eq. \eqref{eq:9.2.2}:
 \begin{align}
-  &{}_{\mathrm{out}}\bra{\beta}T\left\{
+  &\OutBra{\beta}T\left\{
   \mathcal{O}_A[P(t_A),Q(t_A)],
-  \mathcal{O}_B[P(t_B),Q(t_B)],\ldots\right\}\ket{\alpha}_{\mathrm{in}}
+  \mathcal{O}_B[P(t_B),Q(t_B)],\ldots\right\}\InKet{\alpha}
   \notag\\
   &\quad={}
   \int\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)
@@ -74,8 +74,8 @@ functions equal to the values given by Eq. \eqref{eq:9.2.2}:
   -H[q(\tau),p(\tau)]\right\}\right]
   \notag\\
   &\qquad\cdot
-  {}_{\mathrm{out}}\braket{\beta}{q(+\infty);+\infty}
-  \braket{q(-\infty);-\infty}{\alpha}_{\mathrm{in}}.
+  \OutBra{\beta}\ket{q(+\infty);+\infty}
+  \bra{q(-\infty);-\infty}\InKet{\alpha}.
   \tag{9.2.3}\label{eq:9.2.3}
 \end{align}
 Incidentally, this result leads immediately\footnote{It is only necessary to
@@ -83,7 +83,7 @@ note that, for a Hamiltonian
 $H[P(t),Q(t)]+\sum_A\int d^3x\,\epsilon_A(\mathbf{x},t)
 \mathcal{O}_A(\mathbf{x},t)$, the $S$-matrix is given by Eq. \eqref{eq:9.2.3} as
 \begin{align*}
-  {}_{\mathrm{out}}\braket{\beta}{\alpha}_{\mathrm{in},\epsilon}
+  \OutBra{\beta}\InKetWith{\alpha}{\epsilon}
   ={}&\int\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)
   \prod_{\tau,\mathbf{x},m}\frac{dp_m(\mathbf{x},\tau)}{2\pi}
   \\
@@ -93,8 +93,8 @@ $H[P(t),Q(t)]+\sum_A\int d^3x\,\epsilon_A(\mathbf{x},t)
   -\sum_A\int d^3x\,\epsilon_A(\mathbf{x},t)
   \mathcal{O}_A(\mathbf{x},t)\right\}\right]
   \\
-  &\cdot{}_{\mathrm{out}}\braket{\beta}{q(+\infty);+\infty}
-  \braket{q(-\infty);-\infty}{\alpha}_{\mathrm{in}}.
+  &\cdot\OutBra{\beta}\ket{q(+\infty);+\infty}
+  \bra{q(-\infty);-\infty}\InKet{\alpha}.
 \end{align*}
 The left-hand side of Eq. \eqref{eq:6.4.3} is the derivative of this expression with
 respect to $\epsilon_A$, $\epsilon_B$, etc., at $\epsilon=0$, which yields
@@ -112,9 +112,9 @@ time-ordered products.) We assume as usual that for $t\to\mp\infty$, matrix
 elements may be calculated as if there were no interactions. The `in' and
 `out' vacua may thus be defined by the conditions
 \begin{equation}
-  a_{\mathbf{p},\sigma,n,\mathrm{in}}\ket{\Omega}_{\mathrm{in}}=0,
+  a_{\mathbf{p},\sigma,n,\mathrm{in}}\InKet{\Omega}=0,
   \qquad
-  a_{\mathbf{p},\sigma,n,\mathrm{out}}\ket{\Omega}_{\mathrm{out}}=0,
+  a_{\mathbf{p},\sigma,n,\mathrm{out}}\OutKet{\Omega}=0,
   \tag{9.2.4}\label{eq:9.2.4}
 \end{equation}
 where $a_{\mathbf{p},\sigma,n,\mathrm{in}}$ and
@@ -159,13 +159,13 @@ read
 \begin{equation}
   0=\int d^3x\,e^{-i\mathbf{p}\cdot\mathbf{x}}
   \left[\frac{\delta}{\delta\phi(\mathbf{x})}+E(\mathbf{p})\phi(\mathbf{x})\right]
-  \braket{\phi(\mathbf{x});\mp\infty}{\Omega}_{\substack{\mathrm{in}\\\mathrm{out}}}.
+  \bra{\phi(\mathbf{x});\mp\infty}\InOutKet{\Omega}.
   \tag{9.2.8}\label{eq:9.2.8}
 \end{equation}
 The analogous ordinary differential equation has a well-known Gaussian
 solution, so let's try a Gaussian ansatz here:
 \begin{equation}
-  \braket{\phi(\mathbf{x});\mp\infty}{\Omega}_{\substack{\mathrm{in}\\\mathrm{out}}}
+  \bra{\phi(\mathbf{x});\mp\infty}\InOutKet{\Omega}
   =\mathcal{N}\exp\left(-\frac12\int d^3x\,d^3y\,
   \mathcal{E}(\mathbf{x},\mathbf{y})\phi(\mathbf{x})\phi(\mathbf{y})\right),
   \tag{9.2.9}\label{eq:9.2.9}
@@ -208,8 +208,8 @@ the vacuum state, but we will not need this result.
 According to Eq. \eqref{eq:9.2.9}, in calculating vacuum expectation values in the
 theory of a scalar field, the product of the last two factors in Eq. \eqref{eq:9.2.3} is
 \begin{align}
-  &{}_{\mathrm{out}}\braket{\Omega}{\phi(+\infty);+\infty}
-  \braket{\phi(-\infty);-\infty}{\Omega}_{\mathrm{in}}
+  &\OutBra{\Omega}\ket{\phi(+\infty);+\infty}
+  \bra{\phi(-\infty);-\infty}\InKet{\Omega}
   \notag\\
   &\quad={}|\mathcal{N}|^2\exp\left(-\frac12\int d^3x\,d^3y\,
   \mathcal{E}(\mathbf{x},\mathbf{y})
@@ -231,9 +231,9 @@ we have used the fact that for any reasonably smooth function $f(\tau)$,
 \end{equation}
 Inserting Eq. \eqref{eq:9.2.14} in Eq. \eqref{eq:9.2.3} now gives
 \begin{align}
-  &{}_{\mathrm{out}}\bra{\Omega}T\left\{
+  &\OutBra{\Omega}T\left\{
   \mathcal{O}_A[\Pi(t_A),\Phi(t_A)],
-  \mathcal{O}_B[\Pi(t_B),\Phi(t_B)],\ldots\right\}\ket{\Omega}_{\mathrm{in}}
+  \mathcal{O}_B[\Pi(t_B),\Phi(t_B)],\ldots\right\}\InKet{\Omega}
   \notag\\
   &\quad={}|\mathcal{N}|^2\int
   \prod_{\tau,\mathbf{x}}d\phi(\mathbf{x},\tau)
@@ -257,9 +257,9 @@ in the denominator of the scalar field propagator in momentum space,
 $[p^2+m^2-i\epsilon]^{-1}$. We will not go into the corresponding details
 for fields of general spin, but will simply state that in general
 \begin{align}
-  &{}_{\mathrm{out}}\bra{\Omega}T\left\{
+  &\OutBra{\Omega}T\left\{
   \mathcal{O}_A[P_A(t_A),Q(t_A)],
-  \mathcal{O}_B[P_B(t_B),Q(t_B)],\ldots\right\}\ket{\Omega}_{\mathrm{in}}
+  \mathcal{O}_B[P_B(t_B),Q(t_B)],\ldots\right\}\InKet{\Omega}
   \notag\\
   &\quad={}|\mathcal{N}|^2\int
   \left[\prod_{\tau,\mathbf{x},m}dq_m(\mathbf{x},\tau)\right]
@@ -277,11 +277,11 @@ $-i\epsilon$ in the denominators of all propagators.
 This is a good place to mention that field-independent factors in Eq. \eqref{eq:9.2.17},
 like the constant $|\mathcal{N}|^2$, are not important. This is because such
 factors contribute also to the matrix element
-${}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in}}$. In calculating the
+$\OutBra{\Omega}\InKet{\Omega}$. In calculating the
 \emph{connected} part of vacuum expectation values of time-ordered products
 (or the $S$-matrix) we eliminate the contribution of disconnected vacuum
 fluctuation subgraphs by dividing by
-${}_{\mathrm{out}}\braket{\Omega}{\Omega}_{\mathrm{in}}$, and any constant
+$\OutBra{\Omega}\InKet{\Omega}$, and any constant
 factors in the vacuum expectation values cancel in this ratio.
 
 We could go on and calculate matrix elements between multi-particle states,

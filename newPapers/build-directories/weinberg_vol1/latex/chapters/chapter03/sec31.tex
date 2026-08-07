@@ -54,9 +54,8 @@ $\delta_{\sigma'\sigma}\exp(i\sigma\theta(\Lambda,p))$, where $\theta$ is
 the angle defined by Eq.~\eqref{eq:2.5.43}.) The states are normalized as in
 Eq.~\eqref{eq:2.5.19}:
 \begin{align}
-&\bigl\langle p'_1,\sigma'_1,n'_1;\,p'_2,\sigma'_2,n'_2;\,\ldots
- \bigm|
- p_1,\sigma_1,n_1;\,p_2,\sigma_2,n_2;\,\ldots\bigr\rangle
+&\braket{p'_1,\sigma'_1,n'_1;\,p'_2,\sigma'_2,n'_2;\,\ldots}
+ {p_1,\sigma_1,n_1;\,p_2,\sigma_2,n_2;\,\ldots}
 \notag\\
 &\quad={}
 \delta^3(\mathbf p'_1-\mathbf p_1)\delta_{\sigma'_1\sigma_1}
@@ -127,7 +126,7 @@ labels `$+$' and `$-$' for `in' and `out' states, respectively. This may seem
 backward, but the convention has become traditional; it arises from the signs
 in Eq.~\eqref{eq:3.1.16}. This edition writes the labels explicitly as
 `$\mathrm{in}$' and `$\mathrm{out}$'.}
-$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\alpha}_{\mathrm{out}}$
+$\InKet{\alpha}$ and $\OutKet{\alpha}$
 will be found to contain the particles described by the label $\alpha$ if
 observations are made at $t\to-\infty$ or $t\to+\infty$,
 respectively.
@@ -138,7 +137,7 @@ a state-vector $\ket{\Psi}$ describes the whole spacetime history of a system
 of particles. (This is known as the \textit{Heisenberg picture}, in
 distinction with the Schr\"odinger picture, where the operators are constant
 and the states change with time.) Thus we do \textit{not} say that
-$\ket{\alpha}_{\mathrm{in}}$ and $\ket{\alpha}_{\mathrm{out}}$ are the
+$\InKet{\alpha}$ and $\OutKet{\alpha}$ are the
 limits at $t\to-\infty$ and $t\to+\infty$ of a time-dependent state-vector
 $\ket{\Psi(t)}$.
 
@@ -164,9 +163,9 @@ finite range $\Delta E$ of energies. The `in' and `out' states are defined so
 that the superposition
 \[
 \exp(-iH\tau)\int d\alpha\,g(\alpha)
-\ket{\alpha}_{\mathrm{in/out}}
+\InOutKet{\alpha}
 =\int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
-\ket{\alpha}_{\mathrm{in/out}}
+\InOutKet{\alpha}
 \]
 has the appearance of a corresponding superposition of free-particle states
 for $\tau\ll-1/\Delta E$ or $\tau\gg+1/\Delta E$, respectively.
@@ -179,8 +178,8 @@ H=H_0+H_{\mathrm{int}},
 \tag{3.1.8}\label{eq:3.1.8}
 \end{equation}
 in such a way that $H_0$ has eigenstates $\ket{\alpha}$ that have the same
-appearance as the eigenstates $\ket{\alpha}_{\mathrm{in}}$ and
-$\ket{\alpha}_{\mathrm{out}}$ of the complete Hamiltonian,
+appearance as the eigenstates $\InKet{\alpha}$ and
+$\OutKet{\alpha}$ of the complete Hamiltonian,
 \begin{equation}
 H_0\ket{\alpha}=E_\alpha\ket{\alpha},
 \tag{3.1.9}\label{eq:3.1.9}
@@ -204,20 +203,20 @@ initial and final states.}
 
 The `in' and `out' states can now be defined as eigenstates of $H$, not $H_0$,
 \begin{equation}
-H\ket{\alpha}_{\mathrm{in/out}}
-=E_\alpha\ket{\alpha}_{\mathrm{in/out}},
+H\InOutKet{\alpha}
+=E_\alpha\InOutKet{\alpha},
 \tag{3.1.11}\label{eq:3.1.11}
 \end{equation}
 which satisfy the condition
 \begin{align}
 \int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
-\ket{\alpha}_{\mathrm{in}}
+\InKet{\alpha}
 &\longrightarrow
 \int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)\ket{\alpha}
 && (\tau\to-\infty),
 \notag\\
 \int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)
-\ket{\alpha}_{\mathrm{out}}
+\OutKet{\alpha}
 &\longrightarrow
 \int d\alpha\,e^{-iE_\alpha\tau}g(\alpha)\ket{\alpha}
 && (\tau\to+\infty).
@@ -226,16 +225,16 @@ which satisfy the condition
 Eq.~\eqref{eq:3.1.12} can be rewritten as the requirement that:
 \begin{align*}
 \exp(-iH\tau)\int d\alpha\,g(\alpha)
-\ket{\alpha}_{\mathrm{in/out}}
+\InOutKet{\alpha}
 \longrightarrow
 \exp(-iH_0\tau)\int d\alpha\,g(\alpha)\ket{\alpha}
 \end{align*}
 for $\tau\to-\infty$ or $\tau\to+\infty$, respectively. This is sometimes
 rewritten as a formula for the `in' and `out' states:
 \begin{align}
-\ket{\alpha}_{\mathrm{in}}&=\Omega(-\infty)\ket{\alpha},
+\InKet{\alpha}&=\Omega(-\infty)\ket{\alpha},
 \notag\\
-\ket{\alpha}_{\mathrm{out}}&=\Omega(+\infty)\ket{\alpha},
+\OutKet{\alpha}&=\Omega(+\infty)\ket{\alpha},
 \tag{3.1.13}\label{eq:3.1.13}
 \end{align}
 where
@@ -257,8 +256,7 @@ $\tau\to\mp\infty$, i.e., the norm of the right-hand side of Eq.~\eqref{eq:3.1.1
 &\int d\alpha\,d\beta\,
 \exp\bigl(-i(E_\alpha-E_\beta)\tau\bigr)
 g(\alpha)g^*(\beta)
-{}_{\mathrm{in/out}}\!\bigl\langle\beta
-\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+\InOutBra{\beta}\InOutKet{\alpha}
 \\
 &\qquad={}
 \int d\alpha\,d\beta\,
@@ -268,8 +266,7 @@ g(\alpha)g^*(\beta)\braket{\beta}{\alpha}.
 Since this is supposed to be true for all smooth functions $g(\alpha)$, the
 scalar products must be equal:
 \begin{equation}
-{}_{\mathrm{in/out}}\!\bigl\langle\beta
-\bigm|\alpha\bigr\rangle_{\mathrm{in/out}}
+\InOutBra{\beta}\InOutKet{\alpha}
 =\braket{\beta}{\alpha}=\delta(\beta-\alpha).
 \tag{3.1.15}\label{eq:3.1.15}
 \end{equation}
@@ -278,8 +275,8 @@ It is useful for some purposes to have an explicit though formal solution of
 the energy eigenvalue equation \eqref{eq:3.1.11} satisfying the conditions \eqref{eq:3.1.12}.
 For this purpose, write Eq.~\eqref{eq:3.1.11} as
 \[
-(E_\alpha-H_0)\ket{\alpha}_{\mathrm{in/out}}
-=H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in/out}}.
+(E_\alpha-H_0)\InOutKet{\alpha}
+=H_{\mathrm{int}}\InOutKet{\alpha}.
 \]
 The operator $E_\alpha-H_0$ is not invertible; it annihilates not only the
 free-particle state $\ket{\alpha}$, but also the continuum of other
@@ -288,23 +285,23 @@ free-particle states $\ket{\beta}$ of the same energy. Since the `in' and
 tentatively write the formal solutions as $\ket{\alpha}$ plus a term
 proportional to $H_{\mathrm{int}}$:
 \begin{align}
-\ket{\alpha}_{\mathrm{in}}
+\InKet{\alpha}
 &=\ket{\alpha}+(E_\alpha-H_0+i\epsilon)^{-1}
-H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in}},
+H_{\mathrm{int}}\InKet{\alpha},
 \notag\\
-\ket{\alpha}_{\mathrm{out}}
+\OutKet{\alpha}
 &=\ket{\alpha}+(E_\alpha-H_0-i\epsilon)^{-1}
-H_{\mathrm{int}}\ket{\alpha}_{\mathrm{out}},
+H_{\mathrm{int}}\OutKet{\alpha},
 \tag{3.1.16}\label{eq:3.1.16}
 \end{align}
 or, expanding in a complete set of free-particle states,
 \begin{align}
-\ket{\alpha}_{\mathrm{in}}
+\InKet{\alpha}
 &=\ket{\alpha}+\int d\beta\,
 \frac{T^{\mathrm{in}}_{\beta\alpha}\ket{\beta}}
 {E_\alpha-E_\beta+i\epsilon},
 \notag\\
-\ket{\alpha}_{\mathrm{out}}
+\OutKet{\alpha}
 &=\ket{\alpha}+\int d\beta\,
 \frac{T^{\mathrm{out}}_{\beta\alpha}\ket{\beta}}
 {E_\alpha-E_\beta-i\epsilon},
@@ -312,7 +309,7 @@ or, expanding in a complete set of free-particle states,
 \end{align}
 \begin{equation}
 T^{\mathrm{in/out}}_{\beta\alpha}
-\equiv\bra{\beta}H_{\mathrm{int}}\ket{\alpha}_{\mathrm{in/out}},
+\equiv\bra{\beta}H_{\mathrm{int}}\InOutKet{\alpha},
 \tag{3.1.18}\label{eq:3.1.18}
 \end{equation}
 with $\epsilon$ a positive infinitesimal quantity, inserted to give meaning to
@@ -326,9 +323,9 @@ $-i\epsilon$ in the denominator, satisfies the condition \eqref{eq:3.1.12} for a
 `in' or an `out' state, respectively. For this purpose, consider the
 superpositions
 \begin{equation}
-\ket{\Psi_g(t)}_{\mathrm{in/out}}
+\InOutKet{\Psi_g(t)}
 \equiv\int d\alpha\,e^{-iE_\alpha t}g(\alpha)
-\ket{\alpha}_{\mathrm{in/out}},
+\InOutKet{\alpha},
 \tag{3.1.19}\label{eq:3.1.19}
 \end{equation}
 \begin{equation}
@@ -336,12 +333,12 @@ superpositions
 \int d\alpha\,e^{-iE_\alpha t}g(\alpha)\ket{\alpha}.
 \tag{3.1.20}\label{eq:3.1.20}
 \end{equation}
-We want to show that $\ket{\Psi_g(t)}_{\mathrm{in}}$ and
-$\ket{\Psi_g(t)}_{\mathrm{out}}$ approach $\ket{\Phi_g(t)}$ for
+We want to show that $\InKet{\Psi_g(t)}$ and
+$\OutKet{\Psi_g(t)}$ approach $\ket{\Phi_g(t)}$ for
 $t\to-\infty$ and $t\to+\infty$, respectively. Using Eq.~\eqref{eq:3.1.17} in
 Eq.~\eqref{eq:3.1.19} gives
 \begin{align}
-\ket{\Psi_g(t)}_{\mathrm{in/out}}
+\InOutKet{\Psi_g(t)}
 =\ket{\Phi_g(t)}+\int d\alpha\int d\beta\,
 \frac{e^{-iE_\alpha t}g(\alpha)
 T^{\mathrm{in/out}}_{\beta\alpha}\ket{\beta}}
@@ -379,7 +376,7 @@ $\mathcal{I}^{\mathrm{in}}_\beta$. We conclude then that
 $\mathcal{I}^{\mathrm{in}}_\beta$ vanishes for $t\to-\infty$. In the same
 way, for $t\to+\infty$ we must close the contour of integration in the lower
 half-plane, and so $\mathcal{I}^{\mathrm{out}}_\beta$ vanishes in this limit.
-We conclude that $\ket{\Psi_g(t)}_{\mathrm{in/out}}$ approaches
+We conclude that $\InOutKet{\Psi_g(t)}$ approaches
 $\ket{\Phi_g(t)}$ for $t\to\mp\infty$, in agreement with the defining
 condition \eqref{eq:3.1.12}.
 

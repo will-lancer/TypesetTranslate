@@ -15,6 +15,27 @@ frontmatter remains the primary mathematical reference.
 - Set \(\hbar=c=1\). The electron has charge \(-e\), and
   \(\alpha=e^2/(4\pi)\).
 
+## Internal indices and mode energies
+
+- Use lowercase Latin letters from the beginning of the alphabet,
+  \(a,b,c,\ldots\), for gauge-adjoint and symmetry-generator indices. Thus
+  write `A_\mu^a`, `t_a`, and `f^{abc}`, rather than versions carrying
+  `\alpha`, `\beta`, or `\gamma` as internal indices.
+- Avoid collisions within a formula or tightly connected derivation. If
+  \(a,b,c,\ldots\) already label particles, subalgebras, spatial components,
+  or another independent family, rename that family when harmless; otherwise
+  use a later lowercase Latin run such as \(r,s,t,\ldots\) for the adjoint
+  indices and state the choice. Do not reuse one letter for two index families
+  in the same expression.
+- When a quantity carries both a gauge-adjoint index and spacetime indices,
+  put the opposing scripts together: write
+  `F^a_{\mu\nu}` and `A_a^\mu`, not
+  `F^a{}_{\mu\nu}` or `A_a{}^\mu`.
+- Write the positive energy of a momentum mode as `\omega_{\mathbf k}` (or
+  `\omega_k` when the momentum variable is not bold), not `E_{\mathbf k}` or
+  `E_k`. Reserve \(E\) for a total energy, an energy eigenvalue, or a quantity
+  whose conventional name is explicitly \(E\).
+
 In the Batalin--Vilkovisky formalism, write the antifield of \(x^n\) as
 \(x_n^{\ddagger}\). The star remains reserved for ordinary complex
 conjugation or an antiparticle field.

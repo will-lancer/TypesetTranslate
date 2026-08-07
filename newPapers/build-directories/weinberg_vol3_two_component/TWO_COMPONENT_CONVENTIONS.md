@@ -109,7 +109,7 @@ For checking a translation only, assemble two Weyl fields as
 ```
 
 For another such field
-`X=(chi_alpha,bar chi^dotalpha)^T`, direct block multiplication gives
+`X=(chi_alpha,bar chi^dotalpha)^{\mathsf T}`, direct block multiplication gives
 
 ```tex
 \overline\Psi X
@@ -186,8 +186,8 @@ i\mathbf 1&0
 \end{pmatrix}
 ```
 
-maps an assembled column `(psi_alpha,bar psi^dotalpha)^T` to
-`(i bar psi,i psi)^T`.  This block check must be made before simplifying
+maps an assembled column `(psi_alpha,bar psi^dotalpha)^{\mathsf T}` to
+`(i bar psi,i psi)^{\mathsf T}`.  This block check must be made before simplifying
 any parity formula.
 
 The four-component algebra

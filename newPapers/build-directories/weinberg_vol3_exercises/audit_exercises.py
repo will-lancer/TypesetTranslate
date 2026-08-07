@@ -150,6 +150,27 @@ BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE = re.compile(
     r"(?:\{[^{}\n]*(?:in|out)[^{}\n]*\}|\\(?:mathrm|text)\{(?:in|out)\})",
     re.IGNORECASE,
 )
+RAW_EXTERNAL_ASYMPTOTIC_RE = re.compile(
+    r"(?:"
+    r"\{\}_\{?\\mathrm\{(?:in|out)\}\}?\s*\\!\s*\\bra"
+    r"|\\ket\{[^{}\n]*\}\s*_\{?\\mathrm\{(?:in|out)\}\}?"
+    r")",
+    re.IGNORECASE,
+)
+LEGACY_CH24_INTERNAL_INDEX_RE = re.compile(
+    r"\\(?:alpha|beta|gamma|delta)(?![A-Za-z])"
+)
+LEGACY_CH24_APPENDIX_INDEX_RE = re.compile(
+    r"\\(?:alpha|beta|gamma)(?![A-Za-z])"
+)
+LEGACY_BOLD_MODE_ENERGY_RE = re.compile(
+    r"(?<![A-Za-z])E_\{?\\(?:mathbf|boldsymbol)\s*"
+    r"(?:\{[kpq]\}|[kpq])\}?"
+)
+LEGACY_MODE_ENERGY_DEFINITION_RE = re.compile(
+    r"(?<![A-Za-z])E_(?:\{?[kpq]\}?)\s*(?:\\equiv|=)\s*\\sqrt"
+)
+TEXT_CONJUGATE_SUFFIX_RE = re.compile(r"\\text\{(?:H\.c\.|c\.c\.)\}")
 LITERAL_SUPPLEMENTARY_REFERENCE_RE = re.compile(
     r"\b(?P<kind>Exercise|Solution)\s+S\."
     r"(?P<chapter>\d+)\.(?P<number>\d+)\b"
@@ -1079,6 +1100,65 @@ def audit_asymptotic_notation(root: Path, audit: Audit) -> None:
             )
 
 
+def audit_notation_dictums(root: Path, audit: Audit) -> None:
+    """Enforce high-confidence mechanical parts of the notation policy."""
+
+    chapter24_checks = (
+        (
+            root / "latex/chapters/chapter24/sec241.tex",
+            LEGACY_CH24_INTERNAL_INDEX_RE,
+        ),
+        (
+            root / "latex/chapters/chapter24/appendixB.tex",
+            LEGACY_CH24_APPENDIX_INDEX_RE,
+        ),
+    )
+    for path, pattern in chapter24_checks:
+        if not path.is_file():
+            audit.failures.append(f"Missing notation-audit target: {path}")
+            continue
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        match = pattern.search(text)
+        audit.require(
+            match is None,
+            f"{path.relative_to(root)} uses a legacy Greek internal "
+            f"Lie-algebra index: {match.group(0)!r}" if match else "",
+        )
+
+    for path in (root / "latex").rglob("*.tex"):
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        raw_state = RAW_EXTERNAL_ASYMPTOTIC_RE.search(text)
+        audit.require(
+            raw_state is None,
+            f"{path.relative_to(root)} spells an asymptotic state manually "
+            f"instead of using In/Out Ket/Bra helpers: "
+            f"{raw_state.group(0)!r}" if raw_state else "",
+        )
+        text_suffix = TEXT_CONJUGATE_SUFFIX_RE.search(text)
+        audit.require(
+            text_suffix is None,
+            f"{path.relative_to(root)} uses text rather than roman math for "
+            f"a conjugate suffix: {text_suffix.group(0)!r}"
+            if text_suffix
+            else "",
+        )
+
+    exercise_root = root / "latex/exercises"
+    for path in exercise_root.rglob("*.tex"):
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        mode_energy = (
+            LEGACY_BOLD_MODE_ENERGY_RE.search(text)
+            or LEGACY_MODE_ENERGY_DEFINITION_RE.search(text)
+        )
+        audit.require(
+            mode_energy is None,
+            f"{path.relative_to(root)} uses E for an on-shell momentum-mode "
+            f"energy instead of omega: {mode_energy.group(0)!r}"
+            if mode_energy
+            else "",
+        )
+
+
 def exercise_similarity(
     records: list[tuple[int, str, str]],
     audit: Audit,
@@ -1817,6 +1897,7 @@ def main() -> int:
     audit_weinberg_prompt_integrity(root, chapters, audit)
     audit_labels(root, audit)
     audit_asymptotic_notation(root, audit)
+    audit_notation_dictums(root, audit)
     ledger = source_ledger(root, audit)
     recorder_inputs = recorded_build_inputs(root, audit)
     inventory = [

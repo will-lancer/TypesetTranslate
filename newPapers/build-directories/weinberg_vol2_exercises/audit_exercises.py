@@ -150,6 +150,50 @@ BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE = re.compile(
     r"(?:\{[^{}\n]*(?:in|out)[^{}\n]*\}|\\(?:mathrm|text)\{(?:in|out)\})",
     re.IGNORECASE,
 )
+RAW_KET_ASYMPTOTIC_SUBSCRIPT_RE = re.compile(
+    r"\\ket\{[^{}\n]*\}\s*_\s*"
+    r"(?:\{\\(?:mathrm|text)\{(?:in|out)(?:/(?:in|out))?\}\}"
+    r"|\\(?:mathrm|text)\{(?:in|out)(?:/(?:in|out))?\})",
+    re.IGNORECASE,
+)
+RAW_BRA_ASYMPTOTIC_PREFIX_RE = re.compile(
+    r"\{\}\s*_\s*\{\\(?:mathrm|text)\{(?:in|out)(?:/(?:in|out))?\}\}"
+    r"\s*(?:\\!)?\s*\\bra",
+    re.IGNORECASE,
+)
+MOMENTUM_MODE_E_RE = re.compile(
+    r"E_\s*(?:"
+    r"\{\s*\\mathbf(?:\s*\{\s*[A-Za-z]+\s*\}|\s+[A-Za-z]+(?:')?)\s*\}"
+    r"|\{\s*[kpq](?:')?\s*\}|[kpq](?:')?(?![A-Za-z]))"
+)
+GAUGE_SPACETIME_EMPTY_GROUP_RES = (
+    re.compile(
+        r"[AF]\^[a-d]\{\}_(?:"
+        r"[0-3ijk]|\\(?:mu|nu|rho|sigma|lambda|kappa)"
+        r"|\{(?:\\(?:mu|nu|rho|sigma|lambda|kappa|Lambda)|[0-3ijk])+\}"
+        r")"
+    ),
+    re.compile(
+        r"(?:[AFJD]|\\Pi)_[a-drs]\{\}\^(?:"
+        r"[0-3ijk]|\\(?:mu|nu|rho|sigma|lambda|kappa)"
+        r"|\{(?:\\(?:mu|nu|rho|sigma|lambda|kappa)|[0-3ijk])+\}"
+        r")"
+    ),
+    re.compile(
+        r"(?:[AFJD])_[a-drs]\{\}_(?:"
+        r"[0-3ijk]|\\(?:mu|nu|rho|sigma|lambda|kappa)"
+        r"|\{(?:\\(?:mu|nu|rho|sigma|lambda|kappa)|[0-3ijk])+\}"
+        r")"
+    ),
+    re.compile(
+        r"A_\{\\lambda(?:\\,)?\s*[a-d]\}\{\}"
+        r"\^(?:[03]|\\mu)"
+    ),
+    re.compile(
+        r"[AF]\^(?:[0-3ijk]|\\(?:mu|nu|rho|sigma|lambda|kappa))"
+        r"\{\}_\{[a-z]"
+    ),
+)
 LITERAL_SUPPLEMENTARY_REFERENCE_RE = re.compile(
     r"\b(?P<kind>Exercise|Solution)\s+S\."
     r"(?P<chapter>\d+)\.(?P<number>\d+)\b"
@@ -1069,6 +1113,14 @@ def audit_asymptotic_notation(root: Path, audit: Audit) -> None:
                 BRA_ASYMPTOTIC_RIGHT_SUBSCRIPT_RE,
                 "places a bra's in/out label on the right",
             ),
+            (
+                RAW_KET_ASYMPTOTIC_SUBSCRIPT_RE,
+                "spells out a ket's in/out subscript instead of using an asymptotic-state helper",
+            ),
+            (
+                RAW_BRA_ASYMPTOTIC_PREFIX_RE,
+                "spells out a bra's in/out prefix instead of using an asymptotic-state helper",
+            ),
         )
         for pattern, explanation in checks:
             match = pattern.search(text)
@@ -1076,6 +1128,37 @@ def audit_asymptotic_notation(root: Path, audit: Audit) -> None:
                 match is None,
                 f"{path.relative_to(root)} {explanation}: "
                 f"{match.group(0)!r}" if match else "",
+            )
+
+
+def audit_momentum_mode_notation(root: Path, audit: Audit) -> None:
+    """Reserve omega for on-shell energies attached to individual momentum modes."""
+
+    for path in (root / "latex").rglob("*.tex"):
+        if path.relative_to(root) == Path("latex/frontmatter/notation.tex"):
+            continue
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        match = MOMENTUM_MODE_E_RE.search(text)
+        audit.require(
+            match is None,
+            f"{path.relative_to(root)} uses {match.group(0)!r} for a momentum-mode "
+            "energy; use \\omega_k with matching variable typography" if match else "",
+        )
+
+
+def audit_gauge_spacetime_index_notation(root: Path, audit: Audit) -> None:
+    """Keep internal and spacetime scripts adjacent on gauge-covariant fields."""
+
+    for path in (root / "latex").rglob("*.tex"):
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        for pattern in GAUGE_SPACETIME_EMPTY_GROUP_RES:
+            match = pattern.search(text)
+            audit.require(
+                match is None,
+                f"{path.relative_to(root)} separates adjacent internal and "
+                f"spacetime indices with an empty group: {match.group(0)!r}"
+                if match
+                else "",
             )
 
 
@@ -1817,6 +1900,8 @@ def main() -> int:
     audit_weinberg_prompt_integrity(root, chapters, audit)
     audit_labels(root, audit)
     audit_asymptotic_notation(root, audit)
+    audit_momentum_mode_notation(root, audit)
+    audit_gauge_spacetime_index_notation(root, audit)
     ledger = source_ledger(root, audit)
     recorder_inputs = recorded_build_inputs(root, audit)
     inventory = [

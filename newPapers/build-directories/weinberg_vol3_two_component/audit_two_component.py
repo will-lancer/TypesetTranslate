@@ -61,6 +61,26 @@ REVIEW = {
 
 SUSPECTS = {**FORBIDDEN, **REVIEW}
 
+REQUIRED_ASYMPTOTIC_HELPERS = (
+    r"\newcommand{\InKet}[1]{\ket{#1}_{\mathrm{in}}}",
+    r"\newcommand{\OutKet}[1]{\ket{#1}_{\mathrm{out}}}",
+    r"\newcommand{\InBra}[1]{{}_{\mathrm{in}}\!\bra{#1}}",
+    r"\newcommand{\OutBra}[1]{{}_{\mathrm{out}}\!\bra{#1}}",
+)
+RAW_EXTERNAL_ASYMPTOTIC_RE = re.compile(
+    r"(?:"
+    r"\{\}_\{?\\mathrm\{(?:in|out)\}\}?\s*\\!\s*\\bra"
+    r"|\\ket\{[^{}\n]*\}\s*_\{?\\mathrm\{(?:in|out)\}\}?"
+    r")",
+    re.IGNORECASE,
+)
+LEGACY_CH24_INTERNAL_INDEX_RE = re.compile(
+    r"\\(?:alpha|beta|gamma|delta)(?![A-Za-z])"
+)
+LEGACY_CH24_APPENDIX_INDEX_RE = re.compile(
+    r"\\(?:alpha|beta|gamma)(?![A-Za-z])"
+)
+
 
 def tex_files(root: Path, chapter: int | None = None) -> list[Path]:
     if chapter is None:
@@ -213,6 +233,52 @@ def report_suspects() -> tuple[int, int]:
     return total, forbidden_total
 
 
+def audit_shared_notation() -> bool:
+    """Check notation rules shared with the canonical Volume III edition."""
+
+    ok = True
+    master = (EDITION / "master.tex").read_text(encoding="utf-8")
+    for helper in REQUIRED_ASYMPTOTIC_HELPERS:
+        if master.count(helper) != 1:
+            ok = False
+            print(f"NOTATION: master.tex must define exactly once: {helper}")
+
+    chapter24_checks = (
+        (
+            EDITION / "chapters/chapter24/sec241.tex",
+            LEGACY_CH24_INTERNAL_INDEX_RE,
+        ),
+        (
+            EDITION / "chapters/chapter24/appendixB.tex",
+            LEGACY_CH24_APPENDIX_INDEX_RE,
+        ),
+    )
+    for path, pattern in chapter24_checks:
+        match = pattern.search(path.read_text(encoding="utf-8"))
+        if match:
+            ok = False
+            print(
+                "NOTATION: legacy Greek internal Lie-algebra index in "
+                f"{path.relative_to(EDITION)}: {match.group(0)!r}"
+            )
+
+    for path in EDITION.rglob("*.tex"):
+        if path == EDITION / "master.tex":
+            continue
+        match = RAW_EXTERNAL_ASYMPTOTIC_RE.search(
+            path.read_text(encoding="utf-8")
+        )
+        if match:
+            ok = False
+            print(
+                "NOTATION: manual asymptotic-state spelling in "
+                f"{path.relative_to(EDITION)}: {match.group(0)!r}"
+            )
+    if ok:
+        print("SHARED NOTATION: OK")
+    return ok
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -223,8 +289,9 @@ def main() -> int:
     args = parser.parse_args()
     inventory_ok = compare_inventory()
     _, forbidden_total = report_suspects()
+    notation_ok = audit_shared_notation()
     strict_ok = not args.strict or forbidden_total == 0
-    return 0 if inventory_ok and strict_ok else 1
+    return 0 if inventory_ok and notation_ok and strict_ok else 1
 
 
 if __name__ == "__main__":

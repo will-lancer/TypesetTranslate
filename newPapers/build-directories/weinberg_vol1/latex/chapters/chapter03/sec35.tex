@@ -45,11 +45,11 @@ perturbation theory, an expansion in powers of the interaction term $H_{\mathrm{
 Hamiltonian $H=H_0+H_{\mathrm{int}}$. Eqs. \eqref{eq:3.2.7} and \eqref{eq:3.1.18} give the $S$-matrix as
 \[
  S_{\beta\alpha}=\delta(\beta-\alpha)-2\pi i\delta(E_\beta-E_\alpha)T^+_{\beta\alpha},
- \qquad T^+_{\beta\alpha}=\langle\beta|H_{\mathrm{int}}|\alpha\rangle_{\mathrm{in}},
+ \qquad T^+_{\beta\alpha}=\bra{\beta}H_{\mathrm{int}}\InKet{\alpha},
 \]
-where $\ket{\alpha}_{\mathrm{in}}$ satisfies the Lippmann--Schwinger equation \eqref{eq:3.1.17}:
+where $\InKet{\alpha}$ satisfies the Lippmann--Schwinger equation \eqref{eq:3.1.17}:
 \[
- \ket{\alpha}_{\mathrm{in}}=\ket{\alpha}
+ \InKet{\alpha}=\ket{\alpha}
  +\int d\gamma\,\frac{T^+_{\gamma\alpha}\ket{\gamma}}{E_\alpha-E_\gamma+i\epsilon}.
 \]
 Operating on this equation with $H_{\mathrm{int}}$ and taking the scalar product with
@@ -63,7 +63,7 @@ $\ket{\beta}$ yields an integral equation for $T^+$
 where
 \begin{equation}
  (H_{\mathrm{int}})_{\beta\alpha}\equiv
- \langle\beta|H_{\mathrm{int}}|\alpha\rangle.
+ \bra{\beta}H_{\mathrm{int}}\ket{\alpha}.
  \tag{3.5.2}\label{eq:3.5.2}
 \end{equation}
 The perturbation series for $T^+_{\beta\alpha}$ is obtained by iteration from Eq. \eqref{eq:3.5.1}
@@ -277,35 +277,35 @@ contains two terms
  H_{\mathrm{int}}=H_s+H_w
  \tag{3.5.19}\label{eq:3.5.19}
 \end{equation}
-with $H_w$ weak but $H_s$ strong. We can define $\ket{\alpha;s}_{\mathrm{in/out}}$ as what the
+with $H_w$ weak but $H_s$ strong. We can define $\InOutKet{\alpha;s}$ as what the
 `in' and `out' states would be if $H_s$ were the whole interaction
 \begin{equation}
- \ket{\alpha;s}_{\mathrm{in/out}}=\ket{\alpha}
- +(E_\alpha-H_0\pm i\epsilon)^{-1}H_s\ket{\alpha;s}_{\mathrm{in/out}}.
+ \InOutKet{\alpha;s}=\ket{\alpha}
+ +(E_\alpha-H_0\pm i\epsilon)^{-1}H_s\InOutKet{\alpha;s}.
  \tag{3.5.20}\label{eq:3.5.20}
 \end{equation}
 We can then write \eqref{eq:3.1.16} as
 \begin{align*}
  T^+_{\beta\alpha}
- &=\langle\beta|H_{\mathrm{int}}|\alpha\rangle_{\mathrm{in}}\\
- &=\left({}_{\mathrm{out}}\!\langle\beta;s|-{}_{\mathrm{out}}\!\langle\beta;s|H_s(E_\beta-H_0+i\epsilon)^{-1}\right)
- (H_s+H_w)\ket{\alpha}_{\mathrm{in}}\\
- &={}_{\mathrm{out}}\!\langle\beta;s|H_w|\alpha\rangle_{\mathrm{in}}\\
- &\quad+{}_{\mathrm{out}}\!\langle\beta;s|
+ &=\bra{\beta}H_{\mathrm{int}}\InKet{\alpha}\\
+ &=\left(\OutBra{\beta;s}-\OutBra{\beta;s}H_s(E_\beta-H_0+i\epsilon)^{-1}\right)
+ (H_s+H_w)\InKet{\alpha}\\
+ &=\OutBra{\beta;s}H_w\InKet{\alpha}\\
+ &\quad+\OutBra{\beta;s}
  [H_s-H_s(E_\beta-H_0+i\epsilon)^{-1}(H_s+H_w)]
- |\alpha\rangle_{\mathrm{in}},
+ \InKet{\alpha},
 \end{align*}
 and so
 \begin{equation}
- T^+_{\beta\alpha}={}_{\mathrm{out}}\!\langle\beta;s|H_w|\alpha\rangle_{\mathrm{in}}
- +{}_{\mathrm{out}}\!\langle\beta;s|H_s|\alpha\rangle.
+ T^+_{\beta\alpha}=\OutBra{\beta;s}H_w\InKet{\alpha}
+ +\OutBra{\beta;s}H_s\ket{\alpha}.
  \tag{3.5.21}\label{eq:3.5.21}
 \end{equation}
 The second term on the right-hand side is just what $T^+_{s,\beta\alpha}$ would be in the
 presence of strong interactions alone
 \begin{equation}
- T^+_{s,\beta\alpha}=\langle\beta|H_s|\alpha;s\rangle_{\mathrm{in}}
- ={}_{\mathrm{out}}\!\langle\beta;s|H_s|\alpha\rangle.
+ T^+_{s,\beta\alpha}=\bra{\beta}H_s\InKet{\alpha;s}
+ =\OutBra{\beta;s}H_s\ket{\alpha}.
  \tag{3.5.22}\label{eq:3.5.22}
 \end{equation}
 (For a proof of Eq. \eqref{eq:3.5.22}, just drop $H_w$ everywhere in the derivation of Eq. \eqref{eq:3.5.21}.)
@@ -315,17 +315,17 @@ beta decay we need a weak nuclear force to turn neutrons into protons, even thou
 ignore the presence of the strong nuclear force acting in the initial and final nuclear states.)
 For such processes, the matrix element \eqref{eq:3.5.22} vanishes, so Eq. \eqref{eq:3.5.21} reads
 \begin{equation}
- T^+_{\beta\alpha}={}_{\mathrm{out}}\!\langle\beta;s|H_w|\alpha\rangle_{\mathrm{in}}.
+ T^+_{\beta\alpha}=\OutBra{\beta;s}H_w\InKet{\alpha}.
  \tag{3.5.23}\label{eq:3.5.23}
 \end{equation}
 So far, this is all exact. However, this way of rewriting the $T$-matrix becomes worthwhile when
-$H_w$ is so weak that we may neglect its effect on the state $\ket{\alpha}_{\mathrm{in}}$ in
-Eq. \eqref{eq:3.5.23}, and hence replace $\ket{\alpha}_{\mathrm{in}}$ with the state
-$\ket{\alpha;s}_{\mathrm{in}}$, which takes account only of the strong interaction $H_s$. In this
+$H_w$ is so weak that we may neglect its effect on the state $\InKet{\alpha}$ in
+Eq. \eqref{eq:3.5.23}, and hence replace $\InKet{\alpha}$ with the state
+$\InKet{\alpha;s}$, which takes account only of the strong interaction $H_s$. In this
 approximation, Eq. \eqref{eq:3.5.23} becomes
 \begin{equation}
  T^+_{\beta\alpha}\simeq
- {}_{\mathrm{out}}\!\langle\beta;s|H_w|\alpha;s\rangle_{\mathrm{in}}.
+ \OutBra{\beta;s}H_w\InKet{\alpha;s}.
  \tag{3.5.24}\label{eq:3.5.24}
 \end{equation}
 This is valid to first order in $H_w$, but to all orders in $H_s$. This approximation is ubiquitous

@@ -14,6 +14,12 @@ frontmatter remains the primary mathematical reference.
 - Use \(\epsilon^{0123}=+1\).
 - Set \(\hbar=c=1\), and measure temperature in energy units. The electron has
   charge \(-e\), and \(\alpha=e^2/(4\pi)\).
+- Write a positive momentum-mode energy as
+  \(\omega_{\mathbf{k}}=\sqrt{\mathbf{k}^2+m^2}\), or as \(\omega_k\) when
+  the momentum label is not bold. Do not use \(E_k\), \(E_{\mathbf p}\), and
+  similar \(E\)-notation for an on-shell mode energy. This does not rename a
+  total energy or an independently named field such as the charged-lepton
+  superfield \(E_k\).
 
 Volume III uses Weinberg's conventional four-component Dirac/Majorana
 formalism except during the initial construction of the supersymmetry algebra
@@ -21,6 +27,19 @@ and multiplets. Four-component spinor indices are
 \(\alpha,\beta,\ldots\); two-component indices are \(a,b,\ldots\); symmetry
 generators are labelled \(A,B,\ldots\). Do not import the separate
 two-component-edition conventions.
+
+Internal and gauge-adjoint indices that were written with the beginning of
+the Greek alphabet are modernized to lower-case Latin \(a,b,c,\ldots\).
+When a formula also uses \(a,b,\ldots\) as two-component spinor indices, use
+the non-colliding Latin family \(r,s,t,\ldots\) for the adjoint indices and
+state that choice locally. The established upper-case Latin \(A,B,C,\ldots\)
+generator family in later Volume III chapters remains valid; do not turn it
+back into a Greek family.
+
+When a quantity carries both a gauge-adjoint index and spacetime indices,
+put the opposing scripts together: write
+`F^a_{\mu\nu}` and `A_a^\mu`, not
+`F^a{}_{\mu\nu}` or `A_a{}^\mu`.
 
 ## Product notation
 
@@ -45,9 +64,9 @@ never as a superscript:
 
 ```tex
 \InKet{\alpha}     % \ket{\alpha}_{\mathrm{in}}
-\OutKet{\beta}    % \ket{\beta}_{\mathrm{out}}
+\OutKet{\beta}     % \ket{\beta}_{\mathrm{out}}
 \InBra{\alpha}    % {}_{\mathrm{in}}\!\bra{\alpha}
-\OutBra{\beta}    % {}_{\mathrm{out}}\!\bra{\beta}
+\OutBra{\beta}     % {}_{\mathrm{out}}\!\bra{\beta}
 ```
 
 For example, write
