@@ -29,3 +29,4 @@ Completed:
     - There is also a version of vol. III with two-component spinor notation implemented throughout
 - Weinberg's GR
     - There is also an edited version with exercises + solutions after each chapter
+- Wald's GR
