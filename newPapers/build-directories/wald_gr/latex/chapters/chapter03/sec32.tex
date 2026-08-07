@@ -1,0 +1,317 @@
+% Source: Wald GR, physical PDF pp. 49--54
+%         (printed pp. 36--41).
+% Coverage: Section 3.2, Curvature; equations (3.2.1)--(3.2.32).
+% Figures/tables/footnotes: Figure 3.3; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none; a printed-source typo is corrected below.
+
+\subsection{Curvature}\label{sec:3.2}
+
+In the previous section we showed that given a derivative operator, there exists a
+notion of how to parallel transport a vector from $p$ to $q$ along a curve $C$. However,
+the vector in $T_qM$ which we get by this parallel transport procedure starting from a
+vector in $T_pM$ will, in general, depend on the choice of curve connecting them. As
+already indicated in the discussion at the beginning of this chapter, we can use the
+path dependence of parallel transport to define an intrinsic notion of curvature. In this
+section we carry out this program by first defining the Riemann curvature tensor in
+terms of the failure of successive operations of differentiation to commute when
+applied to a covector field. Then we show that this tensor is directly related to the
+path-dependent nature of parallel transport; specifically, the failure of a vector to
+return to its original value when parallel transported around a small closed loop is
+governed by the Riemann tensor. In the next section we will show that the Riemann
+tensor also fully describes the other characterization of curvature mentioned above:
+the failure of initially parallel geodesics to remain parallel.
+
+Let $\nabla_a$ be a derivative operator. Let $\omega_a$ be a covector field and let $f$ be a smooth
+function. We calculate the action of two derivative operators applied to $f\omega_a$,
+\begin{equation}
+  \begin{aligned}
+    \nabla_a\nabla_b(f\omega_c)
+    &=\nabla_a(\omega_c\nabla_bf+f\nabla_b\omega_c)\\
+    &=(\nabla_a\nabla_bf)\omega_c+\nabla_bf\nabla_a\omega_c
+      +\nabla_af\nabla_b\omega_c+f\nabla_a\nabla_b\omega_c.
+  \end{aligned}
+  \tag{3.2.1}\label{eq:3.2.1}
+\end{equation}
+If we subtract from this the tensor $\nabla_b\nabla_a(f\omega_c)$, the first three terms of the right-hand
+side of Eq.~\eqref{eq:3.2.1} will cancel the corresponding terms of the expression for
+$\nabla_b\nabla_a(f\omega_c)$ and we obtain the simple result,
+\begin{equation}
+  (\nabla_a\nabla_b-\nabla_b\nabla_a)(f\omega_c)
+  =f(\nabla_a\nabla_b-\nabla_b\nabla_a)\omega_c.
+  \tag{3.2.2}\label{eq:3.2.2}
+\end{equation}
+By exactly the same reasoning as given above in the discussion of derivative operators (see Eq.~\eqref{eq:3.1.3}), it follows that the tensor
+$(\nabla_a\nabla_b-\nabla_b\nabla_a)\omega_c$ at point $p$ depends
+only on the value of $\omega_c$ at $p$. Consequently,
+$(\nabla_a\nabla_b-\nabla_b\nabla_a)$ defines a linear map from
+covectors at $p$ to type $(0,3)$ tensors at $p$; i.e., its action is that of a tensor of type
+$(1,3)$. Thus, we have shown that there exists a tensor field $R_{abc}{}^d$ such that for all
+covector fields $\omega_c$, we have
+\begin{equation}
+  \nabla_a\nabla_b\omega_c-\nabla_b\nabla_a\omega_c=R_{abc}{}^d\omega_d.
+  \tag{3.2.3}\label{eq:3.2.3}
+\end{equation}
+$R_{abc}{}^d$ is called the \emph{Riemann curvature tensor}.
+
+We first show that $R_{abc}{}^d$ is directly related to the failure of a vector to return to its
+initial value when parallel transported around a small closed curve. We can conveniently construct a small closed loop at $p\in M$ by choosing a two-dimensional
+surface $S$ through $p$ and choosing coordinates $t$ and $s$ in the surface [with the
+coordinates of $p$ chosen, for simplicity, to be $(0,0)$]. Consider the loop formed by
+moving $\Delta t$ along the $s=0$ curve, followed by moving $\Delta s$ along the $t=\Delta t$ curve,
+and then moving back by $\Delta t$ and $\Delta s$ as illustrated in Fig.~\ref{fig:3.3}. Let $v^a$ be a vector
+at $p$ (not necessarily tangent to $S$) and let us parallel transport $v^a$ around this closed
+
+\input{figures/chapter03/fig33.tex}
+
+loop. It is easiest to compute the change in $v^a$ when we return to $p$ by letting $\omega_a$ be
+an arbitrary covector field and finding the change in the scalar $v^a\omega_a$ as we traverse
+the loop. For small $\Delta t$ the change, $\delta_1$, in $v^a\omega_a$ on the first leg of the path is
+\begin{equation}
+  \delta_1=\left.\Delta t\frac{\partial}{\partial t}(v^a\omega_a)\right|_{(\Delta t/2,0)},
+  \tag{3.2.4}\label{eq:3.2.4}
+\end{equation}
+where, by evaluating the derivative at the midpoint, we have ensured that this
+expression is accurate to second order in the displacement $\Delta t$. We may rewrite $\delta_1$ as
+\begin{equation}
+  \begin{aligned}
+    \delta_1
+    &=\left.\Delta t\,T^b\nabla_b(v^a\omega_a)\right|_{(\Delta t/2,0)}\\
+    &=\left.\Delta t\,v^aT^b\nabla_b\omega_a\right|_{(\Delta t/2,0)},
+  \end{aligned}
+  \tag{3.2.5}\label{eq:3.2.5}
+\end{equation}
+where $T^b$ is the tangent to the curves of constant $s$ and $T^b\nabla_bv^a=0$ by
+Eq.~\eqref{eq:3.1.16}. Similar expressions hold for the changes $\delta_2$, $\delta_3$, and
+$\delta_4$ on the other parts of the path. The two \lq\lq $\Delta t$ variations,\rq\rq\ $\delta_1$ and
+$\delta_3$, combine to yield
+\begin{equation}
+  \delta_1+\delta_3
+  =\Delta t\left\{
+  \left.v^aT^b\nabla_b\omega_a\right|_{(\Delta t/2,0)}
+  -\left.v^aT^b\nabla_b\omega_a\right|_{(\Delta t/2,\Delta s)}
+  \right\},
+  \tag{3.2.6}\label{eq:3.2.6}
+\end{equation}
+and $\delta_2$ and $\delta_4$ combine similarly. Since the term in brackets vanishes as
+$\Delta s\to0$, this shows that to first order in $\Delta t$ and $\Delta s$, the total change in $v^a\omega_a$
+(and thus the total change in $v^a$) vanishes; i.e., parallel transport is path-independent
+to \emph{first order} in $\Delta t$ and $\Delta s$. To calculate the second order change in $v^a\omega_a$, we need to evaluate the
+term in brackets in Eq.~\eqref{eq:3.2.6} to first order. We do this by the following
+procedure: We consider the curve $t=\Delta t/2$ and imagine parallel transporting $v^a$ and
+$T^b\nabla_b\omega_a$ along this curve from $(\Delta t/2,0)$ to $(\Delta t/2,\Delta s)$. Now to first order in
+$\Delta s$, $v^a$ at $(\Delta t/2,\Delta s)$ equals the parallel transport of $v^a$ at $(\Delta t/2,0)$ along this curve since,
+as remarked above, parallel transport is path-independent to first order. On the other
+hand, to first order, the term $T^b\nabla_b\omega_a$ at $(\Delta t/2,\Delta s)$ will differ from the parallel
+transport of that quantity from $(\Delta t/2,0)$ by the amount
+$\Delta sS^c\nabla_c(T^b\nabla_b\omega_a)$, where $S^c$ is the tangent to the curves of constant $t$. Hence, the term in
+brackets is just this quantity contracted with $v^a$. Thus, to second order in $\Delta t$, $\Delta s$, we find
+\begin{equation}
+  \delta_1+\delta_3=-\Delta t\Delta s\,v^aS^c\nabla_c(T^b\nabla_b\omega_a),
+  \tag{3.2.7}\label{eq:3.2.7}
+\end{equation}
+where, to this accuracy, we may evaluate all tensors at $p$. Adding the similar
+contribution for $\delta_2$ and $\delta_4$, we find the total change in $v^a\omega_a$ is
+\begin{equation}
+  \begin{aligned}
+    \delta(v^a\omega_a)
+    &={}\Delta t\Delta s\,v^a\bigl\{T^c\nabla_c(S^b\nabla_b\omega_a)
+      -S^c\nabla_c(T^b\nabla_b\omega_a)\bigr\}\\
+    &={}\Delta t\Delta s\,v^aT^cS^b(\nabla_c\nabla_b-\nabla_b\nabla_c)\omega_a\\
+    &={}\Delta t\Delta s\,v^aT^cS^bR_{cba}{}^d\omega_d,
+  \end{aligned}
+  \tag{3.2.8}\label{eq:3.2.8}
+\end{equation}
+where in the second line we used the fact that the coordinate vector fields $T^a$ and $S^b$
+commute (see the end of section 2.2 and Eq.~\eqref{eq:3.1.2}) and we used the definition of
+the Riemann tensor Eq.~\eqref{eq:3.2.3} in the last step. But Eq.~\eqref{eq:3.2.8} can hold
+for all $\omega_a$ if and only if the total change in $v^a$ (accurate to second order in $\Delta t$ and $\Delta s$)
+is
+\begin{equation}
+  \delta v^a=\Delta t\Delta s\,v^dT^cS^bR_{cbd}{}^a.
+  \tag{3.2.9}\label{eq:3.2.9}
+\end{equation}
+This is the desired result. It shows that the Riemann tensor indeed directly measures
+the path dependence of parallel transport.
+
+Using Eq.~\eqref{eq:3.2.3} we may---by a procedure completely analogous to the
+derivation of Eq.~\eqref{eq:3.1.14}---express the action of the commutator of derivative
+operators on arbitrary tensor fields in terms of the Riemann tensor. To find the
+expression for a vector field $t^a$, we let $\omega_a$ be a covector field. Then using property
+5 of derivative operators together with the Leibniz rule and Eq.~\eqref{eq:3.2.3}, we find
+\begin{equation}
+  \begin{aligned}
+    0
+    &=(\nabla_a\nabla_b-\nabla_b\nabla_a)(t^c\omega_c)\\
+    &=\nabla_a(\omega_c\nabla_bt^c+t^c\nabla_b\omega_c)
+      -\nabla_b(\omega_c\nabla_at^c+t^c\nabla_a\omega_c)\\
+    &=\omega_c(\nabla_a\nabla_b-\nabla_b\nabla_a)t^c
+      +t^c(\nabla_a\nabla_b-\nabla_b\nabla_a)\omega_c\\
+    &=\omega_c(\nabla_a\nabla_b-\nabla_b\nabla_a)t^c+t^c\omega_dR_{abc}{}^d.
+  \end{aligned}
+  \tag{3.2.10}\label{eq:3.2.10}
+\end{equation}
+Thus, we obtain
+\begin{equation}
+  (\nabla_a\nabla_b-\nabla_b\nabla_a)t^c=-R_{abd}{}^ct^d.
+  \tag{3.2.11}\label{eq:3.2.11}
+\end{equation}
+By induction, for an arbitrary tensor field $T^{c_1\cdots c_k}{}_{d_1\cdots d_l}$ we find
+\begin{equation}
+  \begin{aligned}
+    (\nabla_a\nabla_b-\nabla_b\nabla_a)T^{c_1\cdots c_k}{}_{d_1\cdots d_l}
+    ={}&-\sum_{i=1}^{k}R_{abe}{}^{c_i}
+    T^{c_1\cdots e\cdots c_k}{}_{d_1\cdots d_l}\\
+    &+\sum_{j=1}^{l}R_{abd_j}{}^e
+    T^{c_1\cdots c_k}{}_{d_1\cdots e\cdots d_l}.
+  \end{aligned}
+  \tag{3.2.12}\label{eq:3.2.12}
+\end{equation}
+
+Next we establish four key properties of the Riemann tensor:
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item
+\begin{equation}
+  R_{abc}{}^d=-R_{bac}{}^d.
+  \tag{3.2.13}\label{eq:3.2.13}
+\end{equation}
+\item
+\begin{equation}
+  R_{[abc]}{}^d=0.
+  \tag{3.2.14}\label{eq:3.2.14}
+\end{equation}
+\item For the derivative operator $\nabla_a$ naturally associated with the metric, $\nabla_ag_{bc}=0$, we
+have
+\begin{equation}
+  R_{abcd}=-R_{abdc}.
+  \tag{3.2.15}\label{eq:3.2.15}
+\end{equation}
+\item The Bianchi identity holds:
+\begin{equation}
+  \nabla_{[a}R_{bc]d}{}^e=0.
+  \tag{3.2.16}\label{eq:3.2.16}
+\end{equation}
+\end{enumerate}
+
+Property (1) follows trivially from the definition of $R_{abc}{}^d$, Eq.~\eqref{eq:3.2.3}. To
+prove property (2), we note that for an arbitrary covector field, $\omega_a$, and any
+derivative operator $\nabla_a$, we have
+\begin{equation}
+  \nabla_{[a}\nabla_b\omega_{c]}=0.
+  \tag{3.2.17}\label{eq:3.2.17}
+\end{equation}
+This equation can be proven from Eq.~\eqref{eq:3.1.14}, substituting an ordinary derivative $\partial_a$ for $\widetilde\nabla_a$, and using the commutativity of ordinary derivatives and the symmetry
+of $C^c{}_{ab}=\Gamma^c{}_{ab}$, Eq.~\eqref{eq:3.1.9}. (In differential forms notation, it is the statement
+that $d^2\omega=0$ [see appendix B].) Thus, we have
+\begin{equation}
+  0=2\nabla_{[a}\nabla_b\omega_{c]}
+  =\nabla_{[a}\nabla_b\omega_{c]}-\nabla_{[b}\nabla_a\omega_{c]}
+  =R_{[abc]}{}^d\omega_d
+  \tag{3.2.18}\label{eq:3.2.18}
+\end{equation}
+for all $\omega_d$, which proves property (2).
+
+Property (3) follows from Eq.~\eqref{eq:3.2.12} applied to the metric $g_{ab}$. We find
+\begin{equation}
+  0=(\nabla_a\nabla_b-\nabla_b\nabla_a)g_{cd}
+  =R_{abc}{}^eg_{ed}+R_{abd}{}^eg_{ce}
+  =R_{abcd}+R_{abdc},
+  \tag{3.2.19}\label{eq:3.2.19}
+\end{equation}
+which yields property (3). It follows from properties 1, 2, and 3 that the Riemann
+tensor also satisfies the following useful symmetry property (see problem 3):
+\begin{equation}
+  R_{abcd}=R_{cdab}.
+  \tag{3.2.20}\label{eq:3.2.20}
+\end{equation}
+
+Finally, to prove the Bianchi identity, property (4), we apply the commutator of
+derivative operators to the derivative of a covector field. We obtain, using Eq.~\eqref{eq:3.2.12},
+\begin{equation}
+  (\nabla_a\nabla_b-\nabla_b\nabla_a)\nabla_c\omega_d
+  =R_{abc}{}^e\nabla_e\omega_d+R_{abd}{}^f\nabla_c\omega_f.
+  \tag{3.2.21}\label{eq:3.2.21}
+\end{equation}
+On the other hand, we have
+\begin{equation}
+  \begin{aligned}
+    \nabla_a(\nabla_b\nabla_c\omega_d-\nabla_c\nabla_b\omega_d)
+    &=\nabla_a(R_{bcd}{}^e\omega_e)\\
+    &=\omega_e\nabla_aR_{bcd}{}^e+R_{bcd}{}^e\nabla_a\omega_e.
+  \end{aligned}
+  \tag{3.2.22}\label{eq:3.2.22}
+\end{equation}
+If we antisymmetrize over $a$, $b$, and $c$ in Eqs.~\eqref{eq:3.2.21} and~\eqref{eq:3.2.22}, the
+left-hand sides become equal. Equality of the right-hand sides yields
+\begin{equation}
+  R_{[abc]}{}^e\nabla_e\omega_d
+  +R_{[ab|d|}{}^e\nabla_{c]}\omega_e
+  =\omega_e\nabla_{[a}R_{bc]d}{}^e
+  +R_{[bc|d|}{}^e\nabla_{a]}\omega_e,
+  \tag{3.2.23}\label{eq:3.2.23}
+\end{equation}
+where the vertical bars indicate that we do not antisymmetrize over $d$. The first term
+on the left-hand side vanishes by Eq.~\eqref{eq:3.2.14} while the second terms on both
+sides cancel each other. Thus, we obtain, for all $\omega_e$,
+\begin{equation}
+  \omega_e\nabla_{[a}R_{bc]d}{}^e=0,
+  \tag{3.2.24}\label{eq:3.2.24}
+\end{equation}
+which yields property (4).
+
+It is useful to decompose the Riemann tensor into a \lq\lq trace part\rq\rq\ and a \lq\lq trace-free
+part.\rq\rq\ % SOURCE ERRATUM: printed ``trace tree part.''
+By the antisymmetry properties (1) and (3), the trace of the Riemann tensor
+over its first two or last two indices vanishes. However, its trace over the second and
+fourth (or equivalently, the first and third) indices defines the \emph{Ricci tensor}, $R_{ac}$,
+\begin{equation}
+  R_{ac}=R_{abc}{}^b.
+  \tag{3.2.25}\label{eq:3.2.25}
+\end{equation}
+By Eq.~\eqref{eq:3.2.20}, $R_{ab}$ satisfies the symmetry property
+\begin{equation}
+  R_{ac}=R_{ca}.
+  \tag{3.2.26}\label{eq:3.2.26}
+\end{equation}
+The \emph{scalar curvature}, $R$, is defined as the trace of the Ricci tensor:
+\begin{equation}
+  R=R_a{}^a.
+  \tag{3.2.27}\label{eq:3.2.27}
+\end{equation}
+The \lq\lq trace free part\rq\rq\ is called the \emph{Weyl tensor}, $C_{abcd}$, and is defined for manifolds of
+dimension $n\geq3$ by the equation
+\begin{equation}
+  R_{abcd}=C_{abcd}+\frac{2}{n-2}
+  \bigl(g_{a[c}R_{d]b}-g_{b[c}R_{d]a}\bigr)
+  -\frac{2}{(n-1)(n-2)}R\,g_{a[c}g_{d]b}.
+  \tag{3.2.28}\label{eq:3.2.28}
+\end{equation}
+The Weyl tensor satisfies the symmetry properties (1), (2), and (3) of the Riemann
+tensor as well as being trace free on all its indices. It also behaves in a very simple
+manner under conformal transformations of the metric (see appendix D) and for this
+reason is sometimes called the \emph{conformal tensor}.
+
+Contraction of the Bianchi identity~\eqref{eq:3.2.16} leads to an important equation
+satisfied by $R_{ab}$. We find
+\begin{equation}
+  \nabla_aR_{bcd}{}^a+\nabla_bR_{cd}-\nabla_cR_{bd}=0.
+  \tag{3.2.29}\label{eq:3.2.29}
+\end{equation}
+Raising the index $d$ with the metric and contracting over $b$ and $d$, we obtain
+\begin{equation}
+  \nabla_aR_c{}^a+\nabla_bR_c{}^b-\nabla_cR=0
+  \tag{3.2.30}\label{eq:3.2.30}
+\end{equation}
+or
+\begin{equation}
+  \nabla^aG_{ab}=0,
+  \tag{3.2.31}\label{eq:3.2.31}
+\end{equation}
+where
+\begin{equation}
+  G_{ab}=R_{ab}-\frac{1}{2}Rg_{ab}.
+  \tag{3.2.32}\label{eq:3.2.32}
+\end{equation}
+The tensor $G_{ab}$ is called the \emph{Einstein tensor}. It appears in Einstein's equation, and the
+twice contracted Bianchi identity, Eq.~\eqref{eq:3.2.31}, plays an important role in
+ensuring consistency of Einstein's equation (see chapters 4 and 10).

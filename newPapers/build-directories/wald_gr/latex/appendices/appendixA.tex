@@ -1,0 +1,286 @@
+% Source: Wald GR, physical PDF pp. 436--440
+%         (printed pp. 423--427).
+% Coverage: Appendix A, Topological Spaces; Theorems A.1--A.9.
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\section{Topological Spaces}
+
+In mathematics, many different proofs and arguments are based on the same or a
+similar set of ideas. An important goal of mathematics is to isolate the key ideas in
+as general a form as possible, since if one can derive general results about these ideas
+in the abstract, one then may apply them to the cases of interest without duplication
+of effort. The notion of a topological space provides a beautiful illustration of this
+program. One starts with a very simple, abstract definition and ends up proving many
+powerful results that have a very wide range of application. Our main interest here
+in topological spaces arises from the fact that in general relativity spacetime has the
+structure of a topological space. Indeed, spacetime has a great deal more structure,
+and we circumvented the mention of topological spaces in Chapter~2 by defining the
+notion of a manifold directly. However, the purely topological arguments and results
+discussed in this section play an important role in many of the constructions and
+proofs of Chapters~8 and~9. Therefore, we collect in this appendix many of the key
+definitions and theorems concerning topological spaces.
+
+A \emph{topological space} \((X,\mathcal T)\) consists of a set \(X\) together with a
+collection \(\mathcal T\) of subsets of \(X\) satisfying the following three properties:
+
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.2em]
+\item
+The union of an arbitrary collection of subsets, each of which is in \(\mathcal T\), is
+in \(\mathcal T\): If \(O_\alpha\in\mathcal T\) for all \(\alpha\), then
+\(\bigcup_\alpha O_\alpha\in\mathcal T\).
+
+\item
+The intersection of a finite number of subsets in \(\mathcal T\) is in \(\mathcal T\):
+If \(O_1,\ldots,O_n\in\mathcal T\), then
+\[
+  \bigcap_{i=1}^{n}O_i\in\mathcal T.
+\]
+
+\item
+The entire set \(X\) and the empty set \(\emptyset\) are in \(\mathcal T\).
+\end{enumerate}
+
+\(\mathcal T\) is referred to as a \emph{topology} on \(X\), and subsets of \(X\)
+which are listed in the collection \(\mathcal T\) are called \emph{open sets}.
+
+Any set \(X\) can easily be made into a topological space by taking
+\(\mathcal T=\{\text{all subsets of \(X\)}\}\) (the \emph{discrete topology}) or by
+taking \(\mathcal T=\{X,\emptyset\}\) (the \emph{indiscrete topology}). A much more
+interesting example of a topological space is obtained by taking \(X=\mathbb R\), the
+set of real numbers, and defining \(\mathcal T\) to consist of all subsets of
+\(\mathbb R\) which can be expressed as unions of open intervals \((a,b)\). (Thus,
+with this choice of \(\mathcal T\) on \(\mathbb R\) an open interval is an open set;
+historically, this example is the reason why the terminology \lq\lq open set\rq\rq\ is
+used in the discussion of an abstract topological space.) More generally, for any
+metric space, the collection of all subsets which can be expressed as unions of open
+balls yields a topology.
+
+If \((X,\mathcal T)\) is a topological space and \(A\) is any subset of \(X\), we may
+make \(A\) itself into a topological space by defining the topology, \(\mathcal S\), on
+\(A\) to consist of all subsets of \(A\) which can be expressed as intersections of
+elements of \(\mathcal T\) with \(A\),
+\[
+  \mathcal S=\{U\mid U=A\cap O,\ O\in\mathcal T\}.
+\]
+\(\mathcal S\) is called the \emph{induced} (or \emph{relative}) topology.
+
+If \((X_1,\mathcal T_1)\) and \((X_2,\mathcal T_2)\) are topological spaces, we can
+make the product space
+\[
+  X_1\times X_2=\{(x_1,x_2)\mid x_1\in X_1,\ x_2\in X_2\}
+\]
+into a topological space \((X_1\times X_2,\mathcal T)\) by defining \(\mathcal T\) to
+consist of all subsets of \(X_1\times X_2\) which can be expressed as unions of sets
+of the form \(O_1\times O_2\) with \(O_1\in\mathcal T_1\) and
+\(O_2\in\mathcal T_2\). \(\mathcal T\) is called the \emph{product topology}, and using
+the above definition of a topology on \(\mathbb R\), we can use the construction of
+the product topology to define a topology on \(\mathbb R^n\). The topology we get is
+the same one as would be obtained by directly defining \(\mathcal T\) to consist of
+all subsets of \(\mathbb R^n\) which can be expressed as unions of open balls.
+
+If \((X,\mathcal T)\) and \((Y,\mathcal S)\) are topological spaces, a map
+\(f:X\to Y\) is said to be \emph{continuous} if the inverse image,
+\(f^{-1}(O)=\{x\in X\mid f(x)\in O\}\), of every open set \(O\) in \(Y\) is an open
+set in \(X\). For functions from \(\mathbb R\) into \(\mathbb R\), it is easy to verify
+that with the above definition of a topology on \(\mathbb R\), this definition of
+continuity is equivalent to the usual \(\epsilon\)--\(\delta\) definition. If \(f\) is
+continuous, one-to-one, onto, and its inverse is continuous, \(f\) is called a
+\emph{homeomorphism} and \((X,\mathcal T)\) and \((Y,\mathcal S)\) are said to be
+homeomorphic. Homeomorphic topological spaces have identical topological properties.
+
+If \((X,\mathcal T)\) is a topological space, a subset \(C\) of \(X\) is said to be
+\emph{closed} if its complement
+\(X-C=\{x\in X\mid x\notin C\}\) is open. Thus, for example, a closed interval
+\([a,b]\) of \(\mathbb R\) (with the standard topology on \(\mathbb R\)) is a closed
+set. From the topological space axioms it follows immediately that the intersection
+of an arbitrary collection of closed sets is closed and the union of a finite number of
+closed sets is closed. Note that a subset may be neither open nor closed (e.g., the
+half-open interval \([a,b)\) in \(\mathbb R\)) or may be both open and closed (as are
+all subsets in the discrete topology). Indeed, the possibility of having subsets which
+are both open and closed gives rise to a topological definition of connectedness: A
+topological space \((X,\mathcal T)\) is said to be \emph{connected} if the only
+subsets which are both open and closed are the entire space \(X\) and the empty set
+\(\emptyset\). \(\mathbb R^n\) with the standard topology defined above is connected.
+
+If \((X,\mathcal T)\) is a topological space and \(A\) is an arbitrary subset of \(X\),
+the \emph{closure}, \(\overline A\), of \(A\) is defined as the intersection of all
+closed sets containing \(A\). Clearly, \(\overline A\) is closed, contains \(A\), and
+equals \(A\) if and only if \(A\) is closed. The \emph{interior} of \(A\) is defined as
+the union of all open sets contained within \(A\). Clearly the interior of \(A\) is
+open, is contained in \(A\), and equals \(A\) if and only if \(A\) is open. The
+\emph{boundary} of \(A\), denoted \(\partial A\), consists of all points which lie in
+\(\overline A\) but not in the interior of \(A\).
+
+A topological space \((X,\mathcal T)\) is said to be \emph{Hausdorff} if for each pair
+of distinct points \(p,q\in X\), \(p\ne q\), one can find open sets
+\(O_p,O_q\in\mathcal T\) such that \(p\in O_p\), \(q\in O_q\), and
+\(O_p\cap O_q=\emptyset\). It is easy to check that \(\mathbb R^n\) with the standard
+topology is Hausdorff.
+
+One of the most powerful notions in topology is that of compactness, which is
+defined as follows. If \((X,\mathcal T)\) is a topological space and \(A\) is a subset
+of \(X\), a collection \(\{O_\alpha\}\) of open sets is said to be an \emph{open cover}
+of \(A\) if the union of these sets contains \(A\). A subcollection of the sets
+\(\{O_\alpha\}\) which also covers \(A\) is referred to as a \emph{subcover}. The set
+\(A\) is said to be \emph{compact} if every open cover of \(A\) has a finite subcover
+(i.e., a subcover consisting of only a finite number of sets). Thus, for example, in
+any topological space a set consisting of a single point is compact. On the other
+hand, the open interval \((0,1)\) in \(\mathbb R\) (with the standard topology) is not
+compact since the sets \(O_n=(1/n,1)\) for \(n=2,3,\ldots\), yield an open cover of
+\((0,1)\) which admits no finite subcover.
+
+The following theorems describe the implications of compactness and show the
+utility of this notion. Proofs of the theorems can be found in nearly any textbook on
+topology (e.g., Hocking and Young 1961; Kelley 1955).
+
+Perhaps the most important theorem concerning compact subsets of \(\mathbb R\) is
+the Heine--Borel theorem:
+
+\begin{theorem}[Heine--Borel]\label{thm:A.1}
+A closed interval \([a,b]\) of real numbers is compact (with the standard topology
+on \(\mathbb R\)).
+\end{theorem}
+
+The general relation between compact and closed sets is described by the following
+two theorems, the proofs of which are straightforward:
+
+\begin{theorem}\label{thm:A.2}
+Let \((X,\mathcal T)\) be Hausdorff and let \(A\subseteq X\) be compact. Then \(A\)
+is closed.
+\end{theorem}
+
+\begin{theorem}\label{thm:A.3}
+Let \((X,\mathcal T)\) be compact and let \(A\subseteq X\) be closed. Then \(A\) is
+compact.
+\end{theorem}
+
+Combining the above three theorems, we arrive at the following strengthened
+statement on the compactness of subsets of \(\mathbb R\):
+
+\begin{theorem}\label{thm:A.4}
+A subset \(A\) of real numbers is compact if and only if it is closed and bounded.
+\end{theorem}
+
+The property of compactness is easily proven to be preserved under continuous maps.
+We have:
+
+\begin{theorem}\label{thm:A.5}
+Let \((X,\mathcal T)\) and \((Y,\mathcal S)\) be topological spaces. Suppose
+\((X,\mathcal T)\) is compact and \(f:X\to Y\) is continuous. Then
+\(f(X)=\{y\in Y\mid y=f(x)\}\) is compact.
+\end{theorem}
+
+Because of the properties of compact subsets of \(\mathbb R\) given by
+Theorem~\ref{thm:A.4}, we have as a corollary
+
+\begin{theorem}\label{thm:A.6}
+A continuous function from a compact topological space into \(\mathbb R\) is bounded
+and attains its maximum and minimum values.
+\end{theorem}
+
+The following theorem gives an immediate extension of results on compactness for
+\(\mathbb R\) to results for \(\mathbb R^n\).
+
+\begin{theorem}[Tychonoff theorem]\label{thm:A.7}
+Let \((X_1,\mathcal T_1)\) and \((X_2,\mathcal T_2)\) be compact topological spaces.
+Then the product space \(X_1\times X_2\) is compact in the product topology.
+\end{theorem}
+
+Theorem~\ref{thm:A.7} can be generalized to apply to the product of infinitely many
+topological spaces, but the axiom of choice is needed for this generalization.
+
+A corollary of this and the above theorems is
+
+\begin{theorem}\label{thm:A.8}
+A subset, \(A\), of \(\mathbb R^n\) is compact if and only if it is closed and bounded.
+\end{theorem}
+
+Thus, for example, the \(n\)-dimensional sphere \(S^n\) (defined as the set of points
+in \(\mathbb R^{n+1}\) satisfying \(x_1^2+\cdots+x_{n+1}^2=1\)) in the induced
+topology is compact, since it is easily seen to be a closed and bounded subset of
+\(\mathbb R^{n+1}\).
+
+A further notion we shall need is that of convergence of sequences. A sequence
+\(\{x_n\}\) of points in a topological space \((X,\mathcal T)\) is said to converge to
+point \(x\) if given any open neighborhood \(O\) of \(x\) (i.e., an open set \(O\)
+containing \(x\)) there is an \(N\) such that \(x_n\in O\) for all \(n>N\). The point
+\(x\) is said to be the limit of this sequence. It is easy to check that for
+\(\mathbb R\) (with the standard topology) this agrees with the usual definition of
+convergence. A point \(y\in X\) is said to be an \emph{accumulation point} (or
+\emph{limit point}) of \(\{x_n\}\) if every open neighborhood of \(y\) contains
+infinitely many points of the sequence. If \(\{x_n\}\) converges to \(x\), then \(x\)
+clearly also is an accumulation point of the sequence. However, in a general
+topological space, if \(y\) is an accumulation point of \(\{x_n\}\), it may not even
+be possible to find a subsequence \(\{y_n\}\) of points of the sequence \(\{x_n\}\)
+such that \(\{y_n\}\) converges to \(y\). However, the extraction of a subsequence
+convergent to \(y\) will always be possible if \((X,\mathcal T)\) is \emph{first
+countable}, that is, if for each \(p\in X\) there is a countable collection
+\(\{O_n\}\) of open sets such that every open neighborhood, \(O\), of \(p\) contains
+at least one member of this collection. \(\mathbb R^n\) with the standard topology is
+first countable; indeed, it satisfies the stronger requirement of \emph{second
+countability}: there is a countable collection of open sets such that every open set
+can be expressed as a union of sets in this collection. For \(\mathbb R^n\), the open
+balls with rational radii centered on points with rational coordinates compose such a
+countable collection of open sets.
+
+An important relation between compactness and convergence of sequences is expressed
+by the Bolzano--Weierstrass theorem:
+
+\begin{theorem}[Bolzano--Weierstrass theorem]\label{thm:A.9}
+Let \((X,\mathcal T)\) be a topological space and let \(A\subseteq X\). If \(A\) is
+compact, then every sequence \(\{x_n\}\) of points in \(A\) has an accumulation point
+lying in \(A\). Conversely, if \((X,\mathcal T)\) is second countable and every
+sequence in \(A\) has an accumulation point in \(A\), then \(A\) is compact. Thus, in
+particular, if \((X,\mathcal T)\) is second countable, \(A\) is compact if and only if
+every sequence in \(A\) has a convergent subsequence whose limit lies in \(A\).
+\end{theorem}
+
+Finally, we define the notion of paracompactness, a property which manifolds are
+required to satisfy in order to prevent them from being \lq\lq too large.\rq\rq\
+Let \((X,\mathcal T)\) be a topological space and let \(\{O_\alpha\}\) be an open
+cover of \(X\). An open cover \(\{V_\beta\}\) is said to be a \emph{refinement} of
+\(\{O_\alpha\}\) if for each \(V_\beta\) there exists an \(O_\alpha\) such that
+\(V_\beta\subseteq O_\alpha\). The cover \(\{V_\beta\}\) is said to be \emph{locally
+finite} if each \(x\in X\) has an open neighborhood \(W\) such that only finitely
+many \(V_\beta\) satisfy \(W\cap V_\beta\ne\emptyset\). The topological space
+\((X,\mathcal T)\) is said to be \emph{paracompact} if every open cover
+\(\{O_\alpha\}\) of \(X\) has a locally finite refinement \(\{V_\beta\}\).
+
+It is not difficult to show (see, e.g., Hocking and Young 1961) that any Hausdorff
+topological space which is locally compact (i.e., such that every point has an open
+neighborhood with compact closure) and which can be expressed as a countable union
+of compact subsets is paracompact. Thus, \(\mathbb R^n\), \(S^m\) and their products
+are easily verified to be paracompact. Indeed, it is not easy to construct examples of
+topological spaces which satisfy all the requirements for a manifold but are not
+paracompact; the \lq\lq long line\rq\rq\ (see Hocking and Young 1961) is perhaps the
+simplest example, although the axiom of choice is required to define it.
+
+For a manifold, \(M\), paracompactness has a number of important consequences. It
+can be shown (see Kobayashi and Nomizu 1963) that paracompactness implies that
+(1) \(M\) admits a Riemannian metric and (2) \(M\) is second countable. This latter
+result implies, incidentally, that we can cover \(M\) by a locally finite, countable
+family of charts \((\psi_i,O_i)\) with each \(\overline{O_i}\) compact. Conversely,
+if \(M\) satisfies all the requirements of a manifold (see Chapter~2), then either of
+properties (1) or (2) implies that \(M\) is paracompact.
+
+Probably the most important consequence of paracompactness for a manifold is the
+existence of a partition of unity. Given a locally finite open cover \(\{O_\alpha\}\)
+of \(M\), a \emph{partition of unity} subordinate to \(\{O_\alpha\}\) is a collection
+of smooth functions \(\{f_\alpha\}\) such that (i) the support of \(f_\alpha\) (i.e.,
+the closure of the set where \(f_\alpha\) is nonvanishing) is contained within
+\(O_\alpha\), (ii) \(0\leq f_\alpha\leq1\), and (iii) \(\sum_\alpha f_\alpha=1\).
+[Since only finitely many \(f_\alpha\) are nonvanishing at any point, the sum in
+property (iii) is only a finite sum.] It can be shown (Kobayashi and Nomizu 1963)
+that every locally finite open cover \(\{O_\alpha\}\) of \(M\) such that each
+\(\overline{O_\alpha}\) is compact admits a subordinate partition of unity. The
+existence of a partition of unity allows us to globalize many local results. For
+example, we can prove the above mentioned result that a paracompact manifold admits
+a Riemannian metric by covering it with a locally finite family of charts
+\((\psi_\alpha,O_\alpha)\) with \(\overline{O_\alpha}\) compact, defining a Riemannian
+metric \((g_\alpha)_{ab}\) on each local coordinate neighborhood, and setting
+\(g_{ab}=\sum_\alpha f_\alpha(g_\alpha)_{ab}\), where \(\{f_\alpha\}\) is a partition
+of unity subordinate to \(\{O_\alpha\}\). Similarly, as discussed in Appendix~B, the
+existence of a partition of unity allows us to define integration over a paracompact
+manifold.

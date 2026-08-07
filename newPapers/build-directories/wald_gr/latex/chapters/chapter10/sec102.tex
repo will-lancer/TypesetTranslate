@@ -1,0 +1,932 @@
+% Source: Wald GR, physical PDF pp. 265--280
+%         (printed pp. 252--267).
+% Coverage: Section 10.2, Initial Value Formulation of General Relativity;
+%           equations (10.2.1)--(10.2.42), lemma 10.2.1, theorem 10.2.2.
+% Figures/tables/footnotes: Figures 10.2--10.3; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Modernization: electromagnetic “Lorentz gauge” -> Lorenz gauge; source
+%                “dual vectors” -> covectors; Lie derivatives use \mathcal L.
+% Uncertainties: source “Gauss-Codacci” corrected to standard “Gauss--Codazzi”
+%                with an inline SOURCE ERRATUM comment.
+
+\subsection{Initial Value Formulation of General Relativity}\label{sec:10.2}
+\setcounter{theorem}{0}
+
+In this section, we shall show that general relativity has a well posed initial value
+formulation. We prove this by casting Einstein's equation into the
+form~\eqref{eq:10.1.21} for which theorem~\ref{thm:10.1.3} applies. As we shall
+see, the analysis of Einstein's equation differs from that of the Klein--Gordon field in
+that there are initial value constraints and in that we will need to make a ``gauge
+choice,'' i.e., a choice of coordinates, so that Einstein's equation takes the desired
+form. In order to gain more insight into the nature of these differences, we begin by
+analyzing the simpler problem of the initial value formulation of Maxwell's equations
+for the vector potential \(A_a\) in Minkowski spacetime. As we shall see, the initial
+value formulation of Einstein's equation is very closely analogous to the initial value
+formulation of these equations.
+
+As discussed in section~4.2, the vacuum Maxwell's equations for the vector potential
+\(A_a\) in Minkowski spacetime take the form
+\begin{equation}
+  \partial^a(\partial_aA_b-\partial_bA_a)=0.
+  \tag{10.2.1}\label{eq:10.2.1}
+\end{equation}
+At first glance, equation~\eqref{eq:10.2.1} may appear satisfactory for determining
+\(A_a\): We have four equations for the four unknown components of \(A_a\).
+However, a closer examination of equation~\eqref{eq:10.2.1} indicates the
+possibility of serious trouble, since equation~\eqref{eq:10.2.1} is not of the
+form~\eqref{eq:10.1.20} for which a well posed initial value formulation is known
+to exist. Indeed, if we choose a surface, \(\Sigma_0\), of constant inertial time,
+\(t=t_0\), as our initial hypersurface, we see that the time component of
+equation~\eqref{eq:10.2.1} contains no second time derivatives at all. In ordinary
+vector notation, this equation is
+\begin{equation}
+  \boldsymbol{\nabla}^{,2}A_0
+  -\boldsymbol{\nabla}\mathbin{\cdot}\frac{\partial\mathbf{A}}{\partial t}=0,
+  \tag{10.2.2}\label{eq:10.2.2}
+\end{equation}
+i.e.,
+\begin{equation}
+  \boldsymbol{\nabla}\mathbin{\cdot}\mathbf{E}=0,
+  \tag{10.2.3}\label{eq:10.2.3}
+\end{equation}
+where the electric field, \(\mathbf{E}\), is defined by
+\begin{equation}
+  \mathbf{E}=\boldsymbol{\nabla} A_0-\frac{\partial\mathbf{A}}{\partial t},
+  \tag{10.2.4}\label{eq:10.2.4}
+\end{equation}
+i.e., in index notation,
+\begin{equation}
+  E_a=(\partial_aA_b-\partial_bA_a)n^b=F_{ab}n^b,
+  \tag{10.2.5}\label{eq:10.2.5}
+\end{equation}
+where \(n^a\) is the unit normal to \(\Sigma_0\). Thus,
+equation~\eqref{eq:10.2.2} (or, equivalently, Eq.~\eqref{eq:10.2.3}) gives an
+\emph{initial value constraint} on the initial data
+\((A_\mu,\partial A_\mu/\partial t)\). Initial data which fail to satisfy
+\eqref{eq:10.2.2} cannot possibly yield a solution of Maxwell's equations.
+
+The remaining three components of Maxwell's equations do contain second time
+derivatives of the spatial components of \(A_a\), so we can solve for
+\(\partial^2A_\mu/\partial t^2\) for \(\mu=1,2,3\) in the manner required by the
+Cauchy--Kowalewski theorem~\ref{thm:10.1.1}. (Note, however, that even these
+three equations are not of the form~\eqref{eq:10.1.20} for which a well posed initial
+value formulation is known to exist.) One might expect that by differentiating the
+initial value constraint~\eqref{eq:10.2.2}, one could end up with an equation for
+\(\partial^2A_0/\partial t^2\) which then would permit an initial value formulation,
+at least in the sense of theorem~\ref{thm:10.1.1}. However, this is not the case. We
+have the identity
+\begin{equation}
+  \partial^b\partial^a(\partial_aA_b-\partial_bA_a)=0,
+  \tag{10.2.6}\label{eq:10.2.6}
+\end{equation}
+and this shows that the time derivative of equation~\eqref{eq:10.2.2} vanishes
+identically if the spatial components of Maxwell's equations are satisfied. Hence, the
+complete Maxwell's equations are equivalent to the spatial components of Maxwell's
+equations together with the initial value constraint~\eqref{eq:10.2.2}. Thus,
+equation~\eqref{eq:10.2.1} is an underdetermined system for \(A_a\); we really have
+only three equations (plus an initial value constraint) for four unknown functions.
+Indeed, by theorem~\ref{thm:10.1.1} it is not difficult to see that in the analytic case
+we may specify \(A_0\) arbitrarily throughout the spacetime and still obtain a solution.
+Thus Maxwell's equations do not admit an initial value formulation for \(A_a\) in the
+straightforward, mathematical sense discussed in the previous section.
+
+However, this difficulty is not of a physical character. As already mentioned in
+section~4.2, two vector potentials which differ by the gradient, \(\partial_a\chi\), of a
+function, \(\chi\), represent the same physical electromagnetic field. Thus, on account
+of this gauge arbitrariness, Maxwell's equations cannot possibly be expected to
+determine \(A_a\) from initial conditions. On the other hand, we now shall show that
+the initial values of \(A_\mu\) and \(\partial A_\mu/\partial t\) do uniquely determine a
+solution up to gauge, and that, physically, Maxwell's equations do admit a well posed
+initial value formulation.
+
+The most direct way of showing this is to choose an appropriate gauge for \(A_a\) and
+show that Maxwell's equations for \(A_a\) in this gauge are of the
+form~\eqref{eq:10.1.20}, thereby yielding a well posed initial value formulation. We
+choose the Lorenz gauge
+\begin{equation}
+  \partial^aA_a=0
+  \tag{10.2.7}\label{eq:10.2.7}
+\end{equation}
+(see Eq.~\eqref{eq:4.2.31} above). Maxwell's equations in this gauge are simply
+\begin{equation}
+  \partial^a\partial_aA_b=0.
+  \tag{10.2.8}\label{eq:10.2.8}
+\end{equation}
+Equation~\eqref{eq:10.2.8} together with equation~\eqref{eq:10.2.7} is physically
+equivalent to the original system~\eqref{eq:10.2.1} in the sense that solutions of
+\eqref{eq:10.2.1} can differ from solutions of \eqref{eq:10.2.7} and
+\eqref{eq:10.2.8} only by a gauge transformation.
+
+Given our initial data \((A_\mu,\partial A_\mu/\partial t)\), we make a gauge
+transformation so that \(\partial^aA_a=0\) on \(\Sigma_0\). Now,
+equation~\eqref{eq:10.2.8} implies that
+\begin{equation}
+  \partial^a\partial_a(\partial^bA_b)
+  =\partial^b(\partial^a\partial_aA_b)=0,
+  \tag{10.2.9}\label{eq:10.2.9}
+\end{equation}
+and thus, by theorem~\ref{thm:10.1.2}, if equation~\eqref{eq:10.2.8} is satisfied
+everywhere, then the gauge condition~\eqref{eq:10.2.7} also will be satisfied
+everywhere if and only if \(\partial^bA_b=\partial(\partial^bA_b)/\partial t=0\) on
+\(\Sigma_0\). We already have ensured that \(\partial^aA_a=0\) on \(\Sigma_0\),
+and using equation~\eqref{eq:10.2.8}, we see that the initial condition
+\(\partial(\partial^bA_b)/\partial t=0\) is equivalent to the initial value constraint,
+equation~\eqref{eq:10.2.2}. Thus, if
+\(\boldsymbol{\nabla}\mathbin{\cdot}\mathbf{E}=0\) on \(\Sigma_0\), then for our gauge
+transformed initial data, equation~\eqref{eq:10.2.7} will be satisfied throughout the
+spacetime if equation~\eqref{eq:10.2.8} holds. Thus, we need only solve
+equation~\eqref{eq:10.2.8} with the given values of the initial data. However, we
+can do this because equation~\eqref{eq:10.2.8} \emph{does} have the
+form~\eqref{eq:10.1.20} for which a well posed initial value formulation has been
+established. Thus, by theorem~\ref{thm:10.1.2}, there exists a unique solution of
+\eqref{eq:10.2.8} for the given (new) values of the initial data. Furthermore, this
+solution depends continuously on the initial data and has the desired domain of
+dependence property.
+
+To obtain a solution with the original values \((A_\mu,\partial A_\mu/\partial t)\)
+of the initial data, we simply ``undo'' the gauge transformation which made
+\(\partial^aA_a=0\) on \(\Sigma_0\). To show that this solution is physically
+unique, we note that two solutions of the original Maxwell's
+equations~\eqref{eq:10.2.1} with identical initial data can be brought by gauge
+transformations into solutions of \eqref{eq:10.2.8} with identical initial data. Since
+solutions of \eqref{eq:10.2.8} with given initial data are unique, this shows that our
+two solutions can differ, at most, by a gauge transformation. Thus, Maxwell's
+equations in Minkowski spacetime possess a well posed initial value formulation in
+this sense.
+
+Indeed, we may reformulate this result in a physically more satisfactory manner as
+follows: Let \(\mathbf{E}\) and \(\mathbf{B}\) be specified as arbitrary smooth vector fields
+on \(\Sigma_0\), subject only to the constraints
+\(\boldsymbol{\nabla}\mathbin{\cdot}\mathbf{E}
+=\boldsymbol{\nabla}\mathbin{\cdot}\mathbf{B}=0\) on \(\Sigma_0\). Then there exists a unique
+solution, \(F_{ab}\), of Maxwell's equations with these initial data. Furthermore,
+\(F_{ab}\) depends continuously on the initial data \((\mathbf{E},\mathbf{B})\), and \(F_{ab}\)
+at \(p\in J^+(\Sigma_0)\) depends only on the initial data on
+\(J^-(p)\cap\Sigma_0\). This result can be proven by introducing a vector potential,
+\(A_a\), whose initial data on \(\Sigma_0\) satisfies \(\partial^aA_a=0\) and
+reproduces the given values of \(\mathbf{E}\) and \(\mathbf{B}\) on \(\Sigma_0\). (A
+particularly simple choice is to take \(A_0=0\),
+\(\partial\mathbf{A}/\partial t=-\mathbf{E}\), choose \(\mathbf{A}\) to be any solution of
+\(\boldsymbol{\nabla}\times\mathbf{A}=\mathbf{B}\), and set
+\(\partial A_0/\partial t=\boldsymbol{\nabla}\mathbin{\cdot}\mathbf{A}\).) Then we simply apply
+the results of the previous paragraph to construct a solution with the desired
+properties. Finally, we prove uniqueness by verifying that two different solutions,
+\(A_a\) and \(A'_a\), of Maxwell's equations which reproduce the given \(\mathbf{E}\)
+and \(\mathbf{B}\) on \(\Sigma_0\) can be brought by a gauge transformation into
+solutions of equation~\eqref{eq:10.2.8} with the same initial data. Hence, by
+uniqueness of solutions of equation~\eqref{eq:10.2.8}, \(A_a\) and \(A'_a\) differ at
+most by a gauge transformation. Thus, they produce the same \(F_{ab}\).
+
+Thus, Maxwell's equations in Minkowski spacetime physically possess a well posed
+initial value formulation. This result may be generalized to curved spacetime (see
+problem~2).
+
+We turn our attention, now, to Einstein's equation in a vacuum, \(G_{ab}=0\). The first
+issue to consider is the nature of the initial value formulation in this theory. In other
+theories of classical physics we are given the spacetime background and our task is to
+determine the time evolution of quantities in the background from their initial values
+and time derivatives. However, in general relativity we are solving for the spacetime
+itself. What should be the quantity or quantities to prescribe initially in general
+relativity in order that spacetime structure be determined?
+
+In order to answer this question, we must view general relativity as describing the time
+evolution of some quantity. Let \((M,g_{ab})\) be a globally hyperbolic spacetime. (We
+consider only globally hyperbolic spacetimes since the initial value formulation should
+be relevant only in this case.) As proven in theorem~\ref{thm:8.3.14}, we can foliate
+\((M,g_{ab})\) by Cauchy surfaces, \(\Sigma_t\), parameterized by a global time
+function, \(t\). Let \(n^a\) be the unit normal vector field to the hypersurfaces
+\(\Sigma_t\). The spacetime metric, \(g_{ab}\), induces a spatial metric (i.e., a
+three-dimensional Riemannian metric) \(h_{ab}\) on each \(\Sigma_t\) by the formula
+\begin{equation}
+  h_{ab}=g_{ab}+n_an_b.
+  \tag{10.2.10}\label{eq:10.2.10}
+\end{equation}
+Let \(t^a\) be a vector field on \(M\) satisfying \(t^a\nabla_at=1\). We decompose
+\(t^a\) into its parts normal and tangential to \(\Sigma_t\) by defining the \emph{lapse
+function}, \(N\), and the \emph{shift vector}, \(N^a\), with respect to \(t^a\) by
+\begin{equation}
+  N=-t^an_a=(n^a\nabla_at)^{-1}
+  \tag{10.2.11}\label{eq:10.2.11}
+\end{equation}
+and
+\begin{equation}
+  N^a=h^a{}_bt^b
+  \tag{10.2.12}\label{eq:10.2.12}
+\end{equation}
+(see Fig.~\ref{fig:10.2}).
+
+\input{figures/chapter10/fig10_2.tex}
+
+We may interpret the vector field \(t^a\) as representing the ``flow of time''
+throughout spacetime. As we ``move forward in time'' by parameter time \(t\) starting
+from the \(t=0\) surface \(\Sigma_0\), we go to the surface \(\Sigma_t\). If we
+identify the hypersurfaces \(\Sigma_0,\Sigma_t\) by the diffeomorphism resulting from
+following integral curves of \(t^a\), we may view the effect of ``moving forward in
+time'' as that of changing the spatial metric on an abstract three-dimensional manifold
+\(\Sigma\) from \(h_{ab}(0)\) to \(h_{ab}(t)\). Thus, we may view a globally
+hyperbolic spacetime \((M,g_{ab})\) as representing the time development of a
+Riemannian metric on a fixed three-dimensional manifold. This suggests that we view
+the spatial metric on a three-dimensional hypersurface as the dynamical variable in
+general relativity. (The lapse function, \(N\), and shift vector, \(N^a\), are not
+considered dynamical, since they merely prescribe how to ``move forward in time.''
+Further motivation for viewing the spatial metric as the dynamical variable in general
+relativity arises from the Hamiltonian formulation given in appendix~E.) Hence, we
+would expect appropriate initial data to consist of a Riemannian metric, \(h_{ab}\), and
+its ``time derivative'' on a three-dimensional manifold \(\Sigma\).
+
+In section~9.3 above, we introduced the notion of extrinsic curvature as representing
+a well-defined notion of the ``time derivative'' of the spatial metric on a hypersurface
+\(\Sigma\) embedded in spacetime. In equation~\eqref{eq:9.3.19}, \(\xi^a\) was the
+unit tangent to the congruence of timelike geodesics orthogonal to \(\Sigma\). However,
+if \(n^a\) is any other unit timelike vector field which is normal to \(\Sigma\), then
+its derivative along a direction tangential to \(\Sigma\) must agree on \(\Sigma\) with
+that of \(\xi^a\), so we have
+\begin{align}
+  K_{ab}
+  &=\nabla_a\xi_b=h_a{}^c\nabla_c\xi_b \notag\\
+  &=h_a{}^c\nabla_cn_b \notag\\
+  &=\frac12\mathcal L_nh_{ab},
+  \tag{10.2.13}\label{eq:10.2.13}
+\end{align}
+where the reader is asked to verify the last equality in problem~3. This generalizes
+the formula for extrinsic curvature to nongeodesic normal slicings of spacetime. The
+relation between \(K_{ab}\) and the coordinate time derivative
+\(\mathcal L_th_{ab}\) is given by equation~(E.2.30) of appendix~E.
+Figure~\ref{fig:10.3} illustrates the interpretation of \(K_{ab}\) in terms of the
+``bending'' of \(\Sigma\) in spacetime.
+
+\input{figures/chapter10/fig10_3.tex}
+
+The above considerations suggest that in general relativity, appropriate initial data
+should consist of a triple \((\Sigma,h_{ab},K_{ab})\), where \(\Sigma\) is a
+three-dimensional manifold, \(h_{ab}\) is a Riemannian metric on \(\Sigma\), and
+\(K_{ab}\) is a symmetric tensor field on \(\Sigma\). We shall show below that given
+such initial data---subject to certain initial value constraints---there exists a globally
+hyperbolic spacetime \((M,g_{ab})\) satisfying Einstein's equation which possesses a
+Cauchy surface diffeomorphic to \(\Sigma\) on which the induced metric,
+equation~\eqref{eq:10.2.10}, is \(h_{ab}\), and the induced extrinsic curvature,
+equation~\eqref{eq:10.2.13}, is \(K_{ab}\). Furthermore, this solution depends
+continuously on the initial data, satisfies the desired domain of dependence property,
+and is unique in a sense made precise below.
+
+First, however, we establish some useful relations between the spacetime metric,
+derivative operator, and curvature, and the corresponding quantities they induce on a
+spacelike hypersurface \(\Sigma\) embedded in \(M\). We already noted that the
+spacetime metric \(g_{ab}\) induces a Riemannian metric \(h_{ab}\) on \(\Sigma\) by
+equation~\eqref{eq:10.2.10}. However, by theorem~\ref{thm:3.1.1}, \(h_{ab}\)
+uniquely determines a natural derivative operator on \(\Sigma\), which we denote as
+\(D_a\). Furthermore, the derivative operator, \(D_a\), on \(\Sigma\) gives rise to a
+curvature tensor \({}^{(3)}R_{abc}{}^d\) on \(\Sigma\). We obtain, now, formulas
+relating \(D_a\) and \({}^{(3)}R_{abc}{}^d\) to four-dimensional quantities.
+
+Let \(v^a\) be a (spacetime) vector at a point \(p\in\Sigma\). We may uniquely
+decompose \(v^a\) into components tangent to and perpendicular to \(\Sigma\) via
+\begin{equation}
+  v^a=v_\perp n^a+v_\parallel^a,
+  \tag{10.2.14}\label{eq:10.2.14}
+\end{equation}
+where \(n^a\) is the unit normal to \(\Sigma\) and \(v_\parallel^an_a=0\). If
+\(v_\perp=0\), so that \(v^a=v_\parallel^a\), we may view \(v^a\) as a vector lying
+in the tangent space to \(\Sigma\) at \(p\). The condition that \(v_\perp=0\) is
+equivalent to
+\begin{equation}
+  v^a=h^a{}_bv^b,
+  \tag{10.2.15}\label{eq:10.2.15}
+\end{equation}
+with \(h_{ab}\) given by equation~\eqref{eq:10.2.10} and the first index of \(h_{ab}\)
+is raised by \(g^{ab}\). More generally, we may view a spacetime tensor
+\(T^{a_1\cdots a_k}{}_{b_1\cdots b_l}\) at \(p\in\Sigma\) as a tensor over the
+tangent space to \(\Sigma\) at \(p\) if
+\begin{equation}
+  T^{a_1\cdots a_k}{}_{b_1\cdots b_l}
+  =h^{a_1}{}_{c_1}\cdots h^{a_k}{}_{c_k}
+   h^{d_1}{}_{b_1}\cdots h^{d_l}{}_{b_l}
+   T^{c_1\cdots c_k}{}_{d_1\cdots d_l}.
+  \tag{10.2.16}\label{eq:10.2.16}
+\end{equation}
+Conversely, any tensor defined at point \(p\) on the manifold \(\Sigma\) uniquely
+gives rise to a spacetime tensor at \(p\) (i.e., a tensor over the tangent space to
+\(M\) at \(p\)) which satisfies equation~\eqref{eq:10.2.16}. Note that \(h^a{}_b\)
+plays the role of a projection operator from the tangent space to \(M\) at \(p\) to the
+tangent space to \(\Sigma\) at \(p\).
+
+Let \(T^{a_1\cdots a_k}{}_{b_1\cdots b_l}\) be a tensor field on the manifold
+\(\Sigma\). If we view \(T^{a_1\cdots a_k}{}_{b_1\cdots b_l}\) as a spacetime
+tensor satisfying equation~\eqref{eq:10.2.16}, we still cannot define
+\(\nabla_cT^{a_1\cdots a_k}{}_{b_1\cdots b_l}\), since in order to calculate this
+quantity we would need to know how \(T^{a_1\cdots a_k}{}_{b_1\cdots b_l}\) varies
+as we move off of \(\Sigma\). However,
+\(h_c{}^d\nabla_dT^{a_1\cdots a_k}{}_{b_1\cdots b_l}\) is well defined since for
+this quantity, no derivatives in directions pointing out of \(\Sigma\) are taken. This
+tensor need not satisfy equation~\eqref{eq:10.2.16}, but we can project its indices
+using \(h^a{}_b\) to obtain a tensor field on \(\Sigma\). Then, we have the following
+result.
+
+\begin{lemma}\label{lem:10.2.1}
+Let \((M,g_{ab})\) be a spacetime and let \(\Sigma\) be a smooth spacelike
+hypersurface in \(M\). Let \(h_{ab}\) denote the induced metric on \(\Sigma\),
+equation~\eqref{eq:10.2.10}, and let \(D_a\) denote the derivative operator associated
+with \(h_{ab}\) (see theorem~\ref{thm:3.1.1}). Then \(D_a\) is given by the formula
+\begin{equation}
+  D_cT^{a_1\cdots a_k}{}_{b_1\cdots b_l}
+  =h^{a_1}{}_{d_1}\cdots h^{a_k}{}_{d_k}
+   h^{e_1}{}_{b_1}\cdots h^{e_l}{}_{b_l}h_c{}^f
+   \nabla_fT^{d_1\cdots d_k}{}_{e_1\cdots e_l},
+  \tag{10.2.17}\label{eq:10.2.17}
+\end{equation}
+where \(\nabla_a\) is the derivative operator associated with \(g_{ab}\).
+\end{lemma}
+
+\begin{proof}
+It is straightforward to verify that \(D_a\), defined by
+equation~\eqref{eq:10.2.17}, satisfies the properties (1)--(5) of the definition of
+derivative operator given in section~3.1. Furthermore, we have
+\begin{equation}
+  D_ah_{bc}
+  =h_a{}^dh_b{}^eh_c{}^f\nabla_d(g_{ef}+n_en_f)=0
+  \tag{10.2.18}\label{eq:10.2.18}
+\end{equation}
+since \(\nabla_dg_{ef}=0\) and \(h_{ab}n^b=0\). Thus, \(D_a\) is the unique
+derivative operator associated with \(h_{ab}\).
+\end{proof}
+
+From equation~\eqref{eq:10.2.17} one can derive relations between the curvature
+\({}^{(3)}R_{abc}{}^d\) of \(\Sigma\) and the spacetime curvature \(R_{abc}{}^d\).
+If \(\omega_a\) is a one-form field on \(\Sigma\), we have
+\begin{equation}
+  {}^{(3)}R_{abc}{}^d\omega_d=D_aD_b\omega_c-D_bD_a\omega_c.
+  \tag{10.2.19}\label{eq:10.2.19}
+\end{equation}
+However, we have
+\begin{align}
+  D_aD_b\omega_c
+  &=D_a(h_b{}^dh_c{}^e\nabla_d\omega_e) \notag\\
+  &=h_a{}^fh_b{}^gh_c{}^e
+    \nabla_f(h_g{}^dh_e{}^k\nabla_d\omega_k) \notag\\
+  &=h_a{}^fh_b{}^dh_c{}^e\nabla_f\nabla_d\omega_e
+    +h_c{}^eK_{ab}n^d\nabla_d\omega_e
+    +h_b{}^dK_{ac}n^e\nabla_d\omega_e,
+  \tag{10.2.20}\label{eq:10.2.20}
+\end{align}
+where we have used the fact that
+\begin{equation}
+  h_a{}^bh_c{}^d\nabla_bh_d{}^e
+  =h_a{}^bh_c{}^d\nabla_b(g_d{}^e+n_dn^e)=K_{ac}n^e.
+  \tag{10.2.21}\label{eq:10.2.21}
+\end{equation}
+Now, the middle term on the right-hand side of equation~\eqref{eq:10.2.20}
+vanishes when antisymmetrized over \(a\) and \(b\). Furthermore, we have
+\begin{equation}
+  h_b{}^dn^e\nabla_d\omega_e
+  =h_b{}^d\nabla_d(n^e\omega_e)-h_b{}^d\omega_e\nabla_dn^e
+  =-K_b{}^e\omega_e.
+  \tag{10.2.22}\label{eq:10.2.22}
+\end{equation}
+Putting together all these results, we obtain
+\begin{equation}
+  {}^{(3)}R_{abc}{}^d
+  =h_a{}^fh_b{}^gh_c{}^eh_j{}^dR_{fge}{}^j
+   -K_{ac}K_b{}^d+K_{bc}K_a{}^d.
+  \tag{10.2.23}\label{eq:10.2.23}
+\end{equation}
+A similar calculation (problem~4) shows that
+\begin{equation}
+  D_aK^a{}_b-D_bK^a{}_a=R_{cd}n^dh^c{}_b.
+  \tag{10.2.24}\label{eq:10.2.24}
+\end{equation}
+Equations~\eqref{eq:10.2.23} and \eqref{eq:10.2.24} are known as the
+Gauss--Codazzi relations. % SOURCE ERRATUM: printed “Gauss-Codacci.”
+
+We turn, now, to the analysis of the vacuum Einstein's equation. We will give initial
+data \((h_{ab},K_{ab})\) on a three-dimensional manifold \(\Sigma\) and attempt to
+construct a globally hyperbolic spacetime \((M,g_{ab})\) for which \(\Sigma\) is a
+Cauchy surface on which the initial data are induced. Our strategy is to write down
+Einstein's equation for the metric components, \(g_{\mu\nu}\), in a local coordinate
+system \(\{y^\mu\}\) with the time coordinate, \(t\), chosen so that the \(t=0\)
+surface corresponds to \(\Sigma\) (or, at least, that portion of \(\Sigma\) covered by
+the coordinate system). By casting the equations in the form~\eqref{eq:10.1.21}, we
+will use theorem~\ref{thm:10.1.3} to prove local existence of a solution with the
+desired properties. Then we shall outline how to ``globalize'' our local results to
+obtain the final conclusion, stated as theorem~\ref{thm:10.2.2} below.
+
+The components of the Einstein tensor, \(G_{\mu\nu}\), can be expressed in terms of
+coordinate derivatives of the metric tensor components, \(g_{\mu\nu}\), by the methods
+of section~3.4a. Einstein's equation in vacuum, \(G_{ab}=0\), yields a system of ten
+second-order partial differential equations for the ten unknown metric components.
+Furthermore, these equations have a quasilinear form; i.e., they are linear in the
+second derivatives of the metric. Explicitly, from equations~\eqref{eq:3.4.5} and
+\eqref{eq:3.1.30} we have
+\begin{align}
+  R_{\mu\nu}
+  &=-\frac12\sum_{\alpha,\beta}g^{\alpha\beta}
+    \left\{-2\partial_\beta\partial_{(\nu}g_{\mu)\alpha}
+      +\partial_\alpha\partial_\beta g_{\mu\nu}
+      +\partial_\mu\partial_\nu g_{\alpha\beta}\right\}
+    +F_{\mu\nu}(g,\partial g).
+  \tag{10.2.25}\label{eq:10.2.25}
+\end{align}
+and thus
+\begin{align}
+  G_{\mu\nu}
+  &=R_{\mu\nu}-\frac12g_{\mu\nu}R \notag\\
+  &=-\frac12\sum_{\alpha,\beta}g^{\alpha\beta}
+    \left\{-2\partial_\beta\partial_{(\nu}g_{\mu)\alpha}
+      +\partial_\alpha\partial_\beta g_{\mu\nu}
+      +\partial_\mu\partial_\nu g_{\alpha\beta}\right\} \notag\\
+  &\quad+\frac12\sum_{\alpha,\beta,\rho,\sigma}
+    g_{\mu\nu}g^{\alpha\beta}g^{\rho\sigma}
+    \left\{-\partial_\beta\partial_\rho g_{\sigma\alpha}
+      +\partial_\alpha\partial_\beta g_{\rho\sigma}\right\}
+    +\overline F_{\mu\nu}(g,\partial g),
+  \tag{10.2.26}\label{eq:10.2.26}
+\end{align}
+where \(F\) and \(\overline F\) are nonlinear functions of the metric components
+\(g_{\alpha\beta}\) and their first derivatives. However, the right-hand side of
+equation~\eqref{eq:10.2.26} is not of the form~\eqref{eq:10.1.21}. Indeed, from
+equation~\eqref{eq:10.2.26} one may show (problem~5) that the equations
+\begin{equation}
+  \sum_\nu G_{\mu\nu}n^\nu=0
+  \tag{10.2.27}\label{eq:10.2.27}
+\end{equation}
+(where \(n^a\) is the unit normal to the \(t=\text{constant}\) surfaces) contain no
+second time derivatives of any of the metric components; i.e., these components of
+\(G_{ab}=0\) at \(t=0\) depend only on the initial data. Thus, these equations provide
+initial value constraints, in close analogy with equation~\eqref{eq:10.2.2} in the
+electromagnetic case. We can express these equations in coordinate invariant form by
+using the Gauss--Codazzi equations~\eqref{eq:10.2.23} and \eqref{eq:10.2.24}.
+From equation~\eqref{eq:10.2.24}, we obtain the initial value constraint,
+\begin{equation}
+  0=h^b{}_aG_{bc}n^c=h^b{}_aR_{bc}n^c
+   =D_bK^b{}_a-D_aK^b{}_b.
+  \tag{10.2.28}\label{eq:10.2.28}
+\end{equation}
+In addition, we have
+\begin{align}
+  R_{abcd}h^{ac}h^{bd}
+  &=R_{abcd}(g^{ac}+n^an^c)(g^{bd}+n^bn^d) \notag\\
+  &=R+2R_{ac}n^an^c \notag\\
+  &=2G_{ac}n^an^c.
+  \tag{10.2.29}\label{eq:10.2.29}
+\end{align}
+Thus, from equation~\eqref{eq:10.2.23} we obtain the additional constraint,
+\begin{equation}
+  0=G_{ab}n^an^b
+   =\frac12\left\{{}^{(3)}R+(K^a{}_a)^2-K_{ab}K^{ab}\right\}.
+  \tag{10.2.30}\label{eq:10.2.30}
+\end{equation}
+Thus, equations~\eqref{eq:10.2.28} and \eqref{eq:10.2.30} are the initial value
+constraint equations of general relativity expressed in a form analogous to
+equation~\eqref{eq:10.2.3}. We shall return briefly to discuss some properties of
+these equations at the end of this section.
+
+In the electromagnetic case, the identity~\eqref{eq:10.2.6} implied that if the
+constraint~\eqref{eq:10.2.3} is satisfied initially and the spatial components of
+Maxwell's equations are satisfied everywhere, then the constraint also is satisfied
+everywhere. A completely analogous result applies in general relativity. As a
+consequence of the Bianchi identity,
+\begin{equation}
+  \nabla^aG_{ab}=0,
+  \tag{10.2.31}\label{eq:10.2.31}
+\end{equation}
+if the constraints~\eqref{eq:10.2.28} and \eqref{eq:10.2.30} are satisfied initially
+and the spatial components of Einstein's equation are satisfied everywhere, then the
+constraints also are satisfied. To show this, we note that
+equation~\eqref{eq:10.2.31} relates the time derivative of the components
+\(\sum_\nu G_{\mu\nu}n^\nu\), to non-time differentiated components of
+\(G_{\mu\nu}\) and their spatial derivatives. Having solved the purely spatial
+components of Einstein's equation and obtained a solution, \(g_{\mu\nu}\), we may set
+the spatial components of \(G_{\mu\nu}\) equal to zero in equation~\eqref{eq:10.2.31}
+and view the metric components \(g_{\mu\nu}\) as known functions, thus making
+equation~\eqref{eq:10.2.31} a linear, homogeneous system of four first order equations
+for the four unknown components \(\sum_\nu G_{\mu\nu}n^\nu\). It then follows from
+the theory of first order partial differential equations (see, e.g., Courant and Hilbert
+1962) that if these components vanish initially, they must vanish everywhere.
+
+Thus, Einstein's equation \(G_{ab}=0\), is an underdetermined system of equations for
+the metric components \(g_{\mu\nu}\). We have only six evolution equations (namely,
+the purely spatial components of \(G_{ab}=0\)) for ten unknown metric components.
+However, as in the Maxwell case this underdetermination is not physical. It results
+from the redundancy in the description of spacetime geometry by metric components,
+\(g_{\mu\nu}\). As discussed in appendix~C, if \(\phi:M\to M\) is a diffeomorphism,
+then \((M,g_{ab})\) and \((M,\phi^*g_{ab})\) represent the same physical spacetime.
+Since the coordinate basis components of \(g_{ab}\) and \(\phi^*g_{ab}\) are related by
+the coordinate transformation associated with \(\phi\), any two solutions of Einstein's
+equation whose coordinate basis metric components are related by the tensor
+transformation law~\eqref{eq:2.3.8} represent the same physical solution. Since four
+arbitrary functions appear in the transformation law, roughly speaking there should
+be only six ``nongauge'' functions in the ten metric components \(g_{\mu\nu}\). Thus,
+it is plausible that Einstein's equation contains the correct number of evolution
+equations, and that a well posed initial value formulation exists. We shall prove that
+this is the case by introducing---in close analogy with our treatment of Maxwell's
+equations---a convenient choice of ``gauge'' (i.e., coordinates) for which Einstein's
+equation has the form~\eqref{eq:10.1.21}.
+
+We shall employ \emph{harmonic coordinates}, \(x^\mu\), i.e., coordinates which satisfy
+\begin{equation}
+  H^\mu\equiv\nabla_a\nabla^ax^\mu=0.
+  \tag{10.2.32}\label{eq:10.2.32}
+\end{equation}
+In a given spacetime \((M,g_{ab})\), we can construct harmonic coordinates in a
+neighborhood of that portion of \(\Sigma\) covered by our original set of coordinates
+\(\{y^\mu\}\) as follows. For \(\mu=0,1,2,3\) we give \(\{y^\mu\}\) and its normal
+derivative on \(\Sigma\) as initial data for equation~\eqref{eq:10.2.32} (which is of
+the form~\eqref{eq:10.1.20} and thus possesses a well posed initial value formulation).
+Since the covectors \(\{\nabla_ay^\mu\}\) are linearly independent on \(\Sigma\), the
+solutions \(\{x^\mu\}\) will have \(\{\nabla_ax^\mu\}\) linearly independent in a
+neighborhood of \(\Sigma\) in \(M\), so \(\{x^\mu\}\) will yield a local coordinate
+system. Thus, there is no loss of generality in assuming local existence of harmonic
+coordinates.
+
+Writing out the coordinate basis expression for equation~\eqref{eq:10.2.32} using
+the formulas of section~3.4a, we find that the harmonic coordinate condition takes the
+form
+\begin{align}
+  0=H^\mu
+  &=\sum_{\alpha,\beta}\frac1{\sqrt{-g}}
+    \partial_\alpha\!\left[\sqrt{-g}\,g^{\alpha\beta}
+      \partial_\beta x^\mu\right] \notag\\
+  &=\sum_\alpha\frac1{\sqrt{-g}}
+    \partial_\alpha\!\left[\sqrt{-g}\,g^{\alpha\mu}\right] \notag\\
+  &=\sum_\alpha\left[\partial_\alpha g^{\alpha\mu}
+    +\frac12g^{\alpha\mu}\sum_{\rho,\sigma}
+      g^{\rho\sigma}\partial_\alpha g_{\rho\sigma}\right].
+  \tag{10.2.33}\label{eq:10.2.33}
+\end{align}
+Using equation~\eqref{eq:10.2.33}, we see that most of the second derivative terms
+in equation~\eqref{eq:10.2.25} can be reexpressed in terms of \(H^\mu\) and lower
+derivative terms, and thus in harmonic coordinates the vacuum Einstein equation
+becomes
+\begin{align}
+  0=R^H_{\mu\nu}
+  &\equiv R_{\mu\nu}+\sum_\alpha g_{\alpha(\mu}\partial_{\nu)}H^\alpha \notag\\
+  &=-\frac12\sum_{\alpha,\beta}g^{\alpha\beta}
+    \partial_\alpha\partial_\beta g_{\mu\nu}
+    +\widehat F_{\mu\nu}(g,\partial g),
+  \tag{10.2.34}\label{eq:10.2.34}
+\end{align}
+where the superscript \(H\) on \(R^H_{\mu\nu}\) denotes that this expression for the
+Ricci tensor is valid only for harmonic coordinates. Thus, Einstein's equation is
+equivalent to the system~\eqref{eq:10.2.34}, together with the harmonic coordinate
+condition~\eqref{eq:10.2.32} or \eqref{eq:10.2.33} (Choquet--Bruhat 1962).
+Equation~\eqref{eq:10.2.34} is known as the ``reduced Einstein equation.'' The key
+point is that it is of the form~\eqref{eq:10.1.21} for which
+theorem~\ref{thm:10.1.3} applies.
+
+We now are in a position to prove local existence of a solution to Einstein's equation
+for initial data sufficiently near that of flat spacetime. Let the Riemannian metric
+\(h_{ab}\) and the symmetric tensor field \(K_{ab}\) be given on \(\Sigma\) satisfying
+the constraint equations~\eqref{eq:10.2.28} and \eqref{eq:10.2.30}. Choose a
+coordinate system on (a portion of) \(\Sigma\) and let \(h_{\mu\nu}\) and
+\(K_{\mu\nu}\) denote the coordinate basis components of \(h_{ab}\) and \(K_{ab}\).
+We prescribe on \(\Sigma\) initial data \((g_{\mu\nu},\partial g_{\mu\nu}/\partial t)\)
+such that \(g_{\mu\nu}=h_{\mu\nu}\) for \(\mu,\nu=1,2,3\), and such that the extrinsic
+curvature computed from these initial data using equation~\eqref{eq:10.2.13} is
+\(K_{ab}\). A particularly simple choice is to take \(g_{00}=-1\), \(g_{0\mu}=0\) for
+\(\mu=1,2,3\), and \(\partial g_{\mu\nu}/\partial t=K_{\mu\nu}\) for
+\(\mu,\nu=1,2,3\). Since \(\partial g_{0\mu}/\partial t\) for \(\mu=0,1,2,3\) is
+undetermined by these requirements, we may specify \(\partial g_{0\mu}/\partial t\)
+such that \(H^\mu=0\) on \(\Sigma\) (see Eq.~\eqref{eq:10.2.33}). If this initial
+data set is sufficiently near that of flat spacetime, then according to
+theorem~\ref{thm:10.1.3} we can solve equation~\eqref{eq:10.2.34} in a neighborhood
+of the portion of \(\Sigma\) covered by our original coordinates, thereby producing a
+globally hyperbolic spacetime with this portion of \(\Sigma\) serving as a Cauchy
+surface. This solution of equation~\eqref{eq:10.2.34} will be a solution of Einstein's
+equation if \(H^\mu=0\) in this neighborhood. To prove this is the case, we note that
+the Einstein tensor \(G_{\mu\nu}\) in arbitrary coordinates can be expressed in terms
+of \(R^H_{\mu\nu}\) (defined by Eq.~\eqref{eq:10.2.34}) and \(H^\mu\) (given by
+Eq.~\eqref{eq:10.2.33}) via
+\begin{equation}
+  G_{\mu\nu}=R^H_{\mu\nu}-\frac12R^Hg_{\mu\nu}
+  -\sum_\alpha\left\{g_{\alpha(\mu}\partial_{\nu)}H^\alpha
+    -\frac12g_{\mu\nu}\partial_\alpha H^\alpha\right\}.
+  \tag{10.2.35}\label{eq:10.2.35}
+\end{equation}
+Since \(\sum_\nu G_{\mu\nu}n^\nu=0\) on \(\Sigma\) and \(H^\mu=0\) on
+\(\Sigma\), equation~\eqref{eq:10.2.35} implies that
+\(\partial H^\mu/\partial t=0\) on \(\Sigma\) if equation~\eqref{eq:10.2.34} is
+satisfied. Furthermore, when equation~\eqref{eq:10.2.34} is satisfied, the Bianchi
+identity yields
+\begin{align}
+  0=\sum_\mu\nabla^\mu G_{\mu\nu}
+  &=-\sum_{\rho,\mu,\alpha}g^{\rho\mu}\nabla_\rho
+    \left[g_{\alpha(\mu}\partial_{\nu)}H^\alpha
+      -\frac12g_{\mu\nu}\partial_\alpha H^\alpha\right] \notag\\
+  &=-\sum_{\rho,\mu,\alpha}\frac12g_{\alpha\nu}g^{\rho\mu}
+    \partial_\rho\partial_\mu H^\alpha
+    +\{\text{lower order terms linear in }H^\alpha\}.
+  \tag{10.2.36}\label{eq:10.2.36}
+\end{align}
+Thus, equation~\eqref{eq:10.2.36} (after multiplication by \(g^{\lambda\nu}\) and
+summation over \(\nu\)) takes the form~\eqref{eq:10.1.20} for which a unique
+solution exists according to theorem~\ref{thm:10.1.2}. Since
+\(H^\mu=\partial H^\mu/\partial t=0\) initially, this proves that \(H^\mu=0\)
+throughout the region where a solution to equation~\eqref{eq:10.2.34} exists. Thus,
+we have established local existence of a solution of Einstein's equation for initial
+data sufficiently near that of flat spacetime. Furthermore, theorem~\ref{thm:10.1.3}
+shows that the solution depends continuously on the initial data and has the desired
+domain of dependence property.
+
+The requirement that the initial data be ``sufficiently near'' that of flat spacetime can
+be removed by the following trick which uses the idea that any curved geometry
+appears ``nearly flat'' when examined on a sufficiently small scale. Suppose initial
+data \((g_{\mu\nu},\partial g_{\mu\nu}/\partial t)\) which are not ``sufficiently small''
+are given. By a coordinate transformation on \(\Sigma\), we may assume that
+\(g_{\mu\nu}=\diag(-1,1,1,1)\) at a point \(p\in\Sigma\) and that \(p\) lies at the
+origin of coordinates, \(x^\mu=0\). Let \(\lambda\in\mathbb R\). Suppose we scale
+the initial data by
+\((g_{\mu\nu},\partial g_{\mu\nu}/\partial t)
+\mapsto(\lambda^{-2}g_{\mu\nu},\lambda^{-2}\partial g_{\mu\nu}/\partial t)\), and
+then make the coordinate transformation \(x^\mu\mapsto x'^\mu=\lambda^{-1}x^\mu\)
+for \(\mu=0,1,2,3\). From the tensor transformation law~\eqref{eq:2.3.8}, we see
+that under this combined transformation, the initial data become
+\begin{equation*}
+  g'_{\mu\nu}(x')=g_{\mu\nu}(\lambda x'),
+  \qquad
+  \frac{\partial g'_{\mu\nu}}{\partial t'}(x')
+  =\lambda\frac{\partial g_{\mu\nu}}{\partial t}(\lambda x'),
+\end{equation*}
+where \(x'\) denotes the new spatial coordinates on \(\Sigma\). As \(\lambda\to0\),
+we see that the new initial data and their derivatives become arbitrarily close to those
+of data for flat spacetime. Thus, there exists a (sufficiently small) \(\lambda_0\) such
+that we can obtain a solution, \(g^0_{\mu\nu}(x')\), to Einstein's equation in a
+neighborhood of \(p\) for the new initial data with \(\lambda=\lambda_0\). The metric
+\(g^0_{\mu\nu}(\lambda_0^{-1}x)\) then solves Einstein's equation in a neighborhood
+of \(p\) with the original initial data.
+
+Local uniqueness of solutions with given initial data \((h_{ab},K_{ab})\) can be
+proven as follows. Let \((O^H,g^H_{ab})\) be the spacetime solution of Einstein's
+equation constructed using harmonic coordinates from the initial data
+\((g^H_{\mu\nu},\partial g^H_{\mu\nu}/\partial t)\) in the manner described above.
+Let \((O,g_{ab})\) be another solution of Einstein's equation (not necessarily in
+harmonic coordinates) which covers the same portion of \(\Sigma\) as
+\((O^H,g^H_{ab})\) and induces the same initial data \((h_{ab},K_{ab})\) on
+\(\Sigma\). We wish to find a diffeomorphism \(\psi\) from a neighborhood of
+\(\Sigma\) in \(O\) to a neighborhood of \(\Sigma\) in \(O^H\) such that \(\psi\)
+takes \(g_{ab}\) into \(g^H_{ab}\), i.e., \(\psi^*g_{ab}=g^H_{ab}\). We construct
+\(\psi\) as follows. Since \(g_{ab}\) and \(g^H_{ab}\) induce the same initial data
+on \(\Sigma\), it can be verified that there exists a diffeomorphism \(\phi\) such that
+the coordinate components of \(\phi^*g_{ab}\) and its time derivative on \(\Sigma\)
+agree with the initial data \((g^H_{\mu\nu},\partial g^H_{\mu\nu}/\partial t)\) of the
+solution \(g^H_{ab}\). (In fact, there are many such diffeomorphisms, since \(\phi\)
+can be arbitrary away from \(\Sigma\).) We then may use \(\phi^{-1}\) to bring the
+coordinates of \(O^H\) into \(O\). We use the initial value and time derivative of
+these coordinates on \(\Sigma\) as initial data for a solution of
+equation~\eqref{eq:10.2.32} in \(O\), thereby constructing harmonic coordinates in
+\(O\). Using these harmonic coordinate labels, we define \(\psi\) to be the map which
+takes a point in \(O\) to the point of \(O^H\) with the same values of the harmonic
+coordinates. (In general, of course, \(\psi\) will be defined only on a neighborhood
+of \(\Sigma\) in \(O\) and will map only onto a neighborhood of \(\Sigma\) in
+\(O^H\).) Then, in this neighborhood in \(O^H\) the harmonic coordinate components
+of \(\psi^*g_{ab}\) will satisfy equation~\eqref{eq:10.2.34} and will have the same
+initial data on \(\Sigma\) as \(g^H_{ab}\). Hence, by theorem~\ref{thm:10.1.3} we
+must have \(\psi^*g_{ab}=g^H_{ab}\) in a neighborhood of \(\Sigma\), which is the
+desired local uniqueness result.
+
+We outline, now, how to ``globalize'' these local existence and uniqueness results.
+We proved above that for \(p\in\Sigma\) there exists a solution \((O,g_{ab})\) of
+Einstein's equation into which a neighborhood of \(\Sigma\) containing \(p\) can be
+embedded so that the given initial data set is induced on this portion of \(\Sigma\).
+To show that there is a solution of Einstein's equation containing all of \(\Sigma\), we
+cover \(\Sigma\) by neighborhoods for which local solutions exist. Using the
+paracompactness of \(\Sigma\) (see appendix~A), we can ensure that these
+neighborhoods have only finite overlap at each point. Using the local uniqueness result
+proven above, it follows that for each \(p\in\Sigma\) we can find a globally hyperbolic
+spacetime \((\widetilde O,\widetilde g_{ab})\) containing \(p\) (and with a portion of
+\(\Sigma\) serving as a Cauchy surface) which can be isometrically mapped into every
+local solution in the above family which contains \(p\). By using the embeddings of
+the spacetimes \((\widetilde O,\widetilde g_{ab})\) into the local solutions to make
+identifications, we can consistently ``patch together'' the
+\((\widetilde O,\widetilde g_{ab})\) to construct a spacetime \((M,g_{ab})\) which
+solves Einstein's equation, which contains all of \(\Sigma\), and which induces on
+\(\Sigma\) the given initial data. Furthermore, this spacetime will be globally
+hyperbolic with Cauchy surface \(\Sigma\).
+
+The spacetime \((M,g_{ab})\) constructed above clearly is not unique since any proper
+open subset of \(M\) containing \(\Sigma\) is another solution of Einstein's equation
+inducing the same initial data on \(\Sigma\). However, we can consider the set
+\(\mathcal S\) of all globally hyperbolic spacetimes modulo diffeomorphisms which are
+solutions of Einstein's equation and into which \(\Sigma\) with the given initial data
+can be embedded as a Cauchy surface. For two spacetimes
+\((M_1,g^1_{ab}),(M_2,g^2_{ab})\) in \(\mathcal S\), we say
+\((M_1,g^1_{ab})\geq(M_2,g^2_{ab})\) if \((M_2,g^2_{ab})\) can be isometrically
+mapped into \((M_1,g^1_{ab})\) keeping the Cauchy surface fixed. This relation yields
+a ``partial order'' on \(\mathcal S\). [Here, a partial order on an arbitrary set \(S\)
+is a relation between elements satisfying, for all \(a,b,c\in S\): (i) \(a\geq a\),
+(ii) \(a\geq b\) and \(b\geq c\) implies \(a\geq c\), and (iii) \(a\geq b\) and
+\(b\geq a\) implies \(a=b\). The word ``partial'' refers to the fact that ``\(\geq\)''
+need not be defined for all pairs of elements.] Now, for any partially ordered set \(S\),
+a subset \(T\subseteq S\) for which the relation \(\geq\) is defined between all pairs
+of elements is said to be \emph{totally ordered}. An \emph{upper bound} for \(T\) is an
+element \(b\in S\) such that \(b\geq a\) for all \(a\in T\). Zorn's lemma (which is
+equivalent to the axiom of choice) asserts that if every totally ordered subset of \(S\)
+has an upper bound, then \(S\) has a \emph{maximal element}, i.e., an element
+\(m\in S\) such that, for all \(c\in S\), the relation \(c\geq m\) implies \(c=m\). In
+our case, given any totally ordered subset \(\mathcal T\) of \(\mathcal S\), we obtain
+an upper bound by taking the union of all spacetimes occurring in \(\mathcal T\) and
+then identifying points via the isometric embedding maps. Hence, by Zorn's lemma
+there exists a maximal element of \(\mathcal S\), i.e., a spacetime
+\((\widetilde M,\widetilde g_{ab})\) which cannot be isometrically mapped into any
+other spacetime in \(\mathcal S\). In general, Zorn's lemma implies existence of a
+maximal element, but not its uniqueness. However, in our case, if we had a spacetime
+in \(\mathcal S\) which could not be isometrically mapped into
+\((\widetilde M,\widetilde g_{ab})\), then it can be shown (Choquet--Bruhat and
+Geroch 1969) that we could ``patch'' the two spacetimes together to produce a
+``larger'' solution, in violation of the maximality of
+\((\widetilde M,\widetilde g_{ab})\). This implies that
+\((\widetilde M,\widetilde g_{ab})\) is the unique spacetime having the property that
+every globally hyperbolic spacetime with the given initial data on the Cauchy surface
+\(\Sigma\) can be isometrically mapped into \((\widetilde M,\widetilde g_{ab})\).
+
+Thus, putting together all the results proven or outlined above, we arrive at the
+following theorem.
+
+\begin{theorem}\label{thm:10.2.2}
+Let \(\Sigma\) be a three-dimensional \(C^\infty\) manifold, let \(h_{ab}\) be a
+smooth Riemannian metric on \(\Sigma\), and let \(K_{ab}\) be a smooth symmetric
+tensor field on \(\Sigma\). Suppose \(h_{ab}\) and \(K_{ab}\) satisfy the constraint
+equations~\eqref{eq:10.2.28} and \eqref{eq:10.2.30}. Then there exists a unique
+\(C^\infty\) spacetime, \((M,g_{ab})\), called the \emph{maximal Cauchy development}
+of \((\Sigma,h_{ab},K_{ab})\), satisfying the following four properties: (i)
+\((M,g_{ab})\) is a solution of Einstein's equation. (ii) \((M,g_{ab})\) is globally
+hyperbolic with Cauchy surface \(\Sigma\). (iii) The induced metric and extrinsic
+curvature of \(\Sigma\) are, respectively, \(h_{ab}\) and \(K_{ab}\). (iv) Every other
+spacetime satisfying (i)--(iii) can be mapped isometrically into a subset of
+\((M,g_{ab})\). Furthermore, \((M,g_{ab})\) satisfies the desired domain of dependence
+property in the following sense. Suppose \((\Sigma,h_{ab},K_{ab})\) and
+\((\Sigma',h'_{ab},K'_{ab})\) are initial data sets with maximal developments
+\((M,g_{ab})\) and \((M',g'_{ab})\). Suppose there is a diffeomorphism between
+\(S\subseteq\Sigma\) and \(S'\subseteq\Sigma'\), which carries \((h_{ab},K_{ab})\)
+on \(S\) into \((h'_{ab},K'_{ab})\) on \(S'\). Then \(D(S)\) in the spacetime
+\((M,g_{ab})\) is isometric to \(D(S')\) in the spacetime \((M',g'_{ab})\). Finally,
+the solution \(g_{ab}\) on \(M\) depends continuously on the initial data
+\((h_{ab},K_{ab})\) on \(\Sigma\). (A precise definition of the topologies on initial
+data and solutions which makes this map continuous is given in Hawking and Ellis
+1973.)
+\end{theorem}
+
+Note that it may be possible to extend the ``maximal development'' \((M,g_{ab})\),
+i.e., isometrically map it into a proper subset of another spacetime.
+Theorem~\ref{thm:10.2.2} asserts only that any such extension cannot have \(\Sigma\)
+as a Cauchy surface. It also should be noted that theorem~\ref{thm:10.2.2} gives no
+information as to the ``size'' of \((M,g_{ab})\), other than the fact that it is maximal
+in the sense of property (iv). Indeed, the singularity theorems of chapter~9 show that
+in many cases \((M,g_{ab})\) cannot be geodesically complete. In particular,
+theorem~9.5.1 gives a stringent limit on ``how large'' \((M,g_{ab})\) can be for initial
+data with \(K^a{}_a\geq C>0\). On the other hand, recently it has been shown
+(Christodoulou and O'Murchadha 1981) that for asymptotically flat initial data (see
+chapter~11) the maximal development is ``large enough'' to include all ``boosted''
+hypersurfaces in the asymptotic region.
+
+Aside from showing that general relativity has the physically desirable property of
+possessing a well posed initial value formulation, theorem~\ref{thm:10.2.2} also is
+very useful in that it puts globally hyperbolic spacetimes \((M,g_{ab})\) satisfying
+Einstein's equation into correspondence with initial data sets \((\Sigma,h_{ab},K_{ab})\)
+satisfying the constraint equations. [The association of spacetimes with initial data
+sets, of course, is not one-to-one; many distinct initial data sets give rise to the same
+spacetime \((M,g_{ab})\), corresponding to the freedom of choosing a spacelike
+Cauchy surface in \(M\).] It usually is far easier to solve the constraint equations on
+\(\Sigma\) than to solve Einstein's equation on \(M\). Thus, for example, in arguments
+involving existence of certain types of solutions of Einstein's equation, great
+simplifications usually can be achieved if the question can be posed in terms of initial
+data sets. Furthermore, a number of issues in general relativity, such as the positivity
+of total energy of isolated systems, are formulated most naturally in terms of initial
+data sets (see section~11.2).
+
+A relatively simple method exists for generating solutions of the constraint equations
+with \(K^a{}_a=0\) (Lichnerowicz 1944; York 1971). Given \(\Sigma\), one prescribes
+an arbitrary Riemannian metric, \(h_{ab}\), on \(\Sigma\) and solves the relatively
+simple constraint~\eqref{eq:10.2.28},
+\begin{equation}
+  D^aK_{ab}=0
+  \tag{10.2.37}\label{eq:10.2.37}
+\end{equation}
+for a trace-free (\(K^a{}_a=0\)) tensor field \(K_{ab}\). Of course,
+\((h_{ab},K_{ab})\) will not, in general, satisfy the additional
+constraint~\eqref{eq:10.2.30}. However, we let \(\widetilde h_{ab}=\phi^4h_{ab}\)
+and let \(\widetilde D_a\) be the derivative operator associated with
+\(\widetilde h_{ab}\). As shown in appendix~D, if we define
+\(\widetilde K_{ab}=\phi^{-2}K_{ab}\), then equation~\eqref{eq:10.2.37} implies that
+\begin{equation}
+  \widetilde D^a\widetilde K_{ab}=0.
+  \tag{10.2.38}\label{eq:10.2.38}
+\end{equation}
+Furthermore, using equation~(D.9) of appendix~D, the constraint
+equation~\eqref{eq:10.2.30} for \((\widetilde h_{ab},\widetilde K_{ab})\) can be
+expressed in terms of \(\phi,h_{ab}\), and \(K_{ab}\) as
+\begin{equation}
+  D^aD_a\phi-\frac18R\phi+\frac18\phi^{-7}K^{ab}K_{ab}=0,
+  \tag{10.2.39}\label{eq:10.2.39}
+\end{equation}
+where the indices here are raised by \(h^{ab}\) and \(R\) is the scalar curvature of
+\(h_{ab}\). Equation~\eqref{eq:10.2.39} is a nonlinear elliptic equation for \(\phi\).
+Locally (i.e., in sufficiently small regions), solutions of
+equation~\eqref{eq:10.2.39} always exist, although global solutions (i.e., solutions
+defined over all of \(\Sigma\)) may not exist. (Results on the global existence of
+solutions of Eq.~\eqref{eq:10.2.39}, as well as of the similar equation which results
+when \(K^a{}_a\) is a nonzero constant, are reviewed by Choquet--Bruhat and York
+1980.) Thus, in the cases where equation~\eqref{eq:10.2.39} can be solved, an initial
+data set \((\Sigma,\widetilde h_{ab},\widetilde K_{ab})\) satisfying the constraint
+equations (as well as \(\widetilde K^a{}_a=0\)) is generated from the set
+\((\Sigma,h_{ab},K_{ab})\) satisfying merely equation~\eqref{eq:10.2.37} together
+with \(K^a{}_a=0\).
+
+A particularly simple choice of \(K_{ab}\) which satisfies
+equation~\eqref{eq:10.2.37} and \(K^a{}_a=0\) is \(K_{ab}=0\). [If \(K_{ab}=0\) on
+\(\Sigma\), then \(\Sigma\) is referred to as a \emph{moment of time symmetry}. It is
+not difficult to see that the maximal development \((M,g_{ab})\) generated by initial
+data with \(K_{ab}=0\) will possess a reflection isometry about \(\Sigma\).]
+Equation~\eqref{eq:10.2.39} then becomes a linear equation on \(\phi\). If, in
+addition, we choose \(h_{ab}\) to be flat, then equation~\eqref{eq:10.2.39} reduces to
+Laplace's equation in ordinary three-dimensional space. The monopole solution
+\(\phi=1+M/2r\) yields initial data for the Schwarzschild solution. The solution of
+Laplace's equation obtained by superimposing two monopoles at different positions can
+be interpreted as initial data for two Schwarzschild black holes (Hahn and Lindquist
+1964). Thus, the maximal development \((M,g_{ab})\) arising from these initial data
+is a spacetime where two black holes are initially at rest, and then, presumably, fall
+together and ``collide.'' A portion of this spacetime has been obtained by numerical
+solution of Einstein's equation using computers by Smarr (1979).
+
+An interesting issue that can be investigated (at least in a crude way) for a theory
+possessing an initial value formulation is how many ``degrees of freedom'' the theory
+has, i.e., ``how many'' distinct solutions of the equations exist. In particle mechanics,
+we defined above the number of degrees of freedom to be the dimension, \(n\), of the
+configuration space. As discussed at the beginning of section~10.1, a proper initial
+data set for such a system consists of the \(2n\) initial positions and velocities. Thus,
+an equivalent characterization of the number of degrees of freedom in ordinary
+particle mechanics is that it is the number of quantities that must be specified as initial
+data divided by 2. For the Klein--Gordon field, a proper initial data set consists of the
+value of the field and the value of its normal derivative on a Cauchy surface \(\Sigma\),
+i.e., two arbitrary functions on \(\Sigma\). Thus, by analogy with particle mechanics,
+we may say that the Klein--Gordon field has ``one degree of freedom for each point of
+space.''
+
+How many degrees of freedom does the gravitational field have in general relativity?
+A proper initial data set for Einstein's equations consists of specifying 12 functions
+on \(\Sigma\): the six independent components of \(h_{ab}\), plus the six independent
+components of \(K_{ab}\). However, the constraint equations~\eqref{eq:10.2.28} and
+\eqref{eq:10.2.30} impose four relations on these 12 quantities, thus effectively
+reducing the number of ``freely specifiable'' functions on \(\Sigma\) to eight.
+Furthermore, many of the spacetimes generated by the initial data given by these eight
+``freely specifiable'' functions are physically equivalent. In particular, if
+\(\phi:\Sigma\to\Sigma\) is a diffeomorphism, then the data \(\phi^*h_{ab}\) and
+\(\phi^*K_{ab}\) on \(\Sigma\) generates the same physical spacetime as \(h_{ab}\)
+and \(K_{ab}\). Thus, three of the eight freely specifiable functions correspond to
+diffeomorphisms on \(\Sigma\) and are not physically relevant. Furthermore, as
+mentioned above, initial data sets which cannot be taken into each other by a
+diffeomorphism still can correspond to different choices of Cauchy surface in the
+same spacetime and thus be physically equivalent. Since, roughly speaking, one
+arbitrary function is needed to specify a choice of Cauchy surface in a spacetime, the
+number of nongauge freely specifiable functions on \(\Sigma\) is reduced to four.
+Dividing by 2, we conclude that the gravitational field has two degrees of freedom per
+point of space. This is the same number of degrees of freedom as a linear spin-2 field
+propagating in flat spacetime, to which general relativity reduces in the weak field
+limit (see section~4.4b). Note that the above very crude ``function counting'' argument
+in no way singles out precisely which functions (i.e., which of the 12 metric or
+extrinsic curvature components or functions of them) can be freely specified, which
+functions are determined by the constraints, and which functions correspond to gauge
+transformations. Indeed, one of the major obstacles to developing a quantum theory of
+gravity (see chapter~14) is the inability to single out the physical degrees of freedom
+of the theory.
+
+Finally, we comment briefly on the initial value formulation of Einstein's equation
+with matter sources, \(T_{ab}\). First, the initial value constraints for the gravitational
+field now take the form
+\begin{equation}
+  G_{ab}n^b=8\pi T_{ab}n^b.
+  \tag{10.2.40}\label{eq:10.2.40}
+\end{equation}
+From equations~\eqref{eq:10.2.28} and \eqref{eq:10.2.30} we obtain
+\begin{equation}
+  D^a(K_{ab}-K^c{}_ch_{ab})=-8\pi J_b,
+  \tag{10.2.41}\label{eq:10.2.41}
+\end{equation}
+\begin{equation}
+  {}^{(3)}R+(K^a{}_a)^2-K_{ab}K^{ab}=16\pi\rho,
+  \tag{10.2.42}\label{eq:10.2.42}
+\end{equation}
+where \(\rho=T_{ab}n^an^b\) and \(J_b=-h_b{}^cT_{ca}n^a\).
+
+The existence of a well posed initial value formulation for Einstein's equation with
+matter depends critically on the dynamical equations satisfied by the matter as well as
+on the formula for the stress-energy tensor in terms of the matter and spacetime metric.
+If the matter consists of fields \(\phi_1,\ldots,\phi_n\) satisfying an equation of the
+form~\eqref{eq:10.1.21} (with \(g_{ab}\) the spacetime metric) and if \(T_{ab}\)
+depends only on the fields, the metric, and the first derivatives of the fields and metric,
+then the combined Einstein--matter field system in harmonic coordinates will be of
+the form~\eqref{eq:10.1.21}, so a well posed initial value formulation will exist.
+Thus, the Einstein--Klein--Gordon equations and the Einstein--Maxwell equations have
+well posed initial value formulations. The existence of a well posed initial value
+formulation for a few systems not satisfying equations of the
+form~\eqref{eq:10.1.21} also has been established. In particular, the Einstein--perfect
+fluid system for appropriate choices of equation of state, \(P=P(\rho)\), is known to
+possess a well posed initial value formulation (see Hawking and Ellis 1973). The
+existence of a well posed initial value formulation does not single out Einstein's
+equation from equations which occur in some alternative theories of gravity. In
+particular, the Brans--Dicke equations are equivalent to the Einstein--Klein--Gordon
+equations (see Dicke 1962) and hence possess a well posed initial value formulation.
+Some ``higher derivative'' theories of gravity also have been shown to have a well
+posed initial value formulation (Noakes 1983). However, it should be emphasized that
+the existence of a well posed initial value formulation is far from an automatic feature
+of most theories. In particular, the natural generalization to curved spacetime of the
+equations for linear fields of spin greater than 1 (see chapter~13) fail to have a well
+posed initial value formulation.

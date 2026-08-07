@@ -1,0 +1,52 @@
+% Source: Wald GR, physical PDF p. 313
+%         (printed p. 300).
+% Coverage: Conformal diagram of the spherical-collapse spacetime.
+% Figures/tables/footnotes: Figure 12.1; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\begingroup
+\renewcommand{\thefigure}{12.1}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=.85cm,y=.85cm,>=Latex,line cap=round,line join=round,font=\small]
+    % Cylindrical conformal compactification.
+    \draw[thick] (-1.35,-2.55) -- (-1.35,2.85);
+    \draw[thick] ( 1.35,-2.55) -- ( 1.35,2.85);
+    \draw[thick] (-1.35,2.85) arc[start angle=180,end angle=360,x radius=1.35,y radius=.28];
+    \draw[thick] (-1.35,2.85) arc[start angle=180,end angle=0,x radius=1.35,y radius=.28];
+    \draw[thick] (-1.35,-2.55) arc[start angle=180,end angle=360,x radius=1.35,y radius=.28];
+    \draw[dashed] (-1.35,-2.55) arc[start angle=180,end angle=0,x radius=1.35,y radius=.28];
+    % The physical spacetime closes at i^0; the dashed curves are the hidden
+    % halves of the same null hypersurfaces on the cylindrical diagram.
+    \coordinate (bottom) at (0,-2.02);
+    \coordinate (singL) at (-.28,1.78);
+    \coordinate (singR) at (.28,1.78);
+    \coordinate (izero) at (.88,.20);
+    \draw[thick] (singR) .. controls (.92,1.42) and (1.25,.72) .. (izero);
+    \draw[dashed] (singL) .. controls (-1.10,1.25) and (-1.08,.45) .. (izero);
+    \draw[thick] (bottom) .. controls (.72,-1.52) and (1.23,-.62) .. (izero);
+    \draw[dashed] (bottom) .. controls (-.92,-1.36) and (-.92,-.25) .. (izero);
+    \node[left] at (-1.42,1.30) {\(\mathcal I^+\)};
+    \node[right] at (1.35,1.18) {\(\mathcal I^+\)};
+    \node[left] at (-1.40,-.98) {\(\mathcal I^-\)};
+    \node[right] at (1.35,-.72) {\(\mathcal I^-\)};
+    \fill (izero) circle (1.25pt) node[right] {\(i^0\)};
+    % The event horizon and r=0 line meet at the regular center in the past and
+    % bound the narrow black-hole region II beneath the spacelike singularity.
+    \path[fill=black!10] (bottom) -- (singL) -- (singR) -- cycle;
+    \draw[thick] (bottom) .. controls (-.18,-.42) and (-.26,.84) .. (singL);
+    \draw[thick] (bottom) -- (singR);
+    \draw[thick,decorate,decoration={zigzag,segment length=2.4pt,amplitude=.75pt}]
+      (singL) -- (singR);
+    \foreach \yy in {-1.55,-1.25,-.95,-.65,-.35,-.05,.25,.55,.85,1.15,1.45}
+      \draw[thin] ({-.28*(\yy+2.02)/3.8},\yy) -- ({.28*(\yy+2.02)/3.8},\yy);
+    \node[fill=white,inner sep=1pt] at (-.03,1.18) {II};
+  \end{tikzpicture}
+  \caption{A conformal diagram of the same spacetime as shown in Figures~6.11
+  and~6.12. From this conformal diagram, it is apparent that region II of the physical
+  spacetime lies outside of \(J^-(\mathcal I^+)\). In contrast, in Figure~11.1,
+  \(J^-(\mathcal I^+)\) includes the entire physical spacetime.}
+  \label{fig:12.1}
+\end{figure}
+\endgroup

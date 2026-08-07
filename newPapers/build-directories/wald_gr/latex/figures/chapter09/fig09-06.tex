@@ -1,0 +1,61 @@
+% Source: Wald GR, physical PDF p. 252 (printed p. 239), Figure 9.6.
+% Coverage: Spacetime diagram used in the proof of Theorem 9.5.2.
+% Figures/tables/footnotes: Figure 9.6.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\begingroup
+\renewcommand{\thefigure}{9.6}
+\begin{figure}[tb]
+  \centering
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,thick,line cap=round]
+    \draw (-2.72,4.78) .. controls (-1.75,5.42) and (-.72,4.88) .. (.52,4.72)
+      .. controls (1.66,4.58) and (2.38,4.82) .. (3.15,5.00);
+    \node[right] at (2.02,5.08) {\(S\)};
+    \draw (-2.42,1.40) -- (0,-.08) -- (2.42,1.40);
+    \node[below] at (0,-.16) {\(H^-(S)\)};
+
+    % The timelike curves lambda_n all run from S to the same p on H^-(S).
+    % Each marked q_n lies on its corresponding lambda_n and the sequence
+    % approaches p, as required in the proof of Theorem 9.5.2.
+    \coordinate (p) at (-1.16,.63);
+    \coordinate (qone) at (-1.62,1.50);
+    \coordinate (qtwo) at (-1.32,1.17);
+    \coordinate (qthree) at (-1.11,.91);
+    \draw (p) .. controls (-1.35,.90) and (-1.51,1.25) .. (qone)
+      .. controls (-1.82,2.22) and (-1.78,3.75) .. (-1.56,5.02);
+    \draw (p) .. controls (-1.24,.82) and (-1.30,1.03) .. (qtwo)
+      .. controls (-1.51,2.26) and (-1.33,3.77) .. (-.96,4.92);
+    \draw (p) .. controls (-1.15,.74) and (-1.13,.84) .. (qthree)
+      .. controls (-1.08,2.22) and (-.79,3.65) .. (-.34,4.82);
+
+    % For every q_n, the maximizing normal geodesic gamma_n joins q_n to
+    % its own intersection r_n with S.
+    \coordinate (rone) at (-1.24,4.98);
+    \coordinate (rtwo) at (-.68,4.88);
+    \coordinate (rthree) at (-.10,4.78);
+    \draw[dashed] (rone) .. controls (-1.30,3.57) and (-1.35,2.24) .. (qone);
+    \draw[dashed] (rtwo) .. controls (-.79,3.51) and (-.98,2.11) .. (qtwo);
+    \draw[dashed] (rthree) .. controls (-.26,3.42) and (-.61,1.91) .. (qthree);
+
+    \fill (p) circle (2pt) node[below left] {\(p\)};
+    \foreach \q in {qone,qtwo,qthree} {\fill (\q) circle (1.55pt);}
+    \foreach \r in {rone,rtwo,rthree} {\fill (\r) circle (1.55pt);}
+    \node[right] at (-.45,1.38) {\(q_n\)};
+    \draw[->] (-.52,1.34) -- (qtwo);
+    \node[above] at (-.60,5.36) {\(r_n\)};
+    \draw[->] (-.72,5.27) -- (rtwo);
+    \draw[->] (-.50,5.27) -- (rthree);
+    \draw[->] (-2.38,3.32) to[out=5,in=175] (-1.64,3.49);
+    \node[left] at (-2.34,3.12) {\(\lambda_n\)};
+    \draw[->] (1.32,3.38) to[out=178,in=10] (-.31,3.30);
+    \node[right] at (1.38,3.43) {\(\gamma_n\)};
+    \node[right] at (.82,2.42) {\(D^-(S)\)};
+    % Reserve trim clearance above the artwork when this float lands at page top.
+    \path[draw=none] (0,6.4) circle[radius=.1pt];
+  \end{tikzpicture}
+  \caption{A spacetime diagram showing a construction used in the proof of
+  theorem~9.5.2.}
+  \label{fig:9.6}
+\end{figure}
+\endgroup

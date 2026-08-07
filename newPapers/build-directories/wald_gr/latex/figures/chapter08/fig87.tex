@@ -1,0 +1,29 @@
+% Source: Wald GR, physical PDF p. 209
+%         (printed p. 196).
+% Coverage: A spacetime in which light cones tip over to allow closed timelike curves.
+% Figures/tables/footnotes: Figure 8.7; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\begingroup
+\renewcommand{\thefigure}{8.7}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=.82cm,y=.82cm,>=Latex,line cap=round,font=\small]
+    \draw[thick] (0,0) ellipse [x radius=3.05,y radius=1.10];
+    % Each cone axis follows the tangent of the displayed closed timelike
+    % curve; the continuous rotation is the causal feature of the example.
+    \foreach \x/\y/\a in {-2.45/.28/-41,-1.50/.75/-75,-.25/1.02/-88,1.55/.85/77,2.80/.22/31,1.25/-.78/-78,-.95/-.93/82,-2.40/-.40/52} {
+      \begin{scope}[shift={(\x,\y)},rotate=\a]
+        \draw (-.22,-.35) -- (0,0) -- (-.22,.35);
+        \draw (.22,-.35) -- (0,0) -- (.22,.35);
+        \draw (-.22,-.35) .. controls (-.04,-.39) and (.04,-.39) .. (.22,-.35);
+        \draw (-.22,.35) .. controls (-.04,.39) and (.04,.39) .. (.22,.35);
+      \end{scope}
+    }
+  \end{tikzpicture}
+  \caption{A spacetime with topology \(\mathbb{R}^4\) where the light cones
+  \lq\lq tip over\rq\rq\ sufficiently to permit the existence of closed timelike curves.}
+  \label{fig:8.7}
+\end{figure}
+\endgroup

@@ -1,0 +1,40 @@
+% Source: Wald GR, physical PDF p. 56 (printed p. 43).
+% Coverage: Figure 3.4.
+% Figures/tables/footnotes: Figure only; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+\begingroup
+\renewcommand{\thefigure}{3.4}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=.9,>=Stealth]
+    \foreach \y in {0,1.65} {
+      \draw[thick] (-2.15,\y) .. controls (-.80,\y+.32) and (.75,\y+.22) .. (2.10,\y-.08)
+        -- (1.55,\y-.78) .. controls (.15,\y-.48) and (-.90,\y-.63) .. (-2.15,\y-.34) -- cycle;
+    }
+    % Geodesics orthogonal to S; the leftmost pair crosses above S_t, which is
+    % where Gaussian normal coordinates break down.
+    \def\geodesics{%
+      \draw[thick] (-1.15,.05) .. controls (-1.20,1.20) and (-1.10,2.10) .. (-.20,3.00);
+      \draw[thick] (-.35,.05) .. controls (-.42,1.20) and (-.48,2.10) .. (-.75,3.00);
+      \draw[thick] (.95,.05) .. controls (.98,1.20) and (1.10,2.10) .. (1.35,3.00);%
+    }
+    \begin{scope}
+      \clip (-2.6,-1.1) rectangle (2.6,1.12) (-2.6,1.82) rectangle (2.6,3.2);
+      \geodesics
+    \end{scope}
+    \begin{scope}[dashed]
+      \clip (-2.6,1.12) rectangle (2.6,1.82);
+      \geodesics
+    \end{scope}
+    \node at (-1.62,1.42) {$S_t$};
+    \node at (-1.62,-.20) {$S$};
+    \fill (-.35,.05) circle (1.8pt) node[below=1pt] {$p$};
+  \end{tikzpicture}
+  \caption{The construction of Gaussian normal coordinates starting from the
+  hypersurface $S$. The geodesics orthogonal to $S$ eventually may cross, but until they
+  do, Gaussian normal coordinates are well defined and the surfaces, $S_t$, of constant $t$
+  remain orthogonal to the geodesics.}
+  \label{fig:3.4}
+\end{figure}
+\endgroup

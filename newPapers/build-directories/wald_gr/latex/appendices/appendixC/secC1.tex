@@ -1,0 +1,121 @@
+% Source: Wald GR, physical PDF pp. 450--452 (printed pp. 437--439).
+% Coverage: Appendix C.1, Maps of Manifolds; equations (C.1.1)--(C.1.5).
+% Figures/tables/footnotes: none.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Maps of Manifolds}\label{sec:C.1}
+
+Let \(M\) and \(N\) be manifolds (not necessarily of the same dimension) and let
+\(\phi:M\to N\) be a \(C^\infty\) map. In a natural manner, \(\phi\) \lq\lq pulls
+back\rq\rq\ a function \(f:N\to\mathbb R\) on \(N\) to the function
+\(f\circ\phi:M\to\mathbb R\) obtained by composing \(f\) with \(\phi\). Similarly,
+in a natural way, \(\phi\) \lq\lq carries along\rq\rq\ tangent vectors at \(p\in M\)
+to tangent vectors at \(\phi(p)\in N\)---i.e., it defines a map
+\(\phi^*:T_pM\to T_{\phi(p)}N\)---as follows: For \(v\in T_pM\) we define
+\(\phi^*v\in T_{\phi(p)}N\) by
+\begin{equation}
+  (\phi^*v)(f)=v(f\circ\phi)
+  \tag{C.1.1}\label{eq:C.1.1}
+\end{equation}
+for all smooth \(f:N\to\mathbb R\), where we have dropped the vector indices on
+\(v\) and \(\phi^*v\) since that notation is inconvenient here. It is easy to check
+that \(\phi^*v\) satisfies the properties required of a tangent vector at \(\phi(p)\)
+and thus Eq.~\eqref{eq:C.1.1} properly defines the map \(\phi^*\). Note that
+\(\phi^*\) is linear and may be viewed as the \lq\lq derivative of \(\phi\)\rq\rq\
+at \(p\). [The matrix of components of \(\phi^*\) in the coordinate bases of a
+coordinate system \(\{x^\nu\}\) at \(p\) and a coordinate system \(\{y^\mu\}\) at
+\(\phi(p)\) equals the Jacobian matrix of the map \(\phi\) between the coordinates,
+i.e., \((\phi^*)^\mu{}_\nu=\partial y^\mu/\partial x^\nu\).] By the implicit
+function theorem, \(\phi:M\to N\) will be one-to-one in a neighborhood of \(p\) if
+\(\phi^*:T_pM\to T_{\phi(p)}N\) is one-to-one.
+
+Similarly, we can use \(\phi\) to \lq\lq pull back\rq\rq\ covectors at \(\phi(p)\) to
+covectors at \(p\). We define the map \(\phi_*:T_{\phi(p)}^\vee N\to T_p^\vee M\) by
+requiring that for all \(v^a\in T_pM\),
+\begin{equation}
+  (\phi_*\mu)_a v^a=\mu_a(\phi^*v)^a.
+  \tag{C.1.2}\label{eq:C.1.2}
+\end{equation}
+We can extend the action of \(\phi_*\) to map tensors of type \((0,l)\) at
+\(\phi(p)\) to tensors of type \((0,l)\) at \(p\) by
+\begin{equation}
+  (\phi_*T)_{a_1\ldots a_l}(v_1)^{a_1}\cdots(v_l)^{a_l}
+  =T_{a_1\ldots a_l}(\phi^*v_1)^{a_1}\cdots(\phi^*v_l)^{a_l}.
+  \tag{C.1.3}\label{eq:C.1.3}
+\end{equation}
+Similarly, we can extend the action of \(\phi^*\) to map tensors of type \((k,0)\)
+at \(p\) to tensors of type \((k,0)\) at \(\phi(p)\) by
+\begin{equation}
+  (\phi^*T)^{b_1\ldots b_k}(\mu_1)_{b_1}\cdots(\mu_k)_{b_k}
+  =T^{b_1\ldots b_k}(\phi_*\mu_1)_{b_1}\cdots(\phi_*\mu_k)_{b_k}.
+  \tag{C.1.4}\label{eq:C.1.4}
+\end{equation}
+(By Eq.~\eqref{eq:C.1.2}, this is consistent with our original definition of
+\(\phi^*\) on vectors.) However, in general we cannot extend \(\phi^*\) or
+\(\phi_*\) to mixed tensors since \(\phi^*\) does not know how to \lq\lq carry
+along\rq\rq\ lower-index tensors, while \(\phi_*\) does not know how to
+\lq\lq pull back\rq\rq\ upper-index tensors.
+
+As defined in Chapter~2, a \(C^\infty\) map \(\phi:M\to N\) is said to be a
+\emph{diffeomorphism} if it is one-to-one, onto, and its inverse is \(C^\infty\). If
+\(\phi\) is a diffeomorphism (which necessarily implies \(\dim M=\dim N\)), then we
+can use \(\phi^{-1}\) to extend the definition of \(\phi^*\) to tensors of all types
+by using the fact that \((\phi^{-1})^*\) goes from \(T_{\phi(p)}N\) to \(T_pM\). If
+\(T^{b_1\ldots b_k}{}_{a_1\ldots a_l}\) is a tensor of type \((k,l)\) at \(p\), we
+define the tensor
+\((\phi^*T)^{b_1\ldots b_k}{}_{a_1\ldots a_l}\) at \(\phi(p)\) by
+\begin{equation}
+\begin{aligned}
+  &(\phi^*T)^{b_1\ldots b_k}{}_{a_1\ldots a_l}
+  (\mu_1)_{b_1}\cdots(\mu_k)_{b_k}
+  (t_1)^{a_1}\cdots(t_l)^{a_l} \\
+  &\qquad =
+  T^{b_1\ldots b_k}{}_{a_1\ldots a_l}
+  (\phi_*\mu_1)_{b_1}\cdots(\phi_*\mu_k)_{b_k}
+  ([\phi^{-1}]^*t_1)^{a_1}\cdots([\phi^{-1}]^*t_l)^{a_l}.
+\end{aligned}
+  \tag{C.1.5}\label{eq:C.1.5}
+\end{equation}
+Similarly, we could extend the map \(\phi_*\) to all tensors. However, it is not
+difficult to show that \(\phi_*=(\phi^{-1})^*\), so we need only consider
+\(\phi^*\) and \((\phi^{-1})^*\).
+
+If \(\phi:M\to M\) is a diffeomorphism and \(T\) is a tensor field on \(M\), we can
+compare \(T\) with \(\phi^*T\). If \(\phi^*T=T\), then even though we have
+\lq\lq moved \(T\)\rq\rq\ via \(\phi\), it has \lq\lq stayed the same.\rq\rq\ In
+other words, \(\phi\) is a \emph{symmetry transformation} for the tensor field \(T\).
+In the case of the metric \(g_{ab}\), a symmetry transformation---i.e., a
+diffeomorphism \(\phi\) such that \((\phi^*g)_{ab}=g_{ab}\)---is called an
+\emph{isometry}.
+
+We have already remarked in Chapter~2 that if \(\phi:M\to N\) is a diffeomorphism,
+then \(M\) and \(N\) have identical manifold structure. If a theory describes nature
+in terms of a spacetime manifold, \(M\), and tensor fields, \(T^{(i)}\), defined on
+the manifold, then if \(\phi:M\to N\) is a diffeomorphism, the solutions
+\((M,T^{(i)})\) and \((N,\phi^*T^{(i)})\) have physically identical properties. Any
+physically meaningful statement about \((M,T^{(i)})\) will hold with equal validity
+for \((N,\phi^*T^{(i)})\). On the other hand, if \((N,T'^{(i)})\) is not related to
+\((M,T^{(i)})\) by a diffeomorphism and if the tensor fields \(T^{(i)}\) represent
+measurable quantities, then \((N,T'^{(i)})\) will be physically distinguishable from
+\((M,T^{(i)})\). Thus, the diffeomorphisms comprise the gauge freedom of any theory
+formulated in terms of tensor fields on a spacetime manifold. In particular,
+diffeomorphisms comprise the gauge freedom of general relativity.
+
+It is worth noting that an alternative viewpoint on diffeomorphisms can be taken.
+Above, we have discussed diffeomorphisms without introducing or making any
+reference to coordinate systems. We have taken an \lq\lq active\rq\rq\ point of view
+by associating with \(\phi\) a map from tensors at \(p\) to tensors at \(\phi(p)\).
+However, if we are given a coordinate system \(\{x^\mu\}\) covering a neighborhood,
+\(U\), of \(p\) and a coordinate system \(\{y^\mu\}\) covering a neighborhood,
+\(V\), of \(\phi(p)\), we may take the following \lq\lq passive\rq\rq\ point of view.
+We may use \(\phi\) to define a new coordinate system \(x'^\mu\) in the neighborhood
+\(O=\phi^{-1}[V]\) of \(p\) by setting \(x'^\mu(q)=y^\mu(\phi(q))\) for \(q\in O\).
+We then may view the effect of \(\phi\) as leaving \(p\) and all tensors at \(p\)
+unchanged, but inducing the coordinate transformation \(x^\mu\to x'^\mu\). This
+\lq\lq passive\rq\rq\ point of view on diffeomorphisms is, philosophically,
+drastically different from the above \lq\lq active\rq\rq\ viewpoint, but, in
+practice, these viewpoints are really equivalent since the components of the tensor
+\(\phi^*T\) at \(\phi(p)\) in the coordinate system \(\{y^\mu\}\) in the active
+viewpoint are precisely the components of \(T\) at \(p\) in the coordinate system
+\(\{x'^\mu\}\) in the passive viewpoint.

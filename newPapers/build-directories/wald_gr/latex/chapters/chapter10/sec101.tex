@@ -1,0 +1,483 @@
+% Source: Wald GR, physical PDF pp. 257--265
+%         (printed pp. 244--252).
+% Coverage: Section 10.1, Initial Value Formulation for Particles and Fields;
+%           equations (10.1.1)--(10.1.21), theorems 10.1.1--10.1.3.
+% Figures/tables/footnotes: Figure 10.1; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Initial Value Formulation for Particles and Fields}\label{sec:10.1}
+\setcounter{theorem}{0}
+
+A fundamental feature of Newton's second law of motion
+\begin{equation}
+  \mathbf{F}=m\mathbf{a}
+  \tag{10.1.1}\label{eq:10.1.1}
+\end{equation}
+in ordinary, nonrelativistic, particle mechanics is that it relates the second time
+derivative, \(\mathbf{a}\), of the spatial position of a particle to the force, \(\mathbf{F}\),
+which---in usual cases---is a known function of the position and velocity of the
+particles in the system. Thus, for a system of particles interacting with themselves
+and/or external potentials with forces possibly dependent on positions and velocities
+but not on higher time derivatives of the particle positions, the laws of mechanics
+take the form
+\begin{equation}
+  \frac{\dd^2q_i}{\dd t^2}
+  =F_i\left(q_1,\ldots,q_n;
+    \frac{\dd q_1}{\dd t},\ldots,\frac{\dd q_n}{\dd t}\right),
+  \tag{10.1.2}\label{eq:10.1.2}
+\end{equation}
+where \(i=1,\ldots,n\) and the number, \(n\), of unknown positions is called the
+number of \emph{degrees of freedom} of the system. Equation~\eqref{eq:10.1.2} is a
+system of \(n\) second order ordinary differential equations for the \(n\) quantities
+\(q_1(t),\ldots,q_n(t)\). From the theory of such ordinary differential equations, it
+is well known (see, e.g., Coddington and Levinson 1955) that, given arbitrary initial
+values for the particle positions \(q_{10},\ldots,q_{n0}\), and velocities
+\((\dd q_1/\dd t)_0,\ldots,(\dd q_n/\dd t)_0\) at \(t=t_0\), there always exists a
+unique solution of equation~\eqref{eq:10.1.2} over a finite time interval about \(t_0\)
+with these initial values. Thus, ordinary particle mechanics possesses an initial value
+formulation. Furthermore, at a fixed time \(t\) the positions
+\(q_1(t),\ldots,q_n(t)\) are continuous functions of the initial positions and velocities
+of the particles. Since the causal propagation of changes in the initial data is not an
+issue in nonrelativistic mechanics, we conclude that the initial value formulation of
+nonrelativistic particle mechanics is well posed.
+
+The above simple example from particle mechanics contains the essential features of
+initial value formulations found in all physically reasonable field theories. Consider,
+for example, the massive Klein--Gordon field, \(\phi\), propagating in Minkowski
+spacetime,
+\begin{equation}
+  \partial_a\partial^a\phi-m^2\phi=0.
+  \tag{10.1.3}\label{eq:10.1.3}
+\end{equation}
+Choosing global inertial coordinates \(t,x,y,z\), we may write this equation in the form
+\begin{equation}
+  \frac{\partial^2\phi}{\partial t^2}
+  =\frac{\partial^2\phi}{\partial x^2}
+   +\frac{\partial^2\phi}{\partial y^2}
+   +\frac{\partial^2\phi}{\partial z^2}-m^2\phi.
+  \tag{10.1.4}\label{eq:10.1.4}
+\end{equation}
+The mathematical structure of equation~\eqref{eq:10.1.4} is markedly different from
+that of equation~\eqref{eq:10.1.2}: Equation~\eqref{eq:10.1.2} is a system of
+ordinary differential equations while equation~\eqref{eq:10.1.4} is a single partial
+differential equation. Nevertheless, the essential content of these equations is quite
+similar. They both tell us how to compute the second time derivative of the unknown
+quantity (or quantities) at an instant of time, given the value and first time derivative
+of the quantity (or quantities) at that time. (Actually, for
+Eq.~\eqref{eq:10.1.4} one does not even need to know \(\partial\phi/\partial t\) to
+compute \(\partial^2\phi/\partial t^2\), but in more general equations or with
+non-inertial time slicings, \(\partial\phi/\partial t\) and its first spatial derivatives
+would appear on the right side of the equation corresponding to
+Eq.~\eqref{eq:10.1.4}.) Indeed, we may heuristically view
+equation~\eqref{eq:10.1.4} as arising from the limit as \(N\to\infty\) of a system
+of \(N\) particles coupled by nearest neighbor harmonic oscillator interactions (see,
+e.g., Goldstein 1980). In this limit, the discrete index \(i\) goes over to the continuous
+label \(\mathbf{x}\) and the finite set of variables \(q_i(t)\) satisfying
+equation~\eqref{eq:10.1.2} goes over to the field variable \(\phi(\mathbf{x},t)\)
+satisfying equation~\eqref{eq:10.1.4}.
+
+The physical and mathematical analogy between equations~\eqref{eq:10.1.2} and
+\eqref{eq:10.1.4} suggests that Klein--Gordon theory should have the following
+initial value formulation: We arbitrarily specify the values of \(\phi\) and
+\(\partial\phi/\partial t\) on a spatial hypersurface \(\Sigma_0\) of constant inertial
+time, \(t=t_0\). Then there should exist a unique solution of
+equation~\eqref{eq:10.1.4} having this initial data.
+
+Indeed, it is not difficult to show that Klein--Gordon theory admits this formulation
+when one considers only analytic initial data, i.e., when \(\phi\) and
+\(\partial\phi/\partial t\) are analytic functions on \(\Sigma_0\). To see this, we
+observe that from such initial data, we can compute all spatial derivatives of \(\phi\)
+and \(\partial\phi/\partial t\) at \(t=t_0\). Equation~\eqref{eq:10.1.4} then gives
+\(\partial^2\phi/\partial t^2\) at \(t=t_0\), and by taking spatial derivatives of
+this equation, we may compute all the spatial derivatives of
+\(\partial^2\phi/\partial t^2\) at \(t=t_0\) in terms of previously computed
+quantities. We then may differentiate equation~\eqref{eq:10.1.4} with respect to
+\(t\), and thereby compute \(\partial^3\phi/\partial t^3\) and all its spatial
+derivatives at \(t=t_0\). Continuing in this manner, we obtain \emph{all derivatives}
+of \(\phi\) at \(t=t_0\). This enables us to write down a formal power series solution
+for \(\phi\). As proven by Cauchy and generalized by Kowalewski, for a wide class of
+partial differential equations---or even systems of partial differential equations---this
+power series has a finite radius of convergence. We state their theorem for second
+order partial differential equations (i.e., equations containing second partial derivatives
+of the unknown variables but none of higher order), but it is easily generalized to
+equations of arbitrary order. A proof of this theorem can be found in most books
+treating partial differential equations (e.g., Courant and Hilbert 1962).
+
+\begin{theorem}[Cauchy--Kowalewski theorem]\label{thm:10.1.1}
+Let \(t,x^1,\ldots,x^{m-1}\) be coordinates of \(\mathbb R^m\). Consider a
+system of \(n\) partial differential equations for \(n\) unknown functions
+\(\phi_1,\ldots,\phi_n\) in \(\mathbb R^m\), having the form
+\begin{equation}
+  \frac{\partial^2\phi_i}{\partial t^2}
+  =F_i\left(t,x^\alpha;\phi_j;
+    \frac{\partial\phi_j}{\partial t};
+    \frac{\partial\phi_j}{\partial x^\alpha};
+    \frac{\partial^2\phi_j}{\partial t\,\partial x^\alpha};
+    \frac{\partial^2\phi_j}{\partial x^\alpha\partial x^\beta}\right),
+  \tag{10.1.5}\label{eq:10.1.5}
+\end{equation}
+where each \(F_i\) is an analytic function of its variables. Let \(f_i(x^\alpha)\)
+and \(g_i(x^\alpha)\) be analytic functions. Then there is an open neighborhood
+\(O\) of the hypersurface \(t=t_0\) such that within \(O\) there exists a unique
+analytic solution of equation~\eqref{eq:10.1.5} such that
+\(\phi_i(t_0,x^\alpha)=f_i(x^\alpha)\) and
+\(\partial\phi_i(t_0,x^\alpha)/\partial t=g_i(x^\alpha)\).
+\end{theorem}
+
+The Cauchy--Kowalewski theorem shows that Klein--Gordon theory has an initial
+value formulation, at least for analytic initial data. It shows that, in analogy to particle
+mechanics, the initial value of \(\phi\) and its time derivative may be specified
+arbitrarily, and that these initial values determine the subsequent evolution of \(\phi\).
+It thereby also shows that there exists a large class of solutions to the Klein--Gordon
+equation, since there exist as many analytic solutions of equation~\eqref{eq:10.1.4}
+as there are pairs of arbitrary analytic functions of the three spatial variables
+\(x^\alpha\).
+
+However, the Cauchy--Kowalewski analysis is not adequate for showing that the
+initial value formulation of Klein--Gordon theory is well posed. First, the analysis
+does not establish continuous dependence of solutions on initial data in a suitable
+sense. More precisely, we may define a topology on the space of initial data which
+makes two functions ``close'' if they and a finite number (or all) of their derivatives
+are close. For example, we may define a ``distance'' between two functions \(f_1\)
+and \(f_2\) on the \(t=t_0\) initial data surface \(\Sigma_0\), by summing the least
+upper bounds (l.u.b.) of the magnitude of \((f_1-f_2)\) and all its derivatives up to
+order \(k\),
+\begin{align}
+  \lVert f_1-f_2\rVert
+  &={\mathop{\rm l.u.b.}_{x\in\Sigma_0}}\,|f_1(x)-f_2(x)| \notag\\
+  &\quad+\sum_{k_1,k_2,k_3}
+  {\mathop{\rm l.u.b.}_{x\in\Sigma_0}}
+  \left|
+    \frac{\partial^{k_1+k_2+k_3}(f_1-f_2)}
+    {\partial x^{k_1}\partial y^{k_2}\partial z^{k_3}}
+  \right|,
+  \tag{10.1.6}\label{eq:10.1.6}
+\end{align}
+where \(k_1+k_2+k_3\leq k\). We then may take the open balls in this norm as a
+basis of a topology (see appendix~A). (Other reasonable choices of topology also
+can be given.) In a compact region of spacetime, we may define a similar topology
+on the solutions. The Cauchy--Kowalewski theorem gives no guarantee that---for any
+reasonable choices of topology on the space of initial data and the space of
+solutions---the map taking analytic initial data to the analytic solutions to which they
+give rise is continuous.
+
+Furthermore, the Cauchy--Kowalewski analysis cannot even deal with the issue of
+causal propagation of the field. An analytic function is uniquely determined by the
+values of it and all its derivatives at one point and, thus, in particular, is uniquely
+determined by its value in an arbitrarily small open neighborhood of a point. This
+implies that in the analytic case if we alter the initial data in an arbitrary open region
+\(U\) of the initial surface \(\Sigma_0\), we must, in fact, alter the initial data over
+the entire hypersurface \(\Sigma_0\). Thus, to analyze the issue of causal propagation,
+we must consider nonanalytic initial data. However, the Cauchy--Kowalewski analysis
+does not even prove existence of a solution for \(C^\infty\), nonanalytic, initial data.
+
+Thus, to show that the initial value formulation of Klein--Gordon theory is well posed,
+methods other than the Cauchy--Kowalewski analysis are required. We now shall
+outline a proof that the initial value formulation of the massive Klein--Gordon field
+in Minkowski spacetime is well posed. Then we shall state some much more general
+results obtained by this approach.
+
+Let \(\phi\) be a smooth solution of equation~\eqref{eq:10.1.3}. Then the
+stress-energy-momentum tensor of \(\phi\),
+\begin{equation}
+  T_{ab}=\partial_a\phi\,\partial_b\phi
+  -\frac12\eta_{ab}\bigl(\partial_c\phi\,\partial^c\phi+m^2\phi^2\bigr),
+  \tag{10.1.7}\label{eq:10.1.7}
+\end{equation}
+(see Eq.~\eqref{eq:4.2.20}), is conserved,
+\begin{equation}
+  \partial^aT_{ab}=0.
+  \tag{10.1.8}\label{eq:10.1.8}
+\end{equation}
+Consequently, letting \(\xi^a=(\partial/\partial t)^a\) denote the time translation
+Killing field orthogonal to the \(t=t_0\) hypersurface \(\Sigma_0\), we have
+\begin{equation}
+  \partial^a(T_{ab}\xi^b)=0.
+  \tag{10.1.9}\label{eq:10.1.9}
+\end{equation}
+[In fact, for any Killing field \(\xi^a\) and any conserved, symmetric \(T_{ab}\) in
+curved spacetime, we have \(\nabla^a(T_{ab}\xi^b)=T_{ab}\nabla^a\xi^b=0\) by
+Eq.~(C.3.1).] Let \(S_0\) be a (three-dimensional) closed ball on the initial
+hypersurface \(\Sigma_0\). Let \(\Sigma_1\) denote the hypersurface \(t=t_1\)
+(with \(t_1>t_0\)), let \(K=D^+(S_0)\cap I^-(\Sigma_1)\), and let
+\(S_1=D^+(S_0)\cap\Sigma_1\). Finally, let \(S_2\) denote the ``null portion'' of
+the boundary of \(K\) (see Fig.~\ref{fig:10.1}). We integrate
+equation~\eqref{eq:10.1.9} over \(K\) and apply Gauss's law, thereby obtaining
+\begin{equation}
+  \int_{S_1}T_{ab}\xi^a\xi^b
+  +\int_{S_2}T_{ab}l^a\xi^b
+  =\int_{S_0}T_{ab}\xi^a\xi^b,
+  \tag{10.1.10}\label{eq:10.1.10}
+\end{equation}
+\input{figures/chapter10/fig10_1.tex}
+where \(l^a\) is the future directed normal to \(S_2\). (The natural volume elements
+on \(S_0\) and \(S_1\) are understood in Eq.~\eqref{eq:10.1.10}; the volume
+element on the null surface \(S_2\) is explained in appendix~B.) However, it is not
+difficult to verify from equation~\eqref{eq:10.1.7} that \(T_{ab}\) satisfies the
+dominant energy condition, i.e., if \(v^a\) is a future directed timelike vector, then
+\(-T^a{}_bv^b\) is a future directed timelike or null vector. Consequently, we have
+\(T_{ab}l^a\xi^b\geq0\). Hence, the second term on the left-hand side of
+equation~\eqref{eq:10.1.10} is nonnegative. Writing out the other terms explicitly,
+we obtain
+\begin{equation}
+  \int_{S_1}\left[
+    \left(\frac{\partial\phi}{\partial t}\right)^2
+    +|\boldsymbol{\nabla}\phi|^2+m^2\phi^2\right]
+  \leq
+  \int_{S_0}\left[
+    \left(\frac{\partial\phi}{\partial t}\right)^2
+    +|\boldsymbol{\nabla}\phi|^2+m^2\phi^2\right].
+  \tag{10.1.11}\label{eq:10.1.11}
+\end{equation}
+
+Equation~\eqref{eq:10.1.11} is the key equation needed to demonstrate the
+existence of a well-posed initial value formulation. First, it shows---without appealing
+to analyticity---that there can be at most one solution in \(D^+(S_0)\) with given
+initial data \((\phi,\partial\phi/\partial t)\) on \(S_0\). Namely, if \(\phi_1\) and
+\(\phi_2\) both are \(C^2\) functions satisfying equation~\eqref{eq:10.1.3} with the
+same smooth (but not necessarily analytic) initial data, then their difference,
+\(\psi=\phi_2-\phi_1\), would be a \(C^2\) solution of
+equation~\eqref{eq:10.1.3} with vanishing initial data. Hence, for \(\psi\), the
+right-hand side of equation~\eqref{eq:10.1.11} vanishes, which implies (assuming
+\(m\ne0\)) that \(\psi=0\) on \(S_1\) and hence (since \(\Sigma_1\) is arbitrary)
+\(\psi=0\) throughout \(D^+(S_0)\). [If \(m=0\), we have
+\(\boldsymbol{\nabla}\psi=0\) and \(\partial\psi/\partial t=0\) in \(D^+(S_0)\), and since
+\(\psi=0\) on \(S_0\), this again implies that \(\psi=0\) throughout
+\(D^+(S_0)\).] Similarly, \(\psi\) also vanishes throughout \(D^-(S_0)\). This
+result also shows that the second requirement for a well posed initial value formulation
+is satisfied: A variation of the initial data outside of \(S_0\) cannot affect the solution
+within \(D(S_0)\).
+
+Equation~\eqref{eq:10.1.11} also shows that solutions depend continuously on the
+initial data. To prove a useful form of this continuous dependence that also allows us
+to prove existence of solutions for arbitrary smooth initial data, we proceed as follows.
+For simplicity, we shall restrict attention to the massive case, \(m\ne0\). First, by
+differentiating equation~\eqref{eq:10.1.4} with respect to the coordinates \(x^\mu\),
+we see that all partial derivatives of \(\phi\) also satisfy the Klein--Gordon equation.
+Hence, we obtain inequalities of the form~\eqref{eq:10.1.11} bounding square
+integrals of higher space and time derivatives of \(\phi\) on \(S_1\) by the
+corresponding square integrals on \(S_0\). Using equation~\eqref{eq:10.1.4}, we
+can express all terms on \(S_0\) containing more than one time derivative in terms
+of the initial data \(\phi,\partial\phi/\partial t\) and their spatial derivatives on
+\(S_0\). Thus, we obtain inequalities of the form
+\begin{equation}
+  \lVert\phi\rVert_{S_1,k}
+  \leq C_{1,k}\triplenorm{\phi}_{S_0,k}
+  +C_{2,k}\triplenorm{\frac{\partial\phi}{\partial t}}_{S_0,k-1},
+  \tag{10.1.12}\label{eq:10.1.12}
+\end{equation}
+where the norms \(\lVert\phi\rVert_{S_1,k}\) and
+\(\triplenorm{\phi}_{S_0,k}\) are defined by
+\begin{equation}
+  \lVert\phi\rVert_{S_1,k}^2
+  =\int_{S_1}\left\{|\phi|^2+\cdots+
+    \sum_i|\partial^{k_i}\phi|^2\right\},
+  \tag{10.1.13}\label{eq:10.1.13}
+\end{equation}
+\begin{equation}
+  \triplenorm{\phi}_{S_0,k}^2
+  =\int_{S_0}\left\{|\phi|^2+\cdots+
+    \sum_i|D^{k_i}\phi|^2\right\},
+  \tag{10.1.14}\label{eq:10.1.14}
+\end{equation}
+where \(\partial^{k_i}\) denotes a \(k\)th order partial derivative with respect to
+space and time coordinates, while \(D^{k_i}\) denotes a \(k\)th order partial
+derivative with respect to space coordinates only. (In
+Eqs.~\eqref{eq:10.1.13} and \eqref{eq:10.1.14} we take the sums of all such
+partial derivatives of order less than or equal to \(k\). The norms defined by
+Eqs.~\eqref{eq:10.1.13} and \eqref{eq:10.1.14} are called \emph{Sobolev norms}.)
+By integrating equation~\eqref{eq:10.1.12} over \(t_1\) from \(t_0\) to the
+maximum value of \(t\) for which \(D^+(S_0)\cap\Sigma_t\ne\varnothing\), we obtain
+\begin{equation}
+  \lVert\phi\rVert_{D^+(S_0),k}
+  \leq C'_{1,k}\triplenorm{\phi}_{S_0,k}
+  +C'_{2,k}\triplenorm{\frac{\partial\phi}{\partial t}}_{S_0,k-1}.
+  \tag{10.1.15}\label{eq:10.1.15}
+\end{equation}
+
+Now, we apply the following key result. Let \(A\) be any subset of \(\mathbb R^n\)
+(with the natural Euclidean metric) which satisfies the \emph{uniform interior cone
+condition}, defined as follows: There exists a cone of fixed height \(h\) and fixed
+vertex angle \(\theta\) such that for each \(p\in A\) this cone can be mapped
+isometrically into \(A\) with vertex at \(p\). Then, for \(k>n/2\) the
+\(\lVert\ \rVert_{A,k}\) norm of a smooth function \(f\) (defined by
+Eq.~\eqref{eq:10.1.13} with the integration region taken to be \(A\)) bounds the
+numerical values of \(f\) in \(A\), i.e., there exists a constant \(C\) such that
+\begin{equation}
+  {\mathop{\rm l.u.b.}_{x\in A}}\,|f(x)|\leq C\lVert f\rVert_{A,k}.
+  \tag{10.1.16}\label{eq:10.1.16}
+\end{equation}
+A proof of this result is outlined in problem~1. Thus, taking \(A=D^+(S_0)\) and
+\(k=3\), we find using equations~\eqref{eq:10.1.15} and \eqref{eq:10.1.16},
+\begin{equation}
+  {\mathop{\rm l.u.b.}_{x\in D^+(S_0)}}\,|\phi|
+  \leq C''_1\triplenorm{\phi}_{S_0,3}
+  +C''_2\triplenorm{\frac{\partial\phi}{\partial t}}_{S_0,2}.
+  \tag{10.1.17}\label{eq:10.1.17}
+\end{equation}
+Similarly, the numerical values of any \(m\)th order partial derivative of \(\phi\)
+are bounded in terms of the initial data by
+\begin{equation}
+  {\mathop{\rm l.u.b.}_{x\in D^+(S_0)}}\,|\partial^m\phi|
+  \leq C''_{1,m}\triplenorm{\phi}_{S_0,3+m}
+  +C''_{2,m}\triplenorm{\frac{\partial\phi}{\partial t}}_{S_0,2+m}.
+  \tag{10.1.18}\label{eq:10.1.18}
+\end{equation}
+The same type of bounds hold, of course, for \(x\in D^-(S_0)\).
+
+Equations~\eqref{eq:10.1.17} and \eqref{eq:10.1.18} demonstrate the continuous
+dependence of \(\phi\) and its derivatives on the initial data in a strong sense. More
+precisely, if we define a topology on solutions in \(D(S_0)\) via a norm of the form
+equation~\eqref{eq:10.1.6} with \(k=m\) and define a topology on the initial data
+on \(S_0\) (or on all of \(\Sigma_0\)) via the
+\(\triplenorm{\ }_{S_0,3+m}\) norm or the norm
+\eqref{eq:10.1.6} with \(k=m+3\), then equation~\eqref{eq:10.1.18}
+demonstrates that the linear map from initial data to solutions is bounded and, hence,
+is continuous. More generally, the map from initial data on \(\Sigma_0\) to solutions
+in any fixed compact region of spacetime is continuous in these topologies.
+
+Finally, we use this continuity to prove existence of a smooth solution \(\phi\) for
+arbitrary smooth initial data \((\phi,\partial\phi/\partial t)\) on \(\Sigma_0\). We
+proceed by choosing a sequence \(\{(\phi_i^m,\partial\phi_i^m/\partial t)\}\),
+\(i=1,2,\ldots\), of analytic initial data on \(\Sigma_0\) such that the functions in
+this sequence and their spatial derivatives up to order \((3+m)\) converge uniformly
+to \((\phi,\partial\phi/\partial t)\) on \(S_0\). By theorem~\ref{thm:10.1.1} there
+exists a solution \(\phi_i^m\) with initial data
+\((\phi_i^m,\partial\phi_i^m/\partial t)\) on \(\Sigma_0\). (Actually,
+theorem~\ref{thm:10.1.1} as stated guarantees existence of a solution only in an open
+neighborhood of \(\Sigma_0\), but further analysis in the linear case establishes that
+a solution exists throughout \(\mathbb R^n\).) However, according to
+equation~\eqref{eq:10.1.18} [and the corresponding inequality for \(D^-(S_0)\)],
+\(\{\phi_i^m\}\) and its first \(m\) derivatives must converge uniformly in
+\(D(S_0)\) to a function \(\phi^m\) and its first \(m\) derivatives. Choosing
+\(m\geq2\), we easily verify that this limit function \(\phi^m\) must satisfy
+equation~\eqref{eq:10.1.4}. Thus, for all \(m\geq2\) we obtain a \(C^m\) solution
+in \(D(S_0)\). However, we proved above that there is at most one \(C^2\) solution
+in \(D(S_0)\). Thus, \(\phi^m=\phi^{m'}=\phi\) for all \(m,m'\geq2\). Since
+\(\phi\) is \(C^m\) for all \(m\geq2\), we have proven existence of a
+\(C^\infty\) solution throughout \(D(S_0)\). Since \(S_0\) is arbitrary, this
+solution exists on all of \(\mathbb R^4\).
+
+Thus, we have established that the massive Klein--Gordon field in Minkowski
+spacetime has a well posed initial value formulation. Note that, unlike the
+Cauchy--Kowalewski analysis, the proof of a well posed initial value formulation
+made use of detailed structure of the Klein--Gordon equation. In particular, the
+linearity of the equation was used in a number of places, and its ``wave equation''
+character was essential to the construction of a conserved \(T_{ab}\) with positive
+energy. If we changed the sign of \(\partial^2\phi/\partial t^2\) in
+equation~\eqref{eq:10.1.4}, thereby turning equation~\eqref{eq:10.1.4} into a
+four-dimensional ``Laplace type'' equation, we would not be able to construct such
+a \(T_{ab}\), and the method of proof would break down even though the
+applicability of theorem~\ref{thm:10.1.1} would not be affected. Indeed, it is well
+known that equations of ``Laplace type'' do not have a well posed initial value
+formulation.
+
+The above results for the Klein--Gordon field can be significantly generalized. In
+particular, we may replace the Klein--Gordon equation~\eqref{eq:10.1.3} in
+\(\mathbb R^4\) by any equation on a manifold \(M\) of the form
+\begin{equation}
+  g^{ab}\nabla_a\nabla_b\phi+A^a\nabla_a\phi+B\phi+C=0,
+  \tag{10.1.19}\label{eq:10.1.19}
+\end{equation}
+where \(\nabla_a\) is any derivative operator, \(A^a\) is an arbitrary smooth vector
+field, \(B\) and \(C\) are arbitrary smooth functions, and \(g^{ab}\) is an arbitrary
+smooth Lorentz metric such that the spacetime \((M,g_{ab})\) is globally hyperbolic.
+(A second order linear partial differential equation is said to be \emph{hyperbolic} if
+and only if it can be expressed in the form~\eqref{eq:10.1.19}.) This equation will
+have a well posed initial value formulation for initial data
+\((\phi,n^a\nabla_a\phi)\) on any smooth, spacelike Cauchy surface \(\Sigma\), where
+\(n^a\) is the unit normal to \(\Sigma\). There are only a few significant additional
+complications to the proof of this much more general result. Specifically, for
+equation~\eqref{eq:10.1.19} in general we cannot construct a conserved \(T_{ab}\)
+satisfying the dominant energy condition, but we may construct a \(T_{ab}\) satisfying
+the dominant energy condition whose failure to be conserved can be bounded, so that
+inequalities of the form~\eqref{eq:10.1.12} (with \(C_{1,k}\) and \(C_{2,k}\) now
+functions of time) still hold. Also, in the proof of existence, if the coefficients
+\(g^{ab},A^a,B\), and \(C\) are nonanalytic, we must also approximate them by
+analytic coefficients before we can appeal to theorem~\ref{thm:10.1.1}.
+
+These results can be further generalized to systems of equations, resulting in the
+following theorem, a complete proof of which can be found in Hawking and Ellis
+(1973).
+
+\begin{theorem}\label{thm:10.1.2}
+Let \((M,g_{ab})\) be a globally hyperbolic spacetime (or a globally hyperbolic region
+of an arbitrary spacetime) and let \(\nabla_a\) be any derivative operator. Let
+\(\Sigma\) be a smooth, spacelike Cauchy surface. Consider the system of \(n\) linear
+equations for \(n\) unknown functions \(\phi_1,\ldots,\phi_n\) of the form
+\begin{equation}
+  g^{ab}\nabla_a\nabla_b\phi_i
+  +\sum_j(A_{ij})^a\nabla_a\phi_j
+  +\sum_jB_{ij}\phi_j+C_i=0.
+  \tag{10.1.20}\label{eq:10.1.20}
+\end{equation}
+(Equation~\eqref{eq:10.1.20} is referred to as a linear, diagonal second order
+hyperbolic system.) Then equation~\eqref{eq:10.1.20} has a well posed initial value
+formulation on \(\Sigma\). More precisely, given arbitrary smooth initial data,
+\((\phi_i,n^a\nabla_a\phi_i)\) for \(i=1,\ldots,n\) on \(\Sigma\), there exists a
+unique solution of equation~\eqref{eq:10.1.20} throughout \(M\). Furthermore, the
+solutions depend continuously on the initial data in the sense described above for the
+Klein--Gordon equation in flat spacetime. Finally, a variation of the initial data
+outside of a closed subset, \(S\), of \(\Sigma\) does not affect the solution in \(D(S)\).
+\end{theorem}
+
+We remark also that the differentiability assumptions on the coefficients
+\(g^{ab},(A_{ij})^a\), and \(B_{ij}\), as well as on \(\Sigma\) and the initial data
+\(\phi_i,n^a\nabla_a\phi_i\) on \(\Sigma\), can be weakened significantly (see
+Hawking and Ellis 1973). For results on the initial value formulation of linear partial
+differential equations not of second order diagonal form, see, e.g., Bers, John, and
+Schechter (1964).
+
+Finally we discuss generalizations of theorem~\ref{thm:10.1.2} to some nonlinear
+systems of equations. Very few results other than theorem~\ref{thm:10.1.1} are known
+concerning the initial value formulation of general, nonlinear systems of equations.
+However, for second order differential equations which are \emph{quasilinear}, i.e.,
+linear in the highest derivative terms, many of the results on linear systems apply
+locally. More precisely, we call a system of \(n\) second-order partial differential
+equations for \(n\) unknown functions \(\phi_1,\ldots,\phi_n\) on a manifold \(M\)
+a \emph{quasilinear, diagonal, second order hyperbolic system} if it can be put in the
+form
+\begin{equation}
+  g^{ab}(x;\phi_j;\nabla_c\phi_j)\nabla_a\nabla_b\phi_i
+  =F_i(x;\phi_j;\nabla_c\phi_j),
+  \tag{10.1.21}\label{eq:10.1.21}
+\end{equation}
+where \(\nabla_a\) is any derivative operator, \(g^{ab}\) is a smooth Lorentz metric,
+and each \(F_i\) is a smooth function of its variables. (Equation~\eqref{eq:10.1.21}
+differs from Eq.~\eqref{eq:10.1.20} in that \(g^{ab}\) is now permitted to depend on
+the unknown variables and their first derivatives, and \(F_i\) now may have nonlinear
+dependence on these variables.) For equations of this type, we have the following
+theorem due to Leray (1952):
+
+\begin{theorem}\label{thm:10.1.3}
+Let \((\phi_0)_1,\ldots,(\phi_0)_n\) be any solution of the quasilinear hyperbolic
+system~\eqref{eq:10.1.21} on a manifold \(M\) and let
+\((g_0)^{ab}=g^{ab}(x;(\phi_0)_j;\nabla_c(\phi_0)_j)\). Suppose
+\((M,(g_0)_{ab})\) is globally hyperbolic (or, alternatively, consider a globally
+hyperbolic region of this spacetime). Let \(\Sigma\) be a smooth spacelike Cauchy
+surface for \((M,(g_0)_{ab})\). Then, the initial value formulation of
+equation~\eqref{eq:10.1.21} is well posed on \(\Sigma\) in the following sense: For
+initial data on \(\Sigma\) sufficiently close to the initial data for
+\((\phi_0)_1,\ldots,(\phi_0)_n\), there exists an open neighborhood \(O\) of
+\(\Sigma\) such that equation~\eqref{eq:10.1.21} has a solution,
+\(\phi_1,\ldots,\phi_n\), in \(O\) and
+\((O,g_{ab}(x;\phi_j;\nabla_c\phi_j))\) is globally hyperbolic. The solution is
+unique in \(O\) and propagates causally in the sense that if the initial data for
+\(\phi'_1,\ldots,\phi'_n\) agree with that of \(\phi_1,\ldots,\phi_n\) on a subset,
+\(S\), of \(\Sigma\), then the solutions agree on \(O\cap D^+(S)\). Finally, the
+solutions depend continuously on the initial data in the sense described above for
+the Klein--Gordon field.
+\end{theorem}
+
+The basic idea of the proof of theorem~\ref{thm:10.1.3} is to start by solving the
+linear system of the form~\eqref{eq:10.1.20} obtained by replacing \(\phi_i\) and
+\(\nabla_a\phi_i\) by \((\phi_0)_i\) and \(\nabla_a(\phi_0)_i\) in \(g^{ab}\) and
+\(F_i\) in equation~\eqref{eq:10.1.21}. Then we obtain a solution \((\phi_1)_i\) by
+theorem~\ref{thm:10.1.2}. We substitute this solution into the coefficients \(g^{ab}\)
+and \(F_i\) and repeat the procedure. In this way, we obtain a sequence \((\phi_n)_i\)
+of solutions to linear equations. For initial data sufficiently close to that for
+\((\phi_0)_i\), it can be shown that this sequence converges in a neighborhood of
+\(\Sigma\) and that the limit satisfies equation~\eqref{eq:10.1.21} and has the above
+desired properties. The proof of this convergence and the other properties quoted in
+theorem~\ref{thm:10.1.3} is outlined in Hawking and Ellis (1973).

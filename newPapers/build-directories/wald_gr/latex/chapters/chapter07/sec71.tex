@@ -1,0 +1,395 @@
+% Source: Wald GR, physical PDF pp. 175--181
+%         (printed pp. 162--168).
+% Coverage: Section 7.1, Stationary, Axisymmetric Solutions;
+%           theorem 7.1.1 and equations (7.1.1)--(7.1.29).
+% Figures/tables/footnotes: footnote 1; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Stationary, Axisymmetric Solutions}\label{sec:7.1}
+
+As already mentioned in section 6.1, a spacetime is said to be \emph{stationary} if
+there exists a one-parameter group of isometries \(\sigma_t\) whose orbits are
+timelike curves. Thus, every stationary spacetime possesses a timelike Killing vector
+field \(\xi^a\) (see appendix C). (Conversely, every spacetime with a timelike
+Killing vector field whose orbits are complete is stationary.) Similarly, we call a
+spacetime \emph{axisymmetric} if there exists a one-parameter group of isometries
+\(\chi_\phi\) whose orbits are closed spacelike curves, which implies the existence
+of a spacelike Killing field \(\psi^a\) whose integral curves are closed. We call a
+spacetime stationary and axisymmetric if it possesses both these symmetries and if,
+in addition, the actions of \(\sigma_t\) and \(\chi_\phi\) commute:
+\begin{equation}
+  \sigma_t\circ\chi_\phi=\chi_\phi\circ\sigma_t ,
+  \tag{7.1.1}\label{eq:7.1.1}
+\end{equation}
+i.e., the rotations commute with the time translations. This is easily seen to be
+equivalent to the condition that the Killing vector fields \(\xi^a\) and \(\psi^a\)
+commute,
+\begin{equation}
+  [\xi,\psi]=0 .
+  \tag{7.1.2}\label{eq:7.1.2}
+\end{equation}
+
+Stationary, axisymmetric spacetimes are of considerable interest in general
+relativity since they describe equilibrium configurations of axisymmetric, rotating
+bodies. Thus, in particular, in order to generalize the results of section 6.2 to
+account for rotation, we must be able to solve Einstein's equation with perfect fluid
+source in the presence of these symmetries. Stationary, axisymmetric vacuum
+solutions are also of great interest, since they describe the exterior gravitational
+field of rotating bodies and would be needed to match onto the interior solutions.
+
+The commutativity of \(\xi^a\) and \(\psi^a\) implies that we can choose coordinates
+\((x^0=t,x^1=\phi,x^2,x^3)\) so that both
+\(\xi^a=(\partial/\partial t)^a\) and
+\(\psi^a=(\partial/\partial\phi)^a\) are coordinate vector fields. As discussed in
+appendix C, the metric components in such a coordinate system will be independent
+of \(t\) and \(\phi\), so the metric will take the form
+\begin{equation}
+  \dd s^2=\sum_{\mu,\nu}g_{\mu\nu}(x^2,x^3)\dd x^\mu\dd x^\nu .
+  \tag{7.1.3}\label{eq:7.1.3}
+\end{equation}
+Thus, we must solve for 10 unknown functions, \(g_{\mu\nu}\), of two variables. We
+shall show, now, that by a further careful selection of coordinate system, a weak
+further assumption (see hypothesis (i) of theorem 7.1.1 below) and some use of
+Einstein's equation, we can reduce the metric to a form involving only three
+functions of two variables (see equation~\eqref{eq:7.1.22} below), and reduce the
+problem of solving Einstein's equation to that of solving two equations for two
+unknown functions (see equations~\eqref{eq:7.1.24} and \eqref{eq:7.1.25} below)
+together with a quadrature for a third function (see equations~\eqref{eq:7.1.26} and
+\eqref{eq:7.1.27}).
+
+The first crucial simplification arises from the fact that under the hypotheses of the
+following theorem, the two-dimensional subspaces of the tangent space at each point
+which are spanned by the vectors orthogonal to \(\xi^a\) and \(\psi^a\) are
+integrable, i.e., tangent to two-dimensional surfaces. We shall state and prove the
+theorem first and then discuss its implications for simplifying the general form of
+stationary, axisymmetric metrics.
+
+\medskip
+\noindent\textsc{Theorem 7.1.1.}\label{thm:7.1.1}\quad
+\emph{Let \(\xi^a\) and \(\psi^a\) be two commuting Killing fields such that
+(i) \(\xi_{[a}\psi_b\nabla_c\xi_{d]}\) and
+\(\xi_{[a}\psi_b\nabla_c\psi_{d]}\) each vanishes at at least one point of the
+spacetime (which, in particular, will be true if either \(\xi^a\) or \(\psi^a\)
+vanishes at one point) and
+(ii) \(\xi^aR_a{}^{[b}\xi^c\psi^{d]}=\psi^aR_a{}^{[b}\xi^c\psi^{d]}=0\).
+Then the 2-planes orthogonal to \(\xi^a\) and \(\psi^a\) are integrable.}
+
+\begin{proof}
+This theorem is a direct application of Frobenius's theorem (see appendix B). We
+want to know when the planes orthogonal to the 1-forms \(\xi_a\) and \(\psi_a\) are
+integrable. According to the dual formulation of Frobenius's theorem (theorem
+B.3.2) the necessary and sufficient conditions for integrability are
+\begin{align}
+  \nabla_{[a}\xi_{b]}&=(\mu^1)_{[a}\xi_{b]}+(\mu^2)_{[a}\psi_{b]} ,
+    \tag{7.1.4}\label{eq:7.1.4}\\
+  \nabla_{[a}\psi_{b]}&=(\sigma^1)_{[a}\xi_{b]}+(\sigma^2)_{[a}\psi_{b]} ,
+    \tag{7.1.5}\label{eq:7.1.5}
+\end{align}
+where \((\mu^1)_a,(\mu^2)_a,(\sigma^1)_a,(\sigma^2)_a\) are arbitrary 1-forms. We
+shall establish the theorem by proving that equation~\eqref{eq:7.1.4} holds; the proof
+that equation~\eqref{eq:7.1.5} also holds follows in an identical manner.
+Equation~\eqref{eq:7.1.4} is equivalent to
+\begin{equation}
+  \psi_{[a}\xi_b\nabla_c\xi_{d]}=0 ,
+  \tag{7.1.6}\label{eq:7.1.6}
+\end{equation}
+which, in turn, is equivalent to
+\begin{equation}
+  \epsilon_{abcd}\psi^a\xi^b\nabla^c\xi^d=0 ,
+  \tag{7.1.7}\label{eq:7.1.7}
+\end{equation}
+where \(\epsilon_{abcd}\) is the volume element associated with the metric (see
+appendix B). We define the \emph{twist}, \(\omega_a\), of \(\xi^a\) by
+\begin{equation}
+  \omega_a=\epsilon_{abcd}\xi^b\nabla^c\xi^d .
+  \tag{7.1.8}\label{eq:7.1.8}
+\end{equation}
+(According to equation~\eqref{eq:B.3.6}, \(\omega_a\) measures the failure of
+\(\xi^a\) to be hypersurface orthogonal.) Our task is to show that
+\(\psi^a\omega_a=0\).
+
+By hypothesis (i), we know \(\psi^a\omega_a\) vanishes at at least one point, so it
+will vanish everywhere if and only if its derivative is identically zero. We have
+\begin{align}
+  \nabla_b(\psi^a\omega_a)
+    &=\psi^a\nabla_b\omega_a+\omega_a\nabla_b\psi^a\notag\\
+    &=\psi^a\nabla_a\omega_b+\omega_a\nabla_b\psi^a
+      +2\psi^a\nabla_{[b}\omega_{a]}\notag\\
+    &=\mathcal L_\psi\omega_b+2\psi^a\nabla_{[b}\omega_{a]} ,
+  \tag{7.1.9}\label{eq:7.1.9}
+\end{align}
+where the formula~\eqref{eq:C.2.13} for the Lie derivative was used. However, the
+group of diffeomorphisms \(\chi_\phi\) generated by \(\psi^a\) leaves \(\xi^a\)
+invariant (since \(\psi^a\) and \(\xi^a\) commute) and leaves the metric invariant
+(since \(\psi^a\) is a Killing field). Hence, \(\chi_\phi\) must leave invariant any
+tensor field that can be constructed uniquely out of \(\xi^a\) and the metric. Since
+\(\omega_b\) is such a tensor field, we must have\footnote{Another way of seeing
+this is that in a coordinate system adapted to both \(\xi^a\) and \(\psi^a\), any
+tensor \(T^{a\dots b}{}_{c\dots d}\) whose components
+\(T^{\alpha\dots\beta}{}_{\gamma\dots\delta}\) are constructed out of the
+components \(\xi^\alpha\) and \(g_{\mu\nu}\), and their coordinate derivatives,
+must satisfy
+\(\partial(T^{\alpha\dots\beta}{}_{\gamma\dots\delta})/\partial\phi=0\), which
+proves that \(\mathcal L_\psi T^{a\dots b}{}_{c\dots d}=0\) according to
+equation~\eqref{eq:C.2.4}. Note that \(\mathcal L_\psi\omega_b=0\) holds, of
+course, also could be proven directly using the formulas of appendix C (problem 1).}
+\begin{equation}
+  \mathcal L_\psi\omega_b=0 .
+  \tag{7.1.10}\label{eq:7.1.10}
+\end{equation}
+
+Thus, to complete the proof, we need only compute \(\nabla_{[a}\omega_{b]}\). We
+have
+\begin{align}
+  \epsilon^{abcd}\nabla_c\omega_d
+    &=\epsilon^{abcd}\epsilon_{defg}\nabla_c(\xi^e\nabla^f\xi^g)\notag\\
+    &=6\nabla_c(\xi^{[c}\nabla^a\xi^{b]}) ,
+  \tag{7.1.11}\label{eq:7.1.11}
+\end{align}
+where equations~\eqref{eq:B.2.11} and \eqref{eq:B.2.13} were used. Now, using
+Killing's equation~\eqref{eq:C.3.1}, we have
+\begin{equation}
+  \xi^{[c}\nabla^a\xi^{b]}=\frac13
+  \{\xi^c\nabla^a\xi^b+\xi^b\nabla^c\xi^a+\xi^a\nabla^b\xi^c\} .
+  \tag{7.1.12}\label{eq:7.1.12}
+\end{equation}
+However, we find
+\begin{align}
+  \nabla_c(\xi^c\nabla^a\xi^b)
+    &=(\nabla_c\xi^c)\nabla^a\xi^b+\xi^c\nabla_c\nabla^a\xi^b\notag\\
+    &=-\xi^cR^{ab}{}_{cd}\xi^d\notag\\
+    &=0 .
+  \tag{7.1.13}\label{eq:7.1.13}
+\end{align}
+Here the trace of Killing's equation was used to eliminate the first term, while
+equation~\eqref{eq:C.3.6} was used to express the second term in terms of the
+Riemann tensor. The antisymmetry of the Riemann tensor in its last two indices was
+used to get the final conclusion. On the other hand, we have
+\begin{align}
+  \nabla_c(\xi^b\nabla^c\xi^a+\xi^a\nabla^b\xi^c)
+    &=(\nabla_c\xi^b)(\nabla^c\xi^a)
+      +(\nabla_c\xi^a)(\nabla^b\xi^c)
+      +\xi^b\nabla_c\nabla^c\xi^a
+      +\xi^a\nabla_c\nabla^b\xi^c\notag\\
+    &=2\xi^{[b}\nabla_c\nabla^{|c|}\xi^{a]}\notag\\
+    &=-2\xi^{[b}R^{a]}{}_c\xi^c ,
+  \tag{7.1.14}\label{eq:7.1.14}
+\end{align}
+where Killing's equation was used to get the second line and
+equation~\eqref{eq:C.3.9} was used to get the third line. Thus, we find
+\begin{align}
+  \nabla_{[a}\omega_{b]}
+    &=-\frac14\epsilon_{abcd}\epsilon^{cdef}\nabla_e\omega_f\notag\\
+    &=-\epsilon_{abcd}\xi^cR^d{}_e\xi^e ,
+  \tag{7.1.15}\label{eq:7.1.15}
+\end{align}
+and, finally,
+\begin{align}
+  \nabla_b(\psi^a\omega_a)
+    &=2\psi^a\nabla_{[b}\omega_{a]}\notag\\
+    &=-2\epsilon_{bacd}\psi^a\xi^cR^d{}_e\xi^e\notag\\
+    &=0
+  \tag{7.1.16}\label{eq:7.1.16}
+\end{align}
+by hypothesis (ii). This completes the proof.
+\end{proof}
+
+The hypotheses of theorem 7.1.1 will be satisfied in a wide range of stationary,
+axisymmetric spacetimes of physical interest. In particular, if the spacetime is
+asymptotically flat, there must be a ``rotation axis'' on which \(\psi^a\) vanishes,
+so hypothesis (i) will be satisfied. For a vacuum spacetime, we have \(R_{ab}=0\),
+so hypothesis (ii) is trivially satisfied. In addition, hypothesis (ii) will also be
+satisfied when the matter stress-energy
+\(T_{ab}=(8\pi)^{-1}(R_{ab}-\tfrac12g_{ab}R)\) has the form of a perfect fluid
+with 4-velocity in the plane spanned by \(\xi^a\) and \(\psi^a\) (i.e., circular
+flow) or if \(T_{ab}\) is the stress tensor of a stationary, axisymmetric
+electromagnetic field (Carter 1969).
+
+For spacetimes which satisfy the hypotheses of theorem 7.1.1, we may choose
+coordinates \(x^2,x^3\) in one of the orthogonal two-surfaces and ``carry'' these
+coordinates to the rest of the spacetime along the integral curves of \(\xi^a\) and
+\(\psi^a\). In the coordinates \((t,\phi,x^2,x^3)\), the metric components take the
+form
+\begin{equation}
+  g_{\mu\nu}=
+  \begin{pmatrix}
+    -V&W&0&0\\
+    W&X&0&0\\
+    0&0&g_{22}&g_{23}\\
+    0&0&g_{23}&g_{33}
+  \end{pmatrix} ,
+  \tag{7.1.17}\label{eq:7.1.17}
+\end{equation}
+where \(V=-g_{00}=-\xi_a\xi^a\), \(W=g_{01}=\xi^a\psi_a\),
+\(X=g_{11}=\psi^a\psi_a\), and the \(2\times2\) block of zeros expresses the
+orthogonality of \(\partial/\partial x^2\) and \(\partial/\partial x^3\) with
+\(\partial/\partial t\) and \(\partial/\partial\phi\). (A physical interpretation of
+\(W\) is established in problem 3.) Thus, theorem 7.1.1 allows us to reduce the
+number of nonvanishing metric components to six. Without theorem 7.1.1, only two
+metric components in the \(2\times2\) block could be set to zero by use of the
+coordinate freedom available in a coordinate system adapted to \(\xi^a\) and
+\(\psi^a\).
+
+We still have not specified how the two-surface coordinates \(x^2\) and \(x^3\) are
+to be chosen, and, as we shall see, significant further simplification can be achieved
+by a judicious choice of these coordinates. We define the scalar function \(\rho\) by
+\begin{equation}
+  \rho^2=VX+W^2 ;
+  \tag{7.1.18}\label{eq:7.1.18}
+\end{equation}
+i.e., \(\rho^2\) is minus the determinant of the \(t\)-\(\phi\) part of the metric.
+Assuming \(\nabla_a\rho\ne0\), we choose \(\rho\) as one of the coordinates,
+\(x^2\), of the two-surface. We choose the other coordinate, \(z=x^3\), so that
+\(\nabla_az\) is orthogonal to \(\nabla_a\rho\). [This is accomplished by setting
+\(z=\text{constant}\) along the integral curves of \(\nabla^a\rho\), which uniquely
+determines \(z\) up to the transformations \(z\longrightarrow z'=f(z)\).] In the
+coordinates \(t,\phi,\rho,z\) the metric takes the form
+\begin{equation}
+  \dd s^2=-V(\dd t-w\dd\phi)^2+V^{-1}\rho^2\dd\phi^2
+    +\Omega^2(\dd\rho^2+\Lambda\dd z^2) ,
+  \tag{7.1.19}\label{eq:7.1.19}
+\end{equation}
+where \(w=W/V\). Thus, we have reduced the unknown metric components to four
+functions, \(V,w,\Omega,\Lambda\) of two variables \(\rho,z\).
+Equation~\eqref{eq:7.1.19} is the general form of a stationary, axisymmetric
+spacetime satisfying the hypotheses of theorem 7.1.1.
+
+The form of the metric can be simplified further for vacuum spacetimes,
+\(R_{ab}=0\). The components of \(R_{ab}\) in the plane spanned by \(\xi^a\) and
+\(\psi^a\) can be computed from equation~\eqref{eq:C.3.9} or, alternatively, from
+the general coordinate basis formulas of section 3.4a. The equation
+\begin{equation}
+  0=R^t{}_t+R^\phi{}_\phi
+   =(\nabla_at)R^a{}_b\xi^b+(\nabla_a\phi)R^a{}_b\psi^b
+  \tag{7.1.20}\label{eq:7.1.20}
+\end{equation}
+yields
+\begin{equation}
+  D^aD_a\rho=0 ,
+  \tag{7.1.21}\label{eq:7.1.21}
+\end{equation}
+where \(D_a\) is the covariant derivative operator on the two-dimensional surface
+spanned by \(\rho\) and \(z\) with the induced metric
+\(\dd s^2=\Omega^2(\dd\rho^2+\Lambda\dd z^2)\). Thus, \(\rho\) is harmonic,
+i.e., it satisfies the two-dimensional Laplace equation in the two-surfaces. This has
+two important consequences: (1) If \(\rho\ne\text{constant}\), it can be shown that
+\(\nabla_a\rho\) can vanish only at isolated points. Since our coordinates \(\rho,z\)
+will be well behaved except where \(\nabla_a\rho=0\), this shows that our coordinate
+system can break down only at isolated points. In fact, in many situations it is
+possible to show that \(\nabla_a\rho\ne0\) everywhere, so the coordinates \(\rho,z\)
+are globally well behaved (Carter 1973). (2) It follows directly from
+equation~\eqref{eq:7.1.21} that \(\Lambda\) is a function of \(z\) alone. Thus we may
+use the remaining coordinate freedom to transform \(z\) via
+\(z\longrightarrow\int\Lambda^{1/2}\dd z\) and thereby set \(\Lambda=1\). (Note
+that \(z\) then becomes the harmonic function conjugate to \(\rho\); see problem 2
+of chapter 3.) Except for the trivial constant rescaling or shift of origin of the
+coordinates \(t,\phi,z\), we have now completely specified our coordinate system.
+In these coordinates the metric takes the remarkably simple form (Papapetrou 1953,
+1966)
+\begin{equation}
+  \dd s^2=-V(\dd t-w\dd\phi)^2
+    +V^{-1}[\rho^2\dd\phi^2+e^{2\gamma}(\dd\rho^2+\dd z^2)] ,
+  \tag{7.1.22}\label{eq:7.1.22}
+\end{equation}
+where \(\gamma=\tfrac12\ln(V\Omega^2)\). Note that in flat spacetime
+(\(V=1,w=\gamma=0\)), the coordinates \((\phi,\rho,z)\) are ordinary cylindrical
+coordinates.
+
+In deriving equation~\eqref{eq:7.1.22}, we have used Einstein's equation thus far
+only in hypothesis (ii) of theorem 7.1.1 and in equation~\eqref{eq:7.1.20}. The
+remaining components of the vacuum Einstein's equation \(R_{ab}=0\) can be
+computed in a straightforward manner using the methods of section 3.4a. We shall
+not present the details here but will merely quote the final results. We obtain four
+independent equations for \(V,w\), and \(\gamma\). The first two involve only
+\(V\) and \(w\) and are most conveniently formulated by defining an (unphysical)
+flat three-dimensional metric,
+\begin{equation}
+  \dd s^2=\rho^2\dd\phi^2+\dd\rho^2+\dd z^2 ,
+  \tag{7.1.23}\label{eq:7.1.23}
+\end{equation}
+and expressing the equations in terms of the flat derivative operator \(\boldsymbol{\nabla}\)
+associated with this metric. (We use the usual vector notation \(\boldsymbol{\nabla}\) rather
+than the index notation to avoid confusion with the derivative operator associated
+with the true spacetime metric.) In this way, the first two equations may be viewed
+as equations for axisymmetric scalar fields \(V,w\) in the unphysical
+three-dimensional flat space of equation~\eqref{eq:7.1.23}. The equations are:
+\begin{align}
+  \boldsymbol{\nabla}\mathbin{\cdot}
+    \{V^{-1}\boldsymbol{\nabla} V+\rho^{-2}V^2w\boldsymbol{\nabla} w\}&=0 ,
+    \tag{7.1.24}\label{eq:7.1.24}\\
+  \boldsymbol{\nabla}\mathbin{\cdot}
+    \{\rho^{-2}V^2\boldsymbol{\nabla} w\}&=0 ,
+    \tag{7.1.25}\label{eq:7.1.25}\\
+  \frac{\partial\gamma}{\partial\rho}
+    &=\frac14\rho V^{-2}
+      \left[\left(\frac{\partial V}{\partial\rho}\right)^2
+            -\left(\frac{\partial V}{\partial z}\right)^2\right]\notag\\
+    &\quad-\frac14\rho^{-1}V^2
+      \left[\left(\frac{\partial w}{\partial\rho}\right)^2
+            -\left(\frac{\partial w}{\partial z}\right)^2\right] ,
+    \tag{7.1.26}\label{eq:7.1.26}\\
+  \frac{\partial\gamma}{\partial z}
+    &=\frac12\rho V^{-2}\frac{\partial V}{\partial\rho}
+      \frac{\partial V}{\partial z}
+      -\frac12\rho^{-1}V^2\frac{\partial w}{\partial\rho}
+      \frac{\partial w}{\partial z} .
+    \tag{7.1.27}\label{eq:7.1.27}
+\end{align}
+
+The last two equations are in danger of overdetermining \(\gamma\). However, the
+integrability condition
+\(\partial^2\gamma/\partial z\partial\rho=
+\partial^2\gamma/\partial\rho\partial z\) is identically satisfied by virtue of
+equations~\eqref{eq:7.1.24} and \eqref{eq:7.1.25}. Hence, given a solution of
+equations~\eqref{eq:7.1.24} and \eqref{eq:7.1.25}, a solution of
+equations~\eqref{eq:7.1.26} and \eqref{eq:7.1.27} always exists and is unique up to
+the addition of a constant. This solution can be obtained by performing a line
+integral of the right sides of equations~\eqref{eq:7.1.26} and \eqref{eq:7.1.27},
+i.e., explicitly,
+\begin{equation}
+  \gamma(p)-\gamma(q)=\int_q^p
+    \left(\frac{\partial\gamma}{\partial\rho}\dd\rho
+          +\frac{\partial\gamma}{\partial z}\dd z\right) .
+  \tag{7.1.28}\label{eq:7.1.28}
+\end{equation}
+
+Thus, apart from the computation required to find \(\gamma\) explicitly, the problem
+of solving for all stationary, axisymmetric vacuum solutions of Einstein's equation
+has been reduced to solving equations~\eqref{eq:7.1.24} and \eqref{eq:7.1.25} for
+the two axisymmetric functions \(V\) and \(w\) in ordinary three-dimensional
+Euclidean space. This is a remarkable simplification of the original problem of
+solving the full set of Einstein's equation for 10 unknown functions \(g_{\mu\nu}\).
+Nevertheless, these equations are still sufficiently difficult to solve that---with the
+exception of static solutions discussed below---almost no solutions have been found
+by direct attack on equations~\eqref{eq:7.1.24} and \eqref{eq:7.1.25}. (In cases
+where solutions have been obtained, it often has proven useful to work with
+coordinates other than \(\rho\) and \(z\) [Zipoy 1966; Chandrasekhar 1983].) The
+equations can be reformulated through the introduction of potentials (Ernst 1968),
+and a few solutions of interest have been found by direct study of these modified
+equations (Tomimatsu and Sato 1972, 1973). However, recent progress in methods
+for generating solutions (discussed briefly in section 7.4 below) has produced
+algorithms for obtaining \emph{all} the asymptotically flat stationary, axisymmetric
+solutions, although the computations required in this procedure remain formidable.
+
+The major exception where direct attack has been completely successful is the case
+of static, axisymmetric spacetimes (with the axisymmetric Killing field \(\psi^a\)
+lying in the hypersurfaces orthogonal to the static Killing field). In that case, we
+have \(w=0\), so equation~\eqref{eq:7.1.25} is trivially satisfied, and if we define
+\(\chi=\ln V\), equation~\eqref{eq:7.1.24} reduces to simply
+\begin{equation}
+  \boldsymbol{\nabla}^2\chi=0 ,
+  \tag{7.1.29}\label{eq:7.1.29}
+\end{equation}
+i.e., \(\chi\) is an axisymmetric solution of the ordinary Laplace equation in
+three-dimensional flat space. Since all such solutions of this equation are explicitly
+known, all static, axisymmetric solutions of Einstein's equation can be obtained.
+This analysis of the static, axisymmetric spacetimes was first carried out by Weyl
+(1917), and the solutions are often referred to as the Weyl solutions. It should be
+pointed out that the properties of the solution of equation~\eqref{eq:7.1.29} do not
+translate in a simple way into properties of the spacetime metric it generates.
+Specifically, the monopole solution of Laplace's equation does \emph{not} generate
+a spherically symmetric spacetime. To obtain the spherically symmetric
+Schwarzschild solution by this procedure, one must choose \(\chi\) to be the
+potential of a finite rod on the \(z\)-axis (centered on the origin) with constant mass
+per unit length.

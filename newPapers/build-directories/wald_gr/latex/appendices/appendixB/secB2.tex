@@ -1,0 +1,369 @@
+% Source: Wald GR, physical PDF pp. 442--447
+%         (printed pp. 429--434).
+% Coverage: Appendix B.2, Integration; equations (B.2.1)--(B.2.26);
+%           Theorem B.2.1.
+% Figures/tables/footnotes: no figures/tables; footnotes 3--5.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Integration}\label{sec:B.2}
+
+Let \(M\) be an \(n\)-dimensional manifold. At each point \(x\in M\), the vector
+space of \(n\)-forms will be one-dimensional. If it is possible to find a continuous,
+nowhere vanishing \(n\)-form field
+\(\boldsymbol\epsilon=\epsilon_{[a_1\ldots a_n]}\) on \(M\), then \(M\) is said to be
+\emph{orientable} and \(\boldsymbol\epsilon\) is said to provide an
+orientation.\footnote{For the case where \(M\) is an \(n\)-dimensional surface in the
+Euclidean space \(\mathbb R^{n+1}\), this definition of orientability is equivalent to
+the more intuitive notion that there exists a consistent (i.e., continuous) choice of
+normal vector \(u^a\) to \(M\): If a continuous nonvanishing \(u^a\) exists, then
+\(\epsilon_{a_2\ldots a_{n+1}}=
+\widetilde\epsilon_{a_1a_2\ldots a_{n+1}}u^{a_1}\) provides an orientation of \(M\),
+where \(\widetilde{\boldsymbol\epsilon}\) is an orientation of \(\mathbb R^{n+1}\).
+Conversely, if \(M\) is orientable, then
+\(\widetilde\epsilon^{a_1}{}_{a_2\ldots a_{n+1}}
+\epsilon_{a_2\ldots a_{n+1}}\) provides a continuous normal vector.} Two
+orientations \(\boldsymbol\epsilon\) and \(\boldsymbol\epsilon'\) are considered
+equivalent if \(\boldsymbol\epsilon=f\boldsymbol\epsilon'\), where \(f\) is a
+(strictly) positive function, so any orientable manifold possesses two inequivalent
+orientations, usually referred to as \lq\lq right handed\rq\rq\ and
+\lq\lq left handed.\rq\rq\ It is easy to check that the manifolds \(\mathbb R^n\) and
+\(S^m\) are orientable. Indeed, it is not difficult to show that every simply
+connected manifold is orientable. (As discussed further in Chapter~13, a topological
+space is said to be \emph{simply connected} if every closed curve can be continuously
+deformed to a point. \(\mathbb R^n\) and \(S^m\) for \(m\geq2\) are simply
+connected.) Furthermore, the product of any two orientable manifolds is orientable.
+Thus, we obtain a wide class of examples of orientable manifolds. On the other hand,
+the M\"obius strip [defined as \(\mathbb R^2\) with the identification
+\((x,y)=(x+1,-y)\)] provides a simple example of a nonorientable manifold.
+
+We will define the integral of a continuous (or, more generally, a
+measurable\footnote{\(\boldsymbol\alpha\) is said to be measurable if for all charts
+its coordinate basis components are Lebesgue measurable functions in \(\mathbb R^n\).})
+\(n\)-form field \(\boldsymbol\alpha\) over an \(n\)-dimensional orientable manifold
+(with respect to the orientation \(\boldsymbol\epsilon\)) as follows. We begin by
+considering an open region \(U\subseteq M\) covered by a single coordinate system
+\(\psi\). If we expand \(\boldsymbol\epsilon\) in the coordinate basis of \(\psi\), we
+will obtain
+\begin{equation}
+  \boldsymbol\epsilon=h\,dx^1\wedge\cdots\wedge dx^n
+  \tag{B.2.1}\label{eq:B.2.1}
+\end{equation}
+(i.e.,
+\(\epsilon_{a_1\ldots a_n}=n!h(dx^1)_{[a_1}\cdots(dx^n)_{a_n]}\)), where the
+function \(h\) is nonvanishing. If \(h>0\), the coordinate system, \(\psi\), is said
+to be \emph{right handed} with respect to \(\boldsymbol\epsilon\); if \(h<0\),
+\(\psi\) is called \emph{left handed}. We may also expand
+\(\boldsymbol\alpha\) in the coordinate basis, thereby obtaining
+\begin{equation}
+  \boldsymbol\alpha
+  =a(x^1,\ldots,x^n)\,dx^1\wedge\cdots\wedge dx^n.
+  \tag{B.2.2}\label{eq:B.2.2}
+\end{equation}
+If \(\psi\) is right handed, we define the integral of \(\boldsymbol\alpha\) over the
+region \(U\) by
+\begin{equation}
+  \int_U\boldsymbol\alpha
+  =\int_{\psi(U)}a\,dx^1\cdots dx^n,
+  \tag{B.2.3}\label{eq:B.2.3}
+\end{equation}
+where the right-hand side is the standard Riemann (or Lebesgue) integral in
+\(\mathbb R^n\). If \(\psi\) is left-handed, we define
+\(\int_U\boldsymbol\alpha\) to be minus the right-hand side of
+Eq.~\eqref{eq:B.2.3}.
+
+First, we note that \(\int_U\boldsymbol\alpha\) is independent of the choice of
+coordinate system, \(\psi\), covering \(U\); namely, if we had used a different
+coordinate system \(\psi'\) to cover \(U\), then the expansion of
+\(\boldsymbol\alpha\) in the new coordinate basis would be
+\begin{equation}
+  \boldsymbol\alpha
+  =a'\,dx'^1\wedge\cdots\wedge dx'^n.
+  \tag{B.2.4}\label{eq:B.2.4}
+\end{equation}
+But it follows from the tensor transformation law, Eq.~\eqref{eq:2.3.8}, that
+\begin{equation}
+  a'=a\det\left(\frac{\partial x^\mu}{\partial x'^\nu}\right).
+  \tag{B.2.5}\label{eq:B.2.5}
+\end{equation}
+The standard law for transformation of integrals in \(\mathbb R^n\) then shows that
+our definition, Eq.~\eqref{eq:B.2.3}, is coordinate independent.
+
+To define the integral of \(\boldsymbol\alpha\) over all of \(M\), we use the
+paracompactness property of \(M\). As discussed at the end of Appendix~A, a
+paracompact manifold can be covered by a countable collection \(\{O_i\}\) of locally
+finite coordinate neighborhoods such that each \(\overline{O_i}\) is compact.
+Furthermore, a partition of unity \(\{f_i\}\) subordinate to this covering will exist.
+If
+\[
+  \sum_i\int_{\psi_i(O_i)}f_i\lvert a_i\rvert\,dx^1\cdots dx^n<\infty,
+\]
+we say \(\boldsymbol\alpha\) is integrable and we define
+\begin{equation}
+  \int_M\boldsymbol\alpha=\sum_i\int_{O_i}f_i\boldsymbol\alpha.
+  \tag{B.2.6}\label{eq:B.2.6}
+\end{equation}
+It can be shown that this definition is independent of the choice of covering
+\(\{O_i\}\) and partition of unity \(\{f_i\}\) and thus properly defines
+\(\int_M\boldsymbol\alpha\).
+
+We can use the above definition of integration on manifolds to define the integral of
+\(p\)-forms on \(M\) over well behaved, orientable \(p\)-dimensional surfaces in
+\(M\). First, we must define more precisely the notion of a \lq\lq well behaved
+surface.\rq\rq\ Let \(S\) be a manifold of dimension \(p<n\). If
+\(\phi:S\to M\) is \(C^\infty\), is locally one-to-one---i.e., each \(q\in S\) has an
+open neighborhood \(O\) such that \(\phi\) restricted to \(O\) is one-to-one---and
+\(\phi^{-1}:\phi(O)\to S\) is \(C^\infty\), then \(\phi(S)\) is said to be an
+\emph{immersed submanifold} of \(M\). If, in addition, \(\phi\) is globally
+one-to-one (i.e., \(\phi(S)\) does not \lq\lq intersect itself\rq\rq), then
+\(\phi(S)\) is said to be an \emph{embedded submanifold} of \(M\). (In some
+references the additional condition is imposed on embedded submanifolds that
+\(\phi:S\to\phi(S)\) is a homeomorphism with the topology on \(\phi(S)\) induced
+from \(M\). Roughly speaking, this additional condition ensures that \(\phi(S)\) does
+not come arbitrarily close to intersecting itself.) We shall use the notion of an
+embedded submanifold as our precise notion of a \lq\lq well behaved surface\rq\rq\
+in \(M\). An embedded submanifold of dimension \((n-1)\) is called a
+\emph{hypersurface}.
+
+For an embedded submanifold, there is a natural manifold structure on \(\phi(S)\)
+obtained via \(\phi\) from the manifold structure on \(S\). Thus, at each
+\(q\in\phi(S)\), the tangent space \(T_q\phi(S)\) is defined. This tangent space is
+naturally identified with a \(p\)-dimensional subspace of \(T_qM\), the tangent space
+of \(q\) in \(M\). Thus, a \(p\)-form \(\boldsymbol\beta\) in \(M\) at \(q\) naturally
+gives rise to a \(p\)-form \(\widetilde{\boldsymbol\beta}\) on \(\phi(S)\) by
+restriction of the action of \(\boldsymbol\beta\) to vectors lying in \(T_q\phi(S)\).
+The integral of \(\boldsymbol\beta\) over the surface \(\phi(S)\) may then be defined
+as simply the integral of the \(p\)-form \(\widetilde{\boldsymbol\beta}\) over the
+\(p\)-dimensional manifold \(\phi(S)\).
+
+An important special case of an embedded submanifold arises when \(\phi(S)\) is the
+\((n-1)\)-dimensional boundary, \(\partial N\), of a closed region
+\(N\subseteq M\) such that \(N\) is a \lq\lq manifold with boundary.\rq\rq\ Here,
+the notion of an \(n\)-dimensional \emph{manifold with boundary}, \(N\), can be
+defined in the abstract in the same way as a manifold (see Chapter~2) except that
+\(\mathbb R^n\) is replaced by \lq\lq half of \(\mathbb R^n\),\rq\rq\ i.e., by the
+portion of \(\mathbb R^n\) with \(x^1\leq0\). The boundary, \(\partial N\), of \(N\)
+is composed of the set of points of \(N\) which are mapped into \(x^1=0\) by the
+chart maps. Note that these chart maps of \(N\) with \(x^1\) set to zero give
+\(\partial N\) the structure of an \((n-1)\)-dimensional manifold without boundary.
+Note also that \(\operatorname{int}(N)=N-\partial N\) is an \(n\)-dimensional
+manifold without boundary.
+
+If \(N\) is an orientable manifold with boundary, then an orientation on \(N\)
+induces a natural orientation on the boundary as follows: We consider the coordinate
+systems on \(\partial N\) which arise from deleting the first coordinate, \(x^1\), of
+a right-handed coordinate system on \(N\) in the family of charts that makes \(N\)
+into a manifold with boundary. We wish to define an orientation on \(\partial N\)
+which makes these coordinate systems be \lq\lq right handed.\rq\rq\ In order to do
+so, we verify first that the Jacobian,
+\(\det(\partial x'^\mu/\partial x^\nu)\), is positive in the overlap region of any
+two such coordinate systems. Then, we choose a partition of unity
+\((F_i,U_i)\) of \(\partial N\), where each \(U_i\) is a coordinate neighborhood of
+this type. Finally, we define \(\widetilde{\boldsymbol\epsilon}\) on \(\partial N\)
+by
+\[
+  \widetilde{\boldsymbol\epsilon}
+  =\sum_iF_i\,dx_i^2\wedge\cdots\wedge dx_i^n.
+\]
+Then \(\widetilde{\boldsymbol\epsilon}\) is continuous and nonvanishing and thus
+defines the desired orientation of \(\partial N\). Having defined the orientation of
+\(\partial N\), we may now state one of the most important results concerning
+integration on manifolds, the proof of which can be found in many references (see,
+e.g., Flanders 1963).
+
+\renewcommand{\thetheorem}{B.2.\arabic{theorem}}
+\setcounter{theorem}{0}
+\begin{theorem}[Stokes's theorem]\label{thm:B.2.1}
+Let \(N\) be an \(n\)-dimensional compact oriented manifold with boundary and let
+\(\boldsymbol\alpha\) be an \((n-1)\)-form on \(M\) which is \(C^1\). Then
+\begin{equation}
+  \int_{\operatorname{int}(N)}d\boldsymbol\alpha
+  =\int_{\partial N}\boldsymbol\alpha.
+  \tag{B.2.7}\label{eq:B.2.7}
+\end{equation}
+\end{theorem}
+
+Integration of functions on an orientable manifold \(M\) can be accomplished if one
+is given a \emph{volume element}, that is, a continuous nonvanishing
+\(n\)-form \(\boldsymbol\epsilon\). (A volume element differs from an orientation in
+that orientations are considered equivalent if they differ by positive multiples
+whereas volume elements are not.) The integral of \(f\) over \(M\) is defined by
+\begin{equation}
+  \int_M f=\int_M f\boldsymbol\epsilon,
+  \tag{B.2.8}\label{eq:B.2.8}
+\end{equation}
+where the integral of the \(n\)-form \(f\boldsymbol\epsilon\) was defined
+previously.\footnote{Integration of functions on a nonorientable manifold can be
+defined by choosing a continuous \lq\lq \(n\)-form modulo sign\rq\rq\
+\(\boldsymbol\epsilon'\) and performing integrals of \(f\boldsymbol\epsilon'\) over
+each of the local coordinate neighborhoods by choosing the sign of
+\(\boldsymbol\epsilon'\) which makes the coordinate system \lq\lq right handed\rq\rq\
+with respect to it.}
+
+If one is given only the structure of a manifold, \(M\), there is no natural choice of
+volume element. However, if \(M\) has a metric, \(g_{ab}\), defined on it, then a
+natural choice of \(\boldsymbol\epsilon\) is specified up to sign (i.e., up to choice
+of orientation) by the condition
+\begin{equation}
+  \epsilon^{a_1\ldots a_n}\epsilon_{a_1\ldots a_n}=(-1)^s n!,
+  \tag{B.2.9}\label{eq:B.2.9}
+\end{equation}
+where \(s\) is the number of minuses appearing in the signature of \(g_{ab}\). (Thus,
+\(s=0\) for a Riemannian metric, while \(s=1\) for a Lorentzian metric.) Note that
+differentiation of Eq.~\eqref{eq:B.2.9} using the derivative operator,
+\(\nabla_a\), associated with the metric implies that
+\begin{equation}
+  2\epsilon^{a_1\ldots a_n}\nabla_b\epsilon_{a_1\ldots a_n}=0,
+  \tag{B.2.10}\label{eq:B.2.10}
+\end{equation}
+which, in turn, implies that
+\begin{equation}
+  \nabla_b\epsilon_{a_1\ldots a_n}=0,
+  \tag{B.2.11}\label{eq:B.2.11}
+\end{equation}
+since \(\nabla_b\epsilon_{a_1\ldots a_n}\) is totally antisymmetric in its last \(n\)
+indices and \(\epsilon^{a_1\ldots a_n}\) is nonvanishing. It is also worth noting that
+\begin{equation}
+  \epsilon^{a_1\ldots a_n}\epsilon_{b_1\ldots b_n}
+  =(-1)^s n!\,
+  \delta^{[a_1}_{b_1}\delta^{a_2}_{b_2}\cdots\delta^{a_n]}_{b_n},
+  \tag{B.2.12}\label{eq:B.2.12}
+\end{equation}
+where \(\delta^a_b\) is the identity map on the tangent space.
+Equation~\eqref{eq:B.2.12} follows from the fact that the tensors of type \((n,n)\)
+on an \(n\)-dimensional manifold which are totally antisymmetric in all lower and all
+upper indices form a one-dimensional vector space and thus must be proportional to
+the antisymmetrized product of \(\delta^a_b\) tensors; the constant of proportionality
+is fixed by the normalization condition~\eqref{eq:B.2.9}. Contraction of
+Eq.~\eqref{eq:B.2.12} over \(j\) of its indices yields
+\begin{equation}
+  \epsilon^{a_1\ldots a_j a_{j+1}\ldots a_n}
+  \epsilon_{a_1\ldots a_j b_{j+1}\ldots b_n}
+  =(-1)^s(n-j)!\,j!\,
+  \delta^{[a_{j+1}}_{b_{j+1}}\cdots\delta^{a_n]}_{b_n}.
+  \tag{B.2.13}\label{eq:B.2.13}
+\end{equation}
+Equation~\eqref{eq:B.2.9} implies that the components of
+\(\boldsymbol\epsilon\) in a right handed orthonormal basis are
+\begin{equation}
+  \epsilon_{\mu_1\ldots\mu_n}
+  =
+  \begin{cases}
+    (-1)^P & \text{if all \(\mu_i\) are distinct},\\
+    0 & \text{otherwise},
+  \end{cases}
+  \tag{B.2.14}\label{eq:B.2.14}
+\end{equation}
+where \(P\) is the signature of the permutation
+\((1,\ldots,n)\to(\mu_1,\ldots,\mu_n)\). In a coordinate basis, the components of
+\(\boldsymbol\epsilon\) satisfy
+\begin{equation}
+  \sum_{\mu_1,\ldots,\mu_n,\nu_1,\ldots,\nu_n}
+  g^{\mu_1\nu_1}\cdots g^{\mu_n\nu_n}
+  \epsilon_{\mu_1\ldots\mu_n}\epsilon_{\nu_1\ldots\nu_n}
+  =(-1)^s n!.
+  \tag{B.2.15}\label{eq:B.2.15}
+\end{equation}
+But the left-hand side of this expression is just
+\((n!)(\epsilon_{12\ldots n})^2\) times the determinant of the matrix
+\((g^{\mu\nu})\), and \(\det(g^{\mu\nu})=1/\det(g_{\mu\nu})\). Thus, choosing the
+plus sign appropriate for a right handed coordinate system, we find
+\begin{equation}
+  \epsilon_{12\ldots n}
+  =\left[(-1)^s\det(g_{\mu\nu})\right]^{1/2}
+  =\sqrt{\lvert g\rvert},
+  \tag{B.2.16}\label{eq:B.2.16}
+\end{equation}
+where \(g=\det(g_{\mu\nu})\). Thus, in any (right handed) coordinate basis, the
+natural volume element defined by Eq.~\eqref{eq:B.2.9} takes the form
+\begin{equation}
+  \boldsymbol\epsilon
+  =\sqrt{\lvert g\rvert}\,dx^1\wedge\cdots\wedge dx^n.
+  \tag{B.2.17}\label{eq:B.2.17}
+\end{equation}
+
+Using the natural volume element \(\boldsymbol\epsilon\) associated with a metric, we
+can convert Stokes's theorem, Eq.~\eqref{eq:B.2.7}, into a \lq\lq Gauss's law\rq\rq\
+form. Let \(N\) be an oriented, compact \(n\)-dimensional manifold with boundary.
+Let \(g_{ab}\) be a metric on \(N\) with associated volume element
+\(\boldsymbol\epsilon\). Given any \(C^1\) vector field \(v^a\), we obtain an
+\((n-1)\)-form \(\boldsymbol\alpha\) by
+\begin{equation}
+  \alpha_{a_1\ldots a_{n-1}}
+  =\epsilon_{ba_1\ldots a_{n-1}}v^b.
+  \tag{B.2.18}\label{eq:B.2.18}
+\end{equation}
+We have
+\begin{equation}
+  \begin{aligned}
+  (d\boldsymbol\alpha)_{ca_1\ldots a_{n-1}}
+  & =n\nabla_{[c}\bigl(\epsilon_{\lvert b\rvert a_1\ldots a_{n-1}}v^b\bigr)\\
+  & =n\epsilon_{b[a_1\ldots a_{n-1}}\nabla_{c]}v^b,
+  \end{aligned}
+  \tag{B.2.19}\label{eq:B.2.19}
+\end{equation}
+where Eq.~\eqref{eq:B.2.11} was used. On the other hand any totally antisymmetric
+tensor of type \((0,n)\) must be proportional to \(\boldsymbol\epsilon\), so
+\begin{equation}
+  \epsilon_{b[a_1\ldots a_{n-1}}\nabla_{c]}v^b
+  =h\epsilon_{ca_1\ldots a_{n-1}}.
+  \tag{B.2.20}\label{eq:B.2.20}
+\end{equation}
+The function \(h\) may be evaluated by contracting with
+\(\epsilon^{ca_1\ldots a_{n-1}}\) and using Eq.~\eqref{eq:B.2.13}. We obtain
+\begin{equation}
+  \nabla_bv^b=nh.
+  \tag{B.2.21}\label{eq:B.2.21}
+\end{equation}
+Thus, we find
+\begin{equation}
+  d\boldsymbol\alpha=(\nabla_av^a)\boldsymbol\epsilon,
+  \tag{B.2.22}\label{eq:B.2.22}
+\end{equation}
+and thus Stokes's theorem states that
+\begin{equation}
+  \int_{\operatorname{int}(N)}\nabla_av^a
+  =\int_{\partial N}\epsilon_{ba_1\ldots a_{n-1}}v^b,
+  \tag{B.2.23}\label{eq:B.2.23}
+\end{equation}
+where the natural volume element \(\boldsymbol\epsilon\) on \(N\) is understood in
+the integral on the left-hand side of Eq.~\eqref{eq:B.2.23}.
+
+The right-hand side of Eq.~\eqref{eq:B.2.23} can be reexpressed as follows. The
+metric \(g_{ab}\) on \(N\) induces a tensor field \(h_{ab}\) on \(\partial N\) by
+restriction of \(g_{ab}\) to vectors tangent to \(\partial N\). If \(h_{ab}\) is
+nondegenerate---which will be the case if \(\partial N\) is not a null
+surface---we may use it to define a volume element
+\(\widetilde{\boldsymbol\epsilon}\) on \(\partial N\). It is not difficult to show
+that
+\begin{equation}
+  \frac1n\epsilon_{a_1\ldots a_n}
+  =n_{[a_1}\widetilde\epsilon_{a_2\ldots a_n]},
+  \tag{B.2.24}\label{eq:B.2.24}
+\end{equation}
+where \(n^b\) is the unit normal to \(\partial N\) and is chosen to be
+\lq\lq outward pointing\rq\rq\ if spacelike and \lq\lq inward pointing\rq\rq\ if
+timelike in order that \(\widetilde{\boldsymbol\epsilon}\) be of the orientation class
+used in Stokes's theorem. Contracting \(v^a\) into both sides of
+Eq.~\eqref{eq:B.2.24} and restricting the resulting \((n-1)\)-forms to vectors
+tangent to \(\partial N\), we obtain
+\begin{equation}
+  \epsilon_{ba_1\ldots a_{n-1}}v^b
+  =(n_bv^b)\widetilde\epsilon_{a_1\ldots a_{n-1}},
+  \tag{B.2.25}\label{eq:B.2.25}
+\end{equation}
+where we view both sides of this equation as forms on \(\partial N\). Thus, if
+\(\partial N\) is not null, we can express Stokes's theorem in the form
+\begin{equation}
+  \int_{\operatorname{int}(N)}\nabla_av^a
+  =\int_{\partial N}n_av^a
+  \tag{B.2.26}\label{eq:B.2.26}
+\end{equation}
+for all \(C^1\) vector fields \(v^a\) where the natural volume elements
+\(\boldsymbol\epsilon\) and \(\widetilde{\boldsymbol\epsilon}\) on
+\(\operatorname{int}(N)\) and \(\partial N\), respectively, are understood. Of
+course, if \(\partial N\) is null, Eq.~\eqref{eq:B.2.23} still applies. Furthermore,
+in the null case, if we choose any \(\widetilde{\boldsymbol\epsilon}\) on
+\(\partial N\) in the orientation class used in Stokes's theorem and define \(n^a\)
+to be the normal to \(\partial N\) such that Eq.~\eqref{eq:B.2.24} holds, then
+Stokes's theorem again takes the form~\eqref{eq:B.2.26}.
