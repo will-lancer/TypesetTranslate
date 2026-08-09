@@ -55,6 +55,30 @@ END_RE = re.compile(
 )
 TIME_RE = re.compile(r"^(\d{2,}):([0-5]\d):([0-5]\d)\.(\d{3})$")
 FORMULA_RE = re.compile(r"\$|\\\(")
+HIDDEN_TEXT_COMMAND_RE = re.compile(
+    r"\\(?:[hv]?phantom|[rlc]lap|math(?:llap|rlap|clap))\b"
+)
+ENSUREMATH_RE = re.compile(r"\\ensuremath\s*\{")
+TEX_NUMERIC_SCRIPT_RE = re.compile(
+    r"[\^_]\s*(?:"
+    r"\{\s*(?P<braced>[+\-\u2212]?\s*(?:\\[,;:!]\s*)*\d+)\s*\}"
+    r"|(?P<bare>[+\-\u2212]?\d+))"
+)
+
+NORMALIZATION_FIXTURES = (
+    (
+        "numeric inverse superscript",
+        "U \u03c6\u0302(x) U\u207b\u00b9",
+        r"\ensuremath{U\hat\phi(x)U^{-1}}",
+        ["u", "x", "u1"],
+    ),
+    (
+        "hatted-operator possessives",
+        "P\u0302's and J\u0302's",
+        r"\ensuremath{\hat P}'s and \ensuremath{\hat J}'s",
+        ["p's", "and", "j's"],
+    ),
+)
 
 
 @dataclass
@@ -178,9 +202,48 @@ def secure_text(record: dict[str, Any]) -> str:
     return re.sub(r"\[[^\]]*\]", " ", text)
 
 
+def unwrap_ensuremath(text: str) -> str:
+    """Remove ensuremath wrappers while preserving their balanced contents."""
+    search_from = 0
+    while True:
+        match = ENSUREMATH_RE.search(text, search_from)
+        if match is None:
+            return text
+        group_start = match.end() - 1
+        depth = 0
+        group_end: int | None = None
+        for index in range(group_start, len(text)):
+            character = text[index]
+            escaped = index > 0 and text[index - 1] == "\\"
+            if character == "{" and not escaped:
+                depth += 1
+            elif character == "}" and not escaped:
+                depth -= 1
+                if depth == 0:
+                    group_end = index
+                    break
+        if group_end is None:
+            return text
+        contents = text[group_start + 1 : group_end]
+        text = text[: match.start()] + contents + text[group_end + 1 :]
+        search_from = match.start()
+
+
+def normalize_tex_numeric_scripts(text: str) -> str:
+    """Fold TeX numeric scripts as NFKD folds Unicode script numerals."""
+
+    def replace(match: re.Match[str]) -> str:
+        value = match.group("braced") or match.group("bare") or ""
+        return "".join(character for character in value if character.isdigit())
+
+    return TEX_NUMERIC_SCRIPT_RE.sub(replace, text)
+
+
 def tex_to_text(text: str) -> str:
     text = re.sub(r"(?m)%.*$", " ", text)
     text = strip_math(text)
+    text = unwrap_ensuremath(text)
+    text = normalize_tex_numeric_scripts(text)
     text = re.sub(
         r"\\['\"`^~=.uvHckbdtr]\s*\{?([A-Za-z])\}?", r"\1", text
     )
@@ -198,6 +261,18 @@ def tokens(text: str) -> list[str]:
     text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
     text = text.lower().replace("’", "'")
     return re.findall(r"[a-z0-9]+(?:'[a-z0-9]+)?", text)
+
+
+def validate_normalization_fixtures(result: VerbatimAuditResult) -> None:
+    for label, canonical, tex, expected in NORMALIZATION_FIXTURES:
+        canonical_tokens = tokens(canonical)
+        tex_tokens = tokens(tex_to_text(tex))
+        if canonical_tokens != expected or tex_tokens != expected:
+            result.error(
+                f"normalization regression for {label}: canonical="
+                f"{canonical_tokens!r}, TeX={tex_tokens!r}, expected={expected!r}"
+            )
+    result.stats["normalization_fixtures"] = len(NORMALIZATION_FIXTURES)
 
 
 def lcs_length(left: list[str], right: list[str]) -> int:
@@ -311,6 +386,7 @@ def validate_page_list(value: Any) -> bool:
 
 def run_audit(root: Path = ROOT, strict: bool = False) -> VerbatimAuditResult:
     result = VerbatimAuditResult(strict=strict)
+    validate_normalization_fixtures(result)
     transcript_path = root / TRANSCRIPT_REL
     dispositions_path = root / DISPOSITIONS_REL
     chapter_path = root / CHAPTER_REL
@@ -449,6 +525,17 @@ def run_audit(root: Path = ROOT, strict: bool = False) -> VerbatimAuditResult:
     result.stats["verbatim_begin_markers"] = begin_count
     result.stats["verbatim_end_markers"] = end_count
     result.stats["verbatim_blocks"] = len(blocks)
+    hidden_text_blocks = {
+        record_id
+        for record_id, block in blocks.items()
+        if HIDDEN_TEXT_COMMAND_RE.search(block)
+    }
+    if hidden_text_blocks:
+        result.error(
+            "verbatim blocks contain hidden or overlaid TeX text commands: "
+            f"{summarize(hidden_text_blocks)}"
+        )
+    result.stats["hidden_text_blocks"] = len(hidden_text_blocks)
     if begin_count != EXPECTED_ELIGIBLE_RECORDS:
         result.gate(
             f"expected exactly {EXPECTED_ELIGIBLE_RECORDS} YIN-VERBATIM-BEGIN "

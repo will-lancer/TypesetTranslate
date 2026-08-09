@@ -14,12 +14,15 @@ Audited on 2026-08-08 against the frozen source
 | Speaker handling | The packet separates student speech from Yin's replies where the speaker map permits it. The partially recoverable questions retain a bracketed uncertainty or sense gloss. |
 | Compression/paraphrase scan | The packet preserves the canonical sentence order and local discourse pivots across the eight lanes. I found no summary prose substituted for eligible lecture speech. |
 
-## Required integration fixes
+## Packet-stage integration requirements
+
+All five requirements below are satisfied by the current marked chapter and
+its two sidecars. They remain here as the trace from packet to chapter.
 
 1. `YIN-OY-T000317` is absent from every fragment. It is the contract's one-word
-   boundary carryover, `thing`, at `01:20:13.920`. The chapter needs one source
-   block for it immediately after `T000316`, so that the closing sentence reads
-   “construct this thing.” This is a hard failure until it is added.
+   boundary carryover, `thing`, at `01:20:13.920`. The chapter now has its own
+   block immediately after `T000316`, so the closing sentence reads “construct
+   this thing.”
 
 2. The fragments are a full working packet. They contain 276 distinct source
    IDs: 197 eligible IDs, 78 in-scope excluded IDs, and separator `T000311`.
@@ -65,8 +68,9 @@ The integrated `latex/chapters/253a/chapter01.tex` now has 198 begin markers,
 as its own source block and supplies the required closing word, `thing.` The
 two sidecars contain 103 record-exclusion rows and 64 formula-ledger rows.
 
-The strict trace now passes after the TeX-to-text normalizer accounted for
-`\ensuremath{...}` and post-math possessives. It reports all 6,542 contract
+The strict trace now passes after the TeX-to-text normalizer gained balanced
+`\ensuremath{...}` handling and numeric-script normalization, with two
+regression fixtures for `T000221` and `T000237`. It reports all 6,542 contract
 lexical words in source order, with full per-record recall and precision:
 
 ```text
@@ -75,7 +79,13 @@ excluded_scope_records=103
 represented_words=6542
 global_recall=1.0
 formula_ledger_records=64
+hidden_text_blocks=0
+normalization_fixtures=2
 status=PASS
 ```
+
+A direct chapter scan also found zero uses of `\llap`, `\rlap`, `\phantom`,
+`\hphantom`, and `\vphantom`. The formula records use visible mathematical
+typesetting; no hidden-token layout workaround contributes to the trace.
 
 Unresolved blockers: none.
