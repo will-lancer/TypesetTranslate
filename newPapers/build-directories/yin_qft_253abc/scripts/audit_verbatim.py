@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Read-only near-verbatim acceptance audit for the Yin QFT pilot."""
+"""Archived read-only audit for the abandoned near-verbatim pilot.
+
+The active written textbook pipeline uses ``audit_written_prose.py``.  This
+module remains only to reproduce the historical lexical-retention experiment.
+It is not imported by ``audit_project.py`` and cannot approve a release.
+"""
 
 from __future__ import annotations
 
@@ -763,8 +768,18 @@ def run_audit(root: Path = ROOT, strict: bool = False) -> VerbatimAuditResult:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--legacy",
+        action="store_true",
+        help="acknowledge that this is the archived near-verbatim audit",
+    )
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
+    if not args.legacy:
+        parser.error(
+            "archived audit; use scripts/audit_written_prose.py for active work "
+            "or pass --legacy to reproduce the old experiment"
+        )
     result = run_audit(ROOT, strict=args.strict)
 
     for warning in result.warnings:

@@ -1,9 +1,24 @@
 #!/usr/bin/env python3
+"""Archived generator for the abandoned near-verbatim pilot.
+
+Active chapters must be written from ``argument-map.jsonl`` under the contract
+in ``MASTER_PROMPT.md`` and ``WRITING_STYLE.md``.  This script is retained only
+to reproduce the historical experiment and refuses accidental execution.
+"""
+
 from __future__ import annotations
 
 import json
 from pathlib import Path
 import re
+import sys
+
+
+if "--legacy-near-verbatim" not in sys.argv:
+    raise SystemExit(
+        "Archived near-verbatim generator. Use the written-prose workflow. "
+        "Pass --legacy-near-verbatim only to reproduce the old experiment."
+    )
 
 
 ROOT = Path(__file__).resolve().parents[2]

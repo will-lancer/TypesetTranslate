@@ -23,8 +23,10 @@ case "${1-}" in
 esac
 
 python3 "$edition_root/scripts/verify_source.py"
+python3 "$edition_root/scripts/test_written_prose_audit.py"
 if [ "$strict" -eq 1 ]
 then
+  python3 "$edition_root/scripts/render_written_provenance.py" --check
   python3 "$edition_root/scripts/audit_project.py" --strict
 else
   python3 "$edition_root/scripts/audit_project.py"
@@ -35,7 +37,7 @@ TEXINPUTS="$reference_style_dir:$latex_dir:${TEXINPUTS-}" \
   latexmk -g -pdf -interaction=nonstopmode -halt-on-error master.tex
 
 if rg -n \
-  'Undefined control sequence|LaTeX Error|Fatal error|undefined on input line|There were undefined references|Citation .* undefined|Reference .* undefined|Hyper reference .* undefined|multiply defined|destination with the same identifier|Rerun to get cross-references right' \
+  'Undefined control sequence|LaTeX Error|Fatal error|Missing character|undefined on input line|There were undefined references|Citation .* undefined|Reference .* undefined|Hyper reference .* undefined|multiply defined|destination with the same identifier|Rerun to get cross-references right' \
   master.log
 then
   echo "LaTeX error or reference audit failed." >&2
@@ -53,7 +55,7 @@ then
 fi
 
 mkdir -p "$edition_root/qa/rendered"
-pdftoppm -r 140 -png master.pdf "$edition_root/qa/rendered/pilot" >/dev/null 2>&1
+pdftoppm -r 180 -png master.pdf "$edition_root/qa/rendered/pilot" >/dev/null 2>&1
 
 if [ "$strict" -eq 1 ]
 then

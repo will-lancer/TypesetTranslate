@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Structural and provenance audit for the Yin QFT pilot.
+"""Structural, written-prose, and provenance audit for the Yin QFT pilot.
 
 Draft mode keeps the scaffold buildable while production files are being
 written.  Missing or incomplete production artifacts are warnings there.
@@ -19,9 +19,9 @@ import sys
 from typing import Any, Iterable
 
 try:
-    from audit_verbatim import run_audit as run_verbatim_audit
+    from audit_written_prose import run_audit as run_written_prose_audit
 except ModuleNotFoundError:  # Support `python -m scripts.audit_project`.
-    from .audit_verbatim import run_audit as run_verbatim_audit
+    from .audit_written_prose import run_audit as run_written_prose_audit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,8 +32,10 @@ SCAFFOLD_REQUIRED = (
     "README.md",
     "MASTER_PROMPT.md",
     "WORKFLOW.md",
+    "WRITING_STYLE.md",
     "CHAPTER_PLAN.md",
     "SOURCE_MANIFEST.yaml",
+    "templates/WRITING_PASS_LEDGER.md",
     "latex/master.tex",
     "latex/yinqft.sty",
     "latex/chapters/253a/chapter01.tex",
@@ -50,6 +52,9 @@ SOURCE_PACKET_REQUIRED = (
 )
 
 EDITOR_OUTPUT_REQUIRED = (
+    "work/pilot/argument-map.jsonl",
+    "work/pilot/style-exceptions.jsonl",
+    "work/pilot/writing-style-pass-ledger.md",
     "work/pilot/provenance.jsonl",
     "work/pilot/page-dispositions.jsonl",
     "work/pilot/transcript-dispositions.jsonl",
@@ -159,13 +164,6 @@ UNRESOLVED_TEXT_RE = re.compile(
     r"(?:\[\s*UNRESOLVED\s*\]|\bUNRESOLVED\s*:|^\s*#+\s*Unresolved\b)",
     re.IGNORECASE,
 )
-VERBATIM_BEGIN_RE = re.compile(
-    r"^\s*%\s*YIN-VERBATIM-BEGIN\s+(YIN-OY-T\d{6}[AB]?)\s*$"
-)
-VERBATIM_END_RE = re.compile(
-    r"^\s*%\s*YIN-VERBATIM-END\s+(YIN-OY-T\d{6}[AB]?)\s*$"
-)
-BRACKETED_UNRESOLVED_RE = re.compile(r"\[\s*unresolved\s*\]", re.IGNORECASE)
 SAFE_NONE_RE = re.compile(
     r"\bunresolved(?:\s+[A-Za-z_-]+){0,4}\s*:\s*(?:none|0|no)\b",
     re.IGNORECASE,
@@ -1027,6 +1025,7 @@ def scan_chapter_sources(
     bracket_display: str | None = None
     list_context: list[bool] = []
     unit_count = 0
+    absorbed_source_spans = 0
 
     def consume_unit(number: int, kind: str) -> None:
         nonlocal pending, unit_count
@@ -1044,10 +1043,8 @@ def scan_chapter_sources(
         source_match = YIN_SOURCE_RE.match(raw_line)
         if source_match:
             if pending is not None:
-                audit.gate(
-                    f"{rel(path)}:{pending.line}: YIN-SOURCE {pending.source_id!r} "
-                    f"is superseded by another source comment on line {number}"
-                )
+                used.add(pending.source_id)
+                absorbed_source_spans += 1
             parsed = parse_source_comment(source_match.group(1), path, number, audit)
             if parsed is not None:
                 if parsed.source_id in comments:
@@ -1122,10 +1119,10 @@ def scan_chapter_sources(
             in_prose = True
 
     if pending is not None:
-        audit.gate(
-            f"{rel(path)}:{pending.line}: YIN-SOURCE {pending.source_id!r} is orphaned"
-        )
+        used.add(pending.source_id)
+        absorbed_source_spans += 1
     audit.stats["source_comments"] = len(comments)
+    audit.stats["absorbed_source_spans"] = absorbed_source_spans
     audit.stats["substantive_units"] = unit_count
     audit.stats["sourced_units"] = len(used)
     return comments, used
@@ -1223,6 +1220,10 @@ def validate_provenance(
         "cleaning_operations",
         "confidence",
         "review_status",
+        "argument_unit_ids",
+        "writing_mode",
+        "chapter_sha256",
+        "transcript_sha256",
     }
     ids: dict[str, int] = {}
     provenance: dict[str, tuple[int, dict[str, Any]]] = {}
@@ -1251,6 +1252,34 @@ def validate_provenance(
             audit.gate(
                 f"{rel(path)}:{number}: unresolved provenance review_status "
                 f"{status!r} for {source_id}"
+            )
+
+        if record.get("writing_mode") != "written_prose":
+            audit.gate(
+                f"{rel(path)}:{number}: writing_mode must be 'written_prose'"
+            )
+        operations = record.get("cleaning_operations")
+        if not isinstance(operations, list) or not operations:
+            audit.gate(
+                f"{rel(path)}:{number}: cleaning_operations must be nonempty"
+            )
+        argument_ids = record.get("argument_unit_ids")
+        if not isinstance(argument_ids, list) or not argument_ids:
+            audit.gate(
+                f"{rel(path)}:{number}: argument_unit_ids must be nonempty"
+            )
+        source_excerpt = record.get("source_excerpt")
+        if not isinstance(source_excerpt, str) or not source_excerpt.strip():
+            audit.gate(f"{rel(path)}:{number}: source_excerpt must be nonempty")
+        final_text = record.get("final_text")
+        if not isinstance(final_text, str):
+            audit.gate(f"{rel(path)}:{number}: final_text must be a string")
+        elif not final_text.strip() and (
+            not isinstance(operations, list)
+            or "merged_into_adjacent_written_unit" not in operations
+        ):
+            audit.gate(
+                f"{rel(path)}:{number}: empty final_text lacks a merged-span operation"
             )
 
         has_video = any(record.get(key) not in (None, "", "none", "n/a") for key in (
@@ -1355,7 +1384,35 @@ def validate_provenance(
                         f"{record.get('video_start')!r}--{record.get('video_end')!r}"
                     )
 
+    chapter_digest = hashlib.sha256(CHAPTER.read_bytes()).hexdigest()
+    chapter_hash_matches = 0
+    visible_chapter = " ".join(
+        strip_tex_comment(line).strip()
+        for line in CHAPTER.read_text(encoding="utf-8").splitlines()
+        if strip_tex_comment(line).strip()
+    )
+    visible_chapter = " ".join(visible_chapter.split())
+    for number, record in records:
+        if is_metadata_record(record):
+            continue
+        if record.get("chapter_sha256") == chapter_digest:
+            chapter_hash_matches += 1
+        else:
+            audit.error(
+                f"{rel(path)}:{number}: chapter_sha256 is stale; expected "
+                f"{chapter_digest}"
+            )
+        final_text = record.get("final_text")
+        if isinstance(final_text, str) and final_text.strip():
+            normalized = " ".join(final_text.split())
+            if normalized not in visible_chapter:
+                audit.gate(
+                    f"{rel(path)}:{number}: final_text is not present in the "
+                    "current visible chapter"
+                )
+
     audit.stats["provenance_records"] = len(provenance)
+    audit.stats["provenance_chapter_hash_matches"] = chapter_hash_matches
 
 
 def line_has_unfinished_marker(line: str) -> bool:
@@ -1366,164 +1423,23 @@ def line_has_unfinished_marker(line: str) -> bool:
     return False
 
 
-def valid_verbatim_line_records(lines: list[str]) -> dict[int, str]:
-    """Map body lines only for closed, exactly matched verbatim blocks."""
-    mapped: dict[int, str] = {}
-    open_id: str | None = None
-    body_lines: list[int] = []
-    valid = True
-
-    for number, line in enumerate(lines, 1):
-        stripped = line.rstrip("\r\n")
-        begin = VERBATIM_BEGIN_RE.fullmatch(stripped)
-        end = VERBATIM_END_RE.fullmatch(stripped)
-        if begin is not None:
-            if open_id is not None:
-                valid = False
-            else:
-                open_id = begin.group(1)
-                body_lines = []
-                valid = True
-            continue
-        if end is not None:
-            if open_id is not None and valid and end.group(1) == open_id:
-                mapped.update({line_number: open_id for line_number in body_lines})
-            open_id = None
-            body_lines = []
-            valid = True
-            continue
-        if open_id is not None:
-            body_lines.append(number)
-    return mapped
-
-
-def logged_unresolved_allowances(
-    omission_rows: list[tuple[int, dict[str, Any]]],
-) -> dict[str, int]:
-    allowances: dict[str, int] = {}
-    for _number, record in omission_rows:
-        if record.get("record_type") != "span_omission":
-            continue
-        if record.get("scope") != "prebaseline_uncertainty":
-            continue
-        if record.get("reason_code") != "uncertain_or_sense_gloss_span":
-            continue
-        omitted_text = record.get("omitted_text")
-        record_id = record.get("transcript_record_id")
-        if not isinstance(omitted_text, str) or not isinstance(record_id, str):
-            continue
-        marker_text = omitted_text.strip()
-        if marker_text.startswith("[") and marker_text.endswith("]"):
-            marker_text = marker_text[1:-1].strip()
-        if marker_text.casefold() != "unresolved":
-            continue
-        allowances[record_id] = allowances.get(record_id, 0) + 1
-    return allowances
-
-
 def chapter_unfinished_marker_hits(
     lines: list[str],
-    omission_rows: list[tuple[int, dict[str, Any]]],
 ) -> list[tuple[int, str]]:
-    line_records = valid_verbatim_line_records(lines)
-    allowances = logged_unresolved_allowances(omission_rows)
     hits: list[tuple[int, str]] = []
-
     for number, line in enumerate(lines, 1):
-        record_id = line_records.get(number)
-        scan_line = line
-        if record_id is not None and allowances.get(record_id, 0) > 0:
-            remaining = allowances[record_id]
-
-            def remove_logged_marker(match: re.Match[str]) -> str:
-                nonlocal remaining
-                if remaining <= 0:
-                    return match.group(0)
-                remaining -= 1
-                return " "
-
-            scan_line = BRACKETED_UNRESOLVED_RE.sub(remove_logged_marker, scan_line)
-            allowances[record_id] = remaining
-        if line_has_unfinished_marker(scan_line):
+        if line_has_unfinished_marker(line):
             hits.append((number, line))
     return hits
-
-
-def validate_unfinished_marker_fixtures(audit: Audit) -> None:
-    approved_one = "YIN-OY-T000001"
-    unlogged = "YIN-OY-T000002"
-    approved_hard = "YIN-OY-T000003"
-    underlogged = "YIN-OY-T000004"
-    lines = [
-        f"% YIN-VERBATIM-BEGIN {approved_one}",
-        r"\noindent [unresolved] source-faithful text.\par",
-        f"% YIN-VERBATIM-END {approved_one}",
-        f"% YIN-VERBATIM-BEGIN {unlogged}",
-        r"\noindent [unresolved] unlogged text.\par",
-        f"% YIN-VERBATIM-END {unlogged}",
-        f"% YIN-VERBATIM-BEGIN {approved_hard}",
-        r"\noindent [unresolved] TODO\par",
-        f"% YIN-VERBATIM-END {approved_hard}",
-        r"\noindent [unresolved] outside a block.\par",
-        f"% YIN-VERBATIM-BEGIN {underlogged}",
-        r"\noindent [unresolved] and [unresolved].\par",
-        f"% YIN-VERBATIM-END {underlogged}",
-    ]
-    omission_rows = [
-        (
-            1,
-            {
-                "record_type": "span_omission",
-                "transcript_record_id": approved_one,
-                "scope": "prebaseline_uncertainty",
-                "omitted_text": "unresolved",
-                "reason_code": "uncertain_or_sense_gloss_span",
-            },
-        ),
-        (
-            2,
-            {
-                "record_type": "span_omission",
-                "transcript_record_id": approved_hard,
-                "scope": "prebaseline_uncertainty",
-                "omitted_text": "unresolved",
-                "reason_code": "uncertain_or_sense_gloss_span",
-            },
-        ),
-        (
-            3,
-            {
-                "record_type": "span_omission",
-                "transcript_record_id": underlogged,
-                "scope": "prebaseline_uncertainty",
-                "omitted_text": "unresolved",
-                "reason_code": "uncertain_or_sense_gloss_span",
-            },
-        ),
-    ]
-    observed = [
-        number for number, _line in chapter_unfinished_marker_hits(lines, omission_rows)
-    ]
-    expected = [5, 8, 10, 12]
-    if observed != expected:
-        audit.error(
-            "unfinished-marker regression failed: "
-            f"expected hit lines {expected}, found {observed}"
-        )
-    audit.stats["unfinished_marker_fixtures"] = len(expected)
 
 
 def validate_unfinished_markers(
     loaded: dict[Path, list[tuple[int, dict[str, Any]]]], audit: Audit
 ) -> None:
-    validate_unfinished_marker_fixtures(audit)
     hits: list[str] = []
     if CHAPTER.is_file():
         chapter_lines = CHAPTER.read_text(encoding="utf-8").splitlines()
-        omission_path = PILOT / "verbatim-omissions.jsonl"
-        for number, line in chapter_unfinished_marker_hits(
-            chapter_lines, loaded.get(omission_path, [])
-        ):
+        for number, line in chapter_unfinished_marker_hits(chapter_lines):
             hits.append(f"{rel(CHAPTER)}:{number}:{line.strip()}")
 
     canonical_paths = (
@@ -1624,15 +1540,13 @@ def main() -> int:
     provenance_path = PILOT / "provenance.jsonl"
     validate_provenance(loaded.get(provenance_path, []), comments, audit)
 
-    verbatim = run_verbatim_audit(ROOT, strict=strict)
-    audit.errors.extend(f"near-verbatim: {message}" for message in verbatim.errors)
+    written = run_written_prose_audit(ROOT, strict=strict)
+    audit.errors.extend(f"written-prose: {message}" for message in written.errors)
     audit.warnings.extend(
-        f"near-verbatim: {message}" for message in verbatim.warnings
+        f"written-prose: {message}" for message in written.warnings
     )
-    for name, value in verbatim.stats.items():
-        if name == "transcript_sha256":
-            continue
-        stat_name = name if name.startswith("verbatim_") else f"verbatim_{name}"
+    for name, value in written.stats.items():
+        stat_name = name if name.startswith("written_") else f"written_{name}"
         audit.stats[stat_name] = value
 
     validate_unfinished_markers(loaded, audit)

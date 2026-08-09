@@ -1,5 +1,9 @@
 # Near-verbatim packet audit
 
+> Archival record. This audit describes the abandoned lexical-retention
+> experiment and cannot approve the active written edition. Use
+> `review-fidelity.md` and `scripts/audit_written_prose.py` for current work.
+
 ## Scope
 
 Audited on 2026-08-08 against the frozen source
