@@ -28,13 +28,15 @@ Status: pending
 - Review-required phrases and exception IDs:
 - Classroom and board narration scan:
 
-## Pass 3: voice
+## Pass 3: voice restoration
 
 Status: pending
 
 - Characteristic phrases retained:
 - Deliberate corrections retained:
 - Jokes or conceptual questions retained:
+- Ordinary connective language and reader address restored:
+- Voice-restoration ledger records checked:
 
 ## Pass 4: logic and referents
 

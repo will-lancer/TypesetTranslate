@@ -53,8 +53,10 @@ SOURCE_PACKET_REQUIRED = (
 
 EDITOR_OUTPUT_REQUIRED = (
     "work/pilot/argument-map.jsonl",
+    "work/pilot/voice-restoration.jsonl",
     "work/pilot/style-exceptions.jsonl",
     "work/pilot/writing-style-pass-ledger.md",
+    "work/pilot/render-manifest.json",
     "work/pilot/provenance.jsonl",
     "work/pilot/page-dispositions.jsonl",
     "work/pilot/transcript-dispositions.jsonl",
@@ -1494,11 +1496,40 @@ def review_has_explicit_blocker(text: str) -> bool:
 
 def validate_review_reports(audit: Audit) -> None:
     clear = 0
+    chapter_hash = hashlib.sha256(CHAPTER.read_bytes()).hexdigest()
+    pdf_path = ROOT / "latex" / "master.pdf"
+    manifest_path = PILOT / "render-manifest.json"
+    pdf_hash = hashlib.sha256(pdf_path.read_bytes()).hexdigest() if pdf_path.is_file() else None
+    manifest_hash = (
+        hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+        if manifest_path.is_file()
+        else None
+    )
     for name in REVIEW_REPORTS:
         path = ROOT / name
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
+        chapter_match = re.search(
+            r"Chapter SHA-256:\s*\n?`([0-9a-f]{64})`", text
+        )
+        if chapter_match is None:
+            audit.gate(f"{name} lacks a chapter SHA-256")
+        elif chapter_match.group(1) != chapter_hash:
+            audit.gate(f"{name} cites a stale chapter SHA-256")
+        if name.endswith("review-render.md"):
+            pdf_match = re.search(r"PDF SHA-256:\s*\n?`([0-9a-f]{64})`", text)
+            manifest_match = re.search(
+                r"Render manifest SHA-256:\s*\n?`([0-9a-f]{64})`", text
+            )
+            if pdf_hash is None or pdf_match is None:
+                audit.gate(f"{name} lacks a current PDF SHA-256")
+            elif pdf_match.group(1) != pdf_hash:
+                audit.gate(f"{name} cites a stale PDF SHA-256")
+            if manifest_hash is None or manifest_match is None:
+                audit.gate(f"{name} lacks a current render-manifest SHA-256")
+            elif manifest_match.group(1) != manifest_hash:
+                audit.gate(f"{name} cites a stale render-manifest SHA-256")
         if review_has_explicit_blocker(text):
             audit.gate(f"{name} declares an unresolved blocker")
         elif not review_has_clear_attestation(text):

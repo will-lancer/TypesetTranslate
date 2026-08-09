@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import unittest
+import tempfile
+from pathlib import Path
 
 from audit_written_prose import (
     LEGACY_MARKER_RE,
@@ -57,6 +59,13 @@ class WrittenProseAuditTests(unittest.TestCase):
         self.assertIsNotNone(
             LEGACY_MARKER_RE.search("% YIN-VERBATIM-BEGIN YIN-OY-T000001")
         )
+
+    def test_chapter_hash_uses_utf8_bytes(self) -> None:
+        text = "Yin's voice: φ."
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "chapter.tex"
+            path.write_text(text, encoding="utf-8")
+            self.assertEqual(path.read_bytes(), text.encode("utf-8"))
 
 
 if __name__ == "__main__":

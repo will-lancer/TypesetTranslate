@@ -4,6 +4,9 @@ Date: 2026-08-09
 
 Governing rules: `WRITING_STYLE.md`
 
+Chapter SHA-256:
+`df431b6e60ee29d489a91eaa4beb9fc9c61ec198b0cdf5acd8d393996090ec82`
+
 ## Reference prose
 
 The prose model is Xi Yin's *Foundations of String Theory*, taken from the
@@ -44,19 +47,29 @@ The whole chapter was scanned for `okay`, `all right`, `you know`, `I mean`,
 `well`, `actually`, `just`, `basically`, `kind of`, `sort of`, and `let me`.
 
 - `okay`, `all right`, `you know`, and `actually`: zero visible occurrences.
-- `basically`: retained once in the user's approved microcausality sentence.
-- `let me`: retained once in the user's approved transition into the precise
-  covariance statement.
-- `kind of`: occurs only inside "this kind of fundamental theory."
-- `I mean`: occurs only inside the definition "By a field I generally mean."
-- `just`: occurs in meaningful constructions such as "just as" and in the
-  user's approved line "I'll just write down the answer."
-- Sentence-initial `so` survives only where it carries Yin's emphasis, such as
-  "So, by contrast" and "So far, nothing surprising."
+- `basically`: two approved occurrences, in the rough opening answer and the
+  intuitive statement of microcausality.
+- `let me`: five approved occurrences recording a course map, provisional
+  definition, normalization choice, causality transition, and move to the
+  precise covariance law.
+- `kind of`: three approved occurrences identifying a class of theories, the
+  free model just solved, and the causal property under discussion.
+- `I mean`: three approved definitions, for $D$, non-interaction, and the word
+  field.
+- `just`: six approved occurrences carrying comparison, restriction, or a
+  precise backward reference.
+- Sentence-initial `so`: four approved transitions, including "So, by
+  contrast" and "So far, nothing, no big deal."
 
-## Pass 3: voice
+## Pass 3: voice restoration
 
 Status: complete
+
+The chapter was reread argument by argument against the minimally cleaned
+transcript. The positive ledger contains 33 approved cues across all seven
+argument units. Each cue cites exact frozen speech, records an exact or lightly
+recast treatment, names its rhetorical function, and points to the current
+printed phrase.
 
 The pass restored or retained the following characteristic phrases and turns:
 
@@ -71,9 +84,18 @@ The pass restored or retained the following characteristic phrases and turns:
 - "you can go home" after the free theory is solved;
 - "what the heck is $\widehat\phi(x)$ in this model?"
 
+It also restored quieter parts of Yin's voice: "This question is very easy to
+answer," "you are probably not very impressed," "I will let you verify for
+yourself," "you are welcome to try," "by inspection," and the arbitrary
+rescaling "to the one-third power, or whatever." These phrases carry reader
+address, pacing, understatement, or a concrete example.
+
 Questions that merely invited classroom participation were removed. Student
 questions about normalization, vacuum energy, locality, and the construction
 of the field operator were folded into the exposition.
+
+All 33 records in `voice-restoration.jsonl` were checked against the frozen
+transcript and the chapter SHA above.
 
 ## Pass 4: logic and referents
 
@@ -108,11 +130,13 @@ Status: complete
 - The final chapter compiles to 13 A4 pages.
 - The log contains no overfull boxes, underfull boxes, undefined references, or
   missing-glyph warnings.
-- All 13 pages were rendered at 180 dpi and inspected. The two figures, long
-  equations, field-operator definition, page breaks, and final problem-set note
-  are readable and unclipped.
-- The exported PDF and the built master are byte-identical. Their SHA-256 is
-  `008e7367998b4c889816929d0f6caf643daec53814d920309a64ea087cdcb49f`.
+- All 13 pages were rendered at 180 dpi in the directory named by the PDF hash
+  and inspected. The two figures, long equations, field-operator definition,
+  page breaks, and final problem-set note are readable and unclipped.
+- Two forced builds are byte-identical. Their SHA-256 is
+  `ae874ea093e48619a2c369ffe3be12b424ebaf69798ed1a2bd7ebcf69d355a14`.
+- The render manifest SHA-256 is
+  `935669ce833e2820c5c6d569ba2d11b9e6e37733827ef61d3c4f807aff5f1f8e`.
 - The old near-verbatim retention gate is intentionally inapplicable to this
   written-prose edition; source comments, transcript IDs, and source artifacts
   remain available for traceability.

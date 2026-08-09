@@ -26,13 +26,16 @@ python3 "$edition_root/scripts/verify_source.py"
 python3 "$edition_root/scripts/test_written_prose_audit.py"
 if [ "$strict" -eq 1 ]
 then
+  python3 "$edition_root/scripts/render_written_dispositions.py" --check
   python3 "$edition_root/scripts/render_written_provenance.py" --check
+  python3 "$edition_root/scripts/render_render_manifest.py" --check
   python3 "$edition_root/scripts/audit_project.py" --strict
 else
   python3 "$edition_root/scripts/audit_project.py"
 fi
 
 cd "$latex_dir"
+SOURCE_DATE_EPOCH=1786233600 FORCE_SOURCE_DATE=1 TZ=UTC \
 TEXINPUTS="$reference_style_dir:$latex_dir:${TEXINPUTS-}" \
   latexmk -g -pdf -interaction=nonstopmode -halt-on-error master.tex
 
@@ -54,8 +57,11 @@ then
   exit 1
 fi
 
-mkdir -p "$edition_root/qa/rendered"
-pdftoppm -r 180 -png master.pdf "$edition_root/qa/rendered/pilot" >/dev/null 2>&1
+build_hash=$(shasum -a 256 master.pdf | awk '{print $1}')
+render_dir="$edition_root/qa/rendered/$build_hash"
+mkdir -p "$render_dir"
+pdftoppm -r 180 -png master.pdf "$render_dir/page" >/dev/null 2>&1
+python3 "$edition_root/scripts/render_render_manifest.py" --write
 
 if [ "$strict" -eq 1 ]
 then
@@ -66,7 +72,6 @@ then
   fi
   mkdir -p "$export_dir"
   cp master.pdf "$export_pdf"
-  build_hash=$(shasum -a 256 master.pdf | awk '{print $1}')
   export_hash=$(shasum -a 256 "$export_pdf" | awk '{print $1}')
   if [ "$build_hash" != "$export_hash" ]
   then

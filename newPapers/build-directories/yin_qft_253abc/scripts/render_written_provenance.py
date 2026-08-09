@@ -265,7 +265,7 @@ def render() -> tuple[str, dict[str, int | str]]:
                     else "The source material is recast under WRITING_STYLE.md."
                 ),
                 "confidence": confidence,
-                "review_status": "written_prose_reviewed",
+                "review_status": "generated_from_current_chapter",
                 "writing_mode": "written_prose",
                 "chapter_sha256": chapter_hash,
                 "transcript_sha256": transcript_hash,

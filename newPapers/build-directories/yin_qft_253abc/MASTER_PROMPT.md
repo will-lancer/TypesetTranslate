@@ -113,9 +113,18 @@ deictic language from the note or frame evidence. Preserve technical content,
 qualifications, derivation order, characteristic language, and deliberate
 emphasis.
 
+Begin from Yin's minimally cleaned sentences inside the chosen argument unit.
+Keep his vocabulary, cadence, qualifications, reader address, and ordinary
+connective language whenever they survive the move to written prose. The voice
+is distributed throughout the explanation; it is not confined to jokes or
+catchphrases. Prefer the smallest edit that removes a speech artifact. Do not
+replace a serviceable Yin sentence with generic textbook prose.
+
 Read `WRITING_STYLE.md` before the first paragraph and again before each
 required pass. Its examples are binding. Every conversational phrase listed as
 review-required must be justified in `work/pilot/style-exceptions.jsonl`.
+Every argument-map voice cue must be accounted for in
+`work/pilot/voice-restoration.jsonl` and present in the hash-pinned chapter.
 
 ## Mathematics
 
@@ -178,6 +187,7 @@ work/pilot/
   transcript.cleaned.jsonl
   alignment.jsonl
   argument-map.jsonl
+  voice-restoration.jsonl
   style-exceptions.jsonl
   provenance.jsonl
   page-dispositions.jsonl

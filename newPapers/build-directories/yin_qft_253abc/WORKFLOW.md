@@ -70,12 +70,15 @@ The first draft must already satisfy these conditions:
 - equations appear beside the prose that motivates them;
 - characteristic phrases and deliberate corrections remain;
 - every source span has a recorded written-use disposition.
+- every argument-map voice cue has a planned `retained_exact` or
+  `lightly_recast` treatment.
 
 Run `python3 scripts/audit_written_prose.py` after the first complete draft.
 The audit is a drafting tool. It is not a cleanup step postponed until release.
 Before that audit, run
+`python3 scripts/render_written_dispositions.py --write` and
 `python3 scripts/render_written_provenance.py --write`. Strict builds rerun the
-renderer in check-only mode and fail if the chapter changed afterward.
+renderers in check-only mode and fail if the chapter changed afterward.
 
 ## Wave 4: make the six passes
 
@@ -83,14 +86,15 @@ Use `templates/WRITING_PASS_LEDGER.md`. Complete the passes in order:
 
 1. structure;
 2. filler;
-3. voice;
+3. voice restoration;
 4. logic and referents;
 5. mathematics and notation;
 6. build and render.
 
 The filler pass records every approved occurrence of a review-required phrase
-in `style-exceptions.jsonl`. The voice pass compares the chapter with the voice
-cues in the argument map. The math pass checks every display against the exact
+in `style-exceptions.jsonl`. The voice-restoration pass rereads every argument
+against the minimally cleaned transcript and records each positive cue in
+`voice-restoration.jsonl`. The math pass checks every display against the exact
 note layer.
 
 ## Wave 5: review
@@ -110,7 +114,9 @@ qualifications, examples, and retained voice. It also looks for transcript
 seams, over-compression, invented transitions, and residual classroom speech.
 
 The render review inspects every PDF page for paragraph flow, equation layout,
-figures, links, clipping, and readable typography.
+figures, links, clipping, and readable typography. Rendered pages live in a
+directory named by the PDF SHA-256, and `render-manifest.json` records every
+page image and hash.
 
 Each review ends with `Unresolved blockers: none` or an explicit blocker list.
 The lead applies accepted changes and reruns all affected checks.
@@ -124,6 +130,8 @@ Strict verification requires:
 - complete page and transcript dispositions;
 - one provenance record for every `YIN-SOURCE` comment;
 - every writing-style pass marked complete;
+- every argument-map voice cue present in the hash-pinned voice-restoration
+  ledger and in the current chapter;
 - every review-required phrase covered by an approved style exception;
 - no mechanical prose or notation violations;
 - no unresolved source, mathematics, fidelity, or render blockers;

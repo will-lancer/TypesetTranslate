@@ -19,8 +19,10 @@ Status: complete
 
 The chapter is organized into seven argument-map units. It contains 198
 ordered speech-source spans and 233 source comments. All source comments have
-current deterministic provenance. Thirteen retained conversational phrases
-have explicit style exceptions.
+current deterministic provenance. Twenty-six retained conversational phrases
+have explicit style exceptions. A positive voice-restoration ledger verifies
+33 cues across all seven argument units against the frozen transcript and the
+current chapter.
 
 The six required passes are complete. The written-prose audit reports no hard
 filler, classroom narration, legacy near-verbatim markers, hidden text,
@@ -32,13 +34,20 @@ blockers. The final chapter occupies 13 A4 pages. Problem Set 1 on source pages
 15--19 remains deferred to the exercises appendix.
 
 The verified exported PDF has SHA-256
-`008e7367998b4c889816929d0f6caf643daec53814d920309a64ea087cdcb49f`.
+`ae874ea093e48619a2c369ffe3be12b424ebaf69798ed1a2bd7ebcf69d355a14`.
+
+The chapter source SHA-256 is
+`df431b6e60ee29d489a91eaa4beb9fc9c61ec198b0cdf5acd8d393996090ec82`.
+The render manifest SHA-256 is
+`935669ce833e2820c5c6d569ba2d11b9e6e37733827ef61d3c4f807aff5f1f8e`.
 
 ## Release checks
 
 - Source hash verification: pass
 - Written-prose regression tests: pass
 - Written-prose strict audit: pass
+- Positive voice-restoration audit: pass, 33 of 33 cues
+- Current transcript-disposition linkage: pass, 198 active records
 - Provenance freshness and source coverage: pass
 - LaTeX compilation and reference scan: pass
 - Embedded-font and PDF parser checks: pass

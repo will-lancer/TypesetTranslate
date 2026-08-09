@@ -6,6 +6,19 @@ This ledger governs the conversion of the Physics 253abc lectures into written e
 
 Write what Yin would plausibly have written after teaching the lecture. Preserve his line of thought and his characteristic turns of phrase. Remove the machinery of live speech.
 
+The default is preservation. Ordinary connective language, qualifications,
+questions, and first-person remarks also carry voice; the memorable jokes are
+only the most visible part of it. Before removing or replacing a phrase, decide
+whether it performs mathematical, rhetorical, interpersonal, or purely
+classroom work. Preserve the first three functions. Remove only the classroom
+mechanics.
+
+Begin from Yin's minimally cleaned sentences within each argument unit. Join
+adjacent fragments, repair syntax and referents, and make the smallest changes
+that produce good written prose. Generic synonyms are not improvements. A
+sentence that already reads well after its false start or caption seam is
+removed should keep Yin's vocabulary and order.
+
 The cleaned transcript is never the paragraph skeleton. Build the paragraph
 from the argument first, then attach the supporting transcript spans. A draft
 that follows caption boundaries has failed the structural pass even when every
@@ -19,6 +32,12 @@ word is accurate.
 - First-person guidance when it records a convention or a deliberate choice: "We work in units with (c=1)," "I use the mostly-plus signature," or "We will return to this point."
 - Repetition when it carries emphasis, especially a deliberate correction such as "QFT is not a generalization of quantum mechanics; it is a specialization."
 - The lecture's order of ideas, examples, caveats, and jokes.
+- Ordinary authorial contact with the reader: "you might ask," "you can verify
+  for yourself," "I would say," and similar phrases when they guide the
+  argument.
+- Rhetorical pacing such as "But that is not all," "So far, nothing, no big
+  deal," or "It is not obvious" when it marks the pressure point of an
+  argument.
 
 ## Remove or rewrite
 
@@ -95,7 +114,11 @@ expansion are separate displays.
 
 1. **Structural pass:** merge transcript-sized fragments into arguments; place equations at the point of use.
 2. **Filler pass:** inspect every occurrence of `okay`, `so`, `well`, `you know`, `all right`, `I mean`, `just`, `actually`, `basically`, `kind of`, and `let me`.
-3. **Voice pass:** restore any characteristic phrase, joke, correction, or conceptual question lost during compression.
+3. **Voice-restoration pass:** reread every argument against its minimally
+   cleaned transcript. Restore characteristic vocabulary, cadence,
+   qualifications, reader address, jokes, corrections, and conceptual
+   questions lost during compression. Record every required voice cue in
+   `work/<chapter>/voice-restoration.jsonl`.
 4. **Logic pass:** verify that every connective describes the relation between adjacent sentences and that every pronoun has a clear referent.
 5. **Math pass:** compare all displayed formulas with the reconciled note layer and inspect long inline mathematics.
 6. **Render pass:** build the PDF and inspect every page for paragraph flow, equation placement, and layout defects.
@@ -103,6 +126,24 @@ expansion are separate displays.
 Each pass must be recorded in the chapter's writing-style pass ledger. The
 status line must read `Status: complete`, followed by concrete evidence. A
 single combined "style pass" does not satisfy this requirement.
+
+## Voice-restoration ledger
+
+Every `voice_cues` entry in the argument map is a positive drafting
+requirement. `work/<chapter>/voice-restoration.jsonl` records:
+
+- the argument and transcript record supplying the cue;
+- a short exact source phrase;
+- the treatment, either `retained_exact` or `lightly_recast`;
+- the exact printed phrase;
+- the function served by the phrase;
+- the current chapter SHA-256 and an approval status.
+
+The printed phrase must occur in the current chapter. The source phrase must
+occur in the frozen minimally cleaned transcript. A cue cannot be satisfied by
+an omitted phrase. When a cue turns out to be classroom mechanics, remove it
+from the approved argument map and replace it with a genuine voice cue before
+drafting.
 
 ## Conversational-phrase ledger
 

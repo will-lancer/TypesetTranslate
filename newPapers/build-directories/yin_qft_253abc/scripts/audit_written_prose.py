@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass, field
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -25,6 +26,7 @@ STYLE = ROOT / "WRITING_STYLE.md"
 PASS_LEDGER = PILOT / "writing-style-pass-ledger.md"
 STYLE_EXCEPTIONS = PILOT / "style-exceptions.jsonl"
 ARGUMENT_MAP = PILOT / "argument-map.jsonl"
+VOICE_RESTORATION = PILOT / "voice-restoration.jsonl"
 TRANSCRIPT = PILOT / "transcript.cleaned.jsonl"
 DISPOSITIONS = PILOT / "transcript-dispositions.jsonl"
 
@@ -100,10 +102,31 @@ DISPLAY_ENVS = (
 REQUIRED_PASSES = (
     "structure",
     "filler",
-    "voice",
+    "voice restoration",
     "logic and referents",
     "mathematics and notation",
     "build and render",
+)
+
+ACTIVE_CHAPTER_USES = frozenset(
+    {
+        "included",
+        "included_clear_portion_uncertainty_excluded",
+        "merged_into_preceding_written_answer",
+    }
+)
+INACTIVE_CHAPTER_USES = frozenset(
+    {
+        "classroom_management_excluded",
+        "classroom_setup_or_logistics_excluded",
+        "coverage_only",
+        "logistics_or_nonspeech_excluded",
+        "optional_lead_in_excluded",
+        "outside_section",
+        "repetition_excluded",
+        "repetition_or_context_excluded",
+        "unresolved_excluded",
+    }
 )
 
 
@@ -302,12 +325,42 @@ def validate_source_coverage(
             f"{missing_dispositions}"
         )
 
-    active_words = ("included", "merged", "absorbed", "integrated")
     expected: set[str] = set()
+    chapter_source_ids = set(
+        re.findall(
+            r"(?m)^\s*%\s*YIN-SOURCE:\s*id=([^;\s]+)",
+            CHAPTER.read_text(encoding="utf-8"),
+        )
+    )
+    chapter_hash = hashlib.sha256(CHAPTER.read_bytes()).hexdigest()
     for record_id, row in dispositions.items():
-        chapter_use = str(row.get("chapter_use") or "").casefold()
-        if any(word in chapter_use for word in active_words) and "excluded" not in chapter_use:
+        chapter_use = row.get("chapter_use")
+        if chapter_use in ACTIVE_CHAPTER_USES:
             expected.add(record_id)
+        elif chapter_use not in INACTIVE_CHAPTER_USES:
+            result.error(
+                f"unknown chapter_use {chapter_use!r} for transcript record {record_id}"
+            )
+        links = row.get("included_unit_ids")
+        if not isinstance(links, list):
+            result.error(f"transcript record {record_id} has malformed included_unit_ids")
+            links = []
+        stale = [link for link in links if link not in chapter_source_ids]
+        if stale:
+            result.error(
+                f"transcript record {record_id} links to absent chapter units: {stale}"
+            )
+        if chapter_use in ACTIVE_CHAPTER_USES:
+            expected_source_id = "YIN253A-C01-V-" + record_id.removeprefix("YIN-OY-")
+            if expected_source_id not in links:
+                result.error(
+                    f"active transcript record {record_id} lacks its current source "
+                    f"link {expected_source_id}"
+                )
+        if row.get("chapter_sha256") != chapter_hash:
+            result.gate(
+                f"transcript disposition for {record_id} has a stale chapter_sha256"
+            )
     missing_spans = sorted(expected - set(blocks))
     if missing_spans:
         result.gate(
@@ -316,6 +369,7 @@ def validate_source_coverage(
         )
 
     result.stats["speech_spans_with_dispositions"] = len(set(blocks) & set(dispositions))
+    result.stats["active_transcript_dispositions"] = len(expected)
 
 
 def validate_argument_map(result: Result) -> None:
@@ -383,7 +437,7 @@ def validate_argument_map(result: Result) -> None:
             )
         else:
             previous_end = positions[end_id]
-        for key in ("claims", "paragraph_plan"):
+        for key in ("claims", "voice_cues", "paragraph_plan"):
             value = row.get(key)
             if not isinstance(value, list) or not value:
                 result.gate(
@@ -399,11 +453,196 @@ def validate_argument_map(result: Result) -> None:
     result.stats["argument_units"] = len(rows)
 
 
+def validate_voice_restoration(chapter_text: str, result: Result) -> None:
+    argument_rows = load_jsonl(ARGUMENT_MAP, result)
+    transcript_rows = load_jsonl(TRANSCRIPT, result)
+    voice_rows = load_jsonl(VOICE_RESTORATION, result)
+
+    arguments: dict[str, dict[str, Any]] = {}
+    required_cues: set[tuple[str, str]] = set()
+    for number, row in argument_rows:
+        argument_id = row.get("id")
+        cues = row.get("voice_cues")
+        if not isinstance(argument_id, str) or not argument_id:
+            continue
+        arguments[argument_id] = row
+        if not isinstance(cues, list):
+            continue
+        for cue in cues:
+            if not isinstance(cue, str) or not cue.strip():
+                result.error(
+                    f"{relative(ARGUMENT_MAP)}:{number}: voice cue must be nonempty"
+                )
+                continue
+            required_cues.add((argument_id, cue))
+
+    transcript: dict[str, dict[str, Any]] = {}
+    transcript_order: list[str] = []
+    for _number, row in transcript_rows:
+        if row.get("record_type") == "transcript_metadata":
+            continue
+        record_id = row.get("id")
+        if isinstance(record_id, str):
+            transcript[record_id] = row
+            transcript_order.append(record_id)
+    positions = {record_id: index for index, record_id in enumerate(transcript_order)}
+
+    visible = visible_tex(chapter_text)
+    normalized_visible = " ".join(visible.split())
+    chapter_hash = hashlib.sha256(chapter_text.encode("utf-8")).hexdigest()
+    required_fields = {
+        "id",
+        "argument_unit_id",
+        "cue",
+        "source_record_ids",
+        "source_text",
+        "treatment",
+        "final_text",
+        "voice_function",
+        "reason",
+        "status",
+        "chapter_sha256",
+    }
+    allowed_treatments = {"retained_exact", "lightly_recast"}
+    seen_ids: set[str] = set()
+    covered_cues: set[tuple[str, str]] = set()
+    for number, row in voice_rows:
+        missing = sorted(required_fields - set(row))
+        if missing:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: missing fields {missing}"
+            )
+            continue
+        record_id = row.get("id")
+        if not isinstance(record_id, str) or not record_id:
+            result.error(f"{relative(VOICE_RESTORATION)}:{number}: missing id")
+        elif record_id in seen_ids:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: duplicate id {record_id}"
+            )
+        else:
+            seen_ids.add(record_id)
+
+        argument_id = row.get("argument_unit_id")
+        cue = row.get("cue")
+        if argument_id not in arguments:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: unknown argument unit "
+                f"{argument_id!r}"
+            )
+            continue
+        if not isinstance(cue, str) or (argument_id, cue) not in required_cues:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: cue {cue!r} is not "
+                f"approved for {argument_id}"
+            )
+            continue
+        cue_key = (argument_id, cue)
+        if cue_key in covered_cues:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: duplicate cue treatment "
+                f"for {argument_id}: {cue!r}"
+            )
+        covered_cues.add(cue_key)
+
+        source_ids = row.get("source_record_ids")
+        if not isinstance(source_ids, list) or not source_ids:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: source_record_ids "
+                "must be nonempty"
+            )
+            source_ids = []
+        unknown = [source_id for source_id in source_ids if source_id not in transcript]
+        if unknown:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: unknown transcript "
+                f"records {unknown}"
+            )
+        argument = arguments[argument_id]
+        start_id = argument.get("transcript_start_id")
+        end_id = argument.get("transcript_end_id")
+        if start_id in positions and end_id in positions:
+            outside = [
+                source_id
+                for source_id in source_ids
+                if source_id in positions
+                and not positions[start_id] <= positions[source_id] <= positions[end_id]
+            ]
+            if outside:
+                result.error(
+                    f"{relative(VOICE_RESTORATION)}:{number}: source records "
+                    f"outside {argument_id}: {outside}"
+                )
+
+        source_text = row.get("source_text")
+        combined_source = " ".join(
+            str(transcript.get(source_id, {}).get("cleaned_text") or "")
+            for source_id in source_ids
+        )
+        if not isinstance(source_text, str) or not source_text.strip():
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: source_text must be nonempty"
+            )
+        elif source_text not in combined_source:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: source_text is absent "
+                "from the cited frozen transcript records"
+            )
+
+        treatment = row.get("treatment")
+        if treatment not in allowed_treatments:
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: treatment must be one "
+                f"of {sorted(allowed_treatments)}"
+            )
+        final_text = row.get("final_text")
+        if not isinstance(final_text, str) or not final_text.strip():
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: final_text must be nonempty"
+            )
+        elif " ".join(final_text.split()) not in normalized_visible:
+            result.gate(
+                f"{relative(VOICE_RESTORATION)}:{number}: final_text is absent "
+                "from the current chapter"
+            )
+        if not isinstance(row.get("voice_function"), str) or not row["voice_function"].strip():
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: voice_function must be nonempty"
+            )
+        if not isinstance(row.get("reason"), str) or not row["reason"].strip():
+            result.error(
+                f"{relative(VOICE_RESTORATION)}:{number}: reason must be nonempty"
+            )
+        if row.get("status") != "approved":
+            result.gate(
+                f"{relative(VOICE_RESTORATION)}:{number}: status is not approved"
+            )
+        if row.get("chapter_sha256") != chapter_hash:
+            result.gate(
+                f"{relative(VOICE_RESTORATION)}:{number}: chapter_sha256 is stale"
+            )
+
+    missing_cues = sorted(required_cues - covered_cues)
+    extra_cues = sorted(covered_cues - required_cues)
+    if missing_cues:
+        result.gate(f"voice-restoration ledger lacks approved cues: {missing_cues}")
+    if extra_cues:
+        result.error(f"voice-restoration ledger has unapproved cues: {extra_cues}")
+    result.stats["voice_cues"] = len(required_cues)
+    result.stats["voice_cues_verified"] = len(required_cues & covered_cues)
+
+
 def validate_pass_ledger(result: Result) -> None:
     if not PASS_LEDGER.is_file():
         result.gate(f"missing required pass ledger: {relative(PASS_LEDGER)}")
         return
     text = PASS_LEDGER.read_text(encoding="utf-8")
+    chapter_hash = hashlib.sha256(CHAPTER.read_bytes()).hexdigest()
+    hash_match = re.search(r"Chapter SHA-256:\s*\n?`([0-9a-f]{64})`", text)
+    if hash_match is None:
+        result.gate("writing pass ledger lacks a chapter SHA-256")
+    elif hash_match.group(1) != chapter_hash:
+        result.gate("writing pass ledger cites a stale chapter SHA-256")
     completed = 0
     for number, name in enumerate(REQUIRED_PASSES, 1):
         pattern = re.compile(
@@ -567,6 +806,7 @@ def run_audit(root: Path = ROOT, strict: bool = False) -> Result:
     order, blocks = parse_speech_blocks(chapter_text.splitlines(), result)
     validate_source_coverage(order, blocks, result)
     validate_argument_map(result)
+    validate_voice_restoration(chapter_text, result)
     validate_pass_ledger(result)
     validate_style_and_tex(chapter_text, result)
     return result
