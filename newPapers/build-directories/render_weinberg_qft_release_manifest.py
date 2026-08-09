@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
-EXPORT_ROOT = HERE.parent / "weinberg-qft-exercises"
+EXPORT_ROOT = HERE.parent
 VOLUMES = (
     ("weinberg_vol1_exercises", "weinberg-vol1-exercises.pdf"),
     ("weinberg_vol2_exercises", "weinberg-vol2-exercises.pdf"),
@@ -223,8 +223,8 @@ def main() -> int:
         "cross_volume_audit": cross_report,
     }
     EXPORT_ROOT.mkdir(parents=True, exist_ok=True)
-    json_path = EXPORT_ROOT / "RELEASE_MANIFEST.json"
-    markdown_path = EXPORT_ROOT / "RELEASE_MANIFEST.md"
+    json_path = HERE / "WEINBERG_QFT_EXERCISE_RELEASE_MANIFEST.json"
+    markdown_path = HERE / "WEINBERG_QFT_EXERCISE_RELEASE_MANIFEST.md"
     json_path.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",

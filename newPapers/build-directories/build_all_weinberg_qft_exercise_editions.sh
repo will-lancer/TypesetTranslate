@@ -2,7 +2,7 @@
 set -eu
 
 build_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-export_root="$build_root/../weinberg-qft-exercises"
+export_root="$build_root/.."
 fingerprint_script="$build_root/fingerprint_weinberg_qft_release_inputs.py"
 source_state_before=$(python3 "$fingerprint_script")
 

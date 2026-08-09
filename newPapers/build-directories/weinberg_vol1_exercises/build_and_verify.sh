@@ -4,7 +4,7 @@ set -eu
 edition_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 latex_dir="$edition_root/latex"
 edition_name=$(basename "$edition_root")
-export_dir="$edition_root/../../weinberg-qft-exercises"
+export_dir="$edition_root/../.."
 
 case "$edition_name" in
   weinberg_vol1_exercises)

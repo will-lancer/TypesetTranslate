@@ -5,7 +5,7 @@ Status: **work in progress**
 Canonical source: `../weinberg_vol2`
 
 Verified errata export:
-`../../weinberg-qft-exercises/weinberg-vol2-exercises.pdf`
+`../../weinberg-vol2-exercises.pdf`
 
 ## 2026-08-01 errata rebuild
 

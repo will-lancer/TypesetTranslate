@@ -161,4 +161,4 @@ Totals: 70 Weinberg exercises, 70 Weinberg solutions, 177 supplementary exercise
 - Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol1/latex/chapters/chapter13/sec135.tex
 - Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol1/latex/chapters/chapter14/sec141.tex
 - Canonical source changed after edition copy: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol1/latex/frontmatter/notation.tex
-- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-qft/weinberg-vol1.pdf
+- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-vol1.pdf

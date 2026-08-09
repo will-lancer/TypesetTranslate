@@ -34,7 +34,7 @@ checks, text extraction, and stable export:
 ```
 
 The stable exported PDF is
-`../../weinberg-qft-two-component/weinberg-vol3-two-component.pdf`.
+`../../weinberg-vol3-two-component.pdf`.
 
 The convention checks are split between
 `verify_spinor_conventions.py`, which verifies the sigma/gamma dictionary,

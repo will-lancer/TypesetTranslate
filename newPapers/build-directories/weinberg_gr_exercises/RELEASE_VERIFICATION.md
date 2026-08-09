@@ -29,7 +29,7 @@ final exported binary:
 ## Final artifact record
 
 - Release date: pending
-- Exercise-ready PDF: `../../weinberg-gr-exercises/weinberg-gr-exercises.pdf`
+- Exercise-ready PDF: `../../weinberg-gr-exercises.pdf`
 - PDF SHA-256: pending
 - Bytes: pending
 - Pages: pending

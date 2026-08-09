@@ -14,5 +14,5 @@ are synchronized before structural and layout comparison.
 | Full PDF | release verified | clean 370-page build; no undefined references; layout no worse than the original baseline; all 370 pages visually inspected; PDF integrity, embedded-font, and text-extraction checks pass |
 
 The verified stable export is
-`../../weinberg-qft-two-component/weinberg-vol3-two-component.pdf`.
+`../../weinberg-vol3-two-component.pdf`.
 See `RELEASE_VERIFICATION.md` for the release hash and complete gate record.

@@ -3,7 +3,7 @@
 This tree is independent of the canonical `weinberg_gr` edition. Its strict
 build exports only to:
 
-`../../weinberg-gr-exercises/weinberg-gr-exercises.pdf`
+`../../weinberg-gr-exercises.pdf`
 
 Chapter 1 is the historical introduction and intentionally has no exercises.
 Chapters 2--16 each load one file:

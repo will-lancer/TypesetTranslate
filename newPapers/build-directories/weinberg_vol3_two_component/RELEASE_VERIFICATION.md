@@ -5,9 +5,9 @@ Release date: 2026-08-01 PDT
 ## Artifacts
 
 - Corrected comparison edition:
-  `../../weinberg-qft/weinberg-vol3.pdf`
+  `../../weinberg-vol3.pdf`
 - Two-component edition:
-  `../../weinberg-qft-two-component/weinberg-vol3-two-component.pdf`
+  `../../weinberg-vol3-two-component.pdf`
 - Two-component PDF SHA-256:
   `4b854add595303e833dca642283c1a14e89d68a71b06396e0996fac4b3f28e1f`
 - Comparison PDF SHA-256:

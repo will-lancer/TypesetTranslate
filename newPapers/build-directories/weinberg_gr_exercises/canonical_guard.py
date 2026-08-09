@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CANONICAL_ROOT = (ROOT.parent / "weinberg_gr").resolve()
 BASELINE = ROOT / "canonical-baseline.json"
-CANONICAL_EXPORT = (ROOT / "../../weinberg-gr/weinberg-gr-modernized.pdf").resolve()
+CANONICAL_EXPORT = (ROOT / "../../weinberg-gr-modernized.pdf").resolve()
 
 
 def sha256(path: Path) -> str:
@@ -68,7 +68,7 @@ def snapshot() -> dict[str, object]:
         "files": files,
         "symlinks": symlinks,
         "canonical_export": {
-            "path": "../../weinberg-gr/weinberg-gr-modernized.pdf",
+            "path": "../../weinberg-gr-modernized.pdf",
             "mode": stat.S_IMODE(CANONICAL_EXPORT.stat().st_mode),
             "size": CANONICAL_EXPORT.stat().st_size,
             "sha256": sha256(CANONICAL_EXPORT),

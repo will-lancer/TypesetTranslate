@@ -45,7 +45,7 @@ Strict mode additionally requires every planned file to be source-reviewed and
 compile-clean, every reference to resolve, zero overfull boxes, a successful
 full-PDF Ghostscript parse, and embedded/subset fonts. Only a strictly verified
 build is exported to
-`../../weinberg-gr/weinberg-gr-modernized.pdf`.
+`../../weinberg-gr-modernized.pdf`.
 
 The publisher publication-data leaf and the separate copyright-
 acknowledgements leaf are retained as source transcriptions under

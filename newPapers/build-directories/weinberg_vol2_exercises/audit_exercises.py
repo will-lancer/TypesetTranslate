@@ -1821,7 +1821,7 @@ def audit_exports(root: Path, metadata: dict[str, object], audit: Audit) -> None
             audit.failures.append(f"Cannot parse canonical export manifest: {error}")
             expected_exports = {}
         expected_key = (
-            f"../../weinberg-qft/{canonical_name.replace('_', '-')}.pdf"
+            f"../../{canonical_name.replace('_', '-')}.pdf"
             if isinstance(canonical_name, str)
             else None
         )

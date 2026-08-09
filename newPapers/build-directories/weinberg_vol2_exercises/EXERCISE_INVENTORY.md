@@ -120,4 +120,4 @@ Totals: 50 Weinberg exercises, 50 Weinberg solutions, 109 supplementary exercise
 - Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter20/weinberg-exercises.tex
 - Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter21/weinberg-exercises.tex
 - Weinberg exercise prompt fragment changed: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/build-directories/weinberg_vol2_exercises/latex/exercises/chapter23/weinberg-exercises.tex
-- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-qft/weinberg-vol2.pdf
+- Canonical export was changed or overwritten: /Users/wlancer/Coding_Projects/TypesetTranslate/newPapers/weinberg-vol2.pdf

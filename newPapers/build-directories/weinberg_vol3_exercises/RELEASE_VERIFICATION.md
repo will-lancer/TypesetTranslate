@@ -5,7 +5,7 @@ Status: **work in progress**
 Canonical source: `../weinberg_vol3`
 
 Verified errata export:
-`../../weinberg-qft-exercises/weinberg-vol3-exercises.pdf`
+`../../weinberg-vol3-exercises.pdf`
 
 The final strict-release record will include:
 

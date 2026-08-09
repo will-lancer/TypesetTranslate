@@ -3,7 +3,7 @@ set -eu
 
 edition_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 latex_dir="$edition_root/latex"
-export_dir="$edition_root/../../wald-gr"
+export_dir="$edition_root/../.."
 export_pdf="$export_dir/wald-gr-modernized.pdf"
 
 for dependency in python3 latexmk rg pdfinfo pdffonts pdftotext pdftoppm gs

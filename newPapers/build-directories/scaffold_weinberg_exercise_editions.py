@@ -402,7 +402,7 @@ def scaffold_edition(edition: Edition) -> None:
     volume_number = re.search(r"vol([123])", edition.name)
     if volume_number:
         relative_export = (
-            f"../../weinberg-qft/weinberg-vol{volume_number.group(1)}.pdf"
+            f"../../weinberg-vol{volume_number.group(1)}.pdf"
         )
         canonical_export = (edition.root / relative_export).resolve()
         if canonical_export.is_file():

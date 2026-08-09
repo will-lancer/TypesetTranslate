@@ -9,7 +9,7 @@ Release date: 2026-08-01 PDT
 - Restored source leaves:
   `source-supplements/`
 - Modernized edition:
-  `../../weinberg-gr/weinberg-gr-modernized.pdf`
+  `../../weinberg-gr-modernized.pdf`
 - Source PDF SHA-256:
   `da6fca5e44d31417e0d370108a622f9444602d68fb5768ec8edbc5b8ce5a78f9`
 - Modernized PDF SHA-256:

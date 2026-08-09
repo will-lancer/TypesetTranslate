@@ -3,7 +3,7 @@ set -eu
 
 edition_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 latex_dir="$edition_root/latex"
-export_dir="$edition_root/../../weinberg-qft-two-component"
+export_dir="$edition_root/../.."
 
 python3 "$edition_root/verify_spinor_conventions.py"
 python3 "$edition_root/verify_superspace_conventions.py"

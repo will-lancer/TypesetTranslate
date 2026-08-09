@@ -5,7 +5,7 @@ Status: **work in progress (2026-08-01 errata rebuild complete)**
 Canonical source: `../weinberg_vol1`
 
 Verified errata export:
-`../../weinberg-qft-exercises/weinberg-vol1-exercises.pdf`
+`../../weinberg-vol1-exercises.pdf`
 
 ## 2026-08-01 errata rebuild
 
@@ -99,6 +99,6 @@ Representative rendered pages inspected:
 ## Historical release identity
 
 - Stable export:
-  `../../weinberg-qft-exercises/weinberg-vol1-exercises.pdf`
+  `../../weinberg-vol1-exercises.pdf`
 - SHA-256:
   `e619982622dedda8e1e5313263a602b12b95f43fdd0a06ac92660f3f4c54a304`
