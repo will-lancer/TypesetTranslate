@@ -1,64 +1,53 @@
-# Written-prose pass ledger
+# Chapter process ledger
 
 Chapter: `CHAPTER_ID`
 
-Governing rules: `WRITING_STYLE.md`
+Chapter SHA-256: `PENDING`
 
-## Reference calibration
+Cleaned transcript SHA-256: `PENDING`
 
-Status: pending
+Frozen source-packet SHA-256: `PENDING`
 
-- Reference passages read:
-- Chapter-specific voice cues:
-- Spoken habits to remove:
+Governing rules: `AGENT_POLICY.md`, `WRITING_STYLE.md`, and `WORKFLOW.md`
 
-## Pass 1: structure
+## Pass 1: full source capture
 
 Status: pending
 
-- Argument-map records checked:
-- Transcript fragments merged:
-- Equation and figure placement checked:
+- Source ranges and assigned lanes:
+- Notes and video coverage:
+- Boundary reconciliation:
 
-## Pass 2: filler
-
-Status: pending
-
-- Hard filler scan:
-- Review-required phrases and exception IDs:
-- Classroom and board narration scan:
-
-## Pass 3: voice restoration
+## Pass 2: literal transcript cleanup
 
 Status: pending
 
-- Characteristic phrases retained:
-- Deliberate corrections retained:
-- Jokes or conceptual questions retained:
-- Ordinary connective language and reader address restored:
-- Voice-restoration ledger records checked:
+- Caption and recognition repairs:
+- Remaining uncertainties:
+- Coverage and transcript freeze:
 
-## Pass 4: logic and referents
+## Pass 3: chapter drafting
 
 Status: pending
 
-- Connectives checked:
-- Pronouns and deictic references checked:
-- Repeated previews or recaps removed:
+- Argument-map coverage:
+- Paragraph and equation structure:
+- Provenance and dispositions:
 
-## Pass 5: mathematics and notation
-
-Status: pending
-
-- Displays checked against exact notes:
-- Sign, measure, normalization, and index checks:
-- Inline-math and spatial-vector scans:
-
-## Pass 6: build and render
+## Pass 4: editorial balance
 
 Status: pending
 
-- Page count:
-- Log findings:
-- Pages inspected:
-- Export SHA-256:
+- Spoken debris removed:
+- Voice restored:
+- Connectives, referents, and paragraph flow:
+- Voice and style ledgers:
+
+## Pass 5: fidelity and release
+
+Status: pending
+
+- Source and mathematical checks:
+- Strict audit findings:
+- Rendered pages inspected:
+- Export identity:

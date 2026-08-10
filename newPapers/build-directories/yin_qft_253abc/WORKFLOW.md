@@ -1,142 +1,105 @@
 # Written-prose-first workflow
 
-The pipeline keeps source recovery separate from textbook writing. Raw captions
-and exact notes remain available for audit. The chapter is organized by
-arguments rather than caption intervals.
+Read `SOURCE_MANIFEST.yaml`, `AGENT_POLICY.md`, `WRITING_STYLE.md`, and
+`CHAPTER_PLAN.md` before starting a chapter. The project uses five passes.
 
-## Gate 0: calibrate the prose
+## Pass 1: full source capture
 
-Read `WRITING_STYLE.md` and the reference passages named in
-`SOURCE_MANIFEST.yaml`. Record any chapter-specific additions before drafting.
-This gate is complete only when the editor can state which spoken habits will
-be removed and which characteristic phrases must survive.
+Use Luna Max Fast, the default subagent. Divide the notes and candidate lecture
+videos into bounded lanes with nonoverlapping writable outputs. Use short
+overlaps at video boundaries. Use as many useful lanes as the source supports,
+up to 50 simultaneous subagents. Do not impose a smaller fixed cap or create
+artificial work to reach the ceiling.
 
-## Wave 1: map and transcribe
+Produce a source map, exact note transcription, raw transcript, alignment,
+keyframes, ambiguities, and page dispositions. Capture every recoverable word,
+question, joke, example, qualification, equation, diagram, and meaningful note
+mark. Preserve the raw material without polishing it.
 
-| Output lane | Writable outputs |
-|---|---|
-| Source map | `work/pilot/playlist.jsonl`, `work/pilot/source-map.md` |
-| Exact notes | `work/pilot/notes-exact.tex`, `work/pilot/note-pages/`, `work/pilot/ambiguities.md` |
-| Transcript evidence | `work/pilot/transcript.raw.vtt`, `work/pilot/transcript.cleaned.jsonl`, `work/pilot/alignment.jsonl`, `work/pilot/keyframes/` |
+The lead reconciles lane boundaries and confirms complete source coverage.
 
-The source map fixes the lecture bounds. The note transcription covers every
-source mark, equation, arrow, diagram, marginal note, and meaningful color.
-The transcript lane repairs captions minimally and records each operation.
+## Pass 2: literal transcript cleanup
 
-The lead compares all three lanes, resolves source identity and boundaries,
-then freezes the evidence packet. No later editorial pass rewrites the cleaned
-transcript.
+Use Luna Max Fast, the default subagent. Repair the raw transcript from the
+audio, exact notes, and frames. Remove caption duplication, clipped seams,
+ellipsis artifacts, broken restarts, and recognition errors settled by source
+evidence. Preserve meaningful repetition and Yin's characteristic wording.
 
-## Wave 2: construct the argument map
+Repair, boundary, formula, and independent transcript-audit lanes may run in
+parallel up to the same 50-subagent ceiling whenever the work divides cleanly.
 
-Create `work/pilot/argument-map.jsonl` before chapter prose. Each entry must
-contain:
+Record each repair and its evidence. Produce transcript dispositions, verify
+continuous coverage, and freeze the minimally cleaned transcript. Later passes
+do not rewrite it.
 
-- one conceptual job;
-- a continuous transcript range;
-- note and physical PDF pages;
-- the claims, derivation steps, examples, and caveats to preserve;
-- equation source IDs and figure placements;
-- voice cues worth retaining;
-- the intended paragraph structure.
+## Pass 3: chapter drafting
 
-The map must cover the chapter in source order. A transcript record may be
-merged into a neighboring argument or omitted with a reason. The map must not
-contain polished prose copied from the transcript.
+Use only `gpt-5.6-sol` at `xhigh`. The editor and any reviewing subagent read
+the whole chapter source packet. Across passes 3 through 5, no more than eight
+agents running at this model and reasoning level may be active at once across
+the complete task tree.
 
-## Wave 3: write the chapter
+Create a compact argument map. Each unit records its conceptual job, source
+span, notes, equations, examples, caveats, voice cues, and intended paragraph
+structure. Preserve source order unless an exception is recorded.
 
-One editor owns the chapter and its ledgers:
+Write the complete chapter from the argument map, exact notes, transcript, and
+frames. Merge transcript fragments into coherent paragraphs. Remove classroom
+mechanics and place long mathematics in displays. Maintain source comments,
+provenance, and page and transcript dispositions while drafting.
 
-```text
-latex/chapters/253a/chapter01.tex
-work/pilot/provenance.jsonl
-work/pilot/page-dispositions.jsonl
-work/pilot/transcript-dispositions.jsonl
-work/pilot/style-exceptions.jsonl
-work/pilot/writing-style-pass-ledger.md
-```
+The draft already satisfies the mechanical rules in `WRITING_STYLE.md`.
 
-The editor writes from the argument map, exact notes, targeted transcript
-spans, and frames. Several source spans normally become one paragraph. Source
-comments can occur inside a paragraph without forcing a paragraph break.
+## Pass 4: editorial balance
 
-The first draft must already satisfy these conditions:
+Use a fresh `gpt-5.6-sol` `xhigh` reader on the complete draft and source
+packet. This is one large prose pass.
 
-- no `\noindent`, `\ensuremath`, or `\vec`;
-- no transcript ellipses or reader-facing uncertainty labels;
-- no classroom floor-holding or board narration;
-- no large formula in inline math;
-- equations appear beside the prose that motivates them;
-- characteristic phrases and deliberate corrections remain;
-- every source span has a recorded written-use disposition.
-- every argument-map voice cue has a planned `retained_exact` or
-  `lightly_recast` treatment.
+Remove remaining floor holding, board narration, transcript seams, empty
+repetition, and spoken syntax that does not work in print. Restore vocabulary,
+cadence, qualifications, reader address, questions, jokes, and deliberate
+repetition lost during drafting. Check paragraph structure, connectives, and
+referents at the same time.
 
-Run `python3 scripts/audit_written_prose.py` after the first complete draft.
-The audit is a drafting tool. It is not a cleanup step postponed until release.
-Before that audit, run
-`python3 scripts/render_written_dispositions.py --write` and
-`python3 scripts/render_written_provenance.py --write`. Strict builds rerun the
-renderers in check-only mode and fail if the chapter changed afterward.
+Update `style-exceptions.jsonl` and `voice-restoration.jsonl`. Record the pass
+in the writing ledger.
 
-## Wave 4: make the six passes
+## Pass 5: fidelity and release
 
-Use `templates/WRITING_PASS_LEDGER.md`. Complete the passes in order:
+Use `gpt-5.6-sol` at `xhigh` for chapter-scale source and mathematical
+judgment. The lead editor owns the final build and release decision.
 
-1. structure;
-2. filler;
-3. voice restoration;
-4. logic and referents;
-5. mathematics and notation;
-6. build and render.
+Inside this single pass:
 
-The filler pass records every approved occurrence of a review-required phrase
-in `style-exceptions.jsonl`. The voice-restoration pass rereads every argument
-against the minimally cleaned transcript and records each positive cue in
-`voice-restoration.jsonl`. The math pass checks every display against the exact
-note layer.
+- compare every equation with the notes and clear frames;
+- check source coverage, examples, caveats, terminology, and retained voice;
+- verify provenance and dispositions;
+- build the book and inspect every affected rendered page;
+- run strict mechanical, source, math, layout, font, and artifact-identity
+  checks.
 
-## Wave 5: review
+Record the findings in one `review-final.md`. End it with
+`Unresolved blockers: none` or a precise blocker list. A content change requires
+the affected checks to be rerun before release.
 
-| Review | Writable output |
-|---|---|
-| Mathematics | `work/pilot/review-math.md` |
-| Source and prose fidelity | `work/pilot/review-fidelity.md` |
-| Render | `work/pilot/review-render.md` |
+## Canonical ownership
 
-The mathematical review checks signs, measures, normalization, commutators,
-Poincare transformations, the scalar-field expansion, and the causality
-argument.
+One editor modifies the canonical chapter at a time. Parallel agents in passes
+3 through 5 write separate findings or proposed patches. Source agents in
+passes 1 and 2 may write concurrently only when their outputs do not overlap.
 
-The fidelity review checks semantic coverage, source order, terminology,
-qualifications, examples, and retained voice. It also looks for transcript
-seams, over-compression, invented transitions, and residual classroom speech.
+## Acceptance
 
-The render review inspects every PDF page for paragraph flow, equation layout,
-figures, links, clipping, and readable typography. Rendered pages live in a
-directory named by the PDF SHA-256, and `render-manifest.json` records every
-page image and hash.
+A chapter is complete when:
 
-Each review ends with `Unresolved blockers: none` or an explicit blocker list.
-The lead applies accepted changes and reruns all affected checks.
-
-## Acceptance checks
-
-Strict verification requires:
-
-- exact notes and transcript evidence frozen with hashes;
-- a complete argument map in source order;
-- complete page and transcript dispositions;
-- one provenance record for every `YIN-SOURCE` comment;
-- every writing-style pass marked complete;
-- every argument-map voice cue present in the hash-pinned voice-restoration
-  ledger and in the current chapter;
-- every review-required phrase covered by an approved style exception;
-- no mechanical prose or notation violations;
-- no unresolved source, mathematics, fidelity, or render blockers;
-- a compiling PDF with embedded fonts and no overfull boxes;
-- page-by-page visual inspection and an export identity check.
+- the source packet and cleaned transcript are frozen with hashes;
+- the argument map covers the chapter;
+- every source page and transcript interval has a disposition;
+- every substantive paragraph, equation, and figure has provenance;
+- the editorial balance pass is recorded and every required voice cue survives;
+- `review-final.md` has no unresolved blockers;
+- the strict build passes and every affected PDF page has been inspected;
+- the exported PDF is byte-identical to the verified build.
 
 Run:
 
@@ -145,5 +108,5 @@ Run:
 ./build_and_verify.sh
 ```
 
-The old near-verbatim contract and its sidecars are archival evidence from the
-pilot. They must never be used to generate or approve a written chapter.
+The Chapter 1 pilot retains its earlier separate review and pass ledgers as
+historical evidence. New chapters use this five-pass workflow.

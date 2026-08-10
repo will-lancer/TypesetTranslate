@@ -1,0 +1,831 @@
+% Pass 3 proposal, Part A: argument units A01--A08.
+% This is a proposal fragment. Canonical IDs, labels, and editorial ledgers
+% remain the responsibility of the chapter editor.
+
+% YIN-SOURCE: id=PROPOSAL-A-U001; arguments=YIN253A-C02-A01; notes=253a:10-11; pdf=20-22; video=96lN2omwit4:00:01:26.700-00:23:41.120; transcript=YIN253A-C02-T000003..YIN253A-C02-T000039; equations=YIN253A-C02-EQ001,YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+\subsection{From Hamiltonian evolution to the transition kernel}
+
+% YIN-SOURCE: id=PROPOSAL-A-U002; arguments=YIN253A-C02-A01; notes=253a:10; pdf=21; video=96lN2omwit4:00:02:35.879-00:08:14.060; transcript=YIN253A-C02-T000005..YIN253A-C02-T000013; equations=YIN253A-C02-EQ001; class=SOURCE_COMPOSITE
+Classical mechanics has two equivalent descriptions.  In the Lagrangian
+description the configuration and velocity, $q$ and $\dot q$, specify a state,
+and the equations of motion follow by extremizing the action.  In the
+Hamiltonian description the state is specified by $q$ and its conjugate
+momentum $p$, while the Hamiltonian generates time evolution through the
+Poisson bracket.  Hopefully this is not unfamiliar from classical mechanics.
+
+% YIN-SOURCE: id=PROPOSAL-A-U003; arguments=YIN253A-C02-A01; notes=253a:10; pdf=21; video=96lN2omwit4:00:02:35.879-00:07:55.139; transcript=YIN253A-C02-T000005..YIN253A-C02-T000012; equations=YIN253A-C02-EQ001; class=SOURCE_COMPOSITE
+\begin{align}
+  S[q] &= \int dt\,L(q,\dot q),
+  & \dot f &= \{H,f\}_{\mathrm{Poisson}},
+  \label{eq:proposal-classical-descriptions}\\
+  \dot q &= \frac{\partial H}{\partial p},
+  & \dot p &= -\frac{\partial H}{\partial q}.
+  \label{eq:proposal-hamilton-equations}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U004; arguments=YIN253A-C02-A01; notes=253a:10; pdf=21; video=96lN2omwit4:00:06:55.139-00:08:14.060; transcript=YIN253A-C02-T000011..YIN253A-C02-T000013; equations=YIN253A-C02-EQ001; class=SOURCE_COMPOSITE
+The bridge is the Legendre transform.  With the momentum fixed by
+$p=\partial L/\partial\dot q$, the expression $p\dot q-L$ depends on $p$ and
+$q$.  Differentiating it gives Hamilton's equations once the Euler--Lagrange
+equation is used.
+
+% YIN-SOURCE: id=PROPOSAL-A-U005; arguments=YIN253A-C02-A01; notes=253a:10; pdf=21; video=96lN2omwit4:00:06:55.139-00:08:14.060; transcript=YIN253A-C02-T000011..YIN253A-C02-T000013; equations=YIN253A-C02-EQ001; class=SOURCE_COMPOSITE
+\begin{equation}
+  p=\frac{\partial L}{\partial\dot q},
+  \qquad
+  H(p,q)=
+  \left.p\dot q-L(q,\dot q)\right|_{\frac{\partial L}{\partial\dot q}=p}.
+  \label{eq:proposal-legendre-transform}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U006; arguments=YIN253A-C02-A01; notes=253a:10-11; pdf=21-22; video=96lN2omwit4:00:10:19.380-00:15:00.420; transcript=YIN253A-C02-T000019..YIN253A-C02-T000028; equations=YIN253A-C02-EQ001,YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+Quantization begins with a Hilbert space and an operator $\hat H$ obtained from
+the classical Hamiltonian after an ordering prescription has been chosen.  Of
+course, there are two different ways to describe time evolution.  States
+evolve in the Schr\"odinger picture.  The Heisenberg picture keeps the states
+fixed and evolves the observables by conjugation.
+
+% YIN-SOURCE: id=PROPOSAL-A-U007; arguments=YIN253A-C02-A01; notes=253a:10-11; pdf=21-22; video=96lN2omwit4:00:10:44.579-00:15:00.420; transcript=YIN253A-C02-T000021..YIN253A-C02-T000028; equations=YIN253A-C02-EQ001,YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+\begin{align}
+  &\ket{\psi}\in\mathcal H,
+  \qquad H(p,q)\longrightarrow\hat H,
+  \label{eq:proposal-quantum-bridge}\\
+  &\ket{\psi}\longmapsto U(t)\ket{\psi},
+  \qquad
+  U(t)=e^{-\frac{i}{\hbar}\hat Ht},
+  \label{eq:proposal-schrodinger-evolution}\\
+  &O(t)=U(t)^{-1}OU(t),
+  \qquad
+  \dot O(t)=\frac{i}{\hbar}[\hat H,O(t)].
+  \label{eq:proposal-heisenberg-evolution}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U008; arguments=YIN253A-C02-A01; notes=253a:11; pdf=22; video=96lN2omwit4:00:14:59.220-00:19:39.299; transcript=YIN253A-C02-T000029..YIN253A-C02-T000034; equations=YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+The Lagrangian formulation of quantum mechanics requires another route, since
+there is no operator that corresponds to the Lagrangian.  Consider, for
+example, a particle with
+$\hat H=\hat p^{\,2}/(2m)+V(\hat q)$.  The coordinate eigenstates form a
+complete basis.  Therefore the matrix elements of $U(T)$ determine its action
+on every state.
+
+% YIN-SOURCE: id=PROPOSAL-A-U009; arguments=YIN253A-C02-A01; notes=253a:11; pdf=22; video=96lN2omwit4:00:18:53.220-00:23:41.120; transcript=YIN253A-C02-T000034..YIN253A-C02-T000039; equations=YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+The formal Lagrangian expression for this kernel is a sum over paths with fixed
+endpoints.  Its phase is fixed by the classical action.  At this stage the
+symbol $[Dq]$ is only an instruction whose meaning remains to be constructed.
+
+% YIN-SOURCE: id=PROPOSAL-A-U010; arguments=YIN253A-C02-A01; notes=253a:11; pdf=22; video=96lN2omwit4:00:18:53.220-00:23:41.120; transcript=YIN253A-C02-T000034..YIN253A-C02-T000039; equations=YIN253A-C02-EQ002; class=SOURCE_COMPOSITE
+\begin{equation}
+  \bra{q_f}U(T)\ket{q_i}
+  =\int_{q(0)=q_i}^{q(T)=q_f}[Dq]\,
+  e^{\frac{i}{\hbar}S[q]},
+  \qquad
+  S[q]=\int_0^Tdt\,L(q,\dot q).
+  \label{eq:proposal-formal-kernel}
+\end{equation}
+
+% SOURCE-CONFLICT: EQ002 and note p.11 deliberately leave [Dq] undefined.
+
+% YIN-SOURCE: id=PROPOSAL-A-U011; arguments=YIN253A-C02-A02; notes=253a:12-14; pdf=23-25; video=96lN2omwit4:00:23:53.000-01:20:19.219; transcript=YIN253A-C02-T000040..YIN253A-C02-T000139; equations=YIN253A-C02-EQ003,YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+\subsection{Time slicing and the regulated measure}
+
+% YIN-SOURCE: id=PROPOSAL-A-U012; arguments=YIN253A-C02-A02; notes=253a:12-13; pdf=23-24; video=96lN2omwit4:00:23:53.000-00:29:25.520; transcript=YIN253A-C02-T000040..YIN253A-C02-T000050; equations=YIN253A-C02-EQ003,YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+There is an elephant in the room: what the heck is this thing here?  The
+functional measure is defined by a regulator.  Divide the interval into $N$
+steps of length $T/N$, insert a coordinate resolution of the identity at every
+intermediate time, and keep the resulting finite-dimensional integral until
+the calculation has been performed.
+
+% YIN-SOURCE: id=PROPOSAL-A-U013; arguments=YIN253A-C02-A02; notes=253a:12; pdf=23; video=96lN2omwit4:00:29:45.000-00:33:13.220; transcript=YIN253A-C02-T000051..YIN253A-C02-T000056; equations=YIN253A-C02-EQ003; class=SOURCE_COMPOSITE
+\begin{align}
+  \bra{q_f}U(T)\ket{q_i}
+  &={}
+  \int\prod_{n=1}^{N-1}d^Dq_n
+  \prod_{n=0}^{N-1}
+  \bra{q_{n+1}}
+  e^{-\frac{i}{\hbar}\hat H\frac{T}{N}}
+  \ket{q_n},
+  \label{eq:proposal-coordinate-slicing}\\
+  q_f&\equiv q_N,
+  \qquad q_i\equiv q_0.
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U014; arguments=YIN253A-C02-A02; notes=253a:12; pdf=23; video=96lN2omwit4:00:33:27.299-00:35:58.160; transcript=YIN253A-C02-T000057..YIN253A-C02-T000060; equations=YIN253A-C02-EQ003; class=SOURCE_COMPOSITE
+Insert a momentum basis into every short-time factor.  With the normalization
+used here, the momentum resolution and the coordinate-space wavefunction of a
+momentum eigenstate are
+
+% YIN-SOURCE: id=PROPOSAL-A-U015; arguments=YIN253A-C02-A02; notes=253a:12; pdf=23; video=96lN2omwit4:00:33:27.299-00:35:58.160; transcript=YIN253A-C02-T000057..YIN253A-C02-T000060; equations=YIN253A-C02-EQ003; class=SOURCE_COMPOSITE
+\begin{equation}
+  \mathbf 1
+  =\int\frac{d^Dp_n}{(2\pi\hbar)^D}\ket{p_n}\bra{p_n},
+  \qquad
+  \braket{q_{n+1}}{p_n}
+  =e^{\frac{i}{\hbar}p_n\cdot q_{n+1}}.
+  \label{eq:proposal-momentum-resolution}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U016; arguments=YIN253A-C02-A02; notes=253a:12; pdf=23; video=96lN2omwit4:00:36:00.660-00:43:24.260; transcript=YIN253A-C02-T000061..YIN253A-C02-T000073; equations=YIN253A-C02-EQ003; class=SOURCE_COMPOSITE
+For a short interval one expands the evolution operator and places the
+$\hat p$'s and $\hat q$'s in the ordering used to define the ordinary function
+$H(q_n,p_n)$.  Multiplying all short-time factors turns their phases into a
+sum.  The regulated phase-space kernel is then
+
+% YIN-SOURCE: id=PROPOSAL-A-U017; arguments=YIN253A-C02-A02; notes=253a:12; pdf=23; video=96lN2omwit4:00:36:00.660-00:46:53.240; transcript=YIN253A-C02-T000061..YIN253A-C02-T000079; equations=YIN253A-C02-EQ003; class=SOURCE_COMPOSITE
+\begin{align}
+  \bra{q_f}U(T)\ket{q_i}
+  ={}&\int\prod_{n=1}^{N-1}d^Dq_n
+  \prod_{n=0}^{N-1}\frac{d^Dp_n}{(2\pi\hbar)^D}
+  \nonumber\\[-2mm]
+  &\times
+  \exp\!\left\{
+  \frac{i}{\hbar}\sum_{n=0}^{N-1}
+  \left[
+    p_n\cdot(q_{n+1}-q_n)
+    -H(q_n,p_n)\frac{T}{N}
+    +O\!\left(\hbar,\left(\frac{T}{N}\right)^2\right)
+  \right]\right\}.
+  \label{eq:proposal-finite-phase-space-kernel}
+\end{align}
+
+% SOURCE-CONFLICT: p.23 places O(hbar,(T/N)^2) inside the finite-N sum. The
+% hbar-shaped glyph remains source-local, and no different order symbol is
+% inferred here.
+
+% YIN-SOURCE: id=PROPOSAL-A-U018; arguments=YIN253A-C02-A02; notes=253a:12-13; pdf=23-24; video=96lN2omwit4:00:39:18.260-00:56:57.740; transcript=YIN253A-C02-T000067..YIN253A-C02-T000097; equations=YIN253A-C02-EQ003,YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+There is no such sacred ordering.  An alternative placement of momentum and
+coordinate resolutions gives another symbol, $H'$, for the same operator.
+The two symbols can differ at order $\hbar$.  Terms which look small at one
+lattice step must therefore remain until their effect on the full product has
+been determined.  You drop this term, you're changing the answer.
+
+% YIN-SOURCE: id=PROPOSAL-A-U019; arguments=YIN253A-C02-A02; notes=253a:13; pdf=24; video=96lN2omwit4:00:53:02.520-00:56:57.740; transcript=YIN253A-C02-T000090..YIN253A-C02-T000097; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+\begin{align}
+  \bra{p_n}\hat H\ket{q_n}
+  &=H(p_n,q_n)\braket{p_n}{q_n},
+  \label{eq:proposal-left-ordering}\\
+  \bra{q_n}\hat H\ket{p_n}
+  &=H'(p_n,q_n)\braket{q_n}{p_n},
+  \qquad H'-H=O(\hbar).
+  \label{eq:proposal-right-ordering}
+\end{align}
+
+% SOURCE-CONFLICT: p.23 uses H(q_n,p_n), while p.24 uses H(p_n,q_n) and
+% H'(p_n,q_n). Each argument order is retained in its source-local role.
+
+% YIN-SOURCE: id=PROPOSAL-A-U020; arguments=YIN253A-C02-A02; notes=253a:13; pdf=24; video=96lN2omwit4:00:46:55.680-00:58:18.680; transcript=YIN253A-C02-T000080..YIN253A-C02-T000100; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+The continuum notation records this limiting prescription.  It does not
+introduce a separate infinite-dimensional measure.  A change of lattice
+scheme may require an order-$\hbar$ counterterm in $H$ so that the regulated
+limits describe the same quantum system.
+
+% YIN-SOURCE: id=PROPOSAL-A-U021; arguments=YIN253A-C02-A02; notes=253a:13; pdf=24; video=96lN2omwit4:00:46:55.680-00:58:18.680; transcript=YIN253A-C02-T000080..YIN253A-C02-T000100; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+\begin{equation}
+  \bra{q_f}U(T)\ket{q_i}
+  =\int\mathcal Dq\,\mathcal Dp\,
+  \exp\!\left\{
+    \frac{i}{\hbar}\int_0^Tdt\,
+    \bigl(p\cdot\dot q-H(q,p)\bigr)
+  \right\},
+  \label{eq:proposal-continuum-phase-space}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U022; arguments=YIN253A-C02-A02; notes=253a:14; pdf=25; video=96lN2omwit4:01:04:32.819-01:11:21.260; transcript=YIN253A-C02-T000113..YIN253A-C02-T000124; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+When the Hamiltonian is quadratic in $p$, every momentum integral is Gaussian.
+For $H=p^2/(2m)+V(q)$, completing the square isolates a standard oscillatory
+Gaussian and leaves the Legendre transform in the exponent.
+
+% YIN-SOURCE: id=PROPOSAL-A-U023; arguments=YIN253A-C02-A02; notes=253a:14; pdf=25; video=96lN2omwit4:01:05:09.480-01:11:21.260; transcript=YIN253A-C02-T000114..YIN253A-C02-T000124; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+\begin{align}
+  p\dot q-\frac{p^2}{2m}-V(q)
+  &=-\frac{(p-m\dot q)^2}{2m}
+    +\frac{m}{2}\dot q^{\,2}-V(q),
+  \label{eq:proposal-complete-momentum-square}\\
+  \int\mathcal Dq\,\mathcal Dp\,
+  e^{\frac{i}{\hbar}\int dt\,(p\dot q-H)}
+  &=\int[Dq]\,
+  e^{\frac{i}{\hbar}\int dt\,L(q,\dot q)}.
+  \label{eq:proposal-momentum-reduction}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U024; arguments=YIN253A-C02-A02; notes=253a:14; pdf=25; video=96lN2omwit4:01:07:19.619-01:10:25.880; transcript=YIN253A-C02-T000118..YIN253A-C02-T000122; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+In generalized coordinates the kinetic metric depends on position.  Momentum
+integration then contributes a determinant to the configuration-space
+measure.  This is the familiar volume element associated with
+$G_{\alpha\beta}(\xi)$, appearing here at every regulated time slice.
+
+% YIN-SOURCE: id=PROPOSAL-A-U025; arguments=YIN253A-C02-A02; notes=253a:14; pdf=25; video=96lN2omwit4:01:07:19.619-01:10:25.880; transcript=YIN253A-C02-T000118..YIN253A-C02-T000122; equations=YIN253A-C02-EQ004; class=SOURCE_COMPOSITE
+\begin{align}
+  L(\xi,\dot\xi)
+  &=\frac12G_{\alpha\beta}(\xi)
+    \dot\xi^\alpha\dot\xi^\beta-V(\xi),
+  \label{eq:proposal-generalized-lagrangian}\\
+  H(p,\xi)
+  &=\frac12\bigl(G^{-1}(\xi)\bigr)^{\alpha\beta}
+    p_\alpha p_\beta+V(\xi)+O(\hbar),
+  \label{eq:proposal-generalized-hamiltonian}\\
+  [D\xi]
+  &\leadsto
+  \prod_{n=1}^{\widetilde N}
+  \frac{d\xi_n^\alpha}
+  {\sqrt{2\pi i\hbar\,\frac{T}{N}}}
+  \sqrt{\det G_{\alpha\beta}(\xi_n)}\,.
+  \label{eq:proposal-generalized-measure}
+\end{align}
+
+% SOURCE-CONFLICT: p.25 writes a product through \widetilde N while retaining
+% T/N in the normalization. It also alternates P(t) in the determinant note
+% with p in the phase-space formulas. These page-local marks are withheld
+% from the prose.
+
+% YIN-SOURCE: id=PROPOSAL-A-U026; arguments=YIN253A-C02-A03; notes=253a:15-16; pdf=26-27; video=uzixOflp0tY:00:02:50.879-00:38:28.460; transcript=YIN253A-C02-T000158..YIN253A-C02-T000218; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+\subsection{Spectral correlators and Euclidean time}
+
+% YIN-SOURCE: id=PROPOSAL-A-U027; arguments=YIN253A-C02-A03; notes=253a:15; pdf=26; video=uzixOflp0tY:00:02:50.879-00:10:52.579; transcript=YIN253A-C02-T000158..YIN253A-C02-T000170; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+We next use the formalism to study observables that capture physical quantities
+of interest, such as the energy spectrum of a quantum-mechanical system.  A
+particularly useful observable is the ground-state two-point function.  Insert
+a complete basis of energy eigenstates between its two operators.
+
+% YIN-SOURCE: id=PROPOSAL-A-U028; arguments=YIN253A-C02-A03; notes=253a:15; pdf=26; video=uzixOflp0tY:00:04:05.159-00:10:52.579; transcript=YIN253A-C02-T000160..YIN253A-C02-T000170; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+\begin{align}
+  \hat H\ket{n}&=E_n\ket{n},
+  \label{eq:proposal-energy-eigenstates}\\
+  G(t)
+  &\equiv\bra{0}\hat q_\beta(t)\hat q_\beta(0)\ket{0}
+  \nonumber\\
+  &=\sum_n
+  \bra{0}\hat q_\beta(0)\ket{n}
+  \bra{n}\hat q_\beta(0)\ket{0}\,
+  e^{-\frac{i}{\hbar}(E_n-E_0)t}.
+  \label{eq:proposal-spectral-correlator}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U029; arguments=YIN253A-C02-A03; notes=253a:15; pdf=26; video=uzixOflp0tY:00:09:55.080-00:11:08.420; transcript=YIN253A-C02-T000168..YIN253A-C02-T000171; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+Every state with a nonzero matrix element contributes an oscillation whose
+frequency is the gap $E_n-E_0$.  For the harmonic oscillator,
+$\hat q\ket{0}$ overlaps only with the first excited state.  A generic system
+can display many gaps in the same correlator.
+
+% YIN-SOURCE: id=PROPOSAL-A-U030; arguments=YIN253A-C02-A03; notes=253a:15-16; pdf=26-27; video=uzixOflp0tY:00:11:09.000-00:18:32.720; transcript=YIN253A-C02-T000172..YIN253A-C02-T000182; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+Each term can be evaluated at complex $t$.  There is nothing wrong about that.
+But there is a question of when the infinite sum will converge.  Since
+$E_n-E_0\geq0$, continuation through the lower half-plane,
+$\operatorname{Im}t<0$, suppresses the high-energy terms.  On the negative
+imaginary axis one writes $t=-i\tau$ with $\tau>0$.
+
+% YIN-SOURCE: id=PROPOSAL-A-U031; arguments=YIN253A-C02-A03; notes=253a:15-16; pdf=26-27; video=uzixOflp0tY:00:12:43.740-00:18:32.720; transcript=YIN253A-C02-T000175..YIN253A-C02-T000182; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+\begin{equation}
+  G(-i\tau)
+  =\sum_n
+  \bra{0}\hat q(0)\ket{n}
+  \bra{n}\hat q(0)\ket{0}\,
+  e^{-\frac{1}{\hbar}(E_n-E_0)\tau},
+  \qquad \tau>0.
+  \label{eq:proposal-euclidean-spectral-correlator}
+\end{equation}
+
+% SOURCE-CONFLICT: pp.26-27 alternate unbarred and barred energy symbols.
+% The proposal uses E_n consistently while preserving the local accent change
+% in this comment.
+
+% YIN-SOURCE: id=PROPOSAL-A-U032; arguments=YIN253A-C02-A03; notes=253a:16; pdf=27; video=uzixOflp0tY:00:24:42.659-00:28:27.260; transcript=YIN253A-C02-T000194..YIN253A-C02-T000200; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+Euclidean evolution also provides a direct projection onto the ground state.
+Expand a generic state as $\ket{\psi}=\sum_n c_n\ket{n}$, with $c_0\neq0$.
+Every excited component receives an exponentially small factor as
+$T\to\infty$.
+
+% YIN-SOURCE: id=PROPOSAL-A-U033; arguments=YIN253A-C02-A03; notes=253a:16; pdf=27; video=uzixOflp0tY:00:24:42.659-00:28:27.260; transcript=YIN253A-C02-T000194..YIN253A-C02-T000200; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+\begin{equation}
+  e^{-\frac{1}{\hbar}(\hat H-E_0)T}\ket{\psi}
+  =c_0\ket{0}+
+  \sum_{n>0}c_n
+  e^{-\frac{1}{\hbar}(E_n-E_0)T}\ket{n}
+  \xrightarrow[T\to\infty]{}c_0\ket{0}.
+  \label{eq:proposal-ground-state-projection}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U034; arguments=YIN253A-C02-A03; notes=253a:16; pdf=27; video=uzixOflp0tY:00:25:26.960-00:26:29.539; transcript=YIN253A-C02-T000195..YIN253A-C02-T000196; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
+This operator is going to kill everything but the ground state.  Everything
+that is not the ground state will be exponentially suppressed.  The overlap
+condition $c_0\neq0$ is the only input needed for this projection.
+
+% YIN-SOURCE: id=PROPOSAL-A-U035; arguments=YIN253A-C02-A04; notes=253a:17-18; pdf=28-29; video=uzixOflp0tY:00:38:28.680-01:07:17.000; transcript=YIN253A-C02-T000219..YIN253A-C02-T000282; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+\subsection{The normalized Euclidean path integral}
+
+% YIN-SOURCE: id=PROPOSAL-A-U036; arguments=YIN253A-C02-A04; notes=253a:17; pdf=28; video=uzixOflp0tY:00:38:28.680-00:47:03.480; transcript=YIN253A-C02-T000219..YIN253A-C02-T000238; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+Place the two operator insertions between long Euclidean evolution factors and
+divide by the same expression without insertions.  The common ground-state
+overlap and its normalization cancel.  In the operator expression the
+insertions carry hats.
+
+% YIN-SOURCE: id=PROPOSAL-A-U037; arguments=YIN253A-C02-A04; notes=253a:16-17; pdf=27-28; video=uzixOflp0tY:00:26:46.320-00:46:50.300; transcript=YIN253A-C02-T000197..YIN253A-C02-T000237; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+\begin{equation}
+  G_E(\tau)
+  =\lim_{T\to\infty}
+  \frac{
+  \bra{\psi}
+  e^{-\frac{1}{\hbar}\hat H(T-\tau)}
+  \hat q(0)e^{-\frac{1}{\hbar}\hat H\tau}
+  \hat q(0)e^{-\frac{1}{\hbar}\hat HT}
+  \ket{\psi}}
+  {\bra{\psi}e^{-\frac{2}{\hbar}\hat HT}\ket{\psi}}.
+  \label{eq:proposal-normalized-operator-correlator}
+\end{equation}
+
+% SOURCE-CONFLICT: note p.17 has a positive first exponential in its top
+% operator line and writes the second insertion without a hat in the long-T
+% ratio. The normalized equation index and the operator/path-variable
+% distinction govern the proposal; the page-local marks remain here.
+
+% YIN-SOURCE: id=PROPOSAL-A-U038; arguments=YIN253A-C02-A04; notes=253a:17; pdf=28; video=uzixOflp0tY:00:38:28.680-00:47:03.480; transcript=YIN253A-C02-T000219..YIN253A-C02-T000238; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+Time slicing converts an insertion of $\hat q$ into multiplication by the
+coordinate variable at that slice.  Thus the hats disappear inside the
+functional integral.  The whole point is that analytic continuation is
+unambiguous if you have the function for imaginary time.
+
+% YIN-SOURCE: id=PROPOSAL-A-U039; arguments=YIN253A-C02-A04; notes=253a:17-18; pdf=28-29; video=uzixOflp0tY:00:38:28.680-00:57:30.800; transcript=YIN253A-C02-T000219..YIN253A-C02-T000261; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+\begin{equation}
+  G_E(\tau)
+  =\lim_{T\to\infty}
+  \frac{
+    \displaystyle\int[Dq]\,
+    e^{-\frac{1}{\hbar}S^E[q]}q(\tau)q(0)}
+  {
+    \displaystyle\int[Dq]\,
+    e^{-\frac{1}{\hbar}S^E[q]}}.
+  \label{eq:proposal-normalized-euclidean-path-integral}
+\end{equation}
+
+% SOURCE-CONFLICT: the Lorentzian denominator on note p.17 omits dt. The
+% omission is not promoted into the normalized Euclidean expression.
+
+% YIN-SOURCE: id=PROPOSAL-A-U040; arguments=YIN253A-C02-A04; notes=253a:17-18; pdf=28-29; video=uzixOflp0tY:00:47:04.200-00:54:42.119; transcript=YIN253A-C02-T000239..YIN253A-C02-T000255; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+Under the Wick map $t=-i\tau$, the time derivative becomes
+$\dot q=i\partial_\tau q$ and $dt=-i\,d\tau$.  Define the Euclidean
+Lagrangian so that the oscillatory Lorentzian phase becomes a decaying weight.
+
+% YIN-SOURCE: id=PROPOSAL-A-U041; arguments=YIN253A-C02-A04; notes=253a:17-18; pdf=28-29; video=uzixOflp0tY:00:47:04.200-00:54:42.119; transcript=YIN253A-C02-T000239..YIN253A-C02-T000255; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+\begin{align}
+  q(t)&\mathrel{\overset{t=-i\tau}{\rightsquigarrow}}q(\tau),
+  & \dot q&=+i\partial_\tau q,
+  \label{eq:proposal-wick-map}\\
+  L[q,\dot q]&\equiv-L^E[q,\partial_\tau q],
+  & S^E[q]&=\int d\tau\,L^E[q,\partial_\tau q],
+  \label{eq:proposal-euclidean-action-definition}\\
+  e^{\frac{i}{\hbar}\int L\,dt}
+  &\rightsquigarrow e^{-\frac{1}{\hbar}S^E[q]}.
+  \label{eq:proposal-wick-weight}
+\end{align}
+
+% SOURCE-CONFLICT: note p.18 literally writes \partial_t\dot q=
+% +i\partial_\tau\dot q. The proposal uses the derivative map fixed by
+% t=-i tau and preserves the page-local doubled-dot reading in this comment.
+
+% YIN-SOURCE: id=PROPOSAL-A-U042; arguments=YIN253A-C02-A04; notes=253a:18; pdf=29; video=uzixOflp0tY:00:51:26.760-00:55:31.460; transcript=YIN253A-C02-T000249..YIN253A-C02-T000257; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+For an ordinary kinetic term the Euclidean action is positive when the
+potential is bounded below.  Wildly fluctuating paths carry a large action;
+the integral is dominated by paths with small values of the Euclidean action.
+
+% YIN-SOURCE: id=PROPOSAL-A-U043; arguments=YIN253A-C02-A04; notes=253a:18; pdf=29; video=uzixOflp0tY:00:51:26.760-00:55:31.460; transcript=YIN253A-C02-T000249..YIN253A-C02-T000257; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+\begin{equation}
+  L(q,\dot q)=\frac12\dot q^{\,2}-V(q)
+  \qquad\longrightarrow\qquad
+  L^E(q,\partial_\tau q)
+  =\frac12(\partial_\tau q)^2+V(q).
+  \label{eq:proposal-euclidean-lagrangian}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U044; arguments=YIN253A-C02-A04; notes=253a:18; pdf=29; video=uzixOflp0tY:01:02:11.760-01:07:17.000; transcript=YIN253A-C02-T000273..YIN253A-C02-T000282; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
+The remaining question concerns the measure.  A basis expansion turns a path
+into a sequence of ordinary coefficients, which can be regulated by retaining
+finitely many modes.  It is a nice version of quantum mechanics where some
+ambiguities get resolved by the requirement of locality.  The oscillator
+provides the first explicit calculation.
+
+% YIN-SOURCE: id=PROPOSAL-A-U045; arguments=YIN253A-C02-A05; notes=253a:19-20; pdf=30-31; video=uzixOflp0tY:01:07:17.280-01:19:04.800; transcript=YIN253A-C02-T000283..YIN253A-C02-T000304; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+\subsection{The oscillator as a regulated functional integral}
+
+% YIN-SOURCE: id=PROPOSAL-A-U046; arguments=YIN253A-C02-A05; notes=253a:19; pdf=30; video=uzixOflp0tY:01:07:17.280-01:10:40.320; transcript=YIN253A-C02-T000283..YIN253A-C02-T000287; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+Take the harmonic oscillator with unit mass.  Its answer is already known from
+elementary quantum mechanics, but we are going to go through this painful
+process using the path integral to calculate it.  Work first on a finite
+Euclidean interval and impose Dirichlet boundary conditions.
+
+% YIN-SOURCE: id=PROPOSAL-A-U047; arguments=YIN253A-C02-A05; notes=253a:19; pdf=30; video=uzixOflp0tY:01:08:15.480-01:11:59.960; transcript=YIN253A-C02-T000284..YIN253A-C02-T000290; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+\begin{align}
+  H&=\frac{p^2+\omega^2q^2}{2},
+  &L&=\frac12\dot q^{\,2}-\frac12\omega^2q^2,
+  \label{eq:proposal-oscillator-lorentzian}\\
+  S^E[q]&=\int_{-T}^{T}d\tau\,
+  \left[\frac12(\partial_\tau q)^2+\frac12\omega^2q^2\right],
+  &q(-T)&=q(T)=0.
+  \label{eq:proposal-oscillator-euclidean}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U048; arguments=YIN253A-C02-A05; notes=253a:19-20; pdf=30-31; video=uzixOflp0tY:01:12:00.360-01:15:07.460; transcript=YIN253A-C02-T000291..YIN253A-C02-T000296; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+The boundary-adapted sine functions form an orthonormal basis on $[-T,T]$.
+Their normalization makes the mode coefficients ordinary Cartesian
+coordinates on the regulated space of paths.
+
+% YIN-SOURCE: id=PROPOSAL-A-U049; arguments=YIN253A-C02-A05; notes=253a:19-20; pdf=30-31; video=uzixOflp0tY:01:12:00.360-01:15:07.460; transcript=YIN253A-C02-T000291..YIN253A-C02-T000296; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+\begin{align}
+  q(\tau)&=\sum_{n=1}^{\infty}q_nf_n(\tau),
+  \qquad
+  f_n(\tau)=\frac1{\sqrt T}
+  \sin\frac{n\pi(\tau+T)}{2T},
+  \label{eq:proposal-dirichlet-modes}\\
+  (f_n,f_m)&:=\int_{-T}^{T}d\tau\,
+  f_n^*(\tau)f_m(\tau)=\delta_{nm}.
+  \label{eq:proposal-dirichlet-orthonormality}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U050; arguments=YIN253A-C02-A05; notes=253a:20; pdf=31; video=uzixOflp0tY:01:15:09.000-01:18:37.400; transcript=YIN253A-C02-T000297..YIN253A-C02-T000303; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+Substitution into the action gives no mixing between different modes.  The
+derivative term contributes $(n\pi/2T)^2$, while the potential contributes
+$\omega^2$.  Each coefficient is therefore governed by an independent
+positive Gaussian.
+
+% YIN-SOURCE: id=PROPOSAL-A-U051; arguments=YIN253A-C02-A05; notes=253a:20; pdf=31; video=uzixOflp0tY:01:15:09.000-01:18:37.400; transcript=YIN253A-C02-T000297..YIN253A-C02-T000303; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+\begin{equation}
+  S^E[q]
+  =\sum_{n=1}^{\infty}
+  \left[
+    \frac12\left(\frac{n\pi}{2T}\right)^2
+    +\frac12\omega^2
+  \right]q_n^2.
+  \label{eq:proposal-diagonal-mode-action}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U052; arguments=YIN253A-C02-A05; notes=253a:18-20; pdf=29-31; video=uzixOflp0tY:01:03:36.780-01:18:37.400; transcript=YIN253A-C02-T000276..YIN253A-C02-T000303; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+The product measure is the regulator.  At an intermediate stage retain the
+first $M$ coefficients, perform the ordinary integral, and then take
+$M\to\infty$.  Overall constants cancel in normalized expectation values.
+
+% YIN-SOURCE: id=PROPOSAL-A-U053; arguments=YIN253A-C02-A05; notes=253a:18-20; pdf=29-31; video=uzixOflp0tY:01:03:36.780-01:18:37.400; transcript=YIN253A-C02-T000276..YIN253A-C02-T000303; equations=YIN253A-C02-EQ007; class=SOURCE_COMPOSITE
+\begin{equation}
+  [Dq]_M=\mathcal N_M\prod_{n=1}^{M}dq_n,
+  \qquad
+  \int[Dq]e^{-S^E/\hbar}(\cdots)
+  :=\lim_{M\to\infty}
+  \mathcal N_M\int\prod_{n=1}^{M}dq_n\,
+  e^{-S^E_M/\hbar}(\cdots).
+  \label{eq:proposal-mode-regulator}
+\end{equation}
+
+% SOURCE-CONFLICT: note p.18 leaves [Dq] -> product dq_n with a question
+% mark. Pages 19-20 supply the explicit basis and Gaussian product. The finite
+% partial product above makes that chosen regulator explicit.
+
+% YIN-SOURCE: id=PROPOSAL-A-U054; arguments=YIN253A-C02-A06; notes=253a:21-23; pdf=32-34; video=M0py5a4RWhE:00:00:02.340-00:41:30.140; transcript=YIN253A-C02-T000321..YIN253A-C02-T000396; equations=YIN253A-C02-EQ008,YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+\subsection{Mode covariance and the oscillator Green function}
+
+% YIN-SOURCE: id=PROPOSAL-A-U055; arguments=YIN253A-C02-A06; notes=253a:21; pdf=32; video=M0py5a4RWhE:00:03:31.040-00:14:51.600; transcript=YIN253A-C02-T000325..YIN253A-C02-T000342; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+Let $a_n=(n\pi/2T)^2+\omega^2$.  Odd moments vanish, and the normalized
+one-mode Gaussian gives $\hbar/a_n$.  Since different $q_n$ occur in separate
+factors, their covariance is diagonal.  The paths being integrated are
+arbitrary functions obeying the endpoint condition.  Nowhere did I say to use
+the equation of motion.
+
+% YIN-SOURCE: id=PROPOSAL-A-U056; arguments=YIN253A-C02-A06; notes=253a:21; pdf=32; video=M0py5a4RWhE:00:05:51.000-00:14:51.600; transcript=YIN253A-C02-T000328..YIN253A-C02-T000342; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle q_nq_m\rangle
+  &=\delta_{nm}
+  \frac{
+    \displaystyle\int_{-\infty}^{\infty}dq_n\,q_n^2
+    e^{-\frac{a_n}{2\hbar}q_n^2}}
+  {
+    \displaystyle\int_{-\infty}^{\infty}dq_n\,
+    e^{-\frac{a_n}{2\hbar}q_n^2}}
+  \nonumber\\
+  &=\delta_{nm}\,
+  \frac{\hbar}{\left(\frac{n\pi}{2T}\right)^2+\omega^2}.
+  \label{eq:proposal-mode-covariance}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U057; arguments=YIN253A-C02-A06; notes=253a:21; pdf=32; video=M0py5a4RWhE:00:14:48.720-00:16:46.160; transcript=YIN253A-C02-T000343..YIN253A-C02-T000346; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+Expanding both insertions in modes reduces the functional two-point function
+to this covariance.  Before the large-$T$ limit it retains the dependence on
+the chosen endpoints.
+
+% YIN-SOURCE: id=PROPOSAL-A-U058; arguments=YIN253A-C02-A06; notes=253a:21; pdf=32; video=M0py5a4RWhE:00:14:48.720-00:16:46.160; transcript=YIN253A-C02-T000343..YIN253A-C02-T000346; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  ={}&\sum_{n=1}^{\infty}
+  \frac{\hbar}{\left(\frac{n\pi}{2T}\right)^2+\omega^2}
+  \frac1T
+  \sin\frac{n\pi(\tau_1+T)}{2T}
+  \sin\frac{n\pi(\tau_2+T)}{2T}.
+  \label{eq:proposal-finite-T-covariance}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U059; arguments=YIN253A-C02-A06; notes=253a:21-22; pdf=32-33; video=M0py5a4RWhE:00:20:27.480-00:26:25.460; transcript=YIN253A-C02-T000353..YIN253A-C02-T000364; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+As $T$ grows, the allowed values $k=n\pi/(2T)$ become dense on the positive
+real axis.  The sum with spacing $\pi/(2T)$ becomes an integral, while the sine
+functions retain the finite-interval image terms.
+
+% YIN-SOURCE: id=PROPOSAL-A-U060; arguments=YIN253A-C02-A06; notes=253a:21-22; pdf=32-33; video=M0py5a4RWhE:00:22:16.260-00:26:25.460; transcript=YIN253A-C02-T000356..YIN253A-C02-T000364; equations=YIN253A-C02-EQ008; class=SOURCE_COMPOSITE
+\begin{align}
+  k&\equiv\frac{n\pi}{2T},
+  &\sum_n\frac{\pi}{2T}(\cdots)&\rightsquigarrow
+  \int_0^\infty dk\,(\cdots),
+  \label{eq:proposal-sum-to-integral}\\
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  ={}&\frac{2\hbar}{\pi}\int_0^\infty dk\,
+  \frac{\sin k(\tau_1+T)\sin k(\tau_2+T)}{k^2+\omega^2}.
+  \label{eq:proposal-half-line-covariance}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U061; arguments=YIN253A-C02-A06; notes=253a:22; pdf=33; video=M0py5a4RWhE:00:24:02.220-00:28:16.100; transcript=YIN253A-C02-T000360..YIN253A-C02-T000368; equations=YIN253A-C02-EQ008,YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+Writing the sines as exponentials makes the direct term and the endpoint image
+term explicit.  The evenness of the denominator permits an integral over the
+whole real axis.
+
+% YIN-SOURCE: id=PROPOSAL-A-U062; arguments=YIN253A-C02-A06; notes=253a:22-23; pdf=33-34; video=M0py5a4RWhE:00:24:02.220-00:38:52.820; transcript=YIN253A-C02-T000360..YIN253A-C02-T000391; equations=YIN253A-C02-EQ008,YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  ={}&\frac{\hbar}{\pi}\int_{-\infty}^{\infty}
+  \frac{dk}{k^2+\omega^2}
+  \biggl[
+  \frac14e^{ik(\tau_1-\tau_2)}
+  +\frac14e^{-ik(\tau_1-\tau_2)}
+  \nonumber\\[-1mm]
+  &\hspace{37mm}
+  -\frac14e^{ik(\tau_1+\tau_2+2T)}
+  -\frac14e^{-ik(\tau_1+\tau_2+2T)}
+  \biggr].
+  \label{eq:proposal-full-line-covariance}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U063; arguments=YIN253A-C02-A06; notes=253a:22-23; pdf=33-34; video=M0py5a4RWhE:00:27:59.640-00:37:13.020; transcript=YIN253A-C02-T000368..YIN253A-C02-T000389; equations=YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+The elementary integral is evaluated by contour deformation.  The integral is
+exactly the same provided that the function is complex analytic in between the
+two contours.  For positive $\tau$, exponential decay closes the contour in
+the upper half-plane and encloses $k=i\omega$.  Negative $\tau$ requires the
+lower half-plane, whose clockwise orientation supplies the corresponding
+sign.
+
+% YIN-SOURCE: id=PROPOSAL-A-U064; arguments=YIN253A-C02-A06; notes=253a:22-23; pdf=33-34; video=M0py5a4RWhE:00:27:59.640-00:37:13.020; transcript=YIN253A-C02-T000368..YIN253A-C02-T000389; equations=YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+\begin{align}
+  \int_{-\infty}^{\infty}dk\,
+  \frac{e^{ik\tau}}{k^2+\omega^2}
+  &=2\pi i\,
+  \underset{k\to i\omega}{\operatorname{Res}}
+  \frac{e^{ik\tau}}{k^2+\omega^2}
+  =\frac{\pi}{\omega}e^{-\omega\tau},
+  &&\tau>0,
+  \label{eq:proposal-positive-time-residue}\\
+  \int_{-\infty}^{\infty}dk\,
+  \frac{e^{ik\tau}}{k^2+\omega^2}
+  &=\frac{\pi}{\omega}e^{\omega\tau},
+  &&\tau<0.
+  \label{eq:proposal-negative-time-residue}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U065; arguments=YIN253A-C02-A06; notes=253a:23; pdf=34; video=M0py5a4RWhE:00:37:48.560-00:40:23.359; transcript=YIN253A-C02-T000390..YIN253A-C02-T000394; equations=YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+Define $\tau_{12}=\tau_1-\tau_2$.  The two direct terms combine into a
+function of $|\tau_{12}|$.  The image term vanishes as the endpoints recede,
+and the normalized large-$T$ covariance becomes the standard Euclidean
+oscillator propagator.
+
+% YIN-SOURCE: id=PROPOSAL-A-U066; arguments=YIN253A-C02-A06; notes=253a:23; pdf=34; video=M0py5a4RWhE:00:37:48.560-00:40:23.359; transcript=YIN253A-C02-T000390..YIN253A-C02-T000394; equations=YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  &=\frac{\hbar}{\omega}
+  \left[
+    \frac12e^{-\omega|\tau_{12}|}
+    -\frac12e^{-\omega(\tau_1+\tau_2+2T)}
+  \right],
+  \label{eq:proposal-finite-T-result}\\
+  \lim_{T\to\infty}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  &=\frac{\hbar}{2\omega}e^{-\omega|\tau_{12}|}.
+  \label{eq:proposal-oscillator-propagator}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U067; arguments=YIN253A-C02-A06; notes=253a:23; pdf=34; video=M0py5a4RWhE:00:38:55.020-00:40:23.359; transcript=YIN253A-C02-T000392..YIN253A-C02-T000394; equations=YIN253A-C02-EQ009; class=SOURCE_COMPOSITE
+If you get confused, you can always go back to the representation in terms of
+energy eigenstates and understand the meaning of the quantity being computed.
+The single exponential carries the harmonic-oscillator gap $E_1-E_0=\hbar
+\omega$.  A more general operator or potential produces a sum of exponentials.
+
+% YIN-SOURCE: id=PROPOSAL-A-U068; arguments=YIN253A-C02-A07; notes=253a:24-27; pdf=35-38; video=M0py5a4RWhE:00:41:31.940-01:23:04.739; transcript=YIN253A-C02-T000397..YIN253A-C02-T000455; equations=YIN253A-C02-EQ010,YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+\subsection{Gaussian identities and Wick's rule}
+
+% YIN-SOURCE: id=PROPOSAL-A-U069; arguments=YIN253A-C02-A07; notes=253a:24; pdf=35; video=M0py5a4RWhE:00:41:31.940-00:45:54.500; transcript=YIN253A-C02-T000397..YIN253A-C02-T000405; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+The mode calculation worked, but it was a pain.  We can do this once and for
+all.  Let $A$ be a symmetric matrix for which the Gaussian converges, and add a
+source $\mathbf J$.  Completing the square reduces the integral to the
+source-free normalization.
+
+% YIN-SOURCE: id=PROPOSAL-A-U070; arguments=YIN253A-C02-A07; notes=253a:24; pdf=35; video=M0py5a4RWhE:00:42:44.400-00:45:54.500; transcript=YIN253A-C02-T000399..YIN253A-C02-T000405; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+\begin{align}
+  -\frac12\mathbf q^TA\mathbf q+\mathbf J\cdot\mathbf q
+  &=-\frac12(\mathbf q-A^{-1}\mathbf J)^T
+  A(\mathbf q-A^{-1}\mathbf J)
+  +\frac12\mathbf J^TA^{-1}\mathbf J,
+  \label{eq:proposal-finite-gaussian-square}\\
+  Z[\mathbf J]
+  &:=\int d^N\mathbf q\,
+  e^{-\frac12\mathbf q^TA\mathbf q+\mathbf J\cdot\mathbf q}
+  \nonumber\\
+  &=(2\pi)^{N/2}(\det A)^{-1/2}
+  e^{\frac12\mathbf J^TA^{-1}\mathbf J}.
+  \label{eq:proposal-finite-gaussian-generating-function}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U071; arguments=YIN253A-C02-A07; notes=253a:24; pdf=35; video=M0py5a4RWhE:00:46:24.720-00:50:51.900; transcript=YIN253A-C02-T000406..YIN253A-C02-T000411; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+Every derivative with respect to $J_n$ brings down one factor of $q_n$.
+Consequently a polynomial insertion can be replaced by the corresponding
+differential operator acting on $Z[\mathbf J]$.  Odd moments vanish because
+the source-free measure is even.
+
+% YIN-SOURCE: id=PROPOSAL-A-U072; arguments=YIN253A-C02-A07; notes=253a:24; pdf=35; video=M0py5a4RWhE:00:46:24.720-00:52:35.900; transcript=YIN253A-C02-T000406..YIN253A-C02-T000413; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle F(\mathbf q)\rangle
+  &:=\frac1{Z[0]}\int d^N\mathbf q\,
+  e^{-\frac12\mathbf q^TA\mathbf q}F(\mathbf q)
+  \nonumber\\
+  &=\left.
+  \frac1{Z[0]}
+  F\!\left(\frac{\partial}{\partial\mathbf J}\right)
+  Z[\mathbf J]\right|_{\mathbf J=0},
+  \label{eq:proposal-gaussian-source-derivatives}\\
+  \langle q_n\rangle&=0,
+  \qquad
+  \langle q_nq_m\rangle=(A^{-1})_{nm}.
+  \label{eq:proposal-finite-gaussian-two-point}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U073; arguments=YIN253A-C02-A07; notes=253a:24-25; pdf=35-36; video=M0py5a4RWhE:00:52:45.540-00:59:44.540; transcript=YIN253A-C02-T000414..YIN253A-C02-T000420; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+For four insertions there are $4!=24$ assignments of derivatives to source
+factors.  Grouping the eight identical assignments for each pairing leaves
+three inequivalent contractions.
+
+% YIN-SOURCE: id=PROPOSAL-A-U074; arguments=YIN253A-C02-A07; notes=253a:24-25; pdf=35-36; video=M0py5a4RWhE:00:52:45.540-00:59:44.540; transcript=YIN253A-C02-T000414..YIN253A-C02-T000420; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle q_nq_mq_rq_s\rangle
+  ={}&(A^{-1})_{nm}(A^{-1})_{rs}
+  +(A^{-1})_{nr}(A^{-1})_{ms}
+  \nonumber\\
+  &+(A^{-1})_{ns}(A^{-1})_{mr}.
+  \label{eq:proposal-four-point-gaussian}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U075; arguments=YIN253A-C02-A07; notes=253a:25; pdf=36; video=M0py5a4RWhE:00:58:51.839-01:06:19.880; transcript=YIN253A-C02-T000420..YIN253A-C02-T000428; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+The general rule is Wick's rule.  Pair every insertion once, replace each pair
+by its two-point covariance, and sum over inequivalent pairings.  An odd number
+of insertions has no complete pairing and hence gives zero.
+
+% YIN-SOURCE: id=PROPOSAL-A-U076; arguments=YIN253A-C02-A07; notes=253a:25; pdf=36; video=M0py5a4RWhE:00:58:51.839-01:06:19.880; transcript=YIN253A-C02-T000420..YIN253A-C02-T000428; equations=YIN253A-C02-EQ010; class=SOURCE_COMPOSITE
+\begin{equation}
+  \langle q_{i_1}\cdots q_{i_{2r}}\rangle
+  =\sum_{\text{inequivalent pairings }P}
+  \prod_{(a,b)\in P}(A^{-1})_{i_ai_b},
+  \qquad
+  \overset{\frown}{q_nq_m}:=(A^{-1})_{nm}.
+  \label{eq:proposal-wick-rule}
+\end{equation}
+
+% YIN-SOURCE: id=PROPOSAL-A-U077; arguments=YIN253A-C02-A07; notes=253a:26; pdf=37; video=M0py5a4RWhE:01:07:04.140-01:12:44.780; transcript=YIN253A-C02-T000430..YIN253A-C02-T000437; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+The same algebra applies when the vector space is replaced by a linear space of
+real functions.  At the level of mathematical rigor used here, the precise
+function space and its suitable measure will remain implicit.  For the
+oscillator, the matrix $A$ becomes a differential operator.
+
+% YIN-SOURCE: id=PROPOSAL-A-U078; arguments=YIN253A-C02-A07; notes=253a:26; pdf=37; video=M0py5a4RWhE:01:07:04.140-01:14:38.880; transcript=YIN253A-C02-T000430..YIN253A-C02-T000440; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+\begin{align}
+  A\cdot g(\tau)
+  &:=(-\partial_\tau^2+\omega^2)g(\tau),
+  \label{eq:proposal-functional-A}\\
+  A^{-1}\cdot g(\tau)
+  &:=\int d\tau'\,G(\tau,\tau')g(\tau'),
+  \label{eq:proposal-functional-A-inverse}\\
+  (-\partial_\tau^2+\omega^2)G(\tau,\tau')
+  &=\delta(\tau-\tau').
+  \label{eq:proposal-green-equation}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U079; arguments=YIN253A-C02-A07; notes=253a:26-27; pdf=37-38; video=M0py5a4RWhE:01:15:34.260-01:23:04.739; transcript=YIN253A-C02-T000442..YIN253A-C02-T000455; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+Set $\hbar=1$ for the following normalized Gaussian functional integral.
+Functional integration by parts determines its two-point function without
+choosing a normalization for each discretized mode.  The derivative of the
+Gaussian supplies $-Ag$, which is removed by $-A^{-1}$.
+
+% YIN-SOURCE: id=PROPOSAL-A-U080; arguments=YIN253A-C02-A07; notes=253a:26-27; pdf=37-38; video=M0py5a4RWhE:01:15:34.260-01:23:04.739; transcript=YIN253A-C02-T000442..YIN253A-C02-T000455; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+\begin{align}
+  \langle g(\tau_1)g(\tau_2)\rangle
+  &:=\frac{
+    \displaystyle\int[Dg]\,
+    e^{-\frac12(g,Ag)}g(\tau_1)g(\tau_2)}
+  {\displaystyle\int[Dg]\,e^{-\frac12(g,Ag)}},
+  \label{eq:proposal-functional-expectation}\\
+  \int[Dg]e^{-\frac12(g,Ag)}g(\tau_1)g(\tau_2)
+  &=\int[Dg]g(\tau_2)
+  \left(-A^{-1}\cdot\frac{\delta}{\delta g(\tau_1)}\right)
+  e^{-\frac12(g,Ag)}
+  \nonumber\\
+  &=\int[Dg]e^{-\frac12(g,Ag)}
+  A^{-1}\cdot\frac{\delta g(\tau_2)}{\delta g(\tau_1)}
+  \nonumber\\
+  &=G(\tau_1,\tau_2)
+  \int[Dg]e^{-\frac12(g,Ag)}.
+  \label{eq:proposal-functional-integration-by-parts}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U081; arguments=YIN253A-C02-A07; notes=253a:27; pdf=38; video=M0py5a4RWhE:01:18:31.260-01:23:04.739; transcript=YIN253A-C02-T000449..YIN253A-C02-T000455; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+The inverse-kernel identity used in the last line is
+
+% YIN-SOURCE: id=PROPOSAL-A-U082; arguments=YIN253A-C02-A07; notes=253a:27; pdf=38; video=M0py5a4RWhE:01:18:31.260-01:23:04.739; transcript=YIN253A-C02-T000449..YIN253A-C02-T000455; equations=YIN253A-C02-EQ011; class=SOURCE_COMPOSITE
+\begin{equation}
+  A^{-1}\cdot\delta(\tau_1-\tau_2)
+  =\int d\tau'\,G(\tau_1,\tau')
+  \delta(\tau'-\tau_2)
+  =G(\tau_1,\tau_2),
+  \qquad
+  \langle g(\tau_1)g(\tau_2)\rangle=G(\tau_1,\tau_2).
+  \label{eq:proposal-functional-covariance}
+\end{equation}
+
+% SOURCE-CONFLICT: note p.26 writes Dg in the numerator and Dx in the
+% denominator. The proposal declares one normalized [Dg] measure. Local forms
+% A.g, (Ag), and Ag are represented by the single operator convention above.
+
+% YIN-SOURCE: id=PROPOSAL-A-U083; arguments=YIN253A-C02-A08; notes=253a:28-29; pdf=39-40; video=vk_RlYUKUyM:00:00:12.660-00:14:04.040; transcript=YIN253A-C02-T000461..YIN253A-C02-T000484; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+\subsection{The Green function in Fourier space}
+
+% YIN-SOURCE: id=PROPOSAL-A-U084; arguments=YIN253A-C02-A08; notes=253a:28; pdf=39; video=vk_RlYUKUyM:00:00:12.660-00:03:31.519; transcript=YIN253A-C02-T000461..YIN253A-C02-T000465; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+Translation invariance makes the Fourier basis especially convenient.  For a
+real function $g(\tau)$, the negative-frequency coefficient is the complex
+conjugate of the positive-frequency coefficient.  The operator $A$ acts by
+multiplication in this basis.
+
+% YIN-SOURCE: id=PROPOSAL-A-U085; arguments=YIN253A-C02-A08; notes=253a:28; pdf=39; video=vk_RlYUKUyM:00:00:12.660-00:03:31.519; transcript=YIN253A-C02-T000461..YIN253A-C02-T000465; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+\begin{align}
+  g(\tau)
+  &=\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
+  \widetilde g(k)e^{ik\tau},
+  &\widetilde g^*(k)&=\widetilde g(-k),
+  \label{eq:proposal-fourier-convention}\\
+  \widetilde A\cdot\widetilde g(k)
+  &=(k^2+\omega^2)\widetilde g(k),
+  &\widetilde A^{-1}\cdot\widetilde g(k)
+  &=\frac{1}{k^2+\omega^2}\widetilde g(k).
+  \label{eq:proposal-fourier-operator}
+\end{align}
+
+% YIN-SOURCE: id=PROPOSAL-A-U086; arguments=YIN253A-C02-A08; notes=253a:28; pdf=39; video=vk_RlYUKUyM:00:02:11.760-00:03:31.519; transcript=YIN253A-C02-T000463..YIN253A-C02-T000465; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+Applying $-\partial_\tau^2+\omega^2$ to the inverse Fourier transform cancels
+its denominator and leaves the Fourier representation of the delta function.
+This verifies the Green equation directly.
+
+% YIN-SOURCE: id=PROPOSAL-A-U087; arguments=YIN253A-C02-A08; notes=253a:28; pdf=39; video=vk_RlYUKUyM:00:02:11.760-00:03:31.519; transcript=YIN253A-C02-T000463..YIN253A-C02-T000465; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+\begin{align}
+  G(\tau,\tau')
+  &=\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
+  \frac{e^{ik(\tau-\tau')}}{k^2+\omega^2},
+  \label{eq:proposal-fourier-green-function}\\
+  (-\partial_\tau^2+\omega^2)G(\tau,\tau')
+  &=\int_{-\infty}^{\infty}\frac{dk}{2\pi}
+  e^{ik(\tau-\tau')}
+  =\delta(\tau-\tau').
+  \label{eq:proposal-fourier-green-check}
+\end{align}
+
+% SOURCE-CONFLICT: the gray residue line on note p.28 ends in |tau_2| even
+% though the Green function uses tau and tau'. The general kernel arguments
+% govern the proposal.
+
+% YIN-SOURCE: id=PROPOSAL-A-U088; arguments=YIN253A-C02-A08; notes=253a:28-29; pdf=39-40; video=vk_RlYUKUyM:00:02:11.760-00:11:03.720; transcript=YIN253A-C02-T000463..YIN253A-C02-T000475; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+If you find this confusing, always go back to the definition and see what is
+going on.  The residue calculation already performed gives the same
+coordinate-space kernel, $G(\tau,\tau')=(2\omega)^{-1}
+e^{-\omega|\tau-\tau'|}$ in the present $\hbar=1$ convention.
+
+% YIN-SOURCE: id=PROPOSAL-A-U089; arguments=YIN253A-C02-A08; notes=253a:29; pdf=40; video=vk_RlYUKUyM:00:11:34.459-00:14:04.040; transcript=YIN253A-C02-T000477..YIN253A-C02-T000484; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+The quadratic action is also diagonal in Fourier space.  Its normalized mode
+covariance carries a delta function imposing $k_1+k_2=0$, as required by the
+reality condition and translation invariance.
+
+% YIN-SOURCE: id=PROPOSAL-A-U090; arguments=YIN253A-C02-A08; notes=253a:29; pdf=40; video=vk_RlYUKUyM:00:11:34.459-00:14:04.040; transcript=YIN253A-C02-T000477..YIN253A-C02-T000484; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+\begin{align}
+  S^E
+  &=\frac12\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
+  \widetilde g(-k)(k^2+\omega^2)\widetilde g(k),
+  \label{eq:proposal-fourier-action}\\
+  \left\langle\widetilde g(k_1)\widetilde g(k_2)\right\rangle
+  &=\frac{2\pi\delta(k_1+k_2)}{k_1^2+\omega^2}.
+  \label{eq:proposal-fourier-covariance}
+\end{align}
+
+% SOURCE-CONFLICT: note p.29 calls this the \widetilde x(k) basis while its
+% equations use \widetilde g(k). The equation variable is retained.
+
+% YIN-SOURCE: id=PROPOSAL-A-U091; arguments=YIN253A-C02-A08; notes=253a:28-29; pdf=39-40; video=vk_RlYUKUyM:00:10:33.800-00:12:42.800; transcript=YIN253A-C02-T000475..YIN253A-C02-T000479; equations=YIN253A-C02-EQ012; class=SOURCE_COMPOSITE
+If you want to do something different, you have to show that it works.  The
+regulated mode definition, its inverse kernel, and the contour prescription
+give one consistent construction.  The denominator $k^2+\omega^2$ will serve
+as the free propagator when interactions are introduced.
+
+% PROPOSAL-COVERAGE: arguments=YIN253A-C02-A01,YIN253A-C02-A02,YIN253A-C02-A03,YIN253A-C02-A04,YIN253A-C02-A05,YIN253A-C02-A06,YIN253A-C02-A07,YIN253A-C02-A08; equations=YIN253A-C02-EQ001..YIN253A-C02-EQ012; notes=253a:10-29; pdf=20-40.
+% PROPOSAL-VOICE: retained or lightly recast YIN253A-C02-VOICE-0001,0003,0005,0013,0016,0018,0021,0025,0031,0035,0038,0042,0043,0046,0050,0054,0058,0059,0064,0066,0067.
+% PROPOSAL-CONFLICTS-WITHHELD: undefined [Dq]; H argument order; O(hbar) glyph; p/P and N/tilde-N measure marks; barred energies; p.17 Euclidean sign and missing hat/dt; p.18 doubled-dot derivative; p.26 Dg/Dx; undefined tau_12 reconciled by A06 requirement; p.28 |tau_2| residue; p.29 x/g Fourier-basis label.

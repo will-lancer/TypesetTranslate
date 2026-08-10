@@ -134,9 +134,9 @@ Status: complete
   and inspected. The two figures, long equations, field-operator definition,
   page breaks, and final problem-set note are readable and unclipped.
 - Two forced builds are byte-identical. Their SHA-256 is
-  `ae874ea093e48619a2c369ffe3be12b424ebaf69798ed1a2bd7ebcf69d355a14`.
+  `e7f208aaab263fe309b0cd8bc42a241485e2bc0603e5a77e6ea05607cfa5ba5e`.
 - The render manifest SHA-256 is
-  `935669ce833e2820c5c6d569ba2d11b9e6e37733827ef61d3c4f807aff5f1f8e`.
+  `caefbb68febb902e19aad14bafd4b2004edc324cc1750dd8de51c596075649b4`.
 - The old near-verbatim retention gate is intentionally inapplicable to this
   written-prose edition; source comments, transcript IDs, and source artifacts
   remain available for traceability.

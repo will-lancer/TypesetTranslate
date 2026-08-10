@@ -110,22 +110,32 @@ expansion are separate displays.
 - Keep the notation and sign conventions fixed by the handwritten notes and the reconciled equation layer.
 - Preserve a source ambiguity in a comment or ledger rather than turning it into awkward reader-facing prose.
 
-## Required passes
+## Editorial checks
 
-1. **Structural pass:** merge transcript-sized fragments into arguments; place equations at the point of use.
-2. **Filler pass:** inspect every occurrence of `okay`, `so`, `well`, `you know`, `all right`, `I mean`, `just`, `actually`, `basically`, `kind of`, and `let me`.
-3. **Voice-restoration pass:** reread every argument against its minimally
-   cleaned transcript. Restore characteristic vocabulary, cadence,
-   qualifications, reader address, jokes, corrections, and conceptual
-   questions lost during compression. Record every required voice cue in
-   `work/<chapter>/voice-restoration.jsonl`.
-4. **Logic pass:** verify that every connective describes the relation between adjacent sentences and that every pronoun has a clear referent.
-5. **Math pass:** compare all displayed formulas with the reconciled note layer and inspect long inline mathematics.
-6. **Render pass:** build the PDF and inspect every page for paragraph flow, equation placement, and layout defects.
+These checks belong inside the five passes in `WORKFLOW.md`. They do not create
+additional passes.
 
-Each pass must be recorded in the chapter's writing-style pass ledger. The
-status line must read `Status: complete`, followed by concrete evidence. A
-single combined "style pass" does not satisfy this requirement.
+During chapter drafting:
+
+- merge transcript-sized fragments into arguments;
+- place equations at the point of use;
+- keep source order, examples, caveats, and voice cues visible in the draft.
+
+During editorial balance:
+
+- inspect `okay`, `so`, `well`, `you know`, `all right`, `I mean`, `just`,
+  `actually`, `basically`, `kind of`, and `let me`;
+- reread the complete chapter against the minimally cleaned transcript;
+- restore characteristic vocabulary, cadence, qualifications, reader address,
+  jokes, corrections, and conceptual questions lost during drafting;
+- verify connectives, pronouns, and paragraph flow;
+- update `work/<chapter>/voice-restoration.jsonl` and the style exceptions.
+
+During fidelity and release:
+
+- compare every displayed formula with the reconciled note layer;
+- inspect long inline mathematics and notation;
+- build the PDF and inspect every affected page.
 
 ## Voice-restoration ledger
 

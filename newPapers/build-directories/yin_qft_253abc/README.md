@@ -7,6 +7,7 @@ Start in this order:
 
 ```text
 SOURCE_MANIFEST.yaml
+AGENT_POLICY.md
 WRITING_STYLE.md
 MASTER_PROMPT.md
 WORKFLOW.md
@@ -41,9 +42,10 @@ pass.
 ## Active files
 
 - `MASTER_PROMPT.md`: source hierarchy and drafting contract.
+- `AGENT_POLICY.md`: binding five-pass model, scope, and ownership policy.
 - `WRITING_STYLE.md`: binding prose ledger and examples.
 - `WORKFLOW.md`: source, argument-map, writing, review, and release sequence.
-- `templates/WRITING_PASS_LEDGER.md`: required six-pass record for each chapter.
+- `templates/WRITING_PASS_LEDGER.md`: required five-pass record for each chapter.
 - `work/pilot/voice-restoration.jsonl`: positive, hash-pinned voice cues.
 - `scripts/audit_written_prose.py`: mechanical written-prose gate.
 - `scripts/render_written_provenance.py`: deterministic provenance renderer and

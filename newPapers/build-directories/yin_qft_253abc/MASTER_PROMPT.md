@@ -9,11 +9,29 @@ You are the lead editor for a source-faithful textbook project. Work inside:
 Read these files in order before acting:
 
 1. `SOURCE_MANIFEST.yaml`
-2. `WRITING_STYLE.md`
-3. `WORKFLOW.md`
-4. `CHAPTER_PLAN.md`
+2. `AGENT_POLICY.md`
+3. `WRITING_STYLE.md`
+4. `WORKFLOW.md`
+5. `CHAPTER_PLAN.md`
 
 Inspect git status and preserve unrelated changes.
+
+## Agent execution
+
+`AGENT_POLICY.md` is binding. Use Luna Max Fast, the default subagent, for
+full source capture and literal transcript cleanup. Use only `gpt-5.6-sol`
+at `xhigh` for chapter drafting, editorial balance, and fidelity and release.
+
+Passes 1 and 2 may be divided into bounded source lanes. Passes 3 through 5
+are large-context work whose agents read the whole lecture or chapter under
+review. One editor owns the canonical chapter. Parallel editorial agents write
+separate reports or proposed patches.
+
+During passes 1 and 2, Luna Max Fast may use up to 50 simultaneous subagents.
+Use as many independent lanes as the work supports, without imposing a smaller
+fixed cap or treating 50 as a quota. During passes 3 through 5, enforce a hard
+limit of eight simultaneous `gpt-5.6-sol` `xhigh` agents across the complete
+task tree.
 
 ## Goal
 
@@ -23,10 +41,8 @@ like written Xi Yin. His book *Foundations of String Theory* is the prose model.
 The lecture supplies the content, argument, examples, emphasis, and personality.
 
 The first draft is written exposition. A cleaned transcript is an evidence
-layer, not a prose template.
-
-This run is a pilot. Produce only Chapter 1, "Basic Generalities of Quantum
-Field Theory," then stop for review.
+layer, not a prose template. The task goal names the chapter to produce. Keep
+the work inside that chapter and its boundary evidence.
 
 ## Sources
 
@@ -58,7 +74,7 @@ Use the reference passages and fingerprint recorded in `SOURCE_MANIFEST.yaml`.
 They establish cadence and paragraph construction. They do not add QFT content
 to the lecture chapter.
 
-## Fixed pilot scope
+## Chapter 1 reference scope
 
 - Physics 253a handwritten pages 1--9.
 - Combined PDF physical pages 6--14.
@@ -67,7 +83,7 @@ to the lecture chapter.
 - Physical page 20 begins Lagrangian quantum mechanics and supplies the end
   boundary for video alignment.
 
-The source pages cover the opening definition of QFT, the 253a course plan,
+The completed Chapter 1 source pages cover the opening definition of QFT, the 253a course plan,
 relativistic multiparticle states, the free Hamiltonian, locality and
 causality, Poincare covariance, microcausality, the free scalar field, and the
 postulates leading into a manifestly Poincare-invariant formulation.
@@ -101,7 +117,7 @@ Do not assemble the chapter by concatenating transcript records. Do not use a
 lexical-retention target. Do not make one printed paragraph for each caption
 interval.
 
-Before writing TeX, create `work/pilot/argument-map.jsonl`. Each record groups a
+Before writing TeX, create `work/<chapter>/argument-map.jsonl`. Each record groups a
 continuous run of lecture and note material into one conceptual job. Record the
 claim, supporting transcript span, note pages, equations, examples, caveats,
 and any phrase or joke that carries Yin's voice.
@@ -122,9 +138,9 @@ replace a serviceable Yin sentence with generic textbook prose.
 
 Read `WRITING_STYLE.md` before the first paragraph and again before each
 required pass. Its examples are binding. Every conversational phrase listed as
-review-required must be justified in `work/pilot/style-exceptions.jsonl`.
+review-required must be justified in `work/<chapter>/style-exceptions.jsonl`.
 Every argument-map voice cue must be accounted for in
-`work/pilot/voice-restoration.jsonl` and present in the hash-pinned chapter.
+`work/<chapter>/voice-restoration.jsonl` and present in the hash-pinned chapter.
 
 ## Mathematics
 
@@ -149,7 +165,7 @@ equation, and figure:
 Speech-span comments may sit inside a written paragraph. They identify the
 evidence absorbed into that paragraph and do not create paragraph breaks.
 
-Write `work/pilot/provenance.jsonl`, one record per `YIN-SOURCE` comment. Each
+Write `work/<chapter>/provenance.jsonl`, one record per `YIN-SOURCE` comment. Each
 record contains the stable ID, TeX target, source class, note and PDF pages,
 video interval, transcript record IDs when applicable, source excerpt, printed
 TeX span, editorial operations, confidence, and review status.
@@ -172,12 +188,12 @@ the section, and source conflict.
 
 ## Required editorial passes
 
-Run the six passes in `WRITING_STYLE.md`: structure, filler, voice, logic,
-mathematics, and render. Copy `templates/WRITING_PASS_LEDGER.md` for a new
-chapter and record evidence for every completed pass. A draft with a pending
-pass is unfinished.
+Run the five passes in `WORKFLOW.md`: source capture, literal transcript
+cleanup, chapter drafting, editorial balance, and fidelity and release. The
+style checks in `WRITING_STYLE.md` belong inside passes 3 through 5. They are
+checks rather than additional passes.
 
-## Pilot outputs
+## Chapter 1 historical outputs
 
 ```text
 work/pilot/
@@ -209,8 +225,8 @@ drafting inputs or release gates.
 ## Verification and stop condition
 
 Run `./build_and_verify.sh --draft` during composition. Run
-`./build_and_verify.sh` only after all six editorial passes and the three
-independent reviews are complete. Visually inspect every rendered page.
+`./build_and_verify.sh` only after all five passes and the final review are
+complete. Visually inspect every affected rendered page.
 
 The final pilot report records exact note pages, video IDs and timestamps,
 transcript minutes, unresolved ambiguities, provenance counts, mathematical

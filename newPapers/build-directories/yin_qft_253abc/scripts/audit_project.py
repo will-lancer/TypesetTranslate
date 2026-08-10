@@ -27,10 +27,12 @@ except ModuleNotFoundError:  # Support `python -m scripts.audit_project`.
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = ROOT / "work" / "pilot"
 CHAPTER = ROOT / "latex" / "chapters" / "253a" / "chapter01.tex"
+AGENT_POLICY = ROOT / "AGENT_POLICY.md"
 
 SCAFFOLD_REQUIRED = (
     "README.md",
     "MASTER_PROMPT.md",
+    "AGENT_POLICY.md",
     "WORKFLOW.md",
     "WRITING_STYLE.md",
     "CHAPTER_PLAN.md",
@@ -66,6 +68,19 @@ REVIEW_REPORTS = (
     "work/pilot/review-math.md",
     "work/pilot/review-fidelity.md",
     "work/pilot/review-render.md",
+)
+
+AGENT_POLICY_REQUIRED_TEXT = (
+    "| 1 | Full source capture | Luna Max Fast | Parallel lecture and note lanes |",
+    "| 2 | Literal transcript cleanup | Luna Max Fast | Parallel lecture lanes |",
+    "| 3 | Chapter drafting | `gpt-5.6-sol` at `xhigh` | Whole chapter |",
+    "| 4 | Editorial balance | `gpt-5.6-sol` at `xhigh` | Whole chapter |",
+    "| 5 | Fidelity and release | `gpt-5.6-sol` at `xhigh`, lead editor, and scripts | Whole chapter and rendered PDF |",
+    "The project uses five passes.",
+    "Luna Max Fast work may use up to 50 simultaneous subagents.",
+    "Fifty is a ceiling rather than a quota",
+    "At most eight agents running `gpt-5.6-sol` at `xhigh` may be active at once",
+    "One editor owns the canonical chapter at a time.",
 )
 
 FINAL_REPORT = "work/pilot/report.md"
@@ -257,6 +272,20 @@ def validate_required_files(audit: Audit) -> None:
         path = ROOT / name
         if not is_nonempty_file(path):
             audit.gate(f"missing or empty canonical editor output: {name}")
+
+
+def validate_agent_policy(audit: Audit) -> None:
+    if not is_nonempty_file(AGENT_POLICY):
+        return
+    text = AGENT_POLICY.read_text(encoding="utf-8")
+    missing = [item for item in AGENT_POLICY_REQUIRED_TEXT if item not in text]
+    if missing:
+        audit.error(
+            "AGENT_POLICY.md is missing binding model or execution clauses: "
+            + repr(missing)
+        )
+    else:
+        audit.stats["agent_policy_clauses"] = len(AGENT_POLICY_REQUIRED_TEXT)
 
     for name in REVIEW_REPORTS:
         path = ROOT / name
@@ -1549,6 +1578,7 @@ def main() -> int:
     audit = Audit(strict)
 
     validate_required_files(audit)
+    validate_agent_policy(audit)
     loaded = load_all_jsonl(audit)
     validate_jsonl_intervals(loaded, audit)
     validate_note_source_boundaries(audit)
