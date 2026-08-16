@@ -1,0 +1,133 @@
+% Original source: Zhou, physical PDF pp. 183--185 (printed pp. 167--169).
+% Figures: none.
+% Uncertainty log: the source prints R(u) in the CIR diffusion term and in the
+% following sentence; this transcription preserves that visible notation.
+
+% ZHOU-SOURCE-PAGE: 183 PRINTED: 167
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Cash flow & Year 0 & Year 0.5 & $\cdots$ & Year 4.5 & Year 5 \\
+\hline
+\begin{tabular}[t]{@{}l@{}}Short 3 floating-\\rate bonds\end{tabular}
+& 300 & $-150r_0$ & $\cdots$ & $-150r_4$ & $-300-150r_{4.5}$ \\
+\hline
+\begin{tabular}[t]{@{}l@{}}Long 4 bonds with\\7.5\% coupon rate\end{tabular}
+& -400 & 15 & $\cdots$ & 15 & $400+15$ \\
+\hline
+Total & -100 & $15-150r_0$ & $\cdots$ & $30-300r_4$ & $115-150r_{4.5}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+The dollar duration of the inverse floater is the same as the dollar duration of the
+portfolio as well: $\$D_{\mathrm{inverse}}=4\times\$D_{\mathrm{fixed}}-3\times\$D_{\mathrm{floating}}$.
+Since the yield curve is flat, $r_0=7.5\%$ and the floating-rate bond is always worth
+\$103.75 (after the payment of \$3.75, the price of the floating-rate bond is \$100) at
+year 0.5, and the dollar duration\footnote[16]{The initial duration of a floating rate bond is the same as the duration of a six-month zero coupon bond.} is
+
+\[
+\$D_{\mathrm{floating}}=-\frac{d\left(103.75/(1+y/2)\right)}{dy}
+=0.5\times\frac{103.75}{(1+y/2)^2}
+=100\times\frac{0.5}{1+y/2}=48.19.
+\]
+
+The price of a fixed-rate bond is
+$P=\displaystyle\sum_{t=1}^{2T}\frac{c/2}{(1+y/2)^t}+\frac{100}{(1+y/2)^{2T}}$,
+where $T$ is the maturity of the bond. So the dollar duration of the fixed-rate bond is
+
+\[
+\$D_{\mathrm{fixed}}=-\frac{dP}{dy}
+=\frac{1}{1+y/2}\left(\sum_{t=1}^{2T}\frac{t}{2}\frac{c/2}{(1+y/2)^t}
++\frac{100T}{(1+y/2)^{2T}}\right)=410.64.
+\]
+
+So $\$D_{\mathrm{inverse}}=4\times\$D_{\mathrm{fixed}}-3\times\$D_{\mathrm{floating}}=1498$
+and the duration of the inverse floater is
+
+\[
+D_{\mathrm{inverse}}=\frac{\$D_{\mathrm{inverse}}}{P_{\mathrm{inverse}}}=14.98.
+\]
+
+\subsubsection*{Forward and futures}
+
+\problem{What's the difference between futures and forwards? If the price of the underlying asset
+is strongly positively correlated with interest rates, and the interest rates are stochastic,
+which one has higher price: futures or forwards? Why?}
+
+\solution
+Futures contracts are exchange-traded standardized contracts; forward contracts are
+over-the-counter agreements so they are more flexible. Futures contracts are
+marked-to-market daily; forwards contacts are settled at the end of the contract term.
+
+% ZHOU-SOURCE-PAGE: 184 PRINTED: 168
+
+If the interest rate is deterministic, futures and forwards have the same theoretical price:
+
+\[
+F=Se^{(r+u-y)\tau},
+\]
+
+where $u$ represents all the storage costs and $y$ represents dividend yield for
+investment assets, convenience yield for commodities and foreign risk-free interest rate
+for foreign currencies.
+
+The mark-to-market property of futures makes their values differ from forwards when
+interest rates are stochastic (they do in the real world). As the life of a futures
+contract increases, the differences between forward and futures contracts may become
+significant. If the futures price is positively correlated with the interest rate, the
+increases of the futures price tend to occur the same time when interest rate is high.
+Because of the mark-to-market feature, the investor who longs the futures has an
+immediate profit that can be reinvested at a higher rate. The loss tends to occur when the
+interest rate is low so that it can be financed at a low rate. So a futures contract is more
+valuable than the forward when its value is positively correlated with interest rates and
+the futures price should be higher.
+
+\subsubsection*{Interest rate models}
+
+\problem{Explain some of the basic interest rate models and their differences.}
+
+\solution
+In general, interest rate models can be separated into two categories: short-rate
+models and forward-rate models. The short-rate models describe the evolution of the
+instantaneous interest rate $R(t)$ as stochastic processes, and the forward rate models
+(e.g., the one- or two-factor Heath-Jarrow-Morton model) capture the dynamics of the
+whole forward rate curve. A different classification separates interest rate models into
+arbitrage-free models and equilibrium models. Arbitrage-free models take the current
+term structure---constructed from most liquid bonds---and are arbitrage-free with respect
+to the current market prices of bonds. Equilibrium models, on the other hand, do not
+necessarily match the current term structure.
+
+Some of the simplest short-rate models are the Vasicek model, the Cox-Ingersoll-Ross
+model, the Ho-Lee model, and the Hull-White model.
+
+\subsubsection*{Equilibrium short-rate models}
+
+Vasicek model: $dR(t)=a\bigl(b-R(t)\bigr)dt+\sigma dW(t)$
+
+When $R(t)>b$, the drift rate is negative; when $R(t)<b$, the drift rate is positive. So the
+Vasicek model has the desirable property of mean-reverting towards long-term average
+$b$. But with constant volatility, the interest rate has positive probability of being negative,
+which is undesirable.
+
+Cox-Ingersoll-Ross model: $dR(t)=a\bigl(b-R(t)\bigr)dt+\sigma\sqrt{R(u)}dW(t)$
+
+% ZHOU-SOURCE-PAGE: 185 PRINTED: 169
+
+The Cox-Ingersoll-Ross model keeps the mean-reversion property of the Vasicek model.
+But the diffusion rate $\sigma\sqrt{R(u)}$ addresses the drawback of Vasicek model by
+guaranteeing that the short rate is positive.
+
+\subsubsection*{No-arbitrage short-rate models}
+
+Ho-Lee model: $dr=\theta(t)dt+\sigma dz$
+
+The Ho-Lee model is the simplest no-arbitrage short-rate model where $\theta(t)$ is a
+time-dependent drift. $\theta(t)$ is adjusted to make the model match the current rate curve.
+
+Hull-White model: $dR(t)=a\bigl(b(t)-R(t)\bigr)dt+\sigma dW(t)$
+
+The Hull-White model has a structure similar to the Vasicek model. The difference is
+that $b(t)$ is a time-dependent variable in the Hull-White model to make it fit the current
+term structure.

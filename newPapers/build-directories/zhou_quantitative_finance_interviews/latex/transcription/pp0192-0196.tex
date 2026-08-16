@@ -1,0 +1,264 @@
+% Original source: Zhou, physical PDF pp. 192--196 (printed pp. 176--180).
+% Figures: none.
+
+% ZHOU-SOURCE-PAGE: 192 PRINTED: 176
+
+In the worst case, quicksort requires the same number of comparisons as the insertion
+sort. For example, if we always choose the first element in the array (subarray) and
+compare all other elements with it, the worst case happens when $A_1,\cdots,A_n$ are already
+sorted. In such cases, one of the subarray is empty and the other has $n-1$ element. Each
+step only reduces the subarray size by one. Hence,
+
+\[
+W(n)=\Theta\left(\sum_{i=1}^{n}i\right)=\Theta(n^2).
+\]
+
+To estimate the average-case running time, let's assume that the initial ordering is
+random so that each comparison is likely to be any pair of elements chosen from
+$A_1,\cdots,A_n$. If we suspect that the original sequence of elements has a certain pattern, we
+can always randomly permute the sequence first with complexity $\Theta(n)$ as explained in
+the next problem. Let $\tilde A_p$ and $\tilde A_q$ be the $p$th and $q$th element
+($1\leq p<q\leq n$) in the final sorted array. There are $q-p+1$ numbers between $\tilde A_p$
+and $\tilde A_q$. The probability that $\tilde A_p$ and $\tilde A_q$ is compared is the
+probability that $\tilde A_q$ is compared with $\tilde A_p$, before $\tilde A_{p+1},\cdots,$ or
+$\tilde A_{q-1}$ is compared with either $\tilde A_p$ or $\tilde A_q$ (otherwise, $\tilde A_p$
+and $\tilde A_q$ are separated into different subarrays and will not be compared), which
+happens with probability
+
+\[
+P(p,q)=\frac{2}{q-p+1}
+\]
+
+(you can again use the symmetry argument to derive this probability).
+
+The total expected number of comparison is
+
+\[
+A(n)=\sum_{q=2}^{n}\sum_{p=1}^{q-1}P(p,q)
+=\sum_{q=2}^{n}\sum_{p=1}^{q-1}\left(\frac{2}{q-p+1}\right)
+=\Theta(n\log n).
+\]
+
+Although theoretically quicksort can be slower than merge sort in the worst cases, it is
+often as fast as, if not faster than, merge sort.
+
+\subsubsection*{Random permutation}
+
+\problem{A. If you have a random number generator that can generate random numbers from either discrete or continuous uniform distributions, how do you shuffle a deck of 52 cards so that every permutation is equally likely?}
+
+\solution
+A simple algorithm to permute $n$ elements is random permutation by sorting. It assigns a
+random number to each card and then sorts the cards in order of their assigned random
+numbers.\footnote[4]{If we use the continuous uniform distribution, theoretically, any two random numbers have zero probability of being equal.} By symmetry, every possible order (out of $n!$
+possible ordered sequences) is equally likely. The complexity is determined by the sorting
+step, so the
+
+% ZHOU-SOURCE-PAGE: 193 PRINTED: 177
+
+running time is $\Theta(n\log n)$. For a small $n$, such as $n=52$ in a deck of cards, the
+complexity $\Theta(n\log n)$ is acceptable. For large $n$, we may want to use a faster algorithm
+known as the Knuth shuffle. For $n$ elements $A[1],\cdots,A[n]$, the Knuth shuffle uses the
+following loop to generate a random permutation:
+
+\begin{verbatim}
+for (i=1 to n) swap(A[i], A[Random(i, n)]),
+\end{verbatim}
+
+where Random$(i,n)$ is a random number from the discrete uniform distribution between $i$
+and $n$.
+
+The Knuth shuffle has a complexity of $\Theta(n)$ and an intuitive interpretation. In the
+first step, each of the $n$ cards has equal probability of being chosen as the first card
+since the card number is chosen from the discrete uniform distribution between 1 and $n$;
+in the second step, each of the remaining $n-1$ cards elements has equal probability of being
+chosen as the second card; and so on. So naturally each ordered sequence has $1/n!$
+probability.
+
+\problem{B. You have a file consisting of characters. The characters in the file can be read sequentially, but the length of the file is unknown. How do you pick a character so that every character in the file has equal probability of being chosen?}
+
+\solution
+Let's start with picking the first character. If there is a second character, we keep the
+first character with probability $1/2$ and replace the pick with the second character with
+probability $1/2$. If there is a third character, we keep the pick (from the first two
+characters) with probability $2/3$ and replace the pick with the third character with
+probability $1/3$. The same process is continued until the final character. In other words,
+let $C_n$ be the character that we pick after we have scanned $n$ characters and the $(n+1)$th
+character exists, the probability of keeping the pick is $\frac{n}{n+1}$ and the probability
+of switching to the $(n+1)$th character is $\frac{1}{n+1}$. Using simple induction, we can
+easily prove that each character has $1/m$ probability of being chosen if there are $m$
+characters.
+
+\subsubsection*{Search algorithm}
+
+\problem{A. Develop an algorithm to find both the minimum and the maximum of $n$ numbers using no more than $3n/2$ comparisons.}
+
+\solution
+For an unsorted array of $n$ numbers, it takes $n-1$ comparisons to identify either the
+minimum or the maximum of the array. However, it takes at most $3n/2$ comparisons to
+identify both the minimum and the maximum. If we separate the elements to $n/2$ pairs,
+compare the elements in each pair and put the smaller one in group
+
+% ZHOU-SOURCE-PAGE: 194 PRINTED: 178
+
+$A$ and the larger one in group $B$. This step takes $n/2$ comparisons. Since the minimum
+of the whole array must be in group $A$ and the maximum must be in group $B$, we only need
+to find the minimum in $A$ and the maximum in $B$, either of which takes $n/2-1$
+comparisons. So the total number of comparisons is at most $3n/2$.\footnote[5]{Slight adjustment needs to be made if $n$ is odd, but the upper bound $3n/2$ still applies.}
+
+\problem{B. You are given an array of numbers. From the beginning of the array to some position, all elements are zero; after that position, all elements are nonzero. If you don't know the size of the array, how do you find the position of the first nonzero element?}
+
+\solution
+We can start with the 1st element; if it is zero, we check the 2nd element; if the 2nd
+element is zero, we check the 4th element, $\ldots$ The process is repeated until the $2^i$th
+element is nonzero. Then we check the $\frac{2^i+2^{i-1}}{2}$th element. If it is zero, the search range is limited to the elements between the
+$\frac{2^i+2^{i-1}}{2}$th element and the $2^i$th element; otherwise the search range is
+limited to the elements between the $2^{i-1}$th element and the
+$\frac{2^i+2^{i-1}}{2}$th element $\ldots$ Each time, we cut the range by half. This method is
+basically a binary search. If the first nonzero element is at position $n$, the algorithm
+complexity is $\Theta(\log n)$.
+
+\problem{C. You have a square grid of numbers. The numbers in each row increase from left to right. The numbers in each column increase from top to bottom. Design an algorithm to find a given number from the grid. What is the complexity of your algorithm?}
+
+\solution
+Let $A$ be an $n\times n$ matrix representing the grid of numbers and $x$ be the number we
+want to find in the grid. Begin the search with the last column from top to bottom:
+$A_{1,n},\cdots,A_{n,n}$. If the number is found, then stop the search. If $A_{n,n}<x$, $x$ is
+not in the grid and the search stops as well. If $A_{i,n}<x<A_{i+1,n}$, then we know that all
+the numbers in rows $1,\cdots,i$ are less than $x$ and are eliminated as well.\footnote[6]{$i$ can be 0, which means $x<A_{1,n}$, in which case we can search the first row from right to left.} Then we search the $(i+1)$th row from right to left. If the number is found in the $(i+1)$th row, the search stops. If $A_{i+1,1}>x$, $x$ is not in the grid since all the number in rows $i+1$ and above are larger than $x$. If $A_{i+1,j+1}>x>A_{i+1,j}$, we eliminate all the numbers in columns $j+1,\cdots,n$. Then we can search along column from $A_{i+1,j}$ towards $A_{n,j}$ until we find $x$ (or $x$ does not exist in
+
+% ZHOU-SOURCE-PAGE: 195 PRINTED: 179
+
+the grid) or a $k$ that makes $A_{k,j}<x<A_{k+1,j}$ and then we search left along the row $k+1$
+from $A_{k+1,j}$ towards $A_{k+1,1}$. Using this algorithm, the search takes at most $2n$
+steps. So its complexity is $O(n)$.
+
+\subsubsection*{Fibonacci numbers}
+
+Consider the following C++ program for producing Fibonacci numbers:
+
+\begin{verbatim}
+int Fibonacci(int n)
+{
+    if (n <= 0)
+        return 0;
+    else if (n==1)
+        return 1;
+    else
+        return Fibonacci(n-1)+Fibonacci(n-2);
+}
+\end{verbatim}
+
+If for some large $n$, it takes 100 seconds to compute Fibonacci($n$), how long will it take
+to compute Fibonacci($n+1$), to the nearest second? Is this algorithm efficient? How would
+you calculate Fibonacci numbers?
+
+\solution
+This C++ function uses a rather inefficient recursive method to calculate Fibonacci numbers.
+Fibonacci numbers are defined as the following recurrence:
+
+\[
+F_0=0,\quad F_1=1,\quad F_n=F_{n-1}+F_{n-2},\quad\forall n\geq 2
+\]
+
+$F_n$ has closed-formed solution
+
+\[
+F_n=\frac{(1+\sqrt{5})^n-(1-\sqrt{5})^n}{2^n\sqrt{5}},
+\]
+
+which can be easily proven using induction. From the function, it is clear that
+
+\[
+T(0)=1,\quad T(1)=1,\quad T(n)=T(n-1)+T(n-2)+1.
+\]
+
+So the running time is a proportional to a sequence of Fibonacci numbers as well. For a
+large $n$, $(1-\sqrt{5})^n\to0$, so
+
+\[
+\frac{T(n+1)}{T(n)}\approx\frac{\sqrt{5}+1}{2}.
+\]
+
+If it takes 100 seconds to compute Fibonacci($n$), the time to compute Fibonacci($n+1$) is
+
+\[
+T(n+1)\approx\frac{\sqrt{5}+1}{2}T(n)\approx 162
+\]
+
+seconds.\footnote[7]{$\phi=\frac{\sqrt{5}+1}{2}$ is called the golden ratio.}
+
+% ZHOU-SOURCE-PAGE: 196 PRINTED: 180
+
+The recursive algorithm has exponential complexity
+
+\[
+\Theta\left(\left(\frac{\sqrt{5}+1}{2}\right)^n\right),
+\]
+
+which is surely inefficient. The reason is that it fails to effectively use the information
+from Fibonacci numbers with smaller $n$ in the Fibonacci number sequence. If we compute
+$F_0,F_1,\cdots,F_n$ in sequence using the definition, the running time has complexity
+$\Theta(n)$. An algorithm called recursive squaring can further reduce the complexity to
+$\Theta(\log n)$.
+
+Since
+
+\[
+\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}
+=\begin{bmatrix}1&1\\1&0\end{bmatrix}\times
+\begin{bmatrix}F_n&F_{n-1}\\F_{n-1}&F_{n-2}\end{bmatrix}
+\]
+
+and
+
+\[
+\begin{bmatrix}F_2&F_1\\F_1&F_0\end{bmatrix}
+=\begin{bmatrix}1&1\\1&0\end{bmatrix},
+\]
+
+we can show that
+
+\[
+\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}
+=\begin{bmatrix}1&1\\1&0\end{bmatrix}^{n}
+\]
+
+using induction. Let $A=\begin{bmatrix}1&1\\1&0\end{bmatrix}$, we can again apply the divide-
+and-conquer paradigm to calculate $A^n$:
+
+\[
+A^n=
+\begin{cases}
+A^{n/2}\times A^{n/2}, & \text{if }n\text{ is even},\\
+A^{(n-1)/2}\times A^{(n-1)/2}\times A, & \text{if }n\text{ is odd}.
+\end{cases}
+\]
+
+The multiplication of two $2\times2$ matrices has complexity $\Theta(1)$. So
+$T(n)=T(n/2)+\Theta(1)$. Applying the master theorem, we have $T(n)=\Theta(\log n)$.
+
+\subsubsection*{Maximum contiguous subarray}
+
+Suppose you have a one-dimensional array $A$ with length $n$ that contains both positive
+and negative numbers. Design an algorithm to find the maximum sum of any contiguous
+subarray $A[i,j]$ of $A$:
+
+\[
+V(i,j)=\sum_{x=i}^{j}A[x],\quad 1\leq i\leq j\leq n.
+\]
+
+\solution
+Almost all trading systems need such an algorithm to calculate maximum run-up or maximum
+drawdown of either real trading books or simulated strategies. Therefore this is a favorite
+algorithm question of interviewers, especially interviewers at hedge funds and trading desks.
+
+The most apparent algorithm is an $O(n^2)$ algorithm that sequentially calculates the
+$V(i,j)$'s from scratch using the following equations:
+
+\[
+V(i,i)=A[i]\ \text{when }j=i\quad\text{and}\quad
+V(i,j)=\sum_{x=i}^{j}A[x]=V(i,j-1)+A[j]\ \text{when }j>i.
+\]
+
+As the $V(i,j)$'s are calculated, we also keep track of the maximum of $V(i,j)$ as well as
+the corresponding subarray indices $i$ and $j$.

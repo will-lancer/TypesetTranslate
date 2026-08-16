@@ -1,0 +1,281 @@
+% Original source: Zhou, physical PDF pp. 163--167 (printed pp. 147--151).
+% Figure 6.2 is recreated as native TikZ.
+
+% ZHOU-SOURCE-PAGE: 163 PRINTED: 147
+
+For European calls, the boundary condition is
+\(u_0(S_\tau)=\max(S_\tau-K,0)\).
+
+\[
+S=\exp\left(x-(r-0.5\sigma^2)\tau\right).
+\quad\text{When }x=\psi\text{ and }\tau=0,\quad S_\tau=e^\psi.
+\]
+
+\[
+u(S,\tau)=u(x,\tau)=\frac{1}{\sqrt{2\pi\tau}\sigma}
+\int_{-\infty}^{\infty}\max(e^\psi-K,0)
+\exp\left\{-\frac{(x-\psi)^2}{2\sigma^2\tau}\right\}\,d\psi
+\]
+
+\[
+=\frac{1}{\sqrt{2\pi\tau}\sigma}
+\int_{\ln K}^{\infty}(e^\psi-K)
+\exp\left\{-\frac{(x-\psi)^2}{2\sigma^2\tau}\right\}\,d\psi.
+\]
+
+Let \(\epsilon=\dfrac{\psi-x}{\sigma\sqrt{\tau}}\), then
+\(d\epsilon=\dfrac{d\psi}{\sigma\sqrt{\tau}}\),
+\(e^\psi=e^{x+\epsilon\sigma\sqrt{\tau}}\),
+\(\exp\left\{-\dfrac{(x-\psi)^2}{2\sigma^2\tau}\right\}=e^{-\epsilon^2/2}\)
+and when
+
+\[
+\psi=\ln K,\qquad
+\epsilon=\frac{\ln(K/S)-(r-\sigma^2/2)\tau}{\sigma\sqrt{\tau}}=-d_2,
+\]
+
+\[
+\therefore\quad u(S,\tau)=\int_{-d_2}^{\infty}
+\left(Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}-K\right)
+\frac{1}{\sqrt{2\pi}}e^{-\epsilon^2/2}\,d\epsilon.
+\]
+
+Now, it's clear that the equation for \(u(S,\tau)\) is exactly the same as the equation
+for \(E[V(T)\mid S]\) in question B. Hence, we have
+\(V(S,t)=e^{-r\tau}u(S,\tau)=SN(d_1)-Ke^{-r\tau}N(d_2)\) as well.
+
+\problem{D. Assume zero interest rate and a stock with current price at \$1 that pays no dividend. When the price hits level $H$ ($H>1$) for the first time you can exercise the option and receive \$1. What is this option worth to you today?}
+
+\solution
+First let's use a brute-force approach to solve the problem by assuming that the stock
+price follows a geometric Brownian motion under risk-neutral measure:
+\(dS=rSdt+\sigma SdW(t)\). Since \(r=0\),
+\(dS=\sigma SdW(t)\Rightarrow d(\ln S)=-\frac{1}{2}\sigma^2dt+\sigma dW(t)\).
+When \(t=0\), we have \(S_0=1\Rightarrow\ln(S_0)=0.\)
+
+\footnotetext[7]{\textbf{The fundamental solution to heat equation}
+\(\displaystyle \frac{\partial u}{\partial \tau}=\frac{1}{2}\frac{\partial^2u}{\partial x^2}\)
+with initial condition \(u_0(\psi)=f(\psi)\) is
+\(\displaystyle u(x,t)=\int_{-\infty}^{\infty}p(x_t=x\mid x_0=\psi)f(\psi)\,d\psi\), where
+\(\displaystyle p(x_t=x\mid x_0=\psi)=\frac{1}{\sqrt{2\pi t}}
+\exp\left\{-\frac{(x-\psi)^2}{2t}\right\}.\)
+For detailed discussion about heat equation, please refer to \emph{The Mathematics of
+Financial Derivatives} by Paul Wilmott, Sam Howison, and Jeff Dewynne.}
+
+% ZHOU-SOURCE-PAGE: 164 PRINTED: 148
+
+Hence, \(\ln S=-\frac{1}{2}\sigma^2t+\sigma W(t)\Rightarrow
+\dfrac{\ln S+\frac{1}{2}\sigma^2t}{\sigma}=W(t)\) is a Brownian motion.
+
+Whenever \(S\) reaches \$H, the payoff is \$1. Because the interest rate is 0, the
+discounted payoff is also \$1 under risk-neutral measure. So the value of the option is the
+probability that \(S\) ever reaches \$H, which is equivalent to the probability that \(\ln S\)
+ever reaches \(\ln H\). Again we can apply the exponential martingale
+\(Z(t)=\exp\{\lambda W(t)-\frac{1}{2}\lambda^2t\}\) as we did in Chapter 5:
+
+\[
+E[Z(t)]=E\left[\exp\left\{\lambda
+\frac{\ln S+\frac{1}{2}\sigma^2t}{\sigma}-\frac{1}{2}\lambda^2t\right\}\right]=1.
+\]
+
+To remove the terms including time \(t\), we can set \(\lambda=\sigma\) and the equation
+becomes \(E[\exp(\ln S)]=1\). The Let \(P\) be the probability that \(\ln S\) ever
+reaches \(\ln H\) (using \(-\infty\) as the negative boundary for stopping time), we have
+
+\[
+P\exp(\ln H)+(1-P)\exp(-\infty)=P\times H=1\Rightarrow P=1/H.
+\]
+
+So the probability that \(S\) ever reaches \$H is \(1/H\) and the price of the option
+should be \$1/H. Notice that \(S\) is a martingale under the risk-neutral measure;\footnotemark[8]
+but \(\ln S\) has a negative drift. The reason is that \(\ln S\) follows a (symmetrical)
+normal distribution, but \(S\) itself follows a lognormal distribution, which is positively
+skewed. As \(T\to\infty\), although the expected value of \(S_T\) is 1, the probability that
+\(S_T\geq1\) actually approaches 0.
+
+It is simpler to use a no-arbitrage argument to derive the price. In order to pay \$1 when
+the stock price hits \$H, we need to buy \(1/H\) shares of the stock (at \$1/H). So the option
+should be worth no more than \$1/H. Yet if the option price \(C\) is less than \$1/H
+\((C<1/H\Rightarrow CH<1)\), we can buy an option by borrowing \(C\) shares of the stock.
+The initial investment is 0. Once the stock price hits \$H, we will excise the option and
+return the stock by buying \(C\) shares at price \$H, which gives payoff \(1-CH>0\). That
+means we have no initial investment, yet we have possible positive future payoff, which is
+contradictory to the no arbitrage argument. So the price cannot be less than \$1/H. Hence,
+the price is exactly \$1/H.
+
+\problem{E. Assume a non-dividend paying stock follows a geometric Brownian motion. What is the value of a contract that at maturity $T$ pays the inverse of the stock price observed at the maturity?}
+
+\footnotetext[8]{Once we recognize that \(S\) is a martingale under the risk neutral measure,
+we do not need the assumption that \(S\) follows a geometric Brownian motion. \(S\) has two
+boundaries for stopping: 0 and \(H\). The boundary conditions are \(f(0)=0\) and \(f(H)=1\).
+Using the martingale, the probability that it will ever reaches \(H\) is
+\(P\times H+(1-P)\times0=S_0=1\Rightarrow P=1/H.\)}
+
+% ZHOU-SOURCE-PAGE: 165 PRINTED: 149
+
+\solution
+Under risk-neutral measure \(dS=rSdt+\sigma SdW(t)\). Apply Ito's lemma to
+
+\[
+\begin{aligned}
+dV&=\left(\frac{\partial V}{\partial S}rS+\frac{\partial V}{\partial t}
++\frac{1}{2}\frac{\partial^2V}{\partial S^2}\sigma^2S^2\right)dt
++\frac{\partial V}{\partial S}\sigma SdW(t),\qquad V=\frac{1}{S},\\
+&=\left(-\frac{1}{S^2}rS+0+\frac{1}{2}\frac{2}{S^3}\sigma^2S^2\right)dt
+-\frac{1}{S^2}\sigma SdW(t)=(-r+\sigma^2)Vdt-\sigma VdW(t).
+\end{aligned}
+\]
+
+So \(V\) follows a geometric Brownian motion as well and we can apply Ito's lemma to
+\(\ln V\):
+
+\[
+d(\ln V)=\left\{\frac{V}{V}(-r+\sigma^2)+0
+-\frac{1}{2}\frac{V^2}{V^2}\sigma^2\right\}dt
++\frac{V}{V}\sigma dW(t)=\left(-r+\frac{1}{2}\sigma^2\right)dt-\sigma dW(t).
+\]
+
+Hence, \(\ln(V_T)\sim\ln(V_t)+N\left((-r+\tfrac{1}{2}\sigma^2)\tau,\sigma^2\tau\right)\)
+and \(E[V_T]=E[e^{\ln V_T}]=\dfrac{1}{S_t}e^{-r\tau+\sigma^2\tau}.\)
+
+Discounting the payoff by \(e^{-r\tau}\), we have
+\(V=e^{-r\tau}E[V_T]=\dfrac{1}{S_t}e^{-2r\tau+\sigma^2\tau}.\)
+
+\subsection{The Greeks}
+
+All Greeks are first-order or second-order partial derivatives of the option price with
+respect to different underlying factors, which are used to measure the risks---as well as
+potential returns---of the financial derivative. The following Greeks for a derivative $f$ are
+routinely used by financial institutions:
+
+\[
+\begin{aligned}
+\text{Delta: }\Delta&=\frac{\partial f}{\partial S};\\
+\text{Gamma: }\Gamma&=\frac{\partial^2f}{\partial S^2};\\
+\text{Theta: }\Theta&=\frac{\partial f}{\partial t};\\
+\text{Vega: }\nu&=\frac{\partial f}{\partial\sigma};\\
+\text{Rho: }\rho&=\frac{\partial f}{\partial r}.
+\end{aligned}
+\]
+
+\subsubsection*{Delta}
+
+For a European call with dividend yield $y$: \(\Delta=e^{-y\tau}N(d_1)\)
+
+For a European put with dividend yield $y$: \(\Delta=-e^{-y\tau}[1-N(d_1)]\)
+
+\problem{A. What is the delta of a European call option on a non-dividend paying stock? How do you derive the delta?}
+
+\solution
+The delta of a European call on a non-dividend paying stock has a clean expression:
+\(\Delta=N(d_1)\). For the derivation, though, many make the mistake by treating
+
+% ZHOU-SOURCE-PAGE: 166 PRINTED: 150
+
+\(N(d_1)\) and \(N(d_2)\) as constants in the call pricing formula
+\(c=SN(d_1)-Ke^{-r\tau}N(d_2)\) and simply taking the partial derivative on $S$ to yield
+\(N(d_1)\). The derivation step is actually more complex than that since both \(N(d_1)\) and
+\(N(d_2)\) are functions of $S$ through \(d_1\) and \(d_2\). So the correct partial derivative is
+\[
+\frac{\partial c}{\partial S}=N(d_1)+S\times\frac{\partial}{\partial S}N(d_1)
+-Ke^{-r\tau}\frac{\partial}{\partial S}N(d_2).
+\]
+
+Take the partial derivative with respect to $S$ for \(N(d_1)\) and \(N(d_2)\).\footnotemark[9]
+
+\[
+\frac{\partial}{\partial S}N(d_1)=N'(d_1)\frac{\partial}{\partial S}d_1
+=\frac{1}{\sqrt{2\pi}}e^{-d_1^2/2}\times\frac{1}{S\sigma\sqrt{\tau}}
+=\frac{1}{S\sigma\sqrt{2\pi\tau}}e^{-d_1^2/2}
+\]
+
+\[
+\begin{aligned}
+\frac{\partial}{\partial S}N(d_2)
+&=N'(d_2)\frac{\partial}{\partial S}d_2
+=\frac{1}{\sqrt{2\pi}}e^{-d_2^2/2}\times\frac{1}{S\sigma\sqrt{\tau}}\\
+&=\frac{1}{S\sigma\sqrt{2\pi\tau}}e^{-(d_1-\sigma\sqrt{\tau})^2/2}\\
+&=\frac{1}{S\sigma\sqrt{2\pi\tau}}e^{-d_1^2/2}e^{\sigma\sqrt{\tau}d_1}e^{-\sigma^2\tau/2}\\
+&=\frac{1}{S\sigma\sqrt{2\pi\tau}}e^{-d_1^2/2}\times\frac{S}{K}e^{r\tau}.
+\end{aligned}
+\]
+
+So we have
+\[
+\frac{\partial}{\partial S}N(d_2)=\frac{S}{K}e^{r\tau}N(d_1)
+\Rightarrow S\times\frac{\partial}{\partial S}N(d_1)
+-Ke^{-r\tau}\frac{\partial}{\partial S}N(d_2)=0.
+\]
+Hence, the last two components of \(\dfrac{\partial c}{\partial S}\) cancel out and
+\(\dfrac{\partial c}{\partial S}=N(d_1)\).
+
+\problem{B. What is your estimate of the delta of an at-the-money call on a stock without dividend? What will happen to delta as the at-the-money option approaches maturity date?}
+
+\solution
+For an at-the-money European call, the stock price equals the strike price.
+
+\[
+S=K\Rightarrow d_1=\frac{(r+\sigma^2/2)\tau}{\sigma\sqrt{\tau}}
+=\left(\frac{r}{\sigma}+\frac{\sigma}{2}\right)\sqrt{\tau}>0
+\quad\text{and}\quad \Delta=N(d_1)>0.5.
+\]
+
+As shown in Figure 6.2, all at-the-money call options indeed have \(\Delta>0.5\) and the
+longer the maturity, the higher the \(\Delta\). As \(T-t\to0\),
+\(\left(\dfrac{r}{\sigma}+\dfrac{\sigma}{2}\right)\sqrt{\tau}\to0
+\Rightarrow N(d_1)=N(0)=0.5\), which is also shown in Figure 6.2 ($T=10$ days).
+The same argument is true for calls on stock with continuous dividend rate $y$ if $r>y$.
+
+Figure 6.2 also shows that when $S$ is large ($S\gg K$), $\Delta$ approaches 1.
+Furthermore, the shorter the maturity, the faster the delta approaches 1. On the other
+hand, if $S$ is small ($S\ll K$), $\Delta$ approaches 0 and the shorter the maturity, the
+faster the delta approaches 0.
+
+\footnotetext[9]{\(d_2=d_1-\sigma\sqrt{\tau}\Rightarrow
+N(d_2)=\dfrac{S}{K}e^{(r-y)\tau}N(d_1),\quad
+\dfrac{\partial d_2}{\partial S}=\dfrac{\partial d_1}{\partial S}.\)}
+
+% ZHOU-SOURCE-PAGE: 167 PRINTED: 151
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=0.15cm,y=4.0cm,baseline=(current bounding box.center)]
+  \node at (100,1.15) {\textbf{Delta of Call Options}};
+  \draw[->] (74,0) -- (127,0) node[below=2.2em] {Spot Price};
+  \draw[->] (74,0) -- (74,1.05) node[midway,left=2.5em,rotate=90] {Delta};
+  \foreach \x in {75,80,85,90,95,100,105,110,115,120,125} {
+    \draw (\x,0) -- (\x,-0.015) node[below=0.2em] {\scriptsize \x};
+  }
+  \foreach \y/\label in {0/0,0.1/0.1,0.2/0.2,0.3/0.3,0.4/0.4,0.5/0.5,
+    0.6/0.6,0.7/0.7,0.8/0.8,0.9/0.9,1/1} {
+    \draw (74,\y) -- (73.4,\y) node[left=0.15em] {\scriptsize \label};
+  }
+  \draw[dash dot] (74,0.56) -- (100,0.56);
+  \draw[dash dot] (100,0) -- (100,0.56);
+  \draw[thick] (82,0) .. controls (92,0) and (97,0.08) .. (100,0.56)
+    .. controls (102,0.94) and (105,1) .. (111,1);
+  \draw[thick,dashed] (82,0) .. controls (91,0) and (96,0.20) .. (100,0.56)
+    .. controls (105,0.83) and (109,0.96) .. (119,1);
+  \draw[thick,dotted] (75,0.02) .. controls (87,0.12) and (95,0.38) .. (100,0.56)
+    .. controls (109,0.78) and (117,0.93) .. (125,0.98);
+  \draw[thick] (77,0.90) -- (81,0.90) node[right=0.3em] {\scriptsize $\tau=10$ days};
+  \draw[thick,dashed] (77,0.84) -- (81,0.84) node[right=0.3em] {\scriptsize $\tau=1$ month};
+  \draw[thick,dotted] (77,0.78) -- (81,0.78) node[right=0.3em] {\scriptsize $\tau=3$ months};
+\end{tikzpicture}
+\caption{Variation of delta of a European call option with respect to $S$ and $T$.
+$K=100$, $r=0.05$, $\sigma=0.25$.}
+\label{fig:zhou-figure-6-2}
+\end{figure}
+
+\problem{C. You just entered a long position for a European call option on GM stock and decide to dynamically hedge the position to eliminate the risk from the fluctuation of GM stock price. How will you hedge the call option? If after your hedge, the price of GM has a sudden increase, how will you rebalance your hedging position?}
+
+\solution
+Since \(d_1=\dfrac{\ln(S/K)+(r-y+\sigma^2/2)\tau}{\sigma\sqrt{\tau}}\) and
+\(\Delta=e^{-y\tau}N(d_1)\) is a monotonously increasing function of \(d_1\), we have
+\(S\mathord\uparrow\Rightarrow d_1\mathord\uparrow\Rightarrow\Delta\mathord\uparrow\).
+
+One hedging method is delta hedging, for which we short
+\(\Delta=e^{-y\tau}N(d_1)\) shares of stock for each unit of call option to make the
+portfolio delta-neutral. Since \(\Delta\) shares of GM stock costs more than one unit of GM
+option, we also need to invest cash (if the option price exactly follows the Black-Scholes
+formula, we need to lend \(Ke^{-r\tau}N(d_2)\) for each

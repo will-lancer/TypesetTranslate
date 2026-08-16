@@ -19,6 +19,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{xcolor}
 \RequirePackage{float}
+\RequirePackage{needspace}
 
 % Native tables used by the source, including long and width-constrained
 % tables.  These packages keep tables editable and searchable in the output.
@@ -63,6 +64,23 @@
 \setcounter{tocdepth}{2}
 \setlength{\emergencystretch}{2em}
 
+% Keep native figure and table labels in the source's chapter-scoped form:
+% Figure 6.1, Figure 6.2, and so on.
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+% Keep the chapter-level sections on fresh pages, as in the repository's
+% native JHEP book editions.  This patch also applies to the starred
+% Preface, Notations, and Index headings, which keeps front and back matter
+% separated from the preceding material.
+\pretocmd{\section}{\clearpage}{}{}
+
+% The source uses numbered subsection names such as ``4.1'' and ``5.4''.
+% Leave enough room in the table of contents for those labels.
+\makeatletter
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{3.2em}}
+\makeatother
+
 % A small helper retained for chapter assembly files that add a heading and a
 % corresponding table-of-contents entry at the same source boundary.
 \newcommand{\sourceanchor}[3]{%
@@ -71,15 +89,11 @@
   \label{#3}%
 }
 
-% Problems are numbered within the current JHEP section.  The title is kept in
-% the heading argument, while the following source paragraphs remain ordinary
-% LaTeX prose and may continue into the next transcription chunk.
-\newcounter{problem}[section]
-\renewcommand{\theproblem}{\thesection.\arabic{problem}}
+% Problem headings preserve the source's unnumbered form.  The following source
+% paragraphs remain ordinary LaTeX prose and may continue into the next chunk.
 \newcommand{\problem}[1]{%
   \par\medskip
-  \refstepcounter{problem}%
-  \noindent\textbf{Problem~\theproblem.\ #1}\par
+  \noindent\textbf{#1}\par
   \smallskip
 }
 

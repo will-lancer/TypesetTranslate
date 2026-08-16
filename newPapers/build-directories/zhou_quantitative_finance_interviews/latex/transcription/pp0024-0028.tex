@@ -1,0 +1,373 @@
+% Original source: Zhou, physical PDF pp. 24--28 (printed pp. 8--12).
+% Figures: Figure 2.1 is recreated with native TikZ; Figure 2.2 remains a native picture.
+% The source's caret is retained as an infix exponentiation operator in the problem statement.
+
+% ZHOU-SOURCE-PAGE: 24 PRINTED: 8
+2, 3, 4 are lighter than 5, 6, 7, 8, as expressed using an ``<'' sign. There is no need to
+explain the scenario that 1, 2, 3, 4 are heavier than 5, 6, 7, 8. (Why?\footnotemark[4])
+
+If the two groups balance, this immediately tells us that the defective ball is in 9, 10, 11
+and 12, and it is either lighter (\(L\)) or heavier (\(H\)) than other balls. Then we take 9,
+10 and 11 from group 3 and compare balls 9, 10 with 8, 11. Here we have already figured out
+that 8 is a normal ball. If 9, 10 are lighter, it must mean either 9 or 10 is \(L\) or 11 is
+\(H\). In which case, we just compare 9 with 10. If 9 is lighter, 9 is the defective one and
+it is \(L\); if 9 and 10 balance, then 11 must be defective and \(H\); If 9 is heavier, 10 is
+the defective one and it is \(L\). If 9, 10 and 8, 11 balance, 12 is the defective one. If 9,
+10 is heavier, than either 9 or 10 is \(H\), or 11 is \(L\).
+
+You can easily follow the tree in Figure 2.1 for further analysis and it is clear from the
+tree that all possible scenarios can be resolved in 3 measurements.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  x=1mm,
+  y=1mm,
+  >=Stealth,
+  font=\scriptsize,
+  line cap=round,
+  line join=round,
+  pan/.style={draw, ellipse, minimum height=5.5mm, inner xsep=2.5mm, inner ysep=0.7mm},
+  branch/.style={font=\scriptsize, align=center, inner sep=0.5pt, fill=white},
+  result/.style={font=\scriptsize, inner sep=0.2pt}
+]
+\path[use as bounding box] (0,0) rectangle (151,89);
+
+% First weighing and its two nontrivial branches.
+\node[pan, minimum width=7mm] (root) at (75,86) {?};
+\coordinate (rootpivot) at (75,80);
+\coordinate (rootfork) at (75,68);
+\draw[->] (root.south) -- (rootpivot);
+\node at (72,82.6) {$+$};
+\node at (78,80.8) {$-$};
+\node[pan, minimum width=24mm] (firstleft) at (52,74) {1,2,3,4};
+\node[pan, minimum width=24mm] (firstright) at (99,74) {5,6,7,8};
+\draw (rootpivot) -- (firstleft.north east);
+\draw (rootpivot) -- (firstright.north west);
+\draw (rootpivot) -- (rootfork);
+
+\coordinate (leftentry) at (35,58);
+\coordinate (rightentry) at (116,58);
+\draw[->] (rootfork) -- (leftentry);
+\draw[->] (rootfork) -- (rightentry);
+\node[branch, text width=47mm] at (43,64) {1/2/3/4 $L$ or 5/6/7/8 $H$};
+\node[branch, text width=44mm] at (108,64) {9/10/11/12 $L$ or $H$};
+\node at (58,69.5) {$-$};
+\node at (92,69.5) {$=$};
+
+% Left branch: compare 1,2,5 with 3,6,9.
+\node[pan, minimum width=19mm] (leftpanone) at (22,52) {1,2,5};
+\node[pan, minimum width=19mm] (leftpantwo) at (48,52) {3,6,9};
+\draw (leftentry) -- (leftpanone.north east);
+\draw (leftentry) -- (leftpantwo.north west);
+\coordinate (leftfork) at (35,44);
+\draw (leftfork) -- (leftpanone.south east);
+\draw (leftfork) -- (leftpantwo.south west);
+
+\node[pan, minimum width=16mm] (leftcompareone) at (9,27) {1 $-$ 2};
+\node[pan, minimum width=16mm] (leftcomparetwo) at (35,27) {7 $-$ 8};
+\node[pan, minimum width=16mm] (leftcomparethree) at (61,27) {3 $-$ 9};
+\draw[->] (leftfork) -- (leftcompareone.north);
+\draw[->] (leftfork) -- (leftcomparetwo.north);
+\draw[->] (leftfork) -- (leftcomparethree.north);
+\node[branch, text width=21mm] at (9,39.5) {$1/2L$ or $6H$};
+\node[branch, text width=21mm] at (35,39.5) {$4L$ or $7/8H$};
+\node[branch, text width=18mm] at (61,39.5) {$5H$ or $3L$};
+\node at (9,42.5) {$-$};
+\node at (35,42.5) {$=$};
+\node at (61,42.5) {$+$};
+
+\draw[->] (leftcompareone.south) -- (3,10);
+\draw[->] (leftcompareone.south) -- (9,10);
+\draw[->] (leftcompareone.south) -- (15,10);
+\node at (6,19) {$-$};
+\node at (9,18) {$=$};
+\node at (12,19) {$+$};
+\node[result] at (3,7) {$1L$};
+\node[result] at (9,7) {$6H$};
+\node[result] at (15,7) {$2L$};
+
+\draw[->] (leftcomparetwo.south) -- (29,10);
+\draw[->] (leftcomparetwo.south) -- (35,10);
+\draw[->] (leftcomparetwo.south) -- (41,10);
+\node at (32,19) {$-$};
+\node at (35,18) {$=$};
+\node at (38,19) {$+$};
+\node[result] at (29,7) {$8H$};
+\node[result] at (35,7) {$4L$};
+\node[result] at (41,7) {$7H$};
+
+\draw[->] (leftcomparethree.south) -- (55,10);
+\draw[->] (leftcomparethree.south) -- (61,10);
+\draw[->] (leftcomparethree.south) -- (67,10);
+\node at (58,19) {$-$};
+\node at (61,18) {$=$};
+\node at (64,19) {$+$};
+\node[result] at (55,7) {$3L$};
+\node[result] at (61,7) {$=$};
+\node[result] at (67,7) {$5H$};
+
+% Right branch: compare 9,10 with 8,11.
+\node[pan, minimum width=19mm] (rightpanone) at (103,52) {9,10};
+\node[pan, minimum width=19mm] (rightpantwo) at (129,52) {8,11};
+\draw (rightentry) -- (rightpanone.north east);
+\draw (rightentry) -- (rightpantwo.north west);
+\coordinate (rightfork) at (116,44);
+\draw (rightfork) -- (rightpanone.south east);
+\draw (rightfork) -- (rightpantwo.south west);
+
+\node[pan, minimum width=16mm] (rightcompareone) at (88,27) {9 $-$ 10};
+\node[pan, minimum width=16mm] (rightcomparetwo) at (115,27) {8 $-$ 12};
+\node[pan, minimum width=16mm] (rightcomparethree) at (142,27) {9 $-$ 10};
+\draw[->] (rightfork) -- (rightcompareone.north);
+\draw[->] (rightfork) -- (rightcomparetwo.north);
+\draw[->] (rightfork) -- (rightcomparethree.north);
+\node[branch, text width=21mm] at (88,39.5) {$9/10L$ or $11H$};
+\node[branch, text width=21mm] at (115,39.5) {$12L$ or $12H$};
+\node[branch, text width=21mm] at (142,39.5) {$9/10H$ or $11L$};
+\node at (88,42.5) {$-$};
+\node at (115,42.5) {$=$};
+\node at (142,42.5) {$+$};
+
+\draw[->] (rightcompareone.south) -- (82,10);
+\draw[->] (rightcompareone.south) -- (88,10);
+\draw[->] (rightcompareone.south) -- (94,10);
+\node at (85,19) {$-$};
+\node at (88,18) {$=$};
+\node at (91,19) {$+$};
+\node[result] at (82,7) {$9L$};
+\node[result] at (88,7) {$11H$};
+\node[result] at (94,7) {$10L$};
+
+\draw[->] (rightcomparetwo.south) -- (109,10);
+\draw[->] (rightcomparetwo.south) -- (121,10);
+\node at (112,19) {$-$};
+\node at (118,19) {$+$};
+\node[result] at (109,7) {$12H$};
+\node[result] at (121,7) {$12L$};
+
+\draw[->] (rightcomparethree.south) -- (136,10);
+\draw[->] (rightcomparethree.south) -- (142,10);
+\draw[->] (rightcomparethree.south) -- (148,10);
+\node at (139,19) {$-$};
+\node at (142,18) {$=$};
+\node at (145,19) {$+$};
+\node[result] at (136,7) {$10H$};
+\node[result] at (142,7) {$11L$};
+\node[result] at (148,7) {$9H$};
+\end{tikzpicture}
+\caption{Tree diagram to identify the defective ball in 12 balls}
+\label{fig:zhou-figure-2-1}
+\end{figure}
+
+\footnotetext[4]{Here is where the symmetry idea comes in. Nothing makes the 1, 2, 3, 4 or
+5, 6, 7, 8 labels special. If 1, 2, 3, 4 are heavier than 5, 6, 7, 8, let's just exchange the
+labels of these two groups. Again we have the case of 1, 2, 3, 4 being lighter than 5, 6, 7, 8.}
+
+In general if you have the information as to whether the defective ball is heavier or
+% ZHOU-SOURCE-PAGE: 25 PRINTED: 9
+lighter, you can identify the defective ball among up to \(3^n\) balls using no more than \(n\)
+measurements since each weighing reduces the problem size by 2/3. If you have no information
+as to whether the defective ball is heavier or lighter, you can identify the defective ball among
+up to \((3^n-3)/2\) balls using no more than \(n\) measurements.
+
+\problem{Trailing zeros}
+How many trailing zeros are there in 100! (factorial of 100)?
+
+\solution
+This is an easy problem. We know that each pair of 2 and 5 will give a trailing zero. If we
+perform prime number decomposition on all the numbers in 100!, it is obvious that the frequency
+of 2 will far outnumber the frequency of 5. So the frequency of 5 determines the number of
+trailing zeros. Among numbers 1,2,\ldots,99, and 100, 20 numbers are divisible by 5 (5, 10,
+\ldots, 100). Among these 20 numbers, 4 are divisible by \(5^2\) (25, 50, 75, 100). So the
+total frequency of 5 is 24 and there are 24 trailing zeros.
+
+\problem{Horse race}
+There are 25 horses, each of which runs at a constant speed that is different from the other
+horses\textquotesingle{}. Since the track only has 5 lanes, each race can have at most 5 horses.
+If you need to find the 3 fastest horses, what is the minimum number of races needed to identify
+them?
+
+\solution
+This problem tests your basic analytical skills. To find the 3 fastest horses, surely all horses
+need to be tested. So a natural first step is to divide the horses to 5 groups (with horses 1-5,
+6-10, 11-15, 16-20, 21-25 in each group). After 5 races, we will have the order within each
+group, let's assume the order follows the order of numbers (e.g., 6 is the fastest and 10 is the
+slowest in the 6-10 group)\footnotemark[5]. That means 1, 6, 11, 16 and 21 are the fastest
+within each group.
+
+Surely the last two horses within each group are eliminated. What else can we infer? We know
+that within each group, if the fastest horse ranks 5th or 4th among 25 horses, then all horses in
+that group cannot be in top 3; if it ranks the 3rd, no other horse in that group can be in the top
+3; if it ranks the 2nd, then one other horse in that group may be in top 3, if it ranks the first,
+then two other horses in that group may be in top 3.
+
+\footnotetext[5]{Such an assumption does not affect the generality of the solution. If the order
+is not as described, just change the labels of the horses.}
+
+% ZHOU-SOURCE-PAGE: 26 PRINTED: 10
+So let's race horses 1, 6, 11, 16 and 21. Again without loss of generality, let's assume the
+order is 1, 6, 11, 16 and 21. Then we immediately know that horses 4-5, 8-10, 12-15, 16-20
+and 21-25 are eliminated. Since 1 is fastest among all the horses, 1 is in. We need to determine
+which two among horses 2, 3, 6, 7 and 11 are in top 3, which only takes one extra race.
+
+So all together we need 7 races (in 3 rounds) to identify the 3 fastest horses.
+
+\problem{Infinite sequence}
+If \(x\mathbin{\text{\textasciicircum}}x\mathbin{\text{\textasciicircum}}x
+\mathbin{\text{\textasciicircum}}x\mathbin{\text{\textasciicircum}}x
+\mathbin{\text{\textasciicircum}}\cdots=2\), where
+\(x\mathbin{\text{\textasciicircum}}y=x^y\), what is \(x\)?
+\solution
+This problem appears to be difficult, but a simple analysis will give an elegant solution. What
+do we have from the original equation?
+
+\begin{align*}
+\lim_{n\to\infty}\underbrace{x^{x^{x^{\cdots^x}}}}_{n\ \mathrm{terms}}=2
+\quad\Longleftrightarrow\quad
+\lim_{n\to\infty}\underbrace{x^{x^{x^{\cdots^x}}}}_{n-1\ \mathrm{terms}}=2.
+\end{align*}
+
+In other words, as \(n\to\infty\), adding or minus one
+\(x\mathbin{\text{\textasciicircum}}\) should yield the same result.
+
+So
+\[
+x^{x^{x^{x^{\cdots}}}}=x^{\left(x^{x^{x^{\cdots}}}\right)}=x^2=2
+\quad\Longrightarrow\quad x=\sqrt{2}.
+\]
+
+\subsection{Thinking Out of the Box}
+
+\problem{Box packing}
+Can you pack 53 bricks of dimensions \(1\times1\times4\) into a \(6\times6\times6\) box?
+
+\solution
+This is a nice problem extended from a popular chess board problem. In that problem, you have a
+\(8\times8\) chess board with two small squares at the opposite diagonal corners removed. You
+have many bricks with dimension \(1\times2\). Can you pack 31 bricks into the remaining 62 squares?
+(An alternative question is whether you can cover all 62 squares using bricks without any bricks
+overlapping with each other or sticking out of the board, which requires a similar analysis.)
+
+A real chess board figure surely helps the visualization. As shown in Figure 2.2, when a chess
+board is filled with alternative black and white squares, both squares at the opposite diagonal
+corners have the same color. If you put a 1\(\times\)2 brick on the board, it will always cover one
+black square and one white square. Let's say it's the two black corner squares were removed, then
+the rest of the board can fit at most 30 bricks since we only have 30 black squares left (and each
+brick requires one black square). So to pack 31 bricks is out of the question. To cover all 62
+squares without overlapping or overreaching, we must have exactly 31 bricks. Yet we have proved
+that 31 bricks cannot
+
+% ZHOU-SOURCE-PAGE: 27 PRINTED: 11
+fit in the 62 squares left, so you cannot find a way to fill in all 62 squares without overlapping
+or overreaching.
+
+\begin{figure}[t]
+\centering
+{\setlength{\unitlength}{5mm}
+\begin{picture}(17,13)
+  \put(5,3){\framebox(8,8){}}
+  \multiput(7,3)(2,0){3}{\rule{\unitlength}{\unitlength}}
+  \multiput(6,4)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(5,5)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(6,6)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(5,7)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(6,8)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(5,9)(2,0){4}{\rule{\unitlength}{\unitlength}}
+  \multiput(6,10)(2,0){3}{\rule{\unitlength}{\unitlength}}
+  \put(5.5,3.5){\circle{2}}
+  \put(12.5,10.5){\circle{2}}
+  \put(14,10.5){\vector(1,0){2}}
+  \put(16.5,10.5){\makebox(0,0)[l]{Removed}}
+  \put(4,3.5){\vector(-1,0){2}}
+  \put(2,3.5){\makebox(0,0)[r]{Removed}}
+\end{picture}}
+\caption{Chess board with alternative black and white squares}
+\label{fig:zhou-figure-2-2}
+\end{figure}
+
+Just as any good trading strategy, if more and more people get to know it and replicate it, the
+effectiveness of such a strategy will disappear. As the chess board problem becomes popular,
+many interviewees simply commit it to memory (after all, it's easy to remember the answer). So
+some ingenious interviewer came up with the newer version to test your thinking process, or at
+least your ability to extend your knowledge to new problems.
+
+If we look at the total volume in this 3D problem, 53 bricks have a volume of 212, which is
+smaller then the box's volume 216. Yet we can show it is impossible to pack all the bricks into
+the box using a similar approach as the chess board problem. Let's imagine that the \(6\times6\times6\)
+box is actually comprised of small \(2\times2\times2\) cubes. There should be 27 small cubes.
+Similar to the chess board (but in 3D), imagine that we have black cubes and white cubes
+alternates---it does take a little 3D visualization. So we have either 14 black cubes \& 13 white
+cubes or 13 black cubes \& 14 white cubes. For any \(1\times1\times4\) brick that we pack into the
+box, half (\(1\times1\times2\)) of it must be in a black \(2\times2\times2\) cube and the other
+half must be in a white \(2\times2\times2\) cube. The problem is that each \(2\times2\times2\)
+cube can only be used by 4 of the \(1\times1\times4\) bricks. So for the color with 13 cubes,
+be it black or white, we can only use them for 52 \(1\times1\times4\) tubes. There is no way to
+place the 53th brick. So we cannot pack 53 bricks of dimensions \(1\times1\times4\) into a
+\(6\times6\times6\) box.
+
+\problem{Calendar cubes}
+You just had two dice custom-made. Instead of numbers 1 -- 6, you place single-digit numbers
+on the faces of each dice so that every morning you can arrange the dice in a way as to make the
+two front faces show the current day of the month. You must use both dice (in other words, days
+1 -- 9 must be shown as 01 -- 09), but you can switch the
+
+% ZHOU-SOURCE-PAGE: 28 PRINTED: 12
+order of the dice if you want. What numbers do you have to put on the six faces of each of the two
+dice to achieve that?
+
+\solution
+The days of a month include 11 and 22, so both dice must have 1 and 2. To express single-digit
+days, we need to have at least a 0 in one dice. Let's put a 0 in dice one first. Considering that
+we need to express all single digit days and dice two cannot have all the digits from 1 -- 9, it's
+necessary to have a 0 in dice two as well in order to express all single-digit days.
+
+So far we have assigned the following numbers:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Dice one & 1 & 2 & 0 & ? & ? & ? \\
+\hline
+Dice two & 1 & 2 & 0 & ? & ? & ? \\
+\hline
+\end{tabular}
+\end{center}
+
+If we can assign all the rest of digits 3, 4, 5, 6, 7, 8, and 9 to the rest of the faces, the
+problem is solved. But there are 7 digits left. What can we do? Here's where you need to think
+out of the box. We can use a 6 as a 9 since they will never be needed at the same time! So,
+simply put 3, 4, and 5 on one dice and 6, 7, and 8 on the other dice, and the final numbers on
+the two dice are:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Dice one & 1 & 2 & 0 & 3 & 4 & 5 \\
+\hline
+Dice two & 1 & 2 & 0 & 6 & 7 & 8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\problem{Door to offer}
+You are facing two doors. One leads to your job offer and the other leads to exit. In front of
+either door is a guard. One guard always tells lies and the other always tells the truth. You can
+only ask one guard one yes/no question. Assuming you do want to get the job offer, what question
+will you ask?
+
+\solution
+This is another classic brain teaser (maybe a little out-of-date in my opinion). One popular
+answer is to ask one guard: ``Would the other guard say that you are guarding the door to the
+offer?'' If he answers yes, choose the other door; if he answers no, choose the door this guard is
+standing in front of.
+
+There are two possible scenarios:
+
+\begin{enumerate}
+\item Truth teller guards the door to offer; Liar guards the door to exit.
+\item Truth teller guards the door to exit; Liar guards the door to offer.
+\end{enumerate}
+
+If we ask a guard a direct question such as ``Are you guarding the door to the offer?'' For
+scenario 1, both guards will answer yes; for scenario 2, both guards will answer no. So a

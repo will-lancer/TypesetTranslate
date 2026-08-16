@@ -39,6 +39,5 @@ footnotes, and punctuation.
 | 209-211 | Included | Index |
 | 212 | Omitted | Back-cover barcode leaf |
 
-The Arabic page counter restarts with Chapter 1.  Printed source folios are
-cropped from the included scan and replaced by the edition's live page numbers.
-
+The Arabic page counter restarts with Chapter 1. The native transcription omits
+printed source folios and uses the edition's live page numbers.

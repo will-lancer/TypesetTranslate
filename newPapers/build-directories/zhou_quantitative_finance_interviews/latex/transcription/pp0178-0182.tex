@@ -1,0 +1,279 @@
+% Original source: Zhou, physical PDF pp. 178--182 (printed pp. 162--166).
+% Figures: none.
+
+% ZHOU-SOURCE-PAGE: 178 PRINTED: 162
+
+$S_1$ and $S_2$ are geometrical Brownian motions, $f=\dfrac{S_2}{S_1}$ is a
+geometric Brownian motion as well. One intuitive explanation is that both $\ln S_1$
+and $\ln S_2$ follow normal distributions, so $\ln f=\ln S_2-\ln S_1$ follows a
+normal distribution as well and $f$ follows a lognormal distribution. More rigorously,
+we can apply Ito's lemma to $f=\dfrac{S_2}{S_1}$:
+
+\[
+\frac{\partial f}{\partial S_1}=-\frac{S_2}{S_1^2},\quad
+\frac{\partial f}{\partial S_2}=\frac{1}{S_1},\quad
+\frac{\partial^2 f}{\partial S_1^2}=\frac{2S_2}{S_1^3},\quad
+\frac{\partial^2 f}{\partial S_2^2}=0,\quad
+\frac{\partial^2 f}{\partial S_1\partial S_2}=-\frac{1}{S_1^2}.
+\]
+
+\[
+\begin{aligned}
+df={}&\frac{\partial f}{\partial S_1}dS_1+\frac{\partial f}{\partial S_2}dS_2
++\frac{1}{2}\frac{\partial^2 f}{\partial S_1^2}(dS_1)^2
++\frac{1}{2}\frac{\partial^2 f}{\partial S_2^2}(dS_2)^2
++\frac{\partial^2 f}{\partial S_1\partial S_2}dS_1dS_2\\
+={}&-\mu_1\frac{S_2}{S_1}dt-\sigma_1\frac{S_2}{S_1}dW_{t,1}
++\mu_2\frac{S_2}{S_1}dt+\sigma_2\frac{S_2}{S_1}dW_{t,2}
++\sigma_1^2\frac{S_2}{S_1}dt-\rho\sigma_1\sigma_2\frac{S_2}{S_1}dt\\
+={}&\left(\mu_2-\mu_1+\sigma_1^2-\rho\sigma_1\sigma_2\right)fdt
+-\sigma_1f\,dW_{t,1}+\sigma_2f\,dW_{t,2}\\
+={}&\left(\mu_2-\mu_1+\sigma_1^2-\rho\sigma_1\sigma_2\right)fdt
++\sqrt{\sigma_1^2-2\rho\sigma_1\sigma_2+\sigma_2^2}\times f\,dW_{t,3}.
+\end{aligned}
+\]
+
+To make $f=\dfrac{S_2}{S_1}$ a martingale, set
+$\mu_2-\mu_1+\sigma_1^2-\rho\sigma_1\sigma_2=0$ and we have
+
+\[
+\tilde E\left[\frac{S_{T,2}}{S_{T,1}}\right]=\frac{S_2}{S_1},
+\]
+
+and $\dfrac{S_{T,2}}{S_{T,1}}$ is a martingale under the new measure. The value of the
+exchange option using $S_1$ as the numeraire is
+
+\[
+C_s=\tilde E\left[\max\left(\frac{S_{T,2}}{S_{T,1}}-1,0\right)\right],
+\]
+
+which is just the value of a call option with underlying asset price $S=\dfrac{S_2}{S_1}$,
+strike price $K=1$, interest rate $r=0$, and volatility
+
+\[
+\sigma_s=\sqrt{\sigma_1^2-2\rho\sigma_1\sigma_2+\sigma_2^2}.
+\]
+
+So its value is $C_s=\dfrac{S_2}{S_1}N(d_1)-N(d_2)$, where
+
+\[
+d_1=\frac{\ln(S_2/S_1)+0.5\sigma_s^2\tau}{\sigma_s\sqrt{\tau}}
+\quad\text{and}\quad d_2=d_1-\sigma_s\sqrt{\tau}.
+\]
+
+The payoff of the exchange option expressed in local currency is
+$S_1C_s=S_2N(d_1)-S_1N(d_2)$.
+
+% ZHOU-SOURCE-PAGE: 179 PRINTED: 163
+
+\subsection{Other Finance Questions}
+
+Besides option pricing problems, a variety of other quantitative finance problems are
+tested in quantitative interviews as well. Many of these problems tend to be
+position-specific. For example, if you are applying for a risk management job, prepare to
+answer questions about VaR; for fixed-income jobs, get ready to answer questions about
+interest rate models. As I explained in Chapter 1, it always helps if you grasp the basic
+knowledge before the interview. In this section, we use several examples to show some
+typical interview problems.
+
+\subsubsection*{Portfolio optimization}
+
+You are constructing a simple portfolio using two stocks $A$ and $B$. Both have the same
+expected return of 12\%. The standard deviation of $A$'s return is 20\% and the standard
+deviation of $B$'s return is 30\%; the correlation of their returns is 50\%. How will you
+allocate your investment between these two stocks to minimize the risk of your portfolio?
+
+\solution
+Portfolio optimization has always been a crucial topic for investment management firms.
+Harry Markowitz's mean-variance portfolio theory is by far the most well-known and
+well-studied portfolio optimization model. The essence of the mean-variance portfolio
+theory assumes that investors prefer (1) higher expected returns for a given level of
+standard deviation/variance and (2) lower standard deviations/variances for a given level
+of expected return. Portfolios that provide the minimum standard deviation for a given
+expected return are termed efficient portfolios. The expected return and the variance of a
+portfolio with $N$ assets can be expressed as
+
+\[
+\mu_p=w_1\mu_1+w_2\mu_2+\cdots+w_N\mu_N=w^T\mu.
+\]
+
+\[
+\operatorname{var}(r_p)=\sum_{i=1}^{N}\sigma_i^2w_i^2
++\sum_{i\ne j}\sigma_{ij}w_iw_j=w^T\Sigma w.
+\]
+
+where $w_i$, $\forall i=1,\cdots,N$, is the weight of the $i$-th asset in the portfolio;
+$\mu_i$, $\forall i=1,\cdots,N$, is the expected return of the $i$-th asset; $\sigma_i^2$
+is the variance of $i$-th asset's return; $\sigma_{ij}=\rho_{ij}\sigma_i\sigma_j$ is the
+covariance of the returns of the $i$-th and the $j$-th assets and $\rho_{ij}$ is their
+correlation; $w$ is an $N\times1$ column vector of $w_i$'s; $\mu$ is an $N\times1$
+column vector of $\mu_i$'s; $\Sigma$ is the covariance matrix of the returns of $N$
+assets, an $N\times N$ matrix.
+
+Since the optimal portfolio minimizes the variance of the return for a given level of
+expected return, the efficient portfolio can be formulated as the following optimization
+problem:
+
+% ZHOU-SOURCE-PAGE: 180 PRINTED: 164
+
+\[
+\min_{w}\quad w^T\Sigma w,
+\]
+
+where $e$ is an $N\times1$ vector with all elements equal to 1.\footnote[13]{The
+optimal weights have closed form solution $w^*=\lambda\Sigma^{-1}e+\gamma\Sigma^{-1}\mu$,
+where $\lambda=\dfrac{C-\mu_pB}{D}$, $\gamma=\dfrac{\mu_pA-B}{D}$,
+$A=e^T\Sigma^{-1}e>0$, $B=e^T\Sigma^{-1}\mu$, $C=\mu^T\Sigma^{-1}\mu>0$,
+$D=AC-B^2$.}
+
+\[
+\textit{s.t.}\quad w^T\mu=\mu_p,\quad w^Te=1.
+\]
+
+For this specific problem, the expected returns are 12\% for both stocks. So $\mu_p$ is
+always 12\% no matter what $w_A$ and $w_B$ ($w_A+w_B=1$) are. The variance of the
+portfolio is
+
+\[
+\begin{aligned}
+\operatorname{var}(r_p)&=\sigma_A^2w_A^2+\sigma_B^2w_B^2
++2\rho_{A,B}\sigma_A\sigma_Bw_Aw_B\\
+&=\sigma_A^2w_A^2+\sigma_B^2(1-w_A)^2
++2\rho_{A,B}\sigma_A\sigma_Bw_A(1-w_A).
+\end{aligned}
+\]
+
+Taking the derivative of $\operatorname{var}(r_p)$ with respect to $w_A$ and setting it
+to zero, we have
+
+\[
+\frac{\partial\operatorname{var}(r_p)}{\partial w_A}
+=2\sigma_A^2w_A-2\sigma_B^2(1-w_A)
++2\rho_{A,B}\sigma_A\sigma_B(1-w_A)
+-2\rho_{A,B}\sigma_A\sigma_Bw_A=0.
+\]
+
+\[
+\Rightarrow\quad
+w_A=\frac{\sigma_B^2-\rho_{A,B}\sigma_A\sigma_B}
+{\sigma_A^2-2\rho_{A,B}\sigma_A\sigma_B+\sigma_B^2}
+=\frac{0.09-0.5\times0.2\times0.3}
+{0.04-2\times0.5\times0.2\times0.3+0.09}=\frac{6}{7}.
+\]
+
+So we should invest 6/7 of the money in stock $A$ and 1/7 in stock $B$.
+
+\subsubsection*{Value at risk}
+
+Briefly explain what VaR is. What is the potential drawback of using VaR to measure the
+risk of derivatives?
+
+\solution
+Value at Risk (VaR) and stress test---or more general scenario analysis---are two
+important aspects of risk management. In the \emph{Financial Risk Manager Handbook},
+\footnote[14]{\emph{Financial Risk Manager Handbook} by Phillippe Jorion is a comprehensive
+book covering different aspects of risk management. A classic book for VaR is \emph{Value
+at Risk}, also by Phillippe Jorion.} VaR is defined as the following: VaR is the maximum
+loss over a target horizon such that there is a low, pre-specified probability that the
+actual loss will be larger.
+
+Given a confidence level $\alpha\in(0,1)$, the VaR can be implicitly defined as
+
+\[
+\alpha=\int_{\mathrm{VaR}}^{\infty}f(x)\,dx,
+\]
+
+where $x$ is the dollar profit (loss) and $f(x)$ is its probability density function. In
+practice, $\alpha$ is often set to 95\% or 99\%. VaR is an extremely popular choice in
+financial risk management since it summarizes the risk to a single dollar number.
+
+% ZHOU-SOURCE-PAGE: 181 PRINTED: 165
+
+Mathematically, it is simply the (negative) first or fifth percentile of the profit
+distribution.
+
+As a percentile-based measure on the profit distribution, VaR does not depend on the
+shape of the tails before (and after) probability $1-\alpha$, so it does not describe the
+loss on the left tail. When the profit/loss distribution is far from a normal distribution,
+as in the cases of many derivatives, the tail portion has a large impact on the risk, and
+VaR often does not reflect the real risk.\footnote[15]{Stress test is often used as a
+complement to VaR by estimating the tail risk.} For example, let's consider a short
+position in a credit default swap. The underlying asset is bond $A$ with a \$1M notional
+value. Further assume that $A$ has a 3\% default probability and the loss given default is
+100\% (no recovery). Clearly we are facing the credit risk of bond $A$. Yet if we use 95\%
+confidence level, $VaR(A)=0$ since the probability of default is less than 5\%.
+
+Furthermore, VaR is not sub-additive and is not a coherent measure of risk, which means
+that when we combine two positions $A$ and $B$ to form a portfolio $C$, we do not always
+have $VaR(C)\leq VaR(A)+VaR(B)$. For example, if we add a short position in a credit
+default swap on bond $B$ with a \$1M notional value. $B$ also has a 3\% default
+probability independent of $A$ and the loss given default is 100\%. Again we have
+$VaR(B)=0$. When $A$ and $B$ form a portfolio $C$, the probability that at least one bond
+will default becomes $1-(1-3\%)(1-3\%)\approx5.9\%$. So $VaR(C)=\$1M>VaR(A)+VaR(B)$.
+Lack of sub-additivity clearly contradicts the intuitive idea that diversification reduces
+risk. So it is a theoretical drawback of VaR.
+
+(Sub-additivity is one property of a coherent risk measure. A risk measure $\rho(X)$ is
+considered coherent if the following conditions holds: $\rho(X+Y)\leq\rho(X)+\rho(Y)$;
+$\rho(aX)=a\rho(X)$, $\forall a>0$; $\rho(X)\leq\rho(Y)$, if $X\leq Y$; and
+$\rho(X+k)=\rho(X)-k$ for any constant $k$. It is defined in \emph{Coherent Measure of
+Risk} by Artzner, P., et al., Mathematical Finance, 9 (3):203--228. Conditional VaR is
+a coherent risk measure.)
+
+\subsubsection*{Duration and convexity}
+
+The duration of a bond is defined as $D=-\frac{1}{P}\frac{\partial P}{\partial y}$, where
+$P$ is the price of the bond and $y$ is yield to maturity. The convexity of a bond is
+defined as $C=\frac{1}{P}\frac{\partial^2P}{\partial y^2}$. Applying Taylor's expansion,
+$\dfrac{\Delta P}{P}\approx-D\Delta y+\dfrac{1}{2}C\Delta y^2$. when $\Delta y$ is
+small, $\dfrac{\Delta P}{P}\approx-D\Delta y$.
+
+For a fixed-rate bond with coupon rate $c$ and time-to-maturity $T$:
+
+% ZHOU-SOURCE-PAGE: 182 PRINTED: 166
+
+\[
+T\uparrow\Rightarrow D\uparrow\quad c\uparrow\Rightarrow D\downarrow\quad y\uparrow\Rightarrow D\downarrow\qquad
+T\uparrow\Rightarrow C\uparrow\quad c\uparrow\Rightarrow C\downarrow\quad y\uparrow\Rightarrow C\downarrow.
+\]
+
+Another important concept is dollar duration: $\$D=-\dfrac{dP}{dy}=P\times D$. Many
+market participants use a concept called DV01: $DV01=-\dfrac{dP}{10,000\times dy}$,
+which measures the price change when the yield changes by one basis point. For some bond
+derivatives, such as swaps, dollar duration is especially important. A swap may have value
+$P=0$, in which case dollar duration is more meaningful than duration.
+
+When $n$ bonds with values $P_i$, $i=1,\cdots,n$, and Durations $D_i$ (convexities $C_i$)
+form a portfolio, the duration of the portfolio is the value-weighted average of the
+durations of the components:
+
+\[
+D=\sum_{i=1}^{n}\frac{P_i}{P}D_i\quad
+\left(C=\sum_{i=1}^{n}\frac{P_i}{P}C_i\right),
+\]
+
+where $P=\sum_{i=1}^{n}P_i$. The dollar duration of the portfolio is simply the sum of
+the dollar durations of the components: $\$D=\sum_{i=1}^{n}\$D_i$.
+
+What are the price and duration of an inverse floater with face value \$100 and annual
+coupon rate 30\%--3r that matures in 5 years? Assume that the coupons are paid
+semiannually and the current yield curve is flat at 7.5\%.
+
+\solution
+The key to solving basic fixed-income problems is cash flow replication. To price a
+fixed-income security with exotic structures, if we can replicate its cash flow using a
+portfolio of fundamental bond types such as fixed-rate coupon bonds (including zero-coupon
+bonds) and floating-rate bonds, no-arbitrage arguments give us the following conclusions:
+
+Price of the exotic security = Price of the replicating portfolio
+
+Dollar duration of the exotic security = Dollar duration of the replicating portfolio
+
+To replicate the described inverse floater, we can use a portfolio constructed by shorting
+3 floating rate bonds, which is worth \$100 each, and longing 4 fixed-rate bonds with a
+7.5\% annual coupon rate, which is worth \$100 each as well. The coupon rate of a
+floating-rate bond is adjusted every 0.5 years payable in arrear: the coupon rate paid at
+$t+0.5y$ is determined at $t$. The cash flows of both positions and the whole portfolio are
+summarized in the following table. It is apparent that the total cash flows of the portfolio
+are the same as the described inverse floater. So the price of the inverse float is the price
+of the replicating portfolio: $P_{\mathrm{inverse}}=\$100$.

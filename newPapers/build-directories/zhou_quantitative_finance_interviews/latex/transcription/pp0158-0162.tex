@@ -1,0 +1,353 @@
+% Original source: Zhou, physical PDF pp. 158--162 (printed pp. 142--146).
+% Figures: none.
+% Uncertainty log: footnote 7 begins outside this assigned page range.
+
+% ZHOU-SOURCE-PAGE: 158 PRINTED: 142
+
+\solution
+In the last problem, we mentioned that the payoff of a put is a convex function in
+stock price. The price of a put option as a function of the strike price is a convex
+function as well. Since a put option with strike 0 is worthless, we always have
+
+\[
+P(0)+\lambda P(K)=\lambda P(K)>P(\lambda K).
+\]
+
+For this specific problem, we should have $8/9\times P(90)=8/9\times9=8>P(80)$. Since the
+put option with strike price \$80 is currently priced at 8, it is overpriced and we should
+short it. The overall arbitrage portfolio is to short 9 units of put with $K=\$80$ and long
+8 units of put with $K=90$. At time 0, the initial cash flow is 0. At the maturity date, we
+have three possible scenarios:
+
+\[
+S_T\ge 90,\qquad \text{payoff}=0\quad\text{(No put is exercised.)}
+\]
+
+\[
+90>S_T\ge 80,\qquad \text{payoff}=8\times(90-S_T)>0\quad\text{(Puts with }K=90\text{ are exercised.)}
+\]
+
+\[
+S_T<80,\qquad \text{payoff}=8\times(90-S_T)-9\times(80-S_T)=S_T>0\quad\text{(All puts are exercised.)}
+\]
+
+The final payoff $\ge0$ with positive probability that payoff $>0$. So it is clearly an
+arbitrage opportunity.
+
+\subsubsection*{Black-Scholes-Merton differential equation}
+
+Can you write down the Black-Scholes-Merton differential equation and briefly explain
+how to derive it?
+
+\solution
+If the evolution of the stock price is a geometric Brownian motion,
+$dS=\mu Sdt+\sigma SdW(t)$, and the derivative $V=V(S,t)$ is a function of $S$ and $t$,
+then applying Ito's lemma yields:
+
+\[
+\begin{aligned}
+dV&=\left(\frac{\partial V}{\partial t}+\mu S\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}\right)dt\\
+&+\sigma S\frac{\partial V}{\partial S}dW(t),\\
+&\quad\text{where }W(t)\text{ is a Brownian motion.}
+\end{aligned}
+\]
+
+The Black-Scholes-Merton differential equation is a partial differential equation that
+should be satisfied by $V$:
+
+\[
+\frac{\partial V}{\partial t}+rS\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}=rV.
+\]
+
+To derive the Black-Scholes-Merton differential equation, we build a portfolio with two
+components: long one unit of the derivative and short $\dfrac{\partial V}{\partial S}$ unit
+of the underlying stock.
+
+Then the portfolio has value $\Pi=V-\dfrac{\partial V}{\partial S}S$ and the change of
+$\Pi$ follows equation
+
+% ZHOU-SOURCE-PAGE: 159 PRINTED: 143
+
+\[
+d\Pi=dV-\frac{\partial V}{\partial S}dS
+\]
+
+\[
+=\left(\frac{\partial V}{\partial t}+\mu S\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}\right)dt
++\sigma S\frac{\partial V}{\partial S}dW(t)
+-\frac{\partial V}{\partial S}\left(\mu Sdt+\sigma SdW(t)\right)
+\]
+
+\[
+=\left(\frac{\partial V}{\partial t}+\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}\right)dt.
+\]
+
+It is apparent that this portfolio is risk-free since it has no diffusion term. It should
+have risk-free rate of return as well: $d\Pi=r\left(V-\dfrac{\partial V}{\partial S}S\right)dt$.
+Combining these results we have
+
+\[
+\left(\frac{\partial V}{\partial t}+\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}\right)dt
+=r\left(V-\frac{\partial V}{\partial S}S\right)dt
+\Rightarrow \frac{\partial V}{\partial t}+rS\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}=rV,
+\]
+
+which is the Black-Scholes-Merton differential equation.
+
+The Black-Scholes-Merton differential equation is a special case of the discounted
+Feynman-Kac theorem. The discounted Feynman-Kac theorem builds the bridge between
+stochastic differential equations and partial differential equations and applies to all Ito
+processes in general:
+
+Let $X$ be an Ito process given by equation
+$dX(t)=\beta(t,X)dt+\gamma(t,X)dW(t)$ and $f(x)$ be a function of $X$. Define function
+$V(t,x)=E\left[e^{-r(T-t)}f(X_T)\mid X_t=x\right]$, then $V(t,x)$ is a martingale process
+that satisfies the partial differential equation
+
+\[
+\frac{\partial V}{\partial t}+\beta(t,x)\frac{\partial V}{\partial x}
++\frac{1}{2}\gamma^2(t,x)\frac{\partial^2V}{\partial x^2}=rV(t,x)
+\]
+
+and boundary condition $V(T,x)=f(x)$ for all $x$.
+
+Under risk-neutral measure, $dS=rSdt+\sigma SdW(t)$. Let $S=X$, $\beta(t,X)=rS$ and
+$\gamma(t,X)=\sigma S$, then the discounted Feynman-Kac equation becomes the
+Black-Scholes-Merton differential equation
+
+\[
+\frac{\partial V}{\partial t}+rS\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}=rV.
+\]
+
+\subsubsection*{Black-Scholes formula}
+
+The Black-Scholes formula for European calls and puts with continuous dividend yield $y$
+is:
+
+\[
+c=Se^{-y\tau}N(d_1)-Ke^{-r\tau}N(d_2)\quad\text{and}\quad
+p=Ke^{-r\tau}N(-d_2)-Se^{-y\tau}N(-d_1),
+\]
+
+% ZHOU-SOURCE-PAGE: 160 PRINTED: 144
+
+\[
+d_1=\frac{\ln(Se^{-y\tau}/K)+(r+\sigma^2/2)\tau}{\sigma\sqrt{\tau}}
+=\frac{\ln(S/K)+(r-y+\sigma^2/2)\tau}{\sigma\sqrt{\tau}}
+\]
+
+where
+
+\[
+d_2=\frac{\ln(S/K)+(r-y-\sigma^2/2)\tau}{\sigma\sqrt{\tau}}=d_1-\sigma\sqrt{\tau}.
+\]
+
+$N(x)$ is the cdf of the standard normal distribution and $N'(x)$ is the pdf of the
+standard normal distribution:
+
+\[
+N(x)=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-y^2/2}\,dy
+\quad\text{and}\quad N'(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2}.
+\]
+
+If the underlying asset is a futures contract, then yield $y=r$. If the underlying asset is a
+foreign currency, then yield $y=r_c$, where $r_c$ is the foreign risk-free interest rate.
+
+\problem{A. What are the assumptions behind the Black-Scholes formula?}
+
+\solution
+The original Black-Scholes formula for European calls and puts consists of the equations
+$c=SN(d_1)-Ke^{-r\tau}N(d_2)$ and
+$p=Ke^{-r\tau}N(-d_2)-SN(-d_1)$, which require the following assumptions:
+
+\begin{enumerate}
+\item The stock pays no dividends.
+\item The risk-free interest rate is constant and known.
+\item The stock price follows a geometric Brownian motion with constant drift $\mu$ and
+volatility $\sigma$: $dS=\mu Sdt+\sigma SdW(t)$.
+\item There are no transaction costs or taxes; the proceeds of short selling can be fully
+invested.
+\item All securities are perfectly divisible.
+\item There are no risk-free arbitrage opportunities.
+\end{enumerate}
+
+\problem{B. How can you derive the Black-Scholes formula for a European call on a non-dividend
+paying stock using risk-neutral probability measure?}
+
+\solution
+The Black-Scholes formula for a European call on a non-dividend paying stock is
+
+\[
+c=SN(d_1)-Ke^{-r\tau}N(d_2),\quad\text{where}\quad
+d_1=\frac{\ln(S/K)+(r+\sigma^2/2)\tau}{\sigma\sqrt{\tau}}
+\quad\text{and}\quad d_2=d_1-\sigma\sqrt{\tau}.
+\]
+
+% ZHOU-SOURCE-PAGE: 161 PRINTED: 145
+
+Under the risk-neutral probability measure, the drift of stock price becomes the risk-free
+interest rate $r(t)$: $dS=r(t)Sdt+\sigma SdW(t)$. Risk-neutral measure allows the option to be
+priced as the discounted value of its expected payoff with the risk-free interest rate:
+
+\[
+\begin{aligned}
+V(t)&=E\left[ e^{-\int_t^T r(u)\,du}V(T)\mid S(t)\right],\\
+&\quad 0\le t\le T,\quad\text{where }V(T)\text{ is the payoff at maturity }T.
+\end{aligned}
+\]
+
+When $r$ is constant, the formula can be further simplified as
+$V(t)=e^{-r\tau}E[V(T)\mid S(t)]$.
+Under risk-neutral probabilities, $dS=rSdt+\sigma SdW(t)$. Applying Ito's lemma, we get
+
+\[
+d(\ln(S))=(r-\sigma^2/2)dt+\sigma dW(t)
+\Rightarrow \ln S_T\sim N\left(\ln S+(r-\sigma^2/2)\tau,\sigma^2\tau\right).
+\]
+
+So $S_T=Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}$, where $\epsilon\sim N(0,1)$. For a
+European option, we have
+
+\[
+V(T)=
+\begin{cases}
+Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}-K,
+&\text{if }Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}>K,\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+
+\[
+Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}>K
+\Rightarrow \epsilon>\frac{\ln(K/S)-(r-\sigma^2/2)\tau}{\sigma\sqrt{\tau}}=-d_2
+\quad\text{and}
+\]
+
+\[
+\begin{aligned}
+E[V(T)\mid S]&=E[\max(S_T-K,0)\mid S]\\
+&=\int_{-d_2}^{\infty}\left(Se^{(r-\sigma^2/2)\tau+\sigma\sqrt{\tau}\epsilon}-K\right)
+\frac{1}{\sqrt{2\pi}}e^{-\epsilon^2/2}\,d\epsilon\\
+&=Se^{r\tau}\int_{-d_2}^{\infty}\frac{1}{\sqrt{2\pi}}
+e^{-(\epsilon-\sigma\sqrt{\tau})^2/2}\,d\epsilon
+-K\int_{-d_2}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\epsilon^2/2}\,d\epsilon.
+\end{aligned}
+\]
+
+Let $\tilde{\epsilon}=\epsilon-\sigma\sqrt{\tau}$, then
+$d\epsilon=d\tilde{\epsilon}$, $\epsilon=-d_2\Rightarrow
+\tilde{\epsilon}=-d_2-\sigma\sqrt{\tau}=-d_1$ and we have
+
+\[
+Se^{r\tau}\int_{-d_2}^{\infty}\frac{1}{\sqrt{2\pi}}
+e^{-(\epsilon-\sigma\sqrt{\tau})^2/2}\,d\epsilon
+=Se^{r\tau}\int_{-d_1}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\tilde{\epsilon}^2/2}\,d\tilde{\epsilon}
+=Se^{r\tau}N(d_1),
+\]
+
+\[
+K\int_{-d_2}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\epsilon^2/2}\,d\epsilon
+=K\left(1-N(-d_2)\right)=KN(d_2).
+\]
+
+\[
+\begin{aligned}
+\therefore\quad E[V(T)]&=Se^{r\tau}N(d_1)-KN(d_2)\quad\text{and}\quad\\
+V(t)&=e^{-r\tau}E[V(T)]=SN(d_1)-Ke^{-r\tau}N(d_2).
+\end{aligned}
+\]
+
+From the derivation process, it is also obvious that $1-N(-d_2)=N(d_2)$ is the
+risk-neutral probability that the call option finishes in the money.
+
+\problem{C. How do you derive the Black-Scholes formula for a European call option on a
+non-dividend paying stock by solving the Black-Scholes-Merton differential equation?}
+
+% ZHOU-SOURCE-PAGE: 162 PRINTED: 146
+
+\solution
+You can skip this problem if you don't have background in partial differential equations
+(PDE). One approach to solving the problem is to convert the Black-Scholes-Merton
+differential equation to a heat equation and then apply the boundary conditions to the heat
+equation to derive the Black-Scholes formula.
+
+Let $y=\ln S$ ($S=e^y$) and $\tilde{\tau}=T-t$, then
+$\dfrac{\partial V}{\partial t}=-\dfrac{\partial V}{\partial\tilde{\tau}}$,
+$\dfrac{\partial V}{\partial S}=\dfrac{\partial V}{\partial y}\dfrac{dy}{dS}
+=\dfrac{1}{S}\dfrac{\partial V}{\partial y}$ and
+
+\[
+\begin{aligned}
+\frac{\partial^2V}{\partial S^2}
+&=\frac{\partial}{\partial S}\left(\frac{\partial V}{\partial S}\right)
+=\frac{\partial}{\partial S}\left(\frac{1}{S}\frac{\partial V}{\partial y}\right)\\
+&=-\frac{1}{S^2}\frac{\partial V}{\partial y}
++\frac{1}{S}\frac{\partial}{\partial S}\left(\frac{\partial V}{\partial y}\right)
+=-\frac{1}{S^2}\frac{\partial V}{\partial y}
++\frac{1}{S^2}\frac{\partial^2V}{\partial y^2}.
+\end{aligned}\footnotemark[6]
+\]
+
+\footnotetext[6]{The log is taken to convert the geometric Brownian motion to an arithmetic
+Brownian motion; $\tau=T-t$ is used to convert the equation from a backward equation to a
+forward equation with initial condition at $\tau=0$ (the boundary condition at $t=T\Rightarrow
+\tau=0$).}
+
+The Black-Scholes-Merton differential equation
+
+\[
+\frac{\partial V}{\partial t}+rS\frac{\partial V}{\partial S}
++\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}-rV=0
+\]
+
+can be converted to
+
+\[
+-\frac{\partial V}{\partial\tilde{\tau}}
++\left(r-\frac{1}{2}\sigma^2\right)\frac{\partial V}{\partial y}
++\frac{1}{2}\sigma^2\frac{\partial^2V}{\partial y^2}-rV=0.
+\]
+
+Let $u=e^{r\tilde{\tau}}V$, the equation becomes
+
+\[
+-\frac{\partial u}{\partial\tilde{\tau}}
++\left(r-\frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial y}
++\frac{1}{2}\sigma^2\frac{\partial^2u}{\partial y^2}=0.
+\]
+
+Finally, let
+$x=y+\left(r-\dfrac{1}{2}\sigma^2\right)\tilde{\tau}
+=\ln S+\left(r-\dfrac{1}{2}\sigma^2\right)\tilde{\tau}$ and $\tau=\tilde{\tau}$, then
+$\dfrac{\partial u}{\partial y}=\dfrac{\partial u}{\partial x}$ and
+
+\[
+\frac{\partial u}{\partial\tilde{\tau}}
+=\frac{\partial u}{\partial\tau}+\left(r-\frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial x},
+\]
+
+which transforms the equation to
+
+\[
+-\frac{\partial u}{\partial\tau}
+-\left(r-\frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial x}
++\left(r-\frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial x}
++\frac{1}{2}\sigma^2\frac{\partial^2u}{\partial x^2}=0
+\Rightarrow\frac{\partial u}{\partial\tau}=\frac{1}{2}\sigma^2\frac{\partial^2u}{\partial x^2}.
+\]
+
+So the original equation becomes a heat/diffusion equation
+$\dfrac{\partial u}{\partial\tau}=\dfrac{1}{2}\sigma^2\dfrac{\partial^2u}{\partial x^2}$. For heat
+equation $\dfrac{\partial u}{\partial\tau}=\dfrac{1}{2}\sigma^2\dfrac{\partial^2u}{\partial x^2}$,
+where $u=u(x,\tau)$ is a function of time $\tau$ and space variable $x$, with boundary
+condition $u(x,0)=u_0(x)$, the solution is
+
+\[
+u(x,\tau)=\frac{1}{\sqrt{2\pi\sigma^2\tau}}
+\int_{-\infty}^{\infty}u_0(\psi)\exp\left(-\frac{(x-\psi)^2}{2\sigma^2\tau}\right)d\psi.\footnotemark[7]
+\]

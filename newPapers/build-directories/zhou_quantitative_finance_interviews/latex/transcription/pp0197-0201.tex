@@ -1,0 +1,242 @@
+% Original source: Zhou, physical PDF pp. 197--201 (printed pp. 181--185).
+% Figures: none.
+% Uncertainty log: footnote 11 visibly continues beyond physical page 201.
+
+% ZHOU-SOURCE-PAGE: 197 PRINTED: 181
+
+A more efficient approach uses the divide-and-conquer paradigm. Let's define
+
+\[
+T(i)=\sum_{x=1}^{i} A[x]
+\]
+
+and $T(0)=0$, then $V(i,j)=T(j)-T(i-1)$, $\forall 1\leq i\leq j\leq n$. Clearly for
+any fixed $j$, when $T(i-1)$ is minimized, $V(i,j)$ is maximized. So the maximum
+subarray ending at $j$ is $V_{\max}=T(j)-T_{\min}$ where
+$T_{\min}=\min(T(1),\ldots,T(j-1))$. If we keep track of and update $V_{\max}$ and
+$T_{\min}$ as $j$ increases, we can develop the following $O(n)$ algorithm:
+
+\begin{lstlisting}
+T = A[1]; Vmax = A[1]; Tmin = min(0,T)
+For j = 2 to n
+{
+    T = T + A[j];
+
+    If T-Tmin > Vmax then Vmax = T-Tmin;
+
+    If T < Tmin, then Tmin = T;
+}
+Return Vmax;
+\end{lstlisting}
+
+The following is a corresponding C++ function that returns $V_{\max}$ and indices $i$ and $j$
+given an array and its length:
+
+\begin{lstlisting}[language=C++]
+double maxSubarray(double A[], int len, int &i, int &j)
+{
+        double T=A[0], Vmax=A[0];
+        double Tmin = min(0.0, T);
+        for(int k=1; k<len; ++k)
+        {
+                T+=A[k];
+                if (T-Tmin > Vmax) {Vmax=T-Tmin; j=k;}
+                if (T<Tmin) {Tmin = T; i = (k+1<j)? (k+1):j;}
+        }
+        return Vmax;
+}
+\end{lstlisting}
+
+Applying it to the following array $A$,
+
+\begin{lstlisting}[language=C++]
+double A[]={1.0, 2.0, -5.0, 4.0, -3.0, 2.0, 6.0, -5.0, -1.0};
+int i = 0, j =0;
+\end{lstlisting}
+
+% ZHOU-SOURCE-PAGE: 198 PRINTED: 182
+
+\begin{lstlisting}[language=C++]
+double Vmax = maxSubarray(A, sizeof(a)/sizeof(A[1]), i, j);
+\end{lstlisting}
+
+will give $V_{\max}=9$, $i=3$ and $j=6$. So the subarray is $[4.0,-3.0,2.0,6.0]$.
+
+\subsection{The Power of Two}
+
+There are only 10 kinds of people in the world---those who know binary, and those who
+don't. If you happen to get this joke, you probably know that computers operate using
+the binary (base-2) number system. Instead of decimal digits 0--9, each bit (binary digit)
+has only two possible values: 0 and 1. Binary representation of numbers gives some
+interesting properties that are widely explored in practice and makes it an interesting
+topic to test in interviews.
+
+\subsubsection*{Power of 2}
+
+How do you determine whether an integer is a power of 2?
+
+\solution
+Any integer $x=2^n$ ($n\geq 0$) has a single bit (the $(n+1)$th bit from the right) set
+to 1. For example, 8 ($=2^3$) is expressed as $0\cdots01000$. It is also easy to see that
+$2^n-1$ has all the $n$ bits from the right set to 1. For example, 7 is expressed as
+$0\cdots00111$. So $2^n$ and $2^n-1$ do not share any common bits. As a result,
+$x\ \&\ (x-1)=0$, where $\&$ is a bitwise AND operator, is a simple way to identify
+whether the integer $x$ is a power of 2.
+
+\subsubsection*{Multiplication by 7}
+
+Give a fast way to multiply an integer by 7 without using the multiplication (*) operator?
+
+\solution
+\texttt{(x << 3) - x}, where \texttt{<<} is the bit-shift left operator. \texttt{x << 3} is
+equivalent to \texttt{x*8}. Hence \texttt{(x << 3) - x} is \texttt{x*7}.\footnote[8]{The
+result could be wrong if \texttt{<<} causes an overflow.}
+
+\subsubsection*{Probability simulation}
+
+You are given a fair coin. Can you design a simple game using the fair coin so that your
+probability of winning is $p$, $0<p<1$?\footnote[9]{Hint: Computer stores binary numbers
+instead of decimal ones; each digit in a binary number can be simulated using a fair coin.}
+
+% ZHOU-SOURCE-PAGE: 199 PRINTED: 183
+
+\solution
+The key to this problem is to realize that $p\in(0,1)$ can also be expressed as a binary
+number and each digit of the binary number can be simulated using a fair coin. First, we
+can express the probability $p$ as binary number:
+
+\[
+p=0.p_1p_2\cdots p_n=p_1 2^{-1}+p_2 2^{-2}+\cdots+p_n 2^{-n},
+\qquad p_i\in\{0,1\},\ \forall i=1,2,\ldots,n.
+\]
+
+Then, we can start tossing the fair coin, and count heads as 1 and tails as 0. Let
+$s_i\in\{0,1\}$ be the result of the $i$-th toss starting from $i=1$. After each toss, we
+compare $p_i$ with $s_i$. If $s_i<p_i$, we win and the coin tossing stops. If $s_i>p_i$,
+we lose and the coin tossing stops. If $s_i=p_i$, we continue to toss more coins. Some
+$p$ values (e.g., $1/3$) are infinite series when expressed as a binary number
+($n\to\infty$). In these cases, the probability to reach $s_i\neq p_i$ is 1 as $i$ increases.
+If the sequence is finite, (e.g., $1/4=0.01$) and we reach the final stage with $s_n=p_n$,
+we lose (e.g., for $1/4$, only the sequence 00 will be classified as a win; all other three
+sequences 01, 10 and 11 are classified as a loss). Such a simulation will give us
+probability $p$ of winning.
+
+\subsubsection*{Poisonous wine}
+
+You've got 1000 bottles of wines for a birthday party. Twenty hours before the party,
+the winery sent you an urgent message that one bottle of wine was poisoned. You happen
+to have 10 lab mice that can be used to test whether a bottle of wine is poisonous. The
+poison is so strong that any amount will kill a mouse in exactly 18 hours. But before the
+death on the 18th hour, there are no other symptoms. Is there a sure way that you can find
+the poisoned bottle using the 10 mice before the party?
+
+\solution
+If the mice can be tested sequentially to eliminate half of the bottles each time, the
+problem becomes a simple binary search problem. Ten mice can identify the poisonous
+bottle in up to 1024 bottles of wines. Unfortunately, since the symptom won't show up
+until 18 hours later and we only have 20 hours, we cannot sequentially test the mice.
+Nevertheless, the binary search idea still applies. All integers between 1 and 1000
+can be expressed in 10-bit binary format. For example, bottle 1000 can be labeled as
+1111101000 since $1000=2^9+2^8+2^7+2^6+2^5+2^3$.
+
+Now let mouse 1 take a sip from every bottle that has a 1 in the first bit (the lowest bit
+on the right); let mouse 2 take a sip from every bottle with a 1 in the second bit; $\ldots$;
+and, finally, let mouse 10 take a sip from every bottle with a 1 in the 10th bit (the highest
+bit). Eighteen hours later, if we line up the mice from the highest to the lowest bit and
+treat a live mouse as 0 and a dead mouse as 1, we can easily back track the label of the
+poisonous bottle. For example, if the 6th, 7th, and 9th mice are dead and all others are
+alive, the line-up gives the sequence 0101100000 and the label for the poisonous bottle
+is $2^8+2^6+2^5=352$.
+
+% ZHOU-SOURCE-PAGE: 200 PRINTED: 184
+
+\subsection{Numerical Methods}
+
+The prices of many financial instruments do not have closed-form analytical solutions.
+The valuation of these financial instruments relies on a variety of numerical methods. In
+this section, we discuss the application of Monte Carlo simulation and finite difference
+methods.
+
+\subsubsection*{Monte Carlo simulation}
+
+Monte Carlo simulation is a method for iteratively evaluating a deterministic model using
+random numbers with appropriate probabilities as inputs. For derivative pricing, it
+simulates a large number of price paths of the underlying assets with probability
+corresponding to the underlying stochastic process (usually under risk-neutral measure),
+calculates the discounted payoff of the derivative for each path, and averages the
+discounted payoffs to yield the derivative price. The validity of Monte Carlo simulation
+relies on the law of large numbers.
+
+Monte-Carlo simulation can be used to estimate derivative prices if the payoffs only depend
+on the final values of the underlying assets, and it can be adapted to estimate prices if
+the payoffs are path-dependent as well. Nevertheless, it cannot be directly applied to
+American options or any other derivatives with early exercise options.
+
+\problem{A. Explain how you can use Monte Carlo simulation to price a European call option?}
+
+\solution
+If we assume that stock price follows a geometric Brownian motion, we can simulate
+possible stock price paths. We can split the time between $t$ and $T$ into $N$ equally-spaced
+time steps.\footnote[10]{For European options, we can simply set $N=1$. But for more general
+options, especially the path-dependent ones, we want to have small time steps and therefore
+$N$ should be large.} So $\Delta t=\dfrac{T-t}{N}$ and $t_i=t+\Delta t\times i$, for
+$i=0,1,2,\ldots,N$. We then simulate the stock price paths under risk-neutral probability
+using equation
+
+\[
+S_i=S_{i-1}e^{(r-\sigma^2/2)(\Delta t)+\sigma\sqrt{\Delta t}\epsilon_i},
+\]
+
+where $\epsilon_i$'s are IID random variables from standard normal distribution. Let's say
+that we simulate $M$ paths and each one yields a stock price $S_{T,k}$, where
+$k=1,2,\ldots,M$, at maturity date $T$.
+
+% ZHOU-SOURCE-PAGE: 201 PRINTED: 185
+
+The estimated price of the European call is the present value of the expected payoff,
+which can be calculated as
+
+\[
+C=e^{-r(T-t)}\frac{\displaystyle\sum_{k=1}^{M}\max(S_{T,k}-K,0)}{M}.
+\]
+
+\problem{B. How do you generate random variables that follow $N(\mu,\sigma^2)$ (normal
+distribution with mean $\mu$ and variance $\sigma^2$) if your computer can only generate
+random variables that follow continuous uniform distribution between 0 and 1?}
+
+\solution
+This is a great question to test the basic knowledge of random number generation, the
+foundation of Monte Carlo simulation. The solution to this question can be dissected to two
+steps.
+
+\begin{enumerate}
+\item Generate random variable of $x\sim N(0,1)$ from uniform random number generator
+using inverse transform method and rejection method.
+\item Scale $x$ to $\mu+\sigma x$ to generate the final random variables that follow
+$N(\mu,\sigma^2)$.
+\end{enumerate}
+
+The second step is straightforward; the first step deserves some explanations. A popular
+approach to generating random variables is the inverse transform method: For any continuous
+random variable $X$ with cumulative density function $F$ ($U=F(X)$), the random variable
+$X$ can be defined as the inverse function of $U$: $X=F^{-1}(U)$, $0\leq U\leq 1$.
+It is obvious that $X=F^{-1}(U)$ is a one-to-one function with $0\leq U\leq 1$. So any
+continuous random variable can be generated using the following process:
+
+\begin{itemize}
+\item Generate a random number $u$ from the standard uniform distribution.
+\item Compute the value $x$ such that $u=F(x)$ as the random number from the distribution
+described by $F$.
+\end{itemize}
+
+For this model to work, $F^{-1}(U)$ must be computable. For standard normal distribution,
+
+\[
+U=F(X)=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-x^2/2}\,dx.
+\]
+
+The inverse function has no analytical solution. Theoretically, we can come up with the
+one-to-one mapping of $X$ to $U$ as the numeric solution of ordinary differential equation
+$F'(x)=f(x)=\dfrac{1}{\sqrt{2\pi}}e^{-x^2/2}$ using numerical integration method such as
+the Euler method.\footnotemark[11] Yet this approach is less efficient than the rejection
+method:

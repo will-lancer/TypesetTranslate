@@ -1,0 +1,308 @@
+% ZHOU-SOURCE-PAGE: 49 PRINTED: 33
+\section{Calculus and Linear Algebra}
+
+Calculus and linear algebra lay the foundation for many advanced math topics used in
+quantitative finance. So be prepared to answer some calculus or linear algebra
+problems---many of them may be incorporated into more complex problems---in
+quantitative interviews. Since most of the tested calculus and linear algebra knowledge
+is easy to grasp, the marginal benefit far outweighs the time you spend brushing up your
+knowledge on key subjects. If your memory of calculus or linear algebra is a little rusty,
+spend some time reviewing your college textbooks!
+
+Needless to say, it is extremely difficult to condense any calculus/linear algebra books
+into one chapter. Neither is it my intention to do so. This chapter focuses only on some
+of the core concepts of calculus/linear algebra that are frequently occurring in
+quantitative interviews. And unless necessary, it does so without covering the proof,
+details or even caveats of these concepts. If you are not familiar with any of the concepts,
+please refer to your favorite calculus/linear algebra books for details.
+
+\subsection{Limits and Derivatives}
+
+\subsubsection*{Basics of derivatives}
+
+Let's begin with some basic definitions and equations used in limits and derivatives.
+Although the notations may be different, you can find these materials in any calculus
+textbook.
+
+\textbf{Derivative:} Let $y=f(x)$, then
+\[
+f'(x)=\frac{dy}{dx}=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.
+\]
+
+\textbf{The product rule:} If $u=u(x)$ and $v=v(x)$ and their respective derivatives exist,
+\[
+\frac{d(uv)}{dx}=u\frac{dv}{dx}+v\frac{du}{dx},
+\qquad (uv)'=u'v+uv'.
+\]
+
+\textbf{The quotient rule:}
+\[
+\frac{d}{dx}\left(\frac{u}{v}\right)
+=\frac{v\,\dfrac{du}{dx}-u\,\dfrac{dv}{dx}}{v^2},
+\qquad
+\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}.
+\]
+
+\textbf{The chain rule:} If $y=f(u(x))$ and $u=u(x)$, then
+\[
+\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}.
+\]
+
+\textbf{The generalized power rule:}
+\[
+\frac{dy^n}{dx}=ny^{n-1}\frac{dy}{dx}\qquad\text{for }\forall n\ne0.
+\]
+
+\textbf{Some useful equations:}
+
+% ZHOU-SOURCE-PAGE: 50 PRINTED: 34
+\[
+a^x=e^{x\ln a},
+\qquad \ln(ab)=\ln a+\ln b,
+\qquad e^x=\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n.
+\]
+
+\[
+\lim_{x\to0}\frac{\sin x}{x}=1,
+\qquad
+\lim_{x\to0}(1+x)^k=1+kx\quad\text{for any }k.
+\]
+
+\[
+\lim_{x\to\infty}\frac{\ln x}{x^r}=0\quad\text{for any }r>0,
+\qquad
+\lim_{x\to\infty}x^r e^{-x}=0\quad\text{for any }r.
+\]
+
+\[
+\frac{d}{dx}e^u=e^u\frac{du}{dx},
+\qquad
+\frac{d}{dx}a^u=(a^u\ln a)\frac{du}{dx},
+\qquad
+\frac{d}{dx}\ln u=\frac{1}{u}\frac{du}{dx}=\frac{u'}{u}.
+\]
+
+\[
+\frac{d}{dx}\sin x=\cos x,
+\qquad
+\frac{d}{dx}\cos x=-\sin x,
+\qquad
+\frac{d}{dx}\tan x=\sec^2x.
+\]
+
+\problem{What is the derivative of $y=(\ln x)^{\ln x}$?}
+\hint{To calculate the derivative of functions with the format $y=f(x)^x$, it is common to take natural logs on both sides and then take the derivative, since $d(\ln y)/dx=1/y\times dy/dx$.}
+
+\solution
+
+This is a good problem to test your knowledge of basic derivative formulas---
+specifically, the chain rule and the product rule.
+
+Let $u=\ln y=\ln\bigl((\ln x)^{\ln x}\bigr)=\ln x\times\ln(\ln x)$. Applying the chain rule and the product rule,
+we have
+\[
+\frac{du}{dx}=\frac{d(\ln y)}{dx}=\frac{1}{y}\frac{dy}{dx}
+=\frac{d(\ln x)}{dx}\times\ln(\ln x)+\ln x\times\frac{d(\ln(\ln x))}{dx}
+=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x},
+\]
+
+To derive $\dfrac{d(\ln(\ln x))}{dx}$, we again use the chain rule by setting $v=\ln x$:
+\[
+\frac{d(\ln(\ln x))}{dx}=\frac{d(\ln v)}{dv}\frac{dv}{dx}
+=\frac{1}{v}\times\frac{1}{x}=\frac{1}{x\ln x}.
+\]
+
+\[
+\therefore\quad
+\frac{1}{y}\frac{dy}{dx}=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x}
+\quad\Rightarrow\quad
+\frac{dy}{dx}=\frac{y}{x}\bigl(\ln(\ln x)+1\bigr)
+=\frac{(\ln x)^{\ln x}}{x}\bigl(\ln(\ln x)+1\bigr).
+\]
+
+\subsubsection*{Maximum and minimum}
+
+Derivative $f'(x)$ is essentially the slope of the tangent line to the curve $y=f(x)$ and
+the instantaneous rate of change (velocity) of $y$ with respect to $x$. At point $x=c$, if
+
+% ZHOU-SOURCE-PAGE: 51 PRINTED: 35
+$f'(c)>0$, $f(x)$ is an increasing function at $c$; if $f'(c)<0$, $f(x)$ is a decreasing
+function at $c$.
+
+\textbf{Local maximum or minimum:} suppose that $f(x)$ is differentiable at $c$ and is defined
+on an open interval containing $c$. If $f(c)$ is either a local maximum value or a local
+minimum value of $f(x)$, then $f'(c)=0$.
+
+\textbf{Second Derivative test:} Suppose the secondary derivative of $f(x)$, $f''(x)$, is
+continuous near $c$. If $f'(c)=0$ and $f''(c)>0$, then $f(x)$ has a local minimum at $c$; if
+$f'(c)=0$ and $f''(c)<0$, then $f(x)$ has a local maximum at $c$.
+
+\problem{Without calculating the numerical results, can you tell me which number is larger, $e^\pi$ or $\pi^e$?}
+\hint{Again, consider taking natural logs on both sides; $\ln a>\ln b\Longleftrightarrow a>b$, since $\ln x$ is a monotonously increasing function.}
+
+\solution
+
+Let's take natural logs of $e^\pi$ and $\pi^e$. On the left side we have $\pi\ln e$, on the
+right side we have $e\ln\pi$. If $e^\pi>\pi^e$,
+\[
+e^\pi>\pi^e\quad\Longleftrightarrow\quad
+\pi\times\ln e>e\times\ln\pi\quad\Longleftrightarrow\quad
+\frac{\ln e}{e}>\frac{\ln\pi}{\pi}.
+\]
+
+Is it true? That depends on whether $f(x)=\dfrac{\ln x}{x}$ is an increasing or decreasing function
+from $e$ to $\pi$. Taking the derivative of $f(x)$, we have
+\[
+f'(x)=\frac{1/x\times x-\ln x}{x^2}=\frac{1-\ln x}{x^2},
+\]
+which is less than 0 when $x>e$ ($\ln x>1$). In fact, $f(x)$ has global maximum when
+$x=e$ for all $x>0$. So $\dfrac{\ln e}{e}>\dfrac{\ln\pi}{\pi}$ and $e^\pi>\pi^e$.
+
+Alternative approach: If you are familiar with the Taylor's series, which we will discuss
+in Section 3.4, you can apply Taylor's series to $e^x$:
+\[
+e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots.
+\]
+So $e^x>1+x$, $\forall x>0$. Let $x=\pi/e-1$, then
+\[
+\frac{e^{\pi/e}}{e}>\frac{\pi}{e}
+\quad\Longleftrightarrow\quad
+e^{\pi/e}>\pi
+\quad\Longleftrightarrow\quad
+e^\pi>\pi^e.
+\]
+
+\subsubsection*{L'Hospital's rule}
+
+Suppose that functions $f(x)$ and $g(x)$ are differentiable at $x\to a$ and that
+$\lim_{x\to a}g'(a)\ne0$.
+
+Further suppose that $\lim_{x\to a}f(a)=0$ and $\lim_{x\to a}g(a)=0$ or that
+$\lim_{x\to a}f(a)\to+\infty$ and $\lim_{x\to a}g(a)$
+
+% ZHOU-SOURCE-PAGE: 52 PRINTED: 36
+$\to+\infty$, then
+\[
+\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}.
+\]
+L'Hospital's rule converts the limit from an indeterminate form to a determinate form.
+
+\problem{What is the limit of $e^x/x^2$ as $x\to\infty$, and what is the limit of $x^2\ln x$ as $x\to0^+$?}
+
+\solution
+
+$\lim_{x\to\infty}\dfrac{e^x}{x^2}$ is a typical example of L'Hospital's rule since
+$\lim_{x\to\infty}e^x=\infty$ and $\lim_{x\to\infty}x^2=\infty$. Applying L'Hospital's rule, we have
+\[
+\lim_{x\to\infty}\frac{f(x)}{g(x)}
+=\lim_{x\to\infty}\frac{e^x}{x^2}
+=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}
+=\lim_{x\to\infty}\frac{e^x}{2x}.
+\]
+
+The result still has the property that $\lim_{x\to\infty}f(x)=\lim_{x\to\infty}e^x=\infty$ and
+$\lim_{x\to\infty}g(x)=\lim_{x\to\infty}2x=\infty$, so we can apply the L' Hospital's rule again:
+\[
+\lim_{x\to\infty}\frac{f(x)}{g(x)}
+=\lim_{x\to\infty}\frac{e^x}{x^2}
+=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}
+=\lim_{x\to\infty}\frac{e^x}{2x}
+=\lim_{x\to\infty}\frac{d(e^x)/dx}{d(2x)/dx}
+=\lim_{x\to\infty}\frac{e^x}{2}=\infty.
+\]
+
+At first look, L'Hospital's rule does not appear to be applicable to
+$\lim_{x\to0^+}x^2\ln x$ since it's not in the format of
+$\lim_{x\to a}\dfrac{f(x)}{g(x)}$. However, we can rewrite the original limit as
+$\lim_{x\to0^+}\dfrac{\ln x}{x^{-2}}$ and it becomes obvious that
+$\lim_{x\to0^+}x^{-2}=\infty$ and $\lim_{x\to0^+}\ln x=-\infty$. So we can now apply
+L'Hospital's rule:
+\[
+\lim_{x\to0^+}x^2\ln x
+=\lim_{x\to0^+}\frac{\ln x}{x^{-2}}
+=\lim_{x\to0^+}\frac{d(\ln x)/dx}{d(x^{-2})/dx}
+=\lim_{x\to0^+}\frac{1/x}{-2/x^3}
+=\lim_{x\to0^+}\frac{x^2}{-2}=0.
+\]
+
+\subsection{Integration}
+
+\subsubsection*{Basics of integration}
+
+Again, let's begin with some basic definitions and equations used in integration.
+
+If we can find a function $F(x)$ with derivative $f(x)$, then we call $F(x)$ an
+\textbf{antiderivative} of $f(x)$.
+
+If $f(x)=F'(x)$,
+\[
+\int_a^b f(x)=\int_a^b F(x)\,dx=[F(x)]_a^b=F(b)-F(a).
+\]
+
+% ZHOU-SOURCE-PAGE: 53 PRINTED: 37
+\[
+\frac{dF(x)}{dx}=f(x),\qquad F(a)=y_a\quad\Rightarrow\quad
+F(x)=y_a+\int_{a}^{x}f(t)\,dt.
+\]
+
+\textbf{The generalized power rule in reverse:}
+\[
+\int u^k\,du=\frac{u^{k+1}}{k+1}+c\qquad(k\ne1),
+\]
+where $c$ is any constant.
+
+\textbf{Integration by substitution:}
+\[
+\int f(g(x))\cdot g'(x)\,dx=\int f(u)\,du
+\quad\text{with }u=g(x),\quad du=g'(x)\,dx.
+\]
+
+\textbf{Substitution in definite integrals:}
+\[
+\int_a^b f(g(x))\cdot g'(x)\,dx
+=\int_{g(a)}^{g(b)}f(u)\,du.
+\]
+
+\textbf{Integration by parts:}
+\[
+\int u\,dv=uv-\int v\,du.
+\]
+
+\problem{A. What is the integral of $\ln(x)$?}
+
+\solution
+
+This is an example of integration by parts. Let $u=\ln x$ and $v=x$, we have
+\[
+d(uv)=v\,du+u\,dv=(x\times1/x)\,dx+\ln x\,dx,
+\]
+\[
+\therefore\quad\int\ln x\,dx=x\ln x-\int dx=x\ln x-x+c,
+\]
+where $c$ is any constant.
+
+\problem{B. What is the integral of $\sec(x)$ from $x=0$ to $x=\pi/6$?}
+
+\solution
+
+Clearly this problem is directly related to differentiation/integration of
+trigonometric functions. Although there are derivative functions for all basic
+trigonometric functions, we only need to remember two of them:
+\[
+\frac{d}{dx}\sin x=\cos x,\qquad
+\frac{d}{dx}\cos x=-\sin x.
+\]
+The rest can be derived using the product rule or the quotient rule. For example,
+\[
+\frac{d\sec x}{dx}=\frac{d(1/\cos x)}{dx}
+=\frac{\sin x}{\cos^2x}=\sec x\tan x,
+\]
+\[
+\frac{d\tan x}{dx}=\frac{d(\sin x/\cos x)}{dx}
+=\frac{\cos^2x+\sin^2x}{\cos^2x}=\sec^2x.
+\]
+\[
+\therefore\quad
+\frac{d(\sec x+\tan x)}{dx}=\sec x(\sec x+\tan x).
+\]

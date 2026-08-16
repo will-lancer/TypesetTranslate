@@ -1,0 +1,203 @@
+% Original source: Zhou, physical PDF pp. 69--74 (printed pp. 53--58).
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 69 PRINTED: 53
+To minimize the function \(f(\beta)\), taking the first derivative\footnote[11]{To do that, you do need a little knowledge about matrix derivatives. Some of the important derivative equations for vectors/matrices are
+\(\displaystyle \frac{\partial a^T x}{\partial x}=\frac{\partial x^T a}{\partial x}=a,\qquad \frac{\partial Ax}{\partial x}=A,\qquad \frac{\partial x^T A x}{\partial x}=(A^T+A)x,\qquad \frac{\partial^2 x^T A x}{\partial x\,\partial x^T}=2A,\)
+\(\displaystyle \frac{\partial (Ax+b)^T C(Dx+e)}{\partial x}=A^T C(Dx+e)+D^T C^T(Ax+b).\)} of \(f(\beta)\) with respect to \(\beta\), we have
+\(f'(\beta)=2X^T(Y-X\hat{\beta})=0\Rightarrow (X^T X)\hat{\beta}=X^T Y,\) where \((X^T X)\) is a \(p\times p\) symmetric matrix and \(X^T Y\) is a \(p\times1\) column vector.
+
+Let \(A=(X^T X)\) and \(b=X^T Y\), then the problem becomes \(A\hat{\beta}=b\), which can be solved using QR decomposition as we described.
+
+Alternatively, if the programming language has a function for matrix inverse, we can directly calculate \(\hat{\beta}\) as \(\hat{\beta}=(X^T X)^{-1}X^T Y\).\footnote[12]{The matrix inverse introduces large numerical error if the matrix is close to singular or badly scaled.}
+Since we are discussing linear least squares regressions, it's worthwhile to point out the assumptions behind the linear least squares regression (a common statistics question at interviews):
+\begin{enumerate}
+\item The relationship between \(Y\) and \(X\) is linear: \(Y=X\beta+\varepsilon\).
+\item \(E[\varepsilon_i]=0,\ \forall i=1,\ldots,n\).
+\item \(\operatorname{var}(\varepsilon_i)=\sigma^2,\ i=1,\ldots,n\) (constant variance), and \(E[\varepsilon_i\varepsilon_j]=0,\ i\ne j\) (uncorrelated errors).
+\item No perfect multicollinearity: \(\rho(x_i,x_j)\ne\pm1,\ i\ne j\) where \(\rho(x_i,x_j)\) is the correlation of regressors \(x_i\) and \(x_j\).
+\item \(\varepsilon\) and \(x_i\) are independent.
+\end{enumerate}
+
+Surely in practice, some of these assumptions are violated and the simple linear least squares regression is no longer the best linear unbiased estimator (BLUE). Many econometrics books dedicate significant chapters to addressing the effects of assumption violations and corresponding remedies.
+
+\subsubsection{Determinant, eigenvalue and eigenvector}
+
+\noindent\textbf{Determinant:} Let \(A\) be an \(n\times n\) matrix with elements \(\{A_{i,j}\}\), where \(i,j=1,\ldots,n\). The determinant of \(A\) is defined as a scalar:
+\[
+\det(A)=\sum_p\psi(p)a_{1,p_1}a_{2,p_2}\cdots a_{n,p_n},
+\]
+where \(p=(p_1,p_2,\ldots,p_n)\) is any permutation of \((1,2,\ldots,n)\); the sum is taken over all \(n!\) possible permutations; and
+
+% ZHOU-SOURCE-PAGE: 70 PRINTED: 54
+\[
+\psi(p)=\begin{cases}
+1, & \text{if \(p\) can be converted to natural order by even number of exchanges}\\
+-1, & \text{if \(p\) can be converted to natural order by odd number of exchanges}
+\end{cases}
+\]
+
+For example, determinants of \(2\times2\) and \(3\times3\) matrices can be calculated as
+\[
+\det\left(\begin{bmatrix}a&b\\c&d\end{bmatrix}\right)=ad-bc,\qquad
+\det\left(\begin{bmatrix}a&b&c\\d&e&f\\g&h&i\end{bmatrix}\right)=aei+bfg+cdh-ceg-afh-bdi.\footnotemark[13]
+\]
+\footnotetext[13]{In practice, determinant is usually not solved by the sum of all permutations because it is computationally inefficient. LU decomposition and cofactors are often used to calculate determinants instead.}
+
+Determinant properties: \(\det(A^T)=\det(A),\ \det(AB)=\det(A)\det(B),\ \det(A^{-1})=\dfrac{1}{\det(A)}\)
+
+\noindent\textbf{Eigenvalue.} Let \(A\) be an \(n\times n\) matrix. A real number \(\lambda\) is called an eigenvalue of \(A\) if there exists a nonzero vector \(x\) in \(R^n\) such that \(Ax=\lambda x\). Every nonzero vector \(x\) satisfying this equation is called an \textbf{eigenvector} of \(A\) associated with the eigenvalue \(\lambda\).
+
+Eigenvalues and eigenvectors are crucial concepts in a variety of subjects such as ordinary differential equations, Markov chains, principal component analysis (PCA), etc. The importance of determinant lies in its relationship to eigenvalues/eigenvectors.\footnote[14]{Determinant can also be applied to matrix inverse and linear equations as well.}
+
+The determinant of matrix \(A-\lambda I\), where \(I\) is an \(n\times n\) identity matrix with ones on the main diagonal and zeros elsewhere, is called the \textbf{characteristic polynomial} of \(A\). The equation \(\det(A-\lambda I)=0\) is called the \textbf{characteristic equation} of \(A\). The eigenvalues of \(A\) are the real roots of the characteristic equation of \(A\). Using the characteristic equation, we can also show that
+\[
+\lambda_1\lambda_2\cdots\lambda_n=\det(A)\qquad\text{and}\qquad
+\sum_{i=1}^{n}\lambda_i=\operatorname{trace}(A)=\sum_{i=1}^{n}A_{i,i}.
+\]
+
+\(A\) is diagonalizable if and only if it has linearly independent eigenvectors.\footnote[15]{If all \(n\) eigenvalues are real and distinct, then the eigenvectors are independent and \(A\) is diagonalizable.} Let \(\lambda_1,\lambda_2,\ldots,\lambda_n\) be the eigenvalues of \(A\), \(x_1,x_2,\ldots,x_n\) be the corresponding eigenvectors. and \(X=[x_1\mid x_2\mid\cdots\mid x_n]\), then
+\[
+X^{-1}AX=\begin{bmatrix}\lambda_1&&\\&\ddots&\\&&\lambda_n\end{bmatrix}=D
+\Rightarrow A=XDX^{-1}\Rightarrow A^k=XD^kX^{-1}.
+\]
+
+% ZHOU-SOURCE-PAGE: 71 PRINTED: 55
+\problem{If matrix \(A=\begin{bmatrix}2&1\\1&2\end{bmatrix}\), what are the eigenvalues and eigenvectors of \(A\)?}
+
+\solution
+This is a simple example of eigenvalues and eigenvectors. It can be solved using three related approaches:
+
+\noindent\textbf{Approach A:} Apply the definition of eigenvalues and eigenvectors directly.
+
+Let \(\lambda\) be an eigenvalue and \(x=\begin{bmatrix}x_1\\x_2\end{bmatrix}\) be its corresponding eigenvector. By definition, we have
+\[
+\begin{aligned}
+Ax&=\begin{bmatrix}2&1\\1&2\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix}\\
+&=\begin{bmatrix}2x_1+x_2\\x_1+2x_2\end{bmatrix}\\
+&=\lambda x=\begin{bmatrix}\lambda x_1\\\lambda x_2\end{bmatrix}\\
+&\Rightarrow
+\begin{cases}
+\begin{aligned}
+2x_1+x_2&=\lambda x_1\\
+&\Rightarrow 3(x_1+x_2)=\lambda(x_1+x_2)
+\end{aligned}\\
+x_1+2x_2=\lambda x_2
+\end{cases}
+\end{aligned}
+\]
+
+So either \(\lambda=3\), in which case \(x_1=x_2\) (plug \(\lambda=3\) into equation \(2x_1+x_2=\lambda x_1\)) and the corresponding normalized eigenvector is
+\[
+\begin{bmatrix}1/\sqrt{2}\\1/\sqrt{2}\end{bmatrix},
+\]
+or \(x_1+x_2=0\), in which case the normalized eigenvector is
+\[
+\begin{bmatrix}1/\sqrt{2}\\-1/\sqrt{2}\end{bmatrix}
+\]
+and \(\lambda=1\) (plug \(x_2=-x_1\) into equation \(2x_1+x_2=\lambda x_1\)).
+
+\noindent\textbf{Approach B:} Use equation \(\det(A-\lambda I)=0\).
+
+\(\det(A-\lambda I)=0\Rightarrow (2-\lambda)(2-\lambda)-1=0.\) Solving the equation, we have \(\lambda_1=1\) and \(\lambda_2=3\). Applying the eigenvalues to \(Ax=\lambda x\), we can get the corresponding eigenvectors.
+
+\noindent\textbf{Approach C:} Use equations \(\lambda_1\lambda_2\cdots\lambda_n=\det(A)\) and \(\sum_{i=1}^{n}\lambda_i=\operatorname{trace}(A)=\sum_{i=1}^{n}A_{i,i}\).
+
+\(\det(A)=2\times2-1\times1=3\) and \(\operatorname{trace}(A)=2\times2=4.\)
+
+So we have
+\[
+\begin{cases}
+\lambda_1\times\lambda_2=3\\
+\lambda_1+\lambda_2=4
+\end{cases}
+\Rightarrow
+\begin{cases}
+\lambda_1=1\\
+\lambda_2=3.
+\end{cases}
+\]
+
+Again apply the eigenvalues to \(Ax=\lambda x\), and we can get the corresponding eigenvectors.
+
+% ZHOU-SOURCE-PAGE: 72 PRINTED: 56
+\subsubsection{Positive semidefinite/definite matrix}
+
+When \(A\) is a symmetric \(n\times n\) matrix, as in the cases of covariance and correlation matrices, all the eigenvalues of \(A\) are real numbers. Furthermore, all eigenvectors that belong to distinct eigenvalues of \(A\) are orthogonal.
+
+Each of the following conditions is a necessary and sufficient condition to make a symmetric matrix \(A\) \textbf{positive semidefinite}:
+\begin{enumerate}
+\item \(x^T A x\ge0\) for any \(n\times1\) vector \(x\).
+\item All eigenvalues of \(A\) are nonnegative.
+\item All the upper left (or lower right) submatrices \(A_K\), \(K=1,\ldots,n\) have nonnegative determinants.\footnote[16]{A necessary, but not sufficient, condition for matrix \(A\) to be positive semidefinite is that \(A\) has no negative diagonal elements.}
+\end{enumerate}
+
+Covariance/correlation matrices must also be positive semidefinite. If there is no perfect linear dependence among random variables, the covariance/correlation matrix must also be \textbf{positive definite}. Each of the following conditions is a necessary and sufficient condition to make a symmetric matrix \(A\) \textbf{positive definite}:
+\begin{enumerate}
+\item \(x^T A x>0\) for any nonzero \(n\times1\) vector \(x\).
+\item All eigenvalues of \(A\) are positive.
+\item All the upper left (or lower right) submatrices \(A_K\), \(K=1,\ldots,n\) have positive determinants.
+\end{enumerate}
+
+\problem{There are 3 random variables \(x\), \(y\) and \(z\). The correlation between \(x\) and \(y\) is 0.8 and the correlation between \(x\) and \(z\) is 0.8. What is the maximum and minimum correlation between \(y\) and \(z\)?}
+
+\solution
+The problem can be solved using the positive semidefiniteness property of the correlation matrix.
+
+Let the correlation between \(y\) and \(z\) be \(\rho\), then the correlation matrix for \(x,y,z\) is
+\[
+P=\begin{bmatrix}1&0.8&0.8\\0.8&1&\rho\\0.8&\rho&1\end{bmatrix}.
+\]
+
+% ZHOU-SOURCE-PAGE: 73 PRINTED: 57
+\[
+\begin{aligned}
+\det(P)={}&1\times\det\left(\begin{bmatrix}1&\rho\\\rho&1\end{bmatrix}\right)-0.8\times\det\left(\begin{bmatrix}0.8&0.8\\\rho&1\end{bmatrix}\right)\\
+&+0.8\times\det\left(\begin{bmatrix}0.8&0.8\\1&\rho\end{bmatrix}\right)\\
+={}&(1-\rho^2)-0.8\times(0.8-0.8\rho)+0.8\times(0.8\rho-0.8)\\
+={}&-0.28+1.28\rho-\rho^2\ge0.
+\end{aligned}
+\]
+
+\[
+\Rightarrow(\rho-1)(\rho-0.28)\le0\Rightarrow0.28\le\rho\le1.
+\]
+
+So the maximum correlation between \(y\) and \(z\) is 1, the minimum is 0.28.
+
+\subsubsection{LU decomposition and Cholesky decomposition}
+
+Let \(A\) be a nonsingular \(n\times n\) matrix. \textbf{LU decomposition} expresses \(A\) as the product of a lower and upper triangular matrix: \(A=LU\).\footnote[17]{LU decomposition occurs naturally in Gaussian elimination.}
+
+LU decomposition can be use to solve \(Ax=b\) and calculate the determinant of \(A\):
+\[
+LUx=b\Rightarrow Ux=y,\ Ly=b;\qquad \det(A)=\det(L)\det(U)=\prod_{i=1}^{n}L_{i,i}\prod_{j=1}^{n}U_{j,j}.
+\]
+
+When \(A\) is a symmetric positive definite matrix, \textbf{Cholesky decomposition} expresses \(A\) as \(A=R^T R\), where \(R\) is a unique upper-triangular matrix with positive diagonal entries. Essentially, it is a LU decomposition with the property \(L=U^T\).
+
+Cholesky decomposition is useful in Monte Carlo simulation to generate correlated random variables as shown in the following problem:
+
+\problem{How do you generate two \(N(0,1)\) (standard normal distribution) random variables with correlation \(\rho\) if you have a random number generator for standard normal distribution?}
+
+\solution
+Two \(N(0,1)\) random variables \(x_1,x_2\) with a correlation \(\rho\) can be generated from independent \(N(0,1)\) random variables \(z_1,z_2\) using the following equations:
+\[
+x_1=z_1
+\]
+\[
+x_2=\rho z_1+\sqrt{1-\rho^2}z_2.
+\]
+
+It is easy to confirm that \(\operatorname{var}(x_1)=\operatorname{var}(z_1)=1,\ \operatorname{var}(x_2)=\rho^2\operatorname{var}(z_1)+(1-\rho^2)\operatorname{var}(z_2)=1,\)
+\[
+\operatorname{cov}(x_1,x_2)=\operatorname{cov}(z_1,\rho z_1+\sqrt{1-\rho^2}z_2)=\operatorname{cov}(z_1,\rho z_1)=\rho.
+\]
+
+This approach is a basic example using Cholesky decomposition to generate correlated random numbers. To generate correlated random variables that follow a \(n\)-dimensional
+
+% ZHOU-SOURCE-PAGE: 74 PRINTED: 58
+multivariate normal distribution \(X=[X_1,X_2,\ldots,X_n]^T\sim N(\mu,\Sigma)\) with mean \(\mu=[\mu_1,\mu_2,\ldots,\mu_n]^T\) and covariance matrix \(\Sigma\) (a \(n\times n\) positive definite matrix)\footnote[18]{The probability density of multivariate normal distribution is \(\displaystyle f(x)=\frac{\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}{(2\pi)^{n/2}\det(\Sigma)^{1/2}}.\)}, we can decompose the covariance matrix \(\Sigma\) into \(R^T R\) and generate \(n\) independent \(N(0,1)\) random variables \(z_1,z_2,\ldots,z_n\). Let vector \(Z=[z_1,z_2,\ldots,z_n]^T\), then \(X\) can be generated as \(X=\mu+R^T Z\).\footnote[19]{In general, if \(Y=AX+b\), where \(A\) and \(b\) are constant, then the covariance matrix \(\Sigma_Y=A\Sigma_X A^T\).}
+
+Alternatively, \(X\) can also be generated using another important matrix decomposition called \textbf{singular value decomposition (SVD)}: For any \(n\times p\) matrix \(X\), there exists a factorization of the form \(X=UDV^T\), where \(U\) and \(V\) are \(n\times p\) and \(p\times p\) orthogonal matrices, with columns of \(U\) spanning the column space of \(X\), and the columns of \(V\) spanning the row space; \(D\) is a \(p\times p\) diagonal matrix called the singular values of \(X\). For a positive definite covariance matrix, we have \(V=U\) and \(\Sigma=UDU^T\). Furthermore, \(D\) is the diagonal matrix of eigenvalues \(\lambda_1,\lambda_2,\ldots,\lambda_n\) and \(U\) is the matrix of \(n\) corresponding eigenvectors. Let \(D^{1/2}\) be a diagonal matrix with diagonal elements \(\sqrt{\lambda_1},\sqrt{\lambda_2},\ldots,\sqrt{\lambda_n}\), then it is clear that \(D=(D^{1/2})^2=(D^{1/2})(D^{1/2})^T\) and \(\Sigma=UD^{1/2}(UD^{1/2})^T\). Again, if we generate a vector of \(n\) independent \(N(0,1)\) random variables \(Z=[z_1,z_2,\ldots,z_n]^T\), \(X\) can be generated as \(X=\mu+(UD^{1/2})Z\).

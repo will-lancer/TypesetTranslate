@@ -1,0 +1,192 @@
+% Original source: Zhou, physical PDF pp. 59--63 (printed pp. 43--47).
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 59 PRINTED: 43
+Combining these three series, it is apparent that
+\(e^{i\theta}=\cos\theta+i\sin\theta.\)
+When \(\theta=\pi\), the equation becomes
+\(e^{i\pi}=\cos\pi+i\sin\pi=-1.\)
+When \(\theta=\pi/2\), the equation becomes
+\(e^{i\pi/2}=\cos(\pi/2)+i\sin(\pi/2)=i.\)\footnote[3]{Clearly they satisfy equation \((e^{i\pi/2})^2=i^2=e^{i\pi}=-1\).}
+So \(\ln i=\ln(e^{i\pi/2})=i\pi/2.\)
+
+Hence, \(\ln(i^i)=i\ln i=i(i\pi/2)=-\pi/2\Rightarrow i^i=e^{-\pi/2}.\)
+
+\problem{B. Prove \((1+x)^n\ge 1+nx\) for all \(x>-1\) and for all integers \(n\ge 2\).}
+
+\solution
+Let \(f(x)=(1+x)^n\). It is clear that \(1+nx\) is the first two terms in the Taylor's series of \(f(x)\) with \(x_0=0\). So we can consider solving this problem using Taylor's series.
+
+For \(x_0=0\) we have \((1+x)^n=1\) for \(\forall n\ge 2\). The first and secondary derivatives of \(f(x)\) are \(f'(x)=n(1+x)^{n-1}\) and \(f''(x)=n(n-1)(1+x)^{n-2}\). Applying Taylor's series, we have
+\[
+f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(\widetilde{x})}{2!}(x-x_0)^2
+=f(0)+f'(0)x+\frac{f''(\widetilde{x})}{2!}x^2,
+\]
+\[
+=1+nx+n(n-1)(1+\widetilde{x})^{n-2}x^2,
+\]
+where \(x\le\widetilde{x}\le 0\) if \(x<0\) and \(x\ge\widetilde{x}\ge 0\) if \(x>0\).
+
+Since \(x>-1\) and \(n\ge 2\), we have \(n>0,\ (n-1)>0,\ (1+\widetilde{x})^{n-2}>0,\ x^2\ge 0\).
+Hence, \(n(n-1)(1+\widetilde{x})^{n-2}x^2\ge 0\) and \(f(x)=(1+x)^n\ge 1+nx\).
+
+If Taylor's series does not jump to your mind, the condition that \(n\) is an integer may give you the hint that you can try the induction method. We can rephrase the problem as: for every integer \(n\ge 2\), prove \((1+x)^n\ge 1+nx\) for \(x>-1\).
+
+The base case: show \((1+x)^n\ge 1+nx,\ \forall x>-1\) when \(n=2\), which can be easily proven since \((1+x)^2\ge 1+2x+x^2\ge 1+2x,\ \forall x>-1\).
+
+The induction step: show that if \((1+x)^n\ge 1+nx,\ \forall x>-1\) when \(n=k\), the same statement holds for \(n=k+1\): \((1+x)^{k+1}\ge 1+(k+1)x,\ \forall x>-1\). This step is straightforward as well.
+
+% ZHOU-SOURCE-PAGE: 60 PRINTED: 44
+\[
+(1+x)^{k+1}=(1+x)^k(1+x)
+\]
+\[
+\ge (1+kx)(1+x)=1+(k+1)x+kx^2,\qquad \forall x>-1
+\]
+\[
+\ge 1+(k+1)x
+\]
+So the statement holds for all integers \(n\ge 2\) when \(x>-1\).
+
+\subsubsection*{Newton's method}
+
+Newton's method, also known as the Newton-Raphson method or the Newton-Fourier method, is an iterative process for solving the equation \(f(x)=0\). It begins with an initial value \(x_0\) and applies the iterative step \(x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\) to solve \(f(x)=0\) if \(x_1,x_2,\ldots\) converge.\footnote[4]{The iteration equation comes from the first-order Taylor's series: \(f(x_{n+1})\approx f(x_n)+f'(x_n)(x_{n+1}-x_n)=0\Rightarrow x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}\).}
+
+Convergence of Newton's method is not guaranteed, especially when the starting point is far away from the correct solution. For Newton's method to converge, it is often necessary that the initial point is sufficiently close to the root; \(f(x)\) must be differentiable around the root. When it does converge, the convergence rate is quadratic, which means
+\[
+\left|\frac{x_{n+1}-x_f}{(x_n-x_f)^2}\right|\le\delta<1,
+\]
+where \(x_f\) is the solution to \(f(x)=0\).
+
+\problem{A. Solve \(x^2=37\) to the third digit.}
+
+\solution
+Let \(f(x)=x^2-37\), the original problem is equivalent to solving \(f(x)=0\). \(x_0=6\) is a natural initial guess. Applying Newton's method, we have
+\[
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}=x_0-\frac{x_0^2-37}{2x_0}=6-\frac{36-37}{2\times 6}=6.083.
+\]
+\((6.083^2=37.00289,\) which is very close to 37.)
+
+If you do not remember Newton's method, you can directly apply Taylor's series for function \(f(x)=\sqrt{x}\) with \(f'(x)=\tfrac{1}{2}x^{-1/2}\):
+\[
+f(37)\approx f(36)+f'(36)(37-36)=6+1/12=6.083.
+\]
+
+% ZHOU-SOURCE-PAGE: 61 PRINTED: 45
+Alternatively, we can use algebra since it is obvious that the solution should be slightly higher than 6. We have \((6+y)^2=37\Rightarrow y^2+12y-1=0.\) If we ignore the \(y^2\) term, which is small, then \(y=0.083\) and \(x=6+y=6.083.\)
+
+\problem{B. Could you explain some root-finding algorithms to solve \(f(x)=0\)? Assume \(f(x)\) is a differentiable function.}
+
+\solution
+Besides Newton's method, the bisection method and the secant method are two alternative methods for root-finding.\footnote[5]{Newton's method is also used in optimization---including multi-dimensional optimization problems---to find local minimums or maximums.}
+
+\textbf{Bisection method} is an intuitive root-finding algorithm. It starts with two initial values \(a_0\) and \(b_0\) such that \(f(a_0)<0\) and \(f(b_0)>0\). Since \(f(x)\) is differentiable, there must be an \(x\) between \(a_0\) and \(b_0\) that makes \(f(x)=0\). At each step, we check the sign of \(f((a_n+b_n)/2)\). If \(f((a_n+b_n)/2)<0\), we set \(b_{n+1}=b_n\) and \(a_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)>0\), we set \(a_{n+1}=a_n\) and \(b_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)=0\), or its absolute value is within allowable error, the iteration stops and \(x=(a_n+b_n)/2\).
+
+The bisection method converges linearly, \(\frac{x_{n+1}-x_f}{x_n-x_f}\le\delta<1,\) which means it is slower than Newton's method. But once you find an \(a_0/b_0\) pair, convergence is guaranteed.
+
+\textbf{Secant method} starts with two initial values \(x_0,x_1\) and applies the iterative step
+\[
+x_{n+1}=x_n-\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}f(x_n).
+\]
+It replaces the \(f'(x_n)\) in Newton's method with a linear approximation \(\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.\) Compared with Newton's method, it does not require the calculation of derivative \(f'(x_n)\), which makes it valuable if \(f'(x)\) is difficult to calculate. Its convergence rate is \((1+\sqrt{5})/2,\) which makes it faster than the bisection method but slower than Newton's method. Similar to Newton's method, convergence is not guaranteed if initial values are not close to the root.
+
+\subsubsection*{Lagrange multipliers}
+
+The method of Lagrange multipliers is a common technique used to find local maximums/minimums of a multivariate function with one or more constraints.\footnote[6]{The method of Lagrange multipliers is a special case of Karush-Kuhn-Tucker (KKT) conditions, which reveals the necessary conditions for the solutions to constrained non-linear optimization problems.}
+
+% ZHOU-SOURCE-PAGE: 62 PRINTED: 46
+Let \(f(x_1,x_2,\ldots,x_n)\) be a function of \(n\) variables \(x=(x_1,x_2,\ldots,x_n)\) with gradient vector
+\[
+\nabla f(x)=\left(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},\ldots,\frac{\partial f}{\partial x_n}\right).
+\]
+The necessary condition for maximizing or minimizing \(f(x)\) subject to a set of \(k\) constraints
+\[
+g_1(x_1,x_2,\ldots,x_n)=0,\quad g_2(x_1,x_2,\ldots,x_n)=0,\quad\ldots,\quad g_k(x_1,x_2,\ldots,x_n)=0
+\]
+is that
+\[
+\nabla f(x)+\lambda_1\nabla g_1(x)+\lambda_2\nabla g_2(x)+\cdots+\lambda_k\nabla g_k(x)=0,
+\]
+where \(\lambda_1,\ldots,\lambda_k\) are called the Lagrange multipliers.
+
+\problem{What is the distance from the origin to the plane \(2x+3y+4z=12\)?}
+
+\solution
+The distance (\(D\)) from the origin to a plane is the minimum distance between the origin and points on the plane. Mathematically, the problem can be expressed as
+\[
+\begin{aligned}
+\min\quad D^2&=f(x,y,z)=x^2+y^2+z^2,\\
+\textit{s.t.}\quad g(x,y,z)&=2x+3y+4z-12=0.
+\end{aligned}
+\]
+Applying the Lagrange multipliers, we have
+\[
+\begin{aligned}
+\left\{
+\begin{aligned}
+\frac{\partial f}{\partial x}+\lambda\frac{\partial g}{\partial x}&=2x+2\lambda=0\\
+\frac{\partial f}{\partial y}+\lambda\frac{\partial g}{\partial y}&=2y+3\lambda=0\\
+\frac{\partial f}{\partial z}+\lambda\frac{\partial g}{\partial z}&=2z+4\lambda=0\\
+2x+3y+4z-12&=0
+\end{aligned}
+\right.
+&\quad\Rightarrow\quad
+\left\{
+\begin{aligned}
+\lambda&=-24/29\\
+x&=24/29\\
+y&=36/29\\
+z&=48/29
+\end{aligned}
+\right.
+\\
+&\quad\Rightarrow\quad
+\begin{aligned}
+D&=\sqrt{\left(\frac{24}{29}\right)^2+\left(\frac{36}{29}\right)^2+\left(\frac{48}{29}\right)^2}\\
+ &=\frac{12}{\sqrt{29}}.
+\end{aligned}
+\end{aligned}
+\]
+
+In general, for a plane with equation \(ax+by+cz=d\), the distance to the origin is
+\[
+D=\frac{|d|}{\sqrt{a^2+b^2+c^2}}.
+\]
+
+\subsection{Ordinary Differential Equations}
+
+In this section, we cover four typical differential equation patterns that are commonly seen in interviews.
+
+% ZHOU-SOURCE-PAGE: 63 PRINTED: 47
+\subsubsection*{Separable differential equations}
+
+A separable differential equation has the form \(\frac{dy}{dx}=g(x)h(y).\) Since it is separable, we can express the original equation as \(\frac{dy}{h(y)}=g(x)\,dx.\) Integrating both sides, we have the solution
+\[
+\int\frac{dy}{h(y)}=\int g(x)\,dx.
+\]
+
+\problem{A. Solve ordinary differential equation \(y'+6xy=0,\quad y(0)=1\)}
+
+\solution
+Let \(g(x)=-6x\) and \(h(y)=y\), we have \(\frac{dy}{y}=-6x\,dx.\) Integrate both sides of the equation:
+\[
+\int\frac{dy}{y}=\int-6x\,dx\Rightarrow\ln y=-3x^2+c\Rightarrow y=e^{-3x^2+c},
+\]
+where \(c\) is a constant. Plugging in the initial condition \(y(0)=1\), we have \(c=0\) and \(y=e^{-3x^2}.\)
+
+\problem{B. Solve ordinary differential equation \(y'=\frac{x-y}{x+y}\)}
+\hint{Introduce variable \(z=x+y\).}
+
+\solution
+Unlike the last example, this equation is not separable in its current form. But we can use a change of variable to turn it into a separable differential equation. Let \(z=x+y\), then the original differential equation is converted to
+\[
+\frac{d(z-x)}{dx}=\frac{x-(z-x)}{z}\Rightarrow\frac{dz}{dx}-1=\frac{2x}{z}-1\Rightarrow z\,dz=2x\,dx\Rightarrow\int z\,dz=\int 2x\,dx+c
+\]
+\[
+\Rightarrow (x+y)^2=z^2=2x^2+c\Rightarrow y^2+2xy-x^2=c
+\]
+
+\subsubsection*{First-order linear differential equations}
+
+A first-order differential linear equation has the form \(\frac{dy}{dx}+P(x)y=Q(x).\) The standard approach to solving a first-order differential equation is to identify a suitable function \(I(x)\), called an integrating factor, such that \(I(x)(y'+P(x)y)=I(x)y'+I(x)P(x)y\)

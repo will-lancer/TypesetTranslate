@@ -1,0 +1,256 @@
+% ZHOU-SOURCE-PAGE: 136 PRINTED: 120
+
+starting state $0$ (the new toss yields $T$) and we need another expected
+$E[f(n+1)]$ tosses to reach $(n+1)H$. So we have
+
+\[
+E[f(n+1)]=E[f(n)]+\frac{1}{2}\times1+\frac{1}{2}\times E[f(n+1)]
+\]
+
+\[
+\Rightarrow E[f(n+1)]=2\times E[f(n)]+2=2^{n+2}-2.
+\]
+
+\textbf{General Martingale approach:} Let's use $HH\cdots H_n$ to explain a
+general approach for the expected time to get any coin sequence by exploring the
+stopping times of martingales.\footnote[9]{If you prefer more details about the
+approach, please refer to ``A Martingale Approach to the Study of Occurrence of
+Sequence Patterns in Repeated Experiments'' by Shuo-Yen Robert Li, \textit{The
+Annals of Probability}, Vol. 8, No. 6 (Dec., 1980), pp. 1171--1176.} Imagine a
+gambler has \$1 to bet on a sequence of $n$ heads ($HH\cdots H_n$) in a fair game
+with the following rule: Bets are placed on up to $n$ consecutive games (tosses)
+and each time the gambler bets all his money (unless he goes bankrupt). For
+example, if $H$ appears at the first game, he will have \$2 and he will put all
+the \$2 into the second game. He stops playing either when he loses a game or when
+he wins $n$ games in a roll, in which case he collects \$\(2^n\) (with probability
+$1/2^n$). Now let's imagine, instead of one gambler, before each toss a new
+gambler joins the game and bets on the same sequence of $n$ heads with a bankroll
+of \$1 as well. After the $i$-th game, $i$ gamblers have participated in the game
+and the total amount of money they have put in the game should be \$i. Since each
+game is fair, the expected value of their total bankroll is \$i as well. In other
+words, if we denote $x_i$ as the amount of money all the participating gamblers
+have after the $i$-th game, then $(x_i-i)$ is a martingale.
+
+Now, let's add a stopping rule: the whole game will stop if one of the gamblers
+becomes the first to get $n$ heads in a roll. A martingale stopped at a stopping
+time is a martingale. So we still have $E[(x_i-i)]=0$. If the sequence stops after
+the $i$-th toss ($i\geq n$), the $(i-n+1)$-th player is the (first) player who
+gets $n$ heads in a roll with payoff $2^n$. So all the $(i-n)$ players before him
+went bankrupt; the $(i-n+2)$-th player gets $(n-1)$ heads in a roll with payoff
+$2^{n-1}$; $\ldots$; the $i$-th player gets one head with payoff $2$. So the total
+payoff is fixed and $x_i=2^n+2^{n-1}+\cdots+2^1=2^{n+1}-2$.
+
+Hence, $E[(x_i-i)]=2^{n+1}-2-E[i]=0\Rightarrow E[i]=2^{n+1}-2$.
+
+This approach can be applied to any coin sequences---as well as dice sequences or
+any sequences with arbitrary number of elements. For example, let's consider the
+sequence $HHTTH$. We can again use a stopped martingale process for sequence
+$HHTTH$. The gamblers join the game one by one before each toss to bet on the same
+sequence $HHTTH$ until one gambler becomes the first to get the sequence $HHTTH$.
+If the sequence stops after the $i$-th toss, the $(i-5)$th gambler gets the
+$HHTTH$ with payoff
+
+% ZHOU-SOURCE-PAGE: 137 PRINTED: 121
+
+$2^6$. All the $(i-6)$ players before him went bankrupt; the $(i-4)$th player
+loses in the second toss ($HT$); the $(i-3)$th player and the $(i-2)$th player
+lose in the first toss ($T$); the $(i-1)$th player gets sequence $HH$ with payoff
+$2^2$ and the $i$-th player gets $H$ with payoff 2.
+
+Hence, $E[(x_i-i)]=2^6+2^2+2^1-E[i]=0\Rightarrow E[i]=70$.
+
+\subsection{Dynamic Programming}
+
+Dynamic Programming refers to a collection of general methods developed to solve
+sequential, or multi-stage, decision problems.\footnote[10]{This section barely
+scratches the surface of dynamic programming. For up-to-date dynamic programming
+topics, I'd recommend the book \textit{Dynamic Programming and Optimal Control} by
+Professor Dimitri P. Bertsekas.} It is an extremely versatile tool with
+applications in fields such as finance, supply chain management, and airline
+scheduling. Although theoretically simple, mastering dynamic programming
+algorithms requires extensive mathematical prerequisites and rigorous logic. As a
+result, it is often perceived to be one of the most difficult graduate level
+courses.
+
+Fortunately, the dynamic programming problems you are likely to encounter in
+interviews---although you often may not recognize them as such---are rudimentary
+problems. So in this section we will focus on the basic logic used in dynamic
+programming and apply it to several interview problems. Hopefully the solutions to
+these examples will convey the gist and the power of dynamic programming.
+
+A discrete-time dynamic programming model includes two inherent components:
+
+\noindent\textbf{1. The underlying discrete-time dynamic system}
+
+A dynamic programming problem can always be divided into stages with a decision
+required at each stage. Each stage has a number of states associated with it. The
+decision at one stage transforms the current state into a state in the next stage
+(at some stages and states, the decision may be trivial if there is only one
+choice).
+
+Assume that the problem has $N+1$ stages (time periods). Following the convention,
+we label these stages as $0,1,\ldots,N-1,N$. At any stage $k$, $0\leq k\leq N-1$,
+the state transition can be expressed as
+
+\[
+x_{k+1}=f(x_k,u_k,w_k),
+\]
+
+where $x_k$ is the state of system at stage $k$,\footnote[11]{In general, $x_k$
+can incorporate all past relevant information. In our discussion, we only consider
+the present information by assuming Markov property.} $u_k$ is the decision
+selected at stage $k$; $w_k$ is a random parameter (also called disturbance).
+
+% ZHOU-SOURCE-PAGE: 138 PRINTED: 122
+
+Basically the state of next stage $x_{k+1}$ is determined as a function of the
+current state $x_k$, current decision $u_k$ (the choice we make at stage $k$ from
+the available options) and the random variable $w_k$ (the probability distribution
+of $w_k$ often depends on $x_k$ and $u_k$).
+
+\noindent\textbf{2. A cost (or profit) function that is additive over time.}
+
+Except for the last stage $(N)$, which has a cost/profit $g_N(x_N)$ depending only
+on $x_N$, the costs at all other stages $g_k(x_k,u_k,w_k)$ can depend on $x_k$,
+$u_k$, and $w_k$. So the total cost/profit is
+
+\[
+g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k).
+\]
+
+The goal of optimization is to select strategies/policies for the decision
+sequences $\pi^*=\{u_0^*,\ldots,u_{N-1}^*\}$ that minimize expected cost (or
+maximize expected profit):
+
+\[
+J_{\pi^*}(x_0)=\min_{\pi}E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\]
+
+\textbf{Dynamic programming (DP) algorithm}
+
+The dynamic programming algorithm relies on an idea called the \textbf{Principle of
+Optimality}: If $\pi^*=\{u_0^*,\ldots,u_{N-1}^*\}$ is the optimal policy for the
+original dynamic programming problem, then the tail policy
+$\pi_i^*=\{u_i^*,\ldots,u_{N-1}^*\}$ must be optimal for the tail subproblem
+
+\[
+E\left\{g_N(x_N)+\sum_{k=i}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\]
+
+\textbf{DP algorithm:} To solve the basic problem
+\[
+J_{\pi^*}(x_0)=\min_{\pi}E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\},
+\]
+start with $J_N(x_N)=g_N(x_N)$, and go backwards minimizing cost-to-go function
+$J_k(x_k)$:
+
+\[
+J_k(x_k)=\min_{u_k\in U_k}E\left\{g_k(x_k,u_k,w_k)+J_{k+1}\bigl(f(x_k,u_k,w_k)\bigr)\right\},
+\qquad k=0,\ldots,N-1.
+\]
+
+Then the $J_0(x_0)$ generated from this algorithm is the expected optimal cost.
+
+Although the algorithm looks complicated, the intuition is straightforward. For
+dynamic programming problems, we should start with optimal policy for every
+possible state of the final stage (which has the highest amount of information and
+least amount of uncertainty) first and then work backward towards earlier stages
+by applying the tail policies and cost-to-go functions until you reach the initial
+stage.
+
+Now let's use several examples to show how the DP algorithm is applied.
+
+% ZHOU-SOURCE-PAGE: 139 PRINTED: 123
+
+\textbf{Dice game}
+
+You can roll a 6-side dice up to 3 times. After the first or the second roll, if you
+get a number $x$, you can decide either to get $x$ dollars or to choose to continue
+rolling. But once you decide to continue, you forgo the number you just rolled. If
+you get to the third roll, you'll just get $x$ dollars if the third number is $x$
+and the game stops. What is the game worth and what is your strategy?
+
+\solution
+This is a simple dynamic programming strategy game. As all dynamic programming
+questions, the key is to start with the final stage and work backwards. For this
+question, it is the stage where you have forgone the first two rolls. It becomes a
+simple dice game with one roll. Face values 1, 2, 3, 4, 5, and 6 each have a $1/6$
+probability and your expected payoff is \$3.5.
+
+Now let's go back one step. Imagine that you are at the point after the second roll,
+for which you can choose either to have a third roll with an expected payoff of
+\$3.5 or to keep the current face value. Surely you will keep the face value if it
+is larger than 3.5; in other words, when you get 4, 5 or 6, you stop rolling. When
+you get 1, 2 or 3, you keep rolling. So your expected payoff before the second roll
+is $3/6\times3.5+1/6\times(4+5+6)=\$4.25$.
+
+Now let's go back one step further. Imagine that you are at the point after the first
+roll, for which you can choose either to have a second roll with expected payoff
+\$4.25 (when face value is 1, 2, 3 or 4) or keep the current face value. Surely you
+will keep the face value if it is larger than 4.25; In other words, when you get 5
+or 6, you stop rolling. So your expected payoff before the first roll is
+$4/6\times4.25+1/6\times(5+6)=\$14/3$.
+
+This backward approach---called tail policy in dynamic programming---gives us the
+strategy and also the expected value of the game at the initial stage, \$14/3.
+
+\textbf{World series}
+
+The Boston Red Sox and the Colorado Rockies are playing in the World Series finals.
+In case you are not familiar with the World Series, there are a maximum of 7 games
+and the first team that wins 4 games claims the championship. You have \$100 dollars
+to place a double-or-nothing bet on the Red Sox.
+
+Unfortunately, you can only bet on each individual game, not the series as a whole.
+How much should you bet on each game so that if the Red Sox wins the whole series,
+you win exactly \$100, and if Red Sox loses, you lose exactly \$100?
+
+\solution
+Let $(i,j)$ represents the state that the Red Sox has won $i$ games and the Rockies
+has won $j$ games, and let $f(i,j)$ be our net payoff, which can be negative when we
+lose money, at state $(i,j)$. From the rules of the game, we know that there may be
+between 4 and 7 games in total. We need to decide on a strategy so that whenever the
+
+% ZHOU-SOURCE-PAGE: 140 PRINTED: 124
+
+series is over, our final net payoff is either +100---when Red Sox wins the\linebreak
+championship---or -100---when Red Sox loses. In other words, the state space of the
+final stage includes $\{(4,0),(4,1),(4,2),(4,3)\}$ with payoff $f(i,j)=100$ and
+$\{(0,4),(1,4),(2,4),(3,4)\}$ with payoff $f(i,j)=-100$. As all dynamic
+programming questions, the key is to start with the final stage and work
+backwards---even though in this case the number of stages is not fixed. For each
+state $(i,j)$, if we bet \$y on the Red Sox for the next game, we will have
+$(f(i,j)+y)$ if the Red Sox wins and the state goes to $(i+1,j)$, or
+$(f(i,j)-y)$ if the Red Sox loses and the state goes to $(i,j+1)$. So clearly we
+have
+
+\[
+\begin{aligned}
+f(i+1,j)&=f(i,j)+y,\\
+f(i,j+1)&=f(i,j)-y
+\end{aligned}
+\qquad\Rightarrow\qquad
+\begin{cases}
+f(i,j)=\dfrac{f(i+1,j)+f(i,j+1)}{2},\\[6pt]
+y=\dfrac{f(i+1,j)-f(i,j+1)}{2}.
+\end{cases}
+\]
+
+For example, we have
+$f(3,3)=\dfrac{f(4,3)+f(3,4)}{2}=\dfrac{100-100}{2}=0$. Let's set up a table
+with the columns representing $i$ and the rows representing $j$. Now we have all the
+information to fill in $f(4,0)$, $f(4,1)$, $f(4,3)$, $f(4,2)$, $f(0,4)$, $f(1,4)$,
+$f(2,4)$, as well as $f(3,3)$. Similarly we can also fill in all $f(i,j)$ for the
+states where $i=3$ or $j=3$ as shown in Figure 5.7. Going further backward, we can
+fill in the net payoffs at every possible state. Using equation
+$y=(f(i+1,j)-f(i,j+1))/2$, we can also calculate the bet we need to place at each
+state, which is essentially our strategy.
+
+If you are not accustomed to the table format, Figure 5.8 redraws it as a binomial
+tree, a format you should be familiar with. If you consider that the boundary
+conditions are $f(4,0)$, $f(4,1)$, $f(4,3)$, $f(4,2)$, $f(0,4)$, $f(1,4)$, $f(2,4)$,
+and $f(3,4)$, the underlying asset either increases by 1 or decrease by 1 after
+each step, and there is no interest, then the problem becomes a simple binomial tree
+problem and the bet we place each time is the delta in dynamic hedging. In fact,
+both European options and American options can be solved numerically using dynamic
+programming approaches.

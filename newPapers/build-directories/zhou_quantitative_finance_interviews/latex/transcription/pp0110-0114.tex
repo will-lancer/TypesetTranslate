@@ -1,0 +1,287 @@
+% ZHOU-SOURCE-PAGE: 110 PRINTED: 94
+
+Actually after the 2-noodle case, you probably have found the key to this question. If
+you start with $n$ noodles, among $\binom{2n}{2}=n(2n-1)$ possible combinations, we have
+
+\[
+\frac{n}{n(2n-1)}=\frac{1}{2n-1}
+\]
+
+probability to yield 1 circle and $n-1$ noodles and $\dfrac{2n-2}{2n-1}$ probability
+to yield $n-1$ noodles only, so $E[Lf(n)]=E[Lf(n-1)]+\dfrac{1}{2n-1}$. Working
+backward, you can get the final solution as well.
+
+\problem{Optimal hedge ratio}
+You just bought one share of stock $A$ and want to hedge it by shorting stock $B$. How
+many shares of $B$ should you short to minimize the variance of the hedged position?
+Assume that the variance of stock $A$'s return is $\sigma_A^2$; the variance of $B$'s
+return is $\sigma_B^2$; their correlation coefficient is $\rho$.
+
+\solution
+Suppose that we short $h$ shares of $B$, the variance of the portfolio return is
+
+\[
+\operatorname{var}(r_A-hr_B)=\sigma_A^2-2\rho h\sigma_A\sigma_B+h^2\sigma_B^2.
+\]
+
+The best hedge ratio should minimize $\operatorname{var}(r_A-hr_B)$. Take the first
+order partial derivative with respect to $h$ and set it to zero:
+
+\[
+\frac{\partial\operatorname{var}}{\partial h}=-2\rho\sigma_A\sigma_B+2h\sigma_B^2=0
+\quad\Rightarrow\quad h=\rho\frac{\sigma_A}{\sigma_B}.
+\]
+
+To confirm it's the minimum, we can also check the second-order partial derivative:
+
+\[
+\frac{\partial^2\operatorname{var}}{\partial h^2}=2\sigma_B^2>0.
+\]
+
+So indeed when $h=\rho\dfrac{\sigma_A}{\sigma_B}$, the hedge portfolio has the
+minimum variance.
+
+\problem{Dice game}
+Suppose that you roll a dice. For each roll, you are paid the face value. If a roll gives
+4, 5 or 6, you can roll the dice again. Once you get 1, 2 or 3, the game stops. What is
+the expected payoff of this game?
+
+\Needspace{4\baselineskip}
+\solution
+This is an example of the law of total expectation. Clearly your payoff will be different
+depending on the outcome of first roll. Let $E[X]$ be your expected payoff and $Y$ be the
+outcome of your first throw. You have $1/2$ chance to get $Y\in\{1,2,3\}$, in which case
+the expected value is the expected face value 2, so $E[X\mid Y\in\{1,2,3\}]=2$; you have
+
+% ZHOU-SOURCE-PAGE: 111 PRINTED: 95
+
+$1/2$ chance to get $Y\in\{4,5,6\}$, in which case you get expected face value 5 and
+extra throw(s). The extra throw(s) essentially means you start the game again and have an
+extra expected value $E[X]$. So we have $E[X\mid Y\in\{4,5,6\}]=5+E[X]$. Apply the
+law of total expectation, we have
+
+\[
+E[X]=E[E[X\mid Y]]=\frac{1}{2}\times2+\frac{1}{2}\times(5+E[X])
+\quad\Rightarrow\quad E[X]=7.\footnotemark[27]
+\]
+\footnotetext[27]{You will also see that the problem can be solved using Wald's equality in Chapter 5.}
+
+\problem{Card game}
+What is the expected number of cards that need to be turned over in a regular 52-card deck
+in order to see the first ace?
+
+\solution
+There are 4 aces and 48 other cards. Let's label them as card 1, 2, $\ldots$, 48. Let
+
+\[
+X_i=\begin{cases}
+1, & \text{if card $i$ is turned over before 4 aces},\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+The total number of cards that need to be turned over in order to see the first ace is
+$X=1+\displaystyle\sum_{i=1}^{48}X_i$, so we have
+$E[X]=1+\displaystyle\sum_{i=1}^{48}E[X_i]$. As shown in the following sequence,
+each card $i$ is equally likely to be in one of the five regions separated by 4 aces:
+
+\[
+1\qquad A\qquad 2\qquad A\qquad 3\qquad A\qquad 4\qquad A\qquad 5
+\]
+
+So the probability that card $i$ appears before all 4 aces is $1/5$, and we have
+$E[X_i]=1/5$.
+
+Therefore,
+\[
+E[X]=1+\sum_{i=1}^{48}E[X_i]=1+48/5=10.6.
+\]
+
+This is just a special case for random ordering of $m$ ordinary cards and $n$ special
+cards. The expected position of the first special card is
+
+\[
+1+\sum_{i=1}^{m}E[X_i]=1+\frac{m}{n+1}.
+\]
+
+\problem{Sum of random variables}
+Assume that $X_1$, $X_2$, $\ldots$, and $X_n$ are independent and
+identically-distributed (IID) random variables with uniform distribution between 0 and 1.
+What is the probability that $S_n=X_1+X_2+\cdots+X_n\leq1$?\footnote[28]{Hint: start with
+the simplest case where $n=1$, 2, and 3. Try to find a general formula and prove it using
+induction.}
+
+% ZHOU-SOURCE-PAGE: 112 PRINTED: 96
+
+\solution
+This problem is a rather difficult one. The general principle to start with the simplest
+cases and try to find a pattern will again help you approach the problem; even though it
+may not give you the final answer. When $n=1$, $P(S_1\leq1)$ is 1. As shown in
+Figure~\ref{fig:zhou-figure-4-6}, when $n=2$, the probability that $X_1+X_2\leq1$ is
+just the area under $X_1+X_2\leq1$ within the square with side length 1 (a triangle). So
+$P(S_2\leq1)=1/2$. When $n=3$, the probability becomes the tetrahedron ABCD under the
+plane $X_1+X_2+X_3\leq1$ within the cube with side length 1. The volume of tetrahedron
+ABCD is $1/6$.\footnote[29]{You can derive it by integration:
+$\int_0^1 A(z)\,dz=\int_0^1\frac{1}{2}z^2\,dz=1/6$, where $A(z)$ is the cross-sectional
+area.} So $P(S_3\leq1)=1/6$. Now we can guess that the solution is $1/n!$. To prove it,
+let's again resort to induction. Assume $P(S_n\leq1)=1/n!$. We need to prove that
+$P(S_{n+1}\leq1)=1/(n+1)!$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.8,baseline=(current bounding box.center)]
+  \coordinate (O) at (0,0);
+  \coordinate (T) at (0,3);
+  \coordinate (R) at (3,0);
+  \fill[gray!45] (O) -- (T) -- (R) -- cycle;
+  \draw (O) rectangle (3,3);
+  \draw (T) -- (R);
+  \node[left] at (0,3) {$1$};
+  \node[below left] at (O) {$0$};
+  \node[below] at (R) {$1$};
+  \node[left] at (0,1.5) {$X_2$};
+  \node[below] at (1.5,0) {$X_1$};
+  \node[below] at (1.5,-0.7) {$n=2$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=0.8,baseline=(current bounding box.center)]
+  \coordinate (O) at (0,0);
+  \coordinate (B) at (0,3);
+  \coordinate (C) at (3,0);
+  \coordinate (D) at (1,0.8);
+  \coordinate (A) at (0,2.3);
+  \coordinate (Btop) at (0,3.8);
+  \coordinate (Ctop) at (3,0.8);
+  \coordinate (Atop) at (1,3.8);
+  \coordinate (Dtop) at (4,1.6);
+  \fill[gray!45] (A) -- (B) -- (C) -- cycle;
+  \draw (B) -- (Btop) -- (Atop) -- (A);
+  \draw (A) -- (Atop);
+  \draw (Btop) -- (Dtop) -- (Ctop) -- (C);
+  \draw (Dtop) -- (Atop);
+  \draw (C) -- (Ctop);
+  \draw[dashed] (A) -- (D) -- (C);
+  \draw[dashed] (D) -- (Dtop);
+  \draw[dashed] (B) -- (D);
+  \node[left] at (A) {$A$};
+  \node[left] at (B) {$B$};
+  \node[below right] at (C) {$C$};
+  \node[below left] at (O) {$0$};
+  \node[left] at (0,1.2) {$X_3$};
+  \node[below] at (1.5,0) {$X_1$};
+  \node[below right] at (1.1,0.75) {$X_2$};
+  \node[below] at (1.5,-0.7) {$n=3$};
+\end{tikzpicture}
+\caption{Probability that $S_n\leq1$ when $n=2$ or $n=3$.}
+\label{fig:zhou-figure-4-6}
+\end{figure}
+
+Here we can use probability by conditioning. Condition on the value of $X_{n+1}$, we
+have
+
+\[
+P(S_{n+1}\leq1)=\int_0^1 f(X_{n+1})P(S_n\leq1-X_{n+1})\,dX_{n+1},
+\]
+
+where $f(X_{n+1})$ is the probability density function of $X_{n+1}$, so
+$f(X_{n+1})=1$. But how do we calculate $P(S_n\leq1-X_{n+1})$? The cases of $n=2$
+and $n=3$ have provided us with some clue. For $S_n\leq1-X_{n+1}$ instead of
+$S_n\leq1$, we essentially need to shrink every dimension of the $n$-dimensional
+simplex\footnote[30]{An $n$-Simplex is the $n$-dimensional analog of a triangle.} from 1 to
+
+% ZHOU-SOURCE-PAGE: 113 PRINTED: 97
+
+$1-X_{n+1}$. So its volume should be
+$\dfrac{(1-X_{n+1})^n}{n!}$ instead of $\dfrac{1}{n!}$. Plugging in these results,
+we have
+
+\[
+\begin{aligned}
+P(S_{n+1}\leq1)&=\int_0^1\frac{(1-X_{n+1})^n}{n!}\,dX_{n+1}\\
+&=\frac{1}{n!}\left[-\frac{(1-X_{n+1})^{n+1}}{n+1}\right]_0^1\\
+&=\frac{1}{n!}\times\frac{1}{n+1}=\frac{1}{(n+1)!}.
+\end{aligned}
+\]
+
+So the general result is true for $n+1$ as well and we have $P(S_n\leq1)=1/n!$.
+
+\problem{Coupon collection}
+There are $N$ distinct types of coupons in cereal boxes and each type, independent of
+prior selections, is equally likely to be in a box.
+
+\begin{enumerate}
+\item[A.] If a child wants to collect a complete set of coupons with at least one of each
+type, how many coupons (boxes) on average are needed to make such a complete set?
+\item[B.] If the child has collected $n$ coupons, what is the expected number of distinct
+coupon types?\footnote[31]{Hint: For part A, let $X_i$ be the number of extra coupons collected
+to get the $i$-th distinct coupon after $i-1$ types of distinct coupons have been collected.
+Then the total expected number of coupons to collect all distinct types is
+$E[X]=\displaystyle\sum_{i=1}^{N}E[X_i]$. For part B, which is the expected probability
+(P) that the $i$-th coupon type is not in the $n$ coupons?}
+\end{enumerate}
+
+\Needspace{4\baselineskip}
+\solution
+For part A, let $X_i$, $i=1,2,\ldots,N$, be the number of additional coupons needed
+to obtain the $i$-th type after $(i-1)$ distinct types have been collected. So the total
+number of coupons needed is
+
+\[
+X=X_1+X_2+\cdots+X_N=\sum_{i=1}^{N}X_i.
+\]
+
+For any $i$, $i-1$ distinct types of coupons have already been collected. It follows that a
+new coupon will be of a different type with probability $1-(i-1)/N=(N-i+1)/N$.
+Essentially we are waiting for the $i$-th distinct type, the random variable $X_i$ follows a
+geometric distribution with $p=(N-i+1)/N$ and $E[X_i]=N/(N-i+1)$. For example, if
+$i=1$, we simply have $X_1=E[X_1]=1$.
+
+\[
+\therefore\quad E[X]=\sum_{i=1}^{N}E[X_i]
+=\sum_{i=1}^{N}\frac{N}{N-i+1}
+=N\left(\frac{1}{N}+\frac{1}{N-1}+\cdots+\frac{1}{1}\right).
+\]
+
+% ZHOU-SOURCE-PAGE: 114 PRINTED: 98
+
+For part $B$, let $Y$ be the number of distinct types of coupons in the set of $n$ coupons.
+We introduce indicator random variables $I_i$, $i=1,2,\ldots,N$, where
+
+\[
+\begin{cases}
+I_i=1, & \text{if at least one coupon of the $i$-th type is in the set of $n$ coupons},\\
+I_i=0, & \text{otherwise}.
+\end{cases}
+\]
+
+So we have $Y=I_1+I_2+\cdots+I_N=\displaystyle\sum_{i=1}^{N}I_i$.
+
+For each collected coupon, the probability that it is not the $i$-th coupon type is
+$\dfrac{N-1}{N}$. Since all $n$ coupons are independent, the probability that none of the
+$n$ coupons is the $i$-th coupon type is
+$P(I_i=0)=\left(\dfrac{N-1}{N}\right)^n$ and we have
+$E[I_i]=P(I_i=1)=1-\left(\dfrac{N-1}{N}\right)^n$.
+
+\[
+\therefore\quad E[Y]=\sum_{i=1}^{N}E[I_i]
+=N-N\left(\frac{N-1}{N}\right)^n.\footnotemark[32]
+\]
+\footnotetext[32]{A similar question: if you randomly put 18 balls into 10 boxes, what is the expected number of empty boxes?}
+
+\problem{Joint default probability}
+If there is a 50\% probability that bond $A$ will default next year and a 30\% probability
+that bond $B$ will default. What is the range of probability that at least one bond defaults
+and what is the range of their correlation?
+
+\solution
+The range of probability that at least one bond defaults is easy to find. To have the largest
+probability, we can assume whenever $A$ defaults, $B$ does not default; whenever $B$
+defaults, $A$ does not default. So the maximum probability that at least one bond defaults
+is $50\%+30\%=80\%$. (The result only applies if $P(A)+P(B)\leq1$.) For the minimum,
+we can assume whenever $A$ defaults, $B$ also defaults. So the minimum probability that at
+least one bond defaults is $50\%$.
+
+To calculate the corresponding correlation, let $I_A$ and $I_B$ be the indicator for the event
+that bond A/B defaults next year and $\rho_{AB}$ be their correlation. Then we have
+$E[I_A]=0.5$, $E[I_B]=0.3$, $\operatorname{var}(I_A)=p_A\times(1-p_A)=0.25$,
+$\operatorname{var}(I_B)=0.21$.

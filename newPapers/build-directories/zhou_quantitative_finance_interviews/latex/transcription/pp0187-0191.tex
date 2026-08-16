@@ -1,0 +1,261 @@
+% Original source: Zhou, physical PDF pp. 187--191 (printed pp. 171--175).
+% Figures: none. Source code and pseudocode are preserved as native LaTeX.
+
+% ZHOU-SOURCE-PAGE: 187 PRINTED: 171
+
+\section{Algorithms and Numerical Methods}
+
+Although the percentage of time that a quant spends on programming varies with the job
+function (e.g., quant analyst/researcher versus quant developer) and firm culture, a
+typical quant generally devotes part of his or her time to implementing models through
+programming. Therefore, programming skill test is often an inherent part of the
+quantitative interview.
+
+To a great extent, the programming problems asked in quantitative interviews are similar
+to those asked in technology interviews. Not surprisingly, many of these problems are
+platform- or language-specific. Although C++ and Java still dominate the market, we've
+seen a growing diversification to other programming languages such as Matlab, SAS, S-
+Plus, and R. Since there are many existing books and websites dedicated to technology
+interviews, this chapter will not give a comprehensive review of programming problems.
+Instead, it discusses some algorithm problems and numerical methods that are favorite
+topics of quantitative interviews.
+
+\subsection{Algorithms}
+
+In programming, the analysis of algorithm complexity often uses asymptotic analysis
+that ignores machine-dependent constants and studies the running time $T(n)$---the
+number of primitive operations such as addition, multiplication, and comparison---as the
+number of inputs $n\to\infty$.\footnote[1]{If you want to review basic algorithms, I highly recommend
+\emph{Introduction to Algorithm} by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and
+Clifford Stein. It covers all the theories discussed in this section and includes many algorithms
+frequently appearing in interviews.}
+
+Three of the most important notations in algorithm complexity are big-O notation,
+$\Omega$ notation and $\Theta$ notation:
+
+\[
+\begin{aligned}
+O(g(n)) &= \{\,f(n):\text{ there exist positive constants }c\text{ and }n_0\\
+&\quad\text{ such that }0\leq f(n)\leq cg(n)\text{ for all }n\geq n_0\,\}.
+\end{aligned}
+\]
+It is the asymptotic upper bound of $f(n)$.
+
+\[
+\begin{aligned}
+\Omega(g(n)) &= \{\,f(n):\text{ there exist positive constants }c\text{ and }n_0\\
+&\quad\text{ such that }0\leq cg(n)\leq f(n)\text{ for all }n\geq n_0\,\}.
+\end{aligned}
+\]
+It is the asymptotic lower bound of $f(n)$.
+
+\[
+\begin{aligned}
+\Theta(g(n)) &= \{\,f(n):\text{ there exist positive constants }c_1,\ c_2,\text{ and }n_0\\
+&\quad\text{ such that }c_1g(n)\leq f(n)\leq c_2g(n)\text{ for all }n\geq n_0\,\}.
+\end{aligned}
+\]
+It is the asymptotic tight bound of $f(n)$.
+
+Besides notations, it is also important to explain two concepts in algorithm complexity:
+
+% ZHOU-SOURCE-PAGE: 188 PRINTED: 172
+
+\textbf{Worst-case running time $W(n)$}: an upper bound on the running time for any $n$ inputs.
+
+\textbf{Average-case running time $A(n)$}: the expected running time if the $n$ inputs are
+randomly selected.
+
+For many algorithms, $W(n)$ and $A(n)$ have the same $O(g(n))$. But as we will discuss
+in some problems, they may well be different and their relative importance often
+depends on the specific problem at hand.
+
+A problem with $n$ inputs can often be split into $a$ subproblems with $n/b$ inputs in each
+subproblem. This paradigm is commonly called divide-and-conquer. If it takes $f(n)$
+primitive operations to divide the problem into subproblems and to merge the solutions
+of the subproblems, the running time can be expressed as a recurrence equation
+$T(n)=aT(n/b)+f(n)$, where $a\geq1$, $b>1$, and $f(n)\geq0$.
+
+The master theorem is a valuable tool in finding the tight bound for recurrence equation
+$T(n)=aT(n/b)+f(n)$: If $f(n)=O(n^{\log_b a-\epsilon})$ for some constant $\epsilon>0$,
+$T(n)=\Theta(n^{\log_b a})$, since $f(n)$ grows slower than $n^{\log_b a}$. If
+$f(n)=\Theta(n^{\log_b a}\log^k n)$ for some $k\geq0$,
+$T(n)=\Theta(n^{\log_b a}\log^{k+1}n)$, since $f(n)$ and $n^{\log_b a}$ grow at
+similar rates. If $f(n)=\Omega(n^{\log_b a+\epsilon})$ for some constant $\epsilon>0$,
+and $af(n/b)\leq cf(n)$ for some constant $c<1$, $T(n)=\Theta(f(n))$, since $f(n)$
+grows faster than $n^{\log_b a}$.
+
+Let's use binary search to show the application of the master theorem. To find an
+element in an array, if the numbers in the array are sorted
+$(a_1\leq a_2\leq\cdots\leq a_n)$, we can use binary search. The algorithm starts with
+$a_{\lfloor n/2\rfloor}$. If $a_{\lfloor n/2\rfloor}=x$, the search stops. If
+$a_{\lfloor n/2\rfloor}>x$, we only need to search
+$a_1,\ldots,a_{\lfloor n/2\rfloor-1}$. If $a_{\lfloor n/2\rfloor}<x$, we only need to
+search $a_{\lfloor n/2\rfloor+1},\ldots,a_n$. Each time we can reduce the number of
+elements to search by half after making one comparison. So we have $a=1$, $b=2$, and
+$f(n)=1$. Hence, $f(n)=\Theta(n^{\log_2 1}\log^0 n)$ and the binary search has
+complexity $\Theta(\log n)$.
+
+\problem{Number swap}
+
+How do you swap two integers, $i$ and $j$, without using additional storage space?
+
+\solution
+Comparison and swap are the basic operations for many algorithms. The most common
+technique for swap uses a temporary variable, which unfortunately is forbidden in this
+problem since the temporary variable requires additional storage space. A simple
+
+% ZHOU-SOURCE-PAGE: 189 PRINTED: 173
+
+mathematic approach is to store the sum of $i$ and $j$ first, then extract $i$'s value and assign
+it to $j$ and finally assign $j$'s value to $i$. The implementation is shown in the following
+code:\footnote[2]{This chapter uses C++ to demonstrate some implementations. For other problems, the algorithms are
+described using pseudo codes. The following is a one-line equivalent function for swapping two integers. It is not
+recommend, though, as it lacks clarity.
+
+\texttt{void swap (int \&i, int \&j) \{ i-=j=(i+=j)-i; \}}}
+
+\begin{verbatim}
+void swap(int &i, int &j) {
+    i = i + j;  //store the sum of i and j
+    j = i - j;  //change j to i's value
+    i = i - j;  //change i to j's value
+}
+\end{verbatim}
+
+An alternative solution uses bitwise XOR (\texttt{\string^}) function by taking advantage of the fact
+that $x\,\texttt{\string^}\,x=0$ and $0\,\texttt{\string^}\,x=x$:
+
+\begin{verbatim}
+void swap(int &i, int &j){
+    i = i ^ j;
+    j = j ^ i; //j = i ^ (j ^ i) = i
+    i = i ^ j; //i = (i ^ j) ^ i = j
+}
+\end{verbatim}
+
+\problem{Unique elements}
+
+If you are given a sorted array, can you write some code to extract the unique elements
+from the array? For example, if the array is [1, 1, 3, 3, 3, 5, 5, 5, 9, 9, 9, 9], the unique
+elements should be [1, 3, 5, 9].
+
+\solution
+Let $a$ be an $n$-element sorted array with elements
+$a_0\leq a_1\leq\cdots\leq a_{n-1}$. Whenever we encounter a new element $a_i$ in the
+sorted array, its value is different from its previous element ($a_i\neq a_{i-1}$). Using
+this property we can easily extract the unique elements. One implementation in C++ is
+shown as the following function:\footnote[3]{I should point out that C++ STL has general algorithms for this basic operation: \texttt{unique} and \texttt{unique\_copy}.}
+
+\begin{verbatim}
+template <class T> vector<T> unique(T a[], int n) {
+    vector<T> vec;  // vector used to avoid resizing problem
+    vec.reserve(n); // reserver to avoid reallocation
+    vec.push_back(a[0]);
+    for(int i=1; i<n; ++i) {
+\end{verbatim}
+
+% ZHOU-SOURCE-PAGE: 190 PRINTED: 174
+
+\begin{verbatim}
+    if(a[i] != a[i-1])
+        vec.push_back(a[i]);
+}
+return vec;
+}
+\end{verbatim}
+
+\problem{Horner's algorithm}
+
+Write an algorithm to compute $y=A_0+A_1x+A_2x^2+A_3x^3+\cdots+A_nx^n$.
+
+\solution
+A na\"ive approach calculates each component of the polynomial and adds them up, which
+takes $O(n^2)$ number of multiplications. We can use Horner's algorithm to reduce the
+number of multiplications to $O(n)$. The algorithm expresses the original polynomial as
+$y=((((A_nx+A_{n-1})x+A_{n-2})x+\cdots+A_2)x+A_1)x+A_0$, and sequentially
+calculate $B_n=A_n$, $B_{n-1}=B_nx+A_{n-1}$, $\cdots$, $B_0=B_1x+A_0$. We have
+$y=B_0$ with at most $n$ multiplications.
+
+\problem{Moving average}
+
+Given a large array $A$ of length $m$, can you develop an efficient algorithm to build
+another array containing the $n$-element moving average of the original array
+$(B_1,\cdots,B_{n-1}=NA, B_i=(A_{i-n+1}+A_{i-n+2}+\cdots+A_i)/n,\ \forall i=n,\cdots,m)$?
+
+\solution
+When we calculate the moving average of the next $n$ consecutive numbers, we can reuse
+the previously computed moving average. Just multiply that average by $n$, subtract the
+first number in that moving average and then add the new number, and you have the new
+sum. Dividing the new sum by $n$ yields the new moving average. Here is the pseudo-code
+for calculating the moving average:
+
+\begin{verbatim}
+S = A[1] + ... + A[n]; B[n] = S/n;
+for (i=n+1 to m) { S = S - A[i-n] + A[i]; B[i] = S/n; }
+\end{verbatim}
+
+\problem{Sorting algorithm}
+
+Could you explain three sorting algorithms to sort $n$ distinct values
+$A_1,\cdots,A_n$, and analyze the complexity of each algorithm?
+
+\solution
+Sorting is a fundamental process that is directly or indirectly implemented in many
+programs. So a variety of sorting algorithms have been developed for different
+
+% ZHOU-SOURCE-PAGE: 191 PRINTED: 175
+
+purposes. Here let's discuss three such algorithms: insertion sort, merge sort and quick
+sort.
+
+\textbf{Insertion sort:} Insertion sort uses an incremental approach. Assume that we have sorted
+subarray $A[1,\ldots,i-1]$. We insert element $A_i$ into the appropriate place in
+$A[1,\ldots,i-1]$, which yields sorted subarray $A[1,\ldots,i]$. Starting with $i=1$ and increases $i$ step by step
+to $n$, we will have a fully sorted array. For each step, the expected number of comparisons
+is $i/2$ and the worst-case number of comparisons is $i$. So we have
+
+\[
+A(n)=\Theta\left(\sum_{i=1}^{n}i/2\right)=\Theta(n^2)
+\quad\text{and}\quad
+W(n)=\Theta\left(\sum_{i=1}^{n}i\right)=\Theta(n^2).
+\]
+
+\textbf{Merge sort:} Merge sort uses the divide-and-conquer paradigm. It divides the array into
+two subarrays each with $n/2$ items and sorts each subarray. Unless the subarray is small
+enough (with no more than a few elements), the subarray is again divided for sorting.
+Finally, the sorted subarrays are merged to form a single sorted array.
+
+The algorithm can be expressed as the following pseudocode:
+
+\[
+\begin{array}{l}
+\mathtt{mergesort}(A,\ \mathtt{beginindex},\ \mathtt{endindex})\\
+\quad\mathtt{if\ beginindex}<\mathtt{endindex}\\
+\qquad\mathtt{then\ centerindex}\leftarrow(\mathtt{beginindex}+\mathtt{endindex})/2\\
+\qquad\quad\mathtt{merge1}\leftarrow\mathtt{mergesort}(A,\ \mathtt{beginindex},\ \mathtt{centerindex})\\
+\qquad\quad\mathtt{merge2}\leftarrow\mathtt{mergesort}(A,\ \mathtt{centerindex}+1,\ \mathtt{endindex})\\
+\qquad\quad\mathtt{merge}(\mathtt{merge1},\ \mathtt{merge2})
+\end{array}
+\]
+
+The merge of two sorted arrays with $n/2$ elements each into one array takes $\Theta(n)$
+primitive operations. The running time $T(n)$ follows the following recursive function:
+
+\[
+T(n)=
+\begin{cases}
+2T(n/2)+\Theta(n), & \text{if }n>1,\\
+1, & \text{if }n=1.
+\end{cases}
+\]
+
+Applying the master theorem to $T(n)$ with $a=2$, $b=2$, and $f(n)=\Theta(n)$, we have
+$f(n)=\Theta(n^{\log_b a}\log^0n)$. So $T(n)=\Theta(n\log n)$. For merge sort,
+$A(n)$ and $W(n)$ are the same as $T(n)$.
+
+\textbf{Quicksort:} Quicksort is another recursive sorting method. It chooses one of the
+elements, $A_i$, from the sequence and compares all other values with it. Those elements
+smaller than $A_i$ are put in a subarray to the left of $A_i$; those elements larger than
+$A_i$ are put in a subarray to the right of $A_i$. The algorithm is then repeated on both
+subarrays (and any subarrays from them) until all values are sorted.

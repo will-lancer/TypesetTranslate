@@ -1,0 +1,300 @@
+% Original source: Zhou, physical PDF pp. 202--206 (printed pp. 186--190).
+% Figures 7.1 and 7.2 are recreated as native TikZ from the source previews.
+% Footnote 11 continues without a repeated marker at the foot of physical p. 202.
+
+% ZHOU-SOURCE-PAGE: 202 PRINTED: 186
+
+% Footnote 11 begins on physical p. 201 and continues here.  It is kept as one
+% semantic footnote in the reflowed edition.
+\footnotetext[11]{To integrate $y=F(x)$ with first derivative $y'=f(x)$ and a known initial
+value $y_0=F(x_0)$, the Euler method chooses a small step size $h$ ($h$ can be positive or
+negative) to sequentially approximate $y$ values:
+$F(x_0+h)=F(x_0)+f(x_0)\times h$, $F(x_0+2h)=F(x_0+h)+f(x_0+h)\times h$, $\cdots$.
+The initial value of the cdf of a standard normal can be $F(0)=0.5$.}
+
+Some random variables have pdf $f(x)$, but no analytical solution for $F^{-1}(U)$. In these
+cases, we can use a random variable with pdf $g(y)$ and $Y=G^{-1}(U)$ to help generate
+random variables with pdf $f(x)$. Assume that $M$ is a constant such that
+
+\[
+\frac{f(y)}{g(y)}\leq M,\qquad \forall y.
+\]
+
+We can implement the following acceptance-rejection method:
+
+\begin{itemize}
+\item \textbf{Sampling step:} Generate random variable $y$ from $g(y)$ and a random variable $v$
+from standard uniform distribution $[0,1]$.
+
+\item \textbf{Acceptance/rejection step:} If $v\leq\dfrac{f(y)}{Mg(y)}$, accept $x=y$; otherwise, repeat the
+sampling step.\footnotemark[12]
+\end{itemize}
+
+An exponential random variable ($g(x)=\lambda e^{-\lambda x}$) with $\lambda=1$ has cdf
+$u=G(x)=1-e^{-x}$. So the inverse function has analytical solution $x=-\log(1-u)$ and a random
+variable with exponential distribution can be conveniently simulated. For standard normal
+distribution,
+
+\[
+f(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},
+\]
+
+\[
+\frac{f(x)}{g(x)}=\sqrt{\frac{2}{\pi}}e^{-x^2/2+x}
+<\sqrt{\frac{2}{\pi}}e^{-(x-1)^2/2+1/2}
+\leq\sqrt{\frac{2}{\pi}}e^{1/2}\approx1.32,\qquad \forall\,0<x<\infty
+\]
+
+So we can choose $M=1.32$ and use the acceptance-rejection method to generate
+$x\sim N(0,1)$ random variables and scale them to $N(\mu,\sigma^2)$ random variables.
+
+\problem{C. Can you explain a few variance reduction techniques to improve the efficiency of
+Monte Carlo simulation?}
+
+\solution
+Monte Carlo simulation, in its basic form, is the mean of IID random variables
+
+\[
+Y_1,Y_2,\cdots,Y_M:\qquad \bar{Y}=\frac{1}{M}\sum_{i=1}^{M}Y_i.
+\]
+
+Since the expected value of each $Y_i$ is unbiased, the estimator $\bar{Y}$ is unbiased as well.
+If $\operatorname{Var}(Y)=\sigma$ and we generate IID $Y_i$, then
+
+\[
+\operatorname{Var}(\bar{Y})=\frac{\sigma}{\sqrt{M}},
+\]
+
+where $M$ is the number of simulations. Not surprisingly, Monte Carlo
+
+\footnotetext[12]{
+$P(X\leq x)\propto\displaystyle\int_{-\infty}^{x}g(y)\frac{f(y)}{Mg(y)}\,dy
+=\frac{1}{M}\displaystyle\int_{-\infty}^{x}f(y)\,dy
+\Rightarrow F(x)=\frac{P(X\leq x)}{P(X<\infty)}=\displaystyle\int_{-\infty}^{x}f(y)\,dy$.
+}
+
+% ZHOU-SOURCE-PAGE: 203 PRINTED: 187
+
+simulation is computationally intensive if $\sigma$ is large. Thousands or even millions of
+simulations are often required to get the desired accuracy. Depending on the specific
+problems, a variety of methods have been applied to reduce variance.
+
+\textbf{Antithetic variable:} For each series of $\epsilon_i$'s, calculate its corresponding payoff
+$Y(\epsilon_1,\cdots,\epsilon_N)$. Then reverse the sign of all $\epsilon_i$'s and calculate the
+corresponding payoff $Y(-\epsilon_1,\cdots,-\epsilon_N)$. When
+$Y(\epsilon_1,\cdots,\epsilon_N)$ and $Y(-\epsilon_1,\cdots,-\epsilon_N)$ are negatively
+correlated, the variance is reduced.
+
+\textbf{Moment matching:} Specific samples of the random variable may not match the population
+distribution well. We can draw a large set of samples first and then rescale the samples to make
+the samples' moments (mean and variance are the most commonly used) match the desired population
+moments.
+
+\textbf{Control variate:} If we want to price a derivative $X$ and there is a closely related
+derivative $Y$ that has an analytical solution, we can generate a series of random numbers and use
+the same random sequences to price both $X$ and $Y$ to yield $\hat{X}$ and $\hat{Y}$. Then $X$ can
+be estimated as $\hat{X}+(Y-\hat{Y})$. Essentially we use $(Y-\hat{Y})$ to correct the estimation
+error of $\hat{X}$.
+
+\textbf{Importance sampling:} To estimate the expected value of $h(x)$ from distribution $f(x)$,
+instead of drawing $x$ from distribution $f(x)$, we can draw $x$ from distribution $g(x)$ and
+use Monte Carlo simulation to estimate expected value of
+$\dfrac{h(x)f(x)}{g(x)}$:
+
+\[
+E_{f(x)}[h(x)]=\int h(x)f(x)\,dx
+=\int\frac{h(x)f(x)}{g(x)}g(x)\,dx
+=E_{g(x)}\left[\frac{h(x)f(x)}{g(x)}\right].\footnotemark[13]
+\]
+
+If $\dfrac{h(x)f(x)}{g(x)}$ has a smaller variance than $h(x)$, then importance sampling can result
+in a more efficient estimator. This method is better explained using a deep out-of-the-money
+option as an example. If we directly use risk-neutral $f(S_T)$ as the distribution, most of the
+simulated paths will yield $h(S_T)=0$ and as a result the estimation variance will be large. If we
+introduce a distribution $g(S_T)$ that has much wider span (fatter tail for $S_T$), more simulated
+paths will have positive $h(S_T)$. The scaling factor $\dfrac{f(x)}{g(x)}$ will keep the estimator
+unbiased, but the approach will have lower variance.
+
+\footnotetext[13]{Importance sampling is essentially a variance reduction method using a change of measure.}
+
+% ZHOU-SOURCE-PAGE: 204 PRINTED: 188
+
+\textbf{Low-discrepancy sequence:} Instead of using random samples, we can generate a deterministic
+sequence of ``random variable'' that represents the distribution. Such low-discrepancy sequences
+may make the convergence rate $1/M$.
+
+\problem{D. If there is no closed-form pricing formula for an option, how would you estimate its
+delta and gamma?}
+
+\solution
+As we have discussed in problem A, the prices of options with or without closed-form pricing
+formulas can be derived using Monte Carlo simulation. The same methods can also be used to estimate
+delta and gamma by slightly changing the current underlying price from $S$ to $S\pm\delta S$, where
+$\delta S$ is a small positive value. Run Monte Carlo simulation for all three starting prices
+$S-\delta S$, $S$ and $S+\delta S$, we will get their corresponding option prices
+$f(S-\delta S)$, $f(S)$ and $f(S+\delta S)$.
+
+\[
+\text{Estimated delta:}\qquad
+\Delta=\frac{\delta f}{\delta S}=\frac{f(S+\delta S)-f(S-\delta S)}{2\delta S}
+\]
+
+\[
+\text{Estimated gamma:}\qquad
+\Gamma=\frac{\bigl(f(S+\delta S)-f(S)\bigr)-\bigl(f(S)-f(S-\delta S)\bigr)}{\delta S^2}
+\]
+
+To reduce variance, it's often better to use the same random number sequences to estimate
+$f(S-\delta S)$, $f(S)$ and $f(S+\delta S)$.\footnotemark[14]
+
+\problem{E. How do you use Monte Carlo simulation to estimate $\pi$?}
+
+\solution
+Estimation of $\pi$ is a classic example of Monte Carlo simulation. One standard method to
+estimate $\pi$ is to randomly select points in the unit square ($x$ and $y$ are independent
+uniform random variables between 0 and 1) and determine the ratio of points that are within the
+circle $x^2+y^2\leq1$. For simplicity, we focus on the first quadrant. As shown in Figure 7.1,
+any points within the circle satisfy the equation $x_i^2+y_i^2\leq1$. The percentage of the
+points within the circle is proportional to its area:
+
+\[
+\hat{p}=\frac{\text{Number of }(x_i,y_i)\text{ within }x_i^2+y_i^2\leq1}
+{\text{Number of }(x_i,y_i)\text{ within the square}}
+=\frac{1/4\,\pi}{1\times1}=\frac{1}{4}\pi\Rightarrow\hat{\pi}=4\hat{p}.
+\]
+
+So we generate a large number of independent $(x,y)$ points, estimate the ratio of the points
+within the circle to the points in the square, and multiply the ratio by 4 to yield an estimation
+of $\pi$. Figure 7.1 uses only 1000 points for illustration. With today's
+
+\footnotetext[14]{The method may not work well if the payoff function is not continuous.}
+
+% ZHOU-SOURCE-PAGE: 205 PRINTED: 189
+
+computing power, we can easily generate millions of $(x,y)$ pairs to estimate $\pi$ with good
+precision. 1,000 simulations with 1,000,000 $(x,y)$ points each using Matlab took less than 1 minute
+on a laptop and gave an average estimation of $\pi$ as 3.1416 with standard deviation 0.0015.
+
+% Figure 7.1 is recreated natively; its sample dots are illustrative, while the
+% quadrant, arc, axes, labels, and visible out-of-circle pattern follow the source.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=5.4cm,y=5.4cm]
+  \draw[->] (0,0) -- (1.08,0) node[below right] {$x$};
+  \draw[->] (0,0) -- (0,1.08) node[above left] {$y$};
+  \draw (0,1) arc (90:0:1);
+  \foreach \t/\lab in {0/0,0.2/0.2,0.4/0.4,0.6/0.6,0.8/0.8,1.0/1} {
+    \draw (\t,0.012) -- (\t,-0.012);
+    \node[below=2pt] at (\t,0) {\scriptsize\lab};
+  }
+  \foreach \t/\lab in {0/0,0.1/0.1,0.2/0.2,0.3/0.3,0.4/0.4,0.5/0.5,
+    0.6/0.6,0.7/0.7,0.8/0.8,0.9/0.9,1.0/1} {
+    \draw (0.012,\t) -- (-0.012,\t);
+    \node[left=2pt] at (0,\t) {\scriptsize\lab};
+  }
+  \foreach \x/\y in {
+    0.22/0.99,0.30/0.94,0.35/0.98,0.41/0.90,0.46/0.95,0.52/0.88,
+    0.57/0.98,0.62/0.92,0.67/0.96,0.72/0.90,0.78/0.94,0.84/0.89,
+    0.90/0.97,0.96/0.91,0.28/0.86,0.38/0.82,0.45/0.84,0.54/0.79,
+    0.61/0.85,0.69/0.80,0.77/0.84,0.86/0.78,0.93/0.82,0.98/0.75,
+    0.35/0.76,0.43/0.72,0.50/0.74,0.58/0.69,0.66/0.73,0.73/0.68,
+    0.81/0.72,0.89/0.66,0.95/0.62,0.99/0.57,0.55/0.64,0.63/0.60,
+    0.71/0.57,0.79/0.61,0.87/0.54,0.94/0.50,0.98/0.44,0.76/0.48,
+    0.83/0.45,0.90/0.41,0.96/0.36,0.99/0.29,0.89/0.34,0.94/0.27,
+    0.97/0.20,0.99/0.14
+  } {
+    \fill[gray!70] (\x,\y) circle (0.011);
+  }
+\end{tikzpicture}
+\caption{A Monte Carlo simulation method to estimate $\pi$}
+\label{fig:zhou-figure-7-1}
+\end{figure}
+
+\subsubsection*{Finite difference method}
+
+The finite difference method is another popular numerical technique for derivative pricing. It
+numerically solves a differential equation to estimate the price of a derivative by discretizing
+the time and the price of the underlying security. We can convert the Black-Scholes-Merton
+equation, a second order nonlinear partial differential equation, to a heat diffusion equation (as
+we did in Chapter 6). This new equation, expressed as a function of $\tau$ (time to maturity) and
+$x$ (a function of the price of the underlying security), is a general differential equation for
+derivatives. The difference between various derivatives lies in the boundary conditions. By building
+a grid of $x$ and $\tau$ and using the boundary conditions, we can recursively calculate $u$ at every
+$x$ and $\tau$ using finite difference methods.
+
+\problem{A. Can you briefly explain finite difference methods?}
+
+\solution
+There are several version of finite difference methods used in practice. Let's briefly go over the
+explicit difference method, the implicit difference method and the
+
+% ZHOU-SOURCE-PAGE: 206 PRINTED: 190
+
+Crank-Nicolson method. As shown in Figure 7.2, if we divide the range of $\tau$, $[0,T]$, into
+$N$ discrete intervals with increment $\Delta\tau=T/N$ and divide the range of $x$, $[x_0,x_J]$, into
+$J$ discrete intervals with increment $\Delta x=(x_J-x_0)/J$, the time $\tau$ and the space $x$ can be
+expressed as a grid of $\tau_n$, $n=1,\cdots,N$ and $x_j$, $j=1,\cdots,J$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=0.78cm,y=0.78cm]
+  \draw[->] (0,0) -- (8.7,0) node[below right] {$\tau_n$};
+  \draw[->] (0,0) -- (0,9.7) node[above left] {$x$};
+  \foreach \x in {0,...,8} {\draw (\x,0) -- (\x,9);}
+  \foreach \y in {0,...,9} {\draw (0,\y) -- (8,\y);}
+  \node[left] at (0,9) {$x_J$};
+  \node[left] at (0,8) {$x_{J-1}$};
+  \node[left] at (0,6.8) {$\vdots$};
+  \node[left] at (0,6) {$x_{j+1}$};
+  \node[left] at (0,5) {$x_j$};
+  \node[left] at (0,4) {$x_{j-1}$};
+  \node[left] at (0,2.8) {$\vdots$};
+  \node[left] at (0,2) {$x_2$};
+  \node[left] at (0,1) {$x_1$};
+  \node[left] at (0,0) {$x_0$};
+  \node[below] at (0,0) {$0$};
+  \node[below] at (1,0) {$\tau_1$};
+  \node[below] at (2,0) {$\tau_2$};
+  \node[below] at (3.2,0) {$\cdots$};
+  \node[below] at (5,0) {$\tau_n$};
+  \node[below] at (6,0) {$\tau_{n+1}$};
+  \node[below] at (6.9,0) {$\cdots$};
+  \node[below] at (7.5,0) {$\tau_{N-1}$};
+  \node[below] at (8,0) {$\tau_N$};
+  \draw (5,6) -- (6,5) -- (5,4);
+  \draw[dashed] (5,6) -- (6,6) -- (5,4);
+  \draw[dashed] (5,4) -- (6,4) -- (5,6);
+  \fill (5,6) circle (0.07) (5,5) circle (0.07) (5,4) circle (0.07)
+        (6,6) circle (0.07) (6,5) circle (0.07) (6,4) circle (0.07);
+  \node[left] at (5,6) {$u_{j+1}^{n}$};
+  \node[left] at (5,5) {$u_j^n$};
+  \node[left] at (5,4) {$u_{j-1}^{n}$};
+  \node[right] at (6,6) {$u_{j+1}^{n+1}$};
+  \node[right] at (6,5) {$u_j^{n+1}$};
+  \node[right] at (6,4) {$u_{j-1}^{n+1}$};
+  \node[above] at (5,5.45) {$u_j'$};
+\end{tikzpicture}
+\caption{Grid of $\tau$ and $x$ for finite different methods}
+\label{fig:zhou-figure-7-2}
+\end{figure}
+
+The explicit difference method uses the forward difference at time $\tau_n$ and the second-order
+central difference at $x_j$:
+
+\[
+\frac{\partial u}{\partial\tau}
+\approx\frac{u_j^{n+1}-u_j^n}{\Delta\tau}
+=\frac{u_{j+1}^{n}-2u_j^n+u_{j-1}^{n}}{(\Delta x)^2}
+\approx\frac{\partial^2u}{\partial x^2}.
+\]
+
+Rearranging terms, we can express $u_j^{n+1}$ as a linear combination of $u_{j+1}^n$, $u_j^n$ and
+$u_{j-1}^n$:
+
+\[
+u_j^{n+1}=\alpha u_{j-1}^{n}+(1-2\alpha)u_j^n+\alpha u_{j+1}^{n},
+\qquad \text{where }\alpha=\frac{\Delta t}{(\Delta x)^2}.
+\]
+
+Besides, we often have boundary conditions $u_j^0$, $u_0^n$, and $u_J^n$ for all
+$n=1,\cdots,N$; $j=0,\cdots,J$. Combining the boundary

@@ -1,0 +1,214 @@
+% Original source: Zhou, physical PDF pp. 34--38 (printed pp. 18--22).
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 34 PRINTED: 18
+This approach can be generalized to any integer $N$:
+\[
+  \sum_{n=1}^{N} n = \frac{N(N+1)}{2}.
+\]
+
+The summation formula for consecutive squares may not be as intuitive:
+\[
+  \sum_{n=1}^{N} n^2
+  = \frac{N(N+1)(2N+1)}{6}
+  = \frac{N^3}{3}+\frac{N^2}{2}+\frac{N}{6}.
+\]
+
+But if we correctly guess that
+\[
+  \sum_{n=1}^{N} n^2 = aN^3+bN^2+cN+d
+\]
+and apply the initial conditions
+\begin{align*}
+  N=0 &\Rightarrow 0=d,\\
+  N=1 &\Rightarrow 1=a+b+c+d,\\
+  N=2 &\Rightarrow 5=8a+4b+2c+d,\\
+  N=3 &\Rightarrow 14=27a+9b+3c+d,
+\end{align*}
+we will have the solution that $a=1/3$, $b=1/2$, $c=1/6$, $d=0$. We can then easily show
+that the same equation applies to all $N$ by induction.
+
+\problem{Clock pieces}
+
+A clock (numbered 1--12 clockwise) fell off the wall and broke into three pieces. You
+find that the sums of the numbers on each piece are equal. What are the numbers on each
+piece? (No strange-shaped piece is allowed.)
+
+\solution
+Using the summation equation, $\displaystyle\sum_{n=1}^{12}n=\frac{12\times13}{2}=78$. So the numbers on each
+piece must sum up to 26. Some interviewees mistakenly assume that the numbers on
+each piece have to be continuous because no strange-shaped piece is allowed. It's easy to
+see that 5, 6, 7 and 8 add up to 26. Then the interviewees' thinking gets stuck because
+they cannot find more consecutive numbers that add up to 26.
+
+Such an assumption is not correct since 12 and 1 are continuous on a clock. Once that
+wrong assumption is removed, it becomes clear that $12+1=13$ and $11+2=13$. So the
+second piece is 11, 12, 1 and 2; the third piece is 3, 4, 9 and 10.
+
+\problem{Missing integers}
+
+Suppose we have 98 distinct integers from 1 to 100. What is a good way to find out the
+two missing integers (within $[1,100]$)?
+
+% ZHOU-SOURCE-PAGE: 35 PRINTED: 19
+\solution
+Denote the missing integers as $x$ and $y$, and the existing ones are $z_1,\ldots,z_{98}$.
+Applying the summation equations, we have
+\begin{align*}
+  \sum_{n=1}^{100}n
+  &=x+y+\sum_{i=1}^{98}z_i
+  \Rightarrow x+y=\frac{100\times101}{2}-\sum_{i=1}^{98}z_i,\\
+  \sum_{n=1}^{100}n^2
+  &=x^2+y^2+\sum_{i=1}^{98}z_i^2
+  \Rightarrow x^2+y^2=\frac{100^3}{3}+\frac{100^2}{2}+\frac{100}{6}-\sum_{i=1}^{98}z_i^2.
+\end{align*}
+Using these two equations, we can easily solve $x$ and $y$. If you implement this strategy
+using a computer program, it is apparent that the algorithm has a complexity of $O(n)$ for
+two missing integers in 1 to $n$.
+
+\problem{Counterfeit coins I}
+
+There are 10 bags with 100 identical coins in each bag. In all bags but one, each coin
+weighs 10 grams. However, all the coins in the counterfeit bag weigh either 9 or 11
+grams. Can you find the counterfeit bag in only one weighing, using a digital scale that
+tells the exact weight?\footnote[9]{\emph{Hint:} In order to find the counterfeit coin bag in one weighing, the number of coins from each bag must be different. If we use the same number of coins from two bags, symmetry will prevent you from distinguish these two bags if one is the counterfeit coin bag.}
+
+\solution
+Yes, we can identify the counterfeit bag using one measurement. Take 1 coin out of the
+first bag, 2 out of the second bag, 3 out the third bag, $\ldots$, and 10 coins out of
+the tenth bag. All together, there are $\displaystyle\sum_{i=1}^{10}n=55$ coins. If there were no
+counterfeit coins, they should weigh 550 grams. Let's assume the $i$-th bag is the
+counterfeit bag, there will be $i$ counterfeit coins, so the final weight will be $550\pm i$.
+Since $i$ is distinct for each bag, we can identify the counterfeit coin bag as well as
+whether the counterfeit coins are lighter or heavier than the real coins using $550\pm i$.
+
+This is not the only answer: we can choose other numbers of coins from each bag as long
+as they are all different numbers.
+
+\problem{Glass balls}
+
+You are holding two glass balls in a 100-story building. If a ball is thrown out of the
+window, it will not break if the floor number is less than $X$, and it will always break if
+
+% ZHOU-SOURCE-PAGE: 36 PRINTED: 20
+the floor number is equal to or greater than $X$. You would like to determine $X$. What is the
+strategy that will minimize the number of drops for the worst case scenario?\footnote[10]{\emph{Hint:} Assume we design a strategy with $N$ maximum throws. If the first ball is thrown once, the second ball can cover $N-1$ floors; if the first ball is thrown twice, the second ball can cover $N-2$ floors \ldots}
+
+\solution
+Suppose that we have a strategy with a maximum of $N$ throws. For the first throw of
+ball one, we can try the $N$-th floor. If the ball breaks, we can start to try the second ball
+from the first floor and increase the floor number by one until the second ball breaks. At
+most, there are $N-1$ floors to test. So a maximum of $N$ throws are enough to cover all
+possibilities. If the first ball thrown out of $N$-th floor does not break, we have $N-1$
+throws left. This time we can only increase the floor number by $N-1$ for the first ball
+since the second ball can only cover $N-2$ floors if the first ball breaks. If the first ball
+thrown out of $(2N-1)$th floor does not break, we have $N-2$ throws left. So we can only
+increase the floor number by $N-2$ for the first ball since the second ball can only cover
+$N-3$ floors if the first ball breaks \ldots
+
+Using such logic, we can see that the number of floors that these two balls can cover with
+a maximum of $N$ throws is $N+(N-1)+\cdots+1=N(N+1)/2$. In order to cover 100
+stories, we need to have $N(N+1)/2\geq100$. Taking the smallest integer, we have $N=14$.
+
+Basically, we start the first ball on the 14th floor, if the ball breaks, we can use the
+second ball to try floors $1,2,\ldots,13$ with a maximum throws of 14 (when the 13th or the
+14th floor is $X$). If the first ball does not break, we will try the first ball on the
+$14+(14-1)=27$th floor. If it breaks, we can use the second ball to cover floors
+$15,16,\ldots,26$ with a total maximum throws of 14 as well \ldots
+
+\subsection{The Pigeon Hole Principle}
+
+Here is the basic version of the Pigeon Hole Principle: if you have fewer pigeon holes
+than pigeons and you put every pigeon in a pigeon hole, then at least one pigeon hole has
+more than one pigeon. Basically it says that if you have $n$ holes and more than $n+1$
+pigeons, at least 2 pigeons have to share one of the holes. The generalized version is that
+if you have $n$ holes and at least $mn+1$ pigeons, at least $m+1$ pigeons have to share one
+of the holes. These simple and intuitive ideas are surprisingly useful in many problems.
+Here we will use some examples to show their applications.
+
+% ZHOU-SOURCE-PAGE: 37 PRINTED: 21
+\problem{Matching socks}
+
+Your drawer contains 2 red socks, 20 yellow socks, and 31 blue socks. Being a busy and
+absent-minded MIT student, you just randomly grab a number of socks out of the drawer
+and try to find a matching pair. Assume each sock has equal probability of being selected,
+what is the minimum number of socks you need to grab in order to guarantee a pair of
+socks of the same color?
+
+\solution
+This question is just a variation of the even simpler version of two-color-socks problem,
+in which case you only need 3. When you have 3 colors (3 pigeon holes), by the Pigeon Hole
+Principle, you will need to have $3+1=4$ socks (4 pigeons) to guarantee that at least two
+socks have the same color (2 pigeons share a hole).
+
+\problem{Handshakes}
+
+You are invited to a welcome party with 25 fellow team members. Each of the fellow
+members shakes hands with you to welcome you. Since a number of people in the room
+haven't met each other, there's a lot of random handshaking among others as well. If you
+don't know the total number of handshakes, can you say with certainty that there are at
+least two people present who shook hands with exactly the same number of people?
+
+\solution
+There are 26 people at the party and each shakes hands with from 1---since everyone shakes
+hands with you---to 25 people. In other words, there are 26 pigeons and 25 holes. As a result,
+at least two people must have shaken hands with exactly the same number of people.
+
+\problem{Have we met before?}
+
+Show me that, if there are 6 people at a party, then either at least 3 people met each other
+before the party, or at least 3 people were strangers before the party.
+
+\solution
+This question appears to be a complex one and interviewees often get puzzled by what the
+interviewer exactly wants. But once you start to analyze possible scenarios, the answer
+becomes obvious.
+
+Let's say that you are the 6th person at the party. Then by generalized Pigeon Hole
+Principle (Do we even need that for such an intuitive conclusion?), among the remaining
+5 people, we conclude that either at least 3 people met you or at least 3 people did not
+meet you. Now let's explore these two mutually exclusive and collectively exhaustive
+scenarios:
+
+Case 1: Suppose that at least 3 people have met you before.
+
+% ZHOU-SOURCE-PAGE: 38 PRINTED: 22
+If two people in this group met each other, you and the pair (3 people) met each other. If
+no pair among these people met each other, then these people ($\geq 3$ people) did not meet
+each other. In either sub-case, the conclusion holds.
+
+Case 2: Suppose at least 3 people have not met you before.
+
+If two people in this group did not meet each other, you and the pair (3 people) did not
+meet each other. If all pairs among these people knew each other, then these people
+($\geq 3$ people) met each other. Again, in either sub-case, the conclusion holds.
+
+\problem{Ants on a square}
+
+There are 51 ants on a square with side length of 1. If you have a glass with a radius of
+$1/7$, can you put your glass at a position on the square to guarantee that the glass
+encompasses at least 3 ants?\footnote[11]{\emph{Hint:} Separate the square into 25 smaller areas; then at least one area has 3 ants in it.}
+
+\solution
+To guarantee that the glass encompasses at least 3 ants, we can separate the square into
+25 smaller areas. Applying the generalized Pigeon Hole Principle, we can show that at
+least one of the areas must have at least 3 ants. So we only need to make sure that the
+glass is large enough to cover any of the 25 smaller areas. Simply separate the area into
+5$\times$5 smaller squares with side length of 1/5 each will do since a circle with radius
+of 1/7 can cover a square\footnote[12]{A circle with radius $r$ can cover a square with side length up to $\sqrt{2}r$ and $\sqrt{2}\approx1.414$.} with side length 1/5.
+
+\problem{Counterfeit coins II}
+
+There are 5 bags with 100 coins in each bag. A coin can weigh 9 grams, 10 grams or 11
+grams. Each bag contains coins of equal weight, but we do not know what type of coins a
+bag contains. You have a digital scale (the kind that tells the exact weight). How many
+times do you need to use the scale to determine which type of coin each bag contains?\footnote[13]{\emph{Hint:} Start with a simpler problem. What if you have two bags of coins instead of 5, how many coins do you need from each bag to find the type of coins in either bag? What is the minimum difference in coin numbers? Then how about three bags?}
+
+\solution
+If the answer for 5 bags is not obvious, let's start with the simplest version of the
+problem---1 bag. We only need to take one coin to weigh it. Now we can move on to 2
+bags. How many coins do we need to take from bag 2 in order to determine the coin types
+of bag 1 and bag 2? Considering that there are three possible types for bag 1, we will need
+three coins from bag 2; two coins won't do. For notation simplicity, let's change the
+number/weight for three types to -1, 0 and 1 (by removing the mean 10). If

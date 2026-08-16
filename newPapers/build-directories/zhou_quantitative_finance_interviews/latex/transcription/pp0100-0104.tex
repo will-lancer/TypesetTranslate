@@ -1,0 +1,204 @@
+% Original source: Zhou, physical PDF pp. 100--104 (printed pp. 84--88).
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 100 PRINTED: 84
+\[
+P_1=pP_2+qP_0\ \Rightarrow\ P_2=\frac{1}{p}P_1=\left[1+\frac{q}{p}\right]P_1
+\]
+\[
+P_3=\left[1+\frac{q}{p}+\left(\frac{q}{p}\right)^2\right]P_1
+\]
+\[
+\cdots
+\]
+\[
+P_i=\left[1+\frac{q}{p}+\cdots+\left(\frac{q}{p}\right)^{i-1}\right]P_1
+\]
+
+Extending this expression to \(P_N\), we have
+\[
+P_N=1=\left[1+\frac{q}{p}+\cdots+\left(\frac{q}{p}\right)^{N-1}\right]P_1
+=\begin{cases}
+\displaystyle\frac{1-(q/p)^N}{1-q/p}\,P_1,&\text{if }q/p\ne1,\\[6pt]
+NP_1,&\text{if }q/p=1.
+\end{cases}
+\]
+\[
+\Rightarrow P_1=\begin{cases}
+\displaystyle\frac{1-q/p}{1-(q/p)^N},&\text{if }q/p\ne1,\\[6pt]
+1/N,&\text{if }q/p=1
+\end{cases}
+\Rightarrow P_i=\begin{cases}
+\displaystyle\frac{1-(q/p)^i}{1-(q/p)^N}\,P_1,&\text{if }p\ne1/2,\\[6pt]
+i/N,&\text{if }p=1/2.
+\end{cases}
+\]
+
+\textbf{Basketball scores}
+
+A basketball player is taking 100 free throws. She scores one point if the ball passes through the hoop and zero point if she misses. She has scored on her first throw and missed on her second. For each of the following throw the probability of her scoring is the fraction of throws she has made so far. For example, if she has scored 23 points after the 40th throw, the probability that she will score in the 41th throw is 23/40. After 100 throws (including the first and the second), what is the probability that she scores exactly 50 baskets?\footnote[18]{\textit{Hint:} Again, do not let the number 100 scares you. Start with smallest $n$, solve the problem; try to find a pattern by increasing $n$; and prove the pattern by using induction.}
+
+\solution
+Let \((n,k)\), \(1\le k\le n\), be the event that the player scores \(k\) baskets after \(n\) throws and \(P_{n,k}=P((n,k))\). The solution is surprisingly simple if we use an induction approach starting with \(n=3\). The third throw has 1/2 probability of scoring. So we have \(P_{3,1}=1/2\) and \(P_{3,2}=1/2\). For the case when \(n=4\), let's apply the law of total probability
+
+% ZHOU-SOURCE-PAGE: 101 PRINTED: 85
+\[
+\left\{
+\begin{aligned}
+P_{4,1}&=P((4,1)\mid(3,1))\times P_{3,1}+P((4,1)\mid(3,2))\times P_{3,2}
+ =\frac{2}{3}\times\frac{1}{2}+0\times\frac{1}{2}=\frac{1}{3},\\
+P_{4,2}&=P((4,2)\mid(3,1))\times P_{3,1}+P((4,2)\mid(3,2))\times P_{3,2}
+ =\frac{1}{3}\times\frac{1}{2}+\frac{1}{3}\times\frac{1}{2}=\frac{1}{3},\\
+P_{4,3}&=P((4,3)\mid(3,1))\times P_{3,1}+P((4,3)\mid(3,2))\times P_{3,2}
+ =0\times\frac{1}{2}+\frac{2}{3}\times\frac{1}{2}=\frac{1}{3}.
+\end{aligned}
+\right.
+\]
+
+The results indicate that \(P_{n,k}=\frac{1}{n-1}\), \(\forall k=1,2,\cdots,n-1\), and give the hint that the law of total probability can be used in the induction step.
+
+\emph{Induction step:} given that \(P_{n,k}=\frac{1}{n-1}\), \(\forall k=1,2,\cdots,n-1\), we need to prove
+\[
+P_{n+1,k}=\frac{1}{(n+1)-1}=\frac{1}{n},\qquad \forall k=1,2,\cdots,n.
+\]
+To show it, simply apply the law of total probability:
+\[
+P_{n+1,k}=P(\text{miss}\mid(n,k))P_{n,k}+P(\text{score}\mid(n,k-1))P_{n,k-1}
+\]
+\[
+=\left(1-\frac{k}{n}\right)\frac{1}{n-1}+\frac{k-1}{n}\frac{1}{n-1}=\frac{1}{n}
+\]
+
+The equation is also applicable to the \(P_{n+1,1}\) and \(P_{n+1,n}\), although in these cases \(\frac{k-1}{n}=0\) and \(\left(1-\frac{k}{n}\right)=0\), respectively. So we have \(P_{n,k}=\frac{1}{n-1}\), \(\forall k=1,2,\cdots,n-1\) and \(\forall n\ge2\).
+
+Hence, \(P_{100,50}=1/99\).
+
+\textbf{Cars on road}
+
+If the probability of observing at least one car on a highway during any 20-minute time interval is 609/625, then what is the probability of observing at least one car during any 5-minute time interval? Assume that the probability of seeing a car at any moment is uniform (constant) for the entire 20 minutes.
+
+\solution
+We can break down the 20-minute interval into a sequence of 4 non-overlapping 5-minute intervals. Because of constant default probability (of observing a car), the probability of observing a car in any 5-minute interval is constant. Let's denote the probability to be \(p\), then the probability that in any 5-minute interval we do not observe a car is \(1-p\).
+
+% ZHOU-SOURCE-PAGE: 102 PRINTED: 86
+The probability that we do not observe any car in all four of such independent 5-minute intervals is \((1-p)^4=1-609/625=16/625\), which gives \(p=3/5\).
+
+\subsection{Discrete and Continuous Distributions}
+
+In this section, we review a variety of distribution functions for random variables that are widely used in quantitative modeling. Although it may not be necessary to memorize the properties of these distributions, having an intuitive understanding of the distributions and having the ability to quickly derive important properties are valuable skills in practice. As usual, let's begin with the theories:
+
+\textbf{Common function of random variables}
+
+Table 4.1 summarizes how the basic properties of discrete and continuous random variables are defined or calculated. These are the basics you should commit to memory.
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.34\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+Random variable \((X)\) & Discrete & Continuous\footnotemark[19] \\
+\hline
+Cumulative distribution function/cdf & \(F(a)=P\{X\le a\}\) & \(F(a)=\displaystyle\int_{-\infty}^{a}f(x)\,dx\) \\
+\hline
+\begin{tabular}[t]{@{}l@{}}
+Probability mass function /pmf\\
+Probability density function /pdf
+\end{tabular}
+& \begin{tabular}[t]{@{}l@{}}
+pmf:\\
+\(p(x)=P\{X=x\}\)
+\end{tabular}
+& \begin{tabular}[t]{@{}l@{}}
+pdf: \(f(x)=\dfrac{d}{dx}F(x)\)
+\end{tabular} \\
+\hline
+Expected value/ \(E[X]\) & \(\displaystyle\sum_{x:p(x)>0}xp(x)\) & \(\displaystyle\int_{-\infty}^{\infty}xf(x)\,dx\) \\
+\hline
+Expected value of \(g(X)\)/ \(E[g(X)]\) & \(\displaystyle\sum_{x:p(x)>0}g(x)p(x)\) & \(\displaystyle\int_{-\infty}^{\infty}g(x)f(x)\,dx\) \\
+\hline
+Variance of \(X\)/ \(\mathit{var}(X)\) & \multicolumn{2}{l|}{\(E[(X-E[X])^2]=E[X^2]-(E[X])^2\)} \\
+\hline
+Standard deviation of \(X\)/ \(\mathit{std}(X)\) & \multicolumn{2}{l|}{\(\sqrt{\mathit{var}(X)}\)} \\
+\hline
+\end{tabularx}
+\caption{Basic properties of discrete and continuous random variables}
+\label{tab:zhou-table-4-1}
+\end{table}
+\footnotetext[19]{For continuous random variables, \(P(X=x)=0\), \(\forall x\in(-\infty,\infty)\), so \(P\{X\le x\}=P\{X<x\}\).}
+
+\textbf{Discrete random variables}
+
+Table 4.2 includes some of the most widely-used discrete distributions. Discrete uniform random variable represents the occurrence of a value between number \(a\) and \(b\) when all values in the set \(\{a,a+1,\cdots,b\}\) have equal probability. Binomial random variable represents the number of successes in a sequence of \(n\) experiments when each trial is
+
+% ZHOU-SOURCE-PAGE: 103 PRINTED: 87
+independently a success with probability \(p\). Poisson random variable represents the number of events occurring in a fixed period of time with the expected number of occurrences \(\lambda t\) when events occur with a known average rate \(\lambda\) and are independent of the time since the last event. Geometric random variable represents the trial number \(n\) to get the first success when each trial is independently a success with probability \(p\). Negative Binomial random variable represents the trial number to get to the \(r\)-th success when each trial is independently a success with probability \(p\).
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.45\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}X|}
+\hline
+Name & Probability mass function (pmf) & \(E[X]\) & \(\mathit{var}(X)\) \\
+\hline
+Uniform & \(P(x)=\dfrac{1}{b-a+1},\quad x=a,a+1,\cdots,b\) & \(\dfrac{b+a}{2}\) & \(\dfrac{(b-a+1)^2-1}{12}\) \\
+\hline
+Binomial & \(P(x)=\binom{n}{x}p^x(1-p)^{n-x},\quad x=0,1,\cdots,n\) & \(np\) & \(np(1-p)\) \\
+\hline
+Poisson & \(P(x)=\dfrac{e^{-\lambda t}(\lambda t)^x}{x!},\quad x=0,1,\cdots\)\footnotemark[20] & \(\lambda t\) & \(\lambda t\) \\
+\hline
+Geometric & \(P(x)=(1-p)^{x-1}p,\quad x=1,2,\cdots\) & \(\dfrac{1}{p}\) & \(\dfrac{1-p}{p^2}\) \\
+\hline
+Negative Binomial & \(P(x)=\binom{x-1}{r-1}p^r(1-p)^{x-r},\quad x=r,r+1,\cdots\) & \(\dfrac{r}{p}\) & \(\dfrac{r(1-p)}{p^2}\) \\
+\hline
+\end{tabularx}
+\caption{Probability mass function, expected value and variance of discrete random variables}
+\label{tab:zhou-table-4-2}
+\end{table}
+\footnotetext[20]{Here we use the product of arrival rate \(\lambda\) and time \(t\) to define the parameter (expected value) since it is the definition used in many Poisson process studies.}
+
+\textbf{Continuous random variables}
+
+Table 4.3 includes some of the commonly encountered continuous distributions. Uniform distribution describes a random variable uniformly distributed over the interval \([a,b]\). Because of the central limit theorem, normal distribution/Gaussian distribution is by far the most popular continuous distribution. Exponential distribution models the arrival time of an event if it has a constant arrival rate \(\lambda\). Gamma distribution with parameters \((\alpha,\lambda)\) often arises, in practice, as the distribution of the amount of time one has to wait until a total of \(n\) events occur. Beta distributions are used to model events
+
+% ZHOU-SOURCE-PAGE: 104 PRINTED: 88
+that are constrained within a defined interval. By adjusting the shape parameters \(\alpha\) and \(\beta\), it can model different shapes of probability density functions.~\footnote[21]{For example, beta distribution is widely used in modeling loss given default in risk management. If you are familiar with Bayesian statistics, you will also recognize it as a popular conjugate prior function.}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.45\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}X|}
+\hline
+Name & Probability density function (pdf) & \(E[X]\) & \(\mathit{var}(X)\) \\
+\hline
+Uniform & \(\dfrac{1}{b-a},\quad a\le x\le b\) & \(\dfrac{b+a}{2}\) & \(\dfrac{(b-a)^2}{12}\) \\
+\hline
+Normal & \(\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad x\in(-\infty,\infty)\) & \(\mu\) & \(\sigma^2\) \\
+\hline
+Exponential & \(\lambda e^{-\lambda x},\quad x\ge0\) & \(1/\lambda\) & \(1/\lambda^2\) \\
+\hline
+Gamma & \(\dfrac{\lambda e^{-\lambda x}(\lambda x)^{\alpha-1}}{\Gamma(\alpha)},\quad x\ge0,\ \Gamma(a)=\displaystyle\int_0^\infty e^{-y}y^{a-1}\,dy\) & \(\alpha/\lambda\) & \(\alpha/\lambda^2\) \\
+\hline
+Beta & \(\dfrac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1},\quad 0<x<1\) & \(\dfrac{\alpha}{\alpha+\beta}\) & \(\dfrac{\alpha\beta}{(\alpha+\beta+1)(\alpha+\beta)^2}\) \\
+\hline
+\end{tabularx}
+\caption{Probability density function, expected value and variance of continuous random variables}
+\label{tab:zhou-table-4-3}
+\end{table}
+
+\textbf{Meeting probability}
+
+Two bankers each arrive at the station at some random time between 5:00 am and 6:00 am (arrival time for either banker is uniformly distributed). They stay exactly five minutes and then leave. What is the probability they will meet on a given day?
+
+\solution
+Assume banker \(A\) arrives \(X\) minutes after 5:00 am and \(B\) arrives \(Y\) minutes after 5:00 am. \(X\) and \(Y\) are independent uniform distribution between 0 and 60. Since both only stay exactly five minutes, as shown in Figure 4.4, \(A\) and \(B\) meet if and only if \(\lvert X-Y\rvert\le5\).
+
+So the probability that \(A\) and \(B\) will meet is simply the area of the shadowed region divided by the area of the square (the rest of the region can be combined to a square with size length 55):
+\[
+\frac{60\times60-2\times(1/2\times55\times55)}{60\times60}
+=\frac{(60+55)\times(60-55)}{60\times60}
+=\frac{23}{144}.
+\]

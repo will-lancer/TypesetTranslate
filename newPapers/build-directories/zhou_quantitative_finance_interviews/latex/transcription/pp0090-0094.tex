@@ -1,0 +1,145 @@
+% Original source: Zhou, physical PDF pp. 90--94 (printed pp. 74--78).
+% Coverage: continuation of conditional probability and probability puzzles.
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 90 PRINTED: 74
+\solution
+the other child is equally likely to be a boy or a girl (independent of the boy you've seen), so the probability that both children are boys is $1/2$.
+
+Notice the subtle difference between part $A$ and part $B$. In part $A$, the problem essentially asks given there is at least one boy in two children, what is the conditional probability that both children are boys. Part $B$ asks that given one child is a boy, what is the conditional probability that the other child is also a boy. For both parts, we need to assume that each child is equal likely to be a boy or a girl.
+
+\problem{All-girl world?}
+In a primitive society, every couple prefers to have a baby girl. There is a $50\%$ chance that each child they have is a girl, and the genders of their children are mutually independent. If each couple insists on having more children until they get a girl and once they have a girl they will stop having more children, what will eventually happen to the fraction of girls in this society?
+
+\solution
+It was surprising that many interviewees---include many who studied probability---have the misconception that there will be more girls. Do not let the word ``prefer'' and a wrong intuition misguide you. The fraction of baby girls are driven by nature, or at least the $X$ and $Y$ chromosomes, not by the couples' preference. You only need to look at the key information: $50\%$ and independence. Every new-born child has equal probability of being a boy or a girl regardless of the gender of any other children. So the fraction of girls born is always $50\%$ and the fractions of girls in the society will stay stable at $50\%$.
+
+\problem{Unfair coin}
+You are given 1000 coins. Among them, 1 coin has heads on both sides. The other 999 coins are fair coins. You randomly choose a coin and toss it 10 times. Each time, the coin turns up heads. What is the probability that the coin you choose is the unfair one?
+
+\solution
+This is a classic conditional probability question that uses Bayes' theorem. Let $A$ be the event that the chosen coin is the unfair one, then $A^c$ is the event that the chosen coin is a fair one. Let $B$ be the event that all ten tosses turn up heads. Apply Bayes' theorem we have
+
+\[
+P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}=\frac{P(B\mid A)P(A)}{P(B\mid A)P(A)+P(B\mid A^c)P(A^c)}.
+\]
+
+The priors are $P(A)=1/1000$ and $P(A^c)=999/1000$. If the coin is unfair, it always turns up heads, so $P(B\mid A)=1$. If the coin is fair, each time it has $1/2$ probability turning
+
+% ZHOU-SOURCE-PAGE: 91 PRINTED: 75
+up heads. So $P(B\mid A^c)=(1/2)^{10}=1/1024$. Plug in all the available information and we have the answer:
+
+\[
+P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B\mid A)P(A)+P(B\mid A^c)P(A^c)}
+=\frac{1/1000\times1}{1/1000\times1+999/1000\times1/1024}\simeq 0.5.
+\]
+
+\problem{Fair probability from an unfair coin}
+If you have an unfair coin, which may bias toward either heads or tails at an unknown probability, can you generate even odds using this coin?
+
+\solution
+Unlike fair coins, we clearly can not generate even odds with one toss using an unfair coin. How about using 2 tosses? Let $p_H$ be the probability the coin will yield head, and $p_T$ be the probability the coin will yield tails ($p_H+p_T=1$). Consider two independent tosses. We have four possible outcomes $HH$, $HT$, $TH$ and $TT$ with probabilities $P(HH)=p_Hp_H$, $P(HT)=p_Hp_T$, $P(TH)=p_Tp_H$, and $P(TT)=p_Tp_T$.
+
+So we have $P(HT)=P(TH)$. By assigning $HT$ to winning and $TH$ to losing, we can generate even odds.\footnote[12]{I should point out that this simple approach is not the most efficient approach since I am disregarding the cases $HH$ and $TT$. When the coin has high bias (one side is far more likely than the other side to occur), the method may take many runs to generate one useful result. For more complex algorithm that increasing efficiency, please refer to \emph{Two Algorithms for Unbiased Coin Tossing with a Biased Coin} by Quentin F. Stout and Bette L. Warren, \emph{Annals of Probability} 12 (1984), pp. 212--222.}
+
+\problem{Dart game}
+Jason throws two darts at a dartboard, aiming for the center. The second dart lands farther from the center than the first. If Jason throws a third dart aiming for the center, what is the probability that the third throw is farther from the center than the first? Assume Jason's skillfulness is constant.
+
+\solution
+A standard answer directly applies the conditional probability by enumerating all possible outcomes. If we rank the three darts' results from the best ($A$) to the worst ($C$), there are 6 possible outcomes with equal probability.
+
+% ZHOU-SOURCE-PAGE: 92 PRINTED: 76
+\begin{center}
+\begin{tabular}{lcccccc}
+\textbf{Outcome} & 1 & 2 & 3 & 4 & 5 & 6\\
+\textbf{1st throw} & A & B & A & C & B & C\\
+\textbf{2nd throw} & B & A & C & A & C & B\\
+\textbf{3rd throw} & C & C & B & B & A & A\\
+\end{tabular}
+\end{center}
+
+The information from the first two throws eliminates outcomes 2, 4 and 6. Conditioned on outcomes 1, 3, and 5, the outcomes that the 3rd throw is worse than the 1st throw are outcomes 1 and 3. So there is 2/3 probability that the third throw is farther from the center than the first.
+
+This approach surely is reasonable. Nevertheless, it is not an efficient approach. When the number of darts is small, we can easily enumerate all outcomes. What if it is a more complex version of the original problem:
+
+Jason throws $n$ ($n\geq5$) darts at a dartboard, aiming for the center. Each subsequent dart is farther from the center than the first dart. If Jason throws the $(n+1)$th dart, what is the probability that it is also farther from the center than his first?
+
+This question is equivalent to a simple question: what is the probability that the $(n+1)$th throw is not the best among all $(n+1)$ throws? Since the 1st throw is the best among the first $n$ throws, essentially I am saying the event that the $(n+1)$th throw is the best of all $(n+1)$ throws (let's call it $A_{n+1}$) is independent of the event that the 1st throw is the best of the first $n$ throws (let's call it $A_1$). In fact, $A_{n+1}$ is independent of the order of the first $n$ throws. Are these two events really independent? The answer is a resounding yes. If it is not obvious to you that $A_{n+1}$ is independent of the order of the first $n$ throws, let's look at it another way: the order of the first $n$ throws is independent of $A_{n+1}$. Surely this claim is conspicuous. But independence is symmetric! Since the probability of $A_{n+1}$ is $1/(n+1)$, the probability that the $(n+1)$th throw is not the best is $n/(n+1)$.
+
+For the original version, three darts are thrown independently, they each have a 1/3 chance of being the best throw.\footnote[13]{Here you can again use symmetry argument; each throw is equally likely to be the best.} As long as the third dart is not the best throw, it will be worse than the first dart. Therefore the answer is 2/3.
+
+\problem{Birthday line}
+At a movie theater, a whimsical manager announces that she will give a free ticket to the first person in line whose birthday is the same as someone who has already bought a ticket. You are given the opportunity to choose any position in line. Assuming that you
+
+% ZHOU-SOURCE-PAGE: 93 PRINTED: 77
+don't know anyone else's birthday and all birthdays are distributed randomly throughout the year (assuming 365 days in a year), what position in line gives you the largest chance of getting the free ticket?
+
+\solution
+If you have solved the problem that no two people have the same birthday in an $n$-people group, this new problem is just a small extension. Assume that you choose to be the $n$-th person in line. In order for you to get the free ticket, all of the first $n-1$ individuals in line must have different birthdays and your birthday needs to be the same as one of those $n-1$ individuals.
+
+\[
+\begin{aligned}
+p(n)={}&p(\text{first $n-1$ people have no same birthday})\\
+&\times p(\text{yours among those $n-1$ birthdays})
+\end{aligned}
+\]
+\[
+=\frac{365\times364\times\cdots\times(365-n+2)}{365^{n-1}}\times\frac{n-1}{365}.
+\]
+
+It is intuitive to argue that when $n$ is small, increasing $n$ will increase your chance of getting the free ticket since the increase of $p(\text{yours among those $n-1$ birthdays})$ is more significant than the decrease in $p(\text{first $n-1$ people have no same birthday})$. So when $n$ is small, we have $P(n)>P(n-1)$. As $n$ increases, gradually the negative impact of $p(\text{first $n-1$ people have no same birthday})$ will catch up and at a certain point we will have $P(n+1)<P(n)$. So we need to find such an $n$ that satisfies $P(n)>P(n-1)$ and $P(n)>P(n+1)$.
+
+\[
+P(n-1)=\frac{365}{365}\times\frac{364}{365}\times\cdots\times\frac{365-(n-3)}{365}\times\frac{n-2}{365}
+\]
+\[
+P(n)=\frac{365}{365}\times\frac{364}{365}\times\cdots\times\frac{365-(n-2)}{365}\times\frac{n-1}{365}
+\]
+\[
+P(n+1)=\frac{365}{365}\times\frac{364}{365}\times\cdots\times\frac{365-(n-2)}{365}\times\frac{365-(n-1)}{365}\times\frac{n}{365}
+\]
+
+Hence,
+\[
+\left\{
+\begin{aligned}
+P(n)>P(n-1)&\Rightarrow \frac{365-(n-2)}{365}\times\frac{n-1}{365}>\frac{n-2}{365}\\
+P(n)>P(n+1)&\Rightarrow \frac{n-1}{365}>\frac{365-(n-1)}{365}\times\frac{n}{365}
+\end{aligned}
+\right.
+\Rightarrow
+\left\{
+\begin{aligned}
+n^2-3n-363&<0\\
+n^2-n-365&>0
+\end{aligned}
+\right.
+\Rightarrow n=20.
+\]
+
+\textbf{You should be the 20th person in line.}\footnote[14]{\emph{Hint:} If you are the $n$-th person in line, to get the free ticket, the first $(n-1)$ people in line must not have the same birthday and you must have the same birthday as one of them.}
+
+% ZHOU-SOURCE-PAGE: 94 PRINTED: 78
+\problem{Dice order}
+We throw 3 dice one by one. What is the probability that we obtain 3 points in strictly increasing order?\footnote[15]{\emph{Hint:} To obtain 3 points in strictly increasing order, the 3 points must be different. For 3 different points in a sequence, strictly increasing order is one of the possible permutations.}
+
+\solution
+To have 3 points in strictly increasing order, first all three points must be different numbers. Conditioned on three different numbers, the probability of strictly increasing order is simply $1/3!=1/6$ (one specific sequence out of all possible permutations). So we have
+
+\[
+P=P(\text{different numbers in all three throws})\times P(\text{increasing order}\mid3\text{ different numbers})
+\]
+\[
+=(1\times\frac{5}{6}\times\frac{4}{6})\times\frac{1}{6}=\frac{5}{54}.
+\]
+
+\problem{Monty Hall problem}
+Monty Hall problem is a probability puzzle based on an old American show \emph{Let's Make a Deal}. The problem is named after the show's host. Suppose you're on the show now, and you're given the choice of 3 doors. Behind one of the doors is a car; behind the other two, goats. You don't know ahead of time what is behind each of the doors.
+
+You pick one of the doors and announce it. As soon as you pick the door, Monty opens one of the other two doors that he knows has a goat behind it. Then he gives you the option to either keep your original choice or switch to the third door. Should you switch? What is the probability of winning a car if you switch?
+
+\solution
+If you don't switch, whether you win or not is independent of Monty's action of showing you a goat, so your probability of winning is 1/3. What if you switch? Many would argue that since there are only two doors left after Monty shows a door with a goat, the probability of winning is 1/2. But is this argument correct?
+
+If you look at the problem from a different perspective, the answer becomes clear. Using a switching strategy, you win the car if and only if you originally pick a door with a goat, which has a probability of 2/3 (You pick a door with a goat, Monty shows a door with another goat, so the one you switch to must have a car behind it). If you originally picked the door with the car, which has a probability of 1/3, you will lose by switching. So your probability of winning by switching is actually 2/3.
