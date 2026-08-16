@@ -1,0 +1,216 @@
+% Original source: Zhou, physical PDF pp. 19--23 (printed pp. 3--7).
+% Figures: none.
+% Uncertainty log: none.
+
+% ZHOU-SOURCE-PAGE: 19 PRINTED: 3
+\section*{Chapter 2 Brain Teasers}
+
+In this chapter, we cover problems that only require common sense, logic, reasoning, and
+basic---no more than high school level---math knowledge to solve. In a sense, they are
+real brain teasers as opposed to mathematical problems in disguise. Although these brain
+teasers do not require specific math knowledge, they are no less difficult than other
+quantitative interview problems. Some of these problems test your analytical and general
+problem-solving skills; some require you to think out of the box; while others ask you to
+solve the problems using fundamental math techniques in a creative way. In this chapter,
+we review some interview problems to explain the general themes of brain teasers that
+you are likely to encounter in quantitative interviews.
+
+\subsection{Problem Simplification}
+
+If the original problem is so complex that you cannot come up with an immediate
+solution, try to identify a simplified version of the problem and start with it. Usually you
+can start with the simplest sub-problem and gradually increase the complexity. You do
+not need to have a defined plan at the beginning. Just try to solve the simplest cases and
+analyze your reasoning. More often than not, you will find a pattern that will guide you
+through the whole problem.
+
+\problem{Screwy pirates}
+
+Five pirates looted a chest full of 100 gold coins. Being a bunch of democratic pirates,
+they agree on the following method to divide the loot:
+
+The most senior pirate will propose a distribution of the coins. All pirates, \emph{including the
+most senior pirate}, will then vote. If at least 50\% of the pirates (3 pirates in this case)
+accept the proposal, the gold is divided as proposed. If not, the most senior pirate will be
+fed to shark and the process starts over with the next most senior pirate.\ .\ .\ .\ The process is
+repeated until a plan is approved. You can assume that all pirates are perfectly rational:
+they want to stay alive first and to get as much gold as possible second. Finally, being
+blood-thirsty pirates, they want to have fewer pirates on the boat if given a choice between
+otherwise equal outcomes.
+
+How will the gold coins be divided in the end?
+
+\solution
+If you have not studied game theory or dynamic programming, this strategy problem may
+appear to be daunting. If the problem with 5 pirates seems complex, we can always start
+with \emph{a simplified version of the problem} by reducing the number of pirates. Since the
+solution to 1-pirate case is trivial, \emph{let's start with 2 pirates}. The senior
+% ZHOU-SOURCE-PAGE: 20 PRINTED: 4
+pirate (labeled as 2) can claim all the gold since he will always get 50\% of the votes
+from himself and pirate 1 is left with nothing.
+
+Let's add a more senior pirate, 3. He knows that if his plan is voted down, pirate 1 will get
+nothing. But if he offers private 1 nothing, pirate 1 will be happy to kill him. So pirate 3
+will offer private 1 one coin and keep the remaining 99 coins, in which strategy the plan
+will have 2 votes from pirate 1 and 3.
+
+If pirate 4 is added, he knows that if his plan is voted down, pirate 2 will get nothing. So
+pirate 2 will settle for one coin if pirate 4 offers one. So pirate 4 should offer pirate 2 one
+coin and keep the remaining 99 coins and his plan will be approved with 50\% of the votes
+from pirate 2 and 4.
+
+Now we finally come to the 5-pirate case. He knows that if his plan is voted down, both
+pirate 3 and pirate 1 will get nothing. So he only needs to offer pirate 1 and pirate 3 one
+coin each to get their votes and keep the remaining 98 coins. If he divides the coins this
+way, he will have three out of the five votes: from pirates 1 and 3 as well as himself.
+
+Once we start with a simplified version and add complexity to it, the answer becomes
+obvious. Actually after the case $n=5$, a clear pattern has emerged and we do not need to
+stop at 5 pirates. For any $2n+1$ pirate case ($n$ should be less than 99 though), the most
+senior pirate will offer pirates 1, 3, $\ldots$, and $2n-1$ each one coin and keep the rest for
+himself.
+
+\problem{Tiger and sheep}
+
+One hundred tigers and one sheep are put on a magic island that only has grass. Tigers
+can eat grass, but they would rather eat sheep. Assume: A. Each time only one tiger can
+eat one sheep, and that tiger itself will become a sheep after it eats the sheep. B. All
+tigers are smart and perfectly rational and they want to survive. So will the sheep be
+eaten?
+
+\solution
+100 is a large number, so again let's start with \emph{a simplified version of the problem}.
+If there is only 1 tiger ($n=1$), surely it will eat the sheep since it does not need to worry
+about being eaten. How about 2 tigers? Since both tigers are perfectly rational, either tiger
+probably would do some thinking as to what will happen if it eats the sheep. Either tiger is
+probably thinking: if I eat the sheep, I will become a sheep; and then I will be eaten by the
+other tiger. So to guarantee the highest likelihood of survival, neither tiger will eat the
+sheep.
+
+If there are 3 tigers, the sheep will be eaten since each tiger will realize that once it
+changes to a sheep, there will be 2 tigers left and it will not be eaten. So the first tiger that
+thinks this through will eat the sheep. If there are 4 tigers, each tiger will understand
+% ZHOU-SOURCE-PAGE: 21 PRINTED: 5
+that if it eats the sheep, it will turn to a sheep. Since there are 3 other tigers, it will be
+eaten. So to guarantee the highest likelihood of survival, no tiger will eat the sheep.
+
+Following the same logic, we can naturally show that if the number of tigers is even, the
+sheep will not be eaten. If the number is odd, the sheep will be eaten. For the case
+$n=100$, the sheep will not be eaten.
+
+\subsection{Logic Reasoning}
+
+\problem{River crossing}
+
+Four people, $A$, $B$, $C$ and $D$ need to get across a river. The only way to cross the
+river is by an old bridge, which holds at most 2 people at a time. Being dark, they can't
+cross the bridge without a torch, of which they only have one. So each pair can only walk at
+the speed of the slower person. They need to get all of them across to the other side as
+quickly as possible. $A$ is the slowest and takes 10 minutes to cross; $B$ takes 5 minutes;
+$C$ takes 2 minutes; and $D$ takes 1 minute.
+
+What is the minimum time to get all of them across to the other side?
+
+\solution
+The key point is to realize that the 10-minute person should go with the 5-minute person
+and this should not happen in the first crossing, otherwise one of them have to go back. So
+$C$ and $D$ should go across first (2 min); then send $D$ back (1min); $A$ and $B$ go
+across (10 min); send $C$ back (2min); $C$ and $D$ go across again (2 min).
+
+It takes 17 minutes in total. Alternatively, we can send $C$ back first and then $D$ back in
+the second round, which takes 17 minutes as well.
+
+\footnotetext[1]{Hint: The key is to realize that $A$ and $B$ should get across the bridge together.}
+
+You and your colleagues know that your boss $A$'s birthday is one of the following 10
+dates:
+
+Mar 4, Mar 5, Mar 8
+
+Jun 4, Jun 7
+
+Sep 1, Sep 5
+
+Dec 1, Dec 2, Dec 8
+
+$A$ told you only the month of his birthday, and told your colleague $C$ only the day. After
+% ZHOU-SOURCE-PAGE: 22 PRINTED: 6
+what you said, $C$ replied: ``I didn't know $A$'s birthday, but now I know it.'' You smiled
+and said: ``Now I know it, too.'' After looking at the 10 dates and hearing your comments,
+your administrative assistant wrote down $A$'s birthday without asking any questions. So
+what did the assistant write?
+
+\solution
+Don't let the ``he said, she said'' part confuses you. Just interpret the logic behind each
+individual's comments and try your best to derive useful information from these comments.
+
+Let $D$ be the day of the month of $A$'s birthday, we have $D\in\{1,2,4,5,7,8\}$. If the
+birthday is on a unique day, $C$ will know the $A$'s birthday immediately. Among possible
+$D$s, 2 and 7 are unique days. Considering that you are sure that $C$ does not know $A$'s
+birthday, you must infer that the day the $C$ was told of is not 2 or 7. Conclusion: the
+month is not June or December. (If the month had been June, the day $C$ was told of may
+have been 2; if the month had been December, the day $C$ was told of may have been 7.)
+
+Now $C$ knows that the month must be either March or September. He immediately figures
+out $A$'s birthday, which means the day must be unique in the March and September list.
+It means $A$'s birthday cannot be Mar 5, or Sep 5. Conclusion: the birthday must be Mar 4,
+Mar 8 or Sep 1.
+
+Among these three possibilities left, Mar 4 and Mar 8 have the same month. So if the month
+you have is March, you still cannot figure out $A$'s birthday. Since you can figure out $A$'s
+birthday, $A$'s birthday must be Sep 1. Hence, the assistant must have written Sep 1.
+
+\problem{Card game}
+
+A casino offers a card game using a normal deck of 52 cards. The rule is that you turn over
+two cards each time. For each pair, if both are black, they go to the dealer's pile; if both are
+red, they go to your pile; if one is black and one red, they are discarded. The process is
+repeated until you two go through all 52 cards. If you have more cards in your pile, you win
+\$100; otherwise (including ties) you get nothing. The casino allows you to negotiate the
+price you want to pay for the game. How much would you be willing to pay to play this
+game?\footnotemark[2]
+
+\solution
+This surely is an insidious casino. No matter how the cards are arranged, you and the dealer
+will always have the same number of cards in your piles. Why? Because each pair of
+discarded cards have one black card and one red card, so equal number of
+\footnotetext[2]{Hint: Try to approach the problem using symmetry. Each discarded pair has one black and one red card. What does that tell you as to the number of black and red cards in the rest two piles?}
+
+% ZHOU-SOURCE-PAGE: 23 PRINTED: 7
+red and black cards are discarded. As a result, the number of red cards left for you and
+the number of black cards left for the dealer are always the same. The dealer always wins!
+So we should not pay anything to play the game.
+
+\problem{Burning ropes}
+
+You have two ropes, each of which takes 1 hour to burn. But either rope has different
+densities at different points, so there's no guarantee of consistency in the time it takes
+different sections within the rope to burn. How do you use these two ropes to measure 45
+minutes?
+
+\solution
+This is a classic brain teaser question. For a rope that takes $x$ minutes to burn, if you
+light both ends of the rope simultaneously, it takes $x/2$ minutes to burn. So we should
+light both ends of the first rope and light one end of the second rope. 30 minutes later, the
+first rope will get completely burned, while that second rope now becomes a 30-min rope.
+At that moment, we can light the second rope at the other end (with the first end still
+burning), and when it is burned out, the total time is exactly 45 minutes.
+
+\problem{Defective ball}
+
+You have 12 identical balls. One of the balls is heavier OR lighter than the rest (you don't
+know which). Using just a balance that can only show you which side of the tray is heavier,
+how can you determine which ball is the defective one with 3 measurements?\footnotemark[3]
+
+\solution
+This weighing problem is another classic brain teaser and is still being asked by many
+interviewers. The total number of balls often ranges from 8 to more than 100. Here we use
+$n=12$ to show the fundamental approach. The key is to separate the original group (as well
+as any intermediate subgroups) into three sets instead of two. The reason is that the
+comparison of the first two groups always gives information about the third group.
+
+Considering that the solution is wordy to explain, I draw a tree diagram in Figure 2.1 to
+show the approach in detail. Label the balls 1 through 12 and separate them into three
+groups with 4 balls each. Weigh balls 1, 2, 3, 4 against balls 5, 6, 7, 8. Then we go on to
+explore two possible scenarios: two groups balance, as expressed using an ``='' sign, or 1,
+\footnotetext[3]{Hint: First do it for 9 identical balls and use only 2 measurements, knowing that one is heavier than the rest.}

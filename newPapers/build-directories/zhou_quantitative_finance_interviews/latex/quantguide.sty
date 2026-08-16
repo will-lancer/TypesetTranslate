@@ -1,0 +1,113 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{quantguide}[2026/08/15 Quantitative interview guide JHEP conventions]
+
+% The edition is assembled from native LaTeX transcription chunks.  The
+% repository's JHEP publication package supplies the page layout, title page,
+% section headings, equation numbering, bibliography support, and hyperlinks.
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{textcomp}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{bm}
+\RequirePackage{jheppub}
+
+% General transcription support.
+\RequirePackage{etoolbox}
+\RequirePackage{enumitem}
+\RequirePackage{xcolor}
+\RequirePackage{float}
+
+% Native tables used by the source, including long and width-constrained
+% tables.  These packages keep tables editable and searchable in the output.
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+
+% Native diagrams, source algorithms, and compact two-column passages.
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing,patterns,positioning,shapes.geometric}
+\RequirePackage{listings}
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\RequirePackage{multicol}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={A Practical Guide to Quantitative Finance Interviews},
+  pdfauthor={Xinfeng Zhou}
+}
+
+% Match the repository's native JHEP book editions: suppress the submission
+% banner and retain JHEP's compact title spacing and page geometry.
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\makeatother
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+\setcounter{tocdepth}{2}
+\setlength{\emergencystretch}{2em}
+
+% A small helper retained for chapter assembly files that add a heading and a
+% corresponding table-of-contents entry at the same source boundary.
+\newcommand{\sourceanchor}[3]{%
+  \phantomsection
+  \addcontentsline{toc}{#1}{#2}%
+  \label{#3}%
+}
+
+% Problems are numbered within the current JHEP section.  The title is kept in
+% the heading argument, while the following source paragraphs remain ordinary
+% LaTeX prose and may continue into the next transcription chunk.
+\newcounter{problem}[section]
+\renewcommand{\theproblem}{\thesection.\arabic{problem}}
+\newcommand{\problem}[1]{%
+  \par\medskip
+  \refstepcounter{problem}%
+  \noindent\textbf{Problem~\theproblem.\ #1}\par
+  \smallskip
+}
+
+\newcommand{\solution}{%
+  \par\medskip
+  \noindent\textbf{Solution.}\par
+  \smallskip
+}
+
+\newcommand{\hint}[1]{%
+  \par\smallskip
+  \noindent\textit{Hint.} #1\par
+  \smallskip
+}
+
+% A restrained listings style for source code printed in the programming and
+% algorithms chapters.  Pseudocode uses algorithmicx/algpseudocode directly.
+\lstdefinestyle{zhoucode}{%
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  frame=single,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\scriptsize\color{gray},
+  keywordstyle=\color{blue!70!black}\bfseries,
+  commentstyle=\color{gray!75!black}\itshape,
+  stringstyle=\color{green!40!black}%
+}
+\lstset{style=zhoucode}

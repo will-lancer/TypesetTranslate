@@ -1,0 +1,276 @@
+                                                A Practical Guide To Quantitative Finance Interviews
+
+
+Now let's move on to the counting approach. Figure 4.2A is the general case of what
+happens in the final. Player 1 always wins, so he will be in the final. From the figure, it
+is obvious that 2n players are separated to two 2n-i -player subgroups and each group
+will have one player reaching the final. As shown in Figure 4.28, for player 2 to reach
+the final, he/she must be in a different subgroup from 1. Since any of the remaining
+players in 2, 3, · · ·, 2n are likely to be one of the (2n-i - 1) players in the same subgroup
+as player 1 or one of the 2n-i players in the subgroup different from player 1, the
+probability that 2 is in a different subgroup from 1 and that I and 2 will meet in the final
+
+is simply        Clearly, the counting approach provides not only a simpler solution but
+          2n -1
+also more insight to the problem.
+
+                          General Case                       1 & 2 in the Final
+                               I                                       1
+                              t                                        t
+                              +                                        +
+        nth round     I             ?           nth round       I             2
+
+
+    (n-l)th round
+                     /\
+                     1 +
+                                   /\
+                                   ? +       (n-l)thround
+                                                              /\
+                                                              1 +
+                                                                             /\
+                                                                             2 +
+                      ?             ?                          ?              ?
+
+
+
+
+                 2n-I players 2n-I players                2n-I players 2n-I players
+
+                              A                                        B
+ Figure 4.2A The general case of separating 2" players into 2"- 1-player subgroups;
+ 4.28 The special case with players 1 and 2 in different groups
+
+
+
+Application letters
+You're sending job applications to 5 firms: Morgan Stanley, Lehman Brothers, UBS,
+Goldman Sachs, and Merrill Lynch. You have 5 envelopes on the table neatly typed with
+names and addresses of people at these 5 firms. You even have 5 cover letters
+personalized to each of these firms. Your 3-year-old tried to be helpful and stuffed each
+cover letter into each of the envelopes for you. Unfortunately she randomly put letters
+
+
+                                                                                                 69
+Probability Theory
+
+
+into envelopes without realizing that the letters are personalized. What is the probability
+that all 5 cover letters are mailed to the wrong firms? 9
+
+Solution: This problem is a classic example for the Inclusion-Exclusion Principle. In fact,
+a more general case is an example in Ross' textbook First Course in Probability.
+Let's denote by E;, i = l,·· ·,5 the event that the i-th letter has the correct envelope. Then
+
+P(                     is the probability that at least one letter has the correct envelope and
+
+1-P(                       is the probability that all letters have the wrong envelopes. P(   can
+
+be calculated using the Inclusion-Exclusion Principle:
+
+                       t.P(E,)-                                               P(E1E2 ···E,)
+
+
+
+It's obvious thatP(E;) =_!_, Vi= 1,-··,5. So i:P(E;) = 1.
+                                                5                       i=I
+
+
+P(E;,E;) is the event that both letter i, and letter i 2 have the correct envelope. The
+probability that i1 has the correct envelope is 1I5; Conditioned on that i1 has the correct
+envelope, the probability that i2 has the correct envelope is 1I4 (there are only 4
+
+envelopes left). So P(E,.E; )=_!_x-1-= ( 5 - 2)!.
+                               5 5-1       5!   I   2
+
+
+
+
+There are ( 5 =
+            2
+                   5!
+                2!(5-2)!
+                           J
+                         members of P(E;,E;) in LP(E;,E;), so we have
+                                                i1<i2
+
+
+
+
+t:"f\'p(£. £ . )=(5-2)!x
+             11
+                   5!
+                  12
+                            5!   =J__
+                         2!(5-2)! 2!
+
+                                                                              1
+Similarly we have "f\' P(E; E; E;) = _!__, "f\'
+                                             L...i     P(E.,, E.'2 E..,, E)  =-,
+                                                                              4   and
+                 . L...i.            3 I i1<i:! <iJ<i4
+                                    I1<I2<l.1
+                                                        I   2   )
+                                                                    •
+                                                                          '•    I
+                                                                                •
+
+
+             I
+P(E E ···E )=-
+     '   2             5       5!
+
+
+
+9 Hint: The complement is that at least one letter is mailed to the correct firm.
+
+
+
+
+70
+                                                                    A Practical Guide To Quantitative Finance Interviews
+
+
+:.                                        __
+                                           I +_!_=!2_
+         i=I    1
+                                2!   3!    4!    5!        30
+
+So the probability that all 5 letters are mailed to the wrong firms is 1- P                                         (.:_p;) =!.!_.
+                                                                                                                     i=I     30
+
+
+Birthday problem
+How many people do we need in a class to make the probability that two people have the
+same birthday more than 1/2? (For simplicity, assume 365 days a year.)
+
+Solution: The number is surprisingly small: 23. Let's say we have n people in the class.
+Without any restrictions, we have 365 possibilities for each individual's birthday. The
+basic principle of counting tells us that there are 365n possible sequences.
+We want to find the number of those sequences that have no duplication of birthdays.
+For the first individual, we can choose any of the 365 days; but for the second, only 364
+remaining choices left, ... , for the rth individual, there are 365 - r +I choices. So for n
+people there are 365 x 364 x · · · x (365- n + 1) possible sequences where no two
+individuals have the same birthday. We need to have 365 x 364 x · · · x (365 - n +I) < 1/ 2
+                                                                365n
+for the odds to be in our favor. The smallest such n is 23.
+
+
+100th digit
+What is the 1OOth digit to the right of the decimal point in the decimal representation of
+(1 + .fi.)3000 ?10
+
+Solution: If you still have not figure out the solution from the hint, here is one more hint:
+         r
+(1 + J2 + (1-             .Ji.r
+                        is an integer when n = 3000.
+
+Applying the binomial theorem for (x +                          yr ,we have
+                     n    (nJ
+                           k    in-kJ2 k   =    Ln         (nJ
+                                                            k    in-k.fi_k   +       L n          (nJk   in-kJ2 k
+
+                    k-0                     k=2j.OSJS!!_                         k=2J+l,OSJ<!!_
+                                                       2                                      2
+
+
+
+
+10 Hint: (1   + .J2)2 + (1- .J2)2 = 6 . What will happen to (1- .J2)2n as n becomes large?
+
+                                                                                                                                     71
+Probability Theory
+
+
+
+
+             r
+So (1 + J2 + (1 - J2. y = 2           Ln       (nJ
+                                               k 1n-k J2. k ' which is always an integer. It is easy to
+                                           2
+
+see that 0<(1-J2.) 3000 <<10- 100• So the 100thdigitof(l+J2r mustbe9.
+
+
+Cubic of integer
+Let x be an integer between 1 and 10 12, what is the probability that the cubic of x ends
+with 11? 11
+
+Solution: All integers can be expressed as x = a+ 1Ob, where a is the last digit of x.
+Applying the binomial theorem, we have x 3 = (a + 1Ob ) 3 = a 3 + 30a 2 b + 300ab 2 + 1000b3 •
+
+The unit digit of x 3 only depends on a 3 • So a 3 has a unit digit of 1. Only a = 1 satisfies
+this requirement and a 3 = 1. Since a 3 = 1, the tenth digit only depends on 30a 2 b = 30b.
+So we must have that 3b ends in 1, which requires the last digit of b to be 7.
+Consequently, the last two digits of x should be 71, which has a probability of 1% for
+integers between I and 10 12 •
+
+
+            4.3 Conditional Probability and Bayes' formula
+Many financial transactions are responses to probability adjustments based on new-and
+most likely incomplete-information. Conditional probability surely is one of the most
+popular test subjects in quantitative interviews. So in this section, we focus on basic
+conditional probability definitions and theorems.
+
+Conditional probability P(A I B): If P(B) > 0, then P(A IB) = P(AB) is the fraction
+                                                                               P(B)
+of B outcomes that are also A outcomes.
+
+
+
+
+11 Hint: The last two digits of x 3 only depend on the last two digits of x.
+
+
+
+
+72
+                                                   A Practical Guide To Quantitative Finance Interviews
+
+Law of total orobabilitv: for any mutually exclusive events {F;} , i = 1, 2, · · ·, n, whose
+                                                               n
+union is the entire sample space ( F; n F1 =<I>, Vi -:1; j;   LJ F; = n ), we have
+                                                              i =I
+
+                                                 n
+
+P(E) = P(EF;)+P(EF2 ) + ··· +P(EFn) =LP(£ IF;)P(F;)
+                                                 i=I
+
+      = P(E IF;)P(F;) + P(E IF;_)P(F2 ) + · ·· + P(E IFn)P(F,,)
+Independent events: P(EF) = P(E)P(F) => P(EFc) = P(E)P(Fc).
+Independence is a symmetric relation: X is independent of Y <=> Y is independent of X.
+                                     P(E I F. )P(F.)
+8 ayes ' F ormuIa: P(F.J I £) --    n        J         J   if F;, i = 1, · ·., n, are mutually
+                                    L P(E IF; )P(F;)
+                                    i=l
+exclusive events whose union is the entire sample space.
+As the following examples will demonstrate, not all conditional probability problems
+have intuitive solutions. Many demand logical analysis instead.
+
+
+Boys and girls
+Part A. A company is holding a dinner for working mothers with at least one son. Ms.
+Jackson, a mother with two children, is invited. What is the probability that both
+children are boys?
+
+Solution: The sample space of two children is given by 0= {(b,b),(b,g),(g,b),(g,g)}
+(e.g., (g, b) means the older child is a girl and the younger child a boy), and each
+outcome has the same probability. Since Ms. Jackson is invited, she has at least one son.
+Let B be the event that at least one of the children is a boy and A be the event that both
+children are boys, we have
+
+P(A I B) = P(A nB) =       P( {(b,b)})      = _11_4 = _!_
+             P(B)    P( {(b,b),(b,g),(g,b)}) 3 I 4 3
+
+
+
+Part B. Your new colleague, Ms. Parker is known to have two children. If you see her
+walking with one of her children and that child is a boy, what is the probability that both
+children are boys?
+
+
+
+
+                                                                                                    73
+
