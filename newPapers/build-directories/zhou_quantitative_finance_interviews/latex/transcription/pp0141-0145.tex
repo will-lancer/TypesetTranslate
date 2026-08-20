@@ -8,9 +8,9 @@
 \begin{tabular}{c@{\qquad}c@{\qquad}c}
 \begin{tabular}{|c|c|ccccc|}
 \hline
-& & \multicolumn{5}{c|}{\textbf{Red Sox}}\\
+& & \multicolumn{5}{c|}{\emph{Red Sox}}\\
 \cline{3-7}
-& \textbf{wins} & 0 & 1 & 2 & 3 & 4\\
+& \emph{wins} & 0 & 1 & 2 & 3 & 4\\
 \hline
 \multirow{5}{*}{\rotatebox[origin=c]{90}{Colorado Rockies}}
 & 0 &  &  &  &  & 100\\ \cline{2-7}
@@ -23,9 +23,9 @@
 & \(\Longrightarrow\) &
 \begin{tabular}{|c|c|ccccc|}
 \hline
-& & \multicolumn{5}{c|}{\textbf{Red Sox}}\\
+& & \multicolumn{5}{c|}{\emph{Red Sox}}\\
 \cline{3-7}
-& \textbf{wins} & 0 & 1 & 2 & 3 & 4\\
+& \emph{wins} & 0 & 1 & 2 & 3 & 4\\
 \hline
 \multirow{5}{*}{\rotatebox[origin=c]{90}{Colorado Rockies}}
 & 0 &  &  &  & \(87.5\,\uparrow\) & 100\\ \cline{2-7}
@@ -37,9 +37,9 @@
 \end{tabular}\\[1.2em]
 \begin{tabular}{|c|c|ccccc|}
 \hline
-& & \multicolumn{5}{c|}{\textbf{Red Sox}}\\
+& & \multicolumn{5}{c|}{\emph{Red Sox}}\\
 \cline{3-7}
-& \textbf{wins} & 0 & 1 & 2 & 3 & 4\\
+& \emph{wins} & 0 & 1 & 2 & 3 & 4\\
 \hline
 \multirow{5}{*}{\rotatebox[origin=c]{90}{Colorado Rockies}}
 & 0 & 0 & 31.25 & 62.5 & 87.5 & 100\\ \cline{2-7}
@@ -52,9 +52,9 @@
 & \(\Longrightarrow\) &
 \begin{tabular}{|c|c|ccccc|}
 \hline
-& & \multicolumn{5}{c|}{\textbf{Red Sox}}\\
+& & \multicolumn{5}{c|}{\emph{Red Sox}}\\
 \cline{3-7}
-& \textbf{bets} & 0 & 1 & 2 & 3 & 4\\
+& \emph{bets} & 0 & 1 & 2 & 3 & 4\\
 \hline
 \multirow{5}{*}{\rotatebox[origin=c]{90}{Colorado Rockies}}
 & 0 & 31.25 & 31.25 & 25 & 12.5 & \\\cline{2-7}
@@ -113,21 +113,25 @@
 
 \subsubsection{Dynamic dice game}
 
-A casino comes up with a fancy dice game. It allows you to roll a dice as many times as
+\begin{problem}{A casino comes up with a fancy dice game. It allows you to roll a dice as many times as
 you want unless a 6 appears. After each roll, if 1 appears, you will win \$1; if 2 appears,
 you will win \$2; $\ldots$; if 5 appears, you win \$5; but if 6 appears all the moneys you
 have won in the game is lost and the game stops. After each roll, if the dice number is 1--5,
 you can decide whether to keep the money or keep on rolling. How much are you willing to pay
-to play the game (if you are risk neutral)?\footnote[12]{\textit{Hint:} If you decide to have another roll, the expected amount you have after the roll should be higher than the amount before the roll. As the number of dollars increases, you risk losing more money if a 6 appears. So when the amount of dollar reaches a certain number, you should stop rolling.}
+to play the game (if you are risk neutral)?\footnote[12]{\textit{Hint:} If you decide to have another roll, the expected amount you have after the roll should be higher than the amount before the roll. As the number of dollars increases, you risk losing more money if a 6 appears. So when the amount of dollar reaches a certain number, you should stop rolling.}}
+\end{problem}
 
-\solution
+\begin{solution}
 Assuming that we have accumulated $n$ dollars, the decision to have another roll or not
 depends on the expected profit versus expected loss. If we decide to have an extra roll,
 our expected payoff will become
 
 \[
-\frac{1}{6}(n+1)+\frac{1}{6}(n+2)+\frac{1}{6}(n+3)+\frac{1}{6}(n+4)+\frac{1}{6}(n+5)+\frac{1}{6}\times0
-=\frac{5}{6}n+2.5.
+\begin{aligned}
+\frac{1}{6}(n+1)+\frac{1}{6}(n+2)+\frac{1}{6}(n+3)
+&+\frac{1}{6}(n+4)+\frac{1}{6}(n+5)+\frac{1}{6}\cdot0\\
+&=\frac{5}{6}n+2.5.
+\end{aligned}
 \]
 
 We have another roll if the expected payoff $\frac{5}{6}n+2.5>n$, which means that we
@@ -137,11 +141,11 @@ the state $n=14$). We then have the following: $f(19)=19$, $f(18)=18$, $f(17)=17
 $f(16)=16$, and $f(15)=15$. When $n\leq14$, we will keep on rolling, so
 
 \[
-E[f(n)\mid n\leq14]=\frac{1}{6}\sum_{i=1}^{5}E[f(n+i)].
+\E[f(n)\vert n\leq14]=\frac{1}{6}\sum_{i=1}^{5}\E[f(n+i)].
 \]
 
-Using this equation, we can calculate the value for $E[f(n)]$ recursively for all
-$n=14,13,\ldots,0$. The results are summarized in Table 5.2. Since $E[f(0)]=6.15$,
+Using this equation, we can calculate the value for $\E[f(n)]$ recursively for all
+$n=14,13,\ldots,0$. The results are summarized in Table 5.2. Since $\E[f(0)]=6.15$,
 we are willing to pay at most \$6.15 for the game.
 
 \begin{table}[ht]
@@ -152,29 +156,31 @@ we are willing to pay at most \$6.15 for the game.
 \hline
 $n$ & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10\\
 \hline
-$E[f(n)]$ & 19.00 & 18.00 & 17.00 & 16.00 & 15.00 & 14.17 & 13.36 & 12.59 & 11.85 & 11.16\\
+$\E[f(n)]$ & 19.00 & 18.00 & 17.00 & 16.00 & 15.00 & 14.17 & 13.36 & 12.59 & 11.85 & 11.16\\
 \hline
 $n$ & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
 \hline
-$E[f(n)]$ & 10.52 & 9.91 & 9.34 & 8.80 & 8.29 & 7.81 & 7.36 & 6.93 & 6.53 & 6.15\\
+$\E[f(n)]$ & 10.52 & 9.91 & 9.34 & 8.80 & 8.29 & 7.81 & 7.36 & 6.93 & 6.53 & 6.15\\
 \hline
 \end{tabular}
 \caption{Expected payoff of the game when the player has accumulated $n$ dollars}
 \label{tab:zhou-table-5-2}
 \end{table}
+\end{solution}
 
 % ZHOU-SOURCE-PAGE: 143 PRINTED: 127
 
 \subsubsection{Dynamic card game}
 
-A casino offers yet another card game with the standard 52 cards (26 red, 26 black). The
+\begin{problem}{A casino offers yet another card game with the standard 52 cards (26 red, 26 black). The
 cards are thoroughly shuffled and the dealer draws cards one by one. (Drawn cards are
 not returned to the deck.) You can ask the dealer to stop at any time you like. For each
 red card drawn, you win \$1; for each black card drawn, you lose \$1. What is the optimal
 stopping rule in terms of maximizing expected payoff and how much are you willing to
-pay for this game?
+pay for this game?}
+\end{problem}
 
-\solution
+\begin{solution}
 It is another problem perceived to be difficult by many interviewees. Yet it is a simple
 dynamic programming problem. Let $(b,r)$ represent the number of black and red cards left
 in the deck, respectively. By symmetry, we have
@@ -193,16 +199,18 @@ expected payoff of drawing more cards is less than $b-r$. That also gives us the
 equation:
 
 \[
-E[f(b,r)]=\max\left(b-r,\frac{b}{b+r}E[f(b-1,r)]+
+\begin{aligned}
+\E[f(b,r)]&=\max\left(b-r,\frac{b}{b+r}\E[f(b-1,r)]+
 \frac{r}{b+r}[f(b,r-1)]\right).\footnotemark[13]
+\end{aligned}
 \]
 \footnotetext[13]{You probably have recognized this system equation as the one for American options. Essentially you decide whether you want to exercise the option at state $(b,r)$.}
 
 As shown in Figure 5.9 (next page), using the boundary conditions $f(0,r)=0$,
-$f(b,0)=b$, $\forall b,r=0,1,\ldots,26$, and the system equation for $E[f(b,r)]$, we can
-recursively calculate $E[f(b,r)]$ for all pairs of $b$ and $r$.
+$f(b,0)=b$, $\forall b,r=0,1,\ldots,26$, and the system equation for $\E[f(b,r)]$, we can
+recursively calculate $\E[f(b,r)]$ for all pairs of $b$ and $r$.
 
-The expected payoff at the beginning of the game is $E[f(26,26)]=\$2.62$.
+The expected payoff at the beginning of the game is $\E[f(26,26)]=\$2.62$.\qedhere
 
 % ZHOU-SOURCE-PAGE: 144 PRINTED: 128
 
@@ -214,7 +222,7 @@ The expected payoff at the beginning of the game is $E[f(26,26)]=\$2.62$.
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|*{27}{c|}}
 \hline
-\multirow{2}{*}{$f(b,r)$} & & \multicolumn{27}{c|}{\textbf{Number of Black Cards Left}}\\
+\multirow{2}{*}{$f(b,r)$} & & \multicolumn{27}{c|}{\emph{Number of Black Cards Left}}\\
 \cline{3-29}
 & & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25 & 26\\
 \hline
@@ -252,6 +260,7 @@ The expected payoff at the beginning of the game is $E[f(26,26)]=\$2.62$.
 \caption{Expected payoffs at different states $(b,r)$}
 \label{fig:zhou-figure-5-9}
 \end{figure}
+\end{solution}
 
 % ZHOU-SOURCE-PAGE: 145 PRINTED: 129
 
@@ -265,9 +274,10 @@ definitions and theorems.
 
 \subsubsection{Brownian motion}
 
-\noindent\textit{A.} Define and enumerate some properties of a Brownian motion?\footnote[1]{A Brownian motion is often denoted as $B_t$. Alternatively it is denoted as $W(t)$ since it is a Wiener process. In this section, we use both notations interchangeably so that you get familiar with both.}
+\begin{problem}{\textit{A.} Define and enumerate some properties of a Brownian motion?\footnote[1]{A Brownian motion is often denoted as $B_t$. Alternatively it is denoted as $W(t)$ since it is a Wiener process. In this section, we use both notations interchangeably so that you get familiar with both.}}
+\end{problem}
 
-\solution
+\begin{solution}
 This is the most basic Brownian motion question. Interestingly, part of the definition,
 such as $W(0)=0$, and some properties are so obvious that we often fail to recite all the
 details.
@@ -283,8 +293,8 @@ A continuous stochastic process $W(t)$, $t\geq0$, is a Brownian motion if
 \end{itemize}
 
 Some of the important properties of Brownian motion are the following: continuous (no
-jumps); $E[W(t)]=0$; $E[W(t)^2]=t$; $W(t)\sim N(0,t)$; martingale property
-$E[W(t+s)\mid W(t)]=W(t)$; $\operatorname{cov}(W(s),W(t))=s$, $\forall 0<s<t$; and
+jumps); $\E[W(t)]=0$; $\E[W(t)^2]=t$; $W(t)\sim N(0,t)$; martingale property
+$\E[W(t+s)\vert W(t)]=W(t)$; $\operatorname{cov}(W(s),W(t))=s$, $\forall 0<s<t$; and
 Markov property (in continuous space).
 
 There are two other important martingales related to Brownian motion that are valuable
@@ -295,3 +305,4 @@ tools in many applications.
 \item $Z(t)=\exp\{\lambda W(t)-\frac{1}{2}\lambda^2t\}$, where $\lambda$ is any constant
   and $W(t)$ is a Brownian motion, is a martingale. (Exponential martingale).
 \end{itemize}
+\end{solution}

@@ -7,20 +7,20 @@ that all the terms containing $Z_{n-1},Z_{n-2},\ldots,Z_2$ cancel out.}
 
 \subsection{Martingale and Random walk}
 
-\noindent\textbf{Random walk:} The process $\{S_n;n\geq1\}$ is called a random walk if
+\noindent\emph{Random walk:} The process $\{S_n;n\geq1\}$ is called a random walk if
 $\{X_i;i\geq1\}$ are IID (identical and independently distributed) random variables and
 $S_n=X_1+\cdots+X_n$, where $n=1,2,\cdots$. The term comes from the fact that we can
 think of $S_n$ as the position at time $n$ for a walker who makes successive random
 steps $X_1,X_2,\cdots$.
 
 If $X_i$ takes values 1 and -1 with probabilities $p$ and $1-p$ respectively, $S_n$ is
-called a \textbf{simple random walk} with parameter $p$. Furthermore, if $p=\frac{1}{2}$, the
-process $S_n$ is a \textbf{symmetric random walk}. For symmetric random walk, it's easy
+called a \emph{simple random walk} with parameter $p$. Furthermore, if $p=\frac{1}{2}$, the
+process $S_n$ is a \emph{symmetric random walk}. For symmetric random walk, it's easy
 to show that
 
 \[
-E[S_n]=0\quad\text{and}\quad
-\operatorname{var}(S_n)=E[S_n^2]-E[S_n]^2=E[S_n^2]=n.\footnotemark[5]
+\E[S_n]=0\quad\text{and}\quad
+\operatorname{var}(S_n)=\E[S_n^2]-\E[S_n]^2=\E[S_n^2]=n.\footnotemark[5]
 \]
 \footnotetext[5]{Induction again can be used for its proof. $\operatorname{var}(S_1)=\operatorname{var}(Z_1)=1$.
 Induction step: If $\operatorname{var}(S_n)=n$, then we have
@@ -32,17 +32,17 @@ The interview questions on random walk often revolve around finding the first $n
 $S_n$ reaches a defined threshold $\alpha$, or the probability that $S_n$ reaches
 $\alpha$ for any given value of $n$.
 
-\noindent\textbf{Martingale:} a martingale $\{Z_n,n\geq1\}$ is a stochastic process with the
-properties that $E[|Z_n|]<\infty$ for all $n$ and
+\noindent\emph{Martingale:} a martingale $\{Z_n,n\geq1\}$ is a stochastic process with the
+properties that $\E[\lvert Z_n\rvert]<\infty$ for all $n$ and
 
 \[
-E[Z_{n+1}\mid Z_n=z_n,Z_{n-1}=z_{n-1},\ldots,Z_1=z_1]=z_n.
+\E[Z_{n+1}\vert Z_n=z_n,Z_{n-1}=z_{n-1},\ldots,Z_1=z_1]=z_n.
 \]
 
 The property of a martingale can be extended to
 
 \[
-E[Z_m,m>n\mid Z_n=z_n,Z_{n-1}=z_{n-1},\ldots,Z_1=z_1]=z_n,
+\E[Z_m,m>n\vert Z_n=z_n,Z_{n-1}=z_{n-1},\ldots,Z_1=z_1]=z_n,
 \]
 
 which means the conditional expected value of future $Z_m$ is the current value $Z_n$.
@@ -63,30 +63,37 @@ S_n-1 & \text{with probability }1/2,
 so
 
 \[
-E[S_{n+1}\mid S_n=s_n,\ldots,S_1=s_1]=s_n.
+\E[S_{n+1}\vert S_n=s_n,\ldots,S_1=s_1]=s_n.
 \]
 
+\Needspace{7\baselineskip}
 Since
 
 \[
-E[S_{n+1}^2-(n+1)]=\frac{1}{2}[(S_n+1)^2+(S_n-1)^2]-(n+1)=S_n^2-n,
+\begin{aligned}
+\E[S_{n+1}^2-(n+1)]
+&=\frac{1}{2}[(S_n+1)^2+(S_n-1)^2]-(n+1)\\
+&=S_n^2-n,
+\end{aligned}
 \]
 
 $S_n^2-n$ is a martingale as well.
 
 % ZHOU-SOURCE-PAGE: 132 PRINTED: 116
 
-\noindent\textbf{Stopping rule:} For an experiment with a set of IID random variables
+\noindent\emph{Stopping rule:} For an experiment with a set of IID random variables
 $X_1,X_2,\cdots$, a stopping rule for $\{X_i,i\geq1\}$ is a positive integer-value random
 variable $N$ (stopping time) such that for each $n>1$, the event $\{N\leq n\}$ is
 independent of $X_{n+1},X_{n+2},\cdots$. Basically it says that whether to stop at $n$
 depends only on $X_1,X_2,\cdots,X_n$ (i.e., no look ahead).
 
-\noindent\textbf{Wald's Equality:} Let $N$ be a stopping rule for IID random variables
+\noindent\emph{Wald's Equality:}\footnote[7]{For detailed proof and applications of Wald's
+Equality, please refer to the book \textit{Discrete Stochastic Processes} by Robert G.
+Gallager.} Let $N$ be a stopping rule for IID random variables
 $X_1,X_2,\cdots$ and let $S_N=X_1+X_2+\cdots+X_N$, then
 
 \[
-E[S_N]=E[X]E[N].
+\E[S_N]=\E[X]\E[N].
 \]
 
 Since it is an important---yet relatively little known---theorem, let's briefly review its
@@ -103,33 +110,32 @@ From the definition of stopping rules, we know that $I_n$ is independent of
 $X_n,X_{n+1},\cdots$ (it only depends on $X_1,X_2,\cdots,X_{n-1}$). So
 
 \[
-E[X_nI_n]=E[X_n]E[I_n]=E[X]E[I_n]
+\E[X_nI_n]=\E[X_n]\E[I_n]=\E[X]\E[I_n]
 \]
 
 and
 
 \[
 \begin{aligned}
-E[S_N]
-&=E\left[\sum_{n=1}^{\infty}X_nI_n\right]
- =\sum_{n=1}^{\infty}E[X_nI_n]
- =\sum_{n=1}^{\infty}E[X]E[I_n]\\
-&=E[X]\sum_{n=1}^{\infty}E[I_n]=E[X]E[N].
-\end{aligned}\footnotemark[7]
+\E[S_N]
+&=\E\left[\sum_{n=1}^{\infty}X_nI_n\right]\\
+&=\sum_{n=1}^{\infty}\E[X_nI_n]\\
+&=\sum_{n=1}^{\infty}\E[X]\E[I_n]\\
+&=\E[X]\sum_{n=1}^{\infty}\E[I_n]=\E[X]\E[N].
+\end{aligned}
 \]
-\footnotetext[7]{For detailed proof and applications of Wald's Equality, please refer to the book
-\textit{Discrete Stochastic Processes} by Robert G. Gallager.}
 
-\noindent\textbf{A martingale stopped at a stopping time is a martingale.}
+\noindent\emph{A martingale stopped at a stopping time is a martingale.}
 
-\problem{Drunk man}
+\begin{problem}{Drunk man}
 A drunk man is at the 17th meter of a 100-meter-long bridge. He has a 50\% probability
 of staggering forward or backward one meter each step. What is the probability that he
 will make it to the end of the bridge (the 100th meter) before the beginning (the 0th
 meter)? What is the expected number of steps he takes to reach either the beginning or
 the end of the bridge?
+\end{problem}
 
-\solution
+\begin{solution}
 The probability part of the problem---often appearing in different disguises---is among
 the most popular martingale problems asked by quantitative interviewers. Interestingly,
 few people use a clear-cut martingale argument. Most candidates either use Markov chain
@@ -150,14 +156,14 @@ be the stopping time. Then we have
 \[
 \begin{gathered}
 \left.\begin{aligned}
-E[S_N]&=p_\alpha\times83-(1-p_\alpha)\times17=S_0=0,\\
-E[S_N^2-N]&=E\left[p_\alpha\times83^2+(1-p_\alpha)\times17^2\right]-E[N]
- =S_0^2-0=0
+\E[S_N]&=p_\alpha\cdot83-(1-p_\alpha)\cdot17=S_0=0,\\
+\E[S_N^2-N]&=\E\left[p_\alpha\cdot83^2+(1-p_\alpha)\cdot17^2\right]-\E[N]\\
+&=S_0^2-0=0
 \end{aligned}\right\}\\
 \quad\Rightarrow\quad
 \begin{cases}
 p_\alpha=0.17,\\
-E[N]=1441.
+\E[N]=1441.
 \end{cases}
 \end{gathered}
 \]
@@ -169,22 +175,27 @@ either the beginning or the end of the bridge is 1441.
 We can easily extend the solution to a general case: a symmetric random walk starting
 from 0 that stops at either $\alpha$ ($\alpha>0$) or $-\beta$ ($\beta>0$). The probability
 that it stops at $\alpha$ instead of $-\beta$ is $p_\alpha=\beta/(\alpha+\beta)$. The
-expected stopping time to reach either $\alpha$ or $-\beta$ is $E[N]=\alpha\beta$.
+expected stopping time to reach either $\alpha$ or $-\beta$ is $\E[N]=\alpha\beta$.
 
-\problem{Dice game}
+\end{solution}
+
+\begin{problem}{Dice game}
 Suppose that you roll a dice. For each roll, you are paid the face value. If a roll gives
 4, 5 or 6, you can roll the dice again. If you get 1, 2 or 3, the game stops. What is the
 expected payoff of this game?
+\end{problem}
 
-\solution
+\begin{solution}
 In Chapter 4, we used the law of total expectation to solve the problem. A simpler
 approach---requiring more knowledge---is to apply Wald's Equality since the problem has
 clear stopping rules. For each roll, the process has $1/2$ probability of stopping. So the
 stopping time $N$ follows a geometric distribution with $p=1/2$ and we have
-$E[N]=1/p=2$. For each roll, the expected face value is $E[X]=7/2$. The total expected
-payoff is $E[S_N]=E[X]E[N]=7/2\times2=7$.
+\mbox{$\E[N]=1/p=2$}. For each roll, the expected face value is $\E[X]=7/2$. The total expected
+payoff is $\E[S_N]=\E[X]\E[N]=7/2\cdot2=7$.
 
-\problem{Ticket line}
+\end{solution}
+
+\begin{problem}{Ticket line}
 At a theater ticket office, $2n$ people are waiting to buy tickets. $n$ of them have only
 \$5 bills and the other $n$ people have only \$10 bills. The ticket seller has no change to start
 
@@ -192,8 +203,9 @@ At a theater ticket office, $2n$ people are waiting to buy tickets. $n$ of them 
 
 with. If each person buys one \$5 ticket, what is the probability that all people will be able
 to buy their tickets without having to change positions?
+\end{problem}
 
-\solution
+\begin{solution}
 This problem is often considered to be a difficult one. Although many can correctly
 formulate the problem, few can solve the problem using the reflection principle.
 \footnote[8]{Consider a random walk starting at $a$, $S_0=a$, and reaching $b$ in $n$ steps:
@@ -266,32 +278,35 @@ change positions is $1/(n+1)$.
 \label{fig:zhou-figure-5-6}
 \end{figure}
 
-\problem{Coin sequence}
+\end{solution}
+
+\begin{problem}{Coin sequence}
 Assume that you have a fair coin. What is the expected number of coin tosses to get $n$
 heads in a row?
+\end{problem}
 
-\solution
-Let $E[f(n)]$ be the expected number of coin tosses to get $n$ heads in a row. In the
+\begin{solution}
+Let $\E[f(n)]$ be the expected number of coin tosses to get $n$ heads in a row. In the
 Markov chain section, we discussed the case where $n=3$ (to get the pattern $HHH$).
 For any integer $n$, we can consider an induction approach. Using the Markov chain
-approach, we can easy get that $E[f(1)]=2$, $E[f(2)]=6$ and $E[f(3)]=14$. A natural
-guess for the general formula is that $E[f(n)]=2^{n+1}-2$. As always, let's prove the
+approach, we can easy get that $\E[f(1)]=2$, $\E[f(2)]=6$ and $\E[f(3)]=14$. A natural
+guess for the general formula is that $\E[f(n)]=2^{n+1}-2$. As always, let's prove the
 formula using induction. We have shown the formula is true for $n=1,2,3$. So we only
-need to prove that if $E[f(n)]=2^{n+1}-2$, $E[f(n+1)]=2^{n+2}-2$. The following
-diagram shows how to prove that the equation holds for $E[f(n+1)]$:
+need to prove that if $\E[f(n)]=2^{n+1}-2$, $\E[f(n+1)]=2^{n+2}-2$. The following
+diagram shows how to prove that the equation holds for $\E[f(n+1)]$:
 
 \begin{center}
 \begin{tikzpicture}[>=stealth,thick]
   \node[draw,circle,minimum size=0.62cm,inner sep=1pt] (zero) at (0,0) {$0$};
   \node[draw,circle,minimum size=0.85cm,inner sep=1pt] (nh) at (3.5,0) {$nH$};
   \node[draw,circle,minimum size=1.15cm,inner sep=1pt] (nph) at (7.2,0) {$(n+1)H$};
-  \draw[->,dashed] (zero) -- node[above] {$E[f(n)]$} (nh);
+  \draw[->,dashed] (zero) -- node[above] {$\E[f(n)]$} (nh);
   \draw[->] (nh) -- node[above] {$P=1/2$} (nph);
   \draw[->] (nh.south) to[out=-90,in=-90] node[below] {$P=1/2$} (zero.south);
 \end{tikzpicture}
 \end{center}
 
 The state before $(n+1)$ heads in a row (denoted as $(n+1)H$) must be $n$ heads in a
-row (denoted as $nH$). It takes an expected $E[f(n)]=2^{n+1}-2$ tosses to reach $nH$.
+row (denoted as $nH$). It takes an expected $\E[f(n)]=2^{n+1}-2$ tosses to reach $nH$.
 Conditioned on state $nH$, there is a $1/2$ probability it will go to $(n+1)H$ (the new
 toss yields $H$) and the process stops. There is also a $1/2$ probability that it will go to the

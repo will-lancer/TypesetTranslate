@@ -34,19 +34,24 @@ P(p,q)=\frac{2}{q-p+1}
 The total expected number of comparison is
 
 \[
-A(n)=\sum_{q=2}^{n}\sum_{p=1}^{q-1}P(p,q)
-=\sum_{q=2}^{n}\sum_{p=1}^{q-1}\left(\frac{2}{q-p+1}\right)
-=\Theta(n\log n).
+\begin{aligned}
+A(n)&=\sum_{q=2}^{n}\sum_{p=1}^{q-1}P(p,q)\\
+&=\sum_{q=2}^{n}\sum_{p=1}^{q-1}\left(\frac{2}{q-p+1}\right)\\
+&=\Theta(n\log n).
+\end{aligned}
 \]
 
 Although theoretically quicksort can be slower than merge sort in the worst cases, it is
 often as fast as, if not faster than, merge sort.
 
+\end{solution}
+
 \subsubsection*{Random permutation}
 
-\problem{A. If you have a random number generator that can generate random numbers from either discrete or continuous uniform distributions, how do you shuffle a deck of 52 cards so that every permutation is equally likely?}
+\begin{problem}{A. If you have a random number generator that can generate random numbers from either discrete or continuous uniform distributions, how do you shuffle a deck of 52 cards so that every permutation is equally likely?}
+\end{problem}
 
-\solution
+\begin{solution}
 A simple algorithm to permute $n$ elements is random permutation by sorting. It assigns a
 random number to each card and then sorts the cards in order of their assigned random
 numbers.\footnote[4]{If we use the continuous uniform distribution, theoretically, any two random numbers have zero probability of being equal.} By symmetry, every possible order (out of $n!$
@@ -74,9 +79,12 @@ in the second step, each of the remaining $n-1$ cards elements has equal probabi
 chosen as the second card; and so on. So naturally each ordered sequence has $1/n!$
 probability.
 
-\problem{B. You have a file consisting of characters. The characters in the file can be read sequentially, but the length of the file is unknown. How do you pick a character so that every character in the file has equal probability of being chosen?}
+\end{solution}
 
-\solution
+\begin{problem}{B. You have a file consisting of characters. The characters in the file can be read sequentially, but the length of the file is unknown. How do you pick a character so that every character in the file has equal probability of being chosen?}
+\end{problem}
+
+\begin{solution}
 Let's start with picking the first character. If there is a second character, we keep the
 first character with probability $1/2$ and replace the pick with the second character with
 probability $1/2$. If there is a third character, we keep the pick (from the first two
@@ -86,13 +94,16 @@ let $C_n$ be the character that we pick after we have scanned $n$ characters and
 character exists, the probability of keeping the pick is $\frac{n}{n+1}$ and the probability
 of switching to the $(n+1)$th character is $\frac{1}{n+1}$. Using simple induction, we can
 easily prove that each character has $1/m$ probability of being chosen if there are $m$
-characters.
+characters.\qedhere
+
+\end{solution}
 
 \subsubsection*{Search algorithm}
 
-\problem{A. Develop an algorithm to find both the minimum and the maximum of $n$ numbers using no more than $3n/2$ comparisons.}
+\begin{problem}{A. Develop an algorithm to find both the minimum and the maximum of $n$ numbers using no more than $3n/2$ comparisons.}
+\end{problem}
 
-\solution
+\begin{solution}
 For an unsorted array of $n$ numbers, it takes $n-1$ comparisons to identify either the
 minimum or the maximum of the array. However, it takes at most $3n/2$ comparisons to
 identify both the minimum and the maximum. If we separate the elements to $n/2$ pairs,
@@ -105,9 +116,12 @@ of the whole array must be in group $A$ and the maximum must be in group $B$, we
 to find the minimum in $A$ and the maximum in $B$, either of which takes $n/2-1$
 comparisons. So the total number of comparisons is at most $3n/2$.\footnote[5]{Slight adjustment needs to be made if $n$ is odd, but the upper bound $3n/2$ still applies.}
 
-\problem{B. You are given an array of numbers. From the beginning of the array to some position, all elements are zero; after that position, all elements are nonzero. If you don't know the size of the array, how do you find the position of the first nonzero element?}
+\end{solution}
 
-\solution
+\begin{problem}{B. You are given an array of numbers. From the beginning of the array to some position, all elements are zero; after that position, all elements are nonzero. If you don't know the size of the array, how do you find the position of the first nonzero element?}
+\end{problem}
+
+\begin{solution}
 We can start with the 1st element; if it is zero, we check the 2nd element; if the 2nd
 element is zero, we check the 4th element, $\ldots$ The process is repeated until the $2^i$th
 element is nonzero. Then we check the $\frac{2^i+2^{i-1}}{2}$th element. If it is zero, the search range is limited to the elements between the
@@ -117,9 +131,12 @@ $\frac{2^i+2^{i-1}}{2}$th element $\ldots$ Each time, we cut the range by half. 
 basically a binary search. If the first nonzero element is at position $n$, the algorithm
 complexity is $\Theta(\log n)$.
 
-\problem{C. You have a square grid of numbers. The numbers in each row increase from left to right. The numbers in each column increase from top to bottom. Design an algorithm to find a given number from the grid. What is the complexity of your algorithm?}
+\end{solution}
 
-\solution
+\begin{problem}{C. You have a square grid of numbers. The numbers in each row increase from left to right. The numbers in each column increase from top to bottom. Design an algorithm to find a given number from the grid. What is the complexity of your algorithm?}
+\end{problem}
+
+\begin{solution}
 Let $A$ be an $n\times n$ matrix representing the grid of numbers and $x$ be the number we
 want to find in the grid. Begin the search with the last column from top to bottom:
 $A_{1,n},\cdots,A_{n,n}$. If the number is found, then stop the search. If $A_{n,n}<x$, $x$ is
@@ -130,7 +147,9 @@ the numbers in rows $1,\cdots,i$ are less than $x$ and are eliminated as well.\f
 
 the grid) or a $k$ that makes $A_{k,j}<x<A_{k+1,j}$ and then we search left along the row $k+1$
 from $A_{k+1,j}$ towards $A_{k+1,1}$. Using this algorithm, the search takes at most $2n$
-steps. So its complexity is $O(n)$.
+steps. So its complexity is $O(n)$.\qedhere
+
+\end{solution}
 
 \subsubsection*{Fibonacci numbers}
 
@@ -148,11 +167,12 @@ int Fibonacci(int n)
 }
 \end{verbatim}
 
-If for some large $n$, it takes 100 seconds to compute Fibonacci($n$), how long will it take
+\begin{problem}{If for some large $n$, it takes 100 seconds to compute Fibonacci($n$), how long will it take
 to compute Fibonacci($n+1$), to the nearest second? Is this algorithm efficient? How would
-you calculate Fibonacci numbers?
+you calculate Fibonacci numbers?}
+\end{problem}
 
-\solution
+\begin{solution}
 This C++ function uses a rather inefficient recursive method to calculate Fibonacci numbers.
 Fibonacci numbers are defined as the following recurrence:
 
@@ -204,50 +224,76 @@ $\Theta(\log n)$.
 Since
 
 \[
-\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}
-=\begin{bmatrix}1&1\\1&0\end{bmatrix}\times
-\begin{bmatrix}F_n&F_{n-1}\\F_{n-1}&F_{n-2}\end{bmatrix}
+\begin{bmatrix}
+F_{n+1} & F_n\\
+F_n & F_{n-1}
+\end{bmatrix}
+=\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}\cdot
+\begin{bmatrix}
+F_n & F_{n-1}\\
+F_{n-1} & F_{n-2}
+\end{bmatrix}
 \]
 
 and
 
 \[
-\begin{bmatrix}F_2&F_1\\F_1&F_0\end{bmatrix}
-=\begin{bmatrix}1&1\\1&0\end{bmatrix},
+\begin{bmatrix}
+F_2 & F_1\\
+F_1 & F_0
+\end{bmatrix}
+=\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix},
 \]
 
 we can show that
 
 \[
-\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}
-=\begin{bmatrix}1&1\\1&0\end{bmatrix}^{n}
+\begin{bmatrix}
+F_{n+1} & F_n\\
+F_n & F_{n-1}
+\end{bmatrix}
+=\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}^{n}
 \]
 
-using induction. Let $A=\begin{bmatrix}1&1\\1&0\end{bmatrix}$, we can again apply the divide-
+\Needspace{7\baselineskip}
+using induction. Let $A=\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}$, we can again apply the divide-
 and-conquer paradigm to calculate $A^n$:
 
 \[
 A^n=
 \begin{cases}
-A^{n/2}\times A^{n/2}, & \text{if }n\text{ is even},\\
-A^{(n-1)/2}\times A^{(n-1)/2}\times A, & \text{if }n\text{ is odd}.
+A^{n/2}\cdot A^{n/2}, & \text{if }n\text{ is even},\\
+A^{(n-1)/2}\cdot A^{(n-1)/2}\cdot A, & \text{if }n\text{ is odd}.
 \end{cases}
 \]
 
 The multiplication of two $2\times2$ matrices has complexity $\Theta(1)$. So
-$T(n)=T(n/2)+\Theta(1)$. Applying the master theorem, we have $T(n)=\Theta(\log n)$.
+$T(n)=T(n/2)+\Theta(1)$. Applying the master theorem, we have $T(n)=\Theta(\log n)$.\qedhere
+
+\end{solution}
 
 \subsubsection*{Maximum contiguous subarray}
 
-Suppose you have a one-dimensional array $A$ with length $n$ that contains both positive
+\begin{problem}{Suppose you have a one-dimensional array $A$ with length $n$ that contains both positive
 and negative numbers. Design an algorithm to find the maximum sum of any contiguous
-subarray $A[i,j]$ of $A$:
+subarray $A[i,j]$ of $A$:}
 
 \[
 V(i,j)=\sum_{x=i}^{j}A[x],\quad 1\leq i\leq j\leq n.
 \]
 
-\solution
+\end{problem}
+
+\begin{solution}
 Almost all trading systems need such an algorithm to calculate maximum run-up or maximum
 drawdown of either real trading books or simulated strategies. Therefore this is a favorite
 algorithm question of interviewers, especially interviewers at hedge funds and trading desks.

@@ -3,7 +3,7 @@
 % Uncertainty log: none.
 
 % ZHOU-SOURCE-PAGE: 44 PRINTED: 28
-\solution
+\begin{solution}
 Let $n$ be the number of the coins and $f(n)$ be the final sum. It is unlikely that a solution will jump to our mind since the number $n=1000$ is a large number. If you aren't sure how to approach the problem, it never hurts to begin with the simplest cases and try to find a pattern. For this problem, the base case has $n=2$. Clearly the only split is $1+1$ and the final sum is $1$. When $n=3$, the first split is $2+1$ and we have $xy=2$ and the 2-coin pile will further give an extra multiplication result $1$, so the final sum is $3$. This analysis also gives the hint that when $n$ coins are split into $x$ and $n-x$ coins, the total sum will be
 $f(n)=x(n-x)+f(x)+f(n-x)$. 4 coins can be split into $2+2$ or $3+1$. For either case we can apply $x(n-x)+f(x)+f(n-x)$ and yields the same final sum $6$.
 
@@ -15,35 +15,46 @@ f(n)=1+2+\cdots+(n-1)=\frac{n(n-1)}{2}.
 So how do we prove it? The answer should be clear to you: by strong induction. We have proved the claim for the base cases $n=2,3,4$. Assume the claim is true for $n=2,\ldots,N-1$ coins, we need to prove that it holds for $n=N$ coins as well. Again we apply the equation $f(n)=x(n-x)+f(x)+f(n-x)$. If $N$ coins are split into $x$ coins and $N-x$ coins, we have
 \begin{align*}
 f(N)&=x(N-x)+f(x)+f(N-x)\\
-&=x(N-x)+\frac{N(N-1)}{2}+\frac{(N-x)(N-x-1)}{2}=\frac{N(N-1)}{2}.
+&=x(N-x)+\frac{N(N-1)}{2}
+  +\frac{(N-x)(N-x-1)}{2}\\
+&=\frac{N(N-1)}{2}.
 \end{align*}
-So indeed it holds for $n=N$ as well and $f(n)=\displaystyle\frac{n(n-1)}{2}$ is true for any $n\geq 2$. Applying the conclusion to $n=1000$, we have $f(n)=1000\times999/2$.
+So indeed it holds for $n=N$ as well and $f(n)=\displaystyle\frac{n(n-1)}{2}$ is true for any $n\geq 2$. Applying the conclusion to $n=1000$, we have $f(n)=1000\cdot999/2$.
 
-\problem{Chocolate bar problem}
+\end{solution}
+
+\begin{problem}{Chocolate bar problem}
 A chocolate bar has 6 rows and 8 columns (48 small $1\times1$ squares). You break it into individual squares by making a number of breaks. Each time, break one rectangle into two smaller rectangles. For example, in the first step you can break the $6\times8$ chocolate bar into a $6\times3$ one and a $6\times5$ one. What is the total number of breaks needed in order to break the chocolate bar into 48 small squares?
+\end{problem}
 
 % ZHOU-SOURCE-PAGE: 45 PRINTED: 29
-\solution
+\begin{solution}
 Let $m$ be the number of the rows of the chocolate bar and $n$ be the number of columns. Since there is nothing special for the case $m=6$ and $n=8$, we should find a general solution for all $m$ and $n$. Let's begin with the base case where $m=1$ and $n=1$. The number of breaks needed is clearly 0. For $m>1$ and $n=1$, the number of breaks is $m-1$; similarly for $m=1$ and $n>1$, the number of breaks is $n-1$. So for any $m$ and $n$, if we break the chocolate into $m$ rows first, which takes $m-1$ breaks, and then break each row into $n$ small pieces, which takes $m(n-1)$ breaks, the total number of breaks is $(m-1)+m(n-1)=mn-1$. If we break it into $n$ columns first, and then break each column into $m$ small pieces, the total number of breaks is also $mn-1$. But is the total number of breaks always $mn-1$ for other sequences of breaks? Of course it is. We can prove it using strong induction.
 
 We have shown the number of breaks is $mn-1$ for base cases $m\geq1$, $n=1$ and $m=1$, $n\geq1$. To prove it for a general $m\times n$ case, let's assume the statement is true for cases where rows $<m$, columns $\leq n$ and rows $\leq m$, columns $<n$. If the first break is along a row and it is broken into two smaller pieces $m\times n_1$ and $m\times(n-n_1)$, then the total number of breaks is
 \[
-1+(m\times n_1-1)+(m\times(n-n_1)-1)=mn-1.
+1+(m\cdot n_1-1)+(m\cdot(n-n_1)-1)=mn-1.
 \]
 Here we use the results for rows $\leq m$, columns $<n$. Similarly, if it is broken into two pieces $m_1\times n$ and $(m-m_1)\times n$, the total number of breaks is
 \[
-1+(m_1\times n-1)+((m-m_1)\times n-1)=mn-1.
+1+(m_1\cdot n-1)+((m-m_1)\cdot n-1)=mn-1.
 \]
 So the total number of breaks is always $mn-1$ in order to break the chocolate bar into $m\times n$ small pieces. For the case $m=6$ and $n=8$, the number of breaks is 47.
 
 Although induction is the standard approach used to solve this problem, there is actually a simpler solution if you've noticed an important fact: the number of pieces always increases by 1 with each break since it always breaks one piece into two. In the beginning, we have a single piece. In the end, we will have $mn$ pieces. So the number of breaks must be $mn-1$.
 
-\problem{Race track}
-Suppose that you are on a one-way circular race track. There are $N$ gas cans randomly placed on different locations of the track and the total sum of the gas in these cans is enough for your car to run exactly one circle. Assume that your car has no gas in the gas tank initially, but you can put your car at any location on the track and you can pick up the gas cans along the way to fill in your gas tank. Can you always choose a starting position on the track so that your car can complete the entire circle?\footnote[18]{\textit{Hint:} Start with $N=1,2$ and solve the problem using induction.}
+\end{solution}
+
+\begin{problem}{Race track}
+Suppose that you are on a one-way circular race track. There are $N$ gas cans randomly placed on different locations of the track and the total sum of the gas in these cans is enough for your car to run exactly one circle. Assume that your car has no gas in the gas tank initially, but you can put your car at any location on the track and you can pick up the gas cans along the way to fill in your gas tank. Can you always choose a starting position on the track so that your car can complete the entire circle?\footnote[18]{\emph{Hint:} Start with $N=1,2$ and solve the problem using induction.}
+\end{problem}
 
 % ZHOU-SOURCE-PAGE: 46 PRINTED: 30
-\solution
+\begin{solution}
+\begin{concept}{Induction approach}
 If you get stuck as to how to solve the problem, again start with the simplest cases ($N=1,2$) and consider using an induction approach. Without loss of generality, let's assume that the circle has circumference of 1. For $N=1$, the problem is trivial. Just start at where the gas can is. For $N=2$, the problem is still simple. Let's use a figure to visualize the approach. As shown in Figure 2.4A, the amount of gas in can 1 and can 2, expressed as the distance the car can travel, are $x_1$ and $x_2$, respectively, so $x_1+x_2=1$. The corresponding segments are $y_1$ and $y_2$, so $y_1+y_2=1$. Since $x_1+x_2=1$ and $y_1+y_2=1$, we must have $x_1\geq y_1$ or $x_2\geq y_2$ ($x_1<y_1$ and $x_2<y_2$ cannot both be true). If $x_1\geq y_1$, we can start at gas can 1, which has enough gas to reach gas can 2, and get more gas from gas can 2 to finish the whole circle. Otherwise, we will just start at gas can 2 and pick up gas can 1 along the way to finish the whole circle.
+
+\end{concept}
 
 \begin{figure}[ht]
 \centering
@@ -85,43 +96,56 @@ If you get stuck as to how to solve the problem, again start with the simplest c
 \label{fig:zhou-figure-2-4}
 \end{figure}
 
+\begin{concept}{Induction step}
 The argument for $N=2$ also gives us the hint for the induction step. Now we want to show that if the statement holds for $N=n$, then the same statement also holds for $N=n+1$. As shown in Figure 2.4B, we have $x_1+x_2+\cdots+x_{n+1}=1$ and $y_1+y_2+\cdots+y_{n+1}=1$ for $N=n+1$. So there must exist at least one $i$, $1\leq i\leq n+1$, that has $x_i\geq y_i$. That means whenever the car reaches $x_i$, it can reach $x_{i+1}$ with more gas (for $i=n+1$, it goes to $i=1$ instead). In other words, we can actually ``combine'' $x_i$ and $x_{i+1}$ to one gas can at the position of $x_i$ with an amount of gas $x_i+x_{i+1}$ (and eliminate the gas can $i+1$). But such combination reduces the $N=n+1$ problem to $N=n$, for
 
 % ZHOU-SOURCE-PAGE: 47 PRINTED: 31
 which the statement holds. So the statement also holds for $N=n+1$. Hence we can always choose a starting position on the track to complete the entire circle for any $N$.
 
+\end{concept}
+
+\begin{concept}{Alternative approach}
 There is also an alternative approach to this problem that provides a solution to the starting point. Let's imagine that you have another car with enough gas to finish the circle. You put that car at the position of a randomly chosen gas can and drive the car for a full circle. Whenever you reach a gas can (including at the initial position), you measure the amount of gas in your gas tank before you add the gas from the can to your gas tank. After you finish the circle, read through your measurement records and find the lowest measurement. The gas can position corresponding to the lowest measurement should be your starting position if the car has no gas initially. (It may take some thinking to fully understand this argument. I'd recommend that you again draw a figure and give this argument some careful thoughts if you don't find the reasoning obvious.)
+
+\end{concept}
+
+\end{solution}
 
 \subsection{Proof by Contradiction}
 In a proof by contradiction or indirect proof, you show that if a proposition were false, then some logical contradiction or absurdity would follow. Thus, the proposition must be true.
 
-\problem{Irrational number}
+\begin{problem}{Irrational number}
 Can you prove that $\sqrt{2}$ is an irrational number? A rational number is a number that can be expressed as a ratio of two integers; otherwise it is irrational.
+\end{problem}
 
-\solution
+\begin{solution}
 This is a classical example of proof by contradiction. If $\sqrt{2}$ is not an irrational number, it can be expressed as a ratio of two integers $m$ and $n$. If $m$ and $n$ have any common factor, we can remove it by dividing both $m$ and $n$ by the common factor. So in the end, we will have a pair of $m$ and $n$ that have no common factors. (It is called irreducible fraction.) Since $m/n=\sqrt{2}$, we have $m^2=2n^2$. So $m^2$ must be an even number and $m$ must be an even number as well. Let's express $m$ as $2x$, where $x$ is an integer, since $m$ is even. Then $m^2=4x^2$ and we also have $n^2=2x^2$, which means $n$ must be even as well. But that both $m$ and $n$ are even contradicts the earlier statement that $m$ and $n$ have no common factors. So $\sqrt{2}$ must be an irrational number.
 
-\problem{Rainbow hats}
+\end{solution}
+
+\begin{problem}{Rainbow hats}
 Seven prisoners are given the chance to be set free tomorrow. An executioner will put a hat on each prisoner's head. Each hat can be one of the seven colors of the rainbow and the hat colors are assigned completely at the executioner's discretion. Every prisoner can
 
 % ZHOU-SOURCE-PAGE: 48 PRINTED: 32
 see the hat colors of the other six prisoners, but not his own. They cannot communicate with others in any form, or else they are immediately executed. Then each prisoner writes down his guess of his own hat color. If at least one prisoner correctly guesses the color of his hat, they all will be set free immediately; otherwise they will be executed.
 
-They are given the night to come up with a strategy. Is there a strategy that they can guarantee that they will be set free?\footnote[19]{\textit{Hint:} Let's assign the 7 colors of rainbow with code 0--6 and $x_i$ be the color code of prisoner $i$. Then $\displaystyle\left(\sum_{i=1}^{7}x_i\right)\%7$ must be 0, 1, 2, 3, 4, 5 or 6. How many guesses can 7 prisoners make?}
+They are given the night to come up with a strategy. Is there a strategy that they can guarantee that they will be set free?\footnote[19]{\emph{Hint:} Let's assign the 7 colors of rainbow with code 0--6 and $x_i$ be the color code of prisoner $i$. Then $\displaystyle\left(\sum_{i=1}^{7}x_i\right)\bmod 7$ must be 0, 1, 2, 3, 4, 5 or 6. How many guesses can 7 prisoners make?}
+\end{problem}
 
-\solution
-This problem is often perceived to be more difficult than the prisoner problem in the modular arithmetic section. In the previous prisoner problem, the prisoners can hear others' guesses. So one prisoner's declaration gives all the necessary information other prisoners need. In this problem, prisoners won't know what others' guesses are. To solve the problem, it does require an aha moment. The key to the aha moment is given by the hint. Once you realize that if we code the colors to 0--6, $\displaystyle\left(\sum_{i=1}^{7}x_i\right)\%7$ must be among 0, 1, 2, 3, 4, 5 or 6 as well. Then each prisoner $i$---let's label them as 0--6 as well---should give a guess $g_i$ so that the sum of $g_i$ and the rest of 6 prisoners' hat color codes will give a remainder of $i$ when divided by 7, where $g_i$ is a unique number between 0 and 6. For example, prisoner 0's guess should make
+\begin{solution}
+This problem is often perceived to be more difficult than the prisoner problem in the modular arithmetic section. In the previous prisoner problem, the prisoners can hear others' guesses. So one prisoner's declaration gives all the necessary information other prisoners need. In this problem, prisoners won't know what others' guesses are. To solve the problem, it does require an aha moment. The key to the aha moment is given by the hint. Once you realize that if we code the colors to 0--6, $\displaystyle\left(\sum_{i=1}^{7}x_i\right)\bmod 7$ must be among 0, 1, 2, 3, 4, 5 or 6 as well. Then each prisoner $i$---let's label them as 0--6 as well---should give a guess $g_i$ so that the sum of $g_i$ and the rest of 6 prisoners' hat color codes will give a remainder of $i$ when divided by 7, where $g_i$ is a unique number between 0 and 6. For example, prisoner 0's guess should make
 \[
-\left(g_0+\sum_{k\ne0}x_k\right)\%7=0.
+\left(g_0+\sum_{k\ne0}x_k\right)\bmod 7=0.
 \]
 This way, we can guarantee at least one of $g_i=x_i$ for $i=0,1,2,3,4,5,6$.
 
 We can easily prove this conclusion by contradiction. If $g_i\ne x_i$, then
 \[
-\displaystyle\left(\sum_{i=1}^{7}x_i\right)\%7\ne i
+\displaystyle\left(\sum_{i=1}^{7}x_i\right)\bmod 7\ne i
 \]
-(since $\left(g_i+\displaystyle\sum_{k\ne i}x_k\right)\%7\ne i$ and $g_i$ and $x_i$ are both between 0 and 6). But if $g_i\ne x_i$ for all $i=0,1,2,3,4,5,$ and 6, then
+(since $\left(g_i+\displaystyle\sum_{k\ne i}x_k\right)\bmod 7\ne i$ and $g_i$ and $x_i$ are both between 0 and 6). But if $g_i\ne x_i$ for all $i=0,1,2,3,4,5,$ and 6, then
 \[
-\displaystyle\left(\sum_{i=1}^{7}x_i\right)\%7\ne 0,1,2,3,4,5,6,
+\displaystyle\left(\sum_{i=1}^{7}x_i\right)\bmod 7\ne 0,1,2,3,4,5,6,
 \]
 which is clearly impossible. So at least one of $g_i$ must equal $x_i$. As a result, using this strategy, they are guaranteed to be set free.
+\end{solution}

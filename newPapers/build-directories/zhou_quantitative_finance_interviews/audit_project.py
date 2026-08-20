@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the native Zhou JHEP transcription and its source-page coverage."""
+"""Audit native Zhou coverage, float metadata, and style-policy contracts."""
 
 from __future__ import annotations
 
@@ -87,6 +87,15 @@ PAGE_MARKER = re.compile(
 INPUT = re.compile(r"\\input\{transcription/([^}]+)\}")
 BEGIN = re.compile(r"\\begin\{([^}]+)\}")
 END = re.compile(r"\\end\{([^}]+)\}")
+FLOAT_TOKEN = re.compile(
+    r"\\(?P<command>begin|end)\{(?P<kind>figure|table)(?P<star>\*)?\}"
+    r"(?:\[(?P<placement>[^]]*)\])?"
+)
+CAPTION_START = re.compile(r"\\caption(?:\s*\[[^]]*\])?\s*\{")
+LABEL_COMMAND = re.compile(r"\\label\s*\{(?P<label>[^}\n]+)\}")
+MANUAL_FLOAT_CAPTION = re.compile(
+    r"\\(?:noindent\s*)?\\textbf\{\s*(?:Figure|Table)\s+[0-9]"
+)
 UNNUMBERED_SOURCE_NOTE = re.compile(
     r"\\footnote\s*\{|"
     r"\\footnotemark(?!\s*\[)|"
@@ -102,6 +111,135 @@ def strip_comments(text: str) -> str:
     return "\n".join(
         re.split(r"(?<!\\)%", line, maxsplit=1)[0] for line in text.splitlines()
     )
+
+
+def audit_environment_nesting(text: str) -> None:
+    """Validate environments across the assembled transcription stream."""
+
+    stack: list[tuple[str, int]] = []
+    for token in re.finditer(r"\\(?P<command>begin|end)\{(?P<name>[^}]+)\}", text):
+        command = token.group("command")
+        name = token.group("name")
+        line_number = text.count("\n", 0, token.start()) + 1
+        if command == "begin":
+            stack.append((name, line_number))
+            continue
+        if not stack:
+            fail(f"Environment {name} closes at assembled line {line_number} without opening")
+        opened, opened_line = stack.pop()
+        if opened != name:
+            fail(
+                f"Environment {name} closes at assembled line {line_number} while "
+                f"{opened} from line {opened_line} is open"
+            )
+    if stack:
+        name, line_number = stack[-1]
+        fail(f"Environment {name} opened at assembled line {line_number} is not closed")
+
+
+def audit_float_metadata(
+    path: Path,
+    text: str,
+    issues: list[str],
+    labels: dict[str, str],
+) -> None:
+    """Check native floats without inventing metadata absent from the source."""
+
+    active = None
+    for line_number, raw_line in enumerate(text.splitlines(), start=1):
+        code = strip_comments(raw_line)
+        if not code.strip():
+            continue
+
+        manual = MANUAL_FLOAT_CAPTION.search(code)
+        if manual:
+            issues.append(
+                f"{path.relative_to(ROOT)}:{line_number}: manual Figure/Table caption "
+                "prefix; use the environment counter and \\caption"
+            )
+
+        if active is not None:
+            active["captions"] += len(CAPTION_START.findall(code))
+            for label_match in LABEL_COMMAND.finditer(code):
+                label = label_match.group("label")
+                active["labels"].append((label, line_number))
+
+        for token in FLOAT_TOKEN.finditer(code):
+            command = token.group("command")
+            kind = token.group("kind")
+            if command == "begin":
+                if active is not None:
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{line_number}: nested {kind} inside "
+                        f"{active['kind']}"
+                    )
+                    continue
+                placement = token.group("placement")
+                if placement is None:
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{line_number}: {kind} has no explicit "
+                        "placement spec"
+                    )
+                elif any(character not in "htbp!H" for character in placement):
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{line_number}: unsupported {kind} "
+                        f"placement spec [{placement}]"
+                    )
+                active = {
+                    "kind": kind,
+                    "line": line_number,
+                    "captions": 0,
+                    "labels": [],
+                }
+                continue
+
+            if active is None:
+                issues.append(
+                    f"{path.relative_to(ROOT)}:{line_number}: closing {kind} without "
+                    "an open float"
+                )
+                continue
+            if active["kind"] != kind:
+                issues.append(
+                    f"{path.relative_to(ROOT)}:{line_number}: closed {kind} while "
+                    f"{active['kind']} from line {active['line']} is open"
+                )
+                active = None
+                continue
+
+            if active["captions"] > 1:
+                issues.append(
+                    f"{path.relative_to(ROOT)}:{active['line']}: {kind} has "
+                    f"{active['captions']} captions; expected at most one"
+                )
+            expected_prefix = "fig:zhou-" if kind == "figure" else "tab:zhou-"
+            float_labels = active["labels"]
+            if len(float_labels) > 1:
+                issues.append(
+                    f"{path.relative_to(ROOT)}:{active['line']}: {kind} has "
+                    f"{len(float_labels)} labels; expected at most one"
+                )
+            for label, label_line in float_labels:
+                if not label.startswith(expected_prefix):
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{label_line}: {kind} label "
+                        f"{label!r} should start with {expected_prefix!r}"
+                    )
+                prior = labels.get(label)
+                if prior is not None:
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{label_line}: duplicate float label "
+                        f"{label!r}; first used at {prior}"
+                    )
+                else:
+                    labels[label] = f"{path.relative_to(ROOT)}:{label_line}"
+            active = None
+
+    if active is not None:
+        issues.append(
+            f"{path.relative_to(ROOT)}:{active['line']}: unclosed {active['kind']} "
+            "environment"
+        )
 
 
 def main() -> None:
@@ -133,11 +271,37 @@ def main() -> None:
         )
 
     master = (LATEX / "master.tex").read_text(encoding="utf-8")
+    style = (LATEX / "quantguide.sty").read_text(encoding="utf-8")
     for relative in ASSEMBLY_FILES:
         if f"\\input{{{relative}}}" not in master:
             fail(f"master.tex omits {relative}")
     if "\\usepackage{quantguide}" not in master:
         fail("master.tex does not load quantguide")
+    if "\\title{" not in master or "\\author{" not in master:
+        fail("master.tex must retain title and author metadata")
+    if "\\subheader{First edition}" not in master:
+        fail("master.tex must retain the first-edition identity")
+    if "\\affiliation{" in master or re.search(r"edited by\b", master, re.IGNORECASE):
+        fail("master.tex contains retired affiliation or editor-banner metadata")
+    if not re.search(r"\\maketitle\s*\\clearpage", master):
+        fail("master.tex must clear the title page before frontmatter")
+
+    required_style_macros = (r"\dd", r"\E", r"\PDF", r"\CDF")
+    for macro in required_style_macros:
+        if not re.search(
+            rf"\\(?:newcommand|DeclareRobustCommand)\s*\{{{re.escape(macro)}\}}",
+            style,
+        ):
+            fail(f"quantguide.sty does not define canonical macro {macro}")
+    for environment in ("problem", "solution", "concept"):
+        if not re.search(rf"\\newenvironment\s*\{{{environment}\}}", style):
+            fail(f"quantguide.sty does not define breakable {environment} environment")
+    if r"\renewcommand{\qedsymbol}{\ensuremath{\square}}" not in style:
+        fail("quantguide.sty does not define the solution QED square")
+    if r"\begin{proof}[Solution]" not in style or r"\end{proof}" not in style:
+        fail("quantguide.sty solution environment does not use proof/QED machinery")
+    if r"\renewcommand{\underline}[1]{#1}" not in style:
+        fail("quantguide.sty does not neutralize legacy underline styling")
 
     marker_records: list[tuple[int, str, str]] = []
     all_tex = [LATEX / "master.tex", LATEX / "quantguide.sty"]
@@ -150,6 +314,8 @@ def main() -> None:
     )
     unresolved = re.compile(r"ZHOU-QUERY|\bTODO\b|\bTBD\b|\bFIXME\b")
     non_ascii: list[str] = []
+    float_issues: list[str] = []
+    float_labels: dict[str, str] = {}
 
     for path in all_tex:
         text = path.read_text(encoding="utf-8")
@@ -177,12 +343,19 @@ def main() -> None:
                 marker_records.append(
                     (int(match.group("physical")), match.group("printed"), path.name)
                 )
-            visible = strip_comments(text)
-            if Counter(BEGIN.findall(visible)) != Counter(END.findall(visible)):
-                fail(f"Unbalanced LaTeX environments in {path.name}")
+            audit_float_metadata(path, text, float_issues, float_labels)
+
+    if float_issues:
+        fail("Float metadata audit failed:\n" + "\n".join(float_issues))
 
     if non_ascii:
         fail(f"Non-ASCII source remains in TeX: {non_ascii}")
+
+    assembled_visible = "\n".join(
+        strip_comments((TRANSCRIPTION / name).read_text(encoding="utf-8"))
+        for name in EXPECTED_CHUNKS
+    )
+    audit_environment_nesting(assembled_visible)
 
     page_counts = Counter(physical for physical, _, _ in marker_records)
     duplicated = sorted(page for page, count in page_counts.items() if count != 1)

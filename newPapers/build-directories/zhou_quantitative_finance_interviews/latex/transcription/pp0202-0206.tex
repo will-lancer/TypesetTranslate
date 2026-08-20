@@ -9,12 +9,12 @@
 \footnotetext[11]{To integrate $y=F(x)$ with first derivative $y'=f(x)$ and a known initial
 value $y_0=F(x_0)$, the Euler method chooses a small step size $h$ ($h$ can be positive or
 negative) to sequentially approximate $y$ values:
-$F(x_0+h)=F(x_0)+f(x_0)\times h$, $F(x_0+2h)=F(x_0+h)+f(x_0+h)\times h$, $\cdots$.
-The initial value of the cdf of a standard normal can be $F(0)=0.5$.}
+$F(x_0+h)=F(x_0)+f(x_0)\cdot h$, $F(x_0+2h)=F(x_0+h)+f(x_0+h)\cdot h$, $\cdots$.
+The initial value of the \(\CDF\) of a standard normal can be $F(0)=0.5$.}
 
-Some random variables have pdf $f(x)$, but no analytical solution for $F^{-1}(U)$. In these
-cases, we can use a random variable with pdf $g(y)$ and $Y=G^{-1}(U)$ to help generate
-random variables with pdf $f(x)$. Assume that $M$ is a constant such that
+Some random variables have \(\PDF\) $f(x)$, but no analytical solution for $F^{-1}(U)$. In these
+cases, we can use a random variable with \(\PDF\) $g(y)$ and $Y=G^{-1}(U)$ to help generate
+random variables with \(\PDF\) $f(x)$. Assume that $M$ is a constant such that
 
 \[
 \frac{f(y)}{g(y)}\leq M,\qquad \forall y.
@@ -23,14 +23,14 @@ random variables with pdf $f(x)$. Assume that $M$ is a constant such that
 We can implement the following acceptance-rejection method:
 
 \begin{itemize}
-\item \textbf{Sampling step:} Generate random variable $y$ from $g(y)$ and a random variable $v$
+\item \emph{Sampling step:} Generate random variable $y$ from $g(y)$ and a random variable $v$
 from standard uniform distribution $[0,1]$.
 
-\item \textbf{Acceptance/rejection step:} If $v\leq\dfrac{f(y)}{Mg(y)}$, accept $x=y$; otherwise, repeat the
+\item \emph{Acceptance/rejection step:} If $v\leq\dfrac{f(y)}{Mg(y)}$, accept $x=y$; otherwise, repeat the
 sampling step.\footnotemark[12]
 \end{itemize}
 
-An exponential random variable ($g(x)=\lambda e^{-\lambda x}$) with $\lambda=1$ has cdf
+An exponential random variable ($g(x)=\lambda e^{-\lambda x}$) with $\lambda=1$ has \(\CDF\)
 $u=G(x)=1-e^{-x}$. So the inverse function has analytical solution $x=-\log(1-u)$ and a random
 variable with exponential distribution can be conveniently simulated. For standard normal
 distribution,
@@ -40,18 +40,23 @@ f(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},
 \]
 
 \[
-\frac{f(x)}{g(x)}=\sqrt{\frac{2}{\pi}}e^{-x^2/2+x}
-<\sqrt{\frac{2}{\pi}}e^{-(x-1)^2/2+1/2}
-\leq\sqrt{\frac{2}{\pi}}e^{1/2}\approx1.32,\qquad \forall\,0<x<\infty
+\begin{aligned}
+\frac{f(x)}{g(x)}&=\sqrt{\frac{2}{\pi}}e^{-x^2/2+x}\\
+&<\sqrt{\frac{2}{\pi}}e^{-(x-1)^2/2+1/2}\\
+&\leq\sqrt{\frac{2}{\pi}}e^{1/2}\approx1.32,\qquad \forall\,0<x<\infty
+\end{aligned}
 \]
 
 So we can choose $M=1.32$ and use the acceptance-rejection method to generate
 $x\sim N(0,1)$ random variables and scale them to $N(\mu,\sigma^2)$ random variables.
 
-\problem{C. Can you explain a few variance reduction techniques to improve the efficiency of
-Monte Carlo simulation?}
+\end{solution}
 
-\solution
+\begin{problem}{C. Can you explain a few variance reduction techniques to improve the efficiency of
+Monte Carlo simulation?}
+\end{problem}
+
+\begin{solution}
 Monte Carlo simulation, in its basic form, is the mean of IID random variables
 
 \[
@@ -59,18 +64,18 @@ Y_1,Y_2,\cdots,Y_M:\qquad \bar{Y}=\frac{1}{M}\sum_{i=1}^{M}Y_i.
 \]
 
 Since the expected value of each $Y_i$ is unbiased, the estimator $\bar{Y}$ is unbiased as well.
-If $\operatorname{Var}(Y)=\sigma$ and we generate IID $Y_i$, then
+If $\operatorname{var}(Y)=\sigma$ and we generate IID $Y_i$, then
 
 \[
-\operatorname{Var}(\bar{Y})=\frac{\sigma}{\sqrt{M}},
+\operatorname{var}(\bar{Y})=\frac{\sigma}{\sqrt{M}},
 \]
 
 where $M$ is the number of simulations. Not surprisingly, Monte Carlo
 
 \footnotetext[12]{
-$P(X\leq x)\propto\displaystyle\int_{-\infty}^{x}g(y)\frac{f(y)}{Mg(y)}\,dy
-=\frac{1}{M}\displaystyle\int_{-\infty}^{x}f(y)\,dy
-\Rightarrow F(x)=\frac{P(X\leq x)}{P(X<\infty)}=\displaystyle\int_{-\infty}^{x}f(y)\,dy$.
+$P(X\leq x)\propto\displaystyle\int_{-\infty}^{x}g(y)\frac{f(y)}{Mg(y)}\,\dd y
+ =\frac{1}{M}\displaystyle\int_{-\infty}^{x}f(y)\,\dd y
+ \Rightarrow F(x)=\frac{P(X\leq x)}{P(X<\infty)}=\displaystyle\int_{-\infty}^{x}f(y)\,\dd y$.
 }
 
 % ZHOU-SOURCE-PAGE: 203 PRINTED: 187
@@ -79,32 +84,34 @@ simulation is computationally intensive if $\sigma$ is large. Thousands or even 
 simulations are often required to get the desired accuracy. Depending on the specific
 problems, a variety of methods have been applied to reduce variance.
 
-\textbf{Antithetic variable:} For each series of $\epsilon_i$'s, calculate its corresponding payoff
+\emph{Antithetic variable:} For each series of $\epsilon_i$'s, calculate its corresponding payoff
 $Y(\epsilon_1,\cdots,\epsilon_N)$. Then reverse the sign of all $\epsilon_i$'s and calculate the
 corresponding payoff $Y(-\epsilon_1,\cdots,-\epsilon_N)$. When
 $Y(\epsilon_1,\cdots,\epsilon_N)$ and $Y(-\epsilon_1,\cdots,-\epsilon_N)$ are negatively
 correlated, the variance is reduced.
 
-\textbf{Moment matching:} Specific samples of the random variable may not match the population
+\emph{Moment matching:} Specific samples of the random variable may not match the population
 distribution well. We can draw a large set of samples first and then rescale the samples to make
 the samples' moments (mean and variance are the most commonly used) match the desired population
 moments.
 
-\textbf{Control variate:} If we want to price a derivative $X$ and there is a closely related
+\emph{Control variate:} If we want to price a derivative $X$ and there is a closely related
 derivative $Y$ that has an analytical solution, we can generate a series of random numbers and use
 the same random sequences to price both $X$ and $Y$ to yield $\hat{X}$ and $\hat{Y}$. Then $X$ can
 be estimated as $\hat{X}+(Y-\hat{Y})$. Essentially we use $(Y-\hat{Y})$ to correct the estimation
 error of $\hat{X}$.
 
-\textbf{Importance sampling:} To estimate the expected value of $h(x)$ from distribution $f(x)$,
+\emph{Importance sampling:} To estimate the expected value of $h(x)$ from distribution $f(x)$,
 instead of drawing $x$ from distribution $f(x)$, we can draw $x$ from distribution $g(x)$ and
 use Monte Carlo simulation to estimate expected value of
 $\dfrac{h(x)f(x)}{g(x)}$:
 
 \[
-E_{f(x)}[h(x)]=\int h(x)f(x)\,dx
-=\int\frac{h(x)f(x)}{g(x)}g(x)\,dx
-=E_{g(x)}\left[\frac{h(x)f(x)}{g(x)}\right].\footnotemark[13]
+\begin{aligned}
+\E_{f(x)}[h(x)]&=\int h(x)f(x)\,\dd x\\
+&=\int\frac{h(x)f(x)}{g(x)}g(x)\,\dd x\\
+&=\E_{g(x)}\left[\frac{h(x)f(x)}{g(x)}\right].\footnotemark[13]
+\end{aligned}
 \]
 
 If $\dfrac{h(x)f(x)}{g(x)}$ has a smaller variance than $h(x)$, then importance sampling can result
@@ -119,14 +126,17 @@ unbiased, but the approach will have lower variance.
 
 % ZHOU-SOURCE-PAGE: 204 PRINTED: 188
 
-\textbf{Low-discrepancy sequence:} Instead of using random samples, we can generate a deterministic
+\emph{Low-discrepancy sequence:} Instead of using random samples, we can generate a deterministic
 sequence of ``random variable'' that represents the distribution. Such low-discrepancy sequences
 may make the convergence rate $1/M$.
 
-\problem{D. If there is no closed-form pricing formula for an option, how would you estimate its
-delta and gamma?}
+\end{solution}
 
-\solution
+\begin{problem}{D. If there is no closed-form pricing formula for an option, how would you estimate its
+delta and gamma?}
+\end{problem}
+
+\begin{solution}
 As we have discussed in problem A, the prices of options with or without closed-form pricing
 formulas can be derived using Monte Carlo simulation. The same methods can also be used to estimate
 delta and gamma by slightly changing the current underlying price from $S$ to $S\pm\delta S$, where
@@ -147,9 +157,12 @@ $f(S-\delta S)$, $f(S)$ and $f(S+\delta S)$.
 To reduce variance, it's often better to use the same random number sequences to estimate
 $f(S-\delta S)$, $f(S)$ and $f(S+\delta S)$.\footnotemark[14]
 
-\problem{E. How do you use Monte Carlo simulation to estimate $\pi$?}
+\end{solution}
 
-\solution
+\begin{problem}{E. How do you use Monte Carlo simulation to estimate $\pi$?}
+\end{problem}
+
+\begin{solution}
 Estimation of $\pi$ is a classic example of Monte Carlo simulation. One standard method to
 estimate $\pi$ is to randomly select points in the unit square ($x$ and $y$ are independent
 uniform random variables between 0 and 1) and determine the ratio of points that are within the
@@ -160,7 +173,7 @@ points within the circle is proportional to its area:
 \[
 \hat{p}=\frac{\text{Number of }(x_i,y_i)\text{ within }x_i^2+y_i^2\leq1}
 {\text{Number of }(x_i,y_i)\text{ within the square}}
-=\frac{1/4\,\pi}{1\times1}=\frac{1}{4}\pi\Rightarrow\hat{\pi}=4\hat{p}.
+=\frac{1/4\,\pi}{1\cdot1}=\frac{1}{4}\pi\Rightarrow\hat{\pi}=4\hat{p}.
 \]
 
 So we generate a large number of independent $(x,y)$ points, estimate the ratio of the points
@@ -177,7 +190,7 @@ on a laptop and gave an average estimation of $\pi$ as 3.1416 with standard devi
 
 % Figure 7.1 is recreated natively; its sample dots are illustrative, while the
 % quadrant, arc, axes, labels, and visible out-of-circle pattern follow the source.
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[x=5.4cm,y=5.4cm]
   \draw[->] (0,0) -- (1.08,0) node[below right] {$x$};
@@ -210,6 +223,8 @@ on a laptop and gave an average estimation of $\pi$ as 3.1416 with standard devi
 \label{fig:zhou-figure-7-1}
 \end{figure}
 
+\end{solution}
+
 \subsubsection*{Finite difference method}
 
 The finite difference method is another popular numerical technique for derivative pricing. It
@@ -222,9 +237,10 @@ derivatives. The difference between various derivatives lies in the boundary con
 a grid of $x$ and $\tau$ and using the boundary conditions, we can recursively calculate $u$ at every
 $x$ and $\tau$ using finite difference methods.
 
-\problem{A. Can you briefly explain finite difference methods?}
+\begin{problem}{A. Can you briefly explain finite difference methods?}
+\end{problem}
 
-\solution
+\begin{solution}
 There are several version of finite difference methods used in practice. Let's briefly go over the
 explicit difference method, the implicit difference method and the
 
@@ -282,10 +298,12 @@ The explicit difference method uses the forward difference at time $\tau_n$ and 
 central difference at $x_j$:
 
 \[
+\begin{aligned}
 \frac{\partial u}{\partial\tau}
-\approx\frac{u_j^{n+1}-u_j^n}{\Delta\tau}
-=\frac{u_{j+1}^{n}-2u_j^n+u_{j-1}^{n}}{(\Delta x)^2}
-\approx\frac{\partial^2u}{\partial x^2}.
+&\approx\frac{u_j^{n+1}-u_j^n}{\Delta\tau}\\
+&=\frac{u_{j+1}^{n}-2u_j^n+u_{j-1}^{n}}{(\Delta x)^2}\\
+&\approx\frac{\partial^2u}{\partial x^2}.
+\end{aligned}
 \]
 
 Rearranging terms, we can express $u_j^{n+1}$ as a linear combination of $u_{j+1}^n$, $u_j^n$ and

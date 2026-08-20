@@ -4,8 +4,9 @@
 % ZHOU-SOURCE-PAGE: 173 PRINTED: 157
 
 smile for the Black-Scholes pricing model?
+\end{problem}
 
-\solution
+\begin{solution}
 Implied volatility is the volatility that makes the model option price equal to the
 market option price. Volatility smile describes the relationship between the implied
 volatility of the options and the strike prices for a given asset. For currency options,
@@ -16,18 +17,21 @@ price follows a lognormal distribution with constant volatility. In reality, vol
 neither constant nor deterministic. In fact, the volatility is a stochastic process itself.
 Furthermore, there may be jumps in asset prices.
 
-\emph{B.} You have to price a European call option either with a constant volatility 30\%
-or by drawing volatility from a random distribution with a mean of 30\%. Which option
-would be more expensive?
+\end{solution}
 
-\solution
+\begin{problem}{B. You have to price a European call option either with a constant volatility 30\%
+or by drawing volatility from a random distribution with a mean of 30\%. Which option
+would be more expensive?}
+\end{problem}
+
+\begin{solution}
 Many would simply argue that stochastic volatility makes the stock price more volatile,
 so the call price is more valuable when the volatility is drawn from a random distribution.
 Mathematically, the underlying argument is that the price of a European call option is a
 convex function of volatility and as a result
 
 \[
-c(E[\sigma])\leq E[c(\sigma)],
+c(\E[\sigma])\leq \E[c(\sigma)],
 \]
 
 where $\sigma$ is the random variable representing volatility and $c$ is the call option
@@ -41,17 +45,21 @@ call price $c$ is always a convex function of $\sigma$, then
 $\frac{\partial c}{\partial\sigma}$ is the Vega of the option. For a European call option,
 
 \[
-\nu=\frac{\partial c}{\partial\sigma}=S\sqrt{\tau}N'(d_1)
-=\frac{S\sqrt{\tau}}{\sqrt{2\pi}}\exp(-d_1^2/2).
+\begin{aligned}
+\nu&=\frac{\partial c}{\partial\sigma}=S\sqrt{\tau}N'(d_1)\\
+&=\frac{S\sqrt{\tau}}{\sqrt{2\pi}}\exp(-d_1^2/2).
+\end{aligned}
 \]
 
 The secondary partial derivative $\frac{\partial^2c}{\partial\sigma^2}$ is called Volga.
 For a European call option,
 
 \[
+\begin{aligned}
 \frac{\partial^2c}{\partial\sigma^2}
-=\frac{S\sqrt{\tau}}{\sqrt{2\pi}}\exp(-d_1^2/2)\frac{d_1d_2}{\sigma}
-=\nu\frac{d_1d_2}{\sigma}.
+&=\frac{S\sqrt{\tau}}{\sqrt{2\pi}}\exp(-d_1^2/2)\frac{d_1d_2}{\sigma}\\
+&=\nu\frac{d_1d_2}{\sigma}.
+\end{aligned}
 \]
 
 $\nu$ is always positive. For most out-of-the-money call options, both $d_1$ and $d_2$
@@ -65,45 +73,49 @@ $\frac{\partial^2c}{\partial\sigma^2}<0$ when the option is close to being
 at-the-money. So the function is not always convex. In those cases, the option with
 constant volatility may have a higher value.
 
-\emph{C.} The Black-Scholes formula for non-dividend paying stocks assumes that the stock
+\end{solution}
+
+\begin{problem}{C. The Black-Scholes formula for non-dividend paying stocks assumes that the stock
 follows a geometric Brownian motion. Now assume that you don't know the stochastic
 process followed by the stock price, but you have European call prices for all (continuous)
 strike prices $K$. Can you determine the risk-neutral probability density function of the
-stock price at time $T$?
+stock price at time $T$?}
+\end{problem}
 
-\solution
-The payoff of a European call at its maturity date is $\operatorname{Max}(S_T-K,0)$.
+\begin{solution}
+The payoff of a European call at its maturity date is $\max(S_T-K,0)$.
 Therefore under risk-neutral measure, we have
 
 \[
-c=e^{-r\tau}\int_K^\infty(s-K)f_{S_T}(s)\,ds,
+c=e^{-r\tau}\int_K^\infty(s-K)f_{S_T}(s)\,\dd s,
 \]
 
 where $f_{S_T}(s)$ is the probability density function of $S_T$ under the risk-neutral
 probability measure. Taking the first and second derivatives of $c$ with respect to $K$,
 \footnote[10]{To calculate the derivatives requires the Leibniz integral rule, a formula for differentiating a definite integral whose limits are functions of the differential variable:
-\(\displaystyle \frac{\partial}{\partial z}\int_{a(z)}^{b(z)}f(x,z)\,dx
-=\int_{a(z)}^{b(z)}\frac{\partial f(x,z)}{\partial z}\,dx
+\(\displaystyle \frac{\partial}{\partial z}\int_{a(z)}^{b(z)}f(x,z)\,\dd x
+=\int_{a(z)}^{b(z)}\frac{\partial f(x,z)}{\partial z}\,\dd x
 +f(b(z),z)\frac{\partial b}{\partial z}-f(a(z),z)\frac{\partial a}{\partial z}.\)} we have
 
 \[
+\begin{aligned}
 \frac{\partial c}{\partial K}
-=e^{-r\tau}\frac{\partial}{\partial K}\int_K^\infty(s-K)f_{S_T}(s)\,ds
-\]
-
-\[
-=e^{-r\tau}\int_K^\infty\frac{\partial(s-K)}{\partial K}f_{S_T}(s)\,ds
--e^{-r\tau}(K-K)\times1
-=e^{-r\tau}\int_K^\infty-f_{S_T}(s)\,ds
+&=e^{-r\tau}\frac{\partial}{\partial K}\int_K^\infty(s-K)f_{S_T}(s)\,\dd s\\
+&=e^{-r\tau}\int_K^\infty\frac{\partial(s-K)}{\partial K}f_{S_T}(s)\,\dd s\\
+&\quad-e^{-r\tau}(K-K)\cdot1\\
+&=e^{-r\tau}\int_K^\infty-f_{S_T}(s)\,\dd s
+\end{aligned}
 \]
 
 and
 
 \[
+\begin{aligned}
 \frac{\partial^2c}{\partial K^2}
-=\frac{\partial}{\partial K}\left(\frac{\partial c}{\partial K}\right)
-=e^{-r\tau}\frac{\partial}{\partial K}\int_K^\infty-f_{S_T}(s)\,ds
-=e^{-r\tau}f_{S_T}(K).
+&=\frac{\partial}{\partial K}\left(\frac{\partial c}{\partial K}\right)\\
+&=e^{-r\tau}\frac{\partial}{\partial K}\int_K^\infty-f_{S_T}(s)\,\dd s\\
+&=e^{-r\tau}f_{S_T}(K).
+\end{aligned}
 \]
 
 Hence the risk-neutral probability density function is
@@ -111,6 +123,8 @@ Hence the risk-neutral probability density function is
 \[
 f_{S_T}(K)=e^{r\tau}\frac{\partial^2c}{\partial K^2}.
 \]
+
+\end{solution}
 
 \subsection{Option Portfolios and Exotic Options}
 
@@ -126,9 +140,10 @@ exotic derivatives---binary option, barrier option, Asian option, chooser option
 
 \subsubsection*{Bull spread}
 
-What are the price boundaries for a bull call spread?
+\begin{problem}{What are the price boundaries for a bull call spread?}
+\end{problem}
 
-\solution
+\begin{solution}
 A bull call spread is a portfolio with two options: long a call $c_1$ with strike $K_1$
 and short a call $c_2$ with strike $K_2$ ($K_1<K_2$). The cash flow of a bull spread is
 summarized in table 6.3.
@@ -161,11 +176,14 @@ $\frac{K_2-K_1}{K_2}S_T$, so the price is also bounded by
 \frac{K_2-K_1}{K_2}S.
 \]
 
+\end{solution}
+
 \subsubsection*{Straddle}
 
-Explain what a straddle is and when you want to purchase a straddle.
+\begin{problem}{Explain what a straddle is and when you want to purchase a straddle.}
+\end{problem}
 
-\solution
+\begin{solution}
 A straddle includes long positions in both a call option and a put option with the same
 strike price $K$ and maturity date $T$ on the same stock. The payoff of a long straddle is
 $|S_T-K|$. So a straddle may be used to bet on large stock price moves. In practice, a
@@ -187,18 +205,21 @@ has a delta close to 0, as the stock price moves away from the strike price, the
 longer close to 0 and the investor is exposed to stock price movements. So a straddle is
 not a pure bet on stock volatility. For a pure bet on volatility, it is better to use volatility
 swaps or variance swaps.\footnote[11]{For detailed discussion about volatility swaps, please refer to the paper \emph{More Than You Ever Wanted to Know about Volatility Swaps} by Kresimir Demeterfi, et al. The paper shows that a variance swap can be approximated by a portfolio of straddles with proper weights inversely proportional to $1/K^2$.} For example, a
-variance swap pays $N\times(\sigma_r^2-K_{\mathrm{var}})$, where $N$ is the notional
+variance swap pays $N\cdot(\sigma_r^2-K_{\mathrm{var}})$, where $N$ is the notional
 value, $\sigma_r^2$ is the realized variance and $K_{\mathrm{var}}$ is the strike for the
 variance.
 
+\end{solution}
+
 \subsubsection*{Binary options}
 
-What is the price of a binary (cash-or-nothing digital) European call option on a
+\begin{problem}{What is the price of a binary (cash-or-nothing digital) European call option on a
 non-dividend paying stock if the stock price follows a geometric Brownian motion? How
 would you hedge a cash-or-nothing call option and what's the limitation of your hedging
-strategy?
+strategy?}
+\end{problem}
 
-\solution
+\begin{solution}
 A cash-or-nothing call option with strike price $K$ pays \$1 if the asset price is above
 the strike price at the maturity date, otherwise it pays nothing. The price of the option is
 $c_B=e^{-r\tau}N(d_2)$ if the underlying asset is a non-dividend paying stock. As we have
@@ -240,13 +261,16 @@ This hedging strategy suffers its own drawback. In practice, not all strike pric
 in the market. Even if all strike prices were traded in the market, the number of options
 needed for hedging, $1/2\varepsilon$, will be large in order to keep $\varepsilon$ small.
 
+\end{solution}
+
 \subsubsection*{Exchange options}
 
-How would you price an exchange call option that pays $\max(S_{T,1}-S_{T,2},0)$ at
+\begin{problem}{How would you price an exchange call option that pays $\max(S_{T,1}-S_{T,2},0)$ at
 maturity. Assume that $S_1$ and $S_2$ are non-dividend paying stocks and both follow
-geometric Brownian motions with correlation $\rho$.
+geometric Brownian motions with correlation $\rho$.}
+\end{problem}
 
-\solution
+\begin{solution}
 The solution to this problem uses change of numeraire. Numeraire means a unit of
 measurement. When we express the price of an asset, we usually use the local currency as
 the numeraire. But for modeling purposes, it is often easier to use a different asset as the
@@ -257,11 +281,11 @@ maturity date $T$) and $S_{T,2}$ (price of $S_2$ at $T$), so it appears that we 
 geometric Brownian motions:
 
 \[
-dS_1=\mu_1S_1dt+\sigma_1S_1dW_{t,1}
+\dd S_1=\mu_1S_1\dd t+\sigma_1S_1\dd W_{t,1}
 \]
 
 \[
-dS_2=\mu_2S_2dt+\sigma_2S_2dW_{t,2}.
+\dd S_2=\mu_2S_2\dd t+\sigma_2S_2\dd W_{t,2}.
 \]
 
 Yet if we use $S_1$ as the numeraire, we can convert the problem to just one geometric

@@ -12,32 +12,39 @@ u_j^{n+1}=\alpha u_{j-1}^{n}+(1-2\alpha)u_j^{n}+\alpha u_{j+1}^{n},
 
 we can estimate all $u_j^n$'s on the grid.
 
-The \textbf{implicit difference method} uses the backward difference at time
+The \emph{implicit difference method} uses the backward difference at time
 $t_{n+1}$ and the second-order central difference at $x_j$:
 
 \[
+\begin{aligned}
 \frac{\partial u}{\partial \tau}
-\approx \frac{u_j^{n+1}-u_j^n}{\Delta\tau}
-=\frac{u_{j+1}^{n+1}-2u_j^{n+1}+u_{j-1}^{n+1}}{(\Delta x)^2}
-\approx \frac{\partial^2u}{\partial x^2}.
+&\approx \frac{u_j^{n+1}-u_j^n}{\Delta\tau}\\
+&=\frac{u_{j+1}^{n+1}-2u_j^{n+1}+u_{j-1}^{n+1}}{(\Delta x)^2}\\
+&\approx \frac{\partial^2u}{\partial x^2}.
+\end{aligned}
 \]
 
-The \textbf{Crank-Nicolson method} uses the central difference at time
+\begin{samepage}
+The \emph{Crank-Nicolson method} uses the central difference at time
 $(t_n+t_{n+1})/2$ and the second-order central difference at $x_j$:
 
 \[
+\begin{aligned}
 \frac{\partial u}{\partial \tau}
-\approx \frac{u_j^{n+1}-u_j^n}{\Delta\tau}
-=\frac{1}{2}\left(
-\frac{u_{j+1}^{n}-2u_j^n+u_{j-1}^{n}}{(\Delta x)^2}
-+\frac{u_{j+1}^{n+1}-2u_j^{n+1}+u_{j-1}^{n+1}}{(\Delta x)^2}
-\right)
-\approx \frac{\partial^2u}{\partial x^2}.
+&\approx \frac{u_j^{n+1}-u_j^n}{\Delta\tau}\\
+&=\frac{1}{2}\left(\frac{u_{j+1}^{n}-2u_j^n+u_{j-1}^{n}}{(\Delta x)^2}\right.\\[-2pt]
+&\qquad\left.+\frac{u_{j+1}^{n+1}-2u_j^{n+1}+u_{j-1}^{n+1}}{(\Delta x)^2}\right)\\
+&\approx \frac{\partial^2u}{\partial x^2}.
+\end{aligned}
 \]
+\end{samepage}
 
-\problem{B. If you are solving a parabolic partial differential equation using the explicit finite difference method, is it worse to have too many steps in the time dimension or too many steps in the space dimension?}
+\end{solution}
 
-\solution
+\begin{problem}{B. If you are solving a parabolic partial differential equation using the explicit finite difference method, is it worse to have too many steps in the time dimension or too many steps in the space dimension?}
+\end{problem}
+
+\begin{solution}
 The equation for $u_j^{n+1}$ in the explicit finite difference method is
 
 \[
@@ -50,3 +57,5 @@ So a small $\Delta t$ (i.e., many time steps) is desirable, but a small $\Delta 
 (too many space steps) may make $\Delta t/(\Delta x)^2>1/2$ and the results unstable.
 In that sense, it is worse to have too many steps in the space dimension. In contrast,
 the implicit difference method is always stable and convergent.
+
+\end{solution}

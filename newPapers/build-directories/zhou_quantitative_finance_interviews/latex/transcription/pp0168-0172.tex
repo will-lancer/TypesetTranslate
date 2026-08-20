@@ -10,10 +10,13 @@ $\Delta$ increases as well. That means we need to short more stock and lend more
 The delta hedge only replicates the value and the slope of the option. To hedge the
 curvature of the option, we will need to hedge gamma as well.
 
-\problem{D. Can you estimate the value of an at-the-money call on a non-dividend paying stock?
-Assume the interest rate is low and the call has short maturity.}
+\end{solution}
 
-\solution
+\begin{problem}{D. Can you estimate the value of an at-the-money call on a non-dividend paying stock?
+Assume the interest rate is low and the call has short maturity.}
+\end{problem}
+
+\begin{solution}
 When $S=K$, we have $c=S\left(N(d_1)-e^{-r\tau}N(d_2)\right)$. In a low-interest
 environment, $r\approx0$ and $e^{-r\tau}\approx1$, so
 $c\approx S\left(N(d_1)-N(d_2)\right)$.
@@ -21,7 +24,7 @@ $c\approx S\left(N(d_1)-N(d_2)\right)$.
 We also have
 
 \[
-N(d_1)-N(d_2)=\int_{d_2}^{d_1}\frac{1}{\sqrt{2\pi}}e^{-x^2/2}\,dx,
+N(d_1)-N(d_2)=\int_{d_2}^{d_1}\frac{1}{\sqrt{2\pi}}e^{-x^2/2}\,\dd x,
 \]
 
 where
@@ -38,18 +41,22 @@ $\sigma=0.3$, and $\tau=1/6$ year, then
 $d_2=-0.02$ and $e^{-d_2^2/2}=0.98$.
 
 \[
-\therefore\quad N(d_1)-N(d_2)\approx
-\frac{1}{\sqrt{2\pi}}(d_1-d_2)=\frac{\sigma\sqrt{\tau}}{\sqrt{2\pi}}
-\approx0.4\sigma\sqrt{T-t}\Rightarrow c\approx0.4\sigma S\sqrt{\tau}.
+\begin{aligned}
+\therefore\quad N(d_1)-N(d_2)&\approx\frac{1}{\sqrt{2\pi}}(d_1-d_2)\\
+&=\frac{\sigma\sqrt{\tau}}{\sqrt{2\pi}}\\
+&\approx0.4\sigma\sqrt{T-t}\Rightarrow c\approx0.4\sigma S\sqrt{\tau}.
+\end{aligned}
 \]
 
-\noindent\textbf{In practice, this approximation is used by some volatility traders to estimate
+\noindent\emph{In practice, this approximation is used by some volatility traders to estimate
 the implied volatility of an at-the-money option.}
 
 (The approximation $e^{-x^2/2}\approx1$ causes a small overestimation since
 $e^{-x^2/2}<1$, but the approximation $-e^{-r\tau}K\approx-K$ causes a small
 underestimation. To some extent, the two opposite effects cancel out and the overall
 approximation is fairly accurate.)
+
+\end{solution}
 
 \subsubsection*{Gamma}
 
@@ -61,10 +68,11 @@ For a European call/put with dividend yield $y$:
 
 % ZHOU-SOURCE-PAGE: 169 PRINTED: 153
 
-\problem{What happens to the gamma of an at-the-money European option when it approaches
+\begin{problem}{What happens to the gamma of an at-the-money European option when it approaches
 its maturity?}
+\end{problem}
 
-\solution
+\begin{solution}
 From the put-call parity, it is obvious that a call and a put with identical
 characteristics have the same gamma (since $\Gamma=0$ for both the cash position and the
 underlying stock). Taking the partial derivative of the $\Delta$ of a call option with
@@ -76,7 +84,7 @@ respect to $S$, we have
 N'(d_1)=\frac{1}{\sqrt{2\pi}}e^{-d_1^2/2}.
 \]
 
-\noindent\textbf{So for plain vanilla call and put options, gamma is always positive.}
+\noindent\emph{So for plain vanilla call and put options, gamma is always positive.}
 
 Figure 6.3 shows that gamma is high when options are at the money, which is the stock
 price region that $\Delta$ changes rapidly with $S$. If $S\ll K$ or $S\gg K$ (deep in the
@@ -99,8 +107,10 @@ dividend,
 When $S=K$,
 
 \[
-d_1=\lim_{\tau\to0}\left(\frac{r}{\sigma}+\frac{\sigma}{2}\right)\sqrt{\tau}
-\to0\Rightarrow\lim_{\tau\to0}N'(d_1)\to\frac{1}{\sqrt{2\pi}}.
+\begin{aligned}
+d_1&=\lim_{\tau\to0}\left(\frac{r}{\sigma}+\frac{\sigma}{2}\right)\sqrt{\tau}\\
+&\to0\Rightarrow\lim_{\tau\to0}N'(d_1)\to\frac{1}{\sqrt{2\pi}}.
+\end{aligned}
 \]
 
 The numerator is $1/\sqrt{2\pi}$; yet the denominator has a limit
@@ -146,20 +156,26 @@ $T$. $K=100$, $r=0.05$, $\sigma=0.25$.}
 \label{fig:zhou-figure-6-3}
 \end{figure}
 
+\end{solution}
+
 \subsubsection*{Theta}
 
 For a European call option:
 
 \[
-\Theta=-\frac{SN'(d_1)\sigma e^{-y\tau}}{2\sqrt{\tau}}
-+ySe^{-y\tau}N(d_1)-rKe^{-r\tau}N(d_2)
+\begin{aligned}
+\Theta&=-\frac{SN'(d_1)\sigma e^{-y\tau}}{2\sqrt{\tau}}\\
+&\quad+ySe^{-y\tau}N(d_1)-rKe^{-r\tau}N(d_2)
+\end{aligned}
 \]
 
 For a European put option:
 
 \[
-\Theta=-\frac{SN'(d_1)\sigma e^{-y\tau}}{2\sqrt{\tau}}
--ySe^{-y\tau}N(-d_1)+rKe^{-r\tau}N(-d_2)
+\begin{aligned}
+\Theta&=-\frac{SN'(d_1)\sigma e^{-y\tau}}{2\sqrt{\tau}}\\
+&\quad-ySe^{-y\tau}N(-d_1)+rKe^{-r\tau}N(-d_2)
+\end{aligned}
 \]
 
 When there is no dividend, the theta for a European call option is simplified to
@@ -211,9 +227,10 @@ $T$. $K=100$, $\sigma=0.25$, $r=0.05$.}
 \label{fig:zhou-figure-6-4}
 \end{figure}
 
-\problem{A. When will a European option have positive theta?}
+\begin{problem}{A. When will a European option have positive theta?}
+\end{problem}
 
-\solution
+\begin{solution}
 For American options as well as European calls on non-dividend paying assets, theta is
 always negative. But for deep in-the-money European puts, their values may increase as
 $t$ approaches $T$ if all other factors remain the same, so they may have positive theta.
@@ -237,12 +254,15 @@ positive as well. If a call option with high dividend yield is deep in-the-money
 ($S\gg K$), $N(d_1)\approx N(d_2)\approx1$, $N'(d_1)\approx0$, so the component
 $ySe^{-y\tau}N(d_1)$ can make $\Theta$ positive.
 
-\problem{B. You just entered a long position for a call option on GM and hedged the position
+\end{solution}
+
+\begin{problem}{B. You just entered a long position for a call option on GM and hedged the position
 by shorting GM shares to make the portfolio delta neutral. If there is an immediate increase
 or decrease in GM's stock price, what will happen to the value of your portfolio? Is it an
 arbitrage opportunity? Assume that GM does not pay dividends.}
+\end{problem}
 
-\solution
+\begin{solution}
 A position in the underlying asset has zero gamma. So the portfolio is delta-neutral and
 long gamma. Therefore, either an immediate increase or decrease in the GM stock price
 will increase the portfolio value. The convexity (positive gamma) enhances returns when
@@ -253,9 +273,11 @@ instead. From the Black-Scholes-Merton differential equation, the portfolio $V$ 
 the equation
 
 \[
+\begin{aligned}
 \frac{\partial V}{\partial t}+rS\frac{\partial V}{\partial S}
-+\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}
-=\Theta+rS\Delta+\frac{1}{2}\sigma^2S^2\Gamma=rV.
+&+\frac{1}{2}\sigma^2S^2\frac{\partial^2V}{\partial S^2}\\
+&=\Theta+rS\Delta+\frac{1}{2}\sigma^2S^2\Gamma=rV.
+\end{aligned}
 \]
 
 For a delta-neutral portfolio, we have
@@ -270,13 +292,17 @@ negative. Our delta neutral portfolio has positive gamma and negative theta. Tha
 the price does not move, the passage of time will result in a lower portfolio value unless we
 rebalance. So the portfolio does not provide an arbitrage opportunity.
 
+\end{solution}
+
 \subsubsection*{Vega}
 
 For European options:
 
 \[
-\nu=\frac{\partial c}{\partial\sigma}=\frac{\partial p}{\partial\sigma}
-=Se^{-y\tau}\sqrt{\tau}\,N'(d_1)
+\begin{aligned}
+\nu&=\frac{\partial c}{\partial\sigma}=\frac{\partial p}{\partial\sigma}\\
+&=Se^{-y\tau}\sqrt{\tau}\,N'(d_1)
+\end{aligned}
 \]
 
 At-the-money options are most sensitive to volatility change, so they have higher vegas
@@ -284,4 +310,4 @@ than either in-the-money or out-of-the-money options. The vegas of all options d
 time to expiration becomes shorter ($\sqrt{\tau}\to0$) since a long-term option is more
 sensitive to change in volatility.
 
-\problem{A. Explain implied volatility and volatility smile. What is the implication of volatility}
+\begin{problem}{A. Explain implied volatility and volatility}

@@ -18,14 +18,15 @@ P\left(\bigcup_{i=1}^{N}E_i\right)
 =\sum_{i=1}^{N}P(E_i)
 \Rightarrow
 P\left(\bigcup_{i=1}^{N}E_i\right)
-=N\times\frac{1}{2^{N-1}}
+=N\cdot\frac{1}{2^{N-1}}
 =\frac{N}{2^{N-1}}.
 \]
 
 The same argument can be extended to any arcs that have a length less than half a
 circle. If the ratio of the arc length to the circumference of the circle is $x$
 ($x\leq1/2$), then the probability of all $N$ points fitting into the arc is
-$N\times x^{N-1}$.
+$N\cdot x^{N-1}$.
+\end{solution}
 
 \begin{figure}[ht]
 \centering
@@ -60,7 +61,8 @@ different ways that a certain event can occur. The mathematic theory of counting
 often referred to as combinatorial analysis (or combinatorics). In this section, we will
 cover the basics of combinatorial analysis.
 
-\noindent\textbf{Basic principle of counting:} Let $S$ be a set of length-$k$ sequences.
+\begin{concept}{Combinatorial principles}
+\noindent\emph{Basic principle of counting:} Let $S$ be a set of length-$k$ sequences.
 If there are
 
 % ZHOU-SOURCE-PAGE: 81 PRINTED: 65
@@ -70,33 +72,33 @@ If there are
 \item $n_3$ possible third entries for each combination of first and second entries, etc.
 \end{itemize}
 
-Then there are a total of $n_1\times n_2\cdots n_k$ possible outcomes.
+Then there are a total of $n_1\cdot n_2\cdots n_k$ possible outcomes.
 
-\noindent\textbf{Permutation:} A rearrangement of objects into distinct sequence
+\noindent\emph{Permutation:} A rearrangement of objects into distinct sequence
 (i.e., order matters).
 
-\noindent\textbf{Property:} There are
+\noindent\emph{Property:} There are
 \[
 \frac{n!}{n_1!n_2!\ldots n_r!}
 \]
 different permutations of $n$ objects, of which $n_1$ are alike, $n_2$ are alike,
 $\ldots$, $n_r$ are alike.
 
-\noindent\textbf{Combination:} An unordered collection of objects (i.e., order
+\noindent\emph{Combination:} An unordered collection of objects (i.e., order
 doesn't matter).
 
-\noindent\textbf{Property:} There are
+\noindent\emph{Property:} There are
 \[
 \binom{n}{r}=\frac{n!}{(n-r)!r!}
 \]
 different combinations of $n$ distinct objects taken $r$ at a time.
 
-\noindent\textbf{Binomial theorem:}
+\noindent\emph{Binomial theorem:}
 \[
 (x+y)^n=\sum_{k=0}^{n}\binom{n}{k}x^k y^{n-k}.
 \]
 
-\noindent\textbf{Inclusion-Exclusion Principle:}
+\noindent\emph{Inclusion-Exclusion Principle:}
 \[
 P(E_1\cup E_2)=P(E_1)+P(E_2)-P(E_1E_2)
 \]
@@ -104,7 +106,7 @@ P(E_1\cup E_2)=P(E_1)+P(E_2)-P(E_1E_2)
 P(E_1\cup E_2\cup E_3)
 =P(E_1)+P(E_2)+P(E_3)-P(E_1E_2)-P(E_1E_3)-P(E_2E_3)+P(E_1E_2E_3)
 \]
-and more generally,
+And more generally,
 \[
 \begin{aligned}
 P(E_1\cup E_2\cup\ldots\cup E_N)
@@ -115,11 +117,12 @@ P(E_1\cup E_2\cup\ldots\cup E_N)
 &+(-1)^{N+1}P(E_1E_2\cdots E_N).
 \end{aligned}
 \]
-where
+Where
 \[
 \sum_{i_1<i_2<\cdots<i_r}P(E_{i_1}E_{i_2}\cdots E_{i_r})
 \]
 has $\binom{N}{r}$ terms.
+\end{concept}
 
 \subsubsection{Poker hands}
 
@@ -135,45 +138,47 @@ a deck. Each card has a value and belongs to a suit. There are 13 values,
 and four suits, $\spadesuit$, $\clubsuit$, $\heartsuit$, $\diamondsuit$.
 
 % ZHOU-SOURCE-PAGE: 82 PRINTED: 66
-\problem{What are the probabilities of getting hands with four-of-a-kind (four of the five cards with the same value)? Hands with a full house (three cards of one value and two cards of another value)? Hands with two pairs?}
-\solution
+\begin{problem}{What are the probabilities of getting hands with four-of-a-kind (four of the five cards with the same value)? Hands with a full house (three cards of one value and two cards of another value)? Hands with two pairs?}
+\end{problem}
+\begin{solution}
 The number of different hands of a five-card draw is the number of 5-element subsets
 of a 52-element set, so total number of hands
 \[
 =\binom{52}{5}=2,598,960.
 \]
 
-\noindent\textbf{Hands with a four-of-a-kind:} First we can choose the value of the four
+\noindent\emph{Hands with a four-of-a-kind:} First we can choose the value of the four
 cards with the same value, there are 13 choices. The 5th card can be any of the rest 48
 cards (12 choices for values and 4 choices for suits). So the number of hands with
 four-of-a-kind is
 \[
-13\times48=624.
+13\cdot48=624.
 \]
 
-\noindent\textbf{Hands with a Full House:} In sequence we need to choose the value of the
+\noindent\emph{Hands with a Full House:} In sequence we need to choose the value of the
 triple, 13 choices; the suits of the triple, $\binom{4}{3}$ choices; the value of the
 pair, 12 choices; and the suits of the pair, $\binom{4}{2}$ choices. So the number of
 hands with full house is
 \[
-13\times\binom{4}{3}\times12\times\binom{4}{2}
-=13\times4\times12\times6=3,744.
+13\cdot\binom{4}{3}\cdot12\cdot\binom{4}{2}
+=13\cdot4\cdot12\cdot6=3,744.
 \]
 
-\noindent\textbf{Hands with Two Pairs:} In sequence we need to choose the values of the
+\noindent\emph{Hands with Two Pairs:} In sequence we need to choose the values of the
 two pairs, $\binom{13}{2}$ choices; the suits of the first pair, $\binom{4}{2}$ choices;
 the suits of the second pair, $\binom{4}{2}$ choices; and the remaining card, 44
-($52-4\times2$, since the last cards can not have the same value as either pair)
+($52-4\cdot2$, since the last cards can not have the same value as either pair)
 choices. So the number of hands with two pairs is
 \[
-\binom{13}{2}\times\binom{4}{2}\times\binom{4}{2}\times44
-=78\times6\times6\times44=123,552.
+\binom{13}{2}\cdot\binom{4}{2}\cdot\binom{4}{2}\cdot44
+=78\cdot6\cdot6\cdot44=123,552.
 \]
 
 To calculate the probability of each, we only need to divide the number of hands of each
 kind by the total possible number of hands.
+\end{solution}
 
-\problem{Hopping rabbit}
+\begin{problem}{Hopping rabbit}
 A rabbit sits at the bottom of a staircase with $n$ stairs. The rabbit can hop up only one
 or two stairs at a time. How many different ways are there for the rabbit to ascend to the
 top of the stairs?\footnotemark[5]
@@ -181,22 +186,28 @@ top of the stairs?\footnotemark[5]
 \footnotetext[5]{Hint: Consider an induction approach. Before the final hop to reach the
 $n$-th stair, the rabbit can be at either the $(n-1)$th stair or the $(n-2)$th stair
 assuming $n>2$.}
+\end{problem}
 
 % ZHOU-SOURCE-PAGE: 83 PRINTED: 67
-\solution
+\begin{solution}
 Let's begin with the simplest cases and consider solving the problem for any number of
 stairs using induction. For $n=1$, there is only one way and $f(1)=1$. For $n=2$, we can
 have one 2-stair hop or two 1-stair hops. So $f(2)=2$. For any $n>2$, there are always two
 possibilities for the last hop, either it's a 1-stair hop or a 2-stair hop. In the former
 case, the rabbit is at $(n-1)$ before reaching $n$, and it has $f(n-1)$ ways to reach
 $(n-1)$. In the latter case, the rabbit is at $(n-2)$ before reaching $n$, and it has
-$f(n-2)$ ways to reach $(n-2)$. So we have $f(n)=f(n-2)+f(n-1)$. Using this function we
+$f(n-2)$ ways to reach $(n-2)$. So we have
+\[
+f(n)=f(n-2)+f(n-1).
+\]
+Using this function we
 can calculate $f(n)$ for $n=3$, $4$, $\ldots$\footnotemark[6]
+\end{solution}
 
 \footnotetext[6]{You may have recognized that the sequence is a sequence of Fibonacci
 numbers.}
 
-\problem{Screwy pirates 2}
+\begin{problem}{Screwy pirates 2}
 Having peacefully divided the loot (in chapter 2), the pirate team goes on for more
 looting and expands the group to 11 pirates. To protect their hard-won treasure, they
 gather together to put all the loot in a safe. Still being a democratic bunch, they decide
@@ -207,8 +218,9 @@ one lock. The locksmith can give more than one key to each pirate.
 
 What is the smallest number of locks needed? And how many keys must each pirate carry?
 \footnotemark[7]
+\end{problem}
 
-\solution
+\begin{solution}
 This problem is a good example of the application of combinatorial analysis in information
 sharing and cryptography. A general version of the problem was explained in a 1979 paper
 \textquotedblleft How to Share a Secret\textquotedblright by Adi Shamir. Let's randomly select
@@ -225,23 +237,25 @@ is
 locks. Each lock has 6 keys, which are given to a unique 6-member subgroup. So each pirate
 must have
 \[
-\frac{462\times6}{11}=252
+\frac{462\cdot6}{11}=252
 \]
 keys. That's surely a lot of locks to put on a safe and a lot of keys for each pirate to
 carry.
+\end{solution}
 
 \footnotetext[7]{Hint: every subgroup of 6 pirates should have the same key to a unique lock
 that the other 5 pirates do not have.}
 
 % ZHOU-SOURCE-PAGE: 84 PRINTED: 68
-\problem{Chess tournament}
+\begin{problem}{Chess tournament}
 A chess tournament has $2^n$ players with skills $1>2>\cdots>2^n$. It is organized as a
 knockout tournament, so that after each round only the winner proceeds to the next round.
 Except for the final, opponents in each round are drawn at random. Let's also assume that
 when two players meet in a game, the player with better skills always wins. What's the
 probability that players 1 and 2 will meet in the final?\footnotemark[8]
+\end{problem}
 
-\solution
+\begin{solution}
 There are at least two approaches to solve the problem. The standard approach applies
 multiplication rule based on conditional probability, while a counting approach is far more
 efficient. (We will cover conditional probability in detail in the next section.)
@@ -253,20 +267,20 @@ probability that
 \[
 1\text{ and }2\text{ do not meet in round 1}
 =\frac{2^n-2}{2^n-1}
-=\frac{2\times(2^{n-1}-1)}{2^n-1}.
+=\frac{2\cdot(2^{n-1}-1)}{2^n-1}.
 \]
 Condition on that 1 and 2 do not meet in round 1, $2^{n-1}$ players proceed to the 2nd
 round and the conditional probability that 1 and 2 will not meet in round 2 is
 \[
 \frac{2^{n-1}-2}{2^{n-1}-1}
-=\frac{2\times(2^{n-2}-1)}{2^{n-1}-1}.
+=\frac{2\cdot(2^{n-2}-1)}{2^{n-1}-1}.
 \]
 We can repeat the same process until the $(n-1)$th round, in which there are
 $2^2$ ($=2^n/2^{n-2}$) players left and the conditional probability that 1 and 2 will
 not meet in round $(n-1)$ is
 \[
 \frac{2^2-2}{2^2-1}
-=\frac{2\times(2^{2-1}-1)}{2^2-1}.
+=\frac{2\cdot(2^{2-1}-1)}{2^2-1}.
 \]
 
 Let $E_1$ be the event that 1 and 2 do not meet in round 1;
@@ -287,14 +301,16 @@ Apply the multiplication rule, we have
 \[
 \begin{aligned}
 P(1\text{ and }2\text{ meet in the }n\text{th game})
-={}&P(E_1)\times P(E_2\mid E_1)\times\cdots\\
-&\times P(E_{n-1}\mid E_1,E_2,\ldots,E_{n-2})\\
-={}&\frac{2\times(2^{n-1}-1)}{2^n-1}
-\times\frac{2\times(2^{n-2}-1)}{2^{n-1}-1}\\
-&\times\cdots\times\frac{2\times(2^{2-1}-1)}{2^2-1}\\
+={}&P(E_1)\cdot P(E_2\vert E_1)\cdot\cdots\\
+&\cdot P(E_{n-1}\vert E_1,E_2,\ldots,E_{n-2})\\
+={}&\frac{2\cdot(2^{n-1}-1)}{2^n-1}
+\cdot\frac{2\cdot(2^{n-2}-1)}{2^{n-1}-1}\\
+&\cdot\cdots\cdot\frac{2\cdot(2^{2-1}-1)}{2^2-1}\\
 ={}&\frac{2^{n-1}}{2^n-1}.
 \end{aligned}
 \]
+
+\end{solution}
 
 \footnotetext[8]{Hint: Consider separating the players to two $2^{n-1}$ subgroups. What
 will happen if player 1 and 2 in the same group? Or not in the same group?}

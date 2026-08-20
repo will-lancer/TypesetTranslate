@@ -22,15 +22,17 @@ Total & -100 & $15-150r_0$ & $\cdots$ & $30-300r_4$ & $115-150r_{4.5}$ \\
 \end{center}
 
 The dollar duration of the inverse floater is the same as the dollar duration of the
-portfolio as well: $\$D_{\mathrm{inverse}}=4\times\$D_{\mathrm{fixed}}-3\times\$D_{\mathrm{floating}}$.
+portfolio as well: $\$D_{\mathrm{inverse}}=4\cdot\$D_{\mathrm{fixed}}-3\cdot\$D_{\mathrm{floating}}$.
 Since the yield curve is flat, $r_0=7.5\%$ and the floating-rate bond is always worth
 \$103.75 (after the payment of \$3.75, the price of the floating-rate bond is \$100) at
 year 0.5, and the dollar duration\footnote[16]{The initial duration of a floating rate bond is the same as the duration of a six-month zero coupon bond.} is
 
 \[
-\$D_{\mathrm{floating}}=-\frac{d\left(103.75/(1+y/2)\right)}{dy}
-=0.5\times\frac{103.75}{(1+y/2)^2}
-=100\times\frac{0.5}{1+y/2}=48.19.
+\begin{aligned}
+\$D_{\mathrm{floating}}&=-\frac{\dd\left(103.75/(1+y/2)\right)}{\dd y}\\
+&=0.5\cdot\frac{103.75}{(1+y/2)^2}\\
+&=100\cdot\frac{0.5}{1+y/2}=48.19.
+\end{aligned}
 \]
 
 The price of a fixed-rate bond is
@@ -38,25 +40,30 @@ $P=\displaystyle\sum_{t=1}^{2T}\frac{c/2}{(1+y/2)^t}+\frac{100}{(1+y/2)^{2T}}$,
 where $T$ is the maturity of the bond. So the dollar duration of the fixed-rate bond is
 
 \[
-\$D_{\mathrm{fixed}}=-\frac{dP}{dy}
-=\frac{1}{1+y/2}\left(\sum_{t=1}^{2T}\frac{t}{2}\frac{c/2}{(1+y/2)^t}
-+\frac{100T}{(1+y/2)^{2T}}\right)=410.64.
+\begin{aligned}
+\$D_{\mathrm{fixed}}&=-\frac{\dd P}{\dd y}\\
+&=\frac{1}{1+y/2}\left(\sum_{t=1}^{2T}\frac{t}{2}\frac{c/2}{(1+y/2)^t}\right.\\
+&\qquad\left.+\frac{100T}{(1+y/2)^{2T}}\right)=410.64.
+\end{aligned}
 \]
 
-So $\$D_{\mathrm{inverse}}=4\times\$D_{\mathrm{fixed}}-3\times\$D_{\mathrm{floating}}=1498$
+So $\$D_{\mathrm{inverse}}=4\cdot\$D_{\mathrm{fixed}}-3\cdot\$D_{\mathrm{floating}}=1498$
 and the duration of the inverse floater is
 
 \[
 D_{\mathrm{inverse}}=\frac{\$D_{\mathrm{inverse}}}{P_{\mathrm{inverse}}}=14.98.
 \]
 
+\end{solution}
+
 \subsubsection*{Forward and futures}
 
-\problem{What's the difference between futures and forwards? If the price of the underlying asset
+\begin{problem}{What's the difference between futures and forwards? If the price of the underlying asset
 is strongly positively correlated with interest rates, and the interest rates are stochastic,
 which one has higher price: futures or forwards? Why?}
+\end{problem}
 
-\solution
+\begin{solution}
 Futures contracts are exchange-traded standardized contracts; forward contracts are
 over-the-counter agreements so they are more flexible. Futures contracts are
 marked-to-market daily; forwards contacts are settled at the end of the contract term.
@@ -84,11 +91,14 @@ interest rate is low so that it can be financed at a low rate. So a futures cont
 valuable than the forward when its value is positively correlated with interest rates and
 the futures price should be higher.
 
+\end{solution}
+
 \subsubsection*{Interest rate models}
 
-\problem{Explain some of the basic interest rate models and their differences.}
+\begin{problem}{Explain some of the basic interest rate models and their differences.}
+\end{problem}
 
-\solution
+\begin{solution}
 In general, interest rate models can be separated into two categories: short-rate
 models and forward-rate models. The short-rate models describe the evolution of the
 instantaneous interest rate $R(t)$ as stochastic processes, and the forward rate models
@@ -104,14 +114,14 @@ model, the Ho-Lee model, and the Hull-White model.
 
 \subsubsection*{Equilibrium short-rate models}
 
-Vasicek model: $dR(t)=a\bigl(b-R(t)\bigr)dt+\sigma dW(t)$
+Vasicek model: $\dd R(t)=a\bigl(b-R(t)\bigr)\dd t+\sigma\dd W(t)$
 
 When $R(t)>b$, the drift rate is negative; when $R(t)<b$, the drift rate is positive. So the
 Vasicek model has the desirable property of mean-reverting towards long-term average
 $b$. But with constant volatility, the interest rate has positive probability of being negative,
 which is undesirable.
 
-Cox-Ingersoll-Ross model: $dR(t)=a\bigl(b-R(t)\bigr)dt+\sigma\sqrt{R(u)}dW(t)$
+Cox-Ingersoll-Ross model: $\dd R(t)=a\bigl(b-R(t)\bigr)\dd t+\sigma\sqrt{R(u)}\dd W(t)$
 
 % ZHOU-SOURCE-PAGE: 185 PRINTED: 169
 
@@ -121,13 +131,15 @@ guaranteeing that the short rate is positive.
 
 \subsubsection*{No-arbitrage short-rate models}
 
-Ho-Lee model: $dr=\theta(t)dt+\sigma dz$
+Ho-Lee model: $\dd r=\theta(t)\dd t+\sigma\dd z$
 
 The Ho-Lee model is the simplest no-arbitrage short-rate model where $\theta(t)$ is a
 time-dependent drift. $\theta(t)$ is adjusted to make the model match the current rate curve.
 
-Hull-White model: $dR(t)=a\bigl(b(t)-R(t)\bigr)dt+\sigma dW(t)$
+Hull-White model: $\dd R(t)=a\bigl(b(t)-R(t)\bigr)\dd t+\sigma\dd W(t)$
 
 The Hull-White model has a structure similar to the Vasicek model. The difference is
 that $b(t)$ is a time-dependent variable in the Hull-White model to make it fit the current
 term structure.
+
+\end{solution}

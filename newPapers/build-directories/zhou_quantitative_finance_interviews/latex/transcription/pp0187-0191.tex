@@ -61,9 +61,9 @@ Besides notations, it is also important to explain two concepts in algorithm com
 
 % ZHOU-SOURCE-PAGE: 188 PRINTED: 172
 
-\textbf{Worst-case running time $W(n)$}: an upper bound on the running time for any $n$ inputs.
+\emph{Worst-case running time $W(n)$}: an upper bound on the running time for any $n$ inputs.
 
-\textbf{Average-case running time $A(n)$}: the expected running time if the $n$ inputs are
+\emph{Average-case running time $A(n)$}: the expected running time if the $n$ inputs are
 randomly selected.
 
 For many algorithms, $W(n)$ and $A(n)$ have the same $O(g(n))$. But as we will discuss
@@ -96,11 +96,11 @@ elements to search by half after making one comparison. So we have $a=1$, $b=2$,
 $f(n)=1$. Hence, $f(n)=\Theta(n^{\log_2 1}\log^0 n)$ and the binary search has
 complexity $\Theta(\log n)$.
 
-\problem{Number swap}
-
+\begin{problem}{Number swap}
 How do you swap two integers, $i$ and $j$, without using additional storage space?
+\end{problem}
 
-\solution
+\begin{solution}
 Comparison and swap are the basic operations for many algorithms. The most common
 technique for swap uses a temporary variable, which unfortunately is forbidden in this
 problem since the temporary variable requires additional storage space. A simple
@@ -134,13 +134,15 @@ void swap(int &i, int &j){
 }
 \end{verbatim}
 
-\problem{Unique elements}
+\end{solution}
 
+\begin{problem}{Unique elements}
 If you are given a sorted array, can you write some code to extract the unique elements
 from the array? For example, if the array is [1, 1, 3, 3, 3, 5, 5, 5, 9, 9, 9, 9], the unique
 elements should be [1, 3, 5, 9].
+\end{problem}
 
-\solution
+\begin{solution}
 Let $a$ be an $n$-element sorted array with elements
 $a_0\leq a_1\leq\cdots\leq a_{n-1}$. Whenever we encounter a new element $a_i$ in the
 sorted array, its value is different from its previous element ($a_i\neq a_{i-1}$). Using
@@ -165,11 +167,13 @@ return vec;
 }
 \end{verbatim}
 
-\problem{Horner's algorithm}
+\end{solution}
 
+\begin{problem}{Horner's algorithm}
 Write an algorithm to compute $y=A_0+A_1x+A_2x^2+A_3x^3+\cdots+A_nx^n$.
+\end{problem}
 
-\solution
+\begin{solution}
 A na\"ive approach calculates each component of the polynomial and adds them up, which
 takes $O(n^2)$ number of multiplications. We can use Horner's algorithm to reduce the
 number of multiplications to $O(n)$. The algorithm expresses the original polynomial as
@@ -177,13 +181,15 @@ $y=((((A_nx+A_{n-1})x+A_{n-2})x+\cdots+A_2)x+A_1)x+A_0$, and sequentially
 calculate $B_n=A_n$, $B_{n-1}=B_nx+A_{n-1}$, $\cdots$, $B_0=B_1x+A_0$. We have
 $y=B_0$ with at most $n$ multiplications.
 
-\problem{Moving average}
+\end{solution}
 
+\begin{problem}{Moving average}
 Given a large array $A$ of length $m$, can you develop an efficient algorithm to build
 another array containing the $n$-element moving average of the original array
 $(B_1,\cdots,B_{n-1}=NA, B_i=(A_{i-n+1}+A_{i-n+2}+\cdots+A_i)/n,\ \forall i=n,\cdots,m)$?
+\end{problem}
 
-\solution
+\begin{solution}
 When we calculate the moving average of the next $n$ consecutive numbers, we can reuse
 the previously computed moving average. Just multiply that average by $n$, subtract the
 first number in that moving average and then add the new number, and you have the new
@@ -195,12 +201,14 @@ S = A[1] + ... + A[n]; B[n] = S/n;
 for (i=n+1 to m) { S = S - A[i-n] + A[i]; B[i] = S/n; }
 \end{verbatim}
 
-\problem{Sorting algorithm}
+\end{solution}
 
+\begin{problem}{Sorting algorithm}
 Could you explain three sorting algorithms to sort $n$ distinct values
 $A_1,\cdots,A_n$, and analyze the complexity of each algorithm?
+\end{problem}
 
-\solution
+\begin{solution}
 Sorting is a fundamental process that is directly or indirectly implemented in many
 programs. So a variety of sorting algorithms have been developed for different
 
@@ -209,19 +217,20 @@ programs. So a variety of sorting algorithms have been developed for different
 purposes. Here let's discuss three such algorithms: insertion sort, merge sort and quick
 sort.
 
-\textbf{Insertion sort:} Insertion sort uses an incremental approach. Assume that we have sorted
+\emph{Insertion sort:} Insertion sort uses an incremental approach. Assume that we have sorted
 subarray $A[1,\ldots,i-1]$. We insert element $A_i$ into the appropriate place in
 $A[1,\ldots,i-1]$, which yields sorted subarray $A[1,\ldots,i]$. Starting with $i=1$ and increases $i$ step by step
 to $n$, we will have a fully sorted array. For each step, the expected number of comparisons
 is $i/2$ and the worst-case number of comparisons is $i$. So we have
 
 \[
-A(n)=\Theta\left(\sum_{i=1}^{n}i/2\right)=\Theta(n^2)
-\quad\text{and}\quad
-W(n)=\Theta\left(\sum_{i=1}^{n}i\right)=\Theta(n^2).
+\begin{aligned}
+A(n)&=\Theta\left(\sum_{i=1}^{n}i/2\right)=\Theta(n^2)\quad\text{and}\\
+W(n)&=\Theta\left(\sum_{i=1}^{n}i\right)=\Theta(n^2).
+\end{aligned}
 \]
 
-\textbf{Merge sort:} Merge sort uses the divide-and-conquer paradigm. It divides the array into
+\emph{Merge sort:} Merge sort uses the divide-and-conquer paradigm. It divides the array into
 two subarrays each with $n/2$ items and sorts each subarray. Unless the subarray is small
 enough (with no more than a few elements), the subarray is again divided for sorting.
 Finally, the sorted subarrays are merged to form a single sorted array.
@@ -254,7 +263,7 @@ Applying the master theorem to $T(n)$ with $a=2$, $b=2$, and $f(n)=\Theta(n)$, w
 $f(n)=\Theta(n^{\log_b a}\log^0n)$. So $T(n)=\Theta(n\log n)$. For merge sort,
 $A(n)$ and $W(n)$ are the same as $T(n)$.
 
-\textbf{Quicksort:} Quicksort is another recursive sorting method. It chooses one of the
+\emph{Quicksort:} Quicksort is another recursive sorting method. It chooses one of the
 elements, $A_i$, from the sequence and compares all other values with it. Those elements
 smaller than $A_i$ are put in a subarray to the left of $A_i$; those elements larger than
 $A_i$ are put in a subarray to the right of $A_i$. The algorithm is then repeated on both

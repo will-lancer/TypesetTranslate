@@ -1,17 +1,17 @@
 % ZHOU-SOURCE-PAGE: 136 PRINTED: 120
 
 starting state $0$ (the new toss yields $T$) and we need another expected
-$E[f(n+1)]$ tosses to reach $(n+1)H$. So we have
+$\E[f(n+1)]$ tosses to reach $(n+1)H$. So we have
 
 \[
-E[f(n+1)]=E[f(n)]+\frac{1}{2}\times1+\frac{1}{2}\times E[f(n+1)]
+\E[f(n+1)]=\E[f(n)]+\frac{1}{2}\cdot1+\frac{1}{2}\cdot\E[f(n+1)]
 \]
 
 \[
-\Rightarrow E[f(n+1)]=2\times E[f(n)]+2=2^{n+2}-2.
+\Rightarrow \E[f(n+1)]=2\cdot\E[f(n)]+2=2^{n+2}-2.
 \]
 
-\textbf{General Martingale approach:} Let's use $HH\cdots H_n$ to explain a
+\emph{General Martingale approach:} Let's use $HH\cdots H_n$ to explain a
 general approach for the expected time to get any coin sequence by exploring the
 stopping times of martingales.\footnote[9]{If you prefer more details about the
 approach, please refer to ``A Martingale Approach to the Study of Occurrence of
@@ -33,14 +33,14 @@ have after the $i$-th game, then $(x_i-i)$ is a martingale.
 
 Now, let's add a stopping rule: the whole game will stop if one of the gamblers
 becomes the first to get $n$ heads in a roll. A martingale stopped at a stopping
-time is a martingale. So we still have $E[(x_i-i)]=0$. If the sequence stops after
+time is a martingale. So we still have $\E[(x_i-i)]=0$. If the sequence stops after
 the $i$-th toss ($i\geq n$), the $(i-n+1)$-th player is the (first) player who
 gets $n$ heads in a roll with payoff $2^n$. So all the $(i-n)$ players before him
 went bankrupt; the $(i-n+2)$-th player gets $(n-1)$ heads in a roll with payoff
 $2^{n-1}$; $\ldots$; the $i$-th player gets one head with payoff $2$. So the total
 payoff is fixed and $x_i=2^n+2^{n-1}+\cdots+2^1=2^{n+1}-2$.
 
-Hence, $E[(x_i-i)]=2^{n+1}-2-E[i]=0\Rightarrow E[i]=2^{n+1}-2$.
+Hence, $\E[(x_i-i)]=2^{n+1}-2-\E[i]=0\Rightarrow \E[i]=2^{n+1}-2$.
 
 This approach can be applied to any coin sequences---as well as dice sequences or
 any sequences with arbitrary number of elements. For example, let's consider the
@@ -57,7 +57,9 @@ loses in the second toss ($HT$); the $(i-3)$th player and the $(i-2)$th player
 lose in the first toss ($T$); the $(i-1)$th player gets sequence $HH$ with payoff
 $2^2$ and the $i$-th player gets $H$ with payoff 2.
 
-Hence, $E[(x_i-i)]=2^6+2^2+2^1-E[i]=0\Rightarrow E[i]=70$.
+Hence, $\E[(x_i-i)]=2^6+2^2+2^1-\E[i]=0\Rightarrow \E[i]=70$.
+
+\end{solution}
 
 \subsection{Dynamic Programming}
 
@@ -80,7 +82,7 @@ these examples will convey the gist and the power of dynamic programming.
 
 A discrete-time dynamic programming model includes two inherent components:
 
-\noindent\textbf{1. The underlying discrete-time dynamic system}
+\noindent\emph{1. The underlying discrete-time dynamic system}
 
 A dynamic programming problem can always be divided into stages with a decision
 required at each stage. Each stage has a number of states associated with it. The
@@ -108,7 +110,7 @@ current state $x_k$, current decision $u_k$ (the choice we make at stage $k$ fro
 the available options) and the random variable $w_k$ (the probability distribution
 of $w_k$ often depends on $x_k$ and $u_k$).
 
-\noindent\textbf{2. A cost (or profit) function that is additive over time.}
+\noindent\emph{2. A cost (or profit) function that is additive over time.}
 
 Except for the last stage $(N)$, which has a cost/profit $g_N(x_N)$ depending only
 on $x_N$, the costs at all other stages $g_k(x_k,u_k,w_k)$ can depend on $x_k$,
@@ -123,30 +125,42 @@ sequences $\pi^*=\{u_0^*,\ldots,u_{N-1}^*\}$ that minimize expected cost (or
 maximize expected profit):
 
 \[
-J_{\pi^*}(x_0)=\min_{\pi}E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\begin{aligned}
+J_{\pi^*}(x_0)
+&=\min_{\pi}\E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\end{aligned}
 \]
 
-\textbf{Dynamic programming (DP) algorithm}
+\emph{Dynamic programming (DP) algorithm}
 
-The dynamic programming algorithm relies on an idea called the \textbf{Principle of
+The dynamic programming algorithm relies on an idea called the \emph{Principle of
 Optimality}: If $\pi^*=\{u_0^*,\ldots,u_{N-1}^*\}$ is the optimal policy for the
 original dynamic programming problem, then the tail policy
 $\pi_i^*=\{u_i^*,\ldots,u_{N-1}^*\}$ must be optimal for the tail subproblem
 
 \[
-E\left\{g_N(x_N)+\sum_{k=i}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\begin{aligned}
+\E\left\{g_N(x_N)+\sum_{k=i}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\end{aligned}
 \]
 
-\textbf{DP algorithm:} To solve the basic problem
+\emph{DP algorithm:} To solve the basic problem
 \[
-J_{\pi^*}(x_0)=\min_{\pi}E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\},
+\begin{aligned}
+J_{\pi^*}(x_0)
+&=\min_{\pi}\E\left\{g_N(x_N)+\sum_{k=0}^{N-1}g_k(x_k,u_k,w_k)\right\},
+\end{aligned}
 \]
 start with $J_N(x_N)=g_N(x_N)$, and go backwards minimizing cost-to-go function
 $J_k(x_k)$:
 
 \[
-J_k(x_k)=\min_{u_k\in U_k}E\left\{g_k(x_k,u_k,w_k)+J_{k+1}\bigl(f(x_k,u_k,w_k)\bigr)\right\},
-\qquad k=0,\ldots,N-1.
+\begin{aligned}
+J_k(x_k)
+&=\min_{u_k\in U_k}\E\left\{g_k(x_k,u_k,w_k)
+ +J_{k+1}\bigl(f(x_k,u_k,w_k)\bigr)\right\},\\
+&\hspace{8em} k=0,\ldots,N-1.
+\end{aligned}
 \]
 
 Then the $J_0(x_0)$ generated from this algorithm is the expected optimal cost.
@@ -162,15 +176,16 @@ Now let's use several examples to show how the DP algorithm is applied.
 
 % ZHOU-SOURCE-PAGE: 139 PRINTED: 123
 
-\textbf{Dice game}
+\begin{problem}{Dice game}
 
 You can roll a 6-side dice up to 3 times. After the first or the second roll, if you
 get a number $x$, you can decide either to get $x$ dollars or to choose to continue
 rolling. But once you decide to continue, you forgo the number you just rolled. If
 you get to the third roll, you'll just get $x$ dollars if the third number is $x$
 and the game stops. What is the game worth and what is your strategy?
+\end{problem}
 
-\solution
+\begin{solution}
 This is a simple dynamic programming strategy game. As all dynamic programming
 questions, the key is to start with the final stage and work backwards. For this
 question, it is the stage where you have forgone the first two rolls. It becomes a
@@ -182,19 +197,21 @@ for which you can choose either to have a third roll with an expected payoff of
 \$3.5 or to keep the current face value. Surely you will keep the face value if it
 is larger than 3.5; in other words, when you get 4, 5 or 6, you stop rolling. When
 you get 1, 2 or 3, you keep rolling. So your expected payoff before the second roll
-is $3/6\times3.5+1/6\times(4+5+6)=\$4.25$.
+is $3/6\cdot3.5+1/6\cdot(4+5+6)=\$4.25$.
 
 Now let's go back one step further. Imagine that you are at the point after the first
 roll, for which you can choose either to have a second roll with expected payoff
 \$4.25 (when face value is 1, 2, 3 or 4) or keep the current face value. Surely you
 will keep the face value if it is larger than 4.25; In other words, when you get 5
 or 6, you stop rolling. So your expected payoff before the first roll is
-$4/6\times4.25+1/6\times(5+6)=\$14/3$.
+$4/6\cdot4.25+1/6\cdot(5+6)=\$14/3$.
 
 This backward approach---called tail policy in dynamic programming---gives us the
 strategy and also the expected value of the game at the initial stage, \$14/3.
 
-\textbf{World series}
+\end{solution}
+
+\begin{problem}{World series}
 
 The Boston Red Sox and the Colorado Rockies are playing in the World Series finals.
 In case you are not familiar with the World Series, there are a maximum of 7 games
@@ -204,8 +221,9 @@ to place a double-or-nothing bet on the Red Sox.
 Unfortunately, you can only bet on each individual game, not the series as a whole.
 How much should you bet on each game so that if the Red Sox wins the whole series,
 you win exactly \$100, and if Red Sox loses, you lose exactly \$100?
+\end{problem}
 
-\solution
+\begin{solution}
 Let $(i,j)$ represents the state that the Red Sox has won $i$ games and the Rockies
 has won $j$ games, and let $f(i,j)$ be our net payoff, which can be negative when we
 lose money, at state $(i,j)$. From the rules of the game, we know that there may be
@@ -254,3 +272,4 @@ each step, and there is no interest, then the problem becomes a simple binomial 
 problem and the bet we place each time is the delta in dynamic hedging. In fact,
 both European options and American options can be solved numerically using dynamic
 programming approaches.
+\end{solution}

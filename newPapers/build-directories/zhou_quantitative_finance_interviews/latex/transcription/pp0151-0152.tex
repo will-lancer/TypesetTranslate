@@ -1,57 +1,70 @@
 % ZHOU-SOURCE-PAGE: 151 PRINTED: 135
 
 \[
-P_{-1}\exp(-2\times -1)+(1-P_{-1})\exp(-2\times +\infty)
+P_{-1}\exp(-2\cdot -1)+(1-P_{-1})\exp(-2\cdot +\infty)
 =P_{-1}e^2=1\quad\Rightarrow\quad P_{-1}=e^{-2}.
 \]
+
+\end{solution}
 
 \subsubsection*{Ito's lemma}
 
 Ito's lemma is the stochastic counterpart of the chain rule in ordinary calculus. Let
-$X(t)$ be an Ito process satisfying $dX(t)=\beta(t,X)dt+\gamma(t,X)dW(t)$, and
+$X(t)$ be an Ito process satisfying $\dd X(t)=\beta(t,X)\,\dd t+\gamma(t,X)\,\dd W(t)$, and
 $f(X(t),t)$ be a twice-differentiable function of $X(t)$ and $t$. Then
 $f(X(t),t)$ is an Ito process satisfying
 
 \[
-df=\left(\frac{\partial f}{\partial t}+\beta(t,X)\frac{\partial f}{\partial x}
-+\frac{1}{2}\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}\right)dt
-+\gamma(t,X)\frac{\partial f}{\partial x}dW(t).
+\begin{aligned}
+\dd f={}&\left(\frac{\partial f}{\partial t}+\beta(t,X)\frac{\partial f}{\partial x}
+ +\frac{1}{2}\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}\right)\,\dd t\\
+&+\gamma(t,X)\frac{\partial f}{\partial x}\,\dd W(t).
+\end{aligned}
 \]
 
 \[
-\text{Drift rate}=\frac{\partial f}{\partial t}+\beta(t,X)\frac{\partial f}{\partial x}
-+\frac{1}{2}\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}
+\begin{aligned}
+\text{Drift rate}={}&\frac{\partial f}{\partial t}+\beta(t,X)\frac{\partial f}{\partial x}\\
+&+\frac{1}{2}\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}
+\end{aligned}
 \]
 
-\problem{A. Let $B_t$ be a Brownian motion and $Z_t=\sqrt{t}B_t$. What is the mean and
+\begin{problem}{A. Let $B_t$ be a Brownian motion and $Z_t=\sqrt{t}B_t$. What is the mean and
 variance of $Z_t$? Is $Z_t$ a martingale process?}
+\end{problem}
 
-\solution
+\begin{solution}
 As a Brownian motion, $B_t\sim N(0,t)$, which is symmetric about 0. Since $\sqrt{t}$ is
 a constant at $t$, $Z_t=\sqrt{t}B_t$ is symmetric about 0 and has mean 0 and variance
-$t\times\operatorname{var}(B_t)=t^2$. More exactly, $Z_t\sim N(0,t^2)$.
+$t\cdot\operatorname{var}(B_t)=t^2$. More exactly, $Z_t\sim N(0,t^2)$.
 
 Although $Z_t$ has unconditional expected value 0, it is not a martingale. Applying Ito's
 lemma to $Z_t=\sqrt{t}B_t$, we have
 
 \[
-dZ_t=\frac{\partial Z_t}{\partial B_t}dB_t+\frac{\partial Z_t}{\partial t}dt
-+\frac{1}{2}\times\frac{\partial^2 Z_t}{\partial B_t^2}dt
-=\frac{1}{2}t^{-1/2}B_tdt+\sqrt{t}dB_t.
+\begin{aligned}
+\dd Z_t={}&\frac{\partial Z_t}{\partial B_t}\,\dd B_t+\frac{\partial Z_t}{\partial t}\,\dd t\\
+&+\frac{1}{2}\cdot\frac{\partial^2 Z_t}{\partial B_t^2}\,\dd t\\
+={}&\frac{1}{2}t^{-1/2}B_t\,\dd t+\sqrt{t}\,\dd B_t.
+\end{aligned}
 \]
 
 For all the cases that $B_t\ne0$, which has probability 1, the drift term
-$\frac{1}{2}t^{-1/2}B_tdt$ is not zero.\footnote[5]{A generalized Wiener process
-$dx=a(x,t)dt+b(x,t)dW(t)$ is a martingale process if and only if the drift term has
+$\frac{1}{2}t^{-1/2}B_t\,\dd t$ is not zero.\footnote[5]{A generalized Wiener process
+$\dd x=a(x,t)\,\dd t+b(x,t)\,\dd W(t)$ is a martingale process if and only if the drift term has
 coefficient $a(x,t)=0$.} Hence, the process $Z_t=\sqrt{t}B_t$ is not a martingale process.
 
-\problem{B. Let $W(t)$ be a Brownian motion. Is $W(t)^3$ a martingale process?}
+\end{solution}
+
+\begin{problem}{B. Let $W(t)$ be a Brownian motion. Is $W(t)^3$ a martingale process?}
+\end{problem}
 
 % ZHOU-SOURCE-PAGE: 152 PRINTED: 136
 
-\solution
+\begin{solution}
 Applying Ito's lemma to $f(W(t),t)=W(t)^3$, we have
 $\dfrac{\partial f}{\partial W(t)}=3W(t)^2$,
 $\dfrac{\partial f}{\partial t}=0$, $\dfrac{\partial^2 f}{\partial W(t)^2}=6W(t)$, and
-$df(W(t),t)=3W(t)dt+3W(t)^2dW(t)$. So again for the cases $W(t)\ne0$, which has
+$\dd f(W(t),t)=3W(t)\,\dd t+3W(t)^2\,\dd W(t)$. So again for the cases $W(t)\ne0$, which has
 probability 1, the drift term is not zero. Hence, $W(t)^3$ is not a martingale process.
+\end{solution}

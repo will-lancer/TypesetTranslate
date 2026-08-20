@@ -8,16 +8,18 @@ you start with $n$ noodles, among $\binom{2n}{2}=n(2n-1)$ possible combinations,
 \]
 
 probability to yield 1 circle and $n-1$ noodles and $\dfrac{2n-2}{2n-1}$ probability
-to yield $n-1$ noodles only, so $E[Lf(n)]=E[Lf(n-1)]+\dfrac{1}{2n-1}$. Working
+to yield $n-1$ noodles only, so $\E[Lf(n)]=\E[Lf(n-1)]+\dfrac{1}{2n-1}$. Working
 backward, you can get the final solution as well.
+\end{solution}
 
-\problem{Optimal hedge ratio}
+\begin{problem}{Optimal hedge ratio}
 You just bought one share of stock $A$ and want to hedge it by shorting stock $B$. How
 many shares of $B$ should you short to minimize the variance of the hedged position?
 Assume that the variance of stock $A$'s return is $\sigma_A^2$; the variance of $B$'s
 return is $\sigma_B^2$; their correlation coefficient is $\rho$.
 
-\solution
+\end{problem}
+\begin{solution}
 Suppose that we short $h$ shares of $B$, the variance of the portfolio return is
 
 \[
@@ -40,37 +42,43 @@ To confirm it's the minimum, we can also check the second-order partial derivati
 
 So indeed when $h=\rho\dfrac{\sigma_A}{\sigma_B}$, the hedge portfolio has the
 minimum variance.
+\end{solution}
 
-\problem{Dice game}
+\begin{problem}{Dice game}
 Suppose that you roll a dice. For each roll, you are paid the face value. If a roll gives
 4, 5 or 6, you can roll the dice again. Once you get 1, 2 or 3, the game stops. What is
 the expected payoff of this game?
 
+\end{problem}
 \Needspace{4\baselineskip}
-\solution
+\begin{solution}
 This is an example of the law of total expectation. Clearly your payoff will be different
-depending on the outcome of first roll. Let $E[X]$ be your expected payoff and $Y$ be the
+depending on the outcome of first roll. Let $\E[X]$ be your expected payoff and $Y$ be the
 outcome of your first throw. You have $1/2$ chance to get $Y\in\{1,2,3\}$, in which case
-the expected value is the expected face value 2, so $E[X\mid Y\in\{1,2,3\}]=2$; you have
+the expected value is the expected face value 2, so $\E[X\vert Y\in\{1,2,3\}]=2$; you have
 
 % ZHOU-SOURCE-PAGE: 111 PRINTED: 95
 
 $1/2$ chance to get $Y\in\{4,5,6\}$, in which case you get expected face value 5 and
 extra throw(s). The extra throw(s) essentially means you start the game again and have an
-extra expected value $E[X]$. So we have $E[X\mid Y\in\{4,5,6\}]=5+E[X]$. Apply the
+extra expected value $\E[X]$. So we have $\E[X\vert Y\in\{4,5,6\}]=5+\E[X]$. Apply the
 law of total expectation, we have
 
 \[
-E[X]=E[E[X\mid Y]]=\frac{1}{2}\times2+\frac{1}{2}\times(5+E[X])
-\quad\Rightarrow\quad E[X]=7.\footnotemark[27]
+\begin{aligned}
+\E[X]&=\E[\E[X\vert Y]]=\frac{1}{2}\cdot2+\frac{1}{2}\cdot(5+\E[X])\\
+&\quad\Rightarrow\quad \E[X]=7.\footnotemark[27]
+\end{aligned}
 \]
 \footnotetext[27]{You will also see that the problem can be solved using Wald's equality in Chapter 5.}
+\end{solution}
 
-\problem{Card game}
+\begin{problem}{Card game}
 What is the expected number of cards that need to be turned over in a regular 52-card deck
 in order to see the first ace?
 
-\solution
+\end{problem}
+\begin{solution}
 There are 4 aces and 48 other cards. Let's label them as card 1, 2, $\ldots$, 48. Let
 
 \[
@@ -82,7 +90,7 @@ X_i=\begin{cases}
 
 The total number of cards that need to be turned over in order to see the first ace is
 $X=1+\displaystyle\sum_{i=1}^{48}X_i$, so we have
-$E[X]=1+\displaystyle\sum_{i=1}^{48}E[X_i]$. As shown in the following sequence,
+$\E[X]=1+\displaystyle\sum_{i=1}^{48}\E[X_i]$. As shown in the following sequence,
 each card $i$ is equally likely to be in one of the five regions separated by 4 aces:
 
 \[
@@ -90,21 +98,22 @@ each card $i$ is equally likely to be in one of the five regions separated by 4 
 \]
 
 So the probability that card $i$ appears before all 4 aces is $1/5$, and we have
-$E[X_i]=1/5$.
+$\E[X_i]=1/5$.
 
 Therefore,
 \[
-E[X]=1+\sum_{i=1}^{48}E[X_i]=1+48/5=10.6.
+\E[X]=1+\sum_{i=1}^{48}\E[X_i]=1+48/5=10.6.
 \]
 
 This is just a special case for random ordering of $m$ ordinary cards and $n$ special
 cards. The expected position of the first special card is
 
 \[
-1+\sum_{i=1}^{m}E[X_i]=1+\frac{m}{n+1}.
+1+\sum_{i=1}^{m}\E[X_i]=1+\frac{m}{n+1}.
 \]
+\end{solution}
 
-\problem{Sum of random variables}
+\begin{problem}{Sum of random variables}
 Assume that $X_1$, $X_2$, $\ldots$, and $X_n$ are independent and
 identically-distributed (IID) random variables with uniform distribution between 0 and 1.
 What is the probability that $S_n=X_1+X_2+\cdots+X_n\leq1$?\footnote[28]{Hint: start with
@@ -113,7 +122,8 @@ induction.}
 
 % ZHOU-SOURCE-PAGE: 112 PRINTED: 96
 
-\solution
+\end{problem}
+\begin{solution}
 This problem is a rather difficult one. The general principle to start with the simplest
 cases and try to find a pattern will again help you approach the problem; even though it
 may not give you the final answer. When $n=1$, $P(S_1\leq1)$ is 1. As shown in
@@ -122,7 +132,7 @@ just the area under $X_1+X_2\leq1$ within the square with side length 1 (a trian
 $P(S_2\leq1)=1/2$. When $n=3$, the probability becomes the tetrahedron ABCD under the
 plane $X_1+X_2+X_3\leq1$ within the cube with side length 1. The volume of tetrahedron
 ABCD is $1/6$.\footnote[29]{You can derive it by integration:
-$\int_0^1 A(z)\,dz=\int_0^1\frac{1}{2}z^2\,dz=1/6$, where $A(z)$ is the cross-sectional
+$\int_0^1 A(z)\,\dd z=\int_0^1\frac{1}{2}z^2\,\dd z=1/6$, where $A(z)$ is the cross-sectional
 area.} So $P(S_3\leq1)=1/6$. Now we can guess that the solution is $1/n!$. To prove it,
 let's again resort to induction. Assume $P(S_n\leq1)=1/n!$. We need to prove that
 $P(S_{n+1}\leq1)=1/(n+1)!$.
@@ -180,7 +190,7 @@ Here we can use probability by conditioning. Condition on the value of $X_{n+1}$
 have
 
 \[
-P(S_{n+1}\leq1)=\int_0^1 f(X_{n+1})P(S_n\leq1-X_{n+1})\,dX_{n+1},
+P(S_{n+1}\leq1)=\int_0^1 f(X_{n+1})P(S_n\leq1-X_{n+1})\,\dd X_{n+1},
 \]
 
 where $f(X_{n+1})$ is the probability density function of $X_{n+1}$, so
@@ -197,15 +207,16 @@ we have
 
 \[
 \begin{aligned}
-P(S_{n+1}\leq1)&=\int_0^1\frac{(1-X_{n+1})^n}{n!}\,dX_{n+1}\\
+P(S_{n+1}\leq1)&=\int_0^1\frac{(1-X_{n+1})^n}{n!}\,\dd X_{n+1}\\
 &=\frac{1}{n!}\left[-\frac{(1-X_{n+1})^{n+1}}{n+1}\right]_0^1\\
-&=\frac{1}{n!}\times\frac{1}{n+1}=\frac{1}{(n+1)!}.
+&=\frac{1}{n!}\cdot\frac{1}{n+1}=\frac{1}{(n+1)!}.
 \end{aligned}
 \]
 
 So the general result is true for $n+1$ as well and we have $P(S_n\leq1)=1/n!$.
+\end{solution}
 
-\problem{Coupon collection}
+\begin{problem}{Coupon collection}
 There are $N$ distinct types of coupons in cereal boxes and each type, independent of
 prior selections, is equally likely to be in a box.
 
@@ -216,12 +227,13 @@ type, how many coupons (boxes) on average are needed to make such a complete set
 coupon types?\footnote[31]{Hint: For part A, let $X_i$ be the number of extra coupons collected
 to get the $i$-th distinct coupon after $i-1$ types of distinct coupons have been collected.
 Then the total expected number of coupons to collect all distinct types is
-$E[X]=\displaystyle\sum_{i=1}^{N}E[X_i]$. For part B, which is the expected probability
+$\E[X]=\displaystyle\sum_{i=1}^{N}\E[X_i]$. For part B, which is the expected probability
 (P) that the $i$-th coupon type is not in the $n$ coupons?}
 \end{enumerate}
 
+\end{problem}
 \Needspace{4\baselineskip}
-\solution
+\begin{solution}
 For part A, let $X_i$, $i=1,2,\ldots,N$, be the number of additional coupons needed
 to obtain the $i$-th type after $(i-1)$ distinct types have been collected. So the total
 number of coupons needed is
@@ -233,13 +245,15 @@ X=X_1+X_2+\cdots+X_N=\sum_{i=1}^{N}X_i.
 For any $i$, $i-1$ distinct types of coupons have already been collected. It follows that a
 new coupon will be of a different type with probability $1-(i-1)/N=(N-i+1)/N$.
 Essentially we are waiting for the $i$-th distinct type, the random variable $X_i$ follows a
-geometric distribution with $p=(N-i+1)/N$ and $E[X_i]=N/(N-i+1)$. For example, if
-$i=1$, we simply have $X_1=E[X_1]=1$.
+geometric distribution with $p=(N-i+1)/N$ and $\E[X_i]=N/(N-i+1)$. For example, if
+$i=1$, we simply have $X_1=\E[X_1]=1$.
 
 \[
-\therefore\quad E[X]=\sum_{i=1}^{N}E[X_i]
-=\sum_{i=1}^{N}\frac{N}{N-i+1}
-=N\left(\frac{1}{N}+\frac{1}{N-1}+\cdots+\frac{1}{1}\right).
+\begin{aligned}
+\therefore\quad \E[X]&=\sum_{i=1}^{N}\E[X_i]\\
+&=\sum_{i=1}^{N}\frac{N}{N-i+1}\\
+&=N\left(\frac{1}{N}+\frac{1}{N-1}+\cdots+\frac{1}{1}\right).
+\end{aligned}
 \]
 
 % ZHOU-SOURCE-PAGE: 114 PRINTED: 98
@@ -260,20 +274,24 @@ For each collected coupon, the probability that it is not the $i$-th coupon type
 $\dfrac{N-1}{N}$. Since all $n$ coupons are independent, the probability that none of the
 $n$ coupons is the $i$-th coupon type is
 $P(I_i=0)=\left(\dfrac{N-1}{N}\right)^n$ and we have
-$E[I_i]=P(I_i=1)=1-\left(\dfrac{N-1}{N}\right)^n$.
+$\E[I_i]=P(I_i=1)=1-\left(\dfrac{N-1}{N}\right)^n$.
 
 \[
-\therefore\quad E[Y]=\sum_{i=1}^{N}E[I_i]
-=N-N\left(\frac{N-1}{N}\right)^n.\footnotemark[32]
+\begin{aligned}
+\therefore\quad \E[Y]&=\sum_{i=1}^{N}\E[I_i]\\
+&=N-N\left(\frac{N-1}{N}\right)^n.\footnotemark[32]
+\end{aligned}
 \]
 \footnotetext[32]{A similar question: if you randomly put 18 balls into 10 boxes, what is the expected number of empty boxes?}
+\end{solution}
 
-\problem{Joint default probability}
+\begin{problem}{Joint default probability}
 If there is a 50\% probability that bond $A$ will default next year and a 30\% probability
 that bond $B$ will default. What is the range of probability that at least one bond defaults
 and what is the range of their correlation?
 
-\solution
+\end{problem}
+\begin{solution}
 The range of probability that at least one bond defaults is easy to find. To have the largest
 probability, we can assume whenever $A$ defaults, $B$ does not default; whenever $B$
 defaults, $A$ does not default. So the maximum probability that at least one bond defaults
@@ -283,5 +301,5 @@ least one bond defaults is $50\%$.
 
 To calculate the corresponding correlation, let $I_A$ and $I_B$ be the indicator for the event
 that bond A/B defaults next year and $\rho_{AB}$ be their correlation. Then we have
-$E[I_A]=0.5$, $E[I_B]=0.3$, $\operatorname{var}(I_A)=p_A\times(1-p_A)=0.25$,
+$\E[I_A]=0.5$, $\E[I_B]=0.3$, $\operatorname{var}(I_A)=p_A\cdot(1-p_A)=0.25$,
 $\operatorname{var}(I_B)=0.21$.

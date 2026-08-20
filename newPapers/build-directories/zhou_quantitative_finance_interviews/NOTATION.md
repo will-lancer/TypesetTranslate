@@ -23,14 +23,14 @@ meanings throughout the edition.
 | finite sum | `\sum_{i=1}^{n}x_i` |
 | finite product | `\prod_{i=1}^{n}x_i` |
 | factorial | `n!`, with `0!=1` |
-| modulo | `x\%y`; `x\bmod y` may be used when the binary operation is named in prose |
+| modulo | `x\%y` on source page 15; `x\bmod y` for a binary operation; `a\equiv b\pmod n` for a congruence |
 | empty set | `\Phi` |
-| indefinite integral | `\int f(x)\,dx` |
-| definite integral | `\int_a^b f(x)\,dx` |
+| indefinite integral | `\int f(x)\,\dd x` |
+| definite integral | `\int_a^b f(x)\,\dd x` |
 | positive part | `x^+ = \max(x,0)` |
 | normal distribution | `N(\mu,\sigma^2)` |
-| cumulative density function label | `\mathit{cdf}` |
-| probability density function label | `\mathit{pdf}` |
+| cumulative density function label | `\CDF` |
+| probability density function label | `\PDF` |
 
 The capital `\Phi` is a source convention for the empty set. Do not replace it
 with `\varnothing` or `\emptyset` in a native transcription. The words
@@ -46,16 +46,17 @@ outcome is `P(\omega)` and the probability of an event is `P(A)`. Preserve the
 source's event-product shorthand in formulas such as `P(AB)` when the source
 uses it. Write an explicit set intersection as `A\cap B`.
 
-Conditional probability uses a semantic vertical bar:
+Conditional probability uses a vertical-bar glyph:
 
 $$
-P(A\mid B)=\frac{P(A\cap B)}{P(B)}.
+P(A\vert B)=\frac{P(A\cap B)}{P(B)}.
 $$
 
-Use `\mid` in conditional probability and conditional expectation. A raw `|`
-inside a probability expression is an OCR or LaTeX formatting warning. Use
-`A^c` for the complement and `\cup` for a union. Mutually exclusive events have
-empty intersection `\Phi`.
+Use `\vert` in conditional probability and conditional expectation. A raw `|`
+inside a probability expression is an OCR or LaTeX formatting warning. Existing
+source chunks may still contain `\mid` while their notation is being migrated;
+the audit reports those occurrences for review. Use `A^c` for the complement and
+`\cup` for a union. Mutually exclusive events have empty intersection `\Phi`.
 
 For random variables, keep the author's capitalization and local meaning. The
 usual distinction is an uppercase random variable and a lowercase realized
@@ -65,7 +66,7 @@ $$
 X\sim N(\mu,\sigma^2),\qquad
 F(a)=P(X\leq a),\qquad
 p(x)=P(X=x),\qquad
-f(x)=\frac{d}{dx}F(x).
+f(x)=\frac{\dd}{\dd x}F(x).
 $$
 
 Use `p(x)` for a discrete probability mass function and `f(x)` for a
@@ -75,15 +76,16 @@ written `N(x)` in the Black--Scholes material. In that local context `N'(x)`
 is its pdf. A multivariate normal keeps the source form
 `X\sim N(\mu,\Sigma)`.
 
-Expected values use the source `E[...]` form:
+Expected values use the edition's `\E[...]` macro. It expands to a blackboard-
+bold expectation while keeping the source's bracketed argument form:
 
 $$
-E[X],\qquad E[g(X)],\qquad E[X\mid Y=y].
+\E[X],\qquad \E[g(X)],\qquad \E[X\vert Y=y].
 $$
 
-Do not introduce `\mathbb{E}`, `\operatorname{E}`, or `\mathrm{E}` as a second
-expectation convention. Use semantic operator typography for moments and
-dependence:
+Use `\E` consistently in newly edited material. Do not introduce `\mathbb{E}`,
+`\operatorname{E}`, or `\mathrm{E}` as a second expectation convention. Use
+semantic operator typography for moments and dependence:
 
 $$
 \operatorname{var}(X),\quad
@@ -112,14 +114,14 @@ examples. Preserve that choice at the source boundary. An Itô process is
 written in the source form
 
 $$
-dX(t)=\beta(t,X)\,dt+\gamma(t,X)\,dW(t).
+\dd X(t)=\beta(t,X)\,\dd t+\gamma(t,X)\,\dd W(t).
 $$
 
 Here `\beta` is the drift coefficient and `\gamma` is the diffusion
 coefficient. The stochastic differential convention is
 
 $$
-(dW(t))^2=dt,\qquad dt\,dW(t)=0,\qquad (dt)^2=0,
+(\dd W(t))^2=\dd t,\qquad \dd t\,\dd W(t)=0,\qquad (\dd t)^2=0,
 $$
 
 when those identities are invoked. Use `\partial` for ordinary partial
@@ -128,11 +130,11 @@ derivatives in Itô's lemma and keep the source's function arguments visible:
 $$
 df=\left(\frac{\partial f}{\partial t}
  +\beta(t,X)\frac{\partial f}{\partial x}
- +\frac12\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}\right)dt
- +\gamma(t,X)\frac{\partial f}{\partial x}\,dW(t).
+ +\frac12\gamma^2(t,X)\frac{\partial^2 f}{\partial x^2}\right)\dd t
+ +\gamma(t,X)\frac{\partial f}{\partial x}\,\dd W(t).
 $$
 
-The drift term is the coefficient of `dt`. A martingale claim requires that
+The drift term is the coefficient of `\dd t`. A martingale claim requires that
 coefficient to vanish under the measure stated by the source.
 
 ## Finance and option Greeks
@@ -202,37 +204,69 @@ matrix may be bold only when the rendered source itself uses that distinction.
 ## Modulo, extrema, and factorials
 
 Use `x\%y` for the page-15 modulo operation. The percent sign must be escaped
-inside and outside mathematical mode. Use `x\bmod y` when the prose names the
-operation or when ordinary modular arithmetic notation is clearer. Keep the
-source's positive part `x^+` and binary minimum/maximum `a\wedge b` and
-`a\vee b`. Use `\min` and `\max` for an explicit optimization or an order
-statistic, such as `\min(X_1,\ldots,X_n)` and `\max(X_1,\ldots,X_n)`.
+inside and outside mathematical mode. Use `x\bmod y` for the binary arithmetic
+operation. Use `a\equiv b\pmod n` for a congruence modulo `n`; `\mod` is not a
+canonical form in this edition. Keep the source's positive part `x^+` and binary
+minimum/maximum `a\wedge b` and `a\vee b`. Use `\min` and `\max` for an explicit
+optimization or an order statistic, such as `\min(X_1,\ldots,X_n)` and
+`\max(X_1,\ldots,X_n)`.
+
+## Multiplication
+
+Use `\cdot` for arithmetic multiplication, including a scalar coefficient
+multiplied by a variable or another scalar expression. Retain `\times` for a
+dimension such as `m\times n`, a Cartesian product such as `A\times B`, or a
+source expression whose cross-product meaning is explicit. The audit leaves
+these existing source choices as review candidates because the transcription
+chunks remain source-faithful.
+
+## Problem, solution, and concept structure
+
+Newly edited exercise material uses breakable semantic environments:
+
+```tex
+\begin{problem}{Name}
+Question text.
+\end{problem}
+
+\begin{solution}
+Answer text.
+\end{solution}
+```
+
+The solution environment places a square at its closing boundary. Definitions
+and rules may use `\begin{concept}{Definition}` with ordinary paragraphs inside.
+Legacy heading commands remain review candidates until each source chunk has
+been migrated without changing its wording or order.
 
 ## Differentials and derivative operators
 
-Keep ordinary differentials attached to their variables as `dx`, `dy`, `dt`,
-`dS`, `dX(t)`, and `dW(t)`, with a thin mathematical space before an integral
-differential when the source layout permits it:
+Use the canonical `\dd` macro for an upright, properly spaced differential.
+Keep ordinary differentials attached to their variables as `\dd x`, `\dd y`,
+`\dd t`, `\dd S`, `\dd X(t)`, and `\dd W(t)`, with a thin mathematical space
+before an integral differential when the source layout permits it:
 
 $$
-\int f(x)\,dx,\qquad
-\frac{d f}{dx},\qquad
+\int f(x)\,\dd x,\qquad
+\frac{\dd f}{\dd x},\qquad
 \frac{\partial f}{\partial x}.
 $$
 
-`d` is a differential, `\frac{d}{dx}` is an ordinary derivative, and
-`\partial` denotes a partial derivative. Keep the source's explicit variable
-in a derivative. Do not replace `dW` with `DW`, and do not turn a differential
-into a probability symbol.
+`\dd` is a differential, `\frac{\dd f}{\dd x}` is an ordinary derivative, and
+`\partial` denotes a partial derivative. Keep the source's explicit variable in
+a derivative. Do not replace `\dd W` with `DW`, and do not turn a differential
+into a probability symbol. The upright `\PDF` and `\CDF` macros provide the
+edition's fixed labels for probability and cumulative density functions.
 
 ## Static release checks
 
 `audit_notation.py` scans the native LaTeX tree. It reports Unicode punctuation
 and mathematical glyphs, stray control-space punctuation, malformed argument
 commands, unescaped percent signs, source-scan imports, and notation aliases
-that violate this policy. A deliberate source exception must be documented on
-the preceding line as `% NOTATION EXCEPTION: reason`; the exception is still
-subject to source review.
+that violate this policy. It also reports legacy `\mid`, `\times`, cdf/pdf font,
+and underline forms as review candidates while source chunks are being migrated.
+A deliberate source exception must be documented on the preceding line as
+`% NOTATION EXCEPTION: reason`; the exception is still subject to source review.
 
 The notation audit complements `audit_project.py`. It does not replace a
 rendered-page inspection, a source-page coverage audit, or a compilation check.

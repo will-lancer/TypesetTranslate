@@ -13,18 +13,19 @@ So \(\ln i=\ln(e^{i\pi/2})=i\pi/2.\)
 
 Hence, \(\ln(i^i)=i\ln i=i(i\pi/2)=-\pi/2\Rightarrow i^i=e^{-\pi/2}.\)
 
-\problem{B. Prove \((1+x)^n\ge 1+nx\) for all \(x>-1\) and for all integers \(n\ge 2\).}
+\begin{problem}{B. Prove \((1+x)^n\ge 1+nx\) for all \(x>-1\) and for all integers \(n\ge 2\).}
+\end{problem}
 
-\solution
+\begin{solution}
 Let \(f(x)=(1+x)^n\). It is clear that \(1+nx\) is the first two terms in the Taylor's series of \(f(x)\) with \(x_0=0\). So we can consider solving this problem using Taylor's series.
 
 For \(x_0=0\) we have \((1+x)^n=1\) for \(\forall n\ge 2\). The first and secondary derivatives of \(f(x)\) are \(f'(x)=n(1+x)^{n-1}\) and \(f''(x)=n(n-1)(1+x)^{n-2}\). Applying Taylor's series, we have
 \[
-f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(\widetilde{x})}{2!}(x-x_0)^2
-=f(0)+f'(0)x+\frac{f''(\widetilde{x})}{2!}x^2,
-\]
-\[
-=1+nx+n(n-1)(1+\widetilde{x})^{n-2}x^2,
+\begin{aligned}
+f(x)&=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(\widetilde{x})}{2!}(x-x_0)^2\\
+&=f(0)+f'(0)x+\frac{f''(\widetilde{x})}{2!}x^2,\\
+&=1+nx+n(n-1)(1+\widetilde{x})^{n-2}x^2,
+\end{aligned}
 \]
 where \(x\le\widetilde{x}\le 0\) if \(x<0\) and \(x\ge\widetilde{x}\ge 0\) if \(x>0\).
 
@@ -39,15 +40,14 @@ The induction step: show that if \((1+x)^n\ge 1+nx,\ \forall x>-1\) when \(n=k\)
 
 % ZHOU-SOURCE-PAGE: 60 PRINTED: 44
 \[
-(1+x)^{k+1}=(1+x)^k(1+x)
-\]
-\[
-\ge (1+kx)(1+x)=1+(k+1)x+kx^2,\qquad \forall x>-1
-\]
-\[
-\ge 1+(k+1)x
+\begin{aligned}
+(1+x)^{k+1}&=(1+x)^k(1+x)\\
+&\ge (1+kx)(1+x)=1+(k+1)x+kx^2,\qquad \forall x>-1\\
+&\ge 1+(k+1)x
+\end{aligned}
 \]
 So the statement holds for all integers \(n\ge 2\) when \(x>-1\).
+\end{solution}
 
 \subsubsection*{Newton's method}
 
@@ -59,12 +59,13 @@ Convergence of Newton's method is not guaranteed, especially when the starting p
 \]
 where \(x_f\) is the solution to \(f(x)=0\).
 
-\problem{A. Solve \(x^2=37\) to the third digit.}
+\begin{problem}{A. Solve \(x^2=37\) to the third digit.}
+\end{problem}
 
-\solution
+\begin{solution}
 Let \(f(x)=x^2-37\), the original problem is equivalent to solving \(f(x)=0\). \(x_0=6\) is a natural initial guess. Applying Newton's method, we have
 \[
-x_1=x_0-\frac{f(x_0)}{f'(x_0)}=x_0-\frac{x_0^2-37}{2x_0}=6-\frac{36-37}{2\times 6}=6.083.
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}=x_0-\frac{x_0^2-37}{2x_0}=6-\frac{36-37}{2\cdot 6}=6.083.
 \]
 \((6.083^2=37.00289,\) which is very close to 37.)
 
@@ -75,21 +76,25 @@ f(37)\approx f(36)+f'(36)(37-36)=6+1/12=6.083.
 
 % ZHOU-SOURCE-PAGE: 61 PRINTED: 45
 Alternatively, we can use algebra since it is obvious that the solution should be slightly higher than 6. We have \((6+y)^2=37\Rightarrow y^2+12y-1=0.\) If we ignore the \(y^2\) term, which is small, then \(y=0.083\) and \(x=6+y=6.083.\)
+\end{solution}
 
-\problem{B. Could you explain some root-finding algorithms to solve \(f(x)=0\)? Assume \(f(x)\) is a differentiable function.}
+\begin{problem}{B. Could you explain some root-finding algorithms to solve \(f(x)=0\)? Assume \(f(x)\) is a differentiable function.}
+\end{problem}
 
-\solution
+\begin{solution}
 Besides Newton's method, the bisection method and the secant method are two alternative methods for root-finding.\footnote[5]{Newton's method is also used in optimization---including multi-dimensional optimization problems---to find local minimums or maximums.}
 
-\textbf{Bisection method} is an intuitive root-finding algorithm. It starts with two initial values \(a_0\) and \(b_0\) such that \(f(a_0)<0\) and \(f(b_0)>0\). Since \(f(x)\) is differentiable, there must be an \(x\) between \(a_0\) and \(b_0\) that makes \(f(x)=0\). At each step, we check the sign of \(f((a_n+b_n)/2)\). If \(f((a_n+b_n)/2)<0\), we set \(b_{n+1}=b_n\) and \(a_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)>0\), we set \(a_{n+1}=a_n\) and \(b_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)=0\), or its absolute value is within allowable error, the iteration stops and \(x=(a_n+b_n)/2\).
+\emph{Bisection method} is an intuitive root-finding algorithm. It starts with two initial values \(a_0\) and \(b_0\) such that \(f(a_0)<0\) and \(f(b_0)>0\). Since \(f(x)\) is differentiable, there must be an \(x\) between \(a_0\) and \(b_0\) that makes \(f(x)=0\). At each step, we check the sign of \(f((a_n+b_n)/2)\). If \(f((a_n+b_n)/2)<0\), we set \(b_{n+1}=b_n\) and \(a_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)>0\), we set \(a_{n+1}=a_n\) and \(b_{n+1}=(a_n+b_n)/2\); If \(f((a_n+b_n)/2)=0\), or its absolute value is within allowable error, the iteration stops and \(x=(a_n+b_n)/2\).
 
 The bisection method converges linearly, \(\frac{x_{n+1}-x_f}{x_n-x_f}\le\delta<1,\) which means it is slower than Newton's method. But once you find an \(a_0/b_0\) pair, convergence is guaranteed.
 
-\textbf{Secant method} starts with two initial values \(x_0,x_1\) and applies the iterative step
+\emph{Secant method} starts with two initial values \(x_0,x_1\) and applies the iterative step
 \[
 x_{n+1}=x_n-\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}f(x_n).
 \]
 It replaces the \(f'(x_n)\) in Newton's method with a linear approximation \(\frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}.\) Compared with Newton's method, it does not require the calculation of derivative \(f'(x_n)\), which makes it valuable if \(f'(x)\) is difficult to calculate. Its convergence rate is \((1+\sqrt{5})/2,\) which makes it faster than the bisection method but slower than Newton's method. Similar to Newton's method, convergence is not guaranteed if initial values are not close to the root.
+
+\end{solution}
 
 \subsubsection*{Lagrange multipliers}
 
@@ -110,9 +115,10 @@ is that
 \]
 where \(\lambda_1,\ldots,\lambda_k\) are called the Lagrange multipliers.
 
-\problem{What is the distance from the origin to the plane \(2x+3y+4z=12\)?}
+\begin{problem}{What is the distance from the origin to the plane \(2x+3y+4z=12\)?}
+\end{problem}
 
-\solution
+\begin{solution}
 The distance (\(D\)) from the origin to a plane is the minimum distance between the origin and points on the plane. Mathematically, the problem can be expressed as
 \[
 \begin{aligned}
@@ -153,6 +159,7 @@ In general, for a plane with equation \(ax+by+cz=d\), the distance to the origin
 \[
 D=\frac{|d|}{\sqrt{a^2+b^2+c^2}}.
 \]
+\end{solution}
 
 \subsection{Ordinary Differential Equations}
 
@@ -161,32 +168,36 @@ In this section, we cover four typical differential equation patterns that are c
 % ZHOU-SOURCE-PAGE: 63 PRINTED: 47
 \subsubsection*{Separable differential equations}
 
-A separable differential equation has the form \(\frac{dy}{dx}=g(x)h(y).\) Since it is separable, we can express the original equation as \(\frac{dy}{h(y)}=g(x)\,dx.\) Integrating both sides, we have the solution
+A separable differential equation has the form \(\frac{\dd y}{\dd x}=g(x)h(y).\) Since it is separable, we can express the original equation as \(\frac{\dd y}{h(y)}=g(x)\,\dd x.\) Integrating both sides, we have the solution
 \[
-\int\frac{dy}{h(y)}=\int g(x)\,dx.
+\int\frac{\dd y}{h(y)}=\int g(x)\,\dd x.
 \]
 
-\problem{A. Solve ordinary differential equation \(y'+6xy=0,\quad y(0)=1\)}
+\begin{problem}{A. Solve ordinary differential equation \(y'+6xy=0,\quad y(0)=1\)}
+\end{problem}
 
-\solution
-Let \(g(x)=-6x\) and \(h(y)=y\), we have \(\frac{dy}{y}=-6x\,dx.\) Integrate both sides of the equation:
+\begin{solution}
+Let \(g(x)=-6x\) and \(h(y)=y\), we have \(\frac{\dd y}{y}=-6x\,\dd x.\) Integrate both sides of the equation:
 \[
-\int\frac{dy}{y}=\int-6x\,dx\Rightarrow\ln y=-3x^2+c\Rightarrow y=e^{-3x^2+c},
+\int\frac{\dd y}{y}=\int-6x\,\dd x\Rightarrow\ln y=-3x^2+c\Rightarrow y=e^{-3x^2+c},
 \]
 where \(c\) is a constant. Plugging in the initial condition \(y(0)=1\), we have \(c=0\) and \(y=e^{-3x^2}.\)
+\end{solution}
 
-\problem{B. Solve ordinary differential equation \(y'=\frac{x-y}{x+y}\)}
+\begin{problem}{B. Solve ordinary differential equation \(y'=\frac{x-y}{x+y}\)}
+\end{problem}
 \hint{Introduce variable \(z=x+y\).}
 
-\solution
+\begin{solution}
 Unlike the last example, this equation is not separable in its current form. But we can use a change of variable to turn it into a separable differential equation. Let \(z=x+y\), then the original differential equation is converted to
 \[
-\frac{d(z-x)}{dx}=\frac{x-(z-x)}{z}\Rightarrow\frac{dz}{dx}-1=\frac{2x}{z}-1\Rightarrow z\,dz=2x\,dx\Rightarrow\int z\,dz=\int 2x\,dx+c
+\frac{\dd(z-x)}{\dd x}=\frac{x-(z-x)}{z}\Rightarrow\frac{\dd z}{\dd x}-1=\frac{2x}{z}-1\Rightarrow z\,\dd z=2x\,\dd x\Rightarrow\int z\,\dd z=\int 2x\,\dd x+c
 \]
 \[
 \Rightarrow (x+y)^2=z^2=2x^2+c\Rightarrow y^2+2xy-x^2=c
 \]
+\end{solution}
 
 \subsubsection*{First-order linear differential equations}
 
-A first-order differential linear equation has the form \(\frac{dy}{dx}+P(x)y=Q(x).\) The standard approach to solving a first-order differential equation is to identify a suitable function \(I(x)\), called an integrating factor, such that \(I(x)(y'+P(x)y)=I(x)y'+I(x)P(x)y\)
+A first-order differential linear equation has the form \(\frac{\dd y}{\dd x}+P(x)y=Q(x).\) The standard approach to solving a first-order differential equation is to identify a suitable function \(I(x)\), called an integrating factor, such that \(I(x)(y'+P(x)y)=I(x)y'+I(x)P(x)y\)

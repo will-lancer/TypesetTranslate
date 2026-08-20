@@ -24,37 +24,45 @@ Let's begin with some basic definitions and equations used in limits and derivat
 Although the notations may be different, you can find these materials in any calculus
 textbook.
 
-\textbf{Derivative:} Let $y=f(x)$, then
+\begin{concept}{Derivative}
+Let $y=f(x)$, then
 \[
-f'(x)=\frac{dy}{dx}=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+f'(x)=\frac{\dd y}{\dd x}=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
 =\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.
 \]
+\end{concept}
 
-\textbf{The product rule:} If $u=u(x)$ and $v=v(x)$ and their respective derivatives exist,
+\begin{concept}{The product rule}
+If $u=u(x)$ and $v=v(x)$ and their respective derivatives exist,
 \[
-\frac{d(uv)}{dx}=u\frac{dv}{dx}+v\frac{du}{dx},
+\frac{\dd(uv)}{\dd x}=u\frac{\dd v}{\dd x}+v\frac{\dd u}{\dd x},
 \qquad (uv)'=u'v+uv'.
 \]
+\end{concept}
 
-\textbf{The quotient rule:}
+\begin{concept}{The quotient rule}
 \[
-\frac{d}{dx}\left(\frac{u}{v}\right)
-=\frac{v\,\dfrac{du}{dx}-u\,\dfrac{dv}{dx}}{v^2},
+\frac{\dd}{\dd x}\left(\frac{u}{v}\right)
+=\frac{v\,\dfrac{\dd u}{\dd x}-u\,\dfrac{\dd v}{\dd x}}{v^2},
 \qquad
 \left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}.
 \]
+\end{concept}
 
-\textbf{The chain rule:} If $y=f(u(x))$ and $u=u(x)$, then
+\begin{concept}{The chain rule}
+If $y=f(u(x))$ and $u=u(x)$, then
 \[
-\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}.
+\frac{\dd y}{\dd x}=\frac{\dd y}{\dd u}\frac{\dd u}{\dd x}.
 \]
+\end{concept}
 
-\textbf{The generalized power rule:}
+\begin{concept}{The generalized power rule}
 \[
-\frac{dy^n}{dx}=ny^{n-1}\frac{dy}{dx}\qquad\text{for }\forall n\ne0.
+\frac{\dd y^n}{\dd x}=ny^{n-1}\frac{\dd y}{\dd x}\qquad\text{for }\forall n\ne0.
 \]
+\end{concept}
 
-\textbf{Some useful equations:}
+\begin{concept}{Some useful equations}
 
 % ZHOU-SOURCE-PAGE: 50 PRINTED: 34
 \[
@@ -76,50 +84,61 @@ a^x=e^{x\ln a},
 \]
 
 \[
-\frac{d}{dx}e^u=e^u\frac{du}{dx},
+\frac{\dd}{\dd x}e^u=e^u\frac{\dd u}{\dd x},
 \qquad
-\frac{d}{dx}a^u=(a^u\ln a)\frac{du}{dx},
+\frac{\dd}{\dd x}a^u=(a^u\ln a)\frac{\dd u}{\dd x},
 \qquad
-\frac{d}{dx}\ln u=\frac{1}{u}\frac{du}{dx}=\frac{u'}{u}.
+\frac{\dd}{\dd x}\ln u=\frac{1}{u}\frac{\dd u}{\dd x}=\frac{u'}{u}.
 \]
 
 \[
-\frac{d}{dx}\sin x=\cos x,
+\frac{\dd}{\dd x}\sin x=\cos x,
 \qquad
-\frac{d}{dx}\cos x=-\sin x,
+\frac{\dd}{\dd x}\cos x=-\sin x,
 \qquad
-\frac{d}{dx}\tan x=\sec^2x.
+\frac{\dd}{\dd x}\tan x=\sec^2 x.
 \]
+\end{concept}
 
-\problem{What is the derivative of $y=(\ln x)^{\ln x}$?}
-\hint{To calculate the derivative of functions with the format $y=f(x)^x$, it is common to take natural logs on both sides and then take the derivative, since $d(\ln y)/dx=1/y\times dy/dx$.}
+\begin{problem}{What is the derivative of $y=(\ln x)^{\ln x}$?}
+\hint{To calculate the derivative of functions with the format $y=f(x)^x$, it is common to take natural logs on both sides and then take the derivative, since $\dd(\ln y)/\dd x=1/y\cdot\dd y/\dd x$.}
+\end{problem}
 
-\solution
+\begin{solution}
 
 This is a good problem to test your knowledge of basic derivative formulas---
 specifically, the chain rule and the product rule.
 
-Let $u=\ln y=\ln\bigl((\ln x)^{\ln x}\bigr)=\ln x\times\ln(\ln x)$. Applying the chain rule and the product rule,
+Let $u=\ln y=\ln\bigl((\ln x)^{\ln x}\bigr)=\ln x\cdot\ln(\ln x)$. Applying the chain rule and the product rule,
 we have
 \[
-\frac{du}{dx}=\frac{d(\ln y)}{dx}=\frac{1}{y}\frac{dy}{dx}
-=\frac{d(\ln x)}{dx}\times\ln(\ln x)+\ln x\times\frac{d(\ln(\ln x))}{dx}
-=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x},
+\begin{aligned}
+\frac{\dd u}{\dd x}&=\frac{\dd(\ln y)}{\dd x}=\frac{1}{y}\frac{\dd y}{\dd x}\\
+&=\frac{\dd(\ln x)}{\dd x}\cdot\ln(\ln x)+\ln x\cdot\frac{\dd(\ln(\ln x))}{\dd x}\\
+&=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x},
+\end{aligned}
 \]
 
-To derive $\dfrac{d(\ln(\ln x))}{dx}$, we again use the chain rule by setting $v=\ln x$:
+To derive $\dfrac{\dd(\ln(\ln x))}{\dd x}$, we again use the chain rule by setting $v=\ln x$:
 \[
-\frac{d(\ln(\ln x))}{dx}=\frac{d(\ln v)}{dv}\frac{dv}{dx}
-=\frac{1}{v}\times\frac{1}{x}=\frac{1}{x\ln x}.
+\begin{aligned}
+\frac{\dd(\ln(\ln x))}{\dd x}&=\frac{\dd(\ln v)}{\dd v}\frac{\dd v}{\dd x}\\
+&=\frac{1}{v}\cdot\frac{1}{x}=\frac{1}{x\ln x}.
+\end{aligned}
 \]
 
 \[
+\begin{aligned}
 \therefore\quad
-\frac{1}{y}\frac{dy}{dx}=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x}
-\quad\Rightarrow\quad
-\frac{dy}{dx}=\frac{y}{x}\bigl(\ln(\ln x)+1\bigr)
-=\frac{(\ln x)^{\ln x}}{x}\bigl(\ln(\ln x)+1\bigr).
+\frac{1}{y}\frac{\dd y}{\dd x}
+&=\frac{\ln(\ln x)}{x}+\frac{\ln x}{x\ln x}\\
+&\quad\Rightarrow\quad
+\frac{\dd y}{\dd x}=\frac{y}{x}\bigl(\ln(\ln x)+1\bigr)\\
+&=\frac{(\ln x)^{\ln x}}{x}\bigl(\ln(\ln x)+1\bigr).
+\end{aligned}
 \]
+
+\end{solution}
 
 \subsubsection*{Maximum and minimum}
 
@@ -130,31 +149,40 @@ the instantaneous rate of change (velocity) of $y$ with respect to $x$. At point
 $f'(c)>0$, $f(x)$ is an increasing function at $c$; if $f'(c)<0$, $f(x)$ is a decreasing
 function at $c$.
 
-\textbf{Local maximum or minimum:} suppose that $f(x)$ is differentiable at $c$ and is defined
+\begin{concept}{Local maximum or minimum}
+Suppose that $f(x)$ is differentiable at $c$ and is defined
 on an open interval containing $c$. If $f(c)$ is either a local maximum value or a local
 minimum value of $f(x)$, then $f'(c)=0$.
+\end{concept}
 
-\textbf{Second Derivative test:} Suppose the secondary derivative of $f(x)$, $f''(x)$, is
+\begin{concept}{Second Derivative test}
+Suppose the secondary derivative of $f(x)$, $f''(x)$, is
 continuous near $c$. If $f'(c)=0$ and $f''(c)>0$, then $f(x)$ has a local minimum at $c$; if
 $f'(c)=0$ and $f''(c)<0$, then $f(x)$ has a local maximum at $c$.
+\end{concept}
 
-\problem{Without calculating the numerical results, can you tell me which number is larger, $e^\pi$ or $\pi^e$?}
+\begin{problem}{Without calculating the numerical results, can you tell me which number is larger, $e^\pi$ or $\pi^e$?}
 \hint{Again, consider taking natural logs on both sides; $\ln a>\ln b\Longleftrightarrow a>b$, since $\ln x$ is a monotonously increasing function.}
+\end{problem}
 
-\solution
+\begin{solution}
 
 Let's take natural logs of $e^\pi$ and $\pi^e$. On the left side we have $\pi\ln e$, on the
 right side we have $e\ln\pi$. If $e^\pi>\pi^e$,
 \[
-e^\pi>\pi^e\quad\Longleftrightarrow\quad
-\pi\times\ln e>e\times\ln\pi\quad\Longleftrightarrow\quad
+\begin{aligned}
+e^\pi>\pi^e
+&\quad\Longleftrightarrow\quad
+\pi\cdot\ln e>e\cdot\ln\pi\\
+&\quad\Longleftrightarrow\quad
 \frac{\ln e}{e}>\frac{\ln\pi}{\pi}.
+\end{aligned}
 \]
 
 Is it true? That depends on whether $f(x)=\dfrac{\ln x}{x}$ is an increasing or decreasing function
 from $e$ to $\pi$. Taking the derivative of $f(x)$, we have
 \[
-f'(x)=\frac{1/x\times x-\ln x}{x^2}=\frac{1-\ln x}{x^2},
+f'(x)=\frac{1/x\cdot x-\ln x}{x^2}=\frac{1-\ln x}{x^2},
 \]
 which is less than 0 when $x>e$ ($\ln x>1$). In fact, $f(x)$ has global maximum when
 $x=e$ for all $x>0$. So $\dfrac{\ln e}{e}>\dfrac{\ln\pi}{\pi}$ and $e^\pi>\pi^e$.
@@ -173,6 +201,8 @@ e^{\pi/e}>\pi
 e^\pi>\pi^e.
 \]
 
+\end{solution}
+
 \subsubsection*{L'Hospital's rule}
 
 Suppose that functions $f(x)$ and $g(x)$ are differentiable at $x\to a$ and that
@@ -188,28 +218,33 @@ $\to+\infty$, then
 \]
 L'Hospital's rule converts the limit from an indeterminate form to a determinate form.
 
-\problem{What is the limit of $e^x/x^2$ as $x\to\infty$, and what is the limit of $x^2\ln x$ as $x\to0^+$?}
+\begin{problem}{What is the limit of $e^x/x^2$ as $x\to\infty$, and what is the limit of $x^2\ln x$ as $x\to0^+$?}
+\end{problem}
 
-\solution
+\begin{solution}
 
 $\lim_{x\to\infty}\dfrac{e^x}{x^2}$ is a typical example of L'Hospital's rule since
 $\lim_{x\to\infty}e^x=\infty$ and $\lim_{x\to\infty}x^2=\infty$. Applying L'Hospital's rule, we have
 \[
+\begin{aligned}
 \lim_{x\to\infty}\frac{f(x)}{g(x)}
-=\lim_{x\to\infty}\frac{e^x}{x^2}
-=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}
-=\lim_{x\to\infty}\frac{e^x}{2x}.
+&=\lim_{x\to\infty}\frac{e^x}{x^2}\\
+&=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}\\
+&=\lim_{x\to\infty}\frac{e^x}{2x}.
+\end{aligned}
 \]
 
 The result still has the property that $\lim_{x\to\infty}f(x)=\lim_{x\to\infty}e^x=\infty$ and
 $\lim_{x\to\infty}g(x)=\lim_{x\to\infty}2x=\infty$, so we can apply the L' Hospital's rule again:
 \[
+\begin{aligned}
 \lim_{x\to\infty}\frac{f(x)}{g(x)}
-=\lim_{x\to\infty}\frac{e^x}{x^2}
-=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}
-=\lim_{x\to\infty}\frac{e^x}{2x}
-=\lim_{x\to\infty}\frac{d(e^x)/dx}{d(2x)/dx}
-=\lim_{x\to\infty}\frac{e^x}{2}=\infty.
+&=\lim_{x\to\infty}\frac{e^x}{x^2}\\
+&=\lim_{x\to\infty}\frac{f'(x)}{g'(x)}\\
+&=\lim_{x\to\infty}\frac{e^x}{2x}\\
+&=\lim_{x\to\infty}\frac{\dd(e^x)/\dd x}{\dd(2x)/\dd x}\\
+&=\lim_{x\to\infty}\frac{e^x}{2}=\infty.
+\end{aligned}
 \]
 
 At first look, L'Hospital's rule does not appear to be applicable to
@@ -219,12 +254,16 @@ $\lim_{x\to0^+}\dfrac{\ln x}{x^{-2}}$ and it becomes obvious that
 $\lim_{x\to0^+}x^{-2}=\infty$ and $\lim_{x\to0^+}\ln x=-\infty$. So we can now apply
 L'Hospital's rule:
 \[
+\begin{aligned}
 \lim_{x\to0^+}x^2\ln x
-=\lim_{x\to0^+}\frac{\ln x}{x^{-2}}
-=\lim_{x\to0^+}\frac{d(\ln x)/dx}{d(x^{-2})/dx}
-=\lim_{x\to0^+}\frac{1/x}{-2/x^3}
-=\lim_{x\to0^+}\frac{x^2}{-2}=0.
+&=\lim_{x\to0^+}\frac{\ln x}{x^{-2}}\\
+&=\lim_{x\to0^+}\frac{\dd(\ln x)/\dd x}{\dd(x^{-2})/\dd x}\\
+&=\lim_{x\to0^+}\frac{1/x}{-2/x^3}\\
+&=\lim_{x\to0^+}\frac{x^2}{-2}=0.
+\end{aligned}
 \]
+
+\end{solution}
 
 \subsection{Integration}
 
@@ -232,77 +271,91 @@ L'Hospital's rule:
 
 Again, let's begin with some basic definitions and equations used in integration.
 
+\begin{concept}{Antiderivative}
 If we can find a function $F(x)$ with derivative $f(x)$, then we call $F(x)$ an
-\textbf{antiderivative} of $f(x)$.
+antiderivative of $f(x)$.
 
 If $f(x)=F'(x)$,
 \[
-\int_a^b f(x)=\int_a^b F(x)\,dx=[F(x)]_a^b=F(b)-F(a).
+\int_a^b f(x)=\int_a^b F(x)\,\dd x=[F(x)]_a^b=F(b)-F(a).
 \]
 
 % ZHOU-SOURCE-PAGE: 53 PRINTED: 37
 \[
-\frac{dF(x)}{dx}=f(x),\qquad F(a)=y_a\quad\Rightarrow\quad
-F(x)=y_a+\int_{a}^{x}f(t)\,dt.
+\frac{\dd F(x)}{\dd x}=f(x),\qquad F(a)=y_a\quad\Rightarrow\quad
+F(x)=y_a+\int_{a}^{x}f(t)\,\dd t.
 \]
+\end{concept}
 
-\textbf{The generalized power rule in reverse:}
+\begin{concept}{The generalized power rule in reverse}
 \[
-\int u^k\,du=\frac{u^{k+1}}{k+1}+c\qquad(k\ne1),
+\int u^k\,\dd u=\frac{u^{k+1}}{k+1}+c\qquad(k\ne1),
 \]
 where $c$ is any constant.
+\end{concept}
 
-\textbf{Integration by substitution:}
+\begin{concept}{Integration by substitution}
 \[
-\int f(g(x))\cdot g'(x)\,dx=\int f(u)\,du
-\quad\text{with }u=g(x),\quad du=g'(x)\,dx.
+\int f(g(x))\cdot g'(x)\,\dd x=\int f(u)\,\dd u
+\quad\text{with }u=g(x),\quad \dd u=g'(x)\,\dd x.
 \]
+\end{concept}
 
-\textbf{Substitution in definite integrals:}
+\begin{concept}{Substitution in definite integrals}
 \[
-\int_a^b f(g(x))\cdot g'(x)\,dx
-=\int_{g(a)}^{g(b)}f(u)\,du.
+\int_a^b f(g(x))\cdot g'(x)\,\dd x
+=\int_{g(a)}^{g(b)}f(u)\,\dd u.
 \]
+\end{concept}
 
-\textbf{Integration by parts:}
+\begin{concept}{Integration by parts}
 \[
-\int u\,dv=uv-\int v\,du.
+\int u\,\dd v=uv-\int v\,\dd u.
 \]
+\end{concept}
 
-\problem{A. What is the integral of $\ln(x)$?}
+\begin{problem}{A. What is the integral of $\ln(x)$?}
+\end{problem}
 
-\solution
+\begin{solution}
 
 This is an example of integration by parts. Let $u=\ln x$ and $v=x$, we have
 \[
-d(uv)=v\,du+u\,dv=(x\times1/x)\,dx+\ln x\,dx,
+\dd(uv)=v\,\dd u+u\,\dd v=(x\cdot1/x)\,\dd x+\ln x\,\dd x,
 \]
 \[
-\therefore\quad\int\ln x\,dx=x\ln x-\int dx=x\ln x-x+c,
+\therefore\quad\int\ln x\,\dd x=x\ln x-\int\dd x=x\ln x-x+c,
 \]
 where $c$ is any constant.
 
-\problem{B. What is the integral of $\sec(x)$ from $x=0$ to $x=\pi/6$?}
+\end{solution}
 
-\solution
+\begin{problem}{B. What is the integral of $\sec(x)$ from $x=0$ to $x=\pi/6$?}
+\end{problem}
+
+\begin{solution}
 
 Clearly this problem is directly related to differentiation/integration of
 trigonometric functions. Although there are derivative functions for all basic
 trigonometric functions, we only need to remember two of them:
 \[
-\frac{d}{dx}\sin x=\cos x,\qquad
-\frac{d}{dx}\cos x=-\sin x.
+\frac{\dd}{\dd x}\sin x=\cos x,\qquad
+\frac{\dd}{\dd x}\cos x=-\sin x.
 \]
 The rest can be derived using the product rule or the quotient rule. For example,
 \[
-\frac{d\sec x}{dx}=\frac{d(1/\cos x)}{dx}
-=\frac{\sin x}{\cos^2x}=\sec x\tan x,
+\begin{aligned}
+\frac{\dd\sec x}{\dd x}&=\frac{\dd(1/\cos x)}{\dd x}\\
+&=\frac{\sin x}{\cos^2 x}=\sec x\tan x,
+\end{aligned}
 \]
 \[
-\frac{d\tan x}{dx}=\frac{d(\sin x/\cos x)}{dx}
-=\frac{\cos^2x+\sin^2x}{\cos^2x}=\sec^2x.
+\begin{aligned}
+\frac{\dd\tan x}{\dd x}&=\frac{\dd(\sin x/\cos x)}{\dd x}\\
+&=\frac{\cos^2 x+\sin^2 x}{\cos^2 x}=\sec^2 x.
+\end{aligned}
 \]
 \[
 \therefore\quad
-\frac{d(\sec x+\tan x)}{dx}=\sec x(\sec x+\tan x).
+\frac{\dd(\sec x+\tan x)}{\dd x}=\sec x(\sec x+\tan x).
 \]

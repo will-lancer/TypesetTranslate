@@ -4,7 +4,7 @@
 This is a static source check.  It deliberately does not invoke TeX, PDF
 tools, OCR, extraction, or external programs.  The project audit remains the
 authority for page coverage and environment balance; this script focuses on
-notation and transcription hazards.
+notation, legacy-style review candidates, and transcription hazards.
 """
 
 from __future__ import annotations
@@ -107,12 +107,21 @@ RULES = (
     Rule(
         "expectation-alias",
         re.compile(r"\\(?:mathbb\s*\{?E\}?|operatorname\s*\{\s*E\s*\}|mathrm\s*\{\s*E\s*\})"),
-        "use the source expectation function E[·]",
+        "use the canonical blackboard-bold expectation macro \\E[·]",
     ),
     Rule(
         "raw-conditional-bar",
         re.compile(r"P\s*(?:\([^\n|)]*\|[^\n)]*\)|\{[^\n|}]*\|[^\n}]*\})"),
-        "write conditional probability with \\mid, not a raw vertical bar",
+        "write conditional probability with \\vert, not a raw vertical bar",
+    ),
+    Rule(
+        "legacy-conditional-mid",
+        re.compile(
+            r"(?:P\s*(?:\\left\s*)?\(|\\E\s*(?:\\left\s*)?\[)"
+            r"[^\n]*\\mid\b"
+        ),
+        "use \\vert for conditional probability and expectation",
+        fatal=False,
     ),
     Rule(
         "unscoped-moment-operator",
@@ -134,8 +143,14 @@ RULES = (
     ),
     Rule(
         "legacy-cdf-pdf-font",
-        re.compile(r"\\mathrm\s*\{\s*(?:cdf|pdf)\s*\}"),
-        "page 15 uses italic cdf and pdf labels",
+        re.compile(r"\\(?:mathrm|mathit|text)\s*\{\s*(?:cdf|pdf)\s*\}"),
+        "use the upright \\CDF or \\PDF macro for density labels",
+        fatal=False,
+    ),
+    Rule(
+        "legacy-mod-command",
+        re.compile(r"\\mod(?![A-Za-z])"),
+        "use \\bmod for a binary operation or \\pmod for a congruence",
     ),
     Rule(
         "raw-percent-in-source",
@@ -156,8 +171,23 @@ RULES = (
     ),
     Rule(
         "upright-differential-restyling",
-        re.compile(r"\\mathrm\s*\{\s*d(?:x|y|t|S|X|W)\s*\}"),
+        re.compile(
+            r"\\(?:mathrm|mathit|text)\s*\{\s*d\s*\}"
+            r"|\\(?:mathrm|mathit|text)\s*\{\s*d(?:x|y|t|S|X|W)\s*\}"
+        ),
         "review differential typography against the source's d x, d t, and d W forms",
+        fatal=False,
+    ),
+    Rule(
+        "legacy-arithmetic-times",
+        re.compile(r"\\times\b"),
+        "use \\cdot for arithmetic; retain \\times for dimensions and Cartesian products",
+        fatal=False,
+    ),
+    Rule(
+        "legacy-underline-style",
+        re.compile(r"\\underline\b"),
+        "the global style neutralizes legacy underline commands; migrate new headings to semantic emphasis",
         fatal=False,
     ),
 )

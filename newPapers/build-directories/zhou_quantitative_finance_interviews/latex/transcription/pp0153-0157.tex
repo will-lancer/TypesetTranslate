@@ -35,12 +35,12 @@ annualized asset volatility; $c$: price of a European call; $p$: price of a Euro
 $C$: price of an American call; $P$: price of an American put; $D$: present value, at $t$,
 of future dividends; $K$: strike price; $PV$: present value at $t$.
 
-\problem{Price direction of options}
-
+\begin{problem}{Price direction of options}
 How do vanilla European/American option prices change when $S$, $K$, $\tau$, $\sigma$, $r$,
 or $D$ changes?
+\end{problem}
 
-\solution
+\begin{solution}
 The payoff of a call is $\max(S-K,0)$ and the payoff of a put is $\max(K-S,0)$.
 A European option can only be exercised at the expiration time, while an American
 option can be exercised at any time before maturity. Intuitively we can figure out that
@@ -87,10 +87,10 @@ It is also worth noting that Table 6.1 assumes that only one factor changes valu
 all others stay the same, which in practice may not be realistic since some of the factors
 are related. For example, a large decrease in interest rate often triggers a stock market
 rally and increases the stock price, which has an opposite effect on option value.
+\end{solution}
 
-\problem{Put-call parity}
-
-\textbf{Put-call parity:} $c+Ke^{-r\tau}=p+S-D$, where the European call option and the European
+\begin{problem}{Put-call parity}
+\emph{Put-call parity:} $c+Ke^{-r\tau}=p+S-D$, where the European call option and the European
 put option have the same underlying security, the same maturity $T$ and the same strike
 price $K$. Since $p\geq0$, we can also derive boundaries for $c$, $S-D-Ke^{-r\tau}\leq c\leq S$,
 from the put-call parity.
@@ -103,9 +103,10 @@ S-D-K\leq C-P\leq S-Ke^{-r\tau}.
 
 Can you write down the put-call parity for European options on non-dividend paying
 stocks and prove it?
+\end{problem}
 
 % ZHOU-SOURCE-PAGE: 155 PRINTED: 139
-\solution
+\begin{solution}
 The put-call parity for European options on non-dividend paying stocks is
 $c+Ke^{-r\tau}=p+S$. We can treat the left side of the equation as portfolio $A$---a call and a
 zero-coupon bond with face value $K$---and the right side as portfolio $B$---a put and the
@@ -124,16 +125,17 @@ with delivery price $K$. A forward with delivery price $K$ has present value $S-
 So we again have the put-call parity $c-p=S-Ke^{-r\tau}$. This expression shows that when
 the strike price $K=Se^{r\tau}$ (forward price), a call has the same value as put; when
 $K<Se^{r\tau}$, a call has higher value; and when $K>Se^{r\tau}$, a put has higher value.
+\end{solution}
 
-\problem{American v.s. European options}
-
+\begin{problem}{American v.s. European options}
 \emph{A.} Since American options can be exercised at any time before maturity, they are
 often more valuable than European options with the same characteristics. But when the stock
 pays no dividend, the theoretical price for an American call and European call should be the
 same since it is never optimal to exercise the American call. Why should you never exercise
 an American call on a non-dividend paying stock before maturity?
+\end{problem}
 
-\solution
+\begin{solution}
 There are a number of solutions to this popular problem. We present three arguments for
 the conclusion.
 
@@ -195,12 +197,15 @@ Argument 3. Let's use a mathematical argument relying on risk-neutral pricing an
 Jensen's inequality\footnote[5]{A function $f(X)$ is convex if and only if
 $f(\lambda x+(1-\lambda)y)\leq\lambda f(x)+(1-\lambda)f(y)$, $0<\lambda<1$. If
 $f''(x)>0$, $\forall x$, then $f(X)$ is convex.}---if $f(X)$ is a convex function, then
-$\tilde E[f(X)]\geq f(\tilde E[X])$. From Figure 6.1, it's obvious that the payoff $f$ (if
+$\tilde{\E}[f(X)]\geq f(\tilde{\E}[X])$. From Figure 6.1, it's obvious that the payoff $f$ (if
 exercised when $S_T>K$) of a call option $C(S)=(S-K)^+$ is a convex function of stock
 price with property
 
 \[
-C(\lambda S_1+(1-\lambda)S_2)\leq\lambda C(S_1)+(1-\lambda)C(S_2),\qquad 0<\lambda<1.
+\begin{aligned}
+C(\lambda S_1+(1-\lambda)S_2)&\leq\lambda C(S_1)+(1-\lambda)C(S_2),\\
+&\qquad 0<\lambda<1.
+\end{aligned}
 \]
 
 % ZHOU-SOURCE-PAGE: 157 PRINTED: 141
@@ -230,16 +235,16 @@ $C(0)=0$.
 \end{figure}
 
 If the option is exercised at time $t$, the payoff at $t$ is $C(S_t-K)$. If it is not exercised
-until maturity, the discounted expected payoff (to $t$) is $\tilde E[e^{-r\tau}C(S_T)]$ under
-risk-neutral measure. Under risk-neutral probabilities, we also have $\tilde E[S_T]=S_te^{r\tau}$.
+until maturity, the discounted expected payoff (to $t$) is $\tilde{\E}[e^{-r\tau}C(S_T)]$ under
+risk-neutral measure. Under risk-neutral probabilities, we also have $\tilde{\E}[S_T]=S_te^{r\tau}$.
 
-So $\tilde E[e^{-r\tau}C(S_T)]=e^{-r\tau}\tilde E[C(S_T)]\geq e^{-r\tau}C(\tilde E[S_T])
+So $\tilde{\E}[e^{-r\tau}C(S_T)]=e^{-r\tau}\tilde{\E}[C(S_T)]\geq e^{-r\tau}C(\tilde{\E}[S_T])
 =e^{-r\tau}C(e^{r\tau}S_t)$, where the inequality is from Jensen's inequality.
 
 Let $S=e^{r\tau}S_t$ and $\lambda=e^{-r\tau}$, we have
-$C(\lambda S)=C(S_t)\leq e^{-r\tau}C(e^{r\tau}S_t)\leq e^{-r\tau}\tilde E[C(S_T)]$.
+$C(\lambda S)=C(S_t)\leq e^{-r\tau}C(e^{r\tau}S_t)\leq e^{-r\tau}\tilde{\E}[C(S_T)]$.
 
-Since the discounted payoff $e^{-r\tau}\tilde E[C(S_T)]$ is no less than $C(S_t)$ for any
+Since the discounted payoff $e^{-r\tau}\tilde{\E}[C(S_T)]$ is no less than $C(S_t)$ for any
 $t\leq T$ under the risk neutral measure, it is never optimal to exercise the option before
 expiration.
 
@@ -253,6 +258,9 @@ Similar analysis can also show that early exercise of an American call option fo
 dividend-paying stocks is never optimal except possibly for the time right before an
 ex-dividend date.
 
-\emph{B.} A European put option on a non-dividend paying stock with strike price \$80 is
+\end{solution}
+
+\begin{problem}{\emph{B.} A European put option on a non-dividend paying stock with strike price \$80 is
 currently priced at \$8 and a put option on the same stock with strike price \$90 is priced
-at \$9. Is there an arbitrage opportunity existing in these two options?
+at \$9. Is there an arbitrage opportunity existing in these two options?}
+\end{problem}

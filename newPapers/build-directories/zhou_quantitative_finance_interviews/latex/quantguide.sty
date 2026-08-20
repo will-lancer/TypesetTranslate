@@ -43,8 +43,11 @@
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue,
+  linktocpage=true,
+  bookmarksnumbered=true,
   pdftitle={A Practical Guide to Quantitative Finance Interviews},
-  pdfauthor={Xinfeng Zhou}
+  pdfauthor={Xinfeng Zhou},
+  pdfsubject={First edition, native source-faithful transcription}
 }
 
 % Match the repository's native JHEP book editions: suppress the submission
@@ -64,6 +67,29 @@
 \setcounter{tocdepth}{2}
 \setlength{\emergencystretch}{2em}
 
+% Keep the paragraph and display rhythm explicit while retaining the article
+% and JHEP values used by the native edition.
+\setlength{\parskip}{0pt plus 1pt}
+\interfootnotelinepenalty=10000
+\setlength{\abovedisplayskip}{11pt plus 3pt minus 6pt}
+\setlength{\belowdisplayskip}{11pt plus 3pt minus 6pt}
+\setlength{\abovedisplayshortskip}{0pt plus 3pt}
+\setlength{\belowdisplayshortskip}{6.5pt plus 3.5pt minus 3pt}
+
+% Lists should not acquire an extra paragraph-sized gap from chunk boundaries.
+\setlist{parsep=0pt,partopsep=0pt}
+
+% JHEP supplies text widow and club penalties.  Add the corresponding display
+% control so a display does not leave a single prose line above a page break.
+\widowpenalty=1000
+\clubpenalty=1000
+\displaywidowpenalty=1000
+
+% Native figures and tables use explicit placement where needed; this keeps the
+% default path stable for any environment that omits an optional placement.
+\floatplacement{figure}{htbp}
+\floatplacement{table}{htbp}
+
 % Keep native figure and table labels in the source's chapter-scoped form:
 % Figure 6.1, Figure 6.2, and so on.
 \numberwithin{figure}{section}
@@ -74,6 +100,8 @@
 % Preface, Notations, and Index headings, which keeps front and back matter
 % separated from the preceding material.
 \pretocmd{\section}{\clearpage}{}{}
+\pretocmd{\subsection}{\Needspace{7\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{6\baselineskip}}{}{}
 
 % The source uses numbered subsection names such as ``4.1'' and ``5.4''.
 % Leave enough room in the table of contents for those labels.
@@ -89,22 +117,48 @@
   \label{#3}%
 }
 
-% Problem headings preserve the source's unnumbered form.  The following source
-% paragraphs remain ordinary LaTeX prose and may continue into the next chunk.
-\newcommand{\problem}[1]{%
-  \par\medskip
-  \noindent\textbf{#1}\par
-  \smallskip
+% Canonical mathematical typography for the edition.  The differential macro
+% is intentionally argument-free so ``\dd x`` and ``\dd t`` retain ordinary
+% TeX spacing around the upright d.
+% NOTATION EXCEPTION: \dd is the canonical differential macro.
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+% NOTATION EXCEPTION: \E defines the canonical blackboard-bold expectation.
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\PDF}{\mathrm{PDF}}
+\newcommand{\CDF}{\mathrm{CDF}}
+
+% Problem and solution bodies remain ordinary paragraphs, so TeX may break
+% them across pages.  The problem name uses quiet emphasis; the
+% solution delegates its spacing and end mark to amsthm's proof machinery.
+\newenvironment{problem}[1]{%
+  \par\Needspace{3\baselineskip}\medskip
+  \begingroup
+  \noindent\emph{#1}\par
+  \nobreak\smallskip
+  \ignorespaces
+}{%
+  \par\endgroup\smallskip
 }
 
-\newcommand{\solution}{%
-  \par\medskip
-  \noindent\textbf{Solution.}\par
-  \smallskip
+\renewcommand{\qedsymbol}{\ensuremath{\square}}
+\newenvironment{solution}{%
+  \par\Needspace{3\baselineskip}%
+  \begin{proof}[Solution]%
+}{%
+  \end{proof}%
+}
+
+% Definitions and rules use a light heading followed by normal, breakable
+% prose.  The required title keeps the semantic boundary explicit.
+\newenvironment{concept}[1]{%
+  \par\Needspace{2\baselineskip}\medskip
+  \noindent\emph{#1.}\enspace\ignorespaces
+}{%
+  \par\smallskip
 }
 
 \newcommand{\hint}[1]{%
-  \par\smallskip
+  \par\Needspace{2\baselineskip}\smallskip
   \noindent\textit{Hint.} #1\par
   \smallskip
 }
@@ -116,6 +170,8 @@
   columns=fullflexible,
   keepspaces=true,
   breaklines=true,
+  aboveskip=\smallskipamount,
+  belowskip=\smallskipamount,
   frame=single,
   showstringspaces=false,
   numbers=left,
@@ -125,3 +181,15 @@
   stringstyle=\color{green!40!black}%
 }
 \lstset{style=zhoucode}
+
+% Source chunks contain a small number of legacy underlined headings.  Keep
+% their text and any surrounding emphasis while removing the underline rule
+% globally from the rendered edition.
+% NOTATION EXCEPTION: legacy source underlining is intentionally neutralized.
+\renewcommand{\underline}[1]{#1}
+
+% Match the small monospace size used by zhoucode for source pseudocode kept in
+% native verbatim blocks.
+\makeatletter
+\def\verbatim@font{\normalfont\ttfamily\small}
+\makeatother
