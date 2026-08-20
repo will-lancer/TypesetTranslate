@@ -1,0 +1,130 @@
+\pdfoutput=1
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{slashed}
+\usepackage{etoolbox}
+\usepackage{makeidx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing}
+\usepackage{jheppub}
+\usepackage{pct}
+
+% JHEP-style blue, clickable cross-references and links.
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={PCT, Spin and Statistics, and All That},
+  pdfauthor={R. F. Streater and A. S. Wightman}
+}
+
+% Suppress the JHEP submission banner on the reading edition title page.
+\makeatletter
+\gdef\@fpheader{\phantom{x}}
+\makeatother
+
+% The local Weinberg edition uses compact JHEP title-page spacing and starts
+% each printed chapter on a fresh page.
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip\clearpage}
+\pretocmd{\section}{\clearpage}{}{}
+\setcounter{tocdepth}{2}
+\makeindex
+
+% The source audit checks this ordered list before TeX reads the manuscript.
+\newcommand{\PCTInput}[1]{\input{#1}}
+\newcommand{\chapterbackmatter}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+\newcommand{\chapterappendix}[2]{%
+  \ifstrempty{#1}{%
+    \subsection*{Appendix\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix: #2}%
+  }{%
+    \subsection*{Appendix #1\quad #2}%
+    \addcontentsline{toc}{subsection}{Appendix #1: #2}%
+  }%
+}
+
+\title{PCT, Spin and Statistics, and All That}
+\author[a]{R. F. Streater}
+\author[b]{A. S. Wightman}
+\affiliation[a]{Kings College London}
+\affiliation[b]{Princeton University}
+\dedicated{\normalfont\bfseries Princeton University Press\\ Princeton and Oxford}
+\abstract{}
+
+\begin{document}
+\maketitle
+\flushbottom
+
+% Front matter and the unnumbered Introduction.
+\PCTInput{frontmatter/copyright.tex}
+\PCTInput{frontmatter/preface.tex}
+\PCTInput{frontmatter/introduction.tex}
+
+% Chapter 1. Relativistic Transformation Laws.
+\PCTInput{chapters/chapter01/opening.tex}
+\PCTInput{chapters/chapter01/sec1_1.tex}
+\PCTInput{chapters/chapter01/sec1_2.tex}
+\PCTInput{chapters/chapter01/sec1_3.tex}
+\PCTInput{chapters/chapter01/sec1_4.tex}
+\PCTInput{chapters/chapter01/bibliography.tex}
+
+% Chapter 2. Some Mathematical Tools.
+\PCTInput{chapters/chapter02/opening.tex}
+\PCTInput{chapters/chapter02/sec2_1.tex}
+\PCTInput{chapters/chapter02/sec2_2.tex}
+\PCTInput{chapters/chapter02/sec2_3.tex}
+\PCTInput{chapters/chapter02/sec2_4.tex}
+\PCTInput{chapters/chapter02/sec2_5.tex}
+\PCTInput{chapters/chapter02/sec2_6.tex}
+\PCTInput{chapters/chapter02/bibliography.tex}
+
+% Chapter 3. Fields and Vacuum Expectation Values.
+\PCTInput{chapters/chapter03/opening.tex}
+\PCTInput{chapters/chapter03/sec3_1.tex}
+\PCTInput{chapters/chapter03/sec3_2.tex}
+\PCTInput{chapters/chapter03/sec3_3.tex}
+\PCTInput{chapters/chapter03/sec3_4.tex}
+% Balance the two contents pages at the same Chapter 3 boundary as the source.
+\addtocontents{toc}{\protect\newpage}
+\PCTInput{chapters/chapter03/sec3_5.tex}
+\PCTInput{chapters/chapter03/bibliography.tex}
+
+% Chapter 4. Some General Theorems of Relativistic Quantum Field Theory.
+\PCTInput{chapters/chapter04/opening.tex}
+\PCTInput{chapters/chapter04/sec4_1.tex}
+\PCTInput{chapters/chapter04/sec4_2.tex}
+\PCTInput{chapters/chapter04/sec4_3.tex}
+\PCTInput{chapters/chapter04/sec4_4.tex}
+\PCTInput{chapters/chapter04/sec4_5.tex}
+\PCTInput{chapters/chapter04/sec4_6.tex}
+\PCTInput{chapters/chapter04/bibliography.tex}
+
+% Printed Appendix A.
+\appendix
+\PCTInput{appendix/constructive.tex}
+\PCTInput{appendix/local-algebras.tex}
+\PCTInput{appendix/bibliography.tex}
+
+% The index is transcribed as native LaTeX and owns its theindex environment.
+\PCTInput{backmatter/index.tex}
+
+\end{document}

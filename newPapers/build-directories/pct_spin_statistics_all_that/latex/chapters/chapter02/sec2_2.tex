@@ -1,0 +1,313 @@
+% PCT-SOURCE: pdf=55 print=43 kind=section id=2-2
+\subsection{Fourier Transforms}\label{sec:ch2-fourier}
+
+% The source uses \mathscr letters and a mostly-minus metric.  The reading
+% edition uses \mathcal letters and the mostly-plus metric recorded in PLAN.md.
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+We define two linear transformations $\mathcal{F}$ and
+$\overline{\mathcal{F}}$ on $\mathcal{S}$ by the equations
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-33
+\begin{equation}
+  (\mathcal{F}f)(p)
+  = \frac{1}{(2\pi)^{n/2}}\int e^{-ip\cdot x}f(x)\,dx .
+  \tag{2-33}\label{eq:ch2-fourier-forward}
+\end{equation}
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-34
+\begin{equation}
+  (\overline{\mathcal{F}}f)(p)
+  = \frac{1}{(2\pi)^{n/2}}\int e^{+ip\cdot x}f(x)\,dx .
+  \tag{2-34}\label{eq:ch2-fourier-inverse}
+\end{equation}
+
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+Here $p\cdot x$ stands for the \emph{non-degenerate scalar product}
+appropriate to the problem at hand.  For example, it might be the
+euclidean scalar product $p\cdot x=\sum_{j=1}^n p^j x^j$.  We shall later
+on deal exclusively with cases where $n$ is a multiple of $4$ and $p\cdot x$
+is a sum of \emph{Minkowski scalar products}
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-notation-minkowski
+\begin{equation*}
+  p\cdot x
+  = \sum_{k=1}^{n/4}\sum_{\mu,\nu=0}^{3}
+      p_{\mu k}\,\eta^{\mu\nu}x_{\nu k}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+with $\eta^{00}=-1=-\eta^{jj}$, $j=1,2,3$, and
+$\eta^{\mu\nu}=0$, $\mu\ne\nu$.  Evidently, the integrals are uniformly and
+absolutely convergent and the same is true for all integrals obtained by
+multiplying by $x^k$ or differentiating under the integral sign.  Thus we
+have with a few integrations by parts
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-35
+\begin{equation}
+\begin{aligned}
+  \mathcal{F}(D^k f)(p)&=(+ip)^k(\mathcal{F}f)(p),
+  &\overline{\mathcal{F}}(D^k f)(p)&=(-ip)^k(\overline{\mathcal{F}}f)(p),
+\end{aligned}
+\tag{2-35}\label{eq:ch2-fourier-derivative}
+\end{equation}
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-36
+\begin{equation}
+\begin{aligned}
+  \mathcal{F}\bigl[(-ix)^k f\bigr](p)&=D^k(\mathcal{F}f)(p),
+  &\overline{\mathcal{F}}\bigl[(+ix)^k f\bigr](p)&=D^k(\overline{\mathcal{F}}f)(p).
+\end{aligned}
+\tag{2-36}\label{eq:ch2-fourier-multiplication}
+\end{equation}
+
+% PCT-SOURCE: pdf=56 print=44 kind=prose
+From (2-35) and (2-36) we immediately get that $\mathcal{F}$ and
+$\overline{\mathcal{F}}$ are continuous because, for example,
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-37
+\begin{equation}
+\begin{aligned}
+ \left|p^rD^s(\mathcal{F}f)(p)\right|
+ &=\left|
+ \frac{1}{(2\pi)^{n/2}}
+ \int \frac{e^{-ip\cdot x}}{(1+|x|^2)^t}
+ D^r\bigl[(ix)^s f(x)\bigr](1+|x|^2)^t\,dx
+ \right| \\
+ &\leq \sup_x\left[
+ \left|D^r\bigl(x^s f(x)\bigr)\right|(1+|x|^2)^t
+ \right]
+ \times \frac{1}{(2\pi)^{n/2}}
+ \int\frac{dx}{(1+|x|^2)^t} .
+\end{aligned}
+\tag{2-37}\label{eq:ch2-fourier-continuity-bound}
+\end{equation}
+
+% PCT-SOURCE: pdf=56 print=44 kind=prose
+For suitably large positive $t$, the left-hand side is clearly bounded by a
+constant times some norm, $\lVert f\rVert_{p,q}$, of $f$:
+$\lVert\mathcal{F}f\rVert_{r,s}\leq C\lVert f\rVert_{p,q}$, which is what
+we mean by continuity in $\mathcal{S}$.
+
+% PCT-SOURCE: pdf=56 print=44 kind=prose
+The crucial lemma, which is essentially Fourier's inversion theorem for
+functions in $\mathcal{S}$, is
+
+% PCT-SOURCE: pdf=56 print=44 kind=lemma id=2-lemma-fourier
+\begin{trivlist}
+\item[\hskip\labelsep\bfseries Lemma]\mbox{}\par
+The transformations $\mathcal{F}$ and $\overline{\mathcal{F}}$ are
+isomorphisms of $\mathcal{S}$, i.e., they are one-to-one continuous
+mappings of $\mathcal{S}$ onto all of $\mathcal{S}$ such that the inverse
+mappings are continuous.  In fact, they are each other's inverses on
+$\mathcal{S}$.
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-38
+\begin{equation}
+  \mathcal{F}\overline{\mathcal{F}}
+  =\overline{\mathcal{F}}\mathcal{F}=\mathbf{1} .
+  \tag{2-38}\label{eq:ch2-fourier-schwartz-inverse}
+\end{equation}
+\end{trivlist}
+
+% PCT-SOURCE: pdf=56 print=44 kind=proof
+\begin{proof}[Proof:]
+% PCT-SOURCE: pdf=56 print=44 kind=prose
+We examine the integral
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-39
+\begin{equation}
+  \frac{1}{(2\pi)^n}\int e^{-ip\cdot x}\,dx
+  \int dq\,e^{iq\cdot x}f(q),
+  \tag{2-39}\label{eq:ch2-fourier-inversion-integral}
+\end{equation}
+
+% PCT-SOURCE: pdf=56 print=44 kind=prose
+which, if the contention of the theorem is correct, ought to be $f(p)$.
+Formally, all that has to be done is interchange orders of integration and
+use
+
+% PCT-SOURCE: pdf=56 print=44 kind=display id=2-40
+\begin{equation}
+  \frac{1}{(2\pi)^n}\int e^{ix\cdot(p-q)}\,dx=\delta(p-q) .
+  \tag{2-40}\label{eq:ch2-fourier-delta}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+To justify this one can proceed in many ways.  We shall rewrite (2-39) as
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-41
+\begin{equation}
+  \lim_{\epsilon\to0}\frac{1}{(2\pi)^n}
+  \int e^{-ip\cdot x}\,dx\,\exp\bigl(-\epsilon|x|^2\bigr)
+  \int dq\,e^{iq\cdot x}f(q),\qquad \epsilon>0 .
+  \tag{2-41}\label{eq:ch2-fourier-gaussian-regulator}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+As long as $\epsilon>0$, the integral exists in both variables together so
+we are allowed to interchange the order.  Using the integral
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-42
+\begin{equation}
+  \int\exp\bigl(-\epsilon|x|^2+ir\cdot x\bigr)\,dx
+  =\left(\frac{\pi}{\epsilon}\right)^{n/2}
+  \exp\left(-\frac{|r|^2}{4\epsilon}\right) .
+  \tag{2-42}\label{eq:ch2-gaussian-integral}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+we get that (2-41) is
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-43
+\begin{equation}
+  \lim_{\epsilon\to0}\frac{1}{(4\pi\epsilon)^{n/2}}
+  \int\!\cdots\!\int
+  \exp\left(-\frac{|p-q|^2}{4\epsilon}\right)f(q)\,dq .
+  \tag{2-43}\label{eq:ch2-fourier-gaussian-limit}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+It is a standard matter to show that (2-43) is $f(p)$.  One argues that the
+contribution from outside any sphere $|p-q|^2=R^2$ goes to zero as
+$\epsilon\to0$, so the difference between (2-43) and $f(p)$ can be estimated
+by
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-44-estimate
+\begin{equation*}
+\begin{aligned}
+ &\left|
+ \frac{1}{(4\pi\epsilon)^{n/2}}
+ \int_{|p-q|\leq R}
+ \exp\left(-\frac{|p-q|^2}{4\epsilon}\right)
+ \bigl[f(q)-f(p)\bigr]\,dq
+ \right| \\
+ &\qquad\leq \sup_{|p-q|\leq R}|f(q)-f(p)|\longrightarrow 0
+ \quad\text{as }R\longrightarrow0 .
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+Now we can define the operation of Fourier transformation on $\mathcal{S}'$.
+We do it so as to be consistent with Parseval's formula for functions in
+$\mathcal{S}$:
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-44
+\begin{equation}
+\begin{aligned}
+ &\frac{1}{(2\pi)^{n/2}}\int g(p)\,dp
+   \int e^{-ip\cdot x}\,dx\,h(x) \\
+ &\qquad=\frac{1}{(2\pi)^{n/2}}\int dx\,h(x)
+   \int e^{-ip\cdot x}g(p)\,dp .
+\end{aligned}
+\tag{2-44}\label{eq:ch2-parseval}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+which is an immediate consequence of the legitimacy of the interchange of
+order of integration when the integrand is as well behaved as $g(p)h(x)$.
+Equation (2-44) may be written
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-45
+\begin{equation}
+  (\mathcal{F}h)(g)=h\bigl[\mathcal{F}(g)\bigr]
+  \tag{2-45}\label{eq:ch2-fourier-distribution-pairing}
+\end{equation}
+
+% PCT-SOURCE: pdf=57 print=45 kind=prose
+if we regard $h$ as an element of $\mathcal{S}'$.  This suggests the
+definition, for an arbitrary element, $T$, of $\mathcal{S}'$,
+
+% PCT-SOURCE: pdf=57 print=45 kind=display id=2-46
+\begin{equation}
+  (\mathcal{F}T)(f)=T(\mathcal{F}f) .
+  \tag{2-46}\label{eq:ch2-fourier-distribution-forward}
+\end{equation}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+$\mathcal{F}$ so defined is clearly a linear transformation of $\mathcal{S}'$
+into itself.  Furthermore $\mathcal{F}$ is continuous on $\mathcal{S}'$
+because if $T_n\to T$ in $\mathcal{S}'$,
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-47-continuity
+\begin{equation*}
+  (\mathcal{F}T_n)(f)=T_n(\mathcal{F}f)\longrightarrow
+  T(\mathcal{F}f)=(\mathcal{F}T)(f),
+\end{equation*}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+so $\mathcal{F}T_n\to\mathcal{F}T$ in $\mathcal{S}'$.
+Similar statements hold for $\overline{\mathcal{F}}$ defined as a linear
+transformation of $\mathcal{S}'$ by
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-47
+\begin{equation}
+  (\overline{\mathcal{F}}T)(f)=T(\overline{\mathcal{F}}f) .
+  \tag{2-47}\label{eq:ch2-fourier-distribution-conjugate}
+\end{equation}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+The connection between $\mathcal{F}$ and $\overline{\mathcal{F}}$ so defined
+is given by
+
+% PCT-SOURCE: pdf=58 print=46 kind=theorem id=2-2
+\begin{theorem}\label{thm:ch2-fourier-distribution-inverse}
+$\mathcal{F}$ and $\overline{\mathcal{F}}$ defined on $\mathcal{S}'$ by
+(2-46) and (2-47), respectively, are inverse isomorphisms of $\mathcal{S}'$,
+i.e., they are continuous linear one-to-one mappings of $\mathcal{S}'$ onto
+$\mathcal{S}'$ such that
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-48
+\begin{equation}
+  \mathcal{F}\overline{\mathcal{F}}
+  =\overline{\mathcal{F}}\mathcal{F}=\mathbf{1}
+  \tag{2-48}\label{eq:ch2-fourier-distribution-inverse}
+\end{equation}
+
+on $\mathcal{S}'$.
+\end{theorem}
+
+% PCT-SOURCE: pdf=58 print=46 kind=proof
+\begin{proof}[Proof:]
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+We have already established that $\mathcal{F}$ and
+$\overline{\mathcal{F}}$ are continuous linear mappings of $\mathcal{S}'$
+into $\mathcal{S}'$.  That they map $\mathcal{S}'$ onto $\mathcal{S}'$
+follows from the corresponding statement for $\mathcal{S}$: if $T\in
+\mathcal{S}'$, then the element $V$ of $\mathcal{S}'$, defined by
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-48-aux1
+\begin{equation*}
+  V(f)=T(\overline{\mathcal{F}}f)
+\end{equation*}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+has the property
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-48-aux2
+\begin{equation*}
+  (\mathcal{F}V)(f)=T(\overline{\mathcal{F}}\mathcal{F}f)=T(f),
+\end{equation*}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+so every element of $\mathcal{S}'$ is the image under $\mathcal{F}$ of some
+element of $\mathcal{S}'$.  An analogous argument holds for
+$\overline{\mathcal{F}}$.  The equation (2-48) is an easy consequence of the
+definitions and (2-38):
+
+% PCT-SOURCE: pdf=58 print=46 kind=display id=2-48-proof
+\begin{equation*}
+\begin{aligned}
+  (\mathcal{F}\overline{\mathcal{F}}T)(f)
+  &= (\overline{\mathcal{F}}T)(\mathcal{F}f)
+   = T(\overline{\mathcal{F}}\mathcal{F}f)=T(f), \\
+  (\overline{\mathcal{F}}\mathcal{F}T)(f)
+  &= (\mathcal{F}T)(\overline{\mathcal{F}}f)
+   = T(\mathcal{F}\overline{\mathcal{F}}f)=T(f).
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+% PCT-SOURCE: pdf=58 print=46 kind=prose
+Theorem 2-2 suffices to justify almost all operations which will be carried
+out later, but the reader unacquainted with the subject is

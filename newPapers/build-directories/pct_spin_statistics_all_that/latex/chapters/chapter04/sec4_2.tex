@@ -1,0 +1,382 @@
+% PCT-SOURCE: pdf=149 print=137 kind=section-title id=sec-ch4-2-polynomial-algebra
+\subsection{Properties of the Polynomial Algebra of an Open Set}
+\label{sec:ch4-2-polynomial-algebra}
+
+% PCT-SOURCE: pdf=149 print=137 kind=prose id=p137-local-measurements
+Quantum field theory provides a set of candidates for local measurements,
+observables which correspond to field measurements performed in a laboratory
+of finite size and completed in a finite time. These are the field operators
+smeared with test functions of compact support. The present section is
+concerned with the properties of an algebra associated with such quantities.
+For simplicity, we again discuss the theory of a hermitian scalar field.
+
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-polynomial-algebra-definition
+Let $\PolynomialAlgebra(\mathcal O)$ be the set of all polynomials of the form
+
+% PCT-SOURCE: pdf=150 print=138 kind=display id=eq-ch4-9
+\begin{equation}
+  c+\sum_{j=1}^{N}
+  \varphi\bigl(f_1^{(j)}\bigr)\cdots
+  \varphi\bigl(f_j^{(j)}\bigr),
+  \tag{4-9}\label{eq:ch4-9}
+\end{equation}
+
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-polynomial-algebra-properties
+where the $f_k^{(j)}$ are test functions whose support is in the open set
+$\mathcal O$ of space-time, and $c$ is any complex constant. Clearly, if $p$
+and $q$ are two such polynomials so are $p+q$, $\alpha p$, $p^\dagger$, and
+$pq$. This means that $\PolynomialAlgebra(\mathcal O)$ is a $*$-algebra, the
+\emph{polynomial algebra} of $\mathcal O$. The next theorem is a surprise:
+the algebra associated with \emph{any} open set $\mathcal O$ has
+$\ket{\Omega}$ as a cyclic vector. It is due to Reeh and Schlieder.
+
+% PCT-SOURCE: pdf=150 print=138 kind=theorem id=thm-ch4-2-reeh-schlieder
+\begin{theorem}[4-2]\label{thm:ch4-2-reeh-schlieder}
+% PCT-SOURCE: pdf=150 print=138 kind=theorem-statement id=thm-ch4-2-reeh-schlieder-statement
+Suppose $\mathcal O$ is an open set of space-time. Then $\ket{\Omega}$ is a
+cyclic vector for $\PolynomialAlgebra(\mathcal O)$, if it is a cyclic vector
+for $\PolynomialAlgebra(\R^4)$. That is, vectors of the form
+
+% PCT-SOURCE: pdf=150 print=138 kind=display id=eq-ch4-10
+\begin{equation}
+  \sum_{j=0}^{N}
+  \varphi\bigl(f_1^{(j)}\bigr)\cdots
+  \varphi\bigl(f_j^{(j)}\bigr)\ket{\Omega}
+  \tag{4-10}\label{eq:ch4-10}
+\end{equation}
+
+% PCT-SOURCE: pdf=150 print=138 kind=theorem-statement-continuation id=thm-ch4-2-reeh-schlieder-density
+with $\supp f_j^{(j)}\subset\mathcal O$ are dense in $\Hilbert$.
+
+% PCT-SOURCE: pdf=150 print=138 kind=proof id=proof-ch4-2-reeh-schlieder
+\begin{proof}
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-reeh-schlieder-proof-orthogonal
+Let $\ket{\Psi}$ be orthogonal to all vectors of the form (4-10). We are
+going to prove that $\ket{\Psi}$ is also orthogonal to all polynomials in the
+smeared field with no conditions on the supports of the test functions, that
+is, that $\ket{\Psi}$ is orthogonal to
+$\PolynomialAlgebra(\R^4)\ket{\Omega}=D_0$. This will then imply that
+$\ket{\Psi}=0$, because by assumption $D_0$ spans the Hilbert space $\Hilbert$.
+The method of proof is another typical application of the principle of
+analytic continuation.
+
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-reeh-schlieder-proof-distribution
+The first step in the proof is to argue that the symbolic expression
+
+% PCT-SOURCE: pdf=150 print=138 kind=display id=eq-ch4-2-symbolic-pairing
+\begin{equation*}
+  \braket{\Psi}{\Psi_f}
+  =\int \bra{\Psi}\varphi(x_1)\varphi(x_2)\cdots
+  \varphi(x_n)\ket{\Omega}
+  f(x_1,x_2,\ldots,x_n)\,dx_1\cdots dx_n
+\end{equation*}
+
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-reeh-schlieder-proof-distribution-cont
+has a meaning for all test functions, $f$, in $\Schwartz$, and any
+$\ket{\Psi}$ in $\Hilbert$. The proof goes just like that in the remarks
+after (3-24). One first notes that
+$\bra{\Psi}\varphi(f_1)\cdots\varphi(f_n)\ket{\Omega}$ is a continuous
+multilinear functional of the test functions $f_1\ldots f_n$ and applies the
+Schwartz nuclear theorem to extend it to a tempered distribution in all the
+variables together. Thus there is a tempered distribution $F$ defined by
+
+% PCT-SOURCE: pdf=150 print=138 kind=display id=eq-ch4-2-tempered-distribution
+\begin{equation*}
+  F(-x_1,x_1-x_2,\ldots,x_{n-1}-x_n)
+  \equiv
+  \bra{\Psi}\varphi(x_1)\cdots\varphi(x_n)\ket{\Omega}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=150 print=138 kind=prose id=p138-reeh-schlieder-proof-spectrum
+Standard arguments\footnote{%
+% PCT-SOURCE: pdf=150 print=138 kind=footnote id=fn-p138-standard-arguments
+See Section~2-6.}%\allowbreak
+ show that the Fourier transform of $F$ vanishes\newline unless each four-momentum
+ variable lies in the physical spectrum.
+
+% PCT-SOURCE: pdf=151 print=139 kind=prose continuation-of=p138-reeh-schlieder-proof-spectrum
+Therefore there exists a holomorphic function $F$, holomorphic in the tube
+$\Tube_n$ in the variables $(-x_1)-\ii\eta_1$,
+$(x_1-x_2)-\ii\eta_2,\ldots,(x_{n-1}-x_n)-\ii\eta_n$, whose boundary value
+as $\eta_1\cdots\eta_n\to0$ in $V_+$ is $F$. This boundary value vanishes
+for $-x_1,x_1-x_2,\ldots,x_{n-1}-x_n$ in an open set determined by
+$x_1\ldots x_n\in\mathcal O$. Thus, by Theorem 2-17 $F$ vanishes and
+therefore its boundary value vanishes for all $x_1,\ldots,x_n$. This shows
+$\ket{\Psi}$ is orthogonal to $D_0$.
+\end{proof}
+\end{theorem}
+
+% PCT-SOURCE: pdf=151 print=139 kind=prose id=p139-cyclic-separating-vectors
+It is well known in the theory of algebras of bounded operators that a cyclic
+vector for a $*$-algebra, $\PolynomialAlgebra$, is a separating vector for its
+commutant. That means: if the set of vectors $\PolynomialAlgebra\ket{\Psi}$ is
+dense, then the equality $T\ket{\Psi}=0$ for an operator $T$ commuting with
+all operators of $\PolynomialAlgebra$ implies $T=0$. (For a proof see Ref.~4.)
+Theorem 4-3 is an analogue of this statement for our case. It can be
+interpreted as meaning that it is difficult to isolate a system described by
+fields from outside effects. The algebra $\PolynomialAlgebra(\mathcal O)$
+never contains any annihilation or creation operators if the open set
+satisfies a certain boundedness condition. To define the boundedness
+condition, consider the set of all points which are space-like with respect to
+every point of $\mathcal O$. The interior of this set is $\mathcal O'$. Then
+we assert
+
+% PCT-SOURCE: pdf=151 print=139 kind=theorem id=thm-ch4-3-separating
+\begin{theorem}[4-3]\label{thm:ch4-3-separating}
+% PCT-SOURCE: pdf=151 print=139 kind=theorem-statement id=thm-ch4-3-separating-statement
+If $\mathcal O$ is an open set for which $\mathcal O'$ is not empty, and
+$T\in\PolynomialAlgebra(\mathcal O)$, then
+
+% PCT-SOURCE: pdf=151 print=139 kind=display id=eq-ch4-11
+\begin{equation}
+  T\ket{\Omega}=0
+  \tag{4-11}\label{eq:ch4-11}
+\end{equation}
+
+% PCT-SOURCE: pdf=151 print=139 kind=theorem-statement-continuation id=thm-ch4-3-separating-conclusion
+implies $T=0$.
+
+% PCT-SOURCE: pdf=151 print=139 kind=proof id=proof-ch4-3-separating
+\begin{proof}
+% PCT-SOURCE: pdf=151 print=139 kind=prose id=p139-separating-proof-domain
+Let $\ket{\Phi}$ be a vector in the domain of definition $D$ of $\varphi$.
+Let $\ket{\Psi}=P'\ket{\Omega}$, where
+$P'\in\PolynomialAlgebra(\mathcal O')$. Then for any
+$T\in\PolynomialAlgebra(\mathcal O)$ satisfying (4-11),
+
+% PCT-SOURCE: pdf=151 print=139 kind=display id=eq-ch4-12
+\begin{equation}
+  \braket{\Psi}{T^\dagger\Phi}
+  =\braket{T\Psi}{\Phi}
+  =\braket{TP'\Omega}{\Phi}
+  =\braket{P'T\Omega}{\Phi}=0.
+  \tag{4-12}\label{eq:ch4-12}
+\end{equation}
+
+% PCT-SOURCE: pdf=151 print=139 kind=prose id=p139-separating-proof-density
+where in the last equality (4-11) has been used. Since, by Theorem 4-2,
+vectors of the form $\PolynomialAlgebra(\mathcal O')\ket{\Omega}$ span
+$\Hilbert$, we have $T^\dagger\ket{\Phi}=0$. This in turn implies
+$T\ket{\Psi}=0$, for $\ket{\Psi}\in D$ since
+$\braket{T\Psi}{\Phi}=\braket{\Psi}{T^\dagger\Phi}$ and $D$ is dense.
+\end{proof}
+\end{theorem}
+
+% PCT-SOURCE: pdf=151 print=139 kind=remark id=remark-ch4-3-1
+\emph{Remarks:}
+
+% PCT-SOURCE: pdf=151 print=139 kind=remark-item id=remark-ch4-3-1-text
+\begin{enumerate}
+\item Theorem 4-3 retains its validity if, instead of assuming that
+commutators of fields vanish at space-like separations, we assume that
+anti-commutators vanish. This will be used in the proof of Theorem 4-8.
+
+% PCT-SOURCE: pdf=152 print=140 kind=remark-item id=remark-ch4-3-2-text
+\item Any bounded open set $\mathcal O$ has the property that $\mathcal O'$ is
+non-empty, and so the theorem applies.
+\end{enumerate}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-reeh-schlieder-irreducibility-intro
+Theorem 4-4, also due to Reeh and Schlieder, shows that
+$\PolynomialAlgebra(\mathcal O)$ becomes irreducible when a single operator
+is adjoined.
+
+% PCT-SOURCE: pdf=152 print=140 kind=theorem id=thm-ch4-4-adjoined-projection
+\begin{theorem}[4-4]\label{thm:ch4-4-adjoined-projection}
+% PCT-SOURCE: pdf=152 print=140 kind=theorem-statement id=thm-ch4-4-adjoined-projection-statement
+Let $E_0$ be the projection operator onto the vacuum state, which is supposed
+cyclic with respect to the field. Then, for every open set $\mathcal O$, the
+set of operators $\{E_0,\PolynomialAlgebra(\mathcal O)\}$ is irreducible.
+
+% PCT-SOURCE: pdf=152 print=140 kind=proof id=proof-ch4-4-adjoined-projection
+\begin{proof}
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-definition
+Recall the definition of an irreducible set, Eq.~(3-8). Suppose that for some
+bounded operator, $C$, and all $\ket{\Phi},\ket{\Psi}\in D_0$, we have
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-13
+\begin{equation}
+  \matrixel{\Phi}{C\varphi(f)}{\Psi}
+  =\matrixel{\varphi(f)^\dagger\Phi}{C}{\Psi},
+  \tag{4-13}\label{eq:ch4-13}
+\end{equation}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-commutation
+where $\supp f\subset\mathcal O$, and suppose that
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-14
+\begin{equation}
+  CE_0=E_0C.
+  \tag{4-14}\label{eq:ch4-14}
+\end{equation}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-state
+Then (4-13) holds, in particular, for a state $\ket{\Psi}$ of the form
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-15
+\begin{equation}
+  \ket{\Psi}=p\ket{\Omega},\qquad
+  p\in\PolynomialAlgebra(\mathcal O)
+  \tag{4-15}\label{eq:ch4-15}
+\end{equation}
+
+and
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-16
+\begin{equation}
+\begin{aligned}
+  \bra{\Phi}C\ket{\Psi}
+    &=\bra{\Phi}Cp\ket{\Omega}
+     =\bra{p^\dagger\Phi}C\ket{\Omega}
+     =\bra{p^\dagger\Phi}CE_0\ket{\Omega} \\
+    &=\bra{p^\dagger\Phi}E_0C\ket{\Omega}
+     =\braket{p^\dagger\Phi}{\Omega}
+      \bra{\Omega}C\ket{\Omega},
+\end{aligned}
+\tag{4-16}\label{eq:ch4-16}
+\end{equation}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-definition-used
+where (4-13), (4-14), and the definition of $E_0$,
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-4-vacuum-projection
+\begin{equation*}
+  E_0\ket{\Psi}=\braket{\Omega}{\Psi}\ket{\Omega},
+\end{equation*}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-conclusion
+have been used. Clearly, (4-16) says
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-4-scalar-action
+\begin{equation*}
+  \bra{\Phi}C\ket{\Psi}=c_0\braket{\Phi}{\Psi},
+\end{equation*}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-c0
+where
+
+% PCT-SOURCE: pdf=152 print=140 kind=display id=eq-ch4-4-c0
+\begin{equation*}
+  c_0=\bra{\Omega}C\ket{\Omega}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-adjoined-projection-density
+Since a bounded operator is continuous and states $\ket{\Phi},\ket{\Psi}$ are
+dense in $\Hilbert$, this implies $C=c_0$.
+\end{proof}
+\end{theorem}
+
+% PCT-SOURCE: pdf=152 print=140 kind=prose id=p140-whole-spacetime-irreducibility
+Theorem 4-4 shows that for any $\mathcal O$ the adjunction of $E_0$ to
+$\PolynomialAlgebra(\mathcal O)$ produces an irreducible set of operators.
+The next theorem shows that for a special choice of $\mathcal O$, namely, the
+whole of space-time, $E_0$ is effectively contained in
+$\PolynomialAlgebra(\mathcal O)$, so $\PolynomialAlgebra(\mathcal O)$ itself
+is irreducible. We give a proof for a theory of a neutral scalar field. The
+extension to a set of fields of arbitrary transformation laws is easy.
+
+% PCT-SOURCE: pdf=153 print=141 kind=theorem id=thm-ch4-5-smeared-fields
+\begin{theorem}[4-5]\label{thm:ch4-5-smeared-fields}
+% PCT-SOURCE: pdf=153 print=141 kind=theorem-statement id=thm-ch4-5-smeared-fields-statement
+In any field theory, the smeared fields form an irreducible set of operators.
+\end{theorem}
+
+% PCT-SOURCE: pdf=153 print=141 kind=remark id=remark-ch4-5
+\emph{Remark:}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-remark
+Recall that with our definition of a field theory the vacuum is a cyclic
+vector for the smeared fields; this hypothesis is essential for the truth of
+the theorem. The theorem provides the promised justification of the
+definition of field theory in terms of cyclicity of the vacuum rather than
+irreducibility of the smeared fields.
+
+% PCT-SOURCE: pdf=153 print=141 kind=proof id=proof-ch4-5-smeared-fields
+\begin{proof}
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-one-operator
+Notice that if $C$ is a bounded operator which satisfies
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-5-one-field
+\begin{equation*}
+  \matrixel{\Phi}{C\varphi(f)}{\Psi}
+  =\matrixel{\varphi(f)^\dagger\Phi}{C}{\Psi}
+\end{equation*}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-multifield
+for all $\ket{\Phi},\ket{\Psi}\in D_0$, then $C$ satisfies
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-17
+\begin{equation}
+  \matrixel{\Phi}{C\varphi(f_1)\cdots\varphi(f_n)}{\Psi}
+  =\matrixel{\varphi(f_n)^\dagger\cdots\varphi(f_1)^\dagger\Phi}{C}{\Psi}.
+  \tag{4-17}\label{eq:ch4-17}
+\end{equation}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-translation-case
+Consider, in particular, the case
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-18
+\begin{equation}
+\begin{aligned}
+  &\bra{\Omega}C\varphi(\{a,1\}f_1)\cdots
+  \varphi(\{a,1\}f_n)\ket{\Omega} \\
+  &\quad=\bra{\varphi(\{a,1\}f_n)^\dagger\cdots
+  \varphi(\{a,1\}f_1)^\dagger\Omega}C\ket{\Omega}.
+\end{aligned}
+\tag{4-18}\label{eq:ch4-18}
+\end{equation}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-covariance
+Rewritten using the transformation law of $\varphi$ and the invariance of the
+vacuum state under translation, it is
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-5-translation
+\begin{equation*}
+  \bra{\Omega}CU(a,1)\varphi(f_1)\cdots\varphi(f_n)\ket{\Omega}
+  =\bra{\varphi(f_n)^\dagger\cdots\varphi(f_1)^\dagger\Omega}
+  U(-a,1)C\ket{\Omega}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-fourier
+By Fourier-transforming this equation in $a$ we get the assertion
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-5-spectral-projection
+\begin{equation*}
+  \bra{\Omega}CE(S)\varphi(f_1)\cdots\varphi(f_n)\ket{\Omega}
+  =\bra{\varphi(f_n)^\dagger\cdots\varphi(f_1)^\dagger\Omega}
+  E(-S)C\ket{\Omega},
+\end{equation*}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-spectral-support
+where $S$ is any measurable set in momentum space. This is explained in
+Section~2-6.
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-vacuum-component
+But since the spectrum of energy momentum lies in or on the plus cone, if
+$-S$ lies in the physical spectrum and does not include $p=0$, the left-hand
+side vanishes. That means that $C\ket{\Omega}$ is orthogonal to all states
+$E(-S)\varphi(f_n)^\dagger\cdots\varphi(f_1)^\dagger\ket{\Omega}$ and therefore
+$C\ket{\Omega}=c\ket{\Omega}$, where $c$ is a complex number. Then (4-17) for
+the special case $\ket{\Psi}=\ket{\Omega}$ is
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-5-final-matrix-element
+\begin{equation*}
+\begin{aligned}
+  \matrixel{\Phi}{C\varphi(f_1)\cdots\varphi(f_n)}{\Omega}
+  &=\matrixel{\varphi(f_n)^\dagger\cdots\varphi(f_1)^\dagger\Phi}{C}{\Omega} \\
+  &=c\matrixel{\Phi}{\varphi(f_1)\cdots\varphi(f_n)}{\Omega}.
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-conclusion-intro
+This implies
+
+% PCT-SOURCE: pdf=153 print=141 kind=display id=eq-ch4-5-scalar
+\begin{equation*}
+  \bra{\Phi}C\ket{\Psi}=c\braket{\Phi}{\Psi}
+\end{equation*}
+
+% PCT-SOURCE: pdf=153 print=141 kind=prose id=p141-smeared-fields-proof-conclusion
+for all $\ket{\Phi},\ket{\Psi}\in D_0$, whence by the continuity of $C$ and
+the denseness of $D_0$, $C=c$.
+\end{proof}

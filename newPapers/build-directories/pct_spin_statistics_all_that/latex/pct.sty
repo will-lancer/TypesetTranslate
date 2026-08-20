@@ -1,0 +1,212 @@
+%% PCT edition house style.
+%% The document class and JHEP page treatment stay in jheppub.sty.  This
+%% package collects the notation and structural helpers used by the native
+%% transcription.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pct}[2026/08/20 PCT native JHEP edition]
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{mathrsfs}
+\RequirePackage{slashed}
+\RequirePackage{expl3}
+
+% Dirac notation.  In/out labels sit outside the delimiters so that a state
+% label cannot be mistaken for part of the bra or ket argument.
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\vert #2\rangle}
+\newcommand{\matrixel}[3]{\langle #1\vert #2\vert #3\rangle}
+\newcommand{\Ket}[1]{\ket{#1}}
+\newcommand{\Bra}[1]{\bra{#1}}
+\newcommand{\InKet}[1]{\ket{#1}_{\mathrm{in}}}
+\newcommand{\InKetWith}[2]{\ket{#1}_{\mathrm{in},#2}}
+\newcommand{\OutKet}[1]{\ket{#1}_{\mathrm{out}}}
+\newcommand{\InBra}[1]{{}_{\mathrm{in}}\!\bra{#1}}
+\newcommand{\OutBra}[1]{{}_{\mathrm{out}}\!\bra{#1}}
+\newcommand{\InOutKet}[1]{\ket{#1}_{\mathrm{in/out}}}
+\newcommand{\OutInKet}[1]{\ket{#1}_{\mathrm{out/in}}}
+\newcommand{\InOutBra}[1]{{}_{\mathrm{in/out}}\!\bra{#1}}
+\newcommand{\OutInBra}[1]{{}_{\mathrm{out/in}}\!\bra{#1}}
+\newcommand{\ev}[1]{\langle #1\rangle}
+\newcommand{\vacuum}{\ket{0}}
+\newcommand{\vacuumbra}{\bra{0}}
+\newcommand{\adjoint}[1]{#1^\dagger}
+\newcommand{\conjugate}[1]{#1^*}
+
+% Spacetime, spectral, and AQFT notation.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Minkowski}{\mathbb{R}^{1,3}}
+\newcommand{\Hilbert}{\mathcal{H}}
+\newcommand{\Algebra}{\mathcal{A}}
+\newcommand{\PolynomialAlgebra}{\mathcal{P}}
+\newcommand{\TestFunctions}{\mathcal{D}}
+\newcommand{\Schwartz}{\mathcal{S}}
+\newcommand{\Wightman}{W}
+\newcommand{\Tube}{\mathcal{T}}
+\newcommand{\ExtendedTube}{\mathcal{T}^{\prime}}
+\newcommand{\BorchersClass}{\mathcal{B}}
+\newcommand{\Spectrum}{\operatorname{spec}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\PCT}{\mathrm{PCT}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\slashedvector}[1]{\slashed{#1}}
+\newcommand{\metric}{\eta}
+\newcommand{\MinkowskiMetric}{\eta=\operatorname{diag}(-1,+1,+1,+1)}
+\newcommand{\spacetimevector}[1]{x^{#1}}
+\newcommand{\threevector}[1]{\mathbf{#1}}
+
+% Paired delimiters used repeatedly in the mathematical transcription.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\set{\lbrace}{\rbrace}
+\DeclarePairedDelimiter\inner{\langle}{\rangle}
+
+% Source-style chapter equation and result numbers.  The master treats each
+% printed chapter as a top-level section, so equations read (2-1) and results
+% read Theorem 4-1 even though the document uses LaTeX's article class.
+\renewcommand{\thesubsection}{\thesection-\arabic{subsection}}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\renewcommand{\thetheorem}{\thesection-\arabic{theorem}}
+\renewcommand{\thelemma}{\thetheorem}
+\renewcommand{\theproposition}{\thetheorem}
+\renewcommand{\thecorollary}{\thetheorem}
+\renewcommand{\theclaim}{\thetheorem}
+\renewcommand{\thedefinition}{\thetheorem}
+\renewcommand{\theexample}{\thetheorem}
+\renewcommand{\theremark}{\thetheorem}
+\renewcommand{\theobservation}{\thetheorem}
+% Halmos' filled square is the source's proof terminator throughout the book.
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% Source packets sometimes need an unnumbered result environment.  Keep the
+% starred forms available beside the numbered environments supplied above.
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{observation*}{Observation}
+
+% The source prints result identifiers such as “Theorem 4-14”.  An optional
+% argument to amsthm is ordinarily a parenthetical note after the automatic
+% number, which would produce “Theorem 4-14 (4-14)” here.  Treat an optional
+% chapter-result identifier as the displayed number and retain any source
+% title following it.  The automatic counter still advances, preserving the
+% theorem sequence for later unnamed environments and the standard JHEP
+% theorem spacing remains in amsthm's head builder.
+\ExplSyntaxOn
+\seq_new:N \l_pct_result_match_seq
+\tl_new:N \l_pct_result_number_tl
+\tl_new:N \l_pct_result_display_tl
+\cs_new_protected:Npn \pct_result_head:nnn #1#2#3
+  {
+    \tl_if_blank:nTF {#2}
+      {
+        \global\edef\@currentlabelname{#1}
+        \thmhead@plain {#1} {#2} {#3}
+      }
+      {
+        \global\edef\@currentlabelname{#1\c_space_tl#2}
+        \seq_clear:N \l_pct_result_match_seq
+        \regex_extract_once:nnNTF
+          {
+            \A \s*
+            (?: Theorem | Lemma | Proposition | Corollary | Claim |
+                Definition | Example | Remark | Observation )?
+            \s* ( [0-9]+ - [0-9]+ ) ( .* ) \Z
+          }
+          {#3}
+          \l_pct_result_match_seq
+          {
+            \tl_set:Nx \l_pct_result_number_tl
+              { \seq_item:Nn \l_pct_result_match_seq {2} }
+            \tl_set:Nx \l_pct_result_display_tl
+              {
+                \seq_item:Nn \l_pct_result_match_seq {2}
+                \seq_item:Nn \l_pct_result_match_seq {3}
+              }
+            % The amsthm heading is assembled in a box group.  Make the
+            % source identifier survive that group so a following \label sees
+            % the printed result number rather than the automatic counter.
+            \global\edef\@currentlabel{\tl_use:N \l_pct_result_number_tl}
+            \global\edef\@currentlabelname
+              {#1\c_space_tl\tl_use:N \l_pct_result_number_tl}
+            \thmname {#1}
+            \thmnumber
+              {\@ifnotempty{#1}{\c_space_tl}
+                \@upn{\tl_use:N \l_pct_result_display_tl}}
+          }
+          { \thmhead@plain {#1} {#2} {#3} }
+      }
+  }
+\cs_set_eq:NN \thmhead \pct_result_head:nnn
+\ExplSyntaxOff
+
+% The source uses short epigraphs at the start of chapters and sections.
+% The optional argument is the attribution; leaving it empty produces only
+% the quotation.
+\makeatletter
+\newenvironment{epigraph}[1][]%
+  {\def\pct@epigraph@source{#1}%
+   \begin{flushright}\begin{minipage}{0.76\textwidth}\small\itshape}
+  {\par\ifx\pct@epigraph@source\@empty\else
+     \par\hfill\textup{\pct@epigraph@source}\fi
+   \end{minipage}\end{flushright}\medskip}
+\makeatother
+\newcommand{\epigraphsource}[1]{\par\hfill\textup{#1}}
+
+% Bibliography and index helpers.  Bibliographies remain local to the printed
+% chapter or appendix, while citations remain ordinary natbib/JHEP links.
+\newcommand{\chapterbibliography}{%
+  \chapterbackmatter{Bibliography}%
+}
+% Each printed bibliography supplies its own chapter-local heading.  Suppress
+% natbib's automatic ``References'' heading so the list begins immediately
+% under that source heading, as in the Weinberg edition and the source book.
+\renewcommand{\bibsection}{}
+\newenvironment{pctbibliography}[1][99]{%
+  \begin{thebibliography}{#1}\small
+}{%
+  \end{thebibliography}
+}
+\newcommand{\bibentry}[2]{\bibitem{#1}#2}
+\newcommand{\PCTIndex}[1]{\index{#1}}
+
+% A source marker is normally a TeX comment in the transcription.  This
+% command is available for objects whose marker must travel with a macro call;
+% it emits provenance to the log without placing editorial text in the PDF.
+\newcommand{\PCTSource}[3]{\typeout{PCT-SOURCE: pdf=#1 print=#2 kind=#3}}
+
+\endinput

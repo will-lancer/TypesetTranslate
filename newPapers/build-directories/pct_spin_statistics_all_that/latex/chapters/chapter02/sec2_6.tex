@@ -1,0 +1,595 @@
+% Physical pages: 96--104 (printed pages 84--92).
+% Section 2-6: Hilbert Space.  The lead-in on printed page 84 completes the
+% proof of Theorem 2-17; it is retained here so that this packet covers the
+% assigned source pages.  The preceding theorem statement is on printed p. 83.
+
+% PCT-SOURCE: pdf=96 print=84 kind=prose id=theorem-2-17-continuation
+where the convergence is understood in the sense of $\mathcal{D}'(E)$.  Then
+$F=0$ throughout $\mathcal{B}$.
+
+% PCT-SOURCE: pdf=96 print=84 kind=proof id=theorem-2-17
+\emph{Proof.}
+
+% PCT-SOURCE: pdf=96 print=84 kind=prose id=theorem-2-17-proof
+Define
+\begin{equation*}
+  F_1(x+iy)=\overline{F(x-iy)}.
+\end{equation*}
+The function $F_1$ is holomorphic in the domain
+$\overline{\mathcal{B}}$, complex conjugate to $\mathcal{B}$, and approaches
+$0$ as $y\to0$.  Thus we can apply the edge of the wedge theorem (2-16), to
+$F$ and $F_1$, and conclude that there is a $G$ holomorphic in a complex
+neighborhood of $E$ which is an analytic continuation of $F$ and $F_1$.
+But according to (2-110), $G$ vanishes on $E$ as a distribution and therefore
+as a function.  Since $E$ is a real environment, $G$ vanishes throughout
+$\mathcal{B}$.  \hfill$\blacksquare$
+
+% PCT-SOURCE: pdf=96 print=84 kind=section-heading id=2-6
+\subsection{Hilbert Space}
+
+% PCT-SOURCE: pdf=96 print=84 kind=prose id=2-6-opening
+Throughout Chapter 1, we have taken for granted that the reader is
+acquainted with the elementary theory of Hilbert space.  Here we make a
+series of disconnected remarks which we hope will relate the elementary
+theory to some of the arguments used elsewhere in the book.
+
+% PCT-SOURCE: pdf=96 print=84 kind=prose id=2-6-hilbert-definition
+Recall that a Hilbert space, $\mathcal{H}$, is a vector space with scalars
+which are complex numbers,\footnote{There are of course also real Hilbert
+spaces which use real scalars but they will not be considered here.} and a
+scalar product $\braket{\Phi}{\Psi}$ which is a complex-valued function of
+two vectors in $\mathcal{H}$ satisfying
+
+% PCT-SOURCE: pdf=96 print=84 kind=display id=2-6-scalar-product
+\begin{equation*}
+  \braket{\Phi}{\Psi}=\overline{\braket{\Psi}{\Phi}},
+  \qquad
+  \braket{\Phi}{\alpha\Psi+\beta\chi}
+  =\alpha\braket{\Phi}{\Psi}+\beta\braket{\Phi}{\chi},
+\end{equation*}
+and
+
+% PCT-SOURCE: pdf=96 print=84 kind=display id=2-111
+\begin{equation}
+  \lVert\ket{\Phi}\rVert^2\equiv\braket{\Phi}{\Phi}\geq 0,
+  \tag{2-111}\label{eq:pct-2-111}
+\end{equation}
+and
+
+% PCT-SOURCE: pdf=96 print=84 kind=display id=2-112
+\begin{equation}
+  \braket{\Phi}{\Phi}=0
+  \quad\text{implies}\quad
+  \ket{\Phi}=0.
+  \tag{2-112}\label{eq:pct-2-112}
+\end{equation}
+
+% PCT-SOURCE: pdf=96 print=84 kind=prose id=2-6-completeness
+Furthermore, $\mathcal{H}$ is required to be \emph{complete} in the sense
+that any Cauchy sequence of vectors has a limit.  That means if
+$\ket{\Phi_n}$, $n=1,2,\ldots$, is a sequence of vectors such that for each
+$\epsilon>0$ there is an integer $N$ such that
+
+% PCT-SOURCE: pdf=96 print=84 kind=display id=2-6-cauchy-condition
+\begin{equation*}
+  \lVert\ket{\Phi_n}-\ket{\Phi_m}\rVert<\epsilon
+  \qquad\text{for all }n,m\geq N
+\end{equation*}
+(then $\ket{\Phi_n}$, $n=1,2,\ldots$, is called a \emph{Cauchy sequence}),
+there exists a vector $\ket{\Phi}$ such that
+
+% PCT-SOURCE: pdf=96 print=84 kind=display id=2-6-cauchy-limit
+\begin{equation*}
+  \lim_{n\to\infty}\lVert\ket{\Phi_n}-\ket{\Phi}\rVert=0.
+\end{equation*}
+
+% PCT-SOURCE: pdf=97 print=85 kind=prose id=2-6-separability
+The first point we want to discuss is the separability of the Hilbert spaces
+occurring in quantum field theory.  Recall that a set $S$ of vectors is
+\emph{dense} in $\mathcal{H}$ if, for each vector $\ket{\Phi}\in\mathcal{H}$
+and $\epsilon>0$, there exists a vector $\ket{\Psi}\in S$ such that
+$\lVert\ket{\Phi}-\ket{\Psi}\rVert<\epsilon$.  A Hilbert space is
+\emph{separable} if it contains a denumerable dense set, or, in other words,
+there is a sequence of vectors which is dense.  In non-separable Hilbert
+spaces a continuous index is necessary to label a dense set.  An alternative
+way of describing this distinction is in terms of complete orthonormal sets.
+A Hilbert space is separable if it contains a denumerable complete
+orthonormal set; it is non-separable if complete orthonormal sets are not
+denumerable.  One can pass from one description to the other by
+orthonormalizing the dense set to get a denumerable complete orthonormal set,
+or forming finite linear combinations of the denumerable complete
+orthonormal set with complex numbers whose real and imaginary parts are
+rational to get a denumerable dense set.  In von Neumann's original
+axiomatization the requirement of separability was included as a defining
+property of Hilbert space.  Nowadays, it has become conventional to use the
+name to cover the non-separable case also.  Of late, physicists have started
+considering vector spaces with a scalar product in which (2-111) and (2-112)
+are abandoned (indefinite metric).  We shall not call such spaces Hilbert
+spaces, nor, in fact, consider them at all.
+
+% PCT-SOURCE: pdf=97 print=85 kind=prose id=2-6-nonrelativistic
+In non-relativistic quantum mechanics it is natural to consider only
+separable Hilbert spaces because one is usually dealing with a finite number
+of particles and can realize the states as vectors in $L^2(\mathbb{R}^n)$,
+i.e., as equivalence classes of square integrable functions on $n$-dimensional
+euclidean space, two functions being equivalent if they differ on a set of
+measure zero.  It is well known that this Hilbert space is separable (Ref.~20).
+It is sometimes argued that in quantum field theory one is dealing with a
+system of an infinite number of degrees of freedom and so must use a
+non-separable Hilbert space.  Roughly, the idea is
+
+% PCT-SOURCE: pdf=97 print=85 kind=display id=2-6-separability-schematic
+\begin{equation*}
+\begin{aligned}
+&\left(\begin{array}{c}
+  \text{system of a finite number}\\
+  \text{of degrees of freedom}
+\end{array}\right)
+\longleftrightarrow
+\left(\begin{array}{c}
+  \text{separable Hilbert}\\
+  \text{space}
+\end{array}\right)\\[1ex]
+&\left(\begin{array}{c}
+  \text{system of an infinite number of}\\
+  \text{degrees of freedom or something}
+\end{array}\right)
+\longleftrightarrow
+\left(\begin{array}{c}
+  \text{non-separable Hilbert}\\
+  \text{space}
+\end{array}\right).
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=97 print=85 kind=prose id=2-6-separability-conclusion
+Our next task is to explain why this is wrong, or at best grossly
+misleading.
+
+% PCT-SOURCE: pdf=97 print=85 kind=prose id=2-6-direct-sum-opening
+In the first place note that if $\mathcal{H}_1,\mathcal{H}_2,\mathcal{H}_3,\ldots$
+is a sequence of separable Hilbert spaces then their direct sum
+$\bigoplus_{j=1}^{\infty}\mathcal{H}_j$ is a separable Hilbert
+
+% PCT-SOURCE: pdf=98 print=86 kind=prose id=2-6-direct-sum-opening-continuation
+space.  The direct sum has elements which are sequences
+$\{\ket{\Phi_1},\ket{\Phi_2},\ldots\}$ with $\ket{\Phi_j}\in\mathcal{H}_j$,
+and
+
+% PCT-SOURCE: pdf=98 print=86 kind=display id=2-6-direct-sum-norm
+\begin{equation*}
+  \sum_{j=1}^{\infty}\lVert\ket{\Phi_j}\rVert^2<\infty.
+\end{equation*}
+
+% PCT-SOURCE: pdf=98 print=86 kind=prose id=2-6-direct-sum-product
+The scalar product in $\bigoplus_j\mathcal{H}_j$ is
+
+% PCT-SOURCE: pdf=98 print=86 kind=display id=2-6-direct-sum-product-display
+\begin{equation*}
+  \braket{\Phi}{\Psi}=\sum_{j=1}^{\infty}\braket{\Phi_j}{\Psi_j},
+\end{equation*}
+where $\braket{\Phi_j}{\Psi_j}$ is the scalar product in $\mathcal{H}_j$ and
+$\ket{\Phi}$ stands for $\{\ket{\Phi_1},\ket{\Phi_2},\ldots\}$,
+$\ket{\Psi}$ for $\{\ket{\Psi_1},\ket{\Psi_2},\ldots\}$.  It is not hard to
+see that sequences which have only a finite number of elements different from
+zero, and the non-zero ones belonging to denumerable dense sets of their
+respective $\mathcal{H}_j$, form a denumerable dense set in
+$\bigoplus_j\mathcal{H}_j$.
+
+% PCT-SOURCE: pdf=98 print=86 kind=prose id=2-6-fock-direct-sum
+The direct sum can be used to construct state vectors which are
+superpositions of states for an arbitrarily large number of particles.  One
+merely takes $\bigoplus_{n=0}^{\infty}\mathcal{H}_n$, where $n=0,1,2,\ldots$ and
+$\mathcal{H}_n$ describes the states of $n$ particles.  Just this Hilbert
+space will be used in Chapter 3 to give explicit formulas for the theory of a
+free field.  This is a clear-cut counter example to the above assertion; a
+free field is a system of an infinite number of degrees of freedom.  Of
+course, this example does not describe interacting particles, but, to the
+extent that the arguments of Chapter 1 are correct, the presence of
+interaction makes no difference.  The collision states of an asymptotically
+complete theory span a separable Hilbert space, because they are again just of
+the form $\bigoplus_n\mathcal{H}_n$.  [Here, $\mathcal{H}_n$ is the subspace
+spanned by the ingoing (or outgoing) collision states with $n$ colliding
+particles.]  All these arguments make it clear that there is no evidence
+that separable Hilbert spaces are not the \emph{natural state spaces} for
+quantum field theory.
+
+% PCT-SOURCE: pdf=98 print=86 kind=prose id=2-6-nonseparable-cases
+When, in fact, do non-separable Hilbert spaces appear in quantum mechanics?
+There are two cases which deserve mention.  The first arises when one takes
+an infinite tensor product of separable Hilbert spaces.  We shall not give the
+rather technical definition of infinite tensor product here but only remark
+that it is a natural generalization of the ordinary tensor product which is
+used to describe a composite system.  Infinite tensor products of Hilbert
+spaces (of dimension greater than 1!) are always non-separable.  Since a
+(Bose) field can be thought as a system composed of an infinity of
+oscillators, one might think that such an infinite tensor product is the
+natural state space.
+
+% PCT-SOURCE: pdf=99 print=87 kind=prose id=2-6-separable-subspace
+However, it is characteristic of field theory that some of its observables
+involve all the oscillators at once and it turns out that such observables can
+be naturally defined only on vectors belonging to a tiny separable subset of
+the infinite tensor product.  It is the subspace spanned by such a subset
+which is the natural state space rather than the whole infinite tensor
+product itself.  Thus, while it may be a matter of convenience to regard the
+state space as part of the infinite tensor product, it is not necessary.
+
+% PCT-SOURCE: pdf=99 print=87 kind=prose id=2-6-statistical-mechanics
+A second example of the occurrence of non-separable Hilbert spaces appears
+in statistical mechanics when one passes to the limit in which the
+conventional box containing the system becomes arbitrarily large, the
+density being maintained constant.  Two states of the limiting system which
+have different densities actually differ by the presence of an infinite
+number of particles.  One might expect them to be orthogonal and in fact that
+is the case in all examples worked out so far.  Thus there is an orthonormal
+system labeled by a continuous parameter, the density, and the Hilbert space
+is non-separable.  It seems to us that such phenomena are consequences of
+considering systems in which every state contains an actual infinity of
+physical particles and provide no argument for analogous phenomena in
+relativistic quantum field theory.  This completes our discussion of
+separability.
+
+% PCT-SOURCE: pdf=99 print=87 kind=prose id=2-6-operators-opening
+Now we turn to some remarks on linear operators in Hilbert space.  Later on
+in the book there is a good deal of muttering about domains of unbounded
+operators.  There is a general feeling among physicists that anything that
+depends in an important way on such matters cannot be physics.  We would
+like to offer some arguments to the contrary.
+
+% PCT-SOURCE: pdf=99 print=87 kind=prose id=2-6-operator-definition
+Recall that an operator, $A$, from a Hilbert space $\mathcal{H}_1$ to a
+Hilbert space $\mathcal{H}_2$ is a function defined on a subset of
+$\mathcal{H}_1$, called the \emph{domain} of $A$, $D(A)$, and taking values
+in $\mathcal{H}_2$, the set of those values being called the \emph{range} of
+$A$, $R(A)$.  The \emph{graph}, $\Gamma(A)$, of $A$ is the set of all pairs
+$\{\ket{\Phi},A\ket{\Phi}\}$ with $\ket{\Phi}\in D(A)$.  It is a subset of
+$\mathcal{H}_1\oplus\mathcal{H}_2$.  $A$ is linear if its graph is a linear
+manifold in $\mathcal{H}_1\oplus\mathcal{H}_2$.  This amounts to saying that
+if $\ket{\Phi_1}$ and $\ket{\Phi_2}\in D(A)$, then
+$\alpha\ket{\Phi_1}+\beta\ket{\Phi_2}\in D(A)$ and
+
+% PCT-SOURCE: pdf=99 print=87 kind=display id=2-6-linearity
+\begin{equation*}
+  A\bigl(\alpha\ket{\Phi_1}+\beta\ket{\Phi_2}\bigr)
+  =\alpha A\ket{\Phi_1}+\beta A\ket{\Phi_2},
+\end{equation*}
+which is the usual definition of linearity.  $A$ is closed if its graph is a
+closed set in $\mathcal{H}_1\oplus\mathcal{H}_2$, that is, if
+$\ket{\Phi_n}$, $n=1,2,\ldots\in D(A)$, and
+$\lim_{n\to\infty}\lVert\ket{\Phi_n}-\ket{\Phi}\rVert=0$, and
+$\lim_{n\to\infty}\lVert A\ket{\Phi_n}-\ket{\Psi}\rVert=0$, then
+$\ket{\Phi}\in D(A)$ and $A\ket{\Phi}=\ket{\Psi}$.  An operator $B$ is an
+extension of $A$ if $\Gamma(A)\subset\Gamma(B)$.  That means $D(A)\subset
+D(B)$ and $A\ket{\Phi}=B\ket{\Phi}$ for all $\ket{\Phi}\in D(A)$.  We write
+$A\subset B$ in this case.
+
+% PCT-SOURCE: pdf=100 print=88 kind=prose id=2-6-orthogonal-complement
+If $S$ is any set in $\mathcal{H}_1\oplus\mathcal{H}_2$ its \emph{orthogonal
+complement} is the set $S^\perp$ of all vectors orthogonal to every vector
+$S$.  $S^\perp$ is always a closed linear manifold.  If $S$ happens to be the
+graph of an operator from $\mathcal{H}_1$ to $\mathcal{H}_2$, it may happen
+that $S^\perp$ is the graph of an operator from $\mathcal{H}_2$ to
+$\mathcal{H}_1$.  Whether it is or not depends entirely on whether
+$\{\ket{\Phi},\ket{\Psi}\}$ and $\{\ket{\chi},\ket{\Psi}\}\in S^\perp$
+implies $\ket{\Phi}=\ket{\chi}$; if not, the presumed operator would not be
+single-valued, as it must be by the definition of the notion operator.  The
+condition that $\{\ket{\Phi},\ket{\Psi}\}$ and
+$\{\ket{\chi},\ket{\Psi}\}\in S^\perp$ is
+
+% PCT-SOURCE: pdf=100 print=88 kind=display id=2-6-orthogonal-condition-one
+\begin{equation*}
+  \braket{\Phi}{\Phi_1}+\matrixel{\Psi}{A}{\Phi_1}=0
+\end{equation*}
+and
+
+% PCT-SOURCE: pdf=100 print=88 kind=display id=2-6-orthogonal-condition-two
+\begin{equation*}
+  \braket{\chi}{\Phi_1}+\matrixel{\Psi}{A}{\Phi_1}=0
+  \qquad\text{for all }\ket{\Phi_1}\in D(A).
+\end{equation*}
+Subtracting we see that $\braket{\Phi-\chi}{\Phi_1}=0$, so that if
+$D(A)$ is dense, $\ket{\Phi}=\ket{\chi}$ and $S^\perp$ is the graph of a
+transformation.  The negative of this transformation is called the
+\emph{adjoint} $A^\dagger$ of $A$.  In other words, $A^\dagger$ is the
+transformation from $\mathcal{H}_2$ to $\mathcal{H}_1$ defined for just those
+$\ket{\Psi}\in\mathcal{H}_2$ such that there exists a $\ket{\chi}\in
+\mathcal{H}_1$ satisfying
+
+% PCT-SOURCE: pdf=100 print=88 kind=display id=2-6-adjoint-definition
+\begin{equation*}
+  \matrixel{\Psi}{A}{\Phi}=\braket{\chi}{\Phi}
+  \qquad\text{for all }\ket{\Phi}\in D(A).
+\end{equation*}
+Then, by definition, $\ket{\chi}=A^\dagger\ket{\Psi}$.  Clearly, by
+definition $A^\dagger$ is a closed linear transformation when it exists at
+all.
+
+% PCT-SOURCE: pdf=100 print=88 kind=prose id=2-6-adjoint-extensions
+The adjoint plays an important role in the construction of closed linear
+extensions of a given operator.  Clearly, any closed linear extension of $A$
+must be an extension of the operator whose graph is $\overline{\Gamma(A)}$,
+the closure in $\mathcal{H}_1\oplus\mathcal{H}_2$ of $\Gamma(A)$.  Since
+$\overline{\Gamma(A)}=\{\Gamma(A)^\perp\}^\perp$, the preceding criterion
+says that $(A^\dagger)^\dagger$ is this minimal closed linear extension of
+$A$ if the domains of $A$ and $A^\dagger$ are dense so that both
+$A^\dagger$ and $(A^\dagger)^\dagger$ exist.
+
+% PCT-SOURCE: pdf=100 print=88 kind=prose id=2-6-self-adjoint
+An operator from $\mathcal{H}_1$ to $\mathcal{H}_1$ is \emph{hermitian} if
+$A\subset A^\dagger$, and \emph{self-adjoint} if $A=A^\dagger$.
+(Sometimes these are respectively denoted symmetric and
+hypermaximal-symmetric.)  The operator is \emph{essentially self-adjoint} if
+$A^\dagger=(A^\dagger)^\dagger$.  Clearly, $A$ is hermitian if and only if
+
+% PCT-SOURCE: pdf=100 print=88 kind=display id=2-6-hermitian-condition
+\begin{equation*}
+  \matrixel{\Phi}{A}{\Psi}=\braket{A\Phi}{\Psi}
+  \qquad\text{for all }\ket{\Phi},\ket{\Psi}\in D(A),
+\end{equation*}
+and $D(A)$ is dense.  This is what is customarily meant by hermitian in
+elementary quantum mechanics, but what is relevant if $A$ is to be observable
+is self-adjointness.  Only then are the eigenfunctions of $A$ complete.  (For
+a full explanation see Ref.~20.)  Evidently, essential self-adjointness is
+just as good as self-adjointness from this point of view because
+$(A^\dagger)^\dagger$ is uniquely determined by $A$.
+
+% PCT-SOURCE: pdf=101 print=89 kind=prose id=2-6-bounded-definition
+An operator, $A$, is \emph{bounded} if
+$\lVert A\ket{\Phi}\rVert/\lVert\ket{\Phi}\rVert$ is bounded as $\ket{\Phi}$
+runs over $D(A)$, that is,
+
+% PCT-SOURCE: pdf=101 print=89 kind=display id=2-6-bounded-inequality
+\begin{equation*}
+  \lVert A\ket{\Phi}\rVert\leq M\lVert\ket{\Phi}\rVert
+  \qquad \ket{\Phi}\in D(A)
+\end{equation*}
+for some $M$ independent of $\ket{\Phi}$.  A bounded linear operator is
+evidently continuous because
+$\lVert A\ket{\Phi}-A\ket{\Psi}\rVert\leq
+M\lVert\ket{\Phi}-\ket{\Psi}\rVert$.  Conversely, a linear operator is
+continuous at every point of its domain if it is continuous at $0$, and if it
+is continuous at $0$ it is bounded.  The first of these statements is an
+obvious consequence of linearity.  The second requires only the following
+simple argument.  Suppose $\lVert A\ket{\Phi}\rVert<\epsilon$ for all
+$\ket{\Phi}\in D(A)$ such that $\lVert\ket{\Phi}\rVert<\delta$.  Then, if
+$\ket{\Psi}$ is any element of $D(A)$,
+
+% PCT-SOURCE: pdf=101 print=89 kind=display id=2-6-bounded-proof
+\begin{equation*}
+  \frac{\delta}{2\lVert\ket{\Psi}\rVert}\ket{\Psi}\in D(A)
+  \quad\text{and}\quad
+  \left\lVert\frac{\delta}{2\lVert\ket{\Psi}\rVert}\ket{\Psi}\right\rVert<\delta
+  \quad\text{so}\quad
+  \left\lVert A\left(\frac{\delta}{2\lVert\ket{\Psi}\rVert}\ket{\Psi}\right)\right\rVert
+  <\epsilon,
+\end{equation*}
+that is, $\lVert A\ket{\Psi}\rVert<(2\epsilon/\delta)\lVert\ket{\Psi}\rVert$,
+proving $A$ is bounded.  A bounded linear operator $A$ always has a linear
+extension whose domain is all of $\mathcal{H}_1$.  We shall outline the proof.
+
+% PCT-SOURCE: pdf=101 print=89 kind=prose id=2-6-bounded-extension
+One first extends $A$ by continuity to all limit points of $D(A)$, defining
+$A$ at the limit point as the limit of its values at neighboring points of
+$D(A)$.  This extension is just $(A^\dagger)^\dagger$.  If the closure of
+$D(A)$ is all of $\mathcal{H}_1$, the construction is complete.  If not, one
+can define $A$ arbitrarily (but linearly and boundedly) on the orthogonal
+complement of $D(A)$ and complete the definition to $\mathcal{H}_1$ by
+linearity.  If $A$ is an operator from $\mathcal{H}_1$ to $\mathcal{H}_1$ and
+is hermitian, linear, and bounded, clearly it can always be arranged that
+its extension to all of $\mathcal{H}_1$ is self-adjoint.  Thus in a
+consideration of bounded linear operators, there is no loss in generality in
+regarding them as everywhere defined.
+
+% PCT-SOURCE: pdf=101 print=89 kind=prose id=2-6-unbounded
+The situation for unbounded linear operators is completely different.  An
+unbounded linear operator is discontinuous at every point of its domain.
+Furthermore, if it is closed it cannot be everywhere defined because a closed
+everywhere-defined linear operator is necessarily bounded.  (This last
+statement is the \emph{closed graph theorem}.  For a proof see Ref.~21.)  We
+are particularly interested in closed operators for two reasons.  On the one
+hand, we need to study self-adjoint extensions of hermitian operators $A$.  An
+hermitian $A$ always has a closed linear extension $(A^\dagger)^\dagger$ and
+any self-adjoint extension of $A$ is an extension of $(A^\dagger)^\dagger$.
+On the other hand, we shall want to study non-hermitian operators $A$ with
+dense domains, and their adjoints are always closed.  It is clear that the
+best we can hope for in these situations are operators which are densely but
+not everywhere defined and everywhere discontinuous on their domains.
+
+% PCT-SOURCE: pdf=102 print=90 kind=prose id=2-6-pathology
+These facts are part of what is generally regarded as the pathology of
+Hilbert space, and a natural reaction to them is to make a declaration that
+only bounded operators will be considered: the only operators are bounded
+operators!  There are even good physical grounds for this position, for, as is
+explained at great length in Ref.~20, an unbounded operator which represents
+an observable must be self-adjoint and statements about observations of it can
+be re-expressed in terms of its spectral projections which are bounded
+operators.  There are several reasons why, nevertheless, the axioms of
+Chapter 3 have been expressed in terms of unbounded operators.  First, it is
+these quantities, corresponding directly to the classical fields, which are
+the source of inspiration for the quantum theory of fields.  Second, the
+equations which describe local interaction between fields in space-time are
+expressed in terms of such unbounded operators.  It may be said that these
+arguments express exactly what is wrong with quantum field theory and that is
+a defensible view, but the main point of the enterprise which Chapters 3 and 4
+represent is the exploration, with all the resources of modern mathematics,
+of the physical ideas which have developed in the course of the last fifty
+years.  To him who wants to make a more radical alteration in the foundations
+we say Bravo! and Bon voyage!
+
+% PCT-SOURCE: pdf=102 print=90 kind=prose id=2-6-domain-problems
+Having once resigned ourselves to dealing with unbounded operators, we face
+a couple of practical problems having to do with their domains.  It can
+happen that $A^2$ is undefined except on the zero vector because it may be
+that
+
+% PCT-SOURCE: pdf=102 print=90 kind=display id=2-6-domain-intersection
+\begin{equation*}
+  \{A D(A)\}\cap D(A)=\{0\}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=102 print=90 kind=prose id=2-6-common-domain
+What is worse, we shall have to deal with sets of unbounded operators and
+shall want to compute polynomials in them.  It requires a special assumption
+to be sure that such operations make sense even on a dense set of vectors.
+One is led naturally to assume a common dense domain, $D$, for all the
+unbounded operators in question on which all polynomials are applicable.  Once
+one has $D$, another problem arises: to what extent do the values of the
+unbounded operators on $D$ determine them uniquely wherever else they can be
+defined?  This is particularly acute for observables because an operator which
+is hermitian, when restricted to vectors in $D$, might have several different
+self-adjoint extensions, and to specify a theory one would have to tell which
+self-adjoint extension is meant.  Furthermore, equations valid on vectors of
+$D$ need not be valid for other vectors.  For example, one can have two
+operators, each essentially self-adjoint when restricted to vectors on a
+dense domain $D$ and commuting on such
+
+% PCT-SOURCE: pdf=103 print=91 kind=prose id=2-6-common-domain-continuation
+vectors, but whose self-adjoint extensions do not commute (Ref.~23).
+
+% PCT-SOURCE: pdf=103 print=91 kind=prose id=2-6-domain-continuation
+Whether such behavior can happen in relativistic quantum field theory is not
+known at the moment, and it is somewhat amazing how complete a theory one can
+get without settling it.  The main point of the preceding remarks is to
+bring these important problems to the reader's attention.  The rest of the
+book is devoted to by-passing them.
+
+% PCT-SOURCE: pdf=103 print=91 kind=prose id=2-6-translation-representations
+The remaining subject we will discuss is the theory of continuous unitary
+representations of the translation group of space-time.  Here the main point
+is to connect the statements of Chapter 1 about the energy momentum spectrum
+of a physical theory to the criteria which will be used in Chapters 3 and 4.
+More specifically, what we have in mind is this.  In Chapters 3 and 4 we will
+have matrix elements of the form
+
+% PCT-SOURCE: pdf=103 print=91 kind=display id=2-113
+\begin{equation}
+  \matrixel{\Phi}{U(a,\mathbf{1})}{\Psi}
+  \tag{2-113}\label{eq:pct-2-113}
+\end{equation}
+for certain special vectors $\ket{\Phi}$ and $\ket{\Psi}$, and will argue
+that
+
+% PCT-SOURCE: pdf=103 print=91 kind=display id=2-114
+\begin{equation}
+  \int \dd^4a\,\ee^{+\ii p\cdot a}
+  \matrixel{\Phi}{U(a,\mathbf{1})}{\Psi}=0
+  \tag{2-114}\label{eq:pct-2-114}
+\end{equation}
+unless $p$ belongs to the physical spectrum which lies in $\overline{V}_{+}$.
+The operation indicated in (2-114) is mathematically meaningful because
+(2-113) will be shown to be an infinitely differentiable bounded function,
+and so has a Fourier transform as a tempered distribution.  It makes sense
+to assert that a tempered distribution vanishes in an open set.  On the other
+hand, how do we know that this mathematical assertion is related to the
+statement that the theory has an energy momentum spectrum in $\overline{V}_{+}$?
+Formally, this is usually stated by writing an expansion over intermediate
+states of physical momentum $Q$ and some other quantum numbers $\alpha$:
+
+% PCT-SOURCE: pdf=103 print=91 kind=display id=2-6-intermediate-states
+\begin{equation*}
+  \braket{\Phi}{\Psi}
+  =\sum_{\alpha}\int\dd Q\,
+  \braket{\Phi}{Q,\alpha}\braket{Q,\alpha}{\Psi}.
+\end{equation*}
+Then
+
+% PCT-SOURCE: pdf=103 print=91 kind=display id=2-6-formal-fourier
+\begin{align*}
+  \int\dd^4a\,\ee^{+\ii p\cdot a}
+  \matrixel{\Phi}{U(a,\mathbf{1})}{\Psi}
+  &=\sum_{\alpha}\int\dd Q\int\dd^4a\,
+  \ee^{+\ii(p-Q)\cdot a}
+  \braket{\Phi}{Q,\alpha}\braket{Q,\alpha}{\Psi}\\
+  &=(2\pi)^4\sum_{\alpha}\int\dd Q\,
+  \delta(Q-p)\braket{\Phi}{Q,\alpha}\braket{Q,\alpha}{\Psi},
+\end{align*}
+because
+
+% PCT-SOURCE: pdf=103 print=91 kind=display id=2-6-translation-eigenvalue
+\begin{equation*}
+  \matrixel{Q,\alpha}{U(a,\mathbf{1})}{\Psi}
+  =\ee^{-\ii Q\cdot a}\braket{Q,\alpha}{\Psi}.
+\end{equation*}
+These manipulations are not rigorous, because the states $\ket{Q,\alpha}$
+may have infinite norm.  The method can be completely justified by using the
+theory of direct integrals (Ref.~22), but we want to avoid that.
+
+% PCT-SOURCE: pdf=104 print=92 kind=prose id=2-6-snag-opening
+Alternatively, we can look a little more closely at the form of
+$U(a,\mathbf{1})$.  According to the SNAG theorem (Ref.~22),
+$U(a,\mathbf{1})$ may be written as a Stieltjes integral over momentum space
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-snag-integral
+\begin{equation*}
+  U(a,\mathbf{1})=\int\ee^{-\ii p\cdot a}\,\dd E(p),
+\end{equation*}
+where $E$ is a projection valued measure on momentum space.  That means that
+for each sphere of momentum space, and for each set $S$ which can be obtained
+from spheres by a denumerable number of operations of taking unions,
+intersections, and passing to complements, a projection operator $E(S)$ is
+defined.  $E(S)$ has to satisfy
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-projection-measure
+\begin{align*}
+  E(S_1)E(S_2)&=E(S_1\cap S_2),\\
+  \sum_{j=1}^{\infty}E(S_j)&=E\left(\bigcup_j S_j\right)
+  \qquad\text{if }S_j\cap S_k\text{ is empty for }j\ne k,
+\end{align*}
+and
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-projection-identity
+\begin{equation*}
+  E(\mathbb{R}^4)=\mathbf{1}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=104 print=92 kind=prose id=2-6-spectrum-measure
+In terms of $E$, the statement that a set $S$ is not in the physical energy
+momentum spectrum is simply $E(S)=0$ or, equivalently,
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-spectrum-equivalence
+\begin{equation*}
+  \int\dd^4a\,\rho(a)U(a,\mathbf{1})
+  =\int\widetilde{\rho}(p)\,\dd E(p)=0
+\end{equation*}
+for all $\rho\in\mathcal{S}$ such that $\supp\widetilde{\rho}$ lies in $S$.
+Here
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-fourier-inverse
+\begin{equation*}
+  \rho(x)=\frac{1}{(2\pi)^4}\int\ee^{+\ii p\cdot x}
+  \widetilde{\rho}(p)\,\dd p.
+\end{equation*}
+Evidently, this implies
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-spectrum-matrix-element
+\begin{equation*}
+  \int\dd^4a\,\rho(a)\matrixel{\Phi}{U(a,\mathbf{1})}{\Psi}=0,
+\end{equation*}
+which is another way of stating (2-114).
+
+% PCT-SOURCE: pdf=104 print=92 kind=prose id=2-6-snag-qualification
+These few words are evidently no substitute for a complete exposition of the
+SNAG theorem, but they give the essential ideas which make possible a precise
+statement of the physical hypothesis about the energy momentum spectrum.
+
+% PCT-SOURCE: pdf=104 print=92 kind=prose id=2-6-discrete-spectrum
+The $E(S)$ that can appear in a theory which is invariant under the
+restricted Lorentz group as well as the translation group cannot be arbitrary.
+In particular, there is only one $p$ at which a discrete point spectrum is
+possible: $p=0$.  It is easy to see why this must be.  If
+$P^\mu\ket{\Psi_p}=p^\mu\ket{\Psi_p}$ and
+$\braket{\Psi_p}{\Psi_p}=1$ for some $p\ne0$, then
+$U(0,\Lambda)\ket{\Psi_p}$ would satisfy
+
+% PCT-SOURCE: pdf=104 print=92 kind=display id=2-6-lorentz-eigenvalue
+\begin{equation*}
+  P^\mu U(0,\Lambda)\ket{\Psi_p}
+  =(\Lambda p)^\mu U(0,\Lambda)\ket{\Psi_p},
+\end{equation*}
+and, as $\Lambda$ runs over $L_+^\uparrow$, the
+$U(0,\Lambda)\ket{\Psi_p}$ would be a continuous family of normalized states
+orthogonal when $\Lambda_1p\ne\Lambda_2p$.  That is impossible in a separable
+Hilbert space.  It is interesting that this makes it possible to characterize
+the vacuum state in simpler ways: it is the only normalizable eigenfunction of
+$P^0$, or $\mathbf{P}$, or $P^1$.

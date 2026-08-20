@@ -1,0 +1,973 @@
+% PCT-SOURCE: pdf=43 print=31 kind=section id=2-1
+\subsection{Definition of Distribution}\label{sec:2-1}
+
+% PCT-SOURCE: pdf=43 print=31 kind=prose
+\emph{Distribution} is a generalization of the notion of \emph{function},
+which makes it possible to make precise various formal mathematical
+manipulations common among physicists. The Dirac $\delta$-function and its
+derivatives are examples of distributions; they are defined by the equations
+
+% PCT-SOURCE: pdf=43 print=31 kind=display id=2-1
+\begin{equation}
+\begin{gathered}
+  \int f(x)\delta(x)\,dx=f(0),\\
+  \int f(x)\delta'(x)\,dx=-f'(0),\\[-2pt]
+  \vdots\\[-2pt]
+  \int f(x)\delta^{(n)}(x)\,dx
+    =(-1)^n\left.\frac{d^n f}{dx^n}\right|_{x=0},
+\end{gathered}
+\tag{2-1}\label{eq:ch2-delta}
+\end{equation}
+
+% PCT-SOURCE: pdf=43 print=31 kind=prose
+where $f(x)$ is some suitably smooth function on the real line. It is clear
+that $\delta(x)$ is not a function [it would be $=0$ for $x\ne0$, which implies
+(for a function $\delta$) $\int f(x)\delta(x)\,dx=0$]. Rather, it is a rule
+associating a number [$f(0)$] with each suitably smooth function $f$. How
+suitably smooth? To give the formula (2-1) meaning for all $n$, $f(x)$ has to
+have derivatives of all orders at $x=0$. In general, we expect a different
+notion of distribution for each class of $f$'s for which the distribution is
+supposed to be defined. An $f$ for which the distribution is defined is called
+a \emph{test function}.
+
+% PCT-SOURCE: pdf=44 print=32 kind=prose
+The essential feature of formulas such as those of (2-1) is that they define a
+\emph{linear functional}; that is, for each test function, $f$, there is given
+a complex number $T(f)$ and
+
+% PCT-SOURCE: pdf=44 print=32 kind=display id=2-2
+\begin{equation}
+  T(\alpha f)=\alpha T(f),\qquad
+  T(f_1+f_2)=T(f_1)+T(f_2).
+\tag{2-2}\label{eq:ch2-linear}
+\end{equation}
+
+% PCT-SOURCE: pdf=44 print=32 kind=prose
+[In this notation (2-1) is written $\delta(f)=f(0)$, etc.] Furthermore,
+$T(f)$ is continuous in the sense that if $f_n$ approaches $f$, $T(f_n)$
+approaches $T(f)$. Just as there are several possible candidates for the sets
+of test functions on which a distribution may be defined, there may be several
+possible notions of convergence $f_n\to f$. If the set of test functions is
+regarded as equipped with a particular notion of convergence, then a
+\emph{distribution is defined as a continuous linear functional on the test
+functions}.
+
+% PCT-SOURCE: pdf=44 print=32 kind=prose
+In what sense does distribution constitute a generalization of the notion of
+function? If $T$ is a function defined on the same space as the test
+functions, it may happen that the product $T(x)f(x)$ defines an integrable
+function for every test function $f$, and that $T(f)$, which is defined as a
+linear functional by
+
+% PCT-SOURCE: pdf=44 print=32 kind=display id=2-3
+\begin{equation}
+  T(f)=\int T(x)f(x)\,dx,
+\tag{2-3}\label{eq:ch2-function-distribution}
+\end{equation}
+
+% PCT-SOURCE: pdf=44 print=32 kind=prose
+is continuous in $f$. In that case the function $T$ defines a distribution.
+Conversely, we say a distribution $T$ is a function if there exists a function
+such that (2-3) holds. Clearly, in this correspondence between distributions
+and functions, one does not distinguish between two functions which differ on
+a set of measure zero because each will give rise to the same linear
+functional (2-3).
+
+% PCT-SOURCE: pdf=44 print=32 kind=prose
+Much of the ordinary terminology of function theory can be transferred
+immediately to distributions. For example, there is the notion of the
+\emph{support} of a function, $T$, which will be denoted $\operatorname{supp}T$.
+It is the closed set obtained by taking the complement of the largest open set
+in which $T$ vanishes. Now, to say that $T$ vanishes in an open set $O$ is
+nearly equivalent for a function to saying that $T(f)=0$ for all test
+functions whose supports are in $O$, provided the test functions are numerous
+enough to include sufficiently many positive functions whose supports are in
+$O$. (We say nearly equivalent because there may be exceptional sets of
+measure zero.) Thus we adopt as the definition of support for a distribution
+$T$: $\operatorname{supp}T$ is the complement of the largest open set on which
+$T$ vanishes. $T$ vanishes on an open set if it vanishes for all test functions
+whose supports are in the open set. This definition gives meaning to the
+notion of vanishing in a neighborhood of a point but not at a point. For all
+our applications the former will be adequate.
+
+% PCT-SOURCE: pdf=44 print=32 kind=footnote
+\footnote{Supp $T$ should not be confused with $\sup T$, which is a shorthand
+for the least upper bound, or supremum, of $T$.}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+With the exception of two important results, we shall deal in this book with
+the special case of so-called \emph{tempered distributions}. The set of test
+functions in this case is denoted $\mathcal{S}$ or, when it is advisable to
+indicate on what variables the test functions depend,
+$\mathcal{S}(\mathbb{R}^n)$ or $\mathcal{S}_{x_1,\ldots,x_n}$. Here
+$\mathbb{R}^n$ stands for the real-vector space of $n$ dimensions equipped
+with the usual euclidean distance
+
+% PCT-SOURCE: pdf=45 print=33 kind=display
+\begin{equation*}
+  |x-y|=\left[\sum_{j=1}^n(x_j-y_j)^2\right]^{1/2}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+$\mathcal{S}$ consists of all complex-valued, infinitely differentiable
+functions $f$, which, together with their derivatives, approach zero at
+infinity faster than any power of the euclidean distance. This last
+requirement can be made explicit if we introduce the following notation. Let
+$k$ stand for the sequence of integers $k_1,\ldots,k_n$ and write $x^k$ for the
+product of powers given by
+
+% PCT-SOURCE: pdf=45 print=33 kind=display id=2-4
+\begin{equation}
+  x^k=x_1^{k_1}\cdots x_n^{k_n}.
+\tag{2-4}\label{eq:ch2-multiindex}
+\end{equation}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+Put $D^k$ for the differentiation operator given by
+
+% PCT-SOURCE: pdf=45 print=33 kind=display id=2-5
+\begin{equation}
+  D^k=\frac{\partial^{|k|}}
+    {(\partial x_1)^{k_1}\cdots(\partial x_n)^{k_n}},
+\tag{2-5}\label{eq:ch2-derivative-multiindex}
+\end{equation}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+where $|k|=k_1+k_2+\cdots+k_n$. Now define
+
+% PCT-SOURCE: pdf=45 print=33 kind=display id=2-6
+\begin{equation}
+  \|f\|_{r,s}=\sum_{|k|\le r}\sum_{|\ell|\le s}
+    \sup_x\left|x^kD^\ell f(x)\right|.
+\tag{2-6}\label{eq:ch2-seminorm}
+\end{equation}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+For each pair of non-negative integers $r$ and $s$, and each infinitely
+differentiable function $f$, this formula yields an $\|f\|_{r,s}$ which is
+either a non-negative real number or $+\infty$. If $\|f\|_{r,s}=0$ for some
+pair $r,s$, then $f=0$ because that implies $\sup_x|f(x)|=0$. Furthermore,
+$\|\alpha f\|_{r,s}=|\alpha|\,\|f\|_{r,s}$ and
+$\|f+g\|_{r,s}\le\|f\|_{r,s}+\|g\|_{r,s}$, so $\|\ \|_{r,s}$ is a
+\emph{norm}. The class $\mathcal{S}$ is the set of all infinitely
+differentiable functions, $f$, such that
+
+% PCT-SOURCE: pdf=45 print=33 kind=display
+\begin{equation*}
+  \|f\|_{r,s}<\infty
+\end{equation*}
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+for all integers $r,s$. It is pretty evident that this definition is
+equivalent to the preceding one.
+
+% PCT-SOURCE: pdf=45 print=33 kind=prose
+To define convergence in $\mathcal{S}$, one again uses the $\|\ \|_{r,s}$. A
+sequence of $f_n$ in $\mathcal{S}$ converges to $f$ in $\mathcal{S}$ if, for
+each $r$ and $s$,
+
+% PCT-SOURCE: pdf=45 print=33 kind=display id=2-7
+\begin{equation}
+  \lim_{n\to\infty}\|f_n-f\|_{r,s}=0.
+\tag{2-7}\label{eq:ch2-convergence-s}
+\end{equation}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+This machinery gives a neat statement of the definition of tempered
+distribution. A tempered distribution, $T$, is a linear functional defined on
+$\mathcal{S}$ with the property: if
+
+% PCT-SOURCE: pdf=46 print=34 kind=display
+\begin{equation*}
+  \lim_{n\to\infty}\|f_n-f\|_{r,s}=0\qquad\text{for all }r,s,
+\end{equation*}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+then
+
+% PCT-SOURCE: pdf=46 print=34 kind=display id=2-8
+\begin{equation}
+  \lim_{n\to\infty}|T(f_n)-T(f)|=0.
+\tag{2-8}\label{eq:ch2-tempered-continuity}
+\end{equation}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+Just as in the case of a function, $F$, of a real variable, the definition of
+continuity can be stated in alternative forms. For a function,
+
+% PCT-SOURCE: pdf=46 print=34 kind=display
+\begin{equation*}
+  x_n\to x\quad\text{implies}\quad F(x_n)\to F(x),
+\end{equation*}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+which is equivalent to: for any $\epsilon>0$ there exists a $\delta>0$ such
+that
+
+% PCT-SOURCE: pdf=46 print=34 kind=display
+\begin{equation*}
+  |y-x|<\delta\quad\text{implies}\quad |F(y)-F(x)|<\epsilon.
+\end{equation*}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+For a distribution the analogue of the second alternative is: the tempered
+distribution $T$ is continuous at $f$ if, for any $\epsilon>0$, there exist
+integers $r,s$, and a $\delta>0$, such that
+
+% PCT-SOURCE: pdf=46 print=34 kind=display id=2-9
+\begin{equation}
+  \|g-f\|_{r,s}<\delta\quad\text{implies}\quad
+  |T(g)-T(f)|<\epsilon.
+\tag{2-9}\label{eq:ch2-continuity-alternative}
+\end{equation}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+We shall use whichever of the equivalent formulations (2-8) or (2-9) is
+convenient.
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+One way to guarantee that (2-8) or (2-9) holds is to require that for some
+pair of non-negative integers $r,s$ there exists a constant $C$ such that
+
+% PCT-SOURCE: pdf=46 print=34 kind=display id=2-10
+\begin{equation}
+  |T(f)|\le C\|f\|_{r,s}.
+\tag{2-10}\label{eq:ch2-continuity-bound}
+\end{equation}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+[Clearly then,
+
+% PCT-SOURCE: pdf=46 print=34 kind=display
+\begin{equation*}
+  |T(f_n)-T(f)|=|T(f_n-f)|\le C\|f_n-f\|_{r,s}.\qquad]
+\end{equation*}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+Actually, this condition (2-10) is not only sufficient for the continuity of
+$T$ but also necessary, as is easy to prove using the linearity of $T$.
+[We shall not prove this but shall use it; it is Theorem (5-1), p. 25, in
+G\aa rding--Lions.\textsuperscript{3} A completely analogous assertion for operators in
+Hilbert space is proved in Section 2-6.] Incidentally, (2-10) shows that a
+linear functional is continuous at all points $f$ in $\mathcal{S}$ if it is
+continuous at $f=0$.
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+There is an important class of linear functionals which satisfy the continuity
+condition (2-10) in an obvious way:
+
+% PCT-SOURCE: pdf=46 print=34 kind=display id=2-11
+\begin{equation}
+  T(f)=\sum_{0\le|k|\le s}\int
+  F_k(x_1,\ldots,x_n)D^kf(x_1,\ldots,x_n)\,dx_1\cdots dx_n,
+\tag{2-11}\label{eq:ch2-tempered-representation}
+\end{equation}
+
+% PCT-SOURCE: pdf=46 print=34 kind=prose
+where the $F_k$ are continuous functions bounded as follows:
+
+% PCT-SOURCE: pdf=46 print=34 kind=display id=2-12
+\begin{equation}
+  |F_k(x)|\le C_k(1+|x|^j)
+\tag{2-12}\label{eq:ch2-polynomial-bound}
+\end{equation}
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+for some $C_k$ and $j$ depending on $k$. Clearly, it then follows that
+
+% PCT-SOURCE: pdf=47 print=35 kind=display
+\begin{equation*}
+  |T(f)|\le C\|f\|_{r,s}
+\end{equation*}
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+for some $C$ and $r,s$, so $T$ is a tempered distribution. It is usually
+written symbolically in the form obtained by integrating by parts:
+
+% PCT-SOURCE: pdf=47 print=35 kind=display id=2-13
+\begin{equation}
+  T(x)=\sum_{0\le|k|\le s}(-1)^{|k|}D^kF_k(x).
+\tag{2-13}\label{eq:ch2-integration-by-parts}
+\end{equation}
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+In general, this formula cannot be taken literally, since the $F_k$ need not
+be differentiable nor the $D^kF_k$ integrable.
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+It can be shown that \emph{every tempered distribution} can be written in the
+form (2-11). We shall not prove this result here. (It is an exercise on p. 28
+of G\aa rding--Lions.) We merely note that the practical-minded reader can
+take (2-11) as the \emph{definition} of what is meant by a tempered
+distribution, and will not go wrong in any of what follows.
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+It is clear that the tempered distributions are very restricted in two ways,
+which can be described roughly as follows: they grow at worst like polynomials
+when $x\to\infty$, and they are at worst of finite order. The first means
+essentially that the inequalities (2-12) hold and only a finite number of terms
+occur in (2-11), whereas the second means that $D^k$ only up to some maximum
+$|k|$ occur in (2-11). Of course, precise definitions of polynomial growth
+and order can be given, but we shall not need them.
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+The only distributions appearing in this book which are not tempered will be
+elements of $\mathcal{D}'$, that is, continuous linear functionals on the
+space $\mathcal{D}$ of all infinitely differentiable functions of compact
+support.%
+% PCT-SOURCE: pdf=47 print=35 kind=footnote
+\footnote{
+Recall that a set, $S$, is compact if given a collection $\{O_i\}$ of open
+sets such that $x\in S$ implies $x\in O_i$ for some $i$; then there is a finite
+subset of the collection with the same property. More briefly, $S$ is compact
+if every open covering has a finite subcovering. For sets in euclidean space,
+a set is compact if and only if it is closed and bounded.} The notion of
+convergence in $\mathcal{D}$ is this: $f_n\to f$ in $\mathcal{D}$, if the
+supports of the $f_n$ lie in some fixed compact set, $K$, and $f_n\to f$
+uniformly in $K$, and the derivatives of $f_n$ approach those of $f$ uniformly
+in $K$.
+
+% PCT-SOURCE: pdf=47 print=35 kind=prose
+Clearly, every element of $\mathcal{D}$ is an element of $\mathcal{S}$, so
+every element of $\mathcal{S}'$ is defined on the elements of $\mathcal{D}$.
+Furthermore, a sequence of elements of $\mathcal{D}$ which converges in
+$\mathcal{D}$ to an element of $\mathcal{D}$ certainly converges in $\mathcal{S}$
+to the same element. Therefore $\mathcal{S}'\subset\mathcal{D}'$, or, in
+ordinary language, tempered distributions are distributions. However, there
+are many elements of $\mathcal{D}'$ which are not in $\mathcal{S}'$. For one
+example, take ordinary continuous functions which grow exponentially. For
+another, consider
+
+% PCT-SOURCE: pdf=47 print=35 kind=display
+\begin{equation*}
+  T(x)=\sum_{n=0}^{\infty}\delta^{(n)}(x-n).
+\end{equation*}
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+When applied to any test function in $\mathcal{D}$, the infinite sum becomes
+finite. However, there is no bound on the order of the derivative which
+appears if the support of the test function moves toward infinity; elements of
+$\mathcal{D}'$ need not be of finite order.
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+In both $\mathcal{S}'$ and $\mathcal{D}'$, we can define what is meant by the
+\emph{convergence of a sequence, $T_n$, of distributions to a distribution
+$T$}: $T_n\to T$ if, for every test function $f$, $T_n(f)\to T(f)$ as complex
+numbers. Of course, the notions of convergence are not the same because the
+$f$'s are different.
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+A typical example of convergence of distributions occurring in practice is
+this. Suppose for each $n$, $\tau_n$ is a continuous mapping of the test
+functions into the test functions, and furthermore, $\tau_n(f)\to\tau(f)$ for
+each test function $f$, where $\tau(f)$ is another continuous mapping of the
+test functions into themselves. Then, for a fixed distribution $V$, we define
+$T_n(f)=V[\tau_n(f)]$ and $T(f)=V[\tau(f)]$. Then $T_n\to T$.
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+The notion of convergence for a sequence of distributions can be treated more
+systematically if $\mathcal{S}$, $\mathcal{S}'$, $\mathcal{D}$, and
+$\mathcal{D}'$ are characterized as topological vector spaces. (In its
+essentials, we have already done that for $\mathcal{S}$ by introducing the
+family of norms $\|\ \|_{r,s}$.) We refer the reader to Refs. 1, 2, and 3 for
+a full development of this point of view. Here, we shall only make three
+remarks along these lines which are essential for our later exposition. The
+first is that $\mathcal{S}$ and $\mathcal{D}$ are \emph{separable} as
+topological spaces. The required dense sequence of vectors may be constructed
+as follows. Take all polynomials in the variables $x_1,\ldots,x_n$ with
+coefficients whose real and imaginary parts are rational numbers, and multiply
+them by a sequence of infinitely differentiable functions which are $1$ inside
+a sphere of radius $n$, and $0$ outside a sphere of radius $n+1$. The
+resulting set is countable and Weierstrass's theorem, saying that one can
+approximate a continuous function on a compact set by polynomials, makes
+plausible that it has every vector in $\mathcal{S}$ and $\mathcal{D}$ as a
+limit point. This will not be shown here. (See Ref. 24, p. 373, for a proof.)
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+The second remark is that $\mathcal{D}'$ and $\mathcal{S}'$ are complete;
+i.e., if $T_k$ is a sequence of distributions such that $T_k(f)$ is a Cauchy
+sequence of real numbers for each test function $f$, then there exists a
+distribution $T$ such that $T_k\to T$.
+
+% PCT-SOURCE: pdf=48 print=36 kind=prose
+The third remark is that a central role in the description of topological
+vector spaces is played by the notion of \emph{bounded set}. A set $S$ in a
+topological vector space is bounded if, for each neighborhood $N$ of $0$ in
+the vector space, there exists a real number $\lambda>0$ such that
+$\lambda S\subset N$. The bounded sets of $\mathcal{S}$, $\mathcal{D}$,
+$\mathcal{S}'$, and $\mathcal{D}'$ can be characterized as follows. A set
+$S\subset\mathcal{S}$ is bounded if and only if all $\|\ \|_{r,s}$ are
+bounded functions on $S$.
+
+% PCT-SOURCE: pdf=49 print=37 kind=prose
+on $S$. A set $S\subset\mathcal{D}$ is bounded if and only if there exists a
+fixed compact set $K$ such that $f\in S$ implies $\operatorname{supp}f\subset K$,
+and for each non-negative integer $k$ there is a real number, $M_k$, such that
+$\sup_{x\in K}|D^kf(x)|\le M_k$ for $f\in S$. A set $S\subset\mathcal{S}'$ is
+bounded if, for each $f\in\mathcal{S}$, $T(f)$ is bounded as $T$ varies over
+$S$. The same statement holds with $\mathcal{S}'$ replaced by $\mathcal{D}'$
+and $\mathcal{S}$ by $\mathcal{D}$. The only result involving bounded sets
+which we shall need later is this: a convergent sequence of distributions
+$\in\mathcal{D}'$ converges uniformly on bounded sets of $\mathcal{D}$. We
+shall use this in Section 2-5 in the following way. We shall have a sequence,
+$T_n$, of distributions which converge for each test function of the form
+$f_a(x)=f(x-a)$, where $a$ runs over some region $|a|\le\rho$. Then, because
+the $f_a$ form a bounded set in $\mathcal{D}$, we shall have that the sequence
+converges uniformly in $a$. (See Ref. 1, p. 74 for a proof.)
+
+% PCT-SOURCE: pdf=49 print=37 kind=prose
+One last generality about the definition of distribution. We have carried out
+the preceding discussion for distributions defined on $\mathcal{D}$ and
+$\mathcal{S}$, where the domain of the test functions is all of $\mathbb{R}^n$.
+The whole discussion can also be carried out for test functions defined only
+on an open subset $O$ of $\mathbb{R}^n$. We shall not spell out all the details
+here but only note that the elements of $\mathcal{D}(O)$ are infinitely
+differentiable and have supports which are compact subsets of $\mathbb{R}^n$
+contained in $O$. The continuous linear functionals $\mathcal{D}(O)'$ on
+$\mathcal{D}(O)$ will be used in Section 2-5.
+
+% PCT-SOURCE: pdf=49 print=37 kind=subheading
+\subsubsection*{Miscellaneous Properties of Distributions}
+
+% PCT-SOURCE: pdf=49 print=37 kind=prose
+One of the main motivations for the introduction of the notion of distribution
+was the desire to have a class of objects for which differentiation is always
+permissible. The derivative, $\partial T/\partial x_j$, of a distribution, $T$,
+is defined by
+
+% PCT-SOURCE: pdf=49 print=37 kind=display id=2-14
+\begin{equation}
+  \frac{\partial T}{\partial x_j}(f)=-T\left(\frac{\partial f}{\partial x_j}\right).
+\tag{2-14}\label{eq:ch2-distribution-derivative}
+\end{equation}
+
+% PCT-SOURCE: pdf=49 print=37 kind=prose
+That (2-14) defines a distribution is an immediate consequence of the
+definitions given above; if a sequence $f_n$ converges to $f$ in $\mathcal{S}$
+(in $\mathcal{D}$), then $\partial f_n/\partial x_j$ converges to
+$\partial f/\partial x_j$ in $\mathcal{S}$ (in $\mathcal{D}$). It immediately
+follows that
+
+% PCT-SOURCE: pdf=49 print=37 kind=display id=2-15
+\begin{equation}
+  D^pT(f)=(-1)^{|p|}T(D^pf).
+\tag{2-15}\label{eq:ch2-distribution-multi-derivative}
+\end{equation}
+
+% PCT-SOURCE: pdf=49 print=37 kind=prose
+One can equivalently define the derivative of $T$ as the limit in
+$\mathcal{S}'$ (or $\mathcal{D}'$),
+
+% PCT-SOURCE: pdf=49 print=37 kind=display id=2-16
+\begin{equation}
+  \lim_{a_j\to0}(a_j)^{-1}(T_{a_j}-T).
+\tag{2-16}\label{eq:ch2-translation-derivative}
+\end{equation}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+where $T_{a_j}$ is $T$ translated in its $j$th coordinate, a notion which
+will be defined shortly. According to the definition of the notion of
+convergence in $\mathcal{S}'$ (or $\mathcal{D}'$), (2-16) means that for each
+$f\in\mathcal{S}$ (or $\in\mathcal{D}$)
+
+% PCT-SOURCE: pdf=50 print=38 kind=display id=2-17
+\begin{equation}
+  \frac{\partial T}{\partial x_j}(f)=
+  \lim_{a_j\to0}(a_j)^{-1}(T_{a_j}-T)(f).
+\tag{2-17}\label{eq:ch2-translation-derivative-evaluation}
+\end{equation}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+But this is
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+\begin{aligned}
+  \lim_{a_j\to0}(a_j)^{-1}[T_{a_j}(f)-T(f)]
+    &=\lim_{a_j\to0}T\bigl[a_j^{-1}(f_{-a_j}-f)\bigr]\\
+    &=-T\left(\frac{\partial f}{\partial x_j}\right),
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+where
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  f_{-a_j}(x)=f\bigl[x-(0,\ldots,a_j,\ldots,0)\bigr],
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+because $a_j^{-1}[f_{-a_j}(x)-f(x)]$ converges to
+$-(\partial f/\partial x_j)(x)$ in $\mathcal{S}$ (or $\mathcal{D}$). The
+operation of translation of the $j$th argument used in this alternative
+definition of derivative is a special case of an arbitrary non-singular
+inhomogeneous linear transformation of $\mathbb{R}^n$:
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  x\longmapsto Lx+a,
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+which we denote $\{a,L\}$. We write for $f\in\mathcal{S}$ (or $\in\mathcal{D}$)
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  (\{a,L\}f)(x)=f\bigl(L^{-1}(x-a)\bigr)
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+and define for distributions $\in\mathcal{S}'$ (or $\in\mathcal{D}')$
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  T_{\{a,L\}}(f)=|\det L|^{-1}T(\{a,L\}f).
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+It is elementary to verify that this defines a distribution in $\mathcal{S}'$
+(or $\mathcal{D}'$), respectively. The definition has been so arranged that if
+$T$ is a function,
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  T_{\{a,L\}}(x)=T(Lx+a).
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+Notice that for $f\in\mathcal{S}$ (or $\in\mathcal{D}$)
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  \{a,L\}(\{b,M\}f)=\{a+Lb,LM\}f
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+and for $T\in\mathcal{S}'$ (or $\in\mathcal{D}')$
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  (T_{\{a,L\}})_{\{b,M\}}=T_{\{a+Lb,LM\}}.
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+The invariance of a distribution under $\{a,L\}$ is defined in the expected
+way
+
+% PCT-SOURCE: pdf=50 print=38 kind=display
+\begin{equation*}
+  T_{\{a,L\}}=T.
+\end{equation*}
+
+% PCT-SOURCE: pdf=50 print=38 kind=prose
+A particular case of this kind of transformation occurs in the treatment of
+expectation values in Section 3-3. There one has tempered distributions on
+$\mathbb{R}^{4n}$ and describes a point of $\mathbb{R}^{4n}$ by a set of $n$
+four-vectors $x_1,\ldots,x_n$.
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+The vacuum expectation values are invariant under the linear transformation
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-18
+\begin{equation}
+  x_1,\ldots,x_n\longmapsto x_1+a,\ldots,x_n+a,
+\tag{2-18}\label{eq:ch2-translation-invariance}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+where $a$ is any real four-vector. We are led to the problem of describing all
+tempered distributions with this invariance property. For the special case for
+which the distribution is a function, the obvious answer is that $T$ depends
+only on the difference variables $x_1-x_2,\ldots,x_{n-1}-x_n$. This also is
+true for distributions but requires some argument which we now give. First, we
+make the non-singular linear transformation
+
+% PCT-SOURCE: pdf=51 print=39 kind=display
+\begin{equation*}
+  (x_1,\ldots,x_n)\longmapsto(X,\xi_1,\xi_2,\ldots,\xi_{n-1})
+\end{equation*}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+where
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-19
+\begin{equation}
+  X=n^{-1}[x_1+\cdots+x_n];\qquad
+  \xi_1=x_1-x_2,\ldots,\xi_{n-1}=x_{n-1}-x_n,
+\tag{2-19}\label{eq:ch2-center-difference-coordinates}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+which carries the given distribution $T$ into a distribution $T_1$. The
+invariance of $T$ under (2-18) is equivalent to the invariance of $T_1$ under
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-20
+\begin{equation}
+  X,\xi_1,\ldots,\xi_{n-1}\longmapsto
+  X+a,\xi_1,\ldots,\xi_{n-1}.
+\tag{2-20}\label{eq:ch2-center-translation}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+This invariance is, in turn, equivalent to the property
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-21
+\begin{equation}
+  \frac{\partial T_1}{\partial X_\mu}=0\qquad \mu=0,1,2,3.
+\tag{2-21}\label{eq:ch2-center-derivative}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+That invariance under (2-20) implies (2-21) is evident from the definition
+(2-17) of the derivative. Conversely, if the derivatives with respect to
+$X_\mu$ vanish, we can proceed as follows. For a fixed
+$f_0\in\mathcal{S}(\mathbb{R}^1)$ (or $\in\mathcal{D}(\mathbb{R}^1)$) with the
+property $\int f_0(x)\,dx=1$, define for each
+$f\in\mathcal{S}(\mathbb{R}^{4n})$ (or $\in\mathcal{D}(\mathbb{R}^{4n})$)
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-22
+\begin{equation}
+\begin{aligned}
+  \chi(X,\xi_1,\ldots,\xi_{n-1})
+    & =f(X,\xi_1,\ldots,\xi_{n-1})\\
+    &\quad-f_0(X_0)\int dy\,f(y,X_1,X_2,X_3,
+      \xi_1,\ldots,\xi_{n-1}).
+\end{aligned}
+\tag{2-22}\label{eq:ch2-zero-integral-test-function}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+$\chi$ is also in $\mathcal{S}(\mathbb{R}^{4n})$ (or
+$\mathcal{D}(\mathbb{R}^{4n})$) and satisfies
+
+% PCT-SOURCE: pdf=51 print=39 kind=display id=2-23
+\begin{equation}
+  \int\chi(y,X_1,X_2,X_3,\xi_1,\ldots,\xi_{n-1})\,dy=0.
+\tag{2-23}\label{eq:ch2-zero-integral}
+\end{equation}
+
+% PCT-SOURCE: pdf=51 print=39 kind=prose
+Now a test function $\chi$ satisfying (2-23) can always be written in the
+form $\frac{\partial}{\partial X_0}\chi_1$, where
+
+% PCT-SOURCE: pdf=51 print=39 kind=display
+\begin{equation*}
+  \chi_1(X_0,\ldots,X_3,\xi_1,\ldots,\xi_{n-1})
+  =\int_{-\infty}^{X_0}dy\,
+    \chi(y,X_1,X_2,X_3,\xi_1,\ldots,\xi_{n-1}).
+\end{equation*}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+Therefore,
+
+% PCT-SOURCE: pdf=52 print=40 kind=display id=2-24
+\begin{equation}
+  T_1(\chi)=T_1\left(\frac{\partial}{\partial X_0}\chi_1\right)
+  =-\frac{\partial T_1}{\partial X_0}(\chi_1)=0
+\tag{2-24}\label{eq:ch2-center-derivative-vanishes}
+\end{equation}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+and so $T_1(f)$ can be written
+
+% PCT-SOURCE: pdf=52 print=40 kind=display id=2-25
+\begin{equation}
+\begin{aligned}
+  T_1(f)&=T_1\left(f_0(X_0)\int dy\,f(y,X_1,X_2,X_3,
+    \xi_1,\ldots,\xi_{n-1})\right)\\
+  &=T_2\left(\int dy\,f(y,X_1,X_2,X_3,
+    \xi_1,\ldots,\xi_{n-1})\right).
+\end{aligned}
+\tag{2-25}\label{eq:ch2-reduced-distribution}
+\end{equation}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+\begin{sloppypar}
+$T_2$ is a distribution in $X_1,X_2,X_3,\xi_1,\ldots,\xi_{n-1}$. When
+$X_1,X_2,X_3$ have been treated in the same way, we have given a precise
+meaning to the equation $T(x_1,\ldots,x_n)=T(\xi_1,\ldots,\xi_{n-1})$ and
+have solved the problem of finding all distributions invariant under (2-18).
+\end{sloppypar}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+Another operation which is defined for functions and has a natural extension to
+distributions is \emph{multiplication by a function} (see Ref. 1, Chapter 5).
+We propose to define for a distribution $T$ and function $g$
+
+% PCT-SOURCE: pdf=52 print=40 kind=display id=2-26
+\begin{equation}
+  (gT)(f)=T(gf),
+\tag{2-26}\label{eq:ch2-multiplication-function}
+\end{equation}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+where $(gf)(x)=g(x)f(x)$. In order that (2-26) should define a distribution,
+we want $g$ to be such that $gf$ is a test function depending continuously on
+$f$. For this it suffices, if $f\in\mathcal{D}$, that $g$ be infinitely
+differentiable, since then $D^p(gf)$ is a linear combination of products of
+derivatives of $g$ and $f$, which approaches zero in $\mathcal{D}$ when $f$
+does. If $f\in\mathcal{S}$, an arbitrary infinitely differentiable function
+$g$ will not do because it might grow too fast. However, if $g$ and all its
+derivatives are bounded by polynomials; that is, if for each $p$
+
+% PCT-SOURCE: pdf=52 print=40 kind=display
+\begin{equation*}
+  |D^pg(x)|\le|P_p(x)|\qquad\text{for all }x,
+\end{equation*}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+then it is easy to see that $gf_n$ will converge to $gf$ in $\mathcal{S}$ if
+$f_n$ converges to $f$. Under these respective restrictions on $g$, the
+mappings $f\mapsto gf$ of $\mathcal{D}$ into $\mathcal{D}$ or $\mathcal{S}$
+into $\mathcal{S}$ are continuous, and $gT$ is in $\mathcal{D}'$ ($\mathcal{S}'$)
+if $T$ is in $\mathcal{D}'$ ($\mathcal{S}')$.
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+Those tempered distributions, $T$, which happen to be of the form $gT_1$,
+where $g\in\mathcal{S}$ and $T_1$ is also a tempered distribution, are of a
+special breed, \emph{tempered distributions of fast decrease}. We shall meet
+them again in Section 2-2.
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+Quite another kind of operation is that of multiplication of a function, $S$,
+of one variable by another $T$ depending on another variable: $S(x)T(y)$.
+This defines the \emph{tensor product}:
+
+% PCT-SOURCE: pdf=52 print=40 kind=display
+\begin{equation*}
+  (S\otimes T)(x,y)=S(x)T(y).
+\end{equation*}
+
+% PCT-SOURCE: pdf=52 print=40 kind=prose
+(See Ref. 1, Chapter 4.) It is trivial to extend this definition to the
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+case in which $S$ and $T$ are distributions if one only defines the tensor
+product as a functional of two variables
+
+% PCT-SOURCE: pdf=53 print=41 kind=display id=2-27
+\begin{equation}
+  (S\otimes T)(f,g)=S(f)T(g)
+\tag{2-27}\label{eq:ch2-tensor-product-functional}
+\end{equation}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+with $f$ and $g$ test functions. It requires more argument to show that (2-27)
+determines a distribution in both variables together, giving meaning to the
+expression
+
+% PCT-SOURCE: pdf=53 print=41 kind=display
+\begin{equation*}
+  (S\otimes T)(h)=\iint h(x,y)\,dx\,dy\,S(x)T(y).
+\end{equation*}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+That such a distribution is unique, if it exists, follows from the fact that
+sums of the form
+
+% PCT-SOURCE: pdf=53 print=41 kind=display
+\begin{equation*}
+  \sum_i f_i(x)g_i(y)
+\end{equation*}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+are dense in $\mathcal{D}_{x,y}$ and $\mathcal{S}_{x,y}$. (To prove this, one
+can use the functions described in connection with the discussion of the
+separability of $\mathcal{D}$ and $\mathcal{S}$.) The existence of $S\otimes T$
+is established by noting that one can evaluate successively
+
+% PCT-SOURCE: pdf=53 print=41 kind=display id=2-28
+\begin{equation}
+  S_x\bigl(T_y(h(x,y))\bigr),
+\tag{2-28}\label{eq:ch2-tensor-product-successive}
+\end{equation}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+where the $x$ and $y$ indicate the association of variables in test function
+and distribution, to obtain a distribution which satisfies (2-27).
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+The last operation we shall need is \emph{convolution}. It is defined for two
+elements $f$ and $g$ of $\mathcal{S}$ (or $\mathcal{D}$) by
+
+% PCT-SOURCE: pdf=53 print=41 kind=display id=2-29
+\begin{equation}
+  (f*g)(x)=\int f(x-\xi)g(\xi)\,d\xi.
+\tag{2-29}\label{eq:ch2-convolution}
+\end{equation}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+It is not difficult to see that $f*g$ is again in $\mathcal{S}$ (or
+$\mathcal{D}$). Furthermore, it is not difficult to verify directly from the
+definitions that $f*g$ is a continuous in $f$ and $g$. The $*$ operation is
+commutative,
+
+% PCT-SOURCE: pdf=53 print=41 kind=display id=2-30
+\begin{equation}
+  (f*g)(x)=\int f(y)g(x-y)\,dy=(g*f)(x).
+\tag{2-30}\label{eq:ch2-convolution-commutative}
+\end{equation}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+The operation can be extended to the case in which one of the factors is a
+distribution, $T$, and the other is a test function, $f$, by the equation
+
+% PCT-SOURCE: pdf=53 print=41 kind=display id=2-31
+\begin{equation}
+  (f*T)(h)=T(\widehat{f}*h),
+\tag{2-31}\label{eq:ch2-distribution-convolution}
+\end{equation}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+where $\widehat{f}(x)=f(-x)$. This agrees with (2-29) if $T$ happens to be a
+function in $\mathcal{S}$ or $\mathcal{D}$ because
+
+% PCT-SOURCE: pdf=53 print=41 kind=display
+\begin{equation*}
+\begin{aligned}
+  (f*g)(h)&=\int dx\left[\int f(x-\xi)g(\xi)\,d\xi\right]h(x)\\
+    &=\int d\xi\left[\int dx\,f(x-\xi)h(x)\right]g(\xi)\\
+    &=\int d\xi\left[\int dx\,\widehat{f}(\xi-x)h(x)\right]g(\xi)
+      =g(\widehat{f}*h).
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=53 print=41 kind=prose
+It should be noted that still another way of writing (2-31) is
+
+% PCT-SOURCE: pdf=53 print=41 kind=display
+\begin{equation*}
+  (f*T)(h)=(f\otimes T)(h_1).
+\end{equation*}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+where $h_1(x,y)=h(x+y)$. That $f\otimes T$ is defined on $h_1$ is not
+immediately obvious, since $h_1$ belongs to neither $\mathcal{D}$ nor
+$\mathcal{S}$ in $x$ and $y$ together. For $f\in\mathcal{D}$, the expression
+can, nevertheless, be given a meaning as follows. Let $\chi\in\mathcal{D}$ be
+a function of $x$ such that $\chi(x)=1$ if $x\in\operatorname{supp}f$. Then
+
+% PCT-SOURCE: pdf=54 print=42 kind=display
+\begin{equation*}
+  (f*T)(h)=(f\chi*T)(h)=(f\otimes T)(h_2),
+  \qquad h_2(x,y)=\chi(x)h(x+y)\in\mathcal{D}_{x,y},
+\end{equation*}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+and depends continuously on $h$. An analogous but more delicate argument
+works for $\mathcal{S}$. (See Ref. 1, Vol. II, p. 102.) That the right-hand
+side of (2-31) defines a continuous linear functional of $h$ follows from the
+fact that $f*h$ is a continuous linear functional of $h$ with values in
+$\mathcal{S}$ or $\mathcal{D}$, depending on which is under consideration.
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+Actually, for $T\in\mathcal{S}'$ (or $\in\mathcal{D}'$) and $f\in\mathcal{S}$
+(or $\in\mathcal{D}$), $f*T$ is an infinitely differentiable function. The
+operation of passing from $T$ to $f*T$ is a very important one in practice;
+it is known as \emph{regularization} (by $f$). To see that $f*T$ is an
+infinitely differentiable function notice that $T(\widehat{f}_{-x})$ is
+infinitely differentiable in $x$: [$\widehat{f}_{-x}(\xi)=\widehat{f}(\xi-x)
+=f(x-\xi)$], and it and $f*T$ evaluated for the test function $h$ are given
+by
+
+% PCT-SOURCE: pdf=54 print=42 kind=display
+\begin{equation*}
+\begin{aligned}
+  (f*T)(h)&=T(\widehat{f}*h)=(T\otimes h)(\widehat{f}_{-x})\\
+    &=\int T(\widehat{f}_{-x})\,dx\,h(x).
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+The last equality is legitimate because by construction (2-28) of the tensor
+product it can be evaluated ``successively.''
+
+% PCT-SOURCE: pdf=54 print=42 kind=subheading
+\subsubsection*{The Schwartz Nuclear Theorem}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+In a number of practical situations, for example, those encountered in
+Sections 2-5 and 3-3, one has to deal with \emph{separately continuous}
+multi-linear functionals defined on $\mathcal{S}$ or $\mathcal{D}$. These are
+complex-valued functions $T$ of arguments $f_1,\ldots,f_k\in\mathcal{S}$ or
+$\mathcal{D}$, satisfying
+
+% PCT-SOURCE: pdf=54 print=42 kind=display id=2-32
+\begin{equation}
+\begin{aligned}
+  T(f_1,\ldots,\alpha f'_j+\beta f''_j,\ldots,f_k)
+  \\
+   &={ }\alpha T(f_1,\ldots,f'_j,\ldots,f_k)\\
+   &\quad+\beta T(f_1,\ldots,f''_j,\ldots,f_k)
+\end{aligned}
+\tag{2-32}\label{eq:ch2-separately-linear}
+\end{equation}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+for $j=1,\ldots,k$; $T$ is a distribution in each $f_j$ with all the other
+arguments held fixed. Of course, an obvious way to construct such an object is
+to take a distribution, $G$, in all the variables together and then specialize
+it to test functions which are products of the form
+$f(x_1,\ldots,x_k)=f_1(x_1)f_2(x_2)\cdots f_k(x_k)$. It was a remarkable
+discovery of Schwartz that there are no others than these; every $T$ is of the
+form $T(f_1,\ldots,f_k)=G(f_1f_2\cdots f_k)$. $G$ is referred to as the
+nucleus or kernel of the multi-linear functional. This terminology is chosen
+in analogy with the theory of integral equations where one has integral
+operators of the form
+
+% PCT-SOURCE: pdf=54 print=42 kind=display
+\begin{equation*}
+  Tf(x)=\int k(x,y)f(y)\,dy,
+\end{equation*}
+
+% PCT-SOURCE: pdf=54 print=42 kind=prose
+and $k$ is referred to as the kernel of $T$. The only proof of the nuclear
+theorem which is of a sufficiently
+
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+elementary character to be mentioned here is that of Gelfand and Vilenkin,
+Ref.~5. However, it is only for $\mathcal{D}'$ and there does not seem to be
+an analogous elementary proof available for $\mathcal{S}'$. Thus, we
+content ourselves with a statement of the theorem.
+
+% PCT-SOURCE: pdf=55 print=43 kind=theorem id=2-1
+% Advance the native result counter while retaining the printed theorem label.
+\refstepcounter{theorem}
+\par\medskip\noindent\textbf{Theorem 2-1 (\emph{Nuclear Theorem})}
+\label{thm:ch2-nuclear}\par\smallskip
+Let $T$ be a multilinear functional of arguments
+$f_1,\ldots,f_k\in\mathcal{S}$ ($\in\mathcal{D}$) which is continuous in
+each of its arguments, the others being held fixed. Then there exists a
+unique distribution, $G$, $\in\mathcal{S}'$ ($\in\mathcal{D}'$) in all the
+variables of $f_1,\ldots,f_k$ such that
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-1-nuclear-representation
+\begin{equation*}
+  T(f_1,f_2,\ldots,f_k)=G(f_1f_2\cdots f_k).
+\end{equation*}
+
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+It is easy to see from examples that $G$ may be quite singular in its
+arguments without that being reflected in the behavior of $T$ in any one of
+its arguments. A case in point is $G(x,y)=-\delta'(x-y)$. Here
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-1-nuclear-example
+\begin{equation*}
+\begin{aligned}
+  G(f_1f_2)=T(f_1,f_2)
+    &=\int f_1'(x)f_2(x)\,dx
+     =-\int f_1(x)f_2'(x)\,dx,
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=55 print=43 kind=prose
+so $T(f_1,f_2)$ is an infinitely differentiable function of each of its
+arguments, the other being held fixed; namely,
+
+% PCT-SOURCE: pdf=55 print=43 kind=display id=2-1-nuclear-evaluations
+\begin{equation*}
+  T(x_1,f_2)=-f_2'(x_1)
+  \qquad\text{and}\qquad
+  T(f_1,x_2)=f_1'(x_2).
+\end{equation*}

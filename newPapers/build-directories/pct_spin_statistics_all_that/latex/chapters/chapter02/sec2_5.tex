@@ -1,0 +1,647 @@
+% Source pages: physical PDF pp. 86--95 (printed pp. 74--83).
+% Coverage: Section 2-5, from its heading through the first display in
+% Theorem 2-17, including Theorems 2-13--2-17, proofs, Remarks 1--4,
+% footnote, and Figures 2-5--2-7.
+% Figures: native TikZ reconstructions of Figures 2-5, 2-6, and 2-7.
+% Uncertainties: none after full-resolution review of pdf-086.jpg through
+% pdf-095.jpg. The source uses the same letter F for functions and boundary
+% values; the transcription retains those roles.
+
+% PCT-SOURCE: pdf=086 print=74 kind=heading id=2-5
+\subsection{The Edge of the Wedge Theorem}\label{sec:2.5}
+
+% PCT-SOURCE: pdf=086 print=74 kind=prose
+In its simplest form for one complex variable the edge of the wedge theorem
+is ancient and well known. We prove it in the form given by Painlev\'e in
+1888.
+
+% PCT-SOURCE: pdf=086 print=74 kind=theorem id=2-13
+\begin{theorem}\label{thm:edge-of-wedge-one-variable}
+Let $F_1$ be a function holomorphic in an open set $D_1$ in the upper
+half-plane with an open interval $a<x<b$ as part of its boundary. Let $F_2$
+be holomorphic in an open set $D_2$ in the lower half-plane with
+$a<x<b$ as part of its boundary. Suppose
+
+% PCT-SOURCE: pdf=086 print=74 kind=equation id=2-94
+\begin{equation}
+  F_1(x)=\lim_{y\to0+}F_1(x+\mathrm{i}y),
+  \tag{2-94}\label{eq:ch2-edge-one-upper-limit}
+\end{equation}
+
+and
+
+% PCT-SOURCE: pdf=086 print=74 kind=equation id=2-95
+\begin{equation}
+  F_2(x)=\lim_{y\to0+}F_2(x-\mathrm{i}y),
+  \tag{2-95}\label{eq:ch2-edge-one-lower-limit}
+\end{equation}
+
+exist uniformly, in $a<x<b$, are continuous and satisfy
+
+% PCT-SOURCE: pdf=086 print=74 kind=display id=2-13-boundary-match
+\[
+  F_1(x)=F_2(x)\qquad\text{for }a<x<b.
+\]
+
+Then $F_1$ and $F_2$ are actually holomorphic on $a<x<b$, and are the same
+holomorphic function.
+\end{theorem}
+
+% PCT-SOURCE: pdf=086 print=74 kind=remark id=2-13
+\paragraph{\emph{Remark:}}
+% PCT-SOURCE: pdf=086 print=74 kind=prose id=2-13-remark
+The assumption of uniformity in the theorem is, in fact, redundant. It can
+be shown that if the limit functions $F_1$ and $F_2$ exist and are continuous
+then the convergence is uniform. However, to make the discussion completely
+elementary, we make the hypothesis of uniformity.
+
+\input{figures/fig2_5}
+
+\input{figures/fig2_6}
+
+% PCT-SOURCE: pdf=087 print=75 kind=proof id=2-13
+\begin{proof}
+Let $C_1$ and $C_2$ be two contours lying in $D_1$ and $D_2$ respectively
+except for the interval $a'\leq x\leq b'$, where $a<a'<b'<b$. Then
+
+% PCT-SOURCE: pdf=087 print=75 kind=display id=2-13-cauchy-upper
+\[
+  \frac{1}{2\pi\mathrm{i}}\int_{C_1}
+  \frac{F_1(\xi)\,\dd\xi}{\xi-z}
+  =
+  \begin{cases}
+    F_1(z),&z\text{ inside }C_1,\\[2pt]
+    0,&z\text{ inside }C_2,
+  \end{cases}
+\]
+
+and
+
+% PCT-SOURCE: pdf=087 print=75 kind=display id=2-13-cauchy-lower
+\[
+  \frac{1}{2\pi\mathrm{i}}\int_{C_2}
+  \frac{F_2(\xi)\,\dd\xi}{\xi-z}
+  =
+  \begin{cases}
+    F_2(z),&z\text{ inside }C_2,\\[2pt]
+    0,&z\text{ inside }C_1.
+  \end{cases}
+\]
+
+by Cauchy's integral formula. Further, because the limit is uniform,
+
+% PCT-SOURCE: pdf=087 print=75 kind=display id=2-13-uniform-contour-limit
+\[
+  \lim_{\epsilon\to0}\int_{a'}^{b'}
+  \frac{F_j(\xi\mathbin{\pm}\mathrm{i}\epsilon)\,\dd\xi}
+       {\xi-z\mathbin{\pm}\mathrm{i}\epsilon}
+  =\int_{a'}^{b'}\frac{F_j(\xi)\,\dd\xi}{\xi-z},
+  \qquad j=1,2,\ \text{respectively}.
+\]
+
+Now examine the function $G$ defined by
+
+% PCT-SOURCE: pdf=087 print=75 kind=display id=2-13-G
+\[
+  \begin{aligned}
+  G(z)
+  &=\frac{1}{2\pi\mathrm{i}}
+    \left\{
+      \int_{C_1}\frac{F_1(\xi)\,\dd\xi}{\xi-z}
+      +\int_{C_2}\frac{F_2(\xi)\,\dd\xi}{\xi-z}
+    \right\} \\
+  &=\frac{1}{2\pi\mathrm{i}}\int_C
+    \frac{F(\xi)\,\dd\xi}{\xi-z},
+  \end{aligned}
+\]
+
+where $C$ is the contour obtained by following $C_1-(a'b')$ and then
+$C_2-(b'a')$. $F$ is defined as $F_1$ above and $F_2$ below the real axis.
+$G$ is holomorphic throughout the interior of $C_1$ and $C_2$ and also on
+the open interval $a'<x<b'$. It coincides with $F_1$ inside $C_1$ and with
+$F_2$ inside $C_2$. Thus it provides the required analytic continuation of
+$F_1$ and $F_2$.
+\end{proof}
+
+% PCT-SOURCE: pdf=088 print=76 kind=prose
+A corollary of this theorem is the familiar Schwarz reflection principle,
+which says that if $F_1$ is holomorphic in $D_1$ as in the theorem and
+converges uniformly to boundary values on every subinterval of $a<x<b$ which
+define a real continuous function, then $F_1$ is holomorphic in $\overline{D_1}$
+and $\overline{F_1(\overline z)}$ continues it into $\overline{D_1}$. Here
+$\overline{D_1}$ is the domain complex conjugate to $D_1$. The Schwarz
+reflection principle actually antedated Theorem 2-13 and inspired it.
+
+% PCT-SOURCE: pdf=088 print=76 kind=prose
+We shall generalize this theorem in stages, eventually arriving at the edge
+of the wedge theorem in the form required in later chapters.
+
+% PCT-SOURCE: pdf=088 print=76 kind=prose
+The first step is to pass from one to several complex variables. That
+essentially new features appear is already visible for two variables. The
+analogue of the region $D_1$ lies in the product of the upper half-planes:
+$y_1>0$ and $y_2>0$; the analogue of $D_2$ lies in the product of the lower
+half-planes: $y_1<0$ and $y_2<0$. The assertion of the theorem is holomorphy
+in some neighborhood of the interval on the real axis where $F_1$ and $F_2$
+coincide. That neighborhood will necessarily include a chunk of the regions:
+$y_1>0$ and $y_2<0$, and $y_1<0$ and $y_2>0$. This is a set of new points of
+holomorphy of the same dimension as that of the space, and the assertion is in
+that respect a stronger statement than Theorem 2-13. (It is related to the
+phenomenon of \emph{analytic completion}; see Bochner and Martin, Chapter IV.)
+The size of the region of new points of holomorphy depends on the size of the
+regions $D_1$ and $D_2$. This is an inevitable feature of the situation which
+somewhat complicates the statement of the theorem.
+
+% PCT-SOURCE: pdf=088 print=76 kind=theorem id=2-14
+\begin{theorem}\label{thm:edge-of-wedge-product-half-planes}
+Let $\mathcal{O}$ be an open set of $\mathbb{C}^n$ which contains a real
+environment $E$ which is an open set of $\mathbb{R}^n$. Suppose $D_1$ is the
+intersection of $\mathcal{O}$ with the product of the upper half-planes:
+
+% PCT-SOURCE: pdf=088 print=76 kind=equation id=2-96
+\begin{equation}
+  D_1=\{z_1,\ldots,z_n;\ z_1,\ldots,z_n\in\mathcal{O},\ y_1>0,\ldots,y_n>0\},
+  \tag{2-96}\label{eq:ch2-edge-product-upper-domain}
+\end{equation}
+
+and $D_2$ is the intersection of $\mathcal{O}$ with the product of the lower
+half-planes:
+
+% PCT-SOURCE: pdf=088 print=76 kind=equation id=2-97
+\begin{equation}
+  D_2=\{z_1,\ldots,z_n;\ z_1,\ldots,z_n\in\mathcal{O},\ y_1<0,\ldots,y_n<0\}.
+  \tag{2-97}\label{eq:ch2-edge-product-lower-domain}
+\end{equation}
+
+Assume $F_1$ holomorphic in $D_1$, $F_2$ in $D_2$, and the limits, for
+$y_1>0,\ldots,y_n>0$,
+
+% PCT-SOURCE: pdf=089 print=77 kind=equation id=2-98
+\begin{equation}
+  \lim_{y_1,\ldots,y_n\to0}
+  F_1(x_1+\mathrm{i}y_1,\ldots,x_n+\mathrm{i}y_n)
+  =F_1(x_1,\ldots,x_n),
+  \tag{2-98}\label{eq:ch2-edge-product-upper-limit}
+\end{equation}
+
+% PCT-SOURCE: pdf=089 print=77 kind=equation id=2-99
+\begin{equation}
+  \lim_{y_1,\ldots,y_n\to0}
+  F_2(x_1-\mathrm{i}y_1,\ldots,x_n-\mathrm{i}y_n)
+  =F_2(x_1,\ldots,x_n)
+  \tag{2-99}\label{eq:ch2-edge-product-lower-limit}
+\end{equation}
+
+exist, are continuous in $x_1,\ldots,x_n$, and are equal for
+$x_1,\ldots,x_n\in E$, the limit being uniform in $E$.
+
+Then there exists a (complex) neighborhood, $N$, of $E$ in $\mathbb{C}^n$,
+and a holomorphic function, $G$, such that $G$ coincides with $F_1$ on $D_1$
+and $F_2$ on $D_2$, and is holomorphic on $N$. The neighborhood $N$ can be
+chosen to depend only on $\mathcal{O}$ and $E$.
+\end{theorem}
+
+% PCT-SOURCE: pdf=089 print=77 kind=remarks id=2-14
+\paragraph{\emph{Remarks:}}
+\begin{enumerate}
+  \renewcommand{\labelenumi}{\arabic{enumi}.}
+  % PCT-SOURCE: pdf=089 print=77 kind=remark id=2-14-1
+  \item $G$ evidently provides an analytic continuation of $F_1$ and $F_2$.
+
+  % PCT-SOURCE: pdf=089 print=77 kind=remark id=2-14-2
+  \item Since $E$ is an open set it is a union of cubes. Thus, it suffices to
+  prove the theorem for $E$ an open cube. Furthermore, since by real
+  translation and a real change of scale such a cube can be centered about the
+  origin and adjusted to any size, without loss of generality, we may assume
+  that $E$ is of a convenient size, say $-1-\epsilon<x_j<1+\epsilon$,
+  $\epsilon>0$, $j=1,\ldots,n$.
+
+  % PCT-SOURCE: pdf=089 print=77 kind=remark id=2-14-3
+  \item In the course of the proof we are going to use a contour of integration
+  in the $z_j$-plane which is a circle through the points $-1$ and $+1$. The
+  contour is satisfactory provided it lies in $\mathcal{O}$.
+
+  % PCT-SOURCE: pdf=089 print=77 kind=remark id=2-14-4
+  \item The actual proof we shall carry out uses something stronger than is
+  stated in the hypothesis of the theorem: the boundedness of the derivatives
+  $\partial F_1/\partial z_j$, $\partial F_2/\partial z_j$ in the neighborhood
+  of the points $z_1,\ldots,z_n=+1,\ldots,+1$ and $-1,\ldots,-1$. Given
+  functions $F_1$, $F_2$ with the property in the theorem we can always define
+  primitives
+
+  % PCT-SOURCE: pdf=089 print=77 kind=display id=2-14-primitives
+  \[
+    \widetilde F_j(z_1,\ldots,z_n)
+    =\int_{-1}^{z_1}\dd\zeta_1\cdots
+      \int_{-1}^{z_n}\dd\zeta_n\,F_j(\zeta_1,\ldots,\zeta_n),
+    \qquad j=1,2,
+  \]
+
+  and, because of the uniform convergence of $F_j$,
+
+  % PCT-SOURCE: pdf=089 print=77 kind=display id=2-14-primitive-boundary
+  \[
+    \begin{aligned}
+      \lim_{y_1,\ldots,y_n\to0}
+      \widetilde F_1(z_1,\ldots,z_n)
+      & =\int_{-1}^{x_1}\dd\xi_1\cdots
+        \int_{-1}^{x_n}\dd\xi_n\,F_1(\xi_1,\ldots,\xi_n) \\
+      & =\lim_{y_1,\ldots,y_n\to0}
+        \widetilde F_2(\overline z_1,\ldots,\overline z_n).
+    \end{aligned}
+  \]
+
+  The first derivatives of $\widetilde F$ are bounded. Clearly the primitives
+  are continuous on $D_1$, $D_2$ and are holomorphic at the same points as
+  $F_1$, $F_2$. Thus there is no loss in generality in assuming
+  $\partial F_1/\partial z_j$, $\partial F_2/\partial z_j$ are bounded.
+\end{enumerate}
+
+% PCT-SOURCE: pdf=090 print=78 kind=proof id=2-14
+\begin{proof}
+Define the function $G$ of $n+1$ complex variables in the domain
+$|\zeta|<1$, $|z_j|<R$, $j=1,\ldots,n$, by the formula
+
+% PCT-SOURCE: pdf=090 print=78 kind=equation id=2-100
+\begin{equation}
+  \begin{aligned}
+  G(\zeta,z_1,\ldots,z_n)
+  ={}&\frac{1}{2\pi\mathrm{i}}\int_{C_+}
+  \frac{F_1\!\left(\dfrac{u+z_1}{1+uz_1},\ldots,
+                  \dfrac{u+z_n}{1+uz_n}\right)}{u-\zeta}\,\dd u \\
+  &+\frac{1}{2\pi\mathrm{i}}\int_{C_-}
+  \frac{F_2\!\left(\dfrac{u+z_1}{1+uz_1},\ldots,
+                  \dfrac{u+z_n}{1+uz_n}\right)}{u-\zeta}\,\dd u.
+  \end{aligned}
+  \tag{2-100}\label{eq:ch2-edge-product-Cauchy}
+\end{equation}
+
+where the contours $C_+$ and $C_-$ in the $u$ plane are the unit semi-circles
+traversed counterclockwise:
+
+% PCT-SOURCE: pdf=090 print=78 kind=equation id=2-101
+\begin{equation}
+  \begin{aligned}
+    C_+ :&\quad |u|=1,\quad \operatorname{Im}u\geq0,\\
+    C_- :&\quad |u|=1,\quad \operatorname{Im}u\leq0.
+  \end{aligned}
+  \tag{2-101}\label{eq:ch2-edge-semicircles}
+\end{equation}
+
+If $R$ is sufficiently small and the cube has been chosen sufficiently small,
+the arguments of the functions $F_1$ and $F_2$ will be entirely in $D_1$ and
+$D_2$, respectively, as $u$ varies over $C_+$ and $C_-$, respectively, by
+virtue of the elementary identity
+
+% PCT-SOURCE: pdf=090 print=78 kind=display id=2-14-mobius-imaginary-part
+\[
+  \operatorname{Im}\left(\frac{u+z}{1+uz}\right)
+  =\frac{\eta(1-|z|^2)+y(1-|u|^2)}{|1+uz|^2},
+\]
+
+where $u=\xi+\mathrm{i}\eta$, $z=x+\mathrm{i}y$ (see Figure~\ref{fig:ch2-mobius-map}).
+The preceding statement holds except when $u=\pm1$, in which case the
+arguments are $\pm1,\ldots,\pm1$, both points of $E$.
+
+% PCT-SOURCE: pdf=090 print=78 kind=prose
+It is clear from the continuity of $F_1$ and $F_2$ that (2-100) defines $G$
+as a continuous function of all its variables together, which is analytic in
+$\zeta$ for fixed values of $z_1,\ldots,z_n$. Furthermore, the partial
+derivatives of $G$ with respect to the $z_j$ exist by our assumption that the
+partial derivatives of $F_1$ and $F_2$ are bounded in the neighborhood of $E$.
+Therefore, $G$ is a holomorphic function of $\zeta,z_1,\ldots,z_n$ in
+$|\zeta|<1$, $|z_j|<R$, $j=1,\ldots,n$. In particular, its values
+$G(0,z_1,\ldots,z_n)$, as a function of $z_1,\ldots,z_n$ for $\zeta=0$,
+define a holomorphic function of $n$ variables in $|z_j|<R$,
+$j=1,\ldots,n$. It remains to identify $G(0,z_1,\ldots,z_n)$ with
+$F_1(z_1,\ldots,z_n)$ in $D_1$ and $F_2$ in $D_2$.
+
+% PCT-SOURCE: pdf=090 print=78 kind=prose
+Consider $G(\zeta,x_1,\ldots,x_n)$ with $|x_j|<R$, $j=1,\ldots,n$.
+Then the integrands in the first and second terms are respectively
+
+% PCT-SOURCE: pdf=090 print=78 kind=equation id=2-102
+\begin{equation}
+  F_j\!\left(\frac{u+x_1}{1+ux_1},\ldots,
+              \frac{u+x_n}{1+ux_n}\right),
+  \qquad j=1,2.
+  \tag{2-102}\label{eq:ch2-edge-product-integrands}
+\end{equation}
+
+% PCT-SOURCE: pdf=091 print=79 kind=display id=2-7-circle-equation
+\[
+  w=\frac{4\bigl[u(1+|u|^2)-(1+u^2)\operatorname{Re}u\bigr]}
+          {\bigl[(1+|u|^2)(1+u^2)-4u\operatorname{Re}u\bigr]}.
+\]
+
+\input{figures/fig2_7}
+
+% PCT-SOURCE: pdf=091 print=79 kind=prose
+They are holomorphic as functions of $u$ for $\operatorname{Im}u>0$ and
+$\operatorname{Im}u<0$, respectively, and have equal boundary values as
+$\operatorname{Im}u=0$ by assumption.\begingroup
+% PCT-SOURCE: pdf=091 print=79 kind=footnote id=2-7-footnote
+\renewcommand{\thefootnote}{\ensuremath{\dagger}}
+\footnote{By the above remark, the $F_j$ are continuous in all the
+variables together.}
+\endgroup
+By Theorem 2-13, they
+are therefore analytic throughout the unit disc and continue one another.
+Thus, in this case, (2-100) is Cauchy's formula:
+
+% PCT-SOURCE: pdf=091 print=79 kind=equation id=2-103
+\begin{equation}
+  G(\zeta,x_1,\ldots,x_n)=
+  \begin{cases}
+    F_1\!\left(\dfrac{\zeta+x_1}{1+\zeta x_1},\ldots,
+                \dfrac{\zeta+x_n}{1+\zeta x_n}\right),
+      &\operatorname{Im}\zeta>0,\\[12pt]
+    F_2\!\left(\dfrac{\zeta+x_1}{1+\zeta x_1},\ldots,
+                \dfrac{\zeta+x_n}{1+\zeta x_n}\right),
+      &\operatorname{Im}\zeta<0.
+  \end{cases}
+  \tag{2-103}\label{eq:ch2-edge-product-Cauchy-formula}
+\end{equation}
+
+% PCT-SOURCE: pdf=092 print=80 kind=display id=2-103-continuation-upper
+\[
+  F_1\!\left(\frac{\zeta+z_1}{1+\zeta z_1},\ldots,
+             \frac{\zeta+z_n}{1+\zeta z_n}\right)
+\]
+
+or
+
+% PCT-SOURCE: pdf=092 print=80 kind=display id=2-103-continuation-lower
+\[
+  F_2\!\left(\frac{\zeta+z_1}{1+\zeta z_1},\ldots,
+             \frac{\zeta+z_n}{1+\zeta z_n}\right).
+\]
+
+Thus $G(\zeta,\ldots)$ provides an analytic continuation of each of these.
+In particular, for $\zeta=0$, $G(0,z_1,\ldots,z_n)$ coincides with
+$F_1(z_1,\ldots,z_n)$ in $D_1$ and $F_2(z_1,\ldots,z_n)$ in $D_2$ and is
+itself analytic in $|z_j|<R$, $j=1,\ldots,n$. Clearly, by construction $R$
+has been chosen to depend only on $D_1$, $D_2$, and $E$.
+\end{proof}
+
+% PCT-SOURCE: pdf=092 print=80 kind=prose
+Next, we want to show how Theorem 2-14 can be used to get an edge of the
+wedge theorem for a region of apparently much more general shape.
+
+% PCT-SOURCE: pdf=092 print=80 kind=theorem id=2-15
+\begin{theorem}\label{thm:edge-of-wedge-cone}
+Let $\mathcal{O}$ be an open set of $\mathbb{C}^n$ which contains a real
+environment, $E$, with $E$ some open set of $\mathbb{R}^n$. Let $\mathcal{C}$
+be an open convex cone of $\mathbb{R}^n$. Suppose $F_1$ is holomorphic in
+
+% PCT-SOURCE: pdf=092 print=80 kind=equation id=2-104
+\begin{equation}
+  D_1=(\mathbb{R}^n+\mathrm{i}\mathcal{C})\cap\mathcal{O}
+  \tag{2-104}\label{eq:ch2-edge-cone-upper-domain}
+\end{equation}
+
+and $F_2$ in
+
+% PCT-SOURCE: pdf=092 print=80 kind=equation id=2-105
+\begin{equation}
+  D_2=(\mathbb{R}^n-\mathrm{i}\mathcal{C})\cap\mathcal{O}.
+  \tag{2-105}\label{eq:ch2-edge-cone-lower-domain}
+\end{equation}
+
+(The notation $\mathbb{R}^n\pm\mathrm{i}\mathcal{C}$ stands for the sets of
+all vectors of the form $x\pm\mathrm{i}y$, respectively, where $x$ and $y$
+are real vectors of $n$ components and $y\in\mathcal{C}$.) Suppose the limits
+for $x\in E$
+
+% PCT-SOURCE: pdf=092 print=80 kind=equation id=2-106
+\begin{equation}
+  \lim_{\substack{y\to0\\y\in\mathcal{C}}}F_1(x+\mathrm{i}y)=F_1(x)
+  \tag{2-106}\label{eq:ch2-edge-cone-upper-limit}
+\end{equation}
+
+and
+
+% PCT-SOURCE: pdf=092 print=80 kind=equation id=2-107
+\begin{equation}
+  \lim_{\substack{y\to0\\y\in\mathcal{C}}}F_2(x-\mathrm{i}y)=F_2(x)
+  \tag{2-107}\label{eq:ch2-edge-cone-lower-limit}
+\end{equation}
+
+exist and are continuous and equal on $E$, the limit being uniform on $E$.
+
+Then there is a (complex) neighborhood, $N$, of $E$, and a holomorphic
+function, $G$, which coincides with $F_1$ in $D_1$ and $F_2$ in $D_2$ and is
+holomorphic in $N$. Here $N$ is independent of $F_1$ and $F_2$ but of course
+depends on $E$, $\mathcal{C}$, and $\mathcal{O}$.
+\end{theorem}
+
+% PCT-SOURCE: pdf=093 print=81 kind=proof id=2-15
+\begin{proof}
+Since $\mathcal{C}$ is an open convex cone we can choose $n$ linearly
+independent vectors in it, say $y^{(k)}$, $k=1,\ldots,n$. The convex cone they
+span is a subcone $\mathcal{C}'$ of $\mathcal{C}$. Since the $y^{(k)}$ are
+linearly independent, any complex $n$ vector $z$ may be written
+
+% PCT-SOURCE: pdf=093 print=81 kind=display id=2-15-linear-combination
+\[
+  z=\sum_{k=1}^n\lambda_k y^{(k)}.
+\]
+
+The variables $\lambda_1,\ldots,\lambda_n$ are related to the
+$z_1,\ldots,z_n$ by a non-singular real linear transformation. When $z$ runs
+over $\mathbb{R}^n+\mathrm{i}\mathcal{C}'$, the $\lambda_k$ vary independently
+in the upper half-plane. Thus, the hypotheses of the present theorem (when
+$\mathcal{C}$ is replaced by $\mathcal{C}'$ and the $z$'s are replaced by the
+$\lambda$'s) reduce to those of Theorem 2-14. Its conclusions re-expressed in
+$z$'s are those above.
+\end{proof}
+
+% PCT-SOURCE: pdf=093 print=81 kind=prose
+In the applications of Chapter 4, we shall deal with sets of $n$ four-vectors
+$\xi_1,\ldots,\xi_n$, where $\xi_j=\zeta_j-\mathrm{i}\eta_j$ and
+$\eta_j\in V_+$. Thus $\mathcal{C}$ in that case is a cone in $4n$
+dimensions, the direct product of $n$ plus light cones.
+
+% PCT-SOURCE: pdf=093 print=81 kind=prose
+Now we introduce a second essential complication in the edge of the wedge
+theorem. We admit that $F_1$ and $F_2$ need not have boundary values which are
+continuous functions approached pointwise, but rather may have boundary values
+which are distributions approached in the sense of distribution theory. A
+familiar example is the function $(x+\mathrm{i}y)^{-1}$ for $y\to0$. Its
+boundary value as $y\to0$, $y>0$, is
+
+% PCT-SOURCE: pdf=093 print=81 kind=display id=2-16-boundary-value
+\[
+  P\!\left(\frac{1}{x}\right)-\pi\mathrm{i}\,\delta(x),
+\]
+
+in the sense that for each test function $f$
+
+% PCT-SOURCE: pdf=093 print=81 kind=display id=2-16-principal-value
+\[
+  \lim_{y\to0}\int\frac{f(x)\,\dd x}{x+\mathrm{i}y}
+  =P\int\frac{f(x)\,\dd x}{x}-\pi\mathrm{i}f(0),
+\]
+
+where $P$ stands for the Cauchy principal value. That is just what we have
+defined as convergence of distributions in $\mathcal{D}'$. Thus the refined
+version of the edge of the wedge theorem is
+
+% PCT-SOURCE: pdf=093 print=81 kind=theorem id=2-16
+\begin{theorem}\label{thm:edge-of-wedge-distributional}
+Suppose that the hypotheses of Theorem 2-15 hold except that instead of
+(2-106) and (2-107) we have for every test function of compact support lying
+in $E$
+
+% PCT-SOURCE: pdf=093 print=81 kind=display id=2-16-upper-distributional-limit
+\[
+  \lim_{\substack{y\to0\\y\in\mathcal{C}}}
+  \int F_1(x+\mathrm{i}y)\,\dd x\,f(x)=T(f)
+\]
+
+% PCT-SOURCE: pdf=094 print=82 kind=display id=2-16-lower-distributional-limit
+\[
+  \lim_{\substack{y\to0\\y\in\mathcal{C}}}
+  \int F_2(x-\mathrm{i}y)\,\dd x\,f(x)=T(f).
+\]
+
+% PCT-SOURCE: pdf=094 print=82 kind=prose id=2-16-hypothesis-conclusion
+where $T$ is a distribution of $\mathcal{D}(E)'$. The conclusions of
+Theorem 2-15 again hold.
+\end{theorem}
+
+% PCT-SOURCE: pdf=094 print=82 kind=proof id=2-16
+\begin{proof}
+The idea of the proof is as follows. Regularize $F_1$ and $F_2$ to get
+$F_{1f}$ and $F_{2f}$:
+
+% PCT-SOURCE: pdf=094 print=82 kind=equation id=2-108-regularization
+\begin{equation}
+  \begin{aligned}
+    F_{1f}(x+\mathrm{i}y)&=\int\dd\xi\,f(x-\xi)F_1(\xi+\mathrm{i}y),\\
+    F_{2f}(x+\mathrm{i}y)&=\int\dd\xi\,f(x-\xi)F_2(\xi+\mathrm{i}y),
+  \end{aligned}
+  \tag{2-108}\label{eq:ch2-edge-regularization}
+\end{equation}
+
+where $f$ is an infinitely differentiable function of sufficiently small
+support. $F_{1f}$ and $F_{2f}$ are again holomorphic functions but now satisfy
+the assumptions of Theorem 2-15. The resulting $G_f$ then has to be shown to
+be of the form
+
+% PCT-SOURCE: pdf=094 print=82 kind=display id=2-16-convolution-continuation
+\[
+  G_f(x+\mathrm{i}y)=\int f(x-\xi)\,\dd\xi\,G(\xi+\mathrm{i}y),
+\]
+
+where $G$ is the required holomorphic function.
+
+% PCT-SOURCE: pdf=094 print=82 kind=prose id=2-108-analyticity
+Equation (2-108) indeed defines two holomorphic functions when the support of
+$f$ is sufficiently small and $x+\mathrm{i}y$ is confined to some subset of
+$D_1$ or $D_2$ respectively, because the integrals are continuous in
+$x+\mathrm{i}y$ and satisfy the Cauchy--Riemann equations in each variable
+separately;
+
+% PCT-SOURCE: pdf=094 print=82 kind=equation id=2-109
+\begin{equation}
+  \begin{aligned}
+  \frac{\partial}{\partial x_j}\int\dd\xi\,f(x-\xi)F(\xi+\mathrm{i}y)
+  &=\int\dd\xi\,\frac{\partial f}{\partial x_j}(x-\xi)F(\xi+\mathrm{i}y)\\
+  &=\int\dd\xi\,f(x-\xi)\frac{\partial F}{\partial\xi_j}(\xi+\mathrm{i}y)\\
+  &=-\mathrm{i}\frac{\partial}{\partial y_j}
+    \int\dd\xi\,f(x-\xi)F(\xi+\mathrm{i}y).
+  \end{aligned}
+  \tag{2-109}\label{eq:ch2-edge-Cauchy-Riemann}
+\end{equation}
+
+As $y\to0$, these holomorphic functions converge to $T(f_{-x})$ uniformly
+for $x$ on suitably small compact subsets of $E$. Here
+$f_{-x}(\xi)=f(x-\xi)$. (Recall that the convergence of a sequence of
+distributions is always uniform on bounded sets if it converges at all, and
+the $f_{-x}$ form a bounded set as $x$ varies over a compact set.) Thus, by
+Theorem 2-15 there exists a holomorphic function $G_f$, which coincides with
+$F_{1f}$ in an open subset of $D_1$ and with $F_{2f}$ in an open subset of
+  $D_2$, is holomorphic in a neighborhood of an open subset of $E$, and provides
+  an analytic continuation of $F_1$ and $F_2$. The construction of $G_f$ displays
+it as a Cauchy integral with integrand which is a distribution in $f$, so
+$G_f(x+\mathrm{i}y)$ is, for fixed $x+\mathrm{i}y$, a distribution in $f$.
+Thus, by the Schwartz nuclear theorem, there is a distribution
+$H(\xi,x+\mathrm{i}y)$ such that
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-16-nuclear-kernel
+\[
+  G_f(x+\mathrm{i}y)=\int\dd\xi\,f(-\xi)H(\xi,x+\mathrm{i}y).
+\]
+
+Now an examination of the Cauchy integral formula for $G_f$ yields immediately
+that for sufficiently small $t$
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-16-translation-G
+\[
+  G_{f_t}(x+\mathrm{i}y)=G_f(x+t+\mathrm{i}y),
+\]
+
+which implies, because of the uniqueness of $H$,
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-16-translation-H
+\[
+  H(\xi+t,x+\mathrm{i}y)=H(\xi,x+t+\mathrm{i}y).
+\]
+
+In other words, $H$ depends only on $x+\xi$, and not on $\xi-x$; that is,
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-16-H-shifted
+\[
+  G_f(x+\mathrm{i}y)=\int\dd\xi\,f(x-\xi)H(\xi,\mathrm{i}y).
+\]
+
+Now let $f_k$ be a sequence of test functions which converge to a
+$\delta$-function at the origin and $g$ be a test function in $x$ and $y$.
+Then, for any test function $g$ of sufficiently small support,
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-16-delta-sequence
+\[
+  \begin{aligned}
+  \int\dd x\,\dd y\,g(x,y)G_{f_k}(x+\mathrm{i}y)
+  & =\int\dd\xi\,\dd y\int\dd x\,
+      f_k(x-\xi)g(x,y)H(\xi,\mathrm{i}y)\\
+  &\longrightarrow\int\dd x\,\dd y\,g(x,y)H(x,\mathrm{i}y).
+  \end{aligned}
+\]
+
+But the $G_{f_k}(x+\mathrm{i}y)$ is a sequence of holomorphic functions, and,
+as we have already explained in Section 2-3, the convergence for all $g$ of
+such a sequence smeared with test functions of support lying in or on a given
+compact set implies the uniform convergence of the sequence to a holomorphic
+function, $G(x+\mathrm{i}y)$. Therefore $H(x,\mathrm{i}y)=G(x+\mathrm{i}y)$ is
+a holomorphic function. Since the sequence converges on an open set of $D_1$
+to $F_1$ and on an open set of $D_2$ to $F_2$, it provides the required
+analytic continuation.
+\end{proof}
+
+% PCT-SOURCE: pdf=095 print=83 kind=prose
+In the applications of Chapter 4 we shall have occasion to use the following
+theorem, which is an easy consequence of the edge of the wedge theorem.
+
+% PCT-SOURCE: pdf=095 print=83 kind=theorem id=2-17
+\begin{theorem}\label{thm:edge-of-wedge-zero-boundary}
+Let $\mathcal{O}$ be an open set of $\mathbb{C}^n$, containing a real
+environment $E$ which is an open set of $\mathbb{R}^n$. Suppose $F$ is a
+function holomorphic in
+
+% PCT-SOURCE: pdf=095 print=83 kind=display id=2-17-domain
+\[
+  \mathcal{B}=(\mathbb{R}^n+\mathrm{i}\mathcal{C})\cap\mathcal{O}
+\]
+
+where $\mathcal{C}$ is an open convex cone of $\mathbb{R}^n$. Suppose further
+that
+
+% PCT-SOURCE: pdf=095 print=83 kind=equation id=2-110
+\begin{equation}
+  \lim_{\substack{y\to0\\y\in\mathcal{C}}}F(x+\mathrm{i}y)=0
+  \qquad\text{for }x\in E,
+  \tag{2-110}\label{eq:ch2-edge-zero-boundary-limit}
+\end{equation}
+\end{theorem}

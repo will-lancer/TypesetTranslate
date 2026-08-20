@@ -1,0 +1,842 @@
+% PCT-SOURCE: pdf=129 print=117 kind=prose-continuation id=p117-linear-program-continuation
+express the function in terms of its boundary values using a generalization of
+Cauchy's integral formula. It is hoped that the study of such integral
+representations is easier than the direct study of operator distributions
+satisfying local commutativity. A complete characterization of functions $W$
+with the properties given by the various theorems of this section is important,
+since, as the reconstruction theorem (Theorem 3-7) shows, such functions can
+be used to construct a field theory satisfying all the axioms except asymptotic
+completeness. The study of the last property leads to non-linear integral
+equations among the vacuum expectation values; this gives rise to the
+\emph{non-linear program} (Ref.~16).
+
+
+% PCT-SOURCE: pdf=129 print=117 kind=section-title id=sec-ch3-reconstruction
+\begingroup
+\setlength{\emergencystretch}{3em}
+\subsection{The Reconstruction Theorem: Recovery of a Theory from Its Vacuum Expectation Values}
+\label{sec:ch3-reconstruction}
+\endgroup
+
+% PCT-SOURCE: pdf=129 print=117 kind=prose id=p117-reconstruction-scope
+We give the complete proof of the reconstruction theorem only for the theory
+of a hermitian scalar field.  For a general field theory, the theorem is true,
+but to write out the proof would require a massive automation of the notation.
+
+% PCT-SOURCE: pdf=129 print=117 kind=theorem id=thm-3-7
+\begin{theorem}[3-7]\label{thm:ch3-reconstruction}
+Let \(\{\mathcal{W}^{(n)}\}\), \(n=1,2,\ldots\), be a sequence of tempered
+distributions, where \(\mathcal{W}^{(n)}\) depends on \(n\) four-vector
+variables \(x_1,x_2,\ldots,x_n\).  Suppose the \(\mathcal{W}^{(n)}\) have the
+cluster decomposition property of Theorem 3-4 and properties (a) through (e)
+of Theorems 3-1, 3-2, and 3-3, appropriately specialized to the case of a
+hermitian scalar field.  That is,
+
+% PCT-SOURCE: pdf=129 print=117 kind=display id=p117-cluster-decomposition
+\begin{equation*}
+\lim_{\lambda\to\infty}\Bigl[
+  \mathcal{W}^{(n)}(x_1,\ldots,x_j,x_{j+1}+\lambda a,\ldots,x_n+\lambda a)
+  -\mathcal{W}^{(j)}(x_1,\ldots,x_j)
+   \mathcal{W}^{(n-j)}(x_{j+1},\ldots,x_n)
+\Bigr]=0
+\end{equation*}
+if \(a\) is a space-like four-vector.
+
+% PCT-SOURCE: pdf=129 print=117 kind=prose id=p117-theorem-a-intro
+\textup{(a) (Relativistic Transformation Law)}
+
+% PCT-SOURCE: pdf=129 print=117 kind=display id=eq-3-42
+\begin{equation}
+\mathcal{W}^{(n)}(x_1,\ldots,x_n)
+ =\mathcal{W}^{(n)}(\Lambda x_1+a,\Lambda x_2+a,\ldots,\Lambda x_n+a),
+ \qquad \Lambda\in L_+^\uparrow .
+\tag{3-42}\label{eq:ch3-reconstruction-relativistic}
+\end{equation}
+
+% PCT-SOURCE: pdf=129 print=117 kind=prose id=p117-theorem-b-intro
+\textup{(b) (Spectral Conditions)}
+
+% PCT-SOURCE: pdf=129 print=117 kind=display id=eq-3-43
+\begin{equation}
+\widetilde{\mathcal{W}}^{(n)}(p_1,\ldots,p_n)
+ =(2\pi)^4\delta\!\left(\sum_{j=1}^{n}p_j\right)
+ \widetilde{\mathcal{W}}\bigl(p_1,p_1+p_2,\ldots,
+ p_1+p_2+\cdots+p_{n-1}\bigr)
+\tag{3-43}\label{eq:ch3-reconstruction-spectral-delta}
+\end{equation}
+
+% PCT-SOURCE: pdf=129 print=117 kind=display id=eq-3-44
+and
+\begin{equation}
+\widetilde{\mathcal{W}}^{(n)}(q_1,\ldots,q_{n-1})=0
+\qquad\text{if any }q_i\notin V_+ .
+\tag{3-44}\label{eq:ch3-reconstruction-spectral-support}
+\end{equation}
+
+% PCT-SOURCE: pdf=130 print=118 kind=prose id=p118-theorem-c-intro
+\textup{(c) (Hermiticity Conditions)}
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-45
+\begin{equation}
+\mathcal{W}^{(n)}(x_1,\ldots,x_n)
+ =\overline{\mathcal{W}^{(n)}(x_n,\ldots,x_1)} .
+\tag{3-45}\label{eq:ch3-reconstruction-hermiticity}
+\end{equation}
+
+% PCT-SOURCE: pdf=130 print=118 kind=prose id=p118-theorem-d-intro
+\textup{(d) (Local Commutativity Conditions)}
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-46
+\begin{equation}
+\begin{aligned}
+\mathcal{W}^{(n)}(x_1,\ldots,x_j,x_{j+1},\ldots,x_n)
+ &=\mathcal{W}^{(n)}(x_1,\ldots,x_{j+1},x_j,\ldots,x_n) \\
+ &\hspace{2em}\text{if }(x_j-x_{j+1})^2>0
+ \quad\text{for }j=1,2,\ldots,n-1 .
+\end{aligned}
+\tag{3-46}\label{eq:ch3-reconstruction-locality}
+\end{equation}
+
+% PCT-SOURCE: pdf=130 print=118 kind=prose id=p118-theorem-e-intro
+\textup{(e) (Positive Definite Conditions)}
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-47
+\begin{equation}
+\begin{aligned}
+\sum\!\int\!\cdots\!\int
+ \dd x_1\cdots\dd x_j\,\dd y_1\cdots\dd y_k\\
+ &\overline{f_j(x_1,\ldots,x_j)}\\
+ &\mathcal{W}^{(j+k)}(x_j,\ldots,x_1,y_1,\ldots,y_k)
+ f_k(y_1,\ldots,y_k)\geq 0
+\end{aligned}
+\tag{3-47}\label{eq:ch3-reconstruction-positive}
+\end{equation}
+for all finite sequences \(f_0,f_1(x_1),f_2(x_1,x_2),\ldots\) of test
+functions.
+
+% PCT-SOURCE: pdf=130 print=118 kind=prose id=p118-theorem-existence
+Then there exists a separable%
+% PCT-SOURCE: pdf=130 print=118 kind=footnote id=fn-p118-separable
+\footnote{Defined in Section 2-6.}
+ Hilbert space \(\mathcal H\), a continuous unitary representation
+\(U(a,\Lambda)\) of \(\mathcal{P}_+^\uparrow\) in \(\mathcal H\), a unique
+state \(\ket{\Omega}\), invariant under \(U(a,\Lambda)\), and a hermitian
+scalar field with domain \(D_1\) and representation of
+\(\mathcal{P}_+^\uparrow\), \(U(a,\Lambda)\), such that
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-47a-vacuum-values
+\begin{equation*}
+\bra{\Omega}\,\varphi(x_1)\cdots\varphi(x_n)\,\ket{\Omega}
+ =\mathcal{W}^{(n)}(x_1,x_2,\ldots,x_n) .
+\end{equation*}
+
+% PCT-SOURCE: pdf=130 print=118 kind=prose id=p118-theorem-uniqueness-intro
+Furthermore, any other field theory with these vacuum expectation values is
+unitary equivalent to this one.  That is, if \(\mathcal H_1\) is a Hilbert
+space, and \(\{a,\Lambda\}\mapsto U_1(a,\Lambda)\) is a continuous unitary
+representation of \(\mathcal{P}_+^\uparrow\) in it, and \(\ket{\Psi_{01}}\) is a
+unique vector in \(\mathcal H_1\) invariant under \(U_1(a,\Lambda)\), and
+\(\varphi_1(x)\) is a scalar field with domain \(D_{11}\) with the property
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-47b-other-values
+\begin{equation*}
+\bra{\Psi_{01}}\,\varphi_1(x_1)\cdots\varphi_1(x_n)\,\ket{\Psi_{01}}
+ =\mathcal{W}^{(n)}(x_1,\ldots,x_n)
+\end{equation*}
+and having \(\ket{\Psi_{01}}\) as cyclic vector, then there exists a unitary
+transformation \(V\) of \(\mathcal H\) onto \(\mathcal H_1\) such that
+
+% PCT-SOURCE: pdf=130 print=118 kind=display id=eq-3-47c-equivalence
+\begin{equation*}
+\ket{\Psi_{01}}=V\ket{\Omega},\qquad
+U_1(a,\Lambda)=VU(a,\Lambda)V^{-1},\qquad
+\varphi_1(h)=V\varphi(h)V^{-1},\qquad D_{11}=VD_1 .
+\end{equation*}
+\end{theorem}
+
+% PCT-SOURCE: pdf=130 print=118 kind=proof
+\begin{proof}[Proof of the Reconstruction Theorem]\label{proof:ch3-reconstruction}
+% PCT-SOURCE: pdf=130 print=118 kind=footnote id=fn-p118-proof-notation
+\footnote{In this proof \(h\) will denote a test function in
+\(\mathcal{S}(\R^4)\) and \(f\) and \(g\) will denote elements of \(H\),
+defined below.}
+To construct the Hilbert space \(\mathcal H\) we begin with a vector space,
+\(H\), formed of all sequences \(f=(f_0,f_1,f_2,\ldots)\) where \(f_0\) is
+any complex constant, \(f_k\in\mathcal{S}(\R^{4k})\), \(k=1,2,\ldots\), and all
+but a finite number of test functions \(f_k=0\).  Addition and multiplication
+by complex scalars are defined in the usual way:
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=p119-vector-addition
+\begin{equation*}
+(f_0,f_1,\ldots)+(g_0,g_1,\ldots)
+ =(f_0+g_0,f_1+g_1,\ldots),
+\qquad
+\alpha(f_0,f_1,f_2,\ldots)
+ =(\alpha f_0,\alpha f_1,\alpha f_2,\ldots) .
+\end{equation*}
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-vector-space
+Scalar multiplication is commutative, associative, and distributive with
+respect to the addition.
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-scalar-product-intro
+Next we introduce a scalar product defined on pairs of vectors of the vector
+space
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-48
+\begin{equation}
+\begin{aligned}
+\braket{f}{g}
+ &=\sum_{j,k=0}^{\infty}\int\!\cdots\!\int
+ \dd x_1\cdots\dd x_j\,\dd y_1\cdots\dd y_k\,
+ \overline{f_j(x_1,\ldots,x_j)} \\
+ &\qquad\times
+ \mathcal{W}^{(j+k)}(x_j,\ldots,x_1,y_1,\ldots,y_k)
+ f_k(y_1,\ldots,y_k) .
+\end{aligned}
+\tag{3-48}\label{eq:ch3-reconstruction-inner-product}
+\end{equation}
+where \(\mathcal{W}^{(0)}\equiv 1\) by definition.  This scalar product has
+the required property
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-48-hermiticity
+\begin{equation*}
+\braket{f}{g}=\overline{\braket{g}{f}} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-scalar-product-properties
+by virtue of the hermiticity condition (3-45) on the \(\mathcal{W}\).  Its
+linearity in \(g\) and anti-linearity in \(f\) are evident from (3-48).
+Furthermore, from the positive definiteness conditions (3-47) we get
+\(\lVert f\rVert^2=\braket{f}{f}\geq 0\).  The term \(\lVert f\rVert\) is
+called the norm of \(f\).  Now we define a linear transformation
+\(U(a,\Lambda)\) of the vector space by
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-49
+\begin{equation}
+\begin{aligned}
+U(a,\Lambda)(f_0,f_1,f_2,\ldots)
+ &= (f_0,\{a,\Lambda\}f_1,\{a,\Lambda\}f_2,\ldots),\\
+\{a,\Lambda\}f_k(x_1,\ldots,x_k)
+ &= f_k\bigl(\Lambda^{-1}(x_1-a),\ldots,\Lambda^{-1}(x_k-a)\bigr) .
+\end{aligned}
+\tag{3-49}\label{eq:ch3-reconstruction-group-action}
+\end{equation}
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-vacuum-invariance
+If we denote the vector \((1,0,0,\ldots)\) by \(\ket{\Omega}\), we have
+clearly
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-49a-vacuum-invariance
+\begin{equation*}
+U(a,\Lambda)\ket{\Omega}=\ket{\Omega} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-representation-law
+The operator \(U(a,\Lambda)\) leaves the scalar product invariant by virtue
+of the relativistic transformation law (3-42) of the \(\mathcal{W}\), and is
+a representation of \(\mathcal{P}_+^\uparrow\), that is,
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-49b-representation
+\begin{equation*}
+U(a_1,\Lambda_1)U(a_2,\Lambda_2)
+ =U(a_1+\Lambda_1a_2,\Lambda_1\Lambda_2) .
+\end{equation*}
+This is proved easily using (3-49).
+
+% PCT-SOURCE: pdf=131 print=119 kind=prose id=p119-smeared-field-definition
+We introduce a linear operator \(\varphi(h)\) for each test function \(h\) by
+the equation
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-50
+\begin{equation}
+\varphi(h)\{f_0,f_1,f_2,\ldots\}
+ =(0,hf_0,h\otimes f_1,h\otimes f_2,\ldots),
+\tag{3-50}\label{eq:ch3-reconstruction-field-sequence}
+\end{equation}
+where
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-50-tensor
+\begin{equation*}
+(h\otimes f_k)(x_1,\ldots,x_{k+1})
+ =h(x_1)f_k(x_2,x_3,\ldots,x_{k+1})
+\end{equation*}
+is clearly a test function.  That \(\varphi(h)\) satisfies the transformation
+law
+
+% PCT-SOURCE: pdf=131 print=119 kind=display id=eq-3-51
+\begin{equation}
+U(a,\Lambda)\varphi(h)U(a,\Lambda)^{-1}
+ =\varphi(\{a,\Lambda\}h) .
+\tag{3-51}\label{eq:ch3-reconstruction-field-covariance}
+\end{equation}
+
+% PCT-SOURCE: pdf=132 print=120 kind=prose id=p120-covariance-computation
+which follows immediately from the computation
+
+% PCT-SOURCE: pdf=132 print=120 kind=display id=eq-3-51-computation
+\begin{equation*}
+\begin{aligned}
+U(a,\Lambda)\varphi(h)(f_0,f_1,\ldots)
+ &=U(a,\Lambda)(0,hf_0,h\otimes f_1,\ldots)\\
+ &=(0,\{a,\Lambda\}h f_0,
+       \{a,\Lambda\}h\otimes\{a,\Lambda\}f_1,\ldots)\\
+ &=\varphi(\{a,\Lambda\}h)(f_0,\{a,\Lambda\}f_1,\ldots)\\
+ &=\varphi(\{a,\Lambda\}h)U(a,\Lambda)(f_0,f_1,\ldots) .
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=132 print=120 kind=prose id=p120-tempered-matrix-elements
+As functionals of \(h\) the matrix elements
+\(\braket{f}{\varphi(h)g}\) are tempered distributions since they are finite
+sums of \(\mathcal{W}\)'s, and further
+
+% PCT-SOURCE: pdf=132 print=120 kind=display id=eq-3-52
+\begin{equation}
+\braket{\varphi(\overline h)f}{g}=\braket{f}{\varphi(h)g} .
+\tag{3-52}\label{eq:ch3-reconstruction-field-adjoint-form}
+\end{equation}
+
+% PCT-SOURCE: pdf=132 print=120 kind=prose id=p120-prehilbert-deficiencies
+These constructions have given us a \(\ket{\Omega}\), \(U(a,\Lambda)\) and
+\(\varphi(h)\), and a vector space \(H\), but \(H\) need not be a Hilbert
+space.  It can be deficient in two respects.  First, it may contain vectors
+of zero norm in the scalar product (3-48).  Second, it may not be
+complete.%
+% PCT-SOURCE: pdf=132 print=120 kind=footnote id=fn-p120-complete
+\footnote{Defined in Section 2-6.}
+ We will remedy these two deficiencies in turn.  The reader who is familiar
+with the standard mathematical operation of completing a pre-Hilbert space
+to get a Hilbert space can skip most of the following few paragraphs, which
+are chiefly an outline of the required constructions.
+
+% PCT-SOURCE: pdf=132 print=120 kind=prose id=p120-zero-norm-subspace
+First, note that the set \(H_0\subset H\) of all vectors of zero norm forms
+an isotropic subspace, that is, a subspace in which each vector is orthogonal
+to every other vector.  To see this, note that if \(\lVert f\rVert=0\), then
+for any \(g\),
+
+% PCT-SOURCE: pdf=132 print=120 kind=display id=eq-3-53
+\begin{equation}
+\abs{\braket{f}{g}}\leq \lVert f\rVert\,\lVert g\rVert=0
+\tag{3-53}\label{eq:ch3-reconstruction-schwarz}
+\end{equation}
+by the Schwarz inequality (which is valid as long as the scalar product is
+non-negative).  Thus, if \(f=(f_0,f_1,\ldots)\) and
+\(g=(g_0,g_1,\ldots)\) are of zero norm, then \(f\) is orthogonal to \(g\)
+and \(\alpha f+\beta g\) is of zero norm.  We now form equivalence classes
+of sequences, \(f=(f_0,f_1,\ldots)\), two sequences being equivalent if they
+differ by a sequence of zero norm.  These equivalence classes form in a
+natural way a vector space, usually denoted by \(H/H_0\), on which the scalar
+product is positive definite.  If \(\mathsf f\) and \(\mathsf g\) are two
+equivalence classes, we merely define \(\alpha\mathsf f+\beta\mathsf g\) to
+be that equivalence class to which \(\alpha f+\beta g\) belongs, where
+\(f=(f_0,f_1,\ldots)\) belongs to \(\mathsf f\) and
+\(g=(g_0,g_1,\ldots)\) to \(\mathsf g\).  The result is independent of
+which representatives are chosen because the set of vectors of zero length
+is a vector space.  Clearly, the set of sequences of zero norm serves as the
+zero in the vector space \(H/H_0\) of equivalence classes, and
+\(\lVert\mathsf f\rVert=0\) implies \(\mathsf f=0\).  We can define a scalar
+product in \(H/H_0\) by
+\(\braket{\mathsf f}{\mathsf g}=\braket{f}{g}\); it is independent of which
+representative \(f\in\mathsf f\) is chosen by virtue of (3-53).
+
+% PCT-SOURCE: pdf=132 print=120 kind=prose id=p120-equivalence-mappings
+We have next to verify that the \(U(a,\Lambda)\) and \(\varphi(h)\) defined
+by (3-49) and (3-50) are actually mappings of equivalence classes.  For
+\(U(a,\Lambda)\) this is an immediate consequence of the fact that it leaves
+scalar products invariant: if \(f\) and \(g\) are two sequences of test
+functions for which
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=eq-3-53a-equivalence
+\begin{equation*}
+\lVert f-g\rVert=0
+\end{equation*}
+then
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=eq-3-53b-equivalence
+\begin{equation*}
+\lVert U(a,\Lambda)f-U(a,\Lambda)g\rVert
+ =\lVert U(a,\Lambda)(f-g)\rVert=\lVert f-g\rVert=0,
+\end{equation*}
+that is, if \(f\) and \(g\) are in the same equivalence class, so are
+\(U(a,\Lambda)f\) and \(U(a,\Lambda)g\).  That \(\lVert f\rVert=0\) implies
+\(\lVert\varphi(h)f\rVert=0\) follows from (3-52) and the Schwarz
+inequality (3-53):
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=eq-3-53c-field-equivalence
+\begin{equation*}
+\begin{aligned}
+\lVert\varphi(h)f\rVert^2
+ &=\braket{\varphi(h)f}{\varphi(h)f}
+  =\braket{f}{\varphi(\overline h)\varphi(h)f}\\
+ &\leq \lVert f\rVert\,\lVert\varphi(\overline h)\varphi(h)f\rVert=0
+ \qquad\text{if }\lVert f\rVert=0 .
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=133 print=121 kind=prose id=p121-equivalence-notation
+For brevity we shall use the same symbols \(U(a,\Lambda)\), \(\varphi(h)\) to
+denote operators acting on the equivalence classes (that is, operators in
+\(H/H_0\)) as we used for the original operators in \(H\).  Similarly
+\(\ket{\Omega}\in H/H_0\) will denote the equivalence class of
+\((1,0,0,\ldots)\).
+
+% PCT-SOURCE: pdf=133 print=121 kind=prose id=p121-completion-intro
+Next we have to deal with the incompleteness of the space \(H/H_0\) of
+equivalence classes.  This is a standard problem analogous to completing the
+rational numbers to get the real numbers.  Consider the space \(\mathfrak h\)
+of all Cauchy sequences \(F=\{f_1,f_2,\ldots\}\) of elements
+\(f_j\in H/H_0\), that is, sequences such that
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=p121-cauchy-condition
+\begin{equation*}
+\lVert f_m-f_n\rVert\longrightarrow 0
+\qquad\text{as }m\text{ and }n\longrightarrow\infty .
+\end{equation*}
+\(\mathfrak h\) is a vector space with addition defined by
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=p121-cauchy-addition
+\begin{equation*}
+\alpha\{f_1,f_2,\ldots\}+\beta\{g_1,g_2,\ldots\}
+ =\{\alpha f_1+\beta g_1,\alpha f_2+\beta g_2,\ldots\} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=133 print=121 kind=prose id=p121-cauchy-inner-product
+The scalar product of two elements \(F=\{f_1,f_2,\ldots\}\) and
+\(G=\{g_1,g_2,\ldots\}\) is defined by
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=eq-3-54
+\begin{equation}
+\braket{F}{G}=\lim_{n\to\infty}\braket{f_n}{g_n} .
+\tag{3-54}\label{eq:ch3-reconstruction-completion-inner-product}
+\end{equation}
+The existence of this limit is an immediate consequence of the assumption
+that \(F\) and \(G\) are Cauchy sequences [\emph{Proof:} because
+\(\{f_1,f_2,\ldots\}\) is a Cauchy sequence, \(\lVert f_n\rVert\) must be
+bounded.  Consequently
+
+% PCT-SOURCE: pdf=133 print=121 kind=display id=p121-cauchy-inner-product-bound
+\begin{equation*}
+\begin{aligned}
+\abs{\braket{f_n}{g_n}-\braket{f_m}{g_m}}
+ &=\abs{\braket{f_n-f_m}{g_n}+\braket{f_m}{g_n-g_m}}\\
+ &\leq \lVert g_n\rVert\,\lVert f_n-f_m\rVert
+       +\lVert f_m\rVert\,\lVert g_n-g_m\rVert,
+\end{aligned}
+\end{equation*}
+which tends to zero for large \(m\) and \(n\).  The convergence of (3-54)
+follows.]  Elementary calculations which are left to the reader show that
+\(\braket{F}{G}\) defines a scalar product.  However, just as in the case of
+\(H\), there may be vectors of zero norm in \(\mathfrak h\).  These again form
+an isotropic subspace \(\mathfrak h_0\), and again we have to introduce
+equivalence classes of vectors, two vectors being equivalent if they differ by
+a vector of zero norm.  The space of these equivalence classes we denote by
+\(\mathcal H=\mathfrak h/\mathfrak h_0\).  It is a vector space with positive
+definite scalar product.  Furthermore, it is complete.  This is proved as
+follows.
+
+% PCT-SOURCE: pdf=134 print=122 kind=prose id=p122-completion-cauchy-classes
+Let \(\Phi_1,\Phi_2,\ldots\) be a Cauchy sequence of elements of \(\mathcal H\).
+This means \(\lVert\Phi_m-\Phi_n\rVert\) is arbitrarily small for all
+sufficiently large \(m\) and \(n\).  Therefore, any representatives of the
+equivalence classes \(\Phi_1,\Phi_2,\ldots\), say \(F_1,F_2,\ldots\),
+respectively, where \(F_j\in\mathfrak h\), satisfy
+
+% PCT-SOURCE: pdf=134 print=122 kind=display id=p122-representative-cauchy
+\begin{equation*}
+\lVert F_n-F_m\rVert=\lVert\Phi_n-\Phi_m\rVert\longrightarrow 0
+\qquad\text{as }n,m\longrightarrow\infty .
+\end{equation*}
+
+% PCT-SOURCE: pdf=134 print=122 kind=prose id=p122-representative-components
+If \(F_j=\{f_1^{(j)},f_2^{(j)},\ldots\}\), then, by definition,
+
+% PCT-SOURCE: pdf=134 print=122 kind=display id=p122-representative-distance
+\begin{equation*}
+\lVert F_n-F_m\rVert
+ =\lim_{k\to\infty}\lVert f_k^{(n)}-f_k^{(m)}\rVert .
+\end{equation*}
+
+% PCT-SOURCE: pdf=134 print=122 kind=prose id=p122-diagonal-choice
+We may assume that the representative sequences \(F_n\) are chosen so that
+\(\lVert f_k^{(n)}-f_k^{(m)}\rVert
+<2\lVert\Phi_n-\Phi_m\rVert\) and
+\(\lVert f_i^{(k)}-f_j^{(k)}\rVert<1/k\) for all \(i,j,k\) and all \(m\)
+and \(n\).  This can always be arranged by dropping enough \(f_k^{(n)}\),
+at the beginning of the sequences \(F_n\).  We now show that
+\(G=\{f_1^{(1)},f_2^{(2)},\ldots\}\) is a Cauchy sequence such that
+
+% PCT-SOURCE: pdf=134 print=122 kind=display id=p122-diagonal-limit
+\begin{equation*}
+\lim_{n\to\infty}\lVert F_n-G\rVert=0 .
+\end{equation*}
+
+% PCT-SOURCE: pdf=134 print=122 kind=prose id=p122-completion-limit-class
+The equivalence class of \(G\), which we shall call \(\Phi\), is then an
+element of \(\mathcal H\) such that
+\(\lim_{n\to\infty}\lVert\Phi_n-\Phi\rVert=0\), proving that \(\mathcal H\)
+is complete.  To prove our assertions requires a few more lines.  We have
+
+% PCT-SOURCE: pdf=134 print=122 kind=display id=p122-diagonal-cauchy-bound
+\begin{equation*}
+\begin{aligned}
+\lVert f_k^{(k)}-f_\ell^{(\ell)}\rVert
+ &\leq \lVert f_k^{(k)}-f_\ell^{(k)}\rVert
+       +\lVert f_\ell^{(k)}-f_\ell^{(\ell)}\rVert\\
+ &\leq \lVert f_k^{(k)}-f_\ell^{(k)}\rVert
+       +2\lVert\Phi_k-\Phi_\ell\rVert\longrightarrow 0
+ \qquad\text{as }k,\ell\longrightarrow\infty .
+\end{aligned}
+\end{equation*}
+This proves that \(\{f_k^{(k)}\}\), \(k=1,2,\ldots\), is a Cauchy sequence.
+Again,
+
+% PCT-SOURCE: pdf=134 print=122 kind=display id=p122-diagonal-distance
+\begin{equation*}
+\lVert F_n-G\rVert
+ =\lim_{k\to\infty}\lVert f_k^{(n)}-f_k^{(k)}\rVert
+\end{equation*}
+and each term on the right-hand side is less than
+\(2\lVert\Phi_n-\Phi_k\rVert\), which goes to zero as \(n,k\to\infty\).
+Therefore \(\lVert F_n-G\rVert\to0\).
+
+% PCT-SOURCE: pdf=134 print=122 kind=prose id=p122-hilbert-space-summary
+This completes the construction of our Hilbert space of states.  When a theory
+is given in terms of its vacuum expectation values, a state vector
+\(\ket{\Psi}\in\mathcal H=\mathfrak h/\mathfrak h_0\) is an equivalence class
+(modulo the equivalence class \(\mathfrak h_0\) of \(\{0,0,\ldots\}\)) of
+Cauchy sequences of equivalence classes \(\mathsf f\in H/H_0\) (modulo the
+equivalence class \(H_0\) of sequences of zero norm) of sequences of test
+functions.  Yes, it really is that simple!
+
+% PCT-SOURCE: pdf=135 print=123 kind=prose id=p123-dense-embedded-space
+The elements of \(H/H_0\) can be thought of as embedded in \(\mathcal H\).  For
+each element \(\mathsf f\) of \(H/H_0\) one has a vector \(\ket{\Psi_f}\) in
+\(\mathcal H\), defined as the equivalence class of the Cauchy sequence
+\(F=\{\mathsf f,\mathsf f,\mathsf f,\ldots\}\in\mathfrak h\).  Clearly, the
+scalar product \(\braket{\Psi_f}{\Psi_g}\) in \(\mathcal H\) is equal to
+\(\braket{\mathsf f}{\mathsf g}\), the scalar product in \(H/H_0\).  The
+\(\ket{\Psi_f}\) constitute a subset \(D_1\) of \(\mathcal H\) which is dense
+in \(\mathcal H\), for if \(\ket{\Phi}\) is an element of \(\mathcal H\) and
+\(\{f_1,f_2,\ldots\}\) is a representative Cauchy sequence belonging to
+\(\ket{\Phi}\), \(\lVert f_n-f_m\rVert<\epsilon\) for all \(m,n>N\) implies
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=p123-dense-bound
+\begin{equation*}
+\lVert\ket{\Phi}-\ket{\Psi_{f_n}}\rVert
+ =\lim_{m\to\infty}\lVert f_m-f_n\rVert\leq\epsilon .
+\end{equation*}
+
+% PCT-SOURCE: pdf=135 print=123 kind=prose id=p123-separability
+We can use the fact that the \(\ket{\Psi_f}\) are dense in \(\mathcal H\) to
+show that \(\mathcal H\) is separable.  The required denumerable dense set is
+obtained by taking sequences \(\{f_0,f_1,\ldots\}\in H\), where the \(f_j\)
+are test functions chosen from the denumerable set dense in
+\(\mathcal{S}(\R^{4j})\) described in Section 2-1.  We leave it to the reader
+to verify that this choice of \(\ket{\Psi_f}\) is dense in \(\mathcal H\).
+
+% PCT-SOURCE: pdf=135 print=123 kind=prose id=p123-unitary-extension
+Up to this point \(U(a,\Lambda)\) has only been defined on \(H/H_0\).  This
+immediately yields a definition of it on the dense set of vectors
+\(\ket{\Psi_f}\) in \(\mathcal H\).  Since it is continuous there, because
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=p123-unitary-isometry
+\begin{equation*}
+\lVert U(a,\Lambda)\ket{\Psi_f}
+ -U(a,\Lambda)\ket{\Psi_g}\rVert
+ =\lVert\ket{\Psi_f}-\ket{\Psi_g}\rVert ,
+\end{equation*}
+it can be extended by continuity to all of \(\mathcal H\); and so extended,
+is by definition scalar product-preserving: if
+\(\ket{\Psi_{f_n}}\to\ket{\Phi}\) and
+\(\ket{\Psi_{g_n}}\to\ket{\chi}\), then, by definition,
+\(U(a,\Lambda)\ket{\Psi_{f_n}}\to U(a,\Lambda)\ket{\Phi}\) and
+\(U(a,\Lambda)\ket{\Psi_{g_n}}\to U(a,\Lambda)\ket{\chi}\), so
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=p123-unitary-inner-product
+\begin{equation*}
+\begin{aligned}
+\braket{U(a,\Lambda)\Phi}{U(a,\Lambda)\chi}
+ &=\lim_{n,m\to\infty}
+ \braket{U(a,\Lambda)\Psi_{f_n}}{U(a,\Lambda)\Psi_{g_m}}\\
+ &=\braket{\Phi}{\chi} .
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=135 print=123 kind=prose id=p123-group-continuity
+Furthermore, so defined on \(\mathcal H\), \(U(a,\Lambda)\) is continuous in
+\(\{a,\Lambda\}\).  Because
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=p123-group-continuity-reduction
+\begin{equation*}
+\left\lVert U(b,M)\ket{\Psi}-U(a,\Lambda)\ket{\Psi}\right\rVert
+ =\left\lVert\ket{\Psi}-U(\{b,M\}^{-1}\{a,\Lambda\})\ket{\Psi}\right\rVert
+\end{equation*}
+it is sufficient to verify the continuity at the identity element \(\{0,1\}\).
+On vectors of the form \(\ket{\Psi_f}\), this continuity is easy to check:
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=eq-3-55
+\begin{equation}
+\left\lVert\ket{\Psi_f}-U(a,\Lambda)\ket{\Psi_f}\right\rVert
+ =\lVert f-U(a,\Lambda)f\rVert .
+\tag{3-55}\label{eq:ch3-reconstruction-group-continuity}
+\end{equation}
+Since the right-hand side can be expressed in terms of the distributions
+\(\mathcal{W}\) smeared with test functions \(f_k\) and
+\(\{a,\Lambda\}f_k\), and \(\{a,\Lambda\}f_k\) depends continuously on
+\(\{a,\Lambda\}\) in the topology of \(\mathcal{S}(\R^{4k})\), we see that
+(3-55) is continuous in \(\{a,\Lambda\}\).  The continuity of
+\(U(a,\Lambda)\) on a general \(\ket{\Psi}\in\mathcal H\) then follows from
+the fact that it is unitary.  Explicitly,
+
+% PCT-SOURCE: pdf=135 print=123 kind=display id=p123-general-continuity
+\begin{equation*}
+\begin{aligned}
+\left\lVert\ket{\Psi}-U(a,\Lambda)\ket{\Psi}\right\rVert
+ &=\left\lVert(\ket{\Psi}-\ket{\Psi_f})
+ +(\ket{\Psi_f}-U(a,\Lambda)\ket{\Psi_f})
+ +U(a,\Lambda)(\ket{\Psi_f}-\ket{\Psi})\right\rVert\\
+ &\leq 2\lVert\ket{\Psi}-\ket{\Psi_f}\rVert
+ +\left\lVert\ket{\Psi_f}-U(a,\Lambda)\ket{\Psi_f}\right\rVert\longrightarrow 0
+\end{aligned}
+\end{equation*}
+as \((a,\Lambda)\to(0,1)\) and \(\ket{\Psi_f}\to\ket{\Psi}\).
+
+% PCT-SOURCE: pdf=135 print=123 kind=prose id=p123-invariant-vector
+The \(U(a,\Lambda)\) possess an invariant vector, which with a final change in
+notation we again denote \(\ket{\Omega}\).  It is the equivalence class of the
+Cauchy sequence \(\{\mathsf f,\mathsf f,\ldots\}\) of \(\mathfrak h\), where
+\(\mathsf f\in H/H_0\) is the equivalence class of the sequence of test
+functions \((1,0,0,\ldots)\).
+
+% PCT-SOURCE: pdf=136 print=124 kind=prose id=p124-vacuum-uniqueness
+We now show that by virtue of the cluster decomposition property there is no
+other state \(\ket{\Psi'_0}\) linearly independent of \(\ket{\Omega}\) and
+invariant under \(U(a,\Lambda)\).  Without loss of generality we can assume
+\(\braket{\Psi'_0}{\Omega}=0\), and \(\braket{\Psi'_0}{\Psi'_0}=1\).  If it
+happened that \(\ket{\Psi'_0}\) were of the form \(\ket{\Psi_f}\in D_1\) we
+would have an immediate contradiction because, for a space-like vector \(a\),
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-vacuum-uniqueness-limit
+\begin{equation*}
+\braket{\Psi'_0}{\Psi'_0}
+ =\lim_{\lambda\to\infty}
+ \bra{\Psi'_0}U(\lambda a,1)\ket{\Psi'_0}
+ =\braket{\Psi'_0}{\Omega}\braket{\Omega}{\Psi'_0}=0 ,
+\end{equation*}
+where the second equality follows from the cluster decomposition property of
+the vacuum expectation values:
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-cluster-inner-product
+\begin{equation*}
+\begin{aligned}
+\bra{\Psi_f}U(\lambda a,1)\ket{\Psi_f}
+ &=\braket{(f_0,f_1,\ldots)}{(f_0,\{\lambda a,1\}f_1,
+       \{\lambda a,1\}f_2,\ldots)}\\
+ &=\sum_{j,k=0}^{\infty}\int\!\cdots\!\int
+ \dd x_1\cdots\dd x_j\,\dd y_1\cdots\dd y_k\,
+ \overline{f_j(x_1,\ldots,x_j)}\\
+ &\qquad \mathcal{W}^{(j+k)}(x_j,\ldots,x_1,
+ y_1+\lambda a,\ldots,y_k+\lambda a)
+ f_k(y_1,\ldots,y_k)\\
+ &\longrightarrow\sum_{j,k=0}^{\infty}\int\!\cdots\!\int
+ \dd x_1\cdots\dd x_j\,\dd y_1\cdots\dd y_k\,
+ \overline{f_j(x_1,\ldots,x_j)}\\
+ &\qquad \mathcal{W}^{(j)}(x_j,\ldots,x_1)
+ \mathcal{W}^{(k)}(y_1,\ldots,y_k)f_k(y_1,\ldots,y_k)\\
+ &=\braket{\Psi_f}{\Omega}\braket{\Omega}{\Psi_f} .
+\end{aligned}
+\end{equation*}
+
+% PCT-SOURCE: pdf=136 print=124 kind=prose id=p124-vacuum-uniqueness-approximation
+In general, \(\ket{\Psi'_0}\) is not of the form \(\ket{\Psi_f}\) but because
+the \(\ket{\Psi_f}\) are dense, it can be approximated by \(\ket{\Psi_f}\)'s to
+arbitrary accuracy.  Suppose
+\(\lVert\ket{\Psi'_0}-\ket{\Psi_f}\rVert<\epsilon\), where without loss of
+generality we may take \(\lVert\ket{\Psi_f}\rVert=1\).  Then
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-vacuum-uniqueness-expansion
+\begin{equation*}
+\begin{aligned}
+\braket{\Psi'_0}{\Psi'_0}
+ &=\lim_{\lambda\to\infty}
+ \bra{\Psi'_0}U(\lambda a,1)\ket{\Psi'_0}\\
+ &=\lim_{\lambda\to\infty}\Bigl[
+ \bra{\Psi'_0-\Psi_f}U(\lambda a,1)\ket{\Psi'_0}
+ +\bra{\Psi_f}U(\lambda a,1)\ket{\Psi'_0-\Psi_f}
+ +\bra{\Psi_f}U(\lambda a,1)\ket{\Psi_f}\Bigr] .
+\end{aligned}
+\end{equation*}
+and therefore, by the cluster decomposition theorem,
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-vacuum-uniqueness-error
+\begin{equation*}
+\abs{\braket{\Psi'_0}{\Psi'_0}
+ -\braket{\Psi_f}{\Omega}\braket{\Omega}{\Psi_f}}
+ \leq 2\epsilon .
+\end{equation*}
+But
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-vacuum-uniqueness-overlap
+\begin{equation*}
+\abs{\braket{\Psi_f}{\Omega}}
+ =\abs{\braket{\Psi_f-\Psi'_0}{\Omega}}
+ \leq\lVert\ket{\Psi_f}-\ket{\Psi'_0}\rVert<\epsilon
+\end{equation*}
+so
+
+% PCT-SOURCE: pdf=136 print=124 kind=display id=p124-vacuum-uniqueness-contradiction
+\begin{equation*}
+\begin{aligned}
+\braket{\Psi'_0}{\Psi'_0}
+ &\leq \braket{\Psi_f}{\Omega}\braket{\Omega}{\Psi_f}
+ +\abs{\braket{\Psi'_0}{\Psi'_0}
+ -\braket{\Psi_f}{\Omega}\braket{\Omega}{\Psi_f}}\\
+ &\leq 2\epsilon+\epsilon^2,
+\end{aligned}
+\end{equation*}
+which is a contradiction for sufficiently small \(\epsilon\).  Thus, the
+vacuum state is unique.
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-spectrum-property
+There remains only one property of \(U(a,\Lambda)\) to be verified, namely,
+that its energy momentum spectrum lies in or on the future light cone.  This
+is an immediate consequence of (3-44).
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-smeared-field-extension
+The smeared field \(\varphi(h)\) was defined on all vectors \(g\) of \(H/H_0\).
+This leads at once to a definition on the subset \(D_1\) of vectors
+\(\ket{\Psi_g}\) of \(\mathcal H\).  We define
+\(\varphi(h)\ket{\Psi_g}\) to be \(\ket{\Psi_{h\otimes g}}\), where
+\(h\otimes g\) is the equivalence class of the sequence
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=eq-3-56
+\begin{equation}
+(0,hg_0,h\otimes g_1,h\otimes g_2,\ldots) .
+\tag{3-56}\label{eq:ch3-reconstruction-field-domain}
+\end{equation}
+\( (g_0,g_1,\ldots)\) being a member of the equivalence class \(g\); with
+this definition
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=p125-field-linearity
+\begin{equation*}
+\varphi(h)\bigl[\alpha\ket{\Psi_g}+\beta\ket{\Psi_f}\bigr]
+ =\alpha\ket{\Psi_{h\otimes g}}+\beta\ket{\Psi_{h\otimes f}} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-polynomial-domain
+In particular this defines \(\varphi(h)\) on \(D_0\), the set of vectors of
+the form \(\mathcal{P}[\varphi(h)]\ket{\Omega}\).  Furthermore,
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=p125-vacuum-smearing
+\begin{equation*}
+\int\!\cdots\!\int f_1(x_1)\cdots f_n(x_n)\,
+\dd x_1\cdots\dd x_n\,\mathcal{W}^{(n)}(x_1,\ldots,x_n)
+ =\bra{\Omega}\varphi(f_1)\cdots\varphi(f_n)\ket{\Omega} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-field-domain-axioms
+The domain \(D_1\) is suitable as a domain of definition of a field, for it
+clearly satisfies \(\varphi(h)D_1\subset D_1\),
+\(\ket{\Omega}\in D_1\), \(U(a,\Lambda)D_1\subset D_1\).  Since
+\(\braket{\Psi_g}{\varphi(h)\Psi_f}\) is a finite linear combination of
+\(\mathcal{W}\)'s it is a tempered distribution in \(h\).  This completes the
+verification of axioms O and I.  The transformation law II is an immediate
+consequence of (3-42).  The hermiticity relation
+\(\varphi(h)\ket{\Psi}=[\varphi(\overline h)]^\dagger\ket{\Psi}\) can be
+proved for all vectors \(\ket{\Psi}\) in \(D_1\).  Since \(\varphi\) and
+\(\varphi^\dagger\) are linear operators it is sufficient to verify the
+equation for vectors of the form
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=p125-field-vector-form
+\begin{equation*}
+\ket{\Psi_g}
+ =\int g(x_1,\ldots,x_n)\varphi(x_1)\cdots\varphi(x_n)
+ \dd x_1\cdots\dd x_n\,\ket{\Omega} .
+\end{equation*}
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-field-hermiticity-check
+It is a simple consequence of (3-56) that
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=p125-field-hermiticity-norm
+\begin{equation*}
+\left\lVert\varphi(h)\ket{\Psi_g}
+ -[\varphi(\overline h)]^\dagger\ket{\Psi_g}\right\rVert=0
+\end{equation*}
+using the definition of the norm in terms of the \(\mathcal{W}\) given by
+\(\lVert\ket{\Psi_g}\rVert^2=\braket{\Psi_g}{\Psi_g}\).  In the same way
+one verifies the local commutativity condition for vectors in \(D_1\) using
+(3-56).
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-unitary-equivalence-intro
+This completes the explicit construction of a hermitian scalar field.  It
+remains to show that any other field with the same vacuum expectation values
+is unitary equivalent to the one so constructed.
+
+% PCT-SOURCE: pdf=137 print=125 kind=prose id=p125-unitary-equivalence-map
+Suppose that \(\mathcal H_1\), \(U_1(a,\Lambda)\), and \(\varphi_1(x)\) define a
+theory with vacuum \(\ket{\Psi_{01}}\), having the same expectation values.
+Let \(V\) be the mapping taking \(\ket{\Psi_f}\in\mathcal H\) to a vector in
+\(\mathcal H_1\) given by
+
+% PCT-SOURCE: pdf=137 print=125 kind=display id=eq-3-57
+\begin{equation}
+\begin{aligned}
+V\ket{\Psi_f}=\ket{\Psi_{1f}}
+ &=f_0\ket{\Psi_{01}}+\varphi_1(f_1)\ket{\Psi_{01}}\\
+ &\quad+\int\varphi_1(x_1)\varphi_1(x_2)f_2(x_1,x_2)
+ \dd x_1\,\dd x_2\,\ket{\Psi_{01}}+\cdots ,
+\end{aligned}
+\tag{3-57}\label{eq:ch3-reconstruction-unitary-map}
+\end{equation}
+where \(\{f_0,f_1,f_2,\ldots\}=f\) lies in the equivalence class \(\mathsf f\).
+
+% PCT-SOURCE: pdf=138 print=126 kind=proof-continuation id=proof-3-7-continuation
+The mapping \(V\) is well defined because (3-57) is obviously independent of
+which representative is chosen.  The mapping \(V\) is unitary because
+
+% PCT-SOURCE: pdf=138 print=126 kind=display id=eq-3-57-unitarity
+\begin{equation*}
+\braket{V\Psi_f}{V\Psi_g}=\braket{\Psi_{1f}}{\Psi_{1g}}
+\end{equation*}
+follows from the equality of the expectation values.  This can be extended
+by continuity to the whole of \(\mathcal H\) and \(\mathcal H_1\) [we assume
+vectors of the form (3-57) are dense in \(\mathcal H_1\)].  If
+\(\ket{\Psi_f}\in D_1\), then
+
+% PCT-SOURCE: pdf=138 print=126 kind=display id=eq-3-57-intertwining-start
+\begin{equation*}
+V\varphi(h)\ket{\Psi_f}=V\ket{\Psi_{h\otimes f}},
+\end{equation*}
+where \(\ket{\Psi_{h\otimes f}}\) is defined by (3-57),
+
+% PCT-SOURCE: pdf=138 print=126 kind=display id=eq-3-57-intertwining-computation
+\begin{equation*}
+\begin{aligned}
+\ket{\Psi_{1,h\otimes f}}
+ &=\varphi_1(hf_0)\ket{\Psi_{01}}
+ +\int h(x_1)f_1(x_2)\varphi_1(x_1)\varphi_1(x_2)\,\dd x_1\,\dd x_2\,\ket{\Psi_{01}}+\cdots\\
+ &=\varphi_1(h)\left[f_0\ket{\Psi_{01}}
+ +\int f_1(x_1)\varphi_1(x_1)\,\dd x_1\,\ket{\Psi_{01}}+\cdots\right]\\
+ &=\varphi_1(h)V\ket{\Psi_f}.
+\end{aligned}
+\end{equation*}
+Hence \(V\varphi(h)V^{-1}=\varphi_1(h)\) holds for all vectors in
+\(D_1\subset\mathcal H_1\).  Finally, a simple direct calculation shows that
+\(U_1(a,\Lambda)=VU(a,\Lambda)V^{-1}\).
+\end{proof}
+
+% PCT-SOURCE: pdf=138 print=126 kind=prose id=p126-reconstruction-remark
+We remark that this reconstruction can be carried through for a denumerable
+set of fields of any spin, provided of course we are given enough
+\(\mathcal{W}\)'s with the correct properties.  We leave it to the reader to
+carry through the construction for the free field and generalized free field,
+starting from the vacuum expectation values given in Section 3-3.  The
+reconstruction will not (from the listed properties alone) give a theory
+satisfying asymptotic completeness.  However, if the spectrum of the theory
+shows an isolated representation of \(\mathcal{P}_+^\uparrow\) at
+\(p^2=-m^2\), then the Haag--Ruelle theory does ensure a particle
+interpretation, at least for the collision states.  We complete this chapter
+with a discussion of some other symmetries which might be present in the
+theory.
