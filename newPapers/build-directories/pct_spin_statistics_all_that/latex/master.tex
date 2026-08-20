@@ -17,6 +17,7 @@
 \hypersetup{
   hypertexnames=false,
   colorlinks=true,
+  linktoc=all,
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue,
@@ -29,8 +30,9 @@
 \gdef\@fpheader{\phantom{x}}
 \makeatother
 
-% The local Weinberg edition uses compact JHEP title-page spacing and starts
-% each printed chapter on a fresh page.
+% Use compact title-page spacing. Chapter page breaks are installed after
+% \maketitle so the section command used by the contents cannot create an
+% empty page.
 \compress
 \renewcommand\afterProceedingsSpace{\medskip}
 \renewcommand\afterTitleSpace{\medskip}
@@ -42,7 +44,8 @@
 \renewcommand\afterDedicatedSpace{\bigskip}
 \renewcommand\afterTocSpace{\medskip}
 \renewcommand\afterTocRuleSpace{\bigskip\clearpage}
-\pretocmd{\section}{\clearpage}{}{}
+\pretocmd{\tableofcontents}{\begingroup\small}{}{}
+\apptocmd{\tableofcontents}{\endgroup}{}{}
 \setcounter{tocdepth}{2}
 \makeindex
 
@@ -67,17 +70,20 @@
 \author[b]{A. S. Wightman}
 \affiliation[a]{Kings College London}
 \affiliation[b]{Princeton University}
-\dedicated{\normalfont\bfseries Princeton University Press\\ Princeton and Oxford}
 \abstract{}
 
 \begin{document}
 \maketitle
-\flushbottom
+\pretocmd{\section}{\clearpage}{}{}
+\raggedbottom
 
-% Front matter and the unnumbered Introduction.
+% These transcriptions remain in the assembly list for source and provenance
+% audits. The reading edition begins with Chapter 1.
+\iffalse
 \PCTInput{frontmatter/copyright.tex}
 \PCTInput{frontmatter/preface.tex}
 \PCTInput{frontmatter/introduction.tex}
+\fi
 
 % Chapter 1. Relativistic Transformation Laws.
 \PCTInput{chapters/chapter01/opening.tex}
@@ -103,8 +109,6 @@
 \PCTInput{chapters/chapter03/sec3_2.tex}
 \PCTInput{chapters/chapter03/sec3_3.tex}
 \PCTInput{chapters/chapter03/sec3_4.tex}
-% Balance the two contents pages at the same Chapter 3 boundary as the source.
-\addtocontents{toc}{\protect\newpage}
 \PCTInput{chapters/chapter03/sec3_5.tex}
 \PCTInput{chapters/chapter03/bibliography.tex}
 

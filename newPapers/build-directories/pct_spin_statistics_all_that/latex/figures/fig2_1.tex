@@ -1,34 +1,30 @@
 % PCT-SOURCE: pdf=070 print=58 kind=figure id=2-1
-% Geometry: three horizontal contour segments crossed by a vertical z-axis;
-% arrows point right, left, and right from the upper segment downward.
-% The source labels the intersections a and b and labels the vertical axis z.
-% The contour is reconstructed as native line art from the rendered scan.
+% Native reconstruction from the rendered source page.  The contour runs
+% along three horizontal lines; the arrowheads carry their orientation.
 \begingroup
 \renewcommand{\thefigure}{2-1}
 \renewcommand{\figurename}{FIGURE}
-\begin{figure}[htbp]
+\begin{figure}[t]
   \centering
-  \begin{tikzpicture}[x=1.15cm,y=0.95cm,>=Stealth,line cap=round,
-    line join=round]
-    % Vertical coordinate axis and its upward arrow.
-    \draw[->,line width=.65pt] (0,-1.75) -- (0,1.65)
-      node[above right=1pt] {$z$};
+  \begin{tikzpicture}[>=Stealth,line cap=round,line join=round,
+    contour/.style={line width=.75pt}]
+    % The imaginary axis of the z plane.
+    \draw[->,line width=.7pt] (0,-3.03) -- (0,3.28);
+    \node at (1.94,3.15) {$z$};
 
-    % Upper contour segment, oriented to the right.
-    \draw[->,line width=.65pt] (-2.05,.78) -- (2.10,.78);
+    % The upper line, traversed to the right.
+    \draw[contour,->] (-4.06,1.65) -- (3.94,1.65);
 
-    % Middle contour segment, oriented to the left.  The arrow is placed near
-    % the axis, as in the printed contour rather than at the far endpoint.
-    \draw[line width=.65pt] (-2.05,-.18) -- (2.10,-.18);
-    \draw[<- ,line width=.65pt] (-.34,-.18) -- (.48,-.18);
+    % The middle line, traversed to the left.
+    \draw[contour,->] (4.14,0) -- (-1.11,0);
+    \draw[contour] (-1.11,0) -- (-4.06,0);
 
-    % Lower contour segment, oriented to the right.
-    \draw[line width=.65pt] (-2.05,-1.02) -- (2.10,-1.02);
-    \draw[->,line width=.65pt] (.12,-1.02) -- (.82,-1.02);
+    % The lower line, traversed to the right.
+    \draw[contour,->] (-4.06,-1.60) -- (0.86,-1.60);
+    \draw[contour] (0.86,-1.60) -- (4.14,-1.60);
 
-    % Labels at the two intersections.
-    \node[right=4pt] at (0,-.18) {$a$};
-    \node[left=4pt] at (0,-1.02) {$b$};
+    \node at ( 0.33, 0.31) {$a$};
+    \node at (-0.29,-1.92) {$b$};
   \end{tikzpicture}
   \caption{The contour $C$ in the plane of $z=\xi-i\eta$.}
   \label{fig:2-1}

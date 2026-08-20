@@ -1,45 +1,38 @@
 % PCT-SOURCE: pdf=077 print=65 kind=figure id=2-2
-% Native reconstruction of the single-valuedness diagram.  The projected
-% geometry follows the printed drawing, with the tube boundary at left, the
-% two endpoint configurations, and the common Lorentz-transformed endpoint.
+% Native reconstruction from the rendered source page.  The heavy curve is the
+% boundary of the extended tube; the dashed segments join the two points of
+% the tube to their common image under the two factorizations.
 \begingroup
 \renewcommand{\thefigure}{2-2}
 \renewcommand{\figurename}{FIGURE}
-\begin{figure}[htbp]
+\begin{figure}[t]
   \centering
-  \begin{tikzpicture}[x=0.92cm,y=0.83cm,>=Stealth,line cap=round,
-    line join=round]
-    % A projected boundary of the extended tube.
-    \draw[line width=.65pt]
-      (-2.15,2.72)
-        .. controls (-2.12,1.82) and (-1.90,.84) .. (-1.34,.20)
-        .. controls (-.98,-.20) and (-.92,-.66) .. (-1.17,-1.13)
-        .. controls (-1.45,-1.63) and (-1.50,-2.17) .. (-1.32,-2.64);
-    \node[font=\small] at (-1.75,-.36) {$\mathcal{T}_n$};
+  \begin{tikzpicture}[>=Stealth,line cap=round,line join=round,
+    link/.style={dashed,dash pattern=on 9pt off 4.5pt,line width=.7pt}]
+    % The boundary of the extended tube.
+    \draw[line width=1.6pt] plot[smooth,tension=.8] coordinates {
+      (-3.54,4.81) (-2.97,3.67) (-2.40,2.53) (-1.83,1.46) (-1.33,0.67)
+      (-0.90,0.20) (-0.40,-0.04) (0.17,0.03) (0.88,0.39) (1.60,0.88)
+      (2.31,1.60) (2.95,2.45) (3.38,3.17) (3.67,3.74)};
+    \node at (-1.92,2.40) {$\mathcal{T}_{n}$};
 
-    % The two configurations joined by the vertical path in the tube.
-    \fill (0.00,2.08) circle (1.15pt);
-    \fill (0.00,-1.08) circle (1.15pt);
-    \draw[densely dashed,line width=.5pt] (0,2.08) -- (0,-1.08);
-    \node[above left=1pt,font=\scriptsize] at (0,2.08) {$w_1\cdots w_n$};
-    \node[below left=1pt,font=\scriptsize] at (0,-1.08)
-      {$\zeta_1\cdots\zeta_n$};
+    % The two points of the tube and their common image.
+    \draw[link] (0,4.07) -- (0,0);
+    \draw[link] (0,4.07) -- (8.30,1.78);
+    \draw[link] (0,0) -- (8.30,1.78);
+    \fill (0,4.07) circle (1.9pt);
+    \fill (0,0) circle (1.9pt);
+    \fill (8.30,1.78) circle (1.9pt);
 
-    % The two endpoint paths meet at the transformed configuration.
-    \coordinate (q) at (3.95,.54);
-    \fill (q) circle (1.25pt);
-    \draw[line width=.6pt] (0,2.08) -- (q);
-    \draw[dashed,line width=.5pt] (0,-1.08) -- (q);
-    \draw[->,line width=.6pt] (3.82,.70) .. controls (4.10,.72) and
-      (4.25,.55) .. (4.03,.30);
-    \node[align=left,font=\scriptsize,anchor=west] at (1.30,2.30)
-      {$\Lambda(A_1,B_1)\zeta_1,\ldots,\Lambda(A_1,B_1)\zeta_n$};
-    \node[align=left,font=\scriptsize,anchor=west] at (1.30,1.86)
-      {$=\Lambda(A_2,B_2)w_1,\ldots,\Lambda(A_2,B_2)w_n$};
+    \node[above=3pt] at (0,4.07) {$w_1\cdots w_n$};
+    \node at (3.67,-0.61)
+      {$\zeta_1\cdots\zeta_n=\Lambda(A,B)w_1,\ldots\Lambda(A,B)w_n$};
 
-    % Lower endpoint notation in the source drawing.
-    \node[align=left,font=\scriptsize,anchor=west] at (.86,-1.43)
-      {$\zeta_1\cdots\zeta_n=\Lambda(A,B)w_1,\ldots,\Lambda(A,B)w_n$};
+    % The image point is named by the block at the upper right.
+    \node[anchor=north west,align=left] at (5.30,4.40)
+      {$\Lambda(A_1,B_1)\zeta_1,\ldots\Lambda(A_1,B_1)\zeta_n$\\[3pt]
+       \hspace{1.1em}$=\Lambda(A_2,B_2)w_1,\ldots\Lambda(A_2,B_2)w_n$};
+    \draw[->,line width=.5pt] (8.95,2.86) to[out=-105,in=35] (8.42,1.86);
   \end{tikzpicture}
   \caption{The single-valuedness of the functions as defined throughout the
   extended tube $\mathcal{T}'_{n}$ follows from the fact that, if

@@ -1,75 +1,63 @@
 % PCT-SOURCE: pdf=038 print=026 kind=figure id=1-3
 % Native reconstruction from the rendered source page.  The vertical hatch
-% marks the two-particle continuum and the crossed hatch marks the
-% three-particle continuum.
+% marks the two-particle continuum above its threshold hyperboloid, and the
+% crossed hatch marks the three-particle continuum above its own threshold.
 \begingroup
 \renewcommand{\thefigure}{1-3}
 \renewcommand{\figurename}{FIGURE}
 \begin{figure}[t]
   \centering
-  \begin{tikzpicture}[x=0.78cm,y=0.78cm,>=Stealth,
-    line cap=round,line join=round]
-    \begin{scope}[xshift=2.60cm]
-    % The four straight spectral-cone rays.
-    \draw[line width=.78pt] (-4.30,5.55) -- (0,0) -- (4.30,5.55);
-    \draw[line width=.78pt] (-3.78,5.30) -- (0,0) -- (3.78,5.30);
-    \draw[line width=.60pt] (-0.62,-0.62) -- (0,0) -- (0.62,-0.62);
-
-    % Two-particle continuum: vertical hatching between the two-particle
-    % threshold and the upper boundary.
+  \begin{tikzpicture}[x=1.5cm,y=1.5cm,>=Stealth,
+    line cap=round,line join=round,
+    shell/.style={line width=.9pt},
+    cone/.style={line width=.9pt},
+    hatch/.style={line width=.35pt},
+    legend/.style={font=\small,anchor=west}]
+    % Two-particle continuum: vertical hatch above the threshold at 2m.
     \begin{scope}
-      \clip
-        plot[domain=-3.55:3.55,samples=100]
-          (\x,{3.02+0.18*\x*\x})
-        -- (3.55,{4.22+0.12*3.55*3.55})
-        plot[domain=3.55:-3.55,samples=100]
-          (\x,{4.22+0.12*\x*\x}) -- cycle;
-      \foreach \x in {-3.6,-3.35,...,3.6}
-        \draw[line width=.38pt] (\x,2.85) -- (\x,5.95);
+      \clip plot[domain=-2.99:2.99,samples=140] (\x,{sqrt(\x*\x+4)})
+        -- (2.99,3.62) -- (-2.99,3.62) -- cycle;
+      \foreach \x in {-2.96,-2.80,...,3.00}
+        \draw[hatch] (\x,1.90) -- (\x,3.70);
     \end{scope}
 
-    % Three-particle continuum: crossed hatching above the upper boundary.
+    % Three-particle continuum: the same region crossed by horizontal rules
+    % above the threshold at 3m.
     \begin{scope}
-      \clip
-        plot[domain=-3.55:3.55,samples=100]
-          (\x,{4.22+0.12*\x*\x})
-        -- (3.55,6.05) -- (-3.55,6.05) -- cycle;
-      \draw[step=.28cm,line width=.34pt] (-3.65,4.10) grid (3.65,6.10);
+      \clip plot[domain=-1.99:1.99,samples=140] (\x,{sqrt(\x*\x+9)})
+        -- (1.99,3.62) -- (-1.99,3.62) -- cycle;
+      \foreach \y in {2.98,3.11,...,3.64}
+        \draw[hatch] (-2.05,\y) -- (2.05,\y);
     \end{scope}
 
-    % Curves bounding the mass shells and continua.
-    \draw[line width=.85pt,domain=-3.55:3.55,samples=140]
-      plot (\x,{1.48+0.25*\x*\x});
-    \draw[line width=.85pt,domain=-3.55:3.55,samples=140]
-      plot (\x,{3.02+0.18*\x*\x});
-    \draw[line width=.85pt,domain=-3.55:3.55,samples=140]
-      plot (\x,{4.22+0.12*\x*\x});
+    % The light cone and the three mass hyperboloids.
+    \draw[cone] (-3.25,3.25) -- (0,0) -- (3.25,3.25);
+    \draw[cone] (-0.36,-0.36) -- (0,0) -- (0.36,-0.36);
+    \draw[shell] plot[domain=-2.90:2.90,samples=160] (\x,{sqrt(\x*\x+1)});
+    \draw[shell] plot[domain=-2.99:2.99,samples=160] (\x,{sqrt(\x*\x+4)});
+    \draw[shell] plot[domain=-1.99:1.99,samples=160] (\x,{sqrt(\x*\x+9)});
 
-    % Axes, labels, and the vacuum point.
-    \draw[->,line width=.60pt] (0,-0.25) -- (0,6.10)
-      node[above right=1pt] {$p^0$};
-    \draw[->,line width=.60pt] (0,0) -- (4.52,0)
-      node[right=2pt] {$p$};
-    \fill (0,0) circle (1.8pt);
-    \node[below right=3pt] at (0,0) {$\Omega$};
+    % Axes, the vacuum, and the one-particle labels.
+    \draw[->,line width=.6pt] (0,0) -- (0,3.88) node[above right=-1pt] {$p^0$};
+    \draw[->,line width=.6pt] (0,0) -- (1.38,0);
+    \fill (0,0) circle (1.6pt);
+    \node[font=\small] at (1.22,-0.17) {$\mathbf{p}$};
+    \node[font=\small] at (0.64,-0.24) {$\ket{\Omega}$};
 
-    \draw[line width=.45pt] (0.63,1.60) -- (1.42,0.85);
-    \node[right] at (1.50,0.80) {$-p^2=m^2$};
+    \draw[line width=.45pt] (1.30,0.60) -- (0.52,1.12);
+    \node[font=\small] at (1.78,0.42) {$p^2=-m^2$};
+    \node[legend] at (2.50,0.62) {one-particle};
+    \node[legend] at (2.50,0.32) {states $[m,0]$};
 
-    \node[anchor=west] at (3.25,1.42) {one-particle};
-    \node[anchor=west] at (3.25,1.02) {states $[m,0]$};
-    \end{scope}
-
-    % Legend for the two hatching patterns.
-    \foreach \x in {-3.92,-3.70,-3.48,-3.26}
-      \draw[line width=.55pt] (\x,3.35) -- (\x,3.78);
-    \node[anchor=west] at (-4.08,3.02) {two-particle states};
-    \node[anchor=west] at (-4.08,2.62)
-      {$([m,0]\otimes[m,0])_{\mathrm{s}}$};
-    \foreach \y in {1.70,1.92,2.14,2.36}
-      \draw[line width=.55pt] (-3.92,\y) -- (-3.26,\y);
-    \node[anchor=west] at (-4.08,1.38) {three-particle states};
-    \node[anchor=west] at (-4.08,0.98)
+    % Key to the two hatch patterns.
+    \foreach \x in {-3.80,-3.68,...,-3.32}
+      \draw[line width=.5pt] (\x,1.50) -- (\x,1.85);
+    \node[legend] at (-3.85,1.20) {two-particle states};
+    \node[legend] at (-3.85,0.88) {$([m,0]\otimes[m,0])_{\mathrm{s}}$};
+    \foreach \y in {0.34,0.46,0.58}
+      \draw[line width=.5pt] (-3.80,\y) -- (-3.34,\y);
+    \node[legend] at (-3.85,-0.02) {three-particle states};
+    \node[legend] at (-3.85,-0.34)
       {$([m,0]\otimes[m,0]\otimes[m,0])_{\mathrm{s}}$};
   \end{tikzpicture}
   \caption{The spectrum of a theory of neutral scalar mesons of mass $m$

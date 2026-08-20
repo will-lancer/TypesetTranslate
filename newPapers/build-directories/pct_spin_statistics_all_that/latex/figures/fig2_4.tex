@@ -1,43 +1,46 @@
 % PCT-SOURCE: pdf=085 print=73 kind=figure id=2-4
-% Projected native reconstruction of the two configurations in the source.
+% Native reconstruction from the rendered source page.  The right-hand cone
+% carries the thin construction lines that add zeta_j to zeta_{j-1} and to
+% zeta_{j+1}, as in the printed drawing.
 \begingroup
 \renewcommand{\thefigure}{2.4}
 \renewcommand{\figurename}{FIGURE}
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[x=0.88cm,y=0.72cm,>=Stealth,line cap=round,
-    line join=round]
-    % Left cone.
-    \coordinate (L) at (-2.55,0);
-    \draw[line width=.62pt] (-3.75,2.55) arc (180:360:1.20 and .38);
-    \draw[line width=.62pt] (-3.75,2.55) -- (L) -- (-1.35,2.55);
-    \draw[line width=.62pt] (-3.75,2.55) arc (180:0:1.20 and .38);
-    \draw[line width=.62pt] (-3.75,-2.55) arc (180:360:1.20 and .38);
-    \draw[line width=.62pt] (-3.75,-2.55) -- (L) -- (-1.35,-2.55);
-    \draw[line width=.62pt] (-3.75,-2.55) arc (180:0:1.20 and .38);
-    \fill (L) circle (1.1pt);
-    \draw[->,line width=.7pt] (L) -- (-.58,.70);
-    \draw[->,line width=.7pt] (L) -- (-.56,-.72);
-    \draw[->,line width=.7pt] (L) -- (-3.54,-1.10);
-    \node[above right=1pt,font=\small] at (-.58,.70) {$\zeta_{j+1}$};
-    \node[below right=1pt,font=\small] at (-.56,-.72) {$\zeta_{j-1}$};
-    \node[left=1pt,font=\small] at (-3.54,-1.10) {$\zeta_j$};
+  \begin{tikzpicture}[>=Stealth,line cap=round,line join=round,
+    edge/.style={line width=.6pt},
+    vec/.style={->,line width=1.1pt},
+    aux/.style={->,line width=.45pt}]
+    % The double cone, drawn once for each configuration.
+    \foreach \s in {0,6.88}{
+      \begin{scope}[shift={(\s,0)}]
+        \draw[edge] (-1.644, 3.438) -- (0,0) -- (1.644, 3.438);
+        \draw[edge] (-1.644,-3.438) -- (0,0) -- (1.644,-3.438);
+        \draw[edge] (0, 3.59) ellipse (1.68 and 0.74);
+        \draw[edge] (0,-3.59) ellipse (1.68 and 0.74);
+      \end{scope}}
 
-    % Right cone, with primed vectors.
-    \coordinate (R) at (2.25,0);
-    \draw[line width=.62pt] (1.05,2.55) arc (180:360:1.20 and .38);
-    \draw[line width=.62pt] (1.05,2.55) -- (R) -- (3.45,2.55);
-    \draw[line width=.62pt] (1.05,2.55) arc (180:0:1.20 and .38);
-    \draw[line width=.62pt] (1.05,-2.55) arc (180:360:1.20 and .38);
-    \draw[line width=.62pt] (1.05,-2.55) -- (R) -- (3.45,-2.55);
-    \draw[line width=.62pt] (1.05,-2.55) arc (180:0:1.20 and .38);
-    \fill (R) circle (1.1pt);
-    \draw[->,line width=.7pt] (R) -- (1.62,1.18);
-    \draw[->,line width=.7pt] (R) -- (3.65,.62);
-    \draw[->,line width=.7pt] (R) -- (3.62,-1.10);
-    \node[above left=1pt,font=\small] at (1.62,1.18) {$\zeta'_j$};
-    \node[above right=1pt,font=\small] at (3.65,.62) {$\zeta'_{j+1}$};
-    \node[below right=1pt,font=\small] at (3.62,-1.10) {$\zeta'_{j-1}$};
+    % The Jost point of the extended tube.
+    \draw[vec] (0,0) -- ( 2.93, 1.27);
+    \draw[vec] (0,0) -- ( 2.93,-1.19);
+    \draw[vec] (0,0) -- (-0.47,-0.74);
+    \node[anchor=west] at ( 3.06, 1.32) {$\zeta_{j+1}$};
+    \node[anchor=west] at ( 3.06,-1.24) {$\zeta_{j-1}$};
+    \node[anchor=east] at (-0.60,-0.90) {$\zeta_j$};
+
+    % The transformed configuration, with the vector sums drawn out.
+    \begin{scope}[shift={(6.88,0)}]
+      \draw[aux] (0,0) -- (2.93, 1.27);
+      \draw[aux] (2.93,1.27) -- (2.46,0.53);
+      \draw[aux] (0,0) -- (2.93,-1.19);
+      \draw[aux] (2.93,-1.19) -- (2.46,-1.93);
+      \draw[vec] (0,0) -- (0.47, 0.74);
+      \draw[vec] (0,0) -- (2.46, 0.53);
+      \draw[vec] (0,0) -- (2.46,-1.93);
+      \node[anchor=west] at (0.52, 1.02) {$\zeta'_j$};
+      \node[anchor=west] at (2.60, 0.08) {$\zeta'_{j+1}$};
+      \node[anchor=west] at (2.58,-2.32) {$\zeta'_{j-1}$};
+    \end{scope}
   \end{tikzpicture}
   \caption{A configuration of vectors $\zeta_{j-1},\zeta_j,\zeta_{j+1}$
   appearing for a Jost point of $\mathcal{T}'_{n}$ and

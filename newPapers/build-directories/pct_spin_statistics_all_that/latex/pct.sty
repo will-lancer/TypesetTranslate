@@ -83,16 +83,57 @@
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\thesection-\arabic{equation}}
 
-\theoremstyle{plain}
+% Keep display mathematics close to the surrounding sentence.  The class
+% defaults leave conspicuous vertical holes on pages containing several short
+% displays, especially in Chapter 1 and the appendix.
+\AtBeginDocument{%
+  \setlength{\abovedisplayskip}{7pt plus 1.5pt minus 2pt}%
+  \setlength{\belowdisplayskip}{7pt plus 1.5pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{4pt plus 1pt minus 1pt}%
+  \setlength{\belowdisplayshortskip}{6pt plus 1.5pt minus 2pt}%
+  \setlength{\jot}{3pt}%
+}
+
+% Keep result spacing stable on sparse and equation-heavy pages. The default
+% amsthm skips contain enough stretch to become conspicuous in this layout.
+\newtheoremstyle{pctplain}%
+  {0.65\baselineskip}% space above
+  {0.45\baselineskip}% space below
+  {\itshape}% body font
+  {}% indent
+  {\bfseries}% head font
+  {.}% punctuation
+  {0.5em}% space after head
+  {}% head specification
+\newtheoremstyle{pctdefinition}%
+  {0.65\baselineskip}% space above
+  {0.45\baselineskip}% space below
+  {\normalfont}% body font
+  {}% indent
+  {\bfseries}% head font
+  {.}% punctuation
+  {0.5em}% space after head
+  {}% head specification
+\newtheoremstyle{pctremark}%
+  {0.5\baselineskip}% space above
+  {0.35\baselineskip}% space below
+  {\normalfont}% body font
+  {}% indent
+  {\itshape}% head font
+  {.}% punctuation
+  {0.5em}% space after head
+  {}% head specification
+
+\theoremstyle{pctplain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{claim}[theorem]{Claim}
-\theoremstyle{definition}
+\theoremstyle{pctdefinition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-\theoremstyle{remark}
+\theoremstyle{pctremark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{observation}[theorem]{Observation}
 \renewcommand{\thetheorem}{\thesection-\arabic{theorem}}
@@ -104,8 +145,8 @@
 \renewcommand{\theexample}{\thetheorem}
 \renewcommand{\theremark}{\thetheorem}
 \renewcommand{\theobservation}{\thetheorem}
-% Halmos' filled square is the source's proof terminator throughout the book.
-\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+% Use the open Halmos box requested for this reading edition.
+\renewcommand{\qedsymbol}{\ensuremath{\square}}
 
 % Source packets sometimes need an unnumbered result environment.  Keep the
 % starred forms available beside the numbered environments supplied above.

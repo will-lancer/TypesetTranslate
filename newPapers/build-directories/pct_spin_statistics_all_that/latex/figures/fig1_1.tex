@@ -1,56 +1,52 @@
 % PCT-SOURCE: pdf=023 print=011 kind=figure id=1-1
-% Native reconstruction from the rendered source page.  The dashed outlines
-% show the subgroup connectivity regions and the solid circles show the four
-% components of the Lorentz group.
+% Native reconstruction from the rendered source page.  Three dashed capsules
+% enclose the subgroups: the horizontal one is the orthochronous group, the
+% vertical one is the orthochorous group, and the diagonal one is the proper
+% group.  Each capsule encloses exactly the two components it is the union of.
 \begingroup
 \renewcommand{\thefigure}{1-1}
 \renewcommand{\figurename}{FIGURE}
 \begin{figure}[t]
   \centering
-  \begin{tikzpicture}[x=0.93cm,y=0.93cm,>=Stealth,
-    line cap=round,line join=round]
-    % The two horizontal subgroup regions.
-    \draw[dashed,dash pattern=on 7pt off 4pt,line width=.65pt,
-      rounded corners=0.72cm]
-      (-3.58,0.50) rectangle (3.58,2.23);
-    \draw[dashed,dash pattern=on 7pt off 4pt,line width=.65pt,
-      rounded corners=0.72cm]
-      (-3.58,-2.23) rectangle (3.58,-0.50);
+  \begin{tikzpicture}[>=Stealth,line cap=round,line join=round,
+    subgroup/.style={dashed,dash pattern=on 5.5pt off 3.5pt,line width=.7pt},
+    component/.style={fill=white,line width=.9pt}]
+    % L^\uparrow = L^\uparrow_+ \cup L^\uparrow_-: the top row.
+    \draw[subgroup,rounded corners=1.64cm] (-5.19,0.64) rectangle (5.19,3.92);
 
-    % The orthochorous subgroup and the proper subgroup are drawn behind the
-    % component circles, as in the printed diagram.
-    \draw[dashed,dash pattern=on 7pt off 4pt,line width=.65pt,
-      rounded corners=0.72cm]
-      (-3.58,-2.23) rectangle (-1.74,2.23);
-    \draw[dashed,dash pattern=on 7pt off 4pt,line width=.65pt]
-      (-3.15,2.13) -- (3.57,-1.77);
-    \draw[dashed,dash pattern=on 7pt off 4pt,line width=.65pt]
-      (-3.57,0.54) -- (3.15,-2.22);
+    % L_0 = L^\uparrow_+ \cup L^\downarrow_-: the left column.
+    \draw[subgroup,rounded corners=1.64cm] (-5.19,-3.92) rectangle (-1.91,3.92);
+
+    % L_+ = L^\uparrow_+ \cup L^\downarrow_+: the diagonal from the upper left
+    % component to the lower right one.
+    \begin{scope}[rotate=-32.72]
+      \draw[subgroup,rounded corners=1.77cm] (-5.99,-1.77) rectangle (5.99,1.77);
+    \end{scope}
 
     % The four connected components.
-    \filldraw[fill=white,line width=.85pt] (-2.62,1.36) circle (0.91);
-    \filldraw[fill=white,line width=.85pt] ( 2.62,1.36) circle (0.91);
-    \filldraw[fill=white,line width=.85pt] (-2.62,-1.36) circle (0.91);
-    \filldraw[fill=white,line width=.85pt] ( 2.62,-1.36) circle (0.91);
+    \draw[component] (-3.55, 2.28) circle (1.45);
+    \draw[component] ( 3.55, 2.28) circle (1.45);
+    \draw[component] (-3.55,-2.28) circle (1.45);
+    \draw[component] ( 3.55,-2.28) circle (1.45);
 
-    \node at (-2.62,1.43) {$\mathbf{1}$};
-    \node at ( 2.62,1.43) {$G$};
-    \node at (-2.62,-1.29) {$-G$};
-    \node at ( 2.62,-1.29) {$-\mathbf{1}$};
+    \node at (-3.55, 2.28) {$\mathbf{1}$};
+    \node at ( 3.55, 2.28) {$G$};
+    \node at (-3.55,-2.28) {$-G$};
+    \node at ( 3.55,-2.28) {$-\mathbf{1}$};
 
-    \node at (-2.62,0.91) {$L^\uparrow_+$};
-    \node at ( 2.62,0.91) {$L^\uparrow_-$};
-    \node at (-2.62,-1.83) {$L^\downarrow_+$};
-    \node at ( 2.62,-1.83) {$L^\downarrow_-$};
+    \node at (-3.55, 1.25) {$L^\uparrow_+$};
+    \node at ( 3.55, 1.25) {$L^\uparrow_-$};
+    \node at (-3.55,-3.31) {$L^\downarrow_-$};
+    \node at ( 3.55,-3.31) {$L^\downarrow_+$};
 
-    \node at (0,1.40) {$L^\uparrow$};
-    \node at (-3.02,0.03) {$L_0$};
-    \node at (0,-0.02) {$L_+$};
+    \node at ( 1.00, 2.69) {$L^\uparrow$};
+    \node at ( 0.73,-0.90) {$L_+$};
+    \node at (-4.52,-0.49) {$L_0$};
   \end{tikzpicture}
   \caption{Connectivity properties of the Lorentz group, $L$, and its
-  subgroups: the proper Lorentz group, $L_+$; the orthochronous Lorentz group,
-  $L^\uparrow$; the orthochorous Lorentz group, $L_0$; and the restricted
-  Lorentz group, $L^\uparrow_+$.}
+  subgroups: the proper Lorentz group, $L_+$; the orthochronous Lorentz
+  group, $L^\uparrow$; the orthochorous Lorentz group, $L_0$; and the
+  restricted Lorentz group, $L^\uparrow_+$.}
   \label{fig:ch1-lorentz-components}
 \end{figure}
 \endgroup

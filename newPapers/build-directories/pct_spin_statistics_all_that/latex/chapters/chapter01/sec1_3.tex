@@ -1,7 +1,7 @@
 % PCT-SOURCE: pdf=021 print=9 kind=prose id=p9-boundary
 The system. In the remaining sections of this chapter it will be assumed that
 some such specification has been made for relativity transformations. In
-Chapter 3 the specification will be made explicit in terms of fields.
+Chapter \ref{sec:ch3-fields-and-vacuum-expectation-values} the specification will be made explicit in terms of fields.
 
 % PCT-SOURCE: pdf=021 print=9 kind=section-heading id=1-3
 \subsection{The Lorentz and Poincar\'e Groups}\label{sec:1.3}
@@ -29,50 +29,54 @@ with the usual summation convention on repeated indices.
 % PCT-SOURCE: pdf=021 print=9 kind=display
 Here
 \[
-  x_\mu=\eta_{\mu\nu}x^\nu,
-  \qquad
-  \eta^{\mu\nu}=\eta_{\mu\nu},
-  \qquad
-  \eta_{\mu\nu}
-  =
+\begin{aligned}
+  x_\mu&=\eta_{\mu\nu}x^\nu,
+  & \eta^{\mu\nu}&=\eta_{\mu\nu},\\
+  \eta_{\mu\nu}&=
   \begin{pmatrix}
     -1&0&0&0\\
     0&1&0&0\\
     0&0&1&0\\
     0&0&0&1
   \end{pmatrix}.
+\end{aligned}
 \]
 
 % PCT-SOURCE: pdf=021 print=9 kind=prose
-A Lorentz transformation $A$ is a linear transformation mapping space-time
-onto space-time which preserves the scalar product (1-4):
-$(Ax)\mathbin{\cdot}(Ay)=x\mathbin{\cdot}y$. If
-$(Ax)^\mu=A^\mu{}_\nu x^\nu$, the real matrix $A^\mu{}_\nu$ of the
+A Lorentz transformation $\Lambda$ is a linear transformation mapping space-time
+onto space-time which preserves the scalar product \eqref{eq:ch1-lorentz-scalar}:
+$(\Lambda x)\mathbin{\cdot}(\Lambda y)=x\mathbin{\cdot}y$. If
+$(\Lambda x)^\mu=\Lambda^\mu{}_\nu x^\nu$, the real matrix
+$\Lambda^\mu{}_\nu$ of the
 transformation must satisfy
 % PCT-SOURCE: pdf=021 print=9 kind=equation id=1-5
 \begin{equation}
-  A^\kappa{}_\mu A^\lambda{}_\nu\eta_{\kappa\lambda}
-  =\eta_{\mu\nu},
-  \qquad\text{or}\qquad
-  A^{\mathsf T}\eta A=\eta .
+\begin{aligned}
+  \Lambda^\kappa{}_\mu\Lambda^\lambda{}_\nu\eta_{\kappa\lambda}
+  &=\eta_{\mu\nu},
+  & \Lambda^{\mathsf T}\eta\Lambda&=\eta .
+\end{aligned}
   \tag{1-5}\label{eq:ch1-lorentz-condition}
 \end{equation}
-where the transpose $A^{\mathsf T}$ of $A$ is defined by
-$(A^{\mathsf T})^\mu{}_\nu=A^\nu{}_\mu$, and indices on $A$ are lowered
+where the transpose $\Lambda^{\mathsf T}$ of $\Lambda$ is defined by
+$(\Lambda^{\mathsf T})^\mu{}_\nu=\Lambda^\nu{}_\mu$, and indices on
+$\Lambda$ are lowered
 according to
 % PCT-SOURCE: pdf=021 print=9 kind=display
 \[
-  A_{\kappa\nu}=\eta_{\kappa\sigma}A^\sigma{}_\nu
-  =(\eta A)_{\kappa\nu}.
+  \Lambda_{\kappa\nu}=\eta_{\kappa\sigma}\Lambda^\sigma{}_\nu
+  =(\eta\Lambda)_{\kappa\nu}.
 \]
 
 % PCT-SOURCE: pdf=021 print=9 kind=prose
-If $A$ and $M$ satisfy (1-5), so do $AM$ and $A^{-1}$. Here
+If $\Lambda$ and $\Lambda'$ satisfy \eqref{eq:ch1-lorentz-condition}, so do
+$\Lambda\Lambda'$ and $\Lambda^{-1}$. Here
 % PCT-SOURCE: pdf=021 print=9 kind=equation id=1-6
 \begin{equation}
 \begin{aligned}
-  (AM)^\mu{}_\nu&=A^\mu{}_\kappa M^\kappa{}_\nu,\\
-  (A^{-1})^\mu{}_\kappa A^\kappa{}_\nu
+  (\Lambda\Lambda')^\mu{}_\nu
+    &=\Lambda^\mu{}_\kappa\Lambda'^\kappa{}_\nu,\\
+  (\Lambda^{-1})^\mu{}_\kappa\Lambda^\kappa{}_\nu
     &=\delta^\mu{}_\nu
     =\begin{cases}
       0,&\mu\ne\nu,\\
@@ -82,10 +86,11 @@ If $A$ and $M$ satisfy (1-5), so do $AM$ and $A^{-1}$. Here
 \tag{1-6}\label{eq:ch1-lorentz-group-law}
 \end{equation}
 so the Lorentz transformations form a group, the Lorentz group, $L$. Two
-Lorentz transformations $A$ and $M$ are defined to be close to one another if
-the numbers $A^\mu{}_\nu$ and $M^\mu{}_\nu$ are close for all
-$\mu,\nu=0,1,2,3$. Clearly, with this definition, $A^{-1}$ and $AM$ are
-continuous functions of $A$ and $M$, respectively. Furthermore, it makes
+Lorentz transformations $\Lambda$ and $\Lambda'$ are defined to be close to
+one another if the numbers $\Lambda^\mu{}_\nu$ and
+$\Lambda'^\mu{}_\nu$ are close for all $\mu,\nu=0,1,2,3$. Clearly, with
+this definition, $\Lambda^{-1}$ and $\Lambda\Lambda'$ are continuous
+functions of $\Lambda$ and $\Lambda'$, respectively. Furthermore, it makes
 sense to say that two Lorentz transformations can be connected to one another
 by a continuous curve of Lorentz transformations.
 
@@ -93,28 +98,29 @@ by a continuous curve of Lorentz transformations.
 $L$ has four components, each of which is connected in the sense that any one
 point can be connected to any other, but no Lorentz transformation in one
 component can be connected to another in another component. To see this, note
-that $\det A$ and $\operatorname{sgn}A^0{}_0$ are both continuous functions of
-the matrix elements $A^\mu{}_\nu$. Furthermore, $\det A=\pm1$ and
-$A^0{}_0\geq+1$ or $A^0{}_0\leq-1$. [The first follows if one takes the
-determinant of (1-5); the second becomes evident if one looks at the $00$
-element of (1-5). It reads
+that $\det\Lambda$ and $\operatorname{sgn}\Lambda^0{}_0$ are both
+continuous functions of the matrix elements $\Lambda^\mu{}_\nu$.
+Furthermore, $\det\Lambda=\pm1$ and $\Lambda^0{}_0\geq+1$ or
+$\Lambda^0{}_0\leq-1$. [The first follows if one takes the
+determinant of \eqref{eq:ch1-lorentz-condition}; the second becomes evident if one looks at the $00$
+element of \eqref{eq:ch1-lorentz-condition}. It reads
 % PCT-SOURCE: pdf=022 print=10 kind=display
 \[
-  (A^0{}_0)^2-\sum_{j=1}^3(A^j{}_0)^2=1.
+  (\Lambda^0{}_0)^2-\sum_{j=1}^3(\Lambda^j{}_0)^2=1.
 \]
-Therefore, $|A^0{}_0|\geq1$.] Thus, $\det A$ and
-$\operatorname{sgn}A^0{}_0$ must be constant on any one component. The four
+Therefore, $|\Lambda^0{}_0|\geq1$.] Thus, $\det\Lambda$ and
+$\operatorname{sgn}\Lambda^0{}_0$ must be constant on any one component. The four
 possibilities are
 % PCT-SOURCE: pdf=022 print=10 kind=equation id=1-7
 \begin{equation}
 \begin{array}{rll}
-  L^\uparrow_+ &: \det A=+1,\quad \operatorname{sgn}A^0{}_0=+1
+  L^\uparrow_+ &: \det\Lambda=+1,\quad \operatorname{sgn}\Lambda^0{}_0=+1
     &\text{which contains }\mathbf{1},\\
-  L^\uparrow_- &: \det A=-1,\quad \operatorname{sgn}A^0{}_0=+1
+  L^\uparrow_- &: \det\Lambda=-1,\quad \operatorname{sgn}\Lambda^0{}_0=+1
     &\text{which contains }I_s,\\
-  L^\downarrow_+ &: \det A=+1,\quad \operatorname{sgn}A^0{}_0=-1
+  L^\downarrow_+ &: \det\Lambda=+1,\quad \operatorname{sgn}\Lambda^0{}_0=-1
     &\text{which contains }I_{st},\\
-  L^\downarrow_- &: \det A=-1,\quad \operatorname{sgn}A^0{}_0=-1
+  L^\downarrow_- &: \det\Lambda=-1,\quad \operatorname{sgn}\Lambda^0{}_0=-1
     &\text{which contains }I_t .
 \end{array}
 \tag{1-7}\label{eq:ch1-lorentz-components}
@@ -126,30 +132,30 @@ inversion), and $I_{st}$ (space-time inversion) are defined by
 % PCT-SOURCE: pdf=022 print=10 kind=equation id=1-8
 \begin{equation}
 \begin{aligned}
-  (I_sx)^0&=x^0,& (I_sx)^j&=-x^j,\qquad j=1,2,3,\\
-  (I_tx)^0&=-x^0,& (I_tx)^j&=x^j,\qquad j=1,2,3,\\
+  (I_sx)^0&=x^0,& (I_sx)^j&=-x^j,& j&=1,2,3,\\
+  (I_tx)^0&=-x^0,& (I_tx)^j&=x^j,& j&=1,2,3,\\
   I_{st}x&=-x=(I_sI_t)x .
 \end{aligned}
 \tag{1-8}\label{eq:ch1-inversions}
 \end{equation}
 Clearly, $I_s$ maps $L^\uparrow_+$ one to one onto $L^\uparrow_-$,
 $I_t$ maps $L^\downarrow_-$ one to one onto $L^\uparrow_+$, and $I_{st}$
-maps $L^\downarrow_+$ one to one onto $L^\uparrow_+$. All $A$ for which
-$A^0{}_0\geq+1$ are called \emph{orthochronous}, $A$ for which
-$\det A=+1$ \emph{proper}, and $A$ for which
-$\operatorname{sgn}A^0{}_0\det A=+1$ \emph{orthochorous}. To complete the
+maps $L^\downarrow_+$ one to one onto $L^\uparrow_+$. All $\Lambda$ for which
+$\Lambda^0{}_0\geq+1$ are called \emph{orthochronous}, $\Lambda$ for which
+$\det\Lambda=+1$ \emph{proper}, and $\Lambda$ for which
+$\operatorname{sgn}\Lambda^0{}_0\det\Lambda=+1$ \emph{orthochorous}. To complete the
 proof of our assertion it has to be shown that $L^\uparrow_+$ is connected.
-This is customarily done by proving that any $A\in L^\uparrow_+$ has a
+This is customarily done by proving that any $\Lambda\in L^\uparrow_+$ has a
 decomposition,
 % PCT-SOURCE: pdf=022 print=10 kind=equation id=1-9
 \begin{equation}
-  A=A_1A_2A_3,
+  \Lambda=\Lambda_1\Lambda_2\Lambda_3,
   \tag{1-9}\label{eq:ch1-lorentz-decomposition}
 \end{equation}
-where $A_1$ and $A_3$ are rotations and $A_2$ is a pure Lorentz
+where $\Lambda_1$ and $\Lambda_3$ are rotations and $\Lambda_2$ is a pure Lorentz
 transformation along the three-axis, defined by
 \[
-  x\longmapsto\widehat{x}=A_2x .
+  x\longmapsto\widehat{x}=\Lambda_2x .
 \]
 
 % PCT-SOURCE: pdf=023 print=11 kind=display
@@ -164,9 +170,10 @@ where
 \end{aligned}
 \tag{1-10}\label{eq:ch1-boost}
 \end{equation}
-We can then get from any one transformation of the form (1-9) to any other by
-varying the axes and angles of rotation of $A_1$ and $A_3$ and the parameter
-$\chi$ of $A_2$ continuously. We shall not prove (1-9) here but refer the
+We can then get from any one transformation of the form \eqref{eq:ch1-lorentz-decomposition} to any other by
+varying the axes and angles of rotation of $\Lambda_1$ and $\Lambda_3$ and
+the parameter $\chi$ of $\Lambda_2$ continuously. We shall not prove \eqref{eq:ch1-lorentz-decomposition}
+here but refer the
 reader to Ref.~7 of the bibliography of this chapter. This completes the
 proof that $L$ has just four components. They are displayed in
 Figure~\ref{fig:ch1-lorentz-components}.
@@ -232,20 +239,23 @@ where
 Conversely, every $2\times2$ matrix $X$ determines a four-vector via
 % PCT-SOURCE: pdf=024 print=12 kind=equation id=1-12
 \begin{equation}
-  x^\mu=\frac12\operatorname{tr}(X\tau^\mu),
-  \qquad
-  X=\check{x}.
+\begin{aligned}
+  x^\mu&=\frac12\operatorname{tr}(X\tau^\mu),
+  & X&=\check{x}.
+\end{aligned}
   \tag{1-12}\label{eq:ch1-four-vector-from-matrix}
 \end{equation}
 When $x^\mu$ is real, $\check{x}$ is Hermitian:
-$\check{x}^{\dagger}=\check{x}$; if $X$ is Hermitian, (1-12) yields a real
+$\check{x}^{\dagger}=\check{x}$; if $X$ is Hermitian, \eqref{eq:ch1-four-vector-from-matrix} yields a real
 four-vector. Note that
 % PCT-SOURCE: pdf=024 print=12 kind=equation id=1-13
 \begin{equation}
-  \det\check{x}=-x^\mu x_\mu,
-  \qquad
+\begin{aligned}
+  \det\check{x}&=-x^\mu x_\mu,
+  &
   \frac12\bigl[\det(\check{x}+\check{y})-\det\check{x}-\det\check{y}\bigr]
-  =-x^\mu y_\mu .
+  &=-x^\mu y_\mu .
+\end{aligned}
   \tag{1-13}\label{eq:ch1-determinant-polarization}
 \end{equation}
 so if $A$ is any $2\times2$ matrix of determinant $1$, then
@@ -259,7 +269,7 @@ $\widehat{x}$ which satisfies
 $(\widehat{x})^\mu(\widehat{y})_\mu=x^\mu y_\mu$. It is therefore a Lorentz
 transformation, which will be denoted by $\Lambda(A)$. Actually,
 $\Lambda(A)$ is a restricted Lorentz transformation. This follows from a
-continuity argument: in (1-14) we can vary $A$ continuously until it is the
+continuity argument: in \eqref{eq:ch1-sl2-lorentz-map} we can vary $A$ continuously until it is the
 identity. The corresponding $\Lambda(A)$ varies continuously to reach the
 identity. Therefore, $\Lambda(A)\in L^\uparrow_+$. Clearly,
 $\Lambda(-A)=\Lambda(A)$. It is left to the reader to verify that if
@@ -267,9 +277,10 @@ $\Lambda(A)=\Lambda(B)$ then $A=\pm B$. The correspondence
 $A\longmapsto\Lambda(A)$ has the properties
 % PCT-SOURCE: pdf=024 print=12 kind=equation id=1-15
 \begin{equation}
-  \Lambda(A)\Lambda(B)=\Lambda(AB),
-  \qquad
-  \Lambda(\mathbf{1})=\mathbf{1}.
+\begin{aligned}
+  \Lambda(A)\Lambda(B)&=\Lambda(AB),
+  & \Lambda(\mathbf{1})&=\mathbf{1}.
+\end{aligned}
   \tag{1-15}\label{eq:ch1-sl2-homomorphism}
 \end{equation}
 In other words, $A\longmapsto\Lambda(A)$ is a homomorphism of
@@ -288,8 +299,10 @@ $2\times2$ matrices
 Note that
 % PCT-SOURCE: pdf=024 print=12 kind=equation id=1-17
 \begin{equation}
-  A^\dagger\widetilde{x}A=\widetilde{y},
-  \qquad\text{where}\qquad y=\Lambda(A^{-1})x,
+\begin{aligned}
+  A^\dagger\widetilde{x}A&=\widetilde{y},
+  & y&=\Lambda(A^{-1})x,
+\end{aligned}
   \tag{1-17}\label{eq:ch1-sl2-tilde-action}
 \end{equation}
 because
@@ -298,7 +311,7 @@ because
   (\tau^2)(\tau^\mu)^{\mathsf T}(\tau^2)^{-1}
   =-\eta^{\mu\nu}\tau^\nu,
 \]
-with $\tau^2$ given by (1-11). This implies
+with $\tau^2$ given by \eqref{eq:ch1-check-x}. This implies
 % PCT-SOURCE: pdf=024 print=12 kind=display
 \[
   \tau^2(\check{x})^{\mathsf T}(\tau^2)^{-1}=\widetilde{x}.
@@ -317,24 +330,26 @@ for $A$ of determinant $1$.
 Another group associated with the Lorentz group, $L$, is the
 \emph{complex Lorentz group}, which we shall denote by $L(\mathbb C)$. It is
 essential in the proof of the $\mathrm{PCT}$ theorem as we shall see. It is
-composed of all complex matrices satisfying (1-5). The argument given before
-to show that $\det A=\pm1$ is also valid for the complex Lorentz group
+composed of all complex matrices satisfying \eqref{eq:ch1-lorentz-condition}. The argument given before
+to show that $\det\Lambda=\pm1$ is also valid for the complex Lorentz group
 $L(\mathbb C)$, which therefore has at least two components,
-$L_+(\mathbb C)$ and $L_-(\mathbb C)$, according to the sign of $\det A$.
+$L_+(\mathbb C)$ and $L_-(\mathbb C)$, according to the sign of $\det\Lambda$.
 Actually, it has just two connected
 components. The transformations $\mathbf{1}$ and $-\mathbf{1}$, which are
 disconnected in $L$ are connected in $L(\mathbb C)$. Consider for example the
-continuous curve of $A^\mu{}_\nu$:
+continuous curve of $\Lambda^\mu{}_\nu$:
 % PCT-SOURCE: pdf=025 print=13 kind=display
 \[
-  A_t=
+\begin{aligned}
+  \Lambda_t&=
   \begin{pmatrix}
     \cosh it&0&0&\sinh it\\
     0&\cos t&-\sin t&0\\
     0&\sin t&\cos t&0\\
     \sinh it&0&0&\cosh it
   \end{pmatrix},
-  \qquad 0\leq t\leq\pi .
+  & 0&\leq t\leq\pi .
+\end{aligned}
 \]
 As $t$ varies from $0$ to $\pi$, this curve connects $\mathbf{1}$ with
 $-\mathbf{1}$. The connectivity properties of $L(\mathbb C)$ are illustrated
@@ -354,20 +369,21 @@ pairs of $2\times2$ matrices of determinant one with the multiplication law
 
 % PCT-SOURCE: pdf=026 print=14 kind=prose
 The connection between the matrix pair $\{A,B\}$ and the corresponding complex
-Lorentz transformation $\Lambda(A,B)$ is given by the analogue of (1-14).
+Lorentz transformation $\Lambda(A,B)$ is given by the analogue of \eqref{eq:ch1-sl2-lorentz-map}.
 % PCT-SOURCE: pdf=026 print=14 kind=equation id=1-19
 \begin{equation}
   \widehat{\check{x}}=A\check{x}B^{\mathsf T}.
   \tag{1-19}\label{eq:ch1-complex-sl2-map}
 \end{equation}
-Here $\check{x}$ is again defined by (1-11), but the vector $x^\mu$ is
+Here $\check{x}$ is again defined by \eqref{eq:ch1-check-x}, but the vector $x^\mu$ is
 complex. Clearly
 % PCT-SOURCE: pdf=026 print=14 kind=equation id=1-20
 \begin{equation}
+\begin{aligned}
   \Lambda(A_1,B_1)\Lambda(A_2,B_2)
-  =\Lambda(A_1A_2,B_1B_2),
-  \qquad
-  \Lambda(\mathbf{1},\mathbf{1})=\mathbf{1}.
+  &=\Lambda(A_1A_2,B_1B_2),
+  & \Lambda(\mathbf{1},\mathbf{1})&=\mathbf{1}.
+\end{aligned}
   \tag{1-20}\label{eq:ch1-complex-sl2-homomorphism}
 \end{equation}
 It is easy to see that the only matrix pairs which yield a given
@@ -383,25 +399,25 @@ $\Lambda(A,B)$ are $(+A,+B)$ and $(-A,-B)$. In particular,
 To each of the groups we have considered so far there is a corresponding
 inhomogeneous group, whose elements are pairs consisting of a translation and
 a homogeneous transformation. For example, the \emph{Poincar\'e group},
-$\mathcal P$, has elements $\{a,A\}$, where $A\in L$, with the multiplication
+$\mathcal P$, has elements $\{a,\Lambda\}$, where $\Lambda\in L$, with the multiplication
 law
 % PCT-SOURCE: pdf=026 print=14 kind=equation id=1-22
 \begin{equation}
-  \{a_1,A_1\}\{a_2,A_2\}
-  =\{a_1+A_1a_2,A_1A_2\},
+  \{a_1,\Lambda_1\}\{a_2,\Lambda_2\}
+  =\{a_1+\Lambda_1a_2,\Lambda_1\Lambda_2\},
   \tag{1-22}\label{eq:ch1-poincare-law}
 \end{equation}
-as follows from $\{a,A\}$'s interpretation as a linear transformation
+as follows from $\{a,\Lambda\}$'s interpretation as a linear transformation
 \[
-  x\longmapsto Ax+a.
+  x\longmapsto\Lambda x+a.
 \]
-$\mathcal P$ has four components distinguished by $\det A$ and
-$\operatorname{sgn}A^0{}_0$, namely, $\mathcal P^\uparrow_+$,
+$\mathcal P$ has four components distinguished by $\det\Lambda$ and
+$\operatorname{sgn}\Lambda^0{}_0$, namely, $\mathcal P^\uparrow_+$,
 $\mathcal P^\uparrow_-$, $\mathcal P^\downarrow_+$, and
 $\mathcal P^\downarrow_-$. The \emph{complex Poincar\'e group},
 $\mathcal P(\mathbb C)$, admits complex translations but also the
-multiplication law (1-22). It has two components $\mathcal P_\pm(\mathbb C)$
-which are distinguished by $\det A$. The inhomogeneous group corresponding to
+multiplication law \eqref{eq:ch1-poincare-law}. It has two components $\mathcal P_\pm(\mathbb C)$
+which are distinguished by $\det\Lambda$. The inhomogeneous group corresponding to
 $SL(2,\mathbb C)$ has no special name; we shall call it the
 \emph{inhomogeneous $SL(2,\mathbb C)$}. It consists of pairs $\{a,A\}$, where
 $a$ is a translation and $A\in SL(2,\mathbb C)$, and a multiplication law
@@ -431,13 +447,13 @@ $A,B\in SL(2,\mathbb C)$, and a multiplication law
 In all the following, all the theories considered will be invariant under
 $\mathcal P^\uparrow_+$ or some other subgroup of $\mathcal P$. The
 corresponding unitary or anti-unitary transformations of states will be
-denoted $U(a,A)$.
+denoted $U(a,\Lambda)$.
 
 % PCT-SOURCE: pdf=027 print=15 kind=prose
 This completes our discussion of the groups themselves. We need in addition
 some information on the matrix representations of $SL(2,\mathbb C)$. This is
 the basic raw material out of which the transformation law of fields will be
-constructed in Chapter 3. We recall that an arbitrary matrix representation of
+constructed in Chapter \ref{sec:ch3-fields-and-vacuum-expectation-values}. We recall that an arbitrary matrix representation of
 $SL(2,\mathbb C)$, i.e., a correspondence $A\longmapsto S(A)$ such that
 $S(\mathbf{1})=\mathbf{1}$ and $S(A)S(B)=S(AB)$, can be written in the form
 % PCT-SOURCE: pdf=027 print=15 kind=equation id=1-25
@@ -486,20 +502,15 @@ one of these.
 
 % PCT-SOURCE: pdf=027 print=15 kind=prose
 If the $A$ are restricted to be unitary as well as of determinant one we get a
-subgroup $SU_2$ of $SL(2,\mathbb C)$. Clearly, $SU_2$ corresponds via (1-14)
-to the rotation group of three-space. [The trace of (1-14) reads
+subgroup $SU_2$ of $SL(2,\mathbb C)$. Clearly, $SU_2$ corresponds via \eqref{eq:ch1-sl2-lorentz-map}
+to the rotation group of three-space. [The trace of \eqref{eq:ch1-sl2-lorentz-map} reads
 $2\widehat{x}^{\,0}=2x^0$ if $A$ is unitary.] The irreducible
-representations of $SU_2$ are
-
-% PCT-SOURCE: pdf=027 print=15 kind=footnote
-\footnote{The reader who is unfamiliar with the finite-dimensional
+representations of $SU_2$ are\footnote{The reader who is unfamiliar with the finite-dimensional
 representations of $SL(2,\mathbb C)$ might do well to skip the rest of this
 section on first reading. Readable accounts of these representations are to be
 found in Refs.~9 and 10. For the complex Lorentz group see also Ref.~7. We
 have included this material here because we want to treat an arbitrary spinor
 field in Chapters 3 and 4.}
-
-% PCT-SOURCE: pdf=028 print=16 kind=prose
 equivalent to one of the
 $A\longmapsto\mathcal D^{(j/2,j/2)}(A)$ with $A\in SU_2$; these are usually
 denoted $\mathcal D^{(j/2)}$ and are just the usual transformations associated
@@ -552,7 +563,7 @@ called), time inversion $I_t$ (or $T$), and charge conjugation $C$. The
 product of these transformations in one order or another, say $\mathrm{PCT}$,
 is always a symmetry in local field theory whether or not the individual
 factors are; this is the famous $\mathrm{PCT}$ theorem which we shall prove
-in Chapter 4. To justify the name $\mathrm{PCT}$ we shall here display $P$,
+in Chapter \ref{ch:general-theorems-relativistic-qft}. To justify the name $\mathrm{PCT}$ we shall here display $P$,
 $C$, and $T$ separately for a general spinor quantity.
 
 % PCT-SOURCE: pdf=028 print=16 kind=prose
@@ -560,7 +571,7 @@ For clarity, we want to recall the relation between our description of
 symmetries and that which was standard in the quantum field theory of 30 years
 ago. Then a symmetry was given as a substitution law, $A\longmapsto\widehat A$,
 for the operators $A$ in terms of which the equations of the theory were
-formulated. For example, in the case under discussion in (1-3),
+formulated. For example, in the case under discussion in \eqref{eq:ch1-space-inversion},
 $q_i(t)\longmapsto\widehat q_i(t)=-q_i(t)$,
 $p_i(t)\longmapsto\widehat p_i(t)=-p_i(t)$ is space inversion. Symmetry was
 guaranteed by requiring that the equations of motion be form-invariant under
@@ -592,13 +603,13 @@ these
   =\overline{\bra{\Phi}U^{-1}AU\ket{\Phi}}
   =\bra{\Phi}(U^{-1}AU)^*\ket{\Phi},
 \]
-and thus, instead of (1-29), we have
+and thus, instead of \eqref{eq:ch1-unitary-substitution}, we have
 % PCT-SOURCE: pdf=029 print=17 kind=equation id=1-30
 \begin{equation}
   \widehat A=(U^{-1}AU)^*
   \tag{1-30}\label{eq:ch1-antiunitary-substitution}
 \end{equation}
-if $U$ is anti-unitary. Equation (1-30) implies
+if $U$ is anti-unitary. Equation \eqref{eq:ch1-antiunitary-substitution} implies
 % PCT-SOURCE: pdf=029 print=17 kind=equation id=1-31
 \begin{equation}
   \widehat A\widehat B
@@ -609,7 +620,7 @@ if $U$ is anti-unitary. Equation (1-30) implies
 \end{equation}
 which gives rise to rather curious substitution rules. For example, the
 $\mathrm{PCT}$ symmetry $\Theta$ has the property that, for a charged scalar
-field $\phi$ (a notion that will be defined precisely in Chapter 3),
+field $\phi$ (a notion that will be defined precisely in Chapter \ref{sec:ch3-fields-and-vacuum-expectation-values}),
 % PCT-SOURCE: pdf=029 print=17 kind=equation id=1-32
 \begin{equation}
   \Theta^{-1}\phi(x)\Theta=\phi(-x)^*,
@@ -618,7 +629,7 @@ field $\phi$ (a notion that will be defined precisely in Chapter 3),
 where $\Theta$ is anti-unitary. Thus the substitution rule for $\mathrm{PCT}$
 is: replace $\phi(x)$ by $\phi(-x)$ and write all operator products in reverse
 order. Of late it has become customary to formulate symmetries in a more
-direct physical way, as we have done in Section 1-2. However, in the next few
+direct physical way, as we have done in Section \ref{sec:ch1-symmetry-operations}. However, in the next few
 paragraphs it is useful to admit both formulations, since this helps in
 deciding on the transformation laws of general spinor fields.
 
@@ -653,7 +664,7 @@ and
   \tag{1-35}\label{eq:ch1-vector-time-reversal}
 \end{equation}
 Here $\overline{\check{x}}$ is the complex conjugate of $\check{x}$. In order
-to get (1-34) and (1-35) into the form of linear transformations we have to
+to get \eqref{eq:ch1-vector-parity} and \eqref{eq:ch1-vector-time-reversal} into the form of linear transformations we have to
 introduce the conjugate spinor
 % PCT-SOURCE: pdf=029 print=17 kind=equation id=1-36
 \begin{equation}
@@ -711,7 +722,7 @@ Up to this point, the discussion has dealt with a complex-valued second-rank
 spinor. Now we pass to the case of a set of operators
 $\xi_{\alpha\dot\beta}$ in quantum theory which has the same transformation
 law. (We need not commit ourselves to any particular physical
-interpretation.) Equations (1-37) and (1-38) are then to be interpreted as
+interpretation.) Equations \eqref{eq:ch1-vector-pair-parity} and \eqref{eq:ch1-vector-pair-time-reversal} are then to be interpreted as
 substitution rules, with $(\xi_{\alpha\dot\beta})^*=\xi_{\dot\alpha\beta}$.
 Because space inversion is represented by a unitary operator $U(I_s)$, and
 time inversion by an anti-unitary operator $U(I_t)$, we have
@@ -830,8 +841,8 @@ relation between $A$ and $S(A)$ can be made explicit:
 \end{aligned}
 \tag{1-44}\label{eq:ch1-dirac-representation-explicit}
 \end{equation}
-The proof that (1-44) actually satisfies (1-43) requires a certain amount of
-$\gamma$-gymnastics, and makes essential use of the relation (1-18).
+The proof that \eqref{eq:ch1-dirac-representation-explicit} actually satisfies \eqref{eq:ch1-dirac-sl2-representation} requires a certain amount of
+$\gamma$-gymnastics, and makes essential use of the relation \eqref{eq:ch1-sl2-inverse}.
 
 % PCT-SOURCE: pdf=031 print=19 kind=prose
 % PCT-SOURCE: pdf=031 print=19 kind=footnote
@@ -940,7 +951,7 @@ In terms of $\xi_\alpha,\eta_{\dot\alpha}$ the substitution rules become
 
 % PCT-SOURCE: pdf=032 print=20 kind=prose
 We now interpret these as substitution rules for operators according to
-(1-29) for $P$ and $C$, and (1-30) for $T$. Thus
+\eqref{eq:ch1-unitary-substitution} for $P$ and $C$, and \eqref{eq:ch1-antiunitary-substitution} for $T$. Thus
 % PCT-SOURCE: pdf=032 print=20 kind=equation id=1-48
 \begin{equation}
 \begin{aligned}
@@ -1156,10 +1167,10 @@ leading to
 
 % PCT-SOURCE: pdf=033 print=21 kind=prose
 which we take as our definition of the transformation law of a general spinor
-under PCT. The particular choices of phases that have been made in (1-50) and
-(1-52) are highly arbitrary. They differ from (1-37) and (1-38) by a sign.
+under PCT. The particular choices of phases that have been made in \eqref{eq:ch1-general-spinor-pct-rules} and
+\eqref{eq:ch1-general-spinor-state-rules} are highly arbitrary. They differ from \eqref{eq:ch1-vector-pair-parity} and \eqref{eq:ch1-vector-pair-time-reversal} by a sign.
 Such distinctions are in general (but not always) physically significant, and
 give the difference, for example, between vectors and pseudo-vectors. The
 problem of the physical significance of phases is discussed again in Section
 3-5. There are many other laws besides 1-50 and 1-52 which lead to the same PCT
-transformation (1-53) Our purpose here is merely to give one example.
+transformation \eqref{eq:ch1-general-spinor-pct-state} Our purpose here is merely to give one example.

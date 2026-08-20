@@ -1,45 +1,48 @@
 % PCT-SOURCE: pdf=084 print=72 kind=figure id=2-3
-% Projected native line art for the cone and the separating planes.
+% Native reconstruction from the rendered source page.  The double cone, the
+% two oblique separating planes, and the three space-like vectors all share
+% the apex, as in the printed drawing.
 \begingroup
 \renewcommand{\thefigure}{2-3}
 \renewcommand{\figurename}{FIGURE}
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[x=0.88cm,y=0.74cm,>=Stealth,line cap=round,
-    line join=round]
-    \coordinate (o) at (0,0);
+  \begin{tikzpicture}[x=0.90cm,y=0.90cm,>=Stealth,line cap=round,
+    line join=round,
+    edge/.style={line width=.6pt},
+    hidden/.style={dashed,dash pattern=on 4pt off 3pt,line width=.45pt}]
+    % The plus and minus light cones with their rims.
+    \draw[edge] (-2.431, 4.254) -- (0,0) -- (2.431, 4.254);
+    \draw[edge] (-2.431,-4.254) -- (0,0) -- (2.431,-4.254);
+    \draw[edge] (0, 4.50) ellipse (2.50 and 1.05);
+    \draw[edge] (0,-4.50) ellipse (2.50 and 1.05);
 
-    % Two light-cone outlines in the oblique projection used in the source.
-    \draw[line width=.65pt] (-1.38,3.25) arc (180:360:1.38 and .42);
-    \draw[line width=.65pt] (-1.38,3.25) -- (-.35,0) -- (1.38,3.25);
-    \draw[line width=.65pt] (-1.38,3.25) arc (180:0:1.38 and .42);
-    \draw[line width=.65pt] (-1.38,-3.25) arc (180:360:1.38 and .42);
-    \draw[line width=.65pt] (-1.38,-3.25) -- (-.35,0) -- (1.38,-3.25);
-    \draw[line width=.65pt] (-1.38,-3.25) arc (180:0:1.38 and .42);
+    % Plane (alpha): its long edges lean to the left going down.
+    \draw[edge] (2.70,5.15) -- (-0.25,5.85) -- (-2.60,-5.70)
+      -- (0.35,-6.40) -- cycle;
+    \draw[hidden] (1.10,5.40) -- (-1.10,-5.40);
 
-    % Plane (alpha), passing in front of the plus cone.
-    \draw[line width=.58pt]
-      (-1.95,3.18) -- (.38,3.70) -- (1.12,-2.72) -- (-1.18,-2.26) -- cycle;
-    \draw[dashed,line width=.45pt] (-1.12,3.18) -- (-.20,-2.58);
-    \draw[dashed,line width=.45pt] (-1.95,3.18) -- (-1.18,-2.26);
-    \node[font=\small] at (1.38,1.78) {$(\alpha)$};
+    % Plane (beta): the opposite oblique orientation.
+    \draw[edge] (-2.70,5.15) -- (0.25,5.85) -- (2.60,-5.70)
+      -- (-0.35,-6.40) -- cycle;
+    \draw[hidden] (-1.10,5.40) -- (1.10,-5.40);
 
-    % Plane (beta), with the opposite oblique orientation.
-    \draw[line width=.58pt]
-      (-.76,2.94) -- (1.76,2.46) -- (.98,-3.38) -- (-1.55,-2.86) -- cycle;
-    \draw[dashed,line width=.45pt] (.18,2.75) -- (.08,-3.18);
-    \draw[dashed,line width=.45pt] (-.76,2.94) -- (-1.55,-2.86);
-    \node[font=\small] at (1.20,-1.85) {$(\beta)$};
+    \draw[line width=.45pt] (2.95, 2.42) -- (2.14, 2.33);
+    \node[anchor=west] at (3.05, 2.45) {$(\alpha)$};
+    \draw[line width=.45pt] (2.95,-2.72) -- (2.02,-2.78);
+    \node[anchor=west] at (3.05,-2.70) {$(\beta)$};
 
-    % The three space-like vectors with their common initial point.
-    \draw[->,line width=.72pt] (o) -- (4.10,.54);
-    \draw[->,line width=.72pt] (o) -- (4.55,0);
-    \draw[->,line width=.72pt] (o) -- (4.10,-.54);
-    \fill (o) circle (1.25pt);
-    \draw[densely dashed,line width=.45pt] (4.10,.54) -- (4.10,-.54);
-    \node[above right=1pt,font=\small] at (4.10,.54) {$\zeta_1$};
-    \node[right=2pt,font=\small] at (4.55,0) {$\zeta_2$};
-    \node[below right=1pt,font=\small] at (4.10,-.54) {$\zeta_3$};
+    % The three space-like vectors of the Jost point.
+    \draw[->,line width=1.1pt] (0,0) -- (4.99, 1.05);
+    \draw[->,line width=1.1pt] (0,0) -- (6.15, 0.05);
+    \draw[->,line width=1.1pt] (0,0) -- (4.99,-0.90);
+    \fill (0,0) circle (1.4pt);
+    \draw[line width=.45pt] (4.99, 1.05) -- (6.15,0.05);
+    \draw[line width=.45pt] (4.99,-0.90) -- (6.15,0.05);
+    \draw[hidden] (4.99,1.05) -- (4.99,-0.90);
+    \node at (5.95, 1.42) {$\zeta_1$};
+    \node[anchor=west] at (6.30, 0.05) {$\zeta_2$};
+    \node at (5.95,-1.28) {$\zeta_3$};
   \end{tikzpicture}
   \caption{The cone of space-like vectors corresponding to a Jost point
   $\zeta_1,\zeta_2,\zeta_3$.  The planes $(\alpha)$ and $(\beta)$ separate

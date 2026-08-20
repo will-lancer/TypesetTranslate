@@ -1,45 +1,49 @@
 % PCT-SOURCE: pdf=087 print=75 kind=figure id=2-6
-% Native reconstruction of the paired contours and their orientations.
+% Native reconstruction from the rendered source page.  The outer closed curve
+% bounds D_1 and D_2 together; C_1 and C_2 are the two contours inside them,
+% each traversed counterclockwise with its flat edge next to the real axis.
 \begingroup
 \renewcommand{\thefigure}{2-6}
 \renewcommand{\figurename}{FIGURE}
-\begin{figure}[htbp]
+\begin{figure}[t]
   \centering
-  \begin{tikzpicture}[x=1.0cm,y=.72cm,>=Stealth,line cap=round,
-    line join=round]
-    \draw[line width=.62pt] (-3.45,0) -- (3.45,0);
-    \fill (-2.00,0) circle (1.15pt);
-    \fill (2.00,0) circle (1.15pt);
-    \node[above=1pt] at (-2.00,0) {$a$};
-    \node[above=1pt] at (2.00,0) {$b$};
+  \begin{tikzpicture}[>=Stealth,line cap=round,line join=round,
+    curve/.style={line width=.85pt},
+    orient/.style={->,line width=.85pt}]
+    % The real axis.
+    \draw[line width=.6pt] (-6.19,0) -- (6.57,0);
 
-    % Outer portions of the upper and lower contours.
-    \draw[postaction={decorate},decoration={markings,mark=at position .61
-      with {\arrow{<}}},line width=.62pt]
-      plot[smooth] coordinates {
-        (-2.00,.10) (-2.34,.42) (-2.62,1.08) (-2.30,1.78)
-        (-1.25,2.03) (0,2.15) (1.25,2.03) (2.30,1.78)
-        (2.62,1.08) (2.34,.42) (2.00,.10)};
-    \draw[postaction={decorate},decoration={markings,mark=at position .44
-      with {\arrow{>}}},line width=.62pt]
-      plot[smooth] coordinates {
-        (-2.00,-.10) (-2.34,-.42) (-2.62,-1.08) (-2.30,-1.78)
-        (-1.25,-2.03) (0,-2.15) (1.25,-2.03) (2.30,-1.78)
-        (2.62,-1.08) (2.34,-.42) (2.00,-.10)};
+    % The boundary of the union of the two domains.
+    \draw[curve] plot[smooth cycle,tension=.72] coordinates {
+      (-4.78, 0.00) (-4.66, 1.10) (-4.29, 2.20) (-3.44, 3.18) (-2.22, 3.76)
+      (-0.75, 3.91) ( 0.96, 3.76) ( 2.18, 3.48) ( 3.03, 2.93) ( 3.89, 2.02)
+      ( 4.32, 0.98) ( 4.38, 0.00) ( 4.26,-0.85) ( 3.95,-1.83) ( 3.52,-2.81)
+      ( 2.67,-3.57) ( 1.45,-3.97) (-0.26,-4.06) (-1.85,-3.91) (-3.07,-3.42)
+      (-3.99,-2.56) (-4.54,-1.47)};
 
-    % Inner portions which run along the two sides of the slit.
-    \draw[postaction={decorate},decoration={markings,mark=at position .59
-      with {\arrow{>}}},line width=.62pt]
-      plot[smooth] coordinates {
-        (-2.00,.04) (-1.68,.46) (-1.26,.66) (0,.69)
-        (1.26,.66) (1.68,.46) (2.00,.04)};
-    \draw[postaction={decorate},decoration={markings,mark=at position .59
-      with {\arrow{<}}},line width=.62pt]
-      plot[smooth] coordinates {
-        (-2.00,-.04) (-1.68,-.46) (-1.26,-.66) (0,-.69)
-        (1.26,-.66) (1.68,-.46) (2.00,-.04)};
-    \node[font=\small] at (0,1.43) {$C_1$};
-    \node[font=\small] at (0,-1.43) {$C_2$};
+    % C_1, in D_1.
+    \draw[curve] plot[smooth,tension=.75] coordinates {
+      ( 3.13, 0.34) ( 3.34, 0.61) ( 3.52, 1.34) ( 3.34, 2.14) ( 2.67, 2.81)
+      ( 1.69, 3.30) ( 0.47, 3.52) (-0.75, 3.48) (-1.85, 3.18) (-2.58, 2.69)
+      (-3.01, 2.02) (-3.07, 1.22) (-2.97, 0.61) (-2.89, 0.34)} -- cycle;
+    \draw[orient] (-0.10,0.34) -- (0.30,0.34);
+    \draw[orient] ( 1.62,3.33) -- (1.22,3.42);
+    \node at (0.53,2.99) {$C_1$};
+
+    % C_2, in D_2.
+    \draw[curve] plot[smooth,tension=.75] coordinates {
+      ( 3.13,-0.31) ( 3.34,-0.58) ( 3.52,-1.31) ( 3.34,-2.11) ( 2.67,-2.78)
+      ( 1.69,-3.27) ( 0.47,-3.49) (-0.75,-3.45) (-1.85,-3.15) (-2.58,-2.66)
+      (-3.01,-1.99) (-3.07,-1.19) (-2.97,-0.58) (-2.89,-0.31)} -- cycle;
+    \draw[orient] ( 0.30,-0.31) -- (-0.10,-0.31);
+    \draw[orient] (-1.62,-3.44) -- (-1.22,-3.32);
+    \node at (0.90,-3.02) {$C_2$};
+
+    % The interval a<x<b.
+    \fill (-3.58,0) circle (2.0pt);
+    \fill ( 3.58,0) circle (2.0pt);
+    \node at (-3.62,0.42) {$a$};
+    \node at ( 3.62,0.42) {$b$};
   \end{tikzpicture}
   \caption{The contours $C_1$ and $C_2$.}
   \label{fig:2-6}

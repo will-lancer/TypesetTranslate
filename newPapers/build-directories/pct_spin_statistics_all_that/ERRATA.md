@@ -4,7 +4,7 @@ This ledger records changes to clear defects in the printed 2000 Princeton
 paperback. Each entry requires a PDF page, printed page, source reading,
 adopted reading, and reason.
 
-Adopted corrections passed review: 0. Recorded source discrepancies: 1.
+Adopted corrections passed review: 0. Recorded source discrepancies: 2.
 
 ## Preserved source discrepancy
 
@@ -18,6 +18,19 @@ Adopted corrections passed review: 0. Recorded source discrepancies: 1.
 - Reason: the source visibly uses both forms on the same page. Preserving each
   occurrence keeps the printed discrepancy while the semantic label follows
   the chapter-local figure sequence.
+
+### Automorphism names in the fourth panel of Figure A.3
+
+- PDF page: 210.
+- Printed page: 198.
+- Printed form: the $\mathcal H_{\bar s}$ block reads `obtained from \Psi_{0+}
+  by applying the automorphism, s,` and closes `It is also obtained by
+  applying \bar s to \Psi_{0-}`.
+- Native form: the same two names, unchanged.
+- Reason: the third panel names $s$ acting on $\Psi_{0-}$ and $\bar s$ acting
+  on $\Psi_{0+}$, so the fourth panel's pairing reads as the source's own
+  inconsistency rather than a scan defect. The printed reading is preserved
+  and recorded here instead of being silently exchanged.
 
 ## Source-map notes with no adopted source correction
 
