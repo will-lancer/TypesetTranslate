@@ -36,25 +36,25 @@ the components of this equation in a coordinate basis. In a coordinate system $\
 geodesic is mapped into a curve $x^\mu(t)$ in $\mathbb R^n$. By Eq.~\eqref{eq:3.1.19}, the components,
 $T^\mu$, of $T^a$ in this coordinate basis satisfy
 \begin{equation}
-  \frac{dT^\mu}{dt}+\sum_{\sigma,\nu}\Gamma^\mu{}_{\sigma\nu}T^\sigma T^\nu=0.
+  \frac{\dd T^\mu}{\dd t}+\sum_{\sigma,\nu}\Gamma^\mu{}_{\sigma\nu}T^\sigma T^\nu=0.
   \tag{3.3.3}\label{eq:3.3.3}
 \end{equation}
 However, by Eq.~\eqref{eq:2.2.12}, the components $T^\mu$ are simply
 \begin{equation}
-  T^\mu=\frac{dx^\mu}{dt}.
+  T^\mu=\frac{\dd x^\mu}{\dd t}.
   \tag{3.3.4}\label{eq:3.3.4}
 \end{equation}
 Thus, in a coordinate basis, the geodesic equation becomes
 \begin{equation}
-  \frac{d^2x^\mu}{dt^2}
+  \frac{\dd^2x^\mu}{\dd t^2}
   +\sum_{\sigma,\nu}\Gamma^\mu{}_{\sigma\nu}
-  \frac{dx^\sigma}{dt}\frac{dx^\nu}{dt}=0.
+  \frac{\dd x^\sigma}{\dd t}\frac{\dd x^\nu}{\dd t}=0.
   \tag{3.3.5}\label{eq:3.3.5}
 \end{equation}
 
 Equation~\eqref{eq:3.3.5} is a coupled system of $n$ second order ordinary differential
 equations for the $n$ functions $x^\mu(t)$. From the theory of ordinary differential equations, it is known that a unique solution of Eq.~\eqref{eq:3.3.5} always exists for any
-given initial value of $x^\mu$ and $dx^\mu/dt$. This means that given $p\in M$ and any tangent
+given initial value of $x^\mu$ and $\dd x^\mu/\dd t$. This means that given $p\in M$ and any tangent
 vector, $T^a\in T_pM$, there always exists a unique geodesic through $p$ with tangent $T^a$.
 Notice that the solutions of the equations of motion in ordinary mechanics share this
 property: Given an initial position and velocity, a unique solution exists.
@@ -124,7 +124,7 @@ that they extremize the length of curves connecting given points as measured by 
 metric. For a smooth (or merely differentiable) curve $C$ on a manifold $M$ with
 Riemannian metric $g_{ab}$, the \emph{length}, $l$, of $C$ is defined by
 \begin{equation}
-  l=\int(g_{ab}T^aT^b)^{1/2}\,dt,
+  l=\int(g_{ab}T^aT^b)^{1/2}\,\dd t,
   \tag{3.3.7}\label{eq:3.3.7}
 \end{equation}
 where $T^a$ is the tangent to $C$ and $t$ is the curve parameter. For a metric of Lorentz
@@ -134,7 +134,7 @@ be \emph{spacelike} if $g_{ab}T^aT^b>0$. For spacelike curves, the length may ag
 by Eq.~\eqref{eq:3.3.7}; for null curves the length is zero; for timelike curves, we change
 the sign in the square root and use the term \emph{proper time}, $\tau$, rather than length,
 \begin{equation}
-  \tau=\int(-g_{ab}T^aT^b)^{1/2}\,dt.
+  \tau=\int(-g_{ab}T^aT^b)^{1/2}\,\dd t.
   \tag{3.3.8}\label{eq:3.3.8}
 \end{equation}
 The length of curves which change from timelike to spacelike is not defined. Note
@@ -142,10 +142,10 @@ that since a geodesic tangent is parallel transported and thus its norm is const
 geodesics in a Lorentz manifold cannot change from timelike to spacelike or null.
 Note also that the length (or proper time) of a curve does not depend on the way in
 which the curve is parameterized. If we define a new reparameterization $s=s(t)$, the
-new tangent will be $S^a=(dt/ds)T^a$ and the new length will be
+new tangent will be $S^a=(\dd t/\dd s)T^a$ and the new length will be
 \begin{equation}
-  l'=\int[g_{ab}S^aS^b]^{1/2}\,ds
-  =\int[g_{ab}T^aT^b]^{1/2}\frac{dt}{ds}\,ds=l.
+  l'=\int[g_{ab}S^aS^b]^{1/2}\,\dd s
+  =\int[g_{ab}T^aT^b]^{1/2}\frac{\dd t}{\dd s}\,\dd s=l.
   \tag{3.3.9}\label{eq:3.3.9}
 \end{equation}
 
@@ -158,7 +158,7 @@ second variation of arc length.) For definiteness, we consider a spacelike curve
 Writing Eq.~\eqref{eq:3.3.7} in the coordinate basis, we have
 \begin{equation}
   l=\int_a^b\left[\sum_{\mu,\nu}g_{\mu\nu}
-  \frac{dx^\mu}{dt}\frac{dx^\nu}{dt}\right]^{1/2}\,dt,
+  \frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}\right]^{1/2}\,\dd t,
   \tag{3.3.10}\label{eq:3.3.10}
 \end{equation}
 where $C(a)=p$ and $C(b)=q$ are the endpoints of the curve. The extremization
@@ -167,13 +167,13 @@ in Lagrangian mechanics. The variation in $l$ is
 \begin{equation}
   \begin{aligned}
     \delta l={}&\int_a^b\left[\sum_{\mu,\nu}g_{\mu\nu}
-    \frac{dx^\mu}{dt}\frac{dx^\nu}{dt}\right]^{-1/2}
+    \frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}\right]^{-1/2}
     \sum_{\alpha,\beta}\biggl\{
-    g_{\alpha\beta}\frac{dx^\alpha}{dt}\frac{d(\delta x^\beta)}{dt}\\
+    g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\frac{\dd(\delta x^\beta)}{\dd t}\\
     &\qquad\qquad+\frac{1}{2}\sum_\sigma
     \frac{\partial g_{\alpha\beta}}{\partial x^\sigma}
-    \delta x^\sigma\frac{dx^\alpha}{dt}\frac{dx^\beta}{dt}
-    \biggr\}\,dt.
+    \delta x^\sigma\frac{\dd x^\alpha}{\dd t}\frac{\dd x^\beta}{\dd t}
+    \biggr\}\,\dd t.
   \end{aligned}
   \tag{3.3.11}\label{eq:3.3.11}
 \end{equation}
@@ -181,35 +181,35 @@ Without loss of generality (since length is parameterization independent), we ma
 assume that the original curve was parameterized so that
 \begin{equation*}
   g_{ab}T^aT^b=1
-  =\sum_{\mu,\nu}g_{\mu\nu}\frac{dx^\mu}{dt}\frac{dx^\nu}{dt}.
+  =\sum_{\mu,\nu}g_{\mu\nu}\frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}.
 \end{equation*}
 With this choice of parameterization, the extremization condition is
 \begin{equation}
   \begin{aligned}
     0={}&\int_a^b\sum_{\alpha,\beta}\biggl\{
-    g_{\alpha\beta}\frac{dx^\alpha}{dt}\frac{d(\delta x^\beta)}{dt}
+    g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\frac{\dd(\delta x^\beta)}{\dd t}
     +\frac{1}{2}\sum_\lambda
     \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
-    \frac{dx^\alpha}{dt}\frac{dx^\lambda}{dt}\delta x^\beta
-    \biggr\}\,dt\\
+    \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}\delta x^\beta
+    \biggr\}\,\dd t\\
     ={}&\int_a^b\sum_{\alpha,\beta}\biggl\{
-    -\frac{d}{dt}\left(g_{\alpha\beta}\frac{dx^\alpha}{dt}\right)
+    -\frac{\dd}{\dd t}\left(g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\right)
     +\frac{1}{2}\sum_\lambda
     \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
-    \frac{dx^\alpha}{dt}\frac{dx^\lambda}{dt}
-    \biggr\}\delta x^\beta\,dt.
+    \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}
+    \biggr\}\delta x^\beta\,\dd t.
   \end{aligned}
   \tag{3.3.12}\label{eq:3.3.12}
 \end{equation}
 (No boundary terms occur in the integration by parts since $\delta x^\beta$ vanishes at the
 endpoints.) Equation~\eqref{eq:3.3.12} will hold for arbitrary $\delta x^\beta$ if and only if
 \begin{equation}
-  -\sum_\alpha g_{\alpha\beta}\frac{d^2x^\alpha}{dt^2}
+  -\sum_\alpha g_{\alpha\beta}\frac{\dd^2x^\alpha}{\dd t^2}
   -\sum_{\alpha,\lambda}\frac{\partial g_{\alpha\beta}}{\partial x^\lambda}
-  \frac{dx^\lambda}{dt}\frac{dx^\alpha}{dt}
+  \frac{\dd x^\lambda}{\dd t}\frac{\dd x^\alpha}{\dd t}
   +\frac{1}{2}\sum_{\alpha,\lambda}
   \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
-  \frac{dx^\alpha}{dt}\frac{dx^\lambda}{dt}=0.
+  \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}=0.
   \tag{3.3.13}\label{eq:3.3.13}
 \end{equation}
 Using our formula for $\Gamma^\sigma{}_{\alpha\lambda}$, Eq.~\eqref{eq:3.1.30}, we see that Eq.~\eqref{eq:3.3.13} is just
@@ -222,7 +222,7 @@ An identical derivation shows that the curves which extremize proper time betwee
 that the geodesic equation (with affine parameterization) can be obtained from
 variation of the Lagrangian,
 \begin{equation}
-  L=\sum_{\mu,\nu}g_{\mu\nu}\frac{dx^\mu}{dt}\frac{dx^\nu}{dt}.
+  L=\sum_{\mu,\nu}g_{\mu\nu}\frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}.
   \tag{3.3.14}\label{eq:3.3.14}
 \end{equation}
 In many cases, the most efficient way of computing the Christoffel symbol

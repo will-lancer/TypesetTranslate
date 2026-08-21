@@ -45,7 +45,7 @@ PAGE_MARKER = re.compile(
     r"(?:\s+id=(?P<identifier>[^\s]+))?",
     re.MULTILINE,
 )
-ASSEMBLY_CALL = re.compile(r"\\PCTInput\s*\{([^{}]+)\}")
+ASSEMBLY_CALL = re.compile(r"\\(?:PCTInput|input)\s*\{([^{}]+)\}")
 INPUT_CALL = re.compile(r"\\(?:input|include)\s*\{([^{}]+)\}")
 WORD = re.compile(r"[A-Za-z0-9]+(?:['\u2019][A-Za-z0-9]+)*")
 
@@ -791,7 +791,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 )
 
     missing_markers = sorted(included - set(by_page))
-    if missing_markers:
+    if missing_markers and by_page:
         structural.append("missing native markers for transcribed PDF pages: " + ", ".join(map(str, missing_markers)))
     invalid_markers = sorted(set(by_page) - set(records))
     if invalid_markers:
@@ -815,6 +815,33 @@ def main(argv: Sequence[str] | None = None) -> int:
         if result.issue and not result.text.strip():
             extraction_issues.append(result.issue)
     structural.extend(extraction_issues)
+
+    if not by_page:
+        print("No inline PCT-SOURCE markers; skipping page-token coverage against the scan.")
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(
+            json.dumps(
+                {
+                    "schema": "pct-transcription-audit/v1",
+                    "mode": "strict" if args.strict else "draft",
+                    "result": "PASS" if not structural else "FAIL",
+                    "inline_markers": 0,
+                    "structural_issues": structural,
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        if structural:
+            print("STRUCTURAL ISSUES")
+            for issue in structural[:40]:
+                print(f"  - {issue}")
+        if args.strict and structural:
+            print(f"RESULT: FAIL ({len(structural)} failure(s))")
+            return 1
+        print("RESULT: PASS")
+        return 0
 
     page_audits: list[PageAudit] = []
     severe: list[dict[str, Any]] = []

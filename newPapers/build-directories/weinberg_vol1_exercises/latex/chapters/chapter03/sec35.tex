@@ -1,7 +1,7 @@
 % Chunk: §3.5 Perturbation Theory
 % Source: Weinberg QFT Vol I, printed pp. 141-146 (PDF pp. 164-169)
 % Status: transcribed and source-reviewed
-where $d\Omega_3$ is the differential element of solid angle for $\mathbf{p}'_3$, and $\theta_{23}$
+where $\dd\Omega_3$ is the differential element of solid angle for $\mathbf{p}'_3$, and $\theta_{23}$
 and $\phi_{23}$ are the polar and azimuthal angles of $\mathbf{p}'_2$ relative to the
 $\mathbf{p}'_3$ direction. The orientation of the plane spanned by $\mathbf{p}'_2$ and
 $\mathbf{p}'_3$ is specified by $\phi_{23}$ and the direction of $\mathbf{p}'_3$, with the
@@ -19,14 +19,14 @@ The derivative of the argument of the delta function with respect to $\cos\theta
 so we can do the integral over $\cos\theta_{23}$ by just dropping the delta function and
 dividing by this derivative
 \[
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
  |\mathbf{p}'_2|d|\mathbf{p}'_2||\mathbf{p}'_3|d|\mathbf{p}'_3|
- E'_1d\Omega_3d\phi_{23}.
+ E'_1\dd\Omega_3\dd\phi_{23}.
 \]
 Replacing momenta with energies, this is finally
 \begin{equation}
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
- E'_1E'_2E'_3\,dE'_2dE'_3d\Omega_3d\phi_{23}.
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
+ E'_1E'_2E'_3\,\dd E'_2\dd E'_3\dd\Omega_3\dd\phi_{23}.
  \tag{3.4.31}\label{eq:3.4.31}
 \end{equation}
 But recall that the quantity \eqref{eq:3.4.16}, obtained by summing $|M_{\beta\alpha}|^2$ over spins and
@@ -44,20 +44,20 @@ The technique that has historically been most useful in calculating the $S$-matr
 perturbation theory, an expansion in powers of the interaction term $H_{\mathrm{int}}$ in the
 Hamiltonian $H=H_0+H_{\mathrm{int}}$. Eqs. \eqref{eq:3.2.7} and \eqref{eq:3.1.18} give the $S$-matrix as
 \[
- S_{\beta\alpha}=\delta(\beta-\alpha)-2\pi i\delta(E_\beta-E_\alpha)T^+_{\beta\alpha},
+ S_{\beta\alpha}=\delta(\beta-\alpha)-2\pi \ii\delta(E_\beta-E_\alpha)T^+_{\beta\alpha},
  \qquad T^+_{\beta\alpha}=\bra{\beta}H_{\mathrm{int}}\InKet{\alpha},
 \]
 where $\InKet{\alpha}$ satisfies the Lippmann--Schwinger equation \eqref{eq:3.1.17}:
 \[
  \InKet{\alpha}=\ket{\alpha}
- +\int d\gamma\,\frac{T^+_{\gamma\alpha}\ket{\gamma}}{E_\alpha-E_\gamma+i\epsilon}.
+ +\int \dd\gamma\,\frac{T^+_{\gamma\alpha}\ket{\gamma}}{E_\alpha-E_\gamma+\ii\epsilon}.
 \]
 Operating on this equation with $H_{\mathrm{int}}$ and taking the scalar product with
 $\ket{\beta}$ yields an integral equation for $T^+$
 \begin{equation}
  T^+_{\beta\alpha}=(H_{\mathrm{int}})_{\beta\alpha}
- +\int d\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}T^+_{\gamma\alpha}}
- {E_\alpha-E_\gamma+i\epsilon},
+ +\int \dd\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}T^+_{\gamma\alpha}}
+ {E_\alpha-E_\gamma+\ii\epsilon},
  \tag{3.5.1}\label{eq:3.5.1}
 \end{equation}
 where
@@ -69,12 +69,12 @@ where
 The perturbation series for $T^+_{\beta\alpha}$ is obtained by iteration from Eq. \eqref{eq:3.5.1}
 \begin{align}
  T^+_{\beta\alpha}={}&(H_{\mathrm{int}})_{\beta\alpha}
- +\int d\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}
- (H_{\mathrm{int}})_{\gamma\alpha}}{E_\alpha-E_\gamma+i\epsilon}\notag\\
- &+\int d\gamma\,d\gamma'\,
+ +\int \dd\gamma\,\frac{(H_{\mathrm{int}})_{\beta\gamma}
+ (H_{\mathrm{int}})_{\gamma\alpha}}{E_\alpha-E_\gamma+\ii\epsilon}\notag\\
+ &+\int \dd\gamma\,\dd\gamma'\,
  \frac{(H_{\mathrm{int}})_{\beta\gamma}(H_{\mathrm{int}})_{\gamma\gamma'}
  (H_{\mathrm{int}})_{\gamma'\alpha}}
- {(E_\alpha-E_\gamma+i\epsilon)(E_\alpha-E_{\gamma'}+i\epsilon)}+\cdots.
+ {(E_\alpha-E_\gamma+\ii\epsilon)(E_\alpha-E_{\gamma'}+\ii\epsilon)}+\cdots.
  \tag{3.5.3}\label{eq:3.5.3}
 \end{align}
 The method of calculation based on Eq. \eqref{eq:3.5.3}, which dominated calculations of the $S$-matrix
@@ -94,54 +94,54 @@ gives the $S$-operator as
 where
 \[
  U(\tau,\tau_0)\equiv
- \exp(iH_0\tau)\exp\bigl(-iH(\tau-\tau_0)\bigr)\exp(-iH_0\tau_0).
+ \exp(\ii H_0\tau)\exp\bigl(-\ii H(\tau-\tau_0)\bigr)\exp(-\ii H_0\tau_0).
 \]
 Differentiating this formula for $U(\tau,\tau_0)$ with respect to $\tau$ gives the differential
 equation
 \begin{equation}
- i\frac{d}{d\tau}U(\tau,\tau_0)=H_I(\tau)U(\tau,\tau_0),
+ \ii\frac{\dd}{\dd\tau}U(\tau,\tau_0)=H_I(\tau)U(\tau,\tau_0),
  \tag{3.5.4}\label{eq:3.5.4}
 \end{equation}
 where
 \begin{equation}
- H_I(t)\equiv\exp(iH_0t)H_{\mathrm{int}}\exp(-iH_0t).
+ H_I(t)\equiv\exp(\ii H_0t)H_{\mathrm{int}}\exp(-\ii H_0t).
  \tag{3.5.5}\label{eq:3.5.5}
 \end{equation}
 (Operators with this sort of time-dependence are said to be defined in the \emph{interaction
 picture}, to distinguish their time-dependence from the time-dependence
 \[
- O_H(t)=\exp(iHt)O_H\exp(-iHt)
+ O_H(t)=\exp(\ii Ht)O_H\exp(-\ii Ht)
 \]
 required in the Heisenberg picture of quantum mechanics.)
 Eq. \eqref{eq:3.5.4} as well as the initial condition $U(\tau_0,\tau_0)=\mathbf{1}$ is obviously satisfied
 by the solution of the integral equation
 \begin{equation}
- U(\tau,\tau_0)=\mathbf{1}-i\int_{\tau_0}^{\tau}dt\,H_I(t)U(t,\tau_0).
+ U(\tau,\tau_0)=\mathbf{1}-\ii\int_{\tau_0}^{\tau}\dd t\,H_I(t)U(t,\tau_0).
  \tag{3.5.6}\label{eq:3.5.6}
 \end{equation}
 By iteration of this integral equation, we obtain an expansion for $U(\tau,\tau_0)$ in powers
 of $H_{\mathrm{int}}$
 \begin{align}
- U(\tau,\tau_0)={}&\mathbf{1}-i\int_{\tau_0}^{\tau}dt_1\,H_I(t_1)
- +(-i)^2\int_{\tau_0}^{\tau}dt_1\int_{\tau_0}^{t_1}dt_2\,H_I(t_1)H_I(t_2)\notag\\
- &+(-i)^3\int_{\tau_0}^{\tau}dt_1\int_{\tau_0}^{t_1}dt_2
- \int_{\tau_0}^{t_2}dt_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
+ U(\tau,\tau_0)={}&\mathbf{1}-\ii\int_{\tau_0}^{\tau}\dd t_1\,H_I(t_1)
+ +(-\ii)^2\int_{\tau_0}^{\tau}\dd t_1\int_{\tau_0}^{t_1}\dd t_2\,H_I(t_1)H_I(t_2)\notag\\
+ &+(-\ii)^3\int_{\tau_0}^{\tau}\dd t_1\int_{\tau_0}^{t_1}\dd t_2
+ \int_{\tau_0}^{t_2}\dd t_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
  \tag{3.5.7}\label{eq:3.5.7}
 \end{align}
 Setting $\tau=\infty$ and $\tau_0=-\infty$ then gives the perturbation expansion for the
 $S$-operator:
 \begin{align}
- S={}&\mathbf{1}-i\int_{-\infty}^{\infty}dt_1\,H_I(t_1)
- +(-i)^2\int_{-\infty}^{\infty}dt_1\int_{-\infty}^{t_1}dt_2\,H_I(t_1)H_I(t_2)\notag\\
- &+(-i)^3\int_{-\infty}^{\infty}dt_1\int_{-\infty}^{t_1}dt_2
- \int_{-\infty}^{t_2}dt_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
+ S={}&\mathbf{1}-\ii\int_{-\infty}^{\infty}\dd t_1\,H_I(t_1)
+ +(-\ii)^2\int_{-\infty}^{\infty}\dd t_1\int_{-\infty}^{t_1}\dd t_2\,H_I(t_1)H_I(t_2)\notag\\
+ &+(-\ii)^3\int_{-\infty}^{\infty}\dd t_1\int_{-\infty}^{t_1}\dd t_2
+ \int_{-\infty}^{t_2}\dd t_3\,H_I(t_1)H_I(t_2)H_I(t_3)+\cdots.
  \tag{3.5.8}\label{eq:3.5.8}
 \end{align}
 This can also be derived directly from the old-fashioned perturbation expansion \eqref{eq:3.5.3}, by
 using the Fourier representation of the energy factors in Eq. \eqref{eq:3.5.3}:
 \begin{equation}
- (E_\alpha-E_\gamma+i\epsilon)^{-1}
- =-i\int_0^\infty d\tau\,\exp\bigl(i(E_\alpha-E_\gamma)\tau\bigr)
+ (E_\alpha-E_\gamma+\ii\epsilon)^{-1}
+ =-\ii\int_0^\infty \dd\tau\,\exp\bigl(\ii(E_\alpha-E_\gamma)\tau\bigr)
  \tag{3.5.9}\label{eq:3.5.9}
 \end{equation}
 with the understanding that such integrals are to be evaluated by inserting a convergence
@@ -163,21 +163,21 @@ for $\tau<0$. The time-ordered product of $n$ $H_I$s is a sum over all $n!$ perm
 the $H_I$s, each of which gives the same integral over all $t_1\cdots t_n$, so Eq. \eqref{eq:3.5.8}
 may be written
 \begin{equation}
- S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-i)^n}{n!}
- \int_{-\infty}^{\infty}dt_1dt_2\cdots dt_n\,
+ S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-\ii)^n}{n!}
+ \int_{-\infty}^{\infty}\dd t_1\dd t_2\cdots \dd t_n\,
  T\{H_I(t_1)\cdots H_I(t_n)\}.
  \tag{3.5.10}\label{eq:3.5.10}
 \end{equation}
 This is sometimes known as the Dyson series~\hyperref[ref:3.20]{[20]}. This series can be summed if the $H_I(t)$
 at different times all commute; the sum is then
 \[
- S=\exp\left(-i\int_{-\infty}^{\infty}dt\,H_I(t)\right).
+ S=\exp\left(-\ii\int_{-\infty}^{\infty}\dd t\,H_I(t)\right).
 \]
 Of course, this is not usually the case; in general \eqref{eq:3.5.10} does not even converge, and is at
 best an asymptotic expansion in whatever coupling constant factors appear in $H_{\mathrm{int}}$.
 However Eq. \eqref{eq:3.5.10} is sometimes written in the general case as
 \[
- S=T\exp\left(-i\int_{-\infty}^{\infty}dt\,H_I(t)\right)
+ S=T\exp\left(-\ii\int_{-\infty}^{\infty}\dd t\,H_I(t)\right)
 \]
 with $T$ indicating here that the expression is to be evaluated by time-ordering each term in
 the series expansion for the exponential.
@@ -191,7 +191,7 @@ the generators of $U_0(\Lambda,a)$: $H_0$, $\mathbf{P}_0$, $\mathbf{J}_0$, and $
 To satisfy this requirement, let's try the hypothesis that $H_I(t)$ is an integral over
 three-space
 \begin{equation}
- H_I(t)=\int d^3x\,\mathcal{H}_I(\mathbf{x},t)
+ H_I(t)=\int \dd^3x\,\mathcal{H}_I(\mathbf{x},t)
  \tag{3.5.11}\label{eq:3.5.11}
 \end{equation}
 with $\mathcal{H}_I(x)$ a scalar in the sense that
@@ -204,8 +204,8 @@ with $\mathcal{H}_I(x)$ a scalar in the sense that
 $\mathcal{H}_I(x)$ has a time-dependence consistent with Eq. \eqref{eq:3.5.5}.) Then $S$ may be written
 as a sum of four-dimensional integrals
 \begin{equation}
- S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-i)^n}{n!}
- \int d^4x_1\cdots d^4x_n\,
+ S=\mathbf{1}+\sum_{n=1}^{\infty}\frac{(-\ii)^n}{n!}
+ \int \dd^4x_1\cdots \dd^4x_n\,
  T\{\mathcal{H}_I(x_1)\cdots\mathcal{H}_I(x_n)\}.
  \tag{3.5.13}\label{eq:3.5.13}
 \end{equation}
@@ -224,7 +224,7 @@ We can use the results of Section 3.3 to give a formal non-perturbative proof th
 \eqref{eq:3.5.11} satisfying Eqs. \eqref{eq:3.5.12} and \eqref{eq:3.5.14} does lead to an $S$-matrix with the correct
 Lorentz transformation properties. For an infinitesimal boost, Eq. \eqref{eq:3.5.12} gives
 \begin{equation}
- i[\mathbf{K}_0,\mathcal{H}_I(\mathbf{x},t)]
+ \ii[\mathbf{K}_0,\mathcal{H}_I(\mathbf{x},t)]
  =t\boldsymbol{\nabla}\mathcal{H}_I(\mathbf{x},t)
  +\mathbf{x}\frac{\partial}{\partial t}\mathcal{H}_I(\mathbf{x},t),
  \tag{3.5.15}\label{eq:3.5.15}
@@ -232,13 +232,13 @@ Lorentz transformation properties. For an infinitesimal boost, Eq. \eqref{eq:3.5
 so integrating over $\mathbf{x}$ and setting $t=0$,
 \begin{equation}
  [\mathbf{K}_0,H_{\mathrm{int}}]
- =\left[\mathbf{K}_0,\int d^3x\,\mathcal{H}_I(\mathbf{x},0)\right]
+ =\left[\mathbf{K}_0,\int \dd^3x\,\mathcal{H}_I(\mathbf{x},0)\right]
  =[H_0,\mathbf{W}],
  \tag{3.5.16}\label{eq:3.5.16}
 \end{equation}
 where
 \begin{equation}
- \mathbf{W}\equiv\int d^3x\,\mathbf{x}\mathcal{H}_I(\mathbf{x},0).
+ \mathbf{W}\equiv\int \dd^3x\,\mathbf{x}\mathcal{H}_I(\mathbf{x},0).
  \tag{3.5.17}\label{eq:3.5.17}
 \end{equation}
 If (as is usually the case) the matrix elements of $\mathcal{H}_I(\mathbf{x},0)$ between
@@ -248,7 +248,7 @@ $\mathbf{W}$, which is necessary in the proof of Lorentz invariance. The other c
 Lorentz invariance, the commutation relation \eqref{eq:3.3.21}, is also valid if and only if
 \begin{equation}
  0=[\mathbf{W},H_{\mathrm{int}}]
- =\int d^3x\int d^3y\,\mathbf{x}
+ =\int \dd^3x\int \dd^3y\,\mathbf{x}
  [\mathcal{H}_I(\mathbf{x},0),\mathcal{H}_I(\mathbf{y},0)].
  \tag{3.5.18}\label{eq:3.5.18}
 \end{equation}
@@ -281,18 +281,18 @@ with $H_w$ weak but $H_s$ strong. We can define $\InOutKet{\alpha;s}$ as what th
 `in' and `out' states would be if $H_s$ were the whole interaction
 \begin{equation}
  \InOutKet{\alpha;s}=\ket{\alpha}
- +(E_\alpha-H_0\pm i\epsilon)^{-1}H_s\InOutKet{\alpha;s}.
+ +(E_\alpha-H_0\pm \ii\epsilon)^{-1}H_s\InOutKet{\alpha;s}.
  \tag{3.5.20}\label{eq:3.5.20}
 \end{equation}
 We can then write \eqref{eq:3.1.16} as
 \begin{align*}
  T^+_{\beta\alpha}
  &=\bra{\beta}H_{\mathrm{int}}\InKet{\alpha}\\
- &=\left(\OutBra{\beta;s}-\OutBra{\beta;s}H_s(E_\beta-H_0+i\epsilon)^{-1}\right)
+ &=\left(\OutBra{\beta;s}-\OutBra{\beta;s}H_s(E_\beta-H_0+\ii\epsilon)^{-1}\right)
  (H_s+H_w)\InKet{\alpha}\\
  &=\OutBra{\beta;s}H_w\InKet{\alpha}\\
  &\quad+\OutBra{\beta;s}
- [H_s-H_s(E_\beta-H_0+i\epsilon)^{-1}(H_s+H_w)]
+ [H_s-H_s(E_\beta-H_0+\ii\epsilon)^{-1}(H_s+H_w)]
  \InKet{\alpha},
 \end{align*}
 and so

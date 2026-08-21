@@ -48,31 +48,31 @@ A somewhat wilder example of a smooth manifold is given by the set of all $(x, y
 
 \subsection{Tangent Spaces and Derivatives}
 
-To define the notion of \textit{derivative} $df_x$ for a smooth map $f : M \to N$ of smooth manifolds, we first associate with each $x \in M \subset \mathbb{R}^{k}$ a linear subspace $TM_x \subset \mathbb{R}^{k}$ of dimension $m$ called the \textit{tangent space} of $M$ at $x$. Then $df_x$ will be a linear mapping from $TM_x$ to $TN_y$, where $y = f(x)$. Elements of the vector space $TM_x$ are called \textit{tangent vectors} to $M$ at $x$.
+To define the notion of \textit{derivative} $\dd f_x$ for a smooth map $f : M \to N$ of smooth manifolds, we first associate with each $x \in M \subset \mathbb{R}^{k}$ a linear subspace $TM_x \subset \mathbb{R}^{k}$ of dimension $m$ called the \textit{tangent space} of $M$ at $x$. Then $\dd f_x$ will be a linear mapping from $TM_x$ to $TN_y$, where $y = f(x)$. Elements of the vector space $TM_x$ are called \textit{tangent vectors} to $M$ at $x$.
 
 Intuitively one thinks of the $m$-dimensional hyperplane in $\mathbb{R}^{k}$ which best approximates $M$ near $x$; then $TM_x$ is the hyperplane through the origin that is parallel to this.
 
 
 % PDF page 15
 
-(Compare Figures~\ref{fig:milnor-01} and~\ref{fig:milnor-02}.) Similarly one thinks of the nonhomogeneous linear mapping from the tangent hyperplane at $x$ to the tangent hyperplane at $y$ which best approximates $f$. Translating both hyperplanes to the origin, one obtains $df_x$.
+(Compare Figures~\ref{fig:milnor-01} and~\ref{fig:milnor-02}.) Similarly one thinks of the nonhomogeneous linear mapping from the tangent hyperplane at $x$ to the tangent hyperplane at $y$ which best approximates $f$. Translating both hyperplanes to the origin, one obtains $\dd f_x$.
 
 Before giving the actual definition, we must study the special case of mappings between open sets. For any open set $U \subset \mathbb{R}^k$ the tangent space $TU_x$ is defined to be the entire vector space $\mathbb{R}^k$. For any smooth map $f: U \to V$ the derivative
 \[
-df_x : \mathbb{R}^k \to \mathbb{R}^l
+\dd f_x : \mathbb{R}^k \to \mathbb{R}^l
 \]
 is defined by the formula
 \[
-df_x(h) = \lim_{t \to 0} \frac{f(x + th) - f(x)}{t}
+\dd f_x(h) = \lim_{t \to 0} \frac{f(x + th) - f(x)}{t}
 \]
-for $x \in U$, $h \in \mathbb{R}^k$. Clearly $df_x(h)$ is a linear function of $h$. (In fact $df_x$ is just that linear mapping which corresponds to the $l \times k$ matrix $(\partial f_i / \partial x_j)_x$ of first partial derivatives, evaluated at $x$.)
+for $x \in U$, $h \in \mathbb{R}^k$. Clearly $\dd f_x(h)$ is a linear function of $h$. (In fact $\dd f_x$ is just that linear mapping which corresponds to the $l \times k$ matrix $(\partial f_i / \partial x_j)_x$ of first partial derivatives, evaluated at $x$.)
 
 Here are two fundamental properties of the derivative operation:
 
 \begin{enumerate}
 \item \textbf{(Chain rule).} If $f : U \to V$ and $g : V \to W$ are smooth maps, with $f(x) = y$, then
 \[
-d(g \circ f)_x = dg_y \circ df_x.
+\dd(g \circ f)_x = \dd g_y \circ \dd f_x.
 \]
 In other words, to every commutative triangle
 \[
@@ -84,43 +84,43 @@ U \arrow[r, "f"] \arrow[dr, "{g \circ f}"'] & V \arrow[d, "g"] \\
 of smooth maps between open subsets of $\mathbb{R}^k$, $\mathbb{R}^l$, $\mathbb{R}^m$ there corresponds a commutative triangle of linear maps
 \[
 \begin{tikzcd}[column sep=large, row sep=large]
-\mathbb{R}^k \arrow[r, "df_x"] \arrow[dr, "{d(g \circ f)_x}"'] & \mathbb{R}^l \arrow[d, "dg_y"] \\
+\mathbb{R}^k \arrow[r, "\dd f_x"] \arrow[dr, "{\dd(g \circ f)_x}"'] & \mathbb{R}^l \arrow[d, "\dd g_y"] \\
 & \mathbb{R}^m
 \end{tikzcd}
 \]
-\item If $I$ is the identity map of $U$, then $dI_x$ is the identity map of $\mathbb{R}^k$.
+\item If $I$ is the identity map of $U$, then $\dd I_x$ is the identity map of $\mathbb{R}^k$.
 \end{enumerate}
 
 More generally, if $U \subset U'$ are open sets and
 \[
 i: U \to U'
 \]
-is the inclusion map, then again $di_x$ is the identity map of $\mathbb{R}^k$.
+is the inclusion map, then again $\dd i_x$ is the identity map of $\mathbb{R}^k$.
 
 Note also:
 
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item If $L : \mathbb{R}^k \to \mathbb{R}^l$ is a linear mapping, then $dL_x = L$.
+\item If $L : \mathbb{R}^k \to \mathbb{R}^l$ is a linear mapping, then $\dd L_x = L$.
 \end{enumerate}
 
 As a simple application of the two properties one has the following:
 
 If $f$ is a diffeomorphism between open sets $U \subset \mathbb{R}^k$ and $V \subset \mathbb{R}^l$, then $k$ must equal $l$, and the linear mapping
 \[
-df_x : \mathbb{R}^k \to \mathbb{R}^l
+\dd f_x : \mathbb{R}^k \to \mathbb{R}^l
 \]
 must be nonsingular.
 
 \noindent\textit{Proof.}
 The composition $f^{-1} \circ f$ is the identity map of $U$; hence
-$d(f^{-1})_y \circ df_x$ is the identity map of $\mathbb{R}^k$. Similarly $df_x \circ d(f^{-1})_y$ is the identity map of $\mathbb{R}^l$. Thus $df_x$ has a two-sided inverse, and it follows that $k = l$.
+$\dd(f^{-1})_y \circ \dd f_x$ is the identity map of $\mathbb{R}^k$. Similarly $\dd f_x \circ \dd(f^{-1})_y$ is the identity map of $\mathbb{R}^l$. Thus $\dd f_x$ has a two-sided inverse, and it follows that $k = l$.
 
 A partial converse to this assertion is valid. Let $f : U \to \mathbb{R}^k$ be a smooth map, with $U$ open in $\mathbb{R}^k$.
 
-\noindent\textbf{Inverse Function Theorem.} \textit{If the derivative $df_x : \mathbb{R}^k \to \mathbb{R}^k$ is nonsingular, then $f$ maps any sufficiently small open set $U'$ about $x$ diffeomorphically onto an open set $f(U')$.} (See Apostol [2] or Dieudonn\'e [7].)
+\noindent\textbf{Inverse Function Theorem.} \textit{If the derivative $\dd f_x : \mathbb{R}^k \to \mathbb{R}^k$ is nonsingular, then $f$ maps any sufficiently small open set $U'$ about $x$ diffeomorphically onto an open set $f(U')$.} (See Apostol [2] or Dieudonn\'e [7].)
 
-Note that $f$ may not be one-one in the large, even if every $df_x$ is nonsingular. (An instructive example is provided by the exponential mapping of the complex plane into itself.)
+Note that $f$ may not be one-one in the large, even if every $\dd f_x$ is nonsingular. (An instructive example is provided by the exponential mapping of the complex plane into itself.)
 
 Now let us define the tangent space $TM_x$ for an arbitrary smooth manifold $M \subset \mathbb{R}^k$. Choose a parametrization
 \[
@@ -128,9 +128,9 @@ g: U \to M \subset \mathbb{R}^k
 \]
 of a neighborhood $g(U)$ of $x$ in $M$, with $g(u) = x$. Here $U$ is an open subset of $\mathbb{R}^m$. Think of $g$ as a mapping from $U$ to $\mathbb{R}^k$, so that the derivative
 \[
-dg_u : \mathbb{R}^m \to \mathbb{R}^k
+\dd g_u : \mathbb{R}^m \to \mathbb{R}^k
 \]
-is defined. Set $TM_x$ equal to the image $dg_u(\mathbb{R}^m)$ of $dg_u$. (Compare Figure~\ref{fig:milnor-01}.)
+is defined. Set $TM_x$ equal to the image $\dd g_u(\mathbb{R}^m)$ of $\dd g_u$. (Compare Figure~\ref{fig:milnor-01}.)
 
 We must prove that this construction does not depend on the particular choice of parametrization $g$. Let $h : V \to M \subset \mathbb{R}^k$ be another parametrization of a neighborhood $h(V)$ of $x$ in $M$, and let $v = h^{-1}(x)$. Then $h^{-1} \circ g$ maps some neighborhood $U_1$ of $u$ diffeomorphically onto a neighborhood $V_1$ of $v$. The commutative diagram of smooth maps
 

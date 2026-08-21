@@ -14,7 +14,7 @@ usually defined by
 \begin{equation}
   \mathbf J(\mathbf x,t)
   =\sum_n e_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-  \frac{d\mathbf x_n(t)}{dt},
+  \frac{\dd\mathbf x_n(t)}{\dd t},
   \tag{2.6.1}\label{eq:2.6.1}
 \end{equation}
 \begin{equation}
@@ -25,7 +25,7 @@ usually defined by
 Here \(\delta^3\) is the Dirac delta function, defined by the statement that
 for any smooth function \(f(\mathbf x)\),
 \[
-  \int d^3x\,f(\mathbf x)\delta^3(\mathbf x-\mathbf y)=f(\mathbf y).
+  \int \dd^3x\,f(\mathbf x)\delta^3(\mathbf x-\mathbf y)=f(\mathbf y).
 \]
 We can unite \(\mathbf J\) and \(\rho\) into a four-vector \(J^\mu\) by
 setting
@@ -37,24 +37,24 @@ that is,
 \begin{equation}
   J^\mu(x)
   =\sum_n e_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-  \frac{dx_n^\mu(t)}{dt}.
+  \frac{\dd x_n^\mu(t)}{\dd t}.
   \tag{2.6.4}\label{eq:2.6.4}
 \end{equation}
 To show that this is a four-vector, define \(x_n^0(t)=t\), and write
 Eq.~\eqref{eq:2.6.4} as
 \[
-  J^\mu(x)=\int dt'\sum_n e_n
-  \delta^4\bigl(x-x_n(t')\bigr)\frac{dx_n^\mu(t')}{dt'} .
+  J^\mu(x)=\int \dd t'\sum_n e_n
+  \delta^4\bigl(x-x_n(t')\bigr)\frac{\dd x_n^\mu(t')}{\dd t'} .
 \]
-The differentials \(dt'\) cancel, and hence can be replaced with an invariant
-\(d\tau\):
+The differentials \(\dd t'\) cancel, and hence can be replaced with an invariant
+\(\dd\tau\):
 \begin{equation}
-  J^\mu(x)=\int d\tau\sum_n e_n
-  \delta^4\bigl(x-x_n(\tau)\bigr)\frac{dx_n^\mu(\tau)}{d\tau}.
+  J^\mu(x)=\int \dd\tau\sum_n e_n
+  \delta^4\bigl(x-x_n(\tau)\bigr)\frac{\dd x_n^\mu(\tau)}{\dd\tau}.
   \tag{2.6.5}\label{eq:2.6.5}
 \end{equation}
 But \(\delta^4(x-x_n(\tau))\) is a scalar (because
-\(\det\Lambda=1\)) and \(dx_n^\mu\) is a four-vector, so \(J^\mu\) is a
+\(\det\Lambda=1\)) and \(\dd x_n^\mu\) is a four-vector, so \(J^\mu\) is a
 four-vector.
 
 We also note that
@@ -64,13 +64,13 @@ We also note that
   &=\sum_n e_n
     \partial_i
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-    \frac{dx_n^i(t)}{dt}\\
+    \frac{\dd x_n^i(t)}{\dd t}\\
   &=-\sum_n e_n
     % NOTATION EXCEPTION: the differentiated particle coordinate must remain
     % explicit to distinguish it from the field coordinate in the prior line.
     \frac{\partial}{\partial x_n^i}
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-    \frac{dx_n^i(t)}{dt}\\
+    \frac{\dd x_n^i(t)}{\dd t}\\
   &=-\sum_n e_n\partial_t
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)\\
   &=-\partial_t\rho(\mathbf x,t),
@@ -86,20 +86,20 @@ The Lorentz invariance of this statement is evident.
 Whenever any current \(J^\mu(x)\) satisfies the invariant conservation law
 \eqref{eq:2.6.6}, we can form a total charge
 \begin{equation}
-  Q=\int d^3x\,J^0(x).
+  Q=\int \dd^3x\,J^0(x).
   \tag{2.6.7}\label{eq:2.6.7}
 \end{equation}
 This quantity is time-independent, because Eq.~\eqref{eq:2.6.6} and Gauss's
 theorem give
 \[
-  \frac{dQ}{dt}
-  =\int d^3x\,\partial_0J^0(x)
-  =-\int d^3x\,\boldsymbol{\nabla}\cdot\mathbf J(x)=0 .
+  \frac{\dd Q}{\dd t}
+  =\int \dd^3x\,\partial_0J^0(x)
+  =-\int \dd^3x\,\boldsymbol{\nabla}\cdot\mathbf J(x)=0 .
 \]
 If \(J^\mu(x)\) is a four-vector, then \(Q\) is not only constant but a
 scalar. To see this, write \(Q\) as
 \begin{equation}
-  Q=\int d^4x\,J^\mu(x)\,
+  Q=\int \dd^4x\,J^\mu(x)\,
   \partial_\mu\theta(n_\nu x^\nu),
   \tag{2.6.8}\label{eq:2.6.8}
 \end{equation}
@@ -118,7 +118,7 @@ and \(n_\mu\) is defined by
 The effect of a Lorentz transformation on \(Q\) is then evidently simply to
 change \(n_\mu\):
 \[
-  Q'=\int d^4x\,J^\mu(x)\,
+  Q'=\int \dd^4x\,J^\mu(x)\,
   \partial_\mu\theta(n'_\nu x^\nu),
   \qquad
   n'_\mu=\Lambda_\mu{}^\nu n_\nu ,
@@ -126,7 +126,7 @@ change \(n_\mu\):
 and using Eq.~\eqref{eq:2.6.6}, the change in \(Q\) is then
 \[
   Q'-Q
-  =\int d^4x\,J^\mu(x)\partial_\mu
+  =\int \dd^4x\,J^\mu(x)\partial_\mu
   \left[
     \theta(n'_\nu x^\nu)-\theta(n_\nu x^\nu)
   \right].

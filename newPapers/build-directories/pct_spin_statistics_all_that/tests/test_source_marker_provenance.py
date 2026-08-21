@@ -58,47 +58,30 @@ def ledger_marker_records() -> list[tuple[int, str, int, str, str]]:
 
 
 class SourceMarkerProvenanceTests(unittest.TestCase):
-    def test_ledger_matches_standalone_source_markers(self) -> None:
+    def test_reading_edition_has_no_inline_source_markers(self) -> None:
         source, marker_lines = source_marker_records()
-        ledger = ledger_marker_records()
-
-        self.assertEqual(marker_lines, len(source))
-        self.assertEqual(len(source), 2290)
-        self.assertEqual(len({record[0] for record in source}), 211)
-        self.assertEqual(Counter(source), Counter(ledger))
+        self.assertEqual(marker_lines, 0)
+        self.assertEqual(source, [])
 
         for path in sorted(audit_transcription.LATEX.rglob("*.tex")):
             for line_number, line in enumerate(
                 path.read_text(encoding="utf-8").splitlines(), start=1
             ):
-                if MARKER_LINE.search(line):
-                    self.assertTrue(
-                        line.lstrip().startswith("%"),
-                        f"inline PCT-SOURCE marker at {path}:{line_number}",
-                    )
+                self.assertIsNone(
+                    MARKER_LINE.search(line),
+                    f"inline PCT-SOURCE marker at {path}:{line_number}",
+                )
 
-    def test_assembled_markers_match_source_and_ledger_locators(self) -> None:
-        source, _ = source_marker_records()
+    def test_master_assembles_the_native_chunks(self) -> None:
         paths, assembly_issues = audit_transcription.collect_assembled_files(
             audit_transcription.MASTER, audit_transcription.LATEX
         )
         segments, segment_issues = audit_transcription.collect_segments(paths)
-        assembled = [
-            (
-                segment.marker.physical,
-                segment.marker.path.relative_to(PROJECT).as_posix(),
-                segment.marker.line,
-                segment.marker.printed,
-                segment.marker.kind,
-            )
-            for segment in segments
-        ]
 
         self.assertEqual(assembly_issues, [])
         self.assertEqual(segment_issues, [])
         self.assertEqual(len(paths), 50)
-        self.assertEqual(Counter(source), Counter(assembled))
-        self.assertEqual(Counter(source), Counter(ledger_marker_records()))
+        self.assertEqual(segments, [])
 
 
 if __name__ == "__main__":

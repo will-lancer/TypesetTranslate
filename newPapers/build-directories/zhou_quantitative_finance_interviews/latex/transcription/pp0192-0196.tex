@@ -10,7 +10,7 @@ sorted. In such cases, one of the subarray is empty and the other has $n-1$ elem
 step only reduces the subarray size by one. Hence,
 
 \[
-W(n)=\Theta\left(\sum_{i=1}^{n}i\right)=\Theta(n^2).
+W(n)=\Theta\left(\sum_{i=1}^{n}\ii\right)=\Theta(n^2).
 \]
 
 To estimate the average-case running time, let's assume that the initial ordering is
@@ -141,7 +141,7 @@ Let $A$ be an $n\times n$ matrix representing the grid of numbers and $x$ be the
 want to find in the grid. Begin the search with the last column from top to bottom:
 $A_{1,n},\cdots,A_{n,n}$. If the number is found, then stop the search. If $A_{n,n}<x$, $x$ is
 not in the grid and the search stops as well. If $A_{i,n}<x<A_{i+1,n}$, then we know that all
-the numbers in rows $1,\cdots,i$ are less than $x$ and are eliminated as well.\footnote[6]{$i$ can be 0, which means $x<A_{1,n}$, in which case we can search the first row from right to left.} Then we search the $(i+1)$th row from right to left. If the number is found in the $(i+1)$th row, the search stops. If $A_{i+1,1}>x$, $x$ is not in the grid since all the number in rows $i+1$ and above are larger than $x$. If $A_{i+1,j+1}>x>A_{i+1,j}$, we eliminate all the numbers in columns $j+1,\cdots,n$. Then we can search along column from $A_{i+1,j}$ towards $A_{n,j}$ until we find $x$ (or $x$ does not exist in
+the numbers in rows $1,\cdots,i$ are less than $x$ and are eliminated as well.\footnote[6]{$i$ can be 0, which means $x<A_{1,n}$, in which case we can search the first row from right to left.} Then we search the $(\ii+1)$th row from right to left. If the number is found in the $(\ii+1)$th row, the search stops. If $A_{i+1,1}>x$, $x$ is not in the grid since all the number in rows $i+1$ and above are larger than $x$. If $A_{i+1,j+1}>x>A_{i+1,j}$, we eliminate all the numbers in columns $j+1,\cdots,n$. Then we can search along column from $A_{i+1,j}$ towards $A_{n,j}$ until we find $x$ (or $x$ does not exist in
 
 % ZHOU-SOURCE-PAGE: 195 PRINTED: 179
 
@@ -288,7 +288,7 @@ and negative numbers. Design an algorithm to find the maximum sum of any contigu
 subarray $A[i,j]$ of $A$:}
 
 \[
-V(i,j)=\sum_{x=i}^{j}A[x],\quad 1\leq i\leq j\leq n.
+V(i,j)=\sum_{x=\ii}^{j}A[x],\quad 1\leq i\leq j\leq n.
 \]
 
 \end{problem}
@@ -302,8 +302,8 @@ The most apparent algorithm is an $O(n^2)$ algorithm that sequentially calculate
 $V(i,j)$'s from scratch using the following equations:
 
 \[
-V(i,i)=A[i]\ \text{when }j=i\quad\text{and}\quad
-V(i,j)=\sum_{x=i}^{j}A[x]=V(i,j-1)+A[j]\ \text{when }j>i.
+V(\ii,\ii)=A[\ii]\ \text{when }j=\ii\quad\text{and}\quad
+V(i,j)=\sum_{x=\ii}^{j}A[x]=V(i,j-1)+A[j]\ \text{when }j>i.
 \]
 
 As the $V(i,j)$'s are calculated, we also keep track of the maximum of $V(i,j)$ as well as

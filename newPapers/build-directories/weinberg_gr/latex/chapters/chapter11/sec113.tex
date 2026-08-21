@@ -41,22 +41,22 @@ The fundamental equation \eqref{eq:11.1.13} thus simplifies to
 \end{equation}
 with \(\mathcal{M}(r)\) still defined by
 \begin{equation}
-  \mathcal{M}(r)=\int_0^r4\pi r'^2\rho(r')\,dr'.
+  \mathcal{M}(r)=\int_0^r4\pi r'^2\rho(r')\,\dd r'.
   \tag{11.3.5}\label{eq:11.3.5}
 \end{equation}
 Dividing Eq.~\eqref{eq:11.3.4} by \(\rho(r)\) and differentiating allows us
 to combine both Eqs.~\eqref{eq:11.3.4} and \eqref{eq:11.3.5} in a single
 second-order differential equation:
 \begin{equation}
-  \frac{d}{dr}
+  \frac{\dd}{\dd r}
   \left[
-    \frac{r^2}{\rho(r)}\frac{dp(r)}{dr}
+    \frac{r^2}{\rho(r)}\frac{\dd p(r)}{\dd r}
   \right]
   =-4\pi Gr^2\rho(r).
   \tag{11.3.6}\label{eq:11.3.6}
 \end{equation}
 In order that \(\rho(0)\) be finite, it is necessary that \(p'(0)\) vanish.
-Thus, given an equation of state \(p=p(\rho)\) (with \(dp/d\rho\ne0\)), we can
+Thus, given an equation of state \(p=p(\rho)\) (with \(\dd p/\dd\rho\ne0\)), we can
 obtain \(\rho(r)\) by solving Eq.~\eqref{eq:11.3.6} with the initial
 conditions that \(\rho(0)\) have some given value and that
 \begin{equation}
@@ -80,16 +80,16 @@ then reads
   \begin{aligned}
   0
   &=
-  \frac{d}{dr}\left(\frac{\rho}{n}\right)
-  +p\frac{d}{dr}\left(\frac1n\right)\\
+  \frac{\dd}{\dd r}\left(\frac{\rho}{n}\right)
+  +p\frac{\dd}{\dd r}\left(\frac1n\right)\\
   &=
-  \frac{d}{dr}\left(\frac en\right)
-  +p\frac{d}{dr}\left(\frac1n\right)\\
+  \frac{\dd}{\dd r}\left(\frac en\right)
+  +p\frac{\dd}{\dd r}\left(\frac1n\right)\\
   &=
   \frac1{\gamma-1}
   \left\{
-    \gamma p\frac{d}{dr}\left(\frac1n\right)
-    +\frac1n\frac{dp}{dr}
+    \gamma p\frac{\dd}{\dd r}\left(\frac1n\right)
+    +\frac1n\frac{\dd p}{\dd r}
   \right\},
   \end{aligned}
 \]
@@ -123,8 +123,8 @@ and a new dependent variable \(\theta\) by
 \end{equation}
 Equation~\eqref{eq:11.3.6} then takes the form
 \begin{equation}
-  \frac1{\xi^2}\frac{d}{d\xi}
-  \left(\xi^2\frac{d\theta}{d\xi}\right)
+  \frac1{\xi^2}\frac{\dd}{\dd\xi}
+  \left(\xi^2\frac{\dd\theta}{\dd\xi}\right)
   +\theta^{1/(\gamma-1)}=0.
   \tag{11.3.12}\label{eq:11.3.12}
 \end{equation}
@@ -164,11 +164,11 @@ We can also use the Lane--Emden solutions to calculate the stellar mass:
   \begin{aligned}
   M
   &=
-  \int_0^R4\pi r^2\rho(r)\,dr\\
+  \int_0^R4\pi r^2\rho(r)\,\dd r\\
   &=
   4\pi\rho(0)^{(3\gamma-4)/2}
   \left[\frac{K\gamma}{4\pi G(\gamma-1)}\right]^{3/2}
-  \int_0^{\xi_1}\xi^2\theta^{1/(\gamma-1)}(\xi)\,d\xi\\
+  \int_0^{\xi_1}\xi^2\theta^{1/(\gamma-1)}(\xi)\,\dd\xi\\
   &=
   4\pi\rho(0)^{(3\gamma-4)/2}
   \left[\frac{K\gamma}{4\pi G(\gamma-1)}\right]^{3/2}
@@ -237,9 +237,9 @@ Newtonian stars this is given by Eqs.~\eqref{eq:11.1.26},
 \end{equation}
 with the thermal energy \(T\) and the gravitational energy \(V\) given by
 \begin{align}
-  T&=\int_0^R4\pi r^2e(r)\,dr,
+  T&=\int_0^R4\pi r^2e(r)\,\dd r,
   \tag{11.3.21}\label{eq:11.3.21}\\
-  V&=-\int_0^R4\pi rG\mathcal{M}(r)\rho(r)\,dr.
+  V&=-\int_0^R4\pi rG\mathcal{M}(r)\rho(r)\,\dd r.
   \tag{11.3.22}\label{eq:11.3.22}
 \end{align}
 We now show that for polytropes, \(T\) and \(V\) are given by the remarkably
@@ -260,24 +260,24 @@ Eq.~\eqref{eq:11.3.22} as
 \begin{equation}
   V
   =
-  4\pi\int_0^Rr^3\frac{dp(r)}{dr}\,dr
+  4\pi\int_0^Rr^3\frac{\dd p(r)}{\dd r}\,\dd r
   =
-  -12\pi\int_0^Rr^2p(r)\,dr.
+  -12\pi\int_0^Rr^2p(r)\,\dd r.
   \tag{11.3.26}\label{eq:11.3.26}
 \end{equation}
 Multiplying and dividing in the integrand by \(\rho(r)\), we have
 \[
   V
   =
-  -3\int_0^R\frac{p(r)}{\rho(r)}\,d\mathcal{M}(r)
+  -3\int_0^R\frac{p(r)}{\rho(r)}\,\dd\mathcal{M}(r)
   =
   3\int_0^R\mathcal{M}(r)\,
-  d\left(\frac{p(r)}{\rho(r)}\right).
+  \dd\left(\frac{p(r)}{\rho(r)}\right).
 \]
 (We assume here that \(\gamma>1\), so that \(p/\rho\) vanishes at \(R\).)
 This can be evaluated by using the equation of state to calculate
 \[
-  \frac{d}{dr}\left(\frac{p(r)}{\rho(r)}\right)
+  \frac{\dd}{\dd r}\left(\frac{p(r)}{\rho(r)}\right)
   =
   \left(\frac{\gamma-1}{\gamma}\right)
   \frac{p'(r)}{\rho(r)}
@@ -290,10 +290,10 @@ so
   V
   =
   -3\left(\frac{\gamma-1}{\gamma}\right)
-  \int_0^R\frac{G\mathcal{M}^2(r)}{r^2}\,dr.
+  \int_0^R\frac{G\mathcal{M}^2(r)}{r^2}\,\dd r.
   \tag{11.3.27}\label{eq:11.3.27}
 \end{equation}
-Since \(dr/r^2=-d(1/r)\), we can integrate by parts once again, and find
+Since \(\dd r/r^2=-\dd(1/r)\), we can integrate by parts once again, and find
 \[
   \begin{aligned}
   V
@@ -301,7 +301,7 @@ Since \(dr/r^2=-d(1/r)\), we can integrate by parts once again, and find
   3\left(\frac{\gamma-1}{\gamma}\right)
   \left\{
     \frac{GM^2}{R}
-    -2\int_0^R4\pi rG\mathcal{M}(r)\rho(r)\,dr
+    -2\int_0^R4\pi rG\mathcal{M}(r)\rho(r)\,\dd r
   \right\}\\
   &=
   3\left(\frac{\gamma-1}{\gamma}\right)
@@ -477,13 +477,13 @@ cool and contract. When the temperature is sufficiently low (see below for
 just how low), the electrons will be frozen into the lowest available energy
 levels. The Pauli principle tells us that there will be two electrons in each
 level (because of the two spin states available), and there are
-\(4\pi k^2(2\pi\hbar)^{-3}dk\) levels per unit volume with momenta between
-\(k\) and \(k+dk\), so the number of electrons per unit volume will be related
+\(4\pi k^2(2\pi\hbar)^{-3}\dd k\) levels per unit volume with momenta between
+\(k\) and \(k+\dd k\), so the number of electrons per unit volume will be related
 to the maximum momentum \(k_F\) by
 \begin{equation}
   n
   =
-  \frac{8\pi}{(2\pi\hbar)^3}\int_0^{k_F}k^2\,dk
+  \frac{8\pi}{(2\pi\hbar)^3}\int_0^{k_F}k^2\,\dd k
   =
   \frac{k_F^3}{3\pi^2\hbar^3}.
   \tag{11.3.39}\label{eq:11.3.39}
@@ -509,13 +509,13 @@ The kinetic energy density and pressure of these electrons are
   &=
   \frac{8\pi}{(2\pi\hbar)^3}
   \int_0^{k_F}
-  \left[\left(k^2+m_e^2\right)^{1/2}-m_e\right]k^2\,dk,
+  \left[\left(k^2+m_e^2\right)^{1/2}-m_e\right]k^2\,\dd k,
   \tag{11.3.42}\label{eq:11.3.42}\\
   p
   &=
   \frac{8\pi}{3(2\pi\hbar)^3}
   \int_0^{k_F}
-  \frac{k^2}{(k^2+m_e^2)^{1/2}}\,k^2\,dk.
+  \frac{k^2}{(k^2+m_e^2)^{1/2}}\,k^2\,\dd k.
   \tag{11.3.43}\label{eq:11.3.43}
 \end{align}
 [See Eq.~\eqref{eq:2.8.4}.] The equation of state can be made explicit by

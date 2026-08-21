@@ -25,7 +25,7 @@ fulfilled.
 Consider a Feynman diagram, or part of a Feynman diagram, with positive
 superficial degree of divergence, $D\geq0$. The part of the momentum space
 integral where all internal momenta go to infinity together will then
-diverge, like $\int^\infty k^{D-1}\,dk$. If we differentiate $D+1$ times
+diverge, like $\int^\infty k^{D-1}\,\dd k$. If we differentiate $D+1$ times
 with respect to any external momentum, we lower the net number of momentum
 factors in the integrand by $D+1$,
 \footnote{For instance, if an internal scalar field line carries a momentum
@@ -46,11 +46,11 @@ plus a finite remainder.
 To see how this works without irrelevant complications, consider the
 logarithmically divergent one-dimensional integral
 \[
-  \mathcal{J}(q)=\int_0^\infty\frac{dk}{k+q}
+  \mathcal{J}(q)=\int_0^\infty\frac{\dd k}{k+q}
 \]
 with $D=1-1=0$. Differentiating once gives
 \[
-  \mathcal{J}'(q)=-\int_0^\infty\frac{dk}{(k+q)^2}=-\frac1q,
+  \mathcal{J}'(q)=-\int_0^\infty\frac{\dd k}{(k+q)^2}=-\frac1q,
 \]
 so
 \[
@@ -60,7 +60,7 @@ The constant $c$ is obviously divergent, but the rest of the integral is
 perfectly finite. In exactly the same way, we can evaluate the $D=1$
 integral
 \[
-  \int_0^\infty\frac{k\,dk}{k+q}=a+bq+q\ln q
+  \int_0^\infty\frac{k\,\dd k}{k+q}=a+bq+q\ln q
 \]
 with divergent constants $a$ and $b$.
 
@@ -171,7 +171,7 @@ and outgoing fermion. Lorentz invariance (including parity conservation)
 will only allow it to be a function of $\sl{p}$, so we may write the loop
 contribution as
 \begin{equation}
-  \Sigma^{*(\ell)}(p)=A-(i\sl{p}+m)B+\Sigma^{(f)}(\sl{p}),
+  \Sigma^{*(\ell)}(p)=A-(\ii\sl{p}+m)B+\Sigma^{(f)}(\sl{p}),
   \tag{12.2.3}\label{eq:12.2.3}
 \end{equation}
 where $A$ and $B$ are divergent constants, and $\Sigma^{(f)}$ is finite.
@@ -180,19 +180,19 @@ can always shift $\Sigma^{(f)}$ by a finite first-order polynomial in
 $\sl{p}$. We will define $A$ and $B$ by the prescription that
 \begin{equation}
   \Sigma^{(f)}=\frac{\partial\Sigma^{(f)}}{\partial\sl{p}}=0
-  \quad\text{for}\quad i\sl{p}=-m.
+  \quad\text{for}\quad \ii\sl{p}=-m.
   \tag{12.2.4}\label{eq:12.2.4}
 \end{equation}
 Actually, $B$ is not a new divergent constant. As long as we use a
 regularization procedure that respects current conservation, $\Gamma_\mu$
 and $\Sigma$ will be related by the Ward identity~\eqref{eq:10.4.27}
 \[
-  \Gamma^\mu(p,p)=\gamma^\mu+i\frac{\partial}{\partial p_\mu}\Sigma(p)
+  \Gamma^\mu(p,p)=\gamma^\mu+\ii\frac{\partial}{\partial p_\mu}\Sigma(p)
 \]
 and therefore
 \begin{equation}
   L\gamma_\mu+\Gamma_\mu^{(f)}(p,p)
-  =B\gamma_\mu+i\frac{\partial\Sigma^{(f)}(p)}{\partial p^\mu}.
+  =B\gamma_\mu+\ii\frac{\partial\Sigma^{(f)}(p)}{\partial p^\mu}.
   \tag{12.2.5}\label{eq:12.2.5}
 \end{equation}
 Taking the matrix element of this equation between $\bar u(p,\sigma')$ and
@@ -271,7 +271,7 @@ constants $A$, $B$, $C$ are in one-to-one correspondence with the independent
 parameters $Z_2$, $Z_3$, and $\delta m$ in the counterterm
 part~\eqref{eq:11.1.9} of
 the Lagrangian for quantum electrodynamics. These counterterms make a direct
-contribution $Z_2\delta m-(Z_2-1)(i\sl{p}+m)$ to $\Sigma^*(p)$. The
+contribution $Z_2\delta m-(Z_2-1)(\ii\sl{p}+m)$ to $\Sigma^*(p)$. The
 requirement that the position and residue of the one-particle pole be the
 same as in the free-field propagator means we must choose $Z_2$ and
 $\delta m$ so that the total $\Sigma^*(p)$ satisfies Eq.~\eqref{eq:12.2.4},
@@ -345,7 +345,7 @@ powers of momentum. But wherever such a divergent subgraph appears, it
 always comes accompanied with an infinite counterterm. In electrodynamics,
 these are the terms in Eq.~\eqref{eq:11.1.9}: a term
 $-(Z_3-1)(q^2\eta_{\mu\nu}-q_\mu q_\nu)$ for each $\Pi_{\mu\nu}^*(q)$; a
-term $Z_2\delta m-(Z_2-1)(i\sl{p}+m)$ for each $\Sigma^*(p)$; and a term
+term $Z_2\delta m-(Z_2-1)(\ii\sl{p}+m)$ for each $\Sigma^*(p)$; and a term
 $(Z_2-1)\gamma^\mu$ for each $\Gamma^\mu$. Just as for the graph as a whole,
 these counterterms cancel the infinities from the divergent subgraphs.
 
@@ -436,21 +436,21 @@ counterterms for the vertex parts and photon field renormalization, this has
 the value
 \begin{align}
  [\Pi_{\mu\nu}^*(q)]_{\mathrm{overlap}}
- ={}&-\frac{e^4}{(2\pi)^8}\int d^4p\int d^4p'\,
- \frac{1}{(p-p')^2-i\epsilon}
+ ={}&-\frac{e^4}{(2\pi)^8}\int \dd^4p\int \dd^4p'\,
+ \frac{1}{(p-p')^2-\ii\epsilon}
  \notag\\
  &\quad\cdot\operatorname{Tr}\!\left\{
  S(p')\gamma_\nu S(p'+q)\gamma^\rho
  S(p+q)\gamma_\mu S(p)\gamma_\rho\right\}
  \notag\\
- &-2(Z_2-1)_2\frac{i e^2}{(2\pi)^4}\int d^4p\,
+ &-2(Z_2-1)_2\frac{\ii e^2}{(2\pi)^4}\int \dd^4p\,
  \operatorname{Tr}\!\left\{\gamma_\nu S(p+q)\gamma_\mu S(p)\right\}
  \notag\\
  &-(Z_3-1)_{\mathrm{overlap}}
  (q^2\eta_{\mu\nu}-q_\mu q_\nu),
  \tag{12.2.16}\label{eq:12.2.16}
 \end{align}
-where $S(p)\equiv[-i\sl{p}+m]/[p^2+m^2-i\epsilon]$;
+where $S(p)\equiv[-\ii\sl{p}+m]/[p^2+m^2-\ii\epsilon]$;
 $(Z_2-1)_2$ is the term in $Z_2-1$ of second order in $e$; and
 $(Z_3-1)_{\mathrm{overlap}}$ is a logarithmically divergent constant of
 fourth order in $e$ that cancels the terms in
@@ -468,7 +468,7 @@ propagator.
 To see how to handle the infinities in Eq.~\eqref{eq:12.2.16}, note that
 \begin{equation}
   \bigl[(Z_2-1)_2+R_2\bigr]\gamma_\mu
-  =\frac{i e^2}{(2\pi)^4}\int\frac{d^4p'}{p'^2-i\epsilon}\,
+  =\frac{\ii e^2}{(2\pi)^4}\int\frac{\dd^4p'}{p'^2-\ii\epsilon}\,
   \gamma_\rho S(p')\gamma_\mu S(p')\gamma^\rho,
   \tag{12.2.17}\label{eq:12.2.17}
 \end{equation}
@@ -480,24 +480,24 @@ zero electron and photon momenta, and is therefore finite.) This allows us
 to rewrite Eq.~\eqref{eq:12.2.16} in the form
 \begin{align}
  [\Pi_{\mu\nu}^*(q)]_{\mathrm{overlap}}
- ={}&-\frac{e^4}{(2\pi)^8}\int d^4p\int d^4p'
+ ={}&-\frac{e^4}{(2\pi)^8}\int \dd^4p\int \dd^4p'
  \Biggl[
- \frac{1}{(p-p')^2-i\epsilon}
+ \frac{1}{(p-p')^2-\ii\epsilon}
  \notag\\
  &\qquad\cdot
  \operatorname{Tr}\!\left\{S(p')\gamma_\nu S(p'+q)\gamma^\rho
  S(p+q)\gamma_\mu S(p)\gamma_\rho\right\}
  \notag\\
- &\qquad-\frac{1}{p'^2-i\epsilon}
+ &\qquad-\frac{1}{p'^2-\ii\epsilon}
  \operatorname{Tr}\!\left\{S(p')\gamma_\nu S(p')\gamma^\rho
  S(p+q)\gamma_\mu S(p)\gamma_\rho\right\}
  \notag\\
- &\qquad-\frac{1}{p^2-i\epsilon}
+ &\qquad-\frac{1}{p^2-\ii\epsilon}
  \operatorname{Tr}\!\left\{S(p')\gamma_\nu S(p'+q)\gamma^\rho
  S(p)\gamma_\mu S(p)\gamma_\rho\right\}
  \Biggr]
  \notag\\
- &-2R_2\frac{i e^2}{(2\pi)^4}\int d^4p\,
+ &-2R_2\frac{\ii e^2}{(2\pi)^4}\int \dd^4p\,
  \operatorname{Tr}\!\left\{\gamma_\nu S(p+q)\gamma_\mu S(p)\right\}
  \notag\\
  &-(Z_3-1)_{\mathrm{overlap}}
@@ -539,20 +539,20 @@ To one-loop order, the S-matrix for scalar--scalar scattering is given by the
 Feynman rules as
 \begin{equation}
   S(q_1q_2\to q'_1q'_2)
-  =\frac{-i(2\pi)^4\delta^4(p'_1+p'_2-p_1-p_2)}
+  =\frac{-\ii(2\pi)^4\delta^4(p'_1+p'_2-p_1-p_2)}
   {(2\pi)^6(16E'_1E'_2E_1E_2)^{1/2}}
   F(q_1q_2\to q'_1q'_2),
   \tag{12.2.20}\label{eq:12.2.20}
 \end{equation}
 where
 \begin{align}
- -i(2\pi)^4F(q_1q_2\to q'_1q'_2)
- ={}&-i(2\pi)^4g
- +\frac12\bigl[-i(2\pi)^4g\bigr]^2
- \left[\frac{-i}{(2\pi)^4}\right]^2
+ -\ii(2\pi)^4F(q_1q_2\to q'_1q'_2)
+ ={}&-\ii(2\pi)^4g
+ +\frac12\bigl[-\ii(2\pi)^4g\bigr]^2
+ \left[\frac{-\ii}{(2\pi)^4}\right]^2
  \notag\\
- &\cdot\int d^4k\Biggl[
- \frac{1}{[(q_1+k)^2+m^2-i\epsilon][(q_2-k)^2+m^2-i\epsilon]}
+ &\cdot\int \dd^4k\Biggl[
+ \frac{1}{[(q_1+k)^2+m^2-\ii\epsilon][(q_2-k)^2+m^2-\ii\epsilon]}
  \notag\\
  &\hspace{4.0cm}+(q_2\to-q'_1)+(q_2\to-q'_2)\Biggr],
  \tag{12.2.21}\label{eq:12.2.21}
@@ -561,7 +561,7 @@ and $q_1,q_2$ and $q'_1,q'_2$ are the incoming and outgoing four-momenta.
 Combining denominators and rotating the $k^0$-integration contour as usual,
 this is
 \begin{align}
- F={}&g-\frac{g^2}{16\pi^2}\int_0^\infty k^3\,dk\int_0^1dx
+ F={}&g-\frac{g^2}{16\pi^2}\int_0^\infty k^3\,\dd k\int_0^1\dd x
  \Bigl\{[k^2+m^2-sx(1-x)]^{-2}
  \notag\\
  &\qquad+[k^2+m^2-tx(1-x)]^{-2}
@@ -579,7 +579,7 @@ related by $s+t+u=4m^2$; also, $x$ is the Feynman parameter introduced in
 combining denominators. With an ultraviolet cutoff at $k=\Lambda$, this gives
 the result (for $\Lambda\gg m$)
 \begin{align}
- F=g-\frac{g^2}{32\pi^2}\int_0^1dx\Biggl\{
+ F=g-\frac{g^2}{32\pi^2}\int_0^1\dd x\Biggl\{
  &\ln\!\left(\frac{\Lambda^2}{m^2-sx(1-x)}\right)
  +\ln\!\left(\frac{\Lambda^2}{m^2-tx(1-x)}\right)
  \notag\\
@@ -599,14 +599,14 @@ renormalized coupling $g_R$ as the value of $F$ at this point, we have
 \begin{equation}
   g=g_R+\frac{3g_R^2}{32\pi^2}
   \left[\ln\!\left(\frac{\Lambda^2}{\mu^2}\right)-1
-  -\int_0^1dx\,\ln\!\left(\frac{4x(1-x)}3+\frac{m^2}{\mu^2}\right)\right]
+  -\int_0^1\dd x\,\ln\!\left(\frac{4x(1-x)}3+\frac{m^2}{\mu^2}\right)\right]
   +\cdots.
   \tag{12.2.25}\label{eq:12.2.25}
 \end{equation}
 The cutoff dependence then cancels in Eq.~\eqref{eq:12.2.24} to order
 $g_R^2$, leaving a finite formula for $F$ in terms of $g_R$:
 \begin{align}
- F=g_R-\frac{g_R^2}{32\pi^2}\int_0^1dx\Biggl\{
+ F=g_R-\frac{g_R^2}{32\pi^2}\int_0^1\dd x\Biggl\{
  &\ln\!\left(\frac{m^2+4x(1-x)\mu^2/3}{m^2-sx(1-x)}\right)
  +\ln\!\left(\frac{m^2+4x(1-x)\mu^2/3}{m^2-tx(1-x)}\right)
  \notag\\

@@ -33,7 +33,7 @@ the momenta to be quantized
 where the $n_i$ are integers, and $L^3=V$. Then all three-dimensional delta-functions become
 \begin{equation}
  \delta_V^3(\mathbf{p}'-\mathbf{p})\equiv
- \frac{1}{(2\pi)^3}\int_V d^3x\,e^{i(\mathbf{p}-\mathbf{p}')\cdot\mathbf{x}}
+ \frac{1}{(2\pi)^3}\int_V \dd^3x\,e^{\ii(\mathbf{p}-\mathbf{p}')\cdot\mathbf{x}}
  =\frac{V}{(2\pi)^3}\delta_{\mathbf{p}',\mathbf{p}},
  \tag{3.4.2}\label{eq:3.4.2}
 \end{equation}
@@ -70,7 +70,7 @@ $T$. One immediate consequence is that the energy-conservation delta function is
 with
 \begin{equation}
  \delta_T(E_\alpha-E_\beta)=\frac{1}{2\pi}\int_{-T/2}^{T/2}
- \exp\bigl(i(E_\alpha-E_\beta)t\bigr)\,dt.
+ \exp\bigl(\ii(E_\alpha-E_\beta)t\bigr)\,\dd t.
  \tag{3.4.6}\label{eq:3.4.6}
 \end{equation}
 The probability that a multi-particle system, which is in a state $\alpha$ before the
@@ -81,19 +81,19 @@ interaction is turned on, is found in a state $\beta$ after the interaction is t
  \tag{3.4.7}\label{eq:3.4.7}
 \end{equation}
 This is the probability for a transition into one specific box state $\beta$. The number of
-one-particle box states in a momentum-space volume $d^3p$ is $Vd^3p/(2\pi)^3$, because this
+one-particle box states in a momentum-space volume $\dd^3p$ is $Vd^3p/(2\pi)^3$, because this
 is the number of triplets of integers $n_1,n_2,n_3$ for which the momentum \eqref{eq:3.4.1} lies in the
-momentum-space volume $d^3p$ around $\mathbf{p}$. We shall define the final-state interval
-$d\beta$ as a product of $d^3p$ for each final particle, so the total number of states in this
+momentum-space volume $\dd^3p$ around $\mathbf{p}$. We shall define the final-state interval
+$\dd\beta$ as a product of $\dd^3p$ for each final particle, so the total number of states in this
 range is
 \begin{equation}
- d\mathcal{N}_\beta=\left[V/(2\pi)^3\right]^{N_\beta}d\beta.
+ \dd\mathcal{N}_\beta=\left[V/(2\pi)^3\right]^{N_\beta}\dd\beta.
  \tag{3.4.8}\label{eq:3.4.8}
 \end{equation}
-Hence the total probability for the system to wind up in a range $d\beta$ of final states is
+Hence the total probability for the system to wind up in a range $\dd\beta$ of final states is
 \begin{equation}
- dP(\alpha\to\beta)=P(\alpha\to\beta)d\mathcal{N}_\beta
- =\left[(2\pi)^3/V\right]^{N_\alpha}|S_{\beta\alpha}|^2d\beta.
+ \dd P(\alpha\to\beta)=P(\alpha\to\beta)\dd\mathcal{N}_\beta
+ =\left[(2\pi)^3/V\right]^{N_\alpha}|S_{\beta\alpha}|^2\dd\beta.
  \tag{3.4.9}\label{eq:3.4.9}
 \end{equation}
 
@@ -105,7 +105,7 @@ in the state $\alpha$. (In the language to be introduced in the next chapter, th
 we are considering only the connected part of the $S$-matrix.) For such states, we may define
 a delta function-free matrix element $M_{\beta\alpha}$:
 \begin{equation}
- S_{\beta\alpha}=-2\pi i\,\delta_V^3(\mathbf{p}_\beta-\mathbf{p}_\alpha)
+ S_{\beta\alpha}=-2\pi \ii\,\delta_V^3(\mathbf{p}_\beta-\mathbf{p}_\alpha)
  \delta_T(E_\beta-E_\alpha)M_{\beta\alpha}.
  \tag{3.4.10}\label{eq:3.4.10}
 \end{equation}
@@ -121,29 +121,29 @@ $|S_{\beta\alpha}|^2$ for $\beta\ne\alpha$ as
 \end{align*}
 so Eq. \eqref{eq:3.4.9} gives a differential transition probability
 \begin{align*}
- dP(\alpha\to\beta)={}&(2\pi)^2\left[(2\pi)^3/V\right]^{N_\alpha-1}
+ \dd P(\alpha\to\beta)={}&(2\pi)^2\left[(2\pi)^3/V\right]^{N_\alpha-1}
  (T/2\pi)|M_{\beta\alpha}|^2\\
  &\cdot\delta_V^3(\mathbf{p}_\beta-\mathbf{p}_\alpha)
- \delta_T(E_\beta-E_\alpha)d\beta.
+ \delta_T(E_\beta-E_\alpha)\dd\beta.
 \end{align*}
 If we let $V$ and $T$ be very large, the delta function product here may be interpreted as an
 ordinary four-dimensional delta function $\delta^4(p_\beta-p_\alpha)$. In this limit, the
 transition probability is simply proportional to the time $T$ during which the interaction is
 acting, with a coefficient that may be interpreted as a differential transition \emph{rate}:
 \begin{align}
- d\Gamma(\alpha\to\beta)&\equiv dP(\alpha\to\beta)/T\notag\\
+ \dd\Gamma(\alpha\to\beta)&\equiv \dd P(\alpha\to\beta)/T\notag\\
  &=(2\pi)^{3N_\alpha-2}V^{1-N_\alpha}|M_{\beta\alpha}|^2
- \delta^4(p_\beta-p_\alpha)d\beta,
+ \delta^4(p_\beta-p_\alpha)\dd\beta,
  \tag{3.4.11}\label{eq:3.4.11}
 \end{align}
 where now
 \begin{equation}
- S_{\beta\alpha}=-2\pi i\delta^4(p_\beta-p_\alpha)M_{\beta\alpha}.
+ S_{\beta\alpha}=-2\pi \ii\delta^4(p_\beta-p_\alpha)M_{\beta\alpha}.
  \tag{3.4.12}\label{eq:3.4.12}
 \end{equation}
 This is the master formula which is used to interpret calculations of $S$-matrix elements in
 terms of predictions for actual experiments. We will come back to the interpretation of the
-factor $\delta^4(p_\alpha-p_\beta)d\beta$ later in this section.
+factor $\delta^4(p_\alpha-p_\beta)\dd\beta$ later in this section.
 
 There are two cases of special importance:
 
@@ -152,8 +152,8 @@ There are two cases of special importance:
 Here the volume $V$ cancels in Eq. \eqref{eq:3.4.11}, which gives the transition rate for a single-particle
 state $\alpha$ to decay into a general multi-particle state $\beta$ as
 \begin{equation}
- d\Gamma(\alpha\to\beta)=2\pi|M_{\beta\alpha}|^2
- \delta^4(p_\beta-p_\alpha)d\beta.
+ \dd\Gamma(\alpha\to\beta)=2\pi|M_{\beta\alpha}|^2
+ \delta^4(p_\beta-p_\alpha)\dd\beta.
  \tag{3.4.13}\label{eq:3.4.13}
 \end{equation}
 Of course, this makes sense only if the time $T$ during which the interaction acts is much less
@@ -178,9 +178,9 @@ $1/V$ and the relative velocity $u_\alpha$:
 specifying that if either particle is at rest then $u_\alpha$ is defined as the velocity of the
 other.) Thus the differential cross-section is
 \begin{equation}
- d\sigma(\alpha\to\beta)\equiv d\Gamma(\alpha\to\beta)/\Phi_\alpha
+ \dd\sigma(\alpha\to\beta)\equiv \dd\Gamma(\alpha\to\beta)/\Phi_\alpha
  =(2\pi)^4u_\alpha^{-1}|M_{\beta\alpha}|^2
- \delta^4(p_\beta-p_\alpha)d\beta.
+ \delta^4(p_\beta-p_\alpha)\dd\beta.
  \tag{3.4.15}\label{eq:3.4.15}
 \end{equation}
 
@@ -210,11 +210,11 @@ $p^0=\sqrt{\mathbf{p}^2+m^2}$ for the particles in the states $\alpha$ and $\bet
 
 We can now write the spin-summed single-particle decay rate \eqref{eq:3.4.13} as
 \[
- \sum_{\mathrm{spins}}d\Gamma(\alpha\to\beta)
- =2\pi E_\alpha^{-1}R_{\beta\alpha}\delta^4(p_\beta-p_\alpha)d\beta
+ \sum_{\mathrm{spins}}\dd\Gamma(\alpha\to\beta)
+ =2\pi E_\alpha^{-1}R_{\beta\alpha}\delta^4(p_\beta-p_\alpha)\dd\beta
  /\prod_\beta E.
 \]
-The factor $d\beta/\prod_\beta E$ may be recognized as the product of the Lorentz-invariant
+The factor $\dd\beta/\prod_\beta E$ may be recognized as the product of the Lorentz-invariant
 momentum-space volume elements \eqref{eq:2.5.15}, so it is Lorentz-invariant. So also are
 $R_{\beta\alpha}$ and $\delta^4(p_\beta-p_\alpha)$, leaving just the non-invariant factor
 $1/E_\alpha$, where $E_\alpha$ is the energy of the single initial particle. Our conclusion
@@ -224,14 +224,14 @@ the slower it decays.
 
 Similarly, our result \eqref{eq:3.4.15} for the spin-summed cross-section may be written as
 \[
- \sum_{\mathrm{spins}}d\sigma(\alpha\to\beta)
+ \sum_{\mathrm{spins}}\dd\sigma(\alpha\to\beta)
  =(2\pi)^4u_\alpha^{-1}E_1^{-1}E_2^{-1}R_{\beta\alpha}
- \delta^4(p_\alpha-p_\beta)d\beta/\prod_\beta E,
+ \delta^4(p_\alpha-p_\beta)\dd\beta/\prod_\beta E,
 \]
 where $E_1$ and $E_2$ are the energies of the two particles in the initial state $\alpha$.
 It is conventional to define the cross-section to be (when summed over spins) a Lorentz-invariant
 function of four-momenta. The factors $R_{\beta\alpha}$, $\delta^4(p_\beta-p_\alpha)$, and
-$d\beta/\prod_\beta E$ are already Lorentz-invariant, so this means that we must define the
+$\dd\beta/\prod_\beta E$ are already Lorentz-invariant, so this means that we must define the
 relative velocity $u_\alpha$ in arbitrary inertial frames so that $u_\alpha E_1E_2$ is a scalar.
 We also mentioned earlier that in the Lorentz frame in which one particle (say, particle 1) is
 at rest, $u_\alpha$ is the velocity of the other particle. This uniquely determines $u_\alpha$
@@ -263,7 +263,7 @@ gives $u_\alpha=\sqrt{E_2^2-m_2^2}/E_2=|\mathbf{p}_2|/E_2$, which is just the ve
 particle 2.}
 
 We now turn to the interpretation of the so-called phase-space factor
-$\delta^4(p_\beta-p_\alpha)d\beta$, which appears in the general formula \eqref{eq:3.4.11} for transition
+$\delta^4(p_\beta-p_\alpha)\dd\beta$, which appears in the general formula \eqref{eq:3.4.11} for transition
 rates, and also in Eqs. \eqref{eq:3.4.13} and \eqref{eq:3.4.15} for decay rates and cross-sections. We here
 specialize to the case of the `center-of-mass' Lorentz frame, where the total three-momentum
 of the initial state vanishes
@@ -274,17 +274,17 @@ of the initial state vanishes
 (For $N_\alpha=1$, this is just the case of a particle decaying at rest.) If the final state
 consists of particles with momenta $\mathbf{p}'_1,\mathbf{p}'_2,\ldots$, then
 \begin{equation}
- \delta^4(p_\beta-p_\alpha)d\beta
+ \delta^4(p_\beta-p_\alpha)\dd\beta
  =\delta^3(\mathbf{p}'_1+\mathbf{p}'_2+\cdots)
- \delta(E'_1+E'_2+\cdots-E)d^3p'_1d^3p'_2\cdots,
+ \delta(E'_1+E'_2+\cdots-E)\dd^3p'_1\dd^3p'_2\cdots,
  \tag{3.4.20}\label{eq:3.4.20}
 \end{equation}
 where $E\equiv E_\alpha$ is the total energy of the initial state. Any one of the
 $\mathbf{p}'_k$ integrals, say over $\mathbf{p}'_1$, can be done trivially by just dropping the
 momentum delta function
 \begin{equation}
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
- \delta(E'_1+E'_2+\cdots-E)d^3p'_2\cdots
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
+ \delta(E'_1+E'_2+\cdots-E)\dd^3p'_2\cdots
  \tag{3.4.21}\label{eq:3.4.21}
 \end{equation}
 with the understanding that wherever $\mathbf{p}'_1$ appears (as in $E'_1$) it must be replaced
@@ -297,18 +297,18 @@ We can similarly use the remaining delta function to eliminate any one of the re
 
 In the simplest case, there are just two particles in the final state. Here \eqref{eq:3.4.21} gives
 \[
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
- \delta(E'_1+E'_2-E)d^3p'_2.
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
+ \delta(E'_1+E'_2-E)\dd^3p'_2.
 \]
 In more detail, this is
 \begin{equation}
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
  \delta\left(\sqrt{|\mathbf{p}'_1|^2+m_1'^2}
  +\sqrt{|\mathbf{p}'_1|^2+m_2'^2}-E\right)
- |\mathbf{p}'_1|^2d|\mathbf{p}'_1|d\Omega,
+ |\mathbf{p}'_1|^2d|\mathbf{p}'_1|\dd\Omega,
  \tag{3.4.23}\label{eq:3.4.23}
 \end{equation}
-where $\mathbf{p}'_2=-\mathbf{p}'_1$ and $d\Omega\equiv\sin\theta\,d\theta\,d\phi$ is the
+where $\mathbf{p}'_2=-\mathbf{p}'_1$ and $\dd\Omega\equiv\sin\theta\,\dd\theta\,\dd\phi$ is the
 solid-angle differential for $\mathbf{p}'_1$. This can be simplified by using the standard formula
 \[
  \delta(f(x))=\delta(x-x_0)/|f'(x_0)|,
@@ -330,7 +330,7 @@ $|\mathbf{p}'_1|=k'$, where
 \end{equation}
 with derivative
 \begin{align}
- \left[\frac{d}{d|\mathbf{p}'_1|}
+ \left[\frac{\dd}{d|\mathbf{p}'_1|}
  \left(\sqrt{|\mathbf{p}'_1|^2+m_1'^2}
  +\sqrt{|\mathbf{p}'_1|^2+m_2'^2}-E\right)\right]_{|\mathbf{p}'_1|=k'}
  &=\frac{k'}{E'_1}+\frac{k'}{E'_2}=\frac{k'E}{E'_1E'_2}.
@@ -339,22 +339,22 @@ with derivative
 We can thus drop the delta function and the differential $d|\mathbf{p}'_1|$ in Eq. \eqref{eq:3.4.23},
 by dividing by \eqref{eq:3.4.27},
 \begin{equation}
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow
- \frac{k'E'_1E'_2}{E}\,d\Omega
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow
+ \frac{k'E'_1E'_2}{E}\,\dd\Omega
  \tag{3.4.28}\label{eq:3.4.28}
 \end{equation}
 with the understanding that $k',E'_1$, and $E'_2$ are given everywhere by Eqs. \eqref{eq:3.4.24}--\eqref{eq:3.4.26}.
 In particular, the differential rate \eqref{eq:3.4.13} for decay of a one-particle state of zero momentum
 and energy $E$ into two particles is
 \begin{equation}
- \frac{d\Gamma(\alpha\to\beta)}{d\Omega}
+ \frac{\dd\Gamma(\alpha\to\beta)}{\dd\Omega}
  =\frac{2\pi k'E'_1E'_2}{E}|M_{\beta\alpha}|^2
  \tag{3.4.29}\label{eq:3.4.29}
 \end{equation}
 and the differential cross-section for the two-body scattering process $12\to1'2'$ is given by
 Eq. \eqref{eq:3.4.15} as
 \begin{equation}
- \frac{d\sigma(\alpha\to\beta)}{d\Omega}
+ \frac{\dd\sigma(\alpha\to\beta)}{\dd\Omega}
  =\frac{(2\pi)^4k'E'_1E'_2}{Eu_\alpha}|M_{\beta\alpha}|^2
  =\frac{(2\pi)^4k'E'_1E'_2E_1E_2}{E^2k}|M_{\beta\alpha}|^2,
  \tag{3.4.30}\label{eq:3.4.30}
@@ -364,12 +364,12 @@ where $k\equiv|\mathbf{p}_1|=|\mathbf{p}_2|$.
 The above case $N_\beta=2$ is particularly simple, but there is one nice result for $N_\beta=3$
 that is also worth recording. For $N_\beta=3$, Eq. \eqref{eq:3.4.21} gives
 \[
- \delta^4(p_\beta-p_\alpha)d\beta\longrightarrow d^3p'_2d^3p'_3
+ \delta^4(p_\beta-p_\alpha)\dd\beta\longrightarrow \dd^3p'_2\dd^3p'_3
  \cdot\delta\left(\sqrt{|\mathbf{p}'_2+\mathbf{p}'_3|^2+m_1'^2}
  +\sqrt{|\mathbf{p}'_2|^2+m_2'^2}+\sqrt{|\mathbf{p}'_3|^2+m_3'^2}-E\right).
 \]
 We write the momentum-space volume as
 \[
- d^3p'_2d^3p'_3=|\mathbf{p}'_2|^2d|\mathbf{p}'_2|
- |\mathbf{p}'_3|^2d|\mathbf{p}'_3|d\Omega_3d\phi_{23}d\cos\theta_{23},
+ \dd^3p'_2\dd^3p'_3=|\mathbf{p}'_2|^2d|\mathbf{p}'_2|
+ |\mathbf{p}'_3|^2d|\mathbf{p}'_3|\dd\Omega_3\dd\phi_{23}\dd\cos\theta_{23},
 \]

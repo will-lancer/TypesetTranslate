@@ -16,31 +16,21 @@ def load_notation_map() -> list[dict]:
     ]
 
 
-def marked_block(text: str, marker_id: str) -> str:
-    marker = f"id={marker_id}"
-    start = text.index(marker)
-    end = text.find("% PCT-SOURCE:", start + len(marker))
-    return text[start:] if end < 0 else text[start:end]
-
-
 class NotationRegressionTests(unittest.TestCase):
     def test_unitary_symmetry_equation_uses_the_transformed_ket_on_both_rhs_slots(self) -> None:
         text = (PROJECT / "latex/chapters/chapter01/sec1_3.tex").read_text(encoding="utf-8")
-        block = marked_block(text, "1-28")
+        start = text.index(r"\label{eq:ch1-unitary-symmetry-inner-product}")
+        block = text[max(0, start - 400) : start + 200]
         self.assertIn(r"\bra{\Phi}\widehat A\ket{\Phi}", block)
         self.assertIn(r"\bra{\widehat\Phi}A\ket{\widehat\Phi}", block)
         self.assertNotIn(r"\ket{\widehat\Phi}A\ket{\Phi}", block)
 
     def test_massive_thirring_bilinears_use_the_house_dirac_bar(self) -> None:
         text = (PROJECT / "latex/appendix/local-algebras.tex").read_text(encoding="utf-8")
-        for marker_id in (
-            "app-massive-thirring",
-            "app-boson-fermion-current",
-            "app-massive-charge",
-        ):
-            block = marked_block(text, marker_id)
-            self.assertIn(r"\bar\psi", block)
-            self.assertNotIn(r"\psi^\dagger", block)
+        self.assertIn(r"(-\ii\gamma^\mu\partial_\mu+m)\psi", text)
+        self.assertIn(r":\!\bar\psi(x)\gamma^\mu\psi(x)\!:", text)
+        self.assertIn(r"Q=\int\dd x\,:\!\bar\psi(x)\gamma^0\psi(x)\!:", text)
+        self.assertNotIn(r"\psi^\dagger\gamma", text)
 
     def test_spinor_star_ledger_points_to_source_pdf_31(self) -> None:
         records = load_notation_map()

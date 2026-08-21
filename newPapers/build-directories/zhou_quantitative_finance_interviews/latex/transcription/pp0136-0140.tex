@@ -29,35 +29,35 @@ of \$1 as well. After the $i$-th game, $i$ gamblers have participated in the gam
 and the total amount of money they have put in the game should be \$i. Since each
 game is fair, the expected value of their total bankroll is \$i as well. In other
 words, if we denote $x_i$ as the amount of money all the participating gamblers
-have after the $i$-th game, then $(x_i-i)$ is a martingale.
+have after the $i$-th game, then $(x_i-\ii)$ is a martingale.
 
 Now, let's add a stopping rule: the whole game will stop if one of the gamblers
 becomes the first to get $n$ heads in a roll. A martingale stopped at a stopping
-time is a martingale. So we still have $\E[(x_i-i)]=0$. If the sequence stops after
-the $i$-th toss ($i\geq n$), the $(i-n+1)$-th player is the (first) player who
-gets $n$ heads in a roll with payoff $2^n$. So all the $(i-n)$ players before him
-went bankrupt; the $(i-n+2)$-th player gets $(n-1)$ heads in a roll with payoff
+time is a martingale. So we still have $\E[(x_i-\ii)]=0$. If the sequence stops after
+the $i$-th toss ($i\geq n$), the $(\ii-n+1)$-th player is the (first) player who
+gets $n$ heads in a roll with payoff $2^n$. So all the $(\ii-n)$ players before him
+went bankrupt; the $(\ii-n+2)$-th player gets $(n-1)$ heads in a roll with payoff
 $2^{n-1}$; $\ldots$; the $i$-th player gets one head with payoff $2$. So the total
 payoff is fixed and $x_i=2^n+2^{n-1}+\cdots+2^1=2^{n+1}-2$.
 
-Hence, $\E[(x_i-i)]=2^{n+1}-2-\E[i]=0\Rightarrow \E[i]=2^{n+1}-2$.
+Hence, $\E[(x_i-\ii)]=2^{n+1}-2-\E[\ii]=0\Rightarrow \E[\ii]=2^{n+1}-2$.
 
 This approach can be applied to any coin sequences---as well as dice sequences or
 any sequences with arbitrary number of elements. For example, let's consider the
 sequence $HHTTH$. We can again use a stopped martingale process for sequence
 $HHTTH$. The gamblers join the game one by one before each toss to bet on the same
 sequence $HHTTH$ until one gambler becomes the first to get the sequence $HHTTH$.
-If the sequence stops after the $i$-th toss, the $(i-5)$th gambler gets the
+If the sequence stops after the $i$-th toss, the $(\ii-5)$th gambler gets the
 $HHTTH$ with payoff
 
 % ZHOU-SOURCE-PAGE: 137 PRINTED: 121
 
-$2^6$. All the $(i-6)$ players before him went bankrupt; the $(i-4)$th player
-loses in the second toss ($HT$); the $(i-3)$th player and the $(i-2)$th player
-lose in the first toss ($T$); the $(i-1)$th player gets sequence $HH$ with payoff
+$2^6$. All the $(\ii-6)$ players before him went bankrupt; the $(\ii-4)$th player
+loses in the second toss ($HT$); the $(\ii-3)$th player and the $(\ii-2)$th player
+lose in the first toss ($T$); the $(\ii-1)$th player gets sequence $HH$ with payoff
 $2^2$ and the $i$-th player gets $H$ with payoff 2.
 
-Hence, $\E[(x_i-i)]=2^6+2^2+2^1-\E[i]=0\Rightarrow \E[i]=70$.
+Hence, $\E[(x_i-\ii)]=2^6+2^2+2^1-\E[\ii]=0\Rightarrow \E[\ii]=70$.
 
 \end{solution}
 
@@ -140,7 +140,7 @@ $\pi_i^*=\{u_i^*,\ldots,u_{N-1}^*\}$ must be optimal for the tail subproblem
 
 \[
 \begin{aligned}
-\E\left\{g_N(x_N)+\sum_{k=i}^{N-1}g_k(x_k,u_k,w_k)\right\}.
+\E\left\{g_N(x_N)+\sum_{k=\ii}^{N-1}g_k(x_k,u_k,w_k)\right\}.
 \end{aligned}
 \]
 
@@ -238,19 +238,19 @@ $\{(0,4),(1,4),(2,4),(3,4)\}$ with payoff $f(i,j)=-100$. As all dynamic
 programming questions, the key is to start with the final stage and work
 backwards---even though in this case the number of stages is not fixed. For each
 state $(i,j)$, if we bet \$y on the Red Sox for the next game, we will have
-$(f(i,j)+y)$ if the Red Sox wins and the state goes to $(i+1,j)$, or
+$(f(i,j)+y)$ if the Red Sox wins and the state goes to $(\ii+1,j)$, or
 $(f(i,j)-y)$ if the Red Sox loses and the state goes to $(i,j+1)$. So clearly we
 have
 
 \[
 \begin{aligned}
-f(i+1,j)&=f(i,j)+y,\\
+f(\ii+1,j)&=f(i,j)+y,\\
 f(i,j+1)&=f(i,j)-y
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{cases}
-f(i,j)=\dfrac{f(i+1,j)+f(i,j+1)}{2},\\[6pt]
-y=\dfrac{f(i+1,j)-f(i,j+1)}{2}.
+f(i,j)=\dfrac{f(\ii+1,j)+f(i,j+1)}{2},\\[6pt]
+y=\dfrac{f(\ii+1,j)-f(i,j+1)}{2}.
 \end{cases}
 \]
 
@@ -261,7 +261,7 @@ information to fill in $f(4,0)$, $f(4,1)$, $f(4,3)$, $f(4,2)$, $f(0,4)$, $f(1,4)
 $f(2,4)$, as well as $f(3,3)$. Similarly we can also fill in all $f(i,j)$ for the
 states where $i=3$ or $j=3$ as shown in Figure 5.7. Going further backward, we can
 fill in the net payoffs at every possible state. Using equation
-$y=(f(i+1,j)-f(i,j+1))/2$, we can also calculate the bet we need to place at each
+$y=(f(\ii+1,j)-f(i,j+1))/2$, we can also calculate the bet we need to place at each
 state, which is essentially our strategy.
 
 If you are not accustomed to the table format, Figure 5.8 redraws it as a binomial

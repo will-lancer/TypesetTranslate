@@ -19,7 +19,7 @@ the astrophysicist.
 In order to tell whether a particular configuration is unstable it would in
 general be necessary to compute the frequencies \(\omega_n\) of all normal
 modes of the configuration and check whether any \(\omega_n\) has a positive
-imaginary part; in this case the factor \(\exp(-i\omega_nt)\), which gives the
+imaginary part; in this case the factor \(\exp(-\ii\omega_nt)\), which gives the
 time variation of this mode, would grow exponentially and the system would be
 unstable. However, it is often possible to tell from the equilibrium solution
 alone whether the corresponding configuration is stable, by making use of the
@@ -90,14 +90,14 @@ chemical composition, will satisfy Eqs.~\eqref{eq:11.1.12} and
 \eqref{eq:11.1.13} for equilibrium if and only if the quantity \(M\), defined
 by
 \[
-  M\equiv\int4\pi r^2\rho(r)\,dr,
+  M\equiv\int4\pi r^2\rho(r)\,\dd r,
 \]
 is stationary with respect to all variations of \(\rho(r)\) that leave
 unchanged the quantity
 \[
   N\equiv
   \int4\pi r^2n(r)
-  \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-1/2}dr
+  \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-1/2}\dd r
 \]
 and that leave the entropy per nucleon and the chemical composition uniform
 and unchanged. [It is understood here that with the entropy per nucleon and
@@ -117,13 +117,13 @@ given variation \(\delta\rho(r)\) is
   \begin{aligned}
   \delta M-\lambda\delta N
   ={}&
-  \int_0^\infty4\pi r^2\delta\rho(r)\,dr\\
+  \int_0^\infty4\pi r^2\delta\rho(r)\,\dd r\\
   &-\lambda\int_0^\infty4\pi r^2
   \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-1/2}
-  \delta n(r)\,dr\\
+  \delta n(r)\,\dd r\\
   &-\lambda G\int_0^\infty4\pi r
   \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-3/2}
-  n(r)\delta\mathcal{M}(r)\,dr.
+  n(r)\delta\mathcal{M}(r)\,\dd r.
   \end{aligned}
 \]
 (The integrals are carried to infinity for notational convenience; actually
@@ -140,7 +140,7 @@ and therefore
 Also,
 \[
   \delta\mathcal{M}(r)
-  =\int_0^r4\pi r'^2\delta\rho(r')\,dr'.
+  =\int_0^r4\pi r'^2\delta\rho(r')\,\dd r'.
 \]
 Interchanging the \(r\) and \(r'\) integrals in the last term, we now have
 \[
@@ -151,8 +151,8 @@ Interchanging the \(r\) and \(r'\) integrals in the last term, we now have
   1-\frac{\lambda n(r)}{p(r)+\rho(r)}
   \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-1/2}\\
   &-\lambda G\int_r^\infty4\pi r'n(r')
-  \left[1-\frac{2G\mathcal{M}(r')}{r'}\right]^{-3/2}dr'
-  \bigg\}\delta\rho(r)\,dr.
+  \left[1-\frac{2G\mathcal{M}(r')}{r'}\right]^{-3/2}\dd r'
+  \bigg\}\delta\rho(r)\,\dd r.
   \end{aligned}
 \]
 Thus \(\delta M-\lambda\delta N\) will vanish for all \(\delta\rho(r)\) if and
@@ -163,7 +163,7 @@ only if
   \frac{n(r)}{p(r)+\rho(r)}
   \left[1-\frac{2G\mathcal{M}(r)}r\right]^{-1/2}
   +G\int_r^\infty4\pi r'n(r')
-  \left[1-\frac{2G\mathcal{M}(r')}{r'}\right]^{-3/2}dr'.
+  \left[1-\frac{2G\mathcal{M}(r')}{r'}\right]^{-3/2}\dd r'.
 \]
 This will be the case for some Lagrange multiplier \(\lambda\) if and only if
 the right-hand side is independent of \(r\), that is, if and only if
@@ -184,8 +184,8 @@ the right-hand side is independent of \(r\), that is, if and only if
 \]
 The condition of uniform entropy per nucleon gives
 \[
-  0=\frac{d}{dr}\left(\frac{\rho}{n}\right)
-  +p\frac{d}{dr}\left(\frac1n\right),
+  0=\frac{\dd}{\dd r}\left(\frac{\rho}{n}\right)
+  +p\frac{\dd}{\dd r}\left(\frac1n\right),
 \]
 and therefore
 \[

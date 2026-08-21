@@ -35,9 +35,9 @@ each point $\theta$, with $\Theta^a_{\theta}(0)=0$ and
 $\Theta^a_{\theta}(1)=\theta^a$, and define $U_{\theta}(s)$ along each such
 path by the differential equation
 \begin{equation}
-  \frac{d}{ds}U_{\theta}(s)
-    =it_aU_{\theta}(s)h^a{}_{b}\bigl(\Theta_{\theta}(s)\bigr)
-      \frac{d\Theta^b_{\theta}(s)}{ds}
+  \frac{\dd}{\dd s}U_{\theta}(s)
+    =\ii t_aU_{\theta}(s)h^a{}_{b}\bigl(\Theta_{\theta}(s)\bigr)
+      \frac{\dd\Theta^b_{\theta}(s)}{\dd s}
   \tag{2.B.2}\label{eq:2.B.2}
 \end{equation}
 with the initial condition
@@ -117,20 +117,20 @@ For this purpose, consider the variation $\delta U$ of $U_{\theta}(s)$
 produced by a variation $\delta\Theta(s)$ in the path from 0 to $\theta$.
 Taking the variation of Eq.~\eqref{eq:2.B.2} gives the differential equation
 \begin{align*}
-  \frac{d}{ds}\delta U
-  &=it_a\delta U\,h^a{}_{b}(\Theta)\frac{d\Theta^b}{ds}
-    +it_aU h^a{}_{b,c}(\Theta)\delta\Theta^c
-      \frac{d\Theta^b}{ds}\\
-  &\quad+it_aU h^a{}_{b}(\Theta)\frac{d\delta\Theta^b}{ds},
+  \frac{\dd}{\dd s}\delta U
+  &=\ii t_a\delta U\,h^a{}_{b}(\Theta)\frac{\dd\Theta^b}{\dd s}
+    +\ii t_aU h^a{}_{b,c}(\Theta)\delta\Theta^c
+      \frac{\dd\Theta^b}{\dd s}\\
+  &\quad+\ii t_aU h^a{}_{b}(\Theta)\frac{d\delta\Theta^b}{\dd s},
 \end{align*}
 where $h^a{}_{b,c}\equiv\partial h^a{}_{b}/\partial\theta^c$. Using the
 Lie commutation relations \eqref{eq:2.2.22} (without central charges) and rearranging
 a bit, this gives
 \begin{align}
-  \frac{d}{ds}\bigl(U^{-1}\delta U\bigr)
-  &=\frac{d}{ds}\bigl(iU^{-1}t_aU h^a{}_{b}\delta\Theta^b\bigr)
+  \frac{\dd}{\dd s}\bigl(U^{-1}\delta U\bigr)
+  &=\frac{\dd}{\dd s}\bigl(\ii U^{-1}t_aU h^a{}_{b}\delta\Theta^b\bigr)
   \notag\\
-  &\quad+iU^{-1}t_aU\delta\Theta^b\frac{d\Theta^c}{ds}
+  &\quad+\ii U^{-1}t_aU\delta\Theta^b\frac{\dd\Theta^c}{\dd s}
     \left(h^a{}_{c,b}-h^a{}_{b,c}
       +C^a{}_{ed}h^e{}_{b}h^d{}_{c}\right).
   \tag{2.B.9}\label{eq:2.B.9}
@@ -139,10 +139,10 @@ However, by taking the limit $\theta_3,\theta_2\to0$ in the associativity
 condition \eqref{eq:2.B.6}, we find for all $\theta$:
 \begin{equation}
   h(\theta)^a{}_{b,c}
-    =-f^a{}_{de}h(\theta)^d{}_{b}h(\theta)^e{}_{c},
+    =-f^a{}_{\dd e}h(\theta)^d{}_{b}h(\theta)^e{}_{c},
   \tag{2.B.10}\label{eq:2.B.10}
 \end{equation}
-where $f^a{}_{de}$ is the coefficient defined by \eqref{eq:2.2.19}.
+where $f^a{}_{\dd e}$ is the coefficient defined by \eqref{eq:2.2.19}.
 Antisymmetrizing in $b$ and $c$ shows that the last term in Eq.~\eqref{eq:2.B.9}
 vanishes
 \begin{equation}
@@ -152,7 +152,7 @@ vanishes
 \end{equation}
 Eq.~\eqref{eq:2.B.9} thus tells us that the quantity
 \begin{equation*}
-  U^{-1}\delta U-iU^{-1}t_aU h^a{}_{b}\delta\Theta^b
+  U^{-1}\delta U-\ii U^{-1}t_aU h^a{}_{b}\delta\Theta^b
 \end{equation*}
 is constant along the path $\theta(s)$. It follows that $U_{\theta}(1)$ is
 stationary under any infinitesimal variation of the path that leaves the
@@ -179,13 +179,13 @@ it remains to prove that any projective representation
 $\widetilde U[\theta]$ of the same group with the same representation
 generators $t_a$ can only differ from $U[\theta]$ by a phase:
 \begin{equation*}
-  \widetilde U[\theta]=e^{i\alpha(\theta)}U[\theta]
+  \widetilde U[\theta]=e^{\ii\alpha(\theta)}U[\theta]
 \end{equation*}
 so that the phase $\phi$ in the multiplication law for
 $\widetilde U[\theta]$:
 \begin{equation*}
   \widetilde U[\theta']\widetilde U[\theta]
-    =e^{i\phi(\theta',\theta)}
+    =e^{\ii\phi(\theta',\theta)}
       \widetilde U\bigl[f(\theta',\theta)\bigr]
 \end{equation*}
 can be removed by a simple change of phase of $\widetilde U[\theta]$. To
@@ -195,7 +195,7 @@ see this, consider the operator
     \widetilde U[\theta']\widetilde U[\theta]
   =U\bigl[f(\theta',\theta)\bigr]^{-1}
     \widetilde U\bigl[f(\theta',\theta)\bigr]
-    e^{i\phi(\theta',\theta)}.
+    e^{\ii\phi(\theta',\theta)}.
 \end{equation*}
 Because $U[\theta]$ and $\widetilde U[\theta]$ have the same generators,
 the derivative of the left-hand side with respect to $\theta'{}^a$ vanishes
@@ -203,7 +203,7 @@ at $\theta'=0$, and so
 \begin{equation*}
   0=\frac{\partial}{\partial\theta^b}
     \left\{U[\theta]^{-1}\widetilde U[\theta]\right\}
-    +i\phi_b(\theta)U[\theta]^{-1}\widetilde U[\theta],
+    +\ii\phi_b(\theta)U[\theta]^{-1}\widetilde U[\theta],
 \end{equation*}
 where
 \begin{equation*}
@@ -225,12 +225,12 @@ $\beta$:
   \phi_b(\theta)=\frac{\partial\beta(\theta)}{\partial\theta^b}.
 \end{equation*}
 Thus the quantity
-$U[\theta]^{-1}\widetilde U[\theta]e^{i\beta(\theta)}$ is actually constant
+$U[\theta]^{-1}\widetilde U[\theta]e^{\ii\beta(\theta)}$ is actually constant
 in $\theta$. Setting it equal to its value at $\theta=0$, we see that
 $\widetilde U$ is just proportional to $U$:
 \begin{equation*}
   \widetilde U[\theta]
-    =U[\theta]\exp\bigl(-i\beta(\theta)+i\beta(0)\bigr)
+    =U[\theta]\exp\bigl(-\ii\beta(\theta)+\ii\beta(0)\bigr)
 \end{equation*}
 as claimed above.
 
@@ -247,7 +247,7 @@ chosen to go from zero to $f(\bar\theta,\theta)$, or in other words, that
 the loop from zero to $\theta$ to $f(\bar\theta,\theta)$ and then back to
 zero is not continuously deformable to a point. Then
 $U[f(\theta_2,\theta_1)]^{-1}U[\theta_2]U[\theta_1]$ can be a phase factor
-$\exp(i\phi(\theta_2,\theta_1))\neq\mathbf{1}$, but $\phi$ will be the same
+$\exp(\ii\phi(\theta_2,\theta_1))\neq\mathbf{1}$, but $\phi$ will be the same
 for all other loops into which this can be continuously deformed. The set
 consisting of all loops that start and end at the origin and that can be
 continuously deformed into a given loop is known as the \emph{homotopy
@@ -264,9 +264,9 @@ deformed into a point at the origin. This group is known as the
 \emph{first homotopy group} or \emph{fundamental group} of the space in
 question. It is easy to see that the phase factors form a representation
 of this group: if going around loop $\mathcal{L}$ gives a phase factor
-$e^{i\phi}$, and going around loop $\bar{\mathcal{L}}$ gives a phase factor
-$e^{i\bar\phi}$, then going around both loops gives a phase factor
-$e^{i\phi}e^{i\bar\phi}$. Hence we can catalog all the possible types of
+$e^{\ii\phi}$, and going around loop $\bar{\mathcal{L}}$ gives a phase factor
+$e^{\ii\bar\phi}$, then going around both loops gives a phase factor
+$e^{\ii\phi}e^{\ii\bar\phi}$. Hence we can catalog all the possible types of
 projective representations of a given group $\mathcal{G}$ (with no central
 charges) if we know the one-dimensional representations of the first
 homotopy group of the parameter space of $\mathcal{G}$. Homotopy groups

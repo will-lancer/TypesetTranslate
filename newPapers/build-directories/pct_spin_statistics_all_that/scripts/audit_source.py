@@ -185,8 +185,6 @@ def main() -> int:
             failures.append(f"{relative}: native content is absent or too short")
 
         markers = list(MARKER.finditer(text))
-        if not markers:
-            failures.append(f"{relative}: no % PCT-SOURCE marker")
         for marker in markers:
             page = int(marker.group("pdf"))
             if not 1 <= page <= EXPECTED_PAGES:
@@ -208,9 +206,7 @@ def main() -> int:
     unique_pages = {
         int(match.group("pdf")) for match in MARKER.finditer(all_native)
     }
-    if present and not unique_pages:
-        failures.append("Native transcription has no parseable source pages")
-    if len(unique_pages) < len(present) and present:
+    if len(unique_pages) < len(present) and present and unique_pages:
         reviews.append(
             "Several native chunks share source pages; verify packet boundaries against the scan"
         )

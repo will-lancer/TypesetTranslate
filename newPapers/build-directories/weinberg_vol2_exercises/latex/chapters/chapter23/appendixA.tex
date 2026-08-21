@@ -11,7 +11,7 @@ This appendix will outline the use of Euclidean path integrals in quantum field 
 
 We consider a set of Hermitian canonical variables $Q_a$ and $P_a$, with commutation relations
 \begin{equation}
- [Q_a,P_b]=i\delta_{ab},
+ [Q_a,P_b]=\ii\delta_{ab},
  \tag{23.A.1}\label{eq:23.A.1}
 \end{equation}
 \begin{equation}
@@ -47,7 +47,7 @@ so
 Also, we can calculate the partition function of statistical mechanics from the trace:
 \begin{equation}
  Z(\beta)\equiv\operatorname{Tr}\exp(-\beta H)
- =\int\left[\prod_a dq_a\right]F(q,q;\beta),
+ =\int\left[\prod_a \dd q_a\right]F(q,q;\beta),
  \tag{23.A.7}\label{eq:23.A.7}
 \end{equation}
 where $1/\beta$ is the temperature.
@@ -93,10 +93,10 @@ In this language, the definition \eqref{eq:23.A.5} of $F(q',q;T)$ may be rewritt
  F(q',q;T)=\braket{q',T/2}{q,-T/2}.
  \tag{23.A.13}\label{eq:23.A.13}
 \end{equation}
-Let us first calculate $\braket{q',t+dt}{q,t}$ for infinitesimal $dt$. Adopting the convention that $H(Q,P)$ is written with all $Q$s to the left of all $P$s, we have
+Let us first calculate $\braket{q',t+\dd t}{q,t}$ for infinitesimal $\dd t$. Adopting the convention that $H(Q,P)$ is written with all $Q$s to the left of all $P$s, we have
 \[
- \braket{q',t+dt}{q,t}
- =\bra{q',t}\exp\bigl(-H(q',P)dt\bigr)\ket{q,t}.
+ \braket{q',t+\dd t}{q,t}
+ =\bra{q',t}\exp\bigl(-H(q',P)\dd t\bigr)\ket{q,t}.
 \]
 \begingroup
 \emergencystretch=1em
@@ -105,17 +105,17 @@ Let us expand $\ket{q,t}$ in a complete set of eigenstates of the $P_a(t)$ opera
 \endgroup
 \[
  \braket{q,t}{p,t}
- =\prod_a\frac{\exp(ip_aq_a)}{\sqrt{2\pi}},
+ =\prod_a\frac{\exp(\ii p_aq_a)}{\sqrt{2\pi}},
  \qquad
  \braket{p,t}{q,t}
- =\prod_a\frac{\exp(-ip_aq_a)}{\sqrt{2\pi}},
+ =\prod_a\frac{\exp(-\ii p_aq_a)}{\sqrt{2\pi}},
 \]
 so
 \[
- \braket{q',t+dt}{q,t}
- =\int\left(\prod_a\frac{dp_a}{2\pi}\right)
+ \braket{q',t+\dd t}{q,t}
+ =\int\left(\prod_a\frac{\dd p_a}{2\pi}\right)
  \exp\left(
- i\sum_a p_a(q'_a-q_a)-H(q',p)dt
+ \ii\sum_a p_a(q'_a-q_a)-H(q',p)\dd t
  \right).
 \]
 (The summation convention is suspended here.)
@@ -126,13 +126,13 @@ As in \hyperref[sec:9.1]{Section 9.1}, we divide the time interval from $-T/2$ t
  F(q',q;T)
  &=
  \int_{\substack{q(-T/2)=q\\q(T/2)=q'}}
- \left(\prod_{a,t}dq_a(t)\right)
- \int\left(\prod_{a,t}\frac{dp_a(t)}{2\pi}\right)\\
+ \left(\prod_{a,t}\dd q_a(t)\right)
+ \int\left(\prod_{a,t}\frac{\dd p_a(t)}{2\pi}\right)\\
  &\quad{}\cdot
  \exp\left(
- \int_{-T/2}^{T/2}dt
+ \int_{-T/2}^{T/2}\dd t
  \left[
- i\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
+ \ii\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
  \right]
  \right).
 \end{aligned}
@@ -144,13 +144,13 @@ To calculate the partition function \eqref{eq:23.A.7} we would integrate over th
  Z(\beta)
  &=
  \int_{q(\beta/2)=q(-\beta/2)}
- \left(\prod_{a,t}dq_a(t)\right)
- \int\left(\prod_{a,t}\frac{dp_a(t)}{2\pi}\right)\\
+ \left(\prod_{a,t}\dd q_a(t)\right)
+ \int\left(\prod_{a,t}\frac{\dd p_a(t)}{2\pi}\right)\\
  &\quad{}\cdot
  \exp\left(
- \int_{-\beta/2}^{\beta/2}dt
+ \int_{-\beta/2}^{\beta/2}\dd t
  \left[
- i\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
+ \ii\sum_a\dot q_a(t)p_a(t)-H\bigl(q(t),p(t)\bigr)
  \right]
  \right).
 \end{aligned}
@@ -168,13 +168,13 @@ As shown in the \hyperref[app:9]{appendix to Chapter 9}, the integral over the $
  F(q',q;T)
  &=
  \int_{\substack{q(-T/2)=q\\q(T/2)=q'}}
- \left(\prod_{a,t}dq_a(t)\right)
- \left(\operatorname{Det}\left[2i\pi\mathcal A(q)\right]\right)^{-1/2}\\
+ \left(\prod_{a,t}\dd q_a(t)\right)
+ \left(\operatorname{Det}\left[2\ii\pi\mathcal A(q)\right]\right)^{-1/2}\\
  &\quad{}\cdot
  \exp\left(
- \int_{-T/2}^{T/2}dt
+ \int_{-T/2}^{T/2}\dd t
  \left[
- i\sum_a\dot q_a(t)\bar p_a(t)
+ \ii\sum_a\dot q_a(t)\bar p_a(t)
  -H\bigl(q(t),\bar p(t)\bigr)
  \right]
  \right),
@@ -188,7 +188,7 @@ where $\mathcal A(q)$ is the `matrix'
 \end{equation}
 and $\bar p(t)$ is the stationary `point' of the argument of the exponential in Eq.~\eqref{eq:23.A.17}---that is, the solution of the equation
 \begin{equation}
- i\dot q_a(t)
+ \ii\dot q_a(t)
  =\left.
  \frac{\delta H(q(t),p)}{\delta p_a}
  \right|_{p=\bar p(t)}.
@@ -196,13 +196,13 @@ and $\bar p(t)$ is the stationary `point' of the argument of the exponential in 
 \end{equation}
 The factor $i$ here should not be surprising, because Eq.~\eqref{eq:23.A.19} is the same equation that is satisfied by the non-Hermitian operators \eqref{eq:23.A.8}:
 \[
- i\dot Q_a(t)=i[H,Q_a(t)]
+ \ii\dot Q_a(t)=\ii[H,Q_a(t)]
  =\frac{\delta H\bigl(Q(t),P(t)\bigr)}{\delta P_a(t)}.
 \]
 For a Hamiltonian in the general quadratic form \eqref{eq:23.A.16}, the solution of Eq.~\eqref{eq:23.A.19} is
 \begin{equation}
  \bar p_a=\sum_b\left[A^{-1}(q)\right]_{ab}
- \bigl(i\dot q_b-B_b(q)\bigr),
+ \bigl(\ii\dot q_b-B_b(q)\bigr),
  \tag{23.A.20}\label{eq:23.A.20}
 \end{equation}
 and so Eq.~\eqref{eq:23.A.17} takes the form
@@ -211,8 +211,8 @@ and so Eq.~\eqref{eq:23.A.17} takes the form
  F(q',q;T)
  &=
  \int_{\substack{q(0)=q\\q(T)=q'}}
- \left(\prod_{a,t}dq_a(t)\right)
- \left(\operatorname{Det}\left[2i\pi\mathcal A(q)\right]\right)^{-1/2}
+ \left(\prod_{a,t}\dd q_a(t)\right)
+ \left(\operatorname{Det}\left[2\ii\pi\mathcal A(q)\right]\right)^{-1/2}
  \exp\bigl(-S[q]\bigr),
 \end{aligned}
  \tag{23.A.21}\label{eq:23.A.21}
@@ -220,9 +220,9 @@ and so Eq.~\eqref{eq:23.A.17} takes the form
 where $S[q]$ is the action
 \begin{equation}
 \begin{aligned}
- S[q]\equiv\int_{-T/2}^{T/2}dt\biggl[
+ S[q]\equiv\int_{-T/2}^{T/2}\dd t\biggl[
  &\frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)\dot q_a\dot q_b
- +i\sum_{a,b}A^{-1}_{ab}(q)B_a(q)\dot q_b\\
+ +\ii\sum_{a,b}A^{-1}_{ab}(q)B_a(q)\dot q_b\\
  &-\frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)B_a(q)B_b(q)+C(q)
  \biggr].
 \end{aligned}
@@ -230,7 +230,7 @@ where $S[q]$ is the action
 \end{equation}
 In the special (but common) case where $B_a(q)=0$, this simplifies to
 \begin{equation}
- S[q]\equiv\int_{-T/2}^{T/2}dt
+ S[q]\equiv\int_{-T/2}^{T/2}\dd t
  \left[
  \frac{1}{2}\sum_{a,b}A^{-1}_{ab}(q)\dot q_a\dot q_b+C(q)
  \right].

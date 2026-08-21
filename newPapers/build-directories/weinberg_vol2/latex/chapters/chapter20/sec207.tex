@@ -20,11 +20,11 @@ B(z)\equiv\sum_n\frac{f_nz^n}{n!}.
 
 If $f_n$ grows no faster than $n!$ then $B(z)$ will generally have at least a finite radius of convergence. The question is, can we recover the original series \eqref{eq:20.7.1} from the resummed series \eqref{eq:20.7.2}? Using the familiar formula
 \[
-\int_0^\infty \exp(-z/g)z^n\,dz=n!g^{n+1}
+\int_0^\infty \exp(-z/g)z^n\,\dd z=n!g^{n+1}
 \]
 we see that, at least formally,
 \begin{equation}
-gF(g)=\int_0^\infty \exp(-z/g)B(z)\,dz.
+gF(g)=\int_0^\infty \exp(-z/g)B(z)\,\dd z.
 \tag{20.7.3}\label{eq:20.7.3}
 \end{equation}
 
@@ -42,10 +42,10 @@ F(g)\equiv\int[d\phi]\exp\bigl(I[\phi,g]\bigr).
 (The use of Euclidean path integration is discussed in Appendix A of Chapter 23.) The coefficients in the power series \eqref{eq:20.7.1} are given by
 \begin{align}
 f_n
-&=\frac{1}{2\pi i}\int[d\phi]\oint dg\,g^{-n-1}
+&=\frac{1}{2\pi \ii}\int[d\phi]\oint \dd g\,g^{-n-1}
 \exp\bigl(I[\phi,g]\bigr)
 \notag\\
-&=\frac{1}{2\pi i}\int[d\phi]\oint dg\,
+&=\frac{1}{2\pi \ii}\int[d\phi]\oint \dd g\,
 \exp\bigl(I[\phi,g]-(n+1)\ln g\bigr),
 \tag{20.7.5}\label{eq:20.7.5}
 \end{align}
@@ -68,8 +68,8 @@ where $\oint$ denotes the integral counterclockwise over a closed curve in the c
 For instance, suppose that $I[\phi,g]$ is the action for a massless scalar field
 \begin{equation}
 I[\phi,g]
-=-\frac12\int \partial_i\phi\,\partial_i\phi\,d^4x
--\frac{g}{24}\int\phi^4\,d^4x,
+=-\frac12\int \partial_i\phi\,\partial_i\phi\,\dd^4x
+-\frac{g}{24}\int\phi^4\,\dd^4x,
 \tag{20.7.8}\label{eq:20.7.8}
 \end{equation}
 the sum running over the Euclidean coordinate directions $1$, $2$, $3$, $4$. Then the field equation \eqref{eq:20.7.6} reads
@@ -89,20 +89,20 @@ with $\chi(x)$ the $g$-independent solution of the equation
 \end{equation}
 The condition \eqref{eq:20.7.7} tells us that
 \[
--\frac1{24}\int d^4x\,\phi_n^4=\frac{n+1}{g_n}
+-\frac1{24}\int \dd^4x\,\phi_n^4=\frac{n+1}{g_n}
 \]
 or in terms of the rescaled field \eqref{eq:20.7.10}
 \begin{equation}
-g_n=-\frac{1}{24(n+1)}\int d^4x\,\chi^4.
+g_n=-\frac{1}{24(n+1)}\int \dd^4x\,\chi^4.
 \tag{20.7.12}\label{eq:20.7.12}
 \end{equation}
 At this stationary point the action \eqref{eq:20.7.8} becomes
 \begin{align}
 I[\phi_n,g_n]
-&=-\frac12\int\partial_i\phi_n\,\partial_i\phi_n\,d^4x
--\frac{g_n}{24}\int\phi_n^4\,d^4x
+&=-\frac12\int\partial_i\phi_n\,\partial_i\phi_n\,\dd^4x
+-\frac{g_n}{24}\int\phi_n^4\,\dd^4x
 \notag\\
-&=\frac{g_n}{24}\int\phi_n^4\,d^4x
+&=\frac{g_n}{24}\int\phi_n^4\,\dd^4x
 =-n-1.
 \tag{20.7.13}\label{eq:20.7.13}
 \end{align}
@@ -113,15 +113,15 @@ f_n
 &\approx g_n^{-n-1}\exp\bigl(I[\phi_n,g_n]\bigr)
 \notag\\
 &=(n+1)^{n+1}
-\left(-\frac{e}{24}\int\chi^4\,d^4x\right)^{-n-1}
+\left(-\frac{e}{24}\int\chi^4\,\dd^4x\right)^{-n-1}
 \notag\\
 &\approx n!
-\left(-\frac1{24}\int\chi^4\,d^4x\right)^{-n}.
+\left(-\frac1{24}\int\chi^4\,\dd^4x\right)^{-n}.
 \tag{20.7.14}\label{eq:20.7.14}
 \end{align}
 The leading singularity in $B(z)$ is therefore a pole at $z=z_1$, where
 \begin{equation}
-z_1=-\frac1{24}\int\chi^4\,d^4x.
+z_1=-\frac1{24}\int\chi^4\,\dd^4x.
 \tag{20.7.15}\label{eq:20.7.15}
 \end{equation}
 Because this is negative, it does not prevent us from carrying out the integration in Eq.~\eqref{eq:20.7.3}. To calculate the pole position \eqref{eq:20.7.15}, we note that the field equation \eqref{eq:20.7.11} has the solution
@@ -132,7 +132,7 @@ Because this is negative, it does not prevent us from carrying out the integrati
 where $r=(x_ix_i)^{1/2}$, and $a$ is an arbitrary parameter. This solution of the field equation is an elementary example of the `instanton' solutions to be discussed in Section 23.5. (These are called instantons because instead of being concentrated along a worldline they are concentrated near a point in spacetime---in this case, the origin.) Fortunately the pole position does not depend on $a$:
 \begin{equation}
 z_1
-=-96\pi^2a^4\int_0^\infty\frac{r^2\,dr^2}{(r^2+a^2)^4}
+=-96\pi^2a^4\int_0^\infty\frac{r^2\,\dd r^2}{(r^2+a^2)^4}
 =-16\pi^2.
 \tag{20.7.17}\label{eq:20.7.17}
 \end{equation}
@@ -157,7 +157,7 @@ where $n_f$ is the number of quark flavors with mass much less than $\mu$. Opera
 \Lambda^d
 \propto
 \exp\left(
-\frac{6\pi d}{(33-2n_f)\alpha_s(\mu)}
+\frac{6\pi \dd}{(33-2n_f)\alpha_s(\mu)}
 \right).
 \tag{20.7.19}\label{eq:20.7.19}
 \end{equation}
@@ -169,12 +169,12 @@ F(\alpha_s)=\sum_n f_n\alpha_s^n,
 \end{equation}
 \begin{equation}
 \alpha_sF(\alpha_s)
-=\int_0^\infty\exp(-z/\alpha_s)B(z)\,dz.
+=\int_0^\infty\exp(-z/\alpha_s)B(z)\,\dd z.
 \tag{20.7.21}\label{eq:20.7.21}
 \end{equation}
 The presence of terms in $\Pi^{\mu\nu}$ with coupling-constant dependence \eqref{eq:20.7.19} indicates that $B(z)$ must have singularities (not necessarily poles) at
 \begin{equation}
-z_1=\frac{6\pi d}{33-2n_f}.
+z_1=\frac{6\pi \dd}{33-2n_f}.
 \tag{20.7.22}\label{eq:20.7.22}
 \end{equation}
 These are on the positive real axis, and make the integral \eqref{eq:20.7.21} ambiguous. Thus Borel summation cannot be used to deal with low-energy effects in quantum chromodynamics.

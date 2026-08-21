@@ -7,16 +7,16 @@
 Let \(\delta t>0\), \(q'=q(t+\delta t)\), and \(q=q(t)\).  To the
 accuracy needed in a time-sliced product,
 \[
- e^{-iH\delta t}
- =e^{-iP^2\delta t/(2m)}e^{-iV(Q)\delta t}
+ e^{-\ii H\delta t}
+ =e^{-\ii P^2\delta t/(2m)}e^{-\ii V(Q)\delta t}
  +O(\delta t^2).
 \]
-Inserting \(\mathbf{1}=\int dp\,\ket p\bra p\), with
-\(\braket{q}{p}=(2\pi)^{-1/2}e^{ipq}\), gives
+Inserting \(\mathbf{1}=\int \dd p\,\ket p\bra p\), with
+\(\braket{q}{p}=(2\pi)^{-1/2}e^{\ii pq}\), gives
 \[
- \braket{q'}{e^{-iH\delta t}q}
- =\int\frac{dp}{2\pi}
- \exp\left\{ip(q'-q)-i\delta t
+ \braket{q'}{e^{-\ii H\delta t}q}
+ =\int\frac{\dd p}{2\pi}
+ \exp\left\{\ii p(q'-q)-\ii\delta t
  \left[\frac{p^2}{2m}+V(q)\right]\right\}+O(\delta t^2).
 \]
 The potential is evaluated at the right endpoint of the ket because of the
@@ -32,15 +32,15 @@ For each slice, complete the square:
 \]
 Thus
 \[
- \int\frac{dp}{2\pi}e^{i\delta t[p\Delta q/\delta t-p^2/(2m)]}
- =\left(\frac{m}{2\pi i\delta t}\right)^{1/2}
- e^{im(\Delta q)^2/(2\delta t)}.
+ \int\frac{\dd p}{2\pi}e^{\ii\delta t[p\Delta q/\delta t-p^2/(2m)]}
+ =\left(\frac{m}{2\pi \ii\delta t}\right)^{1/2}
+ e^{\ii m(\Delta q)^2/(2\delta t)}.
 \]
 Multiplying the slices and taking their continuum limit yields
 \[
  K(q_f,t_f;q_i,t_i)
  =\int_{q_i}^{q_f}\mathcal Dq\,
- \exp\left\{i\int_{t_i}^{t_f}dt
+ \exp\left\{\ii\int_{t_i}^{t_f}\dd t
  \left[\frac m2\dot q^2-V(q)\right]\right\}.
 \]
 The coefficient of \(p^2\) is the constant \(1/m\), so the product of
@@ -53,27 +53,27 @@ field-dependent measure factor.
 Write \(y=x-\xi\) in
 \[
  \psi(x,t+\delta t)=
- \left(\frac{m}{2\pi i\delta t}\right)^{1/2}
- \int d\xi\,
- e^{im\xi^2/(2\delta t)}
- e^{-i\delta t V(x-\xi)}\psi(x-\xi,t).
+ \left(\frac{m}{2\pi \ii\delta t}\right)^{1/2}
+ \int \dd\xi\,
+ e^{\ii m\xi^2/(2\delta t)}
+ e^{-\ii\delta t V(x-\xi)}\psi(x-\xi,t).
 \]
 The oscillatory Gaussian localizes \(\xi=O(\sqrt{\delta t})\).  Expanding
 the last two factors and using
 \[
  \langle\xi\rangle=0,\qquad
- \langle\xi^2\rangle=\frac{i\delta t}{m},
+ \langle\xi^2\rangle=\frac{\ii\delta t}{m},
 \]
 gives
 \[
  \psi(x,t+\delta t)=\psi
- +\frac{i\delta t}{2m}\partial_x^2\psi
- -i\delta t\,V(x)\psi+O(\delta t^{3/2}).
+ +\frac{\ii\delta t}{2m}\partial_x^2\psi
+ -\ii\delta t\,V(x)\psi+O(\delta t^{3/2}).
 \]
 After subtracting \(\psi(x,t)\), dividing by \(\delta t\), and multiplying
 by \(i\), one obtains
 \[
- i\partial_t\psi=
+ \ii\partial_t\psi=
  \left[-\frac1{2m}\partial_x^2+V(x)\right]\psi.
 \]
 The normalization of the short-time kernel is essential: it makes the
@@ -139,16 +139,16 @@ therefore gives
 \[
  \mathcal N_\omega(T)
  =\sqrt{\frac{\omega T}{\sin(\omega T)}}
- \sqrt{\frac{m}{2\pi iT}}
- =\sqrt{\frac{m\omega}{2\pi i\sin(\omega T)}}.
+ \sqrt{\frac{m}{2\pi \ii T}}
+ =\sqrt{\frac{m\omega}{2\pi \ii\sin(\omega T)}}.
 \]
 The full answer is
 \[
  \boxed{
  K_\omega(q',T;q,0)
- =\sqrt{\frac{m\omega}{2\pi i\sin(\omega T)}}
+ =\sqrt{\frac{m\omega}{2\pi \ii\sin(\omega T)}}
  \exp\left\{
- \frac{im\omega}{2\sin(\omega T)}
+ \frac{\ii m\omega}{2\sin(\omega T)}
  \left[(q'^2+q^2)\cos(\omega T)-2qq'\right]
  \right\}.}
 \]
@@ -164,29 +164,29 @@ the supplied free-particle kernel when \(k=m\omega^2\to0\).
 \item
 After integrating by parts, write
 \[
- S_0[x]=-\frac12\int dt\,x(t)Kx(t),
+ S_0[x]=-\frac12\int \dd t\,x(t)Kx(t),
  \qquad K=\partial_t^2+\omega^2.
 \]
 The boundary value appropriate to the source convention in the problem is
 \[
- D(\tau)=\lim_{\epsilon\to0^+}\int\frac{dE}{2\pi}\,
- \frac{i\,e^{-iE\tau}}{\omega^2-E^2+i\epsilon}.
+ D(\tau)=\lim_{\epsilon\to0^+}\int\frac{\dd E}{2\pi}\,
+ \frac{\ii\,e^{-\ii E\tau}}{\omega^2-E^2+\ii\epsilon}.
 \]
 For \(\tau>0\), closing below selects the pole near \(E=-\omega\); for
 \(\tau<0\), closing above selects the pole near \(E=+\omega\).  The
 residues give
 \[
- D(\tau)=\frac{1}{2\omega}e^{i\omega|\tau|}.
+ D(\tau)=\frac{1}{2\omega}e^{\ii\omega|\tau|}.
 \]
 Equivalently, this follows from the homogeneous equation away from the
 origin and the jump
 \[
- \dot D(0^+)-\dot D(0^-)=i,
- \qquad KD(\tau)=i\delta(\tau).
+ \dot D(0^+)-\dot D(0^-)=\ii,
+ \qquad KD(\tau)=\ii\delta(\tau).
 \]
-Thus \(K^{-1}=-iD\).  The exponent in the free functional is
+Thus \(K^{-1}=-\ii D\).  The exponent in the free functional is
 \[
- \frac i2\,xKx-iJx
+ \frac i2\,xKx-\ii Jx
  =\frac i2(x-K^{-1}J)K(x-K^{-1}J)
  -\frac i2\,JK^{-1}J,
 \]
@@ -194,24 +194,24 @@ where repeated time arguments are integrated.  Translating the Gaussian
 measure leaves its source-free determinant unchanged, and therefore
 \[
  \boxed{\;
- Z_0[J]=Z_0[0]\exp\left[-\frac12\int dt\,dt'\,
+ Z_0[J]=Z_0[0]\exp\left[-\frac12\int \dd t\,\dd t'\,
  J(t)D(t-t')J(t')\right].
  \;}
 \]
 \item
 In the chosen convention, insertion of \(x(t)\) is
-\(i\delta/\delta J(t)\).  Since
-\(-iS_\lambda=+i\lambda\int x^3/3!\), the factors of \(i\) combine to give
+\(\ii\delta/\delta J(t)\).  Since
+\(-\ii S_\lambda=+\ii\lambda\int x^3/3!\), the factors of \(i\) combine to give
 \[
 \begin{split}
  Z[J]
  &=\exp\left[
- \frac{\lambda}{3!}\int dt\,
+ \frac{\lambda}{3!}\int \dd t\,
  \frac{\delta^3}{\delta J(t)^3}\right]Z_0[J]\\
  &=\sum_{n=0}^{\infty}\frac1{n!}
  \left(\frac{\lambda}{3!}\right)^n
  \prod_{r=1}^{n}\left[
- \int dt_r\,\frac{\delta^3}{\delta J(t_r)^3}\right]Z_0[J].
+ \int \dd t_r\,\frac{\delta^3}{\delta J(t_r)^3}\right]Z_0[J].
 \end{split}
 \]
 This is a formal perturbation series, not a convergent definition of the
@@ -222,7 +222,7 @@ Wick contractions grows factorially.  These facts are compatible with each
 fixed-order coefficient being finite.
 \item
 In position space, every internal line contributes \(D(t-t')\), every
-cubic vertex contributes \(i\lambda\int dt\), and each graph is divided by
+cubic vertex contributes \(\ii\lambda\int \dd t\), and each graph is divided by
 its automorphism factor.  Vacuum components cancel in normalized
 correlators, and only graphs connected to both external insertions enter
 the connected two-point function.
@@ -242,9 +242,9 @@ Then
 \begin{aligned}
  G_{\rm conn}(t_1,t_2)
  ={}&D_{t_1,t_2}
- +\frac{(i\lambda)^2}{2}\int du\,dv\,
+ +\frac{(\ii\lambda)^2}{2}\int \dd u\,\dd v\,
  D_{t_1,u}D_{u,v}^{\,2}D_{v,t_2}\\
- &+\frac{(i\lambda)^2}{2}\int du\,dv\,
+ &+\frac{(\ii\lambda)^2}{2}\int \dd u\,\dd v\,
  D_{t_1,u}D_{t_2,u}D_{u,v}D_{v,v}
  +O(\lambda^4).
 \end{aligned}
@@ -255,9 +255,9 @@ correlator is even under the simultaneous replacement
 
 There is no ultraviolet divergence.  In energy space an oscillator
 propagator falls as \(E^{-2}\).  The self-energy loop therefore behaves as
-\(\int dE\,E^{-4}\), while the tadpole behaves as
-\(\int dE\,E^{-2}\); both converge in one integration dimension.  The
-\(i\epsilon\) prescription is still needed to define the oscillatory
+\(\int \dd E\,E^{-4}\), while the tadpole behaves as
+\(\int \dd E\,E^{-2}\); both converge in one integration dimension.  The
+\(\ii\epsilon\) prescription is still needed to define the oscillatory
 large-time integrals.  This fixed-order ultraviolet finiteness does not
 make the full perturbation series convergent.
 \end{enumerate}
@@ -266,12 +266,12 @@ make the full perturbation series convergent.
 The forced action remains Gaussian.  Completing its functional square gives
 \[
  \frac{Z[f]}{Z[0]}
- =\exp\left[-\frac{i}{2}\int dt\,dt'\,
+ =\exp\left[-\frac{\ii}{2}\int \dd t\,\dd t'\,
  f(t)G_F(t-t')f(t')\right],
 \]
 with the convention for \(G_F\) in S.9.7.  Only the delta-function part of
 the pole prescription contributes to the modulus.  For
-\(\widetilde f(E)=\int dt\,e^{iEt}f(t)\) and real \(f\),
+\(\widetilde f(E)=\int \dd t\,e^{\ii Et}f(t)\) and real \(f\),
 \[
  \boxed{\quad
  P_{0\to0}=\left|\frac{Z[f]}{Z[0]}\right|^2
@@ -289,20 +289,20 @@ After integrating by parts, the free action is quadratic.  In momentum
 space it reads
 \[
  S_0+S_J=
- -\frac12\int\frac{d^4p}{(2\pi)^4}
- \widetilde\phi(-p)(p^2+m^2-i0)\widetilde\phi(p)
- +\int\frac{d^4p}{(2\pi)^4}\widetilde J(-p)\widetilde\phi(p).
+ -\frac12\int\frac{\dd^4p}{(2\pi)^4}
+ \widetilde\phi(-p)(p^2+m^2-\ii0)\widetilde\phi(p)
+ +\int\frac{\dd^4p}{(2\pi)^4}\widetilde J(-p)\widetilde\phi(p).
 \]
 Shift
 \(\widetilde\phi(p)\mapsto\widetilde\phi(p)
--(p^2+m^2-i0)^{-1}\widetilde J(p)\).  Translation invariance of the
+-(p^2+m^2-\ii0)^{-1}\widetilde J(p)\).  Translation invariance of the
 measure then yields
 \[
  \boxed{\quad
  \frac{Z_0[J]}{Z_0[0]}
- =\exp\left[\frac i2\int\frac{d^4p}{(2\pi)^4}
+ =\exp\left[\frac i2\int\frac{\dd^4p}{(2\pi)^4}
  \frac{\widetilde J(-p)\widetilde J(p)}
- {p^2+m^2-i0}\right].
+ {p^2+m^2-\ii0}\right].
  \quad}
 \]
 The positive infinitesimal is fixed by the vacuum boundary functionals,
@@ -311,7 +311,7 @@ not by the algebraic completion of the square.
 Let
 \[
  G_F(x-y)\equiv
- \left.\frac1{i^2Z_0[0]}
+ \left.\frac1{\ii^2Z_0[0]}
  \frac{\delta^2Z_0[J]}{\delta J(x)\delta J(y)}
  \right|_{J=0}.
 \]
@@ -347,7 +347,7 @@ the step function.  At equal time,
 \[
  C(x,y)\big|_{\tau=0}=0,\qquad
  \partial_{x^0}C(x,y)\big|_{\tau=0}
- =-i\delta^d(\mathbf x-\mathbf y).
+ =-\ii\delta^d(\mathbf x-\mathbf y).
 \]
 The first derivative of \(\theta C\) has no contact term.  Differentiating
 once more and remembering that \(\Box\) contains
@@ -357,12 +357,12 @@ once more and remembering that \(\Box\) contains
  (\Box_x-m^2)D_R(x-y)
  &=-\delta(\tau)\,
  \partial_{x^0}C(x,y)\big|_{\tau=0}\\
- &=i\delta^{d+1}(x-y).
+ &=\ii\delta^{d+1}(x-y).
 \end{split}
 \]
 Hence
 \[
- \boxed{a=i.}
+ \boxed{a=\ii.}
 \]
 \item
 Varying the sourced action gives
@@ -370,36 +370,36 @@ Varying the sourced action gives
  (\Box-m^2)\phi(x)=-j(x).
 \]
 Since the preceding part established
-\((\Box-m^2)D_R=i\delta^{d+1}\), the solution with no response before the
+\((\Box-m^2)D_R=\ii\delta^{d+1}\), the solution with no response before the
 source acts is
 \[
  \boxed{\;
- \phi(x)=\phi_0(x)+i\int d^{d+1}y\,D_R(x-y)j(y).
+ \phi(x)=\phi_0(x)+\ii\int d^{d+1}y\,D_R(x-y)j(y).
  \;}
 \]
 Indeed, applying the wave operator to the second term gives
-\(i^2j=-j\), and the step function in \(D_R\) enforces the retarded
+\(\ii^2j=-j\), and the step function in \(D_R\) enforces the retarded
 boundary condition.
 
 To display the sourced modes explicitly, define
 \[
  \widetilde j(t,\mathbf p)
- =\int d^d\mathbf y\,e^{-i\mathbf p\cdot\mathbf y}j(t,\mathbf y).
+ =\int \dd^d\mathbf y\,e^{-\ii\mathbf p\cdot\mathbf y}j(t,\mathbf y).
 \]
 The free expansion gives
 \[
  D_R(t,\mathbf x)
- =-i\theta(t)\int\frac{d^d\mathbf p}{(2\pi)^d}\,
+ =-\ii\theta(t)\int\frac{\dd^d\mathbf p}{(2\pi)^d}\,
  \frac{\sin(\omega_{\mathbf p}t)}{\omega_{\mathbf p}}\,
- e^{i\mathbf p\cdot\mathbf x}.
+ e^{\ii\mathbf p\cdot\mathbf x}.
 \]
 Therefore the complete retarded solution is
 \[
 \begin{split}
  \phi(x)={}&\phi_0(x)
- +\int\frac{d^d\mathbf p}{(2\pi)^d}\,
- e^{i\mathbf p\cdot\mathbf x}
- \int_{-\infty}^{x^0}dy^0\,
+ +\int\frac{\dd^d\mathbf p}{(2\pi)^d}\,
+ e^{\ii\mathbf p\cdot\mathbf x}
+ \int_{-\infty}^{x^0}\dd y^0\,
  \frac{\sin[\omega_{\mathbf p}(x^0-y^0)]}{\omega_{\mathbf p}}\,
  \widetilde j(y^0,\mathbf p).
 \end{split}
@@ -419,13 +419,13 @@ equal time.  The second derivative leaves
 \[
  \delta(\tau)
  \bra{\Omega}[\partial_{x^0}\phi(x),\phi(y)]\ket{\Omega}
- =-i\delta(\tau)\delta^d(\mathbf x-\mathbf y).
+ =-\ii\delta(\tau)\delta^d(\mathbf x-\mathbf y).
 \]
 The minus sign in
 \(\Box=\nabla^2-\partial_{x^0}^2\) reverses this sign.  Thus
 \[
  \boxed{\;
- (\Box_x-m^2)D(x-y)=i\delta^{d+1}(x-y).
+ (\Box_x-m^2)D(x-y)=\ii\delta^{d+1}(x-y).
  \;}
 \]
 The retarded and time-ordered functions have different boundary
@@ -439,9 +439,9 @@ For the free action and the usual vacuum boundary prescription,
  0
  &=\int\mathcal D\phi\,
  \frac{\delta}{\delta\phi(x)}
- \left[\phi(y)e^{iS_0[\phi]}\right]\\
+ \left[\phi(y)e^{\ii S_0[\phi]}\right]\\
  &=Z[0]\delta^{d+1}(x-y)
- +iZ[0]\,
+ +\ii Z[0]\,
  \bra{\Omega}T\!\left\{
  \phi(y)(\Box_x-m^2)\phi(x)\right\}\ket{\Omega}.
 \end{split}
@@ -454,7 +454,7 @@ More generally,
  (\Box_x-m^2)\phi(x)\prod_{r=1}^{n}\phi(x_r)
  \right\}\ket{\Omega}\\
  &\hspace{2em}
- =i\sum_{r=1}^{n}\delta^{d+1}(x-x_r)
+ =\ii\sum_{r=1}^{n}\delta^{d+1}(x-x_r)
  \bra{\Omega}T\!\left\{
  \prod_{\substack{s=1\\s\ne r}}^{n}\phi(x_s)
  \right\}\ket{\Omega}.
@@ -472,15 +472,15 @@ For each \(\mathbf p\), the scalar Hamiltonian is an oscillator of frequency
 states is
 \[
  \Psi_0[\phi]=\mathcal N
- \exp\left[-\frac12\int d^3p\,
+ \exp\left[-\frac12\int \dd^3p\,
  \omega_{\mathbf p}\widetilde\phi(\mathbf p)
  \widetilde\phi(-\mathbf p)\right].
 \]
 In position space the kernel is
 \[
  \mathcal E(\mathbf x-\mathbf y)=
- \int\frac{d^3p}{(2\pi)^3}
- \omega_{\mathbf p}e^{i\mathbf p\cdot(\mathbf x-\mathbf y)},
+ \int\frac{\dd^3p}{(2\pi)^3}
+ \omega_{\mathbf p}e^{\ii\mathbf p\cdot(\mathbf x-\mathbf y)},
 \]
 so it is nonlocal even though the Hamiltonian density is local.  Gaussian
 integration gives the equal-time covariance
@@ -505,8 +505,8 @@ The functional product rule gives
  \begin{split}
  0={}&\int\mathcal D\phi\left[
  \delta^{d+1}(x-y)
- +i\phi(y)\frac{\delta S}{\delta\phi(x)}
- \right]e^{iS[\phi]}.
+ +\ii\phi(y)\frac{\delta S}{\delta\phi(x)}
+ \right]e^{\ii S[\phi]}.
  \end{split}
 \]
 The \(i0\) prescription makes the boundary term in field space vanish.
@@ -514,7 +514,7 @@ After division by \(Z\), solving for the second term gives
 \[
  \boxed{
  \left\langle\frac{\delta S}{\delta\phi(x)}\phi(y)\right\rangle
- =i\delta^{d+1}(x-y).}
+ =\ii\delta^{d+1}(x-y).}
 \]
 The brackets denote the normalized, time-ordered path-integral
 expectation value.  No expansion in the couplings was used.
@@ -529,20 +529,20 @@ Substitution in the first result yields
  \boxed{
  (\Box_x-m^2)
  \bra{\Omega}T\{\phi(x)\phi(y)\}\ket{\Omega}
- =i\delta^{d+1}(x-y).}
+ =\ii\delta^{d+1}(x-y).}
 \]
 Thus the classical equation holds whenever \(x\ne y\); the failure at
 coincidence is the contact term generated when the functional derivative
 acts on the insertion.
 \item
-Use \(\phi(y)\phi(z)e^{iS_0}\) as the differentiated expression.  The two
+Use \(\phi(y)\phi(z)e^{\ii S_0}\) as the differentiated expression.  The two
 possible insertion derivatives give
 \[
  \begin{split}
  &(\Box_x-m^2)
  \bra{\Omega}T\{\phi(x)\phi(y)\phi(z)\}\ket{\Omega}\\
- &\quad=i\delta^{d+1}(x-y)\bra{\Omega}\phi(z)\ket{\Omega}
- +i\delta^{d+1}(x-z)\bra{\Omega}\phi(y)\ket{\Omega}.
+ &\quad=\ii\delta^{d+1}(x-y)\bra{\Omega}\phi(z)\ket{\Omega}
+ +\ii\delta^{d+1}(x-z)\bra{\Omega}\phi(y)\ket{\Omega}.
  \end{split}
 \]
 The free vacuum is invariant under \(\phi\mapsto-\phi\), so both
@@ -559,14 +559,14 @@ At first order,
 \[
  \langle T\phi(x)\phi(y)\rangle
  =\frac{\langle T\phi(x)\phi(y)
- [1-i\lambda\int d^4z\,\phi(z)^4/4!]\rangle_0}
- {\langle T[1-i\lambda\int d^4z\,\phi(z)^4/4!]\rangle_0}.
+ [1-\ii\lambda\int \dd^4z\,\phi(z)^4/4!]\rangle_0}
+ {\langle T[1-\ii\lambda\int \dd^4z\,\phi(z)^4/4!]\rangle_0}.
 \]
 For the connected tadpole, choose the vertex field joined to \(x\) in
 \(4\) ways and that joined to \(y\) in \(3\) ways; the remaining two pair.
 Thus \(12/4!=1/2\), and
 \[
- G_F(x-y)-\frac{i\lambda}{2}\int d^4z\,
+ G_F(x-y)-\frac{\ii\lambda}{2}\int \dd^4z\,
  G_F(x-z)G_F(0)G_F(z-y)+O(\lambda^2).
 \]
 The other numerator contraction pairs \(x\) with \(y\) and contracts the
@@ -577,11 +577,11 @@ cancels.
 At second order the three non-vacuum topologies are
 \[
 \begin{split}
- &\frac{(-i\lambda)^2}{6}\int dz\,dw\,
+ &\frac{(-\ii\lambda)^2}{6}\int \dd z\,\dd w\,
  G(x-z)G(z-w)^3G(w-y),\\
- &\frac{(-i\lambda)^2}{4}\int dz\,dw\,
+ &\frac{(-\ii\lambda)^2}{4}\int \dd z\,\dd w\,
  G(x-z)G(z-w)G(w-y)G(0)^2,\\
- &\frac{(-i\lambda)^2}{4}\int dz\,dw\,
+ &\frac{(-\ii\lambda)^2}{4}\int \dd z\,\dd w\,
  G(x-z)G(y-z)G(z-w)^2G(0),
 \end{split}
 \]
@@ -591,7 +591,7 @@ pairing has a vacuum component and cancels against \(Z[0]\).
 \item
 The first connected contribution is
 \[
- -\frac{i\lambda}{4!}\int d^4z\,
+ -\frac{\ii\lambda}{4!}\int \dd^4z\,
  \langle T\phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)\phi(z)^4\rangle_0.
 \]
 Connectivity at tree level requires each external field to contract with
@@ -600,7 +600,7 @@ factor in the interaction.  Consequently
 \[
  \boxed{\quad
  G^{(4)}_{\rm conn}(x_1,\ldots,x_4)
- =-i\lambda\int d^4z\,
+ =-\ii\lambda\int \dd^4z\,
  \prod_{a=1}^{4}G_F(x_a-z)+O(\lambda^2).
  \quad}
 \]
@@ -610,7 +610,7 @@ pure vacuum factors cancel against \(Z[0]\).
 At order \(\lambda^2\), the three partitions of the external labels give
 the \(s,t,u\) fish graphs, each with factor \(1/2\):
 \[
- \frac{(-i\lambda)^2}{2}\int dz\,dw\,
+ \frac{(-\ii\lambda)^2}{2}\int \dd z\,\dd w\,
  G(x_a-z)G(x_b-z)G(z-w)^2G(x_c-w)G(x_d-w).
 \]
 The other connected class consists of four external-leg tadpole
@@ -626,9 +626,9 @@ that these classes exhaust order \(\lambda^2\).
 Translation invariance leaves one unconstrained vertex integral in each
 vacuum graph.  Consequently
 \[
- Z[0]=e^{iW_0},\qquad
+ Z[0]=e^{\ii W_0},\qquad
  W_0=-\mathcal V_4\mathcal E_{\rm vac},\qquad
- \mathcal V_4=\int d^4x.
+ \mathcal V_4=\int \dd^4x.
 \]
 \item
 Let \(C_r\) denote the complete weight of one connected vacuum-graph type
@@ -655,8 +655,8 @@ and the topology with two joining lines and one tadpole at each vertex
 has factor \(1/16\).  Thus
 \[
 \begin{split}
- iW_0={}&\frac{-i\lambda}{8}\int dx\,G(0)^2\\
- &+(-i\lambda)^2\int dx\,dy\left[
+ iW_0={}&\frac{-\ii\lambda}{8}\int \dd x\,G(0)^2\\
+ &+(-\ii\lambda)^2\int \dd x\,\dd y\left[
  \frac{G(x-y)^4}{48}
  +\frac{G(x-y)^2G(0)^2}{16}\right]+O(\lambda^3).
 \end{split}
@@ -712,8 +712,8 @@ overlap constant.
 Since \(P\ket x=\ket{-x}\),
 \[
  \operatorname{Tr}(Pe^{-TH})
- =\int dx\,\braket{x}{Pe^{-TH}x}
- =\int dx\,\braket{-x}{e^{-TH}x}.
+ =\int \dd x\,\braket{x}{Pe^{-TH}x}
+ =\int \dd x\,\braket{-x}{e^{-TH}x}.
 \]
 The corresponding Euclidean paths obey the twisted boundary condition
 \[
@@ -779,8 +779,8 @@ Using congruence covariance on both quantities proves
 Continuity from an oriented canonical basis fixes the sign.
 
 \SupplementarySolution{15}{An Exact Four-Grassmann Interaction}
-Choose \(d^4\theta=d\theta_4d\theta_3d\theta_2d\theta_1\),
-\(\int d^4\theta\,\theta_1\theta_2\theta_3\theta_4=1\), and write
+Choose \(\dd^4\theta=\dd\theta_4\dd\theta_3\dd\theta_2\dd\theta_1\),
+\(\int \dd^4\theta\,\theta_1\theta_2\theta_3\theta_4=1\), and write
 \[
  S=\frac12A_{ab}\theta_a\theta_b
  +\lambda\theta_1\theta_2\theta_3\theta_4.
@@ -788,7 +788,7 @@ Choose \(d^4\theta=d\theta_4d\theta_3d\theta_2d\theta_1\),
 Only the top monomial contributes.  Since the quadratic term squared
 supplies \(\operatorname{Pf}(A)\theta_1\theta_2\theta_3\theta_4\),
 \[
- Z=\int d^4\theta\,e^{-S}
+ Z=\int \dd^4\theta\,e^{-S}
  =\operatorname{Pf}(A)-\lambda.
 \]
 No higher term exists because every Grassmann variable squares to zero.
@@ -851,7 +851,7 @@ over all complete pairings.
 \item
 Fix
 \[
- \int d\bar\theta\,d\theta\,\theta\bar\theta=1.
+ \int \dd\bar\theta\,\dd\theta\,\theta\bar\theta=1.
 \]
 Because \((\bar\theta\theta)^2=0\),
 \[
@@ -861,7 +861,7 @@ Because \((\bar\theta\theta)^2=0\),
 \]
 and hence
 \[
- \int d\bar\theta\,d\theta\,
+ \int \dd\bar\theta\,\dd\theta\,
  e^{-\bar\theta a\theta}=a.
 \]
 Under \(\theta\to\theta+\xi\) and
@@ -875,14 +875,14 @@ Change variables so that \(A\) is triangular; Berezin measures transform
 with the inverse Jacobian, so the result is basis independent.  For a
 diagonal kernel,
 \[
- \prod_{i=1}^N\int d\bar\theta_i\,d\theta_i\,
+ \prod_{i=1}^N\int \dd\bar\theta_i\,\dd\theta_i\,
  e^{-a_i\bar\theta_i\theta_i}
  =\prod_i a_i=\det A.
 \]
 Therefore, generally,
 \[
  \boxed{\quad
- \int\prod_i(d\bar\theta_i\,d\theta_i)\,
+ \int\prod_i(\dd\bar\theta_i\,\dd\theta_i)\,
  e^{-\bar\theta_iA_{ij}\theta_j}=\det A.
  \quad}
 \]
@@ -898,15 +898,15 @@ Differentiate the identity \(Z(A)=\det A\):
 On the integral side,
 \[
  \frac{\partial Z}{\partial A_{lk}}
- =\int d\bar\theta\,d\theta\,
+ =\int \dd\bar\theta\,\dd\theta\,
  (-\bar\theta_l\theta_k)e^{-\bar\theta A\theta}
- =\int d\bar\theta\,d\theta\,
+ =\int \dd\bar\theta\,\dd\theta\,
  \theta_k\bar\theta_l e^{-\bar\theta A\theta}.
 \]
 Consequently
 \[
  \boxed{\quad
- \int d\bar\theta\,d\theta\,
+ \int \dd\bar\theta\,\dd\theta\,
  \theta_k\bar\theta_l e^{-\bar\theta A\theta}
  =\det A\,(A^{-1})_{kl}.
  \quad}
@@ -935,31 +935,31 @@ the sign rule for interchanging fermion lines.
 \item
 Let
 \[
- \mathcal D(p)=i\gamma^\mu p_\mu+m-i0
+ \mathcal D(p)=\ii\gamma^\mu p_\mu+m-\ii0
 \]
 and use the source convention
 \[
- -i\bar\psi\mathcal D\psi-i\bar\psi\eta-i\bar\eta\psi
+ -\ii\bar\psi\mathcal D\psi-\ii\bar\psi\eta-\ii\bar\eta\psi
 \]
 in the exponent.  The shifts
 \(\psi\to\psi+\mathcal D^{-1}\eta\) and
 \(\bar\psi\to\bar\psi+\bar\eta\mathcal D^{-1}\) give
 \[
  \frac{Z[\bar\eta,\eta]}{Z[0]}
- =\exp\left(i\int\frac{d^4p}{(2\pi)^4}
+ =\exp\left(\ii\int\frac{\dd^4p}{(2\pi)^4}
  \bar\eta(-p)\mathcal D^{-1}(p)\eta(p)\right).
 \]
 Since
 \[
  \mathcal D^{-1}(p)=
- \frac{-i\gamma\cdot p+m}
- {p^2+m^2-i0},
+ \frac{-\ii\gamma\cdot p+m}
+ {p^2+m^2-\ii0},
 \]
 ordered source differentiation reproduces
 \[
  \langle T\psi(p)\bar\psi(-p)\rangle
- =-i\,\frac{-i\gamma\cdot p+m}
- {p^2+m^2-i0}
+ =-\ii\,\frac{-\ii\gamma\cdot p+m}
+ {p^2+m^2-\ii0}
 \]
 for the displayed exponent convention.  The pole is fixed by the
 fermionic vacuum wave functional just as in the scalar case.
@@ -988,11 +988,11 @@ closed fermion loop carries the standard extra factor \(-1\).
 \SupplementarySolution{18}{The Complete Gaussian Generating Function}
 \begin{enumerate}
 \item
-First set \(j=0\) and write \(I(a)=\int_{\mathbb R}dx\,e^{-ax^2/2}\).
+First set \(j=0\) and write \(I(a)=\int_{\mathbb R}\dd x\,e^{-ax^2/2}\).
 For \(a>0\),
 \[
- I(a)^2=\int_{\mathbb R^2}dx\,dy\,e^{-a(x^2+y^2)/2}
- =2\pi\int_0^\infty r\,dr\,e^{-ar^2/2}
+ I(a)^2=\int_{\mathbb R^2}\dd x\,\dd y\,e^{-a(x^2+y^2)/2}
+ =2\pi\int_0^\infty r\,\dd r\,e^{-ar^2/2}
  =\frac{2\pi}{a}.
 \]
 Positivity fixes \(I(a)=\sqrt{2\pi/a}\).  Completing the square,
@@ -1036,7 +1036,7 @@ cumulants, while derivatives of \(Z/Z[0]\) generate full moments.  Replacing
 indices by space-time points and \(A\) by a quadratic kernel gives
 \[
  \frac{Z[J]}{Z[0]}
- =\exp\left(\frac12\int d^dx\,d^dy\,
+ =\exp\left(\frac12\int \dd^dx\,\dd^dy\,
  J(x)A^{-1}(x,y)J(y)\right),
 \]
 with the appropriate factors of \(i\) after continuation to the
@@ -1053,19 +1053,19 @@ is a centered Gaussian,
 \qquad
  \sigma^2=\bra{\Omega}q^2\ket{\Omega}.
 \]
-The source formula of S.9.18 with \(j=iK\) gives
+The source formula of S.9.18 with \(j=\ii K\) gives
 \[
- \boxed{\bra{\Omega}e^{iKq}\ket{\Omega}
+ \boxed{\bra{\Omega}e^{\ii Kq}\ket{\Omega}
  =e^{-K^2\sigma^2/2}}.
 \]
 For an operator derivation, write
 \(q=c(a+a^\dagger)\), where
 \([a,a^\dagger]=1\) and \(c^2=\sigma^2\).  Since
-\([iKca^\dagger,iKca]=K^2c^2\) is central, the
+\([\ii Kca^\dagger,iKca]=K^2c^2\) is central, the
 Baker--Campbell--Hausdorff formula yields
 \[
- e^{iKq}
- =e^{-K^2c^2/2}e^{iKca^\dagger}e^{iKca}.
+ e^{\ii Kq}
+ =e^{-K^2c^2/2}e^{\ii Kca^\dagger}e^{\ii Kca}.
 \]
 The rightmost exponential acts trivially on \(\ket{\Omega}\), and every
 nonconstant term in the left exponential is killed by
@@ -1075,8 +1075,8 @@ coefficient without choosing a position basis.
 If the mean is \(\bar q\), write \(q=\bar q+\delta q\) with
 \(\langle\delta q\rangle=0\).  The characteristic function becomes
 \[
- \boxed{\langle e^{iKq}\rangle
- =e^{iK\bar q}
+ \boxed{\langle e^{\ii Kq}\rangle
+ =e^{\ii K\bar q}
  \exp\left[-\frac{K^2}{2}
  \langle(q-\bar q)^2\rangle\right]}.
 \]

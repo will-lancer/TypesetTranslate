@@ -9,7 +9,7 @@ Classical mechanics admits a Lagrangian description in terms of $q$ and $\dot q$
 
 % YIN-SOURCE: id=YIN253A-C02-U003; arguments=YIN253A-C02-A01; notes=253a:10; pdf=21; video=96lN2omwit4:00:02:35.879-00:08:14.060; transcript=YIN253A-C02-T000005..YIN253A-C02-T000013; equations=YIN253A-C02-EQ001; class=SOURCE_COMPOSITE
 \begin{align}
-  S[q]&=\int dt\,L(q,\dot q),
+  S[q]&=\int \dd t\,L(q,\dot q),
   &\dot f&=\{H,f\}_{\mathrm{Poisson}},
   \label{eq:253a-ch02-classical-descriptions}\\
   \dot q&=\frac{\partial H}{\partial p},
@@ -37,10 +37,10 @@ Quantization supplies a Hilbert space and a Hamiltonian operator $\hat H$. Of co
   \qquad H(p,q)\longrightarrow\hat H,
   \label{eq:253a-ch02-quantum-bridge}\\
   &\ket{\psi}\longmapsto U(t)\ket{\psi},
-  \qquad U(t)=e^{-\frac{i}{\hbar}\hat Ht},
+  \qquad U(t)=e^{-\frac{\ii}{\hbar}\hat Ht},
   \label{eq:253a-ch02-schrodinger-evolution}\\
   &O(t)=U(t)^{-1}OU(t),
-  \qquad \dot O(t)=\frac{i}{\hbar}[\hat H,O(t)].
+  \qquad \dot O(t)=\frac{\ii}{\hbar}[\hat H,O(t)].
   \label{eq:253a-ch02-heisenberg-evolution}
 \end{align}
 
@@ -51,7 +51,7 @@ There is no operator corresponding to the Lagrangian. Its route into quantum mec
 \begin{equation}
   \bra{q_f}U(T)\ket{q_i}
   =\int_{q(0)=q_i}^{q(T)=q_f}[Dq]\,
-  e^{\frac{i}{\hbar}S[q]},
+  e^{\frac{\ii}{\hbar}S[q]},
   \qquad
   S[q]=\int_0^Tdt\,L(q,\dot q).
   \label{eq:253a-ch02-formal-kernel}
@@ -69,7 +69,7 @@ There is an elephant in the room: what the heck is this measure? Divide the inte
   ={}&\int\prod_{n=1}^{N-1}d^Dq_n
   \prod_{n=0}^{N-1}\frac{d^Dp_n}{(2\pi\hbar)^D}
   \nonumber\\[-1mm]
-  &\times\exp\!\left\{\frac{i}{\hbar}\sum_{n=0}^{N-1}
+  &\times\exp\!\left\{\frac{\ii}{\hbar}\sum_{n=0}^{N-1}
   \left[p_n\cdot(q_{n+1}-q_n)
   -H(q_n,p_n)\frac{T}{N}
   +O\!\left(\hbar,\left(\frac{T}{N}\right)^2\right)\right]\right\},
@@ -82,7 +82,7 @@ There is an elephant in the room: what the heck is this measure? Divide the inte
 \begin{equation}
   \mathbf 1=\int\frac{d^Dp_n}{(2\pi\hbar)^D}\ket{p_n}\bra{p_n},
   \qquad
-  \braket{q_{n+1}}{p_n}=e^{\frac{i}{\hbar}p_n\cdot q_{n+1}}.
+  \braket{q_{n+1}}{p_n}=e^{\frac{\ii}{\hbar}p_n\cdot q_{n+1}}.
   \label{eq:253a-ch02-momentum-resolution}
 \end{equation}
 
@@ -107,7 +107,7 @@ The continuum expression records the limiting prescription supplied by time slic
 \begin{align}
   \bra{q_f}U(T)\ket{q_i}
   &=\int\mathcal Dq\,\mathcal Dp\,
-  \exp\!\left\{\frac{i}{\hbar}\int_0^Tdt\,
+  \exp\!\left\{\frac{\ii}{\hbar}\int_0^Tdt\,
   \bigl(p\cdot\dot q-H(q,p)\bigr)\right\},
   \label{eq:253a-ch02-continuum-phase-space}\\
   L(\xi,\dot\xi)
@@ -118,7 +118,7 @@ The continuum expression records the limiting prescription supplied by time slic
   \label{eq:253a-ch02-generalized-hamiltonian}\\
   [D\xi]
   &\leadsto\prod_{n=1}^{\widetilde N}
-  \frac{d\xi_n^\alpha}{\sqrt{2\pi i\hbar\,\frac{T}{N}}}
+  \frac{\dd\xi_n^\alpha}{\sqrt{2\pi \ii\hbar\,\frac{T}{N}}}
   \sqrt{\det G_{\alpha\beta}(\xi_n)}.
   \label{eq:253a-ch02-generalized-measure}
 \end{align}
@@ -136,16 +136,16 @@ The first physical quantity to extract from this formalism is the energy spectru
   G(t)&=\bra{0}\hat q_\beta(t)\hat q_\beta(0)\ket{0}
   =\sum_n\bra{0}\hat q_\beta(0)\ket{n}
   \bra{n}\hat q_\beta(0)\ket{0}
-  e^{-\frac{i}{\hbar}(E_n-E_0)t}.
+  e^{-\frac{\ii}{\hbar}(E_n-E_0)t}.
   \label{eq:253a-ch02-spectral-correlator}
 \end{align}
 
 % YIN-SOURCE: id=YIN253A-C02-U021; arguments=YIN253A-C02-A03; notes=253a:15-16; pdf=26-27; video=uzixOflp0tY:00:11:09.000-00:28:27.260; transcript=YIN253A-C02-T000172..YIN253A-C02-T000200; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
-There is nothing wrong with the spectral sum, though one must ask where the infinite sum converges. I do not like the word rotation here: nothing is being rotated; this is an analytic continuation. Continue through the lower half-plane, where $\operatorname{Im}t<0$. Writing $t=-i\tau$ with $\tau>0$ turns every positive gap into exponential suppression. Long Euclidean evolution kills every excited-state component exponentially, leaving only the ground state when the initial overlap is nonzero.
+There is nothing wrong with the spectral sum, though one must ask where the infinite sum converges. I do not like the word rotation here: nothing is being rotated; this is an analytic continuation. Continue through the lower half-plane, where $\operatorname{Im}t<0$. Writing $t=-\ii\tau$ with $\tau>0$ turns every positive gap into exponential suppression. Long Euclidean evolution kills every excited-state component exponentially, leaving only the ground state when the initial overlap is nonzero.
 
 % YIN-SOURCE: id=YIN253A-C02-U022; arguments=YIN253A-C02-A03; notes=253a:15-16; pdf=26-27; video=uzixOflp0tY:00:12:43.740-00:28:27.260; transcript=YIN253A-C02-T000175..YIN253A-C02-T000200; equations=YIN253A-C02-EQ005; class=SOURCE_COMPOSITE
 \begin{align}
-  G(-i\tau)
+  G(-\ii\tau)
   &=\sum_n\bra{0}\hat q(0)\ket{n}\bra{n}\hat q(0)\ket{0}
   e^{-\frac{1}{\hbar}(E_n-E_0)\tau},
   \qquad \tau>0,
@@ -169,19 +169,19 @@ Place the operator insertions between long Euclidean evolution factors, then div
   \frac{\displaystyle\int[Dq]\,e^{-\frac{1}{\hbar}S^E[q]}q(\tau)q(0)}
   {\displaystyle\int[Dq]\,e^{-\frac{1}{\hbar}S^E[q]}},
   \qquad
-  S^E[q]=\int d\tau\,L^E(q,\partial_\tau q).
+  S^E[q]=\int \dd\tau\,L^E(q,\partial_\tau q).
   \label{eq:253a-ch02-normalized-euclidean-path-integral}
 \end{equation}
 
 % YIN-SOURCE: id=YIN253A-C02-U026; arguments=YIN253A-C02-A04; notes=253a:17-18; pdf=28-29; video=uzixOflp0tY:00:47:04.200-00:55:31.460; transcript=YIN253A-C02-T000239..YIN253A-C02-T000257; equations=YIN253A-C02-EQ006; class=SOURCE_COMPOSITE
-Under $t=-i\tau$, one has $dt=-i\,d\tau$ and $\dot q=i\partial_\tau q$. The Euclidean Lagrangian is defined so that the Lorentzian phase becomes a decaying weight. For an ordinary kinetic term, rapidly varying paths carry a large Euclidean action. The whole point is that analytic continuation is unambiguous once the function is known in imaginary time. The path integral is therefore dominated by paths with small Euclidean action. In quantum field theory, locality will resolve some of the measure ambiguities that remain here.
+Under $t=-\ii\tau$, one has $\dd t=-\ii\,\dd\tau$ and $\dot q=\ii\partial_\tau q$. The Euclidean Lagrangian is defined so that the Lorentzian phase becomes a decaying weight. For an ordinary kinetic term, rapidly varying paths carry a large Euclidean action. The whole point is that analytic continuation is unambiguous once the function is known in imaginary time. The path integral is therefore dominated by paths with small Euclidean action. In quantum field theory, locality will resolve some of the measure ambiguities that remain here.
 
 % YIN-SOURCE: id=YIN253A-C02-U027; arguments=YIN253A-C02-A04; notes=253a:18; pdf=29; video=uzixOflp0tY:00:47:04.200-00:55:31.460; transcript=YIN253A-C02-T000239..YIN253A-C02-T000257; equations=YIN253A-C02-EQ006; class=NOTES_EXACT
 \begin{align}
   q(t)&\mathrel{\overset{t=-i\tau}{\rightsquigarrow}}q(\tau),
-  &\dot q&=i\partial_\tau q,
+  &\dot q&=\ii\partial_\tau q,
   \label{eq:253a-ch02-wick-map}\\
-  e^{\frac{i}{\hbar}\int L\,dt}
+  e^{\frac{\ii}{\hbar}\int L\,\dd t}
   &\rightsquigarrow e^{-\frac{1}{\hbar}S^E[q]},
   &L^E&=\frac12(\partial_\tau q)^2+V(q)
   \quad\text{for}\quad L=\frac12\dot q^{\,2}-V(q).
@@ -196,7 +196,7 @@ For the harmonic oscillator, we will go through this painful process explicitly.
 
 % YIN-SOURCE: id=YIN253A-C02-U030; arguments=YIN253A-C02-A05; notes=253a:19-20; pdf=30-31; video=uzixOflp0tY:01:08:15.480-01:18:37.400; transcript=YIN253A-C02-T000284..YIN253A-C02-T000303; equations=YIN253A-C02-EQ007; class=NOTES_EXACT
 \begin{align}
-  S^E[q]&=\int_{-T}^{T}d\tau\,
+  S^E[q]&=\int_{-T}^{T}\dd\tau\,
   \left[\frac12(\partial_\tau q)^2+\frac12\omega^2q^2\right],
   \qquad q(-T)=q(T)=0,
   \label{eq:253a-ch02-oscillator-action}\\
@@ -224,7 +224,7 @@ The regulated functional integral is now a product of ordinary Gaussian integral
   \sin\frac{n\pi(\tau_2+T)}{2T},
   \label{eq:253a-ch02-finite-interval-covariance}\\
   \sum_n\frac{\pi}{2T}F\!\left(\frac{n\pi}{2T}\right)
-  &\xrightarrow[T\to\infty]{}\int_0^\infty dk\,F(k).
+  &\xrightarrow[T\to\infty]{}\int_0^\infty \dd k\,F(k).
   \label{eq:253a-ch02-sum-to-integral}
 \end{align}
 
@@ -233,9 +233,9 @@ Writing the sine functions as exponentials separates the direct propagation from
 
 % YIN-SOURCE: id=YIN253A-C02-U034; arguments=YIN253A-C02-A06; notes=253a:22-23; pdf=33-34; video=M0py5a4RWhE:00:27:59.640-00:40:23.359; transcript=YIN253A-C02-T000368..YIN253A-C02-T000394; equations=YIN253A-C02-EQ009; class=NOTES_EXACT
 \begin{align}
-  \int_{-\infty}^{\infty}dk\,\frac{e^{ik\tau}}{k^2+\omega^2}
-  &=2\pi i\underset{k\to i\omega}{\operatorname{Res}}
-  \frac{e^{ik\tau}}{k^2+\omega^2}
+  \int_{-\infty}^{\infty}\dd k\,\frac{e^{\ii k\tau}}{k^2+\omega^2}
+  &=2\pi \ii\underset{k\to \ii\omega}{\operatorname{Res}}
+  \frac{e^{\ii k\tau}}{k^2+\omega^2}
   =\frac{\pi}{\omega}e^{-\omega\tau},
   \qquad \tau>0,
   \label{eq:253a-ch02-positive-time-residue}\\
@@ -294,7 +294,7 @@ For a Gaussian functional integral, the matrix becomes a differential operator. 
 \begin{align}
   A\cdot g(\tau)&=(-\partial_\tau^2+\omega^2)g(\tau),
   \label{eq:253a-ch02-functional-operator}\\
-  A^{-1}\cdot g(\tau)&=\int d\tau'\,G(\tau,\tau')g(\tau'),
+  A^{-1}\cdot g(\tau)&=\int \dd\tau'\,G(\tau,\tau')g(\tau'),
   \label{eq:253a-ch02-functional-inverse}\\
   (-\partial_\tau^2+\omega^2)G(\tau,\tau')&=\delta(\tau-\tau'),
   \qquad
@@ -310,14 +310,14 @@ Translation invariance makes the Fourier basis convenient. Reality relates the c
 
 % YIN-SOURCE: id=YIN253A-C02-U044; arguments=YIN253A-C02-A08; notes=253a:28-29; pdf=39-40; video=vk_RlYUKUyM:00:00:12.660-00:14:04.040; transcript=YIN253A-C02-T000461..YIN253A-C02-T000484; equations=YIN253A-C02-EQ012; class=NOTES_EXACT
 \begin{align}
-  g(\tau)&=\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
-  \widetilde g(k)e^{ik\tau},
+  g(\tau)&=\int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
+  \widetilde g(k)e^{\ii k\tau},
   &\widetilde g^*(k)&=\widetilde g(-k),
   \label{eq:253a-ch02-fourier-convention}\\
-  G(\tau,\tau')&=\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
-  \frac{e^{ik(\tau-\tau')}}{k^2+\omega^2},
+  G(\tau,\tau')&=\int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
+  \frac{e^{\ii k(\tau-\tau')}}{k^2+\omega^2},
   \label{eq:253a-ch02-fourier-green-function}\\
-  S^E&=\frac12\int_{-\infty}^{\infty}\frac{dk}{2\pi}\,
+  S^E&=\frac12\int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
   \widetilde g(-k)(k^2+\omega^2)\widetilde g(k),
   \label{eq:253a-ch02-fourier-action}\\
   \left\langle\widetilde g(k_1)\widetilde g(k_2)\right\rangle
@@ -339,7 +339,7 @@ If this model is unfamiliar, go back to an undergraduate quantum-mechanics treat
   \label{eq:253a-ch02-quartic-oscillator}\\
   \frac{Z_g}{Z_0}
   &=\sum_{n=0}^{\infty}\frac1{n!}\left(-\frac{g}{4!}\right)^n
-  \int \prod_{a=1}^{n}d\tau_a\,
+  \int \prod_{a=1}^{n}\dd\tau_a\,
   \left\langle \prod_{a=1}^{n}q^4(\tau_a)\right\rangle_0.
   \label{eq:253a-ch02-quartic-expansion}
 \end{align}
@@ -349,12 +349,12 @@ At first order, the four fields at one vertex admit three Wick pairings. The fac
 
 % YIN-SOURCE: id=YIN253A-C02-U049; arguments=YIN253A-C02-A09; notes=253a:31-32; pdf=42-43; video=vk_RlYUKUyM:00:31:26.460-00:43:34.700; transcript=YIN253A-C02-T000526..YIN253A-C02-T000546; equations=YIN253A-C02-EQ014; class=NOTES_EXACT
 \begin{align}
-  -\frac{g}{4!}\int d\tau\,\langle q^4(\tau)\rangle_0
-  &=-\frac{g}{8}\int d\tau\,\bigl(G_0(\tau,\tau)\bigr)^2,
+  -\frac{g}{4!}\int \dd\tau\,\langle q^4(\tau)\rangle_0
+  &=-\frac{g}{8}\int \dd\tau\,\bigl(G_0(\tau,\tau)\bigr)^2,
   \label{eq:253a-ch02-first-vacuum-graph}\\
   \left.\frac{Z_g}{Z_0}\right|_{g^2}
   &=\frac12\left(-\frac{g}{4!}\right)^2
-  \int d\tau_1\,d\tau_2\,
+  \int \dd\tau_1\,\dd\tau_2\,
   \left\langle q^4(\tau_1)q^4(\tau_2)\right\rangle_0.
   \label{eq:253a-ch02-second-order-vacuum-graphs}
 \end{align}
@@ -411,7 +411,7 @@ Expand the numerator of the normalized two-point function. Every Wick graph fact
   \end{cases}
   \label{eq:253a-ch02-euclidean-ordering}\\
   G_0(\tau)&=\frac12e^{-|\tau|}
-  =\int\frac{dk}{2\pi}\,\widetilde G_0(k)e^{ik\tau},
+  =\int\frac{\dd k}{2\pi}\,\widetilde G_0(k)e^{\ii k\tau},
   \qquad \widetilde G_0(k)=\frac1{k^2+1}.
   \label{eq:253a-ch02-free-euclidean-propagator}
 \end{align}
@@ -422,9 +422,9 @@ For the one-vertex correction, the first external field has four choices at the 
 % YIN-SOURCE: id=YIN253A-C02-U059; arguments=YIN253A-C02-A12; notes=253a:40; pdf=51; video=3VG2kDHso08:00:25:16.620-00:33:47.539; transcript=YIN253A-C02-T000649..YIN253A-C02-T000662; equations=YIN253A-C02-EQ018; class=NOTES_EXACT
 \begin{equation}
   G^{(1)}(\tau)
-  =-\frac{g}{2}\int d\tau'\,
+  =-\frac{g}{2}\int \dd\tau'\,
   G_0(\tau-\tau')G_0(\tau')G_0(0)
-  =-\frac{g}{4}\int\frac{dk}{2\pi}\frac{e^{ik\tau}}{(k^2+1)^2}.
+  =-\frac{g}{4}\int\frac{\dd k}{2\pi}\frac{e^{\ii k\tau}}{(k^2+1)^2}.
   \label{eq:253a-ch02-tadpole-correction}
 \end{equation}
 
@@ -434,9 +434,9 @@ What does 1PI stand for? A two-point graph is one-particle irreducible when cutt
 % YIN-SOURCE: id=YIN253A-C02-U061; arguments=YIN253A-C02-A12; notes=253a:41; pdf=52; video=3VG2kDHso08:00:45:02.040-00:52:48.900; transcript=YIN253A-C02-T000685..YIN253A-C02-T000698; equations=YIN253A-C02-EQ018; class=NOTES_EXACT
 \begin{align}
   G(\tau)
-  &=\int\frac{dk}{2\pi}e^{ik\tau}\widetilde G_0(k)
+  &=\int\frac{\dd k}{2\pi}e^{\ii k\tau}\widetilde G_0(k)
   \sum_{n=0}^{\infty}\bigl(\widetilde G_0(k)\Sigma(k)\bigr)^n
-  =\int\frac{dk}{2\pi}\frac{e^{ik\tau}}{k^2+1-\Sigma(k)},
+  =\int\frac{\dd k}{2\pi}\frac{e^{\ii k\tau}}{k^2+1-\Sigma(k)},
   \label{eq:253a-ch02-self-energy-resummation}\\
   \Sigma(k)&=-\frac{g}{4}
   +\frac{g^2}{8}\left(\frac14+\frac1{k^2+9}\right)+O(g^3).
@@ -447,7 +447,7 @@ What does 1PI stand for? A two-point graph is one-particle irreducible when cutt
 \subsection{Poles and interacting energy gaps}
 
 % YIN-SOURCE: id=YIN253A-C02-U063; arguments=YIN253A-C02-A13; notes=253a:42-43; pdf=53-54; video=3VG2kDHso08:00:56:20.780-01:13:22.940; transcript=YIN253A-C02-T000704..YIN253A-C02-T000734; equations=YIN253A-C02-EQ019; class=SOURCE_COMPOSITE
-The Fourier expression looks strange beside the spectral sum: one uses $e^{ik\tau}$ and the other uses decaying real exponentials. Analytic continuation in $k$ identifies them. For positive $\tau$, close the contour in the upper half-plane. A pole at $k=i\omega_n$ contributes $e^{-\omega_n\tau}$, so its position gives the energy gap.
+The Fourier expression looks strange beside the spectral sum: one uses $e^{\ii k\tau}$ and the other uses decaying real exponentials. Analytic continuation in $k$ identifies them. For positive $\tau$, close the contour in the upper half-plane. A pole at $k=\ii\omega_n$ contributes $e^{-\omega_n\tau}$, so its position gives the energy gap.
 
 % YIN-SOURCE: id=YIN253A-C02-U064; arguments=YIN253A-C02-A13; notes=253a:42-43; pdf=53-54; video=3VG2kDHso08:00:56:20.780-01:12:06.239; transcript=YIN253A-C02-T000704..YIN253A-C02-T000730; equations=YIN253A-C02-EQ019; class=SOURCE_COMPOSITE
 \begin{align}
@@ -455,9 +455,9 @@ The Fourier expression looks strange beside the spectral sum: one uses $e^{ik\ta
   &=\frac1{k^2+1+\frac g4-\frac{g^2}{8}
   \left(\frac14+\frac1{k^2+9}\right)+O(g^3)},
   \label{eq:253a-ch02-dressed-propagator}\\
-  \int\frac{dk}{2\pi}\,\widetilde G(k)e^{ik\tau}
-  &=i\sum_n e^{-\omega_n\tau}
-  \underset{k\to i\omega_n}{\operatorname{Res}}\widetilde G(k),
+  \int\frac{\dd k}{2\pi}\,\widetilde G(k)e^{\ii k\tau}
+  &=\ii\sum_n e^{-\omega_n\tau}
+  \underset{k\to \ii\omega_n}{\operatorname{Res}}\widetilde G(k),
   \qquad \omega_n=\bar E_n-\bar E_0,
   \label{eq:253a-ch02-pole-spectral-map}\\
   \omega_1&=1+\frac g8-\frac{g^2}{32}+O(g^3)
@@ -496,9 +496,9 @@ Up to a total derivative, the interaction may be written with a second derivativ
   &=-\frac g{24}\partial_\tau(\phi^3\partial_\tau\phi)
   +\frac g{24}\phi^3\partial_\tau^2\phi,
   \label{eq:253a-ch02-derivative-integration-by-parts}\\
-  \frac g4\int d\tau'\,G_0(\tau-\tau')G_0(\tau')[-\partial^2G_0(0)]
-  &=\frac g4\int\frac{dk}{2\pi}\frac{e^{ik\tau}}{(k^2+1)^2}
-  \int\frac{dk'}{2\pi}\frac{k'^2}{k'^2+1}.
+  \frac g4\int \dd\tau'\,G_0(\tau-\tau')G_0(\tau')[-\partial^2G_0(0)]
+  &=\frac g4\int\frac{\dd k}{2\pi}\frac{e^{\ii k\tau}}{(k^2+1)^2}
+  \int\frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1}.
   \label{eq:253a-ch02-divergent-derivative-contraction}
 \end{align}
 
@@ -509,9 +509,9 @@ The calculation is completely correct. We have a problem: the integral diverges.
 \begin{equation}
   [D\phi]=\prod_kd\widetilde\phi_k
   \quad\longrightarrow\quad
-  [D\phi]_\Lambda=\prod_{|k|<\Lambda}d\widetilde\phi_k,
+  [D\phi]_\Lambda=\prod_{|k|<\Lambda}\dd\widetilde\phi_k,
   \qquad
-  G(\tau)=\int\frac{dk}{2\pi}\frac{e^{ik\tau}}{k^2+1-\Sigma(k)}.
+  G(\tau)=\int\frac{\dd k}{2\pi}\frac{e^{\ii k\tau}}{k^2+1-\Sigma(k)}.
   \label{eq:253a-ch02-cutoff-measure}
 \end{equation}
 
@@ -524,13 +524,13 @@ With the cutoff in place, the order-$g$ self-energy is finite for fixed $\Lambda
 % YIN-SOURCE: id=YIN253A-C02-U074; arguments=YIN253A-C02-A15; notes=253a:48-49; pdf=59-60; video=TtMNnZ8__UU:00:26:49.020-00:37:15.720; transcript=YIN253A-C02-T000803..YIN253A-C02-T000826; equations=YIN253A-C02-EQ022; class=NOTES_EXACT
 \begin{align}
   \Sigma(k)
-  &=\frac g4\int_{|k'|<\Lambda}\frac{dk'}{2\pi}\frac{k'^2}{k'^2+1}
-  +\frac g4k^2\int\frac{dk'}{2\pi}\frac1{k'^2+1}+O(g^2)
+  &=\frac g4\int_{|k'|<\Lambda}\frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1}
+  +\frac g4k^2\int\frac{\dd k'}{2\pi}\frac1{k'^2+1}+O(g^2)
   \nonumber\\
   &=\frac g4\left(\frac{k^2}{2}+\frac{\Lambda}{\pi}-\frac12
   +O(\Lambda^{-1})\right)+O(g^2),
   \label{eq:253a-ch02-cutoff-self-energy}\\
-  Z&=\int[Dq]\exp\!\left[-\frac1\hbar\int d\tau\,L^E\right],
+  Z&=\int[Dq]\exp\!\left[-\frac1\hbar\int \dd\tau\,L^E\right],
   &\widetilde G(k)&=\frac\hbar{k^2+1-\Sigma(k)}.
   \label{eq:253a-ch02-restored-hbar}
 \end{align}
@@ -555,7 +555,7 @@ Finiteness fixes the divergent part of $c$. The finite part of the counterterm i
   c&=\frac{\Lambda}{4\pi}+c_{\mathrm{fin}},
   \label{eq:253a-ch02-counterterm-choice}\\
   \widetilde G(k)&=\frac\hbar{k^2+1-\Sigma(k)}
-  \quad\text{has a pole at }k=i\omega_1,
+  \quad\text{has a pole at }k=\ii\omega_1,
   \nonumber\\
   \omega_1&=1+\hbar g\left(-\frac{\Lambda}{8\pi}
   +\frac c2+\frac18\right)+O(g^2)

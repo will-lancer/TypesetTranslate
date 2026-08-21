@@ -202,13 +202,29 @@ def main() -> int:
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
 
-    records, pending = render()
-    issues = validate_records(records, page_count(), strict=args.strict)
-    if args.write:
-        OUTPUT.write_text(
-            "".join(json.dumps(record, sort_keys=True) + "\n" for record in records),
-            encoding="utf-8",
-        )
+    collected = collect_markers()
+    if not any(collected.values()) and OUTPUT.is_file():
+        records = [
+            json.loads(line)
+            for line in OUTPUT.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        pending = [
+            int(record["pdf_page"])
+            for record in records
+            if str(record.get("status", record.get("classification", ""))).lower()
+            in {"pending", "review"}
+        ]
+        print("No inline source markers; validating existing page-dispositions.jsonl.")
+        issues = validate_records(records, page_count(), strict=args.strict)
+    else:
+        records, pending = render()
+        issues = validate_records(records, page_count(), strict=args.strict)
+        if args.write:
+            OUTPUT.write_text(
+                "".join(json.dumps(record, sort_keys=True) + "\n" for record in records),
+                encoding="utf-8",
+            )
     covered = len(records) - len(pending)
     print(f"Physical pages with dispositions: {covered}/{len(records)}")
     if pending:

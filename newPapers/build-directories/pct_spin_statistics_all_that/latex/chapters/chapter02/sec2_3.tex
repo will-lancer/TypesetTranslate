@@ -1,43 +1,32 @@
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 advised to prove some of the following statements directly from the
 definitions:
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-49a
 \begin{equation*}
   \mathcal{F}[\delta(x)] = \frac{1}{(2\pi)^{n/2}}.
 \end{equation*}
 
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-49
 \begin{equation}
-  \mathcal{F}(\exp ik\mathbin{\cdot}x) = (2\pi)^{n/2}\delta(p-k)
+  \mathcal{F}(\exp \ii k\mathbin{\cdot}x) = (2\pi)^{n/2}\delta(p-k)
   \tag{2-49}\label{eq:ch2-fourier-exponential}
 \end{equation}
 
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 Equations \eqref{eq:ch2-fourier-derivative} and \eqref{eq:ch2-fourier-multiplication} are also valid for tempered distributions.
 
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 There is one other property of $\mathcal{F}$ which will be needed in the
 following: its relation to convolution.  For functions in $\mathcal{S}$,
 say, we have
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-50
 \begin{align}
   [\mathcal{F}(f*g)](k)
-  &= (2\pi)^{-n/2}\int e^{-ik\cdot x}\,dx
-       \left[\int f(x-\xi)g(\xi)\,d\xi\right] \notag\\
-  &= (2\pi)^{-n/2}\int e^{-ik\cdot\xi}\,d\xi\,g(\xi)
-       \left[\int e^{-ik\cdot(x-\xi)}\,d(x-\xi)f(x-\xi)\right] \notag\\
+  &= (2\pi)^{-n/2}\int e^{-\ii k\cdot x}\,\dd x
+       \left[\int f(x-\xi)g(\xi)\,\dd\xi\right] \notag\\
+  &= (2\pi)^{-n/2}\int e^{-\ii k\cdot\xi}\,\dd\xi\,g(\xi)
+       \left[\int e^{-\ii k\cdot(x-\xi)}\,\dd(x-\xi)f(x-\xi)\right] \notag\\
   &= (2\pi)^{n/2}(\mathcal{F}f)(k)(\mathcal{F}g)(k).
   \tag{2-50}\label{eq:ch2-fourier-convolution}
 \end{align}
 
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 So, apart from a factor $(2\pi)^{n/2}$, $\mathcal{F}$ converts a
 convolution into a product.  This can be extended to the convolution of
 $f\in\mathcal{S}$ with $T\in\mathcal{S}'$:
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-51
 \begin{align}
   [\mathcal{F}(f*T)](g)
   &= (f*T)(\mathcal{F}g)=T(f*\mathcal{F}g) \notag\\
@@ -46,74 +35,50 @@ $f\in\mathcal{S}$ with $T\in\mathcal{S}'$:
   &= (2\pi)^{n/2}[(\mathcal{F}f)(\mathcal{F}T)](g),
   \tag{2-51}\label{eq:ch2-fourier-distribution-convolution}
 \end{align}
-
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 where we have used the definitions \eqref{eq:ch2-fourier-distribution-forward} and \eqref{eq:ch2-distribution-convolution} of $\mathcal{F}$ and
 $f*T$ and the elementary identity $\overline{\mathcal{F}}\widetilde{f}
 =\mathcal{F}f$.  We can write \eqref{eq:ch2-fourier-distribution-convolution} as
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-52
 \begin{equation}
   f*T=(2\pi)^{n/2}\overline{\mathcal{F}}
        [(\mathcal{F}f)(\mathcal{F}T)],
   \tag{2-52}\label{eq:ch2-fourier-convolution-distribution}
 \end{equation}
-
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 in which case it displays the first part of
 
-% PCT-SOURCE: pdf=59 print=47 kind=theorem id=2-3
 \begin{theorem}[2-3]\label{thm:ch2-fourier-fast-decrease}
 The Fourier transform of a tempered distribution of fast decrease is an
 infinitely differentiable function which is bounded by a polynomial.
 \end{theorem}
 
-% PCT-SOURCE: pdf=59 print=47 kind=proof id=2-3
 \begin{proof}
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 It remains only to prove the polynomial boundedness.  That follows since
 every tempered distribution is of the form \eqref{eq:ch2-tempered-representation}.
 \end{proof}
 
-% PCT-SOURCE: pdf=59 print=47 kind=heading id=2-3
 \subsection{Laplace Transforms and Holomorphic Functions}
 \label{sec:ch2-laplace}
 
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 It is well known that an integral of the form
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-53
 \begin{equation}
-  g(x)=\int_0^\infty e^{ikx}f(k)\,dk
+  g(x)=\int_0^\infty e^{\ii kx}f(k)\,\dd k
   \tag{2-53}\label{eq:ch2-one-sided-laplace}
 \end{equation}
-
-% PCT-SOURCE: pdf=59 print=47 kind=prose
 where $f$, for concreteness sake, is in $\mathcal{S}(\mathbb{R}^1)$, is a
 boundary value of a holomorphic function, namely, the Laplace transform
-
-% PCT-SOURCE: pdf=59 print=47 kind=display id=2-54
 \begin{equation}
-  g(x+iy)=\int_0^\infty e^{ik(x+iy)}f(k)\,dk
+  g(x+\ii y)=\int_0^\infty e^{\ii k(x+\ii y)}f(k)\,\dd k
   \tag{2-54}\label{eq:ch2-laplace-example}
 \end{equation}
-
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 holomorphic in the upper half-plane, $y>0$.  [Clearly, the extra factor
 $e^{-ky}$ in \eqref{eq:ch2-laplace-example} only serves to improve the convergence of an already
 splendidly convergent integral.  For $y>0$,
-
-% PCT-SOURCE: pdf=60 print=48 kind=display
 \begin{equation*}
-  \frac{dg(z)}{dz}=\lim_{\Delta z\to0}
+  \frac{\dd g(z)}{\dd z}=\lim_{\Delta z\to0}
     \left[\frac{g(z+\Delta z)-g(z)}{\Delta z}\right]
 \end{equation*}
-
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 exists and is independent of direction.  That is one way to define what
 is meant by a holomorphic function of a single complex variable.]
 
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 In this section, we present theorems which generalize this example in two
 respects.  First, we admit several complex variables and replace the
 positive $k$ axis by a convex cone.  Second, we admit distributions rather
@@ -126,7 +91,6 @@ are not arbitrary but possess certain characteristic boundedness
 properties.  It is essential for applications to field theory to have
 these boundedness conditions spelled out in detail.
 
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 Since it is only in recent years that holomorphic functions of several
 complex variables have turned out to be of use in theoretical physics, we
 begin by recalling their definition and basic properties.  We denote by
@@ -137,35 +101,26 @@ function $f$, defined in a neighborhood of a point $w$ of $\mathbb{C}^n$,
  \footnote{Often also termed \emph{analytic}.}
  \endgroup
 at the point $w$ if there exists a multiple power series
-
-% PCT-SOURCE: pdf=60 print=48 kind=display id=2-55
 \begin{equation}
   \sum_{k_1,\ldots,k_n=0}^{\infty}
   a_{k_1 k_2\ldots k_n}(z_1-w_1)^{k_1}\cdots
   (z_n-w_n)^{k_n}
   \tag{2-55}\label{eq:ch2-holomorphic-power-series}
 \end{equation}
-
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 which converges for $z$ in some neighborhood of $w$ and is equal to
 $f(z)$ there.  Just as in the case of power series in one variable, one
 proves that if \eqref{eq:ch2-holomorphic-power-series} converges at $z$, it converges absolutely and
 uniformly for every $\zeta$ satisfying
-
-% PCT-SOURCE: pdf=60 print=48 kind=display id=2-56
 \begin{equation}
   |\zeta_j-w_j|\leq R_j=|z_j-w_j|-\epsilon,
   \qquad j=1,\ldots,n,\qquad\text{for any }\epsilon>0.
   \tag{2-56}\label{eq:ch2-polydisc-radii}
 \end{equation}
 
-% PCT-SOURCE: pdf=60 print=48 kind=prose
 We shall call such a region a \emph{polydisc}.  There is a theorem of
 Weierstrass, familiar from the theory of holomorphic functions of one
 complex variable, which says that one can differentiate such a series term
 by term.  Using this result one gets
-
-% PCT-SOURCE: pdf=60 print=48 kind=display id=2-57
 \begin{equation}
   a_{k_1\ldots k_n}
   =\frac{1}{k_1!\cdots k_n!}
@@ -175,26 +130,19 @@ by term.  Using this result one gets
   \tag{2-57}\label{eq:ch2-holomorphic-coefficients}
 \end{equation}
 
-% PCT-SOURCE: pdf=61 print=49 kind=prose
 Thus, in particular, a holomorphic function of $z_1,\ldots,z_n$ is an
 infinitely differentiable function of the $n$ real parts of the $z$'s if we
 take the imaginary parts equal to zero.  Just how special it is can be seen
 more clearly if one uses Cauchy's integral formula $n$ times to obtain
-
-% PCT-SOURCE: pdf=61 print=49 kind=display id=2-58
 \begin{equation}
-  f(z_1,\ldots,z_n)=\frac{1}{(2\pi i)^n}
+  f(z_1,\ldots,z_n)=\frac{1}{(2\pi \ii)^n}
   \oint_{|\zeta_1-w_1|=R_1}\!\cdots\!\oint_{|\zeta_n-w_n|=R_n}
-  \frac{f(\zeta_1,\ldots,\zeta_n)\,d\zeta_1\cdots d\zeta_n}
+  \frac{f(\zeta_1,\ldots,\zeta_n)\,\dd\zeta_1\cdots \dd\zeta_n}
   {(\zeta_1-z_1)\cdots(\zeta_n-z_n)}
   \tag{2-58}\label{eq:ch2-cauchy-polydisc}
 \end{equation}
-
-% PCT-SOURCE: pdf=61 print=49 kind=prose
 as a representation valid for $z_1,\ldots,z_n$ in a polydisc of uniform
 convergence of \eqref{eq:ch2-holomorphic-power-series}.  From this there easily follows the estimate
-
-% PCT-SOURCE: pdf=61 print=49 kind=display id=2-59
 \begin{equation}
   \frac{1}{k_1!\cdots k_n!}
   \left|\frac{\partial^{|k|}f(z_1,\ldots,z_n)}
@@ -203,7 +151,6 @@ convergence of \eqref{eq:ch2-holomorphic-power-series}.  From this there easily 
   \tag{2-59}\label{eq:ch2-cauchy-estimate}
 \end{equation}
 
-% PCT-SOURCE: pdf=61 print=49 kind=prose
 These inequalities are essentially all that distinguishes an infinitely
 differentiable function from a holomorphic function.  In no physical
 context we know is \eqref{eq:ch2-cauchy-estimate} a direct physical statement as it stands, but it
@@ -212,7 +159,6 @@ considered in Chapters 3 and 4, the physical laws involved imply the
 inequalities \eqref{eq:ch2-cauchy-estimate} for important functions occurring in the theory.  This
 has highly remarkable consequences as we shall see.
 
-% PCT-SOURCE: pdf=61 print=49 kind=prose
 There are two important and related principles governing the behavior of
 holomorphic functions of a single complex variable which are also valid
 for holomorphic functions of several complex variables: \emph{analytic
@@ -231,13 +177,11 @@ determined in a full complex neighborhood of a point of $\mathbb{C}^n$ by
 its values on a real environment, that is, on an open set of $\mathbb{R}^n$
 obtained by letting only the real parts of the complex variables vary.
 
-% PCT-SOURCE: pdf=61 print=49 kind=prose
 An important example of the unique determination of a holomorphic function
 by its values on a real environment occurs in the study of sets of
 holomorphic functions with a transformation law under $L^{\uparrow}_{+}$
 (see
 
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 Theorems \ref{thm:ch2-11} and \ref{thm:ch3-5-holomorphic-boundary-values}).  There we have a function defined on the restricted
 Lorentz group and want to assert that its extension to the complex Lorentz
 group is unique.  This is an immediate consequence of what has been said
@@ -250,21 +194,15 @@ element because we can get a parametrization for a neighborhood of an
 arbitrary element, $g$, by multiplying all the elements of $N$ by $g$ and
 using the same parametrization for the neighborhood $gN$ of $g$.
 
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 In the practical applications there will be two kinds of functions:
-
-% PCT-SOURCE: pdf=62 print=50 kind=display id=2-60
 \begin{equation}
   F(\Lambda_{s_1},\ldots,\Lambda_{s_n})
   \tag{2-60}\label{eq:ch2-lorentz-holomorphic-function}
 \end{equation}
 
-% PCT-SOURCE: pdf=62 print=50 kind=display id=2-60b
 \begin{equation*}
   S(\Lambda)_{\alpha\beta},
 \end{equation*}
-
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 where $F$ is holomorphic in its arguments.  Since a holomorphic function
 of a holomorphic function is holomorphic, the first function will be of the
 required kind if an appropriate parametrization of $\Lambda$ has been
@@ -280,12 +218,9 @@ desired expression.  Incidentally, the analytic continuation is given by
 $\mathcal D^{(j/2,k/2)}(A,B)_{\alpha\beta}$, which can be expressed locally as a
 function of the matrix elements of $\Lambda(A,B)$.
 
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 Thus, it remains to give an appropriate parametrization of $\Lambda$.  For
 this purpose, note that the matrix $\Lambda^\mu{}_{\nu}$ can be written as
 an exponential of a matrix $\Sigma^\mu{}_{\nu}$, and
-
-% PCT-SOURCE: pdf=62 print=50 kind=display id=2-60c
 \begin{align*}
   \Lambda^T G\Lambda=G
   &\quad\text{is equivalent to}\quad
@@ -294,24 +229,20 @@ an exponential of a matrix $\Sigma^\mu{}_{\nu}$, and
   \Sigma_{\mu\nu}&=-\Sigma_{\nu\mu} .
 \end{align*}
 
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 The six parameters $\Sigma_{01}$, $\Sigma_{02}$, $\Sigma_{03}$,
 $\Sigma_{12}$, $\Sigma_{13}$, $\Sigma_{23}$ are arbitrary real for
 $L^{\uparrow}_{+}$ and arbitrary complex for $L_{+}(\mathbb{C})$, and can
 be taken for $\lambda_1,\ldots,\lambda_6$, provided one considers a
 sufficiently small neighborhood of the identity.
 
-% PCT-SOURCE: pdf=62 print=50 kind=prose
 It is natural to ask whether the notion of real environment is also
 significant when it lies on the boundary of the domain in which a function
 is holomorphic.  For one complex variable, that is well known to be the
 case; a generalization to $n$ variables will be obtained in Theorem \ref{thm:edge-of-wedge-zero-boundary}.
 
-% PCT-SOURCE: pdf=63 print=51 kind=prose
 There is a useful criterion for a function of several variables to be
 holomorphic which we shall use several times in the following.
 
-% PCT-SOURCE: pdf=63 print=51 kind=theorem id=2-4
 \begin{theorem}[2-4]\label{thm:ch2-separate-holomorphy}
 Let $F$ be a function defined in some open set $D$ of $\mathbb{C}^n$.  A
 necessary and sufficient condition that $F$ be holomorphic is that it be
@@ -319,7 +250,6 @@ continuous in all variables together and holomorphic in each variable
 separately.
 \end{theorem}
 
-% PCT-SOURCE: pdf=63 print=51 kind=remark id=2-4
 \begin{remark*}
 This theorem is also true if the condition of joint continuity is dropped.
 That is a deep result known as Hartog's theorem.  (See Bochner and Martin,
@@ -328,54 +258,40 @@ differentiable functions is false; this is another indication of the special
 character of holomorphic functions.
 \end{remark*}
 
-% PCT-SOURCE: pdf=63 print=51 kind=proof id=2-4
 \begin{proof}
-% PCT-SOURCE: pdf=63 print=51 kind=prose
 In a suitable polydisc of center $w_1,\ldots,w_n$ contained in $D$ we can
 write (using the separate holomorphy) the successive integral
-
-% PCT-SOURCE: pdf=63 print=51 kind=display
 \begin{equation*}
 \begin{aligned}
   F(z_1,\ldots,z_n)
-  &=\frac{1}{2\pi i}\oint_{|\zeta_1-w_1|=R_1}
-    \frac{d\zeta_1}{\zeta_1-z_1}\frac{1}{2\pi i}
-    \oint_{|\zeta_2-w_2|=R_2}\frac{d\zeta_2}{\zeta_2-z_2}\cdots \\
-  &\qquad\cdots\frac{1}{2\pi i}
-    \oint_{|\zeta_n-w_n|=R_n}\frac{d\zeta_n}{\zeta_n-z_n}
+  &=\frac{1}{2\pi \ii}\oint_{|\zeta_1-w_1|=R_1}
+    \frac{\dd\zeta_1}{\zeta_1-z_1}\frac{1}{2\pi \ii}
+    \oint_{|\zeta_2-w_2|=R_2}\frac{\dd\zeta_2}{\zeta_2-z_2}\cdots \\
+  &\qquad\cdots\frac{1}{2\pi \ii}
+    \oint_{|\zeta_n-w_n|=R_n}\frac{\dd\zeta_n}{\zeta_n-z_n}
     F(\zeta_1,\ldots,\zeta_n).
 \end{aligned}
 \end{equation*}
 
-% PCT-SOURCE: pdf=63 print=51 kind=prose
 But, because of the joint continuity, the successive integral can be
 written as a multiple integral.  Writing the series expansion
-
-% PCT-SOURCE: pdf=63 print=51 kind=display
 \begin{equation*}
   \frac{1}{(\zeta_1-z_1)\cdots(\zeta_n-z_n)}
   =\sum_{k_1,\ldots,k_n=0}^{\infty}
   \frac{(z_1-w_1)^{k_1}}{(\zeta_1-w_1)^{k_1+1}}\cdots
   \frac{(z_n-w_n)^{k_n}}{(\zeta_n-w_n)^{k_n+1}},
 \end{equation*}
-
-% PCT-SOURCE: pdf=63 print=51 kind=prose
 which converges uniformly in every subpolydisc, and interchanging the order
 of integration and summation, we get a convergent series expansion for
 $F$.
 \end{proof}
 
-% PCT-SOURCE: pdf=63 print=51 kind=prose
 Like every continuous function, a holomorphic function, $F$, defined on an
 open set $\mathcal{O}$ is a distribution in $\mathcal{D}(\mathcal{O})'$:
-
-% PCT-SOURCE: pdf=63 print=51 kind=display
 \begin{equation*}
-  F(f)=\int dx_1\,dy_1\cdots dx_n\,dy_n\,
+  F(f)=\int \dd x_1\,\dd y_1\cdots \dd x_n\,\dd y_n\,
   f(x_1,y_1,\ldots,x_n,y_n)F(z_1,\ldots,z_n),
 \end{equation*}
-
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 where $f$ is any test function with support lying in $\mathcal{O}$.  In
 the proof of the edge of the wedge theorem in Section \ref{sec:2.5} we shall need to
 know the relation between convergence in $\mathcal{D}(\mathcal{O})'$ and
@@ -384,54 +300,36 @@ functions, $F_k$, $k=1,2,\ldots$.  The answer is simple: the two notions are
 identical.  Clearly, since a sequence of holomorphic $F_k$ converging
 uniformly on compact subsets of $\mathcal{O}$ converges to a function, $F$,
 holomorphic in $\mathcal{O}$, we have
-
-% PCT-SOURCE: pdf=64 print=52 kind=display id=2-61
 \begin{equation}
   F_k(f)\longrightarrow F(f)
   \tag{2-61}\label{eq:ch2-holomorphic-distribution-convergence}
 \end{equation}
-
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 for $f\in\mathcal{D}(\mathcal{O})$.  Conversely, if
 $\lim_{k\to\infty}F_k(f)$ exists for every $f\in\mathcal{D}(\mathcal{O})$,
 we can smear the multiple Cauchy formula
-
-% PCT-SOURCE: pdf=64 print=52 kind=display
 \begin{equation*}
   F_k(w_1,\ldots,w_n)=\frac{1}{(2\pi)^n}
-  \int_0^{2\pi}d\theta_1\cdots\int_0^{2\pi}d\theta_n\,
-  F_k(w_1+R_1e^{i\theta_1},\ldots,w_n+R_ne^{i\theta_n})
+  \int_0^{2\pi}\dd\theta_1\cdots\int_0^{2\pi}\dd\theta_n\,
+  F_k(w_1+R_1e^{\ii\theta_1},\ldots,w_n+R_ne^{i\theta_n})
 \end{equation*}
-
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 in the radii $R_1,\ldots,R_n$ with an infinitely differentiable function
 $g$ with support lying on the product of the positive real axes and
 sufficiently near zero, and such that
-
-% PCT-SOURCE: pdf=64 print=52 kind=display
 \begin{equation*}
   \int_0^\infty\!\cdots\!\int_0^\infty
-  R_1\,dR_1\cdots R_n\,dR_n\,g(R_1,\ldots,R_n)=1.
+  R_1\,\dd R_1\cdots R_n\,\dd R_n\,g(R_1,\ldots,R_n)=1.
 \end{equation*}
 
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 Then
-
-% PCT-SOURCE: pdf=64 print=52 kind=display
 \begin{equation*}
   F_k(w_1,\ldots,w_n)=F_k(f_w),
 \end{equation*}
-
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 where
-
-% PCT-SOURCE: pdf=64 print=52 kind=display
 \begin{equation*}
   f_w(x_1,y_1,\ldots,x_n,y_n)
   =(2\pi)^{-n}g(|z_1-w_1|,\ldots,|z_n-w_n|).
 \end{equation*}
 
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 Now $f_w\in\mathcal{D}(\mathcal{O})$, so convergence in
 $\mathcal{D}(\mathcal{O})'$ implies the convergence of
 $F_k(w_1,\ldots,w_n)$ at each point $w_1,\ldots,w_n\in\mathcal{O}$.
@@ -442,36 +340,27 @@ holomorphic function.  This completes our general remarks about holomorphic
 functions.  We now turn to the definition and properties of the Laplace
 transform.
 
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 If $T$ is a distribution in $\mathcal{D}'_p$, it may happen that
 $e^{-p\cdot\eta}T$, which is certainly a distribution in $\mathcal{D}'_p$,
 is also a distribution in $\mathcal{S}'_p$.  In this case, we can define the
 Laplace transform of $T$ as the distribution of $\mathcal{S}'_\xi$ given by
-
-% PCT-SOURCE: pdf=64 print=52 kind=display id=2-62
 \begin{equation}
   \mathcal{L}(T)=\mathcal{F}(e^{-p\cdot\eta}T).
   \tag{2-62}\label{eq:ch2-laplace-distribution}
 \end{equation}
 
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 $\mathcal{L}(T)$ actually depends parametrically on $\eta$ but we shall
 not indicate that explicitly.  For a function $T$, this definition \eqref{eq:ch2-laplace-distribution}
 is
-
-% PCT-SOURCE: pdf=64 print=52 kind=display id=2-63
 \begin{equation}
   \mathcal{L}(T)(\xi,\eta)
   =\frac{1}{(2\pi)^{n/2}}
-    \int e^{-ip\cdot(\xi-i\eta)}T(p)\,dp .
+    \int e^{-\ii p\cdot(\xi-\ii\eta)}T(p)\,\dd p .
   \tag{2-63}\label{eq:ch2-laplace-function}
 \end{equation}
 
-% PCT-SOURCE: pdf=64 print=52 kind=prose
 The convention of signs in the Fourier transform which is used here leads
-to $\xi-i\eta$ rather than $\xi+i\eta$ in the exponent.  This results
-
-% PCT-SOURCE: pdf=65 print=53 kind=prose
+to $\xi-\ii\eta$ rather than $\xi+\ii\eta$ in the exponent.  This results
 from our effort to agree with customary physical notation in Chapters 3
 and 4.  $T$ need not have any special support properties for this definition
 to make sense.  For example, if $T(p)=\exp(-|p|^2)$ the Laplace transform
@@ -479,31 +368,24 @@ certainly exists for all $\eta$.  Thus, we are dealing with what is
 sometimes called the two-sided Laplace transform, which includes the
 one-sided transform \eqref{eq:ch2-one-sided-laplace} as a special case.
 
-% PCT-SOURCE: pdf=65 print=53 kind=prose
 The first fact about the $\eta$'s for which $\mathcal{L}(T)$ exists is given
 by Theorem \ref{thm:ch2-laplace-convexity}.
 
-% PCT-SOURCE: pdf=65 print=53 kind=theorem id=2-5
 \begin{theorem}[2-5]\label{thm:ch2-laplace-convexity}
 Let $T$ be a distribution of $\mathcal{D}'_p$.  The set of all $\eta$ such
 that $e^{-p\cdot\eta}T$ is in $\mathcal{S}'_p$ is convex.
 \end{theorem}
 
-% PCT-SOURCE: pdf=65 print=53 kind=proof id=2-5
 \begin{proof}
-% PCT-SOURCE: pdf=65 print=53 kind=prose
 Suppose $e^{-p\cdot\eta'}T$ and $e^{-p\cdot\eta''}T$ belong to
 $\mathcal{S}'_p$.  Let $\eta=t\eta'+(1-t)\eta''$ with $0\leq t\leq1$.
 Define the infinitely differentiable function $a$ by
-
-% PCT-SOURCE: pdf=65 print=53 kind=display id=2-64
 \begin{equation}
   a(p)=\exp(-p\cdot\eta)
   [\exp(-p\cdot\eta')+\exp(-p\cdot\eta'')]^{-1}.
   \tag{2-64}\label{eq:ch2-laplace-convexity-factor}
 \end{equation}
 
-% PCT-SOURCE: pdf=65 print=53 kind=prose
 Then $a$ is bounded.  [For any two real positive numbers, $c<d$ implies
 $c^t<d^t$ and therefore $c<c^td^{1-t}<d$.  Applying this to
 $e^{-p\cdot\eta'}$ and $e^{-p\cdot\eta''}$ gives $0<a(p)\leq1$.]
@@ -511,54 +393,40 @@ Furthermore, all the partial derivatives of $a$ with respect to $p$ are
 bounded.  This follows because they are either linear combinations of
 products of the form \eqref{eq:ch2-laplace-convexity-factor} or analogous functions in which $\eta$ is
 replaced by $\eta'$ or $\eta''$.  Consequently, the identity
-
-% PCT-SOURCE: pdf=65 print=53 kind=display
 \begin{equation*}
   \exp(-p\cdot\eta)T
   =a[\exp(-p\cdot\eta')T]+a[\exp(-p\cdot\eta'')T]
 \end{equation*}
-
-% PCT-SOURCE: pdf=65 print=53 kind=prose
 displays $\exp(-p\cdot\eta)T$ as the sum of two distributions in
 $\mathcal{S}'_p$.
 \end{proof}
 
-% PCT-SOURCE: pdf=65 print=53 kind=prose
 Theorem \ref{thm:ch2-laplace-convexity} shows that the definition \eqref{eq:ch2-laplace-distribution} of the Laplace transform
 associates with every $T\in\mathcal{D}'_p$ a convex set of $\eta$ (possibly
 empty!) for which the Laplace transform exists.  Now we take a given set,
 $\Gamma$, of $\eta$'s and study what distributions $T$ can have Laplace
 transforms defined for $\eta\in\Gamma$.
 
-% PCT-SOURCE: pdf=65 print=53 kind=theorem id=2-6
 \begin{theorem}[2-6]\label{thm:ch2-laplace-holomorphy}
 Let $\Gamma$ be a convex open set of $\mathbb{R}^n$ and $T$ a distribution
 $\in\mathcal{D}'_p$ such that $e^{-p\cdot\eta}T\in\mathcal{S}'_p$ for all
 $\eta\in\Gamma$.  Then $\mathcal{L}(T)$ is a
-
-% PCT-SOURCE: pdf=66 print=54 kind=theorem-continuation id=2-6
-holomorphic function of $\xi-i\eta$ for all $\xi-i\eta$ in the tube
-$\mathbb{R}^n-i\Gamma$.  $\mathcal{L}(T)$ satisfies the boundedness condition
-
-% PCT-SOURCE: pdf=66 print=54 kind=display id=2-65
+holomorphic function of $\xi-\ii\eta$ for all $\xi-\ii\eta$ in the tube
+$\mathbb{R}^n-\ii\Gamma$.  $\mathcal{L}(T)$ satisfies the boundedness condition
 \begin{equation}
-  |\mathcal{L}(T)(\xi-i\eta)|\leq |P_K(\xi)|
+  |\mathcal{L}(T)(\xi-\ii\eta)|\leq |P_K(\xi)|
   \tag{2-65}\label{eq:ch2-laplace-polynomial-bound}
 \end{equation}
-
-% PCT-SOURCE: pdf=66 print=54 kind=theorem-continuation id=2-6
 for some polynomial $P_K$ when $\eta$ varies over any compact subset, $K$,
 of $\Gamma$.
 
-% PCT-SOURCE: pdf=66 print=54 kind=theorem-continuation id=2-6
-Conversely, every function holomorphic in the tube $\mathbb{R}^n-i\Gamma$,
+Conversely, every function holomorphic in the tube $\mathbb{R}^n-\ii\Gamma$,
 and satisfying \eqref{eq:ch2-laplace-polynomial-bound} for some polynomial $P_K$ for each compact subset,
 $K$, of $\Gamma$, is the Laplace transform of a uniquely determined
 distribution $T\in\mathcal{D}'_p$, such that $e^{-p\cdot\eta}T\in
 \mathcal{S}'_p$ for all $\eta\in\Gamma$.
 \end{theorem}
 
-% PCT-SOURCE: pdf=66 print=54 kind=remarks id=2-6
 \begin{remark*}
 \textit{1.} A tube clearly is a subset of $\mathbb{C}^n$ with a special
 property of translation invariance: it is invariant under real translations.
@@ -566,8 +434,7 @@ In the mathematical literature the notation is customarily arranged so that
 the invariance is under purely imaginary translations instead.  This
 evidently is a matter of convention.
 
-% PCT-SOURCE: pdf=66 print=54 kind=remark-item id=2-6-2
-\textit{2.} In the case of one complex variable, $\xi-i\eta$, and $\Gamma$,
+\textit{2.} In the case of one complex variable, $\xi-\ii\eta$, and $\Gamma$,
 the cone $\eta>0$, the theorem deals with holomorphic functions in the
 lower half-plane.  Then the boundedness restriction \eqref{eq:ch2-laplace-polynomial-bound} asserts that the
 holomorphic function is bounded by a polynomial $P_{a,b}(\xi)$ in every
@@ -576,82 +443,62 @@ polynomial may vary with $a$ and $b$ we have no control over the behavior of
 the holomorphic function for large $\eta$ and small $\eta$.  The following
 two examples illustrate this point.
 \end{remark*}
-
-% PCT-SOURCE: pdf=66 print=54 kind=display id=2-66
 \begin{equation}
   e^{-z^2/2}=\frac{1}{\sqrt{2\pi}}
-  \int_{-\infty}^{\infty}dk\,e^{ikz}e^{-k^2/2}
+  \int_{-\infty}^{\infty}\dd k\,e^{\ii kz}e^{-k^2/2}
   \tag{2-66}\label{eq:ch2-laplace-example-gaussian}
 \end{equation}
 
-% PCT-SOURCE: pdf=66 print=54 kind=display id=2-67
 \begin{equation}
-  \sqrt{\pi}\,\frac{e^{i/(4z)}}{\sqrt{-iz}}
-  =\int_0^\infty dk\,e^{ikz}\frac{\cosh\sqrt{k}}{\sqrt{k}} .
+  \sqrt{\pi}\,\frac{e^{\ii/(4z)}}{\sqrt{-\ii z}}
+  =\int_0^\infty \dd k\,e^{\ii kz}\frac{\cosh\sqrt{k}}{\sqrt{k}} .
   \tag{2-67}\label{eq:ch2-laplace-example-cosh}
 \end{equation}
 
-% PCT-SOURCE: pdf=66 print=54 kind=prose
 The first grows as $e^{y^2/2}$ along the imaginary axis as $y\to\infty$,
 while the second grows as $y^{-1/2}e^{1/(4y)}$ as $y\to0$.
 
-% PCT-SOURCE: pdf=66 print=54 kind=proof id=2-6
 \begin{proof}
-% PCT-SOURCE: pdf=66 print=54 kind=prose
 Our first step is to show that for $\eta$ varying in certain subsets of
 $\Gamma$, $e^{-p\cdot\eta}T$ can be written as a linear combination of
 distributions in $\mathcal{S}'_p$, each of which is a product of a function
 in $\mathcal{S}$ with a distribution in $\mathcal{S}'_p$; that is,
 $e^{-p\cdot\eta}T$ is a tempered distribution of fast decrease.  The
 Fourier transform of such a distribution is an infinitely differentiable
-
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 function of $\xi$ according to Theorem \ref{thm:ch2-fourier-fast-decrease}.  The particular form will also
 guarantee that it is infinitely differentiable in $\xi$ and $\eta$ together.
 Then we shall show that this function satisfies the Cauchy--Riemann
 equations in $\xi$ and $-\eta$ and is therefore a holomorphic function of
-$\xi-i\eta$ according to Theorem \ref{thm:ch2-separate-holomorphy}.
+$\xi-\ii\eta$ according to Theorem \ref{thm:ch2-separate-holomorphy}.
 
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 Let $\eta^{(1)},\ldots,\eta^{(\ell)}$ be a set of vectors of $\Gamma$ such
 that their convex hull, $H$, that is, the cone of vectors
 $\sum_{j=1}^{\ell}t_j\eta^{(j)}$ for $\sum_{j=1}^{\ell}t_j=1$, $t_j\geq0$,
 $j=1,\ldots,\ell$, has a non-empty interior.  If $\eta$ is a vector of
 that interior, then the function
-
-% PCT-SOURCE: pdf=67 print=55 kind=display id=2-68
 \begin{equation}
   a(p,\eta)=\exp(-p\cdot\eta)
   \left[\sum_{j=1}^{\ell}\exp(-p\cdot\eta^{(j)})\right]^{-1}
   \tag{2-68}\label{eq:ch2-laplace-convex-combination}
 \end{equation}
-
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 is bounded in $p$.  [The argument is quite analogous to that for the
 boundedness of \eqref{eq:ch2-laplace-convexity-factor}: If $a_i>0$ then
-
-% PCT-SOURCE: pdf=67 print=55 kind=display
 \begin{equation*}
   \sum_{i=1}^{\ell}t_i\log a_i\leq \sup_i\log a_i
   \qquad\text{for }\sum_{i=1}^{\ell}t_i=1,\quad t_i\geq0,
   \quad i=1,\ldots,\ell.
 \end{equation*}
 
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 Therefore $|a(p,\eta)|\leq1$.]  Furthermore, the same holds for all the
 derivatives with respect to $p$, and uniformly provided $\eta$ stays in
 $H$.  The derivatives of $a(p,\eta)$ with respect to $p$ and $\eta$ are
 bounded by polynomials in $p$ uniformly for $\eta$ in $H$.  Thus, writing
-
-% PCT-SOURCE: pdf=67 print=55 kind=display id=2-69
 \begin{equation}
   \exp(-p\cdot\eta)T
   =\sum_{j=1}^{\ell}a(p,\eta)
   [\exp(-p\cdot\eta^{(j)})T]
   \tag{2-69}\label{eq:ch2-laplace-convex-decomposition}
 \end{equation}
-
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 we display the left-hand side as a linear combination of elements of
 $\mathcal{S}'_p$, namely, the square brackets, times an infinitely
 differentiable function of $p$, all of whose derivatives with respect to
@@ -661,33 +508,22 @@ $\exp(-p\cdot\eta)T$ is a distribution in $\mathcal{S}'_\xi$ which is
 differentiable in $\eta$; but to get that it is a function we need a
 stronger statement than \eqref{eq:ch2-laplace-convex-decomposition}.
 
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 We assert that for any compact subset, $K$, of $\Gamma$, there is an
 $\epsilon>0$ such that
-
-% PCT-SOURCE: pdf=67 print=55 kind=display id=2-70
 \begin{equation}
   \exp\bigl(\epsilon\sqrt{1+|p|^2}\bigr)
   \exp(-p\cdot\eta)T=T_1\in\mathcal{S}'_p
   \tag{2-70}\label{eq:ch2-laplace-fast-decrease}
 \end{equation}
-
-% PCT-SOURCE: pdf=67 print=55 kind=prose
 for all $\eta\in K$.  To prove this we pick an $\eta\in K$.  Then, if
 $p$ is a real vector satisfying $|p|\leq\epsilon$, the set $\eta+p$ will
 lie in the convex hull of a finite number of vectors of $\Gamma$, for
 sufficiently small $\epsilon$.  Thus, for these $\eta+p$'s, one can
 construct $a(p,\eta+p)$ as in \eqref{eq:ch2-laplace-convex-combination}.  If we define
-
-% PCT-SOURCE: pdf=67 print=55 kind=display id=2-70b
 \begin{equation*}
   b(p,q)=\exp\bigl[\epsilon\sqrt{1+|p|^2}\bigr]a(p,q),
 \end{equation*}
-
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 for $|q-\eta|\leq\epsilon$ we have
-
-% PCT-SOURCE: pdf=68 print=56 kind=display
 \begin{align*}
   |b(p,q)|&\leq\exp[\epsilon(1+|p|)]|a(p,q)| \\
   &\leq\exp(\epsilon)\sup_{|p'|\leq\epsilon}
@@ -695,141 +531,105 @@ for $|q-\eta|\leq\epsilon$ we have
   &\leq\exp(\epsilon)\sup_{|p'|\leq\epsilon}|a(p,q+p')| .
 \end{align*}
 
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 Thus $b(p,q)$ is bounded in $p$ for all $q$ sufficiently close to $\eta$.
 Furthermore, its derivatives with respect to $p$ and $q$ are bounded by
 polynomials in $p$, since they are linear combinations of derivatives of
 $\exp(\epsilon\sqrt{1+|p|^2})$ and those of $a(p,q)$.  If we write
-
-% PCT-SOURCE: pdf=68 print=56 kind=display id=2-70c
 \begin{equation*}
   \exp\bigl(\epsilon\sqrt{1+|p|^2}\bigr)\exp(-p\cdot\eta)T
   =\sum_{j=1}^{\ell}b(p,\eta)
   [\exp(-p\cdot\eta^{(j)})T]
 \end{equation*}
-
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 we have \eqref{eq:ch2-laplace-fast-decrease} only for $\eta$ in the neighborhood of a point of $K$.
 But, since $K$ is compact it can be covered by a finite number of such
 neighborhoods, and therefore the assertion is valid throughout $K$ if the
 least of the $\epsilon$ is taken.  The validity of \eqref{eq:ch2-laplace-fast-decrease} assures us that
 for each fixed compact, $K$,
-
-% PCT-SOURCE: pdf=68 print=56 kind=display
 \begin{equation*}
   \exp(-p\cdot\eta)T
   =\exp\bigl(-\epsilon\sqrt{1+|p|^2}\bigr)T_1,
   \qquad T_1\in\mathcal{S}'_p,
 \end{equation*}
-
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 where $T_1$ is in $\mathcal{S}'_p$, and varies over a bounded set when
 $\eta$ varies over $K$.  Thus, $\exp(-p\cdot\eta)T$ is a tempered
 distribution of fast decrease as promised, and $\mathcal{L}(T)(\xi,\eta)$
 is an infinitely differentiable function of $\xi$ and $\eta$.  Furthermore,
 for $\eta\in K$,
-
-% PCT-SOURCE: pdf=68 print=56 kind=display id=2-71
 \begin{equation}
   |\mathcal{L}(T)(\xi,\eta)|< |P_K(\xi)|,
   \tag{2-71}\label{eq:ch2-laplace-bound-proof}
 \end{equation}
-
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 where $P_K$ is some polynomial.  Now
-
-% PCT-SOURCE: pdf=68 print=56 kind=display
 \begin{align*}
   \frac{\partial}{\partial\xi_j}\mathcal{L}(T)(\xi,\eta)
-  &=\mathcal{F}(-ip_j e^{-p\cdot\eta}T) \\
-  &=i\frac{\partial}{\partial\eta_j}\mathcal{L}(T)(\xi,\eta),
+  &=\mathcal{F}(-\ii p_j e^{-p\cdot\eta}T) \\
+  &=\ii\frac{\partial}{\partial\eta_j}\mathcal{L}(T)(\xi,\eta),
 \end{align*}
-
-% PCT-SOURCE: pdf=68 print=56 kind=prose
 which are the Cauchy--Riemann equations for the complex variables
-$\xi_j-i\eta_j$, $j=1,\ldots,n$.  Therefore $\mathcal{L}(T)$ is a
-holomorphic function of $\xi-i\eta$.  This completes the proof of the
+$\xi_j-\ii\eta_j$, $j=1,\ldots,n$.  Therefore $\mathcal{L}(T)$ is a
+holomorphic function of $\xi-\ii\eta$.  This completes the proof of the
 first half of the theorem.
 
-% PCT-SOURCE: pdf=68 print=56 kind=prose
-Conversely, suppose $F(\xi-i\eta)$ is a holomorphic function in the tube
-$\mathbb{R}^n-i\Gamma$, where $\Gamma$ is an open convex set, and suppose
+Conversely, suppose $F(\xi-\ii\eta)$ is a holomorphic function in the tube
+$\mathbb{R}^n-\ii\Gamma$, where $\Gamma$ is an open convex set, and suppose
 that for each compact subset $K$ of $\Gamma$ there exists a polynomial
 $P_K$ such that
-
-% PCT-SOURCE: pdf=68 print=56 kind=display id=2-72
 \begin{equation}
-  |F(\xi-i\eta)|\leq |P_K(\xi)|,\qquad \eta\in K.
+  |F(\xi-\ii\eta)|\leq |P_K(\xi)|,\qquad \eta\in K.
   \tag{2-72}\label{eq:ch2-laplace-converse-bound}
 \end{equation}
 
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 Equation \eqref{eq:ch2-laplace-converse-bound} permits us to say that, for each $\eta\in\Gamma$,
-$F(\xi-i\eta)$ is a distribution in $\xi$ so we can immediately write
+$F(\xi-\ii\eta)$ is a distribution in $\xi$ so we can immediately write
 down the distribution, $\widehat{F}\in\mathcal{S}'_p$, which, when
 multiplied by $e^{p\cdot\eta}$, ought to be that of which $F$ is the
 Laplace transform
-
-% PCT-SOURCE: pdf=69 print=57 kind=display
 \begin{equation*}
   \widehat{F}(p,\eta)=\overline{\mathcal{F}}_{\xi}
-  [F(\xi-i\eta)].
+  [F(\xi-\ii\eta)].
 \end{equation*}
 
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 If we multiply it by $e^{p\cdot\eta}$ we get a distribution which may no
 longer be in $\mathcal{S}'_p$, but must be in $\mathcal{D}'_p$.  If we could
 show that
-
-% PCT-SOURCE: pdf=69 print=57 kind=display id=2-73
 \begin{equation}
   \frac{\partial}{\partial\eta_j}
   [e^{p\cdot\eta}\widehat{F}(p,\eta)]=0
   \tag{2-73}\label{eq:ch2-laplace-eta-independence}
 \end{equation}
-
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 we would write
-
-% PCT-SOURCE: pdf=69 print=57 kind=display id=2-74
 \begin{equation}
   \widehat{F}(p,\eta)=e^{-p\cdot\eta}T(p),
   \qquad T\in\mathcal{D}'_p
   \tag{2-74}\label{eq:ch2-laplace-inverse-form}
 \end{equation}
-
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 and the proof would be complete.  However, at the present stage we do not
 even know that $\widehat{F}(p,\eta)$ is differentiable in $\eta$, let alone
 that \eqref{eq:ch2-laplace-eta-independence} holds.  To get the differentiability we show that the
 holomorphy of $F$ and the inequality \eqref{eq:ch2-laplace-converse-bound} imply analogous inequalities
 for the derivatives of $F$.
 
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 We first explain the idea of the proof for the case of one variable.  Then
 we take as the compact set inside the tube a closed interval
 $0<a\leq\eta\leq b$.  (Its position in the lower half-plane of
-$\xi-i\eta=z$ can always be arranged by suitable location of the origin of
+$\xi-\ii\eta=z$ can always be arranged by suitable location of the origin of
 coordinates.)  We choose a sufficiently high power, $z^k$, of $z$ so that
 $f(z)z^{-k}$ is bounded in the strip $a\leq\eta\leq b$.  Then, with the
 contour $C$, shown in Figure \ref{fig:2-1}, we obtain the integral representations
 for $a<\operatorname{Im}z<b$
-
-% PCT-SOURCE: pdf=69 print=57 kind=display id=2-75
 \begin{align}
   \frac{f(z)}{z^{k+2}}
-  &=\frac{1}{2\pi i}\oint_C
-    \frac{f(\zeta)\,d\zeta}{\zeta^{k+2}(\zeta-z)}, \notag\\
-  \frac{df/dz}{z^{k+2}}
+  &=\frac{1}{2\pi \ii}\oint_C
+    \frac{f(\zeta)\,\dd\zeta}{\zeta^{k+2}(\zeta-z)}, \notag\\
+  \frac{\dd f/\dd z}{z^{k+2}}
   &=(k+2)\frac{f(z)}{z^{k+3}}
-    +\frac{1}{2\pi i}\oint_C
-    \frac{f(\zeta)\,d\zeta}{\zeta^{k+2}(\zeta-z)^2} .
+    +\frac{1}{2\pi \ii}\oint_C
+    \frac{f(\zeta)\,\dd\zeta}{\zeta^{k+2}(\zeta-z)^2} .
   \tag{2-75}\label{eq:ch2-cauchy-strip-derivative}
 \end{align}
 
-% PCT-SOURCE: pdf=69 print=57 kind=prose
 From these representations one immediately derives that $|f(z)|\leq
-c|z|^k$ in the strip implies $|df/dz|\leq d|z|^{k+2}$.  For $n$
+c|z|^k$ in the strip implies $|\dd f/\dd z|\leq d|z|^{k+2}$.  For $n$
 variables the argument is similar.  One takes a compact subset of $\Gamma$
 which is a product of $n$ intervals and argues that
 $F(z)(z_1^{-k_1}\cdots z_n^{-k_n})$ will be bounded for sufficiently large
@@ -837,61 +637,44 @@ $k_1,\ldots,k_n$ by virtue of \eqref{eq:ch2-laplace-converse-bound}.  (Again, by
 origin, the intervals have been taken in the lower half-plane.)  Instead of
 \eqref{eq:ch2-cauchy-strip-derivative} one has a multiple Cauchy integral formula, but the result is the
 same: the polynomial boundedness of the partial derivatives of
-$F(\xi-i\eta)$.
+$F(\xi-\ii\eta)$.
 
 \input{figures/fig2_1}
 
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 Since that in turn implies the differentiability of $\widehat{F}$, we can
 carry out the differentiations in \eqref{eq:ch2-laplace-eta-independence}:
-
-% PCT-SOURCE: pdf=70 print=58 kind=display
 \begin{align*}
   \frac{\partial}{\partial\eta_j}
   [e^{p\cdot\eta}\widehat{F}(p,\eta)]
   &=p_j e^{p\cdot\eta}\widehat{F}(p,\eta)
     +e^{p\cdot\eta}\frac{\partial\widehat{F}}{\partial\eta_j}(p,\eta) \\
   &=e^{p\cdot\eta}\mathcal{F}
-    \left[i\frac{\partial}{\partial\xi_j}F(\xi-i\eta)
-    +\frac{\partial F}{\partial\eta_j}(\xi-i\eta)\right]=0 .
+    \left[\ii\frac{\partial}{\partial\xi_j}F(\xi-\ii\eta)
+    +\frac{\partial F}{\partial\eta_j}(\xi-\ii\eta)\right]=0 .
 \end{align*}
 
 \end{proof}
 
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 We now turn to the further restrictions on the holomorphic functions
 $\mathcal{L}(T)$ which result from the requirements that $T$ have support
 in a cone and that $T$ be tempered.
 
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 First consider the matter heuristically.  If the support of $T$ lies in a
 half-space $p\cdot a>A$, where $a$ is some fixed vector, then, for
 $\eta\in\Gamma$, the ``integral''
-
-% PCT-SOURCE: pdf=70 print=58 kind=display id=2-76
 \begin{equation}
-  \int e^{-ip\cdot(\xi-i\eta)}T(p)\,dp
+  \int e^{-\ii p\cdot(\xi-\ii\eta)}T(p)\,\dd p
   \tag{2-76}\label{eq:ch2-laplace-support-integral}
 \end{equation}
-
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 converges even better if the exponential is replaced by
-
-% PCT-SOURCE: pdf=70 print=58 kind=display
 \begin{equation*}
-  e^{-ip\cdot(\xi-i\eta)}e^{-t(p\cdot a-B)}
+  e^{-\ii p\cdot(\xi-\ii\eta)}e^{-t(p\cdot a-B)}
   \qquad\text{for }B<A,\quad t\geq0,
 \end{equation*}
-
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 i.e.,
-
-% PCT-SOURCE: pdf=70 print=58 kind=display
 \begin{equation*}
-  e^{tB}\int e^{-ip\cdot[\xi-i(\eta+ta)]}T(p)\,dp
+  e^{tB}\int e^{-\ii p\cdot[\xi-\ii(\eta+ta)]}T(p)\,\dd p
 \end{equation*}
-
-% PCT-SOURCE: pdf=70 print=58 kind=prose
 ought to exist for all $B<A$ and $t\geq0$.  But that means that if
 $\eta\in\Gamma$ then $\eta+ta\in\Gamma$ for all $t\geq0$ when $a$ is any
 vector such that the support of $T$ lies in the half-space
@@ -900,14 +683,12 @@ non-empty.  If $T$ is tempered, then $\Gamma$ contains at least one point
 $\eta=0$, because for $\eta=0$, the Laplace transform is the Fourier
 transform.
 
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 It need not have any other point; consider, for example,
 $T(p)=(1+|p|^2)^{-2n}$.  However, if $T$ is tempered \emph{and} the support
 of $T$ lies in a half-space, the combination of the preceding heuristic
 discussion and the fact that $\Gamma$ must be convex forces $\Gamma$ to be
 a cone.  That is the situation met in quantum field theory as we shall see.
 
-% PCT-SOURCE: pdf=71 print=59 kind=theorem id=2-7
 \begin{theorem}[2-7]\label{thm:ch2-laplace-halfspace}
 Suppose $T\in\mathcal{D}'_p$ and $\Gamma$ (a convex set of $\mathbb{R}^n$)
 consists of vectors $\eta$ such that $e^{-p\cdot\eta}T\in\mathcal{S}'_p$.
@@ -916,25 +697,19 @@ contains all points of the form $\eta+ta$ with $\eta\in\Gamma$ and
 $t\geq0$.
 \end{theorem}
 
-% PCT-SOURCE: pdf=71 print=59 kind=proof id=2-7
 \begin{proof}
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 Let $\epsilon>0$ and choose an infinitely differentiable function $q$ of
 one variable so that it is 1 for $x\geq A$ and 0 for $x\leq A-\epsilon$.
 Define $q_\epsilon(p)=q(p\cdot a)$.  The distribution
 $\exp[-p\cdot(\eta+ta)+At]T$ is in $\mathcal{D}'_p$ for $\eta\in\Gamma$,
 and has support in the half-space $p\cdot a\geq A$ because $T$ does.
 Furthermore, if $f\in\mathcal{D}$, $t\geq0$,
-
-% PCT-SOURCE: pdf=71 print=59 kind=display id=2-77
 \begin{equation}
   \{\exp[-p\cdot(\eta+ta)+At]T\}(f)
   =[\exp(-p\cdot\eta)T]
    \{\exp(-tp\cdot a+At)q_\epsilon f\}
   \tag{2-77}\label{eq:ch2-laplace-halfspace-test}
 \end{equation}
-
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 is independent of $q_\epsilon$ provided it satisfies the above requirements
 for some $\epsilon$.  Now the right-hand side of \eqref{eq:ch2-laplace-halfspace-test} has an extension to
 $\mathcal{S}'_p$ by continuity because
@@ -943,37 +718,28 @@ depends continuously on $f$.  Therefore,
 $\exp[-p\cdot(\eta+ta)]T\in\mathcal{S}'_p$, so $\eta+ta\in\Gamma$.
 \end{proof}
 
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 In the applications of Chapters 3 and 4, $T$ is defined for arguments
 $p_1,\ldots,p_n$ where each $p_j$ is a real four-vector, and vanishes
 unless each $p_j$ lies in or on the plus light cone.  This phrase will
 occur so frequently in the following that we introduce the notation
 $V_+$ to stand for all real four-vectors $p$ satisfying
-
-% PCT-SOURCE: pdf=71 print=59 kind=display id=2-notation-cone
 \begin{equation*}
   p^2=-(p^0)^2+\mathbf{p}^{\,2}<0,\qquad p^0>0,
 \end{equation*}
-
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 and $\overline{V}_+$ to stand for the closure of $V_+$, the set of $p$
 satisfying $p^2\leq0$, $p^0\geq0$.  Since, in Chapters 3 and 4, $T$ will
 also be tempered, application of Theorem \ref{thm:ch2-laplace-halfspace} yields that
 $\mathcal{L}(T)(\xi-ia)$ is analytic for all $a$ of the form
 $a=(a_1,\ldots,a_n)$ with $a_j\in V_+$, $j=1,\ldots,n$.  In the following,
-the tube $\mathbb{R}^n-i\Gamma$, where $\Gamma=(a_1,\ldots,a_n)$ with
+the tube $\mathbb{R}^n-\ii\Gamma$, where $\Gamma=(a_1,\ldots,a_n)$ with
 $a_j\in V_+$, $j=1,\ldots,n$, will be denoted $\mathcal{T}_n$, and
 sometimes called the tube without further specification.
 
-% PCT-SOURCE: pdf=71 print=59 kind=prose
 The Laplace transforms of distributions with support in a half-space
 possess stronger boundedness properties than \eqref{eq:ch2-laplace-converse-bound}.  While these can
-
-% PCT-SOURCE: pdf=72 print=60 kind=prose-continuation
 be proved for general tubes, we get an especially neat statement for
 $\mathcal{T}_n$ so we confine our attention to that case.
 
-% PCT-SOURCE: pdf=72 print=60 kind=theorem id=2-8
 \begin{theorem}[2-8]\label{thm:ch2-laplace-forward-cone}
 Let $T\in\mathcal{D}'_p$ and $e^{-p\cdot\eta}T\in\mathcal{S}'_p$ for all
 $\eta\in\Gamma$.  Here $p\cdot\eta$ stands for
@@ -981,96 +747,72 @@ $\sum_{j=1}^n\sum_{\mu=0}^3p_{j\mu}\eta_j^\mu$ and $\Gamma$ for the cone
 $\eta_j\in V_+$, $j=1,\ldots,n$.  Suppose $p\in\operatorname{supp}T$ implies
 $p_j\in\overline{V}_+$, $j=1,\ldots,n$.  Then, for each $\eta\in\Gamma$,
 there is a polynomial $P_\eta$ such that
-
-% PCT-SOURCE: pdf=72 print=60 kind=display id=2-78
 \begin{equation}
-  |\mathcal{L}(T)[\xi-i(\eta+a)]|
+  |\mathcal{L}(T)[\xi-\ii(\eta+a)]|
   \leq |P_\eta(\xi-ia)|
   \tag{2-78}\label{eq:ch2-laplace-forward-cone-bound}
 \end{equation}
-
-% PCT-SOURCE: pdf=72 print=60 kind=theorem-continuation id=2-8
 for all $\xi$ and all $a\in\Gamma$.
 
 For the converse, if $F$ is a function holomorphic in
-$\mathcal{T}_n=\mathbb{R}^{4n}-i\Gamma$ and satisfying the inequality \eqref{eq:ch2-laplace-forward-cone-bound}
+$\mathcal{T}_n=\mathbb{R}^{4n}-\ii\Gamma$ and satisfying the inequality \eqref{eq:ch2-laplace-forward-cone-bound}
 for each $\eta\in\Gamma$ and some polynomial $P_\eta$, then $F$ is the
 Laplace transform of a distribution with support in $\Gamma$.
 \end{theorem}
 
-% PCT-SOURCE: pdf=72 print=60 kind=proof id=2-8
 \begin{proof}
-% PCT-SOURCE: pdf=72 print=60 kind=prose
 The proof of \eqref{eq:ch2-laplace-forward-cone-bound} uses the Bros--Epstein--Glaser lemma.  See pages 21--27
 in M. Reed and B. Simon, \emph{Methods of Modern Mathematical Physics II,
 Fourier Analysis, Self-Adjointness}, Academic Press, 1975.
 
-% PCT-SOURCE: pdf=72 print=60 kind=prose
-Conversely, suppose $F$ is holomorphic in $\mathbb{R}^{4n}-i\Gamma=\mathcal{T}_n$
+Conversely, suppose $F$ is holomorphic in $\mathbb{R}^{4n}-\ii\Gamma=\mathcal{T}_n$
 and is bounded according to \eqref{eq:ch2-laplace-forward-cone-bound}.  Then it certainly satisfies \eqref{eq:ch2-laplace-converse-bound}, so
 it is the Laplace transform of a distribution $T\in\mathcal{D}'_p$ such
 that $e^{-p\cdot\eta}T\in\mathcal{S}'_p$ for all $\eta\in\Gamma$.  It
 remains to show that the support of $T$ lies inside $\Gamma$.  Pick a test
 function $g$ of compact support lying entirely outside $\Gamma$.  Then
-
-% PCT-SOURCE: pdf=72 print=60 kind=display
 \begin{align*}
   T(g)
   &=[e^{-p\cdot(\eta+a)}T][e^{p\cdot(\eta+a)}g] \\
   &=\{\mathcal{F}[e^{-p\cdot(\eta+a)}T]\}
     \{\overline{\mathcal{F}}[e^{p\cdot(\eta+a)}g]\} \\
-  &=\int F[\xi-i(\eta+a)]G[\xi-i(\eta+a)]\,d\xi,
+  &=\int F[\xi-\ii(\eta+a)]G[\xi-\ii(\eta+a)]\,\dd\xi,
 \end{align*}
-
-% PCT-SOURCE: pdf=72 print=60 kind=prose
 where
-
-% PCT-SOURCE: pdf=72 print=60 kind=display
 \begin{equation*}
-  G(\xi-i\eta)=(2\pi)^{-2n}
-  \int e^{ip\cdot(\xi-i\eta)}g(p)\,dp .
+  G(\xi-\ii\eta)=(2\pi)^{-2n}
+  \int e^{\ii p\cdot(\xi-\ii\eta)}g(p)\,\dd p .
 \end{equation*}
 
-% PCT-SOURCE: pdf=72 print=60 kind=prose
 Now, by appropriate choices of $a$ it can be arranged that, throughout the
 support of $g$, we have $p\cdot(\eta+a)<0$, and as $a\to\infty$,
 $p\cdot(\eta+a)\to-\infty$.  Then, as $a\to\infty$ in $\Gamma$,
-$G[\xi-i(\eta+a)]\to0$ in $\mathcal{S}_\xi$.  Therefore
-
-% PCT-SOURCE: pdf=72 print=60 kind=display
+$G[\xi-\ii(\eta+a)]\to0$ in $\mathcal{S}_\xi$.  Therefore
 \begin{align*}
   |T(g)|
-  &\leq\int d\xi\,|P_\eta(\xi-ia)|
-    |G[\xi-i(\eta+a)]| \\
-  &\leq\int\frac{dp}{[1+|p|^2]^k}
+  &\leq\int \dd\xi\,|P_\eta(\xi-ia)|
+    |G[\xi-\ii(\eta+a)]| \\
+  &\leq\int\frac{\dd p}{[1+|p|^2]^k}
     \sup_\xi[1+|\xi|^2]^k
-    |P_\eta(\xi-ia)G[\xi-i(\eta+a)]|\longrightarrow0
+    |P_\eta(\xi-ia)G[\xi-\ii(\eta+a)]|\longrightarrow0
 \end{align*}
-
-% PCT-SOURCE: pdf=72 print=60 kind=prose
 as $a\to\infty$ for sufficiently large fixed $k$.
 \end{proof}
 
-% PCT-SOURCE: pdf=73 print=61 kind=prose
 It is already visible in the example \eqref{eq:ch2-laplace-example-cosh} that a holomorphic function
 which is a Laplace transform need not have a boundary value even in the
 sense of distribution theory.  If it is the Laplace transform of a
 tempered distribution, $T$, however, the boundary value is just the
 Fourier transform of $T$.
 
-% PCT-SOURCE: pdf=73 print=61 kind=theorem id=2-9
 \begin{theorem}[2-9]\label{thm:ch2-laplace-boundary-value}
 Suppose $T\in\mathcal{S}'_p$ and $\mathcal{L}(T)$ exists for all
 $\eta\in\Gamma$ as described in Theorem \ref{thm:ch2-laplace-forward-cone}.  Then
-
-% PCT-SOURCE: pdf=73 print=61 kind=display id=2-79
 \begin{equation}
-  \lim_{\eta\to0}\int\mathcal{L}(T)(\xi-i\eta)f(\xi)\,d\xi
+  \lim_{\eta\to0}\int\mathcal{L}(T)(\xi-\ii\eta)f(\xi)\,\dd\xi
   =[\mathcal{F}(T)](f)
   \tag{2-79}\label{eq:ch2-laplace-boundary}
 \end{equation}
-
-% PCT-SOURCE: pdf=73 print=61 kind=theorem-continuation id=2-9
 that is, $\mathcal{L}(T)$ converges in $\mathcal{S}'_\xi$ to
 $\mathcal{F}(T)$ as $\eta\to0$ inside any closed cone in $\Gamma$.
 
@@ -1078,24 +820,17 @@ Conversely, if $\mathcal{L}(T)$ converges in $\mathcal{S}'_\xi$ as
 $\eta\to0$ in any such cone, $T$ is a tempered distribution.
 \end{theorem}
 
-% PCT-SOURCE: pdf=73 print=61 kind=proof id=2-9
 \begin{proof}
-% PCT-SOURCE: pdf=73 print=61 kind=prose
 The first statement of the theorem follows directly from \eqref{eq:ch2-laplace-convex-decomposition} and the
 argument given in connection with it; $\exp(-p\cdot\eta)T$ is a continuous
 function of $\eta$ with values in $\mathcal{S}'_p$ in the convex hull of any
 finite set of vectors of $\Gamma$.
 
-% PCT-SOURCE: pdf=73 print=61 kind=prose
 The converse statement means that
-
-% PCT-SOURCE: pdf=73 print=61 kind=display
 \begin{equation*}
   \left[\lim_{\eta\to0}\mathcal{F}(e^{-p\cdot\eta}T)\right](f)
   =\lim_{\eta\to0}T(e^{-p\cdot\eta}\mathcal{F}f)
 \end{equation*}
-
-% PCT-SOURCE: pdf=73 print=61 kind=prose
 exists for every $f\in\mathcal{S}$.  The completeness of $\mathcal{S}'$
 implies there exists a tempered distribution $T_1$ such that this limit is
 $T_1(\mathcal{F}f)$.  But for $\mathcal{F}f\in\mathcal{D}$, clearly
@@ -1103,25 +838,19 @@ $T_1(\mathcal{F}f)=T(\mathcal{F}f)$.  Therefore $T_1=T$ and $T$ is
 tempered.
 \end{proof}
 
-% PCT-SOURCE: pdf=73 print=61 kind=prose
 Theorem \ref{thm:ch2-laplace-boundary-value} gives a characterization of those holomorphic functions which
 arise by Laplace transformation from tempered distributions but it is not
 expressed very directly in terms of $\mathcal{L}(T)$ as a holomorphic
 function.  The last theorem of this section gives a more direct statement.
 
-% PCT-SOURCE: pdf=73 print=61 kind=theorem id=2-10
 \begin{theorem}[2-10]\label{thm:ch2-laplace-tempered-bound}
 Let $e^{-p\cdot\eta}T\in\mathcal{S}'_p$ for $\eta=0$ and $\eta\in\Gamma$,
 with $\Gamma$ as described in Theorem \ref{thm:ch2-laplace-forward-cone}.  Then, for each compact subset
 $K$ of $\Gamma$, there is a polynomial $P_K$ and an integer $r$ such that
-
-% PCT-SOURCE: pdf=73 print=61 kind=display id=2-80
 \begin{equation}
-  |\mathcal{L}(T)(\xi-it\eta)|\leq\frac{P_K(\xi)}{t^r}
+  |\mathcal{L}(T)(\xi-\ii t\eta)|\leq\frac{P_K(\xi)}{t^r}
   \tag{2-80}\label{eq:ch2-laplace-tempered-bound}
 \end{equation}
-
-% PCT-SOURCE: pdf=74 print=62 kind=theorem-continuation id=2-10
 for all $\xi$, all $t$ with $0<t<1$, and all $\eta\in K$.
 
 Conversely, if $F$ is a function holomorphic in $\mathcal{T}_n$ and
@@ -1129,85 +858,60 @@ satisfying \eqref{eq:ch2-laplace-tempered-bound}, $F=\mathcal{L}(T)$, where $T$ 
 distribution.
 \end{theorem}
 
-% PCT-SOURCE: pdf=74 print=62 kind=proof id=2-10
 \begin{proof}
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 To get \eqref{eq:ch2-laplace-tempered-bound}, we repeat part of the argument used in the proof of
 Theorem \ref{thm:ch2-laplace-holomorphy}.  It shows that we can write
 $e^{-tp\cdot\eta}T=a(p,t\eta)T_1$, where $T_1\in\mathcal{S}'_p$ and
 $a\in\mathcal{S}_p$ for all $\eta\in K$, $0<t<1$ and $a$ varies over a
-bounded set as $\eta$ varies.  Therefore, $\mathcal{L}(T)(\xi-it\eta)$ is
+bounded set as $\eta$ varies.  Therefore, $\mathcal{L}(T)(\xi-\ii t\eta)$ is
 the tempered distribution $T_1$ evaluated for the test function
-$(2\pi)^{-2n}a(p,t\eta)e^{-ip\cdot\xi}$.  Consequently, for some integers
+$(2\pi)^{-2n}a(p,t\eta)e^{-\ii p\cdot\xi}$.  Consequently, for some integers
 $k,l$ and some constant $C$
-
-% PCT-SOURCE: pdf=74 print=62 kind=display id=2-81
 \begin{equation}
-  |\mathcal{L}(T)(\xi-it\eta)|
-  \leq C\left\|e^{-ip\cdot\xi}a(p,t\eta)\right\|_{k,l}
+  |\mathcal{L}(T)(\xi-\ii t\eta)|
+  \leq C\left\|e^{-\ii p\cdot\xi}a(p,t\eta)\right\|_{k,l}
   \tag{2-81}\label{eq:ch2-laplace-tempered-seminorm}
 \end{equation}
 
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 A straightforward estimate shows that the right-hand side is $\leq
 t^{-r}P_K(\xi)$ for some integer $r$ as $\eta$ varies over $K$.
 
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 To verify the converse statement, we choose $f\in\mathcal{S}$ and study
-
-% PCT-SOURCE: pdf=74 print=62 kind=display
 \begin{equation*}
-  \int F(\xi-it\eta)f(\xi)\,d\xi=h(t)
+  \int F(\xi-\ii t\eta)f(\xi)\,\dd\xi=h(t)
 \end{equation*}
-
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 as a function of $t$.  We have
-
-% PCT-SOURCE: pdf=74 print=62 kind=display
 \begin{align*}
-  \frac{dh}{dt}(t)
-  &=\int\sum_j\frac{\partial}{\partial(\xi-it\eta)_j}
-    F(\xi-it\eta)(-i\eta_j)f(\xi)\,d\xi \\
-  &=\int F(\xi-it\eta)i\eta\mathbin{\cdot}
-    \frac{\partial}{\partial\xi}f(\xi)\,d\xi \\
+  \frac{\dd h}{\dd t}(t)
+  &=\int\sum_j\frac{\partial}{\partial(\xi-\ii t\eta)_j}
+    F(\xi-\ii t\eta)(-\ii\eta_j)f(\xi)\,\dd\xi \\
+  &=\int F(\xi-\ii t\eta)\ii\eta\mathbin{\cdot}
+    \frac{\partial}{\partial\xi}f(\xi)\,\dd\xi \\
   &\ \vdots \\
   h^{(j)}(t)
-  &=\int F(\xi-it\eta)
-    \left(i\eta\mathbin{\cdot}\frac{\partial}{\partial\xi}\right)^j
-    f(\xi)\,d\xi .
+  &=\int F(\xi-\ii t\eta)
+    \left(\ii\eta\mathbin{\cdot}\frac{\partial}{\partial\xi}\right)^j
+    f(\xi)\,\dd\xi .
 \end{align*}
 
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 Thus, by \eqref{eq:ch2-laplace-tempered-bound},
-
-% PCT-SOURCE: pdf=74 print=62 kind=display id=2-82
 \begin{equation}
   |h^{(j)}(t)|\leq C\sup_\xi
   \frac{|P_\eta(\xi)|
-  \left|\left(i\eta\mathbin{\cdot}\frac{\partial}{\partial\xi}\right)^j
+  \left|\left(\ii\eta\mathbin{\cdot}\frac{\partial}{\partial\xi}\right)^j
   f(\xi)\right|(1+|\xi|^2)^k}{t^r}
   \tag{2-82}\label{eq:ch2-laplace-tempered-derivative-bound}
 \end{equation}
-
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 for some fixed sufficiently large $k$.  Now
-
-% PCT-SOURCE: pdf=74 print=62 kind=display
 \begin{equation*}
-  h^{(j)}(t)=-\int_t^1d\tau\,h^{(j+1)}(\tau)+h^{(j)}(1)
+  h^{(j)}(t)=-\int_t^1\dd\tau\,h^{(j+1)}(\tau)+h^{(j)}(1)
 \end{equation*}
-
-% PCT-SOURCE: pdf=74 print=62 kind=prose
 so, for $r>1$,
-
-% PCT-SOURCE: pdf=74 print=62 kind=display id=2-83
 \begin{equation}
   |h^{(j)}(t)|\leq
   \left(\frac{1}{t^{r-1}}-1\right)\frac{E}{r-1}+|h^{(j)}(1)| .
   \tag{2-83}\label{eq:ch2-laplace-tempered-integrated-bound}
 \end{equation}
-
-% PCT-SOURCE: pdf=75 print=63 kind=prose
 where $E$ stands for the numerator in \eqref{eq:ch2-laplace-tempered-derivative-bound}.  This last equation shows
 that $h^{(j)}(t)$ is bounded in $t$ by a sum of terms, each of which goes to
 zero as $f\to0$ in $\mathcal{S}$, and of degree $-(r-1)$ in $t$.  We insert
@@ -1217,20 +921,15 @@ process with a $j$ sufficiently large, say $j=r+1$, and generalize \eqref{eq:ch2
 to cover the case in which $1/\tau$ has to be integrated, we see that
 $h(t)$ is bounded in $t$ by a sum of terms which approach zero as
 $f\to0$ in $\mathcal{S}$.  Therefore
-
-% PCT-SOURCE: pdf=75 print=63 kind=display
 \begin{equation*}
-  \lim_{t\to0}\int F(\xi-it\eta)f(\xi)\,d\xi
+  \lim_{t\to0}\int F(\xi-\ii t\eta)f(\xi)\,\dd\xi
 \end{equation*}
-
-% PCT-SOURCE: pdf=75 print=63 kind=prose
 exists and, by Theorems \ref{thm:ch2-laplace-holomorphy} and \ref{thm:ch2-laplace-boundary-value}, $F$ is the Laplace transform of a
 tempered distribution.
 \end{proof}
 
-% PCT-SOURCE: pdf=75 print=63 kind=prose
 We can roughly summarize the results of Theorems \ref{thm:ch2-laplace-halfspace} through \ref{thm:ch2-laplace-tempered-bound}: the
 holomorphic functions which are Laplace transforms of tempered
 distributions with supports in $\Gamma$ are holomorphic in the variable
-$\xi-i\eta$ in $\mathcal{T}_n$, and of polynomial growth in $\eta$ near
+$\xi-\ii\eta$ in $\mathcal{T}_n$, and of polynomial growth in $\eta$ near
 infinity and zero.

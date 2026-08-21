@@ -22,20 +22,20 @@ consider a system of particles labeled \(n\), with energy-momentum four-vectors
 and its current is defined by
 \begin{equation}
   T^{\mu i}(\mathbf x,t)
-  \equiv\sum_n p_n^\mu(t)\frac{dx_n^i(t)}{dt}
+  \equiv\sum_n p_n^\mu(t)\frac{\dd x_n^i(t)}{\dd t}
   \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr).
   \tag{2.8.2}\label{eq:2.8.2}
 \end{equation}
 These two definitions can be united into a single formula,
 \begin{equation}
   T^{\mu\nu}(x)
-  =\sum_n p_n^\mu(t)\frac{dx_n^\nu(t)}{dt}
+  =\sum_n p_n^\mu(t)\frac{\dd x_n^\nu(t)}{\dd t}
   \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
   \tag{2.8.3}\label{eq:2.8.3}
 \end{equation}
 where \(x_n^0(t)=t\). We note from Eq.~\eqref{eq:2.4.10} that
 \[
-  p_n^\nu=E_n\frac{dx_n^\nu}{dt},
+  p_n^\nu=E_n\frac{\dd x_n^\nu}{\dd t},
 \]
 so Eq.~\eqref{eq:2.8.3} can also be written as
 \begin{equation}
@@ -53,8 +53,8 @@ We can also write Eq.~\eqref{eq:2.8.3}, in analogy with
 Eq.~\eqref{eq:2.6.5}, as
 \begin{equation}
   T^{\mu\nu}(x)
-  =\sum_n\int d\tau\,p_n^\mu
-    \frac{dx_n^\nu}{d\tau}\,
+  =\sum_n\int \dd\tau\,p_n^\mu
+    \frac{\dd x_n^\nu}{\dd\tau}\,
     \delta^4\bigl(x-x_n(\tau)\bigr),
   \tag{2.8.5a}\label{eq:2.8.5a}
 \end{equation}
@@ -70,7 +70,7 @@ Returning to Eqs.~\eqref{eq:2.8.1} and \eqref{eq:2.8.2}, we see that
 \[
 \begin{aligned}
   \partial_i T^{\mu i}(\mathbf x,t)
-  &=-\sum_n p_n^\mu(t)\frac{dx_n^i(t)}{dt}
+  &=-\sum_n p_n^\mu(t)\frac{\dd x_n^i(t)}{\dd t}
     % NOTATION EXCEPTION: the differentiated particle coordinate must remain
     % explicit to distinguish it from the field coordinate.
     \frac{\partial}{\partial x_n^i}
@@ -78,7 +78,7 @@ Returning to Eqs.~\eqref{eq:2.8.1} and \eqref{eq:2.8.2}, we see that
   &=-\sum_n p_n^\mu(t)\partial_t
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)\\
   &=-\partial_t T^{\mu0}(\mathbf x,t)
-    +\sum_n\frac{dp_n^\mu(t)}{dt}
+    +\sum_n\frac{\dd p_n^\mu(t)}{\dd t}
      \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
 \end{aligned}
 \]
@@ -92,9 +92,9 @@ where \(G^\mu\) is the \emph{density of force},
 \begin{aligned}
   G^\mu(\mathbf x,t)
   &\equiv\sum_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-      \frac{dp_n^\mu(t)}{dt}\\
+      \frac{\dd p_n^\mu(t)}{\dd t}\\
   &=\sum_n\delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
-      \frac{d\tau}{dt}f_n^\mu(t).
+      \frac{\dd\tau}{\dd t}f_n^\mu(t).
 \end{aligned}
 \]
 If the particles are free, then \(p_n^\mu\) is constant and \(T^{\mu\nu}\)
@@ -108,7 +108,7 @@ strictly localized in space. In this case Eq.~\eqref{eq:2.8.6} gives
 \[
   \partial_\nu T^{\mu\nu}(x)
   =\sum_c\delta^3\bigl(\mathbf x-\mathbf x_c(t)\bigr)
-    \frac{d}{dt}\sum_{n\in c}p_n^\mu(t),
+    \frac{\dd}{\dd t}\sum_{n\in c}p_n^\mu(t),
 \]
 where \(\mathbf x_c(t)\) is the location of the \(c\)th collision going on at
 time \(t\), and \(n\in c\) means we sum only over the particles participating
@@ -122,7 +122,7 @@ a gas of charged particles, with charges \(e_n\). Then
 Eqs.~\eqref{eq:2.8.6}, \eqref{eq:2.4.1}, and \eqref{eq:2.7.9} give
 \[
   \partial_\nu T^{\mu\nu}(x)
-  =\sum_n e_nF^\mu{}_\rho(x)\frac{dx_n^\rho}{dt}
+  =\sum_n e_nF^\mu{}_\rho(x)\frac{\dd x_n^\rho}{\dd t}
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr),
 \]
 and, using Eq.~\eqref{eq:2.6.4}, this gives
@@ -176,7 +176,7 @@ Comparing Eq.~\eqref{eq:2.8.8} with Eq.~\eqref{eq:2.8.11}, we are led to
 redefine the energy-momentum tensor as
 \begin{equation}
   T^{\mu\nu}
-  =\sum_n p_n^\mu\frac{dx_n^\nu}{dt}
+  =\sum_n p_n^\mu\frac{\dd x_n^\nu}{\dd t}
     \delta^3\bigl(\mathbf x-\mathbf x_n(t)\bigr)
    +T_{\mathrm{em}}^{\mu\nu}.
   \tag{2.8.12}\label{eq:2.8.12}
@@ -194,7 +194,7 @@ Just as the integral of the charge density \(J^0\) is the total charge, the
 integral of the density \(T^{\mu0}\) of \(p^\mu\) is the total \(p^\mu\):
 \begin{equation}
   p^\mu_{\mathrm{total}}
-  =\int d^3x\,T^{\mu0}(\mathbf x,t).
+  =\int \dd^3x\,T^{\mu0}(\mathbf x,t).
   \tag{2.8.14}\label{eq:2.8.14}
 \end{equation}
 That this is a constant four-vector can be shown in the same way that we showed

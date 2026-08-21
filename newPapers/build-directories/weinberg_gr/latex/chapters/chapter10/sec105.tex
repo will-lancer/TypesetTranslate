@@ -32,7 +32,7 @@ needed in \eqref{eq:10.4.14} and \eqref{eq:10.4.16} by the
 \begin{equation}
   T_{ij}(\mathbf{k},\omega)
   \simeq
-  \int d^3x\,T_{ij}(\mathbf{x},\omega).
+  \int \dd^3x\,T_{ij}(\mathbf{x},\omega).
   \tag{10.5.2}\label{eq:10.5.2}
 \end{equation}
 This can be rewritten in a useful way by using the conservation laws in the
@@ -52,12 +52,12 @@ Multiplying by \(x^ix^j\) and integrating over \(\mathbf{x}\), we find
 \begin{equation}
   D_{ij}(\omega)
   \equiv
-  \int d^3x\,x^ix^jT^{00}(\mathbf{x},\omega).
+  \int \dd^3x\,x^ix^jT^{00}(\mathbf{x},\omega).
   \tag{10.5.4}\label{eq:10.5.4}
 \end{equation}
 The power per solid angle is therefore
 \begin{equation}
-  \frac{dP}{d\Omega}
+  \frac{\dd P}{\dd\Omega}
   =
   \frac{G\omega^6}{4\pi}
   \Lambda_{ij,lm}(\widehat{\mathbf{k}})
@@ -68,11 +68,11 @@ If the source is a sum of Fourier components, then the power radiated is a
 sum of terms such as \eqref{eq:10.5.5}. If the source is a Fourier integral
 like \eqref{eq:10.4.1}, then the energy emitted per solid angle is
 \begin{equation}
-  \frac{dE}{d\Omega}
+  \frac{\dd E}{\dd\Omega}
   =
   \frac12G\Lambda_{ij,lm}(\widehat{\mathbf{k}})
   \int_0^\infty
-  \omega^6D_{ij}^*(\omega)D_{lm}(\omega)\,d\omega.
+  \omega^6D_{ij}^*(\omega)D_{lm}(\omega)\,\dd\omega.
   \tag{10.5.6}\label{eq:10.5.6}
 \end{equation}
 
@@ -81,12 +81,12 @@ The coefficients \(D_{ij}(\omega)\) in \eqref{eq:10.5.5} and
 \(\widehat{\mathbf{k}}\) of the emitted radiation, so we can do the
 integral over solid angle once and for all. We use the formulas
 \[
-  \int d\Omega\,\widehat k_i\widehat k_j
+  \int \dd\Omega\,\widehat k_i\widehat k_j
   =
   \frac{4\pi}{3}\delta_{ij},
 \]
 \[
-  \int d\Omega\,
+  \int \dd\Omega\,
   \widehat k_i\widehat k_j\widehat k_l\widehat k_m
   =
   \frac{4\pi}{15}
@@ -100,7 +100,7 @@ integral over solid angle once and for all. We use the formulas
 invariance; the numerical coefficients can be calculated by contracting
 \(i\) with \(j\) and \(l\) with \(m\).) We then find
 \[
-  \int d\Omega\,
+  \int \dd\Omega\,
   \Lambda_{ij,lm}(\widehat{\mathbf{k}})
   =
   \frac{2\pi}{15}
@@ -131,7 +131,7 @@ whereas for a smooth distribution of frequencies the total emitted energy is
   \left[
     D_{ij}^*(\omega)D_{ij}(\omega)
     -\frac13\left|D_{ii}(\omega)\right|^2
-  \right]d\omega.
+  \right]\dd\omega.
   \tag{10.5.8}\label{eq:10.5.8}
 \end{equation}
 
@@ -162,7 +162,7 @@ solids, it is often quite difficult to evaluate the Fourier transform
 \begin{equation}
   D_{ij}(t)
   \equiv
-  \int d^3x\,x^ix^jT^{00}(\mathbf{x},t),
+  \int \dd^3x\,x^ix^jT^{00}(\mathbf{x},t),
   \tag{10.5.9}\label{eq:10.5.9}
 \end{equation}
 and then evaluate \(D_{ij}(\omega)\) by expressing \(D_{ij}(t)\) as a
@@ -170,7 +170,7 @@ Fourier integral,
 \begin{equation}
   D_{ij}(t)
   =
-  \int_0^\infty d\omega\,D_{ij}(\omega)e^{-\ii\omega t}
+  \int_0^\infty \dd\omega\,D_{ij}(\omega)e^{-\ii\omega t}
   +\text{c.c.},
   \tag{10.5.10}\label{eq:10.5.10}
 \end{equation}
@@ -188,28 +188,28 @@ the coordinates \(x^i\) in the integral \eqref{eq:10.5.4} for \(D_{ij}\)?
 In principle, it does not matter. When we shift the origin of coordinates by
 an amount \(a^i\), we change \(D_{ij}\) into
 \begin{align*}
-  \int &(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},t)\,d^3x\\
+  \int &(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},t)\,\dd^3x\\
   ={}&
-  \int x^ix^jT^{00}(\mathbf{x},t)\,d^3x
-  -a^i\int x^jT^{00}(\mathbf{x},t)\,d^3x
-  -a^j\int x^iT^{00}(\mathbf{x},t)\,d^3x
-  +a^ia^j\int T^{00}(\mathbf{x},t)\,d^3x.
+  \int x^ix^jT^{00}(\mathbf{x},t)\,\dd^3x
+  -a^i\int x^jT^{00}(\mathbf{x},t)\,\dd^3x
+  -a^j\int x^iT^{00}(\mathbf{x},t)\,\dd^3x
+  +a^ia^j\int T^{00}(\mathbf{x},t)\,\dd^3x.
 \end{align*}
 But conservation of energy and momentum tells us that the last three terms
 are at most linear functions of time, because
 \[
-  \frac{\partial}{\partial t}\int T^{00}(\mathbf{x},t)\,d^3x
+  \frac{\partial}{\partial t}\int T^{00}(\mathbf{x},t)\,\dd^3x
   =
-  -\int\partial_iT^{i0}(\mathbf{x},t)\,d^3x
+  -\int\partial_iT^{i0}(\mathbf{x},t)\,\dd^3x
   =0,
 \]
 \[
   \frac{\partial^2}{\partial t^2}
-  \int x^iT^{00}(\mathbf{x},t)\,d^3x
+  \int x^iT^{00}(\mathbf{x},t)\,\dd^3x
   =
-  \int x^i\partial_j\partial_kT^{jk}(\mathbf{x},t)\,d^3x
+  \int x^i\partial_j\partial_kT^{jk}(\mathbf{x},t)\,\dd^3x
   =
-  -\int\partial_jT^{ij}(\mathbf{x},t)\,d^3x
+  -\int\partial_jT^{ij}(\mathbf{x},t)\,\dd^3x
   =0.
 \]
 Thus the shift in origin does not affect the Fourier components with
@@ -217,9 +217,9 @@ Thus the shift in origin does not affect the Fourier components with
 \begin{equation}
   D_{ij}(\omega)
   \equiv
-  \int x^ix^jT^{00}(\mathbf{x},\omega)\,d^3x
+  \int x^ix^jT^{00}(\mathbf{x},\omega)\,\dd^3x
   =
-  \int(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},\omega)\,d^3x.
+  \int(x^i-a^i)(x^j-a^j)T^{00}(\mathbf{x},\omega)\,\dd^3x.
   \tag{10.5.12}\label{eq:10.5.12}
 \end{equation}
 However, it is only when we take \(T^{00}\) as the energy density of the
@@ -269,7 +269,7 @@ the tube ends, these ends will in general be displaced by amounts
 \[
   \delta(z,t)
   \equiv
-  \int v(z,t)\,dt
+  \int v(z,t)\,\dd t
   =
   \epsilon_{\mathrm{osc}}v_s\omega^{-1}\cos kz\cos(\omega t+\phi).
 \]
@@ -280,7 +280,7 @@ here by
   =
   n_in_jA
   \left(
-    \int_0^L\rho_1(z,t)z^2\,dz
+    \int_0^L\rho_1(z,t)z^2\,\dd z
     +L^2\rho_0\delta(L,t)
   \right),
 \]
@@ -319,7 +319,7 @@ vanishes, that is, when \(v\) is greatest:
 \[
   E
   =
-  \frac12\rho_0A\int_0^Lv_{\max}^2(z)\,dz
+  \frac12\rho_0A\int_0^Lv_{\max}^2(z)\,\dd z
   =
   \frac14Mv_s^2\epsilon_{\mathrm{osc}}^2.
 \]
@@ -390,7 +390,7 @@ coordinates
 \begin{equation}
   I_{ij}
   \equiv
-  \int d^3x'\,x'_ix'_j\rho(\mathbf{x}').
+  \int \dd^3x'\,x'_ix'_j\rho(\mathbf{x}').
   \tag{10.5.21}\label{eq:10.5.21}
 \end{equation}
 For simplicity, let us consider rotation around one of the principal axes of

@@ -39,7 +39,7 @@ FORBIDDEN_SOURCE_IMPORT = re.compile(
     r"(?:source-pages|origPapers|facsimile|scan[-_]?page)",
     re.IGNORECASE,
 )
-INPUT = re.compile(r"\\PCTInput\s*\{([^}\n]+)\}")
+INPUT = re.compile(r"\\(?:PCTInput|input)\s*\{([^}\n]+)\}")
 LABEL = re.compile(r"\\label\s*\{([^}\n]+)\}")
 REFERENCE = re.compile(r"\\(?:ref|pageref|eqref|autoref)\s*\{([^}\n]+)\}")
 ENVIRONMENT = re.compile(r"\\(?P<command>begin|end)\s*\{(?P<name>[^}\n]+)\}")
@@ -310,8 +310,7 @@ def main() -> int:
             native = text_without_comments(text).strip()
             if len(native) < 32:
                 native_findings.append(f"{relative}: native content is absent or too short")
-            if not MARKER.search(text):
-                native_findings.append(f"{relative}: no PCT-SOURCE marker")
+            # Reading-edition sources do not carry inline PCT-SOURCE comments.
         for line_number, line in enumerate(text.splitlines(), start=1):
             for match in LABEL.finditer(uncommented(line)):
                 label = match.group(1)

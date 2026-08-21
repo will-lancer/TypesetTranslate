@@ -301,7 +301,7 @@ expected time to absorption with system equations:
 \begin{aligned}
 \E[N_i\vert F_1]
 &=1+\E[N_{i-1}\vert F_1]\cdot p_{i,i-1\vert F_1}\\
-&\quad+\E[N_i\vert F_1]\cdot p_{i,i\vert F_1}\\
+&\quad+\E[N_i\vert F_1]\cdot p_{i,\ii\vert F_1}\\
 &\quad+\E[N_{i+1}\vert F_1]\cdot p_{i,i+1\vert F_1}.
 \end{aligned}
 \]
@@ -309,25 +309,25 @@ expected time to absorption with system equations:
 % ZHOU-SOURCE-PAGE: 130 PRINTED: 114
 
 To calculate $P_{i,i-1\vert F_1}$, let's rewrite the probability as
-$P(x_{k+1}=i-1\vert x_k=i,F_1)$, $\forall k=0,1,\ldots$, to make the derivation step clearer:
+$P(x_{k+1}=\ii-1\vert x_k=\ii,F_1)$, $\forall k=0,1,\ldots$, to make the derivation step clearer:
 
 \[
 \begin{aligned}
-P(x_{k+1}=i-1\vert x_k=i,F_1)
-&=\frac{P(x_k=i,x_{k+1}=i-1,F_1)}{P(x_k=i,F_1)}\\
+P(x_{k+1}=\ii-1\vert x_k=\ii,F_1)
+&=\frac{P(x_k=\ii,x_{k+1}=\ii-1,F_1)}{P(x_k=\ii,F_1)}\\
 &=\frac{\begin{gathered}
-P(F_1\vert x_{k+1}=i-1,x_k=i)\\
-\cdot P(x_{k+1}=i-1\vert x_k=i)\cdot P(x_k=i)
-\end{gathered}}{P(F_1\vert x_k=i)\cdot P(x_k=i)}\\
-&=\frac{P(F_1\vert x_{k+1}=i-1)\cdot P(x_{k+1}=i-1\vert x_k=i)}{P(F_1\vert x_k=i)}\\
-&=\frac{\dfrac{i-1}{n}\cdot\dfrac{i(n-i)}{n(n-1)}}{i/n}
- =\frac{(n-i)\cdot(i-1)}{n(n-1)}.
+P(F_1\vert x_{k+1}=\ii-1,x_k=\ii)\\
+\cdot P(x_{k+1}=\ii-1\vert x_k=\ii)\cdot P(x_k=\ii)
+\end{gathered}}{P(F_1\vert x_k=\ii)\cdot P(x_k=\ii)}\\
+&=\frac{P(F_1\vert x_{k+1}=\ii-1)\cdot P(x_{k+1}=\ii-1\vert x_k=\ii)}{P(F_1\vert x_k=\ii)}\\
+&=\frac{\dfrac{\ii-1}{n}\cdot\dfrac{\ii(n-\ii)}{n(n-1)}}{\ii/n}
+ =\frac{(n-\ii)\cdot(\ii-1)}{n(n-1)}.
 \end{aligned}
 \]
 
 The first equation is simply the definition of conditional probability; the second equation is the
 application of Bayes' theorem; the third equation applies the Markov property. To derive
-$P(F_1\vert x_k=i)=i/n$, we again need to use symmetry. We have shown that if all the balls have
+$P(F_1\vert x_k=\ii)=\ii/n$, we again need to use symmetry. We have shown that if all the balls have
 different colors, then we have $P[F_1]=P[F_2]=\cdots=P[F_n]=1/n$. What is the probability of ending
 in a given color, labeled as $c$, if $i$ of the balls are of color $c$? It is simply $i/n$. To see
 that, we can label the color of each of the $i$ balls of color $c$ as $c_j$, $j=1,\ldots,i$ (even
@@ -335,22 +335,22 @@ though they are in fact the same color). Now it's obvious that all balls will en
 probability $1/n$. The probability for $c$ is the sum of probabilities of $c_j$'s, which gives the
 result $i/n$.
 
-Similarly we have $P(F_1\vert x_{k+1}=i-1)=(i-1)/n$. For $P(x_{k+1}=i-1\vert x_k=i)$, we use a
+Similarly we have $P(F_1\vert x_{k+1}=\ii-1)=(\ii-1)/n$. For $P(x_{k+1}=\ii-1\vert x_k=\ii)$, we use a
 basic counting method. There are $n(n-1)$ possible permutations to choose 2 balls out of $n$ balls. In
 order for one color 1 ball to change color, the second ball must be color 1, which has $i$ choices; the
-first ball needs to be another color, which has $(n-i)$ choices.
+first ball needs to be another color, which has $(n-\ii)$ choices.
 
 So
 \[
-P(x_{k+1}=i-1\vert x_k=i)=\frac{i(n-i)}{n(n-1)}.
+P(x_{k+1}=\ii-1\vert x_k=\ii)=\frac{\ii(n-\ii)}{n(n-1)}.
 \]
 
 Applying the same principles, we can get
 
 \[
 \begin{aligned}
-P(x_{k+1}=i\vert x_k=i,F_1)&=\frac{(n-i)\cdot 2i}{n(n-1)},\\
-P(x_{k+1}=i+1\vert x_k=i,F_1)&=\frac{(n-i)\cdot(i+1)}{n(n-1)}.
+P(x_{k+1}=\ii\vert x_k=\ii,F_1)&=\frac{(n-\ii)\cdot 2\ii}{n(n-1)},\\
+P(x_{k+1}=\ii+1\vert x_k=\ii,F_1)&=\frac{(n-\ii)\cdot(\ii+1)}{n(n-1)}.
 \end{aligned}
 \]
 
@@ -358,9 +358,9 @@ Plugging into $\E[N_i\vert F_1]$ and simplifying $\E[N_i\vert F_1]$ as $Z_i$, we
 
 \[
 \begin{aligned}
-(n-i)\cdot 2i\cdot Z_i
-&=n(n-1)+(n-i)(i+1)Z_{i+1}\\
-&\quad+(n-i)(i-1)Z_{i-1}.
+(n-\ii)\cdot 2\ii\cdot Z_i
+&=n(n-1)+(n-\ii)(\ii+1)Z_{i+1}\\
+&\quad+(n-\ii)(\ii-1)Z_{i-1}.
 \end{aligned}
 \]
 \end{solution}
