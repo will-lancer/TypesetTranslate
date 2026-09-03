@@ -1,0 +1,33 @@
+% Native TikZ reconstruction of Figure 6.3.
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,baseline=(current bounding box.center)]
+  \tikzset{BanksFermion/.style={line width=.62pt,postaction={decorate},
+    decoration={markings,mark=at position .5 with {\arrow{Stealth[length=5pt]}}}}}
+  % ---- momentum labels for the outgoing muons -------------------------
+  \node at (0,2.21)
+    {$K_+^\nu=\left(E_{\mathbf k},0,-|\mathbf k|\sin\theta,-|\mathbf k|\cos\theta\right)$};
+  \node at (0,-2.32)
+    {$K_-^\nu=\left(E_{\mathbf k},0,|\mathbf k|\sin\theta,|\mathbf k|\cos\theta\right)$};
+  % ---- incoming e^- (from the left) and e^+ (from the right) ----------
+  \draw[BanksFermion] (-3.16,0) -- (0,0);
+  \draw[BanksFermion] (3.12,0) -- (0,0);
+  % ---- outgoing muons along a single straight line through the vertex --
+  \draw[BanksFermion] (0,0) -- (2.39,1.45);
+  \draw[BanksFermion] (0,0) -- (-2.40,-1.45);
+  \fill (0,0) circle (2.2pt);
+  % ---- angle tick marks ------------------------------------------------
+  \draw[line width=.62pt] (1.10,-0.03) -- (1.10,0.11);
+  \draw[line width=.62pt]
+    ($(31.2:1.10)+(121.2:-0.04)$) -- ($(31.2:1.10)+(121.2:0.10)$);
+  \draw[line width=.62pt] (-1.10,0.03) -- (-1.10,-0.11);
+  \draw[line width=.62pt]
+    ($(211.2:1.10)+(301.2:-0.04)$) -- ($(211.2:1.10)+(301.2:0.10)$);
+  \node at (1.02,0.30) {$\theta$};
+  \node at (-1.11,-0.31) {$\theta$};
+  % ---- external particle labels ---------------------------------------
+  \node[left] at (-3.24,0) {$\ee^-$};
+  \node[right] at (3.20,0) {$\ee^+$};
+  \node[above right=-2pt] at (2.39,1.45) {$\mu^+$};
+  \node[below left=-2pt] at (-2.40,-1.45) {$\mu^-$};
+  \node at (-3.10,0.62) {$p_-^\nu=(E_{\mathbf p},0,0,-|\mathbf p|)$};
+  \node at (3.22,0.62) {$p_+^\nu=(E_{\mathbf p},0,0,|\mathbf p|)$};
+\end{tikzpicture}

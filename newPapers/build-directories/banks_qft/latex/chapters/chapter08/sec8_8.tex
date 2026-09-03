@@ -1,0 +1,771 @@
+% BANKS-SOURCE: pdf=128 print=118 kind=section id=8.8
+\subsection{Anomalies}
+
+% BANKS-SOURCE: pdf=128 print=118 kind=prose
+There are a variety of examples in quantum field theory where classical
+symmetries or gauge equivalences do not survive quantization
+\cite{banks-ref-100,banks-ref-101,banks-ref-102,banks-ref-103,banks-ref-104,banks-ref-105,banks-ref-106}. In
+four-dimensional space-time, this happens only for symmetries acting on chiral
+fermions.\footnote[15]{And to conformal symmetry. The breaking of classical
+conformal invariance is part of the theory of renormalization. In the language
+we will learn in Chapter 9, most marginal operators in field theory are
+marginal only to leading order. Conformally invariant quantum field theories
+typically occur only for isolated values of the couplings, called fixed points
+of the renormalization group.} Therefore, consider $M$ Weyl fermions, coupled
+to a U($M$) gauge potential.  The anomaly calculation below uses the Euclidean
+continuation, so its kinetic density is denoted by $\mathcal L_E$.
+\[
+  \mathcal L_E=\psi^\dagger\mathrm{i}\bar\sigma^\mu D_\mu\psi
+  \equiv\psi^\dagger\mathrm{i}\bar\sigma^\mu(\partial_\mu-A_\mu)\psi .
+\]
+Here $A_\mu=\mathrm{i}A_\mu{}^a\lambda_a$, where the $\lambda_a$ are the
+Gell--Mann basis for all Hermitian $M\times M$ matrices. At this point we
+will not specify which of the $A_\mu{}^a$ are dynamical (that is, are to be
+integrated over in the functional integral) and which are just external
+sources, which can be used to generate Green functions containing global
+symmetry currents.
+
+% BANKS-SOURCE: pdf=129 print=119 kind=prose
+The Euclidean Weyl matrices $\sigma^\mu=(\mathrm{i},\sigma)$ map left-handed
+into right-handed fermions. Note that in Euclidean space the rotation group is
+SU(2) $\times$ SU(2) (rather than the Lorentzian SL(2,$\mathbb C$)), so the
+(1,2) and (2,1) representations are not related by complex conjugation.
+$\bar\psi$ is an independent right-handed Euclidean Weyl field. The Weyl
+matrices satisfy
+\[
+\begin{aligned}
+  \sigma_\mu\sigma_\nu^\dagger
+    &=\delta_{\mu\nu}+\mathrm{i}
+      [\delta_{\mu0}\delta_{\nu i}-\delta_{\nu0}\delta_{\mu i}
+       +\epsilon_{\mu\nu i}]\sigma^i
+     \equiv\delta_{\mu\nu}+\mathrm{i}\eta^R_{\mu\nu i}\sigma^i,\\
+  \sigma_\mu^\dagger\sigma_\nu
+    &=\delta_{\mu\nu}+\mathrm{i}
+      [-\delta_{\mu0}\delta_{\nu i}+\delta_{\nu0}\delta_{\mu i}
+       -\epsilon_{\mu\nu i}]\sigma^i
+     \equiv\delta_{\mu\nu}+\mathrm{i}\eta^L_{\mu\nu i}\sigma^i .
+\end{aligned}
+\]
+
+The three-dimensional Levi-Civita symbol $\epsilon_{\mu\nu i}$ is defined to
+be zero if any of its indices is 0. The 't Hooft symbols $\eta^{L,R}$ form a
+basis for the space of (anti) self-dual tensors. The operators
+$(\sigma D)(\sigma^\dagger D)=\Delta_R$ and
+$(\sigma^\dagger D)(\sigma D)=\Delta_L$ map the spaces of right- and
+left-handed fermions into themselves. Their determinants are defined in a
+finite and gauge-invariant manner by the formula
+\[
+  \ln\det\left(\frac{\Delta_{L,R}}{\Delta^0_{L,R}}\right)
+  =\int_{s_0}^{\infty}\frac{\dd s}{s}\,
+    \operatorname{Tr}\left(\mathrm{e}^{s\Delta_{L,R}}
+    -\mathrm{e}^{s\Delta^0_{L,R}}\right).
+\]
+$\Delta^0_{L,R}$ are the values of the operators at vanishing $A_\mu$. The
+trace includes a sum over spin indices, internal symmetry indices, and an
+integral over Euclidean space-time. These formulae are valid if neither of the
+operators has a normalizable zero mode. In that case the two operators are
+negative definite and the integrals converge at their upper ends. When zero
+modes exist, the formula is valid for the restrictions of $\Delta_{L,R}$ to
+their non-zero eigenspaces. The determinants are given by the formal limit
+$s_0\to0$. There are divergences in this limit coming from the small-$s$
+singularities of
+\[
+  \langle x|\mathrm{e}^{s\Delta_{L,R}}|x\rangle .
+\]
+These are all concentrated in an infinitesimal neighborhood of the point $x$
+and can be absorbed into divergent coefficients times local functions of
+$A_\mu$ and its derivatives (this contributes to one-loop renormalization).
+By construction, everything is gauge-invariant. This tells us that any
+violation of gauge invariance in the determinant is due to the unitary
+operator which maps between left- and right-handed Hilbert spaces and is
+therefore a pure phase. If we have a parity-invariant gauge theory, that is we
+gauge only a subgroup of U($M$) under which the $M$ representation is real,
+then this phase cancels out, and the determinant is positive and
+gauge-invariant.
+
+The possible violations of local gauge invariance are restricted to an
+infinitesimal neighborhood of a point $x$, since we can choose gauge
+transformations that differ from the identity only in the neighborhood of
+$x$. Thus
+\[
+  \delta\ln\det[\mathrm{i}\sigma^\mu D_\mu]
+  =\int\!\dd^4x\,\delta A_\mu{}^a(x)\langle J^{\mu a}(x)\rangle
+  =D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle .
+\]
+
+% BANKS-SOURCE: pdf=130 print=120 kind=prose
+\[
+  J^{\mu a}\equiv\mathrm{i}\bar\psi\sigma^\mu(\lambda^a/2)\psi .
+\]
+Gauge invariance is equivalent to covariant conservation of the current
+induced in the vacuum by the background gauge potential. We must expect that
+any answer we get is independent of any cut-off parameters like $s_0$, which
+we introduce to make the calculation of the determinant finite, in the limit
+that $s_0\to0$. In this conclusion we anticipate the result of
+renormalization theory: \emph{any divergence in renormalizable local field
+theory can be eliminated by changing a finite number of parameters in the
+Lagrangian and redefining operators by a finite linear redefinition}.
+Dimensional analysis, and the requirement that the answer be odd under parity,
+then restricts us to
+\[
+\begin{aligned}
+  D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  ={}&\epsilon^{\mu\nu\alpha\beta}\mathcal A(M)
+  \bigl(d^{abc}\partial_\mu A_\nu{}^b\partial_\alpha A_\beta{}^c\\
+  &+g^{abcd}\partial_\mu A_\nu{}^b A_\alpha{}^c A_\beta{}^d\\
+  &+h^{abcde}A_\mu{}^b A_\nu{}^c A_\alpha{}^d A_\beta{}^e\bigr).
+\end{aligned}
+\]
+The coefficients must be group-covariant numerical tensors. In fact,
+$d^{abc}$ must be proportional to the unique invariant in the symmetric
+product of two adjoint representations of U($M$). This is defined by
+\[
+  \lambda^a\lambda^b=(\mathrm{i}f^{abc}+d^{abc})\lambda^c,
+\]
+where $f$ is the totally anti-symmetric structure constant and $d$ is
+totally symmetric. The equality follows from the fact that the $\lambda^a$
+are a basis for all Hermitian matrices and the symmetry properties from
+cyclicity of the trace. We have \emph{defined} $\mathcal A(M)$ so that
+$d^{abc}$ are precisely these coefficients.
+
+If we require the non-conservation equation to be covariant under gauge
+transformations, we get the unique answer
+\[
+  \mathcal A^a(x)\equiv D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =\epsilon^{\mu\nu\alpha\beta}\mathcal A(M)d^{abc}
+    G_{\mu\nu}{}^bG_{\alpha\beta}{}^c .
+\]
+However, in the non-abelian case, this covariance argument is inconsistent
+with an even more basic requirement. The functional differential operators
+\[
+  G^a(x)=\frac{1}{\mathrm{i}}D_\mu{}^{ab}
+    \frac{\delta}{\delta A_\mu{}^b(x)}
+\]
+satisfy the algebra
+\[
+  [G^a(x),G^b(y)]=\mathrm{i}f^{abc}G^c(x)\delta^4(x-y).
+\]
+This leads to the Wess--Zumino (WZ) consistency condition \cite{banks-ref-106}
+\[
+  G^a(x)\mathcal A^b(y)-G^b(y)\mathcal A^a(x)
+  =\mathrm{i}f^{abc}\mathcal A^c(x)\delta^4(x-y).
+\]
+The covariant formula doesn't satisfy this condition. However, it can be shown
+that the difference between the covariant formula and the consistent one we
+will derive below is the variation of a local functional. Thus, the
+ambiguities of renormalization can turn one into the other. By contrast, we
+will see that no such local redefinition of the action can set $\mathcal A^a=0$.
+
+\BanksImplicitHook{I-CH08-011}
+
+The simplest derivation of the anomaly equation starts by regulating the
+formula for $D_\mu{}^{ab}\langle J^{\mu b}\rangle$. We use fermion functional
+integration to write
+
+% BANKS-SOURCE: pdf=131 print=121 kind=equation
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =\mathrm{i}\int\!\dd^4x\,
+  \operatorname{tr}\left(\frac{\lambda^a}{2}
+  \left\langle x\left|(\sigma^\mu D_\mu)^{-1}
+  \sigma_\mu[D_\mu,\omega]\right|x\right\rangle\right).
+\]
+Here $\omega$ is the space-time-dependent, Hermitian-matrix-valued,
+infinitesimal gauge parameter. The commutator is taken in the sense of
+differential operators and functions, as well as in the sense of matrices.
+The lower-case $\operatorname{tr}$ means trace only over spin and gauge
+indices.
+
+We now use two formulae for $(\sigma^\mu D_\mu)^{-1}$:
+\[
+\begin{aligned}
+  (\sigma^\mu D_\mu)^{-1}
+    &=\Delta_R^{-1}\sigma_\mu^\dagger D^\mu
+      =-\int_{s_0}^{\infty}\!\dd s\,
+        \mathrm{e}^{s\Delta_R}\sigma_\mu^\dagger D^\mu,\\
+  (\sigma^\mu D_\mu)^{-1}
+    &=\sigma_\mu^\dagger D^\mu\Delta_L^{-1}
+      =-\sigma_\mu^\dagger D^\mu
+        \int_{s_0}^{\infty}\!\dd s\,\mathrm{e}^{s\Delta_L} .
+\end{aligned}
+\]
+We use these two forms in the two different terms of the commutator. With
+$s_0$ finite, we are perfectly justified in using cyclicity of the trace to
+write
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =-\mathrm{i}\int\!\dd^4x\,\operatorname{tr}\left(
+  \frac{\lambda^a}{2}\int_{s_0}^{\infty}\!\dd s\,
+  \langle x|\mathrm{e}^{s\Delta_R}\Delta_R\omega
+  -\Delta_L\mathrm{e}^{s\Delta_L}\omega|x\rangle\right).
+\]
+We note that $\Delta_L\mathrm{e}^{s\Delta_L}=(\dd/\dd s)\mathrm{e}^{s\Delta_L}$
+and $\mathrm{e}^{s\Delta_R}\Delta_R=(\dd/\dd s)\mathrm{e}^{s\Delta_R}$,
+which enables us to do the $s$ integral:
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =\mathrm{i}\int\!\dd^4x\,\operatorname{tr}\left(
+  \frac{\lambda^a}{2}\langle x|
+  \mathrm{e}^{s_0\Delta_R}-\mathrm{e}^{s_0\Delta_L}|x\rangle\omega(x)\right).
+\]
+
+% BANKS-SOURCE: pdf=131 print=121 kind=prose
+Now we recall the Baker--Campbell--Hausdorff formula
+\[
+  \mathrm{e}^{s(A+B)}=\mathrm{e}^{sA}\mathrm{e}^{sB}
+  \mathrm{e}^{\frac{s^2}{2}[A,B]}
+  \prod_{n\geq3}\mathrm{e}^{s^n C_n},
+\]
+which is valid for any two operators $A$ and $B$. The operators $C_n$ are
+sums of $n$-fold multiple commutators of $A$ and $B$. In our present
+computation, we take $A=D^2$ and
+$B_{L,R}=\eta_{L,R}{}^{\mu\nu}(\sigma_a/2)F_{\mu\nu}$. Note that the spin
+traces of $B_{L,R}$ are both zero, as are the traces of the commutators
+$[A,B_{L,R}]$. In our computation we are taking the small-$s_0$ limit of the
+difference between the exponentials of $\Delta_L$ and $\Delta_R$. Taking the
+trace properties into account, we find that the leading term is
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =\frac{\mathrm{i}s_0^2}{2}\int\!\dd^4x\,
+  \operatorname{tr}\left(\frac{\lambda^a}{2}
+  \langle x|\mathrm{e}^{s_0D^2}|x\rangle
+  (B_R^2-B_L^2)(x)\omega(x)\right).
+\]
+Any surviving contribution must come from the singularity of
+$\langle x|\mathrm{e}^{s_0D^2}|x\rangle$, as $s_0\to0$. By using the BCH
+formula to expand around the operator with zero gauge potential, we can see
+that the leading singularity comes from the substitution $D^2\to\partial^2$,
+whence
+
+% BANKS-SOURCE: pdf=132 print=122 kind=equation
+\[
+  \langle x|\mathrm{e}^{s\partial^2}|x\rangle
+  =\int\frac{\dd^4p}{(2\pi)^4}\,\mathrm{e}^{-s_0p^2}
+  =\frac{1}{16\pi^2s_0^2} .
+\]
+The limit $s_0\to0$ is thus finite and gives
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =\frac{\mathrm{i}}{32\pi^2}\int\!\dd^4x\,
+  \operatorname{tr}\left(\frac{\lambda^a}{2}(B_R^2-B_L^2)(x)\omega(x)\right).
+\]
+This has the gauge-covariant form we anticipated, and is odd under parity. On
+doing all the traces we find
+\[
+  \int\!\dd^4x\,D_\mu{}^{ab}\langle J^{\mu b}(x)\rangle
+  =-\frac{\mathrm{i}}{32\pi^2}d^{abc}\int\!\dd^4x\,
+  \epsilon^{\mu\nu\alpha\beta}G_{\mu\nu}{}^bG_{\alpha\beta}{}^c .
+\]
+Here we have normalized all of the $\lambda^a$ matrices by
+$\operatorname{tr}(\lambda^a\lambda^b)=2\delta^{ab}$, and defined
+$\lambda^a\lambda^b=d^{abc}\lambda^c+\mathrm{i}f^{abc}\lambda^c$. In
+particular, $d^{ab0}=1$, and the generator of U(1), $\lambda^0/2=I/M$.
+The individual fermions are often chosen to have U(1) charge 1, in which case
+the U(1) SU($M$)$^2$ anomaly equation is multiplied by a factor of $M$.
+
+Another formula for $d^{abc}$ is
+\[
+  d^{abc}=2\operatorname{tr}\bigl(T^a[T^b,T^c]_+\bigr).
+\]
+This formula is important because we often gauge a subgroup G of U($M$), under
+which the $M$-dimensional representation breaks up into a direct sum of
+complicated representations of G. The anomaly for G will always be
+proportional to this trace. However, the normalizations of generators need not
+be the same as those we use here. A fairly standard convention in physics is
+to always normalize the generators in the lowest-dimensional representation of
+G by $\operatorname{tr}(T^aT^b)=\tfrac12\delta^{ab}$. This defines the
+normalization of the structure constants. In any other representation
+$\operatorname{tr}_R(T^aT^b)=D(R)\delta^{ab}$, where $D(R)$ is called the
+\emph{Dynkin Index} of the representation. Similarly, the symmetrized cubic
+trace which appears in any representation is proportional to the same
+invariant tensor (the analog of $d^{abc}$ for U($M$)) with a coefficient
+called $A(R)$, the \emph{anomaly} of the representation. Since $d^{aaa}=0$
+for all groups with anomalies and some values of $a$, and the structure of
+$d^{abc}$ is representation-independent, anomaly coefficients can be
+computed for any representation by finding a single generator such that
+$\operatorname{tr}T^3\ne0$ and being careful about normalization conventions.
+
+The Hermitian generators $T_a$ of a Lie algebra in a representation $R$ are
+generally complex matrices, and the matrices $(-T_a^*)$ give another unitary
+representation called the conjugate representation $\overline R$. It may
+happen that these two representations are equivalent, i.e.
+$(-T_a^*)=UT_aU^\dagger$, for a unitary matrix $U$. The product of a
+representation and its conjugate always contains the trivial representation.
+If $R$ is unitarily equivalent to $\overline R$ this means that there is an
+invariant product on $R$ itself, $F_i^*F_i=F_i(U^\dagger)_{ij}F_j$. If this
+product is symmetric, the representation is called real. There is a basis in
+which all of the $T_a$ are imaginary and anti-symmetric. If it is
+anti-symmetric (symplectic) then the representation is called pseudo-real. In
+either case it is easy to see that the anomaly vanishes. The anomaly
+coefficients are real, because the generators are Hermitian. Thus
+$A(R)=-A(\overline R)$. However, the coefficients are invariant under
+unitary equivalence, so $A(R)=A(\overline R)$ for real or pseudo-real
+representations.
+
+A simple example of a pseudo-real representation is the doublet of SU(2). We
+have $\sigma^*=-\sigma_2\sigma\sigma_2$. Since there is exactly one SU(2)
+representation of each integer
+
+% BANKS-SOURCE: pdf=133 print=123 kind=prose
+dimension, we see that all representations of SU(2) are either real or
+pseudo-real. There are no anomalies in pure SU(2) gauge theories.\footnote[16]{There
+is something called a \emph{global anomaly} \cite{banks-ref-107} in certain models. An
+example is an SU(2) gauge model with Weyl fermions in an odd number of
+doublet representations. The fermion determinant in such models is an odd
+function on the space of gauge potentials modulo gauge transformations, and
+the partition function vanishes. These models are inconsistent.} More
+generally, the anomalies vanish in any representation of O($n$) with $n\ne6$.
+The argument is simple. The anomaly coefficient
+\[
+  \operatorname{tr}\bigl(T^{mn}[T^{kl},T^{ij}]_+\bigr)
+\]
+must be a numerical tensor that is anti-symmetric in each pair of indices and
+symmetric under interchange of the pairs. All numerical tensors in SO($n$)
+can be built from products of Kronecker and Levi--Civita symbols. Only when
+$n=6$ is there a tensor, $\epsilon^{mnklij}$, with the appropriate symmetries.
+This is one of the famous ``accidents'' of the Cartan classification
+$\mathfrak{so}(6)=\mathfrak{su}(4)$, and the fundamental representation of
+SU(4) is the chiral spinor of SO(6). All other SO($n$) gauge theories are
+anomaly-free. The same is true for the unitary symplectic groups Sp(2$n$) and
+all of the exceptional groups.
+
+\BanksImplicitHook{I-CH08-012}
+
+% BANKS-SOURCE: pdf=133 print=123 kind=subsection id=8.8.1
+\subsubsection{The consistent anomaly equation}
+
+For a U(1) gauge group, the anomaly equation we have derived \emph{does}
+satisfy the WZ consistency condition. For the abelian case, our equation
+becomes
+\[
+  \partial_\mu\frac{\delta}{\mathrm{i}\,\delta A_\mu(x)}
+  \ln\det[\mathrm{i}\sigma^\mu D_\mu]
+  =\frac{\mathrm{i}}{2\pi^2}\int\!\dd^4x\,
+  \omega(x)F_{\mu\nu}\widetilde F^{\mu\nu} .
+\]
+We can find an action that gives rise to this formula by the following peculiar
+trick: introduce a five-dimensional manifold $X_5$ whose boundary is ordinary
+four-dimensional Euclidean space-time. Introduce \emph{any} smooth
+five-dimensional gauge potential whose boundary value is $A_\mu(x)$, with
+$A_5=0$ on the boundary. Define the Chern--Simons (CS) action by
+\[
+  S_{\rm CS}=-\frac{\mathrm{i}}{2\pi^2}
+  \int\!\dd^5x\,\epsilon^{MNKLR}A_MF_{NK}F_{LR} .
+\]
+Note that this does not depend on the five-dimensional metric on $X_5$. Under
+a five-dimensional gauge transformation, this goes into
+\[
+  \delta S_{\rm CS}=-\frac{\mathrm{i}}{2\pi^2}
+  \int\!\dd^5x\,\epsilon^{MNKLR}\partial_M\omega F_{NK}F_{LR} .
+\]
+On integrating by parts we see that the gauge variation comes only from the
+boundary, and exactly reproduces our anomaly equation.
+
+We can understand the reason for the existence of the CS action by looking at
+a six-dimensional U(1) gauge theory. The gauge-invariant operator
+\[
+  \epsilon^{M_1M_2M_3M_4M_5M_6}
+  F_{M_1M_2}F_{M_3M_4}F_{M_5M_6}
+\]
+
+% BANKS-SOURCE: pdf=134 print=124 kind=prose
+can be written
+\[
+  \epsilon^{M_1M_2M_3M_4M_5M_6}
+  F_{M_1M_2}F_{M_3M_4}F_{M_5M_6}
+  =\epsilon^{M_1M_2M_3M_4M_5M_6}
+  \partial_{M_1}(A_{M_2}F_{M_3M_4}F_{M_5M_6}) .
+\]
+The fact that the five-dimensional gauge variation of $\mathcal L_{\rm CS}$
+is a total divergence follows from the fact that the gauge-invariant
+six-dimensional operator is the total divergence of the lift of the CS
+Lagrangian density to a current density in six dimensions. This fact shows us
+how to generalize the CS trick to non-abelian theories. Simply define the
+non-abelian CS invariant by
+\[
+  \operatorname{tr}\left[\epsilon^{M_1M_2M_3M_4M_5M_6}
+  F_{M_1M_2}F_{M_3M_4}F_{M_5M_6}\right]
+  \equiv\epsilon^{M_1M_2M_3M_4M_5M_6}
+  \partial_{M_1}C_{M_2M_3M_4M_5M_6},
+\]
+and use the five-dimensional restriction of $C_{M_1\ldots M_5}$ to define
+the non-abelian CS action. By construction, its gauge variation on a
+5-manifold with boundary will depend only on the boundary values of the
+fields. Its variation is parity odd, dimension 4 (contains no dimensionful
+parameters), and satisfies the WZ condition. It will also reproduce our direct
+calculation for abelian subgroups.
+
+\BanksImplicitHook{I-CH08-013}
+
+We will show below that there can be no local four-dimensional action whose
+gauge variation reproduces the anomaly equation. It is a little harder to show
+that there is no other WZ-consistent form of the anomaly equation that cannot
+be written as the variation of a four-dimensional action. Furthermore, the
+difference between our covariant form of the anomaly equation and the
+consistent form \emph{can} be written as such a variation. Thus, the anomaly
+cannot be removed by some other method of regulation, and its form is
+completely determined by its value for abelian gauge fields (but one must
+examine all U(1) subgroups).\par\noindent
+Some of the proofs of the statements of this
+paragraph can be found in Chapter 22 of \cite{banks-ref-42} and references therein.
+
+% BANKS-SOURCE: pdf=134 print=124 kind=subsection id=8.8.2
+\subsubsection{The use of anomalies: consistency of gauge theories}
+
+The most striking consequence of the existence of anomalies is that some
+classical gauge theories are inconsistent at the quantum level. The lack of
+gauge invariance translates into either a violation of Lorentz invariance, in
+manifestly unitary gauges like the axial gauge, or a violation of unitarity, in
+covariant gauges. The first thing we should do is to check whether our
+favorite gauge theory of the real world, the standard SU(1,2,3) model, is
+anomaly-free. We know that the SU(2)$^3$ and SU(3)$^3$ anomalies cancel out,
+because the representations of these groups are real or pseudo-real. We are
+left with the U(1)$^3$, U(1)SU(2)$^2$, and U(1)SU(3)$^2$ anomalies. These give
+the following constraints on weak hypercharges:
+\[
+\begin{aligned}
+  6Y_q^3+3Y_{\bar u}^3+3Y_{\bar d}^3+2Y_l^3+Y_{\bar e}^3&=0,\\
+  3Y_q+Y_l&=0,\\
+  2Y_q+Y_{\bar u}+Y_{\bar d}&=0 .
+\end{aligned}
+\]
+% BANKS-SOURCE: pdf=135 print=125 kind=prose
+There is one more constraint, which has to do with the consistency of the
+coupling of the theory to gravity. In order to couple spinors to gravity, we
+have to introduce an SO(1,3) gauge potential, $\omega_\mu{}^{ab}$, to relate the
+spinor basis at one point of the space-time manifold to those at any other.
+The $ab$ indices refer to the adjoint representation of SO(1,3). In Einstein's
+theory of gravitation this is accomplished by introducing an orthonormal frame
+or \emph{Vierbein}, $e_a{}^\mu(x)$, in the tangent space to space-time at
+space-time coordinate $x$. The coordinate-frame space-time metric is
+$g^{\mu\nu}=e_a{}^\mu e_b{}^\nu\eta^{ab}$, where $\eta$ is the Minkowski metric
+in the target convention $\eta^{ab}=\operatorname{diag}(-,+,+,+)$ in the tangent
+space. $e^a{}_{\nu}$ is the inverse matrix to $e_a{}^\nu$. This
+defines the connection via the equation
+\[
+  \partial_\mu e_\nu{}^a-\partial_\nu e_\mu{}^a
+  =\omega_\mu{}^{ab}e_{\nu b}-\omega_\nu{}^{ab}e_{\mu b} .
+\]
+One can solve this equation algebraically for $\omega_\mu{}^{ab}$. If
+$e_\mu{}^a\longrightarrow\Lambda^a{}_b(x)e_\mu{}^b$ under local Lorentz
+transformations, it is easy to see that $\omega_\mu{}^{ab}$ transforms as a
+Lorentz connection. The Lagrangian for Weyl spinors coupled to gauge fields
+and gravity is
+\[
+  -\bar\psi\,\mathrm{i}e_a{}^\mu\sigma^a
+  (\partial_\mu-A_\mu-\mathrm{i}\omega_\mu{}^{ab}\sigma_{ab})\psi .
+\]
+$\sigma_{ab}$ are the matrices representing infinitesimal Lorentz
+transformations. A derivation quite analogous to what we have done above
+shows that there will be U(1) gravity$^2$ anomalies unless the traces of all
+U(1) generators vanish. Thus, in the standard model we must have
+\[
+  6Y_q+3Y_{\bar u}+3Y_{\bar d}+2Y_l+Y_{\bar e}=0 .
+\]
+We can use the three linear equations to eliminate $Y_l$, $Y_{\bar e}$, and
+$Y_{\bar d}$. Finally, we use the cubic equation to eliminate $Y_{\bar u}$
+in terms of $Y_q$. Remarkably, it turns into a quadratic equation, whose
+solutions are
+\[
+  Y_{\bar u}=-Y_q\pm3|Y_q| .
+\]
+\emph{It is then obvious that all of the hypercharges must be quantized in
+units of $Y_q$.} Recall that the normalization of all hypercharges is
+determined only once we have fixed the gauge coupling $g_1$.
+
+\BanksImplicitHook{I-CH08-014}
+
+There are two amazing things about this result. First, we have derived charge
+quantization from consistency conditions. Second, the consistency conditions
+require a non-trivial cancelation between quark and lepton contributions.
+Finally, the real-world hypercharges actually satisfy the conditions. All of
+this could be simply explained if the standard model emerged from the Higgs
+mechanism in a simple group at a high energy scale, $M_U\gg m_W$. This
+possibility was first investigated by Georgi and Glashow. The idea is to search
+for the simplest possibility, a simple group of rank 4 (the rank of the
+standard model) that contains SU(1,2,3). The list of simple groups of rank 4
+consists of SU(5), SO(8), SO(9), Sp(8), and $F_4$. The only one with an
+SU(1,2,3) subgroup is SU(5). SU(5) has no irreducible 15-dimensional
+representation, but the $R=\overline{5}\oplus10$ representation\footnote[17]{The
+10 is the anti-symmetric product of two 5 representations.} and its
+conjugate are 15-dimensional reducible representations. The
+
+% BANKS-SOURCE: pdf=136 print=126 kind=prose
+${\overline 5}+10$ has the right quantum-number assignments to fit the standard
+model. The $\bar d$ and lepton multiplets fit in the $\overline 5$ and the
+rest of the particles are in the 10.
+
+% BANKS-SOURCE: pdf=136 print=126 kind=subsection id=8.8.3
+\subsubsection{Violation of global symmetries}
+
+If we have a simple, non-abelian gauge group G, then the only possible
+anomalies in global symmetry currents have the form
+\[
+  \partial_\mu(J^\mu)^i=\frac{a^i}{32\pi^2}
+  G^A{}_{\mu\nu}\widetilde G^{A\mu\nu} .
+\]
+The anomaly coefficients have the form
+\[
+  a^i=\sum_R t_R^i d_R,
+\]
+where the sum is over irreducible representations of G and we are working in
+a basis where the generator $T^i$ of the global symmetry is diagonal. From
+this formula it is clear that if $T^i$ is the (traceless) generator of a
+simple non-abelian global symmetry then the anomaly vanishes. Further, while a
+generic model may have several U(1) global symmetries, their anomalies are all
+proportional to each other so only one linear combination of the U(1)s is
+anomalous. If our non-abelian gauge group has $k$ simple factors, then,
+barring fortuitous cancelations, there will be $k$ anomalous U(1)
+symmetries.
+
+There are two important applications of anomalous violation of global
+symmetries in the standard model. The first is the anomaly in the $U_A(1)$
+symmetry of QCD with massless quarks. In this case the gauge coupling $g_3^2$
+is not really a free dimensionless parameter. Rather, as we will see in our
+chapter on renormalization, $g_3$ varies with the momentum scale. It is small
+at very high momenta, but eventually becomes strong. The real parameter of
+massless QCD is a scale $\Lambda_{\rm QCD}$ at which perturbation theory in
+$g_3$ breaks down. There is thus no sense, except in processes at energy
+$\gg\Lambda_{\rm QCD}$, in which the violation of the $U_A(1)$ symmetry is
+small. Rather, the RHS of the anomaly equation is just estimated from
+dimensional analysis.
+
+This is a good thing, because our hypothesis of non-zero $\langle\bar q q\rangle$,
+which is necessary to the successful predictions of chiral symmetry for pion
+and kaon physics, implies that, if $U_A(1)$ is a symmetry, it is spontaneously
+broken. This would predict a ninth pseudo-Goldstone boson in the hadron
+spectrum, which could be created by the singlet axial current. The lightest
+particle with the right quantum numbers is the $\eta'$. It is no lighter than
+the proton. Chiral perturbation theory predicts that its mass is less than
+twice the pion mass. The anomaly saves us from this disaster, by telling us
+that $U_A(1)$ is not a symmetry of QCD.
+
+The God of the standard model must be Jewish, for there is a price to pay for
+this pleasant victory. When we rotated away the overall phase of the quark
+mass matrix, we used a $U_A(1)$ transformation. The anomaly equation tells us
+that this simply shifts the CP-violating parameter $\theta_{\rm QCD}$ in the
+gauge-field Lagrangian. Since experimental
+
+% BANKS-SOURCE: pdf=137 print=127 kind=prose
+evidence shows that CP is violated in the real world,\footnote[18]{And the
+phase in the CKM matrix gives a nice explanation of all observations to date.}
+we are left with no explanation of why this parameter is small. We might have
+tried to argue, on the basis of perturbation theory, that the operator
+$G^a{}_{\mu\nu}\widetilde G^{\mu\nu a}$ was a total divergence, with no effect
+on physics. The anomalous resolution of the problem of the ninth Goldstone
+boson requires us to abandon such a conjecture. Furthermore, as we will see
+when we study instantons, there is strong mathematical evidence that the total
+divergence does have an effect on non-perturbative physics. The strong CP
+problem is one of the deepest puzzles of particle physics. Both naive and more
+sophisticated estimates of the neutron electric dipole moment indicate that
+$\theta<10^{-9}$. Theoretical explanations of this small number have been
+proposed, but none has yet been experimentally verified.
+
+The second anomalous violation of a global symmetry in the standard model is
+the violation of baryon number by B SU(2)$^2$ anomalies. The only particles in
+the standard model which have both baryon number and non-singlet SU(2)$_L$ are
+the left-handed quark doublets. The reader should, at this point, be able to
+see that there is a baryon-number anomaly, as well as a lepton-number anomaly,
+but that $B-L$ is conserved.
+
+\BanksImplicitHook{I-CH08-015}
+
+Because the electro-weak couplings are small at
+the scale of the W-boson mass, electro-weak perturbation theory is a good
+approximation. $B$ violation is not seen in any order in the perturbation
+expansion. Instanton methods, which we will learn about in the last chapter,
+show that the violation of $B$ in few-particle reactions is of order
+\[
+  \Delta B/(VT)\sim m_W^4\mathrm{e}^{-8\pi^2/g_2^2}
+  \sim m_W^4\mathrm{e}^{-180} .
+\]
+This is of course invisible in laboratory experiments. It can be shown that,
+if the temperature of the early Universe reaches something of order 100 GeV,
+then electro-weak B-violating processes become much more probable. They may
+be part of the story of how the Universe developed an asymmetry between
+baryons and anti-baryons.
+
+\BanksImplicitHook{I-CH08-016}
+
+% BANKS-SOURCE: pdf=137 print=127 kind=subsection id=8.8.4
+\subsubsection{Anomaly matching and massless spectrum}
+
+Our final example of the use of anomaly equations uses non-anomalous global
+symmetries in a theory with a strongly interacting gauge invariance. We will
+work with the particular example of massless QCD with SU($N$) gauge group and
+$N_F$ species of massless quarks. In particular, we will concentrate on the
+case (approximately) relevant to the real world: $N=N_F=3$. Taking into
+account the $U_A(1)$ anomaly, this theory has a
+$G_F=\mathrm{U}(1)\times\mathrm{SU}(N_F)\times\mathrm{SU}(N_F)$ global
+symmetry, called the flavor group of the standard model (in the approximation
+of $N_F$ zero quark masses). Imagine trying to gauge this symmetry, but take
+all the gauge couplings very small.\footnote[19]{Once renormalization is taken
+into account, gauge couplings vary with energy scale. The statement that all
+the couplings are small means that they remain small throughout the energy
+range relevant to the following discussion.} Such a gauge theory is
+inconsistent, because of the anomalies. Note that the anomaly equations for
+$G_F$ are independent of the SU($N$) gauge fields, and so remain valid after
+one has
+
+% BANKS-SOURCE: pdf=138 print=128 kind=prose
+done the functional integral over these fields.\footnote[20]{There is a much
+more rigorous version of this quick and dirty argument, called the
+Adler--Bardeen theorem \cite{banks-ref-105}.} Let us add a collection of massless
+left-handed fermions, called spectators, in representations of $G_F$, which
+cancel out all of the anomalies.
+
+There is strong evidence that for $N_F/N$ sufficiently small (the critical
+value is of order $11/2$) a small SU($N$) gauge coupling in the extreme
+ultraviolet grows until an energy scale $\Lambda_{\rm QCD}$. Below that scale
+a perturbative description in terms of quarks and gluons is invalid. In fact,
+it is believed that the theory exhibits confinement: neither quarks nor gluons
+appear in the spectrum of asymptotic particle states. Instead, the particle
+states are created from the vacuum by color-singlet composite operators
+composed of $N$ quarks, $N$ anti-quarks, or a quark--anti-quark pair. The latter
+are called mesons, the former, baryons. Collectively they are known as
+hadrons.
+
+Far below the scale $\Lambda_{\rm QCD}$ there must be a consistent effective
+$G_F$ gauge theory containing the spectators and massless hadrons (if any).
+We immediately conclude that there must be massless hadrons, because
+otherwise there could be nothing to cancel out the anomaly of the spectator
+fields. One possibility is massless baryons in anomalous representations of
+$G_F$. We will look into this possibility in a moment. The other possibility
+is illustrated for U(1) subgroups of $G_F$ by the following Lagrangian:
+\[
+  \mathcal L=-\frac{f^2}{2}(\partial_\mu\phi)^2
+  +K\phi F_{\mu\nu}\widetilde F^{\mu\nu} .
+\]
+$\phi$ is an angle variable and represents the NGB of spontaneous U(1)
+breakdown. The U(1) symmetry is realized as a shift of $\phi$. For an
+appropriate choice of $K$, this Lagrangian can reproduce an anomalous
+symmetry transformation, which cancels out that of the spectators. Note that,
+if $G_F$ is explicitly broken by quark masses, then the massive pseudo-NGB
+will decay into ``photons'' of the U(1) subgroup, with an amplitude completely
+determined by the anomaly $K$ and the decay constant $f$. Such a computation
+in fact provides a quantitatively correct description of the decay of the
+$\pi^0$ into two Maxwell photons. The non-abelian generalization of this
+anomalous NGB Lagrangian was discovered by Wess and Zumino in the same paper
+\cite{banks-ref-106} as that in which they derived their consistency condition for anomalies.
+We will investigate it in the exercises.
+
+\BanksImplicitHook{I-CH08-017}
+
+So we appear to have a dichotomous choice of massless hadron spectrum: NGBs
+or massless baryons constrained by anomaly cancelation. Let's consider the
+second possibility. For $N=3$, the baryon fields have the form
+\[
+  B^{abc}{}_{\alpha\beta\gamma}
+  =\epsilon_{ijk}q^i{}_{\alpha a}q^j{}_{\beta b}q^k{}_{\gamma c}
+\]
+and
+\[
+  \overline B^{\alpha\beta\gamma}{}_{abc}
+  =\epsilon^{ijk}\bar q_{i a}{}^{\,\alpha}\bar q_{j b}{}^{\,\beta}
+  \bar q_{k c}{}^{\,\gamma} .
+\]
+Here we have used the notation that lower or upper Greek indices represent
+left-handed Weyl spinors. Lower early Latin indices are SU($N_f$)$_L$
+fundamental representations, whereas lower mid-alphabet Latin indices are the
+fundamental of SU(3). Upper Latin indices are anti-fundamental
+SU($N_f$)$_R$ or SU($N$) representations. The spin indices must be combined
+to spin $1/2$. The other possibility, massless spin-$3/2$ fields with gauge
+interaction, can be realized only in supergravity in anti-de Sitter space. The
+gauge group representation in that case is non-chiral and does not have
+anomalies. Furthermore, the spin-$3/2$ particles are supersymmetric partners
+of the graviton; so, if they were composites, the graviton too would have to
+be composite. Weinberg and Witten \cite{banks-ref-108} showed that a composite graviton
+cannot arise in a Lorentz-invariant local field theory.
+
+% BANKS-SOURCE: pdf=139 print=129 kind=prose
+We can immediately see that in the case $N=N_f=3$ the baryons cannot cancel
+out the spectator anomaly. For $N=3$ the baryons which transform under
+SU(3)$_L$ are of the form $\epsilon_{ijk}q_L^i q_L^j q_L^k$. The only
+complex representation of SU(3)$_L$ which appears in the product of three
+three-dimensional representations is the totally symmetric 10. If we
+consider the generator
+\[
+  T=\operatorname{diag}(1,1,-2)
+\]
+in the fundamental representation, then
+\[
+  T_{10}=\operatorname{diag}(3,3,-6,3,3,0,0,0,-3,-3) .
+\]
+If we have $L$ baryons in the 10 representation, this gives an SU(3)$^3$
+anomaly proportional to $-6(27)L$. The quark anomaly is instead $-18$
+(including the three from color) in the same units. The anomalies match only
+if $L=1/9$, which is absurd. We conclude that
+$\mathrm{U}(1)\times\mathrm{SU}_L(3)\times\mathrm{SU}_R(3)$ \emph{must}
+break down spontaneously to its anomaly-free
+$\mathrm{U}(1)\times\mathrm{SU}_V(3)$ subgroup. This is in fact the
+symmetry-breaking pattern observed for QCD in the real world.
+
+Another class of cases in which baryons cannot do the job is even $N$, with
+arbitrary $N_F<N_F^{(c)}$, where baryons are bosons. In fact, using one more
+general property of parity-symmetric gauge theories coupled to massless
+fermions, one can prove that anomaly matching is not possible for any $N$ and
+$N_F$. Let us give a mass to a single quark. I claim that all baryons
+containing that quark field are massive. The proof is due to Vafa and Witten,
+and follows the same line of argument as that we gave above to prove that
+vector-like symmetries were not spontaneously broken. Do the functional
+integral in steps, first doing the integral over fermion fields. The two-point
+function of baryons in an external field is given by
+\[
+  \epsilon^{i_1\ldots i_N}\epsilon_{j_1\ldots j_N}
+  G^{j_1}_{i_1}(x,y)\cdots G^{j_N}_{i_N}(x,y),
+\]
+where we have suppressed the spin and flavor indices on the quark Green
+functions. For the baryons in question, at least one of the Green functions is
+that of the massive quark. To all orders in perturbation theory in the
+external field, this Green function falls off exponentially at infinity. Vafa
+and Witten \cite{banks-ref-99} proved that this was true rigorously and that the exponential
+falloff was independent of the gauge field configuration. In a parity-symmetric
+gauge theory the fermion determinant
+$\det[\mathrm{i}\gamma^\mu D_\mu]=\det[-\Delta_{L,R}]$ for all
+configurations that do not have normalizable zero modes and is zero for those
+which do. Thus the full baryon Green function is an integral of the external
+field Green function with a positive weight function. The field-independent
+bound on the
+
+% BANKS-SOURCE: pdf=140 print=130 kind=prose
+exponential falloff shows that the baryon Green function falls off
+exponentially in Euclidean space. This implies that the baryon operators
+containing the massive quark cannot create massless particles from the
+vacuum.
+
+As a consequence, given a solution to the anomaly-matching condition for some
+value of $(N,N_F)$, which is postulated to give a massless baryon spectrum in
+that version of QCD, we should get another solution for $(N,N_F-1)$, with the
+same baryon multiplicities (the analog of the integer $L$ for $N=N_F=3$). It
+is straightforward but tedious to show that these conditions lead to the
+conclusion that there are no physically consistent solutions of the
+anomaly-matching conditions, even though there are mathematical solutions for
+particular values of $N$ and $N_F$. Thus, all versions of QCD spontaneously
+break their global symmetry to its anomaly-free vector U($N_F$) subgroup. If,
+as occurs in the real world, part of the anomalous symmetry is weakly gauged,
+with the anomaly canceled out by spectators (i.e. leptons in the real world),
+then we also get formulae (from the Wess--Zumino Lagrangian alluded to above)
+for the decay amplitudes of NGBs to weakly coupled gauge bosons.
+
+\BanksImplicitHook{I-CH08-018}
+
+Let us finally note that our current use of the anomaly equation shows that
+the anomaly cannot be removed by adding a local term to the four-dimensional
+Lagrangian. Indeed, we have seen that the anomaly equation seems in some cases
+to imply a massless NGB pole in the Green functions of currents. In fact what
+one can show \cite{banks-ref-109,banks-ref-110} is that the anomaly equation implies that Green
+functions involving three currents, one of which is anomalous, have a
+momentum-space discontinuity $\operatorname{disc}\mathcal A\propto\delta(q^2)$,
+where $q$ is the momentum carried by the anomalous current. The NGB pole is
+one way to achieve such a discontinuity; the other is a simple triangle
+diagram of massless fermions. In this diagram there is non-zero phase space
+for on-shell massless fermions to travel exactly parallel to each other,
+mocking up the discontinuity caused by a massless scalar pole. No other diagram
+has finite measure for such configurations, and this constitutes another proof
+of the Adler--Bardeen theorem that the anomaly is given exactly by the
+expressions we derived by naive manipulations, without any higher-order
+corrections. The fact that the anomaly equation implies massless singularities
+in Green functions shows us that one cannot find a local Lagrangian counterterm
+that removes it.
+
+\BanksImplicitHook{I-CH08-019}

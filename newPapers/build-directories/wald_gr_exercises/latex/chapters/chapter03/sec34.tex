@@ -1,0 +1,368 @@
+% Source: Wald GR, physical PDF pp. 60--66
+%         (printed pp. 47--53).
+% Coverage: Section 3.4, Methods for Computing Curvature; equations (3.4.1)--(3.4.28).
+% Figures/tables/footnotes: no figures, tables, or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Methods for Computing Curvature}\label{sec:3.4}
+
+In section 3.2 we defined the Riemann curvature tensor by proving existence of
+a tensor field which satisfies Eq.~\eqref{eq:3.2.3} for all covector fields $\omega_a$. However,
+this existence argument does not tell us directly how to calculate $R_{abc}{}^d$ given a metric
+$g_{ab}$. Since the ability to calculate curvature is crucial for solving Einstein's equation
+of general relativity, we devote this section to methods for calculating $R_{abc}{}^d$.
+
+\medskip
+\noindent\textbf{3.4a\quad Coordinate Component Method}
+
+To calculate the curvature by the coordinate component method, we begin by
+choosing a coordinate system. We express the derivative operator $\nabla_a$ in terms of the
+ordinary derivative $\partial_a$ of this coordinate system and the Christoffel symbol $\Gamma^c{}_{ab}$, as
+discussed in section 3.1. For a covector field $\omega_a$, we have
+\begin{equation}
+  \nabla_b\omega_c=\partial_b\omega_c-\Gamma^d{}_{bc}\omega_d,
+  \tag{3.4.1}\label{eq:3.4.1}
+\end{equation}
+and thus,
+\begin{equation}
+  \begin{aligned}
+    \nabla_a\nabla_b\omega_c
+    ={}&\partial_a(\partial_b\omega_c-\Gamma^d{}_{bc}\omega_d)\\
+    &-\Gamma^e{}_{ab}(\partial_e\omega_c-\Gamma^d{}_{ec}\omega_d)\\
+    &-\Gamma^e{}_{ac}(\partial_b\omega_e-\Gamma^d{}_{be}\omega_d).
+  \end{aligned}
+  \tag{3.4.2}\label{eq:3.4.2}
+\end{equation}
+Hence, Eq.~\eqref{eq:3.2.3} may be expressed as
+\begin{equation}
+  R_{abc}{}^d\omega_d
+  =\bigl[-2\partial_{[a}\Gamma^d{}_{b]c}
+  +2\Gamma^e{}_{c[a}\Gamma^d{}_{b]e}\bigr]\omega_d,
+  \tag{3.4.3}\label{eq:3.4.3}
+\end{equation}
+where we have used the commutativity of ordinary derivatives and the symmetry
+of $\Gamma^c{}_{ab}$, Eq.~\eqref{eq:3.1.9}. Since Eq.~\eqref{eq:3.4.3} holds for all $\omega_d$, we may
+\lq\lq cancel\rq\rq\ $\omega_d$ from both sides to obtain the desired formula for $R_{abc}{}^d$. Taking the components
+of the tensors appearing in this equation in the coordinate basis associated with our
+chart, we obtain the formula
+\begin{equation}
+  R_{\mu\nu\rho}{}^\sigma
+  =\frac{\partial}{\partial x^\nu}\Gamma^\sigma{}_{\mu\rho}
+  -\frac{\partial}{\partial x^\mu}\Gamma^\sigma{}_{\nu\rho}
+  +\sum_\alpha\left(\Gamma^\alpha{}_{\mu\rho}\Gamma^\sigma{}_{\alpha\nu}
+  -\Gamma^\alpha{}_{\nu\rho}\Gamma^\sigma{}_{\alpha\mu}\right),
+  \tag{3.4.4}\label{eq:3.4.4}
+\end{equation}
+where we have used the definition of the ordinary derivative as the partial derivative
+of components with respect to the coordinates.
+
+Thus, to calculate $R_{abc}{}^d$ starting from $g_{ab}$, we first obtain the components, $g_{\mu\nu}$, of
+the metric in our coordinate basis. We then calculate $\Gamma^\sigma{}_{\mu\nu}$ by Eq.~\eqref{eq:3.1.30} (or
+by reading them off from the components of the geodesic equation~\eqref{eq:3.3.5} calculated
+from the Lagrangian, Eq.~\eqref{eq:3.3.14}). Finally we calculate the components $R_{\mu\nu\rho}{}^\sigma$
+via Eq.~\eqref{eq:3.4.4}. The Ricci tensor components then may be obtained by contracting Eq.~\eqref{eq:3.4.4}:
+\begin{equation}
+  \begin{aligned}
+    R_{\mu\rho}
+    &=\sum_\nu R_{\mu\nu\rho}{}^\nu\\
+    &=\sum_\nu\frac{\partial}{\partial x^\nu}\Gamma^\nu{}_{\mu\rho}
+    -\frac{\partial}{\partial x^\mu}\left(\sum_\nu\Gamma^\nu{}_{\nu\rho}\right)
+    +\sum_{\alpha,\nu}\left(\Gamma^\alpha{}_{\mu\rho}\Gamma^\nu{}_{\alpha\nu}
+    -\Gamma^\alpha{}_{\nu\rho}\Gamma^\nu{}_{\alpha\mu}\right).
+  \end{aligned}
+  \tag{3.4.5}\label{eq:3.4.5}
+\end{equation}
+
+We take this opportunity to point out several useful facts for calculations in
+coordinate bases. We may write the coordinate basis components, $g_{\mu\nu}$, of the metric
+as a matrix. The components, $g^{\mu\nu}$, of the inverse metric $g^{ab}$ will then be the inverse
+of the matrix $(g_{\mu\nu})$. We define $g$ to be the determinant of $(g_{\mu\nu})$,
+\begin{equation}
+  g=\det(g_{\mu\nu}).
+  \tag{3.4.6}\label{eq:3.4.6}
+\end{equation}
+Then, as discussed in appendix B, the natural volume element on the manifold $M$
+induced by $g_{ab}$ is $\sqrt{|g|}\,\dd x^1\ldots \dd x^n$.
+
+A simple formula may be derived for the contracted Christoffel symbol $\Gamma^a{}_{a\mu}$. From
+Eq.~\eqref{eq:3.1.30} we have
+\begin{equation}
+  \Gamma^a{}_{a\mu}
+  =\sum_\nu\Gamma^\nu{}_{\nu\mu}
+  =\frac{1}{2}\sum_{\nu,\alpha}g^{\nu\alpha}
+  \frac{\partial g_{\nu\alpha}}{\partial x^\mu}.
+  \tag{3.4.7}\label{eq:3.4.7}
+\end{equation}
+But, using the formula for the inverse of a matrix, it is not difficult to show that
+\begin{equation}
+  \sum_{\nu,\alpha}g^{\nu\alpha}\frac{\partial g_{\nu\alpha}}{\partial x^\mu}
+  =\frac{1}{g}\frac{\partial g}{\partial x^\mu}.
+  \tag{3.4.8}\label{eq:3.4.8}
+\end{equation}
+Thus, we have
+\begin{equation}
+  \Gamma^a{}_{a\mu}
+  =\frac{1}{2}\frac{1}{g}\frac{\partial g}{\partial x^\mu}
+  =\frac{\partial}{\partial x^\mu}\ln\sqrt{|g|}.
+  \tag{3.4.9}\label{eq:3.4.9}
+\end{equation}
+This is a useful formula since $\Gamma^a{}_{ab}$ appears in the expression for the Ricci tensor $R_{ab}$
+as well as in the formula for the divergence of an arbitrary vector field, $T^a$, in terms
+of its coordinate basis components. Indeed, using Eq.~\eqref{eq:3.4.9}, we have
+\begin{equation}
+  \begin{aligned}
+    \nabla_aT^a
+    &=\partial_aT^a+\Gamma^a{}_{ab}T^b\\
+    &=\sum_\mu\frac{1}{\sqrt{|g|}}\frac{\partial}{\partial x^\mu}
+    \bigl(\sqrt{|g|}T^\mu\bigr).
+  \end{aligned}
+  \tag{3.4.10}\label{eq:3.4.10}
+\end{equation}
+
+Coordinate basis methods have the advantage of providing a straightforward
+mechanical procedure for calculating curvature. One is normally presented a metric
+in terms of its components in a coordinate basis, so all one must do to obtain the
+curvature is to perform the partial differentiations and summations given in equations
+(3.1.30) and (3.4.4). On the other hand, even in the simplest cases, these straightforward computations are extremely laborious, and the \lq\lq nongeometrical\rq\rq\ nature of
+the calculations often makes it difficult to detect algebraic errors.
+
+\medskip
+\noindent\textbf{3.4b\quad Orthonormal Basis (Tetrad) Methods}
+
+While coordinate basis methods have the advantage of providing a straightforward
+procedure for calculation of $\nabla_a$ and $R_{abc}{}^d$, for many purposes it is advantageous to use
+an orthonormal basis in tensor calculations. A coordinate basis $\{\partial/\partial x^\mu\}$, of course,
+is not orthonormal except for the trivial case of flat spacetime in Cartesian coordinates. Thus, we may wish to introduce a \lq\lq nonholonomic,\rq\rq\ i.e., noncoordinate,
+orthonormal basis of smooth vector fields $\{(e_\mu)^a\}$, satisfying
+\begin{equation}
+  (e_\mu)^a(e_\nu)_a=\eta_{\mu\nu},
+  \tag{3.4.11}\label{eq:3.4.11}
+\end{equation}
+where $\eta_{\mu\nu}=\diag(-1,\ldots,-1,1,\ldots,1)$. (Here the greek indices $\mu,\nu$ have the
+range $1,\ldots,n$ and label the vector of the basis; the latin $a$ is the usual index of
+the index notation designating that $e_\mu$ is a vector.) In four dimensions---and sometimes more generally---$\{(e_\mu)^a\}$ is called a \emph{tetrad}. Equation~\eqref{eq:3.4.11} implies the useful
+relation
+\begin{equation}
+  \sum_{\mu,\nu}\eta^{\mu\nu}(e_\mu)^a(e_\nu)_b=\delta^a_b,
+  \tag{3.4.12}\label{eq:3.4.12}
+\end{equation}
+where $\delta^a_b$ is the identity map on vectors and $\eta^{\mu\nu}$ is the inverse of $\eta_{\mu\nu}$ (so that
+$\eta^{\mu\nu}=\eta_{\mu\nu}$). Equation~\eqref{eq:3.4.12} can be proven by verifying that it gives equality when
+contracted with an arbitrary basis vector $(e_\sigma)^b$.
+
+The calculation of curvature by tetrad methods has a sufficiently different appearance from the coordinate basis methods that it is worth pointing out explicitly three
+key ingredients that must be used in determining the curvature of a metric: (1) The
+derivative operator is compatible with the metric, $\nabla_ag_{bc}=0$. (2) The derivative
+operator is torsion free (property 5 of section 3.1). (3) The Riemann tensor is related
+to the derivative operator by Eq.~\eqref{eq:3.2.3}. In the coordinate basis methods,
+ingredient (2) is expressed by Eq.~\eqref{eq:3.1.9}, ingredient (1) (given (2)) is expressed
+by Eq.~\eqref{eq:3.1.29}, and ingredient (3) is expressed by Eq.~\eqref{eq:3.4.4}. As shown
+below ingredients (1) and (2) are expressed in quite different ways when using an
+orthonormal basis.
+
+We begin by defining the \emph{connection 1-forms}, $\omega_{a\mu\nu}$, by
+\begin{equation}
+  \omega_{a\mu\nu}=(e_\mu)^b\nabla_a(e_\nu)_b.
+  \tag{3.4.13}\label{eq:3.4.13}
+\end{equation}
+The components $\omega_{\lambda\mu\nu}$ of $\omega_{a\mu\nu}$ are called the \emph{Ricci rotation coefficients},
+\begin{equation}
+  \omega_{\lambda\mu\nu}=(e_\lambda)^a(e_\mu)^b\nabla_a(e_\nu)_b.
+  \tag{3.4.14}\label{eq:3.4.14}
+\end{equation}
+The orthonormality of $\{(e_\mu)^a\}$ implies
+\begin{equation}
+  \begin{aligned}
+    \omega_{a\mu\nu}
+    &=(e_\mu)^b\nabla_a(e_\nu)_b\\
+    &=-(e_\nu)^b\nabla_a(e_\mu)_b\\
+    &=-\omega_{a\nu\mu},
+  \end{aligned}
+  \tag{3.4.15}\label{eq:3.4.15}
+\end{equation}
+where the compatibility condition $\nabla_ag_{bc}=0$ was used. Conversely, Eq.~\eqref{eq:3.4.15}
+together with Eq.~\eqref{eq:3.4.11} implies $\nabla_ag_{bc}=0$. Thus, in the orthonormal
+basis approach, ingredient (1) is expressed by the simple condition
+\begin{equation}
+  \omega_{a\mu\nu}=-\omega_{a\nu\mu}.
+  \tag{3.4.16}\label{eq:3.4.16}
+\end{equation}
+(Note, in contrast, that the symmetry of $\Gamma^\alpha{}_{\mu\nu}$ stems from ingredient [2].) The
+antisymmetry of the Ricci rotation coefficients as compared with the symmetry of the
+Christoffel symbol indicates a significant potential advantage of this approach: There
+are $n^2(n+1)/2$ ($=40$ when $n=4$) components $\Gamma^\lambda{}_{\mu\nu}$ but only $n^2(n-1)/2$ ($=24$
+when $n=4$) components $\omega_{\lambda\mu\nu}$.
+
+The Riemann tensor can be expressed in terms of the Ricci rotation coefficients
+in the following manner. The components of $R_{abcd}$ in our orthonormal basis are
+\begin{equation}
+  \begin{aligned}
+    R_{\rho\sigma\mu\nu}
+    &=R_{abcd}(e_\rho)^a(e_\sigma)^b(e_\mu)^c(e_\nu)^d\\
+    &=(e_\rho)^a(e_\sigma)^b(e_\mu)^c
+    (\nabla_a\nabla_b-\nabla_b\nabla_a)(e_\nu)_c.
+  \end{aligned}
+  \tag{3.4.17}\label{eq:3.4.17}
+\end{equation}
+However, we have
+\begin{equation}
+  (e_\mu)^c\nabla_a\nabla_b(e_\nu)_c
+  =\nabla_a\bigl\{(e_\mu)^c\nabla_b(e_\nu)_c\bigr\}
+  -\bigl[\nabla_a(e_\mu)^c\bigr]\bigl[\nabla_b(e_\nu)_c\bigr].
+  \tag{3.4.18}\label{eq:3.4.18}
+\end{equation}
+Furthermore, we have
+\begin{equation}
+  \begin{aligned}
+    \bigl[\nabla_a(e_\mu)^c\bigr]\bigl[\nabla_b(e_\nu)_c\bigr]
+    &={}\bigl[\nabla_a(e_\mu)^f\bigr]\delta^c_f
+    \bigl[\nabla_b(e_\nu)_c\bigr]\\
+    &={}\sum_{\alpha,\beta}\eta^{\alpha\beta}
+    \bigl[\nabla_a(e_\mu)^f\bigr](e_\alpha)^c(e_\beta)_f
+    \bigl[\nabla_b(e_\nu)_c\bigr].
+  \end{aligned}
+  \tag{3.4.19}\label{eq:3.4.19}
+\end{equation}
+Thus, from the definition of the connection one forms, Eq.~\eqref{eq:3.4.13}, we obtain
+\begin{equation}
+  \begin{aligned}
+    R_{\rho\sigma\mu\nu}
+    ={}&(e_\rho)^a(e_\sigma)^b\biggl\{
+    \nabla_a\omega_{b\mu\nu}-\nabla_b\omega_{a\mu\nu}\\
+    &\qquad-\sum_{\alpha,\beta}\eta^{\alpha\beta}
+    \bigl[\omega_{a\beta\mu}\omega_{b\alpha\nu}
+    -\omega_{b\beta\mu}\omega_{a\alpha\nu}\bigr]\biggr\}.
+  \end{aligned}
+  \tag{3.4.20}\label{eq:3.4.20}
+\end{equation}
+We may rewrite Eq.~\eqref{eq:3.4.20} in terms of the Ricci rotation coefficients as
+\begin{equation}
+  \begin{aligned}
+    R_{\rho\sigma\mu\nu}
+    ={}&(e_\rho)^a\nabla_a\omega_{\sigma\mu\nu}
+    -(e_\sigma)^a\nabla_a\omega_{\rho\mu\nu}\\
+    &-\sum_{\alpha,\beta}\eta^{\alpha\beta}\bigl\{
+    \omega_{\rho\beta\mu}\omega_{\sigma\alpha\nu}
+    -\omega_{\sigma\beta\mu}\omega_{\rho\alpha\nu}\\
+    &\qquad\qquad+\omega_{\rho\beta\sigma}\omega_{\alpha\mu\nu}
+    -\omega_{\sigma\beta\rho}\omega_{\alpha\mu\nu}\bigr\},
+  \end{aligned}
+  \tag{3.4.21}\label{eq:3.4.21}
+\end{equation}
+where the last two terms compensate for taking the components of $\omega_{a\mu\nu}$ inside the
+derivative in the first two terms. Since $\omega_{\sigma\mu\nu}$ is a scalar, the derivative $\nabla_a$ in Eq.~\eqref{eq:3.4.21}
+may, of course, be replaced by an ordinary derivative $\partial_a$. Thus, Eq.~\eqref{eq:3.4.21}
+tells us how to compute the curvature tensor in terms of $\omega_{\sigma\mu\nu}$. The components of the Ricci tensor may then be computed via the formula
+\begin{equation}
+  R_{\rho\mu}=\sum_{\sigma,\nu}\eta^{\sigma\nu}R_{\rho\sigma\mu\nu}.
+  \tag{3.4.22}\label{eq:3.4.22}
+\end{equation}
+
+Equation~\eqref{eq:3.4.20} or Eq.~\eqref{eq:3.4.21} fully expresses ingredient (3) in the calculation of curvature. Thus, only ingredient (2)---the torsion-free condition on $\nabla_a$---remains to be expressed in this approach. There are two different procedures which
+may be employed to do this. The first begins by noting that the torsion-free condition
+allowed us to express the commutator of two vector fields in terms of the derivative
+operator $\nabla_a$ via Eq.~\eqref{eq:3.1.2}. Conversely, if Eq.~\eqref{eq:3.1.2} holds for all vector
+fields in a basis, it implies the torsion-free property of $\nabla_a$. Thus, we may express
+ingredient (2) by the \emph{commutation relations} of the basis vector fields,
+\begin{equation}
+  \begin{aligned}
+    (e_\sigma)_a[e_\mu,e_\nu]^a
+    &=(e_\sigma)_a\bigl\{(e_\mu)^b\nabla_b(e_\nu)^a
+    -(e_\nu)^b\nabla_b(e_\mu)^a\bigr\}\\
+    &=\omega_{\mu\sigma\nu}-\omega_{\nu\sigma\mu}.
+  \end{aligned}
+  \tag{3.4.23}\label{eq:3.4.23}
+\end{equation}
+This yields the $n^2(n-1)/2$ equations needed to solve for $\omega_{\sigma\mu\nu}$ (see problem 8).
+
+An alternative procedure is to note that from the definition of the connection
+one-forms, it follows that
+\begin{equation}
+  \nabla_{[a}(e_\sigma)_{b]}
+  =\sum_{\mu,\nu}\eta^{\mu\nu}(e_\mu)_{[a}\omega_{b]\sigma\nu},
+  \tag{3.4.24}\label{eq:3.4.24}
+\end{equation}
+as can be verified by contracting Eq.~\eqref{eq:3.4.24} with arbitrary basis vectors
+$(e_\rho)^a(e_\lambda)^b$. However, the torsion-free condition implies that the antisymmetrized
+derivative of a one-form is independent of derivative operator, and thus may be
+replaced by an ordinary derivative $\partial_a$,
+\begin{equation}
+  \partial_{[a}(e_\sigma)_{b]}
+  =\sum_{\mu,\nu}\eta^{\mu\nu}(e_\mu)_{[a}\omega_{b]\sigma\nu}.
+  \tag{3.4.25}\label{eq:3.4.25}
+\end{equation}
+Conversely, the validity of Eq.~\eqref{eq:3.4.25} for all basis vectors implies that $\nabla_a$ is
+torsion free. Thus, Eq.~\eqref{eq:3.4.25} is an alternate expression of ingredient (2).
+
+Equations~\eqref{eq:3.4.20} and~\eqref{eq:3.4.25} can be expressed more elegantly in the notation
+of differential forms (see appendix B). We drop the covector index $a$ on $\omega_{a\mu\nu}$
+and $(e_\mu)_a$ and use boldface letters to designate forms. For convenience, we also raise and
+lower greek indices with $\eta^{\mu\nu}$ and $\eta_{\mu\nu}$, e.g., we have
+\begin{equation}
+  \omega_\nu{}^\mu=\sum_\sigma\eta^{\mu\sigma}\omega_{\nu\sigma}.
+  \tag{3.4.26}\label{eq:3.4.26}
+\end{equation}
+Then Eq.~\eqref{eq:3.4.25} becomes, in differential forms notation,
+\begin{equation}
+  \dd\boldsymbol{e}_\sigma
+  =\sum_\mu\boldsymbol{e}_\mu\wedge\boldsymbol{\omega}_\sigma{}^\mu.
+  \tag{3.4.27}\label{eq:3.4.27}
+\end{equation}
+Furthermore, Eq.~\eqref{eq:3.4.20} can be written as
+\begin{equation}
+  \boldsymbol{R}_\mu{}^\nu
+  =\dd\boldsymbol{\omega}_\mu{}^\nu
+  +\sum_\alpha\boldsymbol{\omega}_\mu{}^\alpha\wedge\boldsymbol{\omega}_\alpha{}^\nu,
+  \tag{3.4.28}\label{eq:3.4.28}
+\end{equation}
+where $\boldsymbol{R}_{\mu\nu}$ is the two-form corresponding to $R_{ab\mu\nu}$. Equations~\eqref{eq:3.4.27}
+and~\eqref{eq:3.4.28} are sometimes referred to as the \emph{equations of structure}.
+
+Thus, we have basically two procedures for calculating curvature with orthonormal bases. The first is the straightforward approach by which one solves for the
+Ricci rotation coefficients from the commutation relations, Eq.~\eqref{eq:3.4.23}, and
+substitutes in Eq.~\eqref{eq:3.4.21}. The second approach---first discussed in the context
+of calculations in general relativity by Misner (1963)---uses Eq.~\eqref{eq:3.4.27}
+($=$ Eq.~\eqref{eq:3.4.25}) to determine the connection one-forms, from which the curvature may be
+calculated by Eq.~\eqref{eq:3.4.28} ($=$ Eq.~\eqref{eq:3.4.20}). The major advantage of the second
+approach is that it is relatively easy to calculate the left side of Eq.~\eqref{eq:3.4.27}. In
+simple cases it is possible to guess the solution for $\boldsymbol{\omega}_\mu{}^\nu$ without further calculations.
+In this way, a great deal of labor (such as that required to solve Eq.~\eqref{eq:3.4.23} or, worse
+yet, the labor required to calculate $\Gamma^\alpha{}_{\mu\nu}$) can be avoided. We will illustrate this in
+chapter 6. Note that in both approaches, one will still introduce a coordinate system
+when it comes time to do the calculations. The aim of tetrad methods is not to avoid
+the introduction of a coordinate system but rather to use a more convenient basis for
+the expansion of tensors than that provided by the coordinate basis.
+
+A variant of the \lq\lq straightforward approach\rq\rq---motivated by spinor methods (see
+chapter 13) and specially adapted to the case of a Lorentz metric in four
+dimensions---was introduced by Newman and Penrose (1962). Instead of choosing
+an orthonormal basis, one chooses a \lq\lq null tetrad\rq\rq\ consisting of two null vectors
+$l^a$ and $n^a$ with $l^an_a=-1$; one completes the basis by picking two orthonormal
+spacelike vectors $x^a$ and $y^a$ orthogonal to $l^a$ and $n^a$ and defines the complex vector
+$m^a=(x^a+\ii y^a)/\sqrt{2}$. The analogs of the 24 real Ricci rotation coefficients of an
+orthonormal tetrad are 12 complex quantities called \emph{spin coefficients}. They are
+related to the null tetrad by the analog of Eq.~\eqref{eq:3.4.13} and the curvature is given
+in terms of them by the analog of Eq.~\eqref{eq:3.4.21}. The precise equations are given
+by Newman and Penrose (1962), Pirani (1965), and others. The Newman-Penrose
+approach has proven very useful for many applications in general relativity.
+
+Which method---coordinate basis, orthonormal basis, or null tetrad---should one
+use to do calculations? There is no universal answer. In many simple cases the
+second orthonormal basis approach---using Eqs.~\eqref{eq:3.4.27} and~\eqref{eq:3.4.28}---saves
+considerable labor over the other approaches, provided one can solve Eq.~\eqref{eq:3.4.27}
+for the connection one-forms by inspection. In situations where a null vector
+plays a geometrically distinguished role---specifically in algebraically special spacetimes (see chapter 7)---the Newman-Penrose approach is likely to be the most useful.
+Furthermore, in some cases where there is a great deal of symmetry, it may be
+possible to adapt the coordinate system to the symmetries and make the coordinate
+basis method the preferred approach. Finally in general situations---without symmetries or geometrically preferred vectors to serve as natural basis vectors---all
+methods are likely to be about equally laborious.
+
+Finally, we note that in this section we have presented the coordinate and tetrad
+methods in the context of calculating the Riemann tensor, given the metric. However, the equations obtained, of course, are equally applicable in the much more
+frequently encountered situation where (part of) the curvature tensor is given (e.g.,
+via Einstein's equation, as discussed in the next chapter) and we wish to find the
+metric. Furthermore, even in cases where we do not wish to calculate the curvature
+or solve for the metric, the above equations often directly provide useful relations
+between the metric and its curvature, particularly in cases where the coordinate
+system or tetrad is well adapted to the properties of the spacetimes under consideration.

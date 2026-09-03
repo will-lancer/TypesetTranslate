@@ -1,0 +1,825 @@
+% BANKS-SOURCE: pdf=87-99 print=77-89 kind=solution-section id=chapter07-implicit-solutions
+\begin{bankssolutions}{Solutions to Implicit Exercises for Chapter 7}
+
+% BANKS-SOURCE: pdf=87 print=77 kind=implicit-solution id=I-CH07-001
+\BanksImplicitSolution{I-CH07-001}
+\textit{(a) Finite functional identity.}
+Write the source and field multiplets as columns.  For a finite symmetry
+$R$, set $J'=R^{-T}J$ and make the change of integration variable
+$\phi=R\psi$.  Invariance of the measure and action gives
+\begin{align*}
+ Z[J']
+ &=\int[\dd\psi]\,
+ \exp\left\{\ii S[\psi]
+ +\ii\int\dd^D x\,(J')^TR\psi\right\}\\
+ &=\int[\dd\psi]\,
+ \exp\left\{\ii S[\psi]
+ +\ii\int\dd^D x\,J^T\psi\right\}=Z[J].
+\end{align*}
+The branch of the logarithm connected continuously to the identity then
+satisfies
+\[
+ W[R^{-T}J]=W[J].
+\]
+
+\textit{(b) Mean field and Legendre transform.}
+The mean field transforms covariantly.  Indeed, regard
+$J=R^TJ'$ while differentiating the preceding equality:
+\[
+ \varphi[J']
+ =\frac{\delta W[J']}{\delta J'}
+ =R\frac{\delta W[J]}{\delta J}
+ =R\varphi[J].
+\]
+Banks's Legendre convention implies
+$\delta\Gamma/\delta\varphi=-J$.  The source pairing is invariant,
+$(J')^T(R\varphi)=J^T\varphi$, and hence
+\begin{align*}
+ \Gamma[R\varphi]
+ &=W[J']-\int\dd^D x\,(J')^TR\varphi\\
+ &=W[J]-\int\dd^D x\,J^T\varphi
+ =\Gamma[\varphi].
+\end{align*}
+
+\textit{(c) Infinitesimal identities and possible failures.}
+For $R=1+\epsilon T+O(\epsilon^2)$, the source variation is
+$\delta J=-\epsilon T^TJ$.  The connected Ward identity is therefore
+\[
+ 0=\int\dd^D x\,
+ (T^TJ)_i(x)\frac{\delta W}{\delta J_i(x)}
+ =\int\dd^D x\,J^T(x)T\varphi(x).
+\]
+The same identity in 1PI variables is
+\[
+ 0=\int\dd^D x\,
+ \frac{\delta\Gamma}{\delta\varphi_i(x)}(T\varphi)_i(x).
+\]
+For a symmetry-invariant zero-source state, differentiation shows that the
+connected and 1PI vertices are invariant tensors.  When an infinite-volume
+zero-source limit selects a broken vacuum, the same identity relates vertices
+along the group orbit of that vacuum.
+
+The derivation uses two hypotheses that matter in Banks's later discussion.
+A nontrivial Jacobian of the measure contributes its local anomaly to the
+right-hand side of the Ward identity.  A surviving integral of the current
+divergence contributes a boundary term.  Either contribution changes the
+functional identity and can obstruct the corresponding symmetry of $W$ and
+$\Gamma$.
+
+% BANKS-SOURCE: pdf=88 print=78 kind=implicit-solution id=I-CH07-002
+\BanksImplicitSolution{I-CH07-002}
+\textit{(a) Pole data.}
+An invariant two-index tensor in the defining representation of $O(n)$ is
+proportional to $\delta^{ab}$.  Consequently
+\[
+ G^{ab}(x-y)
+ =\langle0|T\phi^a(x)\phi^b(y)|0\rangle
+ =\delta^{ab}G(x-y).
+\]
+Its Lehmann representation may be written
+\[
+ \widetilde G^{ab}(p)=\delta^{ab}
+ \int_0^\infty\dd\mu^2\,
+ -\frac{\ii\rho(\mu^2)}{p^2+\mu^2-\ii\epsilon}.
+\]
+If the stable one-particle contribution is
+$\rho(\mu^2)=Z_\phi\delta(\mu^2-m^2)+\rho_{\rm cont}(\mu^2)$, the same
+$m$ and $Z_\phi$ occur for every component.  Phases of the particle states
+can be chosen so that
+\[
+ \langle0|\phi^a(0)|p,b\rangle=Z_\phi^{1/2}\delta^{ab}.
+\]
+Thus the fields create an $n$-fold degenerate multiplet, and LSZ amputates
+each external leg with the same pole residue.
+
+\textit{(b) Tensor structure and crossing.}
+The three invariant rank-four tensors of the full $O(n)$ group give
+\[
+ \mathcal M_{ab;cd}
+ =\delta_{ab}\delta_{cd}F_s(s,t,u)
+ +\delta_{ac}\delta_{bd}F_t(s,t,u)
+ +\delta_{ad}\delta_{bc}F_u(s,t,u).
+\]
+All particles belong to a real representation, so every external leg is its
+own crossed antiparticle.  Permuting legs in the amputated four-point
+function relates the coefficient functions.  On defining
+$A(s,t,u)=F_s(s,t,u)$, crossing gives
+\begin{equation*}
+ \boxed{\mathcal M_{ab;cd}(s,t,u)
+ =\delta_{ab}\delta_{cd}A(s,t,u)
+ +\delta_{ac}\delta_{bd}A(t,s,u)
+ +\delta_{ad}\delta_{bc}A(u,t,s).}
+\end{equation*}
+Bose symmetry for either incoming or outgoing pair requires
+\[
+ A(s,t,u)=A(s,u,t).
+\]
+For example, the complete exchange and crossing statements include
+\begin{align*}
+ \mathcal M_{ab;cd}(s,t,u)
+ &=\mathcal M_{ba;cd}(s,u,t)
+ =\mathcal M_{ab;dc}(s,u,t),\\
+ \mathcal M_{ab;cd}(s,t,u)
+ &=\mathcal M_{ac;bd}(t,s,u)
+ =\mathcal M_{ad;cb}(u,t,s),
+\end{align*}
+where the last line uses analytic continuation between the physical channel
+regions.
+
+\textit{(c) Irreducible channels.}
+The $s$-channel projectors are
+\begin{align*}
+ (P_{\mathbf1})_{ab;cd}&=\frac1n\delta_{ab}\delta_{cd},\\
+ (P_{\mathrm A})_{ab;cd}
+ &=\frac12(\delta_{ac}\delta_{bd}-\delta_{ad}\delta_{bc}),\\
+ (P_{\mathrm S})_{ab;cd}
+ &=\frac12(\delta_{ac}\delta_{bd}+\delta_{ad}\delta_{bc})
+ -\frac1n\delta_{ab}\delta_{cd}.
+\end{align*}
+Writing
+$\mathcal M=T_{\mathbf1}P_{\mathbf1}+T_{\mathrm A}P_{\mathrm A}
++T_{\mathrm S}P_{\mathrm S}$ and abbreviating
+$A_s=A(s,t,u)$, $A_t=A(t,s,u)$, $A_u=A(u,t,s)$ gives
+\[
+ T_{\mathbf1}=nA_s+A_t+A_u,
+ \qquad T_{\mathrm A}=A_t-A_u,
+ \qquad T_{\mathrm S}=A_t+A_u.
+\]
+These expressions supply a check: an exchange of the two incoming bosons is
+even in the singlet and symmetric-traceless channels and odd in the
+antisymmetric channel, together with $t\leftrightarrow u$.
+
+\textit{(d) Replacing $O(n)$ by $SO(n)$.}
+The Levi-Civita tensor changes sign under an $O(n)$ reflection, so a single
+epsilon tensor is absent from the preceding basis.  For $SO(4)$,
+$\epsilon_{abcd}E(s,t,u)$ is an additional invariant structure, with its
+coefficient constrained by the same leg permutations and the signs of the
+epsilon tensor.  For $SO(2)$, tensors of the form
+$\epsilon_{ab}\delta_{cd}$ and their index permutations add parity-odd
+rank-four structures, subject to the two-dimensional identities.  A single
+epsilon has the wrong rank for $n=3$ and for $n>4$, while contractions of two
+epsilon tensors reduce to Kronecker deltas.  Thus there is no further
+rank-four structure in those dimensions.
+
+% BANKS-SOURCE: pdf=88-91 print=78-81 kind=implicit-solution id=I-CH07-003
+\BanksImplicitSolution{I-CH07-003}
+We treat the eight statements in order.
+
+\begin{enumerate}[label=(\alph*)]
+\item Let
+$\mathcal O=\phi_{i_1}(x_1)\cdots\phi_{i_N}(x_N)$.  A local translation
+$\delta\phi_i=-f^\nu\partial_\nu\phi_i$ changes the action by the defining
+Noether formula
+\[
+ \delta S=\int\dd^D x\,\partial_\mu f_\nu(x)T^{\mu\nu}(x).
+\]
+Changing variables in the path integral gives, to first order in $f$,
+\[
+ 0=\langle\delta\mathcal O\rangle
+ +\ii\langle T(\mathcal O\,\delta S)\rangle.
+\]
+The variation of the inserted fields is
+\[
+ \langle\delta\mathcal O\rangle
+ =-\sum_{k=1}^N f_\nu(x_k)
+ \left\langle T\left(
+ \phi_{i_1}(x_1)\cdots
+ \partial^\nu\phi_{i_k}(x_k)\cdots
+ \phi_{i_N}(x_N)\right)\right\rangle.
+\]
+After integrating the action variation by parts, the coefficient of the
+arbitrary function $f_\nu(x)$ must vanish.  This yields
+\begin{align*}
+ &\partial_\mu^x
+ \left\langle0\left|T\left(
+ \begin{aligned}
+  &T^{\mu\nu}(x)\phi_{i_1}(x_1)\cdots\\[-2pt]
+  &{}\qquad\phi_{i_N}(x_N)
+ \end{aligned}
+ \right)\right|0\right\rangle\\[-2pt]
+ ={}&+\ii\sum_{k=1}^N\delta^D(x-x_k)\\
+ &\mathrel{\phantom{=}}\times\\[-2pt]
+ &\qquad
+ \left\langle0\left|T\left(
+ \begin{aligned}
+  &\phi_{i_1}(x_1)\cdots
+   \partial^\nu\phi_{i_k}(x_k)\cdots\\[-2pt]
+  &{}\qquad\phi_{i_N}(x_N)
+ \end{aligned}
+ \right)\right|0\right\rangle.
+\end{align*}
+The delta functions are the contact terms generated when the translation
+acts on each insertion.  At separated points they disappear and the stress
+tensor insertion is conserved.  A Jacobian for the change of variables would
+add the corresponding anomaly insertion to this identity.
+
+\item Put
+$T'^{\mu\nu}=T^{\mu\nu}+\partial_\lambda
+M^{\mu\nu\lambda}$.  Commuting derivatives and using the antisymmetry in
+$\mu$ and $\lambda$ gives
+\[
+ \partial_\mu T'^{\mu\nu}
+ =\partial_\mu T^{\mu\nu}
+ +\frac12\partial_\mu\partial_\lambda
+ \left(M^{\mu\nu\lambda}+M^{\lambda\nu\mu}\right)
+ =\partial_\mu T^{\mu\nu}.
+\]
+For the charge, $M^{0\nu0}=0$, and therefore
+\begin{align*}
+ P'^{\nu}-P^\nu
+ &=\int\dd^{D-1}\mathbf x\,\partial_\lambda M^{0\nu\lambda}
+ =\int\dd^{D-1}\mathbf x\,\partial_iM^{0\nu i}\\
+ &=\lim_{R\to\infty}\int_{S_R^{D-2}}\dd S_i\,M^{0\nu i}=0.
+\end{align*}
+The last equality is precisely the assumed spatial falloff.  This is the
+Noether improvement ambiguity used throughout the section.
+
+\item Consider an orientation-preserving change of coordinates $x\mapsto y$.
+A scalar and a one-form transform according to
+\[
+ \phi'(y)=\phi(x),\qquad
+ A'_\alpha(y)=\frac{\partial x^\mu}{\partial y^\alpha}A_\mu(x),
+\]
+while
+\[
+ g'_{\alpha\beta}(y)
+ =\frac{\partial x^\mu}{\partial y^\alpha}
+  \frac{\partial x^\nu}{\partial y^\beta}g_{\mu\nu}(x).
+\]
+Taking determinants gives
+\[
+ \sqrt{-g'(y)}
+ =\left|\det\frac{\partial x}{\partial y}\right|\sqrt{-g(x)},
+ \qquad
+ \dd^D y\sqrt{-g'(y)}=\dd^D x\sqrt{-g(x)}.
+\]
+The inverse metric carries the inverse Jacobians, so
+\[
+ g'^{\alpha\beta}\partial'_{\alpha}\phi'
+ \partial'_{\beta}\phi'
+ =g^{\mu\nu}\partial_\mu\phi\partial_\nu\phi.
+\]
+The potential is a scalar as well.  Hence every factor in $S_\phi$ combines
+to make an invariant density.
+
+The exterior derivative of the one-form is a two-form:
+\[
+ F'_{\alpha\beta}(y)
+ =\frac{\partial x^\mu}{\partial y^\alpha}
+  \frac{\partial x^\nu}{\partial y^\beta}F_{\mu\nu}(x).
+\]
+Its two Jacobian pairs cancel those of the two inverse metrics in
+$g^{\mu\rho}g^{\nu\sigma}F_{\mu\nu}F_{\rho\sigma}$.  Combining this scalar
+with the invariant volume form proves invariance of $S_M$.  The calculation
+also explains why $\sqrt{-g}$ and two inverse metrics occur in the curved
+Maxwell action.
+
+\item An infinitesimal conformal coordinate transformation
+$x^\mu\mapsto x^\mu+f^\mu(x)$ obeys
+\begin{equation*}
+ \partial_\mu f_\nu+\partial_\nu f_\mu
+ =\frac12\eta_{\mu\nu}\partial_\rho f^\rho.
+\end{equation*}
+Define $\sigma=\frac14\partial\cdot f$.  Differentiate the conformal Killing
+equation and combine three permutations of its indices to obtain
+\[
+ \partial_\mu\partial_\nu f_\rho
+ =\eta_{\mu\rho}\partial_\nu\sigma
+ +\eta_{\nu\rho}\partial_\mu\sigma
+ -\eta_{\mu\nu}\partial_\rho\sigma.
+\]
+Further differentiation in dimension greater than two implies
+$\partial_\mu\partial_\nu\sigma=0$.  Thus $\sigma$ is affine and $f$ is at
+most quadratic.  Integrating the preceding equation gives the complete
+solution
+\begin{equation*}
+ f^\mu(x)=a^\mu+\omega^\mu{}_{\nu}x^\nu+\lambda x^\mu
+ +b^\mu x^2-2x^\mu(b\cdot x),
+ \qquad \omega_{\mu\nu}=-\omega_{\nu\mu}.
+\end{equation*}
+The parameters count as $4+6+1+4=15$.  They generate translations, Lorentz
+transformations, dilatations, and special conformal transformations.  For
+the special conformal term,
+$\partial\cdot f=-8b\cdot x$, which checks the conformal Killing equation.
+
+Use the following differential generators, with the sign of $K_\mu$ chosen
+to match Banks's special conformal transformation:
+\[
+ P_\mu=\partial_\mu,\quad
+ M_{\mu\nu}=x_\mu\partial_\nu-x_\nu\partial_\mu,\quad
+ D=x\cdot\partial,\quad
+ K_\mu=x^2\partial_\mu-2x_\mu x\cdot\partial.
+\]
+Direct evaluation of the vector-field commutators gives
+\begin{align*}
+ [M_{\mu\nu},M_{\rho\sigma}]
+ & =\eta_{\nu\rho}M_{\mu\sigma}
+ -\eta_{\mu\rho}M_{\nu\sigma}
+ -\eta_{\nu\sigma}M_{\mu\rho}
+ +\eta_{\mu\sigma}M_{\nu\rho},\\
+ [M_{\mu\nu},P_\rho]
+ &=\eta_{\nu\rho}P_\mu-\eta_{\mu\rho}P_\nu,\\
+ [M_{\mu\nu},K_\rho]
+ &=\eta_{\nu\rho}K_\mu-\eta_{\mu\rho}K_\nu,\\
+ [D,P_\mu]&=-P_\mu,\qquad [D,K_\mu]=K_\mu,\\
+ [P_\mu,K_\nu]&=2M_{\mu\nu}-2\eta_{\mu\nu}D,\\
+ [P_\mu,P_\nu]&=[K_\mu,K_\nu]=[D,M_{\mu\nu}]=0.
+\end{align*}
+To identify the algebra, introduce $J_{AB}=-J_{BA}$ in six dimensions with
+metric
+$\widehat\eta_{AB}=\operatorname{diag}(\eta_{\mu\nu},+1,-1)$ and brackets
+\[
+ [J_{AB},J_{CD}]
+ =\widehat\eta_{BC}J_{AD}-\widehat\eta_{AC}J_{BD}
+ -\widehat\eta_{BD}J_{AC}+\widehat\eta_{AD}J_{BC}.
+\]
+The assignments
+\[
+ M_{\mu\nu}=J_{\mu\nu},\qquad D=J_{45},\qquad
+ P_\mu=J_{\mu4}+J_{\mu5},\qquad
+ K_\mu=J_{\mu5}-J_{\mu4}
+\]
+reproduce the displayed conformal brackets.  The six-dimensional metric has
+signature $(2,4)$, proving the isomorphism with $\mathfrak{so}(2,4)$.
+
+For a symmetric conserved stress tensor, the current associated with a
+conformal Killing vector is $j_f^\mu=T^{\mu\nu}f_\nu$.  The conformal Killing
+equation gives
+\[
+ \partial_\mu j_f^\mu
+ =T^{\mu\nu}\partial_\mu f_\nu
+ =\frac14(\partial\cdot f)T^\mu{}_{\mu}.
+\]
+The dilation has $\partial\cdot f=4\lambda$, while a special conformal
+transformation has a position-dependent divergence.  Their currents are
+conserved when the improved stress tensor is traceless.  Equivalently, a
+local Weyl variation $\delta g_{\mu\nu}=2\sigma(x)g_{\mu\nu}$ couples to
+$T^\mu{}_{\mu}$; invariance for arbitrary $\sigma(x)$ sets this trace to
+zero.  A removable virial divergence is absorbed into the same improvement.
+
+\item Let $D$ be the Hermitian dilation charge.  With a conventional choice
+of signs, its commutator with momentum is
+\[
+ [D,P_\mu]=\ii P_\mu.
+\]
+Exponentiation shows that a dilation sends a momentum eigenstate to another
+one whose four-momentum is multiplied by a continuous positive factor.
+Consequently
+\[
+ P^2|p\rangle=-m^2|p\rangle
+ \quad\Longrightarrow\quad
+ P^2U(\lambda)|p\rangle=-\lambda^2m^2U(\lambda)|p\rangle
+\]
+after a harmless choice between $\lambda$ and $\lambda^{-1}$ in the group
+parameter.  A positive isolated mass would therefore generate a continuous
+orbit of distinct positive masses.  This conflicts with a discrete
+one-particle mass spectrum.  The value $m^2=0$ is fixed under every dilation,
+so all particles in such a conformal theory are massless.  This argument
+assumes that the conformal symmetry acts on the vacuum and on asymptotic
+one-particle states.
+
+\item Since $g_{\mu\nu}=g_{\nu\mu}$, its functional derivative is symmetric:
+$T_{\mathrm H}^{\mu\nu}=T_{\mathrm H}^{\nu\mu}$.  Under an infinitesimal
+diffeomorphism generated by $\xi^\mu$,
+\[
+ \delta_\xi g_{\mu\nu}=\nabla_\mu\xi_\nu+\nabla_\nu\xi_\mu.
+\]
+On the matter equations of motion, the matter-field variation contributes
+zero.  Diffeomorphism invariance and integration by parts then give
+\begin{align*}
+ 0=\delta_\xi S
+ &=-\int\dd^D x\sqrt{-g}\,
+ T_{\mathrm H}^{\mu\nu}\nabla_\mu\xi_\nu\\
+ &=\int\dd^D x\sqrt{-g}\,
+ (\nabla_\mu T_{\mathrm H}^{\mu\nu})\xi_\nu.
+\end{align*}
+Arbitrariness of $\xi_\nu$ proves
+$\nabla_\mu T_{\mathrm H}^{\mu\nu}=0$.
+
+For flat-space fields $\Phi_A$, define the canonical tensor and spin current
+by
+\[
+ T_{\mathrm{can}}^{\mu\nu}
+ =-\frac{\partial\mathcal L}{\partial(\partial_\mu\Phi_A)}
+ \partial^\nu\Phi_A+\eta^{\mu\nu}\mathcal L,
+ \qquad
+ S^{\lambda\mu\nu}
+ =-\frac{\partial\mathcal L}{\partial(\partial_\lambda\Phi_A)}
+ (\Sigma^{\mu\nu})_A{}^B\Phi_B.
+\]
+Here $S^{\lambda\mu\nu}=-S^{\lambda\nu\mu}$.  Lorentz invariance gives
+\[
+ \partial_\lambda S^{\lambda\mu\nu}
+ =T_{\mathrm{can}}^{\nu\mu}-T_{\mathrm{can}}^{\mu\nu}
+\]
+on shell.  Set
+\[
+ B^{\lambda\mu\nu}
+ =\frac12\left(S^{\lambda\mu\nu}+S^{\mu\nu\lambda}
+ +S^{\nu\mu\lambda}\right),
+ \qquad B^{\lambda\mu\nu}=-B^{\mu\lambda\nu},
+\]
+and
+\[
+ T_{\mathrm B}^{\mu\nu}
+ =T_{\mathrm{can}}^{\mu\nu}+\partial_\lambda
+ B^{\lambda\mu\nu}.
+\]
+The antisymmetry of $B$ preserves conservation and the translation charges,
+as in part (b).  The Lorentz identity makes $T_{\mathrm B}$ symmetric.  The
+flat-space limit of the metric tensor equals this Belinfante tensor on shell,
+up to terms proportional to field equations and further identically
+conserved improvements.  This is the precise relation between the metric and
+Noether constructions.
+
+Using symmetry and conservation,
+\begin{align*}
+ \partial_\lambda J^{\lambda\mu\nu}
+ &=T_{\mathrm B}^{\mu\nu}-T_{\mathrm B}^{\nu\mu}
+ +x^\mu\partial_\lambda T_{\mathrm B}^{\lambda\nu}
+ -x^\nu\partial_\lambda T_{\mathrm B}^{\lambda\mu}=0.
+\end{align*}
+Thus the spatial integrals of $J^{0\mu\nu}$ generate rotations and boosts.
+For example, the boost charge
+\[
+ K^i=\int\dd^{D-1}\mathbf x\,J^{00i}
+ =tP^i-\int\dd^{D-1}\mathbf x\,x^iT_{\mathrm B}^{00}
+\]
+has the explicit derivative $\partial K^i/\partial t=P^i$.  Conservation and
+the Heisenberg equation
+$\dd K^i/\dd t=\partial K^i/\partial t+\ii[H,K^i]=0$ therefore give
+$[H,K^i]=\ii P^i$.  This is Banks's stated reason that a conserved boost
+charge need not commute with the Hamiltonian.
+
+Banks displays
+$T_{\text{source}}^{\mu\nu}=(-g)^{-1/2}\delta S/\delta g_{\mu\nu}$.
+Under the variational definition in the exercise,
+$T_{\text{source}}^{\mu\nu}=T_{\mathrm H}^{\mu\nu}/2$.  The factor is fixed
+before identifying the metric derivative with the normalized translation
+current.  The symmetry and conservation arguments above use
+$T_{\mathrm H}^{\mu\nu}$.
+
+\item For the Hermitian massless Dirac Lagrangian
+\[
+ \mathcal L_D=-\frac{\ii}{2}\bar\psi\gamma^\rho
+ \overleftrightarrow{\partial_\rho}\psi,
+ \qquad
+ \bar\psi\gamma^\rho\overleftrightarrow{\partial_\rho}\psi
+ =\bar\psi\gamma^\rho\partial_\rho\psi
+ -(\partial_\rho\bar\psi)\gamma^\rho\psi,
+\]
+the canonical tensor is
+\[
+ T_{D,\mathrm{can}}^{\mu\nu}
+ =-\frac{\ii}{2}\bar\psi\gamma^\mu
+ \overleftrightarrow{\partial^\nu}\psi
+ -\eta^{\mu\nu}\mathcal L_D.
+\]
+With
+$\sigma^{\mu\nu}=\frac{\ii}{2}[\gamma^\mu,\gamma^\nu]$, the spin current is
+\[
+ S_D^{\lambda\mu\nu}
+ =-\frac14\bar\psi\{\gamma^\lambda,\sigma^{\mu\nu}\}\psi.
+\]
+Substitution in the Belinfante formula from part (f), followed by the Dirac
+equations and $\mathcal L_D=0$ on shell, gives
+\[
+ T_D^{\mu\nu}=-\frac{\ii}{4}\bar\psi\left(
+ \gamma^\mu\overleftrightarrow{\partial^\nu}
+ +\gamma^\nu\overleftrightarrow{\partial^\mu}\right)\psi.
+\]
+Its symmetry is explicit.  Differentiation, followed by use of
+$-\ii\gamma^\rho\partial_\rho\psi=0$ and
+$(\partial_\rho\bar\psi)\ii\gamma^\rho=0$, proves
+$\partial_\mu T_D^{\mu\nu}=0$.  Its trace is
+\[
+ T_{D\,\mu}{}^\mu
+ =-\frac{\ii}{2}\bar\psi\gamma^\mu
+ \overleftrightarrow{\partial_\mu}\psi=0
+\]
+on the same equations of motion.
+
+For $\mathcal L_M=-\frac14F_{\rho\sigma}F^{\rho\sigma}$, the canonical tensor
+is
+\[
+ T_{M,\mathrm{can}}^{\mu\nu}
+ =+F^{\mu\lambda}\partial^\nu A_\lambda
+ -\frac14\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+\]
+Add the improvement $-\partial_\lambda(F^{\mu\lambda}A^\nu)$.  The Maxwell
+equation $\partial_\lambda F^{\mu\lambda}=0$ then gives
+\[
+ +F^{\mu\lambda}\partial^\nu A_\lambda
+ -F^{\mu\lambda}\partial_\lambda A^\nu
+ =+F^{\mu\lambda}F^\nu{}_{\lambda}.
+\]
+The resulting gauge-invariant Belinfante tensor is
+\[
+ T_M^{\mu\nu}
+ =+F^{\mu\lambda}F^\nu{}_{\lambda}
+ -\frac14\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+\]
+It is symmetric.  Its divergence is
+\begin{align*}
+ \partial_\mu T_M^{\mu\nu}
+ ={}&+(\partial_\mu F^{\mu\lambda})F^\nu{}_{\lambda}
+ +F^{\mu\lambda}\partial_\mu F^\nu{}_{\lambda}
+ -\frac12F^{\rho\sigma}\partial^\nu F_{\rho\sigma}=0.
+\end{align*}
+The first term vanishes by $\partial_\mu F^{\mu\lambda}=0$; the remaining
+terms cancel by the Bianchi identity.  Finally,
+\[
+ T_{M\,\mu}{}^\mu
+ =+F^{\mu\lambda}F_{\mu\lambda}
+ -\frac44F_{\rho\sigma}F^{\rho\sigma}=0.
+\]
+The trace cancellation is special to four dimensions, as expected from the
+dimensionless Maxwell coupling.
+
+\item The free scalar Belinfante tensor is already symmetric:
+\[
+ T_{\mathrm B}^{\mu\nu}
+ =\partial^\mu\phi\partial^\nu\phi
+ -\frac12\eta^{\mu\nu}(\partial\phi)^2.
+\]
+Its divergence is $(\partial^\nu\phi)\partial^2\phi$, and its trace in $D$
+dimensions is
+\[
+ T_{\mathrm B\,\mu}{}^\mu=-\frac{D-2}{2}(\partial\phi)^2.
+\]
+The improvement is identically conserved because derivatives commute:
+\[
+ \partial_\mu(\partial^\mu\partial^\nu
+ -\eta^{\mu\nu}\partial^2)\phi^2=0.
+\]
+Taking its trace and using $\partial^2\phi=0$ gives, with
+$\xi_D=(D-2)/[4(D-1)]$,
+\begin{align*}
+ T_{\mathrm I\,\mu}{}^\mu
+ &=-\frac{D-2}{2}(\partial\phi)^2
+ +\xi_D(D-1)\partial^2\phi^2\\
+ &=-\frac{D-2}{2}(\partial\phi)^2
+ +\frac{D-2}{2}\left[(\partial\phi)^2+\phi\partial^2\phi\right]=0.
+\end{align*}
+Thus $T_{\mathrm I}$ is conserved and traceless on shell.
+
+The canonical tensor depends only on derivatives of $\phi$ and is invariant
+under $\phi\mapsto\phi+c$.  The improvement changes by
+\begin{align*}
+ \Delta_cT_{\mathrm I}^{\mu\nu}
+ &=-\xi_D(\partial^\mu\partial^\nu
+ -\eta^{\mu\nu}\partial^2)(2c\phi+c^2)\\
+ &=-2c\xi_D(\partial^\mu\partial^\nu
+ -\eta^{\mu\nu}\partial^2)\phi.
+\end{align*}
+This local tensor is generally nonzero, even on the massless field equation.
+It displays the explicit loss of constant field-shift invariance emphasized
+by Banks.
+\end{enumerate}
+
+% BANKS-SOURCE: pdf=97 print=87 kind=implicit-solution id=I-CH07-004
+\BanksImplicitSolution{I-CH07-004}
+\textit{(a) Chiral group, vacuum, and coset.}
+The massless quark Lagrangian separates into
+\[
+ \mathcal L_q=-\ii\bar q_L\slashed Dq_L
+ -\ii\bar q_R\slashed Dq_R.
+\]
+It is invariant under independent flavor rotations
+$q_L\mapsto Lq_L$ and $q_R\mapsto Rq_R$.  The classical flavor group is
+$U(2)_L\times U(2)_R$.  The axial singlet factor has a quantum anomaly, while
+the vector singlet is baryon number and acts trivially on the pion field.
+The relevant exact non-abelian group is therefore
+\[
+ G=SU(2)_L\times SU(2)_R.
+\]
+Choose the order-parameter orientation
+$\Phi\sim\bar q_Lq_R$, with flavor indices arranged so that
+$\Phi\mapsto L^\dagger\Phi R$.  A vacuum
+$\langle\Phi\rangle=v\mathbf1$ is fixed when $L=R$, so
+\[
+ H=SU(2)_V,\qquad
+ \frac{G}{H}=\frac{SU(2)_L\times SU(2)_R}{SU(2)_V}
+ \simeq SU(2)\simeq S^3.
+\]
+Its dimension is three, giving the pion triplet.
+
+A useful coset coordinate is an $SU(2)$ matrix $\Sigma$.  In Banks's passive
+flavor convention,
+\[
+ \Sigma\longmapsto L^\dagger\Sigma R,\qquad
+ \Sigma=\exp\left(\frac{\ii\Pi}{f}\right),\qquad
+ \Pi=\pi^at^a.
+\]
+The action is transitive and the stabilizer of $\Sigma=\mathbf1$ has $L=R$,
+which supplies the coset identification above.  Replacing $\Sigma$ by
+$\Sigma^\dagger$ exchanges this convention with the common active one.
+
+\textit{(b) Leading Lagrangian and pion expansion.}
+The chiral group acts transitively on $G/H$, so every invariant function
+without derivatives is constant.  At two derivatives, the invariant
+bilinear form on the simple algebra $\mathfrak{su}(2)$ is unique up to scale.
+Parity exchanges left and right.  These observations give
+\[
+ \mathcal L_2=-f^2\Tr(\partial_\mu\Sigma^\dagger
+ \partial^\mu\Sigma).
+\]
+
+To expand it, use the Maurer--Cartan series
+\begin{align*}
+ \Sigma^\dagger\partial_\mu\Sigma
+ ={}&\frac{\ii}{f}\partial_\mu\Pi
+ +\frac{1}{2f^2}[\Pi,\partial_\mu\Pi]
+ -\frac{\ii}{6f^3}[\Pi,[\Pi,\partial_\mu\Pi]]+O(\pi^4).
+\end{align*}
+Since
+$\Tr(\partial_\mu\Sigma^\dagger\partial^\mu\Sigma)
+=-\Tr[(\Sigma^\dagger\partial_\mu\Sigma)^2]$, and
+$[t^a,t^b]=\ii\epsilon^{abc}t^c$, one obtains
+\begin{equation*}
+ \boxed{\mathcal L_2
+ =-\frac12\partial_\mu\pi^a\partial^\mu\pi^a
+ -\frac{1}{24f^2}\left[
+ (\pi^a\partial_\mu\pi^a)^2
+ -(\pi^a\pi^a)(\partial_\mu\pi^b\partial^\mu\pi^b)
+ \right]+O(\pi^6).}
+\end{equation*}
+The quadratic term confirms canonical normalization.  Odd powers vanish by
+the $\pi\mapsto-\pi$ parity of the pion-only action.
+
+\textit{(c) Currents and the four-pion amplitude.}
+Promote $L$ and $R$ separately to local transformations while retaining only
+terms proportional to derivatives of their parameters.  For
+$L=\exp(\ii\alpha_L^at^a)$ and
+$R=\exp(\ii\alpha_R^at^a)$, the variation takes the form
+$\delta\mathcal L_2=(\partial_\mu\alpha_L^a)J_L^{a\mu}
++(\partial_\mu\alpha_R^a)J_R^{a\mu}$, with
+\begin{align*}
+ J_L^{a\mu}&=-2\ii f^2\Tr\left(t^a
+ \partial^\mu\Sigma\,\Sigma^\dagger\right),\\
+ J_R^{a\mu}&=+2\ii f^2\Tr\left(t^a
+ \Sigma^\dagger\partial^\mu\Sigma\right).
+\end{align*}
+The field equation makes both currents conserved.  Expanding gives
+\begin{align*}
+ J_L^{a\mu}
+ &=+f\partial^\mu\pi^a
+ -\frac12\epsilon^{abc}\pi^b\partial^\mu\pi^c+O(\pi^3),\\
+ J_R^{a\mu}
+ &=-f\partial^\mu\pi^a
+ -\frac12\epsilon^{abc}\pi^b\partial^\mu\pi^c+O(\pi^3).
+\end{align*}
+With the local-parameter signs chosen above, the vector and axial
+currents are
+\begin{align*}
+ V^{a\mu}=J_L^{a\mu}+J_R^{a\mu}
+ &=-\epsilon^{abc}\pi^b\partial^\mu\pi^c+O(\pi^4),\\
+ A^{a\mu}=J_L^{a\mu}-J_R^{a\mu}
+ &=+2f\partial^\mu\pi^a+O(\pi^3).
+\end{align*}
+Changing the signs assigned to the infinitesimal generators changes all
+current signs together and leaves their Ward identities unchanged.
+
+The quartic term produces the on-shell tree amplitude
+\[
+ s=-(p_1+p_2)^2,\qquad t=-(p_1-p_3)^2,\qquad
+ u=-(p_1-p_4)^2,\qquad s+t+u=0.
+\]
+\begin{equation*}
+ \boxed{\mathcal M_{ab;cd}(s,t,u)
+ =\frac{1}{4f^2}\left(
+ \delta_{ab}\delta_{cd}s
+ +\delta_{ac}\delta_{bd}t
+ +\delta_{ad}\delta_{bc}u\right),}
+\end{equation*}
+This has exactly the $O(3)$ tensor and crossing form found in
+Exercise~\ref{exercise:I-CH07-002}.  Taking any external pion momentum to
+zero sends $s,t,u$ to zero and therefore makes the amplitude vanish.  This is
+the Adler zero.  It follows here from the derivative couplings forced by the
+Goldstone symmetry.
+
+\textit{(d) Current normalization, weak decay, and the soft theorem.}
+For a canonically normalized one-pion state, the linear current terms imply
+\[
+ \langle0|J_L^{a\mu}(0)|\pi^b(p)\rangle
+ =\ii f p^\mu\delta^{ab},
+ \qquad
+ \langle0|A^{a\mu}(0)|\pi^b(p)\rangle
+ =\ii F_\pi p^\mu\delta^{ab},
+ \qquad F_\pi=2f,
+\]
+where a pion-state phase fixes the displayed signs.  Banks's parametrization
+uses $f$ in the exponential and in the left-current matrix element.  A
+convention that defines the decay constant with the full axial current uses
+$F_\pi=2f$.  Equivalently, writing the standard chiral Lagrangian as
+$-F_\pi^2\Tr(\partial\Sigma^\dagger\partial\Sigma)/4$ and its exponential as
+$\exp(\ii\tau^a\pi^a/F_\pi)$ gives the same theory.
+
+Coupling the charged left current to the weak interaction and integrating
+out the $W$ gives, in the standard full-current normalization,
+\begin{align*}
+ \mathcal M(\pi^-\to\ell^-\bar\nu_\ell)
+ &=\frac{G_FV_{ud}}{\sqrt2}F_\pi p_\mu
+ \bar u_\ell\gamma^\mu(1-\gamma_5)v_\nu\\
+ &=\frac{G_FV_{ud}}{\sqrt2}F_\pi m_\ell
+ \bar u_\ell(1-\gamma_5)v_\nu.
+\end{align*}
+The second line follows from $p=p_\ell+p_\nu$ and the lepton Dirac
+equations.  It exhibits helicity suppression.  With small quark masses
+restored so that the physical pion can decay, the leading width is
+\[
+ \Gamma(\pi^-\to\ell^-\bar\nu_\ell)
+ =\frac{G_F^2|V_{ud}|^2F_\pi^2m_\ell^2m_\pi}{8\pi}
+ \left(1-\frac{m_\ell^2}{m_\pi^2}\right)^2,
+\]
+before electromagnetic and higher-order chiral corrections.
+
+The same matrix element fixes the pole in any Green function containing the
+axial current:
+\[
+ \widetilde G_{A\mathcal O}^{a\mu}(q)
+ =-\frac{\ii F_\pi q^\mu}{q^2-\ii\epsilon}
+ \mathcal M(\pi^a(q),\mathcal O)+\text{terms regular at }q^2=0.
+\]
+Insert this expression into the axial Ward identity and take $q\to0$.  With
+the same phase convention, the result is the current-algebra relation
+\[
+ \lim_{q\to0}\langle\beta;\pi^a(q)|\mathcal O|\alpha\rangle
+ =-\frac{\ii}{F_\pi}
+ \langle\beta|[Q_5^a,\mathcal O]|\alpha\rangle
+ +\text{external-particle pole terms}.
+\]
+It relates soft-pion emission from other hadrons to the chiral transformation
+of the amplitude without the soft pion.  For a regular pion-only amplitude,
+the commutator structure and derivative action reproduce the Adler zero
+found directly above.
+
+% BANKS-SOURCE: pdf=99 print=89 kind=implicit-solution id=I-CH07-005
+\BanksImplicitSolution{I-CH07-005}
+\textit{(a) Finite connection law.}
+Introduce the Maurer--Cartan form
+\[
+ \Theta_\mu=g^{-1}\partial_\mu g.
+\]
+For $g'=gh$, the product rule gives
+\begin{align*}
+ \Theta'_\mu
+ &=(gh)^{-1}\partial_\mu(gh)\\
+ &=h^{-1}g^{-1}(\partial_\mu g)h+h^{-1}\partial_\mu h\\
+ &=h^{-1}\Theta_\mu h+h^{-1}\partial_\mu h.
+\end{align*}
+The second term belongs to $\mathfrak h$.  The assumed
+$\operatorname{Ad}(H)$-invariance of
+$\mathfrak g=\mathfrak h\oplus\mathfrak m$ means that projection commutes
+with conjugation by $h$:
+\[
+ P_{\mathfrak h}(h^{-1}Xh)=h^{-1}P_{\mathfrak h}(X)h.
+\]
+Projecting the transformed Maurer--Cartan form therefore gives
+\begin{equation*}
+ \boxed{A'_\mu=h^{-1}A_\mu h+h^{-1}\partial_\mu h
+ =h^{-1}(A_\mu+\partial_\mu)h.}
+\end{equation*}
+This is the inhomogeneous transformation law of a connection for the local
+right $H$ action.
+
+\textit{(b) Components and covariant checks.}
+Choose the basis in the exercise anti-Hermitian and write
+$[t_n,t_p]=f_{np}{}^m t_m$ and
+$h=\exp(\epsilon^mt_m)$.  To first order,
+\[
+ \delta A_\mu=\partial_\mu\epsilon+[A_\mu,\epsilon],
+ \qquad
+ \delta A_\mu^m=\partial_\mu\epsilon^m
+ +f_{np}{}^mA_\mu^n\epsilon^p.
+\]
+Hermitian generators move factors of $\ii$ between the structure constants,
+the group parameter, and the connection; the matrix transformation above
+fixes those convention-dependent factors unambiguously.
+
+The covariant derivative supplies a direct check:
+\begin{align*}
+ (D_\mu g)'
+ &=\partial_\mu(gh)-(gh)A'_\mu\\
+ &=(\partial_\mu g)h+g\partial_\mu h
+ -gh\left(h^{-1}A_\mu h+h^{-1}\partial_\mu h\right)\\
+ &=(\partial_\mu g-gA_\mu)h=(D_\mu g)h.
+\end{align*}
+Substitution of the finite connection law shows that the derivative terms in
+$h$ cancel in the curvature
+$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu]$
+and leaves $F_{\mu\nu}'=h^{-1}F_{\mu\nu}h$.
+
+\textit{(c) A general generator metric.}
+For a general generator metric
+$\kappa_{mn}=\Tr(t_mt_n)$, the projection coefficients are
+\[
+ A_\mu^m=(\kappa^{-1})^{mn}
+ \Tr(t_n g^{-1}\partial_\mu g).
+\]
+In the common normalization $\kappa_{mn}=\kappa\delta_{mn}$, Banks's
+component formula acquires the factor $1/\kappa$.  The matrix-valued
+connection and its transformation law are independent of this basis
+normalization.
+
+\end{bankssolutions}

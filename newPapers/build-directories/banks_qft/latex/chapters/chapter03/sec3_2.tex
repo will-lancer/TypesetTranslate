@@ -1,0 +1,236 @@
+% BANKS-SOURCE: pdf=30 print=20 kind=section id=3.2
+\subsection{Functional integral solution of the SD equations}
+
+% BANKS-SOURCE: pdf=30 print=20 kind=prose
+In order to understand how to solve the SD equations, it is convenient to think about a
+regularization of QFT in which space-time is replaced by a finite hypercubic lattice of
+points. The continuous variable $x$ is replaced by a discrete variable $A$, with finite range.
+The field and source functions become finite-dimensional variables $\phi^A$ and $J^A$. The
+differential operator $\partial^2$ becomes a symmetric matrix $K_{AB}$. In fact such a
+regularization is used in numerical solutions of strongly coupled field theories, which are not
+amenable to other approximation techniques. It converts QFT into a finite problem, which
+can be solved on a computer.
+
+The discretized SD equations take the form (summation convention for repeated
+indices):
+
+% BANKS-SOURCE: pdf=30 print=20 kind=equation id=3.10
+\begin{equation}
+ K_{AB}\frac{\partial Z}{\ii\partial J_B}
+ =\left[V'\left(\frac{\partial}{\ii\partial J_A}\right)-J^A\right]Z[J].
+\label{eq:3.10}
+\end{equation}
+
+Since we have only a finite number of variables, we have replaced functional derivatives
+by ordinary partial derivatives.
+
+If $V$ is a polynomial of highest order $k$ then this is a set of $k$th-order partial dif-
+ferential equations (PDEs) in a finite number of variables. The key to solving them is
+to note that the explicit dependence on $J^A$ is linear. If we Fourier transform a set of
+linear PDEs, every derivative turns into $\ii$ times the Fourier transform variable, while
+every $J^A$ turns into ($-\ii$ times) a derivative w.r.t. the Fourier transform variable. The
+Fourier transform of the discretized SD equations will be a set of first-order PDEs
+
+% BANKS-SOURCE: pdf=31 print=21 kind=prose
+for the Fourier transform. For reasons that will become apparent, we call the
+Fourier-transform variable $\phi^A$, and write
+
+% BANKS-SOURCE: pdf=31 print=21 kind=equation id=3.11
+\begin{equation}
+Z[J]\equiv\int[d\phi]\ee^{\ii S[\phi]+\ii J^A\phi^A}.
+\label{eq:3.11}
+\end{equation}
+\BanksImplicitHook{I-CH03-003}
+
+where square brackets around the integration measure indicate that it is a multiple
+integral for which we are contemplating taking the limit of an infinite number of inte-
+gration variables. Such integrals are called functional integrals. It requires a lot of care
+to give them a rigorous mathematical definition. Most physicists deal with this problem
+through the algorithm of renormalization, to which we will turn in Chapter 9.
+
+The Fourier-transformed SD equations (as the reader will kindly verify) are
+
+% BANKS-SOURCE: pdf=31 print=21 kind=display
+\[
+\frac{\partial S}{\partial\phi^A}=K_{AB}\phi^B-\frac{\partial V}{\partial\phi^A},
+\]
+
+whose solution is
+
+% BANKS-SOURCE: pdf=31 print=21 kind=equation id=3.12
+\begin{equation}
+S=\frac12\phi^AK_{AB}\phi^B-V(\phi)+C,
+\label{eq:3.12}
+\end{equation}
+
+where $C$ is a constant independent of $\phi^A$. Our equations for $Z$ are homogeneous and
+do not determine its overall normalization.
+
+Returning to the continuum, we write $S$ as
+
+% BANKS-SOURCE: pdf=31 print=21 kind=equation id=3.13
+\begin{equation}
+S=\int\dd^D x\left[\frac12\phi\partial^2\phi-V(\phi)\right].
+\label{eq:3.13}
+\end{equation}
+
+Integrating by parts,
+
+% BANKS-SOURCE: pdf=31 print=21 kind=equation id=3.14
+\begin{equation}
+S=\int\dd^D x\left[-\frac12(\partial\phi)^2-V(\phi)\right].
+\label{eq:3.14}
+\end{equation}
+
+The integral defining the Fourier transform of the generating functional is now an
+integral over some space of functions, or functional integral. For the free-field case,
+which we will deal with in a moment, such integrals were given a rigorous mathematical
+definition by Wiener \cite{banks-ref-12}. For interacting field theory they are defined by a process of
+regularization (turning them into finite integrals) and renormalization to which we will
+return in Chapter 9. We certainly want our functions to approach constants at infinity
+in space-time, so that the integration by parts that we did in the action is allowed, but we
+will not delve further into their properties. In Chapter 10, in discussing gauge theories
+and low-dimensional scalar field theories we will encounter examples where integrals
+of total derivatives have to be kept in the action, and we will take care not to drop them
+where they are important.
+
+If we consider free field theory, where $V(\phi)=\frac12m^2\phi^2$, the integral is Gaussian and
+we can do it explicitly. However, it is an oscillating Gaussian, so we must provide
+a prescription for evaluating it. One obvious possibility is to make the replacement
+$m^2\to m^2-\ii\varepsilon$, where $\varepsilon$ is a small positive number, which is eventually sent
+to zero.
+
+% BANKS-SOURCE: pdf=32 print=22 kind=prose
+Consider the Gaussian integral
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.15
+\begin{equation}
+I(J)\equiv\int\dd^ny\,\ee^{-\frac12K_{ij}y^iy^j+\ii y^iJ_i},
+\label{eq:3.15}
+\end{equation}
+
+where $K$ is a symmetric matrix with positive definite real part. This can be evaluated
+by changing variables $y\to K^{-1/2}Y$, evaluating the Jacobian, and doing the resulting
+single-variable Gaussian integrals. The result is
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.16
+\begin{equation}
+I(J)=\ee^{-\frac12J_i(K^{-1})_{ij}J_j}\abs{\det K}^{-1/2}\left[\sqrt{\frac{\pi}{2}}\right]^n,
+\label{eq:3.16}
+\end{equation}
+\BanksImplicitHook{I-CH03-004}
+
+as the knowledgeable reader will know and the diligent reader can verify. In the func-
+tional integral limit, we have to invert a differential operator and take its determinant.
+We will temporarily evade the second of these tasks by noting that the definition of $Z[J]$
+in terms of time-ordered products gives us the normalization $Z[0]=1$. We achieve this
+by writing $Z[J]$ as the ratio of two functional integrals $I(J)/I(0)$, and note that the
+functional determinant as well as the pesky factors of $\sqrt{\pi/2}$ cancel out in this ratio.
+
+We are left to evaluate the inverse of the differential operator
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.17
+\begin{equation}
+K=-\ii(\partial^2-m^2+\ii\varepsilon).
+\label{eq:3.17}
+\end{equation}
+
+That is, we want to find the Green function satisfying
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.18
+\begin{equation}
+-\ii(\partial^2-m^2+\ii\varepsilon)D_F(x-y)=\delta^D(x-y).
+\label{eq:3.18}
+\end{equation}
+
+This is easily done in momentum space:
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.19
+\begin{equation}
+D_F(x-y)=\int\frac{\dd^D p}{(2\pi)^D}\ee^{\ii p\mathbin{\cdot}(x-y)}\frac{-\ii}{p^2+m^2-\ii\varepsilon}.
+\label{eq:3.19}
+\end{equation}
+
+The integral defining this \emph{Feynman} or \emph{causal Green function}\footnote[3]{Also called the Feynman propagator.} of the Klein--Gordon
+(KG) operator has poles in the $p^0$ plane just below the positive real axis and just above
+the negative real axis. When $x^0-y^0>0$, we evaluate it by closing the contour in the
+lower half plane. The resulting Green function is an integral over only positive energy
+waves. Similarly, when the time order is reversed, we close in the upper half plane,
+and again conclude that only positive energies propagate forward in time. This is the
+rigorous version of Feynman's idea that ``anti-particles are negative-energy particles
+propagating backwards in time.''
+
+The equality
+
+% BANKS-SOURCE: pdf=32 print=22 kind=equation id=3.20
+\begin{equation}
+D_F(x-y)=\langle0|T\phi(x)\phi(y)|0\rangle,
+\label{eq:3.20}
+\end{equation}
+
+for free Heisenberg fields, may be verified in two illuminating ways. First of all, the free
+SD equations show that the RHS is a Green function for the KG equation, and the
+discussion of the previous paragraph shows that the boundary conditions implied by
+the $\ii\varepsilon$ prescription are precisely those satisfied by the time-ordered vacuum expectation
+value (VEV). Alternatively, one can compute the RHS by brute force using creation and
+
+% BANKS-SOURCE: pdf=33 print=23 kind=prose
+annihilation operators. Thus, the $\ii\varepsilon$ trick for making the Gaussian integral converge
+automatically chooses the right space-time boundary conditions to define the time-
+ordered Green function of the KG equation.
+\BanksImplicitHook{I-CH03-005}
+
+We can obtain a deeper understanding of this connection by noting that the position
+of the energy poles in the Feynman Green function allows us to rotate the contour of
+integration\footnote[4]{At this point I am expecting the readers to stop and remember their complex analysis course. If you don't know complex analysis, stop here, learn it, and come back to this point.} to $p^0\to\ii p_E^0$, if we simultaneously rotate time differences to be imaginary. With
+$t=-\ii\tau$ and the spatial coordinates retained, the positive-frequency phase continues as
+\begin{equation*}
+ \ee^{+\ii p\mathbin{\cdot}x}=\ee^{-\ii Et+\ii\mathbf p\mathbin{\cdot}\mathbf x}
+ \longrightarrow \ee^{-\ii p_E^0\tau+\ii\mathbf p\mathbin{\cdot}\mathbf x}.
+\end{equation*}
+Writing $x_E=(\tau,\mathbf x)$ and $\mathbf p_E=-\mathbf p$ makes this
+$\ee^{-\ii p_E\mathbin{\cdot}x_E}$, where
+$p_E\mathbin{\cdot}x_E=p_E^0\tau+\mathbf p_E\mathbin{\cdot}\mathbf x$.
+We realize that $D_F$ is the analytic continuation of the Euclidean Green function,
+
+% BANKS-SOURCE: pdf=33 print=23 kind=equation id=3.21
+\begin{equation}
+D_E(x_E)=\int\frac{\dd^D p_E}{(2\pi)^D}\frac{\ee^{-\ii p_E\mathbin{\cdot}x_E}}{p_E^2+m^2},
+\label{eq:3.21}
+\end{equation}
+\BanksImplicitHook{I-CH03-006}
+
+where the Euclidean norm is $p_E^2=(p_E^0)^2+\mathbf p_E^2=(p_E^0)^2+\mathbf p^2$. This is the unique Green function
+of the $D$-dimensional Helmholtz operator $-\nabla_E^2+m^2$, which falls off at Euclidean
+infinity.
+
+It is easy to see why the correlation functions of QFT should have analytic contin-
+uations to imaginary time. Consider (for notational simplicity) the time ordering in
+which the labels of the points coincide with their time order. Then
+
+% BANKS-SOURCE: pdf=33 print=23 kind=equation id=3.22
+\begin{equation}
+\langle0|T\phi(x_1)\ldots\phi(x_n)|0\rangle
+=\langle0|\phi(x_1,0)\ee^{-\ii H(t_1-t_2)}\ldots\ee^{-\ii H(t_{n-1}-t_n)}\phi(x_n,0)|0\rangle,
+\label{eq:3.22}
+\end{equation}
+
+where we have used $H|0\rangle=0$. By inserting complete sets of energy eigenstates, we can
+rewrite this in the form
+
+% BANKS-SOURCE: pdf=33 print=23 kind=equation id=3.23
+\begin{equation}
+\int\rho(E_1,\ldots,E_{n-1})\ee^{-\ii\sum_kE_k(t_k-t_{k+1})}.
+\label{eq:3.23}
+\end{equation}
+
+where the spectral function (which also has implicit dependence on the spatial points at
+which the fields are evaluated) $\rho$ is determined in terms of sums over matrix elements of
+fields between states of fixed energy. In free-field theory, and every order of perturbation
+theory around it, it is easy to see that the spectral function is an analytic function of the
+energy variables. Furthermore, it falls off when the energy variables become large. This
+\BanksImplicitHook{I-CH03-007}
+is enough to guarantee\footnote[5]{In axiomatic approaches to field theory this behavior of the spectral functions is simply postulated. The bound on the growth of the density of states can be derived from the definition of field theory we will give in the chapter on renormalization. A field theory is a perturbation of a conformal field theory by an operator that is negligible at high energy. The density of states of a conformal field theory in volume $V$ is, by virtue of conformal invariance and extensivity, $\rho(E)\sim\ee^{cVE^{\frac{D-1}{D}}}$.} that these functions have a well-defined analytic continuation
+to imaginary, or Euclidean, time. Note that, if we take $(t_k-t_{k+1})\to-\ii\tau_k$, with
+$\tau_k>0$, the exponentials give a Boltzmann-like suppression of high-energy states.\footnote[6]{This is not a coincidence. The Euclidean Green functions with compactified imaginary time compute thermal expectation values of fields.} Thus, assuming that field matrix elements have at most power-law growth with energy,
+these functions are well defined and analytic in imaginary time.

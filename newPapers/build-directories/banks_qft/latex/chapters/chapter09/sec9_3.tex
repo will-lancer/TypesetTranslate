@@ -1,0 +1,193 @@
+% BANKS-SOURCE: pdf=155 print=145 kind=section id=9.3
+\subsection{Renormalization and critical phenomena}
+
+% BANKS-SOURCE: pdf=155 print=145 kind=prose
+The deep understanding of renormalization and the renormalization group came
+from the work of Fisher, Kadanoff, Wilson, and other condensed-matter
+physicists, working on the problem of continuous phase transitions, or
+\emph{critical phenomena}. We all know that many forms of ordinary matter
+undergo phase transitions as we vary control parameters like pressure,
+temperature, and external magnetic fields. Water turns into steam, solids
+melt, ferromagnets magnetize, etc. etc. The thermodynamics of a system is
+characterized by a free energy per unit volume,
+$F(T,P,H,\ldots)$, which depends on the control parameters. Typically $F$
+depends analytically on these parameters, and, for systems with a finite number
+of degrees of freedom, we can prove that this is so. Mathematically, phase
+transitions occur only for infinite volume (unless we have an infinite number
+of fields in our system at each point), and show up as discontinuities in
+derivatives of $F$ w.r.t. e.g. the temperature. Ehrenfest defined the order of
+a transition as the order of the derivative which became singular or
+discontinuous at the phase transition.
+
+\BanksImplicitHook{I-CH09-004}
+
+Landau, who invented the first general theory of phase transitions
+(generalizing van der Waals' treatment of the liquid--gas system), realized
+that the main difference was between first-order transitions and all the
+others, which are called continuous transitions. Landau's theory is extremely
+simple. He postulated that the different phases of the system were
+characterized by an \emph{order parameter} $\Phi$ distinguishing the phases.
+For example, in a ferromagnet $\Phi$ is the magnetization. In the liquid--gas
+transition, it is related to the difference between the density of the phases
+and the critical density at which the transition occurs.
+
+The order parameter is defined so that its value is small near the transition.
+It is a macroscopic property of the system, so it does not have thermal
+fluctuations. Its value is therefore determined by minimizing a free-energy
+function $F(\Phi,T,\ldots)$ w.r.t. $\Phi$, at fixed values of the control
+parameters. Near the transition, we can expand
+\[
+  F=a(T)\Phi^2+b(T)\Phi^3+c(T)\Phi^4+\cdots .
+\]
+The coefficients in the expansion depend analytically on the control
+parameters, of which we have indicated only the temperature. Keeping only the
+indicated terms, and assuming that $c>0$, we have a quartic polynomial, with
+two local minima. As we vary $T$, it might happen that the global minimum
+jumps from one to the other. This is a first-order phase transition: $F$ is
+continuous, but its first derivative is not, because we have jumped from one
+branch of the function $\Phi(T)$ to another when the free energies of the two
+branches cross each other.
+
+Landau then realized that one could explain second-order transitions by
+assuming that $b$ was zero (either by fine tuning some other control
+parameter, or because the system had a built in $\Phi\to-\Phi$ symmetry) and
+that, at the critical temperature, $a(T_c)=0$. At this point two minima
+coalesce into one. The magnetization and free energies have square-root branch
+points in $T-T_c$.
+
+% BANKS-SOURCE: pdf=156 print=146 kind=prose
+Landau's theory, called \emph{mean field theory}, has two remarkable
+properties: it is completely universal, depending only on the properties of
+polynomials, not on the detailed nature of the order parameter or the system it
+characterizes; and it predicts fractional power-law exponents for physical
+properties near continuous phase transitions. Experimentalists rushed to test
+these properties. The experiments were difficult, because one had to get very
+near the critical point to measure the exponents.
+
+The result of this experimental work was exciting and puzzling. Continuous
+phase transitions did exhibit remarkable universality. For example, the
+critical point in the liquid--vapor phase diagram in the $P,T$ plane has the
+same critical exponents as the so-called Ising ferromagnets (ferromagnets with
+a single preferred axis of up--down polarization). However, there was not
+complete universality. For example, XY ferromagnets with a whole preferred
+plane of polarization, or those in which there is no preferred axis, had
+different critical exponents. Furthermore, while the exponents were not
+wildly different from the Landau square roots, they were definitely different.
+Clearly something was right about Landau's ideas, but something much more
+intricate and interesting was going on.
+
+This was confirmed by another set of phenomena,\footnote[5]{The most
+spectacular of which is \emph{critical opalescence}.} which were observed by
+scattering light and neutrons off of substances undergoing second-order
+transitions. These phenomena could be explained by assuming that correlation
+functions of local quantities, like the local magnetization, obeyed scaling
+laws of the form
+\[
+  \langle M(\mathbf x)M(\mathbf y)\rangle\sim|\mathbf x-\mathbf y|^{-2\beta},
+\]
+at very large distances and temperatures at the critical point. By contrast,
+away from critical points, three-dimensional condensed-matter systems
+generally exhibit what is called a \emph{correlation length}
+\[
+  \langle M(\mathbf x)M(\mathbf y)\rangle\sim
+  \frac{\mathrm{e}^{-|\mathbf x-\mathbf y|/l_c}}{|\mathbf x-\mathbf y|} .
+\]
+The three new phenomena of \emph{universality classes}, rather than a
+completely universal \emph{mean field theory}, \emph{non-mean field critical
+exponents}, and \emph{infinite correlation length} at the critical point,
+received a common explanation in terms of the renormalization group.
+
+Kadanoff's first crude form of the renormalization group is called the
+\emph{block spin transformation}. Kadanoff first reasoned that, if critical
+phenomena had universal aspects, then interesting results for real systems
+could be extracted from simple models like the Ising model. This model
+consists of a classical spin, which can take only the values $\pm1$, situated
+on the sites of a $d$-dimensional hypercubic lattice (where $d=1,2$ or 3 for
+systems realizable in condensed-matter laboratories). The Hamiltonian is
+\[
+  H_0=-J\sum_{\mathbf x,\mu}\sigma(\mathbf x)\sigma(\mathbf x+\mathbf e_\mu),
+\]
+where $\mathbf e_\mu$ is a lattice unit vector and the sum runs over all
+nearest-neighbor points in the lattice.
+Kadanoff's great insight was to realize that, if critical phenomena really had
+something to do with an infinite correlation length, then the microscopic
+dynamics was
+
+% BANKS-SOURCE: pdf=157 print=147 kind=prose
+irrelevant and there should be some sort of long-wavelength effective theory
+that captured the phenomena. Landau's theory could be viewed as a sort of
+guess at what this long-wavelength theory was (a so-called Gaussian model), but
+the experiments showed that this guess was not correct. How should one
+systematically calculate the effective long-wavelength Hamiltonian?
+
+The slogan that works, as it does for so many other things, is \emph{little
+steps for little feet}. If you're working on a lattice with spacing $a$, and
+you want to investigate phenomena on a length scale much bigger than $a$,
+first go to $2a$, then from there to $4a$, and so on. Kadanoff did this by
+defining blocks on the lattice, and defining $\Phi_i$ to be the average of the
+spins on the $i$th block. He imagined doing the partition sum over all spins,
+with the $\Phi_i$ held fixed. One then gets a new system, whose variables are
+the $\Phi_i$, defined on a lattice of spacing $2a$. The Hamiltonian takes the
+form
+\[
+  H_1=\sum K_n^1(\mathbf x_1,\ldots,\mathbf x_n)
+  \Phi(\mathbf x_1)\ldots\Phi(\mathbf x_n),
+\]
+where the sums now go over all lattice points and all $n$.
+
+It isn't easy to calculate the functions $K_n^1$, but it is easy to argue that
+they all have short-range correlations, because the original Hamiltonian did,
+and, by keeping the $\Phi_i$ fixed, we have not allowed any long-wavelength
+fluctuations. That is, the sum over $\Phi_i$, which we have not yet done,
+contains both configurations where the $\Phi_i$ randomly fluctuate from point
+to point on the lattice with spacing $2a$ and $\Phi_i$ configurations of
+longer wavelength. It is only by summing over the latter that we can produce
+long-range correlations in the system. We can now iterate the procedure to get
+new effective theories (with the same partition function) for lattices of
+larger and larger spacing. After $k$ steps we have
+\[
+  H_k=\sum K_n^k(\mathbf x_1,\ldots,\mathbf x_n)
+  \Phi(\mathbf x_1)\ldots\Phi(\mathbf x_n),
+\]
+where the functions $K_n^k$ have short-range correlations on a lattice of
+spacing $2^ka$. Note that we have used the same name for the variables at all
+steps but the first. Actually these variables all have different discrete
+ranges, but as $k$ gets large it is clear that we can let the variables be
+continuous and replace sums over $\Phi$ by integrals. Furthermore, although
+all the $\Phi$ variables are bounded between $\pm1$ we can abandon this
+constraint and replace it by a potential that favors $\Phi$s in this compact
+range. Our system now resembles a lattice field theory, with the
+statistical-mechanical Hamiltonian playing the role of the Euclidean action.
+
+\BanksImplicitHook{I-CH09-005}
+
+As we take $k$ to infinity, one of two things happens. If we are at a value of
+the temperature for which the correlation length is finite, then the functions
+$K_n^k$ become of shorter and shorter range in lattice units, once we take the
+spacing larger than the correlation length. Eventually, they are all
+Kronecker deltas, and there are no interactions between the lattice points. We
+call this limit the \emph{trivial fixed point} of the renormalization group.
+But suppose that we are at the critical temperature, for which the correlation
+length is infinite. In this case, Kadanoff realized that the only way to get a
+sensible limit was to assume that the Hamiltonian approached a fixed point, in
+terms of appropriately rescaled variables $\hat\Phi$. That is, the fixed-point
+Hamiltonian had to be invariant under
+
+% BANKS-SOURCE: pdf=158 print=148 kind=page-boundary
+scale transformations of space combined with a rescaling of $\Phi$. This then
+predicts scale-invariant correlation functions, as observed experimentally. It
+further predicts that the scaling exponents are characteristic of the
+fixed-point Hamiltonian and independent of the microphysics. This explains
+universality.
+
+However, unlike Landau's theory, Kadanoff's block spin idea can accommodate
+different universality classes. For example, there is no reason for the RG
+transformation for a system with Ising symmetry to be the same as that for
+planar or fully rotation-invariant spin symmetry. Detailed calculation shows
+that it is not. Thus, block spin or renormalization theory explains the
+qualitative nature of critical phenomena. It remained for Fisher, Wilson, and
+others to appreciate the connection to Euclidean field theory, and to use
+field-theoretic tools to calculate detailed numerical agreement of the theory
+with a wide variety of experiments. Rather than following them on this
+fascinating journey, we will now return to the application of these ideas to
+relativistic quantum field theory itself.

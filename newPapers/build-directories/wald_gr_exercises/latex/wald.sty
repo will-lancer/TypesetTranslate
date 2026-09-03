@@ -1,0 +1,84 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wald}[2026/08/07 Wald GR project conventions]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage[nointegrals]{wasysym}
+\RequirePackage{mathtools}
+\RequirePackage{slashed}
+\RequirePackage{bm}
+\RequirePackage{jheppub}
+\RequirePackage{etoolbox}
+\RequirePackage{float}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{multicol}
+\RequirePackage{enumitem}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,decorations.pathmorphing,positioning}
+
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={General Relativity},
+  pdfauthor={Robert M. Wald}
+}
+
+% Give TeX modest flexibility in long, notation-heavy paragraphs.
+\setlength{\emergencystretch}{2em}
+
+% Suppress jheppub's submission banner and use its compact book layout.
+\gdef\@fpheader{\phantom{x}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{3.2em}}
+\compress
+\renewcommand\afterProceedingsSpace{\medskip}
+\renewcommand\afterTitleSpace{\medskip}
+\renewcommand\afterRuleSpace{\medskip}
+\renewcommand\afterAuthorSpace{\smallskip}
+\renewcommand\afterAffiliationSpace{\smallskip}
+\renewcommand\afterEmailSpace{\medskip}
+\renewcommand\afterAbstractSpace{\medskip}
+\renewcommand\afterDedicatedSpace{\bigskip}
+\renewcommand\afterTocSpace{\medskip}
+\renewcommand\afterTocRuleSpace{\bigskip}
+
+\setcounter{tocdepth}{2}
+\pretocmd{\section}{\clearpage}{}{}
+
+\newcommand{\bookpart}[1]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \vspace*{\fill}
+  \part{#1}
+  \vspace*{\fill}
+  \clearpage
+}
+\newcommand{\chapterproblems}{%
+  \subsection*{Problems}%
+  \addcontentsline{toc}{subsection}{Problems}%
+}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\nullinfinity}{\mathcal{I}}
+\newcommand{\tensorSpace}{\mathcal{T}}
+\newcommand{\forms}[1]{\Omega^{#1}(M)}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\order}{\mathcal{O}}
+\newcommand{\triplenorm}[1]{%
+  \left\lvert\!\left\lvert\!\left\lvert #1%
+  \right\rvert\!\right\rvert\!\right\rvert}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}

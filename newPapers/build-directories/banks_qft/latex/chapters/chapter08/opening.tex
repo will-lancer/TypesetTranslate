@@ -1,0 +1,191 @@
+% BANKS-SOURCE: pdf=103 print=93 kind=chapter
+\BanksChapter{8}{Non-abelian gauge theory}
+
+% BANKS-SOURCE: pdf=103 print=93 kind=prose
+In our discussion of the general effective field theory for NG bosons, we
+encountered a field theory whose target space was the coset space $G/H$. We
+realized this space in terms of fields that take values in the group manifold
+$G$, with the equivalence relation $g(x)\sim h(x)g(x)$. This is an example of
+a gauge equivalence, and we were forced to introduce a gauge potential
+$A_\mu(x)$, transforming as
+\begin{equation*}
+  A_\mu(x)\longrightarrow h^{-1}(\partial_\mu+A_\mu)h,
+\end{equation*}
+and covariant derivatives
+\begin{equation*}
+  D_\mu g=(\partial_\mu-A_\mu)g,
+\end{equation*}
+in order to write down an invariant action for the NG fields.
+
+We now want to generalize these considerations. It turns out that all
+non-gravitational physics at energy scales that have been explored
+experimentally can be described in terms of fields with a linear gauge
+invariance. That is, if we use the language of the field vector, $\Phi(x)$,
+there is a group of linear gauge equivalences, $\Phi(x)\to U(x)\Phi(x)$, where
+the $U$ matrices belong to a subgroup $G$ of the group of all unitary
+transformations on the field vector.
+
+Mathematicians describe this sort of situation by saying that $\Phi(x)$ is a
+\emph{section of a vector bundle over space-time} and $G$ is the
+\emph{structure group} of the bundle. For a physicist, a vector bundle is just
+a collection of vector spaces, one over every point in space-time, satisfying a
+few mathematical rules. The mathematical language is useful, because certain
+important non-perturbative phenomena in field theory depend in a crucial way on
+the mathematical theory of the topology of vector bundles.
+
+The most important concept in the theory of vector bundles is the notion of the
+parallel transport matrix $U_\Gamma(x,y)$ connecting two points in space-time,
+along a path $\Gamma$. This is also called the Wilson line (although it was
+introduced into modern physics by Schwinger and Mandelstam
+\cite{banks-ref-43,banks-ref-44,banks-ref-45}). One imagines that observers at different space-time points have
+chosen different bases in the field vector spaces, which are related by $G$
+equivalence transformations. $U_\Gamma(x,y)$ tells us how to relate the frame
+at $x$ to that at $y$. Under a gauge transformation,
+\begin{equation*}
+  U_\Gamma(x,y)\longrightarrow U(x)U_\Gamma(x,y)U^\dagger(y).
+\end{equation*}
+The matrix $U_P(x,x)$ for a closed path is called the \emph{holonomy} around
+$P$ at $x$. Since our matrices are always finite-dimensional, we can define the
+Wilson loop around $P$ at $x$ to be the trace of the holonomy. It is
+gauge-invariant.
+
+% BANKS-SOURCE: pdf=104 print=94 kind=prose
+Another way in which to make gauge-invariant objects is to construct
+$\Phi^\dagger(x)\allowbreak U_\Gamma(x,y)\Phi(y)$. More generally, if the action of $G$ on
+$\Phi$ is reducible, we can make a construction like this for each irreducible
+piece of the field vector. Similarly, we can construct Wilson loops in each
+irreducible representation of the gauge group $G$. This exhausts the collection
+of gauge-invariant objects in the theory, but not all of these constructions are
+independent. There are identities relating Wilson loops in different
+representations, as well as along different paths.
+
+In field theory, the action is local, so we need to construct limits of these
+objects for very short paths $\Gamma$ and $P$. This leads to the definition of
+covariant derivative and vector potential:
+\begin{equation*}
+  U_\Gamma(x,x+\dd x)\Phi(x+\dd x)
+  =\Phi(x)+D_\mu\Phi(x)\dd x^\mu
+  \equiv\Phi(x)+(\partial_\mu-\ii A_\mu)\Phi\,\dd x^\mu.
+\end{equation*}
+The transformation law (7.6) of the vector potential follows from that of the
+Wilson line.
+
+An infinitesimal closed loop $P$ is characterized by the area element
+$\dd x^\mu\wedge\dd x^\nu$ that it spans. We define
+\begin{equation*}
+  U_P(x)=1-\ii F_{\mu\nu}(x)\dd x^\mu\wedge\dd x^\nu.
+\end{equation*}
+Note that, according to our definitions, the 1-form $A_\mu$ and the 2-form
+field strength $F_{\mu\nu}$ are Hermitian matrices belonging to the Lie algebra
+of the group $G$. Under a gauge transformation,
+$F_{\mu\nu}(x)\to U(x)F_{\mu\nu}(x)U^\dagger(x)$.
+
+We can construct a closed path around the area element
+$\dd x^\mu\wedge\dd x^\nu$ from four segments of open path along
+$\dd x^\mu$, $\dd x^\nu$, $-\dd x^\mu$, and $-\dd x^\nu$. This gives us the
+relation
+\begin{equation*}
+  [D_\mu,D_\nu]\Phi=-\ii F_{\mu\nu}\Phi,
+\end{equation*}
+which can be written
+\begin{equation*}
+  F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu-\ii[A_\mu,A_\nu].
+\end{equation*}
+
+The field vector, its covariant derivatives, and the field strength tensor all
+transform homogeneously under the gauge group. Thus it is easy to write down
+the most general perturbatively renormalizable action involving these fields.
+The Yang--Mills and kinetic structures below use
+$\eta=\operatorname{diag}(-,+,\ldots,+)$ and are written for general spacetime
+dimension (D); the renormalizable matter terms and the topological term are
+displayed in their $D=4$ specialization, with $\epsilon^{0123}=1$.
+\BanksImplicitHook{I-CH08-001}
+
+We break the field vector up into its scalar $\phi$ and spinor $\psi$ parts\footnote[1]{The
+alert reader may wonder why there are no vector fields included in the field
+vector. The answer, which we will not have space to prove, is that
+renormalizability implies that the only vector fields charged under the gauge
+group are the Yang--Mills fields themselves.}
+
+\BanksImplicitHook{I-CH08-002}
+
+and write
+\begin{equation*}
+\begin{split}
+  \mathcal L={}&-\sum_r\left[\frac{1}{2g_r^2}
+  \Tr\!\left(F_{\mu\nu}^{(r)}F^{(r)\mu\nu}\right)
+  +\frac{\theta_r}{32\pi^2}
+  \Tr\!\left(F_{\mu\nu}^{(r)}F_{\alpha\beta}^{(r)}\right)
+  \epsilon^{\mu\nu\alpha\beta}\right]\\
+  &-\psi^\dagger(\ii\bar\sigma^\mu D_\mu)\psi-|D_\mu\phi|^2-V(\phi)
+  -[\psi M\psi+\mathrm{h.c.}].
+\end{split}
+\end{equation*}
+We have labeled the simple factors of the gauge group by the integer $r$;
+$G=G_1\otimes\cdots\otimes G_r\cdots\otimes G_K$. The field-strength
+matrices $(F_{\mu\nu}^{(r)})^a t_a$ are in a representation of the group
+$G_r$ satisfying $\Tr(t_at_b)=\frac12\delta_{ab}$. For unitary and orthogonal
+groups, we take it to be the fundamental representation. In other
+representations we have
+$\Tr_R(t_at_b)=\frac12D(R)\delta_{ab}$.
+
+% BANKS-SOURCE: pdf=105 print=95 kind=prose
+The constant $D(R)$ is called the Dynkin index of the representation. We have
+chosen to write all of the fermions as left-handed Weyl fermions. When writing
+Feynman rules, it is best to revert to Dirac notation. In Lorentzian formulas
+we use $\{\gamma^\mu,\gamma^\nu\}=-2\eta^{\mu\nu}$,
+$\slashed p=\gamma^\mu p_\mu$, and $p\cdot x=-p^0x^0+\mathbf p\cdot\mathbf x$;
+positive-frequency modes carry $\ee^{+\ii p\cdot x}$.
+
+The chiral projectors in the Standard Model discussion below are the
+$D=4$ projectors.
+
+The standard model of particle physics has gauge group
+$G=SU(3)\times SU(2)\times U(1)$. There are three generations of left-handed
+Weyl fields. Each generation has the following 15 members:
+\begin{itemize}[leftmargin=2em]
+\item Left-handed quarks, $q_L$, in the $[3,2,\frac13]$ representation (the
+last number is the $U(1)$ quantum number, called \emph{weak hypercharge})
+\item Anti-up quarks, $\bar u_R$, in the $[\bar3,1,\frac43]$ (the conjugates of
+the right-handed up quarks)
+\item Anti-down quarks, $\bar d_R$, in the $[\bar3,1,\frac23]$
+\item A lepton doublet, $l_L$, in the $[1,2,-1]$
+\item An anti-lepton $\bar e_R$, $\bar\mu_R$, $\bar\tau_R$, in the
+$[1,1,2]$ (the conjugate of the right-handed charged lepton (electron, muon, or
+tau) field).
+\end{itemize}
+
+There is also a single complex scalar field, the Higgs field $H$, in the
+$[1,2,1]$. We see that, in the standard model, all fields except neutrinos have
+natural right-handed partners. For the purposes of writing Feynman diagrams we
+introduce a Dirac neutrino field. In Dirac notation, chiral gauge couplings
+will have $\frac12(1\mp\gamma_5)$ projection factors. The right-handed
+component of the Dirac neutrino field will be a decoupled free field. $M(\phi)$
+is the most general gauge-invariant Yukawa coupling, which might include a
+constant gauge-invariant fermion mass matrix, and $V$ is the most general
+gauge-invariant quartic polynomial in the scalar fields. Note that we have
+written the scalar field Lagrangian as if all the fields were in complex
+representations of the gauge group. For real representations, we must multiply
+the scalar kinetic term by a factor of one half.
+
+The CP-violating terms in this Lagrangian, proportional to $\theta_r$, are all
+total derivatives:
+\begin{equation*}
+  \epsilon^{\mu\nu\alpha\beta}F_{\mu\nu}{}^aF_{\alpha\beta}{}^a
+  =\partial_\mu K^\mu,
+\end{equation*}
+\begin{equation*}
+  K^\mu=2\epsilon^{\mu\nu\alpha\beta}\left[
+  A_\nu{}^aF_{\alpha\beta}{}^a-\frac16f_{abc}A_\nu{}^aA_\alpha{}^bA_\beta{}^c\right],
+\end{equation*}
+where
+\begin{equation*}
+  [t_a,t_b]=\ii f_{abc}t_c.
+\end{equation*}
+They have no effect on perturbation theory, but do have important
+non-perturbative effects. Apart from these terms, CP violation could arise
+through the Yukawa couplings, mass terms, and scalar self-couplings of the
+fermions and scalars. There is an intricate interplay between gauge invariance
+and CP violation, because gauge invariance restricts these couplings \cite{banks-ref-30}. CP
+is conserved when there is a field basis in which all couplings and masses are
+real.

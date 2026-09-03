@@ -1,0 +1,492 @@
+\begin{bankssolutions}{Solutions to Implicit Exercises for Chapter 4}
+
+\BanksImplicitSolution{I-CH04-001}
+Write a collective index $A=(\mu,x)$.  If $B_A$ were odd, its
+time-ordered two-point function would be
+\begin{equation*}
+ G^{\mathrm F}_{AB}
+ =\theta(x^0-y^0)\langle B_A B_B\rangle
+ -\theta(y^0-x^0)\langle B_B B_A\rangle.
+\end{equation*}
+Exchanging both field labels gives
+\begin{equation*}
+ G^{\mathrm F}_{BA}=-G^{\mathrm F}_{AB}.
+ \tag{4.I.1}
+\end{equation*}
+The Proca kernel has the opposite exchange property.  Its numerator is
+symmetric in $\mu,\nu$, while its denominator is even in $p$.  Changing
+$p\mapsto-p$ in the Fourier integral therefore gives
+\begin{equation*}
+ D_{\nu\mu}(y-x)=D_{\mu\nu}(x-y).
+ \tag{4.I.2}
+\end{equation*}
+Equations (4.I.1) and (4.I.2) would force the two-point function to vanish.
+This conflicts with its nonzero pole at $p^2=-\mu^2$ and the nonzero residue
+on each of the $D-1$ physical polarizations (three in $D=4$).
+
+The source argument makes the same obstruction algebraic.  A source for an
+odd field is Grassmann odd.  For a symmetric kernel $D_{AB}=D_{BA}$,
+\begin{align*}
+ Q&=\int\dd A\,\dd B\,\eta_A D_{AB}\eta_B
+   =\int\dd A\,\dd B\,\eta_B D_{BA}\eta_A\notag\\
+  &=-\int\dd A\,\dd B\,\eta_A D_{AB}\eta_B=-Q,
+\end{align*}
+so $Q=0$.  The quadratic term that should generate the free propagator
+disappears.  A real Grassmann Gaussian instead requires an antisymmetric
+quadratic kernel.  The Proca differential operator and its inverse are
+symmetric under exchange of their complete indices.
+
+As a concrete check, take a rest-frame momentum $p^\mu=(\mu,\mathbf0)$.  The
+spatial tensor in parentheses in the propagator is
+$\eta_{ij}=\delta_{ij}$; its pole residue is proportional to $\delta_{ij}$
+and has rank $D-1$ (rank three in $D=4$).
+It is symmetric and nonzero, exactly as required by the $D-1$ bosonic
+polarizations (three in $D=4$).  Thus the displayed propagator admits Bose quantization and
+is incompatible with Fermi quantization.
+
+\BanksImplicitSolution{I-CH04-002}
+Use $\eta=\operatorname{diag}(-1,+1,\ldots,+1)$ and the Fourier convention
+$\Phi(x)=\int_p\ee^{+\ii p\cdot x}\Phi(p)$, where
+$\int_p=\int\dd^D p/(2\pi)^D$.  The free contraction of two Proca fields is
+\begin{equation*}
+ D_{\mu\nu}(p)
+ =\frac{-\ii}{p^2+\mu^2-\ii\epsilon}
+ \left(\eta_{\mu\nu}+\frac{p_\mu p_\nu}{\mu^2}\right).
+ \tag{4.I.3}
+\end{equation*}
+For $\mu>0$ the Proca constraint has already been incorporated into this
+inverse of the quadratic operator.  It introduces neither a gauge-fixing
+vertex nor a ghost line.
+
+Introduce sources for every free field and expand the interaction
+exponential.  The $B$ part can be written
+\begin{equation*}
+ Z[J]=
+ \frac{
+  \exp\!\left[\ii\int\dd^D x\,
+ \mathcal L_I\!\left(
+  \frac{1}{\ii}\frac{\delta}{\delta J},
+  \partial\frac{1}{\ii}\frac{\delta}{\delta J},\ldots
+ \right)\right]Z_0[J]}
+ {
+  \left.\exp\!\left[\ii\int\dd^D x\,
+ \mathcal L_I\!\left(
+  \frac{1}{\ii}\frac{\delta}{\delta J},
+  \partial\frac{1}{\ii}\frac{\delta}{\delta J},\ldots
+ \right)\right]Z_0[J]\right|_{J=0}}.
+ \tag{4.I.4}
+\end{equation*}
+Fermion sources require the corresponding ordered left and right
+derivatives.  Wick's theorem pairs the derivatives in (4.I.4), producing
+the following rules.
+
+For an internal $B$ line of momentum $p$, insert (4.I.3).  Other internal
+lines carry their free propagators.  For a local interaction vertex with
+incoming fields $\Phi_{a_1}(p_1),\ldots,\Phi_{a_n}(p_n)$, insert
+\begin{equation*}
+ \mathcal V_{a_1\ldots a_n}(p_1,\ldots,p_n)
+ =\left.
+ \ii\frac{\delta^n S_I}
+ {\delta\Phi_{a_1}(p_1)\cdots\delta\Phi_{a_n}(p_n)}
+ \right|_{\Phi=0},
+ \tag{4.I.5}
+\end{equation*}
+after stripping off $(2\pi)^D\delta^D(\sum_rp_r)$.  A derivative acting on
+an incoming field supplies $+\ii p_\rho$ with the stated Fourier convention.
+Several identical fields cause (4.I.5) to symmetrize their indices and
+momenta automatically.
+
+Momentum is conserved at each vertex.  Integrate $\dd^D\ell/(2\pi)^D$ for
+each independent loop momentum.  A closed fermion loop supplies a minus
+sign, as does every odd permutation needed to restore the selected ordering
+of external fermions.  Multiply a graph by
+\begin{equation*}
+ S_G=\frac{1}{|\operatorname{Aut}G|},
+ \tag{4.I.6}
+\end{equation*}
+where the automorphisms preserve field species, derivative labels, line
+orientation, and all labeled external legs.  This is the residual factor
+after the $1/V!$ factors in the exponential have been combined with the Wick
+contractions.
+
+Differentiating $Z$ retains every graph.  The functional
+$W=-\ii\log Z$ retains the connected graphs.  The Legendre transform
+$\Gamma$ retains the one-particle-irreducible graphs.  A connected Green
+function has one free propagator between each source point and its first
+vertex.  Amputation removes those external propagators.
+
+For the test interaction
+\begin{equation*}
+ \mathcal L_I=-\frac{\lambda}{n!}
+ C^{\mu_1\ldots\mu_n}B_{\mu_1}\cdots B_{\mu_n},
+\end{equation*}
+functional differentiation gives
+\begin{equation*}
+ \mathcal V^{\nu_1\ldots\nu_n}
+ =-\ii\lambda C^{(\nu_1\ldots\nu_n)}.
+ \tag{4.I.7}
+\end{equation*}
+When $C$ is symmetric, the $n!$ contractions cancel the displayed $1/n!$,
+leaving $-\ii\lambda C^{\nu_1\ldots\nu_n}$.  At first order, joining all
+$n$ legs of (4.I.7) to source points reproduces one external factor (4.I.3)
+on every leg.  Setting $\lambda=0$ leaves the free Proca propagator, which
+checks both the expansion and its normalization.
+
+\BanksImplicitSolution{I-CH04-003}
+We use the conventions of the preceding solution.  It is convenient to
+record the three ingredients once:
+\begin{align*}
+ \Delta(r)&=\frac{-\ii}{r^2+m^2-\ii\epsilon},\notag\\
+ D_{\mu\nu}(r)&=
+ \frac{-\ii}{r^2+\mu^2-\ii\epsilon}
+ \left(\eta_{\mu\nu}+\frac{r_\mu r_\nu}{\mu^2}\right),\notag\\
+ V^\mu(p,q)&=-\ii g(p-q)^\mu,
+ \qquad k+p+q=0.
+ \tag{4.I.8}
+\end{align*}
+Here $m$ is the scalar mass, $p$ is the incoming momentum on a $\phi$
+half-line, $q$ is the incoming momentum on a $\phi^*$ half-line, and $k$
+enters on the vector half-line.
+The last rule follows directly from $\partial\mapsto+\ii p$:
+\begin{equation*}
+ \ii\left[\ii g\bigl(+\ii p^\mu-\ii q^\mu\bigr)\right]
+ =-\ii g(p-q)^\mu.
+\end{equation*}
+Every scalar propagator is oriented from a $\phi$ insertion to a
+$\phi^*$ insertion.
+
+Before listing graphs, a counting identity gives a completeness check.  Let
+$b$ be the number of external $B$ legs and let the charged external legs
+consist of $n$ copies of $\phi$ and $n$ copies of $\phi^*$.  For a connected
+graph with $V$ cubic vertices,
+\begin{equation*}
+ I_B=\frac{V-b}{2},
+ \qquad I_\phi=V-n,
+ \qquad L=I_B+I_\phi-V+1.
+\end{equation*}
+Consequently,
+\begin{equation*}
+ V=b+2n+2L-2=E+2L-2.
+ \tag{4.I.9}
+\end{equation*}
+Trees have $V=E-2$, and one-loop graphs have $V=E$.  Nonnegative integral
+$I_B,I_\phi$ removes field assignments that cannot occur.
+
+We first give compact drawings of the full census.  The symbol
+$[B_{\sigma(1)}\cdots B_{\sigma(r)}]_\phi$ denotes an oriented scalar
+$r$-gon whose external vector legs occur in the shown cyclic order.  The
+symbol
+\begin{equation*}
+ \langle\phi(p)|B_{\sigma(1)}\cdots
+ B_{\sigma(s)}|\phi^*(q)\rangle_\phi
+\end{equation*}
+denotes an oriented scalar line with the displayed vector insertions in
+order.  A label $\Sigma_X@e$ draws a self-energy bubble on the specified
+line $e$, while $\mathcal T@v$ draws the triangle correction in place of a
+cubic vertex $v$.  This incidence notation fixes every edge and is
+unambiguous for the labeled external legs.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{.14\linewidth}p{.35\linewidth}p{.42\linewidth}@{}}
+external legs & tree level & one-loop 1PI cores \\ \hline
+$BB$ & free $D_{\mu\nu}$
+ & $[B_1B_2]_\phi$ \\
+$\phi\phi^*$ & free $\Delta$
+ & one two-edge $(B,\phi)$ bubble \\
+$BBB$ & none
+ & $[B_1B_2B_3]_\phi$, $[B_1B_3B_2]_\phi$ \\
+$B\phi\phi^*$ & one $V^\mu$
+ & one triangle with internal edges $(B,\phi,\phi)$ \\
+$BBBB$ & none
+ & $[B_{\sigma(1)}B_{\sigma(2)}B_{\sigma(3)}B_{\sigma(4)}]_\phi$,
+   $6$ cyclic orders \\
+$BB\phi\phi^*$
+ & $\langle\phi|B_1B_2|\phi^*\rangle_\phi$ and
+   $\langle\phi|B_2B_1|\phi^*\rangle_\phi$
+ & two boxes, according to the order of $B_1,B_2$ on the scalar path \\
+$\phi\phi\phi^*\phi^*$
+ & two charge-respecting vector exchanges
+ & four alternating $(B,\phi,B,\phi)$ boxes
+\end{tabular}
+\end{center}
+
+Every graph in this table and every labeled insertion described below has
+symmetry factor one.  With external labels fixed, the vertex permutations
+cancel the factors from the interaction exponential.  Scalar orientation
+distinguishes the two lines in the vector self-energy bubble.  For a pure
+vector polygon, a cyclic order has already been quotiented by rotations;
+the reversed order is a separate oriented contraction.
+
+Here are momentum routings and the unevaluated integrals for the loop cores.
+The two self-energies are
+\begin{align*}
+ \mathcal B_{\mu\nu}(k)
+ &=\int_\ell
+ V_\mu(\ell,-\ell-k)\Delta(\ell+k)
+ V_\nu(\ell+k,-\ell)\Delta(\ell),\notag\\
+ \mathcal S(p)
+ &=\int_\ell
+ V^\alpha(p,-p-\ell)D_{\alpha\beta}(\ell)
+ \Delta(p+\ell)V^\beta(p+\ell,-p),
+ \tag{4.I.10}
+\end{align*}
+where $\int_\ell=\int\dd^D\ell/(2\pi)^D$.  The connected two-point
+corrections, with their external lines restored, are
+$D\mathcal B D$ and $\Delta\mathcal S\Delta$.
+
+For the one-loop $B\phi\phi^*$ vertex, take all external momenta incoming,
+$k+p+q=0$.  A useful triangle routing is
+\begin{align*}
+ \mathcal T^\mu(k;p,q)
+ =\int_\ell&
+ V^\alpha(p,-p-\ell)D_{\alpha\beta}(\ell)
+ \Delta(p+\ell)\notag\\
+ &\times V^\mu(p+\ell,q-\ell)
+ \Delta(\ell-q)V^\beta(\ell-q,q).
+ \tag{4.I.11}
+\end{align*}
+The three-point connected function contains the tree vertex, this triangle,
+and one external self-energy insertion on each of its $B$, $\phi$, and
+$\phi^*$ legs.  Thus it has one tree graph and four nonzero one-loop graphs.
+Each external insertion means multiplication by the appropriate propagators
+and by $\mathcal B$ or $\mathcal S$ from (4.I.10).
+
+For pure vector loops, choose a cyclic order $\sigma$ and put
+\begin{equation*}
+ r_1=\ell,
+ \qquad r_{j+1}=r_j+k_{\sigma(j)},
+ \qquad r_{r+1}=r_1.
+\end{equation*}
+The oriented scalar $r$-gon is
+\begin{equation*}
+ \mathcal C^{(\sigma)}{}_{\mu_1\ldots\mu_r}
+ =\int_\ell\prod_{j=1}^r
+ \left[
+   \Delta(r_j)\,
+   -\ii g(r_j+r_{j+1})_{\mu_{\sigma(j)}}
+ \right].
+ \tag{4.I.12}
+\end{equation*}
+For $r=3$, the two cyclic orders are $(123)$ and $(132)$.  Reversing the
+charge-flow orientation and shifting $\ell$ changes the sign of each of the
+three current vertices.  Hence
+\begin{equation*}
+ \mathcal C^{(123)}{}_{\mu_1\mu_2\mu_3}
+ +\mathcal C^{(132)}{}_{\mu_1\mu_2\mu_3}=0.
+ \tag{4.I.13}
+\end{equation*}
+The one-loop $BBB$ function vanishes by charge conjugation.  For $r=4$,
+there are $(4-1)!=6$ cyclic orders.  They form three reversal pairs and add
+rather than cancel.  These six boxes are the complete connected $BBBB$
+answer through one loop.
+
+The tree-level $BB\phi\phi^*$ function also displays its two drawings
+directly.  Let $k_1,k_2,p,q$ be incoming, with $p$ on $\phi$, $q$ on
+$\phi^*$, and $k_1+k_2+p+q=0$.  Its amputated value is
+\begin{align*}
+ \mathcal A^{\mathrm{tree}}{}_{\mu_1\mu_2}
+ =\sum_{\sigma\in S_2}&
+ -\ii g(2p+k_{\sigma(1)})_{\mu_{\sigma(1)}}
+ \Delta(p+k_{\sigma(1)})\notag\\
+ &\times-\ii g\bigl(2p+2k_{\sigma(1)}
+ +k_{\sigma(2)}\bigr)_{\mu_{\sigma(2)}}.
+ \tag{4.I.14}
+\end{align*}
+The two one-loop 1PI boxes preserve this scalar path and join its endpoints
+by an internal vector.  Give that vector incoming momentum $\ell$ at the
+$\phi$ endpoint.  For either $\sigma\in S_2$ the integral is
+\begin{align*}
+ \mathcal X^{(\sigma)}{}_{\mu_1\mu_2}
+ =\int_\ell&
+ V^\alpha(p,-p-\ell)D_{\alpha\beta}(\ell)
+ \Delta(p+\ell)\notag\\
+ &\times -\ii g\bigl(2(p+\ell)+k_{\sigma(1)}\bigr)_{\mu_{\sigma(1)}}
+ \Delta(p+\ell+k_{\sigma(1)})\notag\\
+ &\times -\ii g\bigl(2(p+\ell+k_{\sigma(1)})
+ +k_{\sigma(2)}\bigr)_{\mu_{\sigma(2)}}
+ \Delta(\ell-q)V^\beta(\ell-q,q).
+ \tag{4.I.15}
+\end{align*}
+
+Each of the two trees in (4.I.14) produces seven one-loop reducible graphs:
+insert $\mathcal B$ on either external vector leg, insert $\mathcal S$ on
+either external scalar leg, insert $\mathcal S$ on the internal scalar line,
+or replace either cubic vertex by (4.I.11).  Together with the two boxes
+(4.I.15), this gives $2\cdot7+2=16$ nonzero labeled one-loop
+$BB\phi\phi^*$ diagrams.  For example, the internal-line correction is the
+corresponding term of (4.I.14) with
+\begin{equation*}
+ \Delta(r)\longrightarrow
+ \Delta(r)\mathcal S(r)\Delta(r).
+ \tag{4.I.16}
+\end{equation*}
+The external and vertex replacements work in the same way, so their loop
+momenta are already fixed by (4.I.10) and (4.I.11).
+
+For the four-scalar function, label the incoming fields
+$\phi(p_1),\phi(p_2),\phi^*(q_1),\phi^*(q_2)$.  The two vector-exchange trees
+are
+\begin{equation*}
+ \mathcal A^{\mathrm{tree}}{}_{4\phi}
+ =\sum_{\sigma\in S_2}
+ V^\alpha(p_1,q_{\sigma(1)})
+ D_{\alpha\beta}(p_1+q_{\sigma(1)})
+ V^\beta(p_2,q_{\sigma(2)}).
+ \tag{4.I.17}
+\end{equation*}
+The four one-loop 1PI boxes can be drawn without ambiguity by naming the
+vertices $P_i,Q_j$ after their external legs.  Choose either scalar matching
+\begin{equation*}
+ M_\phi^{(\sigma)}
+ =\{P_1Q_{\sigma(1)},P_2Q_{\sigma(2)}\},
+ \qquad \sigma\in S_2.
+\end{equation*}
+The internal vector lines form either of the other two perfect matchings of
+$\{P_1,P_2,Q_1,Q_2\}$.  The union is an alternating four-cycle.  Two scalar
+matchings and two allowed vector matchings give four labeled boxes.
+
+For example, take scalar edges $P_1Q_1,P_2Q_2$ and vector edges
+$P_1P_2,Q_1Q_2$.  With momentum $\ell$ entering $P_1$ on the first vector
+edge and $r=-p_1-q_1-\ell$ on the second, its integral is
+\begin{align*}
+ \mathcal Y={}&\int_\ell
+ V^\alpha(p_1,-p_1-\ell)D_{\alpha\beta}(\ell)
+ V^\beta(p_2,\ell-p_2)\notag\\
+ &\times\Delta(p_1+\ell)\Delta(p_2-\ell)
+ V^\gamma(p_1+\ell,q_1)D_{\gamma\delta}(r)
+ V^\delta(p_2-\ell,q_2).
+ \tag{4.I.18}
+\end{align*}
+The other three integrals follow by the stated matchings, with momentum
+conservation at each vertex.  This prescription supplies their routing
+without a second independent loop momentum.
+
+Each tree in (4.I.17) again has seven one-loop reducible corrections.  Four
+place $\mathcal S$ on an external scalar leg, one places $\mathcal B$ on the
+internal vector, and two replace an endpoint by $\mathcal T$.  Adding the
+four boxes gives $2\cdot7+4=18$ nonzero labeled one-loop
+$\phi\phi\phi^*\phi^*$ diagrams.
+
+Self-contraction of the scalar pair at one cubic vertex makes a vector
+tadpole.  Momentum conservation sets its external vector momentum to zero,
+and its factor is
+\begin{equation*}
+ T^\mu=\int_\ell V^\mu(\ell,-\ell)\Delta(\ell)
+ =-2\ii g\int_\ell\ell^\mu\Delta(\ell)=0
+ \tag{4.I.19}
+\end{equation*}
+for a translation- and Lorentz-invariant regulator.  Normal ordering gives
+the same result immediately.  For completeness, the following is the census
+of all connected, labeled one-loop contractions before zero subgraphs and
+charge-conjugate pairs are removed:
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrl@{}}
+external legs & total & surviving & zero or cancelled contributions \\ \hline
+$BB$ & $1$ & $1$ & none \\
+$\phi\phi^*$ & $2$ & $1$ & $1$ tadpole attachment \\
+$BBB$ & $2$ & $0$ & the reversal pair in (4.I.13) \\
+$B\phi\phi^*$ & $6$ & $4$ & $2$ tadpole attachments \\
+$BBBB$ & $6$ & $6$ & none \\
+$BB\phi\phi^*$ & $24$ & $16$ & $6$ tadpoles and $2$ odd-loop attachments \\
+$\phi\phi\phi^*\phi^*$ & $26$ & $18$ & $8$ tadpole attachments
+\end{tabular}
+\end{center}
+
+Here is an incidence description of every tadpole entry in the last column.
+Call the self-contracted vertex $T$ and join its remaining $B$ half-edge to a
+vertex $U$.  For $\phi\phi^*$, both external scalar legs end on $U$.  For
+$B\phi\phi^*$, a scalar edge joins $U$ to the external-$B$ vertex, and the
+two orientations place the external $\phi$ and $\phi^*$ on the two unused
+scalar half-edges.  For $BB\phi\phi^*$, the two remaining scalar edges form
+a spanning tree on $U$ and the vertices carrying $B_1,B_2$; filling the two
+unused scalar half-edges with $\phi,\phi^*$ gives the six labeled cases.  For
+$\phi\phi\phi^*\phi^*$, the remaining vector edge and scalar edge join the
+component containing $T,U$ to the other two vertices; the charge-respecting
+placements of the four labeled external scalars give eight cases.  Each has
+symmetry factor one.  Its loop momentum and zero-momentum bridge are fixed by
+(4.I.19), while momentum conservation fixes every edge outside the tadpole.
+
+There are two further vanishing $BB\phi\phi^*$ diagrams.  Put the external
+$\phi,\phi^*$ on one cubic vertex and join its vector half-edge to the third
+vector leg of an oriented scalar triangle; the other two vector legs carry
+$B_1,B_2$.  If $K=p+q=-(k_1+k_2)$, their sum is proportional to
+\begin{equation*}
+ V^\rho(p,q)D_{\rho\sigma}(K)
+  \left[\mathcal C^{(123)}{}_{\mu_1\mu_2}{}^\sigma
+       +\mathcal C^{(132)}{}_{\mu_1\mu_2}{}^\sigma\right]_{k_3=K}=0,
+ \tag{4.I.20}
+\end{equation*}
+by the same charge-conjugation reversal as (4.I.13).  Both diagrams have
+symmetry factor one, and their loop routing is the $r=3$ routing in
+(4.I.12).  Thus every connected contraction occurs either in the nonzero
+list or in this vanishing census.  Equation (4.I.9), together with the
+incidence patterns above, proves that the catalogue is exhaustive.
+
+The full four-point correlators contain disconnected propagation as well.
+At leading order these pieces are the three pairings $DD$ for $BBBB$, the
+product $D\Delta$ for $BB\phi\phi^*$, and the two charge-respecting products
+$\Delta\Delta$ for $\phi\phi\phi^*\phi^*$.  Through one loop, replace one
+factor at a time by its correction in (4.I.10).  Vacuum bubbles cancel
+against the normalization by $Z[0]$.  In the limit $g\to0$, the interaction
+graphs disappear and these free Wick contractions remain, which checks the
+census.
+
+\BanksImplicitSolution{I-CH04-004}
+The combination $B_\mu=A_\mu-\partial_\mu\theta$ is invariant under the
+stated simultaneous transformation.  The source term varies by
+\begin{align*}
+ \delta_\Omega S_J
+ &=\int\dd^D x\,J^\mu\partial_\mu\Omega\notag\\
+ &=\int\dd^D x\,\partial_\mu(J^\mu\Omega)
+   -\int\dd^D x\,\Omega\,\partial_\mu J^\mu.
+ \tag{4.I.21}
+\end{align*}
+The first integral is the boundary flux
+$\int_{\partial M}\dd\Sigma_\mu J^\mu\Omega$.  It vanishes when the gauge
+parameter has compact support.  Gauge invariance for every such $\Omega$
+then gives
+\begin{equation*}
+ \int\dd^D x\,\Omega(x)\partial_\mu J^\mu(x)=0.
+\end{equation*}
+The fundamental lemma for test functions implies
+$\partial_\mu J^\mu=0$ as a distribution.  Conversely, current conservation
+sets the volume term in (4.I.21) to zero.  Sufficient falloff of either
+$J^\mu$ or $\Omega$ removes the boundary flux, proving invariance.
+
+Since $A_\mu=B_\mu+\partial_\mu\theta$, the same integration by parts gives
+\begin{align*}
+ \int\dd^D x\,J^\mu A_\mu
+ &=\int\dd^D x\,J^\mu B_\mu
+   +\int\dd^D x\,J^\mu\partial_\mu\theta\notag\\
+ &=\int\dd^D x\,J^\mu B_\mu
+   -\int\dd^D x\,\theta\partial_\mu J^\mu
+   +\int_{\partial M}\dd\Sigma_\mu J^\mu\theta.
+\end{align*}
+Current conservation and the same falloff condition yield
+\begin{equation*}
+ \int J^\mu A_\mu=\int J^\mu B_\mu.
+ \tag{4.I.22}
+\end{equation*}
+
+In momentum space, conservation reads $p_\mu J^\mu(p)=0$.  Contracting two
+sources with the Proca propagator produces
+\begin{equation*}
+ J^\mu(-p)D_{\mu\nu}(p)J^\nu(p)
+ =\frac{-\ii}{p^2+\mu^2-\ii\epsilon}
+ \left[J_\mu(-p)J^\mu(p)
+ +\frac{(p\cdot J(-p))(p\cdot J(p))}{\mu^2}\right].
+\end{equation*}
+The longitudinal term vanishes.  The remaining expression has the smooth
+limit
+\begin{equation*}
+ \lim_{\mu\to0}J^\mu(-p)D_{\mu\nu}(p)J^\nu(p)
+ =\frac{-\ii J_\mu(-p)J^\mu(p)}{p^2-\ii\epsilon},
+\end{equation*}
+which is the conserved-source Maxwell kernel.  This check ties the
+integration-by-parts condition to the finite massless limit discussed in the
+surrounding text.
+
+\end{bankssolutions}

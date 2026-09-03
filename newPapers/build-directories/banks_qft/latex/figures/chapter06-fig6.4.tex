@@ -1,0 +1,31 @@
+% Native TikZ reconstruction of Figure 6.4.
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,baseline=(current bounding box.center)]
+  \tikzset{BanksArrowLine/.style={line width=.65pt,postaction={decorate},
+      decoration={markings,mark=at position .995 with {\arrow{Stealth[length=6pt]}}}},
+    BanksPhoton/.style={line width=.65pt,decorate,
+      decoration={snake,amplitude=4.5pt,segment length=13pt}}}
+  \coordinate (v)  at (0,0);            % external-photon vertex
+  \coordinate (au) at (-1.49,0.91);     % upper internal-photon attachment
+  \coordinate (al) at (-1.44,-0.88);    % lower internal-photon attachment
+  \coordinate (pu) at (-2.87,1.75);     % outgoing p+q
+  \coordinate (pl) at (-2.90,-1.79);    % incoming p
+  % outgoing fermion leg (arrowhead sits at the photon attachment; see E-033 —
+  % the source draws this arrow pointing into the vertex, breaking the
+  % continuity of the fermion line, and the adopted form reverses it)
+  \draw[BanksArrowLine] (au) -- (pu);
+  \draw[line width=.65pt] (au) -- (v);
+  % incoming fermion leg
+  \draw[BanksArrowLine] (pl) -- (al);
+  \draw[line width=.65pt] (al) -- (v);
+  % internal photon
+  \draw[BanksPhoton] (au) -- (al);
+  % external photon
+  \draw[BanksPhoton] (v) -- (2.2,0);
+  \fill (v) circle (2.4pt);
+  \node[left] at (pu) {$p+q$};
+  \node[left] at (pl) {$p$};
+  \node at (-0.84,1.07) {$k+q$};
+  \node at (-0.90,-0.78) {$k$};
+  \node at (-2.32,0.05) {$p-k$};
+  \node[right] at (2.28,0) {$q$};
+\end{tikzpicture}

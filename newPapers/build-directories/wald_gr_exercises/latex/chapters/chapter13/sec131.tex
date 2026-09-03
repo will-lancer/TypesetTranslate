@@ -1,0 +1,1088 @@
+% Source: Wald GR, physical PDF pp. 355--372
+%         (printed pp. 342--359).
+% Coverage: Section 13.1, Spinors in Minkowski Spacetime; equations (13.1.1)--(13.1.65).
+% Figures/tables/footnotes: Figure 13.1; footnotes 2--5; no tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Spinors in Minkowski Spacetime}\label{sec:13.1}
+
+The main purpose of this section is to motivate the definition of spinor fields on
+Minkowski spacetime and establish some of their basic properties. We shall do so by
+investigating the general issue of what mathematical entities may represent physical
+fields in Minkowski spacetime. Our approach will be group-theoretic in nature. We
+first shall argue that if \lq\lq special covariance\rq\rq\ of the physical laws holds,
+then the isometry group of a spacetime acts in a natural way on the states of a
+physical system. In the case of a quantum theory in Minkowski spacetime, we thereby
+obtain a unitary representation up to phase of the Poincar\'e group. The study of
+these representations leads to consideration of the group \(\mathrm{SL}(2,\mathbb
+C)\), consisting of linear maps of unit determinant acting on a complex
+two-dimensional vector space, \(W\). The notion of spinor fields in Minkowski
+spacetime then is obtained by assigning vectors in \(W\) to points of spacetime in an
+appropriate way.
+
+To begin, we give a general argument that there should exist an action of the
+isometry group of a spacetime \((M,g_{ab})\) on the collection, \(\mathcal S\), of
+states of a physical theory defined on that spacetime. We shall assume that the
+physical properties of each state in \(\mathcal S\) can be characterized by local
+measurements made at each spacetime event by a family of observers. A good example
+of an \(\mathcal S\) satisfying this property is the collection of states of a physical
+system that can be described by tensor fields of a specified type on \(M\) (with the
+components of these fields corresponding to the local physically measurable
+quantities); but since our purpose is to investigate the possibilities for what
+\(\mathcal S\) may consist of, we leave \(\mathcal S\) unspecified. Consider a family
+of observers, \(O\), equipped with measuring apparatus on \(M\). We shall assume
+that these observers can be characterized by specifying an orthonormal basis
+\((e_\alpha)^a\), with \(\alpha=0,1,2,3\), for the tangent space at each point of
+\(M\). Here the first vector \((e_0)^a\) in the basis at each event is chosen tangent
+to the world line of the observer at that event, and the remaining basis vectors
+\((e_\alpha)^a\), for \(\alpha=1,2,3\), serve as references for how the apparatus he
+carries is aligned. Since all experiments in physics measure numbers, associated
+with each \(s\in\mathcal S\) there should be a collection of numbers corresponding to
+the outcomes of a complete set of measurements on the state \(s\) made by these
+observers. We shall assume for simplicity that at each \(x\in M\) only a finite
+number, \(k\), of measurements need be made. Then for the given spacetime
+\((M,g_{ab})\) and the given family, \(O\), of observers, we obtain a map
+\(f_O:M\times\mathcal S\longrightarrow\mathbb R^k\) which uniquely characterizes
+each \(s\in\mathcal S\) in terms of the measurements made by these observers. A
+different family, \(\widetilde O\), of observers would, in general, obtain a different
+map, \(f_{\widetilde O}\), i.e., the numerical results of the measurements on \(s\)
+may depend on how the observers move and how they orient their measuring apparatus.
+
+Consider, now, a diffeomorphism \(\phi:M\longrightarrow M\) and allow \(\phi\) to
+map the basis fields \((e_\alpha)^a\) into \(\phi_*(e_\alpha)^a\) in the manner
+described in appendix~C. In general, the basis \(\phi_*(e_\alpha)^a\) will not be
+orthonormal at each point and thus will not correspond to a physically realizable
+family of observers. However, when (and only when) \(\phi\) is an isometry,
+\(\phi_*(e_\alpha)^a\) will be orthonormal, and we can use \(\phi\) to map our
+original family, \(O\), of physical observers associated with the basis field
+\((e_\alpha)^a\) into a new family \(\widetilde O\) of physical observers associated
+with \(\phi_*(e_\alpha)^a\).
+
+If the laws of physics are \lq\lq specially covariant\rq\rq\ under the isometries of
+\((M,g_{ab})\) (see chapter~4), then any physically possible result of a set of
+measurements made by \(O\) must be a physically possible result for a set of
+measurements made by \(\widetilde O\). In other words, given any
+\(s\in\mathcal S\), there must exist an \(\widetilde s\in\mathcal S\) such that the
+results of measurements by \(O\) on \(s\) are identical to the results of
+measurements by \(\widetilde O\) on \(\widetilde s\), i.e., for each \(x\in M\) we
+have \(f_O(x,s)=f_{\widetilde O}(\phi(x),\widetilde s)\). Thus, associated with each
+isometry \(\phi\), we obtain a map \(\widetilde\phi:\mathcal S\longrightarrow
+\mathcal S\), defined by the requirement that \(\widetilde\phi(s)\)
+\lq\lq look the same\rq\rq\ to the observers \(\widetilde O\) as \(s\)
+\lq\lq looks\rq\rq\ to \(O\). In the case where \(\mathcal S\) consists of tensor
+fields, this map is simply the map \(\phi_*\) defined in appendix~C.
+
+The isometries on \((M,g_{ab})\) form a Lie group (see section~7.2). We shall denote
+the abstract group isomorphic to the group of isometries by \(G\) and denote the
+isometry associated with \(g\in G\) as \(\phi_g\). By the above remarks, for each
+\(g\in G\) we obtain a map \(\widetilde\phi_g:\mathcal S\longrightarrow\mathcal S\).
+Furthermore, from the physical criteria which defined the map
+\(\widetilde\phi_g\), it is clear that for all \(g_1,g_2\in G\), we have
+\begin{equation}
+  \widetilde\phi_{g_1}\circ\widetilde\phi_{g_2}
+  =\widetilde\phi_{g_1g_2}.
+  \tag{13.1.1}\label{eq:13.1.1}
+\end{equation}
+
+We specialize, now, to the case of Minkowski spacetime
+\((\mathbb R^4,\eta_{ab})\). The isometry group of Minkowski spacetime is the
+extended Poincar\'e group, but since, as mentioned in section~4.2, the laws of
+physics in Minkowski spacetime are believed to be \lq\lq specially covariant\rq\rq\
+only under proper Poincar\'e transformations, we shall take \(G\) to be the group of
+proper Poincar\'e transformations. In order to proceed further, we must specify the
+nature of the physical theory in more detail. We shall take the framework of our
+physical theory to be that of quantum theory. As we shall see below, spinors will
+emerge as candidates for physical fields in quantum theory.
+
+In quantum theory, states of a system are represented as vectors with unit norm in a
+Hilbert space\footnote{See the beginning of section~14.2 for the definition of a
+Hilbert space. An introduction to some of the basic properties of a Hilbert space also
+is given there, but this discussion is not essential for the present chapter.}
+\(\mathcal H\). However, two vectors which differ by an overall phase factor, i.e.,
+a complex number \(c\) with \(\lvert c\rvert=1\), represent the same physical state.
+Thus, the physical states, \(\mathcal S\), are the unit rays in the Hilbert space,
+i.e., the equivalence classes of unit norm vectors differing only by a phase factor.
+Let \(\widetilde\phi_g:\mathcal S\longrightarrow\mathcal S\) denote the map of
+\(\mathcal S\) into itself associated with the isometry \(\phi_g\). We may associate
+with \(\widetilde\phi_g\) a map \(U_g:\mathcal H\longrightarrow\mathcal H\), where
+the phase of \(U_g(\psi)\) for all \(\psi\in\mathcal H\) can be chosen arbitrarily.
+The requirement that \(\widetilde\phi_g\) take the states in \(\mathcal S\)
+characterized by observer \(O\) to states which \lq\lq look the same\rq\rq\ to
+observer \(\widetilde O\) implies that all transition probabilities must be preserved
+by \(\widetilde\phi_g\). This implies that each \(U_g\) must satisfy
+\(\lvert(U_g\psi_1,U_g\psi_2)\rvert=\lvert(\psi_1,\psi_2)\rvert\) for all
+\(\psi_1,\psi_2\in\mathcal H\). As shown by Wigner (1959), this implies that \(U_g\)
+can be re-phased so that it is either unitary or antiunitary. Since all proper
+Poincar\'e transformations can be continuously deformed to the identity element, the
+continuous dependence of \(\widetilde\phi_g\) with \(g\) requires that \(U_g\) be
+unitary. The requirement~\eqref{eq:13.1.1} on \(\widetilde\phi_g\) implies that
+\(U_g\) must satisfy
+\begin{equation}
+  U_{g_1}U_{g_2}=\omega(g_1,g_2)U_{g_1g_2},
+  \tag{13.1.2}\label{eq:13.1.2}
+\end{equation}
+where \(\omega\) is a phase factor,
+\(\lvert\omega(g_1,g_2)\rvert=1\).
+
+We take this opportunity to introduce some terminology. Let \(G\) and \(G'\) be
+groups. A map \(h:G\longrightarrow G'\) is said to be a \emph{homomorphism} if for
+all \(g_1,g_2\in G\) we have \(h(g_1g_2)=h(g_1)h(g_2)\). Now, the collection,
+\(\mathrm{GL}(V)\), of one-to-one, onto linear maps of a (not necessarily
+finite-dimensional) vector space, \(V\), into itself has a natural group structure.
+A homomorphism \(h:G\longrightarrow\mathrm{GL}(V)\) is called a
+\emph{representation} of the group \(G\), and \(V\) is said to be its
+\emph{representation space}. A map of \(G\) into \(\mathrm{GL}(V)\) satisfying a
+relation of the form~\eqref{eq:13.1.2} is called a \emph{projective representation}
+or a \lq\lq representation up to phase.\rq\rq\
+
+Our strategy for obtaining physical fields on spacetime now may be explained. We
+have seen above that the Hilbert space of quantum states is the representation space
+for a unitary representation up to phase of the proper Poincar\'e group. Therefore,
+we may pose the mathematical problem of finding all the unitary representations up
+to phase of the Poincar\'e group on a Hilbert space which depend continuously on the
+Poincar\'e group elements in the sense described by Wigner (1939). We then may seek
+to define fields on spacetime corresponding to all the representations we have found.
+
+The problem of finding the continuous unitary representations up to phase of the
+Poincar\'e group was systematically analyzed by Wigner (1939). The first key result
+of Wigner's analysis is that the unitary maps \(U_g\) can be redefined by
+multiplication by phase factors in such a way as to make
+\(\omega(g_1,g_2)=\pm1\). Thus, the \(U_g\) may be chosen so that they yield a
+\lq\lq representation up to sign.\rq\rq\ (The proof of this result is nontrivial and
+comprises a substantial portion of Wigner's analysis.) The next key result (see
+Bargmann 1954) is that the representations up to sign of the Poincar\'e group
+correspond precisely to the true representations of its universal covering group. We
+digress, now, to define the term \lq\lq universal covering group.\rq\rq\
+
+Let \(M\) be a connected manifold and let \(p,q\in M\). Let
+\(\gamma:[0,1]\longrightarrow M\) and \(\gamma':[0,1]\longrightarrow M\) be
+continuous curves with \(\gamma(0)=\gamma'(0)=p\) and
+\(\gamma(1)=\gamma'(1)=q\). We say that \(\gamma\) and \(\gamma'\) are
+\emph{homotopic} if they can be continuously deformed into each other keeping their
+endpoints fixed, i.e., if there exists a continuous function
+\(F:[0,1]\times[0,1]\longrightarrow M\) such that \(F(0,t)=\gamma(t)\) and
+\(F(1,t)=\gamma'(t)\) for all \(t\in[0,1]\) and \(F(s,0)=p\),
+\(F(s,1)=q\) for all \(s\in[0,1]\). It is easy to check that homotopy defines an
+equivalence relation between curves from \(p\) to \(q\). \(M\) is said to be
+\emph{simply connected} if every closed curve in \(M\) [i.e., every curve with
+\(\gamma(0)=\gamma(1)\)] is homotopic to the trivial curve
+\(\gamma(t)=\gamma(0)\) for all \(t\in[0,1]\). Equivalently, \(M\) is simply
+connected if for each \(p,q\in M\) all the curves connecting \(p\) and \(q\) are
+homotopic. Note that the number of homotopy equivalence classes of curves between
+\(p,q\in M\) is independent of the choice of \(p\) and \(q\). Note also that the set
+of homotopy equivalence classes of closed curves through \(p\) can be given a natural
+group structure as follows. If \(\Gamma_1\) denotes the equivalence class of curve
+\(\gamma_1\), and \(\Gamma_2\) denotes the equivalence class of curve \(\gamma_2\),
+we define the product \(\Gamma_1\Gamma_2\) to be the equivalence class, \(\Gamma\),
+of the curve \(\gamma\) defined by
+\begin{equation}
+  \gamma(t)=
+  \begin{cases}
+    \gamma_1(2t),&0\le t\le\tfrac12,\\
+    \gamma_2(1-2t),&\tfrac12\le t\le1,
+  \end{cases}
+  \tag{13.1.3}\label{eq:13.1.3}
+\end{equation}
+i.e., \(\gamma\) goes first around \(\gamma_1\) and then around \(\gamma_2\). It is
+easy to check that \(\Gamma\) is independent of the choice of representative curves
+\(\gamma_1\) and \(\gamma_2\) in \(\Gamma_1\) and \(\Gamma_2\) and that the above
+product law defines a group structure, with the identity element consisting of the
+equivalence class of the trivial closed curve. This group is called the
+\emph{fundamental group} of \(M\) and is denoted \(\pi_1(M)\). Thus, \(M\) is simply
+connected if and only if \(\pi_1(M)\) is the trivial group consisting only of the
+identity element.
+
+Now, fix \(p\in M\) and define \(\widehat M\) to be the set of equivalence classes
+of curves between \(p\) and \(q\) as \(q\) ranges over \(M\). There is a natural map
+\(f:\widehat M\longrightarrow M\) which takes each \(\widehat q\in\widehat M\) into
+the endpoint \(q\in M\) of the equivalence class of curves \(\widehat q\). This map
+will be one-to-one if and only if \(M\) is simply connected. However, even if \(M\)
+is not simply connected, we always can find a simply connected neighborhood, \(U\),
+of \(q\in M\) and look at the equivalence classes of curves obtained by following a
+curve in \(\widehat q\) from \(p\) to \(q\) and adjoining to it a curve lying entirely
+within \(U\). In this way, we obtain a one-to-one, onto map from a region,
+\(\widehat U\), of \(\widehat M\) into \(U\). By requiring that all such maps be
+diffeomorphisms we define a manifold structure on \(\widehat M\). The manifold
+\(\widehat M\) thus obtained is called the \emph{universal covering manifold} of
+\(M\). (Note that \(\widehat M\) is independent of the choice of \(p\in M\) used in
+the construction, i.e., different choices of \(p\) result in diffeomorphic universal
+covering manifolds.) It follows directly from the construction of \(\widehat M\) that
+we have a \lq\lq covering map\rq\rq\ \(f:\widehat M\longrightarrow M\) such that
+for every simply connected open set \(U\subseteq M\), \(f\) is a diffeomorphism
+between each connected component of \(f^{-1}(U)\) and \(U\). Furthermore,
+\(\widehat M\) is simply connected, as can be seen from the fact that \(f\) maps every
+closed curve in \(\widehat M\) into a closed curve in \(M\) which is homotopically
+trivial. In fact, the preceding two properties characterize \(\widehat M\).
+
+Since a Lie group, \(G\), also is a manifold (see section~7.2), the above
+construction can be performed on \(G\) to obtain a universal covering manifold,
+\(\widehat G\). Furthermore, a group structure can be defined on \(\widehat G\) as
+follows. We choose the fixed point \(p\) in the construction of \(\widehat G\) to be
+the identity element, \(e\), of \(G\). Let \(\widehat g_1,\widehat g_2\in\widehat G\)
+and let \(\gamma_1,\gamma_2\) be curves in \(G\) belonging, respectively, to the
+equivalence classes \(\widehat g_1,\widehat g_2\) of curves from \(e\) to points of
+\(G\). We define \(\widehat g_1\widehat g_2\) to be the equivalence class of the
+curve \(\gamma(t)=\gamma_1(t)\gamma_2(t)\), where
+\(\gamma_1(t)\gamma_2(t)\) is defined by the group product in \(G\). The equivalence
+class of \(\gamma\) is independent of the choice of representative curves
+\(\gamma_1,\gamma_2\), so \(\widehat g_1\widehat g_2\) is well defined. This product
+makes \(\widehat G\) a Lie group, and it also makes the covering map
+\(f:\widehat G\longrightarrow G\) a group homomorphism. \(\widehat G\) is called
+the \emph{universal covering group} of \(G\), and it is characterized by the
+conditions that \(\widehat G\) is the universal covering manifold of \(G\) and that
+its covering map, \(f\), is a homomorphism.
+
+The Poincar\'e Lie group fails to be simply connected. A rotation by \(2\pi\) cannot
+be continuously deformed to the identity transformation. More precisely, the curve
+\(\gamma\) in the group manifold defined by \(\gamma(t)=\) rotation about a fixed
+axis by the angle \(2\pi t\) begins and ends at the identity element, \(e\), but is
+not homotopic to the trivial curve \(\gamma'(t)=e\) for all \(t\). What is perhaps
+more surprising is that the homotopy class of the \(2\pi\)-rotation is the only
+nontrivial homotopy class of closed curves through \(e\) in the Poincar\'e group,
+i.e., every closed curve passing through \(e\) either is homotopic to the
+\(2\pi\)-rotation curve \(\gamma\) or the trivial curve \(\gamma'\). In particular, a
+rotation by \(4\pi\) about a fixed axis can be continuously deformed to
+\(\gamma'\) as illustrated in Figure~13.1. Thus, the universal covering group,
+\(\widehat G\), of the Poincar\'e group, \(G\), will yield a twofold covering of
+\(G\). As we shall see below, \(\widehat G\) is isomorphic to the group
+\(\mathrm{ISL}(2,\mathbb C)\) of translations and linear maps of unit determinant on
+a two-dimensional complex vector space. Our next major task, therefore, will be to
+establish some properties of the groups \(\mathrm{SL}(2,\mathbb C)\) and
+\(\mathrm{ISL}(2,\mathbb C)\) and the vector space upon which they naturally act.
+These properties are basic to the notion of spinors, and we now shall make a lengthy
+digression to study these properties.
+
+\input{figures/chapter13/fig13-01.tex}
+
+Let \(W\) be a two-dimensional vector space over the complex numbers. Following the
+index notation conventions discussed in chapter~2, we shall use Latin superscripts
+to denote vectors in \(W\) and Greek superscripts to denote components of vectors in
+\(W\) with respect to a basis. However, in order to distinguish vectors in \(W\) from
+tangent vectors in spacetime, we shall use capital letters in the superscripts. Thus,
+for example, \(\xi^A\) denotes an element of \(W\), and \(\xi^\Sigma\) denotes a
+component of \(\xi^A\). As in the case of a real vector space, starting with \(W\) we
+can construct the dual space, \(W^\vee\), composed of linear maps from \(W\) into
+\(\mathbb C\). Then \(W^\vee\) is a two-dimensional vector space over \(\mathbb C\),
+and we shall denote its elements with subscripts. Thus, for example, \(\lambda_A\)
+denotes an element of \(W^\vee\). However, for a vector space, \(W\), over
+\(\mathbb C\), we also can form the \emph{complex conjugate dual space}
+\(\overline{W}^{\,\vee}\), composed of the antilinear maps from \(W\) into \(\mathbb C\).
+(Here a map \(f:W\longrightarrow\mathbb C\) is said to be \emph{antilinear} if
+\(f(\xi_1^A+\xi_2^A)=f(\xi_1^A)+f(\xi_2^A)\) and
+\(f(c\xi^A)=\overline c\,f(\xi^A)\) for all \(\xi_1^A,\xi_2^A,\xi^A\in W\) and for
+all \(c\in\mathbb C\).) Then \(\overline{W}^{\,\vee}\) also is a two-dimensional vector
+space over \(\mathbb C\), and we shall denote its elements with a primed lower
+index, e.g., \(\psi_{A'}\in\overline{W}^{\,\vee}\). Finally, we define the
+\emph{complex conjugate space}, \(\overline W\), to be the dual space of
+\(\overline{W}^{\,\vee}\), and we denote elements of \(\overline W\) with a primed
+upper index, e.g., \(\phi^{A'}\in\overline W\). Note that there is a natural
+antilinear one-to-one correspondence between elements \(\xi\in W\) and
+\(\phi\in\overline W\) defined by the requirement that \(\psi(\xi)=\phi(\psi)\) for
+all \(\psi\in\overline{W}^{\,\vee}\). (We omitted the indices here since their presence
+could cause confusion.) We call this map of \(W\) onto \(\overline W\) (as well as
+the inverse map of \(\overline W\) onto \(W\)) \emph{complex conjugation}. We denote
+the image of \(\xi^A\in W\) under complex conjugation as
+\(\overline\xi^{A'}\in\overline W\), and similarly denote the image of
+\(\phi^{A'}\in\overline W\) as \(\overline\phi^A\in W\).
+
+A tensor, \(T\), of type \((k,l;k',l')\) over \(W\) is defined as a multilinear map,
+\[
+  T:\underbrace{W^\vee\times\cdots\times W^\vee}_{k}
+  \times\underbrace{W\times\cdots\times W}_{l}
+  \times\underbrace{\overline{W}^{\,\vee}\times\cdots\times\overline{W}^{\,\vee}}_{k'}
+  \times\underbrace{\overline W\times\cdots\times\overline W}_{l'}
+  \longrightarrow\mathbb C.
+\]
+We shall use a natural generalization of the index notation for tensors over a real
+vector space to denote tensors over \(W\). Thus, for example, \(T^{AB}{}_{C}{}^{D'}\)
+denotes a tensor of type \((2,1;1,0)\). The relative ordering of the primed and
+unprimed indices is irrelevant, e.g., \(T^{AD'}{}_{C}{}^B\) denotes the same tensor
+as \(T^{AB}{}_{C}{}^{D'}\). However, the ordering within the unprimed indices and
+within the primed indices is as relevant as in the case of tensors over a real vector
+space. The complex conjugation map of vectors extends to tensors and maps a tensor
+\(T\) of type \((k,l;k',l')\) into a tensor, denoted \(\overline T\), of type
+\((k',l';k,l)\). Note that \(\overline{\overline T}=T\). Finally, we now have two
+distinct notions of contraction: contraction over unprimed indices, taking tensors of
+type \((k,l;k',l')\) into tensors of type \((k-1,l-1;k',l')\), and contraction over
+primed indices, taking tensors of type \((k,l;k',l')\) into tensors of type
+\((k,l;k'-1,l'-1)\). However, contraction over one primed index and one unprimed
+index is not defined. Again, we shall adopt the notation of using the same letter
+twice in the indices to denote contraction.
+
+For a two-dimensional vector space, \(W\), over \(\mathbb C\), the vector space of
+antisymmetric tensors of type \((0,2;0,0)\) is one-dimensional. If a particular such
+tensor \(\epsilon_{AB}=-\epsilon_{BA}\) is chosen, the pair
+\((W,\epsilon_{AB})\) is called a \emph{spinor space}. The elements of \(W\) are
+called \emph{spinors}, and tensors over \(W\) are called \emph{spinorial tensors}.
+We can use \(\epsilon_{AB}\) to map spinors into dual spinors via
+\(\xi^A\mapsto\epsilon_{AB}\xi^A\). Since \(\epsilon_{AB}\) is nondegenerate
+(i.e., \(\epsilon_{AB}\xi^A\ne0\) unless \(\xi^A=0\)) we obtain from
+\(\epsilon_{AB}\) an isomorphism of \(W\) and \(W^\vee\) much like the isomorphism that
+would be obtained from a metric on \(W\). We shall take advantage of this similarity
+by employing notational conventions for \(\epsilon_{AB}\) similar to those employed
+for metrics in chapter~2. First, we shall denote the dual spinor
+\(\epsilon_{AB}\xi^A\) as simply \(\xi_B\), and more generally, use
+\(\epsilon_{AB}\) to lower unprimed indices on all spinorial tensors.
+
+Note, however, that since \(\epsilon_{AB}\) is antisymmetric in \(A\) and \(B\), it
+makes a difference which index of \(\epsilon_{AB}\) is contracted with \(\xi^C\) in
+the index-lowering operation. We follow the standard convention of using contraction
+over the \emph{first} index of \(\epsilon_{AB}\) to lower indices. Thus, we have
+\begin{equation}
+  \xi_B=\epsilon_{AB}\xi^A=-\epsilon_{BA}\xi^A.
+  \tag{13.1.4}\label{eq:13.1.4}
+\end{equation}
+Following standard conventions, we define \(\epsilon^{AB}\) to be \emph{minus} the
+inverse of \(\epsilon_{AB}\), i.e., \(\epsilon^{AB}\) is the antisymmetric tensor of
+type \((2,0;0,0)\) which satisfies
+\begin{equation}
+  \epsilon^{AB}\epsilon_{BC}=-\delta^A{}_C,
+  \tag{13.1.5}\label{eq:13.1.5}
+\end{equation}
+where \(\delta^A{}_C\) denotes the identity map on \(W\). In order to compensate for
+the minus sign in equation~\eqref{eq:13.1.5} we use contraction over the
+\emph{second} index of \(\epsilon^{AB}\) to raise an index; e.g., for
+\(\mu_A\in W^\vee\) we have
+\begin{equation}
+  \mu^A=\epsilon^{AB}\mu_B=-\epsilon^{BA}\mu_B.
+  \tag{13.1.6}\label{eq:13.1.6}
+\end{equation}
+Thus, it is essential to pay careful attention to index positions in order to prevent
+sign errors. Note that we have
+\begin{align}
+  \xi_A\phi^A
+    &=\left(\epsilon_{BA}\xi^B\right)\phi^A \notag\\
+    &=-\epsilon_{AB}\xi^B\phi^A \notag\\
+    &=-\xi^B\phi_B.
+  \tag{13.1.7}\label{eq:13.1.7}
+\end{align}
+In particular, for any spinor \(\xi^A\), we have \(\xi_A\xi^A=0\). It also should be
+noted that confusion can arise with the symbol \(\delta^A{}_C\), which could be
+interpreted either as (a) the identity operator on \(W\) or as (b) the identity
+operator, \(\delta_B{}^D\), on \(W^\vee\) with its first index raised and its second
+index lowered. [Tensors (a) and (b) differ by a minus sign.] Thus, it is preferable
+to use \(\epsilon_C{}^A\) to denote the identity operators on both \(W\) and \(W^\vee\),
+since no confusion in interpretation arises for this symbol. Finally, we denote the
+tensors obtained from \(\epsilon_{AB}\) and \(\epsilon^{AB}\) via complex
+conjugation as \(\overline\epsilon_{A'B'}\) and
+\(\overline\epsilon^{A'B'}\) and use them to lower and raise primed indices, with
+the same convention of contraction over the first index of
+\(\overline\epsilon_{A'B'}\) and the second index of
+\(\overline\epsilon^{A'B'}\).
+
+A linear map \(L:W\longrightarrow W\) is represented by a tensor \(L^A{}_B\). The
+determinant of \(L\) is defined by
+\begin{equation}
+  \det(L)=\frac12\epsilon_{AB}\epsilon^{CD}L^A{}_CL^B{}_D.
+  \tag{13.1.8}\label{eq:13.1.8}
+\end{equation}
+It is well known that \(L^A{}_B\) is one-to-one, onto, and hence invertible if and
+only if its determinant is nonvanishing. We define \(\mathrm{SL}(2,\mathbb C)\) to
+be the group of linear maps of \(W\) into itself which have unit determinant. Here
+the group product is defined by composition, i.e.,
+\((LM)^A{}_B=L^A{}_CM^C{}_B\), and the group inverse is given by the inverse of the
+linear map. Since the determinant condition is one complex equation on the four
+complex components of \(L^A{}_B\), it takes six real parameters to specify an
+element of \(\mathrm{SL}(2,\mathbb C)\). Indeed, using the polar decomposition
+theorem---which states that with respect to any inner product introduced on \(W\),
+every element of \(\mathrm{SL}(2,\mathbb C)\) can be written uniquely as the
+composition of a unitary map of determinant one [i.e., an element of
+\(\mathrm{SU}(2)\)] and a positive, self-adjoint map---it can be shown that
+\(\mathrm{SL}(2,\mathbb C)\) has the natural manifold structure
+\(S^3\times\mathbb R^3\). Thus, since the group operations are smooth with respect
+to this manifold structure, \(\mathrm{SL}(2,\mathbb C)\) is a six-dimensional Lie
+group. Since \(S^3\) and \(\mathbb R^3\) are simply connected, it also follows that
+\(\mathrm{SL}(2,\mathbb C)\) is simply connected. Note that the condition that
+\(L^A{}_B\) have unit determinant is equivalent to
+\begin{equation}
+  L^A{}_CL^B{}_D\epsilon_{AB}=\epsilon_{CD},
+  \tag{13.1.9}\label{eq:13.1.9}
+\end{equation}
+which states that \(\epsilon_{AB}\) is preserved under the action of \(L^A{}_B\).
+
+The relation between \(\mathrm{SL}(2,\mathbb C)\) and the Lorentz group now may be
+established. The tensors of type \((1,0;1,0)\) comprise a four (complex)
+dimensional vector space, \(Y\). A convenient basis of \(Y\) can be defined as
+follows. Let \(o^A,\iota^A\) be a basis of \(W\) satisfying
+\begin{equation}
+  o_A\iota^A=\epsilon_{AB}o^A\iota^B=1.
+  \tag{13.1.10}\label{eq:13.1.10}
+\end{equation}
+Then the tensors
+\begin{align}
+  t^{AA'}&=\frac1{\sqrt2}\left(o^A\overline o^{A'}+
+    \iota^A\overline\iota^{A'}\right),
+  \tag{13.1.11}\label{eq:13.1.11}\\
+  x^{AA'}&=\frac1{\sqrt2}\left(o^A\overline\iota^{A'}+
+    \iota^A\overline o^{A'}\right),
+  \tag{13.1.12}\label{eq:13.1.12}\\
+  y^{AA'}&=\frac{\ii}{\sqrt2}\left(o^A\overline\iota^{A'}-
+    \iota^A\overline o^{A'}\right),
+  \tag{13.1.13}\label{eq:13.1.13}\\
+  z^{AA'}&=\frac1{\sqrt2}\left(o^A\overline o^{A'}-
+    \iota^A\overline\iota^{A'}\right)
+  \tag{13.1.14}\label{eq:13.1.14}
+\end{align}
+comprise a basis of \(Y\). Now, complex conjugation maps \(Y\) into itself, and the
+elements \(\phi^{AA'}\) of \(Y\) which are taken into themselves under complex
+conjugation, \(\overline\phi^{A'A}=\phi^{AA'}\), are called \emph{real}. It is
+straightforward to check that the above basis elements of \(Y\) are real and,
+further, that the real elements of \(Y\) are precisely those which can be written as
+sums of these basis elements with real coefficients. Thus, the real elements of \(Y\)
+comprise a four-dimensional vector space over \(\mathbb R\), which we shall denote
+as \(V\). The tensor
+\begin{equation}
+  g_{AA'BB'}=\epsilon_{AB}\overline\epsilon_{A'B'}
+  \tag{13.1.15}\label{eq:13.1.15}
+\end{equation}
+yields a multilinear map \(V\times V\longrightarrow\mathbb R\), since it is easily
+verified that \(g_{AA'BB'}\phi^{AA'}\psi^{BB'}\) is real for
+\(\phi^{AA'},\psi^{BB'}\in V\). Furthermore, \(g_{AA'BB'}\) is nondegenerate with
+signature \(+---\) and thus defines a Lorentz metric on \(V\). (This can be verified
+explicitly by checking that the basis vectors
+\eqref{eq:13.1.11}--\eqref{eq:13.1.14} are orthogonal with respect to
+\(g_{AA'BB'}\), that \(g_{AA'BB'}t^{AA'}t^{BB'}=1\), and that the similar norms of
+\(x^{AA'}\), \(y^{AA'}\), and \(z^{AA'}\) are \(-1\).)
+
+Now, associated with each map \(L^A{}_B\in\mathrm{SL}(2,\mathbb C)\) is the map
+\(\Lambda:V\longrightarrow V\) defined by
+\begin{equation}
+  \Lambda^{AA'}{}_{BB'}=L^A{}_B\overline L^{A'}{}_{B'}.
+  \tag{13.1.16}\label{eq:13.1.16}
+\end{equation}
+Since by equation~\eqref{eq:13.1.9} \(L^A{}_B\) preserves
+\(\epsilon_{AB}\), it follows that \(\Lambda^{AA'}{}_{BB'}\) preserves
+\(g_{AA'BB'}\), i.e., we have
+\begin{equation}
+  \Lambda^{AA'}{}_{CC'}\Lambda^{BB'}{}_{DD'}g_{AA'BB'}
+  =g_{CC'DD'}.
+  \tag{13.1.17}\label{eq:13.1.17}
+\end{equation}
+But, by definition, the extended Lorentz group---denoted \(O(3,1)\)---consists
+precisely of the metric preserving linear maps on a four-dimensional real vector
+space with a Lorentz signature metric. Thus, \(\Lambda^{AA'}{}_{BB'}\) is a Lorentz
+transformation on \(V\)! Indeed, the Lorentz transformations which arise in this way
+comprise the proper Lorentz group---denoted \(\Lambda\)---as can be verified
+explicitly from the component form of this correspondence which we shall obtain below
+(see equations~[13.1.31] and~[13.1.32]). Hence, we have found that associated with
+every element \(L^A{}_B\) of \(\mathrm{SL}(2,\mathbb C)\) is a proper Lorentz
+transformation \(\Lambda^{AA'}{}_{BB'}\), defined by equation~\eqref{eq:13.1.16}.
+Furthermore, \(L^A{}_B\) and \(M^A{}_B\) give rise to the same Lorentz group element
+if and only if \(M^A{}_B=\pm L^A{}_B\). Indeed, the map
+\(f:\mathrm{SL}(2,\mathbb C)\longrightarrow\Lambda\) obtained from
+equation~\eqref{eq:13.1.16} satisfies all the properties required of the universal
+covering map; namely, it is a homomorphism from the simply connected Lie group
+\(\mathrm{SL}(2,\mathbb C)\) onto \(\Lambda\), and for any simply connected open set
+\(U\subseteq\Lambda\) it is a diffeomorphism between each connected component of
+\(f^{-1}(U)\) and \(U\). Thus, we conclude that \(\mathrm{SL}(2,\mathbb C)\) is the
+universal covering group of the Lorentz group. Similarly, the group
+\(\mathrm{ISL}(2,\mathbb C)\)---defined by composing in the natural way the elements
+of \(\mathrm{SL}(2,\mathbb C)\) with the elements of the two-complex-dimensional
+translation group of \(W\)---can be seen to be the universal covering group of the
+proper Poincar\'e group.
+
+Since \(g_{AA'BB'}\) is a metric on \(V\), we can define its inverse metric
+\(g^{AA'BB'}\). From equations~\eqref{eq:13.1.5} and~\eqref{eq:13.1.15}, it follows
+that
+\begin{equation}
+  g^{AA'BB'}=\epsilon^{AB}\overline\epsilon^{A'B'}.
+  \tag{13.1.18}\label{eq:13.1.18}
+\end{equation}
+Let \(T\) be a tensor of type \((k,l)\) over \(V\). Then, viewed as a tensor over
+\(W\), \(T\) is of type \((k,l;k,l)\), i.e., \(T\) has \(k\) upper
+primed--unprimed index pairs and \(l\) lower primed--unprimed index pairs. If we
+view \(T\) as a tensor over \(V\), it would be natural to use \(g_{AA'BB'}\) and
+\(g^{AA'BB'}\) to raise and lower \lq\lq \(V\)-indices,\rq\rq\ i.e.,
+primed--unprimed index pairs. On the other hand, if we view \(T\) as a tensor over
+\(W\), we already have defined the raising and lowering of indices via
+\(\epsilon_{AB}\), \(\epsilon^{AB}\), \(\overline\epsilon_{A'B'}\), and
+\(\overline\epsilon^{A'B'}\). Fortunately, it is easily verified that these two
+distinct notions of raising and lowering indices for tensors over \(V\) always yield
+the same result. This is the reason why we choose to use metric signature \(+---\) in
+this chapter. We could have conformed to our previous signature conventions by
+defining \(g_{AA'BB'}\) to be
+\(-\epsilon_{AB}\overline\epsilon_{A'B'}\), but then the two notions of raising and
+lowering \(V\)-indices would differ by a sign and in each calculation we would need
+to specify which raising and lowering convention we are using.
+
+It is instructive to express some of the above relations in basis component form.
+With respect to a basis \(o^A,\iota^A\) satisfying equation~\eqref{eq:13.1.10}, it
+is easy to check that
+\begin{equation}
+  \epsilon_{AB}=o_A\iota_B-\iota_Ao_B,
+  \tag{13.1.19}\label{eq:13.1.19}
+\end{equation}
+since both sides give the same result when applied to \(o^A\) or \(\iota^A\). Thus,
+we may represent the components \(\epsilon_{\Sigma\Omega}\) of
+\(\epsilon_{AB}\) by the matrix
+\begin{equation}
+  \epsilon_{\Sigma\Omega}=
+  \begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+  \tag{13.1.20}\label{eq:13.1.20}
+\end{equation}
+Similarly, we have
+\begin{equation}
+  \epsilon^{AB}=o^A\iota^B-\iota^Ao^B
+  \tag{13.1.21}\label{eq:13.1.21}
+\end{equation}
+and may represent its components as
+\begin{equation}
+  \epsilon^{\Sigma\Omega}=
+  \begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+  \tag{13.1.22}\label{eq:13.1.22}
+\end{equation}
+The components of an \(\mathrm{SL}(2,\mathbb C)\) transformation \(L^A{}_B\) are
+\begin{equation}
+  L^\Sigma{}_\Omega=
+  \begin{pmatrix}a&b\\c&\dd\end{pmatrix},
+  \tag{13.1.23}\label{eq:13.1.23}
+\end{equation}
+where \(a,b,c,d\) are complex numbers satisfying
+\begin{equation}
+  ad-bc=1.
+  \tag{13.1.24}\label{eq:13.1.24}
+\end{equation}
+The components of the basis elements~\eqref{eq:13.1.11}--\eqref{eq:13.1.14} of
+\(V\) are
+\begin{align}
+  t^{\Sigma\Sigma'}&=\frac1{\sqrt2}
+  \begin{pmatrix}1&0\\0&1\end{pmatrix},
+  \tag{13.1.25}\label{eq:13.1.25}\\
+  x^{\Sigma\Sigma'}&=\frac1{\sqrt2}
+  \begin{pmatrix}0&1\\1&0\end{pmatrix},
+  \tag{13.1.26}\label{eq:13.1.26}\\
+  y^{\Sigma\Sigma'}&=-\frac1{\sqrt2}
+  \begin{pmatrix}0&-\ii\\\ii&0\end{pmatrix},
+  \tag{13.1.27}\label{eq:13.1.27}\\
+  z^{\Sigma\Sigma'}&=\frac1{\sqrt2}
+  \begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+  \tag{13.1.28}\label{eq:13.1.28}
+\end{align}
+Note that the right-hand sides of equations~\eqref{eq:13.1.25}--\eqref{eq:13.1.28}
+are---apart from the factor of \(1/\sqrt2\) and the minus sign in
+equation~\eqref{eq:13.1.27}---just the Pauli spin matrices. An arbitrary vector
+\(v^{AA'}\in V\) can be written as
+\begin{equation}
+  v^{AA'}=t\,t^{AA'}+x\,x^{AA'}+y\,y^{AA'}+z\,z^{AA'},
+  \tag{13.1.29}\label{eq:13.1.29}
+\end{equation}
+and thus its components with respect to the basis of \(V\) associated with
+\(o^A,\iota^A\) may be represented by the matrix
+\begin{equation}
+  v^{\Sigma\Sigma'}=\frac1{\sqrt2}
+  \begin{pmatrix}t+z&x+\ii y\\x-\ii y&t-z\end{pmatrix}.
+  \tag{13.1.30}\label{eq:13.1.30}
+\end{equation}
+The transformation on the components of \(v^{AA'}\) induced via
+equation~\eqref{eq:13.1.16} by the \(\mathrm{SL}(2,\mathbb C)\) transformation
+\(L^A{}_B\) is given by
+\begin{equation}
+  \begin{pmatrix}t'+z'&x'+\ii y'\\x'-\ii y'&t'-z'\end{pmatrix}
+  =
+  \begin{pmatrix}a&b\\c&\dd\end{pmatrix}
+  \begin{pmatrix}t+z&x+\ii y\\x-\ii y&t-z\end{pmatrix}
+  \begin{pmatrix}\overline a&\overline c\\\overline b&\overline \dd\end{pmatrix},
+  \tag{13.1.31}\label{eq:13.1.31}
+\end{equation}
+where ordinary matrix multiplication is understood on the right-hand side. By
+rewriting equation~\eqref{eq:13.1.31} in the form
+\begin{equation}
+  x'{}^\mu=\sum_\nu\lambda^\mu{}_\nu x^\nu,
+  \tag{13.1.32}\label{eq:13.1.32}
+\end{equation}
+where \(x^\mu=(t,x,y,z)\), one obtains in explicit component form the map \(f\)
+taking elements of \(\mathrm{SL}(2,\mathbb C)\) (represented as \(2\times2\) complex
+matrices, \(L^\Sigma{}_\Omega\)) into elements of \(\Lambda\) (represented as
+\(4\times4\) real matrices, \(\lambda^\mu{}_\nu\)).
+
+Given a spinor \(\psi^A\in W\), we can construct a vector \(k^{AA'}\in V\) by
+\begin{equation}
+  k^{AA'}=\psi^A\overline\psi^{A'}.
+  \tag{13.1.33}\label{eq:13.1.33}
+\end{equation}
+We have
+\begin{equation}
+  g_{AA'BB'}k^{AA'}k^{BB'}
+  =(\epsilon_{AB}\psi^A\psi^B)
+    (\overline\epsilon_{A'B'}\overline\psi^{A'}\overline\psi^{B'})=0,
+  \tag{13.1.34}\label{eq:13.1.34}
+\end{equation}
+so \(k^{AA'}\) is a null vector with respect to the Lorentz metric on \(V\). We
+thus may view \(\psi^A\) as a \lq\lq square root\rq\rq\ of the null vector
+\(k^{AA'}\). Note that for any two spinors \(\psi^A,\phi^A\) we have
+\begin{equation}
+  g_{AA'BB'}\psi^A\overline\psi^{A'}\phi^B\overline\phi^{B'}
+  =(\psi_B\phi^B)(\overline\psi_{B'}\overline\phi^{B'})
+  =\lvert\psi_B\phi^B\rvert^2.
+  \tag{13.1.35}\label{eq:13.1.35}
+\end{equation}
+Thus, the null vectors associated with arbitrary spinors \(\psi^A\) and \(\phi^A\)
+have manifestly nonnegative inner product which means (with our new metric
+signature \(+---\)) that these null vectors lie on the same half of the light cone. By
+convention we call this the future light cone. Thus, the vector space \(V\) has a
+natural time orientation. Furthermore, the real spinorial tensor
+\begin{equation}
+  e_{AA'BB'CC'DD'}=\ii\left(
+    \epsilon_{AB}\epsilon_{CD}\overline\epsilon_{A'C'}\overline\epsilon_{B'D'}
+    -\overline\epsilon_{A'B'}\overline\epsilon_{C'D'}\epsilon_{AC}\epsilon_{BD}
+  \right)
+  \tag{13.1.36}\label{eq:13.1.36}
+\end{equation}
+defines a totally antisymmetric tensor of type \((0,4)\) over \(V\) and thus yields
+an orientation of \(V\).
+
+If \(\phi^A\) differs by a phase factor from \(\psi^A\), i.e.,
+\(\phi^A=c\psi^A\) with \(\lvert c\rvert=1\), then \(\phi^A\) defines the same null
+vector \(k^{AA'}\) as \(\psi^A\), so the same \(k^{AA'}\) is associated with a
+one-parameter family of spinors. However, we can define the real tensor
+\(F^{AA'BB'}\) by
+\begin{equation}
+  F^{AA'BB'}=\psi^A\psi^B\overline\epsilon^{A'B'}
+    +\overline\psi^{A'}\overline\psi^{B'}\epsilon^{AB}.
+  \tag{13.1.37}\label{eq:13.1.37}
+\end{equation}
+Viewed as a tensor of type \((2,0)\) over \(V\), \(F^{AA'BB'}\) is antisymmetric,
+i.e., \(F^{AA'BB'}=-F^{BB'AA'}\). Furthermore, \(F^{AA'BB'}\) satisfies
+\begin{align}
+  F^{AA'BB'}F_{AA'BB'}&=0,
+  \tag{13.1.38}\label{eq:13.1.38}\\
+  F^{AA'BB'}k_{BB'}&=0,
+  \tag{13.1.39}\label{eq:13.1.39}
+\end{align}
+where \(k^{AA'}=\psi^A\overline\psi^{A'}\) as before. Thus, viewed as a tensor over
+\(V\), \(F^{AA'BB'}\) is a null bi-vector with null vector \(k^{AA'}\), i.e.,
+\(F^{AA'BB'}\) is of the form
+\begin{equation}
+  F^{AA'BB'}=k^{AA'}m^{BB'}-k^{BB'}m^{AA'},
+  \tag{13.1.40}\label{eq:13.1.40}
+\end{equation}
+where \(k^{AA'}\) is null and \(m^{AA'}\) is orthogonal to \(k^{AA'}\). We call
+\(F^{AA'BB'}\) the \emph{null flag} associated with spinor \(\psi^A\). Two spinors
+\(\psi^A\) and \(\phi^A\) give rise to the same null flag if and only if they differ
+at most by sign, \(\phi^A=\pm\psi^A\). No tensor over \(V\) can be constructed from a
+spinor \(\psi^A\) which distinguishes between \(\psi^A\) and \(-\psi^A\).
+
+We return, now, to the general issue of obtaining the possible fields on spacetime
+which may arise in quantum theory. We were led by the considerations discussed above
+to seek unitary representations of the group \(\mathrm{ISL}(2,\mathbb C)\) on a
+Hilbert space. We now shall define spinor fields and spinorial tensor fields on
+spacetime which have well-defined \lq\lq transformation laws\rq\rq\ under
+\(\mathrm{ISL}(2,\mathbb C)\). By constructing Hilbert spaces out of these fields (as
+we shall do later), these transformation laws yield the desired representations of
+\(\mathrm{ISL}(2,\mathbb C)\).
+
+We define a spinor field on Minkowski spacetime \((\mathbb R^4,\eta_{ab})\) to be
+simply a map of spacetime into spinor space, \(W\). Similarly, a spinorial tensor
+field of a specified type is defined as a map of spacetime into the tensor space over
+\(W\) of that type. We define an action of \(\mathrm{ISL}(2,\mathbb C)\) on spinor
+fields as follows. Associated with any \(g\in\mathrm{ISL}(2,\mathbb C)\) is the
+transformation \(\psi^A(x)\mapsto L^A{}_B\psi^B[P^{-1}(x)]\) where
+\(L^A{}_B\in\mathrm{SL}(2,\mathbb C)\) is the \lq\lq homogeneous part\rq\rq\ of
+\(g\) and \(P\) is the Poincar\'e group element associated with \(g\). In this way,
+we obtain by brute force a representation of \(\mathrm{ISL}(2,\mathbb C)\) on the
+vector space of spinor fields. However, this representation does not correspond to a
+true representation of the Poincar\'e group. Since there are two
+\(\mathrm{ISL}(2,\mathbb C)\) elements for every Poincar\'e element, \(P\), when we
+attempt to define a transformation, \(P^*\), on spinor fields associated with a
+Poincar\'e element, \(P\), we encounter a sign ambiguity,
+\begin{equation}
+  (P^*\psi)^A(x)=\pm L^A{}_B\psi^B[P^{-1}(x)].
+  \tag{13.1.41}\label{eq:13.1.41}
+\end{equation}
+This ambiguity is resolved if we are given not only \(P\) but a continuous curve in
+the Poincar\'e group from \(e\) to \(P\), since such a curve is uniquely associated
+with an element of \(\mathrm{ISL}(2,\mathbb C)\). Thus, in this well-defined sense,
+a spinor at point \(x\) changes sign under a rotation by \(2\pi\) about a fixed axis
+at \(x\). However, given only \(P\) (and not a curve from \(e\) to \(P\)), we cannot
+resolve the sign ambiguity in equation~\eqref{eq:13.1.41} in a natural way. No choice
+of sign can be made so that we obtain a true representation of the Poincar\'e group.
+Note that although we have defined an action up to sign of the Poincar\'e group on
+spinor fields, we have \emph{not} defined the action of an arbitrary diffeomorphism
+on spinor fields. Thus, in particular, the Lie derivative of a spinor field with
+respect to a non-Killing vector field is undefined.
+
+The relation between spinor fields and ordinary vector fields now may be established.
+As discussed above, the real tensors of type \((1,0;1,0)\) over \(W\) form a
+four-dimensional real vector space \(V\), on which the Lorentz metric
+\eqref{eq:13.1.15} is defined. Let \(t^a,x^a,y^a,z^a\) be an orthonormal basis field
+in Minkowski spacetime associated with a global family of inertial observers \(O\).
+Let \(o^A,\iota^A\) be a basis for \(W\) satisfying equation~\eqref{eq:13.1.10}. For
+each point \(x\) in Minkowski spacetime, we define the linear map \(\sigma\) which
+takes vectors in \(V\) to vectors in the tangent space \(T_xM\) at \(x\) by
+identifying \(t^a,x^a,y^a,z^a\) with the basis
+\eqref{eq:13.1.11}--\eqref{eq:13.1.14} of \(V\). In other words, we define the
+hybrid vector/spinorial tensor field \(\sigma^a{}_{AA'}\) by
+\begin{equation}
+  \sigma^a{}_{AA'}=t^a t_{AA'}-x^a x_{AA'}-y^a y_{AA'}-z^a z_{AA'}.
+  \tag{13.1.42}\label{eq:13.1.42}
+\end{equation}
+Then at each \(x\), \(\sigma^a{}_{AA'}\) is a vector space isomorphism between
+\(V\) and \(T_xM\) which preserves the Lorentz metric defined on these spaces; i.e.,
+we have
+\begin{equation}
+  \eta_{ab}=\sigma_a{}^{AA'}\sigma_b{}^{BB'}g_{AA'BB'}.
+  \tag{13.1.43}\label{eq:13.1.43}
+\end{equation}
+(Here all lower case indices are raised and lowered with \(\eta^{ab}\) and
+\(\eta_{ab}\), while capital letter indices are raised and lowered with
+\(\epsilon^{AB}\), \(\epsilon_{AB}\), and their complex conjugates.) Using
+\(\sigma^a{}_{AA'}\), we may map real spinorial tensor fields of type \((1,0;1,0)\)
+on Minkowski spacetime into vector fields. We find, then, that the action of the
+Poincar\'e group preserves this association; namely, the action
+\eqref{eq:13.1.41} of Poincar\'e group element \(P\) on spinor fields induces on a
+spinorial tensor \(v^{AA'}\) of type \((1,0;1,0)\) the transformation
+\begin{equation}
+  (P^*v)^{AA'}(x)
+  =L^A{}_B\overline L^{A'}{}_{B'}v^{BB'}[P^{-1}(x)]
+  =\lambda^{AA'}{}_{BB'}v^{BB'}[P^{-1}(x)],
+  \tag{13.1.44}\label{eq:13.1.44}
+\end{equation}
+where \(\lambda^{AA'}{}_{BB'}\) is the Lorentz transformation corresponding to the
+\lq\lq homogeneous part\rq\rq\ of \(P\). Hence, we have
+\begin{align}
+  \sigma^a{}_{AA'}(P^*v)^{AA'}(x)
+    &=\sigma^a{}_{AA'}\lambda^{AA'}{}_{BB'}v^{BB'}[P^{-1}(x)]\notag\\
+    &=\left(\sigma^a{}_{AA'}\lambda^{AA'}{}_{BB'}\sigma_b{}^{BB'}\right)
+      \sigma^b{}_{CC'}v^{CC'}[P^{-1}(x)]\notag\\
+    &=\lambda^a{}_b v^b[P^{-1}(x)]\notag\\
+    &=(P^*v)^a(x),
+  \tag{13.1.45}\label{eq:13.1.45}
+\end{align}
+where in the last line \(P^*\) is the natural action of \(P\) on the vector field
+\(v^a=\sigma^a{}_{AA'}v^{AA'}\) as defined in appendix~C for a general
+diffeomorphism. Consequently, by selecting---once and for all---a map
+\(\sigma^a{}_{AA'}\) of the form~\eqref{eq:13.1.42}, we may consistently identify
+real spinorial tensor fields of type \((1,0;1,0)\) with vector fields. It is customary
+to literally make this identification\footnote{It also is customary and convenient
+to make the identifications \(a=AA'\), \(b=BB'\), etc., in the labeling indices (see
+Penrose and Rindler 1984), so that, for example, one may write
+\(\eta_{ab}=\epsilon_{AB}\overline\epsilon_{A'B'}\). However, we shall not follow
+this practice here because we wish to maintain the spinor indices so that equations
+in this chapter (where the metric signature is \(+---\)) will easily be distinguished
+from those in other chapters (where the signature is \(-+++\)).} in our notation by
+omitting the map \(\sigma^a{}_{AA'}\) from our expressions and denoting, for example,
+the vector field associated with \(v^{AA'}\) by simply \(v^{AA'}\) rather than by
+\(\sigma^a{}_{AA'}v^{AA'}\). We shall follow this practice here. Because of our new
+metric signature convention no confusion will arise as to whether indices are raised
+and lowered with the metric or with \(\epsilon^{AB}\) and \(\epsilon_{AB}\).
+
+Our physical interpretation of a spinor field \(\psi^A\) now may be given. As
+described above, associated with every spinor is a null flag \(F^{AA'BB'}\) defined
+by equation~\eqref{eq:13.1.37}. Using the map \(\sigma^a{}_{AA'}\), we may view
+\(F^{AA'BB'}\) as a tensor field of type \((2,0)\) on spacetime. However, tensor
+fields are objects whose interpretation and measurability are well understood. We
+take the physically measurable properties of \(\psi^A\) to be the quantities
+determinable from \(F^{AA'BB'}\). Note that this implies that \(\psi^A\) and
+\(-\psi^A\) are physically indistinguishable. It may seem strange that we have gone
+to a great deal of trouble to define spinor fields only to interpret them by
+associating them with tensor fields. However, the dynamical evolution of physical
+fields represented by spinors (see below) is given by differential equations
+involving the spinor fields, not just their null flags. If the region where a spinor
+field, \(\psi^A\), initially is nonvanishing is disconnected, then a knowledge of the
+initial value of its null flag \(F^{AA'BB'}\) (as well as time derivatives of
+\(F^{AA'BB'}\)) will not suffice to determine the subsequent evolution of \(\psi^A\)
+or \(F^{AA'BB'}\) since there will be a sign ambiguity in \(\psi^A\) in each of the
+initial regions where it is nonvanishing, and relative sign differences in these
+regions will affect its subsequent evolution. Thus, in this sense, a spinor field
+contains more physically relevant information than is present in its null flag.
+Furthermore, even in the case where the set where \(\psi^A\ne0\) is connected so
+that it can be recovered (up to sign) from its null flag, the formulation of the
+dynamical laws in terms of null flags would be extremely cumbersome. On the other
+hand, these laws take a simple and natural form when formulated in terms of spinor
+fields.
+
+We take this opportunity to point out several identities which are very useful in
+calculations involving spinors. Let \(T_{ab}\) be a (real) tensor of type \((0,2)\),
+and let \(T_{AA'BB'}\) be the corresponding spinorial tensor. It is straightforward
+to verify that
+\begin{equation}
+  \frac12\left(T_{AA'BB'}-T_{BB'AA'}\right)
+  =T_{(AB)[A'B']}+\overline T_{[AB](A'B')},
+  \tag{13.1.46}\label{eq:13.1.46}
+\end{equation}
+where, as in the case of ordinary tensors, round and square brackets denote,
+respectively, symmetrization and antisymmetrization and we remind the reader that the
+relative order of primed and unprimed indices is irrelevant. However, since
+\(\overline\epsilon_{A'B'}\) spans the one-dimensional vector space of
+antisymmetric spinorial tensors of type \((0,0;0,2)\), we must have
+\begin{equation}
+  T_{(AB)[A'B']}=\phi_{AB}\overline\epsilon_{A'B'},
+  \tag{13.1.47}\label{eq:13.1.47}
+\end{equation}
+where \(\phi_{AB}\) is symmetric. Contracting equation~\eqref{eq:13.1.47} with
+\(\overline\epsilon^{A'B'}\), we find
+\begin{equation}
+  \phi_{AB}=\frac12T_{(AB)A'}{}^{A'}.
+  \tag{13.1.48}\label{eq:13.1.48}
+\end{equation}
+Similarly, we have
+\begin{equation}
+  \overline T_{[AB](A'B')}=\epsilon_{AB}\psi_{A'B'}.
+  \tag{13.1.49}\label{eq:13.1.49}
+\end{equation}
+However, reality of \(T_{AA'BB'}\) implies that
+\(\overline\psi_{AB}=\phi_{AB}\). Thus, we find
+\begin{equation}
+  \frac12\left(T_{AA'BB'}-T_{BB'AA'}\right)
+  =\phi_{AB}\overline\epsilon_{A'B'}+
+   \overline\phi_{A'B'}\epsilon_{AB},
+  \tag{13.1.50}\label{eq:13.1.50}
+\end{equation}
+where \(\phi_{AB}\) is given by equation~\eqref{eq:13.1.48}. In particular, every
+antisymmetric tensor \(T_{ab}=T_{[ab]}\) can be written in the form given by the
+right-hand side of equation~\eqref{eq:13.1.50}. Similarly, we have
+\begin{align}
+  \frac12\left(T_{AA'BB'}+T_{BB'AA'}\right)
+    &=T_{(AB)(A'B')}+T_{[AB][A'B']}\notag\\
+    &=T_{(AB)(A'B')}+\frac14\epsilon_{AB}\overline\epsilon_{A'B'}T,
+  \tag{13.1.51}\label{eq:13.1.51}
+\end{align}
+where \(T=T_A{}^A{}_{A'}{}^{A'}=T_a{}^a\). In particular, every symmetric tensor
+\(T_{ab}=T_{(ab)}\) can be written in the form given by the right-hand side of
+equation~\eqref{eq:13.1.51}. Contracting equation~\eqref{eq:13.1.51} with
+\(\overline\epsilon^{A'B'}\), we obtain
+\begin{equation}
+  \overline T_{[AB]A'}{}^{A'}=\frac12\epsilon_{AB}T.
+  \tag{13.1.52}\label{eq:13.1.52}
+\end{equation}
+If \(T_{ab}\) is symmetric, the square brackets can be omitted from the left-hand
+side of equation~\eqref{eq:13.1.52}.
+
+Derivatives of spinor fields on Minkowski spacetime may be defined as follows. Since
+a spinor field \(\psi^A\) is a map of spacetime points into \(W\), we may take the
+ordinary partial derivatives of \(\psi^A\) with respect to global inertial coordinates
+of Minkowski spacetime. We define \(\partial_{BB'}\psi^A\) to be the spinorial tensor
+field of type \((1,1;0,1)\) whose components with respect to the basis
+\(o^A,\iota^A\) are
+\begin{equation}
+  \partial_{\Lambda\Lambda'}\psi^\Gamma
+  =\sum_\mu\sigma^\mu{}_{\Lambda\Lambda'}\frac{\partial\psi^\Gamma}{\partial x^\mu}.
+  \tag{13.1.53}\label{eq:13.1.53}
+\end{equation}
+For a given fixed choice of \(\sigma^a{}_{AA'}\), the spinorial tensor field
+\(\partial_{BB'}\psi^A\) determined in this manner is independent of the choice of
+global inertial coordinates, \(x^\mu\), and of spin basis \(o^A,\iota^A\), so
+\(\partial_{BB'}\psi^A\) is well defined. The derivative of a spinorial tensor field
+of arbitrary rank is defined similarly by taking partial derivatives of its components
+with respect to global inertial coordinates and applying \(\sigma^a{}_{AA'}\). It is
+easily verified that \(\partial_{AA'}\) is linear, satisfies the Leibniz rule,
+commutes with contraction, and also satisfies
+\begin{equation}
+  \partial_{AA'}\epsilon_{BC}=0.
+  \tag{13.1.54}\label{eq:13.1.54}
+\end{equation}
+Furthermore, for a vector field \(v^{BB'}\) we have
+\begin{equation}
+  \partial_{AA'}v^{BB'}=
+  \sigma^a{}_{AA'}\sigma_b{}^{BB'}\partial_av^b.
+  \tag{13.1.55}\label{eq:13.1.55}
+\end{equation}
+More generally, for an ordinary tensor field of arbitrary rank, the action of
+\(\partial_{AA'}\) agrees with that of the usual derivative operator, \(\partial_a\).
+Thus, \(\partial_{AA'}\) may be viewed as a generalization to spinorial tensor fields
+of the usual derivative operator \(\partial_a\) on Minkowski spacetime.
+
+Note that the derivative operators commute when applied to an arbitrary spinorial
+tensor field on Minkowski spacetime,
+\begin{equation}
+  \partial_{AA'}\partial_{BB'}=\partial_{BB'}\partial_{AA'}.
+  \tag{13.1.56}\label{eq:13.1.56}
+\end{equation}
+Consequently, the same derivation as led to equation~\eqref{eq:13.1.52} above now
+yields
+\begin{equation}
+  \partial_{AA'}\partial_B{}^{A'}=\frac12\epsilon_{AB}\Box,
+  \tag{13.1.57}\label{eq:13.1.57}
+\end{equation}
+where
+\begin{equation}
+  \Box=\partial_{AA'}\partial^{AA'}.
+  \tag{13.1.58}\label{eq:13.1.58}
+\end{equation}
+
+Our motivation for introducing spinor fields arose from seeking unitary
+representations up to phase of the Poincar\'e group on a Hilbert space. We finally are
+ready to return to this issue now and show how Hilbert spaces can be built out of
+spinorial tensor fields satisfying certain equations such that the transformation law
+\eqref{eq:13.1.41} leads to the desired unitary representations. Recall, first, that
+a representation is said to be \emph{reducible} if all the linear maps occurring in
+the representation take a fixed proper subspace of the vector space into itself. It
+is easy to show that on a finite-dimensional vector space, \(V\), every unitary
+representation can be decomposed into a direct sum of irreducible representations,
+i.e., \(V\) can be written as a direct sum of subspaces each of which is invariant
+but has no proper invariant sub-subspaces. For an infinite-dimensional Hilbert space
+this result does not always hold, but Wigner (1939) has shown that the unitary
+representations of \(\mathrm{ISL}(2,\mathbb C)\) can be decomposed into irreducible
+representations. Thus, it suffices to consider only the irreducible representations,
+since all representations can be constructed out of these. This simplifies the
+analysis considerably.
+
+The irreducible representations are conveniently labeled by the values of the Casimir
+operators,\footnote{The \emph{universal enveloping algebra}, \(\mathcal U\), of a Lie
+algebra, \(L\), is obtained by taking the direct sum,
+\(\bigoplus_{k=0}^\infty\mathcal T(k,0)\), of all \lq\lq upper index\rq\rq\ tensors
+over \(L\) and defining two elements to be equivalent if they can be reduced to each
+other by any formal calculation in which for any \(v^a,w^a\in L\) we replace
+\(v^aw^b-w^bv^a\) by \([v,w]^a\). An element \(X\in\mathcal U\) which commutes with
+all \(v\in L\) is called a \emph{Casimir element}. By Stone's theorem (see, e.g.,
+Reed and Simon 1972) and results of G\aa rding (1947) every unitary representation
+of a Lie group \(G\) gives rise to a self-adjoint representation of its Lie algebra,
+\(L\). The representatives of the Casimir elements, called \emph{Casimir operators},
+commute with all representatives of \(L\) and hence with all representatives of
+\(G\). Therefore, by Schur's lemma, in an irreducible representation every Casimir
+operator must be a multiple of the identity operator. These numbers provide
+convenient labels of the irreducible representation. The universal enveloping algebra
+of the Poincar\'e group possesses two independent Casimir elements. Their
+interpretation in terms of mass and spin arises from identifying the Poincar\'e Lie
+algebra with the Killing fields of Minkowski spacetime.} \(m^2\) and \(S^2\), of the
+Lie algebra of \(\mathrm{ISL}(2,\mathbb C)\) (which is isomorphic to the Poincar\'e
+Lie algebra), which can be interpreted as representing, respectively, squared
+4-momentum (i.e., mass squared) and squared angular momentum about the center of
+mass. We may classify the representations into the following four cases according to
+the value of \(m^2\): (a) \(m^2>0\), (b) \(m^2=0\) but the translations are not all
+represented by the identity operator, \(I\), (c) \(m^2=0\) and the translations are
+all represented by \(I\), and (d) \(m^2<0\).
+
+In the representations (c), all states are translationally invariant. Thus, these
+representations appear to be of no physical significance. The \lq\lq tachyonic\rq\rq\
+representations, (d), also do not appear to be of physical significance, although
+some tachyon field theories have been investigated (Feinberg 1967). The
+representations in these classes (c) and (d) have been obtained by Bargmann (1947),
+but a systematic construction of fields on Minkowski spacetime which realize these
+representations does not appear to have been given. The representations of classes
+(a) and (b) were obtained by Wigner (1939), and a realization of all these
+representations as fields on spacetime was first given in a systematic way by
+Bargmann and Wigner (1948). The representations of class (a) are characterized by
+the values of \(m^2\) and \(S^2\) with \(S^2=s(s+1)\), where the \emph{spin} \(s\)
+takes the values \(s=0,\tfrac12,1,\ldots\). The representations of class (b) can be
+divided into two subclasses: (b1) representations characterized by a helicity
+parameter \(s\) (whose magnitude also is called the \emph{spin}) with values
+\(s=0,\pm\tfrac12,\pm1,\ldots\), and (b2) the so-called \lq\lq continuous
+spin\rq\rq\ representations.
+
+The fields on spacetime associated with the representations (b2) do not appear to
+have any physical significance or mathematical utility. However, the representations
+of classes (a) and (b1) describe all physical fields known to occur in quantum
+theory. The equations which select the subspaces of spinorial tensor fields which
+realize the representations of classes (a) and (b1) can be given in many equivalent
+forms. A convenient choice for the representations of class (a) of mass \(m\) and
+spin \(s\) is
+\begin{equation}
+  \left(\Box+m^2\right)\phi^{A_1\cdots A_n}=0,
+  \tag{13.1.59}\label{eq:13.1.59}
+\end{equation}
+where \(\phi^{A_1\cdots A_n}\) is totally symmetric,
+\(\phi^{A_1\cdots A_n}=\phi^{(A_1\cdots A_n)}\), and the number of indices is
+\(n=2s\). For \(s>0\), equation~\eqref{eq:13.1.59} also can be expressed in the
+following form. We define the auxiliary variable
+\(\sigma_{A_1'}{}^{A_2\cdots A_n}\) by
+\begin{equation}
+  \partial_{A_1'A_1}\phi^{A_1\cdots A_n}
+  =\frac{m}{\sqrt2}\sigma_{A_1'}{}^{A_2\cdots A_n}.
+  \tag{13.1.60}\label{eq:13.1.60}
+\end{equation}
+From equations~\eqref{eq:13.1.59} and~\eqref{eq:13.1.57} we obtain
+\begin{equation}
+  \partial^{A_1'A_1}\sigma_{A_1'}{}^{A_2\cdots A_n}
+  =-\frac{m}{\sqrt2}\phi^{A_1\cdots A_n}.
+  \tag{13.1.61}\label{eq:13.1.61}
+\end{equation}
+Furthermore, using equation~\eqref{eq:13.1.57} again, one may verify that the pair
+of equations~\eqref{eq:13.1.60} and~\eqref{eq:13.1.61} imply
+equation~\eqref{eq:13.1.59}, so the coupled first order system
+\eqref{eq:13.1.60}, \eqref{eq:13.1.61} is equivalent to
+equation~\eqref{eq:13.1.59}. Indeed, by repeated differentiation of
+\(\phi^{A_1\cdots A_n}\) and contraction over the unprimed indices, a whole
+hierarchy of auxiliary variables may be defined, each of which is coupled to the
+preceding variable by equations of the form~\eqref{eq:13.1.60},
+\eqref{eq:13.1.61}.
+
+Many equivalent forms also may be given of an inner product which gives the solutions
+of equation~\eqref{eq:13.1.59} the structure of a Hilbert space. A convenient
+expression is obtained as follows.\footnote{I am indebted to P.~Yip for providing me
+with this form of the inner product.} For two solutions
+\(\phi^{A_1\cdots A_n}\) and \(\psi^{A_1\cdots A_n}\) of
+equation~\eqref{eq:13.1.59} with auxiliary variables
+\(\sigma_{A_1'}{}^{A_2\cdots A_n}\),
+\(\rho_{A_1'}{}^{A_2\cdots A_n}\), respectively, we define the particle current
+vector \(j^{AA'}(\phi,\psi)\) by
+\begin{align}
+  j^{AA'}={}&(-\ii)^{n-1}\bigl\{
+  \overline\phi^{A'A_2'\cdots A_n'}
+  \partial_{A_2'A_2}\cdots\partial_{A_n'A_n}
+  \psi^{AA_2\cdots A_n}\notag\\
+  &\mathrel{\phantom{(-\ii)^{n-1}\bigl\{}}+
+  \overline\sigma^{AA_2'\cdots A_n'}
+  \partial_{A_2'A_2}\cdots\partial_{A_n'A_n}
+  \rho^{A'A_2\cdots A_n}\bigr\}.
+  \tag{13.1.62}\label{eq:13.1.62}
+\end{align}
+It follows from equations~\eqref{eq:13.1.60} and~\eqref{eq:13.1.61} that
+\(j^{AA'}\) is conserved, \(\partial_{AA'}j^{AA'}=0\). We define the inner product
+of \(\phi\) and \(\psi\) by integrating the normal component of \(j^{AA'}\) over a
+Cauchy surface,
+\begin{equation}
+  (\phi,\psi)=\int_\Sigma j^{AA'}n_{AA'}\,\dd V.
+  \tag{13.1.63}\label{eq:13.1.63}
+\end{equation}
+Although it is not obvious from this expression, the inner product
+\eqref{eq:13.1.63} is positive definite when \(n\) is odd (i.e., half-integral
+\(s\)) and is positive definite for positive frequency solutions when \(n\) is even
+(i.e., integral \(s\)). (This result can be proven by reexpressing our inner product
+as an integral in Fourier-transform space, where it can be written in a manifestly
+positive definite form; see Bargmann and Wigner 1948.) Thus in all cases, the
+positive frequency solutions of equation~\eqref{eq:13.1.59} with finite norm in the
+inner product~\eqref{eq:13.1.63} form a Hilbert space. The natural action of
+\(\mathrm{ISL}(2,\mathbb C)\) on \(\phi^{A_1\cdots A_n}\) gives rise to the
+irreducible representations of class (a) characterized by \(m^2\) and \(s=n/2\).
+For integral \(s\), these representations are true representations of the Poincar\'e
+group, and the above construction could be reformulated using only ordinary tensor
+fields. However, for half-integral \(s\), these representations of
+\(\mathrm{ISL}(2,\mathbb C)\) are only representations up to sign of the Poincar\'e
+group, and the use of spinorial tensor fields is essential.
+
+When \(m=0\), the representation selected by equation~\eqref{eq:13.1.59} becomes
+reducible except in the case \(s=0\). The irreducible representations in class (b1)
+with \(s>0\) are obtained from the equation (Penrose 1965b)
+\begin{equation}
+  \partial_{A_1'A_1}\phi^{A_1\cdots A_n}=0,
+  \tag{13.1.64}\label{eq:13.1.64}
+\end{equation}
+where again \(\phi^{A_1\cdots A_n}\) is totally symmetric and \(n=2s\). (The
+negative \(s\) representations are obtained from the complex conjugate of
+equation~[13.1.64].) For \(s=\tfrac12\), the current
+\begin{equation}
+  j^{AA'}(\phi,\psi)=\overline\phi^{A'}\psi^A
+  \tag{13.1.65}\label{eq:13.1.65}
+\end{equation}
+can be used to define an inner product as before. For \(s>\tfrac12\) we must
+introduce potentials (Penrose 1965b), and a gauge independent expression for a
+current vector cannot be given. However, a simple expression for the inner product
+in momentum space can be obtained (Bargmann and Wigner 1948). Again, the unitary
+representations thus obtained are true representations of the Poincar\'e group if and
+only if \(s\) is integral.
+
+We comment that in the case \(s=\tfrac12\) equation~\eqref{eq:13.1.59} written in
+the form~\eqref{eq:13.1.60} and~\eqref{eq:13.1.61} is known as the \emph{Dirac
+equation} and the pair of spinors \((\phi^A,\sigma_{A'})\) is called a \emph{Dirac
+spinor}. By choosing a basis of spinor space and denoting the four components of
+\((\phi^A,\sigma_{A'})\) as \(\psi_0,\psi_1,\psi_2,\psi_3\), respectively, the
+component form of equations~\eqref{eq:13.1.60} and~\eqref{eq:13.1.61} yields the
+usual form of the Dirac equation (problem~2). Similarly,
+equation~\eqref{eq:13.1.64} in the case \(s=\tfrac12\) is known as the (Weyl)
+\emph{neutrino equation}. Note that as claimed in section~12.4, the Dirac current
+vector~\eqref{eq:13.1.62} with \(\phi^A=\psi^A\) is the sum of two future directed
+null vectors and hence is a future directed timelike vector, while the neutrino
+current vector~\eqref{eq:13.1.65} is future directed and null. Finally, we point
+out that equation~\eqref{eq:13.1.64} in the case \(s=1\) is equivalent to Maxwell's
+equations (problem~3) while in the case \(s=2\) it is equivalent to the linearized
+Einstein equation (see problem~6).
+
+In summary, we have found that spinorial tensor fields give rise to all the unitary
+representations up to phase of the Poincar\'e group which are believed to have
+physical relevance. This suggests that spinorial tensor fields may be the most
+general type of fields in Minkowski spacetime which can arise in a
+\lq\lq specially covariant\rq\rq\ quantum theory. In any case, we have completed
+the primary task of motivating the introduction of spinor fields from a general and
+systematic viewpoint.

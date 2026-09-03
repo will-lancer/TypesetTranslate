@@ -1,0 +1,1021 @@
+% Source: Wald GR, physical PDF pp. 372--388
+%         (printed pp. 359--375).
+% Coverage: Section 13.2, Spinors in Curved Spacetime; equations (13.2.1)--(13.2.58).
+% Figures/tables/footnotes: Figures 13.2--13.3; footnotes 6--12; no tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none; a printed equation-number error is corrected below.
+
+\subsection{Spinors in Curved Spacetime}\label{sec:13.2}
+
+In the previous section, we defined the notion of spinor fields on Minkowski
+spacetime. Our definition was motivated by the fact that the natural action of the
+Poincar\'e group on spinor fields and spinorial tensor fields gave rise to the desired
+representations up to phase of the Poincar\'e group. Thus, the
+\lq\lq transformation property\rq\rq\ \eqref{eq:13.1.41} under Poincar\'e
+isometries was an essential ingredient of our definition of spinor fields on
+Minkowski spacetime and was used to identify real spinorial tensor fields of type
+\((1,0;1,0)\) with vector fields. However, the Poincar\'e group does not act in a
+natural way on a curved spacetime, so clearly this characteristic property of spinor
+fields cannot be carried over in a direct manner to curved spacetime. Thus, we seek
+to reformulate the notion of spinor fields so that it applies in curved spacetimes
+and, of course, such that it reduces in Minkowski spacetime to the notion of spinor
+fields given in the previous section.
+
+Since a general, curved spacetime possesses no isometries or any other preferred
+classes of diffeomorphisms and since even in Minkowski spacetime there is no natural
+action of the full group of diffeomorphisms on spinor fields, we cannot expect to
+define a \lq\lq transformation law\rq\rq\ of the type~(2.2.10) under
+diffeomorphisms for spinor fields in curved spacetime. However, as in Minkowski
+spacetime, we may represent an observer together with his measuring apparatus at an
+event, \(x\), in a curved spacetime \((M,g_{ab})\) by an orthonormal tetrad at \(x\).
+Hence, associated with two different observers \(O_1\) and \(O_2\) at \(x\) is a
+Lorentz transformation which rotates the tetrad of \(O_1\) into that of \(O_2\).
+Note that this Lorentz transformation acts on the tangent space, \(T_xM\), rather
+than the spacetime manifold, \(M\). We shall seek to define spinors at \(x\) so that
+associated with each Lorentz transformation is the spinor transformation
+\begin{equation}
+  \psi^A(x)\longmapsto\pm L^A{}_B\psi^B(x)
+  \tag{13.2.1}\label{eq:13.2.1}
+\end{equation}
+such that the results of all measurements by \(O_2\) on the spinor
+\(\pm L^A{}_B\psi^B\) at \(x\) are identical to the results of all measurements by
+\(O_1\) on \(\psi^A\). (Again, the sign ambiguity in~[13.2.1] is resolved if a
+continuous curve connecting the Lorentz transformation to the identity element is
+specified.) Thus, in formulating a notion of spinors in curved spacetime we shall
+replace the action~\eqref{eq:13.1.41} of the Poincar\'e group of isometries on
+Minkowski spacetime by the action~\eqref{eq:13.2.1} of the Lorentz group on the
+tangent space at each point.
+
+Fiber bundles provide a precise mathematical framework for defining spinor fields in
+curved spacetime. We shall proceed, therefore, by defining the general notion of a
+principal fiber bundle and its associated fiber bundles. The construction of the
+spinor bundle then will be described.
+
+Let \(G\) be a Lie group, let \(B\) be a manifold, and consider a \(C^\infty\) map
+\(\phi:G\times B\longrightarrow B\). We shall write \(\phi(g,p)\) as
+\(\phi_g(p)\). The map \(\phi\) is said to be a \emph{left action} of \(G\) on \(B\)
+if (i) for each fixed \(g\in G\), the map \(\phi_g:B\longrightarrow B\) is a
+diffeomorphism and (ii) for all \(g_1,g_2\in G\), we have
+\(\phi_{g_1}\circ\phi_{g_2}=\phi_{g_1g_2}\). An example of a left action of \(G\)
+on the manifold \(B=G\) is provided by the left translation map considered in
+section~7.2. For a general left action \(\phi\) it follows from (ii) that
+\(\phi_e\circ\phi_e=\phi_e\), where \(e\) is the identity element, which (composing
+with \(\phi_e^{-1}\)) implies that \(\phi_e\) is just the identity map on \(B\). This
+implies further that \(\phi_{g^{-1}}=\phi_g^{-1}\) for all \(g\in G\). A left action
+\(\phi\) is said to be \emph{free} if for each \(g\ne e\), \(\phi_g\) leaves no point
+of \(B\) fixed, i.e., if for all \(p\in B\) and \(g\ne e\) we have
+\(\phi_g(p)\ne p\). [On the other hand, since \(\phi_e\) is the identity map, we have
+\(\phi_e(p)=p\) for all \(p\in B\).] Thus, for example, left translation is a free
+action of \(G\) on the manifold \(G\). For each \(p\in B\), the set
+\(O=\{\phi_g(p)\mid g\in G\}\) is called the \emph{orbit} of \(p\) under \(G\). It is
+easily seen that the condition that two points of \(B\) lie on the same orbit of
+\(G\) defines an equivalence relation between points of \(B\), so \(B\) can be
+expressed as a disjoint union of orbits.
+
+In essence, a principal fiber bundle is a manifold which locally (but not necessarily
+globally) \lq\lq looks like\rq\rq\ the product, \(G\times M\), of a Lie group \(G\)
+and a manifold \(M\). More precisely, a \emph{principal fiber bundle}
+\((B,G,M,\phi)\) consists of a manifold \(B\) (called the \emph{bundle manifold}), a
+Lie group \(G\) (called the \emph{fiber group}), a manifold \(M\) (called the
+\emph{base manifold}), and a free left action
+\(\phi:G\times B\longrightarrow B\) satisfying the following two properties: (i)
+The orbits of \(G\) are in one-to-one, onto correspondence with the points of
+\(M\), and the projection map \(\pi:B\longrightarrow M\) which assigns to each
+\(p\in B\) the point of \(M\) associated with the orbit of \(p\) is \(C^\infty\).
+(ii) For each \(x\in M\) there exists an open neighborhood, \(U\), of \(x\) such
+that there is a diffeomorphism, \(\psi\), taking \(\pi^{-1}(U)\subseteq B\) into
+\(G\times U\) such that the action of \(G\) on \(\pi^{-1}(U)\) corresponds to left
+multiplication on \(G\times U\); i.e., if \(\psi(p)=(g,x)\), then
+\(\psi[\phi_{g'}(p)]=(g'g,x)\). Figure~13.2 illustrates the nature of a principal
+fiber bundle. Note that we always have
+\(\dim(B)=\dim(G)+\dim(M)\).
+
+\input{figures/chapter13/fig13-02.tex}
+
+Thus, a particularly simple example of a principal fiber bundle is obtained by
+taking the product manifold, \(B=G\times M\), of a Lie group \(G\) and a manifold
+\(M\), with the left action of \(G\) on \(B\) defined by left multiplication, i.e.,
+\(\phi_{g'}(g,x)=(g'g,x)\). A bundle of this form is said to be \emph{trivial}. One
+of the simplest examples of a nontrivial principal fiber bundle is obtained by taking
+\(B\) to be the circle, \(S^1\), and \(G\) to be the group, \(Z_2\), consisting of
+the two elements \(e,a\) with \(a^2=e\). (Thus, \(G\) is a zero-dimensional,
+disconnected Lie group.) We define a left action of \(Z_2\) on the circle,
+\(\phi:Z_2\times B\longrightarrow B\), by \(\phi_e(\theta)=\theta\) and
+\(\phi_a(\theta)=\theta+\pi\). Thus, the orbits of \(Z_2\) are the opposite points
+on the circle \(B\), and the collection of orbits, \(M\), can be given the manifold
+structure \(S^1\) so that the projection \(\pi:B\longrightarrow M\) is smooth. It
+then may be verified that \((S^1,Z_2,S^1,\phi)\) is a principal fiber bundle. This
+bundle is nontrivial since \(B\) is not diffeomorphic to the product manifold
+\(G\times M\), which consists of two disconnected circles. The bundles \(B\) and
+\(G\times M\) are illustrated in Figure~13.3.
+
+\input{figures/chapter13/fig13-03.tex}
+
+A particularly important example of a principal fiber bundle is the \emph{bundle of
+bases}, defined as follows. Let \(M\) be an \(n\)-dimensional manifold and consider
+the collection, \(B\), of pairs \((x,(e_\mu)^a)\) where \(x\in M\) and
+\((e_\mu)^a\) (where \(\mu=1,\ldots,n\)) is a basis of the tangent space,
+\(T_xM\). We can put a manifold structure on \(B\) as follows. If
+\(\psi:U\longrightarrow\mathbb R^n\) is a chart on a region, \(U\), of \(M\), we
+obtain a coordinate basis \((\partial/\partial x^\mu)^a\) associated with \(\psi\).
+At each \(x\in U\) we can expand each \((e_\mu)^a\) in terms of this basis,
+\((e_\mu)^a=\sum_\nu\alpha_\mu{}^\nu(\partial/\partial x^\nu)^a\). Let
+\(\widetilde U\) consist of all points \((x,(e_\mu)^a)\) of \(B\) with \(x\in U\).
+We define \(\widetilde\psi:\widetilde U\longrightarrow\mathbb R^{n+n^2}\) by
+\begin{equation}
+  \widetilde\psi(x,(e_\mu)^a)=(x^\sigma,\alpha_\mu{}^\nu).
+  \tag{13.2.2}\label{eq:13.2.2}
+\end{equation}
+We use the collection of all maps of this form to define a family of charts on
+\(B\). It is easily checked that these charts are compatible, thus making \(B\) a
+manifold of dimension \(n+n^2\). The general linear group in \(n\) dimensions,
+\(\mathrm{GL}(n)\)---which consists of the invertible linear maps taking
+\(\mathbb R^n\) into itself with group multiplication defined by
+composition---acts on the left on \(B\) as follows. We view each
+\(A\in\mathrm{GL}(n)\) as a matrix, \(A^\mu{}_\nu\), of components of the linear map
+\(A\) in the natural basis of \(\mathbb R^n\). We define
+\(\phi_A:B\longrightarrow B\) by
+\begin{equation}
+  \phi_A(x,(e_\mu)^a)
+  =\left(x,\sum_\nu(A^{-1})^\nu{}_\mu(e_\nu)^a\right);
+  \tag{13.2.3}\label{eq:13.2.3}
+\end{equation}
+i.e., we use the inverse map, \(A^{-1}\), to transform the basis of the tangent
+space at \(x\). Then it is easily seen that \(\phi\) is a free left action of
+\(\mathrm{GL}(n)\) on \(B\) and that the above properties (i) and (ii) are
+satisfied. Thus, \((B,\mathrm{GL}(n),M,\phi)\) is a principal fiber bundle. For
+some manifolds, \(M\)---for example, for \(\mathbb R^n\)---the bundle manifold has
+the structure \(\mathrm{GL}(n)\times M\), i.e., the bundle of bases is trivial. On
+the other hand, the bundle of bases of other manifolds, such as the 2-sphere,
+\(S^2\), is nontrivial.
+
+Similarly, for a manifold \(M\) on which a metric, \(g_{ab}\), of signature
+\((p,q)\) is defined, we may construct the \emph{bundle of orthonormal bases}. The
+only changes from the above construction are that we take \(B\) to consist of pairs
+\((x,(e_\mu)^a)\), where \(x\in M\) and \((e_\mu)^a\) now is an orthonormal basis for
+\(T_xM\), and the group which acts on \(B\) is now the orthogonal group \(O(p,q)\),
+rather than \(\mathrm{GL}(n)\). In particular, for a spacetime \((M,g_{ab})\) the
+bundle of orthonormal bases has fiber group equal to the (improper) Lorentz group
+\(O(3,1)\). Similarly, for an orientable, time orientable spacetime, we may
+construct the bundle of oriented, time oriented bases with the proper Lorentz group,
+\(\Lambda\), as the fiber group.
+
+Given a principal fiber bundle \((B,G,M,\phi)\), another manifold \(F\), and a (not
+necessarily free) left action \(\chi:G\times F\longrightarrow F\) of \(G\) on
+\(F\), there is a general procedure for constructing from \(B\) a new manifold
+\(E\), in which, in effect, the fiber group \(G\) is replaced by the manifold \(F\).
+To do so, we take the product manifold \(B\times F\) and define a left action,
+\(\Psi\), of \(G\) on \(B\times F\) by
+\begin{equation}
+  \Psi_g[b,f]=[\phi_g(b),\chi_g(f)].
+  \tag{13.2.4}\label{eq:13.2.4}
+\end{equation}
+We define \(E\) to be the set of orbits of \(G\) on \(B\times F\). There is a
+natural projection map \(p:E\longrightarrow M\) given by \(p(y)=\pi(b)\), where
+\(b\in B\) is such that \((b,f)\in B\times F\) lies on the orbit of \(y\in E\) and
+\(\pi:B\longrightarrow M\) is the projection map on the principal fiber bundle. For
+every neighborhood \(U\subseteq M\) satisfying property~(ii) of the definition of
+principal fiber bundle, it follows that \(p^{-1}(U)\subseteq E\) is homeomorphic to
+\(F\times U\). We define a manifold structure on \(E\) by requiring that these
+homeomorphisms be diffeomorphisms. Thus, \(E\) locally \lq\lq looks like\rq\rq\
+\(F\times M\) in the same sense as \(B\) locally \lq\lq looks like\rq\rq\
+\(G\times M\). The manifold \(E\) together with the large amount of structure on
+\(E\) determined by \(B,G,M,\phi,F\), and \(\chi\) is called a \emph{fiber bundle}
+or, more precisely, the fiber bundle associated to \((B,G,M,\phi)\) with fiber
+manifold \(F\) and group action \(\chi\). For each \(x\in M\), the subset
+\(p^{-1}(x)\subseteq E\)---called the \emph{fiber over \(x\)}---is diffeomorphic to
+\(F\).
+
+It may appear from the above rather complicated constructions and definitions that
+fiber bundles comprise an extremely specialized class of manifolds. In fact,
+however, a large variety of manifolds can be expressed in a natural and very useful
+way as fiber bundles. The utility of the fiber bundle viewpoint for proving theorems
+on the topology of manifolds can be seen, for example, in Steenrod (1951).
+
+Given a principal fiber bundle \((B,G,M,\phi)\) we may take \(F=G\) and \(\chi_g\)
+to be left translation. The resulting associated fiber bundle \(E\) is
+diffeomorphic to \(B\), so every principal fiber bundle also can be viewed as an
+associated fiber bundle. Another particularly simple example of a fiber bundle
+associated to a principal bundle \((B,G,M,\phi)\) is obtained by letting \(F\) be
+any manifold and taking \(\chi\) to be the trivial action,
+\(\chi_g(f)=f\) for all \(g\in G\) and \(f\in F\). The resulting fiber bundle \(E\)
+is diffeomorphic to the product manifold, \(F\times M\), of the fiber manifold
+\(F\) with the base manifold \(M\). A fiber bundle which is diffeomorphic to
+\(F\times M\) is called \emph{trivial}. A simple example of a nontrivial fiber
+bundle, associated to the principal bundle \((S^1,Z_2,S^1,\phi)\) discussed above,
+with fiber manifold \(F=\mathbb R\) is obtained from the following action of
+\(Z_2=\{e,a\}\) on \(\mathbb R\). We define \(\chi_e(x)=x\),
+\(\chi_a(x)=-x\) for all \(x\in\mathbb R\). The resulting fiber bundle \(E\)
+\lq\lq locally looks like\rq\rq\ the cylinder \(\mathbb R\times S^1\), but has the
+property that the \(\mathbb R\)-fibers \lq\lq flip upside down\rq\rq\ when one goes
+once around a curve which projects down to a circle in the base manifold \(M=S^1\).
+The manifold \(E\) is called the \emph{M\"obius strip} and also could be constructed
+by identifying the points in the plane, \(\mathbb R^2\), via
+\((x,y)=(x+1,-y)\).
+
+An important example of a fiber bundle associated to the bundle of bases of an
+\(n\)-dimensional manifold \(M\) is obtained as follows. We take \(F=\mathbb R^n\)
+and let \(\mathrm{GL}(n)\) act on \(\mathbb R^n\) in the natural way, i.e., for
+\(a=(a^1,\ldots,a^n)\in\mathbb R^n\) and \(A\in\mathrm{GL}(n)\) we define
+\begin{equation}
+  \bigl(\chi_A(a)\bigr)^\mu=\sum_{\nu=1}^nA^\mu{}_\nu a^\nu.
+  \tag{13.2.5}\label{eq:13.2.5}
+\end{equation}
+Now, corresponding to each point \((x,(e_\mu)^a,a^\nu)\) in the manifold
+\(B\times\mathbb R^n\) we can associate the vector
+\[
+  v^a=\sum_{\mu=1}^n a^\mu(e_\mu)^a
+\]
+at \(x\in M\). Given the actions~\eqref{eq:13.2.3} and~\eqref{eq:13.2.5} of \(G\)
+on \(B\) and on \(\mathbb R^n\), it is easily seen that two points of
+\(B\times\mathbb R^n\) correspond to the same vector \(v^a\) at \(x\) if and only if
+they lie on the same orbit~\eqref{eq:13.2.4}. Thus, the points of the associated
+fiber bundle \(E\) are in one-to-one correspondence with the pairs \((x,v^a)\),
+where \(x\in M\) and \(v^a\in T_xM\). We call \(E\) the \emph{tangent bundle} of
+\(M\) and denote it by \(T(M)\). If \(T(M)\) is trivial, we say that \(M\) is
+\emph{parallelizable}. The bundle \(T_{k,l}(M)\) of tensors of type \((k,l)\) over
+\(M\) can be constructed similarly by taking \(F\) to be the tensor product,
+\(F_{k,l}\), of \(k\) copies of \(\mathbb R^n\) and \(l\) copies of its dual space
+\((\mathbb R^n)^\vee\) and taking \(\chi\) to be the natural action of
+\(\mathrm{GL}(n)\) on \(F_{k,l}\) given by
+\begin{align}
+  \bigl(\chi_A(b)\bigr)^{\mu_1\cdots\mu_k}{}_{\nu_1\cdots\nu_l}
+  ={}&\sum_{\alpha_i,\beta_j=1}^n
+  A^{\mu_1}{}_{\alpha_1}\cdots A^{\mu_k}{}_{\alpha_k}
+  (A^{-1})^{\beta_1}{}_{\nu_1}\cdots
+  (A^{-1})^{\beta_l}{}_{\nu_l}\,
+  b^{\alpha_1\cdots\alpha_k}{}_{\beta_1\cdots\beta_l}.
+  \tag{13.2.6}\label{eq:13.2.6}
+\end{align}
+If a metric, \(g_{ab}\), of signature \((p,q)\) is given on \(M\) we also may
+construct \(T_{k,l}(M)\) by restricting attention to orthonormal bases, i.e., by
+starting with the principal bundle of orthonormal bases and defining an action of
+\(O(p,q)\) on \(F_{k,l}\) via equation~\eqref{eq:13.2.6}.
+
+Thus, the above construction gives us a new viewpoint on tangent vectors: A tangent
+vector at a point \(x\) on a manifold \(M\) is a point of the tangent bundle
+\(T(M)\) lying in the fiber over \(x\), i.e., a point \(y\in T(M)\) such that
+\(p(y)=x\). More generally, a tensor of type \((k,l)\) at \(x\in M\) is a point in
+the fiber over \(x\) of the bundle \(T_{k,l}(M)\) of tensors of type \((k,l)\). A
+smooth tensor field on \(M\) is a \emph{cross section} of \(T_{k,l}(M)\), i.e., a
+\(C^\infty\) map \(\Sigma:M\longrightarrow T_{k,l}(M)\) such that
+\(p\circ\Sigma\) is the identity map on \(M\). Note that this viewpoint on tensors
+is rather close in spirit to the characterization of tensors mentioned in chapter~2
+in terms of the tensor transformation law~(2.3.8). There it was remarked that the
+change in the coordinate basis components of a tensor under a coordinate
+transformation could be used to characterize it. Here, a point in \(B\times F_{k,l}\)
+is a collection of \(n^{k+l}\) numbers associated with a point \(x\in M\) and a (not
+necessarily coordinate) basis of the tangent space of \(x\). The group action
+\eqref{eq:13.2.6} can be viewed as telling us how this collection of numbers changes
+when we make a change of basis. The equivalence class of the collection of numbers
+under changes of basis at \(x\) is a point of \(T_{k,l}(M)\), i.e., a tensor at \(x\).
+Both the tensor transformation law and the fiber bundle characterization of tensors
+have little advantage over the direct definition of tensors as multilinear maps given
+in chapter~2. However, since there is no analogous direct definition of spinors, we
+must proceed to define spinors by the relatively indirect route of specifying their
+behavior under \(\mathrm{SL}(2,\mathbb C)\) transformations associated with changes
+of orthonormal basis. We turn, now, to this task.
+
+The basic idea for constructing spinor fields in a curved spacetime \((M,g_{ab})\)
+is to start with the principal fiber bundle of oriented, time oriented orthonormal
+bases, so that each fiber is diffeomorphic to the proper Lorentz group. Then we
+\lq\lq unwrap\rq\rq\ each fiber to produce a principal
+\(\mathrm{SL}(2,\mathbb C)\) bundle over \(M\). The spinor bundle then is
+constructed as the fiber bundle associated to this principal bundle with fiber
+\(F=\mathbb C^2\), where \(\chi\) is taken to be the natural action of
+\(\mathrm{SL}(2,\mathbb C)\) on \(\mathbb C^2\). A spinor at \(x\in M\) may then be
+defined as a point in the fiber over \(x\) of the spinor bundle.
+
+However, complications may arise in this construction if the topology of the
+spacetime \(M\) is nontrivial. Consider, first, the case where \(M\) is simply
+connected. Then \(M\) is orientable and time orientable, so there is no difficulty
+in constructing the principal bundle, \((B,\Lambda,M,\phi)\) of oriented, time
+oriented bases. Consider, now, a closed curve, \(\gamma\), in \(B\). Since \(M\) is
+simply connected, the curve \(\pi\circ\gamma\) obtained by projecting \(\gamma\)
+down onto \(M\) can be continuously deformed to the trivial curve through \(x\),
+i.e., the curve \(e(t)=x\) for all \(t\). This implies that in \(B\) the curve
+\(\gamma\) can be continuously deformed to a curve which lies entirely in the fiber
+\(\pi^{-1}[x]\) over \(x\). However, this fiber is diffeomorphic to the proper
+Lorentz group, \(\Lambda\), and \(\pi_1(\Lambda)=Z_2\). Thus, in general, we would
+expect there to exist precisely two distinct homotopy equivalence classes of closed
+curves in \(B\). However, it is possible for there to exist only one homotopy
+equivalence class of curves, i.e., for \(B\) to be simply connected. Although the
+curve in the fiber over \(x\) corresponding to a \(2\pi\) rotation of the basis of
+\(T_xM\) cannot be deformed to the trivial curve while remaining within the fiber over
+\(x\), for certain manifolds this curve \emph{can} be continuously deformed to the
+trivial curve in \(B\) by moving it out of the fiber over \(x\). In other words, it
+may happen that a \(2\pi\)-rotation of a tetrad can be \lq\lq undone\rq\rq\ by
+transporting the tetrad along a one-parameter sequence of closed curves through
+\(x\) in \(M\). \emph{If \(B\) is simply connected, the notion of spinors on \(M\)
+cannot be defined.}\footnote{However, one still may define \lq\lq generalized spin
+structures\rq\rq; see Avis and Isham (1980) and the references cited therein.} This
+is because we cannot consistently assign a change of sign to a spinor under a
+\(2\pi\)-rotation of the basis if this \(2\pi\)-rotation can be continuously deformed
+to the identity. Examples of manifolds for which \(B\) is simply connected are given
+by Geroch (1968a). It is known (Milnor 1963; Clarke 1971) that \(B\) will fail to be
+simply connected---i.e., \(\pi_1(B)=Z_2\) and spinors can be defined---if and only
+if the second Stiefel--Whitney class (defined, e.g., in Steenrod 1951) of \(M\)
+vanishes. Geroch (1968a) has proven\footnote{Since \(O(n)\) and \(O(n,1)\) have
+fundamental group \(Z_2\) for all \(n>2\), one can define analogous notions of
+spinors for Riemannian and Lorentzian spaces of dimension greater, respectively,
+than 2 and 3. (See problem~1 for the Riemannian case with \(n=3\); see Yip (1983)
+for a discussion of spinors in two-dimensional spacetimes, where \(O(1,1)\) is
+simply connected.) Geroch's parallelizability criterion applies only to
+four-dimensional spacetimes.} that if \(M\) is noncompact, then
+\(\pi_1(B)=Z_2\) if and only if \(M\) is parallelizable. Further equivalent criteria
+are given by Geroch (1968a, 1970a) and Clarke (1971).
+
+If \(\pi_1(B)=Z_2\), we define spinors on \(M\) as follows. The universal covering
+manifold, \(\widehat B\), of \(B\) will have the natural structure of a principal
+fiber bundle with fiber group \(\mathrm{SL}(2,\mathbb C)\). We define the
+\emph{spinor bundle}, \(S(M)\), to be the fiber bundle associated to
+\((\widehat B,\mathrm{SL}(2,\mathbb C),M,\widehat\phi)\) with fiber manifold
+\(\mathbb C^2\), with the action \(\chi_L\) of
+\(L\in\mathrm{SL}(2,\mathbb C)\) on \(c\in\mathbb C^2\) taken to be the natural
+action given by
+\begin{equation}
+  [\chi_L(c)]^\Sigma=\sum_{\Gamma=1}^2L^\Sigma{}_\Gamma c^\Gamma.
+  \tag{13.2.7}\label{eq:13.2.7}
+\end{equation}
+A \emph{spinor} at \(x\in M\) is defined to be a point of \(S(M)\) lying in the
+fiber over \(x\). Similarly, the bundle,
+\(S_{k,l;k',l'}(M)\) of spinorial tensors of type \((k,l;k',l')\) is defined by
+taking \(F\) to be the tensor product of \(k\) copies of \(\mathbb C^2\), \(l\)
+copies of its dual space \((\mathbb C^2)^\vee\), \(k'\) copies of its complex conjugate
+space \(\overline{\mathbb C}^{\,2}\), and \(l'\) copies of its complex conjugate
+dual space \((\overline{\mathbb C}^{\,2})^\vee\). The action of \(\chi\) on
+\[
+  c^{\Sigma_1\cdots\Sigma_k\Sigma_1'\cdots\Sigma_{k'}'}
+    {}_{\Lambda_1\cdots\Lambda_l\Lambda_1'\cdots\Lambda_{l'}'}\in F
+\]
+is given by
+\begin{align}
+  [\chi_L(c)]^{\Sigma_1\cdots\Sigma_k\Sigma_1'\cdots\Sigma_{k'}'}
+    {}_{\Lambda_1\cdots\Lambda_l\Lambda_1'\cdots\Lambda_{l'}'}
+  ={}&\sum_{\substack{
+          \Gamma_1\cdots\Gamma_k,\Delta_1\cdots\Delta_l,\\[-.25ex]
+          \Gamma_1'\cdots\Gamma_{k'}',\Delta_1'\cdots\Delta_{l'}'}}\notag\\[-.5ex]
+  &{}\quad\times L^{\Sigma_1}{}_{\Gamma_1}\cdots
+    L^{\Sigma_k}{}_{\Gamma_k}
+    (L^{-1})^{\Delta_1}{}_{\Lambda_1}\cdots\notag\\
+  &{}\quad\times (L^{-1})^{\Delta_l}{}_{\Lambda_l}
+    \overline L^{\Sigma_1'}{}_{\Gamma_1'}\cdots
+    \overline L^{\Sigma_{k'}'}{}_{\Gamma_{k'}'}\notag\\
+  &{}\quad\times(\overline L^{-1})^{\Delta_1'}{}_{\Lambda_1'}\cdots
+    (\overline L^{-1})^{\Delta_{l'}'}{}_{\Lambda_{l'}'}\notag\\
+  &{}\quad\times
+  c^{\Gamma_1\cdots\Gamma_k\Gamma_1'\cdots\Gamma_{k'}'}
+    {}_{\Delta_1\cdots\Delta_l\Delta_1'\cdots\Delta_{l'}'}.
+  \tag{13.2.8}\label{eq:13.2.8}
+\end{align}
+Equivalently, once the notion of spinors has been given, spinorial tensors may be
+defined in terms of linear (and antilinear) maps on spinors in a manner analogous to
+the way ordinary tensors were constructed from vectors in chapter~2. As in the
+previous section we shall use capital Latin indices to denote spinorial tensors.
+
+The above definition of spinors is sufficiently abstruse that some words of
+explanation might be helpful. Recall, first, that a point of \(B\) consists of a
+point \(x\in M\) together with an oriented, time oriented orthonormal basis at \(x\).
+If we fix a particular basis \(\{(e_\mu)^a\}\) at \(x\), a point of \(\widehat B\) may
+be viewed as consisting of a point \(x\in M\) together with a continuous,
+one-parameter family of oriented, time oriented bases at \(x\) starting from
+\(\{(e_\mu)^a\}\), where two such families are considered equivalent if they have the
+same endpoint and are homotopic. In other words, the fiber of \(\widehat B\) over
+\(x\) can be viewed as consisting of all oriented, time oriented orthonormal bases
+at \(x\) together with their \(2\pi\)-rotations. A point of
+\(\widehat B\times\mathbb C^2\) is a pair of complex numbers associated with \(x\)
+and a basis or \(2\pi\)-rotated basis at \(x\). The group action \(\chi_g\) of
+equation~\eqref{eq:13.2.7} tells us how these numbers
+\lq\lq transform\rq\rq\ under a change of basis. Each equivalence class of
+transformed numbers and bases at \(x\)---i.e., each orbit of \(\Psi_g\),
+equation~\eqref{eq:13.2.4}---defines a spinor at \(x\). Thus, our fiber bundle
+construction is just a precise way of implementing the notion that \lq\lq a spinor at
+\(x\) is an ordered pair of complex numbers which transforms by the natural
+representation of \(\mathrm{SL}(2,\mathbb C)\) under a change of basis.\rq\rq\
+
+Note that \(\mathbb C^2\) has a great deal of structure beyond that of a complex
+two-dimensional vector space; for example, it has a natural inner product and a
+notion of the real and imaginary parts of vectors. However, only those properties of
+\(\mathbb C^2\) which are preserved under the action of
+\(\mathrm{SL}(2,\mathbb C)\) survive to yield structure on the fibers of the spinor
+bundle \(S(M)\). Thus, for example, since there are elements of
+\(\mathrm{SL}(2,\mathbb C)\) which take real vectors in \(\mathbb C^2\) to complex
+vectors, there is no natural notion of the real and imaginary parts of a spinor at
+\(x\). However, since the \(\mathrm{SL}(2,\mathbb C)\) maps are linear, they
+preserve addition and scalar multiplication, so the spinors at \(x\) do have the
+natural structure of a two-dimensional complex vector space. Beyond that, only the
+element \(\epsilon_{\Sigma\Gamma}\in(\mathbb C^2)^\vee\otimes(\mathbb C^2)^\vee\) (as well
+as objects constructed from it) given by
+\[
+  \epsilon_{\Sigma\Gamma}
+  =\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+\]
+is preserved under the action of \(\mathrm{SL}(2,\mathbb C)\), so the only
+additional natural structure of spinors is that of a tensor \(\epsilon_{AB}\) of
+type \((0,2;0,0)\). Thus, each fiber of \(S(M)\) has precisely the natural
+structure of spinor space \((W,\epsilon_{AB})\). Note that there is no natural way
+of identifying the different fibers of \(S(M)\), i.e., there is no way of saying
+that a spinor at \(x\in M\) is \lq\lq the same\rq\rq\ as one at \(y\in M\), just as
+there is no way of saying that tangent vectors at different points are
+\lq\lq the same.\rq\rq\ However, we do know what it means for a spinor to vary
+smoothly from point to point: A smooth spinor field is simply a (smooth) cross
+section of \(S(M)\).
+
+The relation between spinorial tensor fields of type \((1,0;1,0)\) and vector
+fields may be seen as follows. Fix an isomorphism, \(\sigma\), between the real
+elements of \(\mathbb C^2\otimes\overline{\mathbb C}^{\,2}\) and \(\mathbb R^4\)---such
+as that given by equation~\eqref{eq:13.1.30}---for which the Lorentz metric
+\(\epsilon_{\Sigma\Lambda}\overline\epsilon_{\Sigma'\Lambda'}\) on
+\(\operatorname{Re}(\mathbb C^2\otimes\overline{\mathbb C}^{\,2})\) is taken into
+the Lorentz metric \(\operatorname{diag}(1,-1,-1,-1)\) on \(\mathbb R^4\). Then the
+natural 2 to 1 map of \(\widehat B\) onto \(B\) gives rise to a 2 to 1 map
+\(\sigma'\) of
+\(\widehat B\times\operatorname{Re}(\mathbb C^2\otimes\overline{\mathbb C}^{\,2})\)
+onto \(B\times\mathbb R^4\). Furthermore, \(\sigma'\) commutes with the natural
+group actions \(\Psi_L\) and \(\Psi_\Lambda\) on these spaces, i.e., we have
+\(\sigma'\circ\Psi_L=\Psi_\Lambda\circ\sigma\), where \(\Lambda\) is the Lorentz
+group element associated with \(L\in\mathrm{SL}(2,\mathbb C)\). Hence, we obtain a
+(one-to-one) correspondence, \(\widetilde\sigma\), between the
+\(\mathrm{SL}(2,\mathbb C)\) orbits of
+\(\widehat B\times\operatorname{Re}(\mathbb C^2\otimes\overline{\mathbb C}^{\,2})\)
+and the Lorentz group orbits of \(B\times\mathbb R^4\). Thus, we obtain in turn an
+identification of the real subset of \(S_{1,0;1,0}(M)\) with \(T(M)\); i.e., real
+spinorial tensors of type \((1,0;1,0)\) are identified with vectors. As in the
+previous section, we shall incorporate this identification into our notation by
+allowing \(v^{AA'}\) to denote a vector rather than explicitly writing
+\(\widetilde\sigma^{\,a}{}_{AA'}v^{AA'}\). Again the spacetime metric is related to
+\(\epsilon_{AB}\) by
+\begin{equation}
+  g_{AA'BB'}=\epsilon_{AB}\overline\epsilon_{A'B'}.
+  \tag{13.2.9}\label{eq:13.2.9}
+\end{equation}
+
+In the case where the spacetime manifold, \(M\), is not simply connected, the
+analysis of whether the notion of spinors can be defined is somewhat more
+complicated. First, \(M\) may fail to be orientable or time oriented. \emph{In such
+a case, the bundle, \(B\), of oriented, time oriented orthonormal bases does not
+exist, and the notion of spinors cannot be defined.}\footnote{We should reemphasize
+that the term \lq\lq spinors\rq\rq\ here and elsewhere in this chapter means
+\(\mathrm{SL}(2,\mathbb C)\) spinors. Other types of spinors can be defined by a
+similar construction starting from other bundles of bases. In particular, in a time
+orientable but not necessarily orientable spacetime, let \(\widetilde B\) denote the
+bundle of time oriented orthonormal bases. The fiber group is then the
+(disconnected) group obtained by composing proper Lorentz transformations with a
+\lq\lq parity\rq\rq\ transformation. Its covering group can be made to act on a
+four-dimensional complex vector space via the usual transformation formulas for
+Dirac spinors. Thus, a notion of (4-component) Dirac spinors can be defined on
+nonorientable spacetimes. In the case of an orientable spacetime, Dirac spinors are
+naturally isomorphic to a pair \((\phi^A,\sigma_{A'})\) consisting of a
+two-component spinor \(\phi^A\) and a complex conjugate dual spinor
+\(\sigma_{A'}\), as mentioned at the end of section~13.1.} If \(M\) is orientable
+and time orientable, we may construct \(B\), but we cannot obtain \(\widehat B\) by
+taking the universal covering manifold of \(B\) since this would \lq\lq unwrap\rq\rq\
+\(M\) as well as the fibers of \(B\). In order to make sense of the idea of
+unwrapping only the fibers of \(B\), it is necessary that the fundamental group of
+\(B\) be of the direct product form
+\begin{equation}
+  \pi_1(B)=G_1\times G_2,
+  \tag{13.2.10}\label{eq:13.2.10}
+\end{equation}
+where \(G_1\) is the fundamental group, \(\pi_1(\Lambda)=Z_2\), of the Lorentz
+group and \(G_2\) is the fundamental group, \(\pi_1(M)\), of \(M\). [Here the direct
+product \(G=G_1\times G_2\) of groups \(G_1\) and \(G_2\) is defined as the group
+consisting of ordered pairs \((g_1,g_2)\) with \(g_1\in G_1\), \(g_2\in G_2\) with
+composition law \((g_1,g_2)(g_1',g_2')=(g_1g_1',g_2g_2')\).] Furthermore, it is
+understood in equation~\eqref{eq:13.2.10} that each element of the subgroup of
+\(\pi_1(B)\) of the form \((g_1,e_2)\) with \(e_2\) the identity element of \(G_2\)
+is homotopic to the closed curve \(g_1\) lying within a single Lorentz group fiber,
+whereas each element of the subgroup \((e_1,g_2)\) projects down to the closed curve
+\(g_2\in\pi_1(M)\) in \(M\). Note that in the case where \(M\) is simply connected,
+equation~\eqref{eq:13.2.10} reduces to our previous criterion
+\(\pi_1(B)=\pi_1(\Lambda)=Z_2\). \emph{If \(\pi_1(B)\) cannot be expressed in the
+form~\eqref{eq:13.2.10}, the notion of spinors cannot be defined on \(M\).} On the
+other hand, if \(\pi_1(B)\) is of the form~\eqref{eq:13.2.10}, we may construct a
+(nonuniversal) covering space, \(\widehat B\), of \(B\) by defining two closed
+curves through a point \(b\in B\) to be equivalent if their composition is homotopic
+to a closed curve of the form \((e_1,g_2)\). Then \(\widehat B\) has the natural
+structure of a principal \(\mathrm{SL}(2,\mathbb C)\) bundle over \(M\), and one can
+proceed to define spinors on \(M\) in the same manner as in the case where \(M\) is
+simply connected. Again---assuming that \(M\) is orientable and time
+orientable---spinors can be defined [i.e., \(\pi_1(B)\) is of the
+form~\eqref{eq:13.2.10}] if and only if the second Stiefel--Whitney class of \(M\)
+vanishes. Furthermore, if in addition \(M\) is noncompact, spinors can be defined if
+and only if \(M\) is parallelizable (Geroch 1968a; see also Clarke 1971).
+
+One further point is worthy of note in the case where \(M\) is not simply connected.
+The decomposition of \(\pi_1(B)\) as a direct product of subgroups of the
+form~\eqref{eq:13.2.10} need not be unique, and each distinct decomposition gives
+rise to a distinct notion of spinors on \(M\). The reason is as follows. Each
+element of \(\pi_1(B)\) corresponds to an equivalence class of transports of tetrads
+around closed curves in \(M\). When we express \(\pi_1(B)\) in the
+form~\eqref{eq:13.2.10}, we, in effect, state that tetrad transports of the form
+\((e_1,g_2)\) correspond to no net rotation of the tetrad, while those of the form
+\((a_1,g_2)\)---where \(a_1\) is the non-identity element of
+\(\pi_1(\Lambda)=Z_2\)---correspond to a \(2\pi\)-rotation of the tetrad. Suppose,
+now, that \(\pi_1(M)\) has a normal subgroup\footnote{A subgroup \(H\) of a group
+\(G\) is said to be \emph{normal} if \(ghg^{-1}\in H\) for all \(g\in G\) and
+\(h\in H\).} \(H\) with factor group\footnote{For a normal subgroup \(H\), the
+orbits obtained by the natural left action of \(H\) on \(G\)---called \emph{right
+cosets} of \(H\)---can be given a group structure via the composition law
+\(c_1c_2=c\), where \(c\) is the coset of \(H\) containing \(g_1g_2\), where
+\(g_1\in c_1\) and \(g_2\in c_2\). (It is necessary that \(H\) be a normal subgroup
+in order that this composition law be independent of the choice of representative
+elements \(g_1,g_2\).) This group of cosets is called the \emph{factor group} of
+\(H\) and is denoted \(G/H\).} isomorphic to \(Z_2\). Then we can define \(G_2'\)
+to be the subset of \(\pi_1(B)\) consisting of all elements either of the form
+\((e,h)\) or of the form \((a,bh)\), where \(h\in H\) and \(b\notin H\). Then it is
+easy to check that \(G_2'\) is a subgroup of \(\pi_1(B)\) isomorphic to \(\pi_1(M)\)
+and that \(\pi_1(B)\) is of the form \(G_1\times G_2'\). We may use this
+decomposition to define the covering space \(\widehat B'\) and use \(\widehat B'\)
+to define spinors. With this new decomposition of \(\pi_1(B)\), closed curves in
+\(B\) of the form \((a,bh)\) now correspond to no net rotation of the tetrad in
+\(M\), whereas curves of the form \((e,bh)\) now correspond to a
+\(2\pi\)-rotation. Spinors on \(M\) defined with respect to \(\widehat B\) will not
+change sign if transported around a closed curve \(bh\in\pi_1(M)\) in \(M\) in such a
+way that the components of its null flag~\eqref{eq:13.1.37} with respect to the
+basis associated with \((e,bh)\in\pi_1(B)\) remain constant during the transport.
+Spinors defined with respect to \(\widehat B'\) will change sign under the same
+transport. Thus, depending on the group structure of \(\pi_1(M)\), there may be
+several\footnote{The number of distinct ways of defining spinors equals the number
+of normal subgroups of \(\pi_1(M)\) with factor group \(Z_2\). This, in turn, is
+equal to the number of generators of the cohomology group \(H^1(M;Z_2)\); see Isham
+(1978) for further discussion.} distinct ways of defining spinors in the sense that
+there may exist freedom to decide whether or not a spinor changes sign when
+transported around certain closed curves in \(M\). For example, if \(\pi_1(M)=Z_2\),
+then if spinors can be defined at all, there exist two inequivalent definitions. On
+the other hand, if \(\pi_1(M)=Z_3\) (i.e., the cyclic group consisting of three
+elements), then the definition of spinors is unique.
+
+We turn, now, to the definition of derivatives of spinors in curved spacetime. As
+mentioned above, in curved spacetime there is no natural identification of the
+spinor spaces at different points, just as the tangent spaces at different points
+cannot be identified in a natural way. However, in chapter~3 we introduced the
+notion of a derivative operator on ordinary tensor fields and found that there is a
+unique derivative operator, \(\nabla_a\), associated with a metric \(g_{ab}\) via
+the requirement \(\nabla_a g_{bc}=0\). Furthermore, given a derivative operator, we
+obtain a notion of parallel transport, i.e., a curve-dependent identification of the
+tangent spaces at different points. This notion of parallel transport of tensor
+fields obtained from \(\nabla_a\) gives rise to a unique notion of parallel transport
+of spinors,\footnote{This can be demonstrated more systematically by reformulating
+the notion of parallel transport in terms of the theory of connections on a principal
+fiber bundle and its associated bundles (see, e.g., Bishop and Crittenden 1964). The
+connection on \(B\) gives rise to a connection on \(\widehat B\), which in turn
+yields a connection on \(S(M)\).} namely, a spinor will be said to be parallelly
+transported along a curve if its null flag~\eqref{eq:13.1.37} is parallelly
+transported and, in addition, the spinor itself does not change sign
+discontinuously. (Recall that the continuity of a spinor field is a well-defined
+notion.) This notion of parallel transport then can be used to take derivatives of
+spinors along a curve \(\gamma\)---since a spinor at \(\gamma(t)\) now can be
+compared with a spinor at \(\gamma(t+\delta t)\) via parallel transport---and this,
+in turn, uniquely gives rise to a notion of a spinor derivative operator
+\(\nabla_{AA'}\) taking spinorial tensor fields of type \((k,l;k',l')\) into
+spinorial tensor fields of type \((k,l+1;k',l'+1)\). This derivative operator
+\(\nabla_{AA'}\) will satisfy the analogs of properties (1)--(3) listed in
+section~3.1 for a derivative operator on ordinary tensor fields where, in property
+(3), contraction now is with respect to spinor indices. Furthermore, when applied
+to ordinary tensor fields, \(\nabla_{AA'}\) will agree with the derivative operator
+\(\nabla_a\) associated with \(g_{ab}\), which implies, in particular, that
+properties (4) and (5) are satisfied by \(\nabla_{AA'}\). In addition,
+\(\nabla_{AA'}\) satisfies two further conditions: (i) for all spinorial tensor
+fields \(\psi\) we have \(\overline{\nabla\psi}=\nabla\overline\psi\), i.e.,
+\(\nabla_{AA'}\) is \lq\lq real,\rq\rq\ and (ii)
+\(\nabla_{AA'}\epsilon_{BC}=0=\nabla_{AA'}\overline\epsilon_{B'C'}\). Note that
+although the derivative operator \(\nabla_a\) satisfying \(\nabla_a g_{bc}=0\) is
+but one of a wide class of derivative operators on tensor fields, most of these
+other derivative operators cannot be generalized to apply to spinor fields, since
+for these notions of derivative the parallel transport of a null flag will not, in
+general, retain the form of a null flag.
+
+If we take two spinor derivatives of a dual spinor field \(\alpha_C\) and
+antisymmetrize over the derivative indices, the same argument used to define the
+Riemann tensor in chapter~3 shows that the resulting spinorial tensor field at a
+point \(x\in M\) depends only on the value of \(\alpha_C\) at \(x\). Thus, there
+exists a spinorial tensor field \(\chi_{AA'BB'C}{}^D\) such that for all dual
+spinor fields \(\alpha_C\), we have
+\begin{equation}
+  \bigl(\nabla_{AA'}\nabla_{BB'}-\nabla_{BB'}\nabla_{AA'}\bigr)\alpha_C
+  =\chi_{AA'BB'C}{}^D\alpha_D.
+  \tag{13.2.11}\label{eq:13.2.11}
+\end{equation}
+We apply this commutator to the covector
+\(\alpha_C\overline\alpha_{C'}\), using the Leibniz rule and the reality property
+(i) of \(\nabla_{AA'}\). Comparison with formula~(3.2.3) for all
+\(\alpha_C\overline\alpha_{C'}\) establishes that
+\begin{equation}
+  R_{AA'BB'CC'}{}^{DD'}
+  =\chi_{AA'BB'C}{}^D\overline\epsilon_{C'}{}^{D'}
+   +\overline\chi_{AA'BB'C'}{}^{D'}\epsilon_C{}^D,
+  \tag{13.2.12}\label{eq:13.2.12}
+\end{equation}
+where \(R_{AA'BB'CC'}{}^{DD'}\) is the spinorial equivalent of the Riemann tensor.
+Arguments similar to those which led to equation~(3.2.12) show that, for an
+arbitrary \lq\lq down index\rq\rq\ spinorial tensor field,
+\(\alpha_{C_1\cdots C_lC_1'\cdots C_{l'}'}\), we have
+\begin{align}
+  &\bigl(\nabla_{AA'}\nabla_{BB'}-\nabla_{BB'}\nabla_{AA'}\bigr)
+    \alpha_{C_1\cdots C_lC_1'\cdots C_{l'}'}\notag\\
+  &\quad={}\sum_{i=1}^l\chi_{AA'BB'C_i}{}^D
+    \alpha_{C_1\cdots D\cdots C_lC_1'\cdots C_{l'}'}\notag\\
+  &\qquad{}+\sum_{i=1}^{l'}\overline\chi_{AA'BB'C_i'}{}^{D'}
+    \alpha_{C_1\cdots C_lC_1'\cdots D'\cdots C_{l'}'}.
+  \tag{13.2.13}\label{eq:13.2.13}
+\end{align}
+The generalization of equation~\eqref{eq:13.2.13} to spinorial tensor fields with
+\lq\lq up indices\rq\rq\ is easily obtained by raising indices on both sides of
+equation~\eqref{eq:13.2.13} with \(\epsilon^{EC}\) and
+\(\overline\epsilon^{E'C'}\).
+
+The antisymmetry of \(R_{abcd}\) in its last two indices implies via
+equations~\eqref{eq:13.2.12} and~\eqref{eq:13.1.46} that
+\(\chi_{AA'BB'CD}\) is symmetric in \(C\) and \(D\). Since \(R_{abcd}\) is
+antisymmetric in its first two indices, the argument which led to
+equation~\eqref{eq:13.1.50} implies further that \(\chi_{AA'BB'CD}\) can be
+expressed in the form
+\begin{equation}
+  \chi_{AA'BB'CD}
+  =\Lambda_{ABCD}\overline\epsilon_{A'B'}
+   +\Phi_{A'B'CD}\epsilon_{AB},
+  \tag{13.2.14}\label{eq:13.2.14}
+\end{equation}
+where
+\begin{equation}
+  \Lambda_{ABCD}=\Lambda_{(AB)(CD)}
+  \tag{13.2.15}\label{eq:13.2.15}
+\end{equation}
+and
+\begin{equation}
+  \Phi_{A'B'CD}=\Phi_{(A'B')(CD)}.
+  \tag{13.2.16}\label{eq:13.2.16}
+\end{equation}
+Substituting these results in equation~\eqref{eq:13.2.12}, we find that the
+Riemann tensor symmetry \(R_{abcd}=R_{cdab}\) implies that \(\Phi_{A'B'CD}\) is
+real:
+\begin{equation}
+  \overline\Phi_{ABC'D'}=\Phi_{C'D'AB},
+  \tag{13.2.17}\label{eq:13.2.17}
+\end{equation}
+and \(\Lambda_{ABCD}\) satisfies
+\begin{equation}
+  \Lambda_{ABCD}=\Lambda_{CDAB}.
+  \tag{13.2.18}\label{eq:13.2.18}
+\end{equation}
+Because of equation~\eqref{eq:13.2.18},
+\(\epsilon^{AC}\Lambda_{ABCD}\) is antisymmetric in \(B\) and \(D\) and hence must
+be a multiple of \(\epsilon_{BD}\). We define \(\Psi_{ABCD}\) by
+\begin{equation}
+  \Psi_{ABCD}
+  =\Lambda_{ABCD}-\Lambda(\epsilon_{AC}\epsilon_{BD}+\epsilon_{BC}\epsilon_{AD}),
+  \tag{13.2.19}\label{eq:13.2.19}
+\end{equation}
+where
+\begin{equation}
+  \Lambda=\frac16\epsilon^{AC}\epsilon^{BD}\Lambda_{ABCD}.
+  \tag{13.2.20}\label{eq:13.2.20}
+\end{equation}
+Then by construction \(\Psi_{ABCD}\) satisfies
+\begin{equation}
+  \epsilon^{AC}\Psi_{ABCD}=0.
+  \tag{13.2.21}\label{eq:13.2.21}
+\end{equation}
+Together with the other symmetries of \(\Lambda_{ABCD}\), this implies that
+\(\Psi_{ABCD}\) is totally symmetric,
+\begin{equation}
+  \Psi_{ABCD}=\Psi_{(ABCD)}.
+  \tag{13.2.22}\label{eq:13.2.22}
+\end{equation}
+Finally, a calculation using equation~\eqref{eq:13.1.36} establishes that the
+Riemann tensor symmetry \(R_{a[bcd]}=0\) implies the reality of \(\Lambda\),
+\begin{equation}
+  \overline\Lambda=\Lambda.
+  \tag{13.2.23}\label{eq:13.2.23}
+\end{equation}
+
+Thus, we have found that
+\begin{equation}
+  \chi_{AA'BB'CD}
+  =\Psi_{ABCD}\overline\epsilon_{A'B'}
+   +\Phi_{A'B'CD}\epsilon_{AB}
+   +\Lambda(\epsilon_{AC}\epsilon_{BD}+\epsilon_{BC}\epsilon_{AD})
+    \overline\epsilon_{A'B'},
+  \tag{13.2.24}\label{eq:13.2.24}
+\end{equation}
+and hence we have obtained the following spinorial decomposition of the Riemann
+tensor:
+\begin{align}
+  R_{AA'BB'CC'DD'}
+  ={}&\Psi_{ABCD}\overline\epsilon_{A'B'}\overline\epsilon_{C'D'}
+    +\Phi_{A'B'CD}\epsilon_{AB}\overline\epsilon_{C'D'}\notag\\
+   &{}+\Lambda(\epsilon_{AC}\epsilon_{BD}+\epsilon_{BC}\epsilon_{AD})
+      \overline\epsilon_{A'B'}\overline\epsilon_{C'D'}
+    +\text{C.C.},
+  \tag{13.2.25}\label{eq:13.2.25}
+\end{align}
+where C.C.\ denotes the complex conjugate of the preceding terms. To obtain the
+Ricci tensor, we contract over \(B\) and \(D\) and over \(B'\) and \(D'\). We obtain
+\begin{equation}
+  R_{AA'CC'}=-2\Phi_{A'C'AC}
+    +6\Lambda\overline\epsilon_{A'C'}\epsilon_{AC}.
+  \tag{13.2.26}\label{eq:13.2.26}
+\end{equation}
+This shows that \(-2\Phi_{A'C'AC}\) is just the spinor equivalent of the trace-free
+Ricci tensor \(R_{ab}+\frac14Rg_{ab}\), where now we define
+\(R=-R_{ab}g^{ab}\) in order to compensate for our change in metric signature and
+thereby agree with our previous definition given in chapter~3. (The definitions of
+\(R_{abcd}\) and \(R_{ab}\) are unaffected by the change of metric signature made
+in this chapter.) Furthermore, equation~\eqref{eq:13.2.26} shows that
+\(\Lambda=-R/24\). Using these results and comparing the decomposition
+\eqref{eq:13.2.25} with that of~(3.2.28), we find that the spinor equivalent,
+\(C_{AA'BB'CC'DD'}\), of the Weyl tensor \(C_{abcd}\) is simply
+\begin{equation}
+  C_{AA'BB'CC'DD'}
+  =\Psi_{ABCD}\overline\epsilon_{A'B'}\overline\epsilon_{C'D'}
+   +\overline\Psi_{A'B'C'D'}\epsilon_{AB}\epsilon_{CD}.
+  \tag{13.2.27}\label{eq:13.2.27}
+\end{equation}
+We refer to \(\Psi_{ABCD}\) as the \emph{Weyl spinor}.
+
+The decomposition~\eqref{eq:13.2.24} of \(\chi_{AA'BB'C}{}^D\) allows us to
+reexpress equation~\eqref{eq:13.2.11} in such a way as to separate the effect of
+Ricci and Weyl curvature on spinors. If we contract equation~\eqref{eq:13.2.11}
+with \(\epsilon^{AB}\), we find
+\begin{equation}
+  \nabla_{(A'}{}^A\nabla_{B')A}\alpha_C
+  =\Phi_{A'B'C}{}^D\alpha_D,
+  \tag{13.2.28}\label{eq:13.2.28}
+\end{equation}
+where we used the identity~\eqref{eq:13.1.46} to obtain the left-hand side of this
+equation and formula~\eqref{eq:13.2.24} to obtain the right-hand side. On the other
+hand, if we contract equation~\eqref{eq:13.2.11} with
+\(\overline\epsilon^{A'B'}\), we get
+\begin{equation}
+  \nabla_{A'(A}\nabla_{B)}{}^{A'}\alpha_C
+  =\Lambda_{ABC}{}^D\alpha_D
+  =\Psi_{ABC}{}^D\alpha_D-2\Lambda\epsilon_{C(A}\alpha_{B)}.
+  \tag{13.2.29}\label{eq:13.2.29}
+\end{equation}
+The two equations~\eqref{eq:13.2.28} and~\eqref{eq:13.2.29} are equivalent to
+equation~\eqref{eq:13.2.11}. For future reference, we note that the generalization
+of equation~\eqref{eq:13.2.29} to an \(n\) index spinor
+\(\phi_{A_1\cdots A_n}\) is
+\begin{align}
+  \nabla_{A'(A}\nabla_{B)}{}^{A'}\phi_{C_1\cdots C_n}
+  ={}&\sum_{i=1}^n\bigl\{
+    \Psi_{ABC_i}{}^D\phi_{C_1\cdots D\cdots C_n}\notag\\
+   &\qquad{}-2\Lambda\epsilon_{C_i(A}
+     \phi_{C_1\cdots C_{i-1}B)C_{i+1}\cdots C_n}
+    \bigr\}.
+  \tag{13.2.30}\label{eq:13.2.30}
+\end{align}
+Note also that the general identity~\eqref{eq:13.1.52} implies that
+\begin{equation}
+  \nabla_{A'[A}\nabla_{B]}{}^{A'}=\frac12\epsilon_{AB}\Box,
+  \tag{13.2.31}\label{eq:13.2.31}
+\end{equation}
+where \(\Box=\nabla_{AA'}\nabla^{AA'}\).
+
+We now are in a position to explain the spinor motivation of the Newman--Penrose
+(1962) formalism mentioned in section~3.4. Instead of choosing an orthonormal basis
+of the tangent space at each point, we choose a basis
+\(\xi_0^A=o^A,\ \xi_1^A=\iota^A\) of spinor space at each point, normalized so that
+\begin{equation}
+  o_A\iota^A=1.
+  \tag{13.2.32}\label{eq:13.2.32}
+\end{equation}
+Instead of defining the 24 real Ricci rotation coefficients by equation~(3.4.14), we
+define the 12 complex \emph{spin coefficients} by
+\begin{equation}
+  \gamma_{\Gamma\Delta'\Sigma\Lambda}
+  =(\xi_\Gamma)^A(\overline\xi_{\Delta'})^{A'}(\xi_\Sigma)_B
+    \nabla_{AA'}(\xi_\Lambda)^B.
+  \tag{13.2.33}\label{eq:13.2.33}
+\end{equation}
+Here \(\Gamma,\Delta',\Sigma,\Lambda\) take the values 0, 1 and using the Leibniz
+rule and equation~\eqref{eq:13.2.32} one verifies that
+\(\gamma_{\Gamma\Delta'\Sigma\Lambda}\) is symmetric in \(\Sigma\) and \(\Lambda\),
+so equation~\eqref{eq:13.2.33} indeed defines 12 independent complex quantities.
+For the specific notation customarily used for each spin coefficient, see Newman and
+Penrose (1962). Finally, instead of using equation~(3.4.17) to express the tetrad
+basis components of the Riemann tensor in terms of the Ricci rotation coefficients,
+we use equations~\eqref{eq:13.2.11} and~\eqref{eq:13.2.24} to express the spinor
+basis components of \(\Psi_{ABCD}\), \(\Phi_{A'B'CD}\), and \(\Lambda\) in terms of
+the spin coefficients. In this way, we obtain equations equivalent to
+equation~(3.4.21) of chapter~3, but the explicit form of these equations written out
+term by term (see eq.~[4.2] of Newman and Penrose 1962) is far simpler in appearance
+than equation~(3.4.21) would be if a separate letter were used for each Ricci
+rotation coefficient and each curvature component.
+
+How can one evaluate the spin coefficients defined by equation~\eqref{eq:13.2.33}?
+More generally, how does one compute derivatives, \(\nabla_{AA'}\), of arbitrary
+spinorial tensors? Recall that the spinor derivative operator \(\nabla_{AA'}\)
+corresponding to the tensor derivative operator \(\nabla_a\) satisfying
+\(\nabla_a g_{bc}=0\) is the only sensible derivative operator for spinors, so no
+analog of an \lq\lq ordinary derivative\rq\rq\ operator \(\partial_{AA'}\) exists.
+Thus, there is no analog for spinors of the coordinate basis methods used for
+tensors. However, we can
+evaluate the spin coefficients~\eqref{eq:13.2.33} by using the formula (Friedman,
+unpublished)
+\begin{equation}
+  \gamma_{AA'\Sigma\Lambda}
+  \equiv(\xi_\Sigma)_B\nabla_{AA'}(\xi_\Lambda)^B
+  =\frac12\sum_{\Gamma',\Delta'=0}^1
+    \overline\epsilon^{\Gamma'\Delta'}(\overline\xi_{\Gamma'})_{B'}
+    (\xi_\Sigma)_B\nabla_{AA'}
+    \bigl[(\xi_\Lambda)^B(\overline\xi_{\Delta'})^{B'}\bigr].
+  % SOURCE ERRATUM: printed tag (10.2.34); corrected to (13.2.34).
+  \tag{13.2.34}\label{eq:13.2.34}
+\end{equation}
+The term in square brackets is a vector quantity, i.e.,
+\begin{equation}
+  l^{AA'}=\iota^A\overline\iota^{A'},
+  \tag{13.2.35}\label{eq:13.2.35}
+\end{equation}
+and
+\begin{equation}
+  n^{AA'}=o^A\overline o^{A'}
+  \tag{13.2.36}\label{eq:13.2.36}
+\end{equation}
+are null vectors, while
+\begin{equation}
+  m^{AA'}=\iota^A\overline o^{A'}
+  \tag{13.2.37}\label{eq:13.2.37}
+\end{equation}
+and
+\begin{equation}
+  \overline m^{AA'}=o^A\overline\iota^{A'}
+  \tag{13.2.38}\label{eq:13.2.38}
+\end{equation}
+are (complex) linear combinations of the spacelike unit vectors
+\begin{equation}
+  x^{AA'}=\frac{1}{\sqrt2}
+    \bigl(\overline\iota^{A'}o^A+\iota^A\overline o^{A'}\bigr),
+  \tag{13.2.39}\label{eq:13.2.39}
+\end{equation}
+\begin{equation}
+  y^{AA'}=\frac{\ii}{\sqrt2}
+    \bigl(\overline\iota^{A'}o^A-\iota^A\overline o^{A'}\bigr).
+  \tag{13.2.40}\label{eq:13.2.40}
+\end{equation}
+Thus, the spin coefficients can be evaluated in terms of
+\(\nabla_a l^b\), \(\nabla_a n^b\), \(\nabla_a x^b\), and \(\nabla_a y^b\), which
+can be calculated by standard methods. Indeed, the entire spinor calculus can be
+reexpressed as a tetrad calculus using the complex null tetrad
+\(l^a,n^a,m^a,\overline m^a\). Once the spin coefficients have been found, the
+derivative of an arbitrary spinorial tensor field \(\psi\) can be evaluated by first
+expanding \(\psi\) in a basis formed out of \(\iota^A,o^A\) and their complex
+conjugates. Then, using the Leibniz rule, we can express \(\nabla\psi\) in terms of
+derivatives of the (scalar) basis components and the spin coefficients.
+
+We illustrate, now, the utility of spinor methods by deriving the algebraic
+classification of the Weyl tensor (Penrose 1960). In section~7.3 we asserted that in
+algebraically general spacetimes the Weyl tensor admits four distinct principal null
+directions satisfying equation~(7.3.1), whereas in algebraically special spacetimes
+some of these null directions coincide and satisfy the stronger conditions listed in
+Table~7.1. We did not attempt to prove these assertions in chapter~7 because a
+direct proof by tensor methods is relatively difficult. However, the algebraic
+classification of the Weyl tensor by spinor methods is remarkably simple. Consider
+the Weyl spinor \(\Psi_{ABCD}\) and fix a basis \(\iota^A,o^A\) of spinor space with
+\(o_A\iota^A=1\) and with \(\iota^A\) chosen so that
+\begin{equation}
+  \Psi_{ABCD}\iota^A\iota^B\iota^C\iota^D=1.
+  \tag{13.2.41}\label{eq:13.2.41}
+\end{equation}
+Let \(z\in\mathbb C\), set
+\begin{equation}
+  \alpha^A=z\iota^A+o^A,
+  \tag{13.2.42}\label{eq:13.2.42}
+\end{equation}
+and consider the quantity
+\begin{equation}
+  f(z)=\Psi_{ABCD}\alpha^A\alpha^B\alpha^C\alpha^D.
+  \tag{13.2.43}\label{eq:13.2.43}
+\end{equation}
+Since \(f\) is a fourth degree polynomial in \(z\) and by
+equation~\eqref{eq:13.2.41} the coefficient of \(z^4\) is equal to 1, we can factor
+it into the form
+\begin{equation}
+  f(z)=(z-c_1)(z-c_2)(z-c_3)(z-c_4).
+  \tag{13.2.44}\label{eq:13.2.44}
+\end{equation}
+Now, for \(i=1,2,3,4\), let
+\begin{equation}
+  (\kappa_i)^A=o^A+c_i\iota^A.
+  \tag{13.2.45}\label{eq:13.2.45}
+\end{equation}
+Then we have
+\begin{equation}
+  z-c_i=(\kappa_i)_A\alpha^A,
+  \tag{13.2.46}\label{eq:13.2.46}
+\end{equation}
+and hence we have established that there exist four spinors \((\kappa_i)^A\), called
+\emph{principal spinors}, such that the equation
+\begin{equation}
+  \Psi_{ABCD}\alpha^A\alpha^B\alpha^C\alpha^D
+  =(\kappa_1)_A(\kappa_2)_B(\kappa_3)_C(\kappa_4)_D
+    \alpha^A\alpha^B\alpha^C\alpha^D
+  \tag{13.2.47}\label{eq:13.2.47}
+\end{equation}
+holds for all \(\alpha^A\) of the form~\eqref{eq:13.2.42}, and, consequently, for
+all spinors \(\alpha^A\). However, since the Weyl spinor is totally symmetric (see
+eq.~[13.2.22]), this can be true if and only if
+\begin{equation}
+  \Psi_{ABCD}
+  =(\kappa_1)_{(A}(\kappa_2)_B(\kappa_3)_C(\kappa_4)_{D)}.
+  \tag{13.2.48}\label{eq:13.2.48}
+\end{equation}
+Thus, we obtain a general decomposition of the Weyl spinor as the symmetrized
+product of four principal spinors. Note that \(\kappa^A\) is a principal spinor if
+and only if
+\begin{equation}
+  \Psi_{ABCD}\kappa^A\kappa^B\kappa^C\kappa^D=0.
+  \tag{13.2.49}\label{eq:13.2.49}
+\end{equation}
+Furthermore, \(\kappa^A\) is 2, 3, or 4 times repeated---i.e., it appears 2, 3, or
+4 times in the decomposition~\eqref{eq:13.2.48}---if and only if, respectively,
+\begin{align}
+  \Psi_{ABCD}\kappa^A\kappa^B\kappa^C&=0
+  &&\text{(two times)}, \tag{13.2.50}\label{eq:13.2.50}\\
+  \Psi_{ABCD}\kappa^A\kappa^B&=0
+  &&\text{(three times)}, \tag{13.2.51}\label{eq:13.2.51}\\
+  \Psi_{ABCD}\kappa^A&=0
+  &&\text{(four times)}. \tag{13.2.52}\label{eq:13.2.52}
+\end{align}
+If \(\kappa^A\) is a principal spinor, the null vector
+\begin{equation}
+  k^{AA'}=\kappa^A\overline\kappa^{A'}
+  \tag{13.2.53}\label{eq:13.2.53}
+\end{equation}
+is called a principal null vector. The conditions~\eqref{eq:13.2.49}--\eqref{eq:13.2.52}
+on \(\kappa^A\) now can be translated to the conditions on \(k^a\) listed in
+Table~7.1 (problem~5). Thus, we obtain the algebraic classification of
+section~7.3.
+
+We conclude this section by examining the generalization to curved spacetime of the
+equations in Minkowski spacetime for fields of mass \(m\) and spin \(s\). The most
+natural generalization of these equations is obtained by the \lq\lq minimal
+coupling\rq\rq\ prescription of replacing \(\partial_{AA'}\) everywhere by
+\(\nabla_{AA'}\). However, for \(m>0\), this prescription gives inequivalent
+results when applied to equation~\eqref{eq:13.1.59} as opposed to
+equations~\eqref{eq:13.1.60} and~\eqref{eq:13.1.61}. The curved spacetime version
+of equation~\eqref{eq:13.1.59} has a well posed initial value formulation for all
+\(s\), but the current~\eqref{eq:13.1.62} is no longer conserved. On the other
+hand, for \(s=\frac12\) the equations
+\begin{equation}
+  \nabla_{AA'}\phi^A=\frac{m}{\sqrt2}\sigma_{A'},
+  \tag{13.2.54}\label{eq:13.2.54}
+\end{equation}
+\begin{equation}
+  \nabla^{AA'}\sigma_{A'}=-\frac{m}{\sqrt2}\phi^A
+  \tag{13.2.55}\label{eq:13.2.55}
+\end{equation}
+have a well posed initial value formulation (see problem~8), and the
+current~\eqref{eq:13.1.62} generalized to curved spacetime is conserved. Hence, we
+adopt equations~\eqref{eq:13.2.54} and~\eqref{eq:13.2.55} as the generalization to
+curved spacetime for the Dirac equation. Similar results hold for \(s=1\). However,
+when \(s>1\), the curved spacetime versions of equations~\eqref{eq:13.1.60} and
+\eqref{eq:13.1.61} do not have a well posed initial value formulation (Buchdahl
+1962). Similarly, the curved spacetime spin \(s\) equation for \(m=0\),
+\begin{equation}
+  \nabla_{A_1A_1'}\phi^{A_1\cdots A_n}=0,
+  \tag{13.2.56}\label{eq:13.2.56}
+\end{equation}
+has a well posed initial value formulation for \(s=\frac12\) and for \(s=1\) (where
+it is equivalent to Maxwell's equations in curved spacetime), but, as we shall see
+below, it fails to have a well posed initial value formulation for \(s>1\). Thus, the
+natural curved spacetime generalization of the Minkowski equations for \(s>1\) do
+not yield physically viable models for fields in curved spacetime.
+
+To prove that equation~\eqref{eq:13.2.56} does not have a well posed initial value
+formulation when \(s>1\), we note first that equations~\eqref{eq:13.2.56}
+and~\eqref{eq:13.2.31} imply that \(\phi^{A_1\cdots A_n}\) must satisfy the wave
+equation,
+\begin{equation}
+  \Box\phi^{A_1\cdots A_n}=0.
+  \tag{13.2.57}\label{eq:13.2.57}
+\end{equation}
+However, unlike the situation in flat spacetime, if equation~\eqref{eq:13.2.57} is
+satisfied everywhere in spacetime and equation~\eqref{eq:13.2.56} holds on an
+initial surface, this does not imply that equation~\eqref{eq:13.2.56} holds
+everywhere. Indeed, contracting equation~\eqref{eq:13.2.56} with
+\(\nabla_{A_1'A_2}\) and using the fact that
+\(\phi^{A_1\cdots A_n}=\phi^{(A_1\cdots A_n)}\), we obtain
+\begin{align}
+  0
+  &={}\nabla_{A_1'A_2}\nabla_{A_1}{}^{A_1'}
+    \phi^{A_1A_2\cdots A_n}\notag\\
+  &={}\nabla_{A_1'(A_2}\nabla_{A_1)}{}^{A_1'}
+    \phi^{A_1A_2\cdots A_n}\notag\\
+  &={}(n-2)\Psi_{A_1A_2C(A_3}
+    \phi^{\lvert A_1A_2C\rvert A_4\cdots A_n)}.
+  \tag{13.2.58}\label{eq:13.2.58}
+\end{align}
+where equation~\eqref{eq:13.2.30} was used in the last line. Equation~\eqref{eq:13.2.58}
+is a purely algebraic condition which must be satisfied by
+\(\phi^{A_1\cdots A_n}\) throughout spacetime. Note that it is \emph{not}
+preserved under evolution by equation~\eqref{eq:13.2.57}; i.e., even if
+equation~\eqref{eq:13.2.58} and its time derivative hold for data for
+\(\phi^{A_1\cdots A_n}\) on an initial surface, there is no reason why
+equation~\eqref{eq:13.2.58} will hold for the solution of equation~\eqref{eq:13.2.57}
+evolved from these data. Thus, few, if any, solutions of equation~\eqref{eq:13.2.56}
+will exist in a general curved spacetime. Thus, for \(s>1\) there is no natural
+generalization to curved spacetime of the notion of a \lq\lq pure\rq\rq\ massless
+spin \(s\) field.

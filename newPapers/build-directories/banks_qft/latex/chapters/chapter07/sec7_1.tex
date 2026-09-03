@@ -1,0 +1,169 @@
+% BANKS-SOURCE: pdf=88 print=78 kind=section
+\subsection{Space-time symmetries}
+
+% BANKS-SOURCE: pdf=88 print=78 kind=prose
+The treatment of space-time symmetries is roughly similar to that of internal
+symmetries, but the differences are illuminating. Let's start from space-time
+translations. The first obvious difference is that the Lagrangian density is no
+longer invariant. Under translations,
+\begin{equation*}
+  \mathcal L(x)\longrightarrow\mathcal L(x+a),
+\end{equation*}
+or, infinitesimally,
+\begin{equation*}
+  \delta\mathcal L=a^\nu\partial_\nu\mathcal L.
+\end{equation*}
+
+As a consequence, when we (using the field vector notation) make an
+infinitesimal, space-time-dependent translation $x^\mu\to x^\mu+f^\mu(x)$,
+we use the passive field variation
+$\delta\phi_i=-f^\nu\partial_\nu\phi_i$ and find
+\begin{equation*}
+  \delta S=\int\dd^D x\left[
+  -\frac{\partial\mathcal L}{\partial\phi_i}f^\nu\partial_\nu\phi_i(x)
+  -\frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+  \partial_\mu\bigl(f^\nu\partial_\nu\phi_i(x)\bigr)\right].
+\end{equation*}
+Thus,
+\begin{align*}
+  \delta S
+  &=\int\dd^D x\,\partial_\mu f_\nu
+  \left[-\frac{\partial\mathcal L}{\partial(\partial_\mu\phi_i)}
+  \partial^\nu\phi_i(x)+\eta^{\mu\nu}\mathcal L\right]\\
+  &=\int\dd^D x\,\partial_\mu f_\nu T^{\mu\nu}(x).
+\end{align*}
+
+Thus, in classical mechanics, when the equations of motion are satisfied, the
+stress-energy tensor or energy-momentum tensor $T^{\mu\nu}(x)$ satisfies
+\begin{equation*}
+  \partial_\mu T^{\mu\nu}=0,
+\end{equation*}
+so that
+\begin{equation*}
+  P^\nu=\int\dd^{D-1}\mathbf x\,T^{0\nu}
+\end{equation*}
+is time-independent. $P^\nu$ is the energy momentum, also identified in the
+quantum theory as the operator that generates infinitesimal translations in
+space-time on the Hilbert space of states. The quantum analog of stress-energy
+conservation is the Ward identity
+\begin{equation*}
+\begin{aligned}
+\partial^x_\mu\langle0|T(T^{\mu\nu}(x)\phi_{i_1}(x_1)\cdots
+\phi_{i_n}(x_n))|0\rangle\\
+={}&+\ii\sum_k\delta^D(x-x_k)\langle0|T(\phi_{i_1}(x_1)\cdots\\
+&\qquad\partial^\nu\phi_{i_k}(x_k)\cdots\phi_{i_n}(x_n))|0\rangle.
+\end{aligned}
+\end{equation*}
+
+% BANKS-SOURCE: pdf=89 print=79 kind=prose
+As before, this is derived by implementing a change of variables in the
+path integral, replacing the fields by their values after a space-time-dependent
+translation, and then noting that the change of variables does not change the
+value of the functional integral.
+
+The fact that an infinitesimal space-time-dependent translation is actually a
+general infinitesimal coordinate transformation suggests that the conserved
+currents associated with Lorentz, or other, space-time symmetries will also be
+associated with the stress tensor. In fact, this is true, but only after we take
+into account the fact that Noether's definition of the stress tensor is somewhat
+ambiguous. In fact, it is easy to verify (see the problems) that the change
+\begin{equation*}
+  T^{\mu\nu}\longrightarrow T^{\mu\nu}+\partial_\lambda M^{\mu\nu\lambda},
+\end{equation*}
+where $M^{\mu\nu\lambda}=-M^{\lambda\nu\mu}$, changes neither the fact that
+the stress tensor is conserved nor the value of the translation generator,
+$P^\nu$.
+
+The easiest way to resolve this ambiguity is to consider the quantum field
+theory we are studying on a general space-time geometry, rather than sticking
+to flat Minkowski space. This is of course a good thing to do, because
+Einstein's theory of gravitation tells us that gravitation is nothing but curved
+space-time geometry, with the geometry determined by the matter in it. (To
+quote J.~A.~Wheeler: ``Space-time tells matter how to move, and matter tells
+space-time how to curve.'') The basic idea of curved space-time geometry is
+that the Minkowski metric $\eta_{\mu\nu}$, which determines infinitesimal
+space-time intervals between points, is replaced by a general symmetric tensor
+$g_{\mu\nu}(x)$, which is an invertible matrix with signature
+$(-,+,\ldots,+)$. It is easy to generalize the action for scalar and Maxwell fields
+simply by replacing $\eta_{\mu\nu}$ by $g_{\mu\nu}(x)$ and the volume element
+by
+\begin{equation*}
+  \dd^D x\longrightarrow\dd^D x\sqrt{-g},
+\end{equation*}
+where $g$ is the determinant of the metric. Spinor fields require a more
+involved discussion, which we will take up after we have understood non-abelian
+gauge theory and vector bundles.
+
+The scalar Lagrangian is
+\begin{equation*}
+  -\frac12\sqrt{-g}\left(g^{\mu\nu}\partial_\mu\phi\partial_\nu\phi+2V(\phi)\right),
+\end{equation*}
+while the Maxwell Lagrangian is
+\begin{equation*}
+  -\frac14\sqrt{-g}\,g^{\mu\lambda}g^{\nu\kappa}F_{\mu\nu}F_{\lambda\kappa}.
+\end{equation*}
+It is easy to see that, if we make a general coordinate transformation on the
+fields, as well as the transformation
+\begin{equation*}
+  g_{\mu\nu}(x)\longrightarrow g_{\lambda\kappa}(y(x))
+  \frac{\partial x^\lambda}{\partial y^\mu}
+  \frac{\partial x^\kappa}{\partial y^\nu},
+\end{equation*}
+then the action is invariant.
+
+% BANKS-SOURCE: pdf=90 print=80 kind=prose
+As a consequence
+\begin{equation*}
+  \int\dd^D x\sqrt{-g}\,\delta_f g_{\mu\nu}(x)T^{\mu\nu}(x)=0,
+\end{equation*}
+whenever the fields $\phi_i(x)$ satisfy the classical equations of motion.\footnote[3]{In
+the quantum theory, using by now familiar manipulations, this translates into
+a Ward--Takahashi (W--T) identity in which the insertion of the indicated
+variation into a Green function gives us the variation of the Green function
+under the transformation.} Here
+\begin{equation*}
+  T^{\mu\nu}(x)\equiv\frac{2}{\sqrt{-g}}\frac{\delta S}{\delta g_{\mu\nu}(x)},
+\end{equation*}
+and $\delta_f g_{\mu\nu}(x)$ is the variation of the metric under the
+infinitesimal coordinate transformation $x^\mu\to x^\mu+f^\mu(x)$. In the
+approximation where we neglect gravitational back reaction of the quantum fields
+on the metric, we are of course interested only in fixed background metrics.
+The W--T identities are only interesting when the coordinate transformations
+correspond to isometries of the metric, i.e. transformations that leave the form
+of the metric invariant. For Minkowski space this means Poincare transformations.
+The conformal-group statements in the following paragraph are specialized to
+$D=4$.
+Another interesting possibility is conformal isometries, where
+\begin{equation*}
+  \delta_f g_{\mu\nu}(x)=s(x)g_{\mu\nu}(x).
+\end{equation*}
+These are of interest if the quantum field theory is invariant under Weyl
+transformations of the metric, $g_{\mu\nu}(x)\to\Omega^2(x)g_{\mu\nu}(x)$.
+The conformal isometry group of Minkowski space is isomorphic to $SO(2,4)$.
+In addition to Poincare transformations, it contains scale transformations
+$x^\mu\to\lambda x^\mu$, for positive $\lambda$, and special conformal
+transformations, whose infinitesimal form is
+$\delta x^\mu=b^\mu x^2-2b^\nu x^\mu x_\nu$. Conformal invariance implies
+that $T^\mu{}_{\mu}$, the trace of the stress tensor, vanishes. It is also
+obvious that conformal transformations cannot be symmetries of a theory with a
+discrete mass spectrum, unless all the particle masses are zero.
+
+The stress tensor derived by variation with respect to the metric is symmetric.
+It is also conserved, as a consequence of translation invariance. This symmetric
+tensor (the Belinfante tensor) is equal to the Noether current only for
+translations for scalar fields. In general it differs from the Noether current
+by a divergence of an anti-symmetric tensor, the Noether ambiguity. Symmetry of
+the Belinfante tensor also implies that $\partial_\mu J^{\mu\nu\lambda}=0$,
+where
+\begin{equation*}
+  J^{\mu\nu\lambda}\equiv x^\nu T^{\mu\lambda}-x^\lambda T^{\mu\nu}.
+\end{equation*}
+The corresponding conserved charges
+\begin{equation*}
+  J^{\nu\lambda}=\int\dd^{D-1}\mathbf x\,J^{0\nu\lambda}
+\end{equation*}
+are the boost and angular-momentum generators. Note that the boost generators
+contain explicit time dependence, so that the conservation law does not imply
+that they commute with the Hamiltonian. Indeed, it should not because the
+commutation rules of the Poincare algebra say that the commutator of a boost
+generator with the Hamiltonian is a spatial momentum component.

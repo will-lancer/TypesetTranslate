@@ -1,0 +1,149 @@
+% BANKS-SOURCE: pdf=34 print=24 kind=section id=3.3
+\subsection{Perturbation theory}
+
+% BANKS-SOURCE: pdf=34 print=24 kind=prose
+The Euclidean formulation of field theory\footnote[7]{The idea of Euclidean field theory is due to Schwinger, and the rotation of contours in momentum space is called the Wick rotation.} leads to mathematical expressions whose properties are simpler to understand.
+Euclidean methods also turn out to be crucial for understanding field theory at finite
+temperature and quantum tunneling amplitudes. They are also central to numerical
+techniques (lattice field theory) for obtaining non-perturbative solutions to field theory.
+So we will generally take the attitude that a field theory is defined by analytic continuation
+of a Euclidean functional integral. We simply write the formal expression for the Euclidean
+action and integrate $\ee^{-S_E}\phi(x_1)\ldots\phi(x_n)$ over fields in Euclidean space, and then
+analytically continue the result to get time-ordered products of Lorentzian fields.
+
+In this way, we obtain the definition of the generating functional of Euclidean Green
+functions, also known as Schwinger functions:
+
+% BANKS-SOURCE: pdf=34 print=24 kind=equation id=3.24
+\begin{equation}
+Z_E[J]=\frac{\int[d\phi]\ee^{-S_E[\phi]+\ii\int\dd^D x\,\phi(x)J(x)}}{\int[d\phi]\ee^{-S_E[\phi]}},
+\label{eq:3.24}
+\end{equation}
+
+which has the form of the characteristic function of a probability distribution. Note
+that in writing this formula we have also analytically continued the source function $J$
+to $\ii J$. If we refrain from doing this we obtain the Boltzmann formula for the partition
+function of a classical statistical system in an external field $J$. The ``potential'' of the
+statistical system is the Euclidean action,
+
+% BANKS-SOURCE: pdf=34 print=24 kind=equation id=3.25
+\begin{equation}
+S_E\equiv\int\dd^D x_E\left[\frac12(\partial_E\phi)^2+V(\phi)\right],
+\label{eq:3.25}
+\end{equation}
+
+where we now integrate over $D$-dimensional Euclidean space, rather than Minkowski
+space-time. In the standard four-dimensional application, $D=4$. This profound analogy between QFT and classical statistical mechanics has
+led to an enormously successful cross fertilization between the two fields.
+
+% BANKS-SOURCE: pdf=34 print=24 kind=prose
+In problems amenable to perturbation theory, the non-quadratic part of the potential
+is multiplied by a small dimensionless parameter $g$. The classical action has the form
+$S=S_0-g\int\dd^D x\,V(\phi(x))$, where $S_0$ is the action of a free massive field. Therefore, we can
+write a power-series expansion for $Z[J]\equiv I[J]/I[0]$:
+
+% BANKS-SOURCE: pdf=34 print=24 kind=equation id=3.26
+\begin{equation}
+I[J]=\sum_{n=0}^{\infty}\frac{(-\ii g)^n}{n!}\int[d\phi]\ee^{\ii S_0+\ii\int\dd^D x\,\phi J}\prod_{r=1}^n\left[\int\dd^D x_r\,V(x_r)\right].
+\label{eq:3.26}
+\end{equation}
+
+If $V$ has a power-series expansion in $\phi$, then every integral that is required in order
+to evaluate this formula has the form
+
+% BANKS-SOURCE: pdf=34 print=24 kind=display
+\[
+\int[d\phi]\ee^{\ii S_0}\phi(y_1)\ldots\phi(y_m).
+\]
+
+% BANKS-SOURCE: pdf=35 print=25 kind=prose
+The $\phi$s in this formula, which come from the same $V(x_i)$, will all have the same value
+of $y=x_i$, and we will integrate over the $x_i$ variables. When evaluating $Z[J]$, we expand
+both numerator and denominator. Then it is easy to see that every such integral in
+the expansion will be accompanied by the denominator $I_0$, the value of the functional
+integral at $J=g=0$. The generating functional for these normalized functional
+integrals is just $Z_0[J]=\langle0|T\ee^{\ii\int\phi J}|0\rangle$, the free-field vacuum persistence amplitude.
+\BanksImplicitHook{I-CH03-008}
+
+In free-field theory, we can either solve the (linear) SD equation directly or do the
+Gaussian functional integral to obtain
+
+% BANKS-SOURCE: pdf=35 print=25 kind=equation id=3.27
+\begin{equation}
+Z_0[J]=\ee^{-\frac12\int\dd^D x\,\dd^D y\,J(x)J(y)D_F(x-y)},
+\label{eq:3.27}
+\end{equation}
+
+where $D_F(x)$ is the Feynman Green function or vacuum expectation value of the time-
+ordered product of two free fields. It follows, by expanding out both the definition and
+the solution for $Z_0[J]$, that
+
+% BANKS-SOURCE: pdf=35 print=25 kind=equation id=3.28
+\begin{equation}
+\frac{\int[d\phi]\ee^{\ii S_0}\phi(y_1)\ldots\phi(y_m)}{\int[d\phi]\ee^{\ii S_0}}
+=\sum_{\text{pairs}}\prod D_F(y_i-y_j).
+\label{eq:3.28}
+\end{equation}
+
+This formula is called Wick's theorem. It leads to the following set of rules for
+perturbation theory, called Feynman rules.
+
+\begin{itemize}
+\item Write the interaction potential as a sum of monomials $V=\sum(v_k/k!)\phi^k$; its Lorentzian action contribution is $-g\int\dd^D x\,V$.
+\item A term in $n$th-order perturbation theory in $g$ will have contributions proportional
+to $v_{k_1}\ldots v_{k_n}$. We associate this with a diagram with $n$ vertices. The $i$th vertex has $k_i$
+lines coming out of it. These are called Feynman diagrams or Feynman graphs.
+\item Each line must be connected either to a line from another vertex or to an external
+source point. For a contribution to an $E$-point Green function, there will be $E$ such
+external lines. Lines connecting two vertices are called internal lines. The number of
+internal lines $I$ is given by $2I=\sum k_i-E$.
+\item Write a factor $D_F(y_i-y_j)$ for an internal line connecting two space-time points.
+\item Write a factor $D_F(y_i-x_a)J(x_a)$ for an external line.
+\item Integrate over all internal and external points. If one wants to directly compute
+individual Green functions, rather than the generating functional, omit the factors
+of $J(x_a)$ and the integral over the external points.
+\item We can easily generalize to interaction vertices like $\phi^2(\partial_\mu\phi)^2$, just letting the deriva-
+tives act on the appropriate argument of $D_F$. Similarly, it is easy to generalize these
+rules to theories of multiple scalar fields.
+\item A given Feynman diagram in $n$th order comes with a factor $(-\ii g)^n v_{k_1}\ldots v_{k_n}S_G$, where
+the combinatorial factor $S_G$ is a combination of the inverse factorials from the
+definition of $v_k$ and the \emph{number of times a given graph can be obtained in the sum over
+all possible pairings (also called all possible contractions)}. $S_G$ is called the symmetry
+number of the graph, because it can be shown that it is equal to the inverse of the
+order of the group of geometrical symmetries of the graph. I have always found that
+the art of figuring out the geometrical symmetries is harder than reproducing $S_G$ by
+counting the number of contractions which give the graph. It's a matter of taste. An
+algorithm for doing the counting can be found in \cite{banks-ref-13}.
+\end{itemize}
+\BanksImplicitHook{I-CH03-009}
+\BanksImplicitHook{I-CH03-010}
+\BanksImplicitHook{I-CH03-011}
+
+% BANKS-SOURCE: pdf=36 print=26 kind=prose
+\begin{itemize}
+\item By Fourier transforming everything in sight, one can derive an equivalent set of rules
+in momentum space. These are somewhat easier to write down, because the Fourier
+transform $-\ii/(p^2+m^2-\ii\varepsilon)$ of $D_F$ is so simple. The rules involve integrating over
+the momenta of closed loops in the diagram, with measure $\dd^D p/(2\pi)^D$ (equivalently,
+integrating over all internal line momenta, with $(2\pi)^D\delta^D(\sum q_i)$ enforcing momentum
+conservation at each vertex; one momentum delta function of the sum over external
+momenta is left). Derivatives in the interaction turn into factors of momentum, but
+one must take care to make sure that one has the right sum of momenta in these
+factors.
+\item In Euclidean space, the rules are even easier. We replace the factor of $-\ii$ in $(-\ii g)^n$ by a
+minus sign, and drop the $\ii$ from each propagator. The Euclidean propagator is just
+$1/(p_E^2+m^2)$.
+\end{itemize}
+\BanksImplicitHook{I-CH03-012}
+
+It's extremely important for the reader to work out the derivation of these rules,
+following the outline we have supplied above.
+The Feynman rules for a large class of field theories, along with standard dia-
+grammatic conventions, are collected in Appendix D. There one can also find several
+examples of working out the combinatoric factors for individual graphs. This is proba-
+bly a good point in the exposition for students to stop and do a few exercises to convince
+themselves that they know how to set up the computation of Feynman graphs. If you
+go too far in this exercise you'll encounter the disturbing fact that most of the loop
+graphs are infinite. We won't learn how to tackle this problem, and what it means, until
+Chapter 9.
+\BanksImplicitHook{I-CH03-013}

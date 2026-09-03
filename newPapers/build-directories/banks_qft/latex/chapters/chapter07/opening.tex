@@ -1,0 +1,119 @@
+% BANKS-SOURCE: pdf=86 print=76 kind=chapter
+\BanksChapter{7}{Symmetries, Ward identities, and Nambu--Goldstone bosons}
+
+% BANKS-SOURCE: pdf=86 print=76 kind=prose
+Emmy Noether, one of the first great female mathematical physicists, proved a
+theorem central to the study of symmetries in classical and quantum physics.
+Noether's theorem was proved in the context of classical mechanics, but the
+path-integral formalism allows us to immediately generalize it to the quantum
+theory.
+
+Noether's theorem applies to groups of transformations that depend on a
+continuous parameter, also known as Lie groups.\footnote[1]{Before reading
+this section, the reader should consult Appendix E, and perhaps some of the
+references in \cite{banks-ref-1,banks-ref-2,banks-ref-3,banks-ref-4}.} In general, the group will have a number of independent
+continuous parameters (e.g. the Euler angles of the rotation group), but
+Noether's theorem concentrates on one parameter at a time.
+
+The classical Noether theorem states that any one-parameter group of global
+symmetries of the action leads to a conservation law. In order to discuss
+Noether's theorem in a general way we introduce a field vector $\phi_i$ that
+contains all components of all possible elementary fields in our theory. Using
+the condensed notation of the field vector, we write the infinitesimal variation
+of the fields under the symmetry as $\epsilon\,\delta_G\phi_i(x)$, where
+$\epsilon$ is the $(x$-independent) infinitesimal group parameter and
+$\delta_G\phi_i$ is the variation of the field vector under the symmetry
+transformation. Generally it will be a function of fields and their first
+derivatives, for an action that depends on at most first derivatives of the
+field. The statement of invariance of the action is
+\begin{equation*}
+  \delta_G S \equiv \int \dd^D x\,
+  \frac{\delta S}{\delta\phi_i(x)}\,\epsilon\,\delta_G\phi_i(x)=0.
+\end{equation*}
+Note that this holds whether or not the fields satisfy the equations of motion,
+but only for constant $\epsilon$.
+
+If $\epsilon$ is allowed to vary over space-time, the action is not usually
+invariant (unless we have a gauge symmetry, but, as we shall see, that situation
+is completely different). For an action depending only on first derivatives of
+the fields, the change in the action will be a linear functional of
+$\partial_\mu\epsilon$:
+\begin{equation*}
+  \delta_G S=\int\dd^D x\,\partial_\mu\epsilon\,J_N^\mu
+  =-\int\dd^D x\,\epsilon\,\partial_\mu J_N^\mu.
+\end{equation*}
+The first of these equalities defines the Noether current $J_N^\mu(x)$, while
+the second follows from the first if $\epsilon$ is chosen to vanish rapidly
+enough at infinity to justify integration by parts. The equation for variation
+of the action shows us that, if the fields satisfy the classical equations of
+motion, then the variation vanishes even for variable $\epsilon$.
+
+% BANKS-SOURCE: pdf=87 print=77 kind=prose
+Comparison with the last form of the Noether formula tells us that, when the
+fields are on shell, the current must be conserved. This is Emmy Noether's
+celebrated theorem.
+
+To derive the quantum version of this theorem in the path-integral formalism,
+one performs a change of variables in the numerator path integral for $Z[J]$,
+which has the form of a space-time-dependent symmetry transformation: viz.
+$\phi_i\to\phi_i+\epsilon(x)\delta_G\phi_i$. One assumes that the measure of
+integration $[\dd\phi]$ is invariant under this field redefinition.\footnote[2]{In
+cases where it is not, we have what is called a quantum anomaly in the
+symmetry, or an anomaly for short.} Using the fact that a change of variables
+does not change the value of an integral, we obtain, to first order in
+$\epsilon$,
+\begin{equation*}
+  0=\int[\dd\phi]e^{\ii S+\ii\int\dd^D x\,\phi_iJ_i}
+  \int\dd^D x\,\epsilon(x)
+  \left(\partial_\mu J_N^\mu+\delta_G\phi_iJ_i\right).
+\end{equation*}
+
+We will generally deal with theories in which the action of the symmetry group
+is linear in $\phi$, $\delta_G\phi_i=T_{ji}\phi_j$. The most common case of
+non-linear action is that of Nambu--Goldstone bosons, where the space of fields
+is a curved sub-manifold of a linear space on which the group acts linearly.
+This case can be subsumed under linear actions by coupling sources to the
+original linear fields and incorporating the sub-manifold constraint into the
+measure of the path integral. For linear action, we can write
+\begin{equation*}
+  T_{ji}\phi_jJ_i=\phi_i(T^T)_i{}^jJ_j,
+\end{equation*}
+which is the effect on the generating functional of an infinitesimal linear
+change of variables, $\delta J=T^T J$. If, when $\epsilon$ is constant, we can
+drop the term $\partial_\mu J^\mu$ (because it is the integral of a total
+divergence), then we derive the quantum version of Noether's theorem: $Z[J]$
+is invariant under transformations of $J$ inverse to those of $\phi$. The same
+is obviously true for the connected generating functional $W[J]$, while the
+1PI functional $\Gamma[\phi]$ is invariant under the original transformations
+on $\phi$. We could have derived this statement simply by making our change of
+variables with constant $\omega_a$. We have carried out the more general
+transformation in order to understand how the derivation could fail. As we
+will see, the failure, when it occurs, has to do with the fact that the integral
+of the divergence of the current does not vanish.
+
+\BanksImplicitHook{I-CH07-001}
+
+To see how this result is used, let's study the special case of scalar fields
+with an $O(n)$ internal rotation symmetry. The statement that $W[J]$ is
+invariant under rotations of $J$ is equivalent to the statement that the Green
+functions
+\begin{equation*}
+  \langle\phi^{a_1}(x_1)\cdots\phi^{a_k}(x_k)\rangle
+\end{equation*}
+are constructed from invariant tensors of the $O(n)$ group. These tensors are
+the Kronecker $\delta^{ab}$ and the Levi-Civita symbol
+$\epsilon^{a_1\ldots a_n}$. In particular, the one-point function vanishes,
+and the two-point function satisfies
+\begin{equation*}
+  \langle\phi^a(x)\phi^b(y)\rangle=\delta^{ab}G(x-y).
+\end{equation*}
+
+% BANKS-SOURCE: pdf=88 print=78 kind=prose
+On applying the Lehmann spectral representation, we conclude that the particles
+created from the vacuum by different components of the $\phi^a$ field all have
+the same mass: we have an $n$-fold-degenerate particle multiplet, as a
+consequence of the $O(n)$ symmetry. In the exercises, the diligent reader will
+employ the symmetry to constrain the properties of particle scattering
+amplitudes.
+
+\BanksImplicitHook{I-CH07-002}

@@ -1,0 +1,209 @@
+% BANKS-SOURCE: pdf=42 print=32 kind=section id=3.7
+\subsection{The scattering matrix and the LSZ formula}
+
+% BANKS-SOURCE: pdf=42 print=32 kind=prose
+Most of the real experimental data to which QFT can be applied are the results of
+scattering experiments. It is an experimental fact that there exist (approximately) stable
+single-particle states in the world, as well as states of multiple particles at large relative
+space-like distances, which behave, to a very good approximation, like free particles.
+Interactions fall off at large spatial separation, and the \emph{cluster property} of QFT provides
+a neat mathematical explanation for this \cite{banks-ref-16,banks-ref-17}. The cluster property states that, at
+large space-like separation, the connected parts of Green functions fall to zero. In
+perturbation theory, this follows from the falloff of a single Feynman propagator. If
+all particles are massive, the falloff is exponential, whereas if there is no mass gap we
+expect power-law falloff. In this case, a variety of behaviors is possible, and there is not
+always a scattering theory.
+
+The idea of scattering theory is to derive formulae for idealized amplitudes in which
+some number of widely separated particles come in from past infinity, interact, and
+go off to become a state of (possibly different) space-like separated particles in the
+asymptotic future. The central quantity one computes is the \emph{scattering} or $S$-matrix: the
+amplitude
+
+% BANKS-SOURCE: pdf=42 print=32 kind=display
+\[
+\langle \mathrm{out}\,f_1\ldots f_n\mid g_1\ldots g_m\,\mathrm{in}\rangle
+\]
+
+for $m$ particles with asymptotic wave functions $g_i$ to turn into $n$ particles with asymptotic
+wave functions $f_j$. The $g_i$ and $f_j$ run over complete sets of single free-particle states.
+
+Non-relativistic quantum mechanics has a well-developed scattering theory \cite{banks-ref-18,banks-ref-19}.
+In that theory one proves that the S-matrix for potential scattering is a \emph{partial isometry},
+a unitary transformation on a subspace (the scattering states) of the Hilbert space
+orthogonal to all bound states of the particles. The \emph{in} and \emph{out} states are two different
+bases for this subspace and the S-matrix is the transformation relating them. In QFT
+all bound states can be simply thought of as additional particles. So the entire Hilbert
+space will be spanned by scattering states, as long as we treat bound states as separate
+particles.
+
+The basic assumption of scattering theory is thus that the Hilbert space has two
+complete bases of states, each of which is isomorphic to the Fock space of some col-
+lection of free particles. A list of the masses and spins of the particles completely
+specifies the spectrum of the Hamiltonian. We have noted in Problem 2.3 how diffi-
+cult it is to discuss the eigenstates of an interacting quantum field theory, and claimed
+that the introduction of Green functions side-steps all these difficulties. The Lehmann--
+Symanzik--Zimmermann (LSZ) formula \cite{banks-ref-20} shows us how to find the masses and spins
+
+% BANKS-SOURCE: pdf=43 print=33 kind=prose
+of all single-particle states, and to compute the S-matrix, in terms of Green functions.
+To derive it, we assume the existence of a single-particle state of mass $m$ and spin $0$\footnote[10]{The extension to other spins is straightforward and we will not go into the details, but simply use the appropriate formulae when necessary.}.
+We also assume the existence of a local field $\Phi(x)$, such that
+
+% BANKS-SOURCE: pdf=43 print=33 kind=display
+\[
+\langle0|\Phi(x)|p\rangle=\sqrt{\frac{Z}{(2\pi)^{D-1} 2\omega_{\mathbf p}}}\ee^{+\ii p\mathbin{\cdot}x},
+\]
+
+with $Z\neq0$. The functional form of the matrix element follows from Lorentz invariance
+(prove it if you don't believe me). $\Phi$ might be proportional to the Lagrangian field of
+an interacting field theory, or it might be a complicated function of such fields. We will
+let $Z[J]$ denote the generating functional of Green functions of $\Phi$.
+\BanksImplicitHook{I-CH03-016}
+\BanksImplicitHook{I-CH03-015}
+
+Consider a source of the following form: $J=\sum_iJ^i_{\rm in}+\sum_jJ^j_{\rm out}$. Each component of
+this composite source is defined as follows:
+
+% BANKS-SOURCE: pdf=43 print=33 kind=display
+\[
+\int\dd^D x\,J^i_{\rm in}(x)\Phi(x)=\frac{\ii}{\sqrt Z}\epsilon^i_{\rm in}\lim_{t\to\infty}\int\dd^{D-1}\mathbf x\left(\Phi\,\partial_0\phi^{i*}_{\rm in}-\phi^{i*}_{\rm in}\,\partial_0\Phi\right).
+\]
+
+There is an analogous formula for the outgoing source. Here $\epsilon^i_{\rm in}$ is infinitesimal and
+all formulae are to be interpreted by expansion to lowest order in all the $\epsilon^i_{\rm in/out}$. $\phi^i_{\rm in}$
+is a normalizable, positive-energy solution of the KG equation. If $\Phi$ were a free field
+of mass $m$, this formula would just define the creation operator for a single-particle
+state with wave function $\phi^i_{\rm in}$, the spatial integral would be time-independent and the
+limit superfluous. For any local field $\Phi$, the source creates a state localized around
+an infinitely distant spatial point as $t\to\infty$. Furthermore, if we consider the matrix
+element of $\langle\eta|\int\dd^D x\,J(x)\Phi(x)|\Psi\rangle$ between states $|\Psi\rangle$ and $|\eta\rangle$ of fixed $D$-momentum, then, unless
+$(P^\mu_\Psi-P^\mu_\eta)^2=-m^2$, the limit will vanish. If we choose all of the incoming and outgoing
+wave functions\footnote[11]{The outgoing wave functions are negative-energy solutions of the KG equation, and we take the limit $t\to-\infty$, instead of $+\infty$.} to be localized around different asymptotic directions as $t\to\pm\infty$,
+then this operator acts just like an \emph{in} creation operator even in the interacting theory\footnote[12]{This is the \emph{assumption} that particle interactions fall off at large distances. It can be motivated/proven using certain plausible axioms about QFT \cite{banks-ref-21,banks-ref-22}.}.
+Similarly, the \emph{out} part of the source acts like a sum of annihilation operators. Since
+$Z[J]=\langle0|T\exp(+\ii\int\dd^D x\,J(x)\Phi(x))|0\rangle$, all the annihilation operators sit to the left of all of the
+creation operators. Thus, it is plausible that the generating functional with this source is
+nothing but the generating functional for the scattering matrix. That is, the coefficient of
+$\epsilon^1_{\rm in}\ldots\epsilon^m_{\rm in}\epsilon^1_{\rm out}\ldots\epsilon^n_{\rm out}$ in the expansion of $Z[J]$ for this source\footnote[13]{We emphasize that other terms in the expansion of the composite source have no particular use. They correspond to creating or annihilating multiple particles in exactly the same scattering state.} is the scattering-matrix
+element
+
+% BANKS-SOURCE: pdf=43 print=33 kind=display
+\[
+\langle \mathrm{out}\,f_1\ldots f_n\mid g_1\ldots g_m\,\mathrm{in}\rangle.
+\]
+
+% BANKS-SOURCE: pdf=44 print=34 kind=prose
+where the single-particle states $f_i$ and $g_j$ are defined by
+
+% BANKS-SOURCE: pdf=44 print=34 kind=display
+\[
+\phi^j_{\rm in}=\int\frac{\dd^{D-1}\mathbf p}{\sqrt{2\omega_{\mathbf p}(2\pi)^{D-1}}}\ee^{+\ii p\mathbin{\cdot}x}g_j(\mathbf p)
+\]
+
+and
+
+% BANKS-SOURCE: pdf=44 print=34 kind=display
+\[
+\phi^i_{\rm out}=\int\frac{\dd^{D-1}\mathbf p}{\sqrt{2\omega_{\mathbf p}(2\pi)^{D-1}}}\ee^{-\ii p\mathbin{\cdot}x}f_i(\mathbf p).
+\]
+
+Conventional time-dependent perturbation theory offers an alternative definition
+of the scattering matrix as the infinite-$T$ limit of the Dirac-picture evolution operator
+$U_D(T,-T)$, and it can be verified in all examples that this coincides with our definition
+in terms of $Z[J]$. More importantly, the LSZ formula can be massaged into a form
+that allows us to find particle masses and scattering amplitudes directly from Green
+functions. We first write
+
+% BANKS-SOURCE: pdf=44 print=34 kind=display
+\[
+\int\dd^D x\,J^i_{\rm in}(x)\Phi(x)=\ii\epsilon^i_{\rm in}\int\dd^D x\,\partial_0\left[\Phi\,\partial_0\phi^i_{\rm in}-\phi^i_{\rm in}\,\partial_0\Phi\right].
+\]
+
+This is not quite right. The boundary term at $t=-\infty$ gives what we want, but the
+term at $t=\infty$ contains a creation operator for a state localized in the future. However,
+if all of the final states are orthogonal to all of the initial states, this term just acts to
+the left on the vacuum, and vanishes. In the case where this is not true (the case of
+partially forward scattering) the LSZ formula we are about to write must be slightly
+modified. In practice, this modification is never of any consequence. Part of the forward-
+scattering amplitude is due to disconnected processes happening independently at large
+space-like separation. The rest can be obtained by analytic continuation from non-
+forward scattering. We now act with the outer time derivative on the KG scalar product,
+and exploit its Wronskian form and the fact that $\phi^i_{\rm in}$ satisfies the KG equation to
+write
+
+% BANKS-SOURCE: pdf=44 print=34 kind=display
+\[
+\int\dd^D x\,J^i_{\rm in}(x)\Phi(x)=\ii\int\dd^D x\left[(\nabla^2-m^2)\phi^i_{\rm in}\Phi-\partial_0^2\Phi\,\phi^i_{\rm in}\right]
+=\ii\int\dd^D x\,\phi^i_{\rm in}[\Box-m^2]\Phi.
+\]
+
+We can do a similar manipulation for all of the in and out sources. For outgoing
+particles, we want to pick up the creation operator rather than the annihilation operator,
+so we complex conjugate the source equation, and end up with the complex conjugate
+of the positive-energy outgoing wave function. The result is the LSZ formula for the
+$S$-matrix
+
+% BANKS-SOURCE: pdf=44 print=34 kind=display
+\[
+\begin{aligned}
+\langle \mathrm{out}\,f_1\ldots f_n\mid g_1\ldots g_m\,\mathrm{in}\rangle
+={}&\left(\frac{\ii}{\sqrt Z}\right)^{m+n}
+\int\prod_k\dd^D x_k\,\phi^k_{\rm in}(x_k)\prod_j\dd^D y_j\,(\phi^j_{\rm out})^*(y_j)\\
+&\quad\times\prod_k[\Box_{x_k}-m^2]\prod_j[\Box_{y_j}-m^2]\\
+&\quad\times\langle0|T\Phi(x_1)\ldots\Phi(x_m)\Phi(y_1)\ldots\Phi(y_n)|0\rangle.
+\end{aligned}
+\]
+
+% BANKS-SOURCE: pdf=45 print=35 kind=prose
+The product of differential operators includes one KG operator for each integration
+variable. It is conventional in scattering theory to replace the normalizable initial- and
+final-state wave packets by plane waves. As we shall see, this causes some trivial infinities
+to show up in cross sections, but they are easily dealt with. Recall again that the field
+$\Phi$ in the LSZ formula \emph{might} be an elementary field, $\phi$ in the Lagrangian, but need not
+be. All that is required is that it have a finite amplitude to create single-particle states,
+which is verified by finding a pole in its two-point function.
+
+The LSZ formula has two remarkable properties. The first is that it is symmet-
+ric between in and out states except for the fact that the out wave functions are
+negative-energy solutions and the in wave functions positive-energy solutions of the KG
+equation. This leads one to surmise that different scattering amplitudes (e.g. electron--
+electron scattering and electron--positron annihilation) are just analytic continuations
+of each other. These \emph{crossing symmetry} relations were discussed in a heuristic manner
+in the introduction. The hard part in proving them is the proof of analyticity \cite{banks-ref-23}.
+
+Secondly, in momentum space, the formula reads
+
+% BANKS-SOURCE: pdf=45 print=35 kind=display
+\[
+\begin{aligned}
+\langle \mathrm{out}\,q_1\ldots q_n\mid p_1\ldots p_m\,\mathrm{in}\rangle
+={}&\left(\frac{\ii}{\sqrt Z}\right)^{m+n}
+\prod_i\left[\sqrt{\frac{1}{2\omega_{\mathbf p_i}(2\pi)^{D-1}}(p_i^2+m^2)}\right]\\
+&\quad\times\prod_j\left[\sqrt{\frac{1}{2\omega_{\mathbf q_j}(2\pi)^{D-1}}(q_j^2+m^2)}\right]\\
+&\quad\times G_{n+m}(-q_1\ldots-q_n;p_1\ldots p_m).
+\end{aligned}
+\]
+
+$G_{n+m}$ is the Fourier transform of the time-ordered product of $n+m$ $\Phi$ fields. Note
+that for the outgoing states $q_i$ is the physical, positive-energy, $D$-momentum, but the
+Fourier transform is evaluated at negative-energy outgoing momenta. Because of trans-
+lation invariance, the Fourier transform contains a delta function of the sum of all its
+arguments, and because of the previous remark, this is just energy--momentum con-
+servation $\delta^D(\sum p_i-\sum q_j)$. When we square the amplitude to get a cross section, one
+of these momentum-space delta functions gives us $\delta^D(0)$, which is interpreted as the
+space-time volume. In a translation-invariant system, we want to compute the prob-
+ability per unit volume per unit time for a plane wave to interact. With normalizable
+wave packets, this infinity does not occur.
+
+The most remarkable part of this formula is that all the momenta are on mass shell
+and the formula contains what appears to be a product of zeros. One concludes that
+the S-matrix element will be zero unless the Green function has a single pole at the
+mass shell on each external leg. The connection between full connected Green func-
+tions and 1PI Green functions shows how easy it is for this to happen. The full Green
+functions are evaluated as tree diagrams whose vertices are 1PI functions and whose
+internal and external lines are full propagators. In momentum space, each external leg
+has a factor $W_2(p)$, the full connected two-point function. The Lehmann representa-
+tion shows that each of these Green functions has a simple pole, giving precisely the
+multiple-pole structure that we need, in order for the LSZ formula to predict a finite
+$S$-matrix.

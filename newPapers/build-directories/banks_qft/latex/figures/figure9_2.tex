@@ -1,0 +1,30 @@
+% BANKS-SOURCE: pdf=160 print=150 kind=figure id=9.2
+\begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round,
+  every node/.style={font=\scriptsize},
+  blob/.style={circle,draw,dash pattern=on 3.2pt off 3.2pt,inner sep=1pt},
+  leg/.style={dash pattern=on 3.2pt off 3.2pt},
+  prop/.style={dash pattern=on 3.2pt off 3.2pt}]
+  % Every vertex blob carries seven external legs: three on the left
+  % (150, 180, 210 degrees) and four on the right (43, 16, -16, -43).
+  % Left-hand side: the derivative of the n-point coefficient.
+  \node[blob,minimum size=1.45cm] (lhs) at (0,1.60)
+    {$\displaystyle\frac{\dd g_n}{\dd t}$};
+  \foreach \ang in {150,180,210} {\draw[leg] (lhs.\ang) -- ++(\ang:0.95);}
+  \foreach \ang in {43,16,-16,-43} {\draw[leg] (lhs.\ang) -- ++(\ang:0.95);}
+  \node at (2.35,1.60) {$=$};
+  % First term: two vertices joined by the shell propagator.
+  \node[blob,minimum size=1.30cm] (left)  at (3.90,1.60) {$g_k$};
+  \node[blob,minimum size=1.30cm] (right) at (6.85,1.60) {$g_{n-k}$};
+  \draw[prop] (left.0) -- (right.180);
+  \node[below] at (5.375,1.50) {$\partial_tK^{-1}$};
+  \foreach \ang in {150,180,210} {\draw[leg] (left.\ang) -- ++(\ang:0.95);}
+  \foreach \ang in {43,16,-16,-43} {\draw[leg] (right.\ang) -- ++(\ang:0.95);}
+  % Second term: a shell line closes back on the (n+2)-point vertex.
+  \node at (3.55,-1.35) {$+$};
+  \node[blob,minimum size=1.30cm] (loop) at (5.55,-1.35) {$g_{n+2}$};
+  \draw[prop] (loop.124) .. controls ++(124:1.00) and ++(52:1.00)
+    .. (loop.52);
+  \node[above] at (5.55,-0.12) {$\partial_tK^{-1}$};
+  \foreach \ang in {150,180,210} {\draw[leg] (loop.\ang) -- ++(\ang:0.95);}
+  \foreach \ang in {43,16,-16,-43} {\draw[leg] (loop.\ang) -- ++(\ang:0.95);}
+\end{tikzpicture}

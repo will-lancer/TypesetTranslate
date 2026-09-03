@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{exercise-edition}[2026/08/30 Wald GR exercise-edition helpers]
+
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\ExerciseEditorialNote}{%
+  \noindent\emph{These worked solutions are editorial additions. They are
+  not part of Wald's original text.}\par\medskip
+}
+
+\newcommand{\SupplementaryEditorialNote}{%
+  \noindent\emph{These supplementary problems and solutions were edited for
+  this edition. Each problem carries a source credit.}\par\medskip
+}
+
+\newcommand{\exerciseeditionsection}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+
+\newcommand{\chapterexercisehook}[1]{%
+  \input{exercises/chapter#1/wald-solutions.tex}%
+  \input{exercises/chapter#1/supplementary-exercises.tex}%
+  \input{exercises/chapter#1/supplementary-solutions.tex}%
+}
+
+\newcommand{\WaldSolution}[1]{%
+  \item[\textbf{W.\thesection.#1.}]%
+  \phantomsection\label{solution:W:\thesection:#1}%
+}
+
+\newcommand{\SupplementaryExercise}[4]{%
+  \item[\textbf{S.\thesection.#1.}]%
+  \phantomsection\label{exercise:S:\thesection:#1}%
+  \textbf{#2}\par
+  \noindent{\small\itshape #3}\par\smallskip
+  \expandafter\def\csname exercise@source@\thesection @#1\endcsname{#4}%
+}
+
+\newcommand{\SupplementarySolution}[2]{%
+  \item[\textbf{S.\thesection.#1.}]%
+  \phantomsection\label{solution:S:\thesection:#1}%
+  \textbf{#2}\par\smallskip
+}

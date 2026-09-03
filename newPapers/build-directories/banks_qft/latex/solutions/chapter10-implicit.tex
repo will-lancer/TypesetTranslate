@@ -1,0 +1,1229 @@
+\begin{bankssolutions}{Solutions to implicit exercises for Chapter 10}
+
+\BanksImplicitSolution{I-CH10-001}
+The Lagrangian and its canonical momentum are
+\[
+  L=\frac1{g^2}\left(\frac12\dot q^i\dot q^i-V(q)\right),
+  \qquad
+  \Pi_i=\frac{\partial L}{\partial\dot q^i}=\frac{\dot q_i}{g^2}.
+\]
+Consequently $\dot q_i=g^2\Pi_i$, and the Legendre transform gives
+\[
+\begin{aligned}
+  H&=\Pi_i\dot q^i-L\\
+   &=g^2\Pi_i\Pi_i-
+     \left(\frac{g^2}{2}\Pi_i\Pi_i-\frac{V}{g^2}\right)
+    =\frac{g^2}{2}\Pi_i\Pi_i+\frac{V}{g^2}.
+\end{aligned}
+\]
+For a flat configuration-space metric, coordinate quantization sends
+$\Pi_i$ to $-\ii\partial_i$.  There is then no ordering ambiguity, and
+$H\psi=E\psi$ becomes
+\[
+  \left[-\frac{g^2}{2}\partial_i\partial_i+\frac{V}{g^2}\right]\psi
+  =E\psi,
+\]
+which is Eq.~(10.1).
+
+The apparent momentum mismatch in the WKB discussion comes from the definition
+of the phase.  Put $\psi=A\exp(\ii W/g^2)$ and suppress derivatives of $A$ for
+the leading-order check.  Direct differentiation gives
+\[
+  -\frac{g^2}{2}\partial_i\partial_i\ee^{\ii W/g^2}
+  =\left[\frac{(\partial_iW)^2}{2g^2}
+    -\frac{\ii}{2}\partial_i\partial_iW\right]
+    \ee^{\ii W/g^2}.
+\]
+After multiplication of the Schrödinger equation by $g^2$, its leading term is
+\[
+  \frac12(\partial_iW)^2+V=\mathcal E,
+  \qquad \mathcal E\equiv g^2E.
+\]
+The physical Hamilton principal function is $W/g^2$.  Hence
+\[
+  \Pi_i=\frac{\partial}{\partial q^i}\left(\frac{W}{g^2}\right)
+  =\frac{\partial_iW}{g^2},
+  \qquad
+  \dot q_i=g^2\Pi_i=\partial_iW.
+\]
+Thus Banks's momentum in the reduced Hamilton--Jacobi equation is the velocity
+$\dot q_i$; the canonical momentum of the original action is
+$\dot q_i/g^2$.  With the chapter's convention, $q$, $t$, $V$, $E$, and $g^2$
+are dimensionless.  The kinetic and potential terms in $H$ carry the same
+overall semiclassical scaling.
+
+\BanksImplicitSolution{I-CH10-002}
+The first variation of the Euclidean action yields
+\[
+  \frac{\delta S_E}{\delta x(t)}=-\ddot x+V'(x).
+\]
+Every translated configuration $X_{t_1}(t)=X(t+t_1)$ therefore satisfies
+\[
+  -\ddot X(t+t_1)+V'(X(t+t_1))=0.
+\]
+Differentiate with respect to $t_1$ and then set $t_1=0$:
+\[
+  -\frac{\dd^2}{\dd t^2}\dot X(t)+V''(X(t))\dot X(t)=0.
+\]
+This is precisely $\mathcal M\dot X=0$.
+
+There is also a geometric derivation.  The map
+$t_1\mapsto X_{t_1}$ traces a curve in configuration space, and its tangent is
+\[
+  \frac{\partial X_{t_1}(t)}{\partial t_1}\bigg|_{t_1=0}=\dot X(t).
+\]
+The action is constant on that curve.  Its second derivative along the tangent
+therefore vanishes at a stationary point, so the Hessian has the same tangent
+in its kernel.
+
+If $X$ approaches nondegenerate minima $x_\pm$, then linearization gives
+\[
+  X(t)-x_\pm=O(\ee^{-\omega_\pm|t|}),
+  \qquad \omega_\pm^2=V''(x_\pm)>0.
+\]
+The derivative has the same exponential decay.  It follows that
+$\int\dd t\,\dot X^2$ is finite, which makes the tangent a normalizable
+fluctuation.
+
+\BanksImplicitSolution{I-CH10-003}
+At a point $X(a)$ on the saddle curve, draw the unit tangent
+$T=X'(a)$ and the mutually orthogonal normals $e_A$.  Nearby points lie on
+short normal segments $\eta^Ae_A$; neighboring segments tilt as the curve
+bends.  This tilt is the source of the first curvature correction to the
+Jacobian.
+
+Because $a$ is arc length, $T\cdot T=1$.  Write
+\[
+  \kappa_A=T'\cdot e_A,
+  \qquad
+  \omega_{AB}=e_A'\cdot e_B=-\omega_{BA}.
+\]
+Differentiating $T\cdot e_A=0$ gives $T\cdot e_A'=-\kappa_A$.  The coordinate
+vectors are
+\[
+  \partial_a y=T+\eta^Ae_A',
+  \qquad
+  \partial_{\eta^A}y=e_A.
+\]
+Their metric therefore has the expansion
+\[
+\begin{aligned}
+  g_{aa}&=1-2\kappa_A\eta^A+O(\eta^2),\\
+  g_{aA}&=\eta^B\omega_{BA}+O(\eta^2),\\
+  g_{AB}&=\delta_{AB}.
+\end{aligned}
+\]
+Thus
+\[
+  \sqrt{\det g}=1-\kappa_A\eta^A+O(\eta^2),
+  \qquad
+  \dd^Ny=\dd a\prod_A\dd\eta^A
+  \left[1-\kappa_A\eta^A+O(\eta^2)\right].
+\]
+Exactly on the curve, the measure is the Cartesian product of arc length and
+normal Lebesgue measure.
+
+Let $K_{AB}(a)$ be the Hessian restricted to the normal space.  Stationarity
+along the saddle manifold and the tangent zero mode give
+\[
+  S\bigl(X(a)+\eta^Ae_A(a)\bigr)
+  =S_0+\frac12\eta^AK_{AB}(a)\eta^B+O(\eta^3).
+\]
+At Gaussian order one evaluates the Jacobian at $\eta=0$.  Integration along
+the exact symmetry orbit supplies $\int\dd a$ with uniform density, while the
+normal integrations supply $(\det K_\perp)^{-1/2}$ with the usual choice of
+$2\pi$ normalization.  Curvature enters through the displayed Jacobian and
+through higher terms in the action.  Those terms begin beyond the Gaussian
+approximation used in Banks's collective-coordinate argument.
+
+\BanksImplicitSolution{I-CH10-004}
+Let $E_{\rm pert}$ be the perturbative ground energy computed in either well,
+and write $Z_{\rm osc}=\ee^{-\beta E_{\rm pert}}$ for its leading propagation
+factor.  In the notation of Banks's dilute-gas formula, define the positive
+one-event fugacity
+\[
+  \kappa=D^{-1/2}\ee^{-S_0/g^2}.
+\]
+For $n$ events, integration over ordered centers gives
+\[
+  \int_{-\beta/2<t_1<\cdots<t_n<\beta/2}
+  \dd t_1\cdots\dd t_n=\frac{\beta^n}{n!}.
+\]
+Once the initial well is fixed, the orientations of successive events are
+fixed as well.  Starting in $L$, the first event is an instanton to $R$, the
+next is an anti-instanton back to $L$, and the pattern repeats.
+
+A diagonal history has $2N$ events.  It contains $N$ instantons and $N$
+anti-instantons, as required by periodicity.  Hence
+\[
+\begin{aligned}
+  \matrixel{L}{\ee^{-\beta H}}{L}
+  &=Z_{\rm osc}\sum_{N=0}^\infty
+    \frac{(\beta\kappa)^{2N}}{(2N)!}
+    =Z_{\rm osc}\cosh(\beta\kappa),\\
+  \matrixel{R}{\ee^{-\beta H}}{R}
+  &=Z_{\rm osc}\cosh(\beta\kappa).
+\end{aligned}
+\]
+An off-diagonal history has an odd number of events, so
+\[
+  \matrixel{R}{\ee^{-\beta H}}{L}
+  =\matrixel{L}{\ee^{-\beta H}}{R}
+  =Z_{\rm osc}\sinh(\beta\kappa).
+\]
+In the basis $(\lvert L\rangle,\lvert R\rangle)$ this reads
+\[
+  \ee^{-\beta H}=Z_{\rm osc}
+  \left[\cosh(\beta\kappa)\mathbf1
+  +\sinh(\beta\kappa)\sigma_x\right]
+  =Z_{\rm osc}\ee^{\beta\kappa\sigma_x}
+\]
+within the two-state semiclassical sector.
+
+The reflection-even and reflection-odd states are
+\[
+  \lvert+\rangle=\frac{\lvert L\rangle+\lvert R\rangle}{\sqrt2},
+  \qquad
+  \lvert-\rangle=\frac{\lvert L\rangle-\lvert R\rangle}{\sqrt2}.
+\]
+Their energies are
+\[
+  E_+=E_{\rm pert}-\kappa,
+  \qquad
+  E_-=E_{\rm pert}+\kappa.
+\]
+The trace provides the same result:
+\[
+  Z=2Z_{\rm osc}\cosh(\beta\kappa)
+   =\ee^{-\beta E_+}+\ee^{-\beta E_-},
+  \qquad
+  E_--E_+=2D^{-1/2}\ee^{-S_0/g^2}.
+\]
+The double-well alternation changes the combinatorics from the independent
+instanton and anti-instanton sums used for Banks's periodic potential.
+
+\BanksImplicitSolution{I-CH10-005}
+The instanton equation and its derivative are
+\[
+  -\ddot x_c+V'(x_c)=0,
+  \qquad
+  -\dddot x_c+V''(x_c)\dot x_c=0.
+\]
+After division by the constant $\sqrt{S_0}$, the second equation is
+\[
+  \left[-\frac{\dd^2}{\dd t^2}+V''(x_c)\right]\delta_0=0.
+\]
+
+Multiplication of the first equation by $\dot x_c$ yields
+\[
+  \frac{\dd}{\dd t}\left(\frac12\dot x_c^{\,2}-V(x_c)\right)=0.
+\]
+At either asymptotic vacuum, both terms vanish.  The constant is zero and
+$\dot x_c^{\,2}=2V(x_c)$.  It follows that
+\[
+  S_0=\int\dd t\left(\frac12\dot x_c^{\,2}+V(x_c)\right)
+  =\int\dd t\,\dot x_c^{\,2}.
+\]
+Therefore
+\[
+  \int\dd t\,\delta_0^2
+  =\frac1{S_0}\int\dd t\,\dot x_c^{\,2}=1.
+\]
+Near a nondegenerate vacuum, $x_c-x_\pm$ and $\dot x_c$ decay exponentially.
+This decay removes the boundary contribution in the first-integral argument
+and makes the norm finite.  Translation of the instanton consequently replaces
+the zero-mode Gaussian integral by an integral over its center, with the
+normalization used in Banks's collective-coordinate measure.
+
+This normalization is exact for a single instanton.  For a dilute
+$n$-instanton configuration, the overall translation tangent has
+$\int\dd t\,\dot x_c^2\simeq nS_0$ and is normalized by
+$\sqrt{nS_0}$.  Each separately translated, well-separated constituent has
+an approximate zero mode normalized by its own $\sqrt{S_0}$.  This distinction
+resolves the reuse of the symbol $S_0$ in the surrounding multi-instanton
+discussion.
+
+\BanksImplicitSolution{I-CH10-006}
+The asymptotic assumptions imply
+\[
+  V''(X(t))\longrightarrow m_\pm^2>0
+  \quad\hbox{as}\quad t\longrightarrow\pm\infty.
+\]
+They also make $\dot X$ square-integrable.  From the preceding zero-mode
+calculation,
+\[
+  \mathcal M\dot X=0.
+\]
+Monotonicity gives a fixed sign for $\dot X$ throughout the interior of the
+instanton.  The translation eigenfunction is therefore nodeless.
+
+The Sturm oscillation theorem orders the discrete eigenfunctions of a
+one-dimensional Schrödinger operator by their number of nodes: the lowest one
+is nodeless, and every higher discrete eigenfunction has at least one node.
+Since a nodeless normalizable eigenfunction already occurs at eigenvalue zero,
+zero is the lowest eigenvalue.  A negative eigenvalue would require a lower
+nodeless state and would force the zero mode into an excited nodal position,
+which contradicts the theorem.  Thus the isolated monotone instanton has a
+non-negative quadratic fluctuation operator.
+
+The essential spectrum begins at
+\[
+  \lambda_{\rm cont}=\min(m_-^2,m_+^2)
+\]
+when the two asymptotic curvatures differ; it begins at $m^2$ when they agree.
+The node theorem fixes the bottom of the spectrum.  It permits additional
+discrete eigenvalues in $0<\lambda<\lambda_{\rm cont}$, often called shape
+modes.  Their presence depends on the detailed potential.  Banks's conclusion
+about the zero mode being lowest follows without needing a claim about those
+positive bound states.
+
+\BanksImplicitSolution{I-CH10-007}
+We use the canonically normalized radial functional
+\[
+  S_E=\Omega_{D-1}\int_0^\infty\dd r\,r^{D-1}
+  \left[\frac12\phi_r^i\phi_r^i+V(\phi)\right].
+\]
+It produces the scalar variational equation printed on page 215.  The
+schematic functional on the preceding page prints the kinetic term without
+the factor $1/2$; reading that display literally would insert a factor
+$1/2$ in front of $\partial^iV$ below.  The equation that Banks asks us to
+generalize fixes the convention used here.
+
+Variation of the radial action gives the vector equation
+\[
+  \phi_{rr}^i+\frac{D-1}{r}\phi_r^i=\partial^iV.
+\]
+Choose arc length along the image of the bounce and define
+\[
+  T^i=\frac{\dd\Phi^i}{\dd\ell},
+  \qquad T^iT^i=1,
+  \qquad K^i=\frac{\dd T^i}{\dd\ell},
+  \qquad T^iK^i=0.
+\]
+The radial derivatives become
+\[
+  \phi_r^i=T^i\ell_r,
+  \qquad
+  \phi_{rr}^i=T^i\ell_{rr}+K^i\ell_r^2.
+\]
+Substitution into the vector equation yields
+\[
+  T^i\left(\ell_{rr}+\frac{D-1}{r}\ell_r\right)
+  +K^i\ell_r^2=\partial^iV.
+\]
+
+Contracting with $T^i$ gives
+\[
+  \ell_{rr}+\frac{D-1}{r}\ell_r
+  =T^i\partial_iV
+  =\frac{\dd}{\dd\ell}V(\Phi(\ell)).
+\]
+For a chosen field-space curve, this is the single-coordinate bounce equation
+with effective potential $V_{\rm eff}(\ell)=V(\Phi(\ell))$.  Projection with
+$P_\perp^{ij}=\delta^{ij}-T^iT^j$ gives the complementary equation
+\[
+  \ell_r^2K^i=P_\perp^{ij}\partial_jV.
+\]
+It says that the normal force bends the field-space path.  These two equations
+must be solved together, because the curvature depends on the radial speed
+$\ell_r$.  Along any candidate path the action reduces to
+\[
+  S_E=\Omega_{D-1}\int_0^\infty\dd r\,r^{D-1}
+  \left[\frac12\ell_r^2+V_{\rm eff}(\ell)\right].
+\]
+
+Regularity at the center requires $\phi_r^i(0)=0$, equivalently
+$\ell_r(0)=0$ for a regular parametrization.  At infinity,
+$\Phi^i(\ell(r))\to\nu_F^i$ and $\ell_r\to0$.  Positive eigenvalues of the
+false-vacuum Hessian give exponential decay, with the familiar radial power
+prefactor.
+
+For a field-space metric $G_{ij}$, arc length obeys
+$G_{ij}T^iT^j=1$.  Ordinary derivatives along the curve become target-space
+covariant derivatives.  The formulas take the invariant form
+\[
+  D_r\phi_r^i+\frac{D-1}{r}\phi_r^i=\nabla^iV,
+  \qquad
+  \ell_r^2D_\ell T^i=P_\perp^{ij}\nabla_jV,
+\]
+with the same tangential equation after contraction by $T_i$.
+
+\BanksImplicitSolution{I-CH10-008}
+Translations generate another family of stationary configurations,
+\[
+  I_c^a(x)=I^a(x-c).
+\]
+Its tangent at $c=0$ in the $i$th direction is $-\partial_iI^a$.  This already
+identifies the collective-coordinate direction.  For a direct operator check,
+differentiate the field equation with respect to $x^i$:
+\[
+  -\partial^2(\partial_iI^a)
+  +\frac{\partial^2V}{\partial I^a\partial I^b}
+   \partial_iI^b=0.
+\]
+The left side is $\mathcal M_{ab}\partial_iI^b$, proving the zero-mode
+equation component by component.
+
+For an $O(D)$-invariant one-field profile $I(r)$,
+\[
+  \partial_iI=\frac{x_i}{r}I_r.
+\]
+Regularity gives $I_r=O(r)$ near the origin, so this expression is smooth
+there.  At large $r$, linearization around a nondegenerate vacuum gives
+$I_r=O(r^{-(D-1)/2}\ee^{-mr})$.  Hence
+\[
+  \int\dd^D\mathbf x\,(\partial_iI)^2<\infty.
+\]
+If a constant vector $c_i$ obeyed $c_i\partial_iI=0$ everywhere, then
+$(c\cdot x)I_r/r$ would vanish in every angular direction where the profile
+changes.  This forces $c_i=0$.  The $D$ translation modes are consequently
+linearly independent for a localized nonconstant instanton.
+
+\BanksImplicitSolution{I-CH10-009}
+Put $\alpha=1/g^2$ and regulate the infrared at $|\mathbf R|=L$.  The relative
+coordinate integral is
+\[
+\begin{aligned}
+  \mathcal I(L)
+  &=2\pi\int_{r_+}^{L}R\,\dd R
+    \left(\frac{R}{r_+}\right)^{-\alpha}\\
+  &=2\pi r_+^2
+  \begin{cases}
+    \displaystyle
+    \frac{(L/r_+)^{2-\alpha}-1}{2-\alpha},&\alpha\ne2,\\[6pt]
+    \displaystyle \ln(L/r_+),&\alpha=2.
+  \end{cases}
+\end{aligned}
+\]
+The limit $L\to\infty$ is finite for $\alpha>2$, which means
+\[
+  g^2<\frac12.
+\]
+At
+\[
+  g_c^2=\frac12
+\]
+the divergence is logarithmic.  For $g^2>1/2$ it grows as a positive power of
+$L$.
+
+The interaction cost of separating a pair is
+$g^{-2}\ln(R/r_+)$.  The number of available relative positions grows with
+the two-dimensional measure $R\,\dd R$.  At small $g^2$ the interaction wins
+and instantons occur predominantly in bound neutral pairs.  Beyond the
+displayed threshold, large separations dominate and the gas behaves as an
+unbound plasma.  This is the dilute-pair version of the
+Kosterlitz--Thouless criterion.  A full many-body renormalization-group
+treatment describes how the fugacity and effective interaction run near the
+transition; the value above follows from Banks's stated bare normalization.
+
+\BanksImplicitSolution{I-CH10-010}
+In an orthonormal polar frame the ansatz gives
+\[
+  D_r\phi=f'\ee^{\ii n\theta},
+  \qquad
+  D_\theta^{\rm orth}\phi=\frac{\ii n}{r}(1-a)f\ee^{\ii n\theta},
+  \qquad
+  B=F_{12}=\frac1r\partial_r(rA_\theta^{\rm orth})
+  =\frac{n}{m}\frac{a'}r.
+\]
+Since $F_{ab}F_{ab}=2B^2$, angular integration reduces the action to
+\[
+  S_E=\frac{2\pi}{g^2}\int_0^\infty r\,\dd r
+  \left[
+    \frac{n^2}{2\mu^2m^2}\frac{a'^2}{r^2}
+    +f'^2+\frac{n^2}{r^2}(1-a)^2f^2+\mu^2V(f)
+  \right].
+\]
+
+Smoothness and finite action at the origin are ensured by
+\[
+  f(r)=O(r^{|n|}),
+  \qquad a(r)=O(r^2).
+\]
+Indeed, the scalar radial and angular terms behave as $r^{2|n|-1}\dd r$,
+the magnetic term behaves as $r\,\dd r$, and a bounded core potential
+contributes $O(r\,\dd r)$.  At infinity the finite-action conditions are
+\[
+  f(r)\longrightarrow1,
+  \qquad a(r)\longrightarrow1.
+\]
+They make $D_\theta\phi$ vanish and give the quantized flux
+\[
+  \int\dd^2\mathbf x\,B=\oint A=\frac{2\pi n}{m}.
+\]
+Linearizing in $f=1+\delta f$ and $a=1+\delta a$ produces massive radial
+equations.  When the scalar and vector masses are positive, their decaying
+solutions behave as modified Bessel functions,
+$O(r^{-1/2}\ee^{-m_Hr})$ and $O(r^{-1/2}\ee^{-m_Ar})$, up to the powers carried
+by the vector component.  Every tail contribution to the action is then
+integrable.
+
+It remains to justify the rotational restriction.  The boundary conditions
+and mass assumptions above establish finite-action competitors, but they do
+not by themselves imply uniqueness or rotational symmetry of the absolute
+minimizer.  We therefore state the sufficient hypothesis used in this step:
+in the unit-winding sector, assume that an absolute minimizer exists, has one
+zero, and is unique modulo translations and gauge transformations.  This is a
+separate variational theorem for the chosen potential and couplings.
+
+Fix the center at the unique zero of this unit-winding minimizer.  A rotation
+by $\alpha$, followed by
+the constant phase transformation $\phi\mapsto\ee^{-\ii n\alpha}\phi$, maps
+this centered topological sector to itself and preserves the action.  By the
+assumed uniqueness modulo gauge, the transformed minimizer is gauge-equivalent
+to the original one for every $\alpha$.  The gauge representatives can be
+chosen continuously around the compact rotation group.  In radial gauge the
+fixed-point conditions become
+\[
+  \partial_\theta\phi=\ii n\phi,
+  \qquad \partial_\theta A_r=\partial_\theta A_\theta=0.
+\]
+Their general smooth solution is
+\[
+  \phi=f(r)\ee^{\ii n\theta},
+  \qquad A_r=A_r(r),
+  \qquad A_\theta^{\rm orth}=A_\theta^{\rm orth}(r).
+\]
+A remaining radial gauge transformation sets $A_r=0$, while flux and
+regularity write the angular component as $n a(r)/(mr)$.  This proves that a
+representative of the absolute minimizer lies in Banks's ansatz under the
+stated existence and uniqueness hypothesis.
+
+Restriction of the variational problem to invariant fields, together with the
+principle of symmetric criticality, proves that a radial critical point solves
+the full Euler--Lagrange equations.  Global minimality needs the additional
+argument above.  Higher winding introduces possible separated vortex centers;
+their preferred arrangement depends on the coupling.  A potential with extra
+vacua can also spoil uniqueness.  These are the reasons the symmetry claim is
+safest in the centered unit-winding sector used by Banks's displayed ansatz.
+
+\BanksImplicitSolution{I-CH10-011}
+For a region of area $\mathcal A$, the separate Poisson sums over instantons
+and anti-instantons are
+\[
+\begin{aligned}
+  Z(\mathcal A,\theta)
+  &=\sum_{N_+,N_-=0}^{\infty}
+  \frac{(\zeta\mathcal A)^{N_++N_-}}{N_+!N_-!}
+  \exp\left[\frac{\ii\theta}{m}(N_+-N_-)\right]\\
+  &=\exp\left[2\zeta\mathcal A\cos\left(\frac{\theta}{m}\right)\right].
+\end{aligned}
+\]
+Here an instanton of flux $2\pi/m$ contributes $\ee^{\ii\theta/m}$, while an
+anti-instanton contributes its complex conjugate.
+
+Stokes' theorem gives
+\[
+  W_k(C)=\exp\left(\ii k\int_A F\right).
+\]
+An instanton inside $C$ therefore receives the extra factor
+$\ee^{\ii2\pi k/m}$, and an anti-instanton receives
+$\ee^{-\ii2\pi k/m}$.  Combining these phases with the theta weights replaces
+\[
+  \frac{\theta}{m}\longmapsto\frac{\theta+2\pi k}{m}
+\]
+for the gas inside the loop.  Events outside retain the original theta angle.
+
+Write the total area as $\mathcal V$ and suppose the loop and the boundaries
+are separated by distances large compared with the inverse masses.  Dilute-gas
+factorization then gives
+\[
+  \langle W_k(C)\rangle
+  =\frac{Z(A,\theta+2\pi k)\,
+  Z(\mathcal V-A,\theta)}{Z(\mathcal V,\theta)}.
+\]
+Substitution of the Poisson sums cancels the outside volume and leaves
+\[
+  \langle W_k(C)\rangle=
+  \exp\left\{2\zeta A\left[
+  \cos\left(\frac{\theta+2\pi k}{m}\right)
+  -\cos\left(\frac{\theta}{m}\right)\right]\right\}.
+\]
+The area coefficient vanishes precisely when the two displayed cosines agree.
+It vanishes for every value of $\theta$ when $k$ is a multiple of $m$, which
+is the screening criterion emphasized by Banks.  Isolated theta values can
+also make the leading dilute-gas coefficient vanish for a particular
+non-multiple $k$; branch selection and higher effects then determine the
+long-distance behavior.
+
+\BanksImplicitSolution{I-CH10-012}
+The Bogomolny square on the source page uses the canonical $V=0$
+normalization.  This three-dimensional Euclidean instanton is the static
+sector of the $D=4$ Lorentzian monopole theory.
+\[
+% CONVENTION-SCOPE: fixed D=4 reason=three-dimensional Euclidean monopole instanton and D=4 Lorentzian soliton
+  S=\frac1{g^2}\int\dd^3\mathbf x\left[
+    \frac14(F^a{}_{\mu\nu})^2+
+    \frac12(D_\mu\phi)^a(D_\mu\phi)^a\right].
+\]
+The preceding source display instead puts
+$\tfrac12(D_\mu\phi)^2$ inside an overall factor $1/(4g^2)$; that coefficient
+does not expand to the square or the bound printed on the next page.  The
+square, the BPS equation, and $S\ge\nu|M|/g^2$ fix the convention used here.
+
+With $B^a{}_\lambda=\tfrac12\epsilon_{\lambda\mu\nu}F^a{}_{\mu\nu}$, the volume
+definition is
+\[
+% CONVENTION-SCOPE: fixed D=4 reason=three-dimensional Euclidean monopole instanton and D=4 Lorentzian soliton
+  \nu M=\int\dd^3\mathbf x\,B^a{}_\lambda(D_\lambda\phi)^a.
+\]
+The invariant inner product on the adjoint obeys the covariant product rule
+\[
+  D_\lambda(\phi^aB^a{}_\lambda)
+  =(D_\lambda\phi)^aB^a{}_\lambda
+   +\phi^a D_\lambda B^a{}_\lambda.
+\]
+The contraction $\phi^aB^a{}_\lambda$ is a gauge singlet, so its covariant
+derivative equals its ordinary derivative.  The Bianchi identity is
+\[
+  D_\lambda F_{\mu\nu}+D_\mu F_{\nu\lambda}
+  +D_\nu F_{\lambda\mu}=0,
+  \qquad\hbox{equivalently}\qquad
+  D_\lambda B^a{}_\lambda=0.
+\]
+Consequently
+\[
+  B^a{}_\lambda(D_\lambda\phi)^a
+  =\partial_\lambda(\phi^aB^a{}_\lambda).
+\]
+The divergence theorem now gives
+\[
+  \nu M=\int_{S^2_\infty}\dd S_\lambda\,\phi^aB^a{}_\lambda.
+\]
+
+To compare this with the form notation, orient the sphere as the boundary of
+the three-dimensional volume.  Pullback of
+$F^a=\tfrac12F^a{}_{\mu\nu}\dd x^\mu\wedge\dd x^\nu$ to the sphere satisfies
+\[
+  \int_{S^2}\phi^aF^a
+  =\frac12\int_{S^2}\phi^aF^a{}_{\mu\nu}
+    \epsilon_{\lambda\mu\nu}\dd S_\lambda
+  =\int_{S^2}\dd S_\lambda\,\phi^aB^a{}_\lambda.
+\]
+Thus
+\[
+  M=\frac1{\nu}\int_{S^2_\infty}\phi^aF^a.
+\]
+Finite action supplies the needed limit: $D\phi\to0$ makes the direction
+$\phi^a/\nu$ covariantly constant at infinity, so the integrand measures flux
+in the surviving Abelian direction.
+
+\BanksImplicitSolution{I-CH10-013}
+In $D=4$ Euclidean space with orientation $\epsilon^{0123}=+1$, for an Abelian
+field,
+\[
+  \dd(A\wedge F)=\dd A\wedge F-A\wedge\dd F=F\wedge F.
+\]
+In components define
+\[
+  K^\mu=\epsilon^{\mu\nu\rho\sigma}A_\nu F_{\rho\sigma}.
+\]
+The Bianchi identity removes the term in which the derivative hits $F$, while
+antisymmetry replaces $\partial_\mu A_\nu$ by
+$F_{\mu\nu}/2$.  Hence
+\[
+  \partial_\mu K^\mu
+  =\frac12\epsilon^{\mu\nu\rho\sigma}
+    F_{\mu\nu}F_{\rho\sigma}
+  =F_{\mu\nu}\widetilde F^{\mu\nu}.
+\]
+
+For the matrix-valued conventions in the question, the graded Leibniz rule
+gives
+\[
+\begin{aligned}
+  \dd C
+  =\operatorname{tr}\bigg[
+    (\dd A)^2-\frac23\bigl(
+    \dd A\,A^2-A\,\dd A\,A+A^2\dd A\bigr)\bigg].
+\end{aligned}
+\]
+Under the trace,
+\[
+  \operatorname{tr}(A\,\dd A\,A)
+  =-\operatorname{tr}(\dd A\,A^2),
+  \qquad
+  \operatorname{tr}(A^2\dd A)
+  =\operatorname{tr}(\dd A\,A^2).
+\]
+The first minus sign occurs because a one-form crosses total degree three.
+It follows that
+\[
+  \dd C=\operatorname{tr}\left[(\dd A)^2-2\dd A\,A^2\right].
+\]
+On the other hand,
+\[
+\begin{aligned}
+  \operatorname{tr}F^2
+  &=\operatorname{tr}\left[
+    (\dd A)^2-\dd A\,A^2-A^2\dd A+A^4\right]\\
+  &=\operatorname{tr}\left[(\dd A)^2-2\dd A\,A^2\right].
+\end{aligned}
+\]
+The last equality uses
+$\operatorname{tr}A^4=-\operatorname{tr}A^4=0$, obtained by moving one
+one-form factor cyclically past the other three.  Therefore
+\[
+  \dd C=\operatorname{tr}F^2.
+\]
+
+With $F=\tfrac12F_{\mu\nu}\dd x^\mu\wedge\dd x^\nu$ and the chosen
+orientation,
+% CONVENTION-SCOPE: fixed D=4 reason=Pontryagin density and Hodge-dual form in D=4 Euclidean space
+\[
+  \operatorname{tr}(F\wedge F)
+  =\frac14\epsilon^{\mu\nu\rho\sigma}
+    \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x
+  =\frac12\operatorname{tr}
+    (F_{\mu\nu}\widetilde F^{\mu\nu})\,\dd^4x.
+\]
+Thus Banks's theta density is locally exact.  Its integral can remain nonzero
+because the Chern--Simons form lives on the boundary or on overlapping gauge
+patches.
+
+\BanksImplicitSolution{I-CH10-014}
+First suppose that $G$ is compact, connected, simply connected, and simple.
+The standard homotopy theorem for compact simple groups says
+\[
+  \pi_3(G)\simeq\mathbb Z,
+\]
+and a long-root homomorphism $\iota:SU(2)\to G$ can be chosen so that it
+induces an isomorphism on $\pi_3$.  Equivalently, this is an index-one map.
+The choice is substantive: an arbitrary $SU(2)$ homomorphism can multiply the
+generator by its Dynkin index.
+
+Given $[f]\in\pi_3(G)$, choose the degree-$n$ class
+$[u]\in\pi_3(SU(2))$ with $\iota_*[u]=[f]$.  Equality in $\pi_3(G)$ means
+that $f$ is homotopic to $\iota\circ u$.  It therefore has a representative
+entirely inside the chosen $SU(2)$.  Since $SU(2)\simeq S^3$, the integer
+$n$ is the winding number.
+
+A finite covering $\widetilde G\to G$ induces an isomorphism on $\pi_k$ for
+$k\ge2$, so the factorization conclusion passes through finite central
+quotients, although the image subgroup in the quotient can itself have a
+finite center quotient.  For a
+semisimple product, $\pi_3(G)$ is one copy of $\mathbb Z$ for each simple
+factor.  One uses a chosen $SU(2)$ in every factor carrying a nonzero component
+of the charge.  Torus factors contribute no $\pi_3$.  This spells out the
+scope of Banks's single-simple-factor statement.
+
+In $D=4$ Euclidean dimensions, with the chosen orientation, $*^2=1$ on two-forms and the Hodge star preserves
+the norm.  For the $SU(2)$ sector, or for a simple factor whose invariant trace
+is normalized to assign unit charge to the index-one embedding, define
+\[
+  n=\frac1{16\pi^2}\int\dd^4x\,
+  \operatorname{tr}(F_{\mu\nu}\widetilde F_{\mu\nu})\in\mathbb Z.
+\]
+Therefore
+% CONVENTION-SCOPE: fixed D=4 reason=Yang--Mills self-duality bound in D=4 Euclidean space
+\[
+\begin{aligned}
+  0&\le\int\dd^4x\,\operatorname{tr}
+  (F_{\mu\nu}\mp\widetilde F_{\mu\nu})^2\\
+  &=2\int\dd^4x\,\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  \mp2\int\dd^4x\,\operatorname{tr}
+  (F_{\mu\nu}\widetilde F_{\mu\nu}).
+\end{aligned}
+\]
+Choosing the sign according to that of $n$ gives
+% CONVENTION-SCOPE: fixed D=4 reason=Yang--Mills action norm in D=4 Euclidean space
+\[
+  \int\dd^4x\,\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  \ge16\pi^2|n|.
+\]
+Multiplication by $1/(2g^2)$ yields
+\[
+  S_E\ge\frac{8\pi^2}{g^2}|n|.
+\]
+For $n>0$ the bound is saturated by $F=\widetilde F$; for $n<0$ it is
+saturated by $F=-\widetilde F$.  Equality follows only when the corresponding
+square vanishes pointwise.
+
+Finally, the Bianchi identity reads $D_\mu\widetilde F_{\mu\nu}=0$.  A
+self-dual or anti-self-dual field obeys
+\[
+  D_\mu F_{\mu\nu}=\pm D_\mu\widetilde F_{\mu\nu}=0,
+\]
+which is the Euclidean Yang--Mills equation.  This verifies directly why the
+first-order self-duality equation solves the second-order field equation.
+
+\BanksImplicitSolution{I-CH10-015}
+In the $D=4$ Lorentzian specialization, before setting $A_0=0$, its variation
+appears without a time derivative and
+therefore imposes a constraint.  With
+\[
+  E_i{}^a=\frac{\partial\mathcal L}{\partial(\partial_0A_i{}^a)}
+\]
+and matter charge density $\rho^a$, that variation gives
+\[
+  G^a=(D_iE_i)^a-\rho^a=0.
+\]
+Temporal gauge leaves time-independent gauge transformations as a residual
+symmetry.
+
+The canonical brackets are
+% CONVENTION-SCOPE: fixed D=4 reason=spatial canonical bracket in D=4 Lorentzian Yang--Mills
+\[
+  \{A_i{}^a(\mathbf x),E_j{}^b(\mathbf y)\}
+  =\delta_{ij}\delta^{ab}\delta^3(\mathbf x-\mathbf y).
+\]
+After an integration by parts, the gauge-field part of the smeared generator
+is
+% CONVENTION-SCOPE: fixed D=4 reason=spatial generator measure in D=4 Lorentzian Yang--Mills
+\[
+  G_{\rm gauge}(\omega)
+  =-\int\dd^3\mathbf x\,(D_i\omega)^aE_i{}^a.
+\]
+With the convention generated by this expression,
+\[
+  \{A_i,G(\omega)\}=-D_i\omega,
+  \qquad
+  \{E_i,G(\omega)\}=[\omega,E_i].
+\]
+The matter term $-\int\omega^a\rho^a$ generates the matching infinitesimal
+transformation of each matter field.  Thus $G(\omega)$ generates the residual
+gauge symmetry on every canonical variable.
+
+The Hamiltonian is gauge invariant, so
+\[
+  \{H,G(\omega)\}=\delta_\omega H=0.
+\]
+Canonical quantization turns this statement into
+$[G(\omega),H]=0$.  The integration by parts assumes that $\omega$ decays fast
+enough to remove a surface charge.  The quantum statement also assumes a
+gauge-anomaly-free matter representation and a regulator that preserves the
+gauge symmetry.
+
+For the Abelian factor, call the physical electric field $\mathcal E_i$ and
+the canonical momentum $\Pi_i$.  In the Abelian normalization and orientation
+used in Banks's displayed constraint, the part of the Minkowski Lagrangian
+that depends on $\partial_0A_i$ is
+\[
+  \mathcal L_{\rm vel}
+  =\frac1{2g^2}\mathcal E_i\mathcal E_i
+   +\frac{\theta}{2\pi}\mathcal E_iB_i,
+  \qquad
+  \mathcal E_i=\partial_0A_i-\partial_iA_0.
+\]
+Direct differentiation now gives the shifted momentum
+\[
+  \Pi_i=\frac1{g^2}\mathcal E_i+\frac{\theta}{2\pi}B_i.
+\]
+On every smooth gauge patch, the Bianchi identity gives
+$\partial_iB_i=0$.  Varying $A_0$ there is therefore equivalent to either
+$\partial_i\Pi_i-\rho=0$ or the ordinary bulk Gauss equation
+\[
+  \partial_i\left(\frac1{g^2}\mathcal E_i\right)-\rho=0.
+\]
+Eliminating $\mathcal E_i$ gives
+\[
+  \partial_i\Pi_i-\frac{\theta}{2\pi}\partial_iB_i-\rho=0.
+\]
+Keeping $\partial_iB_i$ in this form extends the patchwise equation across a
+monopole source, where the magnetic divergence is distributional.
+Banks denotes the canonical momentum by $E_i$, producing his displayed
+constraint.  If $\partial_iB_i=\rho_m$, integration over space yields
+\[
+  Q_{\rm canonical}=Q_{\rm matter}+\frac{\theta}{2\pi}Q_m.
+\]
+Thus a monopole carries a theta-dependent electric charge.  Reversing the
+orientation used to define $B_i$ reverses both magnetic terms and preserves
+the physical relation.
+
+\BanksImplicitSolution{I-CH10-016}
+For a complex number with $\operatorname{Im}z>0$, spectral calculus gives
+\[
+  \int_0^\infty\dd T\,\ee^{\ii T(z-H)}
+  =\frac{\ii}{z-H}.
+\]
+Equivalently,
+\[
+  \frac1{z-H}=-\ii\int_0^\infty\dd T\,
+  \ee^{\ii zT}\ee^{-\ii HT}.
+\]
+Taking the trace yields the first formula in the exercise.
+
+Resolve the trace in coordinate states:
+\[
+  \Tr\ee^{-\ii HT}
+  =\int\dd q_0\,\matrixel{q_0}{\ee^{-\ii HT}}{q_0}.
+\]
+Divide $T$ into $N$ intervals, insert $N-1$ coordinate resolutions and a
+momentum resolution in each short-time kernel, and take $N\to\infty$.  The
+initial and final coordinate are identified by the trace.  Thus
+\[
+  \Tr\ee^{-\ii HT}
+  =\int_{q(T)=q(0)}\mathcal Dq\,
+  \exp\left(\frac{\ii}{g^2}S_T[q]\right),
+\]
+where any determinant arising from momentum integration belongs to the
+definition of $\mathcal Dq$.  Combining this expression with the proper-time
+integral gives
+\[
+  \Tr\frac1{z-H}
+  =-\ii\int_0^\infty\dd T
+  \int_{q(T)=q(0)}\mathcal Dq\,
+  \ee^{\ii zT}\ee^{\ii S_T[q]/g^2}.
+\]
+Banks's symbol $[\dd q(t)]$ includes the $-\ii\,\dd T$, the fixed-$T$
+normalization, and the integration over periodic paths.  On this enlarged
+space, the period is the functional $T[q]$, which produces his compact
+notation.
+
+Writing $z=E+\ii\epsilon$ with $\epsilon>0$ supplies
+$\ee^{-\epsilon T}$ and makes the proper-time endpoint convergent.  The
+boundary value $\epsilon\downarrow0$ defines the Lorentzian prescription.  A
+nonconstant periodic classical path has a zero mode obtained by shifting its
+time origin.  The trace naturally integrates over the possible base point on
+the orbit, producing a factor of its primitive period.  A stationary-phase
+calculation phrased in terms of unbased closed orbits must divide out this
+translation orbit and include its collective-coordinate Jacobian, so that the
+same factor appears once.
+
+For field theory, coordinate states become field eigenstates
+$\lvert\Phi(\mathbf x)\rangle$.  The identical derivation gives
+\[
+  \Tr\frac1{z-H}
+  =-\ii\int_0^\infty\dd T\,\ee^{\ii zT}
+  \int_{\Phi(T,\mathbf x)=\Phi(0,\mathbf x)}
+  \mathcal D\Phi\,
+  \ee^{\ii S_T[\Phi]/g^2}.
+\]
+Gauge theories require gauge fixing, its determinant, and a trace over the
+physical Hilbert space.  The periodic-time and proper-time structure remains
+the one displayed above.
+
+\BanksImplicitSolution{I-CH10-017}
+In $D=2$ Lorentzian spacetime with mostly-plus signature, a canonical scalar
+with the common overall factor $1/g^2$ has the relevant stress-tensor
+components
+\[
+  T^{00}=\frac1{g^2}\left[
+  \frac12\dot\phi^2+\frac12(\partial_x\phi)^2+V(\phi)\right],
+  \qquad
+  T^{01}=-\frac1{g^2}\dot\phi\,\partial_x\phi.
+\]
+The static equation is $\phi_c''=V'(\phi_c)$.  Multiplication by $\phi_c'$
+gives
+\[
+  \frac{\dd}{\dd x}\left[\frac12(\phi_c')^2-V(\phi_c)\right]=0.
+\]
+For degenerate vacua with their energy shifted to zero, the constant vanishes:
+\[
+  \frac12(\phi_c')^2=V(\phi_c).
+\]
+The rest energy is consequently
+\[
+  M=\frac1{g^2}\int\dd x\left[
+  \frac12(\phi_c')^2+V(\phi_c)\right]
+  =\frac1{g^2}\int\dd x\,(\phi_c')^2.
+\]
+
+Set $y=\gamma(x-vt)$.  The boosted field has
+\[
+  \dot\phi_v=-\gamma v\phi_c'(y),
+  \qquad
+  \partial_x\phi_v=\gamma\phi_c'(y),
+  \qquad
+  \dd x=\frac{\dd y}{\gamma}.
+\]
+Using $V=(\phi_c')^2/2$,
+\[
+  T^{00}[\phi_v]=\frac{\gamma^2}{g^2}(\phi_c')^2,
+  \qquad
+  T^{01}[\phi_v]=\frac{\gamma^2v}{g^2}(\phi_c')^2.
+\]
+Integration gives
+\[
+  E=\int\dd x\,T^{00}=\gamma M,
+  \qquad
+  \mathbf P=\int\dd x\,T^{01}=\gamma vM.
+\]
+It follows at once that $E^2-\mathbf P^2=M^2$.  Thus
+$p^\mu=(E,\mathbf P)$ obeys $p^2=-E^2+\mathbf P^2=-M^2$.
+
+The invariant version uses a spacelike Cauchy surface $\Sigma$:
+\[
+  P^\mu=\int_\Sigma\dd\Sigma_\nu\,T^{\mu\nu}.
+\]
+Conservation of $T^{\mu\nu}$ and spatial localization make this integral
+independent of continuous deformations of $\Sigma$.  It transforms as a
+Lorentz vector.  A static centered solution has $P^\mu=(M,\mathbf0)$, so its
+boosts have $P^\mu=(\sqrt{\mathbf p^2+M^2},\mathbf p)$.  In a gauge theory the
+Lorentz-transformed fields may leave $A_0=0$; a compensating gauge
+transformation restores that gauge while the gauge-invariant stress tensor
+keeps the same $D$-momentum.
+
+The rest solution gives a semiclassical pole of the resolvent at $E=M$.
+Integrating its translation collective coordinate produces momentum
+eigenstates, and boosting those states extends the pole along
+$E(\mathbf p)=\sqrt{\mathbf p^2+M^2}$.  This is the particle interpretation
+of Banks's localized soliton.
+
+\BanksImplicitSolution{I-CH10-018}
+For
+\[
+  \phi_i(t,x)=\phi_i^c(x-X(t)),
+\]
+the time derivative is
+$\dot\phi_i=-\phi_i^{c\,\prime}\dot X$.  To quadratic order in the slow
+velocity, the energy is
+\[
+\begin{aligned}
+  E
+  &=\frac1{g^2}\int\dd x\left[
+    \frac12(\phi_i^{c\,\prime})^2\dot X^2
+    +\frac12(\phi_i^{c\,\prime})^2+V(\phi^c)\right]\\
+  &=E_c+\frac12M_X\dot X^2,
+\end{aligned}
+\]
+where
+\[
+  M_X=\frac1{g^2}\int\dd x\,(\phi_i^{c\,\prime})^2.
+\]
+
+The static equation is
+\[
+  -\phi_i^{c\,\prime\prime}+\frac{\partial V}{\partial\phi_i}=0.
+\]
+Multiplication by $\phi_i^{c\,\prime}$ and summation over $i$ gives
+\[
+  \frac{\dd}{\dd x}
+  \left[\frac12(\phi_i^{c\,\prime})^2-V(\phi^c)\right]=0.
+\]
+A finite-energy soliton approaches stationary vacua and has
+$\phi_i^{c\,\prime}\to0$ at both ends.  Equal endpoint vacuum energies may be
+shifted to zero, so the first integral is
+\[
+  \frac12(\phi_i^{c\,\prime})^2=V(\phi^c).
+\]
+Therefore
+\[
+  E_c=\frac1{g^2}\int\dd x\left[
+  \frac12(\phi_i^{c\,\prime})^2+V(\phi^c)\right]
+  =\frac1{g^2}\int\dd x\,(\phi_i^{c\,\prime})^2=M_X.
+\]
+In units with $c=1$, the coefficient of $\dot X^2/2$ has the dimension of
+energy, hence of mass.  This agrees with Lorentz invariance and with the
+small-velocity expansion
+$E_c/\sqrt{1-\dot X^2}=E_c+\tfrac12E_c\dot X^2+\cdots$.
+
+\BanksImplicitSolution{I-CH10-019}
+Assume that $G$ is a connected Lie group and that $H$ is a closed subgroup,
+so $H\to G\to G/H$ is a fibration.  All homotopy groups are based at the
+identity and its coset; when $H$ is disconnected, $\pi_1(H)$ means the
+fundamental group of its identity component.
+
+Let $f:S^2\to G/H$ represent the asymptotic Higgs field.  Choose local lifts
+$g_N:D_N\to G$ and $g_S:D_S\to G$ on northern and southern disks.  On their
+equatorial overlap they project to the same coset, so
+\[
+  g_N(\theta)=g_S(\theta)h(\theta),
+  \qquad h(\theta)\in H.
+\]
+After fixing the base point, $h$ is a loop in $H$.  Its homotopy class is
+$\partial[f]$.
+
+The group operation in $\pi_2$ can be represented by pinching the sphere to a
+wedge of two spheres and placing representatives $f_1$ and $f_2$ on the two
+pieces.  Choose their lifts compatibly at the pinch point.  Along the equator,
+the resulting transition loop traverses $h_1$ and then $h_2$.  Therefore
+\[
+  \partial([f_1]+[f_2])
+  =[h_1*h_2]
+  =[h_1]+[h_2],
+\]
+which proves that $\partial$ is a homomorphism.
+
+The fibration $H\to G\to G/H$ has the exact segment
+\[
+  \pi_2(G)\longrightarrow\pi_2(G/H)
+  \xrightarrow{\partial}\pi_1(H)
+  \xrightarrow{i_*}\pi_1(G).
+\]
+Every Lie group has $\pi_2(G)=0$.  Exactness then makes $\partial$ injective,
+and it also says
+\[
+  \operatorname{im}\partial=\ker i_*.
+\]
+Consequently
+\[
+  \pi_2(G/H)\simeq
+  \ker\!\left[\pi_1(H)\to\pi_1(G)\right].
+\]
+When $G$ is simply connected, $\pi_1(G)=0$, so the kernel is all of
+$\pi_1(H)$ and
+\[
+  \pi_2(G/H)\simeq\pi_1(H).
+\]
+
+The loop $h$ is the clutching function between two asymptotic gauge patches.
+For an Abelian factor of $H$, its winding is the magnetic flux.  Membership in
+the kernel means that this loop becomes contractible when viewed inside the
+full gauge group $G$.  The contraction fills the asymptotic loop through the
+monopole core, allowing a smooth finite-energy field configuration.
+
+\BanksImplicitSolution{I-CH10-020}
+For a character $\lambda:T\to U(1)$ and a cocharacter
+$m:U(1)\to T$, the composition
+\[
+  U(1)\xrightarrow{m}T\xrightarrow{\lambda}U(1)
+\]
+has an integer winding number.  Define it as
+$\langle\lambda,m\rangle\in\mathbb Z$.  Transport of a state of weight
+$\lambda$ around a Dirac string of charge $m$ gives
+\[
+  \exp\left(2\pi\ii\langle\lambda,m\rangle\right)=1.
+\]
+In a normalization with dimensional electric and magnetic charges, this is
+$e_\lambda g_m=2\pi\langle\lambda,m\rangle$.  For two dyons, locality of their
+relative wavefunction requires the antisymmetric pairing
+\[
+  \langle\lambda_i,m_j\rangle-\langle\lambda_j,m_i\rangle
+  \in\mathbb Z,
+\]
+or
+$e_i g_j-e_jg_i=2\pi n_{ij}$.
+
+Let $P$ be the weight lattice of the simply connected cover $\bar G$.  A
+representation of $\bar G$ descends to $G_\Gamma=\bar G/\Gamma$ exactly when
+the center elements in $\Gamma$ act trivially.  Thus its allowed electric
+lattice is
+\[
+  \Lambda_e(G_\Gamma)
+  =\{\lambda\in P:\lambda(\gamma)=1
+    \text{ for every }\gamma\in\Gamma\}.
+\]
+Quotienting can therefore remove electric weights.
+
+Here $\Lambda_e(G_\Gamma)$ is the full character lattice allowed by the
+chosen global gauge group, including admissible external probes.  If a model
+specifies a smaller set of dynamical matter representations, their weights
+generate a sublattice and impose a correspondingly weaker Dirac test.  Banks's
+global-form comparison uses the full character lattice, which is the convention
+adopted below.
+
+A cocharacter of a maximal torus in $G_\Gamma$ lifts to a path in the maximal
+torus of $\bar G$.  The lifted path begins at the identity and ends at some
+$\gamma_m\in\Gamma$ after one circuit.  Conversely, such a path projects to a
+closed cocharacter in the quotient.  Pairing it with a descended weight is
+integral because that weight is trivial on the endpoint $\gamma_m$.  In lattice
+language, the Dirac magnetic lattice is the lattice dual to
+$\Lambda_e(G_\Gamma)$.
+
+These cocharacters describe all charges compatible with an Abelian Dirac
+string.  A smooth monopole obeys the further topological condition
+\[
+  [m]\in\ker\!\left[\pi_1(H)\to\pi_1(G_\Gamma)\right].
+\]
+It says that the transition loop around the monopole contracts through the
+full gauge group and can be filled by a regular core.  This is Banks's
+distinction between the charge lattice visible in the low-energy Maxwell
+theory and the sublattice realized by nonsingular solitons.
+
+For $SU(2)$, normalize the Cartan so that fundamental weights are the integers
+$\lambda=\pm1$ and adjoint weights are $0,\pm2$.  The electric lattice is
+$\mathbb Z$, and its dual cocharacters are $m\in\mathbb Z$.  Since
+$SU(2)$ is simply connected, every such loop lies in the kernel and the unit
+smooth monopole has $m=1$.
+
+For $SO(3)=SU(2)/\mathbb Z_2$, only the even weights descend:
+\[
+  \Lambda_e(SO(3))=2\mathbb Z.
+\]
+The dual Dirac lattice is then $m\in\tfrac12\mathbb Z$.  A path with
+$m=\tfrac12$ lifts from $1$ to the nontrivial center element $-1$ and
+represents the nontrivial class of $\pi_1(SO(3))=\mathbb Z_2$.  It fails the
+smooth-core kernel condition.  The smooth sectors have $m\in\mathbb Z$, which
+are even multiples of the minimal quotient cocharacter.  The minimal smooth
+monopole is therefore twice the charge demanded by adjoint electric matter
+alone, and it also satisfies Dirac quantization for a possible fundamental
+$SU(2)$ weight.
+
+\BanksImplicitSolution{I-CH10-021}
+In the $D=4$ Lorentzian setup of the exercise, the fields of a static point
+dyon $a$ are
+\[
+  \mathbf E_a(\mathbf x)=\frac{e_a}{4\pi}
+  \frac{\mathbf x-\mathbf r_a}{|\mathbf x-\mathbf r_a|^3},
+  \qquad
+  \mathbf B_a(\mathbf x)=\frac{g_a}{4\pi}
+  \frac{\mathbf x-\mathbf r_a}{|\mathbf x-\mathbf r_a|^3}.
+\]
+For each $a$, $\mathbf E_a$ and $\mathbf B_a$ are parallel, so its self-term
+in $\mathbf E\times\mathbf B$ vanishes.  Only
+$\mathbf E_i\times\mathbf B_j$ and
+$\mathbf E_j\times\mathbf B_i$ remain.
+
+It is enough to evaluate one electric--magnetic cross-term.  Put the magnetic
+charge $g$ at the origin and the electric charge $e$ at
+$R\widehat{\mathbf z}$.  In spherical coordinates about the monopole,
+\[
+  \mathbf B=\frac{g}{4\pi r^2}\widehat{\mathbf r},
+  \qquad
+  E_\theta=\frac{eR\sin\theta}{4\pi
+  (r^2+R^2-2rR\cos\theta)^{3/2}}.
+\]
+Axial symmetry leaves only $L_z$.  The vector products give
+\[
+  [\mathbf r\times(\mathbf E\times\mathbf B)]_z
+  =-\frac{g}{4\pi r}E_\theta\sin\theta.
+\]
+After the azimuthal integral,
+\[
+  L_z=-\frac{egR}{8\pi}
+  \int_0^\infty r\,\dd r\int_0^\pi\dd\theta\,
+  \frac{\sin^3\theta}
+  {(r^2+R^2-2rR\cos\theta)^{3/2}}.
+\]
+Set $u=\cos\theta$.  The needed radial integral is
+\[
+  \int_0^\infty
+  \frac{r\,\dd r}{(r^2+R^2-2rRu)^{3/2}}
+  =\frac1{R(1-u)}.
+\]
+One way to check it is to shift $r-Ru$ and integrate the two resulting
+terms separately.  Therefore the double integral is
+\[
+  \frac1R\int_{-1}^{1}\dd u\,
+  \frac{1-u^2}{1-u}=\frac2R,
+\]
+and
+\[
+  \mathbf L_{e,g}=-\frac{eg}{4\pi}\widehat{\mathbf z}.
+\]
+The vector points from the electric charge toward the magnetic charge.  It is
+independent of their separation.
+
+For the pair in the exercise,
+$\widehat{\mathbf r}$ points from dyon $i$ to dyon $j$.  The first cross-term
+therefore contributes $e_i g_j\widehat{\mathbf r}/(4\pi)$.  Interchanging the
+sources reverses the unit vector, so the second contributes
+$-e_jg_i\widehat{\mathbf r}/(4\pi)$.  Hence
+\[
+  \mathbf L_{\rm em}
+  =\frac{e_i g_j-e_jg_i}{4\pi}\widehat{\mathbf r}.
+\]
+The total static field momentum vanishes, making this angular momentum
+independent of a common shift of the spatial origin.
+
+The mechanical orbital angular momentum of the relative coordinate is
+perpendicular to $\widehat{\mathbf r}$.  Thus the projection of the total
+angular momentum along that direction is fixed by the field:
+\[
+  \mathbf J\cdot\widehat{\mathbf r}
+  =\frac{e_i g_j-e_jg_i}{4\pi}.
+\]
+Quantum angular momentum has half-integer projections, so
+\[
+  \frac{e_i g_j-e_jg_i}{4\pi}=\frac{n_{ij}}2,
+  \qquad n_{ij}\in\mathbb Z.
+\]
+This is
+\[
+  e_i g_j-e_jg_i=2\pi n_{ij}.
+\]
+For a purely electric particle paired with a purely magnetic monopole it
+reduces to $eg=2\pi n$, the Dirac condition.
+
+\end{bankssolutions}

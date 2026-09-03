@@ -1,0 +1,131 @@
+% BANKS-SOURCE: pdf=152 print=142 kind=section id=9.2
+\subsection{Cut-offs}
+
+% BANKS-SOURCE: pdf=152 print=142 kind=prose
+The cavalier manipulations of infinite quantities, which entered into our
+heuristic mechanical description of renormalization, are clearly
+unacceptable.\footnote[2]{They led to one of the more memorable quips in the
+mathematical physics literature, due to R. Jost, ``In the 1950s, under the
+influence of renormalization theory, the mathematical sophistication required
+of physicists was reduced to a rudimentary knowledge of the Latin and Greek
+alphabets.''} A mathematical way of dealing with the problem is to introduce
+some kind of \emph{cut-off}.
+
+The simplest way to do this is to replace space, or Euclidean space-time, by a
+lattice with spacing $\Lambda^{-1}$. In fact, one way in which field theories
+arise in physics is in the long-distance approximation to second-order phase
+transitions in condensed-matter
+
+% BANKS-SOURCE: pdf=153 print=143 kind=prose
+systems. In that context, a crystal lattice is a physical part of a more
+microscopic description of the system. Another, more brutal, cut-off scheme is
+to simply refuse to continue the momentum-space integration in Feynman
+diagrams beyond some scale $\Lambda$. This procedure, while often convenient,
+does extreme violence to locality in space, as a sharp cut-off in space gives
+rise to violent effects at high momentum. A gentler momentum cut-off is
+achieved by including all momenta but choosing an inverse propagator
+$K(p^2)$,\footnote[3]{Propagator cut-offs are usually introduced in Euclidean
+momentum space, though in principle we could distort the propagator only in
+spacelike momentum directions.} which, while retaining the form $p^2+m^2$ at
+moderate momenta, grows extremely rapidly (faster than any power) above
+$p^2=\Lambda^2$. We can even choose a propagator that is a smooth function,
+vanishing identically for $p^2>\Lambda^2$. By looking at Feynman graphs we
+can see that any such choice of propagator will render all graphs with local
+interactions UV-finite, because the vertices are polynomials in momenta. From
+the functional-integral point of view, we are choosing the Gaussian part of
+the action to suppress the contribution of field configurations with large
+momenta.
+
+The standard model of particle physics, and most proposed extensions of it,
+are gauge theories. While it is not strictly necessary, it is extremely
+convenient to have a cut-off procedure that preserves gauge invariance.
+Non-perturbatively, only lattice regulators have this property, but for
+perturbative calculations there are two useful Lorentz-invariant formulations.
+The first is Pauli--Villars regulation, with the related proper-time cut-off
+of Schwinger, which we will discuss later. The second is dimensional
+regulation. Dimensional regulation proceeds by noting that most expressions
+in Feynman diagrams appear to be analytic in the dimension of space-time.\footnote[4]{The
+exceptions are the Levi--Civita symbol and the Dirac $\gamma_5$ matrix.} Only
+the integration measure identifies which dimension is being continued. We reserve
+$D$ for the physical space-time dimension and write the analytically continued
+loop dimension as $d_{\mathrm{reg}}$.
+
+Dimensional regulation (DR) can be defined formally as follows: any Feynman
+graph in $d_{\mathrm{reg}}$ dimensions involves multiple integrals over
+$d_{\mathrm{reg}}$-dimensional
+momentum space of expressions that can always be interpreted as functions of
+invariants made by dotting external and/or internal momenta into each other.
+We define the dimensional continuation of those integrals as a linear
+functional obeying
+\[
+  \int\!\dd^{d_{\mathrm{reg}}}q\,f(q+p)=\int\!\dd^{d_{\mathrm{reg}}}q\,f(q),
+  \qquad
+  \int\!\dd^{d_{\mathrm{reg}}}q\,f(Rq)=\int\!\dd^{d_{\mathrm{reg}}}q\,f(q),
+\]
+for any proper rotation matrix $R$ (interpreted as meaning that the answer
+involves only invariant tensors) and
+\[
+  \int\!\dd^{d_{\mathrm{reg}}}q\,f(aq)=a^{-d_{\mathrm{reg}}}
+  \int\!\dd^{d_{\mathrm{reg}}}q\,f(q).
+\]
+Similarly, the Kronecker delta $\delta_{\mu\nu}$ which appears in these
+formulae is interpreted as a symbol whose trace is $d_{\mathrm{reg}}$, and whose contraction
+with two vectors is their dot product.
+
+% BANKS-SOURCE: pdf=154 print=144 kind=prose
+This defines $d_{\mathrm{reg}}$-dimensional integration up to a multiplicative constant,
+which is fixed by computing a simple Gaussian integral
+\[
+  \int\!\dd^{d_{\mathrm{reg}}}q\,\mathrm{e}^{-aq^2}
+  =\left(\frac{\pi}{a}\right)^{d_{\mathrm{reg}}/2} .
+\]
+These manipulations define analytic continuations of the scalar invariants of
+any Feynman graph not involving a Levi--Civita tensor with one index for each
+regulator dimension, to complex
+values of $d_{\mathrm{reg}}$. We will see that the values of these graphs are finite,
+analytic functions, with multiple poles at integer values of $d_{\mathrm{reg}}$. One other
+apparent non-analyticity in $d_{\mathrm{reg}}$ comes from closed spinor loops, since the
+dimension of the spinor representation is $d_{\rm spin}=2^{[d_{\mathrm{reg}}/2]}$. This can
+be dealt with by simply defining $d_{\rm spin}$ to be any analytic function of
+$d_{\mathrm{reg}}$ that takes on the correct value in $D=4$ (or whatever other dimension we
+happen to be interested in). A way to understand this is to note that if we
+introduce $N_F$ copies of every fermion, in a U($N_F$)-symmetric way, then
+every closed fermion loop will introduce a power of $N_Fd_{\rm spin}$. As we
+continue away from $D=4$ we can modify $N_F$ so that this product is anything
+we want, subject to the condition that $N_F=1$, and $d_{\rm spin}=4$ when
+$D=4$.
+
+It should be emphasized that DR is a formal, \emph{perturbative}
+regularization scheme. One should not imagine that it represents e.g. the
+result of quantum field theory on some space of fractal dimension $d_{\mathrm{reg}}$,
+analytically continued to complex $d_{\mathrm{reg}}$. The result
+$\int\dd^{d_{\mathrm{reg}}}q/q^2=0$, which we will encounter below, shows us that DR does not
+correspond to a positive measure. That said, DR is by far the most convenient
+method of computing anything in quantum field theory, in the perturbative
+regime. In DR, UV divergences show up as poles at discrete values of the
+space-time dimension. We will use DR extensively below and provide many
+examples of such poles.
+
+The physically minded reader will be asking what the physical meaning of all
+of these varied cut-off schemes is. The correct answer is that most of them
+have no physics behind them at all. They are useful because the answers to
+correctly defined quantum field theory are universal: they do not depend on
+the cut-off scheme. More generally, we argue that, if one restricts attention
+to an expansion in powers of momentum over the cut-off, then all effects of one
+kind of cut-off can be encoded in a choice of ``irrelevant'' operators in a
+different cut-off scheme. This is the notion of \emph{effective field theory}.
+
+The fact that we get a length, the Planck length ($10^{-33}$ cm), by combining
+quantum mechanics and gravity, suggests that the physical cut-off on field
+theories of particle physics comes from the quantization of gravity. There are
+strong indications that theories of quantum gravity do not have precisely
+defined local observables and we do not yet understand either the
+correspondence principle by which these theories admit an approximate
+description in terms of local field theory or the circumstances in which the
+approximation is valid. The wonderful thing about the RG approach to field
+theory is that it allows us to discuss physics below the Planck energy scale
+without getting involved in the conceptual intricacies of quantum gravity.
+The RG shows us that, once we are in a situation in which it is valid to
+consider space-time geometry as a fixed background, then the analysis of local
+experiments in space-time depends on quantum gravitational effects only
+through a few parameters in a low-energy effective field theory.

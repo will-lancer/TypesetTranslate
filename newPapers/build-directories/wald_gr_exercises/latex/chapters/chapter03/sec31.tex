@@ -1,0 +1,357 @@
+% Source: Wald GR, physical PDF pp. 43--49
+%         (printed pp. 30--36).
+% Coverage: Section 3.1, Derivative Operators and Parallel Transport; equations (3.1.1)--(3.1.30).
+% Figures/tables/footnotes: no figures or tables; footnote 1.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Derivative Operators and Parallel Transport}\label{sec:3.1}
+
+A derivative operator, $\nabla$, (sometimes called a \emph{covariant derivative}) on a manifold
+$M$ is a map which takes each smooth (or merely differentiable) tensor field of type
+$(k,l)$ to a smooth tensor field of type $(k,l+1)$ and satisfies the five properties listed
+below. In the index notation, if $T^{a_1\cdots a_k}{}_{b_1\cdots b_l}\in\mathcal T(k,l)$, we denote the tensor field
+resulting from the action of $\nabla$ on $T$ by
+$\nabla_cT^{a_1\cdots a_k}{}_{b_1\cdots b_l}$. It is often notationally convenient to attach an
+index directly to the derivative operator and write it as $\nabla_a$, although this is to
+some extent an abuse of the index notation since $\nabla_a$ is not a covector. Expressed
+in the index notation, the five conditions required of a derivative operator are
+
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item \textbf{Linearity:} For all $A,B\in\mathcal T(k,l)$ and $\alpha,\beta\in\mathbb R$,
+\begin{equation*}
+  \begin{aligned}
+    \nabla_c\bigl(\alpha A^{a_1\cdots a_k}{}_{b_1\cdots b_l}
+    +\beta B^{a_1\cdots a_k}{}_{b_1\cdots b_l}\bigr)
+    ={}&\alpha\nabla_c A^{a_1\cdots a_k}{}_{b_1\cdots b_l}\\
+    &+\beta\nabla_c B^{a_1\cdots a_k}{}_{b_1\cdots b_l}.
+  \end{aligned}
+\end{equation*}
+
+\item \textbf{Leibniz rule:} For all $A\in\mathcal T(k,l)$, $B\in\mathcal T(k',l')$,
+\begin{equation*}
+  \begin{aligned}
+    \nabla_e\bigl[A^{a_1\cdots a_k}{}_{b_1\cdots b_l}
+    B^{c_1\cdots c_{k'}}{}_{d_1\cdots d_{l'}}\bigr]
+    ={}&\bigl[\nabla_eA^{a_1\cdots a_k}{}_{b_1\cdots b_l}\bigr]
+    B^{c_1\cdots c_{k'}}{}_{d_1\cdots d_{l'}}\\
+    &+A^{a_1\cdots a_k}{}_{b_1\cdots b_l}
+    \bigl[\nabla_eB^{c_1\cdots c_{k'}}{}_{d_1\cdots d_{l'}}\bigr].
+  \end{aligned}
+\end{equation*}
+
+\item \textbf{Commutativity with contraction:} For all $A\in\mathcal T(k,l)$,
+\begin{equation*}
+  \nabla_d\bigl(A^{a_1\cdots c\cdots a_k}{}_{b_1\cdots c\cdots b_l}\bigr)
+  =\nabla_d A^{a_1\cdots c\cdots a_k}{}_{b_1\cdots c\cdots b_l}.
+\end{equation*}
+
+\item \textbf{Consistency with the notion of tangent vectors as directional derivatives on scalar
+fields:} For all $f\in C^\infty(M)$ and all $t^a\in T_pM$,
+\begin{equation*}
+  t(f)=t^a\nabla_af.
+\end{equation*}
+
+\item \textbf{Torsion free:}\footnote{If condition 5 is not imposed, it can be shown that there
+must exist a tensor $T^c{}_{ab}$ antisymmetric in $a$ and $b$ such that
+$\nabla_a\nabla_bf-\nabla_b\nabla_af=-T^c{}_{ab}\nabla_cf$ (see problem 1).
+$T^c{}_{ab}$ is called the \emph{torsion tensor}, and thus our condition 5 states that the torsion
+tensor vanishes.} For all $f\in C^\infty(M)$,
+\begin{equation*}
+  \nabla_a\nabla_bf=\nabla_b\nabla_af.
+\end{equation*}
+\end{enumerate}
+
+The fifth condition is sometimes dropped, and indeed there are theories of gravitation where it is not imposed. However, in general relativity the derivative operator
+is assumed to satisfy condition 5, and, unless otherwise stated, all derivative operators considered in this book will be assumed to be torsion free.
+
+It is worth noting that the conditions 4 and 5 together with the Leibniz rule allow
+us to derive a simple expression for the commutator of two vector fields $v^a$, $w^b$ in
+terms of any derivative operator $\nabla_a$. Applied to any smooth function $f$, we have
+\begin{equation}
+  \begin{aligned}
+    [v,w](f)
+    &=v\{w(f)\}-w\{v(f)\}\\
+    &=v^a\nabla_a(w^b\nabla_bf)-w^a\nabla_a(v^b\nabla_bf)\\
+    &=\bigl\{v^a\nabla_aw^b-w^a\nabla_av^b\bigr\}\nabla_bf.
+  \end{aligned}
+  \tag{3.1.1}\label{eq:3.1.1}
+\end{equation}
+Thus we have
+\begin{equation}
+  [v,w]^b=v^a\nabla_aw^b-w^a\nabla_av^b.
+  \tag{3.1.2}\label{eq:3.1.2}
+\end{equation}
+
+Our first important task is to show that derivative operators exist. Let $\psi$ be a
+coordinate system and let $\{\partial/\partial x^\mu\}$ and $\{\dd x^\mu\}$ be the associated coordinate
+bases. Then in the region covered by these coordinates we may define a derivative operator,
+$\partial_a$, called an \emph{ordinary derivative}, as follows. For any smooth tensor field
+$T^{a_1\cdots a_k}{}_{b_1\cdots b_l}$ we take its components
+$T^{\mu_1\cdots\mu_k}{}_{\nu_1\cdots\nu_l}$ in this coordinate basis and define
+$\partial_cT^{a_1\cdots a_k}{}_{b_1\cdots b_l}$ to be the tensor whose components in this coordinate basis are the
+partial derivatives $\partial(T^{\mu_1\cdots\mu_k}{}_{\nu_1\cdots\nu_l})/\partial x^\sigma$. All five conditions follow immediately from
+the standard properties of partial derivatives. Indeed, by the equality of mixed partial
+derivatives, the fifth condition holds for all tensor fields, not just scalar fields. Thus,
+given a coordinate system $\psi$, we can construct an associated derivative operator $\partial_a$.
+Of course, a different choice of coordinate system $\psi'$ will yield a different derivative
+operator $\partial'_a$, that is, the components of the tensor
+$\partial_cT^{a_1\cdots a_k}{}_{b_1\cdots b_l}$ in the new (primed)
+coordinates will not be equal to the partial derivatives of the primed components of
+$T^{a_1\cdots a_k}{}_{b_1\cdots b_l}$ with respect to the primed coordinates. Thus, a given ordinary derivative
+operator is coordinate dependent, i.e., it is not naturally associated with the structure
+of the manifold.
+
+How unique are derivative operators? By condition (4), any two derivative operators $\nabla_a$ and $\widetilde\nabla_a$ must agree in their action on scalar fields. To investigate their possible
+disagreements on tensors of the next highest rank, let $\omega_b$ be a covector field and
+consider the difference $\widetilde\nabla_a(f\omega_b)-\nabla_a(f\omega_b)$ for an arbitrary scalar field $f$. By the
+Leibniz rule we have
+\begin{equation}
+  \begin{aligned}
+    \widetilde\nabla_a(f\omega_b)-\nabla_a(f\omega_b)
+    &=(\widetilde\nabla_af)\omega_b+f\widetilde\nabla_a\omega_b
+      -(\nabla_af)\omega_b-f\nabla_a\omega_b\\
+    &=f(\widetilde\nabla_a\omega_b-\nabla_a\omega_b),
+  \end{aligned}
+  \tag{3.1.3}\label{eq:3.1.3}
+\end{equation}
+where we have used property (4) again. Now at a point $p$, $\widetilde\nabla_a\omega_b$ and
+$\nabla_a\omega_b$ each depend on how $\omega_b$ changes as one moves away from $p$. However,
+Eq.~\eqref{eq:3.1.3} shows that their difference $\widetilde\nabla_a\omega_b-\nabla_a\omega_b$ depends only on the value of $\omega_b$ at point $p$. To see
+this, we suppose that $\omega'_b$ equals $\omega_b$ at $p$ and show that we get the same answer if we
+replace $\omega_b$ by $\omega'_b$. By problem 2 of chapter 2, it follows that since $\omega'_b-\omega_b$ vanishes
+at $p$ we can find smooth functions, $f_{(\alpha)}$, which vanish at $p$ and smooth covector
+fields, $\mu_b^{(\alpha)}$, such that
+\begin{equation}
+  \omega'_b-\omega_b=\sum_{\alpha=1}^{n}f_{(\alpha)}\mu_b^{(\alpha)}.
+  \tag{3.1.4}\label{eq:3.1.4}
+\end{equation}
+Hence, using Eq.~\eqref{eq:3.1.3}, at point $p$ we have
+\begin{equation}
+  \begin{aligned}
+    \widetilde\nabla_a(\omega'_b-\omega_b)-\nabla_a(\omega'_b-\omega_b)
+    &=\sum_\alpha\bigl\{\widetilde\nabla_a(f_{(\alpha)}\mu_b^{(\alpha)})
+      -\nabla_a(f_{(\alpha)}\mu_b^{(\alpha)})\bigr\}\\
+    &=\sum_\alpha f_{(\alpha)}
+      \bigl\{\widetilde\nabla_a\mu_b^{(\alpha)}-\nabla_a\mu_b^{(\alpha)}\bigr\}=0,
+  \end{aligned}
+  \tag{3.1.5}\label{eq:3.1.5}
+\end{equation}
+since each $f_{(\alpha)}=0$ at $p$. Thus, we have
+\begin{equation}
+  \widetilde\nabla_a\omega'_b-\nabla_a\omega'_b
+  =\widetilde\nabla_a\omega_b-\nabla_a\omega_b,
+  \tag{3.1.6}\label{eq:3.1.6}
+\end{equation}
+which proves our assertion.
+
+Thus, we have shown that $\widetilde\nabla_a-\nabla_a$ defines a map of covectors at $p$ (as opposed
+to covector fields defined in a neighborhood of $p$) to tensors of type $(0,2)$ at $p$.
+By property (1), this map is linear. Consequently $(\widetilde\nabla_a-\nabla_a)$ defines a tensor of type
+$(1,2)$ at $p$, which we will denote as $C^c{}_{ab}$. Thus, we have shown that given any two
+derivative operators $\widetilde\nabla_a$ and $\nabla_a$ there exists a tensor field $C^c{}_{ab}$ such that
+\begin{equation}
+  \nabla_a\omega_b=\widetilde\nabla_a\omega_b-C^c{}_{ab}\omega_c.
+  \tag{3.1.7}\label{eq:3.1.7}
+\end{equation}
+This displays the possible disagreements of the actions of $\nabla_a$ and $\widetilde\nabla_a$ on covector
+fields.
+
+A symmetry property of $C^c{}_{ab}$ follows immediately from condition (5). If we let
+$\omega_b=\nabla_bf=\widetilde\nabla_bf$, we find
+\begin{equation}
+  \nabla_a\nabla_bf=\widetilde\nabla_a\widetilde\nabla_bf-C^c{}_{ab}\widetilde\nabla_cf.
+  \tag{3.1.8}\label{eq:3.1.8}
+\end{equation}
+Since both $\nabla_a\nabla_bf$ and $\widetilde\nabla_a\widetilde\nabla_bf$ are symmetric in $a$ and $b$, it follows that $C^c{}_{ab}$ must also
+have this property
+\begin{equation}
+  C^c{}_{ab}=C^c{}_{ba}.
+  \tag{3.1.9}\label{eq:3.1.9}
+\end{equation}
+Equation~\eqref{eq:3.1.9}, of course, need not hold if the torsion-free requirement is dropped.
+
+The difference in the action of $\widetilde\nabla_a$ and $\nabla_a$ on vector fields and all higher rank tensor
+fields is determined by Eq.~\eqref{eq:3.1.7}, the Leibniz rule, and property (4). For
+every vector field $t^a$ and one-form field $\omega_a$, property (4) tells us that
+\begin{equation}
+  (\widetilde\nabla_a-\nabla_a)(\omega_bt^b)=0.
+  \tag{3.1.10}\label{eq:3.1.10}
+\end{equation}
+On the other hand, by the Leibniz rule, we have
+\begin{equation}
+  (\widetilde\nabla_a-\nabla_a)(\omega_bt^b)
+  =(C^c{}_{ab}\omega_c)t^b+\omega_b(\widetilde\nabla_a-\nabla_a)t^b.
+  \tag{3.1.11}\label{eq:3.1.11}
+\end{equation}
+Thus, index substituting on contracted indices, we find
+\begin{equation}
+  \omega_b\bigl[(\widetilde\nabla_a-\nabla_a)t^b+C^b{}_{ac}t^c\bigr]=0
+  \tag{3.1.12}\label{eq:3.1.12}
+\end{equation}
+for all $\omega_b$. This implies
+\begin{equation}
+  \nabla_at^b=\widetilde\nabla_at^b+C^b{}_{ac}t^c.
+  \tag{3.1.13}\label{eq:3.1.13}
+\end{equation}
+
+Continuing in a similar manner, we can derive the general formula for the action
+of $\nabla_a$ on an arbitrary tensor field in terms of $\widetilde\nabla_a$ and $C^c{}_{ab}$. For $T\in\mathcal T(k,l)$ we find
+\begin{equation}
+  \begin{aligned}
+    \nabla_aT^{b_1\cdots b_k}{}_{c_1\cdots c_l}
+    ={}&\widetilde\nabla_aT^{b_1\cdots b_k}{}_{c_1\cdots c_l}
+    +\sum_i C^{b_i}{}_{ad}T^{b_1\cdots \dd\cdots b_k}{}_{c_1\cdots c_l}\\
+    &-\sum_j C^d{}_{ac_j}T^{b_1\cdots b_k}{}_{c_1\cdots \dd\cdots c_l}.
+  \end{aligned}
+  \tag{3.1.14}\label{eq:3.1.14}
+\end{equation}
+Thus, the difference between the two derivative operators $\nabla_a$ and $\widetilde\nabla_a$ is completely
+characterized by the tensor field $C^c{}_{ab}$. Conversely, it is not difficult to check that if
+$\widetilde\nabla_a$ is a derivative operator and $C^c{}_{ab}$ is an arbitrary smooth tensor field which is
+symmetric in its lower indices, then $\nabla_a$ defined by Eq.~\eqref{eq:3.1.14} will also be a
+derivative operator. This shows that there is a great deal of freedom involved in the
+choice of a derivative operator, as on an $n$-dimensional manifold $C^c{}_{ab}$ has $n^2(n+1)/2$
+independent components to be specified at each point.
+
+The most important application of Eq.~\eqref{eq:3.1.14} arises from the case where $\widetilde\nabla_a$
+is an ordinary derivative operator $\partial_a$. In this case, the tensor field $C^c{}_{ab}$ is denoted $\Gamma^c{}_{ab}$
+and called a \emph{Christoffel symbol}. Thus, for example, we write
+\begin{equation}
+  \nabla_at^b=\partial_at^b+\Gamma^b{}_{ac}t^c.
+  \tag{3.1.15}\label{eq:3.1.15}
+\end{equation}
+Since we know how to compute the ordinary derivative associated with a given
+coordinate system, Eq.~\eqref{eq:3.1.15} (and, more generally, Eq.~\eqref{eq:3.1.14} with $\partial_a$ and
+$\Gamma^b{}_{ac}$ replacing $\widetilde\nabla_a$ and $C^b{}_{ac}$) tells us how to compute the derivative $\nabla_a$ if we know
+$\Gamma^b{}_{ac}$. Note that, as defined here, a Christoffel symbol is a tensor field associated with the
+derivative operator $\nabla_a$ and the coordinate system used to define $\partial_a$. However, if we
+change coordinates, we also change our ordinary derivative operator from $\partial_a$ to $\partial'_a$
+and thus we change our tensor $\Gamma^c{}_{ab}$ to a new tensor $\Gamma'^c{}_{ab}$. Hence the coordinate
+components of $\Gamma^c{}_{ab}$ in the unprimed coordinates will not be related to the components
+of $\Gamma'^c{}_{ab}$ in the primed coordinates by the tensor transformation law, equation (2.3.8),
+since we change tensors as well as coordinates.
+
+Given a derivative operator $\nabla_a$ we can define the notion of the parallel transport
+of a vector along a curve $C$ with a tangent $t^a$. A vector $v^a$ given at each point on the
+curve is said to be \emph{parallelly transported} as one moves along the curve if the equation
+\begin{equation}
+  t^a\nabla_av^b=0
+  \tag{3.1.16}\label{eq:3.1.16}
+\end{equation}
+is satisfied along the curve. More generally, one can define the parallel transport of
+a tensor of arbitrary rank by
+\begin{equation}
+  t^a\nabla_aT^{b_1\cdots b_k}{}_{c_1\cdots c_l}=0.
+  \tag{3.1.17}\label{eq:3.1.17}
+\end{equation}
+Choosing a coordinate system and using Eq.~\eqref{eq:3.1.15}, we can express equation~\eqref{eq:3.1.16} as
+\begin{equation}
+  t^a\partial_av^b+t^a\Gamma^b{}_{ac}v^c=0,
+  \tag{3.1.18}\label{eq:3.1.18}
+\end{equation}
+or, in terms of components in the coordinate basis and the parameter $t$ along the
+curve,
+\begin{equation}
+  \frac{\dd v^\nu}{\dd t}+\sum_{\mu,\lambda}t^\mu\Gamma^\nu{}_{\mu\lambda}v^\lambda=0.
+  \tag{3.1.19}\label{eq:3.1.19}
+\end{equation}
+This shows that the parallel transport of $v^a$ depends only on the values of $v^a$ on the
+curve, so we may consider the parallel transport properties of vectors defined only
+along the curve as opposed to vector fields. Furthermore, from the properties of
+ordinary differential equations it follows that Eq.~\eqref{eq:3.1.19} always has a unique
+solution for any given initial value of $v^a$. Thus, a vector at a point $p$ on the curve
+uniquely defines a \lq\lq parallel transported vector\rq\rq\ everywhere else on the curve. We
+may use this notion of parallel transport to identify (i.e., map into each other) the
+tangent spaces $T_pM$ and $T_qM$ of points $p$ and $q$ if we are given a derivative operator and
+a curve connecting $p$ and $q$. The mathematical structure arising from such a curve-dependent identification of the tangent spaces of different points is called a \emph{connection}. Conversely, one could start with the general notion of a connection and use
+it to define the notion of derivative operator.
+
+As we have seen above, given only the manifold structure, many distinct derivative operators are possible and no one of them is naturally preferred over the others.
+However, we show now that if one is given a metric $g_{ab}$ on the manifold, a natural
+choice of derivative operator is uniquely picked out. This is because the metric gives
+rise to a natural condition which we may impose on the notion of parallel transport.
+Given two vectors $v^a$ and $w^a$, we demand that their inner product $g_{ab}v^aw^b$ remain
+unchanged if we parallel-transport them along any curve. Thus we require
+\begin{equation}
+  t^a\nabla_a(g_{bc}v^bw^c)=0
+  \tag{3.1.20}\label{eq:3.1.20}
+\end{equation}
+for $v^b$ and $w^c$ satisfying Eq.~\eqref{eq:3.1.16}. Using the Leibniz rule, we obtain
+\begin{equation}
+  t^av^bw^c\nabla_ag_{bc}=0.
+  \tag{3.1.21}\label{eq:3.1.21}
+\end{equation}
+Equation~\eqref{eq:3.1.21} will hold for all curves and parallelly transported vectors if and
+only if
+\begin{equation}
+  \nabla_ag_{bc}=0,
+  \tag{3.1.22}\label{eq:3.1.22}
+\end{equation}
+which is the additional condition we wish to impose on $\nabla_a$. That this equation
+uniquely determines $\nabla_a$ is shown by the following theorem.
+
+\begin{theorem}\label{thm:3.1.1}
+Let $g_{ab}$ be a metric. Then there exists a unique derivative operator
+$\nabla_a$ satisfying $\nabla_ag_{bc}=0$.
+\end{theorem}
+\begin{proof}
+Let $\widetilde\nabla_a$ be any derivative operator, e.g., an ordinary derivative operator
+associated with a coordinate system. We attempt to solve for $C^c{}_{ab}$ so that the
+derivative operator determined by $\widetilde\nabla_a$ and $C^c{}_{ab}$ will satisfy the required property. We
+will prove the theorem by showing that a unique solution for $C^c{}_{ab}$ exists.
+
+By Eq.~\eqref{eq:3.1.14}, $C^c{}_{ab}$ must satisfy
+\begin{equation}
+  0=\nabla_ag_{bc}=\widetilde\nabla_ag_{bc}-C^d{}_{ab}g_{\dd c}-C^d{}_{ac}g_{bd},
+  \tag{3.1.23}\label{eq:3.1.23}
+\end{equation}
+that is,
+\begin{equation}
+  C_{cab}+C_{bac}=\widetilde\nabla_ag_{bc}.
+  \tag{3.1.24}\label{eq:3.1.24}
+\end{equation}
+By index substitution, we also have
+\begin{equation}
+  C_{cba}+C_{abc}=\widetilde\nabla_bg_{ac},
+  \tag{3.1.25}\label{eq:3.1.25}
+\end{equation}
+\begin{equation}
+  C_{bca}+C_{acb}=\widetilde\nabla_cg_{ab}.
+  \tag{3.1.26}\label{eq:3.1.26}
+\end{equation}
+We add Eqs.~\eqref{eq:3.1.24} and~\eqref{eq:3.1.25} and then subtract Eq.~\eqref{eq:3.1.26}. Using
+the symmetry property of $C^c{}_{ab}$, Eq.~\eqref{eq:3.1.9}, we find
+\begin{equation}
+  2C_{cab}=\widetilde\nabla_ag_{bc}+\widetilde\nabla_bg_{ac}-\widetilde\nabla_cg_{ab};
+  \tag{3.1.27}\label{eq:3.1.27}
+\end{equation}
+that is,
+\begin{equation}
+  C^c{}_{ab}=\frac{1}{2}g^{cd}
+  \bigl\{\widetilde\nabla_ag_{bd}+\widetilde\nabla_bg_{ad}-\widetilde\nabla_dg_{ab}\bigr\}.
+  \tag{3.1.28}\label{eq:3.1.28}
+\end{equation}
+This choice of $C^c{}_{ab}$ solves Eq.~\eqref{eq:3.1.22} and is manifestly unique, which completes the proof.
+\end{proof}
+
+Thus, a metric $g_{ab}$ naturally determines a derivative operator $\nabla_a$. For the remainder
+of this book, when a metric is present we will always choose the derivative operator
+to be this natural one. Furthermore, Eqs.~\eqref{eq:3.1.14} and~\eqref{eq:3.1.28} tell us how to
+compute $\nabla_a$ in terms of any other derivative operator $\widetilde\nabla_a$. In particular, in terms of an
+ordinary derivative operator the Christoffel symbol is
+\begin{equation}
+  \Gamma^c{}_{ab}=\frac{1}{2}g^{cd}
+  \bigl\{\partial_ag_{bd}+\partial_bg_{ad}-\partial_dg_{ab}\bigr\},
+  \tag{3.1.29}\label{eq:3.1.29}
+\end{equation}
+and thus the coordinate basis components of the Christoffel symbol are
+\begin{equation}
+  \Gamma^\rho{}_{\mu\nu}=\frac{1}{2}\sum_\sigma g^{\rho\sigma}
+  \left(\frac{\partial g_{\sigma\nu}}{\partial x^\mu}
+  +\frac{\partial g_{\mu\sigma}}{\partial x^\nu}
+  -\frac{\partial g_{\mu\nu}}{\partial x^\sigma}\right).
+  \tag{3.1.30}\label{eq:3.1.30}
+\end{equation}
+Thus, we can compute $\Gamma^c{}_{ab}$ (and thence $\nabla_a$) by taking partial derivatives of the
+coordinate basis components of the metric.

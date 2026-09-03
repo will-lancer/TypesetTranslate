@@ -1,0 +1,106 @@
+% BANKS-SOURCE: pdf=193 print=183 kind=figure id=9.10
+% The shaded gluon self-energy blob and the six one-loop graphs (a)--(f)
+% that make it up.  Everything is native TikZ.
+\tikzset{
+  BanksFLine/.style={line width=.5pt},
+  BanksFGluon/.style={line width=.5pt,decorate,
+    decoration={coil,aspect=.7,amplitude=3.6pt,segment length=#1}},
+  BanksFGluon/.default=8pt,
+  BanksFTip/.style={postaction={decorate},decoration={markings,
+    mark=at position .52 with {\arrow{Latex[length=1.9mm,width=1.9mm]}}}},
+}
+
+% A straight gluon stub from (#1,#3) to (#2,#3).
+\newcommand{\BanksFStub}[3]{%
+  \draw[BanksFGluon=6.5pt] (#1,#3)--(#2,#3);
+}
+
+% A longer straight gluon line, used for the two tadpole graphs.
+\newcommand{\BanksFLong}[3]{%
+  \draw[BanksFGluon=8.5pt] (#1,#3)--(#2,#3);
+}
+
+\newcommand{\BanksFDot}[2]{\fill (#1,#2) circle (.05);}
+
+% Lens-shaped one-loop bubble between vertices at (#1-.62,#2) and
+% (#1+.62,#2).  #3 carries the line style (dashed for ghosts and scalars),
+% and the loop runs counter-clockwise: arrow left on top, right below.
+\newcommand{\BanksFBubble}[3]{%
+  \draw[BanksFLine,#3,BanksFTip]
+    (#1+.62,#2) .. controls (#1+.32,#2+.66) and (#1-.32,#2+.66) .. (#1-.62,#2);
+  \draw[BanksFLine,#3,BanksFTip]
+    (#1-.62,#2) .. controls (#1-.32,#2-.66) and (#1+.32,#2-.66) .. (#1+.62,#2);
+  \BanksFDot{#1-.62}{#2}\BanksFDot{#1+.62}{#2}%
+}
+
+% The same bubble as a gluon loop: a rounded oval whose coils point inward.
+\newcommand{\BanksFGluonBubble}[2]{%
+  \draw[BanksFGluon=7pt]
+    (#1-.62,#2) .. controls (#1-.62,#2+.70) and (#1+.62,#2+.70) .. (#1+.62,#2);
+  \draw[BanksFGluon=7pt]
+    (#1+.62,#2) .. controls (#1+.62,#2-.70) and (#1-.62,#2-.70) .. (#1-.62,#2);
+  \BanksFDot{#1-.62}{#2}\BanksFDot{#1+.62}{#2}%
+}
+
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,baseline=-.45ex]
+
+  %% ---- first row: the definition, plus graphs (a) and (b) --------------
+  % shaded blob
+  \BanksFStub{0}{.85}{2.55}
+  \draw[fill=gray!35,line width=.5pt] (1.6,2.55) ellipse (.72 and .44);
+  \BanksFStub{2.35}{3.2}{2.55}
+  \BanksFDot{.85}{2.55}\BanksFDot{2.35}{2.55}
+  \node at (3.62,2.55) {$=$};
+
+  % (a) gluon loop
+  \BanksFStub{4.1}{4.98}{2.55}
+  \BanksFGluonBubble{5.6}{2.55}
+  \BanksFStub{6.22}{7.1}{2.55}
+  \node at (5.6,1.42) {\footnotesize (a)};
+
+  \node at (7.5,2.55) {$+$};
+
+  % (b) gluon tadpole: one vertex on a straight gluon line, coiled loop above
+  \BanksFLong{7.95}{9.45}{2.55}
+  \BanksFLong{9.45}{10.95}{2.55}
+  \draw[BanksFGluon=8pt] (9.45,2.55) arc (270:-90:.45);
+  \BanksFDot{9.45}{2.55}
+  \node at (9.45,1.42) {\footnotesize (b)};
+
+  %% ---- second row: (c) ghost loop and (d) fermion loop ------------------
+  \node at (1.85,.35) {$+$};
+  \BanksFStub{2.35}{3.23}{.35}
+  \BanksFBubble{3.85}{.35}{dashed}
+  \BanksFStub{4.47}{5.35}{.35}
+  \node at (3.85,-.75) {\footnotesize (c)};
+
+  \node at (5.72,.35) {$+$};
+  \BanksFStub{6.2}{7.08}{.35}
+  \BanksFBubble{7.7}{.35}{}
+  \BanksFStub{8.32}{9.2}{.35}
+  \node[anchor=north] at (7.02,.12) {$\mathrm{R_F}$};
+  \node[anchor=north] at (8.38,.12) {$\mathrm{R_F}$};
+  \node at (7.7,-.75) {\footnotesize (d)};
+
+  %% ---- third row: (e) scalar loop and (f) scalar tadpole ----------------
+  \node at (2.35,-1.85) {$+$};
+  \BanksFStub{2.85}{3.73}{-1.85}
+  \BanksFBubble{4.35}{-1.85}{dashed}
+  \BanksFStub{4.97}{5.85}{-1.85}
+  \node[anchor=north] at (3.67,-2.08) {$\mathrm{R_S}$};
+  \node[anchor=north] at (5.03,-2.08) {$\mathrm{R_S}$};
+  \node at (4.35,-2.95) {\footnotesize (e)};
+
+  \node at (6.25,-1.85) {$+$};
+  \BanksFLong{6.75}{8.25}{-1.85}
+  \BanksFLong{8.25}{9.75}{-1.85}
+  \draw[BanksFLine,dashed,
+        postaction={decorate},decoration={markings,
+          mark=at position .25 with {\arrow{Latex[length=1.9mm,width=1.9mm]}}}]
+    (8.65,-1.45) arc (0:360:.40);
+  \BanksFDot{8.25}{-1.85}
+  \node[anchor=north] at (8.25,-2.02) {$\mathrm{R_S}$};
+  \node at (8.25,-2.95) {\footnotesize (f)};
+\end{tikzpicture}%
+}

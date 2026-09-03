@@ -1,0 +1,72 @@
+% Source: Wald GR, physical PDF p. 286
+%         (printed p. 273).
+% Coverage: Figure 11.1, a spacetime diagram of the Einstein static universe.
+% Figures/tables/footnotes: Figure 11.1; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+\begingroup
+\renewcommand{\thefigure}{11.1}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=.86,>=latex,font=\small]
+  % The cylinder is the Einstein static universe after its S^2 symmetry is suppressed.
+  \draw[thick] (-1.55,2.75) arc[start angle=180,end angle=360,x radius=1.55,y radius=.30];
+  \draw[thick,dashed] (-1.55,2.75) arc[start angle=180,end angle=0,x radius=1.55,y radius=.30];
+  \draw[thick] (-1.55,-2.75) arc[start angle=180,end angle=360,x radius=1.55,y radius=.30];
+  \draw[thick,dashed] (-1.55,-2.75) arc[start angle=180,end angle=0,x radius=1.55,y radius=.30];
+  \draw[thick] (-1.55,2.75) -- (-1.55,-2.75);
+  \draw[thick] (1.55,2.75) -- (1.55,-2.75);
+  % The R=0 generator is seen through the cylinder; R=pi is the left outline.
+  \draw[dashed] (.72,2.75) -- (.72,-2.75);
+
+  % Constant-T sections through i^+, i^0, and i^-.
+  \foreach \yy in {2.18,.02,-2.18} {
+    \draw[thin] (-1.55,\yy) arc[start angle=180,end angle=360,x radius=1.55,y radius=.30];
+    \draw[thin,dashed] (-1.55,\yy) arc[start angle=180,end angle=0,x radius=1.55,y radius=.30];
+  }
+
+  % The two null sheets which bound the conformal image of Minkowski spacetime.
+  % Spatial infinity is on the R=pi generator, while timelike infinity lies on R=0.
+  \coordinate (izero) at (-1.42,.02);
+  \coordinate (iplus) at (.72,2.18);
+  \coordinate (iminus) at (.72,-2.18);
+  \draw[thick] (izero) .. controls (-.62,.30) and (.34,1.18) .. (iplus);
+  \draw[thick] (izero) .. controls (-.62,-.30) and (.34,-1.18) .. (iminus);
+  \draw[thick,dashed] (izero) .. controls (-1.05,.88) and (-.42,1.92) .. (iplus);
+  \draw[thick,dashed] (izero) .. controls (-1.05,-.88) and (-.42,-1.92) .. (iminus);
+
+  % Sparse hatching distinguishes the conformal image O.
+  \foreach \x/\ya/\yb in {-1.18/.15/.52,-.92/.12/.86,-.66/.10/1.16,
+                           -.40/.18/1.43,-.14/.37/1.68,.12/.62/1.90,
+                           .38/.94/2.08}
+    \draw[thin,densely dashed] (\x,\ya) -- (\x,\yb);
+  \foreach \x/\ya/\yb in {-1.18/-.52/-.15,-.92/-.86/-.12,-.66/-1.16/-.10,
+                           -.40/-1.43/-.18,-.14/-1.68/-.37,.12/-1.90/-.62,
+                           .38/-2.08/-.94}
+    \draw[thin,densely dashed] (\x,\ya) -- (\x,\yb);
+
+  \fill (iplus) circle (1.4pt);
+  \fill (iminus) circle (1.4pt);
+  \fill (izero) circle (1.4pt);
+  \node[right] at (.80,2.28) {\(i^+\)};
+  \node[right] at (.80,-2.28) {\(i^-\)};
+  \node[left] at (-1.48,.28) {\(\ii^0\)};
+  \node[left] at (-1.72,2.18) {\(T=\pi\)};
+  \node[left] at (-1.72,.02) {\(T=0\)};
+  \node[left] at (-1.72,-2.18) {\(T=-\pi\)};
+  \node[below] at (-1.55,-3.02) {\(R=\pi\)};
+  \node[below] at (.72,-3.02) {\(R=0\)};
+  \draw[->] (2.12,1.28) to[bend left=20] (.88,1.44);
+  \node[right] at (2.08,1.60) {\(\mathcal I^+\)};
+  \draw[->] (-1.82,-.62) to[bend right=18] (-.88,-.72);
+  \node[left] at (-1.78,-.88) {\(\mathcal I^-\)};
+\end{tikzpicture}
+\caption{A spacetime diagram of the Einstein static universe. As described in the
+text, Minkowski spacetime is conformally isometric to the region
+\(\mathcal O=I^+(i^-)\cap I^-(i^+)\) of this spacetime. The boundary of
+\(\mathcal O\)---consisting of the points \(i^-\), \(i^+\), and \(\ii^0\) and the null
+hypersurfaces \(\mathcal I^-\) and \(\mathcal I^+\)---defines a precise notion of
+\lq\lq infinity\rq\rq\ for Minkowski spacetime.}
+\label{fig:11.1}
+\end{figure}
+\endgroup

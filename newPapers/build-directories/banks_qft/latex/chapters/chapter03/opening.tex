@@ -1,0 +1,206 @@
+% BANKS-SOURCE: pdf=27 print=17 kind=chapter id=3
+\BanksChapter{3}{Interacting field theory}
+
+% BANKS-SOURCE: pdf=27 print=17 kind=prose
+Our considerations so far give us a description of free relativistic spin-zero particles.
+Problem 2.10 shows us that exchange of particles between sources leads to what Newton
+called a force (gradient of a position-dependent potential energy) between the sources.
+We can think of the mathematical sources of that problem as models for a pair of
+infinitely heavy particles, separated by a distance $R$. So forces arise by the exchange of
+\emph{virtual particles} between other particles. This motivates the idea that the way to intro-
+duce interactions between particles is to introduce a perturbation to the Lagrangian
+density of the Klein--Gordon equation,
+
+% BANKS-SOURCE: pdf=27 print=17 kind=equation id=3.1
+\begin{equation}
+  \mathcal L\to-\frac{1}{2}\left[(\partial\phi)^2+m^2\phi^2\right]+\mathcal L_I,
+  \label{eq:3.1}
+\end{equation}
+
+where e.g. $\mathcal L_I$ has terms with two creation operators and one annihilation operator
+and vice versa. Then $\phi$ particles can interact via two operations of $\mathcal L_I$. Starting from
+a two-particle state we can create an extra particle near particle 1, with one operation
+of $\mathcal L_I$, and let that new particle propagate to the vicinity of particle 2, where it is
+reabsorbed. The condition that these expressions be compatible with Lorentz invariance
+and causality is, not surprisingly (Problem 2.7), that the interaction Lagrangian $\mathcal L_I(x)$
+be local:
+
+% BANKS-SOURCE: pdf=27 print=17 kind=equation id=3.2
+\begin{equation}
+  [\mathcal L_I(x),\mathcal L_I(y)]=0\qquad\text{if }(x-y)^2>0.
+  \label{eq:3.2}
+\end{equation}
+
+Thus, causal Lorentz-invariant theories of interacting particles in Minkowski space-
+time are identical to local quantum field theories with Lagrangians that are not purely
+quadratic in the fields. The rest of this book is devoted to exploring such theories,
+mostly in a perturbation expansion when the interactions are weak. We will touch on
+non-perturbative issues in our discussions of chiral symmetry breaking and confine-
+ment in quantum chromodynamics, instantons and solitons, and in our treatment of
+renormalization.
+
+% BANKS-SOURCE: pdf=27 print=17 kind=section
+\subsection{Schwinger--Dyson equations and functional integrals}
+
+% BANKS-SOURCE: pdf=27 print=17 kind=prose
+Problem 2.4 shows us that many of the tools of conventional Hilbert-space quantum
+mechanics become problematic in interacting quantum field theory (QFT). The correct
+Hilbert-space formulation often depends on the interaction. Wightman and others,
+
+% BANKS-SOURCE: pdf=28 print=18 kind=prose
+following the seminal work of Schwinger and Dyson (SD) \cite{banks-ref-9,banks-ref-10,banks-ref-11}, showed how the
+Hilbert space could be reconstructed from generalized Green\footnote[1]{Here I follow a revered teacher who believed that the locution ``Green's functions'' was an abomination, and at odds with standard practice: Bessel, Legendre, Whittaker, and especially Weierstrass do fine without the possessive. What's so special about Mr. Green?} functions. We will follow a
+variant of the SD approach to the derivation of a set of equations for Green functions,
+which determine them and lead to a formal solution of the problem of QFT in terms of
+\emph{Feynman path integrals}, or \emph{functional integrals}. This formulation is manifestly covariant
+and easily amenable to a variety of approximation schemes. The generalized $n$-point Green
+functions are the expressions
+
+% BANKS-SOURCE: pdf=28 print=18 kind=display
+\[
+\langle0|T\phi(x_1)\ldots\phi(x_n)|0\rangle,
+\]
+
+where $\phi$ is the Heisenberg field operator. These functions would appear in the Dirac-
+picture perturbation expansion of the response of a QFT to an external source $H\to
+H-\int\dd^{D-1}\mathbf x\,J(\mathbf x,t)\phi(\mathbf x,t)$. It is easy to see (Problem 3.2) that in conventional quantum
+mechanics these would determine the ground-state wave function and the Hamiltonian
+of the system. In field theory they lead directly to a computation of all particle masses
+and all scattering amplitudes of those particles, as we will see below in the section on
+the Lehmann--Symanzik--Zimmermann (LSZ) formula. This is done in a completely
+covariant manner, without solving the Schrödinger equation or worrying about whether
+the free and interacting theories live in the same Hilbert space.
+
+The idea of SD was to use the Heisenberg equations of motion and canonical com-
+mutation relations (Problem 2.5) to derive a closed set of equations for the Green
+functions. The generating functional for the Green functions is the vacuum persistence
+amplitude in the presence of the source,
+
+% BANKS-SOURCE: pdf=28 print=18 kind=equation id=3.3
+\begin{equation}
+Z[J]\equiv\langle0|T\ee^{\ii\int\dd^D x\,J(x)\phi(x)}|0\rangle.
+\label{eq:3.3}
+\end{equation}
+\BanksImplicitHook{I-CH03-001}
+
+In free scalar field theory it is easy to work this out by operator methods. The action
+of the source $n$ times can create $n$ particles, which must then be re-annihilated to get a
+state that has overlap with the vacuum. Our aim will be to find an equation for $Z[J]$,
+allowing us to solve for it in a general field theory.
+
+If the Lagrangian density is $\mathcal L=[-\frac12(\partial_\mu\phi)^2-V(\phi)]$, then a naive application of the
+Heisenberg equations of motion gives
+
+% BANKS-SOURCE: pdf=28 print=18 kind=equation id=3.4
+\begin{equation}
+  \partial^2\frac{\delta Z}{\ii\delta J(x)}
+  =\left\langle0\left|T\frac{\partial V(\phi)}{\partial\phi}(x)\ee^{\ii\int\dd^D y\,J(y)\phi(y)}\right|0\right\rangle.
+  \label{eq:3.4}
+\end{equation}
+\BanksImplicitHook{I-CH03-002}
+
+This can be rewritten as
+
+% BANKS-SOURCE: pdf=28 print=18 kind=equation id=3.5
+\begin{equation}
+  \partial^2\frac{\delta Z}{\ii\delta J(x)}
+  =\frac{\partial V}{\partial\phi}\left(\frac{\delta}{\ii\delta J(x)}\right)Z[J].
+  \label{eq:3.5}
+\end{equation}
+
+In these equations, I have introduced some notation that we will be using throughout
+the book. Square brackets in $Z[J]$ denote the fact that $Z$ is a \emph{functional} of the function
+
+% BANKS-SOURCE: pdf=29 print=19 kind=prose
+$J$. That is, it is a rule that gives us a number for each function. All the functionals we
+will consider will have power-series expansions of the form
+
+% BANKS-SOURCE: pdf=29 print=19 kind=display
+\[
+  Z[J]=\sum_n\frac{1}{n!}\int\prod_{r=1}^n\dd^D x_r\,Z_n(x_1,\ldots,x_n)J(x_1)\ldots J(x_n),
+\]
+
+where the integral is over all the indicated coordinates. The functional derivative of
+such functionals is defined by the formal rule
+
+% BANKS-SOURCE: pdf=29 print=19 kind=display
+\[
+  \frac{\delta J(x)}{\delta J(y)}=\delta^D(x-y).
+\]
+
+The rigorous mathematical meaning of many of our equations will take mathemati-
+cians decades to work out. Our attitude is that \emph{all} of the equations of continuum
+QFT have a formal sense only. They are really defined by the process of regularization
+and renormalization, which we will study in Chapter 9. The real world is probably
+not described by a mathematically well-defined continuum QFT. The combination of
+quantum mechanics and gravity defines a fundamental length scale of order $10^{-33}$ cm,
+and QFT almost surely fails at that scale. Our real challenge will be to understand
+how to define a procedure for making predictions about length scales accessible in the
+laboratory, which depends as little as possible on the quantum gravitational physics we
+do not yet understand.
+
+Returning to our formal equation (\ref{eq:3.4}), the reader should review this carefully to
+make sure that she/he understands that the time ordering is being applied both to
+the space-time point $x$ and to the multiple integration variables in the expansion
+of the exponential. This is what allows us to differentiate operator expressions as if
+they were ordinary functions. The time ordering takes care of the operator-ordering
+problems.
+
+Despite this cunning trick, we have made a mistake. The differential operator $\partial^2=
+-\partial_0^2+\nabla^2$ contains time derivatives, which act on the Heaviside functions in the time-
+ordering operation. Consider
+
+% BANKS-SOURCE: pdf=29 print=19 kind=equation id=3.6
+\begin{equation}
+\partial_0^2\langle0|T\phi(x)\phi(y)|0\rangle
+=\partial_0\left[\langle0|T\partial_0\phi(x)\phi(y)|0\rangle
++\delta(x^0-y^0)\langle0|[\phi(x),\phi(y)]|0\rangle\right].
+\label{eq:3.6}
+\end{equation}
+
+The second term comes from differentiating the Heaviside functions ($\partial_0\theta(x-y)=
+-\partial_0\theta(y-x)=\delta(x^0-y^0)$).\footnote[2]{Note that all of the derivatives in this section are $x$ derivatives.} It gives rise to an equal-time commutator, which vanishes
+by virtue of the canonical commutation relations you worked out in Problem 2.5.
+However, when we perform the second time derivative, we get a similar term, which
+involves the equal-time commutator of $\partial_0\phi$ and $\phi$. Since these variables are canonically
+conjugate, this term is proportional to $\delta^{D-1}(\mathbf x-\mathbf y)$. Thus
+
+% BANKS-SOURCE: pdf=29 print=19 kind=equation id=3.7
+\begin{equation}
+\partial_0^2\langle0|T\phi(x)\phi(y)|0\rangle
+=\langle0|T\partial_0^2\phi(x)\phi(y)|0\rangle-\ii\delta^D(x-y).
+\label{eq:3.7}
+\end{equation}
+
+When we apply the second derivative operator to $\langle0|T\phi(x)\phi(y_1)\ldots\phi(y_n)|0\rangle$ we
+observe a similar phenomenon (Problem 3.1). Differentiation of the Heaviside functions
+
+% BANKS-SOURCE: pdf=30 print=20 kind=prose
+gives rise to equal-time commutators of $\phi(x)$ and $\partial_0\phi(x)$ with each of the fields
+at $y_i$:
+
+% BANKS-SOURCE: pdf=30 print=20 kind=equation id=3.8
+\begin{equation}
+\begin{aligned}
+\partial_0^2\langle0|T\phi(x)\phi(y_1)\ldots\phi(y_n)|0\rangle
+={}&\langle0|T\partial_0^2\phi(x)\phi(y_1)\ldots\phi(y_n)|0\rangle\\
+&-\ii\sum_j\delta^D(x-y_j)\langle0|T\phi(y_1)\ldots\phi(y_{j-1})\phi(y_{j+1})\ldots\phi(y_n)|0\rangle.
+\end{aligned}
+\label{eq:3.8}
+\end{equation}
+
+If we multiply this equation by $J(y_1)\ldots J(y_n)$, integrate, and use the Heisenberg
+equation for $\partial_0^2\phi$, we obtain the correct SD equation:
+
+% BANKS-SOURCE: pdf=30 print=20 kind=equation id=3.9
+\begin{equation}
+\partial^2\frac{\delta Z}{\ii\delta J(x)}
+=\left(\frac{\partial V}{\partial\phi}\left[\frac{\delta}{\ii\delta J(x)}\right]-J(x)\right)Z[J].
+\label{eq:3.9}
+\end{equation}
+
+This equation may be described succinctly in the following words: Think of the
+functional differential operator $\delta/\ii\delta J(x)$ as a field and write down the left-hand side of
+the field equation implied by the Lagrangian $\mathcal L+\phi J$, for this field. This gives us a linear
+functional differential operator $\operatorname{SD}[\delta/\ii\delta J(x)]$, where e.g. $\operatorname{SD}[\phi]=\partial^2\phi-V'(\phi)+J$.
+The SD equation is $\operatorname{SD}Z[J]=0$.

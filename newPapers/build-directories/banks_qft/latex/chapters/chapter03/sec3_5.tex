@@ -1,0 +1,91 @@
+% BANKS-SOURCE: pdf=38 print=28 kind=section id=3.5
+\subsection{Legendre's trees}
+
+% BANKS-SOURCE: pdf=38 print=28 kind=prose
+The graphical assertions of the previous two paragraphs were that the Legendre
+transform relation
+
+% BANKS-SOURCE: pdf=38 print=28 kind=equation id=3.35
+\begin{equation}
+W[J]=\int\dd^D x\,\phi(x)J(x)+\Gamma[\phi]
+\label{eq:3.35}
+\end{equation}
+
+(where $\phi(x)$ is identified with $\delta W/\delta J(x)$ and $J(x)$ with $-\delta\Gamma/\delta\phi(x)$) generates an
+expansion of the (connected) Green functions obtained from the expansion of $W$ in
+terms of tree diagrams whose vertices are the 1PI Green functions and whose branches
+are the full propagator
+
+% BANKS-SOURCE: pdf=39 print=29 kind=display
+\[
+\frac{\delta^2W}{\delta J(x)\delta J(y)}.
+\]
+
+In leading order in the semi-classical expansion we have $\Gamma=S/g^2$.
+The proof of this relation is simple. We start from the obvious identity
+
+% BANKS-SOURCE: pdf=39 print=29 kind=display
+\[
+\frac{\delta^2W}{\delta J(x)\delta J(y)}
+=\frac{\delta\phi(y)}{\delta J(x)}
+=\left(\frac{\delta J(y)}{\delta\phi(x)}\right)^{-1}
+=-\frac{\delta^2\Gamma}{\delta\phi(x)\delta\phi(y)}.
+\]
+
+The inverse in the second equality is meant in the sense of integral operators,
+
+% BANKS-SOURCE: pdf=39 print=29 kind=display
+\[
+\int\dd^D z\,K(x,z)K^{-1}(z,y)=\delta^D(x-y),
+\]
+
+which is the continuous analog of matrix inversion. We write this as $W_2=-\Gamma_2^{-1}$, where
+$\Gamma_2$ is the integral operator made from the 1PI two-point function.
+Differentiate this identity with respect to $J(z)$,
+
+% BANKS-SOURCE: pdf=39 print=29 kind=equation id=3.36
+\begin{equation}
+\frac{\delta^3W}{\delta J(x)\delta J(y)\delta J(z)}=-\frac{\delta\Gamma_2^{-1}(x,y)}{\delta J(z)},
+\label{eq:3.36}
+\end{equation}
+
+and use the continuous analog of the matrix differentiation formula $\dd K^{-1}=-K^{-1}\dd K K^{-1}$ to write this as
+
+% BANKS-SOURCE: pdf=39 print=29 kind=equation id=3.37
+\begin{equation}
+W_3(x,y,z)=\int\dd^D w_1\,\dd^D w_2\,W_2(x,w_1)W_2(y,w_2)\frac{\delta\Gamma_2(w_1,w_2)}{\delta J(z)}.
+\label{eq:3.37}
+\end{equation}
+
+Using the chain rule for differentiation and the relation $\phi=\delta W/\delta J$, this becomes
+
+% BANKS-SOURCE: pdf=39 print=29 kind=equation id=3.38
+\begin{equation}
+W_3(x,y,z)=\int\dd^D w_1\,\dd^D w_2\,\dd^D w_3\,W_2(x,w_1)W_2(y,w_2)W_2(z,w_3)\Gamma_3(w_1,w_2,w_3).
+\label{eq:3.38}
+\end{equation}
+
+This is the formula implied by the three-point position-space Feynman diagram of
+Figure~\ref{fig:3.1}.
+It is now all over except for the shouting, which mathematicians call induction. When
+we differentiate $W_3$ w.r.t. $J(s)$, the derivatives act either on the propagators or on $\Gamma_3$.
+The latter contribution gives the first term in the four-point diagram of Figure~\ref{fig:3.1}. For
+the former, we simply rerun the previous derivation to get the second four-point term.
+Similarly, for $W_n$, either differentiation acts on the $\Gamma_k$, with $3\leq k\leq n$, and generates
+$\Gamma_{k+1}$ and an extra external $W_2$ leg, or it acts on one of the propagators, adding an
+extra three-point vertex and external propagator. In words, $W_n$ is generated from all
+possible tree diagrams.
+
+This result is very powerful. Below we will show that the exact momentum-space
+two-point function, $W_2(p)$ (when $J=0$ the two-point function is translation-invariant
+and its Fourier transform depends only on one variable), has a pole at the mass of
+any stable particle that can be created from the vacuum by the quantum field $\phi$. The
+
+% BANKS-SOURCE: pdf=40 print=30 kind=figure id=3.1
+\begin{figure}[htbp]
+  \centering
+  \input{figures/chapter03-fig-3-1.tex}
+  \caption{Legendre transform $W[J]=\Gamma[\phi]+\int\dd^D x\,\phi J$ makes trees.}
+  \label{fig:3.1}
+\end{figure}
+\BanksImplicitHook{I-CH03-014}

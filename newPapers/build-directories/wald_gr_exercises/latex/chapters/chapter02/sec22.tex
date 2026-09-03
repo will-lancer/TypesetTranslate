@@ -1,0 +1,269 @@
+% Source: Wald GR, physical PDF pp. 27--31
+%         (printed pp. 14--18).
+% Coverage: Section 2.2, Vectors; equations (2.2.1)--(2.2.14).
+% Figures/tables/footnotes: Figs. 2.2--2.3; footnote 1; no tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Vectors}\label{sec:2.2}
+
+The concept of a vector space is undoubtedly familiar to most readers.  In
+prerelativity physics it is assumed that space has the natural structure of a
+three-dimensional vector space once one has designated a point to serve as the
+origin; the natural rules for adding and scalar multiplying spatial displacements
+satisfy the vector space axioms.\footnote{See, e.g., Royden (1963) for the list of
+vector space axioms.} In special relativity, spacetime similarly has the natural
+structure of a four-dimensional vector space.  However, when one considers curved
+geometries (as we do in general relativity), this vector space structure is lost.  For
+example, there is no natural notion of how to ``add'' two points on a sphere and end
+up with a third point on the sphere.  Nevertheless, vector space structure can be
+recovered in the limit of ``infinitesimal displacements'' about a point.  It is this
+notion of ``infinitesimal displacements'' or tangent vectors which lies at the
+foundation of calculus on manifolds.  Therefore, we will devote considerable
+attention below to giving a precise mathematical definition of this concept.
+
+\input{figures/chapter02/fig2_2.tex}
+
+For manifolds like the sphere, which arise naturally as surfaces embedded in
+\(\mathbb{R}^n\), the intuitive notion of a tangent vector at point \(p\) is a vector
+lying in the tangent plane illustrated in Fig.~\ref{fig:2.2}.  For manifolds embedded
+in \(\mathbb{R}^n\), this idea can be made mathematically precise.  However, in
+many situations---most importantly in general relativity---one is given a manifold
+without an embedding of it in \(\mathbb{R}^n\).  Thus, it is important (and, in the
+long run, much more useful) to define a tangent vector in a way that refers only to
+the intrinsic structure of the manifold, not to its possible embeddings in
+\(\mathbb{R}^n\).
+
+Such a definition is provided by the notion of a tangent vector as a directional
+derivative.  In \(\mathbb{R}^n\) there is a one-to-one correspondence between
+vectors and directional derivatives.  A vector \(v=(v^1,\ldots,v^n)\) defines the
+directional derivative operator \(\sum_\mu v^\mu(\partial/\partial x^\mu)\) and
+vice versa.  Directional derivatives are characterized by their linearity and
+% SOURCE ERRATUM: the source uses the variant spelling ``Leibnitz'' throughout;
+% standardized here and throughout the edition to ``Leibniz.''
+``Leibniz rule'' behavior when acting on functions.  Thus on a manifold \(M\) let
+\(C^\infty(M)\) denote the collection of \(C^\infty\) functions from \(M\) into
+\(\mathbb{R}\).  We define a tangent vector \(v\) at point \(p\in M\) to be a map
+\(v:C^\infty(M)\to\mathbb{R}\) which (1) is linear and (2) obeys the Leibniz
+rule:
+\begin{enumerate}[label=(\arabic*)]
+  \item \(v(af+bg)=av(f)+bv(g)\), for all \(f,g\in C^\infty(M)\);
+    \(a,b\in\mathbb{R}\);
+  \item \(v(fg)=f(p)v(g)+g(p)v(f)\).
+\end{enumerate}
+Note that (1) and (2) imply that if \(h\in C^\infty(M)\) is a constant function,
+i.e., \(h(q)=c\) for all \(q\in M\), then \(v(h)=0\), since from (2) we have
+\(v(h^2)=2cv(h)\) whereas from (1) we have \(v(h^2)=v(ch)=cv(h)\).
+
+Though it may not be obvious at first glance, this definition does indeed make
+precise and give intrinsic meaning to the concept of an ``infinitesimal
+displacement.''  In the first place, it is easy to see that the collection, \(T_pM\),
+of tangent vectors at \(p\) has the structure of a vector space under the addition
+law \((v_1+v_2)(f)=v_1(f)+v_2(f)\) and scalar multiplication law
+\((av)(f)=av(f)\).  A second vital property of \(T_pM\) is given by the following
+theorem:
+
+\medskip
+\makeatletter\def\@currentlabel{2.2.1}\makeatother
+\phantomsection\label{thm:2.2.1}
+\noindent\textsc{Theorem 2.2.1.}\ \emph{Let \(M\) be an \(n\)-dimensional
+manifold.  Let \(p\in M\) and let \(T_pM\) denote the tangent space at \(p\).
+Then \(\dim T_pM=n\).}
+
+\begin{proof}
+We shall show that \(\dim T_pM=n\) by constructing a basis of \(T_pM\), i.e., by
+finding \(n\) linearly independent tangent vectors which span \(T_pM\).  Let
+\(\psi:\mathcal O\to U\subseteq\mathbb{R}^n\) be a chart with \(p\in\mathcal O\)
+(see Fig.~\ref{fig:2.3}).  If \(f\in C^\infty(M)\), then by definition
+\(f\circ\psi^{-1}:U\to\mathbb{R}\) is \(C^\infty\).  For
+\(\mu=1,\ldots,n\) define \(X_\mu:C^\infty(M)\to\mathbb{R}\) by
+\begin{equation}
+  X_\mu(f)=
+  \left.\frac{\partial}{\partial x^\mu}\left(f\circ\psi^{-1}\right)
+  \right|_{\psi(p)} ,
+  \tag{2.2.1}\label{eq:2.2.1}
+\end{equation}
+where \((x^1,\ldots,x^n)\) are the Cartesian coordinates of \(\mathbb{R}^n\).
+Then \(X_1,\ldots,X_n\) are tangent vectors, and it is easily seen that they are
+linearly independent.  To show that they span \(T_pM\) we make use of the
+following result from advanced calculus (see problem 2): If
+\(F:\mathbb{R}^n\to\mathbb{R}\) is \(C^\infty\), then for each
+\(a=(a^1,\ldots,a^n)\in\mathbb{R}^n\) there exist \(C^\infty\) functions
+\(H_\mu\) such that for all \(x\in\mathbb{R}^n\) we have
+\begin{equation}
+  F(x)=F(a)+\sum_{\mu=1}^n\left(x^\mu-a^\mu\right)H_\mu(x) .
+  \tag{2.2.2}\label{eq:2.2.2}
+\end{equation}
+Furthermore, we have
+\begin{equation}
+  H_\mu(a)=\left.\frac{\partial F}{\partial x^\mu}\right|_{x=a} .
+  \tag{2.2.3}\label{eq:2.2.3}
+\end{equation}
+We apply this result here, letting \(F=f\circ\psi^{-1}\) and \(a=\psi(p)\).
+Then, for all \(q\in\mathcal O\) we have
+\begin{equation}
+  f(q)=f(p)+\sum_{\mu=1}^n
+  \left[x^\mu\circ\psi(q)-x^\mu\circ\psi(p)\right]H_\mu(\psi(q)) .
+  \tag{2.2.4}\label{eq:2.2.4}
+\end{equation}
+Let \(v\in T_pM\).  We wish to show that \(v\) is a linear combination of
+\(X_1,\ldots,X_n\).  To do so, we apply \(v\) to \(f\), using
+Eq.~\eqref{eq:2.2.4}, the linearity and Leibniz properties of \(v\), and the fact
+that \(v\) applied to a constant [such as \(f(p)\)] vanishes.  We obtain
+\begin{equation}
+\begin{aligned}
+  v(f)
+  &=v[f(p)]+\left.\sum_{\mu=1}^n\left\{
+    \begin{aligned}
+      &\left[x^\mu\circ\psi(q)-x^\mu\circ\psi(p)\right]v(H_\mu\circ\psi)\\
+      &\quad +(H_\mu\circ\psi)\,v\left[x^\mu\circ\psi-x^\mu\circ\psi(p)\right]
+    \end{aligned}
+  \right\}\right|_{q=p} \\
+  &=\sum_{\mu=1}^n\left[H_\mu\circ\psi(p)\right]v(x^\mu\circ\psi) .
+\end{aligned}
+\tag{2.2.5}\label{eq:2.2.5}
+\end{equation}
+But by Eq.~\eqref{eq:2.2.3}, \(H_\mu\circ\psi(p)\) is just \(X_\mu(f)\).  Thus,
+for all \(f\in C^\infty(M)\), we have
+\begin{equation}
+  v(f)=\sum_{\mu=1}^n v^\mu X_\mu(f) ,
+  \tag{2.2.6}\label{eq:2.2.6}
+\end{equation}
+where the coefficients \(v^\mu\) are the values of \(v\) applied to the function
+\(x^\mu\circ\psi\),
+\begin{equation}
+  v^\mu=v(x^\mu\circ\psi) .
+  \tag{2.2.7}\label{eq:2.2.7}
+\end{equation}
+Thus, we have expressed an arbitrary tangent vector \(v\) as a sum of the
+\(X_\mu\),
+\begin{equation}
+  v=\sum_{\mu=1}^n v^\mu X_\mu ,
+  \tag{2.2.8}\label{eq:2.2.8}
+\end{equation}
+which completes the proof.
+\end{proof}
+
+\input{figures/chapter02/fig2_3.tex}
+
+The basis \(\{X_\mu\}\) of \(T_pM\) introduced in the proof of
+Theorem~\ref{thm:2.2.1} is called a \emph{coordinate basis} and is of considerable
+importance in its own right.  Frequently, one denotes \(X_\mu\) as simply
+\(\partial/\partial x^\mu\).  Had we chosen a different chart, \(\psi'\), we
+would have obtained a different coordinate basis \(\{X'_\nu\}\).  We can, of
+course, express \(X_\mu\) in terms of the new basis \(\{X'_\nu\}\).  Using the
+chain rule of advanced calculus, we have
+\begin{equation}
+  X_\mu=\sum_{\nu=1}^n
+  \left.\frac{\partial x'^\nu}{\partial x^\mu}\right|_{\psi(p)}X'_\nu ,
+  \tag{2.2.9}\label{eq:2.2.9}
+\end{equation}
+where \(x'^\nu\) denotes the \(\nu\)th component of the map
+\(\psi'\circ\psi^{-1}\).  Hence, from Eqs.~\eqref{eq:2.2.8} and
+\eqref{eq:2.2.9} we find that the components \(v'^\nu\) of a vector \(v\) in the
+new coordinate basis are related to the components \(v^\mu\) in the old basis by
+\begin{equation}
+  v'^\nu=\sum_{\mu=1}^n v^\mu\frac{\partial x'^\nu}{\partial x^\mu} .
+  \tag{2.2.10}\label{eq:2.2.10}
+\end{equation}
+Equation~\eqref{eq:2.2.10} is known as the \emph{vector transformation law}.
+
+A \emph{smooth curve}, \(C\), on a manifold \(M\) is simply a \(C^\infty\) map
+of \(\mathbb{R}\) (or an interval of \(\mathbb{R}\)) into \(M\),
+\(C:\mathbb{R}\to M\).  At each point \(p\in M\) lying on the curve \(C\) we can
+associate with \(C\) a tangent vector \(T\in T_pM\) as follows.  For
+\(f\in C^\infty(M)\) we set \(T(f)\) equal to the derivative of the function
+\(f\circ C:\mathbb{R}\to\mathbb{R}\) evaluated at \(p\), i.e.,
+\(T(f)=\dd(f\circ C)/\dd t\).  Note that the above coordinate basis vector \(X_\mu\)
+associated with a chart \(\psi\) is the tangent to the curves on \(M\) obtained by
+keeping all coordinate values except \(x^\mu\) constant.  Notice also that when we
+choose a coordinate system \(\psi\), the curve \(C\) on \(M\) will get mapped into
+a curve \(x^\mu(t)\) in \(\mathbb{R}^n\).  Then, for any \(f\in C^\infty(M)\), we
+have
+\begin{equation}
+  T(f)=\frac{\dd}{\dd t}(f\circ C)=
+  \sum_\mu\frac{\partial}{\partial x^\mu}(f\circ\psi^{-1})\frac{\dd x^\mu}{\dd t}
+  =\sum_\mu\frac{\dd x^\mu}{\dd t}X_\mu(f) .
+  \tag{2.2.11}\label{eq:2.2.11}
+\end{equation}
+Thus, in any coordinate basis, the components \(T^\mu\) of the tangent vector to
+the curve are given by
+\begin{equation}
+  T^\mu=\frac{\dd x^\mu}{\dd t} .
+  \tag{2.2.12}\label{eq:2.2.12}
+\end{equation}
+
+In the discussion above, we fixed a point \(p\in M\) and considered the tangent
+space, \(T_pM\), at \(p\).  At another point \(q\in M\) we could, of course,
+define \(T_qM\).  It is important to emphasize that, given only the structure of a
+manifold, there is no natural way of identifying \(T_qM\) with \(T_pM\); that is,
+there is no way of determining whether a tangent vector at \(q\) is ``the same'' as
+a tangent vector at \(p\).  In chapter 3, we shall see that when additional
+structure is given (namely, a connection or derivative operator on the manifold),
+one has a notion of ``parallel transport'' of vectors from \(p\) to \(q\) along a
+curve joining these points.  However, if the curvature is nonzero, the identification
+of \(T_pM\) with \(T_qM\) obtained in this manner will depend on the choice of
+curve.
+
+A \emph{tangent field}, \(v\), on a manifold \(M\) is an assignment of a tangent
+vector, \(v|_p\in T_pM\), at each point \(p\in M\).  Despite the fact that the
+tangent spaces \(T_pM\) and \(T_qM\) at different points are different vector
+spaces, there is a natural notion of what it means for \(v\) to vary smoothly from
+point to point.  If \(f\in C^\infty(M)\), then at each \(p\in M\), \(v|_p(f)\) is a
+number, i.e., \(v(f)\) is a function on \(M\).  The tangent field \(v\) is said to
+be \emph{smooth} if for each smooth function \(f\), the function \(v(f)\) is also
+smooth.  Since the coordinate basis fields \(X_\mu\) are easily verified to be
+smooth, it follows that a vector field \(v\) is smooth if and only if its coordinate
+basis components, \(v^\mu\), are smooth functions.
+
+In the heuristic discussion above, we described tangent vectors as ``infinitesimal
+displacements.''  We shall now show that precise meaning can be given to this idea.
+Let \(M\) be a manifold.  A \emph{one-parameter group of diffeomorphisms}
+\(\phi_t\) is a \(C^\infty\) map from \(\mathbb{R}\times M\to M\) such that for
+fixed \(t\in\mathbb{R}\), \(\phi_t:M\to M\) is a diffeomorphism and for all
+\(t,s\in\mathbb{R}\), we have \(\phi_t\circ\phi_s=\phi_{t+s}\).  (In particular,
+this last relation implies that \(\phi_{t=0}\) is the identity map.)  We can
+associate to \(\phi_t\) a vector field \(v\) as follows: for fixed \(p\in M\),
+\(\phi_t(p):\mathbb{R}\to M\) is a curve, called an \emph{orbit} of \(\phi_t\),
+which passes through \(p\) at \(t=0\).  Define \(v|_p\) to be the tangent to this
+curve at \(t=0\).  Thus, associated to a one-parameter group of (finite)
+transformations of \(M\) is a vector field, \(v\), which can be thought of as the
+infinitesimal generator of these transformations.
+
+Conversely, given a smooth vector field, \(v\), on \(M\) we can ask if it is
+possible to find \emph{integral curves} of \(v\), that is, a family of curves in
+\(M\) having the property that one and only one curve passes through each point
+\(p\in M\) and the tangent to this curve at \(p\) is \(v|_p\).  The answer is yes:
+If we pick a coordinate system in a neighborhood of \(p\) as in the proof of
+Theorem~\ref{thm:2.2.1}, we see that the problem of finding such curves reduces to
+solving the system,
+\begin{equation}
+  \frac{\dd x^\mu}{\dd t}=v^\mu(x^1,\ldots,x^n),
+  \tag{2.2.13}\label{eq:2.2.13}
+\end{equation}
+of ordinary differential equations in \(\mathbb{R}^n\), where \(v^\mu\) is the
+\(\mu\)th component of \(v\) in the coordinate basis
+\(\{\partial/\partial x^\mu\}\).  Such a system of equations has a unique
+solution given a starting point at \(t=0\), and thus every smooth vector field \(v\)
+has a unique family of integral curves (see, e.g., Coddington and Levinson 1955).
+Given the integral curves, for each \(p\in M\) we define \(\phi_t(p)\) to be the
+point lying at parameter \(t\) along the integral curve of \(v\) starting at \(p\).
+Except for potential problems arising from the possibility that the integral curves of
+\(v\) may extend to only a finite value of the curve parameter, \(\phi_t\) will be a
+one-parameter group of diffeomorphisms.
+
+Finally, we note that given two smooth vector fields \(v\) and \(w\) it is possible
+to define a new vector field, \([v,w]\), called the \emph{commutator} of \(v\) and
+\(w\), by
+\begin{equation}
+  [v,w](f)=v[w(f)]-w[v(f)] .
+  \tag{2.2.14}\label{eq:2.2.14}
+\end{equation}
+(see problem 3).  We note that the commutator of any two vector fields \(X_\mu\)
+and \(X_\nu\) occurring in a coordinate basis vanishes.  (This fact follows directly
+from the definition of the coordinate basis given in the proof of
+Theorem~\ref{thm:2.2.1} together with the equality of mixed partial derivatives in
+\(\mathbb{R}^n\).)  Conversely, given a collection \(X_1,\ldots,X_n\) of
+nonvanishing vector fields which commute with each other and are linearly
+independent at each point, one can always find a chart for which they are the
+coordinate basis vector fields (see problem 5).

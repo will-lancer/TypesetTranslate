@@ -1,0 +1,673 @@
+% Source: Wald GR, physical PDF pp. 402--412
+%         (printed pp. 389--399).
+% Coverage: Section 14.2, Quantum Fields in Curved Spacetime;
+%           equations (14.2.1)--(14.2.22).
+% Figures/tables/footnotes: Figure 14.1; no tables; footnotes 6--11.
+% Status: source-reviewed and compile-clean.
+% Modernization: all script symbols use \mathcal; strict and non-strict
+%                subspaces are distinguished with \subsetneq and \subseteq.
+% Uncertainties: none.
+
+\subsection{Quantum Fields in Curved Spacetime}\label{sec:14.2}
+
+As indicated at the end of the previous section, in analogy with quantum field
+theory in an external potential (see, e.g., Wightman 1971), we seek to formulate a
+theory of a quantum field which propagates in a classically describable spacetime
+\((M,g_{ab})\). For simplicity, we will restrict attention to the case of a real
+Klein--Gordon scalar field \(\phi\). The analysis of other linear fields of spin
+\(s\leq 1\) is very similar (see, e.g., Wald 1979b), although there are important,
+well known differences which occur in the fermion (\(s=1/2\)) case. As mentioned
+at the end of chapter~13, fields of spin \(s>1\) do not have a natural generalization
+to curved spacetime. We shall not consider nonlinear (i.e., self-interacting)
+fields.\footnote{Even in Minkowski spacetime the quantum theory of nonlinear fields
+is well defined only in the context of perturbation theory. An interesting issue which
+arises is whether a renormalizable theory in Minkowski spacetime remains
+renormalizable in curved spacetime. See Birrell (1981) for a review of work on this
+issue.} Much of the discussion below is based on Wald (1975, 1979b). Further
+discussion of many of the effects predicted by the theory of quantum fields in curved
+spacetime and a detailed bibliography of the original papers is given by Birrell and
+Davies (1982).
+
+As has been indicated several times above, Hilbert spaces play a fundamental role in
+quantum theory. For the benefit of the reader who is not familiar with Hilbert spaces
+but has studied chapter~2 and the discussion of spinor space given in chapter~13, we
+give a very brief introduction to Hilbert spaces here, emphasizing some of the
+differences between the finite-dimensional case which was considered previously and
+the infinite-dimensional case which is relevant here. For a much more complete and
+systematic discussion, we refer the reader to Riesz and Sz.-Nagy (1955) and Reed and
+Simon (1972).
+
+Let \(V\) be a (not necessarily finite-dimensional) vector space over the complex
+numbers, \(\mathbb C\). An \emph{inner product} on \(V\) is a map
+\(i:V\times V\longrightarrow\mathbb C\)---where we denote the complex number
+\(\ii(v_1,v_2)\) as simply \((v_1,v_2)\)---satisfying the following three properties:
+(a) \(i\) is linear in the second variable, (b)
+\(\overline{(v_1,v_2)}=(v_2,v_1)\), where the bar denotes complex conjugation,
+and (c) \((v,v)\geq 0\) with equality holding if and only if \(v=0\). Note that
+properties (a) and (b) imply that \(i\) is antilinear in the first variable. A vector
+space equipped with an inner product is called an \emph{inner product space}. If
+\(V\) is an inner product space, we define the \emph{norm} of each \(v\in V\) by
+\(\lVert v\rVert=\sqrt{(v,v)}\). We obtain a natural topology on \(V\) (called the
+\emph{strong topology}) by defining a subset of \(V\) to be open if and only if it can
+be expressed as a union of ``open balls,'' i.e., sets of the form
+\(B_{R,v_0}=\{v\in V\mid \lVert v-v_0\rVert<R\}\). This choice of topology will
+be understood in discussions of convergence and continuity below.
+
+A sequence \(\{v_n\}\) of vectors in \(V\) is said to be a \emph{Cauchy sequence}
+if given \(\epsilon>0\) there exists an integer \(N\) such that for all \(m,n>N\) we
+have \(\lVert v_n-v_m\rVert<\epsilon\). It follows directly that all convergent
+sequences are Cauchy sequences. Conversely, for finite-dimensional inner product
+spaces, all Cauchy sequences converge. However, in infinite dimensions, it is easy to
+construct examples of inner product spaces which possess Cauchy sequences which do
+not converge (see problem~1). A space where all Cauchy sequences converge is said
+to be \emph{complete}, and a complete inner product space is called a \emph{Hilbert
+space}. Thus, in particular, all finite-dimensional inner product spaces are Hilbert
+spaces. If an infinite-dimensional inner product space, \(V\), fails to be complete
+there exists a standard procedure for constructing a unique Hilbert space
+\(\mathcal H\)---called the Hilbert space completion of \(V\)---such that \(V\) is
+isomorphic to a subspace \(W\subsetneq\mathcal H\) with
+\(\overline W=\mathcal H\) (see, e.g., Reed and Simon 1972), where
+\(\overline W\) denotes the closure of \(W\).
+
+An important difference between finite- and infinite-dimensional Hilbert spaces is
+that in the infinite-dimensional case linear maps need not be continuous. Indeed, it
+is straightforward to show that a linear map
+\(A:\mathcal H_1\longrightarrow\mathcal H_2\) between two Hilbert spaces is
+continuous if and only if it is bounded, i.e., there exists a \(C\in\mathbb R\) such
+that \(\lVert Av\rVert\leq C\lVert v\rVert\) for all \(v\in\mathcal H_1\). It is
+easy to construct examples of unbounded linear maps when \(\mathcal H_1\) is
+infinite-dimensional.
+
+In order to get a space with properties similar to the dual of a finite-dimensional
+vector space, we define the \emph{dual}, \(\mathcal H^\vee\), of a Hilbert space,
+\(\mathcal H\), to be the vector space of continuous linear maps from \(\mathcal H\)
+into \(\mathbb C\). Similarly, the complex conjugate dual space
+\(\overline{\mathcal H}^{\,\vee}\), and complex conjugate space
+\(\overline{\mathcal H}\) are defined as in our discussion of spinor space in
+chapter~13, with the additional proviso that the antilinear and linear maps involved
+be continuous.
+
+Now, for a general topological vector space \(V\) (i.e., a vector space with a
+topology defined on it such that the operations of addition and scalar multiplication
+are continuous) the argument which in finite dimensions proves that \(V\) is
+naturally isomorphic to all of \(V^{\vee\vee}\) now shows only that \(V\) is naturally
+isomorphic to a subspace of \(V^{\vee\vee}\), i.e., \(V\subseteq V^{\vee\vee}\). Similarly, in
+general, complex conjugation maps \(V\) only into a subspace of \(\overline V\).
+(Note, however, that the natural antilinear correspondence between \(V^\vee\) and
+\(\overline V^{\,\vee}\)---which associates \(\alpha\in V^\vee\) with
+\(\beta\in\overline V^{\,\vee}\) via
+\(\alpha(v)=\overline{\beta(\overline v)}\) for all \(v\in V\)---always is
+one-to-one and onto.) However, for a Hilbert space \(\mathcal H\), although the
+simple proof used in finite dimensions breaks down, it turns out that the inner
+product---which is essentially a nondegenerate tensor of type \((0,1;0,1)\) over
+\(\mathcal H\)---yields a one-to-one, onto, linear correspondence between
+\(\mathcal H\) and \(\overline{\mathcal H}^{\,\vee}\). This result is known as the
+\emph{Riesz lemma}. Thus, for a Hilbert space \(\mathcal H\), it follows that
+\(\mathcal H^\vee\) is naturally isomorphic to \(\overline{\mathcal H}\), that
+\(\mathcal H\) and \(\mathcal H^{\vee\vee}\) are naturally isomorphic, and that the
+antilinear correspondence between \(\mathcal H\) and \(\overline{\mathcal H}\)
+is one-to-one and onto.
+
+The \emph{span} of a collection of vectors \(\{v_\alpha\}\) in a Hilbert space
+\(\mathcal H\) is defined to be the subspace of vectors that can be expressed as
+linear combinations of finitely many of the \(\{v_\alpha\}\). The collection
+\(\{v_\alpha\}\) is said to be a \emph{basis} of \(\mathcal H\) if the closure of
+the span of \(\{v_\alpha\}\) equals \(\mathcal H\), but the closure of the span of
+any proper subset of the \(\{v_\alpha\}\) fails to equal \(\mathcal H\). It can be
+shown that every Hilbert space admits an orthonormal basis \(\{e_\alpha\}\) (see,
+e.g., Reed and Simon 1972). In general, \(\{e_\alpha\}\) may consist of
+uncountably many elements, but in the case of a \emph{separable} Hilbert
+space---i.e., a Hilbert space which possesses a countable subset of vectors whose
+closure is \(\mathcal H\)---then \(\{e_\alpha\}\) must be countable. It is generally
+assumed that the Hilbert spaces arising in quantum theory are separable, and we will
+restrict attention to separable Hilbert spaces below.
+
+A further difference in infinite dimensions occurs in the definition of tensor
+products. As in finite dimensions, \(\mathcal H\otimes\mathcal H\) consists of
+bilinear maps \(T:\mathcal H^\vee\times\mathcal H^\vee\longrightarrow\mathbb C\).
+However, in order to obtain a natural Hilbert space structure on
+\(\mathcal H\otimes\mathcal H\), we impose the additional requirement that \(T\)
+satisfy
+\begin{equation}
+  \sum_{i,j=1}^{\infty}\left|T(e_i^\vee,e_j^\vee)\right|^2<\infty,
+  \tag{14.2.1}\label{eq:14.2.1}
+\end{equation}
+where \(\{e_i^\vee\}\) is an orthonormal basis of \(\mathcal H^\vee\). The other tensor
+product spaces are defined similarly. Note that not all continuous linear maps
+\(A:\mathcal H\longrightarrow\mathcal H\) satisfy the analog of
+equation~\eqref{eq:14.2.1} and hence not all continuous linear maps can be viewed as
+elements of \(\mathcal H\otimes\mathcal H^\vee\). (Those which can are called
+\emph{Hilbert--Schmidt maps}.) An index notion analogous to that used in finite
+dimensions could be employed for tensors over \(\mathcal H\) (Geroch, unpublished),
+but to avoid confusion with spacetime tensors we shall not use this notation here.
+
+A linear map \(L:\mathcal H\longrightarrow\mathcal H\) is called an
+\emph{operator}. If \(L\) is bounded, we define the \emph{adjoint} of \(L\),
+denoted \(L^\dagger\), to be the bounded operator which satisfies
+\begin{equation}
+  (L^\dagger w,v)=(w,Lv)
+  \tag{14.2.2}\label{eq:14.2.2}
+\end{equation}
+for all \(v,w\in\mathcal H\). (The existence of an operator \(L^\dagger\)
+satisfying equation~\eqref{eq:14.2.2} is guaranteed by the Riesz lemma.) We say
+\(L\) is \emph{self-adjoint} if \(L^\dagger=L\), and we say that \(L\) is
+\emph{unitary} if \(L^\dagger L=LL^\dagger=I\), where \(I\) is the identity map
+on \(\mathcal H\). In the case where \(L\) is unbounded, the definition of
+\(L^\dagger\) is not as straightforward. First, in general it may only be possible to
+define \(L\) on a \emph{dense domain} \(\mathcal D(L)\), i.e., a subspace of
+vectors whose closure equals \(\mathcal H\). Consider the equation
+\begin{equation}
+  (u,v)=(w,Lv).
+  \tag{14.2.3}\label{eq:14.2.3}
+\end{equation}
+For each fixed pair of vectors \(u,w\) such that equation~\eqref{eq:14.2.3} is
+satisfied for all \(v\in\mathcal D(L)\), we say \(w\in\mathcal D(L^\dagger)\) and
+we define \(L^\dagger w=u\). [If \(\mathcal D(L^\dagger)\) fails to be dense---i.e.,
+if its closure is not all of \(\mathcal H\)---then \(L^\dagger\) is not defined.] We
+call an unbounded operator, \(L\), \emph{self-adjoint}\footnote{The precise equality
+of the domains of \(L^\dagger\) and \(L\) is an important part of the definition,
+since it is an essential ingredient in the proof of the spectral theorem (see, e.g., Reed
+and Simon 1972). If \(L^\dagger v=Lv\) for all \(v\in\mathcal D(L)\) but
+\(\mathcal D(L^\dagger)\supsetneq\mathcal D(L)\), then \(L\) is said to be
+hermitian.} if \(\mathcal D(L^\dagger)=\mathcal D(L)\) and \(L^\dagger v=Lv\)
+for all \(v\in\mathcal D(L)\).
+
+We present, now, some of the basic ingredients of the theory of a free (i.e., linear)
+real, Klein--Gordon scalar field \(\phi\) in Minkowski spacetime. We shall present
+this theory in ``Heisenberg representation'' form, i.e., the operators representing
+observables will evolve with time but the states do not. Classically, \(\phi\) satisfies
+\begin{equation}
+  \nabla_a\nabla^a\phi-m^2\phi=0.
+  \tag{14.2.4}\label{eq:14.2.4}
+\end{equation}
+Our first major task is to construct the Hilbert space of states of the quantum theory.
+It is natural to construct the space of states of a single scalar particle out of the
+vector space of solutions of equation~\eqref{eq:14.2.4}. The conserved current
+\eqref{eq:12.4.21} yields a promising candidate for an inner product on this space.
+If \(\alpha\) and \(\beta\) are solutions of equation~\eqref{eq:14.2.4}, we define
+their Klein--Gordon ``inner product'' by
+\begin{equation}
+  (\alpha,\beta)_{\mathrm{KG}}
+  =-\int_\Sigma \ii j_a[\overline\alpha,\beta]n^a\,\dd V
+  =\ii\int_\Sigma
+    (\overline\alpha\nabla_a\beta-\beta\nabla_a\overline\alpha)n^a\,\dd V,
+  \tag{14.2.5}\label{eq:14.2.5}
+\end{equation}
+where the integral is taken over a Cauchy surface \(\Sigma\), and we put quotes
+around ``inner product'' (to be dropped hereafter) because \((\ ,\ )_{\mathrm{KG}}\)
+is not positive definite. However, if we restrict attention to the subspace of
+\emph{positive frequency solutions}---i.e., solutions whose time Fourier transform
+\begin{equation}
+  \widetilde\phi(\omega,\boldsymbol{x})
+  =(2\pi)^{-1/2}\int_{-\infty}^{\infty}
+    e^{\ii\omega t}\phi(t,\boldsymbol{x})\,\dd t
+  \tag{14.2.6}\label{eq:14.2.6}
+\end{equation}
+vanishes for \(\omega<0\)---then \((\ ,\ )_{\mathrm{KG}}\) is positive definite. We
+define the \emph{one-particle Hilbert space}, \(\mathcal H\), to be the vector space
+composed of positive frequency solutions of equation~\eqref{eq:14.2.4} whose
+Klein--Gordon norm is finite, with inner product on \(\mathcal H\) defined by
+\eqref{eq:14.2.5}. (More precisely, we define \(V\) to be the vector space of
+smooth, positive frequency solutions which vanish rapidly at spatial infinity, with
+inner product~\eqref{eq:14.2.5}. We define \(\mathcal H\) to be the Hilbert space
+completion of \(V\).) By taking Fourier transforms, \(\mathcal H\) can be shown to
+be isomorphic to the Hilbert space, \(L^2(M_+)\), of square integrable functions on
+the positive mass shell, \(M_+\), of Fourier transform space. Note that the negative
+frequency solutions can be put in natural linear correspondence with vectors in
+\(\overline{\mathcal H}=\mathcal H^\vee\).
+
+In general, if \(\mathcal H_1\) is the Hilbert space of states of one quantum system
+and \(\mathcal H_2\) is that of a second system, then the tensor product
+\(\mathcal H_1\otimes\mathcal H_2\) represents states of the total (combined)
+system. In the case of a Klein--Gordon scalar field, the symmetric tensor product
+\(\mathcal H\otimes_s\mathcal H\)---consisting of symmetric linear maps from
+\(\mathcal H^\vee\times\mathcal H^\vee\) into \(\mathbb C\) which satisfy
+equation~\eqref{eq:14.2.1}---represents the possible states of two scalar particles.
+The use of only this subspace (rather than all of
+\(\mathcal H\otimes\mathcal H\)) to describe the possible two-particle states
+reflects the indistinguishability of elementary particles; an interchange of particles
+produces the same physical state. The choice of the symmetric tensor product (used
+for all bosons, i.e., integer spin fields) rather than the antisymmetric tensor product
+(used for all fermions, i.e., half-integer spin fields) is closely related to the properties
+of these fields required by the spin-statistics theorem. Similarly, the Hilbert space
+of \(n\) free scalar particles is taken to be the \(n\)-fold symmetrized tensor product
+\(\otimes_s^n\mathcal H\). The space of states where no particles are present is
+assumed to be one-dimensional and hence may be taken to be \(\mathbb C\).
+
+The Hilbert space of all possible states of the Klein--Gordon scalar field is taken to
+be the symmetric Fock space, \(\mathcal F_s(\mathcal H)\), constructed from
+\(\mathcal H\). Here \(\mathcal F_s(\mathcal H)\) is defined as the direct sum of
+the complex numbers, \(\mathbb C\), with all the symmetrized tensor products of
+\(\mathcal H\),
+\begin{equation}
+  \mathcal F_s(\mathcal H)
+  =\mathbb C\oplus\left[\bigoplus_{n=1}^{\infty}
+    (\otimes_s^n\mathcal H)\right].
+  \tag{14.2.7}\label{eq:14.2.7}
+\end{equation}
+Here, the direct sum \(\bigoplus_{i=1}^{\infty}\mathcal H_i\) of a collection
+\(\{\mathcal H_i\}\) of Hilbert spaces is defined to be the Hilbert space obtained
+from the collection of sequences of the form \((v_1,v_2,\ldots)\) with each
+\(v_i\in\mathcal H_i\) and
+\[
+  \sum_{i=1}^{\infty}\lVert v_i\rVert^2<\infty,
+\]
+with addition, scalar multiplication, and inner product defined in the obvious way.
+Thus, each \(\Psi\in\mathcal F_s(\mathcal H)\) can be written as
+\begin{equation}
+  \Psi=(\alpha_0,\alpha_1,\alpha_2,\ldots),
+  \tag{14.2.8}\label{eq:14.2.8}
+\end{equation}
+where \(\alpha_0\in\mathbb C\), \(\alpha_1\in\mathcal H\),
+\(\alpha_2\in\mathcal H\otimes_s\mathcal H\), etc. The state
+\begin{equation}
+  \lvert0\rangle\equiv(1,0,0,\ldots)
+  \tag{14.2.9}\label{eq:14.2.9}
+\end{equation}
+represents the vacuum state of the field, i.e., the state in which no particles are
+present. Hence for the general Fock space state~\eqref{eq:14.2.8}, \(\alpha_0\)
+gives the amplitude for finding the field to be in the vacuum state, \(\alpha_1\) is the
+``one-particle amplitude'' [i.e., the probability of finding only a single particle
+present in state \(\beta\in\mathcal H\) is \(\lvert(\beta,\alpha_1)\rvert^2\)],
+\(\alpha_2\) is the two-particle amplitude, etc. Thus, every state in
+\(\mathcal F_s(\mathcal H)\) has a direct physical interpretation in terms of the
+probabilities for finding various numbers of particles in the various possible states.
+
+The most important observable in the theory of a scalar field is the value of the
+scalar field itself. Since observables in quantum theory are represented by
+self-adjoint operators, we seek an operator \(\widehat\phi(x)\) defined at each
+spacetime point \(x\) which describes the scalar field. Classically, the field \(\phi\)
+can be decomposed via Fourier transforms into modes of spatial wave vector
+\(\boldsymbol{k}\), so that the amplitude of each mode satisfies the same equation as
+a classical harmonic oscillator. Analogy with the quantization of the ordinary
+harmonic oscillator then suggests the following definition of \(\widehat\phi\). First,
+for each one-particle state \(\sigma\in\mathcal H\), we define the \emph{annihilation
+operator} \(a(\overline\sigma):\mathcal F_s(\mathcal H)\longrightarrow
+\mathcal F_s(\mathcal H)\) as follows. For
+\(\Psi\in\mathcal F_s(\mathcal H)\) given by equation~\eqref{eq:14.2.8}, we set
+\begin{equation}
+  a(\overline\sigma)\Psi
+  =(\overline\sigma\mathbin{\cdot}\alpha_1,
+    \sqrt2\,\overline\sigma\mathbin{\cdot}\alpha_2,
+    \sqrt3\,\overline\sigma\mathbin{\cdot}\alpha_3,\ldots).
+  \tag{14.2.10}\label{eq:14.2.10}
+\end{equation}
+Here \(\overline\sigma\) is the vector in \(\overline{\mathcal H}\) associated with
+\(\sigma\) under the complex conjugation map, and
+\(\overline\sigma\mathbin{\cdot}\alpha_n\) is the element of
+\(\otimes_s^{n-1}\mathcal H\) obtained by inserting \(\overline\sigma\) into one
+of the ``slots'' of the map \(\alpha_n\). Note that the vacuum state is uniquely
+characterized (up to phase) by the condition
+\begin{equation}
+  a(\overline\sigma)\lvert0\rangle=0
+  \tag{14.2.11}\label{eq:14.2.11}
+\end{equation}
+for all \(\sigma\in\mathcal H\). The adjoint of \(a(\overline\sigma)\) is the
+\emph{creation operator}, \(a^\dagger(\sigma)\), given by
+\begin{equation}
+  a^\dagger(\sigma)\Psi
+  =(0,\alpha_0\sigma,\sqrt2\,\alpha_1\otimes_s\sigma,
+    \sqrt3\,\alpha_2\otimes_s\sigma,\ldots).
+  \tag{14.2.12}\label{eq:14.2.12}
+\end{equation}
+In terms of \(a\) and \(a^\dagger\), the quantum field operator
+\(\widehat\phi(x)\) is defined by
+\begin{equation}
+  \widehat\phi(x)=\sum_{i=1}^{\infty}
+  \left[\sigma_i(x)a(\overline\sigma_i)
+  +\overline\sigma_i(x)a^\dagger(\sigma_i)\right],
+  \tag{14.2.13}\label{eq:14.2.13}
+\end{equation}
+where the sum runs over an orthonormal basis \(\{\sigma_i\}\) of \(\mathcal H\).
+Thus, \(\widehat\phi\) satisfies the Klein--Gordon equation~\eqref{eq:14.2.4} in
+\(x\), and the operator coefficients of the expansion of \(\widehat\phi\) in terms of
+a basis of positive frequency solutions and their complex conjugates are just the
+annihilation and creation operators. In fact, the sum in
+equation~\eqref{eq:14.2.13} does not converge pointwise and must be interpreted in
+a distributional sense, i.e., \(\widehat\phi\) can be defined only as an operator-valued
+distribution on spacetime. (See, e.g., Reed and Simon 1972 for the definition of a
+distribution, and see, e.g., equation~[2.7] of Wald 1979b for the distributional version
+of equation~[14.2.13].) For calculations involving only linear operations on
+\(\widehat\phi\), this presents only a minor technical nuisance, but for nonlinear
+operations it presents a serious obstacle to making mathematical sense out of the
+expressions which result, since the product of two distributions evaluated at the same
+spacetime point does not, in general, have any natural mathematical interpretation.
+This completes our brief introduction to the theory of the Klein--Gordon quantum
+field in Minkowski spacetime.
+
+Consider, now, the quantum field theory of a Klein--Gordon field in a curved
+spacetime background \((M,g_{ab})\). The states of the field still are described as
+vectors in a Hilbert space \(\mathcal L\), but in general there may be no unambiguous
+physical interpretation of these states in terms of particles. The field \(\phi\) again
+is described by an operator \(\widehat\phi\) defined on spacetime (or, more precisely,
+an operator-valued distribution) which satisfies the curved spacetime Klein--Gordon
+equation~\eqref{eq:14.2.4}.
+
+Perhaps the simplest case to consider is that of a globally hyperbolic spacetime
+which is nearly isometric to Minkowski spacetime except in a limited region of space
+over a limited duration of time. Such a spacetime could be produced by focusing
+matter (or gravitational radiation) onto a small region of space and then allowing the
+matter to disburse back to infinity. In order to avoid dealing with detailed asymptotic
+falloff conditions on the gravitational field, we shall consider the highly idealized
+case of a spacetime which is flat outside a compact spacetime region, as illustrated
+in Figure~\ref{fig:14.1}.
+
+\input{figures/chapter14/fig14_1.tex}
+
+Outside the future of the region \(K\) of Figure~\ref{fig:14.1} an observer (or family
+of observers) would be unaware that he was not in Minkowski spacetime. Therefore,
+he would associate with each state of the field \(\Psi\in\mathcal L\) a vector in the
+Fock space \(\mathcal F_s(\mathcal H_{\mathrm{in}})\) constructed from the
+one-particle Hilbert space, \(\mathcal H_{\mathrm{in}}\), of positive frequency
+solutions of the free Klein--Gordon field in Minkowski spacetime. Let
+\(U:\mathcal L\longrightarrow\mathcal F_s(\mathcal H_{\mathrm{in}})\) denote this
+isomorphism of \(\mathcal L\) with Fock space obtained by characterizing each state
+in \(\mathcal L\) by how it ``looks'' to such an observer in the past. To such an
+observer, the field operator \(\widehat\phi\) must be physically indistinguishable
+from the Minkowski field operator on Minkowski spacetime, so for \(x\) outside the
+future of \(K\) we have
+\begin{equation}
+  U\widehat\phi(x)U^{-1}
+  =\sum_{i=1}^{\infty}\left[
+    \sigma_i(x)a_{\mathrm{in}}(\overline\sigma_i)
+    +\overline\sigma_i(x)a_{\mathrm{in}}^\dagger(\sigma_i)\right]
+  \quad\text{if }x\notin J^+(K),
+  \tag{14.2.14}\label{eq:14.2.14}
+\end{equation}
+where \(\{\sigma_i\}\) is an orthonormal basis of
+\(\mathcal H_{\mathrm{in}}\). However, the fact that \(\widehat\phi\) satisfies
+equation~\eqref{eq:14.2.4} throughout the spacetime implies that for all \(x\in M\)
+we have
+\begin{equation}
+  U\widehat\phi(x)U^{-1}
+  =\sum_{i=1}^{\infty}\left[
+    \sigma_i'(x)a_{\mathrm{in}}(\overline\sigma_i)
+    +\overline{\sigma_i'}(x)a_{\mathrm{in}}^\dagger(\sigma_i)\right],
+  \tag{14.2.15}\label{eq:14.2.15}
+\end{equation}
+where \(\sigma_i'\) is the solution of equation~\eqref{eq:14.2.4} in the curved
+spacetime which coincides with \(\sigma_i\) outside the future of \(K\).
+
+Similarly, we have an isomorphism
+\(W:\mathcal L\longrightarrow\mathcal F_s(\mathcal H_{\mathrm{out}})\) which
+associates with each state in \(\mathcal L\) the Minkowski spacetime state it
+``looks like'' in the future.\footnote{Here \(\mathcal H_{\mathrm{out}}\) is again the
+Minkowski single-particle Hilbert space and hence is isomorphic to
+\(\mathcal H_{\mathrm{in}}\), but it is useful to view
+\(\mathcal H_{\mathrm{in}}\) and \(\mathcal H_{\mathrm{out}}\) as distinct
+spaces. In more general spacetimes, there may be no natural way of identifying
+\(\mathcal H_{\mathrm{in}}\) and \(\mathcal H_{\mathrm{out}}\).} Furthermore,
+we have
+\begin{equation}
+  W\widehat\phi(x)W^{-1}
+  =\sum_{i=1}^{\infty}\left[
+    \rho_i'(x)a_{\mathrm{out}}(\overline\rho_i)
+    +\overline{\rho_i'}(x)a_{\mathrm{out}}^\dagger(\rho_i)\right],
+  \tag{14.2.16}\label{eq:14.2.16}
+\end{equation}
+where \(\{\rho_i\}\) is an orthonormal basis of
+\(\mathcal H_{\mathrm{out}}\) and \(\rho_i'\) is the solution of
+equation~\eqref{eq:14.2.4} which coincides with \(\rho_i\) outside the past of
+\(K\).
+
+One of the most important issues to consider is how the characterization of the
+states of the field as ``in'' states compares with their characterization as ``out''
+states. This is given by the \(S\)-matrix, \(S=WU^{-1}\). Given any ``in'' state
+\(\Psi\in\mathcal F_s(\mathcal H_{\mathrm{in}})\) describing how the state
+``looks'' at early times, the ``out'' state
+\(S\Psi\in\mathcal F_s(\mathcal H_{\mathrm{out}})\) describes how the state
+``looks'' at late times. In particular, for \(\Psi=\lvert0_{\mathrm{in}}\rangle\),
+\(\Psi_0=S\lvert0_{\mathrm{in}}\rangle\) tells us the spontaneous creation of
+particles by the gravitational field.
+
+Equations~\eqref{eq:14.2.15} and~\eqref{eq:14.2.16} allow us to solve for
+\(\Psi_0\). First, we compose equation~\eqref{eq:14.2.15} with \(S\) on the left
+and \(S^{-1}\) on the right and equate the right-hand side of the resulting equation
+with the right-hand side of equation~\eqref{eq:14.2.16}. Let
+\(\sigma\in\mathcal H_{\mathrm{in}}\) and let \(\sigma'\) be the solution of the
+curved spacetime Klein--Gordon equation which coincides with \(\sigma\) outside the
+future of \(K\). Taking the Klein--Gordon inner product with \(\sigma'\), we find
+that \(a_{\mathrm{in}}\) and \(a_{\mathrm{out}}\) are related by
+\begin{equation}
+  Sa_{\mathrm{in}}(\overline\sigma)S^{-1}
+  =a_{\mathrm{out}}(\overline{C\sigma})
+   -a_{\mathrm{out}}^\dagger(\overline{D\sigma})
+  \tag{14.2.17}\label{eq:14.2.17}
+\end{equation}
+for all \(\sigma\in\mathcal H_{\mathrm{in}}\). Here the maps
+\(C:\mathcal H_{\mathrm{in}}\longrightarrow\mathcal H_{\mathrm{out}}\) and
+\(D:\mathcal H_{\mathrm{in}}\longrightarrow\overline{\mathcal H}_{\mathrm{out}}\)
+are defined as follows. Outside the past of \(K\), \(\sigma'(x)\) must again
+coincide with some solution, \(f(x)\), of the Klein--Gordon equation in Minkowski
+spacetime. Let \(\mu\) be the positive frequency part of \(f\) in Minkowski
+spacetime, and let \(\lambda\) be the negative frequency part of \(f\). We may view
+\(\mu\) as an element of \(\mathcal H_{\mathrm{out}}\), and \(\lambda\) as an
+element of \(\overline{\mathcal H}_{\mathrm{out}}\). We define \(C\sigma=\mu\)
+and \(D\sigma=\lambda\). Relations satisfied by \(C\) and \(D\) which are
+necessary for the consistency of equation~\eqref{eq:14.2.17} are derived in
+problem~3. A relation of the form~\eqref{eq:14.2.17} with \(C\) and \(D\)
+satisfying the conditions of problem~3 is called a \emph{Bogoliubov transformation}.
+
+We now can solve for
+\(\Psi_0=S\lvert0_{\mathrm{in}}\rangle\in
+\mathcal F_s(\mathcal H_{\mathrm{out}})\) by applying both sides of
+equation~\eqref{eq:14.2.17} to \(\Psi_0\). Since
+\(a_{\mathrm{in}}(\overline\sigma)\lvert0_{\mathrm{in}}\rangle=0\) for all
+\(\sigma\in\mathcal H_{\mathrm{in}}\), we find
+\begin{equation}
+  \left\{a_{\mathrm{out}}(\overline{C\sigma})
+  -a_{\mathrm{out}}^\dagger(\overline{D\sigma})\right\}\Psi_0=0
+  \tag{14.2.18}\label{eq:14.2.18}
+\end{equation}
+for all \(\sigma\in\mathcal H_{\mathrm{in}}\). Writing
+\begin{equation}
+  \Psi_0=(\alpha_0,\alpha_1,\alpha_2,\ldots)
+  \tag{14.2.19}\label{eq:14.2.19}
+\end{equation}
+and using the definitions~\eqref{eq:14.2.10} and~\eqref{eq:14.2.12} of
+\(a_{\mathrm{out}}\) and \(a_{\mathrm{out}}^\dagger\), we may solve
+equation~\eqref{eq:14.2.18} inductively for \(\alpha_n\). The result is (see Wald
+1979b)
+\begin{equation}
+  \alpha_n=
+  \begin{cases}
+    0, & n\ \text{odd},\\[3pt]
+    \displaystyle
+    \frac{c(n!)^{1/2}}{2^{n/2}(n/2)!}\,
+    \otimes_s^{n/2}\epsilon, & n\ \text{even}.
+  \end{cases}
+  \tag{14.2.20}\label{eq:14.2.20}
+\end{equation}
+Here \(c\) is a constant determined up to phase by the requirement that
+\(\lVert\Psi_0\rVert=1\), and \(\epsilon\) is the following element of
+\(\mathcal H_{\mathrm{out}}\otimes_s\mathcal H_{\mathrm{out}}\). The map
+\(DC^{-1}\) takes vectors in \(\mathcal H_{\mathrm{out}}\) to vectors in
+\(\overline{\mathcal H}_{\mathrm{out}}\) and hence may be viewed as a map from
+\(\mathcal H_{\mathrm{out}}\times\mathcal H_{\mathrm{out}}\) into \(\mathbb C\).
+Thus, the map \(\epsilon=\overline{DC^{-1}}\) obtained from \(DC^{-1}\) by complex
+conjugation can be viewed as a map from
+\(\mathcal H_{\mathrm{out}}^\vee\times\mathcal H_{\mathrm{out}}^\vee\) into
+\(\mathbb C\). It follows from problem~3 that this map is symmetric. Furthermore,
+it is proved in Wald (1979b) and Dimock (1979) that this map satisfies
+equation~\eqref{eq:14.2.1} in the case of a spacetime which is flat outside a compact
+region. Thus, it defines an element of
+\(\mathcal H_{\mathrm{out}}\otimes\mathcal H_{\mathrm{out}}\), which we have
+denoted by \(\epsilon\). Given our solution for \(\Psi_0\), the action of \(S\) on
+all other states of \(\mathcal F_s(\mathcal H_{\mathrm{in}})\) can be determined by
+using the adjoint of equation~\eqref{eq:14.2.17} to express the action of \(S\) on an
+arbitrary product of ``in'' creation operators applied to
+\(\lvert0_{\mathrm{in}}\rangle\) in terms of products of ``out'' creation and
+annihilation operators applied to \(\Psi_0\). Since all elements of
+\(\mathcal F_s(\mathcal H_{\mathrm{in}})\) can be expressed as limits of sums of
+vectors of this form, this suffices to determine \(S\).
+
+Two features of our solution for \(\Psi_0\) should be emphasized. First, according
+to equation~\eqref{eq:14.2.20}, the amplitude for producing an odd number of
+particles from the vacuum vanishes. This can be interpreted as saying that particles
+always are produced in pairs. In the theory of a real scalar field considered here,
+antiparticles are the same as particles. However, for a complex field, where
+antiparticles are distinct from particles, one finds that equal numbers of antiparticles
+and particles are created, i.e., spontaneous creation occurs via the production of
+particle--antiparticle pairs.\footnote{An exception to this statement can occur in
+certain circumstances for fermion fields; see Christ (1980), Gibbons (1979), and
+Wald (1979b) for further discussion. Expressions for \(\Psi_0\) which display more
+explicitly the ``pairing'' of the particles and antiparticles also can be found in Wald
+(1979b).}
+
+Second, it is clear from equation~\eqref{eq:14.2.20} and the definition of
+\(\epsilon\) that the necessary and sufficient condition that no spontaneous particle
+creation occur is that the operator \(D\) vanish. In other words, no particle creation
+occurs in quantum field theory if and only if in the (classical) scattering of a positive
+frequency wave through the curvature, no negative frequency parts ever are picked
+up. Thus, with only a few important exceptions (such as given in problem~4),
+particle creation generally occurs in any time varying gravitational field. Of course,
+the amount of particle creation and/or its physical effects are generally negligible
+unless one goes to strong field regimes.
+
+In the discussion of particle creation above, we restricted attention to spacetimes of
+the form illustrated in Figure~\ref{fig:14.1}. The Hilbert spaces
+\(\mathcal H_{\mathrm{in}}\) and \(\mathcal H_{\mathrm{out}}\) and the ``classical
+scattering'' given by the operators \(C\) and \(D\) are well defined under weaker
+conditions than the requirement that the curvature be exactly zero outside a compact
+region (see Kay 1982), but it has not yet been proven that \(\epsilon\) satisfies
+equation~\eqref{eq:14.2.1} under these weaker conditions. More generally, one can
+ask if the above particle creation results can be extended to globally hyperbolic
+spacetimes which do not become flat in the past or future. However, in general, such
+spacetimes will not possess asymptotic ``in'' and ``out'' regimes where the notion of
+``particles'' is physically meaningful. In this regard, it should be emphasized that in
+ordinary high energy particle physics, the notion of a particle is undefined while
+interactions are occurring. However, in ordinary particle physics, the interactions
+normally take place over such microscopic time scales that the particle description
+of events is adequate for essentially all purposes. In the gravitational case, however,
+the interactions of the quantum field with the gravitational field may take place over
+macroscopic spacetime regions. Thus, even in the simple case of a spacetime of the
+form shown in Figure~\ref{fig:14.1}, the notion of ``particle'' is not well defined in
+the region of nonvanishing curvature. In the case of a spacetime which does not
+become flat in the past or future, the interactions take place over all time, and, in
+general, it may not even make sense to talk of incoming or outgoing particle states.
+We will return to the issue of the physical meaning of particles in curved spacetime
+at the end of the next section.
+
+In more mathematical detail, the difficulty in defining particle states in a general
+curved spacetime can be seen to arise in the following manner. In Minkowski
+spacetime, two key ingredients were used in our construction of the Hilbert space
+\(\mathcal H\) of particle states from the vector space, \(V\), of solutions of the
+Klein--Gordon equation. First, the current~\eqref{eq:12.4.21} gave us a natural
+nondegenerate (but not positive definite) map from \(V\times V\) into numbers,
+namely, the Klein--Gordon inner product defined by equation~\eqref{eq:14.2.5}.
+Second, the decomposition of solutions into positive and negative frequency parts
+gave us the additional structure needed to pick out a preferred subspace of \(V\) on
+which the Klein--Gordon inner product is positive definite so that it truly defines an
+inner product. In a general curved spacetime, the current~\eqref{eq:12.4.21} still is
+conserved, so the analog of the Klein--Gordon inner product~\eqref{eq:14.2.5}
+exists. However, there is no natural analog of the positive and negative frequency
+decomposition, so in general there is no natural choice of a suitable subspace on
+which the Klein--Gordon inner product is positive definite. The problem is not that
+there are no such subspaces but rather that there are many and, in general, none is
+preferred. Of course, a good approximate notion of the positive and negative
+frequency parts of a solution exists if the scales of spacetime variation of the solution
+are much smaller than the scales defined by the spacetime curvature. Thus, for
+example, in the present universe it is meaningful to talk of a particle provided only
+that the particle in question has wavelength much smaller than the radius of spatial
+curvature of the universe and has inverse frequency much smaller than the Hubble
+time.
+
+An important case where a natural positive and negative frequency decomposition
+does exist is that of stationary spacetime, since here the Killing parameter provides
+a preferred time coordinate with respect to which Fourier transforms can be taken.
+Ashtekar and Magnon (1975) and Kay (1978) have shown that for the Klein--Gordon
+field (with \(m>0\)) in any globally hyperbolic stationary spacetime (with the norm
+of the timelike Killing field bounded away from zero) one can define a natural Fock
+space of particle states and define the field operator \(\widehat\phi\) on this Hilbert
+space in analogy with~\eqref{eq:14.2.13}. Thus, the notion of particles is
+mathematically (and physically) well defined in stationary spacetimes.\footnote{However,
+see the discussion at the end of section~14.3 below.} The above discussion of the
+\(S\)-matrix and the above results on particle creation can be carried over to
+spacetimes which merely become stationary (rather than flat) in the past and future,
+except that equation~\eqref{eq:14.2.1} need not be satisfied\footnote{In the case of
+a closed universe with initial and final static regimes, it is known that \(\epsilon\)
+satisfies equation~\eqref{eq:14.2.1} (Fulling, Narcowich, and Wald 1982). If
+\(\epsilon\) does not satisfy equation~\eqref{eq:14.2.1}, then the \(S\)-matrix does
+not exist, i.e., the ``in'' and ``out'' Fock spaces cannot be viewed as representing the
+same Hilbert space of quantum states. However, in such cases as in the case of the
+``infrared catastrophe'' of quantum electrodynamics, it may still be possible to make
+meaningful physical predictions. The algebraic approach to quantum field theory
+(Haag and Kastler 1964) provides a framework for dealing with this difficulty by
+generalizing the notion of states from that of vectors in a fixed Hilbert space to that
+of positive linear functionals on the algebra of observables.} by the ``two-particle
+amplitude'' \(\epsilon\).
+
+As emphasized above, in spacetimes which fail to be asymptotically stationary in the
+past and/or future it may not be meaningful to try to characterize states of the field
+in terms of ingoing and/or outgoing particle states. However, we mention one
+important general approach toward enabling one to do so. Consider a spacetime
+\((M,g_{ab})\) which is asymptotically stationary in the past and future and for which
+the two-particle amplitude \(\epsilon\) satisfies equation~\eqref{eq:14.2.1}. Then
+the ``in'' Fock space \(\mathcal F_s(\mathcal H_{\mathrm{in}})\) and the ``out'' Fock
+space \(\mathcal F_s(\mathcal H_{\mathrm{out}})\) are well defined, as is the
+\(S\)-matrix relating the two spaces. We define the \emph{Feynman propagator},
+\(\Delta(x,y)\), of the scalar field in the spacetime \((M,g_{ab})\) by
+\begin{equation}
+  \ii\Delta(x,y)
+  =\frac{\langle0_{\mathrm{out}}\rvert
+      T(\widehat\phi(x)\widehat\phi(y))
+      \lvert0_{\mathrm{in}}\rangle}
+    {\langle0_{\mathrm{out}}\mid0_{\mathrm{in}}\rangle}.
+  \tag{14.2.21}\label{eq:14.2.21}
+\end{equation}
+Here we use Dirac notation for inner products, and the ``time ordered product'' of
+field operators is defined by
+\begin{equation}
+  T(\widehat\phi(x)\widehat\phi(y))=
+  \begin{cases}
+    \widehat\phi(x)\widehat\phi(y), & y\notin J^+(x),\\
+    \widehat\phi(y)\widehat\phi(x), & x\notin J^+(y).
+  \end{cases}
+  \tag{14.2.22}\label{eq:14.2.22}
+\end{equation}
+[If \(x\) and \(y\) are spacelike separated, then \(\widehat\phi(x)\) and
+\(\widehat\phi(y)\) commute, so the two expressions on the right-hand side of
+equation~\eqref{eq:14.2.22} agree.] One can show that \(\Delta(x,y)\) is a Green's
+function for the Klein--Gordon equation, i.e., in each variable it is a distributional
+solution of the Klein--Gordon equation with a \(\delta\)-function source at the value
+of the other variable. Furthermore, it follows directly from the general
+form~\eqref{eq:14.2.15} and~\eqref{eq:14.2.16} of the field operator as well as the
+property~\eqref{eq:14.2.11} of the vacuum state that \(\Delta(x,y)\) ``propagates''
+only positive frequencies into the future---i.e., for a function \(f\) which vanishes
+outside a compact set, the quantity
+\[
+  \int\Delta(x,y)f(y)\sqrt{-g}\,\dd^4y
+\]
+is a purely positive frequency solution in the future---and it propagates only
+negative frequencies into the past. Thus, given the notion of asymptotic states for
+the quantum field theory, one can define a Green's function for the Klein--Gordon
+equation by equation~\eqref{eq:14.2.21} from which the asymptotic notions of
+positive and negative frequency decompositions can be recovered directly.
+Conversely, given a Green's function \(G(x,y)\) which satisfies appropriate
+properties---in particular, which ``propagates'' into the future only functions which
+have positive Klein--Gordon norm, and propagates into the past only functions with
+negative Klein--Gordon norm---then we may use \(G\) to \emph{define} the notions
+of ``positive frequency'' in the past and future. These definitions then may be used
+to define the notion of asymptotic particle states of the quantum field so that
+(formally, at least) \(G\) becomes the Feynman propagator of the theory. Thus, the
+problem of defining asymptotic states is equivalent to the problem of selecting an
+appropriate Green's function for the Klein--Gordon equation to play the role of
+Feynman propagator. Hence, in cases where natural candidates exist for the Feynman
+propagator (see, e.g., Hartle and Hawking 1976; Rumpf 1976), the notion of
+asymptotic particle states can be defined.
+
+One important regime where gravity should be sufficiently strong and time
+dependent to cause significant particle creation is in the early universe.
+Unfortunately, since the universe is not believed to be asymptotically stationary in
+the past and since there is no generally agreed upon prescription for defining the
+Feynman propagator, one does not have a natural, unambiguous notion of incoming
+particle states. Furthermore, since one would not expect the approximation of
+treating the spacetime metric classically to be adequate very near the ``big bang''
+singularity, the applicability of any notion of incoming particle states defined on a
+classical spacetime model would be questionable. Despite these difficulties, quantum
+effects occurring in the early universe have been investigated by many authors, with
+full fledged efforts beginning in the 1960s with the work of Parker (1969) and others.
+Indeed, much of the theory of quantum fields in curved spacetime was developed in
+conjunction with these investigations. We shall not attempt to discuss this work here
+but refer the reader to Birrell and Davies (1982) for a summary and bibliography.
+Instead, we turn to the consideration of particle creation near black holes.

@@ -1,0 +1,101 @@
+% BANKS-SOURCE: pdf=72 print=62 kind=chapter id=chapter06
+\BanksChapter{6}{Massive quantum electrodynamics}
+
+% BANKS-SOURCE: pdf=72 print=62 kind=prose
+In this chapter we will do some perturbative calculations in a theory called \emph{massive
+QED}. It is quantum electrodynamics with the photon replaced by a massive vector
+field. Actually, it is the simplest example of a theory with a Higgs mechanism, since we
+have seen that the massive vector can be written as a gauge theory by introducing an
+additional scalar degree of freedom. Indeed, we can write a theory of electrodynamics
+of spinor and scalar fields in terms of the Lagrangian
+
+% BANKS-SOURCE: pdf=72 print=62 kind=equation id=6.1
+\begin{equation}
+  g^2\mathcal{L}=-|D_\mu\phi|^2-\frac14F_{\mu\nu}F^{\mu\nu}
+  +\bar\psi(-\ii\gamma^\mu D_\mu-m)\psi-\kappa(|\phi|^2-v^2)^2.
+  \label{eq:6.1}
+\end{equation}
+If we write $\phi=\rho\ee^{\ii\theta}$, and treat $\theta$ as the Stueckelberg field in the gauge formalism for the
+massive vector field, then we can eliminate $\theta$ in favor of a massive vector field $B_\mu$ with a
+mass that depends on the field $\rho$. $\rho$ is called the Higgs field. In the formal limit $\kappa\to\infty$,
+fluctuations around $\rho=v$ are infinitely costly, and we get the theory called massive
+QED. It turns out to be a perfectly good quantum field theory (it is renormalizable in
+perturbation theory), in the sense that, if $g^2$ is small and we introduce an ultraviolet
+cut-off $\Lambda$ to make sure the theory is well defined (see the chapter on renormalization),
+then as long as $\Lambda<\ee^{c/g^2}E$, where $c$ is a number of order 1 that we will learn to compute
+later, the predictions of the theory at energy scales $E\ll\Lambda$ are insensitive to the value
+of $\Lambda$ and to the precise way in which we implement the cut-off.
+
+We introduce massive QED for several reasons. First, it allows us to do computa-
+tions in QED without worrying about gauge invariance. This is because the massive
+theory has no gauge invariance, and can be quantized in a straightforward manner. The
+Heisenberg equations of motion and canonical commutation relations lead, in a famil-
+iar fashion, to the path-integral formula for the generating functional of Euclidean
+Green functions
+
+% BANKS-SOURCE: pdf=72 print=62 kind=equation id=6.2
+\begin{equation}
+  Z[J^\mu,\eta,\bar\eta]
+  =\frac{\int[dB_\mu\,d\psi\,d\bar\psi]\,
+  \ee^{-S+\int\dd^D x(B_\mu J^\mu+\bar\eta\psi+\bar\psi\eta)}}
+  {\int[dB_\mu\,d\psi\,d\bar\psi]\,\ee^{-S}}.
+  \label{eq:6.2}
+\end{equation}
+This leads to Euclidean Feynman rules with the propagators for $B_\mu$:
+
+% BANKS-SOURCE: pdf=72 print=62 kind=equation id=6.3
+\begin{equation}
+  \langle B_\mu(p_E)B_\nu(-p_E)\rangle
+  =\frac{\delta_{\mu\nu}+p_{E\mu}p_{E\nu}/\mu^2}{p_E^2+\mu^2}.
+  \label{eq:6.3}
+\end{equation}
+The Euclidean fermion propagator is
+\begin{equation*}
+  \frac{1}{\slashed p_E+\ii m}.
+\end{equation*}
+
+% BANKS-SOURCE: pdf=73 print=63 kind=prose
+As usual we have written the propagators of fields that are rescaled to make the
+quadratic terms in the Lagrangian $e$-independent. The gauge boson mass is $\mu=ev$.
+The interaction vertex corresponds to the following amputated\footnote[1]{This adjective implies, as usual, that ``the legs have been cut-off.''} Feynman diagram:
+
+% BANKS-SOURCE: pdf=73 print=63 kind=figure id=unnumbered-main-ch6-fermion-gauge-vertex
+\begin{center}
+\input{figures/chapter06-fermion-gauge-vertex.tex}
+\end{center}
+\BanksSourceNote{Fermion gauge vertex}
+
+% BANKS-SOURCE: pdf=73 print=63 kind=prose
+and has the value $-e\gamma^\mu$, which goes to $-\ii e\gamma^\mu$ in Lorentzian signature. It is a non-trivial,
+but true, statement that, when we restrict attention to sources satisfying $\partial_\mu J^\mu=0$, this
+generating functional has a finite limit as $\mu\to0$ and the vector boson becomes massless.
+In this limit the particle states split into two different representations of the Poincaré
+group, a massless scalar (the erstwhile longitudinal component of the massive spin-1
+particle) and a massless particle with helicity $\pm1$. The restriction to conserved sources
+decouples the massless scalar. A particular class of conserved currents, of the form
+$J^\mu=\partial_\nu M^{\mu\nu}$, with $M^{\mu\nu}=-M^{\nu\mu}$, generates Green functions of the electromagnetic
+field strength $F_{\mu\nu}$ in the $\mu\to0$ limit.
+
+When we continue to Lorentzian signature and compute scattering amplitudes we see
+several interesting effects in the massless limit. First of all the amplitudes for producing
+longitudinal gauge bosons from initial states that had no longitudinal gauge bosons in
+them goes to zero in this limit. Secondly, amplitudes involving scattering of fermions
+diverge in perturbation theory. This divergence is primarily due to the fact that in the
+$\mu\to0$ limit one can emit an arbitrary number of vector bosons with a finite cost in
+energy. Indeed, in this limit the probability of emitting any finite number of bosons goes
+to zero.\footnote[2]{To understand how a zero can look infinite in perturbation theory, consider the expression $\ee^{-e^2(\ln\mu)^2}$.} This is the \emph{infrared catastrophe} of Maxwell’s QED. As a catastrophe, it rates
+pretty low on the Richter scale. It simply means that \emph{any} scattering of charged particles
+is accompanied by a low-energy burst of classical \emph{bremsstrahlung} radiation, which more
+or less follows the trajectories of the outgoing charged particles. If we restrict the energy
+$\epsilon$ in this radiation, rather than the number of particles (which is always infinite in the
+$\mu\to0$ limit) we get a finite answer. The advantage of massive QED is that we can
+derive this finite answer by summing up finite amplitudes in perturbation theory and
+then taking $\mu$ to zero, rather than formally resumming a series of infinite terms.
+
+We do not have space in this text to actually do a bremsstrahlung calculation, and
+will leave it to the problem set. Instead we will do two tree-level computations of
+fermion annihilation processes, and a calculation through one loop level of low-energy
+scattering in an external magnetic field. It will be convenient to add a second fermion
+to the theory, with the same charge as the original one, and a mass $M\gg m$. We will call
+the light fermions electrons and positrons, and the heavy ones muons and anti-muons,
+in honor of famous characters who have appeared in the \emph{Real World}.\footnote[3]{A well-known piece of international cinema, of little artistic value, but enormous popular appeal.}

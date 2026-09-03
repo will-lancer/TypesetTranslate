@@ -1,0 +1,362 @@
+% BANKS-SOURCE: pdf=18 print=8 kind=prose
+V. Fock invented an efficient method for dealing with multiparticle states. We will
+work with delta-function-normalized single-particle states in describing Fock space.
+This has the advantage that we never have to discuss states with more than one
+particle in exactly the same state, and various factors involving the number of par-
+ticles drop out of the formulae. In this section we will continue to work with spinless
+particles.
+
+Start by defining Fock space as the direct sum $\mathcal F=\bigoplus_{k=0}^{\infty}\mathcal H_k$, where $\mathcal H_k$ is the Hilbert
+space of $k$ particle states. We will assume that our particles are either bosons or fermions,
+so these states are either totally symmetric or totally anti-symmetric under particle
+interchange. In particular, if we work in terms of single-particle momentum eigenstates,
+$\mathcal H_k$ consists of states of the form $|\mathbf p_1,\ldots,\mathbf p_k\rangle$, either symmetric or anti-symmetric under
+permutations. The inner product of two such states is
+
+% BANKS-SOURCE: pdf=18 print=8 kind=equation id=2.1
+\begin{equation}
+\langle \mathbf p_1,\ldots,\mathbf p_k|\mathbf q_1,\ldots,\mathbf q_l\rangle
+=\delta_{kl}\frac{1}{k!}\sum_{\sigma}(-1)^{S\sigma}
+\delta^{D-1}(\mathbf p_1-\mathbf q_{\sigma(1)})\cdots\delta^{D-1}(\mathbf p_k-\mathbf q_{\sigma(k)}),
+\label{eq:2.1}
+\end{equation}
+
+where the sum is over all permutations $\sigma$ in the symmetric group, $S_k$, $(-1)^\sigma$ is the sign
+of the permutation, and the statistics factor, $S$, is 0 for bosons and 1 for fermions.
+The $k=0$ term in this direct sum is a one-dimensional Hilbert space containing a
+unique normalized state, called the vacuum state and denoted by $|0\rangle$.
+
+In ordinary quantum mechanics one can contemplate particles that form different
+representations of the permutation group than bosons or fermions. Although we will
+not prove it in general, this is impossible in quantum field theory. In one or two spatial
+dimensions, one can have particles with different statistical properties (braid statistics),
+but these can always be thought of as bosons or fermions with a particular long-range
+interaction. In three or more spatial dimensions, only Bose and Fermi statistics are
+allowed for particles in Lorentz-invariant QFT.
+\BanksImplicitHook{I-CH02-001}
+
+Fock realized that one can organize all the multiparticle states together in a way
+that simplifies all calculations. Starting with the normalized state $|0\rangle$, which has no
+particles in it, we introduce a set of commuting, or anti-commuting, operators $a^\dagger(\mathbf p)$ and
+define
+
+% BANKS-SOURCE: pdf=18 print=8 kind=equation id=2.2
+\begin{equation}
+|\mathbf p_1,\ldots,\mathbf p_k\rangle\equiv a^\dagger(\mathbf p_1)\cdots a^\dagger(\mathbf p_k)|0\rangle.
+\label{eq:2.2}
+\end{equation}
+
+% BANKS-SOURCE: pdf=19 print=9 kind=prose
+These are called the creation operators. The scalar-product formula is reproduced
+correctly if we postulate the following (anti-)commutation relation between creation
+operators and their adjoints\footnote[1]{This is an extremely important claim. It's easy to prove and every reader should do it. The same remark applies to all of the equations in this subsection. Commutators and anti-commutators of operators are defined by $[A,B]_{\pm}\equiv AB\pm BA$. Assume that $a(\mathbf p)|0\rangle=0$.} (called the annihilation operators):
+\BanksImplicitHook{I-CH02-004}
+
+% BANKS-SOURCE: pdf=19 print=9 kind=equation id=2.3
+\begin{equation}
+[a(\mathbf p),a^\dagger(\mathbf q)]_{\pm}=\delta^{D-1}(\mathbf p-\mathbf q).
+\label{eq:2.3}
+\end{equation}
+
+Fermions are made with anti-commutators, and bosons with commutators.
+
+To get a little practice with Fock space, let's construct the representation of the
+Poincaré symmetry\footnote[2]{Poincaré symmetry is the semi-direct product of Lorentz transformations and translations. Semi-direct means that the Lorentz transformations act on the translations.} on the multiparticle Hilbert space. We begin with the energy and momentum. These are diagonal on the single-particle states. The correct Fock-space
+formula for them is
+
+% BANKS-SOURCE: pdf=19 print=9 kind=equation id=2.4
+\begin{equation}
+P^\mu=\int\dd^{D-1}\mathbf p\,p^\mu a^\dagger(\mathbf p)a(\mathbf p),
+\label{eq:2.4}
+\end{equation}
+
+where $p^0=E_{\mathbf p}\equiv\omega_{\mathbf p}=\sqrt{\mathbf p^2+m^2}$ and $p^2=-m^2$. Its easy to verify that this operator does indeed give us the sum of the $k$
+single-particle energies and momenta, when acting on a $k$-particle state. This is because
+$n_{\mathbf p}\equiv a^\dagger(\mathbf p)a(\mathbf p)$ acts as the particle number density in momentum space. There is a
+similar formula for all operators that act on a single particle at a time. For example,
+the rotation generators are
+\BanksImplicitHook{I-CH02-002}
+
+% BANKS-SOURCE: pdf=19 print=9 kind=equation id=2.5
+\begin{equation}
+J_{ij}=\int\dd^{D-1}\mathbf p\,a^\dagger(\mathbf p)\,\ii(p_i\partial_j-p_j\partial_i)a(\mathbf p).
+\label{eq:2.5}
+\end{equation}
+\BanksImplicitHook{I-CH02-003}
+
+Here $\partial_j=\partial/\partial p^j$, with $i,j=1,\ldots,D-1$.
+
+It is easy to verify that the following formula defines a unitary representation of the
+Lorentz group on single-particle states:
+
+% BANKS-SOURCE: pdf=19 print=9 kind=display
+\[
+U(\Lambda)|\mathbf p\rangle=\sqrt{\frac{\omega_{\boldsymbol{\Lambda p}}}{\omega_{\mathbf p}}}\,|\boldsymbol{\Lambda p}\rangle.
+\]
+
+The reason for the funny factor in this formula is that the Dirac delta function in our
+definition of the normalization is not covariant because it obeys
+
+% BANKS-SOURCE: pdf=19 print=9 kind=display
+\[
+\int\dd^{D-1}\mathbf p\,\delta^{D-1}(\mathbf p)=1.
+\]
+
+A Lorentz-invariant measure of integration on positive-energy time-like vectors in $D$ dimensions is
+
+% BANKS-SOURCE: pdf=19 print=9 kind=display
+\[
+\int\dd^D p\,\theta(p^0)\delta(p^2+m^2)=\int\frac{\dd^{D-1}\mathbf p}{2\omega_{\mathbf p}}.
+\]
+
+The factors in the definition of $U(\Lambda)$ make up for this non-covariant choice of
+normalization.
+
+A general Lorentz transformation is the product of a rotation and a boost, so in
+order to complete our discussion of Lorentz generators we have to write a formula for
+
+% BANKS-SOURCE: pdf=20 print=10 kind=prose
+the generator of a boost with infinitesimal velocity $\mathbf v$. We write it as $v^iJ_{0i}$. Under such
+a boost, $p^i\to p^i+v^i\omega_{\mathbf p}$ and $\omega_{\mathbf p}\to\omega_{\mathbf p}+v^ip_i$. Thus
+
+% BANKS-SOURCE: pdf=20 print=10 kind=display
+\[
+\delta|\mathbf p\rangle=\left(\frac{p_iv^i}{2\omega_{\mathbf p}}+\omega_{\mathbf p}v^i\frac{\partial}{\partial p^i}\right)|\mathbf p\rangle.
+\]
+
+The Fock-space formula for the boost generator is then
+
+% BANKS-SOURCE: pdf=20 print=10 kind=display
+\[
+v^iJ_{0i}=\int\dd^{D-1}\mathbf p\,a^\dagger(\mathbf p)\left(\frac{p_iv^i}{2\omega_{\mathbf p}}+\omega_{\mathbf p}v^i\frac{\partial}{\partial p^i}\right)a(\mathbf p).
+\]
+
+% BANKS-SOURCE: pdf=20 print=10 kind=section id=2.1
+\subsection{Local fields}
+
+% BANKS-SOURCE: pdf=20 print=10 kind=prose
+We now want to model the response of our infinite collection of scalar particles to
+a localized source $J(x)$. We do this by adding a term to the Hamiltonian (in the
+Schrödinger picture)
+
+% BANKS-SOURCE: pdf=20 print=10 kind=equation id=2.6
+\begin{equation}
+H\to H_0+V(t),
+\label{eq:2.6}
+\end{equation}
+
+with
+
+% BANKS-SOURCE: pdf=20 print=10 kind=equation id=2.7
+\begin{equation}
+V(t)=\int\dd^{D-1}\mathbf x\,\phi(\mathbf x)J(\mathbf x,t).
+\label{eq:2.7}
+\end{equation}
+
+$\phi(\mathbf x)$ must be built from creation and annihilation operators. It must transform into
+$\phi(\mathbf x+\mathbf a)$ under spatial translations. This is guaranteed by writing $\phi(\mathbf x)=\int\dd^{D-1}\mathbf p\,\ee^{\ii\mathbf p\mathbin{\cdot}\mathbf x}\hat\phi(\mathbf p)$,
+where $\hat\phi(\mathbf p)$ is an operator carrying spatial momentum $\mathbf p$.
+
+We want to model a source that creates and annihilates single particles. This statement
+is meant in the sense of perturbation theory. That is, the amplitude $J$ for the source to
+create a single particle is small. It can create multiple particles by multiple action of
+the source, which will be higher-order terms in a power series in $J$. Thus the field $\phi(\mathbf x)$
+should be linear in creation and annihilation operators:
+
+% BANKS-SOURCE: pdf=20 print=10 kind=equation id=2.8
+\begin{equation}
+\phi(\mathbf x)=\int\frac{\dd^{D-1}\mathbf p}{\sqrt{(2\pi)^{D-1} 2\omega_{\mathbf p}}}\left[a(\mathbf p)\alpha\ee^{\ii\mathbf p\mathbin{\cdot}\mathbf x}+a^\dagger(\mathbf p)\alpha^*\ee^{-\ii\mathbf p\mathbin{\cdot}\mathbf x}\right].
+\label{eq:2.8}
+\end{equation}
+
+We have also imposed Hermiticity of the Hamiltonian, assuming that the source function
+is real.\footnote[3]{As we will see, complex sources are appropriate for the more complicated situation of particles that are not their own anti-particles.} $\alpha$ could be a general complex constant, but we have already defined a
+normalization for the field, and we can absorb the phase of $\alpha$ into the creation and
+annihilation operators, so we set $\alpha=1$.
+
+We now want to study the time development of our system in the presence of the
+source. We are not really interested in the free motion of the particles, but rather in the
+question of how the source causes transitions between eigenstates of the free Hamil-
+tonian. Dirac invented a formalism, called the Dirac picture, for studying problems of
+
+% BANKS-SOURCE: pdf=21 print=11 kind=prose
+this sort. Let $U_S(t,t_0)$ be the time evolution operator of the system in the Schrödinger
+picture. It satisfies
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.9
+\begin{equation}
+\ii\partial_tU_S=[H_0+V(t)]U_S
+\label{eq:2.9}
+\end{equation}
+
+and the boundary condition
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.10
+\begin{equation}
+U_S(t_0,t_0)=1.
+\label{eq:2.10}
+\end{equation}
+
+The Dirac-, or interaction-, picture evolution operator is defined by
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.11
+\begin{equation}
+U_D(t,t_0)=\ee^{\ii H_0t}U_S(t,t_0)\ee^{-\ii H_0t_0}
+\label{eq:2.11}
+\end{equation}
+
+and the same boundary condition. If the interaction $V(t)$ is zero, $U_D=1$. It describes
+how $H_0$ eigenstates evolve under the influence of the perturbation.
+
+Simple manipulations (Problem 2.2) show that the Dirac-picture evolution operator
+satisfies
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.12
+\begin{equation}
+\ii\partial_tU_D=W(t)U_D,
+\label{eq:2.12}
+\end{equation}
+
+where $W(t)=\ee^{\ii H_0t}V(t)\ee^{-\ii H_0t}$. In words, the formula for $W(t)$ means that it is con-
+structed from the interaction potential in the Schrödinger picture \emph{by replacing every
+operator by the corresponding Heisenberg picture operator in the unperturbed theory}. For
+our problem,
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.13
+\begin{equation}
+W(x^0)=\int\dd^{D-1}\mathbf x\,J(\mathbf x,x^0)\phi(\mathbf x,x^0),
+\label{eq:2.13}
+\end{equation}
+
+where the Heisenberg-picture field is
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.14
+\begin{equation}
+\phi(\mathbf x,x^0)=\int\frac{\dd^{D-1}\mathbf p}{\sqrt{(2\pi)^{D-1} 2\omega_{\mathbf p}}}\left[a(\mathbf p)\ee^{\ii p\mathbin{\cdot}x}+a^\dagger(\mathbf p)\ee^{-\ii p\mathbin{\cdot}x}\right].
+\label{eq:2.14}
+\end{equation}
+
+Note carefully that in the last formula we have Minkowski scalar products $p\mathbin{\cdot}x=
+-p^0x^0+\mathbf p\mathbin{\cdot}\mathbf x=-E_{\mathbf p}t+\mathbf p\mathbin{\cdot}\mathbf x$ ($p^0=E_{\mathbf p}\equiv\omega_{\mathbf p}$) replacing the spatial scalar products of the Schrödinger
+picture field. The annihilation term $\ee^{\ii p\mathbin{\cdot}x}$ is the positive-frequency solution. For future reference note also that all of the space and time dependence
+is contained in the exponentials, which are solutions of the Klein--Gordon equation.
+Thus the Heisenberg-picture field satisfies the Klein--Gordon equation ($\Box\equiv-\partial_0^2+\boldsymbol{\nabla}^{\,2}$)
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.15
+\begin{equation}
+(\Box-m^2)\phi=0.
+\label{eq:2.15}
+\end{equation}
+\BanksImplicitHook{I-CH02-005}
+
+In fact, the exponentials are the most general solutions of the Klein--Gordon equa-
+tion, so the formula (\ref{eq:2.19}) turns solutions of the Klein--Gordon field equations into
+quantum operators. Willy-nilly we find ourselves studying the theory of quantized
+fields!
+It is easy to solve the evolution equation (\ref{eq:2.17}) by infinitely iterated integration. This
+is a formal, perturbative solution, but in the present case it actually sums up to the
+exact answer:
+
+% BANKS-SOURCE: pdf=21 print=11 kind=equation id=2.16
+\begin{equation}
+U_D(t,t_0)=\sum_{n=0}^{\infty}(-\ii)^n\int_{t_0}^{t}\dd t_1\int_{t_0}^{t_1}\dd t_2\cdots\int_{t_0}^{t_{n-1}}\dd t_n\,W(t_1)\cdots W(t_n).
+\label{eq:2.16}
+\end{equation}
+
+% BANKS-SOURCE: pdf=22 print=12 kind=prose
+Note that the operator order in this formula mirrors the time order: the leftmost oper-
+ator is at the latest time etc. This suggests a more elegant way of writing the formula.
+Define the time-ordered product, $TW(t_1)\ldots W(t_n)$, to be the product of the operators
+with the order defined by their time arguments. Thus, e.g.
+
+% BANKS-SOURCE: pdf=22 print=12 kind=equation id=2.17
+\begin{equation}
+TW(t_1)W(t_2)=\theta(t_1-t_2)W(t_1)W(t_2)+\theta(t_2-t_1)W(t_2)W(t_1).
+\label{eq:2.17}
+\end{equation}
+
+Alert readers will note the similarity of this construction to our discussion of causality
+in the introduction. If, in the formula for $U_D$, we replace ordinary operator products by
+time-ordered products, and allow all the ranges of integration to run from $t_0$ to $t$, then
+the only mistake we are making is over-counting the result $n!$ times. A correct formula
+is then
+
+% BANKS-SOURCE: pdf=22 print=12 kind=equation id=2.18
+\begin{equation}
+U_D(t,t_0)=\sum_{n=0}^{\infty}\frac{(-\ii)^n}{n!}\int_{t_0}^{t}\dd t_1\cdots\dd t_n\,TW(t_1)\cdots W(t_n)
+\equiv T\ee^{-\ii\int_{t_0}^{t}\dd t\,W(t)}.
+\label{eq:2.18}
+\end{equation}
+
+The last form of the equation is a notational shorthand for the infinite sum.
+In the case at hand, the formula looks even more elegant, because space and time inte-
+grations combine into a Lorentz-invariant measure. We have, in an obvious shorthand,
+
+% BANKS-SOURCE: pdf=22 print=12 kind=equation id=2.19
+\begin{equation}
+U_D(t,t_0)=T\ee^{-\ii\int\dd^D x\,\phi(x)J(x)}.
+\label{eq:2.19}
+\end{equation}
+
+We have already argued that we should allow the source function $J(x)$ to transform
+like a scalar field under Lorentz transformations. You will verify, in Problem 2.7, that
+the field $\phi(x)$ transforms as a scalar as well. The only things in our formula that are not
+Lorentz-covariant are the (implicit) end points of the time integration and the time-
+ordering symbol. They both appear because the Hamiltonian formulation of quantum
+mechanics requires us to choose $H=P^0$ for some particular Lorentz frame.
+
+We can solve the first problem by simply taking the limits of the time integration to
+$\pm\infty$. We can't expect the answer to what happens to the system as it evolves between
+two fixed space-like surfaces to be independent of what those surfaces are. The infinite
+time limit of the Dirac-picture evolution operator is called the scattering operator, or
+$S$-matrix. It is reasonable to expect that the $S$-matrix is Lorentz-covariant. Its only
+dependence on the Lorentz frame should come from that of the external source $J(x)$.
+
+The formula (\ref{eq:2.19}) also depends on the Lorentz frame because of the time-ordering
+operation. When field arguments are at space-like separation, the causal order depends
+on the Lorentz frame and should not appear in physical amplitudes. We can enforce
+this by insisting that
+
+% BANKS-SOURCE: pdf=22 print=12 kind=equation id=2.20
+\begin{equation}
+[\phi(x),\phi(y)]=0\qquad\text{if }(x-y)^2>0,
+\label{eq:2.20}
+\end{equation}
+
+because then, for space-like separation, the time ordering is superfluous.\footnote[4]{Actually, one has to be a bit more careful in defining the time-ordered product at coinciding points in order to make sure that the locality postulate is enough to guarantee Lorentz invariance of the $S$-matrix. The time-ordered products are singular at coinciding points and this issue is properly treated as part of renormalization theory.} The requirement that fields commute at space-like separation is called the locality postulate.
+
+% BANKS-SOURCE: pdf=23 print=13 kind=prose
+Together with some assumptions about the asymptotic behavior of the energy spectrum,
+this is the defining property of local field theory.
+
+We note that one could have achieved the same end had we insisted that the sources
+were anti-commuting, or Grassmann, variables and required the fields to anti-commute
+at space-like distances. Although at first sight this seems bizarre, we will see that it is
+the right way to treat the fields of particles obeying Fermi statistics. We can now check
+whether our formula for the field satisfies these requirements. This is the content of
+Problem 2.5. The result is that, for spinless particles, locality can be imposed only for
+Bose statistics. This is the first step in the proof of the spin-statistics theorem: in local
+field theory in four and higher dimensions, all integer-spin particles must be bosons and
+all half-integer-spin particles fermions. We will not prove this theorem in full generality
+\cite{banks-ref-6,banks-ref-7,banks-ref-8}, but will see several more examples below. Problem 2.6 generalizes the result to
+charged particles as well.
+\BanksImplicitHook{I-CH02-006}
+
+A conserved internal symmetry charge is an operator that commutes with the
+Poincaré generators, which can be written as an integral of a local density, $Q=\int\dd^{D-1}\mathbf x\,J^0$.
+We can choose particle states to be eigenstates of $Q$. A particle with annihilation
+operator $a(\mathbf p)$ may have an anti-particle with annihilation operator $b(\mathbf p)$. We have
+$[Q,a(\mathbf p)]=a(\mathbf p)$ and $[Q,b(\mathbf p)]=-b(\mathbf p)$, expressing the fact that the particle and anti-
+particle have opposite charge. The most general scalar field which creates or annihilates
+single particles, and annihilates one unit of charge, has the form
+
+% BANKS-SOURCE: pdf=23 print=13 kind=display
+\[
+\phi(x)=\int\frac{\dd^{D-1}\mathbf p}{\sqrt{(2\pi)^{D-1} 2\omega_{+,\mathbf p}}}\,a(\mathbf p)\ee^{\ii p_+\mathbin{\cdot}x}
++\alpha\int\frac{\dd^{D-1}\mathbf p}{\sqrt{(2\pi)^{D-1} 2\omega_{-,\mathbf p}}}\,b^\dagger(\mathbf p)\ee^{-\ii p_-\mathbin{\cdot}x},
+\]
+
+where $\alpha$ is a complex number, $m_\pm$ are the masses of the particle and anti-particle, and
+$p_\pm=(\omega_{\pm,\mathbf p},\mathbf p)$ with $p_\pm^0=\omega_{\pm,\mathbf p}=\sqrt{\mathbf p^2+m_\pm^2}$ and $p_\pm^2=-m_\pm^2$.
+Problem 2.6 shows that we must choose $\alpha=1$, $m_+=m_-$, and Bose statistics to satisfy the
+locality postulate.

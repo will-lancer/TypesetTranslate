@@ -1,0 +1,280 @@
+% BANKS-SOURCE: pdf=258-260 print=248-250 kind=implicit-solution-section id=appendixC-implicit-solutions
+\begin{bankssolutions}{Solutions to Implicit Exercises for Appendix C}
+
+\BanksImplicitSolution{I-APPC-001}
+The explicit gamma matrices, $\gamma_5$, and $\epsilon^{0123}$ below are
+four-dimensional ($D=4$) objects with
+$\eta_{\mu\nu}=\operatorname{diag}(-,+,+,+)$; the antisymmetric contraction
+identity is stated separately in general $D$, independent of the
+dimensional-regularization parameter $d_{\mathrm{reg}}$.  The numerical trace
+and $K_0$ formulas below use the same $D=4$ representation.
+
+Hermiticity of the Pauli matrices gives
+\[
+ (\gamma^0)^\dagger
+ =\begin{pmatrix}0&\mathbf 1_2\\ \mathbf 1_2&0\end{pmatrix}
+ =\gamma^0,
+ \qquad
+ (\gamma^i)^\dagger
+ =\begin{pmatrix}0&-\sigma^i\\ \sigma^i&0\end{pmatrix}
+ =-\gamma^i.
+\]
+Direct block multiplication also gives
+\[
+ (\gamma^0)^2=\mathbf 1_4,
+ \qquad
+ \gamma^0\gamma^i=-\gamma^i\gamma^0.
+\]
+The time component of the desired relation is therefore
+$\gamma^0\gamma^0\gamma^0=\gamma^0=(\gamma^0)^\dagger$.  For a spatial
+component,
+\[
+ \gamma^0\gamma^i\gamma^0
+ =-\gamma^i(\gamma^0)^2
+ =-\gamma^i
+ =(\gamma^i)^\dagger.
+\]
+This verifies Banks's Eq.~(C.3) in the stated representation.
+
+For the transformed matrices, adjunction and the original identity give
+\begin{align*}
+ (\gamma'^\mu)^\dagger
+ &=\bigl(U^\dagger\gamma^\mu U\bigr)^\dagger
+   =U^\dagger(\gamma^\mu)^\dagger U\\
+ &=U^\dagger\gamma^0\gamma^\mu\gamma^0U\\
+ &=\bigl(U^\dagger\gamma^0U\bigr)
+   \bigl(U^\dagger\gamma^\mu U\bigr)
+   \bigl(U^\dagger\gamma^0U\bigr)
+   =\gamma'^0\gamma'^\mu\gamma'^0.
+\end{align*}
+The insertion of $UU^\dagger=\mathbf 1_4$ between adjacent factors is the
+step that uses unitarity.  It is also the reason Banks specifies unitary
+changes of gamma-matrix basis when retaining this particular adjoint
+formula.
+
+\BanksImplicitSolution{I-APPC-002}
+Write $\eta^{ij}=\eta^{\mu_i\mu_j}$ and use a hat to omit an index.  Moving
+the first gamma matrix through an even string gives
+\[
+ \gamma^{\mu_1}\cdots\gamma^{\mu_{2n}}
+ =-2\sum_{j=2}^{2n}(-1)^j\eta^{1j}
+   \gamma^{\mu_2}\cdots\widehat{\gamma^{\mu_j}}\cdots
+   \gamma^{\mu_{2n}}
+ -\gamma^{\mu_2}\cdots\gamma^{\mu_{2n}}\gamma^{\mu_1}.
+\]
+Cyclicity makes the trace of the final string equal to the trace on the
+left.  Hence
+\begin{equation}
+ T_{2n}{}^{1\ldots 2n}
+ =-\sum_{j=2}^{2n}(-1)^j\eta^{1j}
+ T_{2n-2}{}^{2\ldots\widehat{j}\ldots 2n},
+ \qquad T_0=4.
+ \label{eq:appc-sol-trace-recurrence}
+\end{equation}
+Conjugation by $\gamma_5$ shows that every ordinary trace with an odd
+number of gamma matrices vanishes.  Iterating
+\eqref{eq:appc-sol-trace-recurrence} gives
+\begin{equation}
+\begin{aligned}
+ \frac14T_6{}^{123456}={}&-\bigl\{
+ \eta^{12}(\eta^{34}\eta^{56}-\eta^{35}\eta^{46}
+                   +\eta^{36}\eta^{45})\\
+ &-\eta^{13}(\eta^{24}\eta^{56}-\eta^{25}\eta^{46}
+                   +\eta^{26}\eta^{45})\\
+ &+\eta^{14}(\eta^{23}\eta^{56}-\eta^{25}\eta^{36}
+                   +\eta^{26}\eta^{35})\\
+ &-\eta^{15}(\eta^{23}\eta^{46}-\eta^{24}\eta^{36}
+                   +\eta^{26}\eta^{34})\\
+ &+\eta^{16}(\eta^{23}\eta^{45}-\eta^{24}\eta^{35}
+                   +\eta^{25}\eta^{34})\bigr\}.
+\end{aligned}
+ \label{eq:appc-sol-six-trace}
+\end{equation}
+The eight-matrix answer is compactly and completely specified by
+\[
+ T_8{}^{12345678}
+ =-\sum_{j=2}^{8}(-1)^j\eta^{1j}
+   T_6{}^{2\ldots\widehat{j}\ldots8},
+\]
+with each $T_6$ replaced by \eqref{eq:appc-sol-six-trace}.  This contains the
+$7!!=105$ signed pairings.  More generally, let $P$ run over pairings of
+$\{1,\ldots,2n\}$.  Orient each pair $(a,b)$ by $a<b$, order pairs by
+their first entries, and let $\operatorname{sgn}(P)$ be the parity of the
+resulting sequence $(a_1,b_1,\ldots,a_n,b_n)$.  Then
+\begin{equation}
+ T_{2n}{}^{1\ldots2n}
+ =4(-1)^n\sum_P\operatorname{sgn}(P)
+   \prod_{(a,b)\in P}\eta^{ab}.
+ \label{eq:appc-sol-trace-pairings}
+\end{equation}
+
+For the chiral traces, cyclicity and
+$\gamma_5\gamma^\mu=-\gamma^\mu\gamma_5$ imply
+$T_{m,5}=(-1)^mT_{m,5}$, so the odd cases vanish.  The conventions in the
+question give
+\[
+ \gamma_5=-\frac{\ii}{4!}\epsilon_{\alpha\beta\gamma\delta}
+ \gamma^\alpha\gamma^\beta\gamma^\gamma\gamma^\delta,
+ \qquad \epsilon_{0123}=-1.
+\]
+The relation $\gamma^0\gamma_5\gamma^0=-\gamma_5$ gives
+$T_{0,5}=0$.  The two-matrix trace is antisymmetric in its indices after
+the Clifford relation is used.  Lorentz invariance supplies no constant
+rank-two pseudotensor, so $T_{2,5}=0$.  Evaluating the ordered component
+$0123$ fixes the four-matrix seed:
+\[
+ \operatorname{tr}(\gamma^0\gamma^1\gamma^2\gamma^3\gamma_5)
+ =\ii\operatorname{tr}
+  \bigl[(\gamma^0\gamma^1\gamma^2\gamma^3)^2\bigr]
+ =-4\ii,
+\]
+and Lorentz covariance yields
+\[
+ T_{4,5}{}^{\mu\nu\rho\sigma}
+ =-4\ii\epsilon^{\mu\nu\rho\sigma}.
+\]
+With $\epsilon^{ijkl}=\epsilon^{\mu_i\mu_j\mu_k\mu_l}$, the next order is
+\begin{equation}
+\begin{aligned}
+ T_{6,5}{}^{123456}=+4\ii\bigl(&
+ \eta^{12}\epsilon^{3456}-\eta^{13}\epsilon^{2456}
+ +\eta^{14}\epsilon^{2356}-\eta^{15}\epsilon^{2346}
+ +\eta^{16}\epsilon^{2345}\\
+ &+\eta^{23}\epsilon^{1456}-\eta^{24}\epsilon^{1356}
+ +\eta^{25}\epsilon^{1346}-\eta^{26}\epsilon^{1345}\\
+ &+\eta^{34}\epsilon^{1256}-\eta^{35}\epsilon^{1246}
+ +\eta^{36}\epsilon^{1245}\\
+ &+\eta^{45}\epsilon^{1236}-\eta^{46}\epsilon^{1235}
+ +\eta^{56}\epsilon^{1234}\bigr).
+\end{aligned}
+ \label{eq:appc-sol-six-chiral-trace}
+\end{equation}
+One all-orders construction follows immediately by substituting the
+displayed formula for $\gamma_5$ and applying
+\eqref{eq:appc-sol-trace-recurrence}:
+\[
+ T_{2n,5}{}^{1\ldots2n}
+ =-\frac{\ii}{4!}\epsilon_{\alpha\beta\gamma\delta}
+ T_{2n+4}{}^{1\ldots2n\alpha\beta\gamma\delta}.
+\]
+There is also a direct pairing form.  Partition
+$\{1,\ldots,2n\}$ into $n-2$ pairs $(a,b)$, each oriented by $a<b$, and
+an increasing remainder $c_1<c_2<c_3<c_4$.  Order the pairs by their
+first entries and define
+$\operatorname{sgn}(Q)$ as the parity of
+$(a_1,b_1,\ldots,a_{n-2},b_{n-2},c_1,c_2,c_3,c_4)$.  Then
+\begin{equation}
+ T_{2n,5}{}^{1\ldots2n}
+ =-4\ii(-1)^{n-2}\sum_Q\operatorname{sgn}(Q)
+ \left(\prod_{(a,b)\in Q}\eta^{ab}\right)
+ \epsilon^{c_1c_2c_3c_4}.
+ \label{eq:appc-sol-chiral-pairings}
+\end{equation}
+For $2n=8$, this is the full reduction into two metrics and one
+Levi-Civita tensor.  It has
+$\binom84(4-1)!!=210$ signed terms.  Formula
+\eqref{eq:appc-sol-six-chiral-trace} is its one-pair predecessor.
+
+For the contractions, the first Clifford interchange gives Banks's
+induction step directly:
+\begin{equation}
+\begin{aligned}
+ K_k(\mu_1,\ldots,\mu_k)
+ &=-\gamma_{\mu_1}K_{k-1}(\mu_2,\ldots,\mu_k)
+ -2\gamma_{\mu_2}\cdots\gamma_{\mu_k}\gamma_{\mu_1},\\
+ K_0&=-4\mathbf 1_4\quad(D=4).
+\end{aligned}
+ \label{eq:appc-sol-contraction-recurrence}
+\end{equation}
+At $k=3$, this recurrence uses the corrected free-index structure
+$-4\gamma_\mu\eta_{\nu\kappa}$ recorded in Erratum E-022, together with the
+sign fixed by the mostly-plus Clifford relation. At $k=4$ it
+gives
+\begin{align*}
+ K_4(\mu,\nu,\kappa,\alpha)={}&
+ 4\gamma_\mu\gamma_\nu\eta_{\kappa\alpha}
+ +2\gamma_\mu\gamma_\kappa\gamma_\alpha\gamma_\nu
+ -2\gamma_\nu\gamma_\kappa\gamma_\alpha\gamma_\mu.
+\end{align*}
+The printed line on p.~250 reverses $\gamma_\kappa\gamma_\alpha$ in the
+three-gamma term. The induction fixes the order shown above; a
+repeated-index substitution distinguishes the two expressions. For four
+mutually distinct indices, direct Clifford reduction of the target
+convention gives
+$4\gamma_\mu\gamma_\nu\gamma_\kappa\gamma_\alpha$.
+
+Anticommuting the final $\gamma_\lambda$ through an antisymmetrized string
+gives
+\begin{equation}
+ \gamma^\lambda\gamma_{\mu_1\ldots\mu_r}\gamma_\lambda
+ =(-1)^{r+1}(D-2r)\gamma_{\mu_1\ldots\mu_r}.
+\label{eq:appc-sol-antisymmetric-contraction}
+\end{equation}
+The final passage through the string contributes
+$D(-1)^{r+1}\gamma_{\mu_1\ldots\mu_r}$, while the $r$ anticommutator
+terms contribute $2r(-1)^r\gamma_{\mu_1\ldots\mu_r}$. Their sum is the
+coefficient in \eqref{eq:appc-sol-antisymmetric-contraction}. Here $D$ is the
+physical spacetime dimension, independent of the dimensional-regularization
+parameter $d_{\mathrm{reg}}$; the gamma-matrix representation and the later odd-string
+specialization use $D=4$.
+
+An odd ordered product in four dimensions contains only its rank-one and
+rank-three Clifford components.  Reversal leaves the first component
+fixed and changes the sign of the third.  Equation
+\eqref{eq:appc-sol-antisymmetric-contraction} therefore implies the useful
+odd-string identity
+\[
+K_{2s+1}(\mu_1,\ldots,\mu_{2s+1})
+ =+2\gamma_{\mu_{2s+1}}\cdots\gamma_{\mu_1}.
+\]
+The first requested continuation is
+\[
+K_5(\mu_1,\ldots,\mu_5)
+ =+2\gamma_{\mu_5}\gamma_{\mu_4}\gamma_{\mu_3}
+       \gamma_{\mu_2}\gamma_{\mu_1}.
+\]
+Using this result once in \eqref{eq:appc-sol-contraction-recurrence} gives
+\begin{align*}
+ K_6(\mu_1,\ldots,\mu_6)=-2\bigl(&
+ \gamma_{\mu_1}\gamma_{\mu_6}\gamma_{\mu_5}\gamma_{\mu_4}
+                 \gamma_{\mu_3}\gamma_{\mu_2}\\
+ &+\gamma_{\mu_2}\gamma_{\mu_3}\gamma_{\mu_4}\gamma_{\mu_5}
+                 \gamma_{\mu_6}\gamma_{\mu_1}\bigr).
+\end{align*}
+If
+\[
+ K_{k,5}=\gamma^\lambda\gamma_{\mu_1}\cdots\gamma_{\mu_k}
+          \gamma_5\gamma_\lambda,
+\]
+then one anticommutation with the final gamma matrix gives
+\[
+ K_{k,5}=-K_k\gamma_5.
+\]
+Consequently
+\begin{align*}
+ K_{5,5}&=-2\gamma_{\mu_5}\gamma_{\mu_4}\gamma_{\mu_3}
+              \gamma_{\mu_2}\gamma_{\mu_1}\gamma_5,\\
+ K_{6,5}&=+2\bigl(
+ \gamma_{\mu_1}\gamma_{\mu_6}\gamma_{\mu_5}\gamma_{\mu_4}
+                 \gamma_{\mu_3}\gamma_{\mu_2}
+ +\gamma_{\mu_2}\gamma_{\mu_3}\gamma_{\mu_4}\gamma_{\mu_5}
+                 \gamma_{\mu_6}\gamma_{\mu_1}\bigr)\gamma_5.
+\end{align*}
+
+Several quick checks fix common sign errors.  Contracting the first two
+indices of either six-matrix trace gives
+\[
+ \eta_{\mu_1\mu_2}T_6{}^{\mu_1\ldots\mu_6}=-4T_4{}^{\mu_3\ldots\mu_6},
+ \qquad
+ \eta_{\mu_1\mu_2}T_{6,5}{}^{\mu_1\ldots\mu_6}
+ =-4T_{4,5}{}^{\mu_3\ldots\mu_6}.
+\]
+For four mutually distinct indices,
+\eqref{eq:appc-sol-antisymmetric-contraction} gives
+$K_4=+4\gamma_{\mu_1}\gamma_{\mu_2}\gamma_{\mu_3}\gamma_{\mu_4}$;
+this tests the ordering in the four-matrix intermediate identity.  Taking
+all indices equal to the timelike value gives $K_5=-2\gamma^0$ and
+$K_6=-4\mathbf 1_4$, in agreement with direct cancellation of
+$(\gamma^0)^2$.
+
+\end{bankssolutions}

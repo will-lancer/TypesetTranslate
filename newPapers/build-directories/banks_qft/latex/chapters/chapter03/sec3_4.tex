@@ -1,0 +1,147 @@
+% BANKS-SOURCE: pdf=36 print=26 kind=section id=3.4
+\subsection{Connected and 1-P(article) I(rreducible) Green functions}
+
+% BANKS-SOURCE: pdf=36 print=26 kind=prose
+The free generating functional has the form
+\[
+\ee^{-\frac12\int\dd^D x\,\dd^D y\,J(x)J(y)D_F(x-y)}\equiv\ee^{\ii W_0[J]},
+\]
+i.e. it is an exponential of something simple. $W_0$ has a nice graphical interpretation. If we write
+out all of the graphs contributing to $Z_0[J]$, only the connected graphs contribute to
+$W_0$. The Feynman rules show us that this is a general property of the interacting theory
+as well. The sum over all graphs is the exponential of the sum over connected graphs.
+This follows from the symmetry-number Feynman rule. If I have a disconnected graph
+with $k$ identical disconnected pieces, there is an obvious $S_k$ geometrical symmetry. The
+order of the symmetric group $S_k$ is $k!$. Thus, in general, we define $Z[J]\equiv\ee^{\ii W[J]}$ and
+$W$ is the generating functional of connected Green functions:
+
+% BANKS-SOURCE: pdf=36 print=26 kind=display id=connected-graphs
+\begin{center}
+  \input{figures/chapter03-connected-graphs.tex}
+\end{center}
+
+\subsubsection*{Wick's theorem and connected diagrams}
+
+% BANKS-SOURCE: pdf=37 print=27 kind=prose
+The Feynman rules for $W$ are the same as those for $Z$, but summing only over
+connected diagrams. In particular, since all contributions from corrections to the
+denominator $I[0]$ are disconnected, we never have to worry about them. Aficionados
+of statistical mechanics will recognize the relation between $Z$ and $W$ to be essentially
+the same as that between the partition function and the Helmholtz free energy.\footnote[8]{Up to factors of $\ii$ and $-1$. In Euclidean QFT, the parallel is exact.}
+
+Often, one can conveniently reorganize perturbation theory into a semi-classical
+expansion of the functional integral. This happens whenever, by rescaling the fields, we
+can write the action as $S=(1/g^2)s[\phi]$, where $g$ is a small dimensionless parameter, and
+$s$ contains only positive powers of $g$ (typically only $g^0$). One then recognizes that one
+can do the integral by the stationary-phase, or steepest-descents, method. That is, one
+looks for stationary points of the logarithm of the integrand, and expands the integral
+around them. The first step requires us to solve
+
+% BANKS-SOURCE: pdf=37 print=27 kind=equation id=3.29
+\begin{equation}
+\frac{\delta s}{\delta\phi(x)}+J(x)=0,
+\label{eq:3.29}
+\end{equation}
+
+which is just the classical field equation in the presence of the source. If $\phi(x,J]$\footnote[9]{The peculiar bracket structure in $\phi(x,J]$ is supposed to convey the fact that it is both a function of $x$ and a functional of $J$.} is the
+classical solution then the connected generating functional is given by
+
+% BANKS-SOURCE: pdf=37 print=27 kind=equation id=3.30
+\begin{equation}
+W_c[J]=\frac{1}{g^2}\left(S[\phi[J]]+\int\dd^D x\,J(x)\phi[J](x)\right).
+\label{eq:3.30}
+\end{equation}
+
+In words, in the classical approximation, the connected generating functional is the
+Legendre transform of the classical action.
+
+If the functional $s[\phi]$ is $g$-independent, then the semi-classical expansion has a topo-
+logical interpretation in terms of Feynman graphs. If we expand around a stationary
+point $\phi=\phi_0(x)$ of the $J=0$ functional integral, the first correction to the classical
+action is
+
+% BANKS-SOURCE: pdf=37 print=27 kind=equation id=3.31
+\begin{equation}
+S_{(2)}[\phi_0,\delta\phi]\equiv\frac{1}{g^2}\int\dd^D x\,\dd^D y\,\delta\phi(x)\delta\phi(y)\left.\frac{\delta^2s}{\delta\phi(x)\delta\phi(y)}\right|_{\phi=\phi_0}.
+\label{eq:3.31}
+\end{equation}
+
+If we define $\Delta=g\,\delta\phi$, we can write $(1/g^2)s[\phi]=(1/g^2)s[\phi_0]+S_2[\Delta]+\sum g^{k-2}V_k[\Delta]$.
+Viewed as a field theory for the generating functional of $\Delta$ Green functions, this looks
+like our perturbation problem, except with a link between the power of the field and
+the power of the perturbation parameter $g$.
+
+Now consider a contribution to an $E$-point function at order $g^n$. This means that the
+number of lines, $V=\sum k_i$, emanating from vertices $v_{k_i}$ in the diagram must sum up to
+
+% BANKS-SOURCE: pdf=37 print=27 kind=display
+\[
+\sum(k_i-2)=\sum k_i-2V=n,
+\]
+
+where $V$ is the number of vertices. The number of internal lines, $I$, is
+
+% BANKS-SOURCE: pdf=37 print=27 kind=display
+\[
+I=\frac12\sum k_i-E.
+\]
+
+% BANKS-SOURCE: pdf=38 print=28 kind=prose
+and the number of loops for a connected diagram
+
+% BANKS-SOURCE: pdf=38 print=28 kind=display
+\[
+L=I-V+1=\frac12\sum k_i-E-V+1.
+\]
+
+Thus
+
+% BANKS-SOURCE: pdf=38 print=28 kind=display
+\[
+L=\frac n2-E+1.
+\]
+
+For a fixed number of external lines, the expansion in powers of $g^2$ is an expansion
+in the number of loops. Note that if we look at correlation functions of the original
+fluctuations $\delta\phi$, rather than $\Delta$, the powers of $g$ associated with external lines disappear
+from these formulae. An order-one fluctuation of $\Delta$ is an $O(g)$ fluctuation of the original
+fields. Solving the classical field equations with a source $J$ of order one sums up all tree
+diagrams, with any number of external legs.
+
+These considerations motivate the introduction of a new generating functional $\Gamma[\phi]$,
+which is related to the exact $W[J]$ by a Legendre transform
+
+% BANKS-SOURCE: pdf=38 print=28 kind=equation id=3.32
+\begin{equation}
+W[J]=\Gamma[\phi[J]]+\int\dd^D x\,J(x)\phi[J](x),
+\label{eq:3.32}
+\end{equation}
+
+where $\phi(x,J]$ is a solution of
+
+% BANKS-SOURCE: pdf=38 print=28 kind=equation id=3.33
+\begin{equation}
+\frac{\delta W}{\delta J(x)}=\phi(x,J].
+\label{eq:3.33}
+\end{equation}
+
+The expansion coefficients of $\Gamma$,
+
+% BANKS-SOURCE: pdf=38 print=28 kind=equation id=3.34
+\begin{equation}
+\Gamma[\phi]=\sum\frac{1}{n!}\int\prod_{r=1}^n\dd^D x_r\,\Gamma_n(x_1\ldots x_n)\phi(x_1)\ldots\phi(x_n),
+\label{eq:3.34}
+\end{equation}
+
+are called one-particle irreducible (1PI) Green functions. Connected Green functions
+are constructed from tree diagrams with 1PI functions as vertices and propagators
+given by the full connected two-point function.
+
+Diagrammatically, 1PI functions are constructed as the sum of all diagrams that
+cannot be cut into disconnected parts by cutting a single propagator line. At tree level,
+these just give the vertices constructed from the classical action. $\Gamma$ is often called the
+\emph{quantum effective action}. We will drop the word ``effective,'' in order to reserve it for
+another use in the discussion of renormalization. In Chapter 9 we will learn that the
+cut-off-dependent \emph{effective action} defined by the renormalization group is equal to the
+\emph{quantum action} defined here only in the limit that the momentum cut-off scale is taken
+to zero, and only if there are no massless states in the theory.

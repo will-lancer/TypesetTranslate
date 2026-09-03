@@ -1,0 +1,131 @@
+% BANKS-SOURCE: pdf=107 print=97 kind=section
+\subsection{BRST symmetry}
+
+% BANKS-SOURCE: pdf=107 print=97 kind=prose
+It would be straightforward to derive the Feynman rules for the general
+gauge-invariant Lagrangian, apart from one disturbing fact. The quadratic terms
+in the gauge fields look like $\dim G$ copies of Maxwell's Lagrangian, and
+cannot be inverted to give a propagator. We have already encountered this
+problem in our discussion of QED, and finessed it by introducing a small photon
+mass. We promised a more extensive discussion of the massless limit. The time
+has come to fulfill that promise. The nature of this book prevents us from
+exploring the full extent of this subject. We will content ourselves with
+introducing what I will call the Becchi--Rouet--Stora--Tyutin (BRST) trick
+\cite{banks-ref-46,banks-ref-47}. The reader interested in the geometrical foundations of this trick can
+consult the second volume of Weinberg's monograph \cite{banks-ref-42}. More detailed
+references may be found in \cite{banks-ref-48,banks-ref-49,banks-ref-50}. It would be helpful at this point to do
+Problems 8.1--8.3. These will show you how BRST symmetry works for free-field
+theories.
+
+\BanksImplicitHook{I-CH08-003}
+
+The basic idea of the BRST trick is simple: introduce the gauge parameters in
+an enlarged field theory, where the gauge symmetry is an ordinary global
+symmetry. The tricky part is that, to make it all work, the scalar gauge
+parameters must be quantized as fermions. Explicitly, we introduce two scalar
+fermion fields $\bar c$ and $c$, and a boson field $N$, all transforming in the
+adjoint representation of the gauge symmetry. $c$ is called the \emph{ghost}
+field, $\bar c$ the \emph{anti-ghost}, and $N$ the Nakanishi--Lautrup Lagrange
+multiplier. The BRST symmetry acts as an infinitesimal gauge transformation,
+with gauge parameter $\epsilon c$ on all of the ordinary fields in the theory
+($\epsilon$ is a constant Grassmann parameter). In addition,
+\begin{align*}
+  \delta_{\mathrm{BRST}}c^a&=\epsilon f^a{}_{bc}c^bc^c,\\
+  \delta_{\mathrm{BRST}}\bar c^a&=\epsilon N^a,\\
+  \delta_{\mathrm{BRST}}N^a&=0.
+\end{align*}
+Note that $\delta_{\mathrm{BRST}}^2$ applied to any of these fields vanishes,
+as a consequence of the Jacobi identity for the structure constants and the
+Fermi statistics of the $c$ fields. It is easy to verify that the same is true
+for the action of $\delta_{\mathrm{BRST}}$ on ordinary fields. The operator
+$Q_{\mathrm{BRST}}$ which implements this symmetry on the quantum Hilbert space
+should be nilpotent, $Q_{\mathrm{BRST}}^2=0$.
+
+% BANKS-SOURCE: pdf=108 print=98 kind=prose
+We also implement a $U(1)$ symmetry of these equations under which $N^a$ and
+all ordinary fields have charge zero, while $c^a$ and $\bar c^a$ have opposite
+charge (normalized to $\pm1$). The BRST charge $Q_{\mathrm{BRST}}$ has charge
+1. This $U(1)$ quantum number is called the \emph{ghost number}.
+
+The nilpotency of the BRST operator makes it very easy to add invariant ghost
+field terms to the Lagrangian. Simply choose a term that has the form
+$\delta\mathcal L=[Q_{\mathrm{BRST}},\Psi]_+$, where $\Psi$ is a fermionic
+operator of ghost number $-1$, called the \emph{gauge fermion}. For most
+purposes, the most convenient choice is
+$\Psi=\bar c^a(F^a+\frac12\kappa N^a)$, where $F^a$ is a function of ordinary
+fields. The resulting \emph{gauge-fixing Lagrangian} has the form
+\begin{equation*}
+  \delta\mathcal L=\int\dd^D y\,\bar c^a(x)
+  \frac{\delta F^a(x)}{\delta\omega^b(y)}c^b(y)
+  +\frac12\kappa(N^a)^2+N^aF^a.
+\end{equation*}
+We can integrate out the Lagrange multiplier, and convert this to
+\begin{equation*}
+  \delta\mathcal L=\int\dd^D y\,\bar c^a(x)
+  \frac{\delta F^a(x)}{\delta\omega^b(y)}c^b(y)
+  -\frac{1}{2\kappa}(F^a)^2.
+\end{equation*}
+$F^a$ should be chosen so that the ghost kinetic term is non-degenerate, if we
+wish to carry out a perturbation expansion. The choice
+$F^a=\partial_\mu A^{\mu a}$ is the most common one, because it is simple and
+covariant. In models in which the Higgs phenomenon occurs, a slightly more
+general form, involving scalar fields, is preferable.
+
+Like any other global symmetry, the BRST symmetry will give rise to Ward
+identities in the quantum theory. They have the form
+\begin{equation*}
+  \sum_j\left\langle O_1(x_1)\cdots[Q_{\mathrm{BRST}},O_j(x_j)]_{\pm}
+  (-1)^{\sigma_j}\cdots O_n(x_n)\right\rangle=0.
+\end{equation*}
+The $O_i$ are any operators in the theory. The peculiar features of this Ward
+identity come from the fact that the symmetry generator is fermionic. This
+accounts for the commutator/anti-commutator ambiguity, depending on the fermion
+parity of $O_j$, as well as the factor $(-1)^{\sigma_j}$ which reflects the
+Leibniz rule for Grassmann numbers. The most important consequence of this
+identity comes from the case in which $O_1$ is itself a BRST commutator (or
+anti-commutator) and the rest of the $O_k$ are BRST-invariant. The Ward identity
+then implies that
+\begin{equation*}
+  \langle O_1(x_1)\cdots O_n(x_n)\rangle=0.
+\end{equation*}
+
+% BANKS-SOURCE: pdf=109 print=99 kind=prose
+In particular, since the difference between any two choices of gauge-fixing
+Lagrangian is a BRST anti-commutator, this identity shows that the expectation
+values of all BRST-invariant operators are independent of the choice of
+gauge-fixing Lagrangian.
+
+There are two obvious classes of BRST-invariant operators. The first consists
+of gauge-invariant functionals of the ordinary variables. The second, called
+BRST trivial, are operators of the form $[Q_{\mathrm{BRST}},A]_\pm$. It is easy
+to see that the two classes are disjoint. It is somewhat harder to prove
+\cite{banks-ref-48,banks-ref-49,banks-ref-50} that there are no other ways of being BRST-invariant. Thus, the
+non-trivial BRST-invariant operators are precisely the gauge-invariant
+observables of the classical theory. The Ward identity shows us that their
+expectation values will be identical for all choices of gauge-fixing Lagrangian.
+
+\BanksImplicitHook{I-CH08-004}
+
+This is the key result that enables us to resolve the irritating problem that,
+in the Higgs phase of non-abelian gauge theories, there is no choice of gauge
+that is simultaneously covariant, unitary, and renormalizable. BRST invariance
+guarantees the unitarity of gauge-invariant Green functions computed in a
+covariant gauge, because it implies that they are equal to Green functions of
+the same operators computed in a non-covariant, but unitary, gauge (like the
+axial gauge $A_3{}^a=0$).
+
+The covariant gauge Feynman rules for non-abelian gauge theory may be found in
+Appendix D. The problem sets will give the reader ample opportunity to practice
+the use of these rules. In the text we will do some perturbative calculations
+when we get to the discussion of the renormalization group for non-abelian
+gauge theory. Before entering into the intricacies of perturbative calculations,
+however, I want to give the reader a feeling for the physics context in which
+non-abelian gauge theory is important and the qualitative nature of the physical
+phenomena which arise from this theory.
+
+A historical note: the ghost fields first appeared in the work of Feynman,
+DeWitt, and Mandelstam \cite{banks-ref-51,banks-ref-52,banks-ref-53} and were explained in terms of a change of
+variables in the functional integral by Faddeev and Popov \cite{banks-ref-54}. They are often
+called Faddeev--Popov ghosts. The BRST symmetry is the most elegant way to
+formulate the introduction of ghosts, and can easily be generalized to include
+gauge equivalences that do not form a group.

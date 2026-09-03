@@ -1,0 +1,306 @@
+\begin{bankssolutions}{Solutions to Implicit Exercises for Chapter 5}
+
+\BanksImplicitSolution{I-CH05-001}
+The dual definition of $R_i$ is inverted by
+\begin{equation*}
+  J_{ij}=\epsilon_{ijk}R_k.
+\end{equation*}
+For example, the Lorentz algebra gives
+\begin{equation*}
+  [K_i,K_j]=[J_{0i},J_{0j}]
+  =-\ii J_{ij}=-\ii\epsilon_{ijk}R_k.
+\end{equation*}
+The boost-rotation bracket follows first in the spatial-plane basis:
+\begin{equation*}
+  [K_i,J_{mn}]
+  =-\ii\left(\delta_{im}K_n-\delta_{in}K_m\right).
+\end{equation*}
+Antisymmetry of the commutator and contraction with
+$R_i=\epsilon_{imn}J_{mn}/2$ then give
+\begin{equation*}
+  [R_i,K_j]
+  =\frac12\epsilon_{imn}[J_{mn},K_j]
+  =+\ii\epsilon_{ijk}K_k.
+\end{equation*}
+For the rotation bracket, the definitions say
+$R_1=J_{23}$, $R_2=J_{31}$, and $R_3=J_{12}$.  One representative
+calculation is
+\begin{equation*}
+  [R_1,R_2]=[J_{23},J_{31}]
+  =-\ii J_{21}=+\ii R_3.
+\end{equation*}
+Cyclic permutations supply the remaining components.  The resulting algebra
+is
+\begin{align*}
+  [R_i,R_j]&=+\ii\epsilon_{ijk}R_k,\\
+  [R_i,K_j]&=+\ii\epsilon_{ijk}K_k,\\
+  [K_i,K_j]&=-\ii\epsilon_{ijk}R_k.
+\end{align*}
+The sign in the first line follows from Banks's choice
+$J_{ij}=+\epsilon_{ijk}R_k$.  Reversing the orientation of all $R_i$ gives
+the other common convention.
+
+The independent-pair convention stated in the exercise is essential here.
+If $\epsilon_{ijk}J_{ij}$ is evaluated as a sum over all ordered values of
+$i,j$, it equals $2R_k$, so its relative normalization with $J_{0k}$ differs
+from the displayed source combination.  In the calculation below,
+$C_k^\pm$ denotes Banks's combination with each antisymmetric spatial pair
+counted once.  The final rescaling to $T_k^\pm$ fixes the standard
+$\mathfrak{su}(2)$ normalization.
+
+Now form $C_i^\pm=R_i\pm\ii K_i$.  Substitution of the component relations
+gives
+\begin{align*}
+  [C_i^\pm,C_j^\pm]
+  &=[R_i,R_j]
+    \mathbin{\pm}\ii[R_i,K_j]
+    \mathbin{\pm}\ii[K_i,R_j]
+    -[K_i,K_j]\\
+  &=+2\ii\epsilon_{ijk}C_k^\pm,\\
+  [C_i^+,C_j^-]&=0.
+\end{align*}
+The cancellation in the mixed bracket can be seen term by term:
+\begin{equation*}
+  [R_i,R_j]-\ii[R_i,K_j]
+  +\ii[K_i,R_j]+[K_i,K_j]=0.
+\end{equation*}
+Hence
+\begin{equation*}
+  T_i^\pm=+\frac12C_i^\pm
+\end{equation*}
+obey
+$[T_i^\pm,T_j^\pm]=\ii\epsilon_{ijk}T_k^\pm$ and
+$[T_i^+,T_j^-]=0$.  These are the two copies of
+$\mathfrak{su}(2)$ in the complexified Lorentz algebra.  Their sum recovers
+spatial rotations:
+\begin{equation*}
+  R_i=T_i^++T_i^-,
+  \qquad
+  K_i=-\ii\left(T_i^+-T_i^-\right).
+\end{equation*}
+As a direct representation check, choose
+$T_i^+=0$ and $T_i^-=\sigma_i/2$.  The reconstruction formula gives
+$R_i=\sigma_i/2$ and $K_i=+\ii\sigma_i/2$, which satisfy all three Lorentz
+brackets above.  Only one chiral algebra acts.  Exchanging the two $T$ sets
+reverses the sign of the boost action and gives the conjugate chirality.
+
+An irreducible finite-dimensional Lorentz representation may therefore be
+labeled by one spin for each copy.  This is the algebraic origin of Banks's
+$[n_L,n_R]$ labels and of the exchange of the two chiralities under spatial
+reflection.
+
+\BanksImplicitSolution{I-CH05-002}
+Define
+\begin{equation*}
+  \sigma^{\mu\nu}=\frac\ii2[\gamma^\mu,\gamma^\nu].
+\end{equation*}
+The stated Hermiticity relation for the Dirac matrices implies
+\begin{equation*}
+  (\sigma^{\mu\nu})^\dagger
+  =\gamma^0\sigma^{\mu\nu}\gamma^0.
+\end{equation*}
+For real Lorentz parameters one may write the spin representation as
+\begin{equation*}
+  S(\Lambda)=
+  \exp\left(-\frac\ii4\omega_{\mu\nu}\sigma^{\mu\nu}\right).
+\end{equation*}
+Taking its Hermitian adjoint then gives
+\begin{align*}
+  S(\Lambda)^\dagger
+  &=\gamma^0
+    \exp\left(+\frac\ii4\omega_{\mu\nu}\sigma^{\mu\nu}\right)
+    \gamma^0\\
+  &=\gamma^0S(\Lambda)^{-1}\gamma^0.
+\end{align*}
+Multiplication on the right by $\gamma^0$ proves the required
+pseudo-unitarity identity.
+
+The transformed Dirac adjoint is consequently
+\begin{equation*}
+  \bar\psi'(x')
+  =\psi(x)^\dagger S(\Lambda)^\dagger\gamma^0
+  =\bar\psi(x)S(\Lambda)^{-1}.
+\end{equation*}
+The mass bilinear is a scalar:
+\begin{equation*}
+  \bar\psi'(x')\psi'(x')=\bar\psi(x)\psi(x).
+\end{equation*}
+For the derivative term, use
+$\partial'_\mu=(\Lambda^{-1})^\nu{}_{\mu}\partial_\nu$ and the spinor
+intertwining identity.  One obtains
+\begin{align*}
+  -\ii\bar\psi'\gamma^\mu\partial'_\mu\psi'
+  &=\bar\psi S^{-1}(-\ii)\gamma^\mu S
+    (\Lambda^{-1})^\nu{}_{\mu}\partial_\nu\psi\\
+  &=-\ii\bar\psi\gamma^\nu\partial_\nu\psi.
+\end{align*}
+Both terms in the Dirac Lagrangian are Lorentz scalars.
+
+The role of $\gamma^0$ is visible in a boost of rapidity $\chi$ along the
+$x^1$ direction.  Up to the sign convention for $\chi$, its spin matrix is
+\begin{equation*}
+  S_B(\chi)=\exp\left(\frac\chi2\gamma^0\gamma^1\right).
+\end{equation*}
+The matrix $\gamma^0\gamma^1$ is Hermitian, so
+$S_B^\dagger=S_B$ and $S_B^\dagger S_B=S_B^2$ depends on $\chi$.  Thus
+$\psi^\dagger\psi$ changes under a boost.  Since
+$\{\gamma^0,\gamma^0\gamma^1\}=0$, one instead has
+\begin{equation*}
+  S_B^\dagger\gamma^0S_B=\gamma^0.
+\end{equation*}
+The matrix $\gamma^0$ supplies the invariant intertwiner between the Dirac
+representation and its Hermitian-conjugate representation, which is the
+property used in Banks's definition of $\bar\psi$.
+
+\BanksImplicitSolution{I-CH05-003}
+Write
+$B_{ij}=\epsilon_{ab}\psi_i^a\psi_j^b$.  Fermion anticommutation and the
+antisymmetry of $\epsilon_{ab}$ make $B_{ij}=B_{ji}$, which explains why each
+$Y^A$ is symmetric.  Under the stated CP action,
+\begin{equation*}
+  \phi_A B_{ij}
+  \longmapsto
+  Z_{AB}X_{ik}X_{jl}\phi_B^*B_{kl}^\dagger.
+\end{equation*}
+Comparison with the Hermitian-conjugate term in $\mathcal L_Y$ gives
+\begin{equation*}
+  (Y^B)^*
+  =\sum_A Z_{AB}X^T Y^A X.
+\end{equation*}
+This equation, together with the corresponding conditions on the scalar
+potential, is the generalized-CP invariance condition.
+
+The involution condition converts the generalized CP action into an ordinary
+real structure.  Indeed, unitarity and $XX^*=1$ imply
+$X^*=X^{-1}=X^\dagger$, hence $X=X^T$.  The same argument gives $Z=Z^T$.
+The Takagi factorization of these symmetric unitary matrices can be chosen as
+\begin{equation*}
+  X=VV^T,
+  \qquad
+  Z=WW^T,
+\end{equation*}
+with $V$ and $W$ unitary.  The compatible basis changes
+\begin{equation*}
+  \psi'=V^\dagger\psi,
+  \qquad
+  \phi'=W^\dagger\phi
+\end{equation*}
+turn the CP action into componentwise complex conjugation.  For instance,
+\begin{equation*}
+  \psi'\longmapsto
+  V^\dagger X V^*\psi'^*=\psi'^*,
+\end{equation*}
+because $V^TV^*=1$.  The scalar transformation works in the same way.
+
+In this CP basis the Yukawa matrices are
+\begin{equation*}
+  Y'^B=\sum_A W_{AB}V^T Y^A V.
+\end{equation*}
+CP sends each holomorphic Yukawa monomial to its Hermitian conjugate.  Equality
+of their coefficients requires
+\begin{equation*}
+  Y'^B=(Y'^B)^*
+\end{equation*}
+for every $B$.  CP invariance therefore supplies a compatible basis in which
+the full Yukawa collection is real.  Conversely, if such a basis exists, the
+canonical CP transformation by complex conjugation preserves every Yukawa
+term.  Undoing the basis change produces the matrices $X$ and $Z$ of a
+generalized CP transformation, proving the reverse implication.
+
+A single symmetric Yukawa matrix within one compatible flavor block always
+passes this test: its Takagi factorization makes it diagonal and nonnegative.
+Several matrices must admit one common field basis.  Once the scalar CP basis
+has been fixed, a useful fermion-basis-invariant obstruction is an imaginary
+part such as
+\begin{equation*}
+  \operatorname{Im}\Tr\left(
+    Y^A Y^{B\dagger}Y^C Y^{D\dagger}
+  \right),
+\end{equation*}
+which vanishes whenever all the matrices are real.
+
+For a minimal simultaneous-reality check, take one Weyl bilinear coupled to
+two fixed CP-even real scalar directions with coefficients $y_1$ and $y_2$.
+A fermion rephasing multiplies both coefficients by the same phase.  A common
+real basis therefore exists exactly when
+\begin{equation*}
+  \operatorname{Im}(y_1y_2^*)=0.
+\end{equation*}
+This example detects the relative phase that would be missed by making each
+coupling real in a separate basis.
+
+This proof uses the involutive CP action assumed in the exercise and basis
+changes compatible with the gauge representations.  A pure-gauge term
+$\theta F_{\mu\nu}\widetilde F^{\mu\nu}$ is CP odd.  An anomalous chiral
+redefinition used in making Yukawa matrices real can shift $\theta$.
+Consequently, the complete theory is CP-invariant when the Yukawa couplings
+are real in the same basis in which all CP-odd gauge coefficients vanish.
+This is the refinement Banks states immediately after the Yukawa criterion.
+
+\BanksImplicitSolution{I-CH05-004}
+For one generator every polynomial has the form $f(\eta)=a+b\eta$.  Let $I$
+denote a linear integral and translate by an independent odd constant $\xi$.
+Translation invariance says
+\begin{equation*}
+  I(a+b\eta+b\xi)=I(a+b\eta).
+\end{equation*}
+Since $b$ and $\xi$ are arbitrary, this equality forces $I(1)=0$.  The
+normalization $I(\eta)=1$ then gives
+\begin{equation*}
+  \int\dd\eta\,(a+b\eta)=b.
+\end{equation*}
+Thus a one-variable Berezin integral equals a left Grassmann derivative.
+
+The left derivative obeys the graded product rule
+\begin{equation*}
+  \partial_i^L(AB)
+  =(\partial_i^L A)B+(-1)^{|A|}A(\partial_i^L B).
+\end{equation*}
+With the measure convention in the exercise, the iterated integral is
+\begin{equation*}
+  \int\dd^n\eta\,f
+  =\partial_n^L\cdots\partial_1^L f.
+\end{equation*}
+Expand the polynomial in ordered monomials,
+\begin{equation*}
+  f(\eta)=\sum_{I=\{i_1<\cdots<i_r\}}
+  f_I\eta_{i_1}\cdots\eta_{i_r}.
+\end{equation*}
+Every monomial of degree below $n$ lacks some generator, so the corresponding
+derivative kills it.  The top monomial gives
+\begin{equation*}
+  \partial_n^L\cdots\partial_1^L
+  (\eta_1\cdots\eta_n)=1.
+\end{equation*}
+It follows that
+\begin{equation*}
+  \int\dd\eta_n\cdots\dd\eta_1\,f(\eta)
+  =f_{\{1,\ldots,n\}}.
+\end{equation*}
+
+Anticommutation determines every ordering sign.  For a permutation
+$\pi\in S_n$,
+\begin{equation*}
+  \int\dd\eta_n\cdots\dd\eta_1\,
+  \eta_{\pi(1)}\cdots\eta_{\pi(n)}
+  =\operatorname{sgn}(\pi).
+\end{equation*}
+The left derivatives anticommute, so exchanging two neighboring
+differentials also multiplies the integral by $-1$.  In two variables,
+\begin{align*}
+  f&=a+b_1\eta_1+b_2\eta_2+c\eta_1\eta_2,\\
+  \int\dd\eta_2\dd\eta_1\,f&=c,\\
+  \int\dd\eta_1\dd\eta_2\,f&=-c.
+\end{align*}
+This sign check fixes the meaning of $\dd^n\eta$ in Banks's coefficient rule.
+
+As a further consistency check, if $\eta=A\xi$, then
+$\eta_1\cdots\eta_n=(\det A)\xi_1\cdots\xi_n$.  Coefficient extraction
+therefore requires the Grassmann Jacobian
+\begin{equation*}
+  \dd^n\eta=(\det A)^{-1}\dd^n\xi.
+\end{equation*}
+The determinant and Pfaffian formulas that follow in Banks's discussion arise
+by extracting the top monomial of the corresponding Grassmann Gaussian.
+
+\end{bankssolutions}

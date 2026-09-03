@@ -1,0 +1,19 @@
+% BANKS-SOURCE: pdf=93 print=83 kind=figure id=7.2
+\resizebox{10.5cm}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+    BanksSpin/.style={line width=1pt,-{Stealth[length=8.8pt,width=5.6pt]}}]
+  % Same 24-site row as Figure 7.1, but the arrow directions sweep smoothly
+  % down from vertical on the left to about 24 degrees just left of centre and
+  % then back up to vertical on the right (a long-wavelength wave).
+  \foreach \k/\ang in {%
+    0/90, 1/81, 2/73, 3/59.5, 4/50.5, 5/42.5, 6/34.5, 7/29,
+    8/26.5, 9/24, 10/26.5, 11/26.5, 12/28, 13/31, 14/34.5, 15/40,
+    16/46, 17/53.5, 18/57.5, 19/65, 20/70.5, 21/77, 22/83.5, 23/90} {
+    \draw[BanksSpin] ({0.415*\k},0) -- ++(\ang:1.93);
+  }
+  % ellipsis dots: half-spacing steps beyond each end of the row
+  \foreach \k in {-1.5,-1,-0.5,23.5,24,24.5} {
+    \fill ({0.415*\k},0.051) circle (1.45pt);
+  }
+\end{tikzpicture}%
+}

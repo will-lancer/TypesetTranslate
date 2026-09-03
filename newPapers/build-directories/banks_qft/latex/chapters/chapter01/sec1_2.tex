@@ -1,0 +1,176 @@
+% BANKS-SOURCE: pdf=13 print=3 kind=section id=1.2
+\subsection{Why quantum field theory?}
+
+% BANKS-SOURCE: pdf=13 print=3 kind=prose
+Students often come into a class in quantum field theory straight out of a course in
+non-relativistic quantum mechanics. Their natural inclination is to look for a straight-
+forward relativistic generalization of that formalism. A fine place to start would seem to
+be a covariant classical theory of a single relativistic particle, with space-time position
+variable $x^\mu(\tau)$, written in terms of an arbitrary parametrization $\tau$ of the particle's path
+in space-time.
+
+The first task of a course in field theory is to explain to students why this is not the
+right way to do things.\footnote[1]{Then, when they get more sophisticated, you can show them how the particle path formalism can be used, with appropriate care.} The argument is straightforward.
+
+Consider a classical machine (an emission source) that has probability amplitude
+$J_E(x)$ of producing a particle at position $x$ in space-time, and an absorption source,
+which has amplitude $J_A(x)$ to absorb the particle. Assume that the particle propagates
+
+% BANKS-SOURCE: pdf=14 print=4 kind=figure id=1.1
+\begin{figure}[htbp]
+  \centering
+  \input{figures/chapter01-fig-1-1.tex}
+  \caption{Boosts can reverse causal order for $(x-y)^2>0$.}
+  \label{fig:1.1}
+\end{figure}
+
+% BANKS-SOURCE: pdf=14 print=4 kind=prose
+freely between emission and absorption, and has mass $m$. The standard rules of quantum
+mechanics tell us that the amplitude (to leading order in perturbation theory in the
+sources) for the entire process is (remember our natural units!)
+
+% BANKS-SOURCE: pdf=14 print=4 kind=equation id=1.1
+\begin{equation}
+  A_{AE}=\int\dd^D x\,\dd^D y\,\langle\mathbf x|\ee^{-\ii H(x^0-y^0)}|\mathbf y\rangle J_A(x)J_E(y),
+  \label{eq:1.1}
+\end{equation}
+
+where $|\mathbf x\rangle$ is the state of the particle at spatial position $\mathbf x$. This doesn't look very Lorentz-
+covariant. To see whether it is, write the relativistic expression for the energy $H=
+\sqrt{\mathbf p^2+m^2}\equiv\omega_{\mathbf p}$. Then
+
+% BANKS-SOURCE: pdf=14 print=4 kind=equation id=1.2
+\begin{equation}
+  A_{AE}=\int\dd^D x\,\dd^D y\,J_A(x)J_E(y)\int\dd^{D-1}\mathbf p\,|\langle0|\mathbf p\rangle|^2\ee^{\ii p\mathbin{\cdot}(x-y)}.
+  \label{eq:1.2}
+\end{equation}
+
+The space-time set-up is shown in Figure~\ref{fig:1.1}. In writing this equation I've used the fact
+that momentum is the generator of space translations\footnote[2]{Here I'm using the notion of the infinitesimal generator of a symmetry transformation. If you don't know this concept, take a quick look at Appendix E, or consult one of the many excellent introductions to Lie groups \cite{banks-ref-1,banks-ref-2,banks-ref-3,banks-ref-4}.} to evaluate position/momentum overlaps in terms of the momentum eigenstate overlap with the state of a particle at
+the origin. I've also used the fact that $p^\mu=(\omega_{\mathbf p},\mathbf p)$ is a $D$-vector and that
+$p\mathbin{\cdot}x=-\omega_{\mathbf p}x^0+\mathbf p\mathbin{\cdot}\mathbf x$, the Lorentz scalar product, to write the exponent.
+So everything is determined by quantum mechanics, translation
+invariance and the relativistic dispersion relation, up to a function of $(D-1)$-momentum. We
+can determine this function up to an overall constant, by insisting that the expression is
+Lorentz-invariant, if the emission and absorption amplitudes are chosen to transform
+as scalar functions of space-time. An invariant measure for $D$-momentum integration,
+ensuring that the mass is fixed, is $\dd^D p\,\delta(p^2+m^2)$, with $p^2=-m^2$ on shell. Since the momentum is then forced
+to be time-like, the sign of its time component is also Lorentz-invariant (Problem 2.1).
+So we can write an invariant measure $\dd^D p\,\delta(p^2+m^2)\theta(p^0)$ for positive-energy particles
+of mass $m$. On doing the integral over $p^0$ we find $\dd^{D-1}\mathbf p/(2\omega_{\mathbf p})$. Thus, if we choose the
+normalization
+
+% BANKS-SOURCE: pdf=14 print=4 kind=equation id=1.3
+\begin{equation}
+  \langle0|\mathbf p\rangle=\frac{1}{\sqrt{(2\pi)^{D-1} 2\omega_{\mathbf p}}},
+  \label{eq:1.3}
+\end{equation}
+
+then the propagation amplitude will be Lorentz-invariant. The full absorption and
+emission amplitude will of course depend on the Lorentz frame because of the coordi-
+nate dependence of the sources $J_{E,A}$. It will be covariant if these are chosen to transform
+like scalar fields.
+
+% BANKS-SOURCE: pdf=15 print=5 kind=prose
+This equation for the momentum-space wave function of ``a particle localized at
+the origin'' is not the same as the one we are used to from non-relativistic quantum
+mechanics. However, if we are in the non-relativistic regime where $|\mathbf p|\ll m$ then the
+wave function reduces to $1/m$ times the non-relativistic formula. When relativity is
+taken into account, the localized particle appears to be spread out over a distance of
+order its Compton wavelength, $1/m=\hbar/(mc)$.
+
+Our formula for the emission/absorption amplitude is thus covariant, but it poses the
+following paradox: \emph{it is non-zero when the separation between the emission and absorption
+points is space-like.} The causal order of two space-like separated points is not Lorentz-
+invariant (Problem 2.1), so this is a real problem.
+
+The only known solution to this problem is to impose a new physical postulate:
+every emission source could equally well be an absorption source (and vice versa). We
+will see the mathematical formulation of this postulate in the next chapter. Given this
+postulate, we define a total source by $J(x)=J_E(x)+J_A(x)$ and write an amplitude
+
+% BANKS-SOURCE: pdf=15 print=5 kind=equation id=1.4
+\begin{equation}
+\begin{aligned}
+  A_{AE}&=\int\dd^D x\,\dd^D y\,J(x)J(y)\int\frac{\dd^{D-1}\mathbf p}{2\omega_{\mathbf p}(2\pi)^{D-1}}
+  \bigl[\theta(x^0-y^0)\ee^{\ii p\mathbin{\cdot}(x-y)}\\
+  &\hspace{7em}+\theta(y^0-x^0)\ee^{-\ii p\mathbin{\cdot}(x-y)}\bigr]\\
+  &\equiv\int\dd^D x\,\dd^D y\,J(x)J(y)D_F(x-y).
+\end{aligned}
+\label{eq:1.4}
+\end{equation}
+
+where $\theta(x^0)$ is the Heaviside step function which is 1 for positive $x^0$ and vanishes for
+$x^0<0$. From now on we will omit the $0$ superscript in the argument of these functions.
+This formula is manifestly Lorentz-covariant when $x-y$ is time-like or null. When
+the separation is space-like, the momentum integrals multiplying the two different step
+functions are equal, and we can add them, again getting a Lorentz-invariant amplitude.
+It is also consistent with causality. In any Lorentz frame, the term with $\theta(x^0-y^0)$ is
+interpreted as the amplitude for a positive-energy particle to propagate forward in time,
+being emitted at $y$ and absorbed at $x$. The other term has a similar interpretation as
+emission at $x$ and absorption at $y$. Different Lorentz observers will disagree about the
+causal order when $x-y$ is space-like, but they will all agree on the total amplitude for
+any distribution of sources.
+
+% BANKS-SOURCE: pdf=15 print=5 kind=prose
+Something interesting happens if we assume that the particle has a conserved
+Lorentz-invariant charge, like electric charge. In that case, one would have expected
+to be able to correlate the question of whether emission or absorption occurred to the
+amount of charge transferred between $x$ and $y$. Such an absolute definition of emission
+versus absorption is not consistent with the postulate that saved us from a causality
+paradox. In order to avoid it we have to make another, quite remarkable, postulate:
+every charge-carrying particle has an anti-particle of exactly equal mass and opposite
+charge. If this is true we will not be able to use charge transfer to distinguish between
+emission of a particle and absorption of an anti-particle. One of the great triumphs of
+quantum field theory is that this prediction is experimentally verified. The equality of
+particle and anti-particle masses has been checked to one part in $10^{18}$ \cite{banks-ref-5}.
+
+% BANKS-SOURCE: pdf=16 print=6 kind=figure id=1.2
+\begin{figure}[htbp]
+  \centering
+  \input{figures/chapter01-fig-1-2.tex}
+  \caption{Scattering in one frame is production amplitude in another.}
+  \label{fig:1.2}
+\end{figure}
+
+% BANKS-SOURCE: pdf=16 print=6 kind=prose
+Now let's consider a slightly more complicated process in which the particle scatters
+from some external potential before being absorbed. Suppose that the potential is
+short-ranged, and is turned on for only a brief period, so that we can think of it
+as being concentrated near a space-time point $z$. The scattering amplitude will be
+approximately given by propagation from the emission point to the interaction point
+$z$, some interaction amplitude, and then propagation from $z$ to the absorption point.
+We can draw a space-time diagram like Figure~\ref{fig:1.2}. We have seen that the propagation
+amplitudes will be non-zero, even when all three points are at space-like separation
+from each other. Then, there will be some Lorentz frame in which the causal order is
+that given in the second drawing in the figure. An observer in this frame sees particles
+created from the vacuum by the external field! Scattering processes inevitably imply
+particle-production processes.\footnote[3]{Indeed, there are quantitative relations, called crossing symmetries, between the two kinds of amplitude.}
+
+We conclude that a theory consistent with special relativity, quantum mechanics, and
+causality must allow for particle creation when the energetics permits it (in the example
+of the previous paragraph, the time dependence of the external field supplies the energy
+necessary to create the particles). This, as we shall see, is equivalent to the statement
+that a causal, relativistic quantum mechanics must be a theory of quantized local fields.
+Particle production also gives us a deeper understanding of why the single-particle wave
+function is spread over a Compton wavelength. To localize a particle more precisely we
+would have to probe it with higher momenta. Using the relativistic energy--momentum
+relation, this means that we would be inserting energy larger than the particle mass.
+This will lead to uncontrollable pair production, rather than localization of a single
+particle.
+
+% BANKS-SOURCE: pdf=17 print=7 kind=prose
+Before leaving this introductory section, we can squeeze one more drop of juice
+from our simple considerations. This has to do with how to interpret the propagation
+amplitude $D_F(x-y)$ when $x-y$ is space-like, and we are in a Lorentz frame where
+$x^0=y^0$. Our remarks about particle creation suggest that we should interpret this as
+the probability amplitude for two particles to be found at time $x^0$, at relative separation
+$\mathbf x-\mathbf y$. Note that this amplitude is completely symmetric under interchange of $x$ and $y$,
+which suggests that the particles are bosons. We thus conclude that spin-zero particles
+must be bosons. It turns out that this is true, and is a special case of a theorem that
+says that integer-spin particles are bosons and half-integer spin particles are fermions.
+What is more, this is not just a mathematical theorem, but an experimental fact about
+the real world. I should warn you, though, that unlike the other remarks in this section,
+and despite the fact that it leads to a correct conclusion, the reasoning here is not a
+cartoon of a rigorous mathematical argument. The interpretation of the equal-time
+propagator as a two-particle amplitude is of limited utility.

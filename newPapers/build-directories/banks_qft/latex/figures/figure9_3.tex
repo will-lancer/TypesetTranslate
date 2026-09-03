@@ -1,0 +1,66 @@
+% BANKS-SOURCE: pdf=162 print=152 kind=figure id=9.3
+\begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round,
+  every node/.style={font=\scriptsize},
+  flow/.style={line width=1pt,
+    -{Stealth[length=3.4mm,width=2.4mm,inset=.9mm]}},
+  inflow/.style={line width=1pt,dash pattern=on 4.5pt off 3pt,
+    -{Stealth[length=3.2mm,width=2.2mm,inset=.9mm]}},
+  axis/.style={line width=.4pt,-{Stealth[length=2.2mm,width=1.5mm]}}]
+  % --- Coordinate axes.  They are drawn first so that the opaque
+  %     critical surface hides the parts that lie behind it.
+  \draw[axis] (2.06,1.59) -- (2.03,5.32);
+  \draw[axis] (2.06,1.59) -- (6.56,1.49);
+  \draw[axis] (2.06,1.59) -- (0.46,0.19);
+  % --- The critical surface: a wavy sheet seen in perspective, with a
+  %     hump on the far left and a lower shelf on the far right.
+  \def\BanksCriticalSurface{
+    (0.94,2.44)
+      .. controls (1.60,3.28) and (2.30,4.32) .. (3.00,4.33)
+      .. controls (3.55,4.34) and (3.88,3.78) .. (4.12,2.97)
+      .. controls (4.70,2.95) and (5.10,2.85) .. (5.53,2.76)
+      .. controls (5.82,2.70) and (5.96,2.55) .. (6.06,2.36)
+      .. controls (5.55,1.65) and (5.05,0.90) .. (4.47,0.15)
+      .. controls (3.95,0.45) and (3.55,0.95) .. (3.00,1.25)
+      .. controls (2.50,1.52) and (2.00,1.90) .. (1.55,2.05)
+      .. controls (1.30,2.14) and (1.10,2.30) .. (0.94,2.44)
+  }
+  \fill[gray!25] \BanksCriticalSurface;
+  \draw[line width=.4pt,black] \BanksCriticalSurface;
+  % --- Trajectories lying in the critical surface: they flow into the
+  %     fixed point (dashed, arrowheads on the fixed point).
+  \draw[inflow] (1.62,2.94)
+    .. controls (2.05,2.82) and (2.30,2.60) .. (2.55,2.42)
+    .. controls (2.75,2.28) and (2.98,2.19) .. (3.31,2.14);
+  \draw[inflow] (5.00,0.97)
+    .. controls (4.30,1.10) and (3.60,1.14) .. (3.10,1.25)
+    .. controls (2.80,1.32) and (2.74,1.56) .. (2.90,1.76)
+    .. controls (3.00,1.89) and (3.16,1.96) .. (3.30,2.03);
+  \draw[inflow] (5.20,1.35)
+    .. controls (4.40,1.45) and (3.80,1.41) .. (3.50,1.50)
+    .. controls (3.41,1.56) and (3.45,1.68) .. (3.47,1.80)
+    -- (3.47,2.00);
+  \draw[inflow] (5.30,1.90)
+    .. controls (4.80,2.02) and (4.30,2.04) .. (3.70,2.10);
+  % --- Trajectories that leave the surface along the relevant
+  %     direction (solid, arrowheads off the sheet).
+  \draw[flow] (1.42,4.22)
+    .. controls (2.15,3.98) and (2.50,3.80) .. (3.05,3.42)
+    .. controls (3.35,3.20) and (3.42,2.70) .. (3.48,2.28)
+    .. controls (3.58,2.75) and (4.05,3.55) .. (4.62,4.52);
+  \draw[flow] (1.20,3.58)
+    .. controls (1.95,3.40) and (2.35,3.12) .. (2.82,2.86)
+    .. controls (3.10,2.70) and (3.25,2.45) .. (3.32,2.12)
+    .. controls (3.50,2.55) and (3.98,3.25) .. (4.52,4.02);
+  \draw[flow] (6.35,0.26)
+    .. controls (6.00,0.80) and (5.55,1.35) .. (5.18,1.59)
+    .. controls (4.75,1.88) and (4.15,2.00) .. (3.85,2.06)
+    .. controls (3.55,2.13) and (3.48,2.40) .. (3.62,2.66)
+    .. controls (3.85,3.05) and (4.42,3.62) .. (5.00,4.09);
+  \draw[flow] (7.00,0.26)
+    .. controls (6.60,0.85) and (6.20,1.30) .. (5.76,1.59)
+    .. controls (5.30,1.90) and (4.60,2.12) .. (4.30,2.25)
+    .. controls (4.05,2.36) and (4.00,2.60) .. (4.15,2.90)
+    .. controls (4.45,3.45) and (4.97,3.90) .. (5.29,4.15);
+  % --- The fixed point.
+  \fill (3.51,2.18) circle (2.6pt);
+\end{tikzpicture}

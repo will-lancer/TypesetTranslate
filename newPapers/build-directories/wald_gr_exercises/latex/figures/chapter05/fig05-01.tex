@@ -1,0 +1,39 @@
+% Source: Wald GR, physical PDF p. 105
+%         (printed p. 92).
+% Coverage: Figure 5.1.
+% Figures/tables/footnotes: Figure 5.1; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+\begingroup
+\renewcommand{\thefigure}{5.1}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=Stealth, line cap=round, line join=round, scale=.92]
+    \draw[thick] (-3.0,0.15) .. controls (-1.7,-.55) and (1.0,-.55) .. (3.0,0.15)
+      .. controls (1.4,.75) and (-1.6,.75) .. cycle;
+    \draw[thick] (-2.55,1.35) .. controls (-1.25,.73) and (1.25,.73) .. (2.55,1.35)
+      .. controls (1.18,1.96) and (-1.22,1.96) .. cycle;
+    \draw[thick] (-2.05,2.55) .. controls (-.95,1.98) and (.95,1.98) .. (2.05,2.55)
+      .. controls (.98,3.08) and (-1.00,3.08) .. cycle;
+    % Representative isometries act within each homogeneous slice.  Use
+    % several short copies, as in the source, rather than a single trajectory
+    % that could be mistaken for a preferred flow.
+    \foreach \xa/\xb in {-2.15/-.95,-.65/.55,.85/2.05} {
+      \draw[->, thick] (\xa,.12) .. controls ({(\xa+\xb)/2},.39) .. (\xb,.15);
+    }
+    \foreach \xa/\xb in {-1.48/-.58,-.42/.48,.64/1.54} {
+      \draw[->, thick] (\xa,2.52) .. controls ({(\xa+\xb)/2},2.75) .. (\xb,2.54);
+    }
+    \fill (-.75,1.34) circle (1.4pt) node[below left=2pt] {\(p\)};
+    \fill (1.10,1.34) circle (1.4pt) node[below right=2pt] {\(q\)};
+    \draw[->, thick] (-.65,1.37) .. controls (0,1.62) and (.52,1.60) .. (1.00,1.37);
+    \draw[->, thick] (-2.05,1.35) .. controls (-1.72,1.56) and (-1.38,1.56) .. (-1.08,1.37);
+    \draw[->, thick] (1.36,1.37) .. controls (1.68,1.57) and (1.98,1.55) .. (2.27,1.37);
+    \node[right] at (2.95,1.60) {\(\Sigma_t\)};
+  \end{tikzpicture}
+  \caption{The hypersurfaces of spatial homogeneity in spacetime. By definition of
+  homogeneity, for each \(t\) and each \(p,q\in\Sigma_t\), there exists an isometry of
+  the spacetime which takes \(p\) into \(q\).}
+  \label{fig:5.1}
+\end{figure}
+\endgroup

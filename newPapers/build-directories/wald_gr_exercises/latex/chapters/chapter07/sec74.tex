@@ -1,0 +1,161 @@
+% Source: Wald GR, physical PDF pp. 193--195
+%         (printed pp. 180--182).
+% Coverage: Section 7.4, Methods for Generating Solutions;
+%           equations (7.4.1)--(7.4.14).
+% Figures/tables/footnotes: footnote 5; no figures or tables.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none; a printed cross-reference error is corrected below.
+
+\subsection{Methods for Generating Solutions}\label{sec:7.4}
+
+It often happens when one is trying to solve an equation that an algorithm will exist
+for constructing new solutions from a given solution. For example, for Laplace's
+equation in ordinary electrostatics one can construct new solutions from a given
+solution by the “method of inversion” (see, e.g., Jackson 1962).\footnote{The
+method of inversion works because sphere inversion maps the Euclidean metric into
+a multiple of itself (i.e., it is a “conformal isometry”) and Laplace's equation has
+simple conformal transformation properties (see appendix D).} Although such
+prescriptions often can be applied readily, they usually suffer from the serious
+drawback that the solutions they generate may be of no physical interest, or at least,
+not applicable to the problem that one desires to solve.
+
+For the vacuum Einstein equation, \(R_{ab}=0\), it turns out that if one is given a
+solution with a Killing vector field \(\xi^a\) there exists an algorithm for
+constructing a one-parameter family of solutions, for which \(\xi^a\) remains a
+Killing field. Algorithms of this sort have been given by Ehlers (1957) and others.
+We shall present the algorithm in the more general form given by Geroch (1971). To
+define it, we need to use the fact that as proven in section 7.1 (see
+equation~\eqref{eq:7.1.15}) in a vacuum spacetime, the \emph{twist},
+\(\omega_a\), of a Killing field \(\xi^a\), defined by
+\begin{equation}
+  \omega_a=\epsilon_{abcd}\xi^b\nabla^c\xi^d ,
+  \tag{7.4.1}\label{eq:7.4.1}
+\end{equation}
+satisfies
+\begin{equation}
+  \nabla_{[a}\omega_{b]}=0 .
+  \tag{7.4.2}\label{eq:7.4.2}
+\end{equation}
+Consequently, as remarked at the end of section B.1 of appendix B, locally there
+exists a scalar function, \(\omega\), such that
+\begin{equation}
+  \omega_a=\nabla_a\omega
+  \tag{7.4.3}\label{eq:7.4.3}
+\end{equation}
+(\(\omega\) is called the \emph{scalar twist} of \(\xi^a\)). Furthermore, using
+equation~\eqref{eq:B.2.13}, we find
+\begin{equation}
+  \epsilon^{abef}\nabla_e
+    \left[\epsilon_{abcd}\nabla^c\xi^d\right]
+    =-4\nabla_e\nabla^e\xi^f .
+  \tag{7.4.4}\label{eq:7.4.4}
+\end{equation}
+Thus, using equation~\eqref{eq:C.3.9} and the vacuum Einstein equation
+\(R_{ab}=0\), we find
+\begin{equation}
+  \nabla_{[e}
+    \left\{\epsilon_{ab]cd}\nabla^c\xi^d\right\}=0 ,
+  \tag{7.4.5}\label{eq:7.4.5}
+\end{equation}
+which implies the (local) existence of a one-form field \(\alpha_b\) such that
+\begin{equation}
+  \nabla_{[a}\alpha_{b]}
+    =\frac12\epsilon_{abcd}\nabla^c\xi^d .
+  \tag{7.4.6}\label{eq:7.4.6}
+\end{equation}
+By adding a gradient to \(\alpha_b\), we can adjust it so that
+\begin{equation}
+  \xi^a\alpha_a=\omega .
+  \tag{7.4.7}\label{eq:7.4.7}
+\end{equation}
+Finally, similar calculations (problem 5) show that
+\begin{equation}
+  \nabla_{[e}
+    \left\{
+      2\lambda\nabla_a\xi_{b]}
+      +\omega\epsilon_{ab]cd}\nabla^c\xi^d
+    \right\}=0 ,
+  \tag{7.4.8}\label{eq:7.4.8}
+\end{equation}
+where
+\begin{equation}
+  \lambda=\xi^c\xi_c ,
+  \tag{7.4.9}\label{eq:7.4.9}
+\end{equation}
+and thus, locally, there exists a one-form \(\beta_b\) such that
+\begin{equation}
+  \nabla_{[a}\beta_{b]}
+    =2\lambda\nabla_a\xi_b
+      +\omega\epsilon_{abcd}\nabla^c\xi^d ,
+  \tag{7.4.10}\label{eq:7.4.10}
+\end{equation}
+where \(\beta_b\) can be adjusted to satisfy
+\begin{equation}
+  \xi^a\beta_a=\omega^2+\lambda^2-1 .
+  \tag{7.4.11}\label{eq:7.4.11}
+\end{equation}
+
+The algorithm for generating new solutions from a given solution now may be stated
+as follows: Let \(g_{ab}\) be a solution of the vacuum Einstein equation \(R_{ab}=0\)
+with Killing field \(\xi^a\). Define \(\omega\), \(\alpha_a\), and \(\beta_a\) as
+above. For each \(\theta\in[0,\pi]\), define \(\widetilde g_{ab}(\theta)\) by
+\begin{equation}
+  \widetilde g_{ab}(\theta)
+    =\sigma g_{ab}
+      +2\sin\theta\,\xi_{(a}\gamma_{b)}
+      +\frac{\lambda\sin^2\theta}{\sigma}\gamma_a\gamma_b ,
+  \tag{7.4.12}\label{eq:7.4.12}
+\end{equation}
+where \(\sigma(\theta)\) and \(\gamma_a(\theta)\) are defined by
+\begin{align}
+  \sigma&=(\cos\theta-\omega\sin\theta)^2
+    +\lambda^2\sin^2\theta ,
+  \tag{7.4.13}\label{eq:7.4.13}\\
+  \gamma_a&=2\alpha_a\cos\theta-\beta_a\sin\theta .
+  \tag{7.4.14}\label{eq:7.4.14}
+\end{align}
+\emph{Then for all \(\theta\), \(\widetilde g_{ab}(\theta)\) is a solution of the
+vacuum Einstein equation.} Furthermore, \(\xi^a\) remains a Killing field of
+\(\widetilde g_{ab}(\theta)\). Note that for \(\theta=\pi\),
+\(\widetilde g_{ab}\) reduces to \(g_{ab}\); however, otherwise
+\(\widetilde g_{ab}(\theta)\) is, in general, a distinct solution. Note also that
+even if \(g_{ab}\) is nonsingular, \(\widetilde g_{ab}\) may develop singularities
+on account of the bad behavior of \(\omega\), \(\alpha_a\), or \(\beta_a\)
+resulting from the possibility that one cannot define them globally.
+
+The reader may verify by direct computation that equation~\eqref{eq:7.4.12} indeed
+does define a solution of the vacuum Einstein equation. However, for a derivation of
+equation~\eqref{eq:7.4.12} which gives more insight into why this algorithm works,
+we refer the reader to Geroch (1971).
+
+Unfortunately, the algorithm~\eqref{eq:7.4.12} does not reproduce most physically
+interesting features of the original metric. In particular, \(\widetilde g_{ab}\) will
+not, in general, be asymptotically flat even if \(g_{ab}\) satisfies this property.
+Furthermore, equation~\eqref{eq:7.4.12} produces only a one-parameter family of
+solutions. If one reapplies the algorithm to \(\widetilde g_{ab}(\theta)\), one does
+not generate any new solutions.
+
+However, if \(g_{ab}\) has two commuting Killing vector fields, \(\xi^a\) and
+\(\psi^a\) (as is the case in the stationary axisymmetric spacetimes considered in
+section 7.1), it can be shown (Geroch 1972a) that \(\psi^a\) also remains a Killing
+vector field of the metric \(\widetilde g_{ab}(\theta)\) generated by the
+algorithm~\eqref{eq:7.4.12} using the Killing field \(\xi^a\). Hence, we may apply
+the algorithm to \(\widetilde g_{ab}(\theta)\) using the Killing vector \(\psi^a\)
+to generate a two-parameter family of solutions
+\(\widetilde g_{ab}(\theta,\theta')\) from our original solution \(g_{ab}\). We
+then may reapply the transformation~\eqref{eq:7.4.12} to
+\(\widetilde g_{ab}(\theta,\theta')\). Geroch (1972a) has shown that this
+procedure does not, in general, reproduce previous solutions, and thus a
+three-parameter family of solutions is generated. Indeed, an infinite-dimensional
+group of transformations is generated by repeated application of the transformation
+% SOURCE ERRATUM: printed ``(7.2.12)''; corrected to (7.4.12).
+\eqref{eq:7.4.12}. Recently, it has been proven (Hauser and Ernst 1981) that---as conjectured
+by Geroch (1972a)---all asymptotically flat, stationary, axisymmetric vacuum
+solutions of Einstein's equation can be generated from Minkowski spacetime by an
+element of this group. Furthermore, it is known how to generate such asymptotically
+flat solutions with desired values for all multipole moments (Hoenselaers, Kinnersley,
+and Xanthopoulos 1979; Xanthopoulos 1981). Unfortunately, the algebraic
+computations required to obtain these solutions explicitly remain formidable, so in
+fact very few solutions are presently known in explicit form. Nevertheless, this
+method for generating solutions is unquestionably one of the most important
+techniques for solving Einstein's equation.

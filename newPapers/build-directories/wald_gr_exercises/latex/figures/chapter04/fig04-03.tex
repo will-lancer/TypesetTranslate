@@ -1,0 +1,52 @@
+% Source: Wald GR, physical PDF p. 99 (printed p. 86).
+% Coverage: Figure 4.3, asymptotically null hypersurfaces and radiated energy.
+% Figures/tables/footnotes: Figure only; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+\begingroup
+\renewcommand{\thefigure}{4.3}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=0.78,>=Stealth]
+    % Timelike cylindrical boundary.
+    \draw[thick] (-2.55,-1.50) arc[start angle=180,end angle=360,x radius=2.55,y radius=.62];
+    \draw[thick,dashed] (2.55,-1.50) arc[start angle=0,end angle=180,x radius=2.55,y radius=.62];
+    \draw[thick] (-2.55,2.35) arc[start angle=180,end angle=360,x radius=2.55,y radius=.62];
+    \draw[thick] (2.55,2.35) arc[start angle=0,end angle=180,x radius=2.55,y radius=.62];
+    \draw[thick] (-2.55,-1.50)--(-2.55,2.35);
+    \draw[thick] (2.55,-1.50)--(2.55,2.35);
+    \node[left] at (-2.58,.40) {\(S\)};
+
+    % Asymptotically null hypersurfaces.
+    \draw[thick] (-2.55,-1.50)
+      .. controls (-1.55,-2.05) and (-.80,-2.32) .. (0,-2.33)
+      .. controls (.80,-2.32) and (1.55,-2.05) .. (2.55,-1.50);
+    \draw[thick] (-2.55,-1.50)
+      .. controls (-1.55,-.92) and (-.80,-.72) .. (0,-.68)
+      .. controls (.80,-.72) and (1.55,-.92) .. (2.55,-1.50);
+    \draw[thick] (-2.55,2.35)
+      .. controls (-1.55,1.77) and (-.80,1.56) .. (0,1.53)
+      .. controls (.80,1.56) and (1.55,1.77) .. (2.55,2.35);
+    \node[right] at (2.58,-1.40) {\(\Sigma_1\)};
+    \node[right] at (2.58,2.28) {\(\Sigma_2\)};
+
+    % Radiation reaches the lower null surface and timelike boundary.
+    \foreach \x/\y/\dx/\dy in {
+      -1.35/-3.05/.70/1.55,
+      1.25/-2.95/-.60/1.48,
+      -2.20/-.15/.55/-1.00,
+      -.90/.25/.65/-1.15,
+      .55/.20/-.25/-1.05,
+      2.10/-.05/-.55/-1.00} {
+      \draw[thick,decorate,decoration={snake,amplitude=2.6pt,segment length=9pt}]
+        (\x,\y) -- ++(\dx,\dy);
+    }
+  \end{tikzpicture}
+  \caption{Asymptotically null hypersurfaces \(\Sigma_1\) and \(\Sigma_2\).
+  The gravitational radiation ``registers'' on \(\Sigma_1\) but does not
+  ``register'' on \(\Sigma_2\). The energy, \(\Delta E\), carried off to infinity
+  by gravitational radiation is given by an integral over the timelike hypersurface
+  \(S\).}
+  \label{fig:4.3}
+\end{figure}
+\endgroup

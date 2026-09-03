@@ -1,0 +1,313 @@
+% Source: Wald GR, physical PDF pp. 54--60
+%         (printed pp. 41--47).
+% Coverage: Section 3.3, Geodesics; equations (3.3.1)--(3.3.18).
+% Figures/tables/footnotes: Figures 3.4--3.5; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Geodesics}\label{sec:3.3}
+
+Intuitively, geodesics are lines that \lq\lq curve as little as possible\rq\rq; they are the
+\lq\lq straightest possible lines\rq\rq\ one can draw in a curved geometry. Given a derivative
+operator, $\nabla_a$, we define a \emph{geodesic} to be a curve whose tangent vector is parallel
+propagated along itself, i.e. a curve whose tangent, $T^a$, satisfies the equation
+\begin{equation}
+  T^a\nabla_aT^b=0.
+  \tag{3.3.1}\label{eq:3.3.1}
+\end{equation}
+Actually, in order to satisfy the intuitive requirement that the curve be \lq\lq as straight
+as possible,\rq\rq\ one might require only that the tangent vector to the curve point in the
+same direction as itself when parallel propagated, and not demand that it maintain
+the same length. This would yield the weaker condition,
+\begin{equation}
+  T^a\nabla_aT^b=\alpha T^b,
+  \tag{3.3.2}\label{eq:3.3.2}
+\end{equation}
+where $\alpha$ is an arbitrary function on the curve. However, it is easy to show that given
+a curve which satisfies Eq.~\eqref{eq:3.3.2} we can always reparameterize it so that it
+satisfies Eq.~\eqref{eq:3.3.1} (see problem 5). Thus, there is no true loss of generality
+in considering only curves which satisfy Eq.~\eqref{eq:3.3.1}. A parameterization which
+yields Eq.~\eqref{eq:3.3.1} is called an \emph{affine parameterization}. Thus, our definition of
+a geodesic requires it to be affinely parameterized. (Some other references apply the
+term geodesic to any curve satisfying Eq.~(3.3.2).)
+
+We can get some insight into the nature of the geodesic equation by writing out
+the components of this equation in a coordinate basis. In a coordinate system $\psi$, the
+geodesic is mapped into a curve $x^\mu(t)$ in $\mathbb R^n$. By Eq.~\eqref{eq:3.1.19}, the components,
+$T^\mu$, of $T^a$ in this coordinate basis satisfy
+\begin{equation}
+  \frac{\dd T^\mu}{\dd t}+\sum_{\sigma,\nu}\Gamma^\mu{}_{\sigma\nu}T^\sigma T^\nu=0.
+  \tag{3.3.3}\label{eq:3.3.3}
+\end{equation}
+However, by Eq.~\eqref{eq:2.2.12}, the components $T^\mu$ are simply
+\begin{equation}
+  T^\mu=\frac{\dd x^\mu}{\dd t}.
+  \tag{3.3.4}\label{eq:3.3.4}
+\end{equation}
+Thus, in a coordinate basis, the geodesic equation becomes
+\begin{equation}
+  \frac{\dd^2x^\mu}{\dd t^2}
+  +\sum_{\sigma,\nu}\Gamma^\mu{}_{\sigma\nu}
+  \frac{\dd x^\sigma}{\dd t}\frac{\dd x^\nu}{\dd t}=0.
+  \tag{3.3.5}\label{eq:3.3.5}
+\end{equation}
+
+Equation~\eqref{eq:3.3.5} is a coupled system of $n$ second order ordinary differential
+equations for the $n$ functions $x^\mu(t)$. From the theory of ordinary differential equations, it is known that a unique solution of Eq.~\eqref{eq:3.3.5} always exists for any
+given initial value of $x^\mu$ and $\dd x^\mu/\dd t$. This means that given $p\in M$ and any tangent
+vector, $T^a\in T_pM$, there always exists a unique geodesic through $p$ with tangent $T^a$.
+Notice that the solutions of the equations of motion in ordinary mechanics share this
+property: Given an initial position and velocity, a unique solution exists.
+
+Indeed, the existence and uniqueness of geodesics allow us to use them to construct coordinate systems that are very convenient for some computational purposes.
+Let $p\in M$. We define a map, called the \emph{exponential map}, from the tangent space
+$T_pM$ to $M$ by mapping each $T^a\in T_pM$ into the point in $M$ lying at unit affine parameter
+from $p$ along the geodesic through $p$ with tangent $T^a$. For large $T^a$ one might
+encounter a singularity before the affine parameter $t=1$ is reached. Also geodesics
+may cross, thereby making the exponential map fail to be one-to-one. However, one
+can show that there always exists a (sufficiently small) neighborhood of the origin
+of $T_pM$ on which the exponential map is defined and is one-to-one (see, e.g., Bishop
+and Crittenden 1964). Since $T_pM$ is an $n$-dimensional vector space, we may identify
+it with $\mathbb R^n$, and hence use the exponential map to give us a coordinate system, called
+\emph{Riemannian normal coordinates} at $p$. These coordinates have the property that all
+geodesics through $p$ get mapped into straight lines through the origin of $\mathbb R^n$. From
+Eq.~\eqref{eq:3.3.5} it follows that in this coordinate system the Christoffel symbol
+components $\Gamma^\mu{}_{\sigma\nu}$ vanish at $p$. This fact makes Riemannian normal coordinates
+particularly useful if one is performing calculations at a given point.
+
+In the case where the derivative operator $\nabla_a$ arises from a metric $g_{ab}$ a second type
+of coordinate system, called \emph{Gaussian normal coordinates}, or \emph{synchronous coordinates}, often is useful for calculations in situations where one is given a \emph{hypersurface}
+$S$, i.e., an $(n-1)$-dimensional embedded submanifold of the $n$-dimensional manifold $M$ (see appendix B). At each point $p\in S$, the tangent space $T_pS$ of the manifold
+$S$ can be naturally viewed as an $(n-1)$-dimensional subspace of the tangent space
+$T_pM$ of $M$. Thus, there will be a vector $n^a\in T_pM$, unique up to scaling, which is
+orthogonal (with respect to the metric $g_{ab}$) to all vectors in $T_pS$. This vector, $n^a$, is said
+to be \emph{normal} to $S$. In the case of a Riemannian metric, $n^a$ cannot lie in $T_pS$; in the case
+of a metric of indefinite signature, $n^a$ could be a null vector, $g_{ab}n^an^b=0$, in which
+case it does lie in $T_pS$ and $S$ is said to be a \emph{null hypersurface} at point $p$. If $S$ is nowhere
+null, we may normalize $n^a$ by the condition $g_{ab}n^an^b=\pm1$. Gaussian normal coordinates may be defined for any non-null hypersurface as follows (see Fig.~\ref{fig:3.4}). For
+each $p\in S$ we construct the unique geodesic through $p$ with tangent $n^a$. We choose
+arbitrary coordinates $(x^1,\ldots,x^{n-1})$ on a (portion of) $S$ and label each point in a
+neighborhood of (that portion of) $S$ by the parameter $t$ along the geodesic on which
+it lies and the coordinates $x^1,\ldots,x^{n-1}$ of the point $p\in S$ from which the geodesic
+emanated. The geodesics emanating from $S$ may eventually cross or run into singularities, but in a (sufficiently small) neighborhood of each $p\in S$, the map
+$q\mapsto(x^1,\ldots,x^{n-1},t)$ defines the chart we wished to construct.
+
+Gaussian normal coordinates satisfy the important property that the geodesics
+remain orthogonal to all the hypersurfaces $S_t$ defined by the equation $t=\text{constant}$.
+This is true by construction for the hypersurface $S_0=S$. To show that this remains
+true for all $S_t$ in the domain of validity of the construction, it suffices to show that
+the geodesic tangent field $n^a$ remains orthogonal to all of the coordinate basis fields
+
+\input{figures/chapter03/fig34.tex}
+
+$X^a_1,\ldots,X^a_{n-1}$ which generate the tangent space to $S_t$. Denoting by $X^a$ any one of
+these fields, we have
+\begin{equation}
+  \begin{aligned}
+    n^b\nabla_b(n_aX^a)
+    &=n_an^b\nabla_bX^a\\
+    &=n_aX^b\nabla_bn^a\\
+    &=\frac{1}{2}X^b\nabla_b(n^an_a)\\
+    &=0,
+  \end{aligned}
+  \tag{3.3.6}\label{eq:3.3.6}
+\end{equation}
+where the first equality comes from the geodesic equation, the second from the fact
+that $n^a$ and $X^b$---being elements of a coordinate basis on $M$---commute, the third
+follows directly from the Leibniz rule, and the last follows from the fact that the
+normalization condition $n^an_a=\pm1$ on $S$ is preserved by parallel transport so that
+$n^an_a$ is constant on $M$. Since $n_aX^a=0$ on $S$, Eq.~\eqref{eq:3.3.6} shows that this
+condition is preserved off of $S$, which yields the desired result.
+
+A further property of geodesics of a derivative operator arising from a metric is
+that they extremize the length of curves connecting given points as measured by the
+metric. For a smooth (or merely differentiable) curve $C$ on a manifold $M$ with
+Riemannian metric $g_{ab}$, the \emph{length}, $l$, of $C$ is defined by
+\begin{equation}
+  l=\int(g_{ab}T^aT^b)^{1/2}\,\dd t,
+  \tag{3.3.7}\label{eq:3.3.7}
+\end{equation}
+where $T^a$ is the tangent to $C$ and $t$ is the curve parameter. For a metric of Lorentz
+signature $-++\cdots+$, a curve is said to be \emph{timelike} if the norm of its tangent is
+everywhere negative, $g_{ab}T^aT^b<0$; it is said to be \emph{null} if $g_{ab}T^aT^b=0$; it is said to
+be \emph{spacelike} if $g_{ab}T^aT^b>0$. For spacelike curves, the length may again be defined
+by Eq.~\eqref{eq:3.3.7}; for null curves the length is zero; for timelike curves, we change
+the sign in the square root and use the term \emph{proper time}, $\tau$, rather than length,
+\begin{equation}
+  \tau=\int(-g_{ab}T^aT^b)^{1/2}\,\dd t.
+  \tag{3.3.8}\label{eq:3.3.8}
+\end{equation}
+The length of curves which change from timelike to spacelike is not defined. Note
+that since a geodesic tangent is parallel transported and thus its norm is constant,
+geodesics in a Lorentz manifold cannot change from timelike to spacelike or null.
+Note also that the length (or proper time) of a curve does not depend on the way in
+which the curve is parameterized. If we define a new reparameterization $s=s(t)$, the
+new tangent will be $S^a=(\dd t/\dd s)T^a$ and the new length will be
+\begin{equation}
+  l'=\int[g_{ab}S^aS^b]^{1/2}\,\dd s
+  =\int[g_{ab}T^aT^b]^{1/2}\frac{\dd t}{\dd s}\,\dd s=l.
+  \tag{3.3.9}\label{eq:3.3.9}
+\end{equation}
+
+We wish now to derive the condition on a curve which makes it extremize the
+length between its endpoints, i.e., wish to find those curves whose length does not
+change to first order under an arbitrary smooth deformation which keeps the endpoints fixed. We will perform the calculation of the change in length of a curve under
+a small deformation by choosing a chart and working in $\mathbb R^n$. (In chapter 9 we shall
+repeat this calculation without introducing coordinates and will calculate also the
+second variation of arc length.) For definiteness, we consider a spacelike curve.
+Writing Eq.~\eqref{eq:3.3.7} in the coordinate basis, we have
+\begin{equation}
+  l=\int_a^b\left[\sum_{\mu,\nu}g_{\mu\nu}
+  \frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}\right]^{1/2}\,\dd t,
+  \tag{3.3.10}\label{eq:3.3.10}
+\end{equation}
+where $C(a)=p$ and $C(b)=q$ are the endpoints of the curve. The extremization
+problem for $l$ is mathematically identical to the extremization problem for the action
+in Lagrangian mechanics. The variation in $l$ is
+\begin{equation}
+  \begin{aligned}
+    \delta l={}&\int_a^b\left[\sum_{\mu,\nu}g_{\mu\nu}
+    \frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}\right]^{-1/2}
+    \sum_{\alpha,\beta}\biggl\{
+    g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\frac{\dd(\delta x^\beta)}{\dd t}\\
+    &\qquad\qquad+\frac{1}{2}\sum_\sigma
+    \frac{\partial g_{\alpha\beta}}{\partial x^\sigma}
+    \delta x^\sigma\frac{\dd x^\alpha}{\dd t}\frac{\dd x^\beta}{\dd t}
+    \biggr\}\,\dd t.
+  \end{aligned}
+  \tag{3.3.11}\label{eq:3.3.11}
+\end{equation}
+Without loss of generality (since length is parameterization independent), we may
+assume that the original curve was parameterized so that
+\begin{equation*}
+  g_{ab}T^aT^b=1
+  =\sum_{\mu,\nu}g_{\mu\nu}\frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}.
+\end{equation*}
+With this choice of parameterization, the extremization condition is
+\begin{equation}
+  \begin{aligned}
+    0={}&\int_a^b\sum_{\alpha,\beta}\biggl\{
+    g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\frac{\dd(\delta x^\beta)}{\dd t}
+    +\frac{1}{2}\sum_\lambda
+    \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
+    \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}\delta x^\beta
+    \biggr\}\,\dd t\\
+    ={}&\int_a^b\sum_{\alpha,\beta}\biggl\{
+    -\frac{\dd}{\dd t}\left(g_{\alpha\beta}\frac{\dd x^\alpha}{\dd t}\right)
+    +\frac{1}{2}\sum_\lambda
+    \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
+    \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}
+    \biggr\}\delta x^\beta\,\dd t.
+  \end{aligned}
+  \tag{3.3.12}\label{eq:3.3.12}
+\end{equation}
+(No boundary terms occur in the integration by parts since $\delta x^\beta$ vanishes at the
+endpoints.) Equation~\eqref{eq:3.3.12} will hold for arbitrary $\delta x^\beta$ if and only if
+\begin{equation}
+  -\sum_\alpha g_{\alpha\beta}\frac{\dd^2x^\alpha}{\dd t^2}
+  -\sum_{\alpha,\lambda}\frac{\partial g_{\alpha\beta}}{\partial x^\lambda}
+  \frac{\dd x^\lambda}{\dd t}\frac{\dd x^\alpha}{\dd t}
+  +\frac{1}{2}\sum_{\alpha,\lambda}
+  \frac{\partial g_{\alpha\lambda}}{\partial x^\beta}
+  \frac{\dd x^\alpha}{\dd t}\frac{\dd x^\lambda}{\dd t}=0.
+  \tag{3.3.13}\label{eq:3.3.13}
+\end{equation}
+Using our formula for $\Gamma^\sigma{}_{\alpha\lambda}$, Eq.~\eqref{eq:3.1.30}, we see that Eq.~\eqref{eq:3.3.13} is just
+the geodesic equation~\eqref{eq:3.3.5}. (Had we not chosen the parameterization
+$g_{ab}T^aT^b=1$ for $C$, we would have obtained the geodesic equation in the form
+(3.3.2).) Thus, a curve extremizes the length between its endpoints if and only if it
+is a geodesic.
+
+An identical derivation shows that the curves which extremize proper time between two points are precisely the timelike geodesics. These derivations also show
+that the geodesic equation (with affine parameterization) can be obtained from
+variation of the Lagrangian,
+\begin{equation}
+  L=\sum_{\mu,\nu}g_{\mu\nu}\frac{\dd x^\mu}{\dd t}\frac{\dd x^\nu}{\dd t}.
+  \tag{3.3.14}\label{eq:3.3.14}
+\end{equation}
+In many cases, the most efficient way of computing the Christoffel symbol
+$\Gamma^\mu{}_{\sigma\nu}$ in a given coordinate basis is to start with the Lagrangian, Eq.~\eqref{eq:3.3.14}, write
+down the corresponding Euler-Lagrange equations, and read off $\Gamma^\mu{}_{\sigma\nu}$ by comparison
+with Eq.~\eqref{eq:3.3.5}.
+
+On a manifold with a Riemannian metric, one can always find curves of arbitrarily
+long length connecting any two points. However, the length will be bounded from
+below, and the curve of shortest length connecting two points (assuming the lower
+bound in length is attained) is necessarily an extremum of length and thus a geodesic.
+Thus, the shortest path between two points is always a \lq\lq straightest possible path.\rq\rq\
+However, a given geodesic connecting two points need not be the shortest path
+between them. For a manifold with a Lorentz metric, given two points that can be
+connected by a timelike curve, one can always find timelike curves of arbitrarily
+small proper time connecting the points (see Fig.~9.5 of chapter 9). In some spacetimes the proper time of timelike curves connecting the two given points need not
+be bounded from above; but if a curve of greatest proper time exists, it must be a
+timelike geodesic. Again, however, a given geodesic need not maximize the proper
+time between two points. In chapter 9 we shall introduce the notion of conjugate
+points along a geodesic and will show that their absence is the necessary and
+sufficient condition for a geodesic to be a local maximum of proper time (or, in the
+Riemannian case, a local minimum of length) between two points.
+
+Our final task is to derive the geodesic deviation equation, the equation which
+relates the tendency of geodesics to accelerate toward or away from each other to the
+curvature of the manifold. This gives another characterization of curvature, and it
+also plays an important role in motivating Einstein's equation (see section 4.3) and
+in arguments relating to the singularity theorems (see chapter 9).
+
+Let $\gamma_s(t)$ denote a smooth one-parameter family of geodesics (see Fig.~\ref{fig:3.5}), that
+is for each $s\in\mathbb R$, the curve $\gamma_s$ is a geodesic (parameterized by affine parameter $t$);
+
+\input{figures/chapter03/fig35.tex}
+
+and the map $(t,s)\mapsto\gamma_s(t)$ is smooth, is one-to-one, and has smooth inverse. Let $\Sigma$
+denote the two-dimensional submanifold spanned by the curves $\gamma_s(t)$. We may
+choose $s$ and $t$ as coordinates of $\Sigma$. The vector field $T^a=(\partial/\partial t)^a$ is tangent to the
+family of geodesics and, thus, satisfies
+\begin{equation}
+  T^a\nabla_aT^b=0.
+  \tag{3.3.15}\label{eq:3.3.15}
+\end{equation}
+The vector field $X^a=(\partial/\partial s)^a$ represents the displacement to an infinitesimally
+nearby geodesic, and is called the \emph{deviation vector}. There is \lq\lq gauge freedom\rq\rq\ in $X^a$
+in the sense that $X^a$ changes by addition of a multiple of $T^a$ under a change of the
+affine parameterization of the geodesics $\gamma_s(t)$, $t\mapsto t'=b(s)t+c(s)$ (see problem
+5). It is worth noting that in the case where the geodesics arise from the derivative
+operator associated with a metric $g_{ab}$, $X^a$ always can be chosen orthogonal to $T^a$.
+Namely, by re-scaling $t$ by an $s$-dependent factor, we may ensure that $g_{ab}T^aT^b$
+(which is automatically constant along each geodesic) does not vary with $s$. Since $X^a$
+and $T^a$ are coordinate vector fields, they commute:
+\begin{equation}
+  T^b\nabla_bX^a=X^b\nabla_bT^a;
+  \tag{3.3.16}\label{eq:3.3.16}
+\end{equation}
+so by the same calculation as Eq.~\eqref{eq:3.3.6}, we see that $X^aT_a$ is constant along
+each geodesic. By further reparameterizing each $\gamma_s(t)$ by adding a constant (depending on $s$) to $t$, we may ensure that the curve $C(s)$ comprising the points with
+$t=0$ is orthogonal to all the geodesics. Thus, with this affine parameterization of
+$\gamma_s(t)$ we have $X_aT^a=0$ at $t=0$ and hence $X^aT_a=0$ everywhere.
+
+The quantity $v^a=T^b\nabla_bX^a$ gives the rate of change along a geodesic of the
+displacement to an infinitesimally nearby geodesic. Thus, we may interpret $v^a$ as the
+relative velocity of an infinitesimally nearby geodesic. Similarly, we may interpret
+\begin{equation}
+  a^a=T^c\nabla_cv^a=T^c\nabla_c(T^b\nabla_bX^a)
+  \tag{3.3.17}\label{eq:3.3.17}
+\end{equation}
+as the relative acceleration of an infinitesimally nearby geodesic in the family. We
+now shall derive an equation which relates $a^a$ to the Riemann tensor. We have
+\begin{equation}
+  \begin{aligned}
+    a^a
+    &=T^c\nabla_c(T^b\nabla_bX^a)\\
+    &=T^c\nabla_c(X^b\nabla_bT^a)\\
+    &=(T^c\nabla_cX^b)(\nabla_bT^a)+X^bT^c\nabla_c\nabla_bT^a\\
+    &=(X^c\nabla_cT^b)(\nabla_bT^a)+X^bT^c\nabla_b\nabla_cT^a
+      -R_{cbd}{}^aX^bT^cT^d\\
+    &=X^c\nabla_c(T^b\nabla_bT^a)-R_{cbd}{}^aX^bT^cT^d\\
+    &=-R_{cbd}{}^aX^bT^cT^d.
+  \end{aligned}
+  \tag{3.3.18}\label{eq:3.3.18}
+\end{equation}
+Equation~\eqref{eq:3.3.18} is known as the \emph{geodesic deviation equation}. It yields the final
+characterization of curvature which we sought: We have $a^a=0$ for all families of
+geodesics if and only if $R_{abc}{}^d=0$. Thus, some geodesics will accelerate toward or
+away from each other (and, in particular, some initially parallel geodesics---i.e.,
+geodesics with $v^a=T^b\nabla_bX^a=0$ initially---will fail to remain parallel) if and only
+if $R_{abc}{}^d\ne0$.

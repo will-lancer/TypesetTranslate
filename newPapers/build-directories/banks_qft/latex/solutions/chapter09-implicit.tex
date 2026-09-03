@@ -1,0 +1,1403 @@
+\begin{bankssolutions}{Solutions to Implicit Exercises for Chapter 9}
+
+\BanksImplicitSolution{I-CH09-001}
+Raise the index in the consistency relation with the inverse metric.  The beta
+function is
+\[
+  \beta^i=-G^{ij}\partial_jC,
+\]
+so it is the negative gradient of $C$ in the metric $G$.  Along an RG
+trajectory,
+\begin{align*}
+  \frac{\dd C}{\dd t}
+  &=\partial_iC\,\dot g^i
+   =-G_{ij}\beta^i\beta^j\\
+  &=-G^{ij}\partial_iC\,\partial_jC\leq0.
+\end{align*}
+Positive definiteness makes the inequality strict whenever $\beta\ne0$.
+Thus $C$ is a Lyapunov function rather than a periodic coordinate on coupling
+space.  In particular, a nonconstant periodic orbit would make $C$ decrease
+and return to its original value, which is impossible.
+
+Compactness of the forward orbit gives a lower bound for $C$, so
+$C(g(t))\to C_\infty$ and
+\[
+  \int_0^\infty\dd t\,
+  G_{ij}\beta^i\beta^j=C(g(0))-C_\infty<\infty.
+\]
+On the compact orbit the smooth function
+$G_{ij}\beta^i\beta^j$ is uniformly continuous along the flow.  If it stayed
+above a fixed positive number along an infinite sequence of time intervals,
+the integral would diverge.  Hence $\beta(g(t))\to0$.  Equivalently, every
+point in the omega-limit set has $\dot C=0$, and positive definiteness then
+sets $\beta=0$ there.  An omega-limit set of a continuous trajectory is
+connected.  If its fixed points are isolated, it contains one point $g_*$,
+and therefore
+\[
+  \lim_{t\to\infty}g(t)=g_*.
+\]
+
+Write $g=g_*+u$ and let $H_{ij}=\partial_i\partial_jC|_*$.  To first order,
+\[
+  \dot u^i=M^i{}_ju^j,
+  \qquad M^i{}_j=-G_*^{ik}H_{kj}.
+\]
+This matrix is self-adjoint in the $G_*$ inner product, so its eigenvalues are
+real.  We orient $t$ toward the infrared, as in a step that lowers the cutoff.
+An eigenmode $u_a\sim\ee^{y_at}$ grows for $y_a>0$ and is relevant.  A mode
+with $y_a<0$ decays and is irrelevant; $y_a=0$ is marginal and requires
+higher-order analysis.  For one coupling with $G=1$, $\dot g=-C'(g)$ and
+$\dot C=-(C')^2$.  A local minimum of $C$ has
+$\dot u=-C''(g_*)u$ and is infrared-attractive, which checks every sign in the
+general formula.
+
+\BanksImplicitSolution{I-CH09-002}
+After integrating out the shell, the cutoff is $\ee^{-t}\Lambda$.  The change
+of variables $x=\ee^t x'$ returns it to $\Lambda$.  A scaling field is chosen
+so that
+\[
+  \Phi'(x')=\ee^{t\Delta_\Phi}\Phi(\ee^t x').
+\]
+At a fixed point the resulting dimensionless action equals the original one:
+\[
+  S_*[\Phi']=S_*[\Phi].
+\]
+This is precisely invariance under a dilatation, including the field
+rescaling.  The anomalous part of $\Delta_\Phi$ records the rescaling needed
+beyond its engineering dimension.
+
+A scaling operator obeys
+\[
+  O_I(x)\longmapsto \ee^{-t\Delta_I}O_I(\ee^{-t}x).
+\]
+Since $\dd^D x\mapsto\ee^{Dt}\dd^D x$, its coupling changes according to
+\[
+  g^I(t)=\ee^{(D-\Delta_I)t}g^I(0)+O(g^2),
+  \qquad \dot g^I=y_Ig^I+O(g^2),
+  \qquad y_I=D-\Delta_I.
+\]
+With infrared-directed $t$, $y_I>0$, $y_I=0$, and $y_I<0$ give relevant,
+marginal, and irrelevant perturbations, respectively.
+
+Fixed-point invariance also fixes separated-point correlators.  For identical
+scalar fields,
+\[
+  \left\langle\Phi(\lambda x_1)\cdots\Phi(\lambda x_n)\right\rangle_*
+  =\lambda^{-n\Delta_\Phi}
+  \left\langle\Phi(x_1)\cdots\Phi(x_n)\right\rangle_*.
+\]
+Spin indices acquire the corresponding finite-dimensional Lorentz matrices.
+
+For a free massless scalar,
+$S_*=(1/2)\int\dd^D x\,(\partial\phi)^2$ is invariant when
+\[
+  \Delta_\phi=\frac{D-2}{2}.
+\]
+Normal-ordered powers have
+$\Delta_{\phi^n}=n(D-2)/2$, so their couplings have
+$y_n=D-n(D-2)/2$.  In $D=4$, $\phi^2$ is relevant, $\phi^4$ is marginal,
+and $\phi^n$ with $n>4$ is irrelevant.  This is the scaling classification
+used throughout Banks's chapter.
+
+\BanksImplicitSolution{I-CH09-003}
+A standard gauge-fixing fermion has the schematic form
+\[
+  \Psi_\kappa=\int\dd^D x\,\bar c^a
+  \left(\partial^\mu A^a_\mu-\kappa m_a\chi^a
+        +\frac{\kappa}{2}B^a\right),
+\]
+where $\chi^a$ is a would-be Goldstone field and $B^a$ is auxiliary.  Its
+precise normalization is immaterial for the argument.  Differentiation gives
+\[
+  \partial_\kappa S_\kappa=s(\partial_\kappa\Psi_\kappa).
+\]
+Let $\mathcal A_\kappa$ be a time-ordered LSZ amplitude between physical
+states.  BRST invariance of the measure gives
+\[
+  \partial_\kappa\mathcal A_\kappa
+  =\ii\left\langle\mathrm{out}\left|
+  T\,s(\partial_\kappa\Psi_\kappa)\,
+  \exp(\ii S_\kappa)\right|\mathrm{in}\right\rangle.
+\]
+Writing $sX=\ii[Q_{\mathrm B},X\}$ moves the BRST charge through the
+time-ordered product.  It annihilates the BRST-invariant vacuum and both
+cohomology classes,
+\[
+  Q_{\mathrm B}|\mathrm{in}\rangle=Q_{\mathrm B}|\mathrm{out}\rangle=0.
+\]
+The matrix element of the BRST-exact insertion therefore vanishes.  This step
+uses an anomaly-free measure and the usual absence of boundary contributions
+in field space.  It proves
+\[
+  \partial_\kappa\mathcal A_\kappa=0.
+\]
+
+In an $R_\kappa$ gauge the Goldstone and ghost masses are proportional to
+$\sqrt{\kappa}\,m_a$.  Taking $\kappa\to\infty$ after renormalization, at fixed
+physical masses and external data, removes them from finite-energy external
+states and enforces $\chi^a=0$.  This is the unitary-gauge limit.  The preceding
+identity makes its physical amplitude equal to the value at every finite
+$\kappa$, provided this renormalized limit exists.  This order of limits is
+important because the off-shell unitary-gauge power counting is singular.
+
+The distinction between off-shell Green functions follows directly from the
+propagators.  For one massive vector,
+\[
+  D^{(\kappa)}_{\mu\nu}(k)=
+  \frac{-\ii}{k^2+m^2-\ii0}
+  \left[\eta_{\mu\nu}-(1-\kappa)
+  \frac{k_\mu k_\nu}{k^2+\kappa m^2-\ii0}\right]
+\]
+falls as $k^{-2}$ at fixed finite $\kappa$.  Its unitary-gauge limit is
+\[
+  D^U_{\mu\nu}(k)=
+  \frac{-\ii}{k^2+m^2-\ii0}
+  \left(\eta_{\mu\nu}+\frac{k_\mu k_\nu}{m^2}\right).
+\]
+The longitudinal numerator leaves an $O(m^{-2})$ term at large momentum.
+Power counting of off-shell diagrams then permits counterterms of arbitrarily
+high dimension.  These Green functions involve gauge-invariant, nonpolynomial
+composites when rewritten in $R_\kappa$ variables, in accord with Banks's
+explanation.
+
+For a tree exchange between conserved currents, $k_\mu J^\mu=k_\nu J'^\nu=0$.
+Every gauge-dependent longitudinal term drops out:
+\[
+  J^\mu D^{(\kappa)}_{\mu\nu}J'^\nu
+  =J^\mu D^U_{\mu\nu}J'^\nu
+  =\frac{-\ii J\mathbin{\cdot}J'}{k^2+m^2-\ii0}.
+\]
+This is the simplest explicit check of the cohomological proof.
+
+\BanksImplicitSolution{I-CH09-004}
+For a finite matrix $H_N(g)$, the exponential is defined by a power series
+that converges uniformly on compact subsets of the complexified parameter
+domain.  Each matrix entry of $\exp[-\beta H_N(g)]$ is therefore analytic, as
+is its finite trace $Z_N$.  For real $\beta>0$ and Hermitian $H_N$,
+\[
+  Z_N=\sum_{r=1}^{\dim\mathcal H_N}\ee^{-\beta E_r}>0.
+\]
+At each real point, continuity gives a complex neighborhood free of zeros.
+An analytic branch of $\log Z_N$ exists there, which proves real analyticity
+of $F_N$ in $\beta$ and all real couplings.
+
+For a finite-dimensional classical system,
+\[
+  Z_N(\beta,g)=\int_X\dd\mu(x)\,\ee^{-\beta H_N(x;g)}.
+\]
+Suppose the integrand extends holomorphically to a complex neighborhood of
+each physical parameter point and has an integrable majorant there, uniform on
+compact subsets.  Morera's theorem, with dominated convergence interchanging
+the contour and $x$ integrals, makes $Z_N$ holomorphic.  Equivalently, Cauchy
+estimates justify its locally convergent Taylor series term by term.  The same
+positivity and logarithm argument then applies on the physical domain.
+
+The thermodynamic free energy is a scaled limit
+\[
+  F(\beta,g)=\lim_{N\to\infty}
+  -\frac{1}{\beta V_N}\log Z_N(\beta,g).
+\]
+Analyticity passes to a limit under locally uniform convergence of the
+functions and the needed derivatives.  At a phase transition this uniformity
+fails.  A sequence of smooth curves may then approach a function with a cusp,
+or its derivatives may develop a jump or divergence.  In the equivalent
+Lee--Yang description, every finite $Z_N$ has isolated zeros away from the
+physical real domain.  As $V_N$ grows, their number grows and they can pinch a
+real point.  No common zero-free neighborhood then survives, and
+$V_N^{-1}\log Z_N$ can acquire a nonanalytic limit.
+
+For one Ising spin $s=\pm1$ in a field $h$,
+\[
+  Z_1(\beta,h)=\sum_{s=\pm1}\ee^{\beta hs}=2\cosh(\beta h).
+\]
+It is positive for real $\beta h$ and its free energy is analytic there.  Its
+zeros lie at $\beta h=\ii\pi(n+1/2)$, away from the real axis.  A phase
+transition requires the infinite-volume accumulation mechanism described
+above.
+
+\BanksImplicitSolution{I-CH09-005}
+The exact blocked action is defined by
+\[
+  \ee^{-H_1[\Phi]}=
+  \sum_{\{s_x\}}\ee^{-H[s]}
+  \prod_I\delta\!\left(
+  |B_I|\Phi_I-\sum_{x\in B_I}s_x\right).
+\]
+Split the constrained microscopic variables into the retained block field and
+fast variables $\chi$, and write their coupling as $V(\Phi,\chi)$.  Then
+\[
+  H_1[\Phi]=H_{\mathrm{slow}}[\Phi]
+  -\log\left\langle\ee^{-V(\Phi,\chi)}\right\rangle_{\!\mathrm{fast}}
+  =H_{\mathrm{slow}}[\Phi]
+  +\sum_{r\geq1}\frac{(-1)^{r+1}}{r!}
+  \left\langle V(\Phi,\chi)^r\right\rangle_{\!c,\mathrm{fast}}.
+\]
+Expanding each $V$ in $\Phi$ expresses every coefficient $K_n$ as a sum of
+connected fast-mode cumulants.  This is the precise linked-cluster meaning of
+the kernel expansion; conventional factorials depend on the definition of
+$K_n$.
+
+By assumption, a connected fast-mode cumulant is bounded by an exponential
+of the length of a shortest tree joining its blocks:
+\[
+  |K_n(I_1,\ldots,I_n)|
+  \leq C_n\exp[-c\,\ell_{\mathrm{tree}}(I_1,\ldots,I_n)].
+\]
+This is the linked-cluster statement: disconnected clusters disappear from
+the logarithm, while a connected cluster reaching widely separated blocks
+must contain a chain of short-range microscopic interactions across that
+distance.  The induced interactions are therefore quasi-local on the blocked
+lattice.  Each later step integrates another band of short-distance modes.
+Convolution of exponentially decaying kernels remains exponentially decaying,
+with a changed range measured in the new lattice units.  Iteration preserves
+quasi-locality.
+
+If a block after $k$ steps contains $M=B^{kd}$ Ising spins, then
+\[
+  \Phi=-1,-1+\frac2M,\ldots,1-\frac2M,1.
+\]
+Its mesh $2/M$ tends to zero.  After the field-strength rescaling appropriate
+to the fixed point, sums over these values become Riemann sums and then a
+functional integral over a continuous field.  The microscopic bound can be
+encoded by a local potential that grows rapidly outside the image of
+$[-1,1]$; long-distance correlators are insensitive to the detailed shape of
+that wall.
+
+For independent unbiased spins,
+\[
+  \Pr(\Phi=m)=2^{-M}{M\choose M(1+m)/2}.
+\]
+Stirling's formula gives, for $m=O(M^{-1/2})$,
+\[
+  \Pr(\Phi=m)\simeq
+  \sqrt{\frac{2}{\pi M}}\,
+  \exp\!\left(-\frac{Mm^2}{2}\right).
+\]
+The rescaled variable $\varphi=\sqrt M\,\Phi$ has spacing $2/\sqrt M$ and
+tends to a continuous unit Gaussian.  This explicit limit realizes Banks's
+replacement of a finely spaced block variable by a continuum field.
+
+\BanksImplicitSolution{I-CH09-006}
+For an internal line of momentum $q$, the assumptions imply a bound of the
+form
+\[
+  \left|\frac1{K(q^2/\Lambda^2)}\right|
+  \leq C(1+|q|)^a\exp[-c q^2/\Lambda^2]
+\]
+outside a fixed ball.  A vertex contributes at most another polynomial.  Route
+the internal momenta of a graph as
+\[
+  q_e=A_{er}\ell_r+P_e,
+\]
+where $\ell_r$, $r=1,\ldots,L$, are independent loop momenta and $P_e$ is a
+linear combination of external momenta.  The cycle-edge matrix has rank $L$.
+Consequently, for constants depending on the graph,
+\[
+  \sum_e|q_e|^2\geq c_G\sum_{r=1}^L|\ell_r|^2-C_G(P).
+\]
+The absolute value of the graph integrand is therefore bounded by
+\[
+  C_P(1+|\ell|)^N
+  \exp\!\left[-c'_G\sum_r|\ell_r|^2/\Lambda^2\right].
+\]
+This function is integrable on $\mathbb R^{DL}$.  Applying the same routing
+argument with the complementary loop momenta fixed proves convergence of
+every UV subintegration, so the estimate also excludes subdivergences.
+
+At a fixed monomial in the couplings and a fixed number of external legs,
+there are finitely many graphs.  Each is finite by the bound above.  This is
+the coefficient-by-coefficient meaning of a finite perturbation series; it
+does not assert convergence of the infinite sum over perturbative orders.
+
+A massless propagator can still produce a singularity at small momentum.
+Move a positive quadratic term from $g_2$ into the free kernel,
+\[
+  K(p)\longmapsto K(p)+m^2,
+  \qquad S_I\longmapsto S_I-\frac12m^2\int\phi^2.
+\]
+The full action stays fixed.  The new propagator is bounded at $p=0$, while
+its large-$p$ exponential decrease is unchanged.  The infrared rearrangement
+therefore leaves the ultraviolet proof intact.
+
+\BanksImplicitSolution{I-CH09-007}
+For a Weyl variation, the defining metric formula gives
+\[
+  \delta_\sigma W[g]
+  =\int\dd^D x\sqrt g\,\sigma(x)
+  \langle T^\mu{}_{\mu}(x)\rangle.
+\]
+Insert any collection $X$ of renormalized local operators at points outside
+the support of $\sigma$.  The same Ward identity reads
+\[
+  \int\dd^D x\sqrt g\,\sigma(x)
+  \langle T^\mu{}_{\mu}(x)X\rangle=0.
+\]
+It holds for every compactly supported test function $\sigma$.  The
+fundamental lemma for distributions therefore implies
+\[
+  \langle T^\mu{}_{\mu}(x)X\rangle=0.
+\]
+Since $X$ is arbitrary, $T^\mu{}_{\mu}=0$ as an operator-valued distribution,
+up to the contact terms already covered by the renormalized Ward identity.
+The assumptions about anomalies and the virial current are exactly what
+allows this representative of the stress tensor.
+
+A constant rescaling alone would give only
+$\int\sqrt g\,T^\mu{}_{\mu}=0$ and would not support the distributional step.
+The Ward identity for arbitrary local test functions, supplied by the stated
+no-anomaly and no-virial assumptions, is essential here.
+
+Let $g_{\mu\nu}(t)=\ee^{2t\sigma(x)}g_{\mu\nu}$.  Along this path,
+\[
+  \frac{\dd}{\dd t}W[g(t)]
+  =\int\dd^D x\sqrt{g(t)}\,\sigma(x)
+  \langle T^\mu{}_{\mu}\rangle_{g(t)}=0.
+\]
+Integration from $t=0$ to $1$ proves invariance under the corresponding finite
+Weyl transformation.
+
+In flat space a conformal Killing vector satisfies
+\[
+  \partial_\mu\xi_\nu+\partial_\nu\xi_\mu=2\omega(x)\eta_{\mu\nu}.
+\]
+The diffeomorphism generated by $\xi$ changes the metric by this expression.
+A Weyl rescaling with parameter $-\omega$ restores $\eta_{\mu\nu}$.  Diffeomorphism
+covariance together with Weyl invariance therefore gives the flat-space
+conformal Ward identity.
+
+For a free massless scalar in $D>2$, use the improved tensor
+\[
+  T_{\mu\nu}=\partial_\mu\phi\partial_\nu\phi
+  -\frac12\eta_{\mu\nu}(\partial\phi)^2
+  +\xi_c(\eta_{\mu\nu}\Box-\partial_\mu\partial_\nu)\phi^2,
+  \qquad
+  \xi_c=\frac{D-2}{4(D-1)}.
+\]
+Taking the trace and using $\Box\phi=0$ gives
+$T^\mu{}_{\mu}=0$.  This checks both the improvement coefficient and the
+local Weyl conclusion.
+
+\BanksImplicitSolution{I-CH09-008}
+Expanding $\exp(-\delta S)$ in the Euclidean functional integral gives a
+two-leg insertion $-m^2$.  A line with $r$ insertions contributes
+\[
+  G_0(p)[-m^2G_0(p)]^r.
+\]
+Summing over $r$ gives
+\begin{align*}
+  G(p)&=\frac1{p^2}\sum_{r=0}^\infty
+  \left(-\frac{m^2}{p^2}\right)^r\\
+  &=\frac1{p^2}\frac1{1+m^2/p^2}
+   =\frac1{p^2+m^2}.
+\end{align*}
+The ordinary geometric series converges for $|m^2|<|p^2|$.  Elsewhere the
+last expression defines its analytic continuation, or equivalently the exact
+Gaussian integral with the quadratic term included in the inverse
+propagator.
+
+With mostly-plus Minkowski action
+$\mathcal L=-\frac12(\partial\phi)^2-\frac12m^2\phi^2$, the free massless line is
+$-\ii/(p^2-\ii0)$ and the insertion is $-\ii m^2$.  Hence
+\[
+  \frac{-\ii}{p^2-\ii0}
+  \sum_{r=0}^\infty
+  \left[\frac{-\ii m^2(-\ii)}{p^2-\ii0}\right]^r
+  =\frac{-\ii}{p^2+m^2-\ii0}.
+\]
+The Euclidean result tends to $1/p^2$ when $m^2\to0$.  It also obeys the
+Dyson equation
+\[
+  G=G_0-G_0m^2G,
+\]
+whose solution is $(G_0^{-1}+m^2)^{-1}$.  This is why quadratic relevant
+operators are resummed before treating the remaining CFT perturbations.
+
+\BanksImplicitSolution{I-CH09-009}
+Put $L=16\pi^2$ and $d_{\mathrm{reg}}=4-\epsilon$.  The one-loop scalar bubble in any channel is
+\begin{align*}
+  B(P^2)&=\mu^\epsilon\int\frac{\dd^{d_{\mathrm{reg}}}k}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac{1}{(k^2+m^2)[(k+P)^2+m^2]}\\
+  &=\frac{\mu^\epsilon}{(4\pi)^{d_{\mathrm{reg}}/2}}
+  \Gamma\!\left(2-\frac {d_{\mathrm{reg}}}{2}\right)
+  \int_0^1\dd x\,[m^2+x(1-x)P^2]^{d_{\mathrm{reg}}/2-2}\\
+  &=\frac{2}{L\epsilon}+B_{\mathrm{fin}}(P^2,m^2)+O(\epsilon).
+\end{align*}
+Each of the $s,t,u$ graphs has symmetry factor $1/2$.  Their common pole is
+therefore
+\[
+  3\left(\frac{\lambda^2}{2}\right)
+  \frac{2}{L\epsilon}=\frac{3\lambda^2}{L\epsilon}.
+\]
+This gives the one-loop term in the bare coupling displayed in the exercise.
+
+Ignoring self-energy insertions for the moment, there are two two-loop 1PI
+skeletons.  With labelled external legs, the iterated-bubble family has three
+members, one in each channel, and symmetry factor $1/4$.  The overlapping
+family has six members: for each channel there is a wineglass and its inverse,
+each with symmetry factor $1/2$.  A representative, with all external momenta
+incoming and $P=p_1+p_2$, is
+\[
+  \begin{aligned}
+    W(p_i)&=\mu^{2\epsilon}
+    \int\frac{\dd^{d_{\mathrm{reg}}}k\,\dd^{d_{\mathrm{reg}}}\ell}
+    {(2\pi)^{2d_{\mathrm{reg}}}}\\[-2pt]
+    &\quad\times
+    \frac{1}{D(k)D(P-k)D(\ell)D(k+p_3-\ell)},
+    \qquad D(r)=r^2+m^2.
+  \end{aligned}
+\]
+The iterated graph is the corresponding product of two $B$ integrals.
+Permuting the external legs in $W$ produces all six overlapping graphs.
+There is also a bubble with a one-loop tadpole inserted in an internal line.
+Its tadpole subdivergence is canceled by the one-loop mass counterterm; in a
+massless calculation both terms are scaleless.  It supplies no new four-point
+counterterm.
+
+Schwinger parameters put either skeleton in the form
+\[
+  \frac{\mu^{2\epsilon}}{(4\pi)^{d_{\mathrm{reg}}}}
+  \int_{x_i\geq0}\![\dd x]\,
+  \frac{\Gamma(\epsilon)\,
+  \mathcal P(x)}{\mathcal U(x)^{d_{\mathrm{reg}}/2}}
+  [\mathcal M^2(x,p)]^{-\epsilon},
+\]
+with the appropriate graph polynomials $\mathcal U$, $\mathcal P$, and
+$\mathcal M^2$.  A boundary where a one-loop four-point subgraph shrinks gives
+a pole multiplying the finite part of the reduced one-loop graph.  There are
+six insertions obtained by replacing either vertex of each one-loop channel by
+\[
+  \delta\lambda^{(1)}=\frac{3\lambda^2}{L\epsilon}.
+\]
+For each forest, this insertion cancels the nonlocal
+$B_{\mathrm{fin}}(P^2)/\epsilon$ term of its parent graph.  The tadpole forests
+cancel against the mass insertion described above.  The remaining parameter
+integrals are finite at nonexceptional momenta, and every pole left after the
+forest subtractions is independent of the external momenta.
+
+To display the normalization cleanly, let $Z_4$ multiply the renormalized
+$\lambda\phi^4/4!$ vertex and let
+$\phi_0=Z_\phi^{1/2}\phi$.  Summing the three iterated graphs, the six
+wineglass graphs, and their one-loop counterterm insertions gives
+\[
+  Z_4=1+\frac{3\lambda}{L\epsilon}
+  +\frac{\lambda^2}{L^2}
+  \left(\frac9{\epsilon^2}-\frac3\epsilon\right)
+  +O(\lambda^3).
+\]
+The two-loop self-energy gives
+\[
+  Z_\phi=1-\frac{\lambda^2}{12L^2\epsilon}+O(\lambda^3).
+\]
+Thus the external-field subtraction changes the simple two-loop coefficient
+through
+\[
+  \lambda_0=\mu^\epsilon\lambda Z_4Z_\phi^{-2}.
+\]
+It converts $-3$ into $-3+1/6=-17/6$, while leaving the double pole unchanged.
+Consequently
+\[
+  \lambda_0=\mu^\epsilon\left[
+  \lambda+\frac{3\lambda^2}{L\epsilon}
+  +\frac{\lambda^3}{L^2}
+  \left(\frac9{\epsilon^2}-\frac{17}{6\epsilon}\right)
+  \right]+O(\lambda^4).
+\]
+The momentum independence of its poles is the locality check: a single local
+$\phi^4$ counterterm removes the full four-point divergence.
+
+The double pole supplies a useful internal check.  Write
+\[
+  \lambda_0=\mu^\epsilon
+  \left(\lambda+\frac{a_1(\lambda)}\epsilon
+  +\frac{a_2(\lambda)}{\epsilon^2}+\cdots\right).
+\]
+Finiteness of $\mu\dd\lambda/\dd\mu$ requires at order $\lambda^3$
+$a_2=9\lambda^3/L^2$, the square dictated by the coefficient
+$3\lambda^2/L$ of the one-loop subdivergence.  It is therefore fixed before
+the overall two-loop integral is evaluated.
+
+Differentiating the bare relation at fixed $\lambda_0$ gives
+\[
+  \beta(\lambda)=-\epsilon\lambda+\lambda a_1'(\lambda)-a_1(\lambda).
+\]
+Here
+\[
+  a_1(\lambda)=\frac{3\lambda^2}{L}
+  -\frac{17\lambda^3}{6L^2},
+\]
+and hence
+\[
+  \beta(\lambda)=-\epsilon\lambda+\frac{3\lambda^2}{L}
+  -\frac{17\lambda^3}{3L^2}+O(\lambda^4).
+\]
+Together with the two-loop two-point subtractions for
+$(\partial\phi)^2$ and $m^2\phi^2$ computed in Banks's discussion, this
+four-point subtraction closes the program on the three operators
+$(\partial\phi)^2$, $m^2\phi^2$, and $\phi^4$.  Setting $\lambda=0$ recovers
+the free theory, while the momentum independence of every pole checks
+locality.
+
+\BanksImplicitSolution{I-CH09-010}
+Set $d_{\mathrm{reg}}=4-\epsilon$ for the Euclidean loop integrals.
+Let
+\[
+  b_f=\frac43\sum_fq_f^2,
+  \qquad b_s=\frac13\sum_sq_s^2,
+  \qquad b=b_f+b_s.
+\]
+Flavor traces simply add because an Abelian photon vertex preserves the
+species circulating in a loop.  A Dirac loop gives
+\[
+  \Pi^{(f)}_{\mu\nu}\big|_{\mathrm{div}}
+  =-\frac{e^2q_f^2}{6\pi^2\epsilon}
+  (p^2\delta_{\mu\nu}-p_\mu p_\nu).
+\]
+For a complex scalar, the bubble and seagull combine as
+\[
+  \Pi^{(s)}_{\mu\nu}=e^2q_s^2\int\frac{\dd^{d_{\mathrm{reg}}}k}{(2\pi)^{d_{\mathrm{reg}}}}
+  \left[
+  \frac{(2k+p)_\mu(2k+p)_\nu}
+  {(k^2+m_s^2)[(k+p)^2+m_s^2]}
+  -\frac{2\delta_{\mu\nu}}{k^2+m_s^2}
+  \right].
+\]
+Contracting with $p^\mu$ changes the first numerator into the difference of
+the two scalar inverse propagators.  A shift of $k$ cancels that difference
+against the seagull.  Thus the result is transverse, and its pole is
+\[
+  \Pi^{(s)}_{\mu\nu}\big|_{\mathrm{div}}
+  =-\frac{e^2q_s^2}{24\pi^2\epsilon}
+  (p^2\delta_{\mu\nu}-p_\mu p_\nu).
+\]
+Summing species gives
+\[
+  Z_3=1-\frac{e^2}{8\pi^2\epsilon}
+  \left(\frac43\sum_fq_f^2+\frac13\sum_sq_s^2\right)+O(e^4).
+\]
+
+The Abelian Ward identity fixes
+\[
+  e_0=\mu^{\epsilon/2}eZ_3^{-1/2}.
+\]
+Differentiating at fixed $e_0$ and keeping the leading pole yields
+\[
+  \beta(e)=-\frac\epsilon2e+\frac{b e^3}{16\pi^2}+O(e^5).
+\]
+Its four-dimensional value is the formula in the exercise.  Every term in
+$b$ is positive, which gives the infrared freedom emphasized by Banks.
+
+The fermion calculation differs between species only through $q_f^2$ and the
+mass.  Its divergent self-energy is
+\[
+  \Sigma_f^\infty(p)=-\frac{e^2q_f^2}{8\pi^2\epsilon}
+  \left[\kappa(\slashed p-\ii m_f)+3\ii m_f\right].
+\]
+It is canceled by
+\[
+  Z_{2f}=1+\frac{\kappa e^2q_f^2}{8\pi^2\epsilon},
+  \qquad
+  \delta m_f=-\frac{3e^2q_f^2}{8\pi^2\epsilon}m_f.
+\]
+The Ward identity sets the pole part of the fermion-photon vertex equal to
+that of $Z_{2f}$, so no independent charge counterterm appears.
+
+For a scalar, photon exchange gives the pole
+\[
+  \Sigma_s^\infty(p)=-C_s
+  \left[(3-\kappa)(p^2+m_s^2)-3m_s^2\right],
+  \qquad C_s=\frac{e^2q_s^2}{8\pi^2\epsilon}.
+\]
+In the parametrization
+$Z_s[p^2+m_s^2+\delta m_s^2]$, it is removed by
+\[
+  Z_s=1+C_s(3-\kappa),
+  \qquad \delta m_s^2=-3C_s m_s^2.
+\]
+These are the gauge contributions.  The scalar potential also contributes to
+the mass counterterm.  To keep every charge-allowed quartic without choosing a
+special flavor basis, resolve the complex fields into real components and
+write
+\[
+  V=\frac12(M^2)_{AB}\varphi_A\varphi_B
+  +\frac1{4!}\lambda_{ABCD}\varphi_A\varphi_B\varphi_C\varphi_D,
+\]
+where gauge invariance restricts the symmetric tensor $\lambda_{ABCD}$.  Its
+one-loop tadpole is
+\[
+  \begin{aligned}
+    \Sigma^{(\lambda)}_{AB}
+    &=\frac12\lambda_{ABCD}\mu^\epsilon
+    \int\frac{\dd^{d_{\mathrm{reg}}}k}{(2\pi)^{d_{\mathrm{reg}}}}
+    \left[(k^2\mathbf 1+M^2)^{-1}\right]_{CD},\\[-2pt]
+    \Sigma^{(\lambda)}_{AB}\big|_{\mathrm{div}}
+    &=-\frac{\lambda_{ABCD}(M^2)_{CD}}{16\pi^2\epsilon}.
+  \end{aligned}
+\]
+It is momentum independent and is canceled by the opposite local mass-matrix
+counterterm.  The massless photon seagull tadpole is scaleless.  Thus the full
+scalar two-point subtraction is the sum of this potential term and the gauge
+terms displayed above.  A basis that diagonalizes $M^2$ within each
+equal-charge sector recovers the species-by-species formula.
+The three-point scalar-photon Ward identity fixes its vertex pole from $Z_s$.
+The four-point seagull identity then fixes the $A^2\phi_s^*\phi_s$ pole.  The
+gauge dependence stays in field normalizations, while the displayed mass
+shift is gauge-parameter independent in this parametrization.
+
+Scalar and photon boxes also generate local four-scalar poles.  Their charge
+flow permits exactly the monomials allowed by gauge invariance.  For generic
+charges these include $|\phi_s|^2|\phi_t|^2$; special charge relations can
+allow more quartics, scalar cubics, and Yukawa interactions.  They must be
+included unless an explicit flavor or $\phi_s\mapsto-\phi_s$ symmetry forbids
+them.
+
+Here is a normalization check that separates the proper vertex from the field
+counterterm.  For one unit-charge scalar with canonical kinetic term and
+$V=\lambda|\phi|^4/4$, in Landau gauge the one-loop factors are
+\[
+  Z_{\lambda,\mathrm{vert}}\lambda
+  =\lambda+\frac{5\lambda^2+24e^4}{16\pi^2\epsilon},
+  \qquad
+  Z_s=1+\frac{6e^2}{16\pi^2\epsilon}.
+\]
+Therefore
+\[
+  \lambda_0=\mu^\epsilon
+  Z_s^{-2}Z_{\lambda,\mathrm{vert}}\lambda
+  =\mu^\epsilon\left[
+  \lambda+\frac{5\lambda^2-12e^2\lambda+24e^4}
+  {16\pi^2\epsilon}\right]+O(\hbar^2).
+\]
+This also shows where the mixed field-normalization term enters.  With several
+fields, the scalar, photon, and mixed diagrams contract the full quartic tensor
+and the charges in every allowed channel.
+
+Power counting restricts the divergent one-loop local terms to
+$F^2$, the matter kinetic and mass operators, allowed Yukawa terms, and the
+allowed scalar potential through fourth order.  BRST or Abelian Ward identities
+tie their gauge vertices to the corresponding kinetic factors.  This proves
+closure of the general renormalizable Lagrangian.  A single unit-charge Dirac
+field gives $b=4/3$ and reproduces Banks's result.  One unit-charge complex
+scalar gives $b=1/3$, exactly one quarter of the Dirac contribution.
+
+\BanksImplicitSolution{I-CH09-011}
+It is clearest to use the inverse-propagator form of the Ward identity.  With
+the Euclidean factors absorbed consistently into $S^{-1}$,
+\[
+  p^\alpha\gamma_\alpha=S^{-1}(q+p)-S^{-1}(q).
+\]
+Hence
+\begin{align*}
+  p^\alpha\Pi_{\alpha\beta}(p)
+  &=e_0^2\int\frac{\dd^{d_{\mathrm{reg}}}q}{(2\pi)^{d_{\mathrm{reg}}}}
+  \operatorname{tr}\!\left[
+  \{S^{-1}(q+p)-S^{-1}(q)\}
+  S(q)\gamma_\beta S(q+p)\right]\\
+  &=e_0^2\int\frac{\dd^{d_{\mathrm{reg}}}q}{(2\pi)^{d_{\mathrm{reg}}}}
+  \operatorname{tr}\!\left[\gamma_\beta S(q)
+  -\gamma_\beta S(q+p)\right].
+\end{align*}
+Cyclicity of the trace was used in the second line.  The factor
+$\gamma_\beta$ is essential in both terms.  Dimensional regularization defines
+the two analytically continued integrals with the same translation-invariant
+measure.  Shifting $q\mapsto q-p$ in the second therefore gives
+\[
+  p^\alpha\Pi_{\alpha\beta}(p)=0.
+\]
+
+A sharp cutoff region $|q|<\Lambda$ moves under this shift and can leave a
+surface term.  Gauge-invariant regularization, or counterterms fixed by the
+Ward identity, removes that regulator artifact.  At $p=0$ the two terms agree
+before integration.  Euclidean rotational invariance then permits
+\[
+  \Pi_{\alpha\beta}=A(p^2)\delta_{\alpha\beta}
+  +B(p^2)p_\alpha p_\beta.
+\]
+Transversality sets $A=-p^2B$, so
+\[
+  \Pi_{\alpha\beta}(p)=
+  (p^2\delta_{\alpha\beta}-p_\alpha p_\beta)\Pi(p^2).
+\]
+This excludes a local photon-mass counterterm.
+
+\BanksImplicitSolution{I-CH09-012}
+Integration by parts gives
+\begin{align*}
+  \Gamma(t+1)&=\int_0^\infty\dd u\,u^t\ee^{-u}\\
+  &=\left[-u^t\ee^{-u}\right]_0^\infty
+    +t\int_0^\infty\dd u\,u^{t-1}\ee^{-u}
+   =t\Gamma(t).
+\end{align*}
+The boundary term vanishes for $\Re t>0$.  Since $\Gamma(1)=1$, iteration
+gives $\Gamma(n)=(n-1)!$.
+
+The beta integral follows by changing variables in a product of two gamma
+integrals:
+\[
+  \Gamma(a)\Gamma(b)=\Gamma(a+b)
+  \int_0^1\dd x\,x^{a-1}(1-x)^{b-1}.
+\]
+Taking $a=t$, $b=1-t$, and putting $x=y/(1+y)$ gives
+\[
+  \Gamma(t)\Gamma(1-t)
+  =\int_0^\infty\dd y\,\frac{y^{t-1}}{1+y}.
+\]
+A keyhole contour for $z^{t-1}/(1+z)$ has one pole at $z=-1$ and yields
+\[
+  \int_0^\infty\dd y\,\frac{y^{t-1}}{1+y}
+  =\frac{\pi}{\sin\pi t},
+  \qquad 0<\Re t<1.
+\]
+This is Euler's reflection formula.  At $t=1/2$ it gives
+$\Gamma(1/2)^2=\pi$.  The defining integral is positive, so the required root
+is $\Gamma(1/2)=\sqrt\pi$.
+
+For $M^2>0$, set $u=sM^2$:
+\[
+  \int_0^\infty\dd s\,s^{a-1}\ee^{-sM^2}
+  =\Gamma(a)(M^2)^{-a}.
+\]
+At $a=1$ this is $1/M^2$, which is Schwinger's representation of an inverse
+quadratic form.  The one-dimensional Gaussian is
+$\int_{-\infty}^\infty\dd q\,\ee^{-sq^2}=\sqrt{\pi/s}$, so multiplication of
+$d_{\mathrm{reg}}$ components gives
+\[
+  \int\dd^{d_{\mathrm{reg}}}q\,\ee^{-sq^2}
+  =\left(\frac\pi s\right)^{d_{\mathrm{reg}}/2}.
+\]
+Dividing by $(2\pi)^{d_{\mathrm{reg}}}$ gives
+$(2\sqrt\pi)^{-d_{\mathrm{reg}}}s^{-d_{\mathrm{reg}}/2}$, the factor in Banks's calculation.  These
+formulae first hold in their convergence domains.  Their gamma-function
+expressions provide the meromorphic continuation in $a$ and $d_{\mathrm{reg}}$ used by
+dimensional regularization.
+
+\BanksImplicitSolution{I-CH09-013}
+The integrand is exactly a derivative:
+\begin{align*}
+  d_{\mathrm{reg}}\frac{\dd}{\dd s}
+  \left(s^{1-d_{\mathrm{reg}}/2}\ee^{-sm_0^2}\right)
+  =s^{1-d_{\mathrm{reg}}/2}\ee^{-sm_0^2}
+  \left[-d_{\mathrm{reg}}m_0^2
+  +\frac{d_{\mathrm{reg}}(2-d_{\mathrm{reg}})}{2s}\right].
+\end{align*}
+For $m_0^2>0$ and $\Re d_{\mathrm{reg}}<2$, the quantity in parentheses vanishes at both
+$s=0$ and $s=\infty$.  The integral is therefore zero in this nonempty
+convergence strip.  Both sides are meromorphic functions of $d_{\mathrm{reg}}$, so analytic
+continuation gives the same identity near $d_{\mathrm{reg}}=4$.
+
+This proves that the right-hand side of the equation for
+$(d_{\mathrm{reg}}-1)p^2\Pi(p^2)$ vanishes at $p^2=0$.  It does not set $\Pi(0)$ to zero.
+Indeed, $\Pi(0)$ contains the logarithmic pole that renormalizes $Z_3$.
+Instead, the result says that the full tensor has no constant term:
+\[
+  \Pi_{\mu\nu}(p)=
+  (p^2\delta_{\mu\nu}-p_\mu p_\nu)\Pi(p^2),
+\]
+with no $1/p^2$ singularity in $\Pi$ for positive fermion mass.  Thus the
+photon pole remains at zero mass.
+
+The $s^{1-d_{\mathrm{reg}}/2}$ factor is forced by the Jacobian
+$\dd\alpha\,\dd\beta=s\,\dd s\,\dd x$ together with the Gaussian factor
+$s^{-d_{\mathrm{reg}}/2}$.  Retaining it is what turns the zero-momentum expression into the
+total derivative above.  For a massless fermion, keep $m_0>0$ as an infrared
+regulator, establish the dimensionally continued identity, and then take
+$m_0\to0$.  Setting $m_0=0$ before controlling the large-$s$ boundary can
+mix this ultraviolet statement with the known infrared exceptional cases.
+
+\BanksImplicitSolution{I-CH09-014}
+Expand the momentum-dependent exponential:
+\[
+  \ee^{-sx(1-x)p^2}
+  =\sum_{n=0}^\infty\frac{[-x(1-x)p^2]^n}{n!}s^n.
+\]
+The coefficient of $(p^2)^n$ in $\Pi$ is therefore proportional near the UV
+endpoint to
+\[
+  \int_0\dd s\,s^{1-d_{\mathrm{reg}}/2+n}.
+\]
+At $d_{\mathrm{reg}}=4$ this is $\int_0\dd s\,s^{n-1}$.  The $n=0$ term is logarithmically
+divergent.  Every $n\geq1$ term is integrable at $s=0$.  Factors of
+$\ee^{-sm_0^2}$ affect the large-$s$ endpoint and leave this UV count
+unchanged.
+
+Multiplication by the transverse tensor supplies two powers of momentum:
+\[
+  \Pi_{\mu\nu}=(p^2\delta_{\mu\nu}-p_\mu p_\nu)
+  [c_0+c_1p^2+c_2(p^2)^2+\cdots].
+\]
+Only the order-$p^2$ tensor term proportional to $c_0$ can diverge.  All terms
+of order $p^4$ and higher are UV finite.  Direct differentiation confirms the
+same point:
+\[
+  \left.\frac{\partial\Pi}{\partial p^2}\right|_{p^2=0}
+  =-C_{d_{\mathrm{reg}}}\int_0^\infty\dd s\,s^{2-d_{\mathrm{reg}}/2}\int_0^1\dd x\,
+  x(1-x)A_{d_{\mathrm{reg}}}(x)\ee^{-sm_0^2},
+\]
+whose small-$s$ power is $s^0$ at $d_{\mathrm{reg}}=4$.
+
+\BanksImplicitSolution{I-CH09-015}
+Through first order in $\alpha$, write the inverse propagator as
+\[
+  \Gamma_R^{(2)}(p)=
+  (\slashed p-\ii m_0)
+  +(Z_2-1)(\slashed p-\ii m_0)
+  -\ii\delta m+\Sigma^\infty(p)+\Gamma_{\mathrm{fin}}^{(2)}(p).
+\]
+The field counterterm is
+\[
+  (Z_2-1)(\slashed p-\ii m_0)
+  =\frac{\kappa\alpha}{2\pi\epsilon}
+  (\slashed p-\ii m_0),
+\]
+which cancels the first term in $\Sigma^\infty$.  The mass counterterm gives
+\[
+  -\ii\delta m=+\frac{3\ii\alpha}{2\pi\epsilon}m_0,
+\]
+and cancels its remaining pole.  Replacing $m_0$ by $m_0+\delta m$ inside the
+$Z_2-1$ term would produce $(Z_2-1)\delta m=O(\alpha^2)$, beyond the order of
+this calculation.
+
+The relation
+\[
+  m_0+\delta m=m_0
+  \left(1-\frac{3\alpha}{2\pi\epsilon}\right)
+\]
+is multiplicative.  Its pole coefficient contains no $\kappa$.  At $m_0=0$
+the mass counterterm vanishes, as required by chiral symmetry.  At
+$\kappa=0$ the wave-function pole vanishes, while the same mass subtraction
+remains.  These limits separately check both pieces of Banks's formula.
+
+\BanksImplicitSolution{I-CH09-016}
+Choose the infrared scale $Q=\sqrt{|\Delta|}$.  Along an RG characteristic the
+two-point equation integrates to
+\[
+  F(\Delta/\mu^2,\alpha,\kappa)=
+  \exp\!\left[-2\int_Q^\mu\frac{\dd k}{k}\,
+  \gamma_F(\alpha(k),\kappa(k))\right]F(1,\alpha(Q),\kappa(Q)).
+\]
+The matching factor at $Q$ is regular and can be set to one at leading-log
+accuracy.  Since $\beta=O(\alpha^2)$ while $\gamma_F=O(\alpha)$, the first
+leading-log approximation holds $\alpha$ and $\kappa$ fixed.  It gives
+\[
+  F=\left(\frac{\Delta}{\mu^2}\right)^{\gamma_F^{(1)}},
+  \qquad
+  S_R(p)\simeq
+  (\slashed p+\ii m)\mu^{-2\gamma_F^{(1)}}
+  \Delta^{-1+\gamma_F^{(1)}}.
+\]
+Using Banks's one-loop value,
+\[
+  S_R(p)\ \propto\
+  \frac{\slashed p+\ii m}
+  {\Delta^{\,1+\kappa\alpha/(4\pi)}}.
+\]
+A noninteger exponent turns the isolated pole into a branch point and resums
+the series of powers $[\alpha\ln(\Delta/\mu^2)]^n$.
+
+Running of the infrared-free coupling gives
+\[
+  \alpha(k)=\frac{\alpha(\mu)}
+  {1+\dfrac{2\alpha(\mu)}{3\pi}\ln(\mu/k)}
+  +O(\alpha^2).
+\]
+If a scale-dependent gauge convention keeps $\kappa$ fixed while this charge
+running is inserted, the characteristic factor becomes
+\[
+  F=\left[\frac{\alpha(\mu)}{\alpha(Q)}\right]^{3\kappa/4}.
+\]
+For the RG derivative at fixed bare gauge parameter, use instead
+$\kappa_0=Z_3\kappa$.  Together with the Ward identity for the charge, this
+gives in four dimensions
+\[
+  \frac{\dd\kappa}{\dd\ln k}
+  =-\frac{2\alpha}{3\pi}\kappa+O(\alpha^2\kappa),
+  \qquad
+  \alpha(k)\kappa(k)=\alpha(\mu)\kappa(\mu).
+\]
+Thus $\gamma_F^{(1)}=-\kappa\alpha/(4\pi)$ is constant along the coupled
+one-loop characteristic, and the running-value integral reproduces the pure
+noninteger power above.  Higher-loop RG functions supply its logarithmic
+corrections.
+
+For the mostly-plus Minkowski continuation, set
+$x=-(p^2+m^2)>0$ on the physical side of the cut.  Then
+continuation gives
+$\Delta\to-x\mp\ii0$.  Thus
+\[
+  (-x-\ii0)^{-1+\gamma_F}
+  -(-x+\ii0)^{-1+\gamma_F}
+  =2\ii\sin(\pi\gamma_F)x^{-1+\gamma_F},
+\]
+up to the chosen orientation of the discontinuity.  This is nonzero for the
+perturbative noninteger exponent.  In Landau gauge, $\kappa=0$ and
+$\gamma_F^{(1)}=0$, so the leading branch exponent returns to a simple pole.
+Its gauge dependence shows that the elementary fermion field is not a
+physical charged interpolating operator.  A gauge-invariant Coulomb dressing
+and the coherent soft-photon states needed for inclusive scattering complete
+the infrared construction.
+
+\BanksImplicitSolution{I-CH09-017}
+At $L$ loops, a primitive logarithmic divergence supplies one simple pole.
+Nested or disjoint divergent subgraphs multiply their pole factors.  A graph
+with $L$ independent loops contains at most $L$ such factors, so the forest
+formula permits
+\[
+  \frac1\epsilon,\frac1{\epsilon^2},\ldots,\frac1{\epsilon^L}
+\]
+and no higher pole.  The highest pole is a product of lower-loop subtraction
+factors selected by a maximal nested or disjoint forest.
+
+For $r=1$, bare-coupling independence gives
+\[
+  0=\mu\frac{\dd g_0}{\dd\mu}
+  =\mu^\epsilon\left[\epsilon F+\beta(g,\epsilon)\partial_gF\right].
+\]
+Write $\beta=-\epsilon g+\beta_4(g)$.  The finite term in the Laurent
+expansion is
+\[
+  a_1-ga_1'+\beta_4=0,
+\]
+and hence
+\[
+  \boxed{\ \beta_4(g)=g a_1'(g)-a_1(g)\ }.
+\]
+The coefficient of $1/\epsilon^n$ gives, for $n\geq1$,
+\[
+  g a_{n+1}'-a_{n+1}=\beta_4 a_n'.
+\]
+These pole equations determine every higher-pole coefficient recursively from
+lower data.  They are the algebraic form of the cancellation Banks describes.
+
+For a field factor,
+\begin{align*}
+  \gamma_\Phi
+  &=\frac12(-\epsilon g+\beta_4)
+  \frac{\partial}{\partial g}
+  \sum_{n\geq1}\frac{z_n(g)}{\epsilon^n}\\
+  &=-\frac12g z_1'(g)
+  +\frac12\sum_{n\geq1}\frac{
+  -g z_{n+1}'(g)+\beta_4z_n'(g)}{\epsilon^n}.
+\end{align*}
+Finiteness imposes
+\[
+  g z_{n+1}'=\beta_4z_n',
+\]
+so
+\[
+  \boxed{\ \gamma_\Phi(g)=-\frac12g z_1'(g)\ }.
+\]
+Thus the residue of the simple pole supplies the anomalous dimension, while
+the multiple poles enforce consistency.
+
+For several couplings with
+$g_0^a=\mu^{r_a\epsilon}[g^a+a_1^a/\epsilon+\cdots]$, the same calculation
+gives
+\[
+  \beta_4^a=\sum_b r_b g^b\partial_ba_1^a-r_a a_1^a,
+  \qquad
+  \gamma_\Phi=-\frac12\sum_b r_bg^b\partial_bz_1.
+\]
+The higher-pole equations are, for $n\geq1$,
+\[
+  \left(\sum_b r_bg^b\partial_b-r_a\right)a_{n+1}^a
+  =\sum_b\beta_4^b\partial_ba_n^a,
+  \qquad
+  \sum_b r_bg^b\partial_bz_{n+1}
+  =\sum_b\beta_4^b\partial_bz_n.
+\]
+At one loop the forest has one element and only a simple pole occurs.  At two
+loops one nested one-loop subgraph can multiply the overall pole, producing a
+double pole; the recursion fixes it from the one-loop residue.  These checks
+match the explicit $\phi^4$ result in Exercise~\ref{exercise:I-CH09-009}.
+
+\BanksImplicitSolution{I-CH09-018}
+At a fixed point with $\alpha_*\ne0$,
+\[
+  0=\beta(\alpha_*)=\alpha_*\gamma_A(\alpha_*),
+\]
+so $\gamma_A(\alpha_*)=0$.  Gauge invariance ties the field-strength
+renormalization to that of the photon, and therefore
+\[
+  \Delta_F=2+\gamma_A=2.
+\]
+In spinor notation,
+\[
+  F_{\mu\nu}\longleftrightarrow
+  (F_{\alpha\beta},\bar F_{\dot\alpha\dot\beta}),
+\]
+where the two symmetric spinors transform in $(1,0)$ and $(0,1)$.
+
+Radial quantization turns a primary into a state.  For a primary in $(j,0)$
+with $j>0$, positivity of the level-one descendant gives the conformal
+unitarity bound
+\[
+  \Delta\geq j+1.
+\]
+For $F_{\alpha\beta}$, $j=1$, so the bound is saturated at $\Delta=2$.
+The norm of the descendant
+$P^{\alpha\dot\alpha}|F_{\alpha\beta}\rangle$ is proportional to
+$\Delta-2$ and hence vanishes.  Hilbert-space positivity identifies a
+zero-norm state with zero.  The operator-state correspondence then gives
+\[
+  \partial^{\alpha\dot\alpha}F_{\alpha\beta}=0.
+\]
+The conjugate representation similarly obeys
+\[
+  \partial^{\alpha\dot\alpha}\bar F_{\dot\alpha\dot\beta}=0.
+\]
+Together these are the source-free Maxwell equations and Bianchi identity for
+the two helicities.
+
+Conformal covariance fixes the two-point function of this primary to the free
+Maxwell form, up to its positive normalization.  The null equation itself is
+an operator statement: the norm of
+$\partial^{\alpha\dot\alpha}F_{\alpha\beta}|0\rangle$ vanishes, positivity
+removes the state, and the operator-state correspondence removes the local
+operator.  Under the standard Wightman assumptions, the Jost--Schroer
+free-field theorem then applies to the resulting local field with its free
+two-point function.  Its commutator is the Maxwell c-number commutator and the
+vacuum representation of the algebra generated by $F$ is the Maxwell Fock
+representation.  The complementary local algebra supplies the multiplicity
+space, so the $F$ algebra is a free tensor factor and Wick's theorem holds in
+that factor.
+
+Introduce a source $J^{\mu\nu}$ for $F_{\mu\nu}$.  The free-field theorem,
+rather than the linear equation by itself, makes the connected generating
+functional Gaussian:
+\[
+  W_F[J]=\frac12\int J\,\langle FF\rangle\,J.
+\]
+All derivatives of $W_F$ above second order vanish, so
+\[
+  \langle F_1\cdots F_n\rangle_{\!c}=0,
+  \qquad n>2.
+\]
+The argument assumes unitarity, four-dimensional conformal invariance, a
+gauge-invariant primary $F$ with nonzero two-point function, locality, the
+spectrum condition, a unique cyclic vacuum, and a resolved primary in any
+operator-mixing sector.  These are the hypotheses behind the free-sector
+conclusion.
+
+\BanksImplicitSolution{I-CH09-019}
+Use
+\[
+  A_\mu=A^3_\mu,\qquad
+  W^+_\mu=\frac{A^1_\mu-\ii A^2_\mu}{\sqrt2},\qquad
+  W^-_\mu=(W^+_\mu)^*,
+\]
+and define
+\[
+  f_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,\qquad
+  Q_{\mu\nu}=W^+_\mu W^-_\nu-W^+_\nu W^-_\mu.
+\]
+With $D_\mu W^+_\nu=(\partial_\mu-\ii eA_\mu)W^+_\nu$, direct substitution
+gives
+\[
+  F^3_{\mu\nu}=f_{\mu\nu}-\ii eQ_{\mu\nu},\qquad
+  F^+_{\mu\nu}=D_\mu W^+_\nu-D_\nu W^+_\mu,\qquad
+  F^-_{\mu\nu}=(F^+_{\mu\nu})^*.
+\]
+Since
+$F^aF^a=F^3F^3+2F^+F^-$, the Yang--Mills Lagrangian becomes
+\begin{align*}
+  \mathcal L_{\mathrm{YM}}={}&-\frac14f_{\mu\nu}f^{\mu\nu}
+  -\frac12
+  (D_\mu W^+_\nu-D_\nu W^+_\mu)
+  (D^\mu W^{-\nu}-D^\nu W^{-\mu})\\
+  &+\ii e f_{\mu\nu}W^{+\mu}W^{-\nu}
+  +\frac{e^2}{4}Q_{\mu\nu}Q^{\mu\nu}.
+\end{align*}
+The cross term follows from
+$f^{\mu\nu}Q_{\mu\nu}=2f^{\mu\nu}W^+_\mu W^-_\nu$.
+This also fixes the quartic coefficient, since both arise from the same
+square $(F^3)^2$.
+
+For comparison, a charged Proca field can have
+\[
+  \mathcal L_W=-\frac12|D_{[\mu}W_{\nu]}|^2-m^2W^+_\mu W^{-\mu}
+  +\ii e\kappa_m f_{\mu\nu}W^{+\mu}W^{-\nu}.
+\]
+Minimal covariantization corresponds to $\kappa_m=0$.  Commuting two covariant
+derivatives in its field equation supplies one unit of magnetic coupling; the
+explicit Pauli term supplies $\kappa_m$ more.  For slowly varying fields, the
+spatial equation gives
+\[
+  H_{\mathrm{mag}}=
+  -\frac{e}{2m}(1+\kappa_m)\,
+  \mathbf S\mathbin{\cdot}\mathbf B,
+  \qquad (S_k)_{ij}=-\ii\epsilon_{kij}.
+\]
+Comparison with
+$H_{\mathrm{mag}}=-(g_{\mathrm{mag}}e/2m)\mathbf S\cdot\mathbf B$
+therefore gives
+\[
+  g_{\mathrm{mag}}=1+\kappa_m.
+\]
+The Yang--Mills expansion has $\kappa_m=1$, so
+$g_{\mathrm{mag}}=2$.  Sending $e\to0$ removes the magnetic and quartic
+terms and leaves the free vector kinetic term, which checks the decomposition.
+
+\BanksImplicitSolution{I-CH09-020}
+Set $d_{\mathrm{reg}}=4-\epsilon$ for the dimensionally regulated loop
+integrals.
+Write every pole in the form
+\[
+  \Pi_{\mu\nu}{}^{ab}\big|_{\mathrm{div}}
+  =\frac{\ii g^2\delta^{ab}}{16\pi^2\epsilon}
+  \left(Aq^2\eta_{\mu\nu}+Bq_\mu q_\nu\right).
+\]
+Terms proportional to a momentum-independent $\eta_{\mu\nu}$ are scaleless in
+the massless theory.  Dimensional regularization sets them to zero.
+
+For illustration, the ghost numerator is
+$-(p+q)_\mu p_\nu$.  Combining denominators, shifting
+$r=p+xq$, and retaining even terms gives
+\[
+  -(p+q)_\mu p_\nu
+  \longmapsto-r_\mu r_\nu+x(1-x)q_\mu q_\nu.
+\]
+The pole integrals are
+\[
+  \int\frac{\dd^{d_{\mathrm{reg}}}r}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac1{(r^2+\Delta)^2}
+  =\frac{2}{16\pi^2\epsilon},\qquad
+  \int\frac{\dd^{d_{\mathrm{reg}}}r}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac{r_\mu r_\nu}{(r^2+\Delta)^2}
+  =-\frac{\Delta\,\delta_{\mu\nu}}{16\pi^2\epsilon},
+\]
+with $\Delta=x(1-x)q_E^2$.  Since
+$\int_0^1x(1-x)\dd x=1/6$, this gives the ghost row below.  Contracting the
+two three-gluon vertices in Feynman gauge gives
+$(A,B)=(19/6,-11/3)C_2(G)$.  The longitudinal part of either propagator is
+  $-(1-\kappa)k_\rho k_\sigma/k^4$.  After symmetric integration its two possible
+insertions add $(1-\kappa)(1,-1)C_2(G)$, while the term with two longitudinal
+propagators cancels.  Thus the general-gauge three-gluon row is
+$(25/6-\kappa,\kappa-14/3)C_2(G)$.  The four-gluon tadpole is scaleless.  The
+components are therefore
+\[
+\begin{array}{c|cc}
+  \text{graph}&A/C_2(G)&B/C_2(G)\\ \hline
+  \text{two three-gluon vertices}&25/6-\kappa&\kappa-14/3\\
+  \text{four-gluon tadpole}&0&0\\
+  \text{ghost loop}&1/6&1/3\\ \hline
+  \text{pure gauge plus ghost}&13/3-\kappa&-(13/3-\kappa)
+\end{array}
+\]
+The first and third rows each have
+$A+B\ne0$.  Their sum has $A+B=0$, which is the one-loop Slavnov--Taylor
+identity.  Thus
+\[
+  \Pi_{\mu\nu}{}^{ab}\big|_{\mathrm{div,pure}}
+  =\frac{\ii g^2C_2(G)\delta^{ab}}{16\pi^2\epsilon}
+  \left(\frac{13}{3}-\kappa\right)
+  (q^2\eta_{\mu\nu}-q_\mu q_\nu).
+\]
+
+Matter loops are separately transverse after the complex-scalar bubble is
+combined with its seagull.  For collections of Weyl fermions and complex
+scalars,
+\[
+\begin{array}{c|cc}
+  \text{matter}&A&B\\ \hline
+  \text{Weyl fermions}&-\frac43D(R_F)&+\frac43D(R_F)\\
+  \text{complex scalars}&-\frac23D(R_S)&+\frac23D(R_S)
+\end{array}
+\]
+in the same common normalization.  A Dirac fermion counts as two Weyl
+fermions, and a real scalar in a real representation counts as one half of a
+complex scalar.  The complete pole is therefore
+\[
+\begin{aligned}
+  \Pi_{\mu\nu}{}^{ab}\big|_{\mathrm{div}}
+  ={}&\frac{\ii g^2\delta^{ab}}{16\pi^2\epsilon}
+  (q^2\eta_{\mu\nu}-q_\mu q_\nu)\\
+  &\times\left[
+  C_2(G)\left(\frac{13}{3}-\kappa\right)
+  -\frac43D(R_F)-\frac23D(R_S)\right].
+\end{aligned}
+\]
+This gives every tensor component because Lorentz covariance permits only the
+two tensors tabulated above.
+
+In Feynman gauge, $\kappa=1$, the pure coefficient is $10C_2(G)/3$.
+Its trace is $(d_{\mathrm{reg}}-1)q^2$ times that coefficient and agrees with Banks's
+component-contracted calculation.  This coefficient renormalizes the
+covariant-gauge gluon field.  The coupling beta function follows from a
+Slavnov--Taylor-related vertex or a gauge-invariant definition such as the
+background-field effective action.  Its pure coefficient is $11C_2(G)/3$,
+rather than the gauge-dependent $13C_2(G)/3-\kappa$.  This distinction is the
+final consistency check.
+
+\BanksImplicitSolution{I-CH09-021}
+Use the Schwinger formula
+\[
+  \frac1{(p_E^2+U)^n}
+  =\frac1{\Gamma(n)}\int_0^\infty\dd s\,
+  s^{n-1}\ee^{-s(p_E^2+U)}.
+\]
+The Gaussian integrals are
+\[
+  \int\frac{\dd^{d_{\mathrm{reg}}}p_E}{(2\pi)^{d_{\mathrm{reg}}}}
+  \ee^{-sp_E^2}=(4\pi s)^{-d_{\mathrm{reg}}/2},
+\]
+and
+\[
+  \int\frac{\dd^{d_{\mathrm{reg}}}p_E}{(2\pi)^{d_{\mathrm{reg}}}}
+  p_{E\mu}p_{E\nu}\ee^{-sp_E^2}
+  =\frac{\delta_{\mu\nu}}{2s}(4\pi s)^{-d_{\mathrm{reg}}/2}.
+\]
+The proper-time integral then gives
+\[
+  I_n^E(U)=\frac1{(4\pi)^{d_{\mathrm{reg}}/2}}
+  \frac{\Gamma(n-d_{\mathrm{reg}}/2)}{\Gamma(n)}
+  U^{d_{\mathrm{reg}}/2-n},
+\]
+and
+\[
+  I_{n,\mu\nu}^E(U)=
+  \frac{\delta_{\mu\nu}}{2(4\pi)^{d_{\mathrm{reg}}/2}}
+  \frac{\Gamma(n-d_{\mathrm{reg}}/2-1)}{\Gamma(n)}
+  U^{d_{\mathrm{reg}}/2+1-n}.
+\]
+They first converge for $\Re n>\Re d_{\mathrm{reg}}/2$ and
+$\Re n>\Re d_{\mathrm{reg}}/2+1$, respectively.  The right-hand sides define their
+dimensional continuations.
+
+Under the Feynman Wick rotation, $\dd^{d_{\mathrm{reg}}}p=\ii\dd^{d_{\mathrm{reg}}}p_E$ and
+$p^2+U-\ii0=-(p_E^2+U)$.  Tensor components rotate into the Lorentz-covariant
+factor $\eta^{\mu\nu}$.  Hence
+\[
+  \boxed{\displaystyle
+  \int\frac{\dd^{d_{\mathrm{reg}}}p}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac1{(p^2+U-\ii0)^n}
+  =\frac{(-1)^n\ii}{2^{d_{\mathrm{reg}}}\pi^{d_{\mathrm{reg}}/2}}
+  \frac{\Gamma(n-d_{\mathrm{reg}}/2)}{\Gamma(n)}
+  \left(\frac1U\right)^{n-d_{\mathrm{reg}}/2}},
+\]
+and
+\[
+  \boxed{\displaystyle
+  \int\frac{\dd^{d_{\mathrm{reg}}}p}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac{p^\mu p^\nu}{(p^2+U-\ii0)^n}
+  =\frac{(-1)^{n-1}\ii\eta^{\mu\nu}}
+  {2^{d_{\mathrm{reg}}+1}\pi^{d_{\mathrm{reg}}/2}}
+  \frac{\Gamma(n-d_{\mathrm{reg}}/2-1)}{\Gamma(n)}
+  \left(\frac1U\right)^{n-d_{\mathrm{reg}}/2-1}}.
+\]
+The metric tensor is required by Lorentz covariance.
+
+The scalar integral has mass dimension $d_{\mathrm{reg}}-2n$, so its power is
+$U^{d_{\mathrm{reg}}/2-n}$.  In the tensor integral the numerator adds two
+dimensions, giving $U^{d_{\mathrm{reg}}/2+1-n}$.  These exponents are the
+negatives of the gamma-function arguments $n-d_{\mathrm{reg}}/2$ and
+$n-d_{\mathrm{reg}}/2-1$.  This is the correspondence Banks asks the
+reader to notice.
+
+Contracting the tensor result with $\eta_{\mu\nu}$ agrees with
+\[
+  \int\frac{\dd^{d_{\mathrm{reg}}}p}{(2\pi)^{d_{\mathrm{reg}}}}
+  \frac{p^2}{(p^2+U-\ii0)^n}
+  =I_{n-1}(U)-U I_n(U)
+\]
+after using $\Gamma(z+1)=z\Gamma(z)$.  The contraction and the dimensions
+check the factor $1/2$, the power of $U$, and the explicit
+$\eta^{\mu\nu}$.
+
+\BanksImplicitSolution{I-CH09-022}
+Near a pole,
+\[
+  \mathcal D\left(\frac{Z_i}{p^2+M_i^2-\ii0}\right)
+  =\frac{\mathcal D Z_i}{p^2+M_i^2-\ii0}
+  +\frac{Z_i\mathcal D M_i^2}
+  {(p^2+M_i^2-\ii0)^2}.
+\]
+The RG equation has only the original simple pole on its right-hand side.
+The double-pole coefficient must therefore vanish:
+\[
+  \mathcal D M_i^2=0.
+\]
+Equating the simple-pole residues gives
+\[
+  \mathcal D Z_i=-2\gamma_iZ_i.
+\]
+The separation works because $\mathcal D$ is first order.  A second-order
+operator would also differentiate products of parameter-dependent factors and
+would spoil this simple residue argument.
+
+For an amplitude with one LSZ factor per external leg, write
+\[
+  S=\lim_{\mathrm{on\ shell}}
+  \left[\prod_i f_i(p_i)(p_i^2+M_i^2)Z_i^{-1/2}\right]W_N.
+\]
+The normalized wave functions depend on RG parameters through physical masses,
+so $\mathcal Df_i=0$.  We also have
+\[
+  \mathcal D(p_i^2+M_i^2)=0,\qquad
+  \mathcal D Z_i^{-1/2}=+\gamma_iZ_i^{-1/2},
+\]
+while
+\[
+  \mathcal DW_N=-\left(\sum_i\gamma_i\right)W_N.
+\]
+The first-order Leibniz rule now gives
+\begin{align*}
+  \mathcal DS
+  &=\left(\sum_i\gamma_i\right)S
+  -\left(\sum_i\gamma_i\right)S=0.
+\end{align*}
+The external-leg anomalous dimensions cancel the Green-function anomalous
+dimensions one by one.
+
+This derivation assumes isolated stable one-particle poles, a mass-independent
+RG operation on the external momentum labels, and infrared control sufficient
+to interchange $\mathcal D$ with the LSZ limit.  Charged states in QED require
+the dressed or inclusive refinement discussed by Banks.  In a free theory,
+$\beta=\gamma_i=0$, $Z_i=1$, and the equation reduces immediately to
+$\mu\partial_\mu S=0$.
+
+\BanksImplicitSolution{I-CH09-023}
+For a graph with $I$ internal NGB lines, $V$ vertices, and $L$ loops, loop
+measures supply $p^{4L}$, propagators supply $p^{-2I}$, and a vertex $v$
+supplies $p^{d_v}$.  Its momentum degree is
+\[
+  \omega=4L-2I+\sum_vd_v.
+\]
+For a connected graph, $L=I-V+1$.  Substitution gives
+\[
+  \omega=2+2L+\sum_v(d_v-2).
+\]
+Every loop or replacement of a leading two-derivative vertex by a
+higher-derivative vertex raises the low-momentum order.
+
+Expanding $U=\exp(\ii\pi^aT^a/f)$ shows that a leading $n$-field vertex scales
+as $p^2/f^{n-2}$.  Combining all vertices and using the line-counting identity
+$\sum_vn_v=2I+E$ leaves the overall factor $f^{2-E}$.  Each loop integration
+also carries $(4\pi)^{-2}$ in four dimensions.  With natural dimensionless
+low-energy constants, the result can be organized as
+\[
+  \mathcal A_E\sim\frac{p^2}{f^{E-2}}
+  \left(\frac{p}{4\pi f}\right)^{2L}
+  \prod_v\left(\frac{p}{f}\right)^{d_v-2}.
+\]
+Group tensors and angular functions multiply this estimate without changing
+its momentum degree.
+
+Thus a tree graph from the two-derivative action starts at
+$p^2/f^{E-2}$.  A four-derivative insertion is down by $(p/f)^2$, while one
+loop is down by $(p/4\pi f)^2$.  More derivatives and more loops generate a
+graded expansion.  Naive dimensional analysis places its cutoff near
+$4\pi f$; the conservative regime $p\ll f$ used in Banks's sentence makes
+every displayed ratio small.
+
+Massless loops generate nonanalytic terms such as
+$p^4\ln(-p^2)/[(4\pi)^2f^4]$.  Their analytic polynomial pieces have the same
+form as local higher-derivative operators and are absorbed into the
+renormalized low-energy constants.  The nonlinear-symmetry Ward identity gives
+the Adler zero when one external NGB momentum is taken soft, after all diagrams
+at a fixed order are summed.  Derivative counting fixes the overall power of
+momenta; it cannot prove that zero diagram by diagram because an expanded
+vertex may contain undifferentiated pion fields.  The cancellations among the
+tree graphs of the leading nonlinear sigma model provide the first check.
+Sending $p/f\to0$ removes every higher-order correction and leaves the leading
+action.
+
+\end{bankssolutions}

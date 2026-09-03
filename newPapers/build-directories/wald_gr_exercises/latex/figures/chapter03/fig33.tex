@@ -1,0 +1,39 @@
+% Source: Wald GR, physical PDF p. 50 (printed p. 37).
+% Coverage: Figure 3.3.
+% Figures/tables/footnotes: Figure only; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+\begingroup
+\renewcommand{\thefigure}{3.3}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=.92,>=Stealth]
+    \draw[thick] (-3.0,-0.90) .. controls (-2.1,0.55) and (-0.6,1.35) .. (2.60,1.00)
+      -- (1.95,-1.05) .. controls (-0.3,-0.62) and (-1.9,-1.35) .. (-3.0,-0.90);
+    \node at (-2.15,-0.50) {$S$};
+    \coordinate (P) at (-.95,-.34);
+    \coordinate (A) at (.22,-.10);
+    \coordinate (B) at (.62,.72);
+    \coordinate (C) at (-.55,.49);
+    \fill (P) circle (1.6pt);
+    \draw[->,thick] (P) -- (A);
+    \draw[->,thick] (A) -- (B);
+    \draw[->,thick] (B) -- (C);
+    \draw[->,thick] (C) -- (P);
+    \node[below left=2pt] at (P) {$p$};
+    \node[below right=3pt] at (A) {$(\Delta t,0)$};
+    \node[above right=2pt] at (B) {$(\Delta t,\Delta s)$};
+    \node[above left=2pt] at (C) {$(0,\Delta s)$};
+    % The transported vector at successive stages: over a small loop it barely
+    % changes direction, the residual rotation being the Riemann tensor at p.
+    \foreach \x/\y in {-.95/-.34,.22/-.10,.62/.72,-.55/.49} {
+      \draw[->] (\x,\y) -- ++(.20,.28);
+    }
+    \node[left=3pt] at (-.88,-.03) {$v^a$};
+  \end{tikzpicture}
+  \caption{The parallel transport of a vector $v^a$ around a small closed loop. As
+  derived in the text, to second order in $\Delta t$ and $\Delta s$, the change in $v^a$ is governed by
+  the Riemann tensor at $p$.}
+  \label{fig:3.3}
+\end{figure}
+\endgroup

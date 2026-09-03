@@ -1,0 +1,153 @@
+% BANKS-SOURCE: pdf=171 print=161 kind=section id=9.7
+\subsection{Renormalization-group equations in dimensional regularization}
+
+% BANKS-SOURCE: pdf=171 print=161 kind=prose
+We have seen that one of the peculiarities of dimensional regularization is that
+it introduces an extra dimensionful parameter $\mu$ apart from the coefficient of
+the quadratic term in the action. We know that this is a good thing, and that it
+is appropriate to introduce such a parameter, the \emph{renormalization scale} in
+any regularization scheme. The renormalization scale serves as a surrogate for
+the cut-off in the renormalized theory. If we recall our discussion of the exact
+RGE, general QFTs are defined by unstable flows near a fixed point, and a
+renormalization scale was introduced to mark the momentum scale at which the
+behavior of a given QFT deviates from its scale-invariant progenitor. We remarked
+that it was always possible to exchange the renormalization scale $\mu$ for
+
+% BANKS-SOURCE: pdf=172 print=162 kind=source-page
+(a power of) the coefficient of one of the relevant operators in the theory. It is
+possible, but not necessary. We can, instead, over-parametrize the theory in
+terms of $\mu$ and all of the $G^I$. Then we expect an equation telling us how
+the $G^I$ must change with $\mu$ in order to describe the same physical situation.
+This is the remnant of the RG flow near the fixed point, and is also called the
+RGE of the renormalized theory.
+
+To derive the RGE using dimensional regularization, write
+$d_{\mathrm{reg}}=4-\epsilon$ while keeping $D=4$ for the physical theory.
+We note that a bare 1PI
+Green function (we suppress the momentum dependence of the Green function for
+the moment) satisfies
+% BANKS-SOURCE: pdf=172 print=162 kind=equation
+\[
+  \left.\mu\partial_\mu\right|_{\lambda_0}\Gamma_n^0(m_0^2,\lambda_0,\mu)=0
+\]
+and
+% BANKS-SOURCE: pdf=172 print=162 kind=equation
+\[
+  \Gamma_n^0(m_0^2,\lambda_0,\mu)=Z^{-n/2}\Gamma_n(m^2,\lambda,\mu).
+\]
+The first of these equations expresses the fact that $\mu$ does not appear in
+the bare Green functions, written in terms of $\lambda_0$. We now apply the first
+equation to the second, and obtain
+% BANKS-SOURCE: pdf=172 print=162 kind=equation
+\[
+  \left(\mu\partial_\mu+\beta\partial_\lambda
+  +\beta_{m^2}\partial_{m^2}-\frac{n}{2}\gamma\right)\Gamma_n=0.
+\]
+In this equation, the $\mu$ derivative is taken at fixed $\lambda$ and $m^2$,
+and we have defined
+% BANKS-SOURCE: pdf=172 print=162 kind=equation
+\[
+  \gamma\equiv\mu\partial_\mu(\ln Z),\qquad
+  \beta\equiv(\mu\partial_\mu)_\lambda,qquad
+  \beta_{m^2}\equiv(\mu\partial_\mu)_{m^2},
+\]
+where the derivatives are taken at fixed $\lambda_0,m_0$. These coefficient
+functions are finite functions of the renormalized parameters in any
+renormalization scheme. Finiteness of $\Gamma_n$ implies that the $\mu$-dependent
+piece of $\ln Z,\lambda$, and $m^2$ is finite. Since $\mu$ always appears raised
+to the power $k(d_{\mathrm{reg}}-4)$ in $k$th order in the bare perturbation expansion, the
+single-pole parts of the expressions for $\lambda,m^2$, and $Z$ in terms of bare
+parameters are not $\mu$-dependent. Furthermore, the multiple poles must all
+cancel out in the scaling derivatives, which define $\beta_\lambda,\beta_{m^2}$,
+and $\gamma$, since these are all finite. In the MS and $\overline{\mathrm{MS}}$
+schemes, the renormalization constants have a $\mu$-independent finite part.
+Thus, in this scheme, $\beta,\beta_{m^2}$, and $\gamma$ are $\mu$-independent
+and come only from the pole part of their definition. By dimensional analysis,
+we must have $\beta=\beta(\lambda)$, $\gamma=\gamma(\lambda)$, and
+$\beta_{m^2}=m^2\gamma_{m^2}(\lambda)$.
+
+We can solve these equations in the following way. In words, the equation says
+that if we rescale $\mu$ we get a term proportional to $\Gamma_n$, as if
+$\Gamma_n$ were just rescaling, plus other terms which can be compensated for by
+varying the couplings. This corresponds to the idea that the renormalization
+scale is playing the role that the cut-off played in the exact RGE. Near the fixed
+point, a change in energy scale is compensated for by a change of scale of the
+field and a change in the marginal and relevant couplings. So we make an
+\emph{Ansatz}:
+% BANKS-SOURCE: pdf=172 print=162 kind=equation
+\[
+  \Gamma_n(\ee^{-s}\mu,\lambda,m^2)
+  =\ee^{F(s)}\Gamma_n(\mu,\lambda(s),m^2(s)).
+\]
+
+% BANKS-SOURCE: pdf=173 print=163 kind=source-page
+On plugging this in, and comparing with the RGE, we find that any function
+satisfying this relation will be a solution of the RGE if
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \frac{\dd F}{\dd s}=\frac{n}{2}\gamma(\lambda(s)),
+  \qquad
+  \frac{\dd\lambda}{\dd s}=\beta(\lambda(s)),
+\]
+and
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \frac{\dd m^2}{\dd s}=m^2\gamma_{m^2}(\lambda(s)).
+\]
+The boundary conditions on these equations are
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  F(0)=0,\qquad \lambda(0)=\lambda,\qquad m^2(0)=m^2.
+\]
+So the solution is
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \Gamma_n(\ee^{-s}\mu,\lambda,m^2)
+  =\ee^{\frac{n}{2}\int_0^s\dd u\,\gamma(\lambda(u))}
+  \Gamma_n\!\left(\mu,\lambda(s),
+  m^2\ee^{\int_0^s\dd u\,\gamma_{m^2}(\lambda(u))\,\dd u}\right).
+\]
+
+Now consider the momentum dependence of $\Gamma_n$. In momentum space (and
+including the delta function of momentum conservation) $\Gamma_n$ has engineering
+dimension $-n$ in mass units. Thus it is of the form $|p|^{-n}$ times a function
+that depends on ratios of the dimensionful quantities,
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \Gamma_n(\mu,\lambda,m^2,\ee^t p_i)
+  =\ee^{-nt}\Gamma_n(\ee^{-t}\mu,\lambda,\ee^{-2t}m^2,p_i).
+\]
+We now use the solution of the RGE to rewrite this as
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \Gamma_n(\mu,\lambda,m^2,\ee^t p_i)
+  =\ee^{-nt}\ee^{\frac{n}{2}\int_0^t\dd u\,\gamma(\lambda(u))}
+  \Gamma_n\!\left(\mu,\lambda(t),
+  \ee^{-2t}\ee^{\int_0^t\dd u\,\gamma_{m^2}(\lambda(u))\,\dd u}m^2,p_i\right).
+\]
+We can interpret this equation as saying that, as we change the momentum scale,
+the naively dimensionless coupling $\lambda$ ``runs,'' while the renormalized
+field and the mass acquire $\lambda(t)$-dependent corrections to their
+dimensions. You should understand that engineering dimensions never change,
+and that engineering-dimensional analysis is always valid. However, the behavior
+of the theory under rescaling of momentum depends on dimensionless ratios of
+momenta to the renormalization scale, and can therefore be changed by quantum
+corrections.
+
+The fact that $\beta(\lambda)\neq0$ means that our classical assessment of
+$\lambda$ as a marginal parameter is wrong. It does flow along RG trajectories,
+and its behavior near the free-field fixed point is determined by the leading
+term $\beta=b_0\lambda^2+o(\lambda^3)$. In this approximation, the RGE is a
+linear equation for $1/\lambda$,
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \frac{\dd}{\dd t}\frac{1}{\lambda}=-b_0,
+\]
+whose solution is
+% BANKS-SOURCE: pdf=173 print=163 kind=equation
+\[
+  \lambda(t)=\frac{\lambda}{1-b_0\lambda t}.
+\]
+We see that, if $b_0$ is positive (recall that $b_0=3/(16\pi^2)$), then, as
+momentum gets larger, $\lambda(t)$ increases, whereas as it gets smaller the
+coupling decreases. Such a theory is called

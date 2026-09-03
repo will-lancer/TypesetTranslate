@@ -1,0 +1,979 @@
+% BANKS-SOURCE: pdf=28 print=18 kind=solution-section id=chapter03-implicit-solutions
+\begin{bankssolutions}{Solutions to Implicit Exercises for Chapter 3}
+
+% BANKS-SOURCE: pdf=28 print=18 kind=solution id=I-CH03-001
+\BanksImplicitSolution{I-CH03-001}
+Write $\phi=\phi^{(+)}+\phi^{(-)}$, where $\phi^{(+)}$ contains $a$ and
+$\phi^{(-)}$ contains $a^\dagger$.  The vacuum relations
+\(\phi^{(+)}|0\rangle=0\) and
+\(\langle0|\phi^{(-)}=0\) show that the only two-field vacuum contraction is
+\begin{align*}
+ C(x,y)&:=\langle0|T\phi(x)\phi(y)|0\rangle\\
+ &=\theta(x^0-y^0)
+   [\phi^{(+)}(x),\phi^{(-)}(y)]\\
+ &\quad+\theta(y^0-x^0)
+   [\phi^{(+)}(y),\phi^{(-)}(x)]\\
+ &=D_F(x-y).
+\end{align*}
+Explicitly commuting each annihilation part to the right gives the second
+line.  Repeating this commutation proves Wick's operator identity.  Its vacuum expectation vanishes
+for an odd number of fields.  For $2r$ fields it is the sum over all complete
+pairings,
+\[
+ \langle0|T\phi(x_1)\cdots\phi(x_{2r})|0\rangle
+ =\sum_{P}\prod_{(a,b)\in P}D_F(x_a-x_b).
+\]
+There are
+\[
+ N_{2r}=(2r-1)(2r-3)\cdots1
+       =\frac{(2r)!}{2^r r!}
+\]
+such pairings.
+
+Expanding the source exponential now gives
+\begin{align*}
+ Z_0[J]
+ &=\sum_{r=0}^{\infty}\frac{\ii^{2r}}{(2r)!}
+   \int\prod_{a=1}^{2r}\dd^D x_a\,J(x_a)
+   \sum_P\prod_{(a,b)\in P}D_F(x_a-x_b)\\
+ &=\sum_{r=0}^{\infty}\frac{1}{r!}
+   \left[-\frac12\int\dd^D x\,\dd^D y\,
+    J(x)D_F(x-y)J(y)\right]^r\\
+ &=\exp\!\left[-\frac12\int\dd^D x\,\dd^D y\,
+    J(x)D_F(x-y)J(y)\right].
+\end{align*}
+The second equality uses symmetry of the source integrations, which makes all
+pairings equal after relabeling.  The zeroth term gives $Z_0[0]=1$.  Finally,
+\[
+ \left.\frac{\delta^2Z_0}
+ {\ii\delta J(x)\,\ii\delta J(y)}\right|_{J=0}
+ =D_F(x-y),
+\]
+so the sign and the factor $1/2$ pass the defining two-point check.
+
+% BANKS-SOURCE: pdf=29 print=19 kind=solution id=I-CH03-002
+\BanksImplicitSolution{I-CH03-002}
+The time-ordered exponential means the symmetric Dyson series
+\[
+ Z[J]=\sum_{N=0}^{\infty}\frac{\ii^N}{N!}
+ \int\prod_{a=1}^N\dd^D y_a\,J(y_a)
+ \langle0|T\phi(y_1)\cdots\phi(y_N)|0\rangle.
+\]
+A derivative with respect to $J(x)$ can hit any of the $N$ source factors.
+The integrand is symmetric under simultaneous exchange of $y_a$ and its
+field, so the $N$ terms are equal.  Setting $N=n+1$ yields
+\[
+ \frac{\delta Z}{\ii\delta J(x)}
+ =\sum_{n=0}^{\infty}\frac{\ii^n}{n!}
+ \int\prod_{r=1}^n\dd^D y_r\,J(y_r)
+ \langle0|T\phi(x)\phi(y_1)\cdots\phi(y_n)|0\rangle.
+\]
+For example, the term linear in the remaining source is
+\[
+ \ii\int\dd^D y\,J(y)\left[
+ \theta(x^0-y^0)\langle0|\phi(x)\phi(y)|0\rangle
+ +\theta(y^0-x^0)\langle0|\phi(y)\phi(x)|0\rangle\right].
+\]
+Thus the newly exposed point $x$ participates in the same ordering operation
+as $y$.  Taking it outside $T$ would discard the second term and change the
+operator product whenever $y^0>x^0$.
+
+The same counting gives, for any $r$,
+\[
+ \frac{\delta^r Z}
+ {\ii\delta J(x_1)\cdots\ii\delta J(x_r)}
+ =\left\langle0\left|T\phi(x_1)\cdots\phi(x_r)
+ \exp\!\left(\ii\int\dd^D y\,J(y)\phi(y)\right)\right|0\right\rangle.
+\]
+If $V'(u)=\sum_r c_r u^r$, multiplication by $c_r$ followed by this identity
+gives
+\[
+ V'\!\left(\frac{\delta}{\ii\delta J(x)}\right)Z[J]
+ =\left\langle0\left|T V'(\phi(x))
+ \exp\!\left(\ii\int\dd^D y\,J(y)\phi(y)\right)\right|0\right\rangle.
+\]
+This establishes the insertion in Eq.~\eqref{eq:3.4}.  Time derivatives of
+the resulting expression require the contact terms developed immediately
+after that equation.
+
+% BANKS-SOURCE: pdf=31 print=21 kind=solution id=I-CH03-003
+\BanksImplicitSolution{I-CH03-003}
+For the kernel used in Eq.~\eqref{eq:3.11}, differentiation with respect to a
+source inserts a Fourier variable:
+\[
+ \frac{\partial Z}{\ii\partial J_B}
+ =\int\dd^N\phi\,\phi^B\ee^{\ii S+\ii J\phi}.
+\]
+Multiplication by the source is converted by integration by parts:
+\begin{align*}
+ J_A Z
+ &=-\ii\int\dd^N\phi\,\ee^{\ii S}
+        \frac{\partial}{\partial\phi^A}\ee^{\ii J\phi}\\
+ &=-\int\dd^N\phi\,
+       \frac{\partial S}{\partial\phi^A}\ee^{\ii S+\ii J\phi}.
+\end{align*}
+The vanishing boundary term can be enforced by the same small damping that
+defines the oscillatory integral.
+
+Use the convention implicit in Eqs.~\eqref{eq:3.12}--\eqref{eq:3.14}, in
+which $K$ is the regulated quadratic kernel.  With the $+\ii J\phi$ kernel, the
+Schwinger--Dyson equation consistent with the classical field equation is
+\[
+ K_{AB}\frac{\partial Z}{\ii\partial J_B}
+ =\left[V'\!\left(\frac{\partial}{\ii\partial J_A}\right)-J_A\right]Z.
+\]
+Using the two transform rules reduces it to
+\[
+ \int\dd^N\phi\left(K_{AB}\phi^B
+ -\frac{\partial V}{\partial\phi^A}
+ -\frac{\partial S}{\partial\phi^A}\right)
+ \ee^{\ii S+\ii J\phi}=0.
+\]
+Since this holds for every $J$, Fourier uniqueness gives
+\[
+ \frac{\partial S}{\partial\phi^A}
+ =K_{AB}\phi^B-\frac{\partial V}{\partial\phi^A}.
+\]
+Symmetry of $K$ makes the right-hand side a gradient, and hence
+\[
+ S(\phi)=\frac12\phi^AK_{AB}\phi^B-V(\phi)+C.
+\]
+Differentiation recovers the preceding equation.  The constant multiplies
+$Z$ by $\ee^{\ii C}$, which the homogeneous Schwinger--Dyson equations leave
+undetermined.
+
+Equation~\eqref{eq:3.9}, with the mostly-plus scalar equation
+$\Box\phi=V'(\phi)$, gives the displayed $V'-J_A$ combination.  The historical
+source version of Eq.~\eqref{eq:3.10} instead printed $+J_A$.  Combining that
+printed sign with the kernel in
+Eq.~\eqref{eq:3.11} would give $S_{,A}=V_{,A}-K_{AB}\phi^B$, opposite to
+Eq.~\eqref{eq:3.12}.  Thus the latter equation fixes the source term in
+Eq.~\eqref{eq:3.10} to $-J_A$.  Choosing the kernel $\ee^{-\ii J\phi}$
+reverses both transform rules and requires the corresponding source-sign
+change.
+
+% BANKS-SOURCE: pdf=32 print=22 kind=solution id=I-CH03-004
+\BanksImplicitSolution{I-CH03-004}
+Set $a=\ii K^{-1}J$.  A direct expansion gives
+\[
+ -\frac12y^TKy+\ii y^TJ
+ =-\frac12(y-a)^TK(y-a)-\frac12J^TK^{-1}J.
+\]
+The integrand is entire in every $y^i$.  Positive definiteness of
+$\operatorname{Re}K$ supplies Gaussian decay on the original contour and on
+the finite interpolation to $\mathbb R^n-a$, so Cauchy's theorem permits the
+shift.  It follows that
+\[
+ I(J)=I(0)\exp\!\left(-\frac12J^TK^{-1}J\right).
+\]
+
+For a real positive-definite $K$, an orthogonal diagonalization and $n$
+ordinary one-dimensional integrals give
+\[
+ I(0)=(2\pi)^{n/2}(\det K)^{-1/2}.
+\]
+Both sides are analytic throughout the connected domain
+$\operatorname{Re}K>0$.  This fixes the general answer as
+\[
+ \boxed{I(J)=(2\pi)^{n/2}(\det K)^{-1/2}
+ \exp\!\left(-\frac12J^TK^{-1}J\right)},
+ \qquad
+ \boxed{\frac{I(J)}{I(0)}=\ee^{-J^TK^{-1}J/2}}.
+\]
+The square root is the analytic branch reached from positive real $K$.
+Replacing it by $|\det K|^{1/2}$ would lose the phase for a complex matrix.
+
+For a real nonsingular quadratic form $A$, the Fresnel integral is obtained
+from $K_\varepsilon=\varepsilon\mathbf1-\ii A$ with
+$\varepsilon\downarrow0$.  If $A$ has $n_+$ positive and $n_-$ negative
+eigenvalues, then
+\[
+ \int\dd^ny\,\ee^{\ii y^TAy/2}
+ =(2\pi)^{n/2}|\det A|^{-1/2}
+   \ee^{\ii\pi(n_+-n_-)/4},
+\]
+with the phase fixed by that limiting prescription.  The source term is
+obtained from the same completed square.
+
+At $n=1$, $J=0$, the defining integral is
+$\int\dd y\,\ee^{-ky^2/2}=\sqrt{2\pi/k}$.  Equation~\eqref{eq:3.16}, as
+printed, instead supplies $\sqrt{\pi/(2k)}$.  Its overall constant is smaller
+by a factor of $2$ per integration variable, and its absolute determinant
+does not record the complex phase.  Both discrepancies cancel from
+$I(J)/I(0)$, which is the normalized functional integral used in the next
+paragraph of the text.
+
+% BANKS-SOURCE: pdf=32 print=22 kind=solution id=I-CH03-005
+\BanksImplicitSolution{I-CH03-005}
+Put $t=x^0-y^0$ and $\mathbf r=\mathbf x-\mathbf y$.  The annihilation part of
+$\phi(x)$ can contract only with the creation part of $\phi(y)$.  Thus
+\[
+ D_F(t,\mathbf r)=
+ \begin{cases}
+ \displaystyle
+ \int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}
+ \ee^{-\ii\omega_{\mathbf p}t+\ii\mathbf p\cdot\mathbf r},&t>0,\\[8pt]
+ \displaystyle
+ \int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}
+ \ee^{\ii\omega_{\mathbf p}t-\ii\mathbf p\cdot\mathbf r},&t<0.
+ \end{cases}
+\]
+Changing $\mathbf p\mapsto-\mathbf p$ in the second line puts both cases in
+the compact form
+\[
+ D_F(t,\mathbf r)=\int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}
+ \left[\theta(t)\ee^{-\ii\omega_{\mathbf p}t}
+       +\theta(-t)\ee^{\ii\omega_{\mathbf p}t}\right]
+ \ee^{\ii\mathbf p\cdot\mathbf r}.
+\]
+
+The denominator in
+\[
+ \int\frac{\dd p^0}{2\pi}\,
+ \frac{\ii\ee^{-\ii p^0t}}
+ {(p^0)^2-\omega_{\mathbf p}^2+\ii\varepsilon}
+\]
+has poles at $p^0=\omega_{\mathbf p}-\ii0$ and
+$p^0=-\omega_{\mathbf p}+\ii0$.  For $t>0$ the exponential decays on the
+lower semicircle and encloses the positive-energy pole.  For $t<0$ the upper
+semicircle encloses the negative-energy pole.  The residues reproduce the
+two preceding terms, proving
+\[
+ D_F(x-y)=\int\frac{\dd^Dp}{(2\pi)^D}
+ \frac{-\ii\ee^{+\ii p\mathbin{\cdot}(x-y)}}
+ {p^2+m^2-\ii\varepsilon}.
+\]
+
+Away from $t=0$, each Fourier mode solves the homogeneous Klein--Gordon
+equation.  Its first derivative has the jump
+\begin{align*}
+ \partial_tD_F(0^+,\mathbf r)-\partial_tD_F(0^-,\mathbf r)
+ &=-\ii\int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}}\,
+ \ee^{\ii\mathbf p\cdot\mathbf r}\\
+ &=-\ii\delta^{D-1}(\mathbf r).
+\end{align*}
+Consequently, in the mostly-plus convention used by Banks,
+\begin{align*}
+ -\ii(\Box-m^2+\ii\varepsilon)D_F(x-y)&=\delta^D(x-y),\\
+ (\Box-m^2)D_F(x-y)&=\ii\delta^D(x-y)
+ \quad(\varepsilon\to0^+).
+\end{align*}
+For $t>0$ the positive-frequency part propagates from $y$ to $x$; for $t<0$
+it propagates from $x$ to $y$.  This operator boundary condition is precisely
+the placement of the two poles produced by $+\ii\varepsilon$.
+
+% BANKS-SOURCE: pdf=33 print=23 kind=solution id=I-CH03-006
+\BanksImplicitSolution{I-CH03-006}
+Write $x_r=(t_r,\mathbf x_r)$ and let
+$\{|a\rangle\}$ be a complete set with $H|a\rangle=E_a|a\rangle$ and
+$E_a\geq0$.  Translation in time gives, in the ordering
+$t_1>\cdots>t_n$,
+\begin{align*}
+ G_n(x_1,\ldots,x_n)
+ ={}&\sum_{a_1,\ldots,a_{n-1}}
+ \langle0|\phi(0,\mathbf x_1)|a_1\rangle
+ \langle a_1|\phi(0,\mathbf x_2)|a_2\rangle\cdots\\
+ &\quad\times
+ \langle a_{n-1}|\phi(0,\mathbf x_n)|0\rangle
+ \exp\!\left[-\ii\sum_{r=1}^{n-1}E_{a_r}(t_r-t_{r+1})\right].
+\end{align*}
+Continuous parts of the spectrum replace the sums by spectral integrals.
+Equivalently, the products of matrix elements define a complex measure
+$\dd\rho(E_1,\ldots,E_{n-1})$ supported on $E_r\geq0$, and
+\[
+ G_n=\int\dd\rho(E_1,\ldots,E_{n-1})
+ \exp\!\left(-\ii\sum_rE_r z_r\right),
+ \qquad z_r=t_r-t_{r+1}.
+\]
+
+Let $z_r=s_r-\ii\tau_r$ with every $\tau_r>0$.  A sufficient hypothesis is
+\[
+ \int |\dd\rho(E)|\,(1+E_1+\cdots+E_{n-1})^N
+ \ee^{-\sum_r\tau_r E_r}<\infty
+\]
+for every nonnegative integer $N$ and every point in the tube.  Polynomially
+bounded spectral measures satisfy this condition.  The exponential dominates
+all derivatives with respect to the $z_r$, so dominated convergence proves
+holomorphy.  At $z_r=-\ii\tau_r$ the kernel becomes
+\[
+ \ee^{-\sum_rE_r\tau_r}.
+\]
+The fields remain in the order $1,\ldots,n$ because $\tau_r>0$ preserves the
+ordered chamber.  A different real-time ordering is the boundary value of a
+different chamber.  The pieces agree where locality permits their analytic
+continuation to meet.
+
+For two free fields the operator result from the previous exercise continues
+to
+\[
+ D_F(-\ii\tau,\mathbf r)
+ =\int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}
+ \ee^{-\omega_{\mathbf p}|\tau|+\ii\mathbf p\cdot\mathbf r}.
+\]
+Starting from the $D$-momentum representation, rotate $p^0$ to
+$\ii p_E^0$ together with $t=-\ii\tau$.  The Feynman poles lie on the safe
+sides of the rotating quadrants.  The integrand is $O(|p^0|^{-2})$, and the
+continued exponential damps the arc for separated points; a test-function
+smearing supplies the same conclusion at coincident points.  Accounting for
+$\dd p^0=\ii\dd p_E^0$ gives
+\[
+ D_E(\tau,\mathbf r)=\int\frac{\dd p_E^0\,\dd^{D-1}\mathbf p}{(2\pi)^D}
+ \frac{\ee^{-\ii p_E^0\tau+\ii\mathbf p\mathbin{\cdot}\mathbf r}}
+ {(p_E^0)^2+\mathbf p^2+m^2},
+\]
+which is Eq.~\eqref{eq:3.21} after the spatial change of variable
+$\mathbf p_E=-\mathbf p$ in the Euclidean Fourier integral.
+
+% BANKS-SOURCE: pdf=33 print=23 kind=solution id=I-CH03-007
+\BanksImplicitSolution{I-CH03-007}
+Smear the field only in space,
+\[
+ \Phi_f(t)=\int\dd^{D-1}\mathbf x\,f(\mathbf x)\phi(t,\mathbf x),
+ \qquad f\in\mathcal S(\mathbb R^{D-1}).
+\]
+The free two-point function is
+\[
+ \langle0|\Phi_f(t)\Phi_f(0)|0\rangle
+ =\int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}
+ |\widetilde f(\mathbf p)|^2\ee^{-\ii\omega_{\mathbf p}t}
+ =\int_m^\infty\dd E\,\rho_f(E)\ee^{-\ii Et},
+\]
+where, with $\kappa_E=\sqrt{E^2-m^2}$,
+\[
+ \rho_f(E)=\frac{\theta(E-m)\kappa_E^{D-3}}{2(2\pi)^{D-1}}
+ \int\dd\Omega_{D-2}\,|\widetilde f(\kappa_E\widehat{\mathbf p})|^2.
+\]
+At finite spatial volume the same object is a sum of delta functions.  In
+infinite volume it has a $(D-3)/2$-power threshold (a square-root threshold when
+$D=4$).  A Schwartz $f$ makes it decrease faster than every power as $E\to\infty$.
+Point evaluation
+corresponds formally to constant $\widetilde f$ and, in $D=4$, gives
+$\rho(E)=\kappa_E/(4\pi^2)$, which grows.  Hence the unsmeared free spectral object
+already has a threshold and is a measure rather than a globally analytic,
+decreasing function.
+
+At a fixed perturbative order, the discontinuity of a graph has the schematic
+Cutkosky form
+\[
+ \operatorname{Disc}\mathcal G(P)
+ =\sum_X\int\dd\Pi_X(P)\,
+ \mathcal M_L(P\to X)\mathcal M_R(P\to X)^*,
+\]
+where $\dd\Pi_X$ contains on-shell delta functions and has support above the
+multi-particle threshold for $X$.  Phase-space boundaries produce further
+square roots and logarithms.  Renormalized fixed-order graphs are tempered:
+power counting bounds their high-energy growth by powers and logarithms.  Full
+space-time smearing multiplies them by Schwartz Fourier transforms and gives
+rapid decrease.  Spatial smearing alone can leave polynomial growth in energy,
+which the Euclidean Laplace factor controls.
+
+The precise order-by-order statement is therefore distributional.  Spectral
+distributions are tempered and supported at nonnegative energy.  After full
+test-function smearing they decrease rapidly; under spatial smearing alone a
+polynomial bound is enough.  Their Laplace transforms
+\[
+ \int_0^\infty\dd\rho_f(E)\,\ee^{-\ii Ez},
+ \qquad \operatorname{Im}z<0,
+\]
+are analytic because $\ee^{E\operatorname{Im}z}$ controls every polynomial
+bound.  The Euclidean value $z=-\ii\tau$ converges for every $\tau>0$.
+Analyticity belongs to this complex-time transform and, away from cuts, to
+momentum-space amplitudes.  The literal claim that the unsmeared spectral
+density itself is analytic and decreasing fails at zeroth order; the
+distributional formulation supplies exactly the continuation used by Banks.
+
+% BANKS-SOURCE: pdf=35 print=25 kind=solution id=I-CH03-008
+\BanksImplicitSolution{I-CH03-008}
+Introduce normalized Gaussian expectation values
+\[
+ \langle F\rangle_0:=\frac{1}{I_0}
+ \int[d\phi]\,\ee^{\ii S_0[\phi]}F[\phi],
+ \qquad A:=\int\dd^D x\,V(\phi(x)),
+\]
+and abbreviate $a=-\ii g$.  Through second order,
+\begin{align*}
+ \frac{I[J,g]}{I_0}
+ &=Z_0[J]+aN_1[J]+\frac{a^2}{2}N_2[J]+O(a^3),\\
+ \frac{I[0,g]}{I_0}
+ &=1+aD_1+\frac{a^2}{2}D_2+O(a^3),
+\end{align*}
+where
+\[
+ N_r[J]=\langle A^r\ee^{\ii\int\dd^D x\,J(x)\phi(x)}\rangle_0,
+ \qquad D_r=\langle A^r\rangle_0.
+\]
+The factor $a=-\ii g$ follows by expanding
+$\ee^{\ii(S_0-gA)}$; Eq.~\eqref{eq:3.26} already displays this
+$(-\ii g)^n$ factor.
+Every coefficient is visibly a Gaussian integral divided by $I_0$.  Expanding
+the reciprocal denominator gives
+\begin{align*}
+ Z[J,g]={}&Z_0[J]+a\bigl(N_1-Z_0D_1\bigr)\\
+ &+a^2\left[\frac12N_2-N_1D_1
+ +Z_0\left(D_1^2-\frac12D_2\right)\right]+O(a^3).
+\end{align*}
+The subtractions remove the first- and second-order collections that contain
+a component made solely from interaction vertices.
+
+The all-orders statement follows from the exponential formula for graphs.
+The logarithm of a Gaussian expectation is the sum of its connected Wick
+graphs.  Thus
+\begin{align*}
+ \frac{I[J,g]}{I_0}
+ &=\exp\!\left(C_{\rm vac}(g)+C_{\rm src}[J,g]\right),\\
+ \frac{I[0,g]}{I_0}&=\exp\!\left(C_{\rm vac}(g)\right).
+\end{align*}
+Here $C_{\rm vac}$ contains connected vacuum graphs, while every term in
+$C_{\rm src}$ meets at least one source insertion.  Division cancels
+$C_{\rm vac}$ and every disconnected product containing it.  At $g=0$ this
+leaves the normalized Gaussian generator
+\[
+ Z_0[J]=\langle\ee^{\ii\int\dd^D x\,J(x)\phi(x)}\rangle_0
+ =\exp\!\left[-\frac12\int\dd^D x\,\dd^D y\,
+ J(x)D_F(x-y)J(y)\right].
+\]
+Setting $J=0$ in the defining ratio gives $Z[0,g]=1$ exactly, which checks the
+vacuum-bubble cancellation at every order.
+
+% BANKS-SOURCE: pdf=35 print=25 kind=solution id=I-CH03-009
+\BanksImplicitSolution{I-CH03-009}
+Take the definite normalization
+\[
+ \mathcal L_I=-\frac{g}{2!2!}\phi^2
+ \partial_\mu\phi\,\partial^\mu\phi.
+\]
+At a vertex $y$, temporarily distinguish the fields as
+\[
+ \phi_1(y)\phi_2(y)\,
+ \partial_\mu\phi_3(y)\partial^\mu\phi_4(y).
+\]
+For four labeled external points, choose an unordered pair $\{a,b\}$ for the
+differentiated slots.  The two differentiated fields can be assigned in
+$2!$ ways, and the undifferentiated fields in another $2!$ ways.  This factor
+cancels the $2!2!$ in the interaction.  The one-vertex contribution is
+\[
+ -\ii g\int\dd^D y\sum_{1\leq a<b\leq4}
+ \partial_\mu^yD_F(y-x_a)\,
+ \partial_y^\mu D_F(y-x_b)
+ \prod_{c\ne a,b}D_F(y-x_c).
+\]
+The same rule applies to an internal line: a derivative attached to its slot
+acts on the $y$ endpoint of that line's propagator.  For a line joining $y$
+to $z$, this is $\partial_yD_F(y-z)$.  A derivative belonging to the $z$
+vertex acts as $\partial_z$ and carries the opposite routed momentum.
+
+Use
+\[
+ D_F(y-x)=\int\frac{\dd^D p}{(2\pi)^D}
+ \widetilde D_F(p)\ee^{+\ii p\mathbin{\cdot}(y-x)}.
+\]
+Each differentiated slot contributes $+\ii p_\mu$.  Combining the two such
+factors with the insertion $-\ii g$ gives the all-incoming vertex
+\[
+ \boxed{\mathcal V_4(p_1,p_2,p_3,p_4)
+ =\ii g\sum_{a<b}p_a\mathbin{\cdot}p_b},
+ \qquad (2\pi)^D\delta^D\!\left(\sum_a p_a\right).
+\]
+The sum makes permutation symmetry manifest.  Momentum conservation gives
+\[
+ \sum_{a<b}p_a\mathbin{\cdot}p_b
+ =\frac12\left[\left(\sum_a p_a\right)^2-\sum_a p_a^2\right]
+ =-\frac12\sum_a p_a^2.
+\]
+For four on-shell equal-mass legs, with the surrounding mostly-plus convention
+$p_a^2=-m^2$, the vertex becomes $+2\ii g m^2$.  The
+identity
+\[
+ \phi^2(\partial\phi)^2
+ =\frac13\partial_\mu(\phi^3\partial^\mu\phi)
+  -\frac13\phi^3\Box\phi
+\]
+shows why it vanishes for massless external legs.  For $m\ne0$, the free
+equation of motion trades it for $-m^2\phi^4/3$ modulo a total derivative,
+which reproduces the nonzero massive vertex.  These are the covariant
+functional-integral rules; a canonical Dyson expansion with time derivatives
+generates contact terms that reconstruct the same covariant result.
+
+% BANKS-SOURCE: pdf=35 print=25 kind=solution id=I-CH03-010
+\BanksImplicitSolution{I-CH03-010}
+For real scalars with canonical kinetic terms, fix
+\[
+ \mathcal L_0=-\frac12\partial_\mu\phi_a\partial^\mu\phi_a
+ -\frac12\phi_aM^2_{ab}\phi_b,
+ \qquad
+ \mathcal L_I=-\sum_{r\geq3}\frac{1}{r!}
+ \lambda_{a_1\ldots a_r}\phi_{a_1}\cdots\phi_{a_r},
+\]
+where $M^2$ is real symmetric and each $\lambda$ is totally symmetric.  An
+unsymmetrized coefficient is replaced by its complete symmetrization.
+The quadratic momentum-space action kernel is
+\[
+ K_{ab}(p)=-p^2\delta_{ab}-M^2_{ab}+\ii\varepsilon\delta_{ab}.
+\]
+The Gaussian contraction of two fields is $\ii K^{-1}$:
+\[
+ \boxed{\widetilde D_F^{ab}(p)
+ =-\ii\left[p^2\mathbf1+M^2-\ii\varepsilon\mathbf1\right]^{-1}_{ab}}.
+\]
+Consequently a line has an index at each end, and the two indices are joined
+by $D_F^{ab}$.  Wick's theorem permits precisely the pairings encoded by this
+covariance matrix.  In a basis where $M^2$ is diagonal,
+\[
+ \widetilde D_F^{\alpha\beta}(p)
+ =\frac{-\ii\delta^{\alpha\beta}}
+ {p^2+m_\alpha^2-\ii\varepsilon},
+\]
+so a free contraction preserves the mass-eigenstate species.
+
+Expanding $\ee^{\ii\int\dd^D x\,\mathcal L_I}$ and contracting the $r!$ identical
+slots with labeled incident lines cancels the explicit $1/r!$.  The vertex is
+\[
+ \boxed{-\ii\lambda_{a_1\ldots a_r}},
+\]
+together with momentum conservation.  An external line carries its specified
+species index.  Every internal endpoint index is summed, as in
+\[
+ \lambda_{abc}D_F^{aa'}(p)D_F^{bb'}(q)
+ \lambda_{a'b'c'}D_F^{cc'}(r)
+\]
+for a representative contraction of two cubic tensors.  Zeros or invariant
+tensors in $\lambda$ impose the allowed species combinations at a vertex.
+
+Under an orthogonal field redefinition $\phi'=O\phi$,
+\[
+ M'^2=OM^2O^T,
+ \qquad D'_F=OD_FO^T,
+ \qquad
+ \lambda'_{a_1\ldots a_r}
+ =O_{a_1b_1}\cdots O_{a_rb_r}\lambda_{b_1\ldots b_r}.
+\]
+Every internal index joins two factors of $O$ and contracts to
+$O^TO=\mathbf1$.  External indices rotate with the external states.  Hence
+the numerical amplitude between correspondingly rotated states is basis
+independent, and the diagonal-basis rules are the same tensor network written
+in simpler coordinates.
+
+% BANKS-SOURCE: pdf=35 print=25 kind=solution id=I-CH03-011
+\BanksImplicitSolution{I-CH03-011}
+Suppose $G$ has $n_\tau$ vertices of each interaction type $\tau$.  Let
+$R_\tau$ be the group that permutes identical slots of that vertex; for a
+scalar monomial $\phi^{k_\tau}/k_\tau!$, it is $S_{k_\tau}$.  Before any
+contractions, the perturbation series treats the vertices and their slots as
+labeled.  The relabeling group is
+\[
+ H=\prod_\tau\left(S_{n_\tau}\ltimes R_\tau^{n_\tau}\right),
+ \qquad |H|=\prod_\tau n_\tau!|R_\tau|^{n_\tau}.
+\]
+It acts transitively on the labeled Wick contractions that give the same
+abstract graph $G$.  The subgroup that leaves one such contraction unchanged
+is precisely $\operatorname{Aut}(G)$, provided an automorphism fixes the
+labeled external legs and preserves all incidences, valences, species, vertex
+types, and derivative decorations.  Edge
+permutations and the exchange of the two ends of a self-loop occur as elements
+of this stabilizer.
+
+Orbit--stabilizer therefore gives
+\[
+ N_G=\frac{|H|}{{|\operatorname{Aut}(G)|}}
+\]
+contractions in the orbit of $G$.  The exponential contributes $1/n_\tau!$
+for each set of identical vertices, while the interaction normalization
+contributes $1/|R_\tau|$ at each such vertex.  Multiplying these denominators
+by $N_G$ leaves
+\[
+ \boxed{S_G=\frac{N_G}
+ {\prod_\tau n_\tau!|R_\tau|^{n_\tau}}
+ =\frac{1}{|\operatorname{Aut}(G)|}}.
+\]
+
+For the order-$\lambda$ two-point tadpole, choose a slot for the field at $x$
+and then a slot for the field at $y$.  The remaining two slots contract with
+each other, so
+\[
+ N_G=4\cdot3=12,
+ \qquad S_G=\frac{12}{4!}=\frac12.
+\]
+The only automorphism fixing the two external legs flips the tadpole edge, so
+$|\operatorname{Aut}(G)|=2$.
+
+For two quartic vertices joined by four parallel lines, a contraction is a
+bijection between their four slots.  There are $4!$ such bijections.  Hence
+\[
+ S_G=\frac{4!}{2!(4!)^2}=\frac1{48}.
+\]
+The automorphism group has $4!$ permutations of the parallel edges and an
+exchange of the two vertices, giving order $48$.  This is the $1/48$ example
+in Appendix~D.  The external $x$--$y$ contraction drawn there forms a separate
+labeled component and supplies no further multiplicity.
+
+% BANKS-SOURCE: pdf=36 print=26 kind=solution id=I-CH03-012
+\BanksImplicitSolution{I-CH03-012}
+Adopt
+\[
+ \mathcal L_I=-g\sum_k\frac{v_k}{k!}\phi^k.
+\]
+Expansion of $\ee^{\ii S_I}=\ee^{\ii\int\dd^D x\,\mathcal L_I}$ then assigns
+\[
+ \text{vertex of valence }k:\quad -\ii g v_k,
+ \qquad
+ \text{internal line}:\quad
+ \widetilde D_F(p)=\frac{-\ii}{p^2+m^2-\ii\varepsilon}.
+\]
+The $k!$ contractions of labeled incident lines cancel the $1/k!$ in the
+Lagrangian.  A Green function also has one propagator from each external point
+to the first vertex it meets; those factors are omitted from an amputated
+quantity.
+
+Insert the Fourier representation of every propagator into a position-space
+graph.  Integration over a vertex position $y_v$ gives
+\[
+ \int\dd^D y_v\,\ee^{+\ii y_v\mathbin{\cdot}\sum_{e\ni v}k_{ev}}
+ =(2\pi)^D\delta^D\!\left(\sum_{e\ni v}k_{ev}\right),
+\]
+where all $k_{ev}$ point into the vertex.  For a connected graph, one of the
+$V$ vertex constraints becomes the overall conservation factor.  The nearby
+source line prints $2\pi^4\delta^4$ in its four-dimensional presentation;
+the D-dimensional Fourier transformation gives the parenthesized factor
+$(2\pi)^D\delta^D$ displayed here.
+The remaining $V-1$ delta functions eliminate $V-1$ of the $I$ internal
+momenta.  Therefore
+\[
+ L=I-(V-1)=I-V+1
+\]
+independent loop momenta remain.  The resulting amputated graph is
+\begin{align*}
+ \mathcal G_G={}&(2\pi)^D\delta^D\!\left(\sum_a p_a\right)S_G
+ \prod_{v=1}^{V}(-\ii g v_{k_v})
+ \int\prod_{r=1}^{L}\frac{\dd^D\ell_r}{(2\pi)^D}
+ \prod_{e=1}^{I}
+ \frac{-\ii}{k_e(\ell,p)^2+m^2-\ii\varepsilon}.
+\end{align*}
+
+With the convention $\ee^{+\ii k\mathbin{\cdot}x}$, a derivative acting on a field at a
+vertex contributes $+\ii k_\mu$ for that field's incoming momentum.  Several
+derivatives produce the corresponding tensor polynomial.  Momentum
+conservation is imposed only after each derivative has been assigned to its
+own field slot.
+
+Under $t=-\ii\tau$, this scalar action becomes
+\[
+ S_E=\int\dd^D x_E\left[\frac12(\partial_E\phi)^2
+ +\frac12m^2\phi^2+g\sum_k\frac{v_k}{k!}\phi^k\right],
+ \qquad \ee^{\ii S_M}=\ee^{-S_E}.
+\]
+Thus
+\[
+ \text{Euclidean line}:\quad\frac{1}{p_E^2+m^2},
+ \qquad
+ \text{Euclidean vertex}:\quad-gv_k,
+ \qquad
+ \int\frac{\dd^D\ell_E}{(2\pi)^D}
+\]
+for each loop.  The Lorentzian coefficient shown above follows from
+$\mathcal L_I=-g\sum_kv_k\phi^k/k!$ and $\ee^{\ii S_M}$, with the same
+coupling convention used in the Euclidean rules.  The displayed signs follow
+directly from $\ee^{\ii S_M}$ and $\ee^{-S_E}$.
+
+% BANKS-SOURCE: pdf=36 print=26 kind=solution id=I-CH03-013
+\BanksImplicitSolution{I-CH03-013}
+Use $\mathcal L_I=-\lambda\phi^4/4!$, set
+$D_{ab}=D_F(x_a-x_b)$, and retain all external propagators.  The phases below
+follow this choice.  Appendix~D uses the opposite coupling sign; its graph
+counts are unchanged.  The one-vertex two-point tadpole is
+\[
+ G^{(1)}_2(x,y)=\frac{-\ii\lambda}{2}
+ \int\dd^D z\,D_F(x-z)D_F(0)D_F(z-y).
+\]
+It has one vertex, one internal self-loop, one loop momentum, and two external
+legs.  The count $4\cdot3/4!=1/2$ gives its symmetry factor.  Its superficial
+degree of divergence is $D-2$, which is $2$ when $D=4$.
+
+The connected four-point contact graph is
+\[
+ G^{(1)}_4(x_1,x_2,x_3,x_4)
+ =-\ii\lambda\int\dd^D z\prod_{a=1}^4D_F(x_a-z).
+\]
+All $4!$ assignments of external points cancel $1/4!$.  The graph has four
+external legs, no internal line, no loop, and symmetry factor $1$.
+
+For the two-point sunset, take $x$ into $z$, $y$ into $w$, and join $z$ to
+$w$ with three lines:
+\[
+ G^{(2)}_{2,\mathrm{sun}}(x,y)
+ =\frac{(-\ii\lambda)^2}{6}
+ \int\dd^D z\,\dd^D w\,
+ D_F(x-z)D_F(z-w)^3D_F(w-y).
+\]
+Here $V=2$, $I=3$, and $L=2$.  Directly,
+\[
+ \frac{2\cdot4\cdot4\cdot3!}{2!(4!)^2}=\frac16.
+\]
+The leading factor $2$ chooses which vertex receives $x$; the three remaining
+lines can then be paired in $3!$ ways.  Its overall superficial degree is
+$DL-2I=2D-6$, which is $2$ when $D=4$.
+
+Choose the $s$-channel partition $(x_1,x_2)|(x_3,x_4)$ for the four-point
+bubble.  Its position-space expression is
+\[
+\begin{aligned}
+ G^{(2)}_{4,s}
+ &=\frac{(-\ii\lambda)^2}{2}
+   \int\dd^D z\,\dd^D w\\
+ &\quad{}\times D_F(x_1-z)D_F(x_2-z)D_F(z-w)^2\\
+ &\quad{}\times D_F(x_3-w)D_F(x_4-w).
+\end{aligned}
+\]
+It has $V=2$, $I=2$, $L=1$, and symmetry factor $1/2$ from exchange of the
+two parallel internal lines.  With $P=p_1+p_2$ and all external momenta
+incoming, the amputated integral is
+\[
+ \mathcal G^{\mathrm{amp}}_{4,s}
+ =\frac{(-\ii\lambda)^2}{2}
+ \int\frac{\dd^D\ell}{(2\pi)^D}
+ \frac{-\ii}{\ell^2+m^2-\ii\varepsilon}
+ \frac{-\ii}{(\ell+P)^2+m^2-\ii\varepsilon},
+\]
+along with $(2\pi)^D\delta^D(\sum_ap_a)$.  The $t$ and $u$ channels are the
+other two pairings of the four external legs.  Since $DL-2I=D-4$, each bubble
+is logarithmically divergent when $D=4$.
+
+Appendix~D also displays the vacuum component made from two quartic vertices
+and four parallel lines.  Its factor
+\(4!/[2!(4!)^2]=1/48\) agrees with the automorphism count in the previous
+solution.  These examples exhibit every part of the setup before any loop
+integration is attempted.
+
+% BANKS-SOURCE: pdf=39 print=29 kind=solution id=I-CH03-014
+\BanksImplicitSolution{I-CH03-014}
+Differentiating $J=-\delta\Gamma/\delta\phi$ and
+$\phi=\delta W/\delta J$ gives the kernel identity
+\[
+ \int\dd^D z\,W_2(x,z)[-\Gamma_2(z,y)]=\delta^D(x-y).
+\]
+Consequently
+\[
+ \boxed{W_2=-\Gamma_2^{-1}}.
+\]
+For any invertible kernel $K$,
+\(\delta K^{-1}=-K^{-1}(\delta K)K^{-1}\).  Applying this to the boxed
+identity yields
+\begin{align*}
+ W_3(x,y,z)
+ &=\int\dd^D a\,\dd^D b\,
+ W_2(x,a)W_2(y,b)\frac{\delta\Gamma_2(a,b)}{\delta J(z)},\\
+ \frac{\delta\Gamma_2(a,b)}{\delta J(z)}
+ &=\int\dd^D c\,\Gamma_3(a,b,c)W_2(c,z).
+\end{align*}
+Combining them gives
+\[
+ W_3(x,y,z)=\int\dd^D a\,\dd^D b\,\dd^D c\,
+ W_2(x,a)W_2(y,b)W_2(z,c)\Gamma_3(a,b,c),
+\]
+which is Eq.~\eqref{eq:3.38}.
+
+For four external points, define
+\begin{align*}
+ T_{12|34}:={}&\int\dd^D a\,\dd^D b\,\dd^D c\,\dd^D d\,
+                 \dd^D u\,\dd^D v\,
+ W_2(x_1,a)W_2(x_2,b)\Gamma_3(a,b,u)\\
+ &\qquad\times W_2(u,v)\Gamma_3(v,c,d)
+ W_2(x_3,c)W_2(x_4,d).
+\end{align*}
+One more differentiation gives
+\begin{align*}
+ W_4(x_1,x_2,x_3,x_4)
+ ={}&\int\prod_{r=1}^4\dd^D a_r\,
+ \left[\prod_{r=1}^4W_2(x_r,a_r)\right]
+ \Gamma_4(a_1,a_2,a_3,a_4)\\
+ &+T_{12|34}+T_{13|24}+T_{14|23}.
+\end{align*}
+The first term comes from differentiating $\Gamma_3$; differentiating one of
+the three propagators produces the three exchange channels.
+
+Assume the tree formula holds for $W_n$ with its external points labeled.
+When $\delta/\delta J(x_{n+1})$ hits a vertex $\Gamma_k$, the chain rule
+creates a vertex $\Gamma_{k+1}$ and attaches the new point through one
+$W_2$.  When it hits an edge $W_2$, the three-point identity replaces that
+edge by two edges meeting a new $\Gamma_3$, again with an external $W_2$ for
+$x_{n+1}$.  Both operations preserve connectedness and create no cycle.
+
+Conversely, remove the leaf labeled $x_{n+1}$ from any resulting tree.  If
+its adjacent vertex has valence at least four, the inverse operation lowers
+that vertex's valence and identifies a unique vertex differentiation.  If the
+adjacent vertex is trivalent, removing it and joining its other two branches
+identifies a unique differentiated edge.  This inverse establishes existence
+and uniqueness, completing the induction.  In the free theory every
+$\Gamma_{k\geq3}$ vanishes, and the formula correctly gives
+$W_{n\geq3}=0$.
+
+% BANKS-SOURCE: pdf=43 print=33 kind=solution id=I-CH03-015
+\BanksImplicitSolution{I-CH03-015}
+Translation covariance reads
+\(\Phi(x)=\ee^{-\ii P\mathbin{\cdot}x}\Phi(0)\ee^{+\ii P\mathbin{\cdot}x}\).  Since
+$P^\mu|0\rangle=0$ and $P^\mu|\mathbf p\rangle=p^\mu|\mathbf p\rangle$,
+\[
+ \langle0|\Phi(x)|\mathbf p\rangle
+ =\ee^{+\ii p\mathbin{\cdot}x}F(\mathbf p),
+ \qquad F(\mathbf p):=\langle0|\Phi(0)|\mathbf p\rangle.
+\]
+The origin is fixed by every Lorentz transformation, so scalar covariance,
+vacuum invariance, and the stated transformation of the one-particle state
+give
+\[
+ F(\boldsymbol{\Lambda p})
+ =\sqrt{\frac{\omega_{\mathbf p}}{\omega_{\boldsymbol{\Lambda p}}}}\,F(\mathbf p).
+\]
+It follows that $\sqrt{\omega_{\mathbf p}}F(\mathbf p)$ is invariant on the positive
+mass shell.  The proper orthochronous Lorentz group acts transitively there,
+so this quantity is a constant.  Define
+\[
+ Z:=2(2\pi)^{D-1}\omega_{\mathbf p}|F(\mathbf p)|^2.
+\]
+It is independent of $p$ and positive when the interpolating field couples to
+the particle.  A common phase choice for the one-particle states makes $F$
+positive at rest.  The result is
+\[
+ \boxed{\langle0|\Phi(x)|\mathbf p\rangle
+ =\sqrt{\frac{Z}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}}\ee^{+\ii p\mathbin{\cdot}x}}.
+\]
+
+Covariantly normalized states are
+\[
+ |p\rangle_{\rm cov}=\sqrt{(2\pi)^{D-1}\,2\omega_{\mathbf p}}\,|\mathbf p\rangle,
+ \qquad
+ \langle q|p\rangle_{\rm cov}
+ =(2\pi)^{D-1}2\omega_{\mathbf p}\delta^{D-1}(\mathbf q-\mathbf p).
+\]
+For them the same statement becomes
+\(\langle0|\Phi(x)|p\rangle_{\rm cov}
+=\sqrt Z\ee^{+\ii p\mathbin{\cdot}x}\).
+
+Insert the one-particle completeness relation into the time-ordered two-point
+function.  Its one-particle contribution is $Z$ times the free propagator.
+Under the LSZ assumption that this pole is isolated from the continuum, near
+$p^2=-m^2$,
+\[
+ \widetilde G_2(p)=\frac{-\ii Z}{p^2+m^2-\ii\varepsilon}
+ +\text{terms regular at }p^2=-m^2.
+\]
+Thus $Z$ defined by the matrix element is the pole residue, which provides the
+LSZ check used in the surrounding text.
+
+% BANKS-SOURCE: pdf=43 print=33 kind=solution id=I-CH03-016
+\BanksImplicitSolution{I-CH03-016}
+Use the same delta-function normalization for momentum states as in the
+previous solution.  For a stable massive spin-one particle, covariance fixes
+\[
+ \langle0|A_\mu(x)|\mathbf p,\lambda\rangle
+ =\sqrt{\frac{Z_A}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}}
+ \epsilon_\mu(p,\lambda)\ee^{+\ii p\mathbin{\cdot}x}.
+\]
+With the mostly-plus metric, physical polarizations obey
+\[
+ p^\mu\epsilon_\mu(p,\lambda)=0,
+ \qquad
+ \epsilon(p,\lambda)^*\mathbin{\cdot}\epsilon(p,\lambda')
+ =+\delta_{\lambda\lambda'},
+\]
+and
+\[
+ \sum_{\lambda=1}^{D-1}\epsilon_\mu(p,\lambda)
+ \epsilon_\nu(p,\lambda)^*
+ =\Pi^{(1)}_{\mu\nu}(p)
+ :=\eta_{\mu\nu}+\frac{p_\mu p_\nu}{m^2}.
+\]
+There are $D-1$ massive vector polarizations; this is three when $D=4$.
+The isolated pole in the vector two-point function is therefore
+\[
+ \widetilde G_{\mu\nu}(p)
+ =\frac{-\ii Z_A\Pi^{(1)}_{\mu\nu}(p)}
+ {p^2+m^2-\ii\varepsilon}+\text{regular terms}.
+\]
+On a physical transverse leg, use
+\[
+ Z_A^{-1/2}D_{F,0}^{-1}(p)
+ =\frac{p^2+m^2}{-\ii\sqrt{Z_A}}.
+\]
+Contract the remaining index with $\epsilon^\mu$ for an incoming vector or
+$\epsilon^{\mu *}$ for an outgoing vector.  A convention that amputates with
+$p^2+m^2$ absorbs the displayed universal factor $1/(-\ii)$ into the definition
+of the amputated vertex.
+
+For a Dirac interpolating field,
+the standard four-dimensional realization has $D=4$ and two spin states; in
+other dimensions the same formulas use the corresponding $D$-dimensional
+Clifford representation and spin multiplicity.
+\begin{align*}
+ \langle0|\Psi_\alpha(x)|\mathbf p,s\rangle
+ &=\sqrt{\frac{Z_\psi}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}}
+ u_\alpha(p,s)\ee^{+\ii p\mathbin{\cdot}x},\\
+ \langle0|\overline\Psi_\alpha(x)|\overline{\mathbf p},s\rangle
+ &=\sqrt{\frac{Z_\psi}{(2\pi)^{D-1}\,2\omega_{\mathbf p}}}
+ \overline v_\alpha(p,s)\ee^{+\ii p\mathbin{\cdot}x}.
+\end{align*}
+Choose
+\begin{gather*}
+ \{\gamma^\mu,\gamma^\nu\}=-2\eta^{\mu\nu},
+ \qquad \slashed p=\gamma^\mu p_\mu,\\
+ (\slashed p-m)u(p,s)=0,
+ \qquad (\slashed p+m)v(p,s)=0,\\
+ \overline u(p,s)u(p,s')=-2m\delta_{ss'},
+ \qquad \overline v(p,s)v(p,s')=2m\delta_{ss'},\\
+ u(p,s)^\dagger u(p,s')=v(p,s)^\dagger v(p,s')
+ =2\omega_{\mathbf p}\delta_{ss'},\\
+ \sum_su(p,s)\overline u(p,s)=-(\slashed p+m),
+ \qquad \sum_sv(p,s)\overline v(p,s)=-(\slashed p-m).
+\end{gather*}
+The particle pole is
+\[
+ \widetilde S(p)=\frac{-\ii Z_\psi(\slashed p+m)}
+ {p^2+m^2-\ii\varepsilon}+\text{regular terms}.
+\]
+Equivalently it is $\ii Z_\psi/(\slashed p-m+\ii0)$ near the pole.  Amputation
+applies $Z_\psi^{-1/2}S_{F,0}^{-1}$ on the appropriate spinor index, where
+\[
+ S_{F,0}^{-1}(p)=\frac{\slashed p-m}{\ii}.
+\]
+After amputation, the external wave functions are
+\[
+ \begin{aligned}
+ \text{incoming fermion}:&\quad Z_\psi^{-1/2}u(p,s),&
+ \text{outgoing fermion}:&\quad Z_\psi^{-1/2}\overline u(p,s),\\
+ \text{incoming anti-fermion}:&\quad Z_\psi^{-1/2}\overline v(p,s),&
+ \text{outgoing anti-fermion}:&\quad Z_\psi^{-1/2}v(p,s).
+ \end{aligned}
+\]
+The side on which $S_{F,0}^{-1}$ acts follows the oriented fermion line.  These
+are the external-line conventions collected in Appendix~D.
+
+For integer spin $s$, replace $\epsilon_\mu$ by a symmetric, transverse,
+traceless tensor $\epsilon_{\mu_1\ldots\mu_s}(p,\lambda)$ normalized by
+\[
+\epsilon(p,\lambda)^*\mathbin{\cdot}\epsilon(p,\lambda')
+ =\delta_{\lambda\lambda'}.
+\]
+Its polarization sum is the massive spin-$s$ projector
+$\Pi^{(s)}(p)$, and the two-point pole is
+$-\ii Z_s\Pi^{(s)}(p)/(p^2+m^2-\ii0)$.  For spin $s=r+\tfrac12$, use a
+symmetric tensor--spinor $u_{\mu_1\ldots\mu_r}$ satisfying the Dirac equation,
+transversality, and gamma tracelessness.  A compatible normalization is
+\[
+ \overline u_{\mu_1\ldots\mu_r}(p,\lambda)
+ u^{\mu_1\ldots\mu_r}(p,\lambda')
+ =-2m\delta_{\lambda\lambda'}.
+\]
+Its completeness relation is $(\slashed p+m)$ times the spin projector.
+Each LSZ leg is obtained by applying the projected inverse free kinetic
+operator, multiplying by $Z_s^{-1/2}$, and contracting with the appropriate
+polarization tensor or tensor--spinor.
+
+For a massless gauge particle, a covariant field contains gauge directions in
+addition to physical states.  LSZ is applied to a gauge-fixed Green function
+and then projected onto transverse physical helicities; BRST identities make
+the result independent of the representative polarization.  This replaces
+the massive polarization sum by its physical-helicity counterpart.
+
+Setting $s=0$, $\Pi^{(0)}=1$, and using the scalar inverse pole recovers the
+matrix element, residue, and $Z^{-1/2}$ reduction of the preceding solution.
+
+\end{bankssolutions}

@@ -1,0 +1,561 @@
+% Source: Wald GR, physical PDF pp. 236--246
+%         (printed pp. 223--233).
+% Coverage: Section 9.3, Conjugate Points; equations (9.3.1)--(9.3.24).
+% Figures/tables/footnotes: Figures 9.2--9.4; two footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Conjugate Points}\label{sec:9.3}
+
+\setcounter{theorem}{0}
+
+Let \(M\) be any manifold on which a connection is defined and let \(\gamma\) be a
+geodesic with tangent \(v^a\). A solution \(\eta^a\) of the geodesic deviation equation
+
+\begin{equation}
+  v^a\nabla_a(v^b\nabla_b\eta^c)
+  =-R_{abd}{}^c\eta^bv^av^d
+  \tag{9.3.1}\label{eq:9.3.1}
+\end{equation}
+
+(see Eq.~\eqref{eq:3.3.18}) is called a \emph{Jacobi field} on \(\gamma\). A pair of points
+\(p,q\in\gamma\) are said to be \emph{conjugate} if there exists a Jacobi field \(\eta^a\)
+which is not identically zero but vanishes at both \(p\) and \(q\). Thus, roughly
+speaking, \(p\) and \(q\) are conjugate if an ``infinitesimally nearby'' geodesic intersects
+\(\gamma\) at both \(p\) and \(q\) as illustrated in Figure~\ref{fig:9.2}. As a simple
+example, the north and south poles of the sphere in Riemannian geometry are
+conjugate points of every ``longitudinal geodesic.'' Note, however, that the definition
+requires only the existence of a Jacobi field vanishing at \(p\) and \(q\); there need not
+exist an actual geodesic other than \(\gamma\) which passes through \(p\) and \(q\).
+Conversely, the existence of a geodesic other than \(\gamma\) which passes through \(p\)
+and \(q\) does not mean that \(p\) and \(q\) are conjugate or even that some point
+conjugate to \(p\) exists between \(p\) and \(q\).
+
+\input{figures/chapter09/fig09-02.tex}
+
+Conjugate points are of interest because, as we shall see below, in spacetimes they
+characterize the stage at which a timelike geodesic fails to be a local maximum of
+proper time between two points and a null geodesic fails to remain on the boundary
+of the future of a point. (In Riemannian geometry, they similarly characterize the
+stage at which a geodesic fails, locally, to be the minimum length curve connecting
+points.) We shall consider, first, conjugate points on timelike geodesics. We begin
+by using the results of the previous section to obtain criteria for the existence of
+conjugate points.
+
+Let \(\gamma\) be a timelike geodesic with tangent \(\xi^a\) and let \(p\in\gamma\).
+Consider the congruence of all timelike geodesics passing through \(p\). (This
+congruence, of course, is singular at \(p\) itself.) Then every Jacobi field which
+vanishes at \(p\) is a deviation vector for this congruence. We shall show that a
+point \(q\in\gamma\) lying to the future of \(p\) is conjugate to \(p\) if and only if the
+expansion, \(\theta\), of this congruence approaches \(-\infty\) at \(q\). For this purpose,
+it is convenient to introduce an orthonormal basis of spatial vectors
+\(e_1^a,e_2^a,e_3^a\) orthogonal to \(\xi^a\) and parallelly propagated along \(\gamma\).
+Since the components, \(\eta^\mu\), of the deviation vectors \(\eta^a\) for this
+congruence satisfy the linear ordinary differential equations,
+
+\begin{equation}
+  \frac{\dd^2\eta^\mu}{\dd\tau^2}
+  =-\sum_{\alpha,\beta,\nu}
+    R_{\alpha\beta\nu}{}^\mu\xi^\alpha\eta^\beta\xi^\nu ,
+  \tag{9.3.2}\label{eq:9.3.2}
+\end{equation}
+
+the value of \(\eta^\mu\) at time \(\tau\) must depend linearly on the initial data
+\(\eta^\mu(0)\) and \(\dd\eta^\mu/\dd\tau(0)\) at \(p\). Since, by construction,
+\(\eta^\mu(0)=0\) for this congruence, we must have
+
+\begin{equation}
+  \eta^\mu(\tau)
+  =\sum_{\nu=1}^3 A^\mu{}_\nu(\tau)\frac{\dd\eta^\nu}{\dd\tau}(0) .
+  \tag{9.3.3}\label{eq:9.3.3}
+\end{equation}
+
+Substituting this in Eq.~\eqref{eq:9.3.2}, we see that the matrix
+\(A^\mu{}_\nu(\tau)\) satisfies the equation
+
+\begin{equation}
+  \frac{\dd^2 A^\mu{}_\nu}{\dd\tau^2}
+  =-\sum_{\alpha,\beta,\sigma}
+    R_{\alpha\beta\sigma}{}^\mu\xi^\alpha\xi^\sigma A^\beta{}_\nu .
+  \tag{9.3.4}\label{eq:9.3.4}
+\end{equation}
+
+Clearly, we also have \(A^\mu{}_\nu(0)=0\) and
+\(\dd A^\mu{}_\nu/\dd\tau(0)=\delta^\mu{}_\nu\). Now, \(q\) will be conjugate to
+\(p\) if and only if there exists nontrivial initial data [i.e.,
+\(\dd\eta^\mu/\dd\tau(0)\ne0\)] for which \(\eta^\mu=0\) at \(q\). By
+Eq.~\eqref{eq:9.3.3}, this occurs if and only if \(\det A^\mu{}_\nu=0\) at \(q\), so
+\(\det A^\mu{}_\nu=0\) is the necessary and sufficient condition for a conjugate point
+to \(p\). Note that between conjugate points we have \(\det A^\mu{}_\nu\ne0\), so the
+inverse of \(A^\mu{}_\nu\) exists.
+
+Clearly, the matrix \(A^\mu{}_\nu\) must be related to the tensor field
+\(B_{ab}=\nabla_b\xi_a\) of the congruence. To find this relation, we note that
+
+\begin{align}
+  \frac{\dd\eta^\mu}{\dd\tau}
+  &=\xi^a\nabla_a\eta^\mu
+    =\xi^a\nabla_a\bigl[(e_\mu)_b\eta^b\bigr]\notag\\
+  &=(e_\mu)_b\xi^a\nabla_a\eta^b\notag\\
+  &=(e_\mu)_bB^b{}_a\eta^a\notag\\
+  &=\sum_{\alpha=1}^3B^\mu{}_\alpha\eta^\alpha .
+  \tag{9.3.5}\label{eq:9.3.5}
+\end{align}
+
+However, using Eq.~\eqref{eq:9.3.3}, we find
+
+\begin{equation}
+  \frac{\dd\eta^\mu}{\dd\tau}
+  =\sum_\nu
+    \frac{\dd A^\mu{}_\nu}{\dd\tau}
+    \frac{\dd\eta^\nu}{\dd\tau}(0) ,
+  \tag{9.3.6}\label{eq:9.3.6}
+\end{equation}
+
+so we obtain
+
+\begin{equation}
+  \sum_\nu
+  \frac{\dd A^\mu{}_\nu}{\dd\tau}\frac{\dd\eta^\nu}{\dd\tau}(0)
+  =
+  \sum_{\alpha,\nu}
+  B^\mu{}_\alpha A^\alpha{}_\nu\frac{\dd\eta^\nu}{\dd\tau}(0) .
+  \tag{9.3.7}\label{eq:9.3.7}
+\end{equation}
+
+Thus, in matrix notation, we find
+
+\begin{equation}
+  \dd A/\dd\tau=BA ,
+  \tag{9.3.8}\label{eq:9.3.8}
+\end{equation}
+
+i.e.,
+
+\begin{equation}
+  B=\frac{\dd A}{\dd\tau}A^{-1} .
+  \tag{9.3.9}\label{eq:9.3.9}
+\end{equation}
+
+Consequently, we obtain
+
+\begin{equation}
+  \theta=\operatorname{tr}B
+  =\operatorname{tr}\left[\frac{\dd A}{\dd\tau}A^{-1}\right] ,
+  \tag{9.3.10}\label{eq:9.3.10}
+\end{equation}
+
+where ``tr'' denotes the trace of the matrix. However, it follows from the formula for
+the inverse of a matrix that for any nonsingular matrix \(A\), we have\footnote{This formula
+previously was used in Eq.~\eqref{eq:3.4.8} above. It is closely related to the identity
+\(\exp(\operatorname{tr}C)=\det[\exp(C)]\) for any matrix \(C\), which can be proven by
+putting \(C\) in upper triangular form.}
+
+\begin{equation}
+  \operatorname{tr}\left[\frac{\dd A}{\dd\tau}A^{-1}\right]
+  =\frac1{\det A}\frac{\dd}{\dd\tau}(\det A) ,
+  \tag{9.3.11}\label{eq:9.3.11}
+\end{equation}
+
+so that
+
+\begin{equation}
+  \theta=\frac{\dd}{\dd\tau}\bigl(\ln\lvert\det A\rvert\bigr) .
+  \tag{9.3.12}\label{eq:9.3.12}
+\end{equation}
+
+Since \(A\) satisfies the ordinary differential equation~\eqref{eq:9.3.4},
+\(\dd(\det A)/\dd\tau\) cannot become infinite anywhere along \(\gamma\). Therefore,
+if \(\theta\to-\infty\) at \(q\), it follows from Eq.~\eqref{eq:9.3.12} that
+\(\det A\to0\) at \(q\). Conversely, if \(\det A\to0\) at \(q\), it follows that
+\(\theta\to-\infty\) at \(q\). Thus, as desired, we have proven that a necessary and
+sufficient condition for \(q\) to be conjugate to \(p\) is that for the congruence of
+timelike geodesics emanating from \(p\), we have \(\theta\to-\infty\) at \(q\).
+
+The congruence of timelike geodesics passing through \(p\) is hypersurface
+orthogonal. Indeed, as proven in lemma~4.5.2 of Hawking and Ellis (1973), within a
+convex normal neighborhood of \(p\), the geodesics in this congruence are orthogonal
+to the surfaces of constant proper time \(\tau\) along the geodesics and, from
+Eq.~\eqref{eq:9.2.14}, it follows that if \(\omega_{ab}\) vanishes at one time, it must
+vanish at all times. Thus, we may use Lemma~\ref{lem:9.2.1} to establish immediately
+the following result on the existence of conjugate points:
+
+\begin{proposition}\label{prop:9.3.1}
+Let \((M,g_{ab})\) be a spacetime satisfying \(R_{ab}\xi^a\xi^b\geq0\) for all
+timelike \(\xi^a\). Let \(\gamma\) be a timelike geodesic and let \(p\in\gamma\).
+Suppose the convergence of the congruence of timelike geodesics emanating into
+the future from \(p\) attains the negative value \(\theta_0\) at \(r\in\gamma\).
+Then within proper time \(\tau\leq3/\lvert\theta_0\rvert\) from \(r\) along
+\(\gamma\) there exists a point \(q\) conjugate to \(p\), assuming, of course,
+that \(\gamma\) extends that far.
+\end{proposition}
+
+In fact, the existence of a pair of conjugate points on a complete timelike geodesic
+\(\gamma\) can be proven under far weaker hypotheses than those of
+Proposition~\ref{prop:9.3.1}. If \(R_{ab}\xi^a\xi^b\geq0\) everywhere along the
+geodesic and \(R_{ab}\xi^a\xi^b>0\) at point \(r\in\gamma\), then one can show that
+for \(p\) sufficiently far from \(r\), the expansion of the timelike geodesic congruence
+emanating from \(p\) must be negative at \(r\). Hence \(p\) will have a conjugate
+point \(q\) on \(\gamma\). However, even if \(R_{ab}\xi^a\xi^b=0\) everywhere on
+\(\gamma\), if the curvature terms on the right-hand side of Eq.~\eqref{eq:9.2.12} are
+nonzero at \(r\in\gamma\), then \(\sigma_{ab}\) cannot vanish in a neighborhood of
+\(r\). Since \(-\sigma_{ab}\sigma^{ab}\) also appears on the right-hand side of
+Raychaudhuri's equation, a similar argument establishes existence of conjugate
+points. Thus, all that is required for existence of conjugate points on \(\gamma\) is
+that \(R_{ab}\xi^a\xi^b\geq0\) everywhere on \(\gamma\) and
+\(R_{abcd}\xi^b\xi^d\ne0\) at at least one point of \(\gamma\). The full proof of this
+result can be found in proposition~4.4.2 of Hawking and Ellis (1973).
+
+A spacetime \((M,g_{ab})\) is said to satisfy the \emph{timelike generic condition} if each
+timelike geodesic possesses at least one point at which \(R_{abcd}\xi^a\xi^d\ne0\).
+Although the timelike generic condition may fail to hold in special, idealized spacetime
+models, it seems reasonable that it will hold in all physically realistic ``generic''
+spacetimes. In view of the remarks of the previous paragraph, we have the following
+result which plays an important role in the proof of theorem~9.5.4 quoted in
+section~9.5.
+
+\begin{proposition}\label{prop:9.3.2}
+Let \((M,g_{ab})\) satisfy the timelike generic condition and suppose
+\(R_{ab}\xi^a\xi^b\geq0\) for all timelike \(\xi^a\). Then every complete timelike
+geodesic possesses a pair of conjugate points.
+\end{proposition}
+
+
+Next, we turn our attention to the relation between conjugate points and the extremal
+length properties of timelike geodesics. Let \(p,q\in M\) and consider a smooth
+one-parameter family of smooth timelike curves \(\lambda_\alpha(t)\) from \(p\) to \(q\),
+where the curve parameter \(t\) is chosen so that for all \(\alpha\) we have
+\(\lambda_\alpha(a)=p\), \(\lambda_\alpha(b)=q\). We denote the tangent vectors,
+\((\partial/\partial t)^a\), by \(T^a\) and the deviation vectors,
+\((\partial/\partial\alpha)^a\), by \(X^a\). Then \(X^a\) vanishes at both \(p\) and
+\(q\) and, as usual, we have
+\(\mathcal L_TX^a=T^b\nabla_bX^a-X^b\nabla_bT^a=0\) everywhere. The length of each
+curve is given by
+
+\begin{equation}
+  \tau(\alpha)=\int_a^b f(\alpha,t)\,\dd t ,
+  \tag{9.3.13}\label{eq:9.3.13}
+\end{equation}
+
+where \(f=(-T^aT_a)^{1/2}\). In section~3.3 we showed that the necessary and
+sufficient condition for the curve \(\gamma\) to extremize \(\tau\) for all possible
+smooth families \(\lambda_\alpha\) with \(\lambda_0=\gamma\) was that \(\gamma\) be a
+geodesic. We repeat, now, this calculation in a coordinate invariant form and then
+compute the second variation of arc length. We have
+
+\begin{align}
+  \frac{\dd\tau}{\dd\alpha}
+    &=\int_a^b\frac{\partial f}{\partial\alpha}\,\dd t\notag\\
+    &=\int_a^bX^a\nabla_a(-T^bT_b)^{1/2}\,\dd t\notag\\
+    &=-\int_a^b\frac1fT_bX^a\nabla_aT^b\,\dd t\notag\\
+    &=-\int_a^b\frac1fT_bT^a\nabla_aX^b\,\dd t\notag\\
+    &=-\int_a^bT^a\nabla_a\left[\frac1fT_bX^b\right]\dd t
+      +\int_a^bX^bT^a\nabla_a(T_b/f)\,\dd t\notag\\
+    &=\int_a^bX^bT^a\nabla_a(T_b/f)\,\dd t ,
+  \tag{9.3.14}\label{eq:9.3.14}
+\end{align}
+
+since \(T^a\nabla_a(f^{-1}T_bX^b)=\partial(f^{-1}T_bX^b)/\partial t\) and \(X^b\)
+vanishes at the endpoints. Thus, setting \(\alpha=0\) we see that
+\(\dd\tau/\dd\alpha=0\) for arbitrary \(X^b\) if and only if
+\(T^a\nabla_a(T_b/f)=0\) at \(\alpha=0\), which is just the geodesic equation
+expressed in an arbitrary parameterization.
+
+The second variation of arc length is
+
+\begin{equation}
+  \frac{\dd^2\tau}{\dd\alpha^2}
+  =\int_a^bX^c\nabla_c\bigl[X^bT^a\nabla_a(T_b/f)\bigr]\,\dd t .
+  \tag{9.3.15}\label{eq:9.3.15}
+\end{equation}
+
+Evaluating this expression at \(\alpha=0\), assuming that \(\lambda_0\) is a geodesic,
+we find
+
+\begin{align}
+  \left.\frac{\dd^2\tau}{\dd\alpha^2}\right|_{\alpha=0}
+    ={}&\int_a^bX^b(X^c\nabla_cT^a)\nabla_a(T_b/f)\,\dd t
+       +\int_a^bX^bT^aX^c\nabla_c\nabla_a(T_b/f)\,\dd t\notag\\
+    ={}&\int_a^bX^b(T^c\nabla_cX^a)\nabla_a(T_b/f)\,\dd t
+       +\int_a^bX^bT^aX^c\nabla_a\nabla_c(T_b/f)\,\dd t\notag\\
+      &+\int_a^bX^bT^aX^cR_{cab}{}^dT_d/f\,\dd t\notag\\
+    ={}&\int_a^bX^bT^c\nabla_c\bigl[X^a\nabla_a(T_b/f)\bigr]\,\dd t
+       +\int_a^bX^bT^aX^cR_{cab}{}^dT_d/f\,\dd t .
+  \tag{9.3.16}\label{eq:9.3.16}
+\end{align}
+
+The term in square brackets can be reexpressed as
+
+\begin{align}
+  X^a\nabla_a(T_b/f)
+    &=\frac1fX^a\nabla_aT_b-\frac1{f^2}T_bX^a\nabla_af\notag\\
+    &=\frac1fT^a\nabla_aX_b
+      +\frac1{f^2}T_bT^a\nabla_a\left[\frac1fT_cX^c\right] ,
+  \tag{9.3.17}\label{eq:9.3.17}
+\end{align}
+
+where the manipulations of Eq.~\eqref{eq:9.3.14} and the geodesic equation at
+\(\alpha=0\) were used. Equation~\eqref{eq:9.3.16} can be put in more easily
+recognizable form by choosing the curve parameterization so that \(f=1\) along the
+geodesic \(\lambda_0\) and also choosing the deviation vector \(X^a\) to be orthogonal
+to \(T^a\) along \(\lambda_0\). With these choices, we find
+
+\begin{align}
+  \left.\frac{\dd^2\tau}{\dd\alpha^2}\right|_{\alpha=0}
+    &=\int_a^bX^b\left\{T^c\nabla_c(T^a\nabla_aX_b)
+      +R_{cab}{}^dT^aT_dX^c\right\}\,\dd t\notag\\
+    &=\int_a^bX^b(\mathcal OX)_b\,\dd t .
+  \tag{9.3.18}\label{eq:9.3.18}
+\end{align}
+
+where \(\mathcal O\) is the operator appearing in the geodesic deviation
+equation~\eqref{eq:9.3.1}. Using this formula, we may establish the following theorem.
+
+\begin{theorem}\label{thm:9.3.3}
+Let \(\gamma\) be a smooth timelike curve connecting two points \(p,q\in M\).
+Then the necessary and sufficient condition that \(\gamma\) locally maximize the
+proper time between \(p\) and \(q\) over smooth one parameter variations is that
+\(\gamma\) be a geodesic with no point conjugate to \(p\) between \(p\) and \(q\).
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+If \(\gamma\) is not a geodesic, then using Eq.~\eqref{eq:9.3.14} we can construct a
+one-parameter family of curves \(\lambda_\alpha\) with
+\(\dd\tau/\dd\alpha>0\) at \(\alpha=0\). If \(\gamma\) is a geodesic but has a
+conjugate point, \(r\), between \(p\) and \(q\), then we can find a deviation vector
+\(X_0^a\) such that \((\mathcal OX_0)^a=0\) and \(X_0^a\) vanishes at \(p\) and
+\(r\). By Eq.~\eqref{eq:9.3.18}, the variation \(X^a=X_0^a\) between \(p\) and \(r\)
+followed by \(X^a=0\) between \(r\) and \(q\) produces no change in \(\tau\) to
+second order (see Figure~\ref{fig:9.3}). By ``rounding off the corner'' at \(r\) for
+this variation,\footnote{Note that this ``rounding off the corner'' argument is made for the
+(infinitesimal) deviation vector, not for an actual (finite) geodesic. See Penrose
+(1972) for further discussion.} one can produce a smooth deviation for which
+\(\dd^2\tau/\dd\alpha^2>0\) at \(\alpha=0\).
+
+\input{figures/chapter09/fig09-03.tex}
+
+Conversely, if \(\gamma\) is a geodesic with no point conjugate to \(p\) between
+\(p\) and \(q\), then the matrix \(A\) defined above will be nonsingular between
+\(p\) and \(q\), so we can define
+\(Y^\mu=\sum_\nu(A^{-1})^\mu{}_\nu X^\nu\). Substituting
+\(\sum_\nu A^\mu{}_\nu Y^\nu\) for \(X^\mu\) in Eq.~\eqref{eq:9.3.18}, we can show
+that \(\dd^2\tau/\dd\alpha^2\) is manifestly negative definite at \(\alpha=0\).
+These calculations can be found in proposition~4.5.8 of Hawking and Ellis (1973).
+\end{proof}
+
+
+A notion similar to conjugacy of two points along a timelike geodesic can be defined
+for a point and a smooth (or, at least, \(C^2\)) spacelike hypersurface \(\Sigma\). (By
+hypersurface, we mean an embedded, three-dimensional submanifold [see appendix~B].)
+First, we define the \emph{extrinsic curvature}, \(K_{ab}\), of \(\Sigma\). Let \(\xi^a\) be
+the unit tangent field of the congruence of timelike geodesics orthogonal to \(\Sigma\).
+We define \(K_{ab}\) by
+
+\begin{equation}
+  K_{ab}=\nabla_a\xi_b=B_{ba} ,
+  \tag{9.3.19}\label{eq:9.3.19}
+\end{equation}
+
+where evaluation of these tensors on \(\Sigma\) is understood. Note that \(K_{ab}\) is
+purely spatial, i.e., \(K_{ab}\xi^a=K_{ab}\xi^b=0\). Since this congruence is
+manifestly hypersurface orthogonal, we have \(\omega_{ab}=0\) so \(K_{ab}\) is
+symmetric, \(K_{ab}=K_{ba}\). Hence, using Eq.~(C.2.16), we can reexpress \(K_{ab}\) as
+
+\begin{align}
+  K_{ab}
+    &=\frac12\mathcal L_\xi g_{ab}\notag\\
+    &=\frac12\mathcal L_\xi(h_{ab}-\xi_a\xi_b)\notag\\
+    &=\frac12\mathcal L_\xi h_{ab} .
+  \tag{9.3.20}\label{eq:9.3.20}
+\end{align}
+
+where \(h_{ab}\) was defined by Eq.~\eqref{eq:9.2.5} and the geodesic equation was
+used in the last step. Now, \(h_{ab}\) is the spatial metric induced on the hypersurfaces
+of constant proper time from \(\Sigma\) along the geodesic congruence orthogonal to
+\(\Sigma\). Thus, \(K_{ab}\) measures the rate of change of this spatial metric as one
+moves along the congruence; i.e., it measures the ``bending'' of \(\Sigma\) in the
+spacetime \((M,g_{ab})\). Indeed, since Gaussian normal coordinates (see
+section~3.3) are adapted to \(\xi^a\) (see appendix~C), in these coordinates we have
+
+\begin{equation}
+  K_{\mu\nu}=\frac12\frac{\partial h_{\mu\nu}}{\partial t} ,
+  \tag{9.3.21}\label{eq:9.3.21}
+\end{equation}
+
+which reinforces our interpretation of \(K_{ab}\) as representing the ``time derivative''
+of \(h_{ab}\). The trace of the extrinsic curvature is often denoted by \(K\),
+
+\begin{equation}
+  K\equiv K^a{}_a=h^{ab}K_{ab} .
+  \tag{9.3.22}\label{eq:9.3.22}
+\end{equation}
+
+Thus, we have
+
+\begin{equation}
+  K=\theta ,
+  \tag{9.3.23}\label{eq:9.3.23}
+\end{equation}
+
+where \(\theta\) is the expansion of the geodesic congruence orthogonal to \(\Sigma\).
+
+A point \(p\) on a geodesic \(\gamma\) of the geodesic congruence orthogonal to
+\(\Sigma\) is said to be \emph{conjugate} to \(\Sigma\) along \(\gamma\) if there exists an
+orthogonal deviation vector \(\eta^a\) of the congruence which is nonzero on
+\(\Sigma\) but vanishes at \(p\). Thus, intuitively, \(p\) is conjugate to \(\Sigma\) if two
+``infinitesimally nearby'' geodesics orthogonal to \(\Sigma\) cross at \(p\) as illustrated
+in Figure~\ref{fig:9.4}. By the same argument as given above for conjugate pairs of
+points, \(p\) will be conjugate to \(\Sigma\) if and only if the expansion, \(\theta\), of the
+congruence of geodesics orthogonal to \(\Sigma\) approaches \(-\infty\) at \(p\). Since
+this congruence is manifestly hypersurface orthogonal, Lemma~\ref{lem:9.2.1}
+immediately yields the following result.
+
+\begin{proposition}\label{prop:9.3.4}
+Let \((M,g_{ab})\) be a spacetime satisfying \(R_{ab}\xi^a\xi^b\geq0\) for all
+timelike \(\xi^a\). Let \(\Sigma\) be a spacelike hypersurface with \(K=\theta<0\)
+at a point \(q\in\Sigma\). Then within proper time \(\tau\leq3/\lvert K\rvert\)
+there exists a point \(p\) conjugate to \(\Sigma\) along the geodesic \(\gamma\)
+orthogonal to \(\Sigma\) and passing through \(q\), assuming that \(\gamma\) can
+be extended that far.
+\end{proposition}
+
+\input{figures/chapter09/fig09-04.tex}
+
+Furthermore, by arguments similar to those used to prove Theorem~\ref{thm:9.3.3},
+the following theorem can be proven.
+
+\begin{theorem}\label{thm:9.3.5}
+Let \(\gamma\) be a smooth timelike curve connecting a point \(p\in M\) to a point
+\(q\) on a smooth spacelike hypersurface \(\Sigma\). Then the necessary and
+sufficient condition that \(\gamma\) locally maximize the proper time between \(p\)
+and \(\Sigma\) over smooth one-parameter variations is that \(\gamma\) be a geodesic
+orthogonal to \(\Sigma\) with no conjugate point to \(\Sigma\) between \(\Sigma\)
+and \(p\).
+\end{theorem}
+
+
+We turn our attention, now, to conjugate points of null geodesics. It follows directly
+from the geodesic deviation equation that for any Jacobi field \(\eta^a\) on a null
+geodesic \(\mu\) with tangent \(k^a\), we have
+
+\begin{equation}
+  k^c\nabla_c\bigl[k^b\nabla_b(k^a\eta_a)\bigr]=0 ,
+  \tag{9.3.24}\label{eq:9.3.24}
+\end{equation}
+
+which immediately implies that \(\eta^a\) cannot vanish at two points
+\(p,q\in\mu\) unless \(k^a\eta_a=0\) everywhere along \(\mu\). Furthermore, if
+\(\eta^a\) is a Jacobi field, then so is \(\eta^a+(a+b\lambda)k^a\), where \(a\) and
+\(b\) are constants, so \(p\) and \(q\) will be conjugate if and only if there exists a
+Jacobi field \(\eta^a\) which differs from zero by only a multiple of \(k^a\) at both
+\(p\) and \(q\). Thus, along a null geodesic \(\mu\), the points \(p,q\in\mu\) will be
+conjugate if and only if a vector \(\widehat\eta^a\) in the quotient vector space
+\(\widehat{T_pM}\) (see section~9.2) satisfies the geodesic deviation equation and
+vanishes at \(p\) and \(q\). It is clear that all such \(\widehat\eta^a\) which vanish at
+\(p\) arise as deviation vectors of any null geodesic congruence containing the
+two-dimensional family of null geodesics emerging from \(p\). By the same arguments
+as given above in the timelike case, \(q\) will be conjugate to \(p\) if and only if the
+expansion, \(\theta\), of such a null geodesic congruence approaches \(-\infty\) at \(q\).
+Thus, Lemma~\ref{lem:9.2.2} implies the following result.
+
+\begin{proposition}\label{prop:9.3.6}
+Let \((M,g_{ab})\) be a spacetime satisfying \(R_{ab}k^ak^b\geq0\) for all null
+\(k^a\). Let \(\mu\) be a null geodesic and let \(p\in\mu\). Suppose the
+convergence, \(\theta\), of the null geodesics emanating from \(p\) attains the
+negative value \(\theta_0\) at \(r\in\mu\). Then within affine length
+\(\lambda\leq2/\lvert\theta_0\rvert\) from \(r\), there exists a point \(q\)
+conjugate to \(p\) along \(\mu\), assuming that \(\mu\) extends that far.
+\end{proposition}
+
+Again, this result can be strengthened to conclude that if \(R_{ab}k^ak^b\geq0\)
+everywhere on a complete null geodesic \(\mu\) and there exists at least one point
+\(r\in\mu\) at which either \(R_{ab}k^ak^b>0\) or
+\(k_{[e}C_{a]bc[d}k_{f]}k^bk^c\ne0\), then \(\mu\) possesses a pair of conjugate
+points. A spacetime \((M,g_{ab})\) is said to satisfy the \emph{null generic condition}
+if every null geodesic possesses at least one point where either \(R_{ab}k^ak^b\ne0\)
+or \(k_{[e}C_{a]bc[d}k_{f]}k^bk^c\ne0\), i.e., at least one point where
+\(k_{[e}R_{a]bc[d}k_{f]}k^bk^c\ne0\). Thus, in analogy to
+Proposition~\ref{prop:9.3.2}, we have:
+
+\begin{proposition}\label{prop:9.3.7}
+Suppose \((M,g_{ab})\) satisfies the null generic condition and
+\(R_{ab}k^ak^b\geq0\) for all null \(k^a\). Then every complete null geodesic
+possesses a pair of conjugate points.
+\end{proposition}
+
+As discussed above, for timelike geodesics conjugate points signal when a timelike
+geodesic, \(\gamma\), can be varied to yield a curve of greater length between two points
+\(p,q\in M\). If a conjugate point, \(r\), to \(p\) exists between \(p\) and \(q\) along
+\(\gamma\), we can find a longer curve by perturbing toward an appropriate
+``infinitesimally close'' geodesic between \(p\) and \(r\), following \(\gamma\) from
+\(r\) to \(q\), and then ``rounding off the corner'' at \(r\). In an exactly similar
+manner, for null geodesics, conjugate points signal when a null geodesic \(\mu\)
+connecting \(p\) and \(q\) can be varied to yield a timelike curve between \(p\) and
+\(q\). Again, if we have a conjugate point, \(r\), between \(p\) and \(q\), we can
+perturb toward an ``infinitesimally close'' null geodesic from \(p\) to \(r\), follow
+\(\mu\) from \(r\) to \(q\), and then ``round off the corner'' to produce a timelike
+curve from \(p\) to \(q\). Thus, in analogy to Theorem~\ref{thm:9.3.3}, we obtain the
+following result, the full proof of which can be found in Hawking and Ellis (1973).
+
+\begin{theorem}\label{thm:9.3.8}
+Let \(\mu\) be a smooth causal curve and let \(p,q\in\mu\). Then there does not
+exist a smooth one-parameter family of causal curves \(\lambda_\alpha\) connecting
+\(p\) and \(q\) with \(\lambda_0=\mu\) and \(\lambda_\alpha\) timelike for all
+\(\alpha>0\) (i.e., \(\mu\) cannot be smoothly deformed to a timelike curve) if
+and only if \(\mu\) is a null geodesic with no point conjugate to \(p\) along
+\(\mu\) between \(p\) and \(q\).
+\end{theorem}
+
+For null geodesics, a notion of conjugacy also can be defined for a point and a
+two-dimensional spacelike surface (i.e., embedded submanifold) \(S\). At each
+\(q\in S\) there will exist precisely two future directed null vectors \(k_1^a,k_2^a\)
+which are orthogonal to \(S\). If \(S\) is orientable, we can make a continuous choice
+of \(k_1^a\) and \(k_2^a\) over \(S\) and thereby define two families of null geodesics,
+which we may refer to as ``outgoing'' and ``ingoing'' families. (Even if \(S\) is not
+orientable, we still can define these two families locally in a neighborhood of any
+point.) We will refer to each of these families as congruences even though each spans
+only a null hypersurface rather than an open region of spacetime. The expansion
+\(\theta\), shear \(\widehat\sigma_{ab}\), and twist \(\widehat\omega_{ab}=0\) of these
+congruences are well defined, since all deviation vectors orthogonal to the geodesic
+tangents \(k^a\) are included in the congruences. Let \(\mu\) be a null geodesic in one
+of these congruences. A point \(p\in\mu\) is said to be conjugate to \(S\) along
+\(\mu\) if along \(\mu\) there exists a deviation vector \(\widehat\eta^a\) of the
+congruence which is nonzero on \(S\) but vanishes at \(p\). In analogy to
+Proposition~\ref{prop:9.3.4}, we have
+
+\begin{proposition}\label{prop:9.3.9}
+Let \((M,g_{ab})\) be a spacetime satisfying \(R_{ab}k^ak^b\geq0\) for all null
+\(k^a\). Let \(S\) be a smooth two-dimensional spacelike submanifold such that
+the expansion, \(\theta\), of, say, the ``outgoing'' null geodesics has the negative
+value \(\theta_0\) at \(q\in S\). Then within affine parameter
+\(\lambda\leq2/\lvert\theta_0\rvert\), there exists a point \(p\) conjugate to \(S\)
+along the outgoing null geodesic \(\mu\) passing through \(q\).
+\end{proposition}
+
+In analogy to Theorem~\ref{thm:9.3.5}, we also have:
+
+\begin{theorem}\label{thm:9.3.10}
+Let \(S\) be a smooth two-dimensional spacelike submanifold and let \(\mu\) be
+a smooth causal curve from \(S\) to \(p\). Then the necessary and sufficient
+condition that \(\mu\) cannot be smoothly deformed to a timelike curve connecting
+\(S\) and \(p\) is that \(\mu\) be a null geodesic orthogonal to \(S\) with no point
+conjugate to \(S\) between \(S\) and \(p\).
+\end{theorem}
+
+As a consequence of this theorem, and the results of chapter~8 we obtain the
+following theorem which will be used in the proof of singularity theorem~9.5.3.
+
+\begin{theorem}\label{thm:9.3.11}
+Let \((M,g_{ab})\) be a globally hyperbolic spacetime and let \(K\) be a compact,
+orientable, two-dimensional spacelike submanifold of \(M\). Then every
+\(p\in\partial I^+(K)\) lies on a future directed null geodesic starting from \(K\)
+which is orthogonal to \(K\) and has no point conjugate to \(K\) between \(K\)
+and \(p\).
+\end{theorem}
+
+\begin{proof}
+That \(p\) lies on a null geodesic from \(K\) follows from the remarks below
+Theorem~8.3.11. If this null geodesic were not orthogonal to \(K\) or had a
+conjugate point, then by Theorem~\ref{thm:9.3.10} we would have
+\(p\in I^+(K)\) and therefore \(p\notin\partial I^+(K)\).
+\end{proof}

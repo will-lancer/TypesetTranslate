@@ -1,0 +1,41 @@
+% Source: Wald GR, physical PDF p. 313
+%         (printed p. 300).
+% Coverage: Another representation of the closure of the physical spacetime.
+% Figures/tables/footnotes: Figure 12.2; no tables or footnotes.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\begingroup
+\renewcommand{\thefigure}{12.2}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=.90cm,y=.90cm,>=Latex,line cap=round,line join=round,font=\small]
+    \coordinate (A) at (-1.9,-2.5);
+    \coordinate (B) at (-1.9,2.5);
+    \coordinate (C) at (.15,2.5);
+    \coordinate (D) at (2.35,.10);
+    \draw[thick] (A) -- (B);
+    \draw[thick] (B) -- (C) -- (D) -- (A);
+    % The event horizon is the null line from the regular center to the
+    % right-hand end of the spacelike singularity.
+    \draw[thick] (A) -- (C);
+    \draw[thick,decorate,decoration={zigzag,segment length=2.4pt,amplitude=.75pt}]
+      (B) -- (C);
+    \draw[thick] (-1.90,-2.50) .. controls (-1.38,-1.45) and (-1.31,.55) .. (-1.70,1.53)
+      .. controls (-1.90,2.04) and (-1.90,2.28) .. (-1.90,2.50);
+    \path[fill=black!18]
+      (A) -- (B) -- (-1.70,1.53) .. controls (-1.31,.55) and (-1.38,-1.45) .. (A) -- cycle;
+    \node at (-.85,1.75) {II};
+    \node[right] at (.67,1.91) {Event Horizon};
+    \draw[->] (.57,1.84) .. controls (.27,1.82) and (.07,1.81) .. (-.15,1.77);
+    \node at (1.34,1.22) {\(\mathcal I^+\)};
+    \node at (1.31,-1.08) {\(\mathcal I^-\)};
+    \fill (D) circle (1.25pt) node[right] {\(\ii^0\)};
+  \end{tikzpicture}
+  \caption{Another representation of the closure, \(\overline M\), of the physical
+  spacetime depicted in Figure~12.1. As in Figure~12.1, the angular dimensions are
+  suppressed so each point in this diagram (except those at \(r=0\) and the point
+  \(\ii^0\)) represents a 2-sphere.}
+  \label{fig:12.2}
+\end{figure}
+\endgroup

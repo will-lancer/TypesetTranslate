@@ -1,0 +1,109 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{banks}[2026/09/02 Banks QFT edition helpers]
+
+\RequirePackage{needspace}
+
+\newif\ifBanksImplicitEdition
+\BanksImplicitEditionfalse
+\DeclareOption{base}{\BanksImplicitEditionfalse}
+\DeclareOption{implicit}{\BanksImplicitEditiontrue}
+\ProcessOptions\relax
+
+\setlength{\emergencystretch}{3em}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\mid #2\rangle}
+\newcommand{\matrixel}[3]{\langle #1\rvert #2\lvert #3\rangle}
+\newcommand{\Tr}{\operatorname{Tr}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paren}{(}{)}
+\DeclarePairedDelimiter{\bracks}{[}{]}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+
+\newcommand{\BanksChapter}[2]{%
+  \clearpage\section{#2}%
+  \setcounter{equation}{0}%
+  \renewcommand{\theequation}{#1.\arabic{equation}}%
+}
+
+\newcommand{\BanksAppendix}[1]{%
+  \clearpage\section{#1}%
+  \setcounter{equation}{0}%
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}%
+}
+
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+\newenvironment{banksproblems}{%
+  \subsection{Problems for Chapter \thesection}%
+  \begin{description}[leftmargin=4.2em,labelwidth=3.6em,labelsep=.6em,style=nextline]
+}{\end{description}}
+
+\newcommand{\BanksProblem}[2]{%
+  \item[\textbf{#2#1.}]%
+  \phantomsection\label{problem:#1}%
+}
+
+\newenvironment{bankssolutions}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+  \begin{description}[leftmargin=4.8em,labelwidth=4.2em,labelsep=.6em,style=nextline]
+}{\end{description}}
+
+\newcommand{\BanksSolution}[1]{%
+  \item[\textbf{#1.}]%
+  \phantomsection\label{solution:#1}%
+  \emph{Editorial solution.}\quad
+}
+
+\newcounter{exercise}[section]
+\renewcommand{\theexercise}{\thesection.\arabic{exercise}}
+\newenvironment{exercise}[2][]{%
+  \Needspace{5\baselineskip}%
+  \refstepcounter{exercise}%
+  \par\smallskip\noindent
+  \nobreak\hrule height 0.4pt\nobreak\smallskip
+  \textbf{Exercise \theexercise}%
+  \ifstrempty{#1}{}{\quad\textit{#1}}%
+  \phantomsection\label{exercise:#2}\par\smallskip
+}{%
+  \par\smallskip\nobreak\hrule height 0.4pt\par\smallskip
+}
+
+\newcommand{\BanksImplicitSolution}[1]{%
+  \item[\textbf{Exercise \ref{exercise:#1}.}]%
+  \phantomsection\label{solution:implicit:#1}%
+  \emph{Editorial solution.}\quad
+}
+
+\newcommand{\BanksImplicitHook}[1]{%
+  \ifBanksImplicitEdition
+    \par\addpenalty{-300}%
+    \input{implicit/#1.tex}%
+    \par\addpenalty{-300}%
+  \fi
+}
+
+\newcommand{\BanksFigure}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \input{figures/#1.tex}
+    \caption{#2}
+    \label{fig:#3}
+  \end{figure}
+}
+
+\newcommand{\BanksSourceNote}[1]{%
+  \begin{center}\small\itshape #1\end{center}
+}
+
+\endinput

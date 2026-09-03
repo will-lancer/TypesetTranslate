@@ -1,0 +1,669 @@
+% Source: Wald GR, physical PDF pp. 472--482
+%         (printed pp. 459--469).
+% Coverage: Appendix E.2, Hamiltonian Formulation; equations (E.2.1)--(E.2.47).
+% Figures/tables/footnotes: no figures/tables; footnotes 2--3.
+% Status: source-reviewed and compile-clean.
+% Uncertainties: none.
+
+\subsection{Hamiltonian Formulation}\label{sec:E.2}
+
+A Lagrangian formulation of a field theory is "spacetime covariant." One specifies
+on the spacetime manifold an action functional of the field \(\psi\) whose
+extremization yields the field equations. On the other hand, a Hamiltonian
+formulation of a field theory requires a breakup of spacetime into space and time.
+Indeed, the first step in producing a Hamiltonian formulation of a field theory
+consists of choosing a time function \(t\) and a vector field \(t^a\) on a spacetime
+such that the surfaces, \(\Sigma_t\), of constant \(t\) are spacelike Cauchy surfaces
+and such that \(t^a\nabla_a t=1\). The vector field \(t^a\) may be interpreted as
+describing the "flow of time" in the spacetime and can be used to identify each
+\(\Sigma_t\) with the initial surface \(\Sigma_0\). In Minkowski spacetime the choice
+of \(t\) and \(t^a\) usually is made via a global inertial coordinate system, but in
+curved spacetime there may not be any preferred choice. In performing integrals of
+functions over \(M\) it would be natural for most purposes to use the volume element
+\(\epsilon_{abcd}\) associated with the spacetime metric. Similarly, in performing
+integrals over \(\Sigma_t\), it would be natural in most cases to use the volume
+element \({}^{(3)}\epsilon_{abc}=e_{\dd abc}n^d\), where \(n^d\) is the unit normal to
+\(\Sigma_t\). However, these volume elements will, in general, be "time dependent"
+in the sense that \(\mathcal L_t e_{abcd}\ne0\) and
+\(\mathcal L_t{}^{(3)}\epsilon_{abc}\ne0\). The use of a time-dependent volume
+element on \(\Sigma_t\) is particularly inconvenient if we wish to identify
+\(\Sigma_t\) with \(\Sigma_0\) in order to view dynamical evolution as the change of
+fields on the fixed manifold \(\Sigma_0\). Therefore, we shall introduce a fixed
+volume element \(e_{abcd}\) on \(M\) satisfying \(\mathcal L_t e_{abcd}=0\). [One
+way to do this---at least locally---would be to introduce coordinates
+\(x^1,x^2,x^3\) in addition to \(t\) such that
+\(t^a=(\partial/\partial t)^a\) and to take \(e\) to be the coordinate volume
+element \(\dd t\wedge \dd x^1\wedge \dd x^2\wedge \dd x^3\).] On each \(\Sigma_t\), we define
+\({}^{(3)}e_{abc}=e_{\dd abc}t^d\). Unless otherwise stated, all integrals over \(M\)
+will be performed using the volume element \(e_{abcd}\) and all integrals over
+\(\Sigma_t\) will be with respect to the volume element \({}^{(3)}e_{abc}\). Thus,
+in particular, in order that our results be independent of our choice of
+\(e_{abcd}\), the Lagrangian density must be a scalar density on \(M\) and the
+momentum \(\pi\) (defined below) must be a tensor density on \(\Sigma_t\). As
+previously noted in our discussion of the Einstein Lagrangian, the introduction of
+\(e_{abcd}\) could be avoided by incorporating the volume element into the
+definition of \(\mathcal L\), \(\pi\), and other quantities, but we choose not to do
+so since this procedure is rather cumbersome.
+
+The next step in giving a Hamiltonian formulation is to define a configuration
+space for the field by specifying what tensor field (or fields) \(q\) on \(\Sigma_t\)
+physically describes the instantaneous configuration of the field \(\psi\). Let
+\(\mathcal Q\) denote this configuration space. The space of possible momenta of the
+field at a given configuration \(q\) then is taken to be the "cotangent space,"
+\(T_q^\vee\mathcal Q\), of the configuration space at \(q\). Since the set of possible
+configurations of the field is infinite-dimensional, we shall not attempt here to
+give a precise definition of \(T_q^\vee\mathcal Q\). However, in the case where the
+allowed infinitesimal variations (i.e., "tangent vectors") \(\delta q\) at \(q\)
+are represented by tensor fields on \(\Sigma_t\) of type \((k,l)\), we shall take the
+space of momenta to consist of tensor fields, \(\pi\), of type \((l,k)\) on
+\(\Sigma_t\), so that \(\pi\) maps \(\delta q\) into \(\mathbb R\) via
+\(\delta q\mapsto\int_{\Sigma_t}\pi\delta q\), where contraction of indices is
+understood. A prescription must then be given for associating a momentum \(\pi\) to
+the field \(\psi\) on \(\Sigma_t\). The final and most nontrivial step required for a
+Hamiltonian formulation of a field theory is the specification of a functional
+\(H[q,\pi]\) on \(\Sigma_t\), called the \emph{Hamiltonian}, which is of the form
+\begin{equation}
+  H=\int_{\Sigma_t}\mathcal H,
+  \tag{E.2.1}\label{eq:E.2.1}
+\end{equation}
+where the \emph{Hamiltonian density} \(\mathcal H\) is the local function of
+\(q\), \(\pi\), and of their spatial derivatives up to a finite order, such that the
+pair of equations,
+\begin{equation}
+  \dot q\equiv\mathcal L_tq=\frac{\delta H}{\delta\pi},
+  \tag{E.2.2}\label{eq:E.2.2}
+\end{equation}
+\begin{equation}
+  \dot\pi\equiv\mathcal L_t\pi=-\frac{\delta H}{\delta q},
+  \tag{E.2.3}\label{eq:E.2.3}
+\end{equation}
+is equivalent to the field equation satisfied by \(\psi\).
+
+Given a Lagrangian formulation of a field theory, there is a standard prescription
+for obtaining a Hamiltonian formulation which is closely analogous to the well
+known procedure in ordinary particle mechanics. First, one takes \(q\) to be simply
+the field \(\psi\) evaluated on \(\Sigma_t\). Then one views the Lagrangian density
+as a function of \(q\), its time derivatives, and its space derivatives. Assuming that
+\(\mathcal L\) does not depend on time derivatives of \(q\) higher than first order,
+we take the momentum, \(\pi\), associated with \(\psi\) on \(\Sigma_t\), to be
+\begin{equation}
+  \pi=\frac{\partial\mathcal L}{\partial\dot q}.
+  \tag{E.2.4}\label{eq:E.2.4}
+\end{equation}
+Next, we attempt to solve Eq.~\eqref{eq:E.2.4} for \(\dot q\) as a function of
+\(q\) and \(\pi\). If this can be done, we define
+\begin{equation}
+  \mathcal H(q,\pi)=\pi\dot q-\mathcal L,
+  \tag{E.2.5}\label{eq:E.2.5}
+\end{equation}
+where \(\dot q=\dot q(q,\pi)\) is understood in this equation both in its explicit
+appearance and in its implicit appearance in \(\mathcal L\). With this choice of
+\(\mathcal H\), Eqs.~\eqref{eq:E.2.2} and \eqref{eq:E.2.3} are equivalent to
+Eq.~\eqref{eq:E.1.5}. To see this, we define
+\begin{equation}
+  J=\int_{t_1}^{t_2}H\,\dd t
+    =\int_{t_1}^{t_2}\dd t\int_{\Sigma_t}\mathcal H
+    =-S+\int_{t_1}^{t_2}\dd t\int_{\Sigma_t}\pi\dot q .
+  \tag{E.2.6}\label{eq:E.2.6}
+\end{equation}
+Then, for a smooth one-parameter variation of \(\psi\) which satisfies
+\(\delta\psi=0\) at \(t=t_1\) and \(t=t_2\), we have
+\begin{align}
+  \frac{\dd J}{\dd\lambda}
+    &=\int_{t_1}^{t_2}\dd t\int_{\Sigma_t}
+      \left[\frac{\delta H}{\delta q}\delta q
+        +\frac{\delta H}{\delta\pi}\delta\pi\right]\notag\\
+    &=\int_{t_1}^{t_2}\dd t\int_{\Sigma_t}
+      [\pi\delta\dot q+\dot q\delta\pi]-\frac{\dd S}{\dd\lambda}\notag\\
+    &=\int_{t_1}^{t_2}\dd t\int_{\Sigma_t}
+      [-\dot\pi\delta q+\dot q\delta\pi]-\frac{\dd S}{\dd\lambda},
+  \tag{E.2.7}\label{eq:E.2.7}
+\end{align}
+where an integration by parts was performed in the last line. Thus, comparing the
+first and last line of this equation, we see that \(\delta S/\delta\psi=0\) if and
+only if Eqs.~\eqref{eq:E.2.2} and \eqref{eq:E.2.3} are satisfied. Thus,
+\(\mathcal H\) is a Hamiltonian density for \(\psi\).
+
+The above procedure yields in a straightforward manner a Hamiltonian formulation
+of the theory of a Klein--Gordon field in Minkowski spacetime. We choose a global
+inertial coordinate system to obtain \(t\) and \(t^a\) and choose \(e_{abcd}\) to be
+the natural volume element \(\epsilon_{abcd}\) since
+\(\mathcal L_t e_{abcd}=0\). We choose \(q\) on \(\Sigma_t\) to be \(\phi\)
+evaluated on \(\Sigma_t\) and write \(\mathcal L_{\mathrm{KG}}\),
+Eq.~\eqref{eq:E.1.6}, as
+\begin{equation}
+  \mathcal L_{\mathrm{KG}}
+    =\frac{1}{2}\bigl(\dot\phi^2-\boldsymbol{\nabla}\phi\cdot\boldsymbol{\nabla}\phi
+      -m^2\phi^2\bigr),
+  \tag{E.2.8}\label{eq:E.2.8}
+\end{equation}
+where we use ordinary three-dimensional vector notation on \(\Sigma_t\). We find
+\begin{equation}
+  \pi=\frac{\partial\mathcal L_{\mathrm{KG}}}{\partial\dot\phi}=\dot\phi.
+  \tag{E.2.9}\label{eq:E.2.9}
+\end{equation}
+Hence, we define the Hamiltonian density by
+\begin{equation}
+  \mathcal H_{\mathrm{KG}}
+    =\pi\dot\phi-\mathcal L_{\mathrm{KG}}
+    =\frac{1}{2}\bigl(\pi^2+\boldsymbol{\nabla}\phi\cdot\boldsymbol{\nabla}\phi+m^2\phi^2\bigr).
+  \tag{E.2.10}\label{eq:E.2.10}
+\end{equation}
+It then may be verified that for
+\(H_{\mathrm{KG}}=\int_{\Sigma_t}\mathcal H_{\mathrm{KG}}\),
+Eqs.~\eqref{eq:E.2.2} and \eqref{eq:E.2.3} indeed are equivalent to the
+Klein--Gordon equation. Note also that the numerical value of \(H_{\mathrm{KG}}\)
+is just the total energy of the Klein--Gordon field.
+
+For the case of the electromagnetic field in Minkowski spacetime, it is not as
+straightforward to obtain a Hamiltonian formulation by this procedure. We
+provisionally take \(q\) to be the vector potential \(A_a\) evaluated on \(\Sigma_t\)
+and decompose it into its normal and tangential parts,
+\begin{equation}
+  V=-A_an^a,
+  \tag{E.2.11}\label{eq:E.2.11}
+\end{equation}
+\begin{equation}
+  {}^{(3)}A_a=h_a{}^bA_b,
+  \tag{E.2.12}\label{eq:E.2.12}
+\end{equation}
+where \(n^a\) is the unit normal to \(\Sigma_t\) and
+\(h_{ab}=\eta_{ab}+n_an_b\) is the induced spatial metric on \(\Sigma_t\). In
+ordinary three-dimensional vector notation, the Lagrangian density,
+Eq.~\eqref{eq:E.1.9}, is
+\begin{equation}
+  \mathcal L_{\mathrm{EM}}
+    =\frac{1}{2}(\dot{\mathbf{A}}+\boldsymbol{\nabla} V)\cdot(\dot{\mathbf{A}}+\boldsymbol{\nabla} V)
+      -\frac{1}{2}(\boldsymbol{\nabla}\times\mathbf{A})\cdot(\boldsymbol{\nabla}\times\mathbf{A}).
+  \tag{E.2.13}\label{eq:E.2.13}
+\end{equation}
+Hence the momentum conjugate to \(\mathbf{A}\) is
+\begin{equation}
+  \boldsymbol{\pi}=\dot{\mathbf{A}}+\boldsymbol{\nabla} V=-\mathbf{E}.
+  \tag{E.2.14}\label{eq:E.2.14}
+\end{equation}
+However, \(\dot V\) does not appear in \(\mathcal L_{\mathrm{EM}}\), so the momentum
+\(\pi_V\) conjugate to \(V\) vanishes identically,
+\begin{equation}
+  \pi_V=0.
+  \tag{E.2.15}\label{eq:E.2.15}
+\end{equation}
+
+Thus, we do not obtain an invertible relation between \(\pi\) and \(\dot q\).
+Consequently, if we define \(\mathcal H\) by Eq.~\eqref{eq:E.2.5}, we will not be
+able to eliminate \(\dot q\) in favor of \(\pi\) and \(q\), and our general
+prescription for obtaining a Hamiltonian formulation breaks down. This difficulty is
+directly related to the fact that there is gauge arbitrariness in \(A_a\), and hence
+we cannot expect to get deterministic dynamics for \(A_a\) of the form
+\eqref{eq:E.2.2}, \eqref{eq:E.2.3}.
+
+However, this difficulty can be resolved by the following considerations. The fact
+that \(\pi_V\) vanishes identically suggests that we should not view \(V\) as a
+dynamical variable. It suggests that we should take the configuration field \(q\) to
+be simply \(\mathbf{A}\). Therefore, we define \(\mathcal H_{\mathrm{EM}}\) by
+\begin{align}
+  \mathcal H_{\mathrm{EM}}
+    &=\boldsymbol{\pi}\cdot\dot{\mathbf{A}}-\mathcal L_{\mathrm{EM}}\notag\\
+    &=\frac{1}{2}\boldsymbol{\pi}\cdot\boldsymbol{\pi}
+      +\frac{1}{2}\mathbf{B}\cdot\mathbf{B}-\boldsymbol{\pi}\cdot\boldsymbol{\nabla} V\notag\\
+    &=\frac{1}{2}\boldsymbol{\pi}\cdot\boldsymbol{\pi}
+      +\frac{1}{2}\mathbf{B}\cdot\mathbf{B}
+      +V\boldsymbol{\nabla}\cdot\boldsymbol{\pi}-\boldsymbol{\nabla}\cdot(V\boldsymbol{\pi}),
+  \tag{E.2.16}\label{eq:E.2.16}
+\end{align}
+where \(\mathbf{B}\equiv\boldsymbol{\nabla}\times\mathbf{A}\). The last term on the right-hand side
+of Eq.~\eqref{eq:E.2.16} is a total divergence and thus contributes only a boundary
+term to \(H_{\mathrm{EM}}=\int_{\Sigma_t}\mathcal H_{\mathrm{EM}}\) which vanishes
+in the limit as the boundary goes to infinity for the asymptotic conditions usually
+imposed on \(V\) and \(\boldsymbol{\pi}=-\mathbf{E}\). Hence we shall discard this term.
+
+We now view \(H_{\mathrm{EM}}\) as a functional of \(\mathbf{A}\) and \(\boldsymbol{\pi}\), with
+\(V\) effectively playing the role of a Lagrange multiplier, i.e., we append the
+equation
+\begin{equation}
+  \frac{\delta H_{\mathrm{EM}}}{\delta V}=0
+  \tag{E.2.17}\label{eq:E.2.17}
+\end{equation}
+to Eqs.~\eqref{eq:E.2.2} and \eqref{eq:E.2.3} for \(\mathbf{A}\) and \(\boldsymbol{\pi}\).
+Equation \eqref{eq:E.2.17} yields
+\begin{equation}
+  \boldsymbol{\nabla}\cdot\mathbf{E}=0,
+  \tag{E.2.18}\label{eq:E.2.18}
+\end{equation}
+whereas Eqs.~\eqref{eq:E.2.2} and \eqref{eq:E.2.3} yield, respectively,
+\begin{equation}
+  \dot{\mathbf{A}}=\frac{\delta H_{\mathrm{EM}}}{\delta\boldsymbol{\pi}}
+    =\boldsymbol{\pi}-\boldsymbol{\nabla} V=-\mathbf{E}-\boldsymbol{\nabla} V,
+  \tag{E.2.19}\label{eq:E.2.19}
+\end{equation}
+\begin{equation}
+  \dot{\boldsymbol{\pi}}=-\dot{\mathbf{E}}
+    =-\frac{\delta H_{\mathrm{EM}}}{\delta\mathbf{A}}
+    =-\boldsymbol{\nabla}\times(\boldsymbol{\nabla}\times\mathbf{A}).
+  \tag{E.2.20}\label{eq:E.2.20}
+\end{equation}
+Thus, we see that the system of Eqs.~\eqref{eq:E.2.18}--\eqref{eq:E.2.20} is
+equivalent to Maxwell's equations. Furthermore, we obtain from this formulation a
+natural breakup of Maxwell's equations into the constraint \eqref{eq:E.2.18} and
+the evolution equations \eqref{eq:E.2.19}, \eqref{eq:E.2.20}. Note that, again,
+the numerical value of \(H_{\mathrm{EM}}\) for a solution of Maxwell's equations is
+proportional to the total energy of the electromagnetic field.
+
+Thus, we have obtained a Hamiltonian formulation of Maxwell's equations in
+Minkowski spacetime which has the feature that a non-dynamical variable appears in
+\(\mathcal H\) and effectively plays the role of a Lagrange multiplier enforcing the
+constraint \eqref{eq:E.2.17}. This type of Hamiltonian formulation is called a
+\emph{constrained Hamiltonian formulation}. As will be discussed further below, it
+can be expected to arise in any theory where the field variables have a gauge
+arbitrariness.
+
+We turn, now, to the task of obtaining a Hamiltonian formulation of Einstein's
+equations. As in the previous cases, we choose a time function \(t\) and a "time
+flow" vector field \(t^a\) on \(M\) satisfying \(t^a\nabla_at=1\). Note, however,
+that in this case one cannot interpret \(t\) and \(t^a\) in terms of physical
+measurements using clocks until one knows the spacetime metric, which, of course,
+is the unknown field variable in Einstein's equation. Given a metric \(g_{ab}\), it
+is convenient to decompose \(t^a\) into its normal and tangential parts with respect
+to the surfaces, \(\Sigma_t\), of constant \(t\). As in chapter 10, we define the
+\emph{lapse function}, \(N\), by
+\begin{equation}
+  N=-g_{ab}t^an^b=(n^a\nabla_at)^{-1},
+  \tag{E.2.21}\label{eq:E.2.21}
+\end{equation}
+and the \emph{shift vector} \(N^a\) by
+\begin{equation}
+  N^a=h^a{}_bt^b,
+  \tag{E.2.22}\label{eq:E.2.22}
+\end{equation}
+where again \(n^a\) is the unit normal to \(\Sigma_t\) and
+\(h_{ab}=g_{ab}+n_an_b\) is the induced spatial metric on \(\Sigma_t\). Thus,
+\(N\) measures the rate of flow of proper time, \(\tau\), with respect to coordinate
+time, \(t\), as one moves normally to \(\Sigma_t\), whereas \(N^a\) measures the
+amount of "shift" tangential to \(\Sigma_t\) contained in the time flow vector field
+\(t^a\) (see Fig.~10.2 of chapter 10). In terms of \(N\), \(N^a\), and \(t^a\), we
+have
+\begin{equation}
+  n^a=\frac{1}{N}(t^a-N^a),
+  \tag{E.2.23}\label{eq:E.2.23}
+\end{equation}
+and hence the inverse spacetime metric can be written as
+\begin{equation}
+  g^{ab}=h^{ab}-n^an^b
+    =h^{ab}-N^{-2}(t^a-N^a)(t^b-N^b).
+  \tag{E.2.24}\label{eq:E.2.24}
+\end{equation}
+It is convenient to choose as our field variables the spatial metric, \(h_{ab}\), the
+lapse function \(N\), and the covariant form of the shift vector,
+\(N_a=h_{ab}N^b\) rather than the inverse metric, \(g^{ab}\), which was used as the
+field variable in the previous section. The requirements that \(h^{ac}h_{cb}\) be
+the identity operator on the tangent space to \(\Sigma_t\) and that
+\(h^{ab}\nabla_bt=0\) allow us to compute \(h^{ab}\) from \(h_{ab}\) and thence
+obtain \(N^a=h^{ab}N_b\). Thus, from Eq.~\eqref{eq:E.2.24} we see that the
+information contained in \((h_{ab},N,N_a)\) is equivalent to that contained in
+\(g^{ab}\).
+
+Again, we shall use a fixed volume element \(e_{abcd}\) on spacetime satisfying
+\(\mathcal L_t e_{abcd}=0\) and will use the volume element
+\({}^{(3)}e_{abc}=e_{\dd abc}t^d\) on \(\Sigma_t\). We note in analogy with the
+remarks below Eq.~\eqref{eq:E.1.10}, we have
+\({}^{(3)}\epsilon_{abc}=\sqrt{h}\,{}^{(3)}e_{abc}\), where \(h\) is the
+determinant of the matrix of components, \(h_{\mu\nu}\), of \(h_{ab}\) in a basis
+where the nonvanishing components of \({}^{(3)}e_{abc}\) have the values \(\pm1\).
+It then follows that
+\begin{equation}
+  \sqrt{-g}=N\sqrt{h}.
+  \tag{E.2.25}\label{eq:E.2.25}
+\end{equation}
+The first step in obtaining a Hamiltonian functional for general relativity is to
+express the gravitational action in terms of \((h_{ab},N,N_a)\) and their time and
+space derivatives. To simplify the discussion here, we will defer the analysis of
+boundary terms until the end of this section. Thus, we start with the Hilbert action
+\eqref{eq:E.1.13} rather than \eqref{eq:E.1.42} and for the present will discard the
+boundary terms which arise in subsequent calculations. We express the scalar
+curvature, \(R\), as
+\begin{equation}
+  R=2(G_{ab}n^an^b-R_{ab}n^an^b).
+  \tag{E.2.26}\label{eq:E.2.26}
+\end{equation}
+From Eq.~\eqref{eq:10.2.30} we have
+\begin{equation}
+  G_{ab}n^an^b
+    =\frac{1}{2}\left[{}^{(3)}R-K_{ab}K^{ab}+K^2\right],
+  \tag{E.2.27}\label{eq:E.2.27}
+\end{equation}
+where \(K_{ab}\) is the extrinsic curvature of \(\Sigma_t\) and \(K=K^a{}_a\). On
+the other hand, from the definition of the Riemann tensor, we have
+\begin{align}
+  R_{ab}n^an^b
+    &=R_{acb}{}^c n^an^b\notag\\
+    &=-n^a(\nabla_a\nabla_c-\nabla_c\nabla_a)n^c\notag\\
+    &=(\nabla_an^a)(\nabla_cn^c)-(\nabla_cn^a)(\nabla_an^c)
+      -\nabla_a(n^a\nabla_cn^c)+\nabla_c(n^a\nabla_an^c)\notag\\
+    &=K^2-K_{ac}K^{ac}-\nabla_a(n^a\nabla_cn^c)
+      +\nabla_c(n^a\nabla_an^c).
+  \tag{E.2.28}\label{eq:E.2.28}
+\end{align}
+The last two terms on the right-hand side of Eq.~\eqref{eq:E.2.28} are divergences
+and thus will be discarded. Hence, from Eqs.~\eqref{eq:E.1.12} and
+\eqref{eq:E.2.25}--\eqref{eq:E.2.28}, we obtain
+\begin{equation}
+  \mathcal L_G=\sqrt{h}N\left[{}^{(3)}R+K_{ab}K^{ab}-K^2\right].
+  \tag{E.2.29}\label{eq:E.2.29}
+\end{equation}
+The extrinsic curvature, \(K_{ab}\), is related to the "time derivative,"
+\(\dot h_{ab}=h_a{}^ch_b{}^d\mathcal L_t h_{cd}\), of \(h_{ab}\) by
+\begin{align}
+  K_{ab}
+    &=\frac{1}{2}\mathcal L_nh_{ab}
+      =\frac{1}{2}\bigl[n^c\nabla_ch_{ab}
+        +h_{ac}\nabla_bn^c+h_{cb}\nabla_an^c\bigr]\notag\\
+    &=\frac{1}{2}N^{-1}\bigl[Nn^c\nabla_ch_{ab}
+        +h_{ac}\nabla_b(Nn^c)+h_{cb}\nabla_a(Nn^c)\bigr]\notag\\
+    &=\frac{1}{2}N^{-1}h_a{}^ch_b{}^d
+      [\mathcal L_t h_{cd}-\mathcal L_Nh_{cd}]\notag\\
+    &=\frac{1}{2}N^{-1}\bigl[\dot h_{ab}-D_aN_b-D_bN_a\bigr],
+  \tag{E.2.30}\label{eq:E.2.30}
+\end{align}
+where \(D_a\) is the derivative operator on \(\Sigma_t\) associated with \(h_{ab}\)
+(see chapter 10) and Eq.~\eqref{eq:E.2.23} was used to go from the second line to
+the third line. Thus, substitution of Eq.~\eqref{eq:E.2.30} into
+Eq.~\eqref{eq:E.2.29} expresses the gravitational action in the desired form given
+by Arnowitt, Deser, and Misner (1962). The momentum canonically conjugate to
+\(h_{ab}\) is
+\begin{equation}
+  \pi^{ab}=\frac{\partial\mathcal L_G}{\partial\dot h_{ab}}
+    =\sqrt{h}(K^{ab}-Kh^{ab}).
+  \tag{E.2.31}\label{eq:E.2.31}
+\end{equation}
+
+However, \(\mathcal L_G\) does not contain any time derivatives of \(N\) or \(N_a\),
+so their conjugate momenta vanish identically. In analogy with the electromagnetic
+case, we interpret this fact as telling us that \(N\) and \(N_a\) should not be
+viewed as dynamical variables. Hence, we redefine our configuration space to consist
+of Riemannian metrics, \(h_{ab}\), on \(\Sigma_t\). We define our Hamiltonian
+density by
+\begin{align}
+  \mathcal H_G
+    &=\pi^{ab}\dot h_{ab}-\mathcal L_G\notag\\
+    &=-h^{1/2}N{}^{(3)}R
+      +Nh^{-1/2}\left[\pi^{ab}\pi_{ab}-\frac{1}{2}\pi^2\right]
+      +2\pi^{ab}D_aN_b\notag\\
+    &=h^{1/2}\Bigl\{
+      N\left[-{}^{(3)}R+h^{-1}\pi^{ab}\pi_{ab}
+        -\frac{1}{2}h^{-1}\pi^2\right]
+      -2N_b\left[D_a(h^{-1/2}\pi^{ab})\right]\notag\\
+    &\hspace{5em}+2D_a(h^{-1/2}N_b\pi^{ab})\Bigr\},
+  \tag{E.2.32}\label{eq:E.2.32}
+\end{align}
+where \(\pi=\pi^a{}_a\). Again, the last term in Eq.~\eqref{eq:E.2.32} contributes
+only a boundary term to \(H_G=\int\mathcal H_G{}^{(3)}e\) and will be dropped.
+Variation of \(H_G\) with respect to \(N\) and \(N_a\) yields the equations
+\begin{equation}
+  -{}^{(3)}R+h^{-1}\pi^{ab}\pi_{ab}
+    -\frac{1}{2}h^{-1}\pi^2=0,
+  \tag{E.2.33}\label{eq:E.2.33}
+\end{equation}
+\begin{equation}
+  D_a(h^{-1/2}\pi^{ab})=0,
+  \tag{E.2.34}\label{eq:E.2.34}
+\end{equation}
+which, with the substitution \eqref{eq:E.2.31}, can be recognized as the initial
+value constraint equations \eqref{eq:10.2.28} and \eqref{eq:10.2.30} found in
+chapter 10. The dynamical equations \eqref{eq:E.2.2} and \eqref{eq:E.2.3}
+obtained from \(H_G\) are (Arnowitt, Deser, and Misner 1962)
+\begin{equation}
+  \dot h_{ab}=\frac{\delta H_G}{\delta\pi^{ab}}
+    =2h^{-1/2}N\left(\pi_{ab}-\frac{1}{2}h_{ab}\pi\right)
+      +2D_{(a}N_{b)},
+  \tag{E.2.35}\label{eq:E.2.35}
+\end{equation}
+\begin{align}
+  \dot\pi^{ab}
+    &=-\frac{\delta H_G}{\delta h_{ab}}
+      =-Nh^{1/2}\left({}^{(3)}R^{ab}
+        -\frac{1}{2}{}^{(3)}Rh^{ab}\right)\notag\\
+    &\quad+\frac{1}{2}Nh^{-1/2}h^{ab}
+      \left(\pi_{cd}\pi^{cd}-\frac{1}{2}\pi^2\right)\notag\\
+    &\quad-2Nh^{-1/2}
+      \left(\pi^{ac}\pi_c{}^b-\frac{1}{2}\pi\pi^{ab}\right)\notag\\
+    &\quad+h^{1/2}\left(D^aD^bN-h^{ab}D^cD_cN\right)\notag\\
+    &\quad+h^{1/2}D_c(h^{-1/2}N^c\pi^{ab})
+      -2\pi^{c(a}D_cN^{b)},
+  \tag{E.2.36}\label{eq:E.2.36}
+\end{align}
+where, again, boundary terms have been ignored and Eq.~\eqref{eq:E.2.34} was used.
+Equations \eqref{eq:E.2.33}--\eqref{eq:E.2.36} are equivalent to the vacuum
+Einstein equation, \(R_{ab}=0\). Thus, we have succeeded in giving a constrained
+Hamiltonian formulation of Einstein's equation.
+
+The presence of constraints in our Hamiltonian formulations of Maxwell's equations
+and Einstein's equations indicates that we have not isolated the "true dynamical
+degrees of freedom" in our choice of configuration space. Even though we already
+have eliminated \(V\) and \(N\) and \(N_a\) as dynamical variables, the constraints
+tell us that our phase space still is "too large." This, in turn, is directly related
+to the gauge freedom present in our configuration variables \(\mathbf{A}\) and
+\(h_{ab}\), respectively. In the Maxwell case, \(\mathbf{A}\) and
+\(\mathbf{A}-\boldsymbol{\nabla}\chi\) represent the same physical configuration. This suggests
+that we should take our configuration space to be not simply the space of vector
+potentials, \(\mathbf{A}\), but the space of equivalence classes, \(\overline{\mathbf{A}}\),
+of vector potentials, where two vector potentials are equivalent if they differ only
+by a gauge transformation. The cotangent space at \(\overline{\mathbf{A}}\) then would
+be the space of linear functions of variations of \(\mathbf{A}\) which depend only on
+the equivalence class. Thus, the momenta would be represented by vector fields
+\(\boldsymbol{\pi}\) having the property that
+\begin{equation}
+  \int\boldsymbol{\pi}\cdot[\delta\mathbf{A}-\boldsymbol{\nabla}(\delta\chi)]
+    =\int\boldsymbol{\pi}\cdot\delta\mathbf{A}.
+  \tag{E.2.37}\label{eq:E.2.37}
+\end{equation}
+However, this property holds if and only if
+\begin{equation}
+  \boldsymbol{\nabla}\cdot\boldsymbol{\pi}=0.
+  \tag{E.2.38}\label{eq:E.2.38}
+\end{equation}
+Thus, with our new choice of configuration space, the momentum space consists
+precisely of the divergence-free vector fields on \(\Sigma_t\). But this means that
+the constraint \eqref{eq:E.2.18} is automatically satisfied! We may drop the term
+\(V(\boldsymbol{\nabla}\cdot\boldsymbol{\pi})\) from Eq.~\eqref{eq:E.2.16} and take the Hamiltonian
+density to be simply
+\begin{equation}
+  \mathcal H_{\mathrm{EM}}
+    =\frac{1}{2}(\boldsymbol{\pi}\cdot\boldsymbol{\pi}+\mathbf{B}\cdot\mathbf{B}),
+  \tag{E.2.39}\label{eq:E.2.39}
+\end{equation}
+where, again, \(\mathbf{B}\equiv\boldsymbol{\nabla}\times\mathbf{A}\). (Note that \(\mathbf{B}\)
+depends only on the equivalence class of \(\mathbf{A}\) and hence is a well defined
+function of \(\overline{\mathbf{A}}\).) Hamilton's equations of motion
+\eqref{eq:E.2.2} and \eqref{eq:E.2.3} yield
+\begin{equation}
+  \dot{\overline{\mathbf{A}}}
+    =\frac{\delta\overline H_{\mathrm{EM}}}{\delta\boldsymbol{\pi}}=\boldsymbol{\pi},
+  \tag{E.2.40}\label{eq:E.2.40}
+\end{equation}
+\begin{equation}
+  \dot{\boldsymbol{\pi}}
+    =-\frac{\delta\overline H_{\mathrm{EM}}}{\delta\overline{\mathbf{A}}}
+    =-\boldsymbol{\nabla}\times\mathbf{B}.
+  \tag{E.2.41}\label{eq:E.2.41}
+\end{equation}
+The equivalence classes appearing on both sides of Eq.~\eqref{eq:E.2.40} can be
+eliminated by taking the curl of this equation. It then easily may be verified that
+Eqs.~\eqref{eq:E.2.40} and \eqref{eq:E.2.41} with
+\(\mathbf{E}\equiv-\boldsymbol{\pi}\) are equivalent to Maxwell's equations, where we remind
+the reader that \(\boldsymbol{\nabla}\cdot\mathbf{B}=0\) follows automatically from the
+definition of \(\mathbf{B}\), whereas \(\boldsymbol{\nabla}\cdot\mathbf{E}=0\) follows automatically
+from our construction of the space of momenta. Thus, by eliminating the gauge
+degrees of freedom in our configuration space by working with
+\(\overline{\mathbf{A}}\) rather than \(\mathbf{A}\), we have succeeded in giving a
+constraint-free Hamiltonian formulation of Maxwell's equations.\footnote{The
+relation between the constraint \(\boldsymbol{\nabla}\cdot\mathbf{E}=0\) and the gauge
+transformations \(\mathbf{A}\mapsto\mathbf{A}-\boldsymbol{\nabla}\chi\) can be obtained more
+systematically as follows. Given a function \(f\) on phase space, we may associate
+with it a vector field \(V\) on phase space by the requirement that for any function
+\(g\) on phase space, we have \(V(g)=\{f,g\}\), where the \emph{Poisson bracket}
+\(\{f,g\}\) is defined by
+\[
+  \{f,g\}=\int_{\Sigma_t}\left(
+    \frac{\delta f}{\delta q}\frac{\delta g}{\delta\pi}
+    -\frac{\delta g}{\delta q}\frac{\delta f}{\delta\pi}\right).
+\]
+(We have not defined infinite-dimensional manifolds here or vector fields on them,
+so these remarks are intended only as heuristic.) One may verify directly that the
+vector field \(V\) associated in this manner with the "constraint function"
+\(f=\int_{\Sigma_t}\chi\boldsymbol{\nabla}\cdot\mathbf{E}\) (where \(\chi\) is an arbitrary
+function on \(\Sigma_t\)) is just the infinitesimal generator of the one-parameter
+family of transformations on phase space associated with the gauge transformations
+\(\mathbf{A}\mapsto\mathbf{A}-\boldsymbol{\nabla}\chi\). Thus, in this sense, in electromagnetism,
+the constraint "generates" the gauge transformations. By restricting to the
+"constraint submanifold" \(\boldsymbol{\nabla}\cdot\mathbf{E}=0\) and to the space of orbits of
+\(V\) on this submanifold, we obtain a consistent, constraint-free Hamiltonian
+formulation on a "reduced phase space." Similarly, in the gravitational case, the
+vector field associated with the constraint function
+\(2h^{1/2}\int_{\Sigma_t}\xi^aD_a(h^{-1/2}\pi^b{}_a)\), where \(\xi^a\) is an
+arbitrary vector field on \(\Sigma_t\), generates the one-parameter family of
+diffeomorphisms on \(\Sigma_t\) associated with \(\xi^a\). Thus, one is led to
+choose as the new configuration space the metrics on \(\Sigma_t\) modulo
+diffeomorphisms (or, more precisely, modulo diffeomorphisms which can be
+continuously deformed to the identity; see Friedman and Sorkin 1980).}
+
+Similarly, in the case of Einstein's equation there is gauge arbitrariness in our
+choice of configuration field \(h_{ab}\). If \(\psi\) is any diffeomorphism of
+\(\Sigma_t\), then \(h_{ab}\) and \(\psi^*h_{ab}\) represent the same physical
+configuration. This suggests that we should take the configuration space of general
+relativity to be the set equivalence classes, \(\bar h_{ab}\), of Riemannian metrics
+on \(\Sigma_t\), where two metrics are considered equivalent if they can be carried
+into each other by a diffeomorphism. This configuration space is known as
+\emph{superspace} (Wheeler 1968). Using superspace as the configuration space, we
+find that for any vector field \(w^a\) on \(\Sigma_t\), the conjugate momenta
+\(\pi^{ab}\) now must satisfy
+\begin{equation}
+  \int\pi^{ab}\bigl(\delta h_{ab}+D_{(a}w_{b)}\bigr)
+    =\int\pi^{ab}\delta h_{ab},
+  \tag{E.2.42}\label{eq:E.2.42}
+\end{equation}
+which implies that \(\pi^{ab}\) automatically satisfies
+\begin{equation}
+  D_a(h^{-1/2}\pi^{ab})=0.
+  \tag{E.2.43}\label{eq:E.2.43}
+\end{equation}
+Thus, the constraint \eqref{eq:E.2.34} is eliminated by the choice of superspace as
+the configuration space.
+
+However, the constraint \eqref{eq:E.2.33} remains. This constraint may be viewed
+as resulting from the gauge arbitrariness involved in the choice of how to "slice"
+spacetime into space and time. It is very closely analogous to the constraint which
+arises when one "parameterizes" an originally unconstrained theory in a fixed,
+background spacetime, i.e., when one introduces into the Lagrangian a time
+function---which defines the choice of hypersurfaces, \(\Sigma_t\), with respect to
+a reference surface \(\Sigma\)---and treats this time function as a dynamical
+variable (Kuchař 1973, 1981). In the case of such parameterized theories, the
+constraint analogous to \eqref{eq:E.2.33} is linear in the momentum conjugate to
+the time function. One then can "deparameterize" the theory by solving the
+constraint for this momentum. However, in the case of Einstein's equation, the
+constraint \eqref{eq:E.2.33} is quadratic in the momentum, and a similar
+deparameterization does not appear to be possible. Thus, it does not appear possible
+to find a choice of configuration space for general relativity such that only the
+"true dynamical degrees of freedom" are present in its phase space. The presence of
+the constraint \eqref{eq:E.2.33} appears to be an unavoidable feature of the
+Hamiltonian formulation of general relativity. This provides a serious obstacle to
+the formulation of a quantum theory of gravitation by the canonical quantization
+approach (see chapter 14).
+
+Finally, we return to the issue of boundary terms in the Hamiltonian formulation.
+Consider, first, the case of a closed universe, i.e., \(M=\mathbb R\times\Sigma\),
+where \(\Sigma\) is compact. Consider the region, \(U\), of \(M\) bounded by two
+constant time hypersurfaces \(\Sigma_1\) and \(\Sigma_2\). Then the modified
+gravitational action \(S'_G\), Eq.~\eqref{eq:E.1.42}, will receive boundary
+contributions from \(\Sigma_1\) and \(\Sigma_2\). However, these boundary terms
+will be canceled by the contributions of the third term on the right-hand side of
+Eq.~\eqref{eq:E.2.28}. Note that the fourth term in Eq.~\eqref{eq:E.2.28} yields
+no boundary contributions since \(n^a\nabla_an^c\) is orthogonal to the normal,
+\(n^c\), to \(\Sigma_1\) and \(\Sigma_2\). In addition, the last term in
+Eq.~\eqref{eq:E.2.32} makes no contribution since there is no spatial boundary.
+Thus, in the case of a closed universe, our final answer for \(H_G\) is unchanged
+when all boundary terms are reinserted. Note that because of
+Eqs.~\eqref{eq:E.2.33} and \eqref{eq:E.2.34}, the numerical value of \(H_G\)
+vanishes for every solution. This suggests that we should define the total energy of
+a closed universe to be zero. In other words, it suggests that there does not exist a
+nontrivial notion of total energy in a closed universe. However, this argument is not
+conclusive, since one always can "parameterize" a theory in the manner mentioned
+above so as to make its Hamiltonian vanish. If general relativity could be
+"deparameterized," a notion of total energy in a closed universe could well emerge.
+
+Consider, now, the case of asymptotically flat spacetimes. Again, consider a region
+of \(M\) bounded by two hypersurfaces \(\Sigma_1\) and \(\Sigma_2\). As before, we
+wish to consider metric variations for which \(h_{ab}\) is held fixed on
+\(\Sigma_1\) and \(\Sigma_2\), but now the most natural spatial boundary condition
+is that the variations preserve asymptotic flatness rather than that the induced
+metric be held fixed on a distant spatial boundary. This new boundary condition
+requires the addition of further boundary terms into the gravitational action
+\eqref{eq:E.1.42}. Furthermore, the boundary terms\footnote{To avoid confusion, we
+remind the reader that in Eq.~\eqref{eq:E.1.42} \(K\) is the trace of the
+extrinsic curvature of the boundary, whereas in Eq.~\eqref{eq:E.2.28} \(K_{ab}\)
+is the extrinsic curvature of \(\Sigma_t\).} from Eqs.~\eqref{eq:E.2.28} and
+\eqref{eq:E.2.32} now will contribute to \(H_G\). Instead of keeping careful
+account of all these terms, we shall proceed by calculating the boundary terms
+arising from variations of \(H_G\) and then modifying \(H_G\) to get rid of these
+terms. Introduce on \(\Sigma_t\) asymptotic Cartesian coordinates as described in
+problem 2 of chapter 11. We consider the case where \(t^a\) asymptotically becomes
+a time translation at spatial infinity, i.e., we take \(N\to1\) and \(N_a\to0\) as
+\(r\to\infty\). Let \(S\) denote a coordinate sphere of radius \(r\). Then, only
+the term \(-h^{1/2}N{}^{(3)}R\) in Eq.~\eqref{eq:E.2.32} produces a nonvanishing
+boundary term on \(S\) in the limit \(r\to\infty\) when \(H_G\) is varied. But the
+calculation of this term is the three-dimensional analog of the calculation of the
+boundary term in the gravitational action given at the end of the previous section,
+except that we no longer require the metric to be held fixed at \(S\). Thus, using
+Eq.~\eqref{eq:7.5.14} (or, even better, using the three-dimensional analog of the
+first line of Eq.~\eqref{eq:E.1.38}) we find that for a one-parameter variation of
+\(h_{ab}\) and \(\pi^{ab}\) which preserves asymptotic flatness, we have (Regge and
+Teitelboim 1974)
+\begin{equation}
+  \frac{\dd H_G}{\dd\lambda}
+    =\int_{\Sigma_t}\left[A_{ab}\delta\pi^{ab}-B^{ab}\delta h_{ab}\right]
+      -\delta C.
+  \tag{E.2.44}\label{eq:E.2.44}
+\end{equation}
+Here \(A_{ab}\) and \(B^{ab}\) are given by the right-hand sides of
+Eqs.~\eqref{eq:E.2.35} and \eqref{eq:E.2.36}, respectively, and the boundary term
+\(\delta C\) is given by
+\begin{equation}
+  \delta C=\lim_{r\to\infty}\int_S
+    r^ah^{bc}\left[D_c(\delta h_{ab})-D_a(\delta h_{bc})\right],
+  \tag{E.2.45}\label{eq:E.2.45}
+\end{equation}
+where \(r^a\) is the unit normal to \(S\) and the natural volume element on \(S\)
+is understood. We can rewrite \(\delta C\) in coordinate component form as
+\begin{align}
+  \delta C
+    &=\lim_{r\to\infty}\sum_{\nu=1}^{3}\int_S
+      \left(\frac{\partial\delta h_{\mu\nu}}{\partial x^\nu}
+        -\frac{\partial\delta h_{\nu\nu}}{\partial x^\mu}\right)r^\mu\notag\\
+    &=\delta\left\{\lim_{r\to\infty}\sum_{\nu=1}^{3}\int_S
+      \left(\frac{\partial h_{\mu\nu}}{\partial x^\nu}
+        -\frac{\partial h_{\nu\nu}}{\partial x^\mu}\right)r^\mu\right\},
+  \tag{E.2.46}\label{eq:E.2.46}
+\end{align}
+where we have discarded terms which do not contribute in the limit as
+\(r\to\infty\). Thus, in order to get a Hamiltonian whose variation produces no
+boundary terms from spatial infinity, we define a new gravitational Hamiltonian
+\(H'_G\) by
+\begin{equation}
+  H'_G=H_G+\alpha,
+  \tag{E.2.47}\label{eq:E.2.47}
+\end{equation}
+where \(\alpha\) is the term inside the braces in Eq.~\eqref{eq:E.2.46}. The
+right-hand sides of Eqs.~\eqref{eq:E.2.35} and \eqref{eq:E.2.36} then truly are the
+functional derivatives of \(H'_G\) with respect to \(h_{ab}\) and \(\pi^{ab}\) for
+variations which preserve asymptotic flatness.
+
+The numerical value of \(H'_G\) for a solution of Einstein's equation is just
+\(\alpha\). This suggests that \(\alpha\) should be interpreted as proportional to
+the total energy of an asymptotically flat spacetime. This provides the motive for
+the definition given in chapter 11, Eq.~\eqref{eq:11.2.14}. (The constant of
+proportionality between \(\alpha\) and energy can be determined by evaluating
+\(\alpha\) for the Schwarzschild solution.) Similarly, the definition of total
+momentum, Eq.~\eqref{eq:11.2.15}, can be motivated by examining the boundary
+terms in \(H_G\) which occur when we take \(N\to0\) and require \(N_a\) to go to a
+translation as \(r\to\infty\). Indeed, a notion of angular momentum (see problem 6
+of chapter 11) arises from consideration of more general asymptotic behavior of the
+lapse and shift (Regge and Teitelboim 1974).

@@ -1,0 +1,19 @@
+% Native TikZ reconstruction of Figure 6.2.
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,baseline=(current bounding box.center)]
+  \tikzset{BanksFermion/.style={line width=.65pt,postaction={decorate},
+    decoration={markings,mark=at position .5 with {\arrow{Stealth[length=5pt]}}}},
+    BanksPhoton/.style={line width=.65pt,decorate,
+      decoration={snake,amplitude=5pt,segment length=11pt}}}
+  % incoming e^+ / e^- : one continuous fermion line, top-left to bottom-left
+  \draw[BanksFermion] (-2.3,1.25) -- (-.85,0);
+  \draw[BanksFermion] (-.85,0) -- (-2.3,-1.25);
+  % massive photon
+  \draw[BanksPhoton] (-.85,0) -- (.85,0);
+  % outgoing mu^- / mu^+ : continuous fermion line, bottom-right to top-right
+  \draw[BanksFermion] (2.3,-1.25) -- (.85,0);
+  \draw[BanksFermion] (.85,0) -- (2.3,1.25);
+  \node[above left=-2pt] at (-2.3,1.25) {$\ee^+$};
+  \node[below left=-2pt] at (-2.3,-1.25) {$\ee^-$};
+  \node[above right=-2pt] at (2.3,1.25) {$\mu^+$};
+  \node[below right=-2pt] at (2.3,-1.25) {$\mu^-$};
+\end{tikzpicture}

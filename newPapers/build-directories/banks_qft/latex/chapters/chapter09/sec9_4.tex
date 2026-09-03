@@ -1,0 +1,324 @@
+% BANKS-SOURCE: pdf=158 print=148 kind=section id=9.4
+\subsection{The renormalization (semi-)group in field theory}
+
+% BANKS-SOURCE: pdf=158 print=148 kind=prose
+Consider a scalar field theory with the following action:
+\[
+\begin{aligned}
+  S={}&\frac12\int\frac{\dd^D p}{(2\pi)^D}\,
+  \phi(p)\phi(-p)K(p^2/\Lambda^2)\\
+  &+\sum_{n=1}^{\infty}\int\dd^D p_1\ldots\dd^D p_n\,
+  g_n(p_1,\ldots,p_n;\Lambda)\delta^D\left(\sum_i p_i\right)
+  \phi(p_1)\ldots\phi(p_n)\\
+  &+\int\dd^D p\,J(p)\phi(p) .
+\end{aligned}
+\]
+where $K(p^2/\Lambda^2)$ is smooth, behaves like $p^2$ for small $p$, and
+blows up exponentially at $|p|>\Lambda$. The $g_n$ are smooth functions
+bounded by polynomials in the momenta. The requirement of smoothness
+guarantees (by virtue of the Riemann--Lebesgue lemma) that interactions are of
+short range in position space. That is, the functions
+$g_n(x_1,\ldots,x_n)$, while not necessarily local, fall off exponentially
+with distance, on a scale of order $\Lambda^{-1}$. We want to study physics
+below some scale $\Lambda_R\ll\Lambda$. We therefore take the source
+function to vanish for $p^2>\Lambda_R^2$. We call the first quadratic term
+$S_0$ and everything else but the last linear term $S_I$.
+
+It is easy to see that this action has a finite perturbation series for any
+choice of the functions in the action. The exponentially falling propagators
+make every loop integral converge in the UV, because the measures of
+integration and the functions $g_n$ grow at most like polynomials. Because we
+have chosen to perturb around a massless theory, we might find IR divergences,
+but we know that these can be eliminated by shifting a mass term from the
+function $g_2$ in $S_I$ to $S_0$. They have nothing to do with the UV problem.
+
+\BanksImplicitHook{I-CH09-006}
+
+The basic idea of the RG is to rescale the cut-off to a lower value, without
+changing the physics below $\Lambda_R$. In this way we can eventually get an
+action that contains only
+
+% BANKS-SOURCE: pdf=159 print=149 kind=prose
+momentum scales of order $\Lambda_R$ or smaller, which has the same physics as
+the original action. We approach this by writing a differential equation for
+the required change in the action for an infinitesimal scale change. By
+integrating this equation we obtain the required elimination of degrees of
+freedom.
+
+It should be noted that in using the Euclidean formalism we are implicitly
+assuming that the integrated degrees of freedom are in their ground state. That
+is, they are excited only by their interactions with the low-energy degrees of
+freedom. We have not sent in any incoming high-energy waves. This follows from
+the fact that the free Euclidean Green function is the analytic continuation
+of the \emph{vacuum expectation value} of fields. Any other Green function for
+the Lorentzian Klein--Gordon operator would have wave packets propagating at
+infinity.
+
+We now want to find an equation for $S_I$ that allows us to vary $\Lambda$
+without changing the physics. Let $\partial_t\equiv\Lambda\,\partial/\partial
+\Lambda$. I claim that the equation
+\[
+  \partial_t[\mathrm{e}^{-S_I}]
+  =-\frac12\int\frac{\dd^D p}{(2\pi)^D}\,
+  \partial_tK^{-1}(p)
+  \left[\frac{\delta^2\mathrm{e}^{-S_I}}
+  {\delta\phi(p)\delta\phi(-p)}\right]
+\]
+does the trick. Indeed, if we take the scaling derivative of the numerator of
+the generating functional $Z$, and use this formula, we get
+\[
+\begin{aligned}
+  \partial_t I[J]={}&\int[d\phi]\,
+  \mathrm{e}^{-(S_0+\int\phi(p)J(-p))}\\
+  &\times\left[-\frac12\int\frac{\dd^D p}{(2\pi)^D}
+  \partial_tK(p)\phi(p)\phi(-p)\mathrm{e}^{-S_I}
+  -\frac12\int\frac{\dd^D p}{(2\pi)^D}\partial_tK^{-1}(p)
+  \left[\frac{\delta^2\mathrm{e}^{-S_I}}
+  {\delta\phi(p)\delta\phi(-p)}\right]\right].
+\end{aligned}
+\]
+We can use functional integration by parts to throw the functional derivatives
+acting on $\mathrm{e}^{-S_I}$ onto
+$\mathrm{e}^{-S_0+\int\phi J}$. The terms where the derivatives act on the
+source give us integrals of the form $J(p)\partial_tK^{-1}(p)$, which vanish,
+because these two functions have disjoint support. The terms where they act on
+$S_0$ give
+\[
+\begin{aligned}
+  \mathrm{e}^{-S_0-S_I-\int\phi J}
+  \left[-\frac12\int\frac{\dd^D p}{(2\pi)^D}\left(
+  -K^{-1}(p)\partial_tK^{-1}(p)\delta^D(0)\right.\right.\\[-2pt]
+  \left.\left.\qquad
+  +\phi(p)K^{-1}(p)\partial_tK^{-1}(p)K(-p)\phi(-p)\right)\right].
+\end{aligned}
+\]
+The infinite momentum-space delta function in the first term is a factor of
+the space-time volume. It corresponds to the renormalization of the vacuum
+energy density from the modes that are dropped when we lower the cut-off. It
+will cancel out against a similar contribution from the denominator when we
+compute
+\[
+  \partial_t Z[J]=\frac{\partial_t I[J]}{I[0]}
+  -Z[J]\frac{\partial_t I[0]}{I[0]} .
+\]
+Using the identity $\partial_tK^{-1}=-K^{-2}\partial_tK$, we see that the
+second term cancels out against the explicit scale derivative of $S_0$, so
+that $Z[J]$ is unchanged.
+
+% BANKS-SOURCE: pdf=160 print=150 kind=prose
+We can rewrite the exact RG equation for $S_I$ as
+\[
+  \partial_tS_I=\frac12\int\frac{\dd^D p}{(2\pi)^D}\,
+  \partial_tK^{-1}(p)\left[
+  \frac{\delta S_I}{\delta\phi(p)}\frac{\delta S_I}{\delta\phi(-p)}
+  -\frac{\delta^2S_I}{\delta\phi(p)\delta\phi(-p)}\right].
+\]
+In terms of the coefficient functions in the expansion of $S_I$, this has
+the form
+\[
+\begin{aligned}
+  \frac{\dd g_n(P_n)}{\dd t}
+  ={}&\int\frac{\dd^D p}{(2\pi)^D}\sum
+  g_{k+1}(P_k,p)\partial_tK^{-1}(p)
+  g_{n-k+1}(P_{n-k},-p)\\
+  &+\int\frac{\dd^D p}{(2\pi)^D}\partial_tK^{-1}(p)
+  g_{n+2}(p,-p,P_n) .
+\end{aligned}
+\]
+The sum in the first term is over all ways of partitioning the momenta (which
+we have labeled by a single letter $P_n$) into two groups $P_k$ and
+$P_{n-k}$, each containing the indicated number of single-particle momenta.
+
+The two contributions to the variation of $S_I$ have an interpretation in
+terms of Feynman diagrams (Figure~\ref{fig:9.2}), one a loop diagram and one a
+tree. Note that the internal lines in these diagrams are proportional to
+$\partial_tK^{-1}$, which is non-zero only for momenta near the cut-off. We
+interpret this as integrating out degrees of freedom in an infinitesimal shell
+near the cut-off. Because the phase space is so small, higher loop diagrams are
+negligible.
+
+The RG equation for $S_I$ is of the form
+\[
+  \partial_tX=-\frac12\nabla^2X,
+\]
+where $X$ is the functional $\mathrm{e}^{-S_I}$ and
+\[
+  \nabla^2=\int\frac{\dd^D p}{(2\pi)^D}\,
+  \partial_tK^{-1}(p)\frac{\delta^2}
+  {\delta\phi(p)\delta\phi(-p)} .
+\]
+
+% BANKS-SOURCE: pdf=160 print=150 kind=figure id=9.2
+\begin{figure}[htbp]
+  \centering
+  \input{figures/figure9_2.tex}
+  \caption{The RG equation.}
+  \label{fig:9.2}
+\end{figure}
+
+% BANKS-SOURCE: pdf=161 print=151 kind=prose
+This looks like a heat equation on the space of all functionals $X$, and, like
+all heat equations, it is a gradient flow. Not all functionals can be written
+as the exponential of an $S_I$, which has an expansion in terms of polynomially
+bounded smooth functions $g_n$. This requirement defines a curved sub-manifold
+on the infinite-dimensional linear space of functionals $X$ on which the heat
+flow takes place. The explicit form of the equations for $g_n$ in terms of
+Feynman diagrams tells us that the sub-manifold of quasilocal cut-off actions
+is preserved by the heat flow.
+
+As noted above, the RG equations for the functions $g_n$ have the form
+\[
+\begin{aligned}
+  \partial_tg_n(p_1,\ldots,p_n)={}&\sum
+  g_k(p_{s_1}\ldots p_{s_{k-1}},p)\partial_tK^{-1}(p)
+  g_{n-k+1}(p,p_{s_k}\ldots p_{s_n})\\
+  &-\int\frac{\dd^D p}{(2\pi)^D}\partial_tK^{-1}(p)
+  g_{n+2}(p_1\ldots p_n,p,-p) .
+\end{aligned}
+\]
+The sums in the first term are over all choices of $k<n$ and over all
+permutations $s_i$. We employ the convention that the sum of all momenta
+appearing inside a vertex function $g_n$ is zero. By expanding the functions
+$g_n(p_1,\ldots,p_n)$ in a power series around zero, we can convert these
+equations into an infinite number of equations for the expansion coefficients.
+Label the latter by $g^I$. The equations have the form
+\[
+  \partial_tg^I=\beta^I_Jg^J+\beta^I_{JK}g^Jg^K=\beta^I(g) .
+\]
+The fact that the flow is also gradient means that there is a positive-definite
+metric $G_{IJ}(g)$ such that
+$P_I\equiv G_{IJ}\partial_tg^I$ satisfies
+\[
+  \partial_IP_J=\partial_JP_I,
+\]
+so that $P_I=\partial_IV$. Gradient flow can have only two types of
+asymptotic behavior, because the potential $V$ increases along the flow. It
+can have a runaway to infinite values, or it can hit a fixed point. Renormalized
+quantum field theories correspond to fixed-point behavior of the RG flow.
+
+Since the flow is gradient, its asymptotic behavior is governed by a fixed
+point where $\beta^I(g_*)=0$. Let $\delta g^I=g^I-g_*^I$. Then
+\[
+  \dot{\delta g}^I=\lambda^I_J\delta g^J
+  +\beta^I_{JK}\delta g^J\delta g^K,
+\]
+where
+\[
+  \lambda^I_J=\beta^I_J+\beta^I_{JK}g_*^K .
+\]
+If we diagonalize $\lambda$, calling its eigenvalues $D-d^I$, we see that
+the initial values of the coefficients of irrelevant operators, with $d^I>D$,
+disappear exponentially from the flow as $t\to\infty$. The marginal and
+relevant operators, with $D-d^I\leq0$, asymptotically satisfy a closed set of
+highly non-linear RG equations obtained by eliminating the irrelevant
+operators in terms of the others. The coefficients of irrelevant operators in
+the effective Lagrangian at $\Lambda_R\ll\Lambda$ are completely determined
+by the relevant and marginal ones.
+
+Actually some of the marginal operators may actually be \emph{marginally
+irrelevant}. That is, when non-linear corrections to the flow are taken into
+account, they may also be irrelevant. However, since their initial conditions
+are forgotten at a rate that is a power
+
+% BANKS-SOURCE: pdf=162 print=152 kind=prose
+law, rather than an exponential, in $t$ (and thus logarithmic in scale), the
+proper treatment of marginally irrelevant operators depends on the context.
+In a mathematical treatment, in which we try to take the cut-off to infinity,
+we must treat them like irrelevant operators. However, in the real world, the
+ultimate cut-off scale is unlikely to be larger than
+$M_P\sim10^{19}\,\mathrm{GeV}$, the Planck energy scale defined by combining
+Newton's constant with Planck's. In theories with large or warped extra
+dimensions, it might be much lower. Even without such exotic theoretical
+input, it is easy to imagine that the elementary fields of our current
+effective field theories are composites of a deeper theory hiding just around
+the corner of the next collider experiment. Thus, we should be careful not to
+dismiss irrelevant, and especially marginally irrelevant, operators in too
+cavalier a fashion. Discovering that the effective field theories we need to
+explain current experiments contain irrelevant operators simply tells us that
+there is a scale of new physics not too far away. Marginally irrelevant
+operators may be pointing to the need for changes in our models only at
+energies that are exponentially far away in scale.
+
+In fact, if we are considering the possibility of an energy scale just above
+our current experimental resolution, we should always expect to find
+irrelevant operators with coefficients proportional to inverse powers of that
+nearby scale in our effective description of nature. The
+\emph{non-renormalizability} of these effective theories is telling us that
+there are missing pieces of our current theory and that we can expect to
+encounter new phenomena at that nearby scale. This is for example the case for
+the non-linear sigma model describing low-energy pion physics. The extra
+physics is the entire rich structure of QCD. Similarly, the
+non-renormalizability of Fermi's theory of weak interactions told us to expect
+new physics by about 250 GeV. In fact, as a consequence of the small
+dimensionless parameters of the electro-weak gauge theory, the new physics
+actually appeared below 100 GeV, at the W-boson mass.
+
+This section contains the key idea of renormalization theory, which is
+summarized in the following picture (Figure~\ref{fig:9.3}). The RG flow stops
+at fixed points, whose critical surface, or basin of attraction, has low
+co-dimension in the space of all couplings.
+
+% BANKS-SOURCE: pdf=162 print=152 kind=figure id=9.3
+\begin{figure}[htbp]
+  \centering
+  \input{figures/figure9_3.tex}
+  \caption{Renormalization-group trajectories near a critical surface.}
+  \label{fig:9.3}
+\end{figure}
+
+% BANKS-SOURCE: pdf=163 print=153 kind=prose
+The infinite-cut-off limit of the theory at the fixed point is conformally
+invariant. Initial coupling values on the critical surface all flow to the
+fixed point. Near the fixed point, infinitesimal directions on the critical
+surface are controlled by irrelevant or non-renormalizable perturbations of the
+Lagrangian. Flows beginning off the critical surface do not reach the fixed
+point, but if the initial couplings are close to the critical surface the flow
+comes close to the fixed point before moving away. We can obtain a
+non-scale-invariant infinite-cut-off limit by tuning the initial couplings to
+the critical surface as we take the cut-off to infinity. Near the fixed point,
+perturbations off the critical surface are called relevant or
+super-renormalizable operators. The general definition of a quantum field
+theory is to take the cut-off to infinity, tuning the coefficients of relevant
+operators to zero in order to obtain finite Green functions.
+
+First-order analysis of the RG equations near the fixed point shows that
+there are generally marginal operators, which don't flow at all in first
+order. Higher-order analysis divides these into truly marginal, marginally
+relevant, and marginally irrelevant operators. Truly marginal operators
+indicate the existence of a line or higher-dimensional surface of fixed points.
+If we really insist on taking the cut-off to infinity, marginally relevant and
+irrelevant operators are just like relevant and irrelevant ones. On the other
+hand, in the real world, we expect the cut-off above which all quantum field
+theories fail to be no bigger than $10^{19}\,\mathrm{GeV}$. Thus, marginally
+irrelevant couplings, if they are sufficiently small, would be expected to
+appear in our theories.
+
+% BANKS-SOURCE: pdf=163 print=153 kind=subsection id=9.4.1
+\subsubsection{Changing the cut-off}
+
+We now want to argue that IR physics is in fact independent of the way we
+choose to cut-off the theory. We begin by investigating changes in the
+function $K(p^2/\Lambda^2)$. By definition, these changes all take place at
+scales above the original cut-off. Therefore, once we have flowed to a momentum
+much lower than the cut-off they don't affect the RG equations. Thus, a change
+in $K$ can be absorbed into a change in the initial conditions for the flow,
+and affects the low-energy physics only through the values of the relevant and
+marginal parameters.
+
+A more drastic change in cut-off scheme is a Euclidean lattice. Here momentum
+space is compactified on a torus, with cycles of size $2\pi/a$. However, we
+can work instead with a non-compact momentum space, if we insist that the
+propagator vanish identically above $|P|=2\pi/a$.\footnote[6]{For Dirac
+fermions, depending on the way we implement the lattice Lagrangian, we have
+to proceed with care. Some versions of the lattice Dirac equation actually
+describe multiple copies of a continuum fermion. The extra copies come from
+momenta of order $\pi/a$. We must take care to incorporate all of these
+copies in the low-energy theory if we really want to describe the continuum
+limit of the lattice theory.} We do this by multiplying the lattice
+propagator by a smooth function. Now we can repeat the argument of the
+previous paragraph.
+
+The upshot of these arguments and their generalization is that we can impose
+the cut-off in any way we like, once we have identified the fixed point of the
+RG that is relevant to our theory. In perturbation theory, we are always
+working with specific
