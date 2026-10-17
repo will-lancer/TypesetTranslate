@@ -10,7 +10,9 @@ The repository has one canonical content tree:
 - `newPapers/**/latex/`: the LaTeX source needed to reproduce them
 
 Compile `master.tex` from the relevant `latex/` directory with `latexmk -pdf`;
-the Witten project uses `wittenSUSYintro.tex` instead. The local `.sty` files
+the Witten project uses `wittenSUSYintro.tex` instead. Wald’s QFT requires
+XeLaTeX: run `latexmk -xelatex master.tex` in its `latex/` directory.
+The local `.sty` files
 are required source dependencies and should remain beside the corresponding
 documents. There are pre-compiled versions from the latest version already
 in the `newPapers` directory.
@@ -30,3 +32,4 @@ Completed:
 - Weinberg's GR
     - There is also an edited version with exercises + solutions after each chapter
 - Wald's GR
+- Wald’s *Quantum Field Theory in Curved Spacetime and Black Hole Thermodynamics*: [PDF](newPapers/wald-qft/wald-qft-jhep.pdf), [LaTeX source](newPapers/build-directories/wald-qft/latex), [source and scan bundle](newPapers/wald-qft/wald-qft-latex-and-source.zip)
