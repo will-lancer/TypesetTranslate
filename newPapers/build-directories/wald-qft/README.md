@@ -5,7 +5,7 @@ notation, clickable references, and seven figures drawn in TikZ.
 
 [Read the PDF](../../wald-qft/wald-qft-jhep.pdf) or download the
 [LaTeX and original-scan bundle](../../wald-qft/wald-qft-latex-and-source.zip).
-The bundle also retains the raw OCR text and the detailed review notes.
+The bundle also retains the raw OCR text and the build and navigation checks.
 
 ## Build
 
@@ -16,7 +16,7 @@ latexmk -xelatex master.tex
 ```
 
 Alternatively, run `xelatex -interaction=nonstopmode -halt-on-error master.tex`
-twice. Keep `jheppub.sty` and the `figures/` directory beside `master.tex`.
+until cross-references stabilize. Keep `jheppub.sty` and the `figures/` directory beside `master.tex`.
 The document uses Latin Modern fonts and the packages named in its preamble.
 
 ## Edition
@@ -34,7 +34,7 @@ all seven diagrams against the scan. Targeted scan comparisons repaired OCR
 damage in formulas and prose. This is a reviewed OCR edition; the original
 scan is provided in the bundle for reference.
 
-The final build has 356 equation labels and 1,229 internal links with valid
+The final build has 356 equation labels and 1,232 internal links with valid
 destinations. It reports no overfull boxes, undefined references, missing
 characters, or font warnings. See `review-checks.json` for the recorded checks.
 
