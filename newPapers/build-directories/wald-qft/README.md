@@ -1,6 +1,6 @@
 # Wald: Quantum Field Theory in Curved Spacetime and Black Hole Thermodynamics
 
-A 159-page reading edition of Robert M. Wald’s 1994 book, with standardized
+A 154-page reading edition of Robert M. Wald’s 1994 book, with standardized
 notation, clickable references, and seven figures drawn in TikZ.
 
 [Read the PDF](../../wald-qft/wald-qft-jhep.pdf) or download the
@@ -25,6 +25,9 @@ Hilbert and Fock spaces use calligraphic notation. Vectors use bold letters,
 and in/out subscripts are upright. Equation-reference numbers are blue;
 their parentheses remain black. Simple expressions use ordinary-size
 delimiters, with automatic sizing retained for tall contents.
+Sentences continue across source-page markers, and displayed equations flow
+with their surrounding prose. OCR spacing and artificial word hyphens have
+been cleaned throughout the text.
 
 The review checked the displayed equations throughout the book and compared
 all seven diagrams against the scan. Targeted scan comparisons repaired OCR
