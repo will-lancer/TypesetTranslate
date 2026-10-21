@@ -59,7 +59,7 @@ hash integrity, zero undefined or duplicate references, zero overfull boxes,
 parseable PDF output, and embedded/subset fonts. It exports only to:
 
 ```text
-../../weinberg-vol1-exercises.pdf
+../../weinberg-qft-exercises/weinberg-vol1-exercises.pdf
 ```
 
 Neither command writes a canonical Weinberg PDF.

@@ -1,32 +1,20 @@
-# README
+# TypesetTranslate
 
-Typesetting old, beautiful physics and math books and papers into modern LaTeX.
-The typesetting is done almost entirely via coding agents.
-Please email me at `will.m.lancer@gmail.com` if you find any errors.
+Physics and mathematics books typeset in modern LaTeX, largely with coding agents.
+Report errors to `will.m.lancer@gmail.com`.
 
-The repository has one canonical content tree:
+Browse the [book catalogue](newPapers/README.md) for PDFs and their LaTeX sources.
+The [build guide](docs/BUILDING.md) explains how to work on an edition.
 
-- `newPapers/*.pdf`: polished delivery PDFs
-- `newPapers/**/latex/`: the LaTeX source needed to reproduce them
+| Location | Contents |
+| --- | --- |
+| [newPapers/](newPapers/) | Exported PDFs, grouped by book or edition |
+| [newPapers/build-directories/](newPapers/build-directories/README.md) | Editable projects and their build tools |
+| [origPapers/](origPapers/README.md) | Original scans and reference images |
+| [docs/](docs/BUILDING.md) | Repository workflow |
+| [work/](work/README.md) | Shared working material |
+| [tmp/](tmp/README.md) | Extraction and review material from earlier work |
 
-Compile `master.tex` from the relevant `latex/` directory with `latexmk -pdf`;
-the Witten project uses `wittenSUSYintro.tex` instead. The local `.sty` files
-are required source dependencies and should remain beside the corresponding
-documents. There are pre-compiled versions from the latest version already
-in the `newPapers` directory.
-
-Completed:
-
-- Witten's *Introduction to Supersymmetry*
-- Milnor's *Topology from the Differentiable Viewpoint*
-  - Note on the above: I moved the exercises to immediately follow the chapter
-    that tests their content instead of having them all at the end.
-- Atiyah and MacDonald's *Introduction to Commutative Algebra*
-  - I have an edited copy and an unedited one in the repo. The edited
-    one adds more examples and pedagogy to the text.
-- Weinberg's QFT: volumes I - III
-    - There is also an edited version with exercises + solutions after each chapter
-    - There is also a version of vol. III with two-component spinor notation implemented throughout
-- Weinberg's GR
-    - There is also an edited version with exercises + solutions after each chapter
-- Wald's GR
+Each project keeps its LaTeX dependencies beside its source. Project READMEs
+describe editorial choices and release checks; the catalogue links to those
+that have one.

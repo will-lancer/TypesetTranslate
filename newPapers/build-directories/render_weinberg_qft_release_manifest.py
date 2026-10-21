@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
-EXPORT_ROOT = HERE.parent
+EXPORT_ROOT = HERE.parent / "weinberg-qft-exercises"
 VOLUMES = (
     ("weinberg_vol1_exercises", "weinberg-vol1-exercises.pdf"),
     ("weinberg_vol2_exercises", "weinberg-vol2-exercises.pdf"),
